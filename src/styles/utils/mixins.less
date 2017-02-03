@@ -1,0 +1,22 @@
+/*
+  This mixin helps us style the way that links behave
+  in the UI and the general body text.
+*/
+.link-decorator(@default-color, @hover-color: @default-color) {
+  border-bottom: 1px solid @default-color;
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid @hover-color;
+    text-decoration: none;
+  }
+}
+
+.accessible-outline(@outline-color: @medium-light-blue, @outline-offset: 1px) {
+  &:focus {
+    outline-color: @outline-color;
+    outline-offset: @outline-offset;
+    outline-style: solid;
+    outline-width: 2px;
+  }
+}

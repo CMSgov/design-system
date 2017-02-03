@@ -1,0 +1,243 @@
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+@import 'utils/mixins';
+@import 'utils/variables';
+
+//
+// Buttons
+// --------------------------------------------------
+
+.btn {
+  -webkit-font-smoothing: antialiased;
+  background-color: @light-gray;
+  color: @btn-alternate-bg;
+  text-decoration:none;
+  white-space: normal; /* this fixes text overflow issues on buttons */
+  border-radius: 0;
+  outline: none;
+  border: none;
+  transition: all 0.1s ease-out;
+  .accessible-outline;
+
+  &:hover,
+  &:active,
+  &.active,
+  &:focus {
+    background-color: @btn-alternate-bg;
+    color: @white;
+    border: none;
+  }
+
+  a& {
+    border: none;
+  }
+}
+
+.btn-lg {
+  .font-lg();
+
+  border-radius: @border-radius-small;
+  padding: 10px 20px;
+  font-weight: 700;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.23);
+  text-transform: uppercase;
+
+  a.btn& {
+    text-decoration: none!important;
+  }
+}
+
+.btn-md {
+  .font-md();
+
+  padding: 10px 20px;
+  line-height: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  a.btn& {
+    text-decoration: none!important;
+  }
+}
+
+.btn-sm {
+
+  // force smaller glyphicons for small buttons
+  .glyphicon {
+    .font-xs();
+  }
+}
+
+.btn-green,
+.btn-success {
+  color: @white;
+  background-color: @btn-success-bg;
+
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: lighten(@btn-success-bg, 5%);
+  }
+}
+
+.btn-blue {
+  background-color: @btn-alternate-bg;
+
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: darken(@btn-alternate-bg, 5%);
+  }
+}
+
+.btn-blue,
+.btn-green {
+  color: @white;
+
+  .no-touch &:hover,
+  .no-touch &:focus {
+    color: @white;
+    text-decoration: none;
+  }
+}
+
+.no-touch .btn:hover,
+.no-touch .btn:focus {
+  background-position: 0 0;
+}
+
+.btn-submit {
+  max-width: none;
+  width: 100%;
+}
+
+.btn-group {
+  margin-bottom: 20px;
+}
+
+// true false, yes no type radio buttons
+.radio-label {
+  .font-md();
+
+  text-transform: uppercase;
+
+  &.active {
+    color: @white;
+    background: @accent-green;
+
+    &:hover,
+    &:focus {
+      background: lighten(@accent-green, 5%);
+    }
+  }
+}
+
+// spacing for stacking buttons
+.btn-group-vertical {
+  padding-top: 10px;
+
+  // don't need margin-right when we're stacking buttons
+  margin-right: 0;
+
+  .btn {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  // overriding bootstrap so have to use these weird selectors
+  & > .btn:last-child:not(:first-child) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  & > .btn:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+//
+// The .progress-button takes its look and feel from btn-lg, so it's in here.
+// When a main cta is clicked .progress-button can replace it and be used like
+// Bootstrap's standard progress bar component to display loading.
+//
+.progress-button {
+  text-align: center;
+
+  .progress {
+    // match .btn-success .disabled
+    background-color: fade(@accent-green, 50%);
+    border-radius: @border-radius-small;
+    color: @white;
+
+    // override the Bootstrap defaults to make a progress bar the same height as btn-lg
+    height: 45px;
+    margin-bottom: 8px;
+  }
+
+  // colored bar that moves during loading
+  .progress-bar {
+    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+
+    /*
+      Modifying some CSS3 code from http://css-tricks.com/css3-progress-bars/
+      to make our progress bar have pinstripes that animate (so even if
+      requests take a long time the progress bar will not feel stopped)
+    */
+    &.submitting {
+      background-image:
+        linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, .15) 15%,
+          transparent 15%,
+          transparent 50%,
+          rgba(255, 255, 255, .15) 50%,
+          rgba(255, 255, 255, .15) 65%,
+          transparent 65%,
+          transparent
+        );
+
+      background-size:         20px 20px;
+      animation: move 1s linear infinite;
+
+      /* Define animation keyframes for progress bar background */
+      @keyframes move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 20px 20px;
+        }
+      }
+    }
+  }
+
+  // for centering the text over the bar
+  .progress-text-wrapper {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+
+  // style this like a btn-lg
+  .progress-text {
+    .font-lg();
+    font-weight: 700;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.23);
+    text-transform: uppercase;
+    padding: 10px;
+  }
+
+  // additional information to show during loading
+  .progress-information {
+    .font-sm();
+    color: @medium-gray;
+  }
+
+  // glyphicon for completion, positioned on the right
+  .progress-success {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+  }
+}

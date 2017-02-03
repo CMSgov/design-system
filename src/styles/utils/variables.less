@@ -1,0 +1,99 @@
+// Override for loading Bootstrap 3 Glyphicons
+// Note: by convention bootstrap expects path variables to end in slash.
+@static-base-path: "/marketplace/b/app2/";
+@icon-font-path: "@{static-base-path}fonts/";
+
+/*
+ * Typographic scale
+ * This is our type size hierarchy, all type should be locked to one of these.
+ * TODO(sha): Check these for all cases of Bitter, might need different values.
+ */
+@font-size-base:          16px;
+@line-height-base:        24px;
+@line-height-computed:    24px;
+
+@font-size-large:         21px;
+@line-height-large:       25px;
+
+@font-size-small:         14px;
+@line-height-small:       19px;
+
+.font-xs() {
+  font-size:    12px;
+  line-height:  16px;
+}
+.font-sm() {
+  font-size:    @font-size-small;
+  line-height:  @line-height-small;
+}
+.font-md() {
+  font-size:    @font-size-base;
+  line-height:  @line-height-base;
+}
+.font-lg() {
+  font-size:    @font-size-large;
+  line-height:  @line-height-large;
+}
+.font-xl() {
+  font-size:    24px;
+  line-height:  30px;
+}
+.font-xx() {
+  font-size:    36px;
+  line-height:  44px;
+}
+
+@display-type:          'Bitter', Georgia, serif;
+
+// Neutral shades
+@white:                 #fff;
+@black:                 #000;
+@lightest-gray:         #f8f8f8;
+@light-gray:            #eee;
+@medium-gray:           #666;
+@dark-gray:             #333;
+@border-color:          #ccc;
+
+// Primary color palette
+@light-blue:            #cfeffc;
+@medium-light-blue:     #88bde1;
+@medium-blue:           #0c648c;
+@dark-blue:             #063346;
+@darkest-blue:          #052635;
+
+// Used for the background of error messages
+@dark-red:              #b01727;
+
+// "Lite" look, a dark blue used on hcgov with accent colors for ui elements
+@lite-bg:               #055072;
+@lite-ui-bg:            lighten(@lite-bg, 5%);
+@lite-ui-bg-highlight:  darken(@lite-bg, 2%);
+@lite-ui-bg-border:     lighten(@lite-bg, 5%);
+
+@brand-primary:         @medium-blue;
+
+// For consistency with the rest of the site (should be only used in the header)
+@learn-bg:              #046791;
+
+@accent-blue:           #015072;
+@accent-green:          #12890E;
+@accent-orange:         #ec6841;
+@accent-red:            #e51727;
+
+@bright-green:          #28ff3e;
+@bright-blue:           #1292EA;
+
+@btn-font-weight:       bold;
+@border-radius-small:   3px;
+
+@btn-alternate-bg:      #0E70B4; // #0279af;
+@btn-success-color:     @white;
+@btn-success-bg:        @accent-green;
+@btn-success-border:    transparent;
+
+// Sidebar Nav
+@sidebar-width:         240px;
+@sidebar-icon-size:     16px;
+
+// Row margin
+@row-margin:            4px;
