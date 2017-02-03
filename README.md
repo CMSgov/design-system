@@ -23,6 +23,8 @@ npm run watch
 npm run build
 ```
 
-## Dev notes
+## Dev notes and todos
 
-- Follow the naming conventions of [USWDS](https://github.com/18F/web-design-standards) as closely as possible. This would allow us to use our own React components, but switch over to their CSS if we wanted to do this down the road.
+- Setup linting (both styles and scripts)
+- Analyze css with [Parker](https://github.com/katiefenn/parker)
+- Provide a set of utility functions (eg. [Primer](http://primercss.io/utilities/#truncation)). Prefix with `.css`?
