@@ -1,32 +1,13 @@
-# Installation
-
-_TODO: Publish to NPM, then add install instructions._
-
-# Local development
-
-To contribute to this package locally, you can symlink the package into a project directory by running the following commands:
-
-1. Within the package directory, run: `npm link`
-1. Within the project directory where you want to use this package, run `npm link hcgov-pattern-library`
-
-## Build process
-
-#### Watch and build on changes:
+## Installation
 
 ```
-npm run watch
+npm install --save navahq/hcgov-pattern-library
 ```
 
-#### Build all the things:
+The pattern library is now installed as a dependency. You can use the un-compiled files found in the `src/` directory or the compiled files in the `dist/` directory.
 
-```
-npm run build
-```
+_Note: Eventually the package will be published to NPM, but for now you'll need to reference the package by its repo, like above._
 
-## Dev notes/ideas
+## Contributing to the code base
 
-- Provide a set of utility functions (eg. [Primer](http://primercss.io/utilities/#truncation)). Prefix with `.css`?
-
-## Additional resources
-
-- [Additional information on stylelint rules](https://stylelint.io/user-guide/rules)
+For complete instructions on how to contribute code, please read [CONTRIBUTING.md](CONTRIBUTING.md)
