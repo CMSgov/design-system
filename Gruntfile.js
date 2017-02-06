@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       options: {
         processors: [
           require('postcss-import')(), // inline imports
-          require('autoprefixer')({browsers: '> 5% in US, last 2 versions'}),
+          require('autoprefixer')(),
           require('cssnano')() // minify the result
         ]
       },
