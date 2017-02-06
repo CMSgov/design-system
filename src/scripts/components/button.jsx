@@ -1,5 +1,5 @@
-var React = require('react');
-var classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
 class Button extends React.Component {
   constructor(props) {
@@ -66,4 +66,4 @@ Button.defaultProps = {
   use: 'primary'
 };
 
-module.exports = Button;
+export default Button;

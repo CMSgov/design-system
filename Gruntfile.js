@@ -18,6 +18,15 @@ module.exports = function(grunt) {
         ]
       }
     },
+    eslint: {
+      src: {
+        files: [{
+          expand: true,
+          cwd: 'src/scripts',
+          src: ['**/*.js', '**/*.jsx']
+        }]
+      }
+    },
     less: {
       src: {
         options: {
@@ -52,8 +61,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      src: {
-        files: [`src/styles/**/*.less`],
+      scripts: {
+        files: ['src/scripts/**/*.js', 'src/scripts/**/*.jsx'],
+        tasks: ['eslint'],
+      },
+      styles: {
+        files: ['src/styles/**/*.less'],
         tasks: ['stylelint', 'less', 'postcss'],
       }
     },
