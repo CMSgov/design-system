@@ -26,3 +26,7 @@ npm run build
 ## Dev notes/ideas
 
 - Provide a set of utility functions (eg. [Primer](http://primercss.io/utilities/#truncation)). Prefix with `.css`?
+
+## Additional resources
+
+- [Additional information on stylelint rules](https://stylelint.io/user-guide/rules)
