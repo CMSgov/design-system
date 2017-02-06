@@ -2,7 +2,8 @@
   "extends": ["eslint:recommended", "plugin:react/recommended", "nava"],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "parserOptions": {
     "ecmaFeatures": {
