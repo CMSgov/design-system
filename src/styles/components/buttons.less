@@ -1,20 +1,23 @@
 @import 'utils/mixins';
 @import 'utils/variables';
 
-//
-// Buttons
-// --------------------------------------------------
-
-.hc-button {
-  background-color: @light-gray;
-  color: @medium-blue;
-  text-decoration: none;
+.hc-btn {
   .accessible-outline;
+  background-color: @white;
+  border: 1px solid @blue;
+  border-radius: @border-radius;
+  color: @blue;
+  cursor: pointer;
+  font-family: @body-font;
+  font-size: @font-size-base;
+  font-weight: bold;
+  text-decoration: none;
 
   &:active,
   &:focus,
   &:hover {
-    background-color: @medium-gray;
+    background-color: darken(@blue, @darken-percent);
+    color: @white;
   }
 
   a& {

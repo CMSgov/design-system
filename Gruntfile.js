@@ -5,6 +5,19 @@ module.exports = function(grunt) {
     .forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src',
+            src: 'fonts/*',
+            dest: 'dist/',
+            filter: 'isFile'
+          }
+        ]
+      }
+    },
     less: {
       dist: {
         options: {
@@ -39,5 +52,5 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.registerTask('build', ['less', 'postcss']);
+  grunt.registerTask('build', ['less', 'postcss', 'copy']);
 };
