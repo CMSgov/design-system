@@ -746,7 +746,7 @@ escope@^3.6.0:
 
 eslint-config-nava@navahq/eslint-config-nava:
   version "0.1.0"
-  resolved "https://codeload.github.com/navahq/eslint-config-nava/tar.gz/8919398df8e3a47502953beb1001025393646505"
+  resolved "https://codeload.github.com/navahq/eslint-config-nava/tar.gz/58bfc8ad782a68db49cd88293432f5db9494dbe2"
 
 eslint-plugin-react@^6.9.0:
   version "6.9.0"

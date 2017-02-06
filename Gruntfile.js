@@ -72,5 +72,5 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.registerTask('build', ['stylelint', 'less', 'postcss', 'copy']);
+  grunt.registerTask('build', ['eslint', 'stylelint', 'less', 'postcss', 'copy']);
 };
