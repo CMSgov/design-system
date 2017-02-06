@@ -23,8 +23,6 @@ npm run watch
 npm run build
 ```
 
-## Dev notes and todos
+## Dev notes/ideas
 
-- Setup linting (both styles and scripts)
-- Analyze css with [Parker](https://github.com/katiefenn/parker)
 - Provide a set of utility functions (eg. [Primer](http://primercss.io/utilities/#truncation)). Prefix with `.css`?
