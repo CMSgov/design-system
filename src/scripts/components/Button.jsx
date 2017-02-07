@@ -23,12 +23,12 @@ class Button extends React.Component {
 
   render() {
     var className = classNames({
-      'btn': true,
-      'btn-lg': true,
-      'btn-submit': true,
+      'hc-btn': true,
+      'hc-btn-lg': true,
+      'hc-btn-submit': true,
       'disabled': this.props.disabled,
-      'btn-blue': this.props.use === 'secondary',
-      'btn-success': this.props.use === 'primary'
+      'hc-btn-blue': this.props.use === 'secondary',
+      'hc-btn-success': this.props.use === 'primary'
     });
 
     var inlineStyle;
