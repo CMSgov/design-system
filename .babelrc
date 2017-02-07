@@ -1,0 +1,13 @@
+{
+  "env": {
+    "test": {
+      "presets": [
+        "jest"
+      ]
+    }
+  },
+  "presets": [
+    "react",
+    "es2015"
+  ]
+}
