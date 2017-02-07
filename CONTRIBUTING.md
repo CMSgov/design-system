@@ -20,9 +20,9 @@ The following examples detail a few npm/yarn commands that alias our grunt tasks
 You can symlink the package into a project directory by running the following commands:
 
 1. Within this package's directory, run: `yarn link`
-1. Within the project directory where you want to use this package, run `yarn link hcgov-pattern-library`
+1. Within the project directory where you want to use this package, run `yarn link cmsgov-design-system`
 
-Now your project is using the local version of the pattern library package, allowing you to update or add components and immediately see the changes in your project.
+Now your project is using the local version of the design system package, allowing you to update or add components and immediately see the changes in your project.
 
 ### Coding guidelines
 

@@ -1,5 +1,5 @@
 {
-  "name": "hcgov-pattern-library",
+  "name": "cmsgov-design-system",
   "version": "0.1.0",
   "description": "Open source pattern library for CMS websites",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navahq/hcgov-pattern-library.git"
+    "url": "git+https://github.com/CMSgov/design-system.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
