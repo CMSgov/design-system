@@ -24,6 +24,7 @@ The component library is now installed as a dependency. You can use the un-compi
     ├── fonts
     ├── scripts
     |   └── components    React/ES6 components
+    │       └── __tests__ JS Spec files for files in the components directory
     └── styles            .less stylesheets
         ├── components    Component-specific stylesheets
         └── utils         .less utility files (variables/mixins)
