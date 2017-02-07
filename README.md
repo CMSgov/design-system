@@ -5,13 +5,13 @@
 
 ## Installation
 
+**Warning: These installation instructions won't work until the package is published to NPM, or we make this repo public. In the meantime, follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md) to use a local copy of the package.**
+
 ```
-npm install --save CMSgov/design-system
+npm install --save cmsgov-design-system
 ```
 
 The component library is now installed as a dependency. You can use the un-compiled files found in the `src/` directory or the compiled files in the `dist/` directory.
-
-_Note: Eventually the package will be published to NPM, but for now you'll need to reference the package by its repo, like above._
 
 ## Code reference
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
