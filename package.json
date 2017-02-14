@@ -5,7 +5,7 @@
   "scripts": {
     "build": "grunt build",
     "test": "jest",
-    "watch": "grunt watch"
+    "watch": "grunt"
   },
   "repository": {
     "type": "git",
@@ -22,13 +22,16 @@
     "eslint-config-nava": "navahq/eslint-config-nava",
     "eslint-plugin-react": "^6.9.0",
     "grunt": "^1.0.1",
+    "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-kss": "^5.0.1",
     "grunt-postcss": "^0.8.0",
     "grunt-stylelint": "^0.6.0",
     "gruntify-eslint": "^3.1.0",
     "jest": "^18.1.0",
+    "kss": "^3.0.0-beta.17",
     "matchdep": "^1.0.1",
     "postcss-import": "^9.1.0",
     "react-addons-test-utils": "^15.4.2",
