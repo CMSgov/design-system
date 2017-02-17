@@ -28,6 +28,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-kss": "^5.0.1",
     "grunt-postcss": "^0.8.0",
+    "grunt-sass": "^2.0.0",
     "grunt-stylelint": "^0.6.0",
     "gruntify-eslint": "^3.1.0",
     "jest": "^18.1.0",

@@ -68,21 +68,7 @@ module.exports = function(grunt) {
         dest: 'docs'
       }
     },
-    less: { // Preprocess our CSS
-      src: {
-        options: {
-          paths: ['src/styles']
-        },
-        files: [{
-          expand: true,
-          cwd: 'src/styles',
-          src: ['all.less', 'components/*.less'], // TODO(sawyer): Exclude utils instead
-          dest: 'dist/styles',
-          ext: '.css'
-        }]
-      }
-    },
-    postcss: { // Transfrom the preprocessed CSS
+    postcss: { // Transform the preprocessed CSS
       options: {
         processors: [
           require('postcss-import')(), // inline imports
@@ -94,11 +80,25 @@ module.exports = function(grunt) {
         src: 'dist/styles/**/*.css'
       }
     },
+    sass: { // Process Sass -> CSS
+      dist: {
+        options: {
+          outputStyle: 'expanded'
+        },
+        files: [{
+          expand: true,
+          cwd: `src`,
+          src: ['**/*.scss'],
+          dest: `dist`,
+          ext: '.css',
+          filter: filepath => !filepath.match(/\/(settings|tools)\//)
+        }]
+      }
+    },
     stylelint: { // Lint CSS
-      src: ['src/styles/**/*.less'],
+      src: ['src/styles/**/*.scss'],
       options: {
-        reportNeedlessDisables: true,
-        syntax: 'less'
+        reportNeedlessDisables: true
       }
     },
     watch: { // Run corresponding tasks when certain files change
@@ -111,7 +111,7 @@ module.exports = function(grunt) {
         tasks: ['eslint'],
       },
       styles: {
-        files: ['src/styles/**/*.less'],
+        files: ['src/styles/**/*.scss'],
         tasks: ['stylelint', 'build:css'],
       }
     },
@@ -119,7 +119,7 @@ module.exports = function(grunt) {
 
   // Grouped tasks
   grunt.registerTask('lint', ['eslint', 'stylelint']);
-  grunt.registerTask('build:css', ['less', 'postcss']);
+  grunt.registerTask('build:css', ['sass', 'postcss']);
   grunt.registerTask('build:docs', ['copy:docs', 'kss']);
 
   // Executable tasks

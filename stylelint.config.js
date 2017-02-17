@@ -68,7 +68,7 @@ module.exports = {
       ]
     },
     'declaration-property-value-whitelist': {
-      '/color/': ['/(\@|\#)/']
+      '/color/': ['/(\$|\#)/']
     },
     'font-family-name-quotes': 'always-where-recommended',
     'function-calc-no-unspaced-operator': true,

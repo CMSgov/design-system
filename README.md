@@ -11,7 +11,7 @@
 npm install --save cmsgov-design-system
 ```
 
-The component library is now installed as a dependency. You can use the un-compiled files found in the `src/` directory or the compiled files in the `dist/` directory.
+The component library is now installed as a dependency. You can import the unprocessed source files found in the `src/` directory or the compiled files in the `dist/` directory.
 
 ## Code reference
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
@@ -25,9 +25,13 @@ The component library is now installed as a dependency. You can use the un-compi
     ├── scripts
     |   └── components    React/ES6 components
     │       └── __tests__ JS Spec files for files in the components directory
-    └── styles            .less stylesheets
-        ├── components    Component-specific stylesheets
-        └── utils         .less utility files (variables/mixins)
+    └── styles            Sass stylesheets
+        ├── components    Designed UI units
+        ├── generics      Far reaching selectors
+        ├── layouts       Structural patterns; No cosmetics.
+        ├── settings      Globally-available settings and config options
+        ├── tools         Helper functions and public mixins
+        └── trumps        Overrides, helpers and utilities
 ```
 
 ## Contributing to the code base

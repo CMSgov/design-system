@@ -1,0 +1,17 @@
+// (1) Settings: Globally-available settings and config options
+@import 'settings/all';
+
+// (2) Tools: Helper functions and public mixins
+@import 'tools/all';
+
+// (3) Generics: Far reaching selectors
+@import 'generics/all';
+
+// (4) Layouts: Structural patterns; No cosmetics. Start using class names here.
+@import 'layouts/all';
+
+// (5) Components: Designed UI units
+@import 'components/all';
+
+// (6) Trumps: Overrides, helpers and utilities; These trump the above rules.
+@import 'trumps/all';

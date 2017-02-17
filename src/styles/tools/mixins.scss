@@ -1,0 +1,36 @@
+@mixin accessible-outline($outline-color: lighten($blue, $lighten-percent), $outline-offset: 1px) {
+  outline-color: $outline-color;
+  outline-offset: $outline-offset;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+@mixin font-xs() {
+  font-size: $font-size-xsmall;
+  line-height: $line-height-xsmall;
+}
+
+@mixin font-sm() {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+}
+
+@mixin font-md() {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+}
+
+@mixin font-lg() {
+  font-size: $font-size-large;
+  line-height: $line-height-large;
+}
+
+@mixin font-xl() {
+  font-size: $font-size-xlarge;
+  line-height: $line-height-xlarge;
+}
+
+@mixin font-xx() {
+  font-size: $font-size-xxlarge;
+  line-height: $line-height-xxlarge;
+}
