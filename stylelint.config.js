@@ -1,16 +1,28 @@
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
+  'plugins': ['stylelint-scss'],
   'rules': {
     'at-rule-empty-line-before': [
       'always', {
         except: [ 'blockless-after-blockless', 'first-nested' ],
         ignore: ['after-comment'],
+        // allow @else to come on same line as closing @if brace
+        ignoreAtRules: ['else'],
       }
     ],
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always-single-line',
+    'at-rule-no-unknown': [true, {
+      ignoreAtRules: [
+        // additional scss at-rules:
+        'content', 'each', 'else', 'error', 'extend', 'for', 'function', 'if', 'include', 'mixin', 'return'
+      ]
+    }],
     'at-rule-semicolon-newline-after': 'always',
-    'block-closing-brace-newline-after': 'always',
+    'block-closing-brace-newline-after': ['always', {
+      // allow @else to come on same line as closing @if brace
+      ignoreAtRules: ['else', 'if']
+    }],
     'block-closing-brace-newline-before': 'always-multi-line',
     'block-closing-brace-space-before': 'always-single-line',
     'block-no-empty': true,
@@ -83,7 +95,7 @@ module.exports = {
     'indentation': 2,
     'length-zero-no-unit': true,
     'max-empty-lines': 1,
-    'max-nesting-depth': 4,
+    'max-nesting-depth': 2,
     'media-feature-colon-space-after': 'always',
     'media-feature-colon-space-before': 'never',
     'media-feature-parentheses-space-inside': 'always',
@@ -101,8 +113,15 @@ module.exports = {
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
     'rule-empty-line-before': [ 'always-multi-line', {
-      ignore: ['after-comment'],
+      ignore: ['after-comment', 'inside-block'],
     } ],
+    'scss/at-extend-no-missing-placeholder': true,
+    'scss/at-import-no-partial-leading-underscore': true,
+    'scss/at-import-partial-extension-blacklist': ['scss'],
+    'scss/at-mixin-argumentless-call-parentheses': 'never',
+    'scss/dollar-variable-no-missing-interpolation': true,
+    'scss/media-feature-value-dollar-variable': 'always',
+    'scss/selector-no-redundant-nesting-selector': true,
     'selector-attribute-brackets-space-inside': 'never',
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
