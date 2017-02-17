@@ -59,7 +59,9 @@ module.exports = function(grunt) {
     },
     kss: { // Documentation generation
       options: {
-        css: '/dist/styles/all.css'
+        css: '/dist/styles/all.css',
+        placeholder: '[modifier]',
+        title: 'Hcgov Design System'
       },
       dist: {
         src: ['src/styles/'],
