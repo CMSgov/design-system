@@ -1,6 +1,3 @@
-# Ignore docs/ directory in the package branches
-docs
-
 # Logs
 logs
 *.log
