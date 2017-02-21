@@ -1,1 +1,4 @@
 @import 'variables';
+@import 'config.bourbon';
+@import '../vendor/bourbon/addons/font-stacks'; // USWDS dependency
+@import '../vendor/uswds/core/variables';

@@ -13,8 +13,8 @@ yarn install
 The following examples detail a few npm/yarn commands that alias our grunt tasks and that are useful throughout local development:
 
 - `yarn run build` processes Sass into CSS and copies static assets into the `dist` directory
+- `yarn start` runs a Browsersync server for the documentation, and watches for any changes that happen in the `src` directory and rebuilds the package if any changes are made.
 - `yarn run test` runs all tests using [Jest](https://facebook.github.io/jest/).
-- `yarn run watch` watches for any changes that happen in the `src` directory and rebuilds the package if any changes are made.
 
 ### Using a local version of the design system package
 
