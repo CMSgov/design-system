@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
-    "babel-jest": "^18.0.0",
+    "babel-jest": "^19.0.0",
     "babel-polyfill": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
@@ -29,21 +29,22 @@
     "grunt-kss": "^5.0.1",
     "grunt-postcss": "^0.8.0",
     "grunt-sass": "^2.0.0",
-    "grunt-stylelint": "^0.6.0",
+    "grunt-stylelint": "^0.7.0",
     "gruntify-eslint": "^3.1.0",
-    "jest": "^18.1.0",
+    "jest": "^19.0.0",
     "kss": "^3.0.0-beta.17",
     "matchdep": "^1.0.1",
     "postcss-import": "^9.1.0",
     "react-addons-test-utils": "^15.4.2",
     "stylelint": "^7.8.0",
-    "stylelint-order": "^0.2.2",
+    "stylelint-order": "^0.3.0",
     "stylelint-scss": "^1.4.1",
     "underscore": "^1.8.3"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "uswds": "^0.14.0"
   }
 }
