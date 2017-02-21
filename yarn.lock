@@ -5252,14 +5252,6 @@ stylehacks@^2.3.0:
     text-table "^0.2.0"
     write-file-stdout "0.0.2"
 
-stylelint-order@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-0.3.0.tgz#9a0f593c077c04d5e5da22404dab84288c933843"
-  dependencies:
-    lodash "^4.17.4"
-    postcss "^5.2.14"
-    stylelint "^7.8.0"
-
 stylelint-scss@^1.4.1:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-1.4.3.tgz#6069ddba951345514ad6abcc6beed7d32f1c799d"
