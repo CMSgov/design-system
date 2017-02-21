@@ -1,43 +1,26 @@
-// TODO: https://github.com/palantir/blueprint/blob/master/gulp/docs.js
+/**
+ * This task group generates our design system documentation using KSS. It
+ * handles things like parsing our CSS comments and generating a JSON file
+ * for us to render our documentation site.
+ */
 const dutil = require('./doc-util');
 const kss = require('kss');
+const processKssSection = require('./kss/processSection');
 
 module.exports = (gulp) => {
-  const unwrapData = (section) => section.data;
-
-  const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
-
-  function processFlags(section) {
-    if (typeof section.description === 'string') {
-      section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
-        switch (flag) {
-        case 'react-example':
-          section.reactExample = value;
-          break;
-        default:
-          break;
-        }
-        // remove flag from output
-        return '';
-      });
-    }
-    return section;
-  }
-
   gulp.task('docs', (done) => {
     dutil.logMessage('kss', 'Generating documentation');
 
-    var options = {
+    var kssOptions = {
       css: '/dist/styles/all.css',
       placeholder: '[modifier]',
       title: 'Hcgov Design System'
     };
 
-    return kss.traverse('src/styles/', options)
+    return kss.traverse('src/styles/', kssOptions)
       .then(styleguide => {
         var pages = styleguide.sections()
-          .map(section => section.data)
-          .map(processFlags);
+          .map(processKssSection);
 
         console.log(pages);
       });
