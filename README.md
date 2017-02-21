@@ -17,9 +17,12 @@ The component library is now installed as a dependency. You can import the unpro
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
+├── config
+│   └── gulp              Build tasks
 ├── dist                  Compiled files
 │   ├── fonts
 │   └── styles            CSS stylesheets
+├── docs                  Documentation site
 └── src                   Un-compiled files
     ├── fonts
     ├── scripts
@@ -31,7 +34,8 @@ The component library is now installed as a dependency. You can import the unpro
         ├── layouts       Structural patterns; No cosmetics.
         ├── settings      Globally-available settings and config options
         ├── tools         Helper functions and public mixins
-        └── trumps        Overrides, helpers and utilities
+        ├── trumps        Overrides, helpers and utilities
+        └── vendor        Third-party libraries
 ```
 
 ## Contributing to the code base
