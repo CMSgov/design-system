@@ -1,16 +1,12 @@
-const getData = require('./getData');
-
 /**
  * Extract, process, and return KssSection data in a cleaner format
  * @param  {KssSection} kssSection
  * @return {Object}
  */
 function processSection(kssSection) {
-  let data = getData(kssSection);
+  let data = kssSection.toJSON();
 
   data = Object.assign({}, data, {
-    modifiers: data.modifiers.map(getData),
-    parameters: data.parameters.map(getData),
     sections: new Map(),
   });
 

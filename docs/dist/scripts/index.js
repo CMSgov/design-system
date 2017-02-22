@@ -10150,7 +10150,7 @@ module.exports = [
 		"experimental": false,
 		"reference": "components",
 		"referenceNumber": "1",
-		"referenceURI": "",
+		"referenceURI": "components",
 		"weight": 0,
 		"markup": "",
 		"source": {
@@ -10158,6 +10158,7 @@ module.exports = [
 			"path": "src/styles/components/_index.scss",
 			"line": 1
 		},
+		"depth": 1,
 		"modifiers": [],
 		"parameters": [],
 		"sections": {}
@@ -10169,7 +10170,7 @@ module.exports = [
 		"experimental": false,
 		"reference": "components.buttons",
 		"referenceNumber": "1.1",
-		"referenceURI": "",
+		"referenceURI": "components-buttons",
 		"weight": 0,
 		"markup": "",
 		"source": {
@@ -10177,6 +10178,7 @@ module.exports = [
 			"path": "src/styles/components/button.scss",
 			"line": 4
 		},
+		"depth": 2,
 		"modifiers": [],
 		"parameters": [],
 		"sections": {}
@@ -10188,7 +10190,7 @@ module.exports = [
 		"experimental": false,
 		"reference": "components.buttons.css",
 		"referenceNumber": "1.1.1",
-		"referenceURI": "",
+		"referenceURI": "components-buttons-css",
 		"weight": 0,
 		"markup": "<a href=\"#\" class=\"hc-c-button {{modifier}}\">Link text</a>\n<button type=\"button\" class=\"hc-c-button {{modifier}}\">Button label</button>",
 		"source": {
@@ -10196,11 +10198,12 @@ module.exports = [
 			"path": "src/styles/components/button.scss",
 			"line": 17
 		},
+		"depth": 3,
 		"modifiers": [
 			{
 				"name": ".hc-c-button--primary",
 				"description": "The primary call-to-action",
-				"className": ""
+				"className": "hc-c-button--primary"
 			}
 		],
 		"parameters": [],
@@ -10213,14 +10216,15 @@ module.exports = [
 		"experimental": false,
 		"reference": "components.buttons.js",
 		"referenceNumber": "1.1.2",
-		"referenceURI": "",
+		"referenceURI": "components-buttons-js",
 		"weight": 0,
 		"markup": "",
 		"source": {
 			"filename": "components/button.scss",
 			"path": "src/styles/components/button.scss",
-			"line": 61
+			"line": 60
 		},
+		"depth": 3,
 		"modifiers": [],
 		"parameters": [],
 		"sections": {},
@@ -24933,18 +24937,17 @@ var HTMLExample = function (_React$Component) {
   _createClass(HTMLExample, [{
     key: 'markup',
 
-    /**
-     * Replace {{modifier}} tag with modifier, if there is one.
-     */
+    // Replace {{modifier}} tag with modifier, if there is one.
     value: function markup() {
       var html = this.props.markup;
-      var modifier = '';
-
-      if (this.props.modifier) {
-        modifier = this.props.modifier.name.replace(/^\./, ' ');
-      }
+      var modifier = this.props.modifier ? ' ' + this.props.modifier.className : '';
 
       return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
+    }
+  }, {
+    key: 'name',
+    value: function name() {
+      return this.props.modifier ? this.props.modifier.name : 'Default';
     }
   }, {
     key: 'render',
@@ -24954,6 +24957,11 @@ var HTMLExample = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'markup markup--html' },
+        _react2.default.createElement(
+          'strong',
+          { className: 'markup__name' },
+          this.name()
+        ),
         _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: markup } }),
         _react2.default.createElement(
           'code',
