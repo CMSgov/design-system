@@ -4,7 +4,21 @@ const runSequence = require('run-sequence');
 
 module.exports = (gulp) => {
   gulp.task('clean-dist', () => {
+    dutil.logMessage('clean-dist', 'Cleaning dist directory');
     return del(['dist']);
+  });
+
+  gulp.task('build:assets', done => {
+    dutil.logMessage('build:assets', 'Building all assets');
+
+    return runSequence(
+      [
+        'sass',
+        'javascript',
+        'fonts'
+      ],
+      done
+    );
   });
 
   gulp.task('build', done => {
@@ -12,11 +26,8 @@ module.exports = (gulp) => {
 
     runSequence(
       'clean-dist',
-      [
-        'sass',
-        'javascript',
-        'fonts'
-      ],
+      'build:assets',
+      'docs',
       done
     );
   });

@@ -36,7 +36,7 @@ module.exports = (gulp) => {
         const body = JSON.stringify(sections);
         const stream = source('sections.json');
         stream.end(body);
-        return stream.pipe(gulp.dest('docs/data'));
+        return stream.pipe(gulp.dest('docs/src/data'));
       });
   });
 

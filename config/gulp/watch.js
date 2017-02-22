@@ -1,19 +1,33 @@
-const browserSync = require('browser-sync').create();
+const dutil = require('./doc-util');
+const runSequence = require('run-sequence');
 
-module.exports = (gulp) => {
-  gulp.task('watch', ['build'], () => {
-    // Start a BrowserSync server
-    browserSync.init({
-      server: {
-        baseDir: './docs'
-      },
-      notify: false,
-      open: false,
-    });
-
-    // Trigger tasks when certain files change
+module.exports = (gulp, shared) => {
+  gulp.task('watch:assets', () => {
     gulp.watch('src/styles/**/*.scss', ['sass']);
     gulp.watch(['src/scripts/**/*.js', 'src/scripts/**/*.jsx'], ['javascript']);
-    gulp.watch('docs/**/*.html').on('change', browserSync.reload);
+  });
+
+  gulp.task('watch:docs', () => {
+    gulp.watch(['docs/**/*.html', 'docs/dist/**/*'])
+      .on('change', shared.browserSync.reload);
+
+    gulp.watch([
+      'docs/src/scripts/**/*.js',
+      'docs/src/scripts/**/*.jsx'
+    ], ['eslint:docs']);
+  });
+
+  gulp.task('watch', () => {
+    dutil.logMessage('watch', 'Starting watch');
+
+    runSequence(
+      'build:assets',
+      [
+        'server',
+        'watch:assets',
+        'watch:docs',
+        'webpack:watch',
+      ]
+    );
   });
 };

@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = (gulp) => {
-  const config = {};
+  const shared = {
+    browserSync: require('browser-sync').create()
+  };
 
   [
     'build',
@@ -9,8 +11,10 @@ module.exports = (gulp) => {
     'fonts',
     'javascript',
     'sass',
+    'server',
     'watch',
+    'webpack',
   ].forEach(taskGroup => {
-    require(`./${taskGroup}.js`)(gulp, config);
+    require(`./${taskGroup}.js`)(gulp, shared);
   });
 };
