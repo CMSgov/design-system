@@ -4,7 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import Page from './page';
+import Page from './Page';
 
 class Docs extends React.Component {
   renderSections() {

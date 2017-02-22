@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Docs from './components/docs';
+import Docs from './components/Docs';
 const sections = require('../data/sections.json');
 
 ReactDOM.render(

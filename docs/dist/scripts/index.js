@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 217);
+/******/ 	return __webpack_require__(__webpack_require__.s = 219);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10148,7 +10148,7 @@ module.exports = [
 		"description": "<p>Components are designed UI elements. Each component has its own React component,\nimportable from <code>src/scripts/components</code>.</p>\n",
 		"deprecated": false,
 		"experimental": false,
-		"reference": "Components",
+		"reference": "components",
 		"referenceNumber": "1",
 		"referenceURI": "",
 		"weight": 0,
@@ -10164,10 +10164,10 @@ module.exports = [
 	},
 	{
 		"header": "Buttons",
-		"description": "<p>Use buttons to signal actions.</p>\n<p><strong>Accessibility</strong></p>\n<ul>\n<li>Buttons should display a visible focus state when users tab to them.</li>\n<li>Avoid using <code>&lt;div&gt;</code> or <code>&lt;img&gt;</code> tags to create buttons. Screen readers don&#39;t automatically know either is a usable button.</li>\n<li>When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.</li>\n</ul>\n",
+		"description": "<p>Use buttons to signal actions.</p>\n<h3 id=\"accessibility\">Accessibility</h3>\n<ul>\n<li>Buttons should display a visible focus state when users tab to them.</li>\n<li>Avoid using <code>&lt;div&gt;</code> or <code>&lt;img&gt;</code> tags to create buttons. Screen readers don&#39;t automatically know either is a usable button.</li>\n<li>When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.</li>\n</ul>\n",
 		"deprecated": false,
 		"experimental": false,
-		"reference": "Components.buttons",
+		"reference": "components.buttons",
 		"referenceNumber": "1.1",
 		"referenceURI": "",
 		"weight": 0,
@@ -10186,11 +10186,11 @@ module.exports = [
 		"description": "",
 		"deprecated": false,
 		"experimental": false,
-		"reference": "Components.buttons.css",
+		"reference": "components.buttons.css",
 		"referenceNumber": "1.1.1",
 		"referenceURI": "",
 		"weight": 0,
-		"markup": "<a href=\"#\" class=\"hc-c-button {{modifier_class}}\">Link text</a>\n<button type=\"button\" class=\"hc-c-button {{modifier_class}}\" {{:modifier}}>Button label</button>",
+		"markup": "<a href=\"#\" class=\"hc-c-button {{modifier}}\">Link text</a>\n<button type=\"button\" class=\"hc-c-button {{modifier}}\">Button label</button>",
 		"source": {
 			"filename": "components/button.scss",
 			"path": "src/styles/components/button.scss",
@@ -10208,10 +10208,10 @@ module.exports = [
 	},
 	{
 		"header": "JavaScript API",
-		"description": "<p>TODO:\nDocument the <code>Button</code> component.</p>\n\n",
+		"description": "<p>TODO(sawyer):\nDocument the <code>Button</code> component.</p>\n\n",
 		"deprecated": false,
 		"experimental": false,
-		"reference": "Components.buttons.js",
+		"reference": "components.buttons.js",
 		"referenceNumber": "1.1.2",
 		"referenceURI": "",
 		"weight": 0,
@@ -10249,9 +10249,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(194);
 
-var _page = __webpack_require__(218);
+var _Page = __webpack_require__(218);
 
-var _page2 = _interopRequireDefault(_page);
+var _Page2 = _interopRequireDefault(_Page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10277,7 +10277,7 @@ var Docs = function (_React$Component) {
 
       return this.props.sections.map(function (section) {
         return _react2.default.createElement(_reactRouterDom.Route, { key: section.referenceNumber, render: function render(matchProps) {
-            return _react2.default.createElement(_page2.default, _extends({ matchProps: matchProps
+            return _react2.default.createElement(_Page2.default, _extends({ matchProps: matchProps
             }, section));
           } });
       });
@@ -24903,23 +24903,84 @@ exports.default = valueEqual;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(91);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _docs = __webpack_require__(93);
-
-var _docs2 = _interopRequireDefault(_docs);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var sections = __webpack_require__(92);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-_reactDom2.default.render(_react2.default.createElement(_docs2.default, { sections: sections }), document.getElementById('jsx-root'));
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HTMLExample = function (_React$Component) {
+  _inherits(HTMLExample, _React$Component);
+
+  function HTMLExample() {
+    _classCallCheck(this, HTMLExample);
+
+    return _possibleConstructorReturn(this, (HTMLExample.__proto__ || Object.getPrototypeOf(HTMLExample)).apply(this, arguments));
+  }
+
+  _createClass(HTMLExample, [{
+    key: 'markup',
+
+    /**
+     * Replace {{modifier}} tag with modifier, if there is one.
+     */
+    value: function markup() {
+      var html = this.props.markup;
+      var modifier = '';
+
+      if (this.props.modifier) {
+        modifier = this.props.modifier.name.replace(/^\./, ' ');
+      }
+
+      return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var markup = this.markup();
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'markup markup--html' },
+        _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: markup } }),
+        _react2.default.createElement(
+          'code',
+          null,
+          _react2.default.createElement(
+            'pre',
+            null,
+            markup
+          )
+        )
+      );
+    }
+  }]);
+
+  return HTMLExample;
+}(_react2.default.Component);
+
+HTMLExample.propTypes = {
+  markup: _react2.default.PropTypes.string.isRequired,
+  modifier: _react2.default.PropTypes.shape({
+    className: _react2.default.PropTypes.string,
+    description: _react2.default.PropTypes.string,
+    name: _react2.default.PropTypes.string.isRequired
+  })
+};
+
+exports.default = HTMLExample;
 
 /***/ }),
 /* 218 */
@@ -24937,6 +24998,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _HTMLExample = __webpack_require__(217);
+
+var _HTMLExample2 = _interopRequireDefault(_HTMLExample);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24956,6 +25021,31 @@ var Page = function (_React$Component) {
   }
 
   _createClass(Page, [{
+    key: 'markupExamples',
+    value: function markupExamples() {
+      var _this2 = this;
+
+      if (!this.props.markup) return;
+      var modifierMarkup = void 0;
+
+      if (this.props.modifiers.length) {
+        modifierMarkup = this.props.modifiers.map(function (modifier) {
+          return _react2.default.createElement(_HTMLExample2.default, {
+            key: modifier,
+            markup: _this2.props.markup,
+            modifier: modifier
+          });
+        });
+      }
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_HTMLExample2.default, { markup: this.props.markup }),
+        modifierMarkup
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -24965,7 +25055,11 @@ var Page = function (_React$Component) {
           'h2',
           null,
           this.props.header
-        )
+        ),
+        _react2.default.createElement('div', { dangerouslySetInnerHTML: {
+            __html: this.props.description
+          } }),
+        this.markupExamples()
       );
     }
   }]);
@@ -24974,10 +25068,38 @@ var Page = function (_React$Component) {
 }(_react2.default.Component);
 
 Page.propTypes = {
-  header: _react2.default.PropTypes.string.isRequired
+  description: _react2.default.PropTypes.string,
+  header: _react2.default.PropTypes.string.isRequired,
+  markup: _react2.default.PropTypes.string,
+  modifiers: _react2.default.PropTypes.array
 };
 
 exports.default = Page;
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(91);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Docs = __webpack_require__(93);
+
+var _Docs2 = _interopRequireDefault(_Docs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var sections = __webpack_require__(92);
+
+_reactDom2.default.render(_react2.default.createElement(_Docs2.default, { sections: sections }), document.getElementById('jsx-root'));
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,7 @@ const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
   gulp.task('watch:assets', () => {
-    gulp.watch('src/styles/**/*.scss', ['sass']);
+    gulp.watch('src/styles/**/*.scss', ['sass', 'docs:kss']);
     gulp.watch(['src/scripts/**/*.js', 'src/scripts/**/*.jsx'], ['javascript']);
   });
 

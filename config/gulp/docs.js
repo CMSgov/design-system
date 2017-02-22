@@ -21,13 +21,7 @@ module.exports = (gulp) => {
   });
 
   gulp.task('docs:kss', () => {
-    const kssOptions = {
-      css: '/dist/styles/all.css',
-      placeholder: '[modifier]',
-      title: 'Hcgov Design System'
-    };
-
-    return kss.traverse('src/styles/', kssOptions)
+    return kss.traverse('src/styles/')
       .then(styleguide => {
         return styleguide.sections()
           .map(processKssSection);
