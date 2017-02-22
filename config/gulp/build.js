@@ -27,7 +27,7 @@ module.exports = (gulp) => {
     runSequence(
       'clean-dist',
       'build:assets',
-      'docs',
+      'docs:build',
       done
     );
   });

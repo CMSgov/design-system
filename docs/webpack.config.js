@@ -1,34 +1,45 @@
 const webpack = require('webpack');
-// Since Webpack is ran from the root project's build system, file paths
-// are relative to the root, rather than where this webpack file is located
-const cwd = './docs';
+let plugins;
+
+if (process.env.NODE_ENV === 'production') {
+  const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false }
+  });
+
+  plugins = [uglifyPlugin];
+} else {
+  plugins = [new webpack.HotModuleReplacementPlugin()];
+}
 
 let config = {
-  entry: {
-    'index': `${cwd}/src/scripts/index.jsx`,
-  },
+  context: __dirname,
+
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/scripts/index.jsx'
+  ],
+
   output: {
-    path: `${cwd}/dist/scripts`,
-    filename: '[name].js'
+    path: __dirname,
+    publicPath: '/',
+    filename: 'dist/scripts/index.js'
   },
+
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        loader: ['babel-loader'],
         exclude: /(node_modules)/
       }
     ]
   },
+
+  plugins: plugins,
+
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   }
 };
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins = [new webpack.optimize.UglifyJsPlugin({
-    compress: { warnings: false }
-  })];
-}
 
 module.exports = config;

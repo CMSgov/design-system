@@ -38,8 +38,7 @@ module.exports = (gulp, shared) => {
       [
         'server',
         'watch:assets',
-        'watch:docs',
-        'webpack:watch',
+        'watch:docs'
       ]
     );
   });

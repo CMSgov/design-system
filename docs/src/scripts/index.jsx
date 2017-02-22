@@ -7,3 +7,8 @@ ReactDOM.render(
   <Docs sections={sections} />,
   document.getElementById('jsx-root')
 );
+
+// Support Webpack hot reloading if enabled
+if (module.hot) {
+  module.hot.accept();
+}

@@ -1,9 +1,9 @@
 const dutil = require('./doc-util');
 const gutil = require('gulp-util');
 const webpack = require('webpack');
-const webpackConfig = require('../../docs/webpack.config');
+const webpackStatsConfig = require('./common/webpackStatsConfig');
 
-module.exports = (gulp) => {
+module.exports = (gulp, shared) => {
   function handleWebpackResults(err, stats) {
     if (err) {
       dutil.logError('webpack', err.stack || err);
@@ -16,24 +16,11 @@ module.exports = (gulp) => {
     if (stats.hasErrors())   dutil.logError('webpack', info.errors);
     if (stats.hasWarnings()) dutil.logData('webpack', info.warnings);
 
-    gutil.log(stats.toString({
-      assets: true,
-      chunks: false,
-      colors: true,
-      errorDetails: true,
-      hash: false,
-      source: false,
-      timings: true,
-      version: false,
-    }));
+    gutil.log(stats.toString(webpackStatsConfig));
   }
 
-  gulp.task('webpack:watch', done => {
-    webpack(webpackConfig).watch({}, handleWebpackResults);
-  });
-
   gulp.task('webpack', done => {
-    webpack(webpackConfig, (err, stats) => {
+    webpack(shared.webpackConfig, (err, stats) => {
       handleWebpackResults(err, stats);
       done();
     });

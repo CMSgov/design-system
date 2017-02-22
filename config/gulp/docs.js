@@ -34,14 +34,15 @@ module.exports = (gulp) => {
       });
   });
 
-  gulp.task('docs', done => {
+  gulp.task('docs:build', done => {
     dutil.logMessage('kss', 'Generating documentation');
 
     runSequence(
       'docs:clean-fonts',
       [
         'docs:kss',
-        'docs:copy-fonts'
+        'docs:copy-fonts',
+        'webpack'
       ],
       done
     );
