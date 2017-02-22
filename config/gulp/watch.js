@@ -1,3 +1,8 @@
+/**
+ * These watch tasks enable a powerful developer workflow where changes you
+ * make to a component, a component's example code, or the documentation will
+ * automatically be reflected in the browser when the changes are saved.
+ */
 const dutil = require('./doc-util');
 const runSequence = require('run-sequence');
 
@@ -14,9 +19,6 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch(['docs/*.html'])
-      .on('change', shared.browserSync.reload);
-
     gulp.watch('docs/src/styles/**/*.scss', [
       'sass:lint-docs',
       'sass:process-docs'
@@ -25,7 +27,7 @@ module.exports = (gulp, shared) => {
     gulp.watch([
       'docs/src/scripts/**/*.js',
       'docs/src/scripts/**/*.jsx'
-    ], ['eslint:docs']);
+    ], ['eslint:docs']); // compiling is handled by Webpack when the files change
   });
 
   gulp.task('watch', () => {
