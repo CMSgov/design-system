@@ -13,7 +13,43 @@ const config = {
   vendorSrc: 'src/styles/vendor'
 };
 
-module.exports = (gulp) => {
+module.exports = (gulp, shared) => {
+  // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
+  // a variety of postcss processes (inlining, prefixing, minifying, etc).
+  function processSass(cwd = '') {
+    const sassCompiler = sass({
+      outputStyle: 'expanded'
+    });
+
+    const postcssPlugins = [
+      postcssImport(), // inline imports
+      autoprefixer(),  // add any necessary vendor prefixes
+      cssnano()        // minify css
+    ];
+
+    return gulp
+      .src(`${cwd}src/styles/**/*.scss`)
+      .pipe(sassCompiler)
+      .pipe(postcss(postcssPlugins))
+      .pipe(gulp.dest(`${cwd}dist/styles`))
+      .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
+  }
+
+  // Lint Sass files using stylelint. Further configuration for CSS linting
+  // can be handled in stylelint.config.js
+  function lintSass(cwd = '') {
+    return gulp
+      .src([`${cwd}src/styles/**/*.scss`])
+      .pipe(stylelint({
+        failAfterError: false,
+        reporters: [
+          { formatter: 'string', console: true },
+        ],
+        syntax: 'scss',
+      }));
+  }
+
+  // Prune the vendor directory
   gulp.task('sass:clean-vendor', () => {
     return del(config.vendorSrc);
   });
@@ -33,48 +69,23 @@ module.exports = (gulp) => {
       }));
   });
 
-  // Lint Sass files using stylelint. Further configuration for CSS linting
-  // can be handled in stylelint.config.js
-  gulp.task('sass:lint', () => {
-    return gulp
-      .src('src/styles/**/*.scss')
-      .pipe(stylelint({
-        failAfterError: false,
-        reporters: [
-          { formatter: 'string', console: true },
-        ],
-        syntax: 'scss',
-      }));
-  });
+  gulp.task('sass:lint-assets', lintSass);
+  gulp.task('sass:lint-docs', () => lintSass('docs/'));
 
-  // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
-  // a variety of postcss processes (inlining, prefixing, minifying, etc).
-  gulp.task('sass:process', () => {
-    const sassCompiler = sass({
-      outputStyle: 'expanded'
-    });
+  gulp.task('sass:process-assets', processSass);
+  gulp.task('sass:process-docs', () => processSass('docs/'));
 
-    const postcssPlugins = [
-      postcssImport(), // inline imports
-      autoprefixer(),  // add any necessary vendor prefixes
-      cssnano()        // minify css
-    ];
-
-    return gulp
-      .src('src/styles/**/*.scss')
-      .pipe(sassCompiler)
-      .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest('dist/styles'));
-  });
-
-  // Run all of the above tasks in a sequence
   gulp.task('sass', done => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
       [
-        'sass:lint',
-        'sass:process'
+        'sass:lint-assets',
+        'sass:lint-docs'
+      ],
+      [
+        'sass:process-assets',
+        'sass:process-docs'
       ],
       done
     );

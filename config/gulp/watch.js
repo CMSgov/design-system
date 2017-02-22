@@ -3,13 +3,23 @@ const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
   gulp.task('watch:assets', () => {
-    gulp.watch('src/styles/**/*.scss', ['sass', 'docs:kss']);
+    gulp.watch('src/styles/**/*.scss', [
+      'sass:lint-assets',
+      'sass:process-assets',
+      'docs:kss'
+    ]);
+
     gulp.watch(['src/scripts/**/*.js', 'src/scripts/**/*.jsx'], ['javascript']);
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch(['docs/**/*.html', 'docs/dist/**/*'])
+    gulp.watch(['docs/**/*.html'])
       .on('change', shared.browserSync.reload);
+
+    gulp.watch('docs/src/styles/**/*.scss', [
+      'sass:lint-docs',
+      'sass:process-docs'
+    ]);
 
     gulp.watch([
       'docs/src/scripts/**/*.js',
