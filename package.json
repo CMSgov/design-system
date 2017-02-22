@@ -26,6 +26,7 @@
     "eslint-config-nava": "navahq/eslint-config-nava",
     "eslint-plugin-react": "^6.9.0",
     "gulp": "^3.9.1",
+    "gulp-count": "^0.3.0",
     "gulp-eslint": "^3.0.1",
     "gulp-postcss": "^6.3.0",
     "gulp-sass": "^3.1.0",

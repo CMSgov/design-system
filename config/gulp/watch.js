@@ -6,6 +6,7 @@ module.exports = (gulp, shared) => {
     gulp.watch('src/styles/**/*.scss', [
       'sass:lint-assets',
       'sass:process-assets',
+      'sass:process-docs',
       'docs:kss'
     ]);
 
@@ -13,7 +14,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch(['docs/**/*.html'])
+    gulp.watch(['docs/*.html'])
       .on('change', shared.browserSync.reload);
 
     gulp.watch('docs/src/styles/**/*.scss', [

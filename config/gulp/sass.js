@@ -1,5 +1,6 @@
 'use strict';
 
+const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
 const autoprefixer = require('autoprefixer');
@@ -18,7 +19,8 @@ module.exports = (gulp, shared) => {
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
   function processSass(cwd = '') {
     const sassCompiler = sass({
-      outputStyle: 'expanded'
+      outputStyle: 'expanded',
+      includePaths: [`${cwd}node_modules`]
     });
 
     const postcssPlugins = [
@@ -32,6 +34,7 @@ module.exports = (gulp, shared) => {
       .pipe(sassCompiler)
       .pipe(postcss(postcssPlugins))
       .pipe(gulp.dest(`${cwd}dist/styles`))
+      .pipe(count('## Sass files processed'))
       .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
   }
 
@@ -46,7 +49,8 @@ module.exports = (gulp, shared) => {
           { formatter: 'string', console: true },
         ],
         syntax: 'scss',
-      }));
+      }))
+      .pipe(count('## Sass files linted'));
   }
 
   // Prune the vendor directory
@@ -69,10 +73,10 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:lint-assets', lintSass);
+  gulp.task('sass:lint-assets', () => lintSass());
   gulp.task('sass:lint-docs', () => lintSass('docs/'));
 
-  gulp.task('sass:process-assets', processSass);
+  gulp.task('sass:process-assets', () => processSass());
   gulp.task('sass:process-docs', () => processSass('docs/'));
 
   gulp.task('sass', done => {

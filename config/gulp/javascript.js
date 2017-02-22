@@ -1,3 +1,4 @@
+const count = require('gulp-count');
 const eslint = require('gulp-eslint');
 
 module.exports = (gulp) => {
@@ -8,7 +9,8 @@ module.exports = (gulp) => {
       '!src/scripts/vendor/**/*.js'
     ])
     .pipe(eslint())
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(count('## system JS files linted'));
   });
 
   gulp.task('eslint:docs', () => {
@@ -17,7 +19,8 @@ module.exports = (gulp) => {
       'docs/src/scripts/**/*.jsx'
     ])
     .pipe(eslint())
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(count('## docs JS files linted'));
   });
 
   gulp.task('javascript', ['eslint:assets', 'eslint:docs']);
