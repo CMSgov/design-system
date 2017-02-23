@@ -12,7 +12,7 @@ class ReactPropsDoc extends React.Component {
   enumDoc(propDoc) {
     let value = propDoc.type.value;
     if (value) {
-      let values = value.map(v => <code>{v.value}</code>);
+      let values = value.map((v, i) => <code key={i}>{v.value}</code>);
       return <p>Valid values: {values}</p>;
     }
   }
