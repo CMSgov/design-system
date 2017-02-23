@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
+import Nav from './Nav';
 import Page from './Page';
 
 class Docs extends React.Component {
@@ -24,10 +24,12 @@ class Docs extends React.Component {
   render() {
     return (
       <Router>
-        <main>
-          <h1>Design System Documentation</h1>
-          {this.renderSections()}
-        </main>
+        <div>
+          <Nav />
+          <main className="page">
+            {this.renderSections()}
+          </main>
+        </div>
       </Router>
     );
   }

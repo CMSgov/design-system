@@ -25,10 +25,14 @@ class HTMLExample extends React.Component {
     return (
       <div className="markup markup--html">
         <strong className="markup__name">{this.name()}</strong>
-        <div dangerouslySetInnerHTML={{ __html: markup }} />
-        <code>
-          <pre>{markup}</pre>
-        </code>
+        <div className="markup__preview"
+             dangerouslySetInnerHTML={{ __html: markup }}
+        />
+        <pre className="markup__snippet">
+          <code>
+            {markup}
+          </code>
+        </pre>
       </div>
     );
   }

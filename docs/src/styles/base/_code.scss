@@ -1,0 +1,16 @@
+$code-background-color: $color-cool-blue-lightest;
+
+code {
+  background-color: $code-background-color;
+  padding: 3px;
+}
+
+// TODO(sawyer) Add syntax highlighting
+pre {
+  background-color: $code-background-color;
+  padding: 15px;
+
+  code {
+    background-color: transparent;
+  }
+}

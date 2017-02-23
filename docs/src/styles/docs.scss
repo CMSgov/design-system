@@ -1,5 +1,17 @@
 @import 'cmsgov-design-system/src/styles/all';
 
+@import 'base/code';
+
+@import 'components/markup';
+@import 'components/nav';
+
+// TODO(sawyer) Move these to their own files...
 body {
   font-family: Helvetica;
+  line-height: 1.5;
+}
+
+.page {
+  float: left;
+  width: 700px;
 }
