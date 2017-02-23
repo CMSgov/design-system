@@ -2,6 +2,9 @@ $code-background-color: $color-cool-blue-lightest;
 
 code {
   background-color: $code-background-color;
+  // add spacing for when two code blocks are next to each other
+  margin-left: 1px;
+  margin-right: 1px;
   padding: 3px;
 }
 
@@ -12,5 +15,7 @@ pre {
 
   code {
     background-color: transparent;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
