@@ -1,0 +1,82 @@
+{
+	"components/Button.jsx": {
+		"description": "A Button component",
+		"displayName": "Button",
+		"props": {
+			"label": {
+				"type": {
+					"name": "string"
+				},
+				"required": true,
+				"description": ""
+			},
+			"disabled": {
+				"type": {
+					"name": "bool"
+				},
+				"required": false,
+				"description": ""
+			},
+			"onClick": {
+				"type": {
+					"name": "func"
+				},
+				"required": false,
+				"description": ""
+			},
+			"containerClassName": {
+				"type": {
+					"name": "string"
+				},
+				"required": false,
+				"description": ""
+			},
+			"type": {
+				"type": {
+					"name": "enum",
+					"value": [
+						{
+							"value": "'button'",
+							"computed": false
+						},
+						{
+							"value": "'submit'",
+							"computed": false
+						}
+					]
+				},
+				"required": false,
+				"description": "",
+				"defaultValue": {
+					"value": "'button'",
+					"computed": false
+				}
+			},
+			"use": {
+				"type": {
+					"name": "enum",
+					"value": [
+						{
+							"value": "'primary'",
+							"computed": false
+						},
+						{
+							"value": "'secondary'",
+							"computed": false
+						},
+						{
+							"value": "'neutral'",
+							"computed": false
+						}
+					]
+				},
+				"required": false,
+				"description": "Primary (the default) buttons are green. Secondary buttons are blue.",
+				"defaultValue": {
+					"value": "'primary'",
+					"computed": false
+				}
+			}
+		}
+	}
+}

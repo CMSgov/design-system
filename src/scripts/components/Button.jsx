@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * A Button component
+ */
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -51,19 +54,23 @@ class Button extends React.Component {
   }
 }
 
+Button.displayName = 'Button';
+
+Button.defaultProps = {
+  type: 'button',
+  use: 'primary'
+};
+
 Button.propTypes = {
   label: React.PropTypes.string.isRequired,
   disabled: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   containerClassName: React.PropTypes.string,
   type: React.PropTypes.oneOf(['button', 'submit']),
-  // Primary (the default) buttons are green. Secondary buttons are blue.
+  /**
+   * Primary (the default) buttons are green. Secondary buttons are blue.
+   */
   use: React.PropTypes.oneOf(['primary', 'secondary', 'neutral'])
-};
-
-Button.defaultProps = {
-  type: 'button',
-  use: 'primary'
 };
 
 export default Button;

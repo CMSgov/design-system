@@ -6,7 +6,9 @@
 const del = require('del');
 const dutil = require('./doc-util');
 const kss = require('kss');
+const merge = require('gulp-merge-json');
 const processKssSection = require('./kss/processSection');
+const reactDocgen = require('./common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
 
@@ -16,7 +18,7 @@ module.exports = (gulp) => {
   });
 
   gulp.task('docs:copy-fonts', () => {
-    return gulp.src(['dist/**/fonts/*'])
+    return gulp.src('dist/**/fonts/*')
     .pipe(gulp.dest('docs/dist'));
   });
 
@@ -32,6 +34,18 @@ module.exports = (gulp) => {
         stream.end(body);
         return stream.pipe(gulp.dest('docs/src/data'));
       });
+  });
+
+  // Extract info from React component files for props documentation
+  gulp.task('docs:react-props', () => {
+    return gulp.src('src/scripts/**/*.jsx')
+      .pipe(reactDocgen({
+        nameAfter: 'src/scripts/'
+      }))
+      .pipe(merge({
+        fileName: 'react-doc.json'
+      }))
+      .pipe(gulp.dest('docs/src/data'));
   });
 
   gulp.task('docs:build', done => {

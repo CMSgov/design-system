@@ -5,7 +5,7 @@ describe('processSection', () => {
   let section = {
     toJSON: () => (
       {
-        description: '<p>Hello world</p><p>@react-example TestExample</p>',
+        description: '<p>Hello world</p><p>@react-component components/Test.jsx</p>',
         modifiers: [{
           name: '.primary',
           description: 'The primary action',
@@ -23,7 +23,7 @@ describe('processSection', () => {
   });
 
   it('sets and replaces flags', () => {
-    expect(data.reactExample).toEqual('TestExample');
+    expect(data.reactComponent).toEqual('components/Test.jsx');
     expect(data.description).toEqual('<p>Hello world</p>');
   });
 

@@ -11,11 +11,7 @@ Use buttons to signal actions.
 - Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
 
-Style guide: components.buttons
-*/
-
-/*
-CSS API
+@react-component components/Button.jsx
 
 Markup:
 <a href="#" class="hc-c-button {{modifier}}">Link text</a>
@@ -23,7 +19,7 @@ Markup:
 
 .hc-c-button--primary - The primary call-to-action
 
-Style guide: components.buttons.css
+Style guide: components.buttons
 */
 .hc-c-button {
   background-color: $white;
@@ -56,14 +52,3 @@ Style guide: components.buttons.css
   background-color: $blue;
   color: $white;
 }
-
-/*
-  JavaScript API
-
-  TODO(sawyer):
-  Document the `Button` component.
-
-  @react-example ButtonExample
-
-  Style guide: components.buttons.js
-*/

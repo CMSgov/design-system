@@ -6,6 +6,8 @@
 
 import React from 'react';
 import HTMLExample from './HTMLExample';
+import ReactComponentDoc from './ReactComponentDoc';
+const reactDoc = require('../../data/react-doc.json');
 
 class Page extends React.Component {
   markupExamples() {
@@ -30,6 +32,19 @@ class Page extends React.Component {
     );
   }
 
+  reactDoc() {
+    if (!this.props.reactComponent) return;
+    const doc = reactDoc[this.props.reactComponent];
+    if (doc) {
+      return <ReactComponentDoc
+               description={doc.description}
+               displayName={doc.displayName}
+               path={this.props.reactComponent}
+               propDocs={doc.props}
+             />;
+    }
+  }
+
   render() {
     return (
       <section>
@@ -38,6 +53,7 @@ class Page extends React.Component {
           __html: this.props.description
         }} />
         {this.markupExamples()}
+        {this.reactDoc()}
       </section>
     );
   }
@@ -48,6 +64,7 @@ Page.propTypes = {
   header: React.PropTypes.string.isRequired,
   markup: React.PropTypes.string,
   modifiers: React.PropTypes.array,
+  reactComponent: React.PropTypes.string,
 };
 
 export default Page;

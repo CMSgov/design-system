@@ -24,8 +24,8 @@ function processFlags(section) {
   if (typeof section.description === 'string') {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
-      case 'react-example':
-        section.reactExample = value;
+      case 'react-component':
+        section.reactComponent = value;
         break;
       default:
         break;

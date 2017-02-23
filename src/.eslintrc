@@ -1,0 +1,9 @@
+// These rules only apply to files relative to this directory, and allow us
+// to apply a stricter set of rules to our package's JavaScript versus the
+// documentation site's.
+{
+  "rules": {
+    // We want a displayName for the generated React docs
+    "react/display-name": ["error", {ignoreTranspilerName: true}]
+  }
+}
