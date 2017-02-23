@@ -1,30 +1,13 @@
 const webpack = require('webpack');
-let plugins;
-
-if (process.env.NODE_ENV === 'production') {
-  const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-    compress: { warnings: false }
-  });
-
-  plugins = [uglifyPlugin];
-} else {
-  plugins = [new webpack.HotModuleReplacementPlugin()];
-}
 
 let config = {
   context: __dirname,
-
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/scripts/index.jsx'
-  ],
-
+  entry: ['./src/scripts/index.jsx'],
   output: {
     path: __dirname,
     publicPath: '/',
     filename: 'dist/scripts/index.js'
   },
-
   module: {
     loaders: [
       {
@@ -34,12 +17,21 @@ let config = {
       }
     ]
   },
-
-  plugins: plugins,
-
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false }
+  });
+
+  config.plugins = [uglifyPlugin];
+} else {
+  // Enable hot reloading in development
+  config.entry = ['webpack-hot-middleware/client'].concat(config.entry);
+  config.plugins = [new webpack.HotModuleReplacementPlugin()];
+}
 
 module.exports = config;
