@@ -1,3 +1,7 @@
+/**
+ * The build task handles compiling and optimizing both the package assets
+ * and the documentation site. Essentially makes everything production-ready.
+ */
 const del = require('del');
 const dutil = require('./doc-util');
 const runSequence = require('run-sequence');

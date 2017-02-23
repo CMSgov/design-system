@@ -1,14 +1,16 @@
+/**
+ * The `server` task starts a Browsersync server to enable previewing the
+ * documentation site locally (localhost:3000). We integrate Browsersync with
+ * Webpack's hot reloading capability to enable tons of cool stuff like: form
+ * replication, scroll and click mirroring, and injecting updated CSS and JS
+ * without a page refresh :mindblown:
+ */
+
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackStatsConfig = require('./common/webpackStatsConfig');
 
-/**
- * The server task starts a Browsersync server to enable previewing the
- * documentation site locally (localhost:3000). Browsersync enables live reloads,
- * form replication, and click mirroring. Open the documentation site in
- * multiple tabs to see for yourself.
- */
 module.exports = (gulp, shared) => {
   gulp.task('server', () => {
     const bundler = webpack(shared.webpackConfig);

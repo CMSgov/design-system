@@ -1,3 +1,8 @@
+/**
+ * Webpack is used to compile the documentation site's JS and
+ * enables :fire: features like hot module replacement when running the
+ * Browsersync server (see server.js)
+ */
 const dutil = require('./doc-util');
 const gutil = require('gulp-util');
 const webpack = require('webpack');

@@ -12,11 +12,11 @@ class Docs extends React.Component {
 
     return this.props.sections.map(section => {
       return (
-        <Route key={section.referenceNumber} render={matchProps => (
-          <Page matchProps={matchProps}
-                {...section}
-            />
-        )} />
+        <Route key={section.referenceNumber}
+               render={matchProps => (
+                  <Page matchProps={matchProps} {...section} />
+               )}
+        />
       );
     });
   }
