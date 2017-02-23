@@ -9,7 +9,7 @@ class ReactPropsDoc extends React.Component {
     if (propDoc.required) return <strong>Required</strong>;
   }
 
-  enumDoc(propDoc) {
+  valuesDoc(propDoc) {
     let value = propDoc.type.value;
     if (value) {
       let values = value.map((v, i) => <code key={i}>{v.value}</code>);
@@ -28,7 +28,7 @@ class ReactPropsDoc extends React.Component {
           <td>
             <strong><code>{propDoc.type.name}</code></strong>
             {propDoc.defaultValue && `= ${propDoc.defaultValue.value}`}
-            {this.enumDoc(propDoc)}
+            {this.valuesDoc(propDoc)}
             <p>{propDoc.description}</p>
             {this.requiredLabel(propDoc)}
           </td>
