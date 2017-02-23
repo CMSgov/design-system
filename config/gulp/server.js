@@ -29,8 +29,7 @@ module.exports = (gulp, shared) => {
           })
         ]
       },
-      notify: false,
-      open: false,
+      notify: false
     });
   });
 };

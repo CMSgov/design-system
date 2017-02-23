@@ -1,3 +1,9 @@
+/**
+ * A "page" is generated from a KSS comment block, so the structure is fairly
+ * predictable: a header, description, and code snippet(s). A page can also
+ * have nested pages.
+ */
+
 import React from 'react';
 import HTMLExample from './HTMLExample';
 

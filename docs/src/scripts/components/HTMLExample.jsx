@@ -1,7 +1,12 @@
+/**
+ * HTMLExample takes the markup from a KSS "Markup:" section and generates
+ * a single preview and code snippet for the given markup.
+ */
+
 import React from 'react';
 
 class HTMLExample extends React.Component {
-  // Replace {{modifier}} tag with modifier, if there is one.
+  // Replaces {{modifier}} tag with className (if present)
   markup() {
     let html = this.props.markup;
     const modifier = this.props.modifier ?
