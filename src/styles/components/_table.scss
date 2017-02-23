@@ -1,0 +1,72 @@
+/*
+  Tables
+
+  TODO :)
+
+  Markup:
+  <table class="hc-c-table {{modifier}}">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Favorite fruit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fred</td>
+        <td>Apples</td>
+      </tr>
+    </tbody>
+  </table>
+
+  .hc-c-table--borderless - Borderless table
+
+  Style guide: components.tables
+*/
+.hc-c-table {
+  border-spacing: 0;
+  margin: 2em 0;
+  min-width: 100%;
+
+  thead {
+    th,
+    td {
+      background-color: $color-gray-lightest;
+    }
+  }
+
+  th {
+    text-align: left;
+  }
+
+  tbody {
+    th {
+      font-weight: $font-normal;
+    }
+  }
+
+  th,
+  td {
+    background-color: $color-white;
+    border: 1px solid $color-gray;
+    padding: 1.5rem;
+  }
+}
+
+.hc-c-table--borderless {
+  thead {
+    tr {
+      background-color: transparent;
+    }
+
+    th {
+      border-top: 0;
+    }
+  }
+
+  th,
+  td {
+    border-left: 0;
+    border-right: 0;
+  }
+}

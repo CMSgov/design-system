@@ -39,7 +39,7 @@ class ReactPropsDoc extends React.Component {
 
   render() {
     return (
-      <table>
+      <table className="hc-c-table">
         <thead>
           <tr>
             <td>Prop</td>
