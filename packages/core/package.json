@@ -1,6 +1,6 @@
 {
   "name": "@nava/cmsgov-design-system-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Core CSS and React components",
   "repository": "CMSgov/design-system",
   "main": "src/index.js",
