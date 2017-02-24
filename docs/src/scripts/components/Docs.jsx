@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route
 } from 'react-router-dom';
 import Nav from './Nav';
@@ -9,10 +9,10 @@ import Page from './Page';
 class Docs extends React.Component {
   renderSections() {
     console.log(this.props.sections);
-
     return this.props.sections.map(section => {
       return (
         <Route key={section.referenceNumber}
+               path={`/${section.referenceURI}`}
                render={matchProps => (
                   <Page matchProps={matchProps} {...section} />
                )}
@@ -25,7 +25,7 @@ class Docs extends React.Component {
     return (
       <Router>
         <div>
-          <Nav />
+          <Nav pages={this.props.sections} />
           <main className="page">
             {this.renderSections()}
           </main>
