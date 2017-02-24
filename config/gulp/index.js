@@ -16,6 +16,7 @@ module.exports = (gulp) => {
     'docs',
     'fonts',
     'javascript',
+    'publish',
     'sass',
     'server',
     'watch',
