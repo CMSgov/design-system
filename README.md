@@ -1,6 +1,6 @@
 # CMSGov Design System
 
-> A robust UI component library and styleguide that is living, tested, importable, and iterable. The goal is to promote consistency across agency websites, speed up productivity, and serve as a future-friendly foundation.
+> A UI component library and styleguide that is living, tested, importable, and iterable. The goal is to promote consistency across agency websites, speed up productivity, and serve as a future-friendly foundation.
 
 
 ## Installation
