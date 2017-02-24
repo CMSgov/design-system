@@ -19,7 +19,7 @@ _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merge
 ### Scripts
 
 - `yarn run build` compiles everything and makes things production-ready
-- `yarn run prerelease` increments the package versions. Read the [Versioning](/CMSgov/design-system/wiki/Versioning) wiki page for more info.
+- `yarn run prerelease` increments the package versions. Read the [Versioning](https://github.com/CMSgov/design-system/wiki/Versioning) wiki page for more info.
 - `yarn run start` runs a Browsersync server for the documentation, and compiles a file when it changes.
 - `yarn test` runs all tests using [Jest](https://facebook.github.io/jest/).
 
