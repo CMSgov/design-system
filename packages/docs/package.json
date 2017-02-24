@@ -1,6 +1,6 @@
 {
   "name": "@nava/cmsgov-design-system-docs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
