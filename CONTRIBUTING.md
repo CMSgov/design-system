@@ -1,29 +1,26 @@
 ## Running locally
 
+### Package management
+
 This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
 
 [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
-Then, install all dependencies:
+#### Install dependencies
 
 ```
-yarn install
+yarn bootstrap
 ```
 
-The following examples detail a few npm/yarn commands that alias our grunt tasks and that are useful throughout local development:
+The `bootstrap` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies.
 
-- `yarn run build` processes Sass into CSS and copies static assets into the `dist` directory
-- `yarn start` runs a Browsersync server for the documentation, and watches for any changes that happen in the `src` directory and rebuilds the package if any changes are made.
-- `yarn run test` runs all tests using [Jest](https://facebook.github.io/jest/).
+_Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
 
-### Using a local version of the design system package
+### Scripts
 
-You can symlink the package into a project directory by running the following commands:
-
-1. Within the package's directory (this repo), run: `yarn link`
-1. Within the project directory where you want to use this package, run `yarn link design-system`
-
-Now your project is using the local version of the design system package, allowing you to update or add components and immediately see the changes in your project.
+- `yarn run build` compiles everything and makes things production-ready
+- `yarn run start` runs a Browsersync server for the documentation, and compiles a file when it changes.
+- `yarn test` runs all tests using [Jest](https://facebook.github.io/jest/).
 
 ### Coding guidelines
 

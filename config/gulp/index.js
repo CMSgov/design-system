@@ -8,7 +8,7 @@
 module.exports = (gulp) => {
   const shared = {
     browserSync: require('browser-sync').create(),
-    webpackConfig: require('../../docs/webpack.config')
+    webpackConfig: require('../../packages/docs/webpack.config')
   };
 
   [

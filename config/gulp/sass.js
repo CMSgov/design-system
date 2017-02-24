@@ -11,7 +11,7 @@ const stylelint = require('gulp-stylelint');
 const runSequence = require('run-sequence');
 
 const config = {
-  vendorSrc: 'src/styles/vendor'
+  vendorSrc: 'packages/core/src/styles/vendor'
 };
 
 module.exports = (gulp, shared) => {
@@ -61,8 +61,8 @@ module.exports = (gulp, shared) => {
   // Copy 3rd-party Sass dependencies into a "vendor" subdirectory
   gulp.task('sass:copy-vendor', () => {
     var packages = [
-      './node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
-      './node_modules/uswds/src/stylesheets/**/_variables.scss',
+      './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
+      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss',
     ];
 
     return gulp
@@ -74,10 +74,10 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('sass:lint-assets', () => lintSass());
-  gulp.task('sass:lint-docs', () => lintSass('docs/'));
+  gulp.task('sass:lint-docs', () => lintSass('packages/docs/'));
 
   gulp.task('sass:process-assets', () => processSass());
-  gulp.task('sass:process-docs', () => processSass('docs/'));
+  gulp.task('sass:process-docs', () => processSass('packages/docs/'));
 
   gulp.task('sass', done => {
     runSequence(

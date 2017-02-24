@@ -16,9 +16,9 @@ module.exports = (gulp, shared) => {
     const bundler = webpack(shared.webpackConfig);
 
     shared.browserSync.init({
-      files: ['./docs/*.html'], // CSS + JS watching is handled by Gulp
+      files: ['./packages/docs/*.html'], // CSS + JS watching is handled by Gulp
       server: {
-        baseDir: 'docs',
+        baseDir: 'packages/docs',
         middleware: [
           webpackDevMiddleware(bundler, {
             publicPath: shared.webpackConfig.output.publicPath,

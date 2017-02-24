@@ -14,16 +14,16 @@ const source = require('vinyl-source-stream');
 
 module.exports = (gulp) => {
   gulp.task('docs:clean-fonts', () => {
-    return del('docs/dist/fonts');
+    return del('packages/docs/dist/fonts');
   });
 
   gulp.task('docs:copy-fonts', () => {
-    return gulp.src('dist/**/fonts/*')
-    .pipe(gulp.dest('docs/dist'));
+    return gulp.src('packages/core/dist/**/fonts/*')
+    .pipe(gulp.dest('packages/docs/dist'));
   });
 
   gulp.task('docs:kss', () => {
-    return kss.traverse('src/styles/')
+    return kss.traverse('packages/core/src/styles/')
       .then(styleguide => {
         return styleguide.sections()
           .map(processKssSection);
@@ -32,20 +32,20 @@ module.exports = (gulp) => {
         const body = JSON.stringify(sections);
         const stream = source('sections.json');
         stream.end(body);
-        return stream.pipe(gulp.dest('docs/src/data'));
+        return stream.pipe(gulp.dest('packages/docs/src/data'));
       });
   });
 
   // Extract info from React component files for props documentation
   gulp.task('docs:react-props', () => {
-    return gulp.src('src/scripts/**/*.jsx')
+    return gulp.src('packages/core/src/scripts/**/*.jsx')
       .pipe(reactDocgen({
-        nameAfter: 'src/scripts/'
+        nameAfter: 'packages/core/src/scripts/'
       }))
       .pipe(merge({
         fileName: 'react-doc.json'
       }))
-      .pipe(gulp.dest('docs/src/data'));
+      .pipe(gulp.dest('packages/docs/src/data'));
   });
 
   gulp.task('docs:build', done => {

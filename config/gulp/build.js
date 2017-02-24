@@ -9,7 +9,7 @@ const runSequence = require('run-sequence');
 module.exports = (gulp) => {
   gulp.task('clean-dist', () => {
     dutil.logMessage('clean-dist', 'Cleaning dist directory');
-    return del(['dist']);
+    return del(['packages/core/dist']);
   });
 
   gulp.task('build:assets', done => {
