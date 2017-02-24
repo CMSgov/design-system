@@ -8,7 +8,7 @@
 **Warning: These installation instructions won't work until the package is published to NPM, or we make this repo public. In the meantime, follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md) to use a local copy of the package.**
 
 ```
-npm install --save @cmsgov/design-system-core
+npm install --save @nava/design-system-core
 ```
 
 Uncompiled files can be imported from the `src` directory. Compiled files can be found in the `dist` directory.
