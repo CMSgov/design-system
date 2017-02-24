@@ -10,7 +10,7 @@ const classNamePattern = /^(hc-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$
 
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
-  'ignoreFiles': ['src/styles/vendor/**/*.scss'],
+  'ignoreFiles': ['packages/core/src/styles/vendor/**/*.scss'],
   'plugins': ['stylelint-scss'],
   'rules': {
     'at-rule-empty-line-before': [

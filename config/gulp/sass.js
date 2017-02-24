@@ -17,7 +17,7 @@ const config = {
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
-  function processSass(cwd = '') {
+  function processSass(cwd) {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
@@ -40,7 +40,7 @@ module.exports = (gulp, shared) => {
 
   // Lint Sass files using stylelint. Further configuration for CSS linting
   // can be handled in stylelint.config.js
-  function lintSass(cwd = '') {
+  function lintSass(cwd) {
     return gulp
       .src([`${cwd}src/styles/**/*.scss`])
       .pipe(stylelint({
@@ -73,10 +73,10 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:lint-assets', () => lintSass());
+  gulp.task('sass:lint-assets', () => lintSass('packages/core/'));
   gulp.task('sass:lint-docs', () => lintSass('packages/docs/'));
 
-  gulp.task('sass:process-assets', () => processSass());
+  gulp.task('sass:process-assets', () => processSass('packages/core/'));
   gulp.task('sass:process-docs', () => processSass('packages/docs/'));
 
   gulp.task('sass', done => {
