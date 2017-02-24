@@ -4,13 +4,24 @@ A UI component library and styleguide that is living, tested, importable, and it
 
 ## Installation
 
-**Warning: These installation instructions won't work until the package is published to NPM, or we make this repo public. In the meantime, follow the instructions in [CONTRIBUTING.md](CONTRIBUTING.md) to use a local copy of the package.**
+**Important:** The NPM package is currently a private package. In order to install it you must have access to the package.
 
 ```
+npm login
 npm install --save @nava/cmsgov-design-system-core
 ```
 
+## Usage
+
 Uncompiled files can be imported from the `src` directory. Compiled files can be found in the `dist` directory.
+
+```js
+import {Button} from '@nava/cmsgov-design-system-core'
+```
+
+```css
+@import '{{node_modules}}/@nava/cmsgov-design-system-core/src/styles/all';
+```
 
 ## Directory reference
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
