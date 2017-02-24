@@ -3,10 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "description": "Core CSS and React components",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CMSgov/design-system.git"
-  },
+  "repository": "CMSgov/design-system",
+  "main": "src/index.js",
   "dependencies": {
     "bourbon": "^4.3.3",
     "classnames": "^2.2.5",
