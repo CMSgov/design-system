@@ -1,0 +1,29 @@
+/*
+Badges
+
+Badges draw attention to new or important content.
+
+Markup:
+<span class="hc-c-badge {{modifier}}">New</span>
+
+.hc-c-badge--big - Big badge
+
+Style guide: components.badges
+*/
+.hc-c-badge {
+  background-color: $color-primary-alt;
+  border-radius: $border-radius;
+  color: $color-white;
+  font-size: $small-font-size;
+  line-height: $heading-line-height;
+  margin-right: 5px;
+  padding: 3px 6px;
+
+  &:only-of-type {
+    margin-right: 0;
+  }
+}
+
+.hc-c-badge--big {
+  font-size: $base-font-size;
+}
