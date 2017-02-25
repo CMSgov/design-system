@@ -8,14 +8,14 @@ import ReactPropDocs from './ReactPropDocs';
 class ReactComponentDoc extends React.Component {
   render() {
     return (
-      <div>
+      <section>
         <h3>React</h3>
         <code>{`<${this.props.displayName}>`}</code>
         {this.props.path}
 
         <p>{this.props.description}</p>
         <ReactPropDocs propDocs={this.props.propDocs} />
-      </div>
+      </section>
     );
   }
 }

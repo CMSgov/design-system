@@ -15,8 +15,16 @@ class HTMLExample extends React.Component {
     return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
   }
 
-  name() {
-    return this.props.modifier ? this.props.modifier.name : 'Default';
+  title() {
+    const name = this.props.modifier ? this.props.modifier.className : 'Default';
+    const description = this.props.modifier && this.props.modifier.description;
+
+    return (
+      <div className="markup__header">
+        <h4 className="modifier__name">{name}</h4>
+        <p className="modifier__desc">{description}</p>
+      </div>
+    );
   }
 
   render() {
@@ -24,7 +32,7 @@ class HTMLExample extends React.Component {
 
     return (
       <div className="markup markup--html">
-        <strong className="markup__name">{this.name()}</strong>
+        {this.title()}
         <div className="markup__preview"
              dangerouslySetInnerHTML={{ __html: markup }}
         />
