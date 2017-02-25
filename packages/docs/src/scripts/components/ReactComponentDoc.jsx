@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import ReactPropsDoc from './ReactPropsDoc';
+import ReactPropDocs from './ReactPropDocs';
 
 class ReactComponentDoc extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class ReactComponentDoc extends React.Component {
         {this.props.path}
 
         <p>{this.props.description}</p>
-        <ReactPropsDoc propDocs={this.props.propDocs} />
+        <ReactPropDocs propDocs={this.props.propDocs} />
       </div>
     );
   }

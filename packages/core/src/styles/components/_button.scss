@@ -19,25 +19,24 @@ Markup:
 Style guide: components.buttons
 */
 .hc-c-button {
-  background-color: $white;
-  border: 1px solid $blue;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: $border-radius;
-  color: $blue;
+  color: $color-primary;
   cursor: pointer;
   display: inline-block;
-  font-family: $body-font;
-  font-size: $font-size-base;
-  font-weight: bold;
-  line-height: $line-height-base;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  line-height: $base-line-height;
   padding: 5px 10px;
   text-decoration: none;
 
   &:active,
   &:focus,
   &:hover {
-    background-color: darken($blue, $darken-percent);
-    border-color: darken($blue, $darken-percent);
-    color: $white;
+    background-color: $color-primary-darker;
+    border-color: $color-primary-darker;
+    color: $color-white;
   }
 
   &:focus {
@@ -46,6 +45,6 @@ Style guide: components.buttons
 }
 
 .hc-c-button--primary {
-  background-color: $blue;
-  color: $white;
+  background-color: $color-primary;
+  color: $color-white;
 }

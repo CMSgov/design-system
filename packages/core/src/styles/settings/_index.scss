@@ -1,4 +1,10 @@
-@import 'variables';
+// Design system variables and vendor overrides
+@import 'variables.uswds';
 @import 'config.bourbon';
-@import '../vendor/bourbon/addons/font-stacks'; // USWDS dependency
+
+// USWDS dependencies
+@import '../vendor/bourbon/addons/font-stacks';
+
+// USWDS
+// We include these last so we can overwrite !default variables
 @import '../vendor/uswds/core/variables';
