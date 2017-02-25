@@ -1,17 +1,22 @@
 $code-background-color: $color-cool-blue-lightest;
 
 code {
-  background-color: $code-background-color;
+  background-color: $color-gray-lightest;
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
   padding: 3px;
 }
 
-// TODO(sawyer) Add syntax highlighting
 pre {
-  background-color: $code-background-color;
-  padding: 15px;
+  background-color: $color-gray-lightest;
+  font-size: 13px;
+
+  // Override styles applied by Prism
+  &[class*=language-] {
+    background-color: $color-gray-lightest;
+    margin-top: 0;
+  }
 
   code {
     background-color: transparent;
