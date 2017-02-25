@@ -25,11 +25,11 @@ class Page extends React.Component {
     }
 
     return (
-      <div>
+      <section>
         <h3>HTML</h3>
         <HTMLExample markup={this.props.markup} />
         {modifierMarkup}
-      </div>
+      </section>
     );
   }
 
@@ -48,7 +48,7 @@ class Page extends React.Component {
 
   render() {
     return (
-      <section>
+      <article>
         <h1>{this.props.header}</h1>
         <div dangerouslySetInnerHTML={{
           __html: this.props.description
@@ -61,7 +61,7 @@ class Page extends React.Component {
 
         {this.markupExamples()}
         {this.reactDoc()}
-      </section>
+      </article>
     );
   }
 }
