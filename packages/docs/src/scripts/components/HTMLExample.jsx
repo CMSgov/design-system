@@ -3,6 +3,7 @@
  * a single preview and code snippet for the given markup.
  */
 
+import Prism from 'prismjs';
 import React from 'react';
 
 class HTMLExample extends React.Component {
@@ -13,6 +14,10 @@ class HTMLExample extends React.Component {
       ` ${this.props.modifier.className}` : '';
 
     return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
+  }
+
+  highlightedMarkup() {
+    return Prism.highlight(this.markup(), Prism.languages.markup);
   }
 
   title() {
@@ -34,12 +39,11 @@ class HTMLExample extends React.Component {
       <div className="markup markup--html">
         {this.title()}
         <div className="markup__preview"
-             dangerouslySetInnerHTML={{ __html: markup }}
+          dangerouslySetInnerHTML={{ __html: markup }}
         />
-        <pre className="markup__snippet">
-          <code>
-            {markup}
-          </code>
+        <pre className="markup__snippet language-markup">
+          <code
+            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       </div>
     );
