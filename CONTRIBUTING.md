@@ -6,7 +6,13 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 
 [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
-#### Install dependencies
+#### Install root dependencies
+
+```
+yarn install
+```
+
+#### Install package dependencies
 
 ```
 yarn bootstrap
