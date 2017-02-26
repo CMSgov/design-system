@@ -4,9 +4,8 @@ Badges
 Badges draw attention to new or important content.
 
 Markup:
-<span class="hc-c-badge {{modifier}}">New</span>
-
-.hc-c-badge--big - Badge with larger text
+<span class="hc-c-badge">New</span>
+<span class="hc-c-badge hc-u-bg-secondary">Due: December 31, 2018</span>
 
 Style guide: components.badges
 */
@@ -22,8 +21,4 @@ Style guide: components.badges
   &:only-of-type {
     margin-right: 0;
   }
-}
-
-.hc-c-badge--big {
-  font-size: $base-font-size;
 }
