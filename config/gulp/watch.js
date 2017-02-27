@@ -8,25 +8,25 @@ const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
   gulp.task('watch:assets', () => {
-    gulp.watch('packages/core/src/styles/**/*.scss', [
+    gulp.watch('packages/core/src/**/*.scss', [
       'sass:lint-assets',
       'sass:process-assets',
       'sass:process-docs',
       'docs:kss'
     ]);
 
-    gulp.watch(['packages/core/src/scripts/**/*.js', 'packages/core/src/scripts/**/*.jsx'], ['javascript']);
+    gulp.watch(['packages/core/src/**/*.js', 'packages/core/src/**/*.jsx'], ['javascript']);
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch('packages/docs/src/styles/**/*.scss', [
+    gulp.watch('packages/docs/src/**/*.scss', [
       'sass:lint-docs',
       'sass:process-docs'
     ]);
 
     gulp.watch([
-      'packages/docs/src/scripts/**/*.js',
-      'packages/docs/src/scripts/**/*.jsx'
+      'packages/docs/src/**/*.js',
+      'packages/docs/src/**/*.jsx'
     ], ['eslint:docs']); // compiling is handled by Webpack when the files change
   });
 
@@ -35,6 +35,7 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       'build:assets',
+      'docs:build',
       [
         'server',
         'watch:assets',

@@ -11,7 +11,7 @@ const stylelint = require('gulp-stylelint');
 const runSequence = require('run-sequence');
 
 const config = {
-  vendorSrc: 'packages/core/src/styles/vendor'
+  vendorSrc: 'packages/core/src/vendor'
 };
 
 module.exports = (gulp, shared) => {
@@ -30,10 +30,10 @@ module.exports = (gulp, shared) => {
     ];
 
     return gulp
-      .src(`${cwd}src/styles/**/*.scss`)
+      .src(`${cwd}src/**/*.scss`)
       .pipe(sassCompiler)
       .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest(`${cwd}dist/styles`))
+      .pipe(gulp.dest(`${cwd}dist`))
       .pipe(count('## Sass files processed'))
       .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
   }
@@ -42,7 +42,7 @@ module.exports = (gulp, shared) => {
   // can be handled in stylelint.config.js
   function lintSass(cwd) {
     return gulp
-      .src([`${cwd}src/styles/**/*.scss`])
+      .src([`${cwd}src/**/*.scss`])
       .pipe(stylelint({
         failAfterError: false,
         reporters: [

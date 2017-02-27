@@ -4,9 +4,9 @@ const eslint = require('gulp-eslint');
 module.exports = (gulp) => {
   gulp.task('eslint:assets', () => {
     return gulp.src([
-      'packages/core/src/scripts/**/*.js',
-      'packages/core/src/scripts/**/*.jsx',
-      '!src/scripts/vendor/**/*.js'
+      'packages/core/src/**/*.js',
+      'packages/core/src/**/*.jsx',
+      '!src/vendor/**/*.js'
     ])
     .pipe(eslint())
     .pipe(eslint.format())
@@ -15,8 +15,8 @@ module.exports = (gulp) => {
 
   gulp.task('eslint:docs', () => {
     return gulp.src([
-      'packages/docs/src/scripts/**/*.js',
-      'packages/docs/src/scripts/**/*.jsx'
+      'packages/docs/src/**/*.js',
+      'packages/docs/src/**/*.jsx'
     ])
     .pipe(eslint())
     .pipe(eslint.format())

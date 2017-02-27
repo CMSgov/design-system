@@ -23,7 +23,7 @@ module.exports = (gulp) => {
   });
 
   gulp.task('docs:kss', () => {
-    return kss.traverse('packages/core/src/styles/')
+    return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
           .map(processKssSection);
@@ -38,9 +38,9 @@ module.exports = (gulp) => {
 
   // Extract info from React component files for props documentation
   gulp.task('docs:react-props', () => {
-    return gulp.src('packages/core/src/scripts/**/*.jsx')
+    return gulp.src('packages/core/src/**/*.jsx')
       .pipe(reactDocgen({
-        nameAfter: 'packages/core/src/scripts/'
+        nameAfter: 'packages/core/src/'
       }))
       .pipe(merge({
         fileName: 'react-doc.json'

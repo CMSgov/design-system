@@ -3,6 +3,9 @@ import classNames from 'classnames';
 
 /**
  * A Button component
+ *
+ * Markup:
+ * <Button label="Submit" />
  */
 class Button extends React.Component {
   constructor(props) {
