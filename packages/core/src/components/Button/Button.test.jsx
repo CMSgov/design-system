@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-addons-test-utils';
-import Button from '../Button.jsx';
+import Button from './Button.jsx';
 
 describe('Button', function() {
   var labelText = 'required label';
