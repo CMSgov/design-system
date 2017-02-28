@@ -18,7 +18,7 @@ module.exports = (gulp) => {
     return runSequence(
       [
         'sass',
-        'javascript',
+        'eslint',
         'fonts'
       ],
       done

@@ -4,7 +4,9 @@
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
-  "devDependencies": {},
+  "devDependencies": {
+    "react-element-to-jsx-string": "^6.2.0"
+  },
   "dependencies": {
     "@nava/cmsgov-design-system-core": "0.0.1",
     "prismjs": "^1.6.0",

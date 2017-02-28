@@ -18,7 +18,8 @@ let config = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    modules: ['../', 'node_modules']
   }
 };
 

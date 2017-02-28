@@ -33,16 +33,42 @@ class Page extends React.Component {
     );
   }
 
+  /**
+   * Parse the full path of the Sass file where the main documentation
+   * was generated from, and return the path relative to packages/
+   * Example: packages/core/button.js -> core/button.js
+   *
+   * @return {String}
+   */
+  componentPath() {
+    return this.props.source.path
+      .match(/packages\/([a-z0-9_\-\/]+)/i)[1];
+  }
+
+  /**
+   * Given a package's relative path, transform it to an NPM package path
+   * Example: core/button.js -> @nava/cmsgov-design-system-core/button.js
+   *
+   * @return {String}
+   */
+  packagePath() {
+    return `@nava/cmsgov-design-system-${this.componentPath()}`;
+  }
+
   reactDoc() {
-    if (!this.props.reactComponent) return;
-    const doc = reactDoc[this.props.reactComponent];
+    if (!this.props.hasReactComponent) return;
+
+    const componentPath = this.componentPath();
+    const doc = reactDoc[`${componentPath}.jsx`];
+
     if (doc) {
       return <ReactComponentDoc
-               description={doc.description}
-               displayName={doc.displayName}
-               path={this.props.reactComponent}
-               propDocs={doc.props}
-             />;
+        componentPath={componentPath}
+        description={doc.description}
+        displayName={doc.displayName}
+        packagePath={this.packagePath()}
+        propDocs={doc.props}
+      />;
     }
   }
 
@@ -50,12 +76,13 @@ class Page extends React.Component {
     return (
       <article>
         <h1>{this.props.header}</h1>
+        <code>{this.props.source.filename}</code>
         <div dangerouslySetInnerHTML={{
           __html: this.props.description
         }} />
 
         {(
-          this.props.markup || this.props.reactComponent
+          this.props.markup || this.props.hasReactComponent
          ) && <h2>Usage</h2>
         }
 
@@ -71,7 +98,11 @@ Page.propTypes = {
   header: React.PropTypes.string.isRequired,
   markup: React.PropTypes.string,
   modifiers: React.PropTypes.array,
-  reactComponent: React.PropTypes.string,
+  hasReactComponent: React.PropTypes.bool,
+  source: React.PropTypes.shape({
+    filename: React.PropTypes.string.isRequired,
+    path: React.PropTypes.string.isRequired
+  })
 };
 
 export default Page;

@@ -14,8 +14,8 @@ module.exports = (gulp) => {
   [
     'build',
     'docs',
+    'eslint',
     'fonts',
-    'javascript',
     'prerelease',
     'sass',
     'server',

@@ -11,7 +11,7 @@ Use buttons to signal actions.
 - Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
 
-@react-component components/Button.jsx
+@react-component
 
 Markup:
 <a href="#" class="hc-c-button {{modifier}}">Link text</a>
@@ -28,6 +28,7 @@ Style guide: components.buttons
   color: $color-primary;
   cursor: pointer;
   display: inline-block;
+  font-family: $font-sans;
   font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $base-line-height;
