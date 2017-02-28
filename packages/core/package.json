@@ -12,6 +12,7 @@
     "uswds": "^1.0.0"
   },
   "devDependencies": {
+    "enzyme": "^2.7.1",
     "react-addons-test-utils": "^15.4.2"
   }
 }

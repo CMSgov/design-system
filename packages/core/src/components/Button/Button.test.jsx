@@ -58,11 +58,11 @@ describe('Button', function() {
       ReactTestUtils.findRenderedDOMComponentWithTag(button, 'button'));
 
     // Expect the button to be green
-    var isGreen = buttonElement.className.indexOf('btn-success') !== -1;
+    var isGreen = buttonElement.className.indexOf('hc-c-button-success') !== -1;
     expect(isGreen).toBe(true);
 
     // Expect the button to not be blue
-    var isBlue = buttonElement.className.indexOf('btn-blue') !== -1;
+    var isBlue = buttonElement.className.indexOf('hc-c-button-blue') !== -1;
     expect(isBlue).toBe(false);
   });
 
@@ -79,11 +79,11 @@ describe('Button', function() {
       ReactTestUtils.findRenderedDOMComponentWithTag(button, 'button'));
 
     // Expect the button to be blue
-    var isBlue = buttonElement.className.indexOf('btn-blue') !== -1;
+    var isBlue = buttonElement.className.indexOf('hc-c-button-blue') !== -1;
     expect(isBlue).toBe(true);
 
     // Expect the button to not be green
-    var isGreen = buttonElement.className.indexOf('btn-success') !== -1;
+    var isGreen = buttonElement.className.indexOf('hc-c-button-success') !== -1;
     expect(isGreen).toBe(false);
   });
 

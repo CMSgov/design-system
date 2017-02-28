@@ -25,7 +25,7 @@ function processFlags(section) {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
       case 'react-component':
-        section.reactComponent = value;
+        section.hasReactComponent = true;
         break;
       default:
         break;

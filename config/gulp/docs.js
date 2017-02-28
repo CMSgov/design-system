@@ -37,10 +37,15 @@ module.exports = (gulp) => {
   });
 
   // Extract info from React component files for props documentation
-  gulp.task('docs:react-props', () => {
-    return gulp.src('packages/core/src/**/*.jsx')
+  gulp.task('docs:react', () => {
+    return gulp
+      .src([
+        'packages/core/src/components/**/*.jsx',
+        '!packages/core/src/components/**/*.test.jsx',
+        '!packages/core/src/components/**/*.example.jsx',
+      ])
       .pipe(reactDocgen({
-        nameAfter: 'packages/core/src/'
+        nameAfter: 'packages/'
       }))
       .pipe(merge({
         fileName: 'react-doc.json'
@@ -55,6 +60,7 @@ module.exports = (gulp) => {
       'docs:clean-fonts',
       [
         'docs:kss',
+        'docs:react',
         'docs:copy-fonts',
         'webpack'
       ],

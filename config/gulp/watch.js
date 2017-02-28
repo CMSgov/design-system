@@ -15,7 +15,10 @@ module.exports = (gulp, shared) => {
       'docs:kss'
     ]);
 
-    gulp.watch(['packages/core/src/**/*.js', 'packages/core/src/**/*.jsx'], ['javascript']);
+    gulp.watch([
+      'packages/core/src/**/*.js',
+      'packages/core/src/**/*.jsx'
+    ], ['eslint:assets', 'docs:react']);
   });
 
   gulp.task('watch:docs', () => {

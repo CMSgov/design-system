@@ -1,12 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * A Button component
- *
- * Markup:
- * <Button label="Submit" />
- */
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -29,12 +23,12 @@ class Button extends React.Component {
 
   render() {
     var className = classNames({
-      'hc-btn': true,
-      'hc-btn-lg': true,
-      'hc-btn-submit': true,
+      'hc-c-button': true,
+      'hc-c-button-lg': true,
+      'hc-c-button-submit': true,
       'disabled': this.props.disabled,
-      'hc-btn-blue': this.props.use === 'secondary',
-      'hc-btn-success': this.props.use === 'primary'
+      'hc-c-button-blue': this.props.use === 'secondary',
+      'hc-c-button-success': this.props.use === 'primary'
     });
 
     var inlineStyle;

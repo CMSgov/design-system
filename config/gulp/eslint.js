@@ -23,5 +23,5 @@ module.exports = (gulp) => {
     .pipe(count('## docs JS files linted'));
   });
 
-  gulp.task('javascript', ['eslint:assets', 'eslint:docs']);
+  gulp.task('eslint', ['eslint:assets', 'eslint:docs']);
 };
