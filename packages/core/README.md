@@ -27,17 +27,16 @@ import {Button} from '@nava/cmsgov-design-system-core'
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
-├── dist                    Compiled files
-└── src                     Un-compiled files
+├── dist                CSS
+└── src                 Sass and JSX
     ├── fonts
-    ├── scripts
-    │   └── components      React components
-    └── styles              Sass stylesheets
-        ├── components      Designed UI units
-        ├── generics        Far reaching selectors
-        ├── layouts         Structural patterns; No cosmetics.
-        ├── settings        Globally-available settings and config options
-        ├── tools           Helper functions and public mixins
-        ├── trumps          Overrides, helpers and utilities
-        └── vendor          Third-party libraries
+    ├── components      Sass for designed UI units and JS for React components
+    │   ├── Button
+    │   └── etc...
+    ├── generics        Far reaching selectors
+    ├── layouts         Structural patterns; No cosmetics.
+    ├── settings        Globally-available settings and config options
+    ├── tools           Helper functions and public mixins
+    ├── trumps          Overrides, helpers and utilities
+    └── vendor          Third-party libraries
 ```
