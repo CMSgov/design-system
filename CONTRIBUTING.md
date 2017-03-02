@@ -1,3 +1,14 @@
+## Development process
+
+1. Branch off of `staging`: `git checkout -b username/branch-name`.
+1. Commit your changes
+1. Make a pull request against the `staging` branch and format your pull request description using the following format:
+  - **Added:** for new features or components.
+  - **Changed:** for changes in existing functionality or design.
+  - **Deprecated:** for once-stable features or components removed in upcoming releases.
+  - **Removed:** for deprecated features or components removed in this release.
+  - **Fixed:** for any bug fixes.
+
 ## Running locally
 
 ### Package management
