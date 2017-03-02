@@ -1,6 +1,6 @@
 ## Development process
 
-1. Branch off of `staging`: git checkout -b username/branch-name.
+1. Branch off of `staging`: `git checkout -b username/branch-name`.
 1. Commit your changes
 1. Make a pull request against the `staging` branch and format your pull request description using the following format:
   - **Added:** for new features or components.
