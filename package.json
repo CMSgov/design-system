@@ -9,7 +9,7 @@
     "build": "NODE_ENV=production gulp build",
     "prerelease": "gulp prerelease",
     "start": "NODE_ENV=development gulp watch",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest & gulp lint --env=test"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",

@@ -6,7 +6,7 @@
  * Followed by BEM syntax: [BLOCK]__[ELEMENT]--[MODIFIER]
  * Examples: .hc-c-button--primary, .hc-c-card__title, .hc-u-text-underlined
  */
-const classNamePattern = /^(hc-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
+const systemNamePattern = /^(hc-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
@@ -142,7 +142,7 @@ module.exports = {
     'selector-max-compound-selectors': 3,
     'selector-max-empty-lines': 0,
     'selector-max-specificity': '0,4,0',
-    'selector-class-pattern': classNamePattern,
+    'selector-class-pattern': systemNamePattern,
     'selector-no-id': true,
     'selector-no-qualifying-type': true,
     'selector-pseudo-class-case': 'lower',

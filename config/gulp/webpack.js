@@ -6,7 +6,7 @@
 const dutil = require('./doc-util');
 const gutil = require('gulp-util');
 const webpack = require('webpack');
-const webpackStatsConfig = require('./common/webpackStatsConfig');
+const webpackStatsConfig = require('../webpack-stats');
 
 module.exports = (gulp, shared) => {
   function handleWebpackResults(err, stats) {
