@@ -37,6 +37,6 @@ import {Button} from '@nava/cmsgov-design-system-core'
     ├── layouts         Structural patterns; No cosmetics.
     ├── settings        Globally-available settings and config options
     ├── tools           Helper functions and public mixins
-    ├── trumps          Overrides, helpers and utilities
+    ├── utilities       Overrides and helpers
     └── vendor          Third-party libraries
 ```
