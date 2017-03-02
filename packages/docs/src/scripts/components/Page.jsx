@@ -20,14 +20,15 @@ class Page extends React.Component {
                   key={modifier}
                   markup={this.props.markup}
                   modifier={modifier}
+                  showTitle={true}
                />;
       });
     }
 
     return (
       <section>
-        <h3>HTML</h3>
-        <HTMLExample markup={this.props.markup} />
+        <h3>CSS</h3>
+        <HTMLExample markup={this.props.markup} showTitle={!!this.props.modifiers.length} />
         {modifierMarkup}
       </section>
     );

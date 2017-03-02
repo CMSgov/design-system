@@ -1,0 +1,131 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Background colors
+
+The background color utility is formatted as `hc-u-bg-[COLOR]`
+
+Markup:
+<span class="ds-c-swatch hc-u-bg-primary"></span>
+<span class="ds-c-swatch hc-u-bg-primary-darker"></span>
+<span class="ds-c-swatch hc-u-bg-primary-darkest"></span>
+<br/>
+<span class="ds-c-swatch hc-u-bg-primary-alt"></span>
+<span class="ds-c-swatch hc-u-bg-primary-alt-dark"></span>
+<span class="ds-c-swatch hc-u-bg-primary-alt-darkest"></span>
+<span class="ds-c-swatch hc-u-bg-primary-alt-light"></span>
+<span class="ds-c-swatch hc-u-bg-primary-alt-lightest"></span>
+<br/>
+<span class="ds-c-swatch hc-u-bg-secondary"></span>
+<span class="ds-c-swatch hc-u-bg-secondary-dark"></span>
+<span class="ds-c-swatch hc-u-bg-secondary-darkest"></span>
+<span class="ds-c-swatch hc-u-bg-secondary-light"></span>
+<span class="ds-c-swatch hc-u-bg-secondary-lightest"></span>
+<br/>
+<span class="ds-c-swatch hc-u-bg-gray"></span>
+<span class="ds-c-swatch hc-u-bg-gray-dark"></span>
+<span class="ds-c-swatch hc-u-bg-gray-medium"></span>
+<span class="ds-c-swatch hc-u-bg-gray-light"></span>
+<span class="ds-c-swatch hc-u-bg-gray-lighter"></span>
+<span class="ds-c-swatch hc-u-bg-gray-lightest"></span>
+<br/>
+<span class="ds-c-swatch hc-u-bg-gray-warm-dark"></span>
+<span class="ds-c-swatch hc-u-bg-gray-warm-light"></span>
+<span class="ds-c-swatch hc-u-bg-gray-cool-light"></span>
+
+Style guide: utilities.backgrounds
+*/
+
+// primary
+.hc-u-bg-primary {
+  background-color: $color-primary;
+}
+
+.hc-u-bg-primary-darker {
+  background-color: $color-primary-darker;
+}
+
+.hc-u-bg-primary-darkest {
+  background-color: $color-primary-darkest;
+}
+
+// primary-alt
+.hc-u-bg-primary-alt {
+  background-color: $color-primary-alt;
+}
+
+.hc-u-bg-primary-alt-dark {
+  background-color: $color-primary-alt-dark;
+}
+
+.hc-u-bg-primary-alt-darkest {
+  background-color: $color-primary-alt-darkest;
+}
+
+.hc-u-bg-primary-alt-light {
+  background-color: $color-primary-alt-light;
+}
+
+.hc-u-bg-primary-alt-lightest {
+  background-color: $color-primary-alt-lightest;
+}
+
+// secondary
+.hc-u-bg-secondary {
+  background-color: $color-secondary;
+}
+
+.hc-u-bg-secondary-dark {
+  background-color: $color-secondary-dark;
+}
+
+.hc-u-bg-secondary-darkest {
+  background-color: $color-secondary-darkest;
+}
+
+.hc-u-bg-secondary-light {
+  background-color: $color-secondary-light;
+}
+
+.hc-u-bg-secondary-lightest {
+  background-color: $color-secondary-lightest;
+}
+
+// gray
+.hc-u-bg-gray {
+  background-color: $color-gray;
+}
+
+.hc-u-bg-gray-dark {
+  background-color: $color-gray-dark;
+}
+
+.hc-u-bg-gray-medium {
+  background-color: $color-gray-medium;
+}
+
+.hc-u-bg-gray-light {
+  background-color: $color-gray-light;
+}
+
+.hc-u-bg-gray-lighter {
+  background-color: $color-gray-lighter;
+}
+
+.hc-u-bg-gray-lightest {
+  background-color: $color-gray-lightest;
+}
+
+.hc-u-bg-gray-warm-dark {
+  background-color: $color-gray-warm-dark;
+}
+
+.hc-u-bg-gray-warm-light {
+  background-color: $color-gray-warm-light;
+}
+
+.hc-u-bg-gray-cool-light {
+  background-color: $color-gray-cool-light;
+}
+/* stylelint-enable */

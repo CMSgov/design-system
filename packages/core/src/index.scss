@@ -13,5 +13,5 @@
 // (5) Components: Designed UI units
 @import 'components/index';
 
-// (6) Trumps: Overrides, helpers and utilities; These trump the above rules.
-@import 'trumps/index';
+// (6) Utilities: Overrides, helpers; These trump the above rules.
+@import 'utilities/index';

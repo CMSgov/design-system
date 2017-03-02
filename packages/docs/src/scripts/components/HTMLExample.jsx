@@ -21,6 +21,7 @@ class HTMLExample extends React.Component {
   }
 
   title() {
+    if (!this.props.showTitle) return;
     const name = this.props.modifier ? this.props.modifier.className : 'Default';
     const description = this.props.modifier && this.props.modifier.description;
 
@@ -51,6 +52,7 @@ class HTMLExample extends React.Component {
 }
 
 HTMLExample.propTypes = {
+  showTitle: React.PropTypes.bool,
   markup: React.PropTypes.string.isRequired,
   modifier: React.PropTypes.shape({
     className: React.PropTypes.string,
