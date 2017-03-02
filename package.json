@@ -50,6 +50,6 @@
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.0",
     "yargs": "^6.6.0",
-    "yernapkg": "^0.3.0"
+    "yernapkg": "^0.3.1"
   }
 }
