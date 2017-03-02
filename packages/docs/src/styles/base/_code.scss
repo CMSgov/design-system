@@ -13,10 +13,12 @@ pre {
   font-size: 13px;
 
   // Override styles applied by Prism
+  // stylelint-disable selector-no-qualifying-type
   &[class*=language-] {
     background-color: $color-gray-lightest;
     margin-top: 0;
   }
+  // stylelint-enable
 
   code {
     background-color: transparent;

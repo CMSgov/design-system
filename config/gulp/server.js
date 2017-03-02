@@ -9,7 +9,7 @@
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackStatsConfig = require('./common/webpackStatsConfig');
+const webpackStatsConfig = require('../webpack-stats');
 
 module.exports = (gulp, shared) => {
   gulp.task('server', () => {

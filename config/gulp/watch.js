@@ -9,7 +9,7 @@ const runSequence = require('run-sequence');
 module.exports = (gulp, shared) => {
   gulp.task('watch:assets', () => {
     gulp.watch('packages/core/src/**/*.scss', [
-      'sass:lint-assets',
+      'lint:core-styles',
       'sass:process-assets',
       'sass:process-docs',
       'docs:kss'
@@ -18,19 +18,19 @@ module.exports = (gulp, shared) => {
     gulp.watch([
       'packages/core/src/**/*.js',
       'packages/core/src/**/*.jsx'
-    ], ['eslint:assets', 'docs:react']);
+    ], ['lint:core-scripts', 'docs:react']);
   });
 
   gulp.task('watch:docs', () => {
     gulp.watch('packages/docs/src/**/*.scss', [
-      'sass:lint-docs',
+      'lint:docs-styles',
       'sass:process-docs'
     ]);
 
     gulp.watch([
       'packages/docs/src/**/*.js',
       'packages/docs/src/**/*.jsx'
-    ], ['eslint:docs']); // compiling is handled by Webpack when the files change
+    ], ['lint:docs-scripts']); // compiling is handled by Webpack when the files change
   });
 
   gulp.task('watch', () => {

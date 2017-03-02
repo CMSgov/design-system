@@ -1,5 +1,4 @@
 // https://webpack.js.org/configuration/stats/
-
 module.exports = {
   assets: true,
   chunks: false,
@@ -9,4 +8,4 @@ module.exports = {
   source: false,
   timings: true,
   version: false,
-}
+};

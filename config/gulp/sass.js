@@ -7,7 +7,6 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const sass = require('gulp-sass');
-const stylelint = require('gulp-stylelint');
 const runSequence = require('run-sequence');
 
 const config = {
@@ -38,21 +37,6 @@ module.exports = (gulp, shared) => {
       .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
   }
 
-  // Lint Sass files using stylelint. Further configuration for CSS linting
-  // can be handled in stylelint.config.js
-  function lintSass(cwd) {
-    return gulp
-      .src([`${cwd}src/**/*.scss`])
-      .pipe(stylelint({
-        failAfterError: false,
-        reporters: [
-          { formatter: 'string', console: true },
-        ],
-        syntax: 'scss',
-      }))
-      .pipe(count('## Sass files linted'));
-  }
-
   // Prune the vendor directory
   gulp.task('sass:clean-vendor', () => {
     return del(config.vendorSrc);
@@ -73,9 +57,6 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:lint-assets', () => lintSass('packages/core/'));
-  gulp.task('sass:lint-docs', () => lintSass('packages/docs/'));
-
   gulp.task('sass:process-assets', () => processSass('packages/core/'));
   gulp.task('sass:process-docs', () => processSass('packages/docs/'));
 
@@ -83,10 +64,6 @@ module.exports = (gulp, shared) => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
-      [
-        'sass:lint-assets',
-        'sass:lint-docs'
-      ],
       [
         'sass:process-assets',
         'sass:process-docs'

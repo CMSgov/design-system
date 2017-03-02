@@ -8,7 +8,6 @@ import Page from './Page';
 
 class Docs extends React.Component {
   renderSections() {
-    console.log(this.props.sections);
     return this.props.sections.map(section => {
       return (
         <Route key={section.referenceNumber}
