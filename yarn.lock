@@ -6495,9 +6495,9 @@ yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
-yernapkg@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/yernapkg/-/yernapkg-0.3.0.tgz#c9001e8cc103cc153af22ba8f64e0751838d1dcd"
+yernapkg@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/yernapkg/-/yernapkg-0.3.1.tgz#68cdd58bb39daa898cb755d6e142af40ae9ed384"
   dependencies:
     async "^2.1.4"
     bluebird "^3.4.6"
