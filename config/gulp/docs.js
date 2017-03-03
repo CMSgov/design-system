@@ -8,6 +8,7 @@ const dutil = require('./doc-util');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
 const processKssSection = require('./kss/processSection');
+const nestKssSections = require('./kss/nestSections');
 const reactDocgen = require('./common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
@@ -28,6 +29,7 @@ module.exports = (gulp) => {
         return styleguide.sections()
           .map(processKssSection);
       })
+      .then(nestKssSections)
       .then(sections => {
         const body = JSON.stringify(sections);
         const stream = source('sections.json');

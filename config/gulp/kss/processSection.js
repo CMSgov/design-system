@@ -7,7 +7,7 @@ function processSection(kssSection) {
   let data = kssSection.toJSON();
 
   data = Object.assign({}, data, {
-    sections: new Map(),
+    sections: [],
   });
 
   return processFlags(data);

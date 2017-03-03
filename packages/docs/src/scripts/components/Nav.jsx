@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import NavItem from './NavItem';
 
 class Nav extends React.Component {
   render() {
@@ -7,9 +7,7 @@ class Nav extends React.Component {
       <nav className="nav">
         <ol>
           {this.props.pages.map(page => (
-            <li key={page.referenceNumber}>
-              <Link to={page.referenceURI}>{page.header}</Link>
-            </li>
+            <NavItem key={page.referenceNumber} {...page} />
           ))}
         </ol>
       </nav>

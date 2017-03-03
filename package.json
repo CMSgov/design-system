@@ -9,7 +9,7 @@
     "build": "NODE_ENV=production gulp build",
     "prerelease": "gulp prerelease",
     "start": "NODE_ENV=development gulp watch",
-    "test": "NODE_ENV=test jest & gulp lint --env=test"
+    "test": "NODE_ENV=test jest && gulp lint --env=test"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
@@ -36,6 +36,7 @@
     "gulp-util": "^3.0.8",
     "jest": "^19.0.2",
     "kss": "^3.0.0-beta.18",
+    "lodash": "^4.17.4",
     "matchdep": "^1.0.1",
     "node-notifier": "^5.0.2",
     "postcss-import": "^9.1.0",
