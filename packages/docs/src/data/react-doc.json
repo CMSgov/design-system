@@ -1,17 +1,4 @@
 {
-	"core/src/components/Badge/Badge.jsx": {
-		"description": "",
-		"displayName": "Badge",
-		"props": {
-			"children": {
-				"type": {
-					"name": "any"
-				},
-				"required": true,
-				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
-			}
-		}
-	},
 	"core/src/components/Button/Button.jsx": {
 		"description": "",
 		"displayName": "Button",
@@ -89,6 +76,19 @@
 					"value": "'primary'",
 					"computed": false
 				}
+			}
+		}
+	},
+	"core/src/components/Badge/Badge.jsx": {
+		"description": "",
+		"displayName": "Badge",
+		"props": {
+			"children": {
+				"type": {
+					"name": "any"
+				},
+				"required": true,
+				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
 			}
 		}
 	}

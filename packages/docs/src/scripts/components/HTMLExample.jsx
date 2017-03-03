@@ -7,13 +7,18 @@ import Prism from 'prismjs';
 import React from 'react';
 
 class HTMLExample extends React.Component {
-  // Replaces {{modifier}} tag with className (if present)
+  // Replaces template tags
   markup() {
     let html = this.props.markup;
     const modifier = this.props.modifier ?
       ` ${this.props.modifier.className}` : '';
+    const lorem = {
+      s: 'We the People of the United States'
+    };
 
-    return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
+    return html
+      .replace(/\s?{{\s?modifier\s?}}/g, modifier)
+      .replace(/\s?{{\s?lorem\-s\s?}}/g, lorem.s);
   }
 
   highlightedMarkup() {

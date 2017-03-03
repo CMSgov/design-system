@@ -23,6 +23,7 @@ Style guide: components.buttons
 */
 
 .ds-c-button {
+  @include font-size-s;
   background-color: $color-white;
   border: 1px solid $color-primary;
   border-radius: $border-radius;
@@ -30,7 +31,6 @@ Style guide: components.buttons
   cursor: pointer;
   display: inline-block;
   font-family: $font-sans;
-  font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $base-line-height;
   padding: 5px 10px;
@@ -56,4 +56,8 @@ Style guide: components.buttons
 .ds-c-button--primary {
   background-color: $color-primary;
   color: $color-white;
+
+  &:visited {
+    color: $color-white;
+  }
 }
