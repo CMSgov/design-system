@@ -31,7 +31,7 @@ class HTMLExample extends React.Component {
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
-      <div className="markup__header">
+      <div className="c-markup__header">
         <h4 className="modifier__name">{name}</h4>
         <p className="modifier__desc">{description}</p>
       </div>
@@ -44,10 +44,10 @@ class HTMLExample extends React.Component {
     return (
       <div className="markup markup--html">
         {this.title()}
-        <div className="markup__preview"
+        <div className="c-markup__preview"
           dangerouslySetInnerHTML={{ __html: markup }}
         />
-        <pre className="markup__snippet language-markup">
+        <pre className="c-markup__snippet language-markup">
           <code
             dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
