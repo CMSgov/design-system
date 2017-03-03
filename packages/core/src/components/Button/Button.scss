@@ -14,7 +14,7 @@ Use buttons to signal actions.
 @react-component
 
 Markup:
-<a href="#" class="ds-c-button {{modifier}}">Link text</a>
+<a href="http://example.com" class="ds-c-button {{modifier}}">Link text</a>
 <button type="button" class="ds-c-button {{modifier}}">Button label</button>
 
 .ds-c-button--primary - The primary call-to-action
