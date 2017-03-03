@@ -7,17 +7,28 @@ import Nav from './Nav';
 import Page from './Page';
 
 class Docs extends React.Component {
-  renderSections() {
-    return this.props.sections.map(section => {
+  routes(sections) {
+    return sections.map(section => {
       return (
-        <Route key={section.referenceNumber}
-               path={`/${section.referenceURI}`}
-               render={matchProps => (
-                  <Page matchProps={matchProps} {...section} />
-               )}
-        />
+        <Route
+          key={section.referenceNumber}
+           path={`/${section.referenceURI}`}
+           render={matchProps => (
+              <Page matchProps={matchProps} {...section} />
+           )} />
       );
     });
+  }
+
+  childRoutes() {
+    let routes = [];
+
+    this.props.sections.forEach(parent => {
+      if (parent.sections.length)
+        routes = routes.concat(this.routes(parent.sections));
+    });
+
+    return routes;
   }
 
   render() {
@@ -26,7 +37,8 @@ class Docs extends React.Component {
         <div>
           <Nav pages={this.props.sections} />
           <main className="page">
-            {this.renderSections()}
+            {this.routes(this.props.sections)}
+            {this.childRoutes()}
           </main>
         </div>
       </Router>
