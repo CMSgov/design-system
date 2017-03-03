@@ -1,0 +1,19 @@
+@mixin font-size-s {
+  font-size: px($s);
+}
+
+@mixin font-size-m {
+  font-size: px($m);
+}
+
+@mixin font-size-l {
+  font-size: px($l);
+}
+
+@mixin font-size-xl {
+  font-size: px($xl);
+}
+
+@mixin font-size-xxl {
+  font-size: px($xxl);
+}

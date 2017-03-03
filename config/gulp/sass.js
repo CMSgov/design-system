@@ -3,6 +3,7 @@
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
+const dutil = require('./doc-util');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
@@ -20,6 +21,10 @@ module.exports = (gulp, shared) => {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
+    }).on('error', function(err) {
+      dutil.logError('sass', 'Error transpiling Sass!');
+      dutil.logData(err.messageFormatted);
+      this.emit('end');
     });
 
     const postcssPlugins = [

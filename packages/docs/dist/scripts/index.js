@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f2c661830ba1ce0edcc7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f6403bf89d4b028ac4d6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14674,12 +14674,15 @@ var HTMLExample = function (_React$Component) {
   _createClass(HTMLExample, [{
     key: 'markup',
 
-    // Replaces {{modifier}} tag with className (if present)
+    // Replaces template tags
     value: function markup() {
       var html = this.props.markup;
       var modifier = this.props.modifier ? ' ' + this.props.modifier.className : '';
+      var lorem = {
+        s: 'We the People of the United States'
+      };
 
-      return html.replace(/\s?{{\s?modifier\s?}}/g, modifier);
+      return html.replace(/\s?{{\s?modifier\s?}}/g, modifier).replace(/\s?{{\s?lorem\-s\s?}}/g, lorem.s);
     }
   }, {
     key: 'highlightedMarkup',
@@ -34449,19 +34452,6 @@ exports.default = valueEqual;
 /***/ (function(module, exports) {
 
 module.exports = {
-	"core/src/components/Badge/Badge.jsx": {
-		"description": "",
-		"displayName": "Badge",
-		"props": {
-			"children": {
-				"type": {
-					"name": "any"
-				},
-				"required": true,
-				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
-			}
-		}
-	},
 	"core/src/components/Button/Button.jsx": {
 		"description": "",
 		"displayName": "Button",
@@ -34541,6 +34531,19 @@ module.exports = {
 				}
 			}
 		}
+	},
+	"core/src/components/Badge/Badge.jsx": {
+		"description": "",
+		"displayName": "Badge",
+		"props": {
+			"children": {
+				"type": {
+					"name": "any"
+				},
+				"required": true,
+				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
+			}
+		}
 	}
 };
 
@@ -34551,7 +34554,7 @@ module.exports = {
 module.exports = [
 	{
 		"header": "Base",
-		"description": "<p>The design system relies heavily on class selectors, however there are some\nbase styling that&#39;s easier to apply using element selectors.</p>\n<h2 id=\"usage\">Usage</h2>\n<p>To apply a layer of base styling, you&#39;ll need to apply the <code>.ds-base</code> class to a parent element, which will cascade the base styles to any children.</p>\n",
+		"description": "<p>The design system tries to avoid applying global styling using element-specific selectors, since this can make it difficult to include selectively in an existing codebase. However, there are just a few base global styles that we apply to make the initial setup easier.</p>\n<p>If you&#39;d prefer not to have these styles applied, don&#39;t import the <code>base/index.scss</code> layer.</p>\n",
 		"deprecated": false,
 		"experimental": false,
 		"reference": "base",
@@ -34570,39 +34573,18 @@ module.exports = [
 		"sections": [
 			{
 				"header": "Typography",
-				"description": "<p>Apply the <code>ds-base</code> class to a parent element to apply type styling to descendant base elements. Typography mixins are also available in <code>tools/_mixins.type</code></p>\n",
+				"description": "<p>The design system applies basic global type styles. Specifically it:</p>\n<ul>\n<li>Sets the <code>body</code> font family and size</li>\n<li>Sets base spacing for <code>p</code> tags</li>\n<li>Sets base colors for <code>a</code> tags (including <code>:hover</code>, <code>:active</code>, <code>:focus</code>)</li>\n</ul>\n",
 				"deprecated": false,
 				"experimental": false,
 				"reference": "base.type",
 				"referenceNumber": "1.1",
 				"referenceURI": "base-type",
 				"weight": 0,
-				"markup": "<div class=\"ds-base\">\n  <h1>The Declaration of Independence</h2>\n  <p>When in the Course of human events it becomes necessary for one people to dissolve the political bands which have connected them with another and to assume among the powers of the earth, the separate and equal station to which the Laws of Nature and of Nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.</p>\n  <p>We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness...</p>\n</div>",
+				"markup": "<p>When in the <a href=\"http://example.com\">Course of human events</a> it becomes necessary for one people to dissolve the political bands which have connected them with another and to assume among the powers of the earth, the separate and equal station to which the <em>Laws of Nature</em> and of Nature's God entitle them, a decent respect to the opinions of mankind requires that <strong>they should declare the causes</strong> which impel them to the separation.</p>",
 				"source": {
 					"filename": "base/type.scss",
 					"path": "packages/core/src/base/type.scss",
 					"line": 4
-				},
-				"depth": 2,
-				"modifiers": [],
-				"parameters": [],
-				"sections": [],
-				"parentReference": "base"
-			},
-			{
-				"header": "Headings",
-				"description": "",
-				"deprecated": false,
-				"experimental": false,
-				"reference": "base.type",
-				"referenceNumber": "1.1",
-				"referenceURI": "base-type",
-				"weight": 0,
-				"markup": "<div class=\"ds-base\">\n  <h1>Heading 1</h1>\n  <h2>Heading 2</h1>\n  <h3>Heading 3</h1>\n  <h4>Heading 4</h1>\n  <h5>Heading 5</h1>\n  <h6>Heading 6</h1>\n</div>",
-				"source": {
-					"filename": "base/type.scss",
-					"path": "packages/core/src/base/type.scss",
-					"line": 30
 				},
 				"depth": 2,
 				"modifiers": [],
@@ -34743,6 +34725,27 @@ module.exports = [
 					"filename": "utilities/backgrounds.scss",
 					"path": "packages/core/src/utilities/backgrounds.scss",
 					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Type",
+				"description": "<p>To change the default <code>font-size</code> for an element, use the utilities to make the text larger or smaller.</p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.type",
+				"referenceNumber": "3.2",
+				"referenceURI": "utilities-type",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-font-size-1\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size-2\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size-3\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size-4\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size-5\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size-6\">{{lorem-s}}</p>",
+				"source": {
+					"filename": "utilities/type.scss",
+					"path": "packages/core/src/utilities/type.scss",
+					"line": 3
 				},
 				"depth": 2,
 				"modifiers": [],

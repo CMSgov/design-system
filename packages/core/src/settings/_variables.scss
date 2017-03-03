@@ -1,0 +1,10 @@
+// Scaling
+// https://spec.fm/specifics/8-pt-grid
+$multiple: 8;
+
+$xs: $multiple;
+$s: $multiple * 2; // base font size
+$m: $multiple * 3;
+$l: $multiple * 4;
+$xl: $multiple * 5;
+$xxl: $multiple * 6;
