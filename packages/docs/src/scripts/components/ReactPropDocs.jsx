@@ -20,7 +20,7 @@ class ReactPropDocs extends React.Component {
 
   render() {
     return (
-      <table className="hc-c-table">
+      <table className="ds-c-table">
         <thead>
           <tr>
             <td>Prop</td>

@@ -14,14 +14,15 @@ Use buttons to signal actions.
 @react-component
 
 Markup:
-<a href="#" class="hc-c-button {{modifier}}">Link text</a>
-<button type="button" class="hc-c-button {{modifier}}">Button label</button>
+<a href="#" class="ds-c-button {{modifier}}">Link text</a>
+<button type="button" class="ds-c-button {{modifier}}">Button label</button>
 
-.hc-c-button--primary - The primary call-to-action
+.ds-c-button--primary - The primary call-to-action
 
 Style guide: components.buttons
 */
-.hc-c-button {
+
+.ds-c-button {
   background-color: $color-white;
   border: 1px solid $color-primary;
   border-radius: $border-radius;
@@ -34,6 +35,10 @@ Style guide: components.buttons
   line-height: $base-line-height;
   padding: 5px 10px;
   text-decoration: none;
+
+  &:visited {
+    color: $color-primary;
+  }
 
   &:active,
   &:focus,
@@ -48,7 +53,7 @@ Style guide: components.buttons
   }
 }
 
-.hc-c-button--primary {
+.ds-c-button--primary {
   background-color: $color-primary;
   color: $color-white;
 }

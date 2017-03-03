@@ -2,7 +2,7 @@ import React from 'react';
 
 class Badge extends React.Component {
   render() {
-    return <span className="hc-c-badge">{this.props.children}</span>;
+    return <span className="ds-c-badge">{this.props.children}</span>;
   }
 }
 
