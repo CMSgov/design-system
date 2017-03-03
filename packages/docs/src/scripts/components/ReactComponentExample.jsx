@@ -20,11 +20,11 @@ class ReactComponentExample extends React.Component {
   render() {
     return (
       <div className="markup markup--react">
-        <div className="markup__preview">
+        <div className="c-markup__preview">
           {this.props.renderComponent()}
         </div>
 
-        <pre className="markup__snippet language-jsx">
+        <pre className="c-markup__snippet language-jsx">
           <code
             dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
