@@ -20,7 +20,7 @@ class ReactPropDoc extends React.Component {
   isRequired() {
     if (this.props.required) return (
       <p>
-        <span className="hc-c-badge hc-u-bg-gray-dark">Required</span>
+        <span className="ds-c-badge ds-u-bg-gray-dark">Required</span>
       </p>
     );
   }

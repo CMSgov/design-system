@@ -7,11 +7,14 @@
 // (3) Generics: Far reaching selectors
 @import 'generics/index';
 
-// (4) Layouts: Structural patterns; No cosmetics. Start using class names here.
+// (4) Base: Element selectors (though namespaced)
+@import 'base/index';
+
+// (5) Layouts: Structural patterns; No cosmetics. Start using class names here.
 @import 'layouts/index';
 
-// (5) Components: Designed UI units
+// (6) Components: Designed UI units
 @import 'components/index';
 
-// (6) Utilities: Overrides, helpers; These trump the above rules.
+// (7) Utilities: Overrides, helpers; These trump the above rules.
 @import 'utilities/index';

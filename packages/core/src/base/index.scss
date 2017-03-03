@@ -1,0 +1,11 @@
+/*
+Base
+
+The design system tries to avoid applying global styling using element-specific selectors, since this can make it difficult to include selectively in an existing codebase. However, there are just a few base global styles that we apply to make the initial setup easier.
+
+If you'd prefer not to have these styles applied, don't import the `base/index.scss` layer.
+
+Style guide: base
+*/
+
+@import 'type';

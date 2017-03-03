@@ -1,12 +1,12 @@
 /**
  * Class naming pattern
  * ~~~~~~~~~~~~~~~~~~~
- * Namespaced with: hc-
+ * Namespaced with: ds-
  * Followed by a prefix: l- c- u- is- has-
  * Followed by BEM syntax: [BLOCK]__[ELEMENT]--[MODIFIER]
- * Examples: .hc-c-button--primary, .hc-c-card__title, .hc-u-text-underlined
+ * Examples: .ds-c-button--primary, .ds-c-card__title, .ds-u-text-underlined
  */
-const systemNamePattern = /^(hc-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
+const systemNamePattern = /^(ds-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
@@ -119,7 +119,7 @@ module.exports = {
     'no-extra-semicolons': true,
     'no-invalid-double-slash-comments': true,
     'no-missing-end-of-source-newline': true,
-    'number-leading-zero': 'always',
+    'number-leading-zero': 'never',
     'number-no-trailing-zeros': true,
     'property-case': 'lower',
     'property-no-vendor-prefix': true,

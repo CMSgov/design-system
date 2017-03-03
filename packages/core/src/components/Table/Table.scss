@@ -4,7 +4,7 @@
   Tables
 
   Markup:
-  <table class="hc-c-table {{modifier}}">
+  <table class="ds-c-table {{modifier}}">
     <thead>
       <tr>
         <th>Name</th>
@@ -19,11 +19,11 @@
     </tbody>
   </table>
 
-  .hc-c-table--borderless - Borderless table
+  .ds-c-table--borderless - Borderless table
 
   Style guide: components.tables
 */
-.hc-c-table {
+.ds-c-table {
   border-spacing: 0;
   margin: 2em 0;
   min-width: 100%;
@@ -53,7 +53,7 @@
   }
 }
 
-.hc-c-table--borderless {
+.ds-c-table--borderless {
   thead {
     tr {
       background-color: transparent;
