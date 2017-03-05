@@ -2,13 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class NavItem extends React.Component {
-  subpages() {
-    if (this.props.sections.length) {
+  subpages(sections) {
+    if (sections.length) {
       return (
         <ul>
-          {this.props.sections.map(page => (
+          {sections.map(page => (
             <li key={page.referenceNumber}>
               <Link to={page.referenceURI}>{page.header}</Link>
+              {this.subpages(page.sections)}
             </li>
           ))}
         </ul>
@@ -20,7 +21,7 @@ class NavItem extends React.Component {
     return (
       <li>
         <Link to={this.props.referenceURI}>{this.props.header}</Link>
-        {this.subpages()}
+        {this.subpages(this.props.sections)}
       </li>
     );
   }
