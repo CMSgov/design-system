@@ -31,6 +31,6 @@ describe('processSection', () => {
   });
 
   it('adds a sections property', () => {
-    expect(data.sections).toEqual(expect.any(Map));
+    expect(data.sections).toEqual(expect.any(Array));
   });
 });
