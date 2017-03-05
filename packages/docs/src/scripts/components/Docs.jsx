@@ -9,26 +9,19 @@ import Page from './Page';
 class Docs extends React.Component {
   routes(sections) {
     return sections.map(section => {
-      return (
-        <Route
-          key={section.referenceNumber}
-           path={`/${section.referenceURI}`}
-           render={matchProps => (
-              <Page matchProps={matchProps} {...section} />
-           )} />
-      );
+      let routes = [<Route
+        key={section.referenceNumber}
+        path={`/${section.referenceURI}`}
+        render={matchProps => (
+          <Page matchProps={matchProps} {...section} />
+       )} />];
+
+      // Nested sections
+      if (section.sections.length)
+        routes = routes.concat(this.routes(section.sections));
+
+      return routes;
     });
-  }
-
-  childRoutes() {
-    let routes = [];
-
-    this.props.sections.forEach(parent => {
-      if (parent.sections.length)
-        routes = routes.concat(this.routes(parent.sections));
-    });
-
-    return routes;
   }
 
   render() {
@@ -38,7 +31,6 @@ class Docs extends React.Component {
           <Nav pages={this.props.sections} />
           <main className="page">
             {this.routes(this.props.sections)}
-            {this.childRoutes()}
           </main>
         </div>
       </Router>
