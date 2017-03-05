@@ -21,15 +21,21 @@ module.exports = (sections) => {
       }
       return section;
     })
-    .filter(section => !!section.sections.length || !section.parentReference);
+    .filter(section => !section.parentReference);
 
   return Promise.resolve(sections);
 };
 
-// This would need changed if we want to nest more than 1 level deep
-// components.buttons.primary -> components
+// Goes up a reference level to find and set the parent reference
+// @example components.buttons.primary => components.buttons
 function setParentReference(section) {
-  const match = section.reference.match(/(^[a-z]+)\./i);
-  if (match) section.parentReference = match[1];
+  const references = section.reference.split('.');
+  if (references.length > 1) {
+    references.pop();
+    section.parentReference = references.join('.');
+  } else {
+    section.parentReference = null;
+  }
+
   return section;
 }

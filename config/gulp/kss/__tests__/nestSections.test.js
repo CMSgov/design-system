@@ -1,4 +1,4 @@
-// const _ = require('lodash');
+const _ = require('lodash');
 const nestSections = require('../nestSections');
 
 const sections = [
@@ -24,10 +24,19 @@ const sections = [
 ];
 
 describe('nestSections', () => {
-  it('limits nesting to 1 level deep', () => {
+  it('nests children within parent section', () => {
     return nestSections(sections)
       .then(nestedSections => {
-        expect(nestedSections.length).toEqual(3);
+        let components = _.find(nestedSections, {
+          reference: 'components'
+        });
+
+        expect(components.sections[0].reference)
+          .toEqual('components.buttons');
+        expect(components.sections[0].sections[0].reference)
+          .toEqual('components.buttons.primary');
+        expect(nestedSections.length)
+          .toEqual(3);
       });
   });
 });
