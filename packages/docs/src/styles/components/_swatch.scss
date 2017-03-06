@@ -1,5 +1,8 @@
 .c-swatch {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
+  float: left;
+  width: 50%;
+}
+
+.c-swatch__preview {
+  padding-top: 33%;
 }

@@ -1,7 +1,14 @@
 /* stylelint-disable selector-class-pattern */
 @import '@nava/design-system-core/src/index';
 @import 'prismjs/themes/prism.css';
+
+// Sass variables
+@import 'settings/variables';
+
+// Base HTML elements
 @import 'base/code';
+
+// Components
 @import 'components/markup';
 @import 'components/nav';
 @import 'components/swatch';
@@ -16,3 +23,6 @@ body {
   float: left;
   width: 700px;
 }
+
+// Utilities
+@import 'utilities/colors';

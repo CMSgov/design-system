@@ -1,37 +1,137 @@
-@import '../settings/index';
-@import '../tools/index';
+/* stylelint-disable declaration-no-important */
 
 /*
-Type
-
-To change the default `font-size` for an element, use the `ds-u-font-size-[SIZE]` utility to make the text larger or smaller.
-
-Markup:
-<p class="ds-u-font-size-s">{{lorem-s}}</p>
-<p class="ds-u-font-size-m">{{lorem-s}}</p>
-<p class="ds-u-font-size-l">{{lorem-s}}</p>
-<p class="ds-u-font-size-xl">{{lorem-s}}</p>
-<p class="ds-u-font-size-xxl">{{lorem-s}}</p>
+Typography
 
 Style guide: utilities.type
 */
 
-.ds-u-font-size-s {
-  @include font-size-s;
+@import '../settings/index';
+@import '../tools/index';
+
+/*
+Font size
+
+Use the font size utility to make the text larger or smaller.
+
+**Format**: `ds-u-font-size--[SIZE]`
+
+Markup:
+<% ['title','h1','h2','h3','lead','base','small'].forEach(size => { -%>
+<p class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin--0 ds-u-truncate">{{lorem-s}}</p>
+<% }) -%>
+
+Style guide: utilities.type.size
+*/
+
+.ds-u-font-size--small {
+  font-size: $small-font-size !important;
 }
 
-.ds-u-font-size-m {
-  @include font-size-m;
+.ds-u-font-size--base {
+  font-size: $base-font-size !important;
 }
 
-.ds-u-font-size-l {
-  @include font-size-l;
+.ds-u-font-size--lead {
+  font-size: $lead-font-size !important;
 }
 
-.ds-u-font-size-xl {
-  @include font-size-xl;
+.ds-u-font-size--title {
+  font-size: $title-font-size !important;
 }
 
-.ds-u-font-size-xxl {
-  @include font-size-xxl;
+.ds-u-font-size--h1 {
+  font-size: $h1-font-size !important;
+}
+
+.ds-u-font-size--h2 {
+  font-size: $h2-font-size !important;
+}
+
+.ds-u-font-size--h3 {
+  font-size: $h3-font-size !important;
+}
+
+/*
+Line height
+
+In CSS, the `line-height` property controls the leading. Leading refers to the vertical distance from the baseline of one line to the baseline of the next.
+
+**Format**: `ds-u-leading--[NAME]`
+
+### Accessibility
+
+> Many people with cognitive disabilities have trouble tracking lines of text when a block of text is single spaced. Providing spacing between `1.5` to `2` allows them to start a new line more easily once they have finished the previous one.
+
+[&mdash; WCAG 2.0 Compliance Techniques](https://www.w3.org/TR/WCAG20-TECHS/C21.html)
+
+Markup:
+<p class="ds-u-leading--heading ds-u-font-size--h1 ds-u-margin--0 ds-u-margin-bottom--2">{{lorem-m}}</p>
+<p class="ds-u-leading--lead ds-u-font-size--lead ds-u-margin--0 ds-u-margin-bottom--2">{{lorem-l}}</p>
+<p class="ds-u-leading--base ds-u-font-size--base ds-u-margin--0 ds-u-margin-bottom--2">{{lorem-l}}</p>
+<p class="ds-u-leading--reset ds-u-margin--0">{{lorem-s}}</p>
+
+Style guide: utilities.type.leading
+*/
+.ds-u-leading--base {
+  line-height: $base-line-height !important;
+}
+
+.ds-u-leading--lead {
+  line-height: $lead-line-height !important;
+}
+
+.ds-u-leading--heading {
+  line-height: $heading-line-height !important;
+}
+
+.ds-u-leading--reset {
+  line-height: $reset-line-height !important;
+}
+
+/*
+Alignment
+
+Align text using the alignment utility.
+
+**Format**: `ds-u-text-align--[VALUE]`
+
+Markup:
+<p class="ds-u-text-align--center">Center</p>
+<p class="ds-u-text-align--left">Left</p>
+<p class="ds-u-text-align--right">Right</p>
+
+Style guide: utilities.type.align
+*/
+.ds-u-text-align--center {
+  text-align: center !important;
+}
+
+.ds-u-text-align--left {
+  text-align: left !important;
+}
+
+.ds-u-text-align--right {
+  text-align: right !important;
+}
+
+/*
+Truncation
+
+Use the truncation utility to limit a text string to one line.
+
+### Accessibility
+
+Place the full text in a `title` attribute so that it’s accessible on hover.
+
+Markup:
+<p class="ds-u-truncate" title="{{lorem-l}}">{{lorem-l}}</p>
+
+Style guide: utilities.type.truncation
+*/
+.ds-u-truncate {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }

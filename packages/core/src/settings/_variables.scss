@@ -1,10 +1,34 @@
+@import '../tools/index';
+
 // Scaling
 // https://spec.fm/specifics/8-pt-grid
-$multiple: 8;
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$multiple: 8px !default;
 
-$xs: $multiple;
-$s: $multiple * 2; // base font size
-$m: $multiple * 3;
-$l: $multiple * 4;
-$xl: $multiple * 5;
-$xxl: $multiple * 6;
+$spacers: (
+  0,
+  $multiple,
+  $multiple * 2,
+  $multiple * 3,
+  $multiple * 4,
+  $multiple * 5,
+  $multiple * 6,
+  $multiple * 7
+) !default;
+
+$spacer-1: nth($spacers, 2) !default; // 8px
+$spacer-2: nth($spacers, 3) !default; // 16px
+$spacer-3: nth($spacers, 4) !default; // 24px
+$spacer-4: nth($spacers, 5) !default; // 32px
+$spacer-5: nth($spacers, 6) !default; // 40px
+$spacer-6: nth($spacers, 7) !default; // 48px
+$spacer-7: nth($spacers, 8) !default; // 56px
+
+// Typography
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// line-height (additional line-heights are defined as USWDS variables)
+$reset-line-height: 1 !default;
+
+// Color
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$background-body: #fff !default;
