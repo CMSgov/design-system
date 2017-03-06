@@ -1,13 +1,31 @@
+/* stylelint-disable selector-class-pattern */
+@import '../settings/index';
+
 /*
 Base
 
-The design system tries to avoid applying global styling using element-specific selectors, since this can make it difficult to include it selectively in an existing codebase. However, there are just a few base global styles that we apply to make the initial setup easier.
+A base layer of styling can be applied to an area of your site by adding the `ds-base` class. If you're implementing the design system on a new site, you would likely want to apply this class to the `<body>` element. On existing sites this might not be feasible and introduce unintended side effects. In which case, you could apply the `ds-base` class to an element which scopes the styling to its decendants.
 
-If you'd prefer not to have these styles applied, don't import the `base/index.scss` layer.
+Specifically, the base styling sets the following properties:
+
+- `color`
+- `font-family`
+- `font-size`
+- `line-height`
+
+Markup:
+<div class="ds-base">
+  {{lorem-l}}
+</div>
 
 Weight: 10
 
 Style guide: base
 */
-
-@import 'type';
+.ds-base {
+  color: $color-base;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+/* stylelint-enable */

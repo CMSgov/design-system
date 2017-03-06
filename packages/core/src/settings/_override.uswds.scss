@@ -3,18 +3,19 @@
 // Typography
 // USWDS uses rem units for their font sizes, however this relies on
 // the root element (typically <html>) to have its font size set to
-// 10px. Since styling a root element is out of the scope of this
-// design system, we simply use px units instead.
-$base-font-size:      17px !default;
-$small-font-size:     14px !default;
-$lead-font-size:      20px !default;
-$title-font-size:     52px !default;
-$h1-font-size:        40px !default;
-$h2-font-size:        30px !default;
-$h3-font-size:        20px !default;
-$h4-font-size:        17px !default;
-$h5-font-size:        15px !default;
-$h6-font-size:        13px !default;
+// 10px. Since styling a root element goes against the guiding principles
+// of this design system, we use px units instead.
+$base-font-size:      $spacer-2 !default;         // 16px
+$small-font-size:     $spacer-2 * 0.875 !default; // 14px
+$lead-font-size:      $spacer-2 * 1.125 !default; // 18px
+$title-font-size:     $spacer-6 !default;         // 48px
+
+$h1-font-size:        $spacer-5 !default;         // 40px
+$h2-font-size:        $spacer-4 !default;         // 32px
+$h3-font-size:        $spacer-3 !default;         // 24px
+$h4-font-size:        $spacer-2 !default;         // 16px
+$h5-font-size:        $small-font-size !default;
+$h6-font-size:        $small-font-size !default;
 
 $font-sans:           'Open Sans', Helvetica, sans-serif;
 $font-serif:          Bitter, Georgia, serif;

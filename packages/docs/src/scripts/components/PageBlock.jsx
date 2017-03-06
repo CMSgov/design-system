@@ -16,6 +16,7 @@ class PageBlock extends React.Component {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return <HTMLExample
                   key={modifier}
+                  hideMarkup={this.props.hideMarkup}
                   markup={this.props.markup}
                   modifier={modifier}
                   showTitle={true}
@@ -25,8 +26,12 @@ class PageBlock extends React.Component {
 
     return (
       <section>
-        <h3>CSS</h3>
-        <HTMLExample markup={this.props.markup} showTitle={!!this.props.modifiers.length} />
+        <h3>HTML</h3>
+        <HTMLExample
+          hideMarkup={this.props.hideMarkup}
+          markup={this.props.markup}
+          showTitle={!!this.props.modifiers.length}
+        />
         {modifierMarkup}
       </section>
     );
@@ -73,9 +78,11 @@ class PageBlock extends React.Component {
 
   render() {
     return (
-      <article>
-        <h1>{this.props.header}</h1>
-        <code>{this.props.source.filename}:{this.props.source.line}</code>
+      <article className="ds-u-margin-bottom--8">
+        <heading className="block__heading">
+          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">{this.props.header}</h1>
+          <code className="ds-u-font-size--base">{this.props.source.filename}:{this.props.source.line}</code>
+        </heading>
 
         <div dangerouslySetInnerHTML={{
           __html: this.props.description
@@ -96,6 +103,7 @@ class PageBlock extends React.Component {
 PageBlock.propTypes = {
   description: React.PropTypes.string,
   header: React.PropTypes.string.isRequired,
+  hideMarkup: React.PropTypes.bool,
   markup: React.PropTypes.string,
   modifiers: React.PropTypes.array,
   hasReactComponent: React.PropTypes.bool,

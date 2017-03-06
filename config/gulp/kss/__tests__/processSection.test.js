@@ -6,7 +6,8 @@ describe('processSection', () => {
     return {
       toJSON: () => (
         {
-          description: '<p>Hello world</p><p>@react-component</p>',
+          description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p>',
+          markup: '<% var foo="bar" %><%= foo %>',
           modifiers: [{
             name: '.primary',
             description: 'The primary action',
@@ -16,7 +17,7 @@ describe('processSection', () => {
           reference: reference
         }
       )
-    }
+    };
   };
 
   let data;
@@ -27,7 +28,12 @@ describe('processSection', () => {
 
   it('sets and replaces flags', () => {
     expect(data.hasReactComponent).toEqual(true);
+    expect(data.hideMarkup).toEqual(true);
     expect(data.description).toEqual('<p>Hello world</p>');
+  });
+
+  it('renders EJS', () => {
+    expect(data.markup).toEqual('bar');
   });
 
   it('adds a sections property', () => {

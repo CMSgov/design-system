@@ -2,6 +2,8 @@ $code-background-color: $color-cool-blue-lightest;
 
 code {
   background-color: $color-gray-lightest;
+  font-family: $monospace;
+  font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
@@ -10,7 +12,6 @@ code {
 
 pre {
   background-color: $color-gray-lightest;
-  font-size: 13px;
 
   // Override styles applied by Prism
   // stylelint-disable selector-no-qualifying-type
@@ -22,6 +23,7 @@ pre {
 
   code {
     background-color: transparent;
+    line-height: 1;
     margin-left: 0;
     margin-right: 0;
   }
