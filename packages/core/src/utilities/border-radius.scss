@@ -1,0 +1,32 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Border radius
+
+Apply rounded corners to an element with the border radius utility.
+
+#### Available `border-radius` options:
+
+- `ds-u-radius` Applies the default `$border-radius` (3px)
+- `ds-u-radius--pill`
+- `ds-u-radius--circle` Can make a circle when combined with a fixed height and width.
+
+Markup:
+<p class="ds-u-radius ds-u-fill--green-lighter">Round</p>
+<p class="ds-u-radius--pill ds-u-fill--green-lighter">Pill</p>
+<p class="ds-u-radius--circle ds-u-fill--green-lighter ds-u-padding--3 ds-u-display--inline-block"></p>
+
+Style guide: utilities.border-radius
+*/
+.ds-u-radius {
+  border-radius: $border-radius;
+}
+
+.ds-u-radius--pill {
+  border-radius: 9999px;
+}
+
+.ds-u-radius--circle {
+  border-radius: 100%;
+}
