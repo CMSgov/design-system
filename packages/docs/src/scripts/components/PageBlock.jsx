@@ -76,11 +76,24 @@ class PageBlock extends React.Component {
     }
   }
 
+  statusPill() {
+    if (this.props.status) {
+      return (
+        <span className="ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize ds-u-valign--middle ds-u-fill--warn ds-u-color--base">
+          {this.props.status}
+        </span>
+      );
+    }
+  }
+
   render() {
     return (
       <article className="ds-u-margin-bottom--8">
         <heading className="block__heading">
-          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">{this.props.header}</h1>
+          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">
+            {this.props.header}
+            {this.statusPill()}
+          </h1>
           <code className="ds-u-font-size--base">{this.props.source.filename}:{this.props.source.line}</code>
         </heading>
 
@@ -112,7 +125,8 @@ PageBlock.propTypes = {
     filename: React.PropTypes.string.isRequired,
     line: React.PropTypes.number.isRequired,
     path: React.PropTypes.string.isRequired
-  })
+  }),
+  status: React.PropTypes.string
 };
 
 export default PageBlock;

@@ -6,7 +6,7 @@ describe('processSection', () => {
     return {
       toJSON: () => (
         {
-          description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p>',
+          description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p><p>@status prototype</p>',
           markup: '<% var foo="bar" %><%= foo %>',
           modifiers: [{
             name: '.primary',
@@ -29,6 +29,7 @@ describe('processSection', () => {
   it('sets and replaces flags', () => {
     expect(data.hasReactComponent).toEqual(true);
     expect(data.hideMarkup).toEqual(true);
+    expect(data.status).toEqual('prototype');
     expect(data.description).toEqual('<p>Hello world</p>');
   });
 

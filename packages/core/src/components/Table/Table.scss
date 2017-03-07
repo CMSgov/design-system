@@ -1,27 +1,29 @@
 @import '../../settings/index';
 
 /*
-  Tables
+Tables
 
-  Markup:
-  <table class="ds-c-table {{modifier}}">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Favorite fruit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fred</td>
-        <td>Apples</td>
-      </tr>
-    </tbody>
-  </table>
+@status prototype
 
-  .ds-c-table--borderless - Borderless table
+Markup:
+<table class="ds-c-table {{modifier}}">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Favorite fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fred</td>
+      <td>Apples</td>
+    </tr>
+  </tbody>
+</table>
 
-  Style guide: components.tables
+.ds-c-table--borderless - Borderless table
+
+Style guide: components.tables
 */
 .ds-c-table {
   border-spacing: 0;
