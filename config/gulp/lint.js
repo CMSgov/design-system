@@ -2,7 +2,17 @@ const argv = require('yargs').argv;
 const count = require('gulp-count');
 const eslint = require('gulp-eslint');
 const stylelint = require('gulp-stylelint');
-const stylelintConfig = require('../stylelint');
+const stylelintConfig = require('../../stylelint.config');
+
+/**
+ * Class naming pattern
+ * ~~~~~~~~~~~~~~~~~~~
+ * Namespaced with: ds-
+ * Followed by a prefix: l- c- u- is- has-
+ * Followed by BEM syntax: [BLOCK]__[ELEMENT]--[MODIFIER]
+ * Examples: .ds-c-button--primary, .ds-c-card__title, .ds-u-text-underlined
+ */
+const systemNamePattern = /^(ds-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 module.exports = (gulp) => {
   // Lint Sass files using stylelint. Further configuration for CSS linting
@@ -10,9 +20,9 @@ module.exports = (gulp) => {
   function lintSass(cwd, enforceNamePattern = true) {
     let config = stylelintConfig;
 
-    if (!enforceNamePattern) {
+    if (enforceNamePattern) {
       config = Object.assign({}, config);
-      config.rules['selector-class-pattern'] = null;
+      config.rules['selector-class-pattern'] = systemNamePattern;
     }
 
     return gulp
