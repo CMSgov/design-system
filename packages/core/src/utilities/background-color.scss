@@ -22,11 +22,9 @@ Markup:
   ['primary', 'primary-darker', 'primary-darkest'],
   ['primary-alt', 'primary-alt-dark', 'primary-alt-darkest', 'primary-alt-light', 'primary-alt-lightest'],
   ['secondary', 'secondary-dark', 'secondary-darkest', 'secondary-light', 'secondary-lightest'],
-  ['gray', 'gray-dark', 'gray-medium', 'gray-light', 'gray-lighter', 'gray-lightest'],
-  ['gray-warm-dark', 'gray-warm-light', 'gray-cool-light'],
+  ['gray', 'gray-dark', 'gray-light', 'gray-lighter', 'gray-lightest'],
   ['gold', 'gold-light', 'gold-lighter', 'gold-lightest'],
   ['green', 'green-light', 'green-lighter', 'green-lightest'],
-  ['cool-blue', 'cool-blue-light', 'cool-blue-lighter', 'cool-blue-lightest'],
   ['base', 'background', 'white', 'transparent']
 ]; -%>
 <% groups.forEach(group => { -%>
@@ -107,10 +105,6 @@ Style guide: utilities.background-color
   background-color: $color-gray-dark !important;
 }
 
-.ds-u-fill--gray-medium {
-  background-color: $color-gray-medium !important;
-}
-
 .ds-u-fill--gray-light {
   background-color: $color-gray-light !important;
 }
@@ -121,18 +115,6 @@ Style guide: utilities.background-color
 
 .ds-u-fill--gray-lightest {
   background-color: $color-gray-lightest !important;
-}
-
-.ds-u-fill--gray-warm-dark {
-  background-color: $color-gray-warm-dark !important;
-}
-
-.ds-u-fill--gray-warm-light {
-  background-color: $color-gray-warm-light !important;
-}
-
-.ds-u-fill--gray-cool-light {
-  background-color: $color-gray-cool-light !important;
 }
 
 // gold
@@ -167,23 +149,6 @@ Style guide: utilities.background-color
 
 .ds-u-fill--green-lightest{
   background-color: $color-green-lightest !important;
-}
-
-// cool-blue
-.ds-u-fill--cool-blue{
-  background-color: $color-cool-blue !important;
-}
-
-.ds-u-fill--cool-blue-light{
-  background-color: $color-cool-blue-light !important;
-}
-
-.ds-u-fill--cool-blue-lighter{
-  background-color: $color-cool-blue-lighter !important;
-}
-
-.ds-u-fill--cool-blue-lightest{
-  background-color: $color-cool-blue-lightest !important;
 }
 
 // base colors
