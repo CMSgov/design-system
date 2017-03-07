@@ -1,0 +1,60 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+@import '../tools/index';
+
+/*
+Padding
+
+Use the padding utility to change an element's padding. All padding values are multiples of `8px` and can be inferred by the class name. For example, `ds-u-padding-top--3` can be understood as applying a `padding-top` of `24px` (`3 * 8px = 24px`).
+
+**Format**: `ds-u-padding-[x|y|bottom|left|right|top]--[MULTIPLE]`
+
+@hide-markup
+
+Markup:
+<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
+<% for (var i = 0; i < 8; i++) { %>
+<div class="ds-u-fill--base ds-u-color--white ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
+  <code class="ds-u-fill--transparent">ds-u-padding<%= name %>--<%= i %></code>
+</div>
+<% } -%>
+<% }) -%>
+
+Style guide: utilities.padding
+*/
+@for $i from 1 through length($spacers) {
+  $size: #{nth($spacers, $i)};
+  $scale: #{$i - 1};
+
+  // Example: ds-u-padding--0
+  .ds-u-padding--#{$scale} {
+    // Example: padding: 0 !important;
+    padding: #{$size} !important;
+  }
+
+  .ds-u-padding-top--#{$scale} {
+    padding-top: #{$size} !important;
+  }
+
+  .ds-u-padding-right--#{$scale} {
+    padding-right: #{$size} !important;
+  }
+
+  .ds-u-padding-bottom--#{$scale} {
+    padding-bottom: #{$size} !important;
+  }
+
+  .ds-u-padding-left--#{$scale} {
+    padding-left: #{$size} !important;
+  }
+
+  .ds-u-padding-x--#{$scale} {
+    padding-right: #{$size} !important;
+    padding-left: #{$size} !important;
+  }
+
+  .ds-u-padding-y--#{$scale} {
+    padding-top: #{$size} !important;
+    padding-bottom: #{$size} !important;
+  }
+}
