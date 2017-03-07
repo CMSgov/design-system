@@ -10,9 +10,7 @@ In CSS, the `line-height` property controls the leading (`led-ing`). Leading ref
 
 ### Accessibility
 
-> Many people with cognitive disabilities have trouble tracking lines of text when a block of text is single spaced. Providing spacing between `1.5` to `2` allows them to start a new line more easily once they have finished the previous one.
-
-[&mdash; WCAG 2.0 Compliance Techniques](https://www.w3.org/TR/WCAG20-TECHS/C21.html)
+> Many people with cognitive disabilities have trouble tracking lines of text when a block of text is single spaced. Providing spacing between `1.5` to `2` allows them to start a new line more easily once they have finished the previous one. &mdash; [WCAG 2.0 Compliance Techniques](https://www.w3.org/TR/WCAG20-TECHS/C21.html)
 
 Markup:
 <p class="ds-u-leading--heading ds-u-font-size--h1 ds-u-margin--0 ds-u-margin-bottom--2">{{lorem-m}}</p>
