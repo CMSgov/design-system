@@ -1,0 +1,28 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Text transform
+
+Set the capitalization of text using the text transform utility.
+
+**Format**: `ds-u-text-transform--[VALUE]`
+
+Markup:
+<p class="ds-u-text-transform--uppercase">uppercase transform</p>
+<p class="ds-u-text-transform--lowercase">Lowercase transform</p>
+<p class="ds-u-text-transform--capitalize">capitalized transform</p>
+
+Style guide: utilities.text-transform
+*/
+.ds-u-text-transform--uppercase {
+  text-transform: uppercase !important;
+}
+
+.ds-u-text-transform--lowercase {
+  text-transform: lowercase !important;
+}
+
+.ds-u-text-transform--capitalize {
+  text-transform: capitalize !important;
+}

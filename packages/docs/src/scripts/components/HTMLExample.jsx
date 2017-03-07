@@ -32,7 +32,7 @@ class HTMLExample extends React.Component {
   snippet() {
     if (!this.props.hideMarkup) {
       return (
-        <pre className="c-markup__snippet language-markup">
+        <pre className="language-markup">
           <code
             dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
@@ -59,7 +59,7 @@ class HTMLExample extends React.Component {
     return (
       <div className="markup markup--html">
         {this.title()}
-        <div className="c-markup__preview"
+        <div className="ds-u-border--1 ds-u-padding--1"
           dangerouslySetInnerHTML={{ __html: markup }}
         />
         {this.snippet()}

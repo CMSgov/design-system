@@ -26,13 +26,13 @@ Markup:
 Style guide: utilities.measure
 */
 .ds-u-measure--narrow {
-  max-width: $measure-narrow;
+  max-width: $measure-narrow !important;
 }
 
 .ds-u-measure--base {
-  max-width: $measure-base;
+  max-width: $measure-base !important;
 }
 
 .ds-u-measure--wide {
-  max-width: $measure-wide;
+  max-width: $measure-wide !important;
 }

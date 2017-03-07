@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a2f8227f196a6e3946ab"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2c00d450415b194d4947"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -14690,7 +14690,7 @@ var HTMLExample = function (_React$Component) {
       if (!this.props.hideMarkup) {
         return _react2.default.createElement(
           'pre',
-          { className: 'c-markup__snippet language-markup' },
+          { className: 'language-markup' },
           _react2.default.createElement('code', {
             dangerouslySetInnerHTML: { __html: this.highlightedMarkup() } })
         );
@@ -14727,7 +14727,7 @@ var HTMLExample = function (_React$Component) {
         'div',
         { className: 'markup markup--html' },
         this.title(),
-        _react2.default.createElement('div', { className: 'c-markup__preview',
+        _react2.default.createElement('div', { className: 'ds-u-border--1 ds-u-padding--1',
           dangerouslySetInnerHTML: { __html: markup }
         }),
         this.snippet()
@@ -14951,7 +14951,7 @@ var Page = function (_React$Component) {
   _createClass(Page, [{
     key: 'childSections',
     value: function childSections() {
-      if (this.props.sections.length) {
+      if (this.props.sections.length && this.props.depth >= 2) {
         return this.props.sections.map(function (section) {
           return _react2.default.createElement(_PageBlock2.default, _extends({ key: section.referenceNumber }, section));
         });
@@ -14973,6 +14973,7 @@ var Page = function (_React$Component) {
 }(_react2.default.Component);
 
 Page.propTypes = {
+  depth: _react2.default.PropTypes.number.isRequired,
   sections: _react2.default.PropTypes.array
 };
 
@@ -15329,12 +15330,12 @@ var ReactComponentExample = function (_React$Component) {
         { className: 'markup markup--react' },
         _react2.default.createElement(
           'div',
-          { className: 'c-markup__preview' },
+          { className: 'ds-u-border--1 ds-u-padding--1' },
           this.props.renderComponent()
         ),
         _react2.default.createElement(
           'pre',
-          { className: 'c-markup__snippet language-jsx' },
+          { className: 'language-jsx' },
           _react2.default.createElement('code', {
             dangerouslySetInnerHTML: { __html: this.highlightedMarkup() } })
         )
@@ -34546,6 +34547,19 @@ exports.default = valueEqual;
 /***/ (function(module, exports) {
 
 module.exports = {
+	"core/src/components/Badge/Badge.jsx": {
+		"description": "",
+		"displayName": "Badge",
+		"props": {
+			"children": {
+				"type": {
+					"name": "any"
+				},
+				"required": true,
+				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
+			}
+		}
+	},
 	"core/src/components/Button/Button.jsx": {
 		"description": "",
 		"displayName": "Button",
@@ -34625,19 +34639,6 @@ module.exports = {
 				}
 			}
 		}
-	},
-	"core/src/components/Badge/Badge.jsx": {
-		"description": "",
-		"displayName": "Badge",
-		"props": {
-			"children": {
-				"type": {
-					"name": "any"
-				},
-				"required": true,
-				"description": "In most cases this will be the badge's label, but you could also use this\nto nest more advanced JSX."
-			}
-		}
 	}
 };
 
@@ -34669,14 +34670,14 @@ module.exports = [
 	},
 	{
 		"header": "Utilities",
-		"description": "<p>Utility class names follow the format: <code>ds-u-[NAME]</code></p>\n<p>A utility class modifies a single trait. To apply a trait, or a combination of traits to an element, add the corresponding class directly to the HTML element.</p>\n<p>Together, they can form a variety of UI patterns. You won&#39;t always want to use combinations of utilities to generate more complicated patterns, but the option is there. Once you&#39;ve identified a set of traits that seem to be reused a lot, it&#39;s a good time to consider turning those into a component.</p>\n",
+		"description": "<p>Utility class names follow the format: <code>ds-u-[NAME]</code></p>\n<p>A utility class modifies a single trait, typically a single CSS property. To apply a trait, or a combination of traits to an element, add the corresponding utility class directly to the HTML element.</p>\n<p>Together, they can form a variety of UI patterns. You won&#39;t always want to use combinations of utilities to generate more complicated patterns, but the option is there. Once you&#39;ve identified a set of traits that seem to be reused a lot, it&#39;s a good time to consider turning those into a component.</p>\n",
 		"deprecated": false,
 		"experimental": false,
 		"reference": "utilities",
 		"referenceNumber": "2",
 		"referenceURI": "utilities",
 		"weight": 20,
-		"markup": "",
+		"markup": "<div class=\"ds-u-fill--primary-alt ds-u-padding--3\">\n  <p class=\"ds-u-margin--0 ds-u-color--white ds-u-text-align--center\">Hello world</p>\n</div>",
 		"source": {
 			"filename": "utilities/index.scss",
 			"path": "packages/core/src/utilities/index.scss",
@@ -34687,61 +34688,18 @@ module.exports = [
 		"parameters": [],
 		"sections": [
 			{
-				"header": "Color",
-				"description": "<p>Utilities exist for changing the default text or background color of an element.</p>\n",
+				"header": "Background color",
+				"description": "<p>Use the background color utility to change the default background color of an element. Each background color group may have a <code>dark</code>, <code>darker</code>, <code>darkest</code>, <code>light</code>, <code>lighter</code> and <code>lightest</code> shade modifier.</p>\n<p>Color groups include:</p>\n<ul>\n<li><strong>primary</strong> - The dominant brand color, used for things like links and call-to-actions</li>\n<li><strong>primary-alt</strong> - A variation of the dominant brand color</li>\n<li><strong>secondary</strong> - A secondary brand color that can be used for accents and call-to-action variations.</li>\n<li><strong>tertiary</strong> - Complementary accent colors</li>\n<li><strong>state</strong> - Colors used to indicate a message state like success, pending, and warning.</li>\n</ul>\n<p><strong>Format</strong>: <code>ds-u-fill--[NAME]-[SHADE]</code></p>\n\n",
 				"deprecated": false,
 				"experimental": false,
-				"reference": "utilities.color",
+				"reference": "utilities.background-color",
 				"referenceNumber": "2.1",
-				"referenceURI": "utilities-color",
+				"referenceURI": "utilities-background-color",
 				"weight": 0,
-				"markup": "",
+				"markup": "<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-darker\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-darker</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-darkest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-darkest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-alt\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-alt</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-alt-dark\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-alt-dark</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-alt-darkest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-alt-darkest</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-alt-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-alt-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--primary-alt-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--primary-alt-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--secondary\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--secondary</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--secondary-dark\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--secondary-dark</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--secondary-darkest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--secondary-darkest</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--secondary-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--secondary-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--secondary-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--secondary-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gray\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gray</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gray-dark\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gray-dark</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gray-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gray-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gray-lighter\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gray-lighter</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gray-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gray-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gold\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gold</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gold-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gold-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gold-lighter\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gold-lighter</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--gold-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--gold-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--warn\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--warn</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--warn-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--warn-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--warn-lighter\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--warn-lighter</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--warn-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--warn-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--green\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--green</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--green-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--green-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--green-lighter\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--green-lighter</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--green-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--green-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--success\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--success</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--success-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--success-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--success-lighter\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--success-lighter</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--success-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--success-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--error\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--error</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--error-dark\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--error-dark</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--error-darkest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--error-darkest</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--error-light\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--error-light</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--error-lightest\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--error-lightest</code>\n  </article>\n</div>\n<div class=\"d-u-margin-bottom-2 ds-u-clearfix\">\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--base\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--base</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--background\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--background</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--white\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--white</code>\n  </article>\n  <article class=\"c-swatch ds-u-margin-bottom--2\">\n    <div class=\"c-swatch__preview ds-u-fill--transparent\"></div>\n    <code class=\"c-swatch__label ds-u-display--block ds-u-margin--0\">.ds-u-fill--transparent</code>\n  </article>\n</div>\n",
 				"source": {
-					"filename": "utilities/color.scss",
-					"path": "packages/core/src/utilities/color.scss",
-					"line": 4
-				},
-				"depth": 2,
-				"modifiers": [],
-				"parameters": [],
-				"sections": [
-					{
-						"header": "Backgrounds",
-						"description": "<p>Use the background color utility to change the default background color of an element. Each background color group may have a <code>dark</code>, <code>darker</code>, <code>darkest</code>, <code>light</code>, <code>lighter</code> and <code>lightest</code> shade modifier.</p>\n<p>Color groups include:</p>\n<ul>\n<li><strong>primary</strong> - The dominant brand color, used for things like links and call-to-actions</li>\n<li><strong>primary-alt</strong> - A variation of the dominant brand color</li>\n<li><strong>secondary</strong> - A secondary brand color that can be used for accents and call-to-action variations.</li>\n<li><strong>tertiary</strong> - Complementary accent colors</li>\n<li><strong>state</strong> - Colors used to indicate a message state like success, pending, and warning.</li>\n</ul>\n<p><strong>Format</strong>: <code>ds-u-fill--[NAME]-[SHADE]</code></p>\n",
-						"deprecated": false,
-						"experimental": false,
-						"reference": "utilities.color.background",
-						"referenceNumber": "2.1.1",
-						"referenceURI": "utilities-color-background",
-						"weight": 0,
-						"markup": "<span class=\"ds-u-fill--primary c-swatch\"></span>\n<span class=\"ds-u-fill--primary-darker c-swatch\"></span>\n<span class=\"ds-u-fill--primary-darkest c-swatch\"></span>\n<br/>\n<span class=\"ds-u-fill--primary-alt c-swatch\"></span>\n<span class=\"ds-u-fill--primary-alt-dark c-swatch\"></span>\n<span class=\"ds-u-fill--primary-alt-darkest c-swatch\"></span>\n<span class=\"ds-u-fill--primary-alt-light c-swatch\"></span>\n<span class=\"ds-u-fill--primary-alt-lightest c-swatch\"></span>\n<br/>\n<span class=\"ds-u-fill--secondary c-swatch\"></span>\n<span class=\"ds-u-fill--secondary-dark c-swatch\"></span>\n<span class=\"ds-u-fill--secondary-darkest c-swatch\"></span>\n<span class=\"ds-u-fill--secondary-light c-swatch\"></span>\n<span class=\"ds-u-fill--secondary-lightest c-swatch\"></span>\n<br/>\n<span class=\"ds-u-fill--gray c-swatch\"></span>\n<span class=\"ds-u-fill--gray-dark c-swatch\"></span>\n<span class=\"ds-u-fill--gray-medium c-swatch\"></span>\n<span class=\"ds-u-fill--gray-light c-swatch\"></span>\n<span class=\"ds-u-fill--gray-lighter c-swatch\"></span>\n<span class=\"ds-u-fill--gray-lightest c-swatch\"></span>\n<br/>\n<span class=\"ds-u-fill--gray-warm-dark c-swatch\"></span>\n<span class=\"ds-u-fill--gray-warm-light c-swatch\"></span>\n<span class=\"ds-u-fill--gray-cool-light c-swatch\"></span>",
-						"source": {
-							"filename": "utilities/color.scss",
-							"path": "packages/core/src/utilities/color.scss",
-							"line": 12
-						},
-						"depth": 3,
-						"modifiers": [],
-						"parameters": [],
-						"sections": [],
-						"parentReference": "utilities.color"
-					}
-				],
-				"parentReference": "utilities"
-			},
-			{
-				"header": "Margin",
-				"description": "<p><strong>Format</strong>: <code>ds-u-margin-[x|y|bottom|left|right|top]--[MULTIPLE]</code></p>\n\n",
-				"deprecated": false,
-				"experimental": false,
-				"reference": "utilities.spacing",
-				"referenceNumber": "2.2",
-				"referenceURI": "utilities-spacing",
-				"weight": 0,
-				"markup": "<div class=\"u-fill--tile\">\n\n  <div class=\"ds-u-margin--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--0</code>\n  </div>\n\n  <div class=\"ds-u-margin--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--1</code>\n  </div>\n\n  <div class=\"ds-u-margin--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--2</code>\n  </div>\n\n  <div class=\"ds-u-margin--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--3</code>\n  </div>\n\n  <div class=\"ds-u-margin--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--4</code>\n  </div>\n\n  <div class=\"ds-u-margin--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--5</code>\n  </div>\n\n  <div class=\"ds-u-margin--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--6</code>\n  </div>\n\n  <div class=\"ds-u-margin--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--7</code>\n  </div>\n\n  <div class=\"ds-u-margin--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-x--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-x--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-y--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-y--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-bottom--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-bottom--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-left--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-left--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-right--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-right--8</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--0 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--0</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--1 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--1</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--2 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--2</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--3 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--3</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--4 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--4</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--5 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--5</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--6 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--6</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--7 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--7</code>\n  </div>\n\n  <div class=\"ds-u-margin-top--8 ds-u-fill--white\">\n    <code class=\"ds-u-fill--white\">.ds-u-margin-top--8</code>\n  </div>\n</div>",
-				"source": {
-					"filename": "utilities/spacing.scss",
-					"path": "packages/core/src/utilities/spacing.scss",
+					"filename": "utilities/background-color.scss",
+					"path": "packages/core/src/utilities/background-color.scss",
 					"line": 4
 				},
 				"depth": 2,
@@ -34752,109 +34710,364 @@ module.exports = [
 				"parentReference": "utilities"
 			},
 			{
-				"header": "Typography",
-				"description": "",
+				"header": "Border",
+				"description": "<h4 id=\"border-size-\">Border size:</h4>\n<p>Choose between a border size of <code>0</code>, <code>1px</code> or <code>2px</code>.</p>\n<p><strong>Format</strong>: <code>ds-u-border-[x|y|bottom|left|right|top]--[SIZE]</code></p>\n\n",
 				"deprecated": false,
 				"experimental": false,
-				"reference": "utilities.type",
-				"referenceNumber": "2.3",
-				"referenceURI": "utilities-type",
+				"reference": "utilities.border",
+				"referenceNumber": "2.2",
+				"referenceURI": "utilities-border",
 				"weight": 0,
-				"markup": "",
+				"markup": "\n<div class=\"ds-u-border--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border--0</code>\n</div>\n\n<div class=\"ds-u-border--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border--1</code>\n</div>\n\n<div class=\"ds-u-border--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border--2</code>\n</div>\n\n<div class=\"ds-u-border-x--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-x--0</code>\n</div>\n\n<div class=\"ds-u-border-x--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-x--1</code>\n</div>\n\n<div class=\"ds-u-border-x--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-x--2</code>\n</div>\n\n<div class=\"ds-u-border-y--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-y--0</code>\n</div>\n\n<div class=\"ds-u-border-y--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-y--1</code>\n</div>\n\n<div class=\"ds-u-border-y--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-y--2</code>\n</div>\n\n<div class=\"ds-u-border-bottom--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-bottom--0</code>\n</div>\n\n<div class=\"ds-u-border-bottom--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-bottom--1</code>\n</div>\n\n<div class=\"ds-u-border-bottom--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-bottom--2</code>\n</div>\n\n<div class=\"ds-u-border-left--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-left--0</code>\n</div>\n\n<div class=\"ds-u-border-left--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-left--1</code>\n</div>\n\n<div class=\"ds-u-border-left--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-left--2</code>\n</div>\n\n<div class=\"ds-u-border-right--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-right--0</code>\n</div>\n\n<div class=\"ds-u-border-right--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-right--1</code>\n</div>\n\n<div class=\"ds-u-border-right--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-right--2</code>\n</div>\n\n<div class=\"ds-u-border-top--0 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-top--0</code>\n</div>\n\n<div class=\"ds-u-border-top--1 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-top--1</code>\n</div>\n\n<div class=\"ds-u-border-top--2 ds-u-margin--1 ds-u-padding--1\">\n  <code class=\"ds-u-fill--background\">ds-u-border-top--2</code>\n</div>\n",
 				"source": {
-					"filename": "utilities/type.scss",
-					"path": "packages/core/src/utilities/type.scss",
-					"line": 1
+					"filename": "utilities/border.scss",
+					"path": "packages/core/src/utilities/border.scss",
+					"line": 5
 				},
 				"depth": 2,
 				"modifiers": [],
 				"parameters": [],
-				"sections": [
-					{
-						"header": "Alignment",
-						"description": "<p>Align text using the alignment utility.</p>\n<p><strong>Format</strong>: <code>ds-u-text-align--[VALUE]</code></p>\n",
-						"deprecated": false,
-						"experimental": false,
-						"reference": "utilities.type.align",
-						"referenceNumber": "2.3.1",
-						"referenceURI": "utilities-type-align",
-						"weight": 0,
-						"markup": "",
-						"source": {
-							"filename": "utilities/type.scss",
-							"path": "packages/core/src/utilities/type.scss",
-							"line": 90
-						},
-						"depth": 3,
-						"modifiers": [],
-						"parameters": [],
-						"sections": [],
-						"parentReference": "utilities.type"
-					},
-					{
-						"header": "Line height",
-						"description": "<p>In CSS, the <code>line-height</code> property controls the leading. Leading refers to the vertical distance from the baseline of one line to the baseline of the next.</p>\n<p><strong>Format</strong>: <code>ds-u-leading--[NAME]</code></p>\n<h3 id=\"accessibility\">Accessibility</h3>\n<blockquote>\n<p>Many people with cognitive disabilities have trouble tracking lines of text when a block of text is single spaced. Providing spacing between <code>1.5</code> to <code>2</code> allows them to start a new line more easily once they have finished the previous one.</p>\n</blockquote>\n<p><a href=\"https://www.w3.org/TR/WCAG20-TECHS/C21.html\">&mdash; WCAG 2.0 Compliance Techniques</a></p>\n",
-						"deprecated": false,
-						"experimental": false,
-						"reference": "utilities.type.leading",
-						"referenceNumber": "2.3.2",
-						"referenceURI": "utilities-type-leading",
-						"weight": 0,
-						"markup": "<p class=\"ds-u-leading--heading ds-u-font-size--h1 ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-m}}</p>\n<p class=\"ds-u-leading--lead ds-u-font-size--lead ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-l}}</p>\n<p class=\"ds-u-leading--copy ds-u-font-size--base ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-l}}</p>\n<p class=\"ds-u-leading--reset ds-u-margin--0\">{{lorem-s}}</p>",
-						"source": {
-							"filename": "utilities/type.scss",
-							"path": "packages/core/src/utilities/type.scss",
-							"line": 53
-						},
-						"depth": 3,
-						"modifiers": [],
-						"parameters": [],
-						"sections": [],
-						"parentReference": "utilities.type"
-					},
-					{
-						"header": "Font size",
-						"description": "<p>Use the font size utility to make the text larger or smaller.</p>\n<p><strong>Format</strong>: <code>ds-u-font-size--[SIZE]</code></p>\n",
-						"deprecated": false,
-						"experimental": false,
-						"reference": "utilities.type.size",
-						"referenceNumber": "2.3.3",
-						"referenceURI": "utilities-type-size",
-						"weight": 0,
-						"markup": "<p class=\"ds-u-font-size--title ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h1 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h2 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h3 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--lead ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--base ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--small ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n",
-						"source": {
-							"filename": "utilities/type.scss",
-							"path": "packages/core/src/utilities/type.scss",
-							"line": 10
-						},
-						"depth": 3,
-						"modifiers": [],
-						"parameters": [],
-						"sections": [],
-						"parentReference": "utilities.type"
-					},
-					{
-						"header": "Truncation",
-						"description": "<p>Use the truncation utility to limit a text string to one line.</p>\n<h3 id=\"accessibility\">Accessibility</h3>\n<p>Place the full text in a <code>title</code> attribute so that it’s accessible on hover.</p>\n",
-						"deprecated": false,
-						"experimental": false,
-						"reference": "utilities.type.truncation",
-						"referenceNumber": "2.3.4",
-						"referenceURI": "utilities-type-truncation",
-						"weight": 0,
-						"markup": "<p class=\"ds-u-truncate\" title=\"{{lorem-l}}\">{{lorem-l}}</p>",
-						"source": {
-							"filename": "utilities/type.scss",
-							"path": "packages/core/src/utilities/type.scss",
-							"line": 111
-						},
-						"depth": 3,
-						"modifiers": [],
-						"parameters": [],
-						"sections": [],
-						"parentReference": "utilities.type"
-					}
-				],
+				"sections": [],
+				"hideMarkup": true,
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Clearfix",
+				"description": "<p>The clearfix utility can be applied to an element to clear floats around the element.</p>\n<p><strong>Format</strong>: <code>ds-u-clearfix</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.clearfix",
+				"referenceNumber": "2.3",
+				"referenceURI": "utilities-clearfix",
+				"weight": 0,
+				"markup": "",
+				"source": {
+					"filename": "utilities/overflow.scss",
+					"path": "packages/core/src/utilities/overflow.scss",
+					"line": 33
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Color (text)",
+				"description": "<p>Use the color utility to change an element&#39;s text color.</p>\n<p><strong>Format</strong>: <code>ds-u-color--[NAME]-[SHADE]</code></p>\n<h2 id=\"accessibility\">Accessibility</h2>\n<p>WCAG (Web Content Accessibility Guidelines) ensure that content is accessible by everyone, regardless of disability or user device. To meet these standards, text and interactive elements should have a color contrast ratio of <a href=\"http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\">at least 4.5:1</a>. This ensures that viewers who cannot see the full color spectrum are able to read the text.</p>\n<p>The options below offer color palette combinations that fall within the range of Section 508 compliant foreground/background color contrast ratios. To ensure that text remains accessible, <strong>use only these permitted color combinations</strong>.</p>\n\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.color",
+				"referenceNumber": "2.4",
+				"referenceURI": "utilities-color",
+				"weight": 0,
+				"markup": "  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--black ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--black</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--primary ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--primary</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--primary-darker ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--primary-darker</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--primary-darkest ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--primary-darkest</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--primary-alt-darkest ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--primary-alt-darkest</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--secondary ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--secondary</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--secondary-dark ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--secondary-dark</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--secondary-darkest ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--secondary-darkest</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--error ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--error</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--error-dark ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--error-dark</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--error-darkest ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--error-darkest</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--gray ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--gray</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--gray-dark ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--gray-dark</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--green ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--green</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--success ds-u-fill--white\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--success</code> on white\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--base\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on base\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--gray-dark\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on gray-dark\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--gray\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on gray\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--primary-darkest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on primary-darkest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--primary-darker\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on primary-darker\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--primary\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on primary\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--primary-alt-darkest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on primary-alt-darkest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--primary-alt-dark\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on primary-alt-dark\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--primary-alt\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on primary-alt\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--green\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on green\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--green-light\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on green-light\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gold\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gold\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gold-light\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gold-light\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--secondary-darkest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on secondary-darkest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--secondary-dark\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on secondary-dark\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--white ds-u-fill--secondary\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--white</code> on secondary\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gray-light\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gray-light\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gray-lighter\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gray-lighter\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--primary-alt-lightest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on primary-alt-lightest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--green-lighter\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on green-lighter\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--green-lightest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on green-lightest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gold-lighter\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gold-lighter\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--gold-lightest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on gold-lightest\n    </p>\n  </article>\n  <article class=\"ds-u-margin-bottom--2\">\n    <p class=\"ds-u-color--base ds-u-fill--secondary-lightest\">\n      <code class=\"ds-u-fill--transparent\">.ds-u-color--base</code> on secondary-lightest\n    </p>\n  </article>\n",
+				"source": {
+					"filename": "utilities/color.scss",
+					"path": "packages/core/src/utilities/color.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"hideMarkup": true,
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Display",
+				"description": "<p>Use the display utility to set the <code>display</code> property of an element.</p>\n<blockquote>\n<p>The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/display\">MDN</a></p>\n</blockquote>\n<p><strong>Format</strong>: <code>ds-u-display--[VALUE]</code></p>\n<h4 id=\"available-display-options-\">Available <code>display</code> options:</h4>\n<ul>\n<li><code>ds-u-display--block</code></li>\n<li><code>ds-u-display--inline-block</code></li>\n<li><code>ds-u-display--inline</code></li>\n<li><code>ds-u-display--none</code></li>\n</ul>\n<h1 id=\"visibility\">Visibility</h1>\n<p>Use the visibility utility to set the <code>visibility</code> property of an element.</p>\n<blockquote>\n<p>The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/visibility\">MDN</a></p>\n</blockquote>\n<p><strong>Format</strong>: <code>ds-u-visibility--[VALUE]</code></p>\n<h4 id=\"available-visibility-options-\">Available <code>visibility</code> options:</h4>\n<ul>\n<li><code>ds-u-visibility--hidden</code></li>\n<li><code>ds-u-visibility--visible</code></li>\n<li><code>ds-u-visibility--screen-reader</code></li>\n</ul>\n<h2 id=\"accessibility\">Accessibility</h2>\n<p>There may sometimes be a situation where you want to hide an element, but still want its text to be read by a screen reader. The <code>ds-u-visibility--screen-reader</code> class will hide the content visually, but provide the content to screen readers.</p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.display",
+				"referenceNumber": "2.5",
+				"referenceURI": "utilities-display",
+				"weight": 0,
+				"markup": "",
+				"source": {
+					"filename": "utilities/display-visibility.scss",
+					"path": "packages/core/src/utilities/display-visibility.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Float",
+				"description": "<p>Set an element&#39;s <code>float</code> property using the float utility. You can use the <code>ds-u-clearfix</code> utility class to clearfix your floats.</p>\n<p><strong>Format</strong>: <code>ds-u-float--[VALUE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.float",
+				"referenceNumber": "2.6",
+				"referenceURI": "utilities-float",
+				"weight": 0,
+				"markup": "<div class=\"ds-u-clearfix\">\n  <div class=\"ds-u-float--left ds-u-fill--gray-lightest\">Left</div>\n</div>\n<div class=\"ds-u-clearfix\">\n  <div class=\"ds-u-float--right ds-u-fill--gray-lightest\">Right</div>\n</div>\n<div class=\"ds-u-clearfix\">\n  <div class=\"ds-u-float--none ds-u-fill--gray-lightest\">None</div>\n</div>",
+				"source": {
+					"filename": "utilities/float.scss",
+					"path": "packages/core/src/utilities/float.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Font familiy",
+				"description": "<p>Change an element&#39;s typeface to either the sans-serif (Open Sans) or serif (Bitter) family using the font family utility.</p>\n<p><strong>Format</strong>: <code>ds-u-[serif|sans]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.font-family",
+				"referenceNumber": "2.7",
+				"referenceURI": "utilities-font-family",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-serif\">{{ lorem-m }}</p>\n<p class=\"ds-u-sans\">{{ lorem-m }}</p>",
+				"source": {
+					"filename": "utilities/font-family.scss",
+					"path": "packages/core/src/utilities/font-family.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Font size",
+				"description": "<p>Use the font size utility to make the text larger or smaller.</p>\n<p><strong>Format</strong>: <code>ds-u-font-size--[SIZE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.font-size",
+				"referenceNumber": "2.8",
+				"referenceURI": "utilities-font-size",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-font-size--title ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h1 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h2 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--h3 ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--lead ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--base ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n<p class=\"ds-u-font-size--small ds-u-leading--heading ds-u-margin--0 ds-u-truncate\">{{lorem-s}}</p>\n",
+				"source": {
+					"filename": "utilities/font-size.scss",
+					"path": "packages/core/src/utilities/font-size.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Font style",
+				"description": "<p>Change an element&#39;s <code>font-style</code> property using the font style utility.</p>\n<p><strong>Format</strong>: <code>ds-u-font-style--[VALUE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.font-style",
+				"referenceNumber": "2.9",
+				"referenceURI": "utilities-font-style",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-font-style--normal\">{{ lorem-m }}</p>\n<p class=\"ds-u-font-style--italic\">{{ lorem-m }}</p>",
+				"source": {
+					"filename": "utilities/font-style.scss",
+					"path": "packages/core/src/utilities/font-style.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Font weight",
+				"description": "<p>Change an element&#39;s <code>font-weight</code> property using the font weight utility.</p>\n<p><strong>Format</strong>: <code>ds-u-font-weight--[VALUE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.font-weight",
+				"referenceNumber": "2.10",
+				"referenceURI": "utilities-font-weight",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-font-weight--light\">Light</p>\n<p class=\"ds-u-font-weight--normal\">Normal</p>\n<p class=\"ds-u-font-weight--semibold\">Semibold</p>\n<p class=\"ds-u-font-weight--bold\">Bold</p>",
+				"source": {
+					"filename": "utilities/font-weight.scss",
+					"path": "packages/core/src/utilities/font-weight.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Line height",
+				"description": "<p>In CSS, the <code>line-height</code> property controls the leading (<code>led-ing</code>). Leading refers to the vertical distance from the baseline of one line to the baseline of the next.</p>\n<p><strong>Format</strong>: <code>ds-u-leading--[NAME]</code></p>\n<h3 id=\"accessibility\">Accessibility</h3>\n<blockquote>\n<p>Many people with cognitive disabilities have trouble tracking lines of text when a block of text is single spaced. Providing spacing between <code>1.5</code> to <code>2</code> allows them to start a new line more easily once they have finished the previous one.</p>\n</blockquote>\n<p><a href=\"https://www.w3.org/TR/WCAG20-TECHS/C21.html\">&mdash; WCAG 2.0 Compliance Techniques</a></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.line-height",
+				"referenceNumber": "2.11",
+				"referenceURI": "utilities-line-height",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-leading--heading ds-u-font-size--h1 ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-m}}</p>\n<p class=\"ds-u-leading--lead ds-u-font-size--lead ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-l}}</p>\n<p class=\"ds-u-leading--base ds-u-font-size--base ds-u-margin--0 ds-u-margin-bottom--2\">{{lorem-l}}</p>\n<p class=\"ds-u-leading--reset ds-u-margin--0\">{{lorem-s}}</p>",
+				"source": {
+					"filename": "utilities/line-height.scss",
+					"path": "packages/core/src/utilities/line-height.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Margin",
+				"description": "<p>Use the margin utility to change an element&#39;s margin. All margins are multiples of <code>8px</code> and can be inferred by the class name. For example, <code>ds-u-margin-top--3</code> can be understood as applying a <code>margin-top</code> of <code>24px</code> (<code>3 * 8px = 24px</code>).</p>\n<p><strong>Format</strong>: <code>ds-u-margin-[x|y|bottom|left|right|top]--[MULTIPLE]</code></p>\n\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.margin",
+				"referenceNumber": "2.12",
+				"referenceURI": "utilities-margin",
+				"weight": 0,
+				"markup": "\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-x--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-x--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-x--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-x--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-x--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-x--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-x--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-x--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-x--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-y--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-y--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-y--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-y--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-y--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-y--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-y--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-y--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-y--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-bottom--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-bottom--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-bottom--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-bottom--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-bottom--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-bottom--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-bottom--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-bottom--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-bottom--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-left--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-left--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-left--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-left--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-left--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-left--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-left--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-left--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-left--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-right--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-right--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-right--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-right--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-right--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-right--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-right--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-right--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-right--7</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-cool-light\">\n  <div class=\"ds-u-margin-top--0 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--0</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-warm-light\">\n  <div class=\"ds-u-margin-top--1 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--1</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lightest\">\n  <div class=\"ds-u-margin-top--2 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--2</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-lighter\">\n  <div class=\"ds-u-margin-top--3 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--3</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-light\">\n  <div class=\"ds-u-margin-top--4 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--4</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-medium\">\n  <div class=\"ds-u-margin-top--5 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--5</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray\">\n  <div class=\"ds-u-margin-top--6 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--6</code>\n  </div>\n</div>\n\n<div class=\"ds-u-fill--gray-dark\">\n  <div class=\"ds-u-margin-top--7 ds-u-fill--background ds-u-display--inline-block\">\n    <code class=\"ds-u-fill--background\">ds-u-margin-top--7</code>\n  </div>\n</div>\n",
+				"source": {
+					"filename": "utilities/margin.scss",
+					"path": "packages/core/src/utilities/margin.scss",
+					"line": 5
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"hideMarkup": true,
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Line length",
+				"description": "<p>Line length, also called &quot;measure&quot;, is an important part of readability.</p>\n<p>The design system includes 3 measure modifiers:</p>\n<ul>\n<li><strong>narrow</strong> = line length ~45 characters</li>\n<li><strong>base</strong> = line length ~65 characters</li>\n<li><strong>wide</strong> = line length ~80 characters</li>\n</ul>\n<p><strong>Format</strong>: <code>ds-u-measure--[NAME]</code></p>\n<h2 id=\"accessibility\">Accessibility</h2>\n<blockquote>\n<p>A line of text shouldn’t be longer than 80 characters. This helps users with certain reading or visual disabilities that have trouble keeping their place when reading long lines of text. If the width of the text container is resized, it should be allowed to scale in a way so 80 characters or less are shown...Another way to ensure good line-length is to use a fluid layout or apply responsive web design techniques that allow the user to resize the window to find a comfortable line length. &mdash; <a href=\"https://www.w3.org/WAI/tutorials/page-structure/styling/#line-length\">W3C</a></p>\n</blockquote>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.measure",
+				"referenceNumber": "2.13",
+				"referenceURI": "utilities-measure",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-measure--narrow\">{{ lorem-l }}</p>\n<p class=\"ds-u-measure--base ds-u-font-size--small\">{{ lorem-l }}</p>\n<p class=\"ds-u-measure--wide ds-u-font-size--small\">{{ lorem-l }}</p>",
+				"source": {
+					"filename": "utilities/measure.scss",
+					"path": "packages/core/src/utilities/measure.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Overflow",
+				"description": "<p>Use the overflow utility to set the <code>overflow</code> property of an element.</p>\n<blockquote>\n<p>The overflow property specifies whether to clip content, render scrollbars or just display content when it overflows its block level container. &mdash; <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/overflow\">MDN</a></p>\n</blockquote>\n<p><strong>Format</strong>: <code>ds-u-overflow--[VALUE]</code></p>\n<h4 id=\"available-overflow-options-\">Available <code>overflow</code> options:</h4>\n<ul>\n<li><code>ds-u-overflow--hidden</code></li>\n<li><code>ds-u-overflow--scroll</code></li>\n<li><code>ds-u-overflow--auto</code></li>\n</ul>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.overflow",
+				"referenceNumber": "2.14",
+				"referenceURI": "utilities-overflow",
+				"weight": 0,
+				"markup": "",
+				"source": {
+					"filename": "utilities/overflow.scss",
+					"path": "packages/core/src/utilities/overflow.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Padding",
+				"description": "<p>Use the padding utility to change an element&#39;s padding. All padding values are multiples of <code>8px</code> and can be inferred by the class name. For example, <code>ds-u-padding-top--3</code> can be understood as applying a <code>padding-top</code> of <code>24px</code> (<code>3 * 8px = 24px</code>).</p>\n<p><strong>Format</strong>: <code>ds-u-padding-[x|y|bottom|left|right|top]--[MULTIPLE]</code></p>\n\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.padding",
+				"referenceNumber": "2.15",
+				"referenceURI": "utilities-padding",
+				"weight": 0,
+				"markup": "\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-x--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-x--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-y--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-y--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-bottom--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-bottom--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-left--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-left--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-right--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-right--7</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--0 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--0</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--1 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--1</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--2 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--2</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--3 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--3</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--4 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--4</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--5 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--5</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--6 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--6</code>\n</div>\n\n<div class=\"ds-u-fill--base ds-u-color--white ds-u-padding-top--7 ds-u-margin-bottom--2\">\n  <code class=\"ds-u-fill--transparent\">ds-u-padding-top--7</code>\n</div>\n",
+				"source": {
+					"filename": "utilities/padding.scss",
+					"path": "packages/core/src/utilities/padding.scss",
+					"line": 5
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"hideMarkup": true,
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Text alignment",
+				"description": "<p>Align text using the <code>text-align</code> utility.</p>\n<p><strong>Format</strong>: <code>ds-u-text-align--[VALUE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.text-align",
+				"referenceNumber": "2.16",
+				"referenceURI": "utilities-text-align",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-text-align--center\">Center</p>\n<p class=\"ds-u-text-align--left\">Left</p>\n<p class=\"ds-u-text-align--right\">Right</p>",
+				"source": {
+					"filename": "utilities/text-align.scss",
+					"path": "packages/core/src/utilities/text-align.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Text transform",
+				"description": "<p>Set the capitalization of text using the text transform utility.</p>\n<p><strong>Format</strong>: <code>ds-u-text-transform--[VALUE]</code></p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.text-transform",
+				"referenceNumber": "2.17",
+				"referenceURI": "utilities-text-transform",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-text-transform--uppercase\">uppercase transform</p>\n<p class=\"ds-u-text-transform--lowercase\">Lowercase transform</p>\n<p class=\"ds-u-text-transform--capitalize\">capitalized transform</p>",
+				"source": {
+					"filename": "utilities/text-transform.scss",
+					"path": "packages/core/src/utilities/text-transform.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
+				"parentReference": "utilities"
+			},
+			{
+				"header": "Truncate",
+				"description": "<p>Use the truncate utility to limit a text string to one line.</p>\n<h3 id=\"accessibility\">Accessibility</h3>\n<p>Place the full text in a <code>title</code> attribute so that it’s accessible on hover.</p>\n",
+				"deprecated": false,
+				"experimental": false,
+				"reference": "utilities.truncate",
+				"referenceNumber": "2.18",
+				"referenceURI": "utilities-truncate",
+				"weight": 0,
+				"markup": "<p class=\"ds-u-truncate\" title=\"{{lorem-l}}\">{{lorem-l}}</p>",
+				"source": {
+					"filename": "utilities/truncate.scss",
+					"path": "packages/core/src/utilities/truncate.scss",
+					"line": 4
+				},
+				"depth": 2,
+				"modifiers": [],
+				"parameters": [],
+				"sections": [],
 				"parentReference": "utilities"
 			}
 		],
