@@ -44,6 +44,7 @@
     "react-docgen": "^2.13.0",
     "run-sequence": "^1.2.2",
     "stylelint": "^7.8.0",
+    "stylelint-order": "^0.3.0",
     "stylelint-scss": "^1.4.1",
     "through2": "^2.0.3",
     "underscore": "^1.8.3",
