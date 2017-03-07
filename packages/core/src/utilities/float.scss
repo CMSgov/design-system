@@ -1,0 +1,34 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Float
+
+Set an element's `float` property using the float utility. You can use the `ds-u-clearfix` utility class to clearfix your floats.
+
+**Format**: `ds-u-float--[VALUE]`
+
+Markup:
+<div class="ds-u-clearfix">
+  <div class="ds-u-float--left ds-u-fill--gray-lightest">Left</div>
+</div>
+<div class="ds-u-clearfix">
+  <div class="ds-u-float--right ds-u-fill--gray-lightest">Right</div>
+</div>
+<div class="ds-u-clearfix">
+  <div class="ds-u-float--none ds-u-fill--gray-lightest">None</div>
+</div>
+
+Style guide: utilities.float
+*/
+.ds-u-float--left {
+  float: left !important;
+}
+
+.ds-u-float--right {
+  float: right !important;
+}
+
+.ds-u-float--none {
+  float: none !important;
+}
