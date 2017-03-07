@@ -23,7 +23,6 @@ Style guide: components.buttons
 */
 
 .ds-c-button {
-  font-size: $base-font-size;
   background-color: $color-white;
   border: 1px solid $color-primary;
   border-radius: $border-radius;
@@ -31,6 +30,7 @@ Style guide: components.buttons
   cursor: pointer;
   display: inline-block;
   font-family: $font-sans;
+  font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $reset-line-height;
   padding: 0.75em;

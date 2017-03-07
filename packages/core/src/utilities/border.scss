@@ -59,13 +59,13 @@ Style guide: utilities.border
   }
 
   .ds-u-border-x--#{$i} {
-    border-right: #{$i}px solid $border-color !important;
     border-left: #{$i}px solid $border-color !important;
+    border-right: #{$i}px solid $border-color !important;
   }
 
   .ds-u-border-y--#{$i} {
-    border-top: #{$i}px solid $border-color !important;
     border-bottom: #{$i}px solid $border-color !important;
+    border-top: #{$i}px solid $border-color !important;
   }
 }
 
