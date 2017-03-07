@@ -1,8 +1,13 @@
 .c-swatch {
   float: left;
-  width: 50%;
+  font-size: $xs-font-size;
+  width: 33%;
 }
 
 .c-swatch__preview {
   padding-top: 33%;
+}
+
+.c-swatch__label {
+  font-size: 0.9em;
 }
