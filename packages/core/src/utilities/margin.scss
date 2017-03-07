@@ -52,12 +52,12 @@ Style guide: utilities.margin
   }
 
   .ds-u-margin-x--#{$scale} {
-    margin-right: #{$size} !important;
     margin-left: #{$size} !important;
+    margin-right: #{$size} !important;
   }
 
   .ds-u-margin-y--#{$scale} {
-    margin-top: #{$size} !important;
     margin-bottom: #{$size} !important;
+    margin-top: #{$size} !important;
   }
 }

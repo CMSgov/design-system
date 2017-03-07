@@ -49,12 +49,12 @@ Style guide: utilities.padding
   }
 
   .ds-u-padding-x--#{$scale} {
-    padding-right: #{$size} !important;
     padding-left: #{$size} !important;
+    padding-right: #{$size} !important;
   }
 
   .ds-u-padding-y--#{$scale} {
-    padding-top: #{$size} !important;
     padding-bottom: #{$size} !important;
+    padding-top: #{$size} !important;
   }
 }
