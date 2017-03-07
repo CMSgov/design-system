@@ -1,0 +1,204 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Background color
+
+Use the background color utility to change the default background color of an element. Each background color group may have a `dark`, `darker`, `darkest`, `light`, `lighter` and `lightest` shade modifier.
+
+Color groups include:
+- **primary** - The dominant brand color, used for things like links and call-to-actions
+- **primary-alt** - A variation of the dominant brand color
+- **secondary** - A secondary brand color that can be used for accents and call-to-action variations.
+- **tertiary** - Complementary accent colors
+- **state** - Colors used to indicate a message state like success, pending, and warning.
+
+**Format**: `ds-u-fill--[NAME]-[SHADE]`
+
+@hide-markup
+
+Markup:
+<% var groups = [
+  ['primary', 'primary-darker', 'primary-darkest'],
+  ['primary-alt', 'primary-alt-dark', 'primary-alt-darkest', 'primary-alt-light', 'primary-alt-lightest'],
+  ['secondary', 'secondary-dark', 'secondary-darkest', 'secondary-light', 'secondary-lightest'],
+  ['gray', 'gray-dark', 'gray-medium', 'gray-light', 'gray-lighter', 'gray-lightest'],
+  ['gray-warm-dark', 'gray-warm-light', 'gray-cool-light'],
+  ['gold', 'gold-light', 'gold-lighter', 'gold-lightest'],
+  ['green', 'green-light', 'green-lighter', 'green-lightest'],
+  ['cool-blue', 'cool-blue-light', 'cool-blue-lighter', 'cool-blue-lightest'],
+  ['base', 'background', 'white', 'transparent']
+]; -%>
+<% groups.forEach(group => { -%>
+<div class="d-u-margin-bottom-2 ds-u-clearfix">
+<% group.forEach(color => { -%>
+  <article class="c-swatch ds-u-margin-bottom--2">
+    <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
+    <code class="c-swatch__label ds-u-display--block ds-u-margin--0">.ds-u-fill--<%= color %></code>
+  </article>
+<% }) -%>
+</div>
+<% }) %>
+
+Style guide: utilities.background-color
+*/
+
+// primary
+.ds-u-fill--primary {
+  background-color: $color-primary !important;
+}
+
+.ds-u-fill--primary-darker {
+  background-color: $color-primary-darker !important;
+}
+
+.ds-u-fill--primary-darkest {
+  background-color: $color-primary-darkest !important;
+}
+
+// primary-alt
+.ds-u-fill--primary-alt {
+  background-color: $color-primary-alt !important;
+}
+
+.ds-u-fill--primary-alt-dark {
+  background-color: $color-primary-alt-dark !important;
+}
+
+.ds-u-fill--primary-alt-darkest {
+  background-color: $color-primary-alt-darkest !important;
+}
+
+.ds-u-fill--primary-alt-light {
+  background-color: $color-primary-alt-light !important;
+}
+
+.ds-u-fill--primary-alt-lightest {
+  background-color: $color-primary-alt-lightest !important;
+}
+
+// secondary
+.ds-u-fill--secondary {
+  background-color: $color-secondary !important;
+}
+
+.ds-u-fill--secondary-dark {
+  background-color: $color-secondary-dark !important;
+}
+
+.ds-u-fill--secondary-darkest {
+  background-color: $color-secondary-darkest !important;
+}
+
+.ds-u-fill--secondary-light {
+  background-color: $color-secondary-light !important;
+}
+
+.ds-u-fill--secondary-lightest {
+  background-color: $color-secondary-lightest !important;
+}
+
+// gray
+.ds-u-fill--gray {
+  background-color: $color-gray !important;
+}
+
+.ds-u-fill--gray-dark {
+  background-color: $color-gray-dark !important;
+}
+
+.ds-u-fill--gray-medium {
+  background-color: $color-gray-medium !important;
+}
+
+.ds-u-fill--gray-light {
+  background-color: $color-gray-light !important;
+}
+
+.ds-u-fill--gray-lighter {
+  background-color: $color-gray-lighter !important;
+}
+
+.ds-u-fill--gray-lightest {
+  background-color: $color-gray-lightest !important;
+}
+
+.ds-u-fill--gray-warm-dark {
+  background-color: $color-gray-warm-dark !important;
+}
+
+.ds-u-fill--gray-warm-light {
+  background-color: $color-gray-warm-light !important;
+}
+
+.ds-u-fill--gray-cool-light {
+  background-color: $color-gray-cool-light !important;
+}
+
+// gold
+.ds-u-fill--gold{
+  background-color: $color-gold !important;
+}
+
+.ds-u-fill--gold-light{
+  background-color: $color-gold-light !important;
+}
+
+.ds-u-fill--gold-lighter{
+  background-color: $color-gold-lighter !important;
+}
+
+.ds-u-fill--gold-lightest{
+  background-color: $color-gold-lightest !important;
+}
+
+// green
+.ds-u-fill--green{
+  background-color: $color-green !important;
+}
+
+.ds-u-fill--green-light{
+  background-color: $color-green-light !important;
+}
+
+.ds-u-fill--green-lighter{
+  background-color: $color-green-lighter !important;
+}
+
+.ds-u-fill--green-lightest{
+  background-color: $color-green-lightest !important;
+}
+
+// cool-blue
+.ds-u-fill--cool-blue{
+  background-color: $color-cool-blue !important;
+}
+
+.ds-u-fill--cool-blue-light{
+  background-color: $color-cool-blue-light !important;
+}
+
+.ds-u-fill--cool-blue-lighter{
+  background-color: $color-cool-blue-lighter !important;
+}
+
+.ds-u-fill--cool-blue-lightest{
+  background-color: $color-cool-blue-lightest !important;
+}
+
+// base colors
+.ds-u-fill--base {
+  background-color: $color-base !important;
+}
+
+.ds-u-fill--white {
+  background-color: $color-white !important;
+}
+
+.ds-u-fill--background {
+  background-color: $background-body !important;
+}
+
+.ds-u-fill--transparent {
+  background-color: transparent !important;
+}
