@@ -2,9 +2,9 @@
 @import '../settings/index';
 
 /*
-Truncation
+Truncate
 
-Use the truncation utility to limit a text string to one line.
+Use the truncate utility to limit a text string to one line.
 
 ### Accessibility
 
@@ -13,7 +13,7 @@ Place the full text in a `title` attribute so that it’s accessible on hover.
 Markup:
 <p class="ds-u-truncate" title="{{lorem-l}}">{{lorem-l}}</p>
 
-Style guide: utilities.type.truncation
+Style guide: utilities.truncate
 */
 .ds-u-truncate {
   max-width: 100% !important;
