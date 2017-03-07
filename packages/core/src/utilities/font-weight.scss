@@ -1,0 +1,33 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Font weight
+
+Change an element's `font-weight` property using the font weight utility.
+
+**Format**: `ds-u-font-weight--[VALUE]`
+
+Markup:
+<p class="ds-u-font-weight--light">Light</p>
+<p class="ds-u-font-weight--normal">Normal</p>
+<p class="ds-u-font-weight--semibold">Semibold</p>
+<p class="ds-u-font-weight--bold">Bold</p>
+
+Style guide: utilities.font-weight
+*/
+.ds-u-font-weight--light {
+  font-weight: $font-light;
+}
+
+.ds-u-font-weight--normal {
+  font-weight: $font-normal;
+}
+
+.ds-u-font-weight--semibold {
+  font-weight: $font-semibold;
+}
+
+.ds-u-font-weight--bold {
+  font-weight: $font-bold;
+}

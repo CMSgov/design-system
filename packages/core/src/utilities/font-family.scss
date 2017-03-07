@@ -1,0 +1,23 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Font familiy
+
+Change an element's typeface to either the sans-serif (Open Sans) or serif (Bitter) family using the font family utility.
+
+**Format**: `ds-u-[serif|sans]`
+
+Markup:
+<p class="ds-u-serif">{{ lorem-m }}</p>
+<p class="ds-u-sans">{{ lorem-m }}</p>
+
+Style guide: utilities.font-family
+*/
+.ds-u-sans {
+  font-family: $font-sans;
+}
+
+.ds-u-serif {
+  font-family: $font-serif;
+}
