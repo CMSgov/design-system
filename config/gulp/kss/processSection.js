@@ -44,6 +44,9 @@ function processFlags(section) {
       case 'react-component':
         section.hasReactComponent = true;
         break;
+      case 'status':
+        section.status = value;
+        break;
       default:
         break;
       }

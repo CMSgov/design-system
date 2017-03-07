@@ -6,6 +6,7 @@
  * without a page refresh :mindblown:
  */
 
+const argv = require('yargs').argv;
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -29,7 +30,8 @@ module.exports = (gulp, shared) => {
           })
         ]
       },
-      notify: false
+      notify: false,
+      open: !argv.noopen
     });
   });
 };
