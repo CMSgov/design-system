@@ -24,18 +24,14 @@ Markup:
     'primary-alt-darkest',
     'secondary', 'secondary-dark', 'secondary-darkest',
     'gray', 'gray-dark',
-    'gray-warm-dark',
-    'green',
-    'cool-blue'
+    'green'
   ],
   'base': ['white'],
-  'gray-warm-dark': ['white'],
   'gray-dark': ['white'],
   'gray': ['white'],
   'primary-darkest': ['white'],
   'primary-darker': ['white'],
   'primary': ['white'],
-  'cool-blue-light': ['white'],
   'primary-alt-darkest': ['white'],
   'primary-alt-dark': ['base'],
   'primary-alt': ['base'],
@@ -48,9 +44,6 @@ Markup:
   'secondary': ['white'],
   'gray-light': ['base'],
   'gray-lighter': ['base'],
-  'gray-warm-light': ['base'],
-  'cool-blue-lighter': ['base'],
-  'cool-blue-lightest': ['base'],
   'primary-alt-lightest': ['base'],
   'green-lighter': ['base'],
   'green-lightest': ['base'],
@@ -136,10 +129,6 @@ Style guide: utilities.color
   color: $color-gray-dark !important;
 }
 
-.ds-u-color--gray-medium {
-  color: $color-gray-medium !important;
-}
-
 .ds-u-color--gray-light {
   color: $color-gray-light !important;
 }
@@ -150,18 +139,6 @@ Style guide: utilities.color
 
 .ds-u-color--gray-lightest {
   color: $color-gray-lightest !important;
-}
-
-.ds-u-color--gray-warm-dark {
-  color: $color-gray-warm-dark !important;
-}
-
-.ds-u-color--gray-warm-light {
-  color: $color-gray-warm-light !important;
-}
-
-.ds-u-color--gray-cool-light {
-  color: $color-gray-cool-light !important;
 }
 
 // gold
@@ -196,23 +173,6 @@ Style guide: utilities.color
 
 .ds-u-color--green-lightest{
   color: $color-green-lightest !important;
-}
-
-// cool-blue
-.ds-u-color--cool-blue{
-  color: $color-cool-blue !important;
-}
-
-.ds-u-color--cool-blue-light{
-  color: $color-cool-blue-light !important;
-}
-
-.ds-u-color--cool-blue-lighter{
-  color: $color-cool-blue-lighter !important;
-}
-
-.ds-u-color--cool-blue-lightest{
-  color: $color-cool-blue-lightest !important;
 }
 
 // base colors
