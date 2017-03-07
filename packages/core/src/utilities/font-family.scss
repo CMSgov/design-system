@@ -15,9 +15,9 @@ Markup:
 Style guide: utilities.font-family
 */
 .ds-u-sans {
-  font-family: $font-sans;
+  font-family: $font-sans !important;
 }
 
 .ds-u-serif {
-  font-family: $font-serif;
+  font-family: $font-serif !important;
 }

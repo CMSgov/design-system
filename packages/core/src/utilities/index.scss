@@ -17,8 +17,10 @@ Weight: 20
 Style guide: utilities
 */
 @import 'background-color';
+@import 'border';
 @import 'color';
 @import 'display-visibility';
+@import 'float';
 @import 'font-family';
 @import 'font-size';
 @import 'font-style';
@@ -29,4 +31,5 @@ Style guide: utilities
 @import 'overflow';
 @import 'padding';
 @import 'text-align';
+@import 'text-transform';
 @import 'truncate';
