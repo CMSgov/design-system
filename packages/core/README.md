@@ -35,6 +35,19 @@ import {Button} from '@nava/cmsgov-design-system-core';
 <Button>Foo</Button>;
 ```
 
+Apply base-level of styles and use a utility class:
+
+```html
+<html>
+<head>
+    <link rel="stylesheet" src="node_modules/@nava/cmsgov-design-system-core/dist/index.css" />
+</head>
+<body class="ds-base">
+    <h1 class="ds-u-font-size--title">Hello world</h1>
+</body>
+</html>
+```
+
 ## Directory reference
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
