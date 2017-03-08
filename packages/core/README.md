@@ -13,30 +13,43 @@ npm install --save @nava/cmsgov-design-system-core
 
 ## Usage
 
-Uncompiled files can be imported from the `src` directory. Compiled files can be found in the `dist` directory.
+Source files can be imported from the `src` directory. Transpiled files can be found in the `dist` directory.
 
-```js
-import {Button} from '@nava/cmsgov-design-system-core'
-```
+Import all Sass styles:
 
 ```css
-@import '{{node_modules}}/@nava/cmsgov-design-system-core/src/styles/all';
+@import 'node_modules/@nava/cmsgov-design-system-core/src/index';
+```
+
+Link to transpiled CSS:
+
+```html
+<link rel="stylesheet" src="node_modules/@nava/cmsgov-design-system-core/dist/index.css" />
+```
+
+Import JSX component:
+
+```jsx
+import {Button} from '@nava/cmsgov-design-system-core';
+...
+<Button>Foo</Button>;
 ```
 
 ## Directory reference
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
-├── dist                CSS
+├── dist                Transpiled CSS and fonts
 └── src                 Sass and JSX
-    ├── fonts
-    ├── components      Sass for designed UI units and JS for React components
+    ├── base            Base HTML styles (scoped to .ds-base)
+    ├── components      Sass and React components
     │   ├── Button
     │   └── etc...
+    ├── fonts
     ├── generics        Far reaching selectors
     ├── layouts         Structural patterns; No cosmetics.
     ├── settings        Globally-available settings and config options
     ├── tools           Helper functions and public mixins
-    ├── utilities       Overrides and helpers
+    ├── utilities       Functional CSS classes to apply individual traits
     └── vendor          Third-party libraries
 ```
