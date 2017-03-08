@@ -12,6 +12,12 @@ Apply rounded corners to an element with the border radius utility.
 - `ds-u-radius--pill`
 - `ds-u-radius--circle` Can make a circle when combined with a fixed height and width.
 
+## Theming
+
+The following Sass variables can be overridden to theme the border radius utility:
+
+- `$border-radius`
+
 Markup:
 <p class="ds-u-radius ds-u-fill--green-lighter">Round</p>
 <p class="ds-u-radius--pill ds-u-fill--green-lighter">Pill</p>

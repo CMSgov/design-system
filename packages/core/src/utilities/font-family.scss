@@ -8,9 +8,16 @@ Change an element's typeface to either the sans-serif (Open Sans) or serif (Bitt
 
 **Format**: `ds-u-[serif|sans]`
 
+## Theming
+
+The following Sass variables can be overridden to theme the font family utility:
+
+- `$font-sans`
+- `$font-serif`
+
 Markup:
-<p class="ds-u-serif">{{ lorem-m }}</p>
-<p class="ds-u-sans">{{ lorem-m }}</p>
+<p class="ds-u-serif">Bitter, Georgia, serif</p>
+<p class="ds-u-sans">Open Sans, Helvetica, sans-serif</p>
 
 Style guide: utilities.font-family
 */

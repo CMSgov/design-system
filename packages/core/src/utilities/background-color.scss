@@ -13,7 +13,11 @@ Color groups include:
 - **tertiary** - Complementary accent colors
 - **state** - State indicator accents (success, warning, error)
 
-**Format**: `ds-u-fill--[NAME]-[SHADE]`
+**Format**: `ds-u-fill--[COLOR NAME]-[SHADE]`
+
+## Theming
+
+Each background (and text color) utility class utilizes a Sass color variable which can be overridden. The swatches below include the utility class name as well as the Sass variable name.
 
 @hide-markup
 
@@ -35,7 +39,10 @@ Markup:
 <% group.forEach(color => { -%>
   <article class="c-swatch ds-u-margin-bottom--2">
     <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-    <code class="c-swatch__label ds-u-display--block ds-u-margin--0">.ds-u-fill--<%= color %></code>
+    <code class="c-swatch__label ds-u-display--block ds-u-margin--0 ds-u-leading--lead">
+      .ds-u-fill--<%= color %>
+      <% if (color !== 'transparent') { %><br />$color-<%= color %><% } %>
+    </code>
   </article>
 <% }) -%>
 </div>
@@ -221,7 +228,7 @@ Style guide: utilities.background-color
 }
 
 .ds-u-fill--background {
-  background-color: $background-body !important;
+  background-color: $color-background !important;
 }
 
 .ds-u-fill--transparent {
