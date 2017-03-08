@@ -11,6 +11,17 @@ Choose between a border size of `0`, `1px` or `2px`.
 
 **Format**: `ds-u-border-[x|y|bottom|left|right|top]--[SIZE]`
 
+#### Border color:
+
+**Format**: `ds-u-border--[COLOR NAME]`
+
+## Theming
+
+The following Sass variables can be overridden to theme the border utility:
+
+- `$border-color`
+- `$border-color--inverse`
+
 @hide-markup
 
 Markup:
@@ -22,11 +33,11 @@ Markup:
 <% } -%>
 <% }) -%>
 <h1 class="ds-u-font-size--lead ds-u-margin-y--2">Color</h1>
-<% ['white',
+<% ['inverse',
     'error', 'error-light', 'error-lighter',
     'warn', 'warn-light', 'warn-lighter',
     'success', 'success-light', 'success-lighter'].forEach(color => { -%>
-<div <% if (color.match(/(lighte|white)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
+<div <% if (color.match(/(lighte|inverse)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
   <div class="ds-u-border--<%= color %> ds-u-border--1 ds-u-margin-y--1 ds-u-padding--1">
     <code class="ds-u-fill--background">ds-u-border--<%= color %></code>
   </div>
@@ -70,8 +81,8 @@ Style guide: utilities.border
 }
 
 // Color
-.ds-u-border--white {
-  border-color: $color-white !important;
+.ds-u-border--inverse {
+  border-color: $border-color--inverse !important;
 }
 
 .ds-u-border--error {
