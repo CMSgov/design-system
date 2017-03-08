@@ -4,11 +4,20 @@ A UI component library and styleguide that is living, tested, importable, and it
 
 ## Installation
 
+You can download a .zip of the design system directly from GitHub's [Releases](CMSgov/design-system/releases) page, however we suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.
+
 **Important:** The NPM package is currently a private package. In order to install it you must have access to the package.
 
 ```
 npm login
 npm install --save @nava/cmsgov-design-system-core
+```
+
+or if you're using Yarn:
+
+```
+yarn login
+yarn add @nava/cmsgov-design-system-core
 ```
 
 ## Usage
