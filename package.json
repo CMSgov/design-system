@@ -1,13 +1,12 @@
 {
   "name": "design-system",
-  "version": "0.0.1",
   "private": true,
   "description": "Styleguide and React component library",
   "repository": "CMSgov/design-system",
   "scripts": {
     "bootstrap": "yerna install",
     "build": "NODE_ENV=production gulp build",
-    "prerelease": "gulp prerelease",
+    "bump": "gulp bumpVersion",
     "start": "NODE_ENV=development gulp watch",
     "test": "NODE_ENV=test jest && gulp lint --env=test"
   },

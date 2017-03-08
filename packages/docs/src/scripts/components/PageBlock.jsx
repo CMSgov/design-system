@@ -51,12 +51,12 @@ class PageBlock extends React.Component {
 
   /**
    * Given a package's relative path, transform it to an NPM package path
-   * Example: core/button.js -> @nava/cmsgov-design-system-core/button.js
+   * Example: core/button.js -> @cmsgov/design-system-core/button.js
    *
    * @return {String}
    */
   packagePath() {
-    return `@nava/cmsgov-design-system-${this.componentPath()}`;
+    return `@cmsgov/design-system-${this.componentPath()}`;
   }
 
   reactDoc() {
