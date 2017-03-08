@@ -37,7 +37,7 @@ _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merge
 
 - `yarn run start` - You'll want to run this when you're developing components. It compiles Sass, transpiles JavaScript, and runs a local documentation instance where you can preview changes.
 - `yarn run build` - compile/transpile/uglify everything and makes things release-ready.
-- `yarn run prerelease` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+- `yarn run bump` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
 - `yarn test` - tests and lints the codebase.
 
 ### Coding guidelines
