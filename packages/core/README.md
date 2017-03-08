@@ -10,14 +10,14 @@ You can download a .zip of the design system directly from GitHub's [Releases](C
 
 ```
 npm login
-npm install --save @nava/cmsgov-design-system-core
+npm install --save @cmsgov/design-system-core
 ```
 
 or if you're using Yarn:
 
 ```
 yarn login
-yarn add @nava/cmsgov-design-system-core
+yarn add @cmsgov/design-system-core
 ```
 
 ## Usage
@@ -27,19 +27,19 @@ Source files can be imported from the `src` directory. Transpiled files can be f
 Import all Sass styles:
 
 ```css
-@import 'node_modules/@nava/cmsgov-design-system-core/src/index';
+@import 'node_modules/@cmsgov/design-system-core/src/index';
 ```
 
 Link to transpiled CSS:
 
 ```html
-<link rel="stylesheet" src="node_modules/@nava/cmsgov-design-system-core/dist/index.css" />
+<link rel="stylesheet" src="node_modules/@cmsgov/design-system-core/dist/index.css" />
 ```
 
 Import JSX component:
 
 ```jsx
-import {Button} from '@nava/cmsgov-design-system-core';
+import {Button} from '@cmsgov/design-system-core';
 ...
 <Button>Foo</Button>;
 ```
@@ -49,7 +49,7 @@ Apply base-level of styles and use a utility class:
 ```html
 <html>
 <head>
-    <link rel="stylesheet" src="node_modules/@nava/cmsgov-design-system-core/dist/index.css" />
+    <link rel="stylesheet" src="node_modules/@cmsgov/design-system-core/dist/index.css" />
 </head>
 <body class="ds-base">
     <h1 class="ds-u-font-size--title">Hello world</h1>
