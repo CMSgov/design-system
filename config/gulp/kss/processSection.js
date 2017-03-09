@@ -39,13 +39,21 @@ function processFlags(section) {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
       case 'hide-markup':
+        // Hide code snippet
         section.hideMarkup = true;
         break;
       case 'react-component':
+        // Include the React component's documentation
         section.hasReactComponent = true;
         break;
       case 'status':
+        // Development status (ie. Prototype, Alpha, Beta)
         section.status = value;
+        break;
+      case 'uswds':
+        // US Web Design Standard URL
+        // KSS converts the URL to an <a> element, so we grab just the URL
+        section.uswdsUrl = hrefUrl(value);
         break;
       default:
         break;
@@ -54,6 +62,11 @@ function processFlags(section) {
     });
   }
   return section;
+}
+
+function hrefUrl(str) {
+  let match = str.match(/href="(https?\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}\/\S*)"/);
+  if (match) return match[1];
 }
 
 module.exports = processSection;

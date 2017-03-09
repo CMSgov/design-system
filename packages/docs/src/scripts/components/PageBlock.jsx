@@ -86,6 +86,16 @@ class PageBlock extends React.Component {
     }
   }
 
+  uswdsLink() {
+    if (this.props.uswdsUrl) {
+      return (
+        <p>
+          <a href={this.props.uswdsUrl}>US Web Design Standard</a>
+        </p>
+      );
+    }
+  }
+
   render() {
     return (
       <article className="ds-u-margin-bottom--8">
@@ -95,6 +105,7 @@ class PageBlock extends React.Component {
             {this.statusPill()}
           </h1>
           <code className="ds-u-font-size--base">{this.props.source.filename}:{this.props.source.line}</code>
+          {this.uswdsLink()}
         </heading>
 
         <div dangerouslySetInnerHTML={{
@@ -126,7 +137,8 @@ PageBlock.propTypes = {
     line: React.PropTypes.number.isRequired,
     path: React.PropTypes.string.isRequired
   }),
-  status: React.PropTypes.string
+  status: React.PropTypes.string,
+  uswdsUrl: React.PropTypes.string
 };
 
 export default PageBlock;
