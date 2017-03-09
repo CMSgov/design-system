@@ -9,7 +9,7 @@
     "bump": "gulp bumpVersion",
     "generate": "yo cmsgov",
     "g": "yarn generate",
-    "start": "NODE_ENV=development gulp watch",
+    "start": "NODE_ENV=development gulp watch --env=development",
     "test": "NODE_ENV=test jest && gulp lint --env=test"
   },
   "devDependencies": {
@@ -32,9 +32,11 @@
     "gulp-bump": "^2.7.0",
     "gulp-count": "^0.3.0",
     "gulp-eslint": "^3.0.1",
+    "gulp-if": "^2.0.2",
     "gulp-merge-json": "^1.0.0",
     "gulp-postcss": "^6.3.0",
     "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
     "gulp-stylelint": "^3.9.0",
     "gulp-util": "^3.0.8",
     "jest": "^19.0.2",
@@ -42,6 +44,7 @@
     "lodash": "^4.17.4",
     "matchdep": "^1.0.1",
     "node-notifier": "^5.0.2",
+    "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^9.1.0",
     "react-docgen": "^2.13.0",
     "run-sequence": "^1.2.2",
