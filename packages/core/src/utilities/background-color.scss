@@ -32,7 +32,7 @@ Markup:
   ['green', 'green-light', 'green-lighter', 'green-lightest'],
   ['success', 'success-light', 'success-lighter', 'success-lightest'],
   ['error', 'error-dark', 'error-darkest', 'error-light', 'error-lighter', 'error-lightest'],
-  ['base', 'background', 'white', 'transparent']
+  ['base', 'background', 'background-inverse', 'white', 'transparent']
 ]; -%>
 <% groups.forEach(group => { -%>
 <div class="d-u-margin-bottom-2 ds-u-clearfix">
@@ -229,6 +229,10 @@ Style guide: utilities.background-color
 
 .ds-u-fill--background {
   background-color: $color-background !important;
+}
+
+.ds-u-fill--background-inverse {
+  background-color: $color-background-inverse !important;
 }
 
 .ds-u-fill--transparent {

@@ -26,9 +26,10 @@ Markup:
     'base', 'black',
     'primary', 'primary-darker',
     'gray',
-    'error',
+    'error', 'error-dark',
     'success'
   ],
+  'background-inverse': ['base-inverse'],
   'base': ['white'],
   'gray-dark': ['white'],
   'gray': ['white'],
@@ -86,6 +87,10 @@ Style guide: utilities.color
   color: $color-error !important;
 }
 
+.ds-u-color--error-dark {
+  color: $color-error-dark !important;
+}
+
 .ds-u-color--success {
   color: $color-success !important;
 }
@@ -93,6 +98,10 @@ Style guide: utilities.color
 // base colors
 .ds-u-color--base {
   color: $color-base !important;
+}
+
+.ds-u-color--base-inverse {
+  color: $color-base-inverse !important;
 }
 
 .ds-u-color--black {

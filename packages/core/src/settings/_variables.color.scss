@@ -20,8 +20,11 @@ $color-success-light: $color-green-light !default;
 $color-success-lighter: $color-green-lighter !default;
 $color-success-lightest: $color-green-lightest !default;
 
+$color-base-inverse: $color-white;
+
 // Background
-$color-background: #fff !default;
+$color-background: $color-white !default;
+$color-background-inverse: $color-primary-darkest;
 
 // Border
 $border-color: $color-gray-lighter;
