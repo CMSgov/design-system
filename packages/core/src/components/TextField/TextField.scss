@@ -33,19 +33,23 @@ A text field can be an `input` or `textarea` HTML element.
 The following Sass variables can be overridden to theme a field: `$color-focus`, `$color-focus-inverse`, `$focus-shadow`, `$focus-shadow-inverse`, `$input-border-color`, `$input-border-color-inverse`, `$input-border-radius`, `$input-line-height`, `$input-border-width`, `$input-padding`
 
 Markup:
-<form class="ds-base">
-  <label class="ds-c-label ds-u-margin-top--0" for="input-firstname">First name</label>
-  <input class="ds-c-field" id="input-firstname" name="firstname" type="text">
-  <label class="ds-c-label ds-u-font-weight--bold" for="input-lastname">Last name</label>
-  <strong class="ds-c-field__error-message" id="input-lastname-message" role="alert">
+<label class="ds-c-label ds-u-margin-top--0" for="input-firstname">
+  First name
+  <span class="ds-c-field__hint">Helpful hint text</span>
+</label>
+<input class="ds-c-field" id="input-firstname" name="firstname" type="text">
+<label class="ds-c-label" for="input-lastname">
+  Last name
+  <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
     Please enter your last name
-  </strong>
-  <input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message">
-  <label class="ds-c-label" for="input-username">Username</label>
-  <input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
-  <label class="ds-c-label" for="input-bio">Bio</label>
-  <textarea class="ds-c-field" id="input-bio" name="bio" rows="5"></textarea>
-</form>
+  </span>
+  <span class="ds-c-field__hint">Helpful hint text</span>
+</label>
+<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message">
+<label class="ds-c-label" for="input-username">Username</label>
+<input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
+<label class="ds-c-label" for="input-bio">Bio</label>
+<textarea class="ds-c-field" id="input-bio" name="bio" rows="5"></textarea>
 
 Style guide: components.text-field
 */
@@ -55,11 +59,13 @@ Style guide: components.text-field
   appearance: none;
   border: $input-border-width solid $input-border-color;
   border-radius: $input-border-radius;
+  box-sizing: border-box; // ensure padding doesn't affect width
   color: $color-base;
   display: block;
   font-size: $base-font-size;
   line-height: $input-line-height;
   margin: $spacer-half 0;
+  max-width: $input-max-width;
   outline: none;
   padding: $input-padding;
   width: 100%;
@@ -69,31 +75,28 @@ Style guide: components.text-field
   }
 }
 
-// Align error message with field
-.ds-c-field,
-.ds-c-field__error-message {
-  box-sizing: border-box; // ensure padding doesn't affect width
-  max-width: $input-max-width;
-}
-
 /*
 Text fields - inverse
 
-Alternative text field style
-
 Markup:
-<div class="ds-base ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2">
-  <label class="ds-c-label ds-u-margin-top--0" for="input-firstname">First name</label>
-  <input class="ds-c-field ds-c-field--inverse" id="input-firstname" name="firstname" type="text">
-  <label class="ds-c-label ds-u-font-weight--bold" for="input-lastname">Last name</label>
-  <strong class="ds-c-field__error-message" id="input-lastname-message" role="alert">
-    Please enter your last name
-  </strong>
-  <input class="ds-c-field ds-c-field--inverse ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message">
-  <label class="ds-c-label" for="input-username">Username</label>
-  <input class="ds-c-field ds-c-field--inverse ds-c-field--success" id="input-username" name="username" type="text">
-  <label class="ds-c-label" for="input-bio">Bio</label>
-  <textarea class="ds-c-field ds-c-field--inverse" id="input-bio" name="bio" rows="5"></textarea>
+<div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2">
+  <label class="ds-c-label ds-u-margin-top--0" for="input-firstname-2">
+    First name
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+  </label>
+  <input class="ds-c-field ds-c-field--inverse" id="input-firstname-2" name="firstname" type="text">
+  <label class="ds-c-label" for="input-lastname-2">
+    Last name
+    <span class="ds-c-field__hint ds-u-color--error-light" id="input-lastname-message-2" role="alert">
+      Please enter your last name
+    </span>
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+  </label>
+  <input class="ds-c-field ds-c-field--inverse ds-c-field--error" id="input-lastname-2" name="lastname" type="text" aria-describedby="input-lastname-message-2">
+  <label class="ds-c-label" for="input-username-2">Username</label>
+  <input class="ds-c-field ds-c-field--inverse ds-c-field--success" id="input-username-2" name="username" type="text">
+  <label class="ds-c-label" for="input-bio-2">Bio</label>
+  <textarea class="ds-c-field ds-c-field--inverse" id="input-bio-2" name="bio" rows="5"></textarea>
 </div>
 
 Style guide: components.text-field.inverse

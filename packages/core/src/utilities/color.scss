@@ -23,13 +23,15 @@ See the "Background Color" utility's theming instructions to learn how to overri
 Markup:
 <% var groups = {
   'white': [
-    'base', 'black',
+    'base',
+    'muted',
+    'black',
     'primary', 'primary-darker',
     'gray',
     'error', 'error-dark',
     'success'
   ],
-  'background-inverse': ['base-inverse'],
+  'background-inverse': ['base-inverse', 'muted-inverse', 'error-light'],
   'base': ['white'],
   'gray-dark': ['white'],
   'gray': ['white'],
@@ -95,6 +97,10 @@ Style guide: utilities.color
   color: $color-gray !important;
 }
 
+.ds-u-color--muted {
+  color: $color-muted !important;
+}
+
 // states
 .ds-u-color--error {
   color: $color-error !important;
@@ -102,6 +108,10 @@ Style guide: utilities.color
 
 .ds-u-color--error-dark {
   color: $color-error-dark !important;
+}
+
+.ds-u-color--error-light {
+  color: $color-error-light !important;
 }
 
 .ds-u-color--success {
@@ -115,6 +125,10 @@ Style guide: utilities.color
 
 .ds-u-color--base-inverse {
   color: $color-base-inverse !important;
+}
+
+.ds-u-color--muted-inverse {
+  color: $color-muted-inverse !important;
 }
 
 .ds-u-color--black {

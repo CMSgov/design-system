@@ -16,28 +16,7 @@ Markup:
 }
 
 /*
-Field error message
-
-TODO(sawyer): This should be more general and not tied to a field component.
-It's prbly more of a variation of a Message/Notificaton/Alert component.
-
-Markup:
-<strong class="ds-c-field__error-message" id="input-lastname-message" role="alert">
-  Please enter your last name
-</strong>
-*/
-.ds-c-field__error-message {
-  background-color: $color-error;
-  color: $color-white;
-  display: inline-block;
-  font-size: $small-font-size;
-  font-weight: $font-normal;
-  line-height: $heading-line-height;
-  padding: $spacer-1;
-}
-
-/*
-Form label/legen
+Form label/legend
 
 Markup:
 <label class="ds-c-label" for="field-id">Label text</label>
@@ -54,4 +33,23 @@ Markup:
 
 .ds-c-legend {
   padding: 0;
+}
+
+/*
+Hint text
+
+(docs stolen from Gov.UK)
+
+- don’t use placeholder text in form fields, as this will disappear once content is entered into the form field
+- use hint text for supporting contextual help, this will always be shown
+- hint text should sit above a form field
+- ensure hint text can be read correctly by screen readers
+*/
+.ds-c-field__hint {
+  color: $color-muted;
+  display: block;
+}
+
+.ds-c-field__hint--inverse {
+  color: $color-muted-inverse;
 }

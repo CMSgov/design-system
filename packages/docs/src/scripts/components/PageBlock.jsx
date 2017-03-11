@@ -25,8 +25,7 @@ class PageBlock extends React.Component {
     }
 
     return (
-      <section>
-        <h3>HTML</h3>
+      <section className="ds-u-margin-top--5">
         <HTMLExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
@@ -47,6 +46,20 @@ class PageBlock extends React.Component {
   componentPath() {
     return this.props.source.path
       .match(/packages\/([a-z0-9_\-\/]+)/i)[1];
+  }
+
+  description() {
+    if (this.props.description) {
+      return (
+        <details className="ds-u-margin-top--2">
+          <summary>Details and instructions</summary>
+
+          <div dangerouslySetInnerHTML={{
+            __html: this.props.description
+          }} />
+        </details>
+      );
+    }
   }
 
   /**
@@ -79,7 +92,7 @@ class PageBlock extends React.Component {
   statusPill() {
     if (this.props.status) {
       return (
-        <span className="ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize ds-u-valign--middle ds-u-fill--warn ds-u-color--base">
+        <span className="ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base">
           {this.props.status}
         </span>
       );
@@ -102,27 +115,14 @@ class PageBlock extends React.Component {
     return (
       <article className="ds-u-margin-bottom--8">
         <heading className="block__heading">
-          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">
-            {this.props.header}
-            {this.statusPill()}
-          </h1>
-          <code className="ds-u-font-size--base">{this.props.source.filename}:{this.props.source.line}</code>
+          {this.statusPill()}
+          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">{this.props.header}</h1>
+          <div className="ds-u-clearfix" />
+          <code className="ds-u-font-size--small">{this.props.source.filename}:{this.props.source.line}</code>
           {this.uswdsLink()}
         </heading>
 
-        <details className="ds-u-margin-top--2" open>
-          <summary>Details and instructions</summary>
-
-          <div dangerouslySetInnerHTML={{
-            __html: this.props.description
-          }} />
-        </details>
-
-        {(
-          this.props.markup || this.props.hasReactComponent
-         ) && <h2>Usage</h2>
-        }
-
+        {this.description()}
         {this.markupExamples()}
         {this.reactDoc()}
       </article>
