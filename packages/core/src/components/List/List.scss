@@ -1,0 +1,22 @@
+@import '../../settings/index';
+
+/*
+List
+
+@status prototype
+
+Markup:
+<ul class="ds-c-list {{modifier}}">
+  <li>List item 1</li>
+  <li>List item 2</li>
+<ul>
+
+.ds-c-list--bare - Unstyled list
+
+Style guide: components.list
+*/
+.ds-c-list--bare {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

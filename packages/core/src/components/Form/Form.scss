@@ -1,0 +1,57 @@
+// General form styles that don't really deserve their own component file
+@import '../../settings/index';
+
+/*
+Fieldset
+
+This just removes the browser's default fieldset styling. Not much to see here.
+
+Markup:
+<fieldset class="ds-c-fieldset">...</fieldset>
+*/
+.ds-c-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Field error message
+
+TODO(sawyer): This should be more general and not tied to a field component.
+It's prbly more of a variation of a Message/Notificaton/Alert component.
+
+Markup:
+<strong class="ds-c-field__error-message" id="input-lastname-message" role="alert">
+  Please enter your last name
+</strong>
+*/
+.ds-c-field__error-message {
+  background-color: $color-error;
+  color: $color-white;
+  display: inline-block;
+  font-size: $small-font-size;
+  font-weight: $font-normal;
+  line-height: $heading-line-height;
+  padding: $spacer-1;
+}
+
+/*
+Form label/legen
+
+Markup:
+<label class="ds-c-label" for="field-id">Label text</label>
+*/
+.ds-c-label,
+.ds-c-legend {
+  display: block;
+  font-size: $base-font-size;
+  font-weight: $font-normal;
+  margin-bottom: 0;
+  margin-top: $spacer-3;
+  max-width: $input-max-width;
+}
+
+.ds-c-legend {
+  padding: 0;
+}

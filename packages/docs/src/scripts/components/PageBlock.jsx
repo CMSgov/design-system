@@ -97,6 +97,8 @@ class PageBlock extends React.Component {
   }
 
   render() {
+    // TODO(sawyer): Make sure we move away from using the <details> element
+    // since IE doesn't support it
     return (
       <article className="ds-u-margin-bottom--8">
         <heading className="block__heading">
@@ -108,9 +110,13 @@ class PageBlock extends React.Component {
           {this.uswdsLink()}
         </heading>
 
-        <div dangerouslySetInnerHTML={{
-          __html: this.props.description
-        }} />
+        <details className="ds-u-margin-top--2" open>
+          <summary>Details and instructions</summary>
+
+          <div dangerouslySetInnerHTML={{
+            __html: this.props.description
+          }} />
+        </details>
 
         {(
           this.props.markup || this.props.hasReactComponent

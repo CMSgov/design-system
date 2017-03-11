@@ -52,6 +52,7 @@
     "stylelint-order": "^0.3.0",
     "stylelint-scss": "^1.4.1",
     "through2": "^2.0.3",
+    "tota11y": "^0.1.6",
     "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.2.1",

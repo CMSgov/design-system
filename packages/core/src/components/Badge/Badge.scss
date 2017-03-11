@@ -1,7 +1,7 @@
 @import '../../settings/index';
 
 /*
-Badges
+Badge
 
 Badges draw attention to new or important content.
 
@@ -13,7 +13,7 @@ Markup:
 <span class="ds-c-badge">New</span>
 <span class="ds-c-badge ds-u-fill--error">Due: December 31, 2018</span>
 
-Style guide: components.badges
+Style guide: components.badge
 */
 .ds-c-badge {
   background-color: $color-primary-alt;

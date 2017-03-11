@@ -20,12 +20,20 @@ $color-success-light: $color-green-light !default;
 $color-success-lighter: $color-green-lighter !default;
 $color-success-lightest: $color-green-lightest !default;
 
-$color-base-inverse: $color-white;
+$color-base-inverse: $color-white !default;
+
+// Focus
+// USWDS has a default focus color, but we want one that can be applied to
+// fields that are displayed on top of an inverted background
+$color-focus-inverse: #59bcff !default;
+$focus-shadow-inverse: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse !default;
 
 // Background
 $color-background: $color-white !default;
 $color-background-inverse: $color-primary-darkest;
 
 // Border
-$border-color: $color-gray-lighter;
-$border-color--inverse: $color-white;
+$border-color: $color-gray-lighter !default;
+$border-color-inverse: $color-white !default;
+
+$color-disabled: $color-gray;

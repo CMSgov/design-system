@@ -40,26 +40,39 @@ Markup:
   'primary-alt-dark': ['base'],
   'primary-alt': ['base'],
   'green': ['white'],
+  'success': ['white'],
   'green-light': ['base'],
+  'success-light': ['base'],
   'gold': ['base'],
+  'warn': ['base'],
   'gold-light': ['base'],
+  'warn-light': ['base'],
   'secondary-darkest': ['white'],
+  'error-darkest': ['white'],
   'secondary-dark': ['white'],
+  'error-dark': ['white'],
   'secondary': ['white'],
+  'error': ['white'],
   'gray-light': ['base'],
   'gray-lighter': ['base'],
   'primary-alt-lightest': ['base'],
   'green-lighter': ['base'],
+  'success-lighter': ['base'],
   'green-lightest': ['base'],
+  'success-lightest': ['base'],
   'gold-lighter': ['base'],
+  'warn-lighter': ['base'],
   'gold-lightest': ['base'],
-  'secondary-lightest': ['base']
+  'warn-lightest': ['base'],
+  'secondary-lightest': ['base'],
+  'error-lightest': ['base'],
 }; -%>
 <% Object.keys(groups).forEach(fill => { -%>
 <% groups[fill].forEach(color => { -%>
   <article class="ds-u-margin-bottom--2">
     <p class="ds-u-color--<%= color %> ds-u-fill--<%= fill %>">
-      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code> on <%= fill %>
+      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code>
+      on <code class="ds-u-fill--transparent">.ds-u-fill--<%= fill %></code>
     </p>
   </article>
 <% }) -%>

@@ -20,7 +20,7 @@ Choose between a border size of `0`, `1px` or `2px`.
 The following Sass variables can be overridden to theme the border utility:
 
 - `$border-color`
-- `$border-color--inverse`
+- `$border-color-inverse`
 
 @hide-markup
 
@@ -82,7 +82,7 @@ Style guide: utilities.border
 
 // Color
 .ds-u-border--inverse {
-  border-color: $border-color--inverse !important;
+  border-color: $border-color-inverse !important;
 }
 
 .ds-u-border--error {

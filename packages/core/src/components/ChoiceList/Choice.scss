@@ -1,0 +1,98 @@
+@import '../../settings/index';
+
+/*
+Checkbox & Radio
+
+@status prototype
+
+Markup:
+<h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
+<fieldset class="ds-c-fieldset">
+  <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+  <input class="ds-c-choice" id="truth" type="checkbox" name="historical-figures-1" value="truth" checked>
+  <label for="truth">Sojourner Truth</label>
+  <input class="ds-c-choice" id="douglass" type="checkbox" name="historical-figures-1" value="douglass">
+  <label for="douglass">Frederick Douglass</label>
+  <input class="ds-c-choice" id="washington" type="checkbox" name="historical-figures-1" value="washington">
+  <label for="washington">Booker T. Washington</label>
+  <input class="ds-c-choice" id="carver" type="checkbox" name="historical-figures-1" disabled>
+  <label for="carver">George Washington Carver</label>
+</fieldset>
+<div class="ds-base ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2 ds-u-margin-top--2">
+  <h3 class="ds-c-label ds-u-margin-top--0">Do you live on the internet?</h3>
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-u-visibility--screen-reader">Yes</legend>
+    <input class="ds-c-choice" id="yes" type="radio" name="historical-figures-2" value="yes" checked>
+    <label for="yes">Yes</label>
+    <input class="ds-c-choice" id="no" type="radio" name="historical-figures-2" value="no">
+    <label for="no">No</label>
+    <input class="ds-c-choice" id="no" type="radio" name="historical-figures-2" value="no" disabled>
+    <label for="no">Nah</label>
+  </fieldset>
+</div>
+
+Style guide: components.checkbox-radio
+*/
+
+// Hide the default browser checkbox/radio button since we'll
+// create our own custom version
+.ds-c-choice {
+  margin-left: -100%;
+  opacity: 0;
+  position: absolute;
+}
+
+.ds-c-choice + label {
+  cursor: pointer;
+  display: block;
+  font-weight: $font-normal;
+  margin: $spacer-1 0;
+}
+
+// Create a custom checkbox/radio button
+.ds-c-choice + label::before {
+  background: $color-white;
+  border-radius: $border-radius;
+  box-shadow: 0 0 0 1px $color-gray-medium;
+  content: '\a0';
+  display: inline-block;
+  height: $spacer-2 + $spacer-half;
+  line-height: $spacer-2 + $spacer-half;
+  margin-right: $spacer-1;
+  text-indent: 0.15em;
+  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+  width: $spacer-2 + $spacer-half;
+}
+
+// Display a checkmark
+.ds-c-choice:checked + label::before {
+  background-color: $color-primary;
+  background-image: url('#{$image-path}/checkmark-white.png');
+  background-image: url('#{$image-path}/checkmark-white.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 0 1px $color-primary;
+}
+
+// Display an outline
+.ds-c-choice:focus + label::before {
+  box-shadow: 0 0 0 1px $color-white, 0 0 0 3px $color-primary;
+}
+
+// Fade the checkbox and label
+.ds-c-choice:disabled {
+  + label {
+    color: $color-gray;
+
+    &::before {
+      background-color: $color-gray-lighter;
+      box-shadow: 0 0 0 1px $color-gray-light;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Display a circular radio button
+.ds-c-choice[type=radio] + label::before {
+  border-radius: 100%;
+}

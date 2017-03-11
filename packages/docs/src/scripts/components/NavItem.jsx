@@ -9,7 +9,6 @@ class NavItem extends React.Component {
           {sections.map(page => (
             <li key={page.referenceNumber}>
               <Link to={page.referenceURI}>{page.header}</Link>
-              {this.subpages(page.sections)}
             </li>
           ))}
         </ul>
@@ -28,6 +27,7 @@ class NavItem extends React.Component {
 }
 
 NavItem.propTypes = {
+  depth: React.PropTypes.number.isRequired,
   header: React.PropTypes.string.isRequired,
   referenceURI: React.PropTypes.string.isRequired,
   sections: React.PropTypes.array.isRequired

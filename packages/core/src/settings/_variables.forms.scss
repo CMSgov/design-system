@@ -1,0 +1,9 @@
+$input-border-radius: $border-radius !default;
+$input-border-color: $color-base;
+$input-border-color-inverse: $color-black;
+
+// USWDS overrides...
+// These variables apply to form fields (input, select, textarea)
+$input-line-height: 1.3 !default;
+$input-border-width: 1px !default;
+$input-padding: $multiple * 1.5 !default;
