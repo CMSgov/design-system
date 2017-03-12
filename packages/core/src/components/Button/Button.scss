@@ -1,5 +1,4 @@
 @import '../../settings/index';
-@import '../../tools/index';
 
 /*
 Button
@@ -172,7 +171,7 @@ Style guide: components.button.disabled
 Inverse theme
 
 Markup:
-<div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2">
+<div class="ds-base--inverse ds-u-padding--2">
   <button class="ds-c-button ds-c-button">Button</button>
   <button class="ds-c-button ds-c-button--outline-inverse ds-u-border--0">Button</button>
   <button class="ds-c-button ds-c-button--outline-inverse">Button</button>

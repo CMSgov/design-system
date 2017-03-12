@@ -50,7 +50,10 @@ class HTMLExample extends React.Component {
         <h4 className="ds-u-font-size--h5 ds-u-margin-bottom--0">
           Modifier: <code>{name}</code>
         </h4>
-        <p className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted">{description}</p>
+        <p
+          className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
     );
   }

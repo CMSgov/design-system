@@ -40,7 +40,7 @@ Markup:
   <option value="value2">Option B</option>
   <option value="value3">Option C</option>
 </select>
-<div class="ds-base ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2 ds-u-margin-top--2">
+<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
   <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">Dropdown label</label>
   <select class="ds-c-field ds-c-field--dropdown ds-c-field--inverse" name="options-inverse" id="options-inverse">
     <option value="value1">Option A</option>

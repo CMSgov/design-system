@@ -13,8 +13,10 @@ Specifically, the base styling sets the following properties:
 - `font-size`
 - `line-height`
 
+.ds-base--inverse - Applies an inverse `color` and `background-color`
+
 Markup:
-<div class="ds-base">
+<div class="ds-base {{modifier}} ds-u-padding--2">
   {{lorem-l}}
 </div>
 
@@ -24,6 +26,14 @@ Style guide: base
 */
 .ds-base {
   color: $color-base;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+.ds-base--inverse {
+  background-color: $color-background-inverse;
+  color: $color-base-inverse;
   font-family: $font-sans;
   font-size: $base-font-size;
   line-height: $base-line-height;

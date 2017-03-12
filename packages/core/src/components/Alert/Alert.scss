@@ -1,0 +1,164 @@
+@import '../../settings/index';
+
+/*
+Alert
+
+@status prototype
+
+@uswds https://standards.usa.gov/components/alerts
+
+Alerts keep users informed of important and sometimes time-sensitive changes.
+
+## Accessibility
+
+- Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `alertdialog` role instead.
+- Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
+
+## Usability
+
+### When to use
+
+- As a notification that keeps people informed of the status of the system and which may or may not require the user to respond. This includes errors, warnings, and general updates.
+- As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
+
+### When to consider something else
+
+- On long forms, always include in-line validation in addition to any error messages that appear at the top of the form.
+- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
+
+## Guidance
+
+- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible. Think about how much context to provide with your message. For example, a notification of a system change may require more contextual information than a validation message. Write the message in concise, human readable language; avoid jargon and computer code.
+- Be polite in error messages — don’t place blame on the user.
+- Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
+- But don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
+- Allow a user to dismiss a notification wherever appropriate.
+- Don’t include notifications that aren’t related to the user’s current goal.
+
+.ds-c-alert--error - Error message
+.ds-c-alert--warn - Warning message
+.ds-c-alert--success - Success message
+
+Markup:
+<div class="ds-c-alert {{modifier}}">
+  <div class="ds-c-alert__body">
+    <h3 class="ds-c-alert__heading">Status heading</h3>
+    <p class="ds-c-alert__text">Lorem ipsum dolor sit <a href="http://example.com">link text</a>, consectetur adipiscing elit, sed do eiusmod.</p>
+  </div>
+</div>
+
+Style guide: components.alert
+*/
+
+$alert-icon-size: $spacer-5;
+
+.ds-c-alert {
+  background-color: $color-primary-alt-lightest;
+  background-image: url('#{$image-path}/info.png');
+  background-image: url('#{$image-path}/info.svg');
+  background-position: $spacer-1 ($spacer-2 * 0.95);
+  background-repeat: no-repeat;
+  background-size: $alert-icon-size;
+  box-sizing: border-box;
+  color: $color-base;
+  min-height: $alert-icon-size + $spacer-2;
+  padding: $spacer-2;
+
+  a {
+    color: $color-primary-darker;
+
+    &:focus,
+    &:hover {
+      color: $color-primary-darkest;
+    }
+  }
+
+  ul {
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.ds-c-alert__body {
+  padding-left: $alert-icon-size;
+}
+
+.ds-c-alert__heading {
+  font-size: $lead-font-size;
+  font-weight: $font-bold;
+  margin-bottom: $spacer-half;
+  margin-top: 0;
+}
+
+.ds-c-alert__text {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.ds-c-alert--error {
+  background-color: $color-error-lightest;
+  background-image: url('#{$image-path}/error.png');
+  background-image: url('#{$image-path}/error.svg');
+}
+
+.ds-c-alert--warn {
+  background-color: $color-warn-lightest;
+  background-image: url('#{$image-path}/warning.png');
+  background-image: url('#{$image-path}/warning.svg');
+}
+
+.ds-c-alert--success {
+  background-color: $color-success-lightest;
+  background-image: url('#{$image-path}/success.png');
+  background-image: url('#{$image-path}/success.svg');
+}
+
+/*
+Other patterns
+
+Markup:
+<div class="ds-c-alert">
+  <div class="ds-c-alert__body">
+    <p class="ds-c-alert__text">{{lorem-l}}</p>
+  </div>
+</div>
+<div class="ds-c-alert ds-u-margin-top--2">
+  <div class="ds-c-alert__body">
+    <p class="ds-c-alert__text">{{lorem-s}}</p>
+  </div>
+</div>
+<div class="ds-c-alert ds-u-margin-top--2">
+  <div class="ds-c-alert__body">
+    <h3 class="ds-c-alert__heading">Status heading</h3>
+    <p class="ds-c-alert__text">{{lorem-m}}</p>
+    <ul class="ds-c-list">
+      <li>Alert list item</li>
+      <li>Alert list item</li>
+    </ul>
+    <a href="http://example.com">Link text</a>
+  </div>
+</div>
+
+Style guide: components.alert.variations
+*/
+
+/*
+On inversed background
+
+Markup:
+<div class="ds-base--inverse ds-u-padding--2">
+  <div class="ds-c-alert {{modifier}}">
+    <div class="ds-c-alert__body">
+      <h3 class="ds-c-alert__heading">Status heading</h3>
+      <p class="ds-c-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+    </div>
+  </div>
+</div>
+
+Style guide: components.alert.inverse
+*/
