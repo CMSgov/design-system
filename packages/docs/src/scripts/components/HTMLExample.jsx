@@ -47,8 +47,10 @@ class HTMLExample extends React.Component {
 
     return (
       <div className="c-markup__header">
-        <h4 className="modifier__name">{name}</h4>
-        <p className="modifier__desc">{description}</p>
+        <h4 className="ds-u-font-size--h5 ds-u-margin-bottom--0">
+          Modifier: <code>{name}</code>
+        </h4>
+        <p className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted">{description}</p>
       </div>
     );
   }
@@ -77,6 +79,10 @@ HTMLExample.propTypes = {
     name: React.PropTypes.string.isRequired,
   }),
   showTitle: React.PropTypes.bool
+};
+
+HTMLExample.defaultProps = {
+  showTitle: true
 };
 
 export default HTMLExample;

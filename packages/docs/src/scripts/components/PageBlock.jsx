@@ -15,11 +15,10 @@ class PageBlock extends React.Component {
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return <HTMLExample
-                  key={modifier}
+                  key={modifier.name}
                   hideMarkup={this.props.hideMarkup}
                   markup={this.props.markup}
                   modifier={modifier}
-                  showTitle={true}
                />;
       });
     }
@@ -29,7 +28,7 @@ class PageBlock extends React.Component {
         <HTMLExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
-          showTitle={!!this.props.modifiers.length}
+          showTitle={false}
         />
         {modifierMarkup}
       </section>

@@ -16,6 +16,8 @@ $color-warn-lighter: $color-gold-lighter !default;
 $color-warn-lightest: $color-gold-lightest !default;
 
 $color-success: $color-green !default;
+$color-success-dark: darken($color-green, 3%) !default;
+$color-success-darker: darken($color-green, 6%) !default;
 $color-success-light: $color-green-light !default;
 $color-success-lighter: $color-green-lighter !default;
 $color-success-lightest: $color-green-lightest !default;
