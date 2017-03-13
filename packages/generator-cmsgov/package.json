@@ -1,0 +1,14 @@
+{
+  "name": "generator-cmsgov",
+  "version": "1.0.0",
+  "description": "Yeoman generator for automating the creation of a new design system component",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.0.0"
+  }
+}
