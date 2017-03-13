@@ -8,6 +8,7 @@ const dutil = require('./doc-util');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
 const processKssSection = require('./kss/processSection');
+const nestKssSections = require('./kss/nestSections');
 const reactDocgen = require('./common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
@@ -23,11 +24,12 @@ module.exports = (gulp) => {
   });
 
   gulp.task('docs:kss', () => {
-    return kss.traverse('packages/core/src/styles/')
+    return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
           .map(processKssSection);
       })
+      .then(nestKssSections)
       .then(sections => {
         const body = JSON.stringify(sections);
         const stream = source('sections.json');
@@ -37,10 +39,15 @@ module.exports = (gulp) => {
   });
 
   // Extract info from React component files for props documentation
-  gulp.task('docs:react-props', () => {
-    return gulp.src('packages/core/src/scripts/**/*.jsx')
+  gulp.task('docs:react', () => {
+    return gulp
+      .src([
+        'packages/core/src/components/**/*.jsx',
+        '!packages/core/src/components/**/*.test.jsx',
+        '!packages/core/src/components/**/*.example.jsx',
+      ])
       .pipe(reactDocgen({
-        nameAfter: 'packages/core/src/scripts/'
+        nameAfter: 'packages/'
       }))
       .pipe(merge({
         fileName: 'react-doc.json'
@@ -55,6 +62,7 @@ module.exports = (gulp) => {
       'docs:clean-fonts',
       [
         'docs:kss',
+        'docs:react',
         'docs:copy-fonts',
         'webpack'
       ],

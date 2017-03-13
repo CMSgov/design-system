@@ -1,0 +1,6 @@
+@mixin accessible-outline($outline-color: $color-secondary-light, $outline-offset: 1px) {
+  outline-color: $outline-color;
+  outline-offset: $outline-offset;
+  outline-style: solid;
+  outline-width: 2px;
+}

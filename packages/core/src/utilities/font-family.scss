@@ -1,0 +1,30 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Font familiy
+
+Change an element's typeface to either the sans-serif (Open Sans) or serif (Bitter) family using the font family utility.
+
+**Format**: `ds-u-[serif|sans]`
+
+## Theming
+
+The following Sass variables can be overridden to theme the font family utility:
+
+- `$font-sans`
+- `$font-serif`
+
+Markup:
+<p class="ds-u-serif">Bitter, Georgia, serif</p>
+<p class="ds-u-sans">Open Sans, Helvetica, sans-serif</p>
+
+Style guide: utilities.font-family
+*/
+.ds-u-sans {
+  font-family: $font-sans !important;
+}
+
+.ds-u-serif {
+  font-family: $font-serif !important;
+}

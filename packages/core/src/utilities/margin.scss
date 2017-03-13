@@ -1,0 +1,63 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+@import '../tools/index';
+
+/*
+Margin
+
+Use the margin utility to change an element's margin. All margins are multiples of `8px` and can be inferred by the class name. For example, `ds-u-margin-top--3` can be understood as applying a `margin-top` of `24px` (`3 * 8px = 24px`).
+
+**Format**: `ds-u-margin-[x|y|bottom|left|right|top]--[MULTIPLE]`
+
+@hide-markup
+
+Markup:
+<% var backgrounds = ['-cool-light', '-warm-light', '-lightest', '-lighter', '-light', '-medium', '', '-dark']; %>
+<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
+<% for (var i = 0; i < 8; i++) { %>
+<div class="ds-u-fill--gray<%= backgrounds[i] %>">
+  <div class="ds-u-margin<%= name %>--<%= i %> ds-u-fill--background ds-u-display--inline-block">
+    <code class="ds-u-fill--background">ds-u-margin<%= name %>--<%= i %></code>
+  </div>
+</div>
+<% } -%>
+<% }) -%>
+
+Style guide: utilities.margin
+*/
+@for $i from 1 through length($spacers) {
+  $size: #{nth($spacers, $i)};
+  $scale: #{$i - 1};
+
+  // Example: ds-u-margin--0
+  .ds-u-margin--#{$scale} {
+    // Example: margin: 0 !important;
+    margin: #{$size} !important;
+  }
+
+  .ds-u-margin-top--#{$scale} {
+    margin-top: #{$size} !important;
+  }
+
+  .ds-u-margin-right--#{$scale} {
+    margin-right: #{$size} !important;
+  }
+
+  .ds-u-margin-bottom--#{$scale} {
+    margin-bottom: #{$size} !important;
+  }
+
+  .ds-u-margin-left--#{$scale} {
+    margin-left: #{$size} !important;
+  }
+
+  .ds-u-margin-x--#{$scale} {
+    margin-left: #{$size} !important;
+    margin-right: #{$size} !important;
+  }
+
+  .ds-u-margin-y--#{$scale} {
+    margin-bottom: #{$size} !important;
+    margin-top: #{$size} !important;
+  }
+}

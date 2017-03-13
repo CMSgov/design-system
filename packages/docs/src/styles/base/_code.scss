@@ -1,20 +1,29 @@
 $code-background-color: $color-cool-blue-lightest;
 
 code {
-  background-color: $code-background-color;
+  background-color: $color-gray-lightest;
+  font-family: $monospace;
+  font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
   padding: 3px;
 }
 
-// TODO(sawyer) Add syntax highlighting
 pre {
-  background-color: $code-background-color;
-  padding: 15px;
+  background-color: $color-gray-lightest;
+
+  // Override styles applied by Prism
+  // stylelint-disable selector-no-qualifying-type
+  &[class*=language-] {
+    background-color: $color-gray-lightest;
+    margin-top: 0;
+  }
+  // stylelint-enable
 
   code {
     background-color: transparent;
+    line-height: 1;
     margin-left: 0;
     margin-right: 0;
   }

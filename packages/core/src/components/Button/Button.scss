@@ -1,0 +1,65 @@
+@import '../../settings/index';
+@import '../../tools/index';
+
+/*
+Buttons
+
+Use buttons to signal actions.
+
+## Accessibility
+- Buttons should display a visible focus state when users tab to them.
+- Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
+- When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
+
+@react-component
+
+@status prototype
+
+Markup:
+<a href="http://example.com" class="ds-c-button {{modifier}}">Link text</a>
+<button type="button" class="ds-c-button {{modifier}}">Button label</button>
+
+.ds-c-button--primary - The primary call-to-action
+
+Style guide: components.buttons
+*/
+
+.ds-c-button {
+  background-color: $color-white;
+  border: 1px solid $color-primary;
+  border-radius: $border-radius;
+  color: $color-primary;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  line-height: $reset-line-height;
+  padding: 0.75em;
+  text-decoration: none;
+
+  &:visited {
+    color: $color-primary;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $color-primary-darker;
+    border-color: $color-primary-darker;
+    color: $color-white;
+  }
+
+  &:focus {
+    @include accessible-outline;
+  }
+}
+
+.ds-c-button--primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:visited {
+    color: $color-white;
+  }
+}

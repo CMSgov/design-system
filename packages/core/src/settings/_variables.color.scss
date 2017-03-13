@@ -1,0 +1,28 @@
+// Generic
+// USWDS doesn't include a "lighter" varient for red, so we create one
+// in order to be consistent with the other "state" colors.
+$color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest) !default;
+
+$color-error: $color-secondary !default;
+$color-error-dark: $color-secondary-dark !default;
+$color-error-darkest: $color-secondary-darkest !default;
+$color-error-light: $color-secondary-light !default;
+$color-error-lighter: $color-secondary-lighter !default;
+$color-error-lightest: $color-secondary-lightest !default;
+
+$color-warn: $color-gold !default;
+$color-warn-light: $color-gold-light !default;
+$color-warn-lighter: $color-gold-lighter !default;
+$color-warn-lightest: $color-gold-lightest !default;
+
+$color-success: $color-green !default;
+$color-success-light: $color-green-light !default;
+$color-success-lighter: $color-green-lighter !default;
+$color-success-lightest: $color-green-lightest !default;
+
+// Background
+$color-background: #fff !default;
+
+// Border
+$border-color: $color-gray-lighter;
+$border-color--inverse: $color-white;

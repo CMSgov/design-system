@@ -13,10 +13,10 @@ module.exports = (gulp) => {
 
   [
     'build',
+    'bumpVersion',
     'docs',
     'fonts',
-    'javascript',
-    'prerelease',
+    'lint',
     'sass',
     'server',
     'watch',

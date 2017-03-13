@@ -3,15 +3,15 @@
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
+const dutil = require('./doc-util');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const sass = require('gulp-sass');
-const stylelint = require('gulp-stylelint');
 const runSequence = require('run-sequence');
 
 const config = {
-  vendorSrc: 'packages/core/src/styles/vendor'
+  vendorSrc: 'packages/core/src/vendor'
 };
 
 module.exports = (gulp, shared) => {
@@ -21,6 +21,10 @@ module.exports = (gulp, shared) => {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
+    }).on('error', function(err) {
+      dutil.logError('sass', 'Error transpiling Sass!');
+      dutil.logData(err.messageFormatted);
+      this.emit('end');
     });
 
     const postcssPlugins = [
@@ -30,27 +34,12 @@ module.exports = (gulp, shared) => {
     ];
 
     return gulp
-      .src(`${cwd}src/styles/**/*.scss`)
+      .src(`${cwd}src/**/*.scss`)
       .pipe(sassCompiler)
       .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest(`${cwd}dist/styles`))
+      .pipe(gulp.dest(`${cwd}dist`))
       .pipe(count('## Sass files processed'))
       .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
-  }
-
-  // Lint Sass files using stylelint. Further configuration for CSS linting
-  // can be handled in stylelint.config.js
-  function lintSass(cwd) {
-    return gulp
-      .src([`${cwd}src/styles/**/*.scss`])
-      .pipe(stylelint({
-        failAfterError: false,
-        reporters: [
-          { formatter: 'string', console: true },
-        ],
-        syntax: 'scss',
-      }))
-      .pipe(count('## Sass files linted'));
   }
 
   // Prune the vendor directory
@@ -73,9 +62,6 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:lint-assets', () => lintSass('packages/core/'));
-  gulp.task('sass:lint-docs', () => lintSass('packages/docs/'));
-
   gulp.task('sass:process-assets', () => processSass('packages/core/'));
   gulp.task('sass:process-docs', () => processSass('packages/docs/'));
 
@@ -83,10 +69,6 @@ module.exports = (gulp, shared) => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
-      [
-        'sass:lint-assets',
-        'sass:lint-docs'
-      ],
       [
         'sass:process-assets',
         'sass:process-docs'

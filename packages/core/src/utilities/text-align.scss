@@ -1,0 +1,28 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Text alignment
+
+Align text using the `text-align` utility.
+
+**Format**: `ds-u-text-align--[VALUE]`
+
+Markup:
+<p class="ds-u-text-align--center">Center</p>
+<p class="ds-u-text-align--left">Left</p>
+<p class="ds-u-text-align--right">Right</p>
+
+Style guide: utilities.text-align
+*/
+.ds-u-text-align--center {
+  text-align: center !important;
+}
+
+.ds-u-text-align--left {
+  text-align: left !important;
+}
+
+.ds-u-text-align--right {
+  text-align: right !important;
+}

@@ -1,0 +1,74 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Display
+
+Use the display utility to set the `display` property of an element.
+
+> The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
+
+**Format**: `ds-u-display--[VALUE]`
+
+#### Available `display` options:
+
+- `ds-u-display--block`
+- `ds-u-display--inline-block`
+- `ds-u-display--inline`
+- `ds-u-display--none`
+
+# Visibility
+
+Use the visibility utility to set the `visibility` property of an element.
+
+> The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
+
+**Format**: `ds-u-visibility--[VALUE]`
+
+#### Available `visibility` options:
+
+- `ds-u-visibility--hidden`
+- `ds-u-visibility--visible`
+- `ds-u-visibility--screen-reader`
+
+## Accessibility
+
+There may sometimes be a situation where you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
+
+Style guide: utilities.display
+*/
+.ds-u-display--block {
+  display: block !important;
+}
+
+.ds-u-display--inline-block {
+  display: inline-block !important;
+}
+
+.ds-u-display--inline {
+  display: inline !important;
+}
+
+.ds-u-display--none {
+  display: none !important;
+}
+
+.ds-u-visibility--hidden {
+  visibility: hidden !important;
+}
+
+.ds-u-visibility--visible {
+  visibility: visible !important;
+}
+
+.ds-u-visibility--screen-reader {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+  word-wrap: normal;
+}
