@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Design System</title>
+  <link rel="stylesheet" href="../../packages/core/dist/index.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="ds-base">
+  <div class="ds-u-measure--narrow ds-u-margin-y--5 container">
+    <h1 class="ds-h1">Report an issue</h1>
+
+    <div class="ds-c-alert ds-c-alert--error">
+      <div class="ds-c-alert__body">
+        <h2 class="ds-c-alert__heading">1 error with your application</h2>
+        <p class="ds-c-alert__text">Please select which county you reside in.</p>
+      </div>
+    </div>
+
+    <form>
+      <label class="ds-c-label" for="input-firstname">First name</label>
+      <input class="ds-c-field" id="input-firstname" name="firstname" type="text" />
+
+      <label class="ds-c-label" for="input-lastname">Last name</label>
+      <input class="ds-c-field" id="input-lastname" name="lastname" type="text" />
+
+      <h3 class="ds-c-label">Which days can we call you?</h3>
+      <span class="ds-c-field__hint">Select all days that would work for you</span>
+      <fieldset class="ds-c-fieldset">
+        <legend class="ds-u-visibility--screen-reader">Which days can we call you?</legend>
+        <input class="ds-c-choice" id="input-monday" type="checkbox" name="day" value="monday">
+        <label for="input-monday">Monday</label>
+
+        <input class="ds-c-choice" id="input-tuesday" type="checkbox" name="day" value="tuesday">
+        <label for="input-tuesday">Tuesday</label>
+
+        <input class="ds-c-choice" id="input-wednesday" type="checkbox" name="day" value="wednesday">
+        <label for="input-wednesday">Wednesday</label>
+
+        <input class="ds-c-choice" id="input-thursday" type="checkbox" name="day" value="thursday">
+        <label for="input-thursday">Thursday</label>
+
+        <input class="ds-c-choice" id="input-friday" type="checkbox" name="day" value="friday">
+        <label for="input-friday">Friday</label>
+      </fieldset>
+
+      <label class="ds-c-label" for="input-description">Describe your issue</label>
+      <textarea class="ds-c-field" id="input-description" name="description" rows="6"></textarea>
+
+      <h3 class="ds-c-label">Have you contacted us about this issue before?</h3>
+      <fieldset class="ds-c-fieldset">
+        <legend class="ds-u-visibility--screen-reader">Have you contacted us about this issue before?</legend>
+        <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes">
+        <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes">Yes</label>
+
+        <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no">
+        <label class="ds-u-display--inline-block" for="input-no">No</label>
+      </fieldset>
+
+      <input class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit" value="Report issue" />
+      <a class="ds-c-button" href="#">Cancel</a>
+    </form>
+  </div>
+</body>
+</html>
