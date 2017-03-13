@@ -32,6 +32,10 @@ A text field can be an `input` or `textarea` HTML element.
 
 The following Sass variables can be overridden to theme a field: `$color-focus`, `$color-focus-inverse`, `$focus-shadow`, `$focus-shadow-inverse`, `$input-border-color`, `$input-border-color-inverse`, `$input-border-radius`, `$input-line-height`, `$input-border-width`, `$input-padding`
 
+## Further reading
+
+- ["Placeholders in Form Fields Are Harmful"](https://www.nngroup.com/articles/form-design-placeholders/)
+
 Markup:
 <label class="ds-c-label ds-u-margin-top--0" for="input-firstname">
   First name
