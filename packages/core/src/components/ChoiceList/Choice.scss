@@ -1,0 +1,199 @@
+@import '../../settings/index';
+
+/*
+Checkbox & Radio
+
+@status prototype
+
+## Accessibility
+
+- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use fieldset and legend for a single check.
+- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
+- Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
+
+## Guidelines
+
+- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
+- List options vertically if possible; horizontal listings can make it difficult to tell which label pertains to which checkbox.
+- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
+- If you customize, make sure selections are adequately spaced for touch screens.
+- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. If you are unsure, leave nothing selected by default.
+
+## Theming
+
+The following Sass variables can be overridden to theme checkbox/radio options:
+
+- `$choice-checked-background-color`
+- `$input-border-color`
+
+Style guide: components.checkbox-radio
+*/
+
+/*
+Checkbox
+
+@uswds https://standards.usa.gov/components/form-controls/#checkboxes
+
+Checkboxes allow users to select one or more options from a visible list.
+
+## Usability
+
+### When to use
+- When a user can select any number of choices from a set list.
+- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
+- When users need to see all the available options at a glance.
+
+### When to consider something different
+- If there are too many options to display on a mobile screen.
+- If a user can only select one option from a list (use `radio` buttons instead).
+
+Markup:
+<h3 class="ds-c-label ds-u-margin-top--0">Historical figures</h3>
+<span class="ds-c-field__hint">Select all that apply</span>
+<fieldset class="ds-c-fieldset">
+  <legend class="ds-u-visibility--screen-reader">Historical figures</legend>
+  <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
+  <label for="truth-1">Sojourner Truth</label>
+  <input class="ds-c-choice" id="douglass-1" type="checkbox" name="historical-figures-1" value="douglass">
+  <label for="douglass-1">Frederick Douglass</label>
+  <input class="ds-c-choice" id="washington-1" type="checkbox" name="historical-figures-1" value="washington">
+  <label for="washington-1">Booker T. Washington</label>
+  <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled>
+  <label for="carver-1">George Washington Carver</label>
+</fieldset>
+<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
+  <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
+    <label for="truth-2">Sojourner Truth</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
+    <label for="douglass-2">Frederick Douglass</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
+    <label for="washington-2">Booker T. Washington</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
+    <label for="carver-2">George Washington Carver</label>
+  </fieldset>
+</div>
+
+Style guide: components.checkbox-radio.checkbox
+*/
+
+/*
+Radio option
+
+@uswds https://standards.usa.gov/components/form-controls/#radio-buttons
+
+## Usability
+
+### When to use
+
+- When users need to select only one option out of a set of mutually exclusive choices.
+- When the number of available options can fit onto a mobile screen.
+
+### When to consider something else
+- Consider checkboxes if users need to select more than one option or if there is only one item to select.
+- Consider a dropdown if you don’t have enough space to list out all available options.
+- If users should be able to select zero of the options.
+
+Markup:
+<h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
+<fieldset class="ds-c-fieldset">
+  <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+  <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
+  <label for="truth-3">Sojourner Truth</label>
+  <input class="ds-c-choice" id="douglass-3" type="radio" name="historical-figures-3" value="douglass">
+  <label for="douglass-3">Frederick Douglass</label>
+  <input class="ds-c-choice" id="washington-3" type="radio" name="historical-figures-3" value="washington">
+  <label for="washington-3">Booker T. Washington</label>
+</fieldset>
+<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
+  <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+    <input class="ds-c-choice" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
+    <label for="truth-4">Sojourner Truth</label>
+    <input class="ds-c-choice" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
+    <label for="douglass-4">Frederick Douglass</label>
+    <input class="ds-c-choice" id="washington-4" type="radio" name="historical-figures-4" value="washington">
+    <label for="washington-4">Booker T. Washington</label>
+  </fieldset>
+</div>
+
+Style guide: components.checkbox-radio.radio
+*/
+
+// Hide the default browser checkbox/radio button since we'll
+// create our own custom version
+.ds-c-choice {
+  margin-left: -100%;
+  opacity: 0;
+  position: absolute;
+}
+
+.ds-c-choice + label {
+  cursor: pointer;
+  display: block;
+  font-weight: $font-normal;
+  margin: $spacer-1 0;
+}
+
+// Create a custom checkbox/radio button
+.ds-c-choice + label::before {
+  background: $color-white;
+  border-radius: $border-radius;
+  box-shadow: 0 0 0 1px $input-border-color;
+  content: '\a0';
+  display: inline-block;
+  height: $spacer-4;
+  line-height: $spacer-4;
+  margin-right: $spacer-1;
+  text-indent: 0.15em;
+  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+  width: $spacer-4;
+}
+
+// Display a checkmark
+.ds-c-choice:checked + label::before {
+  background-color: $choice-checked-background-color;
+  background-image: url('#{$image-path}/checkmark-white.png');
+  background-image: url('#{$image-path}/checkmark-white.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: $spacer-3;
+  box-shadow: 0 0 0 1px $choice-checked-background-color;
+}
+
+// Display an outline
+.ds-c-choice:focus + label::before {
+  box-shadow: 0 0 0 1px $color-white, 0 0 0 3px $choice-checked-background-color;
+}
+
+// Fade the checkbox and label
+.ds-c-choice:disabled {
+  + label {
+    color: $color-muted;
+
+    &::before {
+      background-color: $color-gray-lighter;
+      box-shadow: 0 0 0 1px $color-gray-light;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ds-c-choice--inverse:disabled {
+  + label {
+    color: $color-muted-inverse;
+
+    &::before {
+      background-color: transparent;
+      box-shadow: 0 0 0 1px $color-muted-inverse;
+    }
+  }
+}
+
+// Display a circular radio button
+.ds-c-choice[type=radio] + label::before {
+  border-radius: 100%;
+}

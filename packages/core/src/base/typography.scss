@@ -1,0 +1,122 @@
+/* stylelint-disable selector-class-pattern */
+@import '../settings/index';
+
+/*
+Typography
+
+The design system does not style base HTML text elements (like `h1`, `h2`, `p`, etc) and you should instead use one of the base class names to apply type styling. The base typography classes are:
+
+- `ds-title--[modifier]`
+- `ds-h[LEVEL]`
+- `ds-text--[modifier]`
+
+See the examples below to see how each of ease are used.
+
+Markup:
+<h1 class="ds-title">Title 1</h1>
+<h1 class="ds-title--alt">Title 2</h1>
+<h1 class="ds-h1">Heading 1</h1>
+<h1 class="ds-h2">Heading 2</h1>
+<h1 class="ds-h3">Heading 3</h1>
+<h1 class="ds-h4">Heading 4</h1>
+<h1 class="ds-h5">Heading 5</h1>
+<p class="ds-text--lead">Lead paragraph.  {{lorem-l}}</p>
+<p class="ds-text">Body copy.  {{lorem-l}}</p>
+
+Style guide: base.typography
+*/
+
+// Titles and headings
+.ds-title,
+.ds-title--alt,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5 {
+  line-height: $heading-line-height;
+  margin: 0;
+}
+
+// Bold title and headings
+.ds-title,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5 {
+  font-weight: $font-bold;
+}
+
+// Headings
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5 {
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-title {
+  font-size: $display-font-size;
+}
+
+.ds-title--alt {
+  font-size: $title-font-size;
+  font-weight: $font-light;
+}
+
+.ds-h1 {
+  font-size: $h1-font-size;
+}
+
+.ds-h2 {
+  font-size: $h2-font-size;
+}
+
+.ds-h3 {
+  font-size: $h3-font-size;
+}
+
+.ds-h4 {
+  font-size: $h4-font-size;
+}
+
+.ds-h5 {
+  font-size: $h5-font-size;
+  font-weight: $font-normal;
+  text-transform: uppercase;
+}
+
+.ds-text,
+.ds-text--lead {
+  line-height: $base-line-height;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-text {
+  font-size: $base-font-size;
+}
+
+.ds-text--lead {
+  font-size: $lead-font-size;
+  font-weight: $font-light;
+}

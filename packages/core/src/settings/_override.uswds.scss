@@ -1,0 +1,36 @@
+@import 'variables.spacers';
+
+// These variables override default variables defined by USWDS
+// For the most part, these overrides replace rem units with px units.
+
+// Typography
+// USWDS uses rem units for their font sizes, however this relies on
+// the root element (typically <html>) to have its font size set to
+// 10px. Since styling a root element goes against the guiding principles
+// of this design system, we use px units instead.
+$base-font-size:      $spacer-2 !default;         // rem -> 16px
+$small-font-size:     $spacer-2 * 0.875 !default; // rem -> 14px
+$lead-font-size:      $spacer-2 * 1.125 !default; // rem -> 18px
+$title-font-size:     $spacer-6 !default;         // rem -> 48px
+$display-font-size:   $spacer-7 !default;         // rem -> 56px
+
+$h1-font-size:        $spacer-5 !default;         // rem -> 40px
+$h2-font-size:        $spacer-4 !default;         // rem -> 32px
+$h3-font-size:        $spacer-3 !default;         // rem -> 24px
+$h4-font-size:        $spacer-2 !default;         // rem -> 16px
+$h5-font-size:        $small-font-size !default;
+$h6-font-size:        $small-font-size !default;
+
+// Replace US WDS font stacks with HealthCare.gov font stacks
+$font-sans:           'Open Sans', Helvetica, sans-serif !default;
+$font-serif:          Bitter, Georgia, serif !default;
+
+// Magic Numbers
+$border-radius:       3px !default;
+
+// Inputs
+$input-max-width:     460px !default; // rem -> px
+
+// Paths
+$font-path:   '../fonts' !default;
+$image-path:  'images' !default;

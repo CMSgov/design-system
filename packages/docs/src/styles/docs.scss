@@ -1,13 +1,25 @@
-@import '@nava/design-system-core/src/styles/all';
+// Library overrides
+@import 'settings/override.cmsgov';
 
+// Libraries
+@import '@cmsgov/design-system-core/src/index';
+@import 'prismjs/themes/prism.css';
+
+// Sass variables
+@import 'settings/variables';
+
+// Base HTML elements
+@import 'base/blockquote';
 @import 'base/code';
 
-@import 'components/markup';
+// Components
+@import 'components/details';
 @import 'components/nav';
+@import 'components/swatch';
 
 // TODO(sawyer) Move these to their own files...
 body {
-  font-family: Helvetica;
+  font-family: $font-sans;
   line-height: 1.5;
 }
 
@@ -15,3 +27,6 @@ body {
   float: left;
   width: 700px;
 }
+
+// Utilities
+@import 'utilities/colors';

@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 
 let config = {
@@ -13,18 +14,30 @@ let config = {
       {
         test: /\.(js|jsx)$/,
         loader: ['babel-loader'],
-        exclude: /(node_modules)/
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, '../core/src'),
+          // Transpile react-element-to-jsx-string dependency
+          // https://github.com/algolia/react-element-to-jsx-string/issues/71
+          // https://github.com/sindresorhus/file-type/issues/70
+          path.resolve(__dirname, 'node_modules/stringify-object'),
+          path.resolve(__dirname, 'node_modules/get-own-enumerable-property-symbols')
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    modules: ['../', 'node_modules']
   }
 };
 
 if (process.env.NODE_ENV === 'production') {
   const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-    compress: { warnings: false }
+    compress: {
+      warnings: false,
+      drop_console: true
+    }
   });
 
   config.plugins = [uglifyPlugin];

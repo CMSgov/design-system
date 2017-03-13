@@ -1,3 +1,14 @@
+## Development process
+
+1. Branch off of `staging`: `git checkout -b username/branch-name`.
+1. Commit your changes
+1. Make a pull request against the `staging` branch and format your pull request description using the following format:
+  - **Added:** for new features or components.
+  - **Changed:** for changes in existing functionality or design.
+  - **Deprecated:** for once-stable features or components removed in upcoming releases.
+  - **Removed:** for deprecated features or components removed in this release.
+  - **Fixed:** for any bug fixes.
+
 ## Running locally
 
 ### Package management
@@ -6,7 +17,13 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 
 [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
-#### Install dependencies
+#### Install build process dependencies
+
+```
+yarn install
+```
+
+#### Install package dependencies
 
 ```
 yarn bootstrap
@@ -18,10 +35,12 @@ _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merge
 
 ### Scripts
 
-- `yarn run build` compiles everything and makes things production-ready
-- `yarn run prerelease` increments the package versions. By default it will do a patch version increment, however you can also do a minor or major increment by doing the following: `yarn run prerelease -- --type=minor`
-- `yarn run start` runs a Browsersync server for the documentation, and compiles a file when it changes.
-- `yarn test` runs all tests using [Jest](https://facebook.github.io/jest/).
+- `yarn run start` - You'll want to run this when you're developing components. It compiles Sass, transpiles JavaScript, and runs a local documentation instance where you can preview changes.
+- `yarn run build` - compile/transpile/uglify everything and makes things release-ready.
+- `yarn run bump` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+- `yarn run generate` - Generates the necessary files for a new core component
+- `yarn run g` - Alias for `yarn run generate`
+- `yarn test` - tests and lints the codebase.
 
 ### Coding guidelines
 

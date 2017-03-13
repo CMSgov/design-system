@@ -1,0 +1,41 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Vertical align
+
+Use the vertical align utility on inline-level elements (`inline` and `inline-block`) and on table cells.
+
+**Format**: `ds-u-valign--[VALUE]`
+
+Markup:
+<table>
+  <tbody>
+    <tr>
+      <td class="ds-u-font-size--title ds-u-leading--reset">A</td>
+      <td class="ds-u-valign--top">Top alignment</td>
+    </tr>
+    <tr>
+      <td class="ds-u-font-size--title ds-u-leading--reset">B</td>
+      <td class="ds-u-valign--middle">Middle alignment</td>
+    </tr>
+    <tr>
+      <td class="ds-u-font-size--title ds-u-leading--reset">C</td>
+      <td class="ds-u-valign--bottom">Bottom alignment</td>
+    </tr>
+  </tbody>
+</table>
+
+Style guide: utilities.vertical-align
+*/
+.ds-u-valign--top {
+  vertical-align: top !important;
+}
+
+.ds-u-valign--middle {
+  vertical-align: middle !important;
+}
+
+.ds-u-valign--bottom {
+  vertical-align: bottom !important;
+}

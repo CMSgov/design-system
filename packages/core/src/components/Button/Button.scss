@@ -1,0 +1,256 @@
+@import '../../settings/index';
+
+/*
+Button
+
+@status prototype
+
+Use buttons to signal actions.
+
+## Accessibility
+
+- Buttons should display a visible focus state when users tab to them.
+- Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
+- When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
+
+## Usability
+
+### When to use
+- Use buttons for the most important actions you want users to take on your site, such as "download," "sign up," or "log out."
+
+### When to consider something else
+- If you want to lead users between pages of a website. Use links instead.
+- Less popular or less important actions may be visually styled as links.
+
+## Guidance
+- Generally, use primary buttons for actions that go to the next step and use secondary buttons for actions that happen on the current page.
+- Style the button most users should click in a way that distinguishes from other buttons on the page. Try using the “large button” or the most visually distinct fill color.
+- Make sure buttons look clickable—use color variations to distinguish static, hover and active states.
+- Avoid using too many buttons on a page.
+- Use sentence case for button labels.
+- Button labels should be as short as possible with “trigger words” that your users will recognize to clearly explain what will happen when the button is clicked (for example, “download,” “view” or “sign up”).
+- Make the first word of the button’s label a verb. For example, instead of “Complaint Filing”, label the button “File a complaint.”
+- At times, consider adding an icon to signal specific actions (“download”, “open in a new window”, etc).
+
+.ds-c-button--primary - The primary call-to-action
+.ds-c-button--outline - A secondary call-to-action
+.ds-c-button--danger - A variation indicating the action is destructive or dangerous
+.ds-c-button--success - A variation indicating a positive or successful action
+
+Markup:
+<a href="http://example.com" class="ds-c-button {{modifier}}">Link</a>
+<button type="button" class="ds-c-button {{modifier}} ds-c-button--small">Button</button>
+<button type="button" class="ds-c-button {{modifier}}">Button</button>
+<button type="button" class="ds-c-button {{modifier}} ds-c-button--big">Button</button>
+
+Style guide: components.button
+*/
+.ds-c-button {
+  appearance: none;
+  background-color: $color-background;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  color: $color-primary;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  line-height: $reset-line-height;
+  padding: $spacer-2;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $color-primary-darker;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+  }
+}
+
+.ds-c-button--big {
+  font-size: $h3-font-size;
+  padding-left: $spacer-3;
+  padding-right: $spacer-3;
+}
+
+.ds-c-button--small {
+  font-size: $small-font-size;
+  font-weight: $font-normal;
+  padding: $spacer-1;
+}
+
+.ds-c-button--primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:focus,
+  &:hover {
+    background-color: $color-primary-darker;
+    border-color: $color-primary-darker;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-primary-darkest;
+  }
+}
+
+.ds-c-button--outline {
+  background-color: transparent;
+  border-color: $color-primary;
+
+  &:focus,
+  &:hover {
+    border-color: $color-primary-darker;
+  }
+
+  &:active {
+    border-color: $color-primary-darkest;
+  }
+}
+
+.ds-c-button--danger {
+  background-color: $color-error;
+  color: $color-white;
+
+  &:focus,
+  &:hover {
+    background-color: $color-error-dark;
+    border-color: $color-error-dark;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-error-darkest;
+  }
+}
+
+.ds-c-button--success {
+  background-color: $color-success;
+  color: $color-white;
+
+  &:focus,
+  &:hover {
+    background-color: $color-success-dark;
+    border-color: $color-success-dark;
+    color: $color-white;
+  }
+
+  &:active {
+    background-color: $color-success-darker;
+  }
+}
+
+/*
+Disabled button
+
+Markup:
+<button class="ds-c-button ds-c-button--disabled">Button</button>
+<input disabled type="submit" class="ds-c-button" />
+
+Style guide: components.button.disabled
+*/
+.ds-c-button:disabled,
+.ds-c-button--disabled {
+  background-color: $color-gray-lighter;
+  color: $color-gray-dark;
+  pointer-events: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $color-gray-lighter;
+    color: $color-gray-dark;
+  }
+}
+
+/*
+Inverse theme
+
+Markup:
+<div class="ds-base--inverse ds-u-padding--2">
+  <button class="ds-c-button ds-c-button">Button</button>
+  <button class="ds-c-button ds-c-button--outline-inverse ds-u-border--0">Button</button>
+  <button class="ds-c-button ds-c-button--outline-inverse">Button</button>
+  <button class="ds-c-button ds-c-button--primary">Button</button>
+  <button class="ds-c-button ds-c-button--danger">Button</button>
+  <button class="ds-c-button ds-c-button--success">Button</button>
+  <button class="ds-c-button ds-c-button--disabled-inverse">Button</button>
+</div>
+
+Style guide: components.button.inverse
+*/
+.ds-c-button--outline-inverse {
+  background-color: transparent;
+  border-color: $border-color-inverse;
+  color: $color-base-inverse;
+
+  &:focus,
+  &:hover {
+    background-color: $color-white;
+    color: $color-primary;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+  }
+}
+
+.ds-c-button--disabled-inverse {
+  background-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $color-background-inverse;
+    color: $color-muted-inverse;
+  }
+}
+
+/*
+Button icons
+
+- Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
+- Use the margin utility class to add spacing between the icon and button text.
+
+Markup:
+<button class="ds-c-button">
+  <svg class="ds-u-margin-right--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
+    <use xlink:href="/static/images/symbols.svg#download"></use>
+  </svg>Left icon
+</button>
+<button class="ds-c-button ds-c-button--primary">
+  Right icon<svg class="ds-u-margin-left--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
+    <use xlink:href="/static/images/symbols.svg#arrow-right"></use>
+  </svg>
+</button>
+<button class="ds-c-button ds-c-button--outline">
+  No icon
+</button>
+
+Style guide: components.button.icons
+*/
+
+.ds-c-button > svg {
+  fill: currentColor;
+  height: 1em;
+  margin-bottom: -0.1em; // apply negative margin so icon doesn't affect height
+  margin-top: -0.1em;
+  position: relative;
+  top: -0.1em;
+  vertical-align: middle;
+  width: 1em;
+}
+
+/*
+JavaScript API
+
+@react-component
+
+TODO: Display this in documentation
+*/

@@ -1,17 +1,7 @@
-/**
- * Class naming pattern
- * ~~~~~~~~~~~~~~~~~~~
- * Namespaced with: hc-
- * Followed by a prefix: l- c- u- is- has-
- * Followed by BEM syntax: [BLOCK]__[ELEMENT]--[MODIFIER]
- * Examples: .hc-c-button--primary, .hc-c-card__title, .hc-u-text-underlined
- */
-const classNamePattern = /^(hc-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
-
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
-  'ignoreFiles': ['packages/core/src/styles/vendor/**/*.scss'],
-  'plugins': ['stylelint-scss'],
+  'ignoreFiles': ['packages/core/src/vendor/**/*.scss', 'packages/generator-cmsgov/*'],
+  'plugins': ['stylelint-order', 'stylelint-scss'],
   'rules': {
     'at-rule-empty-line-before': [
       'always', {
@@ -121,6 +111,7 @@ module.exports = {
     'no-missing-end-of-source-newline': true,
     'number-leading-zero': 'always',
     'number-no-trailing-zeros': true,
+    'order/properties-alphabetical-order': true,
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
     'rule-empty-line-before': [ 'always-multi-line', {
@@ -142,7 +133,6 @@ module.exports = {
     'selector-max-compound-selectors': 3,
     'selector-max-empty-lines': 0,
     'selector-max-specificity': '0,4,0',
-    'selector-class-pattern': classNamePattern,
     'selector-no-id': true,
     'selector-no-qualifying-type': true,
     'selector-pseudo-class-case': 'lower',
@@ -161,4 +151,4 @@ module.exports = {
     'value-list-comma-space-before': 'never',
     'value-no-vendor-prefix': true
   }
-}
+};
