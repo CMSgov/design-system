@@ -1,0 +1,26 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+.c-details {
+  h1 {
+    @extend .ds-h1;
+  }
+
+  h2 {
+    @extend .ds-h2;
+  }
+
+  h3 {
+    @extend .ds-h3;
+  }
+
+  h4 {
+    @extend .ds-h4;
+  }
+
+  p {
+    @extend .ds-text;
+  }
+
+  ul, ol {
+    @extend .ds-c-list;
+  }
+}

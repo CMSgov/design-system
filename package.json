@@ -61,5 +61,11 @@
     "yargs": "^7.0.1",
     "yernapkg": "^0.3.1",
     "yo": "^1.8.5"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+        "/node_modules/",
+        "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
+    ]
   }
 }

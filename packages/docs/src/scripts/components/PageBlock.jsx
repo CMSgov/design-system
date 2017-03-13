@@ -50,7 +50,7 @@ class PageBlock extends React.Component {
   description() {
     if (this.props.description) {
       return (
-        <details className="ds-u-margin-top--2">
+        <details className="c-details ds-u-margin-top--2">
           <summary>Details and instructions</summary>
 
           <div dangerouslySetInnerHTML={{
@@ -112,10 +112,10 @@ class PageBlock extends React.Component {
     // TODO(sawyer): Make sure we move away from using the <details> element
     // since IE doesn't support it
     return (
-      <article className="ds-u-margin-bottom--8">
+      <article className="c-block ds-u-margin-bottom--7">
         <heading className="block__heading">
           {this.statusPill()}
-          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">{this.props.header}</h1>
+          <h1 className="ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2">{this.props.header}</h1>
           <div className="ds-u-clearfix" />
           <code className="ds-u-font-size--small">{this.props.source.filename}:{this.props.source.line}</code>
           {this.uswdsLink()}
