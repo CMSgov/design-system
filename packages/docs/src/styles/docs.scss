@@ -1,4 +1,7 @@
-/* stylelint-disable selector-class-pattern */
+// Library overrides
+@import 'settings/override.cmsgov';
+
+// Libraries
 @import '@cmsgov/design-system-core/src/index';
 @import 'prismjs/themes/prism.css';
 
@@ -10,6 +13,7 @@
 @import 'base/code';
 
 // Components
+@import 'components/details';
 @import 'components/nav';
 @import 'components/swatch';
 

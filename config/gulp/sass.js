@@ -1,13 +1,18 @@
 'use strict';
 
+const argv = require('yargs').argv;
+const autoprefixer = require('autoprefixer');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
 const dutil = require('./doc-util');
-const autoprefixer = require('autoprefixer');
+const path = require('path');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
+const postcssInliner = require('postcss-image-inliner');
+const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 const runSequence = require('run-sequence');
 
 const config = {
@@ -18,6 +23,7 @@ module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
   function processSass(cwd) {
+    const createSourcemaps = false;//argv.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
@@ -29,13 +35,27 @@ module.exports = (gulp, shared) => {
 
     const postcssPlugins = [
       postcssImport(), // inline imports
-      autoprefixer(),  // add any necessary vendor prefixes
-      cssnano()        // minify css
+      autoprefixer()  // add any necessary vendor prefixes
     ];
+
+    if (argv.env !== 'development') {
+      // minify css
+      postcssPlugins.push(cssnano());
+    }
+
+    if (!cwd.match(/\/docs\//)) {
+      // inline/base64 images
+      postcssPlugins.push(postcssInliner({
+        assetPaths: [path.resolve(__dirname, `../../${cwd}/src/`)],
+        strict: true
+      }));
+    }
 
     return gulp
       .src(`${cwd}src/**/*.scss`)
+      .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
       .pipe(sassCompiler)
+      .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
       .pipe(postcss(postcssPlugins))
       .pipe(gulp.dest(`${cwd}dist`))
       .pipe(count('## Sass files processed'))

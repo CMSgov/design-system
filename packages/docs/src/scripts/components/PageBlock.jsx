@@ -15,22 +15,20 @@ class PageBlock extends React.Component {
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return <HTMLExample
-                  key={modifier}
+                  key={modifier.name}
                   hideMarkup={this.props.hideMarkup}
                   markup={this.props.markup}
                   modifier={modifier}
-                  showTitle={true}
                />;
       });
     }
 
     return (
-      <section>
-        <h3>HTML</h3>
+      <section className="ds-u-margin-top--5">
         <HTMLExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
-          showTitle={!!this.props.modifiers.length}
+          showTitle={false}
         />
         {modifierMarkup}
       </section>
@@ -47,6 +45,20 @@ class PageBlock extends React.Component {
   componentPath() {
     return this.props.source.path
       .match(/packages\/([a-z0-9_\-\/]+)/i)[1];
+  }
+
+  description() {
+    if (this.props.description) {
+      return (
+        <details className="c-details ds-u-margin-top--2">
+          <summary>Details and instructions</summary>
+
+          <div dangerouslySetInnerHTML={{
+            __html: this.props.description
+          }} />
+        </details>
+      );
+    }
   }
 
   /**
@@ -79,33 +91,37 @@ class PageBlock extends React.Component {
   statusPill() {
     if (this.props.status) {
       return (
-        <span className="ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize ds-u-valign--middle ds-u-fill--warn ds-u-color--base">
+        <span className="ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base">
           {this.props.status}
         </span>
       );
     }
   }
 
+  uswdsLink() {
+    if (this.props.uswdsUrl) {
+      return (
+        <p>
+          <a href={this.props.uswdsUrl}>US Web Design Standard</a>
+        </p>
+      );
+    }
+  }
+
   render() {
+    // TODO(sawyer): Make sure we move away from using the <details> element
+    // since IE doesn't support it
     return (
-      <article className="ds-u-margin-bottom--8">
+      <article className="c-block ds-u-margin-bottom--7">
         <heading className="block__heading">
-          <h1 className="ds-u-font-size--h2 ds-u-margin-bottom--0">
-            {this.props.header}
-            {this.statusPill()}
-          </h1>
-          <code className="ds-u-font-size--base">{this.props.source.filename}:{this.props.source.line}</code>
+          {this.statusPill()}
+          <h1 className="ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2">{this.props.header}</h1>
+          <div className="ds-u-clearfix" />
+          <code className="ds-u-font-size--small">{this.props.source.filename}:{this.props.source.line}</code>
+          {this.uswdsLink()}
         </heading>
 
-        <div dangerouslySetInnerHTML={{
-          __html: this.props.description
-        }} />
-
-        {(
-          this.props.markup || this.props.hasReactComponent
-         ) && <h2>Usage</h2>
-        }
-
+        {this.description()}
         {this.markupExamples()}
         {this.reactDoc()}
       </article>
@@ -126,7 +142,8 @@ PageBlock.propTypes = {
     line: React.PropTypes.number.isRequired,
     path: React.PropTypes.string.isRequired
   }),
-  status: React.PropTypes.string
+  status: React.PropTypes.string,
+  uswdsUrl: React.PropTypes.string
 };
 
 export default PageBlock;

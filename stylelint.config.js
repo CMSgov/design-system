@@ -111,7 +111,7 @@ module.exports = {
     'no-missing-end-of-source-newline': true,
     'number-leading-zero': 'always',
     'number-no-trailing-zeros': true,
-    'order/declaration-block-properties-alphabetical-order': true,
+    'order/properties-alphabetical-order': true,
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
     'rule-empty-line-before': [ 'always-multi-line', {

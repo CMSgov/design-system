@@ -23,12 +23,15 @@ See the "Background Color" utility's theming instructions to learn how to overri
 Markup:
 <% var groups = {
   'white': [
-    'base', 'black',
+    'base',
+    'muted',
+    'black',
     'primary', 'primary-darker',
     'gray',
-    'error',
+    'error', 'error-dark',
     'success'
   ],
+  'background-inverse': ['base-inverse', 'muted-inverse', 'error-light'],
   'base': ['white'],
   'gray-dark': ['white'],
   'gray': ['white'],
@@ -39,26 +42,39 @@ Markup:
   'primary-alt-dark': ['base'],
   'primary-alt': ['base'],
   'green': ['white'],
+  'success': ['white'],
   'green-light': ['base'],
+  'success-light': ['base'],
   'gold': ['base'],
+  'warn': ['base'],
   'gold-light': ['base'],
+  'warn-light': ['base'],
   'secondary-darkest': ['white'],
+  'error-darkest': ['white'],
   'secondary-dark': ['white'],
+  'error-dark': ['white'],
   'secondary': ['white'],
+  'error': ['white'],
   'gray-light': ['base'],
   'gray-lighter': ['base'],
   'primary-alt-lightest': ['base'],
   'green-lighter': ['base'],
+  'success-lighter': ['base'],
   'green-lightest': ['base'],
+  'success-lightest': ['base'],
   'gold-lighter': ['base'],
+  'warn-lighter': ['base'],
   'gold-lightest': ['base'],
-  'secondary-lightest': ['base']
+  'warn-lightest': ['base'],
+  'secondary-lightest': ['base'],
+  'error-lightest': ['base'],
 }; -%>
 <% Object.keys(groups).forEach(fill => { -%>
 <% groups[fill].forEach(color => { -%>
   <article class="ds-u-margin-bottom--2">
     <p class="ds-u-color--<%= color %> ds-u-fill--<%= fill %>">
-      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code> on <%= fill %>
+      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code>
+      on <code class="ds-u-fill--transparent">.ds-u-fill--<%= fill %></code>
     </p>
   </article>
 <% }) -%>
@@ -81,9 +97,21 @@ Style guide: utilities.color
   color: $color-gray !important;
 }
 
+.ds-u-color--muted {
+  color: $color-muted !important;
+}
+
 // states
 .ds-u-color--error {
   color: $color-error !important;
+}
+
+.ds-u-color--error-dark {
+  color: $color-error-dark !important;
+}
+
+.ds-u-color--error-light {
+  color: $color-error-light !important;
 }
 
 .ds-u-color--success {
@@ -93,6 +121,14 @@ Style guide: utilities.color
 // base colors
 .ds-u-color--base {
   color: $color-base !important;
+}
+
+.ds-u-color--base-inverse {
+  color: $color-base-inverse !important;
+}
+
+.ds-u-color--muted-inverse {
+  color: $color-muted-inverse !important;
 }
 
 .ds-u-color--black {

@@ -14,12 +14,25 @@ const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
 
 module.exports = (gulp) => {
+  // Clear the fonts directory to ensure old fonts are pruned
   gulp.task('docs:clean-fonts', () => {
     return del('packages/docs/dist/fonts');
   });
 
   gulp.task('docs:copy-fonts', () => {
     return gulp.src('packages/core/dist/**/fonts/*')
+    .pipe(gulp.dest('packages/docs/dist'));
+  });
+
+  // Clear the images directory to ensure old images are pruned
+  gulp.task('docs:clean-images', () => {
+    return del('packages/docs/dist/images');
+  });
+
+  // The docs use the design system's Sass files, which don't have the
+  // images inlined yet, so we need to be able to reference them by their URL
+  gulp.task('docs:copy-images', () => {
+    return gulp.src('packages/core/src/**/images/*')
     .pipe(gulp.dest('packages/docs/dist'));
   });
 
@@ -60,10 +73,12 @@ module.exports = (gulp) => {
 
     runSequence(
       'docs:clean-fonts',
+      'docs:clean-images',
       [
         'docs:kss',
         'docs:react',
         'docs:copy-fonts',
+        'docs:copy-images',
         'webpack'
       ],
       done

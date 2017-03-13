@@ -9,7 +9,7 @@ Use the font size utility to make the text larger or smaller.
 **Format**: `ds-u-font-size--[SIZE]`
 
 Markup:
-<% ['title','h1','h2','h3','lead','base','small'].forEach(size => { -%>
+<% ['display','title','h1','h2','h3','lead','base','small'].forEach(size => { -%>
 <p class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin--0 ds-u-truncate">{{lorem-s}}</p>
 <% }) -%>
 
@@ -26,6 +26,10 @@ Style guide: utilities.font-size
 
 .ds-u-font-size--lead {
   font-size: $lead-font-size !important;
+}
+
+.ds-u-font-size--display {
+  font-size: $display-font-size !important;
 }
 
 .ds-u-font-size--title {
