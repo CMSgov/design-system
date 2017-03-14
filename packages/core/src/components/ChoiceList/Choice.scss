@@ -23,8 +23,10 @@ Checkbox & Radio
 
 The following Sass variables can be overridden to theme checkbox/radio options:
 
+- `$choice-border-width`
+- `$choice-border-color`
+- `$choice-border-color-inverse`
 - `$choice-checked-background-color`
-- `$input-border-color`
 
 ## Further reading
 
@@ -115,11 +117,11 @@ Markup:
   <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
   <fieldset class="ds-c-fieldset">
     <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
-    <input class="ds-c-choice" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
+    <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
     <label for="truth-4">Sojourner Truth</label>
-    <input class="ds-c-choice" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
+    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
     <label for="douglass-4">Frederick Douglass</label>
-    <input class="ds-c-choice" id="washington-4" type="radio" name="historical-figures-4" value="washington">
+    <input class="ds-c-choice ds-c-choice--inverse" id="washington-4" type="radio" name="historical-figures-4" value="washington">
     <label for="washington-4">Booker T. Washington</label>
   </fieldset>
 </div>
@@ -144,9 +146,9 @@ Style guide: components.checkbox-radio.radio
 
 // Create a custom checkbox/radio button
 .ds-c-choice + label::before {
-  background: $color-white;
-  border-radius: $border-radius;
-  box-shadow: 0 0 0 1px $input-border-color;
+  background-color: $color-background;
+  border: $choice-border-width solid $choice-border-color;
+  box-sizing: border-box;
   content: '\a0';
   display: inline-block;
   height: $spacer-4;
@@ -157,6 +159,20 @@ Style guide: components.checkbox-radio.radio
   width: $spacer-4;
 }
 
+.ds-c-choice--inverse + label::before {
+  background-color: $color-background-inverse;
+  border-color: $choice-border-color-inverse;
+}
+
+// Display an outline
+.ds-c-choice:focus + label::before {
+  box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
+}
+
+.ds-c-choice--inverse:focus + label::before {
+  box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
+}
+
 // Display a checkmark
 .ds-c-choice:checked + label::before {
   background-color: $choice-checked-background-color;
@@ -165,12 +181,7 @@ Style guide: components.checkbox-radio.radio
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: $spacer-3;
-  box-shadow: 0 0 0 1px $choice-checked-background-color;
-}
-
-// Display an outline
-.ds-c-choice:focus + label::before {
-  box-shadow: 0 0 0 1px $color-white, 0 0 0 3px $choice-checked-background-color;
+  border-color: $choice-checked-background-color;
 }
 
 // Fade the checkbox and label
@@ -180,7 +191,7 @@ Style guide: components.checkbox-radio.radio
 
     &::before {
       background-color: $color-gray-lighter;
-      box-shadow: 0 0 0 1px $color-gray-light;
+      border: 1px solid $color-gray-light;
       cursor: not-allowed;
     }
   }
@@ -191,7 +202,7 @@ Style guide: components.checkbox-radio.radio
     color: $color-muted-inverse;
 
     &::before {
-      background-color: transparent;
+      background-color: rgba($color-muted-inverse, 0.15);
       box-shadow: 0 0 0 1px $color-muted-inverse;
     }
   }
