@@ -15,16 +15,16 @@ class PageBlock extends React.Component {
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return <HTMLExample
-                  key={modifier.name}
-                  hideMarkup={this.props.hideMarkup}
-                  markup={this.props.markup}
-                  modifier={modifier}
-               />;
+          key={modifier.name}
+          hideMarkup={this.props.hideMarkup}
+          markup={this.props.markup}
+          modifier={modifier}
+        />;
       });
     }
 
     return (
-      <section className="ds-u-margin-top--5">
+      <section className='ds-u-margin-top--5'>
         <HTMLExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
@@ -50,7 +50,7 @@ class PageBlock extends React.Component {
   description() {
     if (this.props.description) {
       return (
-        <details className="c-details ds-u-margin-top--2">
+        <details className='c-details ds-u-margin-top--2'>
           <summary>Details and instructions</summary>
 
           <div dangerouslySetInnerHTML={{
@@ -91,7 +91,7 @@ class PageBlock extends React.Component {
   statusPill() {
     if (this.props.status) {
       return (
-        <span className="ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base">
+        <span className='ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base'>
           {this.props.status}
         </span>
       );
@@ -112,12 +112,12 @@ class PageBlock extends React.Component {
     // TODO(sawyer): Make sure we move away from using the <details> element
     // since IE doesn't support it
     return (
-      <article className="c-block ds-u-margin-bottom--7">
-        <heading className="block__heading">
+      <article className='c-block ds-u-margin-bottom--7'>
+        <heading className='block__heading'>
           {this.statusPill()}
-          <h1 className="ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2">{this.props.header}</h1>
-          <div className="ds-u-clearfix" />
-          <code className="ds-u-font-size--small">{this.props.source.filename}:{this.props.source.line}</code>
+          <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
+          <div className='ds-u-clearfix' />
+          <code className='ds-u-font-size--small'>{this.props.source.filename}:{this.props.source.line}</code>
           {this.uswdsLink()}
         </heading>
 
