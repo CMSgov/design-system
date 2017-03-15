@@ -44,7 +44,7 @@ class PageBlock extends React.Component {
    */
   componentPath() {
     return this.props.source.path
-      .match(/packages\/([a-z0-9_\-\/]+)/i)[1];
+      .match(/packages\/([a-z0-9_\-/]+)/i)[1];
   }
 
   description() {

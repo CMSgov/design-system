@@ -20,9 +20,9 @@ class HTMLExample extends React.Component {
 
     return html
       .replace(/\s?{{\s?modifier\s?}}/g, modifier)
-      .replace(/\s?{{\s?lorem\-s\s?}}/g, lorem.s)
-      .replace(/\s?{{\s?lorem\-m\s?}}/g, lorem.m)
-      .replace(/\s?{{\s?lorem\-l\s?}}/g, lorem.l);
+      .replace(/\s?{{\s?lorem-s\s?}}/g, lorem.s)
+      .replace(/\s?{{\s?lorem-m\s?}}/g, lorem.m)
+      .replace(/\s?{{\s?lorem-l\s?}}/g, lorem.l);
   }
 
   highlightedMarkup() {
