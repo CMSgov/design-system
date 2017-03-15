@@ -17,7 +17,9 @@ class Docs extends React.Component {
        )} />];
 
       // Nested sections
-      if (section.sections.length) { routes = routes.concat(this.routes(section.sections)); }
+      if (section.sections.length) {
+        routes = routes.concat(this.routes(section.sections)); 
+      }
 
       return routes;
     });
