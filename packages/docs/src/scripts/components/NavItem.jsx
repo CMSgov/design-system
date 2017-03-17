@@ -27,7 +27,6 @@ class NavItem extends React.Component {
 }
 
 NavItem.propTypes = {
-  depth: React.PropTypes.number.isRequired,
   header: React.PropTypes.string.isRequired,
   referenceURI: React.PropTypes.string.isRequired,
   sections: React.PropTypes.array.isRequired

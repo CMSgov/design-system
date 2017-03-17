@@ -17,8 +17,9 @@ class Docs extends React.Component {
        )} />];
 
       // Nested sections
-      if (section.sections.length)
+      if (section.sections.length) {
         routes = routes.concat(this.routes(section.sections));
+      }
 
       return routes;
     });
@@ -29,7 +30,7 @@ class Docs extends React.Component {
       <Router>
         <div>
           <Nav pages={this.props.sections} />
-          <main className="page">
+          <main className='page'>
             {this.routes(this.props.sections)}
           </main>
         </div>

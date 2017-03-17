@@ -3,5 +3,5 @@ import React from 'react';
 import Button from './Button';
 
 export default function(args) {
-  return <Button label="A React button" />;
+  return <Button label='A React button' />;
 }

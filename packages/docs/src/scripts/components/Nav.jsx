@@ -4,7 +4,7 @@ import NavItem from './NavItem';
 class Nav extends React.Component {
   render() {
     return (
-      <nav className="c-nav">
+      <nav className='c-nav'>
         <ol>
           {this.props.pages.map(page => (
             <NavItem key={page.referenceNumber} {...page} />

@@ -13,7 +13,7 @@ class ReactComponentDoc extends React.Component {
       const renderComponent = require(`node_modules/${this.props.packagePath}.example.jsx`).default;
       return <ReactComponentExample renderComponent={renderComponent} />;
     } catch (e) {
-      return;
+      return null;
     }
   }
 
@@ -35,7 +35,6 @@ class ReactComponentDoc extends React.Component {
 ReactComponentDoc.propTypes = {
   componentPath: React.PropTypes.string.isRequired,
   description: React.PropTypes.string,
-  displayName: React.PropTypes.string,
   packagePath: React.PropTypes.string.isRequired,
   propDocs: React.PropTypes.object
 };

@@ -86,6 +86,4 @@ describe('Button', function() {
     var isGreen = buttonElement.className.indexOf('ds-c-button-success') !== -1;
     expect(isGreen).toBe(false);
   });
-
-
 });

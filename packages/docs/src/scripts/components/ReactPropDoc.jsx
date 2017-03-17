@@ -6,11 +6,13 @@ import React from 'react';
 
 class ReactPropDoc extends React.Component {
   defaultValue() {
-    if (this.props.defaultValue) return (
-      <p>
+    if (this.props.defaultValue) {
+      return (
+        <p>
         Default: <code>{this.props.defaultValue.value}</code>
-      </p>
-    );
+        </p>
+      );
+    }
   }
 
   description() {
@@ -18,11 +20,13 @@ class ReactPropDoc extends React.Component {
   }
 
   isRequired() {
-    if (this.props.required) return (
-      <p>
-        <span className="ds-c-badge ds-u-bg-gray-dark">Required</span>
-      </p>
-    );
+    if (this.props.required) {
+      return (
+        <p>
+          <span className='ds-c-badge ds-u-bg-gray-dark'>Required</span>
+        </p>
+      );
+    }
   }
 
   validValues() {
@@ -65,7 +69,7 @@ ReactPropDoc.propTypes = {
         value: React.PropTypes.string
       })
     )
-  }),
+  })
 };
 
 export default ReactPropDoc;
