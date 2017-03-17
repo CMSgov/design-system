@@ -2244,9 +2244,17 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-"eslint-config-nava@github:navahq/eslint-config-nava#a9819b7":
-  version "0.1.0"
-  resolved "https://codeload.github.com/navahq/eslint-config-nava/tar.gz/a9819b7"
+eslint-config-nava@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-nava/-/eslint-config-nava-1.0.0.tgz#f22a183f91a3367d2f75695aaa6f84c655bd061c"
+  dependencies:
+    eslint-config-standard "7.0.1"
+    eslint-config-standard-react "4.3.0"
+    eslint-plugin-import "2.2.0"
+    eslint-plugin-node "4.2.1"
+    eslint-plugin-promise "3.5.0"
+    eslint-plugin-react "6.10.0"
+    eslint-plugin-standard "2.1.1"
 
 eslint-config-standard-jsx@^3.0.0:
   version "3.3.0"
