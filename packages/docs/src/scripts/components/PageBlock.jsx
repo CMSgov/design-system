@@ -136,7 +136,6 @@ PageBlock.propTypes = {
   markup: React.PropTypes.string,
   modifiers: React.PropTypes.array,
   hasReactComponent: React.PropTypes.bool,
-  sections: React.PropTypes.array,
   source: React.PropTypes.shape({
     filename: React.PropTypes.string.isRequired,
     line: React.PropTypes.number.isRequired,
