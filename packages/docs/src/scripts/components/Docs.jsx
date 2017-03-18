@@ -10,7 +10,7 @@ class Docs extends React.Component {
   routes(sections) {
     return sections.map(section => {
       let routes = [<Route
-        key={section.referenceNumber}
+        key={section.referenceURI}
         path={`/${section.referenceURI}`}
         render={matchProps => (
           <Page matchProps={matchProps} {...section} />

@@ -9,7 +9,7 @@ class Page extends React.Component {
   childSections() {
     if (this.props.sections.length && this.props.depth >= 2) {
       return this.props.sections.map(section => (
-        <PageBlock key={section.referenceNumber} {...section} />
+        <PageBlock key={section.referenceURI} {...section} />
       ));
     }
   }
