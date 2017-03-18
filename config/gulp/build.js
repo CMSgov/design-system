@@ -7,30 +7,21 @@ const dutil = require('./doc-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp) => {
-  gulp.task('clean-dist', () => {
-    dutil.logMessage('clean-dist', 'Cleaning dist directory');
+  gulp.task('build:clean-dist', () => {
+    dutil.logMessage('🚮 ', 'Cleaning core "dist" directory');
     return del(['packages/core/dist']);
   });
 
-  gulp.task('build:assets', done => {
-    dutil.logMessage('build:assets', 'Building all assets');
-
-    return runSequence(
-      [
-        'sass',
-        'fonts'
-      ],
-      done
-    );
-  });
+  // This could be simplified once the fonts task removed
+  gulp.task('build:assets', ['sass', 'fonts']);
 
   gulp.task('build', done => {
     dutil.logIntroduction();
 
     runSequence(
-      'clean-dist',
-      'build:assets',
+      'build:clean-dist',
       'docs:build',
+      'build:assets',
       done
     );
   });

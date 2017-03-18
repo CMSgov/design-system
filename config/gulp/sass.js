@@ -22,8 +22,8 @@ const config = {
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
-  function processSass(cwd) {
-    const createSourcemaps = false;//argv.env === 'development';
+  function processSass(cwd, dest = 'dist') {
+    const createSourcemaps = false; // argv.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
@@ -39,8 +39,7 @@ module.exports = (gulp, shared) => {
     ];
 
     if (argv.env !== 'development') {
-      // minify css
-      postcssPlugins.push(cssnano());
+      postcssPlugins.push(cssnano()); // minify css
     }
 
     if (!cwd.match(/\/docs\//)) {
@@ -57,21 +56,22 @@ module.exports = (gulp, shared) => {
       .pipe(sassCompiler)
       .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
       .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest(`${cwd}dist`))
-      .pipe(count('## Sass files processed'))
+      .pipe(gulp.dest(`${cwd}${dest}`))
+      .pipe(count(`## Sass files processed in ${cwd}`))
       .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
   }
 
-  // Prune the vendor directory
+  // Empty the vendor directory to ensure unused files aren't kept around
   gulp.task('sass:clean-vendor', () => {
     return del(config.vendorSrc);
   });
 
-  // Copy 3rd-party Sass dependencies into a "vendor" subdirectory
+  // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
+  // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
     var packages = [
       './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
-      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss',
+      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
     return gulp
@@ -82,16 +82,16 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:process-assets', () => processSass('packages/core/'));
-  gulp.task('sass:process-docs', () => processSass('packages/docs/'));
+  gulp.task('sass:process:core', () => processSass('packages/core/'));
+  gulp.task('sass:process:docs', () => processSass('packages/docs/', 'build/public'));
 
   gulp.task('sass', done => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
       [
-        'sass:process-assets',
-        'sass:process-docs'
+        'sass:process:core',
+        'sass:process:docs'
       ],
       done
     );

@@ -7,12 +7,12 @@ const dutil = require('./doc-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
-  gulp.task('watch:assets', () => {
+  gulp.task('watch:core', () => {
     gulp.watch('packages/core/src/**/*.scss', [
       'lint:core-styles',
-      'sass:process-assets',
-      'sass:process-docs',
-      'docs:generate-sections'
+      'sass:process:core',
+      'sass:process:docs',
+      'docs:generate-pages'
     ]);
 
     gulp.watch([
@@ -29,7 +29,7 @@ module.exports = (gulp, shared) => {
   gulp.task('watch:docs', () => {
     gulp.watch('packages/docs/src/**/*.scss', [
       'lint:docs-styles',
-      'sass:process-docs'
+      'sass:process:docs'
     ]);
 
     gulp.watch([
@@ -39,14 +39,17 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch', () => {
-    dutil.logMessage('watch', 'Starting watch');
+    dutil.logMessage(
+      '👀 ',
+      'Transpiling + watching files for future changes'
+    );
 
     runSequence(
-      'build:assets',
       'docs:build',
+      'build:assets',
       [
         'server',
-        'watch:assets',
+        'watch:core',
         'watch:docs'
       ]
     );

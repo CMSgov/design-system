@@ -10,7 +10,7 @@ const through = require('through2');
 
 function getPropertyName(nameAfter, filePath) {
   if (!nameAfter) return path.basename(filePath);
-  let rx = new RegExp(`${nameAfter}([a-z0-9-_\.\/]+)`, 'i');
+  let rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
   return filePath.match(rx)[1];
 }
 
@@ -29,7 +29,7 @@ module.exports = function(options) {
       // Assign the doc object to a unique property so we can
       // merge the JSON files in another stream
       response[getPropertyName(options.nameAfter, file.path)] = doc;
-    } catch(e) {
+    } catch (e) {
       dutil.logError('react-docgen', e);
       dutil.logData('react-docgen', file.path);
       response = {};
