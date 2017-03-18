@@ -9,12 +9,8 @@ import ReactPropDocs from './ReactPropDocs';
 
 class ReactComponentDoc extends React.Component {
   renderExample() {
-    try {
-      const renderComponent = require(`node_modules/${this.props.packagePath}.example.jsx`).default;
-      return <ReactComponentExample renderComponent={renderComponent} />;
-    } catch (e) {
-      return null;
-    }
+    const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
+    return <ReactComponentExample renderComponent={renderComponent} />;
   }
 
   render() {

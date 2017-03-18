@@ -14,6 +14,7 @@ function processSection(kssSection) {
   });
 
   data = processFlags(data);
+  data.referenceURI = data.reference.replace(/\./g, '/');
 
   if (data.markup && data.markup !== '') {
     try {

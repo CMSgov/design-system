@@ -1,3 +1,8 @@
+// Run babel transformations so we can run our JSX scripts in our Node
+require('babel-register')({
+  only: /packages\/(core|docs)\/src/
+});
+
 /**
  * This task group generates our design system documentation. It handles things
  * like parsing our CSS/JSX comments, and generating a JSON file for us to
@@ -12,34 +17,81 @@ const nestKssSections = require('./nestSections');
 const reactDocgen = require('../common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
+const generatePage = require('../../../packages/docs/src/scripts/generatePage');
+const docs = 'packages/docs';
+
+function generatePages(sections) {
+  return Promise.all(
+    sections.map(page => {
+      return generatePage(page, page.referenceURI)
+        .then(() => {
+          if (page.sections && page.sections.length) {
+            return Promise.all(
+              page.sections.map(subpage => {
+                return generatePage(subpage, subpage.referenceURI);
+              })
+            );
+          }
+        });
+    })
+  );
+}
 
 module.exports = (gulp) => {
-  // Clear the fonts directory to ensure old fonts are pruned
-  gulp.task('docs:clean-fonts', () => {
-    return del('packages/docs/dist/fonts');
+  // Ensure a clean slate by deleting everything in the build directory
+  gulp.task('docs:clean', () => {
+    dutil.logMessage(
+      '🚮 ',
+      'Emptying the build directory'
+    );
+
+    return del(`${docs}/build/*`);
   });
 
-  gulp.task('docs:copy-fonts', () => {
+  // Create public directory to hold to the build directory so relative URLs work
+  gulp.task('docs:public', ['docs:fonts', 'docs:images']);
+
+  gulp.task('docs:fonts', () => {
+    dutil.logMessage(
+      '🔡 ',
+      'Copying fonts from core package into "public" directory'
+    );
+
     return gulp.src('packages/core/dist/**/fonts/*')
-    .pipe(gulp.dest('packages/docs/dist'));
-  });
-
-  // Clear the images directory to ensure old images are pruned
-  gulp.task('docs:clean-images', () => {
-    return del('packages/docs/dist/images');
+      .pipe(gulp.dest(`${docs}/build/public`));
   });
 
   // The docs use the design system's Sass files, which don't have the
   // images inlined yet, so we need to be able to reference them by their URL
-  gulp.task('docs:copy-images', () => {
+  gulp.task('docs:images', ['docs:images:core'], () => {
+    dutil.logMessage(
+      '🏞 ',
+      'Copying images from "src" directory into "public" directory'
+    );
+
+    return gulp.src(`${docs}/src/**/images/*`)
+      .pipe(gulp.dest(`${docs}/build/public`));
+  });
+
+  gulp.task('docs:images:core', () => {
+    dutil.logMessage(
+      '🏞 ',
+      'Copying images from core package into "public" directory'
+    );
+
     return gulp.src('packages/core/src/**/images/*')
-    .pipe(gulp.dest('packages/docs/dist'));
+      .pipe(gulp.dest(`${docs}/build/public`));
   });
 
   // Generate the sections.json file, which consists of the KSS documentation
   // blocks and the Markdown pages (packages/docs/src/pages) content. This
   // is ultimately what defines the site structure and content.
-  gulp.task('docs:generate-sections', () => {
+  gulp.task('docs:generate-pages', ['docs:react'], () => {
+    dutil.logMessage(
+      '📝 ',
+      'Creating HTML files in "build" directory from Sass comments'
+    );
+
     return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
@@ -47,19 +99,22 @@ module.exports = (gulp) => {
       })
       .then(nestKssSections)
       .then(sections => {
-        // TODO(sawyer): Rather than generating a JSON file here, we should
-        // instead render the HTML files. This might look something like passing
-        // in the section into a React component as a prop, which then renders
-        // each section as an HTML page.
+        // TODO(sawyer): Is sections.json needed anymore?
         const body = JSON.stringify(sections);
         const stream = source('sections.json');
         stream.end(body);
-        return stream.pipe(gulp.dest('packages/docs/src/data'));
-      });
+        stream.pipe(gulp.dest(`${docs}/src/data`));
+        return sections;
+      }).then(generatePages);
   });
 
   // Extract info from React component files for props documentation
   gulp.task('docs:react', () => {
+    dutil.logMessage(
+      '📊 ',
+      'Creating react-doc.json data file from React comments'
+    );
+
     return gulp
       .src([
         'packages/core/src/components/**/*.jsx',
@@ -72,20 +127,20 @@ module.exports = (gulp) => {
       .pipe(merge({
         fileName: 'react-doc.json'
       }))
-      .pipe(gulp.dest('packages/docs/src/data'));
+      .pipe(gulp.dest(`${docs}/src/data`));
   });
 
   gulp.task('docs:build', done => {
-    dutil.logMessage('kss', 'Generating documentation');
+    dutil.logMessage(
+      '🏃 ',
+      'Starting the documentation generation task'
+    );
 
     runSequence(
-      'docs:clean-fonts',
-      'docs:clean-images',
+      'docs:clean',
       [
-        'docs:generate-sections',
-        'docs:react',
-        'docs:copy-fonts',
-        'docs:copy-images',
+        'docs:generate-pages',
+        'docs:public',
         'webpack'
       ],
       done
