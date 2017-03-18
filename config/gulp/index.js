@@ -14,13 +14,13 @@ module.exports = (gulp) => {
   [
     'build',
     'bumpVersion',
-    'docs',
+    'docs/index',
     'fonts',
     'lint',
     'sass',
     'server',
     'watch',
-    'webpack',
+    'webpack'
   ].forEach(taskGroup => {
     require(`./${taskGroup}.js`)(gulp, shared);
   });

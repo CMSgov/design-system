@@ -1,15 +1,15 @@
 /**
- * This task group generates our design system documentation using KSS. It
- * handles things like parsing our CSS comments and generating a JSON file
- * for us to render our documentation site.
+ * This task group generates our design system documentation. It handles things
+ * like parsing our CSS/JSX comments, and generating a JSON file for us to
+ * render our documentation site.
  */
 const del = require('del');
-const dutil = require('./doc-util');
+const dutil = require('../doc-util');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
-const processKssSection = require('./kss/processSection');
-const nestKssSections = require('./kss/nestSections');
-const reactDocgen = require('./common/react-docgen');
+const processKssSection = require('./processSection');
+const nestKssSections = require('./nestSections');
+const reactDocgen = require('../common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
 
@@ -36,7 +36,10 @@ module.exports = (gulp) => {
     .pipe(gulp.dest('packages/docs/dist'));
   });
 
-  gulp.task('docs:kss', () => {
+  // Generate the sections.json file, which consists of the KSS documentation
+  // blocks and the Markdown pages (packages/docs/src/pages) content. This
+  // is ultimately what defines the site structure and content.
+  gulp.task('docs:generate-sections', () => {
     return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
@@ -44,6 +47,10 @@ module.exports = (gulp) => {
       })
       .then(nestKssSections)
       .then(sections => {
+        // TODO(sawyer): Rather than generating a JSON file here, we should
+        // instead render the HTML files. This might look something like passing
+        // in the section into a React component as a prop, which then renders
+        // each section as an HTML page.
         const body = JSON.stringify(sections);
         const stream = source('sections.json');
         stream.end(body);
@@ -57,7 +64,7 @@ module.exports = (gulp) => {
       .src([
         'packages/core/src/components/**/*.jsx',
         '!packages/core/src/components/**/*.test.jsx',
-        '!packages/core/src/components/**/*.example.jsx',
+        '!packages/core/src/components/**/*.example.jsx'
       ])
       .pipe(reactDocgen({
         nameAfter: 'packages/'
@@ -75,7 +82,7 @@ module.exports = (gulp) => {
       'docs:clean-fonts',
       'docs:clean-images',
       [
-        'docs:kss',
+        'docs:generate-sections',
         'docs:react',
         'docs:copy-fonts',
         'docs:copy-images',
