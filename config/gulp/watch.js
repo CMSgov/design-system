@@ -12,7 +12,7 @@ module.exports = (gulp, shared) => {
       'lint:core-styles',
       'sass:process-assets',
       'sass:process-docs',
-      'docs:kss'
+      'docs:generate-sections'
     ]);
 
     gulp.watch([
