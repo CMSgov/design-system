@@ -88,6 +88,14 @@ class PageBlock extends React.Component {
     }
   }
 
+  source() {
+    if (this.props.source) {
+      return <code className='ds-u-font-size--small'>
+        {this.props.source.filename}:{this.props.source.line}
+      </code>;
+    }
+  }
+
   statusPill() {
     if (this.props.status) {
       return (
@@ -117,7 +125,7 @@ class PageBlock extends React.Component {
           {this.statusPill()}
           <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
           <div className='ds-u-clearfix' />
-          <code className='ds-u-font-size--small'>{this.props.source.filename}:{this.props.source.line}</code>
+          {this.source()}
           {this.uswdsLink()}
         </heading>
 
