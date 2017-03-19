@@ -1,5 +1,9 @@
-# Compiled documentation site
+# Compiled documentation site. This gets published to S3 and can
+# be generated on demand
 packages/docs/build
+# Generated documentation data from CSS and JSX comments. We only need this
+# during the docs generation task.
+packages/docs/src/data
 
 # Logs
 logs
