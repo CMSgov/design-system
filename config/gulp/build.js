@@ -15,6 +15,11 @@ module.exports = (gulp) => {
   // This could be simplified once the fonts task removed
   gulp.task('build:assets', ['sass', 'fonts']);
 
+  gulp.task('build:success', () => {
+    dutil.logMessage('✅ ', 'Generated documentation added to packages/docs/build');
+    dutil.logMessage('✅ ', 'Compiled core assets added to packages/core/dist');
+  });
+
   gulp.task('build', done => {
     dutil.logIntroduction();
 
@@ -22,6 +27,7 @@ module.exports = (gulp) => {
       'build:clean-dist',
       'docs:build',
       'build:assets',
+      'build:success',
       done
     );
   });
