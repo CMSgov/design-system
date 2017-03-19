@@ -1,13 +1,14 @@
-// Run babel transformations so we can run our JSX scripts in our Node
+/**
+ * This task group generates our design system documentation. It handles things
+ * like parsing our CSS/JSX comments, generating JSON data files, and ultimately
+ * generating the HTML files which get published as the public site.
+ */
+
+// Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('babel-register')({
   only: /packages\/(core|docs)\/src/
 });
 
-/**
- * This task group generates our design system documentation. It handles things
- * like parsing our CSS/JSX comments, and generating a JSON file for us to
- * render our documentation site.
- */
 const del = require('del');
 const dutil = require('../common/log-util');
 const kss = require('kss');
@@ -17,13 +18,23 @@ const nestKssSections = require('./nestSections');
 const reactDocgen = require('../common/react-docgen');
 const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
-const generatePage = require('../../../packages/docs/src/scripts/generatePage');
 const docs = 'packages/docs';
 
 module.exports = (gulp, shared) => {
-  function generatePages(sections) {
+  /**
+   * Loop through the nested array of pages and create an HTML file for each one.
+   * These HTML pages are what get published as the public documentation website.
+   * @return {Promise}
+   */
+  function generatePages() {
+    // It's important to require the generatePage method here since the data
+    // files (pages.json and react-doc.json) are dependencies, this require()
+    // would fail if it was called before those data files existed.
+    const generatePage = require('../../../packages/docs/src/scripts/generatePage');
+    const pages = require('../../../packages/docs/src/data/pages.json');
+
     return Promise.all(
-      sections.map(page => {
+      pages.map(page => {
         return generatePage(page, page.referenceURI, shared.rootPath)
           .then(() => {
             if (page.sections && page.sections.length) {
@@ -48,7 +59,7 @@ module.exports = (gulp, shared) => {
     return del(`${docs}/build/*`);
   });
 
-  // Create public directory to hold to the build directory so relative URLs work
+  // Convenience-task for copying assets to the "public" directory
   gulp.task('docs:public', ['docs:fonts', 'docs:images']);
 
   gulp.task('docs:fonts', () => {
@@ -83,13 +94,13 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(`${docs}/build/public`));
   });
 
-  // Generate the sections.json file, which consists of the KSS documentation
+  // Generate the pages.json file, which consists of the KSS documentation
   // blocks and the Markdown pages (packages/docs/src/pages) content. This
   // is ultimately what defines the site structure and content.
-  gulp.task('docs:generate-pages', ['docs:react'], () => {
+  gulp.task('docs:pages-data', () => {
     dutil.logMessage(
-      '📝 ',
-      'Creating HTML files in "build" directory from Sass comments'
+      '🔗 ',
+      'Creating pages.json data file from Sass comments and Markdown pages'
     );
 
     return kss.traverse('packages/core/src/')
@@ -99,17 +110,19 @@ module.exports = (gulp, shared) => {
       })
       .then(nestKssSections)
       .then(sections => {
-        // TODO(sawyer): Is sections.json needed anymore?
+        // We need a JSON file consisting of all pages so we can later generate
+        // HTML files. The JSON file is also a dependency of our React Nav
+        // component, as we use it to generate the list of nav links.
         const body = JSON.stringify(sections);
-        const stream = source('sections.json');
+        const stream = source('pages.json');
         stream.end(body);
         stream.pipe(gulp.dest(`${docs}/src/data`));
         return sections;
-      }).then(generatePages);
+      });
   });
 
   // Extract info from React component files for props documentation
-  gulp.task('docs:react', () => {
+  gulp.task('docs:react-data', () => {
     dutil.logMessage(
       '📊 ',
       'Creating react-doc.json data file from React comments'
@@ -128,6 +141,15 @@ module.exports = (gulp, shared) => {
         fileName: 'react-doc.json'
       }))
       .pipe(gulp.dest(`${docs}/src/data`));
+  });
+
+  gulp.task('docs:generate-pages', ['docs:react-data', 'docs:pages-data'], () => {
+    dutil.logMessage(
+      '📝 ',
+      'Creating HTML files in "build" directory from pages.json data file'
+    );
+
+    return generatePages();
   });
 
   gulp.task('docs:build', done => {

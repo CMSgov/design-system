@@ -1,13 +1,13 @@
 import React from 'react';
 import Nav from './Nav';
 import Page from './Page';
-const sections = require('../../data/sections.json');
+const pages = require('../../data/pages.json');
 
 class Docs extends React.Component {
   render() {
     return (
       <div>
-        <Nav pages={sections} />
+        <Nav pages={pages} />
         <main className='page'>
           <Page {...this.props} />
         </main>
