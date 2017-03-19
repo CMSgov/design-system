@@ -18,7 +18,7 @@ class NavItem extends React.Component {
   render() {
     return (
       <li>
-        <a href={this.props.referenceURI}>{this.props.header}</a>
+        <a href={`/${this.props.referenceURI}`}>{this.props.header}</a>
         {this.subpages(this.props.sections)}
       </li>
     );

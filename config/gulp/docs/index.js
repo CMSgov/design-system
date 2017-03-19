@@ -20,24 +20,24 @@ const source = require('vinyl-source-stream');
 const generatePage = require('../../../packages/docs/src/scripts/generatePage');
 const docs = 'packages/docs';
 
-function generatePages(sections) {
-  return Promise.all(
-    sections.map(page => {
-      return generatePage(page, page.referenceURI)
-        .then(() => {
-          if (page.sections && page.sections.length) {
-            return Promise.all(
-              page.sections.map(subpage => {
-                return generatePage(subpage, subpage.referenceURI);
-              })
-            );
-          }
-        });
-    })
-  );
-}
+module.exports = (gulp, shared) => {
+  function generatePages(sections) {
+    return Promise.all(
+      sections.map(page => {
+        return generatePage(page, page.referenceURI, shared.rootPath)
+          .then(() => {
+            if (page.sections && page.sections.length) {
+              return Promise.all(
+                page.sections.map(subpage => {
+                  return generatePage(subpage, subpage.referenceURI, shared.rootPath);
+                })
+              );
+            }
+          });
+      })
+    );
+  }
 
-module.exports = (gulp) => {
   // Ensure a clean slate by deleting everything in the build directory
   gulp.task('docs:clean', () => {
     dutil.logMessage(
@@ -95,7 +95,7 @@ module.exports = (gulp) => {
     return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
-          .map(processKssSection);
+          .map(section => processKssSection(section, shared.rootPath));
       })
       .then(nestKssSections)
       .then(sections => {
@@ -131,10 +131,13 @@ module.exports = (gulp) => {
   });
 
   gulp.task('docs:build', done => {
-    dutil.logMessage(
-      '🏃 ',
-      'Starting the documentation generation task'
-    );
+    let message = 'Starting the documentation generation task';
+
+    if (shared.rootPath !== '') {
+      message += ` with a root path of ${shared.rootPath}`;
+    }
+
+    dutil.logMessage('🏃 ', message);
 
     runSequence(
       'docs:clean',

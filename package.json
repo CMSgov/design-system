@@ -5,7 +5,7 @@
   "repository": "CMSgov/design-system",
   "scripts": {
     "bootstrap": "yerna install",
-    "build": "NODE_ENV=production gulp build",
+    "build": "NODE_ENV=production gulp build --env=production",
     "bump": "gulp bumpVersion",
     "generate": "yo cmsgov",
     "g": "yarn generate",
@@ -47,6 +47,7 @@
     "node-notifier": "^5.0.2",
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^9.1.0",
+    "postcss-url": "^5.1.2",
     "react-docgen": "^2.13.0",
     "run-sequence": "^1.2.2",
     "stylelint": "^7.8.0",

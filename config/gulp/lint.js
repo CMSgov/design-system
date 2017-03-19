@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const argv = require('yargs').argv;
 const count = require('gulp-count');
 const eslint = require('gulp-eslint');
 const stylelint = require('gulp-stylelint');
@@ -15,24 +14,25 @@ const stylelintConfig = require('../../stylelint.config');
  */
 const systemNamePattern = /^(ds-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
-module.exports = (gulp) => {
+module.exports = (gulp, shared) => {
   // Lint Sass files using stylelint. Further configuration for CSS linting
   // can be handled in stylelint.config.js
   function lintSass(cwd, enforceNamePattern = true) {
     let config = _.cloneDeep(stylelintConfig);
 
-    if (enforceNamePattern)
+    if (enforceNamePattern) {
       config.rules['selector-class-pattern'] = systemNamePattern;
+    }
 
     return gulp
       .src([`${cwd}src/**/*.scss`])
       .pipe(stylelint({
         config: config,
-        failAfterError: argv.env && argv.env === 'test',
+        failAfterError: shared.env && shared.env === 'test',
         reporters: [
-          { formatter: 'string', console: true },
+          { formatter: 'string', console: true }
         ],
-        syntax: 'scss',
+        syntax: 'scss'
       }))
       .pipe(count('## Sass files linted'));
   }

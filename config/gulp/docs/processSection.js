@@ -1,12 +1,13 @@
 const dutil = require('../doc-util');
 const ejs = require('ejs');
+const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 
 /**
  * Extract, process, and return KssSection data in a cleaner format
  * @param  {KssSection} kssSection
  * @return {Object}
  */
-function processSection(kssSection) {
+function processSection(kssSection, rootPath) {
   let data = kssSection.toJSON();
 
   data = Object.assign({}, data, {
@@ -15,6 +16,10 @@ function processSection(kssSection) {
 
   data = processFlags(data);
   data.referenceURI = data.reference.replace(/\./g, '/');
+
+  if (rootPath) {
+    data.referenceURI = `${rootPath}/${data.referenceURI}`;
+  }
 
   if (data.markup && data.markup !== '') {
     try {
@@ -27,8 +32,6 @@ function processSection(kssSection) {
 
   return data;
 }
-
-const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 
 /**
  * Parses custom flags in CSS descriptions and adds each as a property

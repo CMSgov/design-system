@@ -1,6 +1,5 @@
 'use strict';
 
-const argv = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
@@ -10,6 +9,7 @@ const path = require('path');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postcssInliner = require('postcss-image-inliner');
+const postcssUrl = require('postcss-url');
 const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -23,7 +23,7 @@ module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
   function processSass(cwd, dest = 'dist') {
-    const createSourcemaps = false; // argv.env === 'development';
+    const createSourcemaps = shared.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
@@ -38,11 +38,18 @@ module.exports = (gulp, shared) => {
       autoprefixer()  // add any necessary vendor prefixes
     ];
 
-    if (argv.env !== 'development') {
+    if (shared.env !== 'development') {
       postcssPlugins.push(cssnano()); // minify css
     }
 
-    if (!cwd.match(/\/docs\//)) {
+    if (cwd.match(/\/docs\//)) {
+      // Update url() values to be relative to our rootPath
+      if (shared.rootPath !== '') {
+        postcssPlugins.push(postcssUrl({
+          url: url => `/${shared.rootPath}${url}`
+        }));
+      }
+    } else {
       // inline/base64 images
       postcssPlugins.push(postcssInliner({
         assetPaths: [path.resolve(__dirname, `../../${cwd}/src/`)],
