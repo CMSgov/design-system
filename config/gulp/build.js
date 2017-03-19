@@ -3,7 +3,7 @@
  * and the documentation site. Essentially makes everything production-ready.
  */
 const del = require('del');
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp) => {

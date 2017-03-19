@@ -1,4 +1,4 @@
-const dutil = require('../doc-util');
+const dutil = require('../common/log-util');
 const ejs = require('ejs');
 const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 

@@ -2,8 +2,8 @@
  * Creates a Gulp-friendly implementation of react-docgen. Takes a stream
  * of React component files and returns a stream of JSON documentation files.
  */
-const dutil = require('../doc-util');
-const gUtil = require('gulp-util');
+const dutil = require('./log-util');
+const gutil = require('gulp-util');
 const reactDocgen = require('react-docgen');
 const path = require('path');
 const through = require('through2');
@@ -36,7 +36,7 @@ module.exports = function(options) {
     }
 
     file.contents = new Buffer(JSON.stringify(response));
-    file.path = gUtil.replaceExtension(file.path, '.json');
+    file.path = gutil.replaceExtension(file.path, '.json');
     return cb(null, file);
   });
 };

@@ -1,4 +1,4 @@
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 
 module.exports = (gulp) => {
   // TODO(sawyer): This seems overkill. Let's only distribute fonts in the

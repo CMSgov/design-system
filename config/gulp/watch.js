@@ -3,7 +3,7 @@
  * make to a component, a component's example code, or the documentation will
  * automatically be reflected in the browser when the changes are saved.
  */
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {

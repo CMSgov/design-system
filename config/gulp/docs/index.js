@@ -9,7 +9,7 @@ require('babel-register')({
  * render our documentation site.
  */
 const del = require('del');
-const dutil = require('../doc-util');
+const dutil = require('../common/log-util');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
 const processKssSection = require('./processSection');
