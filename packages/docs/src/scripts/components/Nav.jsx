@@ -7,7 +7,7 @@ class Nav extends React.Component {
       <nav className='c-nav'>
         <ol>
           {this.props.pages.map(page => (
-            <NavItem key={page.referenceNumber} {...page} />
+            <NavItem key={page.referenceURI} {...page} />
           ))}
         </ol>
       </nav>

@@ -7,7 +7,7 @@ class NavItem extends React.Component {
       return (
         <ul>
           {sections.map(page => (
-            <li key={page.referenceNumber}>
+            <li key={page.referenceURI}>
               <Link to={page.referenceURI}>{page.header}</Link>
             </li>
           ))}
