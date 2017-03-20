@@ -36,6 +36,11 @@ module.exports = (gulp, shared) => {
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
+    let generatedPagesCount = 0;
+
+    function incrementCount(results) {
+      return generatedPagesCount += results.filter(createdFile => createdFile).length;
+    }
 
     return Promise.all(
       pages.map(page => {
@@ -46,11 +51,12 @@ module.exports = (gulp, shared) => {
                 page.sections.map(subpage => {
                   return generatePage(pages, subpage, shared.rootPath);
                 })
-              );
+              ).then(incrementCount);
             }
           });
       })
-    );
+    )
+    .then(incrementCount);
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory
@@ -115,7 +121,13 @@ module.exports = (gulp, shared) => {
         return convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections));
       })
-      .then(generatePages);
+      .then(generatePages)
+      .then(generatedPagesCount => {
+        dutil.logMessage(
+          '📝 ',
+          `Created ${generatedPagesCount} HTML files`
+        );
+      });
   });
 
   // Extract info from React component files for props documentation
