@@ -23,6 +23,18 @@ const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
 const docs = 'packages/docs';
 
+function generatedPagesCount(resultGroups) {
+  let count = 0;
+
+  resultGroups.forEach(results => {
+    if (results) {
+      count += results.filter(createdFile => createdFile).length;
+    }
+  });
+
+  return count;
+}
+
 module.exports = (gulp, shared) => {
   /**
    * Loop through the nested array of pages and create an HTML file for each one.
@@ -36,27 +48,23 @@ module.exports = (gulp, shared) => {
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
-    let generatedPagesCount = 0;
-
-    function incrementCount(results) {
-      return generatedPagesCount += results.filter(createdFile => createdFile).length;
-    }
 
     return Promise.all(
       pages.map(page => {
         return generatePage(pages, page, shared.rootPath)
-          .then(() => {
+          .then(created => {
             if (page.sections && page.sections.length) {
               return Promise.all(
                 page.sections.map(subpage => {
                   return generatePage(pages, subpage, shared.rootPath);
                 })
-              ).then(incrementCount);
+              ).then(results => [created].concat(results)); // return results for generatedPagesCount
             }
+
+            return [created];
           });
       })
-    )
-    .then(incrementCount);
+    ).then(generatedPagesCount);
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory

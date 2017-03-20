@@ -65,7 +65,7 @@ function parsedPath(page, rootPath) {
 function saveToFile(html, pathObj) {
   return new Promise((resolve, reject) => {
     recursive.mkdir(pathObj.dir, () => {
-      return fs.writeFile(pathObj.path, html)
+      fs.writeFile(pathObj.path, html)
         .then(() => resolve(true));
     });
   });

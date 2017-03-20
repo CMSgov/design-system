@@ -27,14 +27,18 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch('packages/docs/src/**/*.scss', [
+    gulp.watch('packages/docs/src/styles/**/*.scss', [
       'lint:docs-styles',
       'sass:process:docs'
     ]);
 
+    gulp.watch('packages/docs/src/pages/**/*.md', [
+      'docs:generate-pages'
+    ]);
+
     gulp.watch([
-      'packages/docs/src/**/*.js',
-      'packages/docs/src/**/*.jsx'
+      'packages/docs/src/scripts/**/*.js',
+      'packages/docs/src/scripts/**/*.jsx'
     ], ['lint:docs-scripts']); // compiling is handled by Webpack when the files change
   });
 
