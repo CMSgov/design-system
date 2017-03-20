@@ -15,7 +15,7 @@ pre {
 
   // Override styles applied by Prism
   // stylelint-disable selector-no-qualifying-type
-  &[class*=language-] {
+  &[class*=lang] {
     background-color: $color-gray-lightest;
     margin-top: 0;
   }
