@@ -6,7 +6,7 @@ class Nav extends React.Component {
     return (
       <nav className='c-nav'>
         <ol>
-          {this.props.pages.map(page => (
+          {this.props.routes.map(page => (
             <NavItem key={page.referenceURI} {...page} />
           ))}
         </ol>
@@ -16,7 +16,7 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  pages: React.PropTypes.array.isRequired
+  routes: React.PropTypes.array.isRequired
 };
 
 export default Nav;

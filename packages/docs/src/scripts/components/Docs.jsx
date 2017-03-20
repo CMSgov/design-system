@@ -6,7 +6,7 @@ class Docs extends React.Component {
   render() {
     return (
       <div>
-        <Nav pages={this.props.pages} />
+        <Nav routes={this.props.routes} />
         <main className='page'>
           <Page {...this.props.page} />
         </main>
@@ -17,7 +17,7 @@ class Docs extends React.Component {
 
 Docs.propTypes = {
   page: React.PropTypes.object.isRequired,
-  pages: React.PropTypes.array.isRequired
+  routes: React.PropTypes.array.isRequired
 };
 
 export default Docs;
