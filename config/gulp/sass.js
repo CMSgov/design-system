@@ -62,7 +62,9 @@ module.exports = (gulp, shared) => {
       .src(`${cwd}src/**/*.scss`)
       .pipe(
         changed(`${cwd}${dest}`, {
-          extension: '.css'
+          extension: '.css',
+          // compare contents so files that import the updated file also get piped through
+          hasChanged: changed.compareSha1Digest
         })
       )
       .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
@@ -71,7 +73,7 @@ module.exports = (gulp, shared) => {
       .pipe(postcss(postcssPlugins))
       .pipe(gulp.dest(`${cwd}${dest}`))
       .pipe(count(`## Sass files processed in ${cwd}`))
-      .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
+      .pipe(shared.browserSync.stream({match: '**/public/styles/*.css'})); // Auto-inject into docs
   }
 
   // Empty the vendor directory to ensure unused files aren't kept around
