@@ -8,3 +8,4 @@ n 7.7.3
 
 npm rebuild
 npm install
+npm run bootstrap:npm
