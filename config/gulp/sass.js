@@ -1,6 +1,7 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
+const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
@@ -59,6 +60,11 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src(`${cwd}src/**/*.scss`)
+      .pipe(
+        changed(`${cwd}${dest}`, {
+          extension: '.css'
+        })
+      )
       .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
       .pipe(sassCompiler)
       .pipe(gulpIf(createSourcemaps, sourcemaps.write()))

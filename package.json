@@ -32,6 +32,8 @@
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
+    "gulp-changed": "^2.0.0",
+    "gulp-changed-in-place": "^2.0.3",
     "gulp-count": "^0.3.0",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
