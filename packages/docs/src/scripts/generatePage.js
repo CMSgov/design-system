@@ -1,4 +1,5 @@
-const fs = require('fs');
+const crypto = require('crypto');
+const fs = require('mz/fs');
 const React = require('react');
 const {render, template} = require('rapscallion');
 const Docs = require('./components/Docs').default;
@@ -30,10 +31,24 @@ function generatePage(routes, page, rootPath) {
 
   return responseRenderer
     .toPromise()
-    .then(html => saveToFile(html, page.referenceURI, rootPath));
+    .then(html => updateFile(html, page, rootPath));
 }
 
-function saveToFile(html, uri, rootPath) {
+// To ensure we're not unnecessarily regenerating each page each time the
+// generate-pages task is called, we first compare the checksums.
+function checkCache(html, path) {
+  return fs.readFile(path, 'utf8')
+    .then(data => {
+      const fileHash = crypto.createHash('md5').update(data).digest('hex');
+      const htmlHash = crypto.createHash('md5').update(html).digest('hex');
+      return fileHash !== htmlHash;
+    })
+    .catch(() => true); // File doesn't exist
+}
+
+function parsedPath(page, rootPath) {
+  let uri = page.referenceURI;
+
   if (rootPath) {
     uri = uri.replace(rootPath, '');
   }
@@ -41,14 +56,32 @@ function saveToFile(html, uri, rootPath) {
   if (uri === 'public') throw Error('Filename can\'t be "public"');
   let dir = path.resolve(__dirname, `../../build/${uri}`);
 
+  return {
+    dir: dir,
+    path: path.resolve(dir, 'index.html')
+  };
+}
+
+function saveToFile(html, pathObj) {
   return new Promise((resolve, reject) => {
-    recursive.mkdir(dir, () => {
-      fs.writeFile(path.resolve(dir, 'index.html'), html, err => {
-        if (err) return reject(err);
-        return resolve();
-      });
+    recursive.mkdir(pathObj.dir, () => {
+      return fs.writeFile(pathObj.path, html)
+        .then(() => resolve(true));
     });
   });
+}
+
+function updateFile(html, page, rootPath) {
+  let pathObj = parsedPath(page, rootPath);
+
+  return checkCache(html, pathObj.path)
+    .then(changed => {
+      if (changed) {
+        return saveToFile(html, pathObj);
+      }
+
+      return Promise.resolve(false);
+    })
 }
 
 module.exports = generatePage;
