@@ -26,10 +26,10 @@ yarn install
 #### Install package dependencies
 
 ```
-yarn bootstrap
+yarn bootstrap:yarn
 ```
 
-The `bootstrap` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies.
+The `bootstrap:yarn` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
 
 _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
 
