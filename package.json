@@ -28,6 +28,7 @@
     "eslint": "^3.17.1",
     "eslint-config-nava": "^1.0.0",
     "eslint-plugin-react": "^6.9.0",
+    "front-matter": "^2.1.2",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.7.0",
@@ -43,7 +44,9 @@
     "jest": "^19.0.2",
     "kss": "^3.0.0-beta.18",
     "lodash": "^4.17.4",
+    "marked": "^0.3.6",
     "matchdep": "^1.0.1",
+    "mz": "^2.6.0",
     "node-notifier": "^5.0.2",
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^9.1.0",
@@ -63,6 +66,9 @@
     "yargs": "^7.0.2",
     "yernapkg": "^0.3.2",
     "yo": "^1.8.5"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "jest": {
     "testPathIgnorePatterns": [

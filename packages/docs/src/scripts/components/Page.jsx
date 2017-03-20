@@ -7,7 +7,7 @@ import PageBlock from './PageBlock';
 
 class Page extends React.Component {
   childSections() {
-    if (this.props.sections && this.props.sections.length && this.props.depth >= 2) {
+    if (this.props.sections.length && this.props.depth >= 2) {
       return this.props.sections.map(section => (
         <PageBlock key={section.referenceURI} {...section} />
       ));
@@ -24,8 +24,13 @@ class Page extends React.Component {
   }
 }
 
+Page.defaultProps = {
+  depth: 0,
+  sections: []
+};
+
 Page.propTypes = {
-  depth: React.PropTypes.number.isRequired,
+  depth: React.PropTypes.number,
   sections: React.PropTypes.array
 };
 

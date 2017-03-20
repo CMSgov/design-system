@@ -1,19 +1,23 @@
 import React from 'react';
 import Nav from './Nav';
 import Page from './Page';
-const pages = require('../../data/pages.json');
 
 class Docs extends React.Component {
   render() {
     return (
       <div>
-        <Nav pages={pages} />
+        <Nav pages={this.props.pages} />
         <main className='page'>
-          <Page {...this.props} />
+          <Page {...this.props.page} />
         </main>
       </div>
     );
   }
 }
+
+Docs.propTypes = {
+  page: React.PropTypes.object.isRequired,
+  pages: React.PropTypes.array.isRequired
+};
 
 export default Docs;

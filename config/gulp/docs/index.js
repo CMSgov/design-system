@@ -9,10 +9,13 @@ require('babel-register')({
   only: /packages\/(core|docs)\/src/
 });
 
+const convertMarkdownPages = require('./convertMarkdownPages');
 const del = require('del');
 const dutil = require('../common/log-util');
+const fs = require('mz/fs');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
+const path = require('path');
 const processKssSection = require('./processSection');
 const nestKssSections = require('./nestSections');
 const reactDocgen = require('../common/react-docgen');
@@ -26,21 +29,22 @@ module.exports = (gulp, shared) => {
    * These HTML pages are what get published as the public documentation website.
    * @return {Promise}
    */
-  function generatePages() {
-    // It's important to require the generatePage method here since the data
-    // files (pages.json and react-doc.json) are dependencies, this require()
-    // would fail if it was called before those data files existed.
+  function generatePages(pages) {
+    // It's important to require the generatePage method here since the
+    // react-doc.json data file is a dependency. This require() would fail if
+    // it was called before the file existed.
+    // TODO(sawyer): Would it be better if we passed in the relevant React
+    // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
-    const pages = require('../../../packages/docs/src/data/pages.json');
 
     return Promise.all(
       pages.map(page => {
-        return generatePage(page, page.referenceURI, shared.rootPath)
+        return generatePage(pages, page, shared.rootPath)
           .then(() => {
             if (page.sections && page.sections.length) {
               return Promise.all(
                 page.sections.map(subpage => {
-                  return generatePage(subpage, subpage.referenceURI, shared.rootPath);
+                  return generatePage(pages, subpage, shared.rootPath);
                 })
               );
             }
@@ -49,14 +53,15 @@ module.exports = (gulp, shared) => {
     );
   }
 
-  // Ensure a clean slate by deleting everything in the build directory
+  // Ensure a clean slate by deleting everything in the build and data directory
   gulp.task('docs:clean', () => {
     dutil.logMessage(
       '🚮 ',
-      'Emptying the build directory'
+      'Emptying the build and data directories'
     );
 
-    return del(`${docs}/build/*`);
+    return del(`${docs}/build/*`)
+      .then(() => del(`${docs}/src/data`));
   });
 
   // Convenience-task for copying assets to the "public" directory
@@ -94,31 +99,23 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(`${docs}/build/public`));
   });
 
-  // Generate the pages.json file, which consists of the KSS documentation
-  // blocks and the Markdown pages (packages/docs/src/pages) content. This
-  // is ultimately what defines the site structure and content.
-  gulp.task('docs:pages-data', () => {
+  gulp.task('docs:generate-pages', () => {
     dutil.logMessage(
-      '🔗 ',
-      'Creating pages.json data file from Sass comments and Markdown pages'
+      '📝 ',
+      'Creating HTML pages from Sass comments and Markdown pages'
     );
 
     return kss.traverse('packages/core/src/')
       .then(styleguide => {
         return styleguide.sections()
-          .map(section => processKssSection(section, shared.rootPath));
+          .map(kssSection => processKssSection(kssSection, shared.rootPath));
       })
       .then(nestKssSections)
-      .then(sections => {
-        // We need a JSON file consisting of all pages so we can later generate
-        // HTML files. The JSON file is also a dependency of our React Nav
-        // component, as we use it to generate the list of nav links.
-        const body = JSON.stringify(sections);
-        const stream = source('pages.json');
-        stream.end(body);
-        stream.pipe(gulp.dest(`${docs}/src/data`));
-        return sections;
-      });
+      .then(kssSections => {
+        return convertMarkdownPages(shared.rootPath)
+          .then(pages => pages.concat(kssSections));
+      })
+      .then(generatePages);
   });
 
   // Extract info from React component files for props documentation
@@ -143,15 +140,6 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(`${docs}/src/data`));
   });
 
-  gulp.task('docs:generate-pages', ['docs:react-data', 'docs:pages-data'], () => {
-    dutil.logMessage(
-      '📝 ',
-      'Creating HTML files in "build" directory from pages.json data file'
-    );
-
-    return generatePages();
-  });
-
   gulp.task('docs:build', done => {
     let message = 'Starting the documentation generation task';
 
@@ -163,6 +151,7 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       'docs:clean',
+      'docs:react-data',
       [
         'docs:generate-pages',
         'docs:public',

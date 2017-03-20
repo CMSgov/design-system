@@ -25,10 +25,14 @@ class NavItem extends React.Component {
   }
 }
 
+NavItem.defaultProps = {
+  sections: []
+};
+
 NavItem.propTypes = {
   header: React.PropTypes.string.isRequired,
   referenceURI: React.PropTypes.string.isRequired,
-  sections: React.PropTypes.array.isRequired
+  sections: React.PropTypes.array
 };
 
 export default NavItem;

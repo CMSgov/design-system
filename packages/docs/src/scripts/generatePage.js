@@ -5,8 +5,8 @@ const Docs = require('./components/Docs').default;
 const path = require('path');
 const recursive = require('mkdir-recursive');
 
-function generatePage(page, uri, rootPath) {
-  const componentRenderer = render(<Docs {...page} />);
+function generatePage(routes, page, rootPath) {
+  const componentRenderer = render(<Docs page={page} routes={routes} />);
 
   if (rootPath) {
     rootPath = `${rootPath}/`;
@@ -30,7 +30,7 @@ function generatePage(page, uri, rootPath) {
 
   return responseRenderer
     .toPromise()
-    .then(html => saveToFile(html, uri, rootPath));
+    .then(html => saveToFile(html, page.referenceURI, rootPath));
 }
 
 function saveToFile(html, uri, rootPath) {
