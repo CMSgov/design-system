@@ -5,8 +5,10 @@
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
   "devDependencies": {
+    "enzyme": "^2.7.1",
     "mkdir-recursive": "^0.3.0",
     "rapscallion": "^2.1.5",
+    "react-addons-test-utils": "^15.4.2",
     "react-element-to-jsx-string": "^6.3.0"
   },
   "dependencies": {
