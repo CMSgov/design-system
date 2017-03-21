@@ -1,15 +1,16 @@
 'use strict';
 
-const argv = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
+const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const path = require('path');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postcssInliner = require('postcss-image-inliner');
+const postcssUrl = require('postcss-url');
 const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -22,8 +23,8 @@ const config = {
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
-  function processSass(cwd) {
-    const createSourcemaps = false;//argv.env === 'development';
+  function processSass(cwd, dest = 'dist') {
+    const createSourcemaps = shared.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
       includePaths: [`${cwd}node_modules`]
@@ -38,12 +39,18 @@ module.exports = (gulp, shared) => {
       autoprefixer()  // add any necessary vendor prefixes
     ];
 
-    if (argv.env !== 'development') {
-      // minify css
-      postcssPlugins.push(cssnano());
+    if (shared.env !== 'development') {
+      postcssPlugins.push(cssnano()); // minify css
     }
 
-    if (!cwd.match(/\/docs\//)) {
+    if (cwd.match(/\/docs\//)) {
+      // Update url() values to be relative to our rootPath
+      if (shared.rootPath !== '') {
+        postcssPlugins.push(postcssUrl({
+          url: url => `/${shared.rootPath}${url}`
+        }));
+      }
+    } else {
       // inline/base64 images
       postcssPlugins.push(postcssInliner({
         assetPaths: [path.resolve(__dirname, `../../${cwd}/src/`)],
@@ -53,25 +60,33 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src(`${cwd}src/**/*.scss`)
+      .pipe(
+        changed(`${cwd}${dest}`, {
+          extension: '.css',
+          // compare contents so files that import the updated file also get piped through
+          hasChanged: changed.compareSha1Digest
+        })
+      )
       .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
       .pipe(sassCompiler)
       .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
       .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest(`${cwd}dist`))
-      .pipe(count('## Sass files processed'))
-      .pipe(shared.browserSync.stream({match: '**/*.css'})); // Auto-inject into docs
+      .pipe(gulp.dest(`${cwd}${dest}`))
+      .pipe(count(`## Sass files processed in ${cwd}`))
+      .pipe(shared.browserSync.stream({match: '**/public/styles/*.css'})); // Auto-inject into docs
   }
 
-  // Prune the vendor directory
+  // Empty the vendor directory to ensure unused files aren't kept around
   gulp.task('sass:clean-vendor', () => {
     return del(config.vendorSrc);
   });
 
-  // Copy 3rd-party Sass dependencies into a "vendor" subdirectory
+  // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
+  // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
     var packages = [
       './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
-      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss',
+      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
     return gulp
@@ -82,16 +97,16 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:process-assets', () => processSass('packages/core/'));
-  gulp.task('sass:process-docs', () => processSass('packages/docs/'));
+  gulp.task('sass:process:core', () => processSass('packages/core/'));
+  gulp.task('sass:process:docs', () => processSass('packages/docs/', 'build/public'));
 
   gulp.task('sass', done => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
       [
-        'sass:process-assets',
-        'sass:process-docs'
+        'sass:process:core',
+        'sass:process:docs'
       ],
       done
     );

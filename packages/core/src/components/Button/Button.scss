@@ -7,31 +7,6 @@ Button
 
 Use buttons to signal actions.
 
-## Accessibility
-
-- Buttons should display a visible focus state when users tab to them.
-- Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
-- When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
-
-## Usability
-
-### When to use
-- Use buttons for the most important actions you want users to take on your site, such as "download," "sign up," or "log out."
-
-### When to consider something else
-- If you want to lead users between pages of a website. Use links instead.
-- Less popular or less important actions may be visually styled as links.
-
-## Guidance
-- Generally, use primary buttons for actions that go to the next step and use secondary buttons for actions that happen on the current page.
-- Style the button most users should click in a way that distinguishes from other buttons on the page. Try using the “large button” or the most visually distinct fill color.
-- Make sure buttons look clickable—use color variations to distinguish static, hover and active states.
-- Avoid using too many buttons on a page.
-- Use sentence case for button labels.
-- Button labels should be as short as possible with “trigger words” that your users will recognize to clearly explain what will happen when the button is clicked (for example, “download,” “view” or “sign up”).
-- Make the first word of the button’s label a verb. For example, instead of “Complaint Filing”, label the button “File a complaint.”
-- At times, consider adding an icon to signal specific actions (“download”, “open in a new window”, etc).
-
 .ds-c-button--primary - The primary call-to-action
 .ds-c-button--outline - A secondary call-to-action
 .ds-c-button--danger - A variation indicating the action is destructive or dangerous
@@ -145,7 +120,9 @@ Style guide: components.button
 }
 
 /*
-Disabled button
+---
+
+### Disabled button
 
 Markup:
 <button class="ds-c-button ds-c-button--disabled">Button</button>
@@ -168,7 +145,9 @@ Style guide: components.button.disabled
 }
 
 /*
-Inverse theme
+---
+
+### Inverse theme
 
 Markup:
 <div class="ds-base--inverse ds-u-padding--2">
@@ -221,12 +200,12 @@ Button icons
 Markup:
 <button class="ds-c-button">
   <svg class="ds-u-margin-right--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
-    <use xlink:href="/static/images/symbols.svg#download"></use>
+    <use xlink:href="/public/images/symbols.svg#download"></use>
   </svg>Left icon
 </button>
 <button class="ds-c-button ds-c-button--primary">
   Right icon<svg class="ds-u-margin-left--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
-    <use xlink:href="/static/images/symbols.svg#arrow-right"></use>
+    <use xlink:href="/public/images/symbols.svg#arrow-right"></use>
   </svg>
 </button>
 <button class="ds-c-button ds-c-button--outline">
@@ -253,4 +232,35 @@ JavaScript API
 @react-component
 
 TODO: Display this in documentation
+*/
+
+/*
+---
+
+## Accessibility
+
+- Buttons should display a visible focus state when users tab to them.
+- Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
+- When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the Space key triggers a button, but pressing the Enter key triggers a link.
+
+## Usability
+
+### When to use
+- Use buttons for the most important actions you want users to take on your site, such as "download," "sign up," or "log out."
+
+### When to consider something else
+- If you want to lead users between pages of a website. Use links instead.
+- Less popular or less important actions may be visually styled as links.
+
+## Guidance
+- Generally, use primary buttons for actions that go to the next step and use secondary buttons for actions that happen on the current page.
+- Style the button most users should click in a way that distinguishes from other buttons on the page. Try using the “large button” or the most visually distinct fill color.
+- Make sure buttons look clickable—use color variations to distinguish static, hover and active states.
+- Avoid using too many buttons on a page.
+- Use sentence case for button labels.
+- Button labels should be as short as possible with “trigger words” that your users will recognize to clearly explain what will happen when the button is clicked (for example, “download,” “view” or “sign up”).
+- Make the first word of the button’s label a verb. For example, instead of “Complaint Filing”, label the button “File a complaint.”
+- At times, consider adding an icon to signal specific actions (“download”, “open in a new window”, etc).
+
+Style guide: components.button.details
 */

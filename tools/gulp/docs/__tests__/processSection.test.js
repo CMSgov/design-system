@@ -23,7 +23,7 @@ describe('processSection', () => {
   let data;
 
   beforeAll(() => {
-    data = processSection(section());
+    data = processSection(section('components.button'), 'root');
   });
 
   it('sets and replaces flags', () => {
@@ -31,6 +31,10 @@ describe('processSection', () => {
     expect(data.hideMarkup).toEqual(true);
     expect(data.status).toEqual('prototype');
     expect(data.description).toEqual('<p>Hello world</p>');
+  });
+
+  it('prepends rootPath', () => {
+    expect(data.referenceURI).toEqual('root/components/button');
   });
 
   it('renders EJS', () => {

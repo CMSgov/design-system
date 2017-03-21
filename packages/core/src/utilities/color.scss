@@ -73,8 +73,8 @@ Markup:
 <% groups[fill].forEach(color => { -%>
   <article class="ds-u-margin-bottom--2">
     <p class="ds-u-color--<%= color %> ds-u-fill--<%= fill %>">
-      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code>
-      on <code class="ds-u-fill--transparent">.ds-u-fill--<%= fill %></code>
+      <code class="ds-u-fill--transparent ds-u-color--<%= color %>">.ds-u-color--<%= color %></code>
+      on <code class="ds-u-fill--transparent ds-u-color--<%= color %>">.ds-u-fill--<%= fill %></code>
     </p>
   </article>
 <% }) -%>

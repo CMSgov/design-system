@@ -3,21 +3,20 @@
  * make to a component, a component's example code, or the documentation will
  * automatically be reflected in the browser when the changes are saved.
  */
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
-  gulp.task('watch:assets', () => {
+  gulp.task('watch:core', () => {
     gulp.watch('packages/core/src/**/*.scss', [
       'lint:core-styles',
-      'sass:process-assets',
-      'sass:process-docs',
-      'docs:generate-sections'
+      'sass:process:core',
+      'sass:process:docs',
+      'docs:generate-pages'
     ]);
 
     gulp.watch([
-      'packages/core/src/**/*.js',
-      'packages/core/src/**/*.jsx'
+      'packages/core/src/**/*.{js,jsx}'
     ], ['lint:core-scripts', 'docs:react']);
 
     gulp.watch(['packages/core/src/images/*'], [
@@ -27,26 +26,32 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch('packages/docs/src/**/*.scss', [
+    gulp.watch('packages/docs/src/styles/**/*.scss', [
       'lint:docs-styles',
-      'sass:process-docs'
+      'sass:process:docs'
+    ]);
+
+    gulp.watch('packages/docs/src/pages/**/*.md', [
+      'docs:generate-pages'
     ]);
 
     gulp.watch([
-      'packages/docs/src/**/*.js',
-      'packages/docs/src/**/*.jsx'
-    ], ['lint:docs-scripts']); // compiling is handled by Webpack when the files change
+      'packages/docs/src/scripts/**/*.{js,jsx}'
+    ], ['lint:docs-scripts']);
   });
 
   gulp.task('watch', () => {
-    dutil.logMessage('watch', 'Starting watch');
+    dutil.logMessage(
+      '👀 ',
+      'Transpiling + watching files for future changes'
+    );
 
     runSequence(
-      'build:assets',
       'docs:build',
+      'build:assets',
       [
         'server',
-        'watch:assets',
+        'watch:core',
         'watch:docs'
       ]
     );

@@ -1,12 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Docs from './components/Docs';
-const sections = require('../data/sections.json');
-
-ReactDOM.render(
-  <Docs sections={sections} />,
-  document.getElementById('jsx-root')
-);
+// TODO(sawyer): Do something with this script in production or get rid of it.
+// One thing that would be useful for development is re-rendering the page on
+// the client-side with React. This would make debugging the React components
+// much easier.
 
 // Enable Webpack hot reloading and tota11y in dev mode
 if (module.hot) {

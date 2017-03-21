@@ -7,7 +7,7 @@ let config = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'dist/scripts/index.js'
+    filename: 'build/public/scripts/index.js'
   },
   module: {
     loaders: [

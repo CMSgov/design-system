@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 class NavItem extends React.Component {
   subpages(sections) {
@@ -8,7 +7,7 @@ class NavItem extends React.Component {
         <ul>
           {sections.map(page => (
             <li key={page.referenceURI}>
-              <Link to={page.referenceURI}>{page.header}</Link>
+              <a href={`/${page.referenceURI}`}>{page.header}</a>
             </li>
           ))}
         </ul>
@@ -19,17 +18,21 @@ class NavItem extends React.Component {
   render() {
     return (
       <li>
-        <Link to={this.props.referenceURI}>{this.props.header}</Link>
+        <a href={`/${this.props.referenceURI}`}>{this.props.header}</a>
         {this.subpages(this.props.sections)}
       </li>
     );
   }
 }
 
+NavItem.defaultProps = {
+  sections: []
+};
+
 NavItem.propTypes = {
   header: React.PropTypes.string.isRequired,
   referenceURI: React.PropTypes.string.isRequired,
-  sections: React.PropTypes.array.isRequired
+  sections: React.PropTypes.array
 };
 
 export default NavItem;

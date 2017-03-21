@@ -1,3 +1,8 @@
+body {
+  font-family: $font-sans;
+  line-height: 1.5;
+}
+
 blockquote {
   background: $color-gray-lightest;
   border-left: 2px solid $color-gray-light;

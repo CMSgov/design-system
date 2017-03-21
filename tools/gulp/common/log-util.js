@@ -2,10 +2,10 @@
  * Just some utility functions to log things.
  * Via: github.com/18F/web-design-standards-docs
  */
-var pkg         = require('../../package.json');
-var gutil       = require('gulp-util');
-var chalk       = gutil.colors;
-var notifier    = require('node-notifier');
+var pkg = require('../../../package.json');
+var gutil = require('gulp-util');
+var chalk = gutil.colors;
+var notifier = require('node-notifier');
 
 var shellPrefix = '$';
 
@@ -64,27 +64,19 @@ function notify(title, message, wait) {
     title: title,
     message: message,
     icon: 'assets/img/favicons/favicon-192.png',
-    wait: wait,
+    wait: wait
   });
 }
 
 module.exports = {
-
-  pkg: {
-
-    name: pkg.name,
-    version: pkg.version,
-
-  },
-
-  dirName: pkg.name + '-' + pkg.version,
+  dirName: pkg.name,
 
   logIntroduction: function(message) {
 
     message = message || 'HealthCare.gov Design System';
 
     gutil.log(
-      chalk.yellow('v' + pkg.version),
+      chalk.yellow(pkg.name),
       message
     );
     drawFlag();

@@ -5,7 +5,7 @@ const _ = require('lodash');
  * which sections are parent sections vs. a child section. For example:
  * "components.buttons" would belong in "components".
  * @param  {Array} sections - KssSection
- * @return {Promise<Array>}
+ * @return {Array}
  */
 module.exports = (sections) => {
   sections = sections
@@ -23,7 +23,7 @@ module.exports = (sections) => {
     })
     .filter(section => !section.parentReference);
 
-  return Promise.resolve(sections);
+  return sections;
 };
 
 // Goes up a reference level to find and set the parent reference

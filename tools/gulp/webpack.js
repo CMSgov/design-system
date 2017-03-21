@@ -3,7 +3,7 @@
  * enables :fire: features like hot module replacement when running the
  * Browsersync server (see server.js)
  */
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const gutil = require('gulp-util');
 const webpack = require('webpack');
 const webpackStatsConfig = require('../webpack-stats');
@@ -18,7 +18,7 @@ module.exports = (gulp, shared) => {
 
     const info = stats.toJson();
 
-    if (stats.hasErrors())   dutil.logError('webpack', info.errors);
+    if (stats.hasErrors()) dutil.logError('webpack', info.errors);
     if (stats.hasWarnings()) dutil.logData('webpack', info.warnings);
 
     gutil.log(stats.toString(webpackStatsConfig));

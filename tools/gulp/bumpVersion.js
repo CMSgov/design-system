@@ -5,7 +5,7 @@
  */
 const argv = require('yargs').argv;
 const bump = require('gulp-bump');
-const dutil = require('./doc-util');
+const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
 module.exports = (gulp) => {
