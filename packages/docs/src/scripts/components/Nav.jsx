@@ -5,7 +5,7 @@ class Nav extends React.Component {
   render() {
     return (
       <nav className='c-nav'>
-        <ol>
+        <ol className='c-nav__list ds-c-vertical-nav'>
           {this.props.routes.map(page => (
             <NavItem key={page.referenceURI} {...page} />
           ))}

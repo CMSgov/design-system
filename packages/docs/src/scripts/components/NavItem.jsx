@@ -4,10 +4,12 @@ class NavItem extends React.Component {
   subpages(sections) {
     if (sections.length) {
       return (
-        <ul>
+        <ul className='ds-c-vertical-nav__subnav'>
           {sections.map(page => (
-            <li key={page.referenceURI}>
-              <a href={`/${page.referenceURI}`}>{page.header}</a>
+            <li className='ds-c-vertical-nav__item'
+              key={page.referenceURI}>
+              <a className='ds-c-vertical-nav__link'
+                href={`/${page.referenceURI}`}>{page.header}</a>
             </li>
           ))}
         </ul>
@@ -17,8 +19,11 @@ class NavItem extends React.Component {
 
   render() {
     return (
-      <li>
-        <a href={`/${this.props.referenceURI}`}>{this.props.header}</a>
+      <li className='ds-c-vertical-nav__item'>
+        <a className='ds-c-vertical-nav__link ds-u-font-weight--bold'
+          href={`/${this.props.referenceURI}`}>
+          {this.props.header}
+        </a>
         {this.subpages(this.props.sections)}
       </li>
     );
