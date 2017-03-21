@@ -51,14 +51,12 @@ module.exports = (gulp, shared) => {
   gulp.task('lint:docs-styles', () => runStylelint('packages/docs/', false));
 
   gulp.task('lint:core-scripts', () => runEslint([
-    'packages/core/src/**/*.js',
-    'packages/core/src/**/*.jsx',
+    'packages/core/src/**/*.{js,jsx}',
     '!src/vendor/**/*.js'
   ], 'core'));
 
   gulp.task('lint:docs-scripts', () => runEslint([
-    'packages/docs/src/**/*.js',
-    'packages/docs/src/**/*.jsx'
+    'packages/docs/src/**/*.{js,jsx}'
   ], 'docs'));
 
   gulp.task('lint:core', ['lint:core-scripts', 'lint:core-styles']);

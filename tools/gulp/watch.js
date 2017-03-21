@@ -16,8 +16,7 @@ module.exports = (gulp, shared) => {
     ]);
 
     gulp.watch([
-      'packages/core/src/**/*.js',
-      'packages/core/src/**/*.jsx'
+      'packages/core/src/**/*.{js,jsx}'
     ], ['lint:core-scripts', 'docs:react']);
 
     gulp.watch(['packages/core/src/images/*'], [
@@ -37,8 +36,7 @@ module.exports = (gulp, shared) => {
     ]);
 
     gulp.watch([
-      'packages/docs/src/scripts/**/*.js',
-      'packages/docs/src/scripts/**/*.jsx'
+      'packages/docs/src/scripts/**/*.{js,jsx}'
     ], ['lint:docs-scripts']); // compiling is handled by Webpack when the files change
   });
 
