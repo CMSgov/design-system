@@ -37,7 +37,10 @@ module.exports = (gulp, shared) => {
 
     gulp.watch([
       'packages/docs/src/scripts/**/*.{js,jsx}'
-    ], ['lint:docs-scripts']); // compiling is handled by Webpack when the files change
+    ], [
+      'lint:docs-scripts',
+      'docs:generate-pages'
+    ]);
   });
 
   gulp.task('watch', () => {

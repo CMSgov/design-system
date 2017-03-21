@@ -10,8 +10,14 @@ require('prismjs/components/prism-scss');
 const renderer = new marked.Renderer();
 renderer.code = function(code, lang) {
   lang = lang === 'html' ? 'markup' : lang;
-  code = highlightCode(code, lang);
-  return `<pre class="language-${lang}"><code>${code}</code></pre>`;
+  let attrs = '';
+
+  if (lang) {
+    code = highlightCode(code, lang);
+    attrs = `class="language-${lang}"`;
+  }
+
+  return `<pre ${attrs}><code>${code}</code></pre>`;
 };
 
 marked.setOptions({ renderer: renderer });
