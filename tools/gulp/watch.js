@@ -37,10 +37,7 @@ module.exports = (gulp, shared) => {
 
     gulp.watch([
       'packages/docs/src/scripts/**/*.{js,jsx}'
-    ], [
-      'lint:docs-scripts',
-      'docs:generate-pages'
-    ]);
+    ], ['lint:docs-scripts']);
   });
 
   gulp.task('watch', () => {
