@@ -14,8 +14,8 @@ Use the padding utility to change an element's padding. All padding values are m
 Markup:
 <% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
 <% for (var i = 0; i < 8; i++) { %>
-<div class="ds-u-fill--base ds-u-color--white ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
-  <code class="ds-u-fill--transparent">ds-u-padding<%= name %>--<%= i %></code>
+<div class="ds-u-fill--base ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
+  <code class="ds-u-fill--transparent ds-u-color--white">ds-u-padding<%= name %>--<%= i %></code>
 </div>
 <% } -%>
 <% }) -%>

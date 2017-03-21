@@ -16,8 +16,8 @@ Markup:
 <% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
 <% for (var i = 0; i < 8; i++) { %>
 <div class="ds-u-fill--gray<%= backgrounds[i] %>">
-  <div class="ds-u-margin<%= name %>--<%= i %> ds-u-fill--background ds-u-display--inline-block">
-    <code class="ds-u-fill--background">ds-u-margin<%= name %>--<%= i %></code>
+  <div class="ds-u-margin<%= name %>--<%= i %> ds-u-display--inline-block">
+    <code class="ds-u-fill--background ds-u-margin--0">ds-u-margin<%= name %>--<%= i %></code>
   </div>
 </div>
 <% } -%>
