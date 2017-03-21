@@ -74,8 +74,7 @@ module.exports = (gulp, shared) => {
       'Emptying the build and data directories'
     );
 
-    return del(`${docs}/build/*`)
-      .then(() => del(`${docs}/src/data`));
+    return del(`${docs}/build/*`);
   });
 
   // Convenience-task for copying assets to the "public" directory
@@ -139,7 +138,7 @@ module.exports = (gulp, shared) => {
   });
 
   // Extract info from React component files for props documentation
-  gulp.task('docs:react-data', () => {
+  gulp.task('docs:react', () => {
     dutil.logMessage(
       '📊 ',
       'Creating react-doc.json data file from React comments'
@@ -171,7 +170,7 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       'docs:clean',
-      'docs:react-data',
+      'docs:react',
       [
         'docs:generate-pages',
         'docs:public',
