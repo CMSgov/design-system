@@ -1,4 +1,5 @@
 @import '../../settings/index';
+@import '../../tools/index';
 
 /*
 List
@@ -11,7 +12,7 @@ Markup:
   <li>List item 2</li>
 <ul>
 
-.ds-c-list--bare - Unstyled list
+.ds-c-list--bare - Unstyled list (no `margin`, `padding` or `list-style`)
 
 Style guide: components.list
 */
@@ -31,7 +32,5 @@ Style guide: components.list
 }
 
 .ds-c-list--bare {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include ds-unstyled-list;
 }

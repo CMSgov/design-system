@@ -1,0 +1,148 @@
+@import '../../settings/index';
+@import '../../tools/index';
+
+/*
+Vertical navigation
+
+@status prototype
+
+@uswds https://standards.usa.gov/components/sidenav/
+
+Markup:
+<ul class="ds-c-vertical-nav">
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Current page</a>
+  </li>
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+  </li>
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+  </li>
+</ul>
+
+Style guide: components.vertical-nav
+*/
+.ds-c-vertical-nav {
+  @include ds-unstyled-list;
+
+  > .ds-c-vertical-nav__item {
+    background-color: transparent;
+    border-top: 1px solid $color-gray;
+    font-size: $h4-font-size;
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+.ds-c-vertical-nav__link {
+  border-left: 4px solid transparent;
+  color: $color-base;
+  display: block;
+  line-height: 1.2;
+  padding: ($spacer-1 * 1.5) $spacer-2;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-gray-lightest;
+    color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+.ds-c-vertical-nav__link--current {
+  border-left-color: $color-primary;
+  color: $color-primary;
+  font-weight: $font-bold;
+}
+
+/*
+---
+
+### Nested menus
+
+Markup:
+<ul class="ds-c-vertical-nav">
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+  </li>
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Current page</a>
+    <ul class="ds-c-vertical-nav__subnav">
+      <li class="ds-c-vertical-nav__item">
+        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+      </li>
+      <li class="ds-c-vertical-nav__item">
+        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <ul class="ds-c-vertical-nav__subnav">
+          <li class="ds-c-vertical-nav__item">
+            <a class="ds-c-vertical-nav__link" href="http://example.com">Grandchild link</a>
+          </li>
+          <li class="ds-c-vertical-nav__item">
+            <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Grandchild link</a>
+          </li>
+        </ul>
+      </li>
+      <li class="ds-c-vertical-nav__item">
+        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+      </li>
+    </ul>
+  </li>
+  <li class="ds-c-vertical-nav__item">
+    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+  </li>
+</ul>
+
+Style guide: components.vertical-nav.subnav
+*/
+.ds-c-vertical-nav__subnav {
+  @include ds-unstyled-list;
+
+  .ds-c-vertical-nav__item {
+    font-size: $h5-font-size;
+  }
+
+  .ds-c-vertical-nav__link {
+    line-height: $heading-line-height;
+    padding-left: $spacer-3;
+  }
+
+  .ds-c-vertical-nav__link--current {
+    border-color: transparent;
+  }
+
+  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__link {
+    padding-left: $spacer-4;
+  }
+}
+
+/*
+---
+
+## Accessibility
+
+- Ensure the navigational system is keyboard accessible. Users should be able to tab through each link.
+
+## Usability
+
+### When to use
+
+- To display a navigational hierarchy with one to three levels.
+- To display the “sub-navigation” within a section of the website.
+
+### When to consider something else
+
+- If the site has fewer than five pages, consider organizing the page without a navigational hierarchy.
+- If your page already has a horizontal and vertical navigation bar, consider ways to simplify your navigation system.
+- If your content is within a frame or sub-area of a page, consider ways to simplify your navigation system.
+
+## Guidance
+
+- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__link--current` modifier to show users which page they have navigated to.
+- Keep the navigation links short. They can be shorter derivatives of page titles themselves.
+- If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
+
+Style guide: components.vertical-nav.details
+*/
