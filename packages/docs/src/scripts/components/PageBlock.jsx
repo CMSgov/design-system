@@ -24,7 +24,7 @@ class PageBlock extends React.Component {
     }
 
     return (
-      <section className='ds-u-margin-top--5'>
+      <section className='ds-u-margin-top--3'>
         <HTMLExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
