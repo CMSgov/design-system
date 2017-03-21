@@ -50,15 +50,31 @@ class PageBlock extends React.Component {
   description() {
     if (this.props.description) {
       return (
-        <details className='c-details ds-u-margin-top--2'>
-          <summary>Details and instructions</summary>
-
-          <div dangerouslySetInnerHTML={{
+        <div className='c-details ds-u-margin-top--2'
+          dangerouslySetInnerHTML={{
             __html: this.props.description
           }} />
-        </details>
       );
     }
+  }
+
+  header() {
+    // This conditional allows us to create KSS comments that provide additional
+    // descriptive text below a section that already has a title. For example,
+    // you could have a KSS comment block that has the page title and
+    // code snippet, then write a separate comment block that provides additional
+    // text below the title + code snippet block. It's hacky, but works.
+    if (this.props.header.match(/---/)) return;
+
+    return (
+      <heading className='block__heading'>
+        {this.statusPill()}
+        <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
+        <div className='ds-u-clearfix' />
+        {this.source()}
+        {this.uswdsLink()}
+      </heading>
+    );
   }
 
   /**
@@ -117,18 +133,9 @@ class PageBlock extends React.Component {
   }
 
   render() {
-    // TODO(sawyer): Make sure we move away from using the <details> element
-    // since IE doesn't support it
     return (
       <article className='c-block ds-u-margin-bottom--7'>
-        <heading className='block__heading'>
-          {this.statusPill()}
-          <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
-          <div className='ds-u-clearfix' />
-          {this.source()}
-          {this.uswdsLink()}
-        </heading>
-
+        {this.header()}
         {this.description()}
         {this.markupExamples()}
         {this.reactDoc()}
