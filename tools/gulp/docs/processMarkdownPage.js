@@ -5,19 +5,25 @@ require('prismjs/components/prism-bash');
 require('prismjs/components/prism-jsx');
 require('prismjs/components/prism-scss');
 
-marked.setOptions({ highlight: highlightCode });
+// Format code blocks with Prism and ensure HTML is formatted
+// in a way that Prism's CSS will be appplied
+const renderer = new marked.Renderer();
+renderer.code = function(code, lang) {
+  lang = lang === 'html' ? 'markup' : lang;
+  code = highlightCode(code, lang);
+  return `<pre class="language-${lang}"><code>${code}</code></pre>`;
+};
+
+marked.setOptions({ renderer: renderer });
+
+Prism.languages.bash['function'].pattern = /(^|\s|;|\||&)(?:npm|yarn|install)(?=$|\s|;|\||&)/;
 
 function highlightCode(code, lang) {
-  let language = {
-    css: 'css',
-    bash: 'bash',
-    html: 'markup',
-    jsx: 'jsx',
-    scss: 'scss'
-  }[lang];
+  lang = lang === 'html' ? 'markup' : lang;
+  const language = Prism.languages[lang];
 
   if (language) {
-    return Prism.highlight(code, Prism.languages[language]);
+    return Prism.highlight(code, language);
   }
 
   return code;

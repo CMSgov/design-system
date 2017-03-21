@@ -24,7 +24,7 @@ Source files can be imported from the `src` directory. Transpiled files can be f
 
 Import all Sass styles:
 
-```css
+```scss
 @import 'node_modules/@cmsgov/design-system-core/src/index';
 ```
 

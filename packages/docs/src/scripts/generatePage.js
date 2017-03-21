@@ -81,7 +81,7 @@ function updateFile(html, page, rootPath) {
       }
 
       return Promise.resolve(false);
-    })
+    });
 }
 
 module.exports = generatePage;

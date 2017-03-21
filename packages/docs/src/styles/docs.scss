@@ -3,13 +3,13 @@
 
 // Libraries
 @import '@cmsgov/design-system-core/src/index';
-@import 'prismjs/themes/prism.css';
 
 // Sass variables
 @import 'settings/variables';
 
 // Base HTML elements
 @import 'base/blockquote';
+@import 'base/syntax-highlighting';
 @import 'base/code';
 
 // Components

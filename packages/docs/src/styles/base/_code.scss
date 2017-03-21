@@ -1,30 +1,27 @@
-$code-background-color: $color-cool-blue-lightest;
-
+pre,
 code {
   background-color: $color-gray-lightest;
-  font-family: $monospace;
+}
+
+code {
+  color: $color-gray-dark;
+  font-family: $font-monospace;
   font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
-  padding: 3px;
+  padding: $spacer-half;
 }
 
 pre {
-  background-color: $color-gray-lightest;
-
-  // Override styles applied by Prism
-  // stylelint-disable selector-no-qualifying-type
-  &[class*=lang] {
-    background-color: $color-gray-lightest;
-    margin-top: 0;
-  }
-  // stylelint-enable
+  line-height: 1.4;
+  margin: 0;
+  padding: $spacer-2;
 
   code {
     background-color: transparent;
-    line-height: 1.3;
     margin-left: 0;
     margin-right: 0;
+    padding: 0;
   }
 }
