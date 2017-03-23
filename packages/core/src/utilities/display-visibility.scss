@@ -12,7 +12,7 @@ Style guide: utilities.visibility
 /*
 ---
 
-### Display
+## Display
 
 > The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
@@ -46,7 +46,7 @@ Style guide: utilities.visibility.display
 /*
 ---
 
-### Visibility
+## Visibility
 
 > The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 
@@ -87,4 +87,61 @@ Style guide: utilities.visibility.visibility
   width: 1px;
   // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
   word-wrap: normal;
+}
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to show/hide content at specific breakpoints.
+
+A responsive prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-sm-display--none ds-u-color--muted">Hidden on SM screens and larger</div>
+<div class="ds-u-sm-display--block">Displayed as block on SM screens and larger</div>
+<div class="ds-u-sm-visibility--hidden ds-u-color--muted">Invisible on SM screens and larger</div>
+<div class="ds-u-sm-visibility--visible">Visible on SM screens and larger</div>
+<div class="ds-u-md-display--none ds-u-color--muted">Hidden on MD screens and larger</div>
+<div class="ds-u-md-display--block">Displayed as block on MD screens and larger</div>
+<div class="ds-u-md-visibility--hidden ds-u-color--muted">Invisible on MD screens and larger</div>
+<div class="ds-u-md-visibility--visible">Visible on MD screens and larger</div>
+<div class="ds-u-lg-display--none ds-u-color--muted">Hidden on LG screens and larger</div>
+<div class="ds-u-lg-display--block">Displayed as block on LG screens and larger</div>
+<div class="ds-u-lg-visibility--hidden ds-u-color--muted">Invisible on LG screens and larger</div>
+<div class="ds-u-lg-visibility--visible">Visible on LG screens and larger</div>
+<div class="ds-u-xl-display--none ds-u-color--muted">Hidden on XL screens and larger</div>
+<div class="ds-u-xl-display--block">Displayed as block on XL screens and larger</div>
+<div class="ds-u-xl-visibility--hidden ds-u-color--muted">Invisible on XL screens and larger</div>
+<div class="ds-u-xl-visibility--visible">Visible on XL screens and larger</div>
+
+Style guide: utilities.visibility.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-display--block {
+      display: block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--inline-block {
+      display: inline-block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--none {
+      display: none !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--hidden {
+      visibility: hidden !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--visible {
+      visibility: visible !important;
+    }
+  }
 }

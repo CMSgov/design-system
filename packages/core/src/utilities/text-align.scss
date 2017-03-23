@@ -26,3 +26,37 @@ Style guide: utilities.text-align
 .ds-u-text-align--right {
   text-align: right !important;
 }
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to change the text alignment at specific breakpoints.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-sm-text-align--center ds-u-md-text-align--left ds-u-lg-text-align--right">
+  {{lorem-s}}
+</div>
+
+Style guide: utilities.text-align.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-text-align--center {
+      text-align: center !important;
+    }
+
+    .ds-u-#{$breakpoint}-text-align--left {
+      text-align: left !important;
+    }
+
+    .ds-u-#{$breakpoint}-text-align--right {
+      text-align: right !important;
+    }
+  }
+}

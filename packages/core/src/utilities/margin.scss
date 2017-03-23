@@ -61,3 +61,64 @@ Style guide: utilities.margin
     margin-top: #{$size} !important;
   }
 }
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to change the margin at specific breakpoints.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-fill--gray-dark">
+  <div class="ds-u-margin--1 ds-u-sm-margin--2 ds-u-md-margin--3 ds-u-lg-margin--4 ds-u-xl-margin--5 ds-u-display--inline-block">
+    <span class="ds-u-fill--background">Responsive margins</span>
+  </div>
+</div>
+
+Style guide: utilities.margin.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    @for $i from 1 through length($spacers) {
+      $size: #{nth($spacers, $i)};
+      $scale: #{$i - 1};
+
+      // Example: ds-u-sm-margin--0
+      .ds-u-#{$breakpoint}-margin--#{$scale} {
+        // Example: margin: 0 !important;
+        margin: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-top--#{$scale} {
+        margin-top: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-right--#{$scale} {
+        margin-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-bottom--#{$scale} {
+        margin-bottom: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-left--#{$scale} {
+        margin-left: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-x--#{$scale} {
+        margin-left: #{$size} !important;
+        margin-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-margin-y--#{$scale} {
+        margin-bottom: #{$size} !important;
+        margin-top: #{$size} !important;
+      }
+    }
+  }
+}

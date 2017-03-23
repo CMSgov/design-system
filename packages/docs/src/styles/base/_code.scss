@@ -6,7 +6,7 @@ code {
 }
 
 code {
-  color: $color-secondary-darkest;
+  color: $color-gray-dark;
   display: inline-block;
   font-family: $font-monospace;
   font-size: 0.9em;
@@ -29,9 +29,4 @@ pre {
     margin-right: 0;
     padding: 0;
   }
-}
-
-// Code within markup previews
-.markup code {
-  color: $color-gray-dark;
 }
