@@ -12,15 +12,12 @@ require('babel-register')({
 const convertMarkdownPages = require('./convertMarkdownPages');
 const del = require('del');
 const dutil = require('../common/log-util');
-const fs = require('mz/fs');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
-const path = require('path');
 const processKssSection = require('./processSection');
 const nestKssSections = require('./nestSections');
 const reactDocgen = require('../common/react-docgen');
 const runSequence = require('run-sequence');
-const source = require('vinyl-source-stream');
 const docs = 'packages/docs';
 
 function generatedPagesCount(resultGroups) {
