@@ -101,22 +101,20 @@ A responsive prefix is supported on all of the utility classes mentioned above, 
 _Resize your browser to see each breakpoint in action:_
 
 Markup:
-<div class="ds-u-sm-display--none ds-u-color--muted">Hidden on SM screens and larger</div>
-<div class="ds-u-sm-display--block">Displayed as block on SM screens and larger</div>
-<div class="ds-u-sm-visibility--hidden ds-u-color--muted">Invisible on SM screens and larger</div>
-<div class="ds-u-sm-visibility--visible">Visible on SM screens and larger</div>
-<div class="ds-u-md-display--none ds-u-color--muted">Hidden on MD screens and larger</div>
-<div class="ds-u-md-display--block">Displayed as block on MD screens and larger</div>
-<div class="ds-u-md-visibility--hidden ds-u-color--muted">Invisible on MD screens and larger</div>
-<div class="ds-u-md-visibility--visible">Visible on MD screens and larger</div>
-<div class="ds-u-lg-display--none ds-u-color--muted">Hidden on LG screens and larger</div>
-<div class="ds-u-lg-display--block">Displayed as block on LG screens and larger</div>
-<div class="ds-u-lg-visibility--hidden ds-u-color--muted">Invisible on LG screens and larger</div>
-<div class="ds-u-lg-visibility--visible">Visible on LG screens and larger</div>
-<div class="ds-u-xl-display--none ds-u-color--muted">Hidden on XL screens and larger</div>
-<div class="ds-u-xl-display--block">Displayed as block on XL screens and larger</div>
-<div class="ds-u-xl-visibility--hidden ds-u-color--muted">Invisible on XL screens and larger</div>
-<div class="ds-u-xl-visibility--visible">Visible on XL screens and larger</div>
+<% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
+  <div class="ds-u-<%= breakpoint %>-display--none ds-u-color--muted">
+    Hidden on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-display--block">
+    Displayed as block on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
+    Invisible on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-visibility--visible">
+    Visible on <%= breakpoint %> screens and larger
+  </div>
+<% }) %>
 
 Style guide: utilities.visibility.responsive
 */
