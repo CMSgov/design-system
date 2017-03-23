@@ -152,3 +152,25 @@ Style guide: base.typography
   font-size: $lead-font-size;
   font-weight: $font-light;
 }
+
+/*
+---
+
+## Responsive
+
+Responsive typography can be accomplished by using the [responsive prefixed font size utility class](/utilites/font-size#responsive). Since the base typography margins and line height is measured in `em` units, they'll automatically adjust as you change the font size.
+
+You likely don't need to do this for type this is already small, like `ds-text`, `ds-h6`, and `ds-h5`.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<h2 class="ds-h4 ds-u-sm-font-size--h3 ds-u-md-font-size--h2 ds-u-lg-font-size--h1">
+  Responsive heading
+</h2>
+<p class="ds-text ds-u-font-size--small ds-u-md-font-size--base ds-u-lg-font-size--lead">
+  {{ lorem-l }}
+</p>
+
+Style guide: base.typography.responsive
+*/
