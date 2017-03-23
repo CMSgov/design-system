@@ -6,14 +6,14 @@ code {
 }
 
 code {
-  color: $color-gray-dark;
+  color: $color-secondary-darkest;
   display: inline-block;
   font-family: $font-monospace;
   font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
-  padding: $spacer-half;
+  padding: 2px;
 }
 
 pre {
@@ -23,9 +23,15 @@ pre {
 
   code {
     background-color: transparent;
+    color: $color-gray-dark;
     font-size: $xs-font-size;
     margin-left: 0;
     margin-right: 0;
     padding: 0;
   }
+}
+
+// Code within markup previews
+.markup code {
+  color: $color-gray-dark;
 }
