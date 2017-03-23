@@ -32,6 +32,10 @@ function generatedPagesCount(resultGroups) {
   return count;
 }
 
+function sortTopLevelPages(pages) {
+  return pages.sort((a, b) => a.weight - b.weight);
+}
+
 module.exports = (gulp, shared) => {
   /**
    * Loop through the nested array of pages and create an HTML file for each one.
@@ -125,6 +129,7 @@ module.exports = (gulp, shared) => {
         return convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections));
       })
+      .then(sortTopLevelPages)
       .then(generatePages)
       .then(generatedPagesCount => {
         dutil.logMessage(
