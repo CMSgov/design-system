@@ -1,5 +1,6 @@
 ---
 title: Getting started
+weight: -100
 ---
 
 You can download a .zip of the design system directly from GitHub's [Releases](CMSgov/design-system/releases) page, however we suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.

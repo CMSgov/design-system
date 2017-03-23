@@ -13,7 +13,7 @@ code {
   // add spacing for when two code blocks are next to each other
   margin-left: 1px;
   margin-right: 1px;
-  padding: $spacer-half;
+  padding: 2px;
 }
 
 pre {
@@ -23,6 +23,7 @@ pre {
 
   code {
     background-color: transparent;
+    color: $color-gray-dark;
     font-size: $xs-font-size;
     margin-left: 0;
     margin-right: 0;

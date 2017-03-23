@@ -99,7 +99,7 @@ module.exports = {
     'max-nesting-depth': 2,
     'media-feature-colon-space-after': 'always',
     'media-feature-colon-space-before': 'never',
-    'media-feature-parentheses-space-inside': 'always',
+    'media-feature-parentheses-space-inside': 'never',
     'media-feature-range-operator-space-after': 'always',
     'media-feature-range-operator-space-before': 'always',
     'media-query-list-comma-space-after': 'always-single-line',
@@ -115,7 +115,7 @@ module.exports = {
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
     'rule-empty-line-before': [ 'always-multi-line', {
-      ignore: ['after-comment', 'inside-block'],
+      ignore: ['after-comment', 'inside-block']
     } ],
     'scss/at-extend-no-missing-placeholder': true,
     'scss/at-import-no-partial-leading-underscore': true,

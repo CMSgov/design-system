@@ -14,7 +14,7 @@ Use the padding utility to change an element's padding. All padding values are m
 Markup:
 <% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
 <% for (var i = 0; i < 8; i++) { %>
-<div class="ds-u-fill--base ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
+<div class="ds-u-fill--gray-dark ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
   <code class="ds-u-fill--transparent ds-u-color--white">ds-u-padding<%= name %>--<%= i %></code>
 </div>
 <% } -%>
@@ -56,5 +56,66 @@ Style guide: utilities.padding
   .ds-u-padding-y--#{$scale} {
     padding-bottom: #{$size} !important;
     padding-top: #{$size} !important;
+  }
+}
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to change the padding at specific breakpoints.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-fill--gray-dark">
+  <div class="ds-u-padding--1 ds-u-sm-padding--2 ds-u-md-padding--3 ds-u-lg-padding--4 ds-u-xl-padding--5 ds-u-display--inline-block">
+    <span class="ds-u-color--white">Responsive padding</span>
+  </div>
+</div>
+
+Style guide: utilities.padding.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    @for $i from 1 through length($spacers) {
+      $size: #{nth($spacers, $i)};
+      $scale: #{$i - 1};
+
+      // Example: ds-u-sm-padding--0
+      .ds-u-#{$breakpoint}-padding--#{$scale} {
+        // Example: padding: 0 !important;
+        padding: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-top--#{$scale} {
+        padding-top: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-right--#{$scale} {
+        padding-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-bottom--#{$scale} {
+        padding-bottom: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-left--#{$scale} {
+        padding-left: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-x--#{$scale} {
+        padding-left: #{$size} !important;
+        padding-right: #{$size} !important;
+      }
+
+      .ds-u-#{$breakpoint}-padding-y--#{$scale} {
+        padding-bottom: #{$size} !important;
+        padding-top: #{$size} !important;
+      }
+    }
   }
 }
