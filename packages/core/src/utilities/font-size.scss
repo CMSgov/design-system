@@ -51,3 +51,61 @@ Style guide: utilities.font-size
 .ds-u-font-size--h4 {
   font-size: $h4-font-size !important;
 }
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to change the font size at specific breakpoints.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-font-size--base ds-u-sm-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2 ds-u-xl-font-size--h1">
+  {{ lorem-m }}
+</div>
+
+Style guide: utilities.font-size.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-font-size--small {
+      font-size: $small-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--base {
+      font-size: $base-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--lead {
+      font-size: $lead-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--display {
+      font-size: $display-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--title {
+      font-size: $title-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h1 {
+      font-size: $h1-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h2 {
+      font-size: $h2-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h3 {
+      font-size: $h3-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h4 {
+      font-size: $h4-font-size !important;
+    }
+  }
+}
