@@ -2,9 +2,17 @@
 @import '../settings/index';
 
 /*
-Display
+Visibility
 
-Use the display utility to set the `display` property of an element.
+Use the `display` and `visibility` utility classes to show and hide elements.
+
+Style guide: utilities.visibility
+*/
+
+/*
+---
+
+### Display
 
 > The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
@@ -14,12 +22,31 @@ Use the display utility to set the `display` property of an element.
 
 - `ds-u-display--block`
 - `ds-u-display--inline-block`
-- `ds-u-display--inline`
 - `ds-u-display--none`
 
-# Visibility
+Markup:
+<span class="ds-u-display--block">I'm displayed as <code>block</code></span>
+<span class="ds-u-display--inline-block">I'm displayed as <code>inline-block</code></span>
+<span class="ds-u-display--none">I'm hidden</span>
 
-Use the visibility utility to set the `visibility` property of an element.
+Style guide: utilities.visibility.display
+*/
+.ds-u-display--block {
+  display: block !important;
+}
+
+.ds-u-display--inline-block {
+  display: inline-block !important;
+}
+
+.ds-u-display--none {
+  display: none !important;
+}
+
+/*
+---
+
+### Visibility
 
 > The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 
@@ -31,28 +58,17 @@ Use the visibility utility to set the `visibility` property of an element.
 - `ds-u-visibility--visible`
 - `ds-u-visibility--screen-reader`
 
-## Accessibility
+#### Accessibility
 
 There may sometimes be a situation where you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
 
-Style guide: utilities.display
+Markup:
+<span class="ds-u-visibility--hidden">I'm hidden</span>
+<span class="ds-u-visibility--screen-reader">I'm visible to screen readers only</span>
+<span class="ds-u-visibility--visible">I'm visible</span>
+
+Style guide: utilities.visibility.visibility
 */
-.ds-u-display--block {
-  display: block !important;
-}
-
-.ds-u-display--inline-block {
-  display: inline-block !important;
-}
-
-.ds-u-display--inline {
-  display: inline !important;
-}
-
-.ds-u-display--none {
-  display: none !important;
-}
-
 .ds-u-visibility--hidden {
   visibility: hidden !important;
 }
