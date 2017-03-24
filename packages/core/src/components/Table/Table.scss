@@ -26,6 +26,7 @@ Markup:
 Style guide: components.table
 */
 .ds-c-table {
+  border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
   min-width: 100%;
