@@ -14,6 +14,7 @@ const postcssUrl = require('postcss-url');
 const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const stringReplace = require('gulp-string-replace');
 const runSequence = require('run-sequence');
 
 const config = {
@@ -99,6 +100,12 @@ module.exports = (gulp, shared) => {
 
   gulp.task('sass:process:core', () => processSass('packages/core/'));
   gulp.task('sass:process:docs', () => processSass('packages/docs/', 'build/public'));
+  gulp.task('sass:add-version', () => {
+    return gulp
+      .src('packages/core/dist/index.css')
+      .pipe(stringReplace(/{{version}}/, shared.version))
+      .pipe(gulp.dest('packages/core/dist/'));
+  });
 
   gulp.task('sass', done => {
     runSequence(
@@ -108,6 +115,7 @@ module.exports = (gulp, shared) => {
         'sass:process:core',
         'sass:process:docs'
       ],
+      'sass:add-version',
       done
     );
   });
