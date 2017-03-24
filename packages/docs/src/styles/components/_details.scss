@@ -19,6 +19,14 @@
     @extend .ds-h4;
   }
 
+  h5:not([class]) {
+    @extend .ds-h5;
+  }
+
+  h6:not([class]) {
+    @extend .ds-h6;
+  }
+
   p:not([class]) {
     @extend .ds-text;
   }
