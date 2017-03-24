@@ -87,7 +87,7 @@ module.exports = (gulp, shared) => {
       'Copying fonts from core package into "public" directory'
     );
 
-    return gulp.src('packages/core/dist/**/fonts/*')
+    return gulp.src('packages/core/src/**/fonts/*')
       .pipe(gulp.dest(`${docs}/build/public`));
   });
 

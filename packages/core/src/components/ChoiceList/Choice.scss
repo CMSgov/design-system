@@ -42,17 +42,6 @@ Checkbox
 
 Checkboxes allow users to select one or more options from a visible list.
 
-## Usability
-
-### When to use
-- When a user can select any number of choices from a set list.
-- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
-- When users need to see all the available options at a glance.
-
-### When to consider something different
-- If there are too many options to display on a mobile screen.
-- If a user can only select one option from a list (use `radio` buttons instead).
-
 Markup:
 <h3 class="ds-c-label ds-u-margin-top--0">Historical figures</h3>
 <span class="ds-c-field__hint">Select all that apply</span>
@@ -86,21 +75,26 @@ Style guide: components.checkbox-radio.checkbox
 */
 
 /*
-Radio option
-
-@uswds https://standards.usa.gov/components/form-controls/#radio-buttons
+---
 
 ## Usability
 
 ### When to use
+- When a user can select any number of choices from a set list.
+- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
+- When users need to see all the available options at a glance.
 
-- When users need to select only one option out of a set of mutually exclusive choices.
-- When the number of available options can fit onto a mobile screen.
+### When to consider something different
+- If there are too many options to display on a mobile screen.
+- If a user can only select one option from a list (use `radio` buttons instead).
 
-### When to consider something else
-- Consider checkboxes if users need to select more than one option or if there is only one item to select.
-- Consider a dropdown if you don’t have enough space to list out all available options.
-- If users should be able to select zero of the options.
+Style guide: components.checkbox-radio.checkbox-details
+*/
+
+/*
+Radio option
+
+@uswds https://standards.usa.gov/components/form-controls/#radio-buttons
 
 Markup:
 <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
@@ -127,6 +121,24 @@ Markup:
 </div>
 
 Style guide: components.checkbox-radio.radio
+*/
+
+/*
+---
+
+## Usability
+
+### When to use
+
+- When users need to select only one option out of a set of mutually exclusive choices.
+- When the number of available options can fit onto a mobile screen.
+
+### When to consider something else
+- Consider checkboxes if users need to select more than one option or if there is only one item to select.
+- Consider a dropdown if you don’t have enough space to list out all available options.
+- If users should be able to select zero of the options.
+
+Style guide: components.checkbox-radio.radio-details
 */
 
 // Hide the default browser checkbox/radio button since we'll
