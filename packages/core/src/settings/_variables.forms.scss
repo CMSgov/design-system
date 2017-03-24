@@ -1,8 +1,11 @@
 $input-border-radius: $border-radius !default;
-$input-border-color: $color-base;
-$input-border-color-inverse: $color-black;
+$input-border-color: $color-base !default;
+$input-border-color-inverse: $color-black !default;
 
-$choice-checked-background-color: $color-primary;
+$choice-checked-background-color: $color-primary !default;
+$choice-border-color: $color-base !default;
+$choice-border-color-inverse: $color-white !default;
+$choice-border-width: 2px !default;
 
 // USWDS overrides...
 // These variables apply to form fields (input, select, textarea)

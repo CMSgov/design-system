@@ -2,7 +2,7 @@
 @import '../settings/index';
 
 /*
-Color (text)
+Color
 
 Use the color utility to change an element's text color.
 
@@ -16,7 +16,7 @@ The options below offer color palette combinations that fall within the range of
 
 ## Theming
 
-See the "Background Color" utility's theming instructions to learn how to override color values.
+See the [Background color](/utilities/background-color#theming) utility's theming instructions to learn how to override color values.
 
 @hide-markup
 
@@ -73,8 +73,8 @@ Markup:
 <% groups[fill].forEach(color => { -%>
   <article class="ds-u-margin-bottom--2">
     <p class="ds-u-color--<%= color %> ds-u-fill--<%= fill %>">
-      <code class="ds-u-fill--transparent">.ds-u-color--<%= color %></code>
-      on <code class="ds-u-fill--transparent">.ds-u-fill--<%= fill %></code>
+      <code class="ds-u-fill--transparent ds-u-color--<%= color %>">.ds-u-color--<%= color %></code>
+      on <code class="ds-u-fill--transparent ds-u-color--<%= color %>">.ds-u-fill--<%= fill %></code>
     </p>
   </article>
 <% }) -%>

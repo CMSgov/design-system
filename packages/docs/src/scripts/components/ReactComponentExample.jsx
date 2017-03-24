@@ -19,12 +19,12 @@ class ReactComponentExample extends React.Component {
 
   render() {
     return (
-      <div className="markup markup--react">
-        <div className="ds-u-border--1 ds-u-padding--1">
+      <div className='markup markup--react'>
+        <div className='ds-u-border--1 ds-u-padding--1'>
           {this.props.renderComponent()}
         </div>
 
-        <pre className="language-jsx">
+        <pre className='language-jsx'>
           <code
             dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>

@@ -1,32 +1,25 @@
 // Library overrides
+// These need to come before the library so !defaults can be overridden
 @import 'settings/override.cmsgov';
 
 // Libraries
 @import '@cmsgov/design-system-core/src/index';
-@import 'prismjs/themes/prism.css';
 
-// Sass variables
+// Sass settings
 @import 'settings/variables';
 
-// Base HTML elements
-@import 'base/blockquote';
+// Base - unclassed HTML element selectors
+@import 'base/body';
 @import 'base/code';
+@import 'base/typography';
 
-// Components
+// Layouts - structural patterns
+@import 'layouts/page';
+
+// Components - reusable chunks of UI
 @import 'components/details';
 @import 'components/nav';
 @import 'components/swatch';
-
-// TODO(sawyer) Move these to their own files...
-body {
-  font-family: $font-sans;
-  line-height: 1.5;
-}
-
-.page {
-  float: left;
-  width: 700px;
-}
 
 // Utilities
 @import 'utilities/colors';

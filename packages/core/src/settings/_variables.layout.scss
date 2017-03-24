@@ -1,0 +1,43 @@
+// Scaling
+// https://spec.fm/specifics/8-pt-grid
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$multiple: 8px !default;
+
+$spacers: (
+  0,
+  $multiple,
+  $multiple * 2,
+  $multiple * 3,
+  $multiple * 4,
+  $multiple * 5,
+  $multiple * 6,
+  $multiple * 7
+) !default;
+
+$spacer-1: nth($spacers, 2) !default; // 8px
+$spacer-2: nth($spacers, 3) !default; // 16px
+$spacer-3: nth($spacers, 4) !default; // 24px
+$spacer-4: nth($spacers, 5) !default; // 32px
+$spacer-5: nth($spacers, 6) !default; // 40px
+$spacer-6: nth($spacers, 7) !default; // 48px
+$spacer-7: nth($spacers, 8) !default; // 56px
+$spacer-half: $spacer-1 / 2;          // 4px
+
+// Breakpoint widths
+$width-xs: 0 !default;
+$width-sm: 544px !default;
+$width-md: 768px !default;
+$width-lg: 1024px !default;
+$width-xl: 1280px !default;
+
+// Breakpoints
+$breakpoints: (
+  // Small screen / landscape phone
+  sm: $width-sm,
+  // Medium screen / tablet
+  md: $width-md,
+  // Large screen / desktop
+  lg: $width-lg,
+  // Extra large screen / wide desktop
+  xl: $width-xl
+) !default;

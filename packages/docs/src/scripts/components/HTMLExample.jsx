@@ -10,8 +10,8 @@ class HTMLExample extends React.Component {
   // Replaces template tags
   markup() {
     let html = this.props.markup;
-    const modifier = this.props.modifier ?
-      ` ${this.props.modifier.className}` : '';
+    const modifier = this.props.modifier
+      ? ` ${this.props.modifier.className}` : '';
     const lorem = {
       s: 'We the People of the United States',
       m: 'We the People of the United States, in Order to form a more perfect Union',
@@ -20,9 +20,9 @@ class HTMLExample extends React.Component {
 
     return html
       .replace(/\s?{{\s?modifier\s?}}/g, modifier)
-      .replace(/\s?{{\s?lorem\-s\s?}}/g, lorem.s)
-      .replace(/\s?{{\s?lorem\-m\s?}}/g, lorem.m)
-      .replace(/\s?{{\s?lorem\-l\s?}}/g, lorem.l);
+      .replace(/\s?{{\s?lorem-s\s?}}/g, lorem.s)
+      .replace(/\s?{{\s?lorem-m\s?}}/g, lorem.m)
+      .replace(/\s?{{\s?lorem-l\s?}}/g, lorem.l);
   }
 
   highlightedMarkup() {
@@ -32,7 +32,7 @@ class HTMLExample extends React.Component {
   snippet() {
     if (!this.props.hideMarkup) {
       return (
-        <pre className="language-markup">
+        <pre className='language-markup'>
           <code
             dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
@@ -46,12 +46,12 @@ class HTMLExample extends React.Component {
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
-      <div className="c-markup__header">
-        <h4 className="ds-u-font-size--h5 ds-u-margin-bottom--0">
+      <div className='c-markup__header'>
+        <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
           Modifier: <code>{name}</code>
         </h4>
         <p
-          className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted"
+          className='ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted'
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
@@ -62,9 +62,9 @@ class HTMLExample extends React.Component {
     const markup = this.markup();
 
     return (
-      <div className="markup markup--html">
+      <div className='markup markup--html'>
         {this.title()}
-        <div className="ds-u-border--1 ds-u-padding--1"
+        <div className='ds-u-border--1 ds-u-padding--1'
           dangerouslySetInnerHTML={{ __html: markup }}
         />
         {this.snippet()}
@@ -79,7 +79,7 @@ HTMLExample.propTypes = {
   modifier: React.PropTypes.shape({
     className: React.PropTypes.string,
     description: React.PropTypes.string,
-    name: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired
   }),
   showTitle: React.PropTypes.bool
 };

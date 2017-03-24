@@ -3,8 +3,8 @@
 1. Branch off of `staging`: `git checkout -b username/branch-name`.
 1. Commit your changes
 1. Make a pull request against the `staging` branch and format your pull request description using the following format:
-  - **Added:** for new features or components.
-  - **Changed:** for changes in existing functionality or design.
+  - **Added:** for new features or components. _Include a screenshot for new visual elements._
+  - **Changed:** for changes in existing functionality or design. If the change was visual, _include a comparison screenshot showing the before and after the visual change._
   - **Deprecated:** for once-stable features or components removed in upcoming releases.
   - **Removed:** for deprecated features or components removed in this release.
   - **Fixed:** for any bug fixes.
@@ -26,10 +26,10 @@ yarn install
 #### Install package dependencies
 
 ```
-yarn bootstrap
+yarn bootstrap:yarn
 ```
 
-The `bootstrap` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies.
+The `bootstrap:yarn` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
 
 _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
 

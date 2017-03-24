@@ -2,9 +2,17 @@
 @import '../settings/index';
 
 /*
-Display
+Visibility
 
-Use the display utility to set the `display` property of an element.
+Use the `display` and `visibility` utility classes to show and hide elements.
+
+Style guide: utilities.visibility
+*/
+
+/*
+---
+
+## Display
 
 > The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
@@ -14,12 +22,31 @@ Use the display utility to set the `display` property of an element.
 
 - `ds-u-display--block`
 - `ds-u-display--inline-block`
-- `ds-u-display--inline`
 - `ds-u-display--none`
 
-# Visibility
+Markup:
+<span class="ds-u-display--block">I'm displayed as <code>block</code></span>
+<span class="ds-u-display--inline-block">I'm displayed as <code>inline-block</code></span>
+<span class="ds-u-display--none">I'm hidden</span>
 
-Use the visibility utility to set the `visibility` property of an element.
+Style guide: utilities.visibility.display
+*/
+.ds-u-display--block {
+  display: block !important;
+}
+
+.ds-u-display--inline-block {
+  display: inline-block !important;
+}
+
+.ds-u-display--none {
+  display: none !important;
+}
+
+/*
+---
+
+## Visibility
 
 > The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 
@@ -31,28 +58,17 @@ Use the visibility utility to set the `visibility` property of an element.
 - `ds-u-visibility--visible`
 - `ds-u-visibility--screen-reader`
 
-## Accessibility
+#### Accessibility
 
 There may sometimes be a situation where you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
 
-Style guide: utilities.display
+Markup:
+<span class="ds-u-visibility--hidden">I'm hidden</span>
+<span class="ds-u-visibility--screen-reader">I'm visible to screen readers only</span>
+<span class="ds-u-visibility--visible">I'm visible</span>
+
+Style guide: utilities.visibility.visibility
 */
-.ds-u-display--block {
-  display: block !important;
-}
-
-.ds-u-display--inline-block {
-  display: inline-block !important;
-}
-
-.ds-u-display--inline {
-  display: inline !important;
-}
-
-.ds-u-display--none {
-  display: none !important;
-}
-
 .ds-u-visibility--hidden {
   visibility: hidden !important;
 }
@@ -71,4 +87,59 @@ Style guide: utilities.display
   width: 1px;
   // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
   word-wrap: normal;
+}
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to show/hide content at specific breakpoints.
+
+A responsive prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
+  <div class="ds-u-<%= breakpoint %>-display--none ds-u-color--muted">
+    Hidden on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-display--block">
+    Displayed as block on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
+    Invisible on <%= breakpoint %> screens and larger
+  </div>
+  <div class="ds-u-<%= breakpoint %>-visibility--visible">
+    Visible on <%= breakpoint %> screens and larger
+  </div>
+<% }) %>
+
+Style guide: utilities.visibility.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-display--block {
+      display: block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--inline-block {
+      display: inline-block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--none {
+      display: none !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--hidden {
+      visibility: hidden !important;
+    }
+
+    .ds-u-#{$breakpoint}-visibility--visible {
+      visibility: visible !important;
+    }
+  }
 }

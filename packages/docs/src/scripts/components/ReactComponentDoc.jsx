@@ -9,12 +9,8 @@ import ReactPropDocs from './ReactPropDocs';
 
 class ReactComponentDoc extends React.Component {
   renderExample() {
-    try {
-      const renderComponent = require(`node_modules/${this.props.packagePath}.example.jsx`).default;
-      return <ReactComponentExample renderComponent={renderComponent} />;
-    } catch (e) {
-      return;
-    }
+    const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
+    return <ReactComponentExample renderComponent={renderComponent} />;
   }
 
   render() {
@@ -35,7 +31,6 @@ class ReactComponentDoc extends React.Component {
 ReactComponentDoc.propTypes = {
   componentPath: React.PropTypes.string.isRequired,
   description: React.PropTypes.string,
-  displayName: React.PropTypes.string,
   packagePath: React.PropTypes.string.isRequired,
   propDocs: React.PropTypes.object
 };

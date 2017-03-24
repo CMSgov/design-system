@@ -1,26 +1,37 @@
 /* stylelint-disable scss/at-extend-no-missing-placeholder */
 .c-details {
-  h1 {
+  // Style base HTML typography elements. In most cases these are created
+  // when Markdown is converted to an HTML page, so we're not able to manually
+  // apply a design system class.
+  h1:not([class]) {
     @extend .ds-h1;
   }
 
-  h2 {
+  h2:not([class]) {
     @extend .ds-h2;
   }
 
-  h3 {
+  h3:not([class]) {
     @extend .ds-h3;
   }
 
-  h4 {
+  h4:not([class]) {
     @extend .ds-h4;
   }
 
-  p {
+  h5:not([class]) {
+    @extend .ds-h5;
+  }
+
+  h6:not([class]) {
+    @extend .ds-h6;
+  }
+
+  p:not([class]) {
     @extend .ds-text;
   }
 
-  ul, ol {
+  ul:not([class]), ol:not([class]) {
     @extend .ds-c-list;
   }
 }

@@ -10,13 +10,19 @@ Set an element's `float` property using the float utility. You can use the `ds-u
 
 Markup:
 <div class="ds-u-clearfix">
-  <div class="ds-u-float--left ds-u-fill--gray-lightest">Left</div>
+  <div class="ds-u-float--left ds-u-fill--gray-lightest">
+    <code>float: left</code>
+  </div>
 </div>
 <div class="ds-u-clearfix">
-  <div class="ds-u-float--right ds-u-fill--gray-lightest">Right</div>
+  <div class="ds-u-float--right ds-u-fill--gray-lightest">
+    <code>float: right</code>
+  </div>
 </div>
 <div class="ds-u-clearfix">
-  <div class="ds-u-float--none ds-u-fill--gray-lightest">None</div>
+  <div class="ds-u-float--none ds-u-fill--gray-lightest">
+    <code>float: none</code>
+  </div>
 </div>
 
 Style guide: utilities.float
@@ -31,4 +37,49 @@ Style guide: utilities.float
 
 .ds-u-float--none {
   float: none !important;
+}
+
+/*
+---
+
+## Responsive
+
+Use a [responsive prefix](/responsive) to change how an element is floated at specific breakpoints.
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<div class="ds-u-clearfix">
+  :)
+  <div class="ds-u-float--none ds-u-md-float--left ds-u-lg-float--right">
+    <code class="ds-u-md-display--none">
+      float: none
+    </code>
+    <code class="ds-u-display--none ds-u-md-display--inline-block ds-u-lg-display--none">
+      float: left
+    </code>
+    <code class="ds-u-display--none ds-u-lg-display--inline-block">
+      float: right
+    </code>
+  </div>
+</div>
+
+Style guide: utilities.float.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-float--left {
+      float: left !important;
+    }
+
+    .ds-u-#{$breakpoint}-float--right {
+      float: right !important;
+    }
+
+    .ds-u-#{$breakpoint}-float--none {
+      float: none !important;
+    }
+  }
 }
