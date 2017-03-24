@@ -6,7 +6,10 @@ class Docs extends React.Component {
   render() {
     return (
       <div>
-        <Nav routes={this.props.routes} />
+        <Nav
+          currentPageURI={this.props.page.referenceURI}
+          routes={this.props.routes}
+        />
         <main className='page'>
           <Page {...this.props.page} />
         </main>

@@ -7,7 +7,11 @@ class Nav extends React.Component {
       <nav className='c-nav'>
         <ol className='c-nav__list ds-c-vertical-nav'>
           {this.props.routes.map(page => (
-            <NavItem key={page.referenceURI} {...page} />
+            <NavItem
+              {...page}
+              currentPageURI={this.props.currentPageURI}
+              key={page.referenceURI}
+            />
           ))}
         </ol>
       </nav>
@@ -16,6 +20,7 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
+  currentPageURI: React.PropTypes.string.isRequired,
   routes: React.PropTypes.array.isRequired
 };
 
