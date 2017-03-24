@@ -6,29 +6,41 @@ Typography
 
 The design system does not style base HTML text elements (like `h1`, `h2`, `p`, etc) and you should instead use one of the base class names to apply type styling. The base typography classes are:
 
-- `ds-title--[modifier]`
+- `ds-display`
+- `ds-title`
 - `ds-h[LEVEL]`
 - `ds-text--[modifier]`
 
-See the examples below to see how each of ease are used.
+See the examples below to see how each of these can be used.
+
+Utility classes can also be used to change type features like [font size](/utilities/font-size), [color](/utilities/color), [weight](/utilities/font-weight), and [style](/utilities/font-style).
 
 Markup:
-<h1 class="ds-title">Title 1</h1>
-<h1 class="ds-title--alt">Title 2</h1>
+<p class="ds-text--lead"><strong>Lead paragraph.</strong>  {{lorem-l}}</p>
+<p class="ds-text"><strong>Body paragraph.</strong>  {{ lorem-l }}</p>
+<h1 class="ds-display">Display</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
+<h1 class="ds-title">Title</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 <h1 class="ds-h1">Heading 1</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 <h1 class="ds-h2">Heading 2</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 <h1 class="ds-h3">Heading 3</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 <h1 class="ds-h4">Heading 4</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 <h1 class="ds-h5">Heading 5</h1>
-<p class="ds-text--lead">Lead paragraph.  {{lorem-l}}</p>
-<p class="ds-text">Body copy.  {{lorem-l}}</p>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
+<h1 class="ds-h6">Heading 6</h1>
+  <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 
 Style guide: base.typography
 */
 
 // Titles and headings
+.ds-display,
 .ds-title,
-.ds-title--alt,
 .ds-h1,
 .ds-h2,
 .ds-h3,
@@ -39,12 +51,11 @@ Style guide: base.typography
 }
 
 // Bold title and headings
-.ds-title,
+.ds-display,
 .ds-h1,
 .ds-h2,
 .ds-h3,
-.ds-h4,
-.ds-h5 {
+.ds-h4 {
   font-weight: $font-bold;
 }
 
@@ -53,7 +64,8 @@ Style guide: base.typography
 .ds-h2,
 .ds-h3,
 .ds-h4,
-.ds-h5 {
+.ds-h5,
+.ds-h6 {
   margin-bottom: 0.5em;
   margin-top: 1.5em;
 
@@ -66,11 +78,19 @@ Style guide: base.typography
   }
 }
 
-.ds-title {
+// Kern large text
+.ds-display,
+.ds-title,
+.ds-h1,
+.ds-h2 {
+  letter-spacing: -1px;
+}
+
+.ds-display {
   font-size: $display-font-size;
 }
 
-.ds-title--alt {
+.ds-title {
   font-size: $title-font-size;
   font-weight: $font-light;
 }
@@ -97,6 +117,18 @@ Style guide: base.typography
   text-transform: uppercase;
 }
 
+.ds-h6 {
+  color: $color-muted;
+  font-size: $h6-font-size;
+  font-weight: $font-normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ds-base--inverse .ds-h6 {
+  color: $color-muted-inverse;
+}
+
 .ds-text,
 .ds-text--lead {
   line-height: $base-line-height;
@@ -120,3 +152,25 @@ Style guide: base.typography
   font-size: $lead-font-size;
   font-weight: $font-light;
 }
+
+/*
+---
+
+## Responsive
+
+Responsive typography can be accomplished by using the [responsive prefixed font size utility class](/utilites/font-size#responsive). Since the base typography margins and line height is measured in `em` units, they'll automatically adjust as you change the font size.
+
+You likely don't need to do this for type that is already small, like `ds-text`, `ds-h6`, and `ds-h5`
+
+_Resize your browser to see each breakpoint in action:_
+
+Markup:
+<h2 class="ds-h4 ds-u-sm-font-size--h3 ds-u-md-font-size--h2 ds-u-lg-font-size--h1">
+  Responsive heading
+</h2>
+<p class="ds-text ds-u-font-size--small ds-u-md-font-size--base ds-u-lg-font-size--lead">
+  {{ lorem-l }}
+</p>
+
+Style guide: base.typography.responsive
+*/
