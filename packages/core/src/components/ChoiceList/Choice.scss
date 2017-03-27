@@ -167,7 +167,7 @@ Style guide: components.checkbox-radio.radio-details
   line-height: $spacer-4;
   margin-right: $spacer-1;
   text-indent: 0.15em;
-  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+  vertical-align: middle;
   width: $spacer-4;
 }
 
