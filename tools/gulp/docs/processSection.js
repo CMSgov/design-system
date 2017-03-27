@@ -22,6 +22,8 @@ function processSection(kssSection, rootPath) {
   }
 
   if (data.markup && data.markup !== '') {
+    data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
+
     try {
       data.markup = ejs.render(data.markup);
     } catch (e) {

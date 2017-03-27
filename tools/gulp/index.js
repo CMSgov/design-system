@@ -11,8 +11,7 @@ module.exports = (gulp) => {
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
-    // If the published site is in a subdirectory, set its name as the rootPath
-    rootPath: argv.env === 'production' ? pkg.version : '',
+    rootPath: pkg.version,
     version: pkg.version,
     webpackConfig: require('../../packages/docs/webpack.config')
   };

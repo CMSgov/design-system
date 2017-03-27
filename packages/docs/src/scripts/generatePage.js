@@ -49,10 +49,6 @@ function checkCache(html, path) {
 function parsedPath(page, rootPath) {
   let uri = page.referenceURI;
 
-  if (rootPath) {
-    uri = uri.replace(rootPath, '');
-  }
-
   if (uri === 'public') throw Error('Filename can\'t be "public"');
   let dir = path.resolve(__dirname, `../../build/${uri}`);
 

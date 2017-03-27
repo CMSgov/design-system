@@ -9,6 +9,7 @@ require('babel-register')({
   only: /packages\/(core|docs)\/src/
 });
 
+const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const del = require('del');
 const dutil = require('../common/log-util');
@@ -75,7 +76,8 @@ module.exports = (gulp, shared) => {
       'Emptying the build and data directories'
     );
 
-    return del(`${docs}/build/*`);
+    // pass empty version so entire build directory is emptied
+    return del(buildPath(''));
   });
 
   // Convenience-task for copying assets to the "public" directory
@@ -88,7 +90,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src('packages/core/src/**/fonts/*')
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   // The docs use the design system's Sass files, which don't have the
@@ -100,7 +102,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src(`${docs}/src/**/images/*`)
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   gulp.task('docs:images:core', () => {
@@ -110,7 +112,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src('packages/core/src/**/images/*')
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   gulp.task('docs:generate-pages', () => {

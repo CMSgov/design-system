@@ -1,4 +1,5 @@
 const path = require('path');
+const version = require('./package.json').version;
 const webpack = require('webpack');
 
 let config = {
@@ -7,7 +8,7 @@ let config = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'build/public/scripts/index.js'
+    filename: `build/${version}/public/scripts/index.js`
   },
   module: {
     loaders: [

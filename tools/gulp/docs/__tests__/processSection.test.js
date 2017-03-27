@@ -7,7 +7,7 @@ describe('processSection', () => {
       toJSON: () => (
         {
           description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p><p>@status prototype</p>',
-          markup: '<% var foo="bar" %><%= foo %>',
+          markup: '<% var foo="bar" %><%= foo %> {{root}}',
           modifiers: [{
             name: '.primary',
             description: 'The primary action',
@@ -37,8 +37,8 @@ describe('processSection', () => {
     expect(data.referenceURI).toEqual('root/components/button');
   });
 
-  it('renders EJS', () => {
-    expect(data.markup).toEqual('bar');
+  it('renders EJS and replaces {{root}}', () => {
+    expect(data.markup).toEqual('bar /root');
   });
 
   it('adds a sections property', () => {

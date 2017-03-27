@@ -19,10 +19,8 @@ class NavItem extends React.Component {
 
   linkClasses(page, bold = false) {
     let linkClasses = ['ds-c-vertical-nav__link'];
-    let curentParent = (
-      page.referenceURI !== '' &&
-      this.props.currentPageURI.match(new RegExp(page.referenceURI))
-    );
+    const parentURI = this.props.currentPageURI.replace(/\/[a-z\-0-9]+$/, '');
+    const curentParent = page.referenceURI === parentURI;
 
     if (page.referenceURI === this.props.currentPageURI || curentParent) {
       linkClasses.push('ds-c-vertical-nav__link--current');

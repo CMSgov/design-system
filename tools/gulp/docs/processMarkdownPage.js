@@ -16,6 +16,8 @@ function processMarkdownPage(filename, body, rootPath = '') {
     referenceURI = `${rootPath}/${referenceURI}`;
   }
 
+  parts.body = parts.body.replace(/{{root}}/g, `/${rootPath}`);
+
   return {
     header: parts.attributes.title || 'Untitled',
     description: marked(parts.body),

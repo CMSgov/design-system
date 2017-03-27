@@ -27,4 +27,10 @@ describe('processMarkdownPage', () => {
     const output = processMarkdownPage('index.md', markdown);
     expect(output.referenceURI).toEqual('');
   });
+
+  it('should replace {{root}}', () => {
+    const markdown2 = markdown + '{{root}}';
+    const output = processMarkdownPage('index.md', markdown2, 'foo');
+    expect(output.description.match(/foo/).length).toEqual(1);
+  });
 });

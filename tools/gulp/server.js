@@ -31,7 +31,8 @@ module.exports = (gulp, shared) => {
         ]
       },
       notify: false,
-      open: !argv.noopen
+      open: !argv.noopen,
+      startPath: shared.rootPath
     });
   });
 };
