@@ -51,6 +51,12 @@ module.exports = (gulp, shared) => {
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
 
+    // TODO(sawyer): Right now the pages array includes full page objects, which
+    // we pass into the generatePage method as the 'routes' argument. We should
+    // eventually optimize this array and pass in only the properties we need
+    // (primarily 'referenceURI' and 'header'), especially if we continue to
+    // do client-side rendering.
+
     return Promise.all(
       pages.map(page => {
         return generatePage(pages, page, shared.rootPath)
