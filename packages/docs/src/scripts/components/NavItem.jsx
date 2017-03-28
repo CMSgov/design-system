@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NavItem extends React.Component {
+class NavItem extends React.PureComponent {
   subpages(sections) {
     if (sections.length) {
       return (

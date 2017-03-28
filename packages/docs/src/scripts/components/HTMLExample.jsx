@@ -6,7 +6,7 @@
 import Prism from 'prismjs';
 import React from 'react';
 
-class HTMLExample extends React.Component {
+class HTMLExample extends React.PureComponent {
   // Replaces template tags
   markup() {
     let html = this.props.markup;
