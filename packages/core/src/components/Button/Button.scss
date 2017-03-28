@@ -194,7 +194,8 @@ Style guide: components.button.inverse
   }
 }
 
-.ds-c-button--disabled-inverse {
+.ds-c-button--disabled-inverse,
+.ds-c-button--disabled-inverse:disabled {
   background-color: darken($color-background-inverse, 10%);
   border-color: darken($color-background-inverse, 10%);
   color: $color-muted-inverse;
@@ -245,6 +246,14 @@ Style guide: components.button.icons
 }
 
 /*
+React
+
+@react-component
+
+Style guide: components.button.react
+*/
+
+/*
 ---
 
 ## Accessibility
@@ -273,12 +282,4 @@ Style guide: components.button.icons
 - At times, consider adding an icon to signal specific actions (“download”, “open in a new window”, etc).
 
 Style guide: components.button.details
-*/
-
-/*
-JavaScript API
-
-@react-component
-
-Style guide: components.button.react
 */

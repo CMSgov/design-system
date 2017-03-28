@@ -1,73 +1,68 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
+/**
+ * The Button component behaves similarly to a normal HTML button element, in
+ * that it accepts its text as inner HTML.
+ */
+const Button = ({ className, inverse, modifier, size, ...props }) => {
+  let modifierClassName = modifier && `ds-c-button--${modifier}`;
+  let disabledClassName = props.disabled && 'ds-c-button--disabled';
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    // Note that if / when we expand this button component to support both
-    // type=button and type=submit, then we will want to preventDefault to
-    // avoid a default form submission.
-    if (this.props.disabled) {
-      return;
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick();
+  if (inverse) {
+    if (disabledClassName) {
+      disabledClassName += '-inverse';
+    } else if (modifierClassName) {
+      modifierClassName += '-inverse';
+    } else {
+      modifierClassName = 'ds-c-button--inverse';
     }
   }
 
-  render() {
-    var className = classNames({
-      'ds-c-button': true,
-      'ds-c-button-lg': true,
-      'ds-c-button-submit': true,
-      'disabled': this.props.disabled,
-      'ds-c-button-blue': this.props.use === 'secondary',
-      'ds-c-button-success': this.props.use === 'primary'
-    });
+  const classes = classNames(
+    'ds-c-button',
+    disabledClassName,
+    !props.disabled && modifierClassName,
+    size && `ds-c-button--${size}`,
+    className
+  );
 
-    var inlineStyle;
-    if (this.props.use === 'neutral') {
-      inlineStyle = {
-        textShadow: 'none'
-      };
-    }
-
-    return <div className={this.props.containerClassName}
-      onClick={this.handleClick}>
-      <button className={className}
-        type={this.props.type}
-        aria-label={this.props.label}
-        disabled={this.props.disabled}
-        style={inlineStyle}>
-        {this.props.label}
-      </button>
-    </div>;
-  }
-}
+  return (
+    <button className={classes} {...props}>
+      {props.children}
+    </button>
+  );
+};
 
 Button.displayName = 'Button';
 
 Button.defaultProps = {
-  type: 'button',
-  use: 'primary'
+  type: 'button'
 };
 
 Button.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  containerClassName: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['button', 'submit']),
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.node,
+    React.PropTypes.string
+  ]),
   /**
-   * Primary (the default) buttons are green. Secondary buttons are blue.
+   * Additional classes to be added to the button element. Useful for adding
+   * utility classes.
    */
-  use: React.PropTypes.oneOf(['primary', 'secondary', 'neutral'])
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  /** Apply the inverse theme styling */
+  inverse: React.PropTypes.bool,
+  modifier: React.PropTypes.oneOf([
+    'primary',
+    'danger',
+    'success',
+    'transparent',
+    'disabled'
+  ]),
+  size: React.PropTypes.oneOf(['small', 'big']),
+  /** HTML button type attribute */
+  type: React.PropTypes.oneOf(['button', 'submit'])
 };
 
 export default Button;
