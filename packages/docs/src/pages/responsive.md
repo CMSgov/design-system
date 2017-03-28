@@ -3,7 +3,9 @@ title: Responsive design
 weight: 10
 ---
 
-The design system's utility and typography classes are built with reponsive web design in mind and is built to be **mobile first**. Use the prefixes `sm`, `md`, and `lg` to quickly and easily adjust your layout and content for different screen sizes and devices. Further info and usage examples are available on the individual documentation pages.
+![Responsive demo]({{root}}/public/images/responsive-demo.gif)
+
+The design system's utility and typography classes are built with reponsive web design in mind and is built to be **mobile first**. Use the prefixes `sm`, `md`, `lg`, and `xl` to quickly and easily adjust your layout and content for different screen sizes and devices. Further info and usage examples are available on the individual documentation pages.
 
 | Prefix | Breakpoint | Description |
 | ------ | ---------- | ----------- |
