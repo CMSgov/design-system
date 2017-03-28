@@ -7,7 +7,7 @@ import HTMLExample from './HTMLExample';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
 
-class PageBlock extends React.Component {
+class PageBlock extends React.PureComponent {
   markupExamples() {
     if (!this.props.markup) return;
     let modifierMarkup;
@@ -93,14 +93,11 @@ class PageBlock extends React.Component {
 
   reactDoc() {
     if (!this.props.hasReactComponent) return;
-
-    const componentPath = this.componentPath();
-    const doc = reactDoc[`${componentPath}.jsx`];
+    const doc = reactDoc[`${this.componentPath()}.jsx`];
 
     if (doc) {
       return (
         <ReactComponentDoc
-          componentPath={componentPath}
           description={doc.description}
           displayName={doc.displayName}
           packagePath={this.packagePath()}
@@ -111,11 +108,13 @@ class PageBlock extends React.Component {
   }
 
   source() {
-    if (this.props.source) {
+    if (this.props.hasReactComponent || this.props.source) {
+      const path = this.props.hasReactComponent
+        ? this.componentPath().replace(/[a-z-]+\/src\//, '')
+        : `${this.props.source.filename}:${this.props.source.line}`;
+
       return (
-        <code className='ds-u-font-size--small'>
-          {this.props.source.filename}:{this.props.source.line}
-        </code>
+        <code className='ds-u-font-size--small'>{path}</code>
       );
     }
   }

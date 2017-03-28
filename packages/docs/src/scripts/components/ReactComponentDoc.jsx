@@ -7,7 +7,7 @@ import React from 'react';
 import ReactComponentExample from './ReactComponentExample';
 import ReactPropDocs from './ReactPropDocs';
 
-class ReactComponentDoc extends React.Component {
+class ReactComponentDoc extends React.PureComponent {
   renderExample() {
     const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
     return <ReactComponentExample renderComponent={renderComponent} />;
@@ -16,12 +16,9 @@ class ReactComponentDoc extends React.Component {
   render() {
     return (
       <section>
-        <h3>React</h3>
-        <p><code>{this.props.componentPath}.jsx</code></p>
-
-        {this.renderExample()}
-
         <p>{this.props.description}</p>
+        {this.renderExample()}
+        <h3>Props</h3>
         <ReactPropDocs propDocs={this.props.propDocs} />
       </section>
     );
@@ -29,7 +26,6 @@ class ReactComponentDoc extends React.Component {
 }
 
 ReactComponentDoc.propTypes = {
-  componentPath: React.PropTypes.string.isRequired,
   description: React.PropTypes.string,
   packagePath: React.PropTypes.string.isRequired,
   /* eslint-disable react/forbid-prop-types */

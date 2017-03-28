@@ -4,14 +4,10 @@
 
 import React from 'react';
 
-class ReactPropDoc extends React.Component {
+class ReactPropDoc extends React.PureComponent {
   defaultValue() {
     if (this.props.defaultValue) {
-      return (
-        <p>
-        Default: <code>{this.props.defaultValue.value}</code>
-        </p>
-      );
+      return <code>{this.props.defaultValue.value}</code>;
     }
   }
 
@@ -30,24 +26,33 @@ class ReactPropDoc extends React.Component {
   }
 
   validValues() {
-    let value = this.props.type.value;
-    if (value) {
-      /* eslint-disable react/no-array-index-key */
-      let values = value.map((v, i) => <code key={i}>{v.value}</code>);
-      return <p>Valid values: {values}</p>;
+    let values = this.props.type.value;
+    if (values) {
+      values = values.map((v, i) => {
+        const value = this.props.type.name === 'enum' ? v.value : v.name;
+        return <code className='ds-u-font-size--small' key={value}>{value}</code>;
+      });
+
+      return <p>One of: {values}</p>;
     }
   }
 
   render() {
     return (
       <tr>
-        <td>{this.props.name}</td>
         <td>
-          <strong><code>{this.props.type.name}</code></strong>
+          <code className='ds-u-font-weight--bold'>{this.props.name}</code>
+        </td>
+        <td>
+          <code>{this.props.type.name}</code>
+        </td>
+        <td>
           {this.defaultValue()}
-          {this.validValues()}
-          {this.description()}
           {this.isRequired()}
+        </td>
+        <td>
+          {this.description()}
+          {this.validValues()}
         </td>
       </tr>
     );
@@ -67,6 +72,7 @@ ReactPropDoc.propTypes = {
     // Valid values
     value: React.PropTypes.arrayOf(
       React.PropTypes.shape({
+        name: React.PropTypes.string,
         value: React.PropTypes.string
       })
     )
