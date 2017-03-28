@@ -32,6 +32,7 @@ ReactComponentDoc.propTypes = {
   componentPath: React.PropTypes.string.isRequired,
   description: React.PropTypes.string,
   packagePath: React.PropTypes.string.isRequired,
+  /* eslint-disable react/forbid-prop-types */
   propDocs: React.PropTypes.object
 };
 

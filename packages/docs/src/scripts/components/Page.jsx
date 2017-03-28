@@ -35,7 +35,9 @@ Page.defaultProps = {
 
 Page.propTypes = {
   depth: React.PropTypes.number,
-  sections: React.PropTypes.array
+  sections: React.PropTypes.arrayOf(
+    React.PropTypes.shape(PageBlock.propTypes)
+  )
 };
 
 export default Page;

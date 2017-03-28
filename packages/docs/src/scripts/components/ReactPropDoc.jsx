@@ -32,6 +32,7 @@ class ReactPropDoc extends React.Component {
   validValues() {
     let value = this.props.type.value;
     if (value) {
+      /* eslint-disable react/no-array-index-key */
       let values = value.map((v, i) => <code key={i}>{v.value}</code>);
       return <p>Valid values: {values}</p>;
     }

@@ -25,8 +25,7 @@ class ReactComponentExample extends React.Component {
         </div>
 
         <pre className='language-jsx'>
-          <code
-            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
+          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       </div>
     );

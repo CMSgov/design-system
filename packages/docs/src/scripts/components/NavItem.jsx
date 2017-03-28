@@ -6,10 +6,16 @@ class NavItem extends React.Component {
       return (
         <ul className='ds-c-vertical-nav__subnav'>
           {sections.map(page => (
-            <li className='ds-c-vertical-nav__item'
-              key={page.referenceURI}>
-              <a className={this.linkClasses(page)}
-                href={`/${page.referenceURI}`}>{page.header}</a>
+            <li
+              className='ds-c-vertical-nav__item'
+              key={page.referenceURI}
+            >
+              <a
+                className={this.linkClasses(page)}
+                href={`/${page.referenceURI}`}
+              >
+                {page.header}
+              </a>
             </li>
           ))}
         </ul>
@@ -36,8 +42,10 @@ class NavItem extends React.Component {
   render() {
     return (
       <li className='ds-c-vertical-nav__item'>
-        <a className={this.linkClasses(this.props, true)}
-          href={`/${this.props.referenceURI}`}>
+        <a
+          className={this.linkClasses(this.props, true)}
+          href={`/${this.props.referenceURI}`}
+        >
           {this.props.header}
         </a>
         {this.subpages(this.props.sections)}
@@ -50,11 +58,17 @@ NavItem.defaultProps = {
   sections: []
 };
 
+const NavItemPropTypes = {
+  header: React.PropTypes.string.isRequired,
+  referenceURI: React.PropTypes.string.isRequired
+};
+
 NavItem.propTypes = {
   currentPageURI: React.PropTypes.string.isRequired,
-  header: React.PropTypes.string.isRequired,
-  referenceURI: React.PropTypes.string.isRequired,
-  sections: React.PropTypes.array
+  sections: React.PropTypes.arrayOf(
+    React.PropTypes.shape(NavItemPropTypes)
+  ),
+  ...NavItemPropTypes
 };
 
 export default NavItem;

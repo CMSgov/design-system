@@ -10,11 +10,13 @@ class ReactPropDocs extends React.Component {
     const props = Object.getOwnPropertyNames(this.props.propDocs);
 
     return props.map(prop => {
-      return <ReactPropDoc
-        key={prop}
-        name={prop}
-        {...this.props.propDocs[prop]}
-      />;
+      return (
+        <ReactPropDoc
+          key={prop}
+          name={prop}
+          {...this.props.propDocs[prop]}
+        />
+      );
     });
   }
 
@@ -33,6 +35,7 @@ class ReactPropDocs extends React.Component {
   }
 }
 
+/* eslint-disable react/forbid-prop-types */
 ReactPropDocs.propTypes = {
   propDocs: React.PropTypes.object
 };
