@@ -3,5 +3,5 @@ import React from 'react';
 import Button from './Button';
 
 export default function(args) {
-  return <Button modifer='primary'>React button</Button>;
+  return <Button modifier='primary'>React button</Button>;
 }
