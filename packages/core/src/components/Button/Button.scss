@@ -22,7 +22,7 @@ Style guide: components.button
 */
 .ds-c-button {
   appearance: none;
-  background-color: $color-background;
+  background-color: transparent;
   border: 1px solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
@@ -77,7 +77,6 @@ Style guide: components.button
 
 .ds-c-button--transparent,
 .ds-c-button--transparent-inverse {
-  background-color: transparent;
   border-color: transparent;
 
   &:focus,
@@ -168,7 +167,6 @@ Markup:
 Style guide: components.button.inverse
 */
 .ds-c-button--inverse {
-  background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
   &:active,
