@@ -56,7 +56,7 @@ function checkCache(html, path) {
     .catch(() => true); // File doesn't exist
 }
 
-function parsedPath(page, rootPath) {
+function parsedPath(page) {
   let uri = page.referenceURI;
 
   if (uri === 'public') throw Error('Filename can\'t be "public"');
@@ -69,7 +69,7 @@ function parsedPath(page, rootPath) {
 }
 
 function saveToFile(html, pathObj) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     recursive.mkdir(pathObj.dir, () => {
       fs.writeFile(pathObj.path, html)
         .then(() => resolve(true));

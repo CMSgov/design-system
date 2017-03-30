@@ -18,6 +18,8 @@
   },
   "plugins": ["react"],
   "rules": {
+    "eol-last": "warn",
+    "no-unused-vars": ["error", {ignoreRestSiblings: true}],
     "react/forbid-prop-types": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-first-prop-new-line": ["error", "multiline"],
@@ -33,6 +35,5 @@
     "react/prefer-es6-class": "error",
     "react/prefer-stateless-function": "error",
     "react/sort-comp": "error",
-    "eol-last": "warn"
   }
 }

@@ -3,8 +3,13 @@ import {shallow} from 'enzyme';
 
 import Button from './Button.jsx';
 
+/* eslint-disable react/display-name, react/prop-types */
+const Link = (props) => {
+  return <div {...props}>{props.children}</div>;
+};
+
 describe('Button', () => {
-  const buttonText = 'required label';
+  const buttonText = 'Foo';
 
   function testDisabledState(disabled) {
     const onClickMock = jest.fn();
@@ -33,6 +38,7 @@ describe('Button', () => {
 
   it('renders as button', () => {
     const wrapper = shallow(<Button>{buttonText}</Button>);
+    expect(wrapper.is('button')).toBe(true);
     expect(wrapper.prop('type')).toBe('button');
   });
 
@@ -40,6 +46,30 @@ describe('Button', () => {
     const props = {type: 'submit'};
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.prop('type')).toBe('submit');
+  });
+
+  it('renders as an anchor with custom prop', () => {
+    const props = {
+      href: '/example',
+      target: '_blank',
+      type: 'submit'
+    };
+    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    expect(wrapper.is('a')).toBe(true);
+    expect(wrapper.prop('href')).toBe('/example');
+    expect(wrapper.prop('target')).toBe('_blank');
+    expect(wrapper.prop('type')).toBeUndefined();
+  });
+
+  it('renders as a Link', () => {
+    const props = {
+      component: Link,
+      type: 'submit'
+    };
+    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    expect(wrapper.is('Link')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button')).toBe(true);
+    expect(wrapper.render().text()).toBe(buttonText);
   });
 
   it('appends additional class names', () => {
