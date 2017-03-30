@@ -12,7 +12,9 @@ class ReactPropDoc extends React.PureComponent {
   }
 
   description() {
-    if (this.props.description) return <p>{this.props.description}</p>;
+    if (this.props.description) {
+      return <div dangerouslySetInnerHTML={{__html: this.props.description}} />;
+    }
   }
 
   isRequired() {

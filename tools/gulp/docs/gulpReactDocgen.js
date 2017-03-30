@@ -1,17 +1,37 @@
 /**
- * Creates a Gulp-friendly implementation of react-docgen. Takes a stream
- * of React component files and returns a stream of JSON documentation files.
+ * Creates a Gulp-friendly implementation of react-docgen, extended with our own
+ * Markdown handler. Accepts a stream of React component files and returns a
+ * stream of JSON documentation files.
  */
-const dutil = require('./log-util');
+const dutil = require('../common/log-util');
 const gutil = require('gulp-util');
-const reactDocgen = require('react-docgen');
+const marked = require('marked');
 const path = require('path');
+const reactDocgen = require('react-docgen');
 const through = require('through2');
+const handlers = reactDocgen.defaultHandlers.concat([markdownHandler]);
 
 function getPropertyName(nameAfter, filePath) {
   if (!nameAfter) return path.basename(filePath);
   let rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
   return filePath.match(rx)[1];
+}
+
+function markdownHandler(doc) {
+  const desc = doc.get('description');
+  const docObject = doc.toObject();
+
+  Object.keys(docObject.props).forEach(propName => {
+    let propDescriptor = doc.getPropDescriptor(propName);
+
+    if (propDescriptor.description !== '') {
+      propDescriptor.description = marked(propDescriptor.description);
+    }
+  });
+
+  if (desc !== '') {
+    doc.set('description', marked(desc));
+  }
 }
 
 module.exports = function(options) {
@@ -22,7 +42,11 @@ module.exports = function(options) {
     try {
       if (file.isNull()) return cb(null, file);
 
-      let doc = reactDocgen.parse(file.contents);
+      let doc = reactDocgen.parse(
+        file.contents,
+        reactDocgen.resolver.findExportedComponentDefinition,
+        handlers
+      );
       // Reduce filesize by removing properties we don't need
       delete doc.methods;
 

@@ -17,7 +17,7 @@ const kss = require('kss');
 const merge = require('gulp-merge-json');
 const processKssSection = require('./processSection');
 const nestKssSections = require('./nestSections');
-const reactDocgen = require('../common/react-docgen');
+const gulpReactDocgen = require('./gulpReactDocgen');
 const runSequence = require('run-sequence');
 const docs = 'packages/docs';
 
@@ -160,7 +160,7 @@ module.exports = (gulp, shared) => {
         '!packages/core/src/components/**/*.test.jsx',
         '!packages/core/src/components/**/*.example.jsx'
       ])
-      .pipe(reactDocgen({
+      .pipe(gulpReactDocgen({
         nameAfter: 'packages/'
       }))
       .pipe(merge({
