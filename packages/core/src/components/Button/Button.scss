@@ -8,9 +8,9 @@ Button
 Use buttons to signal actions.
 
 .ds-c-button--primary - The primary call-to-action
-.ds-c-button--outline - A secondary call-to-action
-.ds-c-button--danger - A variation indicating the action is destructive or dangerous
-.ds-c-button--success - A variation indicating a positive or successful action
+.ds-c-button--transparent - A button closer to resembling an anchor element
+.ds-c-button--danger - Indicates an action is destructive or dangerous
+.ds-c-button--success - Indicates a positive or successful action
 
 Markup:
 <a href="http://example.com" class="ds-c-button {{modifier}}">Link</a>
@@ -22,8 +22,8 @@ Style guide: components.button
 */
 .ds-c-button {
   appearance: none;
-  background-color: $color-background;
-  border: 1px solid transparent;
+  background-color: transparent;
+  border: 1px solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
   cursor: pointer;
@@ -38,10 +38,12 @@ Style guide: components.button
 
   &:focus,
   &:hover {
+    border-color: $color-primary-darker;
     color: $color-primary-darker;
   }
 
   &:active {
+    border-color: $color-primary-darkest;
     color: $color-primary-darkest;
   }
 }
@@ -65,7 +67,6 @@ Style guide: components.button
   &:focus,
   &:hover {
     background-color: $color-primary-darker;
-    border-color: $color-primary-darker;
     color: $color-white;
   }
 
@@ -74,22 +75,20 @@ Style guide: components.button
   }
 }
 
-.ds-c-button--outline {
-  background-color: transparent;
-  border-color: $color-primary;
+.ds-c-button--transparent,
+.ds-c-button--transparent-inverse {
+  border-color: transparent;
 
   &:focus,
-  &:hover {
-    border-color: $color-primary-darker;
-  }
-
+  &:hover,
   &:active {
-    border-color: $color-primary-darkest;
+    border-color: transparent;
   }
 }
 
 .ds-c-button--danger {
   background-color: $color-error;
+  border-color: $color-error;
   color: $color-white;
 
   &:focus,
@@ -101,11 +100,13 @@ Style guide: components.button
 
   &:active {
     background-color: $color-error-darkest;
+    border-color: $color-error-darkest;
   }
 }
 
 .ds-c-button--success {
   background-color: $color-success;
+  border-color: $color-success;
   color: $color-white;
 
   &:focus,
@@ -117,6 +118,7 @@ Style guide: components.button
 
   &:active {
     background-color: $color-success-darker;
+    border-color: $color-success-darker;
   }
 }
 
@@ -134,6 +136,7 @@ Style guide: components.button.disabled
 .ds-c-button:disabled,
 .ds-c-button--disabled {
   background-color: $color-gray-lighter;
+  border-color: $color-gray-lighter;
   color: $color-gray-dark;
   pointer-events: none;
 
@@ -141,6 +144,7 @@ Style guide: components.button.disabled
   &:active,
   &:focus {
     background-color: $color-gray-lighter;
+    border-color: $color-gray-lighter;
     color: $color-gray-dark;
   }
 }
@@ -152,9 +156,8 @@ Style guide: components.button.disabled
 
 Markup:
 <div class="ds-base--inverse ds-u-padding--2">
-  <button class="ds-c-button ds-c-button">Button</button>
-  <button class="ds-c-button ds-c-button--outline-inverse ds-u-border--0">Button</button>
-  <button class="ds-c-button ds-c-button--outline-inverse">Button</button>
+  <button class="ds-c-button ds-c-button--inverse">Button</button>
+  <button class="ds-c-button ds-c-button--transparent-inverse">Button</button>
   <button class="ds-c-button ds-c-button--primary">Button</button>
   <button class="ds-c-button ds-c-button--danger">Button</button>
   <button class="ds-c-button ds-c-button--success">Button</button>
@@ -163,24 +166,36 @@ Markup:
 
 Style guide: components.button.inverse
 */
-.ds-c-button--outline-inverse {
-  background-color: transparent;
+.ds-c-button--inverse {
   border-color: $border-color-inverse;
-  color: $color-base-inverse;
 
+  &:active,
   &:focus,
   &:hover {
-    background-color: $color-white;
-    color: $color-primary;
-  }
-
-  &:active {
-    color: $color-primary-darkest;
+    border-color: $color-base-inverse;
   }
 }
 
-.ds-c-button--disabled-inverse {
+.ds-c-button--inverse,
+.ds-c-button--transparent-inverse {
+  color: $color-base-inverse;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $color-base-inverse;
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.ds-c-button--disabled-inverse,
+.ds-c-button--disabled-inverse:disabled {
   background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
   color: $color-muted-inverse;
   pointer-events: none;
 
@@ -188,6 +203,7 @@ Style guide: components.button.inverse
   &:active,
   &:focus {
     background-color: $color-background-inverse;
+    border-color: $color-background-inverse;
     color: $color-muted-inverse;
   }
 }
@@ -228,11 +244,11 @@ Style guide: components.button.icons
 }
 
 /*
-JavaScript API
+React
 
 @react-component
 
-TODO: Display this in documentation
+Style guide: components.button.react
 */
 
 /*

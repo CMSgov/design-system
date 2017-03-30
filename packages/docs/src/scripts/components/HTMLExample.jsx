@@ -6,7 +6,7 @@
 import Prism from 'prismjs';
 import React from 'react';
 
-class HTMLExample extends React.Component {
+class HTMLExample extends React.PureComponent {
   // Replaces template tags
   markup() {
     let html = this.props.markup;
@@ -33,8 +33,7 @@ class HTMLExample extends React.Component {
     if (!this.props.hideMarkup) {
       return (
         <pre className='language-markup'>
-          <code
-            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
+          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       );
     }
@@ -64,7 +63,8 @@ class HTMLExample extends React.Component {
     return (
       <div className='markup markup--html'>
         {this.title()}
-        <div className='ds-u-border--1 ds-u-padding--1'
+        <div
+          className='ds-u-border--1 ds-u-padding--1'
           dangerouslySetInnerHTML={{ __html: markup }}
         />
         {this.snippet()}

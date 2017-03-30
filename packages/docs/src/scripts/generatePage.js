@@ -7,7 +7,11 @@ const path = require('path');
 const recursive = require('mkdir-recursive');
 
 function generatePage(routes, page, rootPath) {
-  const componentRenderer = render(<Docs page={page} routes={routes} />);
+  // In development mode we let the client handle all of the React rendering,
+  // since if we were generating the HTML pages in our build process, Gulp would
+  // need restarted each time a React file changes, which is super annoying.
+  const componentRenderer = process.env.NODE_ENV === 'development'
+    ? null : render(<Docs page={page} routes={routes} />);
 
   if (rootPath) {
     rootPath = `${rootPath}/`;
@@ -24,7 +28,13 @@ function generatePage(routes, page, rootPath) {
     <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
   </head>
   <body class="ds-base">
-    ${componentRenderer}
+    <div id="js-root">
+      <div>${componentRenderer}</div>
+    </div>
+    <script type="text/javascript">
+      var page = ${JSON.stringify(page)};
+      var routes = ${JSON.stringify(routes)};
+    </script>
     <script src="/${rootPath}public/scripts/index.js"></script>
   </body>
   </html>`;
@@ -46,7 +56,7 @@ function checkCache(html, path) {
     .catch(() => true); // File doesn't exist
 }
 
-function parsedPath(page, rootPath) {
+function parsedPath(page) {
   let uri = page.referenceURI;
 
   if (uri === 'public') throw Error('Filename can\'t be "public"');
@@ -59,7 +69,7 @@ function parsedPath(page, rootPath) {
 }
 
 function saveToFile(html, pathObj) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     recursive.mkdir(pathObj.dir, () => {
       fs.writeFile(pathObj.path, html)
         .then(() => resolve(true));

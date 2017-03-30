@@ -7,19 +7,21 @@ import HTMLExample from './HTMLExample';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
 
-class PageBlock extends React.Component {
+class PageBlock extends React.PureComponent {
   markupExamples() {
     if (!this.props.markup) return;
     let modifierMarkup;
 
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
-        return <HTMLExample
-          key={modifier.name}
-          hideMarkup={this.props.hideMarkup}
-          markup={this.props.markup}
-          modifier={modifier}
-        />;
+        return (
+          <HTMLExample
+            key={modifier.name}
+            hideMarkup={this.props.hideMarkup}
+            markup={this.props.markup}
+            modifier={modifier}
+          />
+        );
       });
     }
 
@@ -50,10 +52,12 @@ class PageBlock extends React.Component {
   description() {
     if (this.props.description) {
       return (
-        <div className='c-details ds-u-margin-top--2'
+        <div
+          className='c-details ds-u-margin-top--2'
           dangerouslySetInnerHTML={{
             __html: this.props.description
-          }} />
+          }}
+        />
       );
     }
   }
@@ -89,26 +93,29 @@ class PageBlock extends React.Component {
 
   reactDoc() {
     if (!this.props.hasReactComponent) return;
-
-    const componentPath = this.componentPath();
-    const doc = reactDoc[`${componentPath}.jsx`];
+    const doc = reactDoc[`${this.componentPath()}.jsx`];
 
     if (doc) {
-      return <ReactComponentDoc
-        componentPath={componentPath}
-        description={doc.description}
-        displayName={doc.displayName}
-        packagePath={this.packagePath()}
-        propDocs={doc.props}
-      />;
+      return (
+        <ReactComponentDoc
+          description={doc.description}
+          displayName={doc.displayName}
+          packagePath={this.packagePath()}
+          propDocs={doc.props}
+        />
+      );
     }
   }
 
   source() {
-    if (this.props.source) {
-      return <code className='ds-u-font-size--small'>
-        {this.props.source.filename}:{this.props.source.line}
-      </code>;
+    if (this.props.hasReactComponent || this.props.source) {
+      const path = this.props.hasReactComponent
+        ? this.componentPath().replace(/[a-z-]+\/src\//, '')
+        : `${this.props.source.filename}:${this.props.source.line}`;
+
+      return (
+        <code className='ds-u-font-size--small'>{path}</code>
+      );
     }
   }
 
@@ -149,7 +156,9 @@ PageBlock.propTypes = {
   header: React.PropTypes.string.isRequired,
   hideMarkup: React.PropTypes.bool,
   markup: React.PropTypes.string,
-  modifiers: React.PropTypes.array,
+  modifiers: React.PropTypes.arrayOf(
+    HTMLExample.propTypes.modifier
+  ),
   hasReactComponent: React.PropTypes.bool,
   source: React.PropTypes.shape({
     filename: React.PropTypes.string.isRequired,

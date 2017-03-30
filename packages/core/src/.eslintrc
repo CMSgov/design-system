@@ -4,6 +4,9 @@
 {
   "rules": {
     // We want a displayName for the generated React docs
-    "react/display-name": ["error", {ignoreTranspilerName: true}]
+    "react/display-name": ["error", {ignoreTranspilerName: true}],
+    // Avoid exploits. If you need dangerouslySetInnerHTML, then temporarily
+    // disable this rule in the script rather than removing it from here.
+    "react/no-danger": "error"
   }
 }

@@ -16,7 +16,9 @@ module.exports = (gulp, shared) => {
     ]);
 
     gulp.watch([
-      'packages/core/src/**/*.{js,jsx}'
+      'packages/core/src/**/*.{js,jsx}',
+      '!packages/core/src/**/*.example.{js,jsx}',
+      '!packages/core/src/**/*.test.{js,jsx}'
     ], ['lint:core-scripts', 'docs:react']);
 
     gulp.watch(['packages/core/src/images/*'], [

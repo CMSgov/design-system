@@ -7,7 +7,7 @@ require('prismjs/components/prism-jsx');
 import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-class ReactComponentExample extends React.Component {
+class ReactComponentExample extends React.PureComponent {
   highlightedMarkup() {
     let markup = reactElementToJSXString(this.props.renderComponent(), {
       showDefaultProps: false,
@@ -25,8 +25,7 @@ class ReactComponentExample extends React.Component {
         </div>
 
         <pre className='language-jsx'>
-          <code
-            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
+          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       </div>
     );

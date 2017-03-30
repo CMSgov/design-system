@@ -25,6 +25,8 @@ module.exports = (gulp, shared) => {
   }
 
   gulp.task('webpack', done => {
+    dutil.logMessage('🚜 ', 'Running Webpack');
+
     webpack(shared.webpackConfig, (err, stats) => {
       handleWebpackResults(err, stats);
       done();
