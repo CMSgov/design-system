@@ -5,7 +5,7 @@ import classNames from 'classnames';
  * The Button component behaves similarly to a normal HTML button element, in
  * that it accepts its text as inner HTML.
  */
-const Button = ({ className, inverse, modifier, size, ...props }) => {
+const Button = ({ className, inverse, modifier, onClick, size, ...props }) => {
   let modifierClassName = modifier && `ds-c-button--${modifier}`;
   let disabledClassName = props.disabled && 'ds-c-button--disabled';
 
@@ -22,13 +22,21 @@ const Button = ({ className, inverse, modifier, size, ...props }) => {
   const classes = classNames(
     'ds-c-button',
     disabledClassName,
-    !props.disabled && modifierClassName,
+    !disabledClassName && modifierClassName,
     size && `ds-c-button--${size}`,
     className
   );
 
+  if (props.disabled) {
+    onClick = null;
+  }
+
   return (
-    <button className={classes} {...props}>
+    <button
+      className={classes}
+      onClick={onClick}
+      {...props}
+    >
       {props.children}
     </button>
   );
@@ -60,6 +68,8 @@ Button.propTypes = {
     'transparent',
     'disabled'
   ]),
+  /** Returns the SyntheticEvent. Not called when the button is disabled. */
+  onClick: React.PropTypes.func,
   size: React.PropTypes.oneOf(['small', 'big']),
   /** HTML button type attribute */
   type: React.PropTypes.oneOf(['button', 'submit'])
