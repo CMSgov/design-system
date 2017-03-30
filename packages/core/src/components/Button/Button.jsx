@@ -65,8 +65,7 @@ Button.propTypes = {
     'primary',
     'danger',
     'success',
-    'transparent',
-    'disabled'
+    'transparent'
   ]),
   /** Returns the SyntheticEvent. Not called when the button is disabled. */
   onClick: React.PropTypes.func,
