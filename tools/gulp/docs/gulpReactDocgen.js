@@ -5,33 +5,17 @@
  */
 const dutil = require('../common/log-util');
 const gutil = require('gulp-util');
-const marked = require('marked');
 const path = require('path');
 const reactDocgen = require('react-docgen');
+const reactDocgenHandlers = require('./react-docgen-handlers');
 const through = require('through2');
-const handlers = reactDocgen.defaultHandlers.concat([markdownHandler]);
 
+// This is the name we use to target the component's documentation
+// from the merged documentation's JSON object.
 function getPropertyName(nameAfter, filePath) {
   if (!nameAfter) return path.basename(filePath);
   let rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
   return filePath.match(rx)[1];
-}
-
-function markdownHandler(doc) {
-  const desc = doc.get('description');
-  const docObject = doc.toObject();
-
-  Object.keys(docObject.props).forEach(propName => {
-    let propDescriptor = doc.getPropDescriptor(propName);
-
-    if (propDescriptor.description !== '') {
-      propDescriptor.description = marked(propDescriptor.description);
-    }
-  });
-
-  if (desc !== '') {
-    doc.set('description', marked(desc));
-  }
 }
 
 module.exports = function(options) {
@@ -45,7 +29,7 @@ module.exports = function(options) {
       let doc = reactDocgen.parse(
         file.contents,
         reactDocgen.resolver.findExportedComponentDefinition,
-        handlers
+        reactDocgenHandlers
       );
       // Reduce filesize by removing properties we don't need
       delete doc.methods;

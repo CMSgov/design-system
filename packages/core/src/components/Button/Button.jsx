@@ -89,7 +89,6 @@ class Button extends React.PureComponent {
   }
 };
 
-Button.displayName = 'Button';
 Button.defaultProps = { type: 'button' };
 Button.propTypes = {
   children: React.PropTypes.oneOfType([

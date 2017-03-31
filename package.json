@@ -60,6 +60,7 @@
     "postcss-url": "^5.1.2",
     "prismjs": "^1.6.0",
     "react-docgen": "^2.13.0",
+    "recast": "^0.12.2",
     "run-sequence": "^1.2.2",
     "stylelint": "^7.8.0",
     "stylelint-order": "^0.4.3",
