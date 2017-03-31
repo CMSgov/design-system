@@ -11,6 +11,7 @@ export default function() {
         className='ds-u-margin-left--1'
         href='http://example.com'
         modifier='primary'
+        target='_blank'
       >
         <svg
           className='ds-u-margin-right--1'

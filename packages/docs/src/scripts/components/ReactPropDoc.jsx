@@ -30,9 +30,14 @@ class ReactPropDoc extends React.PureComponent {
   validValues() {
     let values = this.props.type.value;
     if (values) {
-      values = values.map(v => {
+      values = values.map((v, i) => {
         const value = this.props.type.name === 'enum' ? v.value : v.name;
-        return <code className='ds-u-font-size--small' key={value}>{value}</code>;
+        return (
+          <span key={value}>
+            <code className='ds-u-font-size--small'>{value}</code>
+            {i < values.length - 1 && ', '}
+          </span>
+        );
       });
 
       return <p>One of: {values}</p>;
