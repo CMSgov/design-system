@@ -2,6 +2,6 @@
 /*import React from 'react';
 import <%= name %> from './<%= name %>';
 
-export default function(args) {
+export default function() {
   return <<%= name %> />;
 }*/
