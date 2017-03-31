@@ -89,7 +89,6 @@ class Button extends React.PureComponent {
   }
 };
 
-Button.displayName = 'Button';
 Button.defaultProps = { type: 'button' };
 Button.propTypes = {
   children: React.PropTypes.oneOfType([
@@ -123,10 +122,15 @@ Button.propTypes = {
     'success',
     'transparent'
   ]),
-  /** Returns the `SyntheticEvent`. Not called when the button is disabled. */
+  /**
+   * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
+   * Not called when the button is disabled.
+   */
   onClick: React.PropTypes.func,
   size: React.PropTypes.oneOf(['small', 'big']),
-  /** HTML button `type` attribute */
+  /**
+   * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
+   */
   type: React.PropTypes.oneOf(['button', 'submit'])
 };
 

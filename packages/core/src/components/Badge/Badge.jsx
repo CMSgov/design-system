@@ -4,7 +4,6 @@ const Badge = (props) => {
   return <span className='ds-c-badge'>{props.children}</span>;
 };
 
-Badge.displayName = 'Badge';
 Badge.propTypes = {
   /**
    * In most cases this will be the badge's label, but you could also use this

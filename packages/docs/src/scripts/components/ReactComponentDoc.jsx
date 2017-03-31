@@ -16,7 +16,7 @@ class ReactComponentDoc extends React.PureComponent {
   render() {
     return (
       <section>
-        <p>{this.props.description}</p>
+        <div dangerouslySetInnerHTML={{__html: this.props.description}} />
         {this.renderExample()}
         <h3>Props</h3>
         <ReactPropDocs propDocs={this.props.propDocs} />
