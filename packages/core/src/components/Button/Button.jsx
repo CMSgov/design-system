@@ -91,10 +91,7 @@ class Button extends React.PureComponent {
 
 Button.defaultProps = { type: 'button' };
 Button.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.node,
-    React.PropTypes.string
-  ]),
+  children: React.PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.
