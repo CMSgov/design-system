@@ -80,7 +80,7 @@ describe('Button', () => {
   });
 
   it('renders as a success button', () => {
-    const props = {modifier: 'success'};
+    const props = {variation: 'success'};
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
@@ -96,10 +96,10 @@ describe('Button', () => {
     expect(wrapper.hasClass('ds-c-button--small')).toBe(true);
   });
 
-  it('overrides modifier class when disabled', () => {
+  it('overrides variation class when disabled', () => {
     const props = {
       disabled: true,
-      modifier: 'primary'
+      variation: 'primary'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
@@ -107,10 +107,10 @@ describe('Button', () => {
     expect(wrapper.hasClass('ds-c-button--primary')).toBe(false);
   });
 
-  it('applies inverse suffix to modifier class', () => {
+  it('applies inverse suffix to variation class', () => {
     const props = {
       inverse: true,
-      modifier: 'transparent'
+      variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 

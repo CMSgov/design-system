@@ -10,8 +10,8 @@ export default function() {
       <Button
         className='ds-u-margin-left--1'
         href='http://example.com'
-        modifier='primary'
         target='_blank'
+        variation='primary'
       >
         <svg
           className='ds-u-margin-right--1'
