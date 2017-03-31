@@ -34,7 +34,7 @@
     "react/no-multi-comp": "error",
     "react/prefer-es6-class": "error",
     "react/prefer-stateless-function": "error",
-    "react/prop-types": ["error", {ignore: ["children"]}],
+    "react/prop-types": ["error", {ignore: ["className"]}],
     "react/sort-comp": "error",
   }
 }
