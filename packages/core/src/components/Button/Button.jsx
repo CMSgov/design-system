@@ -17,7 +17,7 @@ class Button extends React.PureComponent {
     /**
      * Since any number of arbitrary props can be passed into this component, we
      * use a destructuring assignment to get only the props we want to pass to the
-     * rendered HTML element. For example, the "modifier" prop is used to generate
+     * rendered HTML element. For example, the "variation" prop is used to generate
      * the classNames, but doesn't need passed to the rendered component, so we
      * omit it here so that it's not included in the props object.
      */
@@ -25,9 +25,9 @@ class Button extends React.PureComponent {
       className,
       component,
       inverse,
-      modifier,
       onClick,
       size,
+      variation,
       ...props
     } = this.props;
 
@@ -44,23 +44,23 @@ class Button extends React.PureComponent {
   }
 
   classNames() {
-    let modifierClass = this.props.modifier && `ds-c-button--${this.props.modifier}`;
+    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
     let disabledClass = this.props.disabled && 'ds-c-button--disabled';
 
     if (this.props.inverse) {
       if (disabledClass) {
         disabledClass += '-inverse';
-      } else if (modifierClass) {
-        modifierClass += '-inverse';
+      } else if (variationClass) {
+        variationClass += '-inverse';
       } else {
-        modifierClass = 'ds-c-button--inverse';
+        variationClass = 'ds-c-button--inverse';
       }
     }
 
     return classNames(
       'ds-c-button',
       disabledClass,
-      !disabledClass && modifierClass,
+      !disabledClass && variationClass,
       this.props.size && `ds-c-button--${this.props.size}`,
       this.props.className
     );
@@ -113,12 +113,6 @@ Button.propTypes = {
   href: React.PropTypes.string,
   /** Applies the inverse theme styling */
   inverse: React.PropTypes.bool,
-  modifier: React.PropTypes.oneOf([
-    'primary',
-    'danger',
-    'success',
-    'transparent'
-  ]),
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.
@@ -128,7 +122,13 @@ Button.propTypes = {
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type: React.PropTypes.oneOf(['button', 'submit'])
+  type: React.PropTypes.oneOf(['button', 'submit']),
+  variation: React.PropTypes.oneOf([
+    'primary',
+    'danger',
+    'success',
+    'transparent'
+  ])
 };
 
 export default Button;

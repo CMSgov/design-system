@@ -25,7 +25,7 @@ describe('Alert', function() {
   });
 
   it('should appear as an error', () => {
-    const props = {modifier: 'error'};
+    const props = {variation: 'error'};
     const wrapper = shallow(<Alert {...props}>{text}</Alert>);
 
     expect(wrapper.hasClass('ds-c-alert--error')).toBe(true);
