@@ -43,10 +43,9 @@ Checkbox
 Checkboxes allow users to select one or more options from a visible list.
 
 Markup:
-<h3 class="ds-c-label ds-u-margin-top--0">Historical figures</h3>
-<span class="ds-c-field__hint">Select all that apply</span>
 <fieldset class="ds-c-fieldset">
-  <legend class="ds-u-visibility--screen-reader">Historical figures</legend>
+  <legend class="ds-c-label">Historical figures</legend>
+  <span class="ds-c-field__hint">Select all that apply</span>
   <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
   <label for="truth-1">Sojourner Truth</label>
   <input class="ds-c-choice" id="douglass-1" type="checkbox" name="historical-figures-1" value="douglass">
@@ -57,9 +56,8 @@ Markup:
   <label for="carver-1">George Washington Carver</label>
 </fieldset>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
   <fieldset class="ds-c-fieldset">
-    <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+    <legend class="ds-c-label">Select a historical figure</legend>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
     <label for="truth-2">Sojourner Truth</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
@@ -97,9 +95,8 @@ Radio option
 @uswds https://standards.usa.gov/components/form-controls/#radio-buttons
 
 Markup:
-<h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
 <fieldset class="ds-c-fieldset">
-  <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+  <legend class="ds-c-label">Select a historical figure</legend>
   <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
   <label for="truth-3">Sojourner Truth</label>
   <input class="ds-c-choice" id="douglass-3" type="radio" name="historical-figures-3" value="douglass">
@@ -108,9 +105,8 @@ Markup:
   <label for="washington-3">Booker T. Washington</label>
 </fieldset>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <h3 class="ds-c-label ds-u-margin-top--0">Select a historical figure</h3>
   <fieldset class="ds-c-fieldset">
-    <legend class="ds-u-visibility--screen-reader">Select a historical figure</legend>
+    <legend class="ds-c-label">Select a historical figure</legend>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
     <label for="truth-4">Sojourner Truth</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
