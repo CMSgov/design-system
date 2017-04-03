@@ -9,7 +9,11 @@ class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
       return (
-        <span className='ds-c-field__hint ds-u-color--error' id='TODO-message' role='alert'>
+        <span
+          className='ds-c-field__hint ds-u-color--error'
+          id={`${this.props.fieldId}-message`}
+          role='alert'
+        >
           {this.props.errorMessage}
         </span>
       );

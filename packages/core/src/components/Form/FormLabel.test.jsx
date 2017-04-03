@@ -6,16 +6,24 @@ describe('FormLabel', () => {
   const labelText = 'Hello world';
 
   it('renders label text', () => {
-    const wrapper = shallow(<FormLabel>{labelText}</FormLabel>);
+    const props = {fieldId: 'name'};
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
     expect(wrapper.text()).toBe(labelText);
     expect(wrapper.is('label')).toBe(true);
+    expect(wrapper.prop('htmlFor')).toBe(props.fieldId);
   });
 
   it('renders error state', () => {
-    const props = {errorMessage: 'Nah, try again.'};
+    const props = {
+      errorMessage: 'Nah, try again.',
+      fieldId: 'name'
+    };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const $error = wrapper.render().find('.ds-u-color--error');
 
-    expect(wrapper.find('.ds-u-color--error').text()).toBe(props.errorMessage);
+    expect($error.text()).toBe(props.errorMessage);
+    expect($error.attr('id')).toBe(`${props.fieldId}-message`);
     // Label becomes bold when there's an error
     expect(wrapper.find('.ds-u-font-weight--bold').length).toBe(1);
   });
@@ -33,7 +41,4 @@ describe('FormLabel', () => {
 
     expect(wrapper.is('legend')).toBe(true);
   });
-
-  it('sets correct "id" attribute value on error message element');
-  it('sets correct "for" attribute value on root label element');
 });
