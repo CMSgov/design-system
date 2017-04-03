@@ -2,6 +2,20 @@
 @import '../../settings/index';
 
 /*
+Fieldset
+
+This just removes the browser's default fieldset styling. Not much to see here.
+
+Markup:
+<fieldset class="ds-c-fieldset">...</fieldset>
+*/
+.ds-c-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
 Text field
 
 @status prototype
@@ -23,7 +37,7 @@ Markup:
   </span>
   <span class="ds-c-field__hint">Helpful hint text</span>
 </label>
-<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message">
+<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message" />
 <label class="ds-c-label" for="input-username">Username</label>
 <input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
 <label class="ds-c-label" for="input-bio">Bio</label>

@@ -1,19 +1,4 @@
-// General form styles that don't really deserve their own component file
 @import '../../settings/index';
-
-/*
-Fieldset
-
-This just removes the browser's default fieldset styling. Not much to see here.
-
-Markup:
-<fieldset class="ds-c-fieldset">...</fieldset>
-*/
-.ds-c-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
 
 /*
 Form label/legend
