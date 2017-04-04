@@ -7,6 +7,7 @@ describe('processSection', () => {
       toJSON: () => (
         {
           description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p><p>@status prototype</p>',
+          header: 'Title - `<Component>`',
           markup: '<% var foo="bar" %><%= foo %> {{root}}',
           modifiers: [{
             name: '.primary',
@@ -39,6 +40,10 @@ describe('processSection', () => {
 
   it('renders EJS and replaces {{root}}', () => {
     expect(data.markup).toEqual('bar /root');
+  });
+
+  it('converts Markdown in header', () => {
+    expect(data.header).toEqual('Title - <code>&#x3C;Component&#x3E;</code>');
   });
 
   it('adds a sections property', () => {

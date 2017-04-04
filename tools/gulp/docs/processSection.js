@@ -2,6 +2,18 @@ const dutil = require('../common/log-util');
 const ejs = require('ejs');
 const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 
+function converMarkdownCode(value) {
+  const rx = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
+  const match = value.match(rx);
+
+  if (match) {
+    const code = match[2].replace(/</g, '&#x3C;').replace(/>/g, '&#x3E;');
+    value = value.replace(rx, `<code>${code}</code>`);
+  }
+
+  return value;
+}
+
 /**
  * Extract, process, and return KssSection data in a cleaner format
  * @param  {KssSection} kssSection
@@ -21,6 +33,11 @@ function processSection(kssSection, rootPath) {
     data.referenceURI = `${rootPath}/${data.referenceURI}`;
   }
 
+  // We only need to support Markdown's code syntax in headers, so we manually
+  // parse those rather than running it through the marked library.
+  data.header = converMarkdownCode(data.header);
+
+  // Render EJS and replace template tags
   if (data.markup && data.markup !== '') {
     data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
 
