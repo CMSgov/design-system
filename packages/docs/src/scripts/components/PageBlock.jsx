@@ -73,7 +73,12 @@ class PageBlock extends React.PureComponent {
     return (
       <heading className='block__heading'>
         {this.statusPill()}
-        <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
+        <h1
+          className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'
+          dangerouslySetInnerHTML={{
+            __html: this.props.header
+          }}
+        />
         <div className='ds-u-clearfix' />
         {this.source()}
         {this.uswdsLink()}
