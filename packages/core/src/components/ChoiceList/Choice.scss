@@ -32,7 +32,7 @@ The following Sass variables can be overridden to theme checkbox/radio options:
 
 - ["We've updated the radios and checkboxes on GOV.UK"](https://designnotes.blog.gov.uk/2016/11/30/weve-updated-the-radios-and-checkboxes-on-gov-uk/)
 
-Style guide: components.checkbox-radio
+Style guide: components.choice
 */
 
 /*
@@ -69,7 +69,7 @@ Markup:
   </fieldset>
 </div>
 
-Style guide: components.checkbox-radio.checkbox
+Style guide: components.choice.checkbox
 */
 
 /*
@@ -86,7 +86,7 @@ Style guide: components.checkbox-radio.checkbox
 - If there are too many options to display on a mobile screen.
 - If a user can only select one option from a list (use `radio` buttons instead).
 
-Style guide: components.checkbox-radio.checkbox-details
+Style guide: components.choice.checkbox-details
 */
 
 /*
@@ -116,7 +116,7 @@ Markup:
   </fieldset>
 </div>
 
-Style guide: components.checkbox-radio.radio
+Style guide: components.choice.radio
 */
 
 /*
@@ -134,7 +134,7 @@ Style guide: components.checkbox-radio.radio
 - Consider a dropdown if you don’t have enough space to list out all available options.
 - If users should be able to select zero of the options.
 
-Style guide: components.checkbox-radio.radio-details
+Style guide: components.choice.radio-details
 */
 
 // Hide the default browser checkbox/radio button since we'll
@@ -220,3 +220,11 @@ Style guide: components.checkbox-radio.radio-details
 .ds-c-choice[type=radio] + label::before {
   border-radius: 100%;
 }
+
+/*
+React
+
+@react-component
+
+Style guide: components.choice.radio
+*/
