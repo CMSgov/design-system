@@ -28,7 +28,7 @@ describe('Choice', () => {
     expect(input.prop('checked')).toBe(true);
   });
 
-  it('is as a checkbox by default', () => {
+  it('is a checkbox by default', () => {
     const props = {
       name: 'presidents',
       value: label
@@ -39,7 +39,7 @@ describe('Choice', () => {
     expect(input.prop('type')).toBe('checkbox');
   });
 
-  it('is as a radio button', () => {
+  it('is a radio button', () => {
     const props = {
       name: 'presidents',
       type: 'radio',
@@ -76,6 +76,17 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--inverse')).toBe(true);
   });
 
+  it('applies additional classNames to root element', () => {
+    const props = {
+      className: 'foo',
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+
+    expect(wrapper.hasClass('foo')).toBe(true);
+  });
+
   it('sets a unique id', () => {
     const sharedProps = {
       name: 'presidents'
@@ -101,5 +112,37 @@ describe('Choice', () => {
     // Second choice
     expect(inputBId).toMatch(idRegex);
     expect($wrapper.find('label').eq(1).attr('for')).toBe(inputBId);
+  });
+
+  describe('event handlers', () => {
+    let wrapper;
+    let onBlurMock;
+    let onChangeMock;
+
+    beforeEach(() => {
+      onBlurMock = jest.fn();
+      onChangeMock = jest.fn();
+
+      const sharedProps = {
+        name: 'presidents',
+        onBlur: onBlurMock,
+        onChange: onChangeMock,
+        value: 'b'
+      };
+
+      wrapper = shallow(<Choice {...sharedProps}>{label}</Choice>);
+    });
+
+    it('calls the onChange handler', () => {
+      wrapper.find('input').simulate('change');
+      expect(onBlurMock.mock.calls.length).toBe(0);
+      expect(onChangeMock.mock.calls.length).toBe(1);
+    });
+
+    it('calls the onChange handler', () => {
+      wrapper.find('input').simulate('blur');
+      expect(onBlurMock.mock.calls.length).toBe(1);
+      expect(onChangeMock.mock.calls.length).toBe(0);
+    });
   });
 });

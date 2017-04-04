@@ -49,13 +49,13 @@ class ReactPropDoc extends React.PureComponent {
       <tr>
         <td>
           <code className='ds-u-font-weight--bold'>{this.props.name}</code>
+          {this.isRequired()}
         </td>
         <td>
           <code>{this.props.type.name}</code>
         </td>
         <td>
           {this.defaultValue()}
-          {this.isRequired()}
         </td>
         <td>
           {this.description()}
