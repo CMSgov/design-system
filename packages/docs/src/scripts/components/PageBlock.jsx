@@ -38,15 +38,20 @@ class PageBlock extends React.PureComponent {
   }
 
   /**
-   * Parse the full path of the Sass file where the main documentation
+   * Use the full path of the Sass file where the KSS documentation
    * was generated from, and return the path relative to packages/
-   * Example: packages/core/button.js -> core/button.js
+   * and with the React component's filename.
    *
    * @return {String}
    */
-  componentPath() {
-    return this.props.source.path
-      .match(/packages\/([a-z0-9_\-/]+)/i)[1];
+  reactComponentPath() {
+    // Get path relative to packages/
+    // Example: packages/core/components/Button.scss -> core/component/Button
+    const path = this.props.source.path.match(/packages\/([a-z0-9_\-/]+)/i)[1];
+
+    // Replace the Sass filename with the React component's filename
+    // Example: core/component/Button -> core/component/ButtonGroup
+    return path.replace(/\/([a-z0-9_-]+)$/i, `/${this.props.reactComponent}`);
   }
 
   description() {
@@ -93,12 +98,12 @@ class PageBlock extends React.PureComponent {
    * @return {String}
    */
   packagePath() {
-    return `@cmsgov/design-system-${this.componentPath()}`;
+    return `@cmsgov/design-system-${this.reactComponentPath()}`;
   }
 
   reactDoc() {
-    if (!this.props.hasReactComponent) return;
-    const doc = reactDoc[`${this.componentPath()}.jsx`];
+    if (!this.props.reactComponent) return;
+    const doc = reactDoc[`${this.reactComponentPath()}.jsx`];
 
     if (doc) {
       return (
@@ -113,9 +118,9 @@ class PageBlock extends React.PureComponent {
   }
 
   source() {
-    if (this.props.hasReactComponent || this.props.source) {
-      const path = this.props.hasReactComponent
-        ? this.componentPath().replace(/[a-z-]+\/src\//, '')
+    if (this.props.reactComponent || this.props.source) {
+      const path = this.props.reactComponent
+        ? this.reactComponentPath().replace(/[a-z-]+\/src\//, '')
         : `${this.props.source.filename}:${this.props.source.line}`;
 
       return (
@@ -164,7 +169,7 @@ PageBlock.propTypes = {
   modifiers: React.PropTypes.arrayOf(
     HTMLExample.propTypes.modifier
   ),
-  hasReactComponent: React.PropTypes.bool,
+  reactComponent: React.PropTypes.string,
   source: React.PropTypes.shape({
     filename: React.PropTypes.string.isRequired,
     line: React.PropTypes.number.isRequired,

@@ -1,14 +1,13 @@
 const dutil = require('../common/log-util');
 const ejs = require('ejs');
-const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 
 function converMarkdownCode(value) {
-  const rx = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
-  const match = value.match(rx);
+  const CODE_REGEX = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
+  const match = value.match(CODE_REGEX);
 
   if (match) {
     const code = match[2].replace(/</g, '&#x3C;').replace(/>/g, '&#x3E;');
-    value = value.replace(rx, `<code>${code}</code>`);
+    value = value.replace(CODE_REGEX, `<code>${code}</code>`);
   }
 
   return value;
@@ -58,6 +57,8 @@ function processSection(kssSection, rootPath) {
  * @return {Object}
  */
 function processFlags(section) {
+  const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
+
   if (typeof section.description === 'string') {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
@@ -67,7 +68,7 @@ function processFlags(section) {
           break;
         case 'react-component':
           // Include the React component's documentation
-          section.hasReactComponent = true;
+          section.reactComponent = value;
           break;
         case 'status':
           // Development status (ie. Prototype, Alpha, Beta)
@@ -82,7 +83,7 @@ function processFlags(section) {
           break;
       }
       return '';
-    });
+    }).trim();
   }
   return section;
 }
