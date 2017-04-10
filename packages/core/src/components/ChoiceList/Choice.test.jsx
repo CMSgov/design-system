@@ -5,6 +5,17 @@ import {shallow} from 'enzyme';
 describe('Choice', () => {
   const label = 'George Washington';
 
+  it('accepts a node as innerHTML', () => {
+    const props = {
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}><p><strong>Hello</strong> World</p></Choice>);
+    const labelNode = wrapper.find('label');
+
+    expect(labelNode.children().first().is('p')).toBe(true);
+  });
+
   it('is not checked', () => {
     const props = {
       name: 'presidents',
@@ -14,6 +25,7 @@ describe('Choice', () => {
     const input = wrapper.find('input');
 
     expect(input.prop('checked')).toBeUndefined();
+    expect(input.prop('defaultChecked')).toBeUndefined();
   });
 
   it('is checked', () => {
@@ -26,6 +38,32 @@ describe('Choice', () => {
     const input = wrapper.find('input');
 
     expect(input.prop('checked')).toBe(true);
+    expect(input.prop('defaultChecked')).toBeUndefined();
+  });
+
+  it('is defaultChecked', () => {
+    const props = {
+      defaultChecked: true,
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.prop('checked')).toBeUndefined();
+    expect(input.prop('defaultChecked')).toBe(true);
+  });
+
+  it('is required', () => {
+    const props = {
+      name: 'presidents',
+      required: true,
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.prop('required')).toBe(true);
   });
 
   it('is a checkbox by default', () => {
@@ -37,6 +75,7 @@ describe('Choice', () => {
     const input = wrapper.find('input');
 
     expect(input.prop('type')).toBe('checkbox');
+    expect(input.prop('required')).toBeUndefined();
   });
 
   it('is a radio button', () => {
@@ -51,7 +90,7 @@ describe('Choice', () => {
     expect(input.prop('type')).toBe('radio');
   });
 
-  it('applies component class to input', () => {
+  it('applies className to input', () => {
     const props = {
       name: 'presidents',
       value: label
@@ -63,7 +102,7 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--inverse')).toBe(false);
   });
 
-  it('applies inverse class to input', () => {
+  it('applies inverse className to input', () => {
     const props = {
       inversed: true,
       name: 'presidents',
@@ -85,6 +124,28 @@ describe('Choice', () => {
     const wrapper = shallow(<Choice {...props}>{label}</Choice>);
 
     expect(wrapper.hasClass('foo')).toBe(true);
+  });
+
+  it('accepts a string value', () => {
+    const props = {
+      name: 'foo',
+      value: 'bar'
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.prop('value')).toBe(props.value);
+  });
+
+  it('accepts a number value', () => {
+    const props = {
+      name: 'foo',
+      value: 100
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.prop('value')).toBe(props.value);
   });
 
   it('sets a unique id', () => {
@@ -139,7 +200,7 @@ describe('Choice', () => {
       expect(onChangeMock.mock.calls.length).toBe(1);
     });
 
-    it('calls the onChange handler', () => {
+    it('calls the onBlur handler', () => {
       wrapper.find('input').simulate('blur');
       expect(onBlurMock.mock.calls.length).toBe(1);
       expect(onChangeMock.mock.calls.length).toBe(0);
