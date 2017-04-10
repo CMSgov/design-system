@@ -1,10 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
+/**
+ * A `Select` component can be used to render an HTML `select` menu.
+ * Any _undocumented_ props that you pass to this component will be passed
+ * to the `select` element, so you can use this to set additional attributes if
+ * necessary.
+ */
 class Select extends React.PureComponent {
   render() {
-    const {
+    let {
+      children,
       className,
+      id,
       ...props
     } = this.props;
 
@@ -13,9 +22,17 @@ class Select extends React.PureComponent {
       this.props.className
     );
 
+    if(!id) {
+      id = uniqueId(`select_${props.name}_`);
+    }
+
     return (
-      <select className={classes} {...props}>
-        {this.props.children}
+      <select
+        className={classes}
+        id={id}
+        {...props}
+      >
+        {children}
       </select>
     );
   }
@@ -23,13 +40,24 @@ class Select extends React.PureComponent {
 
 Select.propTypes = {
   children: React.PropTypes.node.isRequired,
-  /** Additional classes to be added to the root `select` element. */
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  name: React.PropTypes.string.isRequired,
   /**
-   * Setting this prop to `true` will result in an invalid prop message due to
-   * accessibility concerns. See the accessibility guidelines for more info.
+   * Additional classes to be added to the root `select` element.
+   */
+  className: React.PropTypes.string,
+  /**
+   * Sets the initial `selected` state and allows the user to select a different
+   * option without also requiring an `onChange` event handler.
+   */
+  defaultValue: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  /**
+   * A unique ID to be used for the select field. A unique ID will be generated
+   * if one isn't provided.
+   */
+  id: React.PropTypes.string,
+  /**
+   * Setting this prop to `true` will result in an error message due to
+   * accessibility concerns. See the usability guidelines for more info.
    */
   multiple: function(props, propName, componentName) {
     if (props[propName]) {
@@ -38,7 +66,16 @@ Select.propTypes = {
         ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
       );
     }
-  }
+  },
+  name: React.PropTypes.string.isRequired,
+  onBlur: React.PropTypes.func,
+  onChange: React.PropTypes.func,
+  /**
+   * Setting this prop will render a read-only field and require an `onChange`
+   * event handler if you'd want to change its `selected` stated. Use
+   * `defaultValue` if you want the field to be mutable.
+   */
+  value: React.PropTypes.string
 };
 
 export default Select;
