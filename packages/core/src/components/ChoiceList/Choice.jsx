@@ -9,9 +9,10 @@ import uniqueId from 'lodash.uniqueid';
  * necessary.
  */
 const Choice = function(props) {
-  const {
+  let { // Using let rather than const since we sometimes rewrite id
     children,
     className,
+    id,
     inversed,
     ...inputProps
   } = props;
@@ -20,7 +21,10 @@ const Choice = function(props) {
     'ds-c-choice',
     {'ds-c-choice--inverse': inversed}
   );
-  const id = uniqueId(`${inputProps.type}_${inputProps.name}_`);
+
+  if(!id) {
+    id = uniqueId(`${inputProps.type}_${inputProps.name}_`);
+  }
 
   return (
     <div className={className}>
@@ -58,6 +62,11 @@ Choice.propTypes = {
    * field without also requiring an `onChange` event handler.
    */
   defaultChecked: React.PropTypes.bool,
+  /**
+   * A unique ID to be used for the input field, as well as the label's
+   * `for` attribute. A unique ID will be generated if one isn't provided.
+   */
+  id: React.PropTypes.string,
   /**
    * Set to `true` to apply the "inverse" theme
    */

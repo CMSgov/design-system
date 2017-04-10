@@ -148,7 +148,21 @@ describe('Choice', () => {
     expect(input.prop('value')).toBe(props.value);
   });
 
-  it('sets a unique id', () => {
+  it('accepts a custom id', () => {
+    const props = {
+      id: 'custom_id',
+      name: 'foo',
+      value: 100
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+    const labelNode = wrapper.find('label');
+
+    expect(input.prop('id')).toBe(props.id);
+    expect(labelNode.prop('htmlFor')).toBe(props.id);
+  });
+
+  it('generates a unique id', () => {
     const sharedProps = {
       name: 'presidents'
     };
