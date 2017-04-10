@@ -17,6 +17,12 @@ Markup:
   padding: 0;
 }
 
+// Webkit won't render a top margin on a fieldset's <legend>, so we apply
+// the top margin to the fieldset instead.
+.ds-c-fieldset > .ds-c-label {
+  margin-top: 0;
+}
+
 /*
 Hint text
 

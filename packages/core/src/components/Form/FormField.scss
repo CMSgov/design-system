@@ -4,14 +4,15 @@
 /*
 Fieldset
 
-This just removes the browser's default fieldset styling. Not much to see here.
-
 Markup:
 <fieldset class="ds-c-fieldset">...</fieldset>
 */
 .ds-c-fieldset {
   border: 0;
-  margin: 0;
+  // We apply the same margin as a label has, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
   padding: 0;
 }
 
