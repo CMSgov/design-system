@@ -8,36 +8,34 @@ import uniqueId from 'lodash.uniqueid';
  * to the `select` element, so you can use this to set additional attributes if
  * necessary.
  */
-class Select extends React.PureComponent {
-  render() {
-    let {
-      children,
-      className,
-      id,
-      inversed,
-      ...props
-    } = this.props;
+const Select = function(props) {
+  let {
+    children,
+    className,
+    id,
+    inversed,
+    ...selectProps
+  } = props;
 
-    const classes = classNames(
-      'ds-c-field ds-c-field--select',
-      {'ds-c-field--inverse': inversed},
-      this.props.className
-    );
+  const classes = classNames(
+    'ds-c-field ds-c-field--select',
+    {'ds-c-field--inverse': inversed},
+    className
+  );
 
-    if (!id) {
-      id = uniqueId(`select_${props.name}_`);
-    }
-
-    return (
-      <select
-        className={classes}
-        id={id}
-        {...props}
-      >
-        {children}
-      </select>
-    );
+  if (!id) {
+    id = uniqueId(`select_${selectProps.name}_`);
   }
+
+  return (
+    <select
+      className={classes}
+      id={id}
+      {...selectProps}
+    >
+      {children}
+    </select>
+  );
 };
 
 Select.propTypes = {

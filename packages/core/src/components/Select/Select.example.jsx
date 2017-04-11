@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-import FormLabel from '../Form/FormLabel';
 import React from 'react';
 import Select from './Select';
 

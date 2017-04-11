@@ -31,7 +31,7 @@ function shallowRender(customProps = {}, optionsCount = 1) {
   return {
     props: props,
     wrapper: shallow(<Select {...props}>{generateOptions(optionsCount)}</Select>)
-  }
+  };
 }
 
 describe('Select', () => {
