@@ -16,9 +16,12 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["jest", "react"],
   "rules": {
     "eol-last": "warn",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
     "no-unused-vars": ["error", {ignoreRestSiblings: true}],
     "react/forbid-prop-types": "error",
     "react/jsx-closing-bracket-location": "error",
