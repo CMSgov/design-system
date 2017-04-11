@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * The FormLabel component provides the label/legend for a field, along with any
@@ -44,29 +45,29 @@ class FormLabel extends React.PureComponent {
       </ComponentType>
     );
   }
-};
+}
 
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /** The root HTML element used to render the label */
-  component: React.PropTypes.oneOf(['label', 'legend']),
+  component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: React.PropTypes.string,
+  errorMessage: PropTypes.string,
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
    */
-  fieldId: React.PropTypes.string,
+  fieldId: PropTypes.string,
   /**
    * Hint text. Typically this is a string, but you can pass in additional
    * HTML if you need to further format things.
    */
-  hint: React.PropTypes.node,
+  hint: PropTypes.node,
   /**
    * Set to `true` to apply the "inverse" theme
    */
-  inversed: React.PropTypes.bool
+  inversed: PropTypes.bool
 };
 
 export default FormLabel;

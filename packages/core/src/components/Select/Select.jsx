@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -39,26 +40,26 @@ const Select = function(props) {
 };
 
 Select.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the root `select` element.
    */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /**
    * Sets the initial `selected` state and allows the user to select a different
    * option without also requiring an `onChange` event handler.
    */
-  defaultValue: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
+  defaultValue: PropTypes.string,
+  disabled: PropTypes.bool,
   /**
    * A unique ID to be used for the select field. A unique ID will be generated
    * if one isn't provided.
    */
-  id: React.PropTypes.string,
+  id: PropTypes.string,
   /**
    * Set to `true` to apply the "inverse" theme
    */
-  inversed: React.PropTypes.bool,
+  inversed: PropTypes.bool,
   /**
    * Setting this prop to `true` will result in an error message due to
    * accessibility concerns. See the usability guidelines for more info.
@@ -71,15 +72,15 @@ Select.propTypes = {
       );
     }
   },
-  name: React.PropTypes.string.isRequired,
-  onBlur: React.PropTypes.func,
-  onChange: React.PropTypes.func,
+  name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   /**
    * Setting this prop will render a read-only field and require an `onChange`
    * event handler if you'd want to change its `selected` stated. Use
    * `defaultValue` if you want the field to be mutable.
    */
-  value: React.PropTypes.string
+  value: PropTypes.string
 };
 
 export default Select;

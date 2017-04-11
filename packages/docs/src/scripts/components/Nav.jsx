@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavItem from './NavItem';
 
 const Nav = (props) => {
@@ -18,9 +19,9 @@ const Nav = (props) => {
 };
 
 Nav.propTypes = {
-  currentPageURI: React.PropTypes.string.isRequired,
-  routes: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
+  currentPageURI: PropTypes.string.isRequired,
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
       header: NavItem.propTypes.header,
       referenceURI: NavItem.propTypes.referenceURI
     })

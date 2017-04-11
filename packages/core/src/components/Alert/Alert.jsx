@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class Alert extends React.PureComponent {
@@ -27,11 +28,11 @@ class Alert extends React.PureComponent {
 }
 
 Alert.propTypes = {
-  children: React.PropTypes.node.isRequired,
-  heading: React.PropTypes.string,
+  children: PropTypes.node.isRequired,
+  heading: PropTypes.string,
   /** ARIA `role` */
-  role: React.PropTypes.oneOf(['alert', 'alertdialog']),
-  variation: React.PropTypes.oneOf(['error', 'warn', 'success'])
+  role: PropTypes.oneOf(['alert', 'alertdialog']),
+  variation: PropTypes.oneOf(['error', 'warn', 'success'])
 };
 
 export default Alert;

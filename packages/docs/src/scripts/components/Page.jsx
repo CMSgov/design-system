@@ -3,6 +3,7 @@
  * doesn't have a parent reference).
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import PageBlock from './PageBlock';
 
 class Page extends React.PureComponent {
@@ -34,9 +35,9 @@ Page.defaultProps = {
 };
 
 Page.propTypes = {
-  depth: React.PropTypes.number,
-  sections: React.PropTypes.arrayOf(
-    React.PropTypes.shape(PageBlock.propTypes)
+  depth: PropTypes.number,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape(PageBlock.propTypes)
   )
 };
 

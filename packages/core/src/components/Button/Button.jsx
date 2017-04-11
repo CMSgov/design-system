@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 /**
@@ -87,43 +88,43 @@ class Button extends React.PureComponent {
 
     return <ComponentType {...attrs}>{this.props.children}</ComponentType>;
   }
-};
+}
 
 Button.defaultProps = { type: 'button' };
 Button.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.
    */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /**
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.func
+  component: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func
   ]),
-  disabled: React.PropTypes.bool,
+  disabled: PropTypes.bool,
   /**
    * When provided the root component will render as an `<a>` element
    * rather than `button`.
    */
-  href: React.PropTypes.string,
+  href: PropTypes.string,
   /** Applies the inverse theme styling */
-  inverse: React.PropTypes.bool,
+  inverse: PropTypes.bool,
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.
    */
-  onClick: React.PropTypes.func,
-  size: React.PropTypes.oneOf(['small', 'big']),
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['small', 'big']),
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type: React.PropTypes.oneOf(['button', 'submit']),
-  variation: React.PropTypes.oneOf([
+  type: PropTypes.oneOf(['button', 'submit']),
+  variation: PropTypes.oneOf([
     'primary',
     'danger',
     'success',

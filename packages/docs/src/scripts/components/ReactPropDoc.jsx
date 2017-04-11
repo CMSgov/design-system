@@ -1,8 +1,8 @@
 /**
  * Render a table row for a single property
  */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ReactPropDoc extends React.PureComponent {
   defaultValue() {
@@ -94,24 +94,24 @@ class ReactPropDoc extends React.PureComponent {
 }
 
 ReactPropDoc.propTypes = {
-  defaultValue: React.PropTypes.shape({
-    value: React.PropTypes.string
+  defaultValue: PropTypes.shape({
+    value: PropTypes.string
   }),
-  description: React.PropTypes.string,
-  name: React.PropTypes.string,
-  required: React.PropTypes.bool.isRequired,
-  type: React.PropTypes.shape({
+  description: PropTypes.string,
+  name: PropTypes.string,
+  required: PropTypes.bool.isRequired,
+  type: PropTypes.shape({
     // Property type
-    name: React.PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     // Valid values
-    value: React.PropTypes.oneOfType([
-      React.PropTypes.arrayOf( // oneOf
-        React.PropTypes.shape({
-          name: React.PropTypes.string,
-          value: React.PropTypes.string
+    value: PropTypes.oneOfType([
+      PropTypes.arrayOf( // oneOf
+        PropTypes.shape({
+          name: PropTypes.string,
+          value: PropTypes.string
         })
       ),
-      React.PropTypes.object // shape
+      PropTypes.object // shape
     ])
   })
 };

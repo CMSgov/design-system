@@ -3,6 +3,7 @@
  * predictable: a header, description, and code snippet(s).
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import HTMLExample from './HTMLExample';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
@@ -162,21 +163,21 @@ class PageBlock extends React.PureComponent {
 }
 
 PageBlock.propTypes = {
-  description: React.PropTypes.string,
-  header: React.PropTypes.string.isRequired,
-  hideMarkup: React.PropTypes.bool,
-  markup: React.PropTypes.string,
-  modifiers: React.PropTypes.arrayOf(
+  description: PropTypes.string,
+  header: PropTypes.string.isRequired,
+  hideMarkup: PropTypes.bool,
+  markup: PropTypes.string,
+  modifiers: PropTypes.arrayOf(
     HTMLExample.propTypes.modifier
   ),
-  reactComponent: React.PropTypes.string,
-  source: React.PropTypes.shape({
-    filename: React.PropTypes.string.isRequired,
-    line: React.PropTypes.number.isRequired,
-    path: React.PropTypes.string.isRequired
+  reactComponent: PropTypes.string,
+  source: PropTypes.shape({
+    filename: PropTypes.string.isRequired,
+    line: PropTypes.number.isRequired,
+    path: PropTypes.string.isRequired
   }),
-  status: React.PropTypes.string,
-  uswdsUrl: React.PropTypes.string
+  status: PropTypes.string,
+  uswdsUrl: PropTypes.string
 };
 
 export default PageBlock;

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 import uniqueId from 'lodash.uniqueid';
 
 /**
@@ -46,44 +47,44 @@ Choice.propTypes = {
   /**
    * Label text or HTML.
    */
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   /**
    * Setting this prop will render a read-only field and require an `onChange`
    * event handler if you'd want to check its checked stated. Use `defaultChecked`
    * if you want the field to be mutable.
    */
-  checked: React.PropTypes.bool,
+  checked: PropTypes.bool,
   /**
    * Additional classes to be added to the root `div` element.
    */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /**
    * Sets the initial checked state and allows the user to check/uncheck the
    * field without also requiring an `onChange` event handler.
    */
-  defaultChecked: React.PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
-  id: React.PropTypes.string,
+  id: PropTypes.string,
   /**
    * Set to `true` to apply the "inverse" theme
    */
-  inversed: React.PropTypes.bool,
+  inversed: PropTypes.bool,
   /**
    * The `input` `name` attribute
    */
-  name: React.PropTypes.string.isRequired,
-  onBlur: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  type: React.PropTypes.oneOf(['checkbox', 'radio']),
+  name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  type: PropTypes.oneOf(['checkbox', 'radio']),
   /**
    * The `input` `value` attribute
    */
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]).isRequired
 };
 

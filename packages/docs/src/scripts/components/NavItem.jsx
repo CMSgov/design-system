@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class NavItem extends React.PureComponent {
   subpages(sections) {
@@ -59,14 +60,14 @@ NavItem.defaultProps = {
 };
 
 const NavItemPropTypes = {
-  header: React.PropTypes.string.isRequired,
-  referenceURI: React.PropTypes.string.isRequired
+  header: PropTypes.string.isRequired,
+  referenceURI: PropTypes.string.isRequired
 };
 
 NavItem.propTypes = {
-  currentPageURI: React.PropTypes.string.isRequired,
-  sections: React.PropTypes.arrayOf(
-    React.PropTypes.shape(NavItemPropTypes)
+  currentPageURI: PropTypes.string.isRequired,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape(NavItemPropTypes)
   ),
   ...NavItemPropTypes
 };

@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactPropDoc from './ReactPropDoc';
 
 class ReactPropDocs extends React.PureComponent {
@@ -41,7 +42,7 @@ class ReactPropDocs extends React.PureComponent {
 
 /* eslint-disable react/forbid-prop-types */
 ReactPropDocs.propTypes = {
-  propDocs: React.PropTypes.object
+  propDocs: PropTypes.object
 };
 
 export default ReactPropDocs;
