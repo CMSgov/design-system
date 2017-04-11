@@ -28,11 +28,15 @@ describe('FormLabel', () => {
     expect(wrapper.find('.ds-u-font-weight--bold').length).toBe(1);
   });
 
-  it('renders help text', () => {
+  it('renders hint text', () => {
     const props = {hint: 'President #44'};
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(wrapper.find('.ds-c-field__hint').text()).toBe(props.hint);
+    expect(hint.text())
+      .toBe(props.hint);
+    expect(hint.hasClass('ds-c-field__hint--inverse'))
+      .toBe(false);
   });
 
   it('renders as a legend element', () => {
@@ -40,5 +44,16 @@ describe('FormLabel', () => {
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper.is('legend')).toBe(true);
+  });
+
+  it('is inversed', () => {
+    const props = {
+      hint: 'Foo',
+      inversed: true
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper.find('.ds-c-field__hint').first().hasClass('ds-c-field__hint--inverse'))
+      .toBe(true);
   });
 });

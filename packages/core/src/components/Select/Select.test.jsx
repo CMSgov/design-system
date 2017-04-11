@@ -92,6 +92,12 @@ describe('Select', () => {
     expect(data.wrapper.prop('required')).toBe(true);
   });
 
+  it('is inversed', () => {
+    const data = shallowRender({ inversed: true });
+
+    expect(data.wrapper.hasClass('ds-c-field--inverse')).toBe(true);
+  });
+
   it('accepts a custom id', () => {
     const data = shallowRender({ id: 'custom_id' });
 

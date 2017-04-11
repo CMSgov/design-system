@@ -4,6 +4,8 @@ import React from 'react';
 /**
  * The FormLabel component provides the label/legend for a field, along with any
  * associated hint text and error messaging.
+ *
+ * TODO(sawyer): Show this in the documentation
  */
 class FormLabel extends React.PureComponent {
   errorMessage() {
@@ -22,15 +24,17 @@ class FormLabel extends React.PureComponent {
 
   hint() {
     if (this.props.hint) {
-      return <span className='ds-c-field__hint'>{this.props.hint}</span>;
+      const classes = classNames(
+        'ds-c-field__hint',
+        {'ds-c-field__hint--inverse': this.props.inversed}
+      );
+      return <span className={classes}>{this.props.hint}</span>;
     }
   }
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses = classNames({
-      'ds-u-font-weight--bold': !!this.props.errorMessage
-    });
+    const labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
 
     return (
       <ComponentType className='ds-c-label' htmlFor={this.props.fieldId}>
@@ -58,7 +62,11 @@ FormLabel.propTypes = {
    * Hint text. Typically this is a string, but you can pass in additional
    * HTML if you need to further format things.
    */
-  hint: React.PropTypes.node
+  hint: React.PropTypes.node,
+  /**
+   * Set to `true` to apply the "inverse" theme
+   */
+  inversed: React.PropTypes.bool
 };
 
 export default FormLabel;

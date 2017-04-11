@@ -22,7 +22,7 @@ const Choice = function(props) {
     {'ds-c-choice--inverse': inversed}
   );
 
-  if(!id) {
+  if (!id) {
     id = uniqueId(`${inputProps.type}_${inputProps.name}_`);
   }
 

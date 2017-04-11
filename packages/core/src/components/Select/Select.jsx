@@ -14,15 +14,17 @@ class Select extends React.PureComponent {
       children,
       className,
       id,
+      inversed,
       ...props
     } = this.props;
 
     const classes = classNames(
       'ds-c-field ds-c-field--select',
+      {'ds-c-field--inverse': inversed},
       this.props.className
     );
 
-    if(!id) {
+    if (!id) {
       id = uniqueId(`select_${props.name}_`);
     }
 
@@ -55,6 +57,10 @@ Select.propTypes = {
    * if one isn't provided.
    */
   id: React.PropTypes.string,
+  /**
+   * Set to `true` to apply the "inverse" theme
+   */
+  inversed: React.PropTypes.bool,
   /**
    * Setting this prop to `true` will result in an error message due to
    * accessibility concerns. See the usability guidelines for more info.
