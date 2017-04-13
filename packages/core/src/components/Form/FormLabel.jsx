@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  *
  * TODO(sawyer): Show this in the documentation
  */
-class FormLabel extends React.PureComponent {
+export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
       return (

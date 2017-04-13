@@ -12,7 +12,7 @@ import classNames from 'classnames';
  * props, which will be passed to the rendered root component. For example,
  * you could pass in a `target` prop to pass to the rendered anchor element.
  */
-class Button extends React.PureComponent {
+export class Button extends React.PureComponent {
   // Get an object of props to pass to the rendered <Button> component
   attrs() {
     /**

@@ -9,7 +9,7 @@ import uniqueId from 'lodash.uniqueid';
  * to the `input` element, so you can use this to set additional attributes if
  * necessary.
  */
-const Choice = function(props) {
+export const Choice = function(props) {
   let { // Using let rather than const since we sometimes rewrite id
     children,
     className,

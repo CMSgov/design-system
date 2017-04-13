@@ -9,7 +9,7 @@ import uniqueId from 'lodash.uniqueid';
  * to the `select` element, so you can use this to set additional attributes if
  * necessary.
  */
-const Select = function(props) {
+export const Select = function(props) {
   let {
     children,
     className,

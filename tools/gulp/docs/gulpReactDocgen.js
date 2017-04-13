@@ -28,7 +28,7 @@ module.exports = function(options) {
 
       let doc = reactDocgen.parse(
         file.contents,
-        reactDocgen.resolver.findExportedComponentDefinition,
+        reactDocgen.resolver.findAllExportedComponentDefinitions,
         reactDocgenHandlers
       );
       // Reduce filesize by removing properties we don't need
