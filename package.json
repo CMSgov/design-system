@@ -36,6 +36,7 @@
     "front-matter": "^2.1.2",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-bump": "^2.7.0",
     "gulp-changed": "^2.0.0",
     "gulp-changed-in-place": "^2.2.0",
@@ -82,6 +83,7 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
+      "<rootDir>/examples/",
       "<rootDir>/node_modules/",
       "<rootDir>/packages/core/node_modules/",
       "<rootDir>/packages/docs/node_modules/",
