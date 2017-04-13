@@ -45,7 +45,8 @@ Style guide: base.typography
 .ds-h2,
 .ds-h3,
 .ds-h4,
-.ds-h5 {
+.ds-h5,
+.ds-h6 {
   line-height: $heading-line-height;
   margin: 0;
 }
@@ -76,14 +77,6 @@ Style guide: base.typography
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-// Kern large text
-.ds-display,
-.ds-title,
-.ds-h1,
-.ds-h2 {
-  letter-spacing: -1px;
 }
 
 .ds-display {

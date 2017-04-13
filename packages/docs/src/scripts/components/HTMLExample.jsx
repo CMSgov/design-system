@@ -2,11 +2,11 @@
  * HTMLExample takes the markup from a KSS "Markup:" section and generates
  * a single preview and code snippet for the given markup.
  */
-
 import Prism from 'prismjs';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class HTMLExample extends React.Component {
+class HTMLExample extends React.PureComponent {
   // Replaces template tags
   markup() {
     let html = this.props.markup;
@@ -33,8 +33,7 @@ class HTMLExample extends React.Component {
     if (!this.props.hideMarkup) {
       return (
         <pre className='language-markup'>
-          <code
-            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
+          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       );
     }
@@ -64,7 +63,8 @@ class HTMLExample extends React.Component {
     return (
       <div className='markup markup--html'>
         {this.title()}
-        <div className='ds-u-border--1 ds-u-padding--1'
+        <div
+          className='ds-u-border--1 ds-u-padding--1'
           dangerouslySetInnerHTML={{ __html: markup }}
         />
         {this.snippet()}
@@ -74,14 +74,14 @@ class HTMLExample extends React.Component {
 }
 
 HTMLExample.propTypes = {
-  hideMarkup: React.PropTypes.bool,
-  markup: React.PropTypes.string.isRequired,
-  modifier: React.PropTypes.shape({
-    className: React.PropTypes.string,
-    description: React.PropTypes.string,
-    name: React.PropTypes.string.isRequired
+  hideMarkup: PropTypes.bool,
+  markup: PropTypes.string.isRequired,
+  modifier: PropTypes.shape({
+    className: PropTypes.string,
+    description: PropTypes.string,
+    name: PropTypes.string.isRequired
   }),
-  showTitle: React.PropTypes.bool
+  showTitle: PropTypes.bool
 };
 
 HTMLExample.defaultProps = {

@@ -2,6 +2,6 @@
 import React from 'react';
 import Badge from './Badge';
 
-export default function(args) {
+export default function() {
   return <Badge>Today</Badge>;
 }

@@ -5,9 +5,10 @@
 import Prism from 'prismjs';
 require('prismjs/components/prism-jsx');
 import React from 'react';
+import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-class ReactComponentExample extends React.Component {
+class ReactComponentExample extends React.PureComponent {
   highlightedMarkup() {
     let markup = reactElementToJSXString(this.props.renderComponent(), {
       showDefaultProps: false,
@@ -25,8 +26,7 @@ class ReactComponentExample extends React.Component {
         </div>
 
         <pre className='language-jsx'>
-          <code
-            dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
+          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
         </pre>
       </div>
     );
@@ -37,7 +37,7 @@ ReactComponentExample.propTypes = {
   /**
    * The exported render function from the .example.jsx file
    */
-  renderComponent: React.PropTypes.func.isRequired
+  renderComponent: PropTypes.func.isRequired
 };
 
 export default ReactComponentExample;

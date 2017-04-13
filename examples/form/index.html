@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Design System</title>
@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="ds-base">
-  <div class="ds-u-measure--narrow ds-u-margin-y--5 container">
+  <div class="ds-u-margin-y--5 container">
     <h1 class="ds-h1">Report an issue</h1>
+    <p class="ds-text ds-u-measure--base">Please fill out the fields below to report your issue. After you've reported an issue, you'll receive a response within 24 hours.</p>
 
     <div class="ds-c-alert ds-c-alert--error">
       <div class="ds-c-alert__body">
         <h2 class="ds-c-alert__heading">1 error with your application</h2>
-        <p class="ds-c-alert__text">Please select which county you reside in.</p>
+        <p class="ds-c-alert__text">Please enter your last name.</p>
       </div>
     </div>
 
@@ -21,8 +22,14 @@
       <label class="ds-c-label" for="input-firstname">First name</label>
       <input class="ds-c-field" id="input-firstname" name="firstname" type="text" />
 
-      <label class="ds-c-label" for="input-lastname">Last name</label>
-      <input class="ds-c-field" id="input-lastname" name="lastname" type="text" />
+      <label class="ds-c-label" for="input-lastname">
+        <strong>Last name</strong>
+
+        <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
+          A last name is required
+        </span>
+      </label>
+      <input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" />
 
       <h3 class="ds-c-label">Which days can we call you?</h3>
       <span class="ds-c-field__hint">Select all days that would work for you</span>

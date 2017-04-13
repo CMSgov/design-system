@@ -6,8 +6,11 @@ describe('processSection', () => {
     return {
       toJSON: () => (
         {
-          description: '<p>Hello world</p><p>@react-component</p><p>@hide-markup</p><p>@status prototype</p>',
-          markup: '<% var foo="bar" %><%= foo %>',
+          // These paragraphs need to be seperated by a newline in order for
+          // the flag processing to work properly.
+          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@status prototype</p>`,
+          header: 'Title - `<Component>`',
+          markup: '<% var foo="bar" %><%= foo %> {{root}}',
           modifiers: [{
             name: '.primary',
             description: 'The primary action',
@@ -27,18 +30,22 @@ describe('processSection', () => {
   });
 
   it('sets and replaces flags', () => {
-    expect(data.hasReactComponent).toEqual(true);
-    expect(data.hideMarkup).toEqual(true);
-    expect(data.status).toEqual('prototype');
-    expect(data.description).toEqual('<p>Hello world</p>');
+    expect(data.reactComponent).toBe('Component');
+    expect(data.hideMarkup).toBe(true);
+    expect(data.status).toBe('prototype');
+    expect(data.description).toBe('<p>Hello world</p>');
   });
 
   it('prepends rootPath', () => {
-    expect(data.referenceURI).toEqual('root/components/button');
+    expect(data.referenceURI).toBe('root/components/button');
   });
 
-  it('renders EJS', () => {
-    expect(data.markup).toEqual('bar');
+  it('renders EJS and replaces {{root}}', () => {
+    expect(data.markup).toBe('bar /root');
+  });
+
+  it('converts Markdown in header', () => {
+    expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
   });
 
   it('adds a sections property', () => {

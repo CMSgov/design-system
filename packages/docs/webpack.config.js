@@ -1,4 +1,5 @@
 const path = require('path');
+const version = require('./package.json').version;
 const webpack = require('webpack');
 
 let config = {
@@ -7,7 +8,7 @@ let config = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'build/public/scripts/index.js'
+    filename: `build/${version}/public/scripts/index.js`
   },
   module: {
     loaders: [
@@ -35,9 +36,10 @@ let config = {
 if (process.env.NODE_ENV === 'production') {
   const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false,
-      drop_console: true
-    }
+      drop_console: true,
+      warnings: false
+    },
+    mangle: false // Mangle messes up React code snippets
   });
 
   config.plugins = [uglifyPlugin];

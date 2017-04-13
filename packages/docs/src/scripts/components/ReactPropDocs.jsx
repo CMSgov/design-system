@@ -3,18 +3,23 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactPropDoc from './ReactPropDoc';
 
-class ReactPropDocs extends React.Component {
+class ReactPropDocs extends React.PureComponent {
   rows() {
     const props = Object.getOwnPropertyNames(this.props.propDocs);
 
     return props.map(prop => {
-      return <ReactPropDoc
-        key={prop}
-        name={prop}
-        {...this.props.propDocs[prop]}
-      />;
+      if (prop === 'children') return null;
+
+      return (
+        <ReactPropDoc
+          key={prop}
+          name={prop}
+          {...this.props.propDocs[prop]}
+        />
+      );
     });
   }
 
@@ -23,7 +28,9 @@ class ReactPropDocs extends React.Component {
       <table className='ds-c-table'>
         <thead>
           <tr>
-            <td>Prop</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Default</td>
             <td>Description</td>
           </tr>
         </thead>
@@ -33,8 +40,9 @@ class ReactPropDocs extends React.Component {
   }
 }
 
+/* eslint-disable react/forbid-prop-types */
 ReactPropDocs.propTypes = {
-  propDocs: React.PropTypes.object
+  propDocs: PropTypes.object
 };
 
 export default ReactPropDocs;

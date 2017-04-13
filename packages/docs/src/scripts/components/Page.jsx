@@ -3,9 +3,10 @@
  * doesn't have a parent reference).
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import PageBlock from './PageBlock';
 
-class Page extends React.Component {
+class Page extends React.PureComponent {
   childSections() {
     if (this.props.sections.length && this.props.depth >= 2) {
       // Inline sections are sorted by their position in the file
@@ -34,8 +35,10 @@ Page.defaultProps = {
 };
 
 Page.propTypes = {
-  depth: React.PropTypes.number,
-  sections: React.PropTypes.array
+  depth: PropTypes.number,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape(PageBlock.propTypes)
+  )
 };
 
 export default Page;

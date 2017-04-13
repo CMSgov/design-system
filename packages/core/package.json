@@ -1,18 +1,21 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Core CSS and React components",
   "repository": "CMSgov/design-system",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "bourbon": "^4.3.3",
     "classnames": "^2.2.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "lodash.uniqueid": "^4.0.1",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "uswds": "^1.0.0"
   },
   "devDependencies": {
-    "enzyme": "^2.7.1",
-    "react-addons-test-utils": "^15.4.2"
+    "enzyme": "^2.8.1",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4"
   }
 }

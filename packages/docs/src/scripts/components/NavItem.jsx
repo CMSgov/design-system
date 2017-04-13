@@ -1,15 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class NavItem extends React.Component {
+class NavItem extends React.PureComponent {
   subpages(sections) {
     if (sections.length) {
       return (
         <ul className='ds-c-vertical-nav__subnav'>
           {sections.map(page => (
-            <li className='ds-c-vertical-nav__item'
-              key={page.referenceURI}>
-              <a className={this.linkClasses(page)}
-                href={`/${page.referenceURI}`}>{page.header}</a>
+            <li
+              className='ds-c-vertical-nav__item'
+              key={page.referenceURI}
+            >
+              <a
+                className={this.linkClasses(page)}
+                href={`/${page.referenceURI}`}
+              >
+                {page.header}
+              </a>
             </li>
           ))}
         </ul>
@@ -19,10 +26,8 @@ class NavItem extends React.Component {
 
   linkClasses(page, bold = false) {
     let linkClasses = ['ds-c-vertical-nav__link'];
-    let curentParent = (
-      page.referenceURI !== '' &&
-      this.props.currentPageURI.match(new RegExp(page.referenceURI))
-    );
+    const parentURI = this.props.currentPageURI.replace(/\/[a-z\-0-9]+$/, '');
+    const curentParent = page.referenceURI === parentURI;
 
     if (page.referenceURI === this.props.currentPageURI || curentParent) {
       linkClasses.push('ds-c-vertical-nav__link--current');
@@ -38,8 +43,10 @@ class NavItem extends React.Component {
   render() {
     return (
       <li className='ds-c-vertical-nav__item'>
-        <a className={this.linkClasses(this.props, true)}
-          href={`/${this.props.referenceURI}`}>
+        <a
+          className={this.linkClasses(this.props, true)}
+          href={`/${this.props.referenceURI}`}
+        >
           {this.props.header}
         </a>
         {this.subpages(this.props.sections)}
@@ -52,11 +59,17 @@ NavItem.defaultProps = {
   sections: []
 };
 
+const NavItemPropTypes = {
+  header: PropTypes.string.isRequired,
+  referenceURI: PropTypes.string.isRequired
+};
+
 NavItem.propTypes = {
-  currentPageURI: React.PropTypes.string.isRequired,
-  header: React.PropTypes.string.isRequired,
-  referenceURI: React.PropTypes.string.isRequired,
-  sections: React.PropTypes.array
+  currentPageURI: PropTypes.string.isRequired,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape(NavItemPropTypes)
+  ),
+  ...NavItemPropTypes
 };
 
 export default NavItem;

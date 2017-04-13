@@ -2,6 +2,21 @@
 @import '../../settings/index';
 
 /*
+Fieldset
+
+Markup:
+<fieldset class="ds-c-fieldset">...</fieldset>
+*/
+.ds-c-fieldset {
+  border: 0;
+  // We apply the same margin as a label has, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
+  padding: 0;
+}
+
+/*
 Text field
 
 @status prototype
@@ -23,7 +38,7 @@ Markup:
   </span>
   <span class="ds-c-field__hint">Helpful hint text</span>
 </label>
-<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message">
+<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message" />
 <label class="ds-c-label" for="input-username">Username</label>
 <input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
 <label class="ds-c-label" for="input-bio">Bio</label>

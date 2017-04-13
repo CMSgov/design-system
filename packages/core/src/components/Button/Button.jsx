@@ -1,73 +1,135 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
+/**
+ * The `Button` component accepts its text as children (AKA inner HTML), which
+ * means you can also pass in HTML or custom components. This gives you a lot of
+ * flexibility and supports a variety of advanced use cases. The most common use
+ * case would be passing in an SVG icon along with the text.
+ *
+ * In addition to the supported props listed, you can also pass in additional
+ * props, which will be passed to the rendered root component. For example,
+ * you could pass in a `target` prop to pass to the rendered anchor element.
+ */
+export class Button extends React.PureComponent {
+  // Get an object of props to pass to the rendered <Button> component
+  attrs() {
+    /**
+     * Since any number of arbitrary props can be passed into this component, we
+     * use a destructuring assignment to get only the props we want to pass to the
+     * rendered HTML element. For example, the "variation" prop is used to generate
+     * the classNames, but doesn't need passed to the rendered component, so we
+     * omit it here so that it's not included in the props object.
+     */
+    const {
+      className,
+      component,
+      inverse,
+      onClick,
+      size,
+      variation,
+      ...props
+    } = this.props;
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    // Note that if / when we expand this button component to support both
-    // type=button and type=submit, then we will want to preventDefault to
-    // avoid a default form submission.
-    if (this.props.disabled) {
-      return;
-    }
+    let attrs = {
+      className: this.classNames(),
+      ...props
+    };
 
     if (this.props.onClick) {
-      this.props.onClick();
+      attrs.onClick = this.handleClick.bind(this);
+    }
+
+    return attrs;
+  }
+
+  classNames() {
+    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
+    let disabledClass = this.props.disabled && 'ds-c-button--disabled';
+
+    if (this.props.inverse) {
+      if (disabledClass) {
+        disabledClass += '-inverse';
+      } else if (variationClass) {
+        variationClass += '-inverse';
+      } else {
+        variationClass = 'ds-c-button--inverse';
+      }
+    }
+
+    return classNames(
+      'ds-c-button',
+      disabledClass,
+      !disabledClass && variationClass,
+      this.props.size && `ds-c-button--${this.props.size}`,
+      this.props.className
+    );
+  }
+
+  handleClick(e) {
+    if (!this.props.disabled) {
+      this.props.onClick(e);
     }
   }
 
   render() {
-    var className = classNames({
-      'ds-c-button': true,
-      'ds-c-button-lg': true,
-      'ds-c-button-submit': true,
-      'disabled': this.props.disabled,
-      'ds-c-button-blue': this.props.use === 'secondary',
-      'ds-c-button-success': this.props.use === 'primary'
-    });
+    const attrs = this.attrs();
+    let ComponentType = 'button';
 
-    var inlineStyle;
-    if (this.props.use === 'neutral') {
-      inlineStyle = {
-        textShadow: 'none'
-      };
+    if (this.props.component) {
+      ComponentType = this.props.component;
+    } else if (this.props.href) {
+      ComponentType = 'a';
+      // Remove <button> specific attributes
+      delete attrs.disabled;
+      delete attrs.type;
     }
 
-    return <div className={this.props.containerClassName}
-      onClick={this.handleClick}>
-      <button className={className}
-        type={this.props.type}
-        aria-label={this.props.label}
-        disabled={this.props.disabled}
-        style={inlineStyle}>
-        {this.props.label}
-      </button>
-    </div>;
+    return <ComponentType {...attrs}>{this.props.children}</ComponentType>;
   }
 }
 
-Button.displayName = 'Button';
-
-Button.defaultProps = {
-  type: 'button',
-  use: 'primary'
-};
-
+Button.defaultProps = { type: 'button' };
 Button.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  containerClassName: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['button', 'submit']),
+  children: PropTypes.node.isRequired,
   /**
-   * Primary (the default) buttons are green. Secondary buttons are blue.
+   * Additional classes to be added to the root button element.
+   * Useful for adding utility classes.
    */
-  use: React.PropTypes.oneOf(['primary', 'secondary', 'neutral'])
+  className: PropTypes.string,
+  /**
+   * When provided, this will render the passed in component. This is useful when
+   * integrating with React Router's `<Link>` or using your own custom component.
+   */
+  component: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func
+  ]),
+  disabled: PropTypes.bool,
+  /**
+   * When provided the root component will render as an `<a>` element
+   * rather than `button`.
+   */
+  href: PropTypes.string,
+  /** Applies the inverse theme styling */
+  inverse: PropTypes.bool,
+  /**
+   * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
+   * Not called when the button is disabled.
+   */
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['small', 'big']),
+  /**
+   * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
+   */
+  type: PropTypes.oneOf(['button', 'submit']),
+  variation: PropTypes.oneOf([
+    'primary',
+    'danger',
+    'success',
+    'transparent'
+  ])
 };
 
 export default Button;

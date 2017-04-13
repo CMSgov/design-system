@@ -1,6 +1,7 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
+const buildPath = require('./common/buildPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
@@ -24,7 +25,7 @@ const config = {
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
-  function processSass(cwd, dest = 'dist') {
+  function processSass(cwd, dest) {
     const createSourcemaps = shared.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
@@ -62,7 +63,7 @@ module.exports = (gulp, shared) => {
     return gulp
       .src(`${cwd}src/**/*.scss`)
       .pipe(
-        changed(`${cwd}${dest}`, {
+        changed(dest, {
           extension: '.css',
           // compare contents so files that import the updated file also get piped through
           hasChanged: changed.compareSha1Digest
@@ -72,7 +73,7 @@ module.exports = (gulp, shared) => {
       .pipe(sassCompiler)
       .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
       .pipe(postcss(postcssPlugins))
-      .pipe(gulp.dest(`${cwd}${dest}`))
+      .pipe(gulp.dest(dest))
       .pipe(count(`## Sass files processed in ${cwd}`))
       .pipe(shared.browserSync.stream({match: '**/public/styles/*.css'})); // Auto-inject into docs
   }
@@ -98,8 +99,16 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:process:core', () => processSass('packages/core/'));
-  gulp.task('sass:process:docs', () => processSass('packages/docs/', 'build/public'));
+  gulp.task('sass:process:core', () => processSass(
+    'packages/core/',
+    'packages/core/dist'
+  ));
+
+  gulp.task('sass:process:docs', () => processSass(
+    'packages/docs/',
+    buildPath(shared.rootPath, '/public')
+  ));
+
   gulp.task('sass:add-version', () => {
     return gulp
       .src('packages/core/dist/index.css')

@@ -3,7 +3,7 @@
 // rule to the ESLint config file relative to the directory you want it
 // applied to.
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended", "nava"],
+  "extends": ["nava", "plugin:react/recommended"],
   "env": {
     "browser": true,
     "es6": true,
@@ -16,9 +16,28 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["jest", "react"],
   "rules": {
-    "react/no-find-dom-node": "warn",
-    "eol-last": "warn"
+    "eol-last": "warn",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "no-unused-vars": ["error", {ignoreRestSiblings: true}],
+    "react/forbid-prop-types": "error",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-first-prop-new-line": ["error", "multiline"],
+    // handleChange = class method, onChange = prop
+    "react/jsx-handler-names": "error",
+    "react/jsx-key": "warn",
+    "react/jsx-max-props-per-line": ["error", {"maximum": 3}],
+    "react/jsx-pascal-case": "error",
+    "react/jsx-wrap-multilines": "error",
+    "react/no-array-index-key": "error",
+    "react/no-find-dom-node": "error",
+    "react/no-multi-comp": "error",
+    "react/prefer-es6-class": "error",
+    "react/prefer-stateless-function": "error",
+    "react/prop-types": ["error", {ignore: ["className"]}],
+    "react/sort-comp": "error",
   }
 }

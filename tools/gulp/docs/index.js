@@ -9,6 +9,7 @@ require('babel-register')({
   only: /packages\/(core|docs)\/src/
 });
 
+const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const del = require('del');
 const dutil = require('../common/log-util');
@@ -16,7 +17,7 @@ const kss = require('kss');
 const merge = require('gulp-merge-json');
 const processKssSection = require('./processSection');
 const nestKssSections = require('./nestSections');
-const reactDocgen = require('../common/react-docgen');
+const gulpReactDocgen = require('./gulpReactDocgen');
 const runSequence = require('run-sequence');
 const docs = 'packages/docs';
 
@@ -50,6 +51,12 @@ module.exports = (gulp, shared) => {
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
 
+    // TODO(sawyer): Right now the pages array includes full page objects, which
+    // we pass into the generatePage method as the 'routes' argument. We should
+    // eventually optimize this array and pass in only the properties we need
+    // (primarily 'referenceURI' and 'header'), especially if we continue to
+    // do client-side rendering.
+
     return Promise.all(
       pages.map(page => {
         return generatePage(pages, page, shared.rootPath)
@@ -75,7 +82,8 @@ module.exports = (gulp, shared) => {
       'Emptying the build and data directories'
     );
 
-    return del(`${docs}/build/*`);
+    // pass empty version so entire build directory is emptied
+    return del(buildPath(''));
   });
 
   // Convenience-task for copying assets to the "public" directory
@@ -88,7 +96,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src('packages/core/src/**/fonts/*')
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   // The docs use the design system's Sass files, which don't have the
@@ -100,7 +108,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src(`${docs}/src/**/images/*`)
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   gulp.task('docs:images:core', () => {
@@ -110,7 +118,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp.src('packages/core/src/**/images/*')
-      .pipe(gulp.dest(`${docs}/build/public`));
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
   gulp.task('docs:generate-pages', () => {
@@ -152,7 +160,7 @@ module.exports = (gulp, shared) => {
         '!packages/core/src/components/**/*.test.jsx',
         '!packages/core/src/components/**/*.example.jsx'
       ])
-      .pipe(reactDocgen({
+      .pipe(gulpReactDocgen({
         nameAfter: 'packages/'
       }))
       .pipe(merge({

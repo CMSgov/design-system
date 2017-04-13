@@ -1,6 +1,6 @@
 /*import React from 'react';
 
-class <%= name %> extends React.Component {
+class <%= name %> extends React.PureComponent {
   render() {
     return (
       // TODO: Enter JSX here
@@ -8,7 +8,6 @@ class <%= name %> extends React.Component {
   }
 }
 
-<%= name %>.displayName = '<%= name %>';
 <%= name %>.propTypes = {
 };
 

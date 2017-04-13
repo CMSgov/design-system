@@ -1,26 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Nav from './Nav';
 import Page from './Page';
 
-class Docs extends React.Component {
-  render() {
-    return (
-      <div>
-        <Nav
-          currentPageURI={this.props.page.referenceURI}
-          routes={this.props.routes}
-        />
-        <main className='page'>
-          <Page {...this.props.page} />
-        </main>
-      </div>
-    );
-  }
-}
+const Docs = (props) => {
+  return (
+    <div>
+      <Nav
+        currentPageURI={props.page.referenceURI}
+        routes={props.routes}
+      />
+      <main className='page'>
+        <Page {...props.page} />
+      </main>
+    </div>
+  );
+};
 
 Docs.propTypes = {
-  page: React.PropTypes.object.isRequired,
-  routes: React.PropTypes.array.isRequired
+  page: PropTypes.shape(Page.propTypes).isRequired,
+  routes: Nav.propTypes.routes
 };
 
 export default Docs;
