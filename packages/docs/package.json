@@ -5,17 +5,18 @@
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
   "devDependencies": {
-    "enzyme": "^2.8.0",
+    "enzyme": "^2.8.1",
     "mkdir-recursive": "^0.3.0",
     "rapscallion": "^2.1.6",
     "react-addons-test-utils": "^15.5.1",
-    "react-element-to-jsx-string": "^6.3.0"
+    "react-element-to-jsx-string": "^6.3.0",
+    "react-test-renderer": "^15.5.4"
   },
   "dependencies": {
     "@cmsgov/design-system-core": "^1.0.0-alpha",
     "prismjs": "^1.6.0",
-    "prop-types": "^15.5.7",
-    "react": "^15.5.3",
-    "react-dom": "^15.5.3"
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   }
 }
