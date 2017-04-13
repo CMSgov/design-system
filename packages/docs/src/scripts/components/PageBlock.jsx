@@ -104,9 +104,12 @@ class PageBlock extends React.PureComponent {
 
   reactDoc() {
     if (!this.props.reactComponent) return;
-    const doc = reactDoc[`${this.reactComponentPath()}.jsx`];
+    const docs = reactDoc[`${this.reactComponentPath()}.jsx`];
 
-    if (doc) {
+    if (docs && docs.length) {
+      // There should only ever be one exported component definiton
+      const doc = docs[0];
+
       return (
         <ReactComponentDoc
           description={doc.description}
