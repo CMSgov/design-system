@@ -61,7 +61,7 @@
     "postcss-import": "^9.1.0",
     "postcss-url": "^5.1.2",
     "prismjs": "^1.6.0",
-    "react-docgen": "^2.13.0",
+    "react-docgen": "^2.14.0",
     "recast": "^0.12.3",
     "run-sequence": "^1.2.2",
     "stylelint": "^7.10.1",
