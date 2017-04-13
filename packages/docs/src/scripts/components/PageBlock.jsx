@@ -3,6 +3,7 @@
  * predictable: a header, description, and code snippet(s).
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import HTMLExample from './HTMLExample';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
@@ -38,15 +39,20 @@ class PageBlock extends React.PureComponent {
   }
 
   /**
-   * Parse the full path of the Sass file where the main documentation
+   * Use the full path of the Sass file where the KSS documentation
    * was generated from, and return the path relative to packages/
-   * Example: packages/core/button.js -> core/button.js
+   * and with the React component's filename.
    *
    * @return {String}
    */
-  componentPath() {
-    return this.props.source.path
-      .match(/packages\/([a-z0-9_\-/]+)/i)[1];
+  reactComponentPath() {
+    // Get path relative to packages/
+    // Example: packages/core/components/Button.scss -> core/component/Button
+    const path = this.props.source.path.match(/packages\/([a-z0-9_\-/]+)/i)[1];
+
+    // Replace the Sass filename with the React component's filename
+    // Example: core/component/Button -> core/component/ButtonGroup
+    return path.replace(/\/([a-z0-9_-]+)$/i, `/${this.props.reactComponent}`);
   }
 
   description() {
@@ -73,7 +79,12 @@ class PageBlock extends React.PureComponent {
     return (
       <heading className='block__heading'>
         {this.statusPill()}
-        <h1 className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'>{this.props.header}</h1>
+        <h1
+          className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'
+          dangerouslySetInnerHTML={{
+            __html: this.props.header
+          }}
+        />
         <div className='ds-u-clearfix' />
         {this.source()}
         {this.uswdsLink()}
@@ -88,12 +99,12 @@ class PageBlock extends React.PureComponent {
    * @return {String}
    */
   packagePath() {
-    return `@cmsgov/design-system-${this.componentPath()}`;
+    return `@cmsgov/design-system-${this.reactComponentPath()}`;
   }
 
   reactDoc() {
-    if (!this.props.hasReactComponent) return;
-    const doc = reactDoc[`${this.componentPath()}.jsx`];
+    if (!this.props.reactComponent) return;
+    const doc = reactDoc[`${this.reactComponentPath()}.jsx`];
 
     if (doc) {
       return (
@@ -108,9 +119,9 @@ class PageBlock extends React.PureComponent {
   }
 
   source() {
-    if (this.props.hasReactComponent || this.props.source) {
-      const path = this.props.hasReactComponent
-        ? this.componentPath().replace(/[a-z-]+\/src\//, '')
+    if (this.props.reactComponent || this.props.source) {
+      const path = this.props.reactComponent
+        ? this.reactComponentPath().replace(/[a-z-]+\/src\//, '')
         : `${this.props.source.filename}:${this.props.source.line}`;
 
       return (
@@ -152,21 +163,21 @@ class PageBlock extends React.PureComponent {
 }
 
 PageBlock.propTypes = {
-  description: React.PropTypes.string,
-  header: React.PropTypes.string.isRequired,
-  hideMarkup: React.PropTypes.bool,
-  markup: React.PropTypes.string,
-  modifiers: React.PropTypes.arrayOf(
+  description: PropTypes.string,
+  header: PropTypes.string.isRequired,
+  hideMarkup: PropTypes.bool,
+  markup: PropTypes.string,
+  modifiers: PropTypes.arrayOf(
     HTMLExample.propTypes.modifier
   ),
-  hasReactComponent: React.PropTypes.bool,
-  source: React.PropTypes.shape({
-    filename: React.PropTypes.string.isRequired,
-    line: React.PropTypes.number.isRequired,
-    path: React.PropTypes.string.isRequired
+  reactComponent: PropTypes.string,
+  source: PropTypes.shape({
+    filename: PropTypes.string.isRequired,
+    line: PropTypes.number.isRequired,
+    path: PropTypes.string.isRequired
   }),
-  status: React.PropTypes.string,
-  uswdsUrl: React.PropTypes.string
+  status: PropTypes.string,
+  uswdsUrl: PropTypes.string
 };
 
 export default PageBlock;

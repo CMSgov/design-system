@@ -1,41 +1,53 @@
 @import '../../settings/index';
 
 /*
-Dropdown
+Select
 
-A dropdown allows users to select one option from a list.
+A select field allows users to select one option from a list.
 
 @status prototype
 
 @uswds https://standards.usa.gov/components/form-controls/#dropdown
 
 Markup:
-<label class="ds-c-label ds-u-margin-top--0" for="options">Dropdown label</label>
-<select class="ds-c-field ds-c-field--dropdown" name="options" id="options">
+<label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
+<select class="ds-c-field ds-c-field--select" name="options" id="options">
   <option value="value1">Option A</option>
   <option value="value2">Option B</option>
   <option value="value3">Option C</option>
 </select>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">Dropdown label</label>
-  <select class="ds-c-field ds-c-field--dropdown ds-c-field--inverse" name="options-inverse" id="options-inverse">
+  <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">Field label</label>
+  <select class="ds-c-field ds-c-field--select ds-c-field--inverse" name="options-inverse" id="options-inverse">
     <option value="value1">Option A</option>
     <option value="value2">Option B</option>
     <option value="value3">Option C</option>
   </select>
 </div>
 
-Style guide: components.dropdown
+Style guide: components.select
 */
 
-.ds-c-field--dropdown {
+.ds-c-field--select {
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-down.svg');
   background-position: right 1.3rem center;
   background-repeat: no-repeat;
   background-size: 1.3rem;
+
+  &[multiple] {
+    background-image: none;
+  }
 }
+
+/*
+React - `<Select>`
+
+@react-component Select
+
+Style guide: components.select.react
+*/
 
 /*
 ---
@@ -64,5 +76,5 @@ Style guide: components.dropdown
 - When most users will (or should) pick a particular option, make it the default: `<option selected="selected">Default</option>`
 - Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Offer a “submit” button at the end of the form instead. Users often change their choices multiple times. Auto-submission is also less accessible.
 
-Style guide: components.dropdown.details
+Style guide: components.select.details
 */

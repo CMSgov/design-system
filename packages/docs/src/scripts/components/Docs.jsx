@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Nav from './Nav';
 import Page from './Page';
 
@@ -17,7 +18,7 @@ const Docs = (props) => {
 };
 
 Docs.propTypes = {
-  page: React.PropTypes.shape(Page.propTypes).isRequired,
+  page: PropTypes.shape(Page.propTypes).isRequired,
   routes: Nav.propTypes.routes
 };
 

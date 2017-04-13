@@ -2,9 +2,9 @@
  * HTMLExample takes the markup from a KSS "Markup:" section and generates
  * a single preview and code snippet for the given markup.
  */
-
 import Prism from 'prismjs';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class HTMLExample extends React.PureComponent {
   // Replaces template tags
@@ -74,14 +74,14 @@ class HTMLExample extends React.PureComponent {
 }
 
 HTMLExample.propTypes = {
-  hideMarkup: React.PropTypes.bool,
-  markup: React.PropTypes.string.isRequired,
-  modifier: React.PropTypes.shape({
-    className: React.PropTypes.string,
-    description: React.PropTypes.string,
-    name: React.PropTypes.string.isRequired
+  hideMarkup: PropTypes.bool,
+  markup: PropTypes.string.isRequired,
+  modifier: PropTypes.shape({
+    className: PropTypes.string,
+    description: PropTypes.string,
+    name: PropTypes.string.isRequired
   }),
-  showTitle: React.PropTypes.bool
+  showTitle: PropTypes.bool
 };
 
 HTMLExample.defaultProps = {

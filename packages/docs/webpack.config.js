@@ -36,9 +36,10 @@ let config = {
 if (process.env.NODE_ENV === 'production') {
   const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false,
-      drop_console: true
-    }
+      drop_console: true,
+      warnings: false
+    },
+    mangle: false // Mangle messes up React code snippets
   });
 
   config.plugins = [uglifyPlugin];

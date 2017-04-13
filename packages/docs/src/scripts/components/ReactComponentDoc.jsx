@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactComponentExample from './ReactComponentExample';
 import ReactPropDocs from './ReactPropDocs';
 
@@ -26,10 +27,10 @@ class ReactComponentDoc extends React.PureComponent {
 }
 
 ReactComponentDoc.propTypes = {
-  description: React.PropTypes.string,
-  packagePath: React.PropTypes.string.isRequired,
+  description: PropTypes.string,
+  packagePath: PropTypes.string.isRequired,
   /* eslint-disable react/forbid-prop-types */
-  propDocs: React.PropTypes.object
+  propDocs: PropTypes.object
 };
 
 export default ReactComponentDoc;

@@ -1,6 +1,17 @@
 const dutil = require('../common/log-util');
 const ejs = require('ejs');
-const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
+
+function converMarkdownCode(value) {
+  const CODE_REGEX = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
+  const match = value.match(CODE_REGEX);
+
+  if (match) {
+    const code = match[2].replace(/</g, '&#x3C;').replace(/>/g, '&#x3E;');
+    value = value.replace(CODE_REGEX, `<code>${code}</code>`);
+  }
+
+  return value;
+}
 
 /**
  * Extract, process, and return KssSection data in a cleaner format
@@ -21,6 +32,11 @@ function processSection(kssSection, rootPath) {
     data.referenceURI = `${rootPath}/${data.referenceURI}`;
   }
 
+  // We only need to support Markdown's code syntax in headers, so we manually
+  // parse those rather than running it through the marked library.
+  data.header = converMarkdownCode(data.header);
+
+  // Render EJS and replace template tags
   if (data.markup && data.markup !== '') {
     data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
 
@@ -41,6 +57,8 @@ function processSection(kssSection, rootPath) {
  * @return {Object}
  */
 function processFlags(section) {
+  const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
+
   if (typeof section.description === 'string') {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
@@ -50,7 +68,7 @@ function processFlags(section) {
           break;
         case 'react-component':
           // Include the React component's documentation
-          section.hasReactComponent = true;
+          section.reactComponent = value;
           break;
         case 'status':
           // Development status (ie. Prototype, Alpha, Beta)
@@ -65,7 +83,7 @@ function processFlags(section) {
           break;
       }
       return '';
-    });
+    }).trim();
   }
   return section;
 }

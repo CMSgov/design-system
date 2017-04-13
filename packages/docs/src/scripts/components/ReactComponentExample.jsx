@@ -5,6 +5,7 @@
 import Prism from 'prismjs';
 require('prismjs/components/prism-jsx');
 import React from 'react';
+import PropTypes from 'prop-types';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 class ReactComponentExample extends React.PureComponent {
@@ -36,7 +37,7 @@ ReactComponentExample.propTypes = {
   /**
    * The exported render function from the .example.jsx file
    */
-  renderComponent: React.PropTypes.func.isRequired
+  renderComponent: PropTypes.func.isRequired
 };
 
 export default ReactComponentExample;

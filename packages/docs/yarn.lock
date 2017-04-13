@@ -141,9 +141,9 @@ entities@^1.1.1, entities@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
-enzyme@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-2.7.1.tgz#76370e1d99e91f73091bb8c4314b7c128cc2d621"
+enzyme@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-2.8.0.tgz#86cc1fc96e5cbd7695766dd6e89deb13a0aead51"
   dependencies:
     cheerio "^0.22.0"
     function.prototype.name "^1.0.0"
@@ -176,7 +176,7 @@ exit-on-epipe@:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/exit-on-epipe/-/exit-on-epipe-1.0.0.tgz#f6e0579c8214d33a08109fd6e2e5c1dbc70463fc"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
+fbjs@^0.8.4, fbjs@^0.8.9:
   version "0.8.9"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.9.tgz#180247fbd347dcc9004517b904f865400a0c8f14"
   dependencies:
@@ -431,28 +431,35 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-rapscallion@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.5.tgz#8ddad8c9acdb1912c817935eb5d5e0b8d1c87b14"
+prop-types@^15.5.2, prop-types@^15.5.7, prop-types@~15.5.0:
+  version "15.5.7"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.7.tgz#231c4f29cdd82e355011d4889386ca9059544dd1"
+  dependencies:
+    fbjs "^0.8.9"
+
+rapscallion@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.6.tgz#49b4ea7f17fd2a462ce293a5e8f00a288c4c056e"
   dependencies:
     adler-32 "^1.0.0"
     bluebird "^3.4.7"
     lodash "^4.17.4"
 
-react-addons-test-utils@^15.4.2:
-  version "15.4.2"
-  resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.4.2.tgz#93bcaa718fcae7360d42e8fb1c09756cc36302a2"
+react-addons-test-utils@^15.5.1:
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.5.1.tgz#e0d258cda2a122ad0dff69f838260d0c3958f5f7"
   dependencies:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-dom@^15.4.2:
-  version "15.4.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
+react-dom@^15.5.3:
+  version "15.5.3"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.3.tgz#2ee127ce942df55da53111ae303316e68072b5c5"
   dependencies:
-    fbjs "^0.8.1"
+    fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "~15.5.0"
 
 react-element-to-jsx-string@^6.3.0:
   version "6.3.0"
@@ -465,13 +472,14 @@ react-element-to-jsx-string@^6.3.0:
     stringify-object "^3.1.0"
     traverse "^0.6.6"
 
-react@^15.4.2:
-  version "15.4.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
+react@^15.5.3:
+  version "15.5.3"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.5.3.tgz#84055382c025dec4e3b902bb61a8697cc79c1258"
   dependencies:
-    fbjs "^0.8.4"
+    fbjs "^0.8.9"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+    prop-types "^15.5.2"
 
 readable-stream@^2.0.2, readable-stream@^2.2.2:
   version "2.2.6"
