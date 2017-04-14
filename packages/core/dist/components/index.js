@@ -16,6 +16,18 @@ Object.keys(_Alert).forEach(function (key) {
   });
 });
 
+var _Badge = require('./Badge/Badge');
+
+Object.keys(_Badge).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Badge[key];
+    }
+  });
+});
+
 var _Button = require('./Button/Button');
 
 Object.keys(_Button).forEach(function (key) {
@@ -40,6 +52,42 @@ Object.keys(_Choice).forEach(function (key) {
   });
 });
 
+var _ChoiceList = require('./ChoiceList/ChoiceList');
+
+Object.keys(_ChoiceList).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ChoiceList[key];
+    }
+  });
+});
+
+var _Select = require('./ChoiceList/Select');
+
+Object.keys(_Select).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Select[key];
+    }
+  });
+});
+
+var _FormField = require('./Form/FormField');
+
+Object.keys(_FormField).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _FormField[key];
+    }
+  });
+});
+
 var _FormLabel = require('./Form/FormLabel');
 
 Object.keys(_FormLabel).forEach(function (key) {
@@ -48,18 +96,6 @@ Object.keys(_FormLabel).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _FormLabel[key];
-    }
-  });
-});
-
-var _Select = require('./Select/Select');
-
-Object.keys(_Select).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Select[key];
     }
   });
 });
