@@ -7,12 +7,14 @@ import Select from './Select';
 import uniqueId from 'lodash.uniqueid';
 
 /**
- * A `ChoiceList` is a component that decides for you whether a group of choices
- * should be displayed as checkboxes, radio buttons, or a select menu. This
- * component renders both a field label and field(s).
+ * A `ChoiceList` component can be used to render a `select` menu, radio
+ * button group, checkbox group, and their corresponding `label` or `legend`.
  *
- * Why might you want to use this? One big reason is that accessibility best
- * practices are baked in. View the Props documentation below for more info.
+ * You can manually pass in the `type` prop, but the real power of this component
+ * is unleashed when you let it determine the type of fields for you. It takes
+ * into account accessibility and usability best practices, so you can pass in
+ * an array of choices and let it determine whether the choices should be
+ * presented as radio buttons, checkboxes, or a `select` menu.
  */
 export class ChoiceList extends React.PureComponent {
   /**
