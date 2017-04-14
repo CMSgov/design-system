@@ -1,5 +1,5 @@
-import Select from './Select';
 import React from 'react';
+import Select from './Select';
 import {shallow} from 'enzyme';
 
 /**

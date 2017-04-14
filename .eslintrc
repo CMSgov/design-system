@@ -3,6 +3,7 @@
 // rule to the ESLint config file relative to the directory you want it
 // applied to.
 {
+  "fix": true,
   "extends": [
     "nava",
     "plugin:jsx-a11y/recommended",
@@ -30,6 +31,7 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "no-unused-vars": ["error", {ignoreRestSiblings: true}],
+    "sort-imports": "error",
     "react/forbid-prop-types": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-first-prop-new-line": ["error", "multiline"],

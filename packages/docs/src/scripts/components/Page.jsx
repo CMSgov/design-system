@@ -2,9 +2,9 @@
  * A "page" is generated from a top-level KSS comment block (ie. one that
  * doesn't have a parent reference).
  */
-import React from 'react';
-import PropTypes from 'prop-types';
 import PageBlock from './PageBlock';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class Page extends React.PureComponent {
   childSections() {

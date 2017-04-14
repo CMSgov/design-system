@@ -2,9 +2,9 @@
  * A "page block" is generated from a KSS comment block, so the structure is fairly
  * predictable: a header, description, and code snippet(s).
  */
-import React from 'react';
-import PropTypes from 'prop-types';
 import HTMLExample from './HTMLExample';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
 
