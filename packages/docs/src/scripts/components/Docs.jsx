@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Nav from './Nav';
 import Page from './Page';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Docs = (props) => {
   return (

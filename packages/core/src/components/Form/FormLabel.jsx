@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import classNames from 'classnames';
 
 /**
  * The FormLabel component provides the label/legend for a field, along with any

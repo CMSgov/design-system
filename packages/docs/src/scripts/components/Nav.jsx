@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import NavItem from './NavItem';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Nav = (props) => {
   return (

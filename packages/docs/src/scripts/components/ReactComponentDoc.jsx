@@ -3,8 +3,8 @@
  * react-docgen)
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import ReactComponentExample from './ReactComponentExample';
 import ReactPropDocs from './ReactPropDocs';
 
