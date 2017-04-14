@@ -56,4 +56,11 @@ describe('FormLabel', () => {
     expect(wrapper.find('.ds-c-field__hint').first().hasClass('ds-c-field__hint--inverse'))
       .toBe(true);
   });
+
+  it('supports additional classNames', () => {
+    const props = { className: 'ds-u-foo' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper.hasClass('ds-u-foo')).toBe(true);
+  });
 });
