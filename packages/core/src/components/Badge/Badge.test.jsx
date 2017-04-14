@@ -1,7 +1,6 @@
+import Badge from './Badge';
 import React from 'react';
 import {shallow} from 'enzyme';
-
-import Badge from './Badge';
 
 describe('Badge', () => {
   it('should include children as label', () => {

@@ -30,6 +30,7 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "no-unused-vars": ["error", {ignoreRestSiblings: true}],
+    "sort-imports": "error",
     "react/forbid-prop-types": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-first-prop-new-line": ["error", "multiline"],

@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import React from 'react';
 import Alert from './Alert';
+import React from 'react';
 
 export default function() {
   return (
