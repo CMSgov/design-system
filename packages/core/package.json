@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "enzyme": "^2.8.1",
+    "mz": "^2.6.0",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4"
   }
