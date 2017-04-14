@@ -15,10 +15,7 @@ import uniqueId from 'lodash.uniqueid';
  * practices are baked in. View the Props documentation below for more info.
  */
 export class ChoiceList extends React.PureComponent {
-  /**
-   * The input/select component(s)
-   */
-  choices() {
+  choiceComponents() {
     // TODO(sawyer): This could be broken into two methods, one for gathering
     // the props and ComponentType, and another for compositing the components.
     // This would allow us to add support for a developer to pass in a
@@ -164,7 +161,7 @@ ChoiceList.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Disables the entire field and prevents the user from changing their selected choice(s).
+   * Disables the entire field.
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.string,
@@ -174,7 +171,7 @@ ChoiceList.propTypes = {
    */
   hint: PropTypes.node,
   /**
-   * Set to `true` to apply the "inverse" theme
+   * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
   /**
@@ -186,8 +183,8 @@ ChoiceList.propTypes = {
    */
   labelClassName: PropTypes.string,
   /**
-   * Allows the user to select multiple choices. If this is set to `true`, a
-   * list of checkbox fields will be rendered.
+   * Allows the user to select multiple choices. Setting this to `true` results
+   * in a list of checkbox fields to be rendered.
    */
   multiple: PropTypes.bool,
   name: PropTypes.string.isRequired,
@@ -195,7 +192,7 @@ ChoiceList.propTypes = {
   onChange: PropTypes.func,
   /**
    * You can manually set the `type` if you prefer things to be less magical.
-   * Otherwise, the type will be inferred by the other props you pass in, based
+   * Otherwise, the type will be inferred by the other `props`, based
    * on what's best for accessibility and usability. If `multiple` is `true`, then
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.

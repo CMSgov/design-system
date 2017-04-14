@@ -16,8 +16,8 @@ function generateChoices(length) {
 }
 
 export default function() {
-  let choices = generateChoices(3);
-  let options = generateChoices(11);
+  let choices = generateChoices(4);
+  let options = generateChoices(8);
 
   choices[1].defaultChecked = true;
   choices[2].disabled = true;
