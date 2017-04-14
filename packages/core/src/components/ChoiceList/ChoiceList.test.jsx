@@ -51,6 +51,13 @@ describe('ChoiceList', () => {
         .toBe('checkbox');
     });
 
+    it('is a checkbox', () => {
+      const data = shallowRender({ choices: generateChoices(1) });
+
+      expect(data.wrapper.find('Choice').first().prop('type'))
+        .toBe('checkbox');
+    });
+
     it('renders all choices', () => {
       const data = shallowRender();
       const choice = data.wrapper.find('Choice').first();

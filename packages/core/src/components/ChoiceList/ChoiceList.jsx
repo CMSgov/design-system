@@ -103,11 +103,15 @@ export class ChoiceList extends React.PureComponent {
       return this.props.type;
     }
 
-    if (this.props.multiple) {
+    if (this.props.multiple || this.props.choices.length === 1) {
+      // Prefer a checkbox when multiple choices can be selected, since users
+      // have trouble selecting multiple choices from a select menu. And if only
+      // one choice is available, then a radio button would prevent a user from
+      // deselecting the field.
       return 'checkbox';
-    } else if (this.props.choices.length > 10) {
-      // [a11y] Prefer radio options when the list isn't super long.
-      // TODO(sawyer): Do more research on how many choices is too many for a radio group.
+    } else if (this.props.choices.length > 7) {
+      // Prefer a select menu when the list has "many" choices.
+      // TODO(sawyer): More research needed to determine what's considered "many"
       return 'select';
     }
 
@@ -120,14 +124,14 @@ export class ChoiceList extends React.PureComponent {
       {'ds-c-fieldset': type !== 'select'},
       this.props.className
     );
-    const ParentComponentType = type === 'select' ? 'div' : 'fieldset';
-    const labelComponent = type === 'select' ? 'label' : 'legend';
+    const RootComponent = type === 'select' ? 'div' : 'fieldset';
+    const FormLabelComponent = type === 'select' ? 'label' : 'legend';
 
     return (
-      <ParentComponentType className={classes || null}>
+      <RootComponent className={classes || null}>
         <FormLabel
           className={this.props.labelClassName}
-          component={labelComponent}
+          component={FormLabelComponent}
           errorMessage={this.props.errorMessage}
           fieldId={this.id()}
           hint={this.props.hint}
@@ -135,8 +139,8 @@ export class ChoiceList extends React.PureComponent {
         >
           {this.props.label}
         </FormLabel>
-        {this.choices()}
-      </ParentComponentType>
+        {this.choiceComponents()}
+      </RootComponent>
     );
   }
 }
@@ -144,7 +148,7 @@ export class ChoiceList extends React.PureComponent {
 ChoiceList.propTypes = {
   /**
    * The list of choices to be rendered. The number of choices you pass in may
-   * affect the type of list rendered. See `type` for more info.
+   * affect the type of field(s) rendered. See `type` for more info.
    */
   choices: PropTypes.arrayOf(
     PropTypes.shape({
