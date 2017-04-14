@@ -7,14 +7,14 @@ import Select from '../Select/Select';
 import uniqueId from 'lodash.uniqueid';
 
 /**
- * A `ChoiceList` is a special, smarter form component that decides for you whether a group
- * of choices should be displayed as checkboxes, radio buttons, or a select menu. This
+ * A `ChoiceList` is a component that decides for you whether a group of choices
+ * should be displayed as checkboxes, radio buttons, or a select menu. This
  * component renders both a field label and field(s).
  *
- * Why might you want to use this? One big reason is that accessibility best practices
- * are built-in. View the prop docs below for more info.
+ * Why might you want to use this? One big reason is that accessibility best
+ * practices are baked in. View the Props documentation below for more info.
  */
-class ChoiceList extends React.PureComponent {
+export class ChoiceList extends React.PureComponent {
   /**
    * The input/select component(s)
    */
@@ -122,6 +122,7 @@ class ChoiceList extends React.PureComponent {
     return (
       <ParentComponentType className={classes || null}>
         <FormLabel
+          className={this.props.labelClassName}
           component={labelComponent}
           errorMessage={this.props.errorMessage}
           fieldId={this.id()}
@@ -168,8 +169,14 @@ ChoiceList.propTypes = {
    * Set to `true` to apply the "inverse" theme
    */
   inversed: PropTypes.bool,
-  /** The label for the entire list of choices */
+  /**
+   * The label for the entire list of choices
+   */
   label: PropTypes.node.isRequired,
+  /**
+   * Additional classes to be added to the `FormLabel`.
+   */
+  labelClassName: PropTypes.string,
   /**
    * Allows the user to select multiple choices. If this is set to `true`, a
    * list of checkbox fields will be rendered.

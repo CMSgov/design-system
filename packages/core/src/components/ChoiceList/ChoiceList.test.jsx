@@ -218,6 +218,13 @@ describe('ChoiceList', () => {
     });
   });
 
+  it('applies additional classNames to FormLabel', () => {
+    const data = shallowRender({ labelClassName: 'ds-u-foo' });
+
+    expect(data.wrapper.find('FormLabel').prop('className'))
+      .toBe(data.props.labelClassName);
+  });
+
   it('passes errorMessage to FormLabel', () => {
     const data = shallowRender({ errorMessage: 'Nah son' });
 

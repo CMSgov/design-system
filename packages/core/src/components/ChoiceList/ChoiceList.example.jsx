@@ -51,6 +51,7 @@ export default function() {
           hint='Example hint text'
           inversed
           label='Select example'
+          labelClassName='ds-u-margin-top--0'
           name='select_choices_field_inverse'
         />
       </div>
