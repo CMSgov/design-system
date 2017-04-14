@@ -3,7 +3,7 @@ import FormLabel from './FormLabel';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class FormField extends React.PureComponent {
+export class FormField extends React.PureComponent {
   render() {
     const classes = classNames(
       {'ds-base--inverse': this.props.inversed},
