@@ -26,17 +26,17 @@ export default function() {
   return (
     <div>
       <ChoiceList
-        className='ds-u-margin-top--0'
         choices={choices}
-        label='Checkbox example'
-        multiple
-        name='checkbox_choices_field'
+        className='ds-u-margin-top--0'
+        label='Radio example'
+        name='choices_field'
       />
       <ChoiceList
         choices={choices}
         errorMessage='Example error message'
-        label='Radio example'
-        name='radio_choices_field'
+        label='Checkbox example'
+        multiple
+        name='multiple_choices_field'
       />
       <ChoiceList
         choices={options}
