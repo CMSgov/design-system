@@ -76,18 +76,6 @@ Object.keys(_Select).forEach(function (key) {
   });
 });
 
-var _FormField = require('./Form/FormField');
-
-Object.keys(_FormField).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _FormField[key];
-    }
-  });
-});
-
 var _FormLabel = require('./Form/FormLabel');
 
 Object.keys(_FormLabel).forEach(function (key) {
