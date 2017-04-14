@@ -2,7 +2,11 @@
 // to apply a stricter set of rules to our package's JavaScript versus the
 // documentation site's.
 {
+  "plugins": [
+    "filenames"
+  ],
   "rules": {
+    "filenames/match-exported": [2, "pascal"],
     // We want a displayName for the generated React docs
     "react/display-name": "error",
     // Avoid exploits. If you need dangerouslySetInnerHTML, then temporarily
