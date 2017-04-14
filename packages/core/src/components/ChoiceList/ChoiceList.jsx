@@ -8,7 +8,7 @@ import uniqueId from 'lodash.uniqueid';
 
 /**
  * A `ChoiceList` component can be used to render a `select` menu, radio
- * button group, checkbox group, and their corresponding `label` or `legend`.
+ * button group, or checkbox group, and their corresponding `label` or `legend`.
  *
  * You can manually pass in the `type` prop, but the real power of this component
  * is unleashed when you let it determine the type of fields for you. It takes
