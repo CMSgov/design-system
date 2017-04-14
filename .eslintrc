@@ -3,12 +3,15 @@
 // rule to the ESLint config file relative to the directory you want it
 // applied to.
 {
-  "extends": ["nava", "plugin:react/recommended"],
+  "extends": [
+    "nava",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended"
+  ],
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true,
-    "node": true
+    "jest": true
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,7 +19,11 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["jest", "react"],
+  "plugins": [
+    "jest",
+    "jsx-a11y",
+    "react"
+  ],
   "rules": {
     "eol-last": "warn",
     "jest/no-disabled-tests": "warn",
