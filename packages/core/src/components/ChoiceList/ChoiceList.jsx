@@ -48,6 +48,8 @@ export class ChoiceList extends React.PureComponent {
         props.disabled = props.disabled || this.props.disabled;
         props.inversed = this.props.inversed;
         props.name = this.props.name;
+        props.onBlur = this.props.onBlur;
+        props.onChange = this.props.onChange;
         props.type = type;
       }
 
@@ -65,6 +67,8 @@ export class ChoiceList extends React.PureComponent {
           id={this.id()}
           inversed={this.props.inversed}
           name={this.props.name}
+          onBlur={this.props.onBlur}
+          onChange={this.props.onChange}
           {...selectProps}
         >
           {choices}
@@ -183,6 +187,8 @@ ChoiceList.propTypes = {
    */
   multiple: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   /**
    * You can manually set the `type` if you prefer things to be less magical.
    * Otherwise, the type will be inferred by the other props you pass in, based

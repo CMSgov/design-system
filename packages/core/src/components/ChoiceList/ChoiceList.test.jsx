@@ -130,11 +130,19 @@ describe('ChoiceList', () => {
     });
 
     it('calls onChange', () => {
-      expect(0).toBe(1);
+      const onChange = jest.fn();
+      const data = shallowRender({ onChange });
+      data.wrapper.find('Choice').first().simulate('change');
+
+      expect(onChange.mock.calls.length).toBe(1);
     });
 
     it('calls onBlur', () => {
-      expect(0).toBe(1);
+      const onBlur = jest.fn();
+      const data = shallowRender({ onBlur });
+      data.wrapper.find('Choice').first().simulate('blur');
+
+      expect(onBlur.mock.calls.length).toBe(1);
     });
   });
 
@@ -210,11 +218,21 @@ describe('ChoiceList', () => {
     });
 
     it('calls onChange', () => {
-      expect(0).toBe(1);
+      const onChange = jest.fn();
+      props.onChange = onChange;
+      const data = shallowRender(props);
+      data.wrapper.find('Select').first().simulate('change');
+
+      expect(onChange.mock.calls.length).toBe(1);
     });
 
     it('calls onBlur', () => {
-      expect(0).toBe(1);
+      const onBlur = jest.fn();
+      props.onBlur = onBlur;
+      const data = shallowRender(props);
+      data.wrapper.find('Select').first().simulate('blur');
+
+      expect(onBlur.mock.calls.length).toBe(1);
     });
   });
 
