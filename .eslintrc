@@ -3,7 +3,6 @@
 // rule to the ESLint config file relative to the directory you want it
 // applied to.
 {
-  "fix": true,
   "extends": [
     "nava",
     "plugin:jsx-a11y/recommended",
