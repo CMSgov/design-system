@@ -222,7 +222,7 @@ ChoiceList.propTypes = {
     checked: _Choice2.default.propTypes.checked,
     defaultChecked: _Choice2.default.propTypes.defaultChecked,
     disabled: _Choice2.default.propTypes.disabled,
-    label: _Choice2.default.propTypes.label,
+    label: _Choice2.default.propTypes.children,
     value: _Choice2.default.propTypes.value
   })).isRequired,
   /**
