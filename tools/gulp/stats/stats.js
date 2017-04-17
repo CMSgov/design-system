@@ -2,6 +2,8 @@
  * Analyze the transpiled files and compare against the files in the master
  * branch. This is a useful way to track the impact of any changes made in the
  * current branch, allowing us to track effects on filesize, specificity, etc.
+ * This task assumes the file has already been transpiled, so it should be
+ * preceded by other build tasks.
  */
 const Git = require('nodegit');
 const Table = require('cli-table');
@@ -10,18 +12,59 @@ const cssstats = require('cssstats');
 const dutil = require('../common/log-util');
 const fs = require('mz/fs');
 const getValues = require('./getValues');
+const gzipSize = require('gzip-size');
 const path = require('path');
 const uniq = require('lodash/uniq');
 
 /**
- * Form an array of tabel row values
- * @param {String} label - Row label
- * @param {Array} values - Current and Master branch values, and their difference
- * @param {String} description
- * @return {Array} [label, currentValue, masterValue, difference, description]
+ * Retrieves a master branch file's content. Useful when comparing a file from
+ * the current branch to identify a change in a particular stat.
  */
-function row(label, values, description = '') {
-  return [label].concat(values, [description]);
+function getMasterBlob(filepath) {
+  const repoPath = path.resolve(__dirname, '../../../.git');
+  return Git.Repository.open(repoPath)
+    .then(repo => repo.getMasterCommit())
+    .then(commit => commit.getEntry(filepath))
+    .then(entry => entry.getBlob())
+    .then(blob => blob.toString());
+}
+
+/**
+ * Get the CSS stats from a file on the current branch as well as master branch.
+ * @param {string} filepath - Path to the file to analyze, relative to project root
+ * @return {Promise<{current, master}>}
+ */
+function getCSSStats(filepath) {
+  let stats = {
+    current: {},
+    master: {}
+  };
+
+  return fs.readFile(filepath, 'utf8')
+    .then(css => cssstats(css))
+    .then(data => { stats.current = data; })
+    .then(() => getMasterBlob(filepath))
+    .then(css => cssstats(css))
+    .then(data => { stats.master = data; })
+    .then(() => stats);
+}
+
+/**
+ * Get the JS stats from a file on the current branch as well as master branch.
+ * @param {string} filepath - Path to the file to analyze, relative to project root
+ * @return {Promise<{current, master}>}
+ */
+function getJSStats(filepath) {
+  let stats = {
+    current: {},
+    master: {}
+  };
+
+  return fs.readFile(filepath, 'utf8')
+    .then(js => { stats.current.gzipSize = gzipSize.sync(js); })
+    .then(() => getMasterBlob(filepath))
+    .then(js => { stats.master.gzipSize = gzipSize.sync(js); })
+    .then(() => stats);
 }
 
 function logCSSStats(stats) {
@@ -41,7 +84,8 @@ function logCSSStats(stats) {
   table.push(
     row(
       'Gzip size',
-      filesizeValues
+      filesizeValues,
+      'A smaller filesize means\na quicker page load time'
     ),
     row(
       'Max specificity',
@@ -60,11 +104,13 @@ function logCSSStats(stats) {
     ),
     row(
       'Uniq. colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('color'))
+      getValues(branch => stats[branch].declarations.getUniquePropertyCount('color')),
+      ''
     ),
     row(
       'Uniq. bg colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('background-color'))
+      getValues(branch => stats[branch].declarations.getUniquePropertyCount('background-color')),
+      ''
     ),
     row(
       'Uniq. media\nqueries',
@@ -86,41 +132,50 @@ function logCSSStats(stats) {
   console.log(table.toString());
 }
 
-/**
- * Retrieves a master branch file's content. Useful when comparing a file from
- * the current branch to identify a change in a particular stat.
- */
-function getMasterBlob(filepath) {
-  const repoPath = path.resolve(__dirname, '../../../.git');
-  return Git.Repository.open(repoPath)
-    .then(repo => repo.getMasterCommit())
-    .then(commit => commit.getEntry(filepath))
-    .then(entry => entry.getBlob())
-    .then(blob => blob.toString());
+function logJSStats(stats) {
+  const table = new Table({
+    head: ['index.js', 'Current', 'Master', 'Diff'],
+    style: {
+      head: ['cyan']
+    }
+  });
+
+  const filesizeValues = getValues(
+    branch => bytes(stats[branch].gzipSize),
+    true,
+    () => bytes(stats.current.gzipSize - stats.master.gzipSize)
+  );
+
+  table.push(
+    row(
+      'Gzip size',
+      filesizeValues
+    )
+  );
+
+  console.log(table.toString());
 }
 
 /**
- * Get the CSS Stats from a file on the current branch as well as master branch.
- * @param {string} filepath - Path to the file to analyze, relative to projet root
- * @return {Promise<{current, master}>}
+ * Form an array of tabel row values
+ * @param {String} label - Row label
+ * @param {Array} values - Current and Master branch values, and their difference
+ * @param {String} description
+ * @return {Array} [label, currentValue, masterValue, difference, description]
  */
-function getCSSStats(filepath) {
-  const stats = {};
-
-  return fs.readFile(filepath, 'utf8')
-    .then(css => cssstats(css))
-    .then(data => { stats.current = data; })
-    .then(() => getMasterBlob(filepath))
-    .then(css => cssstats(css))
-    .then(data => { stats.master = data; })
-    .then(() => stats);
+function row(label, values, description) {
+  let data = [label].concat(values);
+  if (typeof description === 'string') data.push(description);
+  return data;
 }
 
 module.exports = (gulp) => {
   gulp.task('stats', () => {
-    dutil.logMessage('🔎 ', 'Gathering stats and comparing against master branch');
+    dutil.logMessage('🔎 ', 'Gathering stats and comparing against master');
 
     return getCSSStats('packages/core/dist/index.css')
-      .then(logCSSStats);
+      .then(logCSSStats)
+      .then(() => getJSStats('packages/core/dist/index.js'))
+      .then(logJSStats);
   });
 };
