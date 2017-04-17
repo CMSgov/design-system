@@ -19,11 +19,12 @@ module.exports = (gulp) => {
   [
     'build',
     'bumpVersion',
-    'docs/index',
+    'docs/docs',
     'fonts',
     'lint',
     'sass',
     'server',
+    'stats/stats',
     'watch',
     'webpack'
   ].forEach(taskGroup => {
