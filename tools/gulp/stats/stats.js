@@ -5,7 +5,6 @@
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
-const Git = require('nodegit');
 const Table = require('cli-table');
 const bytes = require('bytes');
 const cssstats = require('cssstats');
@@ -16,10 +15,23 @@ const path = require('path');
 const uniq = require('lodash/uniq');
 
 /**
+ * nodegit is an optionalDependency since I haven't figured out to get it to play
+ * nice with Jenkins. So, we need to account for the case that it doesn't exist.
+ */
+let Git;
+try {
+  Git = require('nodegit');
+} catch (er) {
+  Git = null;
+}
+
+/**
  * Retrieves a master branch file's content. Useful when comparing a file from
  * the current branch to identify a change in a particular stat.
  */
 function getMasterBlob(filepath) {
+  if (!Git) return '';
+
   const repoPath = path.resolve(__dirname, '../../../.git');
   return Git.Repository.open(repoPath)
     .then(repo => repo.getMasterCommit())
