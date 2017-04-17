@@ -78,17 +78,24 @@ function logCSSStats(stats) {
     row(
       'Gzip size',
       filesizeValues,
-      'A smaller filesize means\na quicker page load time'
+      `Each stylesheet is downloaded over a
+HTTP request, and the size of the
+request affects performance. Smaller
+HTTP request sizes improves performance`
     ),
     row(
       'Max specificity',
       getValues(branch => stats[branch].selectors.specificity.max),
-      'Lower specificity is better'
+      `Reducing the specificity of the most
+complex selectors is a good way to
+reducing the overall complexity of
+a stylesheet`
     ),
     row(
       'Uniq. font sizes',
       getValues(branch => uniq(stats[branch].declarations.getAllFontSizes()).length),
-      'A consistent type scale means\nno more than 10 font sizes'
+      `An excessive number of font sizes
+indicates an overly-complex type scale`
     ),
     row(
       'Uniq. font\nfamilies',
@@ -98,17 +105,25 @@ function logCSSStats(stats) {
     row(
       'Uniq. colors',
       getValues(branch => stats[branch].declarations.getUniquePropertyCount('color')),
-      ''
+      `An excessive number of colors
+indicates an overly-complex color
+scheme, or inconsistent use of color
+that forces an over-reliance of
+developers on design documents`
     ),
     row(
       'Uniq. bg colors',
       getValues(branch => stats[branch].declarations.getUniquePropertyCount('background-color')),
-      ''
+      'See above'
     ),
     row(
       'Uniq. media\nqueries',
       getValues(branch => stats[branch].mediaQueries.unique),
-      'A small set of media queries\nis preferred over one-offs'
+      `Fewer media queries indicates a
+simpler stylesheet. Each unique
+media query adds complexity by
+changing behaviour when a given
+criteria is met by the device`
     ),
     row(
       'ID selectors',
