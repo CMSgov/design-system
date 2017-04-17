@@ -12,7 +12,6 @@ const cssstats = require('cssstats');
 const dutil = require('../common/log-util');
 const fs = require('mz/fs');
 const getValues = require('./getValues');
-const gzipSize = require('gzip-size');
 const path = require('path');
 const uniq = require('lodash/uniq');
 
@@ -46,24 +45,6 @@ function getCSSStats(filepath) {
     .then(() => getMasterBlob(filepath))
     .then(css => cssstats(css))
     .then(data => { stats.master = data; })
-    .then(() => stats);
-}
-
-/**
- * Get the JS stats from a file on the current branch as well as master branch.
- * @param {string} filepath - Path to the file to analyze, relative to project root
- * @return {Promise<{current, master}>}
- */
-function getJSStats(filepath) {
-  let stats = {
-    current: {},
-    master: {}
-  };
-
-  return fs.readFile(filepath, 'utf8')
-    .then(js => { stats.current.gzipSize = gzipSize.sync(js); })
-    .then(() => getMasterBlob(filepath))
-    .then(js => { stats.master.gzipSize = gzipSize.sync(js); })
     .then(() => stats);
 }
 
@@ -132,30 +113,6 @@ function logCSSStats(stats) {
   console.log(table.toString());
 }
 
-function logJSStats(stats) {
-  const table = new Table({
-    head: ['index.js', 'Current', 'Master', 'Diff'],
-    style: {
-      head: ['cyan']
-    }
-  });
-
-  const filesizeValues = getValues(
-    branch => bytes(stats[branch].gzipSize),
-    true,
-    () => bytes(stats.current.gzipSize - stats.master.gzipSize)
-  );
-
-  table.push(
-    row(
-      'Gzip size',
-      filesizeValues
-    )
-  );
-
-  console.log(table.toString());
-}
-
 /**
  * Form an array of tabel row values
  * @param {String} label - Row label
@@ -174,8 +131,6 @@ module.exports = (gulp) => {
     dutil.logMessage('🔎 ', 'Gathering stats and comparing against master');
 
     return getCSSStats('packages/core/dist/index.css')
-      .then(logCSSStats)
-      .then(() => getJSStats('packages/core/dist/index.js'))
-      .then(logJSStats);
+      .then(logCSSStats);
   });
 };
