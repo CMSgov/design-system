@@ -7,6 +7,5 @@ set -euf -o pipefail
 n 7.7.3
 
 npm rebuild
-BUILD_ONLY=true npm install nodegit
 npm install
 npm run bootstrap:npm
