@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export const Badge = (props) => {
   return <span className='ds-c-badge'>{props.children}</span>;

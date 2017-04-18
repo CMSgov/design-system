@@ -1,7 +1,6 @@
+import Button from './Button.jsx';
 import React from 'react';
 import {shallow} from 'enzyme';
-
-import Button from './Button.jsx';
 
 /* eslint-disable react/display-name, react/prop-types */
 const Link = (props) => {

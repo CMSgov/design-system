@@ -1,8 +1,8 @@
 /**
  * Render a table row for a single property
  */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class ReactPropDoc extends React.PureComponent {
   defaultValue() {

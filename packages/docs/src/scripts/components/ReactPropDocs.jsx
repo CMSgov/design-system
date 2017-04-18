@@ -2,8 +2,8 @@
  * Render a table with property documentation
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import ReactPropDoc from './ReactPropDoc';
 
 class ReactPropDocs extends React.PureComponent {

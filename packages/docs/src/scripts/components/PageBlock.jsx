@@ -2,9 +2,9 @@
  * A "page block" is generated from a KSS comment block, so the structure is fairly
  * predictable: a header, description, and code snippet(s).
  */
-import React from 'react';
-import PropTypes from 'prop-types';
 import HTMLExample from './HTMLExample';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactComponentDoc from './ReactComponentDoc';
 const reactDoc = require('../../data/react-doc.json');
 
@@ -81,9 +81,8 @@ class PageBlock extends React.PureComponent {
         {this.statusPill()}
         <h1
           className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'
-          dangerouslySetInnerHTML={{
-            __html: this.props.header
-          }}
+          dangerouslySetInnerHTML={{ __html: this.props.header }}
+          id={this.props.reference}
         />
         <div className='ds-u-clearfix' />
         {this.source()}
@@ -174,6 +173,7 @@ PageBlock.propTypes = {
     HTMLExample.propTypes.modifier
   ),
   reactComponent: PropTypes.string,
+  reference: PropTypes.string,
   source: PropTypes.shape({
     filename: PropTypes.string.isRequired,
     line: PropTypes.number.isRequired,

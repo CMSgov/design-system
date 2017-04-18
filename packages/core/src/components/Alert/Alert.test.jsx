@@ -1,6 +1,6 @@
+import Alert from './Alert';
 import React from 'react';
 import {shallow} from 'enzyme';
-import Alert from './Alert';
 
 describe('Alert', function() {
   const text = 'Ruhroh';

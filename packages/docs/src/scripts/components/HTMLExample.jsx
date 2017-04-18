@@ -2,9 +2,10 @@
  * HTMLExample takes the markup from a KSS "Markup:" section and generates
  * a single preview and code snippet for the given markup.
  */
+import CodeSnippet from './CodeSnippet';
 import Prism from 'prismjs';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 class HTMLExample extends React.PureComponent {
   // Replaces template tags
@@ -31,11 +32,7 @@ class HTMLExample extends React.PureComponent {
 
   snippet() {
     if (!this.props.hideMarkup) {
-      return (
-        <pre className='language-markup'>
-          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
-        </pre>
-      );
+      return <CodeSnippet>{this.highlightedMarkup()}</CodeSnippet>;
     }
   }
 

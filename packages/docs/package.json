@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@cmsgov/design-system-core": "^1.0.0-alpha",
+    "classnames": "^2.2.5",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

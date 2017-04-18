@@ -2,10 +2,11 @@
  * ReactComponentExample takes a component example's render function and
  * outputs a rendered example as well as a code snippet.
  */
+import CodeSnippet from './CodeSnippet';
 import Prism from 'prismjs';
 require('prismjs/components/prism-jsx');
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
 class ReactComponentExample extends React.PureComponent {
@@ -25,9 +26,9 @@ class ReactComponentExample extends React.PureComponent {
           {this.props.renderComponent()}
         </div>
 
-        <pre className='language-jsx'>
-          <code dangerouslySetInnerHTML={{ __html: this.highlightedMarkup() }} />
-        </pre>
+        <CodeSnippet language='jsx'>
+          {this.highlightedMarkup()}
+        </CodeSnippet>
       </div>
     );
   }

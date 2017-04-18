@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const changedInPlace = require('gulp-changed-in-place')
+const changedInPlace = require('gulp-changed-in-place');
 const count = require('gulp-count');
 const eslint = require('gulp-eslint');
 const stylelint = require('gulp-stylelint');

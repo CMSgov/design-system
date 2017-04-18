@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import React from 'react';
 import Button from './Button';
+import React from 'react';
 
 export default function() {
   return (
@@ -13,14 +13,6 @@ export default function() {
         target='_blank'
         variation='primary'
       >
-        <svg
-          className='ds-u-margin-right--1'
-          xmlns='http://www.w3.org/2000/svg'
-          aria-hidden='true'
-          viewBox='0 0 24 24'
-        >
-          <use xlinkHref='/1.0.0-alpha.4/public/images/symbols.svg#download' />
-        </svg>
         React anchor button
       </Button>
     </div>
