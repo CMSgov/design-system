@@ -5,7 +5,7 @@
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
-const Table = require('cli-table');
+const Table = require('cli-table'); // cli-table2 is available and is a newer, forked version
 const bytes = require('bytes');
 const cssstats = require('cssstats');
 const dutil = require('../common/log-util');
@@ -94,13 +94,15 @@ a stylesheet`
     row(
       'Uniq. font sizes',
       getValues(branch => uniq(stats[branch].declarations.getAllFontSizes()).length),
-      `An excessive number of font sizes
+      `An excessive number of font sizes (10+)
 indicates an overly-complex type scale`
     ),
     row(
       'Uniq. font\nfamilies',
       getValues(branch => uniq(stats[branch].declarations.getAllFontFamilies()).length),
-      'A consistent design needs no\nmore than 3 font families'
+      `An excessive number of font families
+(3+) indicates an inconsistent and
+potentially slow-loading design`
     ),
     row(
       'Uniq. colors',
@@ -133,7 +135,8 @@ criteria is met by the device`
     row(
       'Total vendor\nprefixes',
       getValues(branch => stats[branch].declarations.getVendorPrefixed().length),
-      'Vendor prefixes should decline over\ntime as browser support improves'
+      `Vendor prefixes should ideally decline
+over time as browser support improves`
     )
   );
 
@@ -155,7 +158,7 @@ function row(label, values, description) {
 
 module.exports = (gulp) => {
   gulp.task('stats', () => {
-    dutil.logMessage('🔎 ', 'Gathering stats and comparing against master');
+    dutil.logMessage('🔍 ', 'Gathering stats and comparing against master');
 
     return getCSSStats('packages/core/dist/index.css')
       .then(logCSSStats);
