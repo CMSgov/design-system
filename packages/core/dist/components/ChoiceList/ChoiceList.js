@@ -13,25 +13,25 @@ var _Choice = require('./Choice');
 
 var _Choice2 = _interopRequireDefault(_Choice);
 
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _FormLabel = require('../Form/FormLabel');
 
 var _FormLabel2 = _interopRequireDefault(_FormLabel);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
 
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _Select = require('./Select');
 
 var _Select2 = _interopRequireDefault(_Select);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
 
 var _lodash = require('lodash.uniqueid');
 
