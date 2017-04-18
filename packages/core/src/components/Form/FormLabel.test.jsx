@@ -28,7 +28,7 @@ describe('FormLabel', () => {
     expect(wrapper.find('.ds-u-font-weight--bold').length).toBe(1);
   });
 
-  it('renders hint text', () => {
+  it('renders hint string', () => {
     const props = {hint: 'President #44'};
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
     const hint = wrapper.find('.ds-c-field__hint');
@@ -37,6 +37,17 @@ describe('FormLabel', () => {
       .toBe(props.hint);
     expect(hint.hasClass('ds-c-field__hint--inverse'))
       .toBe(false);
+  });
+
+  it('renders hint node', () => {
+    const props = {
+      hint: <strong>President #44</strong>
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+
+    expect(hint.html())
+      .toMatch(/<strong>/);
   });
 
   it('renders as a legend element', () => {
