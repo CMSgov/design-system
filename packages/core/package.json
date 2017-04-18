@@ -1,6 +1,9 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Core CSS and React components",
   "repository": "CMSgov/design-system",
   "main": "dist/index.js",
@@ -14,7 +17,7 @@
     "uswds": "^1.0.0"
   },
   "devDependencies": {
-    "enzyme": "^2.8.1",
+    "enzyme": "^2.8.2",
     "mz": "^2.6.0",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4"

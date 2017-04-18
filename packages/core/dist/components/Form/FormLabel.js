@@ -7,17 +7,17 @@ exports.FormLabel = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _classnames = require('classnames');
+var _propTypes = require('prop-types');
 
-var _classnames2 = _interopRequireDefault(_classnames);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
+var _classnames = require('classnames');
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74,10 +74,11 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
     value: function render() {
       var ComponentType = this.props.component;
       var labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+      var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
 
       return _react2.default.createElement(
         ComponentType,
-        { className: 'ds-c-label', htmlFor: this.props.fieldId },
+        { className: classes, htmlFor: this.props.fieldId },
         _react2.default.createElement(
           'span',
           { className: labelTextClasses },
@@ -95,6 +96,10 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
   children: _propTypes2.default.node.isRequired,
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className: _propTypes2.default.string,
   /** The root HTML element used to render the label */
   component: _propTypes2.default.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */

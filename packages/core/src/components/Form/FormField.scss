@@ -32,7 +32,7 @@ Markup:
 </label>
 <input class="ds-c-field" id="input-firstname" name="firstname" type="text">
 <label class="ds-c-label" for="input-lastname">
-  Last name
+  <span class="ds-u-font-weight--bold">Last name</span>
   <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
     Please enter your last name
   </span>
@@ -79,7 +79,7 @@ Markup:
   </label>
   <input class="ds-c-field ds-c-field--inverse" id="input-firstname-2" name="firstname" type="text">
   <label class="ds-c-label" for="input-lastname-2">
-    Last name
+    <span class="ds-u-font-weight--bold">Last name</span>
     <span class="ds-c-field__hint ds-u-color--error-light" id="input-lastname-message-2" role="alert">
       Please enter your last name
     </span>
