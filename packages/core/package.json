@@ -1,6 +1,9 @@
 {
   "name": "@cmsgov/design-system-core",
   "version": "1.0.0-alpha.5",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Core CSS and React components",
   "repository": "CMSgov/design-system",
   "main": "dist/index.js",
