@@ -92,7 +92,7 @@ Choice.propTypes = {
    */
   id: _propTypes2.default.string,
   /**
-   * Set to `true` to apply the "inverse" theme
+   * Applies the "inverse" UI theme
    */
   inversed: _propTypes2.default.bool,
   /**

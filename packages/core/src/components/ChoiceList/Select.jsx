@@ -57,7 +57,7 @@ Select.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Set to `true` to apply the "inverse" theme
+   * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
   /**
