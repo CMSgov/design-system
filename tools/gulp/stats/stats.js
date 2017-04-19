@@ -26,6 +26,37 @@ try {
 }
 
 /**
+ * Creates an HTML file where a specificity graph can be viewed.
+ * @param {Object} stats - CSS Stats output
+ * @return {Promise}
+ */
+function createSpecificityGraph(stats) {
+  const tmpPath = path.resolve(__dirname, '../../../tmp');
+  const outputPath = path.resolve(tmpPath, 'specificity.html');
+  const specificity = stats.selectors.getSpecificityGraph();
+  const selectors = stats.selectors.values;
+  const chartRows = specificity.map((val, index) => {
+    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
+    return [index, val, tooltip];
+  });
+
+  return fs.readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
+    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
+    .then(body => {
+      if (!fs.existsSync(tmpPath)) {
+        fs.mkdir(tmpPath)
+          .then(() => body);
+      }
+
+      return body;
+    })
+    .then(body => fs.writeFile(outputPath, body, 'utf8'))
+    .then(() => {
+      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
+    });
+}
+
+/**
  * Retrieves a master branch file's content. Useful when comparing a file from
  * the current branch to identify a change in a particular stat.
  */
@@ -60,7 +91,21 @@ function getCSSStats(filepath) {
     .then(() => stats);
 }
 
-function logCSSStats(stats) {
+/**
+ * Output the CSS Stats to the CLI and create a specificity graph
+ * @param {Object} branchStats - Current and master branch stats
+ * @return {Promise}
+ */
+function logCSSStats(branchStats) {
+  logCSSStatsTable(branchStats);
+  return createSpecificityGraph(branchStats.current);
+}
+
+/**
+ * Log stats table to CLI
+ * @param {Object} stats - Current and master branch stats
+ */
+function logCSSStatsTable(stats) {
   const table = new Table({
     head: ['index.css', 'Current', 'Master', 'Diff', 'Description'],
     style: {
