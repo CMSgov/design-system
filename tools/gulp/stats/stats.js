@@ -12,11 +12,16 @@ const dutil = require('../common/log-util');
 const fs = require('mz/fs');
 const getValues = require('./getValues');
 const path = require('path');
+const sum = require('lodash/sum');
 const uniq = require('lodash/uniq');
 
+// fontsDir should be relative to root so we can pass to path() and Git()
+const fontsDir = 'packages/core/src/fonts';
+const repoPath = path.resolve(__dirname, '../../../.git');
+
 /**
- * nodegit is an optionalDependency since I haven't figured out to get it to play
- * nice with Jenkins. So, we need to account for the case that it doesn't exist.
+ * nodegit is an optionalDependency since I haven't figured out how to get it to
+ * play nice with Jenkins. We need to account for the case that it doesn't exist.
  */
 let Git;
 try {
@@ -63,7 +68,6 @@ function createSpecificityGraph(stats) {
 function getMasterBlob(filepath) {
   if (!Git) return '';
 
-  const repoPath = path.resolve(__dirname, '../../../.git');
   return Git.Repository.open(repoPath)
     .then(repo => repo.getMasterCommit())
     .then(commit => commit.getEntry(filepath))
@@ -89,6 +93,53 @@ function getCSSStats(filepath) {
     .then(css => cssstats(css))
     .then(data => { stats.master = data; })
     .then(() => stats);
+}
+
+/**
+ * @return {Promise} Resolves with the sum of all .woff file sizes
+ */
+function getCurrentBranchFontSizes() {
+  const dir = path.resolve(__dirname, `../../../${fontsDir}`);
+
+  return fs.readdir(dir)
+    .then(files => {
+      return Promise.all(
+        // Array of .woff file sizes
+        files.filter(name => name.match(/\.woff$/))
+          .map(name => {
+            return fs.stat(path.resolve(dir, name))
+              .then(stats => stats.size);
+          })
+      );
+    })
+    .then(sum);
+}
+
+function getMasterBranchFontSizes() {
+  if (!Git) return 0;
+
+  return Git.Repository.open(repoPath)
+    .then(repo => repo.getMasterCommit())
+    .then(commit => commit.getEntry(fontsDir))
+    .then(entry => entry.getTree())
+    .then(tree => tree.entries())
+    .then(entries => entries.filter(e => e.name().match(/\.woff$/))) // return .woff entries
+    .then(entries => {
+      return Promise.all(
+        // Array of file sizes
+        entries.map(entry => {
+          return entry.getBlob()
+            .then(blob => blob.rawsize());
+        })
+      );
+    })
+    .then(sum)
+    .catch(err => {
+      // Don't break all the things if we have trouble getting the
+      // sizes from the master branch
+      console.log(err);
+      return 0;
+    });
 }
 
 /**
@@ -119,14 +170,25 @@ function logCSSStatsTable(stats) {
     () => bytes(stats.current.gzipSize - stats.master.gzipSize)
   );
 
+  const fontSizeValues = getValues(
+    branch => bytes(stats[branch].totalFontFileSize),
+    true,
+    () => bytes(stats.current.totalFontFileSize - stats.master.totalFontFileSize)
+  );
+
   table.push(
     row(
       'Gzip size',
       filesizeValues,
-      `Each stylesheet is downloaded over a
-HTTP request, and the size of the
-request affects performance. Smaller
-HTTP request sizes improves performance`
+      `The size of HTTP requests affects
+performance. A smaller page weight
+improves performance`
+    ),
+    row(
+      'Font size\n(.woff)',
+      fontSizeValues,
+      `Each @font-face adds to the page
+weight. See above`
     ),
     row(
       'Max specificity',
@@ -196,11 +258,25 @@ function row(label, values, description) {
   return data;
 }
 
+/**
+ * Analyze the file sizes of all .woff font files and add to the stats object
+ * @param {Object} branchStats - Current and master branch stats
+ * @return {Promise}
+ */
+function setTotalFontFileSize(branchStats) {
+  return getCurrentBranchFontSizes()
+    .then(total => { branchStats.current.totalFontFileSize = total; })
+    .then(getMasterBranchFontSizes)
+    .then(total => { branchStats.master.totalFontFileSize = total; })
+    .then(() => branchStats);
+}
+
 module.exports = (gulp) => {
   gulp.task('stats', () => {
     dutil.logMessage('🔍 ', 'Gathering stats and comparing against master');
 
     return getCSSStats('packages/core/dist/index.css')
+      .then(setTotalFontFileSize)
       .then(logCSSStats);
   });
 };
