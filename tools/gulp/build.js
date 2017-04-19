@@ -42,6 +42,7 @@ module.exports = (gulp) => {
       'docs:build',
       'build:assets',
       'build:success',
+      'stats',
       done
     );
   });
