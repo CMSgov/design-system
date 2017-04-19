@@ -128,11 +128,6 @@ changing behaviour when a given
 criteria is met by the device`
     ),
     row(
-      'ID selectors',
-      getValues(branch => stats[branch].selectors.id),
-      'ID selectors are frowned upon\nand should be avoided'
-    ),
-    row(
       'Total vendor\nprefixes',
       getValues(branch => stats[branch].declarations.getVendorPrefixed().length),
       `Vendor prefixes should ideally decline
