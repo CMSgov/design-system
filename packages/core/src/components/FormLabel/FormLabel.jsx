@@ -65,8 +65,7 @@ FormLabel.propTypes = {
    */
   fieldId: PropTypes.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: PropTypes.node,
   /**

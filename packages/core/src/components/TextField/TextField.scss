@@ -2,21 +2,6 @@
 @import '../../settings/index';
 
 /*
-Fieldset
-
-Markup:
-<fieldset class="ds-c-fieldset">...</fieldset>
-*/
-.ds-c-fieldset {
-  border: 0;
-  // We apply the same margin as a label has, since in the context of a fieldset
-  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
-  margin: $spacer-3 0 0;
-  min-width: 0;
-  padding: 0;
-}
-
-/*
 Text field
 
 @status prototype
@@ -33,12 +18,12 @@ Markup:
 <input class="ds-c-field" id="input-firstname" name="firstname" type="text">
 <label class="ds-c-label" for="input-lastname">
   <span class="ds-u-font-weight--bold">Last name</span>
-  <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
+  <span class="ds-c-field__hint ds-u-color--error" role="alert">
     Please enter your last name
   </span>
   <span class="ds-c-field__hint">Helpful hint text</span>
 </label>
-<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" aria-describedby="input-lastname-message" />
+<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" />
 <label class="ds-c-label" for="input-username">Username</label>
 <input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
 <label class="ds-c-label" for="input-bio">Bio</label>
@@ -63,13 +48,18 @@ Style guide: components.text-field
   padding: $input-padding;
   width: 100%;
 
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-width: 0;
+  }
+
   &:focus {
     box-shadow: $focus-shadow;
   }
 }
 
 /*
-Text fields - inverse
+Inverse theme
 
 Markup:
 <div class="ds-base--inverse ds-u-padding--2">
@@ -80,12 +70,12 @@ Markup:
   <input class="ds-c-field ds-c-field--inverse" id="input-firstname-2" name="firstname" type="text">
   <label class="ds-c-label" for="input-lastname-2">
     <span class="ds-u-font-weight--bold">Last name</span>
-    <span class="ds-c-field__hint ds-u-color--error-light" id="input-lastname-message-2" role="alert">
+    <span class="ds-c-field__hint ds-u-color--error-light" role="alert">
       Please enter your last name
     </span>
     <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
   </label>
-  <input class="ds-c-field ds-c-field--inverse ds-c-field--error" id="input-lastname-2" name="lastname" type="text" aria-describedby="input-lastname-message-2">
+  <input class="ds-c-field ds-c-field--inverse ds-c-field--error" id="input-lastname-2" name="lastname" type="text">
   <label class="ds-c-label" for="input-username-2">Username</label>
   <input class="ds-c-field ds-c-field--inverse ds-c-field--success" id="input-username-2" name="username" type="text">
   <label class="ds-c-label" for="input-bio-2">Bio</label>
@@ -111,6 +101,14 @@ Style guide: components.text-field.inverse
 .ds-c-field--success {
   border: 3px solid $color-success-light;
 }
+
+/*
+React - `<TextField>`
+
+@react-component TextField
+
+Style guide: components.text-field.react
+*/
 
 /*
 ---

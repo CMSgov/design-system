@@ -1,5 +1,5 @@
 import Choice from './Choice';
-import FormLabel from '../Form/FormLabel';
+import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
@@ -176,8 +176,7 @@ ChoiceList.propTypes = {
   disabled: PropTypes.bool,
   errorMessage: PropTypes.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: PropTypes.node,
   /**

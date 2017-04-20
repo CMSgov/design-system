@@ -110,8 +110,7 @@ FormLabel.propTypes = {
    */
   fieldId: _propTypes2.default.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: _propTypes2.default.node,
   /**
