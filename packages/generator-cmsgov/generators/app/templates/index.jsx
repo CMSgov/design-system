@@ -1,6 +1,7 @@
-/*import React from 'react';
+/*import PropTypes from 'prop-types';
+import React from 'react';
 
-class <%= name %> extends React.PureComponent {
+export class <%= name %> extends React.PureComponent {
   render() {
     return (
       // TODO: Enter JSX here
