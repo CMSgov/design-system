@@ -74,10 +74,11 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
     value: function render() {
       var ComponentType = this.props.component;
       var labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+      var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
 
       return _react2.default.createElement(
         ComponentType,
-        { className: 'ds-c-label', htmlFor: this.props.fieldId },
+        { className: classes, htmlFor: this.props.fieldId },
         _react2.default.createElement(
           'span',
           { className: labelTextClasses },
@@ -95,6 +96,10 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
   children: _propTypes2.default.node.isRequired,
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className: _propTypes2.default.string,
   /** The root HTML element used to render the label */
   component: _propTypes2.default.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
@@ -105,8 +110,7 @@ FormLabel.propTypes = {
    */
   fieldId: _propTypes2.default.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: _propTypes2.default.node,
   /**

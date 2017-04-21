@@ -36,9 +36,10 @@ export class FormLabel extends React.PureComponent {
   render() {
     const ComponentType = this.props.component;
     const labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+    const classes = classNames('ds-c-label', this.props.className);
 
     return (
-      <ComponentType className='ds-c-label' htmlFor={this.props.fieldId}>
+      <ComponentType className={classes} htmlFor={this.props.fieldId}>
         <span className={labelTextClasses}>{this.props.children}</span>
         {this.errorMessage()}
         {this.hint()}
@@ -50,6 +51,10 @@ export class FormLabel extends React.PureComponent {
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
   children: PropTypes.node.isRequired,
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className: PropTypes.string,
   /** The root HTML element used to render the label */
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
@@ -60,8 +65,7 @@ FormLabel.propTypes = {
    */
   fieldId: PropTypes.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: PropTypes.node,
   /**

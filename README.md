@@ -7,6 +7,6 @@ This repo contains multile projects in the `packages` directory. View the README
 - [core](packages/core/) - Core CSS and React components
 - [docs](packages/docs/) - The documentation website
 
-## Developing
+## Contributing
 
-For complete instructions on how setup a local development environment to contribute to the design system, please read [CONTRIBUTING.md](CONTRIBUTING.md)
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.

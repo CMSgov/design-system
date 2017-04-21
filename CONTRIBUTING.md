@@ -1,3 +1,29 @@
+## Running locally
+
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
+
+[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+
+### Getting started
+
+1. `yarn install`
+1. `yarn bootstrap:yarn`
+
+The `bootstrap:yarn` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo (a monorepo). Yerna installs all our dependencies and links any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
+
+_Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
+
+### Scripts
+
+Additional scripts exist and can all be run from the root level of the repo:
+
+- `yarn run start` - You'll want to run this when you're developing components. It compiles Sass, transpiles JavaScript, and runs a local documentation instance where you can preview changes.
+- `yarn run build` - compile/transpile/uglify everything and makes things release-ready.
+- `yarn run bump` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+- `yarn run generate` - Generates the necessary files for a new core component
+  - `yarn run g` - Alias for `yarn run generate`
+- `yarn test` - tests and lints the codebase.
+
 ## Development process
 
 1. Branch off of `staging`: `git checkout -b username/branch-name`.
@@ -9,43 +35,21 @@
   - **Removed:** for deprecated features or components removed in this release.
   - **Fixed:** for any bug fixes.
 
-## Running locally
+## Merging pull requests
 
-### Package management
+#### Staging
 
-This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
+Use the "**Squash and merge**" option when merging pull requests into the `staging` branch. This keeps our history clean and makes it easier on us when it comes time to create a new release.
 
-[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+#### Master
 
-#### Install build process dependencies
+Use the "**Create a merge commit**" option when merging `staging` into `master`. If the pull request includes a version bump, set the commit title to the version number and include the PR # in the commit description.
 
-```
-yarn install
-```
+## Additional guidelines
 
-#### Install package dependencies
+**[Please view the Wiki](https://github.com/CMSgov/design-system/wiki)** for additional information like:
 
-```
-yarn bootstrap:yarn
-```
-
-The `bootstrap:yarn` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo. Yerna installs all our dependencies and links any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
-
-_Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
-
-### Scripts
-
-- `yarn run start` - You'll want to run this when you're developing components. It compiles Sass, transpiles JavaScript, and runs a local documentation instance where you can preview changes.
-- `yarn run build` - compile/transpile/uglify everything and makes things release-ready.
-- `yarn run bump` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
-- `yarn run generate` - Generates the necessary files for a new core component
-- `yarn run g` - Alias for `yarn run generate`
-- `yarn test` - tests and lints the codebase.
-
-### Coding guidelines
-
-The CSS coding guidelines for this project try to stay as consistent with [those used by 18F](https://github.com/18F/stylelint-rules). In some cases we've made the decision to be more strict than 18F, using some of [GitHub's stylelint guidelines](https://github.com/primer/stylelint-config-primer). You can [view a full list of stylelint rules here](https://stylelint.io/user-guide/rules).
-
-JavaScript coding guidelines are enforced using the [default ESLint ruleset](https://github.com/eslint/eslint/blob/master/conf/eslint.json), along with [Nava's default ruleset](https://github.com/navahq/eslint-config-nava). You can [view a full list of ESLint rules here](http://eslint.org/docs/rules/).
-
-These should be treated as guides — rules can be modified according to project needs.
+- Coding guidelines
+- Guiding principles
+- How to write documentation
+- etc.

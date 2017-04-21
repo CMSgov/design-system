@@ -38,6 +38,7 @@ class ReactPropDoc extends React.PureComponent {
 
   type() {
     const propType = this.props.type.name;
+    const validValues = this.validValues();
 
     if (propType === 'arrayOf') {
       let valueType = this.props.type.value.name;
@@ -47,6 +48,8 @@ class ReactPropDoc extends React.PureComponent {
       }
 
       return `${propType}[${valueType}]`;
+    } else if (validValues) {
+      return validValues;
     }
 
     return propType;
@@ -57,17 +60,9 @@ class ReactPropDoc extends React.PureComponent {
     let values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
-      values = values.map((v, i) => {
-        const value = this.props.type.name === 'enum' ? v.value : v.name;
-        return (
-          <span key={value}>
-            <code className='ds-u-font-size--small'>{value}</code>
-            {i < values.length - 1 && ', '}
-          </span>
-        );
-      });
-
-      return <p>One of: {values}</p>;
+      return values.map(v =>
+        this.props.type.name === 'enum' ? v.value : v.name
+      ).join(', ');
     }
   }
 
@@ -86,7 +81,6 @@ class ReactPropDoc extends React.PureComponent {
         </td>
         <td>
           {this.description()}
-          {this.validValues()}
         </td>
       </tr>
     );

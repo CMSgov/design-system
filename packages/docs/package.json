@@ -1,11 +1,11 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
   "devDependencies": {
-    "enzyme": "^2.8.1",
+    "enzyme": "^2.8.2",
     "mkdir-recursive": "^0.3.0",
     "rapscallion": "^2.1.6",
     "react-addons-test-utils": "^15.5.1",

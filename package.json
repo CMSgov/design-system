@@ -25,8 +25,12 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.24.1",
     "browser-sync": "^2.18.8",
+    "bytes": "^2.5.0",
+    "cli-table": "^0.3.1",
+    "colors": "^1.1.2",
     "crypto": "^0.0.3",
     "cssnano": "^3.10.0",
+    "cssstats": "^3.0.0",
     "del": "^2.2.2",
     "ejs": "^2.5.6",
     "eslint": "^3.19.0",
@@ -54,7 +58,7 @@
     "gulp-util": "^3.0.8",
     "jest": "^19.0.2",
     "kss": "^3.0.0-beta.18",
-    "lerna": "^2.0.0-rc.1",
+    "lerna": "^2.0.0-rc.3",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "matchdep": "^1.0.1",
@@ -73,12 +77,15 @@
     "through2": "^2.0.3",
     "tota11y": "^0.1.6",
     "vinyl-source-stream": "^1.1.0",
-    "webpack": "^2.3.3",
+    "webpack": "^2.4.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.18.0",
-    "yargs": "^7.0.2",
-    "yernapkg": "^0.5.0",
+    "yargs": "^7.1.0",
+    "yernapkg": "^0.5.1",
     "yo": "^1.8.5"
+  },
+  "optionalDependencies": {
+    "nodegit": "^0.18.0"
   },
   "engines": {
     "node": ">=4.0.0"
