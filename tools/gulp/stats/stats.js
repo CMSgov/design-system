@@ -33,11 +33,12 @@ try {
 /**
  * Creates an HTML file where a specificity graph can be viewed.
  * @param {Object} stats - CSS Stats output
+ * @param {String} filename - Name of the CSS file being analyzed
  * @return {Promise}
  */
-function createSpecificityGraph(stats) {
+function createSpecificityGraph(stats, filename) {
   const tmpPath = path.resolve(__dirname, '../../../tmp');
-  const outputPath = path.resolve(tmpPath, 'specificity.html');
+  const outputPath = path.resolve(tmpPath, `specificity.${filename}.html`);
   const specificity = stats.selectors.getSpecificityGraph();
   const selectors = stats.selectors.values;
   const chartRows = specificity.map((val, index) => {
@@ -155,12 +156,13 @@ function getMasterBranchFontSizes() {
 /**
  * Output the CSS Stats to the CLI and create a specificity graph
  * @param {Object} branchStats - Current and master branch stats
+ * @param {String} filename - Name of the CSS file being analyzed
  * @return {Promise}
  */
-function logCSSStats(branchStats) {
+function logCSSStats(branchStats, filename) {
   logCSSStatsTable(branchStats);
 
-  return createSpecificityGraph(branchStats.current)
+  return createSpecificityGraph(branchStats.current, filename)
     .then(() => branchStats);
 }
 
@@ -176,10 +178,16 @@ function logCSSStatsTable(stats) {
     }
   });
 
-  const filesizeValues = getValues(
+  const gzipValues = getValues(
     branch => stats[branch].humanizedGzipSize,
     true,
     () => bytes(stats.current.gzipSize - stats.master.gzipSize)
+  );
+
+  const sizeValues = getValues(
+    branch => stats[branch].humanizedSize,
+    true,
+    () => bytes(stats.current.size - stats.master.size)
   );
 
   const fontSizeValues = getValues(
@@ -191,11 +199,12 @@ function logCSSStatsTable(stats) {
   table.push(
     row(
       'Gzip size',
-      filesizeValues,
+      gzipValues,
       `The size of HTTP requests affects
 performance. A smaller page weight
 improves performance`
     ),
+    row('File size', sizeValues, 'See above'),
     row(
       'Font size\n(.woff)',
       fontSizeValues,
@@ -272,9 +281,8 @@ function row(label, values, description) {
 
 // IMPORTANT: This needs to be called AFTER any method that relies on the
 // functions within the object.
-function saveCurrentCSSStats(branchStats, cssPath) {
-  const filename = `cssstats.${path.parse(cssPath).name}.json`;
-  const outputPath = path.resolve(__dirname, '../../../tmp', filename);
+function saveCurrentCSSStats(branchStats, filename) {
+  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.${filename}.json`);
   const body = JSON.stringify(branchStats.current);
 
   return fs.writeFile(outputPath, body, 'utf8')
@@ -303,10 +311,11 @@ module.exports = (gulp) => {
     // Run CSSStats on another CSS file by running:
     // yarn run gulp stats -- --path=foo/bar/path/file.css --skipmaster
     const cssPath = argv.path || 'packages/core/dist/index.css';
+    const filename = path.parse(cssPath).name;
 
     return getCSSStats(cssPath, argv.skipmaster)
       .then(setTotalFontFileSize)
-      .then(logCSSStats)
-      .then(branchStats => saveCurrentCSSStats(branchStats, cssPath));
+      .then(branchStats => logCSSStats(branchStats, filename))
+      .then(branchStats => saveCurrentCSSStats(branchStats, filename));
   });
 };
