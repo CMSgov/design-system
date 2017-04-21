@@ -76,7 +76,7 @@ Object.keys(_Select).forEach(function (key) {
   });
 });
 
-var _FormLabel = require('./Form/FormLabel');
+var _FormLabel = require('./FormLabel/FormLabel');
 
 Object.keys(_FormLabel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -84,6 +84,18 @@ Object.keys(_FormLabel).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _FormLabel[key];
+    }
+  });
+});
+
+var _TextField = require('./TextField/TextField');
+
+Object.keys(_TextField).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _TextField[key];
     }
   });
 });

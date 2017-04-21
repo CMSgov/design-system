@@ -13,7 +13,7 @@ var _Choice = require('./Choice');
 
 var _Choice2 = _interopRequireDefault(_Choice);
 
-var _FormLabel = require('../Form/FormLabel');
+var _FormLabel = require('../FormLabel/FormLabel');
 
 var _FormLabel2 = _interopRequireDefault(_FormLabel);
 
@@ -237,8 +237,7 @@ ChoiceList.propTypes = {
   disabled: _propTypes2.default.bool,
   errorMessage: _propTypes2.default.string,
   /**
-   * Hint text. Typically this is a string, but you can pass in additional
-   * HTML if you need to further format things.
+   * Hint text
    */
   hint: _propTypes2.default.node,
   /**

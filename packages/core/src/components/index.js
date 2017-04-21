@@ -6,4 +6,5 @@ export * from './Button/Button';
 export * from './ChoiceList/Choice';
 export * from './ChoiceList/ChoiceList';
 export * from './ChoiceList/Select';
-export * from './Form/FormLabel';
+export * from './FormLabel/FormLabel';
+export * from './TextField/TextField';
