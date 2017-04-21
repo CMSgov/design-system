@@ -6,14 +6,14 @@
  * preceded by other build tasks.
  */
 const Table = require('cli-table'); // cli-table2 is available and is a newer, forked version
+const _ = require('lodash');
+const argv = require('yargs').argv;
 const bytes = require('bytes');
 const cssstats = require('cssstats');
 const dutil = require('../common/log-util');
 const fs = require('mz/fs');
 const getValues = require('./getValues');
 const path = require('path');
-const sum = require('lodash/sum');
-const uniq = require('lodash/uniq');
 
 // fontsDir should be relative to root so we can pass to path() and Git()
 const fontsDir = 'packages/core/src/fonts';
@@ -33,11 +33,12 @@ try {
 /**
  * Creates an HTML file where a specificity graph can be viewed.
  * @param {Object} stats - CSS Stats output
+ * @param {String} filename - Name of the CSS file being analyzed
  * @return {Promise}
  */
-function createSpecificityGraph(stats) {
+function createSpecificityGraph(stats, filename) {
   const tmpPath = path.resolve(__dirname, '../../../tmp');
-  const outputPath = path.resolve(tmpPath, 'specificity.html');
+  const outputPath = path.resolve(tmpPath, `specificity.${filename}.html`);
   const specificity = stats.selectors.getSpecificityGraph();
   const selectors = stats.selectors.values;
   const chartRows = specificity.map((val, index) => {
@@ -77,21 +78,31 @@ function getMasterBlob(filepath) {
 
 /**
  * Get the CSS stats from a file on the current branch as well as master branch.
- * @param {string} filepath - Path to the file to analyze, relative to project root
+ * @param {string} cssPath - Path to the file to analyze, relative to project root
+ * @param {boolean} skipmaster - Whether to also get stats for the file on the master branch
  * @return {Promise<{current, master}>}
  */
-function getCSSStats(filepath) {
+function getCSSStats(cssPath, skipmaster = false) {
   let stats = {
     current: {},
     master: {}
   };
 
-  return fs.readFile(filepath, 'utf8')
+  return fs.readFile(cssPath, 'utf8')
     .then(css => cssstats(css))
     .then(data => { stats.current = data; })
-    .then(() => getMasterBlob(filepath))
-    .then(css => cssstats(css))
-    .then(data => { stats.master = data; })
+    .then(() => {
+      // Conditionally check the file on the master branch. Allowing this step to
+      // be skipped enables us to run it on files that don't yet exist on master
+      if (!skipmaster) {
+        return getMasterBlob(cssPath)
+          .then(css => cssstats(css))
+          .then(data => { stats.master = data; });
+      } else {
+        dutil.logMessage('getCSSStats', 'Not checking against master branch');
+        stats.master = stats.current;
+      }
+    })
     .then(() => stats);
 }
 
@@ -112,7 +123,7 @@ function getCurrentBranchFontSizes() {
           })
       );
     })
-    .then(sum);
+    .then(_.sum);
 }
 
 function getMasterBranchFontSizes() {
@@ -133,7 +144,7 @@ function getMasterBranchFontSizes() {
         })
       );
     })
-    .then(sum)
+    .then(_.sum)
     .catch(err => {
       // Don't break all the things if we have trouble getting the
       // sizes from the master branch
@@ -145,11 +156,14 @@ function getMasterBranchFontSizes() {
 /**
  * Output the CSS Stats to the CLI and create a specificity graph
  * @param {Object} branchStats - Current and master branch stats
+ * @param {String} filename - Name of the CSS file being analyzed
  * @return {Promise}
  */
-function logCSSStats(branchStats) {
+function logCSSStats(branchStats, filename) {
   logCSSStatsTable(branchStats);
-  return createSpecificityGraph(branchStats.current);
+
+  return createSpecificityGraph(branchStats.current, filename)
+    .then(() => branchStats);
 }
 
 /**
@@ -164,10 +178,16 @@ function logCSSStatsTable(stats) {
     }
   });
 
-  const filesizeValues = getValues(
+  const gzipValues = getValues(
     branch => stats[branch].humanizedGzipSize,
     true,
     () => bytes(stats.current.gzipSize - stats.master.gzipSize)
+  );
+
+  const sizeValues = getValues(
+    branch => stats[branch].humanizedSize,
+    true,
+    () => bytes(stats.current.size - stats.master.size)
   );
 
   const fontSizeValues = getValues(
@@ -179,11 +199,12 @@ function logCSSStatsTable(stats) {
   table.push(
     row(
       'Gzip size',
-      filesizeValues,
+      gzipValues,
       `The size of HTTP requests affects
 performance. A smaller page weight
 improves performance`
     ),
+    row('File size', sizeValues, 'See above'),
     row(
       'Font size\n(.woff)',
       fontSizeValues,
@@ -200,13 +221,13 @@ a stylesheet`
     ),
     row(
       'Uniq. font sizes',
-      getValues(branch => uniq(stats[branch].declarations.getAllFontSizes()).length),
+      getValues(branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length),
       `An excessive number of font sizes (10+)
 indicates an overly-complex type scale`
     ),
     row(
       'Uniq. font\nfamilies',
-      getValues(branch => uniq(stats[branch].declarations.getAllFontFamilies()).length),
+      getValues(branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length),
       `An excessive number of font families
 (3+) indicates an inconsistent and
 potentially slow-loading design`
@@ -258,6 +279,19 @@ function row(label, values, description) {
   return data;
 }
 
+// IMPORTANT: This needs to be called AFTER any method that relies on the
+// functions within the object.
+function saveCurrentCSSStats(branchStats, filename) {
+  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.${filename}.json`);
+  const body = JSON.stringify(branchStats.current);
+
+  return fs.writeFile(outputPath, body, 'utf8')
+    .then(() => {
+      dutil.logMessage('cssstats', `Exported cssstats: ${outputPath}`);
+      return branchStats;
+    });
+}
+
 /**
  * Analyze the file sizes of all .woff font files and add to the stats object
  * @param {Object} branchStats - Current and master branch stats
@@ -274,9 +308,14 @@ function setTotalFontFileSize(branchStats) {
 module.exports = (gulp) => {
   gulp.task('stats', () => {
     dutil.logMessage('🔍 ', 'Gathering stats and comparing against master');
+    // Run CSSStats on another CSS file by running:
+    // yarn run gulp stats -- --path=foo/bar/path/file.css --skipmaster
+    const cssPath = argv.path || 'packages/core/dist/index.css';
+    const filename = path.parse(cssPath).name;
 
-    return getCSSStats('packages/core/dist/index.css')
+    return getCSSStats(cssPath, argv.skipmaster)
       .then(setTotalFontFileSize)
-      .then(logCSSStats);
+      .then(branchStats => logCSSStats(branchStats, filename))
+      .then(branchStats => saveCurrentCSSStats(branchStats, filename));
   });
 };
