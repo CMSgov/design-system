@@ -88,7 +88,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           onChange: this.props.onChange,
           onBlur: this.props.onBlur,
           rows: rows,
-          type: this.props.multiline ? undefined : 'text',
+          type: this.props.multiline ? undefined : this.props.type,
           value: this.props.value
         })
       );
@@ -97,6 +97,10 @@ var TextField = exports.TextField = function (_React$PureComponent) {
 
   return TextField;
 }(_react2.default.PureComponent);
+
+TextField.defaultProps = {
+  type: 'text'
+};
 
 TextField.propTypes = {
   /**
@@ -142,6 +146,10 @@ TextField.propTypes = {
    * applicable if this is a multiline field
    */
   rows: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  /**
+   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+   */
+  type: _propTypes2.default.string,
   /**
    * Current value of the text field. Use this for a controlled component where
    * you are maintaining its current state; otherwise, use the `defaultValue` property

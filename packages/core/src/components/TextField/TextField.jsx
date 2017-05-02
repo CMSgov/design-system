@@ -53,13 +53,17 @@ export class TextField extends React.PureComponent {
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
           rows={rows}
-          type={this.props.multiline ? undefined : 'text'}
+          type={this.props.multiline ? undefined : this.props.type}
           value={this.props.value}
         />
       </div>
     );
   }
 }
+
+TextField.defaultProps = {
+  type: 'text'
+};
 
 TextField.propTypes = {
   /**
@@ -108,6 +112,10 @@ TextField.propTypes = {
     PropTypes.number,
     PropTypes.string
   ]),
+  /**
+   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+   */
+  type: PropTypes.string,
   /**
    * Current value of the text field. Use this for a controlled component where
    * you are maintaining its current state; otherwise, use the `defaultValue` property

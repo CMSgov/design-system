@@ -21,4 +21,3 @@ npm publish
 echo "${ORANGE}[TODO] Publish docs${NC}"
 
 echo "${GREEN}Publishing Succeeded!${NC}"
-git stash apply

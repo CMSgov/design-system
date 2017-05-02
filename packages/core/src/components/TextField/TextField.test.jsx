@@ -33,6 +33,13 @@ describe('TextField', function() {
     expect(field.prop('type')).toBeUndefined();
   });
 
+  it('is a password field', () => {
+    const data = shallowRender({ type: 'password' });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.prop('type')).toBe('password');
+  });
+
   it('is disabled', () => {
     const data = shallowRender({ disabled: true });
     const field = data.wrapper.find('.ds-c-field').first();
