@@ -1,11 +1,12 @@
 /**
- * A "page block" is generated from a KSS comment block, so the structure is fairly
- * predictable: a header, description, and code snippet(s).
+ * A page block is a block of content on a page. There can be multiple page blocks
+ * on a single page, and each can have a title, description, and code snippet.
  */
 import HTMLExample from './HTMLExample';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactComponentDoc from './ReactComponentDoc';
+
 const reactDoc = require('../../data/react-doc.json');
 
 class PageBlock extends React.PureComponent {
@@ -68,6 +69,7 @@ class PageBlock extends React.PureComponent {
     }
   }
 
+  // TODO: Move this to its own component
   header() {
     // This conditional allows us to create KSS comments that provide additional
     // descriptive text below a section that already has a title. For example,
@@ -75,12 +77,28 @@ class PageBlock extends React.PureComponent {
     // code snippet, then write a separate comment block that provides additional
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.header.match(/---/)) return;
+    if (this.props.isTopLevel) return this.pageHeader();
 
     return (
-      <heading className='block__heading'>
+      <div>
+        <h1
+          className='ds-h1'
+          // Headers can contain HTML markup, therefore dangerously set...
+          dangerouslySetInnerHTML={{ __html: this.props.header }}
+          id={this.props.reference}
+        />
+        {this.source()}
+      </div>
+    );
+  }
+
+  // TODO: Move this to its own component
+  pageHeader() {
+    return (
+      <heading className='ds-u-border-bottom--1 ds-u-padding-bottom--3 ds-u-margin-bottom--6 ds-u-display--block'>
         {this.statusPill()}
         <h1
-          className='ds-h1 ds-u-margin-bottom--0 ds-u-margin-top--2'
+          className='ds-display'
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
         />
@@ -168,6 +186,10 @@ PageBlock.propTypes = {
   description: PropTypes.string,
   header: PropTypes.string.isRequired,
   hideMarkup: PropTypes.bool,
+  /**
+   * Indicate if this a content block of the top-level page, or a nested section
+   */
+  isTopLevel: PropTypes.bool,
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(
     HTMLExample.propTypes.modifier
