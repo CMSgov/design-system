@@ -22,7 +22,7 @@
   box-sizing: border-box;
 }
 
-@for $i from 1 through map-get($grid, 'columns') {
+@for $i from 1 through 12 {
   .l-col-#{$i} {
     width: grid-col-width($i);
   }
