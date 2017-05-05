@@ -1,0 +1,4 @@
+// Calculate the flex-basis for a flexbox grid column
+@function grid-flex-basis($columns, $_grid: $grid) {
+  @return (100% / map-get($_grid, 'columns')) * $columns;
+}

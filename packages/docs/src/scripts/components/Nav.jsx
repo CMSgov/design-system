@@ -4,7 +4,7 @@ import React from 'react';
 
 const Nav = (props) => {
   return (
-    <nav className='c-nav ds-u-border-right--1'>
+    <nav className='l-col-3 l-sidebar ds-u-border-right--1 ds-u-padding--2'>
       <ol className='c-nav__list ds-c-vertical-nav'>
         {props.routes.map(page => (
           <NavItem

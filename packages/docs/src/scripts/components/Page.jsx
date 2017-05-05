@@ -3,6 +3,7 @@
  * doesn't have a parent reference), or a Markdown file.
  */
 import PageBlock from './PageBlock';
+import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -22,7 +23,8 @@ class Page extends React.PureComponent {
   render() {
     return (
       <div>
-        <PageBlock {...this.props} isTopLevel />
+        <PageHeader {...this.props} />
+        <PageBlock {...this.props} hideHeader />
         {this.nestedSections()}
       </div>
     );

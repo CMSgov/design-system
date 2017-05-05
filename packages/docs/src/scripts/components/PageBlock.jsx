@@ -6,7 +6,8 @@ import HTMLExample from './HTMLExample';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactComponentDoc from './ReactComponentDoc';
-
+import Source from './Source';
+import reactComponentPath from '../shared/reactComponentPath';
 const reactDoc = require('../../data/react-doc.json');
 
 class PageBlock extends React.PureComponent {
@@ -39,28 +40,11 @@ class PageBlock extends React.PureComponent {
     );
   }
 
-  /**
-   * Use the full path of the Sass file where the KSS documentation
-   * was generated from, and return the path relative to packages/
-   * and with the React component's filename.
-   *
-   * @return {String}
-   */
-  reactComponentPath() {
-    // Get path relative to packages/
-    // Example: packages/core/components/Button.scss -> core/component/Button
-    const path = this.props.source.path.match(/packages\/([a-z0-9_\-/]+)/i)[1];
-
-    // Replace the Sass filename with the React component's filename
-    // Example: core/component/Button -> core/component/ButtonGroup
-    return path.replace(/\/([a-z0-9_-]+)$/i, `/${this.props.reactComponent}`);
-  }
-
   description() {
     if (this.props.description) {
       return (
         <div
-          className='c-details ds-u-margin-top--2'
+          className='c-details ds-u-margin-top--2 ds-u-measure--wide'
           dangerouslySetInnerHTML={{
             __html: this.props.description
           }}
@@ -69,15 +53,13 @@ class PageBlock extends React.PureComponent {
     }
   }
 
-  // TODO: Move this to its own component
   header() {
-    // This conditional allows us to create KSS comments that provide additional
+    // The regex conditional allows us to create KSS comments that provide additional
     // descriptive text below a section that already has a title. For example,
     // you could have a KSS comment block that has the page title and
     // code snippet, then write a separate comment block that provides additional
     // text below the title + code snippet block. It's hacky, but works.
-    if (this.props.header.match(/---/)) return;
-    if (this.props.isTopLevel) return this.pageHeader();
+    if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
     return (
       <div>
@@ -87,25 +69,11 @@ class PageBlock extends React.PureComponent {
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
         />
-        {this.source()}
-      </div>
-    );
-  }
-
-  // TODO: Move this to its own component
-  pageHeader() {
-    return (
-      <heading className='ds-u-border-bottom--1 ds-u-padding-bottom--3 ds-u-margin-bottom--6 ds-u-display--block'>
-        {this.statusPill()}
-        <h1
-          className='ds-display'
-          dangerouslySetInnerHTML={{ __html: this.props.header }}
-          id={this.props.reference}
+        <Source
+          reactComponent={this.props.reactComponent}
+          source={this.props.source}
         />
-        <div className='ds-u-clearfix' />
-        {this.source()}
-        {this.uswdsLink()}
-      </heading>
+      </div>
     );
   }
 
@@ -113,15 +81,17 @@ class PageBlock extends React.PureComponent {
    * Given a package's relative path, transform it to an NPM package path
    * Example: core/button.js -> @cmsgov/design-system-core/button.js
    *
+   * @param {String} path - React component's path
    * @return {String}
    */
-  packagePath() {
-    return `@cmsgov/design-system-${this.reactComponentPath()}`;
+  packagePath(path) {
+    return `@cmsgov/design-system-${path}`;
   }
 
   reactDoc() {
     if (!this.props.reactComponent) return;
-    const docs = reactDoc[`${this.reactComponentPath()}.jsx`];
+    const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
+    const docs = reactDoc[`${path}.jsx`];
 
     if (docs && docs.length) {
       // There should only ever be one exported component definiton
@@ -131,48 +101,16 @@ class PageBlock extends React.PureComponent {
         <ReactComponentDoc
           description={doc.description}
           displayName={doc.displayName}
-          packagePath={this.packagePath()}
+          packagePath={this.packagePath(path)}
           propDocs={doc.props}
         />
       );
     }
   }
 
-  source() {
-    if (this.props.reactComponent || this.props.source) {
-      const path = this.props.reactComponent
-        ? this.reactComponentPath().replace(/[a-z-]+\/src\//, '')
-        : `${this.props.source.filename}:${this.props.source.line}`;
-
-      return (
-        <code className='ds-u-font-size--small'>{path}</code>
-      );
-    }
-  }
-
-  statusPill() {
-    if (this.props.status) {
-      return (
-        <span className='ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base'>
-          {this.props.status}
-        </span>
-      );
-    }
-  }
-
-  uswdsLink() {
-    if (this.props.uswdsUrl) {
-      return (
-        <p>
-          <a href={this.props.uswdsUrl}>US Web Design Standard</a>
-        </p>
-      );
-    }
-  }
-
   render() {
     return (
-      <article className='c-block ds-u-margin-bottom--7'>
+      <article className='ds-u-padding-x--6 ds-u-margin-y--6'>
         {this.header()}
         {this.description()}
         {this.markupExamples()}
@@ -185,24 +123,15 @@ class PageBlock extends React.PureComponent {
 PageBlock.propTypes = {
   description: PropTypes.string,
   header: PropTypes.string.isRequired,
+  hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
-  /**
-   * Indicate if this a content block of the top-level page, or a nested section
-   */
-  isTopLevel: PropTypes.bool,
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(
     HTMLExample.propTypes.modifier
   ),
   reactComponent: PropTypes.string,
   reference: PropTypes.string,
-  source: PropTypes.shape({
-    filename: PropTypes.string.isRequired,
-    line: PropTypes.number.isRequired,
-    path: PropTypes.string.isRequired
-  }),
-  status: PropTypes.string,
-  uswdsUrl: PropTypes.string
+  source: Source.propTypes.source
 };
 
 export default PageBlock;

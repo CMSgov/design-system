@@ -11,13 +11,15 @@ const Docs = (props) => {
   return (
     <div>
       <Header />
-      <Nav
-        currentPageURI={props.page.referenceURI}
-        routes={props.routes}
-      />
-      <main className='page'>
-        <Page {...props.page} />
-      </main>
+      <div className='l-grid'>
+        <Nav
+          currentPageURI={props.page.referenceURI}
+          routes={props.routes}
+        />
+        <main className='l-col-9 l-col-grow'>
+          <Page {...props.page} />
+        </main>
+      </div>
     </div>
   );
 };
