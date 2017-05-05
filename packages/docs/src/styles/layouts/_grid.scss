@@ -24,6 +24,6 @@
 
 @for $i from 1 through map-get($grid, 'columns') {
   .l-col-#{$i} {
-    flex-basis: grid-flex-basis($i);
+    width: grid-col-width($i);
   }
 }
