@@ -1,0 +1,65 @@
+@import '../../settings/index';
+
+/*
+Tabs
+
+@status prototype
+
+Markup:
+<div class="ds-c-tabs" role="tablist" aria-label="Entertainment">
+  <button
+    class="ds-c-tabs__item"
+    role="tab"
+    aria-selected="true"
+    aria-controls="nils-tab"
+    id="nils"
+  >
+    Nils Frahm
+  </button>
+  <button
+    class="ds-c-tabs__item"
+    role="tab"
+    aria-selected="false"
+    aria-controls="agnes-tab"
+    id="agnes"
+    tabindex="-1"
+  >
+    Agnes Obel
+  </button>
+</div>
+
+Style guide: components.tabs
+*/
+.ds-c-tabs {
+  display: flex;
+}
+
+.ds-c-tabs__item {
+  appearance: none;
+  background-color: $color-white;
+  border: 1px solid $border-color;
+  color: $color-primary;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  line-height: $reset-line-height;
+  padding: $spacer-2;
+
+  &[aria-selected='true'] {
+    border-top: 3px solid $color-primary;
+    color: $color-base;
+  }
+}
+
+/*
+Guidelines
+
+## Further reading
+
+- [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
+- [W3C Tabs Examples](https://github.com/w3c/aria-practices/tree/master/examples/tabs)
+- [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)
+
+Style guide: components.tabs.guidelines
+*/
