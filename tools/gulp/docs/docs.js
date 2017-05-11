@@ -37,6 +37,22 @@ function sortTopLevelPages(pages) {
   return pages.sort((a, b) => a.weight - b.weight);
 }
 
+/**
+ * We don't need the entire Page object to pass into our Nav component, so we
+ * generate a new array of object with just the properties we need.
+ */
+function createRoutes(pages) {
+  if (!pages) return;
+
+  return pages.map(page => {
+    return {
+      header: page.header,
+      referenceURI: page.referenceURI,
+      sections: createRoutes(page.sections)
+    };
+  });
+}
+
 module.exports = (gulp, shared) => {
   /**
    * Loop through the nested array of pages and create an HTML file for each one.
@@ -50,21 +66,16 @@ module.exports = (gulp, shared) => {
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('../../../packages/docs/src/scripts/generatePage');
-
-    // TODO(sawyer): Right now the pages array includes full page objects, which
-    // we pass into the generatePage method as the 'routes' argument. We should
-    // eventually optimize this array and pass in only the properties we need
-    // (primarily 'referenceURI' and 'header'), especially if we continue to
-    // do client-side rendering.
+    const routes = createRoutes(pages);
 
     return Promise.all(
       pages.map(page => {
-        return generatePage(pages, page, shared.rootPath)
+        return generatePage(routes, page, shared.rootPath)
           .then(created => {
             if (page.sections && page.sections.length) {
               return Promise.all(
                 page.sections.map(subpage => {
-                  return generatePage(pages, subpage, shared.rootPath);
+                  return generatePage(routes, subpage, shared.rootPath);
                 })
               ).then(results => [created].concat(results)); // return results for generatedPagesCount
             }
@@ -100,7 +111,7 @@ module.exports = (gulp, shared) => {
   });
 
   // The docs use the design system's Sass files, which don't have the
-  // images inlined yet, so we need to be able to reference them by their URL
+  // images inlined, so we need to be able to reference them by their URL
   gulp.task('docs:images', ['docs:images:core'], () => {
     dutil.logMessage(
       '🏞 ',
