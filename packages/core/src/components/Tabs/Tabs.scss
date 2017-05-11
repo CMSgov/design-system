@@ -6,26 +6,27 @@ Tabs
 @status prototype
 
 Markup:
-<div class="ds-c-tabs" role="tablist" aria-label="Entertainment">
-  <button
+<div class="ds-c-tabs" role="tablist" aria-label="Settings">
+  <a
     class="ds-c-tabs__item"
+    href="#panel-profile"
     role="tab"
     aria-selected="true"
     aria-controls="nils-tab"
-    id="nils"
+    id="tab-profile"
   >
-    Nils Frahm
-  </button>
-  <button
+    Profile
+  </a>
+  <a
     class="ds-c-tabs__item"
+    href="#panel-communication"
     role="tab"
     aria-selected="false"
     aria-controls="agnes-tab"
-    id="agnes"
-    tabindex="-1"
+    id="tab-communication"
   >
-    Agnes Obel
-  </button>
+    Communication preferences
+  </a>
 </div>
 
 Style guide: components.tabs
@@ -35,25 +36,44 @@ Style guide: components.tabs
 }
 
 .ds-c-tabs__item {
-  appearance: none;
   background-color: $color-white;
   border: 1px solid $border-color;
-  color: $color-primary;
-  cursor: pointer;
-  font-family: $font-sans;
+  border-right-width: 0;
+  color: $color-base;
+  display: inline-block;
   font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $reset-line-height;
-  padding: $spacer-2;
+  padding: $spacer-2 $spacer-3;
+  text-decoration: none;
 
   &[aria-selected='true'] {
     border-top: 3px solid $color-primary;
-    color: $color-base;
+    color: $color-primary;
+    pointer-events: none;
+  }
+
+  &:focus,
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:active {
+    color: $color-primary-darker;
+  }
+
+  &:last-child {
+    border-right-width: 1px;
   }
 }
 
 /*
 Guidelines
+
+## Accessibility
+
+- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window.
+- Ensure you're setting proper ARIA attributes for the tabs (`role`, `aria-selected`, `aria-controls`) and the tabs parent (`role`, `aria-label`). See the code examples for a proper example.
 
 ## Further reading
 
