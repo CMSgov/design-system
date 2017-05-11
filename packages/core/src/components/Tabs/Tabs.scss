@@ -32,25 +32,45 @@ Markup:
 Style guide: components.tabs
 */
 .ds-c-tabs {
+  border-bottom: 1px solid $border-color;
   display: flex;
 }
 
 .ds-c-tabs__item {
   background-color: $color-white;
-  border: 1px solid $border-color;
-  border-right-width: 0;
+  border-left: 1px solid $border-color;
+  border-top: 1px solid $border-color;
   color: $color-base;
+  cursor: pointer;
   display: inline-block;
   font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $reset-line-height;
   padding: $spacer-2 $spacer-3;
+  position: relative;
   text-decoration: none;
 
+  &:last-child {
+    border-right: 1px solid $border-color;
+  }
+
+  // States
   &[aria-selected='true'] {
-    border-top: 3px solid $color-primary;
+    border-bottom: 1px $color-white transparent;
     color: $color-primary;
+    margin-bottom: -1px;
     pointer-events: none;
+
+    // Use pseudo-element for top border to avoid weird default border rendering
+    &::after {
+      background-color: $color-primary;
+      content: '';
+      height: 3px;
+      left: -1px;
+      position: absolute;
+      right: -1px;
+      top: -1px;
+    }
   }
 
   &:focus,
@@ -61,11 +81,23 @@ Style guide: components.tabs
   &:active {
     color: $color-primary-darker;
   }
-
-  &:last-child {
-    border-right-width: 1px;
-  }
 }
+
+/*
+`<Tabs>`
+
+@react-component Tabs
+
+Style guide: components.tabs.react-tabs
+*/
+
+/*
+`<Tab>`
+
+@react-component Tab
+
+Style guide: components.tabs.react-tab
+*/
 
 /*
 Guidelines
@@ -73,7 +105,10 @@ Guidelines
 ## Accessibility
 
 - Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window.
-- Ensure you're setting proper ARIA attributes for the tabs (`role`, `aria-selected`, `aria-controls`) and the tabs parent (`role`, `aria-label`). See the code examples for a proper example.
+- Ensure the HTML markup includes the proper ARIA attributes:
+  - For tabs: `role`, `aria-selected`, `aria-controls`
+  - For the tabs list parent: `role`, `aria-label`
+  - For a tab panel: `role`, `aria-labelledby`
 
 ## Further reading
 
