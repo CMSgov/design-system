@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-class Tab extends React.PureComponent {
+export class Tab extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);

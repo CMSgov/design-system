@@ -10,7 +10,7 @@ const defaultPanelProps = {
 };
 
 function shallowRender(customProps = {}, children) {
-  const props = Object.assign({ id: 'tabs' }, customProps);
+  const props = Object.assign({}, customProps);
 
   if (!children) {
     children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
@@ -23,27 +23,66 @@ function shallowRender(customProps = {}, children) {
 }
 
 describe('Tabs', function() {
-  it('renders root component with id', () => {
-    const data = shallowRender();
-    expect(data.wrapper.prop('id')).toBe(data.props.id);
-  });
-
   it('renders tabs', () => {
     const data = shallowRender();
     const tabs = data.wrapper.find('Tab');
 
-    expect(tabs.length).toBe(1);
-    expect(tabs.first().children().text()).toBe(defaultPanelProps.tab);
+    expect(tabs.length)
+      .toBe(1);
+    expect(tabs.first().prop('id'))
+      .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
+    expect(tabs.first().prop('panelId'))
+      .toBe(defaultPanelProps.id);
+    expect(tabs.first().children().text())
+      .toBe(defaultPanelProps.tab);
   });
 
   it('renders panels', () => {
     const data = shallowRender();
     const panels = data.wrapper.find('TabPanel');
 
-    expect(panels.length).toBe(1);
-    expect(panels.first().prop('id')).toBe(defaultPanelProps.id);
+    expect(panels.length)
+      .toBe(1);
+    expect(panels.first().prop('id'))
+      .toBe(defaultPanelProps.id);
+    expect(panels.first().prop('tabId'))
+      .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
   });
 
-  it('selects the first panel by default');
-  it('selects the second panel');
+  it('selects the first tab by default', () => {
+    const children = [
+      <TabPanel key='1' id='panel-1' tab='Tab 1'>
+        {defaultPanelChildren}
+      </TabPanel>,
+      <TabPanel key='2' id='panel-2' tab='Tab 2'>
+        {defaultPanelChildren}
+      </TabPanel>
+    ];
+    const data = shallowRender(undefined, children);
+    const panels = data.wrapper.find('TabPanel');
+    const tabs = data.wrapper.find('Tab');
+
+    expect(panels.first().prop('selected')).toBe(true);
+    expect(tabs.first().prop('selected')).toBe(true);
+  });
+
+  it('selects the specified tab', () => {
+    const children = [
+      <TabPanel key='1' id='panel-1' tab='Tab 1'>
+        {defaultPanelChildren}
+      </TabPanel>,
+      <TabPanel key='2' id='panel-2' tab='Tab 2'>
+        {defaultPanelChildren}
+      </TabPanel>
+    ];
+    const data = shallowRender(
+      { defaultSelectedId: 'panel-2' },
+      children
+    );
+    const panels = data.wrapper.find('TabPanel');
+    const tabs = data.wrapper.find('Tab');
+
+    expect(panels.at(1).prop('selected')).toBe(true);
+    expect(tabs.at(1).prop('selected')).toBe(true);
+  });
 });

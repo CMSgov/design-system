@@ -12,21 +12,27 @@ Markup:
     href="#panel-profile"
     role="tab"
     aria-selected="true"
-    aria-controls="nils-tab"
+    aria-controls="panel-profile"
     id="tab-profile"
   >
     Profile
   </a>
   <a
     class="ds-c-tabs__item"
-    href="#panel-communication"
+    href="#panel-comms"
     role="tab"
     aria-selected="false"
-    aria-controls="agnes-tab"
-    id="tab-communication"
+    aria-controls="panel-comms"
+    id="tab-comms"
   >
     Communication preferences
   </a>
+</div>
+<div class="ds-c-tabs__panel" id="panel-profile" aria-labelledby="tab-profile" role="tabpanel">
+  Profile panel content
+</div>
+<div class="ds-c-tabs__panel" id="panel-comms" aria-hidden="true" aria-labelledby="tab-comms" aria-selected="false" role="tabpanel">
+  Communication preferences content
 </div>
 
 Style guide: components.tabs
@@ -37,7 +43,7 @@ Style guide: components.tabs
 }
 
 .ds-c-tabs__item {
-  background-color: $color-white;
+  background-color: $color-background;
   border-left: 1px solid $border-color;
   border-top: 1px solid $border-color;
   color: $color-base;
@@ -65,7 +71,7 @@ Style guide: components.tabs
     &::after {
       background-color: $color-primary;
       content: '';
-      height: 3px;
+      height: $spacer-half;
       left: -1px;
       position: absolute;
       right: -1px;
@@ -80,6 +86,19 @@ Style guide: components.tabs
 
   &:active {
     color: $color-primary-darker;
+  }
+}
+
+.ds-c-tabs__panel {
+  background-color: $color-background;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  padding: $spacer-3;
+
+  &[aria-hidden='true'] {
+    /* stylelint-disable declaration-no-important */
+    display: none !important;
   }
 }
 
@@ -113,7 +132,6 @@ Guidelines
 ## Further reading
 
 - [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
-- [W3C Tabs Examples](https://github.com/w3c/aria-practices/tree/master/examples/tabs)
 - [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)
 
 Style guide: components.tabs.guidelines

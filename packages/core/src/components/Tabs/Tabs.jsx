@@ -4,23 +4,35 @@ import Tab from './Tab';
 import TabPanel from './TabPanel';
 
 /**
- * Get the key of the first TabPanel child
+ * Get the id of the first TabPanel child
  * @param {Object} props
- * @return {String} The key
+ * @return {String} The id
  */
-function getDefaultSelectedKey(props) {
-  let selectedKey;
+function getDefaultSelectedId(props) {
+  let selectedId;
 
+  // TODO: Use the panelChildren method to pass in an array
+  // of panels, instead of doing it here...
   React.Children.forEach(props.children, function(child) {
-    if (isTabPanel(child) && !selectedKey) {
-      selectedKey = child.key;
+    if (isTabPanel(child) && !selectedId) {
+      selectedId = child.props.id;
     }
   });
 
-  return selectedKey;
+  return selectedId;
 }
 
 /**
+ * Generate an id for a panel's associated tab if one doesn't yet exist
+ * @param {Object} TabPanel component
+ * @return {String} Tab ID
+ */
+function panelTabId(panel) {
+  return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
+}
+
+/**
+ * Determine if a React component is a TabPanel
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TabPanel component?
  */
@@ -29,23 +41,22 @@ function isTabPanel(child) {
 }
 
 /**
- * A container component that manages the state of your tabs for you, and
- * generates the necessary `id` attributes for your tab and panels. For most
+ * A container component that manages the state of your tabs for you. For most
  * cases, you'll want to use this component rather than the presentational
  * components (`Tab`, `TabPanel`) on their own.
  */
-class Tabs extends React.PureComponent {
+export class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
-    let selectedKey;
+    let selectedId;
 
-    if ('defaultSelectedKey' in props) {
-      selectedKey = props.defaultSelectedKey;
+    if ('defaultSelectedId' in props) {
+      selectedId = props.defaultSelectedId;
     } else {
-      selectedKey = getDefaultSelectedKey(props);
+      selectedId = getDefaultSelectedId(props);
     }
 
-    this.state = { selectedKey };
+    this.state = { selectedId };
   }
 
   // Filter children and return only TabPanel components
@@ -55,11 +66,17 @@ class Tabs extends React.PureComponent {
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, function(child) {
+    return React.Children.map(this.props.children, child => {
       if (isTabPanel(child)) {
-        // TODO:
-        // - Generate an id for the panel if it doesn't have one
-        // - Clone the panel and add any additional props to it + remove 'tab' prop?
+        // Extend props on panels before rendering
+        return React.cloneElement(
+          child,
+          {
+            selected: this.state.selectedId === child.props.id,
+            tab: undefined, // delete tab prop, it's no longer needed
+            tabId: panelTabId(child)
+          }
+        );
       }
 
       return child;
@@ -68,12 +85,19 @@ class Tabs extends React.PureComponent {
 
   renderTabs() {
     const panels = this.panelChildren();
-    const tabs = React.Children.map(panels, (panel) => {
+    const tabs = panels.map(panel => {
       // TODO:
-      // - Generate an id for the tab, using the panel's default id, then its generated id
-      // - Pass in the generated tab id and panelId
       // - Add support for onTabClick event handler
-      return <Tab key={panel.key}>{panel.props.tab}</Tab>;
+      return (
+        <Tab
+          id={panelTabId(panel)}
+          key={panel.key}
+          panelId={panel.props.id}
+          selected={this.state.selectedId === panel.props.id}
+        >
+          {panel.props.tab}
+        </Tab>
+      );
     });
 
     return <div className='ds-c-tabs' role='tablist'>{tabs}</div>;
@@ -81,7 +105,7 @@ class Tabs extends React.PureComponent {
 
   render() {
     return (
-      <div id={this.props.id}>
+      <div>
         {this.renderTabs()}
         {this.renderChildren()}
       </div>
@@ -92,15 +116,10 @@ class Tabs extends React.PureComponent {
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,
   /**
-   * Default selected `TabPanel`'s key. If this isn't set, the first `TabPanel`
+   * Default selected `TabPanel`'s `id`. If this isn't set, the first `TabPanel`
    * will be selected.
    */
-  defaultSelectedKey: PropTypes.string,
-  /**
-   * A unique identifier for the container. This will also be used to generate
-   * additional IDs and ARIA values for the `Tab` and `TabPanel` components
-   */
-  id: PropTypes.string.isRequired,
+  defaultSelectedId: PropTypes.string,
   /**
    * TODO
    */
