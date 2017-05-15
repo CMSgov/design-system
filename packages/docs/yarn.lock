@@ -355,7 +355,7 @@ lodash@^4.17.2, lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-loose-envify@^1.0.0, loose-envify@^1.1.0:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
   dependencies:
@@ -436,15 +436,22 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
+prop-types@^15.5.10:
+  version "15.5.10"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
+
+prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
     fbjs "^0.8.9"
 
-rapscallion@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.6.tgz#49b4ea7f17fd2a462ce293a5e8f00a288c4c056e"
+rapscallion@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/rapscallion/-/rapscallion-2.1.7.tgz#d06e39037a55e5a8517500c560f0e25b58e8830f"
   dependencies:
     adler-32 "^1.0.0"
     bluebird "^3.4.7"
@@ -466,15 +473,15 @@ react-dom@^15.5.4:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-element-to-jsx-string@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-6.3.0.tgz#f598cbcef49338dd1ef211fc3c0e9c6a4ec91e26"
+react-element-to-jsx-string@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-7.0.0.tgz#db5f6b737d8f9012301512b4e9a4f1f57b6fc383"
   dependencies:
     collapse-white-space "^1.0.0"
     is-plain-object "^2.0.1"
     lodash "^4.17.4"
     sortobject "^1.0.0"
-    stringify-object "^3.1.0"
+    stringify-object "^3.2.0"
     traverse "^0.6.6"
 
 react-test-renderer@^15.5.4:
@@ -523,9 +530,9 @@ string_decoder@~0.10.x:
   version "0.10.31"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
-stringify-object@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.1.0.tgz#1f938f47e6e42f259f3b3f42149f162965c86141"
+stringify-object@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.2.0.tgz#94370a135e41bc048358813bf99481f1315c6aa6"
   dependencies:
     get-own-enumerable-property-symbols "^1.0.1"
     is-obj "^1.0.1"

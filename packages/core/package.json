@@ -11,10 +11,10 @@
     "bourbon": "^4.3.3",
     "classnames": "^2.2.5",
     "lodash.uniqueid": "^4.0.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "uswds": "^1.0.0"
+    "uswds": "^1.1.0"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
