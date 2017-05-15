@@ -104,8 +104,6 @@ export class Tabs extends React.PureComponent {
     const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
 
     const tabs = panels.map(panel => {
-      // TODO:
-      // - Add support for onTabClick event handler
       return (
         <Tab
           className={this.props.tabClassName}
