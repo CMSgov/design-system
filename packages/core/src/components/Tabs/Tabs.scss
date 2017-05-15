@@ -36,7 +36,8 @@ Markup:
   </a>
 </div>
 <div class="ds-c-tabs__panel" id="panel-profile" aria-labelledby="tab-profile" role="tabpanel">
-  Profile panel content
+  Note: This is just an example of the HTML markup. See the React example for
+  a functioning example.
 </div>
 <div class="ds-c-tabs__panel" id="panel-comms" aria-hidden="true" aria-labelledby="tab-comms" aria-selected="false" role="tabpanel">
   Communication preferences content
@@ -87,8 +88,23 @@ Style guide: components.tabs.react-tabpanel
 
 Style guide: components.tabs.react-tab
 */
+
+@keyframes expandActiveTabBorder {
+  // Use 3d transforms for better performance
+  from {
+    opacity: 0;
+    transform: scale3d(0, 1, 1);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 .ds-c-tabs__item {
   background-color: $color-background;
+  border-bottom: 1px solid $border-color;
   border-left: 1px solid $border-color;
   border-top: 1px solid $border-color;
   color: $color-base;
@@ -97,9 +113,11 @@ Style guide: components.tabs.react-tab
   font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $reset-line-height;
+  margin-bottom: -1px;
   padding: $spacer-2 $spacer-3;
   position: relative;
   text-decoration: none;
+  transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   &:last-child {
     border-right: 1px solid $border-color;
@@ -107,13 +125,13 @@ Style guide: components.tabs.react-tab
 
   // States
   &[aria-selected='true'] {
-    border-bottom: 1px $color-white transparent;
+    border-bottom-color: $color-white;
     color: $color-primary;
-    margin-bottom: -1px;
     pointer-events: none;
 
     // Use pseudo-element for top border to avoid weird default border rendering
     &::after {
+      animation: $animation-speed-2 expandActiveTabBorder $ease-in-out-expo both;
       background-color: $color-primary;
       content: '';
       height: $spacer-half;
