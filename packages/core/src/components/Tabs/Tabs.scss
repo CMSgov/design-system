@@ -4,6 +4,8 @@
 /*
 Tabs
 
+Tabs can be used as a navigation pattern, allowing a user to switch between panels of related content within the same context.
+
 @status prototype
 
 Markup:
@@ -142,11 +144,17 @@ Guidelines
 
 ## Accessibility
 
-- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window.
+- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. Note: You'll need to implement the logic for selecting the correct tab based on the current URL.
 - Ensure the HTML markup includes the proper ARIA attributes:
   - For tabs: `role`, `aria-selected`, `aria-controls`
   - For the tabs list parent: `role`, `aria-label`
   - For a tab panel: `role`, `aria-labelledby`
+
+## Guidance
+
+- The content within tab panels should be related.
+- Each Tab label should be descriptive of its content and set the user's expectations. Labels shoud be no more than two words.
+- A maximum of six tabs should be displayed. Consider using a different pattern if your content requries being split into more than six panels.
 
 ## Further reading
 
