@@ -110,14 +110,26 @@ Style guide: components.tabs.react-tab
   color: $color-base;
   cursor: pointer;
   display: inline-block;
-  font-size: $base-font-size;
+  font-size: $small-font-size;
   font-weight: $font-bold;
   line-height: $reset-line-height;
   margin-bottom: -1px;
-  padding: $spacer-2 $spacer-3;
+  padding: $spacer-2 $spacer-1;
   position: relative;
   text-decoration: none;
   transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+
+  @media (min-width: $width-sm) {
+    padding-left: $spacer-2;
+    padding-right: $spacer-2;
+  }
+
+  // Increase size on larger screens
+  @media (min-width: $width-md) {
+    font-size: $base-font-size;
+    padding-left: $spacer-3;
+    padding-right: $spacer-3;
+  }
 
   &:last-child {
     border-right: 1px solid $border-color;
@@ -170,9 +182,15 @@ Guidelines
 
 ## Guidance
 
+### Responsiveness
+
+Hiding tabs on small screens is not a user-friendly solution. If the tabs can't fit on one row on small screens, consider using utility classes to apply additional responsive styles or use a different pattern.
+
+### General guidance
+
 - The content within tab panels should be related.
 - Each Tab label should be descriptive of its content and set the user's expectations. Labels shoud be no more than two words.
-- A maximum of six tabs should be displayed. Consider using a different pattern if your content requries being split into more than six panels.
+- A maximum of three tabs should be displayed. Consider using a different pattern if your content requries being split into more than three panels.
 
 ## Further reading
 
