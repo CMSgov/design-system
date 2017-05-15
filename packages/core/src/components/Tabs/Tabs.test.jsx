@@ -49,40 +49,70 @@ describe('Tabs', function() {
       .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
   });
 
-  it('selects the first tab by default', () => {
-    const children = [
-      <TabPanel key='1' id='panel-1' tab='Tab 1'>
-        {defaultPanelChildren}
-      </TabPanel>,
-      <TabPanel key='2' id='panel-2' tab='Tab 2'>
-        {defaultPanelChildren}
-      </TabPanel>
-    ];
-    const data = shallowRender(undefined, children);
-    const panels = data.wrapper.find('TabPanel');
-    const tabs = data.wrapper.find('Tab');
+  it('adds additional class names to tablist', () => {
+    const className = 'foo-bar';
+    const data = shallowRender({ tablistClassName: className });
+    const list = data.wrapper.find('.ds-c-tabs');
 
-    expect(panels.first().prop('selected')).toBe(true);
-    expect(tabs.first().prop('selected')).toBe(true);
+    expect(list.hasClass(className)).toBe(true);
   });
 
-  it('selects the specified tab', () => {
-    const children = [
-      <TabPanel key='1' id='panel-1' tab='Tab 1'>
-        {defaultPanelChildren}
-      </TabPanel>,
-      <TabPanel key='2' id='panel-2' tab='Tab 2'>
-        {defaultPanelChildren}
-      </TabPanel>
-    ];
-    const data = shallowRender(
-      { defaultSelectedId: 'panel-2' },
-      children
-    );
-    const panels = data.wrapper.find('TabPanel');
+  it('adds additional class names to each tab', () => {
+    const className = 'foo-bar';
+    const data = shallowRender({ tabClassName: className });
     const tabs = data.wrapper.find('Tab');
 
-    expect(panels.at(1).prop('selected')).toBe(true);
-    expect(tabs.at(1).prop('selected')).toBe(true);
+    expect(tabs.first().hasClass(className)).toBe(true);
+  });
+
+  describe('with multiple panels', () => {
+    let children;
+
+    beforeEach(() => {
+      children = [
+        <TabPanel key='1' id='panel-1' tab='Tab 1'>
+          {defaultPanelChildren}
+        </TabPanel>,
+        <TabPanel key='2' id='panel-2' tab='Tab 2'>
+          {defaultPanelChildren}
+        </TabPanel>
+      ];
+    });
+
+    it('selects the first tab by default', () => {
+      const data = shallowRender(undefined, children);
+      const panels = data.wrapper.find('TabPanel');
+      const tabs = data.wrapper.find('Tab');
+
+      expect(panels.first().prop('selected')).toBe(true);
+      expect(tabs.first().prop('selected')).toBe(true);
+    });
+
+    it('selects the specified tab', () => {
+      const data = shallowRender(
+        { defaultSelectedId: 'panel-2' },
+        children
+      );
+      const panels = data.wrapper.find('TabPanel');
+      const tabs = data.wrapper.find('Tab');
+
+      expect(panels.at(1).prop('selected')).toBe(true);
+      expect(tabs.at(1).prop('selected')).toBe(true);
+    });
+
+    it('calls onChange', () => {
+      const onChangeMock = jest.fn();
+      const data = shallowRender(
+        {
+          onChange: onChangeMock,
+          selectedId: 'panel-1'
+        },
+        children
+      );
+
+      data.wrapper.setState({ selectedId: 'panel-2' });
+
+      expect(onChangeMock.mock.calls.length).toBe(1);
+    });
   });
 });

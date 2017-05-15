@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
+import classnames from 'classnames';
 
 /**
  * Get the id of the first TabPanel child
@@ -56,7 +57,21 @@ export class Tabs extends React.PureComponent {
       selectedId = getDefaultSelectedId(props);
     }
 
+    this.handleTabClick = this.handleTabClick.bind(this);
     this.state = { selectedId };
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (typeof this.props.onChange === 'function' &&
+        this.state.selectedId !== prevState.selectedId) {
+      this.props.onChange(this.state.selectedId, prevState.selectedId);
+    }
+  }
+
+  handleTabClick(evt, panelId, tabId, href) {
+    evt.preventDefault();
+    this.setState({ selectedId: panelId });
+    this.replaceState(href);
   }
 
   // Filter children and return only TabPanel components
@@ -85,13 +100,17 @@ export class Tabs extends React.PureComponent {
 
   renderTabs() {
     const panels = this.panelChildren();
+    const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
+
     const tabs = panels.map(panel => {
       // TODO:
       // - Add support for onTabClick event handler
       return (
         <Tab
+          className={this.props.tabClassName}
           id={panelTabId(panel)}
           key={panel.key}
+          onClick={this.handleTabClick}
           panelId={panel.props.id}
           selected={this.state.selectedId === panel.props.id}
         >
@@ -100,7 +119,17 @@ export class Tabs extends React.PureComponent {
       );
     });
 
-    return <div className='ds-c-tabs' role='tablist'>{tabs}</div>;
+    return <div className={listClasses} role='tablist'>{tabs}</div>;
+  }
+
+  /**
+   * Update the URL in the browser without adding a new entry to the history.
+   * @param {String} url - Absolute or relative URL
+   */
+  replaceState(url) {
+    if (window.history) {
+      window.history.replaceState({}, document.title, url);
+    }
   }
 
   render() {
@@ -121,13 +150,14 @@ Tabs.propTypes = {
    */
   defaultSelectedId: PropTypes.string,
   /**
-   * TODO
+   * A callback function that's invoked when the selected tab is changed.
+   * `(selectedId, prevSelectedId) => void`
    */
   onChange: PropTypes.func,
   /**
-   * TODO
+   * Additional classes to be added to each `Tab`
    */
-  onTabClick: PropTypes.func,
+  tabClassName: PropTypes.string,
   /**
    * Additional classes to be added to the component wrapping the tabs
    */
