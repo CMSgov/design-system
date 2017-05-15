@@ -37,11 +37,49 @@ Markup:
 
 Style guide: components.tabs
 */
+
+/*
+`<Tabs>`
+
+@react-component Tabs
+
+Style guide: components.tabs.react-tabs
+*/
 .ds-c-tabs {
   border-bottom: 1px solid $border-color;
   display: flex;
 }
 
+/*
+`<TabPanel>`
+
+@hide-example
+
+@react-component TabPanel
+
+Style guide: components.tabs.react-tabpanel
+*/
+
+.ds-c-tabs__panel {
+  background-color: $color-background;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  padding: $spacer-3;
+
+  &[aria-hidden='true'] {
+    /* stylelint-disable declaration-no-important */
+    display: none !important;
+  }
+}
+
+/*
+`<Tab>`
+
+@react-component Tab
+
+Style guide: components.tabs.react-tab
+*/
 .ds-c-tabs__item {
   background-color: $color-background;
   border-left: 1px solid $border-color;
@@ -88,35 +126,6 @@ Style guide: components.tabs
     color: $color-primary-darker;
   }
 }
-
-.ds-c-tabs__panel {
-  background-color: $color-background;
-  border-bottom: 1px solid $border-color;
-  border-left: 1px solid $border-color;
-  border-right: 1px solid $border-color;
-  padding: $spacer-3;
-
-  &[aria-hidden='true'] {
-    /* stylelint-disable declaration-no-important */
-    display: none !important;
-  }
-}
-
-/*
-`<Tabs>`
-
-@react-component Tabs
-
-Style guide: components.tabs.react-tabs
-*/
-
-/*
-`<Tab>`
-
-@react-component Tab
-
-Style guide: components.tabs.react-tab
-*/
 
 /*
 Guidelines

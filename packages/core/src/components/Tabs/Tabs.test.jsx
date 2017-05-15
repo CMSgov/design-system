@@ -65,6 +65,14 @@ describe('Tabs', function() {
     expect(tabs.first().hasClass(className)).toBe(true);
   });
 
+  it('adds additional class names to each panel', () => {
+    const className = 'foo-bar';
+    const data = shallowRender({ panelClassName: className });
+    const panels = data.wrapper.find('TabPanel');
+
+    expect(panels.first().hasClass(className)).toBe(true);
+  });
+
   describe('with multiple panels', () => {
     let children;
 

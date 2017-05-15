@@ -3,9 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 export const TabPanel = function(props) {
-  const classes = classnames(
-    'ds-c-tabs__panel'
-  );
+  const classes = classnames('ds-c-tabs__panel', props.className);
 
   return (
     <div
@@ -26,11 +24,21 @@ TabPanel.defaultProps = {
 
 TabPanel.propTypes = {
   children: PropTypes.node.isRequired,
+  /**
+   * Additional classes to be added to the root element.
+   */
+  className: PropTypes.string,
+  /**
+   * A unique `id`, to be used on the rendered panel element.
+   */
   id: PropTypes.string.isRequired,
   selected: PropTypes.bool,
   // tabId is actually required, but it's not marked here since we generate
   // this id within the Tabs component. Otherwise React will yell at you even
   // though it's ultimately being passed in.
+  /**
+   * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute
+   */
   tabId: PropTypes.string
 };
 

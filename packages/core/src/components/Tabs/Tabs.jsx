@@ -87,6 +87,7 @@ export class Tabs extends React.PureComponent {
         return React.cloneElement(
           child,
           {
+            className: this.props.panelClassName,
             selected: this.state.selectedId === child.props.id,
             tab: undefined, // delete tab prop, it's no longer needed
             tabId: panelTabId(child)
@@ -154,6 +155,10 @@ Tabs.propTypes = {
    * `(selectedId, prevSelectedId) => void`
    */
   onChange: PropTypes.func,
+  /**
+   * Additional classes to be added to each `TabPanel`
+   */
+  panelClassName: PropTypes.string,
   /**
    * Additional classes to be added to each `Tab`
    */

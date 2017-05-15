@@ -30,4 +30,12 @@ describe('TabPanel', function() {
     expect(panel.prop('aria-labelledby')).toBe(data.props.tabId);
     expect(panel.prop('aria-hidden')).toBe('false');
   });
+
+  it('adds additional class names', () => {
+    const className = 'foo-panel';
+    const wrapper = shallowRender({ className: className }).wrapper;
+
+    expect(wrapper.hasClass(className)).toBe(true);
+    expect(wrapper.hasClass('ds-c-tabs__panel')).toBe(true);
+  });
 });
