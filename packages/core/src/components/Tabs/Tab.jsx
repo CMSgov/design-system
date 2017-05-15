@@ -1,31 +1,34 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
 
 export class Tab extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.href = this.props.href || `#${this.props.panelId}`;
   }
 
   handleClick(evt) {
     if (this.props.onClick) {
       this.props.onClick(
         evt,
+        this.props.panelId,
         this.props.id,
-        this.props.panelId
+        this.href
       );
     }
   }
 
   render() {
-    const href = this.props.href || `#${this.props.panelId}`;
+    const classes = classnames('ds-c-tabs__item', this.props.className);
 
     return (
       <a
         aria-selected={String(this.props.selected)}
         aria-controls={this.props.panelId}
-        className='ds-c-tabs__item'
-        href={href}
+        className={classes}
+        href={this.href}
         id={this.props.id}
         onClick={this.handleClick}
         role='tab'
@@ -43,8 +46,11 @@ Tab.defaultProps = {
 Tab.propTypes = {
   children: PropTypes.node.isRequired,
   /**
-   * A unique `id` for the tab. The associated tab panel could then use this
-   * for its `aria-labelledby` attribute.
+   * Additional classes to be added to the root tab element.
+   */
+  className: PropTypes.string,
+  /**
+   * A unique `id`, to be used on the rendered tab element.
    */
   id: PropTypes.string.isRequired,
   /**
@@ -59,7 +65,7 @@ Tab.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * The `id` of the associated tab panel. Used for the `aria-controls` attribute
+   * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute
    */
   panelId: PropTypes.string.isRequired,
   selected: PropTypes.bool

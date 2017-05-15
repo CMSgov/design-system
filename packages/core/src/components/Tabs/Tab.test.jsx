@@ -34,8 +34,9 @@ describe('Tab', function() {
     data.wrapper.simulate('click');
 
     expect(onClickMock.mock.calls.length).toBe(1);
-    expect(onClickMock.mock.calls[0][1]).toBe(data.props.id);
-    expect(onClickMock.mock.calls[0][2]).toBe(data.props.panelId);
+    expect(onClickMock.mock.calls[0][1]).toBe(data.props.panelId);
+    expect(onClickMock.mock.calls[0][2]).toBe(data.props.id);
+    expect(onClickMock.mock.calls[0][3]).toBe(`#${data.props.panelId}`);
   });
 
   it('is selected', () => {
@@ -46,5 +47,12 @@ describe('Tab', function() {
   it('has custom href attribute', () => {
     const data = shallowRender({ href: '/example' });
     expect(data.wrapper.prop('href')).toBe(data.props.href);
+  });
+
+  it('adds additional class names', () => {
+    const className = 'foo-boo';
+    const data = shallowRender({ className: className });
+    expect(data.wrapper.hasClass('ds-c-tabs__item')).toBe(true);
+    expect(data.wrapper.hasClass(className)).toBe(true);
   });
 });
