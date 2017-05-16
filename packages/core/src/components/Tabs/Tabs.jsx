@@ -83,13 +83,15 @@ export class Tabs extends React.PureComponent {
   renderChildren() {
     return React.Children.map(this.props.children, child => {
       if (isTabPanel(child)) {
-        // Extend props on panels before rendering
+        // Extend props on panels before rendering. Also removes any props
+        // that don't need passed into TabPanel but are used to generate
+        // the Tab components
         return React.cloneElement(
           child,
           {
-            className: this.props.panelClassName,
             selected: this.state.selectedId === child.props.id,
-            tab: undefined, // delete tab prop, it's no longer needed
+            tab: undefined,
+            tabHref: undefined,
             tabId: panelTabId(child)
           }
         );
@@ -106,7 +108,8 @@ export class Tabs extends React.PureComponent {
     const tabs = panels.map(panel => {
       return (
         <Tab
-          className={this.props.tabClassName}
+          className={panel.props.tabClassName}
+          href={panel.props.tabHref}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
@@ -153,14 +156,6 @@ Tabs.propTypes = {
    * `(selectedId, prevSelectedId) => void`
    */
   onChange: PropTypes.func,
-  /**
-   * Additional classes to be added to each `TabPanel`
-   */
-  panelClassName: PropTypes.string,
-  /**
-   * Additional classes to be added to each `Tab`
-   */
-  tabClassName: PropTypes.string,
   /**
    * Additional classes to be added to the component wrapping the tabs
    */

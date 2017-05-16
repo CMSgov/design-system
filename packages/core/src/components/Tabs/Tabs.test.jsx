@@ -23,16 +23,31 @@ function shallowRender(customProps = {}, children) {
 }
 
 describe('Tabs', function() {
-  it('renders tabs', () => {
-    const data = shallowRender();
+  it('renders a tab', () => {
+    const children = [
+      <TabPanel
+        key='1'
+        id={defaultPanelProps.id}
+        tab={defaultPanelProps.tab}
+        tabClassName='bar'
+        tabHref='/foo'
+      >
+        {defaultPanelChildren}
+      </TabPanel>
+    ];
+    const data = shallowRender(undefined, children);
     const tabs = data.wrapper.find('Tab');
 
     expect(tabs.length)
       .toBe(1);
+    expect(tabs.first().hasClass('bar'))
+      .toBe(true);
     expect(tabs.first().prop('id'))
       .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
     expect(tabs.first().prop('panelId'))
       .toBe(defaultPanelProps.id);
+    expect(tabs.first().prop('href'))
+      .toBe('/foo');
     expect(tabs.first().children().text())
       .toBe(defaultPanelProps.tab);
   });
@@ -55,22 +70,6 @@ describe('Tabs', function() {
     const list = data.wrapper.find('.ds-c-tabs');
 
     expect(list.hasClass(className)).toBe(true);
-  });
-
-  it('adds additional class names to each tab', () => {
-    const className = 'foo-bar';
-    const data = shallowRender({ tabClassName: className });
-    const tabs = data.wrapper.find('Tab');
-
-    expect(tabs.first().hasClass(className)).toBe(true);
-  });
-
-  it('adds additional class names to each panel', () => {
-    const className = 'foo-bar';
-    const data = shallowRender({ panelClassName: className });
-    const panels = data.wrapper.find('TabPanel');
-
-    expect(panels.first().hasClass(className)).toBe(true);
   });
 
   describe('with multiple panels', () => {
