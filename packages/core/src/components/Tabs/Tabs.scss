@@ -88,20 +88,6 @@ Style guide: components.tabs.react-tabpanel
 
 Style guide: components.tabs.react-tab
 */
-
-@keyframes expandActiveTabBorder {
-  // Use 3d transforms for better performance
-  from {
-    opacity: 0;
-    transform: scale3d(0, 1, 1);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-  }
-}
-
 .ds-c-tabs__item {
   background-color: $color-background;
   border-bottom: 1px solid $border-color;
@@ -135,22 +121,29 @@ Style guide: components.tabs.react-tab
     border-right: 1px solid $border-color;
   }
 
+  // A pseudo-element for the top border on selected tabs
+  &::after {
+    background-color: $color-primary;
+    content: '';
+    height: $spacer-half;
+    left: -1px;
+    opacity: 0;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    transform: scale3d(0, 1, 1);
+    transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
+  }
+
   // States
   &[aria-selected='true'] {
     border-bottom-color: $color-white;
     color: $color-primary;
     pointer-events: none;
 
-    // Use pseudo-element for top border to avoid weird default border rendering
     &::after {
-      animation: $animation-speed-2 expandActiveTabBorder $ease-in-out-expo both;
-      background-color: $color-primary;
-      content: '';
-      height: $spacer-half;
-      left: -1px;
-      position: absolute;
-      right: -1px;
-      top: -1px;
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
     }
   }
 
