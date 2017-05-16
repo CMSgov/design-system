@@ -88,6 +88,42 @@ Object.keys(_FormLabel).forEach(function (key) {
   });
 });
 
+var _Tab = require('./Tabs/Tab');
+
+Object.keys(_Tab).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tab[key];
+    }
+  });
+});
+
+var _Tabs = require('./Tabs/Tabs');
+
+Object.keys(_Tabs).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tabs[key];
+    }
+  });
+});
+
+var _TabPanel = require('./Tabs/TabPanel');
+
+Object.keys(_TabPanel).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _TabPanel[key];
+    }
+  });
+});
+
 var _TextField = require('./TextField/TextField');
 
 Object.keys(_TextField).forEach(function (key) {

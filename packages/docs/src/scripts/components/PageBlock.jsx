@@ -111,7 +111,7 @@ class PageBlock extends React.PureComponent {
 
   render() {
     return (
-      <article className='ds-u-padding-x--6 ds-u-margin-y--6 l-content'>
+      <article className='ds-u-margin-y--6 l-content'>
         {this.header()}
         {this.description()}
         {this.markupExamples()}

@@ -25,7 +25,7 @@ class PageHeader extends React.PureComponent {
 
   render() {
     return (
-      <heading className='ds-u-border-bottom--1 ds-u-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
+      <heading className='ds-u-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
         {this.statusPill()}
         <h1
           className='ds-display'

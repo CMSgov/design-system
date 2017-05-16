@@ -6,6 +6,7 @@ import PageBlock from './PageBlock';
 import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { TabPanel, Tabs } from '@cmsgov/design-system-core';
 
 class Page extends React.PureComponent {
   nestedSections() {
@@ -24,8 +25,27 @@ class Page extends React.PureComponent {
     return (
       <div>
         <PageHeader {...this.props} />
-        <PageBlock {...this.props} hideHeader />
-        {this.nestedSections()}
+
+        <Tabs tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'>
+          <TabPanel
+            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-top--0'
+            id='code'
+            tab='Code'
+          >
+            <PageBlock {...this.props} hideHeader />
+            {this.nestedSections()}
+          </TabPanel>
+          <TabPanel
+            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-top--3'
+            id='guidance'
+            tab='Guidance'
+          >
+            <h1 className='h2'>Accessibility</h1>
+            <ul className='ds-c-list'>
+              <li>Use an anchor link (<code>a</code>) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. Note: You need to implement the logic for selecting the correct tab based on the current URL.</li>
+            </ul>
+          </TabPanel>
+        </Tabs>
       </div>
     );
   }
