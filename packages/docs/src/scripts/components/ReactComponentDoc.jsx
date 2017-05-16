@@ -10,6 +10,8 @@ import ReactPropDocs from './ReactPropDocs';
 
 class ReactComponentDoc extends React.PureComponent {
   renderExample() {
+    if (this.props.hideExample) return;
+
     const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
     return <ReactComponentExample renderComponent={renderComponent} />;
   }
@@ -28,6 +30,7 @@ class ReactComponentDoc extends React.PureComponent {
 
 ReactComponentDoc.propTypes = {
   description: PropTypes.string,
+  hideExample: PropTypes.bool,
   packagePath: PropTypes.string.isRequired,
   /* eslint-disable react/forbid-prop-types */
   propDocs: PropTypes.object

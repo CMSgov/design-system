@@ -1,0 +1,194 @@
+@import '../../settings/index';
+@import '../../tools/index';
+
+/*
+Tabs
+
+Tabs can be used as a navigation pattern, allowing a user to switch between panels of related content within the same context.
+
+@status prototype
+
+Markup:
+<div class="ds-c-tabs" role="tablist" aria-label="Settings">
+  <a
+    class="ds-c-tabs__item"
+    href="#panel-profile"
+    role="tab"
+    aria-selected="true"
+    aria-controls="panel-profile"
+    id="tab-profile"
+  >
+    <svg class="ds-u-margin-right--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
+      <use xlink:href="{{root}}/public/images/symbols.svg#placeholder"></use>
+    </svg>Profile
+  </a>
+  <a
+    class="ds-c-tabs__item"
+    href="#panel-comms"
+    role="tab"
+    aria-selected="false"
+    aria-controls="panel-comms"
+    id="tab-comms"
+  >
+    <svg class="ds-u-margin-right--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
+      <use xlink:href="{{root}}/public/images/symbols.svg#placeholder"></use>
+    </svg>Communication preferences
+  </a>
+</div>
+<div class="ds-c-tabs__panel" id="panel-profile" aria-labelledby="tab-profile" role="tabpanel">
+  Note: This is just an example of the HTML markup. See the React example for
+  a functioning example.
+</div>
+<div class="ds-c-tabs__panel" id="panel-comms" aria-hidden="true" aria-labelledby="tab-comms" aria-selected="false" role="tabpanel">
+  Communication preferences content
+</div>
+
+Style guide: components.tabs
+*/
+
+/*
+`<Tabs>`
+
+@react-component Tabs
+
+Style guide: components.tabs.react-tabs
+*/
+.ds-c-tabs {
+  border-bottom: 1px solid $border-color;
+  display: flex;
+}
+
+/*
+`<TabPanel>`
+
+@hide-example
+
+@react-component TabPanel
+
+Style guide: components.tabs.react-tabpanel
+*/
+
+.ds-c-tabs__panel {
+  background-color: $color-background;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  padding: $spacer-3;
+
+  &[aria-hidden='true'] {
+    /* stylelint-disable declaration-no-important */
+    display: none !important;
+  }
+}
+
+/*
+`<Tab>`
+
+@react-component Tab
+
+Style guide: components.tabs.react-tab
+*/
+.ds-c-tabs__item {
+  background-color: $color-background;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  color: $color-base;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $small-font-size;
+  font-weight: $font-bold;
+  line-height: $reset-line-height;
+  margin-bottom: -1px;
+  padding: $spacer-2 $spacer-1;
+  position: relative;
+  text-decoration: none;
+  transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+
+  @media (min-width: $width-sm) {
+    padding-left: $spacer-2;
+    padding-right: $spacer-2;
+  }
+
+  // Increase size on larger screens
+  @media (min-width: $width-md) {
+    font-size: $base-font-size;
+    padding-left: $spacer-3;
+    padding-right: $spacer-3;
+  }
+
+  &:last-child {
+    border-right: 1px solid $border-color;
+  }
+
+  // A pseudo-element for the top border on selected tabs
+  &::after {
+    background-color: $color-primary;
+    content: '';
+    height: $spacer-half;
+    left: -1px;
+    opacity: 0;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    transform: scale3d(0, 1, 1);
+    transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
+  }
+
+  // States
+  &[aria-selected='true'] {
+    border-bottom-color: $color-white;
+    color: $color-primary;
+    pointer-events: none;
+
+    &::after {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    color: $color-primary;
+  }
+
+  &:active {
+    color: $color-primary-darker;
+  }
+
+  // SVG icons
+  > svg {
+    @include inline-icon;
+  }
+}
+
+/*
+Guidelines
+
+## Accessibility
+
+- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. Note: You'll need to implement the logic for selecting the correct tab based on the current URL.
+- Ensure the HTML markup includes the proper ARIA attributes:
+  - For tabs: `role`, `aria-selected`, `aria-controls`
+  - For the tabs list parent: `role`, `aria-label`
+  - For a tab panel: `role`, `aria-labelledby`
+
+## Guidance
+
+### Responsiveness
+
+Hiding tabs on small screens is not a user-friendly solution. If the tabs can't fit on one row on small screens, consider using utility classes to apply additional responsive styles or use a different pattern.
+
+### General guidance
+
+- The content within tab panels should be related.
+- Each Tab label should be descriptive of its content and set the user's expectations. Labels shoud be no more than two words.
+- A maximum of three tabs should be displayed. Consider using a different pattern if your content requries being split into more than three panels.
+
+## Further reading
+
+- [How Tabs Should Work](https://24ways.org/2015/how-tabs-should-work/)
+- [Simple ARIA tab interface](http://heydonworks.com/practical_aria_examples/#tab-interface)
+
+Style guide: components.tabs.guidelines
+*/
