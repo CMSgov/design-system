@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-export const TabPanel = function(props) {
+export function TabPanel(props) {
   const classes = classnames('ds-c-tabs__panel', props.className);
 
   return (
