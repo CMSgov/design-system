@@ -44,8 +44,11 @@ function generatePage(routes, page, rootPath) {
     .then(html => updateFile(html, page, rootPath));
 }
 
-// To ensure we're not unnecessarily regenerating each page each time the
-// generate-pages task is called, we first compare the checksums.
+/**
+ * To ensure we're not unnecessarily regenerating each page each time the
+ * generate-pages task is called, we first compare the checksums.
+ * @return {Boolean} Should the file be regenerated?
+ */
 function checkCache(html, path) {
   return fs.readFile(path, 'utf8')
     .then(data => {

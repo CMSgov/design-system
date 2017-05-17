@@ -101,6 +101,7 @@ class PageBlock extends React.PureComponent {
         <ReactComponentDoc
           description={doc.description}
           displayName={doc.displayName}
+          hideExample={this.props.hideExample}
           packagePath={this.packagePath(path)}
           propDocs={doc.props}
         />
@@ -123,6 +124,7 @@ class PageBlock extends React.PureComponent {
 PageBlock.propTypes = {
   description: PropTypes.string,
   header: PropTypes.string.isRequired,
+  hideExample: PropTypes.bool,
   hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,

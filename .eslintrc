@@ -29,6 +29,7 @@
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
+    "jest/valid-expect": "error",
     "no-unused-vars": ["error", {ignoreRestSiblings: true}],
     "sort-imports": "error",
     "react/forbid-prop-types": "error",
