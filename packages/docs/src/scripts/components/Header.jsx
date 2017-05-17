@@ -7,9 +7,6 @@ const Header = () => {
         <strong>Alpha status</strong>:
         The design system is under active development and working towards a 1.0 release.
       </div>
-      <div className='ds-u-padding--3'>
-        <h1 className='ds-h3'>CMS.gov Design System</h1>
-      </div>
     </header>
   );
 };

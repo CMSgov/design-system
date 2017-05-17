@@ -6,18 +6,82 @@ import PageBlock from './PageBlock';
 import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TabPanel, Tabs } from '@cmsgov/design-system-core';
+import { Tabs, TabPanel } from '@cmsgov/design-system-core';
+
+function isGuidanceSection(section) {
+  console.log(section);
+  return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));
+}
+
+//  Sort nested sections by their position in the file
+function sortSections(sections) {
+  return sections.concat([])
+    .sort((a, b) => a.source.line - b.source.line);
+}
 
 class Page extends React.PureComponent {
-  nestedSections() {
-    if (this.props.sections.length && this.props.depth >= 2) {
-      //  Sort nested sections by their position in the file
-      let sections = this.props.sections.concat([])
-        .sort((a, b) => a.source.line - b.source.line);
+  constructor(props) {
+    super(props);
+    this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
+  }
 
-      return sections.map(section => (
+  usageSections() {
+    return this.props.sections.filter(s => !isGuidanceSection(s));
+  }
+
+  guidanceSections() {
+    return this.props.sections.filter(isGuidanceSection);
+  }
+
+  renderChildPageBlocks(sections) {
+    if (sections.length) {
+      return sortSections(sections).map(section => (
         <PageBlock key={section.referenceURI} {...section} />
       ));
+    }
+  }
+
+  renderBody() {
+    return <PageBlock {...this.props} hideHeader />;
+  }
+
+  renderContent() {
+    if (this.hasTabs) {
+      return (
+        <Tabs tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'>
+          <TabPanel
+            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+            id='usage'
+            tab='Usage'
+          >
+            {this.renderBody()}
+            {this.renderChildPageBlocks(this.usageSections())}
+          </TabPanel>
+          {this.renderGuidanceTabPanel()}
+        </Tabs>
+      );
+    }
+
+    return (
+      <div className='ds-u-border-top--1 ds-u-padding-x--6'>
+        {this.renderBody()}
+      </div>
+    );
+  }
+
+  renderGuidanceTabPanel() {
+    const sections = this.guidanceSections();
+
+    if (sections.length) {
+      return (
+        <TabPanel
+          className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+          id='guidance'
+          tab='Guidance'
+        >
+          {this.renderChildPageBlocks(sections)}
+        </TabPanel>
+      );
     }
   }
 
@@ -25,27 +89,7 @@ class Page extends React.PureComponent {
     return (
       <div>
         <PageHeader {...this.props} />
-
-        <Tabs tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'>
-          <TabPanel
-            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-top--0'
-            id='code'
-            tab='Code'
-          >
-            <PageBlock {...this.props} hideHeader />
-            {this.nestedSections()}
-          </TabPanel>
-          <TabPanel
-            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-top--3'
-            id='guidance'
-            tab='Guidance'
-          >
-            <h1 className='h2'>Accessibility</h1>
-            <ul className='ds-c-list'>
-              <li>Use an anchor link (<code>a</code>) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. Note: You need to implement the logic for selecting the correct tab based on the current URL.</li>
-            </ul>
-          </TabPanel>
-        </Tabs>
+        {this.renderContent()}
       </div>
     );
   }

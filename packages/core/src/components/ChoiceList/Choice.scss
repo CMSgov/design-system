@@ -20,40 +20,13 @@ Checkbox & Radio
 
 @status prototype
 
-## Accessibility
-
-- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single check.
-- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
-- Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
-
-## Guidelines
-
-- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
-- List options vertically if possible; horizontal listings can make it difficult to tell which label pertains to which checkbox.
-- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
-- If you customize, make sure selections are adequately spaced for touch screens.
-- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. If you are unsure, leave nothing selected by default.
-
-## Theming
-
-The following Sass variables can be overridden to theme checkbox/radio options:
-
-- `$choice-border-width`
-- `$choice-border-color`
-- `$choice-border-color-inverse`
-- `$choice-checked-background-color`
-
-## Further reading
-
-- ["We've updated the radios and checkboxes on GOV.UK"](https://designnotes.blog.gov.uk/2016/11/30/weve-updated-the-radios-and-checkboxes-on-gov-uk/)
+@uswds https://standards.usa.gov/components/form-controls
 
 Style guide: components.choice
 */
 
 /*
 Checkbox
-
-@uswds https://standards.usa.gov/components/form-controls/#checkboxes
 
 Checkboxes allow users to select one or more options from a visible list.
 
@@ -88,26 +61,7 @@ Style guide: components.choice.checkbox
 */
 
 /*
----
-
-## Usability
-
-### When to use
-- When a user can select any number of choices from a set list.
-- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
-- When users need to see all the available options at a glance.
-
-### When to consider something different
-- If there are too many options to display on a mobile screen.
-- If a user can only select one option from a list (use `radio` buttons instead).
-
-Style guide: components.choice.checkbox-details
-*/
-
-/*
 Radio option
-
-@uswds https://standards.usa.gov/components/form-controls/#radio-buttons
 
 Markup:
 <fieldset class="ds-c-fieldset ds-u-margin-top--0">
@@ -132,24 +86,6 @@ Markup:
 </div>
 
 Style guide: components.choice.radio
-*/
-
-/*
----
-
-## Usability
-
-### When to use
-
-- When users need to select only one option out of a set of mutually exclusive choices.
-- When the number of available options can fit onto a mobile screen.
-
-### When to consider something else
-- Consider checkboxes if users need to select more than one option or if there is only one item to select.
-- Consider a dropdown if you don’t have enough space to list out all available options.
-- If users should be able to select zero of the options.
-
-Style guide: components.choice.radio-details
 */
 
 // Hide the default browser checkbox/radio button since we'll
@@ -250,4 +186,54 @@ React - `<ChoiceList>`
 @react-component ChoiceList
 
 Style guide: components.choice.choicelist-react
+*/
+
+/*
+---
+
+## Accessibility
+
+- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single check.
+- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
+- Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
+
+## Guidelines
+
+- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
+- List options vertically if possible; horizontal listings can make it difficult to tell which label pertains to which checkbox.
+- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
+- If you customize, make sure selections are adequately spaced for touch screens.
+- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. If you are unsure, leave nothing selected by default.
+
+## Theming
+
+The following Sass variables can be overridden to theme checkbox/radio options:
+
+- `$choice-border-width`
+- `$choice-border-color`
+- `$choice-border-color-inverse`
+- `$choice-checked-background-color`
+
+## Checkboxes
+
+### When to use
+- When a user can select any number of choices from a set list.
+- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
+- When users need to see all the available options at a glance.
+
+### When to consider something different
+- If there are too many options to display on a mobile screen.
+- If a user can only select one option from a list (use `radio` buttons instead).
+
+## Radio buttons
+
+- When users need to select only one option out of a set of mutually exclusive choices.
+- When the number of available options can fit onto a mobile screen.
+
+### When to consider something else
+- Consider checkboxes if users need to select more than one option or if there is only one item to select.
+- Consider a dropdown if you don’t have enough space to list out all available options.
+- If users should be able to select zero of the options.
+
+Style guide: components.choice.guidance
 */
