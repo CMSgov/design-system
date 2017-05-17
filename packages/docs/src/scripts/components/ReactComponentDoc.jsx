@@ -19,7 +19,10 @@ class ReactComponentDoc extends React.PureComponent {
   render() {
     return (
       <section>
-        <div dangerouslySetInnerHTML={{__html: this.props.description}} />
+        <div
+          className='ds-u-measure--wide'
+          dangerouslySetInnerHTML={{__html: this.props.description}}
+        />
         {this.renderExample()}
         <h3>Props</h3>
         <ReactPropDocs propDocs={this.props.propDocs} />

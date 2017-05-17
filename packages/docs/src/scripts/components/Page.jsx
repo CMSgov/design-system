@@ -1,29 +1,95 @@
 /**
  * A "page" is generated from a top-level KSS comment block (ie. one that
- * doesn't have a parent reference).
+ * doesn't have a parent reference), or a Markdown file.
  */
 import PageBlock from './PageBlock';
+import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
+/* eslint-disable sort-imports */
+import { Tabs, TabPanel } from '@cmsgov/design-system-core';
+
+function isGuidanceSection(section) {
+  return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));
+}
+
+//  Sort nested sections by their position in the file
+function sortSections(sections) {
+  return sections.concat([])
+    .sort((a, b) => a.source.line - b.source.line);
+}
 
 class Page extends React.PureComponent {
-  childSections() {
-    if (this.props.sections.length && this.props.depth >= 2) {
-      // Inline sections are sorted by their position in the file
-      let sections = this.props.sections.concat([])
-        .sort((a, b) => a.source.line - b.source.line);
+  constructor(props) {
+    super(props);
+    this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
+  }
 
-      return sections.map(section => (
+  usageSections() {
+    return this.props.sections.filter(s => !isGuidanceSection(s));
+  }
+
+  guidanceSections() {
+    return this.props.sections.filter(isGuidanceSection);
+  }
+
+  renderChildPageBlocks(sections) {
+    if (sections.length) {
+      return sortSections(sections).map(section => (
         <PageBlock key={section.referenceURI} {...section} />
       ));
+    }
+  }
+
+  renderBody() {
+    return <PageBlock {...this.props} hideHeader />;
+  }
+
+  renderContent() {
+    if (this.hasTabs) {
+      return (
+        <Tabs tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'>
+          <TabPanel
+            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+            id='usage'
+            tab='Usage'
+          >
+            {this.renderBody()}
+            {this.renderChildPageBlocks(this.usageSections())}
+          </TabPanel>
+          {this.renderGuidanceTabPanel()}
+        </Tabs>
+      );
+    }
+
+    return (
+      <div className='ds-u-border-top--1 ds-u-padding-x--6'>
+        {this.renderBody()}
+      </div>
+    );
+  }
+
+  renderGuidanceTabPanel() {
+    const sections = this.guidanceSections();
+
+    if (sections.length) {
+      return (
+        <TabPanel
+          className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+          id='guidance'
+          tab='Guidance'
+        >
+          {this.renderChildPageBlocks(sections)}
+        </TabPanel>
+      );
     }
   }
 
   render() {
     return (
       <div>
-        <PageBlock {...this.props} />
-        {this.childSections()}
+        <PageHeader {...this.props} />
+        {this.renderContent()}
       </div>
     );
   }

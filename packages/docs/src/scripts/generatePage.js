@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const fs = require('mz/fs');
 const React = require('react');
 const {render, template} = require('rapscallion');
-const Docs = require('./components/Docs').default;
+const Docs = require('./Docs').default;
 const path = require('path');
 const recursive = require('mkdir-recursive');
 
