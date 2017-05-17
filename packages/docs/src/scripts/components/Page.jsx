@@ -6,6 +6,7 @@ import PageBlock from './PageBlock';
 import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
+/* eslint-disable sort-imports */
 import { Tabs, TabPanel } from '@cmsgov/design-system-core';
 
 function isGuidanceSection(section) {

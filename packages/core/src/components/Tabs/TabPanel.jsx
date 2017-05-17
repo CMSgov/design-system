@@ -33,6 +33,7 @@ TabPanel.propTypes = {
    */
   id: PropTypes.string.isRequired,
   selected: PropTypes.bool,
+  /* eslint-disable react/no-unused-prop-types */
   /**
    * The associated tab's label. Only applicable when the panel is a
    * child of `Tabs`.
@@ -48,6 +49,7 @@ TabPanel.propTypes = {
    * child of `Tabs`.
    */
   tabHref: PropTypes.string,
+  /* eslint-enable react/no-unused-prop-types */
   // tabId is actually required, but it's not marked here since we generate
   // this id within the Tabs component. Otherwise React will yell at you even
   // though it's ultimately being passed in.
