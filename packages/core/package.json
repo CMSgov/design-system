@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Core CSS and React components",
+  "description": "Core Sass/CSS and React design system assets",
   "repository": "CMSgov/design-system",
   "main": "dist/index.js",
   "dependencies": {
