@@ -1,3 +1,16 @@
+## Welcome!
+
+We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
+
+Below you'll find information on how to setup a local development environment and how to contribute code to the design system.
+
+In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
+
+- Coding guidelines
+- Guiding principles
+- How to write documentation
+- etc.
+
 ## Running locally
 
 This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
@@ -15,25 +28,32 @@ _Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merge
 
 ### Scripts
 
-Additional scripts exist and can all be run from the root level of the repo:
+These scripts can all be run from the root level of the repo:
 
-- `yarn run start` - You'll want to run this when you're developing components. It compiles Sass, transpiles JavaScript, and runs a local documentation instance where you can preview changes.
-- `yarn run build` - compile/transpile/uglify everything and makes things release-ready.
-- `yarn run bump` - increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
-- `yarn run generate` - Generates the necessary files for a new core component
-  - `yarn run g` - Alias for `yarn run generate`
-- `yarn test` - tests and lints the codebase.
+- `yarn run start`
+  - Starts local server running the documentation site
+  - Regenerates documentation when files change
+- `yarn run build`
+  - Compile/transpile/uglify everything and makes things release-ready.
+- `yarn run bump`
+  - Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+- `yarn run generate`
+  - Generates the necessary files for a new core component
+  - Alias: `yarn run g`
+- `yarn test`
+  - Runs JS unit tests
+  - Lints JS using ESLint
+  - Lints Sass using stylelint
+- `yarn run test:watch`
+  - Runs JS unit tests and will continue to run tests as files change
 
-## Development process
+## Submitting a pull request
 
-1. Branch off of `staging`: `git checkout -b username/branch-name`.
-1. Commit your changes
-1. Make a pull request against the `staging` branch and format your pull request description using the following format:
-  - **Added:** for new features or components. _Include a screenshot for new visual elements._
-  - **Changed:** for changes in existing functionality or design. If the change was visual, _include a comparison screenshot showing the before and after the visual change._
-  - **Deprecated:** for once-stable features or components removed in upcoming releases.
-  - **Removed:** for deprecated features or components removed in this release.
-  - **Fixed:** for any bug fixes.
+Here are a few guidelines to follow when submitting a pull request:
+
+- Branch off of `staging`: `git checkout -b username/branch-name`
+- Commit your changes
+- Make a pull request against the `staging` branch
 
 ## Merging pull requests
 
@@ -45,11 +65,22 @@ Use the "**Squash and merge**" option when merging pull requests into the `stagi
 
 Use the "**Create a merge commit**" option when merging `staging` into `master`. If the pull request includes a version bump, set the commit title to the version number and include the PR # in the commit description.
 
-## Additional guidelines
+## Licenses and attribution
 
-**[Please view the Wiki](https://github.com/CMSgov/design-system/wiki)** for additional information like:
+### A few parts of this project are not in the public domain
 
-- Coding guidelines
-- Guiding principles
-- How to write documentation
-- etc.
+For complete attribution and licensing information for parts of the project that are not in the public domain, see `LICENSE.md`.
+
+### The rest of this project is in the public domain
+
+The rest of this project is in the worldwide public domain.
+
+This project is in the public domain within the United States, and
+copyright and related rights in the work worldwide are waived through
+the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+
+### Contributions will be released into the public domain
+
+All contributions to this project will be released under the CC0
+dedication. By submitting a pull request, you are agreeing to comply
+with this waiver of copyright interest.
