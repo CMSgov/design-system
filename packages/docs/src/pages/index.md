@@ -67,4 +67,6 @@ Sass variables exist for customize the expect directories:
 - `$font-path`
 - `$image-path`
 
-[**View example projects**](https://github.com/CMSgov/design-system/tree/master/examples/) to see additional ways you can use the design system and incorporate it into your process.
+## Examples
+
+[**View example projects**](https://github.com/CMSgov/design-system/tree/master/examples/) to see ways you can use the design system and incorporate it into your development process.
