@@ -2,6 +2,8 @@
 
 We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
 
+One of our goals is to ensure a welcoming environment for all contibutors. Please take a look at our [Code of Conduct](https://github.com/CMSgov/design-system/blob/master/CODE_OF_CONDUCT.md) to learn more.
+
 Below you'll find information on how to setup a local development environment and how to contribute code to the design system.
 
 In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
