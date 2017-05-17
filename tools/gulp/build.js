@@ -13,9 +13,6 @@ module.exports = (gulp) => {
     return del(['packages/core/dist']);
   });
 
-  // This could be simplified once the fonts task removed
-  gulp.task('build:assets', ['sass', 'fonts', 'build:react']);
-
   // Transpile React components
   gulp.task('build:react', () => {
     dutil.logMessage('🐠 ', 'Babelfying React components');
@@ -39,8 +36,10 @@ module.exports = (gulp) => {
 
     runSequence(
       'build:clean-dist',
+      'build:react', // Important: This needs ran before docs:build!
       'docs:build',
-      'build:assets',
+      'sass',
+      'fonts',
       'build:success',
       'stats',
       done
