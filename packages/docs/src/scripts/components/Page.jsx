@@ -9,7 +9,6 @@ import React from 'react';
 import { Tabs, TabPanel } from '@cmsgov/design-system-core';
 
 function isGuidanceSection(section) {
-  console.log(section);
   return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));
 }
 
