@@ -1,7 +1,7 @@
 {
   "name": "design-system",
   "private": true,
-  "description": "Styleguide and React component library",
+  "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
     "bootstrap:yarn": "yerna install",

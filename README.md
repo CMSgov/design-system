@@ -4,7 +4,7 @@
 
 You're currently at the root of a monorepo which contains multiple projects in the `packages` directory. The root of this project has code related to the development and build process, so it's probably not that useful to you unless you're a contributor.
 
-**This repo includes the following projects. View the README in each of these for more details.**
+**This repo includes the following. View the README in each of these for more details.**
 
 ### [Core NPM package](packages/core/)
 
@@ -14,9 +14,13 @@ This package directory contains the core CSS and React components for the design
 
 This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.
 
-### [Yeoman generator](packages/generator-cmsgov)
+### [Yeoman generator](packages/generator-cmsgov/)
 
 A [Yeoman](http://yeoman.io/) generator used in the development process. Again, unless you're a contributor, this directory isn't that interesting to you.
+
+## Examples
+
+Examples of the design system in use can be found in the [`examples` directory](tree/master/examples).
 
 ## Contributing
 
