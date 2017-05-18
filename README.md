@@ -1,6 +1,6 @@
 # CMSGov Design System
 
-> A shared set of design and code elements for creating accessible and consistent websites. An extension of the [US Web Design Standards](https://standards.usa.gov/)
+> A shared set of design and development resources for creating accessible and consistent websites. The design system includes things like principles, high-level guidelines (UX conventions, UI code conventions, etc), UI components, documentation, tools, resources, and more.
 
 You're currently at the root of a monorepo which contains multiple projects in the `packages` directory. The root of this project has code related to the development and build process, so it's probably not that useful to you unless you're a contributor.
 

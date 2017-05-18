@@ -3,7 +3,11 @@ title: Getting started
 weight: -100
 ---
 
-You can download a .zip of the design system directly from GitHub's [Releases](CMSgov/design-system/releases) page, however we suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.
+<p class="ds-text--lead">The design system is a shared set of design and development resources for creating accessible and consistent websites. The design system includes things like principles, high-level guidelines (UX conventions, UI code conventions, etc), UI components, documentation, tools, resources, and more.</p>
+
+## Installation
+
+ We suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release. You can also download a .zip of the design system directly from GitHub's [Releases](CMSgov/design-system/releases)
 
 ```
 npm install --save @cmsgov/design-system-core
