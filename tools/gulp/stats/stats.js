@@ -107,7 +107,7 @@ function getCSSStats(cssPath, skipmaster = false) {
 }
 
 /**
- * @return {Promise} Resolves with the sum of all .woff file sizes
+ * @return {Promise} Resolves with the sum of all .woff2 file sizes
  */
 function getCurrentBranchFontSizes() {
   const dir = path.resolve(__dirname, `../../../${fontsDir}`);
@@ -115,8 +115,8 @@ function getCurrentBranchFontSizes() {
   return fs.readdir(dir)
     .then(files => {
       return Promise.all(
-        // Array of .woff file sizes
-        files.filter(name => name.match(/\.woff$/))
+        // Array of .woff2 file sizes
+        files.filter(name => name.match(/\.woff2$/))
           .map(name => {
             return fs.stat(path.resolve(dir, name))
               .then(stats => stats.size);
@@ -134,7 +134,7 @@ function getMasterBranchFontSizes() {
     .then(commit => commit.getEntry(fontsDir))
     .then(entry => entry.getTree())
     .then(tree => tree.entries())
-    .then(entries => entries.filter(e => e.name().match(/\.woff$/))) // return .woff entries
+    .then(entries => entries.filter(e => e.name().match(/\.woff2$/))) // return .woff2 entries
     .then(entries => {
       return Promise.all(
         // Array of file sizes
@@ -206,7 +206,7 @@ improves performance`
     ),
     row('File size', sizeValues, 'See above'),
     row(
-      'Font size\n(.woff)',
+      'Font size\n(.woff2)',
       fontSizeValues,
       `Each @font-face adds to the page
 weight. See above`
@@ -293,7 +293,7 @@ function saveCurrentCSSStats(branchStats, filename) {
 }
 
 /**
- * Analyze the file sizes of all .woff font files and add to the stats object
+ * Analyze the file sizes of all .woff2 font files and add to the stats object
  * @param {Object} branchStats - Current and master branch stats
  * @return {Promise}
  */
