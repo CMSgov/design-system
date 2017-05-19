@@ -44,7 +44,7 @@ class PageBlock extends React.PureComponent {
     if (this.props.description) {
       return (
         <div
-          className='ds-u-margin-top--2 ds-u-measure--wide'
+          className='c-details ds-u-margin-top--2 ds-u-measure--wide'
           dangerouslySetInnerHTML={{
             __html: this.props.description
           }}

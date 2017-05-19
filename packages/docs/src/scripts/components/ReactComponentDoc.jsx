@@ -20,7 +20,7 @@ class ReactComponentDoc extends React.PureComponent {
     return (
       <section>
         <div
-          className='ds-u-measure--wide'
+          className='c-details ds-u-margin-y--2 ds-u-measure--wide'
           dangerouslySetInnerHTML={{__html: this.props.description}}
         />
         {this.renderExample()}
