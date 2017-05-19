@@ -3,36 +3,90 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 describe('Page', () => {
-  it('should sort nested sections by line number', () => {
-    const page = {
-      header: 'Parent',
-      depth: 2,
-      sections: [
-        {
-          header: 'Child A',
-          referenceURI: 'a.b.c',
-          source: {
-            filename: '',
-            line: 10,
-            path: ''
-          }
-        }, {
-          header: 'Child B',
-          referenceURI: 'a.b.c.d',
-          source: {
-            filename: '',
-            line: 1,
-            path: ''
-          }
-        }
-      ]
-    };
+  describe('when top-level page', () => {
+    let page;
 
-    const wrapper = shallow(<Page {...page} />);
-    const blocks = wrapper.find('PageBlock');
+    beforeEach(() => {
+      page = {
+        description: 'Hello world',
+        header: 'Getting started',
+        referenceURI: '1.0/'
+      };
+    });
 
-    expect(blocks.length).toEqual(3);
-    expect(blocks.get(0).props.header).toEqual('Parent');
-    expect(blocks.get(1).props.header).toEqual('Child B');
+    it('should not have tabs', () => {
+      const wrapper = shallow(<Page {...page} />);
+      const panels = wrapper.find('TabPanel');
+
+      expect(panels.length).toBe(0);
+    });
+
+    it('should render body', () => {
+      const wrapper = shallow(<Page {...page} />);
+      const body = wrapper.find('PageBlock');
+
+      expect(body.length).toBe(1);
+      expect(body.first().prop('description')).toBe(page.description);
+    });
+  });
+
+  describe('with tabs', () => {
+    let page;
+
+    beforeEach(() => {
+      page = {
+        header: 'Buttons',
+        depth: 2,
+        sections: [
+          {
+            header: 'React',
+            reference: 'components.buttons.react',
+            referenceURI: 'components/buttons/react',
+            source: {
+              filename: '',
+              line: 10,
+              path: ''
+            }
+          },
+          {
+            header: 'HTML',
+            reference: 'components.buttons.html',
+            referenceURI: 'components/buttons/html',
+            source: {
+              filename: '',
+              line: 1,
+              path: ''
+            }
+          },
+          {
+            header: 'Guidance',
+            reference: 'components.buttons.guidance',
+            referenceURI: 'components/buttons/guidance',
+            source: {
+              filename: '',
+              line: 100,
+              path: ''
+            }
+          }
+        ]
+      };
+    });
+
+    it('should have tabs', () => {
+      const wrapper = shallow(<Page {...page} />);
+      const panels = wrapper.find('TabPanel');
+
+      expect(panels.length).toBe(2);
+    });
+
+    it('should sort nested sections by line number', () => {
+      const wrapper = shallow(<Page {...page} />);
+      const panels = wrapper.find('TabPanel');
+      const usageBlocks = panels.first().find('PageBlock');
+
+      expect(usageBlocks.length).toEqual(3);
+      expect(usageBlocks.get(0).props.header).toEqual(page.header);
+      expect(usageBlocks.get(2).props.header).toEqual('React');
+    });
   });
 });

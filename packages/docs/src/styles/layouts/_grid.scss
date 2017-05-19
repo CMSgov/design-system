@@ -1,0 +1,29 @@
+.l-grid {
+  display: flex;
+}
+
+// Fill any remaining empty space
+.l-col-grow {
+  flex-grow: 1;
+}
+
+.l-col-1,
+.l-col-2,
+.l-col-3,
+.l-col-4,
+.l-col-5,
+.l-col-6,
+.l-col-7,
+.l-col-8,
+.l-col-9,
+.l-col-10,
+.l-col-11,
+.l-col-12 {
+  box-sizing: border-box;
+}
+
+@for $i from 1 through 12 {
+  .l-col-#{$i} {
+    width: grid-col-width($i);
+  }
+}

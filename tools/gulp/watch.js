@@ -6,11 +6,9 @@
 const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
-module.exports = (gulp, shared) => {
+module.exports = (gulp) => {
   gulp.task('watch:core', () => {
     gulp.watch('packages/core/src/**/*.scss', [
-      'lint:core-styles',
-      'sass:process:core',
       'sass:process:docs',
       'docs:generate-pages'
     ]);
@@ -29,7 +27,6 @@ module.exports = (gulp, shared) => {
 
   gulp.task('watch:docs', () => {
     gulp.watch('packages/docs/src/styles/**/*.scss', [
-      'lint:docs-styles',
       'sass:process:docs'
     ]);
 
@@ -50,7 +47,10 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       'docs:build',
-      'build:assets',
+      [
+        'fonts',
+        'sass:process:docs'
+      ],
       [
         'server',
         'watch:core',

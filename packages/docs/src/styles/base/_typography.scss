@@ -1,3 +1,16 @@
+a {
+  color: $color-primary;
+
+  &:hover,
+  &:focus {
+    color: $color-primary-darker;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+  }
+}
+
 blockquote {
   background: $color-primary-alt-lightest;
   border-left: 2px solid $color-primary-alt-light;

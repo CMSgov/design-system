@@ -1,4 +1,5 @@
 @import '../../settings/index';
+@import '../../tools/index';
 
 /*
 Button
@@ -233,14 +234,7 @@ Style guide: components.button.icons
 */
 
 .ds-c-button > svg {
-  fill: currentColor;
-  height: 1em;
-  margin-bottom: -0.1em; // apply negative margin so icon doesn't affect height
-  margin-top: -0.1em;
-  position: relative;
-  top: -0.1em;
-  vertical-align: middle;
-  width: 1em;
+  @include inline-icon;
 }
 
 /*
@@ -279,5 +273,5 @@ Style guide: components.button.react
 - Make the first word of the button’s label a verb. For example, instead of “Complaint Filing”, label the button “File a complaint.”
 - At times, consider adding an icon to signal specific actions (“download”, “open in a new window”, etc).
 
-Style guide: components.button.details
+Style guide: components.button.guidance
 */

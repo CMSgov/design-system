@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const fs = require('mz/fs');
 const React = require('react');
 const {render, template} = require('rapscallion');
-const Docs = require('./components/Docs').default;
+const Docs = require('./Docs').default;
 const path = require('path');
 const recursive = require('mkdir-recursive');
 
@@ -44,8 +44,11 @@ function generatePage(routes, page, rootPath) {
     .then(html => updateFile(html, page, rootPath));
 }
 
-// To ensure we're not unnecessarily regenerating each page each time the
-// generate-pages task is called, we first compare the checksums.
+/**
+ * To ensure we're not unnecessarily regenerating each page each time the
+ * generate-pages task is called, we first compare the checksums.
+ * @return {Boolean} Should the file be regenerated?
+ */
 function checkCache(html, path) {
   return fs.readFile(path, 'utf8')
     .then(data => {

@@ -1,7 +1,7 @@
-> A static documentation site for the design system
+A static site where all the design system stuff lives.
 
-## Generating documentation
+## Contributing
 
-To view the documentation locally, run `yarn start` from the git repo root.
+To view the site locally, run `yarn start` from the repo's root.
 
 To learn how documentation is generated, view the ["Writing documentation"](https://github.com/CMSgov/design-system/wiki/writing-documentation) page in the wiki.

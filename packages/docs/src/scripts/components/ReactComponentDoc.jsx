@@ -10,6 +10,8 @@ import ReactPropDocs from './ReactPropDocs';
 
 class ReactComponentDoc extends React.PureComponent {
   renderExample() {
+    if (this.props.hideExample) return;
+
     const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
     return <ReactComponentExample renderComponent={renderComponent} />;
   }
@@ -17,7 +19,10 @@ class ReactComponentDoc extends React.PureComponent {
   render() {
     return (
       <section>
-        <div dangerouslySetInnerHTML={{__html: this.props.description}} />
+        <div
+          className='c-details ds-u-margin-y--2 ds-u-measure--wide'
+          dangerouslySetInnerHTML={{__html: this.props.description}}
+        />
         {this.renderExample()}
         <h3>Props</h3>
         <ReactPropDocs propDocs={this.props.propDocs} />
@@ -28,6 +33,7 @@ class ReactComponentDoc extends React.PureComponent {
 
 ReactComponentDoc.propTypes = {
   description: PropTypes.string,
+  hideExample: PropTypes.bool,
   packagePath: PropTypes.string.isRequired,
   /* eslint-disable react/forbid-prop-types */
   propDocs: PropTypes.object

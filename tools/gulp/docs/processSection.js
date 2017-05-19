@@ -62,8 +62,12 @@ function processFlags(section) {
   if (typeof section.description === 'string') {
     section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
       switch (flag) {
+        case 'hide-example':
+          // Skip rendering the example and code snippet
+          section.hideExample = true;
+          break;
         case 'hide-markup':
-          // Hide code snippet
+          // Hide code snippet, but show the example
           section.hideMarkup = true;
           break;
         case 'react-component':

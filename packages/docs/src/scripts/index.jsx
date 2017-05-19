@@ -1,6 +1,6 @@
 // This script mostly just exists for development purposes. It's really not
 // necessary for us to do any client-side rendering in production.
-import Docs from './components/Docs';
+import Docs from './Docs';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
