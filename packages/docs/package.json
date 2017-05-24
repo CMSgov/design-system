@@ -6,8 +6,6 @@
   "repository": "CMSgov/design-system",
   "devDependencies": {
     "enzyme": "^2.8.2",
-    "mkdir-recursive": "^0.3.0",
-    "rapscallion": "^2.1.7",
     "react-addons-test-utils": "^15.5.1",
     "react-element-to-jsx-string": "^7.0.0",
     "react-test-renderer": "^15.5.4"

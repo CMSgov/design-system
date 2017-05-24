@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const fs = require('mz/fs');
 const React = require('react');
 const {render, template} = require('rapscallion');
-const Docs = require('./Docs').default;
+const Docs = require('../../../packages/docs/src/scripts/Docs').default;
 const path = require('path');
 const recursive = require('mkdir-recursive');
 
@@ -63,7 +63,7 @@ function parsedPath(page) {
   let uri = page.referenceURI;
 
   if (uri === 'public') throw Error('Filename can\'t be "public"');
-  let dir = path.resolve(__dirname, `../../build/${uri}`);
+  let dir = path.resolve(__dirname, `../../../docs/${uri}`);
 
   return {
     dir: dir,

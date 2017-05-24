@@ -6,7 +6,7 @@
 
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('babel-register')({
-  only: /packages\/(core|docs)\/src/
+  only: /(packages\/(core|docs)\/src|generatePage)/
 });
 
 const buildPath = require('../common/buildPath');
@@ -65,7 +65,7 @@ module.exports = (gulp, shared) => {
     // it was called before the file existed.
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
-    const generatePage = require('../../../packages/docs/src/scripts/generatePage');
+    const generatePage = require('./generatePage');
     const routes = createRoutes(pages);
 
     return Promise.all(
