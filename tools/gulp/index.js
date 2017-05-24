@@ -11,7 +11,9 @@ module.exports = (gulp) => {
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
-    rootPath: pkg.version,
+    // TODO: Replace the line below once we move to publishing the docs on S3
+    // rather than GitHub pages.
+    rootPath: 'design-system', // pkg.version,
     version: pkg.version,
     webpackConfig: require('../../packages/docs/webpack.config')
   };

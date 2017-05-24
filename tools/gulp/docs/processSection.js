@@ -38,7 +38,11 @@ function processSection(kssSection, rootPath) {
 
   // Render EJS and replace template tags
   if (data.markup && data.markup !== '') {
-    data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
+    if (rootPath === '') {
+      data.markup = data.markup.replace(/{{root}}/g, '');
+    } else {
+      data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
+    }
 
     try {
       data.markup = ejs.render(data.markup);

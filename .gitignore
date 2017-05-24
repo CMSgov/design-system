@@ -1,6 +1,6 @@
-# Compiled documentation site. This gets published to S3 and can
-# be generated on demand
-packages/docs/build
+# Documentation is generated into this subdirectory during development in order
+# to simulate the URL structure of the live site.
+docs/design-system
 
 # Generated documentation data from CSS and JSX comments. We only need this
 # during the docs generation task.

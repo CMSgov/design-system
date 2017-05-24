@@ -1,14 +1,19 @@
+const buildPath = require('../../tools/gulp/common/buildPath');
 const path = require('path');
-const version = require('./package.json').version;
 const webpack = require('webpack');
+
+// TODO: Find a way to have a source of truth for this rootPath. Everywhere else
+// gets it from tools/gulp/index.js. We could potentially set it from within
+// tools/gulp/webpack.js?
+const rootPath = 'design-system/';
 
 let config = {
   context: __dirname,
   entry: ['./src/scripts/index.jsx'],
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, '../..'),
     publicPath: '/',
-    filename: `build/${version}/public/scripts/index.js`
+    filename: buildPath(rootPath, 'public/scripts/index.js')
   },
   module: {
     loaders: [
