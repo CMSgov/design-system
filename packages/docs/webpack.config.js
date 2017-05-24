@@ -1,14 +1,17 @@
+const buildPath = require('../../tools/gulp/common/buildPath');
 const path = require('path');
-const version = require('./package.json').version;
+// const version = require('./package.json').version;
 const webpack = require('webpack');
 
 let config = {
   context: __dirname,
   entry: ['./src/scripts/index.jsx'],
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, '../..'),
     publicPath: '/',
-    filename: `build/${version}/public/scripts/index.js`
+    // Pass the version as the first arg here once we're publishing the docs
+    // to a subdirectory named after the package version.
+    filename: buildPath('', 'public/scripts/index.js')
   },
   module: {
     loaders: [
