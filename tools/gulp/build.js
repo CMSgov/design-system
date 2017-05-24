@@ -7,10 +7,21 @@ const del = require('del');
 const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
 
-module.exports = (gulp) => {
+module.exports = (gulp, shared) => {
   gulp.task('build:clean-dist', () => {
     dutil.logMessage('🚮 ', 'Cleaning core "dist" directory');
     return del(['packages/core/dist']);
+  });
+
+  // GitHub pages relies on the documentation to be in the root of the "docs"
+  // directory, so once everything is built with the proper relative URLs, we
+  // move everything into the root of the directory.
+  gulp.task('build:gh-pages', () => {
+    if (shared.rootPath !== '') {
+      dutil.logMessage('🤝 ', 'Moving files to root of docs directory');
+      return gulp.src(`docs/${shared.rootPath}/**/*`)
+        .pipe(gulp.dest('docs'));
+    }
   });
 
   // Transpile React components
@@ -40,6 +51,7 @@ module.exports = (gulp) => {
       'docs:build',
       'sass',
       'fonts',
+      'build:gh-pages',
       'build:success',
       'stats',
       done
