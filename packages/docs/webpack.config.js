@@ -1,7 +1,11 @@
 const buildPath = require('../../tools/gulp/common/buildPath');
 const path = require('path');
-// const version = require('./package.json').version;
 const webpack = require('webpack');
+
+// TODO: Find a way to have a source of truth for this rootPath. Everywhere else
+// gets it from tools/gulp/index.js. We could potentially set it from within
+// tools/gulp/webpack.js?
+const rootPath = 'design-system/';
 
 let config = {
   context: __dirname,
@@ -9,9 +13,7 @@ let config = {
   output: {
     path: path.resolve(__dirname, '../..'),
     publicPath: '/',
-    // Pass the version as the first arg here once we're publishing the docs
-    // to a subdirectory named after the package version.
-    filename: buildPath('', 'public/scripts/index.js')
+    filename: buildPath(rootPath, 'public/scripts/index.js')
   },
   module: {
     loaders: [
