@@ -20,7 +20,7 @@ A [Yeoman](http://yeoman.io/) generator used in the development process. Again, 
 
 ## Examples
 
-Examples of the design system in use can be found in the [`examples` directory](tree/master/examples).
+Examples of the design system in use can be found in the [`examples` directory](examples/).
 
 ## Contributing
 
