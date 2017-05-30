@@ -1,0 +1,23 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index';
+
+/*
+Text decoration
+
+Set whether text is underlined or not using the `text-decoration` utility.
+
+**Format**: `ds-u-text-decoration--[VALUE]`
+
+Markup:
+<p class="ds-u-text-decoration--underline">Underlined text</p>
+<a class="ds-u-text-decoration--none" href="http://example.com">Link text without underline</a>
+
+Style guide: utilities.text-decoration
+*/
+.ds-u-text-decoration--underline {
+  text-decoration: underline !important;
+}
+
+.ds-u-text-decoration--none {
+  text-decoration: none !important;
+}
