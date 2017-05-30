@@ -85,7 +85,7 @@ Style guide: base.typography
 
 .ds-title {
   font-size: $title-font-size;
-  font-weight: $font-light;
+  font-weight: $font-normal;
 }
 
 .ds-h1 {
@@ -143,7 +143,6 @@ Style guide: base.typography
 
 .ds-text--lead {
   font-size: $lead-font-size;
-  font-weight: $font-light;
 }
 
 /*
