@@ -20,7 +20,7 @@ Markup:
     'base',
     'muted',
     'black',
-    'primary', 'primary-darker',
+    'primary', 'primary-darker', 'primary-darkest',
     'gray',
     'error', 'error-dark',
     'success'
@@ -84,6 +84,10 @@ Style guide: utilities.color
 
 .ds-u-color--primary-darker {
   color: $color-primary-darker !important;
+}
+
+.ds-u-color--primary-darkest {
+  color: $color-primary-darkest !important;
 }
 
 // gray
