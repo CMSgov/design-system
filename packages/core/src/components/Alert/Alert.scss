@@ -33,6 +33,7 @@ $alert-icon-size: $spacer-5;
   background-position: $spacer-1 ($spacer-2 * 0.95);
   background-repeat: no-repeat;
   background-size: $alert-icon-size;
+  border: 1px solid $color-primary-alt-light;
   box-sizing: border-box;
   color: $color-base;
   min-height: $alert-icon-size + $spacer-2;
@@ -78,18 +79,21 @@ $alert-icon-size: $spacer-5;
   background-color: $color-error-lightest;
   background-image: url('#{$image-path}/error.png');
   background-image: url('#{$image-path}/error.svg');
+  border-color: $color-error-light;
 }
 
 .ds-c-alert--warn {
   background-color: $color-warn-lightest;
   background-image: url('#{$image-path}/warning.png');
   background-image: url('#{$image-path}/warning.svg');
+  border-color: $color-warn-light;
 }
 
 .ds-c-alert--success {
   background-color: $color-success-lightest;
   background-image: url('#{$image-path}/success.png');
   background-image: url('#{$image-path}/success.svg');
+  border-color: $color-success-light;
 }
 
 /*
