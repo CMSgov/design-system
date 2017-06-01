@@ -2,6 +2,7 @@ const _ = require('lodash');
 const changedInPlace = require('gulp-changed-in-place');
 const count = require('gulp-count');
 const eslint = require('gulp-eslint');
+const gulpIf = require('gulp-if');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../../stylelint.config');
 
@@ -16,6 +17,8 @@ const stylelintConfig = require('../../stylelint.config');
 const systemNamePattern = /^(ds-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 module.exports = (gulp, shared) => {
+  const failAfterError = shared.env && shared.env === 'test';
+
   // Lint Sass files using stylelint. Further configuration for CSS linting
   // can be handled in stylelint.config.js
   function runStylelint(cwd, enforceNamePattern = true) {
@@ -30,7 +33,7 @@ module.exports = (gulp, shared) => {
       .pipe(changedInPlace({ firstPass: true }))
       .pipe(stylelint({
         config: config,
-        failAfterError: shared.env && shared.env === 'test',
+        failAfterError: failAfterError,
         reporters: [
           { formatter: 'string', console: true }
         ],
@@ -44,6 +47,7 @@ module.exports = (gulp, shared) => {
       .pipe(changedInPlace({ firstPass: true }))
       .pipe(eslint())
       .pipe(eslint.format())
+      .pipe(gulpIf(failAfterError, eslint.failAfterError()))
       .pipe(count(`## ${name} JS files linted`));
   }
 
