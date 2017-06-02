@@ -19,11 +19,12 @@ const Nav = (props) => {
 };
 
 Nav.propTypes = {
-  currentPageURI: PropTypes.string.isRequired,
+  currentPageURI: NavItem.propTypes.currentPageURI,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
       header: NavItem.propTypes.header,
-      referenceURI: NavItem.propTypes.referenceURI
+      referenceURI: NavItem.propTypes.referenceURI,
+      sections: NavItem.propTypes.sections
     })
   )
 };

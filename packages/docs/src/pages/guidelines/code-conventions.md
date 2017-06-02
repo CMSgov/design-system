@@ -1,6 +1,5 @@
 ---
-title: Core concepts
-weight: 5
+title: Code conventions
 ---
 
 The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity and resilience in exchange. Keeping CSS legible and scalable means sacrificing a shorter syntax.
