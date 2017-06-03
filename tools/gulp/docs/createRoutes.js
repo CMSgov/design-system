@@ -13,7 +13,8 @@ function createRoutes(pages, level = 1) {
     return {
       header: page.header,
       referenceURI: page.referenceURI,
-      sections: createRoutes(page.sections, level + 1)
+      sections: createRoutes(page.sections, level + 1),
+      weight: page.weight
     };
   });
 
@@ -32,7 +33,8 @@ function addEmptyParentPages(pages) {
 
   [{
     header: 'Guidelines',
-    path: 'guidelines'
+    path: 'guidelines',
+    weight: 5
   }].forEach(parentPage => {
     const pathRx = new RegExp(`${parentPage.path}/`);
     let subpages = [];
@@ -50,7 +52,8 @@ function addEmptyParentPages(pages) {
     if (subpages.length) {
       pages.push({
         header: parentPage.header,
-        sections: subpages
+        sections: subpages,
+        weight: parentPage.weight
       });
     }
   });

@@ -51,7 +51,7 @@ module.exports = (gulp, shared) => {
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('./generatePage');
-    const routes = createRoutes(pages);
+    const routes = sortTopLevelPages(createRoutes(pages));
 
     return Promise.all(
       pages.map(page => {
