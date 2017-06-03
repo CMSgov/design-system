@@ -2,13 +2,19 @@
 title: Code conventions
 ---
 
-The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity and resilience in exchange. Keeping CSS legible and scalable means sacrificing a shorter syntax.
+<p class="ds-text--lead">
+  The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity and resilience in exchange. Keeping CSS legible and scalable means sacrificing a shorter syntax.
+</p>
 
-## CSS Namespace
+## CSS naming convention
+
+<img src="{{root}}/public/images/naming-convention.svg" class="ds-u-border--1" />
+
+### Namespace
 
 To avoid conflicting with other libraries and existing code, the design system namespaces its CSS class names with `ds-`.
 
-## CSS Prefix
+### Prefix
 
 Prefixes are added to class names to make it more apparent what job the class is doing.
 
@@ -19,7 +25,7 @@ Prefixes are added to class names to make it more apparent what job the class is
 | `u-` | Indicates a utility. Example: `.ds-u-color--base` |
 | `is-`, `has-` | Indicates state. |
 
-## BEM syntax
+### BEM syntax
 
 The design system uses the [BEM syntax](http://getbem.com/introduction/) for naming CSS classes.
 
