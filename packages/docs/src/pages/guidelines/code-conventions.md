@@ -27,17 +27,12 @@ Prefixes are added to class names to make it more apparent what job the class is
 
 ### BEM syntax
 
-The design system uses the [BEM syntax](http://getbem.com/introduction/) for naming CSS classes.
+Following the namespace and prefix is a name conforming to [BEM syntax](http://getbem.com/introduction/).
 
-The format of a class conforms to the following syntax: `[NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]`
+Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]`
 
-In the context of a component, these parts mean:
+- **Block** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
+- **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
+- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `ds-u-color--primary`, `ds-u-margin--3`
 
-- Block is the primary component block, such as `.ds-c-card`, `.ds-c-button`
-- Element is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
-- Modifier is a variation of a style, such as `.ds-c-button--primary`
-
-In the context of a utility class, these parts can sometimes take on slightly different meaning:
-
-- Block is the CSS property name a utility class affects, such as `.ds-u-font-size`, `.ds-u-color`
-- Modifier is the CSS value, multiple, or variation applied to the CSS property. For example `ds-u-color--primary`, `ds-u-margin--3`
+[BEM’s strict naming rules can be found here](http://getbem.com/naming/).
