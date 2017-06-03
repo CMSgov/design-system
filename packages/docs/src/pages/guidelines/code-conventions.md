@@ -36,3 +36,11 @@ Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE
 - **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `ds-u-color--primary`, `ds-u-margin--3`
 
 [BEM’s strict naming rules can be found here](http://getbem.com/naming/).
+
+## Credits
+
+The CSS naming convention outlined here was heavily influenced by:
+
+- [CSS Architecture for Design Systems](http://bradfrost.com/blog/post/css-architecture-for-design-systems/), by Brad Frost
+- [Thoughtful CSS Architecture](https://seesparkbox.com/foundry/thoughtful_css_architecture), by Nathan Rambeck
+- [More Transparent UI Code with Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/), by Harry Roberts
