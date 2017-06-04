@@ -2,7 +2,7 @@ import NavItem from './NavItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Nav = (props) => {
+const Nav = props => {
   return (
     <nav className='l-col-3 l-sidebar ds-u-border-right--1 ds-u-padding--2'>
       <ol className='c-nav__list ds-c-vertical-nav'>
@@ -10,7 +10,7 @@ const Nav = (props) => {
           <NavItem
             {...page}
             currentPageURI={props.currentPageURI}
-            key={page.referenceURI}
+            key={page.referenceURI + page.header}
           />
         ))}
       </ol>
@@ -19,11 +19,12 @@ const Nav = (props) => {
 };
 
 Nav.propTypes = {
-  currentPageURI: PropTypes.string.isRequired,
+  currentPageURI: NavItem.propTypes.currentPageURI,
   routes: PropTypes.arrayOf(
     PropTypes.shape({
       header: NavItem.propTypes.header,
-      referenceURI: NavItem.propTypes.referenceURI
+      referenceURI: NavItem.propTypes.referenceURI,
+      sections: NavItem.propTypes.sections
     })
   )
 };

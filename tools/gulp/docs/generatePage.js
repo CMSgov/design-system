@@ -71,9 +71,17 @@ function parsedPath(page) {
   };
 }
 
-function saveToFile(html, pathObj) {
+function saveToFile(html, pathObj, retry = true) {
   return new Promise(resolve => {
-    recursive.mkdir(pathObj.dir, () => {
+    recursive.mkdir(pathObj.dir, (err) => {
+      if (err && retry) {
+        // A race condition can sometimes occur where a directory is created
+        // in the middle of this method's execution, resulting in a "file
+        // already exists" error. This is a hacky (and probably not the best)
+        // way of getting around it.
+        return saveToFile(html, pathObj, false).then(resolve);
+      }
+
       fs.writeFile(pathObj.path, html)
         .then(() => resolve(true));
     });

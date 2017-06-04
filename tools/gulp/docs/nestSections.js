@@ -11,7 +11,7 @@ module.exports = (sections) => {
   sections = sections
     .concat([]) // don't mutate original array
     .map(setParentReference)
-    .map((section, index) => {
+    .map(section => {
       if (section.parentReference) {
         let parent = _.find(sections, {
           reference: section.parentReference
