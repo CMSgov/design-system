@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Nav = props => {
-  /* eslint-disable react/no-array-index-key */
-  // These routes aren't changing, so we allow an array index to be used as key
   return (
     <nav className='l-col-3 l-sidebar ds-u-border-right--1 ds-u-padding--2'>
       <ol className='c-nav__list ds-c-vertical-nav'>
-        {props.routes.map((page, index) => (
+        {props.routes.map(page => (
           <NavItem
             {...page}
             currentPageURI={props.currentPageURI}
-            key={index}
+            key={page.referenceURI + page.header}
           />
         ))}
       </ol>
