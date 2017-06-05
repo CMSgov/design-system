@@ -18,6 +18,4 @@ echo "${GREEN}Publishing core package to NPM...${NC}"
 cd packages/core
 npm publish
 
-echo "${ORANGE}[TODO] Publish docs${NC}"
-
 echo "${GREEN}Publishing Succeeded!${NC}"
