@@ -101,6 +101,11 @@ Style guide: components.choice.radio
   display: block;
   font-weight: $font-normal;
   margin: $spacer-1 0;
+  max-width: $measure-base;
+  min-height: $choice-size;
+  padding-left: $choice-size + $spacer-1;
+  padding-top: $spacer-half;
+  position: relative;
 }
 
 // Create a custom checkbox/radio button
@@ -109,13 +114,13 @@ Style guide: components.choice.radio
   border: $choice-border-width solid $choice-border-color;
   box-sizing: border-box;
   content: '\a0';
-  display: inline-block;
-  height: $spacer-4;
-  line-height: $spacer-4;
-  margin-right: $spacer-1;
+  height: $choice-size;
+  left: 0;
+  line-height: $choice-size;
+  position: absolute;
   text-indent: 0.15em;
-  vertical-align: middle;
-  width: $spacer-4;
+  top: 0;
+  width: $choice-size;
 }
 
 .ds-c-choice--inverse + label::before {
@@ -139,7 +144,7 @@ Style guide: components.choice.radio
   background-image: url('#{$image-path}/checkmark-white.svg');
   background-position: 50%;
   background-repeat: no-repeat;
-  background-size: $spacer-3;
+  background-size: $choice-size - $spacer-1;
   border-color: $choice-checked-background-color;
 }
 

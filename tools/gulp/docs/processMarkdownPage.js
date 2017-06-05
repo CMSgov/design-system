@@ -4,9 +4,17 @@ const renderer = require('./markdownRenderer');
 
 marked.setOptions({ renderer: renderer });
 
-function processMarkdownPage(filename, body, rootPath = '') {
+/**
+ * Breaks the various parts of the Markdown page into the expected props that
+ * will later get passed into the React app.
+ * @param {String} filePath
+ * @param {String} body - Markdown file contents
+ * @param {String} rootPath - Root docs site path
+ * @return {Object}
+ */
+function processMarkdownPage(filePath, body, rootPath = '') {
   const parts = fm(body); // parses front-matter from top of file
-  let referenceURI = filename.replace(/.md$/, '');
+  let referenceURI = filePath.match(/src\/pages\/([a-z0-9-/]+)/i)[1];
 
   if (referenceURI === 'index') {
     referenceURI = '';

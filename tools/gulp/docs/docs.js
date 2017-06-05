@@ -11,6 +11,7 @@ require('babel-register')({
 
 const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
+const createRoutes = require('./createRoutes');
 const del = require('del');
 const dutil = require('../common/log-util');
 const kss = require('kss');
@@ -37,22 +38,6 @@ function sortTopLevelPages(pages) {
   return pages.sort((a, b) => a.weight - b.weight);
 }
 
-/**
- * We don't need the entire Page object to pass into our Nav component, so we
- * generate a new array of object with just the properties we need.
- */
-function createRoutes(pages) {
-  if (!pages) return;
-
-  return pages.map(page => {
-    return {
-      header: page.header,
-      referenceURI: page.referenceURI,
-      sections: createRoutes(page.sections)
-    };
-  });
-}
-
 module.exports = (gulp, shared) => {
   /**
    * Loop through the nested array of pages and create an HTML file for each one.
@@ -66,7 +51,7 @@ module.exports = (gulp, shared) => {
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('./generatePage');
-    const routes = createRoutes(pages);
+    const routes = sortTopLevelPages(createRoutes(pages));
 
     return Promise.all(
       pages.map(page => {
@@ -132,6 +117,7 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
+  // Generate HTML pages from KSS comments and Markdown pages
   gulp.task('docs:generate-pages', () => {
     dutil.logMessage(
       '📝 ',

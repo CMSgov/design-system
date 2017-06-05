@@ -7,7 +7,7 @@ weight: -100
 
 ## Installation
 
- We suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release. You can also download a .zip of the design system directly from GitHub's [Releases](CMSgov/design-system/releases)
+ We suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.
 
 ```
 npm install --save @cmsgov/design-system-core
@@ -19,33 +19,62 @@ or if you're using Yarn:
 yarn add @cmsgov/design-system-core
 ```
 
+You can also download a .zip of the design system directly from our [GitHub repo](https://github.com/CMSgov/design-system/releases).
+
+### Fonts and images
+
+Copy the design system's `fonts` and `images` directories into the same directory as your site's CSS.
+
+By default, the design system expects a file structure like this:
+
+```
+├── Your site's public assets directory/
+    ├── bundle.css
+    ├── fonts/
+    └── images/
+```
+
+You can manually copy these directories, or you could integrate this step into your build process. [Here's an example of how this step could be accomplished using a Gulp task](https://github.com/CMSgov/design-system/blob/master/examples/react-app/Gulpfile.js).
+
+You can change the default paths by overriding the following Sass variables:
+
+- `$font-path`
+- `$image-path`
+
 ## Usage
-
-### Styles and React components
-
-Source files can be imported from the `src` directory. Transpiled files can be found in the `dist` directory.
 
 Below are examples of the various ways you can reference the design system's styles and React components:
 
-###### Import all Sass styles
+### Styles
+
+#### Using the bundled CSS file
+
+The easiest way to add the design system's styles to your site is by referencing its bundled CSS file.
+
+1. Copy the design system's `dist/css` folder into a relevant place in your code base — likely a directory where you keep third-party libraries. In the example below, our directory is `css/vendor`.
+1. Add a `<link>` to the stylesheet in your site's `<head>`
+
+For example:
+
+```html
+<link rel="stylesheet" src="css/vendor/design-system-core/index.css" />
+```
+
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/article/index.html)
+
+#### Using Sass
+
+If you're already using Sass to style your site, another way to include the design system's styles is by importing its main Sass file.
 
 ```scss
 @import 'node_modules/@cmsgov/design-system-core/src/index';
 ```
 
-###### Link to transpiled CSS
+To override any of the design system's Sass variables, include the variable definitions _before_ the line where the design system is imported.
 
-```html
-<link rel="stylesheet" src="node_modules/@cmsgov/design-system-core/dist/index.css" />
-```
+[View an example](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
 
-###### Import JSX component
-
-```jsx
-import {Button} from '@cmsgov/design-system-core';
-...
-<Button>Foo</Button>;
-```
+#### Applying styling
 
 Once your page is loading the design system's CSS, you can then begin adding its CSS class names to utilize the system. Below is an example of a project applying the base-level of styles and a utility class.
 
@@ -60,16 +89,58 @@ Once your page is loading the design system's CSS, you can then begin adding its
 </html>
 ```
 
-### Fonts and images
+### React
 
-The design system expects its fonts and images to be located in the same directory as its CSS. If you reference the CSS by its `node_modules` path, there's nothing else you need to do.
+#### Importing defaults
 
-However, if you move the design system's CSS file or import the Sass file into your project's stylesheet, you'll need to copy the `files` and `images` directories into the directory where your CSS lives.
+Individual components can be imported from their individual export file.
 
-Sass variables exist for customize the expect directories:
+```jsx
+import Button from '@cmsgov/design-system-core/dist/components/Button/Button';
+```
 
-- `$font-path`
-- `$image-path`
+#### Named imports
+
+Components can also be imported using the shorter syntax below.
+
+<div class="ds-c-alert ds-c-alert--warn ds-u-margin-bottom--2">
+  <div class="ds-c-alert__body">
+    <h3 class="ds-c-alert__heading">A note on performance</h3>
+    <p class="ds-c-alert__text">
+      This approach may result in a much larger file than you intend. Depending on what module bundler you use, all of the design system's React components may be included in the bundled file even if you didn't specifically import them. This can be avoided by enabling features like [tree shaking in Webpack](https://webpack.js.org/guides/tree-shaking/).
+    </p>
+  </div>
+</div>
+
+```jsx
+import {Button} from '@cmsgov/design-system-core';
+```
+
+[View an example](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
+
+## File Structure
+
+The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/less-css-mess) (Inverted Triangle architecture for CSS). The goal is to write CSS in [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) order.
+
+<!-- You can regenerate the tree by running tree -d -I "node_modules" -->
+
+```
+├── dist                Transpiled CSS and fonts
+└── src                 Sass and JSX
+    ├── base            Base HTML styles
+    ├── components      Sass and React components
+    │   ├── Button
+    │   └── etc...
+    ├── fonts
+    ├── generics        Far reaching selectors
+    ├── images
+    ├── layouts         Structural patterns; No cosmetics.
+    ├── settings        Globally-available settings and config options
+    ├── tools           Helper functions and public mixins
+    ├── utilities       Functional CSS classes to apply individual traits
+    └── vendor          Third-party libraries
+```
+
 
 ## Examples
 

@@ -32,8 +32,8 @@ Style guide: components.button
   font-family: $font-sans;
   font-size: $base-font-size;
   font-weight: $font-bold;
-  line-height: $reset-line-height;
-  padding: $spacer-2;
+  line-height: $input-line-height;
+  padding: $input-padding;
   text-align: center;
   text-decoration: none;
 
@@ -236,6 +236,18 @@ Style guide: components.button.icons
 .ds-c-button > svg {
   @include inline-icon;
 }
+
+/*
+Button inline with field
+
+The button is the same height as a single-line text field.
+
+Markup:
+<input type="text" class="ds-c-field ds-u-display--inline-block" />
+<button class="ds-c-button">Submit</button>
+
+Style guide: components.button.inline-field
+*/
 
 /*
 React

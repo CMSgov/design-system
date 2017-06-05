@@ -41,14 +41,18 @@ class NavItem extends React.PureComponent {
   }
 
   render() {
+    const linkProps = {
+      className: this.linkClasses(this.props, true),
+      href: this.props.referenceURI ? `/${this.props.referenceURI}` : undefined
+    };
+
+    const LinkComponent = linkProps.href ? 'a' : 'div';
+
     return (
       <li className='ds-c-vertical-nav__item'>
-        <a
-          className={this.linkClasses(this.props, true)}
-          href={`/${this.props.referenceURI}`}
-        >
+        <LinkComponent {...linkProps}>
           {this.props.header}
-        </a>
+        </LinkComponent>
         {this.subpages(this.props.sections)}
       </li>
     );
@@ -61,7 +65,7 @@ NavItem.defaultProps = {
 
 const NavItemPropTypes = {
   header: PropTypes.string.isRequired,
-  referenceURI: PropTypes.string.isRequired
+  referenceURI: PropTypes.string
 };
 
 NavItem.propTypes = {
