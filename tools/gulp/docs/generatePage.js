@@ -7,13 +7,15 @@ const path = require('path');
 const recursive = require('mkdir-recursive');
 
 function generatePage(routes, page, rootPath) {
-  // In development mode we let the client handle all of the React rendering,
-  // since if we were generating the HTML pages in our build process, Gulp would
-  // need restarted each time a React file changes, which is super annoying.
   const componentRenderer = () => {
-    if (process.env.NODE_ENV !== 'development') {
-      ReactDOMServer.renderToString(<Docs page={page} routes={[]} />);
+    if (process.env.NODE_ENV === 'development') {
+      // In development mode we let the client handle all of the React rendering,
+      // since if we were generating the HTML pages in our build process, Gulp would
+      // need restarted each time a React file changes, which is super annoying.
+      return '';
     }
+
+    return ReactDOMServer.renderToString(<Docs page={page} routes={[]} />);
   };
 
   if (rootPath) {
