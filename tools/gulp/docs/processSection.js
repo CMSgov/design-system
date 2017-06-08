@@ -21,6 +21,13 @@ function converMarkdownCode(value) {
 function processSection(kssSection, rootPath) {
   let data = kssSection.toJSON();
 
+  // Remove properties we don't need. This is useful for a couple reasons, like
+  // smaller objects and easier caching to identify when a page needs regenerated
+  delete data.deprecated;
+  delete data.experimental;
+  delete data.parameters;
+  delete data.source.line;
+
   data = Object.assign({}, data, {
     sections: []
   });

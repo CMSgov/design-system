@@ -61,7 +61,9 @@ function convertMarkdownPages(rootPath, dir) {
         )
       )
     )
-    .then(() => pages);
+    .then(() =>
+      pages.sort((a, b) => a.header > b.header) // sort alphabetically
+    );
 }
 
 module.exports = convertMarkdownPages;

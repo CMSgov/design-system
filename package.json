@@ -69,7 +69,6 @@
     "postcss-import": "^10.0.0",
     "postcss-url": "^6.1.0",
     "prismjs": "^1.6.0",
-    "rapscallion": "^2.1.7",
     "react": "^15.5.4",
     "react-docgen": "^2.15.0",
     "react-dom": "^15.5.4",
