@@ -26,7 +26,6 @@ function processSection(kssSection, rootPath) {
   delete data.deprecated;
   delete data.experimental;
   delete data.parameters;
-  delete data.source.line;
 
   data = Object.assign({}, data, {
     sections: []

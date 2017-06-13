@@ -13,12 +13,6 @@ function isGuidanceSection(section) {
   return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));
 }
 
-//  Sort nested sections by their position in the file
-function sortSections(sections) {
-  return sections.concat([])
-    .sort((a, b) => a.source.line - b.source.line);
-}
-
 class Page extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -35,7 +29,7 @@ class Page extends React.PureComponent {
 
   renderChildPageBlocks(sections) {
     if (sections.length) {
-      return sortSections(sections).map(section => (
+      return sections.map(section => (
         <PageBlock key={section.referenceURI} {...section} />
       ));
     }
