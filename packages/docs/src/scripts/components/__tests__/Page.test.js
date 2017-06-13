@@ -78,15 +78,5 @@ describe('Page', () => {
 
       expect(panels.length).toBe(2);
     });
-
-    it('should sort nested sections by line number', () => {
-      const wrapper = shallow(<Page {...page} />);
-      const panels = wrapper.find('TabPanel');
-      const usageBlocks = panels.first().find('PageBlock');
-
-      expect(usageBlocks.length).toEqual(3);
-      expect(usageBlocks.get(0).props.header).toEqual(page.header);
-      expect(usageBlocks.get(2).props.header).toEqual('React');
-    });
   });
 });

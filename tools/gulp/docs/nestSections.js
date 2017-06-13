@@ -23,11 +23,41 @@ module.exports = (sections) => {
     })
     .filter(section => !section.parentReference);
 
-  return sections;
+  // Sections nested three levels deep are rendered inline, and should be
+  // sorted by their position within the file, rather than alphabetically
+  sections.forEach(section => {
+    section.sections.forEach(subsection => {
+      if (subsection.sections.length) {
+        subsection.sections = sortSectionsByPosition(subsection.sections);
+      }
+    });
+  });
+
+  return removeLineProps(sections);
 };
 
-// Goes up a reference level to find and set the parent reference
-// @example components.buttons.primary => components.buttons
+/**
+ * Once we've sorted the sections, the line number is no longer needed and
+ * should be removed before passing this array into the React component. If
+ * it's left on each section object, it messes with page cacheing because
+ * the line numbers tend to change quite often.
+ */
+function removeLineProps(sections) {
+  sections.forEach(section => {
+    delete section.source.line;
+
+    if (section.sections.length) {
+      removeLineProps(section.sections);
+    }
+  });
+
+  return sections;
+}
+
+/**
+ * Goes up a reference level to find and set the parent reference
+ * @example components.buttons.primary => components.buttons
+ */
 function setParentReference(section) {
   const references = section.reference.split('.');
   if (references.length > 1) {
@@ -38,4 +68,12 @@ function setParentReference(section) {
   }
 
   return section;
+}
+
+/**
+ * Sort nested sections by their position in the file
+ */
+function sortSectionsByPosition(sections) {
+  return sections.concat([])
+    .sort((a, b) => a.source.line - b.source.line);
 }
