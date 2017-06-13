@@ -58,9 +58,7 @@ Style guide: components.vertical-nav
 }
 
 /*
----
-
-### Nested menus
+Nested menus
 
 Markup:
 <ul class="ds-c-vertical-nav">
@@ -94,7 +92,7 @@ Markup:
   </li>
 </ul>
 
-Style guide: components.vertical-nav.subnav
+Style guide: components.vertical-nav.nested
 */
 .ds-c-vertical-nav__subnav {
   @include ds-unstyled-list;
@@ -116,6 +114,24 @@ Style guide: components.vertical-nav.subnav
     padding-left: $spacer-4;
   }
 }
+
+/*
+React - `<VerticalNav>`
+
+@react-component VerticalNav
+
+Style guide: components.vertical-nav.VerticalNav
+*/
+
+/*
+React - `<VerticalNavItem>`
+
+@hide-example
+
+@react-component VerticalNavItem
+
+Style guide: components.vertical-nav.VerticalNavItem
+*/
 
 /*
 ---
