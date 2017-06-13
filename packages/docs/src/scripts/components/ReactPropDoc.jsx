@@ -44,7 +44,8 @@ class ReactPropDoc extends React.PureComponent {
       let valueType = this.props.type.value.name;
 
       if (valueType === 'shape') {
-        valueType = `{${this.shape()}}`;
+        valueType = this.props.type.value.computed
+          ? this.props.type.value.value : `{${this.shape()}}`;
       }
 
       return `${propType}[${valueType}]`;
@@ -101,6 +102,7 @@ ReactPropDoc.propTypes = {
     value: PropTypes.oneOfType([
       PropTypes.arrayOf( // oneOf
         PropTypes.shape({
+          computed: PropTypes.bool,
           name: PropTypes.string,
           value: PropTypes.string
         })
