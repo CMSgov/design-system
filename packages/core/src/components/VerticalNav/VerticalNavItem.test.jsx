@@ -102,7 +102,7 @@ describe('VerticalNavItem', () => {
       };
     });
 
-    it('renders submenus', () => {
+    it('renders subnavs', () => {
       const data = shallowRender(props);
 
       expect(data.wrapper.render().find('ul').length)

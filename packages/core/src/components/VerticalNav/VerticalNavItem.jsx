@@ -100,18 +100,18 @@ export class VerticalNavItem extends React.PureComponent {
 }
 
 VerticalNavItem.defaultProps = {
-  ariaCollapsedStateButtonLabel: 'Expand submenu',
-  ariaExpandedStateButtonLabel: 'Collapse submenu',
+  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
+  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
   defaultExpanded: true
 };
 
 VerticalNavItem.propTypes = {
   /**
-   * Aria label for the toggle button when the submenu is collapsed
+   * Aria label for the toggle button when the sub-navigation is collapsed
    */
   ariaCollapsedStateButtonLabel: PropTypes.string,
   /**
-   * Aria label for the toggle button when the submenu is expanded
+   * Aria label for the toggle button when the sub-navigation is expanded
    */
   ariaExpandedStateButtonLabel: PropTypes.string,
   /**
@@ -119,7 +119,7 @@ VerticalNavItem.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Whether or not a submenu is in an expanded state by default
+   * Whether or not the item's sub-navigation is in an expanded state by default
    */
   defaultExpanded: PropTypes.bool,
   /**
@@ -141,7 +141,8 @@ VerticalNavItem.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * An array of nested `VerticalNavItem` data objects
+   * An array of nested `VerticalNavItem` data objects to be rendered in a
+   * sub-navigation list.
    */
   items: PropTypes.arrayOf(
     PropTypes.shape(VerticalNavItem.propTypes)
@@ -151,7 +152,7 @@ VerticalNavItem.propTypes = {
    */
   label: PropTypes.string.isRequired,
   /**
-   * URL to navigate to if this is a link
+   * A URL to navigate to if this item is a link
    */
   url: PropTypes.string,
   /**
