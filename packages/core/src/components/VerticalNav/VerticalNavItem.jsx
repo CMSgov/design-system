@@ -16,6 +16,12 @@ export class VerticalNavItem extends React.PureComponent {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.onSubnavToggle && prevState.expanded !== this.state.expanded) {
+      this.props.onSubnavToggle(this.props.id, this.state.expanded);
+    }
+  }
+
   handleLinkClick(evt) {
     if (this.props.onClick) {
       this.props.onClick(
@@ -124,6 +130,11 @@ VerticalNavItem.propTypes = {
    * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */
   onClick: PropTypes.func,
+  /**
+   * Called when this item's subnav is collapsed or expanded, with the
+   * following arguments: `id`, `expanded`
+   */
+  onSubnavToggle: PropTypes.func,
   /**
    * Optional identifier. This can be handy if you're passing in an
    * `onClick` handler. A unique ID will be generated if one isn't provided.

@@ -70,6 +70,22 @@ describe('VerticalNavItem', () => {
     expect(data.props.onClick.mock.calls[0][2]).toBe(data.props.url);
   });
 
+  it('calls onSubnavToggle', () => {
+    const data = shallowRender({
+      id: 'bar',
+      onSubnavToggle: jest.fn()
+    });
+
+    data.wrapper.setState({ expanded: false });
+
+    expect(data.props.onSubnavToggle.mock.calls.length)
+      .toBe(1);
+    expect(data.props.onSubnavToggle.mock.calls[0][0])
+      .toBe(data.props.id);
+    expect(data.props.onSubnavToggle.mock.calls[0][1])
+      .toBe(false); // not expanded
+  });
+
   describe('with nested menu', () => {
     let props;
 
