@@ -119,7 +119,9 @@ VerticalNavItem.propTypes = {
   /**
    * Called when the item is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
-   * `id`, `url`
+   * `id`, `url`.
+   *
+   * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */
   onClick: PropTypes.func,
   /**

@@ -21,11 +21,18 @@ describe('VerticalNav', () => {
     const data = shallowRender();
     const wrapper = data.wrapper;
 
-    expect(wrapper.is('ul')).toBe(true);
-    expect(wrapper.hasClass('ds-c-vertical-nav')).toBe(true);
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
-    expect(data.wrapper.hasClass('ds-u-display--none')).toBe(false);
-    expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
+    expect(wrapper.is('ul'))
+      .toBe(true);
+    expect(wrapper.hasClass('ds-c-vertical-nav'))
+      .toBe(true);
+    expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav'))
+      .toBe(false);
+    expect(data.wrapper.hasClass('ds-u-display--none'))
+      .toBe(false);
+    expect(wrapper.find('VerticalNavItem').length)
+      .toBe(data.props.items.length);
+    expect(wrapper.find('VerticalNavItem').first().prop('onClick'))
+      .toBeUndefined();
   });
 
   it('adds additional class names', () => {
@@ -52,5 +59,27 @@ describe('VerticalNav', () => {
     const data = shallowRender({ expanded: false });
 
     expect(data.wrapper.hasClass('ds-u-display--none')).toBe(true);
+  });
+
+  it('passes onLinkClick to items', () => {
+    const data = shallowRender({
+      onLinkClick: jest.fn()
+    });
+
+    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick'))
+      .toBe(data.props.onLinkClick);
+  });
+
+  it('gives precedence to item\'s onClick callback', () => {
+    const data = shallowRender({
+      onLinkClick: jest.fn(),
+      items: [{
+        label: 'Foo',
+        onClick: jest.fn()
+      }]
+    });
+
+    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick'))
+      .toBe(data.props.items[0].onClick);
   });
 });

@@ -9,11 +9,18 @@ import classNames from 'classnames';
  */
 export class VerticalNav extends React.PureComponent {
   renderItems() {
-    return this.props.items.map(function(item) {
+    return this.props.items.map(item => {
+      let onClick = item.onClick || this.props.onLinkClick;
+
+      if (!onClick) {
+        onClick = undefined;
+      }
+
       return (
         <VerticalNavItem
           {...item}
           key={item.id + item.url + item.label}
+          onClick={onClick}
         />
       );
     });
@@ -56,7 +63,13 @@ VerticalNav.propTypes = {
   /**
    * Indicates this list is nested within another nav item.
    */
-  nested: PropTypes.bool
+  nested: PropTypes.bool,
+  /**
+   * Called when one of the nav links is clicked, with the following arguments:
+   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * `id`, `url`
+   */
+  onLinkClick: PropTypes.func
 };
 
 export default VerticalNav;
