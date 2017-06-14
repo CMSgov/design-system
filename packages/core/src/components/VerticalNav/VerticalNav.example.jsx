@@ -20,13 +20,7 @@ export default function() {
             },
             {
               label: 'Company',
-              url: 'http://example.com#company',
-              items: [
-                {
-                  label: 'Mission',
-                  url: 'http://example.com#mission'
-                }
-              ]
+              url: 'http://example.com#company'
             }
           ]
         },

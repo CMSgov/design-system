@@ -4,7 +4,7 @@
 /*
 Vertical navigation
 
-@status prototype
+@status beta
 
 @uswds https://standards.usa.gov/components/sidenav/
 
@@ -36,25 +36,35 @@ Style guide: components.vertical-nav
   }
 }
 
+.ds-c-vertical-nav__item {
+  position: relative;
+}
+
 .ds-c-vertical-nav__link {
   border-left: 4px solid transparent;
   color: $color-base;
   display: block;
-  line-height: 1.2;
-  padding: ($spacer-1 * 1.5) $spacer-2;
+  line-height: $heading-line-height;
+  padding: $spacer-1 $spacer-2;
   text-decoration: none;
-
-  &:hover {
-    background-color: $color-gray-lightest;
-    color: $color-primary;
-    text-decoration: none;
-  }
 }
 
 .ds-c-vertical-nav__link--current {
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
+}
+
+// A link that is accompanied by a button to toggle a nested submenu
+.ds-c-vertical-nav__link--parent {
+  margin-right: $spacer-5;
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+a.ds-c-vertical-nav__link:hover {
+  background-color: $color-gray-lightest;
+  color: $color-primary;
+  text-decoration: none;
 }
 
 /*
@@ -98,7 +108,7 @@ Style guide: components.vertical-nav.nested
   @include ds-unstyled-list;
 
   .ds-c-vertical-nav__item {
-    font-size: $h5-font-size;
+    font-size: $small-font-size;
   }
 
   .ds-c-vertical-nav__link {
@@ -112,6 +122,36 @@ Style guide: components.vertical-nav.nested
 
   .ds-c-vertical-nav__subnav .ds-c-vertical-nav__link {
     padding-left: $spacer-4;
+  }
+}
+
+.ds-c-vertical-nav__subnav-toggle {
+  appearance: none;
+  background-color: transparent;
+  background-image: url('#{$image-path}/arrow-down.png');
+  background-image: url('#{$image-path}/arrow-down.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: $small-font-size;
+  border: 0;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: $heading-line-height;
+  padding-bottom: $spacer-1;
+  padding-top: $spacer-1;
+  position: absolute;
+  right: 0;
+  text-indent: -9999px;
+  top: 0;
+  width: $spacer-5; // ensures a large enough area for tapping
+
+  &:hover {
+    background-color: $color-gray-lightest;
+  }
+
+  &[aria-expanded='true'] {
+    background-image: url('#{$image-path}/arrow-up.png');
+    background-image: url('#{$image-path}/arrow-up.svg');
   }
 }
 

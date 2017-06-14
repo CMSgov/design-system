@@ -24,7 +24,7 @@ class NavItem extends React.PureComponent {
     }
   }
 
-  linkClasses(page, bold = false) {
+  linkClasses(page) {
     let linkClasses = ['ds-c-vertical-nav__link'];
     const parentURI = this.props.currentPageURI.replace(/\/[a-z\-0-9]+$/, '');
     const curentParent = page.referenceURI === parentURI;
@@ -33,16 +33,12 @@ class NavItem extends React.PureComponent {
       linkClasses.push('ds-c-vertical-nav__link--current');
     }
 
-    if (bold) {
-      linkClasses.push('ds-u-font-weight--bold');
-    }
-
     return linkClasses.join(' ');
   }
 
   render() {
     const linkProps = {
-      className: this.linkClasses(this.props, true),
+      className: this.linkClasses(this.props),
       href: this.props.referenceURI ? `/${this.props.referenceURI}` : undefined
     };
 

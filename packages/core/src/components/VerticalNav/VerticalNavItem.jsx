@@ -1,39 +1,67 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import VerticalNav from './VerticalNav';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 export class VerticalNavItem extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.id = this.props.id || uniqueId('VerticalNavItem_');
+    this.subnavId = `${this.id}__subnav`;
     this.state = {
       expanded: this.props.defaultExpanded
     };
   }
 
-  handleClick(evt) {
+  handleLinkClick(evt) {
     if (this.props.onClick) {
       this.props.onClick(
         evt,
-        this.props.id,
+        this.id,
         this.props.url
       );
     }
   }
 
-  /**
-   * Returns the button for toggling the nested menu's expanded state
-   */
-  renderToggle() {
-    if (this.props.items && this.props.items.length) {
+  handleToggleClick() {
+    this.setState({ expanded: !this.state.expanded });
+  }
+
+  hasSubnav() {
+    return this.props.items && this.props.items.length;
+  }
+
+  renderSubnavToggle() {
+    if (this.hasSubnav()) {
       const label = this.state.expanded
         ? this.props.ariaExpandedStateButtonLabel
         : this.props.ariaCollapsedStateButtonLabel;
 
       return (
-        <button className='ds-c-vertical-nav__subnav-toggle'>
+        <button
+          aria-controls={this.subnavId}
+          aria-expanded={this.state.expanded}
+          className='ds-c-vertical-nav__subnav-toggle'
+          onClick={this.handleToggleClick}
+        >
           {label}
         </button>
+      );
+    }
+  }
+
+  renderSubnav() {
+    if (this.hasSubnav()) {
+      return (
+        <VerticalNav
+          expanded={this.state.expanded}
+          id={this.subnavId}
+          items={this.props.items}
+          nested
+        />
       );
     }
   }
@@ -44,18 +72,22 @@ export class VerticalNavItem extends React.PureComponent {
     const linkProps = {
       className: classNames(
         'ds-c-vertical-nav__link',
-        {'ds-c-vertical-nav__link--current': this.props.selected}
+        {
+          'ds-c-vertical-nav__link--current': this.props.selected,
+          'ds-c-vertical-nav__link--parent': this.hasSubnav()
+        }
       ),
       href: this.props.url ? this.props.url : undefined,
-      onClick: this.props.onClick ? this.handleClick : undefined
+      onClick: this.props.onClick ? this.handleLinkClick : undefined
     };
 
     return (
       <li className={classes}>
         <LinkComponent {...linkProps}>
-          {this.renderToggle()}
           {this.props.label}
         </LinkComponent>
+        {this.renderSubnavToggle()}
+        {this.renderSubnav()}
       </li>
     );
   }
@@ -81,7 +113,7 @@ VerticalNavItem.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The initial expanded state for this item's nested menu
+   * Whether or not a submenu is in an expanded state by default
    */
   defaultExpanded: PropTypes.bool,
   /**
@@ -92,11 +124,11 @@ VerticalNavItem.propTypes = {
   onClick: PropTypes.func,
   /**
    * Optional identifier. This can be handy if you're passing in an
-   * `onClick` handler
+   * `onClick` handler. A unique ID will be generated if one isn't provided.
    */
   id: PropTypes.string,
   /**
-   * Nested nav items
+   * An array of nested `VerticalNavItem` data objects
    */
   items: PropTypes.arrayOf(
     PropTypes.shape(VerticalNavItem.propTypes)

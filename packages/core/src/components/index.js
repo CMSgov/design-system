@@ -11,3 +11,5 @@ export * from './Tabs/Tab';
 export * from './Tabs/Tabs';
 export * from './Tabs/TabPanel';
 export * from './TextField/TextField';
+export * from './VerticalNav/VerticalNav';
+export * from './VerticalNav/VerticalNavItem';

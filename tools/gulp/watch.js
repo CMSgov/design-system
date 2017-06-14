@@ -19,10 +19,7 @@ module.exports = (gulp) => {
       '!packages/core/src/**/*.test.{js,jsx}'
     ], ['lint:core-scripts', 'docs:react']);
 
-    gulp.watch(['packages/core/src/images/*'], [
-      'docs:clean-images',
-      'docs:copy-images'
-    ]);
+    gulp.watch(['packages/core/src/images/*'], ['docs:images']);
   });
 
   gulp.task('watch:docs', () => {

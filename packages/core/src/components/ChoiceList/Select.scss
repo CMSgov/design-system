@@ -33,9 +33,9 @@ Style guide: components.select
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-down.png');
   background-image: url('#{$image-path}/arrow-down.svg');
-  background-position: right 13px center;
+  background-position: right $small-font-size center;
   background-repeat: no-repeat;
-  background-size: 13px;
+  background-size: $small-font-size;
 
   &[multiple] {
     background-image: none;
