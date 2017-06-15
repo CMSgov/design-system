@@ -76,14 +76,14 @@ describe('VerticalNavItem', () => {
       onSubnavToggle: jest.fn()
     });
 
-    data.wrapper.setState({ expanded: false });
+    data.wrapper.setState({ collapsed: true });
 
     expect(data.props.onSubnavToggle.mock.calls.length)
       .toBe(1);
     expect(data.props.onSubnavToggle.mock.calls[0][0])
       .toBe(data.props.id);
     expect(data.props.onSubnavToggle.mock.calls[0][1])
-      .toBe(false); // not expanded
+      .toBe(true); // collapsed
   });
 
   describe('with nested menu', () => {
@@ -107,8 +107,8 @@ describe('VerticalNavItem', () => {
 
       expect(data.wrapper.render().find('ul').length)
         .toBe(2);
-      expect(data.wrapper.find('VerticalNav').first().prop('expanded'))
-        .toBe(true);
+      expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
+        .toBe(false);
       expect(data.wrapper.find('VerticalNav').first().prop('id'))
         .not.toBeUndefined();
     });
@@ -122,22 +122,22 @@ describe('VerticalNavItem', () => {
       expect(button.prop('aria-expanded')).toBe(true);
     });
 
-    it('is not expanded', () => {
-      props.defaultExpanded = false;
+    it('is collapsed', () => {
+      props.defaultCollapsed = true;
       const data = shallowRender(props);
 
-      expect(data.wrapper.find('VerticalNav').first().prop('expanded'))
-        .toBe(false);
+      expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
+        .toBe(true);
     });
 
-    it('toggles expanded state', () => {
+    it('toggles collapsed state', () => {
       props.ariaExpandedStateButtonLabel = 'Collapse me';
       props.ariaCollapsedStateButtonLabel = 'Expand me';
       const data = shallowRender(props);
       let button = data.wrapper.find('.ds-c-vertical-nav__subnav-toggle');
 
-      expect(data.wrapper.find('VerticalNav').first().prop('expanded'))
-        .toBe(true);
+      expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
+        .toBe(false);
       expect(button.text())
         .toBe(data.props.ariaExpandedStateButtonLabel);
 
@@ -146,8 +146,8 @@ describe('VerticalNavItem', () => {
       data.wrapper.update();
       button = data.wrapper.find('.ds-c-vertical-nav__subnav-toggle');
 
-      expect(data.wrapper.find('VerticalNav').first().prop('expanded'))
-        .toBe(false);
+      expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
+        .toBe(true);
       expect(button.text())
         .toBe(data.props.ariaCollapsedStateButtonLabel);
     });

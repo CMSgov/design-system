@@ -12,13 +12,13 @@ export class VerticalNavItem extends React.PureComponent {
     this.id = this.props.id || uniqueId('VerticalNavItem_');
     this.subnavId = `${this.id}__subnav`;
     this.state = {
-      expanded: this.props.defaultExpanded
+      collapsed: this.props.defaultCollapsed
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.onSubnavToggle && prevState.expanded !== this.state.expanded) {
-      this.props.onSubnavToggle(this.props.id, this.state.expanded);
+    if (this.props.onSubnavToggle && prevState.collapsed !== this.state.collapsed) {
+      this.props.onSubnavToggle(this.props.id, this.state.collapsed);
     }
   }
 
@@ -33,7 +33,7 @@ export class VerticalNavItem extends React.PureComponent {
   }
 
   handleToggleClick() {
-    this.setState({ expanded: !this.state.expanded });
+    this.setState({ collapsed: !this.state.collapsed });
   }
 
   hasSubnav() {
@@ -42,14 +42,14 @@ export class VerticalNavItem extends React.PureComponent {
 
   renderSubnavToggle() {
     if (this.hasSubnav()) {
-      const label = this.state.expanded
-        ? this.props.ariaExpandedStateButtonLabel
-        : this.props.ariaCollapsedStateButtonLabel;
+      const label = this.state.collapsed
+        ? this.props.ariaCollapsedStateButtonLabel
+        : this.props.ariaExpandedStateButtonLabel;
 
       return (
         <button
           aria-controls={this.subnavId}
-          aria-expanded={this.state.expanded}
+          aria-expanded={!this.state.collapsed}
           className='ds-c-vertical-nav__subnav-toggle'
           onClick={this.handleToggleClick}
         >
@@ -63,7 +63,7 @@ export class VerticalNavItem extends React.PureComponent {
     if (this.hasSubnav()) {
       return (
         <VerticalNav
-          expanded={this.state.expanded}
+          collapsed={this.state.collapsed}
           id={this.subnavId}
           items={this.props.items}
           nested
@@ -102,7 +102,7 @@ export class VerticalNavItem extends React.PureComponent {
 VerticalNavItem.defaultProps = {
   ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
   ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
-  defaultExpanded: true
+  defaultCollapsed: false
 };
 
 VerticalNavItem.propTypes = {
@@ -119,9 +119,9 @@ VerticalNavItem.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Whether or not the item's sub-navigation is in an expanded state by default
+   * Whether or not the item's sub-navigation is in a collapsed state by default
    */
-  defaultExpanded: PropTypes.bool,
+  defaultCollapsed: PropTypes.bool,
   /**
    * Called when the item is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
@@ -132,7 +132,7 @@ VerticalNavItem.propTypes = {
   onClick: PropTypes.func,
   /**
    * Called when this item's subnav is collapsed or expanded, with the
-   * following arguments: `id`, `expanded`
+   * following arguments: `id`, `collapsed`
    */
   onSubnavToggle: PropTypes.func,
   /**

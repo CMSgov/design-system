@@ -31,7 +31,7 @@ export class VerticalNav extends React.PureComponent {
       {
         'ds-c-vertical-nav': !this.props.nested,
         'ds-c-vertical-nav__subnav': this.props.nested,
-        'ds-u-display--none': !this.props.expanded
+        'ds-u-display--none': this.props.collapsed
       }, this.props.className);
 
     return (
@@ -43,7 +43,7 @@ export class VerticalNav extends React.PureComponent {
 }
 
 VerticalNav.defaultProps = {
-  expanded: true
+  collapsed: false
 };
 
 VerticalNav.propTypes = {
@@ -52,9 +52,9 @@ VerticalNav.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Whether or not the menu is in an expanded state
+   * Whether or not the menu is in a collapsed state
    */
-  expanded: PropTypes.bool,
+  collapsed: PropTypes.bool,
   id: PropTypes.string,
   /**
    * An array of `VerticalNavItem` data objects

@@ -55,8 +55,8 @@ describe('VerticalNav', () => {
     expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(true);
   });
 
-  it('is not expanded', () => {
-    const data = shallowRender({ expanded: false });
+  it('is collapsed', () => {
+    const data = shallowRender({ collapsed: true });
 
     expect(data.wrapper.hasClass('ds-u-display--none')).toBe(true);
   });
