@@ -135,3 +135,27 @@ Object.keys(_TextField).forEach(function (key) {
     }
   });
 });
+
+var _VerticalNav = require('./VerticalNav/VerticalNav');
+
+Object.keys(_VerticalNav).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _VerticalNav[key];
+    }
+  });
+});
+
+var _VerticalNavItem = require('./VerticalNav/VerticalNavItem');
+
+Object.keys(_VerticalNavItem).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _VerticalNavItem[key];
+    }
+  });
+});
