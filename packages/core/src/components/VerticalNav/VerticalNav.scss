@@ -178,7 +178,9 @@ Style guide: components.vertical-nav.VerticalNavItem
 
 ## Accessibility
 
-- Ensure the navigational system is keyboard accessible. Users should be able to tab through each link.
+- Users should be able to tab through each link.
+- If you have nested menus that are collapsible, ensure the toggle button has its `aria-controls` and `aria-expanded` attributes set. This is done automatically for you
+if you're using the React components.
 
 ## Usability
 
