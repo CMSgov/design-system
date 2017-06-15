@@ -27,6 +27,7 @@ let Git;
 try {
   Git = require('nodegit');
 } catch (er) {
+  dutil.logError('stats', er);
   Git = null;
 }
 
@@ -67,7 +68,7 @@ function createSpecificityGraph(stats, filename) {
  * the current branch to identify a change in a particular stat.
  */
 function getMasterBlob(filepath) {
-  if (!Git) return '';
+  if (!Git) return Promise.resolve('');
 
   return Git.Repository.open(repoPath)
     .then(repo => repo.getMasterCommit())
