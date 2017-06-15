@@ -6,16 +6,15 @@
   "repository": "CMSgov/design-system",
   "devDependencies": {
     "enzyme": "^2.8.2",
-    "react-addons-test-utils": "^15.5.1",
-    "react-element-to-jsx-string": "^7.0.0",
-    "react-test-renderer": "^15.5.4"
+    "react-element-to-jsx-string": "^10.1.0",
+    "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
     "@cmsgov/design-system-core": "^1.0.0-alpha",
     "classnames": "^2.2.5",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
