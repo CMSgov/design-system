@@ -11,9 +11,11 @@ function createRoutes(pages, level = 1) {
 
   pages = pages.map(page => {
     return {
-      header: page.header,
-      referenceURI: page.referenceURI,
-      sections: createRoutes(page.sections, level + 1),
+      defaultCollapsed: true,
+      id: page.referenceURI, // we use this to identify the current page
+      items: level < 2 ? createRoutes(page.sections, level + 1) : null,
+      label: page.header,
+      url: page.referenceURI ? `/${page.referenceURI}` : undefined,
       weight: page.weight
     };
   });

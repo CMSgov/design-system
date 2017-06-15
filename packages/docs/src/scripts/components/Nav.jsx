@@ -1,32 +1,50 @@
-import NavItem from './NavItem';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { VerticalNav } from '@cmsgov/design-system-core';
+
+/**
+ * By default all the menus are collapsed, but we want to expand the menu
+ * containing the currently selected page.
+ * @param {Array} items
+ * @param {String} selectedId
+ * @return {Array} New items array
+ */
+function expandSelectedItems(items, selectedId) {
+  items = [].concat(items); // Don't mutate items
+
+  items.some(function(item) {
+    if (item.id === selectedId || isParentOfSelectedChild(item.items, selectedId)) {
+      item.defaultCollapsed = false;
+      return true;
+    }
+  });
+
+  return items;
+}
+
+function isParentOfSelectedChild(items, selectedId) {
+  if (items && items.length) {
+    return items.some(item => item.id === selectedId);
+  }
+
+  return false;
+}
 
 const Nav = props => {
   return (
     <nav className='l-col-3 l-sidebar ds-u-border-right--1 ds-u-padding--2'>
-      <ol className='c-nav__list ds-c-vertical-nav'>
-        {props.routes.map(page => (
-          <NavItem
-            {...page}
-            currentPageURI={props.currentPageURI}
-            key={page.referenceURI + page.header}
-          />
-        ))}
-      </ol>
+      <VerticalNav
+        className='c-nav__list'
+        items={expandSelectedItems(props.items, props.selectedId)}
+        selectedId={props.selectedId}
+      />
     </nav>
   );
 };
 
 Nav.propTypes = {
-  currentPageURI: NavItem.propTypes.currentPageURI,
-  routes: PropTypes.arrayOf(
-    PropTypes.shape({
-      header: NavItem.propTypes.header,
-      referenceURI: NavItem.propTypes.referenceURI,
-      sections: NavItem.propTypes.sections
-    })
-  )
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selectedId: PropTypes.string.isRequired
 };
 
 export default Nav;

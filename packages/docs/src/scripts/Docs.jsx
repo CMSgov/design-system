@@ -13,8 +13,8 @@ const Docs = (props) => {
       <Header />
       <div className='l-grid'>
         <Nav
-          currentPageURI={props.page.referenceURI}
-          routes={props.routes}
+          items={props.routes}
+          selectedId={props.page.referenceURI}
         />
         <main className='l-col-9 l-col-grow'>
           <Page {...props.page} />
@@ -26,7 +26,7 @@ const Docs = (props) => {
 
 Docs.propTypes = {
   page: PropTypes.shape(Page.propTypes).isRequired,
-  routes: Nav.propTypes.routes
+  routes: Nav.propTypes.items
 };
 
 export default Docs;
