@@ -11,6 +11,9 @@ export class VerticalNav extends React.PureComponent {
   renderItems() {
     return this.props.items.map(item => {
       let onClick = item.onClick || this.props.onLinkClick;
+      const selected = item.selected || (
+        this.props.selectedId && this.props.selectedId === item.id
+      );
 
       if (!onClick) {
         onClick = undefined;
@@ -19,8 +22,10 @@ export class VerticalNav extends React.PureComponent {
       return (
         <VerticalNavItem
           {...item}
+          _selectedId={this.props.selectedId}
           key={item.id + item.url + item.label}
           onClick={onClick}
+          selected={selected}
         />
       );
     });
@@ -55,6 +60,11 @@ VerticalNav.propTypes = {
    * Whether or not the menu is in a collapsed state
    */
   collapsed: PropTypes.bool,
+  /**
+   * The `id` of the selected `VerticalNavItem`. This will also set the
+   * `selected` prop on the item's parents.
+   */
+  selectedId: PropTypes.string,
   id: PropTypes.string,
   /**
    * An array of `VerticalNavItem` data objects

@@ -11,6 +11,7 @@ export class VerticalNavItem extends React.PureComponent {
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.id = this.props.id || uniqueId('VerticalNavItem_');
     this.subnavId = `${this.id}__subnav`;
+
     this.state = {
       collapsed: this.props.defaultCollapsed
     };
@@ -40,6 +41,34 @@ export class VerticalNavItem extends React.PureComponent {
     return this.props.items && this.props.items.length;
   }
 
+  /**
+   * Check if this item is selected or if it is a parent of a selected item
+   */
+  isSelected() {
+    if (this.props.selected) return this.props.selected;
+
+    if (this.props._selectedId && this.hasSubnav()) {
+      return this.childIsSelected(this.props.items);
+    }
+  }
+
+  /**
+   * Checks if a descendant is selected
+   * @param {Array} children - The nested items
+   */
+  childIsSelected(children) {
+    if (children && children.length) {
+      return children.some(child => {
+        return (
+          child.id === this.props._selectedId ||
+          this.childIsSelected(child.items)
+        );
+      });
+    }
+
+    return false;
+  }
+
   renderSubnavToggle() {
     if (this.hasSubnav()) {
       const label = this.state.collapsed
@@ -63,6 +92,7 @@ export class VerticalNavItem extends React.PureComponent {
     if (this.hasSubnav()) {
       return (
         <VerticalNav
+          selectedId={this.props._selectedId}
           collapsed={this.state.collapsed}
           id={this.subnavId}
           items={this.props.items}
@@ -79,7 +109,7 @@ export class VerticalNavItem extends React.PureComponent {
       className: classNames(
         'ds-c-vertical-nav__link',
         {
-          'ds-c-vertical-nav__link--current': this.props.selected,
+          'ds-c-vertical-nav__link--current': this.isSelected(),
           'ds-c-vertical-nav__link--parent': this.hasSubnav()
         }
       ),
@@ -106,6 +136,8 @@ VerticalNavItem.defaultProps = {
 };
 
 VerticalNavItem.propTypes = {
+  // This gets passed through from the parent VerticalNav to a nested VerticalNav
+  _selectedId: PropTypes.string,
   /**
    * Aria label for the toggle button when the sub-navigation is collapsed
    */

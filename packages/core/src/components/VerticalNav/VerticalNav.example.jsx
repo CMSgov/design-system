@@ -5,20 +5,22 @@ import VerticalNav from './VerticalNav';
 export default function() {
   return (
     <VerticalNav
+      selectedId='team'
       items={[
         {
           label: 'Home',
-          selected: true,
           url: 'http://example.com'
         },
         {
           label: 'About',
           items: [
             {
+              id: 'team',
               label: 'Team',
               url: 'http://example.com#team'
             },
             {
+              id: 'company',
               label: 'Company',
               url: 'http://example.com#company'
             }
