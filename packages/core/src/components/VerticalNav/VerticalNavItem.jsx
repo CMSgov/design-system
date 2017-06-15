@@ -150,7 +150,7 @@ VerticalNavItem.propTypes = {
   /**
    * Text to render for this nav item
    */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /**
    * A URL to navigate to if this item is a link
    */

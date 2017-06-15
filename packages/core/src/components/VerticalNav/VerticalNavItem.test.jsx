@@ -42,6 +42,15 @@ describe('VerticalNavItem', () => {
     expect(link.prop('href')).toBe(data.props.url);
   });
 
+  it('accepts a node as a label', () => {
+    const wrapper = shallowRender({
+      label: <strong>Foo</strong>
+    }).wrapper;
+
+    const link = wrapper.find('.ds-c-vertical-nav__link').first();
+    expect(link.html()).toMatch(/<strong>/);
+  });
+
   it('is selected', () => {
     const data = shallowRender({ selected: true });
     const link = data.wrapper.find('.ds-c-vertical-nav__link').first();
