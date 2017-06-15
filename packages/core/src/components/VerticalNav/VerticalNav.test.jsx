@@ -137,6 +137,5 @@ describe('VerticalNav', () => {
       fooWrapper.find('.ds-c-vertical-nav__link').first()
         .hasClass('ds-c-vertical-nav__link--current')
     ).toBe(false);
-
   });
 });
