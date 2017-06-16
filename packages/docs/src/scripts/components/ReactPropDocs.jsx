@@ -11,7 +11,7 @@ class ReactPropDocs extends React.PureComponent {
     const props = Object.getOwnPropertyNames(this.props.propDocs);
 
     return props.map(prop => {
-      if (prop === 'children') return null;
+      if (prop === 'children' || prop.match(/^_/)) return null;
 
       return (
         <ReactPropDoc
