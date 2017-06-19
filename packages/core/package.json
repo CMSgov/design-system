@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "publishConfig": {
     "access": "public"
   },
@@ -12,14 +12,13 @@
     "classnames": "^2.2.5",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "uswds": "^1.2.0-rc1"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "uswds": "^1.2.1"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
     "mz": "^2.6.0",
-    "react-addons-test-utils": "^15.5.1",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "^15.6.1"
   }
 }

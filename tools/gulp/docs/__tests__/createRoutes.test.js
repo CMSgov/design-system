@@ -22,12 +22,13 @@ describe('createRoutes', () => {
 
     const routes = createRoutes(pages);
     const page = routes[0];
+    const expectedProps = ['defaultCollapsed', 'label', 'url', 'id', 'items', 'weight'];
 
-    expect(Object.keys(page).length).toBe(4);
-    expect(Object.keys(page).sort())
-      .toEqual(['header', 'referenceURI', 'sections', 'weight']);
-    // Nested sections also get process
-    expect(Object.keys(page.sections[0]).length).toBe(4);
+    expect(Object.keys(page))
+      .toEqual(expect.arrayContaining(expectedProps));
+    // Nested sections also get processed
+    expect(Object.keys(page.items[0]))
+      .toEqual(expect.arrayContaining(expectedProps));
   });
 
   it('creates parent page for /guidelines/ pages', () => {
@@ -37,7 +38,7 @@ describe('createRoutes', () => {
       mockPage('home')
     ];
     const routes = createRoutes(pages);
-    const guidelinesParent = _.find(routes, {header: 'Guidelines'});
+    const guidelinesParent = _.find(routes, {label: 'Guidelines'});
 
     // Nested pages were removed from top-level pages array
     expect(routes.length).toBe(2);
@@ -45,29 +46,29 @@ describe('createRoutes', () => {
     // Guidelines page got created
     expect(guidelinesParent)
       .not.toBeUndefined();
-    expect(guidelinesParent.referenceURI)
+    expect(guidelinesParent.url)
       .toBeUndefined();
     expect(guidelinesParent.weight)
       .not.toBeUndefined();
-    expect(guidelinesParent.sections[0].referenceURI)
-      .toBe(pages[0].referenceURI);
+    expect(guidelinesParent.items[0].url)
+      .toBe(`/${pages[0].referenceURI}`);
 
     // Guideline pages got nested
     expect(
-      _.find(guidelinesParent.sections, {
-        referenceURI: pages[0].referenceURI
+      _.find(guidelinesParent.items, {
+        url: `/${pages[0].referenceURI}`
       })
     ).not.toBeUndefined();
 
     expect(
-      _.find(guidelinesParent.sections, {
-        referenceURI: pages[1].referenceURI
+      _.find(guidelinesParent.items, {
+        url: `/${pages[1].referenceURI}`
       })
     ).not.toBeUndefined();
 
     // Home page still exists
     expect(
-      _.find(routes, {referenceURI: 'home'})
+      _.find(routes, {url: '/home'})
     ).not.toBeUndefined();
   });
 });

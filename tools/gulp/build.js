@@ -24,7 +24,12 @@ module.exports = (gulp, shared) => {
     }
   });
 
-  // Transpile React components
+  /**
+   * Transpile design system React components.
+   * Note: If you're running a dev server for the documentation site and try
+   * to use a new React component, make sure you run this task, otherwise
+   * the component won't be found.
+   */
   gulp.task('build:react', () => {
     dutil.logMessage('🐠 ', 'Babelfying React components');
 

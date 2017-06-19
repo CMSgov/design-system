@@ -9,6 +9,8 @@ describe('processSection', () => {
           // These paragraphs need to be seperated by a newline in order for
           // the flag processing to work properly.
           description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@status prototype</p>`,
+          deprecated: false,
+          experimental: false,
           header: 'Title - `<Component>`',
           markup: '<% var foo="bar" %><%= foo %> {{root}}',
           modifiers: [{
@@ -17,7 +19,10 @@ describe('processSection', () => {
             className: ''
           }],
           parameters: [],
-          reference: reference
+          reference: reference,
+          source: {
+            line: 1
+          }
         }
       )
     };
