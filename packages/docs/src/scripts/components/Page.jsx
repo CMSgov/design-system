@@ -19,6 +19,14 @@ class Page extends React.PureComponent {
     this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
   }
 
+  defaultSelectedTabId() {
+    if (this.guidanceSections().length && window.location.hash === '#guidance') {
+      return 'guidance';
+    }
+
+    return 'usage';
+  }
+
   usageSections() {
     return this.props.sections.filter(s => !isGuidanceSection(s));
   }
@@ -42,7 +50,10 @@ class Page extends React.PureComponent {
   renderContent() {
     if (this.hasTabs) {
       return (
-        <Tabs tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'>
+        <Tabs
+          defaultSelectedId={this.defaultSelectedTabId()}
+          tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'
+        >
           <TabPanel
             className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
             id='usage'
