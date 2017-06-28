@@ -30,9 +30,9 @@ Style guide: utilities.border-radius
 }
 
 .ds-u-radius--pill {
-  border-radius: 9999px;
+  border-radius: $border-radius-pill;
 }
 
 .ds-u-radius--circle {
-  border-radius: 100%;
+  border-radius: $border-radius-circle;
 }
