@@ -122,7 +122,7 @@ describe('ChoiceList', () => {
         .toBe(true);
     });
 
-    it("doesn't pass an ID prop", () => {
+    it('doesn\'t pass an ID prop', () => {
       const data = shallowRender();
 
       expect(data.wrapper.find('Choice').first().prop('id'))

@@ -66,10 +66,12 @@ Select.propTypes = {
    */
   multiple: function(props, propName, componentName) {
     if (props[propName]) {
+      /* eslint-disable quotes */
       return new Error(
         `'${propName}' supplied to '${componentName}'. [A11Y]: Users often don’t` +
         ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
       );
+      /* eslint-enable */
     }
   },
   name: PropTypes.string.isRequired,

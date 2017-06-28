@@ -85,7 +85,7 @@ describe('TextField', function() {
     const field1 = fieldData1.wrapper.find('.ds-c-field').first();
     const label1 = fieldData1.wrapper.find('FormLabel').first();
     const field2 = fieldData2.wrapper.find('.ds-c-field').first();
-    const idRegex = new RegExp(`textfield_[0-9]+`);
+    const idRegex = new RegExp('textfield_[0-9]+');
 
     expect(field1.prop('id')).toMatch(idRegex);
     expect(label1.prop('fieldId')).toBe(field1.prop('id'));
