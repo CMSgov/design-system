@@ -6,7 +6,7 @@ describe('processSection', () => {
     return {
       toJSON: () => (
         {
-          // These paragraphs need to be seperated by a newline in order for
+          // These paragraphs need to be separated by a newline in order for
           // the flag processing to work properly.
           description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@status prototype</p>`,
           deprecated: false,
