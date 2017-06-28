@@ -18,17 +18,11 @@ Markup:
 /*
 Checkbox & Radio
 
-@status prototype
+Checkboxes allow users to select one or more options from a visible list, whereas radio buttons allow a user to select only one option.
+
+@status recommended
 
 @uswds https://standards.usa.gov/components/form-controls
-
-Style guide: components.choice
-*/
-
-/*
-Checkbox
-
-Checkboxes allow users to select one or more options from a visible list.
 
 Markup:
 <fieldset class="ds-c-fieldset ds-u-margin-top--0">
@@ -43,28 +37,7 @@ Markup:
   <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled>
   <label for="carver-1">George Washington Carver</label>
 </fieldset>
-<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-    <legend class="ds-c-label">Select a historical figure</legend>
-    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
-    <label for="truth-2">Sojourner Truth</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
-    <label for="douglass-2">Frederick Douglass</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
-    <label for="washington-2">Booker T. Washington</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
-    <label for="carver-2">George Washington Carver</label>
-  </fieldset>
-</div>
-
-Style guide: components.choice.checkbox
-*/
-
-/*
-Radio option
-
-Markup:
-<fieldset class="ds-c-fieldset ds-u-margin-top--0">
+<fieldset class="ds-c-fieldset">
   <legend class="ds-c-label">Select a historical figure</legend>
   <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
   <label for="truth-3">Sojourner Truth</label>
@@ -75,6 +48,18 @@ Markup:
 </fieldset>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
   <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+    <legend class="ds-c-label">Historical figures</legend>
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Select all that apply</span>
+    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
+    <label for="truth-2">Sojourner Truth</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
+    <label for="douglass-2">Frederick Douglass</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
+    <label for="washington-2">Booker T. Washington</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
+    <label for="carver-2">George Washington Carver</label>
+  </fieldset>
+  <fieldset class="ds-c-fieldset">
     <legend class="ds-c-label">Select a historical figure</legend>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
     <label for="truth-4">Sojourner Truth</label>
@@ -85,7 +70,7 @@ Markup:
   </fieldset>
 </div>
 
-Style guide: components.choice.radio
+Style guide: components.choice
 */
 
 // Hide the default browser checkbox/radio button since we'll
