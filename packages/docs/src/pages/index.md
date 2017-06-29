@@ -145,3 +145,7 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 ## Examples
 
 [**View example projects**](https://github.com/CMSgov/design-system/tree/master/examples/) to see ways you can use the design system and incorporate it into your development process.
+
+## Credits
+
+Our design system is a variation and extension of the [U.S. Web Design Standards](https://standards.usa.gov). Thank you to 18F and GSA for the hard work they put into the Standards. We're excited to contribute our learnings and progress.
