@@ -2,17 +2,15 @@
 @import '../settings/index';
 
 /*
-Visibility
+Display/Visibility
 
 Use the `display` and `visibility` utility classes to show and hide elements.
 
-Style guide: utilities.visibility
+Style guide: utilities.display-visibility
 */
 
 /*
----
-
-## Display
+Display
 
 > The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
@@ -29,7 +27,7 @@ Markup:
 <span class="ds-u-display--inline-block">I'm displayed as <code>inline-block</code></span>
 <span class="ds-u-display--none">I'm hidden</span>
 
-Style guide: utilities.visibility.display
+Style guide: utilities.display-visibility.display
 */
 .ds-u-display--block {
   display: block !important;
@@ -44,9 +42,7 @@ Style guide: utilities.visibility.display
 }
 
 /*
----
-
-## Visibility
+Visibility
 
 > The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 
@@ -67,7 +63,7 @@ Markup:
 <span class="ds-u-visibility--screen-reader">I'm visible to screen readers only</span>
 <span class="ds-u-visibility--visible">I'm visible</span>
 
-Style guide: utilities.visibility.visibility
+Style guide: utilities.display-visibility.visibility
 */
 .ds-u-visibility--hidden {
   visibility: hidden !important;
@@ -90,9 +86,7 @@ Style guide: utilities.visibility.visibility
 }
 
 /*
----
-
-## Responsive
+Responsive
 
 Use a [responsive prefix](/responsive) to show/hide content at specific breakpoints.
 
@@ -116,7 +110,7 @@ Markup:
   </div>
 <% }) %>
 
-Style guide: utilities.visibility.responsive
+Style guide: utilities.display-visibility.responsive
 */
 @each $breakpoint in map-keys($breakpoints) {
   $value: map-get($breakpoints, $breakpoint);
