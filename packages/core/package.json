@@ -1,11 +1,12 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-rc.1",
   "publishConfig": {
     "access": "public"
   },
   "description": "Core Sass/CSS and React design system assets",
   "repository": "CMSgov/design-system",
+  "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/index.js",
   "dependencies": {
     "bourbon": "^4.3.3",

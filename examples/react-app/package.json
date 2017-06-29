@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system-core": "^1.0.0-alpha",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "@cmsgov/design-system-core": "latest",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0-beta.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "gulp": "^3.9.1",
