@@ -4,9 +4,8 @@ import reactComponentPath from '../shared/reactComponentPath';
 
 const Source = props => {
   if (props.reactComponent || props.source) {
-    const path = props.reactComponent
-      ? reactComponentPath(props.source.path, props.reactComponent).replace(/[a-z-]+\/src\//, '')
-      : props.source.filename;
+    const reactPath = props.reactComponent && reactComponentPath(props.source.path, props.reactComponent).replace(/[a-z-]+\/src\//, '');
+    const path = props.reactComponent ? `${reactPath}.jsx` : props.source.filename;
 
     return <code className='ds-u-font-size--small'>{path}</code>;
   }
