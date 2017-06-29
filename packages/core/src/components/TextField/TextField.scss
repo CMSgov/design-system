@@ -130,10 +130,10 @@ Style guide: components.text-field.react
 - Text fields are among the easiest type of input for desktop users but are more difficult for mobile users.
 - Only show error messages or styling after a user has interacted with a particular field.
 
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
 ## Accessibility
 
-- Display form controls in the same order in HTML as they appear on screen. Do not use CSS to rearrange the form controls. Screen readers narrate forms in the order they appear in the HTML.
-- Visually align validation messages with the input fields, so people using screen magnifiers can read them quickly.
 - Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
 - Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
 

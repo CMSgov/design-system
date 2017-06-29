@@ -88,6 +88,8 @@ Style guide: components.select.choicelist-react
 - When most users will (or should) pick a particular option, make it the default: `<option selected="selected">Default</option>`
 - Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Offer a “submit” button at the end of the form instead. Users often change their choices multiple times. Auto-submission is also less accessible.
 
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
 ## Accessibility
 
 - Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
