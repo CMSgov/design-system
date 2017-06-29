@@ -49,7 +49,7 @@ describe('Select', () => {
     expect(data.wrapper.hasClass('ds-c-field--select')).toBe(true);
   });
 
-  it("renders <option>'s as children", () => {
+  it('renders <option>\'s as children', () => {
     const data = shallowRender({}, 10);
 
     expect(data.wrapper.children('option').length).toBe(10);

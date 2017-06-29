@@ -73,7 +73,7 @@ module.exports = {
 
   logIntroduction: function(message) {
 
-    message = message || 'HealthCare.gov Design System';
+    message = message || 'CMS.gov Design System';
 
     gutil.log(
       chalk.yellow(pkg.name),

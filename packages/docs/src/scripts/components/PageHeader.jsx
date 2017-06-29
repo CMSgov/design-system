@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Source from './Source';
+import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
   uswdsLink() {
@@ -15,8 +16,17 @@ class PageHeader extends React.PureComponent {
 
   statusPill() {
     if (this.props.status) {
+      const classes = classNames(
+        'ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize',
+        {
+          'ds-c-badge--success': this.props.status === 'recommended',
+          'ds-c-badge--warn': this.props.status === 'beta',
+          'ds-c-badge--alert': this.props.status === 'alpha'
+        }
+      );
+
       return (
-        <span className='ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize ds-u-fill--warn ds-u-color--base'>
+        <span className={classes}>
           {this.props.status}
         </span>
       );

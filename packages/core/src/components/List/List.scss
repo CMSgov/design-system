@@ -4,26 +4,36 @@
 /*
 List
 
-@status prototype
+Lists organize written information for users.
+
+@status recommended
+
+@uswds https://standards.usa.gov/components/typography/#lists
 
 Markup:
+<h6 class="ds-h6">Unordered list</h6>
 <ul class="ds-c-list {{modifier}}">
   <li>List item 1</li>
   <li>List item 2</li>
 </ul>
+<h6 class="ds-h6">Ordered list</h6>
+<ol class="ds-c-list {{modifier}}">
+  <li>List item 1</li>
+  <li>List item 2</li>
+</ol>
 
 .ds-c-list--bare - Unstyled list (no `margin`, `padding` or `list-style`)
 
 Style guide: components.list
 */
 .ds-c-list {
-  margin-bottom: 1em;
-  margin-top: 1em;
-  padding-left: 1.94em; // Approximately 15px left padding at default font size
+  margin-bottom: $spacer-2;
+  margin-top: $spacer-2;
+  padding-left: $spacer-4;
 
   li {
     line-height: $base-line-height;
-    margin-bottom: 0.5em;
+    margin-bottom: $spacer-1;
 
     &:last-child {
       margin-bottom: 0;
@@ -34,3 +44,27 @@ Style guide: components.list
 .ds-c-list--bare {
   @include ds-unstyled-list;
 }
+
+/*
+---
+
+## When to use
+
+- Use an ordered list when you need to display text in some ranking, hierarchy, or series of steps.
+- Use unordered lists to display text in no specific order.
+
+## When to consider alternatives
+
+- If you need to communicate long lists of narrative text.
+
+## Guidance
+
+- Use sentence case and begin lists with a capital letter.
+- Use punctuation appropriate to the text. Do not leave sentences without periods.
+
+## Learn more
+
+- [18F Content Guide \- Bulleted lists](https://content-guide.18f.gov/punctuation/#bulleted-lists)
+
+Style guide: components.list.guidance
+*/

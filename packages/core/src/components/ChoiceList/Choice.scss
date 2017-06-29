@@ -18,17 +18,11 @@ Markup:
 /*
 Checkbox & Radio
 
-@status prototype
+Checkboxes allow users to select one or more options from a visible list, whereas radio buttons allow a user to select only one option.
+
+@status recommended
 
 @uswds https://standards.usa.gov/components/form-controls
-
-Style guide: components.choice
-*/
-
-/*
-Checkbox
-
-Checkboxes allow users to select one or more options from a visible list.
 
 Markup:
 <fieldset class="ds-c-fieldset ds-u-margin-top--0">
@@ -43,28 +37,7 @@ Markup:
   <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled>
   <label for="carver-1">George Washington Carver</label>
 </fieldset>
-<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-    <legend class="ds-c-label">Select a historical figure</legend>
-    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
-    <label for="truth-2">Sojourner Truth</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
-    <label for="douglass-2">Frederick Douglass</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
-    <label for="washington-2">Booker T. Washington</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
-    <label for="carver-2">George Washington Carver</label>
-  </fieldset>
-</div>
-
-Style guide: components.choice.checkbox
-*/
-
-/*
-Radio option
-
-Markup:
-<fieldset class="ds-c-fieldset ds-u-margin-top--0">
+<fieldset class="ds-c-fieldset">
   <legend class="ds-c-label">Select a historical figure</legend>
   <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
   <label for="truth-3">Sojourner Truth</label>
@@ -75,6 +48,18 @@ Markup:
 </fieldset>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
   <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+    <legend class="ds-c-label">Historical figures</legend>
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Select all that apply</span>
+    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
+    <label for="truth-2">Sojourner Truth</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
+    <label for="douglass-2">Frederick Douglass</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
+    <label for="washington-2">Booker T. Washington</label>
+    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
+    <label for="carver-2">George Washington Carver</label>
+  </fieldset>
+  <fieldset class="ds-c-fieldset">
     <legend class="ds-c-label">Select a historical figure</legend>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
     <label for="truth-4">Sojourner Truth</label>
@@ -85,7 +70,7 @@ Markup:
   </fieldset>
 </div>
 
-Style guide: components.choice.radio
+Style guide: components.choice
 */
 
 // Hide the default browser checkbox/radio button since we'll
@@ -178,7 +163,7 @@ Style guide: components.choice.radio
 }
 
 /*
-React - `<Choice>`
+`<Choice>`
 
 @react-component Choice
 
@@ -186,7 +171,7 @@ Style guide: components.choice.react
 */
 
 /*
-React - `<ChoiceList>`
+`<ChoiceList>`
 
 @react-component ChoiceList
 
@@ -196,49 +181,60 @@ Style guide: components.choice.choicelist-react
 /*
 ---
 
+## When to use
+
+**Checkboxes**
+
+- When a user can select any number of choices from a set list.
+- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
+- When users need to see all the available options at a glance.
+- When users should be able to select zero of the options.
+
+**Radio buttons**
+
+- When users need to select only one option out of a set of mutually exclusive choices.
+
+## When to consider alternatives
+
+- If there are too many options to display on a mobile screen. Consider a `select` menu if you don’t have enough space to list out all available options, and if the user can only select one of the options.
+- Never use radio buttons for optional questions, since once a radio button is selected from a list, it or another choice will remain selected.
+
+## Guidance
+
+- Don't rely on the visual difference between radio buttons and checkboxes. Make it clear with words when users can select one or multiple options.
+- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
+- In general, list choices vertically; horizontal listings can make it difficult to tell which label pertains to which choice. An exception is where you have binary choices with short labels, like 'Yes / No'. The convention here is for horizontal alignment.
+- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
+- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. In addition, you'll never know if the user explicitly chose that option or just didn't notice the question. If you're unsure, leave nothing selected by default.
+
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
 ## Accessibility
 
-- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single check.
-- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
+- Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single checkbox.
+- Some screen readers read the `legend` text for each `fieldset`, so it should be brief and descriptive.
 - Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
-
-## Guidelines
-
-- Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
-- List options vertically if possible; horizontal listings can make it difficult to tell which label pertains to which checkbox.
-- Avoid using negative language in labels as they can be counterintuitive. For example, “I want to receive a promotional email” instead of “I don’t want to receive promotional email.”
-- If you customize, make sure selections are adequately spaced for touch screens.
-- Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. If you are unsure, leave nothing selected by default.
+- The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
 
 ## Theming
 
-The following Sass variables can be overridden to theme checkbox/radio options:
+The following Sass variables can be overridden to theme choice fields:
 
 - `$choice-border-width`
 - `$choice-border-color`
 - `$choice-border-color-inverse`
 - `$choice-checked-background-color`
 
-## Checkboxes
+## Related patterns
 
-### When to use
-- When a user can select any number of choices from a set list.
-- When a user needs to choose “yes” or “no” on only one option (use a stand-alone checkbox). For example, to toggle a setting on or off.
-- When users need to see all the available options at a glance.
+- [Select menu]({{root}}/components/select)
 
-### When to consider something different
-- If there are too many options to display on a mobile screen.
-- If a user can only select one option from a list (use `radio` buttons instead).
+## Learn more
 
-## Radio buttons
-
-- When users need to select only one option out of a set of mutually exclusive choices.
-- When the number of available options can fit onto a mobile screen.
-
-### When to consider something else
-- Consider checkboxes if users need to select more than one option or if there is only one item to select.
-- Consider a dropdown if you don’t have enough space to list out all available options.
-- If users should be able to select zero of the options.
+- [Form Guidelines]({{root}}/guidelines/forms/)
+- [GOV.UK Checkbox/Radio buttons discussion](https://paper.dropbox.com/doc/Radio-buttons-oIwWoxwBKClt5IXvDbnpF)
+- ["We've updated the radios and checkboxes on GOV.UK"](https://designnotes.blog.gov.uk/2016/11/30/weve-updated-the-radios-and-checkboxes-on-gov-uk/)
+- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 
 Style guide: components.choice.guidance
 */

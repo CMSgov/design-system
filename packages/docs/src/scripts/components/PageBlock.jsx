@@ -61,18 +61,22 @@ class PageBlock extends React.PureComponent {
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
+    const source = this.props.reactComponent ? (
+      <Source
+        reactComponent={this.props.reactComponent}
+        source={this.props.source}
+      />
+    ) : null;
+
     return (
       <div>
-        <h1
-          className='ds-h1'
+        <h2
+          className='ds-h2'
           // Headers can contain HTML markup, therefore dangerously set...
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
         />
-        <Source
-          reactComponent={this.props.reactComponent}
-          source={this.props.source}
-        />
+        {source}
       </div>
     );
   }
@@ -94,7 +98,7 @@ class PageBlock extends React.PureComponent {
     const docs = reactDoc[`${path}.jsx`];
 
     if (docs && docs.length) {
-      // There should only ever be one exported component definiton
+      // There should only ever be one exported component definition
       const doc = docs[0];
 
       return (

@@ -41,3 +41,7 @@ $breakpoints: (
   // Extra large screen / wide desktop
   xl: $width-xl
 ) !default;
+
+// Borders
+$border-radius-circle: 100%;
+$border-radius-pill: 9999px;

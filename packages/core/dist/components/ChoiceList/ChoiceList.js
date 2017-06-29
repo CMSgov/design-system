@@ -49,13 +49,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /**
  * A `ChoiceList` component can be used to render a `select` menu, radio
- * button group, or checkbox group, and their corresponding `label` or `legend`.
+ * button group, or checkbox group.
  *
  * You can manually pass in the `type` prop, but the real power of this component
  * is unleashed when you let it determine the type of fields for you. It takes
  * into account accessibility and usability best practices, so you can pass in
- * an array of choices and let it determine whether the choices should be
- * presented as radio buttons, checkboxes, or a `select` menu.
+ * an array of choices and let it determine what type of field would be best for
+ * the user.
  */
 var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
   _inherits(ChoiceList, _React$PureComponent);
