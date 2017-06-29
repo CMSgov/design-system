@@ -5,23 +5,31 @@ Select
 
 A select field allows users to select one option from a list.
 
-@status prototype
+@status recommended
 
 @uswds https://standards.usa.gov/components/form-controls/#dropdown
 
 Markup:
 <label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
 <select class="ds-c-field ds-c-field--select" name="options" id="options">
-  <option value="value1">Option A</option>
-  <option value="value2">Option B</option>
-  <option value="value3">Option C</option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+  <option value="4">Option 4</option>
+  <option value="5">Option 5</option>
+  <option value="6">Option 6</option>
+  <option value="7">Option 7</option>
 </select>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
   <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">Field label</label>
   <select class="ds-c-field ds-c-field--select ds-c-field--inverse" name="options-inverse" id="options-inverse">
-    <option value="value1">Option A</option>
-    <option value="value2">Option B</option>
-    <option value="value3">Option C</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
   </select>
 </div>
 
@@ -43,7 +51,7 @@ Style guide: components.select
 }
 
 /*
-React - `<Select>`
+`<Select>`
 
 @react-component Select
 
@@ -51,7 +59,7 @@ Style guide: components.select.react
 */
 
 /*
-React - `<ChoiceList>`
+`<ChoiceList>`
 
 @react-component ChoiceList
 
@@ -61,29 +69,44 @@ Style guide: components.select.choicelist-react
 /*
 ---
 
-## Accessibility
-
-- Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
-- Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
-
-## Usability
-
 ### When to use
 
 - Use sparingly — only when a user needs to choose from about seven to 15 possible options and you have limited space to display the options.
 
-### When to consider something else
+### When to consider alternatives
 
-- If the list of options is very short. Use radio buttons instead.
-- If the list of options is very long. Let users type the same information into a text input that suggests possible options instead.
+- If the list of options is short. Use radio or checkboxes buttons instead.
+- If the list of options is very long. Let users type the same information into a text input that suggests possible options instead. Long lists can sometimes be broken into multiple shorter lists by asking a few questions up-front to filter out options.
 - If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use checkboxes instead.
+- If the data is highly familiar to users, such as the day, month, or year of their birth.
 
-### Guidance
+## Guidance
 
+- Choose a sensible order for the options to enable visual scanning of the lists.
 - Test dropdowns thoroughly with members of your target audience. Several usability experts suggest they should be the “UI of last resort.” Many users find them confusing and difficult to use.
 - Avoid making options in one dropdown menu change based on the input to another. Users often don’t understand how selecting an item in one impacts another.
 - When most users will (or should) pick a particular option, make it the default: `<option selected="selected">Default</option>`
 - Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Offer a “submit” button at the end of the form instead. Users often change their choices multiple times. Auto-submission is also less accessible.
+
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
+## Accessibility
+
+- Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
+- Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
+- On some devices the list of options cannot be zoomed, which means that some people with visual impairments cannot use them.
+
+## Related patterns
+
+- [Checkbox and Radio]({{root}}/components/choice)
+- [Text field]({{root}}/components/text-field)
+
+## Learn more
+
+- [Form Guidelines]({{root}}/guidelines/forms/)
+- [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
+- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
+- [Dropdowns: Design Guidelines](https://www.nngroup.com/articles/drop-down-menus/)
 
 Style guide: components.select.guidance
 */

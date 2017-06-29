@@ -42,14 +42,17 @@ function processSection(kssSection, rootPath) {
   // parse those rather than running it through the marked library.
   data.header = converMarkdownCode(data.header);
 
-  // Render EJS and replace template tags
-  if (data.markup && data.markup !== '') {
+  // Replace template tags
+  ['description', 'markup'].forEach(key => {
     if (rootPath === '') {
-      data.markup = data.markup.replace(/{{root}}/g, '');
+      data[key] = data[key].replace(/{{root}}/g, '');
     } else {
-      data.markup = data.markup.replace(/{{root}}/g, `/${rootPath}`);
+      data[key] = data[key].replace(/{{root}}/g, `/${rootPath}`);
     }
+  });
 
+  // Render EJS
+  if (data.markup && data.markup !== '') {
     try {
       data.markup = ejs.render(data.markup);
     } catch (e) {
