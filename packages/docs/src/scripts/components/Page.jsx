@@ -20,7 +20,9 @@ class Page extends React.PureComponent {
   }
 
   defaultSelectedTabId() {
-    if (this.guidanceSections().length && window.location.hash === '#guidance') {
+    if (this.guidanceSections().length &&
+      typeof window !== 'undefined' &&
+      window.location.hash === '#guidance') {
       return 'guidance';
     }
 
