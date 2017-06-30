@@ -183,6 +183,10 @@ Style guide: components.vertical-nav.VerticalNavItem
 - If you have nested menus that are collapsible, ensure the toggle button has its `aria-controls` and `aria-expanded` attributes set. This is done automatically for you
 if you're using the React components.
 
+## Related patterns
+
+- [Tabs]({{root}}/components/tabs)
+
 ## Learn more
 
 - [18F Content Guide \- Heading capitalization](https://content-guide.18f.gov/capitalization/#headings)
