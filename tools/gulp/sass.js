@@ -87,7 +87,6 @@ module.exports = (gulp, shared) => {
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
     var packages = [
-      './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
       './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
