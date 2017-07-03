@@ -118,30 +118,6 @@ import {Button} from '@cmsgov/design-system-core';
 
 [View an example](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
 
-## File Structure
-
-The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/less-css-mess) (Inverted Triangle architecture for CSS). The goal is to write CSS in [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) order.
-
-<!-- You can regenerate the tree by running tree -d -I "node_modules" -->
-
-```
-├── dist                Transpiled CSS and fonts
-└── src                 Sass and JSX
-    ├── base            Base HTML styles
-    ├── components      Sass and React components
-    │   ├── Button
-    │   └── etc...
-    ├── fonts
-    ├── generics        Far reaching selectors
-    ├── images
-    ├── layouts         Structural patterns; No cosmetics.
-    ├── settings        Globally-available settings and config options
-    ├── tools           Helper functions and public mixins
-    ├── utilities       Functional CSS classes to apply individual traits
-    └── vendor          Third-party libraries
-```
-
-
 ## Examples
 
 [**View example projects**](https://github.com/CMSgov/design-system/tree/master/examples/) to see ways you can use the design system and incorporate it into your development process.
