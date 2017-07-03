@@ -14,8 +14,7 @@
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "uswds": "^1.2.1"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",

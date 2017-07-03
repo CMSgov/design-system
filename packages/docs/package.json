@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@cmsgov/design-system-core": "latest",
+    "@cmsgov/design-system-support": "latest",
     "classnames": "^2.2.5",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",

@@ -19,7 +19,7 @@ const stringReplace = require('gulp-string-replace');
 const runSequence = require('run-sequence');
 
 const config = {
-  vendorSrc: 'packages/core/src/vendor'
+  vendorSrc: 'packages/support/src/vendor'
 };
 
 module.exports = (gulp, shared) => {

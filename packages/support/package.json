@@ -6,5 +6,8 @@
   },
   "description": "Sass variables, mixins, and functions",
   "repository": "CMSgov/design-system",
-  "license": "SEE LICENSE IN LICENSE.md"
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "uswds": "^1.2.1"
+  }
 }
