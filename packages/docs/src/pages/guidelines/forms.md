@@ -55,5 +55,6 @@ Whichever choice you choose, ensure the pattern is consistent when the form is s
 
 ## Learn more
 
+- [Design Better Forms](https://uxdesign.cc/design-better-forms-96fadca0f49c)
 - [Website Forms Usability: Top 10 Recommendations](https://www.nngroup.com/articles/web-form-design/)
 - [Form Design Quick Fix: Group Form Elements Effectively Using White Space](https://www.nngroup.com/articles/form-design-white-space/)
