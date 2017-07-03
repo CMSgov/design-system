@@ -7,8 +7,8 @@
 
 // Manually set Bourbon's font stack variables. This allows us to avoid
 // installing Bourbon as a USWDS dependency.
-$georgia: "Georgia", "Cambria", "Times New Roman", "Times", serif;
-$helvetica: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+$georgia: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+$helvetica: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
 
 @import '../vendor/uswds/core/variables';
 
