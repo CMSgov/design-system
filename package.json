@@ -91,14 +91,13 @@
     "nodegit": "^0.19.0"
   },
   "engines": {
-    "node": ">=4.5.0"
+    "node": ">=4.5.0 <8.0.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/examples/",
       "<rootDir>/node_modules/",
-      "<rootDir>/packages/core/node_modules/",
-      "<rootDir>/packages/docs/node_modules/",
+      "<rootDir>/packages/**/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
     ]
   }
