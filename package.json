@@ -65,6 +65,7 @@
     "mkdir-recursive": "^0.3.0",
     "mz": "^2.6.0",
     "node-notifier": "^5.1.2",
+    "node-sass": "^4.5.3",
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^10.0.0",
     "postcss-url": "^7.0.0",
