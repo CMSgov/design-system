@@ -11,9 +11,12 @@ let config = {
   context: __dirname,
   entry: ['./src/scripts/index.jsx'],
   output: {
-    path: path.resolve(__dirname, '../..'),
-    publicPath: '/',
-    filename: buildPath(rootPath, 'public/scripts/index.js')
+    path: path.resolve(
+      __dirname,
+      `../../${buildPath(rootPath, 'public/scripts/')}`
+    ),
+    publicPath: `/${rootPath}public/scripts/`,
+    filename: '[name].js'
   },
   module: {
     loaders: [
