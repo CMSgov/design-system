@@ -24,7 +24,7 @@ describe('processMarkup', () => {
       .toMatch(/We the People of the United States/);
   });
 
-  it('replaces lorem-l tag', () => {
+  it('replaces lorem-m tag', () => {
     expect(processMarkup('{{lorem-m}}'))
       .toMatch(/We the People of the United States/);
   });

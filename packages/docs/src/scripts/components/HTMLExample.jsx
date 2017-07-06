@@ -51,16 +51,15 @@ class HTMLExample extends React.PureComponent {
     return (
       <div className='markup markup--html'>
         {this.title()}
-        <div className='ds-u-border--1 ds-u-padding--1'>
-          <iframe
-            frameBorder='0'
-            height={this.props.height}
-            ref={iframe => { this.iframe = iframe; }}
-            src={iframeURL}
-            title={`${this.name()} example`}
-            width='100%'
-          />
-        </div>
+        <iframe
+          className='ds-u-border--1 ds-u-valign--bottom'
+          frameBorder='0'
+          height={this.props.height || 0}
+          ref={iframe => { this.iframe = iframe; }}
+          src={iframeURL}
+          title={`${this.name()} example`}
+          width='100%'
+        />
         {this.snippet()}
       </div>
     );
