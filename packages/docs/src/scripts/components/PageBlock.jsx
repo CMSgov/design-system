@@ -10,16 +10,13 @@ import Source from './Source';
 import reactComponentPath from '../shared/reactComponentPath';
 const reactDoc = require('../../data/react-doc.json');
 
-class PageBlock extends React.Component {
+class PageBlock extends React.PureComponent {
   markupExamples() {
     if (!this.props.markup) return;
     let modifierMarkup;
 
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
-        console.log(this.props.reference + modifier.name);
-        console.log(this.props.iframeHeights[this.props.reference + modifier.name]);
-
         return (
           <HTMLExample
             key={modifier.name}

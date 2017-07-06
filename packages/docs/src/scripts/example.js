@@ -1,14 +1,20 @@
 const debounce = require('lodash/debounce');
+let height;
 
+/**
+ * Send a message to the parent window so it knows what iframe height to set
+ */
 function reportSize() {
-  console.log('reportSize');
+  if (height !== document.body.offsetHeight) {
+    height = document.body.offsetHeight;
 
-  window.top.postMessage({
-    height: document.body.offsetHeight,
-    id: id, // eslint-disable-line no-undef
-    name: 'reportSize'
-  }, window.location.origin);
+    window.top.postMessage({
+      height: height,
+      id: id, // eslint-disable-line no-undef
+      name: 'reportSize'
+    }, window.location.origin);
+  }
 }
 
-reportSize();
 window.addEventListener('resize', debounce(reportSize, 150));
+reportSize();

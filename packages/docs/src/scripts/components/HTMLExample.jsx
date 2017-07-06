@@ -20,15 +20,18 @@ class HTMLExample extends React.PureComponent {
     }
   }
 
+  name() {
+    return this.props.modifier.className || 'Default';
+  }
+
   title() {
     if (!this.props.showTitle) return;
-    const name = this.props.modifier ? this.props.modifier.className : 'Default';
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
       <div className='c-markup__header'>
         <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
-          Modifier: <code>{name}</code>
+          Modifier: <code>{this.name()}</code>
         </h4>
         <p
           className='ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted'
@@ -48,14 +51,16 @@ class HTMLExample extends React.PureComponent {
     return (
       <div className='markup markup--html'>
         {this.title()}
-        <iframe
-          frameBorder='0'
-          height={this.props.height}
-          ref={iframe => { this.iframe = iframe; }}
-          src={iframeURL}
-          title='Markup example'
-          width='100%'
-        />
+        <div className='ds-u-border--1 ds-u-padding--1'>
+          <iframe
+            frameBorder='0'
+            height={this.props.height}
+            ref={iframe => { this.iframe = iframe; }}
+            src={iframeURL}
+            title={`${this.name()} example`}
+            width='100%'
+          />
+        </div>
         {this.snippet()}
       </div>
     );

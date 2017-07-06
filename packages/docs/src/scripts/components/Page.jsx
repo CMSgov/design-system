@@ -63,7 +63,7 @@ class Page extends React.PureComponent {
     heights[id] = height;
 
     this.setState({
-      iframeHeights: Object.assign(this.state.iframeHeights, heights)
+      iframeHeights: Object.assign({}, this.state.iframeHeights, heights)
     });
   }
 
