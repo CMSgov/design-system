@@ -14,8 +14,14 @@ git checkout master
 git pull
 
 # Publish public packages to NPM
+echo "${GREEN}Publishing support package to NPM...${NC}"
+cd ../packages/support
+npm publish
+
+echo "${GREEN}Publishing support package succeeded!${NC}"
+
 echo "${GREEN}Publishing core package to NPM...${NC}"
 cd packages/core
 npm publish
 
-echo "${GREEN}Publishing Succeeded!${NC}"
+echo "${GREEN}Publishing core package succeeded!${NC}"
