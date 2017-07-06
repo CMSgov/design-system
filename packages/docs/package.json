@@ -13,6 +13,7 @@
     "@cmsgov/design-system-core": "^1.0.0-rc.1",
     "@cmsgov/design-system-support": "^1.0.0-rc.1",
     "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

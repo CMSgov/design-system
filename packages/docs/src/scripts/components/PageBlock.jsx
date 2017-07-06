@@ -10,19 +10,24 @@ import Source from './Source';
 import reactComponentPath from '../shared/reactComponentPath';
 const reactDoc = require('../../data/react-doc.json');
 
-class PageBlock extends React.PureComponent {
+class PageBlock extends React.Component {
   markupExamples() {
     if (!this.props.markup) return;
     let modifierMarkup;
 
     if (this.props.modifiers.length) {
       modifierMarkup = this.props.modifiers.map(modifier => {
+        console.log(this.props.reference + modifier.name);
+        console.log(this.props.iframeHeights[this.props.reference + modifier.name]);
+
         return (
           <HTMLExample
             key={modifier.name}
+            height={this.props.iframeHeights[this.props.reference + modifier.name]}
             hideMarkup={this.props.hideMarkup}
             markup={this.props.markup}
             modifier={modifier}
+            reference={this.props.reference}
           />
         );
       });
@@ -31,8 +36,10 @@ class PageBlock extends React.PureComponent {
     return (
       <section className='ds-u-margin-top--3'>
         <HTMLExample
+          height={this.props.iframeHeights[this.props.reference]}
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
+          reference={this.props.reference}
           showTitle={false}
         />
         {modifierMarkup}
@@ -131,6 +138,7 @@ PageBlock.propTypes = {
   hideExample: PropTypes.bool,
   hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
+  iframeHeights: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(
     HTMLExample.propTypes.modifier

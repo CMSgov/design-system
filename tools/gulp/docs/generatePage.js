@@ -92,6 +92,9 @@ function generateMarkupPage(page, modifier, rootPath) {
     rootPath = `${rootPath}/`;
   }
 
+  let id = page.reference; // ie. components.button
+  if (modifier) id += modifier.name; // ie. components.button.ds-c-button--primary
+
   const markup = processMarkup(page.markup, modifier);
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -102,16 +105,14 @@ function generateMarkupPage(page, modifier, rootPath) {
 </head>
 <body class="ds-base">
   ${markup}
+  <script type="text/javascript">
+    var id = '${id}';
+  </script>
   <script src="/${rootPath}public/scripts/example.js"></script>
 </body>
 </html>`;
 
-  let uri = `${rootPath}example/${page.reference}`;
-
-  if (modifier) {
-    uri += modifier.name;
-  }
-
+  const uri = `${rootPath}example/${id}`;
   const pathObj = docsPath(uri);
   return updateFile(html, pathObj);
 }
