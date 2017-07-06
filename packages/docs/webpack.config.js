@@ -66,7 +66,10 @@ if (process.env.NODE_ENV === 'production') {
   const keys = ['index']; // Object.keys(config.entry);
 
   keys.forEach(key => {
-    config.entry[key] = ['webpack-hot-middleware/client'].concat(config.entry[key]);
+    config.entry[key] = [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client'
+    ].concat(config.entry[key]);
   });
 
   config.plugins.push(new webpack.HotModuleReplacementPlugin());

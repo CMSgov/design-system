@@ -21,7 +21,7 @@ class HTMLExample extends React.PureComponent {
   }
 
   name() {
-    return this.props.modifier.className || 'Default';
+    return this.props.modifier ? this.props.modifier.className : 'Default';
   }
 
   title() {
