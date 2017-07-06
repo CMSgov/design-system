@@ -98,7 +98,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/examples/",
       "<rootDir>/node_modules/",
-      "<rootDir>/packages/**/node_modules/",
+      "<rootDir>/packages/*/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
     ]
   }
