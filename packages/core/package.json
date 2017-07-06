@@ -17,7 +17,7 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "mz": "^2.6.0",
     "react-test-renderer": "^15.6.1"
   }
