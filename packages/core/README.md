@@ -11,15 +11,21 @@ This package contains the following design system assets:
 npm install --save @cmsgov/design-system-core
 ```
 
-or if you're using Yarn:
-
-```
-yarn add @cmsgov/design-system-core
-```
-
 ## Usage
 
-[Please view the documentation site for usage information.](https://cmsgov.github.io/design-system/)
+The source files included are written in Sass (`.scss`). You can add your `node_modules` directory to your Sass [`includePaths`](https://github.com/sass/node-sass#includepaths) and import the file like this:
+
+```css
+@import "@cmsgov/design-system-core/src/index";
+```
+
+or import the transpiled CSS:
+
+```css
+@import "@cmsgov/design-system-core/dist/index.css";
+```
+
+[Please view the documentation site for additional information.](https://cmsgov.github.io/design-system/)
 
 ## Examples
 
@@ -30,3 +36,22 @@ Examples of the design system in use can be found in the [`examples` directory](
 Please [submit an issue on GitHub](https://github.com/CMSgov/design-system) for any bugs or feature requests.
 
 You can also read our [CONTRIBUTING.md](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.
+
+## File Structure
+
+The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/less-css-mess) (Inverted Triangle architecture for CSS). The goal is to write CSS in [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) order.
+
+<!-- You can regenerate the tree by running tree -d -I "node_modules" -->
+
+```
+├── dist                Transpiled CSS and fonts
+└── src                 Sass and JSX
+    ├── base            Base HTML styles
+    ├── components      Sass and React components
+    │   ├── Button
+    │   └── etc...
+    ├── fonts
+    ├── generics        Far reaching selectors
+    ├── images
+    └── utilities       Functional CSS classes to apply individual traits
+```

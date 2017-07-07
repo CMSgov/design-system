@@ -21,11 +21,13 @@ module.exports = (gulp) => {
 
   gulp.task('bumpVersion:core', () => bumpVersion('./packages/core'));
   gulp.task('bumpVersion:docs', () => bumpVersion('./packages/docs'));
+  gulp.task('bumpVersion:support', () => bumpVersion('./packages/support'));
 
   gulp.task('bumpVersion', () => {
     runSequence([
       'bumpVersion:core',
       'bumpVersion:docs',
+      'bumpVersion:support'
     ]);
   });
 };

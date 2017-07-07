@@ -23,7 +23,10 @@ module.exports = (gulp, shared) => {
         middleware: [
           webpackDevMiddleware(bundler, {
             publicPath: shared.webpackConfig.output.publicPath,
-            stats: webpackStatsConfig
+            stats: webpackStatsConfig,
+            watchOptions: {
+              ignored: /node_modules/
+            }
           }),
           webpackHotMiddleware(bundler, {
             reload: true
