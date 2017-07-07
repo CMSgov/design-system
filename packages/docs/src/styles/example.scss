@@ -6,3 +6,9 @@ body {
   margin: 0;
   padding: $spacer-1;
 }
+
+html {
+  // prevents scrollbars from ever appearing, which can trigger a resize event
+  // and cause an endless loop of postMessage calls to the parent window
+  overflow: hidden;
+}
