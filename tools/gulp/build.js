@@ -43,8 +43,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('build:success', () => {
-    dutil.logMessage('✅ ', 'Generated documentation added to packages/docs/build');
-    dutil.logMessage('✅ ', 'Compiled core assets added to packages/core/dist');
+    dutil.logMessage('✅ ', 'Build succeeded');
   });
 
   gulp.task('build', done => {
@@ -54,6 +53,7 @@ module.exports = (gulp, shared) => {
       'build:clean-dist',
       'build:react', // Important: This needs ran before docs:build!
       'docs:build',
+      'webpack',
       'sass',
       'fonts',
       'build:gh-pages',
