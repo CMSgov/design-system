@@ -101,7 +101,7 @@ function generateMarkupPage(page, modifier, rootPath) {
 <head>
   <meta charset="utf-8">
   <title>Example: ${page.reference}</title>
-  <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
+  <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />
 </head>
 <body class="ds-base ds-u-padding--1">
   ${markup}
