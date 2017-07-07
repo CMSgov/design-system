@@ -25,6 +25,11 @@ describe('processMarkdownPage', () => {
     expect(output.referenceURI).toEqual('1.0/intro');
   });
 
+  it('should set reference', () => {
+    const output = processMarkdownPage(filePath, markdown, '1.0');
+    expect(output.reference).toEqual('intro');
+  });
+
   it('should clear referenceURI for index.md', () => {
     const output = processMarkdownPage('src/pages/index.md', markdown);
     expect(output.referenceURI).toEqual('');
