@@ -4,8 +4,8 @@
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
-    "bootstrap:yarn": "yerna install",
     "bootstrap:npm": "lerna bootstrap",
+    "bootstrap:yarn": "lerna bootstrap --npm-client=yarn",
     "build": "NODE_ENV=production gulp build --env=production",
     "bump": "gulp bumpVersion",
     "generate": "yo cmsgov",
@@ -86,7 +86,6 @@
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
     "yargs": "^8.0.2",
-    "yernapkg": "^0.5.1",
     "yo": "^2.0.0"
   },
   "optionalDependencies": {
