@@ -44,7 +44,7 @@ module.exports = (gulp, shared) => {
    * These HTML pages are what get published as the public documentation website.
    * @return {Promise}
    */
-  function generatePages(pages) {
+  function generateDocPages(pages) {
     // It's important to require the generatePage method here since the
     // react-doc.json data file is a dependency. This require() would fail if
     // it was called before the file existed.
@@ -69,6 +69,25 @@ module.exports = (gulp, shared) => {
           });
       })
     ).then(generatedPagesCount);
+  }
+
+  /**
+   * Loop through KSS sections and create an HTML file for each one's markup
+   * @param {Object} pages - KSS sections
+   * @return {Promise} Resolves with the pages so we can pass on to next method
+   */
+  function generateMarkupPages(pages) {
+    // See note about this requirement in the generateDocPages method
+    const generatePage = require('./generatePage');
+    const pagesWithMarkup = pages.filter(page => page.markup.length > 0);
+
+    return Promise.all(
+      pagesWithMarkup.map(page => {
+        return generatePage(null, page, shared.rootPath, true)
+          .then(created => [created]);
+      })
+    )
+    .then(() => pages);
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory
@@ -129,17 +148,18 @@ module.exports = (gulp, shared) => {
         return styleguide.sections()
           .map(kssSection => processKssSection(kssSection, shared.rootPath));
       })
+      .then(generateMarkupPages)
       .then(nestKssSections)
       .then(kssSections => {
         return convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections));
       })
       .then(sortTopLevelPages)
-      .then(generatePages)
+      .then(generateDocPages)
       .then(generatedPagesCount => {
         dutil.logMessage(
           '📝 ',
-          `Created ${generatedPagesCount} HTML files`
+          `Created ${generatedPagesCount} documentation pages`
         );
       });
   });

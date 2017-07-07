@@ -6,14 +6,21 @@ const webpack = require('webpack');
 // gets it from tools/gulp/index.js. We could potentially set it from within
 // tools/gulp/webpack.js?
 const rootPath = 'design-system/';
+const hotReload = true;
 
 let config = {
   context: __dirname,
-  entry: ['./src/scripts/index.jsx'],
+  entry: {
+    example: ['./src/scripts/example.js'],
+    index: ['./src/scripts/index.jsx']
+  },
   output: {
-    path: path.resolve(__dirname, '../..'),
-    publicPath: '/',
-    filename: buildPath(rootPath, 'public/scripts/index.js')
+    path: path.resolve(
+      __dirname,
+      `../../${buildPath(rootPath, 'public/scripts/')}`
+    ),
+    publicPath: `/${rootPath}public/scripts/`,
+    filename: '[name].js'
   },
   module: {
     loaders: [
@@ -32,6 +39,14 @@ let config = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     modules: ['../', 'node_modules']
@@ -47,11 +62,18 @@ if (process.env.NODE_ENV === 'production') {
     mangle: false // Mangle messes up React code snippets
   });
 
-  config.plugins = [uglifyPlugin];
-} else {
-  // Enable hot reloading in development
-  config.entry = ['webpack-hot-middleware/client'].concat(config.entry);
-  config.plugins = [new webpack.HotModuleReplacementPlugin()];
+  config.plugins.push(uglifyPlugin);
+} else if (hotReload) {
+  const keys = ['index']; // Object.keys(config.entry);
+
+  keys.forEach(key => {
+    config.entry[key] = [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client'
+    ].concat(config.entry[key]);
+  });
+
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = config;
