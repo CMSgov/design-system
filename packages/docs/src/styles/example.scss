@@ -1,3 +1,8 @@
 // Loaded within the markup example iframes
 @import 'settings/override.cmsgov';
 @import '@cmsgov/design-system-core/src/index';
+
+body {
+  margin: 0;
+  padding: $spacer-1;
+}
