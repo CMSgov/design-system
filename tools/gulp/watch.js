@@ -11,18 +11,26 @@ module.exports = (gulp, shared) => {
   gulp.task('watch:packages', () => {
     const packages = packagesRegex(shared.packages);
 
+    // Documentation dependencies
+    gulp.watch(['packages/core/src/images/*'], ['docs:images']);
+
+    // Sass files
     gulp.watch(`packages/${packages}/src/**/*.scss`, [
       'sass:process:docs',
       'docs:generate-pages'
     ]);
 
+    // HTML/EJS examples
+    gulp.watch(`packages/${packages}/src/**/*.example.{ejs,html}`, [
+      'docs:generate-pages'
+    ]);
+
+    // React components, examples, and tests
     gulp.watch([
       `packages/${packages}/src/**/*.{js,jsx}`,
       `!packages/${packages}/src/**/*.example.{js,jsx}`,
       `!packages/${packages}/src/**/*.test.{js,jsx}`
     ], ['lint:packages-scripts', 'docs:react']);
-
-    gulp.watch(['packages/core/src/images/*'], ['docs:images']);
   });
 
   gulp.task('watch:docs', () => {
