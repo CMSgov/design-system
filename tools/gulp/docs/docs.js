@@ -180,11 +180,13 @@ module.exports = (gulp, shared) => {
          * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
          * @return {Array} KssSections
          */
-        styleguide.sections()
-          .map(kssSection =>
+        Promise.all(
+          styleguide.sections().map(kssSection => {
+            if (kssSection.reference() === 'layout.grid') console.log(kssSection);
             // Cleanup and extend the section's properties
-            processKssSection(kssSection, shared.rootPath)
-          )
+            return processKssSection(kssSection, shared.rootPath);
+          })
+        )
       )
       .then(generateMarkupPages) // 2
       .then(addTopLevelPages)    // 3

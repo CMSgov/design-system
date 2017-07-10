@@ -1,6 +1,13 @@
 const dutil = require('../common/log-util');
 const ejs = require('ejs');
+const fs = require('mz/fs');
+const path = require('path');
 
+/**
+ * Format Markdown code syntax
+ * @param {String} value
+ * @return {String}
+ */
 function converMarkdownCode(value) {
   const CODE_REGEX = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
   const match = value.match(CODE_REGEX);
@@ -16,52 +23,51 @@ function converMarkdownCode(value) {
 /**
  * Extract, process, and return KssSection data in a cleaner format
  * @param  {KssSection} kssSection
- * @return {Object}
+ * @return {Promise<Object>}
  */
-function processSection(kssSection, rootPath) {
-  let data = kssSection.toJSON();
+function processKssSection(kssSection, rootPath) {
+  let section = kssSection.toJSON();
 
   // Remove properties we don't need. This is useful for a couple reasons, like
   // smaller objects and easier caching to identify when a page needs regenerated
-  delete data.deprecated;
-  delete data.experimental;
-  delete data.parameters;
+  delete section.deprecated;
+  delete section.experimental;
+  delete section.parameters;
 
-  data = Object.assign({}, data, {
+  section = Object.assign({}, section, {
     sections: []
   });
 
-  data = processFlags(data);
-  data.referenceURI = data.reference.replace(/\./g, '/');
+  section = processFlags(section);
+  section.description = replaceTemplateTags(section.description, rootPath);
+  section.referenceURI = section.reference.replace(/\./g, '/');
 
   if (rootPath) {
-    data.referenceURI = `${rootPath}/${data.referenceURI}`;
+    section.referenceURI = `${rootPath}/${section.referenceURI}`;
   }
 
   // We only need to support Markdown's code syntax in headers, so we manually
   // parse those rather than running it through the marked library.
-  data.header = converMarkdownCode(data.header);
+  section.header = converMarkdownCode(section.header);
 
-  // Replace template tags
-  ['description', 'markup'].forEach(key => {
-    if (rootPath === '') {
-      data[key] = data[key].replace(/{{root}}/g, '');
-    } else {
-      data[key] = data[key].replace(/{{root}}/g, `/${rootPath}`);
-    }
-  });
+  const sectionPromise = processMarkup(section, rootPath);
+  return sectionPromise;
+}
 
-  // Render EJS
-  if (data.markup && data.markup !== '') {
-    try {
-      data.markup = ejs.render(data.markup);
-    } catch (e) {
-      dutil.logError('ejs error', e.message);
-      dutil.logData('ejs error', `${data.source.path}:${data.source.line}\n${data.markup}`);
-    }
+/**
+ * Replace template tags with strings
+ * @param {String} str - String with template tags to be replaced
+ * @param {String} rootPath
+ * @return {String}
+ */
+function replaceTemplateTags(str, rootPath) {
+  if (rootPath === '') {
+    str = str.replace(/{{root}}/g, '');
+  } else {
+    str = str.replace(/{{root}}/g, `/${rootPath}`);
   }
 
-  return data;
+  return str;
 }
 
 /**
@@ -105,9 +111,58 @@ function processFlags(section) {
   return section;
 }
 
+/**
+ * Take the raw KSS markup value and convert or retrieve the markup to be
+ * displayed to the user.
+ * @param {Object} section
+ * @param {rootPath}
+ * @return {Promise<Object>} section updated `markup` property
+ */
+function processMarkup(section, rootPath) {
+  let markup = section.markup;
+
+  if (markup && markup !== '') {
+    if (markup.search(/^[^\n]+\.(html|ejs)$/) >= 0) {
+      return loadMarkup(section)
+        .then(markup => {
+          section.markup = markup;
+          return processMarkup(section, rootPath);
+        });
+    }
+
+    markup = replaceTemplateTags(markup, rootPath);
+
+    // Render EJS
+    try {
+      markup = ejs.render(markup);
+    } catch (e) {
+      dutil.logError('ejs error', e.message);
+      dutil.logData('ejs error', `${section.source.path}:${section.source.line}\n${markup}`);
+    }
+  }
+
+  section.markup = markup;
+  return Promise.resolve(section);
+}
+
+/**
+ * Load the markup file relative to the CSS file
+ * @param {Object} section
+ * @return {Promise<String>} Resolves with the file's contents
+ */
+function loadMarkup(section) {
+  const dir = path.parse(section.source.path).dir;
+  const src = `../../../${dir}/${section.markup}`;
+  return fs.readFile(path.resolve(__dirname, src), 'utf8')
+    .catch(e => {
+      dutil.logError('KSS Markup error', e.message);
+      return '';
+    });
+}
+
 function hrefUrl(str) {
   let match = str.match(/href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/);
   if (match) return match[1];
 }
 
-module.exports = processSection;
+module.exports = processKssSection;

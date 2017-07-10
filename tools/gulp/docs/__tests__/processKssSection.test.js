@@ -28,32 +28,44 @@ describe('processKssSection', () => {
     };
   };
 
-  let data;
+  let promise;
 
   beforeAll(() => {
-    data = processKssSection(section('components.button'), 'root');
+    promise = processKssSection(section('components.button'), 'root');
   });
 
   it('sets and replaces flags', () => {
-    expect(data.reactComponent).toBe('Component');
-    expect(data.hideMarkup).toBe(true);
-    expect(data.status).toBe('prototype');
-    expect(data.description).toBe('<p>Hello world</p>');
+    return promise.then(data => {
+      expect(data.reactComponent).toBe('Component');
+      expect(data.hideMarkup).toBe(true);
+      expect(data.status).toBe('prototype');
+      expect(data.description).toBe('<p>Hello world</p>');
+    });
   });
 
   it('prepends rootPath', () => {
-    expect(data.referenceURI).toBe('root/components/button');
+    return promise.then(data => {
+      expect(data.referenceURI).toBe('root/components/button');
+    });
   });
 
   it('renders EJS and replaces {{root}}', () => {
-    expect(data.markup).toBe('bar /root');
+    return promise.then(data => {
+      expect(data.markup).toBe('bar /root');
+    });
   });
 
   it('converts Markdown in header', () => {
-    expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
+    return promise.then(data => {
+      expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
+    });
   });
 
   it('adds a sections property', () => {
-    expect(data.sections).toEqual(expect.any(Array));
+    return promise.then(data => {
+      expect(data.sections).toEqual(expect.any(Array));
+    });
   });
+
+  it('loads markup from .html file relative to file');
 });
