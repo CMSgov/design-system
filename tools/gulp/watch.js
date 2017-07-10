@@ -5,19 +5,22 @@
  */
 const dutil = require('./common/log-util');
 const runSequence = require('run-sequence');
+const packagesRegex = require('./common/packagesRegex');
 
-module.exports = (gulp) => {
-  gulp.task('watch:core', () => {
-    gulp.watch('packages/core/src/**/*.scss', [
+module.exports = (gulp, shared) => {
+  gulp.task('watch:packages', () => {
+    const packages = packagesRegex(shared.packages);
+
+    gulp.watch(`packages/${packages}/src/**/*.scss`, [
       'sass:process:docs',
       'docs:generate-pages'
     ]);
 
     gulp.watch([
-      'packages/core/src/**/*.{js,jsx}',
-      '!packages/core/src/**/*.example.{js,jsx}',
-      '!packages/core/src/**/*.test.{js,jsx}'
-    ], ['lint:core-scripts', 'docs:react']);
+      `packages/${packages}/src/**/*.{js,jsx}`,
+      `!packages/${packages}/src/**/*.example.{js,jsx}`,
+      `!packages/${packages}/src/**/*.test.{js,jsx}`
+    ], ['lint:packages-scripts', 'docs:react']);
 
     gulp.watch(['packages/core/src/images/*'], ['docs:images']);
   });
@@ -50,7 +53,7 @@ module.exports = (gulp) => {
       ],
       [
         'server',
-        'watch:core',
+        'watch:packages',
         'watch:docs'
       ]
     );

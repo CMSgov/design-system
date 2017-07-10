@@ -20,6 +20,7 @@ const processKssSection = require('./processKssSection');
 const nestSections = require('./nestSections');
 const gulpReactDocgen = require('./gulpReactDocgen');
 const runSequence = require('run-sequence');
+const packagesRegex = require('../common/packagesRegex');
 const docs = 'packages/docs';
 
 /**
@@ -171,7 +172,8 @@ module.exports = (gulp, shared) => {
       'Creating HTML pages from Sass comments and Markdown pages'
     );
 
-    return kss.traverse(['packages/core/src/'])
+    const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
+    return kss.traverse(packages)
       .then(styleguide =>
         /**
          * 1. CSS comments are parsed and an array of KSS Section objects is
@@ -207,11 +209,13 @@ module.exports = (gulp, shared) => {
       'Creating react-doc.json data file from React comments'
     );
 
+    const packages = packagesRegex(shared.packages);
+
     return gulp
       .src([
-        'packages/core/src/components/**/*.jsx',
-        '!packages/core/src/components/**/*.test.jsx',
-        '!packages/core/src/components/**/*.example.jsx'
+        `packages/${packages}/src/components/**/*.jsx`,
+        `!packages/${packages}/src/components/**/*.test.jsx`,
+        `!packages/${packages}/src/components/**/*.example.jsx`
       ])
       .pipe(gulpReactDocgen({
         nameAfter: 'packages/'

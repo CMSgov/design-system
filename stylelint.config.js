@@ -1,6 +1,6 @@
 // Selected rules based on @18F/stylelint-rules and stylelint-config-primer
 module.exports = {
-  'ignoreFiles': ['packages/core/src/vendor/**/*.scss', 'packages/generator-cmsgov/*'],
+  'ignoreFiles': ['packages/support/src/vendor/**/*.scss', 'packages/generator-cmsgov/*'],
   'plugins': ['stylelint-order', 'stylelint-scss'],
   'rules': {
     'at-rule-empty-line-before': [

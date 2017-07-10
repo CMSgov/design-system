@@ -3,6 +3,7 @@ const changedInPlace = require('gulp-changed-in-place');
 const count = require('gulp-count');
 const eslint = require('gulp-eslint');
 const gulpIf = require('gulp-if');
+const packagesRegex = require('./common/packagesRegex');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../../stylelint.config');
 
@@ -18,6 +19,7 @@ const systemNamePattern = /^(ds-)(l|c|u|is|has|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*
 
 module.exports = (gulp, shared) => {
   const failAfterError = shared.env && shared.env === 'test';
+  const packages = packagesRegex(shared.packages);
 
   // Lint Sass files using stylelint. Further configuration for CSS linting
   // can be handled in stylelint.config.js
@@ -51,20 +53,22 @@ module.exports = (gulp, shared) => {
       .pipe(count(`## ${name} JS files linted`));
   }
 
-  gulp.task('lint:core-styles', () => runStylelint('packages/core/'));
+  gulp.task('lint:packages-styles', () => runStylelint(`packages/${packages}/`));
   gulp.task('lint:docs-styles', () => runStylelint('packages/docs/', false));
 
-  gulp.task('lint:core-scripts', () => runEslint([
-    'packages/core/src/**/*.{js,jsx}',
-    '!src/vendor/**/*.js'
-  ], 'core'));
+  gulp.task('lint:packages-scripts', () => {
+    return runEslint([
+      `packages/${packages}/src/**/*.{js,jsx}`,
+      '!src/vendor/**/*.js'
+    ], 'package');
+  });
 
   gulp.task('lint:docs-scripts', () => runEslint([
     'packages/docs/src/**/*.{js,jsx}'
   ], 'docs'));
 
-  gulp.task('lint:core', ['lint:core-scripts', 'lint:core-styles']);
+  gulp.task('lint:packages', ['lint:packages-scripts', 'lint:packages-styles']);
   gulp.task('lint:docs', ['lint:docs-scripts', 'lint:docs-styles']);
 
-  gulp.task('lint', ['lint:core', 'lint:docs']);
+  gulp.task('lint', ['lint:packages', 'lint:docs']);
 };

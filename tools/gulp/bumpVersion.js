@@ -6,28 +6,20 @@
 const argv = require('yargs').argv;
 const bump = require('gulp-bump');
 const dutil = require('./common/log-util');
-const runSequence = require('run-sequence');
+const packagesRegex = require('./common/packagesRegex');
 
-module.exports = (gulp) => {
-  function bumpVersion(dir = '.') {
+module.exports = (gulp, shared) => {
+  gulp.task('bumpVersion', () => {
     const bumpType = argv.type ? argv.type : 'patch';
-    dutil.logMessage('bumpVersion', `Bumping version for ${dir}`);
+    const packages = shared.packages.concat(['docs']);
+    const dir = packagesRegex(packages);
+    dutil.logMessage('bumpVersion',
+      `Bumping package.json versions for ${packages.length} packages`
+    );
 
     return gulp
-      .src([`${dir}/package.json`])
+      .src([`./packages/${dir}/package.json`])
       .pipe(bump({ type: bumpType }))
-      .pipe(gulp.dest(dir));
-  }
-
-  gulp.task('bumpVersion:core', () => bumpVersion('./packages/core'));
-  gulp.task('bumpVersion:docs', () => bumpVersion('./packages/docs'));
-  gulp.task('bumpVersion:support', () => bumpVersion('./packages/support'));
-
-  gulp.task('bumpVersion', () => {
-    runSequence([
-      'bumpVersion:core',
-      'bumpVersion:docs',
-      'bumpVersion:support'
-    ]);
+      .pipe(gulp.dest('./packages/'));
   });
 };
