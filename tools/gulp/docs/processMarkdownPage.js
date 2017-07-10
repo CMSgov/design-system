@@ -20,6 +20,8 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     referenceURI = '';
   }
 
+  const reference = referenceURI.replace('/', '.');
+
   if (rootPath !== '') {
     referenceURI = `${rootPath}/${referenceURI}`;
   }
@@ -29,6 +31,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
   return {
     header: parts.attributes.title || 'Untitled',
     description: marked(parts.body),
+    reference: reference,
     referenceURI: referenceURI,
     weight: parseInt(parts.attributes.weight || 0)
   };

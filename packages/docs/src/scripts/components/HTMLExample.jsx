@@ -1,33 +1,17 @@
 /**
- * HTMLExample takes the markup from a KSS "Markup:" section and generates
- * a single preview and code snippet for the given markup.
+ * HTMLExample takes the markup from a KSS "Markup:" section and shows
+ * a preview and code snippet for the given markup
  */
 import CodeSnippet from './CodeSnippet';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import processMarkup from '../shared/processMarkup';
 
 class HTMLExample extends React.PureComponent {
-  // Replaces template tags
-  markup() {
-    let html = this.props.markup;
-    const modifier = this.props.modifier
-      ? ` ${this.props.modifier.className}` : '';
-    const lorem = {
-      s: 'We the People of the United States',
-      m: 'We the People of the United States, in Order to form a more perfect Union',
-      l: 'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.'
-    };
-
-    return html
-      .replace(/\s?{{\s?modifier\s?}}/g, modifier)
-      .replace(/\s?{{\s?lorem-s\s?}}/g, lorem.s)
-      .replace(/\s?{{\s?lorem-m\s?}}/g, lorem.m)
-      .replace(/\s?{{\s?lorem-l\s?}}/g, lorem.l);
-  }
-
   highlightedMarkup() {
-    return Prism.highlight(this.markup(), Prism.languages.markup);
+    const markup = processMarkup(this.props.markup, this.props.modifier);
+    return Prism.highlight(markup, Prism.languages.markup);
   }
 
   snippet() {
@@ -36,15 +20,18 @@ class HTMLExample extends React.PureComponent {
     }
   }
 
+  name() {
+    return this.props.modifier ? this.props.modifier.className : 'Default';
+  }
+
   title() {
     if (!this.props.showTitle) return;
-    const name = this.props.modifier ? this.props.modifier.className : 'Default';
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
       <div className='c-markup__header'>
         <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
-          Modifier: <code>{name}</code>
+          Modifier: <code>{this.name()}</code>
         </h4>
         <p
           className='ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted'
@@ -55,14 +42,23 @@ class HTMLExample extends React.PureComponent {
   }
 
   render() {
-    const markup = this.markup();
+    let iframeURL = `/design-system/example/${this.props.reference}`;
+
+    if (this.props.modifier) {
+      iframeURL += this.props.modifier.name;
+    }
 
     return (
       <div className='markup markup--html'>
         {this.title()}
-        <div
-          className='ds-u-border--1 ds-u-padding--1'
-          dangerouslySetInnerHTML={{ __html: markup }}
+        <iframe
+          className='ds-u-border--1 ds-u-valign--bottom'
+          frameBorder='0'
+          height={this.props.height || 0}
+          ref={iframe => { this.iframe = iframe; }}
+          src={iframeURL}
+          title={`${this.name()} example`}
+          width='100%'
         />
         {this.snippet()}
       </div>
@@ -71,6 +67,7 @@ class HTMLExample extends React.PureComponent {
 }
 
 HTMLExample.propTypes = {
+  height: PropTypes.number,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string.isRequired,
   modifier: PropTypes.shape({
@@ -78,6 +75,7 @@ HTMLExample.propTypes = {
     description: PropTypes.string,
     name: PropTypes.string.isRequired
   }),
+  reference: PropTypes.string,
   showTitle: PropTypes.bool
 };
 

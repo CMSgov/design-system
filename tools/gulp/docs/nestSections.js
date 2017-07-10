@@ -8,9 +8,9 @@ const _ = require('lodash');
  * @return {Array}
  */
 module.exports = (sections) => {
-  sections = sections
+  let pages = sections
     .concat([]) // don't mutate original array
-    .map(setParentReference)
+    .map(setProps)
     .map(section => {
       if (section.parentReference) {
         let parent = _.find(sections, {
@@ -23,28 +23,23 @@ module.exports = (sections) => {
     })
     .filter(section => !section.parentReference);
 
-  // Sections nested three levels deep are rendered inline, and should be
-  // sorted by their position within the file, rather than alphabetically
-  sections.forEach(section => {
-    section.sections.forEach(subsection => {
-      if (subsection.sections.length) {
-        subsection.sections = sortSectionsByPosition(subsection.sections);
-      }
-    });
-  });
-
-  return removeLineProps(sections);
+  pages = sort(pages);
+  return removeLineProps(pages);
 };
 
 /**
  * Once we've sorted the sections, the line number is no longer needed and
  * should be removed before passing this array into the React component. If
- * it's left on each section object, it messes with page cacheing because
+ * it's left on each section object, it messes with page caching because
  * the line numbers tend to change quite often.
+ * @param {Array} sections
+ * @return {Array} sections without their source.line property
  */
 function removeLineProps(sections) {
   sections.forEach(section => {
-    delete section.source.line;
+    if (section.source) {
+      delete section.source.line;
+    }
 
     if (section.sections.length) {
       removeLineProps(section.sections);
@@ -55,25 +50,53 @@ function removeLineProps(sections) {
 }
 
 /**
- * Goes up a reference level to find and set the parent reference
- * @example components.buttons.primary => components.buttons
+ * Add properties related to nesting: parentReference, sections
+ * @param {Object} section
+ * @return {Object} section with updated properties
  */
-function setParentReference(section) {
-  const references = section.reference.split('.');
-  if (references.length > 1) {
-    references.pop();
-    section.parentReference = references.join('.');
+function setProps(section) {
+  const parts = section.reference.split('.');
+
+  if (parts.length > 1) {
+    // Go up a level to set the parentReference
+    // @example components.buttons.primary => components.buttons
+    parts.pop();
+    section.parentReference = parts.join('.');
   } else {
     section.parentReference = null;
   }
 
+  section.sections = [];
   return section;
 }
 
 /**
- * Sort nested sections by their position in the file
+ * @param {Array} sections
+ * @return {Array} sorted sections
  */
-function sortSectionsByPosition(sections) {
+function sort(sections) {
+  sections = _.sortBy(sections, ['weight', 'header']);
+
+  sections.forEach(topLevelPage => {
+    topLevelPage.sections = _.sortBy(topLevelPage.sections, ['weight', 'header']);
+
+    topLevelPage.sections.forEach(subpage => {
+      if (subpage.sections.length) {
+        // Sections nested three levels deep are rendered inline, and should be
+        // sorted by their position within the file, rather than alphabetically
+        subpage.sections = sortBySourceLine(subpage.sections);
+      }
+    });
+  });
+
+  return sections;
+}
+
+/**
+ * @param {Array} sections
+ * @return {Array} sorted sections
+ */
+function sortBySourceLine(sections) {
   return sections.concat([])
     .sort((a, b) => a.source.line - b.source.line);
 }

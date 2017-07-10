@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-@import '../settings/index';
+@import '@cmsgov/design-system-support/src/settings/index';
 
 /*
 Typography
@@ -35,7 +35,7 @@ Markup:
 <h1 class="ds-h6">Heading 6</h1>
   <p class="ds-text ds-u-color--muted">{{ lorem-m }}</p>
 
-Style guide: base.typography
+Style guide: style.typography
 */
 
 // Titles and headings

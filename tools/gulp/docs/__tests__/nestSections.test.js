@@ -7,55 +7,75 @@ describe('nestSections', () => {
   beforeEach(() => {
     sections = [
       {
+        header: 'components',
         reference: 'components',
-        sections: [],
         source: {
           line: 1
         }
       }, {
+        header: 'buttons',
         reference: 'components.buttons',
-        sections: [],
         source: {
           line: 1
         }
       }, {
+        header: 'buttons.secondary',
         reference: 'components.buttons.secondary',
-        sections: [],
         source: {
           line: 2
         }
       }, {
+        header: 'buttons.primary',
         reference: 'components.buttons.primary',
-        sections: [],
         source: {
           line: 1
         }
       }, {
+        header: 'buttons.tertiary',
         reference: 'components.buttons.tertiary',
-        sections: [],
         source: {
           line: 3
         }
       }, {
-        reference: 'utilities',
-        sections: [],
-        source: {
-          line: 1
-        }
+        header: 'guidelines',
+        reference: 'guidelines'
       }, {
-        reference: 'utilities.colors',
-        sections: [],
-        source: {
-          line: 1
-        }
+        header: 'a11y',
+        reference: 'guidelines.a11y',
+        weight: 10
       }, {
-        reference: 'home',
-        sections: [],
-        source: {
-          line: 1
-        }
+        header: 'colors',
+        reference: 'guidelines.colors',
+        weight: 5
+      }, {
+        header: 'style',
+        reference: 'style'
+      }, {
+        header: 'delta',
+        reference: 'style.delta',
+        weight: 0
+      }, {
+        header: 'charlie',
+        reference: 'style.charlie',
+        weight: 0
+      }, {
+        header: 'alpha',
+        reference: 'style.alpha',
+        weight: 0
       }
     ];
+  });
+
+  it('adds sections prop', () => {
+    const nestedSections = nestSections(sections);
+    const guidelines = _.find(nestedSections, {
+      reference: 'guidelines'
+    });
+    const section = _.find(guidelines.sections, {
+      reference: 'guidelines.a11y'
+    });
+
+    expect(section.sections.length).toBe(0);
   });
 
   it('nests children within parent section', () => {
@@ -70,6 +90,29 @@ describe('nestSections', () => {
       .toBe('components.buttons.primary');
     expect(nestedSections.length)
       .toBe(3);
+  });
+
+  it('sorts subpages by weight and header', () => {
+    const nestedSections = nestSections(sections);
+    const guidelines = _.find(nestedSections, {
+      reference: 'guidelines'
+    }).sections;
+
+    const style = _.find(nestedSections, {
+      reference: 'style'
+    }).sections;
+
+    expect(guidelines[0].reference)
+      .toBe('guidelines.colors');
+    expect(guidelines[1].reference)
+      .toBe('guidelines.a11y');
+
+    expect(style[0].reference)
+      .toBe('style.alpha');
+    expect(style[1].reference)
+      .toBe('style.charlie');
+    expect(style[2].reference)
+      .toBe('style.delta');
   });
 
   it('sorts third-level sections by their line number', () => {

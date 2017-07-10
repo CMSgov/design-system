@@ -19,7 +19,7 @@ const stringReplace = require('gulp-string-replace');
 const runSequence = require('run-sequence');
 
 const config = {
-  vendorSrc: 'packages/core/src/vendor'
+  vendorSrc: 'packages/support/src/vendor'
 };
 
 module.exports = (gulp, shared) => {
@@ -87,8 +87,7 @@ module.exports = (gulp, shared) => {
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
     var packages = [
-      './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
-      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss'
+      './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
     return gulp

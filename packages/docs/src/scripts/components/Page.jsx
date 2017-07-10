@@ -16,7 +16,21 @@ function isGuidanceSection(section) {
 class Page extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.handleMessage = this.handleMessage.bind(this);
     this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
+    this.state = { iframeHeights: {} };
+  }
+
+  componentDidMount() {
+    if (window) {
+      window.addEventListener('message', this.handleMessage, false);
+    }
+  }
+
+  componentWillUnmount() {
+    if (window) {
+      window.removeEventListener('message', this.handleMessage, false);
+    }
   }
 
   defaultSelectedTabId() {
@@ -27,6 +41,30 @@ class Page extends React.PureComponent {
     }
 
     return 'usage';
+  }
+
+  /**
+   * Event handler for messages sent from embedded iframes
+   * @param {Object} MessageEvent
+   */
+  handleMessage(evt) {
+    if (evt.origin === window.location.origin && evt.data.name === 'reportSize') {
+      this.updateIframeHeight(evt.data.id, evt.data.height);
+    }
+  }
+
+  /**
+   * Updates an iframes height state
+   * @param {String} id - The markup page's id
+   * @param {Number} height
+   */
+  updateIframeHeight(id, height) {
+    let heights = {};
+    heights[id] = height;
+
+    this.setState({
+      iframeHeights: Object.assign({}, this.state.iframeHeights, heights)
+    });
   }
 
   usageSections() {
@@ -40,13 +78,23 @@ class Page extends React.PureComponent {
   renderChildPageBlocks(sections) {
     if (sections.length) {
       return sections.map(section => (
-        <PageBlock key={section.referenceURI} {...section} />
+        <PageBlock
+          key={section.referenceURI}
+          {...section}
+          iframeHeights={this.state.iframeHeights}
+        />
       ));
     }
   }
 
   renderBody() {
-    return <PageBlock {...this.props} hideHeader />;
+    return (
+      <PageBlock
+        {...this.props}
+        iframeHeights={this.state.iframeHeights}
+        hideHeader
+      />
+    );
   }
 
   renderContent() {

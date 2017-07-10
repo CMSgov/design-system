@@ -16,11 +16,33 @@ const del = require('del');
 const dutil = require('../common/log-util');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
-const processKssSection = require('./processSection');
-const nestKssSections = require('./nestSections');
+const processKssSection = require('./processKssSection');
+const nestSections = require('./nestSections');
 const gulpReactDocgen = require('./gulpReactDocgen');
 const runSequence = require('run-sequence');
 const docs = 'packages/docs';
+
+/**
+ * Some KssSection's are nested under section's that don't exist, so we need
+ * to first create those top-level sections before we do the nesting
+ * @param {Array} kssSections
+ * @return {Promise<Array>}
+ */
+function addTopLevelPages(kssSections) {
+  return Promise.resolve([
+    {
+      header: 'Guidelines',
+      reference: 'guidelines',
+      sections: [],
+      weight: 5
+    }, {
+      header: 'Style',
+      reference: 'style',
+      sections: [],
+      weight: 6
+    }
+  ].concat(kssSections));
+}
 
 function generatedPagesCount(resultGroups) {
   let count = 0;
@@ -34,24 +56,20 @@ function generatedPagesCount(resultGroups) {
   return count;
 }
 
-function sortTopLevelPages(pages) {
-  return pages.sort((a, b) => a.weight - b.weight);
-}
-
 module.exports = (gulp, shared) => {
   /**
    * Loop through the nested array of pages and create an HTML file for each one.
    * These HTML pages are what get published as the public documentation website.
-   * @return {Promise}
+   * @return {Promise<Array>}
    */
-  function generatePages(pages) {
+  function generateDocPages(pages) {
     // It's important to require the generatePage method here since the
     // react-doc.json data file is a dependency. This require() would fail if
     // it was called before the file existed.
     // TODO(sawyer): Would it be better if we passed in the relevant React
     // documentation as a prop, rather than pulling it from the JSON file?
     const generatePage = require('./generatePage');
-    const routes = sortTopLevelPages(createRoutes(pages));
+    const routes = createRoutes(pages);
 
     return Promise.all(
       pages.map(page => {
@@ -69,6 +87,26 @@ module.exports = (gulp, shared) => {
           });
       })
     ).then(generatedPagesCount);
+  }
+
+  /**
+   * Create an HTML file for each KssSection's markup. These are loaded in an
+   * embedded in an iframe on documentation pages.
+   * @param {Array} kssSections
+   * @return {Promise<Array>}
+   */
+  function generateMarkupPages(kssSections) {
+    // See note about this requirement in the generateDocPages method
+    const generatePage = require('./generatePage');
+    const pagesWithMarkup = kssSections.filter(page => page.markup.length > 0);
+
+    return Promise.all(
+      pagesWithMarkup.map(page => {
+        return generatePage(null, page, shared.rootPath, true)
+          .then(created => [created]);
+      })
+    )
+    .then(() => kssSections);
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory
@@ -117,29 +155,47 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
-  // Generate HTML pages from KSS comments and Markdown pages
+  /**
+   * Generate HTML pages from CSS comments and Markdown files. This happens
+   * within a chain of promises:
+   * 1. Parse CSS comments, forming the initial array of pages
+   * 2. Create HTML files for the KSS markup examples
+   * 3. Add missing top-level pages so other pages can be properly nested
+   * 4. Parse Markdown files and add each page's data to the pages array
+   * 5. Nest and sort the pages
+   * 6. Create HTML files from the pages array
+   */
   gulp.task('docs:generate-pages', () => {
     dutil.logMessage(
       '📝 ',
       'Creating HTML pages from Sass comments and Markdown pages'
     );
 
-    return kss.traverse('packages/core/src/')
-      .then(styleguide => {
-        return styleguide.sections()
-          .map(kssSection => processKssSection(kssSection, shared.rootPath));
-      })
-      .then(nestKssSections)
-      .then(kssSections => {
-        return convertMarkdownPages(shared.rootPath)
-          .then(pages => pages.concat(kssSections));
-      })
-      .then(sortTopLevelPages)
-      .then(generatePages)
+    return kss.traverse(['packages/core/src/'])
+      .then(styleguide =>
+        /**
+         * 1. CSS comments are parsed and an array of KSS Section objects is
+         * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
+         * @return {Array} KssSections
+         */
+        styleguide.sections()
+          .map(kssSection =>
+            // Cleanup and extend the section's properties
+            processKssSection(kssSection, shared.rootPath)
+          )
+      )
+      .then(generateMarkupPages) // 2
+      .then(addTopLevelPages)    // 3
+      .then(kssSections =>       // 4
+        convertMarkdownPages(shared.rootPath)
+          .then(pages => pages.concat(kssSections))
+      )
+      .then(nestSections)        // 5
+      .then(generateDocPages)    // 6
       .then(generatedPagesCount => {
         dutil.logMessage(
           '📝 ',
-          `Created ${generatedPagesCount} HTML files`
+          `Created ${generatedPagesCount} documentation pages`
         );
       });
   });
@@ -180,8 +236,7 @@ module.exports = (gulp, shared) => {
       'docs:react',
       [
         'docs:generate-pages',
-        'docs:public',
-        'webpack'
+        'docs:public'
       ],
       done
     );

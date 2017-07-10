@@ -1,17 +1,29 @@
-// This script mostly just exists for development purposes. It's really not
-// necessary for us to do any client-side rendering in production.
+import { AppContainer } from 'react-hot-loader';
 import Docs from './Docs';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  /* eslint-disable no-undef */
-  <Docs page={page} routes={routes} />,
-  document.getElementById('js-root')
-);
+const rootEl = document.getElementById('js-root');
 
-// Enable Webpack hot reloading and tota11y in dev mode
-if (module.hot) {
+function render() {
+  /* eslint-disable no-undef */
+  ReactDOM.render(
+    <AppContainer>
+      <Docs page={page} routes={routes} />
+    </AppContainer>,
+    rootEl
+  );
+  /* eslint-enable */
+}
+
+if (process.env.NODE_ENV === 'development') {
+  // Enable tota11y in dev mode
   require('tota11y/build/tota11y.min.js');
-  module.hot.accept();
+}
+
+render();
+
+if (module.hot) {
+  // Enable Hot Module Replacement
+  module.hot.accept('./Docs', () => render());
 }

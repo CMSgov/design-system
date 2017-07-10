@@ -17,13 +17,16 @@ module.exports = (gulp, shared) => {
     const bundler = webpack(shared.webpackConfig);
 
     shared.browserSync.init({
-      files: ['./docs/**/*.html'], // CSS + JS watching is handled by Gulp
+      files: ['./docs/**/*.html'],
       server: {
         baseDir: 'docs',
         middleware: [
           webpackDevMiddleware(bundler, {
             publicPath: shared.webpackConfig.output.publicPath,
-            stats: webpackStatsConfig
+            stats: webpackStatsConfig,
+            watchOptions: {
+              ignored: /node_modules/
+            }
           }),
           webpackHotMiddleware(bundler, {
             reload: true

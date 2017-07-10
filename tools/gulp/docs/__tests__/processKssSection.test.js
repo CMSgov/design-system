@@ -1,7 +1,7 @@
 'use strict';
-const processSection = require('../processSection');
+const processKssSection = require('../processKssSection');
 
-describe('processSection', () => {
+describe('processKssSection', () => {
   let section = reference => {
     return {
       toJSON: () => (
@@ -31,7 +31,7 @@ describe('processSection', () => {
   let data;
 
   beforeAll(() => {
-    data = processSection(section('components.button'), 'root');
+    data = processKssSection(section('components.button'), 'root');
   });
 
   it('sets and replaces flags', () => {
