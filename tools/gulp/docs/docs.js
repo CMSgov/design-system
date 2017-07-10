@@ -181,11 +181,10 @@ module.exports = (gulp, shared) => {
          * @return {Array} KssSections
          */
         Promise.all(
-          styleguide.sections().map(kssSection => {
-            if (kssSection.reference() === 'layout.grid') console.log(kssSection);
+          styleguide.sections().map(kssSection =>
             // Cleanup and extend the section's properties
-            return processKssSection(kssSection, shared.rootPath);
-          })
+            processKssSection(kssSection, shared.rootPath)
+          )
         )
       )
       .then(generateMarkupPages) // 2
