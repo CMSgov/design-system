@@ -6,5 +6,8 @@
   },
   "description": "Responsive flexbox grid framework",
   "repository": "CMSgov/design-system",
-  "license": "SEE LICENSE IN LICENSE.md"
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "@cmsgov/design-system-support": "^1.0.0-rc.1"
+  }
 }
