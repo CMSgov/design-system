@@ -18,10 +18,11 @@ For example: `ds-u-lg-display--none` sets an element's `display` property to `no
 
 ## What supports a responsive prefix
 
-In order to reduce code bloat, not all utilities support a responsive prefix. Only the items in the following list support responsive prefixes.
+In order to reduce code bloat, not everything supports a responsive prefix. Only the items below support responsive prefixes:
 
 - [Grid]({{root}}/layout/grid)
 - [Typography]({{root}}/base/typography#responsive)
+- [Flexbox]({{root}}/utilities/flexbox)
 - [Float]({{root}}/utilities/float#responsive)
 - [Font size]({{root}}/utilities/font-size#responsive)
 - [Margin]({{root}}/utilities/margin#responsive)

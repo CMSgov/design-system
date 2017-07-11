@@ -1,5 +1,9 @@
 /*! Design System - Layout v{{version}} */
 
+@import 'container';
+@import 'row';
+@import 'col';
+
 /*
 Grid
 
@@ -162,6 +166,58 @@ Markup:
 Style guide: layout.grid.offset
 */
 
-@import 'container';
-@import 'row';
-@import 'col';
+/*
+Reordering columns
+
+Reorder columns using the [flexbox order utility class]({{root}}/utilities/flexbox#utilities.flexbox.order):
+
+Markup:
+<section class="ds-l-container preview-grid">
+  <div class="ds-l-row">
+    <div class="ds-l-col--12 ds-l-md-col--6 ds-u-order--2 ds-u-md-order--1">
+      <strong>Left</strong> column on <strong>md</strong> viewports and larger. Reordered to the <strong>bottom</strong> on smaller screens.
+    </div>
+    <div class="ds-l-col--12 ds-l-md-col--6 ds-u-order--1">
+      <strong>Right</strong> column on <strong>md</strong> viewports and larger. Reordered to the <strong>top</strong> on smaller screens.
+    </div>
+  </div>
+</section>
+
+Style guide: layout.grid.reorder
+*/
+
+/*
+Alignment
+
+Align columns horizontally or vertically using [flexbox utility classes]({{root}}/utilities/flexbox). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
+
+Markup:
+<section class="ds-l-container preview-grid">
+  <div class="ds-l-row ds-u-fill--gray">
+    <div class="ds-l-col--3">Left</div>
+  </div>
+  <div class="ds-l-row ds-u-justify-content--center ds-u-fill--gray">
+    <div class="ds-l-col--3">Center</div>
+  </div>
+  <div class="ds-l-row ds-u-justify-content--end ds-u-fill--gray">
+    <div class="ds-l-col--3">Right</div>
+  </div>
+  <div class="ds-l-row ds-u-align-items--start ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+    <div class="ds-l-col--3">Top</div>
+    <div class="ds-l-col--3">Top</div>
+    <div class="ds-l-col--3">Top</div>
+  </div>
+  <div class="ds-l-row ds-u-align-items--center ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+    <div class="ds-l-col--3">Center</div>
+    <div class="ds-l-col--3">Center</div>
+    <div class="ds-l-col--3">Center</div>
+  </div>
+  <div class="ds-l-row ds-u-align-items--end ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+    <div class="ds-l-col--3">Bottom</div>
+    <div class="ds-l-col--3">Bottom</div>
+    <div class="ds-l-col--3">Bottom</div>
+  </div>
+</section>
+
+Style guide: layout.grid.alignment
+*/
