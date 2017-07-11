@@ -16,5 +16,5 @@ function reportSize() {
   }
 }
 
-window.addEventListener('resize', debounce(reportSize, 150));
+window.addEventListener('resize', debounce(reportSize, 100));
 reportSize();
