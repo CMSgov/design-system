@@ -11,13 +11,18 @@ code {
   font-family: $font-monospace;
   font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
-  margin-left: 1px;
-  margin-right: 1px;
+  margin: 1px;
   padding: 2px;
 }
 
 a code {
   text-decoration: underline;
+}
+
+blockquote code {
+  background-color: transparent;
+  font-weight: $font-bold;
+  padding: 0;
 }
 
 pre {
