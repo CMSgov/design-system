@@ -90,7 +90,7 @@ The classes follow the format: `ds-u-align-items--{value}` and `ds-u-{breakpoint
 Markup:
 <section>
 <% ['start','end','center','baseline','stretch'].forEach(value => { %>
-  <article class="ds-u-align-items--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2" style="min-height: 75px">
+  <article class="ds-u-align-items--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2" style="height: 75px">
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>

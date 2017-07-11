@@ -15,7 +15,7 @@ The grid consists of three distinct pieces:
 - A **container** adds a maximum width and centers the content
 - A **row** enables the flexbox layout and holds between 1-12 **columns**
 
-## Installation
+### Installation
 
 The grid is opt-in and not distributed with the core design system package. Install the NPM package or [download the latest release](https://github.com/CMSgov/design-system/releases).
 
@@ -24,6 +24,10 @@ npm install @cmsgov/design-system-layout --save
 ```
 
 [View the layout package's README for additional installation info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
+
+### Browser support
+
+Flexbox grid supports modern browsers and Internet Explorer 10+. In older versions of Internet Explorer the grid columns will be stacked.
 
 Style guide: layout.grid
 */
@@ -203,17 +207,17 @@ Markup:
   <div class="ds-l-row ds-u-justify-content--end ds-u-fill--gray">
     <div class="ds-l-col--3">Right</div>
   </div>
-  <div class="ds-l-row ds-u-align-items--start ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+  <div class="ds-l-row ds-u-align-items--start ds-u-fill--gray ds-u-margin-y--2" style="height: 125px">
     <div class="ds-l-col--3">Top</div>
     <div class="ds-l-col--3">Top</div>
     <div class="ds-l-col--3">Top</div>
   </div>
-  <div class="ds-l-row ds-u-align-items--center ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+  <div class="ds-l-row ds-u-align-items--center ds-u-fill--gray ds-u-margin-y--2" style="height: 125px">
     <div class="ds-l-col--3">Center</div>
     <div class="ds-l-col--3">Center</div>
     <div class="ds-l-col--3">Center</div>
   </div>
-  <div class="ds-l-row ds-u-align-items--end ds-u-fill--gray ds-u-margin-y--2" style="min-height: 125px">
+  <div class="ds-l-row ds-u-align-items--end ds-u-fill--gray ds-u-margin-y--2" style="height: 125px">
     <div class="ds-l-col--3">Bottom</div>
     <div class="ds-l-col--3">Bottom</div>
     <div class="ds-l-col--3">Bottom</div>
