@@ -10,3 +10,14 @@
     display: table;
   }
 }
+
+@mixin flexbox-col($size) {
+  flex: 0 0 percentage($size / $grid-columns);
+  max-width: percentage($size / $grid-columns); // IE10+ and Firefox
+}
+
+@mixin equal-width-flexbox-col() {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}

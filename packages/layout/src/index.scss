@@ -5,16 +5,20 @@ Grid
 
 The design system provides a 12-column, responsive, flexbox grid to provide structure and align content.
 
-The grid is opt-in and not distributed with the core design system package. It is installed as a separate package:
+The grid consists of three distinct pieces:
+
+- A **container** adds a maximum width and centers the content
+- A **row** enables the flexbox layout and holds between 1-12 **columns**
+
+## Installation
+
+The grid is opt-in and not distributed with the core design system package. Install the NPM package or [download the latest release](https://github.com/CMSgov/design-system/releases).
 
 ```
 npm install @cmsgov/design-system-layout --save
 ```
 
-The grid consists of three distinct pieces:
-
-- A **container** adds a maximum width and centers the content
-- A **row** enables the flexbox layout and holds between 1-12 **columns**
+[View the layout package's README for additional installation info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
 
 Style guide: layout.grid
 */
@@ -24,20 +28,22 @@ Default behavior
 
 Columns without a set width will automatically layout with equal widths. For example, below are four instances of `.ds-l-col` which are each automatically 25% wide. The columns will automatically wrap when they don't fit a single row.
 
+Column widths are set in percentages, so they’re always responsive and will be sized relative to their parent row.
+
 Markup:
-<section class="ds-l-container">
+<section class="ds-l-container preview-grid">
   <div class="ds-l-row">
     <div class="ds-l-col">
-      <div class="ds-u-border--2">Auto</div>
+      Auto
     </div>
     <div class="ds-l-col">
-      <div class="ds-u-border--2">Auto</div>
+      Auto
     </div>
     <div class="ds-l-col">
-      <div class="ds-u-border--2">Auto</div>
+      Auto
     </div>
     <div class="ds-l-col">
-      <div class="ds-u-border--2">Auto</div>
+      Auto
     </div>
   </div>
 </section>
@@ -48,16 +54,16 @@ Style guide: layout.grid.default
 /*
 Specifying number of columns
 
-Use a column class with a unit to indicate the number of columns to span. There can be 12 columns per row. So, if you want two elements that each span half the row, you would use `.col-6`
+Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These classes will span `*` columns. So, if you want two elements that each span half the row, you would use `.ds-l-col--6`
 
 Markup:
-<section class="ds-l-container">
+<section class="ds-l-container preview-grid">
   <div class="ds-l-row">
-    <div class="ds-l-col-6">
-      <div class="ds-u-border--2">6 columns</div>
+    <div class="ds-l-col--6">
+      6 columns
     </div>
-    <div class="ds-l-col-6">
-      <div class="ds-u-border--2">6 columns</div>
+    <div class="ds-l-col--6">
+      6 columns
     </div>
   </div>
 </section>
@@ -66,11 +72,11 @@ Style guide: layout.grid.columns
 */
 
 /*
-Responsive classes
+Mobile, tablet, and desktop grids
 
-Column widths are set in percentages, so they’re always responsive and will be sized relative to their parent row.
+Each column class can include a [breakpoint "prefix"]({{root}}/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
 
-Each column class can include a [breakpoint prefix]({{root}}/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
+An element with a `ds-l-{breakpoint}-col--*` class will span `*` columns at viewports matching `breakpoint` and larger.
 
 In the example below, the cells span:
 
@@ -81,25 +87,25 @@ In the example below, the cells span:
 - The entire width of the row on viewports smaller than the `sm` breakpoint, using `ds-l-col`
 
 Markup:
-<section class="ds-l-container">
+<section class="ds-l-container preview-grid">
   <div class="ds-l-row">
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">A</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      A
     </div>
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">B</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      B
     </div>
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">C</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      C
     </div>
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">D</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      D
     </div>
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">E</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      E
     </div>
-    <div class="ds-l-col ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
-      <div class="ds-u-border--2">F</div>
+    <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
+      F
     </div>
   </div>
 </section>
@@ -108,28 +114,54 @@ Style guide: layout.grid.responsive
 */
 
 /*
-Alignment
-
-Use [flexbox utility classes]({{root}}/utilties/flexbox) to change the alignment of the grid's columns.
+Nested grids
 
 Markup:
-<section class="ds-l-container">
-  <h2 class="ds-h6">Vertical alignment</h2>
-  <div class="ds-l-row" style="min-height: 200px">
-    <div class="ds-l-col-4 ds-u-fill--primary-alt-lightest ds-u-align-self--start">
-      Left (default)
+<section class="ds-l-container preview-grid">
+  <div class="ds-l-row">
+    <div class="ds-l-col--9">
+      Level 1
+      <div class="ds-l-row">
+        <article class="ds-l-col--4">
+          Level 2
+        </article>
+        <article class="ds-l-col--4">
+          Level 2
+        </article>
+        <article class="ds-l-col--4">
+          Level 2
+        </article>
+      </div>
     </div>
-    <div class="ds-l-col-4 ds-u-fill--primary-alt-lightest ds-u-align-self--center">
-      Center
-    </div>
-    <div class="ds-l-col-4 ds-u-fill--primary-alt-lightest ds-u-align-self--end">
-      Right
+    <div class="ds-l-col--3">
+      Level 1
     </div>
   </div>
 </section>
 
-Style guide: layout.grid.alignment
+Style guide: layout.grid.nested
 */
+
+/*
+Offsetting columns
+
+Offset columns using the [margin auto utility class]({{root}}/utilities/margin):
+
+Markup:
+<section class="ds-l-container preview-grid">
+  <div class="ds-l-row">
+    <div class="ds-l-col--3">
+      3 columns
+    </div>
+    <div class="ds-l-col--4 ds-u-margin-left--auto">
+      4 columns, offset 5 columns
+    </div>
+  </div>
+</section>
+
+Style guide: layout.grid.offset
+*/
+
 @import 'container';
 @import 'row';
 @import 'col';

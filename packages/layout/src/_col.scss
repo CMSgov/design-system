@@ -1,8 +1,63 @@
-.ds-l-col {
+// Shout-out Bootstrap Grid
+
+// Use a placeholder for common properties for all breakpoints. When transpiled
+// all of the declarations extending this will be turned into one declaration
+%grid-column {
   box-sizing: border-box;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-  padding-left: $grid-gutter-width / 2;
-  padding-right: $grid-gutter-width / 2;
+  min-height: 1px; // Prevent columns from collapsing when empty
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+  position: relative;
+  width: 100%;
+}
+
+@for $i from 1 through $grid-columns {
+  // Example: ds-l-col--6
+  .ds-l-col--#{$i} {
+    @extend %grid-column;
+  }
+}
+
+.ds-l-col {
+  @extend %grid-column;
+  @include equal-width-flexbox-col;
+}
+
+@for $i from 1 through $grid-columns {
+  // Example: ds-l-col--12
+  .ds-l-col--#{$i} {
+    @include flexbox-col($i);
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  // Allow columns to stretch full width below their breakpoints
+  @for $i from 1 through $grid-columns {
+    // Example: ds-l-lg-col--12
+    .ds-l-#{$breakpoint}-col--#{$i} {
+      @extend %grid-column;
+    }
+  }
+
+  // Example: ds-l-lg-col
+  .ds-l-#{$breakpoint}-col {
+    @extend %grid-column;
+  }
+
+  @media (min-width: $value) {
+    // Provide breakpoint classes for equal-width columns
+    // Example: ds-l-lg-col
+    .ds-l-#{$breakpoint}-col {
+      @include equal-width-flexbox-col;
+    }
+
+    @for $i from 1 through $grid-columns {
+      // Example: ds-l-lg-col--12
+      .ds-l-#{$breakpoint}-col--#{$i} {
+        @include flexbox-col($i);
+      }
+    }
+  }
 }
