@@ -51,8 +51,14 @@ class HTMLExample extends React.PureComponent {
     return (
       <div className='markup markup--html'>
         {this.title()}
+        <a
+          href={iframeURL}
+          rel='noreferrer noopener nofollow'
+          target='_blank'
+          title='test'
+        >Click to view in isolation</a>
         <iframe
-          className='ds-u-border--1 ds-u-valign--bottom'
+          className='ds-u-border--1 ds-u-valign--bottom ds-u-margin-top--1'
           frameBorder='0'
           height={this.props.height || 0}
           ref={iframe => { this.iframe = iframe; }}

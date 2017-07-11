@@ -1,7 +1,8 @@
 // Loaded within the markup example iframes
 @import 'settings/override.cmsgov';
 @import '@cmsgov/design-system-core/src/index';
-@import 'settings/index';
+@import 'settings/color';
+@import 'settings/typography';
 
 body {
   margin: 0;

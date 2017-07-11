@@ -6,7 +6,8 @@
 @import '@cmsgov/design-system-core/src/index';
 
 // Sass settings
-@import 'settings/index';
+@import 'settings/color';
+@import 'settings/typography';
 
 // Sass mixins and functions
 @import 'tools/functions';
