@@ -16,16 +16,12 @@ Display
 
 **Format**: `ds-u-display--[VALUE]`
 
-#### Available `display` options:
+#### Available `display` utilities:
 
 - `ds-u-display--block`
 - `ds-u-display--inline-block`
+- `ds-u-display--flex`
 - `ds-u-display--none`
-
-Markup:
-<span class="ds-u-display--block">I'm displayed as <code>block</code></span>
-<span class="ds-u-display--inline-block">I'm displayed as <code>inline-block</code></span>
-<span class="ds-u-display--none">I'm hidden</span>
 
 Style guide: utilities.display-visibility.display
 */
@@ -35,6 +31,10 @@ Style guide: utilities.display-visibility.display
 
 .ds-u-display--inline-block {
   display: inline-block !important;
+}
+
+.ds-u-display--flex {
+  display: flex !important;
 }
 
 .ds-u-display--none {
@@ -48,7 +48,7 @@ Visibility
 
 **Format**: `ds-u-visibility--[VALUE]`
 
-#### Available `visibility` options:
+#### Available `visibility` utilities:
 
 - `ds-u-visibility--hidden`
 - `ds-u-visibility--visible`
