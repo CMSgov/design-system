@@ -1,0 +1,17 @@
+// Style overrides for the documented code
+// Div wrapping documentation example output
+.markup--html {
+  padding: 0;
+  position: relative;
+}
+
+// Link to open HTML in new window or tab
+.markup--html__output {
+  background: $color-gray-lightest;
+  bottom: 0;
+  padding: 4px $spacer-2;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-decoration: none;
+}

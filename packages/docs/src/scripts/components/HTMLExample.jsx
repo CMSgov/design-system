@@ -29,7 +29,7 @@ class HTMLExample extends React.PureComponent {
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
-      <div className='c-markup__header'>
+      <div className='c-markup__header ds-u-margin-left--2'>
         <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
           Modifier: <code>{this.name()}</code>
         </h4>
@@ -56,7 +56,7 @@ class HTMLExample extends React.PureComponent {
           rel='nofollow'
           target='_blank'
           title='Open the rendered HTML in a new tab or window'
-        >View output</a>
+        >New tab</a>
         {this.title()}
         <iframe
           className='ds-u-valign--bottom'

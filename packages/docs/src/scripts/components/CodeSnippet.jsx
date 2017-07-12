@@ -3,7 +3,7 @@ import React from 'react';
 
 const CodeSnippet = function(props) {
   return (
-    <details open={props.open}>
+    <details className='ds-u-margin-left--2' open={props.open}>
       <summary className='ds-u-margin-y--1 ds-c-button ds-c-button--transparent ds-u-padding--1'>
         Code snippet
       </summary>

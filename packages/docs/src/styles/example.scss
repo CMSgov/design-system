@@ -6,7 +6,8 @@
 
 body {
   margin: 0;
-  padding-top: $spacer-2;
+  // Padding added to ensure iframe can receive focus when opened in new tab
+  padding: $spacer-2;
 }
 
 html {
