@@ -67,7 +67,7 @@ class HTMLExample extends React.PureComponent {
           title={`${this.name()} example`}
           width='100%'
         />
-        {this.snippet(iframeURL)}
+        {this.snippet()}
       </div>
     );
   }
