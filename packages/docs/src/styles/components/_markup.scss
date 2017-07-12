@@ -7,11 +7,29 @@
 
 // Link to open HTML in new window or tab
 .markup--html__output {
-  background: $color-gray-lightest;
+  background: $color-gray-lightest url('/public/images/new-tab.svg');
+  background-position: right $spacer-1 top 7px;
+  background-repeat: no-repeat;
+  background-size: 16%;
   bottom: 0;
-  padding: 4px $spacer-2;
+  padding: 4px $spacer-4 4px $spacer-2;
   position: absolute;
   right: 0;
   text-align: center;
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background: $color-gray-lightest url('/public/images/new-tab--hover.svg');
+    background-position: right $spacer-1 top 7px;
+    background-repeat: no-repeat;
+    background-size: 16%;
+  }
+
+  &:active {
+    background: $color-gray-lightest url('/public/images/new-tab--active.svg');
+    background-position: right $spacer-1 top 7px;
+    background-repeat: no-repeat;
+    background-size: 16%;
+  }
 }
