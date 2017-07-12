@@ -27,3 +27,24 @@
 
 // Utilities
 @import 'utilities/colors';
+
+// Div wrapping documentation example output
+.markup--html {
+  position: relative;
+  padding: 0 $spacer-3 $spacer-2;
+
+  // Block-level link to show HTML on new screen
+  &__output {
+    background: $color-gray-lightest;
+    border: none;
+    border-bottom: 1px solid $color-gray-lighter;
+    border-right: 1px solid $color-gray-lighter;
+    bottom: -1px;
+    padding: 4px $spacer-2;
+    position: absolute;
+    right: -1px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+  }
+}

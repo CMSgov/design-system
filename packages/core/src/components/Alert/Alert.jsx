@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-class Alert extends React.PureComponent {
+export class Alert extends React.PureComponent {
   heading() {
     if (this.props.heading) {
       return <h3 className='ds-c-alert__heading'>{this.props.heading}</h3>;
