@@ -172,26 +172,6 @@ Style guide: layout.grid.offset
 */
 
 /*
-Reordering columns
-
-Reorder columns using the [flexbox order utility class]({{root}}/utilities/flexbox#utilities.flexbox.order):
-
-Markup:
-<section class="ds-l-container preview-grid">
-  <div class="ds-l-row">
-    <div class="ds-l-col--12 ds-l-md-col--6 ds-u-order--2 ds-u-md-order--1">
-      <strong>Left</strong> column on <strong>md</strong> viewports and larger. Reordered to the <strong>bottom</strong> on smaller screens.
-    </div>
-    <div class="ds-l-col--12 ds-l-md-col--6 ds-u-order--1">
-      <strong>Right</strong> column on <strong>md</strong> viewports and larger. Reordered to the <strong>top</strong> on smaller screens.
-    </div>
-  </div>
-</section>
-
-Style guide: layout.grid.reorder
-*/
-
-/*
 Alignment
 
 Align columns horizontally or vertically using [flexbox utility classes]({{root}}/utilities/flexbox). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
@@ -225,4 +205,41 @@ Markup:
 </section>
 
 Style guide: layout.grid.alignment
+*/
+
+
+/*
+---
+
+## When to use
+
+- Almost always use a grid layout — visitors can read more quickly on pages that use grids. Choose a single grid system for your entire site.
+
+## When to consider alternatives
+
+- Avoid mixing this grid and other grid systems.
+
+## Guidance
+
+- Choose a 12-column grid with flexible column widths and fixed gutters.
+- Avoid text lines longer than 75 characters. Place text in narrower columns to keep text lines from becoming too wide or use the [measure utility classes]({{root}}/utilities/measure).
+
+## Accessibility
+
+- Low-vision users should be able to increase the size of the text by up to 200 percent without breaking the layout.
+- The DOM order and visual presentation of content should be consistent, in order to not break keyboard navigation. This means you should avoid changing the flexbox `order` property of the grid columns.
+
+## Customization
+
+The following Sass variables can be overridden to customize the grid:
+
+- `$grid-columns`
+- `$grid-gutter-width`
+
+## Learn more
+
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Flexbox & the keyboard navigation disconnect](https://tink.uk/flexbox-the-keyboard-navigation-disconnect/)
+
+Style guide: layout.grid.guidance
 */

@@ -3,7 +3,7 @@
 /*
 Flexbox
 
-Use the [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) utility classes to control various flexbox properties. These are especially useful when combined with [flexbox grid]({{root}}/layout/grid#layout.grid.reorder) classes.
+Use the [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) utility classes to control various flexbox properties. These are especially useful when combined with [flexbox grid]({{root}}/layout/grid#layout.grid.alignment) classes.
 
 #### Usage
 
@@ -127,44 +127,6 @@ $_align-items-values: (
       .ds-u-#{$breakpoint}-align-items--#{$name} {
         // Example: align-items: flex-start
         align-items: $value;
-      }
-    }
-  }
-}
-
-/*
-Order
-
-Use the `order` utility class to change the _visual order_ of flex items.
-
-> The CSS `order` property specifies the order used to lay out flex items in their flex container. Elements are laid out in the ascending order of the order value. Elements with the same order value are laid out in the order in which they appear in the source code. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
-
-The classes follow the format: `ds-u-order--{i}` and `ds-u-{breakpoint}-order--{i}` where `i` is an integer between 1 and 3, and `breakpoint` is one of the [responsive prefixes]({{root}}/guidelines/responsive).
-
-Markup:
-<section class="ds-u-display--flex">
-  <div class="ds-u-order--2 ds-u-border--2 ds-u-margin--1">1st</div>
-  <div class="ds-u-order--3 ds-u-border--2 ds-u-margin--1">2nd</div>
-  <div class="ds-u-order--1 ds-u-border--2 ds-u-margin--1">3rd</div>
-</section>
-
-Style guide: utilities.flexbox.order
-*/
-@for $i from 1 through 3 {
-  // Example: .ds-u-order--2
-  .ds-u-order--#{$i} {
-    order: $i;
-  }
-}
-
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
-
-  @media (min-width: $value) {
-    @for $i from 1 through 3 {
-      // Example: .ds-u-lg-order--2
-      .ds-u-#{$breakpoint}-order--#{$i} {
-        order: $i;
       }
     }
   }
