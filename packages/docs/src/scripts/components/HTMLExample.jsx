@@ -55,7 +55,7 @@ class HTMLExample extends React.PureComponent {
           href={iframeURL}
           rel='nofollow'
           target='_blank'
-          title='test'
+          title='Open the rendered HTML in a new tab or window'
         >View output</a>
         {this.title()}
         <iframe
