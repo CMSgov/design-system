@@ -11,7 +11,6 @@ const hotReload = true;
 let config = {
   context: __dirname,
   entry: {
-    example: ['./src/scripts/example.js'],
     index: ['./src/scripts/index.jsx']
   },
   output: {

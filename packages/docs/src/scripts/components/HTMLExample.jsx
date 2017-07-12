@@ -3,12 +3,24 @@
  * a preview and code snippet for the given markup
  */
 import CodeSnippet from './CodeSnippet';
+import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 import processMarkup from '../shared/processMarkup';
 
 class HTMLExample extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleFrameLoad = this.handleFrameLoad.bind(this);
+    this.state = { frameLoaded: false };
+  }
+
+  handleFrameLoad() {
+    this.setState({ frameLoaded: true });
+  }
+
   highlightedMarkup() {
     const markup = processMarkup(this.props.markup, this.props.modifier);
     return Prism.highlight(markup, Prism.languages.markup);
@@ -42,6 +54,10 @@ class HTMLExample extends React.PureComponent {
   }
 
   render() {
+    const frameContainerClasses = classNames('ds-u-border--1', {
+      'frame-container--loading': !this.state.frameLoaded
+    });
+
     let iframeURL = `/design-system/example/${this.props.reference}`;
 
     if (this.props.modifier) {
@@ -49,17 +65,15 @@ class HTMLExample extends React.PureComponent {
     }
 
     return (
-      <div className='markup markup--html'>
+      <div className={'markup markup--html'}>
         {this.title()}
-        <iframe
-          className='ds-u-border--1 ds-u-valign--bottom'
-          frameBorder='0'
-          height={this.props.height || 0}
-          ref={iframe => { this.iframe = iframe; }}
-          src={iframeURL}
-          title={`${this.name()} example`}
-          width='100%'
-        />
+        <div className={frameContainerClasses}>
+          <Frame
+            onLoad={this.handleFrameLoad}
+            src={iframeURL}
+            title={`${this.name()} example`}
+          />
+        </div>
         {this.snippet()}
       </div>
     );
@@ -67,7 +81,6 @@ class HTMLExample extends React.PureComponent {
 }
 
 HTMLExample.propTypes = {
-  height: PropTypes.number,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string.isRequired,
   modifier: PropTypes.shape({

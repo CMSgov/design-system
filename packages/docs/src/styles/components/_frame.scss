@@ -1,0 +1,9 @@
+.frame {
+  vertical-align: bottom;
+}
+
+.frame-container--loading {
+  background: url('#{$image-path}/spinner-gray.svg') center center no-repeat;
+  background-size: 30px;
+  min-height: 30px + $spacer-2;
+}
