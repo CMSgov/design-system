@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  // Padding added to ensure iframe can receive focus when opened in new tab
+  // Padding added to ensure *:focus outlines are visible when shown in an iframe
   padding: $spacer-2;
 }
 
