@@ -41,7 +41,7 @@ class HTMLExample extends React.PureComponent {
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
-      <div className='c-markup__header'>
+      <div className='c-markup__header ds-u-margin-left--2'>
         <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
           Modifier: <code>{this.name()}</code>
         </h4>
@@ -57,15 +57,22 @@ class HTMLExample extends React.PureComponent {
     const frameContainerClasses = classNames('ds-u-border--1', {
       'frame-container--loading': !this.state.frameLoaded
     });
-
-    let iframeURL = `/design-system/example/${this.props.reference}`;
+    const rootPath = process.env.root ? `/${process.env.root}` : '';
+    let iframeURL = `${rootPath}/example/${this.props.reference}`;
 
     if (this.props.modifier) {
       iframeURL += this.props.modifier.name;
     }
 
     return (
-      <div className={'markup markup--html'}>
+      <div className='markup markup--html ds-u-border--1 ds-u-margin-bottom--3'>
+        <a
+          className='markup--html__output'
+          href={iframeURL}
+          rel='nofollow'
+          target='_blank'
+          title='Open the rendered HTML in a new tab or window'
+        >New tab</a>
         {this.title()}
         <div className={frameContainerClasses}>
           <Frame

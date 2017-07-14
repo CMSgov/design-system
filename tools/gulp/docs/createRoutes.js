@@ -11,7 +11,7 @@ function createRoutes(pages, level = 1) {
       id: page.referenceURI, // we use this to identify the current page
       items: level < 2 ? createRoutes(page.sections, level + 1) : null,
       label: page.header,
-      url: page.referenceURI ? `/${page.referenceURI}` : undefined
+      url: typeof page.referenceURI === 'string' ? `/${page.referenceURI}` : undefined
     };
   });
 
