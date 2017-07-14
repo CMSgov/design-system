@@ -1,8 +1,8 @@
 // Loaded within the markup example iframes
 @import 'settings/override.cmsgov';
 @import '@cmsgov/design-system-core/src/index';
-@import 'settings/color';
-@import 'settings/typography';
+@import '@cmsgov/design-system-layout/src/index';
+@import 'settings/index';
 
 body {
   margin: 0;
@@ -16,4 +16,5 @@ html {
   overflow: hidden;
 }
 
+@import 'components/preview-grid';
 @import 'components/swatch';

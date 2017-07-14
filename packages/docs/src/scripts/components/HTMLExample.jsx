@@ -3,6 +3,7 @@
  * a preview and code snippet for the given markup
  */
 import CodeSnippet from './CodeSnippet';
+import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -50,23 +51,12 @@ class HTMLExample extends React.PureComponent {
     }
 
     return (
-      <div className='markup markup--html ds-u-border--1 ds-u-margin-bottom--3'>
-        <a
-          className='markup--html__output'
-          href={iframeURL}
-          rel='nofollow'
-          target='_blank'
-          title='Open the rendered HTML in a new tab or window'
-        >New tab</a>
+      <div className='markup markup--html'>
         {this.title()}
-        <iframe
-          className='ds-u-valign--bottom'
-          frameBorder='0'
-          height={this.props.height || 0}
-          ref={iframe => { this.iframe = iframe; }}
+        <Frame
+          onLoad={this.handleFrameLoad}
           src={iframeURL}
           title={`${this.name()} example`}
-          width='100%'
         />
         {this.snippet()}
       </div>
@@ -75,7 +65,6 @@ class HTMLExample extends React.PureComponent {
 }
 
 HTMLExample.propTypes = {
-  height: PropTypes.number,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string.isRequired,
   modifier: PropTypes.shape({

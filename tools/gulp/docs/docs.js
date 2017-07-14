@@ -20,6 +20,7 @@ const processKssSection = require('./processKssSection');
 const nestSections = require('./nestSections');
 const gulpReactDocgen = require('./gulpReactDocgen');
 const runSequence = require('run-sequence');
+const packagesRegex = require('../common/packagesRegex');
 const docs = 'packages/docs';
 
 /**
@@ -36,10 +37,15 @@ function addTopLevelPages(kssSections) {
       sections: [],
       weight: 5
     }, {
+      header: 'Layout',
+      reference: 'layout',
+      sections: [],
+      weight: 6
+    }, {
       header: 'Style',
       reference: 'style',
       sections: [],
-      weight: 6
+      weight: 7
     }
   ].concat(kssSections));
 }
@@ -171,18 +177,20 @@ module.exports = (gulp, shared) => {
       'Creating HTML pages from Sass comments and Markdown pages'
     );
 
-    return kss.traverse(['packages/core/src/'])
+    const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
+    return kss.traverse(packages)
       .then(styleguide =>
         /**
          * 1. CSS comments are parsed and an array of KSS Section objects is
          * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
          * @return {Array} KssSections
          */
-        styleguide.sections()
-          .map(kssSection =>
+        Promise.all(
+          styleguide.sections().map(kssSection =>
             // Cleanup and extend the section's properties
             processKssSection(kssSection, shared.rootPath)
           )
+        )
       )
       .then(generateMarkupPages) // 2
       .then(addTopLevelPages)    // 3
@@ -207,11 +215,13 @@ module.exports = (gulp, shared) => {
       'Creating react-doc.json data file from React comments'
     );
 
+    const packages = packagesRegex(shared.packages);
+
     return gulp
       .src([
-        'packages/core/src/components/**/*.jsx',
-        '!packages/core/src/components/**/*.test.jsx',
-        '!packages/core/src/components/**/*.example.jsx'
+        `packages/${packages}/src/components/**/*.jsx`,
+        `!packages/${packages}/src/components/**/*.test.jsx`,
+        `!packages/${packages}/src/components/**/*.example.jsx`
       ])
       .pipe(gulpReactDocgen({
         nameAfter: 'packages/'
