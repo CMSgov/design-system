@@ -1,9 +1,37 @@
+$_link-font-size: $small-font-size;
+$_link-spacer: $spacer-1;
+
 .frame {
-  vertical-align: bottom;
+  padding-bottom: $_link-font-size + ($_link-spacer * 2);
+  position: relative;
 }
 
-.frame-container--loading {
+.frame--loading {
   background: url('#{$image-path}/spinner-gray.svg') center center no-repeat;
   background-size: 30px;
   min-height: 30px + $spacer-2;
+}
+
+.frame__link {
+  background-color: $color-gray-lightest;
+  background-image: url('/#{$image-path}/new-tab.svg');
+  background-position: center right $_link-spacer;
+  background-repeat: no-repeat;
+  background-size: $_link-font-size;
+  bottom: 0;
+  font-size: $_link-font-size;
+  line-height: $reset-line-height;
+  padding: $_link-spacer ($_link-font-size + $_link-spacer + $_link-spacer) $_link-spacer $_link-spacer;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background-image: url('/#{$image-path}/new-tab--hover.svg');
+  }
+
+  &:active {
+    background-image: url('/#{$image-path}/new-tab--active.svg');
+  }
 }

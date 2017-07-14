@@ -7,20 +7,9 @@ import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 import processMarkup from '../shared/processMarkup';
 
 class HTMLExample extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.handleFrameLoad = this.handleFrameLoad.bind(this);
-    this.state = { frameLoaded: false };
-  }
-
-  handleFrameLoad() {
-    this.setState({ frameLoaded: true });
-  }
-
   highlightedMarkup() {
     const markup = processMarkup(this.props.markup, this.props.modifier);
     return Prism.highlight(markup, Prism.languages.markup);
@@ -54,9 +43,6 @@ class HTMLExample extends React.PureComponent {
   }
 
   render() {
-    const frameContainerClasses = classNames('ds-u-border--1', {
-      'frame-container--loading': !this.state.frameLoaded
-    });
     const rootPath = process.env.root ? `/${process.env.root}` : '';
     let iframeURL = `${rootPath}/example/${this.props.reference}`;
 
@@ -65,22 +51,13 @@ class HTMLExample extends React.PureComponent {
     }
 
     return (
-      <div className='markup markup--html ds-u-border--1 ds-u-margin-bottom--3'>
-        <a
-          className='markup--html__output'
-          href={iframeURL}
-          rel='nofollow'
-          target='_blank'
-          title='Open the rendered HTML in a new tab or window'
-        >New tab</a>
+      <div className='markup markup--html'>
         {this.title()}
-        <div className={frameContainerClasses}>
-          <Frame
-            onLoad={this.handleFrameLoad}
-            src={iframeURL}
-            title={`${this.name()} example`}
-          />
-        </div>
+        <Frame
+          onLoad={this.handleFrameLoad}
+          src={iframeURL}
+          title={`${this.name()} example`}
+        />
         {this.snippet()}
       </div>
     );
