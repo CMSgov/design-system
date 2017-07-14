@@ -21,8 +21,8 @@ class ReactComponentExample extends React.PureComponent {
 
   render() {
     return (
-      <div className='markup markup--react'>
-        <div className='ds-u-border--1 ds-u-padding--1'>
+      <div className='markup markup--react ds-u-border--1 ds-u-padding-top--2 ds-u-padding-right--2 ds-u-padding-left--2'>
+        <div>
           {this.props.renderComponent()}
         </div>
 
