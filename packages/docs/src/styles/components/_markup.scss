@@ -1,0 +1,30 @@
+// Style overrides for the documented code
+// Div wrapping documentation example output
+.markup--html {
+  position: relative;
+}
+
+// Link to open HTML in new window or tab
+.markup--html__output {
+  background-color: $color-gray-lightest;
+  background-image: url('/#{$image-path}/new-tab.svg');
+  background-position: center right $spacer-1;
+  background-repeat: no-repeat;
+  background-size: $small-font-size;
+  bottom: 0;
+  font-size: $small-font-size;
+  line-height: $reset-line-height;
+  padding: $spacer-1 ($small-font-size + $spacer-1 + $spacer-1) $spacer-1 $spacer-1;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background-image: url('/#{$image-path}/new-tab--hover.svg');
+  }
+
+  &:active {
+    background-image: url('/#{$image-path}/new-tab--active.svg');
+  }
+}

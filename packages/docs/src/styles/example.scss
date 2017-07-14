@@ -1,11 +1,13 @@
 // Loaded within the markup example iframes
 @import 'settings/override.cmsgov';
 @import '@cmsgov/design-system-core/src/index';
-@import 'settings/index';
+@import 'settings/color';
+@import 'settings/typography';
 
 body {
   margin: 0;
-  padding: $spacer-1;
+  // Padding added to ensure *:focus outlines are visible when shown in an iframe
+  padding: $spacer-2;
 }
 
 html {
