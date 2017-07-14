@@ -18,7 +18,7 @@ const recursive = require('mkdir-recursive');
 function generatePage(routes, page, rootPath, withoutUI) {
   if (withoutUI) {
     return generateMarkupPages(page, rootPath);
-  } else if (page.referenceURI) {
+  } else if (typeof page.referenceURI === 'string') {
     return generateDocPage(routes, page, rootPath);
   }
 

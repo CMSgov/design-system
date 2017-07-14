@@ -42,7 +42,8 @@ class HTMLExample extends React.PureComponent {
   }
 
   render() {
-    let iframeURL = `/design-system/example/${this.props.reference}`;
+    const rootPath = process.env.root ? `/${process.env.root}` : '';
+    let iframeURL = `${rootPath}/example/${this.props.reference}`;
 
     if (this.props.modifier) {
       iframeURL += this.props.modifier.name;
