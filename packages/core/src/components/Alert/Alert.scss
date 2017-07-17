@@ -181,6 +181,7 @@ Style guide: components.alert.react
 
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `alertdialog` role instead.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
+- Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. This div is generally late in the source order, but positioned absolutely near the top of the viewport, with a high z-index to ensure it is not covered by other elements. Screen readers will ignore this empty div until child content changes, at which time it will be announced.
 
 ## Learn more
 
