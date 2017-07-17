@@ -2,6 +2,7 @@ const processMarkdownPage = require('../processMarkdownPage');
 
 const markdown = `---
 title: Foo
+hide-example: true
 ---
 **Bar**`;
 
@@ -24,7 +25,7 @@ describe('processMarkdownPage', () => {
       });
   });
 
-  it('should set page props', () => {
+  it('should set required page props', () => {
     return processMarkdownPage(filePath, markdown)
       .then(output => {
         expect(output.header).toEqual('Foo');
@@ -32,6 +33,14 @@ describe('processMarkdownPage', () => {
         expect(output.markup).toEqual('');
         expect(output.referenceURI).toEqual('boom-bap');
         expect(output.weight).toEqual(0);
+      });
+  });
+
+  it('processes flags', () => {
+    return processMarkdownPage(filePath, markdown)
+      .then(output => {
+        expect(output.hideExample).toBe(true);
+        expect(output.title).toBeUndefined();
       });
   });
 

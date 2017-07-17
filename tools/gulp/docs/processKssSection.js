@@ -53,8 +53,8 @@ function processKssSection(kssSection, rootPath) {
 }
 
 /**
- * Parses custom flags in CSS descriptions and adds each as a property
- * @param  {Object} section
+ * Parses custom flags in CSS descriptions and adds each as a camel-cased property
+ * @param {Object} section
  * @return {Object}
  */
 function processFlags(section) {
@@ -82,7 +82,7 @@ function processFlags(section) {
         case 'uswds':
           // US Web Design Standard URL
           // KSS converts the URL to an <a> element, so we grab just the URL
-          section.uswdsUrl = hrefUrl(value);
+          section.uswds = hrefUrl(value);
           break;
         default:
           break;
@@ -96,6 +96,7 @@ function processFlags(section) {
 function hrefUrl(str) {
   let match = str.match(/href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/);
   if (match) return match[1];
+  return str;
 }
 
 module.exports = processKssSection;

@@ -5,10 +5,10 @@ import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
   uswdsLink() {
-    if (this.props.uswdsUrl) {
+    if (this.props.uswds) {
       return (
         <p>
-          <a href={this.props.uswdsUrl}>US Web Design Standard</a>
+          <a href={this.props.uswds}>US Web Design Standard</a>
         </p>
       );
     }
@@ -59,7 +59,7 @@ PageHeader.propTypes = {
   reference: PropTypes.string,
   source: Source.propTypes.source,
   status: PropTypes.string,
-  uswdsUrl: PropTypes.string
+  uswds: PropTypes.string
 };
 
 export default PageHeader;

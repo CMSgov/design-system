@@ -1,3 +1,4 @@
+const camelCase = require('lodash/camelCase');
 const fm = require('front-matter');
 const marked = require('marked');
 const processMarkup = require('./processMarkup');
@@ -6,15 +7,34 @@ const renderer = require('./markdownRenderer');
 marked.setOptions({ renderer: renderer });
 
 /**
- * Breaks the various parts of the Markdown page into the expected props that
- * will later get passed into the React app.
+ * Take any attributes that aren't yet present on the page object, and add them
+ * to the page object with camel-cased names.
+ * @param {Object} page
+ * @param {Object} attributes
+ * @return {Object}
+ */
+function setFlags(page, attributes) {
+  page = Object.assign({}, page);
+
+  Object.keys(attributes).filter(key =>
+    Object.keys(page).indexOf(key) === -1
+  ).forEach(key => {
+    page[camelCase(key)] = attributes[key];
+  });
+
+  return page;
+}
+
+/**
+ * Breaks the various parts of the Markdown page into the expected page props
+ * that will later get passed into the React app.
  * @param {String} filePath - Absolute path to Markdown file
  * @param {String} body - Markdown file contents
  * @param {String} rootPath - Root docs site path
  * @return {Promise<Object>} Resolves with the page object
  */
 function processMarkdownPage(filePath, body, rootPath = '') {
-  const parts = fm(body); // parses front-matter from top of file
+  const parts = fm(body); // parse page properties from top of file
   let referenceURI = filePath.match(/src\/pages\/([a-z0-9-/]+)/i)[1];
 
   if (referenceURI === 'index') {
@@ -32,7 +52,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     (rootPath ? `/${rootPath}` : '')
   );
 
-  const page = {
+  let page = {
     header: parts.attributes.title || 'Untitled',
     description: marked(parts.body),
     markup: parts.attributes.markup || '',
@@ -43,6 +63,10 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     },
     weight: parseInt(parts.attributes.weight || 0)
   };
+
+  // Remove the title attribute before setting any flags
+  delete parts.attributes.title;
+  page = setFlags(page, parts.attributes);
 
   return processMarkup(page);
 }
