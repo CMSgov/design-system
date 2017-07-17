@@ -165,9 +165,9 @@ module.exports = (gulp, shared) => {
    * Generate HTML pages from CSS comments and Markdown files. This happens
    * within a chain of promises:
    * 1. Parse CSS comments, forming the initial array of pages
-   * 2. Create HTML files for the KSS markup examples
-   * 3. Add missing top-level pages so other pages can be properly nested
-   * 4. Parse Markdown files and add each page's data to the pages array
+   * 2. Parse Markdown files and add each page's data to the pages array
+   * 3. Create HTML files for markup examples
+   * 4. Add missing top-level pages so other pages can be properly nested
    * 5. Nest and sort the pages
    * 6. Create HTML files from the pages array
    */
@@ -192,12 +192,12 @@ module.exports = (gulp, shared) => {
           )
         )
       )
-      .then(generateMarkupPages) // 2
-      .then(addTopLevelPages)    // 3
-      .then(kssSections =>       // 4
+      .then(kssSections =>       // 2
         convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections))
       )
+      .then(generateMarkupPages) // 3
+      .then(addTopLevelPages)    // 4
       .then(nestSections)        // 5
       .then(generateDocPages)    // 6
       .then(generatedPagesCount => {

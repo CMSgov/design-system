@@ -1,7 +1,5 @@
-const dutil = require('../common/log-util');
-const ejs = require('ejs');
-const fs = require('mz/fs');
-const path = require('path');
+const processMarkup = require('./processMarkup');
+const replaceTemplateTags = require('./replaceTemplateTags');
 
 /**
  * Format Markdown code syntax
@@ -55,22 +53,6 @@ function processKssSection(kssSection, rootPath) {
 }
 
 /**
- * Replace template tags with strings
- * @param {String} str - String with template tags to be replaced
- * @param {String} rootPath
- * @return {String}
- */
-function replaceTemplateTags(str, rootPath) {
-  if (rootPath === '') {
-    str = str.replace(/{{root}}/g, '');
-  } else {
-    str = str.replace(/{{root}}/g, `/${rootPath}`);
-  }
-
-  return str;
-}
-
-/**
  * Parses custom flags in CSS descriptions and adds each as a property
  * @param  {Object} section
  * @return {Object}
@@ -109,55 +91,6 @@ function processFlags(section) {
     }).trim();
   }
   return section;
-}
-
-/**
- * Take the raw KSS markup value and convert or retrieve the markup to be
- * displayed to the user.
- * @param {Object} section
- * @param {rootPath}
- * @return {Promise<Object>} section updated `markup` property
- */
-function processMarkup(section, rootPath) {
-  let markup = section.markup;
-
-  if (markup && markup !== '') {
-    if (markup.search(/^[^\n]+\.(html|ejs)$/) >= 0) {
-      return loadMarkup(section)
-        .then(markup => {
-          section.markup = markup;
-          return processMarkup(section, rootPath);
-        });
-    }
-
-    markup = replaceTemplateTags(markup, rootPath);
-
-    // Render EJS
-    try {
-      markup = ejs.render(markup);
-    } catch (e) {
-      dutil.logError('ejs error', e.message);
-      dutil.logData('ejs error', `${section.source.path}:${section.source.line}\n${markup}`);
-    }
-  }
-
-  section.markup = markup;
-  return Promise.resolve(section);
-}
-
-/**
- * Load the markup file relative to the CSS file
- * @param {Object} section
- * @return {Promise<String>} Resolves with the file's contents
- */
-function loadMarkup(section) {
-  const dir = path.parse(section.source.path).dir;
-  const src = `../../../${dir}/${section.markup}`;
-  return fs.readFile(path.resolve(__dirname, src), 'utf8')
-    .catch(e => {
-      dutil.logError('KSS Markup error', e.message);
-      return '';
-    });
 }
 
 function hrefUrl(str) {

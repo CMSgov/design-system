@@ -15,7 +15,7 @@ class PageBlock extends React.PureComponent {
     if (!this.props.markup) return;
     let modifierMarkup;
 
-    if (this.props.modifiers.length) {
+    if (this.props.modifiers) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return (
           <HTMLExample

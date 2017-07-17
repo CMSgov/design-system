@@ -12,7 +12,7 @@ describe('processKssSection', () => {
           deprecated: false,
           experimental: false,
           header: 'Title - `<Component>`',
-          markup: '<% var foo="bar" %><%= foo %> {{root}}',
+          markup: '<h1>Foo</h1>',
           modifiers: [{
             name: '.primary',
             description: 'The primary action',
@@ -49,12 +49,6 @@ describe('processKssSection', () => {
     });
   });
 
-  it('renders EJS and replaces {{root}}', () => {
-    return promise.then(data => {
-      expect(data.markup).toBe('bar /root');
-    });
-  });
-
   it('converts Markdown in header', () => {
     return promise.then(data => {
       expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
@@ -66,6 +60,4 @@ describe('processKssSection', () => {
       expect(data.sections).toEqual(expect.any(Array));
     });
   });
-
-  it('loads markup from .html file relative to file');
 });
