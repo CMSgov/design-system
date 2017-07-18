@@ -75,6 +75,10 @@ function processFlags(section) {
           // Include the React component's documentation
           section.reactComponent = value;
           break;
+        case 'responsive':
+          // Render breakpoint toggles on markup example
+          section.responsive = true;
+          break;
         case 'status':
           // Development status (ie. Prototype, Alpha, Beta)
           section.status = value;

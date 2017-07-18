@@ -55,6 +55,7 @@ class HTMLExample extends React.PureComponent {
         {this.title()}
         <Frame
           onLoad={this.handleFrameLoad}
+          responsive={this.props.responsive}
           src={iframeURL}
           title={`${this.name()} example`}
         />
@@ -73,6 +74,7 @@ HTMLExample.propTypes = {
     name: PropTypes.string.isRequired
   }),
   reference: PropTypes.string,
+  responsive: PropTypes.bool,
   showTitle: PropTypes.bool
 };
 

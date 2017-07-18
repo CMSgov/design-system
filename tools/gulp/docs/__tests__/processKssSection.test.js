@@ -8,7 +8,7 @@ describe('processKssSection', () => {
         {
           // These paragraphs need to be separated by a newline in order for
           // the flag processing to work properly.
-          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@status prototype</p>`,
+          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
           deprecated: false,
           experimental: false,
           header: 'Title - `<Component>`',
@@ -38,6 +38,7 @@ describe('processKssSection', () => {
     return promise.then(data => {
       expect(data.reactComponent).toBe('Component');
       expect(data.hideMarkup).toBe(true);
+      expect(data.responsive).toBe(true);
       expect(data.status).toBe('prototype');
       expect(data.description).toBe('<p>Hello world</p>');
     });
