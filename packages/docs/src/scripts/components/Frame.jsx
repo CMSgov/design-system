@@ -15,11 +15,12 @@ class Frame extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (window) window.addEventListener('resize', this.handleResize);
+    this.iframe.contentWindow.addEventListener('load', this.handleLoad);
   }
 
   componentWillUnmount() {
-    if (window) window.removeEventListener('resize', this.handleResize);
+    this.iframe.contentWindow.removeEventListener('load', this.handleLoad);
+    this.iframe.contentWindow.removeEventListener('resize', this.handleResize);
   }
 
   handleResize() {
@@ -27,6 +28,12 @@ class Frame extends React.PureComponent {
   }
 
   handleLoad() {
+    // Attach the resize listener after the load event has been triggered, to
+    // avoid an unnecessary setHeight call in Firefox
+    this.iframe.contentWindow.addEventListener('resize', this.handleResize);
+    // We don't want scrollbars on the iframe. We need to set this class before
+    // calculating the height since a scrollbar may affect the height
+    this.iframe.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
     this.setHeight();
     this.setState({ loaded: true });
   }
@@ -51,7 +58,6 @@ class Frame extends React.PureComponent {
           className='ds-u-valign--bottom'
           frameBorder='0'
           height={this.state.height}
-          onLoad={this.handleLoad}
           ref={iframe => { this.iframe = iframe; }}
           src={this.props.src}
           title={this.props.title}
