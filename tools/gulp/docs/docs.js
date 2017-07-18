@@ -81,7 +81,7 @@ module.exports = (gulp, shared) => {
       pages.map(page => {
         return generatePage(routes, page, shared.rootPath)
           .then(created => {
-            if (page.sections && page.sections.length) {
+            if (page.sections) {
               return Promise.all(
                 page.sections.map(subpage => {
                   return generatePage(routes, subpage, shared.rootPath);

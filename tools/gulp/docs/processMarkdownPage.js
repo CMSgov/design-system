@@ -1,8 +1,10 @@
 const camelCase = require('lodash/camelCase');
 const fm = require('front-matter');
 const marked = require('marked');
+const path = require('path');
 const processMarkup = require('./processMarkup');
 const renderer = require('./markdownRenderer');
+const replaceTemplateTags = require('./replaceTemplateTags');
 
 marked.setOptions({ renderer: renderer });
 
@@ -35,7 +37,9 @@ function setFlags(page, attributes) {
  */
 function processMarkdownPage(filePath, body, rootPath = '') {
   const parts = fm(body); // parse page properties from top of file
+  const description = parts.attributes.usage || parts.body;
   let referenceURI = filePath.match(/src\/pages\/([a-z0-9-/]+)/i)[1];
+  const depth = referenceURI.split('/').length;
 
   if (referenceURI === 'index') {
     referenceURI = '';
@@ -44,17 +48,13 @@ function processMarkdownPage(filePath, body, rootPath = '') {
   const reference = referenceURI.replace('/', '.');
 
   if (rootPath !== '') {
-    referenceURI = `${rootPath}/${referenceURI}`;
+    referenceURI = path.join(rootPath, referenceURI);
   }
 
-  parts.body = parts.body.replace(
-    /{{root}}/g,
-    (rootPath ? `/${rootPath}` : '')
-  );
-
   let page = {
+    depth: depth,
     header: parts.attributes.title || 'Untitled',
-    description: marked(parts.body),
+    description: formatText(description, rootPath),
     markup: parts.attributes.markup || '',
     reference: reference,
     referenceURI: referenceURI,
@@ -64,11 +64,36 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     weight: parseInt(parts.attributes.weight || 0)
   };
 
+  if (parts.attributes.usage) {
+    // This page has tabs. The `usage` property is set as the top-level
+    // description, so we make the page's body nested under the guidance section
+    // We do it this way since formatting the guidance section as a front-matter
+    // field is a pain, since you have to indent each line.
+    page.sections = [{
+      depth: depth + 1,
+      header: '---',
+      description: formatText(parts.body, rootPath),
+      reference: `${reference}.guidance`,
+      referenceURI: path.join(referenceURI, 'guidance')
+    }];
+
+    delete parts.attributes.usage;
+  }
+
   // Remove the title attribute before setting any flags
   delete parts.attributes.title;
   page = setFlags(page, parts.attributes);
 
   return processMarkup(page);
+}
+
+/**
+ * @param {String} text
+ * @param {String} rootPath
+ * @return {String}
+ */
+function formatText(text, rootPath) {
+  return marked(replaceTemplateTags(text, rootPath));
 }
 
 module.exports = processMarkdownPage;
