@@ -20,6 +20,12 @@ npm publish
 
 echo "${GREEN}Publishing support package succeeded!${NC}"
 
+echo "${GREEN}Publishing layout package to NPM...${NC}"
+cd ../packages/layout
+npm publish
+
+echo "${GREEN}Publishing layout package succeeded!${NC}"
+
 echo "${GREEN}Publishing core package to NPM...${NC}"
 cd packages/core
 npm publish
