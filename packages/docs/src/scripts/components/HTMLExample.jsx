@@ -44,11 +44,14 @@ class HTMLExample extends React.PureComponent {
 
   render() {
     const rootPath = process.env.root ? `/${process.env.root}` : '';
-    let iframeURL = `${rootPath}/example/${this.props.reference}/`;
+    let iframeURL = `${rootPath}/example/${this.props.reference}`;
 
     if (this.props.modifier) {
       iframeURL += this.props.modifier.name;
     }
+
+    // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
+    iframeURL += '/';
 
     return (
       <div className='markup markup--html'>
