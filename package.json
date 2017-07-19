@@ -7,9 +7,10 @@
     "bootstrap:npm": "lerna bootstrap",
     "bootstrap:yarn": "lerna bootstrap --npm-client=yarn",
     "build": "NODE_ENV=production gulp build --env=production",
-    "bump": "gulp bumpVersion",
+    "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
     "g": "yarn generate",
+    "lerna": "lerna",
     "start": "NODE_ENV=development gulp watch --env=development",
     "test": "NODE_ENV=test gulp docs:react && jest && gulp lint --env=test",
     "test:watch": "NODE_ENV=test jest --watch"
