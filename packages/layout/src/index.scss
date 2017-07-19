@@ -83,6 +83,8 @@ Style guide: layout.grid.columns
 /*
 Mobile, tablet, and desktop grids
 
+@responsive
+
 Each column class can include a [breakpoint "prefix"]({{root}}/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
 
 An element with a `ds-l-{breakpoint}-col--*` class will span `*` columns at viewports matching `breakpoint` and larger.
