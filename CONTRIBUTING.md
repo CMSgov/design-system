@@ -2,12 +2,15 @@
 
 We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
 
-One of our goals is to ensure a welcoming environment for all contibutors. Please take a look at our [Code of Conduct](https://github.com/CMSgov/design-system/blob/master/CODE_OF_CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
 Below you'll find information on how to setup a local development environment and how to contribute code to the design system.
 
+### Additional information
+
 In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
 
+- Pattern proposal process
 - Coding guidelines
 - Guiding principles
 - How to write documentation
@@ -24,9 +27,7 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 1. `yarn install`
 1. `yarn bootstrap:yarn`
 
-The `bootstrap:yarn` command runs [`yerna`](https://github.com/palantir/yerna) which allows us to have multiple packages within the same repo (a monorepo). Yerna installs all our dependencies and links any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
-
-_Note_: `yerna` will become obsolete once [Lerna](https://lernajs.io/) [is merged into Yarn](https://github.com/yarnpkg/yarn/issues/946#issuecomment-264597575).
+The `bootstrap:yarn` command runs [Lerna](https://lernajs.io/) which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
 
 ### Scripts
 

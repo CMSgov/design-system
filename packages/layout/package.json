@@ -1,0 +1,13 @@
+{
+  "name": "@cmsgov/design-system-layout",
+  "version": "1.0.0-rc.2",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Responsive flexbox grid framework",
+  "repository": "CMSgov/design-system",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "dependencies": {
+    "@cmsgov/design-system-support": "^1.0.0-rc.2"
+  }
+}

@@ -1,20 +1,24 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
   "devDependencies": {
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "react-element-to-jsx-string": "^10.1.0",
     "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
-    "@cmsgov/design-system-core": "latest",
+    "@cmsgov/design-system-core": "^1.0.0-rc.2",
+    "@cmsgov/design-system-layout": "^1.0.0-rc.2",
+    "@cmsgov/design-system-support": "^1.0.0-rc.2",
     "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "3.0.0-beta.7"
   }
 }

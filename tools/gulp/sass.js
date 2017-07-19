@@ -17,9 +17,10 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stringReplace = require('gulp-string-replace');
 const runSequence = require('run-sequence');
+const packagesRegex = require('./common/packagesRegex');
 
 const config = {
-  vendorSrc: 'packages/core/src/vendor'
+  vendorSrc: 'packages/support/src/vendor'
 };
 
 module.exports = (gulp, shared) => {
@@ -87,8 +88,7 @@ module.exports = (gulp, shared) => {
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
     var packages = [
-      './packages/core/node_modules/bourbon/app/assets/stylesheets/**/_font-stacks.scss',
-      './packages/core/node_modules/uswds/src/stylesheets/**/_variables.scss'
+      './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
     return gulp
@@ -99,10 +99,16 @@ module.exports = (gulp, shared) => {
       }));
   });
 
-  gulp.task('sass:process:core', () => processSass(
-    'packages/core/',
-    'packages/core/dist'
-  ));
+  // Form tasks for each package...
+  const processPackageTasks = shared.packages.map(pkg => `sass:process:${pkg}`);
+  shared.packages.forEach((pkg, i) => {
+    return gulp.task(processPackageTasks[i], () => {
+      return processSass(
+        `packages/${pkg}/`,
+        `packages/${pkg}/dist`
+      );
+    });
+  });
 
   gulp.task('sass:process:docs', () => processSass(
     'packages/docs/',
@@ -110,20 +116,20 @@ module.exports = (gulp, shared) => {
   ));
 
   gulp.task('sass:add-version', () => {
+    const packages = packagesRegex(shared.packages);
+
     return gulp
-      .src('packages/core/dist/index.css')
+      .src(`./packages/${packages}/dist/index.css`)
       .pipe(stringReplace(/{{version}}/, shared.version))
-      .pipe(gulp.dest('packages/core/dist/'));
+      .pipe(gulp.dest('./packages/'));
   });
 
   gulp.task('sass', done => {
     runSequence(
       'sass:clean-vendor',
       'sass:copy-vendor',
-      [
-        'sass:process:core',
-        'sass:process:docs'
-      ],
+      processPackageTasks,
+      'sass:process:docs',
       'sass:add-version',
       done
     );

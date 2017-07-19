@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "publishConfig": {
     "access": "public"
   },
@@ -9,16 +9,15 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/index.js",
   "dependencies": {
-    "bourbon": "^4.3.3",
+    "@cmsgov/design-system-support": "^1.0.0-rc.2",
     "classnames": "^2.2.5",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "uswds": "^1.2.1"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "enzyme": "^2.8.2",
+    "enzyme": "^2.9.1",
     "mz": "^2.6.0",
     "react-test-renderer": "^15.6.1"
   }

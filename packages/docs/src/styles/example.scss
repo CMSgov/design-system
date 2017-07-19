@@ -1,0 +1,14 @@
+// Loaded within the markup example iframes
+@import 'settings/override.cmsgov';
+@import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system-layout/src/index';
+@import 'settings/index';
+
+body {
+  margin: 0;
+  // Padding added to ensure *:focus outlines are visible when shown in an iframe
+  padding: $spacer-2;
+}
+
+@import 'components/preview-grid';
+@import 'components/swatch';

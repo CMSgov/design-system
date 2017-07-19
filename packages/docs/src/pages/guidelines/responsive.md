@@ -5,7 +5,7 @@ weight: 10
 
 ![Responsive demo]({{root}}/public/images/responsive-demo.gif)
 
-The design system's utility and typography classes are built with reponsive web design in mind and is built to be **mobile first**. Use the prefixes `sm`, `md`, `lg`, and `xl` to quickly and easily adjust your layout and content for different screen sizes and devices. Further info and usage examples are available on the individual documentation pages.
+The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile first**. Use the prefixes `sm`, `md`, `lg`, and `xl` to quickly and easily adjust your layout and content for different screen sizes and devices. Further info and usage examples are available on the individual documentation pages.
 
 | Prefix | Breakpoint | Description |
 | ------ | ---------- | ----------- |
@@ -18,12 +18,14 @@ For example: `ds-u-lg-display--none` sets an element's `display` property to `no
 
 ## What supports a responsive prefix
 
-In order to reduce code bloat, not all utilities support a responsive prefix. Only the items in the following list support responsive prefixes.
+In order to reduce code bloat, not everything supports a responsive prefix. Only the items below support responsive prefixes:
 
-- [Typography]({{root}}/base/typography#responsive)
-- [Float]({{root}}/utilities/float#responsive)
-- [Font size]({{root}}/utilities/font-size#responsive)
-- [Margin]({{root}}/utilities/margin#responsive)
-- [Padding]({{root}}/utilities/padding#responsive)
-- [Text align]({{root}}/utilities/text-align#responsive)
-- [Visibility]({{root}}/utilities/visibility#responsive)
+- [Grid]({{root}}/layout/grid)
+- [Typography]({{root}}/style/typography#style.typography.responsive)
+- [Flexbox]({{root}}/utilities/flexbox)
+- [Float]({{root}}/utilities/float#utilities.float.responsive)
+- [Font size]({{root}}/utilities/font-size#utilities.font-size.responsive)
+- [Margin]({{root}}/utilities/margin#utilities.margin.responsive)
+- [Padding]({{root}}/utilities/padding#utilities.padding.responsive)
+- [Text align]({{root}}/utilities/text-align#utilities.text-align.responsive)
+- [Visibility]({{root}}/utilities/display-visibility#utilities.display-visibility.responsive)

@@ -47,7 +47,10 @@ function convertMarkdownPages(rootPath, dir) {
   return fs.readdir(dir)
     .then(filenames =>
       Promise.all(
-        filenames.map(filename =>
+        filenames.filter(filename =>
+          // File is a Markdown file or directory
+          filename.match(/\.md$/) || !filename.match(/\.([a-z]+)$/)
+        ).map(filename =>
           createPageObject(rootPath, dir, filename)
             .then(data => {
               if (data.length) {
@@ -61,9 +64,7 @@ function convertMarkdownPages(rootPath, dir) {
         )
       )
     )
-    .then(() =>
-      pages.sort((a, b) => a.header > b.header) // sort alphabetically
-    );
+    .then(() => pages);
 }
 
 module.exports = convertMarkdownPages;

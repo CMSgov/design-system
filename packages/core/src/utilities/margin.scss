@@ -1,6 +1,5 @@
 /* stylelint-disable declaration-no-important */
-@import '../settings/index';
-@import '../tools/index';
+@import '@cmsgov/design-system-support/src/index';
 
 /*
 Margin
@@ -21,6 +20,11 @@ Markup:
   </div>
 </div>
 <% } -%>
+<div class="ds-u-fill--gray<%= backgrounds[i] %>">
+  <div class="ds-u-margin<%= name %>--auto" style="width: 250px">
+    <code class="ds-u-fill--background ds-u-margin--0 ds-u-display--block">ds-u-margin<%= name %>--auto</code>
+  </div>
+</div>
 <% }) -%>
 
 Style guide: utilities.margin
@@ -62,10 +66,40 @@ Style guide: utilities.margin
   }
 }
 
+.ds-u-margin--auto {
+  margin: auto !important;
+}
+
+.ds-u-margin-top--auto {
+  margin-top: auto !important;
+}
+
+.ds-u-margin-right--auto {
+  margin-right: auto !important;
+}
+
+.ds-u-margin-bottom--auto {
+  margin-bottom: auto !important;
+}
+
+.ds-u-margin-left--auto {
+  margin-left: auto !important;
+}
+
+.ds-u-margin-x--auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ds-u-margin-y--auto {
+  margin-bottom: auto !important;
+  margin-top: auto !important;
+}
+
 /*
 Responsive
 
-Use a [responsive prefix](/responsive) to change the margin at specific breakpoints.
+Use a [responsive prefix]({{root}}/guidelines/responsive) to change the margin at specific breakpoints.
 
 _Resize your browser to see each breakpoint in action:_
 
@@ -117,6 +151,36 @@ Style guide: utilities.margin.responsive
         margin-bottom: #{$size} !important;
         margin-top: #{$size} !important;
       }
+    }
+
+    .ds-u-#{$breakpoint}-margin--auto {
+      margin: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-top--auto {
+      margin-top: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-right--auto {
+      margin-right: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-bottom--auto {
+      margin-bottom: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-left--auto {
+      margin-left: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-x--auto {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .ds-u-#{$breakpoint}-margin-y--auto {
+      margin-bottom: auto !important;
+      margin-top: auto !important;
     }
   }
 }
