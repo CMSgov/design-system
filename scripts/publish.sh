@@ -8,20 +8,8 @@ GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 NC='\033[0m' # No color
 
-echo "${GREEN}Making sure we have the latest from master...${NC}"
-git stash
-git checkout master
-git pull
+echo "${GREEN}Pulling latest from GitHub...${NC}"
+git pull --rebase
 
-# Publish public packages to NPM
-echo "${GREEN}Publishing support package to NPM...${NC}"
-cd ../packages/support
-npm publish
-
-echo "${GREEN}Publishing support package succeeded!${NC}"
-
-echo "${GREEN}Publishing core package to NPM...${NC}"
-cd packages/core
-npm publish
-
-echo "${GREEN}Publishing core package succeeded!${NC}"
+echo "${GREEN}Publishing packages...${NC}"
+./node_modules/.bin/lerna publish
