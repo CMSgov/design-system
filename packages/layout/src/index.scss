@@ -95,7 +95,7 @@ In the example below, the cells span:
 - 1/4 of the row on `lg` viewports, using `ds-l-lg-col--3`
 - 1/3 of the row on `md` viewports, using `ds-l-md-col--4`
 - 1/2 of the row on `sm` viewports, using `ds-l-sm-col--6`
-- The entire width of the row on viewports smaller than the `sm` breakpoint, using `ds-l-col`
+- The entire width of the row on viewports smaller than the `sm` breakpoint, using `ds-l-col--12`
 
 Markup:
 <section class="ds-l-container preview-grid">
