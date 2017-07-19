@@ -46,6 +46,11 @@ function addTopLevelPages(kssSections) {
       reference: 'style',
       sections: [],
       weight: 7
+    }, {
+      header: 'Patterns',
+      reference: 'patterns',
+      sections: [],
+      weight: 40
     }
   ].concat(kssSections));
 }
