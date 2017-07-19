@@ -41,7 +41,7 @@ function removeLineProps(sections) {
       delete section.source.line;
     }
 
-    if (section.sections.length) {
+    if (section.sections) {
       removeLineProps(section.sections);
     }
   });
@@ -66,7 +66,7 @@ function setProps(section) {
     section.parentReference = null;
   }
 
-  section.sections = [];
+  section.sections = section.sections || [];
   return section;
 }
 
@@ -81,7 +81,7 @@ function sort(sections) {
     topLevelPage.sections = _.sortBy(topLevelPage.sections, ['weight', 'header']);
 
     topLevelPage.sections.forEach(subpage => {
-      if (subpage.sections.length) {
+      if (subpage.sections) {
         // Sections nested three levels deep are rendered inline, and should be
         // sorted by their position within the file, rather than alphabetically
         subpage.sections = sortBySourceLine(subpage.sections);

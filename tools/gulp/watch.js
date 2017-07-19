@@ -21,7 +21,7 @@ module.exports = (gulp, shared) => {
     ]);
 
     // HTML/EJS examples
-    gulp.watch(`packages/${packages}/src/**/*.example.{ejs,html}`, [
+    gulp.watch(`packages/**/src/**/*.example.{ejs,html}`, [
       'docs:generate-pages'
     ]);
 
