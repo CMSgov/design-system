@@ -2,31 +2,35 @@
 
 > A shared set of design and development resources for creating accessible and consistent websites. The design system includes things like principles, high-level guidelines (UX conventions, UI code conventions, etc), UI components, documentation, tools, resources, and more.
 
-You're currently at the root of a monorepo which contains multiple projects in the `packages` directory. The root of this project has code related to the development and build process, so it's probably not that useful to you unless you're a contributor.
+## Packages
 
-**This repo includes the following packages. View the README in each of these for additional details.**
+You're currently at the root of a monorepo which contains multiple NPM packages in the `packages/` directory.
 
-### Public packages
+The following packages are in this repo, view the README in each of these for additional details.
+
+### Public packages 👀
 
 These packages are published to NPM and can be installed. View each package's README for installation instructions.
 
 #### [Core](packages/core/)
 
-This directory contains the core CSS and React components for the design system.
+[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core)
 
-```
-npm install @cmsgov/design-system-core
-```
+The core CSS and React components for the design system. Includes the Support package.
+
+#### [Support](packages/support/)
+
+[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-support.svg?label=@cmsgov%2Fdesign-system-support)](https://www.npmjs.com/package/@cmsgov/design-system-support)
+
+Sass variables, mixins, and functions. Included in the Core package.
 
 #### [Layout](packages/layout/)
 
-This directory contains a responsive flexbox grid framework.
+[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-layout.svg?label=@cmsgov%2Fdesign-system-layout)](https://www.npmjs.com/package/@cmsgov/design-system-layout)
 
-```
-npm install @cmsgov/design-system-layout
-```
+A responsive flexbox grid framework.
 
-### Internal packages
+### Internal packages 🔒
 
 These packages are only project dependencies, so they're not published to NPM for other projects to use.
 
