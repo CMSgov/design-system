@@ -59,7 +59,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     reference: reference,
     referenceURI: referenceURI,
     source: {
-      path: filePath.match(/packages\/[a-zA-Z.\-_/]+/)[0] // relative to project directory
+      path: filePath.match(/packages\/[a-z0-9.\-_/]+/i)[0] // relative to project directory
     },
     weight: parseInt(parts.attributes.weight || 0)
   };
