@@ -5,6 +5,13 @@
 function createRoutes(pages, level = 1) {
   if (!pages) return;
 
+  if (level === 1) {
+    // Remove 404 page from Nav
+    pages = pages.filter(page =>
+      !page.referenceURI || !page.referenceURI.match(/404$/)
+    );
+  }
+
   pages = pages.map(page => {
     return {
       defaultCollapsed: true,
