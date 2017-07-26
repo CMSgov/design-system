@@ -131,3 +131,59 @@ $_align-items-values: (
     }
   }
 }
+
+/*
+Flex-wrap
+
+Use the `flex-wrap` utility class on a flexbox container to change how its child elements wrap.
+
+> The CSS `flex-wrap` property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
+
+The classes follow the format: `ds-u-flex-wrap--{value}` and `ds-u-{breakpoint}-flex-wrap--{value}` where `breakpoint` is one of the [responsive prefixes]({{root}}/guidelines/responsive), and `value` is one of:
+
+- `nowrap` (browser default)
+- `wrap`
+- `reverse`
+
+Markup:
+<section>
+<% ['nowrap','wrap','reverse'].forEach(value => { %>
+  <article class="ds-u-flex-wrap--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2">
+    <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #1</div>
+    <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #2</div>
+    <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #3</div>
+  </article>
+<% }) %>
+</section>
+
+Style guide: utilities.flexbox.flex-wrap
+*/
+$_flex-wrap-values: (
+  nowrap: nowrap,
+  wrap: wrap,
+  reverse: wrap-reverse
+);
+
+@each $name in map-keys($_flex-wrap-values) {
+  $value: map-get($_flex-wrap-values, $name);
+  // Example: .ds-u-flex-wrap--start
+  .ds-u-flex-wrap--#{$name} {
+    // Example: flex-wrap: flex-start
+    flex-wrap: $value;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_flex-wrap-values) {
+      $value: map-get($_flex-wrap-values, $name);
+      // Example: .ds-u-lg-flex-wrap--start
+      .ds-u-#{$breakpoint}-flex-wrap--#{$name} {
+        // Example: flex-wrap: flex-start
+        flex-wrap: $value;
+      }
+    }
+  }
+}
