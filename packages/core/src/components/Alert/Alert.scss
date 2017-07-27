@@ -184,7 +184,7 @@ Style guide: components.alert.react
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
 - Alerts should give users adequate time to review and comprehend the provided information. If alerts are displayed on a timer, make sure they are not removed from the page before users have a chance to act.
 - If alerts are being used to notify users of errors or action required, consider including interfaces such as links or buttons as calls to action. These elements will take keyboard focus by default, and provide a hook for client-side scripting.
-- Consider adding a "Close" or "Dismiss" link or button 
+- Consider adding a "Close" or "Dismiss" link or button
 
 ## Learn more
 
