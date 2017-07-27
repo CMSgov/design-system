@@ -8,11 +8,11 @@ describe('processKssSection', () => {
         {
           // These paragraphs need to be separated by a newline in order for
           // the flag processing to work properly.
-          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@status prototype</p>`,
+          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
           deprecated: false,
           experimental: false,
           header: 'Title - `<Component>`',
-          markup: '<% var foo="bar" %><%= foo %> {{root}}',
+          markup: '<h1>Foo</h1>',
           modifiers: [{
             name: '.primary',
             description: 'The primary action',
@@ -38,6 +38,7 @@ describe('processKssSection', () => {
     return promise.then(data => {
       expect(data.reactComponent).toBe('Component');
       expect(data.hideMarkup).toBe(true);
+      expect(data.responsive).toBe(true);
       expect(data.status).toBe('prototype');
       expect(data.description).toBe('<p>Hello world</p>');
     });
@@ -46,12 +47,6 @@ describe('processKssSection', () => {
   it('prepends rootPath', () => {
     return promise.then(data => {
       expect(data.referenceURI).toBe('root/components/button');
-    });
-  });
-
-  it('renders EJS and replaces {{root}}', () => {
-    return promise.then(data => {
-      expect(data.markup).toBe('bar /root');
     });
   });
 
@@ -66,6 +61,4 @@ describe('processKssSection', () => {
       expect(data.sections).toEqual(expect.any(Array));
     });
   });
-
-  it('loads markup from .html file relative to file');
 });

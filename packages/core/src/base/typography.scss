@@ -13,7 +13,7 @@ The design system does not style base HTML text elements (like `h1`, `h2`, `p`, 
 
 See the examples below to see how each of these can be used.
 
-Utility classes can also be used to change type features like [font size](/utilities/font-size), [color](/utilities/color), [weight](/utilities/font-weight), and [style](/utilities/font-style).
+Utility classes can also be used to change type features like [font size]({{root}}/utilities/font-size), [color]({{root}}/utilities/color), [weight]({{root}}/utilities/font-weight), and [style]({{root}}/utilities/font-style).
 
 Markup:
 <p class="ds-text--lead"><strong>Lead paragraph.</strong>  {{lorem-l}}</p>
@@ -162,5 +162,5 @@ Markup:
   {{ lorem-l }}
 </p>
 
-Style guide: base.typography.responsive
+Style guide: style.typography.responsive
 */

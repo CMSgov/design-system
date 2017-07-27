@@ -28,4 +28,15 @@ describe('createRoutes', () => {
     expect(Object.keys(page.items[0]))
       .toEqual(expect.arrayContaining(expectedProps));
   });
+
+  it('removes 404 page', () => {
+    const pages = [
+      mockPage('home'),
+      mockPage('404')
+    ];
+    const routes = createRoutes(pages);
+
+    expect(routes.length).toBe(1);
+    expect(routes[0].url).toBe('/home');
+  });
 });

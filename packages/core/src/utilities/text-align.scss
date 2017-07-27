@@ -30,9 +30,9 @@ Style guide: utilities.text-align
 /*
 Responsive
 
-Use a [responsive prefix](/responsive) to change the text alignment at specific breakpoints.
+@responsive
 
-_Resize your browser to see each breakpoint in action:_
+Use a [responsive prefix]({{root}}/guidelines/responsive) to change the text alignment at specific breakpoints.
 
 Markup:
 <div class="ds-u-sm-text-align--center ds-u-md-text-align--left ds-u-lg-text-align--right">

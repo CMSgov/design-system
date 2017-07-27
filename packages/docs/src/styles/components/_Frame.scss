@@ -6,10 +6,23 @@ $_link-spacer: $spacer-1;
   position: relative;
 }
 
-.frame--loading {
+.frame--loading .frame__parent {
   background: url('#{$image-path}/spinner-gray.svg') center center no-repeat;
   background-size: 30px;
   min-height: 30px + $spacer-2;
+}
+
+.frame--responsive {
+  background-image: url('/#{$image-path}/canvas.png');
+}
+
+.frame--responsive .frame__parent {
+  margin: $spacer-2;
+}
+
+.frame__preview {
+  overflow: hidden;
+  transform-origin: 0% 0%;
 }
 
 .frame__link {

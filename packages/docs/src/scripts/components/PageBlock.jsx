@@ -15,7 +15,7 @@ class PageBlock extends React.PureComponent {
     if (!this.props.markup) return;
     let modifierMarkup;
 
-    if (this.props.modifiers.length) {
+    if (this.props.modifiers) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return (
           <HTMLExample
@@ -24,6 +24,7 @@ class PageBlock extends React.PureComponent {
             markup={this.props.markup}
             modifier={modifier}
             reference={this.props.reference}
+            responsive={this.props.responsive}
           />
         );
       });
@@ -35,6 +36,7 @@ class PageBlock extends React.PureComponent {
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
           reference={this.props.reference}
+          responsive={this.props.responsive}
           showTitle={false}
         />
         {modifierMarkup}
@@ -139,6 +141,7 @@ PageBlock.propTypes = {
   ),
   reactComponent: PropTypes.string,
   reference: PropTypes.string,
+  responsive: PropTypes.bool,
   source: Source.propTypes.source
 };
 

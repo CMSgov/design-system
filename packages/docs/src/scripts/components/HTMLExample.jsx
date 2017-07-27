@@ -50,11 +50,15 @@ class HTMLExample extends React.PureComponent {
       iframeURL += this.props.modifier.name;
     }
 
+    // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
+    iframeURL += '/';
+
     return (
       <div className='markup markup--html'>
         {this.title()}
         <Frame
           onLoad={this.handleFrameLoad}
+          responsive={this.props.responsive}
           src={iframeURL}
           title={`${this.name()} example`}
         />
@@ -73,6 +77,7 @@ HTMLExample.propTypes = {
     name: PropTypes.string.isRequired
   }),
   reference: PropTypes.string,
+  responsive: PropTypes.bool,
   showTitle: PropTypes.bool
 };
 

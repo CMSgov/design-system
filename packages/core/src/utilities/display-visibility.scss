@@ -88,11 +88,11 @@ Style guide: utilities.display-visibility.visibility
 /*
 Responsive
 
-Use a [responsive prefix](/responsive) to show/hide content at specific breakpoints.
+@responsive
+
+Use a [responsive prefix]({{root}}/guidelines/responsive) to show/hide content at specific breakpoints.
 
 A responsive prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
-
-_Resize your browser to see each breakpoint in action:_
 
 Markup:
 <% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
