@@ -186,7 +186,6 @@ Style guide: components.tabs.react-tab
   - For tabs: `role`, `aria-selected`, `aria-controls`
   - For the tabs list parent: `role`, `aria-label`
   - For a tab panel: `role`, `aria-labelledby`
-- Pasted URLs should load pages with the correct tab selected. If my URL hash fragment is #second, I'd expect to see the #second tab open when I paste that URL. If there is no fragment appended to the URL, the first tab should be open by default.
 - Tabs should have at least two visual cues denoting the selected tab from non-selected tab(s). Users with color-blindness or low vision may not be able to rely on color only. Good examples might be:
   - Font weight: Bold for selected, regular for non-selected
   - Heavier border for the selected tab
