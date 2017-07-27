@@ -10,13 +10,13 @@ Lists organize written information for users.
 @uswds https://standards.usa.gov/components/typography/#lists
 
 Markup:
-<h6 class="ds-h6">Unordered list</h6>
-<ul class="ds-c-list {{modifier}}">
+<h6 class="ds-h6" id="unordered-list-id">Unordered list title</h6>
+<ul class="ds-c-list {{modifier}}" aria-labelledby="unordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
 </ul>
-<h6 class="ds-h6">Ordered list</h6>
-<ol class="ds-c-list {{modifier}}">
+<h6 class="ds-h6" id="ordered-list-id">Ordered list title</h6>
+<ol class="ds-c-list {{modifier}}" aria-labelledby="ordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
 </ol>
@@ -60,6 +60,18 @@ Style guide: components.list
 
 - Use sentence case and begin lists with a capital letter.
 - Use punctuation appropriate to the text. Do not leave sentences without periods.
+
+## Accessibility
+- When using a header with a list, consider adding an ID attribute to the header, and an `aria-labelledby="header-id"` attribute to the `<ul>` or `<ol>` tag. This causes screen readers to announce the header text when users navigate to the list.
+<br/>
+<br/>
+```html
+<h6 id="header-id-list">List name</h6>
+<ul aria-labelledby="header-id=list">
+<li>Item one</li>
+<li>Item two</li>
+</ul>
+```
 
 ## Learn more
 
