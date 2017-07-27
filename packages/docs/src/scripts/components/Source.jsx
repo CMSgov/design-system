@@ -3,7 +3,8 @@ import React from 'react';
 import reactComponentPath from '../shared/reactComponentPath';
 
 const Source = props => {
-  if (props.reactComponent || props.source) {
+  // Only show the source if this is for a React or CSS component
+  if (props.reactComponent || (props.source && !props.source.path.match(/\.md$/))) {
     let packageName = props.source.path.match(/packages\/([a-z-_]+)\//i)[1];
     packageName = `@cmsgov/design-system-${packageName}`;
 
@@ -19,7 +20,7 @@ const Source = props => {
 Source.propTypes = {
   reactComponent: PropTypes.string,
   source: PropTypes.shape({
-    filename: PropTypes.string.isRequired,
+    filename: PropTypes.string,
     path: PropTypes.string.isRequired
   })
 };

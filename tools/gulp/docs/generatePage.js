@@ -73,7 +73,7 @@ function generateDocPage(routes, page, rootPath) {
 function generateMarkupPages(page, rootPath) {
   return generateMarkupPage(page, null, rootPath)
     .then(() => {
-      if (page.modifiers.length) {
+      if (page.modifiers) {
         return page.modifiers.map(modifier =>
           generateMarkupPage(page, modifier, rootPath)
         );

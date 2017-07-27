@@ -78,6 +78,25 @@ describe('nestSections', () => {
     expect(section.sections.length).toBe(0);
   });
 
+  it('preserves existing sections prop', () => {
+    sections.push({
+      header: 'nested',
+      reference: 'nested',
+      sections: [{
+        header: 'nested child'
+      }],
+      weight: 0
+    });
+
+    const nestedSections = nestSections(sections);
+    const section = _.find(nestedSections, {
+      reference: 'nested'
+    });
+
+    expect(section.sections.length).toBe(1);
+    expect(section.sections[0].header).toBe('nested child');
+  });
+
   it('nests children within parent section', () => {
     const nestedSections = nestSections(sections);
     const components = _.find(nestedSections, {

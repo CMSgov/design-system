@@ -4,6 +4,7 @@
 
 // Libraries
 @import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system-layout/src/index';
 
 // Sass settings
 @import 'settings/index';
@@ -22,8 +23,9 @@
 @import 'layouts/sidebar';
 
 // Components - reusable chunks of UI
+@import 'components/BreakpointToggles';
 @import 'components/details';
-@import 'components/frame';
+@import 'components/Frame';
 
 // Utilities
 @import 'utilities/colors';

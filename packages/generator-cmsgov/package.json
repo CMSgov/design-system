@@ -1,6 +1,7 @@
 {
   "name": "generator-cmsgov",
-  "version": "1.0.0",
+  "private": true,
+  "version": "1.0.0-rc.2",
   "description": "Yeoman generator for automating the creation of a new design system component",
   "files": [
     "generators"

@@ -42,9 +42,9 @@ Style guide: utilities.float
 /*
 Responsive
 
-Use a [responsive prefix](/responsive) to change how an element is floated at specific breakpoints.
+@responsive
 
-_Resize your browser to see each breakpoint in action:_
+Use a [responsive prefix]({{root}}/guidelines/responsive) to change how an element is floated at specific breakpoints.
 
 Markup:
 <div class="ds-u-clearfix">

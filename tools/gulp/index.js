@@ -23,7 +23,6 @@ module.exports = (gulp) => {
 
   [
     'build',
-    'bumpVersion',
     'docs/docs',
     'fonts',
     'lint',

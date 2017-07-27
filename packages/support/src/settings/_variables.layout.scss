@@ -36,6 +36,8 @@ $spacer-7: nth($spacers, 8) !default; // 56px
 $spacer-half: $spacer-1 / 2;          // 4px
 
 // Breakpoint widths
+// INTERNAL: If these values change, the values used for the responsive previews
+// in the documentation should also change.
 $width-xs: 0 !default;
 $width-sm: 544px !default;
 $width-md: 768px !default;
