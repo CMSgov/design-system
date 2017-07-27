@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Example: components.text-field</title>
+  <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+</head>
+<body class="ds-base"><label class="ds-c-label ds-u-margin-top--0" for="input-firstname">
+  First name
+  <span class="ds-c-field__hint">Helpful hint text</span>
+</label>
+<input class="ds-c-field" id="input-firstname" name="firstname" type="text">
+<label class="ds-c-label" for="input-lastname">
+  <span class="ds-u-font-weight--bold">Last name</span>
+  <span class="ds-c-field__hint ds-u-color--error" role="alert">
+    Please enter your last name
+  </span>
+  <span class="ds-c-field__hint">Helpful hint text</span>
+</label>
+<input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" />
+<label class="ds-c-label" for="input-username">Username</label>
+<input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
+<label class="ds-c-label" for="input-bio">Bio</label>
+<textarea class="ds-c-field" id="input-bio" name="bio" rows="5"></textarea></body>
+</html>
