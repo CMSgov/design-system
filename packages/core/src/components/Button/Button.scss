@@ -130,7 +130,7 @@ Style guide: components.button
 ### Disabled button
 
 Markup:
-<button class="ds-c-button ds-c-button--disabled">Button</button>
+<button disabled class="ds-c-button ds-c-button--disabled">Button</button>
 <input disabled type="submit" class="ds-c-button" />
 
 Style guide: components.button.disabled
@@ -163,7 +163,7 @@ Markup:
   <button class="ds-c-button ds-c-button--primary">Button</button>
   <button class="ds-c-button ds-c-button--danger">Button</button>
   <button class="ds-c-button ds-c-button--success">Button</button>
-  <button class="ds-c-button ds-c-button--disabled-inverse">Button</button>
+  <button disabled class="ds-c-button ds-c-button--disabled-inverse">Button</button>
 </div>
 
 Style guide: components.button.inverse
@@ -300,6 +300,7 @@ Style guide: components.button.react
 - Buttons should display a visible focus state when users tab to them.
 - Create a button with a `button` or `a` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
 - When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
+- Dimmed or unavailable buttons should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
 
 ## Learn more
 

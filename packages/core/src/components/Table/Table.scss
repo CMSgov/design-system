@@ -13,9 +13,9 @@ Markup:
 <table class="ds-c-table {{modifier}}">
   <thead>
     <tr>
-      <th>Name</th>
-      <th class="ds-u-text-align--right">Rate</th>
-      <th>Favorite fruit</th>
+      <th scope="col">Name</th>
+      <th class="ds-u-text-align--right" scope="col">Rate</th>
+      <th scope="col">Favorite fruit</th>
     </tr>
   </thead>
   <tbody>
