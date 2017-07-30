@@ -7,7 +7,7 @@ const Header = () => {
     <header className='ds-base--inverse ds-u-padding--3'>
       <h1 className='ds-h3'>
         <a href={rootPath} className='c-header__title' title='Home'>
-          CMSGov Design System
+          Design System
         </a>
       </h1>
     </header>
