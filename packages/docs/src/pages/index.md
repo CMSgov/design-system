@@ -9,7 +9,7 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/), 
 
 <a href="{{root}}/getting-started" class="ds-c-button ds-c-button--primary">Learn how to get started</a>
 
-## U.S. Web Design Standards
+## Extending U.S. Web Design Standards
 
 The design system is a variation and extension of the [U.S. Web Design Standards](https://standards.usa.gov). If you're familiar with the Standards, then the visual style of the design system should look familiar. This is deliberate and part of our goal to promote consistency and accessibility across federal government websites, a goal we share with the Standards.
 
