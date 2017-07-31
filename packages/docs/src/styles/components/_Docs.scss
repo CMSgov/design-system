@@ -1,0 +1,44 @@
+$menu-max-width: 250px;
+$menu-transition: transform 0.3s ease-in-out;
+
+.docs {
+  width: 100%;
+  overflow: hidden;
+}
+
+.docs__toggle {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+  z-index: 1100;
+}
+
+.docs__sidebar {
+  $border-style: 1px solid $border-color;
+  width: 100%;
+  height: calc(100% - 46px);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  overflow-y: scroll;
+  transition: $menu-transition;
+  transform: translate3d(0, 100%, 0);
+
+  @media (min-width: $width-md) {
+    border-right: $border-style;
+    position: static;
+    top: auto;
+    right: auto;
+    height: auto;
+    width: auto;
+    max-width: $menu-max-width;
+    transform: translate3d(0, 0, 0);
+    transition: none;
+  }
+
+  .docs--menu-open & {
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -1,27 +1,53 @@
 /**
  * This is main template file for the documentation site.
  */
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Page from './components/Page';
-import PropTypes from 'prop-types';
-import React from 'react';
+import Header from "./components/Header";
+import Nav from "./components/Nav";
+import Page from "./components/Page";
+import PropTypes from "prop-types";
+import React from "react";
+import classNames from "classnames";
 
-const Docs = (props) => {
-  return (
-    <div>
-      <Header />
-      <div className='ds-l-row ds-u-flex-wrap--nowrap ds-u-margin--0'>
-        <nav className='ds-l-md-col--3 ds-u-border-right--1 ds-u-padding--2 l-sidebar'>
-          <Nav items={props.routes} selectedId={props.page.referenceURI} />
-        </nav>
-        <main className='ds-l-md-col ds-u-padding--0'>
-          <Page {...props.page} />
-        </main>
+class Docs extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuOpen: false
+    };
+  }
+
+  closeMenu() {
+    this.setState({ menuOpen: false });
+  }
+
+  toggleMenu() {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  render() {
+    const { routes, page } = this.props;
+    const { menuOpen } = this.state;
+    return (
+      <div className={classNames("docs", { "docs--menu-open": menuOpen })}>
+        <Header />
+        <div className="ds-l-row ds-u-flex-wrap--nowrap ds-u-margin--0">
+          <nav className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white docs__sidebar">
+            <Nav items={routes} selectedId={page.referenceURI} />
+          </nav>
+          <main className="ds-l-md-col ds-u-padding--0 docs__main">
+            <Page {...page} />
+          </main>
+        </div>
+        <button
+          className="ds-c-button ds-u-fill--background-inverse ds-u-color--base-inverse ds-c-button--transparent ds-u-md-display--none docs__toggle"
+          onClick={() => this.toggleMenu()}
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Docs.propTypes = {
   page: PropTypes.shape(Page.propTypes).isRequired,
