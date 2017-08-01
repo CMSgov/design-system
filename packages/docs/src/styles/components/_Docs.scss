@@ -1,41 +1,41 @@
-$menu-max-width: 250px;
-$menu-transition: transform 0.3s ease-in-out;
-
-.docs {
+.docs--locked {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  overflow: hidden;
 }
 
 .docs__toggle {
-  position: fixed;
+  border-radius: 0;
   bottom: 0;
   left: 0;
+  position: fixed;
   width: 100%;
-  border-radius: 0;
   z-index: 1100;
 }
 
 .docs__sidebar {
-  $border-style: 1px solid $border-color;
-  width: 100%;
+  $menu-max-width: 250px;
+  $menu-transition: transform $animation-speed-2 ease-in-out;
   height: calc(100% - 46px);
+  overflow-y: auto;
   position: fixed;
   top: 0;
-  z-index: 1000;
-  overflow-y: scroll;
-  transition: $menu-transition;
   transform: translate3d(0, 100%, 0);
+  transition: $menu-transition;
+  width: 100%;
+  z-index: 1000;
 
   @media (min-width: $width-md) {
-    border-right: $border-style;
-    position: static;
-    top: auto;
-    right: auto;
+    border-right: 1px solid $border-color;
     height: auto;
-    width: auto;
     max-width: $menu-max-width;
+    position: static;
+    right: auto;
+    top: auto;
     transform: translate3d(0, 0, 0);
     transition: none;
+    width: auto;
   }
 
   .docs--menu-open & {

@@ -1,12 +1,12 @@
 /**
  * This is main template file for the documentation site.
  */
-import Header from "./components/Header";
-import Nav from "./components/Nav";
-import Page from "./components/Page";
-import PropTypes from "prop-types";
-import React from "react";
-import classNames from "classnames";
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Page from './components/Page';
+import PropTypes from 'prop-types';
+import React from 'react';
+import classNames from 'classnames';
 
 class Docs extends React.PureComponent {
   constructor(props) {
@@ -14,10 +14,6 @@ class Docs extends React.PureComponent {
     this.state = {
       menuOpen: false
     };
-  }
-
-  closeMenu() {
-    this.setState({ menuOpen: false });
   }
 
   toggleMenu() {
@@ -28,21 +24,21 @@ class Docs extends React.PureComponent {
     const { routes, page } = this.props;
     const { menuOpen } = this.state;
     return (
-      <div className={classNames("docs", { "docs--menu-open": menuOpen })}>
+      <div className={classNames('docs', { 'docs--menu-open': menuOpen, 'docs--locked': menuOpen })}>
         <Header />
-        <div className="ds-l-row ds-u-flex-wrap--nowrap ds-u-margin--0">
-          <nav className="ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white docs__sidebar">
+        <div className='ds-l-row ds-u-flex-wrap--nowrap ds-u-margin--0'>
+          <nav className='ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white docs__sidebar'>
             <Nav items={routes} selectedId={page.referenceURI} />
           </nav>
-          <main className="ds-l-md-col ds-u-padding--0 docs__main">
+          <main className='ds-l-md-col ds-u-padding--0 docs__main'>
             <Page {...page} />
           </main>
         </div>
         <button
-          className="ds-c-button ds-u-fill--background-inverse ds-u-color--base-inverse ds-c-button--transparent ds-u-md-display--none docs__toggle"
+          className='ds-c-button ds-u-fill--background-inverse ds-u-color--base-inverse ds-c-button--transparent ds-u-md-display--none docs__toggle'
           onClick={() => this.toggleMenu()}
         >
-          {menuOpen ? "Close" : "Menu"}
+          {menuOpen ? 'Close' : 'Menu'}
         </button>
       </div>
     );
