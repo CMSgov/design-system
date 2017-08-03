@@ -17,7 +17,14 @@ class Docs extends React.PureComponent {
   }
 
   toggleMenu() {
-    this.setState({ menuOpen: !this.state.menuOpen });
+    if (!this.state.menuOpen) { this.scrollY = window.scrollY; }
+
+    this.setState(
+      { menuOpen: !this.state.menuOpen },
+      () => {
+        if (!this.state.menuOpen) { window.scrollTo(0, this.scrollY); }
+      }
+    );
   }
 
   render() {
