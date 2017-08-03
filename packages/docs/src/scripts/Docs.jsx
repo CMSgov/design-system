@@ -33,7 +33,7 @@ class Docs extends React.PureComponent {
     return (
       <div className={classNames('docs', { 'docs--menu-open': menuOpen, 'docs--locked': menuOpen })}>
         <Header />
-        <div className='ds-l-row ds-u-flex-wrap--nowrap ds-u-margin--0'>
+        <div className='ds-l-row ds-u-margin--0'>
           <nav className='ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white docs__sidebar'>
             <Nav items={routes} selectedId={page.referenceURI} />
           </nav>
