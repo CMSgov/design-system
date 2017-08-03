@@ -54,10 +54,10 @@ class Page extends React.PureComponent {
       return (
         <Tabs
           defaultSelectedId={this.defaultSelectedTabId()}
-          tablistClassName='ds-u-padding-left--6 ds-u-fill--gray-lightest'
+          tablistClassName='ds-u-padding-left--3 ds-u-sm-padding-left--6 ds-u-fill--gray-lightest'
         >
           <TabPanel
-            className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+            className='ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0'
             id='usage'
             tab='Usage'
           >

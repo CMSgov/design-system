@@ -12,9 +12,20 @@
   to { position: fixed; }
 }
 
+.docs__main {
+  // Setting left + right padding to 0 clears the padding applied to the element
+  // by the grid column class
+  padding: 0 0 $spacer-4;
+
+  @media (min-width: $breakpoint-mobile-nav) {
+    padding-bottom: $spacer-4 + $menu-toggle-height;
+  }
+}
+
 .docs__toggle {
   border-radius: 0;
   bottom: 0;
+  height: $menu-toggle-height;
   left: 0;
   position: fixed;
   width: 100%;
@@ -23,17 +34,17 @@
 
 .docs__sidebar {
   $menu-max-width: 250px;
-  $menu-transition: transform $animation-speed-2 ease-in-out;
-  height: calc(100% - 46px);
+  $menu-transition: transform $animation-speed-1 ease-in-out;
+  bottom: $menu-toggle-height;
   overflow-y: auto;
   position: fixed;
   top: 0;
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 120%, 0);
   transition: $menu-transition;
   width: 100%;
   z-index: 1000;
 
-  @media (min-width: $width-md) {
+  @media (min-width: $breakpoint-mobile-nav) {
     border-right: 1px solid $border-color;
     height: auto;
     max-width: $menu-max-width;
