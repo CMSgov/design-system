@@ -32,13 +32,11 @@ function isParentOfSelectedChild(items, selectedId) {
 
 const Nav = props => {
   return (
-    <nav className='l-col-3 l-sidebar ds-u-border-right--1 ds-u-padding--2'>
-      <VerticalNav
-        className='c-nav__list'
-        items={expandSelectedItems(props.items, props.selectedId)}
-        selectedId={props.selectedId}
-      />
-    </nav>
+    <VerticalNav
+      className='c-nav__list'
+      items={expandSelectedItems(props.items, props.selectedId)}
+      selectedId={props.selectedId}
+    />
   );
 };
 
