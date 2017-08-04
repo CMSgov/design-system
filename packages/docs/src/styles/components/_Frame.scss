@@ -13,7 +13,7 @@ $_link-spacer: $spacer-1;
 }
 
 .frame--responsive {
-  background-image: url('/#{$image-path}/canvas.png');
+  background-image: url('#{$image-path}/canvas.png');
 }
 
 .frame--responsive .frame__parent {
@@ -27,7 +27,7 @@ $_link-spacer: $spacer-1;
 
 .frame__link {
   background-color: $color-gray-lightest;
-  background-image: url('/#{$image-path}/new-tab.svg');
+  background-image: url('#{$image-path}/new-tab.svg');
   background-position: center right $_link-spacer;
   background-repeat: no-repeat;
   background-size: $_link-font-size;
@@ -41,10 +41,10 @@ $_link-spacer: $spacer-1;
 
   &:hover,
   &:focus {
-    background-image: url('/#{$image-path}/new-tab--hover.svg');
+    background-image: url('#{$image-path}/new-tab--hover.svg');
   }
 
   &:active {
-    background-image: url('/#{$image-path}/new-tab--active.svg');
+    background-image: url('#{$image-path}/new-tab--active.svg');
   }
 }
