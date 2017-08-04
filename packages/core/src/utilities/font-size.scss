@@ -10,7 +10,10 @@ Use the font size utility to make the text larger or smaller.
 
 Markup:
 <% ['display','title','h1','h2','h3', 'h4', 'lead','base','small'].forEach(size => { -%>
-<p class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin--0 ds-u-truncate">{{lorem-s}}</p>
+<article class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin-bottom--2 ds-u-truncate">
+  <h1 class="ds-h6"><%= size %></h1>
+  {{lorem-s}}
+</article>
 <% }) -%>
 
 Style guide: utilities.font-size
