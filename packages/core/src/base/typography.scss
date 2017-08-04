@@ -4,7 +4,7 @@
 /*
 Typography
 
-The design system does not style base HTML text elements (like `h1`, `h2`, `p`, etc) and you should instead use one of the base class names to apply type styling. The base typography classes are:
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) and you should instead use one of the base class names to apply type styling. The base typography classes are:
 
 - `ds-display`
 - `ds-title`
@@ -14,6 +14,8 @@ The design system does not style base HTML text elements (like `h1`, `h2`, `p`, 
 See the examples below to see how each of these can be used.
 
 Utility classes can also be used to change type features like [font size]({{root}}/utilities/font-size), [color]({{root}}/utilities/color), [weight]({{root}}/utilities/font-weight), and [style]({{root}}/utilities/font-style).
+
+Note: The only base HTML element the design system applies styling to is the `<a>` element. To prevent this, you can override the `$ds-include-base-html-rulesets` Sass variable and set it to `false`.
 
 Markup:
 <p class="ds-text--lead"><strong>Lead paragraph.</strong>  {{lorem-l}}</p>
@@ -37,6 +39,27 @@ Markup:
 
 Style guide: style.typography
 */
+
+@if $ds-include-base-html-rulesets {
+  // <a> is the only base HTML element in the design system that
+  // has a style declaration. In all other cases, styles are applied using a
+  // namespaced class name. This selector isn't scoped under .ds-base, since that
+  // would cause the selector's specificity to be higher than most other component
+  // selectors (i.e. ds-c-button), necessitating overly specific selectors anytime
+  // a developer wanted to change an anchor's color property.
+  a {
+    color: $color-primary;
+
+    &:hover,
+    &:focus {
+      color: $color-primary-darker;
+    }
+
+    &:active {
+      color: $color-primary-darkest;
+    }
+  }
+}
 
 // Titles and headings
 .ds-display,
