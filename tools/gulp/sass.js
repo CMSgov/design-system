@@ -50,7 +50,7 @@ module.exports = (gulp, shared) => {
       // Update url() values to be relative to our rootPath
       if (shared.rootPath !== '') {
         postcssPlugins.push(postcssUrl({
-          url: asset => `/${shared.rootPath}${asset.url}`
+          url: asset => path.join('/', shared.rootPath, asset.url)
         }));
       }
     } else {
