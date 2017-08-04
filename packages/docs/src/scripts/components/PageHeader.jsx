@@ -35,10 +35,10 @@ class PageHeader extends React.PureComponent {
 
   render() {
     return (
-      <heading className='ds-u-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
+      <heading className='ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
         {this.statusPill()}
         <h1
-          className='ds-display'
+          className='ds-u-font-size--h1 ds-u-sm-font-size--title ds-u-md-font-size--display ds-display'
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
         />
