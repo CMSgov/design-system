@@ -4,20 +4,9 @@
 /*
 Background color
 
-Use the background color utility to change the default background color of an element. Each background color group may have a `dark`, `darker`, `darkest`, `light`, `lighter` and `lightest` shade modifier.
-
-Color groups include:
-- **primary** - The dominant brand color, used for things like links and call-to-actions
-- **primary-alt** - A variation of the dominant brand color
-- **secondary** - A secondary brand color that can be used for accents and call-to-action variations.
-- **tertiary** - Complementary accent colors
-- **state** - State indicator accents (success, warning, error)
+Use the background color utility to change the default background color of an element.
 
 **Format**: `ds-u-fill--[COLOR NAME]-[SHADE]`
-
-## Theming
-
-Each background (and text color) utility class utilizes a Sass color variable which can be overridden. The swatches below include the utility class name as well as the Sass variable name.
 
 @hide-markup
 
@@ -25,27 +14,24 @@ Markup:
 <% var groups = [
   ['primary', 'primary-darker', 'primary-darkest'],
   ['primary-alt', 'primary-alt-dark', 'primary-alt-darkest', 'primary-alt-light', 'primary-alt-lightest'],
-  ['secondary', 'secondary-dark', 'secondary-darkest', 'secondary-light', 'secondary-lightest'],
   ['gray', 'gray-dark', 'gray-light', 'gray-lighter', 'gray-lightest'],
   ['gold', 'gold-light', 'gold-lighter', 'gold-lightest'],
   ['warn', 'warn-light', 'warn-lighter', 'warn-lightest'],
   ['green', 'green-light', 'green-lighter', 'green-lightest'],
   ['success', 'success-light', 'success-lighter', 'success-lightest'],
+  ['secondary', 'secondary-dark', 'secondary-darkest', 'secondary-light', 'secondary-lightest'],
   ['error', 'error-dark', 'error-darkest', 'error-light', 'error-lighter', 'error-lightest'],
-  ['base', 'background', 'background-inverse', 'white', 'transparent']
+  ['base', 'white', 'background', 'background-inverse', 'transparent']
 ]; -%>
 <% groups.forEach(group => { -%>
-<div class="d-u-margin-bottom-2 ds-u-clearfix">
 <% group.forEach(color => { -%>
   <article class="c-swatch ds-u-margin-bottom--2">
-    <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
+    <div class="c-swatch__preview c-swatch__preview--condensed ds-u-fill--<%= color %>"></div>
     <code class="c-swatch__label ds-u-display--block ds-u-margin--0 ds-u-leading--lead">
       .ds-u-fill--<%= color %>
-      <% if (color !== 'transparent') { %><br />$color-<%= color %><% } %>
     </code>
   </article>
 <% }) -%>
-</div>
 <% }) %>
 
 Style guide: utilities.background-color
