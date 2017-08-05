@@ -20,14 +20,13 @@
 // Layouts - Structural patterns
 @import 'layouts/content';
 @import 'layouts/grid';
-@import 'layouts/sidebar';
 
 // Components - reusable chunks of UI
 @import 'components/BreakpointToggles';
 @import 'components/details';
-@import 'components/Header';
+@import 'components/Docs';
 @import 'components/Frame';
+@import 'components/Header';
 
 // Utilities
 @import 'utilities/colors';
-
