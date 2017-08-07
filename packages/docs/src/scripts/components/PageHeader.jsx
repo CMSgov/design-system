@@ -7,9 +7,9 @@ class PageHeader extends React.PureComponent {
   uswdsLink() {
     if (this.props.uswds) {
       return (
-        <p>
-          <a href={this.props.uswds}>US Web Design Standard</a>
-        </p>
+        <a href={this.props.uswds}>
+          View related U.S. Web Design Standard
+        </a>
       );
     }
   }
@@ -43,11 +43,14 @@ class PageHeader extends React.PureComponent {
           id={this.props.reference}
         />
         <div className='ds-u-clearfix' />
-        <Source
-          reactComponent={this.props.reactComponent}
-          source={this.props.source}
-        />
-        {this.uswdsLink()}
+        <div className='ds-u-font-size--small'>
+          <Source
+            reactComponent={this.props.reactComponent}
+            source={this.props.source}
+          />
+          {this.props.uswds && <span className='ds-u-margin-x--1'>&middot;</span>}
+          {this.uswdsLink()}
+        </div>
       </heading>
     );
   }
