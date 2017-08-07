@@ -1,0 +1,19 @@
+.c-header__title {
+  color: $color-white;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-white;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: $focus-shadow-inverse;
+  }
+}

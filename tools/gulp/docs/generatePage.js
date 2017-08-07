@@ -49,10 +49,11 @@ function generateDocPage(routes, page, rootPath) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <title>${page.header} - CMSGov Design System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${page.header} - CMS.gov Design System</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/${rootPath}public/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
 </head>
 <body class="ds-base">
