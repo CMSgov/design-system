@@ -70,7 +70,7 @@ If you're already using Sass to style your site, another way to include the desi
 
 To override any of the design system's Sass variables, include the variable definitions _before_ the line where the design system is imported.
 
-[View an example](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/index.scss)
 
 #### Applying styling
 
@@ -116,7 +116,7 @@ Components can also be imported using the shorter syntax below.
 import {Button} from '@cmsgov/design-system-core';
 ```
 
-[View an example](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/index.js)
 
 ## Examples
 
