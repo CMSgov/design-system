@@ -5,16 +5,10 @@ weight: 0
 
 ## Installation
 
- We suggest using a package manager like NPM or Yarn to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.
+ We suggest using a package manager like NPM to install the design system package if you're working on a real world project. This way you can easily update the package when there's a new release.
 
 ```
 npm install --save @cmsgov/design-system-core
-```
-
-or if you're using Yarn:
-
-```
-yarn add @cmsgov/design-system-core
 ```
 
 You can also download a .zip of the design system directly from our [GitHub repo](https://github.com/CMSgov/design-system/releases).
@@ -87,7 +81,7 @@ Once your page is loading the design system's CSS, you can then begin adding its
 </html>
 ```
 
-<a href="{{root}}/guidelines/code-conventions" class="ds-c-button">Learn more about the naming conventions</a>
+<a href="{{root}}/guidelines/code-conventions" class="ds-c-button">Learn about the naming conventions</a>
 
 ### React
 
