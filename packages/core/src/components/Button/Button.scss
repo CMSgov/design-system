@@ -128,7 +128,8 @@ Style guide: components.button
 ### Disabled button
 
 Markup:
-<button disabled class="ds-c-button ds-c-button--disabled">Button</button>
+<a href="http://example.com" class="ds-c-button ds-c-button--disabled">Link</a>
+<button disabled class="ds-c-button">Button</button>
 <input disabled type="submit" class="ds-c-button" />
 
 Style guide: components.button.disabled
