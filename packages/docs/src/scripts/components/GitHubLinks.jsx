@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import packageInfo from '../../../package.json';
@@ -20,6 +21,11 @@ const GitHubLinks = (props) => {
       <a href={githubUrl} className={githubBtnClassName}>View on Github</a>
     </div>
   );
+};
+
+GitHubLinks.propTypes = {
+  inverse: PropTypes.bool,
+  vertical: PropTypes.bool
 };
 
 export default GitHubLinks;

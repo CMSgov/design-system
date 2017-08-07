@@ -1,10 +1,10 @@
 /**
  * This is main template file for the documentation site.
  */
+import GitHubLinks from './components/GitHubLinks';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Page from './components/Page';
-import GitHubLinks from './components/GitHubLinks';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -37,7 +37,7 @@ class Docs extends React.PureComponent {
         <div className='ds-l-row ds-u-margin--0'>
           <nav className='ds-l-md-col--3 ds-u-padding--2 ds-u-fill--white docs__sidebar'>
             <Nav items={routes} selectedId={page.referenceURI} />
-            <GitHubLinks className='ds-u-md-display--none ds-u-margin-top--2' vertical={true} />
+            <GitHubLinks className='ds-u-md-display--none ds-u-margin-top--2' vertical />
           </nav>
           <main className='ds-l-md-col ds-u-padding--0 docs__main'>
             <Page {...page} />
