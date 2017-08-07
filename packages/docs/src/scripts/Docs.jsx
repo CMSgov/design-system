@@ -39,7 +39,7 @@ class Docs extends React.PureComponent {
             <Nav items={routes} selectedId={page.referenceURI} />
             <GitHubLinks className='ds-u-md-display--none ds-u-margin-top--2' vertical />
           </nav>
-          <main className='ds-l-md-col ds-u-padding--0 docs__main'>
+          <main className='ds-l-md-col docs__main'>
             <Page {...page} />
           </main>
         </div>
