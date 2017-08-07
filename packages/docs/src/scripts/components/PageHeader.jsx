@@ -14,12 +14,11 @@ class PageHeader extends React.PureComponent {
     }
   }
 
-  statusPill() {
+  statusBadge() {
     if (this.props.status) {
       const classes = classNames(
-        'ds-c-badge ds-u-float--right ds-u-margin-top--2 ds-u-text-transform--capitalize',
+        'ds-c-badge ds-u-margin-right--1 ds-u-text-transform--capitalize',
         {
-          'ds-c-badge--success': this.props.status === 'recommended',
           'ds-c-badge--warn': this.props.status === 'beta',
           'ds-c-badge--alert': this.props.status === 'alpha'
         }
@@ -36,7 +35,6 @@ class PageHeader extends React.PureComponent {
   render() {
     return (
       <heading className='ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
-        {this.statusPill()}
         <h1
           className='ds-u-font-size--h1 ds-u-sm-font-size--title ds-u-md-font-size--display ds-display'
           dangerouslySetInnerHTML={{ __html: this.props.header }}
@@ -44,6 +42,7 @@ class PageHeader extends React.PureComponent {
         />
         <div className='ds-u-clearfix' />
         <div className='ds-u-font-size--small'>
+          {this.statusBadge()}
           <Source
             reactComponent={this.props.reactComponent}
             source={this.props.source}
