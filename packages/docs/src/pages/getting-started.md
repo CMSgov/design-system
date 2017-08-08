@@ -76,15 +76,17 @@ For example:
 
 If you're already using Sass to style your site, another way to include the design system's styles is by importing its un-minified Sass file.
 
-```css
-@import 'node_modules/@cmsgov/design-system-core/src/index';
-```
+1. First, make sure your build system is configured so that the `node_modules` directory is in the list of Sass [`includePaths`](https://github.com/sass/node-sass#includepaths).
+2. Add the following to your Sass file:
+  ```css
+  @import '@cmsgov/design-system-core/src/index';
+  ```
 
 To override any of the design system's Sass variables, include the variable definitions _before_ the line where the design system is imported. For example:
 
 ```css
 @import 'variable-overrides';
-@import 'node_modules/@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system-core/src/index';
 ```
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/index.scss)
