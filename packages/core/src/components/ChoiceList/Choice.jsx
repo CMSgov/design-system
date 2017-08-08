@@ -50,9 +50,8 @@ Choice.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * Setting this prop will render a read-only field and require an `onChange`
-   * event handler if you'd want to check its checked stated. Use `defaultChecked`
-   * if you want the field to be mutable.
+   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`
    */
   checked: PropTypes.bool,
   /**

@@ -82,7 +82,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Hint text
+   *	Additional hint text to display
    */
   hint: PropTypes.node,
   /**
@@ -90,7 +90,7 @@ TextField.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * The label for the entire list of choices
+   * Label for the input
    */
   label: PropTypes.node.isRequired,
   /**
