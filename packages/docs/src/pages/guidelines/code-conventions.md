@@ -3,10 +3,10 @@ title: Code conventions
 ---
 
 <p class="ds-text--lead">
-  The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity and resilience in exchange. Keeping CSS legible and scalable means sacrificing a shorter syntax.
+  The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity, predictability, and legibility in exchange.
 </p>
 
-## CSS naming convention
+## CSS class naming convention
 
 <img src="{{root}}/public/images/naming-convention.svg" class="ds-u-border--1" />
 
