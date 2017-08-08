@@ -73,7 +73,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * The `input` `name` attribute
+   * The `input` field's `name` attribute
    */
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,

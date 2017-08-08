@@ -195,6 +195,9 @@ ChoiceList.propTypes = {
    * in a list of checkbox fields to be rendered.
    */
   multiple: PropTypes.bool,
+  /**
+   * The field's `name` attribute
+   */
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
