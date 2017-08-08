@@ -13,7 +13,7 @@ Use buttons to signal actions.
 .ds-c-button--success - Indicates a positive or successful action
 
 Markup:
-<a href="http://example.com" class="ds-c-button {{modifier}}">Link</a>
+<a href="javascript:void(0);" class="ds-c-button {{modifier}}">Link</a>
 <button type="button" class="ds-c-button {{modifier}} ds-c-button--small">Button</button>
 <button type="button" class="ds-c-button {{modifier}}">Button</button>
 <button type="button" class="ds-c-button {{modifier}} ds-c-button--big">Button</button>
@@ -128,7 +128,7 @@ Style guide: components.button
 ### Disabled button
 
 Markup:
-<a href="http://example.com" class="ds-c-button ds-c-button--disabled">Link</a>
+<a href="javascript:void(0);" class="ds-c-button ds-c-button--disabled">Link</a>
 <button disabled class="ds-c-button">Button</button>
 <input disabled type="submit" class="ds-c-button" />
 

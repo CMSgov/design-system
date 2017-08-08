@@ -9,7 +9,7 @@ export default function() {
       items={[
         {
           label: 'Home',
-          url: 'http://example.com'
+          url: 'javascript:void(0);'
         },
         {
           label: 'About',
@@ -17,18 +17,18 @@ export default function() {
             {
               id: 'team',
               label: 'Team',
-              url: 'http://example.com#team'
+              url: 'javascript:void(0);'
             },
             {
               id: 'company',
               label: 'Company',
-              url: 'http://example.com#company'
+              url: 'javascript:void(0);'
             }
           ]
         },
         {
           label: 'Contact',
-          url: 'http://example.com#contact'
+          url: 'javascript:void(0);'
         }
       ]}
     />

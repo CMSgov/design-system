@@ -10,32 +10,32 @@ Hierarchical, vertical navigation.
 Markup:
 <ul class="ds-c-vertical-nav">
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+    <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Parent link</a>
   </li>
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Current page</a>
+    <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="javascript:void(0);">Current page</a>
     <ul class="ds-c-vertical-nav__subnav">
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Child link</a>
       </li>
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Child link</a>
         <ul class="ds-c-vertical-nav__subnav">
           <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__link" href="http://example.com">Grandchild link</a>
+            <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Grandchild link</a>
           </li>
           <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Grandchild link</a>
+            <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="javascript:void(0);">Grandchild link</a>
           </li>
         </ul>
       </li>
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Child link</a>
       </li>
     </ul>
   </li>
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+    <a class="ds-c-vertical-nav__link" href="javascript:void(0);">Parent link</a>
   </li>
 </ul>
 
