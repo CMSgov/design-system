@@ -46,8 +46,8 @@ Select.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Sets the initial `selected` state and allows the user to select a different
-   * option without also requiring an `onChange` event handler.
+   * Sets the initial selected state. Use this for an uncontrolled component;
+   * otherwise, use the `selected` property.
    */
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
@@ -83,7 +83,7 @@ Select.propTypes = {
   onChange: PropTypes.func,
   /**
    * **Note**: Setting this prop will render a read-only field. If the field should be
-   * mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
+   * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
    */
   value: PropTypes.string
 };

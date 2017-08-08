@@ -5,9 +5,8 @@ import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 /**
-The `TextField` component affords a user to type text into a form.
-By default it renders a field for capturing a single line of text,
-but can be configured to support multiline text.
+ * A `TextField` component renders an input field as well as supporting UI
+ * elements like a label, error message, and hint text.
 */
 export class TextField extends React.PureComponent {
   constructor(props) {
@@ -67,12 +66,12 @@ TextField.defaultProps = {
 
 TextField.propTypes = {
   /**
-   * Additional classes to be added to the root element
+   * Additional classes to be added to the root `div` element
    */
   className: PropTypes.string,
   /**
-   * Default value of the text field, if any. Use this for an uncontrolled
-   * component; otherwise, use the `value` property
+   * Sets the initial value. Use this for an uncontrolled component; otherwise,
+   * use the `value` property.
    */
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
@@ -82,7 +81,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   *	Additional hint text to display
+   * Additional hint text to display
    */
   hint: PropTypes.node,
   /**
@@ -94,7 +93,7 @@ TextField.propTypes = {
    */
   label: PropTypes.node.isRequired,
   /**
-   * Additional classes to be added to the `FormLabel`
+   * Additional classes to be added to the label
    */
   labelClassName: PropTypes.string,
   /**
@@ -105,8 +104,8 @@ TextField.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
-   * Optionally specify the number of visible text lines for the control. Only
-   * applicable if this is a multiline field
+   * Optionally specify the number of visible text lines for the field. Only
+   * applicable if this is a multiline field.
    */
   rows: PropTypes.oneOfType([
     PropTypes.number,
@@ -117,8 +116,8 @@ TextField.propTypes = {
    */
   type: PropTypes.string,
   /**
-   * Current value of the text field. Use this for a controlled component where
-   * you are maintaining its current state; otherwise, use the `defaultValue` property
+   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * mutable, use `defaultValue`. Otherwise, set `onChange` or `disabled`.
    */
   value: PropTypes.string
 };
