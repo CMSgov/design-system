@@ -9,7 +9,7 @@ weight: 10
 
 ## Usage
 
-Use the prefixes `sm`, `md`, `lg`, and `xl` to apply styles at different viewport sizes.
+Use the breakpoint prefixes `sm`, `md`, `lg`, and `xl` to apply styles at different viewport sizes.
 
 | Prefix | Breakpoint | Description |
 | ------ | ---------- | ----------- |
@@ -21,9 +21,9 @@ Use the prefixes `sm`, `md`, `lg`, and `xl` to apply styles at different viewpor
 
 For example: `ds-u-lg-display--none` sets an element's `display` property to `none` when the viewport is `1024px` or wider.
 
-### What supports a responsive prefix
+### What supports a breakpoint prefix
 
-In order to reduce code bloat, not everything supports a responsive prefix. Only the items below support responsive prefixes.
+In order to reduce code bloat, not everything supports a breakpoint prefix. Only the items below support breakpoint prefixes.
 
 - [Grid]({{root}}/layout/grid)
 - [Typography]({{root}}/style/typography#style.typography.responsive)

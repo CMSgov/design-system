@@ -20,7 +20,7 @@ Use the `justify-content` utility class on a flexbox container to change the ali
 
 > The CSS `justify-content` property defines how the browser distributes space between and around content items along the main axis of their container. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
 
-The classes follow the format: `ds-u-justify-content--{value}` and `ds-u-{breakpoint}-justify-content--{value}` where `breakpoint` is one of the [responsive prefixes]({{root}}/guidelines/responsive), and `value` is one of:
+The classes follow the format: `ds-u-justify-content--{value}` and `ds-u-{breakpoint}-justify-content--{value}` where `breakpoint` is one of the [breakpoint prefixes]({{root}}/guidelines/responsive), and `value` is one of:
 
 - `start` (browser default)
 - `end`
@@ -80,7 +80,7 @@ Use the `align-items` utility class on a flexbox container to change the alignme
 
 > The CSS `align-items` property defines how the browser distributes space between and around flex items along the cross-axis of their container. This means it works like `justify-content` but in the perpendicular direction. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
 
-The classes follow the format: `ds-u-align-items--{value}` and `ds-u-{breakpoint}-align-items--{value}` where `breakpoint` is one of the [responsive prefixes]({{root}}/guidelines/responsive), and `value` is one of:
+The classes follow the format: `ds-u-align-items--{value}` and `ds-u-{breakpoint}-align-items--{value}` where `breakpoint` is one of the [breakpoint prefixes]({{root}}/guidelines/responsive), and `value` is one of:
 
 - `start`
 - `end`
@@ -140,7 +140,7 @@ Use the `flex-wrap` utility class on a flexbox container to change how its child
 
 > The CSS `flex-wrap` property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
 
-The classes follow the format: `ds-u-flex-wrap--{value}` and `ds-u-{breakpoint}-flex-wrap--{value}` where `breakpoint` is one of the [responsive prefixes]({{root}}/guidelines/responsive), and `value` is one of:
+The classes follow the format: `ds-u-flex-wrap--{value}` and `ds-u-{breakpoint}-flex-wrap--{value}` where `breakpoint` is one of the [breakpoint prefixes]({{root}}/guidelines/responsive), and `value` is one of:
 
 - `nowrap` (browser default)
 - `wrap`

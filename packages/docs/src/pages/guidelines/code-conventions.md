@@ -24,7 +24,7 @@ Prefixes are added to class names to make it more apparent what job the class is
 | `c-` | Indicates a component. Example: `.ds-c-button`
 | `u-` | Indicates a utility. Example: `.ds-u-color--base` |
 
-These prefixes can sometimes be followed by a "responsive prefix". [Learn more about responsive prefixes.]({{root}}/guidelines/responsive/)
+These prefixes can sometimes be followed by a "breakpoint prefix". [Learn more about breakpoint prefixes.]({{root}}/guidelines/responsive/)
 
 ### BEM syntax
 

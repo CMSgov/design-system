@@ -90,9 +90,9 @@ Responsive
 
 @responsive
 
-Use a [responsive prefix]({{root}}/guidelines/responsive) to show/hide content at specific breakpoints.
+Use a [breakpoint prefix]({{root}}/guidelines/responsive) to show/hide content at specific breakpoints.
 
-A responsive prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
+A breakpoint prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
 
 Markup:
 <% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
