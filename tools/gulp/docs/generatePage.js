@@ -108,7 +108,10 @@ function generateMarkupPage(page, modifier, rootPath) {
   <title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />
 </head>
-<body class="ds-base">${markup}</body>
+<body class="ds-base">
+  ${markup}
+  <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
+</body>
 </html>`;
 
   const uri = `${rootPath}example/${id}`;

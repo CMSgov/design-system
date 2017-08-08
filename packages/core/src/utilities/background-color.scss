@@ -25,11 +25,12 @@ Markup:
 ]; -%>
 <% groups.forEach(group => { -%>
 <% group.forEach(color => { -%>
-  <article class="c-swatch ds-u-margin-bottom--2">
+  <article class="c-swatch ds-u-margin-bottom--3">
     <div class="c-swatch__preview c-swatch__preview--condensed ds-u-fill--<%= color %>"></div>
-    <code class="c-swatch__label ds-u-display--block ds-u-margin--0 ds-u-leading--lead">
+    <code class="c-swatch__label ds-u-font-weight--bold">
       .ds-u-fill--<%= color %>
     </code>
+    <span class="ds-u-color--muted js-swatch-hex">#</span>
   </article>
 <% }) -%>
 <% }) %>
