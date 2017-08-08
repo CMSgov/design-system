@@ -60,15 +60,7 @@ Style guide: components.list
 - Use punctuation appropriate to the text. Do not leave sentences without periods.
 
 ## Accessibility
-- When a list has a heading, consider adding an `id` attribute to the heading element, and an `aria-labelledby` attribute to the list element. Screen readers will then announce the heading text when users navigate to the list. See example below.
-
-  ```html
-  <h6 id="foo">List heading</h6>
-  <ul aria-labelledby="foo">
-    <li>Item</li>
-    <li>Item</li>
-  </ul>
-  ```
+- When a list has a heading, consider adding an `id` attribute to the heading element, and an `aria-labelledby` attribute to the list element. Screen readers will then announce the heading text when users navigate to the list.
 
 ## Learn more
 
