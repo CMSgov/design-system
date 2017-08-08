@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
+/**
+ * A `TabPanel` is a presentational component which accepts a tab's content as
+ * its `children`.
+ */
 export function TabPanel(props) {
   const classes = classnames('ds-c-tabs__panel', props.className);
 
@@ -54,7 +58,7 @@ TabPanel.propTypes = {
   // this id within the Tabs component. Otherwise React will yell at you even
   // though it's ultimately being passed in.
   /**
-   * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute
+   * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute.
    */
   tabId: PropTypes.string
 };
