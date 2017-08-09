@@ -31,7 +31,8 @@ The classes follow the format: `ds-u-justify-content--{value}` and `ds-u-{breakp
 Markup:
 <section>
 <% ['start','end','center','between','around'].forEach(value => { %>
-  <article class="ds-u-justify-content--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2">
+  <code class="preview__label">ds-u-justify-content--<%= value %></code>
+  <article class="ds-u-justify-content--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest">
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
@@ -91,7 +92,8 @@ The classes follow the format: `ds-u-align-items--{value}` and `ds-u-{breakpoint
 Markup:
 <section>
 <% ['start','end','center','baseline','stretch'].forEach(value => { %>
-  <article class="ds-u-align-items--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2" style="height: 75px">
+  <code class="preview__label">ds-u-align-items--<%= value %></code>
+  <article class="ds-u-align-items--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest" style="height: 75px">
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
     <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
@@ -149,7 +151,8 @@ The classes follow the format: `ds-u-flex-wrap--{value}` and `ds-u-{breakpoint}-
 Markup:
 <section>
 <% ['nowrap','wrap','reverse'].forEach(value => { %>
-  <article class="ds-u-flex-wrap--<%= value %> ds-u-display--flex ds-u-fill--gray ds-u-margin-y--2">
+  <code class="preview__label">ds-u-flex-wrap--<%= value %></code>
+  <article class="ds-u-flex-wrap--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest">
     <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #1</div>
     <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #2</div>
     <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #3</div>
