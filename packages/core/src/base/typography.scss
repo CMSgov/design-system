@@ -4,16 +4,12 @@
 /*
 Typography
 
-The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) and you should instead use one of the base class names to apply type styling. The base typography classes are:
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
 
 - `ds-display`
 - `ds-title`
 - `ds-h[LEVEL]`
 - `ds-text--[modifier]`
-
-See the examples below to see how each of these can be used.
-
-Utility classes can also be used to change type features like [font size]({{root}}/utilities/font-size), [color]({{root}}/utilities/color), [weight]({{root}}/utilities/font-weight), and [style]({{root}}/utilities/font-style).
 
 Note: The only base HTML element the design system applies styling to is the `<a>` element. To prevent this, you can override the `$ds-include-base-html-rulesets` Sass variable and set it to `false`.
 
@@ -103,12 +99,24 @@ Style guide: style.typography
 }
 
 .ds-display {
-  font-size: $display-font-size;
+  font-size: $h1-font-size;
+
+  @media (min-width: $width-sm) {
+    font-size: $title-font-size;
+  }
+
+  @media (min-width: $width-md) {
+    font-size: $display-font-size;
+  }
 }
 
 .ds-title {
-  font-size: $title-font-size;
+  font-size: $h1-font-size;
   font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $title-font-size;
+  }
 }
 
 .ds-h1 {
@@ -169,20 +177,21 @@ Style guide: style.typography
 }
 
 /*
-Responsive
+Responsive typography
 
-Responsive typography can be accomplished by using the [responsive prefixed font size utility class](/utilites/font-size#responsive). Since the base typography margins and line height is measured in `em` units, they'll automatically adjust as you change the font size.
-
-You likely don't need to do this for type that is already small, like `ds-text`, `ds-h6`, and `ds-h5`
+The `ds-display` and `ds-title` classes are responsive by default. To apply responsive typography elsewhere, use the [font size utility class](/utilites/font-size#responsive). Since the base typography margins and line height is measured in `em` units, they'll automatically adjust as you change the font size.
 
 _Resize your browser to see each breakpoint in action:_
 
 Markup:
-<h2 class="ds-h4 ds-u-sm-font-size--h3 ds-u-md-font-size--h2 ds-u-lg-font-size--h1">
+<h1 class="ds-display">
   Responsive heading
+</h1>
+<h2 class="ds-h2 ds-u-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2">
+  Responsive subheading
 </h2>
 <p class="ds-text ds-u-font-size--small ds-u-md-font-size--base ds-u-lg-font-size--lead">
-  {{ lorem-l }}
+  <strong>Responsive body text.</strong> {{ lorem-l }}
 </p>
 
 Style guide: style.typography.responsive
