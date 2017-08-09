@@ -10,11 +10,13 @@ Use the overflow utility to set the `overflow` property of an element.
 
 **Format**: `ds-u-overflow--[VALUE]`
 
-#### Available `overflow` options:
-
-- `ds-u-overflow--hidden`
-- `ds-u-overflow--scroll`
-- `ds-u-overflow--auto`
+Markup:
+<% ['ds-u-overflow--hidden', 'ds-u-overflow--scroll', 'ds-u-overflow--auto'].forEach(util => { -%>
+  <code class="preview__label"><%= util %></code>
+  <div class="<%= util %> ds-base--inverse ds-u-padding--2" style="height: 100px">
+    <div class="ds-u-measure--narrow">{{lorem-l }}</div>
+  </div>
+<% }) -%>
 
 Style guide: utilities.overflow
 */
