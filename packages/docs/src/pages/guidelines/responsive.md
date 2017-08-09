@@ -3,7 +3,7 @@ title: Responsive design
 weight: 10
 ---
 
-<p class="ds-text--lead">The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be <strong>mobile first</strong>.</p>
+The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile first**.
 
 ![Responsive demo]({{root}}/public/images/responsive-demo.gif)
 

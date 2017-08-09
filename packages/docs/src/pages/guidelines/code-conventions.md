@@ -2,9 +2,7 @@
 title: Code conventions
 ---
 
-<p class="ds-text--lead">
-  The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity, predictability, and legibility in exchange.
-</p>
+The design system favors clarity over succinctness. This means the design system may be verbose, but it should deliver clarity, predictability, and legibility in exchange.
 
 ## CSS class naming convention
 
