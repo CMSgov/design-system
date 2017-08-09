@@ -4,22 +4,11 @@
 /*
 Border
 
-#### Border size:
+Use the border utility classes to control the border size and color properties.
 
-Choose between a border size of `0`, `1px` or `2px`.
+The border utility class sets the `border-color` and `border-size`, with support for the following sizes: `0`, `1px`, or `2px`.
 
 **Format**: `ds-u-border-[x|y|bottom|left|right|top]--[SIZE]`
-
-#### Border color:
-
-**Format**: `ds-u-border--[COLOR NAME]`
-
-## Theming
-
-The following Sass variables can be overridden to theme the border utility:
-
-- `$border-color`
-- `$border-color-inverse`
 
 @hide-markup
 
@@ -30,17 +19,6 @@ Markup:
   <code class="ds-u-fill--background">ds-u-border<%= name %>--<%= i %></code>
 </div>
 <% } -%>
-<% }) -%>
-<h1 class="ds-u-font-size--lead ds-u-margin-y--2">Color</h1>
-<% ['inverse',
-    'error', 'error-light', 'error-lighter',
-    'warn', 'warn-light', 'warn-lighter',
-    'success', 'success-light', 'success-lighter'].forEach(color => { -%>
-<div <% if (color.match(/(lighte|inverse)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
-  <div class="ds-u-border--<%= color %> ds-u-border--1 ds-u-margin-y--1 ds-u-padding--1">
-    <code class="ds-u-fill--background">ds-u-border--<%= color %></code>
-  </div>
-</div>
 <% }) -%>
 
 Style guide: utilities.border
@@ -110,7 +88,27 @@ Style guide: utilities.border
   border-top: 0 !important;
 }
 
-// Color
+/*
+Border color
+
+**Format**: `ds-u-border--[COLOR NAME]`
+
+@hide-markup
+
+Markup:
+<% ['inverse',
+    'error', 'error-light', 'error-lighter',
+    'warn', 'warn-light', 'warn-lighter',
+    'success', 'success-light', 'success-lighter'].forEach(color => { -%>
+<div <% if (color.match(/(lighte|inverse)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
+  <div class="ds-u-border--<%= color %> ds-u-border--2 ds-u-margin-y--1 ds-u-padding--1">
+    <code class="ds-u-fill--background">ds-u-border--<%= color %></code>
+  </div>
+</div>
+<% }) -%>
+
+Style guide: utilities.border.color
+*/
 .ds-u-border--inverse {
   border-color: $border-color-inverse !important;
 }
@@ -150,3 +148,16 @@ Style guide: utilities.border
 .ds-u-border--success-lighter {
   border-color: $color-success-lighter !important;
 }
+
+/*
+---
+
+## Theming
+
+The following Sass variables can be overridden to theme the border utility:
+
+- `$border-color`
+- `$border-color-inverse`
+
+Style guide: utilities.border.guidance
+*/
