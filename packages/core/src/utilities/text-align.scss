@@ -9,9 +9,18 @@ Align text using the `text-align` utility.
 **Format**: `ds-u-text-align--[VALUE]`
 
 Markup:
-<p class="ds-u-text-align--center">Center</p>
-<p class="ds-u-text-align--left">Left</p>
-<p class="ds-u-text-align--right">Right</p>
+<div class="ds-u-text-align--center">
+  <code class="preview__label">ds-u-text-align--center</code>
+  Center
+</div>
+<div class="ds-u-text-align--left">
+  <code class="preview__label">ds-u-text-align--left</code>
+  Left
+</div>
+<div class="ds-u-text-align--right">
+  <code class="preview__label">ds-u-text-align--right</code>
+  Right
+</div>
 
 Style guide: utilities.text-align
 */
@@ -28,7 +37,7 @@ Style guide: utilities.text-align
 }
 
 /*
-Responsive
+Responsive text alignment
 
 @responsive
 
