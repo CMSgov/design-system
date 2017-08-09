@@ -4,17 +4,19 @@
 /*
 Padding
 
-Use the padding utility to change an element's padding. All padding values are multiples of `8px` and can be inferred by the class name. For example, `ds-u-padding-top--3` can be understood as applying a `padding-top` of `24px` (`3 * 8px = 24px`).
+Use the padding utility to change an element's padding.
 
 **Format**: `ds-u-padding-[x|y|bottom|left|right|top]--[MULTIPLE]`
+
+[Read more about how the design system approaches spacing here.]({{root}}/layout/spacing)
 
 @hide-markup
 
 Markup:
 <% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
 <% for (var i = 0; i < 8; i++) { %>
-<div class="ds-u-fill--gray-dark ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
-  <code class="ds-u-fill--transparent ds-u-color--white">ds-u-padding<%= name %>--<%= i %></code>
+<div class="ds-base--inverse ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
+  <code>ds-u-padding<%= name %>--<%= i %></code>
 </div>
 <% } -%>
 <% }) -%>
@@ -59,16 +61,16 @@ Style guide: utilities.padding
 }
 
 /*
-Responsive
+Responsive padding
 
 Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change the padding at specific breakpoints.
 
 _Resize your browser to see each breakpoint in action:_
 
 Markup:
-<div class="ds-u-fill--gray-dark">
-  <div class="ds-u-padding--1 ds-u-sm-padding--2 ds-u-md-padding--3 ds-u-lg-padding--4 ds-u-xl-padding--5 ds-u-display--inline-block">
-    <span class="ds-u-color--white">Responsive padding</span>
+<div class="ds-base--inverse">
+  <div class="ds-u-padding--1 ds-u-sm-padding--2 ds-u-md-padding--3 ds-u-lg-padding--4 ds-u-xl-padding--5">
+    Responsive padding
   </div>
 </div>
 
