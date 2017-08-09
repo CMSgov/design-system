@@ -11,11 +11,11 @@ Apply rounded corners to an element with the border radius utility.
 - `ds-u-radius--circle` can make a circle when combined with a fixed height and width.
 
 Markup:
-<code class="ds-h6 ds-u-text-transform--lowercase ds-u-display--block">ds-u-radius</code>
+<code class="preview__label">ds-u-radius</code>
 <div class="ds-u-radius ds-u-fill--primary-alt ds-u-padding--2"></div>
-<code class="ds-h6 ds-u-text-transform--lowercase ds-u-display--block">ds-u-radius--pill</code>
+<code class="preview__label">ds-u-radius--pill</code>
 <div class="ds-u-radius--pill ds-u-fill--primary-alt ds-u-padding--2"></div>
-<code class="ds-h6 ds-u-text-transform--lowercase ds-u-display--block">ds-u-radius--circle</code>
+<code class="preview__label">ds-u-radius--circle</code>
 <div class="ds-u-radius--circle ds-u-fill--primary-alt" style="width: 50px; height: 50px;"></div>
 
 Style guide: utilities.border-radius

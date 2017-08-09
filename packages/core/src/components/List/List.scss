@@ -8,12 +8,12 @@ Lists organize written information for users.
 @uswds https://standards.usa.gov/components/typography/#lists
 
 Markup:
-<h6 class="ds-h6" id="unordered-list-id">Unordered list title</h6>
+<h2 class="ds-h6" id="unordered-list-id">Unordered list title</h2>
 <ul class="ds-c-list {{modifier}}" aria-labelledby="unordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
 </ul>
-<h6 class="ds-h6" id="ordered-list-id">Ordered list title</h6>
+<h2 class="ds-h6" id="ordered-list-id">Ordered list title</h2>
 <ol class="ds-c-list {{modifier}}" aria-labelledby="ordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
