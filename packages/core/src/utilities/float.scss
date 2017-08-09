@@ -4,26 +4,20 @@
 /*
 Float
 
-Set an element's `float` property using the float utility. You can use the `ds-u-clearfix` utility class to clearfix your floats.
+Set an element's `float` property using the float utility.
+
+You can use the [clearfix utility class]({{root}}/utilities/clearfix) to automatically clear your floats.
 
 **Format**: `ds-u-float--[VALUE]`
 
 Markup:
+<% ['ds-u-float--left', 'ds-u-float--right', 'ds-u-float--none'].forEach(util => { -%>
 <div class="ds-u-clearfix">
-  <div class="ds-u-float--left ds-u-fill--gray-lightest">
-    <code>float: left</code>
-  </div>
+  <p class="<%= util %> ds-base--inverse ds-u-padding--2">
+    <code><%= util %></code>
+  </p>
 </div>
-<div class="ds-u-clearfix">
-  <div class="ds-u-float--right ds-u-fill--gray-lightest">
-    <code>float: right</code>
-  </div>
-</div>
-<div class="ds-u-clearfix">
-  <div class="ds-u-float--none ds-u-fill--gray-lightest">
-    <code>float: none</code>
-  </div>
-</div>
+<% }) %>
 
 Style guide: utilities.float
 */
@@ -48,17 +42,17 @@ Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change how an eleme
 
 Markup:
 <div class="ds-u-clearfix">
-  :)
+  <strong>Inline text</strong>
   <div class="ds-u-float--none ds-u-md-float--left ds-u-lg-float--right">
-    <code class="ds-u-md-display--none">
+    <p class="ds-u-md-display--none ds-base--inverse ds-u-padding--2">
       float: none
-    </code>
-    <code class="ds-u-display--none ds-u-md-display--inline-block ds-u-lg-display--none">
+    </p>
+    <p class="ds-u-display--none ds-u-md-display--inline-block ds-u-lg-display--none ds-base--inverse ds-u-padding--2">
       float: left
-    </code>
-    <code class="ds-u-display--none ds-u-lg-display--inline-block">
+    </p>
+    <p class="ds-u-display--none ds-u-lg-display--inline-block ds-base--inverse ds-u-padding--2">
       float: right
-    </code>
+    </p>
   </div>
 </div>
 

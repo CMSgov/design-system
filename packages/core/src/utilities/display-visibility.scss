@@ -28,7 +28,7 @@ Markup:
   'ds-u-display--inline-block',
   'ds-u-display--flex',
   'ds-u-display--none'].forEach(util => { -%>
-<p class="<%= util %> ds-base--inverse ds-u-fill--gray-dark ds-u-padding--2"><%= util %></p>
+<p class="<%= util %> ds-base--inverse ds-u-padding--2"><%= util %></p>
 <% }) %>
 
 Style guide: utilities.display-visibility.display
