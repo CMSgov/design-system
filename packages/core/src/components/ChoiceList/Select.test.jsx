@@ -7,9 +7,9 @@ import {shallow} from 'enzyme';
  * @param {number} count
  */
 function generateOptions(count) {
-  let options = [];
+  const options = [];
 
-  for (var i = 1; i < count + 1; i++) {
+  for (let i = 1; i < count + 1; i++) {
     options.push(<option key={i} value={String(i)}>{i}</option>);
   }
 

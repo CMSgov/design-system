@@ -5,9 +5,11 @@ jest.mock('../../shared/breakpoints', () => {
   };
 });
 
+/* eslint-disable import/first */
 import BreakpointToggles from '../BreakpointToggles';
 import React from 'react';
 import {shallow} from 'enzyme';
+/* eslint-enable import/first */
 
 function shallowRender(customProps = {}) {
   const props = Object.assign({

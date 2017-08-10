@@ -31,6 +31,12 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/valid-expect": "error",
+    "jsx-a11y/label-has-for": ["error", {
+      "required": {
+        "some": ["nesting", "id"]
+      },
+      "allowChildren": true,
+    }],
     "no-unused-vars": ["error", {ignoreRestSiblings: true}],
     "sort-imports": "error",
     "react/forbid-prop-types": "error",

@@ -10,13 +10,15 @@ import uniqueId from 'lodash.uniqueid';
  * necessary.
  */
 export const Select = function(props) {
-  let {
+  /* eslint-disable prefer-const */
+  let { // Using let rather than const since we sometimes rewrite id
     children,
     className,
     id,
     inversed,
     ...selectProps
   } = props;
+  /* eslint-enable prefer-const */
 
   const classes = classNames(
     'ds-c-field ds-c-field--select',
