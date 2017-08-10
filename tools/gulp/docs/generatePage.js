@@ -8,6 +8,19 @@ const processMarkup = require('../../../packages/docs/src/scripts/shared/process
 const recursive = require('mkdir-recursive');
 
 /**
+ * Blast Analytics code to be included in the <head> of any generated page.
+ * This loads additional tracking scripts, like Google Analytics.
+ * @return {String}
+ */
+function analytics() {
+  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+  return `<script>
+window.tealiumEnvironment = "${env}";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>`;
+}
+
+/**
  * Create an HTML page
  * @param {Array} routes - The documentation's nested routes
  * @param {Object} page
@@ -55,6 +68,8 @@ function generateDocPage(routes, page, rootPath) {
   <link rel="icon" type="image/png" href="/${rootPath}public/images/favicon.png" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
+
+  ${analytics()}
 </head>
 <body class="ds-base">
   <div id="js-root">
@@ -107,6 +122,8 @@ function generateMarkupPage(page, modifier, rootPath) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />
+
+  ${analytics()}
 </head>
 <body class="ds-base">
   ${markup}
