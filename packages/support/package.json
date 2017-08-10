@@ -8,6 +8,6 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "uswds": "^1.2.1"
+    "uswds": "^1.3.0"
   }
 }
