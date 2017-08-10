@@ -346,10 +346,6 @@ ast-types@0.9.11:
   version "0.9.11"
   resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.11.tgz#371177bb59232ff5ceaa1d09ee5cad705b1a5aa9"
 
-ast-types@0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.5.tgz#1a660a09945dbceb1f9c9cbb715002617424e04a"
-
 async-each-series@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/async-each-series/-/async-each-series-0.1.1.tgz#7617c1917401fd8ca4a28aadce3dbae98afeb432"
@@ -2921,7 +2917,7 @@ esprima@^2.6.0, esprima@^2.7.1:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
-esprima@^3.1.1, esprima@~3.1.0:
+esprima@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
 
@@ -7049,9 +7045,9 @@ react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-docgen@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.16.0.tgz#03c9eba935de8031d791ab62657b7b6606ec5da6"
+react-docgen@^2.17.0:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-2.17.0.tgz#b0f3e85af955714e1067593c1043cb82611a93d1"
   dependencies:
     async "^2.1.4"
     babel-runtime "^6.9.2"
@@ -7059,7 +7055,7 @@ react-docgen@^2.16.0:
     commander "^2.9.0"
     doctrine "^2.0.0"
     node-dir "^0.1.10"
-    recast "^0.11.5"
+    recast "^0.12.6"
 
 react-dom@^15.6.1:
   version "15.6.1"
@@ -7210,15 +7206,6 @@ readline2@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
-
-recast@^0.11.5:
-  version "0.11.22"
-  resolved "https://registry.yarnpkg.com/recast/-/recast-0.11.22.tgz#dedeb18fb001a2bbc6ac34475fda53dfe3d47dfa"
-  dependencies:
-    ast-types "0.9.5"
-    esprima "~3.1.0"
-    private "~0.1.5"
-    source-map "~0.5.0"
 
 recast@^0.12.6:
   version "0.12.6"
