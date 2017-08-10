@@ -4,14 +4,14 @@
  */
 import CodeSnippet from './CodeSnippet';
 import Prism from 'prismjs';
-require('prismjs/components/prism-jsx');
 import PropTypes from 'prop-types';
 import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
+require('prismjs/components/prism-jsx');
 
 class ReactComponentExample extends React.PureComponent {
   highlightedMarkup() {
-    let markup = reactElementToJSXString(this.props.renderComponent(), {
+    const markup = reactElementToJSXString(this.props.renderComponent(), {
       showDefaultProps: false,
       showFunctions: true
     });

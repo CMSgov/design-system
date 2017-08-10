@@ -1,3 +1,3 @@
 'use strict';
 
-export * from './components';
+export * from './components'; // eslint-disable-line import/export

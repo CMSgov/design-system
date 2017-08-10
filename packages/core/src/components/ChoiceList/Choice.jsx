@@ -11,6 +11,7 @@ import uniqueId from 'lodash.uniqueid';
  * necessary.
  */
 export const Choice = function(props) {
+  /* eslint-disable prefer-const */
   let { // Using let rather than const since we sometimes rewrite id
     children,
     className,
@@ -18,6 +19,7 @@ export const Choice = function(props) {
     inversed,
     ...inputProps
   } = props;
+  /* eslint-enable prefer-const */
 
   const inputClasses = classNames(
     'ds-c-choice',
