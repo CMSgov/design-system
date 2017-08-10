@@ -32,7 +32,7 @@ export class Button extends React.PureComponent {
       ...props
     } = this.props;
 
-    let attrs = {
+    const attrs = {
       className: this.classNames(),
       ...props
     };

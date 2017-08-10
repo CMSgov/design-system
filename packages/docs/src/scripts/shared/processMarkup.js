@@ -5,7 +5,7 @@
  * @return {String} Markup with all template tags replaced
  */
 function processMarkup(markup, modifier) {
-  let html = markup;
+  const html = markup;
   modifier = modifier ? ` ${modifier.className}` : '';
 
   const lorem = {

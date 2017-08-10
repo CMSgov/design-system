@@ -24,7 +24,7 @@ export class ChoiceList extends React.PureComponent {
   field() {
     const type = this.type();
     const ChoiceComponent = type === 'select' ? 'option' : Choice;
-    let selectProps = {};
+    const selectProps = {};
 
     const choices = this.props.choices.map(choice => {
       const {

@@ -29,7 +29,7 @@ class ReactPropDoc extends React.PureComponent {
 
   // React.PropTypes.shape
   shape() {
-    let values = this.props.type.value;
+    const values = this.props.type.value;
 
     if (values && typeof values.length === 'undefined') {
       return Object.getOwnPropertyNames(values.value).join(', ');
@@ -58,7 +58,7 @@ class ReactPropDoc extends React.PureComponent {
 
   // React.PropTypes.oneOf
   validValues() {
-    let values = this.props.type.value;
+    const values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
       return values.map(v =>

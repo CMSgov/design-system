@@ -3,9 +3,9 @@ import React from 'react';
 import {shallow} from 'enzyme';
 
 function generateChoices(length) {
-  let choices = [];
+  const choices = [];
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     choices.push({
       label: `Choice ${i + 1}`,
       value: String(i + 1)
@@ -87,7 +87,7 @@ describe('ChoiceList', () => {
     });
 
     it('passes checked prop', () => {
-      let choices = generateChoices(4);
+      const choices = generateChoices(4);
       choices[1].checked = true;
       const data = shallowRender({ choices });
 
@@ -96,7 +96,7 @@ describe('ChoiceList', () => {
     });
 
     it('passes defaultChecked prop', () => {
-      let choices = generateChoices(4);
+      const choices = generateChoices(4);
       choices[1].defaultChecked = true;
       const data = shallowRender({ choices });
 
@@ -105,7 +105,7 @@ describe('ChoiceList', () => {
     });
 
     it('passes disabled prop', () => {
-      let choices = generateChoices(4);
+      const choices = generateChoices(4);
       choices[1].disabled = true;
       const data = shallowRender({ choices });
 
