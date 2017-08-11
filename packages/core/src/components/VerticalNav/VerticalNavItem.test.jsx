@@ -20,42 +20,14 @@ describe('VerticalNavItem', () => {
 
     expect(wrapper.is('li')).toBe(true);
     expect(wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
-    expect(wrapper.text()).toBe(data.props.label);
   });
 
-  it('is not a link', () => {
+  it('renders VerticalNavItemLabel', () => {
     const data = shallowRender();
-    const wrapper = data.wrapper;
-    const link = wrapper.find('.ds-c-vertical-nav__link').first();
+    const label = data.wrapper.find('VerticalNavItemLabel').first();
 
-    expect(link.is('div')).toBe(true);
-    expect(link.prop('href')).toBeUndefined();
-    expect(link.hasClass('ds-c-vertical-nav__link--current')).toBe(false);
-  });
-
-  it('is a link', () => {
-    const data = shallowRender({ url: '/bar' });
-    const wrapper = data.wrapper;
-    const link = wrapper.find('.ds-c-vertical-nav__link').first();
-
-    expect(link.is('a')).toBe(true);
-    expect(link.prop('href')).toBe(data.props.url);
-  });
-
-  it('accepts a node as a label', () => {
-    const wrapper = shallowRender({
-      label: <strong>Foo</strong>
-    }).wrapper;
-
-    const link = wrapper.find('.ds-c-vertical-nav__link').first();
-    expect(link.html()).toMatch(/<strong>/);
-  });
-
-  it('is selected', () => {
-    const data = shallowRender({ selected: true });
-    const link = data.wrapper.find('.ds-c-vertical-nav__link').first();
-
-    expect(link.hasClass('ds-c-vertical-nav__link--current')).toBe(true);
+    expect(label.prop('collapsed')).toBe(data.wrapper.state('collapsed'));
+    expect(label.prop('label')).toBe(data.props.label);
   });
 
   it('has additional class names', () => {
@@ -65,26 +37,13 @@ describe('VerticalNavItem', () => {
     expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
-  it('calls onClick', () => {
-    const data = shallowRender({
-      id: 'bar',
-      onClick: jest.fn(),
-      url: '/bar'
-    });
-    const link = data.wrapper.find('.ds-c-vertical-nav__link').first();
-
-    link.simulate('click');
-    expect(data.props.onClick.mock.calls.length).toBe(1);
-    expect(data.props.onClick.mock.calls[0][1]).toBe(data.props.id);
-    expect(data.props.onClick.mock.calls[0][2]).toBe(data.props.url);
-  });
-
   it('calls onSubnavToggle', () => {
     const data = shallowRender({
       id: 'bar',
       onSubnavToggle: jest.fn()
     });
 
+    // Collapsed state changes, triggering the event!
     data.wrapper.setState({ collapsed: true });
 
     expect(data.props.onSubnavToggle.mock.calls.length)
@@ -95,7 +54,45 @@ describe('VerticalNavItem', () => {
       .toBe(true); // collapsed
   });
 
-  describe('with nested menu', () => {
+  describe('without subnav', () => {
+    it('is not selected', () => {
+      const data = shallowRender();
+
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected'))
+        .toBe(false);
+    });
+
+    it('is selected', () => {
+      const data = shallowRender({ selected: true });
+
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected'))
+        .toBe(true);
+    });
+
+    it('has no subnav', () => {
+      const data = shallowRender();
+      const label = data.wrapper.find('VerticalNavItemLabel').first();
+
+      expect(label.prop('hasSubnav')).toBe(false);
+      expect(data.wrapper.find('VerticalNav').length).toBe(0);
+    });
+
+    it('calls onClick', () => {
+      const data = shallowRender({
+        id: 'bar',
+        onClick: jest.fn(),
+        url: '/bar'
+      });
+
+      data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
+
+      expect(data.props.onClick.mock.calls.length).toBe(1);
+      expect(data.props.onClick.mock.calls[0][1]).toBe(data.props.id);
+      expect(data.props.onClick.mock.calls[0][2]).toBe(data.props.url);
+    });
+  });
+
+  describe('with subnav', () => {
     let props;
 
     beforeEach(() => {
@@ -111,27 +108,35 @@ describe('VerticalNavItem', () => {
       };
     });
 
-    it('renders subnavs', () => {
+    it('has subnav', () => {
+      const data = shallowRender(props);
+      const label = data.wrapper.find('VerticalNavItemLabel').first();
+      const subnav = data.wrapper.find('VerticalNav').first();
+
+      expect(label.prop('hasSubnav')).toBe(true);
+      expect(data.wrapper.render().find('ul').length).toBe(2);
+      expect(subnav.prop('collapsed')).toBe(false);
+      expect(subnav.prop('id')).not.toBeUndefined();
+      expect(subnav.prop('nested')).toBe(true);
+    });
+
+    it('is not selected', () => {
       const data = shallowRender(props);
 
-      expect(data.wrapper.render().find('ul').length)
-        .toBe(2);
-      expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected'))
         .toBe(false);
-      expect(data.wrapper.find('VerticalNav').first().prop('id'))
-        .not.toBeUndefined();
     });
 
-    it('renders toggle button', () => {
+    it('is selected', () => {
+      props._selectedId = 'selected-child';
+      props.items[0].id = 'selected-child';
       const data = shallowRender(props);
-      const button = data.wrapper.find('.ds-c-vertical-nav__subnav-toggle');
-      const subnavId = data.wrapper.find('VerticalNav').prop('id');
 
-      expect(button.prop('aria-controls')).toBe(subnavId);
-      expect(button.prop('aria-expanded')).toBe(true);
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected'))
+        .toBe(true);
     });
 
-    it('is collapsed', () => {
+    it('has collapsed subnav', () => {
       props.defaultCollapsed = true;
       const data = shallowRender(props);
 
@@ -140,25 +145,61 @@ describe('VerticalNavItem', () => {
     });
 
     it('toggles collapsed state', () => {
-      props.ariaExpandedStateButtonLabel = 'Collapse me';
-      props.ariaCollapsedStateButtonLabel = 'Expand me';
+      props.onClick = jest.fn();
       const data = shallowRender(props);
-      let button = data.wrapper.find('.ds-c-vertical-nav__subnav-toggle');
+      const label = data.wrapper.find('VerticalNavItemLabel').first();
 
       expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
         .toBe(false);
-      expect(button.text())
-        .toBe(data.props.ariaExpandedStateButtonLabel);
 
-      button.simulate('click');
-      // Get updated render...
+      label.simulate('click');
       data.wrapper.update();
-      button = data.wrapper.find('.ds-c-vertical-nav__subnav-toggle');
 
       expect(data.wrapper.find('VerticalNav').first().prop('collapsed'))
         .toBe(true);
-      expect(button.text())
-        .toBe(data.props.ariaCollapsedStateButtonLabel);
+    });
+
+    it('does not add top-level link to top of subnav', () => {
+      const data = shallowRender(props);
+      const subnav = data.wrapper.find('VerticalNav').first().shallow();
+      const firstSubnavItem = subnav.find('VerticalNavItem').first();
+
+      expect(firstSubnavItem.prop('label')).toBe(data.props.items[0].label);
+    });
+
+    describe('with url', () => {
+      beforeEach(() => {
+        props.url = '/foo';
+      });
+
+      it('adds top-level link to top of subnav', () => {
+        props.id = 'foo';
+        const data = shallowRender(props);
+        const subnav = data.wrapper.find('VerticalNav').first().shallow();
+        const firstSubnavItem = subnav.find('VerticalNavItem').first();
+
+        expect(firstSubnavItem.prop('id'))
+          .toBe(data.props.id);
+        expect(firstSubnavItem.prop('items'))
+          .toBeUndefined();
+        expect(firstSubnavItem.prop('label'))
+          .toBe(data.props.label);
+        expect(firstSubnavItem.prop('url'))
+          .toBe(data.props.url);
+      });
+
+      it('calls onSubnavToggle rather than onClick', () => {
+        props.onClick = jest.fn();
+        props.onSubnavToggle = jest.fn();
+
+        const data = shallowRender(props);
+        const label = data.wrapper.find('VerticalNavItemLabel').first();
+
+        label.simulate('click');
+
+        expect(data.props.onClick.mock.calls.length).toBe(0);
+        expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
+      });
     });
   });
 });

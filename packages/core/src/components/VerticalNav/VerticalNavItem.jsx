@@ -1,20 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import VerticalNav from './VerticalNav';
+import VerticalNavItemLabel from './VerticalNavItemLabel';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 export class VerticalNavItem extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleLinkClick = this.handleLinkClick.bind(this);
-    this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleLabelClick = this.handleLabelClick.bind(this);
     this.id = this.props.id || uniqueId('VerticalNavItem_');
     this.subnavId = `${this.id}__subnav`;
-
-    this.state = {
-      collapsed: this.props.defaultCollapsed
-    };
+    this.state = { collapsed: this.props.defaultCollapsed };
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -23,7 +20,25 @@ export class VerticalNavItem extends React.PureComponent {
     }
   }
 
-  handleLinkClick(evt) {
+  /**
+   * Called when VerticalNavItemLabel is clicked. Since the "label" could be
+   * a link, subnav toggle button, or plain text, we use this method to
+   * determine what action to take and which event to actually fire.
+   * @param {Object} SyntheticEvent
+   */
+  handleLabelClick(evt) {
+    if (this.hasSubnav()) {
+      return this.handleToggleClick();
+    }
+
+    return this.handleClick(evt);
+  }
+
+  /**
+   * Note: This event handler will only get called when the VerticalNavItemLabel
+   * is a link or plain text
+   */
+  handleClick(evt) {
     if (this.props.onClick) {
       this.props.onClick(
         evt,
@@ -38,11 +53,12 @@ export class VerticalNavItem extends React.PureComponent {
   }
 
   hasSubnav() {
-    return this.props.items && this.props.items.length;
+    return Boolean(this.props.items && this.props.items.length > 0);
   }
 
   /**
    * Check if this item is selected or if it is a parent of a selected item
+   * @return {Boolean}
    */
   isSelected() {
     if (this.props.selected) return this.props.selected;
@@ -50,11 +66,14 @@ export class VerticalNavItem extends React.PureComponent {
     if (this.props._selectedId && this.hasSubnav()) {
       return this.childIsSelected(this.props.items);
     }
+
+    return false;
   }
 
   /**
    * Checks if a descendant is selected
    * @param {Array} children - The nested items
+   * @return {Boolean}
    */
   childIsSelected(children) {
     if (children && children.length) {
@@ -69,23 +88,18 @@ export class VerticalNavItem extends React.PureComponent {
     return false;
   }
 
-  renderSubnavToggle() {
-    if (this.hasSubnav()) {
-      const label = this.state.collapsed
-        ? this.props.ariaCollapsedStateButtonLabel
-        : this.props.ariaExpandedStateButtonLabel;
+  subnavItems() {
+    if (this.props.url) {
+      // Since the VerticalNavItemLabel will just toggle the subnav, we
+      // add a link to the top of the subnav for this item. Otherwise there
+      // wouldn't be a way to actually visit its URL
+      const item = Object.assign({}, this.props);
+      delete item.items;
 
-      return (
-        <button
-          aria-controls={this.subnavId}
-          aria-expanded={!this.state.collapsed}
-          className='ds-c-vertical-nav__subnav-toggle'
-          onClick={this.handleToggleClick}
-        >
-          {label}
-        </button>
-      );
+      return [item].concat(this.props.items);
     }
+
+    return this.props.items;
   }
 
   renderSubnav() {
@@ -95,7 +109,7 @@ export class VerticalNavItem extends React.PureComponent {
           selectedId={this.props._selectedId}
           collapsed={this.state.collapsed}
           id={this.subnavId}
-          items={this.props.items}
+          items={this.subnavItems()}
           nested
         />
       );
@@ -104,25 +118,20 @@ export class VerticalNavItem extends React.PureComponent {
 
   render() {
     const classes = classNames('ds-c-vertical-nav__item', this.props.className);
-    const LinkComponent = this.props.url ? 'a' : 'div';
-    const linkProps = {
-      className: classNames(
-        'ds-c-vertical-nav__link',
-        {
-          'ds-c-vertical-nav__link--current': this.isSelected(),
-          'ds-c-vertical-nav__link--parent': this.hasSubnav()
-        }
-      ),
-      href: this.props.url ? this.props.url : undefined,
-      onClick: this.props.onClick ? this.handleLinkClick : undefined
-    };
 
     return (
       <li className={classes}>
-        <LinkComponent {...linkProps}>
-          {this.props.label}
-        </LinkComponent>
-        {this.renderSubnavToggle()}
+        <VerticalNavItemLabel
+          ariaCollapsedStateButtonLabel={this.props.ariaCollapsedStateButtonLabel}
+          ariaExpandedStateButtonLabel={this.props.ariaExpandedStateButtonLabel}
+          collapsed={this.state.collapsed}
+          label={this.props.label}
+          hasSubnav={this.hasSubnav()}
+          onClick={this.handleLabelClick}
+          selected={this.isSelected()}
+          subnavId={this.subnavId}
+          url={this.props.url}
+        />
         {this.renderSubnav()}
       </li>
     );
@@ -130,6 +139,9 @@ export class VerticalNavItem extends React.PureComponent {
 }
 
 VerticalNavItem.defaultProps = {
+  // Unfortunately, we're defining these default ARIA pros here and in
+  // VerticalNavItemLabel. We define them here so they show in the docs.
+  // TODO(sawyer): Update react-docgen so we don't have to do this
   ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
   ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
   defaultCollapsed: false
@@ -155,7 +167,7 @@ VerticalNavItem.propTypes = {
    */
   defaultCollapsed: PropTypes.bool,
   /**
-   * Called when the item is clicked, with the following arguments:
+   * Called when the link is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `id`, `url`.
    *

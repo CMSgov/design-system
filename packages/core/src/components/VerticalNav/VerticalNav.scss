@@ -58,28 +58,50 @@ Style guide: components.vertical-nav
   position: relative;
 }
 
-.ds-c-vertical-nav__link {
+.ds-c-vertical-nav__label {
   border-left: 4px solid transparent;
   color: $color-base;
   display: block;
+  font-family: $font-sans; // necessary for <button>
+  font-size: $base-font-size; // necessary for <button>
   line-height: $heading-line-height;
   padding: $spacer-1 $spacer-2;
+  text-align: left; // necessary for <button>
   text-decoration: none;
 }
 
-.ds-c-vertical-nav__link--current {
+.ds-c-vertical-nav__label--current {
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
 }
 
-// A link that is accompanied by a button to toggle a nested sub-navigation
-.ds-c-vertical-nav__link--parent {
-  margin-right: $spacer-5;
+// Subnav toggle
+// This class is applied to a <button>, so we need to reset some styling here...
+.ds-c-vertical-nav__label--parent {
+  appearance: none;
+  background-color: transparent;
+  background-image: url('#{$image-path}/arrow-down.png');
+  background-image: url('#{$image-path}/arrow-down.svg');
+  background-position: right $spacer-1 center;
+  background-repeat: no-repeat;
+  background-size: $small-font-size;
+  border-bottom: 0; // Clear <button> borders (border-left is already set)
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  padding-right: $spacer-5; // Creates space for icon
+  width: 100%;
+
+  &[aria-expanded='true'] {
+    background-image: url('#{$image-path}/arrow-up.png');
+    background-image: url('#{$image-path}/arrow-up.svg');
+  }
 }
 
 /* stylelint-disable-next-line selector-no-qualifying-type */
-a.ds-c-vertical-nav__link:hover {
+a.ds-c-vertical-nav__label:hover,
+.ds-c-vertical-nav__label--parent:hover {
   background-color: $color-gray-lightest;
   color: $color-primary;
   text-decoration: none;
@@ -88,51 +110,18 @@ a.ds-c-vertical-nav__link:hover {
 .ds-c-vertical-nav__subnav {
   @include ds-unstyled-list;
 
-  .ds-c-vertical-nav__item {
+  .ds-c-vertical-nav__label {
     font-size: $small-font-size;
-  }
-
-  .ds-c-vertical-nav__link {
     line-height: $heading-line-height;
     padding-left: $spacer-3;
   }
 
-  .ds-c-vertical-nav__link--current {
+  .ds-c-vertical-nav__label--current {
     border-color: transparent;
   }
 
-  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__link {
+  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
     padding-left: $spacer-4;
-  }
-}
-
-.ds-c-vertical-nav__subnav-toggle {
-  appearance: none;
-  background-color: transparent;
-  background-image: url('#{$image-path}/arrow-down.png');
-  background-image: url('#{$image-path}/arrow-down.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: $small-font-size;
-  border: 0;
-  cursor: pointer;
-  font-size: inherit;
-  line-height: $heading-line-height;
-  padding-bottom: $spacer-1;
-  padding-top: $spacer-1;
-  position: absolute;
-  right: 0;
-  text-indent: -9999px;
-  top: 0;
-  width: $spacer-5; // ensures a large enough area for tapping
-
-  &:hover {
-    background-color: $color-gray-lightest;
-  }
-
-  &[aria-expanded='true'] {
-    background-image: url('#{$image-path}/arrow-up.png');
-    background-image: url('#{$image-path}/arrow-up.svg');
   }
 }
 
@@ -170,7 +159,7 @@ Style guide: components.vertical-nav.VerticalNavItem
 
 ## Guidance
 
-- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__link--current` modifier to show users which page they have navigated to.
+- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__label--current` modifier to show users which page they have navigated to.
 - Keep the navigation links short and follow sentence case. They can be shorter derivatives of page titles themselves.
 - If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
 
