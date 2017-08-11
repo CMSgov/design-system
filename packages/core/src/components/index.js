@@ -14,3 +14,4 @@ export * from './Tabs/TabPanel';
 export * from './TextField/TextField';
 export * from './VerticalNav/VerticalNav';
 export * from './VerticalNav/VerticalNavItem';
+export * from './VerticalNav/VerticalNavItemLabel';

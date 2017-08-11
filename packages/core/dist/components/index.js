@@ -171,3 +171,15 @@ Object.keys(_VerticalNavItem).forEach(function (key) {
     }
   });
 });
+
+var _VerticalNavItemLabel = require('./VerticalNav/VerticalNavItemLabel');
+
+Object.keys(_VerticalNavItemLabel).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _VerticalNavItemLabel[key];
+    }
+  });
+});

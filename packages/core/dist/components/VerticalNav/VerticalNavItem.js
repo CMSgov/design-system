@@ -19,6 +19,10 @@ var _VerticalNav = require('./VerticalNav');
 
 var _VerticalNav2 = _interopRequireDefault(_VerticalNav);
 
+var _VerticalNavItemLabel = require('./VerticalNavItemLabel');
+
+var _VerticalNavItemLabel2 = _interopRequireDefault(_VerticalNavItemLabel);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -43,14 +47,12 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
 
     var _this = _possibleConstructorReturn(this, (VerticalNavItem.__proto__ || Object.getPrototypeOf(VerticalNavItem)).call(this, props));
 
-    _this.handleLinkClick = _this.handleLinkClick.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleLabelClick = _this.handleLabelClick.bind(_this);
     _this.handleToggleClick = _this.handleToggleClick.bind(_this);
     _this.id = _this.props.id || (0, _lodash2.default)('VerticalNavItem_');
     _this.subnavId = _this.id + '__subnav';
-
-    _this.state = {
-      collapsed: _this.props.defaultCollapsed
-    };
+    _this.state = { collapsed: _this.props.defaultCollapsed };
     return _this;
   }
 
@@ -61,9 +63,32 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
         this.props.onSubnavToggle(this.props.id, this.state.collapsed);
       }
     }
+
+    /**
+     * Called when VerticalNavItemLabel is clicked. Since the "label" could be
+     * a link, subnav toggle button, or plain text, we use this method to
+     * determine what action to take and which event to actually fire.
+     * @param {Object} SyntheticEvent
+     */
+
   }, {
-    key: 'handleLinkClick',
-    value: function handleLinkClick(evt) {
+    key: 'handleLabelClick',
+    value: function handleLabelClick(evt) {
+      if (this.hasSubnav()) {
+        return this.handleToggleClick();
+      }
+
+      return this.handleClick(evt);
+    }
+
+    /**
+     * Note: This event handler will only get called when the VerticalNavItemLabel
+     * is a link or plain text
+     */
+
+  }, {
+    key: 'handleClick',
+    value: function handleClick(evt) {
       if (this.props.onClick) {
         this.props.onClick(evt, this.id, this.props.url);
       }
@@ -76,11 +101,12 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
   }, {
     key: 'hasSubnav',
     value: function hasSubnav() {
-      return this.props.items && this.props.items.length;
+      return Boolean(this.props.items && this.props.items.length > 0);
     }
 
     /**
      * Check if this item is selected or if it is a parent of a selected item
+     * @return {Boolean}
      */
 
   }, {
@@ -91,11 +117,14 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
       if (this.props._selectedId && this.hasSubnav()) {
         return this.childIsSelected(this.props.items);
       }
+
+      return false;
     }
 
     /**
      * Checks if a descendant is selected
      * @param {Array} children - The nested items
+     * @return {Boolean}
      */
 
   }, {
@@ -112,22 +141,19 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
       return false;
     }
   }, {
-    key: 'renderSubnavToggle',
-    value: function renderSubnavToggle() {
-      if (this.hasSubnav()) {
-        var label = this.state.collapsed ? this.props.ariaCollapsedStateButtonLabel : this.props.ariaExpandedStateButtonLabel;
+    key: 'subnavItems',
+    value: function subnavItems() {
+      if (this.props.url) {
+        // Since the VerticalNavItemLabel will just toggle the subnav, we
+        // add a link to the top of the subnav for this item. Otherwise there
+        // wouldn't be a way to actually visit its URL
+        var item = Object.assign({}, this.props);
+        delete item.items;
 
-        return _react2.default.createElement(
-          'button',
-          {
-            'aria-controls': this.subnavId,
-            'aria-expanded': !this.state.collapsed,
-            className: 'ds-c-vertical-nav__subnav-toggle',
-            onClick: this.handleToggleClick
-          },
-          label
-        );
+        return [item].concat(this.props.items);
       }
+
+      return this.props.items;
     }
   }, {
     key: 'renderSubnav',
@@ -137,7 +163,7 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
           selectedId: this.props._selectedId,
           collapsed: this.state.collapsed,
           id: this.subnavId,
-          items: this.props.items,
+          items: this.subnavItems(),
           nested: true
         });
       }
@@ -146,25 +172,21 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
     key: 'render',
     value: function render() {
       var classes = (0, _classnames2.default)('ds-c-vertical-nav__item', this.props.className);
-      var LinkComponent = this.props.url ? 'a' : 'div';
-      var linkProps = {
-        className: (0, _classnames2.default)('ds-c-vertical-nav__link', {
-          'ds-c-vertical-nav__link--current': this.isSelected(),
-          'ds-c-vertical-nav__link--parent': this.hasSubnav()
-        }),
-        href: this.props.url ? this.props.url : undefined,
-        onClick: this.props.onClick ? this.handleLinkClick : undefined
-      };
 
       return _react2.default.createElement(
         'li',
         { className: classes },
-        _react2.default.createElement(
-          LinkComponent,
-          linkProps,
-          this.props.label
-        ),
-        this.renderSubnavToggle(),
+        _react2.default.createElement(_VerticalNavItemLabel2.default, {
+          ariaCollapsedStateButtonLabel: this.props.ariaCollapsedStateButtonLabel,
+          ariaExpandedStateButtonLabel: this.props.ariaExpandedStateButtonLabel,
+          collapsed: this.state.collapsed,
+          label: this.props.label,
+          hasSubnav: this.hasSubnav(),
+          onClick: this.handleLabelClick,
+          selected: this.isSelected(),
+          subnavId: this.subnavId,
+          url: this.props.url
+        }),
         this.renderSubnav()
       );
     }
@@ -174,8 +196,6 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
 }(_react2.default.PureComponent);
 
 VerticalNavItem.defaultProps = {
-  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
-  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
   defaultCollapsed: false
 };
 
@@ -199,7 +219,7 @@ VerticalNavItem.propTypes = {
    */
   defaultCollapsed: _propTypes2.default.bool,
   /**
-   * Called when the item is clicked, with the following arguments:
+   * Called when the link is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `id`, `url`.
    *
