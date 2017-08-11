@@ -1,7 +1,3 @@
-// Library overrides
-// These need to come before the library so !defaults can be overridden
-@import 'settings/override.cmsgov';
-
 // Libraries
 @import '@cmsgov/design-system-core/src/index';
 @import '@cmsgov/design-system-layout/src/index';
