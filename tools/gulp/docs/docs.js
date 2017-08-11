@@ -47,6 +47,11 @@ function addTopLevelPages(kssSections) {
       sections: [],
       weight: 7
     }, {
+      header: 'Components',
+      reference: 'components',
+      sections: [],
+      weight: 30
+    }, {
       header: 'Patterns',
       reference: 'patterns',
       sections: [],
