@@ -44,17 +44,6 @@ export default function() {
         label='Select example'
         name='select_choices_field'
       />
-
-      <div className='ds-base--inverse ds-u-margin-top--4 ds-u-padding--1'>
-        <ChoiceList
-          choices={options}
-          hint='Example hint text'
-          inversed
-          label='Select example'
-          labelClassName='ds-u-margin-top--0'
-          name='select_choices_field_inverse'
-        />
-      </div>
     </div>
   );
 }

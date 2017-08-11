@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import packageInfo from '../../../package.json';
+import githubUrl from '../shared/githubUrl';
+import pkg from '../../../package.json';
 
-const githubUrl = 'https://github.com/CMSgov/design-system';
-const zipUrl = `${githubUrl}/archive/v${packageInfo.version}.zip`;
+const zipUrl = githubUrl(`archive/v${pkg.version}.zip`);
 
 const GitHubLinks = (props) => {
   const downloadBtnClassName = classNames('ds-c-button ds-c-button--primary ds-c-button--small', {
@@ -18,7 +18,7 @@ const GitHubLinks = (props) => {
   return (
     <div className={props.className}>
       <a href={zipUrl} className={downloadBtnClassName}>Download code and design files</a>
-      <a href={githubUrl} className={githubBtnClassName}>View on Github</a>
+      <a href={githubUrl()} className={githubBtnClassName}>View on Github</a>
     </div>
   );
 };

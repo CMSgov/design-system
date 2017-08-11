@@ -4,9 +4,11 @@
 /*
 Margin
 
-Use the margin utility to change an element's margin. All margins are multiples of `8px` and can be inferred by the class name. For example, `ds-u-margin-top--3` can be understood as applying a `margin-top` of `24px` (`3 * 8px = 24px`).
+Use the margin utility to change an element's margin.
 
 **Format**: `ds-u-margin-[x|y|bottom|left|right|top]--[MULTIPLE]`
+
+[Read more about how the design system approaches spacing here.]({{root}}/layout/spacing)
 
 @hide-markup
 
@@ -97,9 +99,9 @@ Style guide: utilities.margin
 }
 
 /*
-Responsive
+Responsive margins
 
-Use a [responsive prefix]({{root}}/guidelines/responsive) to change the margin at specific breakpoints.
+Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change the margin at specific breakpoints.
 
 _Resize your browser to see each breakpoint in action:_
 

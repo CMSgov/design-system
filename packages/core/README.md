@@ -2,8 +2,9 @@ This package contains the following design system assets:
 
 - Base styles
 - Utility classes
-- Core Sass/CSS components
-- Core React components
+- Sass/CSS and React components
+- Sass mixins and variables
+- Fonts and images
 
 ## Installation
 

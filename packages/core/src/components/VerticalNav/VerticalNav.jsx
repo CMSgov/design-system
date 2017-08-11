@@ -4,7 +4,7 @@ import VerticalNavItem from './VerticalNavItem';
 import classNames from 'classnames';
 
 /**
- * The `VerticalNav` React component accepts list items as a JSON object and
+ * A `VerticalNav` component accepts list items as a JSON object and
  * includes additional functionality like collapsible nested menus.
  */
 export class VerticalNav extends React.PureComponent {

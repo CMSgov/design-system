@@ -48,8 +48,8 @@ Select.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Sets the initial `selected` state and allows the user to select a different
-   * option without also requiring an `onChange` event handler.
+   * Sets the initial selected state. Use this for an uncontrolled component;
+   * otherwise, use the `selected` property.
    */
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
@@ -63,8 +63,9 @@ Select.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Setting this prop to `true` will result in an error message due to
-   * accessibility concerns. See the usability guidelines for more info.
+   * Setting this prop will result in a PropTypes error message due to
+   * accessibility concerns. Use checkboxes instead if you need to support multiple
+   * selections. See the Guidance tab for more info.
    */
   multiple: function(props, propName, componentName) {
     if (props[propName]) {
@@ -76,13 +77,15 @@ Select.propTypes = {
       /* eslint-enable */
     }
   },
+  /**
+   * The `select` field's `name` attribute
+   */
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
-   * Setting this prop will render a read-only field and require an `onChange`
-   * event handler if you'd want to change its `selected` stated. Use
-   * `defaultValue` if you want the field to be mutable.
+   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
    */
   value: PropTypes.string
 };

@@ -5,15 +5,14 @@ import React from 'react';
 export default function() {
   return (
     <div>
-      <Button>React button</Button>
+      <Button>Button</Button>
 
       <Button
         className='ds-u-margin-left--1'
-        href='http://example.com'
-        target='_blank'
+        href='javascript:void(0);'
         variation='primary'
       >
-        React anchor button
+        Anchor button
       </Button>
     </div>
   );

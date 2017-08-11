@@ -125,7 +125,10 @@ function generateMarkupPage(page, modifier, rootPath) {
 
   ${analytics()}
 </head>
-<body class="ds-base">${markup}</body>
+<body class="ds-base">
+  ${markup}
+  <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
+</body>
 </html>`;
 
   const uri = `${rootPath}example/${id}`;

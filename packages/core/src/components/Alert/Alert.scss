@@ -3,8 +3,6 @@
 /*
 Alert
 
-@status recommended
-
 @uswds https://standards.usa.gov/components/alerts
 
 Alerts keep users informed of important and sometimes time-sensitive changes.
@@ -17,7 +15,7 @@ Markup:
 <div class="ds-c-alert {{modifier}}">
   <div class="ds-c-alert__body">
     <h3 class="ds-c-alert__heading">Status heading</h3>
-    <p class="ds-c-alert__text">Lorem ipsum dolor sit <a href="http://example.com">link text</a>, consectetur adipiscing elit, sed do eiusmod.</p>
+    <p class="ds-c-alert__text">Lorem ipsum dolor sit <a href="javascript:void(0);">link text</a>, consectetur adipiscing elit, sed do eiusmod.</p>
   </div>
 </div>
 
@@ -97,30 +95,30 @@ $alert-icon-size: $spacer-5;
 }
 
 /*
----
+Additional examples
 
-### Other patterns
+Alerts support various types and lengths of content, including lists and links. You can use the [measure utility]({{root}}/utilities/measure) to maintain a legible line length.
 
 Markup:
 <div class="ds-c-alert">
-  <div class="ds-c-alert__body">
-    <p class="ds-c-alert__text">{{lorem-l}}</p>
-  </div>
-</div>
-<div class="ds-c-alert ds-u-margin-top--2">
-  <div class="ds-c-alert__body">
+  <div class="ds-c-alert__body ds-u-measure--wide">
     <p class="ds-c-alert__text">{{lorem-s}}</p>
   </div>
 </div>
 <div class="ds-c-alert ds-u-margin-top--2">
-  <div class="ds-c-alert__body">
+  <div class="ds-c-alert__body ds-u-measure--wide">
+    <p class="ds-c-alert__text">{{lorem-l}}</p>
+  </div>
+</div>
+<div class="ds-c-alert ds-u-margin-top--2">
+  <div class="ds-c-alert__body ds-u-measure--wide">
     <h3 class="ds-c-alert__heading">Status heading</h3>
     <p class="ds-c-alert__text">{{lorem-m}}</p>
     <ul class="ds-c-list">
       <li>Alert list item</li>
       <li>Alert list item</li>
     </ul>
-    <a href="http://example.com">Link text</a>
+    <a href="javascript:void(0);">Link text</a>
   </div>
 </div>
 
@@ -128,23 +126,7 @@ Style guide: components.alert.variations
 */
 
 /*
----
-
-Markup:
-<div class="ds-base--inverse ds-u-padding--2">
-  <div class="ds-c-alert {{modifier}}">
-    <div class="ds-c-alert__body">
-      <h3 class="ds-c-alert__heading">Status heading</h3>
-      <p class="ds-c-alert__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-    </div>
-  </div>
-</div>
-
-Style guide: components.alert.inverse
-*/
-
-/*
-React
+`<Alert>`
 
 @react-component Alert
 

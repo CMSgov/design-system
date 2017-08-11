@@ -10,7 +10,12 @@ Use the font size utility to make the text larger or smaller.
 
 Markup:
 <% ['display','title','h1','h2','h3', 'h4', 'lead','base','small'].forEach(size => { -%>
-<p class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin--0 ds-u-truncate">{{lorem-s}}</p>
+<article class="ds-u-font-size--<%= size %> ds-u-leading--heading ds-u-margin-bottom--3 ds-u-truncate">
+  <h2 class="preview__label ds-u-margin-bottom--1">
+    ds-u-font-size--<%= size %>
+  </h2>
+  {{lorem-s}}
+</article>
 <% }) -%>
 
 Style guide: utilities.font-size
@@ -53,9 +58,9 @@ Style guide: utilities.font-size
 }
 
 /*
-Responsive
+Responsive font sizes
 
-Use a [responsive prefix]({{root}}/guidelines/responsive) to change the font size at specific breakpoints.
+Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change the font size at specific breakpoints.
 
 _Resize your browser to see each breakpoint in action:_
 

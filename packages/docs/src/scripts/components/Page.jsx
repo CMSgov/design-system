@@ -17,6 +17,11 @@ class Page extends React.PureComponent {
   constructor(props) {
     super(props);
     this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
+    this.horizontalPadding = {
+      default: 3,
+      sm: 6
+    };
+    this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm} ds-u-padding-y--0`;
   }
 
   defaultSelectedTabId() {
@@ -57,7 +62,7 @@ class Page extends React.PureComponent {
           tablistClassName='ds-u-padding-left--3 ds-u-sm-padding-left--6 ds-u-fill--gray-lightest'
         >
           <TabPanel
-            className='ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0'
+            className={this.tabPanelClasses}
             id='usage'
             tab='Usage'
           >
@@ -70,7 +75,7 @@ class Page extends React.PureComponent {
     }
 
     return (
-      <div className='ds-u-border-top--1 ds-u-padding-x--6'>
+      <div className={`ds-u-border-top--1 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm}`}>
         {this.renderBody()}
       </div>
     );
@@ -82,7 +87,7 @@ class Page extends React.PureComponent {
     if (sections.length) {
       return (
         <TabPanel
-          className='ds-u-border--0 ds-u-padding-x--6 ds-u-padding-y--0'
+          className={this.tabPanelClasses}
           id='guidance'
           tab='Guidance'
         >

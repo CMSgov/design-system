@@ -31,6 +31,10 @@
     @extend .ds-text;
   }
 
+  > p:not([class]):first-child {
+    @extend .ds-text--lead;
+  }
+
   ul:not([class]), ol:not([class]) {
     @extend .ds-c-list;
   }

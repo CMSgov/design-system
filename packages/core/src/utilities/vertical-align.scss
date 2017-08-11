@@ -12,16 +12,25 @@ Markup:
 <table>
   <tbody>
     <tr>
-      <td class="ds-u-font-size--title ds-u-leading--reset">A</td>
-      <td class="ds-u-valign--top">Top alignment</td>
+      <td class="ds-u-font-size--display ds-u-leading--reset ds-u-padding--4 ds-u-fill--primary-alt-lightest">A</td>
+      <td class="ds-u-valign--top">
+        <code class="preview__label">ds-u-valign--top</code>
+        Top alignment
+      </td>
     </tr>
     <tr>
-      <td class="ds-u-font-size--title ds-u-leading--reset">B</td>
-      <td class="ds-u-valign--middle">Middle alignment</td>
+      <td class="ds-u-font-size--display ds-u-leading--reset ds-u-padding--4 ds-u-fill--primary-alt-lightest">B</td>
+      <td class="ds-u-valign--middle">
+        <code class="preview__label">ds-u-valign--middle</code>
+        Middle alignment
+      </td>
     </tr>
     <tr>
-      <td class="ds-u-font-size--title ds-u-leading--reset">C</td>
-      <td class="ds-u-valign--bottom">Bottom alignment</td>
+      <td class="ds-u-font-size--display ds-u-leading--reset ds-u-padding--4 ds-u-fill--primary-alt-lightest">C</td>
+      <td class="ds-u-valign--bottom">
+        <code class="preview__label">ds-u-valign--bottom</code>
+        Bottom alignment
+      </td>
     </tr>
   </tbody>
 </table>
