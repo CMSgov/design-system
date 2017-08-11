@@ -5,7 +5,7 @@ import getHexBackgroundColor from './helpers/getHexBackgroundColor';
 function setSwatchHexValues() {
   const hexElements = document.querySelectorAll('.js-swatch-hex');
 
-  for (var i = hexElements.length - 1; i >= 0; i--) {
+  for (let i = hexElements.length - 1; i >= 0; i--) {
     const el = hexElements[i];
     const swatch = el.parentElement.querySelector('.c-swatch__preview');
     const color = getHexBackgroundColor(swatch);
