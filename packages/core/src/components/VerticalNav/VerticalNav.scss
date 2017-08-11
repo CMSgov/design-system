@@ -12,32 +12,32 @@ Hierarchical, vertical navigation.
 Markup:
 <ul class="ds-c-vertical-nav">
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+    <a class="ds-c-vertical-nav__label" href="http://example.com">Parent link</a>
   </li>
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Current page</a>
+    <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="http://example.com">Current page</a>
     <ul class="ds-c-vertical-nav__subnav">
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__label" href="http://example.com">Child link</a>
       </li>
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__label" href="http://example.com">Child link</a>
         <ul class="ds-c-vertical-nav__subnav">
           <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__link" href="http://example.com">Grandchild link</a>
+            <a class="ds-c-vertical-nav__label" href="http://example.com">Grandchild link</a>
           </li>
           <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="http://example.com">Grandchild link</a>
+            <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="http://example.com">Grandchild link</a>
           </li>
         </ul>
       </li>
       <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__link" href="http://example.com">Child link</a>
+        <a class="ds-c-vertical-nav__label" href="http://example.com">Child link</a>
       </li>
     </ul>
   </li>
   <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__link" href="http://example.com">Parent link</a>
+    <a class="ds-c-vertical-nav__label" href="http://example.com">Parent link</a>
   </li>
 </ul>
 
@@ -60,7 +60,7 @@ Style guide: components.vertical-nav
   position: relative;
 }
 
-.ds-c-vertical-nav__link {
+.ds-c-vertical-nav__label {
   border-left: 4px solid transparent;
   color: $color-base;
   display: block;
@@ -72,7 +72,7 @@ Style guide: components.vertical-nav
   text-decoration: none;
 }
 
-.ds-c-vertical-nav__link--current {
+.ds-c-vertical-nav__label--current {
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
@@ -80,7 +80,7 @@ Style guide: components.vertical-nav
 
 // Subnav toggle
 // This class is applied to a <button>, so we need to reset some styling here...
-.ds-c-vertical-nav__link--parent {
+.ds-c-vertical-nav__label--parent {
   appearance: none;
   background-color: transparent;
   background-image: url('#{$image-path}/arrow-down.png');
@@ -102,8 +102,8 @@ Style guide: components.vertical-nav
 }
 
 /* stylelint-disable-next-line selector-no-qualifying-type */
-a.ds-c-vertical-nav__link:hover,
-.ds-c-vertical-nav__link--parent:hover {
+a.ds-c-vertical-nav__label:hover,
+.ds-c-vertical-nav__label--parent:hover {
   background-color: $color-gray-lightest;
   color: $color-primary;
   text-decoration: none;
@@ -112,17 +112,17 @@ a.ds-c-vertical-nav__link:hover,
 .ds-c-vertical-nav__subnav {
   @include ds-unstyled-list;
 
-  .ds-c-vertical-nav__link {
+  .ds-c-vertical-nav__label {
     font-size: $small-font-size;
     line-height: $heading-line-height;
     padding-left: $spacer-3;
   }
 
-  .ds-c-vertical-nav__link--current {
+  .ds-c-vertical-nav__label--current {
     border-color: transparent;
   }
 
-  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__link {
+  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
     padding-left: $spacer-4;
   }
 }
@@ -161,7 +161,7 @@ Style guide: components.vertical-nav.VerticalNavItem
 
 ## Guidance
 
-- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__link--current` modifier to show users which page they have navigated to.
+- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__label--current` modifier to show users which page they have navigated to.
 - Keep the navigation links short and follow sentence case. They can be shorter derivatives of page titles themselves.
 - If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
 

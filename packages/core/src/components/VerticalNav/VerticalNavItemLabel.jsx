@@ -47,10 +47,10 @@ export class VerticalNavItemLabel extends React.PureComponent {
   render() {
     let props = {
       className: classNames(
-        'ds-c-vertical-nav__link',
+        'ds-c-vertical-nav__label',
         {
-          'ds-c-vertical-nav__link--current': this.props.selected,
-          'ds-c-vertical-nav__link--parent': this.props.hasSubnav
+          'ds-c-vertical-nav__label--current': this.props.selected,
+          'ds-c-vertical-nav__label--parent': this.props.hasSubnav
         }
       ),
       onClick: this.props.onClick ? this.handleClick : undefined

@@ -25,12 +25,12 @@ describe('VerticalNavItemLabel', () => {
 
   it('is not selected', () => {
     const data = shallowRender();
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__link--current')).toBe(false);
+    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(false);
   });
 
   it('is selected', () => {
     const data = shallowRender({ selected: true });
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__link--current')).toBe(true);
+    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(true);
   });
 
   it('calls onClick', () => {
