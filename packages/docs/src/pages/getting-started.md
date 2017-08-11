@@ -31,15 +31,15 @@ npm install --save @cmsgov/design-system-layout
 
 #### Fonts and images
 
-Once you've downloaded the core package, copy the design system's `fonts` and `images` directories into the same directory as your site's CSS.
+Once you've downloaded the core package, copy the design system's `fonts` and `images` directories into the same directory as your site's CSS directory.
 
 By default, the design system expects a file structure like this:
 
 ```
 ├── Your site's public assets directory/
-    ├── bundle.css
-    ├── fonts/
-    └── images/
+    ├── css/
+    ├── images/
+    └── fonts/
 ```
 
 You can manually copy these directories, or you could integrate this step into your build process. [Here's an example of how this step could be accomplished using a Gulp task](https://github.com/CMSgov/design-system/blob/master/examples/react-app/Gulpfile.js).

@@ -5,10 +5,10 @@ var path = require('path');
 var webpack = require('webpack');
 
 var config = {
-  entry: './src/index.js',
+  entry: './src/scripts/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist/scripts')
   },
   module: {
     rules: [

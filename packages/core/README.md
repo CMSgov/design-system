@@ -45,14 +45,14 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
-├── dist                Transpiled CSS and fonts
-└── src                 Sass and JSX
+├── dist                Compiled CSS and JS
+├── fonts
+├── images
+└── src                 Non-compiled Sass and JSX
     ├── base            Base HTML styles
     ├── components      Sass and React components
     │   ├── Button
     │   └── etc...
-    ├── fonts
     ├── generics        Far reaching selectors
-    ├── images
     └── utilities       Functional CSS classes to apply individual traits
 ```

@@ -5,5 +5,5 @@ This example shows how you can incorporate the design system into your build pro
 ## Getting started
 
 1. Install packages: `npm install`
-1. Transpile and bundle assets: `npm run build`
+1. Compile and bundle assets: `npm run build`
 1. Open `index.html` in a browser.

@@ -55,7 +55,6 @@ module.exports = (gulp, shared) => {
       'docs:build',
       'webpack',
       'sass',
-      'fonts',
       'build:gh-pages',
       'build:success',
       'stats',
