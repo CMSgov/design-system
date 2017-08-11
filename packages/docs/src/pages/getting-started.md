@@ -9,7 +9,7 @@ The design system is available as NPM packages or via a .zip download.
 
 The design system consists of two packages which are installed separately.
 
-The **core** package includes the bulk of the design system:
+The [**core** package](https://www.npmjs.com/package/@cmsgov/design-system-core) includes the bulk of the design system:
 
 - Base styles
 - Utility classes
@@ -21,7 +21,7 @@ The **core** package includes the bulk of the design system:
 npm install --save @cmsgov/design-system-core
 ```
 
-The **layout** package includes:
+The [**layout** package](https://www.npmjs.com/package/@cmsgov/design-system-layout) includes:
 
 - Responsive flexbox grid framework
 
