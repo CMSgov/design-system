@@ -55,10 +55,7 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       'docs:build',
-      [
-        'fonts',
-        'sass:process:docs'
-      ],
+      'sass:process:docs',
       [
         'server',
         'watch:packages',

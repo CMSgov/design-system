@@ -24,7 +24,6 @@ module.exports = (gulp) => {
   [
     'build',
     'docs/docs',
-    'fonts',
     'lint',
     'sass',
     'server',

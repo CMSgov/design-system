@@ -22,13 +22,13 @@ gulp.task('sass', function() {
     // Add node_modules to the list of paths used to resolve @import
     // declarations. This way it's easier to import our design system's
     // Sass files.
-    includePaths: ['./node_modules'],
+    includePaths: ['node_modules'],
     outputStyle: 'compressed'
   }).on('error', sass.logError);
 
-  return gulp.src('./src/**/*.scss')
+  return gulp.src('./src/styles/**/*.scss')
     .pipe(transpiler)
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist/styles'));
 });
 
 gulp.task('default', [

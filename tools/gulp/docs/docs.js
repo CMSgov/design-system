@@ -140,8 +140,8 @@ module.exports = (gulp, shared) => {
       'Copying fonts from core package into "public" directory'
     );
 
-    return gulp.src('packages/core/src/**/fonts/*')
-      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
+    return gulp.src('packages/core/fonts/*')
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public/fonts')));
   });
 
   // The docs use the design system's Sass files, which don't have the
@@ -162,8 +162,8 @@ module.exports = (gulp, shared) => {
       'Copying images from core package into "public" directory'
     );
 
-    return gulp.src('packages/core/src/**/images/*')
-      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
+    return gulp.src('packages/core/images/*')
+      .pipe(gulp.dest(buildPath(shared.rootPath, '/public/images')));
   });
 
   /**
