@@ -21,15 +21,15 @@ You can also download a .zip of the design system directly from our [GitHub repo
 
 ### Fonts and images
 
-Copy the design system's `fonts` and `images` directories into the same directory as your site's CSS.
+Copy the design system's `fonts` and `images` directories into the same directory as your site's CSS directory.
 
 By default, the design system expects a file structure like this:
 
 ```
 ├── Your site's public assets directory/
-    ├── bundle.css
-    ├── fonts/
-    └── images/
+    ├── css/
+    ├── images/
+    └── fonts/
 ```
 
 You can manually copy these directories, or you could integrate this step into your build process. [Here's an example of how this step could be accomplished using a Gulp task](https://github.com/CMSgov/design-system/blob/master/examples/react-app/Gulpfile.js).
