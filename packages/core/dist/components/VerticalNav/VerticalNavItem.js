@@ -47,9 +47,7 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
 
     var _this = _possibleConstructorReturn(this, (VerticalNavItem.__proto__ || Object.getPrototypeOf(VerticalNavItem)).call(this, props));
 
-    _this.handleClick = _this.handleClick.bind(_this);
     _this.handleLabelClick = _this.handleLabelClick.bind(_this);
-    _this.handleToggleClick = _this.handleToggleClick.bind(_this);
     _this.id = _this.props.id || (0, _lodash2.default)('VerticalNavItem_');
     _this.subnavId = _this.id + '__subnav';
     _this.state = { collapsed: _this.props.defaultCollapsed };
@@ -196,6 +194,11 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
 }(_react2.default.PureComponent);
 
 VerticalNavItem.defaultProps = {
+  // Unfortunately, we're defining these default ARIA pros here and in
+  // VerticalNavItemLabel. We define them here so they show in the docs.
+  // TODO(sawyer): Update react-docgen so we don't have to do this
+  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
+  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
   defaultCollapsed: false
 };
 

@@ -83,9 +83,9 @@ var VerticalNavItemLabel = exports.VerticalNavItemLabel = function (_React$PureC
     key: 'render',
     value: function render() {
       var props = {
-        className: (0, _classnames2.default)('ds-c-vertical-nav__link', {
-          'ds-c-vertical-nav__link--current': this.props.selected,
-          'ds-c-vertical-nav__link--parent': this.props.hasSubnav
+        className: (0, _classnames2.default)('ds-c-vertical-nav__label', {
+          'ds-c-vertical-nav__label--current': this.props.selected,
+          'ds-c-vertical-nav__label--parent': this.props.hasSubnav
         }),
         onClick: this.props.onClick ? this.handleClick : undefined
       };
