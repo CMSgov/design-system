@@ -4,8 +4,6 @@ This example shows how you can incorporate the design system into your build pro
 
 ## Getting started
 
-_Note_: The instructions below assume you have Yarn installed. You can also use NPM if that's your flavor.
-
-1. Install packages: `yarn install`
-1. Transpile and bundle assets: `yarn run build`
+1. Install packages: `npm install`
+1. Compile and bundle assets: `npm run build`
 1. Open `index.html` in a browser.
