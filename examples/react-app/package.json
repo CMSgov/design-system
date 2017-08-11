@@ -14,7 +14,7 @@
     "babel-preset-react": "^6.24.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "webpack": "^2.3.3"
+    "webpack": "^3.5.3"
   },
   "scripts": {
     "build": "NODE_ENV=production webpack -p --progress && gulp"
