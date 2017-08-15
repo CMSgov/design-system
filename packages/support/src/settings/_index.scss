@@ -14,6 +14,7 @@ $helvetica: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
 // Design system variables
 // Defined after vendor variables so we can use them as values here
 @import 'variables.animation';
+@import 'variables.build';
 @import 'variables.color';
 @import 'variables.forms';
 @import 'variables.layout';

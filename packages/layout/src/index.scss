@@ -23,7 +23,7 @@ The grid is opt-in and not distributed with the core design system package. Inst
 npm install @cmsgov/design-system-layout --save
 ```
 
-[View the layout package's README for additional installation info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
+[View the package's README for additional info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
 
 ### Browser support
 
@@ -40,7 +40,7 @@ Columns without a set width will automatically layout with equal widths. For exa
 Column widths are set in percentages, so they’re always responsive and will be sized relative to their parent row.
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col">
       Auto
@@ -66,7 +66,7 @@ Specifying number of columns
 Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These classes will span `*` columns. So, if you want two elements that each span half the row, you would use `.ds-l-col--6`
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col--6">
       6 columns
@@ -98,7 +98,7 @@ In the example below, the cells span:
 - The entire width of the row on viewports smaller than the `sm` breakpoint, using `ds-l-col--12`
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col--12 ds-l-sm-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-l-xl-col--2">
       A
@@ -128,7 +128,7 @@ Style guide: layout.grid.responsive
 Nested grids
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col--9">
       Level 1
@@ -159,7 +159,7 @@ Offsetting columns
 Offset columns using the [margin auto utility class]({{root}}/utilities/margin):
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col--3">
       3 columns
@@ -179,7 +179,7 @@ Alignment
 Align columns horizontally or vertically using [flexbox utility classes]({{root}}/utilities/flexbox). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
 
 Markup:
-<section class="ds-l-container preview-grid">
+<section class="ds-l-container preview__grid">
   <div class="ds-l-row ds-u-fill--gray">
     <div class="ds-l-col--3">Left</div>
   </div>

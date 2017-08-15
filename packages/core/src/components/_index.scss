@@ -1,15 +1,3 @@
-/*
-Components
-
-Component class names follow the format: `ds-c-[BLOCK]__[ELEMENT]--[MODIFIER]`
-
-Components are designed, self-contained UI elements. In most cases a component will also have a corresponding React component.
-
-Weight: 30
-
-Styleguide components
-*/
-
 @import 'Alert/Alert';
 @import 'Badge/Badge';
 @import 'Button/Button';
@@ -17,6 +5,7 @@ Styleguide components
 @import 'ChoiceList/Select';
 @import 'FormLabel/FormLabel';
 @import 'List/List';
+@import 'SkipNav/SkipNav';
 @import 'Table/Table';
 @import 'Tabs/Tabs';
 @import 'TextField/TextField';

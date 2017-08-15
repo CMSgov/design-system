@@ -88,6 +88,18 @@ Object.keys(_FormLabel).forEach(function (key) {
   });
 });
 
+var _SkipNav = require('./SkipNav/SkipNav');
+
+Object.keys(_SkipNav).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SkipNav[key];
+    }
+  });
+});
+
 var _Tab = require('./Tabs/Tab');
 
 Object.keys(_Tab).forEach(function (key) {
@@ -156,6 +168,18 @@ Object.keys(_VerticalNavItem).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _VerticalNavItem[key];
+    }
+  });
+});
+
+var _VerticalNavItemLabel = require('./VerticalNav/VerticalNavItemLabel');
+
+Object.keys(_VerticalNavItemLabel).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _VerticalNavItemLabel[key];
     }
   });
 });

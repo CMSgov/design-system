@@ -26,13 +26,10 @@ $display-font-size:   60px !default;
 $font-sans:           'Open Sans', Helvetica, sans-serif !default;
 $font-serif:          Bitter, Georgia, serif !default;
 
-// Magic Numbers
-$border-radius:       3px !default;
-
 // Inputs
 $input-max-width:     460px !default; // rem -> px
 
 // Paths
-$font-path:   'fonts' !default;
-$image-path:  'images' !default;
+$font-path:   '../fonts' !default;
+$image-path:  '../images' !default;
 

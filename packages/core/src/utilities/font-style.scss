@@ -9,8 +9,10 @@ Change an element's `font-style` property using the font style utility.
 **Format**: `ds-u-font-style--[VALUE]`
 
 Markup:
-<p class="ds-u-font-style--normal">{{ lorem-m }}</p>
-<p class="ds-u-font-style--italic">{{ lorem-m }}</p>
+<h2 class="preview__label">ds-u-font-style--normal</h2>
+<div class="ds-u-font-style--normal">{{ lorem-m }}</div>
+<h2 class="preview__label">ds-u-font-style--italic</h2>
+<div class="ds-u-font-style--italic">{{ lorem-m }}</div>
 
 Style guide: utilities.font-style
 */

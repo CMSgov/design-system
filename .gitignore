@@ -46,3 +46,4 @@ jspm_packages
 .DS_Store
 
 **/package-lock.json
+/examples/*/yarn.lock

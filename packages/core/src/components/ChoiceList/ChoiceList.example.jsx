@@ -3,9 +3,9 @@ import ChoiceList from './ChoiceList';
 import React from 'react';
 
 function generateChoices(length) {
-  let choices = [];
+  const choices = [];
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     choices.push({
       label: `Choice ${i + 1}`,
       value: String(i + 1)
@@ -16,8 +16,8 @@ function generateChoices(length) {
 }
 
 export default function() {
-  let choices = generateChoices(4);
-  let options = generateChoices(8);
+  const choices = generateChoices(4);
+  const options = generateChoices(8);
 
   choices[1].defaultChecked = true;
   choices[2].disabled = true;
@@ -44,17 +44,6 @@ export default function() {
         label='Select example'
         name='select_choices_field'
       />
-
-      <div className='ds-base--inverse ds-u-margin-top--4 ds-u-padding--1'>
-        <ChoiceList
-          choices={options}
-          hint='Example hint text'
-          inversed
-          label='Select example'
-          labelClassName='ds-u-margin-top--0'
-          name='select_choices_field_inverse'
-        />
-      </div>
     </div>
   );
 }

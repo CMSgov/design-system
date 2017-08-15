@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: components.choice</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><fieldset class="ds-c-fieldset ds-u-margin-top--0">
+<body class="ds-base">
+  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
   <legend class="ds-c-label">Historical figures</legend>
   <span class="ds-c-field__hint">Select all that apply</span>
   <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
@@ -48,5 +55,7 @@
     <input class="ds-c-choice ds-c-choice--inverse" id="washington-4" type="radio" name="historical-figures-4" value="washington">
     <label for="washington-4">Booker T. Washington</label>
   </fieldset>
-</div></body>
+</div>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

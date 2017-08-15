@@ -19,6 +19,10 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * A `TabPanel` is a presentational component which accepts a tab's content as
+ * its `children`.
+ */
 function TabPanel(props) {
   var classes = (0, _classnames2.default)('ds-c-tabs__panel', props.className);
 
@@ -71,7 +75,7 @@ TabPanel.propTypes = {
   // this id within the Tabs component. Otherwise React will yell at you even
   // though it's ultimately being passed in.
   /**
-   * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute
+   * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute.
    */
   tabId: _propTypes2.default.string
 };

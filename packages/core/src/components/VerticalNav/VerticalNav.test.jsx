@@ -113,29 +113,29 @@ describe('VerticalNav', () => {
 
     // Parents and self are selected
     expect(
-      parentWrapper.find('.ds-c-vertical-nav__link').first()
-        .hasClass('ds-c-vertical-nav__link--current')
+      parentWrapper.find('.ds-c-vertical-nav__label').first()
+        .hasClass('ds-c-vertical-nav__label--current')
     ).toBe(true);
 
     expect(
-      childWrapper.find('.ds-c-vertical-nav__link').first()
-        .hasClass('ds-c-vertical-nav__link--current')
+      childWrapper.find('.ds-c-vertical-nav__label').first()
+        .hasClass('ds-c-vertical-nav__label--current')
     ).toBe(true);
 
     expect(
-      grandchild1Wrapper.find('.ds-c-vertical-nav__link').first()
-        .hasClass('ds-c-vertical-nav__link--current')
+      grandchild1Wrapper.find('.ds-c-vertical-nav__label').first()
+        .hasClass('ds-c-vertical-nav__label--current')
     ).toBe(true);
 
     // Siblings or unrelated items aren't selected
     expect(
-      grandchild2Wrapper.find('.ds-c-vertical-nav__link').first()
-        .hasClass('ds-c-vertical-nav__link--current')
+      grandchild2Wrapper.find('.ds-c-vertical-nav__label').first()
+        .hasClass('ds-c-vertical-nav__label--current')
     ).toBe(false);
 
     expect(
-      fooWrapper.find('.ds-c-vertical-nav__link').first()
-        .hasClass('ds-c-vertical-nav__link--current')
+      fooWrapper.find('.ds-c-vertical-nav__label').first()
+        .hasClass('ds-c-vertical-nav__label--current')
     ).toBe(false);
   });
 });

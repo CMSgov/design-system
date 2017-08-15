@@ -11,7 +11,8 @@ function createConfig(rootPath = '', hotReload = true) {
   let config = {
     context: __dirname,
     entry: {
-      index: ['./src/scripts/index.jsx']
+      index: ['./src/scripts/index.jsx'],
+      example: ['./src/scripts/example.js']
     },
     output: {
       path: path.resolve(

@@ -2,48 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: patterns.documentation-page</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><main class="ds-base ds-l-container">
+<body class="ds-base">
+  <main class="ds-base ds-l-container">
+  <a class="ds-c-skip-nav" href="#content">Skip to main content</a>
   <div class="ds-l-row">
     <aside class="ds-u-margin-bottom--4 ds-u-md-margin-bottom--0 ds-l-md-col--4 ds-l-lg-col--3">
       <ul class="ds-c-vertical-nav">
         <li class="ds-c-vertical-nav__item">
-          <a class="ds-c-vertical-nav__link" href="javascript:void(0);">
+          <a class="ds-c-vertical-nav__label" href="javascript:void(0);">
             Page title
           </a>
         </li>
         <li class="ds-c-vertical-nav__item">
-          <a class="ds-c-vertical-nav__link ds-c-vertical-nav__link--current" href="javascript:void(0);">
+          <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="javascript:void(0);">
             Page heading (h1)
           </a>
           <ul class="ds-c-vertical-nav__subnav">
             <li class="ds-c-vertical-nav__item">
-              <a class="ds-c-vertical-nav__link" href="#section-heading-h2">
+              <a class="ds-c-vertical-nav__label" href="#section-heading-h2">
                 Section heading (h2)
               </a>
             </li>
             <li class="ds-c-vertical-nav__item">
-              <a class="ds-c-vertical-nav__link" href="#section-heading-h3">
+              <a class="ds-c-vertical-nav__label" href="#section-heading-h3">
                 Subsection heading (h3)
               </a>
             </li>
             <li class="ds-c-vertical-nav__item">
-              <a class="ds-c-vertical-nav__link" href="#section-heading-h4">
+              <a class="ds-c-vertical-nav__label" href="#section-heading-h4">
                 Subsection heading (h4)
               </a>
             </li>
           </ul>
         </li>
         <li class="ds-c-vertical-nav__item">
-          <a class="ds-c-vertical-nav__link" href="javascript:void(0);">
+          <a class="ds-c-vertical-nav__label" href="javascript:void(0);">
             Page title
           </a>
         </li>
       </ul>
     </aside>
-    <article class="ds-l-md-col--8 ds-l-lg-col--9">
+    <article id="content" class="ds-l-md-col--8 ds-l-lg-col--9">
       <h1 class="ds-h1">Page heading (h1)</h1>
       <p class="ds-text--lead">The page heading communicates the main focus of the page. Make your page heading descriptive and keep it succinct.</p>
       <h2 class="ds-h2" id="section-heading-h2">Section heading (h2)</h2>
@@ -55,5 +63,7 @@
       <p class="ds-text">Use the vertical navigation menu to help your users quickly skip to different sections of your page. The menu is best suited to displaying a hierarchy with one to three levels and, as we mentioned, to display the sub-navigation of a given page.</p>
     </article>
   </div>
-</main></body>
+</main>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

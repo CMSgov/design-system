@@ -181,7 +181,7 @@ Style guide: components.tabs.react-tab
 
 ## Accessibility
 
-- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. Note: You'll need to implement the logic for selecting the correct tab based on the current URL.
+- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. _Note: You'll need to implement the logic for selecting the correct tab based on the current URL._
 - Ensure the HTML markup includes the proper ARIA attributes:
   - For tabs: `role`, `aria-selected`, `aria-controls`
   - For the tabs list parent: `role`, `aria-label`

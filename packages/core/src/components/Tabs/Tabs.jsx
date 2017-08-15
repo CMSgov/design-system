@@ -42,8 +42,8 @@ function isTabPanel(child) {
 }
 
 /**
- * A container component that manages the state of your tabs for you. For most
- * cases, you'll want to use this component rather than the presentational
+ * `Tabs` is a container component that manages the state of your tabs for you.
+ * In most cases, you'll want to use this component rather than the presentational
  * components (`Tab`, `TabPanel`) on their own.
  */
 export class Tabs extends React.PureComponent {
@@ -147,8 +147,8 @@ export class Tabs extends React.PureComponent {
 Tabs.propTypes = {
   children: PropTypes.node.isRequired,
   /**
-   * Default selected `TabPanel`'s `id`. If this isn't set, the first `TabPanel`
-   * will be selected.
+   * Sets the initial selected `TabPanel` state. If this isn't set, the first
+   * `TabPanel` will be selected.
    */
   defaultSelectedId: PropTypes.string,
   /**

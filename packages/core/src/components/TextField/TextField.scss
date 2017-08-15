@@ -4,17 +4,12 @@
 /*
 Text field
 
-@status recommended
-
 @uswds https://standards.usa.gov/components/form-controls/#text-input
 
-Text fields allow people to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text fields can span single or multiple lines.
+Text fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text fields can span single or multiple lines.
 
 Markup:
-<label class="ds-c-label ds-u-margin-top--0" for="input-firstname">
-  First name
-  <span class="ds-c-field__hint">Helpful hint text</span>
-</label>
+<label class="ds-c-label ds-u-margin-top--0" for="input-firstname">First name</label>
 <input class="ds-c-field" id="input-firstname" name="firstname" type="text">
 <label class="ds-c-label" for="input-lastname">
   <span class="ds-u-font-weight--bold">Last name</span>
@@ -24,10 +19,20 @@ Markup:
   <span class="ds-c-field__hint">Helpful hint text</span>
 </label>
 <input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" />
-<label class="ds-c-label" for="input-username">Username</label>
-<input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text">
+<label class="ds-c-label" for="input-username">
+  Username
+  <span class="ds-c-field__hint">Example of a success field state</span>
+</label>
+<input class="ds-c-field ds-c-field--success" id="input-username" name="username" type="text" value="johnsnow">
 <label class="ds-c-label" for="input-bio">Bio</label>
 <textarea class="ds-c-field" id="input-bio" name="bio" rows="5"></textarea>
+<label class="ds-c-label" for="input-id-num">
+  ID Number
+  <span class="ds-c-field__hint">
+    Example of a disabled field
+  </span>
+</label>
+<input class="ds-c-field ds-c-field--inverse" id="input-id-num" name="id-num" type="text" value="1234" disabled>
 
 Style guide: components.text-field
 */
@@ -63,10 +68,7 @@ Style guide: components.text-field
 
 Markup:
 <div class="ds-base--inverse ds-u-padding--2">
-  <label class="ds-c-label ds-u-margin-top--0" for="input-firstname-2">
-    First name
-    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
-  </label>
+  <label class="ds-c-label ds-u-margin-top--0" for="input-firstname-2">First name</label>
   <input class="ds-c-field ds-c-field--inverse" id="input-firstname-2" name="firstname" type="text">
   <label class="ds-c-label" for="input-lastname-2">
     <span class="ds-u-font-weight--bold">Last name</span>
@@ -78,8 +80,13 @@ Markup:
   <input class="ds-c-field ds-c-field--inverse ds-c-field--error" id="input-lastname-2" name="lastname" type="text">
   <label class="ds-c-label" for="input-username-2">Username</label>
   <input class="ds-c-field ds-c-field--inverse ds-c-field--success" id="input-username-2" name="username" type="text">
-  <label class="ds-c-label" for="input-bio-2">Bio</label>
-  <textarea class="ds-c-field ds-c-field--inverse" id="input-bio-2" name="bio" rows="5"></textarea>
+  <label class="ds-c-label" for="input-id-num-2">
+    ID Number
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">
+      Example of a disabled field
+    </span>
+  </label>
+  <input class="ds-c-field ds-c-field--inverse" id="input-id-num-2" name="id-num-2" type="text" value="1234" disabled>
 </div>
 
 Style guide: components.text-field.inverse
@@ -121,7 +128,7 @@ Style guide: components.text-field.react
 
 ## When to consider alternatives
 
-- When users are choosing from a specific set of options. Consider checkboxes, radio buttons, or a select menu in these cases.
+- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons]({{root}}/components/choice), or a [select menu]({{root}}/components/select) in these cases.
 
 ## Guidance
 

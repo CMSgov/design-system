@@ -6,6 +6,7 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No color
 
 echo "${GREEN}Pulling latest from GitHub...${NC}"
+git checkout staging
 git pull --rebase
 
 echo "${GREEN}Bumping version...${NC}"

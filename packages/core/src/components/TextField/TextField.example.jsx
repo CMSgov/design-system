@@ -29,21 +29,6 @@ export default function() {
         name='disabled_example'
         type='password'
       />
-
-      <div className='ds-base--inverse ds-u-margin-top--3 ds-u-padding--2'>
-        <TextField
-          inversed
-          label='Single line'
-          labelClassName='ds-u-margin-top--0'
-          name='inversed_single_example'
-        />
-        <TextField
-          label='Disabled field'
-          disabled
-          inversed
-          name='inversed_disabled_example'
-        />
-      </div>
     </div>
   );
 }

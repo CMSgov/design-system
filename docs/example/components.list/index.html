@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: components.list</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><h6 class="ds-h6">Unordered list</h6>
-<ul class="ds-c-list">
+<body class="ds-base">
+  <h2 class="ds-h6" id="unordered-list-id">Unordered list title</h2>
+<ul class="ds-c-list" aria-labelledby="unordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
 </ul>
-<h6 class="ds-h6">Ordered list</h6>
-<ol class="ds-c-list">
+<h2 class="ds-h6" id="ordered-list-id">Ordered list title</h2>
+<ol class="ds-c-list" aria-labelledby="ordered-list-id">
   <li>List item 1</li>
   <li>List item 2</li>
-</ol></body>
+</ol>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

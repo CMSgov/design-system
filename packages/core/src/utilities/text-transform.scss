@@ -9,9 +9,12 @@ Set the capitalization of text using the text transform utility.
 **Format**: `ds-u-text-transform--[VALUE]`
 
 Markup:
-<p class="ds-u-text-transform--uppercase">uppercase transform</p>
-<p class="ds-u-text-transform--lowercase">Lowercase transform</p>
-<p class="ds-u-text-transform--capitalize">capitalized transform</p>
+<code class="preview__label">ds-u-text-transform--uppercase</code>
+<div class="ds-u-text-transform--uppercase">{{lorem-m}}</div>
+<code class="preview__label">ds-u-text-transform--lowercase</code>
+<div class="ds-u-text-transform--lowercase">{{lorem-m}}</div>
+<code class="preview__label">ds-u-text-transform--capitalize</code>
+<div class="ds-u-text-transform--capitalize">{{lorem-m}}</div>
 
 Style guide: utilities.text-transform
 */

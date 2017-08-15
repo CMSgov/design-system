@@ -16,7 +16,7 @@ const getValues = require('./getValues');
 const path = require('path');
 
 // fontsDir should be relative to root so we can pass to path() and Git()
-const fontsDir = 'packages/core/src/fonts';
+const fontsDir = 'packages/core/fonts';
 const repoPath = path.resolve(__dirname, '../../../.git');
 
 /**

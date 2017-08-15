@@ -8,16 +8,11 @@ Change an element's typeface to either the sans-serif (Open Sans) or serif (Bitt
 
 **Format**: `ds-u-[serif|sans]`
 
-## Theming
-
-The following Sass variables can be overridden to theme the font family utility:
-
-- `$font-sans`
-- `$font-serif`
-
 Markup:
-<p class="ds-u-serif">Bitter, Georgia, serif</p>
-<p class="ds-u-sans">Open Sans, Helvetica, sans-serif</p>
+<h2 class="preview__label">ds-u-sans (default)</h2>
+<p class="ds-u-sans ds-title">Open Sans, Helvetica, sans-serif</p>
+<h2 class="preview__label">ds-u-serif</h2>
+<p class="ds-u-serif ds-title">Bitter, Georgia, serif</p>
 
 Style guide: utilities.font-family
 */
@@ -28,3 +23,16 @@ Style guide: utilities.font-family
 .ds-u-serif {
   font-family: $font-serif !important;
 }
+
+/*
+---
+
+## Theming
+
+The following Sass variables can be overridden to theme the font family utility:
+
+- `$font-sans`
+- `$font-serif`
+
+Style guide: utilities.font-family.guidance
+*/

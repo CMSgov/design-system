@@ -46,14 +46,7 @@ module.exports = (gulp, shared) => {
       postcssPlugins.push(cssnano()); // minify css
     }
 
-    if (cwd.match(/\/docs\//)) {
-      // Update url() values to be relative to our rootPath
-      if (shared.rootPath !== '') {
-        postcssPlugins.push(postcssUrl({
-          url: asset => `/${shared.rootPath}${asset.url}`
-        }));
-      }
-    } else {
+    if (!cwd.match(/\/docs\//)) {
       // inline/base64 images
       postcssPlugins.push(postcssInliner({
         assetPaths: [path.resolve(__dirname, `../../${cwd}/src/`)],

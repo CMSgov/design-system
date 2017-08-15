@@ -1,0 +1,39 @@
+@import '@cmsgov/design-system-support/src/settings/index';
+
+/*
+Skip Nav
+
+Skip navigation links allow users with screen readers to bypass long navigation lists. Make sure you include an `id` at the beginning of your main content and that it matches the skipnav link. Find more information here: [webaim.org/techniques/skipnav](http://webaim.org/techniques/skipnav/)
+
+Markup:
+<a class="ds-c-skip-nav" href="#main">Skip to main content</a>
+<a href="javascript:void(0);">Navigation link</a>
+<main id="main" class="ds-u-padding--4 ds-u-fill--gray-lightest" tabindex="0">
+  Main content
+</main>
+
+Style guide: components.skip-nav
+*/
+.ds-c-skip-nav {
+  left: 0;
+  padding: $spacer-1 $spacer-2;
+  position: absolute;
+  top: ($spacer-4 + $base-font-size) * -2;
+  z-index: 100;
+
+  &:focus {
+    background-color: $color-white;
+    left: 0;
+    top: 0;
+  }
+}
+
+/*
+`<SkipNav>`
+
+@hide-example
+
+@react-component SkipNav
+
+Style guide: components.skip-nav.react
+*/

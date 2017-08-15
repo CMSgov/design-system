@@ -34,11 +34,13 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
  * necessary.
  */
 var Select = function Select(props) {
+  /* eslint-disable prefer-const */
   var children = props.children,
       className = props.className,
       id = props.id,
       inversed = props.inversed,
       selectProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed']);
+  /* eslint-enable prefer-const */
 
   var classes = (0, _classnames2.default)('ds-c-field ds-c-field--select', { 'ds-c-field--inverse': inversed }, className);
 
@@ -64,8 +66,8 @@ Select.propTypes = {
    */
   className: _propTypes2.default.string,
   /**
-   * Sets the initial `selected` state and allows the user to select a different
-   * option without also requiring an `onChange` event handler.
+   * Sets the initial selected state. Use this for an uncontrolled component;
+   * otherwise, use the `selected` property.
    */
   defaultValue: _propTypes2.default.string,
   disabled: _propTypes2.default.bool,
@@ -79,8 +81,9 @@ Select.propTypes = {
    */
   inversed: _propTypes2.default.bool,
   /**
-   * Setting this prop to `true` will result in an error message due to
-   * accessibility concerns. See the usability guidelines for more info.
+   * Setting this prop will result in a PropTypes error message due to
+   * accessibility concerns. Use checkboxes instead if you need to support multiple
+   * selections. See the Guidance tab for more info.
    */
   multiple: function multiple(props, propName, componentName) {
     if (props[propName]) {
@@ -89,13 +92,15 @@ Select.propTypes = {
       /* eslint-enable */
     }
   },
+  /**
+   * The `select` field's `name` attribute
+   */
   name: _propTypes2.default.string.isRequired,
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * Setting this prop will render a read-only field and require an `onChange`
-   * event handler if you'd want to change its `selected` stated. Use
-   * `defaultValue` if you want the field to be mutable.
+   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
    */
   value: _propTypes2.default.string
 };
