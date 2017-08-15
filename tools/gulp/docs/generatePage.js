@@ -65,7 +65,7 @@ function generateDocPage(routes, page, rootPath) {
   <title>${page.header} - CMSGov Design System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" type="image/png" href="/${rootPath}public/images/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
 
