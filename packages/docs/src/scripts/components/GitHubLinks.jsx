@@ -18,7 +18,7 @@ const GitHubLinks = (props) => {
   return (
     <div className={props.className}>
       <a href={zipUrl} className={downloadBtnClassName}>Download code and design files</a>
-      <a href={githubUrl()} className={githubBtnClassName}>View on Github</a>
+      <a href={githubUrl()} className={githubBtnClassName}>View on GitHub</a>
     </div>
   );
 };
