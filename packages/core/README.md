@@ -26,7 +26,7 @@ or import the transpiled CSS:
 @import "@cmsgov/design-system-core/dist/index.css";
 ```
 
-[Please view the documentation site for additional information.](https://cmsgov.github.io/design-system/)
+[Please view the documentation site for additional information.](https://design.cms.gov/)
 
 ## Examples
 

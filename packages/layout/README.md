@@ -16,13 +16,13 @@ The source files included are written in Sass (`.scss`). You can add your `node_
 @import "@cmsgov/design-system-layout/src/index";
 ```
 
-or import the transpiled CSS:
+or import the compiled CSS:
 
 ```css
 @import "@cmsgov/design-system-layout/dist/index.css";
 ```
 
-[Please view the documentation site for additional information.](https://cmsgov.github.io/design-system/)
+[Please view the documentation site for additional information.](https://design.cms.gov/)
 
 ## Examples
 
