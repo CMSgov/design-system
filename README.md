@@ -1,6 +1,6 @@
-# CMS.GOV Design System
+# CMS Design System
 
-> A shared set of design and development resources for creating accessible and consistent websites. The design system includes things like principles, high-level guidelines (UX conventions, UI code conventions, etc), UI components, documentation, tools, resources, and more.
+> The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
 ## Packages
 
