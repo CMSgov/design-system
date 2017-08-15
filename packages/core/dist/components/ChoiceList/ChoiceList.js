@@ -48,14 +48,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * A `ChoiceList` component can be used to render a `select` menu, radio
+ * A `ChoiceList` component can be used to render a select menu, radio
  * button group, or checkbox group.
  *
- * You can manually pass in the `type` prop, but the real power of this component
- * is unleashed when you let it determine the type of fields for you. It takes
- * into account accessibility and usability best practices, so you can pass in
- * an array of choices and let it determine what type of field would be best for
- * the user.
+ * By default the component determines the type of field for you, taking
+ * into account accessibility and usability best practices. So, you can pass in
+ * an array of `choices` and let it determine what type of field would be best for
+ * the user, or alternatively you can manually pass in the `type` prop.
  */
 var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
   _inherits(ChoiceList, _React$PureComponent);
@@ -237,7 +236,7 @@ ChoiceList.propTypes = {
   disabled: _propTypes2.default.bool,
   errorMessage: _propTypes2.default.string,
   /**
-   * Hint text
+   * Additional hint text to display
    */
   hint: _propTypes2.default.node,
   /**
@@ -245,7 +244,7 @@ ChoiceList.propTypes = {
    */
   inversed: _propTypes2.default.bool,
   /**
-   * The label for the entire list of choices
+   * Label for the field
    */
   label: _propTypes2.default.node.isRequired,
   /**
@@ -257,6 +256,9 @@ ChoiceList.propTypes = {
    * in a list of checkbox fields to be rendered.
    */
   multiple: _propTypes2.default.bool,
+  /**
+   * The field's `name` attribute
+   */
   name: _propTypes2.default.string.isRequired,
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,

@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: components.select</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
+<body class="ds-base">
+  <label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
 <select class="ds-c-field ds-c-field--select" name="options" id="options">
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
@@ -16,7 +23,10 @@
   <option value="7">Option 7</option>
 </select>
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">Field label</label>
+  <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">
+    Field label
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+  </label>
   <select class="ds-c-field ds-c-field--select ds-c-field--inverse" name="options-inverse" id="options-inverse">
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -26,5 +36,7 @@
     <option value="6">Option 6</option>
     <option value="7">Option 7</option>
   </select>
-</div></body>
+</div>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: components.table</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><table class="ds-c-table">
+<body class="ds-base">
+  <table class="ds-c-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th class="ds-u-text-align--right">Rate</th>
-      <th>Favorite fruit</th>
+      <th scope="col">Name</th>
+      <th class="ds-u-text-align--right" scope="col">Rate</th>
+      <th scope="col">Favorite fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -25,5 +32,7 @@
       <td>Strawberries</td>
     </tr>
   </tbody>
-</table></body>
+</table>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

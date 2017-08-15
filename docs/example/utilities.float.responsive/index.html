@@ -2,21 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: utilities.float.responsive</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><div class="ds-u-clearfix">
-  :)
+<body class="ds-base">
+  <div class="ds-u-clearfix">
+  <strong>Inline text</strong>
   <div class="ds-u-float--none ds-u-md-float--left ds-u-lg-float--right">
-    <code class="ds-u-md-display--none">
+    <p class="ds-u-md-display--none ds-base--inverse ds-u-padding--2">
       float: none
-    </code>
-    <code class="ds-u-display--none ds-u-md-display--inline-block ds-u-lg-display--none">
+    </p>
+    <p class="ds-u-display--none ds-u-md-display--inline-block ds-u-lg-display--none ds-base--inverse ds-u-padding--2">
       float: left
-    </code>
-    <code class="ds-u-display--none ds-u-lg-display--inline-block">
+    </p>
+    <p class="ds-u-display--none ds-u-lg-display--inline-block ds-base--inverse ds-u-padding--2">
       float: right
-    </code>
+    </p>
   </div>
-</div></body>
+</div>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

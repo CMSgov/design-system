@@ -36,9 +36,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
-The `TextField` component affords a user to type text into a form.
-By default it renders a field for capturing a single line of text,
-but can be configured to support multiline text.
+ * A `TextField` component renders an input field as well as supporting UI
+ * elements like a label, error message, and hint text.
 */
 var TextField = exports.TextField = function (_React$PureComponent) {
   _inherits(TextField, _React$PureComponent);
@@ -104,12 +103,12 @@ TextField.defaultProps = {
 
 TextField.propTypes = {
   /**
-   * Additional classes to be added to the root element
+   * Additional classes to be added to the root `div` element
    */
   className: _propTypes2.default.string,
   /**
-   * Default value of the text field, if any. Use this for an uncontrolled
-   * component; otherwise, use the `value` property
+   * Sets the initial value. Use this for an uncontrolled component; otherwise,
+   * use the `value` property.
    */
   defaultValue: _propTypes2.default.string,
   disabled: _propTypes2.default.bool,
@@ -119,7 +118,7 @@ TextField.propTypes = {
    */
   fieldClassName: _propTypes2.default.string,
   /**
-   * Hint text
+   * Additional hint text to display
    */
   hint: _propTypes2.default.node,
   /**
@@ -127,11 +126,11 @@ TextField.propTypes = {
    */
   inversed: _propTypes2.default.bool,
   /**
-   * The label for the entire list of choices
+   * Label for the input
    */
   label: _propTypes2.default.node.isRequired,
   /**
-   * Additional classes to be added to the `FormLabel`
+   * Additional classes to be added to the label
    */
   labelClassName: _propTypes2.default.string,
   /**
@@ -142,8 +141,8 @@ TextField.propTypes = {
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * Optionally specify the number of visible text lines for the control. Only
-   * applicable if this is a multiline field
+   * Optionally specify the number of visible text lines for the field. Only
+   * applicable if this is a multiline field.
    */
   rows: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
   /**
@@ -151,8 +150,8 @@ TextField.propTypes = {
    */
   type: _propTypes2.default.string,
   /**
-   * Current value of the text field. Use this for a controlled component where
-   * you are maintaining its current state; otherwise, use the `defaultValue` property
+   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * mutable, use `defaultValue`. Otherwise, set `onChange` or `disabled`.
    */
   value: _propTypes2.default.string
 };

@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Example: components.button.inverse</title>
   <link rel="stylesheet" href="/design-system/public/styles/example.css" />
+
+  <script>
+window.tealiumEnvironment = "prod";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
 </head>
-<body class="ds-base"><div class="ds-base--inverse ds-u-padding--2">
+<body class="ds-base">
+  <div class="ds-base--inverse ds-u-padding--2">
   <button class="ds-c-button ds-c-button--inverse">Button</button>
   <button class="ds-c-button ds-c-button--transparent-inverse">Button</button>
   <button class="ds-c-button ds-c-button--primary">Button</button>
   <button class="ds-c-button ds-c-button--danger">Button</button>
   <button class="ds-c-button ds-c-button--success">Button</button>
-  <button class="ds-c-button ds-c-button--disabled-inverse">Button</button>
-</div></body>
+  <button disabled class="ds-c-button ds-c-button--disabled-inverse">Button</button>
+</div>
+  <script type="text/javascript" src="/design-system/public/scripts/example.js"></script>
+</body>
 </html>

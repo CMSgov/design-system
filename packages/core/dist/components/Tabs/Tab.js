@@ -86,8 +86,8 @@ Tab.propTypes = {
    */
   id: _propTypes2.default.string.isRequired,
   /**
-   * You can optionally set the `href` attribute used for the tab. This can be
-   * useful if you want to use relative links rather than a URL hash (the default)
+   * Sets the `href` attribute used for the tab. This can be useful if you want
+   * to use relative links rather than a URL hash (the default).
    */
   href: _propTypes2.default.string,
   /**
@@ -97,7 +97,7 @@ Tab.propTypes = {
    */
   onClick: _propTypes2.default.func,
   /**
-   * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute
+   * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
   panelId: _propTypes2.default.string.isRequired,
   selected: _propTypes2.default.bool

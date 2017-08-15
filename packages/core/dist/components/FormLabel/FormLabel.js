@@ -110,7 +110,7 @@ FormLabel.propTypes = {
    */
   fieldId: _propTypes2.default.string,
   /**
-   * Hint text
+   * Additional hint text to display
    */
   hint: _propTypes2.default.node,
   /**
