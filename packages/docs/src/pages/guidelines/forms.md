@@ -25,8 +25,8 @@ Below are some best practices your project should aim to follow in order to prov
 
 - Place hint text within the field's `<label>` element.
 - Apply the `ds-c-field__hint` class to hint text.
-- Use hint text for supporting contextual help, this will always be shown.
-- Hint text should sit above a form field, and below the label text.
+- Use hint text for supporting contextual help, which will always be shown.
+- Hint text should sit above a form field and below the label text.
 
 #### Validation
 
