@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.VerticalNavItem = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _propTypes = require('prop-types');
@@ -145,7 +147,7 @@ var VerticalNavItem = exports.VerticalNavItem = function (_React$PureComponent) 
         // Since the VerticalNavItemLabel will just toggle the subnav, we
         // add a link to the top of the subnav for this item. Otherwise there
         // wouldn't be a way to actually visit its URL
-        var item = Object.assign({}, this.props);
+        var item = _extends({}, this.props);
         delete item.items;
 
         return [item].concat(this.props.items);
