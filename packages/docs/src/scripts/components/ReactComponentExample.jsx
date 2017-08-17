@@ -9,6 +9,14 @@ import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 require('prismjs/components/prism-jsx');
 
+// Add polyfills to fix react-element-to-jsx-string IE compatibility
+// github.com/algolia/react-element-to-jsx-string/issues/147
+require('core-js/fn/array/includes');
+require('core-js/fn/array/fill');
+require('core-js/fn/function/name');
+require('core-js/fn/object/get-own-property-symbols');
+require('core-js/fn/string/includes');
+
 class ReactComponentExample extends React.PureComponent {
   highlightedMarkup() {
     const markup = reactElementToJSXString(this.props.renderComponent(), {

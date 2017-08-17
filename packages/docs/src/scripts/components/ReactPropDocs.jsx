@@ -28,10 +28,10 @@ class ReactPropDocs extends React.PureComponent {
       <table className='ds-c-table'>
         <thead>
           <tr>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Default</td>
-            <td>Description</td>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>{this.rows()}</tbody>
