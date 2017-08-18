@@ -35,7 +35,7 @@ const Nav = props => {
     <VerticalNav
       className='c-nav__list'
       items={expandSelectedItems(props.items, props.selectedId)}
-      selectedId={props.selectedId}
+      selectedId={props.selectedId ? props.selectedId : undefined}
     />
   );
 };
