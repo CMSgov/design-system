@@ -89,7 +89,7 @@ To override any of the design system's Sass variables, include the variable defi
 @import '@cmsgov/design-system-core/src/index';
 ```
 
-[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/index.scss)
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/styles/index.scss)
 
 <h4 class="ds-h4 ds-u-font-size--base">Applying styles to your page</h4>
 
@@ -137,7 +137,7 @@ Components can also be imported using the shorter syntax below.
 import { Button } from '@cmsgov/design-system-core';
 ```
 
-[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/index.js)
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/scripts/index.js)
 
 <h2 id="examples" class="ds-h2 ds-u-color--primary-darker">Examples</h2>
 
