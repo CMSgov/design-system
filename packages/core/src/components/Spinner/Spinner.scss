@@ -1,0 +1,169 @@
+@import '@cmsgov/design-system-support/src/settings/index';
+
+@mixin spinner-size($inner-size, $outer-size) {
+  width: $outer-size;
+  height: $outer-size;
+
+  &::before,
+  &::after {
+    border-width: ($inner-size / 8);
+    width: $inner-size;
+    height: $inner-size;
+    $padding: (($outer-size - $inner-size) / 2);
+    top: $padding;
+    left: $padding;
+  }
+}
+
+/*
+Spinner
+
+Spinners signify that the application is waiting for an asychronous operation to complete.
+
+.ds-c-spinner
+
+Markup:
+<span class="ds-c-spinner ds-c-spinner--small"></span>
+<span class="ds-c-spinner"></span>
+<span class="ds-c-spinner ds-c-spinner--big"></span>
+<br>
+<span class="ds-c-spinner ds-u-color--primary"></span>
+<span class="ds-c-spinner ds-u-color--success"></span>
+<span class="ds-c-spinner ds-u-color--muted"></span>
+
+Style guide: components.spinner
+*/
+.ds-c-spinner {
+  @include spinner-size($spacer-4, $spacer-4);
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    content: '';
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+  &::before {
+    border-color: inherit;
+    opacity: 0.2;
+  }
+
+  &::after {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-left-color: inherit;
+    transform: translateZ(0);
+    animation: spin $animation-speed-4 infinite linear;
+  }
+
+  .ds-c-button > & {
+    @include inline-icon;
+    @include spinner-size(1em, 1em);
+  }
+}
+
+.ds-c-spinner--background {
+  @include spinner-size($spacer-4, $spacer-6);
+  width: $spacer-6;
+  height: $spacer-6;
+  background-color: $color-background;
+  border-radius: 50%;
+  color: $color-base;
+}
+
+.ds-c-spinner--small {
+  @include spinner-size($spacer-2, $spacer-2);
+
+  &.ds-c-spinner--background {
+    @include spinner-size($spacer-2, $spacer-3);
+  }
+}
+
+.ds-c-spinner--big {
+  @include spinner-size($spacer-5, $spacer-5);
+
+  &.ds-c-spinner--background {
+    @include spinner-size($spacer-5, $spacer-7);
+  }
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
+---
+
+## When to use
+
+- To indicate a loading state for quick asynchronous tasks
+
+## When to consider alternatives
+
+- When the process it is waiting for takes a long time. Spinners provide no feedback other than that _we're waiting_, so long processes can make users nervous that something went wrong. Consider adding descriptive text or another UX pattern entirely.
+- When we are loading a whole page of content. If all we show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a _skeleton screen_ so the user knows what to expect.
+
+## Guidance
+
+- If the process takes a long time, use something else.
+
+Style guide: components.spinner.guidance
+*/
+
+/*
+Inside buttons
+
+Markup:
+<button class="ds-c-button">
+  <span class="ds-c-spinner ds-c-spinner--small"></span> Loading
+</button>
+<button class="ds-c-button ds-c-button--primary">
+  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse"></span> Loading
+</button>
+<button class="ds-c-button ds-c-button--outline ds-c-button--big">
+  <span class="ds-c-spinner"></span> Big button
+</button>
+<button class="ds-c-button ds-c-button--success ds-c-button--big">
+  <span class="ds-c-spinner"></span> Big green button
+</button>
+
+Style guide: components.spinner.buttons
+*/
+
+/*
+With background
+
+Markup:
+<div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2" style="position: relative">
+  <p>{{lorem-l}}</p>
+  <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
+    <span class="ds-c-spinner ds-c-spinner--background"></span>
+  </div>
+</div>
+<div class="ds-u-padding--2" style="position: relative">
+  <p>{{lorem-l}}</p>
+  <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
+    <span class="ds-c-spinner ds-c-spinner--background ds-u-fill--background-inverse ds-u-color--base-inverse"></span>
+  </div>
+</div>
+
+Style guide: components.spinner.background
+*/
+
+/*
+`<Spinner>`
+
+@react-component Spinner
+
+Style guide: components.spinner.react
+*/

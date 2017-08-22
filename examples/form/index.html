@@ -64,9 +64,18 @@
         <label class="ds-u-display--inline-block" for="input-no">No</label>
       </fieldset>
 
-      <input class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit" value="Report issue" />
+      <button class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit">
+        <span id="spinner" class="ds-c-spinner ds-u-display--none"></span>
+        Report issue
+      </button>
       <a class="ds-c-button" href="#">Cancel</a>
     </form>
   </div>
+  <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.querySelector("#spinner").classList.toggle("ds-u-display--none");
+    });
+  </script>
 </body>
 </html>
