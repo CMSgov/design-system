@@ -1,5 +1,5 @@
-import githubUrl from '../shared/githubUrl';
 import React from 'react';
+import githubUrl from '../shared/githubUrl';
 
 const helpfulLinks = {
   'https://standards.usa.gov/': 'U.S. Web Design Standards',
