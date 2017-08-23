@@ -12,7 +12,7 @@ export default function() {
         <Spinner background className="ds-u-valign--middle" />
       </div>
       <div className="ds-u-display--inline-block ds-u-padding--2">
-        <Spinner background inverse className="ds-u-valign--middle" />
+        <Spinner background inversed className="ds-u-valign--middle" />
       </div>
     </div>
   );
