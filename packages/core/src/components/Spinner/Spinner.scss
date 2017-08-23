@@ -1,17 +1,17 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
 @mixin spinner-size($inner-size, $outer-size) {
-  width: $outer-size;
   height: $outer-size;
+  width: $outer-size;
+  $padding: (($outer-size - $inner-size) / 2);
 
   &::before,
   &::after {
     border-width: ($inner-size / 8);
-    width: $inner-size;
     height: $inner-size;
-    $padding: (($outer-size - $inner-size) / 2);
-    top: $padding;
     left: $padding;
+    top: $padding;
+    width: $inner-size;
   }
 }
 
@@ -31,20 +31,20 @@ Style guide: components.spinner
 */
 .ds-c-spinner {
   @include spinner-size($spacer-4, $spacer-4);
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
-  box-sizing: border-box;
 
   &::before,
   &::after {
-    content: '';
+    border-radius: 50%;
+    border-style: solid;
     box-sizing: border-box;
+    content: '';
     display: block;
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
-    border-style: solid;
-    border-radius: 50%;
   }
 
   &::before {
@@ -53,12 +53,12 @@ Style guide: components.spinner
   }
 
   &::after {
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    border-left-color: inherit;
-    transform: translateZ(0);
     animation: spin $animation-speed-4 infinite linear;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    transform: translateZ(0);
   }
 
   .ds-c-button > & {
@@ -69,11 +69,11 @@ Style guide: components.spinner
 
 .ds-c-spinner--background {
   @include spinner-size($spacer-4, $spacer-6);
-  width: $spacer-6;
-  height: $spacer-6;
   background-color: $color-background;
   border-radius: 50%;
   color: $color-base;
+  height: $spacer-6;
+  width: $spacer-6;
 }
 
 .ds-c-spinner--small {
