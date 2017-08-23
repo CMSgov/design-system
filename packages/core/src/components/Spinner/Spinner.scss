@@ -67,7 +67,7 @@ Style guide: components.spinner
   }
 }
 
-.ds-c-spinner--background {
+.ds-c-spinner--filled {
   @include spinner-size($spacer-4, $spacer-6);
   background-color: $color-background;
   border-radius: 50%;
@@ -79,7 +79,7 @@ Style guide: components.spinner
 .ds-c-spinner--small {
   @include spinner-size($spacer-2, $spacer-2);
 
-  &.ds-c-spinner--background {
+  &.ds-c-spinner--filled {
     @include spinner-size($spacer-2, $spacer-3);
   }
 }
@@ -87,7 +87,7 @@ Style guide: components.spinner
 .ds-c-spinner--big {
   @include spinner-size($spacer-5, $spacer-5);
 
-  &.ds-c-spinner--background {
+  &.ds-c-spinner--filled {
     @include spinner-size($spacer-5, $spacer-7);
   }
 }
@@ -150,19 +150,21 @@ Style guide: components.spinner.buttons
 */
 
 /*
-With background
+"Filled" mode
+
+To provide more contrast when being rendered over other content, the `ds-c-spinner--filled` class can be added to give it an appropriately shaped background with some padding.
 
 Markup:
 <div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--background"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled"></span>
   </div>
 </div>
 <div class="ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--background ds-u-fill--background-inverse ds-u-color--base-inverse"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled ds-u-fill--background-inverse ds-u-color--base-inverse"></span>
   </div>
 </div>
 

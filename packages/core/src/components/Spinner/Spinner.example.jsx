@@ -9,10 +9,10 @@ export default function() {
         <Spinner className='ds-u-valign--middle' />
       </div>
       <div className='ds-u-display--inline-block ds-u-padding--2 ds-u-fill--background-inverse'>
-        <Spinner background className='ds-u-valign--middle' />
+        <Spinner filled className='ds-u-valign--middle' />
       </div>
       <div className='ds-u-display--inline-block ds-u-padding--2'>
-        <Spinner background inversed className='ds-u-valign--middle' />
+        <Spinner filled inversed className='ds-u-valign--middle' />
       </div>
     </div>
   );

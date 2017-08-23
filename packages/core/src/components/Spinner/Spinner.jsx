@@ -10,7 +10,7 @@ export const Spinner = (props) => {
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
     props.inversed && 'ds-u-fill--background-inverse ds-u-color--base-inverse',
-    props.background && 'ds-c-spinner--background',
+    props.filled && 'ds-c-spinner--filled',
     props.className
   );
 
@@ -26,7 +26,7 @@ Spinner.propTypes = {
   /** Applies the inverse theme styling */
   inversed: PropTypes.bool,
   /** Adds a background behind the spinner for extra contrast */
-  background: PropTypes.bool,
+  filled: PropTypes.bool,
   /** Smaller or larger variant */
   size: PropTypes.oneOf(['small', 'big'])
 };
