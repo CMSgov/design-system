@@ -5,6 +5,6 @@ $ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
 $speed-base: 1;
 // 250ms is the quickest an animation can be for it to even be noticeable
 $animation-speed-1: 0.25s * $speed-base;
-$animation-speed-2: 0.3s * $speed-base;
-$animation-speed-3: 0.5s * $speed-base;
-$animation-speed-4: 1s * $speed-base;
+$animation-speed-2: 0.30s * $speed-base;
+$animation-speed-3: 0.50s * $speed-base;
+$animation-speed-4: 0.80s * $speed-base;
