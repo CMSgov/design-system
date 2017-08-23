@@ -26,10 +26,6 @@ Markup:
 <span class="ds-c-spinner ds-c-spinner--small"></span>
 <span class="ds-c-spinner"></span>
 <span class="ds-c-spinner ds-c-spinner--big"></span>
-<br>
-<span class="ds-c-spinner ds-u-color--primary"></span>
-<span class="ds-c-spinner ds-u-color--success"></span>
-<span class="ds-c-spinner ds-u-color--muted"></span>
 
 Style guide: components.spinner
 */
@@ -121,7 +117,20 @@ Style guide: components.spinner.guidance
 */
 
 /*
-Inside buttons
+Changing the spinner color
+
+To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes]({{root}}/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
+
+Markup:
+<span class="ds-c-spinner ds-u-color--primary"></span>
+<span class="ds-c-spinner ds-u-color--success"></span>
+<span class="ds-c-spinner ds-u-color--muted"></span>
+
+Style guide: components.spinner.colors
+*/
+
+/*
+Use inside buttons
 
 Markup:
 <button class="ds-c-button">
