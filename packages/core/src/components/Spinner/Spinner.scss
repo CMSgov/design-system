@@ -107,7 +107,7 @@ Style guide: components.spinner
 ## When to consider alternatives
 
 - When the process it is waiting for takes a long time. Spinners provide no feedback other than that _we're waiting_, so long processes can make users nervous that something went wrong. Consider adding descriptive text or another UX pattern entirely.
-- When we are loading a whole page of content. If all we show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a _skeleton screen_ so the user knows what to expect.
+- When you are loading a whole page of content. If all you show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a [_skeleton screen_](https://www.lukew.com/ff/entry.asp?1797) so the user knows what to expect.
 
 ## Guidance
 
@@ -116,6 +116,7 @@ Style guide: components.spinner
 ## Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
+- [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
 
 Style guide: components.spinner.guidance
 */
