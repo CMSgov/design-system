@@ -22,25 +22,23 @@ Markup:
 Style guide: components.alert
 */
 
-$h-padding: $spacer-2;
-$bar-size: $spacer-1;
-$alert-icon-size: $spacer-7;
+$alert-padding: $spacer-2;
+$alert-bar-size: $spacer-1;
+$alert-icon-size: $spacer-5;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
   background-image: url('#{$image-path}/info.png');
   background-image: url('#{$image-path}/info.svg');
-  background-position: $h-padding $h-padding;
+  background-position: $alert-padding $alert-padding;
   background-repeat: no-repeat;
   background-size: $alert-icon-size;
   box-sizing: border-box;
   color: $color-base;
   min-height: $alert-icon-size + $spacer-2;
-  padding-bottom: $h-padding * 0.7;
-  padding-left: $h-padding;
-  padding-right: $h-padding;
-  padding-top: $h-padding;
+  padding: $alert-padding;
   position: relative;
+  border-left: $alert-bar-size solid $color-primary-alt;
 
   a {
     color: $color-primary-darker;
@@ -60,20 +58,10 @@ $alert-icon-size: $spacer-7;
       margin-top: 0;
     }
   }
-
-  &:before {
-    background-color: $color-primary-alt;
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: $bar-size;
-  }
 }
 
 .ds-c-alert__body {
-  padding-left: $alert-icon-size + $bar-size;
+  padding-left: $alert-icon-size + $alert-bar-size;
 }
 
 .ds-c-alert__heading {
@@ -86,37 +74,27 @@ $alert-icon-size: $spacer-7;
 .ds-c-alert__text {
   margin-bottom: 0;
   margin-top: 0;
-  &:only-child {
-    margin-bottom: $spacer-2;
-    padding-top: $spacer-1;
-  }
 }
 
 .ds-c-alert--error {
   background-color: $color-error-lightest;
   background-image: url('#{$image-path}/error.png');
   background-image: url('#{$image-path}/error.svg');
-  &:before {
-    background-color: $color-secondary;
-  }
+  border-color: $color-error;
 }
 
 .ds-c-alert--warn {
   background-color: $color-warn-lightest;
   background-image: url('#{$image-path}/warning.png');
   background-image: url('#{$image-path}/warning.svg');
-  &:before {
-    background-color: $color-gold;
-  }
+  border-color: $color-warn;
 }
 
 .ds-c-alert--success {
   background-color: $color-success-lightest;
   background-image: url('#{$image-path}/success.png');
   background-image: url('#{$image-path}/success.svg');
-  &:before {
-    background-color: $color-green;
-  }
+  border-color: $color-success;
 }
 
 /*
