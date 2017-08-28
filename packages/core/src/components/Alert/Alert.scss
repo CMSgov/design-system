@@ -22,20 +22,23 @@ Markup:
 Style guide: components.alert
 */
 
+$alert-padding: $spacer-2;
+$alert-bar-size: $spacer-1;
 $alert-icon-size: $spacer-5;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
   background-image: url('#{$image-path}/info.png');
   background-image: url('#{$image-path}/info.svg');
-  background-position: $spacer-1 ($spacer-2 * 0.95);
+  background-position: $alert-padding $alert-padding;
   background-repeat: no-repeat;
   background-size: $alert-icon-size;
-  border: 1px solid $color-primary-alt-light;
+  border-left: $alert-bar-size solid $color-primary-alt;
   box-sizing: border-box;
   color: $color-base;
   min-height: $alert-icon-size + $spacer-2;
-  padding: $spacer-2;
+  padding: $alert-padding;
+  position: relative;
 
   a {
     color: $color-primary-darker;
@@ -58,7 +61,7 @@ $alert-icon-size: $spacer-5;
 }
 
 .ds-c-alert__body {
-  padding-left: $alert-icon-size;
+  padding-left: $alert-icon-size + $alert-bar-size;
 }
 
 .ds-c-alert__heading {
@@ -77,21 +80,21 @@ $alert-icon-size: $spacer-5;
   background-color: $color-error-lightest;
   background-image: url('#{$image-path}/error.png');
   background-image: url('#{$image-path}/error.svg');
-  border-color: $color-error-light;
+  border-color: $color-error;
 }
 
 .ds-c-alert--warn {
   background-color: $color-warn-lightest;
   background-image: url('#{$image-path}/warning.png');
   background-image: url('#{$image-path}/warning.svg');
-  border-color: $color-warn-light;
+  border-color: $color-warn;
 }
 
 .ds-c-alert--success {
   background-color: $color-success-lightest;
   background-image: url('#{$image-path}/success.png');
   background-image: url('#{$image-path}/success.svg');
-  border-color: $color-success-lighter;
+  border-color: $color-success;
 }
 
 /*
