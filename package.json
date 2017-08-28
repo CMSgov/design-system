@@ -12,7 +12,8 @@
     "g": "yarn generate",
     "start": "NODE_ENV=development gulp watch --env=development",
     "test": "NODE_ENV=test gulp docs:react && jest && gulp lint --env=test",
-    "test:watch": "NODE_ENV=test jest --watch"
+    "test:watch": "NODE_ENV=test jest --watch",
+    "lint": "yarn run gulp lint"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

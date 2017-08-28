@@ -33,22 +33,24 @@ The `bootstrap:yarn` command runs [Lerna](https://lernajs.io/) which allows us t
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn run start`
+- `yarn start`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
-- `yarn run build`
+- `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
-- `yarn run bump`
+- `yarn bump`
   - Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
-- `yarn run generate`
+- `yarn generate`
   - Generates the necessary files for a new core component
-  - Alias: `yarn run g`
+  - Alias: `yarn g`
 - `yarn test`
   - Runs JS unit tests
   - Lints JS using ESLint
   - Lints Sass using stylelint
-- `yarn run test:watch`
+- `yarn test:watch`
   - Runs JS unit tests and will continue to run tests as files change
+- `yarn lint`
+  - Runs just the linting portion of the tests
 
 ## Submitting a pull request
 
