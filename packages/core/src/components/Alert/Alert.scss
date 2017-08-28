@@ -33,12 +33,12 @@ $alert-icon-size: $spacer-5;
   background-position: $alert-padding $alert-padding;
   background-repeat: no-repeat;
   background-size: $alert-icon-size;
+  border-left: $alert-bar-size solid $color-primary-alt;
   box-sizing: border-box;
   color: $color-base;
   min-height: $alert-icon-size + $spacer-2;
   padding: $alert-padding;
   position: relative;
-  border-left: $alert-bar-size solid $color-primary-alt;
 
   a {
     color: $color-primary-darker;
