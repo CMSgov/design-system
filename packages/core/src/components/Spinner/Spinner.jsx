@@ -2,9 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * The `Spinner` component
- */
 export const Spinner = (props) => {
   const className = classNames(
     'ds-c-spinner',
