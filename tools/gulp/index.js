@@ -8,7 +8,7 @@ const argv = require('yargs').argv;
 const pkg = require('../../packages/core/package.json');
 
 module.exports = (gulp) => {
-  const rootPath = 'design-system'; // pkg.version
+  const rootPath = ''; // pkg.version
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
