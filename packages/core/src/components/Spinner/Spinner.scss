@@ -1,0 +1,186 @@
+@import '@cmsgov/design-system-support/src/settings/index';
+
+@mixin spinner-size($inner-size, $outer-size) {
+  height: $outer-size;
+  width: $outer-size;
+  $padding: (($outer-size - $inner-size) / 2);
+
+  &::before,
+  &::after {
+    border-width: ($inner-size / 8);
+    height: $inner-size;
+    left: $padding;
+    top: $padding;
+    width: $inner-size;
+  }
+}
+
+/*
+Spinner
+
+Spinners signify that the application is waiting for an asynchronous operation to complete.
+
+@status alpha
+
+Markup:
+<span class="ds-c-spinner ds-c-spinner--small"></span>
+<span class="ds-c-spinner"></span>
+<span class="ds-c-spinner ds-c-spinner--big"></span>
+
+Style guide: components.spinner
+*/
+.ds-c-spinner {
+  @include spinner-size($spacer-4, $spacer-4);
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+
+  &::before,
+  &::after {
+    border-radius: 50%;
+    border-style: solid;
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    border-color: inherit;
+    opacity: 0.2;
+  }
+
+  &::after {
+    animation: spin $animation-speed-4 infinite linear;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    transform: translateZ(0);
+  }
+
+  .ds-c-button > & {
+    @include inline-icon;
+    @include spinner-size(1em, 1em);
+  }
+}
+
+.ds-c-spinner--filled {
+  @include spinner-size($spacer-4, $spacer-6);
+  background-color: $color-background;
+  border-radius: 50%;
+  color: $color-base;
+  height: $spacer-6;
+  width: $spacer-6;
+}
+
+.ds-c-spinner--small {
+  @include spinner-size($spacer-2, $spacer-2);
+
+  &.ds-c-spinner--filled {
+    @include spinner-size($spacer-2, $spacer-3);
+  }
+}
+
+.ds-c-spinner--big {
+  @include spinner-size($spacer-5, $spacer-5);
+
+  &.ds-c-spinner--filled {
+    @include spinner-size($spacer-5, $spacer-7);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
+---
+
+## When to use
+
+- To indicate a loading state for quick asynchronous tasks
+
+## When to consider alternatives
+
+- When the process it is waiting for takes a long time. Spinners provide no feedback other than that _we're waiting_, so long processes can make users nervous that something went wrong. Consider adding descriptive text or another UX pattern entirely.
+- When you are loading a whole page of content. If all you show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a [_skeleton screen_](https://www.lukew.com/ff/entry.asp?1797) so the user knows what to expect.
+
+## Guidance
+
+- If the process takes a long time, use something else.
+
+## Learn more
+
+- [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
+- [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)
+- [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
+
+Style guide: components.spinner.guidance
+*/
+
+/*
+Changing the spinner color
+
+To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes]({{root}}/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
+
+Markup:
+<span class="ds-c-spinner ds-u-color--primary"></span>
+<span class="ds-c-spinner ds-u-color--success"></span>
+<span class="ds-c-spinner ds-u-color--muted"></span>
+
+Style guide: components.spinner.colors
+*/
+
+/*
+Use inside buttons
+
+Markup:
+<button class="ds-c-button">
+  <span class="ds-c-spinner ds-c-spinner--small"></span> Loading
+</button>
+<button class="ds-c-button ds-c-button--primary">
+  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse"></span> Loading
+</button>
+<button class="ds-c-button ds-c-button--outline ds-c-button--big">
+  <span class="ds-c-spinner"></span> Big button
+</button>
+<button class="ds-c-button ds-c-button--success ds-c-button--big">
+  <span class="ds-c-spinner"></span> Big green button
+</button>
+
+Style guide: components.spinner.buttons
+*/
+
+/*
+"Filled" mode
+
+To provide more contrast when being rendered over other content, the `ds-c-spinner--filled` class can be added to give it an appropriately shaped background with some padding.
+
+Markup:
+<div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2" style="position: relative">
+  <p>{{lorem-l}}</p>
+  <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
+    <span class="ds-c-spinner ds-c-spinner--filled"></span>
+  </div>
+</div>
+<div class="ds-u-padding--2" style="position: relative">
+  <p>{{lorem-l}}</p>
+  <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
+    <span class="ds-c-spinner ds-c-spinner--filled ds-u-fill--background-inverse ds-u-color--base-inverse"></span>
+  </div>
+</div>
+
+Style guide: components.spinner.background
+*/
+
+/*
+`<Spinner>`
+
+@react-component Spinner
+
+Style guide: components.spinner.react
+*/
