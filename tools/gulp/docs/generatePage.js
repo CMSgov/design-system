@@ -62,7 +62,7 @@ function generateDocPage(routes, page, rootPath) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>${page.header} - CMSGov Design System</title>
+  ${seo(page, rootPath)}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
@@ -83,7 +83,7 @@ function generateDocPage(routes, page, rootPath) {
 </body>
 </html>`;
 
-  let pathObj = docsPath(page.referenceURI);
+  const pathObj = docsPath(page.referenceURI);
   return updateFile(html, pathObj);
 }
 
@@ -153,7 +153,7 @@ function checkCache(html, path) {
 
 function docsPath(uri) {
   if (uri === 'public') throw Error('Filename can\'t be "public"');
-  let dir = path.resolve(__dirname, `../../../docs/${uri}`);
+  const dir = path.resolve(__dirname, `../../../docs/${uri}`);
 
   return {
     dir: dir,
@@ -176,6 +176,26 @@ function saveToFile(html, pathObj, retry = true) {
         .then(() => resolve(true));
     });
   });
+}
+
+/**
+ * Output SEO tags for the documentation's permalink page
+ * @param {Object} page
+ * @param {String} rootPath - Root docs site path
+ * @return {String}
+ */
+function seo(page, rootPath = '') {
+  const html = [];
+
+  if (page.referenceURI.replace(rootPath.replace(/\/$/, ''), '') === '') {
+    // Homepage
+    html.push('<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework" />');
+    html.push('<title>CMS Design System | An open source design and front-end toolkit</title>');
+  } else {
+    html.push(`<title>${page.header} - CMS Design System</title>`);
+  }
+
+  return html.join('');
 }
 
 /**

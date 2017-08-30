@@ -5,10 +5,9 @@
  */
 'use strict';
 const argv = require('yargs').argv;
-const pkg = require('../../packages/core/package.json');
 
 module.exports = (gulp) => {
-  const rootPath = 'design-system'; // pkg.version
+  const rootPath = ''; // pkg.version
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
@@ -17,7 +16,6 @@ module.exports = (gulp) => {
     // TODO: Replace the line below once we move to publishing the docs on S3
     // rather than GitHub pages.
     rootPath: rootPath,
-    version: pkg.version,
     webpackConfig: require('../../packages/docs/webpack.config')(rootPath)
   };
 

@@ -1,6 +1,7 @@
 /**
  * This is main template file for the documentation site.
  */
+import Footer from './components/Footer';
 import GitHubLinks from './components/GitHubLinks';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -41,7 +42,7 @@ class Docs extends React.PureComponent {
             <Nav items={routes} selectedId={page.referenceURI} />
             <GitHubLinks className='ds-u-md-display--none ds-u-margin-top--2' vertical />
           </nav>
-          <main id='main' className='ds-l-md-col docs__main'>
+          <main id='main' className='ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4'>
             <Page {...page} />
           </main>
         </div>
@@ -51,6 +52,7 @@ class Docs extends React.PureComponent {
         >
           {menuOpen ? 'Close' : 'Menu'}
         </button>
+        <Footer />
       </div>
     );
   }

@@ -24,6 +24,7 @@ const GitHubLinks = (props) => {
 };
 
 GitHubLinks.propTypes = {
+  className: PropTypes.string,
   inverse: PropTypes.bool,
   vertical: PropTypes.bool
 };
