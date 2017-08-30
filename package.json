@@ -53,7 +53,6 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
-    "gulp-string-replace": "^0.4.0",
     "gulp-stylelint": "^4.0.0",
     "gulp-util": "^3.0.8",
     "jest": "^20.0.4",
