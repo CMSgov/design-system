@@ -8,14 +8,14 @@ const cssnano = require('cssnano');
 const del = require('del');
 const dutil = require('./common/log-util');
 const path = require('path');
+const packageVersions = require('./common/packageVersions');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postcssInliner = require('postcss-image-inliner');
-const postcssUrl = require('postcss-url');
 const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const stringReplace = require('gulp-string-replace');
+const through = require('through2');
 const runSequence = require('run-sequence');
 const packagesRegex = require('./common/packagesRegex');
 
@@ -39,7 +39,7 @@ module.exports = (gulp, shared) => {
 
     const postcssPlugins = [
       postcssImport(), // inline imports
-      autoprefixer()  // add any necessary vendor prefixes
+      autoprefixer() // add any necessary vendor prefixes
     ];
 
     if (shared.env !== 'development') {
@@ -109,12 +109,22 @@ module.exports = (gulp, shared) => {
   ));
 
   gulp.task('sass:add-version', () => {
-    const packages = packagesRegex(shared.packages);
+    const rx = packagesRegex(shared.packages);
 
-    return gulp
-      .src(`./packages/${packages}/dist/index.css`)
-      .pipe(stringReplace(/{{version}}/, shared.version))
-      .pipe(gulp.dest('./packages/'));
+    return packageVersions(shared.packages)
+      .then(packages =>
+        gulp.src(`./packages/${rx}/dist/index.css`)
+          .pipe(
+            through.obj((file, encoding, cb) => {
+              const name = file.path.match(/packages\/([a-z\-_]+)/i)[1];
+              const version = packages[name];
+              const contents = String(file.contents).replace(/{{version}}/, version);
+              file.contents = Buffer.from(contents);
+              return cb(null, file);
+            })
+          )
+          .pipe(gulp.dest('./packages/'))
+      );
   });
 
   gulp.task('sass', done => {
