@@ -100,6 +100,18 @@ Object.keys(_SkipNav).forEach(function (key) {
   });
 });
 
+var _Spinner = require('./Spinner/Spinner');
+
+Object.keys(_Spinner).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Spinner[key];
+    }
+  });
+});
+
 var _Tab = require('./Tabs/Tab');
 
 Object.keys(_Tab).forEach(function (key) {
