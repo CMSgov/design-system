@@ -23,9 +23,9 @@ Spinners signify that the application is waiting for an asynchronous operation t
 @status alpha
 
 Markup:
-<span class="ds-c-spinner ds-c-spinner--small"></span>
-<span class="ds-c-spinner"></span>
-<span class="ds-c-spinner ds-c-spinner--big"></span>
+<span class="ds-c-spinner ds-c-spinner--small" aria-valuetext="Loading" role="progressbar"></span>
+<span class="ds-c-spinner" aria-valuetext="Loading" role="progressbar"></span>
+<span class="ds-c-spinner ds-c-spinner--big" aria-valuetext="Loading" role="progressbar"></span>
 
 Style guide: components.spinner
 */
@@ -113,11 +113,22 @@ Style guide: components.spinner
 
 - If the process takes a long time, use something else.
 
+## Accessibility Considerations
+
+- Spinners are useful to announce a page load sequence, and should be paired with a parent container that includes several ARIA attributes:
+  * `aria-relevant="additions text"` 
+  * `aria-live="polite"`
+  * `aria-atomic="false"`
+- aria-relevant may include additions, text, and removals. If a section is going to have items added or removed, use additions and removals. If there will be additions or text changes without explicit removals, use additions and text.
+- aria-live should be set to polite. This means the assistive technology will read out the changes when it has finished interacting with the current element. `aria-live="assertive"` shoudl only be used in situations that require a user&rsquo;s immediate attention.
+- aria-atomic defaults to false if not set by the development team. This means only the changes will be read out, not the entire section. If it makees more sense to read an entire section, an address for instance, then setting `aria-atomic="true"` should accomplish those aims.
+
 ## Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
 - [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)
 - [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
+- [MDN ARIA Live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 
 Style guide: components.spinner.guidance
 */
@@ -128,9 +139,9 @@ Changing the spinner color
 To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes]({{root}}/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
 
 Markup:
-<span class="ds-c-spinner ds-u-color--primary"></span>
-<span class="ds-c-spinner ds-u-color--success"></span>
-<span class="ds-c-spinner ds-u-color--muted"></span>
+<span class="ds-c-spinner ds-u-color--primary" aria-valuetext="Loading" role="progressbar"></span>
+<span class="ds-c-spinner ds-u-color--success" aria-valuetext="Loading" role="progressbar"></span>
+<span class="ds-c-spinner ds-u-color--muted" aria-valuetext="Loading" role="progressbar"></span>
 
 Style guide: components.spinner.colors
 */
@@ -140,16 +151,16 @@ Use inside buttons
 
 Markup:
 <button class="ds-c-button">
-  <span class="ds-c-spinner ds-c-spinner--small"></span> Loading
+  <span class="ds-c-spinner ds-c-spinner--small" aria-valuetext="Loading" role="progressbar"></span> Loading
 </button>
 <button class="ds-c-button ds-c-button--primary">
-  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse"></span> Loading
+  <span class="ds-c-spinner ds-c-spinner--small ds-c-spinner--inverse" aria-valuetext="Loading" role="progressbar"></span> Loading
 </button>
 <button class="ds-c-button ds-c-button--outline ds-c-button--big">
-  <span class="ds-c-spinner"></span> Big button
+  <span class="ds-c-spinner" aria-valuetext="Loading" role="progressbar"></span> Big button
 </button>
 <button class="ds-c-button ds-c-button--success ds-c-button--big">
-  <span class="ds-c-spinner"></span> Big green button
+  <span class="ds-c-spinner" aria-valuetext="Loading" role="progressbar"></span> Big green button
 </button>
 
 Style guide: components.spinner.buttons
@@ -164,13 +175,13 @@ Markup:
 <div class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--filled"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled" aria-valuetext="Loading" role="progressbar"></span>
   </div>
 </div>
 <div class="ds-u-padding--2" style="position: relative">
   <p>{{lorem-l}}</p>
   <div class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0">
-    <span class="ds-c-spinner ds-c-spinner--filled ds-u-fill--background-inverse ds-u-color--base-inverse"></span>
+    <span class="ds-c-spinner ds-c-spinner--filled ds-u-fill--background-inverse ds-u-color--base-inverse" aria-valuetext="Loading" role="progressbar"></span>
   </div>
 </div>
 
