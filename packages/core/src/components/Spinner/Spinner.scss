@@ -116,7 +116,7 @@ Style guide: components.spinner
 ## Accessibility Considerations
 
 - Spinners are useful to announce a page load sequence, and should be paired with a parent container that includes several ARIA attributes:
-  * `aria-relevant="additions text"` 
+  * `aria-relevant="additions text"`
   * `aria-live="polite"`
   * `aria-atomic="false"`
 - aria-relevant may include additions, text, and removals. If a section is going to have items added or removed, use additions and removals. If there will be additions or text changes without explicit removals, use additions and text.
