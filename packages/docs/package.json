@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@cmsgov/design-system-core": "^1.1.0",
-    "@cmsgov/design-system-layout": "^1.0.0",
+    "@cmsgov/design-system-layout": "^1.1.0",
     "@cmsgov/design-system-support": "^1.1.0",
     "classnames": "^2.2.5",
     "core-js": "^2.5.0",
