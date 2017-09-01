@@ -5,18 +5,42 @@
  */
 'use strict';
 const argv = require('yargs').argv;
+const glob = require('glob');
+
+/**
+ * Get the name of a package, relative to packages/
+ * @example
+ * packageName('packages/foo') // returns 'foo'
+ * @param {String} packagePath
+ * @return {String}
+ */
+function packageName(packagePath) {
+  return packagePath.match(/packages\/([a-z-_\/]+)/)[1];
+}
+
+/**
+ * Get the names of the directories containing design system (or theme)
+ * files. These will be used for watching, compiling, and docs generation
+ */
+function packageDirectories() {
+  return glob.sync('packages/*', {
+    ignore: ['packages/{docs,generator*,themes}']
+  })
+    .map(packageName)
+    .concat(
+      glob.sync('packages/themes/*').map(packageName)
+    );
+}
 
 module.exports = (gulp) => {
+  const packages = packageDirectories();
   const rootPath = ''; // pkg.version
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
-    // Design system packages (excluding docs and development packages)
-    packages: ['core', 'layout', 'support'],
-    // TODO: Replace the line below once we move to publishing the docs on S3
-    // rather than GitHub pages.
+    packages: packages,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(rootPath)
+    webpackConfig: require('../../packages/docs/webpack.config')(rootPath, packages)
   };
 
   [

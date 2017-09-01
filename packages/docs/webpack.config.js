@@ -4,11 +4,16 @@ const webpack = require('webpack');
 
 /**
  * @param {String} rootPath - Root docs site path
+ * @param {Array} packages - Design system and theme package directory names
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createConfig(rootPath = '', hotReload = true) {
-  let config = {
+function createConfig(rootPath = '', packages, hotReload = true) {
+  const packagePaths = packages.map(dir =>
+    path.resolve(__dirname, '..', dir, 'src')
+  );
+
+  const config = {
     context: __dirname,
     entry: {
       index: [
@@ -32,13 +37,12 @@ function createConfig(rootPath = '', hotReload = true) {
           loader: ['babel-loader'],
           include: [
             path.resolve(__dirname, 'src'),
-            path.resolve(__dirname, '../core/src'),
             // Transpile react-element-to-jsx-string dependency
             // https://github.com/algolia/react-element-to-jsx-string/issues/71
             // https://github.com/sindresorhus/file-type/issues/70
             path.resolve(__dirname, 'node_modules/stringify-object'),
             path.resolve(__dirname, 'node_modules/get-own-enumerable-property-symbols')
-          ]
+          ].concat(packagePaths)
         }
       ]
     },
