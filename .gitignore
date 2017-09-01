@@ -1,5 +1,5 @@
 # Documentation is generated into this directory
-docs
+/docs
 
 # Generated documentation data from CSS and JSX comments. We only need this
 # during the docs generation task.

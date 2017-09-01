@@ -21,7 +21,7 @@ module.exports = (gulp) => {
 
   [
     'build',
-    'docs/docs',
+    'docs',
     'lint',
     'sass',
     'server',
@@ -29,6 +29,6 @@ module.exports = (gulp) => {
     'watch',
     'webpack'
   ].forEach(taskGroup => {
-    require(`./${taskGroup}.js`)(gulp, shared);
+    require(`./${taskGroup}`)(gulp, shared);
   });
 };
