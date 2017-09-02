@@ -34,7 +34,7 @@ function packageDirectories() {
 
 module.exports = (gulp) => {
   const packages = packageDirectories();
-  const rootPath = ''; // pkg.version
+  const rootPath = argv.root || '';
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
