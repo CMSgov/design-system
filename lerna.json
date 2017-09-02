@@ -1,7 +1,13 @@
 {
   "lerna": "2.0.0",
+  "command": {
+    "publish": {
+      "ignore": "packages/themes/*"
+    }
+  },
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/themes/*"
   ],
   "version": "1.1.0"
 }
