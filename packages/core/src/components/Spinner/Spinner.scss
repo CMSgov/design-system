@@ -178,18 +178,18 @@ Style guide: components.spinner.react
 
 ## Accessibility
 
-- Spinners have a default prop `aria-valuetext="loading"` to provide basic information to screen readers that a page or section is going to change. Until web browsers offer a reliable way to measure page loading progress message, this should be considered a best practice.
-- Spinners should be paired with a parent container that includes several ARIA attributes: `aria-relevant="additions text"`, `aria-live="polite"`, `aria-atomic="false"`
-- aria-relevant may include additions, text, and removals. If a section is going to have items added or removed, use additions and removals. If there will be additions or text changes without explicit removals, use additions and text.
-- aria-live should be set to polite. This means the assistive technology will read out the changes when it has finished interacting with the current element. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
-- aria-atomic defaults to false if not set by the development team. This means only the changes will be read out, not the entire section. If it makees more sense to read an entire section, an address for instance, then setting `aria-atomic="true"` should accomplish those aims.
+- The Spinner element should have an [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-valuetext_attribute) attribute with a value of `loading` to provide a human readable text alternative for screen readers.
+- When placed within a parent container, the parent element should include several ARIA attributes: `aria-relevant`, `aria-live`, and optionally `aria-atomic`.
+  - `aria-relevant` may include `additions`, `text`, and `removals`. If a section will have items added or removed, use `additions removals`. If there will be additions or text changes without explicit removals, use `additions text`.
+  - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
+  - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
 
 ## Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
 - [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)
 - [Avoid the Spinner](https://www.lukew.com/ff/entry.asp?1797)
-- [MDN ARIA Live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+- [ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 
 Style guide: components.spinner.guidance
 */
