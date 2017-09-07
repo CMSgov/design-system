@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 export const Spinner = (props) => {
+  const { ariaValueText, role } = props;
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
@@ -11,10 +12,18 @@ export const Spinner = (props) => {
     props.className
   );
 
-  return <span className={className} />;
+  return (
+    <span
+      className={className}
+      aria-valuetext={ariaValueText}
+      role={role}
+    />
+  );
 };
 
 Spinner.propTypes = {
+  /** The text announced to screen readers */
+  ariaValueText: PropTypes.string,
   /**
    * Additional classes to be added to the spinner element.
    * Useful for adding utility classes.
@@ -24,8 +33,15 @@ Spinner.propTypes = {
   inversed: PropTypes.bool,
   /** Adds a background behind the spinner for extra contrast */
   filled: PropTypes.bool,
+  /** Landmark role so the spinner can receive keyboard focus */
+  role: PropTypes.string,
   /** Smaller or larger variant */
   size: PropTypes.oneOf(['small', 'big'])
+};
+
+Spinner.defaultProps = {
+  ariaValueText: 'Loading',
+  role: 'progressbar'
 };
 
 export default Spinner;
