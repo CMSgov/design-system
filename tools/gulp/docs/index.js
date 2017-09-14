@@ -14,13 +14,15 @@ const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const del = require('del');
 const dutil = require('../common/log-util');
+const gulpReactDocgen = require('./gulpReactDocgen');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
-const processKssSection = require('./processKssSection');
 const nestSections = require('./nestSections');
-const gulpReactDocgen = require('./gulpReactDocgen');
-const runSequence = require('run-sequence');
 const packagesRegex = require('../common/packagesRegex');
+const processKssSection = require('./processKssSection');
+const uniqueKssSections = require('./uniqueKssSections');
+const runSequence = require('run-sequence');
+
 const docs = 'packages/docs';
 
 /**
@@ -202,6 +204,7 @@ module.exports = (gulp, shared) => {
           )
         )
       )
+      .then(uniqueKssSections)
       .then(kssSections =>       // 2
         convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections))

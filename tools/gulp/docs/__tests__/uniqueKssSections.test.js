@@ -1,0 +1,14 @@
+const uniqueKssSections = require('../uniqueKssSections');
+
+describe('uniqueKssSections', () => {
+  it('removes duplicate non-theme section', () => {
+    const sections = uniqueKssSections([
+      { reference: 'foo', header: 'Core foo', source: { path: 'packages/core/foo.js' } },
+      { reference: 'foo', header: 'Theme foo', source: { path: 'packages/themes/abc/foo.js' } },
+      { reference: 'bar', header: 'Bar', source: { path: 'packages/core/bar.js' } }
+    ]);
+
+    expect(sections.length).toBe(2);
+    expect(sections[0].header).toBe('Theme foo');
+  });
+});
