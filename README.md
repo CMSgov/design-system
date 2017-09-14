@@ -14,19 +14,19 @@ These packages are published to NPM and can be installed. View each package's RE
 
 #### [Core](packages/core/)
 
-[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core)
+[![npm](https://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core)
 
 The core CSS and React components for the design system. Includes the Support package.
 
 #### [Support](packages/support/)
 
-[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-support.svg?label=@cmsgov%2Fdesign-system-support)](https://www.npmjs.com/package/@cmsgov/design-system-support)
+[![npm](https://img.shields.io/npm/v/@cmsgov/design-system-support.svg?label=@cmsgov%2Fdesign-system-support)](https://www.npmjs.com/package/@cmsgov/design-system-support)
 
 Sass variables, mixins, and functions. Included in the Core package.
 
 #### [Layout](packages/layout/)
 
-[![npm](http://img.shields.io/npm/v/@cmsgov/design-system-layout.svg?label=@cmsgov%2Fdesign-system-layout)](https://www.npmjs.com/package/@cmsgov/design-system-layout)
+[![npm](https://img.shields.io/npm/v/@cmsgov/design-system-layout.svg?label=@cmsgov%2Fdesign-system-layout)](https://www.npmjs.com/package/@cmsgov/design-system-layout)
 
 A responsive flexbox grid framework.
 
