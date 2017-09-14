@@ -5,6 +5,7 @@
  */
 'use strict';
 const argv = require('yargs').argv;
+const dutil = require('./common/log-util');
 const glob = require('glob');
 
 /**
@@ -15,7 +16,7 @@ const glob = require('glob');
  * @return {String}
  */
 function packageName(packagePath) {
-  return packagePath.match(/packages\/([a-z-_\/]+)/)[1];
+  return packagePath.match(/packages\/([a-z-_/]+)/)[1];
 }
 
 /**
@@ -23,13 +24,24 @@ function packageName(packagePath) {
  * files. These will be used for watching, compiling, and docs generation
  */
 function packageDirectories() {
-  return glob.sync('packages/*', {
+  let directories = glob.sync('packages/*', {
     ignore: ['packages/{docs,generator*,themes}']
-  })
-    .map(packageName)
-    .concat(
-      glob.sync('packages/themes/*').map(packageName)
-    );
+  }).map(packageName);
+
+  if (argv.theme) {
+    if (typeof argv.theme === 'string') {
+      // Manually specified theme package
+      directories.push(`themes/${argv.theme}`);
+    } else {
+      directories = directories.concat(
+        glob.sync('packages/themes/*').map(packageName)
+      );
+    }
+
+    dutil.logMessage('🎨 ', 'Including theme package');
+  }
+
+  return directories;
 }
 
 module.exports = (gulp) => {
