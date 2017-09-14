@@ -31,7 +31,7 @@ module.exports = (gulp, shared) => {
     const createSourcemaps = shared.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
-      importer: themeImporter,
+      importer: themeImporter.bind(null, shared.packages),
       includePaths: [`${cwd}node_modules`]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
@@ -82,7 +82,7 @@ module.exports = (gulp, shared) => {
   // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
-    var packages = [
+    const packages = [
       './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
