@@ -9,8 +9,15 @@ packages/docs/src/data
 # in order to use the same tooling and documentation processes
 packages/themes
 
-# Transpiled example files
+# Compiled example files
 examples/**/dist
+
+# Package managers
+**/package-lock.json
+/examples/*/yarn.lock
+
+# Code editors
+*.sublime-*
 
 # Logs
 logs
@@ -40,6 +47,3 @@ node_modules
 
 # .DS_Store Mac
 .DS_Store
-
-**/package-lock.json
-/examples/*/yarn.lock
