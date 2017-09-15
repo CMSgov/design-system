@@ -5,9 +5,10 @@
  * that can later be passed to the generatePage method.
  */
 const fs = require('mz/fs');
+const glob = require('glob');
 const path = require('path');
 const processMarkdownPage = require('./processMarkdownPage');
-const pagesDir = path.resolve(__dirname, '../../../packages/docs/src/pages');
+const pagesSrcDir = path.resolve(__dirname, '../../../packages/docs/src');
 
 /**
  * Reads a path, and creates a JSON representation of the Markdown file. If
@@ -21,16 +22,8 @@ const pagesDir = path.resolve(__dirname, '../../../packages/docs/src/pages');
 function createPageObject(rootPath, dir, filename) {
   const filePath = path.join(dir, filename);
 
-  return fs.stat(filePath)
-    .then(stats => {
-      if (stats.isFile()) {
-        return fs.readFile(filePath, 'utf8')
-          .then(data => processMarkdownPage(filePath, data, rootPath));
-      }
-
-      // This is a directory, so return its pages instead
-      return convertMarkdownPages(rootPath, filePath);
-    });
+  return fs.readFile(filePath, 'utf8')
+    .then(data => processMarkdownPage(filePath, data, rootPath));
 }
 
 /**
@@ -41,30 +34,18 @@ function createPageObject(rootPath, dir, filename) {
  * @return {Promise<Object[]>} Resolves with an array of JSON pages
  */
 function convertMarkdownPages(rootPath, dir) {
-  if (!dir) dir = pagesDir;
-  let pages = [];
+  if (!dir) dir = pagesSrcDir;
+  const pages = [];
+  const filenames = glob.sync('pages/**/*.md', { cwd: dir });
 
-  return fs.readdir(dir)
-    .then(filenames =>
-      Promise.all(
-        filenames.filter(filename =>
-          // File is a Markdown file or directory
-          filename.match(/\.md$/) || !filename.match(/\.([a-z]+)$/)
-        ).map(filename =>
-          createPageObject(rootPath, dir, filename)
-            .then(data => {
-              if (data.length) {
-                // An array of a directory's pages
-                pages = pages.concat(data);
-              } else if (data) {
-                // A single page object
-                pages.push(data);
-              }
-            })
-        )
-      )
+  return Promise.all(
+    filenames.map(filename =>
+      createPageObject(rootPath, dir, filename)
+        .then(data => {
+          pages.push(data);
+        })
     )
-    .then(() => pages);
+  ).then(() => pages);
 }
 
 module.exports = convertMarkdownPages;
