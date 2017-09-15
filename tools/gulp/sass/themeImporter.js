@@ -17,7 +17,7 @@ function filePath(themeDirectory, filename) {
  * A custom node-sass importer to handle cases where we want to import a
  * theme's Sass file. This allows us to use a generic "~theme/" path and
  * return an empty string if a theme isn't present.
- * @param {Array} packages
+ * @param {Array} packages - Design system and theme package directory names
  * @param {String} url - the path in import as-is
  */
 function themeImporter(packages, url) {

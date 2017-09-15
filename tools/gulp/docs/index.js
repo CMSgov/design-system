@@ -175,13 +175,8 @@ module.exports = (gulp, shared) => {
 
   /**
    * Generate HTML pages from CSS comments and Markdown files. This happens
-   * within a chain of promises:
-   * 1. Parse CSS comments, forming the initial array of pages
-   * 2. Parse Markdown files and add each page's data to the pages array
-   * 3. Create HTML files for markup examples
-   * 4. Add missing top-level pages so other pages can be properly nested
-   * 5. Nest and sort the pages
-   * 6. Create HTML files from the pages array
+   * within a chain of promises.
+   * @return {Promise}
    */
   gulp.task('docs:generate-pages', () => {
     dutil.logMessage(
@@ -193,7 +188,8 @@ module.exports = (gulp, shared) => {
     return kss.traverse(packages)
       .then(styleguide =>
         /**
-         * 1. CSS comments are parsed and an array of KSS Section objects is
+         * Parse CSS comments, forming the initial array of pages.
+         * CSS comments are parsed and an array of KSS Section objects is
          * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
          * @return {Array} KssSections
          */
@@ -204,15 +200,16 @@ module.exports = (gulp, shared) => {
           )
         )
       )
-      .then(uniquePages)
-      .then(kssSections =>       // 2
-        convertMarkdownPages(shared.rootPath)
+      .then(kssSections =>
+        // Parse Markdown files and add each page's data to the pages array
+        convertMarkdownPages(shared.rootPath, shared.packages)
           .then(pages => pages.concat(kssSections))
       )
-      .then(generateMarkupPages) // 3
-      .then(addTopLevelPages)    // 4
-      .then(nestSections)        // 5
-      .then(generateDocPages)    // 6
+      .then(uniquePages) // Remove pages with same URL (for advanced theme support)
+      .then(generateMarkupPages) // Create HTML files for markup examples
+      .then(addTopLevelPages) // Add missing top-level pages so pages can be properly nested
+      .then(nestSections)
+      .then(generateDocPages) // Create HTML files from the pages array
       .then(generatedPagesCount => {
         dutil.logMessage(
           '📝 ',
