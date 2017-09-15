@@ -20,7 +20,7 @@ const merge = require('gulp-merge-json');
 const nestSections = require('./nestSections');
 const packagesRegex = require('../common/packagesRegex');
 const processKssSection = require('./processKssSection');
-const uniqueKssSections = require('./uniqueKssSections');
+const uniquePages = require('./uniquePages');
 const runSequence = require('run-sequence');
 
 const docs = 'packages/docs';
@@ -204,7 +204,7 @@ module.exports = (gulp, shared) => {
           )
         )
       )
-      .then(uniqueKssSections)
+      .then(uniquePages)
       .then(kssSections =>       // 2
         convertMarkdownPages(shared.rootPath)
           .then(pages => pages.concat(kssSections))

@@ -1,8 +1,8 @@
-const uniqueKssSections = require('../uniqueKssSections');
+const uniquePages = require('../uniquePages');
 
-describe('uniqueKssSections', () => {
+describe('uniquePages', () => {
   it('removes duplicate non-theme section', () => {
-    const sections = uniqueKssSections([
+    const sections = uniquePages([
       { reference: 'foo', header: 'Core foo', source: { path: 'packages/core/foo.js' } },
       { reference: 'foo', header: 'Theme foo', source: { path: 'packages/themes/abc/foo.js' } },
       { reference: 'bar', header: 'Bar', source: { path: 'packages/core/bar.js' } }
