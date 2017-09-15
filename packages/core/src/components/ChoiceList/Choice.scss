@@ -67,6 +67,32 @@ Markup:
     <label for="washington-4">Booker T. Washington</label>
   </fieldset>
 </div>
+<div class="ds-u-margin-top--2 ds-u-padding--2 ds-u-text-align--right ds-u-border--2" style="width: 160px">
+  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+    <legend class="ds-c-label">Right to left</legend>
+    <span class="ds-c-field__hint ds-u-margin-bottom--1">Select desired fruits</span>
+    <input class="ds-c-choice ds-c-choice--left-label" id="apple-1" type="checkbox" name="fruit-1" value="apple" checked>
+    <label for="apple-1">Apple</label>
+    <input class="ds-c-choice ds-c-choice--left-label" id="banana-1" type="checkbox" name="fruit-1" value="banana">
+    <label for="banana-1">Banana</label>
+    <input class="ds-c-choice ds-c-choice--left-label" id="fig-1" type="checkbox" name="fruit-1" value="fig">
+    <label for="fig-1">Fig</label>
+    <input class="ds-c-choice ds-c-choice--left-label" id="plum-1" type="checkbox" name="fruit-1" disabled>
+    <label for="plum-1">Plum</label>
+  </fieldset>
+</div>
+<div class="ds-u-margin-top--2 ds-u-padding--2 ds-u-text-align--right ds-u-border--2 ds-base--inverse ds-u-border--success-lighter" style="width: 160px">
+  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+    <legend class="ds-c-label">Right to left</legend>
+    <span class="ds-c-field__hint ds-c-field__hint--inverse ds-u-margin-bottom--1">Select desired fruits</span>
+    <input class="ds-c-choice ds-c-choice--left-label ds-c-choice--inverse" id="apple-2" type="radio" name="fruit-2" value="apple" checked>
+    <label for="apple-2">Apple</label>
+    <input class="ds-c-choice ds-c-choice--left-label ds-c-choice--inverse" id="banana-2" type="radio" name="fruit-2" value="banana">
+    <label for="banana-2">Banana</label>
+    <input class="ds-c-choice ds-c-choice--left-label ds-c-choice--inverse" id="fig-2" type="radio" name="fruit-2" value="fig">
+    <label for="fig-2">Fig</label>
+  </fieldset>
+</div>
 
 Style guide: components.choice
 */
@@ -159,6 +185,18 @@ Style guide: components.choice
 // Display a circular radio button
 .ds-c-choice[type=radio] + label::before {
   border-radius: 100%;
+}
+
+// Display label on the left side of the checkbox
+.ds-c-choice--left-label + label {
+  margin: 0;
+  padding-left: 0;
+  padding-right: $spacer-5;
+
+  &::before {
+    left: auto;
+    right: 0;
+  }
 }
 
 /*

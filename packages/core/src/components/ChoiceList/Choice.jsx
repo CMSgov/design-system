@@ -17,13 +17,17 @@ export const Choice = function(props) {
     className,
     id,
     inversed,
+    labelOnLeft,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
 
   const inputClasses = classNames(
     'ds-c-choice',
-    {'ds-c-choice--inverse': inversed}
+    {
+      'ds-c-choice--inverse': inversed,
+      'ds-c-choice--left-label': labelOnLeft
+    }
   );
 
   if (!id) {
@@ -74,6 +78,10 @@ Choice.propTypes = {
    * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
+  /**
+   * Displays the label on the left side of the check
+   */
+  labelOnLeft: PropTypes.bool,
   /**
    * The `input` field's `name` attribute
    */
