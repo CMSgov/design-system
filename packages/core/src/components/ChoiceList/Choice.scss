@@ -74,7 +74,7 @@ Style guide: components.choice
 // Hide the default browser checkbox/radio button since we'll
 // create our own custom version
 .ds-c-choice {
-  margin-left: -100%;
+  left: -999em;
   opacity: 0;
   position: absolute;
 }
@@ -117,7 +117,8 @@ Style guide: components.choice
 }
 
 .ds-c-choice--inverse:focus + label::before {
-  box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
+  box-shadow: 0 0 0 2px $color-background-inverse,
+    0 0 2px 4px $color-focus-inverse;
 }
 
 // Display a checkmark
