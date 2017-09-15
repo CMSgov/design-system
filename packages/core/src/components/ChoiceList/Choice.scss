@@ -74,7 +74,7 @@ Style guide: components.choice
 // Hide the default browser checkbox/radio button since we'll
 // create our own custom version
 .ds-c-choice {
-  margin-left: -999em;
+  left: -999em;
   opacity: 0;
   position: absolute;
 }
