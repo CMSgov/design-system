@@ -16,7 +16,7 @@
     "classnames": "^2.2.5",
     "core-js": "^2.5.0",
     "lodash": "^4.17.4",
-    "prismjs": "^1.6.0",
+    "prismjs": "^1.8.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
