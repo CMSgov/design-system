@@ -49,7 +49,8 @@ export const Choice = function(props) {
 };
 
 Choice.defaultProps = {
-  type: 'checkbox'
+  type: 'checkbox',
+  inputPlacement: 'left'
 };
 
 Choice.propTypes = {
@@ -85,7 +86,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Placement of the input relative to the text label (`left` or `right`)
+   * Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   /**
