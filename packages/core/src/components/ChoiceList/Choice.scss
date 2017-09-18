@@ -44,6 +44,14 @@ Markup:
   <input class="ds-c-choice" id="washington-3" type="radio" name="historical-figures-3" value="washington">
   <label for="washington-3">Booker T. Washington</label>
 </fieldset>
+
+Style guide: components.choice
+*/
+
+/*
+Inverse theme
+
+Markup:
 <div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
   <fieldset class="ds-c-fieldset ds-u-margin-top--0">
     <legend class="ds-c-label">Historical figures</legend>
@@ -68,7 +76,43 @@ Markup:
   </fieldset>
 </div>
 
-Style guide: components.choice
+Style guide: components.choice.inversed
+*/
+
+/*
+Right-to-Left
+
+Markup:
+<div class="ds-u-clearfix">
+  <div class="ds-u-padding--2 ds-u-text-align--right ds-u-border--2 ds-u-float--left">
+    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+      <legend class="ds-c-label">Right to left</legend>
+      <span class="ds-c-field__hint ds-u-margin-bottom--1">Select desired fruits</span>
+      <input class="ds-c-choice ds-c-choice--right" id="apple-1" type="checkbox" name="fruit-1" value="apple" checked>
+      <label for="apple-1">Apple</label>
+      <input class="ds-c-choice ds-c-choice--right" id="banana-1" type="checkbox" name="fruit-1" value="banana">
+      <label for="banana-1">Banana</label>
+      <input class="ds-c-choice ds-c-choice--right" id="fig-1" type="checkbox" name="fruit-1" value="fig">
+      <label for="fig-1">Fig</label>
+      <input class="ds-c-choice ds-c-choice--right" id="plum-1" type="checkbox" name="fruit-1" disabled>
+      <label for="plum-1">Plum</label>
+    </fieldset>
+  </div>
+  <div class="ds-u-padding--2 ds-u-text-align--right ds-u-float--left ds-u-margin-left--2 ds-base--inverse">
+    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
+      <legend class="ds-c-label">Right to left</legend>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse ds-u-margin-bottom--1">Select desired fruits</span>
+      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="apple-2" type="radio" name="fruit-2" value="apple" checked>
+      <label for="apple-2">Apple</label>
+      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="banana-2" type="radio" name="fruit-2" value="banana">
+      <label for="banana-2">Banana</label>
+      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="fig-2" type="radio" name="fruit-2" value="fig">
+      <label for="fig-2">Fig</label>
+    </fieldset>
+  </div>
+</div>
+
+Style guide: components.choice.rtl
 */
 
 // Hide the default browser checkbox/radio button since we'll
@@ -159,6 +203,17 @@ Style guide: components.choice
 // Display a circular radio button
 .ds-c-choice[type=radio] + label::before {
   border-radius: 100%;
+}
+
+// Display label on the left side of the checkbox
+.ds-c-choice--right + label {
+  padding-left: 0;
+  padding-right: $choice-size + $spacer-1;
+
+  &::before {
+    left: auto;
+    right: 0;
+  }
 }
 
 /*
