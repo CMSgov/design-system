@@ -86,7 +86,7 @@
     "yo": "^2.0.0"
   },
   "optionalDependencies": {
-    "nodegit": "^0.19.0"
+    "nodegit": "^0.20.2"
   },
   "engines": {
     "node": ">=4.5.0 <8.0.0"
