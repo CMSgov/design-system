@@ -17,7 +17,7 @@ export const Choice = function(props) {
     className,
     id,
     inversed,
-    labelOnLeft,
+    right,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
@@ -26,7 +26,7 @@ export const Choice = function(props) {
     'ds-c-choice',
     {
       'ds-c-choice--inverse': inversed,
-      'ds-c-choice--left-label': labelOnLeft
+      'ds-c-choice--right': right
     }
   );
 
@@ -79,9 +79,9 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Displays the label on the left side of the check
+   * Displays the checkbox on the right side of the label
    */
-  labelOnLeft: PropTypes.bool,
+  right: PropTypes.bool,
   /**
    * The `input` field's `name` attribute
    */
