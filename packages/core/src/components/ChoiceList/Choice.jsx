@@ -17,16 +17,18 @@ export const Choice = function(props) {
     className,
     id,
     inversed,
-    right,
+    inputPlacement,
+    inputClassName,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
 
   const inputClasses = classNames(
+    inputClassName,
     'ds-c-choice',
     {
       'ds-c-choice--inverse': inversed,
-      'ds-c-choice--right': right
+      'ds-c-choice--right': inputPlacement === 'right'
     }
   );
 
@@ -65,6 +67,10 @@ Choice.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * Additional classes to be added to the `input` element.
+   */
+  inputClassName: PropTypes.string,
+  /**
    * Sets the initial checked state. Use this for an uncontrolled component;
    * otherwise, use the `checked` property.
    */
@@ -79,9 +85,9 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Displays the checkbox on the right side of the label
+   * Placement of the input relative to the text label (`left` or `right`)
    */
-  right: PropTypes.bool,
+  inputPlacement: PropTypes.oneOf(['left', 'right'])
   /**
    * The `input` field's `name` attribute
    */
