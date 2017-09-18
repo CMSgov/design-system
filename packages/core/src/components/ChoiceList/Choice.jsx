@@ -87,7 +87,7 @@ Choice.propTypes = {
   /**
    * Placement of the input relative to the text label (`left` or `right`)
    */
-  inputPlacement: PropTypes.oneOf(['left', 'right'])
+  inputPlacement: PropTypes.oneOf(['left', 'right']),
   /**
    * The `input` field's `name` attribute
    */
