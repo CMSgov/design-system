@@ -140,6 +140,20 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--right')).toBe(true);
   });
 
+  it('applies small className to input', () => {
+    const props = {
+      size: 'small',
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+
+    const input = wrapper.find('input');
+
+    expect(input.hasClass('ds-c-choice')).toBe(true);
+    expect(input.hasClass('ds-c-choice--small')).toBe(true);
+  });
+
   it('applies additional classNames to root element', () => {
     const props = {
       className: 'foo',

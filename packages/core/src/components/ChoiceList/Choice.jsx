@@ -19,6 +19,7 @@ export const Choice = function(props) {
     inversed,
     inputPlacement,
     inputClassName,
+    size,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
@@ -28,7 +29,8 @@ export const Choice = function(props) {
     'ds-c-choice',
     {
       'ds-c-choice--inverse': inversed,
-      'ds-c-choice--right': inputPlacement === 'right'
+      'ds-c-choice--right': inputPlacement === 'right',
+      'ds-c-choice--small': size === 'small'
     }
   );
 
@@ -89,6 +91,7 @@ Choice.propTypes = {
    * Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
+  size: PropTypes.oneOf(['small']),
   /**
    * The `input` field's `name` attribute
    */
