@@ -1,7 +1,7 @@
 const buildPath = require('../../tools/gulp/common/buildPath');
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const fs = require('fs');
 
 /**
  * @param {String} rootPath - Root docs site path
@@ -11,7 +11,7 @@ const fs = require('fs');
  */
 function createConfig(rootPath = '', packages, hotReload = true) {
   const packagePaths = packages.map(dir =>
-    fs.realpathSync(__dirname + `/../${dir}/src`)
+    fs.realpathSync(path.resolve(__dirname, '..', dir, 'src'))
   );
 
   const config = {
