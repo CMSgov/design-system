@@ -17,6 +17,17 @@ class ReactComponentDoc extends React.PureComponent {
     return <ReactComponentExample renderComponent={renderComponent} />;
   }
 
+  renderPropDocs() {
+    if (this.props.propDocs) {
+      return (
+        <div>
+          <h3>Props</h3>
+          <ReactPropDocs propDocs={this.props.propDocs} />
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <section>
@@ -25,8 +36,7 @@ class ReactComponentDoc extends React.PureComponent {
           dangerouslySetInnerHTML={{__html: this.props.description}}
         />
         {this.renderExample()}
-        <h3>Props</h3>
-        <ReactPropDocs propDocs={this.props.propDocs} />
+        {this.renderPropDocs()}
       </section>
     );
   }

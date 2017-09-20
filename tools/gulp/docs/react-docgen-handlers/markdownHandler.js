@@ -12,13 +12,15 @@ function markdownHandler(doc) {
   const desc = doc.get('description');
   const docObject = doc.toObject();
 
-  Object.keys(docObject.props).forEach(propName => {
-    let propDescriptor = doc.getPropDescriptor(propName);
+  if (docObject.props) {
+    Object.keys(docObject.props).forEach(propName => {
+      const propDescriptor = doc.getPropDescriptor(propName);
 
-    if (propDescriptor.description !== '') {
-      propDescriptor.description = marked(propDescriptor.description);
-    }
-  });
+      if (propDescriptor.description !== '') {
+        propDescriptor.description = marked(propDescriptor.description);
+      }
+    });
+  }
 
   if (desc !== '') {
     doc.set('description', marked(desc));
