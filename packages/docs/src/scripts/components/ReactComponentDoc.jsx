@@ -24,7 +24,7 @@ class ReactComponentDoc extends React.PureComponent {
           <h3>Props</h3>
           <ReactPropDocs propDocs={this.props.propDocs} />
         </div>
-      )
+      );
     }
   }
 
