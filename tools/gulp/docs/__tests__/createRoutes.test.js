@@ -1,13 +1,13 @@
 const createRoutes = require('../createRoutes');
 
-function mockPage(slug, sections = [], customProps = {}) {
-  return Object.assign({
+function mockPage(slug, sections = []) {
+  return {
     header: slug,
     description: `${slug} description`,
     reference: slug,
     referenceURI: slug,
     sections: sections
-  }, customProps);
+  };
 }
 
 describe('createRoutes', () => {
