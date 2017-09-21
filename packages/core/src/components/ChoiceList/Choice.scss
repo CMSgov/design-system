@@ -245,6 +245,7 @@ Style guide: components.choice.size
 */
 .ds-c-choice--small {
   + label {
+    min-height: $choice-size-small;
     padding-left: $choice-size-small + $spacer-1;
     padding-top: 0;
 
@@ -253,6 +254,10 @@ Style guide: components.choice.size
       top: 2px;
       width: $choice-size-small;
     }
+  }
+
+  &:checked + label::before {
+    background-size: $choice-size-small;
   }
 
   &.ds-c-choice--right + label {
