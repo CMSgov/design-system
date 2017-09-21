@@ -4,12 +4,24 @@ function mockPage(slug, sections = []) {
   return {
     header: slug,
     description: `${slug} description`,
+    reference: slug,
     referenceURI: slug,
     sections: sections
   };
 }
 
 describe('createRoutes', () => {
+  it('returns all pages', () => {
+    const pages = [
+      mockPage('home'),
+      mockPage('about'),
+      mockPage('contact')
+    ];
+
+    const routes = createRoutes(pages);
+    expect(routes.length).toBe(3);
+  });
+
   it('returns subset of properties', () => {
     const pages = [
       mockPage(

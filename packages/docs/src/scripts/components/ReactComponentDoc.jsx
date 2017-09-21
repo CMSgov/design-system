@@ -12,8 +12,20 @@ class ReactComponentDoc extends React.PureComponent {
   renderExample() {
     if (this.props.hideExample) return;
 
-    const renderComponent = require(`../../../node_modules/${this.props.packagePath}.example.jsx`).default;
+    // Resolve the example component relative to the /packages/ directory
+    const renderComponent = require(`../../../../${this.props.path}.example.jsx`).default;
     return <ReactComponentExample renderComponent={renderComponent} />;
+  }
+
+  renderPropDocs() {
+    if (this.props.propDocs) {
+      return (
+        <div>
+          <h3>Props</h3>
+          <ReactPropDocs propDocs={this.props.propDocs} />
+        </div>
+      );
+    }
   }
 
   render() {
@@ -24,8 +36,7 @@ class ReactComponentDoc extends React.PureComponent {
           dangerouslySetInnerHTML={{__html: this.props.description}}
         />
         {this.renderExample()}
-        <h3>Props</h3>
-        <ReactPropDocs propDocs={this.props.propDocs} />
+        {this.renderPropDocs()}
       </section>
     );
   }
@@ -34,7 +45,7 @@ class ReactComponentDoc extends React.PureComponent {
 ReactComponentDoc.propTypes = {
   description: PropTypes.string,
   hideExample: PropTypes.bool,
-  packagePath: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   /* eslint-disable react/forbid-prop-types */
   propDocs: PropTypes.object
 };

@@ -1,14 +1,14 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const buildPath = require('./common/buildPath');
+const buildPath = require('../common/buildPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
 const del = require('del');
-const dutil = require('./common/log-util');
+const dutil = require('../common/log-util');
 const path = require('path');
-const packageVersions = require('./common/packageVersions');
+const packageVersions = require('../common/packageVersions');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postcssInliner = require('postcss-image-inliner');
@@ -17,7 +17,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const through = require('through2');
 const runSequence = require('run-sequence');
-const packagesRegex = require('./common/packagesRegex');
+const packagesRegex = require('../common/packagesRegex');
+const themeImporter = require('./themeImporter');
 
 const config = {
   vendorSrc: 'packages/support/src/vendor'
@@ -30,6 +31,7 @@ module.exports = (gulp, shared) => {
     const createSourcemaps = shared.env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
+      importer: themeImporter.bind(null, shared.packages),
       includePaths: [`${cwd}node_modules`]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
@@ -49,7 +51,7 @@ module.exports = (gulp, shared) => {
     if (!cwd.match(/\/docs\//)) {
       // inline/base64 images
       postcssPlugins.push(postcssInliner({
-        assetPaths: [path.resolve(__dirname, `../../${cwd}/src/`)],
+        assetPaths: [path.resolve(__dirname, `../../../${cwd}/src/`)],
         strict: true
       }));
     }
@@ -80,7 +82,7 @@ module.exports = (gulp, shared) => {
   // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
-    var packages = [
+    const packages = [
       './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
