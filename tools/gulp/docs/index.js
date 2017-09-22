@@ -185,7 +185,8 @@ module.exports = (gulp, shared) => {
     );
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    return kss.traverse(packages)
+    const mask = '*.css|*.less|*.sass|*.scss|*.jsx';
+    return kss.traverse(packages, { mask })
       .then(styleguide =>
         /**
          * Parse CSS comments, forming the initial array of pages.
