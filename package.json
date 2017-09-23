@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^7.3.0",
     "front-matter": "^2.2.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
+    "github": "^11.0.0",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
@@ -88,11 +89,8 @@
     "yargs": "^9.0.1",
     "yo": "^2.0.0"
   },
-  "optionalDependencies": {
-    "nodegit": "^0.20.2"
-  },
   "engines": {
-    "node": ">=4.5.0 <8.0.0"
+    "node": ">=4.5.0"
   },
   "jest": {
     "testPathIgnorePatterns": [

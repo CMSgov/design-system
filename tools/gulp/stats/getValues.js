@@ -8,7 +8,7 @@ const colors = require('colors/safe');
  * @return {Array} [currentValue, masterValue, difference]
  */
 function getValues(retrievalMethod, preferSmaller = true, diffMethod) {
-  let values = ['current', 'master'].map(retrievalMethod);
+  const values = ['current', 'master'].map(retrievalMethod);
   let diff = typeof diffMethod === 'function'
     ? diffMethod() : parseInt(values[0] - values[1]);
 
