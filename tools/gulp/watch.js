@@ -30,7 +30,7 @@ module.exports = (gulp, shared) => {
       `packages/${packages}/src/**/*.{js,jsx}`,
       `!packages/${packages}/src/**/*.example.{js,jsx}`,
       `!packages/${packages}/src/**/*.test.{js,jsx}`
-    ], ['lint:packages-scripts', 'docs:react']);
+    ], ['lint:packages-scripts', 'sass:process:docs', 'docs:generate-pages', 'docs:react']);
   });
 
   gulp.task('watch:docs', () => {
@@ -44,7 +44,7 @@ module.exports = (gulp, shared) => {
 
     gulp.watch([
       'packages/docs/src/scripts/**/*.{js,jsx}'
-    ], ['lint:docs-scripts']);
+    ], ['lint:docs-scripts', 'sass:process:docs']);
   });
 
   gulp.task('watch', () => {
