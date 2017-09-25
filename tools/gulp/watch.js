@@ -44,7 +44,7 @@ module.exports = (gulp, shared) => {
 
     gulp.watch([
       'packages/docs/src/scripts/**/*.{js,jsx}'
-    ], ['lint:docs-scripts', 'sass:process:docs']);
+    ], ['lint:docs-scripts']);
   });
 
   gulp.task('watch', () => {
