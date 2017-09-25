@@ -185,7 +185,7 @@ module.exports = (gulp, shared) => {
     );
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    const mask = /^(?!.*\.example\.jsx).*\.(css|less|sass|scss|jsx)$/;
+    const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
     return kss.traverse(packages, { mask })
       .then(styleguide =>
         /**
