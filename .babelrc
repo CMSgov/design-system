@@ -7,8 +7,7 @@
     }
   },
   "plugins": [
-    "transform-object-assign",
-    "transform-class-properties"
+    "transform-object-assign"
   ],
   "presets": [
     "react",

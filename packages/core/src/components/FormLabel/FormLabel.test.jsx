@@ -50,20 +50,23 @@ describe('FormLabel', () => {
       .toMatch(/<strong>/);
   });
 
-  it('renders optional', () => {
+  it('renders requirementLabel string', () => {
     const props = {
-      optional: true
+      requirementLabel: 'Optional.'
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const optionalHint = wrapper.find('.ds-c-field__hint');
+    const hint = wrapper.find('.ds-c-field__hint');
+    const boldWrapper = hint.children().first();
 
-    expect(optionalHint.text())
-      .toEqual('Optional. ');
+    expect(hint.text())
+      .toEqual('Optional.');
+    expect(boldWrapper.hasClass('ds-u-font-weight--bold'))
+      .toBe(true);
   });
 
-  it('renders optional + node', () => {
+  it('renders requirementLabel node', () => {
     const props = {
-      optional: <em>It's really optional</em>
+      requirementLabel: <em>It is really optional</em>
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
     const hint = wrapper.find('.ds-c-field__hint');
@@ -71,31 +74,9 @@ describe('FormLabel', () => {
     expect(hint.html())
       .toMatch(/<em>/);
     expect(hint.text())
-      .toEqual("Optional. It's really optional");
-  });
-
-  it('renders required', () => {
-    const props = {
-      required: true
-    };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const requiredHint = wrapper.find('.ds-c-field__hint');
-
-    expect(requiredHint.text())
-      .toEqual('Required. ');
-  });
-
-  it('renders required + node', () => {
-    const props = {
-      required: <em>It's really required</em>
-    };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const hint = wrapper.find('.ds-c-field__hint');
-
-    expect(hint.html())
-      .toMatch(/<em>/);
-    expect(hint.text())
-      .toEqual("Required. It's really required");
+      .toEqual('It is really optional');
+    expect(hint.children().first().hasClass('.ds-u-font-weight--bold'))
+      .toEqual(false);
   });
 
   it('renders as a legend element', () => {

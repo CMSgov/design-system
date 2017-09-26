@@ -1,7 +1,7 @@
+import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import FormLabel from '../FormLabel/FormLabel';
 import uniqueId from 'lodash.uniqueid';
 
 /**
@@ -21,8 +21,7 @@ export const Choice = function(props) {
     inputPlacement,
     inputClassName,
     size,
-    optional,
-    required,
+    requirementLabel,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
@@ -48,7 +47,7 @@ export const Choice = function(props) {
         id={id}
         {...inputProps}
       />
-      <FormLabel fieldId={id} optional={optional} required={required}>
+      <FormLabel fieldId={id} requirementLabel={requirementLabel}>
         {children}
       </FormLabel>
     </div>
@@ -89,15 +88,9 @@ Choice.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * Set to `true` to display whether the field is optional or pass text to
-   * display as optional with additional text.
+   * Text showing the requirement ("Required", "Optional", etc.). See []().
    */
-  optional: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-  /**
-   * Set to `true` to display whether the field is required or pass text to
-   * display as required with additional text.
-   */
-  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */

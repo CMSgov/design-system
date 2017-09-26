@@ -33,21 +33,18 @@ export class FormLabel extends React.PureComponent {
     }
   }
 
-  renderRequiredOrOptional(title, prop) {
-    if (prop) {
-      return this.renderHint(
-        <span>
-          <span className="ds-u-font-weight--bold">{title}</span>
-          {" "}
-          {prop !== true && prop}
-        </span>
-      );
-    }
+  hint() {
+    return this.renderHint(this.props.hint);
   }
 
-  hint = () => this.renderHint(this.props.hint);
-  optional = () => this.renderRequiredOrOptional('Optional.', this.props.optional);
-  required = () => this.renderRequiredOrOptional('Required.', this.props.required);
+  requirementLabel() {
+    const { requirementLabel } = this.props;
+    return this.renderHint(
+      typeof requirementLabel === 'string'
+        ? <span className='ds-u-font-weight--bold'>{requirementLabel}</span>
+        : requirementLabel
+    );
+  }
 
   render() {
     const ComponentType = this.props.component;
@@ -59,8 +56,7 @@ export class FormLabel extends React.PureComponent {
         <span className={labelTextClasses}>{this.props.children}</span>
         {this.errorMessage()}
         {this.hint()}
-        {this.optional()}
-        {this.required()}
+        {this.requirementLabel()}
       </ComponentType>
     );
   }
@@ -87,15 +83,9 @@ FormLabel.propTypes = {
    */
   hint: PropTypes.node,
   /**
-   * Set to `true` to display whether the field is optional or pass text to
-   * display as optional with additional text.
+   * Text showing the requirement ("Required", "Optional", etc.). See []().
    */
-  optional: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-  /**
-   * Set to `true` to display whether the field is required or pass text to
-   * display as required with additional text.
-   */
-  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Set to `true` to apply the "inverse" theme
    */
