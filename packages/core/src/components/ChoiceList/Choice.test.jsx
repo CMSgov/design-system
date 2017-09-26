@@ -1,4 +1,5 @@
 import Choice from './Choice';
+import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import {shallow} from 'enzyme';
 
@@ -11,9 +12,9 @@ describe('Choice', () => {
       value: label
     };
     const wrapper = shallow(<Choice {...props}><p><strong>Hello</strong> World</p></Choice>);
-    const labelNode = wrapper.find('label');
+    const labelNode = wrapper.find(FormLabel).dive();
 
-    expect(labelNode.children().first().is('p')).toBe(true);
+    expect(labelNode.children().first().children().first().is('p')).toBe(true);
   });
 
   it('is not checked', () => {

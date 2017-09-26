@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import FormLabel from '../FormLabel/FormLabel';
 import uniqueId from 'lodash.uniqueid';
 
 /**
@@ -20,6 +21,8 @@ export const Choice = function(props) {
     inputPlacement,
     inputClassName,
     size,
+    optional,
+    required,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
@@ -45,7 +48,9 @@ export const Choice = function(props) {
         id={id}
         {...inputProps}
       />
-      <label htmlFor={id}>{children}</label>
+      <FormLabel fieldId={id} optional={optional} required={required}>
+        {children}
+      </FormLabel>
     </div>
   );
 };
@@ -83,6 +88,16 @@ Choice.propTypes = {
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
   id: PropTypes.string,
+  /**
+   * Set to `true` to display whether the field is optional or pass text to
+   * display as optional with additional text.
+   */
+  optional: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  /**
+   * Set to `true` to display whether the field is required or pass text to
+   * display as required with additional text.
+   */
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */

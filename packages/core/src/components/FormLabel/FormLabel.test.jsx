@@ -50,6 +50,54 @@ describe('FormLabel', () => {
       .toMatch(/<strong>/);
   });
 
+  it('renders optional', () => {
+    const props = {
+      optional: true
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const optionalHint = wrapper.find('.ds-c-field__hint');
+
+    expect(optionalHint.text())
+      .toEqual('Optional. ');
+  });
+
+  it('renders optional + node', () => {
+    const props = {
+      optional: <em>It's really optional</em>
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+
+    expect(hint.html())
+      .toMatch(/<em>/);
+    expect(hint.text())
+      .toEqual("Optional. It's really optional");
+  });
+
+  it('renders required', () => {
+    const props = {
+      required: true
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const requiredHint = wrapper.find('.ds-c-field__hint');
+
+    expect(requiredHint.text())
+      .toEqual('Required. ');
+  });
+
+  it('renders required + node', () => {
+    const props = {
+      required: <em>It's really required</em>
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+
+    expect(hint.html())
+      .toMatch(/<em>/);
+    expect(hint.text())
+      .toEqual("Required. It's really required");
+  });
+
   it('renders as a legend element', () => {
     const props = {component: 'legend'};
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);

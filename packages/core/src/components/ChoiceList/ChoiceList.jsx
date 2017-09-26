@@ -141,6 +141,8 @@ export class ChoiceList extends React.PureComponent {
           errorMessage={this.props.errorMessage}
           fieldId={this.id()}
           hint={this.props.hint}
+          optional={this.props.optional}
+          required={this.props.required}
           inversed={this.props.inversed}
         >
           {this.props.label}
@@ -178,6 +180,16 @@ ChoiceList.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Set to `true` to display whether the field is optional or pass text to
+   * display as optional with additional text.
+   */
+  optional: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  /**
+   * Set to `true` to display whether the field is required or pass text to
+   * display as required with additional text.
+   */
+  required: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */
