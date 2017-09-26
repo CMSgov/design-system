@@ -5,8 +5,6 @@ import classNames from 'classnames';
 /**
  * The FormLabel component provides the label/legend for a field, along with any
  * associated hint text and error messaging.
- *
- * TODO(sawyer): Show this in the documentation
  */
 export class FormLabel extends React.PureComponent {
   errorMessage() {
