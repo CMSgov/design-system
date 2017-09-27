@@ -3,7 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 export const Spinner = (props) => {
-  const { ariaValueText, role } = props;
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
@@ -15,15 +14,15 @@ export const Spinner = (props) => {
   return (
     <span
       className={className}
-      aria-valuetext={ariaValueText}
-      role={role}
+      aria-valuetext={props['aria-valuetext']}
+      role={props.role}
     />
   );
 };
 
 Spinner.propTypes = {
   /** The text announced to screen readers */
-  ariaValueText: PropTypes.string,
+  'aria-valuetext': PropTypes.string,
   /**
    * Additional classes to be added to the spinner element.
    * Useful for adding utility classes.
@@ -40,7 +39,7 @@ Spinner.propTypes = {
 };
 
 Spinner.defaultProps = {
-  ariaValueText: 'Loading',
+  'aria-valuetext': 'Loading',
   role: 'progressbar'
 };
 

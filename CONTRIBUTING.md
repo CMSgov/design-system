@@ -26,6 +26,7 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 
 1. `yarn install`
 1. `yarn bootstrap:yarn`
+1. `yarn start`
 
 The `bootstrap:yarn` command runs [Lerna](https://lernajs.io/) which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
 
@@ -51,6 +52,15 @@ These scripts can all be run from the root level of the repo:
   - Runs JS unit tests and will continue to run tests as files change
 - `yarn lint`
   - Runs just the linting portion of the tests
+
+#### Theme scripts
+
+You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
+
+- `yarn start:theme`
+- `yarn build:theme`
+
+If you have multiple directories inside of `packages/themes`, you can specify which theme to use by passing the scripts the name of the folder. For example: `yarn start:theme -- my-theme-folder-name`
 
 ## Submitting a pull request
 
