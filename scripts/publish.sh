@@ -10,4 +10,4 @@ git checkout master
 git pull --rebase
 
 echo "${GREEN}Publishing packages...${NC}"
-./node_modules/.bin/lerna exec npm publish --ignore "{@cmsgov/design-system-docs,generator-cmsgov}"
+./node_modules/.bin/lerna exec npm publish  --scope "@cmsgov/design-system-*" --ignore "@cmsgov/design-system-docs"
