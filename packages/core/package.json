@@ -12,13 +12,13 @@
     "@cmsgov/design-system-support": "^1.1.0",
     "classnames": "^2.2.5",
     "lodash.uniqueid": "^4.0.1",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "prop-types": "^15.6.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
     "enzyme": "^2.9.1",
     "mz": "^2.7.0",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^15.6.2"
   }
 }
