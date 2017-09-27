@@ -5,6 +5,7 @@
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
+const GitHub = require('github');
 const Table = require('cli-table'); // cli-table2 is available and is a newer, forked version
 const _ = require('lodash');
 const argv = require('yargs').argv;
@@ -15,21 +16,10 @@ const fs = require('mz/fs');
 const getValues = require('./getValues');
 const path = require('path');
 
-// fontsDir should be relative to root so we can pass to path() and Git()
 const fontsDir = 'packages/core/fonts';
-const repoPath = path.resolve(__dirname, '../../../.git');
-
-/**
- * nodegit is an optionalDependency since I haven't figured out how to get it to
- * play nice with Jenkins. We need to account for the case that it doesn't exist.
- */
-let Git;
-try {
-  Git = require('nodegit');
-} catch (er) {
-  dutil.logError('stats', er);
-  Git = null;
-}
+const git = new GitHub();
+// repoParts[0] = Owner, repoParts[1] = Repo name
+const repoParts = require('../../../package.json').repository.split('/');
 
 /**
  * Creates an HTML file where a specificity graph can be viewed.
@@ -67,14 +57,16 @@ function createSpecificityGraph(stats, filename) {
  * Retrieves a master branch file's content. Useful when comparing a file from
  * the current branch to identify a change in a particular stat.
  */
-function getMasterBlob(filepath) {
-  if (!Git) return Promise.resolve('');
-
-  return Git.Repository.open(repoPath)
-    .then(repo => repo.getMasterCommit())
-    .then(commit => commit.getEntry(filepath))
-    .then(entry => entry.getBlob())
-    .then(blob => blob.toString());
+function getMasterContent(filepath) {
+  return git.repos.getContent({
+    owner: repoParts[0],
+    repo: repoParts[1],
+    path: filepath
+  }).catch(() => {
+    // Catch connection errors
+    dutil.logError('getMasterContent', 'Connection error. Skipping master branch stats.');
+    return {};
+  });
 }
 
 /**
@@ -84,7 +76,7 @@ function getMasterBlob(filepath) {
  * @return {Promise<{current, master}>}
  */
 function getCSSStats(cssPath, skipmaster = false) {
-  let stats = {
+  const stats = {
     current: {},
     master: {}
   };
@@ -96,9 +88,11 @@ function getCSSStats(cssPath, skipmaster = false) {
       // Conditionally check the file on the master branch. Allowing this step to
       // be skipped enables us to run it on files that don't yet exist on master
       if (!skipmaster) {
-        return getMasterBlob(cssPath)
+        return getMasterContent(cssPath)
+          .then(response => Buffer.from(response.data.content, 'base64').toString())
           .then(css => cssstats(css))
-          .then(data => { stats.master = data; });
+          .then(data => { stats.master = data; })
+          .catch(() => { stats.master = stats.current; });
       } else {
         dutil.logMessage('getCSSStats', 'Not checking against master branch');
         stats.master = stats.current;
@@ -128,30 +122,10 @@ function getCurrentBranchFontSizes() {
 }
 
 function getMasterBranchFontSizes() {
-  if (!Git) return 0;
-
-  return Git.Repository.open(repoPath)
-    .then(repo => repo.getMasterCommit())
-    .then(commit => commit.getEntry(fontsDir))
-    .then(entry => entry.getTree())
-    .then(tree => tree.entries())
-    .then(entries => entries.filter(e => e.name().match(/\.woff2$/))) // return .woff2 entries
-    .then(entries => {
-      return Promise.all(
-        // Array of file sizes
-        entries.map(entry => {
-          return entry.getBlob()
-            .then(blob => blob.rawsize());
-        })
-      );
-    })
-    .then(_.sum)
-    .catch(err => {
-      // Don't break all the things if we have trouble getting the
-      // sizes from the master branch
-      console.log(err);
-      return 0;
-    });
+  return getMasterContent(fontsDir)
+    .then(response => response.data.filter(e => e.name.match(/\.woff2$/))) // return .woff2 entries
+    .then(files => _.sumBy(files, 'size'))
+    .catch(() => 0);
 }
 
 /**
@@ -275,7 +249,7 @@ over time as browser support improves`
  * @return {Array} [label, currentValue, masterValue, difference, description]
  */
 function row(label, values, description) {
-  let data = [label].concat(values);
+  const data = [label].concat(values);
   if (typeof description === 'string') data.push(description);
   return data;
 }

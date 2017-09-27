@@ -89,17 +89,6 @@ class PageBlock extends React.PureComponent {
     );
   }
 
-  /**
-   * Given a package's relative path, transform it to an NPM package path
-   * Example: core/button.js -> @cmsgov/design-system-core/button.js
-   *
-   * @param {String} path - React component's path
-   * @return {String}
-   */
-  packagePath(path) {
-    return `@cmsgov/design-system-${path}`;
-  }
-
   reactDoc() {
     if (!this.props.reactComponent) return;
     const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
@@ -114,7 +103,7 @@ class PageBlock extends React.PureComponent {
           description={doc.description}
           displayName={doc.displayName}
           hideExample={this.props.hideExample}
-          packagePath={this.packagePath(path)}
+          path={path}
           propDocs={doc.props}
         />
       );

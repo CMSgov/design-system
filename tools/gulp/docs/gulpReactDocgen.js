@@ -26,7 +26,7 @@ module.exports = function(options) {
     try {
       if (file.isNull()) return cb(null, file);
 
-      let doc = reactDocgen.parse(
+      const doc = reactDocgen.parse(
         file.contents,
         reactDocgen.resolver.findAllExportedComponentDefinitions,
         reactDocgenHandlers
@@ -43,7 +43,7 @@ module.exports = function(options) {
       response = {};
     }
 
-    file.contents = new Buffer(JSON.stringify(response));
+    file.contents = Buffer.from(JSON.stringify(response));
     file.path = gutil.replaceExtension(file.path, '.json');
     return cb(null, file);
   });

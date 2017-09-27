@@ -5,23 +5,59 @@
  */
 'use strict';
 const argv = require('yargs').argv;
+const dutil = require('./common/log-util');
+const glob = require('glob');
+
+/**
+ * Get the name of a package, relative to packages/
+ * @example
+ * packageName('packages/foo') // returns 'foo'
+ * @param {String} packagePath
+ * @return {String}
+ */
+function packageName(packagePath) {
+  return packagePath.match(/packages\/([a-z-_/]+)/)[1];
+}
+
+/**
+ * Get the names of the directories containing design system (or theme)
+ * files. These will be used for watching, compiling, and docs generation
+ */
+function packageDirectories() {
+  let directories = glob.sync('packages/*', {
+    ignore: ['packages/{docs,generator*,themes}']
+  }).map(packageName);
+
+  if (argv.theme) {
+    if (typeof argv.theme === 'string') {
+      // Manually specified theme package
+      directories.push(`themes/${argv.theme}`);
+    } else {
+      directories = directories.concat(
+        glob.sync('packages/themes/*').map(packageName)
+      );
+    }
+
+    dutil.logMessage('🎨 ', 'Including theme package');
+  }
+
+  return directories;
+}
 
 module.exports = (gulp) => {
-  const rootPath = ''; // pkg.version
+  const packages = packageDirectories();
+  const rootPath = argv.root || '';
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
-    // Design system packages (excluding docs and development packages)
-    packages: ['core', 'layout', 'support'],
-    // TODO: Replace the line below once we move to publishing the docs on S3
-    // rather than GitHub pages.
+    packages: packages,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(rootPath)
+    webpackConfig: require('../../packages/docs/webpack.config')(rootPath, packages)
   };
 
   [
     'build',
-    'docs/docs',
+    'docs',
     'lint',
     'sass',
     'server',
@@ -29,6 +65,6 @@ module.exports = (gulp) => {
     'watch',
     'webpack'
   ].forEach(taskGroup => {
-    require(`./${taskGroup}.js`)(gulp, shared);
+    require(`./${taskGroup}`)(gulp, shared);
   });
 };

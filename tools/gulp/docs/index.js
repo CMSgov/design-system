@@ -6,7 +6,7 @@
 
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('babel-register')({
-  only: /(packages\/(core|docs)\/src|generatePage)/
+  only: /(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generatePage)/
 });
 
 const buildPath = require('../common/buildPath');
@@ -14,13 +14,15 @@ const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const del = require('del');
 const dutil = require('../common/log-util');
+const gulpReactDocgen = require('./gulpReactDocgen');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
-const processKssSection = require('./processKssSection');
 const nestSections = require('./nestSections');
-const gulpReactDocgen = require('./gulpReactDocgen');
-const runSequence = require('run-sequence');
 const packagesRegex = require('../common/packagesRegex');
+const processKssSection = require('./processKssSection');
+const uniquePages = require('./uniquePages');
+const runSequence = require('run-sequence');
+
 const docs = 'packages/docs';
 
 /**
@@ -172,14 +174,9 @@ module.exports = (gulp, shared) => {
   });
 
   /**
-   * Generate HTML pages from CSS comments and Markdown files. This happens
-   * within a chain of promises:
-   * 1. Parse CSS comments, forming the initial array of pages
-   * 2. Parse Markdown files and add each page's data to the pages array
-   * 3. Create HTML files for markup examples
-   * 4. Add missing top-level pages so other pages can be properly nested
-   * 5. Nest and sort the pages
-   * 6. Create HTML files from the pages array
+   * Generate HTML pages from CSS and JS comments and Markdown files. This
+   * happens within a chain of promises.
+   * @return {Promise}
    */
   gulp.task('docs:generate-pages', () => {
     dutil.logMessage(
@@ -188,10 +185,12 @@ module.exports = (gulp, shared) => {
     );
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    return kss.traverse(packages)
+    const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
+    return kss.traverse(packages, { mask })
       .then(styleguide =>
         /**
-         * 1. CSS comments are parsed and an array of KSS Section objects is
+         * Parse CSS and JS comments, forming the initial array of pages.
+         * CSS and JS comments are parsed and an array of KSS Section objects is
          * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
          * @return {Array} KssSections
          */
@@ -202,14 +201,16 @@ module.exports = (gulp, shared) => {
           )
         )
       )
-      .then(kssSections =>       // 2
-        convertMarkdownPages(shared.rootPath)
+      .then(kssSections =>
+        // Parse Markdown files and add each page's data to the pages array
+        convertMarkdownPages(shared.rootPath, shared.packages)
           .then(pages => pages.concat(kssSections))
       )
-      .then(generateMarkupPages) // 3
-      .then(addTopLevelPages)    // 4
-      .then(nestSections)        // 5
-      .then(generateDocPages)    // 6
+      .then(uniquePages) // Remove pages with same URL (for advanced theme support)
+      .then(generateMarkupPages) // Create HTML files for markup examples
+      .then(addTopLevelPages) // Add missing top-level pages so pages can be properly nested
+      .then(nestSections)
+      .then(generateDocPages) // Create HTML files from the pages array
       .then(generatedPagesCount => {
         dutil.logMessage(
           '📝 ',

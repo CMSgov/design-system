@@ -1,13 +1,13 @@
 /**
  * Markdown files are documentation pages that aren't tied to a CSS or JS file.
- * These live in the packages/docs/src/pages directory. This method converts
- * those Markdown pages to HTML, and formats them into an array of JSON objects
- * that can later be passed to the generatePage method.
+ * These live in a src/pages directory. This method converts those Markdown
+ * pages to HTML, and formats them into an array of JSON objects that can later
+ * be passed to the generatePage method.
  */
 const fs = require('mz/fs');
+const glob = require('glob');
 const path = require('path');
 const processMarkdownPage = require('./processMarkdownPage');
-const pagesDir = path.resolve(__dirname, '../../../packages/docs/src/pages');
 
 /**
  * Reads a path, and creates a JSON representation of the Markdown file. If
@@ -21,50 +21,52 @@ const pagesDir = path.resolve(__dirname, '../../../packages/docs/src/pages');
 function createPageObject(rootPath, dir, filename) {
   const filePath = path.join(dir, filename);
 
-  return fs.stat(filePath)
-    .then(stats => {
-      if (stats.isFile()) {
-        return fs.readFile(filePath, 'utf8')
-          .then(data => processMarkdownPage(filePath, data, rootPath));
-      }
-
-      // This is a directory, so return its pages instead
-      return convertMarkdownPages(rootPath, filePath);
-    });
+  return fs.readFile(filePath, 'utf8')
+    .then(data => processMarkdownPage(filePath, data, rootPath));
 }
 
 /**
- * Reads all Markdown pages, transforms markdown, and creates a JSON
- * representation of each page
  * @param {String} rootPath - Root docs site path
- * @param {String} dir - Directory path
+ * @param {String} dir - Source files directory
+ * @return {Promise<Object[]>}
+ */
+function createPages(rootPath, dir) {
+  const pages = [];
+  const filenames = glob.sync('src/pages/**/*.md', { cwd: dir });
+
+  return Promise.all(
+    filenames.map(filename =>
+      createPageObject(rootPath, dir, filename)
+        .then(data => {
+          pages.push(data);
+        })
+    )
+  ).then(() => pages);
+}
+
+/**
+ * Reads all Markdown pages in the docs and (optionally) theme directory,
+ * transforms markdown, and creates a JSON representation of each page.
+ * @param {String} rootPath - Root docs site path
+ * @param {Array} packages - Design system and theme package directory names
  * @return {Promise<Object[]>} Resolves with an array of JSON pages
  */
-function convertMarkdownPages(rootPath, dir) {
-  if (!dir) dir = pagesDir;
-  let pages = [];
+function convertMarkdownPages(rootPath, packages) {
+  const packagesDir = path.join(__dirname, '../../../packages');
+  const docsSrc = path.join(packagesDir, 'docs');
+  const themePackages = packages.filter(name => name.match(/^themes\//));
+  const docsPages = createPages(rootPath, docsSrc);
 
-  return fs.readdir(dir)
-    .then(filenames =>
-      Promise.all(
-        filenames.filter(filename =>
-          // File is a Markdown file or directory
-          filename.match(/\.md$/) || !filename.match(/\.([a-z]+)$/)
-        ).map(filename =>
-          createPageObject(rootPath, dir, filename)
-            .then(data => {
-              if (data.length) {
-                // An array of a directory's pages
-                pages = pages.concat(data);
-              } else if (data) {
-                // A single page object
-                pages.push(data);
-              }
-            })
-        )
-      )
-    )
-    .then(() => pages);
+  if (themePackages.length) {
+    const themeSrc = path.join(packagesDir, themePackages[0]);
+
+    return docsPages.then(pages =>
+      createPages(rootPath, themeSrc)
+        .then(themePages => pages.concat(themePages))
+    );
+  }
+
+  return docsPages;
 }
 
 module.exports = convertMarkdownPages;

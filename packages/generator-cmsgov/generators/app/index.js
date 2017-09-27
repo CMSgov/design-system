@@ -36,14 +36,25 @@ module.exports = class extends Generator {
         message: 'Generate React files too?',
         default: true
       }]);
-    }).then(answers => {
+    })
+    .then(answers => {
       this.props.slug = answers.slug;
       this.props.react = answers.react;
+
+      return this.prompt([{
+        type: 'input',
+        name: 'package',
+        message: 'Package',
+        default: 'core'
+      }]);
+    })
+    .then(answers => {
+      this.props.package = answers.package;
     });
   }
 
   writing() {
-    const dir = `packages/core/src/components/${this.props.name}/`;
+    const dir = `packages/${this.props.package}/src/components/${this.props.name}/`;
 
     this.fs.copyTpl(
       this.templatePath('index.scss'),

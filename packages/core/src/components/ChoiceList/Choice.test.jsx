@@ -115,6 +115,45 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--inverse')).toBe(true);
   });
 
+  it('places input on left by default', () => {
+    const props = {
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.hasClass('ds-c-choice')).toBe(true);
+    expect(input.hasClass('ds-c-choice--right')).toBe(false);
+  });
+
+  it('places input on right', () => {
+    const props = {
+      inputPlacement: 'right',
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.hasClass('ds-c-choice')).toBe(true);
+    expect(input.hasClass('ds-c-choice--right')).toBe(true);
+  });
+
+  it('applies small className to input', () => {
+    const props = {
+      size: 'small',
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+
+    const input = wrapper.find('input');
+
+    expect(input.hasClass('ds-c-choice')).toBe(true);
+    expect(input.hasClass('ds-c-choice--small')).toBe(true);
+  });
+
   it('applies additional classNames to root element', () => {
     const props = {
       className: 'foo',
@@ -124,6 +163,18 @@ describe('Choice', () => {
     const wrapper = shallow(<Choice {...props}>{label}</Choice>);
 
     expect(wrapper.hasClass('foo')).toBe(true);
+  });
+
+  it('applies additional classNames to input element', () => {
+    const props = {
+      inputClassName: 'foo',
+      name: 'presidents',
+      value: label
+    };
+    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const input = wrapper.find('input');
+
+    expect(input.hasClass('foo')).toBe(true);
   });
 
   it('accepts a string value', () => {
