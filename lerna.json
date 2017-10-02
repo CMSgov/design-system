@@ -3,7 +3,8 @@
   "command": {
     "publish": {
       "ignore": [
-        "packages/themes/*"
+        "packages/themes/*",
+        "packages/eslint-config-design-system"
       ]
     }
   },
