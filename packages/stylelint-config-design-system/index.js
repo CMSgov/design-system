@@ -12,33 +12,8 @@ module.exports = {
     ],
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always-single-line',
-    'at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: [
-          // additional scss at-rules:
-          'content',
-          'each',
-          'else',
-          'error',
-          'extend',
-          'for',
-          'function',
-          'if',
-          'include',
-          'mixin',
-          'return'
-        ]
-      }
-    ],
     'at-rule-semicolon-newline-after': 'always',
-    'block-closing-brace-newline-after': [
-      'always',
-      {
-        // allow @else to come on same line as closing @if brace
-        ignoreAtRules: ['else', 'if']
-      }
-    ],
+    'block-closing-brace-newline-after': 'always',
     'block-closing-brace-newline-before': 'always-multi-line',
     'block-closing-brace-space-before': 'always-single-line',
     'block-no-empty': true,
@@ -66,8 +41,7 @@ module.exports = {
       }
     ],
     'declaration-block-no-shorthand-property-overrides': true,
-    'declaration-block-semicolon-newline-after': 'always-multi-line',
-    'declaration-block-semicolon-space-after': 'always-single-line',
+    'declaration-block-semicolon-newline-after': 'always',
     'declaration-block-semicolon-space-before': 'never',
     'declaration-block-single-line-max-declarations': 1,
     'declaration-block-trailing-semicolon': 'always',
@@ -102,6 +76,7 @@ module.exports = {
     'media-feature-parentheses-space-inside': 'never',
     'media-feature-range-operator-space-after': 'always',
     'media-feature-range-operator-space-before': 'always',
+    'media-query-list-comma-newline-after': 'always-multi-line',
     'media-query-list-comma-space-after': 'always-single-line',
     'media-query-list-comma-space-before': 'never',
     'no-duplicate-selectors': true,
@@ -117,6 +92,7 @@ module.exports = {
     'rule-empty-line-before': [
       'always-multi-line',
       {
+        except: ['first-nested'],
         ignore: ['after-comment', 'inside-block']
       }
     ],
@@ -132,6 +108,7 @@ module.exports = {
     'selector-attribute-operator-space-before': 'never',
     'selector-combinator-space-after': 'always',
     'selector-combinator-space-before': 'always',
+    'selector-list-comma-newline-after': 'always',
     'selector-list-comma-space-before': 'never',
     'selector-max-compound-selectors': 3,
     'selector-max-empty-lines': 0,

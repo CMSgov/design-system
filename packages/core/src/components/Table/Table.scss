@@ -44,7 +44,8 @@ Style guide: components.table
     background-color: $color-white;
   }
 
-  th, thead td {
+  th,
+  thead td {
     background-color: $color-gray-lightest;
     text-align: left;
   }
