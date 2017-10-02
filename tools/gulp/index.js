@@ -25,7 +25,7 @@ function packageName(packagePath) {
  */
 function packageDirectories() {
   let directories = glob.sync('packages/*', {
-    ignore: ['packages/{docs,eslint*,generator*,themes}']
+    ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
   }).map(packageName);
 
   if (argv.theme) {

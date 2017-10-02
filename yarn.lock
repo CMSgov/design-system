@@ -9,6 +9,12 @@
     eslint-plugin-jest "^21.1.0"
     eslint-plugin-jsx-a11y "^6.0.2"
 
+"@cmsgov/stylelint-config-design-system@file:./packages/stylelint-config-design-system":
+  version "1.0.0"
+  dependencies:
+    stylelint-order "^0.7.0"
+    stylelint-scss "^2.1.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.0.tgz#3eedeaecd6bf6f3b7cf11bc2cc616e270584dd89"
@@ -7243,12 +7249,12 @@ postcss-selector-parser@^2.0.0, postcss-selector-parser@^2.2.2, postcss-selector
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-sorting@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-3.0.1.tgz#13d42b255e7881fb33d19dcaa4085580be90664c"
+postcss-sorting@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-3.0.2.tgz#73e6913b715426201d22e8a1769b05022a37aafc"
   dependencies:
     lodash "^4.17.4"
-    postcss "^6.0.1"
+    postcss "^6.0.11"
 
 postcss-svgo@^2.1.1:
   version "2.1.6"
@@ -7323,7 +7329,7 @@ postcss@^6.0.11, postcss@^6.0.8:
     source-map "^0.5.7"
     supports-color "^4.4.0"
 
-postcss@^6.0.3, postcss@^6.0.7:
+postcss@^6.0.3:
   version "6.0.8"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.8.tgz#89067a9ce8b11f8a84cbc5117efc30419a0857b3"
   dependencies:
@@ -8601,14 +8607,13 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-stylelint-order@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-0.6.0.tgz#72222be0c64d8782b2fc237d0d9ac974039f968b"
+stylelint-order@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-0.7.0.tgz#ceab5cbe24aa33fa63590024995395f6edfc9ab7"
   dependencies:
     lodash "^4.17.4"
-    postcss "^6.0.7"
-    postcss-sorting "^3.0.1"
-    stylelint "^8.0.0"
+    postcss "^6.0.11"
+    postcss-sorting "^3.0.2"
 
 stylelint-scss@^2.1.0:
   version "2.1.0"
