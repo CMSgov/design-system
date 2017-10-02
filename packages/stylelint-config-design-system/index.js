@@ -1,15 +1,6 @@
 module.exports = {
   plugins: ['stylelint-order', 'stylelint-scss'],
   rules: {
-    'at-rule-empty-line-before': [
-      'always',
-      {
-        except: ['blockless-after-blockless', 'first-nested'],
-        ignore: ['after-comment'],
-        // allow @else to come on same line as closing @if brace
-        ignoreAtRules: ['else']
-      }
-    ],
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always-single-line',
     'at-rule-semicolon-newline-after': 'always',
