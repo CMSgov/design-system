@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "styleLint shareable config for the design system",
+  "description": "A sharable stylelint config that enforces the design system's CSS and Sass rules",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "engines": {
