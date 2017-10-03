@@ -2,7 +2,7 @@
  * A page block is a block of content on a page. There can be multiple page blocks
  * on a single page, and each can have a title, description, and code snippet.
  */
-import HTMLExample from './HTMLExample';
+import HtmlExample from './HtmlExample';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactComponentDoc from './ReactComponentDoc';
@@ -18,7 +18,7 @@ class PageBlock extends React.PureComponent {
     if (this.props.modifiers) {
       modifierMarkup = this.props.modifiers.map(modifier => {
         return (
-          <HTMLExample
+          <HtmlExample
             key={modifier.name}
             hideMarkup={this.props.hideMarkup}
             markup={this.props.markup}
@@ -32,7 +32,7 @@ class PageBlock extends React.PureComponent {
 
     return (
       <section className='ds-u-margin-top--3'>
-        <HTMLExample
+        <HtmlExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
           reference={this.props.reference}
@@ -130,7 +130,7 @@ PageBlock.propTypes = {
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(
-    HTMLExample.propTypes.modifier
+    HtmlExample.propTypes.modifier
   ),
   reactComponent: PropTypes.string,
   reference: PropTypes.string,

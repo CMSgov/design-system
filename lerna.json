@@ -2,8 +2,11 @@
   "lerna": "2.0.0",
   "command": {
     "publish": {
+      "allowBranch": "master",
       "ignore": [
-        "packages/themes/*"
+        "packages/themes/*",
+        "packages/eslint-config-design-system",
+        "packages/stylelint-config-design-system"
       ]
     }
   },

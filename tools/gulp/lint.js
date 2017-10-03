@@ -24,9 +24,10 @@ module.exports = (gulp, shared) => {
   // Lint Sass files using stylelint. Further configuration for CSS linting
   // can be handled in stylelint.config.js
   function runStylelint(cwd, enforceNamePattern = true) {
-    let config = _.cloneDeep(stylelintConfig);
+    const config = _.cloneDeep(stylelintConfig);
 
     if (enforceNamePattern) {
+      if (!config.hasOwnProperty('rules')) config.rules = {};
       config.rules['selector-class-pattern'] = systemNamePattern;
     }
 
