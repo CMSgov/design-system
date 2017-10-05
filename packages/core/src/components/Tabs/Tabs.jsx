@@ -80,9 +80,11 @@ export class Tabs extends React.PureComponent {
   }
 
   componentDidUpdate(_, prevState) {
-    if (typeof this.props.onChange === 'function' &&
-        this.state.selectedId !== prevState.selectedId) {
-      this.props.onChange(this.state.selectedId, prevState.selectedId);
+    if (this.state.selectedId !== prevState.selectedId) {
+      if (typeof this.props.onChange === 'function') {
+        this.props.onChange(this.state.selectedId, prevState.selectedId);
+      }
+      this.tabs[this.state.selectedId].focus();
     }
   }
 
@@ -107,7 +109,9 @@ export class Tabs extends React.PureComponent {
     }
   }
 
-  // Filter children and return only TabPanel components
+  /**
+   * Filter children and return only TabPanel components
+   */
   panelChildren() {
     return React.Children.toArray(this.props.children)
       .filter(isTabPanel);
@@ -138,6 +142,8 @@ export class Tabs extends React.PureComponent {
     const panels = this.panelChildren();
     const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
 
+    this.tabs = {};
+
     const tabs = panels.map(panel => {
       return (
         <Tab
@@ -148,6 +154,7 @@ export class Tabs extends React.PureComponent {
           onClick={this.handleTabClick}
           onKeyDown={this.handleTabKeyPress}
           panelId={panel.props.id}
+          ref={(tab) => { this.tabs[panel.props.id] = tab; }}
           selected={this.state.selectedId === panel.props.id}
         >
           {panel.props.tab}
@@ -178,6 +185,9 @@ export class Tabs extends React.PureComponent {
 
   /**
    * Find the current tab index on left or right arrow keypress
+   * @param {Array} React Tab components
+   * @param {String} ID prop of currently selected Tab
+   * @return {Number} Returns index of currently selected array item
    */
   tabFindIndex(tabsArr, findId) {
     const index = tabsArr.findIndex(elem => elem.props.id === findId);
@@ -187,6 +197,15 @@ export class Tabs extends React.PureComponent {
 
   /**
    * Handle the left arrow keydown events
+   * @param {Object} Native event object, used to listen for left arrow keycode
+   * @param {String} ID prop of currently selected Tab
+   * 
+   * The index returned from tabFindIndex is used in a reduce by 1 logic
+   * tree to ensure the right tab[index] ID is targeted for updated state.
+   * 
+   * The replaceState function did not like the href argument passed into 
+   * handleTabClick, so passing an interpolated hashbang plus selected Tab
+   * string instead. 
    */
   tabSwitchLeft(evt, curId) {
     const tabs = this.tabsArrayLen();
@@ -205,6 +224,10 @@ export class Tabs extends React.PureComponent {
 
   /**
    * Handle the right arrow keydown events
+   * @param {Object} Native event object, used to listen for right arrow keycode
+   * @param {String} ID prop of currently selected Tab
+   * 
+   * See logic decisions above in tabSwitchLeft method
    */
   tabSwitchRight(evt, curId) {
     const tabs = this.tabsArrayLen();

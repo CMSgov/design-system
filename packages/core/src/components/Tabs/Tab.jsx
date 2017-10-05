@@ -5,6 +5,7 @@ import classnames from 'classnames';
 export class Tab extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.focus = this.focus.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.href = this.props.href || `#${this.props.panelId}`;
@@ -32,6 +33,10 @@ export class Tab extends React.PureComponent {
     }
   }
 
+  focus() {
+    this.tab.focus();
+  }
+
   render() {
     const classes = classnames('ds-c-tabs__item', this.props.className);
 
@@ -45,6 +50,7 @@ export class Tab extends React.PureComponent {
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
         role='tab'
+        ref={(tab) => { this.tab = tab; }}
       >
         {this.props.children}
       </a>
