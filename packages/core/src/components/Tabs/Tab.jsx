@@ -6,12 +6,24 @@ export class Tab extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.href = this.props.href || `#${this.props.panelId}`;
   }
 
   handleClick(evt) {
     if (this.props.onClick) {
       this.props.onClick(
+        evt,
+        this.props.panelId,
+        this.props.id,
+        this.href
+      );
+    }
+  }
+
+  handleKeyDown(evt) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(
         evt,
         this.props.panelId,
         this.props.id,
@@ -31,6 +43,7 @@ export class Tab extends React.PureComponent {
         href={this.href}
         id={this.props.id}
         onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
         role='tab'
       >
         {this.props.children}
@@ -64,6 +77,12 @@ Tab.propTypes = {
    * `id`, `panelId`
    */
   onClick: PropTypes.func,
+  /**
+   * Called when the tab is clicked, with the following arguments:
+   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * `id`, `panelId`
+   */
+  onKeyDown: PropTypes.func,
   /**
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */

@@ -4,6 +4,14 @@ import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
 
+/** CONSTANTS
+ * Adding in the constant values for keycodes
+ * to handle onKeyDown events
+ */
+const LEFT_ARROW = 'ArrowLeft';
+const RIGHT_ARROW = 'ArrowRight';
+const TAB = 'Tab';
+
 /**
  * Get the id of the first TabPanel child
  * @param {Object} props
@@ -33,6 +41,15 @@ function panelTabId(panel) {
 }
 
 /**
+ * Determine if a React component is a Tab
+ * @param {React.Node} child - a React component
+ * @return {Boolean} Is this a TabPanel component?
+ */
+function isTab(child) {
+  return child != null && child.props.tab != null;
+}
+
+/**
  * Determine if a React component is a TabPanel
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TabPanel component?
@@ -58,6 +75,7 @@ export class Tabs extends React.PureComponent {
     }
 
     this.handleTabClick = this.handleTabClick.bind(this);
+    this.handleTabKeyPress = this.handleTabKeyPress.bind(this);
     this.state = { selectedId };
   }
 
@@ -72,6 +90,21 @@ export class Tabs extends React.PureComponent {
     evt.preventDefault();
     this.setState({ selectedId: panelId });
     this.replaceState(href);
+  }
+
+  handleTabKeyPress(evt, panelId) {
+    switch (evt.key) {
+      case LEFT_ARROW:
+        this.tabSwitchLeft(evt, panelId);
+        break;
+      case RIGHT_ARROW:
+        this.tabSwitchRight(evt, panelId);
+        break;
+      case TAB:
+        break;
+      default:
+        break;
+    }
   }
 
   // Filter children and return only TabPanel components
@@ -113,6 +146,7 @@ export class Tabs extends React.PureComponent {
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
+          onKeyDown={this.handleTabKeyPress}
           panelId={panel.props.id}
           selected={this.state.selectedId === panel.props.id}
         >
@@ -131,6 +165,59 @@ export class Tabs extends React.PureComponent {
   replaceState(url) {
     if (window.history) {
       window.history.replaceState({}, document.title, url);
+    }
+  }
+
+  /**
+   * Build tabs array to handle arrow keypress events accurately
+   */
+  tabsArrayLen() {
+    return React.Children.toArray(this.props.children)
+      .filter(isTab);
+  }
+
+  /**
+   * Find the current tab index on left or right arrow keypress
+   */
+  tabFindIndex(tabsArr, findId) {
+    const index = tabsArr.findIndex(elem => elem.props.id === findId);
+
+    return index;
+  }
+
+  /**
+   * Handle the left arrow keydown events
+   */
+  tabSwitchLeft(evt, curId) {
+    const tabs = this.tabsArrayLen();
+    const index = this.tabFindIndex(tabs, curId);
+
+    if (index === 0) {
+      const target = tabs[tabs.length - 1].props.id;
+      this.setState({ selectedId: target });
+      this.replaceState(`#${target}`);
+    } else {
+      const target = tabs[index - 1].props.id;
+      this.setState({ selectedId: target });
+      this.replaceState(`#${target}`);
+    }
+  }
+
+  /**
+   * Handle the right arrow keydown events
+   */
+  tabSwitchRight(evt, curId) {
+    const tabs = this.tabsArrayLen();
+    const index = this.tabFindIndex(tabs, curId);
+
+    if (index === tabs.length - 1) {
+      const target = tabs[0].props.id;
+      this.setState({ selectedId: target });
+      this.replaceState(`#${target}`);
+    } else {
+      const target = tabs[index + 1].props.id;
+      this.setState({ selectedId: target });
+      this.replaceState(`#${target}`);
     }
   }
 
