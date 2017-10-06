@@ -5,6 +5,7 @@
 // - github.com/facebook/react/issues/8379#issuecomment-264867090
 require('core-js/fn/array/includes');
 require('core-js/fn/array/fill');
+require('core-js/fn/array/find-index');
 require('core-js/fn/function/name');
-require('core-js/fn/object/get-own-property-symbols');
+require('core-js/fn/object/get-own-property-names');
 require('core-js/fn/string/includes');

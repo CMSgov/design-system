@@ -1,7 +1,7 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TabPanel from './TabPanel';
 import Tabs from './Tabs';
-import {shallow} from 'enzyme';
 
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
@@ -19,6 +19,19 @@ function shallowRender(customProps = {}, children) {
   return {
     props: props,
     wrapper: shallow(<Tabs {...props}>{children}</Tabs>)
+  };
+}
+
+function deepMount(customProps = {}, children) {
+  const props = Object.assign({}, customProps);
+
+  if (!children) {
+    children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
+  }
+
+  return {
+    props: props,
+    wrapper: mount(<Tabs {...props}>{children}</Tabs>)
   };
 }
 
@@ -109,7 +122,7 @@ describe('Tabs', function() {
 
     it('calls onChange', () => {
       const onChangeMock = jest.fn();
-      const data = shallowRender(
+      const data = deepMount(
         {
           onChange: onChangeMock,
           selectedId: 'panel-1'
