@@ -1,0 +1,25 @@
+{
+  "name": "@cmsgov/eslint-config-design-system",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "ESLint shareable config for the design system",
+  "repository": "CMSgov/design-system",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-jest": "^21.1.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2"
+  },
+  "peerDependencies": {
+    "eslint": ">=3.17.1",
+    "eslint-config-nava": ">=2.0.0"
+  }
+}

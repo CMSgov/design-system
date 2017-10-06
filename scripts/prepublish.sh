@@ -10,7 +10,7 @@ git checkout staging
 git pull --rebase
 
 echo "${GREEN}Bumping version...${NC}"
-./node_modules/.bin/lerna publish --skip-git --skip-npm
+./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch staging
 
 echo "${GREEN}Building...${NC}"
 npm run build
