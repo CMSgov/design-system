@@ -9,6 +9,7 @@
     "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
     "g": "yarn generate",
+    "precommit": "lint-staged",
     "pretest": "gulp docs:react",
     "postinstall": "lerna bootstrap --npm-client=yarn",
     "posttest": "npm run lint",
@@ -56,9 +57,11 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-stylelint": "^5.0.0",
     "gulp-util": "^3.0.8",
+    "husky": "^0.14.3",
     "jest": "^21.1.0",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.2.0",
+    "lint-staged": "^4.2.3",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "mkdir-recursive": "^0.3.0",
@@ -94,6 +97,13 @@
       "<rootDir>/node_modules/",
       "<rootDir>/packages/*/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
     ]
   },
   "resolutions": {
