@@ -25,6 +25,7 @@ module.exports = {
   rules: {
     'eol-last': 'warn',
     'filenames/match-exported': [2, ['camel', 'pascal']],
+    'indent': 'off',
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
@@ -36,6 +37,7 @@ module.exports = {
       'allowChildren': true
     }],
     'no-unused-vars': ['error', {ignoreRestSiblings: true}],
+    'jsx-quotes': 'off',
     'sort-imports': 'error',
     'react/forbid-prop-types': 'error',
     'react/jsx-closing-bracket-location': 'error',
@@ -43,7 +45,6 @@ module.exports = {
     // handleChange = class method, onChange = prop
     'react/jsx-handler-names': 'error',
     'react/jsx-key': 'warn',
-    'react/jsx-max-props-per-line': ['error', {'maximum': 3}],
     'react/jsx-pascal-case': 'error',
     'react/jsx-wrap-multilines': 'error',
     'react/no-array-index-key': 'error',
