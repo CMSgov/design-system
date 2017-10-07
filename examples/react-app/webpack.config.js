@@ -1,10 +1,9 @@
+/* eslint-disable filenames/match-exported */
 /**
  * Use Webpack + Babel to bundle and transpile our JSX
  */
-var path = require('path');
-var webpack = require('webpack');
-
-var config = {
+const path = require('path');
+const config = {
   entry: './src/scripts/index.js',
   output: {
     filename: 'bundle.js',
@@ -15,12 +14,14 @@ var config = {
       {
         test: /\.js$/,
         exclude: [/node_modules/],
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react']
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react']
+            }
           }
-        }]
+        ]
       }
     ]
   }

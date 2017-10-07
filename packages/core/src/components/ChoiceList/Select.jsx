@@ -11,7 +11,8 @@ import uniqueId from 'lodash.uniqueid';
  */
 export const Select = function(props) {
   /* eslint-disable prefer-const */
-  let { // Using let rather than const since we sometimes rewrite id
+  let {
+    // Using let rather than const since we sometimes rewrite id
     children,
     className,
     id,
@@ -22,7 +23,7 @@ export const Select = function(props) {
 
   const classes = classNames(
     'ds-c-field ds-c-field--select',
-    {'ds-c-field--inverse': inversed},
+    { 'ds-c-field--inverse': inversed },
     className
   );
 
@@ -31,11 +32,7 @@ export const Select = function(props) {
   }
 
   return (
-    <select
-      className={classes}
-      id={id}
-      {...selectProps}
-    >
+    <select className={classes} id={id} {...selectProps}>
       {children}
     </select>
   );
@@ -72,7 +69,7 @@ Select.propTypes = {
       /* eslint-disable quotes */
       return new Error(
         `'${propName}' supplied to '${componentName}'. [A11Y]: Users often don’t` +
-        ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
+          ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
       );
       /* eslint-enable */
     }

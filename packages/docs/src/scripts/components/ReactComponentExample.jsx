@@ -21,14 +21,12 @@ class ReactComponentExample extends React.PureComponent {
 
   render() {
     return (
-      <div className='markup markup--react'>
-        <div className='ds-u-border--1 ds-u-padding--1'>
+      <div className="markup markup--react">
+        <div className="ds-u-border--1 ds-u-padding--1">
           {this.props.renderComponent()}
         </div>
 
-        <CodeSnippet language='jsx'>
-          {this.highlightedMarkup()}
-        </CodeSnippet>
+        <CodeSnippet language="jsx">{this.highlightedMarkup()}</CodeSnippet>
       </div>
     );
   }

@@ -7,8 +7,8 @@ function createRoutes(pages, level = 1) {
 
   if (level === 1) {
     // Remove 404 page from Nav
-    pages = pages.filter(page =>
-      !page.referenceURI || !page.referenceURI.match(/404$/)
+    pages = pages.filter(
+      page => !page.referenceURI || !page.referenceURI.match(/404$/)
     );
   }
 
@@ -18,7 +18,10 @@ function createRoutes(pages, level = 1) {
       id: page.referenceURI, // we use this to identify the current page
       items: level < 2 ? createRoutes(page.sections, level + 1) : null,
       label: page.header,
-      url: typeof page.referenceURI === 'string' ? `/${page.referenceURI}` : undefined
+      url:
+        typeof page.referenceURI === 'string'
+          ? `/${page.referenceURI}`
+          : undefined
     };
   });
 

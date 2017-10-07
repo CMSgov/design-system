@@ -62,8 +62,10 @@ export class Tabs extends React.PureComponent {
   }
 
   componentDidUpdate(_, prevState) {
-    if (typeof this.props.onChange === 'function' &&
-        this.state.selectedId !== prevState.selectedId) {
+    if (
+      typeof this.props.onChange === 'function' &&
+      this.state.selectedId !== prevState.selectedId
+    ) {
       this.props.onChange(this.state.selectedId, prevState.selectedId);
     }
   }
@@ -76,8 +78,7 @@ export class Tabs extends React.PureComponent {
 
   // Filter children and return only TabPanel components
   panelChildren() {
-    return React.Children.toArray(this.props.children)
-      .filter(isTabPanel);
+    return React.Children.toArray(this.props.children).filter(isTabPanel);
   }
 
   renderChildren() {
@@ -86,15 +87,12 @@ export class Tabs extends React.PureComponent {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(
-          child,
-          {
-            selected: this.state.selectedId === child.props.id,
-            tab: undefined,
-            tabHref: undefined,
-            tabId: panelTabId(child)
-          }
-        );
+        return React.cloneElement(child, {
+          selected: this.state.selectedId === child.props.id,
+          tab: undefined,
+          tabHref: undefined,
+          tabId: panelTabId(child)
+        });
       }
 
       return child;
@@ -121,7 +119,11 @@ export class Tabs extends React.PureComponent {
       );
     });
 
-    return <div className={listClasses} role='tablist'>{tabs}</div>;
+    return (
+      <div className={listClasses} role="tablist">
+        {tabs}
+      </div>
+    );
   }
 
   /**

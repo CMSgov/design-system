@@ -27,22 +27,22 @@ export default function() {
     <div>
       <ChoiceList
         choices={choices}
-        className='ds-u-margin-top--0'
-        label='Radio example'
-        name='choices_field'
+        className="ds-u-margin-top--0"
+        label="Radio example"
+        name="choices_field"
       />
       <ChoiceList
         choices={choices}
-        errorMessage='Example error message'
-        label='Checkbox example'
+        errorMessage="Example error message"
+        label="Checkbox example"
         multiple
-        name='multiple_choices_field'
+        name="multiple_choices_field"
       />
       <ChoiceList
         choices={options}
-        hint='Example hint text'
-        label='Select example'
-        name='select_choices_field'
+        hint="Example hint text"
+        label="Select example"
+        name="select_choices_field"
       />
     </div>
   );

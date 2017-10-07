@@ -31,7 +31,7 @@ class PageBlock extends React.PureComponent {
     }
 
     return (
-      <section className='ds-u-margin-top--3'>
+      <section className="ds-u-margin-top--3">
         <HtmlExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
@@ -48,7 +48,7 @@ class PageBlock extends React.PureComponent {
     if (this.props.description) {
       return (
         <div
-          className='c-details ds-u-margin-top--2 ds-u-measure--wide'
+          className="c-details ds-u-margin-top--2 ds-u-measure--wide"
           dangerouslySetInnerHTML={{
             __html: this.props.description
           }}
@@ -74,12 +74,9 @@ class PageBlock extends React.PureComponent {
 
     return (
       <div>
-        {
-          this.props.reactComponent &&
-          <span className='ds-h6'>React</span>
-        }
+        {this.props.reactComponent && <span className="ds-h6">React</span>}
         <h2
-          className='ds-h2 ds-u-margin-top--0'
+          className="ds-h2 ds-u-margin-top--0"
           // Headers can contain HTML markup, therefore dangerously set...
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
@@ -91,7 +88,10 @@ class PageBlock extends React.PureComponent {
 
   reactDoc() {
     if (!this.props.reactComponent) return;
-    const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
+    const path = reactComponentPath(
+      this.props.source.path,
+      this.props.reactComponent
+    );
     const docs = reactDoc[`${path}.jsx`];
 
     if (docs && docs.length) {
@@ -112,7 +112,7 @@ class PageBlock extends React.PureComponent {
 
   render() {
     return (
-      <article className='ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content'>
+      <article className="ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content">
         {this.header()}
         {this.description()}
         {this.markupExamples()}
@@ -129,9 +129,7 @@ PageBlock.propTypes = {
   hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,
-  modifiers: PropTypes.arrayOf(
-    HtmlExample.propTypes.modifier
-  ),
+  modifiers: PropTypes.arrayOf(HtmlExample.propTypes.modifier),
   reactComponent: PropTypes.string,
   reference: PropTypes.string,
   responsive: PropTypes.bool,

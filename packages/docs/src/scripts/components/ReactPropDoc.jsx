@@ -13,7 +13,9 @@ class ReactPropDoc extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      return <div dangerouslySetInnerHTML={{__html: this.props.description}} />;
+      return (
+        <div dangerouslySetInnerHTML={{ __html: this.props.description }} />
+      );
     }
   }
 
@@ -21,7 +23,7 @@ class ReactPropDoc extends React.PureComponent {
     if (this.props.required) {
       return (
         <p>
-          <span className='ds-c-badge ds-u-bg-gray-dark'>Required</span>
+          <span className="ds-c-badge ds-u-bg-gray-dark">Required</span>
         </p>
       );
     }
@@ -45,7 +47,8 @@ class ReactPropDoc extends React.PureComponent {
 
       if (valueType === 'shape') {
         valueType = this.props.type.value.computed
-          ? this.props.type.value.value : `{${this.shape()}}`;
+          ? this.props.type.value.value
+          : `{${this.shape()}}`;
       }
 
       return `${propType}[${valueType}]`;
@@ -61,9 +64,9 @@ class ReactPropDoc extends React.PureComponent {
     const values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
-      return values.map(v =>
-        this.props.type.name === 'enum' ? v.value : v.name
-      ).join(', ');
+      return values
+        .map(v => (this.props.type.name === 'enum' ? v.value : v.name))
+        .join(', ');
     }
   }
 
@@ -71,18 +74,14 @@ class ReactPropDoc extends React.PureComponent {
     return (
       <tr>
         <td>
-          <code className='ds-u-font-weight--bold'>{this.props.name}</code>
+          <code className="ds-u-font-weight--bold">{this.props.name}</code>
           {this.isRequired()}
         </td>
         <td>
           <code>{this.type()}</code>
         </td>
-        <td>
-          {this.defaultValue()}
-        </td>
-        <td>
-          {this.description()}
-        </td>
+        <td>{this.defaultValue()}</td>
+        <td>{this.description()}</td>
       </tr>
     );
   }
@@ -100,7 +99,8 @@ ReactPropDoc.propTypes = {
     name: PropTypes.string.isRequired,
     // Valid values
     value: PropTypes.oneOfType([
-      PropTypes.arrayOf( // oneOf
+      PropTypes.arrayOf(
+        // oneOf
         PropTypes.shape({
           computed: PropTypes.bool,
           name: PropTypes.string,

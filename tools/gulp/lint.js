@@ -32,14 +32,14 @@ module.exports = (gulp, shared) => {
     return gulp
       .src([`${cwd}src/**/*.scss`])
       .pipe(changedInPlace({ firstPass: true }))
-      .pipe(stylelint({
-        config: config,
-        failAfterError: failAfterError,
-        reporters: [
-          { formatter: 'string', console: true }
-        ],
-        syntax: 'scss'
-      }))
+      .pipe(
+        stylelint({
+          config: config,
+          failAfterError: failAfterError,
+          reporters: [{ formatter: 'string', console: true }],
+          syntax: 'scss'
+        })
+      )
       .pipe(count('## Sass files linted'));
   }
 

@@ -5,7 +5,7 @@ import VerticalNav from './VerticalNav';
 export default function() {
   return (
     <VerticalNav
-      selectedId='team'
+      selectedId="team"
       items={[
         {
           label: 'Home',

@@ -1,7 +1,7 @@
 import React from 'react';
 import TabPanel from './TabPanel';
 import Tabs from './Tabs';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
@@ -13,7 +13,9 @@ function shallowRender(customProps = {}, children) {
   const props = Object.assign({}, customProps);
 
   if (!children) {
-    children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
+    children = (
+      <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>
+    );
   }
 
   return {
@@ -26,11 +28,11 @@ describe('Tabs', function() {
   it('renders a tab', () => {
     const children = [
       <TabPanel
-        key='1'
+        key="1"
         id={defaultPanelProps.id}
         tab={defaultPanelProps.tab}
-        tabClassName='bar'
-        tabHref='/foo'
+        tabClassName="bar"
+        tabHref="/foo"
       >
         {defaultPanelChildren}
       </TabPanel>
@@ -38,30 +40,30 @@ describe('Tabs', function() {
     const data = shallowRender(undefined, children);
     const tabs = data.wrapper.find('Tab');
 
-    expect(tabs.length)
-      .toBe(1);
-    expect(tabs.first().hasClass('bar'))
-      .toBe(true);
-    expect(tabs.first().prop('id'))
-      .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
-    expect(tabs.first().prop('panelId'))
-      .toBe(defaultPanelProps.id);
-    expect(tabs.first().prop('href'))
-      .toBe('/foo');
-    expect(tabs.first().children().text())
-      .toBe(defaultPanelProps.tab);
+    expect(tabs.length).toBe(1);
+    expect(tabs.first().hasClass('bar')).toBe(true);
+    expect(tabs.first().prop('id')).toBe(
+      `ds-c-tabs__item--${defaultPanelProps.id}`
+    );
+    expect(tabs.first().prop('panelId')).toBe(defaultPanelProps.id);
+    expect(tabs.first().prop('href')).toBe('/foo');
+    expect(
+      tabs
+        .first()
+        .children()
+        .text()
+    ).toBe(defaultPanelProps.tab);
   });
 
   it('renders panels', () => {
     const data = shallowRender();
     const panels = data.wrapper.find('TabPanel');
 
-    expect(panels.length)
-      .toBe(1);
-    expect(panels.first().prop('id'))
-      .toBe(defaultPanelProps.id);
-    expect(panels.first().prop('tabId'))
-      .toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
+    expect(panels.length).toBe(1);
+    expect(panels.first().prop('id')).toBe(defaultPanelProps.id);
+    expect(panels.first().prop('tabId')).toBe(
+      `ds-c-tabs__item--${defaultPanelProps.id}`
+    );
   });
 
   it('adds additional class names to tablist', () => {
@@ -77,10 +79,10 @@ describe('Tabs', function() {
 
     beforeEach(() => {
       children = [
-        <TabPanel key='1' id='panel-1' tab='Tab 1'>
+        <TabPanel key="1" id="panel-1" tab="Tab 1">
           {defaultPanelChildren}
         </TabPanel>,
-        <TabPanel key='2' id='panel-2' tab='Tab 2'>
+        <TabPanel key="2" id="panel-2" tab="Tab 2">
           {defaultPanelChildren}
         </TabPanel>
       ];
@@ -96,10 +98,7 @@ describe('Tabs', function() {
     });
 
     it('selects the specified tab', () => {
-      const data = shallowRender(
-        { defaultSelectedId: 'panel-2' },
-        children
-      );
+      const data = shallowRender({ defaultSelectedId: 'panel-2' }, children);
       const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');
 

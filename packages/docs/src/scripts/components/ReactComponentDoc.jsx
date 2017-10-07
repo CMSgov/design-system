@@ -13,7 +13,8 @@ class ReactComponentDoc extends React.PureComponent {
     if (this.props.hideExample) return;
 
     // Resolve the example component relative to the /packages/ directory
-    const renderComponent = require(`../../../../${this.props.path}.example.jsx`).default;
+    const renderComponent = require(`../../../../${this.props
+      .path}.example.jsx`).default;
     return <ReactComponentExample renderComponent={renderComponent} />;
   }
 
@@ -32,8 +33,8 @@ class ReactComponentDoc extends React.PureComponent {
     return (
       <section>
         <div
-          className='c-details ds-u-margin-y--2 ds-u-measure--wide'
-          dangerouslySetInnerHTML={{__html: this.props.description}}
+          className="c-details ds-u-margin-y--2 ds-u-measure--wide"
+          dangerouslySetInnerHTML={{ __html: this.props.description }}
         />
         {this.renderExample()}
         {this.renderPropDocs()}

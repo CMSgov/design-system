@@ -3,7 +3,7 @@ const getValues = require('../getValues');
 
 describe('getValues', () => {
   let stats = {};
-  const retrievalMethod = (branch) => stats[branch].size;
+  const retrievalMethod = branch => stats[branch].size;
 
   beforeEach(() => {
     stats = {
@@ -27,8 +27,9 @@ describe('getValues', () => {
 
   it('colors difference with red when less than master value', () => {
     const values = getValues(retrievalMethod, false);
-    expect(values[2])
-      .toEqual(colors.red(stats.current.size - stats.master.size));
+    expect(values[2]).toEqual(
+      colors.red(stats.current.size - stats.master.size)
+    );
   });
 
   it('skips color when no difference', () => {

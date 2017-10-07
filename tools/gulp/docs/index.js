@@ -32,34 +32,40 @@ const docs = 'packages/docs';
  * @return {Promise<Array>}
  */
 function addTopLevelPages(kssSections) {
-  return Promise.resolve([
-    {
-      header: 'Guidelines',
-      reference: 'guidelines',
-      sections: [],
-      weight: 5
-    }, {
-      header: 'Layout',
-      reference: 'layout',
-      sections: [],
-      weight: 6
-    }, {
-      header: 'Style',
-      reference: 'style',
-      sections: [],
-      weight: 7
-    }, {
-      header: 'Components',
-      reference: 'components',
-      sections: [],
-      weight: 30
-    }, {
-      header: 'Patterns',
-      reference: 'patterns',
-      sections: [],
-      weight: 40
-    }
-  ].concat(kssSections));
+  return Promise.resolve(
+    [
+      {
+        header: 'Guidelines',
+        reference: 'guidelines',
+        sections: [],
+        weight: 5
+      },
+      {
+        header: 'Layout',
+        reference: 'layout',
+        sections: [],
+        weight: 6
+      },
+      {
+        header: 'Style',
+        reference: 'style',
+        sections: [],
+        weight: 7
+      },
+      {
+        header: 'Components',
+        reference: 'components',
+        sections: [],
+        weight: 30
+      },
+      {
+        header: 'Patterns',
+        reference: 'patterns',
+        sections: [],
+        weight: 40
+      }
+    ].concat(kssSections)
+  );
 }
 
 function generatedPagesCount(resultGroups) {
@@ -91,18 +97,17 @@ module.exports = (gulp, shared) => {
 
     return Promise.all(
       pages.map(page => {
-        return generatePage(routes, page, shared.rootPath)
-          .then(created => {
-            if (page.sections) {
-              return Promise.all(
-                page.sections.map(subpage => {
-                  return generatePage(routes, subpage, shared.rootPath);
-                })
-              ).then(results => [created].concat(results)); // return results for generatedPagesCount
-            }
+        return generatePage(routes, page, shared.rootPath).then(created => {
+          if (page.sections) {
+            return Promise.all(
+              page.sections.map(subpage => {
+                return generatePage(routes, subpage, shared.rootPath);
+              })
+            ).then(results => [created].concat(results)); // return results for generatedPagesCount
+          }
 
-            return [created];
-          });
+          return [created];
+        });
       })
     ).then(generatedPagesCount);
   }
@@ -120,19 +125,16 @@ module.exports = (gulp, shared) => {
 
     return Promise.all(
       pagesWithMarkup.map(page => {
-        return generatePage(null, page, shared.rootPath, true)
-          .then(created => [created]);
+        return generatePage(null, page, shared.rootPath, true).then(created => [
+          created
+        ]);
       })
-    )
-    .then(() => kssSections);
+    ).then(() => kssSections);
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory
   gulp.task('docs:clean', () => {
-    dutil.logMessage(
-      '🚮 ',
-      'Emptying the build and data directories'
-    );
+    dutil.logMessage('🚮 ', 'Emptying the build and data directories');
 
     // pass empty version so entire build directory is emptied
     return del(buildPath(''));
@@ -147,7 +149,8 @@ module.exports = (gulp, shared) => {
       'Copying fonts from core package into "public" directory'
     );
 
-    return gulp.src('packages/core/fonts/*')
+    return gulp
+      .src('packages/core/fonts/*')
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public/fonts')));
   });
 
@@ -159,7 +162,8 @@ module.exports = (gulp, shared) => {
       'Copying images from "src" directory into "public" directory'
     );
 
-    return gulp.src(`${docs}/src/**/images/*`)
+    return gulp
+      .src(`${docs}/src/**/images/*`)
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
@@ -169,7 +173,8 @@ module.exports = (gulp, shared) => {
       'Copying images from core package into "public" directory'
     );
 
-    return gulp.src('packages/core/images/*')
+    return gulp
+      .src('packages/core/images/*')
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public/images')));
   });
 
@@ -186,7 +191,8 @@ module.exports = (gulp, shared) => {
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
     const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
-    return kss.traverse(packages, { mask })
+    return kss
+      .traverse(packages, { mask })
       .then(styleguide =>
         /**
          * Parse CSS and JS comments, forming the initial array of pages.
@@ -203,8 +209,9 @@ module.exports = (gulp, shared) => {
       )
       .then(kssSections =>
         // Parse Markdown files and add each page's data to the pages array
-        convertMarkdownPages(shared.rootPath, shared.packages)
-          .then(pages => pages.concat(kssSections))
+        convertMarkdownPages(shared.rootPath, shared.packages).then(pages =>
+          pages.concat(kssSections)
+        )
       )
       .then(uniquePages) // Remove pages with same URL (for advanced theme support)
       .then(generateMarkupPages) // Create HTML files for markup examples
@@ -234,12 +241,16 @@ module.exports = (gulp, shared) => {
         `!packages/${packages}/src/components/**/*.test.jsx`,
         `!packages/${packages}/src/components/**/*.example.jsx`
       ])
-      .pipe(gulpReactDocgen({
-        nameAfter: 'packages/'
-      }))
-      .pipe(merge({
-        fileName: 'react-doc.json'
-      }))
+      .pipe(
+        gulpReactDocgen({
+          nameAfter: 'packages/'
+        })
+      )
+      .pipe(
+        merge({
+          fileName: 'react-doc.json'
+        })
+      )
       .pipe(gulp.dest(`${docs}/src/data`));
   });
 
@@ -255,10 +266,7 @@ module.exports = (gulp, shared) => {
     runSequence(
       'docs:clean',
       'docs:react',
-      [
-        'docs:generate-pages',
-        'docs:public'
-      ],
+      ['docs:generate-pages', 'docs:public'],
       done
     );
   });

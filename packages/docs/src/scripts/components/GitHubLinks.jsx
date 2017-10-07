@@ -6,10 +6,13 @@ import pkg from '../../../package.json';
 
 const zipUrl = githubUrl(`archive/v${pkg.version}.zip`);
 
-const GitHubLinks = (props) => {
-  const downloadBtnClassName = classNames('ds-c-button ds-c-button--primary ds-c-button--small', {
-    'ds-u-display--block': props.vertical
-  });
+const GitHubLinks = props => {
+  const downloadBtnClassName = classNames(
+    'ds-c-button ds-c-button--primary ds-c-button--small',
+    {
+      'ds-u-display--block': props.vertical
+    }
+  );
   const githubBtnClassName = classNames('ds-c-button ds-c-button--small', {
     'ds-u-margin-left--2': !props.vertical,
     'ds-u-margin-top--2 ds-u-display--block': props.vertical,
@@ -17,8 +20,12 @@ const GitHubLinks = (props) => {
   });
   return (
     <div className={props.className}>
-      <a href={zipUrl} className={downloadBtnClassName}>Download code and design files</a>
-      <a href={githubUrl()} className={githubBtnClassName}>View on GitHub</a>
+      <a href={zipUrl} className={downloadBtnClassName}>
+        Download code and design files
+      </a>
+      <a href={githubUrl()} className={githubBtnClassName}>
+        View on GitHub
+      </a>
     </div>
   );
 };

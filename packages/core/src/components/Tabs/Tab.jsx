@@ -11,12 +11,7 @@ export class Tab extends React.PureComponent {
 
   handleClick(evt) {
     if (this.props.onClick) {
-      this.props.onClick(
-        evt,
-        this.props.panelId,
-        this.props.id,
-        this.href
-      );
+      this.props.onClick(evt, this.props.panelId, this.props.id, this.href);
     }
   }
 
@@ -31,7 +26,7 @@ export class Tab extends React.PureComponent {
         href={this.href}
         id={this.props.id}
         onClick={this.handleClick}
-        role='tab'
+        role="tab"
       >
         {this.props.children}
       </a>

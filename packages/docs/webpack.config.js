@@ -1,3 +1,4 @@
+/* eslint-disable filenames/match-exported */
 const buildPath = require('../../tools/gulp/common/buildPath');
 const fs = require('fs');
 const path = require('path');
@@ -17,10 +18,7 @@ function createConfig(rootPath = '', packages, hotReload = true) {
   const config = {
     context: __dirname,
     entry: {
-      index: [
-        './src/scripts/helpers/polyfills.js',
-        './src/scripts/index.jsx'
-      ],
+      index: ['./src/scripts/helpers/polyfills.js', './src/scripts/index.jsx'],
       example: ['./src/scripts/example.js']
     },
     output: {
@@ -42,7 +40,10 @@ function createConfig(rootPath = '', packages, hotReload = true) {
             // https://github.com/algolia/react-element-to-jsx-string/issues/71
             // https://github.com/sindresorhus/file-type/issues/70
             path.resolve(__dirname, 'node_modules/stringify-object'),
-            path.resolve(__dirname, 'node_modules/get-own-enumerable-property-symbols')
+            path.resolve(
+              __dirname,
+              'node_modules/get-own-enumerable-property-symbols'
+            )
           ].concat(packagePaths)
         }
       ]

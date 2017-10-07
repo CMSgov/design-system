@@ -5,7 +5,4 @@ const defaultHandlers = require('react-docgen').defaultHandlers;
 const displayNameHandler = require('./markdownHandler');
 const markdownHandler = require('./markdownHandler');
 
-module.exports = defaultHandlers.concat([
-  displayNameHandler,
-  markdownHandler
-]);
+module.exports = defaultHandlers.concat([displayNameHandler, markdownHandler]);

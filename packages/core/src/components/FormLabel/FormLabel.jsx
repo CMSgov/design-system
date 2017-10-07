@@ -13,9 +13,9 @@ export class FormLabel extends React.PureComponent {
     if (this.props.errorMessage) {
       return (
         <span
-          className='ds-c-field__hint ds-u-color--error'
+          className="ds-c-field__hint ds-u-color--error"
           id={`${this.props.fieldId}-message`}
-          role='alert'
+          role="alert"
         >
           {this.props.errorMessage}
         </span>
@@ -25,17 +25,17 @@ export class FormLabel extends React.PureComponent {
 
   hint() {
     if (this.props.hint) {
-      const classes = classNames(
-        'ds-c-field__hint',
-        {'ds-c-field__hint--inverse': this.props.inversed}
-      );
+      const classes = classNames('ds-c-field__hint', {
+        'ds-c-field__hint--inverse': this.props.inversed
+      });
       return <span className={classes}>{this.props.hint}</span>;
     }
   }
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+    const labelTextClasses =
+      this.props.errorMessage && 'ds-u-font-weight--bold';
     const classes = classNames('ds-c-label', this.props.className);
 
     return (

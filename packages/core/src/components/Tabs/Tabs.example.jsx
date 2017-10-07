@@ -6,13 +6,14 @@ import Tabs from './Tabs';
 export default function() {
   return (
     <Tabs>
-      <TabPanel id='summary' tab='Summary'>
-        The Bill of Rights is the first ten amendments to the United States Constitution.
+      <TabPanel id="summary" tab="Summary">
+        The Bill of Rights is the first ten amendments to the United States
+        Constitution.
       </TabPanel>
-      <TabPanel id='amendments' tab='Amendments'>
-        <h2 className='ds-h4'>Bill of Rights</h2>
+      <TabPanel id="amendments" tab="Amendments">
+        <h2 className="ds-h4">Bill of Rights</h2>
 
-        <ol className='ds-c-list'>
+        <ol className="ds-c-list">
           <li>Freedoms, Petitions, Assembly</li>
           <li>Right to bear arms</li>
           <li>Quartering of soldiers</li>
@@ -25,9 +26,9 @@ export default function() {
           <li>States’ rights</li>
         </ol>
 
-        <h2 className='ds-h4'>Later Amendments</h2>
+        <h2 className="ds-h4">Later Amendments</h2>
 
-        <ol className='ds-c-list' start='11'>
+        <ol className="ds-c-list" start="11">
           <li>Lawsuits against states</li>
           <li>Presidential elections</li>
           <li>Abolition of slavery</li>

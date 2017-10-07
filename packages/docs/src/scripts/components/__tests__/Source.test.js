@@ -1,7 +1,7 @@
 import React from 'react';
 import Source from '../Source';
 import githubUrl from '../../shared/githubUrl';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Source', () => {
   let props;
@@ -19,22 +19,23 @@ describe('Source', () => {
   it('links to SCSS file', () => {
     const wrapper = shallow(<Source {...props} />);
 
-    expect(wrapper.prop('href'))
-      .toBe(`${blobPath}/${props.source.path}`);
+    expect(wrapper.prop('href')).toBe(`${blobPath}/${props.source.path}`);
   });
 
   it('links to JSX file', () => {
     props.reactComponent = 'ButtonGroup';
 
     const wrapper = shallow(<Source {...props} />);
-    const reactPath = props.source.path.replace('Button.scss', 'ButtonGroup.jsx');
+    const reactPath = props.source.path.replace(
+      'Button.scss',
+      'ButtonGroup.jsx'
+    );
 
-    expect(wrapper.prop('href'))
-      .toBe(`${blobPath}/${reactPath}`);
+    expect(wrapper.prop('href')).toBe(`${blobPath}/${reactPath}`);
   });
 
   it('adds class name', () => {
-    const wrapper = shallow(<Source {...props} className='foo' />);
+    const wrapper = shallow(<Source {...props} className="foo" />);
 
     expect(wrapper.hasClass('foo')).toBe(true);
   });
