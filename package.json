@@ -9,12 +9,14 @@
     "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
     "g": "yarn generate",
+    "pretest": "gulp docs:react",
     "postinstall": "lerna bootstrap --npm-client=yarn",
+    "posttest": "npm run lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "npm run start -- --theme",
-    "test": "NODE_ENV=test gulp docs:react && jest && gulp lint --env=test",
+    "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
-    "lint": "yarn run gulp lint"
+    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test"
   },
   "devDependencies": {
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
@@ -47,7 +49,6 @@
     "gulp-changed": "^3.1.0",
     "gulp-changed-in-place": "^2.2.0",
     "gulp-count": "^0.3.0",
-    "gulp-eslint": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-merge-json": "^1.2.0",
     "gulp-postcss": "^7.0.0",
