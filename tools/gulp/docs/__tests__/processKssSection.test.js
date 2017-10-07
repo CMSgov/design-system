@@ -2,29 +2,29 @@
 const processKssSection = require('../processKssSection');
 
 describe('processKssSection', () => {
-  let section = reference => {
+  const section = reference => {
     return {
-      toJSON: () => (
-        {
-          // These paragraphs need to be separated by a newline in order for
-          // the flag processing to work properly.
-          description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
-          deprecated: false,
-          experimental: false,
-          header: 'Title - `<Component>`',
-          markup: '<h1>Foo</h1>',
-          modifiers: [{
+      toJSON: () => ({
+        // These paragraphs need to be separated by a newline in order for
+        // the flag processing to work properly.
+        description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
+        deprecated: false,
+        experimental: false,
+        header: 'Title - `<Component>`',
+        markup: '<h1>Foo</h1>',
+        modifiers: [
+          {
             name: '.primary',
             description: 'The primary action',
             className: ''
-          }],
-          parameters: [],
-          reference: reference,
-          source: {
-            line: 1
           }
+        ],
+        parameters: [],
+        reference: reference,
+        source: {
+          line: 1
         }
-      )
+      })
     };
   };
 

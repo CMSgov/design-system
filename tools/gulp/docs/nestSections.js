@@ -7,13 +7,13 @@ const _ = require('lodash');
  * @param  {Array} sections - KssSection
  * @return {Array}
  */
-module.exports = (sections) => {
+module.exports = sections => {
   let pages = sections
     .concat([]) // don't mutate original array
     .map(setProps)
     .map(section => {
       if (section.parentReference) {
-        let parent = _.find(sections, {
+        const parent = _.find(sections, {
           reference: section.parentReference
         });
 
@@ -78,7 +78,10 @@ function sort(sections) {
   sections = _.sortBy(sections, ['weight', 'header']);
 
   sections.forEach(topLevelPage => {
-    topLevelPage.sections = _.sortBy(topLevelPage.sections, ['weight', 'header']);
+    topLevelPage.sections = _.sortBy(topLevelPage.sections, [
+      'weight',
+      'header'
+    ]);
 
     topLevelPage.sections.forEach(subpage => {
       if (subpage.sections) {
@@ -97,6 +100,5 @@ function sort(sections) {
  * @return {Array} sorted sections
  */
 function sortBySourceLine(sections) {
-  return sections.concat([])
-    .sort((a, b) => a.source.line - b.source.line);
+  return sections.concat([]).sort((a, b) => a.source.line - b.source.line);
 }

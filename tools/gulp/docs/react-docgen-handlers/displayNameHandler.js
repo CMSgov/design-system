@@ -7,9 +7,9 @@
  * get that to actually work (maybe compatibility issues w/ a newer version?)
  */
 const DEFAULT_NAME = 'UnknownComponent';
-const {getMemberValuePath, getNameOrValue} = require('react-docgen').utils;
+const { getMemberValuePath, getNameOrValue } = require('react-docgen').utils;
 const recast = require('recast');
-const {types: {namedTypes: types}} = recast;
+const { types: { namedTypes: types } } = recast;
 
 function getStaticDisplayName(path) {
   let displayName = null;
@@ -38,10 +38,10 @@ function getNodeIdentifier(path) {
 }
 
 function displayNameHandler(documentation, path) {
-  let displayName = [
-    getStaticDisplayName,
-    getNodeIdentifier
-  ].reduce((name, getDisplayName) => name || getDisplayName(path), '');
+  const displayName = [getStaticDisplayName, getNodeIdentifier].reduce(
+    (name, getDisplayName) => name || getDisplayName(path),
+    ''
+  );
 
   documentation.set('displayName', displayName || DEFAULT_NAME);
 }
