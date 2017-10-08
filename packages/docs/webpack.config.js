@@ -18,7 +18,6 @@ function createConfig(rootPath = '', packages, hotReload = true) {
     context: __dirname,
     entry: {
       index: [
-        './src/scripts/helpers/polyfills.js',
         './src/scripts/index.jsx'
       ],
       example: ['./src/scripts/example.js']

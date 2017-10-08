@@ -14,7 +14,6 @@
     "@cmsgov/design-system-layout": "^1.2.0",
     "@cmsgov/design-system-support": "^1.2.0",
     "classnames": "^2.2.5",
-    "core-js": "^2.5.1",
     "lodash": "^4.17.4",
     "prismjs": "^1.8.1",
     "prop-types": "^15.6.0",
