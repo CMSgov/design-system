@@ -11,7 +11,18 @@
   ],
   "presets": [
     ["env", {
-      "useBuiltIns": "usage"
+      "debug": true,
+      "exclude": [
+        "es6.math",
+        "es7.string",
+        "transform-async-to-generator",
+        "transform-exponentiation-operator",
+        "transform-regenerator",
+        "web.timers",
+        "web.immediate",
+        "web.dom.iterable"
+      ],
+      "useBuiltIns": "entry"
     }],
     "react",
     "stage-3"
