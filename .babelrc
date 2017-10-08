@@ -11,14 +11,6 @@
   ],
   "presets": [
     ["env", {
-      "debug": true,
-      "include": [
-        "es6.array.fill",
-        "es7.array.includes",
-        "es6.function.name",
-        "es6.symbol",
-        "es6.string.includes"
-      ],
       "useBuiltIns": "usage"
     }],
     "react",
