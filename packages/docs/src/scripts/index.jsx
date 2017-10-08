@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { AppContainer } from 'react-hot-loader';
 import Docs from './Docs';
 import React from 'react';
