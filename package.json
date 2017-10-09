@@ -32,10 +32,13 @@
     "bytes": "^3.0.0",
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
+    "core-js": "^2.5.1",
     "cssnano": "^3.10.0",
     "cssstats": "^3.1.0",
     "del": "^3.0.0",
     "ejs": "^2.5.7",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.8.0",
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.2.0",
@@ -55,7 +58,7 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-stylelint": "^5.0.0",
     "gulp-util": "^3.0.8",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.2.0",
     "lodash": "^4.17.4",
@@ -67,10 +70,11 @@
     "postcss-import": "^11.0.0",
     "postcss-url": "^7.1.2",
     "prismjs": "^1.8.1",
-    "react": "^15.6.2",
+    "react": "^16.0.0",
     "react-docgen": "^2.18.0",
-    "react-dom": "^15.6.2",
+    "react-dom": "^16.0.0",
     "react-hot-loader": "3.0.0-beta.7",
+    "react-test-renderer": "^16.0.0",
     "recast": "^0.12.6",
     "run-sequence": "^2.2.0",
     "stylelint": "^8.1.1",
@@ -87,10 +91,15 @@
     "node": ">=4.5.0"
   },
   "jest": {
+    "setupFiles": [
+      "<rootDir>/tools/jest/polyfills.js",
+      "<rootDir>/tools/jest/setupEnzyme.js"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/examples/",
       "<rootDir>/node_modules/",
       "<rootDir>/packages/*/node_modules/",
+      "<rootDir>/packages/themes/*/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
     ]
   },
