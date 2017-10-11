@@ -16,7 +16,13 @@ Below are some best practices your project should aim to follow in order to prov
 ### Validation
 
 - Place inline validation messages within the field's `<label>` element.
-- See [validation guidance for the `<label>` component](http://localhost:3000/components/form-label/#guidance).
+- See [validation guidance for the `<label>` component]({{root}}/components/form-label/#guidance).
+
+### Required and Optional fields
+
+If most of the fields in a form are required, indicate the few that are optional. If most of the fields in a form are optional, indicate the few that are required. When indicating what form fields are either required or optional, always use text. Use the [`requirementLabel` prop on the `FormLabel` component]({{root}}/components/form-label/#usage).
+
+Whichever choice you choose, ensure the pattern is consistent when the form is split across multiple pages.
 
 ## Learn more
 

@@ -81,7 +81,7 @@ FormLabel.propTypes = {
    */
   hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See []().
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
   requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
