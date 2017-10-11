@@ -236,7 +236,7 @@ module.exports = (gulp, shared) => {
       ])
       .pipe(gulpReactDocgen({
         nameAfter: 'packages/'
-      }))
+      }, shared.rootPath))
       .pipe(merge({
         fileName: 'react-doc.json'
       }))
