@@ -70,16 +70,23 @@ FormLabel.propTypes = {
   /** The root HTML element used to render the label */
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
    */
-  fieldId: PropTypes.string,
+  fieldId: function(props, propName, componentName) {
+    if (props.errorMessage && props[propName] == null) {
+      return new Error(`Prop \`${propName}\` is required when specifying an \`errorMessage\`. None specified for ${componentName}.`);
+    }
+    else {
+      return PropTypes.node.apply(PropTypes.node, arguments);
+    }
+  },
   /**
    * Additional hint text to display
    */
-  hint: PropTypes.node,
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See []().
    */

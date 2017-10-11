@@ -95,11 +95,7 @@
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
     ]
   },
-<<<<<<< HEAD
   "resolutions": {
     "gulp-sass/node-sass": ">=4.5.3"
   }
-=======
-  "dependencies": {}
->>>>>>> 573e4a8... Consolidated `optional` and `required` props into a `requirementLabel` prop that can be a string or node
 }

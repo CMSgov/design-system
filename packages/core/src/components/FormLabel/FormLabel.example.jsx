@@ -7,6 +7,7 @@ export default function() {
     <FormLabel
       errorMessage={<span><em>Yikes!</em> There was an error</span>}
       hint='It must not be the same as your favorite number'
+      fieldId="an-input-field"
     >
       Please enter your favorite color
     </FormLabel>
