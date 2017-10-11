@@ -5,7 +5,7 @@ import React from 'react';
 export default function() {
   return (
     <FormLabel
-      errorMessage={<span><em>Yikes!</em> There was an error</span>}
+      errorMessage="Your favorite number cannot be the same as your favorite color."
       hint='It must not be the same as your favorite number'
       fieldId="an-input-field"
     >

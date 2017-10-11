@@ -1,14 +1,11 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
 /*
-Form label/legend
+Form Label & Legend
 
 Markup:
 <label class="ds-c-label" for="lastname">
   ID Number
-  <span class="ds-c-field__hint ds-u-color--error" role="alert">
-    Please enter your ID Number
-  </span>
   <span class="ds-c-field__hint">
     It's on your benefit card and benefit letter. For example, ‘12 34 56B’.
   </span>
@@ -63,7 +60,19 @@ Style guide: components.form-label.react
 /*
 ---
 
+## When to use
+
+#### Labels
+
+- Each form field should have a <label>. Never use a field's placeholder attribute as the primary way to label the field.
+
+#### Legends
+
+- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+
 ## Guidance
+
+#### Labels
 
 - Apply the `ds-c-label` class to `<label>` elements.
 - Each field should have a `<label>`. Never use a field's `placeholder` attribute as the primary way to label the field.
@@ -72,17 +81,21 @@ Style guide: components.form-label.react
 - Label text should be short and in sentence case.
 - Avoid colons at the end of labels.
 
-## Hint text
+#### Hint text
 
 - Place hint text within the field's `<label>` element.
 - Apply the `ds-c-field__hint` class to hint text.
 - Use hint text for supporting contextual help, which will always be shown.
 - Hint text should sit above a form field and below the label text.
 
-## Validation
+#### Validation
 
 - Place inline validation messages within the field's `<label>` element.
 - Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
+
+## Learn More
+
+- [Form Guidelines]({{root}}/guidelines/forms/)
 
 Style guide: components.form-label.guidance
 */

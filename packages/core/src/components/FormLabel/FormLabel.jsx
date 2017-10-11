@@ -75,14 +75,7 @@ FormLabel.propTypes = {
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
    */
-  fieldId: function(props, propName, componentName) {
-    if (props.errorMessage && props[propName] == null) {
-      return new Error(`Prop \`${propName}\` is required when specifying an \`errorMessage\`. None specified for ${componentName}.`);
-    }
-    else {
-      return PropTypes.node.apply(PropTypes.node, arguments);
-    }
-  },
+  fieldId: PropTypes.string,
   /**
    * Additional hint text to display
    */
