@@ -5,10 +5,8 @@
 import HtmlExample from './HtmlExample';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactComponentDoc from './ReactComponentDoc';
+import ReactContent from './ReactContent';
 import Source from './Source';
-import reactComponentPath from '../shared/reactComponentPath';
-const reactDoc = require('../../data/react-doc.json');
 
 class PageBlock extends React.PureComponent {
   markupExamples() {
@@ -89,34 +87,17 @@ class PageBlock extends React.PureComponent {
     );
   }
 
-  reactDoc() {
-    if (!this.props.reactComponent) return;
-    const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
-    const docs = reactDoc[`${path}.jsx`];
-
-    if (docs && docs.length) {
-      // There should only ever be one exported component definition
-      const doc = docs[0];
-
-      return (
-        <ReactComponentDoc
-          description={doc.description}
-          displayName={doc.displayName}
-          hideExample={this.props.hideExample}
-          path={path}
-          propDocs={doc.props}
-        />
-      );
-    }
-  }
-
   render() {
     return (
       <article className='ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content'>
         {this.header()}
         {this.description()}
         {this.markupExamples()}
-        {this.reactDoc()}
+        <ReactContent
+          hideExample={this.props.hideExample}
+          reactComponent={this.props.reactComponent}
+          source={this.props.source}
+        />
       </article>
     );
   }
