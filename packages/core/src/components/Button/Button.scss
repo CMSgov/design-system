@@ -13,10 +13,9 @@ Use buttons to signal actions.
 .ds-c-button--success - Indicates a positive or successful action
 
 Markup:
-<a href="javascript:void(0);" class="ds-c-button {{modifier}}">Link</a>
-<button type="button" class="ds-c-button {{modifier}} ds-c-button--small">Button</button>
-<button type="button" class="ds-c-button {{modifier}}">Button</button>
-<button type="button" class="ds-c-button {{modifier}} ds-c-button--big">Button</button>
+<button type="button" class="ds-c-button ds-c-button--small {{modifier}}">Small</button>
+<button type="button" class="ds-c-button {{modifier}}">Default</button>
+<a class="ds-c-button  ds-c-button--big {{modifier}}" href="javascript:void(0);">Big</a>
 
 Style guide: components.button
 */
