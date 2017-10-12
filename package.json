@@ -71,7 +71,7 @@
     "postcss-url": "^7.1.2",
     "prismjs": "^1.8.1",
     "react": "^16.0.0",
-    "react-docgen": "^2.18.0",
+    "react-docgen": "^2.19.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0",
     "react-test-renderer": "^16.0.0",
