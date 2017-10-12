@@ -3,6 +3,7 @@ import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
+// import findIndex from 'core-js/fn/array/find-index';
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -10,7 +11,6 @@ import classnames from 'classnames';
  */
 const LEFT_ARROW = 'ArrowLeft';
 const RIGHT_ARROW = 'ArrowRight';
-const TAB = 'Tab';
 
 /**
  * Get the id of the first TabPanel child
@@ -41,15 +41,6 @@ function panelTabId(panel) {
 }
 
 /**
- * Determine if a React component is a Tab
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TabPanel component?
- */
-function isTab(child) {
-  return child != null && child.props.tab != null;
-}
-
-/**
  * Determine if a React component is a TabPanel
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TabPanel component?
@@ -75,7 +66,7 @@ export class Tabs extends React.PureComponent {
     }
 
     this.handleTabClick = this.handleTabClick.bind(this);
-    this.handleTabKeyPress = this.handleTabKeyPress.bind(this);
+    this.handleTabKeyDown = this.handleTabKeyDown.bind(this);
     this.state = { selectedId };
   }
 
@@ -94,15 +85,15 @@ export class Tabs extends React.PureComponent {
     this.replaceState(href);
   }
 
-  handleTabKeyPress(evt, panelId) {
+  handleTabKeyDown(evt, panelId) {
     switch (evt.key) {
       case LEFT_ARROW:
+        evt.preventDefault();
         this.tabSwitchLeft(evt, panelId);
         break;
       case RIGHT_ARROW:
+        evt.preventDefault();
         this.tabSwitchRight(evt, panelId);
-        break;
-      case TAB:
         break;
       default:
         break;
@@ -148,11 +139,10 @@ export class Tabs extends React.PureComponent {
       return (
         <Tab
           className={panel.props.tabClassName}
-          href={panel.props.tabHref}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
-          onKeyDown={this.handleTabKeyPress}
+          onKeyDown={this.handleTabKeyDown}
           panelId={panel.props.id}
           ref={(tab) => { this.tabs[panel.props.id] = tab; }}
           selected={this.state.selectedId === panel.props.id}
@@ -176,14 +166,6 @@ export class Tabs extends React.PureComponent {
   }
 
   /**
-   * Build tabs array to handle arrow keypress events accurately
-   */
-  tabsArrayLen() {
-    return React.Children.toArray(this.props.children)
-      .filter(isTab);
-  }
-
-  /**
    * Find the current tab index on left or right arrow keypress
    * @param {Array} React Tab components
    * @param {String} ID prop of currently selected Tab
@@ -198,7 +180,7 @@ export class Tabs extends React.PureComponent {
   /**
    * Handle the left arrow keydown events
    * @param {Object} Native event object, used to listen for left arrow keycode
-   * @param {String} ID prop of currently selected Tab
+   * @param {String} ID prop of currently selected TabPanel
    * 
    * The index returned from tabFindIndex is used in a reduce by 1 logic
    * tree to ensure the right tab[index] ID is targeted for updated state.
@@ -207,41 +189,39 @@ export class Tabs extends React.PureComponent {
    * handleTabClick, so passing an interpolated hashbang plus selected Tab
    * string instead. 
    */
-  tabSwitchLeft(evt, curId) {
-    const tabs = this.tabsArrayLen();
-    const index = this.tabFindIndex(tabs, curId);
+  tabSwitchLeft(evt, panelId) {
+    const tabs = this.panelChildren();
+    const tabIndex = this.tabFindIndex(tabs, panelId);
+    let target;
 
-    if (index === 0) {
-      const target = tabs[tabs.length - 1].props.id;
-      this.setState({ selectedId: target });
-      this.replaceState(`#${target}`);
+    if (tabIndex === 0) {
+      target = tabs[tabs.length - 1].props.id;
     } else {
-      const target = tabs[index - 1].props.id;
-      this.setState({ selectedId: target });
-      this.replaceState(`#${target}`);
+      target = tabs[tabIndex - 1].props.id;
     }
+    this.setState({ selectedId: target });
+    this.replaceState(target);
   }
 
   /**
    * Handle the right arrow keydown events
    * @param {Object} Native event object, used to listen for right arrow keycode
-   * @param {String} ID prop of currently selected Tab
+   * @param {String} ID prop of currently selected TabPanel
    * 
    * See logic decisions above in tabSwitchLeft method
    */
-  tabSwitchRight(evt, curId) {
-    const tabs = this.tabsArrayLen();
-    const index = this.tabFindIndex(tabs, curId);
+  tabSwitchRight(evt, panelId) {
+    const tabs = this.panelChildren();
+    const tabIndex = this.tabFindIndex(tabs, panelId);
+    let target;
 
-    if (index === tabs.length - 1) {
-      const target = tabs[0].props.id;
-      this.setState({ selectedId: target });
-      this.replaceState(`#${target}`);
+    if (tabIndex === tabs.length - 1) {
+      target = tabs[0].props.id;
     } else {
-      const target = tabs[index + 1].props.id;
-      this.setState({ selectedId: target });
-      this.replaceState(`#${target}`);
+      target = tabs[tabIndex + 1].props.id;
     }
+    this.setState({ selectedId: target });
+    this.replaceState(target);
   }
 
   render() {

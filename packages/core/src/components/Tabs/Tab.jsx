@@ -84,7 +84,7 @@ Tab.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * Called when the tab is clicked, with the following arguments:
+   * Click event called with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `id`, `panelId`
    */
