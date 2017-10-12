@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactComponentDoc from './ReactComponentDoc';
+import ReactExample from './ReactExample';
+import ReactPropDocs from './ReactPropDocs';
 import reactComponentPath from '../shared/reactComponentPath';
 const reactDoc = require('../../data/react-doc.json');
 
@@ -8,29 +9,25 @@ const reactDoc = require('../../data/react-doc.json');
  * If a React component's props documentation or example is available,
  * this component will return whatever is present.
  */
-class ReactContent extends React.PureComponent {
-  render() {
-    if (!this.props.reactComponent) return null;
-    const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
-    const docs = reactDoc[`${path}.jsx`];
+function ReactContent(props) {
+  if (!props.reactComponent) return null;
+  const path = reactComponentPath(props.source.path, props.reactComponent);
+  const docs = reactDoc[`${path}.jsx`];
+  // There should only ever be one exported component definition
+  const doc = (docs && docs.length) ? docs[0] : null;
 
-    if (docs && docs.length) {
-      // There should only ever be one exported component definition
-      const doc = docs[0];
-
-      return (
-        <ReactComponentDoc
-          description={doc.description}
-          displayName={doc.displayName}
-          hideExample={this.props.hideExample}
-          path={path}
-          propDocs={doc.props}
+  return (
+    <div>
+      {doc &&
+        <div
+          className='c-details ds-u-margin-y--2 ds-u-measure--wide'
+          dangerouslySetInnerHTML={{__html: doc.description}}
         />
-      );
-    }
-
-    return null;
-  }
+      }
+      {!props.hideExample && <ReactExample path={path} />}
+      {doc && <ReactPropDocs propDocs={doc.props} />}
+    </div>
+  );
 }
 
 ReactContent.propTypes = {

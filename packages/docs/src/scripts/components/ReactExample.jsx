@@ -1,5 +1,5 @@
 /**
- * ReactComponentExample takes a component example's render function and
+ * ReactExample takes a component example's render function and
  * outputs a rendered example as well as a code snippet.
  */
 import CodeSnippet from './CodeSnippet';
@@ -9,9 +9,15 @@ import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 require('prismjs/components/prism-jsx');
 
-class ReactComponentExample extends React.PureComponent {
+class ReactExample extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    // Resolve the example component relative to the /packages/ directory
+    this.renderComponent = require(`../../../../${this.props.path}.example.jsx`).default;
+  }
+
   highlightedMarkup() {
-    const markup = reactElementToJSXString(this.props.renderComponent(), {
+    const markup = reactElementToJSXString(this.renderComponent(), {
       showDefaultProps: false,
       showFunctions: true
     });
@@ -23,7 +29,7 @@ class ReactComponentExample extends React.PureComponent {
     return (
       <div className='markup markup--react'>
         <div className='ds-u-border--1 ds-u-padding--1'>
-          {this.props.renderComponent()}
+          {this.renderComponent()}
         </div>
 
         <CodeSnippet language='jsx'>
@@ -34,11 +40,8 @@ class ReactComponentExample extends React.PureComponent {
   }
 }
 
-ReactComponentExample.propTypes = {
-  /**
-   * The exported render function from the .example.jsx file
-   */
-  renderComponent: PropTypes.func.isRequired
+ReactExample.propTypes = {
+  path: PropTypes.string.isRequired
 };
 
-export default ReactComponentExample;
+export default ReactExample;
