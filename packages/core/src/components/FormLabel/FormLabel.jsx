@@ -21,27 +21,28 @@ export class FormLabel extends React.PureComponent {
     }
   }
 
-  renderHint(content) {
-    if (content) {
-      const classes = classNames(
-        'ds-c-field__hint',
-        {'ds-c-field__hint--inverse': this.props.inversed}
-      );
-      return <span className={classes}>{content}</span>;
-    }
-  }
-
   hint() {
-    return this.renderHint(this.props.hint);
+    const { hint } = this.props;
+    const requirementLabel = this.requirementLabel();
+    const classes = classNames(
+      'ds-c-field__hint',
+      {'ds-c-field__hint--inverse': this.props.inversed}
+    );
+
+    if (hint && requirementLabel) {
+      return <span className={classes}>{requirementLabel} {hint}</span>;
+    } else if (requirementLabel) {
+      return <span className={classes}>{requirementLabel}</span>;
+    } else if (hint) {
+      return <span className={classes}>{hint}</span>;
+    }
   }
 
   requirementLabel() {
     const { requirementLabel } = this.props;
-    return this.renderHint(
-      typeof requirementLabel === 'string'
-        ? <span className='ds-u-font-weight--bold'>{requirementLabel}</span>
-        : requirementLabel
-    );
+    return typeof requirementLabel === 'string'
+      ? <span className='ds-u-font-weight--bold'>{requirementLabel}</span>
+      : requirementLabel;
   }
 
   render() {
@@ -54,7 +55,6 @@ export class FormLabel extends React.PureComponent {
         <span className={labelTextClasses}>{this.props.children}</span>
         {this.errorMessage()}
         {this.hint()}
-        {this.requirementLabel()}
       </ComponentType>
     );
   }
