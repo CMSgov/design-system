@@ -32,7 +32,7 @@ Style guide: components.button
   font-size: $base-font-size;
   font-weight: $font-bold;
   line-height: $input-line-height;
-  padding: $input-padding;
+  padding: 0.5em 1.25em;
   text-align: center;
   text-decoration: none;
 
@@ -50,14 +50,11 @@ Style guide: components.button
 
 .ds-c-button--big {
   font-size: $h3-font-size;
-  padding-left: $spacer-3;
-  padding-right: $spacer-3;
 }
 
 .ds-c-button--small {
   font-size: $small-font-size;
   font-weight: $font-normal;
-  padding: $spacer-1;
 }
 
 .ds-c-button--primary {
