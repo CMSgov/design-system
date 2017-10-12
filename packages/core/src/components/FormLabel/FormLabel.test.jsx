@@ -75,7 +75,7 @@ describe('FormLabel', () => {
       .toMatch(/<em>/);
     expect(hint.text())
       .toEqual('It is really optional');
-    expect(hint.children().first().hasClass('.ds-u-font-weight--bold'))
+    expect(hint.children().first().hasClass('ds-u-font-weight--bold'))
       .toEqual(false);
   });
 
