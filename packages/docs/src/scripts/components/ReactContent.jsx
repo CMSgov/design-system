@@ -15,19 +15,22 @@ function ReactContent(props) {
   const docs = reactDoc[`${path}.jsx`];
   // There should only ever be one exported component definition
   const doc = (docs && docs.length) ? docs[0] : null;
+  const content = [];
 
-  return (
-    <div>
-      {doc &&
-        <div
-          className='c-details ds-u-margin-y--2 ds-u-measure--wide'
-          dangerouslySetInnerHTML={{__html: doc.description}}
-        />
-      }
-      {!props.hideExample && <ReactExample path={path} />}
-      {doc && <ReactPropDocs propDocs={doc.props} />}
-    </div>
-  );
+  if (doc) {
+    content.push(
+      <div
+        className='c-details ds-u-margin-y--2 ds-u-measure--wide'
+        dangerouslySetInnerHTML={{__html: doc.description}}
+        key='description'
+      />
+    );
+  }
+
+  if (!props.hideExample) content.push(<ReactExample key='example' path={path} />);
+  if (doc) content.push(<ReactPropDocs key='propDocs' propDocs={doc.props} />);
+
+  return content;
 }
 
 ReactContent.propTypes = {

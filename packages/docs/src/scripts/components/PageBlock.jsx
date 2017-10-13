@@ -63,28 +63,27 @@ class PageBlock extends React.PureComponent {
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
-    const source = this.props.reactComponent ? (
+    const source = this.props.reactComponent &&
       <Source
+        key='reactSource'
         reactComponent={this.props.reactComponent}
         source={this.props.source}
-      />
-    ) : null;
+      />;
 
-    return (
-      <div>
-        {
-          this.props.reactComponent &&
-          <span className='ds-h6'>React</span>
-        }
-        <h2
-          className='ds-h2 ds-u-margin-top--0'
-          // Headers can contain HTML markup, therefore dangerously set...
-          dangerouslySetInnerHTML={{ __html: this.props.header }}
-          id={this.props.reference}
-        />
-        {source}
-      </div>
-    );
+    const subheader = this.props.reactComponent &&
+      <span className='ds-h6' key='subheader'>React</span>;
+
+    return [
+      subheader,
+      <h2
+        className='ds-h2 ds-u-margin-top--0'
+        // Headers can contain HTML markup, therefore dangerously set...
+        dangerouslySetInnerHTML={{ __html: this.props.header }}
+        id={this.props.reference}
+        key='header'
+      />,
+      source
+    ];
   }
 
   render() {
