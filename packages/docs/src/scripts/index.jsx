@@ -6,14 +6,14 @@ import ReactDOM from 'react-dom';
 const rootEl = document.getElementById('js-root');
 
 function render() {
-  /* eslint-disable no-undef */
-  ReactDOM.render(
-    <AppContainer>
-      <Docs page={page} routes={routes} />
-    </AppContainer>,
-    rootEl
-  );
-  /* eslint-enable */
+  const Page = <Docs page={window.page} routes={window.routes} />;
+
+  if (process.env.NODE_ENV === 'production') {
+    // In production mode the pages are rendered on the "server"
+    ReactDOM.hydrate(Page, rootEl);
+  } else {
+    ReactDOM.render(<AppContainer>{Page}</AppContainer>, rootEl);
+  }
 }
 
 if (process.env.NODE_ENV === 'development') {
