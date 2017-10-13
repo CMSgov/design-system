@@ -12,8 +12,18 @@ require('prismjs/components/prism-jsx');
 class ReactExample extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    // Provide support to pass in a component with or without the extension
+    const path = this.props.path
+      .replace(/\.example\.jsx$/, '');
+
     // Resolve the example component relative to the /packages/ directory
-    this.renderComponent = require(`../../../../${this.props.path}.example.jsx`).default;
+    // Note: This actually causes Webpack to bundle all components in this directory
+    // ending in ".example.jsx"
+    // https://webpack.js.org/guides/dependency-management/#require-with-expression
+    this.renderComponent = require(
+      `../../../../${path}.example.jsx`
+    ).default;
   }
 
   highlightedMarkup() {
