@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import componentPathFromSource from '../shared/componentPathFromSource';
 import githubUrl from '../shared/githubUrl';
-import reactComponentPath from '../shared/reactComponentPath';
 
 const Source = props => {
   // Only show the source link if this is for a non-theme React or CSS component
@@ -13,7 +13,9 @@ const Source = props => {
     )
   ) {
     const packageName = props.source.path.match(/packages\/([a-z-_]+)\//i)[1];
-    const reactPath = props.reactComponent && reactComponentPath(props.source.path, props.reactComponent).replace(/[a-z-]+\/src\//, '');
+    const reactPath = props.reactComponent &&
+      componentPathFromSource(props.source.path, props.reactComponent)
+        .replace(/[a-z-]+\/src\//, '');
 
     // This path is relative to the package directory
     // i.e. components/Button/Button.scss
