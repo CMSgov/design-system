@@ -1,5 +1,5 @@
 /**
- * HTMLExample takes the markup from a KSS "Markup:" section and shows
+ * HtmlExample takes the markup from a KSS "Markup:" section and shows
  * a preview and code snippet for the given markup
  */
 import CodeSnippet from './CodeSnippet';
@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import processMarkup from '../shared/processMarkup';
 
-class HTMLExample extends React.PureComponent {
+class HtmlExample extends React.PureComponent {
   highlightedMarkup() {
     const markup = processMarkup(this.props.markup, this.props.modifier);
     return Prism.highlight(markup, Prism.languages.markup);
@@ -68,7 +68,7 @@ class HTMLExample extends React.PureComponent {
   }
 }
 
-HTMLExample.propTypes = {
+HtmlExample.propTypes = {
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string.isRequired,
   modifier: PropTypes.shape({
@@ -81,8 +81,8 @@ HTMLExample.propTypes = {
   showTitle: PropTypes.bool
 };
 
-HTMLExample.defaultProps = {
+HtmlExample.defaultProps = {
   showTitle: true
 };
 
-export default HTMLExample;
+export default HtmlExample;

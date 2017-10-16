@@ -1,3 +1,6 @@
+const marked = require('marked');
+const replaceTemplateTags = require('../replaceTemplateTags');
+
 /**
  * Convert Markdown, in main description and prop descriptions, to HTML.
  *
@@ -5,26 +8,33 @@
  * there's a note in the README that specifies the handler should be APPENDED
  * to the default handlers, because the prop descriptions need set before
  * we can parse any Markdown from them.
+ *
+ * @param {String} rootPath - Root docs site path
  */
-const marked = require('marked');
+function markdownHandler(rootPath) {
+  /**
+   * @param {Documentation} doc - react-docgen Documentation instance
+   */
+  return function(doc) {
+    const desc = doc.get('description');
+    const docObject = doc.toObject();
 
-function markdownHandler(doc) {
-  const desc = doc.get('description');
-  const docObject = doc.toObject();
+    if (docObject.props) {
+      Object.keys(docObject.props).forEach(propName => {
+        const propDescriptor = doc.getPropDescriptor(propName);
 
-  if (docObject.props) {
-    Object.keys(docObject.props).forEach(propName => {
-      const propDescriptor = doc.getPropDescriptor(propName);
+        if (propDescriptor.description !== '') {
+          propDescriptor.description = marked(
+            replaceTemplateTags(propDescriptor.description, rootPath)
+          );
+        }
+      });
+    }
 
-      if (propDescriptor.description !== '') {
-        propDescriptor.description = marked(propDescriptor.description);
-      }
-    });
-  }
-
-  if (desc !== '') {
-    doc.set('description', marked(desc));
-  }
+    if (desc !== '') {
+      doc.set('description', marked(desc));
+    }
+  };
 }
 
 module.exports = markdownHandler;
