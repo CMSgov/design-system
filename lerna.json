@@ -4,9 +4,8 @@
     "publish": {
       "allowBranch": "master",
       "ignore": [
-        "packages/themes/*",
-        "packages/eslint-config-design-system",
-        "packages/stylelint-config-design-system"
+        "eslint-config-design-system",
+        "stylelint-config-design-system"
       ]
     }
   },
