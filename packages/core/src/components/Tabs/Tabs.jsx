@@ -76,13 +76,13 @@ export class Tabs extends React.PureComponent {
         this.props.onChange(this.state.selectedId, prevState.selectedId);
       }
       this.tabs[this.state.selectedId].focus();
+      this.replaceState(this.tabs[this.state.selectedId].href);
     }
   }
 
-  handleTabClick(evt, panelId, tabId, href) {
+  handleTabClick(evt, panelId) {
     evt.preventDefault();
     this.setState({ selectedId: panelId });
-    this.replaceState(href);
   }
 
   handleTabKeyDown(evt, panelId) {
@@ -200,7 +200,6 @@ export class Tabs extends React.PureComponent {
       target = tabs[tabIndex - 1].props.id;
     }
     this.setState({ selectedId: target });
-    this.replaceState(target);
   }
 
   /**
@@ -221,7 +220,6 @@ export class Tabs extends React.PureComponent {
       target = tabs[tabIndex + 1].props.id;
     }
     this.setState({ selectedId: target });
-    this.replaceState(target);
   }
 
   render() {
