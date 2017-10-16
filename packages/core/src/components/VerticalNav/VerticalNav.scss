@@ -81,7 +81,6 @@ Style guide: components.vertical-nav
 .ds-c-vertical-nav__label--parent {
   appearance: none;
   background-color: transparent;
-  background-image: url('#{$image-path}/arrow-down.png');
   background-image: url('#{$image-path}/arrow-down.svg');
   background-position: right $spacer-1 center;
   background-repeat: no-repeat;
@@ -94,7 +93,6 @@ Style guide: components.vertical-nav
   width: 100%;
 
   &[aria-expanded='true'] {
-    background-image: url('#{$image-path}/arrow-up.png');
     background-image: url('#{$image-path}/arrow-up.svg');
   }
 }
