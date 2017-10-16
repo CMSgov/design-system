@@ -132,7 +132,6 @@ Style guide: components.choice.inversed
 // Display a checkmark
 .ds-c-choice:checked + label::before {
   background-color: $choice-checked-background-color;
-  background-image: url('#{$image-path}/checkmark-white.png');
   background-image: url('#{$image-path}/checkmark-white.svg');
   background-position: 50%;
   background-repeat: no-repeat;
