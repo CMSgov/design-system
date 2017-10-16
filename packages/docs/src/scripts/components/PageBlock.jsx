@@ -5,10 +5,8 @@
 import HtmlExample from './HtmlExample';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactComponentDoc from './ReactComponentDoc';
+import ReactContent from './ReactContent';
 import Source from './Source';
-import reactComponentPath from '../shared/reactComponentPath';
-const reactDoc = require('../../data/react-doc.json');
 
 class PageBlock extends React.PureComponent {
   markupExamples() {
@@ -65,49 +63,27 @@ class PageBlock extends React.PureComponent {
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
-    const source = this.props.reactComponent ? (
+    const source = this.props.reactComponent &&
       <Source
+        key='reactSource'
         reactComponent={this.props.reactComponent}
         source={this.props.source}
-      />
-    ) : null;
+      />;
 
-    return (
-      <div>
-        {
-          this.props.reactComponent &&
-          <span className='ds-h6'>React</span>
-        }
-        <h2
-          className='ds-h2 ds-u-margin-top--0'
-          // Headers can contain HTML markup, therefore dangerously set...
-          dangerouslySetInnerHTML={{ __html: this.props.header }}
-          id={this.props.reference}
-        />
-        {source}
-      </div>
-    );
-  }
+    const subheader = this.props.reactComponent &&
+      <span className='ds-h6' key='subheader'>React</span>;
 
-  reactDoc() {
-    if (!this.props.reactComponent) return;
-    const path = reactComponentPath(this.props.source.path, this.props.reactComponent);
-    const docs = reactDoc[`${path}.jsx`];
-
-    if (docs && docs.length) {
-      // There should only ever be one exported component definition
-      const doc = docs[0];
-
-      return (
-        <ReactComponentDoc
-          description={doc.description}
-          displayName={doc.displayName}
-          hideExample={this.props.hideExample}
-          path={path}
-          propDocs={doc.props}
-        />
-      );
-    }
+    return [
+      subheader,
+      <h2
+        className='ds-h2 ds-u-margin-top--0'
+        // Headers can contain HTML markup, therefore dangerously set...
+        dangerouslySetInnerHTML={{ __html: this.props.header }}
+        id={this.props.reference}
+        key='header'
+      />,
+      source
+    ];
   }
 
   render() {
@@ -116,7 +92,12 @@ class PageBlock extends React.PureComponent {
         {this.header()}
         {this.description()}
         {this.markupExamples()}
-        {this.reactDoc()}
+        <ReactContent
+          hideExample={this.props.hideExample}
+          reactComponent={this.props.reactComponent}
+          reactExample={this.props.reactExample}
+          source={this.props.source}
+        />
       </article>
     );
   }
@@ -133,6 +114,7 @@ PageBlock.propTypes = {
     HtmlExample.propTypes.modifier
   ),
   reactComponent: PropTypes.string,
+  reactExample: PropTypes.string,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
   source: Source.propTypes.source

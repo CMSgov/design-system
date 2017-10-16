@@ -34,7 +34,7 @@ class PageHeader extends React.PureComponent {
 
   render() {
     return (
-      <heading className='ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
+      <header className='ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest'>
         <h1
           className='ds-display'
           dangerouslySetInnerHTML={{ __html: this.props.header }}
@@ -50,7 +50,7 @@ class PageHeader extends React.PureComponent {
           {this.props.uswds && <span className='ds-u-margin-x--1'>&middot;</span>}
           {this.uswdsLink()}
         </div>
-      </heading>
+      </header>
     );
   }
 }
