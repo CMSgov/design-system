@@ -7,10 +7,10 @@ NC='\033[0m' # No color
 
 echo "${GREEN}Pulling latest from GitHub...${NC}"
 git checkout staging
-git pull --rebase
+git pull
 
 echo "${GREEN}Bumping version...${NC}"
-./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch staging
+./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch staging --scope "@cmsgov/design-system-*"
 
 echo "${GREEN}Building...${NC}"
 npm run build

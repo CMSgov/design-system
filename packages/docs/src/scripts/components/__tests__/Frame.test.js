@@ -11,7 +11,9 @@ describe('Frame', () => {
 
   describe('Normal Frame', () => {
     beforeEach(() => {
-      wrapper = shallow(<Frame {...props} />);
+      wrapper = shallow(<Frame {...props} />, {
+        disableLifecycleMethods: true
+      });
     });
 
     it('renders an iframe', () => {
@@ -40,7 +42,9 @@ describe('Frame', () => {
 
   describe('Frame with breakpoint toggles', () => {
     beforeEach(() => {
-      wrapper = shallow(<Frame {...props} responsive />);
+      wrapper = shallow(<Frame {...props} responsive />, {
+        disableLifecycleMethods: true
+      });
     });
 
     it('renders BreakpointToggles', () => {

@@ -1,7 +1,7 @@
 /**
  * Replace template tags with string values
  * @param {String} str - String with template tags to be replaced
- * @param {String} rootPath
+ * @param {String} rootPath - Root docs site path
  * @return {String}
  */
 function replaceTemplateTags(str, rootPath) {

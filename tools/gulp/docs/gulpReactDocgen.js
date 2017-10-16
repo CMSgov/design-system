@@ -18,7 +18,11 @@ function getPropertyName(nameAfter, filePath) {
   return filePath.match(rx)[1];
 }
 
-module.exports = function(options) {
+/**
+ * @param {Object} options
+ * @param {String} rootPath - Root docs site path
+ */
+module.exports = function(options, rootPath) {
   options = options || {};
   let response = {};
 
@@ -26,17 +30,20 @@ module.exports = function(options) {
     try {
       if (file.isNull()) return cb(null, file);
 
-      const doc = reactDocgen.parse(
+      const docs = reactDocgen.parse(
         file.contents,
         reactDocgen.resolver.findAllExportedComponentDefinitions,
-        reactDocgenHandlers
+        reactDocgenHandlers(rootPath)
       );
-      // Reduce filesize by removing properties we don't need
-      delete doc.methods;
 
-      // Assign the doc object to a unique property so we can
+      docs.forEach(doc => {
+        // Reduce filesize by removing properties we don't need
+        delete doc.methods;
+      });
+
+      // Assign the docs object to a unique property so we can
       // merge the JSON files in another stream
-      response[getPropertyName(options.nameAfter, file.path)] = doc;
+      response[getPropertyName(options.nameAfter, file.path)] = docs;
     } catch (e) {
       dutil.logError('react-docgen', e);
       dutil.logData('react-docgen', file.path);

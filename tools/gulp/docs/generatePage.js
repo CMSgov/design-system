@@ -74,11 +74,11 @@ function generateDocPage(routes, page, rootPath) {
 </head>
 <body class="ds-base">
   <div id="js-root">
-    <div>${componentRenderer()}</div>
+    ${componentRenderer()}
   </div>
   <script type="text/javascript">
-    var page = ${JSON.stringify(page)};
-    var routes = ${JSON.stringify(routes)};
+    window.page = ${JSON.stringify(page)};
+    window.routes = ${JSON.stringify(routes)};
   </script>
   <script src="/${rootPath}public/scripts/index.js"></script>
 </body>

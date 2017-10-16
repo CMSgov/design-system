@@ -40,8 +40,7 @@ Style guide: components.select
 .ds-c-field--select {
   appearance: none;
   background-color: $color-white;
-  background-image: url('#{$image-path}/arrow-down.png');
-  background-image: url('#{$image-path}/arrow-down.svg');
+  background-image: url('#{$image-path}/arrow-both.svg');
   background-position: right $small-font-size center;
   background-repeat: no-repeat;
   background-size: $small-font-size;

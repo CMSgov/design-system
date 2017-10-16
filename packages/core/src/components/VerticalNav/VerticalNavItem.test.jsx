@@ -1,8 +1,8 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import VerticalNavItem from './VerticalNavItem';
-import { shallow } from 'enzyme';
 
-function shallowRender(customProps = {}) {
+function render(customProps = {}, deep) {
   const props = Object.assign(
     {
       label: 'Foo'
@@ -10,15 +10,17 @@ function shallowRender(customProps = {}) {
     customProps
   );
 
+  const component = <VerticalNavItem {...props} />;
+
   return {
     props: props,
-    wrapper: shallow(<VerticalNavItem {...props} />)
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
 describe('VerticalNavItem', () => {
   it('renders list item', () => {
-    const data = shallowRender();
+    const data = render();
     const wrapper = data.wrapper;
 
     expect(wrapper.is('li')).toBe(true);
@@ -26,7 +28,7 @@ describe('VerticalNavItem', () => {
   });
 
   it('renders VerticalNavItemLabel', () => {
-    const data = shallowRender();
+    const data = render();
     const label = data.wrapper.find('VerticalNavItemLabel').first();
 
     expect(label.prop('collapsed')).toBe(data.wrapper.state('collapsed'));
@@ -34,14 +36,14 @@ describe('VerticalNavItem', () => {
   });
 
   it('has additional class names', () => {
-    const data = shallowRender({ className: 'bar' });
+    const data = render({ className: 'bar' });
 
     expect(data.wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
     expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
   it('calls onSubnavToggle', () => {
-    const data = shallowRender({
+    const data = render({
       id: 'bar',
       onSubnavToggle: jest.fn()
     });
@@ -56,7 +58,7 @@ describe('VerticalNavItem', () => {
 
   describe('without subnav', () => {
     it('is not selected', () => {
-      const data = shallowRender();
+      const data = render();
 
       expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
         false
@@ -64,7 +66,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('is selected', () => {
-      const data = shallowRender({ selected: true });
+      const data = render({ selected: true });
 
       expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
         true
@@ -72,7 +74,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('has no subnav', () => {
-      const data = shallowRender();
+      const data = render();
       const label = data.wrapper.find('VerticalNavItemLabel').first();
 
       expect(label.prop('hasSubnav')).toBe(false);
@@ -80,7 +82,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('calls onClick', () => {
-      const data = shallowRender({
+      const data = render({
         id: 'bar',
         onClick: jest.fn(),
         url: '/bar'
@@ -114,7 +116,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('has subnav', () => {
-      const data = shallowRender(props);
+      const data = render(props);
       const label = data.wrapper.find('VerticalNavItemLabel').first();
       const subnav = data.wrapper.find('VerticalNav').first();
 
@@ -126,7 +128,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('is not selected', () => {
-      const data = shallowRender(props);
+      const data = render(props);
 
       expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
         false
@@ -136,7 +138,7 @@ describe('VerticalNavItem', () => {
     it('is selected', () => {
       props._selectedId = 'selected-child';
       props.items[0].id = 'selected-child';
-      const data = shallowRender(props);
+      const data = render(props);
 
       expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
         true
@@ -145,7 +147,7 @@ describe('VerticalNavItem', () => {
 
     it('has collapsed subnav', () => {
       props.defaultCollapsed = true;
-      const data = shallowRender(props);
+      const data = render(props);
 
       expect(
         data.wrapper
@@ -157,7 +159,7 @@ describe('VerticalNavItem', () => {
 
     it('toggles collapsed state', () => {
       props.onClick = jest.fn();
-      const data = shallowRender(props);
+      const data = render(props);
       const label = data.wrapper.find('VerticalNavItemLabel').first();
 
       expect(
@@ -179,7 +181,7 @@ describe('VerticalNavItem', () => {
     });
 
     it('does not add top-level link to top of subnav', () => {
-      const data = shallowRender(props);
+      const data = render(props);
       const subnav = data.wrapper
         .find('VerticalNav')
         .first()
@@ -196,7 +198,7 @@ describe('VerticalNavItem', () => {
 
       it('adds top-level link to top of subnav', () => {
         props.id = 'foo';
-        const data = shallowRender(props);
+        const data = render(props);
         const subnav = data.wrapper
           .find('VerticalNav')
           .first()
@@ -213,7 +215,7 @@ describe('VerticalNavItem', () => {
         props.onClick = jest.fn();
         props.onSubnavToggle = jest.fn();
 
-        const data = shallowRender(props);
+        const data = render(props, true);
         const label = data.wrapper.find('VerticalNavItemLabel').first();
 
         label.simulate('click');

@@ -242,9 +242,12 @@ module.exports = (gulp, shared) => {
         `!packages/${packages}/src/components/**/*.example.jsx`
       ])
       .pipe(
-        gulpReactDocgen({
-          nameAfter: 'packages/'
-        })
+        gulpReactDocgen(
+          {
+            nameAfter: 'packages/'
+          },
+          shared.rootPath
+        )
       )
       .pipe(
         merge({
