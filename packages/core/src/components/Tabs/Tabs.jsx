@@ -119,7 +119,7 @@ export class Tabs extends React.PureComponent {
           {
             selected: this.state.selectedId === child.props.id,
             tab: undefined,
-            tabHref: undefined,
+            tabHref: 'undefined',
             tabId: panelTabId(child)
           }
         );
@@ -139,6 +139,7 @@ export class Tabs extends React.PureComponent {
       return (
         <Tab
           className={panel.props.tabClassName}
+          href={panel.props.tabHref}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
