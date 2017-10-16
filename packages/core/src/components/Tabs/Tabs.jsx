@@ -1,9 +1,9 @@
+import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
-// import findIndex from 'core-js/fn/array/find-index';
 
 /** CONSTANTS
  * Adding in the constant values for keycodes

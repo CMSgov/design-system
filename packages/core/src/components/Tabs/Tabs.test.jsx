@@ -134,5 +134,33 @@ describe('Tabs', function() {
 
       expect(onChangeMock.mock.calls.length).toBe(1);
     });
+
+    it('selects the second panel on right arrow keyDown', () => {
+      const data = deepMount(
+        { defaultSelectedId: 'panel-1' },
+        children
+      );
+      const panels = data.wrapper.find('TabPanel');
+      const tabs = data.wrapper.find('Tab');
+
+      tabs.first().simulate('keyDown', { key: 'ArrowRight' });
+
+      expect(panels.at(1).prop('selected')).toBe(true);
+      expect(tabs.at(1).prop('selected')).toBe(true);
+    });
+
+    it('selects the first panel on left arrow keyDown', () => {
+      const data = deepMount(
+        { defaultSelectedId: 'panel-2' },
+        children
+      );
+      const panels = data.wrapper.find('TabPanel');
+      const tabs = data.wrapper.find('Tab');
+
+      tabs.at(1).simulate('keyDown', { key: 'ArrowLeft' });
+
+      expect(panels.first().prop('selected')).toBe(true);
+      expect(tabs.first().prop('selected')).toBe(true);
+    });
   });
 });
