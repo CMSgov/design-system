@@ -40,10 +40,17 @@ var Choice = function Choice(props) {
       className = props.className,
       id = props.id,
       inversed = props.inversed,
-      inputProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed']);
+      inputPlacement = props.inputPlacement,
+      inputClassName = props.inputClassName,
+      size = props.size,
+      inputProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed', 'inputPlacement', 'inputClassName', 'size']);
   /* eslint-enable prefer-const */
 
-  var inputClasses = (0, _classnames2.default)('ds-c-choice', { 'ds-c-choice--inverse': inversed });
+  var inputClasses = (0, _classnames2.default)(inputClassName, 'ds-c-choice', {
+    'ds-c-choice--inverse': inversed,
+    'ds-c-choice--right': inputPlacement === 'right',
+    'ds-c-choice--small': size === 'small'
+  });
 
   if (!id) {
     id = (0, _lodash2.default)(inputProps.type + '_' + inputProps.name + '_');
@@ -66,7 +73,8 @@ var Choice = function Choice(props) {
 
 exports.Choice = Choice;
 Choice.defaultProps = {
-  type: 'checkbox'
+  type: 'checkbox',
+  inputPlacement: 'left'
 };
 
 Choice.propTypes = {
@@ -84,6 +92,10 @@ Choice.propTypes = {
    */
   className: _propTypes2.default.string,
   /**
+   * Additional classes to be added to the `input` element.
+   */
+  inputClassName: _propTypes2.default.string,
+  /**
    * Sets the initial checked state. Use this for an uncontrolled component;
    * otherwise, use the `checked` property.
    */
@@ -97,6 +109,11 @@ Choice.propTypes = {
    * Applies the "inverse" UI theme
    */
   inversed: _propTypes2.default.bool,
+  /**
+   * Placement of the input relative to the text label
+   */
+  inputPlacement: _propTypes2.default.oneOf(['left', 'right']),
+  size: _propTypes2.default.oneOf(['small']),
   /**
    * The `input` field's `name` attribute
    */

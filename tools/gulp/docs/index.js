@@ -174,8 +174,8 @@ module.exports = (gulp, shared) => {
   });
 
   /**
-   * Generate HTML pages from CSS comments and Markdown files. This happens
-   * within a chain of promises.
+   * Generate HTML pages from CSS and JS comments and Markdown files. This
+   * happens within a chain of promises.
    * @return {Promise}
    */
   gulp.task('docs:generate-pages', () => {
@@ -185,11 +185,12 @@ module.exports = (gulp, shared) => {
     );
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    return kss.traverse(packages)
+    const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
+    return kss.traverse(packages, { mask })
       .then(styleguide =>
         /**
-         * Parse CSS comments, forming the initial array of pages.
-         * CSS comments are parsed and an array of KSS Section objects is
+         * Parse CSS and JS comments, forming the initial array of pages.
+         * CSS and JS comments are parsed and an array of KSS Section objects is
          * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
          * @return {Array} KssSections
          */
