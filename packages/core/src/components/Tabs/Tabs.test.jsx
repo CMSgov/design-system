@@ -9,7 +9,7 @@ const defaultPanelProps = {
   tab: 'Tab label'
 };
 
-function shallowRender(customProps = {}, children) {
+function render(customProps = {}, children, deep) {
   const props = Object.assign({}, customProps);
 
   if (!children) {
@@ -18,20 +18,7 @@ function shallowRender(customProps = {}, children) {
 
   return {
     props: props,
-    wrapper: shallow(<Tabs {...props}>{children}</Tabs>)
-  };
-}
-
-function deepMount(customProps = {}, children) {
-  const props = Object.assign({}, customProps);
-
-  if (!children) {
-    children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
-  }
-
-  return {
-    props: props,
-    wrapper: mount(<Tabs {...props}>{children}</Tabs>)
+    wrapper: deep ? mount(<Tabs {...props}>{children}</Tabs>) : shallow(<Tabs {...props}>{children}</Tabs>)
   };
 }
 
@@ -48,7 +35,7 @@ describe('Tabs', function() {
         {defaultPanelChildren}
       </TabPanel>
     ];
-    const data = shallowRender(undefined, children);
+    const data = render(undefined, children);
     const tabs = data.wrapper.find('Tab');
 
     expect(tabs.length)
@@ -66,7 +53,7 @@ describe('Tabs', function() {
   });
 
   it('renders panels', () => {
-    const data = shallowRender();
+    const data = render();
     const panels = data.wrapper.find('TabPanel');
 
     expect(panels.length)
@@ -79,7 +66,7 @@ describe('Tabs', function() {
 
   it('adds additional class names to tablist', () => {
     const className = 'foo-bar';
-    const data = shallowRender({ tablistClassName: className });
+    const data = render({ tablistClassName: className });
     const list = data.wrapper.find('.ds-c-tabs');
 
     expect(list.hasClass(className)).toBe(true);
@@ -100,7 +87,7 @@ describe('Tabs', function() {
     });
 
     it('selects the first tab by default', () => {
-      const data = shallowRender(undefined, children);
+      const data = render(undefined, children);
       const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');
 
@@ -109,7 +96,7 @@ describe('Tabs', function() {
     });
 
     it('selects the specified tab', () => {
-      const data = shallowRender(
+      const data = render(
         { defaultSelectedId: 'panel-2' },
         children
       );
@@ -122,12 +109,13 @@ describe('Tabs', function() {
 
     it('calls onChange', () => {
       const onChangeMock = jest.fn();
-      const data = deepMount(
+      const data = render(
         {
           onChange: onChangeMock,
           selectedId: 'panel-1'
         },
-        children
+        children,
+        true
       );
 
       data.wrapper.setState({ selectedId: 'panel-2' });
@@ -136,9 +124,10 @@ describe('Tabs', function() {
     });
 
     it('selects the second panel on right arrow keyDown', () => {
-      const data = deepMount(
+      const data = render(
         { defaultSelectedId: 'panel-1' },
-        children
+        children,
+        true
       );
       const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');
@@ -150,9 +139,10 @@ describe('Tabs', function() {
     });
 
     it('selects the first panel on left arrow keyDown', () => {
-      const data = deepMount(
+      const data = render(
         { defaultSelectedId: 'panel-2' },
-        children
+        children,
+        true
       );
       const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');

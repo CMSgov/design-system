@@ -5,7 +5,6 @@
 // - github.com/facebook/react/issues/8379#issuecomment-264867090
 import 'core-js/fn/array/includes';
 import 'core-js/fn/array/fill';
-import 'core-js/fn/arrayfind-index';
 import 'core-js/fn/function/name';
 import 'core-js/fn/object/get-own-property-symbols';
 import 'core-js/fn/string/includes';

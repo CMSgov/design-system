@@ -80,13 +80,14 @@ Tab.propTypes = {
   /**
    * Called when the tab is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
-   * `id`, `panelId`
+   * `panelId`, `id`, `href`
    */
   onClick: PropTypes.func,
   /**
-   * Click event called with the following arguments:
+   * Called when the tab is selected and a keydown event is triggered.
+   * Called with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
-   * `id`, `panelId`
+   * `panelId`, `id`, `href`
    */
   onKeyDown: PropTypes.func,
   /**
