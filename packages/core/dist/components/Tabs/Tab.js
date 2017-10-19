@@ -35,7 +35,9 @@ var Tab = exports.Tab = function (_React$PureComponent) {
 
     var _this = _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
 
+    _this.focus = _this.focus.bind(_this);
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.href = _this.props.href || '#' + _this.props.panelId;
     return _this;
   }
@@ -48,8 +50,22 @@ var Tab = exports.Tab = function (_React$PureComponent) {
       }
     }
   }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(evt) {
+      if (this.props.onKeyDown) {
+        this.props.onKeyDown(evt, this.props.panelId, this.props.id, this.href);
+      }
+    }
+  }, {
+    key: 'focus',
+    value: function focus() {
+      this.tab.focus();
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var classes = (0, _classnames2.default)('ds-c-tabs__item', this.props.className);
 
       return _react2.default.createElement(
@@ -61,7 +77,11 @@ var Tab = exports.Tab = function (_React$PureComponent) {
           href: this.href,
           id: this.props.id,
           onClick: this.handleClick,
-          role: 'tab'
+          onKeyDown: this.handleKeyDown,
+          role: 'tab',
+          ref: function ref(tab) {
+            _this2.tab = tab;
+          }
         },
         this.props.children
       );
@@ -93,9 +113,16 @@ Tab.propTypes = {
   /**
    * Called when the tab is clicked, with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
-   * `id`, `panelId`
+   * `panelId`, `id`, `href`
    */
   onClick: _propTypes2.default.func,
+  /**
+   * Called when the tab is selected and a keydown event is triggered.
+   * Called with the following arguments:
+   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * `panelId`, `id`, `href`
+   */
+  onKeyDown: _propTypes2.default.func,
   /**
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */

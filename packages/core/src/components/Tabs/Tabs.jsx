@@ -1,8 +1,16 @@
+import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
+
+/** CONSTANTS
+ * Adding in the constant values for keycodes
+ * to handle onKeyDown events
+ */
+const LEFT_ARROW = 'ArrowLeft';
+const RIGHT_ARROW = 'ArrowRight';
 
 /**
  * Get the id of the first TabPanel child
@@ -58,23 +66,43 @@ export class Tabs extends React.PureComponent {
     }
 
     this.handleTabClick = this.handleTabClick.bind(this);
+    this.handleTabKeyDown = this.handleTabKeyDown.bind(this);
     this.state = { selectedId };
   }
 
   componentDidUpdate(_, prevState) {
-    if (typeof this.props.onChange === 'function' &&
-        this.state.selectedId !== prevState.selectedId) {
-      this.props.onChange(this.state.selectedId, prevState.selectedId);
+    if (this.state.selectedId !== prevState.selectedId) {
+      if (typeof this.props.onChange === 'function') {
+        this.props.onChange(this.state.selectedId, prevState.selectedId);
+      }
+      this.tabs[this.state.selectedId].focus();
+      this.replaceState(this.tabs[this.state.selectedId].href);
     }
   }
 
-  handleTabClick(evt, panelId, tabId, href) {
+  handleTabClick(evt, panelId) {
     evt.preventDefault();
     this.setState({ selectedId: panelId });
-    this.replaceState(href);
   }
 
-  // Filter children and return only TabPanel components
+  handleTabKeyDown(evt, panelId) {
+    switch (evt.key) {
+      case LEFT_ARROW:
+        evt.preventDefault();
+        this.tabSwitcher(LEFT_ARROW, evt, panelId);
+        break;
+      case RIGHT_ARROW:
+        evt.preventDefault();
+        this.tabSwitcher(RIGHT_ARROW, evt, panelId);
+        break;
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Filter children and return only TabPanel components
+   */
   panelChildren() {
     return React.Children.toArray(this.props.children)
       .filter(isTabPanel);
@@ -105,6 +133,8 @@ export class Tabs extends React.PureComponent {
     const panels = this.panelChildren();
     const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
 
+    this.tabs = {};
+
     const tabs = panels.map(panel => {
       return (
         <Tab
@@ -113,7 +143,9 @@ export class Tabs extends React.PureComponent {
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
+          onKeyDown={this.handleTabKeyDown}
           panelId={panel.props.id}
+          ref={(tab) => { this.tabs[panel.props.id] = tab; }}
           selected={this.state.selectedId === panel.props.id}
         >
           {panel.props.tab}
@@ -131,6 +163,46 @@ export class Tabs extends React.PureComponent {
   replaceState(url) {
     if (window.history) {
       window.history.replaceState({}, document.title, url);
+    }
+  }
+
+  /**
+   * Handle the left arrow keydown events
+   * @param {String} Constant assigned to evt.key keycode
+   * @param {Object} Native event object, used to listen for left arrow keycode
+   * @param {String} ID prop of currently selected TabPanel
+   * 
+   * The index returned from tabFindIndex is used in a reduce by 1 logic
+   * tree to ensure the right tab[index] ID is targeted for updated state.
+   * 
+   * The replaceState function did not like the href argument passed into 
+   * handleTabClick, so passing an interpolated hashbang plus selected Tab
+   * string instead. 
+   */
+  tabSwitcher(pressed, evt, panelId) {
+    const tabs = this.panelChildren();
+    const tabIndex = tabs.findIndex(elem => elem.props.id === panelId);
+    let target;
+
+    switch (pressed) {
+      case (LEFT_ARROW):
+        if (tabIndex === 0) {
+          target = tabs[tabs.length - 1].props.id;
+        } else {
+          target = tabs[tabIndex - 1].props.id;
+        }
+        this.setState({ selectedId: target });
+        break;
+      case (RIGHT_ARROW):
+        if (tabIndex === tabs.length - 1) {
+          target = tabs[0].props.id;
+        } else {
+          target = tabs[tabIndex + 1].props.id;
+        }
+        this.setState({ selectedId: target });
+        break;
+      default:
+        break;
     }
   }
 
