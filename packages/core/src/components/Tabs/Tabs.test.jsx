@@ -149,7 +149,7 @@ describe('Tabs', function() {
       const tabs = data.wrapper.find('Tab');
 
       tabs.at(1).simulate('keyDown', { key: 'ArrowLeft' });
-      
+
       const panelsUpdated = data.wrapper.find('TabPanel');
       const tabsUpdated = data.wrapper.find('Tab');
 
