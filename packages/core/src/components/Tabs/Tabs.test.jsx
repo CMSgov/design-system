@@ -129,16 +129,15 @@ describe('Tabs', function() {
         children,
         true
       );
-      const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');
 
       tabs.first().simulate('keyDown', { key: 'ArrowRight' });
 
-      panels.update();
-      tabs.update();
+      const panelsUpdated = data.wrapper.find('TabPanel');
+      const tabsUpdated = data.wrapper.find('Tab');
 
-      expect(panels.at(1).prop('selected')).toBe(true);
-      expect(tabs.at(1).prop('selected')).toBe(true);
+      expect(panelsUpdated.at(1).prop('selected')).toBe(true);
+      expect(tabsUpdated.at(1).prop('selected')).toBe(true);
     });
 
     it('selects the first panel on left arrow keyDown', () => {
@@ -147,16 +146,15 @@ describe('Tabs', function() {
         children,
         true
       );
-      const panels = data.wrapper.find('TabPanel');
       const tabs = data.wrapper.find('Tab');
 
       tabs.at(1).simulate('keyDown', { key: 'ArrowLeft' });
+      
+      const panelsUpdated = data.wrapper.find('TabPanel');
+      const tabsUpdated = data.wrapper.find('Tab');
 
-      panels.update();
-      tabs.update();
-
-      expect(panels.first().prop('selected')).toBe(true);
-      expect(tabs.first().prop('selected')).toBe(true);
+      expect(panelsUpdated.first().prop('selected')).toBe(true);
+      expect(tabsUpdated.first().prop('selected')).toBe(true);
     });
   });
 });
