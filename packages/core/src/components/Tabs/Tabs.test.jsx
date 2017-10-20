@@ -134,6 +134,8 @@ describe('Tabs', function() {
 
       tabs.first().simulate('keyDown', { key: 'ArrowRight' });
 
+      data.wrapper.update();
+
       expect(panels.at(1).prop('selected')).toBe(true);
       expect(tabs.at(1).prop('selected')).toBe(true);
     });
@@ -148,6 +150,8 @@ describe('Tabs', function() {
       const tabs = data.wrapper.find('Tab');
 
       tabs.at(1).simulate('keyDown', { key: 'ArrowLeft' });
+
+      data.wrapper.update();
 
       expect(panels.first().prop('selected')).toBe(true);
       expect(tabs.first().prop('selected')).toBe(true);
