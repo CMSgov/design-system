@@ -50,6 +50,35 @@ describe('FormLabel', () => {
       .toMatch(/<strong>/);
   });
 
+  it('renders requirementLabel string', () => {
+    const props = {
+      requirementLabel: 'Optional.'
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+    const boldWrapper = hint.children().first();
+
+    expect(hint.text())
+      .toEqual('Optional.');
+    expect(boldWrapper.hasClass('ds-u-font-weight--bold'))
+      .toBe(true);
+  });
+
+  it('renders requirementLabel node', () => {
+    const props = {
+      requirementLabel: <em>It is really optional</em>
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+
+    expect(hint.html())
+      .toMatch(/<em>/);
+    expect(hint.text())
+      .toEqual('It is really optional');
+    expect(hint.children().first().hasClass('ds-u-font-weight--bold'))
+      .toEqual(false);
+  });
+
   it('renders as a legend element', () => {
     const props = {component: 'legend'};
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
