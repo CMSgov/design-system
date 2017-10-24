@@ -109,7 +109,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "prettier --write --single-quote",
+      "prettier --write",
       "eslint --fix",
       "git add"
     ]
