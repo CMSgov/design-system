@@ -38,8 +38,9 @@ module.exports = (gulp, shared) => {
 
   gulp.task('watch:docs', () => {
     gulp.watch('packages/docs/src/styles/**/*.scss', ['sass:process:docs']);
-
     gulp.watch('packages/docs/src/pages/**/*.md', ['docs:generate-pages']);
+    // Support Markdown documentation pages nested within a theme's directory
+    gulp.watch('packages/themes/*/src/pages/**/*.md', ['docs:generate-pages']);
   });
 
   gulp.task('watch', () => {
