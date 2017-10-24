@@ -202,6 +202,7 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
             errorMessage: this.props.errorMessage,
             fieldId: this.id(),
             hint: this.props.hint,
+            requirementLabel: this.props.requirementLabel,
             inversed: this.props.inversed
           },
           this.props.label
@@ -224,7 +225,8 @@ ChoiceList.propTypes = {
     defaultChecked: _Choice2.default.propTypes.defaultChecked,
     disabled: _Choice2.default.propTypes.disabled,
     label: _Choice2.default.propTypes.children,
-    value: _Choice2.default.propTypes.value
+    value: _Choice2.default.propTypes.value,
+    requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node])
   })).isRequired,
   /**
    * Additional classes to be added to the root element.
@@ -239,6 +241,10 @@ ChoiceList.propTypes = {
    * Additional hint text to display
    */
   hint: _propTypes2.default.node,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
   /**
    * Applies the "inverse" UI theme
    */
