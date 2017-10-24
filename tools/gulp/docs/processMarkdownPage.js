@@ -18,11 +18,11 @@ marked.setOptions({ renderer: renderer });
 function setFlags(page, attributes) {
   page = Object.assign({}, page);
 
-  Object.keys(attributes).filter(key =>
-    Object.keys(page).indexOf(key) === -1
-  ).forEach(key => {
-    page[camelCase(key)] = attributes[key];
-  });
+  Object.keys(attributes)
+    .filter(key => Object.keys(page).indexOf(key) === -1)
+    .forEach(key => {
+      page[camelCase(key)] = attributes[key];
+    });
 
   return page;
 }
@@ -69,13 +69,15 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     // description, so we make the page's body nested under the guidance section
     // We do it this way since formatting the guidance section as a front-matter
     // field is a pain, since you have to indent each line.
-    page.sections = [{
-      depth: depth + 1,
-      header: '---',
-      description: formatText(parts.body, rootPath),
-      reference: `${reference}.guidance`,
-      referenceURI: path.join(referenceURI, 'guidance')
-    }];
+    page.sections = [
+      {
+        depth: depth + 1,
+        header: '---',
+        description: formatText(parts.body, rootPath),
+        reference: `${reference}.guidance`,
+        referenceURI: path.join(referenceURI, 'guidance')
+      }
+    ];
 
     delete parts.attributes.usage;
   }

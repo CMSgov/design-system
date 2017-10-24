@@ -26,12 +26,7 @@ export class ChoiceList extends React.PureComponent {
     const selectProps = {};
 
     const choices = this.props.choices.map(choice => {
-      const {
-        checked,
-        defaultChecked,
-        label,
-        ...props
-      } = choice;
+      const { checked, defaultChecked, label, ...props } = choice;
 
       if (type === 'select') {
         if (checked) selectProps.value = props.value;
@@ -127,7 +122,7 @@ export class ChoiceList extends React.PureComponent {
   render() {
     const type = this.type();
     const classes = classNames(
-      {'ds-c-fieldset': type !== 'select'},
+      { 'ds-c-fieldset': type !== 'select' },
       this.props.className
     );
     const RootComponent = type === 'select' ? 'div' : 'fieldset';

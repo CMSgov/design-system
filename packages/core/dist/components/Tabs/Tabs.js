@@ -129,14 +129,30 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   }, {
     key: 'handleTabKeyDown',
     value: function handleTabKeyDown(evt, panelId) {
+      var tabs = this.panelChildren();
+      var tabIndex = tabs.findIndex(function (elem) {
+        return elem.props.id === panelId;
+      });
+      var target = void 0;
+
       switch (evt.key) {
         case LEFT_ARROW:
           evt.preventDefault();
-          this.tabSwitcher(LEFT_ARROW, evt, panelId);
+          if (tabIndex === 0) {
+            target = tabs[tabs.length - 1].props.id;
+          } else {
+            target = tabs[tabIndex - 1].props.id;
+          }
+          this.setState({ selectedId: target });
           break;
         case RIGHT_ARROW:
           evt.preventDefault();
-          this.tabSwitcher(RIGHT_ARROW, evt, panelId);
+          if (tabIndex === tabs.length - 1) {
+            target = tabs[0].props.id;
+          } else {
+            target = tabs[tabIndex + 1].props.id;
+          }
+          this.setState({ selectedId: target });
           break;
         default:
           break;
@@ -220,51 +236,6 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
     value: function replaceState(url) {
       if (window.history) {
         window.history.replaceState({}, document.title, url);
-      }
-    }
-
-    /**
-     * Handle the left arrow keydown events
-     * @param {String} Constant assigned to evt.key keycode
-     * @param {Object} Native event object, used to listen for left arrow keycode
-     * @param {String} ID prop of currently selected TabPanel
-     * 
-     * The index returned from tabFindIndex is used in a reduce by 1 logic
-     * tree to ensure the right tab[index] ID is targeted for updated state.
-     * 
-     * The replaceState function did not like the href argument passed into 
-     * handleTabClick, so passing an interpolated hashbang plus selected Tab
-     * string instead. 
-     */
-
-  }, {
-    key: 'tabSwitcher',
-    value: function tabSwitcher(pressed, evt, panelId) {
-      var tabs = this.panelChildren();
-      var tabIndex = tabs.findIndex(function (elem) {
-        return elem.props.id === panelId;
-      });
-      var target = void 0;
-
-      switch (pressed) {
-        case LEFT_ARROW:
-          if (tabIndex === 0) {
-            target = tabs[tabs.length - 1].props.id;
-          } else {
-            target = tabs[tabIndex - 1].props.id;
-          }
-          this.setState({ selectedId: target });
-          break;
-        case RIGHT_ARROW:
-          if (tabIndex === tabs.length - 1) {
-            target = tabs[0].props.id;
-          } else {
-            target = tabs[tabIndex + 1].props.id;
-          }
-          this.setState({ selectedId: target });
-          break;
-        default:
-          break;
       }
     }
   }, {

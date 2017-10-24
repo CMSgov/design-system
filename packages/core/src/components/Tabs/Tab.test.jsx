@@ -1,12 +1,15 @@
 import React from 'react';
 import Tab from './Tab';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign({
-    id: 'tab',
-    panelId: 'panel'
-  }, customProps);
+  const props = Object.assign(
+    {
+      id: 'tab',
+      panelId: 'panel'
+    },
+    customProps
+  );
 
   return {
     props: props,

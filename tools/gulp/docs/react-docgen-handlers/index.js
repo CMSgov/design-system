@@ -6,8 +6,6 @@ const markdownHandler = require('./markdownHandler');
  * @param {String} rootPath - Root docs site path
  * @return {Array}
  */
-module.exports = (rootPath) => {
-  return defaultHandlers.concat([
-    markdownHandler(rootPath)
-  ]);
+module.exports = rootPath => {
+  return defaultHandlers.concat([markdownHandler(rootPath)]);
 };

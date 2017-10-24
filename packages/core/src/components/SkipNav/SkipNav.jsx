@@ -2,7 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export function SkipNav(props) {
-  return <a className='ds-c-skip-nav' href={props.href}>{props.children}</a>;
+  return (
+    <a className="ds-c-skip-nav" href={props.href}>
+      {props.children}
+    </a>
+  );
 }
 
 SkipNav.defaultProps = {

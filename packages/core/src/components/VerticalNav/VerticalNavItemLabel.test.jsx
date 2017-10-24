@@ -1,12 +1,15 @@
 import React from 'react';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign({
-    label: 'Foo',
-    subnavId: 'foo-subnav'
-  }, customProps);
+  const props = Object.assign(
+    {
+      label: 'Foo',
+      subnavId: 'foo-subnav'
+    },
+    customProps
+  );
 
   return {
     props: props,
@@ -25,12 +28,16 @@ describe('VerticalNavItemLabel', () => {
 
   it('is not selected', () => {
     const data = shallowRender();
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(false);
+    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(
+      false
+    );
   });
 
   it('is selected', () => {
     const data = shallowRender({ selected: true });
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(true);
+    expect(data.wrapper.hasClass('ds-c-vertical-nav__label--current')).toBe(
+      true
+    );
   });
 
   it('calls onClick', () => {
@@ -105,7 +112,9 @@ describe('VerticalNavItemLabel', () => {
       props.ariaCollapsedStateButtonLabel = 'Expand me';
       const data = shallowRender(props);
 
-      expect(data.wrapper.prop('title')).toBe(data.props.ariaCollapsedStateButtonLabel);
+      expect(data.wrapper.prop('title')).toBe(
+        data.props.ariaCollapsedStateButtonLabel
+      );
     });
 
     it('has expanded state title', () => {
@@ -113,7 +122,9 @@ describe('VerticalNavItemLabel', () => {
       props.ariaExpandedStateButtonLabel = 'Collapse me';
       const data = shallowRender(props);
 
-      expect(data.wrapper.prop('title')).toBe(data.props.ariaExpandedStateButtonLabel);
+      expect(data.wrapper.prop('title')).toBe(
+        data.props.ariaExpandedStateButtonLabel
+      );
     });
   });
 });

@@ -9,12 +9,15 @@
     "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
     "g": "yarn generate",
+    "precommit": "lint-staged",
+    "pretest": "gulp docs:react",
     "postinstall": "lerna bootstrap --npm-client=yarn",
+    "posttest": "npm run lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "npm run start -- --theme",
-    "test": "NODE_ENV=test gulp docs:react && jest && gulp lint --env=test",
+    "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
-    "lint": "yarn run gulp lint"
+    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test"
   },
   "devDependencies": {
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
@@ -50,7 +53,6 @@
     "gulp-changed": "^3.1.0",
     "gulp-changed-in-place": "^2.2.0",
     "gulp-count": "^0.3.0",
-    "gulp-eslint": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-merge-json": "^1.2.0",
     "gulp-postcss": "^7.0.0",
@@ -58,9 +60,11 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-stylelint": "^5.0.0",
     "gulp-util": "^3.0.8",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.4.0",
+    "lint-staged": "^4.2.3",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "mkdir-recursive": "^0.3.0",
@@ -69,6 +73,7 @@
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^11.0.0",
     "postcss-url": "^7.1.2",
+    "prettier": "^1.7.4",
     "prismjs": "^1.8.1",
     "react": "^16.0.0",
     "react-docgen": "^2.19.0",
@@ -100,6 +105,13 @@
       "<rootDir>/packages/*/node_modules/",
       "<rootDir>/packages/themes/*/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
     ]
   },
   "resolutions": {

@@ -7,6 +7,10 @@ exports.Choice = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _FormLabel = require('../FormLabel/FormLabel');
+
+var _FormLabel2 = _interopRequireDefault(_FormLabel);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -43,7 +47,8 @@ var Choice = function Choice(props) {
       inputPlacement = props.inputPlacement,
       inputClassName = props.inputClassName,
       size = props.size,
-      inputProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed', 'inputPlacement', 'inputClassName', 'size']);
+      requirementLabel = props.requirementLabel,
+      inputProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed', 'inputPlacement', 'inputClassName', 'size', 'requirementLabel']);
   /* eslint-enable prefer-const */
 
   var inputClasses = (0, _classnames2.default)(inputClassName, 'ds-c-choice', {
@@ -59,13 +64,10 @@ var Choice = function Choice(props) {
   return _react2.default.createElement(
     'div',
     { className: className },
-    _react2.default.createElement('input', _extends({
-      className: inputClasses,
-      id: id
-    }, inputProps)),
+    _react2.default.createElement('input', _extends({ className: inputClasses, id: id }, inputProps)),
     _react2.default.createElement(
-      'label',
-      { htmlFor: id },
+      _FormLabel2.default,
+      { fieldId: id, requirementLabel: requirementLabel },
       children
     )
   );
@@ -105,6 +107,10 @@ Choice.propTypes = {
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
   id: _propTypes2.default.string,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
   /**
    * Applies the "inverse" UI theme
    */

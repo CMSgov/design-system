@@ -13,19 +13,15 @@ class ReactPropDocs extends React.PureComponent {
       if (prop === 'children' || prop.match(/^_/)) return null;
 
       return (
-        <ReactPropDoc
-          key={prop}
-          name={prop}
-          {...this.props.propDocs[prop]}
-        />
+        <ReactPropDoc key={prop} name={prop} {...this.props.propDocs[prop]} />
       );
     });
   }
 
   render() {
     return [
-      <h3 key='propDocsHeader'>Props</h3>,
-      <table key='propDocsTable' className='ds-c-table'>
+      <h3 key="propDocsHeader">Props</h3>,
+      <table key="propDocsTable" className="ds-c-table">
         <thead>
           <tr>
             <th>Name</th>

@@ -31,8 +31,14 @@ class Frame extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.iframe.contentWindow.removeEventListener('load', this.handleIframeLoad);
-    this.iframe.contentWindow.removeEventListener('resize', this.handleIframeResize);
+    this.iframe.contentWindow.removeEventListener(
+      'load',
+      this.handleIframeLoad
+    );
+    this.iframe.contentWindow.removeEventListener(
+      'resize',
+      this.handleIframeResize
+    );
   }
 
   handleIframeResize() {
@@ -42,10 +48,15 @@ class Frame extends React.PureComponent {
   handleIframeLoad() {
     // Attach the resize listener after the load event has been triggered, to
     // avoid an unnecessary setHeight call in Firefox
-    this.iframe.contentWindow.addEventListener('resize', this.handleIframeResize);
+    this.iframe.contentWindow.addEventListener(
+      'resize',
+      this.handleIframeResize
+    );
     // We don't want scrollbars on the iframe. We need to set this class before
     // calculating the height since a scrollbar may affect the height
-    this.iframe.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
+    this.iframe.contentDocument.documentElement.classList.add(
+      'ds-u-overflow--hidden'
+    );
     this.setIframeHeight();
     this.setState({ loaded: true });
   }
@@ -86,46 +97,53 @@ class Frame extends React.PureComponent {
     const parentWidth = this.state.parentWidth;
     const previewWidth = breakpoints[this.state.activeBreakpoint];
     const scale = Math.min(1, parentWidth / previewWidth);
-    const parentStyle = this.props.responsive ? {
-      height: scale * this.state.iframeHeight
-    } : null;
-    const previewStyle = this.props.responsive ? {
-      transform: `scale(${scale})`,
-      width: previewWidth
-    } : null;
+    const parentStyle = this.props.responsive
+      ? {
+          height: scale * this.state.iframeHeight
+        }
+      : null;
+    const previewStyle = this.props.responsive
+      ? {
+          transform: `scale(${scale})`,
+          width: previewWidth
+        }
+      : null;
 
     return (
       <div className={rootClasses}>
-        {
-          this.props.responsive &&
+        {this.props.responsive && (
           <BreakpointToggles
             activeBreakpoint={this.state.activeBreakpoint}
             onClick={this.handleToggleClick}
           />
-        }
+        )}
         <div
-          className='frame__parent'
-          ref={el => { this.parent = el; }}
+          className="frame__parent"
+          ref={el => {
+            this.parent = el;
+          }}
           style={parentStyle}
         >
-          <div className='frame__preview' style={previewStyle}>
+          <div className="frame__preview" style={previewStyle}>
             <iframe
-              className='ds-u-fill--white ds-u-valign--bottom'
-              frameBorder='0'
+              className="ds-u-fill--white ds-u-valign--bottom"
+              frameBorder="0"
               height={this.state.iframeHeight}
-              ref={iframe => { this.iframe = iframe; }}
+              ref={iframe => {
+                this.iframe = iframe;
+              }}
               src={this.props.src}
               title={this.props.title}
-              width='100%'
+              width="100%"
             />
           </div>
         </div>
         <a
-          className='frame__link'
+          className="frame__link"
           href={this.props.src}
-          rel='nofollow'
-          target='_blank'
-          title='Open the rendered HTML in a new tab or window'
+          rel="nofollow"
+          target="_blank"
+          title="Open the rendered HTML in a new tab or window"
         >
           New tab
         </a>

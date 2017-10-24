@@ -11,9 +11,9 @@ export class VerticalNav extends React.PureComponent {
   renderItems() {
     return this.props.items.map(item => {
       let onClick = item.onClick || this.props.onLinkClick;
-      const selected = item.selected || (
-        this.props.selectedId && this.props.selectedId === item.id
-      );
+      const selected =
+        item.selected ||
+        (this.props.selectedId && this.props.selectedId === item.id);
 
       if (!onClick) {
         onClick = undefined;
@@ -37,7 +37,9 @@ export class VerticalNav extends React.PureComponent {
         'ds-c-vertical-nav': !this.props.nested,
         'ds-c-vertical-nav__subnav': this.props.nested,
         'ds-u-display--none': this.props.collapsed
-      }, this.props.className);
+      },
+      this.props.className
+    );
 
     return (
       <ul className={classes} id={this.props.id}>

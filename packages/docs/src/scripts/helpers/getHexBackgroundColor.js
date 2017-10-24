@@ -1,7 +1,7 @@
 // convert 0..255 R,G,B values to a hexidecimal color string
 // https://gist.github.com/lrvick/2080648
 function rgbToHex(r, g, b) {
-  const bin = r << 16 | g << 8 | b;
+  const bin = (r << 16) | (g << 8) | b;
 
   return (function(h) {
     return new Array(7 - h.length).join('0') + h;

@@ -7,5 +7,5 @@ module.exports = {
   hash: false,
   source: false,
   timings: true,
-  version: false,
+  version: false
 };

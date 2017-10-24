@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from './Select';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 /**
  * Generate <option> elements
@@ -10,7 +10,11 @@ function generateOptions(count) {
   const options = [];
 
   for (let i = 1; i < count + 1; i++) {
-    options.push(<option key={i} value={String(i)}>{i}</option>);
+    options.push(
+      <option key={i} value={String(i)}>
+        {i}
+      </option>
+    );
   }
 
   return options;
@@ -24,13 +28,18 @@ function generateOptions(count) {
  * @return {object}
  */
 function shallowRender(customProps = {}, optionsCount = 1) {
-  const props = Object.assign({
-    name: 'presidents'
-  }, customProps);
+  const props = Object.assign(
+    {
+      name: 'presidents'
+    },
+    customProps
+  );
 
   return {
     props: props,
-    wrapper: shallow(<Select {...props}>{generateOptions(optionsCount)}</Select>)
+    wrapper: shallow(
+      <Select {...props}>{generateOptions(optionsCount)}</Select>
+    )
   };
 }
 
@@ -49,21 +58,29 @@ describe('Select', () => {
     expect(data.wrapper.hasClass('ds-c-field--select')).toBe(true);
   });
 
-  it('renders <option>\'s as children', () => {
+  it("renders <option>'s as children", () => {
     const data = shallowRender({}, 10);
 
     expect(data.wrapper.children('option').length).toBe(10);
   });
 
   it('has a selected <option>', () => {
-    const data = shallowRender({
-      defaultValue: '2' // the second generated option
-    }, 4);
+    const data = shallowRender(
+      {
+        defaultValue: '2' // the second generated option
+      },
+      4
+    );
     const $wrapper = data.wrapper.render();
 
     expect(data.wrapper.prop('defaultValue')).toBe(data.props.defaultValue);
     expect($wrapper.find('option:selected').length).toBe(1);
-    expect($wrapper.find('option').eq(1).attr('selected')).toBe('selected');
+    expect(
+      $wrapper
+        .find('option')
+        .eq(1)
+        .attr('selected')
+    ).toBe('selected');
   });
 
   it('applies additional classNames to root element', () => {
@@ -126,7 +143,9 @@ describe('Select', () => {
         onChange: onChangeMock
       };
 
-      wrapper = shallow(<Select {...sharedProps}>{generateOptions(10)}</Select>);
+      wrapper = shallow(
+        <Select {...sharedProps}>{generateOptions(10)}</Select>
+      );
     });
 
     it('calls the onChange handler', () => {

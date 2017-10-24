@@ -16,8 +16,8 @@ export class TextField extends React.PureComponent {
 
   render() {
     const FieldComponent = this.props.multiline ? 'textarea' : 'input';
-    const rows = this.props.multiline && this.props.rows
-      ? this.props.rows : undefined;
+    const rows =
+      this.props.multiline && this.props.rows ? this.props.rows : undefined;
 
     const classes = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
@@ -112,10 +112,7 @@ TextField.propTypes = {
    * Optionally specify the number of visible text lines for the field. Only
    * applicable if this is a multiline field.
    */
-  rows: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */

@@ -3,9 +3,21 @@ const uniquePages = require('../uniquePages');
 describe('uniquePages', () => {
   it('removes duplicate non-theme section', () => {
     const sections = uniquePages([
-      { reference: 'foo', header: 'Core foo', source: { path: 'packages/core/foo.js' } },
-      { reference: 'foo', header: 'Theme foo', source: { path: 'packages/themes/abc/foo.js' } },
-      { reference: 'bar', header: 'Bar', source: { path: 'packages/core/bar.js' } }
+      {
+        reference: 'foo',
+        header: 'Core foo',
+        source: { path: 'packages/core/foo.js' }
+      },
+      {
+        reference: 'foo',
+        header: 'Theme foo',
+        source: { path: 'packages/themes/abc/foo.js' }
+      },
+      {
+        reference: 'bar',
+        header: 'Bar',
+        source: { path: 'packages/core/bar.js' }
+      }
     ]);
 
     expect(sections.length).toBe(2);

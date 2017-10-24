@@ -30,8 +30,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * The FormLabel component provides the label/legend for a field, along with any
  * associated hint text and error messaging.
- *
- * TODO(sawyer): Show this in the documentation
  */
 var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   _inherits(FormLabel, _React$PureComponent);
@@ -60,14 +58,45 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   }, {
     key: 'hint',
     value: function hint() {
-      if (this.props.hint) {
-        var classes = (0, _classnames2.default)('ds-c-field__hint', { 'ds-c-field__hint--inverse': this.props.inversed });
+      var hint = this.props.hint;
+
+      var requirementLabel = this.requirementLabel();
+      var classes = (0, _classnames2.default)('ds-c-field__hint', {
+        'ds-c-field__hint--inverse': this.props.inversed
+      });
+
+      if (hint && requirementLabel) {
         return _react2.default.createElement(
           'span',
           { className: classes },
-          this.props.hint
+          requirementLabel,
+          ' ',
+          hint
+        );
+      } else if (requirementLabel) {
+        return _react2.default.createElement(
+          'span',
+          { className: classes },
+          requirementLabel
+        );
+      } else if (hint) {
+        return _react2.default.createElement(
+          'span',
+          { className: classes },
+          hint
         );
       }
+    }
+  }, {
+    key: 'requirementLabel',
+    value: function requirementLabel() {
+      var requirementLabel = this.props.requirementLabel;
+
+      return typeof requirementLabel === 'string' ? _react2.default.createElement(
+        'span',
+        { className: 'ds-u-font-weight--bold' },
+        requirementLabel
+      ) : requirementLabel;
     }
   }, {
     key: 'render',
@@ -103,7 +132,7 @@ FormLabel.propTypes = {
   /** The root HTML element used to render the label */
   component: _propTypes2.default.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: _propTypes2.default.string,
+  errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
@@ -112,7 +141,11 @@ FormLabel.propTypes = {
   /**
    * Additional hint text to display
    */
-  hint: _propTypes2.default.node,
+  hint: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
   /**
    * Set to `true` to apply the "inverse" theme
    */

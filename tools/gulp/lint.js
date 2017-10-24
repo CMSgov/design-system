@@ -1,8 +1,6 @@
 const _ = require('lodash');
 const changedInPlace = require('gulp-changed-in-place');
 const count = require('gulp-count');
-const eslint = require('gulp-eslint');
-const gulpIf = require('gulp-if');
 const packagesRegex = require('./common/packagesRegex');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../../stylelint.config');
@@ -34,42 +32,19 @@ module.exports = (gulp, shared) => {
     return gulp
       .src([`${cwd}src/**/*.scss`])
       .pipe(changedInPlace({ firstPass: true }))
-      .pipe(stylelint({
-        config: config,
-        failAfterError: failAfterError,
-        reporters: [
-          { formatter: 'string', console: true }
-        ],
-        syntax: 'scss'
-      }))
+      .pipe(
+        stylelint({
+          config: config,
+          failAfterError: failAfterError,
+          reporters: [{ formatter: 'string', console: true }],
+          syntax: 'scss'
+        })
+      )
       .pipe(count('## Sass files linted'));
   }
 
-  function runEslint(src, name) {
-    return gulp.src(src)
-      .pipe(changedInPlace({ firstPass: true }))
-      .pipe(eslint())
-      .pipe(eslint.format())
-      .pipe(gulpIf(failAfterError, eslint.failAfterError()))
-      .pipe(count(`## ${name} JS files linted`));
-  }
-
-  gulp.task('lint:packages-styles', () => runStylelint(`packages/${packages}/`));
-  gulp.task('lint:docs-styles', () => runStylelint('packages/docs/', false));
-
-  gulp.task('lint:packages-scripts', () => {
-    return runEslint([
-      `packages/${packages}/src/**/*.{js,jsx}`,
-      '!src/vendor/**/*.js'
-    ], 'package');
-  });
-
-  gulp.task('lint:docs-scripts', () => runEslint([
-    'packages/docs/src/**/*.{js,jsx}'
-  ], 'docs'));
-
-  gulp.task('lint:packages', ['lint:packages-scripts', 'lint:packages-styles']);
-  gulp.task('lint:docs', ['lint:docs-scripts', 'lint:docs-styles']);
+  gulp.task('lint:packages', () => runStylelint(`packages/${packages}/`));
+  gulp.task('lint:docs', () => runStylelint('packages/docs/', false));
 
   gulp.task('lint', ['lint:packages', 'lint:docs']);
 };
