@@ -1,39 +1,48 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.Tabs = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+const _createClass = (function() { function defineProperties(target, props) { for (let i = 0; i < props.length; i++) { const descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function(Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }());
 
-var _propTypes = require('prop-types');
+require('core-js/fn/array/find-index');
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+const _propTypes = require('prop-types');
 
-var _react = require('react');
+const _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _react2 = _interopRequireDefault(_react);
+const _react = require('react');
 
-var _Tab = require('./Tab');
+const _react2 = _interopRequireDefault(_react);
 
-var _Tab2 = _interopRequireDefault(_Tab);
+const _Tab = require('./Tab');
 
-var _TabPanel = require('./TabPanel');
+const _Tab2 = _interopRequireDefault(_Tab);
 
-var _TabPanel2 = _interopRequireDefault(_TabPanel);
+const _TabPanel = require('./TabPanel');
 
-var _classnames = require('classnames');
+const _TabPanel2 = _interopRequireDefault(_TabPanel);
 
-var _classnames2 = _interopRequireDefault(_classnames);
+const _classnames = require('classnames');
+
+const _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === 'object' || typeof call === 'function') ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/** CONSTANTS
+ * Adding in the constant values for keycodes
+ * to handle onKeyDown events
+ */
+const LEFT_ARROW = 'ArrowLeft';
+const RIGHT_ARROW = 'ArrowRight';
 
 /**
  * Get the id of the first TabPanel child
@@ -41,11 +50,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @return {String} The id
  */
 function getDefaultSelectedId(props) {
-  var selectedId = void 0;
+  let selectedId = void 0;
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  _react2.default.Children.forEach(props.children, function (child) {
+  _react2.default.Children.forEach(props.children, function(child) {
     if (isTabPanel(child) && !selectedId) {
       selectedId = child.props.id;
     }
@@ -78,15 +87,15 @@ function isTabPanel(child) {
  * components (`Tab`, `TabPanel`) on their own.
  */
 
-var Tabs = exports.Tabs = function (_React$PureComponent) {
+const Tabs = exports.Tabs = (function(_React$PureComponent) {
   _inherits(Tabs, _React$PureComponent);
 
   function Tabs(props) {
     _classCallCheck(this, Tabs);
 
-    var _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
+    const _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
 
-    var selectedId = void 0;
+    let selectedId = void 0;
 
     if ('defaultSelectedId' in props) {
       selectedId = props.defaultSelectedId;
@@ -95,6 +104,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
     }
 
     _this.handleTabClick = _this.handleTabClick.bind(_this);
+    _this.handleTabKeyDown = _this.handleTabKeyDown.bind(_this);
     _this.state = { selectedId: selectedId };
     return _this;
   }
@@ -102,19 +112,40 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   _createClass(Tabs, [{
     key: 'componentDidUpdate',
     value: function componentDidUpdate(_, prevState) {
-      if (typeof this.props.onChange === 'function' && this.state.selectedId !== prevState.selectedId) {
-        this.props.onChange(this.state.selectedId, prevState.selectedId);
+      if (this.state.selectedId !== prevState.selectedId) {
+        if (typeof this.props.onChange === 'function') {
+          this.props.onChange(this.state.selectedId, prevState.selectedId);
+        }
+        this.tabs[this.state.selectedId].focus();
+        this.replaceState(this.tabs[this.state.selectedId].href);
       }
     }
   }, {
     key: 'handleTabClick',
-    value: function handleTabClick(evt, panelId, tabId, href) {
+    value: function handleTabClick(evt, panelId) {
       evt.preventDefault();
       this.setState({ selectedId: panelId });
-      this.replaceState(href);
+    }
+  }, {
+    key: 'handleTabKeyDown',
+    value: function handleTabKeyDown(evt, panelId) {
+      switch (evt.key) {
+        case LEFT_ARROW:
+          evt.preventDefault();
+          this.tabSwitcher(LEFT_ARROW, evt, panelId);
+          break;
+        case RIGHT_ARROW:
+          evt.preventDefault();
+          this.tabSwitcher(RIGHT_ARROW, evt, panelId);
+          break;
+        default:
+          break;
+      }
     }
 
-    // Filter children and return only TabPanel components
+    /**
+     * Filter children and return only TabPanel components
+     */
 
   }, {
     key: 'panelChildren',
@@ -124,9 +155,9 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   }, {
     key: 'renderChildren',
     value: function renderChildren() {
-      var _this2 = this;
+      const _this2 = this;
 
-      return _react2.default.Children.map(this.props.children, function (child) {
+      return _react2.default.Children.map(this.props.children, function(child) {
         if (isTabPanel(child)) {
           // Extend props on panels before rendering. Also removes any props
           // that don't need passed into TabPanel but are used to generate
@@ -145,12 +176,14 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   }, {
     key: 'renderTabs',
     value: function renderTabs() {
-      var _this3 = this;
+      const _this3 = this;
 
-      var panels = this.panelChildren();
-      var listClasses = (0, _classnames2.default)('ds-c-tabs', this.props.tablistClassName);
+      const panels = this.panelChildren();
+      const listClasses = (0, _classnames2.default)('ds-c-tabs', this.props.tablistClassName);
 
-      var tabs = panels.map(function (panel) {
+      this.tabs = {};
+
+      const tabs = panels.map(function(panel) {
         return _react2.default.createElement(
           _Tab2.default,
           {
@@ -159,7 +192,11 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
             id: panelTabId(panel),
             key: panel.key,
             onClick: _this3.handleTabClick,
+            onKeyDown: _this3.handleTabKeyDown,
             panelId: panel.props.id,
+            ref: function ref(tab) {
+              _this3.tabs[panel.props.id] = tab;
+            },
             selected: _this3.state.selectedId === panel.props.id
           },
           panel.props.tab
@@ -185,6 +222,51 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
         window.history.replaceState({}, document.title, url);
       }
     }
+
+    /**
+     * Handle the left arrow keydown events
+     * @param {String} Constant assigned to evt.key keycode
+     * @param {Object} Native event object, used to listen for left arrow keycode
+     * @param {String} ID prop of currently selected TabPanel
+     * 
+     * The index returned from tabFindIndex is used in a reduce by 1 logic
+     * tree to ensure the right tab[index] ID is targeted for updated state.
+     * 
+     * The replaceState function did not like the href argument passed into 
+     * handleTabClick, so passing an interpolated hashbang plus selected Tab
+     * string instead. 
+     */
+
+  }, {
+    key: 'tabSwitcher',
+    value: function tabSwitcher(pressed, evt, panelId) {
+      const tabs = this.panelChildren();
+      const tabIndex = tabs.findIndex(function(elem) {
+        return elem.props.id === panelId;
+      });
+      let target = void 0;
+
+      switch (pressed) {
+        case LEFT_ARROW:
+          if (tabIndex === 0) {
+            target = tabs[tabs.length - 1].props.id;
+          } else {
+            target = tabs[tabIndex - 1].props.id;
+          }
+          this.setState({ selectedId: target });
+          break;
+        case RIGHT_ARROW:
+          if (tabIndex === tabs.length - 1) {
+            target = tabs[0].props.id;
+          } else {
+            target = tabs[tabIndex + 1].props.id;
+          }
+          this.setState({ selectedId: target });
+          break;
+        default:
+          break;
+      }
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -198,7 +280,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   }]);
 
   return Tabs;
-}(_react2.default.PureComponent);
+}(_react2.default.PureComponent));
 
 Tabs.propTypes = {
   children: _propTypes2.default.node.isRequired,

@@ -1,3 +1,4 @@
+import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -21,6 +22,7 @@ export const Choice = function(props) {
     inputPlacement,
     inputClassName,
     size,
+    requirementLabel,
     ...inputProps
   } = props;
   /* eslint-enable prefer-const */
@@ -38,7 +40,9 @@ export const Choice = function(props) {
   return (
     <div className={className}>
       <input className={inputClasses} id={id} {...inputProps} />
-      <label htmlFor={id}>{children}</label>
+      <FormLabel fieldId={id} requirementLabel={requirementLabel}>
+        {children}
+      </FormLabel>
     </div>
   );
 };
@@ -76,6 +80,10 @@ Choice.propTypes = {
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
   id: PropTypes.string,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */

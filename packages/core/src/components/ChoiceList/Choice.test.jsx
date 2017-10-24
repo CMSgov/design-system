@@ -1,4 +1,5 @@
 import Choice from './Choice';
+import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -17,10 +18,12 @@ describe('Choice', () => {
         </p>
       </Choice>
     );
-    const labelNode = wrapper.find('label');
+    const labelNode = wrapper.find(FormLabel).dive();
 
     expect(
       labelNode
+        .children()
+        .first()
         .children()
         .first()
         .is('p')
@@ -218,7 +221,7 @@ describe('Choice', () => {
     };
     const wrapper = shallow(<Choice {...props}>{label}</Choice>);
     const input = wrapper.find('input');
-    const labelNode = wrapper.find('label');
+    const labelNode = wrapper.find(FormLabel).dive();
 
     expect(input.prop('id')).toBe(props.id);
     expect(labelNode.prop('htmlFor')).toBe(props.id);

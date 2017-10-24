@@ -39,6 +39,7 @@ export class TextField extends React.PureComponent {
           errorMessage={this.props.errorMessage}
           fieldId={this.id}
           hint={this.props.hint}
+          requirementLabel={this.props.requirementLabel}
           inversed={this.props.inversed}
         >
           {this.props.label}
@@ -84,6 +85,10 @@ TextField.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */

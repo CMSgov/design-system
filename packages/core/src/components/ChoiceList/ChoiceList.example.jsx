@@ -23,6 +23,15 @@ export default function() {
   choices[2].disabled = true;
   options[1].defaultChecked = true;
 
+  const choicesWithRequirementLabels = generateChoices(3);
+  choicesWithRequirementLabels[1].requirementLabel = 'Required.';
+  choicesWithRequirementLabels[2].requirementLabel = (
+    <span>
+      <span className="ds-u-font-weight--bold">Optional.</span> We promise not
+      to share your choice.
+    </span>
+  );
+
   return (
     <div>
       <ChoiceList
@@ -37,6 +46,18 @@ export default function() {
         label="Checkbox example"
         multiple
         name="multiple_choices_field"
+      />
+      <ChoiceList
+        choices={choices}
+        requirementLabel="Optional."
+        label="Optional Example"
+        name="optional_choices_field"
+      />
+      <ChoiceList
+        choices={choicesWithRequirementLabels}
+        label="Choice-Optional Example"
+        multiple
+        name="some_optional_choices_field"
       />
       <ChoiceList
         choices={options}
