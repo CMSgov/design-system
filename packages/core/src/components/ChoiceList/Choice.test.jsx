@@ -3,22 +3,32 @@ import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-describe('Choice', () => {
-  const label = 'George Washington';
+const label = 'George Washington';
 
+function shallowRender(customProps = {}, children = label) {
+  const props = Object.assign(
+    {
+      name: 'foo',
+      value: 'boo'
+    },
+    customProps
+  );
+
+  return {
+    props: props,
+    wrapper: shallow(<Choice {...props}>{children}</Choice>)
+  };
+}
+
+describe('Choice', () => {
   it('accepts a node as innerHTML', () => {
-    const props = {
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(
-      <Choice {...props}>
-        <p>
-          <strong>Hello</strong> World
-        </p>
-      </Choice>
+    const data = shallowRender(
+      {},
+      <p>
+        <strong>Hello</strong> World
+      </p>
     );
-    const labelNode = wrapper.find(FormLabel).dive();
+    const labelNode = data.wrapper.find(FormLabel).dive();
 
     expect(
       labelNode
@@ -31,11 +41,7 @@ describe('Choice', () => {
   });
 
   it('is not checked', () => {
-    const props = {
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender().wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('checked')).toBeUndefined();
@@ -43,12 +49,7 @@ describe('Choice', () => {
   });
 
   it('is checked', () => {
-    const props = {
-      checked: true,
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ checked: true }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('checked')).toBe(true);
@@ -56,12 +57,7 @@ describe('Choice', () => {
   });
 
   it('is defaultChecked', () => {
-    const props = {
-      defaultChecked: true,
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ defaultChecked: true }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('checked')).toBeUndefined();
@@ -69,23 +65,14 @@ describe('Choice', () => {
   });
 
   it('is required', () => {
-    const props = {
-      name: 'presidents',
-      required: true,
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ required: true }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('required')).toBe(true);
   });
 
   it('is a checkbox by default', () => {
-    const props = {
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender().wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('type')).toBe('checkbox');
@@ -93,23 +80,14 @@ describe('Choice', () => {
   });
 
   it('is a radio button', () => {
-    const props = {
-      name: 'presidents',
-      type: 'radio',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ type: 'radio' }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.prop('type')).toBe('radio');
   });
 
   it('applies className to input', () => {
-    const props = {
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender().wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
@@ -117,12 +95,7 @@ describe('Choice', () => {
   });
 
   it('applies inverse className to input', () => {
-    const props = {
-      inversed: true,
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ inversed: true }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
@@ -130,11 +103,7 @@ describe('Choice', () => {
   });
 
   it('places input on left by default', () => {
-    const props = {
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender().wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
@@ -142,12 +111,7 @@ describe('Choice', () => {
   });
 
   it('places input on right', () => {
-    const props = {
-      inputPlacement: 'right',
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ inputPlacement: 'right' }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
@@ -155,13 +119,7 @@ describe('Choice', () => {
   });
 
   it('applies small className to input', () => {
-    const props = {
-      size: 'small',
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
-
+    const wrapper = shallowRender({ size: 'small' }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
@@ -169,62 +127,39 @@ describe('Choice', () => {
   });
 
   it('applies additional classNames to root element', () => {
-    const props = {
-      className: 'foo',
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ className: 'foo' }).wrapper;
 
     expect(wrapper.hasClass('foo')).toBe(true);
   });
 
   it('applies additional classNames to input element', () => {
-    const props = {
-      inputClassName: 'foo',
-      name: 'presidents',
-      value: label
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
+    const wrapper = shallowRender({ inputClassName: 'foo' }).wrapper;
     const input = wrapper.find('input');
 
     expect(input.hasClass('foo')).toBe(true);
   });
 
   it('accepts a string value', () => {
-    const props = {
-      name: 'foo',
-      value: 'bar'
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
-    const input = wrapper.find('input');
+    const data = shallowRender({ value: 'bar' });
+    const input = data.wrapper.find('input');
 
-    expect(input.prop('value')).toBe(props.value);
+    expect(input.prop('value')).toBe(data.props.value);
   });
 
   it('accepts a number value', () => {
-    const props = {
-      name: 'foo',
-      value: 100
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
-    const input = wrapper.find('input');
+    const data = shallowRender({ value: 100 });
+    const input = data.wrapper.find('input');
 
-    expect(input.prop('value')).toBe(props.value);
+    expect(input.prop('value')).toBe(data.props.value);
   });
 
   it('accepts a custom id', () => {
-    const props = {
-      id: 'custom_id',
-      name: 'foo',
-      value: 100
-    };
-    const wrapper = shallow(<Choice {...props}>{label}</Choice>);
-    const input = wrapper.find('input');
-    const labelNode = wrapper.find(FormLabel).dive();
+    const data = shallowRender({ id: 'custom_id' });
+    const input = data.wrapper.find('input');
+    const labelNode = data.wrapper.find(FormLabel).dive();
 
-    expect(input.prop('id')).toBe(props.id);
-    expect(labelNode.prop('htmlFor')).toBe(props.id);
+    expect(input.prop('id')).toBe(data.props.id);
+    expect(labelNode.prop('htmlFor')).toBe(data.props.id);
   });
 
   it('generates a unique id', () => {
@@ -274,33 +209,83 @@ describe('Choice', () => {
     ).toBe(inputBId);
   });
 
+  describe('state', () => {
+    it('sets state for uncontrolled component', () => {
+      const data = shallowRender({ defaultChecked: true });
+
+      expect(data.wrapper.instance().isControlled).toBe(false);
+      expect(data.wrapper.state('checked')).toBe(data.props.defaultChecked);
+    });
+
+    it('does not set state for controlled component', () => {
+      const data = shallowRender({ checked: true });
+
+      expect(data.wrapper.instance().isControlled).toBe(true);
+      expect(data.wrapper.state('checked')).toBeUndefined();
+    });
+  });
+
   describe('event handlers', () => {
-    let wrapper;
     let onBlurMock;
     let onChangeMock;
+    let props;
 
     beforeEach(() => {
       onBlurMock = jest.fn();
       onChangeMock = jest.fn();
 
-      const sharedProps = {
+      props = {
         name: 'presidents',
         onBlur: onBlurMock,
         onChange: onChangeMock,
         value: 'b'
       };
-
-      wrapper = shallow(<Choice {...sharedProps}>{label}</Choice>);
     });
 
-    it('calls the onChange handler', () => {
-      wrapper.find('input').simulate('change');
-      expect(onBlurMock.mock.calls.length).toBe(0);
-      expect(onChangeMock.mock.calls.length).toBe(1);
+    describe('onChange', () => {
+      it('calls the onChange handler', () => {
+        const wrapper = shallowRender(props).wrapper;
+        const input = wrapper.find('input');
+
+        input.simulate('change', {
+          target: { checked: true }
+        });
+
+        expect(onBlurMock.mock.calls.length).toBe(0);
+        expect(onChangeMock.mock.calls.length).toBe(1);
+      });
+
+      it('updates state when uncontrolled component', () => {
+        props.defaultChecked = true;
+        const wrapper = shallowRender(props).wrapper;
+        const input = wrapper.find('input');
+
+        input.simulate('change', {
+          target: { checked: false }
+        });
+
+        expect(wrapper.state('checked')).toBe(false);
+      });
+
+      it('skips updating state when controlled component', () => {
+        props.checked = true;
+        const wrapper = shallowRender(props).wrapper;
+        const input = wrapper.find('input');
+
+        input.simulate('change', {
+          target: { checked: false }
+        });
+
+        expect(wrapper.state('checked')).toBeUndefined();
+      });
     });
 
     it('calls the onBlur handler', () => {
-      wrapper.find('input').simulate('blur');
+      const wrapper = shallowRender(props).wrapper;
+      const input = wrapper.find('input');
+
+      input.simulate('blur');
+
       expect(onBlurMock.mock.calls.length).toBe(1);
       expect(onChangeMock.mock.calls.length).toBe(0);
     });
@@ -308,6 +293,16 @@ describe('Choice', () => {
 
   describe('nested content', () => {
     let props;
+
+    function expectCheckedChildren(wrapper) {
+      expect(wrapper.find('.unchecked-child').length).toBe(0);
+      expect(wrapper.find('.checked-child').length).toBe(1);
+    }
+
+    function expectUncheckedChildren(wrapper) {
+      expect(wrapper.find('.unchecked-child').length).toBe(1);
+      expect(wrapper.find('.checked-child').length).toBe(0);
+    }
 
     beforeEach(() => {
       props = {
@@ -322,10 +317,59 @@ describe('Choice', () => {
       };
     });
 
-    it('renders uncheckedChildren when not checked', () => {
-      const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+    describe('controlled component', () => {
+      it('renders uncheckedChildren when not checked', () => {
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
 
-      expect(wrapper.find('.unchecked-child').length).toBe(1);
+        expectUncheckedChildren(wrapper);
+      });
+
+      it('renders uncheckedChildren when checked is changed to false', () => {
+        props.checked = true;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        wrapper.setProps({ checked: false });
+
+        expectUncheckedChildren(wrapper);
+      });
+
+      it('renders checkedChildren when checked', () => {
+        props.checked = true;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+
+        expectCheckedChildren(wrapper);
+      });
+
+      it('renders checkedChildren when checked is changed to true', () => {
+        props.checked = false;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        wrapper.setProps({ checked: true });
+
+        expectCheckedChildren(wrapper);
+      });
+    });
+
+    describe('uncontrolled component', () => {
+      it('renders uncheckedChildren when not defaultChecked', () => {
+        props.defaultChecked = false;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+
+        expectUncheckedChildren(wrapper);
+      });
+
+      it('renders uncheckedChildren when changed to unchecked', () => {
+        props.defaultChecked = true;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+
+        wrapper.setState({ checked: false });
+        expectUncheckedChildren(wrapper);
+      });
+
+      it('renders checkedChildren when defaultChecked', () => {
+        props.defaultChecked = true;
+        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+
+        expectCheckedChildren(wrapper);
+      });
     });
   });
 });
