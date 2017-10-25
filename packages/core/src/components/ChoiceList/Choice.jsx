@@ -14,12 +14,15 @@ import uniqueId from 'lodash.uniqueid';
 export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
 
-    // We store a
+    this.handleChange = this.handleChange.bind(this);
+
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
-      this.state.checked = this.props.defaultChecked;
+      // Since this isn't a controlled component, we need a way
+      // to track when the value has changed. This can then be used
+      // to identify when to toggle the visibility of (un)checkedChildren
+      this.state = { checked: this.props.defaultChecked };
     } else {
       this.isControlled = true;
     }
@@ -31,6 +34,16 @@ export class Choice extends React.PureComponent {
     }
 
     return this.state.checked;
+  }
+
+  handleChange(evt) {
+    if (this.props.onChange) {
+      this.props.onChange(evt);
+    }
+
+    if (!this.isControlled) {
+      this.setState({ checked: evt.target.checked });
+    }
   }
 
   render() {
@@ -61,12 +74,21 @@ export class Choice extends React.PureComponent {
       id = uniqueId(`${inputProps.type}_${inputProps.name}_`);
     }
 
+    // Remove onChange from props. This is checked for in handleChange
+    if (inputProps.onChange) delete inputProps.onChange;
+
     return (
       <div className={className}>
-        <input className={inputClasses} id={id} {...inputProps} />
+        <input
+          className={inputClasses}
+          id={id}
+          onChange={this.handleChange}
+          {...inputProps}
+        />
         <FormLabel fieldId={id} requirementLabel={requirementLabel}>
           {children}
         </FormLabel>
+        {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
     );
   }
