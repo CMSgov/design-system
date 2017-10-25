@@ -305,4 +305,27 @@ describe('Choice', () => {
       expect(onChangeMock.mock.calls.length).toBe(0);
     });
   });
+
+  describe('nested content', () => {
+    let props;
+
+    beforeEach(() => {
+      props = {
+        checkedChildren: (
+          <strong className="checked-child">I am checked</strong>
+        ),
+        uncheckedChildren: (
+          <strong className="unchecked-child">I am unchecked</strong>
+        ),
+        name: 'foo',
+        value: 'bar'
+      };
+    });
+
+    it('renders uncheckedChildren when not checked', () => {
+      const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+
+      expect(wrapper.find('.unchecked-child').length).toBe(1);
+    });
+  });
 });
