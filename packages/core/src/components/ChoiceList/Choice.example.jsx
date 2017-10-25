@@ -11,15 +11,7 @@ export default function() {
       <Choice name="checkbox_choice" value="b">
         Checkbox B
       </Choice>
-      <Choice
-        name="checkbox_choice"
-        uncheckedChildren={
-          <span className="ds-c-field__hint">
-            Hint text only visible when Checkbox C is not checked
-          </span>
-        }
-        value="c"
-      >
+      <Choice name="checkbox_choice" value="c">
         Checkbox C
       </Choice>
 
