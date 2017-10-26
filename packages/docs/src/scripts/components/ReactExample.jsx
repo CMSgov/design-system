@@ -34,7 +34,7 @@ class ReactExample extends React.PureComponent {
 
   render() {
     return (
-      <div className="markup markup--react">
+      <div className="ds-u-margin-top--3 markup markup--react">
         <div className="ds-u-border--1 ds-u-padding--1">
           {this.renderComponent()}
         </div>
