@@ -22,13 +22,13 @@ function shallowRender(customProps = {}, children = label) {
 
 describe('Choice', () => {
   it('accepts a node as innerHTML', () => {
-    const data = shallowRender(
+    const wrapper = shallowRender(
       {},
       <p>
         <strong>Hello</strong> World
       </p>
-    );
-    const labelNode = data.wrapper.find(FormLabel).dive();
+    ).wrapper;
+    const labelNode = wrapper.find(FormLabel).dive();
 
     expect(
       labelNode
