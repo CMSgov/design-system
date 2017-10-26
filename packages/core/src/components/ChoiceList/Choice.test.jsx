@@ -177,6 +177,7 @@ describe('Choice', () => {
       </div>
     );
     const $wrapper = wrapper.render();
+
     const idRegex = new RegExp(`checkbox_${sharedProps.name}_[0-9]+`);
     const inputAId = $wrapper
       .find('input')
@@ -225,69 +226,84 @@ describe('Choice', () => {
     });
   });
 
-  describe('event handlers', () => {
-    let onBlurMock;
-    let onChangeMock;
+  describe('event handlers and emitters', () => {
     let props;
 
     beforeEach(() => {
-      onBlurMock = jest.fn();
-      onChangeMock = jest.fn();
-
       props = {
-        name: 'presidents',
-        onBlur: onBlurMock,
-        onChange: onChangeMock,
-        value: 'b'
+        onBlur: jest.fn(),
+        onChange: jest.fn()
       };
     });
 
     describe('onChange', () => {
       it('calls the onChange handler', () => {
-        const wrapper = shallowRender(props).wrapper;
-        const input = wrapper.find('input');
+        const data = shallowRender(props);
+        const input = data.wrapper.find('input');
 
         input.simulate('change', {
           target: { checked: true }
         });
 
-        expect(onBlurMock.mock.calls.length).toBe(0);
-        expect(onChangeMock.mock.calls.length).toBe(1);
+        expect(data.props.onBlur.mock.calls.length).toBe(0);
+        expect(data.props.onChange.mock.calls.length).toBe(1);
       });
 
       it('updates state when uncontrolled component', () => {
         props.defaultChecked = true;
-        const wrapper = shallowRender(props).wrapper;
-        const input = wrapper.find('input');
+        const data = shallowRender(props);
+        const input = data.wrapper.find('input');
 
         input.simulate('change', {
           target: { checked: false }
         });
 
-        expect(wrapper.state('checked')).toBe(false);
+        expect(data.wrapper.state('checked')).toBe(false);
       });
 
       it('skips updating state when controlled component', () => {
         props.checked = true;
-        const wrapper = shallowRender(props).wrapper;
-        const input = wrapper.find('input');
+        const data = shallowRender(props);
+        const input = data.wrapper.find('input');
 
         input.simulate('change', {
           target: { checked: false }
         });
 
-        expect(wrapper.state('checked')).toBeUndefined();
+        expect(data.wrapper.state('checked')).toBeUndefined();
       });
     });
 
     it('calls the onBlur handler', () => {
-      const wrapper = shallowRender(props).wrapper;
-      const input = wrapper.find('input');
+      const data = shallowRender(props);
+      const input = data.wrapper.find('input');
 
       input.simulate('blur');
 
-      expect(onBlurMock.mock.calls.length).toBe(1);
-      expect(onChangeMock.mock.calls.length).toBe(0);
+      expect(data.props.onBlur.mock.calls.length).toBe(1);
+      expect(data.props.onChange.mock.calls.length).toBe(0);
+    });
+
+    describe('uncheck event emitter', () => {
+      it('sets uncheckEventName for uncontrolled radio buttons', () => {
+        const data = shallowRender({ type: 'radio', defaultChecked: false });
+
+        expect(data.wrapper.instance().uncheckEventName).toBe(
+          `${data.props.name}-uncheck`
+        );
+      });
+
+      it('does not set uncheckEventName for controlled radio buttons', () => {
+        const data = shallowRender({ type: 'radio', checked: false });
+
+        expect(data.wrapper.instance().uncheckEventName).toBeUndefined();
+      });
+
+      it('does not set uncheckEventName for uncontrolled checkbox', () => {
+        const data = shallowRender({ defaultChecked: true });
+
+        expect(data.wrapper.instance().uncheckEventName).toBeUndefined();
+      });
     });
   });
 
