@@ -88,9 +88,11 @@ Style guide: components.tabs.react-tabpanel
 Style guide: components.tabs.react-tab
 */
 .ds-c-tabs__item {
+  appearance: none;
   background-color: $color-background;
   border-bottom: 1px solid $border-color;
   border-left: 1px solid $border-color;
+  border-radius: 0;
   border-top: 1px solid $border-color;
   color: $color-base;
   cursor: pointer;
@@ -131,7 +133,8 @@ Style guide: components.tabs.react-tab
     right: -1px;
     top: -1px;
     transform: scale3d(0, 1, 1);
-    transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
+    transition: opacity $animation-speed-2 $ease-in-out-expo,
+      transform $animation-speed-2 $ease-in-out-expo;
   }
 
   // States
