@@ -86,6 +86,7 @@ Style guide: components.vertical-nav
   background-repeat: no-repeat;
   background-size: $small-font-size;
   border-bottom: 0; // Clear <button> borders (border-left is already set)
+  border-radius: 0; // Remove default browser radius in Chrome
   border-right: 0;
   border-top: 0;
   cursor: pointer;
