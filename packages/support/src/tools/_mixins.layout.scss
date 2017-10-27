@@ -21,3 +21,9 @@
   flex-grow: 1;
   max-width: 100%;
 }
+
+@mixin auto-width-flexbox-col() {
+  flex: 0 0 auto;
+  max-width: none;
+  width: auto;
+}
