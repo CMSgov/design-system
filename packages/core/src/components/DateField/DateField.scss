@@ -13,17 +13,17 @@ Markup:
     Date of birth
   </legend>
   <span class="ds-c-field__hint" id="dob-hint">For example: 4 25 1986</span>
-  <div class="ds-c-date">
-    <div class="ds-u-display--inline-block">
-      <label class="ds-c-label" for="month">Month</label>
+  <div class="ds-l-form-row">
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="month">Month</label>
       <input class="ds-c-field ds-c-field--month" type="text" pattern="[0-9]*" maxlength="2" min="1" max="12" id="month" name="birthdate[month]">
     </div>
-    <div class="ds-u-display--inline-block">
-      <label class="ds-c-label" for="day">Day</label>
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="day">Day</label>
       <input class="ds-c-field ds-c-field--day" type="text" pattern="[0-9]*" maxlength="2" min="1" max="31" id="day" name="birthdate[day]">
     </div>
-    <div class="ds-u-display--inline-block">
-      <label class="ds-c-label" for="year">Year</label>
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="year">Year</label>
       <input class="ds-c-field ds-c-field--year" type="text" pattern="[0-9]*" maxlength="4" min="1900" max="2000" id="year" name="birthdate[year]">
     </div>
   </div>
