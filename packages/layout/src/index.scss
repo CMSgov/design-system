@@ -43,16 +43,16 @@ Markup:
 <section class="ds-l-container preview__grid">
   <div class="ds-l-row">
     <div class="ds-l-col">
-      Auto
+      Equal
     </div>
     <div class="ds-l-col">
-      Auto
+      Equal
     </div>
     <div class="ds-l-col">
-      Auto
+      Equal
     </div>
     <div class="ds-l-col">
-      Auto
+      Equal
     </div>
   </div>
 </section>
@@ -78,6 +78,29 @@ Markup:
 </section>
 
 Style guide: layout.grid.columns
+*/
+
+/*
+Natural width columns
+
+Use a `.ds-l-col--auto` class to size a column to the natural width of its content.
+
+Markup:
+<section class="ds-l-container preview__grid">
+  <div class="ds-l-row">
+    <div class="ds-l-col--auto">
+      1 of 3
+    </div>
+    <div class="ds-l-col--auto">
+      A little bit longer text
+    </div>
+    <div class="ds-l-col--auto">
+      3 of 3
+    </div>
+  </div>
+</section>
+
+Style guide: layout.grid.column-auto
 */
 
 /*
@@ -207,6 +230,28 @@ Markup:
 </section>
 
 Style guide: layout.grid.alignment
+*/
+
+/*
+Forms
+
+Use a `.ds-l-form-row` class to tighten the column spacing when laying out form fields in a grid.
+
+Markup:
+<section class="preview__grid">
+  <div class="ds-l-form-row">
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--0" for="city">City</label>
+      <input class="ds-c-field" type="text" id="city" name="city">
+    </div>
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--0" for="state">State</label>
+      <input class="ds-c-field" type="text" id="state" name="state">
+    </div>
+  </div>
+</section>
+
+Style guide: layout.grid.form-row
 */
 
 /*

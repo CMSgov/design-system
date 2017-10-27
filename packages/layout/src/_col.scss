@@ -19,9 +19,17 @@
   }
 }
 
-.ds-l-col {
+.ds-l-col,
+.ds-l-col--auto {
   @extend %grid-column;
+}
+
+.ds-l-col {
   @include equal-width-flexbox-col;
+}
+
+.ds-l-col--auto {
+  @include auto-width-flexbox-col;
 }
 
 @for $i from 1 through $grid-columns {
@@ -42,6 +50,10 @@
     }
   }
 
+  .ds-l-#{$breakpoint}-col--auto {
+    @extend %grid-column;
+  }
+
   // Example: ds-l-lg-col
   .ds-l-#{$breakpoint}-col {
     @extend %grid-column;
@@ -54,6 +66,10 @@
       @include equal-width-flexbox-col;
     }
 
+    .ds-l-#{$breakpoint}-col--auto {
+      @include auto-width-flexbox-col;
+    }
+
     @for $i from 1 through $grid-columns {
       // Example: ds-l-lg-col--12
       .ds-l-#{$breakpoint}-col--#{$i} {
@@ -61,4 +77,11 @@
       }
     }
   }
+}
+
+// Overwrite default padding in a form-row so fields are closer
+.ds-l-form-row > .ds-l-col,
+.ds-l-form-row > [class*='-col-'] {
+  padding-left: $grid-form-gutter-width / 2;
+  padding-right: $grid-form-gutter-width / 2;
 }
