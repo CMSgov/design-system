@@ -46,20 +46,6 @@ Style guide: patterns.date-field
   width: 6ch; // provide additional spacing for browser UI
 }
 
-.ds-c-date {
-  // The labels for the individual date fields are nested within a fieldset
-  // with a legend. We don't want the normal field spacing for these fields,
-  // because we want them to be visually associated with the legend and any
-  // hint text that comes before them.
-  .ds-c-label {
-    margin-top: $spacer-1;
-  }
-
-  .ds-c-field {
-    margin-right: $spacer-1;
-  }
-}
-
 /*
 `<DateField>`
 
