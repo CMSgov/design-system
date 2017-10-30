@@ -12,6 +12,7 @@ summary::before {
   padding-right: 0.5em;
 }
 
-details[open] > summary::before { // stylelint-disable-line selector-no-qualifying-type
+// stylelint-disable-next-line selector-no-qualifying-type
+details[open] > summary::before {
   content: '\25BC';
 }

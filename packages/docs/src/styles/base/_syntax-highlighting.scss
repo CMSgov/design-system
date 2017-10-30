@@ -4,8 +4,8 @@
  * Inspired by Github syntax coloring
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -16,7 +16,7 @@ pre[class*="language-"] {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
   overflow: auto;
 }
 
@@ -39,7 +39,7 @@ pre[class*="language-"] {
 
 .token.punctuation,
 .token.operator {
-  color: #393A34; /* no highlight */
+  color: #393a34; /* no highlight */
 }
 
 .token.entity,
