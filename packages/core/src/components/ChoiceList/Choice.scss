@@ -164,7 +164,7 @@ Style guide: components.choice.inversed
 }
 
 // Display a circular radio button
-.ds-c-choice[type=radio] + label::before {
+.ds-c-choice[type='radio'] + label::before {
   border-radius: 100%;
 }
 

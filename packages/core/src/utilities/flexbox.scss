@@ -162,11 +162,7 @@ Markup:
 
 Style guide: utilities.flexbox.flex-wrap
 */
-$_flex-wrap-values: (
-  nowrap: nowrap,
-  wrap: wrap,
-  reverse: wrap-reverse
-);
+$_flex-wrap-values: (nowrap: nowrap, wrap: wrap, reverse: wrap-reverse);
 
 @each $name in map-keys($_flex-wrap-values) {
   $value: map-get($_flex-wrap-values, $name);
