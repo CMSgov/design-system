@@ -49,6 +49,8 @@ export class TextField extends React.PureComponent {
           defaultValue={this.props.defaultValue}
           disabled={this.props.disabled}
           id={this.id}
+          max={this.props.max}
+          min={this.props.min}
           name={this.props.name}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
@@ -101,6 +103,14 @@ TextField.propTypes = {
    * Additional classes to be added to the label
    */
   labelClassName: PropTypes.string,
+  /**
+   * `max` HTML input attribute
+   */
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * `min` HTML input attribute
+   */
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
    * Whether or not the textfield is a multiline textfield
    */

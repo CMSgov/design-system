@@ -123,6 +123,17 @@ describe('TextField', function() {
     expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
   });
 
+  it('adds min/max input attributes', () => {
+    const data = shallowRender({
+      max: 10,
+      min: 1
+    });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.prop('max')).toBe(data.props.max);
+    expect(field.prop('min')).toBe(data.props.min);
+  });
+
   describe('has error', () => {
     let data;
 
