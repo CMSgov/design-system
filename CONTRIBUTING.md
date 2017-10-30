@@ -50,6 +50,8 @@ These scripts can all be run from the root level of the repo:
   - Lints Sass using stylelint
 - `yarn test:watch`
   - Runs JS unit tests and will continue to run tests as files change
+- `yarn update-snapshots`
+  - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn lint`
   - Runs just the linting portion of the tests
 
