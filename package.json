@@ -87,6 +87,7 @@
     "recast": "^0.12.7",
     "run-sequence": "^2.2.0",
     "stylelint": "^8.2.0",
+    "stylelint-config-prettier": "^1.0.2",
     "through2": "^2.0.3",
     "tota11y": "^0.1.6",
     "vinyl-source-stream": "^1.1.0",
