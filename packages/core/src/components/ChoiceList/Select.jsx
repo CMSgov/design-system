@@ -81,7 +81,7 @@ Select.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
-   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * This will render a read-only field. If the field should be
    * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
    */
   value: PropTypes.string

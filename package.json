@@ -18,6 +18,7 @@
     "start:theme": "npm run start -- --theme",
     "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
+    "update-snapshots": "NODE_ENV=test jest -u",
     "lint":
       "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
