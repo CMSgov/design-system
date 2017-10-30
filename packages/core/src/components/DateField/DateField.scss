@@ -9,22 +9,22 @@ Three text fields are the easiest way for users to enter most dates.
 
 Markup:
 <fieldset class="ds-c-fieldset">
-  <legend class="ds-c-label ds-u-font-weight--bold">
-    Date of birth
+  <legend class="ds-c-label">
+    <span class="ds-u-font-weight--bold">Date of birth</span>
+    <span class="ds-c-field__hint">For example: 4 25 1986</span>
   </legend>
-  <span class="ds-c-field__hint" id="dob-hint">For example: 4 25 1986</span>
   <div class="ds-l-form-row">
     <div class="ds-l-col--auto">
       <label class="ds-c-label ds-u-margin-top--1" for="month">Month</label>
-      <input class="ds-c-field ds-c-field--month" type="text" pattern="[0-9]*" maxlength="2" min="1" max="12" id="month" name="birthdate[month]">
+      <input class="ds-c-field ds-c-field--month" type="number" min="1" max="12" id="month" name="birthdate[month]">
     </div>
     <div class="ds-l-col--auto">
       <label class="ds-c-label ds-u-margin-top--1" for="day">Day</label>
-      <input class="ds-c-field ds-c-field--day" type="text" pattern="[0-9]*" maxlength="2" min="1" max="31" id="day" name="birthdate[day]">
+      <input class="ds-c-field ds-c-field--day" type="number" min="1" max="31" id="day" name="birthdate[day]">
     </div>
     <div class="ds-l-col--auto">
       <label class="ds-c-label ds-u-margin-top--1" for="year">Year</label>
-      <input class="ds-c-field ds-c-field--year" type="text" pattern="[0-9]*" maxlength="4" min="1900" max="2000" id="year" name="birthdate[year]">
+      <input class="ds-c-field ds-c-field--year" type="number" min="1900" max="2000" id="year" name="birthdate[year]">
     </div>
   </div>
 </fieldset>
@@ -58,6 +58,14 @@ Style guide: patterns.date-field
 }
 
 /*
+`<DateField>`
+
+@react-component DateField
+
+Style guide: patterns.date-field.react
+*/
+
+/*
 ---
 
 ## When to use
@@ -83,6 +91,7 @@ Style guide: patterns.date-field
 ## Related patterns
 
 - [Text field]({{root}}/components/text-field/)
+- [Grid]({{root}}/layout/grid/)
 
 Style guide: patterns.date-field.guidance
 */
