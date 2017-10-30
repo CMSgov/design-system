@@ -24,7 +24,6 @@ module.exports = {
     ],
     'comment-whitespace-inside': 'always',
     'declaration-bang-space-after': 'never',
-    'declaration-bang-space-before': 'always',
     'declaration-block-no-duplicate-properties': [
       true,
       {
