@@ -29,7 +29,7 @@ Markup:
   </div>
 </fieldset>
 
-Style guide: components.date-field
+Style guide: patterns.date-field
 */
 .ds-c-field--month,
 .ds-c-field--day {
@@ -70,6 +70,7 @@ Style guide: components.date-field
 
 ## Guidance
 
+- Ensure you've [installed both the Core package and Layout package]({{root}}/getting-started)
 - Allow users to enter the date as flexibly as possible, for example, allowing `1` as well as `01` for a month input.
 - Be sure each field is properly labeled — some countries enter dates in day, month, year order.
 - It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
@@ -83,5 +84,5 @@ Style guide: components.date-field
 
 - [Text field]({{root}}/components/text-field/)
 
-Style guide: components.date-field.guidance
+Style guide: patterns.date-field.guidance
 */
