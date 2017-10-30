@@ -22,7 +22,7 @@ export const Select = function(props) {
   /* eslint-enable prefer-const */
 
   const classes = classNames(
-    'ds-c-field ds-c-field--select',
+    'ds-c-field',
     { 'ds-c-field--inverse': inversed },
     className
   );

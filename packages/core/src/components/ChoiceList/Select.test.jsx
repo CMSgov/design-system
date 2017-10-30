@@ -55,7 +55,6 @@ describe('Select', () => {
     const data = shallowRender();
 
     expect(data.wrapper.hasClass('ds-c-field')).toBe(true);
-    expect(data.wrapper.hasClass('ds-c-field--select')).toBe(true);
   });
 
   it("renders <option>'s as children", () => {
