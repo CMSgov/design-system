@@ -1,8 +1,8 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TextField from './TextField';
-import { shallow } from 'enzyme';
 
-function shallowRender(customProps = {}) {
+function render(customProps = {}, deep = false) {
   const props = Object.assign(
     {
       label: 'Foo',
@@ -10,16 +10,17 @@ function shallowRender(customProps = {}) {
     },
     customProps
   );
+  const component = <TextField {...props} />;
 
   return {
     props: props,
-    wrapper: shallow(<TextField {...props} />)
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
 describe('TextField', function() {
   it('is an input field', () => {
-    const data = shallowRender();
+    const data = render();
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.is('input')).toBe(true);
@@ -28,7 +29,7 @@ describe('TextField', function() {
   });
 
   it('is a textarea', () => {
-    const data = shallowRender({ multiline: true });
+    const data = render({ multiline: true });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.is('textarea')).toBe(true);
@@ -37,21 +38,21 @@ describe('TextField', function() {
   });
 
   it('is a password field', () => {
-    const data = shallowRender({ type: 'password' });
+    const data = render({ type: 'password' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('type')).toBe('password');
   });
 
   it('is disabled', () => {
-    const data = shallowRender({ disabled: true });
+    const data = render({ disabled: true });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('disabled')).toBe(data.props.disabled);
   });
 
   it('has a defaultValue', () => {
-    const data = shallowRender({ defaultValue: 'Yay' });
+    const data = render({ defaultValue: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('defaultValue')).toBe(data.props.defaultValue);
@@ -59,7 +60,7 @@ describe('TextField', function() {
   });
 
   it('has a value', () => {
-    const data = shallowRender({ value: 'Yay' });
+    const data = render({ value: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('value')).toBe(data.props.value);
@@ -67,7 +68,7 @@ describe('TextField', function() {
   });
 
   it('shows 5 rows of text', () => {
-    const data = shallowRender({
+    const data = render({
       multiline: true,
       rows: 5
     });
@@ -77,8 +78,8 @@ describe('TextField', function() {
   });
 
   it('has a unique id', () => {
-    const fieldData1 = shallowRender();
-    const fieldData2 = shallowRender();
+    const fieldData1 = render();
+    const fieldData2 = render();
     const field1 = fieldData1.wrapper.find('.ds-c-field').first();
     const label1 = fieldData1.wrapper.find('FormLabel').first();
     const field2 = fieldData2.wrapper.find('.ds-c-field').first();
@@ -90,27 +91,27 @@ describe('TextField', function() {
   });
 
   it('has a label', () => {
-    const data = shallowRender();
+    const data = render();
     const label = data.wrapper.find('FormLabel').first();
 
     expect(label.prop('children')).toBe(data.props.label);
   });
 
   it('has a hint', () => {
-    const data = shallowRender({ hint: '123' });
+    const data = render({ hint: '123' });
     const label = data.wrapper.find('FormLabel').first();
 
     expect(label.prop('hint')).toBe(data.props.hint);
   });
 
   it('adds className to root element', () => {
-    const data = shallowRender({ className: 'bar' });
+    const data = render({ className: 'bar' });
 
     expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
   it('adds className to field', () => {
-    const data = shallowRender({ fieldClassName: 'bar' });
+    const data = render({ fieldClassName: 'bar' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.hasClass('ds-c-field')).toBe(true);
@@ -118,7 +119,7 @@ describe('TextField', function() {
   });
 
   it('adds className to label', () => {
-    const data = shallowRender({ labelClassName: 'bar' });
+    const data = render({ labelClassName: 'bar' });
 
     expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
   });
@@ -127,7 +128,7 @@ describe('TextField', function() {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({ errorMessage: 'Error' });
+      data = render({ errorMessage: 'Error' });
     });
 
     it('passes error to FormLabel', () => {
@@ -152,7 +153,7 @@ describe('TextField', function() {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({ inversed: true });
+      data = render({ inversed: true });
     });
 
     it('passes inversed to FormLabel', () => {
@@ -173,7 +174,7 @@ describe('TextField', function() {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({
+      data = render({
         onBlur: jest.fn(),
         onChange: jest.fn()
       });
