@@ -124,6 +124,21 @@ describe('TextField', function() {
     expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
   });
 
+  it('returns reference to input field', () => {
+    let ref;
+    const data = render(
+      {
+        defaultValue: 'Yay',
+        fieldRef: el => {
+          ref = el;
+        }
+      },
+      true
+    );
+
+    expect(ref.value).toBe(data.props.defaultValue);
+  });
+
   describe('has error', () => {
     let data;
 
