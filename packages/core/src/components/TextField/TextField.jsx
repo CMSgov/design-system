@@ -52,6 +52,7 @@ export class TextField extends React.PureComponent {
           name={this.props.name}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
+          ref={this.props.fieldRef}
           rows={rows}
           type={this.props.multiline ? undefined : this.props.type}
           value={this.props.value}
@@ -81,6 +82,10 @@ TextField.propTypes = {
    * Additional classes to be added to the field element
    */
   fieldClassName: PropTypes.string,
+  /**
+    * Pass a function in to access the input or textarea's DOM node
+    */
+  fieldRef: PropTypes.func,
   /**
    * Additional hint text to display
    */
