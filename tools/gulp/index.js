@@ -24,9 +24,11 @@ function packageName(packagePath) {
  * files. These will be used for watching, compiling, and docs generation
  */
 function packageDirectories() {
-  let directories = glob.sync('packages/*', {
-    ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
-  }).map(packageName);
+  let directories = glob
+    .sync('packages/*', {
+      ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
+    })
+    .map(packageName);
 
   if (argv.theme) {
     if (typeof argv.theme === 'string') {
@@ -44,7 +46,7 @@ function packageDirectories() {
   return directories;
 }
 
-module.exports = (gulp) => {
+module.exports = gulp => {
   const packages = packageDirectories();
   const rootPath = argv.root || '';
   const shared = {
@@ -52,7 +54,10 @@ module.exports = (gulp) => {
     env: argv.env,
     packages: packages,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(rootPath, packages)
+    webpackConfig: require('../../packages/docs/webpack.config')(
+      rootPath,
+      packages
+    )
   };
 
   [

@@ -37,7 +37,7 @@ function TabPanel(props) {
     },
     props.children
   );
-};
+}
 
 TabPanel.defaultProps = {
   selected: false

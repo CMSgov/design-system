@@ -25,10 +25,10 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 ### Getting started
 
 1. `yarn install`
-1. `yarn bootstrap:yarn`
+   - This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 1. `yarn start`
 
-The `bootstrap:yarn` command runs [Lerna](https://lernajs.io/) which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
+_Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
 
 ### Scripts
 

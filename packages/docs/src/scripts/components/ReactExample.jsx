@@ -14,16 +14,13 @@ class ReactExample extends React.PureComponent {
     super(props);
 
     // Provide support to pass in a component with or without the extension
-    const path = this.props.path
-      .replace(/\.example\.jsx$/, '');
+    const path = this.props.path.replace(/\.example\.jsx$/, '');
 
     // Resolve the example component relative to the /packages/ directory
     // Note: This actually causes Webpack to bundle all components in this directory
     // ending in ".example.jsx"
     // https://webpack.js.org/guides/dependency-management/#require-with-expression
-    this.renderComponent = require(
-      `../../../../${path}.example.jsx`
-    ).default;
+    this.renderComponent = require(`../../../../${path}.example.jsx`).default;
   }
 
   highlightedMarkup() {
@@ -37,14 +34,12 @@ class ReactExample extends React.PureComponent {
 
   render() {
     return (
-      <div className='markup markup--react'>
-        <div className='ds-u-border--1 ds-u-padding--1'>
+      <div className="ds-u-margin-top--3 markup markup--react">
+        <div className="ds-u-border--1 ds-u-padding--1">
           {this.renderComponent()}
         </div>
 
-        <CodeSnippet language='jsx'>
-          {this.highlightedMarkup()}
-        </CodeSnippet>
+        <CodeSnippet language="jsx">{this.highlightedMarkup()}</CodeSnippet>
       </div>
     );
   }

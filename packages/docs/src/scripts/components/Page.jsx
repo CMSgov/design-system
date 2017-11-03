@@ -16,18 +16,22 @@ function isGuidanceSection(section) {
 class Page extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.hasTabs = (this.props.sections.length && this.props.depth >= 2);
+    this.hasTabs = this.props.sections.length && this.props.depth >= 2;
     this.horizontalPadding = {
       default: 3,
       sm: 6
     };
-    this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm} ds-u-padding-y--0`;
+    this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this
+      .horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding
+      .sm} ds-u-padding-y--0`;
   }
 
   defaultSelectedTabId() {
-    if (this.guidanceSections().length &&
+    if (
+      this.guidanceSections().length &&
       typeof window !== 'undefined' &&
-      window.location.hash === '#guidance') {
+      window.location.hash === '#guidance'
+    ) {
       return 'guidance';
     }
 
@@ -59,13 +63,9 @@ class Page extends React.PureComponent {
       return (
         <Tabs
           defaultSelectedId={this.defaultSelectedTabId()}
-          tablistClassName='ds-u-padding-left--3 ds-u-sm-padding-left--6 ds-u-fill--gray-lightest'
+          tablistClassName="ds-u-padding-left--3 ds-u-sm-padding-left--6 ds-u-fill--gray-lightest"
         >
-          <TabPanel
-            className={this.tabPanelClasses}
-            id='usage'
-            tab='Usage'
-          >
+          <TabPanel className={this.tabPanelClasses} id="usage" tab="Usage">
             {this.renderBody()}
             {this.renderChildPageBlocks(this.usageSections())}
           </TabPanel>
@@ -75,7 +75,10 @@ class Page extends React.PureComponent {
     }
 
     return (
-      <div className={`ds-u-border-top--1 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm}`}>
+      <div
+        className={`ds-u-border-top--1 ds-u-padding-x--${this.horizontalPadding
+          .default} ds-u-sm-padding-x--${this.horizontalPadding.sm}`}
+      >
         {this.renderBody()}
       </div>
     );
@@ -86,11 +89,7 @@ class Page extends React.PureComponent {
 
     if (sections.length) {
       return (
-        <TabPanel
-          className={this.tabPanelClasses}
-          id='guidance'
-          tab='Guidance'
-        >
+        <TabPanel className={this.tabPanelClasses} id="guidance" tab="Guidance">
           {this.renderChildPageBlocks(sections)}
         </TabPanel>
       );
@@ -114,9 +113,7 @@ Page.defaultProps = {
 
 Page.propTypes = {
   depth: PropTypes.number,
-  sections: PropTypes.arrayOf(
-    PropTypes.shape(PageBlock.propTypes)
-  )
+  sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes))
 };
 
 export default Page;

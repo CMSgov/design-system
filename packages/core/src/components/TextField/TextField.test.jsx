@@ -1,12 +1,15 @@
 import React from 'react';
 import TextField from './TextField';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign({
-    label: 'Foo',
-    name: 'spec-field'
-  }, customProps);
+  const props = Object.assign(
+    {
+      label: 'Foo',
+      name: 'spec-field'
+    },
+    customProps
+  );
 
   return {
     props: props,
@@ -44,28 +47,23 @@ describe('TextField', function() {
     const data = shallowRender({ disabled: true });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('disabled'))
-      .toBe(data.props.disabled);
+    expect(field.prop('disabled')).toBe(data.props.disabled);
   });
 
   it('has a defaultValue', () => {
     const data = shallowRender({ defaultValue: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('defaultValue'))
-      .toBe(data.props.defaultValue);
-    expect(field.prop('value'))
-      .toBeUndefined();
+    expect(field.prop('defaultValue')).toBe(data.props.defaultValue);
+    expect(field.prop('value')).toBeUndefined();
   });
 
   it('has a value', () => {
     const data = shallowRender({ value: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('value'))
-      .toBe(data.props.value);
-    expect(field.prop('defaultValue'))
-      .toBeUndefined();
+    expect(field.prop('value')).toBe(data.props.value);
+    expect(field.prop('defaultValue')).toBeUndefined();
   });
 
   it('shows 5 rows of text', () => {
@@ -75,8 +73,7 @@ describe('TextField', function() {
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('rows'))
-      .toBe(data.props.rows);
+    expect(field.prop('rows')).toBe(data.props.rows);
   });
 
   it('has a unique id', () => {
@@ -109,8 +106,7 @@ describe('TextField', function() {
   it('adds className to root element', () => {
     const data = shallowRender({ className: 'bar' });
 
-    expect(data.wrapper.hasClass('bar'))
-      .toBe(true);
+    expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
   it('adds className to field', () => {
@@ -124,8 +120,7 @@ describe('TextField', function() {
   it('adds className to label', () => {
     const data = shallowRender({ labelClassName: 'bar' });
 
-    expect(data.wrapper.find('FormLabel').hasClass('bar'))
-      .toBe(true);
+    expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
   });
 
   describe('has error', () => {
@@ -136,13 +131,18 @@ describe('TextField', function() {
     });
 
     it('passes error to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('errorMessage'))
-        .toBe(data.props.errorMessage);
+      expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(
+        data.props.errorMessage
+      );
     });
 
     it('adds error class to field', () => {
-      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--error'))
-        .toBe(true);
+      expect(
+        data.wrapper
+          .find('.ds-c-field')
+          .first()
+          .hasClass('ds-c-field--error')
+      ).toBe(true);
     });
 
     it('sets aria-describedby field attribute');
@@ -156,13 +156,16 @@ describe('TextField', function() {
     });
 
     it('passes inversed to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('inversed'))
-        .toBe(true);
+      expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(true);
     });
 
     it('adds inversed class to field', () => {
-      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--inverse'))
-        .toBe(true);
+      expect(
+        data.wrapper
+          .find('.ds-c-field')
+          .first()
+          .hasClass('ds-c-field--inverse')
+      ).toBe(true);
     });
   });
 
@@ -177,13 +180,19 @@ describe('TextField', function() {
     });
 
     it('calls onBlur', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('blur');
+      data.wrapper
+        .find('.ds-c-field')
+        .first()
+        .simulate('blur');
 
       expect(data.props.onBlur.mock.calls.length).toBe(1);
     });
 
     it('calls onChange', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('change');
+      data.wrapper
+        .find('.ds-c-field')
+        .first()
+        .simulate('change');
 
       expect(data.props.onChange.mock.calls.length).toBe(1);
     });

@@ -50,10 +50,7 @@ var Select = function Select(props) {
 
   return _react2.default.createElement(
     'select',
-    _extends({
-      className: classes,
-      id: id
-    }, selectProps),
+    _extends({ className: classes, id: id }, selectProps),
     children
   );
 };

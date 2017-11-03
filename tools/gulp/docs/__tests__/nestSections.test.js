@@ -12,53 +12,64 @@ describe('nestSections', () => {
         source: {
           line: 1
         }
-      }, {
+      },
+      {
         header: 'buttons',
         reference: 'components.buttons',
         source: {
           line: 1
         }
-      }, {
+      },
+      {
         header: 'buttons.secondary',
         reference: 'components.buttons.secondary',
         source: {
           line: 2
         }
-      }, {
+      },
+      {
         header: 'buttons.primary',
         reference: 'components.buttons.primary',
         source: {
           line: 1
         }
-      }, {
+      },
+      {
         header: 'buttons.tertiary',
         reference: 'components.buttons.tertiary',
         source: {
           line: 3
         }
-      }, {
+      },
+      {
         header: 'guidelines',
         reference: 'guidelines'
-      }, {
+      },
+      {
         header: 'a11y',
         reference: 'guidelines.a11y',
         weight: 10
-      }, {
+      },
+      {
         header: 'colors',
         reference: 'guidelines.colors',
         weight: 5
-      }, {
+      },
+      {
         header: 'style',
         reference: 'style'
-      }, {
+      },
+      {
         header: 'delta',
         reference: 'style.delta',
         weight: 0
-      }, {
+      },
+      {
         header: 'charlie',
         reference: 'style.charlie',
         weight: 0
-      }, {
+      },
+      {
         header: 'alpha',
         reference: 'style.alpha',
         weight: 0
@@ -82,9 +93,11 @@ describe('nestSections', () => {
     sections.push({
       header: 'nested',
       reference: 'nested',
-      sections: [{
-        header: 'nested child'
-      }],
+      sections: [
+        {
+          header: 'nested child'
+        }
+      ],
       weight: 0
     });
 
@@ -103,12 +116,11 @@ describe('nestSections', () => {
       reference: 'components'
     });
 
-    expect(components.sections[0].reference)
-      .toBe('components.buttons');
-    expect(components.sections[0].sections[0].reference)
-      .toBe('components.buttons.primary');
-    expect(nestedSections.length)
-      .toBe(3);
+    expect(components.sections[0].reference).toBe('components.buttons');
+    expect(components.sections[0].sections[0].reference).toBe(
+      'components.buttons.primary'
+    );
+    expect(nestedSections.length).toBe(3);
   });
 
   it('sorts subpages by weight and header', () => {
@@ -121,17 +133,12 @@ describe('nestSections', () => {
       reference: 'style'
     }).sections;
 
-    expect(guidelines[0].reference)
-      .toBe('guidelines.colors');
-    expect(guidelines[1].reference)
-      .toBe('guidelines.a11y');
+    expect(guidelines[0].reference).toBe('guidelines.colors');
+    expect(guidelines[1].reference).toBe('guidelines.a11y');
 
-    expect(style[0].reference)
-      .toBe('style.alpha');
-    expect(style[1].reference)
-      .toBe('style.charlie');
-    expect(style[2].reference)
-      .toBe('style.delta');
+    expect(style[0].reference).toBe('style.alpha');
+    expect(style[1].reference).toBe('style.charlie');
+    expect(style[2].reference).toBe('style.delta');
   });
 
   it('sorts third-level sections by their line number', () => {
@@ -143,14 +150,16 @@ describe('nestSections', () => {
       reference: 'components.buttons'
     });
 
-    expect(buttonSection.sections.length)
-      .toBe(3);
-    expect(buttonSection.sections[0].reference)
-      .toBe('components.buttons.primary');
-    expect(buttonSection.sections[1].reference)
-      .toBe('components.buttons.secondary');
-    expect(buttonSection.sections[2].reference)
-      .toBe('components.buttons.tertiary');
+    expect(buttonSection.sections.length).toBe(3);
+    expect(buttonSection.sections[0].reference).toBe(
+      'components.buttons.primary'
+    );
+    expect(buttonSection.sections[1].reference).toBe(
+      'components.buttons.secondary'
+    );
+    expect(buttonSection.sections[2].reference).toBe(
+      'components.buttons.tertiary'
+    );
   });
 
   it('removes line number prop', () => {

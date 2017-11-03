@@ -29,7 +29,7 @@ class PageBlock extends React.PureComponent {
     }
 
     return (
-      <section className='ds-u-margin-top--3'>
+      <section className="ds-u-margin-top--3">
         <HtmlExample
           hideMarkup={this.props.hideMarkup}
           markup={this.props.markup}
@@ -46,7 +46,7 @@ class PageBlock extends React.PureComponent {
     if (this.props.description) {
       return (
         <div
-          className='c-details ds-u-margin-top--2 ds-u-measure--wide'
+          className="c-details ds-u-margin-top--2 ds-u-measure--wide"
           dangerouslySetInnerHTML={{
             __html: this.props.description
           }}
@@ -63,24 +63,28 @@ class PageBlock extends React.PureComponent {
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
-    const source = this.props.reactComponent &&
+    const source = this.props.reactComponent && (
       <Source
-        key='reactSource'
+        key="reactSource"
         reactComponent={this.props.reactComponent}
         source={this.props.source}
-      />;
+      />
+    );
 
-    const subheader = this.props.reactComponent &&
-      <span className='ds-h6' key='subheader'>React</span>;
+    const subheader = this.props.reactComponent && (
+      <span className="ds-h6" key="subheader">
+        React
+      </span>
+    );
 
     return [
       subheader,
       <h2
-        className='ds-h2 ds-u-margin-top--0'
+        className="ds-h2 ds-u-margin-top--0"
         // Headers can contain HTML markup, therefore dangerously set...
         dangerouslySetInnerHTML={{ __html: this.props.header }}
         id={this.props.reference}
-        key='header'
+        key="header"
       />,
       source
     ];
@@ -88,7 +92,7 @@ class PageBlock extends React.PureComponent {
 
   render() {
     return (
-      <article className='ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content'>
+      <article className="ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content">
         {this.header()}
         {this.description()}
         {this.markupExamples()}
@@ -110,9 +114,7 @@ PageBlock.propTypes = {
   hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,
-  modifiers: PropTypes.arrayOf(
-    HtmlExample.propTypes.modifier
-  ),
+  modifiers: PropTypes.arrayOf(HtmlExample.propTypes.modifier),
   reactComponent: PropTypes.string,
   reactExample: PropTypes.string,
   reference: PropTypes.string,

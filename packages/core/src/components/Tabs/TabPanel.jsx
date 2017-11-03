@@ -15,12 +15,12 @@ export function TabPanel(props) {
       aria-hidden={String(!props.selected)}
       className={classes}
       id={props.id}
-      role='tabpanel'
+      role="tabpanel"
     >
       {props.children}
     </div>
   );
-};
+}
 
 TabPanel.defaultProps = {
   selected: false

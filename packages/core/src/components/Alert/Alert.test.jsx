@@ -1,6 +1,6 @@
 import Alert from './Alert';
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Alert', function() {
   const text = 'Ruhroh';
@@ -25,7 +25,7 @@ describe('Alert', function() {
   });
 
   it('should appear as an error', () => {
-    const props = {variation: 'error'};
+    const props = { variation: 'error' };
     const wrapper = shallow(<Alert {...props}>{text}</Alert>);
 
     expect(wrapper.hasClass('ds-c-alert--error')).toBe(true);
@@ -43,7 +43,11 @@ describe('Alert', function() {
   });
 
   it('should render HTML children', () => {
-    const wrapper = shallow(<Alert><p className='ds-text'>{text}</p></Alert>);
+    const wrapper = shallow(
+      <Alert>
+        <p className="ds-text">{text}</p>
+      </Alert>
+    );
     const $p = wrapper.render().find('.ds-text');
 
     expect($p.length).toBe(1);

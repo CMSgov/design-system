@@ -19,8 +19,7 @@ module.exports = (gulp, shared) => {
   gulp.task('build:gh-pages', () => {
     if (shared.rootPath !== '') {
       dutil.logMessage('🤝 ', 'Moving files to root of docs directory');
-      return gulp.src(`docs/${shared.rootPath}/**/*`)
-        .pipe(gulp.dest('docs'));
+      return gulp.src(`docs/${shared.rootPath}/**/*`).pipe(gulp.dest('docs'));
     }
   });
 
@@ -33,11 +32,12 @@ module.exports = (gulp, shared) => {
   gulp.task('build:react', () => {
     dutil.logMessage('🐠 ', 'Babelfying React components');
 
-    return gulp.src([
-      'packages/core/src/**/*.{js,jsx}',
-      '!packages/core/src/**/*.example.{js,jsx}',
-      '!packages/core/src/**/*.test.{js,jsx}'
-    ])
+    return gulp
+      .src([
+        'packages/core/src/**/*.{js,jsx}',
+        '!packages/core/src/**/*.example.{js,jsx}',
+        '!packages/core/src/**/*.test.{js,jsx}'
+      ])
       .pipe(babel())
       .pipe(gulp.dest('packages/core/dist'));
   });

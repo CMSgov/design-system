@@ -16,11 +16,10 @@ function processMarkup(page, rootPath) {
 
   if (markup && markup !== '') {
     if (markup.search(/^[^\n]+\.(html|ejs)$/) >= 0) {
-      return loadMarkup(page)
-        .then(markup => {
-          page.markup = markup;
-          return processMarkup(page, rootPath);
-        });
+      return loadMarkup(page).then(markup => {
+        page.markup = markup;
+        return processMarkup(page, rootPath);
+      });
     }
 
     markup = replaceTemplateTags(markup, rootPath);
@@ -46,11 +45,10 @@ function processMarkup(page, rootPath) {
 function loadMarkup(page) {
   const dir = path.parse(page.source.path).dir;
   const src = `../../../${dir}/${page.markup}`;
-  return fs.readFile(path.resolve(__dirname, src), 'utf8')
-    .catch(e => {
-      dutil.logError('markup error', e.message);
-      return '';
-    });
+  return fs.readFile(path.resolve(__dirname, src), 'utf8').catch(e => {
+    dutil.logError('markup error', e.message);
+    return '';
+  });
 }
 
 module.exports = processMarkup;

@@ -11,9 +11,9 @@ export class FormLabel extends React.PureComponent {
     if (this.props.errorMessage) {
       return (
         <span
-          className='ds-c-field__hint ds-u-color--error'
+          className="ds-c-field__hint ds-u-color--error"
           id={`${this.props.fieldId}-message`}
-          role='alert'
+          role="alert"
         >
           {this.props.errorMessage}
         </span>
@@ -24,13 +24,16 @@ export class FormLabel extends React.PureComponent {
   hint() {
     const { hint } = this.props;
     const requirementLabel = this.requirementLabel();
-    const classes = classNames(
-      'ds-c-field__hint',
-      {'ds-c-field__hint--inverse': this.props.inversed}
-    );
+    const classes = classNames('ds-c-field__hint', {
+      'ds-c-field__hint--inverse': this.props.inversed
+    });
 
     if (hint && requirementLabel) {
-      return <span className={classes}>{requirementLabel} {hint}</span>;
+      return (
+        <span className={classes}>
+          {requirementLabel} {hint}
+        </span>
+      );
     } else if (requirementLabel) {
       return <span className={classes}>{requirementLabel}</span>;
     } else if (hint) {
@@ -40,14 +43,17 @@ export class FormLabel extends React.PureComponent {
 
   requirementLabel() {
     const { requirementLabel } = this.props;
-    return typeof requirementLabel === 'string'
-      ? <span className='ds-u-font-weight--bold'>{requirementLabel}</span>
-      : requirementLabel;
+    return typeof requirementLabel === 'string' ? (
+      <span className="ds-u-font-weight--bold">{requirementLabel}</span>
+    ) : (
+      requirementLabel
+    );
   }
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+    const labelTextClasses =
+      this.props.errorMessage && 'ds-u-font-weight--bold';
     const classes = classNames('ds-c-label', this.props.className);
 
     return (

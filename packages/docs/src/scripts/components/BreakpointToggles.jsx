@@ -13,10 +13,9 @@ class BreakpointToggles extends React.PureComponent {
 
   toggles() {
     return Object.keys(breakpoints).map(key => {
-      const classes = classNames(
-        `ds-l-col bp-toggle bp-toggle--${key}`,
-        { 'bp-toggle--active': key === this.props.activeBreakpoint }
-      );
+      const classes = classNames(`ds-l-col bp-toggle bp-toggle--${key}`, {
+        'bp-toggle--active': key === this.props.activeBreakpoint
+      });
       const width = breakpoints[key];
 
       return (
@@ -26,17 +25,19 @@ class BreakpointToggles extends React.PureComponent {
           onClick={() => this.handleClick(key)}
           title={`Change preview size to ${width}`}
         >
-          <strong className='ds-u-display--block'>{key}</strong>
-          <span className='ds-u-font-size--small'>
-            Width: {width}
-          </span>
+          <strong className="ds-u-display--block">{key}</strong>
+          <span className="ds-u-font-size--small">Width: {width}</span>
         </button>
       );
     });
   }
 
   render() {
-    return <div className='bp-toggles ds-l-row ds-u-margin-x--0'>{this.toggles()}</div>;
+    return (
+      <div className="bp-toggles ds-l-row ds-u-margin-x--0">
+        {this.toggles()}
+      </div>
+    );
   }
 }
 

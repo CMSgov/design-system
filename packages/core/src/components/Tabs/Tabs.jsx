@@ -91,7 +91,7 @@ export class Tabs extends React.PureComponent {
     let target;
 
     switch (evt.key) {
-      case (LEFT_ARROW):
+      case LEFT_ARROW:
         evt.preventDefault();
         if (tabIndex === 0) {
           target = tabs[tabs.length - 1].props.id;
@@ -100,7 +100,7 @@ export class Tabs extends React.PureComponent {
         }
         this.setState({ selectedId: target });
         break;
-      case (RIGHT_ARROW):
+      case RIGHT_ARROW:
         evt.preventDefault();
         if (tabIndex === tabs.length - 1) {
           target = tabs[0].props.id;
@@ -118,8 +118,7 @@ export class Tabs extends React.PureComponent {
    * Filter children and return only TabPanel components
    */
   panelChildren() {
-    return React.Children.toArray(this.props.children)
-      .filter(isTabPanel);
+    return React.Children.toArray(this.props.children).filter(isTabPanel);
   }
 
   renderChildren() {
@@ -128,15 +127,12 @@ export class Tabs extends React.PureComponent {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(
-          child,
-          {
-            selected: this.state.selectedId === child.props.id,
-            tab: undefined,
-            tabHref: undefined,
-            tabId: panelTabId(child)
-          }
-        );
+        return React.cloneElement(child, {
+          selected: this.state.selectedId === child.props.id,
+          tab: undefined,
+          tabHref: undefined,
+          tabId: panelTabId(child)
+        });
       }
 
       return child;
@@ -159,7 +155,9 @@ export class Tabs extends React.PureComponent {
           onClick={this.handleTabClick}
           onKeyDown={this.handleTabKeyDown}
           panelId={panel.props.id}
-          ref={(tab) => { this.tabs[panel.props.id] = tab; }}
+          ref={tab => {
+            this.tabs[panel.props.id] = tab;
+          }}
           selected={this.state.selectedId === panel.props.id}
         >
           {panel.props.tab}
@@ -167,7 +165,11 @@ export class Tabs extends React.PureComponent {
       );
     });
 
-    return <div className={listClasses} role='tablist'>{tabs}</div>;
+    return (
+      <div className={listClasses} role="tablist">
+        {tabs}
+      </div>
+    );
   }
 
   /**

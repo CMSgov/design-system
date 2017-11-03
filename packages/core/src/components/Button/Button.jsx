@@ -45,7 +45,8 @@ export class Button extends React.PureComponent {
   }
 
   classNames() {
-    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
+    let variationClass =
+      this.props.variation && `ds-c-button--${this.props.variation}`;
     let disabledClass = this.props.disabled && 'ds-c-button--disabled';
 
     if (this.props.inverse) {
@@ -102,10 +103,7 @@ Button.propTypes = {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func
-  ]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   disabled: PropTypes.bool,
   /**
    * When provided the root component will render as an `<a>` element
@@ -124,12 +122,7 @@ Button.propTypes = {
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
   type: PropTypes.oneOf(['button', 'submit']),
-  variation: PropTypes.oneOf([
-    'primary',
-    'danger',
-    'success',
-    'transparent'
-  ])
+  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
 };
 
 export default Button;

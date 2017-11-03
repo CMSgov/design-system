@@ -13,7 +13,8 @@ import uniqueId from 'lodash.uniqueid';
  */
 export const Choice = function(props) {
   /* eslint-disable prefer-const */
-  let { // Using let rather than const since we sometimes rewrite id
+  let {
+    // Using let rather than const since we sometimes rewrite id
     children,
     className,
     id,
@@ -26,15 +27,11 @@ export const Choice = function(props) {
   } = props;
   /* eslint-enable prefer-const */
 
-  const inputClasses = classNames(
-    inputClassName,
-    'ds-c-choice',
-    {
-      'ds-c-choice--inverse': inversed,
-      'ds-c-choice--right': inputPlacement === 'right',
-      'ds-c-choice--small': size === 'small'
-    }
-  );
+  const inputClasses = classNames(inputClassName, 'ds-c-choice', {
+    'ds-c-choice--inverse': inversed,
+    'ds-c-choice--right': inputPlacement === 'right',
+    'ds-c-choice--small': size === 'small'
+  });
 
   if (!id) {
     id = uniqueId(`${inputProps.type}_${inputProps.name}_`);
@@ -42,11 +39,7 @@ export const Choice = function(props) {
 
   return (
     <div className={className}>
-      <input
-        className={inputClasses}
-        id={id}
-        {...inputProps}
-      />
+      <input className={inputClasses} id={id} {...inputProps} />
       <FormLabel fieldId={id} requirementLabel={requirementLabel}>
         {children}
       </FormLabel>
@@ -110,10 +103,7 @@ Choice.propTypes = {
   /**
    * The `input` `value` attribute
    */
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 };
 
 export default Choice;

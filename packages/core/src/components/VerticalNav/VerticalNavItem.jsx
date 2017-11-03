@@ -15,7 +15,10 @@ export class VerticalNavItem extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.onSubnavToggle && prevState.collapsed !== this.state.collapsed) {
+    if (
+      this.props.onSubnavToggle &&
+      prevState.collapsed !== this.state.collapsed
+    ) {
       this.props.onSubnavToggle(this.props.id, this.state.collapsed);
     }
   }
@@ -40,11 +43,7 @@ export class VerticalNavItem extends React.PureComponent {
    */
   handleClick(evt) {
     if (this.props.onClick) {
-      this.props.onClick(
-        evt,
-        this.id,
-        this.props.url
-      );
+      this.props.onClick(evt, this.id, this.props.url);
     }
   }
 
@@ -122,7 +121,9 @@ export class VerticalNavItem extends React.PureComponent {
     return (
       <li className={classes}>
         <VerticalNavItemLabel
-          ariaCollapsedStateButtonLabel={this.props.ariaCollapsedStateButtonLabel}
+          ariaCollapsedStateButtonLabel={
+            this.props.ariaCollapsedStateButtonLabel
+          }
           ariaExpandedStateButtonLabel={this.props.ariaExpandedStateButtonLabel}
           collapsed={this.state.collapsed}
           label={this.props.label}
@@ -188,9 +189,7 @@ VerticalNavItem.propTypes = {
    * An array of nested `VerticalNavItem` data objects to be rendered in a
    * sub-navigation list.
    */
-  items: PropTypes.arrayOf(
-    PropTypes.shape(VerticalNavItem.propTypes)
-  ),
+  items: PropTypes.arrayOf(PropTypes.shape(VerticalNavItem.propTypes)),
   /**
    * Text to render for this nav item
    */

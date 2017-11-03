@@ -130,7 +130,8 @@ Style guide: style.color.status
 // Generic
 // USWDS doesn't include a "lighter" variant for red, so we create one
 // in order to be consistent with the other "state" colors.
-$color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest) !default;
+$color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest)
+  !default;
 
 $color-error: $color-secondary !default;
 $color-error-dark: $color-secondary-dark !default;
@@ -160,7 +161,8 @@ $color-muted-inverse: #bac5cf !default;
 // USWDS has a default focus color, but we want one that can be applied to
 // fields that are displayed on top of an inverted background
 $color-focus-inverse: #59bcff !default;
-$focus-shadow-inverse: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse !default;
+$focus-shadow-inverse: 0 0 3px $color-focus-inverse,
+  0 0 7px $color-focus-inverse !default;
 
 // Background
 $color-background: $color-white !default;

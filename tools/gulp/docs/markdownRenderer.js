@@ -8,9 +8,11 @@ require('prismjs/components/prism-bash');
 require('prismjs/components/prism-jsx');
 require('prismjs/components/prism-scss');
 
-const renderer = new marked.Renderer();
+const markdownRenderer = new marked.Renderer();
 
-Prism.languages.bash['function'].pattern = /(^|\s|;|\||&)(?:npm|yarn|install)(?=$|\s|;|\||&)/;
+Prism.languages.bash[
+  'function'
+].pattern = /(^|\s|;|\||&)(?:npm|yarn|install)(?=$|\s|;|\||&)/;
 
 function highlightCode(code, lang) {
   lang = lang === 'html' ? 'markup' : lang;
@@ -25,7 +27,7 @@ function highlightCode(code, lang) {
 
 // Format code blocks with Prism and ensure HTML is formatted
 // in a way that Prism's CSS will be appplied
-renderer.code = function(code, lang) {
+markdownRenderer.code = function(code, lang) {
   lang = lang === 'html' ? 'markup' : lang;
   let attrs = '';
 
@@ -38,15 +40,17 @@ renderer.code = function(code, lang) {
 };
 
 // Apply design system classes to base HTML elements
-renderer.table = function(header, body) {
-  return '<table class="ds-c-table">\n' +
+markdownRenderer.table = function(header, body) {
+  return (
+    '<table class="ds-c-table">\n' +
     '<thead>\n' +
     header +
     '</thead>\n' +
     '<tbody>\n' +
     body +
     '</tbody>\n' +
-    '</table>\n';
+    '</table>\n'
+  );
 };
 
-module.exports = renderer;
+module.exports = markdownRenderer;

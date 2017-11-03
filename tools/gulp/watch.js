@@ -26,41 +26,30 @@ module.exports = (gulp, shared) => {
     ]);
 
     // React components, examples, and tests
-    gulp.watch([
-      `packages/${packages}/src/**/*.{js,jsx}`,
-      `!packages/${packages}/src/**/*.example.{js,jsx}`,
-      `!packages/${packages}/src/**/*.test.{js,jsx}`
-    ], ['lint:packages-scripts', 'docs:react', 'docs:generate-pages']);
+    gulp.watch(
+      [
+        `packages/${packages}/src/**/*.{js,jsx}`,
+        `!packages/${packages}/src/**/*.example.{js,jsx}`,
+        `!packages/${packages}/src/**/*.test.{js,jsx}`
+      ],
+      ['docs:react', 'docs:generate-pages']
+    );
   });
 
   gulp.task('watch:docs', () => {
-    gulp.watch('packages/docs/src/styles/**/*.scss', [
-      'sass:process:docs'
-    ]);
-
-    gulp.watch('packages/docs/src/pages/**/*.md', [
-      'docs:generate-pages'
-    ]);
-
-    gulp.watch([
-      'packages/docs/src/scripts/**/*.{js,jsx}'
-    ], ['lint:docs-scripts']);
+    gulp.watch('packages/docs/src/styles/**/*.scss', ['sass:process:docs']);
+    gulp.watch('packages/docs/src/pages/**/*.md', ['docs:generate-pages']);
+    // Support Markdown documentation pages nested within a theme's directory
+    gulp.watch('packages/themes/*/src/pages/**/*.md', ['docs:generate-pages']);
   });
 
   gulp.task('watch', () => {
-    dutil.logMessage(
-      '👀 ',
-      'Transpiling + watching files for future changes'
-    );
+    dutil.logMessage('👀 ', 'Transpiling + watching files for future changes');
 
-    runSequence(
-      'docs:build',
-      'sass:process:docs',
-      [
-        'server',
-        'watch:packages',
-        'watch:docs'
-      ]
-    );
+    runSequence('docs:build', 'sass:process:docs', [
+      'server',
+      'watch:packages',
+      'watch:docs'
+    ]);
   });
 };

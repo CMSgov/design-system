@@ -30,12 +30,12 @@ class HtmlExample extends React.PureComponent {
     const description = this.props.modifier && this.props.modifier.description;
 
     return (
-      <div className='c-markup__header'>
-        <h4 className='ds-u-font-size--h5 ds-u-margin-bottom--0'>
+      <div className="c-markup__header">
+        <h4 className="ds-u-font-size--h5 ds-u-margin-bottom--0">
           Modifier: <code>{this.name()}</code>
         </h4>
         <p
-          className='ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted'
+          className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted"
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>
@@ -54,7 +54,7 @@ class HtmlExample extends React.PureComponent {
     iframeURL += '/';
 
     return (
-      <div className='markup markup--html'>
+      <div className="markup markup--html">
         {this.title()}
         <Frame
           onLoad={this.handleFrameLoad}

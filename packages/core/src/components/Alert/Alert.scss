@@ -10,6 +10,7 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 .ds-c-alert--error - Error message
 .ds-c-alert--warn - Warning message
 .ds-c-alert--success - Success message
+.ds-c-alert--hide-icon - Hide icon
 
 Markup:
 <div class="ds-c-alert {{modifier}}">
@@ -39,6 +40,10 @@ $alert-icon-size: $spacer-5;
   padding: $alert-padding;
   position: relative;
 
+  &.ds-c-alert--hide-icon {
+    background-image: none;
+  }
+
   a {
     color: $color-primary-darker;
 
@@ -61,6 +66,10 @@ $alert-icon-size: $spacer-5;
 
 .ds-c-alert__body {
   padding-left: $alert-icon-size + $alert-bar-size;
+}
+
+.ds-c-alert--hide-icon .ds-c-alert__body {
+  padding-left: 0;
 }
 
 .ds-c-alert__heading {

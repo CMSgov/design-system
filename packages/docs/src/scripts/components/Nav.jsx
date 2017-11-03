@@ -13,7 +13,10 @@ function expandSelectedItems(items, selectedId) {
   items = [].concat(items); // Don't mutate items
 
   items.some(function(item) {
-    if (item.id === selectedId || isParentOfSelectedChild(item.items, selectedId)) {
+    if (
+      item.id === selectedId ||
+      isParentOfSelectedChild(item.items, selectedId)
+    ) {
       item.defaultCollapsed = false;
       return true;
     }
@@ -33,7 +36,7 @@ function isParentOfSelectedChild(items, selectedId) {
 const Nav = props => {
   return (
     <VerticalNav
-      className='c-nav__list'
+      className="c-nav__list"
       items={expandSelectedItems(props.items, props.selectedId)}
       selectedId={props.selectedId ? props.selectedId : undefined}
     />
