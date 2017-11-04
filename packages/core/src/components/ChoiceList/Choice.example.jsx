@@ -11,16 +11,18 @@ export default function() {
       <Choice name="checkbox_choice" value="b">
         Checkbox B
       </Choice>
-      <Choice disabled name="checkbox_choice" value="c">
-        Checkbox B
+      <Choice name="checkbox_choice" value="c">
+        Checkbox C
       </Choice>
 
-      <Choice defaultChecked name="radio_choice" type="radio" value="a">
-        Radio A
-      </Choice>
-      <Choice name="radio_choice" type="radio" value="b">
-        Radio B
-      </Choice>
+      <div className="ds-u-margin-top--4">
+        <Choice defaultChecked name="radio_choice" type="radio" value="a">
+          Radio A
+        </Choice>
+        <Choice name="radio_choice" type="radio" value="b">
+          Radio B
+        </Choice>
+      </div>
     </div>
   );
 }

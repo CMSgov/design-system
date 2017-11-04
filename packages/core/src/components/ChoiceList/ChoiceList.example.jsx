@@ -48,16 +48,11 @@ export default function() {
         name="multiple_choices_field"
       />
       <ChoiceList
-        choices={choices}
-        requirementLabel="Optional."
-        label="Optional Example"
-        name="optional_choices_field"
-      />
-      <ChoiceList
         choices={choicesWithRequirementLabels}
-        label="Choice-Optional Example"
+        label="Choices with requirementLabel"
         multiple
         name="some_optional_choices_field"
+        requirementLabel="Optional."
       />
       <ChoiceList
         choices={options}
