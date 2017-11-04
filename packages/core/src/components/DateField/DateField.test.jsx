@@ -1,9 +1,9 @@
 jest.mock('lodash.uniqueid', () => str => `${str}snapshot`);
 /* eslint-disable import/first */
+import { mount, shallow } from 'enzyme';
 import DateField from './DateField';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
 
 describe('DateField', () => {
   it('renders with all defaultProps', () => {
@@ -32,8 +32,30 @@ describe('DateField', () => {
     ).toMatchSnapshot();
   });
 
+  it('returns reference to input fields', () => {
+    const refs = {};
+    const props = {
+      dayDefaultValue: 'DD',
+      dayFieldRef: el => {
+        refs.day = el;
+      },
+      monthDefaultValue: 'MM',
+      monthFieldRef: el => {
+        refs.month = el;
+      },
+      yearDefaultValue: 'YYYY',
+      yearFieldRef: el => {
+        refs.year = el;
+      }
+    };
+    mount(<DateField {...props} />);
+
+    expect(refs.day.value).toBe(props.dayDefaultValue);
+    expect(refs.month.value).toBe(props.monthDefaultValue);
+    expect(refs.year.value).toBe(props.yearDefaultValue);
+  });
+
   describe('event handlers', () => {
-    let wrapper;
     let props;
 
     beforeEach(() => {
@@ -41,10 +63,21 @@ describe('DateField', () => {
         onBlur: jest.fn(),
         onChange: jest.fn()
       };
-      wrapper = shallow(<DateField {...props} />);
+    });
+
+    it('does not require event handler', () => {
+      const wrapper = shallow(<DateField />);
+
+      // This shouldn't result in an error
+      wrapper
+        .find('TextField')
+        .at(0)
+        .simulate('blur');
     });
 
     it('calls onBlur when month is blurred', () => {
+      const wrapper = shallow(<DateField {...props} />);
+
       wrapper
         .find('TextField')
         .at(0)
@@ -55,6 +88,8 @@ describe('DateField', () => {
     });
 
     it('calls onBlur when day is changed', () => {
+      const wrapper = shallow(<DateField {...props} />);
+
       wrapper
         .find('TextField')
         .at(1)
@@ -62,6 +97,39 @@ describe('DateField', () => {
 
       expect(props.onBlur.mock.calls.length).toBe(0);
       expect(props.onChange.mock.calls.length).toBe(1);
+      // No date formatter
+      expect(props.onChange.mock.calls[0][1]).toBeUndefined();
+    });
+
+    it('formats the date as a single string', () => {
+      props = Object.assign(
+        {
+          dateFormatter: values => {
+            return `${values.month} ${values.day} ${values.year}`;
+          },
+          monthValue: 'M',
+          dayValue: 'DD',
+          yearValue: 'YYYY'
+        },
+        props
+      );
+
+      const wrapper = mount(<DateField {...props} />);
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('change');
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('blur');
+
+      expect(props.onBlur.mock.calls.length).toBe(1);
+      expect(props.onChange.mock.calls.length).toBe(1);
+      expect(props.onBlur.mock.calls[0][1]).toBe('M DD YYYY');
+      expect(props.onChange.mock.calls[0][1]).toBe('M DD YYYY');
     });
   });
 });

@@ -85,7 +85,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-    * A method to access a reference to the `input` or `textarea` DOM node
+    * Access a reference to the `input` or `textarea` element
     */
   fieldRef: PropTypes.func,
   /**
