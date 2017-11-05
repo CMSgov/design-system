@@ -23,7 +23,7 @@ function ReactContent(props) {
     doc = docs && docs.length ? docs[0] : null;
   }
 
-  if (doc) {
+  if (doc && doc.description) {
     content.push(
       <div
         className="c-details ds-u-margin-y--2 ds-u-measure--wide"
