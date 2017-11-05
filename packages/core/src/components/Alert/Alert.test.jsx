@@ -53,4 +53,10 @@ describe('Alert', function() {
     expect($p.length).toBe(1);
     expect($p.text()).toBe(text);
   });
+
+  it('hides icon', () => {
+    const { wrapper } = render({ hideIcon: true });
+
+    expect(wrapper.hasClass('ds-c-alert--hide-icon')).toBe(true);
+  });
 });
