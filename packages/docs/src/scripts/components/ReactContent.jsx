@@ -41,7 +41,9 @@ function ReactContent(props) {
     content.push(<ReactExample key="example" path={examplePath} />);
   }
 
-  if (doc) content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  if (doc && doc.props) {
+    content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  }
 
   return content;
 }
