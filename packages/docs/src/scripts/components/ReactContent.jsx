@@ -23,7 +23,7 @@ function ReactContent(props) {
     doc = docs && docs.length ? docs[0] : null;
   }
 
-  if (doc) {
+  if (doc && doc.description) {
     content.push(
       <div
         className="c-details ds-u-margin-y--2 ds-u-measure--wide"
@@ -41,7 +41,9 @@ function ReactContent(props) {
     content.push(<ReactExample key="example" path={examplePath} />);
   }
 
-  if (doc) content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  if (doc && doc.props) {
+    content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  }
 
   return content;
 }
