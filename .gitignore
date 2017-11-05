@@ -3,7 +3,7 @@
 
 # Generated documentation data from CSS and JSX comments. We only need this
 # during the docs generation task.
-packages/docs/src/data
+packages/docs/src/data/react-doc.json
 
 # Themes should be in their own repo, but can be included in this directory
 # in order to use the same tooling and documentation processes
