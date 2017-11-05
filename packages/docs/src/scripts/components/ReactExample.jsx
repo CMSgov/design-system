@@ -39,7 +39,7 @@ class ReactExample extends React.PureComponent {
           {this.renderComponent()}
         </div>
 
-        <CodeSnippet language="jsx">{this.highlightedMarkup()}</CodeSnippet>
+        <CodeSnippet>{this.highlightedMarkup()}</CodeSnippet>
       </div>
     );
   }
