@@ -12,6 +12,7 @@ export class Alert extends React.PureComponent {
   render() {
     const classes = classNames(
       'ds-c-alert',
+      this.props.hideIcon && 'ds-c-alert--hide-icon',
       this.props.variation && `ds-c-alert--${this.props.variation}`,
       this.props.className
     );
@@ -30,6 +31,7 @@ export class Alert extends React.PureComponent {
 Alert.propTypes = {
   children: PropTypes.node.isRequired,
   heading: PropTypes.string,
+  hideIcon: PropTypes.bool,
   /** ARIA `role` */
   role: PropTypes.oneOf(['alert', 'alertdialog']),
   variation: PropTypes.oneOf(['error', 'warn', 'success'])
