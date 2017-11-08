@@ -68,19 +68,9 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 
 Here are a few guidelines to follow when submitting a pull request:
 
-- Branch off of `staging`: `git checkout -b username/branch-name`
+- Branch off of `master`: `git checkout -b username/branch-name`
 - Commit your changes
-- Make a pull request against the `staging` branch
-
-## Merging pull requests
-
-#### Staging
-
-Use the "**Squash and merge**" option when merging pull requests into the `staging` branch. This keeps our history clean and makes it easier on us when it comes time to create a new release.
-
-#### Master
-
-Use the "**Create a merge commit**" option when merging `staging` into `master`. If the pull request includes a version bump, set the commit title to the version number and include the PR # in the commit description.
+- Make a pull request against the `master` branch
 
 ## Licenses and attribution
 
