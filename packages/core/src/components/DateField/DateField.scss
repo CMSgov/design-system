@@ -1,0 +1,86 @@
+@import '@cmsgov/design-system-support/src/settings/index';
+
+/*
+Date field
+
+@uswds https://standards.usa.gov/components/form-controls/#date-input
+
+Three text fields are the easiest way for users to enter most dates.
+
+Markup:
+<fieldset class="ds-c-fieldset">
+  <legend class="ds-c-label">
+    <span class="ds-u-font-weight--bold">Date of birth</span>
+    <span class="ds-c-field__hint">For example: 4 25 1986</span>
+  </legend>
+  <div class="ds-l-form-row">
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="month">Month</label>
+      <input class="ds-c-field ds-c-field--month" type="number" min="1" max="12" id="month" name="birthdate[month]">
+    </div>
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="day">Day</label>
+      <input class="ds-c-field ds-c-field--day" type="number" min="1" max="31" id="day" name="birthdate[day]">
+    </div>
+    <div class="ds-l-col--auto">
+      <label class="ds-c-label ds-u-margin-top--1" for="year">Year</label>
+      <input class="ds-c-field ds-c-field--year" type="number" min="1900" max="2000" id="year" name="birthdate[year]">
+    </div>
+  </div>
+</fieldset>
+
+Style guide: components.date-field
+*/
+.ds-c-field--month,
+.ds-c-field--day,
+.ds-c-field--year {
+  box-sizing: content-box; // allows us to set width based on # of characters
+}
+
+.ds-c-field--month,
+.ds-c-field--day {
+  width: 4ch; // provide additional spacing for browser UI
+}
+
+.ds-c-field--year {
+  width: 6ch; // provide additional spacing for browser UI
+}
+
+/*
+`<DateField>`
+
+@react-component DateField
+
+Style guide: components.date-field.react
+*/
+
+/*
+---
+
+## When to use
+
+- Use this format for most dates, particularly memorized dates.
+
+## When to consider alternatives
+
+- If users are trying to schedule something, a calendar picker might make more sense. Be sure to also provide an option for text entry as well.
+
+## Guidance
+
+- Ensure you've [installed both the Core package and Layout package]({{root}}/getting-started)
+- Allow users to enter the date as flexibly as possible, for example, allowing `1` as well as `01` for a month input.
+- Be sure each field is properly labeled — some countries enter dates in day, month, year order.
+- It may be tempting to switch all or some of these text fields to drop downs, but these tend to be more difficult to use than text boxes.
+
+## Accessibility
+
+- These text fields should follow the [accessibility guidelines for all text inputs]({{root}}/components/text-field/#guidance).
+- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+
+## Related patterns
+
+- [Text field]({{root}}/components/text-field/)
+- [Grid]({{root}}/layout/grid/)
+
+Style guide: components.date-field.guidance
+*/

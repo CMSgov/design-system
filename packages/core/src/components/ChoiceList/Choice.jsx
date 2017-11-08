@@ -133,7 +133,7 @@ Choice.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * This will render a read-only field. If the field should be
    * mutable, use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`
    */
   checked: PropTypes.bool,
