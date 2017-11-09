@@ -10,7 +10,7 @@ git checkout master
 git pull
 
 echo "${GREEN}Bumping version...${NC}"
-./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch master --scope "@cmsgov/design-system-*"
+./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch master --scope "@cmsgov/design-system-*" --force-publish=*
 
 echo "${GREEN}Building...${NC}"
 npm run build
