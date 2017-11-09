@@ -7,7 +7,7 @@ import uniqueId from 'lodash.uniqueid';
 /**
  * A `TextField` component renders an input field as well as supporting UI
  * elements like a label, error message, and hint text.
-*/
+ */
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -16,27 +16,19 @@ export class TextField extends React.PureComponent {
 
   render() {
     const {
-      hint,
+      className,
       labelClassName,
       fieldClassName,
       errorMessage,
+      hint,
+      requirementLabel,
       inversed,
       rows,
-      max,
-      min,
-      name,
-      onChange,
-      onBlur,
-      fieldRef,
       multiline,
-      type,
-      value,
-      className,
-      requirementLabel,
       label,
-      defaultValue,
-      disabled,
-      ...props
+      fieldRef,
+      type,
+      ...fieldProps
     } = this.props;
 
     const FieldComponent = multiline ? 'textarea' : 'input';
@@ -69,19 +61,11 @@ export class TextField extends React.PureComponent {
         </FormLabel>
         <FieldComponent
           className={fieldClasses}
-          defaultValue={defaultValue}
-          disabled={disabled}
           id={this.id}
-          max={max}
-          min={min}
-          name={name}
-          onChange={onChange}
-          onBlur={onBlur}
           ref={fieldRef}
           rows={_rows}
           type={multiline ? undefined : type}
-          value={value}
-          {...props}
+          {...fieldProps}
         />
       </div>
     );
@@ -109,8 +93,8 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-    * Access a reference to the `input` or `textarea` element
-    */
+   * Access a reference to the `input` or `textarea` element
+   */
   fieldRef: PropTypes.func,
   /**
    * Additional hint text to display
