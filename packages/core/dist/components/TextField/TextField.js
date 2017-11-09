@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TextField = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _FormLabel = require('../FormLabel/FormLabel');
@@ -29,6 +31,8 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -38,7 +42,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * A `TextField` component renders an input field as well as supporting UI
  * elements like a label, error message, and hint text.
-*/
+ */
 var TextField = exports.TextField = function (_React$PureComponent) {
   _inherits(TextField, _React$PureComponent);
 
@@ -54,15 +58,30 @@ var TextField = exports.TextField = function (_React$PureComponent) {
   _createClass(TextField, [{
     key: 'render',
     value: function render() {
-      var FieldComponent = this.props.multiline ? 'textarea' : 'input';
-      var rows = this.props.multiline && this.props.rows ? this.props.rows : undefined;
+      var _props = this.props,
+          className = _props.className,
+          labelClassName = _props.labelClassName,
+          fieldClassName = _props.fieldClassName,
+          errorMessage = _props.errorMessage,
+          hint = _props.hint,
+          requirementLabel = _props.requirementLabel,
+          inversed = _props.inversed,
+          rows = _props.rows,
+          multiline = _props.multiline,
+          label = _props.label,
+          fieldRef = _props.fieldRef,
+          type = _props.type,
+          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'type']);
+
+      var FieldComponent = multiline ? 'textarea' : 'input';
+      var _rows = multiline && rows ? rows : undefined;
 
       var classes = (0, _classnames2.default)('ds-u-clearfix', // fixes issue where the label's margin is collapsed
-      this.props.className);
+      className);
       var fieldClasses = (0, _classnames2.default)('ds-c-field', {
-        'ds-c-field--error': typeof this.props.errorMessage === 'string',
-        'ds-c-field--inverse': this.props.inversed
-      }, this.props.fieldClassName);
+        'ds-c-field--error': typeof errorMessage === 'string',
+        'ds-c-field--inverse': inversed
+      }, fieldClassName);
 
       return _react2.default.createElement(
         'div',
@@ -70,30 +89,22 @@ var TextField = exports.TextField = function (_React$PureComponent) {
         _react2.default.createElement(
           _FormLabel2.default,
           {
-            className: this.props.labelClassName,
-            errorMessage: this.props.errorMessage,
+            className: labelClassName,
+            errorMessage: errorMessage,
             fieldId: this.id,
-            hint: this.props.hint,
-            requirementLabel: this.props.requirementLabel,
-            inversed: this.props.inversed
+            hint: hint,
+            requirementLabel: requirementLabel,
+            inversed: inversed
           },
-          this.props.label
+          label
         ),
-        _react2.default.createElement(FieldComponent, {
+        _react2.default.createElement(FieldComponent, _extends({
           className: fieldClasses,
-          defaultValue: this.props.defaultValue,
-          disabled: this.props.disabled,
           id: this.id,
-          max: this.props.max,
-          min: this.props.min,
-          name: this.props.name,
-          onChange: this.props.onChange,
-          onBlur: this.props.onBlur,
-          ref: this.props.fieldRef,
-          rows: rows,
-          type: this.props.multiline ? undefined : this.props.type,
-          value: this.props.value
-        })
+          ref: fieldRef,
+          rows: _rows,
+          type: multiline ? undefined : type
+        }, fieldProps))
       );
     }
   }]);
@@ -122,8 +133,8 @@ TextField.propTypes = {
    */
   fieldClassName: _propTypes2.default.string,
   /**
-    * Access a reference to the `input` or `textarea` element
-    */
+   * Access a reference to the `input` or `textarea` element
+   */
   fieldRef: _propTypes2.default.func,
   /**
    * Additional hint text to display
