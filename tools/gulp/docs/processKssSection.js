@@ -61,44 +61,48 @@ function processFlags(section) {
   const FLAG_REGEX = /<p>@([\w-]+)(?:\s(.+))?<\/p>/g;
 
   if (typeof section.description === 'string') {
-    section.description = section.description.replace(FLAG_REGEX, (_, flag, value) => {
-      switch (flag) {
-        case 'hide-example':
-          // Skip rendering the example and code snippet
-          section.hideExample = true;
-          break;
-        case 'hide-markup':
-          // Hide code snippet, but show the example
-          section.hideMarkup = true;
-          break;
-        case 'react-component':
-          // Include the React component's documentation
-          section.reactComponent = value;
-          break;
-        case 'responsive':
-          // Render breakpoint toggles on markup example
-          section.responsive = true;
-          break;
-        case 'status':
-          // Development status (ie. Prototype, Alpha, Beta)
-          section.status = value;
-          break;
-        case 'uswds':
-          // US Web Design Standard URL
-          // KSS converts the URL to an <a> element, so we grab just the URL
-          section.uswds = hrefUrl(value);
-          break;
-        default:
-          break;
-      }
-      return '';
-    }).trim();
+    section.description = section.description
+      .replace(FLAG_REGEX, (_, flag, value) => {
+        switch (flag) {
+          case 'hide-example':
+            // Skip rendering the example and code snippet
+            section.hideExample = true;
+            break;
+          case 'hide-markup':
+            // Hide code snippet, but show the example
+            section.hideMarkup = true;
+            break;
+          case 'react-component':
+            // Include the React component's documentation
+            section.reactComponent = value;
+            break;
+          case 'responsive':
+            // Render breakpoint toggles on markup example
+            section.responsive = true;
+            break;
+          case 'status':
+            // Development status (ie. Prototype, Alpha, Beta)
+            section.status = value;
+            break;
+          case 'uswds':
+            // US Web Design Standard URL
+            // KSS converts the URL to an <a> element, so we grab just the URL
+            section.uswds = hrefUrl(value);
+            break;
+          default:
+            break;
+        }
+        return '';
+      })
+      .trim();
   }
   return section;
 }
 
 function hrefUrl(str) {
-  let match = str.match(/href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/);
+  const match = str.match(
+    /href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/
+  );
   if (match) return match[1];
   return str;
 }

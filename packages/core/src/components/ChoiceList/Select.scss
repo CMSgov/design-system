@@ -9,7 +9,7 @@ A select field allows users to select one option from a list.
 
 Markup:
 <label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
-<select class="ds-c-field ds-c-field--select" name="options" id="options">
+<select class="ds-c-field" name="options" id="options">
   <option value="1">Option 1</option>
   <option value="2">Option 2</option>
   <option value="3">Option 3</option>
@@ -23,7 +23,7 @@ Markup:
     Field label
     <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
   </label>
-  <select class="ds-c-field ds-c-field--select ds-c-field--inverse" name="options-inverse" id="options-inverse">
+  <select class="ds-c-field ds-c-field--inverse" name="options-inverse" id="options-inverse">
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
@@ -37,18 +37,21 @@ Markup:
 Style guide: components.select
 */
 
-.ds-c-field--select {
+// stylelint-disable selector-no-qualifying-type
+select.ds-c-field {
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-both.svg');
   background-position: right $small-font-size center;
   background-repeat: no-repeat;
   background-size: $small-font-size;
+  padding-right: ($small-font-size * 2) + $spacer-1;
 
   &[multiple] {
     background-image: none;
   }
 }
+// stylelint-enable selector-no-qualifying-type
 
 /*
 `<ChoiceList>`

@@ -5,17 +5,15 @@ import classNames from 'classnames';
 /**
  * The FormLabel component provides the label/legend for a field, along with any
  * associated hint text and error messaging.
- *
- * TODO(sawyer): Show this in the documentation
  */
 export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
       return (
         <span
-          className='ds-c-field__hint ds-u-color--error'
+          className="ds-c-field__hint ds-u-color--error"
           id={`${this.props.fieldId}-message`}
-          role='alert'
+          role="alert"
         >
           {this.props.errorMessage}
         </span>
@@ -24,18 +22,38 @@ export class FormLabel extends React.PureComponent {
   }
 
   hint() {
-    if (this.props.hint) {
-      const classes = classNames(
-        'ds-c-field__hint',
-        {'ds-c-field__hint--inverse': this.props.inversed}
+    const { hint } = this.props;
+    const requirementLabel = this.requirementLabel();
+    const classes = classNames('ds-c-field__hint', {
+      'ds-c-field__hint--inverse': this.props.inversed
+    });
+
+    if (hint && requirementLabel) {
+      return (
+        <span className={classes}>
+          {requirementLabel} {hint}
+        </span>
       );
-      return <span className={classes}>{this.props.hint}</span>;
+    } else if (requirementLabel) {
+      return <span className={classes}>{requirementLabel}</span>;
+    } else if (hint) {
+      return <span className={classes}>{hint}</span>;
     }
+  }
+
+  requirementLabel() {
+    const { requirementLabel } = this.props;
+    return typeof requirementLabel === 'string' ? (
+      <span className="ds-u-font-weight--bold">{requirementLabel}</span>
+    ) : (
+      requirementLabel
+    );
   }
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses = this.props.errorMessage && 'ds-u-font-weight--bold';
+    const labelTextClasses =
+      this.props.errorMessage && 'ds-u-font-weight--bold';
     const classes = classNames('ds-c-label', this.props.className);
 
     return (
@@ -58,7 +76,7 @@ FormLabel.propTypes = {
   /** The root HTML element used to render the label */
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
@@ -67,7 +85,11 @@ FormLabel.propTypes = {
   /**
    * Additional hint text to display
    */
-  hint: PropTypes.node,
+  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Set to `true` to apply the "inverse" theme
    */

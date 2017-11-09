@@ -16,8 +16,8 @@ export class TextField extends React.PureComponent {
 
   render() {
     const FieldComponent = this.props.multiline ? 'textarea' : 'input';
-    const rows = this.props.multiline && this.props.rows
-      ? this.props.rows : undefined;
+    const rows =
+      this.props.multiline && this.props.rows ? this.props.rows : undefined;
 
     const classes = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
@@ -39,6 +39,7 @@ export class TextField extends React.PureComponent {
           errorMessage={this.props.errorMessage}
           fieldId={this.id}
           hint={this.props.hint}
+          requirementLabel={this.props.requirementLabel}
           inversed={this.props.inversed}
         >
           {this.props.label}
@@ -48,9 +49,12 @@ export class TextField extends React.PureComponent {
           defaultValue={this.props.defaultValue}
           disabled={this.props.disabled}
           id={this.id}
+          max={this.props.max}
+          min={this.props.min}
           name={this.props.name}
           onChange={this.props.onChange}
           onBlur={this.props.onBlur}
+          ref={this.props.fieldRef}
           rows={rows}
           type={this.props.multiline ? undefined : this.props.type}
           value={this.props.value}
@@ -81,9 +85,17 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
+    * Access a reference to the `input` or `textarea` element
+    */
+  fieldRef: PropTypes.func,
+  /**
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */
@@ -97,6 +109,14 @@ TextField.propTypes = {
    */
   labelClassName: PropTypes.string,
   /**
+   * `max` HTML input attribute
+   */
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * `min` HTML input attribute
+   */
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
    * Whether or not the textfield is a multiline textfield
    */
   multiline: PropTypes.bool,
@@ -107,10 +127,7 @@ TextField.propTypes = {
    * Optionally specify the number of visible text lines for the field. Only
    * applicable if this is a multiline field.
    */
-  rows: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */

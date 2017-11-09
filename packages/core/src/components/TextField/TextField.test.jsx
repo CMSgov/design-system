@@ -1,22 +1,26 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TextField from './TextField';
-import {shallow} from 'enzyme';
 
-function shallowRender(customProps = {}) {
-  const props = Object.assign({
-    label: 'Foo',
-    name: 'spec-field'
-  }, customProps);
+function render(customProps = {}, deep = false) {
+  const props = Object.assign(
+    {
+      label: 'Foo',
+      name: 'spec-field'
+    },
+    customProps
+  );
+  const component = <TextField {...props} />;
 
   return {
     props: props,
-    wrapper: shallow(<TextField {...props} />)
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
 describe('TextField', function() {
   it('is an input field', () => {
-    const data = shallowRender();
+    const data = render();
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.is('input')).toBe(true);
@@ -25,7 +29,7 @@ describe('TextField', function() {
   });
 
   it('is a textarea', () => {
-    const data = shallowRender({ multiline: true });
+    const data = render({ multiline: true });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.is('textarea')).toBe(true);
@@ -34,54 +38,48 @@ describe('TextField', function() {
   });
 
   it('is a password field', () => {
-    const data = shallowRender({ type: 'password' });
+    const data = render({ type: 'password' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('type')).toBe('password');
   });
 
   it('is disabled', () => {
-    const data = shallowRender({ disabled: true });
+    const data = render({ disabled: true });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('disabled'))
-      .toBe(data.props.disabled);
+    expect(field.prop('disabled')).toBe(data.props.disabled);
   });
 
   it('has a defaultValue', () => {
-    const data = shallowRender({ defaultValue: 'Yay' });
+    const data = render({ defaultValue: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('defaultValue'))
-      .toBe(data.props.defaultValue);
-    expect(field.prop('value'))
-      .toBeUndefined();
+    expect(field.prop('defaultValue')).toBe(data.props.defaultValue);
+    expect(field.prop('value')).toBeUndefined();
   });
 
   it('has a value', () => {
-    const data = shallowRender({ value: 'Yay' });
+    const data = render({ value: 'Yay' });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('value'))
-      .toBe(data.props.value);
-    expect(field.prop('defaultValue'))
-      .toBeUndefined();
+    expect(field.prop('value')).toBe(data.props.value);
+    expect(field.prop('defaultValue')).toBeUndefined();
   });
 
   it('shows 5 rows of text', () => {
-    const data = shallowRender({
+    const data = render({
       multiline: true,
       rows: 5
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('rows'))
-      .toBe(data.props.rows);
+    expect(field.prop('rows')).toBe(data.props.rows);
   });
 
   it('has a unique id', () => {
-    const fieldData1 = shallowRender();
-    const fieldData2 = shallowRender();
+    const fieldData1 = render();
+    const fieldData2 = render();
     const field1 = fieldData1.wrapper.find('.ds-c-field').first();
     const label1 = fieldData1.wrapper.find('FormLabel').first();
     const field2 = fieldData2.wrapper.find('.ds-c-field').first();
@@ -93,28 +91,27 @@ describe('TextField', function() {
   });
 
   it('has a label', () => {
-    const data = shallowRender();
+    const data = render();
     const label = data.wrapper.find('FormLabel').first();
 
     expect(label.prop('children')).toBe(data.props.label);
   });
 
   it('has a hint', () => {
-    const data = shallowRender({ hint: '123' });
+    const data = render({ hint: '123' });
     const label = data.wrapper.find('FormLabel').first();
 
     expect(label.prop('hint')).toBe(data.props.hint);
   });
 
   it('adds className to root element', () => {
-    const data = shallowRender({ className: 'bar' });
+    const data = render({ className: 'bar' });
 
-    expect(data.wrapper.hasClass('bar'))
-      .toBe(true);
+    expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
   it('adds className to field', () => {
-    const data = shallowRender({ fieldClassName: 'bar' });
+    const data = render({ fieldClassName: 'bar' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.hasClass('ds-c-field')).toBe(true);
@@ -122,27 +119,57 @@ describe('TextField', function() {
   });
 
   it('adds className to label', () => {
-    const data = shallowRender({ labelClassName: 'bar' });
+    const data = render({ labelClassName: 'bar' });
 
-    expect(data.wrapper.find('FormLabel').hasClass('bar'))
-      .toBe(true);
+    expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
+  });
+
+  it('adds min/max input attributes', () => {
+    const data = render({
+      max: 10,
+      min: 1
+    });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.prop('max')).toBe(data.props.max);
+    expect(field.prop('min')).toBe(data.props.min);
+  });
+
+  it('returns reference to input field', () => {
+    let ref;
+    const data = render(
+      {
+        defaultValue: 'Yay',
+        fieldRef: el => {
+          ref = el;
+        }
+      },
+      true
+    );
+
+    expect(ref.value).toBe(data.props.defaultValue);
   });
 
   describe('has error', () => {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({ errorMessage: 'Error' });
+      data = render({ errorMessage: 'Error' });
     });
 
     it('passes error to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('errorMessage'))
-        .toBe(data.props.errorMessage);
+      expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(
+        data.props.errorMessage
+      );
     });
 
     it('adds error class to field', () => {
-      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--error'))
-        .toBe(true);
+      expect(
+        data.wrapper
+          .find('.ds-c-field')
+          .first()
+          .hasClass('ds-c-field--error')
+      ).toBe(true);
     });
 
     it('sets aria-describedby field attribute');
@@ -152,17 +179,20 @@ describe('TextField', function() {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({ inversed: true });
+      data = render({ inversed: true });
     });
 
     it('passes inversed to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('inversed'))
-        .toBe(true);
+      expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(true);
     });
 
     it('adds inversed class to field', () => {
-      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--inverse'))
-        .toBe(true);
+      expect(
+        data.wrapper
+          .find('.ds-c-field')
+          .first()
+          .hasClass('ds-c-field--inverse')
+      ).toBe(true);
     });
   });
 
@@ -170,20 +200,26 @@ describe('TextField', function() {
     let data;
 
     beforeEach(() => {
-      data = shallowRender({
+      data = render({
         onBlur: jest.fn(),
         onChange: jest.fn()
       });
     });
 
     it('calls onBlur', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('blur');
+      data.wrapper
+        .find('.ds-c-field')
+        .first()
+        .simulate('blur');
 
       expect(data.props.onBlur.mock.calls.length).toBe(1);
     });
 
     it('calls onChange', () => {
-      data.wrapper.find('.ds-c-field').first().simulate('change');
+      data.wrapper
+        .find('.ds-c-field')
+        .first()
+        .simulate('change');
 
       expect(data.props.onChange.mock.calls.length).toBe(1);
     });

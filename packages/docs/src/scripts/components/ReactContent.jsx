@@ -20,15 +20,15 @@ function ReactContent(props) {
     path = componentPathFromSource(props.source.path, props.reactComponent);
     docs = reactDoc[`${path}.jsx`];
     // There should only ever be one exported component definition
-    doc = (docs && docs.length) ? docs[0] : null;
+    doc = docs && docs.length ? docs[0] : null;
   }
 
-  if (doc) {
+  if (doc && doc.description) {
     content.push(
       <div
-        className='c-details ds-u-margin-y--2 ds-u-measure--wide'
-        dangerouslySetInnerHTML={{__html: doc.description}}
-        key='description'
+        className="c-details ds-u-margin-y--2 ds-u-measure--wide"
+        dangerouslySetInnerHTML={{ __html: doc.description }}
+        key="description"
       />
     );
   }
@@ -38,10 +38,12 @@ function ReactContent(props) {
       ? componentPathFromSource(props.source.path, props.reactExample)
       : path;
 
-    content.push(<ReactExample key='example' path={examplePath} />);
+    content.push(<ReactExample key="example" path={examplePath} />);
   }
 
-  if (doc) content.push(<ReactPropDocs key='propDocs' propDocs={doc.props} />);
+  if (doc && doc.props) {
+    content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  }
 
   return content;
 }

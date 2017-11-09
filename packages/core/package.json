@@ -11,6 +11,8 @@
   "dependencies": {
     "@cmsgov/design-system-support": "^1.3.0",
     "classnames": "^2.2.5",
+    "core-js": "^2.5.1",
+    "ev-emitter": "^1.1.1",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.0.0 || ^16.0.0",
     "react": "^15.0.0 || ^16.0.0",

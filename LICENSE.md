@@ -14,6 +14,7 @@ The icons in `core/src/images` are from [Font Awesome](http://fontawesome.io/) b
 
 - [Bourbon](http://bourbon.io/), copyright [thoughtbot](https://thoughtbot.com/), inc., under the [MIT license](https://github.com/thoughtbot/neat/blob/master/LICENSE.md).
 - [kss-node](https://github.com/kss-node/kss-node), copyright Hugh Kennedy, John Albin Wilkins, et. al.
+- [ev-emitter](https://github.com/metafizzy/ev-emitter)
 
 #### Full license text for the MIT licensed files:
 

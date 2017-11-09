@@ -10,4 +10,5 @@
 @import 'Table/Table';
 @import 'Tabs/Tabs';
 @import 'TextField/TextField';
+@import 'DateField/DateField'; // needs imported after TextField since it modifies it
 @import 'VerticalNav/VerticalNav';

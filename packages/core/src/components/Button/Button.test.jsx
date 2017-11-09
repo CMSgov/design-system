@@ -1,9 +1,9 @@
 import Button from './Button.jsx';
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 /* eslint-disable react/display-name, react/prop-types */
-const Link = (props) => {
+const Link = props => {
   return <div {...props}>{props.children}</div>;
 };
 
@@ -42,7 +42,7 @@ describe('Button', () => {
   });
 
   it('renders as submit button', () => {
-    const props = {type: 'submit'};
+    const props = { type: 'submit' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.prop('type')).toBe('submit');
   });
@@ -72,14 +72,14 @@ describe('Button', () => {
   });
 
   it('appends additional class names', () => {
-    const props = {className: 'foobar'};
+    const props = { className: 'foobar' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.hasClass('foobar')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
   });
 
   it('renders as a success button', () => {
-    const props = {variation: 'success'};
+    const props = { variation: 'success' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
@@ -88,7 +88,7 @@ describe('Button', () => {
   });
 
   it('renders as a small button', () => {
-    const props = {size: 'small'};
+    const props = { size: 'small' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
@@ -131,7 +131,7 @@ describe('Button', () => {
   });
 
   it('applies inverse suffix to default button class', () => {
-    const props = {inverse: true};
+    const props = { inverse: true };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);

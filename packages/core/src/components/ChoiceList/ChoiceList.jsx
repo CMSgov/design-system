@@ -26,12 +26,7 @@ export class ChoiceList extends React.PureComponent {
     const selectProps = {};
 
     const choices = this.props.choices.map(choice => {
-      const {
-        checked,
-        defaultChecked,
-        label,
-        ...props
-      } = choice;
+      const { checked, defaultChecked, label, ...props } = choice;
 
       if (type === 'select') {
         if (checked) selectProps.value = props.value;
@@ -127,7 +122,7 @@ export class ChoiceList extends React.PureComponent {
   render() {
     const type = this.type();
     const classes = classNames(
-      {'ds-c-fieldset': type !== 'select'},
+      { 'ds-c-fieldset': type !== 'select' },
       this.props.className
     );
     const RootComponent = type === 'select' ? 'div' : 'fieldset';
@@ -141,6 +136,7 @@ export class ChoiceList extends React.PureComponent {
           errorMessage={this.props.errorMessage}
           fieldId={this.id()}
           hint={this.props.hint}
+          requirementLabel={this.props.requirementLabel}
           inversed={this.props.inversed}
         >
           {this.props.label}
@@ -162,7 +158,8 @@ ChoiceList.propTypes = {
       defaultChecked: Choice.propTypes.defaultChecked,
       disabled: Choice.propTypes.disabled,
       label: Choice.propTypes.children,
-      value: Choice.propTypes.value
+      value: Choice.propTypes.value,
+      requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     })
   ).isRequired,
   /**
@@ -178,6 +175,10 @@ ChoiceList.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Applies the "inverse" UI theme
    */

@@ -33,16 +33,18 @@ function createSpecificityGraph(stats, filename) {
   const specificity = stats.selectors.getSpecificityGraph();
   const selectors = stats.selectors.values;
   const chartRows = specificity.map((val, index) => {
-    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
+    const tooltip = `<strong>${val}</strong><br /><code>${selectors[
+      index
+    ]}</code>`;
     return [index, val, tooltip];
   });
 
-  return fs.readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
+  return fs
+    .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
     .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
     .then(body => {
       if (!fs.existsSync(tmpPath)) {
-        fs.mkdir(tmpPath)
-          .then(() => body);
+        fs.mkdir(tmpPath).then(() => body);
       }
 
       return body;
@@ -58,15 +60,20 @@ function createSpecificityGraph(stats, filename) {
  * the current branch to identify a change in a particular stat.
  */
 function getMasterContent(filepath) {
-  return git.repos.getContent({
-    owner: repoParts[0],
-    repo: repoParts[1],
-    path: filepath
-  }).catch(() => {
-    // Catch connection errors
-    dutil.logError('getMasterContent', 'Connection error. Skipping master branch stats.');
-    return {};
-  });
+  return git.repos
+    .getContent({
+      owner: repoParts[0],
+      repo: repoParts[1],
+      path: filepath
+    })
+    .catch(() => {
+      // Catch connection errors
+      dutil.logError(
+        'getMasterContent',
+        'Connection error. Skipping master branch stats.'
+      );
+      return {};
+    });
 }
 
 /**
@@ -81,18 +88,27 @@ function getCSSStats(cssPath, skipmaster = false) {
     master: {}
   };
 
-  return fs.readFile(cssPath, 'utf8')
+  return fs
+    .readFile(cssPath, 'utf8')
     .then(css => cssstats(css))
-    .then(data => { stats.current = data; })
+    .then(data => {
+      stats.current = data;
+    })
     .then(() => {
       // Conditionally check the file on the master branch. Allowing this step to
       // be skipped enables us to run it on files that don't yet exist on master
       if (!skipmaster) {
         return getMasterContent(cssPath)
-          .then(response => Buffer.from(response.data.content, 'base64').toString())
+          .then(response =>
+            Buffer.from(response.data.content, 'base64').toString()
+          )
           .then(css => cssstats(css))
-          .then(data => { stats.master = data; })
-          .catch(() => { stats.master = stats.current; });
+          .then(data => {
+            stats.master = data;
+          })
+          .catch(() => {
+            stats.master = stats.current;
+          });
       } else {
         dutil.logMessage('getCSSStats', 'Not checking against master branch');
         stats.master = stats.current;
@@ -107,15 +123,14 @@ function getCSSStats(cssPath, skipmaster = false) {
 function getCurrentBranchFontSizes() {
   const dir = path.resolve(__dirname, `../../../${fontsDir}`);
 
-  return fs.readdir(dir)
+  return fs
+    .readdir(dir)
     .then(files => {
       return Promise.all(
         // Array of .woff2 file sizes
-        files.filter(name => name.match(/\.woff2$/))
-          .map(name => {
-            return fs.stat(path.resolve(dir, name))
-              .then(stats => stats.size);
-          })
+        files.filter(name => name.match(/\.woff2$/)).map(name => {
+          return fs.stat(path.resolve(dir, name)).then(stats => stats.size);
+        })
       );
     })
     .then(_.sum);
@@ -137,8 +152,9 @@ function getMasterBranchFontSizes() {
 function logCSSStats(branchStats, filename) {
   logCSSStatsTable(branchStats);
 
-  return createSpecificityGraph(branchStats.current, filename)
-    .then(() => branchStats);
+  return createSpecificityGraph(branchStats.current, filename).then(
+    () => branchStats
+  );
 }
 
 /**
@@ -168,7 +184,8 @@ function logCSSStatsTable(stats) {
   const fontSizeValues = getValues(
     branch => bytes(stats[branch].totalFontFileSize),
     true,
-    () => bytes(stats.current.totalFontFileSize - stats.master.totalFontFileSize)
+    () =>
+      bytes(stats.current.totalFontFileSize - stats.master.totalFontFileSize)
   );
 
   table.push(
@@ -196,20 +213,26 @@ a stylesheet`
     ),
     row(
       'Uniq. font sizes',
-      getValues(branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length),
+      getValues(
+        branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length
+      ),
       `An excessive number of font sizes (10+)
 indicates an overly-complex type scale`
     ),
     row(
       'Uniq. font\nfamilies',
-      getValues(branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length),
+      getValues(
+        branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length
+      ),
       `An excessive number of font families
 (3+) indicates an inconsistent and
 potentially slow-loading design`
     ),
     row(
       'Uniq. colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('color')),
+      getValues(branch =>
+        stats[branch].declarations.getUniquePropertyCount('color')
+      ),
       `An excessive number of colors
 indicates an overly-complex color
 scheme, or inconsistent use of color
@@ -218,7 +241,9 @@ developers on design documents`
     ),
     row(
       'Uniq. bg colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('background-color')),
+      getValues(branch =>
+        stats[branch].declarations.getUniquePropertyCount('background-color')
+      ),
       'See above'
     ),
     row(
@@ -232,7 +257,9 @@ criteria is met by the device`
     ),
     row(
       'Total vendor\nprefixes',
-      getValues(branch => stats[branch].declarations.getVendorPrefixed().length),
+      getValues(
+        branch => stats[branch].declarations.getVendorPrefixed().length
+      ),
       `Vendor prefixes should ideally decline
 over time as browser support improves`
     )
@@ -257,14 +284,17 @@ function row(label, values, description) {
 // IMPORTANT: This needs to be called AFTER any method that relies on the
 // functions within the object.
 function saveCurrentCSSStats(branchStats, filename) {
-  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.${filename}.json`);
+  const outputPath = path.resolve(
+    __dirname,
+    '../../../tmp',
+    `cssstats.${filename}.json`
+  );
   const body = JSON.stringify(branchStats.current);
 
-  return fs.writeFile(outputPath, body, 'utf8')
-    .then(() => {
-      dutil.logMessage('cssstats', `Exported cssstats: ${outputPath}`);
-      return branchStats;
-    });
+  return fs.writeFile(outputPath, body, 'utf8').then(() => {
+    dutil.logMessage('cssstats', `Exported cssstats: ${outputPath}`);
+    return branchStats;
+  });
 }
 
 /**
@@ -274,13 +304,17 @@ function saveCurrentCSSStats(branchStats, filename) {
  */
 function setTotalFontFileSize(branchStats) {
   return getCurrentBranchFontSizes()
-    .then(total => { branchStats.current.totalFontFileSize = total; })
+    .then(total => {
+      branchStats.current.totalFontFileSize = total;
+    })
     .then(getMasterBranchFontSizes)
-    .then(total => { branchStats.master.totalFontFileSize = total; })
+    .then(total => {
+      branchStats.master.totalFontFileSize = total;
+    })
     .then(() => branchStats);
 }
 
-module.exports = (gulp) => {
+module.exports = gulp => {
   gulp.task('stats', () => {
     dutil.logMessage('🔍 ', 'Gathering stats and comparing against master');
     // Run CSSStats on another CSS file by running:

@@ -4,7 +4,8 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const Docs = require('../../../packages/docs/src/scripts/Docs').default;
 const path = require('path');
-const processMarkup = require('../../../packages/docs/src/scripts/shared/processMarkup').default;
+const processMarkup = require('../../../packages/docs/src/scripts/shared/processMarkup')
+  .default;
 const recursive = require('mkdir-recursive');
 
 /**
@@ -88,14 +89,13 @@ function generateDocPage(routes, page, rootPath) {
 }
 
 function generateMarkupPages(page, rootPath) {
-  return generateMarkupPage(page, null, rootPath)
-    .then(() => {
-      if (page.modifiers) {
-        return page.modifiers.map(modifier =>
-          generateMarkupPage(page, modifier, rootPath)
-        );
-      }
-    });
+  return generateMarkupPage(page, null, rootPath).then(() => {
+    if (page.modifiers) {
+      return page.modifiers.map(modifier =>
+        generateMarkupPage(page, modifier, rootPath)
+      );
+    }
+  });
 }
 
 /**
@@ -142,10 +142,17 @@ function generateMarkupPage(page, modifier, rootPath) {
  * @return {Boolean} Should the file be regenerated?
  */
 function checkCache(html, path) {
-  return fs.readFile(path, 'utf8')
+  return fs
+    .readFile(path, 'utf8')
     .then(data => {
-      const fileHash = crypto.createHash('md5').update(data).digest('hex');
-      const htmlHash = crypto.createHash('md5').update(html).digest('hex');
+      const fileHash = crypto
+        .createHash('md5')
+        .update(data)
+        .digest('hex');
+      const htmlHash = crypto
+        .createHash('md5')
+        .update(html)
+        .digest('hex');
       return fileHash !== htmlHash;
     })
     .catch(() => true); // File doesn't exist
@@ -163,7 +170,7 @@ function docsPath(uri) {
 
 function saveToFile(html, pathObj, retry = true) {
   return new Promise(resolve => {
-    recursive.mkdir(pathObj.dir, (err) => {
+    recursive.mkdir(pathObj.dir, err => {
       if (err && retry) {
         // A race condition can sometimes occur where a directory is created
         // in the middle of this method's execution, resulting in a "file
@@ -172,8 +179,7 @@ function saveToFile(html, pathObj, retry = true) {
         return saveToFile(html, pathObj, false).then(resolve);
       }
 
-      fs.writeFile(pathObj.path, html)
-        .then(() => resolve(true));
+      fs.writeFile(pathObj.path, html).then(() => resolve(true));
     });
   });
 }
@@ -189,8 +195,12 @@ function seo(page, rootPath = '') {
 
   if (page.referenceURI.replace(rootPath.replace(/\/$/, ''), '') === '') {
     // Homepage
-    html.push('<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework" />');
-    html.push('<title>CMS Design System | An open source design and front-end toolkit</title>');
+    html.push(
+      '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
+    );
+    html.push(
+      '<title>CMS Design System | An open source design and front-end toolkit</title>'
+    );
   } else {
     html.push(`<title>${page.header} - CMS Design System</title>`);
   }
@@ -203,14 +213,13 @@ function seo(page, rootPath = '') {
  * are the same, no action is taken on the file.
  */
 function updateFile(html, pathObj) {
-  return checkCache(html, pathObj.path)
-    .then(changed => {
-      if (changed) {
-        return saveToFile(html, pathObj);
-      }
+  return checkCache(html, pathObj.path).then(changed => {
+    if (changed) {
+      return saveToFile(html, pathObj);
+    }
 
-      return Promise.resolve(false);
-    });
+    return Promise.resolve(false);
+  });
 }
 
 module.exports = generatePage;

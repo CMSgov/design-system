@@ -1,5 +1,6 @@
 // Visualize grid layout
-.preview__grid .ds-l-row > [class*='ds-l-'] {
+.preview__grid .ds-l-row > [class*='ds-l-'],
+.preview__grid .ds-l-form-row > [class*='ds-l-'] {
   background-color: $color-primary-alt-lightest;
   border: 1px dashed $color-primary-alt;
   padding-bottom: $spacer-2;

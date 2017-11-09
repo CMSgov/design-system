@@ -10,13 +10,13 @@ const componentNames = Object.keys(components);
 function getComponentFilenames(directoryPaths) {
   return Promise.all(
     directoryPaths.map(directoryPath =>
-      fs.readdir(directoryPath)
-        .then(files =>
-          // This gave us all files including tests, examples, and Scss files.
-          // We only want the component file though.
-          files.filter(name => name.match(/^([a-z]+)\.jsx?$/i))
-            .map(name => name.replace(/\.jsx?/, ''))
-        )
+      fs.readdir(directoryPath).then(files =>
+        // This gave us all files including tests, examples, and Scss files.
+        // We only want the component file though.
+        files
+          .filter(name => name.match(/^([a-z]+)\.jsx?$/i))
+          .map(name => name.replace(/\.jsx?/, ''))
+      )
     )
   ).then(nameGroups => {
     let names = [];
@@ -31,25 +31,19 @@ function getComponentFilenames(directoryPaths) {
  * Look in the components/ directory and return the paths of only the subfolders
  */
 function getDirectories(paths) {
-  return paths.filter(filePath =>
-    fs.lstatSync(filePath).isDirectory()
-  );
+  return paths.filter(filePath => fs.lstatSync(filePath).isDirectory());
 }
 
 describe('Components index', () => {
   it('exports all components', () => {
-    return fs.readdir(path.resolve(__dirname, '../'))
-      .then(files =>
-        files.map(name =>
-          path.resolve(__dirname, `../${name}`)
-        )
-      )
+    return fs
+      .readdir(path.resolve(__dirname, '../'))
+      .then(files => files.map(name => path.resolve(__dirname, `../${name}`)))
       .then(getDirectories)
       .then(getComponentFilenames)
       .then(names => {
         names.forEach(name => {
-          expect(componentNames)
-            .toEqual(expect.arrayContaining([name]));
+          expect(componentNames).toEqual(expect.arrayContaining([name]));
         });
       });
   });

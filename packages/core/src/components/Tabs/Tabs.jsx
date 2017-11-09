@@ -1,8 +1,16 @@
+import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
+
+/** CONSTANTS
+ * Adding in the constant values for keycodes
+ * to handle onKeyDown events
+ */
+const LEFT_ARROW = 'ArrowLeft';
+const RIGHT_ARROW = 'ArrowRight';
 
 /**
  * Get the id of the first TabPanel child
@@ -58,26 +66,59 @@ export class Tabs extends React.PureComponent {
     }
 
     this.handleTabClick = this.handleTabClick.bind(this);
+    this.handleTabKeyDown = this.handleTabKeyDown.bind(this);
     this.state = { selectedId };
   }
 
   componentDidUpdate(_, prevState) {
-    if (typeof this.props.onChange === 'function' &&
-        this.state.selectedId !== prevState.selectedId) {
-      this.props.onChange(this.state.selectedId, prevState.selectedId);
+    if (this.state.selectedId !== prevState.selectedId) {
+      if (typeof this.props.onChange === 'function') {
+        this.props.onChange(this.state.selectedId, prevState.selectedId);
+      }
+      this.tabs[this.state.selectedId].focus();
+      this.replaceState(this.tabs[this.state.selectedId].href);
     }
   }
 
-  handleTabClick(evt, panelId, tabId, href) {
+  handleTabClick(evt, panelId) {
     evt.preventDefault();
     this.setState({ selectedId: panelId });
-    this.replaceState(href);
   }
 
-  // Filter children and return only TabPanel components
+  handleTabKeyDown(evt, panelId) {
+    const tabs = this.panelChildren();
+    const tabIndex = tabs.findIndex(elem => elem.props.id === panelId);
+    let target;
+
+    switch (evt.key) {
+      case LEFT_ARROW:
+        evt.preventDefault();
+        if (tabIndex === 0) {
+          target = tabs[tabs.length - 1].props.id;
+        } else {
+          target = tabs[tabIndex - 1].props.id;
+        }
+        this.setState({ selectedId: target });
+        break;
+      case RIGHT_ARROW:
+        evt.preventDefault();
+        if (tabIndex === tabs.length - 1) {
+          target = tabs[0].props.id;
+        } else {
+          target = tabs[tabIndex + 1].props.id;
+        }
+        this.setState({ selectedId: target });
+        break;
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Filter children and return only TabPanel components
+   */
   panelChildren() {
-    return React.Children.toArray(this.props.children)
-      .filter(isTabPanel);
+    return React.Children.toArray(this.props.children).filter(isTabPanel);
   }
 
   renderChildren() {
@@ -86,15 +127,12 @@ export class Tabs extends React.PureComponent {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(
-          child,
-          {
-            selected: this.state.selectedId === child.props.id,
-            tab: undefined,
-            tabHref: undefined,
-            tabId: panelTabId(child)
-          }
-        );
+        return React.cloneElement(child, {
+          selected: this.state.selectedId === child.props.id,
+          tab: undefined,
+          tabHref: undefined,
+          tabId: panelTabId(child)
+        });
       }
 
       return child;
@@ -105,6 +143,8 @@ export class Tabs extends React.PureComponent {
     const panels = this.panelChildren();
     const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
 
+    this.tabs = {};
+
     const tabs = panels.map(panel => {
       return (
         <Tab
@@ -113,7 +153,11 @@ export class Tabs extends React.PureComponent {
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
+          onKeyDown={this.handleTabKeyDown}
           panelId={panel.props.id}
+          ref={tab => {
+            this.tabs[panel.props.id] = tab;
+          }}
           selected={this.state.selectedId === panel.props.id}
         >
           {panel.props.tab}
@@ -121,7 +165,11 @@ export class Tabs extends React.PureComponent {
       );
     });
 
-    return <div className={listClasses} role='tablist'>{tabs}</div>;
+    return (
+      <div className={listClasses} role="tablist">
+        {tabs}
+      </div>
+    );
   }
 
   /**

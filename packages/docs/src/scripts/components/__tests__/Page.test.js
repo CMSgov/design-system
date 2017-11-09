@@ -1,6 +1,6 @@
 import Page from '../Page';
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Page', () => {
   describe('when top-level page', () => {

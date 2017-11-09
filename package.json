@@ -1,7 +1,8 @@
 {
   "name": "design-system",
   "private": true,
-  "description": "A shared set of design and code elements for creating accessible and consistent websites",
+  "description":
+    "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
     "build": "NODE_ENV=production gulp build --env=production",
@@ -9,17 +10,24 @@
     "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
     "g": "yarn generate",
+    "precommit": "lint-staged",
+    "pretest": "gulp docs:react",
     "postinstall": "lerna bootstrap --npm-client=yarn",
+    "posttest": "npm run lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "npm run start -- --theme",
-    "test": "NODE_ENV=test gulp docs:react && jest && gulp lint --env=test",
+    "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
-    "lint": "yarn run gulp lint"
+    "update-snapshots": "NODE_ENV=test jest -u",
+    "lint":
+      "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
-    "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
-    "autoprefixer": "^7.1.4",
+    "@cmsgov/eslint-config-design-system":
+      "file:./packages/eslint-config-design-system",
+    "@cmsgov/stylelint-config-design-system":
+      "file:./packages/stylelint-config-design-system",
+    "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.2",
@@ -37,20 +45,19 @@
     "cssstats": "^3.1.0",
     "del": "^3.0.0",
     "ejs": "^2.5.7",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.1",
-    "eslint": "^4.8.0",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "eslint": "^4.9.0",
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.2.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
-    "github": "^11.0.0",
+    "github": "^12.0.1",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
     "gulp-changed": "^3.1.0",
-    "gulp-changed-in-place": "^2.2.0",
+    "gulp-changed-in-place": "^2.3.0",
     "gulp-count": "^0.3.0",
-    "gulp-eslint": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-merge-json": "^1.2.0",
     "gulp-postcss": "^7.0.0",
@@ -58,9 +65,11 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-stylelint": "^5.0.0",
     "gulp-util": "^3.0.8",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.4.0",
+    "lint-staged": "^4.3.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
     "mkdir-recursive": "^0.3.0",
@@ -69,21 +78,23 @@
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^11.0.0",
     "postcss-url": "^7.1.2",
-    "prismjs": "^1.8.1",
+    "prettier": "^1.7.4",
+    "prismjs": "^1.8.3",
     "react": "^16.0.0",
     "react-docgen": "^2.19.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",
-    "recast": "^0.12.6",
+    "recast": "^0.12.7",
     "run-sequence": "^2.2.0",
-    "stylelint": "^8.1.1",
+    "stylelint": "^8.2.0",
+    "stylelint-config-prettier": "^1.0.2",
     "through2": "^2.0.3",
     "tota11y": "^0.1.6",
     "vinyl-source-stream": "^1.1.0",
-    "webpack": "^3.7.1",
+    "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.19.1",
-    "yargs": "^9.0.1",
+    "webpack-hot-middleware": "^2.20.0",
+    "yargs": "^10.0.3",
     "yo": "^2.0.0"
   },
   "engines": {
@@ -101,6 +112,9 @@
       "<rootDir>/packages/themes/*/node_modules/",
       "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
     ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["prettier --write", "eslint --fix", "git add"]
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.5.3"

@@ -25,10 +25,10 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 ### Getting started
 
 1. `yarn install`
-1. `yarn bootstrap:yarn`
+   - This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 1. `yarn start`
 
-The `bootstrap:yarn` command runs [Lerna](https://lernajs.io/) which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies. If you're using `npm` rather than `yarn`, there is also a `bootstrap:npm` command.
+_Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
 
 ### Scripts
 
@@ -50,6 +50,8 @@ These scripts can all be run from the root level of the repo:
   - Lints Sass using stylelint
 - `yarn test:watch`
   - Runs JS unit tests and will continue to run tests as files change
+- `yarn update-snapshots`
+  - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn lint`
   - Runs just the linting portion of the tests
 
@@ -66,19 +68,9 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 
 Here are a few guidelines to follow when submitting a pull request:
 
-- Branch off of `staging`: `git checkout -b username/branch-name`
+- Branch off of `master`: `git checkout -b username/branch-name`
 - Commit your changes
-- Make a pull request against the `staging` branch
-
-## Merging pull requests
-
-#### Staging
-
-Use the "**Squash and merge**" option when merging pull requests into the `staging` branch. This keeps our history clean and makes it easier on us when it comes time to create a new release.
-
-#### Master
-
-Use the "**Create a merge commit**" option when merging `staging` into `master`. If the pull request includes a version bump, set the commit title to the version number and include the PR # in the commit description.
+- Make a pull request against the `master` branch
 
 ## Licenses and attribution
 

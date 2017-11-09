@@ -1,14 +1,17 @@
 import React from 'react';
 import TabPanel from './TabPanel';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 const defaultChildren = 'Content';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign({
-    id: 'panel-1',
-    tabId: 'tab-1'
-  }, customProps);
+  const props = Object.assign(
+    {
+      id: 'panel-1',
+      tabId: 'tab-1'
+    },
+    customProps
+  );
 
   return {
     props: props,

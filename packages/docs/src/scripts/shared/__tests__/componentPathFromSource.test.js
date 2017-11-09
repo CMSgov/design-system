@@ -10,7 +10,10 @@ describe('componentPathFromSource', () => {
   });
 
   it('returns component path', () => {
-    const path = componentPathFromSource(sourcePath, 'core/src/components/Foo/FooBar');
+    const path = componentPathFromSource(
+      sourcePath,
+      'core/src/components/Foo/FooBar'
+    );
 
     expect(path).toBe('core/src/components/Foo/FooBar');
   });

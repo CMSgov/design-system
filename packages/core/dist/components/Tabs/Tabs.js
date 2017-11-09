@@ -7,6 +7,8 @@ exports.Tabs = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+require('core-js/fn/array/find-index');
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -34,6 +36,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/** CONSTANTS
+ * Adding in the constant values for keycodes
+ * to handle onKeyDown events
+ */
+var LEFT_ARROW = 'ArrowLeft';
+var RIGHT_ARROW = 'ArrowRight';
 
 /**
  * Get the id of the first TabPanel child
@@ -95,6 +104,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
     }
 
     _this.handleTabClick = _this.handleTabClick.bind(_this);
+    _this.handleTabKeyDown = _this.handleTabKeyDown.bind(_this);
     _this.state = { selectedId: selectedId };
     return _this;
   }
@@ -102,19 +112,56 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   _createClass(Tabs, [{
     key: 'componentDidUpdate',
     value: function componentDidUpdate(_, prevState) {
-      if (typeof this.props.onChange === 'function' && this.state.selectedId !== prevState.selectedId) {
-        this.props.onChange(this.state.selectedId, prevState.selectedId);
+      if (this.state.selectedId !== prevState.selectedId) {
+        if (typeof this.props.onChange === 'function') {
+          this.props.onChange(this.state.selectedId, prevState.selectedId);
+        }
+        this.tabs[this.state.selectedId].focus();
+        this.replaceState(this.tabs[this.state.selectedId].href);
       }
     }
   }, {
     key: 'handleTabClick',
-    value: function handleTabClick(evt, panelId, tabId, href) {
+    value: function handleTabClick(evt, panelId) {
       evt.preventDefault();
       this.setState({ selectedId: panelId });
-      this.replaceState(href);
+    }
+  }, {
+    key: 'handleTabKeyDown',
+    value: function handleTabKeyDown(evt, panelId) {
+      var tabs = this.panelChildren();
+      var tabIndex = tabs.findIndex(function (elem) {
+        return elem.props.id === panelId;
+      });
+      var target = void 0;
+
+      switch (evt.key) {
+        case LEFT_ARROW:
+          evt.preventDefault();
+          if (tabIndex === 0) {
+            target = tabs[tabs.length - 1].props.id;
+          } else {
+            target = tabs[tabIndex - 1].props.id;
+          }
+          this.setState({ selectedId: target });
+          break;
+        case RIGHT_ARROW:
+          evt.preventDefault();
+          if (tabIndex === tabs.length - 1) {
+            target = tabs[0].props.id;
+          } else {
+            target = tabs[tabIndex + 1].props.id;
+          }
+          this.setState({ selectedId: target });
+          break;
+        default:
+          break;
+      }
     }
 
-    // Filter children and return only TabPanel components
+    /**
+     * Filter children and return only TabPanel components
+     */
 
   }, {
     key: 'panelChildren',
@@ -150,6 +197,8 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
       var panels = this.panelChildren();
       var listClasses = (0, _classnames2.default)('ds-c-tabs', this.props.tablistClassName);
 
+      this.tabs = {};
+
       var tabs = panels.map(function (panel) {
         return _react2.default.createElement(
           _Tab2.default,
@@ -159,7 +208,11 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
             id: panelTabId(panel),
             key: panel.key,
             onClick: _this3.handleTabClick,
+            onKeyDown: _this3.handleTabKeyDown,
             panelId: panel.props.id,
+            ref: function ref(tab) {
+              _this3.tabs[panel.props.id] = tab;
+            },
             selected: _this3.state.selectedId === panel.props.id
           },
           panel.props.tab

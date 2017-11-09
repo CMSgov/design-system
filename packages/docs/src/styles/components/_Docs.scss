@@ -8,8 +8,12 @@
 }
 
 @keyframes lock {
-  from { position: static; }
-  to { position: fixed; }
+  from {
+    position: static;
+  }
+  to {
+    position: fixed;
+  }
 }
 
 .docs__toggle {

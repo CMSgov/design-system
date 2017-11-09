@@ -14,7 +14,7 @@ const through = require('through2');
 // from the merged documentation's JSON object.
 function getPropertyName(nameAfter, filePath) {
   if (!nameAfter) return path.basename(filePath);
-  let rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
+  const rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
   return filePath.match(rx)[1];
 }
 

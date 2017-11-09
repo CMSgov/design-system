@@ -1,0 +1,584 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateField has custom yearMax and yearMin 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <legend
+    className="ds-c-label"
+    htmlFor={undefined}
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Date
+      </span>
+    </span>
+    <span
+      className="ds-c-field__hint"
+    >
+      For example: 4 25 1986
+    </span>
+  </legend>
+  <div
+    className="ds-l-form-row"
+  >
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Month
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--month"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="12"
+        min="1"
+        name="month"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Day
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--day"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="31"
+        min="1"
+        name="day"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Year
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--year"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max={2000}
+        min="1990"
+        name="year"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+  </div>
+</fieldset>
+`;
+
+exports[`DateField has errorMessage 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <legend
+    className="ds-c-label"
+    htmlFor={undefined}
+  >
+    <span
+      className="ds-u-font-weight--bold"
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Date
+      </span>
+    </span>
+    <span
+      className="ds-c-field__hint ds-u-color--error"
+      id="undefined-message"
+      role="alert"
+    >
+      This is required.
+    </span>
+    <span
+      className="ds-c-field__hint"
+    >
+      For example: 4 25 1986
+    </span>
+  </legend>
+  <div
+    className="ds-l-form-row"
+  >
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Month
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--month"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="12"
+        min="1"
+        name="month"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Day
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--day"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="31"
+        min="1"
+        name="day"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Year
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--year"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max={undefined}
+        min={1900}
+        name="year"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+  </div>
+</fieldset>
+`;
+
+exports[`DateField has requirementLabel 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <legend
+    className="ds-c-label"
+    htmlFor={undefined}
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Date
+      </span>
+    </span>
+    <span
+      className="ds-c-field__hint"
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Optional
+      </span>
+       
+      For example: 4 25 1986
+    </span>
+  </legend>
+  <div
+    className="ds-l-form-row"
+  >
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Month
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--month"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="12"
+        min="1"
+        name="month"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Day
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--day"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="31"
+        min="1"
+        name="day"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Year
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--year"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max={undefined}
+        min={1900}
+        name="year"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+  </div>
+</fieldset>
+`;
+
+exports[`DateField is inversed 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <legend
+    className="ds-c-label"
+    htmlFor={undefined}
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Date
+      </span>
+    </span>
+    <span
+      className="ds-c-field__hint ds-c-field__hint--inverse"
+    >
+      For example: 4 25 1986
+    </span>
+  </legend>
+  <div
+    className="ds-l-form-row"
+  >
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Month
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--inverse ds-c-field--month"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="12"
+        min="1"
+        name="month"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Day
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--inverse ds-c-field--day"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="31"
+        min="1"
+        name="day"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Year
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--inverse ds-c-field--year"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max={undefined}
+        min={1900}
+        name="year"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+  </div>
+</fieldset>
+`;
+
+exports[`DateField renders with all defaultProps 1`] = `
+<fieldset
+  className="ds-c-fieldset"
+>
+  <legend
+    className="ds-c-label"
+    htmlFor={undefined}
+  >
+    <span
+      className={undefined}
+    >
+      <span
+        className="ds-u-font-weight--bold"
+      >
+        Date
+      </span>
+    </span>
+    <span
+      className="ds-c-field__hint"
+    >
+      For example: 4 25 1986
+    </span>
+  </legend>
+  <div
+    className="ds-l-form-row"
+  >
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Month
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--month"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="12"
+        min="1"
+        name="month"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Day
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--day"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max="31"
+        min="1"
+        name="day"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+    <div
+      className="ds-u-clearfix ds-l-col--auto"
+    >
+      <label
+        className="ds-c-label ds-u-margin-top--1"
+        htmlFor="textfield_snapshot"
+      >
+        <span
+          className={undefined}
+        >
+          Year
+        </span>
+      </label>
+      <input
+        className="ds-c-field ds-c-field--year"
+        defaultValue={undefined}
+        disabled={undefined}
+        id="textfield_snapshot"
+        max={undefined}
+        min={1900}
+        name="year"
+        onBlur={undefined}
+        onChange={undefined}
+        rows={undefined}
+        type="number"
+        value={undefined}
+      />
+    </div>
+  </div>
+</fieldset>
+`;

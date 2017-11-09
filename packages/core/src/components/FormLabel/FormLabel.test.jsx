@@ -1,12 +1,12 @@
 import FormLabel from './FormLabel';
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('FormLabel', () => {
   const labelText = 'Hello world';
 
   it('renders label text', () => {
-    const props = {fieldId: 'name'};
+    const props = { fieldId: 'name' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper.text()).toBe(labelText);
@@ -29,14 +29,12 @@ describe('FormLabel', () => {
   });
 
   it('renders hint string', () => {
-    const props = {hint: 'President #44'};
+    const props = { hint: 'President #44' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
     const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.text())
-      .toBe(props.hint);
-    expect(hint.hasClass('ds-c-field__hint--inverse'))
-      .toBe(false);
+    expect(hint.text()).toBe(props.hint);
+    expect(hint.hasClass('ds-c-field__hint--inverse')).toBe(false);
   });
 
   it('renders hint node', () => {
@@ -46,12 +44,40 @@ describe('FormLabel', () => {
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
     const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.html())
-      .toMatch(/<strong>/);
+    expect(hint.html()).toMatch(/<strong>/);
+  });
+
+  it('renders requirementLabel string', () => {
+    const props = {
+      requirementLabel: 'Optional.'
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+    const boldWrapper = hint.children().first();
+
+    expect(hint.text()).toEqual('Optional.');
+    expect(boldWrapper.hasClass('ds-u-font-weight--bold')).toBe(true);
+  });
+
+  it('renders requirementLabel node', () => {
+    const props = {
+      requirementLabel: <em>It is really optional</em>
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const hint = wrapper.find('.ds-c-field__hint');
+
+    expect(hint.html()).toMatch(/<em>/);
+    expect(hint.text()).toEqual('It is really optional');
+    expect(
+      hint
+        .children()
+        .first()
+        .hasClass('ds-u-font-weight--bold')
+    ).toEqual(false);
   });
 
   it('renders as a legend element', () => {
-    const props = {component: 'legend'};
+    const props = { component: 'legend' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper.is('legend')).toBe(true);
@@ -64,8 +90,12 @@ describe('FormLabel', () => {
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.find('.ds-c-field__hint').first().hasClass('ds-c-field__hint--inverse'))
-      .toBe(true);
+    expect(
+      wrapper
+        .find('.ds-c-field__hint')
+        .first()
+        .hasClass('ds-c-field__hint--inverse')
+    ).toBe(true);
   });
 
   it('supports additional classNames', () => {

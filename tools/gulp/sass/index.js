@@ -50,10 +50,12 @@ module.exports = (gulp, shared) => {
 
     if (!cwd.match(/\/docs\//)) {
       // inline/base64 images
-      postcssPlugins.push(postcssInliner({
-        assetPaths: [path.resolve(__dirname, `../../../${cwd}/src/`)],
-        strict: true
-      }));
+      postcssPlugins.push(
+        postcssInliner({
+          assetPaths: [path.resolve(__dirname, `../../../${cwd}/src/`)],
+          strict: true
+        })
+      );
     }
 
     return gulp
@@ -71,7 +73,7 @@ module.exports = (gulp, shared) => {
       .pipe(postcss(postcssPlugins))
       .pipe(gulp.dest(dest))
       .pipe(count(`## Sass files processed in ${cwd}`))
-      .pipe(shared.browserSync.stream({match: '**/public/styles/*.css'})); // Auto-inject into docs
+      .pipe(shared.browserSync.stream({ match: '**/public/styles/*.css' })); // Auto-inject into docs
   }
 
   // Empty the vendor directory to ensure unused files aren't kept around
@@ -86,47 +88,46 @@ module.exports = (gulp, shared) => {
       './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
     ];
 
-    return gulp
-      .src(packages)
-      .pipe(gulp.dest(file => {
+    return gulp.src(packages).pipe(
+      gulp.dest(file => {
         const packageName = file.path.match(/node_modules\/([a-zA-Z_]*)\//)[1];
         return `${config.vendorSrc}/${packageName}`;
-      }));
+      })
+    );
   });
 
   // Form tasks for each package...
   const processPackageTasks = shared.packages.map(pkg => `sass:process:${pkg}`);
   shared.packages.forEach((pkg, i) => {
     return gulp.task(processPackageTasks[i], () => {
-      return processSass(
-        `packages/${pkg}/`,
-        `packages/${pkg}/dist`
-      );
+      return processSass(`packages/${pkg}/`, `packages/${pkg}/dist`);
     });
   });
 
-  gulp.task('sass:process:docs', () => processSass(
-    'packages/docs/',
-    buildPath(shared.rootPath, '/public')
-  ));
+  gulp.task('sass:process:docs', () =>
+    processSass('packages/docs/', buildPath(shared.rootPath, '/public'))
+  );
 
   gulp.task('sass:add-version', () => {
     const rx = packagesRegex(shared.packages);
 
-    return packageVersions(shared.packages)
-      .then(packages =>
-        gulp.src(`./packages/${rx}/dist/index.css`)
-          .pipe(
-            through.obj((file, encoding, cb) => {
-              const name = file.path.match(/packages\/([a-z\-_]+)/i)[1];
-              const version = packages[name];
-              const contents = String(file.contents).replace(/{{version}}/, version);
-              file.contents = Buffer.from(contents);
-              return cb(null, file);
-            })
-          )
-          .pipe(gulp.dest('./packages/'))
-      );
+    return packageVersions(shared.packages).then(packages =>
+      gulp
+        .src(`./packages/${rx}/dist/index.css`)
+        .pipe(
+          through.obj((file, encoding, cb) => {
+            const name = file.path.match(/packages\/([a-z\-_]+)/i)[1];
+            const version = packages[name];
+            const contents = String(file.contents).replace(
+              /{{version}}/,
+              version
+            );
+            file.contents = Buffer.from(contents);
+            return cb(null, file);
+          })
+        )
+        .pipe(gulp.dest('./packages/'))
+    );
   });
 
   gulp.task('sass', done => {
