@@ -42,7 +42,6 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <input
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="12"
         min="1"
@@ -70,7 +69,6 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <input
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="31"
         min="1"
@@ -98,7 +96,6 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <input
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max={2000}
         min="1990"
@@ -163,7 +160,6 @@ exports[`DateField has errorMessage 1`] = `
       <input
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="12"
         min="1"
@@ -191,7 +187,6 @@ exports[`DateField has errorMessage 1`] = `
       <input
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="31"
         min="1"
@@ -219,7 +214,6 @@ exports[`DateField has errorMessage 1`] = `
       <input
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max={undefined}
         min={1900}
@@ -283,7 +277,6 @@ exports[`DateField has requirementLabel 1`] = `
       <input
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="12"
         min="1"
@@ -311,7 +304,6 @@ exports[`DateField has requirementLabel 1`] = `
       <input
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="31"
         min="1"
@@ -339,7 +331,6 @@ exports[`DateField has requirementLabel 1`] = `
       <input
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max={undefined}
         min={1900}
@@ -397,7 +388,6 @@ exports[`DateField is inversed 1`] = `
       <input
         className="ds-c-field ds-c-field--inverse ds-c-field--month"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="12"
         min="1"
@@ -425,7 +415,6 @@ exports[`DateField is inversed 1`] = `
       <input
         className="ds-c-field ds-c-field--inverse ds-c-field--day"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="31"
         min="1"
@@ -453,7 +442,6 @@ exports[`DateField is inversed 1`] = `
       <input
         className="ds-c-field ds-c-field--inverse ds-c-field--year"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max={undefined}
         min={1900}
@@ -511,7 +499,6 @@ exports[`DateField renders with all defaultProps 1`] = `
       <input
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="12"
         min="1"
@@ -539,7 +526,6 @@ exports[`DateField renders with all defaultProps 1`] = `
       <input
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max="31"
         min="1"
@@ -567,7 +553,6 @@ exports[`DateField renders with all defaultProps 1`] = `
       <input
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
-        disabled={undefined}
         id="textfield_snapshot"
         max={undefined}
         min={1900}

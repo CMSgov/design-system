@@ -7,7 +7,7 @@ import uniqueId from 'lodash.uniqueid';
 /**
  * A `TextField` component renders an input field as well as supporting UI
  * elements like a label, error message, and hint text.
-*/
+ */
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -15,49 +15,57 @@ export class TextField extends React.PureComponent {
   }
 
   render() {
-    const FieldComponent = this.props.multiline ? 'textarea' : 'input';
-    const rows =
-      this.props.multiline && this.props.rows ? this.props.rows : undefined;
+    const {
+      className,
+      labelClassName,
+      fieldClassName,
+      errorMessage,
+      hint,
+      requirementLabel,
+      inversed,
+      rows,
+      multiline,
+      label,
+      fieldRef,
+      type,
+      ...fieldProps
+    } = this.props;
+
+    const FieldComponent = multiline ? 'textarea' : 'input';
+    const _rows = multiline && rows ? rows : undefined;
 
     const classes = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-      this.props.className
+      className
     );
     const fieldClasses = classNames(
       'ds-c-field',
       {
-        'ds-c-field--error': typeof this.props.errorMessage === 'string',
-        'ds-c-field--inverse': this.props.inversed
+        'ds-c-field--error': typeof errorMessage === 'string',
+        'ds-c-field--inverse': inversed
       },
-      this.props.fieldClassName
+      fieldClassName
     );
 
     return (
       <div className={classes}>
         <FormLabel
-          className={this.props.labelClassName}
-          errorMessage={this.props.errorMessage}
+          className={labelClassName}
+          errorMessage={errorMessage}
           fieldId={this.id}
-          hint={this.props.hint}
-          requirementLabel={this.props.requirementLabel}
-          inversed={this.props.inversed}
+          hint={hint}
+          requirementLabel={requirementLabel}
+          inversed={inversed}
         >
-          {this.props.label}
+          {label}
         </FormLabel>
         <FieldComponent
           className={fieldClasses}
-          defaultValue={this.props.defaultValue}
-          disabled={this.props.disabled}
           id={this.id}
-          max={this.props.max}
-          min={this.props.min}
-          name={this.props.name}
-          onChange={this.props.onChange}
-          onBlur={this.props.onBlur}
-          ref={this.props.fieldRef}
-          rows={rows}
-          type={this.props.multiline ? undefined : this.props.type}
-          value={this.props.value}
+          ref={fieldRef}
+          rows={_rows}
+          type={multiline ? undefined : type}
+          {...fieldProps}
         />
       </div>
     );
@@ -85,8 +93,8 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-    * Access a reference to the `input` or `textarea` element
-    */
+   * Access a reference to the `input` or `textarea` element
+   */
   fieldRef: PropTypes.func,
   /**
    * Additional hint text to display
