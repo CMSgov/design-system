@@ -50,7 +50,7 @@ var Alert = exports.Alert = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
-      var classes = (0, _classnames2.default)('ds-c-alert', this.props.variation && 'ds-c-alert--' + this.props.variation, this.props.className);
+      var classes = (0, _classnames2.default)('ds-c-alert', this.props.hideIcon && 'ds-c-alert--hide-icon', this.props.variation && 'ds-c-alert--' + this.props.variation, this.props.className);
 
       return _react2.default.createElement(
         'div',
@@ -71,6 +71,7 @@ var Alert = exports.Alert = function (_React$PureComponent) {
 Alert.propTypes = {
   children: _propTypes2.default.node.isRequired,
   heading: _propTypes2.default.string,
+  hideIcon: _propTypes2.default.bool,
   /** ARIA `role` */
   role: _propTypes2.default.oneOf(['alert', 'alertdialog']),
   variation: _propTypes2.default.oneOf(['error', 'warn', 'success'])

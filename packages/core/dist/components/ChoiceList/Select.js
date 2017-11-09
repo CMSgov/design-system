@@ -42,7 +42,7 @@ var Select = function Select(props) {
       selectProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed']);
   /* eslint-enable prefer-const */
 
-  var classes = (0, _classnames2.default)('ds-c-field ds-c-field--select', { 'ds-c-field--inverse': inversed }, className);
+  var classes = (0, _classnames2.default)('ds-c-field', { 'ds-c-field--inverse': inversed }, className);
 
   if (!id) {
     id = (0, _lodash2.default)('select_' + selectProps.name + '_');
@@ -96,7 +96,7 @@ Select.propTypes = {
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * **Note**: Setting this prop will render a read-only field. If the field should be
+   * This will render a read-only field. If the field should be
    * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
    */
   value: _propTypes2.default.string

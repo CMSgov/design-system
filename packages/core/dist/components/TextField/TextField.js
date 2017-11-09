@@ -84,9 +84,12 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           defaultValue: this.props.defaultValue,
           disabled: this.props.disabled,
           id: this.id,
+          max: this.props.max,
+          min: this.props.min,
           name: this.props.name,
           onChange: this.props.onChange,
           onBlur: this.props.onBlur,
+          ref: this.props.fieldRef,
           rows: rows,
           type: this.props.multiline ? undefined : this.props.type,
           value: this.props.value
@@ -119,6 +122,10 @@ TextField.propTypes = {
    */
   fieldClassName: _propTypes2.default.string,
   /**
+    * Access a reference to the `input` or `textarea` element
+    */
+  fieldRef: _propTypes2.default.func,
+  /**
    * Additional hint text to display
    */
   hint: _propTypes2.default.node,
@@ -138,6 +145,14 @@ TextField.propTypes = {
    * Additional classes to be added to the label
    */
   labelClassName: _propTypes2.default.string,
+  /**
+   * `max` HTML input attribute
+   */
+  max: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  /**
+   * `min` HTML input attribute
+   */
+  min: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
   /**
    * Whether or not the textfield is a multiline textfield
    */
