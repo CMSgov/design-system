@@ -135,6 +135,15 @@ describe('TextField', function() {
     expect(field.prop('min')).toBe(data.props.min);
   });
 
+  it('adds undocumented prop to input field', () => {
+    const data = render({
+      'data-foo': 'bar'
+    });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.prop('data-foo')).toBe(data.props['data-foo']);
+  });
+
   it('returns reference to input field', () => {
     let ref;
     const data = render(
