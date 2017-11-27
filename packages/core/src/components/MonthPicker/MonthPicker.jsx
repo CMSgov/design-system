@@ -3,13 +3,22 @@ import Choice from '../ChoiceList/Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+/*
+`<MonthPicker>`
+
+@react-component MonthPicker
+
+Style guide: components.month-picker.react
+*/
+
 const NUM_MONTHS = 12;
 
 /**
  * The `MonthPicker` component renders a grid of checkboxes with shortened month
  * names as well as buttons for selecting or deselecting all. For internationalization
  * one can pass a `locale` prop, and the month names will change to match the
- * language of the locale.
+ * language of the locale. Full month names are also included as `aria-label`
+ * attributes.
  */
 export class MonthPicker extends React.PureComponent {
   constructor(props) {
