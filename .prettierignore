@@ -1,1 +1,2 @@
 **/dist/**/*.js
+packages/generator-cmsgov/generators/app/templates/*.scss
