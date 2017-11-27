@@ -1,4 +1,4 @@
-@import '@cmsgov/design-system-support/src/settings/index';
+@import "@cmsgov/design-system-support/src/settings/index";
 
 /*
 <%= title %>
@@ -13,7 +13,7 @@ Markup:
 Style guide: components.<%= slug %>
 */
 
-.ds-c-<%= slug % >  {
+.ds-c-<%= slug %>  {
   // TODO: Enter your ruleset here
 }
 
