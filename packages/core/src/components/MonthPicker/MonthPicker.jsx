@@ -104,7 +104,7 @@ export class MonthPicker extends React.PureComponent {
     const disabledMonths = this.disabledMonths();
     const { name, inversed } = this.props;
     return (
-      <ul className="ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap">
+      <ol className="ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap">
         {this.months.map((month, i) => (
           <Choice
             name={name}
@@ -120,7 +120,7 @@ export class MonthPicker extends React.PureComponent {
             {month}
           </Choice>
         ))}
-      </ul>
+      </ol>
     );
   }
 
@@ -158,7 +158,9 @@ MonthPicker.propTypes = {
    */
   name: PropTypes.string.isRequired,
   /**
-   * Locale string used to generate month names
+   * A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)
+   * for month name localization. For example: Passing `es-US` as a value
+   * will render month names in Spanish.
    */
   locale: PropTypes.string,
   /**
@@ -169,21 +171,27 @@ MonthPicker.propTypes = {
    * Array of 12 booleans representing 12 months, where a value of `true`
    * means the corresponding month is disabled.
    */
-  disabledMonths: PropTypes.arrayOf(PropTypes.bool),
+  disabledMonths: PropTypes.arrayOf(PropTypes.number),
   /**
    * Array of 12 booleans representing 12 months, where a value of `true`
    * means the corresponding month is selected.
    * This will render a read-only field. If the field should be mutable,
    * use `defaultSelectedMonths`.
    */
-  selectedMonths: PropTypes.arrayOf(PropTypes.bool),
+  selectedMonths: PropTypes.arrayOf(PropTypes.number),
   /**
    * Array of 12 booleans representing 12 months, where a value of `true`
    * means the corresponding month is selected by default.
    * Sets the initial checked state for the 12 month checkboxes. Use this for
    * an uncontrolled component; otherwise, use the `selectedMonths` property.
    */
-  defaultSelectedMonths: PropTypes.arrayOf(PropTypes.bool),
+  defaultSelectedMonths: PropTypes.arrayOf(PropTypes.number),
+  /**
+   * A callback function that's invoked when a month's checked state is changed.
+   * Note: This callback is not called when a month is selected or deselected
+   * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
+   * `onClearAll` event handlers for those instances.
+   */
   onChange: PropTypes.func,
   onSelectAll: PropTypes.func,
   onClearAll: PropTypes.func,

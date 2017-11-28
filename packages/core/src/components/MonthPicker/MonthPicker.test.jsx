@@ -80,50 +80,11 @@ describe('MonthPicker', () => {
       'December'
     ];
 
-    function verifyMonthNames(
-      { wrapper },
-      short = shortMonthNames,
-      long = longMonthNames
-    ) {
-      wrapper.find('Choice').forEach((choice, i) => {
-        expect(choice.props().children).toEqual(short[i]);
-        expect(choice.props()['aria-label']).toEqual(long[i]);
-      });
-    }
-
-    verifyMonthNames(renderMonthPicker()); // Test default locale
-    verifyMonthNames(renderMonthPicker({ locale: 'en-US' }));
-    verifyMonthNames(
-      renderMonthPicker({ locale: 'es-US' }),
-      [
-        'ene.',
-        'feb.',
-        'mar.',
-        'abr.',
-        'may.',
-        'jun.',
-        'jul.',
-        'ago.',
-        'sep.',
-        'oct.',
-        'nov.',
-        'dic.'
-      ],
-      [
-        'enero',
-        'febrero',
-        'marzo',
-        'abril',
-        'mayo',
-        'junio',
-        'julio',
-        'agosto',
-        'septiembre',
-        'octubre',
-        'noviembre',
-        'diciembre'
-      ]
-    );
+    const { wrapper } = renderMonthPicker({ locale: 'en' });
+    wrapper.find('Choice').forEach((choice, i) => {
+      expect(choice.props().children).toEqual(shortMonthNames[i]);
+      expect(choice.props()['aria-label']).toEqual(longMonthNames[i]);
+    });
   });
 
   it('choice values correspond to month numbers', () => {
