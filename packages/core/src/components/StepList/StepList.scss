@@ -1,0 +1,170 @@
+@import "@cmsgov/design-system-support/src/settings/index";
+
+/*
+Step List
+
+@status beta
+
+TODO: Enter your description here
+
+Markup:
+<p>TODO: Enter your markup here</p>
+
+Style guide: components.step-list
+*/
+
+$number-size: 32px;
+$number-border-size: 2px;
+$number-margin: 10px;
+$step-list-padding-h: $spacer-1;
+$step-list-padding-left: $step-list-padding-h + $number-margin + $number-size;
+$step-margin: $spacer-2;
+$step-border-width: 1px;
+$step-border-color: $color-gray;
+$step-button-height: 38px;
+
+.ds-c-step-list {
+  margin: 0;
+  padding: 0 $step-list-padding-h;
+  padding-left: $step-list-padding-left;
+  list-style-type: none;
+}
+
+.ds-c-step {
+  position: relative;
+  margin-bottom: $step-margin;
+  padding-bottom: $step-margin;
+  color: $color-gray;
+  counter-increment: step-counter;
+
+  &::before {
+    content: counter(step-counter);
+    display: block;
+    box-sizing: border-box;
+    width: $number-size;
+    height: $number-size;
+    padding-left: 1px;
+    position: absolute;
+    top: ($step-button-height - $number-size) / 2;
+    left: -($number-margin + $number-size);
+    line-height: $number-size - $number-border-size * 2;
+    font-size: 20px;
+    text-align: center;
+    border: $number-border-size solid $color-gray;
+    border-radius: 50%;
+    color: $color-gray;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: -$step-list-padding-left;
+    right: -$step-list-padding-h;
+    height: 1px;
+    border-bottom: $step-border-width solid $step-border-color;
+  }
+}
+
+.ds-c-step--current,
+.ds-c-step--completed {
+  &::before {
+    line-height: $number-size;
+    border: none;
+    color: $color-white;
+  }
+}
+
+.ds-c-step--current {
+  .ds-c-step__header {
+    color: $color-primary;
+  }
+
+  &::before {
+    background: $color-primary;
+  }
+}
+
+.ds-c-step--completed {
+  color: $color-base;
+
+  .ds-c-step__header {
+    color: $color-base;
+  }
+
+  &::before {
+    background: $color-base;
+  }
+}
+
+.ds-c-step__header {
+  margin: 0;
+}
+
+.ds-c-step__title {
+  line-height: $step-button-height;
+}
+
+.ds-c-step__completed {
+  text-align: right;
+  font-size: $base-font-size;
+
+  span {
+    display: inline-block;
+    padding-top: 6px;
+    line-height: $step-button-height - 12px;
+  }
+
+  a {
+    display: block;
+    font-weight: $font-normal;
+  }
+
+  &::before {
+    box-sizing: border-box;
+    content: "\a0";
+    // TODO: add the check image here
+  }
+}
+
+.ds-c-step__description {
+  max-width: 75%;
+  font-size: $small-font-size;
+
+  .ds-c-step--current &,
+  .ds-c-step--completed & {
+    margin-top: $spacer-1;
+  }
+}
+
+.ds-c-step__substeps {
+  margin: 0;
+  padding-left: $spacer-5;
+  list-style-type: none;
+
+  .ds-c-step__description + & {
+    margin-top: $spacer-1;
+  }
+}
+
+.ds-c-substep {
+  display: block;
+  position: relative;
+  font-size: $small-font-size;
+
+  &::before {
+    content: "\2022";
+    position: absolute;
+    top: 0;
+    left: -$spacer-3;
+  }
+}
+
+/*
+`<StepList>`
+
+@react-component StepList
+
+Style guide: components.step-list.react
+*/
