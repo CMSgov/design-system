@@ -5,10 +5,87 @@ Step List
 
 @status beta
 
-TODO: Enter your description here
+A step list represents a user's progression through an application or multi-page
+form. It serves as a table of contents and a way to quickly see where they are
+and what they should be working on next.
 
 Markup:
-<p>TODO: Enter your markup here</p>
+<div style="max-width: 628px">
+  <ol class="ds-c-step-list ds-u-margin-top--4">
+    <li class="ds-c-step ds-c-step--completed">
+      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+        <div class="ds-c-step__title">Choose a tax year</div>
+        <div>
+          <div class="ds-c-step__completed">
+            <span>Completed</span>
+            <a href="#step-1">
+              Edit
+              <span class="ds-u-visibility--screen-reader">
+                "Choose a tax year"
+              </span>
+            </a>
+          </div>
+        </div>
+      </h2>
+    </li>
+    <li class="ds-c-step ds-c-step--current">
+      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+        <div class="ds-c-step__title">Enter household details</div>
+        <div>
+          <a href="#step-2" class="ds-c-button ds-c-button--success">
+            Resume
+            <span class="ds-u-visibility--screen-reader">
+              "Enter household details"
+            </span>
+          </a>
+        </div>
+      </h2>
+      <div>
+        <div class="ds-c-step__description">
+          Answer questions about who in your household qualifies for a premium tax
+          credit and information on each person, including date of birth,
+          location(s) they lived in for the year, and months of marketplace
+          coverage.
+        </div>
+        <ul class="ds-c-step__substeps">
+          <li class="ds-c-substep">
+            <div class="ds-u-display--flex ds-u-justify-content--between">
+              <div class="ds-c-substep__title">Overall household</div>
+              <div>
+                <a href="#step-2a">
+                  Edit
+                  <span class="ds-u-visibility--screen-reader">
+                    "Overall household"
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="ds-c-substep">
+            <div class="ds-u-display--flex ds-u-justify-content--between">
+              <div class="ds-c-substep__title">Bob's information</div>
+            </div>
+          </li>
+          <li class="ds-c-substep">
+            <div class="ds-u-display--flex ds-u-justify-content--between">
+              <div class="ds-c-substep__title">Barb's information</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="ds-c-step">
+      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+        <div class="ds-c-step__title">Review your information</div>
+      </h2>
+    </li>
+    <li class="ds-c-step">
+      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+        <div class="ds-c-step__title">View premium results</div>
+      </h2>
+    </li>
+  </ol>
+</div>
 
 Style guide: components.step-list
 */
@@ -165,6 +242,27 @@ $step-button-height: 38px;
     left: -$spacer-3;
   }
 }
+
+/*
+Start, Resume, and Edit links
+
+A user interacts with the steps through "Start", "Resume", and "Edit"
+links.
+
+Visually "Start" and "Resume" are buttons, but all three are implemented
+with `<a>` tags. In the React component, the links' `href` properties are
+determined by the `step` object's `route` property. One can also
+optionally pass an `onEnterStep` function that will cancel the default
+link behavior and call `onEnterStep` with `route` as a parameter for
+apps that handle routing with JavaScript.
+
+When a step has substeps, the React component will automatically set the
+`href` property of the parent step's "Start" and "Resume" buttons to match
+the current (incomplete) substep's `route`. The "Edit" button will only
+appear on substeps that have been completed.
+
+Style guide: components.step-list.buttons
+*/
 
 /*
 `<StepList>`

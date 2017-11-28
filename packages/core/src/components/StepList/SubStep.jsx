@@ -11,7 +11,7 @@ export const SubStep = ({ step, ...props }) => (
         {step.completed && (
           <StepLink
             route={step.route}
-            screenReaderText={step.title}
+            screenReaderText={`"${step.title}"`}
             onEnterStep={props.onEnterStep}
           >
             {props.editText}

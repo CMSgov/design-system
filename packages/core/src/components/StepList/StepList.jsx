@@ -3,7 +3,10 @@ import React from 'react';
 import Step from './Step';
 
 /**
- * Hello
+ * The `StepList` component is the preferred method for building a step list,
+ * since it handles all the state logic necessary to produce its markup. A
+ * step is represented by an object with text, progress, and routing information
+ * and can optionally include an array of substeps as well as a description.
  */
 export const StepList = ({ steps, ...props }) => (
   <ol className="ds-c-step-list ds-u-margin-top--4">
