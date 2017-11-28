@@ -271,3 +271,21 @@ Style guide: components.step-list.buttons
 
 Style guide: components.step-list.react
 */
+
+/*
+Step object
+
+A `step` object contains all information needed to render the step, including
+text, progress, and routing information.
+
+Step object properties:
+- **id** (`string`) - Unique string representing the step. Will be passed to onEnterStep as second parameter
+- **route** (`string`) - URL or partial URL that routes to the step. Will be passed to onEnterStep as first parameter
+- **completed** (`bool`) - Whether the step has been completed
+- **started** (`bool`) - Whether the step has been started
+- **isNextStep** (`bool`) - Whether this is the next unstarted step
+- **title** (`string`) - Text to display as the step title
+- **description** (`string`) - Additional text to display under (only rendered for top-level steps)
+
+Style guide: components.step-list.step-object
+*/

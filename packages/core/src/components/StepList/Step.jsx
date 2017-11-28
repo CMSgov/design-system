@@ -23,6 +23,7 @@ export const Step = ({ step, ...props }) => {
               {!step.steps && (
                 <StepLink
                   route={step.route}
+                  stepId={step.id}
                   screenReaderText={`"${step.title}"`}
                   onEnterStep={props.onEnterStep}
                 >
@@ -34,6 +35,7 @@ export const Step = ({ step, ...props }) => {
           {start && (
             <StepLink
               route={step.route}
+              stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
               className="ds-c-button ds-c-button--success"
@@ -44,6 +46,7 @@ export const Step = ({ step, ...props }) => {
           {resume && (
             <StepLink
               route={step.route}
+              stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
               className="ds-c-button ds-c-button--success"

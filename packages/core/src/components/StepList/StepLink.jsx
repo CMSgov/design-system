@@ -5,7 +5,7 @@ export class StepLink extends React.PureComponent {
   handleClick(event) {
     if (this.props.onEnterStep) {
       event.preventDefault();
-      this.props.onEnterStep(this.props.route);
+      this.props.onEnterStep(this.props.route, this.props.stepId);
     }
   }
 
@@ -30,6 +30,7 @@ StepLink.propTypes = {
    */
   children: PropTypes.node.isRequired,
   route: PropTypes.string.isRequired,
+  stepId: PropTypes.string.isRequired,
   screenReaderText: PropTypes.string,
   className: PropTypes.string,
   onEnterStep: PropTypes.func
