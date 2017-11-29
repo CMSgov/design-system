@@ -151,6 +151,11 @@ export class MonthPicker extends React.PureComponent {
   }
 }
 
+MonthPicker.defaultProps = {
+  selectAllText: 'Select all',
+  clearAllText: 'Clear all'
+};
+
 MonthPicker.propTypes = {
   /**
    * The `input` field's `name` attribute

@@ -22,6 +22,13 @@ describe('MonthPicker', () => {
     expect(buttons.at(1).props().children).toEqual('Clear all');
   });
 
+  it('selectAllText and clearAllText defaults work', () => {
+    const wrapper = shallow(<MonthPicker name="months" />);
+    const buttons = wrapper.find('Button');
+    expect(buttons.at(0).props().children).toEqual('Select all');
+    expect(buttons.at(1).props().children).toEqual('Clear all');
+  });
+
   it('Select-all and clear-all buttons trigger onSelectAll and onClearAll', () => {
     const onSelectAll = jest.fn();
     const onClearAll = jest.fn();
