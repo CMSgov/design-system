@@ -1,0 +1,9 @@
+// Shadows can be used to indicate focus or depth, and should behave as if there
+// is one light source. In practice, this means the offsets should be similar and
+// different elements shouldn't have contradicting offsets (ie. one is positive
+// and the other is negative).
+$shadow-base-offset-x: 2px;
+$shadow-base-offset-y: 2px;
+$shadow-base-blur-radius: 4px;
+$shadow-base-color: rgba(0, 0, 0, 0.25);
+$shadow-base: $shadow-base-offset-x $shadow-base-offset-y $shadow-base-blur-radius $shadow-base-color;

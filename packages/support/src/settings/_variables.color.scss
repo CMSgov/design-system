@@ -167,6 +167,8 @@ $focus-shadow-inverse: 0 0 3px $color-focus-inverse,
 // Background
 $color-background: $color-white !default;
 $color-background-inverse: $color-primary-darkest;
+$color-background-dialog-mask: rgba(0, 0, 0, 0.5) !default;
+$color-background-dialog: $color-white !default;
 
 // Border
 $border-color: $color-gray-lighter !default;
