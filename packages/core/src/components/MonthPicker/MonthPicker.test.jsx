@@ -90,7 +90,7 @@ describe('MonthPicker', () => {
   it('choice values correspond to month numbers', () => {
     const { wrapper } = renderMonthPicker();
     wrapper.find('Choice').forEach((choice, i) => {
-      expect(choice.props().value).toEqual(i);
+      expect(choice.props().value).toEqual(i + 1);
     });
   });
 
@@ -106,20 +106,7 @@ describe('MonthPicker', () => {
   });
 
   it('disables month choices according to `disabledMonths` prop', () => {
-    const disabledMonths = [
-      false,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false
-    ];
+    const disabledMonths = [5, 9];
     const { wrapper } = renderMonthPicker({ disabledMonths });
     const choices = wrapper.find('Choice');
     expect(choices.get(0).props.disabled).toBe(false);
@@ -130,20 +117,7 @@ describe('MonthPicker', () => {
   });
 
   it('checks month choices according to `selectedMonths` prop', () => {
-    const selectedMonths = [
-      false,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false
-    ];
+    const selectedMonths = [5, 9];
     const { wrapper } = renderMonthPicker({ selectedMonths });
     const choices = wrapper.find('Choice');
     expect(choices.get(0).props.checked).toBe(false);
@@ -154,20 +128,7 @@ describe('MonthPicker', () => {
   });
 
   it('checks month choices according to `defaultSelectedMonths` prop and maitains state', () => {
-    const defaultSelectedMonths = [
-      false,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false,
-      true,
-      false,
-      false,
-      false
-    ];
+    const defaultSelectedMonths = [5, 9];
     const { wrapper } = renderMonthPicker({ defaultSelectedMonths });
     const choices = wrapper.find('Choice');
     expect(choices.get(0).props.checked).toBe(false);
@@ -179,7 +140,7 @@ describe('MonthPicker', () => {
     wrapper
       .find('Choice')
       .first()
-      .simulate('change', { target: { value: 0 } });
+      .simulate('change', { target: { value: 1 } });
 
     wrapper.update();
     expect(wrapper.find('Choice').get(0).props.checked).toBe(true);
