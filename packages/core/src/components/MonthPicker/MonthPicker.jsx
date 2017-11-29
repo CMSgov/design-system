@@ -126,7 +126,6 @@ export class MonthPicker extends React.PureComponent {
   renderButton(text, onClick) {
     return (
       <Button
-        variation="primary"
         size="small"
         className="ds-u-margin-right--1"
         onClick={onClick}
