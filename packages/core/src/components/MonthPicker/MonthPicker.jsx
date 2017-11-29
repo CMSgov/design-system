@@ -130,6 +130,7 @@ export class MonthPicker extends React.PureComponent {
         className="ds-u-margin-right--1"
         onClick={onClick}
         inversed={this.props.inversed}
+        variation={this.props.buttonVariation}
       >
         {text}
       </Button>
@@ -170,6 +171,10 @@ MonthPicker.propTypes = {
    * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
+  /**
+   * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
+   */
+  buttonVariation: PropTypes.string,
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.
