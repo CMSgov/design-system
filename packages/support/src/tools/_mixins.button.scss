@@ -1,0 +1,7 @@
+@mixin base-button {
+  appearance: none;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $input-line-height;
+}
