@@ -12,6 +12,13 @@ Style guide: components.month-picker.react
 */
 
 const NUM_MONTHS = 12;
+const monthNumbers = (() => {
+  const months = [];
+  for (let m = 1; m <= NUM_MONTHS; m++) {
+    months.push(m);
+  }
+  return months;
+})();
 
 /**
  * The `MonthPicker` component renders a grid of checkboxes with shortened month
@@ -26,13 +33,12 @@ export class MonthPicker extends React.PureComponent {
     this.months = getMonthNames(props.locale);
     this.monthsLong = getMonthNames(props.locale, false);
 
-    if (typeof this.props.selectedMonths === 'undefined') {
+    if (typeof props.selectedMonths === 'undefined') {
       this.isControlled = false;
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       this.state = {
-        selectedMonths:
-          this.props.defaultSelectedMonths || this.monthsArray(false)
+        selectedMonths: props.defaultSelectedMonths || []
       };
     } else {
       this.isControlled = true;
@@ -48,21 +54,7 @@ export class MonthPicker extends React.PureComponent {
   }
 
   disabledMonths() {
-    return this.props.disabledMonths || this.monthsArray(false);
-  }
-
-  /**
-   * Generates an array of 12 booleans with the given value
-   *
-   * @param  {boolean} [selected] value to populate array items
-   * @return {boolean[]}          array of 12 booleans
-   */
-  monthsArray(selected) {
-    const array = [];
-    for (let i = 0; i < NUM_MONTHS; i++) {
-      array[i] = selected;
-    }
-    return array;
+    return this.props.disabledMonths || [];
   }
 
   handleChange(event) {
@@ -71,9 +63,13 @@ export class MonthPicker extends React.PureComponent {
     }
 
     if (!this.isControlled) {
-      const index = event.target.value;
+      const month = parseInt(event.target.value);
       const selectedMonths = this.state.selectedMonths.slice();
-      selectedMonths[index] = !selectedMonths[index];
+      if (selectedMonths.includes(month)) {
+        selectedMonths.splice(selectedMonths.indexOf(month), 1);
+      } else {
+        selectedMonths.push(month);
+      }
       this.setState({ selectedMonths });
     }
   }
@@ -84,9 +80,11 @@ export class MonthPicker extends React.PureComponent {
     }
 
     if (!this.isControlled) {
-      this.setState({
-        selectedMonths: this.disabledMonths().map(disabled => !disabled)
-      });
+      const disabledMonths = this.disabledMonths();
+      const selectedMonths = monthNumbers.filter(
+        m => !disabledMonths.includes(m)
+      );
+      this.setState({ selectedMonths });
     }
   }
 
@@ -96,11 +94,12 @@ export class MonthPicker extends React.PureComponent {
     }
 
     if (!this.isControlled) {
-      this.setState({ selectedMonths: this.monthsArray(false) });
+      this.setState({ selectedMonths: [] });
     }
   }
 
-  renderMonths(selectedMonths) {
+  renderMonths() {
+    const selectedMonths = this.selectedMonths();
     const disabledMonths = this.disabledMonths();
     const { name, inversed } = this.props;
     return (
@@ -108,12 +107,12 @@ export class MonthPicker extends React.PureComponent {
         {this.months.map((month, i) => (
           <Choice
             name={name}
-            value={i}
-            checked={selectedMonths[i]}
+            value={i + 1}
+            checked={selectedMonths.includes(i + 1)}
             key={month}
             onChange={e => this.handleChange(e)}
             className="ds-c-month-picker__month"
-            disabled={disabledMonths[i]}
+            disabled={disabledMonths.includes(i + 1)}
             inversed={inversed}
             aria-label={this.monthsLong[i]}
           >
@@ -146,7 +145,7 @@ export class MonthPicker extends React.PureComponent {
           {this.renderButton(selectAllText, () => this.handleSelectAll())}
           {this.renderButton(clearAllText, () => this.handleClearAll())}
         </div>
-        {this.renderMonths(this.selectedMonths())}
+        {this.renderMonths()}
       </div>
     );
   }
@@ -168,22 +167,21 @@ MonthPicker.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Array of 12 booleans representing 12 months, where a value of `true`
-   * means the corresponding month is disabled.
+   * Array of month numbers, where `1` is January, and any month included
+   * is disabled for selection.
    */
   disabledMonths: PropTypes.arrayOf(PropTypes.number),
   /**
-   * Array of 12 booleans representing 12 months, where a value of `true`
-   * means the corresponding month is selected.
-   * This will render a read-only field. If the field should be mutable,
-   * use `defaultSelectedMonths`.
+   * Array of month numbers, where `1` is January, and any month included
+   * is selected. This will render a read-only field. If the field should
+   * be mutable, use `defaultSelectedMonths`.
    */
   selectedMonths: PropTypes.arrayOf(PropTypes.number),
   /**
-   * Array of 12 booleans representing 12 months, where a value of `true`
-   * means the corresponding month is selected by default.
-   * Sets the initial checked state for the 12 month checkboxes. Use this for
-   * an uncontrolled component; otherwise, use the `selectedMonths` property.
+   * Array of month numbers, where `1` is January, and any month included
+   * is selected by default. Sets the initial checked state for the 12 month
+   * checkboxes. Use this for an uncontrolled component; otherwise, use the
+   * `selectedMonths` property.
    */
   defaultSelectedMonths: PropTypes.arrayOf(PropTypes.number),
   /**
@@ -214,7 +212,7 @@ export default MonthPicker;
  *
  * @param  {string} [locale] locale for generating month names
  * @param  {boolean} [short] whether to return short month names
- * @return {string[]}        array of short month names
+ * @return {string[]}        array of month names
  */
 export function getMonthNames(locale, short = true) {
   const options = { month: short ? 'short' : 'long' };

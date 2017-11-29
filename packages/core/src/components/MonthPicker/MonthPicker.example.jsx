@@ -14,20 +14,7 @@ export default function() {
         name="months-2"
         selectAllText="Select all"
         clearAllText="Clear all"
-        defaultSelectedMonths={[
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          true,
-          true,
-          true,
-          true,
-          true,
-          true
-        ]}
+        disabledMonths={[7, 8, 9, 10, 11, 12]}
       />
     </div>
   );
