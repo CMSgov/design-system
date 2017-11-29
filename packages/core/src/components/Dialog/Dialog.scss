@@ -5,11 +5,15 @@ Modal dialog
 
 The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
 
+.ds-c-dialog--narrow - A dialog with a narrow measure
+.ds-c-dialog--wide - A dialog with a wide measure
+.ds-c-dialog--full - A dialog spanning a normal page width
+
 Markup:
 <div data-demo="This div is for demo purposes only" style="min-height: 400px;">
   <div class="ds-c-dialog-wrap">
     <div style="display: inline-block; height: 100%; vertical-align: middle;"></div>
-    <div class="ds-c-dialog" role="dialog" aria-labelledby="dialog-title">
+    <div class="ds-c-dialog {{modifier}}" role="dialog" aria-labelledby="dialog-title">
       <header class="ds-c-dialog__header">
         <h1 class="ds-h2" id="dialog-title">Dialog title</h1>
         <button class="ds-c-button ds-c-button--transparent ds-c-dialog__close">Close</button>
