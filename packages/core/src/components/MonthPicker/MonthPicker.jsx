@@ -224,7 +224,7 @@ export function getMonthNames(locale, short = true) {
   const months = [];
   for (let i = 0; i < NUM_MONTHS; i++) {
     const date = new Date();
-    date.setMonth(i);
+    date.setMonth(i, 1);
     months.push(date.toLocaleString(locale, options));
   }
   return months;
