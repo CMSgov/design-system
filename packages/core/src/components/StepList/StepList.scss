@@ -15,16 +15,14 @@ Markup:
     <li class="ds-c-step ds-c-step--completed">
       <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
         <div class="ds-c-step__title">Choose a tax year</div>
-        <div>
-          <div class="ds-c-step__completed">
-            <span>Completed</span>
-            <a href="#step-1">
-              Edit
-              <span class="ds-u-visibility--screen-reader">
-                "Choose a tax year"
-              </span>
-            </a>
-          </div>
+        <div class="ds-c-step__completed">
+          <span>Completed</span>
+          <a href="#step-1">
+            Edit
+            <span class="ds-u-visibility--screen-reader">
+              "Choose a tax year"
+            </span>
+          </a>
         </div>
       </h2>
     </li>
@@ -40,39 +38,37 @@ Markup:
           </a>
         </div>
       </h2>
-      <div>
-        <div class="ds-c-step__description">
-          Answer questions about who in your household qualifies for a premium tax
-          credit and information on each person, including date of birth,
-          location(s) they lived in for the year, and months of marketplace
-          coverage.
-        </div>
-        <ul class="ds-c-step__substeps">
-          <li class="ds-c-substep">
-            <div class="ds-u-display--flex ds-u-justify-content--between">
-              <div class="ds-c-substep__title">Overall household</div>
-              <div>
-                <a href="#step-2a">
-                  Edit
-                  <span class="ds-u-visibility--screen-reader">
-                    "Overall household"
-                  </span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="ds-c-substep">
-            <div class="ds-u-display--flex ds-u-justify-content--between">
-              <div class="ds-c-substep__title">Bob's information</div>
-            </div>
-          </li>
-          <li class="ds-c-substep">
-            <div class="ds-u-display--flex ds-u-justify-content--between">
-              <div class="ds-c-substep__title">Barb's information</div>
-            </div>
-          </li>
-        </ul>
+      <div class="ds-c-step__description">
+        Answer questions about who in your household qualifies for a premium tax
+        credit and information on each person, including date of birth,
+        location(s) they lived in for the year, and months of marketplace
+        coverage.
       </div>
+      <ul class="ds-c-step__substeps">
+        <li class="ds-c-substep">
+          <div class="ds-u-display--flex ds-u-justify-content--between">
+            <div class="ds-c-substep__title">Overall household</div>
+            <div>
+              <a href="#step-2a">
+                Edit
+                <span class="ds-u-visibility--screen-reader">
+                  "Overall household"
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+        <li class="ds-c-substep">
+          <div class="ds-u-display--flex ds-u-justify-content--between">
+            <div class="ds-c-substep__title">Bob's information</div>
+          </div>
+        </li>
+        <li class="ds-c-substep">
+          <div class="ds-u-display--flex ds-u-justify-content--between">
+            <div class="ds-c-substep__title">Barb's information</div>
+          </div>
+        </li>
+      </ul>
     </li>
     <li class="ds-c-step">
       <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">

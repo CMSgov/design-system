@@ -6,12 +6,10 @@ export default function() {
   return (
     <div style={{ maxWidth: '628px' }}>
       <StepList
-        inverse
         completedText="Completed"
         editText="Edit"
         resumeText="Resume"
         startText="Start"
-        onEnterStep={() => {}}
         steps={[
           {
             id: 'taxYear',
