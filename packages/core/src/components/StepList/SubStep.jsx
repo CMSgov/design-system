@@ -10,7 +10,7 @@ export const SubStep = ({ step, ...props }) => (
       <div>
         {step.completed && (
           <StepLink
-            route={step.route}
+            href={step.href}
             stepId={step.id}
             screenReaderText={`"${step.title}"`}
             onEnterStep={props.onEnterStep}

@@ -18,13 +18,13 @@ export const StepList = ({ steps, ...props }) => (
 // as well as reuse it in multiple components' prop-type definitions. This
 // has to be in this file or else the docs generator will break.
 export const stepShape = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
   completed: PropTypes.bool,
   started: PropTypes.bool,
-  isNextStep: PropTypes.bool,
-  route: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string
+  isNextStep: PropTypes.bool
 };
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
@@ -38,14 +38,14 @@ StepList.defaultProps = {
 StepList.propTypes = {
   /**
    * An array of step objects that contain information needed to render
-   * them like text, state, and link/button URLs (routes).
+   * them like text, state, and link/button URLs.
    * See [Start, Resume, and Edit links]({{root}}/components/step-list/#components.step-list.buttons)
    * and [Step object]({{root}}/components/step-list/#components.step-list.step-object)
    */
   steps: PropTypes.arrayOf(PropTypes.shape(stepShape)).isRequired,
   /**
    * Function called when a step's Edit, Start, or Resume button/link is
-   * clicked. The step's `route` property will be passed as a parameter.
+   * clicked. The step's `href` property will be passed as a parameter.
    */
   onEnterStep: PropTypes.func.isRequired,
   completedText: PropTypes.string.isRequired,

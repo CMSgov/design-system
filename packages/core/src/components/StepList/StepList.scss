@@ -251,14 +251,14 @@ links.
 
 Visually "Start" and "Resume" are buttons, but all three are implemented
 with `<a>` tags. In the React component, the links' `href` properties are
-determined by the `step` object's `route` property. One can also
+determined by the `step` object's `href` property. One can also
 optionally pass an `onEnterStep` function that will cancel the default
-link behavior and call `onEnterStep` with `route` as a parameter for
+link behavior and call `onEnterStep` with `href` as a parameter for
 apps that handle routing with JavaScript.
 
 When a step has substeps, the React component will automatically set the
 `href` property of the parent step's "Start" and "Resume" buttons to match
-the current (incomplete) substep's `route`. The "Edit" button will only
+the current (incomplete) substep's `href`. The "Edit" button will only
 appear on substeps that have been completed.
 
 Style guide: components.step-list.buttons
@@ -280,7 +280,7 @@ text, progress, and routing information.
 
 Step object properties:
 - **id** (`string`) - Unique string representing the step. Will be passed to onEnterStep as second parameter
-- **route** (`string`) - URL or partial URL that routes to the step. Will be passed to onEnterStep as first parameter
+- **href** (`string`) - URL or partial URL that routes to the step. Will be passed to onEnterStep as first parameter
 - **completed** (`bool`) - Whether the step has been completed
 - **started** (`bool`) - Whether the step has been started
 - **isNextStep** (`bool`) - Whether this is the next unstarted step

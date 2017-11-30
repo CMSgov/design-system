@@ -9,7 +9,7 @@ const defaultStep = {
   complete: false,
   started: false,
   isNextStep: false,
-  route: '/some/path',
+  href: '/some/path',
   title: 'Do something!',
   description: 'Do something really cool!'
 };

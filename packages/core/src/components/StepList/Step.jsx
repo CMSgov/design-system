@@ -22,7 +22,7 @@ export const Step = ({ step, ...props }) => {
               <span>{props.completedText}</span>
               {!step.steps && (
                 <StepLink
-                  route={step.route}
+                  href={step.href}
                   stepId={step.id}
                   screenReaderText={`"${step.title}"`}
                   onEnterStep={props.onEnterStep}
@@ -34,7 +34,7 @@ export const Step = ({ step, ...props }) => {
           )}
           {start && (
             <StepLink
-              route={step.route}
+              href={step.href}
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
@@ -45,7 +45,7 @@ export const Step = ({ step, ...props }) => {
           )}
           {resume && (
             <StepLink
-              route={step.route}
+              href={step.href}
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}

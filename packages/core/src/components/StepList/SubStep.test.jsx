@@ -20,7 +20,7 @@ describe('SubStep', () => {
     const step = {
       id: '1',
       title: 'Do stuff',
-      route: '/some/path',
+      href: '/some/path',
       completed: true
     };
     const spy = jest.fn();
@@ -35,7 +35,7 @@ describe('SubStep', () => {
     const editLink = wrapper.find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props()).toMatchObject({
-      route: '/some/path',
+      href: '/some/path',
       screenReaderText: '"Do stuff"'
     });
     editLink.props().onEnterStep();

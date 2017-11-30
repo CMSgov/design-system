@@ -5,15 +5,15 @@ export class StepLink extends React.PureComponent {
   handleClick(event) {
     if (this.props.onEnterStep) {
       event.preventDefault();
-      this.props.onEnterStep(this.props.route, this.props.stepId);
+      this.props.onEnterStep(this.props.href, this.props.stepId);
     }
   }
 
   render() {
-    const { route, screenReaderText, className, children } = this.props;
+    const { href, screenReaderText, className, children } = this.props;
     const onClick = event => this.handleClick(event);
     return (
-      <a href={route} onClick={onClick} className={className}>
+      <a href={href} onClick={onClick} className={className}>
         {children}
         <span className="ds-u-visibility--screen-reader">
           {' '}
@@ -29,7 +29,7 @@ StepLink.propTypes = {
    * Label text or HTML.
    */
   children: PropTypes.node.isRequired,
-  route: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
   stepId: PropTypes.string.isRequired,
   screenReaderText: PropTypes.string,
   className: PropTypes.string,
