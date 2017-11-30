@@ -56,16 +56,14 @@ export const Step = ({ step, ...props }) => {
           )}
         </div>
       </h2>
-      <div>
-        {step.description && (
-          <div className="ds-c-step__description">{step.description}</div>
-        )}
-        {step.steps && (
-          <ul className="ds-c-step__substeps">
-            {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
-          </ul>
-        )}
-      </div>
+      {step.description && (
+        <div className="ds-c-step__description">{step.description}</div>
+      )}
+      {step.steps && (
+        <ol className="ds-c-step__substeps">
+          {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
+        </ol>
+      )}
     </li>
   );
 };

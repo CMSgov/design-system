@@ -23,10 +23,17 @@ export const stepShape = {
   started: PropTypes.bool,
   isNextStep: PropTypes.bool,
   route: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   description: PropTypes.string
 };
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
+
+StepList.defaultProps = {
+  completedText: 'Completed',
+  editText: 'Edit',
+  resumeText: 'Resume',
+  startText: 'Start'
+};
 
 StepList.propTypes = {
   /**
