@@ -5,7 +5,8 @@ import { shallow } from 'enzyme';
 const defaultProps = {
   name: 'months',
   selectAllText: 'Select all',
-  clearAllText: 'Clear all'
+  clearAllText: 'Clear all',
+  label: 'Select months'
 };
 
 function renderMonthPicker(props) {
@@ -23,7 +24,7 @@ describe('MonthPicker', () => {
   });
 
   it('selectAllText and clearAllText defaults work', () => {
-    const wrapper = shallow(<MonthPicker name="months" />);
+    const wrapper = shallow(<MonthPicker name="months" label="Months" />);
     const buttons = wrapper.find('Button');
     expect(buttons.at(0).props().children).toEqual('Select all');
     expect(buttons.at(1).props().children).toEqual('Clear all');
@@ -41,6 +42,20 @@ describe('MonthPicker', () => {
     buttons.at(1).simulate('click');
     expect(onSelectAll).toHaveBeenCalled();
     expect(onClearAll).toHaveBeenCalled();
+  });
+
+  it('renders a FormLabel with correct props', () => {
+    const { wrapper, props } = renderMonthPicker({
+      labelClassName: 'ds-u-color--primary',
+      errorMessage: 'Error!',
+      hint: 'Tips and tricks'
+    });
+    const label = wrapper.find('FormLabel');
+    expect(label.props()).toMatchObject({
+      labelClassName: 'ds-u-font-weight--bold ds-u-color--primary',
+      errorMessage: props.errorMessage,
+      hint: props.hint
+    });
   });
 
   it('inversed prop propagates to all children', () => {
