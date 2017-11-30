@@ -98,6 +98,7 @@ $step-list-breakpoint: $width-md !default;
 $step-margin: $spacer-2 !default;
 $step-border-width: 1px !default;
 $step-button-height: 38px !default;
+$current-step-color: $color-primary !default;
 
 .ds-c-step-list {
   margin: 0;
@@ -183,11 +184,11 @@ $step-button-height: 38px !default;
 
 .ds-c-step--current {
   .ds-c-step__header {
-    color: $color-primary;
+    color: $current-step-color;
   }
 
   &::before {
-    background: $color-primary;
+    background: $current-step-color;
   }
 }
 
