@@ -13,13 +13,13 @@ Markup:
 <div style="max-width: 628px">
   <ol class="ds-c-step-list ds-u-margin-top--4">
     <li class="ds-c-step ds-c-step--completed">
-      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+      <h2 class="ds-c-step__header">
         <div class="ds-c-step__title">Choose a tax year</div>
         <div class="ds-c-step__actions">
           <div class="ds-c-step__completed_text">Completed</div>
           <a href="#step-1">
-            Edit
-            <span class="ds-u-visibility--screen-reader">
+            Edit<span class="ds-u-visibility--screen-reader">
+              {" "}
               "Choose a tax year"
             </span>
           </a>
@@ -27,12 +27,12 @@ Markup:
       </h2>
     </li>
     <li class="ds-c-step ds-c-step--current">
-      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+      <h2 class="ds-c-step__header">
         <div class="ds-c-step__title">Enter household details</div>
         <div class="ds-c-step__actions">
-          <a href="#step-2" class="ds-c-button ds-c-button--success">
-            Resume
-            <span class="ds-u-visibility--screen-reader">
+          <a href="#step-2" class="ds-c-button ds-c-button--primary">
+            Resume<span class="ds-u-visibility--screen-reader">
+              {" "}
               "Enter household details"
             </span>
           </a>
@@ -44,40 +44,40 @@ Markup:
         location(s) they lived in for the year, and months of marketplace
         coverage.
       </div>
-      <ul class="ds-c-step__substeps">
+      <ol class="ds-c-step__substeps">
         <li class="ds-c-substep">
-          <div class="ds-u-display--flex ds-u-justify-content--between">
+          <div class="ds-c-substep__line">
             <div class="ds-c-substep__title">Overall household</div>
-            <div>
-              <a href="#step-2a">
-                Edit
-                <span class="ds-u-visibility--screen-reader">
-                  "Overall household"
-                </span>
-              </a>
-            </div>
+            <a href="#step-2a">
+              Edit<span class="ds-u-visibility--screen-reader">
+                {" "}
+                "Overall household"
+              </span>
+            </a>
           </div>
         </li>
         <li class="ds-c-substep">
-          <div class="ds-u-display--flex ds-u-justify-content--between">
+          <div class="ds-c-substep__line">
             <div class="ds-c-substep__title">Bob's information</div>
           </div>
         </li>
         <li class="ds-c-substep">
-          <div class="ds-u-display--flex ds-u-justify-content--between">
+          <div class="ds-c-substep__line">
             <div class="ds-c-substep__title">Barb's information</div>
           </div>
         </li>
-      </ul>
+      </ol>
     </li>
     <li class="ds-c-step">
-      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+      <h2 class="ds-c-step__header">
         <div class="ds-c-step__title">Review your information</div>
+        <div class="ds-c-step__actions" />
       </h2>
     </li>
     <li class="ds-c-step">
-      <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+      <h2 class="ds-c-step__header">
         <div class="ds-c-step__title">View premium results</div>
+        <div class="ds-c-step__actions" />
       </h2>
     </li>
   </ol>
