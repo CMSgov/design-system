@@ -14,7 +14,7 @@ export const Step = ({ step, ...props }) => {
   });
   return (
     <li className={className}>
-      <h2 className="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
+      <h2 className="ds-c-step__header">
         <div className="ds-c-step__title">{step.title}</div>
         <div className="ds-c-step__actions">
           {step.completed && (
@@ -39,7 +39,7 @@ export const Step = ({ step, ...props }) => {
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
-              className="ds-c-button ds-c-button--success"
+              className="ds-c-button ds-c-button--primary"
             >
               {props.startText}
             </StepLink>
@@ -50,7 +50,7 @@ export const Step = ({ step, ...props }) => {
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
-              className="ds-c-button ds-c-button--success"
+              className="ds-c-button ds-c-button--primary"
             >
               {props.resumeText}
             </StepLink>

@@ -94,6 +94,7 @@ $step-list-number-border-size: 2px !default;
 $step-list-number-margin: 10px !default;
 $step-list-padding-h: 0 !default;
 $step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
+$step-list-breakpoint: $width-md !default;
 $step-margin: $spacer-2 !default;
 $step-border-width: 1px !default;
 $step-button-height: 38px !default;
@@ -128,7 +129,7 @@ $step-button-height: 38px !default;
     border-radius: 50%;
     color: $color-muted;
 
-    @media (min-width: $width-md) {
+    @media (min-width: $step-list-breakpoint) {
       width: $step-list-number-size;
       height: $step-list-number-size;
       padding-left: 1px;
@@ -165,12 +166,12 @@ $step-button-height: 38px !default;
     border: none;
     color: $color-white;
 
-    @media (min-width: $width-md) {
+    @media (min-width: $step-list-breakpoint) {
       line-height: $step-list-number-size;
     }
   }
 
-  @media (min-width: $width-md) {
+  @media (min-width: $step-list-breakpoint) {
     padding-bottom: $step-margin;
 
     .ds-c-step__actions {
@@ -203,7 +204,14 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step__header {
+  font-size: $h5-font-size;
   margin: 0;
+
+  @media (min-width: $step-list-breakpoint) {
+    display: flex;
+    font-size: $h3-font-size;
+    justify-content: space-between;
+  }
 }
 
 .ds-c-step__title {
@@ -211,11 +219,15 @@ $step-button-height: 38px !default;
 }
 
 .ds-c-step__actions {
-  font-size: $base-font-size;
+  font-size: $small-font-size;
   text-align: right;
 
   .ds-c-step--completed & a {
     font-weight: $font-normal;
+  }
+
+  @media (min-width: $step-list-breakpoint) {
+    font-size: $base-font-size;
   }
 }
 
@@ -236,7 +248,7 @@ $step-button-height: 38px !default;
     width: 16px;
   }
 
-  @media (min-width: $width-md) {
+  @media (min-width: $step-list-breakpoint) {
     display: block;
     margin-right: 0;
   }
@@ -251,7 +263,7 @@ $step-button-height: 38px !default;
     margin-top: $spacer-1;
   }
 
-  @media (min-width: $width-md) {
+  @media (min-width: $step-list-breakpoint) {
     font-size: $base-font-size;
     max-width: 75%;
   }
@@ -274,6 +286,22 @@ $step-button-height: 38px !default;
     position: absolute;
     top: 0;
     left: -$spacer-3;
+  }
+}
+
+.ds-c-substep__title {
+  display: inline-block;
+  margin-right: $spacer-1;
+
+  @media (min-width: $step-list-breakpoint) {
+    display: block;
+  }
+}
+
+.ds-c-substep__line {
+  @media (min-width: $step-list-breakpoint) {
+    display: flex;
+    justify-content: space-between;
   }
 }
 

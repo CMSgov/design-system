@@ -5,20 +5,18 @@ import { stepShape } from './StepList';
 
 export const SubStep = ({ step, ...props }) => (
   <li className="ds-c-substep">
-    <div className="ds-u-display--flex ds-u-justify-content--between">
+    <div className="ds-c-substep__line">
       <div className="ds-c-substep__title">{step.title}</div>
-      <div>
-        {step.completed && (
-          <StepLink
-            href={step.href}
-            stepId={step.id}
-            screenReaderText={`"${step.title}"`}
-            onEnterStep={props.onEnterStep}
-          >
-            {props.editText}
-          </StepLink>
-        )}
-      </div>
+      {step.completed && (
+        <StepLink
+          href={step.href}
+          stepId={step.id}
+          screenReaderText={`"${step.title}"`}
+          onEnterStep={props.onEnterStep}
+        >
+          {props.editText}
+        </StepLink>
+      )}
     </div>
     {step.steps && (
       <ul>{step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}</ul>
