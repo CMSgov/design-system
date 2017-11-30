@@ -18,7 +18,7 @@ export const Step = ({ step, ...props }) => {
         <div className="ds-c-step__title">{step.title}</div>
         <div className="ds-c-step__actions">
           {step.completed && (
-            <div className="ds-c-step__completed_text">
+            <div className="ds-c-step__completed-text">
               {props.completedText}
             </div>
           )}

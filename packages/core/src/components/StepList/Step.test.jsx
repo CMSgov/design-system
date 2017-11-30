@@ -70,7 +70,7 @@ describe('Step', () => {
     expect(description.length).toEqual(1);
     expect(description.text()).toEqual('Do something really cool!');
 
-    expect(wrapper.find('.ds-c-step__completed_text').length).toEqual(0);
+    expect(wrapper.find('.ds-c-step__completed-text').length).toEqual(0);
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
     expect(wrapper.find('StepLink').length).toEqual(0);
   });
@@ -87,7 +87,7 @@ describe('Step', () => {
     expect(description.length).toEqual(1);
     expect(description.text()).toEqual('Do something really cool!');
 
-    const completed = wrapper.find('.ds-c-step__completed_text');
+    const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
     expect(completed.text()).toEqual('Completed!');
 
@@ -106,7 +106,7 @@ describe('Step', () => {
       steps: [generateStep('1')]
     });
 
-    const completed = wrapper.find('.ds-c-step__completed_text');
+    const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
     expect(completed.text()).toEqual('Completed!');
 

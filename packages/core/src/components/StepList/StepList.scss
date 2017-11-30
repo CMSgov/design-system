@@ -16,7 +16,7 @@ Markup:
       <h2 class="ds-c-step__header">
         <div class="ds-c-step__title">Choose a tax year</div>
         <div class="ds-c-step__actions">
-          <div class="ds-c-step__completed_text">Completed</div>
+          <div class="ds-c-step__completed-text">Completed</div>
           <a href="#step-1">
             Edit<span class="ds-u-visibility--screen-reader">
               {" "}
@@ -234,7 +234,7 @@ $current-step-color: $color-primary !default;
   }
 }
 
-.ds-c-step__completed_text {
+.ds-c-step__completed-text {
   display: inline-block;
   line-height: $step-button-height - 12px;
   margin-right: $spacer-2;
