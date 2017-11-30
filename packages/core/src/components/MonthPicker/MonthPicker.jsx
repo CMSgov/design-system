@@ -1,7 +1,9 @@
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
+import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 /*
 `<MonthPicker>`
@@ -137,16 +139,42 @@ export class MonthPicker extends React.PureComponent {
     );
   }
 
+  renderLabel() {
+    const classes = classNames(
+      'ds-u-font-weight--bold',
+      this.props.labelClassName
+    );
+    return (
+      <FormLabel
+        labelClassName={classes}
+        component="legend"
+        errorMessage={this.props.errorMessage}
+        hint={this.props.hint}
+        requirementLabel={this.props.requirementLabel}
+        inversed={this.props.inversed}
+      >
+        {this.props.label}
+      </FormLabel>
+    );
+  }
+
   render() {
     const { selectAllText, clearAllText } = this.props;
+    const classes = classNames(
+      'ds-c-month-picker',
+      'ds-c-fieldset',
+      'ds-u-margin-y--3',
+      this.props.className
+    );
     return (
-      <div className="ds-c-month-picker ds-u-margin-y--3">
-        <div className="ds-u-margin-bottom--3">
+      <fieldset className={classes}>
+        {this.renderLabel()}
+        <div className="ds-u-margin-y--3">
           {this.renderButton(selectAllText, () => this.handleSelectAll())}
           {this.renderButton(clearAllText, () => this.handleClearAll())}
         </div>
-        {this.renderMonths()}
-      </div>
+        <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+      </fieldset>
     );
   }
 }
@@ -168,6 +196,10 @@ MonthPicker.propTypes = {
    */
   locale: PropTypes.string,
   /**
+   * Additional classes to be added to the root element.
+   */
+  className: PropTypes.string,
+  /**
    * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
@@ -175,6 +207,23 @@ MonthPicker.propTypes = {
    * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
    */
   buttonVariation: PropTypes.string,
+  /**
+   * Label for the field
+   */
+  label: PropTypes.node.isRequired,
+  /**
+   * Additional classes to be added to the `FormLabel`.
+   */
+  labelClassName: PropTypes.string,
+  errorMessage: PropTypes.string,
+  /**
+   * Additional hint text to display
+   */
+  hint: PropTypes.node,
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.

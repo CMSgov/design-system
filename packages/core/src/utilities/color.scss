@@ -135,6 +135,11 @@ Style guide: utilities.color
   color: $color-white !important;
 }
 
+// inherited
+.ds-u-color--inherit {
+  color: inherit !important;
+}
+
 /*
 ---
 
