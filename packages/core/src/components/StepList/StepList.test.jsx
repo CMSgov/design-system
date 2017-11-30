@@ -4,6 +4,12 @@ import { shallow } from 'enzyme';
 
 const noop = () => {};
 
+const generateStep = id => ({
+  id,
+  href: '/some/path',
+  title: 'Do stuff'
+});
+
 const defaultStepProps = {
   onEnterStep: noop,
   completedText: 'Completed!',
@@ -14,7 +20,7 @@ const defaultStepProps = {
 
 describe('StepList', () => {
   it('renders list of steps', () => {
-    const steps = [{ id: '1' }, { id: '2' }, { id: 'c' }];
+    const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
     const props = defaultStepProps;
     const wrapper = shallow(<StepList steps={steps} {...props} />);
 

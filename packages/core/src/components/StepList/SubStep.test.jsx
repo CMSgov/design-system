@@ -4,11 +4,17 @@ import { shallow } from 'enzyme';
 
 const noop = () => {};
 
+const generateStep = (step = {}) => ({
+  id: '1',
+  href: '/some/path',
+  title: 'Do stuff',
+  ...step
+});
+
 describe('SubStep', () => {
   it('renders a basic incomplete substep', () => {
-    const step = { id: '1', title: 'Do stuff' };
     const wrapper = shallow(
-      <SubStep step={step} onEnterStep={noop} editText="Edit" />
+      <SubStep step={generateStep()} onEnterStep={noop} editText="Edit" />
     );
     const title = wrapper.find('.ds-c-substep__title');
     expect(title.length).toEqual(1);
@@ -17,12 +23,7 @@ describe('SubStep', () => {
   });
 
   it('renders a basic complete substep', () => {
-    const step = {
-      id: '1',
-      title: 'Do stuff',
-      href: '/some/path',
-      completed: true
-    };
+    const step = generateStep({ completed: true });
     const spy = jest.fn();
     const wrapper = shallow(
       <SubStep step={step} onEnterStep={spy} editText="Edit" />
@@ -43,13 +44,13 @@ describe('SubStep', () => {
   });
 
   it('renders a substep with substeps', () => {
-    const step = {
+    const step = generateStep({
       title: 'Do stuff',
       steps: [
-        { id: '1', title: 'subsubstep1' },
-        { id: '2', title: 'subsubstep2' }
+        generateStep({ id: '1', title: 'subsubstep1' }),
+        generateStep({ id: '2', title: 'subsubstep2' })
       ]
-    };
+    });
     const spy = jest.fn();
     const wrapper = shallow(
       <SubStep step={step} onEnterStep={spy} editText="Edit" />

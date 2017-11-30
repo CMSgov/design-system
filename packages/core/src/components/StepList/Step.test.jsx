@@ -14,6 +14,11 @@ const defaultStep = {
   description: 'Do something really cool!'
 };
 
+const generateStep = id => ({
+  ...defaultStep,
+  id
+});
+
 const defaultStepProps = {
   onEnterStep: noop,
   completedText: 'Completed!',
@@ -65,7 +70,7 @@ describe('Step', () => {
     expect(description.length).toEqual(1);
     expect(description.text()).toEqual('Do something really cool!');
 
-    expect(wrapper.find('.ds-c-step__completed').length).toEqual(0);
+    expect(wrapper.find('.ds-c-step__completed_text').length).toEqual(0);
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
     expect(wrapper.find('StepLink').length).toEqual(0);
   });
@@ -82,11 +87,11 @@ describe('Step', () => {
     expect(description.length).toEqual(1);
     expect(description.text()).toEqual('Do something really cool!');
 
-    const completed = wrapper.find('.ds-c-step__completed');
+    const completed = wrapper.find('.ds-c-step__completed_text');
     expect(completed.length).toEqual(1);
-    expect(completed.find('span').text()).toEqual('Completed!');
+    expect(completed.text()).toEqual('Completed!');
 
-    const editLink = completed.find('StepLink');
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Edit!');
     editLink.props().onEnterStep();
@@ -98,12 +103,12 @@ describe('Step', () => {
   it('renders completed text and an no edit link for completed steps with substeps', () => {
     const { wrapper } = renderStep({
       completed: true,
-      steps: [{ id: '1' }]
+      steps: [generateStep('1')]
     });
 
-    const completed = wrapper.find('.ds-c-step__completed');
+    const completed = wrapper.find('.ds-c-step__completed_text');
     expect(completed.length).toEqual(1);
-    expect(completed.find('span').text()).toEqual('Completed!');
+    expect(completed.text()).toEqual('Completed!');
 
     const editLink = completed.find('StepLink');
     expect(editLink.length).toEqual(0);
@@ -134,7 +139,7 @@ describe('Step', () => {
   });
 
   it('renders substeps', () => {
-    const steps = [{ id: '1' }, { id: '2' }, { id: 'c' }];
+    const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
     const { wrapper, props } = renderStep({ steps });
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
