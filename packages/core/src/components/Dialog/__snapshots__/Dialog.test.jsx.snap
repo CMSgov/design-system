@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog renders react-aria-modal 1`] = `
+<Dialog
+  escapeExitDisabled={false}
+  getApplicationNode={[Function]}
+  onExit={[Function]}
+  title="Foo"
+  underlayClickExits={false}
+>
+  <Displaced
+    dialogClass="ds-c-dialog"
+    escapeExits={true}
+    getApplicationNode={[Function]}
+    includeDefaultStyles={false}
+    mounted={true}
+    onExit={[Function]}
+    titleId="dialog-title"
+    underlayClass="ds-c-dialog-wrap"
+    underlayClickExits={false}
+  >
+    <Modal
+      dialogClass="ds-c-dialog"
+      dialogId="react-aria-modal-dialog"
+      escapeExits={true}
+      focusTrapPaused={false}
+      getApplicationNode={[Function]}
+      includeDefaultStyles={false}
+      mounted={true}
+      onExit={[Function]}
+      scrollDisabled={true}
+      titleId="dialog-title"
+      underlayClass="ds-c-dialog-wrap"
+      underlayClickExits={false}
+      underlayColor="rgba(0,0,0,0.5)"
+      underlayProps={Object {}}
+    >
+      <FocusTrap
+        _createFocusTrap={[Function]}
+        active={true}
+        focusTrapOptions={
+          Object {
+            "initialFocus": undefined,
+          }
+        }
+        paused={false}
+        tag="div"
+      >
+        <div>
+          <div
+            className="ds-c-dialog-wrap"
+            style={Object {}}
+          >
+            <div
+              aria-labelledby="dialog-title"
+              className="ds-c-dialog"
+              id="react-aria-modal-dialog"
+              key="b"
+              role="dialog"
+              style={Object {}}
+            >
+              <header
+                className="ds-c-dialog__header"
+              >
+                <h1
+                  className="ds-h2"
+                  id="dialog-title"
+                >
+                  Foo
+                </h1>
+                <button
+                  className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                  onClick={[Function]}
+                >
+                  Close
+                </button>
+              </header>
+              <div
+                className="ds-c-dialog__body"
+              >
+                Bar
+              </div>
+            </div>
+          </div>
+        </div>
+      </FocusTrap>
+    </Modal>
+  </Displaced>
+</Dialog>
+`;
