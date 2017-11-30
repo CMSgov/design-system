@@ -1,4 +1,4 @@
-@import "@cmsgov/design-system-support/src/settings/index";
+@import '@cmsgov/design-system-support/src/settings/index';
 
 /*
 Step List
@@ -101,55 +101,55 @@ $step-button-height: 38px !default;
 $current-step-color: $color-primary !default;
 
 .ds-c-step-list {
+  list-style-type: none;
   margin: 0;
   padding: 0 $step-list-padding-h;
   padding-left: $step-list-padding-left;
-  list-style-type: none;
 }
 
 .ds-c-step {
-  position: relative;
-  margin-bottom: $step-margin;
-  padding-bottom: $step-margin;
   color: $color-muted;
   counter-increment: step-counter;
+  margin-bottom: $step-margin;
+  padding-bottom: $step-margin;
+  position: relative;
 
   &::before {
-    content: counter(step-counter);
-    display: block;
-    box-sizing: border-box;
-    width: $step-list-number-size-mobile;
-    height: $step-list-number-size-mobile;
-    position: absolute;
-    top: ($step-button-height - $step-list-number-size-mobile) / 2;
-    left: -($step-list-number-margin + $step-list-number-size-mobile);
-    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
-    font-size: $step-list-number-font-size-mobile;
-    text-align: center;
     border: $step-list-number-border-size solid $color-muted;
     border-radius: 50%;
+    box-sizing: border-box;
     color: $color-muted;
+    content: counter(step-counter);
+    display: block;
+    font-size: $step-list-number-font-size-mobile;
+    height: $step-list-number-size-mobile;
+    left: -($step-list-number-margin + $step-list-number-size-mobile);
+    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
+    position: absolute;
+    text-align: center;
+    top: ($step-button-height - $step-list-number-size-mobile) / 2;
+    width: $step-list-number-size-mobile;
 
     @media (min-width: $step-list-breakpoint) {
-      width: $step-list-number-size;
+      font-size: $step-list-number-font-size;
       height: $step-list-number-size;
-      padding-left: 1px;
-      top: ($step-button-height - $step-list-number-size) / 2;
       left: -($step-list-number-margin + $step-list-number-size);
       line-height: $step-list-number-size - $step-list-number-border-size * 2;
-      font-size: $step-list-number-font-size;
+      padding-left: 1px;
+      top: ($step-button-height - $step-list-number-size) / 2;
+      width: $step-list-number-size;
     }
   }
 
   &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: -$step-list-padding-left;
-    right: -$step-list-padding-h;
-    height: 1px;
     border-bottom: $step-border-width solid $color-muted;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: -$step-list-padding-left;
+    position: absolute;
+    right: -$step-list-padding-h;
   }
 }
 
@@ -163,9 +163,9 @@ $current-step-color: $color-primary !default;
   }
 
   &::before {
-    line-height: $step-list-number-size-mobile;
-    border: none;
+    border: 0 none;
     color: $color-white;
+    line-height: $step-list-number-size-mobile;
 
     @media (min-width: $step-list-breakpoint) {
       line-height: $step-list-number-size;
@@ -234,13 +234,13 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step__completed_text {
   display: inline-block;
+  line-height: $step-button-height - 12px;
   margin-right: $spacer-2;
   padding-top: 6px;
-  line-height: $step-button-height - 12px;
 
   &::before {
-    background-size: contain;
     background-image: url('#{$image-path}/checkmark-green.svg');
+    background-size: contain;
     box-sizing: border-box;
     content: '';
     display: inline-block;
@@ -271,22 +271,22 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step__substeps {
+  list-style-type: none;
   margin: 0;
   margin-bottom: $spacer-1;
   padding-left: $spacer-5;
-  list-style-type: none;
 }
 
 .ds-c-substep {
   display: block;
-  position: relative;
   font-size: $small-font-size;
+  position: relative;
 
   &::before {
-    content: "\2022";
+    content: '\2022';
+    left: -$spacer-3;
     position: absolute;
     top: 0;
-    left: -$spacer-3;
   }
 }
 
