@@ -21,10 +21,8 @@ export default function() {
         clearAllText="Clear all"
       />
       <MonthPicker
-        name="months-2"
+        name="cryosleep-months"
         label="Select the months you were in cryosleep during 2046"
-        selectAllText="Select all"
-        clearAllText="Clear all"
         disabledMonths={[7, 8, 9, 10, 11, 12]}
       />
     </div>
