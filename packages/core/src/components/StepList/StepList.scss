@@ -193,9 +193,11 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step--completed {
-  color: $color-base;
-
   .ds-c-step__header {
+    color: $color-base;
+  }
+
+  .ds-c-step__substeps {
     color: $color-base;
   }
 
