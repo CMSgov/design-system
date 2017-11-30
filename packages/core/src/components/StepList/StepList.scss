@@ -15,8 +15,8 @@ Markup:
     <li class="ds-c-step ds-c-step--completed">
       <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
         <div class="ds-c-step__title">Choose a tax year</div>
-        <div class="ds-c-step__completed">
-          <span>Completed</span>
+        <div class="ds-c-step__actions">
+          <div class="ds-c-step__completed_text">Completed</div>
           <a href="#step-1">
             Edit
             <span class="ds-u-visibility--screen-reader">
@@ -29,7 +29,7 @@ Markup:
     <li class="ds-c-step ds-c-step--current">
       <h2 class="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
         <div class="ds-c-step__title">Enter household details</div>
-        <div>
+        <div class="ds-c-step__actions">
           <a href="#step-2" class="ds-c-button ds-c-button--success">
             Resume
             <span class="ds-u-visibility--screen-reader">
@@ -93,7 +93,6 @@ $step-list-padding-h: $spacer-1;
 $step-list-padding-left: $step-list-padding-h + $number-margin + $number-size;
 $step-margin: $spacer-2;
 $step-border-width: 1px;
-$step-border-color: $color-gray;
 $step-button-height: 38px;
 
 .ds-c-step-list {
@@ -107,7 +106,7 @@ $step-button-height: 38px;
   position: relative;
   margin-bottom: $step-margin;
   padding-bottom: $step-margin;
-  color: $color-gray;
+  color: $color-muted;
   counter-increment: step-counter;
 
   &::before {
@@ -123,9 +122,9 @@ $step-button-height: 38px;
     line-height: $number-size - $number-border-size * 2;
     font-size: 20px;
     text-align: center;
-    border: $number-border-size solid $color-gray;
+    border: $number-border-size solid $color-muted;
     border-radius: 50%;
-    color: $color-gray;
+    color: $color-muted;
   }
 
   &::after {
@@ -136,7 +135,7 @@ $step-button-height: 38px;
     left: -$step-list-padding-left;
     right: -$step-list-padding-h;
     height: 1px;
-    border-bottom: $step-border-width solid $step-border-color;
+    border-bottom: $step-border-width solid $color-muted;
   }
 }
 
@@ -179,20 +178,19 @@ $step-button-height: 38px;
   line-height: $step-button-height;
 }
 
-.ds-c-step__completed {
-  text-align: right;
+.ds-c-step__actions {
   font-size: $base-font-size;
+  text-align: right;
 
-  span {
-    display: inline-block;
-    padding-top: 6px;
-    line-height: $step-button-height - 12px;
-  }
-
-  a {
+  .ds-c-step--completed & a {
     display: block;
     font-weight: $font-normal;
   }
+}
+
+.ds-c-step__completed_text {
+  padding-top: 6px;
+  line-height: $step-button-height - 12px;
 
   &::before {
     background-size: contain;

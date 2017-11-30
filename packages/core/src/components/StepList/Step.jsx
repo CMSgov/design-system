@@ -16,22 +16,23 @@ export const Step = ({ step, ...props }) => {
     <li className={className}>
       <h2 className="ds-c-step__header ds-h3 ds-u-display--flex ds-u-justify-content--between">
         <div className="ds-c-step__title">{step.title}</div>
-        <div>
+        <div className="ds-c-step__actions">
           {step.completed && (
-            <div className="ds-c-step__completed">
-              <span>{props.completedText}</span>
-              {!step.steps && (
-                <StepLink
-                  href={step.href}
-                  stepId={step.id}
-                  screenReaderText={`"${step.title}"`}
-                  onEnterStep={props.onEnterStep}
-                >
-                  {props.editText}
-                </StepLink>
-              )}
+            <div className="ds-c-step__completed_text">
+              {props.completedText}
             </div>
           )}
+          {step.completed &&
+            !step.steps && (
+              <StepLink
+                href={step.href}
+                stepId={step.id}
+                screenReaderText={`"${step.title}"`}
+                onEnterStep={props.onEnterStep}
+              >
+                {props.editText}
+              </StepLink>
+            )}
           {start && (
             <StepLink
               href={step.href}
