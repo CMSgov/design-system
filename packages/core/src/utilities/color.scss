@@ -136,6 +136,22 @@ Style guide: utilities.color
 }
 
 /*
+Inherit a color
+
+Use the `ds-u-color--inherit` utility class to inherit the color of the parent element.
+
+Markup:
+<div class="ds-u-color--error">
+  This is an example of <a href="#" class="ds-u-color--inherit">a link</a> with error styling.
+</div>
+
+Style guide: utilities.color.inherit
+*/
+.ds-u-color--inherit {
+  color: inherit !important;
+}
+
+/*
 ---
 
 ## Accessibility

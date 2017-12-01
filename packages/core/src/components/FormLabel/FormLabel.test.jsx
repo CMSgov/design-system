@@ -104,4 +104,16 @@ describe('FormLabel', () => {
 
     expect(wrapper.hasClass('ds-u-foo')).toBe(true);
   });
+
+  it('supports additional label classNames', () => {
+    const props = { labelClassName: 'ds-u-foo' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(
+      wrapper
+        .children()
+        .first()
+        .hasClass('ds-u-foo')
+    ).toBe(true);
+  });
 });

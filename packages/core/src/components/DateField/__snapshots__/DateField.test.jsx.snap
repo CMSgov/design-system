@@ -9,7 +9,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     htmlFor={undefined}
   >
     <span
-      className={undefined}
+      className=""
     >
       <span
         className="ds-u-font-weight--bold"
@@ -34,7 +34,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -61,7 +61,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -88,7 +88,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -152,7 +152,7 @@ exports[`DateField has errorMessage 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -179,7 +179,7 @@ exports[`DateField has errorMessage 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -206,7 +206,7 @@ exports[`DateField has errorMessage 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -238,7 +238,7 @@ exports[`DateField has requirementLabel 1`] = `
     htmlFor={undefined}
   >
     <span
-      className={undefined}
+      className=""
     >
       <span
         className="ds-u-font-weight--bold"
@@ -269,7 +269,7 @@ exports[`DateField has requirementLabel 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -296,7 +296,7 @@ exports[`DateField has requirementLabel 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -323,7 +323,7 @@ exports[`DateField has requirementLabel 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -355,7 +355,7 @@ exports[`DateField is inversed 1`] = `
     htmlFor={undefined}
   >
     <span
-      className={undefined}
+      className=""
     >
       <span
         className="ds-u-font-weight--bold"
@@ -380,7 +380,7 @@ exports[`DateField is inversed 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -407,7 +407,7 @@ exports[`DateField is inversed 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -434,7 +434,7 @@ exports[`DateField is inversed 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -466,7 +466,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     htmlFor={undefined}
   >
     <span
-      className={undefined}
+      className=""
     >
       <span
         className="ds-u-font-weight--bold"
@@ -491,7 +491,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -518,7 +518,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -545,7 +545,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         htmlFor="textfield_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
