@@ -39,7 +39,7 @@ describe('SubStep', () => {
       href: '/some/path',
       screenReaderText: '"Do stuff"'
     });
-    editLink.props().onEnterStep();
+    editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
   });
 

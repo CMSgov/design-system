@@ -3,9 +3,9 @@ import React from 'react';
 
 export class StepLink extends React.PureComponent {
   handleClick(event) {
-    if (this.props.onEnterStep) {
+    if (this.props.onClick) {
       event.preventDefault();
-      this.props.onEnterStep(this.props.href, this.props.stepId);
+      this.props.onClick(this.props.href, this.props.stepId);
     }
   }
 
@@ -33,7 +33,7 @@ StepLink.propTypes = {
   stepId: PropTypes.string.isRequired,
   screenReaderText: PropTypes.string,
   className: PropTypes.string,
-  onEnterStep: PropTypes.func
+  onClick: PropTypes.func
 };
 
 export default StepLink;

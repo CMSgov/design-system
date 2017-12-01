@@ -11,7 +11,7 @@ export const SubStep = ({ step, ...props }) => (
         href={step.href}
         stepId={step.id}
         screenReaderText={`"${step.title}"`}
-        onEnterStep={props.onEnterStep}
+        onClick={props.onEnterStep}
         className="ds-c-substep__edit"
       >
         {props.editText}

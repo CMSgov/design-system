@@ -94,7 +94,7 @@ describe('Step', () => {
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Edit!');
-    editLink.props().onEnterStep();
+    editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
@@ -123,7 +123,7 @@ describe('Step', () => {
     const editLink = wrapper.find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Resume!');
-    editLink.props().onEnterStep();
+    editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
   });
 
@@ -134,7 +134,7 @@ describe('Step', () => {
     const editLink = wrapper.find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Start!');
-    editLink.props().onEnterStep();
+    editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
   });
 
