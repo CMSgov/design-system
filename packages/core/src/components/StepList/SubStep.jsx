@@ -11,7 +11,7 @@ export const SubStep = ({ step, ...props }) => (
         href={step.href}
         stepId={step.id}
         screenReaderText={`"${step.title}"`}
-        onClick={props.onEnterStep}
+        onClick={props.onStepLinkClick}
         className="ds-c-substep__edit"
       >
         {props.editText}
@@ -25,7 +25,7 @@ export const SubStep = ({ step, ...props }) => (
 
 SubStep.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,
-  onEnterStep: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func.isRequired,
   editText: PropTypes.string.isRequired
 };
 

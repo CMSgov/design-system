@@ -20,7 +20,7 @@ const generateStep = id => ({
 });
 
 const defaultStepProps = {
-  onEnterStep: noop,
+  onStepLinkClick: noop,
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',
@@ -77,7 +77,10 @@ describe('Step', () => {
 
   it('renders completed text and an edit link for completed steps', () => {
     const spy = jest.fn();
-    const { wrapper } = renderStep({ completed: true }, { onEnterStep: spy });
+    const { wrapper } = renderStep(
+      { completed: true },
+      { onStepLinkClick: spy }
+    );
 
     const title = wrapper.find('.ds-c-step__title');
     expect(title.length).toEqual(1);
@@ -118,7 +121,7 @@ describe('Step', () => {
 
   it('renders resume button for started, incomplete steps', () => {
     const spy = jest.fn();
-    const { wrapper } = renderStep({ started: true }, { onEnterStep: spy });
+    const { wrapper } = renderStep({ started: true }, { onStepLinkClick: spy });
 
     const editLink = wrapper.find('StepLink');
     expect(editLink.length).toEqual(1);
@@ -129,7 +132,10 @@ describe('Step', () => {
 
   it('renders start button for steps with isNextStep', () => {
     const spy = jest.fn();
-    const { wrapper } = renderStep({ isNextStep: true }, { onEnterStep: spy });
+    const { wrapper } = renderStep(
+      { isNextStep: true },
+      { onStepLinkClick: spy }
+    );
 
     const editLink = wrapper.find('StepLink');
     expect(editLink.length).toEqual(1);
@@ -145,7 +151,7 @@ describe('Step', () => {
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
 
     const expectedProps = {
-      onEnterStep: props.onEnterStep,
+      onStepLinkClick: props.onStepLinkClick,
       editText: props.editText
     };
     const substeps = wrapper.find('SubStep');

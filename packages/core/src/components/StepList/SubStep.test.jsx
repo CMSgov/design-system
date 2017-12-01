@@ -14,7 +14,7 @@ const generateStep = (step = {}) => ({
 describe('SubStep', () => {
   it('renders a basic incomplete substep', () => {
     const wrapper = shallow(
-      <SubStep step={generateStep()} onEnterStep={noop} editText="Edit" />
+      <SubStep step={generateStep()} onStepLinkClick={noop} editText="Edit" />
     );
     const title = wrapper.find('.ds-c-substep__title');
     expect(title.length).toEqual(1);
@@ -26,7 +26,7 @@ describe('SubStep', () => {
     const step = generateStep({ completed: true });
     const spy = jest.fn();
     const wrapper = shallow(
-      <SubStep step={step} onEnterStep={spy} editText="Edit" />
+      <SubStep step={step} onStepLinkClick={spy} editText="Edit" />
     );
 
     const title = wrapper.find('.ds-c-substep__title');
@@ -53,7 +53,7 @@ describe('SubStep', () => {
     });
     const spy = jest.fn();
     const wrapper = shallow(
-      <SubStep step={step} onEnterStep={spy} editText="Edit" />
+      <SubStep step={step} onStepLinkClick={spy} editText="Edit" />
     );
 
     const title = wrapper.find('.ds-c-substep__title');
@@ -64,12 +64,12 @@ describe('SubStep', () => {
     expect(subs.length).toEqual(2);
     expect(subs.at(1).props()).toMatchObject({
       step: step.steps[1],
-      onEnterStep: spy
+      onStepLinkClick: spy
     });
     subs
       .at(1)
       .props()
-      .onEnterStep();
+      .onStepLinkClick();
     expect(spy).toHaveBeenCalled();
   });
 });

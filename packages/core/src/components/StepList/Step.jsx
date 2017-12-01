@@ -40,7 +40,7 @@ export const Step = ({ step, ...props }) => {
               href={step.href}
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
-              onClick={props.onEnterStep}
+              onClick={props.onStepLinkClick}
             >
               {props.editText}
             </StepLink>
@@ -50,7 +50,7 @@ export const Step = ({ step, ...props }) => {
             href={step.href}
             stepId={step.id}
             screenReaderText={`"${step.title}"`}
-            onClick={props.onEnterStep}
+            onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
             {props.startText}
@@ -61,7 +61,7 @@ export const Step = ({ step, ...props }) => {
             href={step.href}
             stepId={step.id}
             screenReaderText={`"${step.title}"`}
-            onClick={props.onEnterStep}
+            onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
             {props.resumeText}
@@ -74,7 +74,7 @@ export const Step = ({ step, ...props }) => {
 
 Step.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,
-  onEnterStep: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func.isRequired,
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,

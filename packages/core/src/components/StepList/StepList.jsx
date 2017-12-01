@@ -47,7 +47,7 @@ StepList.propTypes = {
    * Function called when a step's Edit, Start, or Resume button/link is
    * clicked. The step's `href` property will be passed as a parameter.
    */
-  onEnterStep: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func.isRequired,
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,

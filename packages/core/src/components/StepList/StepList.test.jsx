@@ -11,7 +11,7 @@ const generateStep = id => ({
 });
 
 const defaultStepProps = {
-  onEnterStep: noop,
+  onStepLinkClick: noop,
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',
