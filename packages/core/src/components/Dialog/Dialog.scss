@@ -12,7 +12,7 @@ The dialog component can be used to focus a user's attention on a single piece o
 .ds-c-dialog--full - A dialog spanning a normal page width
 
 Markup:
-<div data-demo="This div is for demo purposes only" style="min-height: 400px;">
+<div data-demo="This div is for demo purposes only" style="min-height: 450px;">
   <div class="ds-c-dialog-wrap">
     <div class="ds-c-dialog {{modifier}}" role="dialog" aria-labelledby="dialog-title">
       <header class="ds-c-dialog__header">
@@ -32,12 +32,16 @@ Markup:
 
 Style guide: components.dialog
 */
+$dialog-spacer: $spacer-4;
+
 .ds-c-dialog {
   background-color: $color-background-dialog;
   box-shadow: $shadow-base;
+  box-sizing: border-box;
   display: inline-block;
   font-size: $base-font-size;
   max-width: $measure-base;
+  padding: $dialog-spacer;
   text-align: left;
   vertical-align: middle;
   width: 95%; // provide space for the background layer to peek through
@@ -55,26 +59,15 @@ Style guide: components.dialog
   max-width: $site-max-width;
 }
 
-.ds-c-dialog__header,
-.ds-c-dialog__body,
-.ds-c-dialog__actions {
-  padding-left: $spacer-2;
-  padding-right: $spacer-2;
-}
-
-.ds-c-dialog__header,
-.ds-c-dialog__actions {
-  padding-top: $spacer-2;
-}
-
-.ds-c-dialog__body,
-.ds-c-dialog__actions {
-  padding-bottom: $spacer-2;
-}
-
 .ds-c-dialog__header {
   align-items: start;
   display: flex;
+  // Provide some spacing when the header only includes the close button
+  padding-bottom: $spacer-1;
+}
+
+.ds-c-dialog__actions {
+  margin-top: $dialog-spacer / 2;
 }
 
 .ds-c-dialog__close {
@@ -82,10 +75,6 @@ Style guide: components.dialog
   background-size: 12px 12px;
   margin-left: auto;
   padding: 0 0 0 (12px + $spacer-1);
-}
-
-.ds-c-dialog__actions {
-  border-top: 1px solid $border-color;
 }
 
 .ds-c-dialog-wrap {
