@@ -1,0 +1,15 @@
+@import '@cmsgov/design-system-support/src/index';
+
+/*
+Month Picker
+
+Style guide: components.month-picker
+*/
+
+.ds-c-month-picker__months {
+  max-width: 400px;
+}
+
+.ds-c-month-picker__month {
+  width: 100px;
+}
