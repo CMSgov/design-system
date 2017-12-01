@@ -3,6 +3,8 @@
 /*
 Step List
 
+@responsive
+
 @status beta
 
 A step list represents a user's progression through an application or multi-page
@@ -83,7 +85,7 @@ Markup:
   </ol>
 </div>
 
-Style guide: components.step-list
+Style guide: patterns.step-list
 */
 
 $step-list-number-size: 32px !default;
@@ -142,7 +144,7 @@ $current-step-color: $color-primary !default;
   }
 
   &::after {
-    border-bottom: $step-border-width solid $color-muted;
+    border-bottom: $step-border-width solid $border-color;
     bottom: 0;
     content: '';
     display: block;
@@ -326,7 +328,7 @@ When a step has substeps, the React component will automatically set the
 the current (incomplete) substep's `href`. The "Edit" button will only
 appear on substeps that have been completed.
 
-Style guide: components.step-list.buttons
+Style guide: patterns.step-list.buttons
 */
 
 /*
@@ -334,7 +336,7 @@ Style guide: components.step-list.buttons
 
 @react-component StepList
 
-Style guide: components.step-list.react
+Style guide: patterns.step-list.react
 */
 
 /*
@@ -352,5 +354,5 @@ Step object properties:
 - **title** (`string`) - Text to display as the step title
 - **description** (`string`) - Additional text to display under (only rendered for top-level steps)
 
-Style guide: components.step-list.step-object
+Style guide: patterns.step-list.step-object
 */
