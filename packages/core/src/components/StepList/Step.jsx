@@ -12,59 +12,59 @@ export const Step = ({ step, ...props }) => {
     'ds-c-step--current': start || resume,
     'ds-c-step--completed': step.completed
   });
+  // const actionsId = `step-${step.id}-actions`;
+  // const subActionsId = `step-${step.id}-sub-actions`;
   return (
     <li className={className}>
-      <h2 className="ds-c-step__header">
-        <div className="ds-c-step__title">{step.title}</div>
-        <div className="ds-c-step__actions">
-          {step.completed && (
-            <div className="ds-c-step__completed-text">
-              {props.completedText}
-            </div>
-          )}
-          {step.completed &&
-            !step.steps && (
-              <StepLink
-                href={step.href}
-                stepId={step.id}
-                screenReaderText={`"${step.title}"`}
-                onEnterStep={props.onEnterStep}
-              >
-                {props.editText}
-              </StepLink>
-            )}
-          {start && (
+      <div className="ds-c-step__content">
+        <h2 className="ds-c-step__title">{step.title}</h2>
+        {step.description && (
+          <div className="ds-c-step__description">{step.description}</div>
+        )}
+        {step.steps && (
+          <ol className="ds-c-step__substeps">
+            {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
+          </ol>
+        )}
+      </div>
+      <div className="ds-c-step__actions">
+        {step.completed && (
+          <div className="ds-c-step__completed-text">{props.completedText}</div>
+        )}
+        {step.completed &&
+          !step.steps && (
             <StepLink
               href={step.href}
               stepId={step.id}
               screenReaderText={`"${step.title}"`}
               onEnterStep={props.onEnterStep}
-              className="ds-c-button ds-c-button--primary"
             >
-              {props.startText}
+              {props.editText}
             </StepLink>
           )}
-          {resume && (
-            <StepLink
-              href={step.href}
-              stepId={step.id}
-              screenReaderText={`"${step.title}"`}
-              onEnterStep={props.onEnterStep}
-              className="ds-c-button ds-c-button--primary"
-            >
-              {props.resumeText}
-            </StepLink>
-          )}
-        </div>
-      </h2>
-      {step.description && (
-        <div className="ds-c-step__description">{step.description}</div>
-      )}
-      {step.steps && (
-        <ol className="ds-c-step__substeps">
-          {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
-        </ol>
-      )}
+        {start && (
+          <StepLink
+            href={step.href}
+            stepId={step.id}
+            screenReaderText={`"${step.title}"`}
+            onEnterStep={props.onEnterStep}
+            className="ds-c-button ds-c-button--primary"
+          >
+            {props.startText}
+          </StepLink>
+        )}
+        {resume && (
+          <StepLink
+            href={step.href}
+            stepId={step.id}
+            screenReaderText={`"${step.title}"`}
+            onEnterStep={props.onEnterStep}
+            className="ds-c-button ds-c-button--primary"
+          >
+            {props.resumeText}
+          </StepLink>
+        )}
+      </div>
     </li>
   );
 };

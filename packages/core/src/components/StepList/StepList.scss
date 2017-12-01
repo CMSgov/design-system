@@ -15,72 +15,66 @@ Markup:
 <div style="max-width: 628px">
   <ol class="ds-c-step-list ds-u-margin-top--4">
     <li class="ds-c-step ds-c-step--completed">
-      <h2 class="ds-c-step__header">
-        <div class="ds-c-step__title">Choose a tax year</div>
-        <div class="ds-c-step__actions">
-          <div class="ds-c-step__completed-text">Completed</div>
-          <a href="#step-1">
-            Edit<span class="ds-u-visibility--screen-reader">
-              {" "}
-              "Choose a tax year"
-            </span>
-          </a>
-        </div>
-      </h2>
+      <div class="ds-c-step__content">
+        <h2 class="ds-c-step__title">Choose a tax year</h2>
+      </div>
+      <div class="ds-c-step__actions">
+        <div class="ds-c-step__completed-text">Completed</div>
+        <a href="#step-1">
+          Edit<span class="ds-u-visibility--screen-reader">
+            {" "}
+            "Choose a tax year"
+          </span>
+        </a>
+      </div>
     </li>
     <li class="ds-c-step ds-c-step--current">
-      <h2 class="ds-c-step__header">
-        <div class="ds-c-step__title">Enter household details</div>
-        <div class="ds-c-step__actions">
-          <a href="#step-2" class="ds-c-button ds-c-button--primary">
-            Resume<span class="ds-u-visibility--screen-reader">
-              {" "}
-              "Enter household details"
-            </span>
-          </a>
+      <div class="ds-c-step__content">
+        <h2 class="ds-c-step__title">Enter household details</h2>
+        <div class="ds-c-step__description">
+          Answer questions about who in your household qualifies for a premium tax
+          credit and information on each person, including date of birth,
+          location(s) they lived in for the year, and months of marketplace
+          coverage.
         </div>
-      </h2>
-      <div class="ds-c-step__description">
-        Answer questions about who in your household qualifies for a premium tax
-        credit and information on each person, including date of birth,
-        location(s) they lived in for the year, and months of marketplace
-        coverage.
-      </div>
-      <ol class="ds-c-step__substeps">
-        <li class="ds-c-substep">
-          <div class="ds-c-substep__line">
+        <ol class="ds-c-step__substeps">
+          <li class="ds-c-substep">
             <div class="ds-c-substep__title">Overall household</div>
-            <a href="#step-2a">
+            <a href="#step-2a" class="ds-c-substep__edit">
               Edit<span class="ds-u-visibility--screen-reader">
                 {" "}
                 "Overall household"
               </span>
             </a>
-          </div>
-        </li>
-        <li class="ds-c-substep">
-          <div class="ds-c-substep__line">
+          </li>
+          <li class="ds-c-substep">
             <div class="ds-c-substep__title">Bob's information</div>
-          </div>
-        </li>
-        <li class="ds-c-substep">
-          <div class="ds-c-substep__line">
+          </li>
+          <li class="ds-c-substep">
             <div class="ds-c-substep__title">Barb's information</div>
-          </div>
-        </li>
-      </ol>
+          </li>
+        </ol>
+      </div>
+      <div class="ds-c-step__actions">
+        <a href="#step-2" class="ds-c-button ds-c-button--primary">
+          Resume<span class="ds-u-visibility--screen-reader">
+            {" "}
+            "Enter household details"
+          </span>
+        </a>
+      </div>
     </li>
     <li class="ds-c-step">
-      <h2 class="ds-c-step__header">
-        <div class="ds-c-step__title">Review your information</div>
-        <div class="ds-c-step__actions" />
-      </h2>
+      <div class="ds-c-step__content">
+        <h2 class="ds-c-step__title">Review your information</h2>
+      </div>
+      <div class="ds-c-step__actions" />
     </li>
     <li class="ds-c-step">
-      <h2 class="ds-c-step__header">
-        <div class="ds-c-step__title">View premium results</div>
-        <div class="ds-c-step__actions" />
-      </h2>
+      <div class="ds-c-step__content">
+        <h2 class="ds-c-step__title">View premium results</h2>
+      </div>
+      <div class="ds-c-step__actions" />
     </li>
   </ol>
 </div>
@@ -153,16 +147,16 @@ $current-step-color: $color-primary !default;
     position: absolute;
     right: -$step-list-padding-h;
   }
+
+  @media (min-width: $step-list-breakpoint) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .ds-c-step--current,
 .ds-c-step--completed {
-  padding-bottom: $step-margin + $step-button-height;
-
-  .ds-c-step__actions {
-    bottom: $step-margin;
-    position: absolute;
-  }
+  padding-bottom: $step-margin;
 
   &::before {
     border: 0 none;
@@ -173,19 +167,10 @@ $current-step-color: $color-primary !default;
       line-height: $step-list-number-size;
     }
   }
-
-  @media (min-width: $step-list-breakpoint) {
-    padding-bottom: $step-margin;
-
-    .ds-c-step__actions {
-      bottom: auto;
-      position: inherit;
-    }
-  }
 }
 
 .ds-c-step--current {
-  .ds-c-step__header {
+  .ds-c-step__title {
     color: $current-step-color;
   }
 
@@ -195,7 +180,7 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step--completed {
-  .ds-c-step__header {
+  .ds-c-step__title {
     color: $color-base;
   }
 
@@ -208,24 +193,25 @@ $current-step-color: $color-primary !default;
   }
 }
 
-.ds-c-step__header {
-  font-size: $h5-font-size;
-  margin: 0;
-
+.ds-c-step__content {
   @media (min-width: $step-list-breakpoint) {
-    display: flex;
-    font-size: $h3-font-size;
-    justify-content: space-between;
+    padding-right: $spacer-2;
   }
 }
 
 .ds-c-step__title {
+  font-size: $h5-font-size;
   line-height: $step-button-height;
+  margin: 0;
+
+  @media (min-width: $step-list-breakpoint) {
+    font-size: $h3-font-size;
+  }
 }
 
 .ds-c-step__actions {
   font-size: $small-font-size;
-  text-align: right;
+  margin-top: $spacer-2;
 
   .ds-c-step--completed & a {
     font-weight: $font-normal;
@@ -233,6 +219,8 @@ $current-step-color: $color-primary !default;
 
   @media (min-width: $step-list-breakpoint) {
     font-size: $base-font-size;
+    margin-top: 0;
+    text-align: right;
   }
 }
 
@@ -270,7 +258,6 @@ $current-step-color: $color-primary !default;
 
   @media (min-width: $step-list-breakpoint) {
     font-size: $base-font-size;
-    max-width: 75%;
   }
 }
 
@@ -284,29 +271,23 @@ $current-step-color: $color-primary !default;
 .ds-c-substep {
   display: block;
   font-size: $small-font-size;
-  position: relative;
 
   &::before {
     content: '\2022';
     left: -$spacer-3;
-    position: absolute;
-    top: 0;
+    position: relative;
   }
 }
 
 .ds-c-substep__title {
   display: inline-block;
   margin-right: $spacer-1;
-
-  @media (min-width: $step-list-breakpoint) {
-    display: block;
-  }
 }
 
-.ds-c-substep__line {
+.ds-c-substep__edit {
   @media (min-width: $step-list-breakpoint) {
-    display: flex;
-    justify-content: space-between;
+    position: absolute;
+    right: 0;
   }
 }
 
