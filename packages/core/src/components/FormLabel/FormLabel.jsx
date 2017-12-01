@@ -52,8 +52,9 @@ export class FormLabel extends React.PureComponent {
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses =
-      this.props.errorMessage && 'ds-u-font-weight--bold';
+    const labelTextClasses = classNames(this.props.labelClassName, {
+      'ds-u-font-weight--bold': this.props.errorMessage
+    });
     const classes = classNames('ds-c-label', this.props.className);
 
     return (
@@ -73,6 +74,10 @@ FormLabel.propTypes = {
    * Additional classes to be added to the root element.
    */
   className: PropTypes.string,
+  /**
+   * Additional classes to be added to the label text.
+   */
+  labelClassName: PropTypes.string,
   /** The root HTML element used to render the label */
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
