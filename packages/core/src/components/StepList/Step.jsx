@@ -12,11 +12,14 @@ export const Step = ({ step, ...props }) => {
     'ds-c-step--current': start || resume,
     'ds-c-step--completed': step.completed
   });
+  const contentClassName = classNames('ds-c-step__content', {
+    'ds-c-step__content--with-content': step.description || step.steps
+  });
   // const actionsId = `step-${step.id}-actions`;
   // const subActionsId = `step-${step.id}-sub-actions`;
   return (
     <li className={className}>
-      <div className="ds-c-step__content">
+      <div className={contentClassName}>
         <h2 className="ds-c-step__title">{step.title}</h2>
         {step.description && (
           <div className="ds-c-step__description">{step.description}</div>

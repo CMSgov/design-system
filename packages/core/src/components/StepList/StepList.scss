@@ -29,7 +29,7 @@ Markup:
       </div>
     </li>
     <li class="ds-c-step ds-c-step--current">
-      <div class="ds-c-step__content">
+      <div class="ds-c-step__content ds-c-step__content--with-content">
         <h2 class="ds-c-step__title">Enter household details</h2>
         <div class="ds-c-step__description">
           Answer questions about who in your household qualifies for a premium tax
@@ -211,7 +211,14 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step__actions {
   font-size: $small-font-size;
-  margin-top: $spacer-2;
+
+  .ds-c-step__content--with-content + & {
+    margin-top: $spacer-2;
+
+    @media (min-width: $step-list-breakpoint) {
+      margin-top: 0;
+    }
+  }
 
   .ds-c-step--completed & a {
     font-weight: $font-normal;
@@ -219,7 +226,6 @@ $current-step-color: $color-primary !default;
 
   @media (min-width: $step-list-breakpoint) {
     font-size: $base-font-size;
-    margin-top: 0;
     text-align: right;
   }
 }
@@ -264,7 +270,6 @@ $current-step-color: $color-primary !default;
 .ds-c-step__substeps {
   list-style-type: none;
   margin: 0;
-  margin-bottom: $spacer-1;
   padding-left: $spacer-5;
 }
 
