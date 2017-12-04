@@ -17,15 +17,19 @@ export const SubStep = ({ step, ...props }) => (
         {props.editText}
       </StepLink>
     )}
-    {step.steps && (
-      <ul>{step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}</ul>
-    )}
+    {step.steps &&
+      props.showSubSubSteps && (
+        <ul>
+          {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
+        </ul>
+      )}
   </li>
 );
 
 SubStep.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,
-  onStepLinkClick: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func,
+  showSubSubSteps: PropTypes.bool,
   editText: PropTypes.string.isRequired
 };
 

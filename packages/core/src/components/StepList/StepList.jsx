@@ -29,6 +29,7 @@ export const stepShape = {
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
 StepList.defaultProps = {
+  showSubSubSteps: false,
   completedText: 'Completed',
   editText: 'Edit',
   resumeText: 'Resume',
@@ -44,10 +45,14 @@ StepList.propTypes = {
    */
   steps: PropTypes.arrayOf(PropTypes.shape(stepShape)).isRequired,
   /**
+   * Whether or not to render a substep's substeps.
+   */
+  showSubSubSteps: PropTypes.bool,
+  /**
    * Function called when a step's Edit, Start, or Resume button/link is
    * clicked. The step's `href` property will be passed as a parameter.
    */
-  onStepLinkClick: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func,
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,

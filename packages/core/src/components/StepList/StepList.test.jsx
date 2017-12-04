@@ -12,6 +12,7 @@ const generateStep = id => ({
 
 const defaultStepProps = {
   onStepLinkClick: noop,
+  showSubSubSteps: false,
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',

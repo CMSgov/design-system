@@ -74,7 +74,8 @@ export const Step = ({ step, ...props }) => {
 
 Step.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,
-  onStepLinkClick: PropTypes.func.isRequired,
+  onStepLinkClick: PropTypes.func,
+  showSubSubSteps: PropTypes.bool,
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,
