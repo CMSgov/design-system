@@ -1,3 +1,6 @@
+const babel = require('babel-core');
+const componentPathFromSource = require('../../../packages/docs/src/scripts/shared/componentPathFromSource')
+  .default;
 const crypto = require('crypto');
 const fs = require('mz/fs');
 const React = require('react');
@@ -28,6 +31,7 @@ window.tealiumEnvironment = "${env}";
  * @param {String} rootPath - Root docs site path
  * @param {Boolean} withoutUI - Whether this page should have the docs UI or
  *   if it should only render the markup
+ * @return {Promise<Boolean>}
  */
 function generatePage(routes, page, rootPath, withoutUI) {
   if (withoutUI) {
@@ -66,7 +70,9 @@ function generateDocPage(routes, page, rootPath) {
   ${seo(page, rootPath)}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${
+    rootPath
+  }public/images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
 
@@ -89,20 +95,26 @@ function generateDocPage(routes, page, rootPath) {
 }
 
 function generateMarkupPages(page, rootPath) {
-  return generateMarkupPage(page, null, rootPath).then(() => {
-    if (page.modifiers) {
-      return page.modifiers.map(modifier =>
-        generateMarkupPage(page, modifier, rootPath)
-      );
-    }
-  });
+  return generateMarkupPage(page, null, rootPath)
+    .then(() => {
+      if (page.modifiers) {
+        return page.modifiers.map(modifier =>
+          generateMarkupPage(page, modifier, rootPath)
+        );
+      }
+    })
+    .then(() => {
+      if (page.reactExample || page.reactComponent) {
+        generateReactPage(page, rootPath);
+      }
+    });
 }
 
 /**
  * Creates an HTML page with just the KSS section's markup and no additional UI.
  * This can then be viewed in a browser, or rendered in an iFrame in
  * the documentation.
- * @param {Object} page - This should include at least a "markup" property
+ * @param {Object} page
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
@@ -127,11 +139,64 @@ function generateMarkupPage(page, modifier, rootPath) {
 </head>
 <body class="ds-base">
   ${markup}
-  <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
+  <script type="text/javascript" src="/${
+    rootPath
+  }public/scripts/example.js"></script>
 </body>
 </html>`;
 
   const uri = `${rootPath}example/${id}`;
+  const pathObj = docsPath(uri);
+  return updateFile(html, pathObj);
+}
+
+/**
+ * Creates an HTML page using the React component and no additional UI.
+ * This can then be viewed in a browser, or rendered in an iFrame in
+ * the documentation.
+ * @param {Object} page
+ * @param {String} rootPath - Root docs site path
+ * @return {Promise}
+ */
+function generateReactPage(page, rootPath) {
+  if (rootPath) {
+    rootPath = `${rootPath}/`;
+  }
+
+  let examlePath = componentPathFromSource(
+    page.source.path,
+    page.reactExample || page.reactComponent
+  );
+
+  console.log('examlePath', examlePath);
+
+  // Provide support to pass in a component with or without the extension
+  examlePath = examlePath.replace(/\.example\.jsx$/, '');
+  examlePath = path.resolve(
+    __dirname,
+    '../../../packages',
+    `${examlePath}.example.jsx`
+  );
+
+  const exampleAST = babel.transformFileSync(examlePath);
+  const exampleScripts = exampleAST.code;
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: ${page.reference}</title>
+  <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />
+
+  ${analytics()}
+</head>
+<body class="ds-base">
+  <script type="text/javascript">${JSON.stringify(exampleScripts)}</script>
+</body>
+</html>`;
+
+  const uri = `${rootPath}example/${page.reference}`;
   const pathObj = docsPath(uri);
   return updateFile(html, pathObj);
 }

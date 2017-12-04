@@ -121,7 +121,11 @@ module.exports = (gulp, shared) => {
   function generateMarkupPages(kssSections) {
     // See note about this requirement in the generateDocPages method
     const generatePage = require('./generatePage');
-    const pagesWithMarkup = kssSections.filter(page => page.markup.length > 0);
+    const pagesWithMarkup = kssSections.filter(
+      page =>
+        !page.hideExample &&
+        (page.markup.length > 0 || page.reactExample || page.reactComponent)
+    );
 
     return Promise.all(
       pagesWithMarkup.map(page => {
@@ -129,7 +133,7 @@ module.exports = (gulp, shared) => {
           created
         ]);
       })
-    ).then(() => kssSections);
+    );
   }
 
   // Ensure a clean slate by deleting everything in the build and data directory
@@ -184,10 +188,7 @@ module.exports = (gulp, shared) => {
    * @return {Promise}
    */
   gulp.task('docs:generate-pages', async function() {
-    dutil.logMessage(
-      '📝 ',
-      'Creating HTML pages from Sass comments and Markdown pages'
-    );
+    dutil.logMessage('📝 ', 'Generating documentation pages');
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
     const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
@@ -199,7 +200,7 @@ module.exports = (gulp, shared) => {
     );
 
     /**
-     * Parse CSS and JS comments, and form an array of KssSection objects:
+     * Parse KSS documentation blocks in CSS and JSX files
      * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
      * @return {Array} KssSections
      */

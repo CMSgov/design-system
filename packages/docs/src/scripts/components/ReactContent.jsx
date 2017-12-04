@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactExample from './ReactExample';
+// import ReactExample from './ReactExample';
 import ReactPropDocs from './ReactPropDocs';
 import componentPathFromSource from '../shared/componentPathFromSource';
 const reactDoc = require('../../data/react-doc.json');
@@ -33,13 +33,14 @@ function ReactContent(props) {
     );
   }
 
-  if (!props.hideExample) {
-    const examplePath = props.reactExample
-      ? componentPathFromSource(props.source.path, props.reactExample)
-      : path;
+  // TODO: Output an iframe
+  // if (!props.hideExample) {
+  //   const examplePath = props.reactExample
+  //     ? componentPathFromSource(props.source.path, props.reactExample)
+  //     : path;
 
-    content.push(<ReactExample key="example" path={examplePath} />);
-  }
+  //   content.push(<ReactExample key="example" path={examplePath} />);
+  // }
 
   if (doc && doc.props) {
     content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
