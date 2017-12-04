@@ -10,6 +10,7 @@ module.exports = {
       experimentalObjectRestSpread: true,
       jsx: true
     },
+    ecmaVersion: 8,
     sourceType: 'module'
   },
   plugins: ['filenames', 'jest', 'jsx-a11y', 'react'],
