@@ -26,6 +26,8 @@ module.exports = (gulp, shared) => {
     ]);
 
     // React components, examples, and tests
+    // TODO: Figure out how to get the React pages to regenerate
+    // when an example file is updated
     gulp.watch(
       [
         `packages/${packages}/src/**/*.{js,jsx}`,

@@ -1,4 +1,3 @@
-const babel = require('babel-core');
 const componentPathFromSource = require('../../../packages/docs/src/scripts/shared/componentPathFromSource')
   .default;
 const crypto = require('crypto');
@@ -6,10 +5,12 @@ const fs = require('mz/fs');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const Docs = require('../../../packages/docs/src/scripts/Docs').default;
+const MemoryFS = require('memory-fs');
 const path = require('path');
 const processMarkup = require('../../../packages/docs/src/scripts/shared/processMarkup')
   .default;
 const recursive = require('mkdir-recursive');
+const webpack = require('webpack');
 
 /**
  * Blast Analytics code to be included in the <head> of any generated page.
@@ -159,29 +160,57 @@ function generateMarkupPage(page, modifier, rootPath) {
  * @return {Promise}
  */
 function generateReactPage(page, rootPath) {
-  if (rootPath) {
-    rootPath = `${rootPath}/`;
-  }
+  return new Promise((resolve, reject) => {
+    if (rootPath) {
+      rootPath = `${rootPath}/`;
+    }
 
-  let examlePath = componentPathFromSource(
-    page.source.path,
-    page.reactExample || page.reactComponent
-  );
+    let examplePath = componentPathFromSource(
+      page.source.path,
+      page.reactExample || page.reactComponent
+    );
 
-  console.log('examlePath', examlePath);
+    // Provide support to pass in a component with or without the extension
+    examplePath = examplePath.replace(/\.example\.jsx$/, '');
+    examplePath = path.resolve(
+      __dirname,
+      '../../../packages',
+      `${examplePath}.example.jsx`
+    );
 
-  // Provide support to pass in a component with or without the extension
-  examlePath = examlePath.replace(/\.example\.jsx$/, '');
-  examlePath = path.resolve(
-    __dirname,
-    '../../../packages',
-    `${examlePath}.example.jsx`
-  );
+    // TODO: Setup production bundling
+    const compiler = webpack({
+      entry: examplePath,
+      output: {
+        filename: 'bundle.js',
+        path: '/build'
+      },
+      module: {
+        rules: [
+          {
+            test: /\.(js|jsx)$/,
+            exclude: [/node_modules/],
+            use: [
+              {
+                loader: 'babel-loader'
+              }
+            ]
+          }
+        ]
+      },
+      resolve: {
+        extensions: ['.js', '.jsx']
+      }
+    });
 
-  const exampleAST = babel.transformFileSync(examlePath);
-  const exampleScripts = exampleAST.code;
+    // Compile file to memory
+    // https://webpack.js.org/api/node/#custom-file-systems
+    compiler.outputFileSystem = new MemoryFS();
 
-  const html = `<!DOCTYPE html>
+    compiler.run((err, stats) => {
+      if (err) return reject(err);
+      const exampleScripts = stats.compilation.assets['bundle.js'].source();
+      const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -192,13 +221,16 @@ function generateReactPage(page, rootPath) {
   ${analytics()}
 </head>
 <body class="ds-base">
-  <script type="text/javascript">${JSON.stringify(exampleScripts)}</script>
+  <script type="text/javascript">${exampleScripts}</script>
 </body>
 </html>`;
 
-  const uri = `${rootPath}example/${page.reference}`;
-  const pathObj = docsPath(uri);
-  return updateFile(html, pathObj);
+      const uri = `${rootPath}example/${page.reference}`;
+      const pathObj = docsPath(uri);
+      const output = updateFile(html, pathObj);
+      resolve(output);
+    });
+  });
 }
 
 /**

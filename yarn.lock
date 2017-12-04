@@ -3,7 +3,7 @@
 
 
 "@cmsgov/eslint-config-design-system@file:./packages/eslint-config-design-system":
-  version "1.0.0"
+  version "1.1.0"
   dependencies:
     eslint-plugin-filenames "^1.2.0"
     eslint-plugin-jest "^21.1.0"
@@ -6451,7 +6451,7 @@ memoizee@^0.4.5:
     next-tick "1"
     timers-ext "^0.1.2"
 
-memory-fs@^0.4.0, memory-fs@~0.4.1:
+memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
   dependencies:

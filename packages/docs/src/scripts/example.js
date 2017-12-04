@@ -2,6 +2,9 @@
 'use strict';
 import getHexBackgroundColor from './helpers/getHexBackgroundColor';
 
+// TODO: Import React and ReactDOM as a global so it's cached and available to React examples.
+// Currently we include them inline on each React example page.
+
 function setSwatchHexValues() {
   const hexElements = document.querySelectorAll('.js-swatch-hex');
 
