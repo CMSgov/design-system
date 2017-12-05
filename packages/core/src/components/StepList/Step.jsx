@@ -20,7 +20,19 @@ export const Step = ({ step, ...props }) => {
   return (
     <li className={className}>
       <div className={contentClassName}>
-        <h2 className="ds-c-step__title">{step.title}</h2>
+        <h2 className="ds-c-step__title">
+          {step.completed || step.started || step.isNextStep ? (
+            <StepLink
+              href={step.href}
+              stepId={step.id}
+              onClick={props.onStepLinkClick}
+            >
+              {step.title}
+            </StepLink>
+          ) : (
+            step.title
+          )}
+        </h2>
         {step.description && (
           <div className="ds-c-step__description">{step.description}</div>
         )}

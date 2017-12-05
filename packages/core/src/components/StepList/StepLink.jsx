@@ -15,10 +15,12 @@ export class StepLink extends React.PureComponent {
     return (
       <a href={href} onClick={onClick} className={className}>
         {children}
-        <span className="ds-u-visibility--screen-reader">
-          {' '}
-          {screenReaderText}
-        </span>
+        {screenReaderText && (
+          <span className="ds-u-visibility--screen-reader">
+            {' '}
+            {screenReaderText}
+          </span>
+        )}
       </a>
     );
   }
