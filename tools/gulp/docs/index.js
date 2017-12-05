@@ -4,11 +4,6 @@
  * generating the HTML files which get published as the public site.
  */
 
-// Run babel transforms on src files so we can run JSX scripts in Gulp tasks
-require('babel-register')({
-  only: /(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generatePage)/
-});
-
 const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
