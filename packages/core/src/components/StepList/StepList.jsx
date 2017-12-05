@@ -33,7 +33,10 @@ StepList.defaultProps = {
   completedText: 'Completed',
   editText: 'Edit',
   resumeText: 'Resume',
-  startText: 'Start'
+  startText: 'Start',
+  actionsLabelText: 'Primary actions for %{step}',
+  descriptionLabelText: 'Description for %{step}',
+  substepsLabelText: 'Secondary actions for %{step}'
 };
 
 StepList.propTypes = {
@@ -56,7 +59,22 @@ StepList.propTypes = {
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,
-  startText: PropTypes.string.isRequired
+  startText: PropTypes.string.isRequired,
+  /**
+   * A template string for the aria-label describing a step's actions where
+   * the substring `%{step}` is replaced with that step's `title`.
+   */
+  actionsLabelText: PropTypes.string.isRequired,
+  /**
+   * A template string for the aria-label for a step's description where
+   * the substring `%{step}` is replaced with that step's `title`.
+   */
+  descriptionLabelText: PropTypes.string.isRequired,
+  /**
+   * A template string for the aria-label describing a step's substeps where
+   * the substring `%{step}` is replaced with that step's `title`.
+   */
+  substepsLabelText: PropTypes.string.isRequired
 };
 
 export default StepList;

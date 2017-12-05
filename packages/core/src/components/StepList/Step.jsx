@@ -15,8 +15,10 @@ export const Step = ({ step, ...props }) => {
   const contentClassName = classNames('ds-c-step__content', {
     'ds-c-step__content--with-content': step.description || step.steps
   });
-  // const actionsId = `step-${step.id}-actions`;
-  // const subActionsId = `step-${step.id}-sub-actions`;
+  const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
+  const actionsLabel = actionsLabelText.replace('%{step}', step.title);
+  const substepsLabel = substepsLabelText.replace('%{step}', step.title);
+  const descriptionLabel = descriptionLabelText.replace('%{step}', step.title);
   return (
     <li className={className}>
       <div className={contentClassName}>
@@ -34,15 +36,17 @@ export const Step = ({ step, ...props }) => {
           )}
         </h2>
         {step.description && (
-          <div className="ds-c-step__description">{step.description}</div>
+          <div className="ds-c-step__description" aria-label={descriptionLabel}>
+            {step.description}
+          </div>
         )}
         {step.steps && (
-          <ol className="ds-c-step__substeps">
+          <ol className="ds-c-step__substeps" aria-label={substepsLabel}>
             {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions">
+      <div className="ds-c-step__actions" aria-label={actionsLabel}>
         {step.completed && (
           <div className="ds-c-step__completed-text">{props.completedText}</div>
         )}
@@ -91,7 +95,10 @@ Step.propTypes = {
   completedText: PropTypes.string.isRequired,
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,
-  startText: PropTypes.string.isRequired
+  startText: PropTypes.string.isRequired,
+  actionsLabelText: PropTypes.string.isRequired,
+  descriptionLabelText: PropTypes.string.isRequired,
+  substepsLabelText: PropTypes.string.isRequired
 };
 
 export default Step;

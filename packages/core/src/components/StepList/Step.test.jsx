@@ -25,7 +25,10 @@ const defaultStepProps = {
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',
-  startText: 'Start!'
+  startText: 'Start!',
+  actionsLabelText: '!Primary actions for %{step}',
+  descriptionLabelText: '!Description for %{step}',
+  substepsLabelText: '!Secondary actions for %{step}'
 };
 
 function renderStep(step, props) {
@@ -85,7 +88,12 @@ describe('Step', () => {
 
     const title = wrapper.find('.ds-c-step__title');
     expect(title.length).toEqual(1);
-    expect(title.text()).toEqual('Do something!');
+    expect(
+      title
+        .find('StepLink')
+        .dive()
+        .text()
+    ).toEqual('Do something!');
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
@@ -114,7 +122,7 @@ describe('Step', () => {
     expect(completed.length).toEqual(1);
     expect(completed.text()).toEqual('Completed!');
 
-    const editLink = completed.find('StepLink');
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(0);
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
@@ -124,7 +132,7 @@ describe('Step', () => {
     const spy = jest.fn();
     const { wrapper } = renderStep({ started: true }, { onStepLinkClick: spy });
 
-    const editLink = wrapper.find('StepLink');
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Resume!');
     editLink.props().onClick();
@@ -138,7 +146,7 @@ describe('Step', () => {
       { onStepLinkClick: spy }
     );
 
-    const editLink = wrapper.find('StepLink');
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Start!');
     editLink.props().onClick();
@@ -160,5 +168,31 @@ describe('Step', () => {
       expect(substeps.at(i).props()).toMatchObject(expectedProps);
       expect(substeps.at(i).props().step).toEqual(steps[i]);
     }
+  });
+
+  it('renders aria-labels for heading, description, and substeps', () => {
+    const { wrapper } = renderStep({
+      steps: [generateStep('1')]
+    });
+
+    const description = wrapper.find('.ds-c-step__description');
+    expect(description.length).toEqual(1);
+    expect(description.props()['aria-label']).toEqual(
+      '!Description for Do something!'
+    );
+
+    const actions = wrapper.find('.ds-c-step__actions');
+    expect(actions.length).toEqual(1);
+    expect(actions.props()['aria-label']).toEqual(
+      '!Primary actions for Do something!'
+    );
+
+    const substeps = wrapper.find('.ds-c-step__substeps');
+    expect(substeps.length).toEqual(1);
+    expect(substeps.props()['aria-label']).toEqual(
+      '!Secondary actions for Do something!'
+    );
+
+    expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
   });
 });
