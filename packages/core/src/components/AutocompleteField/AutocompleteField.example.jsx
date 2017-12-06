@@ -6,9 +6,14 @@ export default function() {
   return (
     <div>
       <AutocompleteField
-        items={['apple', 'orange', 'carrot']}
+        items={['Cook County, IL', 'Cook County, MD', 'Cook County, TN']}
         labelText="What zip code did this person live during 2017?"
         onChange={selectedItem => console.log(selectedItem)}
+        onStateChange={changes => {
+          if (changes.type === '__autocomplete_keydown_enter__') {
+            console.log('Yep, completed the process!');
+          }
+        }}
       />
     </div>
   );

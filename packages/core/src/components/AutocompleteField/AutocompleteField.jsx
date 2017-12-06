@@ -18,25 +18,35 @@ export class AutocompleteField extends React.PureComponent {
   }
 
   render() {
-    const { ariaLabel, buttonText, items, labelText, onChange } = this.props;
+    const {
+      clearAriaLabel,
+      clearText,
+      items,
+      labelHint,
+      labelText,
+      onChange,
+      onStateChange
+    } = this.props;
 
     return (
       <Downshift
         onChange={onChange}
+        onStateChange={onStateChange}
         render={({
           clearSelection,
           getInputProps,
           getItemProps,
           highlightedIndex,
           isOpen,
-          inputValue,
-          selectedItem
+          inputValue
         }) => (
           <div className="ds-u-display--flex ds-u-flex-wrap--wrap ds-c-autocomplete">
             <FormLabel
               className="ds-u-margin-top--0"
+              labelClassName="ds-c-autocomplete__label"
               component="label"
               fieldId={this.id}
+              hint={labelHint}
             >
               {labelText}
             </FormLabel>
@@ -59,14 +69,13 @@ export class AutocompleteField extends React.PureComponent {
                     )
                     .map((item, index) => (
                       <li
-                        {...getItemProps({ item })}
-                        className="ds-u-padding--1 ds-c-autocomplete__list-item"
+                        className={
+                          highlightedIndex === index
+                            ? 'ds-u-padding--1 ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
+                            : 'ds-u-padding--1 ds-c-autocomplete__list-item'
+                        }
                         key={item}
-                        style={{
-                          backgroundColor:
-                            highlightedIndex === index ? 'gray' : 'white',
-                          fontWeight: selectedItem === item ? 'bold' : 'normal'
-                        }}
+                        {...getItemProps({ item })}
                       >
                         {item}
                       </li>
@@ -76,14 +85,14 @@ export class AutocompleteField extends React.PureComponent {
             ) : null}
 
             <Button
-              aria-label={ariaLabel}
+              aria-label={clearAriaLabel}
               className="ds-u-margin-left--auto ds-u-padding-right--0"
               href="javascript:void(0);"
               onClick={clearSelection}
               size="small"
               variation="transparent"
             >
-              {buttonText}
+              {clearText}
             </Button>
           </div>
         )}
@@ -93,17 +102,21 @@ export class AutocompleteField extends React.PureComponent {
 }
 
 AutocompleteField.defaultProps = {
-  ariaLabel: 'Clear typeahead and search again',
-  buttonText: 'Search again',
+  clearAriaLabel: 'Clear typeahead and search again',
+  clearText: 'Search again',
+  labelHint:
+    'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.',
   onChange: noop
 };
 
 AutocompleteField.propTypes = {
-  ariaLabel: PropTypes.string,
-  buttonText: PropTypes.string,
+  clearAriaLabel: PropTypes.string,
+  clearText: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.string),
+  labelHint: PropTypes.string,
   labelText: PropTypes.string,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onStateChange: PropTypes.func.isRequired
 };
 
 export default AutocompleteField;

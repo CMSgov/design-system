@@ -41,12 +41,26 @@ Style guide: components.autocomplete-field
 .ds-c-autocomplete {
   max-width: 460px;
 
+  &__label {
+    + .ds-c-field__hint {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      word-wrap: normal;
+    }
+  }
+
   &__list {
     width: 100%;
   }
 
-  &__list-item {
-    
+  &__list-item--active {
+    background-color: $color-primary-alt-darkest;
+    color: $color-white; 
   }
 }
 
