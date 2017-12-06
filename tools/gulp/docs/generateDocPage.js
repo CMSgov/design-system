@@ -30,14 +30,13 @@ function generateDocPage(routes, page, rootPath) {
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />`;
 
-  const body = `<div id="js-root">
-    ${componentRenderer()}
-  </div>
-  <script type="text/javascript">
-    window.page = ${JSON.stringify(page)};
-    window.routes = ${JSON.stringify(routes)};
-  </script>
-  <script src="/${rootPath}public/scripts/index.js"></script>`;
+  const body = `
+<div id="js-root">${componentRenderer()}</div>
+<script type="text/javascript">
+  window.page = ${JSON.stringify(page)};
+  window.routes = ${JSON.stringify(routes)};
+</script>
+<script src="/${rootPath}public/scripts/index.js"></script>`;
 
   return savePage({
     uri: page.referenceURI,
