@@ -20,7 +20,9 @@ export const SubStep = ({ step, ...props }) => (
     {step.steps &&
       props.showSubSubSteps && (
         <ul>
-          {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
+          {step.steps.map((s, i) => (
+            <SubStep step={s} key={s.id || i} {...props} />
+          ))}
         </ul>
       )}
   </li>

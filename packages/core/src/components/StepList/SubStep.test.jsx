@@ -5,7 +5,6 @@ import { shallow } from 'enzyme';
 const noop = () => {};
 
 const generateStep = (step = {}) => ({
-  id: '1',
   href: '/some/path',
   title: 'Do stuff',
   ...step
@@ -47,8 +46,8 @@ describe('SubStep', () => {
     const step = generateStep({
       title: 'Do stuff',
       steps: [
-        generateStep({ id: '1', title: 'subsubstep1' }),
-        generateStep({ id: '2', title: 'subsubstep2' })
+        generateStep({ title: 'subsubstep1' }),
+        generateStep({ title: 'subsubstep2' })
       ]
     });
     const spy = jest.fn();
@@ -82,8 +81,8 @@ describe('SubStep', () => {
     const step = generateStep({
       title: 'Do stuff',
       steps: [
-        generateStep({ id: '1', title: 'subsubstep1' }),
-        generateStep({ id: '2', title: 'subsubstep2' })
+        generateStep({ title: 'subsubstep1' }),
+        generateStep({ title: 'subsubstep2' })
       ]
     });
     const wrapper = shallow(

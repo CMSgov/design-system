@@ -10,7 +10,7 @@ import Step from './Step';
  */
 export const StepList = ({ steps, ...props }) => (
   <ol className="ds-c-step-list ds-u-margin-top--4">
-    {steps.map(step => <Step step={step} key={step.id} {...props} />)}
+    {steps.map((step, i) => <Step step={step} key={step.id || i} {...props} />)}
   </ol>
 );
 
@@ -18,7 +18,7 @@ export const StepList = ({ steps, ...props }) => (
 // as well as reuse it in multiple components' prop-type definitions. This
 // has to be in this file or else the docs generator will break.
 export const stepShape = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,

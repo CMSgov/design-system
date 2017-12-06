@@ -42,7 +42,9 @@ export const Step = ({ step, ...props }) => {
         )}
         {step.steps && (
           <ol className="ds-c-step__substeps" aria-label={substepsLabel}>
-            {step.steps.map(s => <SubStep step={s} key={s.id} {...props} />)}
+            {step.steps.map((s, i) => (
+              <SubStep step={s} key={s.id || i} {...props} />
+            ))}
           </ol>
         )}
       </div>

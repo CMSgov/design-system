@@ -32,7 +32,7 @@ StepLink.propTypes = {
    */
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
-  stepId: PropTypes.string.isRequired,
+  stepId: PropTypes.string,
   screenReaderText: PropTypes.string,
   className: PropTypes.string,
   onClick: PropTypes.func
