@@ -47,7 +47,7 @@ class HtmlExample extends React.PureComponent {
     let iframeURL = `${rootPath}/example/${this.props.reference}`;
 
     if (this.props.modifier) {
-      iframeURL += this.props.modifier.name;
+      iframeURL += `.${this.props.modifier.name}`;
     }
 
     // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
