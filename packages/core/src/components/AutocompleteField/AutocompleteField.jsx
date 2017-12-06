@@ -23,7 +23,6 @@ export class AutocompleteField extends React.PureComponent {
         onChange={onChange}
         render={({
           clearSelection,
-          getButtonProps,
           getInputProps,
           getItemProps,
           highlightedIndex,
@@ -32,13 +31,17 @@ export class AutocompleteField extends React.PureComponent {
           selectedItem
         }) => (
           <div>
-            <label htmlFor={this.id}>Favorite fruit</label>
+            <label className="ds-c-label ds-u-margin-top--0" htmlFor={this.id}>
+              Favorite fruit
+            </label>
+
             <input
               {...getInputProps({
-                id: this.id,
-                placeholder: 'Favorite fruit ?'
+                className: 'ds-c-field',
+                id: this.id
               })}
             />
+
             {isOpen ? (
               <div style={{ border: '1px solid #ccc' }}>
                 {items
@@ -62,12 +65,28 @@ export class AutocompleteField extends React.PureComponent {
                   ))}
               </div>
             ) : null}
+
             {selectedItem ? (
-              <Button aria-label="General label!" onClick={clearSelection}>
-                Clear It
+              <Button
+                aria-label="Clear input and search again"
+                href="javascript:void(0);"
+                onClick={clearSelection}
+                size="small"
+                variation="transparent"
+              >
+                Clear Input
               </Button>
             ) : (
-              <Button {...getButtonProps()}>Open It!</Button>
+              <Button
+                aria-label="Input is empty and cannot be cleared"
+                disabled
+                href="javascript:void(0);"
+                onClick={clearSelection}
+                size="small"
+                variation="transparent"
+              >
+                Clear Input
+              </Button>
             )}
           </div>
         )}
