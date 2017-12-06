@@ -118,5 +118,8 @@
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.5.3"
+  },
+  "dependencies": {
+    "downshift": "^1.22.1"
   }
 }
