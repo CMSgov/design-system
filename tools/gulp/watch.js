@@ -20,14 +20,12 @@ module.exports = (gulp, shared) => {
       'docs:generate-pages'
     ]);
 
-    // HTML/EJS examples
-    gulp.watch(`packages/**/src/**/*.example.{ejs,html}`, [
+    // Examples
+    gulp.watch(`packages/**/src/**/*.example.{ejs,html,jsx}`, [
       'docs:generate-pages'
     ]);
 
-    // React components, examples, and tests
-    // TODO: Figure out how to get the React pages to regenerate
-    // when an example file is updated
+    // React components
     gulp.watch(
       [
         `packages/${packages}/src/**/*.{js,jsx}`,
