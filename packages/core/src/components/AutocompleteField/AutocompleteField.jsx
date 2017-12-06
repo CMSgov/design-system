@@ -1,5 +1,6 @@
 import Button from '../Button/Button';
 import Downshift from 'downshift';
+import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import uniqueId from 'lodash.uniqueid';
@@ -31,9 +32,13 @@ export class AutocompleteField extends React.PureComponent {
           selectedItem
         }) => (
           <div>
-            <label className="ds-c-label ds-u-margin-top--0" htmlFor={this.id}>
+            <FormLabel
+              className="ds-u-margin-top--0"
+              component="label"
+              fieldId={this.id}
+            >
               Favorite fruit
-            </label>
+            </FormLabel>
 
             <input
               {...getInputProps({
@@ -66,28 +71,20 @@ export class AutocompleteField extends React.PureComponent {
               </div>
             ) : null}
 
-            {selectedItem ? (
-              <Button
-                aria-label="Clear input and search again"
-                href="javascript:void(0);"
-                onClick={clearSelection}
-                size="small"
-                variation="transparent"
-              >
-                Clear Input
-              </Button>
-            ) : (
-              <Button
-                aria-label="Input is empty and cannot be cleared"
-                disabled
-                href="javascript:void(0);"
-                onClick={clearSelection}
-                size="small"
-                variation="transparent"
-              >
-                Clear Input
-              </Button>
-            )}
+            <Button
+              aria-label={
+                selectedItem
+                  ? 'Clear input and search again'
+                  : 'Input is empty and cannot be cleared'
+              }
+              disabled={!selectedItem}
+              href="javascript:void(0);"
+              onClick={clearSelection}
+              size="small"
+              variation="transparent"
+            >
+              Clear Input
+            </Button>
           </div>
         )}
       />
