@@ -43,8 +43,8 @@ StepList.propTypes = {
   /**
    * An array of step objects that contain information needed to render
    * them like text, state, and link/button URLs.
-   * See [Start, Resume, and Edit links]({{root}}/components/step-list/#components.step-list.buttons)
-   * and [Step object]({{root}}/components/step-list/#components.step-list.step-object)
+   * See [Start, Resume, and Edit links]({{root}}/patterns/step-list/#patterns.step-list.buttons)
+   * and [Step object]({{root}}/patterns/step-list/#patterns.step-list.step-object)
    */
   steps: PropTypes.arrayOf(PropTypes.shape(stepShape)).isRequired,
   /**

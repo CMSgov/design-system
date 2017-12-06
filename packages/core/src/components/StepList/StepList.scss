@@ -20,7 +20,10 @@ Markup:
           <a href="#step-1">Choose a tax year</a>
         </h2>
       </div>
-      <div class="ds-c-step__actions">
+      <div
+        class="ds-c-step__actions"
+        aria-label="Primary actions for Choose a tax year"
+      >
         <div class="ds-c-step__completed-text">Completed</div>
         <a href="#step-1">
           Edit<span class="ds-u-visibility--screen-reader">
@@ -35,13 +38,19 @@ Markup:
         <h2 class="ds-c-step__title">
           <a href="#step-2">Enter household details</a>
         </h2>
-        <div class="ds-c-step__description">
+        <div
+          class="ds-c-step__description"
+          aria-label="Description for Enter household details"
+        >
           Answer questions about who in your household qualifies for a premium tax
           credit and information on each person, including date of birth,
           location(s) they lived in for the year, and months of marketplace
           coverage.
         </div>
-        <ol class="ds-c-step__substeps">
+        <ol
+          class="ds-c-step__substeps"
+          aria-label="Secondary actions for Enter household details"
+        >
           <li class="ds-c-substep">
             <div class="ds-c-substep__title">Overall household</div>
             <a href="#step-2a" class="ds-c-substep__edit">
@@ -59,7 +68,10 @@ Markup:
           </li>
         </ol>
       </div>
-      <div class="ds-c-step__actions">
+      <div
+        class="ds-c-step__actions"
+        aria-label="Primary actions for Enter household details"
+      >
         <a href="#step-2" class="ds-c-button ds-c-button--primary">
           Resume<span class="ds-u-visibility--screen-reader">
             {" "}
@@ -72,13 +84,19 @@ Markup:
       <div class="ds-c-step__content">
         <h2 class="ds-c-step__title">Review your information</h2>
       </div>
-      <div class="ds-c-step__actions" />
+      <div
+        class="ds-c-step__actions"
+        aria-label="Primary actions for Review your information"
+      />
     </li>
     <li class="ds-c-step">
       <div class="ds-c-step__content">
         <h2 class="ds-c-step__title">View premium results</h2>
       </div>
-      <div class="ds-c-step__actions" />
+      <div
+        class="ds-c-step__actions"
+        aria-label="Primary actions for View premium results"
+      />
     </li>
   </ol>
 </div>
@@ -230,7 +248,6 @@ $current-step-color: $color-primary !default;
   display: inline-block;
   line-height: $step-button-height - 12px;
   margin-right: $spacer-2;
-  padding-top: 6px;
 
   &::before {
     background-image: url('#{$image-path}/checkmark-green.svg');
@@ -246,6 +263,7 @@ $current-step-color: $color-primary !default;
   @media (min-width: $step-list-breakpoint) {
     display: block;
     margin-right: 0;
+    padding-top: 6px;
   }
 }
 
@@ -298,17 +316,15 @@ Start, Resume, and Edit links
 A user interacts with the steps through "Start", "Resume", and "Edit"
 links.
 
-Visually "Start" and "Resume" are buttons, but all three are implemented
-with `<a>` tags. In the React component, the links' `href` properties are
-determined by the `step` object's `href` property. One can also
-optionally pass an `onStepLinkClick` function that will cancel the default
-link behavior and call `onStepLinkClick` with `href` as a parameter for
-apps that handle routing with JavaScript.
+In the React component, the links' `href` properties are determined by the
+`step` object's `href` property. One can also optionally pass an
+`onStepLinkClick` function that will cancel the default link behavior and call
+`onStepLinkClick` with `href` as a parameter for apps that handle routing with
+JavaScript.
 
-When a step has substeps and is incomplete, the `href` property of should
-be set to match the `href` of the current substep—that is, the first
-incomplete substep. The "Edit" button will only appear on substeps that
-have been completed.
+When a step has substeps and is incomplete, the `href` property should be set to
+match the `href` of the current substep—that is, the first incomplete substep.
+The "Edit" button will only appear on substeps that have been completed.
 
 Style guide: patterns.step-list.buttons
 */
@@ -362,7 +378,7 @@ page where they entered their names. This, of course, requires an extra
 steps-building process to update a top-level steps' `href` property by
 traversing the substep tree to find the first incomplete step. See the
 [Completed, started, and isNextStep](#completed-started-and-isnextstep) section
-below an for an example JavaScript function that can change the `href` of steps
+below for an example JavaScript function that can change the `href` of steps
 based on their substeps.
 
 ### Completed, started, and isNextStep
