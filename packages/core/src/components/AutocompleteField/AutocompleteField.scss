@@ -37,29 +37,16 @@ Markup:
 Style guide: components.autocomplete-field
 */
 
-// input, textarea, select
-.ds-c-field {
-  appearance: none;
-  border: $input-border-width solid $input-border-color;
-  border-radius: $input-border-radius;
-  box-sizing: border-box; // ensure padding doesn't affect width
-  color: $color-base;
-  display: block;
-  font-size: $base-font-size;
-  line-height: $input-line-height;
-  margin: $spacer-half 0;
-  max-width: $input-max-width;
-  outline: none;
-  padding: $input-padding;
-  width: 100%;
+// input
+.ds-c-autocomplete {
+  max-width: 460px;
 
-  &:disabled {
-    background-color: $color-gray-lighter;
-    border-width: 0;
+  &__list {
+    width: 100%;
   }
 
-  &:focus {
-    box-shadow: $focus-shadow;
+  &__list-item {
+    
   }
 }
 

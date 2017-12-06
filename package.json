@@ -40,6 +40,7 @@
     "cssnano": "^3.10.0",
     "cssstats": "^3.1.0",
     "del": "^3.0.0",
+    "downshift": "^1.22.1",
     "ejs": "^2.5.7",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -71,6 +72,7 @@
     "mkdir-recursive": "^0.3.0",
     "mz": "^2.7.0",
     "node-notifier": "^5.1.2",
+    "nooop": "^1.0.0",
     "postcss-image-inliner": "^1.0.6",
     "postcss-import": "^11.0.0",
     "postcss-url": "^7.3.0",
@@ -118,8 +120,5 @@
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.5.3"
-  },
-  "dependencies": {
-    "downshift": "^1.22.1"
   }
 }

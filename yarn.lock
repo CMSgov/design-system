@@ -6835,6 +6835,10 @@ nomnom@~1.6.2:
     colors "0.5.x"
     underscore "~1.4.4"
 
+nooop@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nooop/-/nooop-1.0.0.tgz#5eb1f2377316924d0419690d51fc7640d2a724e0"
+
 "nopt@2 || 3", nopt@3.0.x, nopt@~3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"

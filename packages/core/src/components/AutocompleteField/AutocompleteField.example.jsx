@@ -7,6 +7,7 @@ export default function() {
     <div>
       <AutocompleteField
         items={['apple', 'orange', 'carrot']}
+        labelText="What zip code did this person live during 2017?"
         onChange={selectedItem => console.log(selectedItem)}
       />
     </div>
