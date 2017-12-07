@@ -15,7 +15,7 @@ function generateHtmlExample(page, modifier, rootPath) {
   // ie. components.button
   let id = page.reference;
   // ie. components.button.ds-c-button--primary
-  if (modifier) id += modifier.name;
+  if (modifier) id += `.${modifier.name}`;
 
   const head = `<title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
