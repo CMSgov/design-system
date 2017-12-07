@@ -64,9 +64,11 @@ function generateReactExample(page, rootPath) {
     compiler.run((err, stats) => {
       if (err) return reject(err);
       const exampleScripts = stats.compilation.assets['bundle.js'].source();
+
       const head = `<title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
-      const body = `<script type="text/javascript">${exampleScripts}</script>`;
+      const body = `<div id="js-root"></div>
+      <script type="text/javascript">${exampleScripts}</script>`;
 
       const output = savePage({
         uri: `${rootPath}example/${page.reference}`,

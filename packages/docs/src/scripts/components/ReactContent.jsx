@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// import ReactExample from './ReactExample';
+import ReactExample from './ReactExample';
 import ReactPropDocs from './ReactPropDocs';
 import componentPathFromSource from '../shared/componentPathFromSource';
 const reactDoc = require('../../data/react-doc.json');
@@ -34,13 +34,20 @@ function ReactContent(props) {
   }
 
   // TODO: Output an iframe
-  // if (!props.hideExample) {
-  //   const examplePath = props.reactExample
-  //     ? componentPathFromSource(props.source.path, props.reactExample)
-  //     : path;
+  if (!props.hideExample) {
+    const examplePath = props.reactExample
+      ? componentPathFromSource(props.source.path, props.reactExample)
+      : path;
 
-  //   content.push(<ReactExample key="example" path={examplePath} />);
-  // }
+    content.push(
+      <ReactExample
+        key="example"
+        path={examplePath}
+        reference={props.reference}
+        responsive={props.responsive}
+      />
+    );
+  }
 
   if (doc && doc.props) {
     content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
@@ -53,6 +60,8 @@ ReactContent.propTypes = {
   hideExample: PropTypes.bool,
   reactComponent: PropTypes.string,
   reactExample: PropTypes.string,
+  reference: PropTypes.string,
+  responsive: PropTypes.bool,
   source: PropTypes.shape({
     filename: PropTypes.string,
     path: PropTypes.string.isRequired
