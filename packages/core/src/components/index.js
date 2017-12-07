@@ -12,6 +12,7 @@ export * from './FormLabel/FormLabel';
 export * from './MonthPicker/MonthPicker';
 export * from './SkipNav/SkipNav';
 export * from './Spinner/Spinner';
+export * from './StepList/StepList';
 export * from './Tabs/Tab';
 export * from './Tabs/Tabs';
 export * from './Tabs/TabPanel';
