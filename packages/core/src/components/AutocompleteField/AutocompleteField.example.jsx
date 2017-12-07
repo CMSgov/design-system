@@ -6,16 +6,28 @@ export default function() {
   return (
     <div>
       <AutocompleteField
+        itemToString={i => {
+          return i ? i.name : '';
+        }}
         items={[
-          { name: 'Cook County, IL' },
-          { name: 'Cook County, MD' },
-          { name: 'Cook County, TN' }
+          {
+            id: 'kRf6c2fY',
+            name: 'Cook County, IL'
+          },
+          {
+            id: 'lYf5cGfM',
+            name: 'Cook County, MD'
+          },
+          {
+            id: 'mZfKcGf9',
+            name: 'Cook County, TN'
+          }
         ]}
         labelText="What zip code did this person live during 2017?"
         onChange={selectedItem => console.log(selectedItem)}
         onStateChange={changes => {
           if (changes.type === '__autocomplete_keydown_enter__') {
-            console.log('Yep, completed the process!');
+            console.log('Yep, the user pressed Enter!');
           }
         }}
       />

@@ -7,8 +7,7 @@ import noop from 'nooop';
 import uniqueId from 'lodash.uniqueid';
 
 /**
- * An `AutocompleteField` component renders a typeahead input field as well as supporting UI
- * elements like a label, and a clear input button.
+ * An `AutocompleteField` component renders a typeahead input field, form label, and a clear input link.
  */
 export class AutocompleteField extends React.PureComponent {
   constructor(props) {
@@ -17,15 +16,12 @@ export class AutocompleteField extends React.PureComponent {
     this.id = uniqueId('autocomplete_');
   }
 
-  itemToString(i) {
-    return i ? i.name : '';
-  }
-
   render() {
     const {
       clearAriaLabel,
       clearText,
       items,
+      itemToString,
       labelHint,
       labelText,
       onChange,
@@ -34,7 +30,7 @@ export class AutocompleteField extends React.PureComponent {
 
     return (
       <Downshift
-        itemToString={this.itemToString}
+        itemToString={itemToString}
         onChange={onChange}
         onStateChange={onStateChange}
         render={({
@@ -68,9 +64,11 @@ export class AutocompleteField extends React.PureComponent {
                 <ul className="ds-c-list--bare">
                   {items
                     .filter(
-                      i =>
+                      item =>
                         !inputValue ||
-                        i.name.toLowerCase().includes(inputValue.toLowerCase())
+                        item.name
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase())
                     )
                     .map((item, index) => (
                       <li
@@ -79,10 +77,10 @@ export class AutocompleteField extends React.PureComponent {
                             ? 'ds-u-padding--1 ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
                             : 'ds-u-padding--1 ds-c-autocomplete__list-item'
                         }
-                        key={item}
+                        key={item.id}
                         {...getItemProps({ item })}
                       >
-                        {this.itemToString(item)}
+                        {itemToString(item)}
                       </li>
                     ))}
                 </ul>
@@ -109,16 +107,23 @@ export class AutocompleteField extends React.PureComponent {
 AutocompleteField.defaultProps = {
   clearAriaLabel: 'Clear typeahead and search again',
   clearText: 'Search again',
+  itemToString: noop,
   labelHint:
     'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.',
-  onChange: noop
+  onChange: noop,
+  onStateChange: noop
 };
 
 AutocompleteField.propTypes = {
   clearAriaLabel: PropTypes.string,
   clearText: PropTypes.string,
-  itemToString: PropTypes.func,
-  items: PropTypes.arrayOf(PropTypes.object),
+  itemToString: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.name
+    })
+  ).isRequired,
   labelHint: PropTypes.string,
   labelText: PropTypes.string,
   onChange: PropTypes.func.isRequired,
