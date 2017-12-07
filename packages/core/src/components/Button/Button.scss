@@ -20,13 +20,17 @@ Markup:
 Style guide: components.button
 */
 .ds-c-button {
-  @include base-button;
+  appearance: none;
   background-color: transparent;
   border: 1px solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
+  cursor: pointer;
   display: inline-block;
+  font-family: $font-sans;
+  font-size: $base-font-size;
   font-weight: $font-bold;
+  line-height: $input-line-height;
   padding: $spacer-1 $spacer-3;
   text-align: center;
   text-decoration: none;
