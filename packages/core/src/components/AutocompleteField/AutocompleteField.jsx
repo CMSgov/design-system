@@ -17,6 +17,10 @@ export class AutocompleteField extends React.PureComponent {
     this.id = uniqueId('autocomplete_');
   }
 
+  itemToString(i) {
+    return i ? i.name : '';
+  }
+
   render() {
     const {
       clearAriaLabel,
@@ -30,6 +34,7 @@ export class AutocompleteField extends React.PureComponent {
 
     return (
       <Downshift
+        itemToString={this.itemToString}
         onChange={onChange}
         onStateChange={onStateChange}
         render={({
@@ -65,7 +70,7 @@ export class AutocompleteField extends React.PureComponent {
                     .filter(
                       i =>
                         !inputValue ||
-                        i.toLowerCase().includes(inputValue.toLowerCase())
+                        i.name.toLowerCase().includes(inputValue.toLowerCase())
                     )
                     .map((item, index) => (
                       <li
@@ -77,7 +82,7 @@ export class AutocompleteField extends React.PureComponent {
                         key={item}
                         {...getItemProps({ item })}
                       >
-                        {item}
+                        {this.itemToString(item)}
                       </li>
                     ))}
                 </ul>
@@ -112,7 +117,8 @@ AutocompleteField.defaultProps = {
 AutocompleteField.propTypes = {
   clearAriaLabel: PropTypes.string,
   clearText: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.string),
+  itemToString: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.object),
   labelHint: PropTypes.string,
   labelText: PropTypes.string,
   onChange: PropTypes.func.isRequired,

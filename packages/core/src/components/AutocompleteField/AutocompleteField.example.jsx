@@ -6,7 +6,11 @@ export default function() {
   return (
     <div>
       <AutocompleteField
-        items={['Cook County, IL', 'Cook County, MD', 'Cook County, TN']}
+        items={[
+          { name: 'Cook County, IL' },
+          { name: 'Cook County, MD' },
+          { name: 'Cook County, TN' }
+        ]}
         labelText="What zip code did this person live during 2017?"
         onChange={selectedItem => console.log(selectedItem)}
         onStateChange={changes => {
