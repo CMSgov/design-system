@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@cmsgov/design-system-core": "latest",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
