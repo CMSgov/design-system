@@ -29,7 +29,30 @@ export default function() {
           if (changes.type === '__autocomplete_keydown_enter__') {
             console.log('Yep, the user pressed Enter!');
           }
+
+          if (changes.type === '__autocomplete_change_input__') {
+            console.log(changes.inputValue);
+          }
         }}
+      />
+
+      <AutocompleteField
+        disabled
+        items={[
+          {
+            id: 'kRf6c2fY',
+            name: 'Cook County, IL'
+          },
+          {
+            id: 'lYf5cGfM',
+            name: 'Cook County, MD'
+          },
+          {
+            id: 'mZfKcGf9',
+            name: 'Cook County, TN'
+          }
+        ]}
+        labelText="Disabled autocomplete component"
       />
     </div>
   );
