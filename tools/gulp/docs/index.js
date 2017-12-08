@@ -21,7 +21,7 @@ const runSequence = require('run-sequence');
 const uniquePages = require('./uniquePages');
 
 const docsPkgDirectory = 'packages/docs';
-const reactDataDirectory = `${docsPkgDirectory}/src/data`;
+const reactDataDirectory = `tmp/data`;
 const reactDataFilename = 'react-doc.json';
 const reactDataPath = path.resolve(
   __dirname,
