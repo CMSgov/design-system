@@ -35,6 +35,9 @@ function generateReactExample(page, rootPath) {
       const head = `<title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
       const body = `<div id="js-example"></div>
+      <script type="text/javascript" src="/${
+        rootPath
+      }public/scripts/example.js"></script>
       <script type="text/javascript">${exampleScripts}</script>`;
 
       const output = savePage({
@@ -57,6 +60,10 @@ function createWebpackCompiler(examplePath) {
   const webpackConfig = {
     entry: examplePath,
     output: { filename: 'bundle.js', path: '/build' },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
     module: {
       rules: [
         {

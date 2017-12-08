@@ -1,9 +1,13 @@
 // This only gets loaded on the example pages
 'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import getHexBackgroundColor from './helpers/getHexBackgroundColor';
 
-// TODO: Import React and ReactDOM as a global so it's cached and available to React examples.
-// Currently we include them inline on each React example page.
+// Provide React modules as a global, so these aren't bundled in each
+// React example's inline script
+window.React = React;
+window.ReactDOM = ReactDOM;
 
 function setSwatchHexValues() {
   const hexElements = document.querySelectorAll('.js-swatch-hex');
