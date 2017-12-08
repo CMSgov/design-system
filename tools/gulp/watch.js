@@ -20,19 +20,20 @@ module.exports = (gulp, shared) => {
       'docs:generate-pages'
     ]);
 
-    // Examples
-    gulp.watch(`packages/**/src/**/*.example.{ejs,html,jsx}`, [
+    // HTML/EJS examples
+    gulp.watch(`packages/**/src/**/*.example.{ejs,html}`, [
       'docs:generate-pages'
     ]);
 
-    // React components
+    // React components and examples
     gulp.watch(
       [
         `packages/${packages}/src/**/*.{js,jsx}`,
-        `!packages/${packages}/src/**/*.example.{js,jsx}`,
         `!packages/${packages}/src/**/*.test.{js,jsx}`
       ],
-      ['docs:react', 'docs:generate-pages']
+      () => {
+        runSequence('docs:react', 'docs:generate-pages');
+      }
     );
   });
 
