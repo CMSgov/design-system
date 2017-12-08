@@ -29,7 +29,7 @@ describe('Source', () => {
     const wrapper = shallow(<Source {...props} />);
 
     expect(wrapper.prop('href')).toBe(
-      `${blobPath}/${props.reactComponentPath}`
+      `${blobPath}/packages/${props.reactComponentPath}`
     );
   });
 
