@@ -103,7 +103,6 @@ class PageBlock extends React.PureComponent {
           reactExampleSource={this.props.reactExampleSource}
           reference={this.props.reference}
           responsive={this.props.responsive}
-          source={this.props.source}
         />
       </article>
     );
