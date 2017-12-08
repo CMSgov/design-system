@@ -4,18 +4,14 @@
  */
 import CodeSnippet from './CodeSnippet';
 import Frame from './Frame';
-// import Prism from 'prismjs';
+import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
-// require('prismjs/components/prism-jsx');
+require('prismjs/components/prism-jsx');
 
 class ReactExample extends React.PureComponent {
   highlightedMarkup() {
-    // const markup = reactElementToJSXString(this.renderComponent(), {
-    //   showDefaultProps: false,
-    //   showFunctions: true
-    // });
-    // return Prism.highlight(markup, Prism.languages.jsx);
+    return Prism.highlight(this.props.markup, Prism.languages.jsx);
   }
 
   render() {
@@ -38,7 +34,7 @@ class ReactExample extends React.PureComponent {
 }
 
 ReactExample.propTypes = {
-  // path: PropTypes.string.isRequired,
+  markup: PropTypes.string,
   reference: PropTypes.string,
   responsive: PropTypes.bool
 };

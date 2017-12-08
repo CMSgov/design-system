@@ -27,6 +27,7 @@ function ReactContent(props) {
     content.push(
       <ReactExample
         key="example"
+        markup={props.reactExampleSource}
         path={props.reactExamplePath}
         reference={props.reference}
         responsive={props.responsive}
@@ -50,6 +51,7 @@ ReactContent.propTypes = {
     props: ReactPropDocs.propTypes.propDocs
   }),
   reactExamplePath: PropTypes.string,
+  reactExampleSource: ReactExample.propTypes.markup,
   reference: PropTypes.string,
   responsive: PropTypes.bool
 };

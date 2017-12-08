@@ -100,6 +100,7 @@ class PageBlock extends React.PureComponent {
           hideExample={this.props.hideExample}
           reactComponentDocs={this.props.reactComponentDocs}
           reactExamplePath={this.props.reactExamplePath}
+          reactExampleSource={this.props.reactExampleSource}
           reference={this.props.reference}
           responsive={this.props.responsive}
           source={this.props.source}
@@ -120,6 +121,7 @@ PageBlock.propTypes = {
   reactComponentDocs: ReactContent.propTypes.reactComponentDocs,
   reactComponentPath: PropTypes.string,
   reactExamplePath: ReactContent.propTypes.reactExamplePath,
+  reactExampleSource: ReactContent.propTypes.reactExampleSource,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
   source: Source.propTypes.source
