@@ -14,5 +14,5 @@ ReactDOM.render(
       Anchor button
     </Button>
   </div>,
-  document.getElementById('js-root')
+  document.getElementById('js-example')
 );

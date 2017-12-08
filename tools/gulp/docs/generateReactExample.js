@@ -58,7 +58,7 @@ function generateReactExample(page, rootPath) {
 
       const head = `<title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
-      const body = `<div id="js-root"></div>
+      const body = `<div id="js-example"></div>
       <script type="text/javascript">${exampleScripts}</script>`;
 
       const output = savePage({
