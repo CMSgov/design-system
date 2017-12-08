@@ -23,31 +23,7 @@ function generateReactExample(page, rootPath) {
       page.reactExamplePath
     );
 
-    // TODO: Setup production bundling
-    const compiler = webpack({
-      entry: examplePath,
-      output: {
-        filename: 'bundle.js',
-        path: '/build'
-      },
-      module: {
-        rules: [
-          {
-            test: /\.(js|jsx)$/,
-            exclude: [/node_modules/],
-            use: [
-              {
-                loader: 'babel-loader'
-              }
-            ]
-          }
-        ]
-      },
-      resolve: {
-        extensions: ['.js', '.jsx']
-      }
-    });
-
+    const compiler = createWebpackCompiler(examplePath);
     // Compile file to memory
     // https://webpack.js.org/api/node/#custom-file-systems
     compiler.outputFileSystem = new MemoryFS();
@@ -69,6 +45,46 @@ function generateReactExample(page, rootPath) {
       resolve(output);
     });
   });
+}
+
+/**
+ * Create an instance of the Webpack compiler to be used for
+ * bundling and compiling the Example file.
+ * @param {String} examplePath - Path to entry file
+ * @return {*} Webpack compiler instance
+ */
+function createWebpackCompiler(examplePath) {
+  const webpackConfig = {
+    entry: examplePath,
+    output: { filename: 'bundle.js', path: '/build' },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: [/node_modules/],
+          use: [{ loader: 'babel-loader' }]
+        }
+      ]
+    },
+    plugins: [
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new webpack.optimize.ModuleConcatenationPlugin()
+    ],
+    resolve: { extensions: ['.js', '.jsx'] }
+  };
+
+  if (process.env.NODE_ENV === 'production') {
+    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        drop_console: true,
+        warnings: false
+      }
+    });
+
+    webpackConfig.plugins.push(uglifyPlugin);
+  }
+
+  return webpack(webpackConfig);
 }
 
 module.exports = generateReactExample;
