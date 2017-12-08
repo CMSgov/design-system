@@ -36,7 +36,7 @@ function generateExamples(page, rootPath) {
       }
     })
     .then(() => {
-      if (page.reactExample || page.reactComponent) {
+      if (page.reactExamplePath) {
         generateReactExample(page, rootPath);
       }
     });

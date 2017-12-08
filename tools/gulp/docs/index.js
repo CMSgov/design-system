@@ -3,22 +3,32 @@
  * like parsing our CSS/JSX comments, generating JSON data files, and ultimately
  * generating the HTML files which get published as the public site.
  */
-
+const addReactDocProps = require('./addReactDocProps');
 const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const del = require('del');
 const dutil = require('../common/log-util');
-const gulpReactDocgen = require('./gulpReactDocgen');
+const generatePage = require('./generatePage');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
 const nestSections = require('./nestSections');
 const packagesRegex = require('../common/packagesRegex');
+const parseReactFile = require('./parseReactFile');
+const path = require('path');
 const processKssSection = require('./processKssSection');
-const uniquePages = require('./uniquePages');
 const runSequence = require('run-sequence');
+const uniquePages = require('./uniquePages');
 
-const docs = 'packages/docs';
+const docsPkgDirectory = 'packages/docs';
+const reactDataDirectory = `${docsPkgDirectory}/src/data`;
+const reactDataFilename = 'react-doc.json';
+const reactDataPath = path.resolve(
+  __dirname,
+  '../../../',
+  reactDataDirectory,
+  reactDataFilename
+);
 
 /**
  * Some KssSection's are nested under section's that don't exist, so we need
@@ -82,12 +92,6 @@ module.exports = (gulp, shared) => {
    * @return {Promise<Array>}
    */
   function generateDocPages(pages) {
-    // It's important to require the generatePage method here since the
-    // react-doc.json data file is a dependency. This require() would fail if
-    // it was called before the file existed.
-    // TODO(sawyer): Would it be better if we passed in the relevant React
-    // documentation as a prop, rather than pulling it from the JSON file?
-    const generatePage = require('./generatePage');
     const routes = createRoutes(pages);
 
     return Promise.all(
@@ -118,8 +122,7 @@ module.exports = (gulp, shared) => {
     const generatePage = require('./generatePage');
     const pagesWithMarkup = kssSections.filter(
       page =>
-        !page.hideExample &&
-        (page.markup.length > 0 || page.reactExample || page.reactComponent)
+        !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
     );
 
     return Promise.all(
@@ -162,7 +165,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp
-      .src(`${docs}/src/**/images/*`)
+      .src(`${docsPkgDirectory}/src/**/images/*`)
       .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
   });
 
@@ -214,12 +217,11 @@ module.exports = (gulp, shared) => {
     // Also, remove pages with the same URL (so themes can override existing pages)
     const pageSections = uniquePages(markdownPagesData.concat(kssSections));
 
+    await addReactDocProps(pageSections, reactDataPath);
     // Create HTML files for markup examples
     await generateMarkupPages(pageSections);
-
     // Add missing top-level pages and connect the page parts to their parent pages
     const pages = await addTopLevelPages(pageSections).then(nestSections);
-
     // Create HTML files from the pages array
     const generatedPagesCount = await generateDocPages(pages);
 
@@ -234,8 +236,8 @@ module.exports = (gulp, shared) => {
   // Extract info from React component files for props documentation
   gulp.task('docs:react', () => {
     dutil.logMessage(
-      '📊 ',
-      'Creating react-doc.json data file from React comments'
+      '🌪 ',
+      'Generating React propType documentation and grabbing raw example code'
     );
 
     const packages = packagesRegex(shared.packages);
@@ -243,23 +245,11 @@ module.exports = (gulp, shared) => {
     return gulp
       .src([
         `packages/${packages}/src/components/**/*.jsx`,
-        `!packages/${packages}/src/components/**/*.test.jsx`,
-        `!packages/${packages}/src/components/**/*.example.jsx`
+        `!packages/${packages}/src/components/**/*.test.jsx`
       ])
-      .pipe(
-        gulpReactDocgen(
-          {
-            nameAfter: 'packages/'
-          },
-          shared.rootPath
-        )
-      )
-      .pipe(
-        merge({
-          fileName: 'react-doc.json'
-        })
-      )
-      .pipe(gulp.dest(`${docs}/src/data`));
+      .pipe(parseReactFile({ nameAfter: 'packages/' }, shared.rootPath))
+      .pipe(merge({ fileName: reactDataFilename }))
+      .pipe(gulp.dest(reactDataDirectory));
   });
 
   gulp.task('docs:build', done => {

@@ -23,15 +23,14 @@ describe('Source', () => {
   });
 
   it('links to JSX file', () => {
-    props.reactComponent = 'ButtonGroup';
+    props.reactComponentPath =
+      'core/src/components/ButtonGroup/ButtonGroup.jsx';
 
     const wrapper = shallow(<Source {...props} />);
-    const reactPath = props.source.path.replace(
-      'Button.scss',
-      'ButtonGroup.jsx'
-    );
 
-    expect(wrapper.prop('href')).toBe(`${blobPath}/${reactPath}`);
+    expect(wrapper.prop('href')).toBe(
+      `${blobPath}/${props.reactComponentPath}`
+    );
   });
 
   it('adds class name', () => {

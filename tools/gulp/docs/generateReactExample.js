@@ -1,5 +1,3 @@
-const componentPathFromSource = require('../../../packages/docs/src/scripts/shared/componentPathFromSource')
-  .default;
 const MemoryFS = require('memory-fs');
 const path = require('path');
 const savePage = require('./savePage');
@@ -19,17 +17,10 @@ function generateReactExample(page, rootPath) {
       rootPath = `${rootPath}/`;
     }
 
-    let examplePath = componentPathFromSource(
-      page.source.path,
-      page.reactExample || page.reactComponent
-    );
-
-    // Provide support to pass in a component with or without the extension
-    examplePath = examplePath.replace(/\.example\.jsx$/, '');
-    examplePath = path.resolve(
+    const examplePath = path.resolve(
       __dirname,
       '../../../packages',
-      `${examplePath}.example.jsx`
+      page.reactExamplePath
     );
 
     // TODO: Setup production bundling

@@ -2,55 +2,42 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactExample from './ReactExample';
 import ReactPropDocs from './ReactPropDocs';
-import componentPathFromSource from '../shared/componentPathFromSource';
-const reactDoc = require('../../data/react-doc.json');
 
 /**
  * If a React component's props documentation or example is available,
  * this component will return whatever is present.
  */
 function ReactContent(props) {
-  if (!props.reactComponent && !props.reactExample) return null;
+  if (!props.reactComponentDocs && !props.reactExamplePath) return null;
   const content = [];
-  let doc;
-  let docs;
-  let path;
 
-  if (props.reactComponent) {
-    path = componentPathFromSource(props.source.path, props.reactComponent);
-    docs = reactDoc[`${path}.jsx`];
-    // There should only ever be one exported component definition
-    doc = docs && docs.length ? docs[0] : null;
-  }
-
-  if (doc && doc.description) {
+  if (props.reactComponentDocs && props.reactComponentDocs.description) {
     content.push(
       <div
         className="c-details ds-u-margin-y--2 ds-u-measure--wide"
-        dangerouslySetInnerHTML={{ __html: doc.description }}
+        dangerouslySetInnerHTML={{
+          __html: props.reactComponentDocs.description
+        }}
         key="description"
       />
     );
   }
 
-  // TODO: Output an iframe
   if (!props.hideExample) {
-    const examplePath = props.reactExample
-      ? componentPathFromSource(props.source.path, props.reactExample)
-      : path;
-
     content.push(
       <ReactExample
         key="example"
-        path={examplePath}
+        path={props.reactExamplePath}
         reference={props.reference}
         responsive={props.responsive}
       />
     );
   }
 
-  if (doc && doc.props) {
-    content.push(<ReactPropDocs key="propDocs" propDocs={doc.props} />);
+  if (props.reactComponentDocs.props) {
+    content.push(
+      <ReactPropDocs key="propDocs" propDocs={props.reactComponentDocs.props} />
+    );
   }
 
   return content;
@@ -58,14 +45,13 @@ function ReactContent(props) {
 
 ReactContent.propTypes = {
   hideExample: PropTypes.bool,
-  reactComponent: PropTypes.string,
-  reactExample: PropTypes.string,
+  reactComponentDocs: PropTypes.shape({
+    description: PropTypes.string,
+    props: ReactPropDocs.propTypes.propDocs
+  }),
+  reactExamplePath: PropTypes.string,
   reference: PropTypes.string,
-  responsive: PropTypes.bool,
-  source: PropTypes.shape({
-    filename: PropTypes.string,
-    path: PropTypes.string.isRequired
-  })
+  responsive: PropTypes.bool
 };
 
 export default ReactContent;

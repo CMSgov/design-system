@@ -6,7 +6,7 @@
  *                      (ie. 'ButtonGroup', 'core/src/Foo')
  * @return {String} the path relative to packages/, with the component's name
  */
-function componentPathFromSource(path, name) {
+function reactPathFromSassSource(path, name) {
   // If the component is already in the format of a path, just return it.
   // This allows us to reference components outside of the source directory
   if (name.split('/').length > 1) return name;
@@ -20,4 +20,4 @@ function componentPathFromSource(path, name) {
   return path.replace(/\/([a-z0-9_-]+)$/i, `/${name}`);
 }
 
-export default componentPathFromSource;
+module.exports = reactPathFromSassSource;
