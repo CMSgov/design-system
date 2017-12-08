@@ -28,7 +28,8 @@ function generateDocPage(routes, page, rootPath) {
     rootPath
   }public/images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />`;
+  <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
+  ${analytics()}`;
 
   const body = `
 <div id="js-root">${componentRenderer()}</div>
@@ -43,6 +44,19 @@ function generateDocPage(routes, page, rootPath) {
     head: head,
     body: body
   });
+}
+
+/**
+ * Blast Analytics code to be included in the <head>.
+ * This loads additional tracking scripts, like Google Analytics.
+ * @return {String}
+ */
+function analytics() {
+  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+  return `<script>
+window.tealiumEnvironment = "${env}";
+</script>
+<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>`;
 }
 
 /**
