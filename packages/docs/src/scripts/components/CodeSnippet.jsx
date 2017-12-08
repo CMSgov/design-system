@@ -7,7 +7,7 @@ const CodeSnippet = function(props) {
       <summary className="ds-u-margin-y--1 ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--1">
         Code snippet
       </summary>
-      <pre className="ds-u-margin-bottom--4">
+      <pre className="ds-u-margin-bottom--4 ds-u-overflow--auto">
         <code dangerouslySetInnerHTML={{ __html: props.children }} />
       </pre>
     </details>
