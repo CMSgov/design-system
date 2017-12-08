@@ -1,6 +1,7 @@
 'use strict';
 
 export * from './Alert/Alert';
+export * from './AutocompleteField/AutocompleteField';
 export * from './Badge/Badge';
 export * from './Button/Button';
 export * from './ChoiceList/Choice';

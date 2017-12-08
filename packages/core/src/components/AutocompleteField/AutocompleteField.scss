@@ -42,8 +42,8 @@ Style guide: components.autocomplete-field
 
   &__input[disabled] {
     + .ds-c-autocomplete__button {
-      border: transparent;
       background: transparent;
+      border: transparent;
       color: $color-gray-dark;
       pointer-events: none;
     }

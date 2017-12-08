@@ -116,6 +116,7 @@ AutocompleteField.defaultProps = {
   itemToString: noop,
   labelHint:
     'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.',
+  labelText: 'Generic autocomplete label',
   onChange: noop,
   onStateChange: noop
 };
@@ -156,7 +157,7 @@ AutocompleteField.propTypes = {
   /**
    * Text string label for the `<FormLabel>` component
    */
-  labelText: PropTypes.string,
+  labelText: PropTypes.string.isRequired,
   /**
    * https://github.com/paypal/downshift#onchange
    *

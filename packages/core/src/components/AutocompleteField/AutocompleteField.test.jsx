@@ -1,16 +1,17 @@
 import { mount, shallow } from 'enzyme';
+import AutocompleteField from './AutocompleteField';
 import React from 'react';
-import TextField from './TextField';
+import noop from 'nooop';
+import renderer from 'react-test-renderer';
 
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
     {
-      label: 'Foo',
-      name: 'spec-field'
+      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }]
     },
     customProps
   );
-  const component = <TextField {...props} />;
+  const component = <AutocompleteField {...props} />;
 
   return {
     props: props,
@@ -18,219 +19,96 @@ function render(customProps = {}, deep = false) {
   };
 }
 
-describe('TextField', function() {
-  it('is an input field', () => {
-    const data = render();
-    const field = data.wrapper.find('.ds-c-field').first();
+describe('AutocompleteField', () => {
+  it('renders AutocompleteField component', () => {
+    const data = render({}, false);
+    const wrapper = data.wrapper;
+    const inst = wrapper.instance();
 
-    expect(field.is('input')).toBe(true);
-    expect(field.prop('rows')).toBeUndefined();
-    expect(field.prop('type')).toBe('text');
+    expect(inst).toBeInstanceOf(AutocompleteField);
   });
 
-  it('is a textarea', () => {
-    const data = render({ multiline: true });
-    const field = data.wrapper.find('.ds-c-field').first();
+  it('returns correct default props', () => {
+    const data = render({}, true);
+    const wrapper = data.wrapper;
 
-    expect(field.is('textarea')).toBe(true);
-    expect(field.prop('rows')).toBeUndefined();
-    expect(field.prop('type')).toBeUndefined();
+    expect(wrapper.prop('clearAriaLabel')).toBe(
+      'Clear typeahead and search again'
+    );
+    expect(wrapper.prop('clearInputText')).toBe('Search again');
+    expect(wrapper.prop('disabled')).toBe(undefined);
+    expect(wrapper.prop('itemToString')).toBe(noop);
+    expect(wrapper.prop('fieldRef')).toBe(undefined);
+    expect(wrapper.prop('labelHint')).toBe(
+      'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.'
+    );
+    expect(wrapper.prop('labelText')).toBe('Generic autocomplete label');
+    expect(wrapper.prop('onChange')).toBe(noop);
+    expect(wrapper.prop('onStateChange')).toBe(noop);
   });
 
-  it('is a password field', () => {
-    const data = render({ type: 'password' });
-    const field = data.wrapper.find('.ds-c-field').first();
+  it('renders expected elements', () => {
+    const data = render({}, true);
+    const wrapper = data.wrapper;
+    const downshift = wrapper.find('Downshift');
 
-    expect(field.prop('type')).toBe('password');
+    expect(downshift.find('label').exists()).toBe(true);
+    expect(downshift.find('span.ds-c-autocomplete__label').exists()).toBe(true);
+    expect(downshift.find('span.ds-c-field__hint').exists()).toBe(true);
+    expect(downshift.find('input').exists()).toBe(true);
+    expect(downshift.find('a').exists()).toBe(true);
   });
 
-  it('is disabled', () => {
-    const data = render({ disabled: true });
-    const field = data.wrapper.find('.ds-c-field').first();
+  it('renders default class names', () => {
+    const data = render({}, true);
+    const wrapper = data.wrapper;
+    const downshift = wrapper.find('Downshift');
 
-    expect(field.prop('disabled')).toBe(data.props.disabled);
+    expect(downshift.find('label').hasClass('ds-c-label')).toBe(true);
+    expect(downshift.find('input').hasClass('ds-c-autocomplete__input')).toBe(
+      true
+    );
+    expect(downshift.find('a').hasClass('ds-c-autocomplete__button')).toBe(
+      true
+    );
   });
 
-  it('has a defaultValue', () => {
-    const data = render({ defaultValue: 'Yay' });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('defaultValue')).toBe(data.props.defaultValue);
-    expect(field.prop('value')).toBeUndefined();
-  });
-
-  it('has a value', () => {
-    const data = render({ value: 'Yay' });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('value')).toBe(data.props.value);
-    expect(field.prop('defaultValue')).toBeUndefined();
-  });
-
-  it('shows 5 rows of text', () => {
-    const data = render({
-      multiline: true,
-      rows: 5
-    });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('rows')).toBe(data.props.rows);
-  });
-
-  it('has a unique id', () => {
-    const fieldData1 = render();
-    const fieldData2 = render();
-    const field1 = fieldData1.wrapper.find('.ds-c-field').first();
-    const label1 = fieldData1.wrapper.find('FormLabel').first();
-    const field2 = fieldData2.wrapper.find('.ds-c-field').first();
-    const idRegex = new RegExp('textfield_[0-9]+');
-
-    expect(field1.prop('id')).toMatch(idRegex);
-    expect(label1.prop('fieldId')).toBe(field1.prop('id'));
-    expect(field1.prop('id')).not.toBe(field2.prop('id'));
-  });
-
-  it('has a label', () => {
-    const data = render();
-    const label = data.wrapper.find('FormLabel').first();
-
-    expect(label.prop('children')).toBe(data.props.label);
-  });
-
-  it('has a hint', () => {
-    const data = render({ hint: '123' });
-    const label = data.wrapper.find('FormLabel').first();
-
-    expect(label.prop('hint')).toBe(data.props.hint);
-  });
-
-  it('adds className to root element', () => {
-    const data = render({ className: 'bar' });
-
-    expect(data.wrapper.hasClass('bar')).toBe(true);
-  });
-
-  it('adds className to field', () => {
-    const data = render({ fieldClassName: 'bar' });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.hasClass('ds-c-field')).toBe(true);
-    expect(field.hasClass('bar')).toBe(true);
-  });
-
-  it('adds className to label', () => {
-    const data = render({ labelClassName: 'bar' });
-
-    expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
-  });
-
-  it('adds min/max input attributes', () => {
-    const data = render({
-      max: 10,
-      min: 1
-    });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('max')).toBe(data.props.max);
-    expect(field.prop('min')).toBe(data.props.min);
-  });
-
-  it('adds undocumented prop to input field', () => {
-    const data = render({
-      'data-foo': 'bar'
-    });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('data-foo')).toBe(data.props['data-foo']);
-  });
-
-  it('returns reference to input field', () => {
-    let ref;
+  it('allows default props to be overridden', () => {
     const data = render(
       {
-        defaultValue: 'Yay',
-        fieldRef: el => {
-          ref = el;
-        }
+        clearAriaLabel: 'New ARIA label'
       },
       true
     );
+    const wrapper = data.wrapper;
 
-    expect(ref.value).toBe(data.props.defaultValue);
+    expect(wrapper.prop('clearAriaLabel')).toBe('New ARIA label');
   });
 
-  describe('has error', () => {
-    let data;
+  it('allows custom props to be passed to the input', () => {
+    const data = render(
+      {
+        example_prop: 'Example string'
+      },
+      true
+    );
+    const wrapper = data.wrapper;
+    const input = wrapper.find('input');
+    const label = wrapper.find('label');
 
-    beforeEach(() => {
-      data = render({ errorMessage: 'Error' });
-    });
-
-    it('passes error to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(
-        data.props.errorMessage
-      );
-    });
-
-    it('adds error class to field', () => {
-      expect(
-        data.wrapper
-          .find('.ds-c-field')
-          .first()
-          .hasClass('ds-c-field--error')
-      ).toBe(true);
-    });
-
-    it('sets aria-describedby field attribute');
+    expect(input.prop('example_prop')).toBe('Example string');
+    expect(label.prop('example_prop')).toBe(undefined);
   });
 
-  describe('has inversed theme', () => {
-    let data;
+  it('renders a snapshot', () => {
+    const tree = renderer
+      .create(
+        <AutocompleteField
+          items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
+        />
+      )
+      .toJSON();
 
-    beforeEach(() => {
-      data = render({ inversed: true });
-    });
-
-    it('passes inversed to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(true);
-    });
-
-    it('adds inversed class to field', () => {
-      expect(
-        data.wrapper
-          .find('.ds-c-field')
-          .first()
-          .hasClass('ds-c-field--inverse')
-      ).toBe(true);
-    });
-  });
-
-  describe('event handlers', () => {
-    let data;
-
-    beforeEach(() => {
-      data = render({
-        onBlur: jest.fn(),
-        onChange: jest.fn()
-      });
-    });
-
-    it('calls onBlur', () => {
-      data.wrapper
-        .find('.ds-c-field')
-        .first()
-        .simulate('blur');
-
-      expect(data.props.onBlur.mock.calls.length).toBe(1);
-    });
-
-    it('calls onChange', () => {
-      data.wrapper
-        .find('.ds-c-field')
-        .first()
-        .simulate('change');
-
-      expect(data.props.onChange.mock.calls.length).toBe(1);
-    });
+    expect(tree).toMatchSnapshot();
   });
 });
