@@ -42,10 +42,19 @@ module.exports = function(options = {}, rootPath) {
  * @param {Object} file
  */
 function parseExample(file) {
-  // TODO: Replace eslint comments, relative component paths, or remove import statements completely
-  return {
-    source: file.contents.toString()
-  };
+  let source = file.contents.toString();
+  // We use relative paths for the components, so this removes the import statements
+  // from the example code to avoid causing confusion
+  const imports = source.match(/import.+/g);
+  if (imports) {
+    // Remove everything up to the end of the last import statement
+    const lastImport = imports[imports.length - 1];
+    source = source
+      .substring(source.indexOf(lastImport) + lastImport.length)
+      .trim();
+  }
+
+  return { source };
 }
 
 /**
