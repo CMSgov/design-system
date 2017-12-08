@@ -1,4 +1,4 @@
-const reactPathFromSassSource = require('./reactPathFromSassSource');
+const reactPathFromSource = require('./reactPathFromSource');
 const fs = require('mz/fs');
 
 /**
@@ -15,7 +15,7 @@ module.exports = function(pages, dataPath) {
 
     pages.forEach(page => {
       if (page.reactComponent || page.reactExample) {
-        const componentPath = `${reactPathFromSassSource(
+        const componentPath = `${reactPathFromSource(
           page.source.path,
           page.reactComponent
         )}.jsx`;
@@ -43,7 +43,7 @@ module.exports = function(pages, dataPath) {
  *  React component's example. Relative to packages/
  */
 function formExamplePath(page) {
-  let examplePath = reactPathFromSassSource(
+  let examplePath = reactPathFromSource(
     page.source.path,
     page.reactExample || page.reactComponent
   );

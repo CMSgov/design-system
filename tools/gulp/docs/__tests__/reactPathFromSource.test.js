@@ -1,16 +1,16 @@
-import reactPathFromSassSource from '../reactPathFromSassSource';
+import reactPathFromSource from '../reactPathFromSource';
 
-describe('reactPathFromSassSource', () => {
+describe('reactPathFromSource', () => {
   const sourcePath = 'foo/packages/core/src/components/Button/Button.scss';
 
   it('transforms path', () => {
-    const path = reactPathFromSassSource(sourcePath, 'ButtonGroup');
+    const path = reactPathFromSource(sourcePath, 'ButtonGroup');
 
     expect(path).toBe('core/src/components/Button/ButtonGroup');
   });
 
   it('returns component path', () => {
-    const path = reactPathFromSassSource(
+    const path = reactPathFromSource(
       sourcePath,
       'core/src/components/Foo/FooBar'
     );
