@@ -21,6 +21,7 @@ export class TextField extends React.PureComponent {
       fieldClassName,
       errorMessage,
       hint,
+      inputId,
       requirementLabel,
       inversed,
       rows,
@@ -52,7 +53,7 @@ export class TextField extends React.PureComponent {
         <FormLabel
           className={labelClassName}
           errorMessage={errorMessage}
-          fieldId={this.id}
+          fieldId={inputId || this.id}
           hint={hint}
           requirementLabel={requirementLabel}
           inversed={inversed}
@@ -61,7 +62,7 @@ export class TextField extends React.PureComponent {
         </FormLabel>
         <FieldComponent
           className={fieldClasses}
-          id={this.id}
+          id={inputId || this.id}
           ref={fieldRef}
           rows={_rows}
           type={multiline ? undefined : type}
@@ -100,6 +101,11 @@ TextField.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Optional String ID, useful if you are trying to pass an ID into
+   * `<FormLabel>` and `<FieldComponent>` from a parent like `<Autocomplete>`
+   */
+  inputId: PropTypes.string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

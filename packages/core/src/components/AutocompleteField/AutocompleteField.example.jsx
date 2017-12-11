@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import AutocompleteField from './AutocompleteField';
 import React from 'react';
+import TextField from '../TextField/TextField';
 
 export default function() {
   return (
@@ -23,7 +24,6 @@ export default function() {
             name: 'Cook County, TN'
           }
         ]}
-        labelText="What zip code did this person live during 2017?"
         onChange={selectedItem => console.log(selectedItem)}
         onStateChange={changes => {
           if (changes.type === '__autocomplete_keydown_enter__') {
@@ -34,10 +34,19 @@ export default function() {
             console.log(changes.inputValue);
           }
         }}
-      />
+      >
+        <TextField
+          hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
+          label="What zip code did this person live during 2017?"
+          name="Downshift_autocomplete"
+        />
+      </AutocompleteField>
 
       <AutocompleteField
-        disabled
+        isDisabled
+        itemToString={i => {
+          return i ? i.name : '';
+        }}
         items={[
           {
             id: 'kRf6c2fY',
@@ -52,8 +61,23 @@ export default function() {
             name: 'Cook County, TN'
           }
         ]}
-        labelText="Disabled autocomplete component"
-      />
+        onChange={selectedItem => console.log(selectedItem)}
+        onStateChange={changes => {
+          if (changes.type === '__autocomplete_keydown_enter__') {
+            console.log('Yep, the user pressed Enter!');
+          }
+
+          if (changes.type === '__autocomplete_change_input__') {
+            console.log(changes.inputValue);
+          }
+        }}
+      >
+        <TextField
+          hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
+          label="Disabled autocomplete"
+          name="Downshift_autocomplete_disabled"
+        />
+      </AutocompleteField>
     </div>
   );
 }

@@ -8,16 +8,16 @@ Autocomplete field
 
 Autocomplete fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
 
-disabled - Disabled autocomplete
-
 Markup:
-<div class="ds-u-display--flex ds-u-flex-wrap--wrap ds-c-autocomplete">
-  <label class="ds-c-label ds-u-margin-top--0" for="autocomplete_7">
-    <span class="ds-c-autocomplete__label">What zip code did this person live during 2017?</span>
-    <span class="ds-c-field__hint">This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.</span>
-  </label>
-  <input aria-autocomplete="list" aria-expanded="false" autocomplete="off" class="ds-c-field ds-c-autocomplete__input" id="autocomplete_7" role="combobox" value="" {{modifier}}>
-  <a aria-label="Clear typeahead and search again" class="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-margin-left--auto ds-u-padding-right--0 ds-c-autocomplete__button" href="javascript:void(0);">Search again</a>
+<div class="ds-u-clearfix ds-c-autocomplete">
+  <div class="ds-u-clearfix">
+    <label class="ds-c-label ds-u-margin-top--0 ds-c-autocomplete__label" for="autocomplete_7">
+      <span class="">What zip code did this person live during 2017?</span>
+      <span class="ds-c-field__hint">This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.</span>
+    </label>
+    <input aria-autocomplete="list" aria-expanded="false" autocomplete="off" class="ds-c-field ds-c-autocomplete__input" id="autocomplete_7" name="Downshift_autocomplete" role="combobox" type="text" value="">
+  </div>
+  <a aria-label="Clear typeahead and search again" class="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button" href="javascript:void(0);">Search again</a>
 </div>
 
 Style guide: components.autocomplete-field
@@ -25,10 +25,20 @@ Style guide: components.autocomplete-field
 
 // autocomplete component
 .ds-c-autocomplete {
-  max-width: 460px;
+  position: relative;
+  width: 460px;
 
+  &__inner--disabled {
+    + .ds-c-autocomplete__button {
+      background: transparent;
+      border: transparent;
+      color: $color-gray-dark;
+      pointer-events: none;
+    }
+  }
+  
   &__label {
-    + .ds-c-field__hint {
+    > .ds-c-field__hint {
       border: 0;
       clip: rect(0, 0, 0, 0);
       height: 1px;
@@ -40,17 +50,12 @@ Style guide: components.autocomplete-field
     }
   }
 
-  &__input[disabled] {
-    + .ds-c-autocomplete__button {
-      background: transparent;
-      border: transparent;
-      color: $color-gray-dark;
-      pointer-events: none;
-    }
-  }
-
   &__list {
+    background-color: $color-white;
+    max-width: 442px;
+    position: absolute;
     width: 100%;
+    z-index: $z-index-10;
   }
 
   &__list-item--active {

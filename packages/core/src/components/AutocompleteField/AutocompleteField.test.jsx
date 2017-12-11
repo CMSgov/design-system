@@ -1,7 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import AutocompleteField from './AutocompleteField';
 import React from 'react';
-import noop from 'nooop';
 import renderer from 'react-test-renderer';
 
 function render(customProps = {}, deep = false) {
@@ -37,14 +36,14 @@ describe('AutocompleteField', () => {
     );
     expect(wrapper.prop('clearInputText')).toBe('Search again');
     expect(wrapper.prop('disabled')).toBe(undefined);
-    expect(wrapper.prop('itemToString')).toBe(noop);
+    expect(wrapper.prop('itemToString')).toBe(undefined);
     expect(wrapper.prop('fieldRef')).toBe(undefined);
     expect(wrapper.prop('labelHint')).toBe(
       'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.'
     );
     expect(wrapper.prop('labelText')).toBe('Generic autocomplete label');
-    expect(wrapper.prop('onChange')).toBe(noop);
-    expect(wrapper.prop('onStateChange')).toBe(noop);
+    expect(wrapper.prop('onChange')).toBe(undefined);
+    expect(wrapper.prop('onStateChange')).toBe(undefined);
   });
 
   it('renders expected elements', () => {

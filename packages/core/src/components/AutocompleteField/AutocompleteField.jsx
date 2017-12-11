@@ -1,10 +1,18 @@
 import Button from '../Button/Button';
 import Downshift from 'downshift';
-import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
-import noop from 'nooop';
+import TextField from '../TextField/TextField';
 import uniqueId from 'lodash.uniqueid';
+
+/**
+ * Determine if a React component is a TextField
+ * @param {React.Node} child - a React component
+ * @return {Boolean} Is this a TextField component?
+ */
+function isTextField(child) {
+  return child != null && child.type === TextField;
+}
 
 /**
  * An `AutocompleteField` component renders a typeahead input field, form label, and a clear input link.
@@ -16,19 +24,38 @@ export class AutocompleteField extends React.PureComponent {
     this.id = uniqueId('autocomplete_');
   }
 
+  renderChildren(getInputProps) {
+    // Extend props on the TextField, by passing them through
+    // Downshift's `getInputProps` method
+    return React.Children.map(this.props.children, child => {
+      const { isDisabled } = this.props;
+
+      if (isTextField(child)) {
+        return React.cloneElement(
+          child,
+          getInputProps({
+            className: isDisabled ? 'ds-c-autocomplete__inner--disabled' : '',
+            disabled: isDisabled,
+            fieldClassName: 'ds-c-autocomplete__input',
+            id: this.id,
+            inputId: this.id,
+            labelClassName: 'ds-u-margin-top--0 ds-c-autocomplete__label'
+          })
+        );
+      }
+
+      return child;
+    });
+  }
+
   render() {
     const {
       clearAriaLabel,
       clearInputText,
-      disabled,
-      fieldRef,
       items,
       itemToString,
-      labelHint,
-      labelText,
       onChange,
-      onStateChange,
-      ...fieldProps
+      onStateChange
     } = this.props;
 
     return (
@@ -44,30 +71,16 @@ export class AutocompleteField extends React.PureComponent {
           isOpen,
           inputValue
         }) => (
-          <div className="ds-u-display--flex ds-u-flex-wrap--wrap ds-c-autocomplete">
-            <FormLabel
-              className="ds-u-margin-top--0"
-              labelClassName="ds-c-autocomplete__label"
-              component="label"
-              fieldId={this.id}
-              hint={labelHint}
-            >
-              {labelText}
-            </FormLabel>
-
-            <input
-              {...getInputProps({
-                className: 'ds-c-field ds-c-autocomplete__input',
-                disabled: disabled,
-                id: this.id,
-                ref: fieldRef,
-                ...fieldProps
-              })}
-            />
+          <div className="ds-u-clearfix ds-c-autocomplete">
+            {this.renderChildren(getInputProps)}
 
             {isOpen ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
-                <ul className="ds-c-list--bare">
+                <ul
+                  aria-expanded={isOpen}
+                  className="ds-c-list--bare"
+                  role="listbox"
+                >
                   {items
                     .filter(
                       item =>
@@ -78,12 +91,14 @@ export class AutocompleteField extends React.PureComponent {
                     )
                     .map((item, index) => (
                       <li
+                        aria-selected={highlightedIndex === index}
                         className={
                           highlightedIndex === index
                             ? 'ds-u-padding--1 ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
                             : 'ds-u-padding--1 ds-c-autocomplete__list-item'
                         }
                         key={item.id}
+                        role="option"
                         {...getItemProps({ item })}
                       >
                         {itemToString(item)}
@@ -95,7 +110,7 @@ export class AutocompleteField extends React.PureComponent {
 
             <Button
               aria-label={clearAriaLabel}
-              className="ds-u-margin-left--auto ds-u-padding-right--0 ds-c-autocomplete__button"
+              className="ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button"
               href="javascript:void(0);"
               onClick={clearSelection}
               size="small"
@@ -112,16 +127,11 @@ export class AutocompleteField extends React.PureComponent {
 
 AutocompleteField.defaultProps = {
   clearAriaLabel: 'Clear typeahead and search again',
-  clearInputText: 'Search again',
-  itemToString: noop,
-  labelHint:
-    'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.',
-  labelText: 'Generic autocomplete label',
-  onChange: noop,
-  onStateChange: noop
+  clearInputText: 'Search again'
 };
 
 AutocompleteField.propTypes = {
+  children: PropTypes.node.isRequired,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
    */
@@ -130,13 +140,13 @@ AutocompleteField.propTypes = {
    * Clear link text that will appear on the page as part of the rendered component
    */
   clearInputText: PropTypes.string,
-  disabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   /**
    * https://github.com/paypal/downshift#itemtostring
    *
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`.
    */
-  itemToString: PropTypes.func.isRequired,
+  itemToString: PropTypes.func,
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
@@ -147,29 +157,17 @@ AutocompleteField.propTypes = {
     })
   ).isRequired,
   /**
-   * Access a reference to the `input` element
-   */
-  fieldRef: PropTypes.func,
-  /**
-   * Screenreader-specific instructions for using the autocomplete. The hint is visually hidden, but will be read out to assistive devices when the input receives keyboard focus.
-   */
-  labelHint: PropTypes.string,
-  /**
-   * Text string label for the `<FormLabel>` component
-   */
-  labelText: PropTypes.string.isRequired,
-  /**
    * https://github.com/paypal/downshift#onchange
    *
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
    */
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   /**
    * https://github.com/paypal/downshift#onstatechange
    *
    * This function is called anytime the internal state changes. This can be useful if you're using downshift as a "controlled" component, where you manage some or all of the state (e.g. `isOpen, selectedItem, highlightedIndex`, etc) and then pass it as props, rather than letting downshift control all its state itself.
    */
-  onStateChange: PropTypes.func.isRequired
+  onStateChange: PropTypes.func
 };
 
 export default AutocompleteField;
