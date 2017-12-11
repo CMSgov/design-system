@@ -133,8 +133,8 @@ Choice.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
-   * This will render a read-only field. If the field should be
-   * mutable, use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`
+   * Sets the input's `checked` state. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultChecked`.
    */
   checked: PropTypes.bool,
   /**
@@ -154,7 +154,7 @@ Choice.propTypes = {
    */
   inputClassName: PropTypes.string,
   /**
-   * Sets the initial checked state. Use this for an uncontrolled component;
+   * Sets the initial `checked` state. Use this for an uncontrolled component;
    * otherwise, use the `checked` property.
    */
   defaultChecked: PropTypes.bool,

@@ -141,8 +141,8 @@ TextField.propTypes = {
    */
   type: PropTypes.string,
   /**
-   * **Note**: Setting this prop will render a read-only field. If the field should be
-   * mutable, use `defaultValue`. Otherwise, set `onChange` or `disabled`.
+   * Sets the input's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultValue`.
    */
   value: PropTypes.string
 };
