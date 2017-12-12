@@ -68,7 +68,9 @@ Select.propTypes = {
     if (props[propName]) {
       /* eslint-disable quotes */
       return new Error(
-        `'${propName}' supplied to '${componentName}'. [A11Y]: Users often don’t` +
+        `'${propName}' supplied to '${
+          componentName
+        }'. [A11Y]: Users often don’t` +
           ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
       );
       /* eslint-enable */
@@ -81,8 +83,8 @@ Select.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
-   * This will render a read-only field. If the field should be
-   * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
+   * Sets the field's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultValue`.
    */
   value: PropTypes.string
 };

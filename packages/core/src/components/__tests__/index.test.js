@@ -34,17 +34,21 @@ function getDirectories(paths) {
   return paths.filter(filePath => fs.lstatSync(filePath).isDirectory());
 }
 
+const ignoredComponents = ['Step', 'SubStep', 'StepLink'];
+
 describe('Components index', () => {
-  it('exports all components', () => {
+  it("exports all components except ones we don't want to expose", () => {
     return fs
       .readdir(path.resolve(__dirname, '../'))
       .then(files => files.map(name => path.resolve(__dirname, `../${name}`)))
       .then(getDirectories)
       .then(getComponentFilenames)
       .then(names => {
-        names.forEach(name => {
-          expect(componentNames).toEqual(expect.arrayContaining([name]));
-        });
+        names
+          .filter(name => !ignoredComponents.includes(name))
+          .forEach(name => {
+            expect(componentNames).toEqual(expect.arrayContaining([name]));
+          });
       });
   });
 });

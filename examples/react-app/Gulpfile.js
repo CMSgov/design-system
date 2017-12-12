@@ -9,8 +9,8 @@ const sass = require('gulp-sass');
 gulp.task('copy-design-system', function() {
   return gulp
     .src([
-      'node_modules/@cmsgov/design-system-core/src/**/fonts/*',
-      'node_modules/@cmsgov/design-system-core/src/**/images/*'
+      'node_modules/@cmsgov/design-system-core/**/fonts/*',
+      'node_modules/@cmsgov/design-system-core/**/images/*'
     ])
     .pipe(gulp.dest('./dist'));
 });

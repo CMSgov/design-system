@@ -4,11 +4,6 @@
  * generating the HTML files which get published as the public site.
  */
 
-// Run babel transforms on src files so we can run JSX scripts in Gulp tasks
-require('babel-register')({
-  only: /(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generatePage)/
-});
-
 const buildPath = require('../common/buildPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
@@ -183,7 +178,7 @@ module.exports = (gulp, shared) => {
    * happens within a chain of promises.
    * @return {Promise}
    */
-  gulp.task('docs:generate-pages', () => {
+  gulp.task('docs:generate-pages', async function() {
     dutil.logMessage(
       '📝 ',
       'Creating HTML pages from Sass comments and Markdown pages'
@@ -191,39 +186,48 @@ module.exports = (gulp, shared) => {
 
     const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
     const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
-    return kss
+
+    // Parse Markdown files, and return the data in the same format as a KssSection
+    const markdownPagesData = await convertMarkdownPages(
+      shared.rootPath,
+      shared.packages
+    );
+
+    /**
+     * Parse CSS and JS comments, and form an array of KssSection objects:
+     * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
+     * @return {Array} KssSections
+     */
+    const kssSections = await kss
       .traverse(packages, { mask })
       .then(styleguide =>
-        /**
-         * Parse CSS and JS comments, forming the initial array of pages.
-         * CSS and JS comments are parsed and an array of KSS Section objects is
-         * generated: kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
-         * @return {Array} KssSections
-         */
         Promise.all(
           styleguide.sections().map(kssSection =>
             // Cleanup and extend the section's properties
             processKssSection(kssSection, shared.rootPath)
           )
         )
-      )
-      .then(kssSections =>
-        // Parse Markdown files and add each page's data to the pages array
-        convertMarkdownPages(shared.rootPath, shared.packages).then(pages =>
-          pages.concat(kssSections)
-        )
-      )
-      .then(uniquePages) // Remove pages with same URL (for advanced theme support)
-      .then(generateMarkupPages) // Create HTML files for markup examples
-      .then(addTopLevelPages) // Add missing top-level pages so pages can be properly nested
-      .then(nestSections)
-      .then(generateDocPages) // Create HTML files from the pages array
-      .then(generatedPagesCount => {
-        dutil.logMessage(
-          '📝 ',
-          `Created ${generatedPagesCount} documentation pages`
-        );
-      });
+      );
+
+    // Merge both sets of KssSection objects into a single array of page parts.
+    // Also, remove pages with the same URL (so themes can override existing pages)
+    const pageSections = uniquePages(markdownPagesData.concat(kssSections));
+
+    // Create HTML files for markup examples
+    await generateMarkupPages(pageSections);
+
+    // Add missing top-level pages and connect the page parts to their parent pages
+    const pages = await addTopLevelPages(pageSections).then(nestSections);
+
+    // Create HTML files from the pages array
+    const generatedPagesCount = await generateDocPages(pages);
+
+    dutil.logMessage(
+      '📝 ',
+      `Created ${generatedPagesCount} documentation pages`
+    );
+
+    return Promise.resolve();
   });
 
   // Extract info from React component files for props documentation
