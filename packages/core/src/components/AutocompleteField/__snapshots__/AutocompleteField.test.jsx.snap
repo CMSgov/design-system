@@ -2,40 +2,11 @@
 
 exports[`AutocompleteField renders a snapshot 1`] = `
 <div
-  className="ds-u-display--flex ds-u-flex-wrap--wrap ds-c-autocomplete"
+  className="ds-u-clearfix ds-c-autocomplete"
 >
-  <label
-    className="ds-c-label ds-u-margin-top--0"
-    htmlFor="autocomplete_7"
-  >
-    <span
-      className="ds-c-autocomplete__label"
-    >
-      Generic autocomplete label
-    </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.
-    </span>
-  </label>
-  <input
-    aria-activedescendant={null}
-    aria-autocomplete="list"
-    aria-expanded={false}
-    autoComplete="off"
-    className="ds-c-field ds-c-autocomplete__input"
-    disabled={undefined}
-    id="autocomplete_7"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    role="combobox"
-    value=""
-  />
   <a
     aria-label="Clear typeahead and search again"
-    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-margin-left--auto ds-u-padding-right--0 ds-c-autocomplete__button"
+    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button"
     href="javascript:void(0);"
     onClick={[Function]}
   >

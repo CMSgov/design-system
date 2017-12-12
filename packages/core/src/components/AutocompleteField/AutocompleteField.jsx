@@ -79,12 +79,21 @@ export class AutocompleteField extends React.PureComponent {
             {isOpen ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
                 {constrainedList ? (
-                  <h5 className="ds-u-margin--0 ds-u-padding--1">
+                  <h5
+                    className="ds-u-margin--0 ds-u-padding--1"
+                    id="constrained-list-header"
+                  >
                     {constrainedListText}
                   </h5>
                 ) : null}
 
-                <ul className="ds-c-list--bare" role="listbox">
+                <ul
+                  aria-labelledby={
+                    constrainedList ? 'constrained-list-header' : null
+                  }
+                  className="ds-c-list--bare"
+                  role="listbox"
+                >
                   {items
                     .filter(
                       item =>
@@ -136,7 +145,7 @@ AutocompleteField.defaultProps = {
 };
 
 AutocompleteField.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
    */
@@ -145,8 +154,17 @@ AutocompleteField.propTypes = {
    * Clear link text that will appear on the page as part of the rendered component
    */
   clearInputText: PropTypes.string,
+  /**
+   * Adds a conditional header to `<div.ds-c-autocomplete__list>`
+   */
   constrainedList: PropTypes.bool,
+  /**
+   * Text string for the `<h5>` header added to the`<div.ds-c-autocomplete__list>` when prop `constrainedList`is passed to `<Autocomplete>`
+   */
   constrainedListText: PropTypes.string,
+  /**
+   * Passes prop `disabled` to the child `<Textfield>` component
+   */
   isDisabled: PropTypes.bool,
   /**
    * https://github.com/paypal/downshift#itemtostring

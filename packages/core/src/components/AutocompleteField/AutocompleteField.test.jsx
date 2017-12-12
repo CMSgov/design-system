@@ -34,42 +34,34 @@ describe('AutocompleteField', () => {
     expect(wrapper.prop('clearAriaLabel')).toBe(
       'Clear typeahead and search again'
     );
-    expect(wrapper.prop('clearInputText')).toBe('Search again');
-    expect(wrapper.prop('disabled')).toBe(undefined);
-    expect(wrapper.prop('itemToString')).toBe(undefined);
-    expect(wrapper.prop('fieldRef')).toBe(undefined);
-    expect(wrapper.prop('labelHint')).toBe(
-      'This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.'
+    expect(wrapper.prop('constrainedList')).toBe(undefined);
+    expect(wrapper.prop('constrainedListText')).toBe(
+      'Select from the options below:'
     );
-    expect(wrapper.prop('labelText')).toBe('Generic autocomplete label');
+    expect(wrapper.prop('clearInputText')).toBe('Search again');
+    expect(wrapper.prop('isDisabled')).toBe(undefined);
+    expect(wrapper.prop('itemToString')).toBe(undefined);
     expect(wrapper.prop('onChange')).toBe(undefined);
     expect(wrapper.prop('onStateChange')).toBe(undefined);
   });
 
-  it('renders expected elements', () => {
+  it('only renders expected elements', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
     const downshift = wrapper.find('Downshift');
 
-    expect(downshift.find('label').exists()).toBe(true);
-    expect(downshift.find('span.ds-c-autocomplete__label').exists()).toBe(true);
-    expect(downshift.find('span.ds-c-field__hint').exists()).toBe(true);
-    expect(downshift.find('input').exists()).toBe(true);
+    expect(downshift.find('ul').exists()).toBe(false);
+    expect(downshift.find('li').exists()).toBe(false);
     expect(downshift.find('a').exists()).toBe(true);
   });
 
   it('renders default class names', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
-    const downshift = wrapper.find('Downshift');
+    const child = wrapper.find('Downshift').childAt(0);
 
-    expect(downshift.find('label').hasClass('ds-c-label')).toBe(true);
-    expect(downshift.find('input').hasClass('ds-c-autocomplete__input')).toBe(
-      true
-    );
-    expect(downshift.find('a').hasClass('ds-c-autocomplete__button')).toBe(
-      true
-    );
+    expect(child.type()).toBe('div');
+    expect(child.hasClass('ds-c-autocomplete')).toBe(true);
   });
 
   it('allows default props to be overridden', () => {
@@ -82,21 +74,6 @@ describe('AutocompleteField', () => {
     const wrapper = data.wrapper;
 
     expect(wrapper.prop('clearAriaLabel')).toBe('New ARIA label');
-  });
-
-  it('allows custom props to be passed to the input', () => {
-    const data = render(
-      {
-        example_prop: 'Example string'
-      },
-      true
-    );
-    const wrapper = data.wrapper;
-    const input = wrapper.find('input');
-    const label = wrapper.find('label');
-
-    expect(input.prop('example_prop')).toBe('Example string');
-    expect(label.prop('example_prop')).toBe(undefined);
   });
 
   it('renders a snapshot', () => {
