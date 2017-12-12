@@ -58,6 +58,10 @@ Style guide: components.autocomplete-field
     z-index: $z-index-10;
   }
 
+  &__list-item {
+    color: $color-primary;
+  }
+
   &__list-item--active {
     background-color: $color-primary-alt-darkest;
     color: $color-white; 

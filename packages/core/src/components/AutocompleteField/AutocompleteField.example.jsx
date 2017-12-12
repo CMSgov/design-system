@@ -7,6 +7,7 @@ export default function() {
   return (
     <div>
       <AutocompleteField
+        constrainedList
         itemToString={i => {
           return i ? i.name : '';
         }}
@@ -37,7 +38,43 @@ export default function() {
       >
         <TextField
           hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
-          label="What zip code did this person live during 2017?"
+          label="Constrained list"
+          name="Downshift_autocomplete"
+        />
+      </AutocompleteField>
+
+      <AutocompleteField
+        itemToString={i => {
+          return i ? i.name : '';
+        }}
+        items={[
+          {
+            id: 'kRf6c2fY',
+            name: 'Cook County, IL'
+          },
+          {
+            id: 'lYf5cGfM',
+            name: 'Cook County, MD'
+          },
+          {
+            id: 'mZfKcGf9',
+            name: 'Cook County, TN'
+          }
+        ]}
+        onChange={selectedItem => console.log(selectedItem)}
+        onStateChange={changes => {
+          if (changes.type === '__autocomplete_keydown_enter__') {
+            console.log('Yep, the user pressed Enter!');
+          }
+
+          if (changes.type === '__autocomplete_change_input__') {
+            console.log(changes.inputValue);
+          }
+        }}
+      >
+        <TextField
+          hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
+          label="Unconstrained list"
           name="Downshift_autocomplete"
         />
       </AutocompleteField>

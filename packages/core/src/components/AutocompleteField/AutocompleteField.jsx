@@ -52,6 +52,8 @@ export class AutocompleteField extends React.PureComponent {
     const {
       clearAriaLabel,
       clearInputText,
+      constrainedList,
+      constrainedListText,
       items,
       itemToString,
       onChange,
@@ -76,11 +78,13 @@ export class AutocompleteField extends React.PureComponent {
 
             {isOpen ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
-                <ul
-                  aria-expanded={isOpen}
-                  className="ds-c-list--bare"
-                  role="listbox"
-                >
+                {constrainedList ? (
+                  <h5 className="ds-u-margin--0 ds-u-padding--1">
+                    {constrainedListText}
+                  </h5>
+                ) : null}
+
+                <ul className="ds-c-list--bare" role="listbox">
                   {items
                     .filter(
                       item =>
@@ -127,7 +131,8 @@ export class AutocompleteField extends React.PureComponent {
 
 AutocompleteField.defaultProps = {
   clearAriaLabel: 'Clear typeahead and search again',
-  clearInputText: 'Search again'
+  clearInputText: 'Search again',
+  constrainedListText: 'Select from the options below:'
 };
 
 AutocompleteField.propTypes = {
@@ -140,6 +145,8 @@ AutocompleteField.propTypes = {
    * Clear link text that will appear on the page as part of the rendered component
    */
   clearInputText: PropTypes.string,
+  constrainedList: PropTypes.bool,
+  constrainedListText: PropTypes.string,
   isDisabled: PropTypes.bool,
   /**
    * https://github.com/paypal/downshift#itemtostring
