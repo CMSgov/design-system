@@ -1,19 +1,18 @@
-/* eslint-disable react/display-name */
 import Button from './Button';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-export default function() {
-  return (
-    <div>
-      <Button>Button</Button>
+ReactDOM.render(
+  <div>
+    <Button>Button</Button>
 
-      <Button
-        className="ds-u-margin-left--1"
-        href="javascript:void(0);"
-        variation="primary"
-      >
-        Anchor button
-      </Button>
-    </div>
-  );
-}
+    <Button
+      className="ds-u-margin-left--1"
+      href="javascript:void(0);"
+      variation="primary"
+    >
+      Anchor button
+    </Button>
+  </div>,
+  document.getElementById('js-example')
+);
