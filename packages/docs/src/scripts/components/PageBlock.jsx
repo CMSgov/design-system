@@ -63,15 +63,15 @@ class PageBlock extends React.PureComponent {
     // text below the title + code snippet block. It's hacky, but works.
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
-    const source = this.props.reactComponent && (
+    const source = this.props.reactComponentPath && (
       <Source
         key="reactSource"
-        reactComponent={this.props.reactComponent}
+        reactComponentPath={this.props.reactComponentPath}
         source={this.props.source}
       />
     );
 
-    const subheader = this.props.reactComponent && (
+    const subheader = this.props.reactComponentPath && (
       <span className="ds-h6" key="subheader">
         React
       </span>
@@ -98,9 +98,11 @@ class PageBlock extends React.PureComponent {
         {this.markupExamples()}
         <ReactContent
           hideExample={this.props.hideExample}
-          reactComponent={this.props.reactComponent}
-          reactExample={this.props.reactExample}
-          source={this.props.source}
+          reactComponentDocs={this.props.reactComponentDocs}
+          reactExamplePath={this.props.reactExamplePath}
+          reactExampleSource={this.props.reactExampleSource}
+          reference={this.props.reference}
+          responsive={this.props.responsive}
         />
       </article>
     );
@@ -115,8 +117,10 @@ PageBlock.propTypes = {
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(HtmlExample.propTypes.modifier),
-  reactComponent: PropTypes.string,
-  reactExample: PropTypes.string,
+  reactComponentDocs: ReactContent.propTypes.reactComponentDocs,
+  reactComponentPath: PropTypes.string,
+  reactExamplePath: ReactContent.propTypes.reactExamplePath,
+  reactExampleSource: ReactContent.propTypes.reactExampleSource,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
   source: Source.propTypes.source
