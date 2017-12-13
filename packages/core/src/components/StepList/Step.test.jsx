@@ -88,12 +88,7 @@ describe('Step', () => {
 
     const title = wrapper.find('.ds-c-step__title');
     expect(title.length).toEqual(1);
-    expect(
-      title
-        .find('StepLink')
-        .dive()
-        .text()
-    ).toEqual('Do something!');
+    expect(title.text()).toEqual('Do something!');
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
@@ -114,28 +109,14 @@ describe('Step', () => {
     editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
 
-    const headingLink = wrapper.find('.ds-c-step__title').find('StepLink');
-    expect(headingLink.length).toEqual(1);
-    expect(headingLink.props()).toMatchObject({
-      children: step.title,
-      stepId: step.id,
-      href: step.href
-    });
-    headingLink.props().onClick();
-    expect(spy).toHaveBeenCalledTimes(2);
-
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
   });
 
   it('renders completed text and an no edit link for completed steps with substeps', () => {
-    const spy = jest.fn();
-    const { wrapper, step } = renderStep(
-      {
-        completed: true,
-        steps: [generateStep('1')]
-      },
-      { onStepLinkClick: spy }
-    );
+    const { wrapper } = renderStep({
+      completed: true,
+      steps: [generateStep('1')]
+    });
 
     const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
@@ -144,46 +125,23 @@ describe('Step', () => {
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(0);
 
-    const headingLink = wrapper.find('.ds-c-step__title').find('StepLink');
-    expect(headingLink.length).toEqual(1);
-    expect(headingLink.props()).toMatchObject({
-      children: step.title,
-      stepId: step.id,
-      href: step.href
-    });
-    headingLink.props().onClick();
-    expect(spy).toHaveBeenCalled();
-
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
   });
 
   it('renders resume button for started, incomplete steps', () => {
     const spy = jest.fn();
-    const { wrapper, step } = renderStep(
-      { started: true },
-      { onStepLinkClick: spy }
-    );
+    const { wrapper } = renderStep({ started: true }, { onStepLinkClick: spy });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Resume!');
     editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
-
-    const headingLink = wrapper.find('.ds-c-step__title').find('StepLink');
-    expect(headingLink.length).toEqual(1);
-    expect(headingLink.props()).toMatchObject({
-      children: step.title,
-      stepId: step.id,
-      href: step.href
-    });
-    headingLink.props().onClick();
-    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('renders start button for steps with isNextStep', () => {
     const spy = jest.fn();
-    const { wrapper, step } = renderStep(
+    const { wrapper } = renderStep(
       { isNextStep: true },
       { onStepLinkClick: spy }
     );
@@ -193,16 +151,6 @@ describe('Step', () => {
     expect(editLink.props().children).toEqual('Start!');
     editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
-
-    const headingLink = wrapper.find('.ds-c-step__title').find('StepLink');
-    expect(headingLink.length).toEqual(1);
-    expect(headingLink.props()).toMatchObject({
-      children: step.title,
-      stepId: step.id,
-      href: step.href
-    });
-    headingLink.props().onClick();
-    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('renders substeps', () => {
