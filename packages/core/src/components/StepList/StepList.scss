@@ -16,9 +16,7 @@ Markup:
   <ol class="ds-c-step-list ds-u-margin-top--4">
     <li class="ds-c-step ds-c-step--completed">
       <div class="ds-c-step__content">
-        <h2 class="ds-c-step__title">
-          <a href="#step-1">Choose a tax year</a>
-        </h2>
+        <h2 class="ds-c-step__title">Choose a tax year</h2>
       </div>
       <div
         class="ds-c-step__actions"
@@ -35,9 +33,7 @@ Markup:
     </li>
     <li class="ds-c-step ds-c-step--current">
       <div class="ds-c-step__content ds-c-step__content--with-content">
-        <h2 class="ds-c-step__title">
-          <a href="#step-2">Enter household details</a>
-        </h2>
+        <h2 class="ds-c-step__title">Enter household details</h2>
         <div
           class="ds-c-step__description"
           aria-label="Description for Enter household details"
@@ -192,18 +188,26 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step--current {
+  .ds-c-step__title {
+    color: $current-step-color;
+  }
+
   &::before {
     background: $current-step-color;
   }
 }
 
 .ds-c-step--completed {
+  .ds-c-step__title {
+    color: $color-base;
+  }
+
   .ds-c-step__substeps {
     color: $color-base;
   }
 
   &::before {
-    background: $current-step-color;
+    background: $color-base;
   }
 }
 
