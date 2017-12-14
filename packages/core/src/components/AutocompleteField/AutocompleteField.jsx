@@ -71,8 +71,7 @@ export class AutocompleteField extends React.PureComponent {
           getItemProps,
           highlightedIndex,
           isOpen,
-          inputValue,
-          itemCount
+          inputValue
         }) => (
           <div className="ds-u-clearfix ds-c-autocomplete">
             {this.renderChildren(getInputProps)}
@@ -87,8 +86,6 @@ export class AutocompleteField extends React.PureComponent {
                     {constrainedListText}
                   </h5>
                 ) : null}
-
-                <p>{itemCount}</p>
 
                 <ul
                   aria-labelledby={
