@@ -1,19 +1,31 @@
 /* eslint-disable import/first */
-jest.mock('../../../data/react-doc.json');
 jest.mock('../ReactExample');
 
 import React from 'react';
 import ReactContent from '../ReactContent';
 import { mount } from 'enzyme';
 
-function render(customProps = {}, component = 'ComponentWithDescription') {
+function render(
+  customProps = {},
+  docsContent = { description: true, props: true }
+) {
   const props = Object.assign(
     {
-      reactComponent: component,
-      source: {
-        filename: `components/${component}/${component}.scss`,
-        path: `packages/core/src/components/${component}/${component}.scss`
-      }
+      reactExamplePath: 'components/Button/Button.example.jsx',
+      reactExampleSource: '<Foo />',
+      reactComponentDocs: {
+        description: docsContent.description ? '<p>Hello world</p>' : null,
+        props: docsContent.props
+          ? {
+              locale: {
+                type: { name: 'string' },
+                required: false,
+                description: '<p>A translation string</p>'
+              }
+            }
+          : null
+      },
+      reactComponentPath: 'components/Button/Button.jsx'
     },
     customProps
   );
@@ -31,20 +43,20 @@ function render(customProps = {}, component = 'ComponentWithDescription') {
 }
 
 describe('ReactContent', () => {
-  it('has description, example, and no props table', () => {
+  it('has description, example, and props table', () => {
     const data = render();
 
     expect(data.wrapper.find('.c-details').length).toBe(1);
     expect(data.wrapper.find('ReactExample').length).toBe(1);
-    expect(data.wrapper.find('ReactPropDocs').length).toBe(0);
+    expect(data.wrapper.find('ReactPropDocs').length).toBe(1);
   });
 
-  it('has example and props table', () => {
-    const data = render({}, 'ComponentWithProps');
+  it('has no description or props table', () => {
+    const data = render({}, { description: false, props: false });
 
     expect(data.wrapper.find('.c-details').length).toBe(0);
     expect(data.wrapper.find('ReactExample').length).toBe(1);
-    expect(data.wrapper.find('ReactPropDocs').length).toBe(1);
+    expect(data.wrapper.find('ReactPropDocs').length).toBe(0);
   });
 
   it('hides example', () => {
@@ -55,9 +67,10 @@ describe('ReactContent', () => {
     expect(data.wrapper.find('ReactExample').length).toBe(0);
   });
 
-  it('uses reactExample prop for rendering example', () => {
-    const data = render({ reactExample: 'Bar' });
-
-    expect(data.wrapper.find('ReactExample').prop('path')).toMatch(/Bar/);
+  it('uses reactExamplePath prop for rendering example', () => {
+    const data = render();
+    expect(data.wrapper.find('ReactExample').prop('path')).toMatch(
+      /Button.example.jsx/
+    );
   });
 });

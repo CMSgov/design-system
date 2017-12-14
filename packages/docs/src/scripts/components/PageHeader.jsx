@@ -38,7 +38,7 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-font-size--small">
           {this.statusBadge()}
           <Source
-            reactComponent={this.props.reactComponent}
+            reactComponentPath={this.props.reactComponentPath}
             source={this.props.source}
           />
           {this.props.uswds && (
@@ -53,7 +53,7 @@ class PageHeader extends React.PureComponent {
 
 PageHeader.propTypes = {
   header: PropTypes.string.isRequired,
-  reactComponent: Source.propTypes.reactComponent,
+  reactComponentPath: Source.propTypes.reactComponentPath,
   reference: PropTypes.string,
   source: Source.propTypes.source,
   status: PropTypes.string,
