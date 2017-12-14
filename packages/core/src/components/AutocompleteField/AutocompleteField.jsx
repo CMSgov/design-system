@@ -71,7 +71,8 @@ export class AutocompleteField extends React.PureComponent {
           getItemProps,
           highlightedIndex,
           isOpen,
-          inputValue
+          inputValue,
+          itemCount
         }) => (
           <div className="ds-u-clearfix ds-c-autocomplete">
             {this.renderChildren(getInputProps)}
@@ -86,6 +87,8 @@ export class AutocompleteField extends React.PureComponent {
                     {constrainedListText}
                   </h5>
                 ) : null}
+
+                <p>{itemCount}</p>
 
                 <ul
                   aria-labelledby={
@@ -145,7 +148,7 @@ AutocompleteField.defaultProps = {
 };
 
 AutocompleteField.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
    */

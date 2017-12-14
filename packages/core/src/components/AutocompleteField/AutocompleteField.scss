@@ -55,7 +55,7 @@ Style guide: components.autocomplete-field
     max-width: 442px;
     position: absolute;
     width: 100%;
-    z-index: $z-index-10;
+    z-index: $z-dialog;
   }
 
   &__list-item {

@@ -3,7 +3,7 @@
 
 
 "@cmsgov/eslint-config-design-system@file:./packages/eslint-config-design-system":
-  version "1.0.0"
+  version "1.1.0"
   dependencies:
     eslint-plugin-filenames "^1.2.0"
     eslint-plugin-jest "^21.1.0"
