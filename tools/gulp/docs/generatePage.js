@@ -5,6 +5,7 @@ require('babel-register')({
 
 const generateDocPage = require('./generateDocPage');
 const generateHtmlExample = require('./generateHtmlExample');
+const generateReactExample = require('./generateReactExample');
 
 /**
  * Create an HTML page
@@ -26,13 +27,19 @@ function generatePage(routes, page, rootPath, isExample) {
 }
 
 function generateExamples(page, rootPath) {
-  return generateHtmlExample(page, null, rootPath).then(() => {
-    if (page.modifiers) {
-      return page.modifiers.map(modifier =>
-        generateHtmlExample(page, modifier, rootPath)
-      );
-    }
-  });
+  return generateHtmlExample(page, null, rootPath)
+    .then(() => {
+      if (page.modifiers) {
+        return page.modifiers.map(modifier =>
+          generateHtmlExample(page, modifier, rootPath)
+        );
+      }
+    })
+    .then(() => {
+      if (page.reactExamplePath) {
+        generateReactExample(page, rootPath);
+      }
+    });
 }
 
 module.exports = generatePage;

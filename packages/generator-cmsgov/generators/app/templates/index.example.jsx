@@ -1,7 +1,10 @@
-/* eslint-disable react/display-name */
-/*import React from 'react';
+/*
 import <%= name %> from './<%= name %>';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-export default function() {
-  return <<%= name %> />;
-}*/
+ReactDOM.render(
+  <<%= name %> />,
+  document.getElementById('js-example')
+);
+*/

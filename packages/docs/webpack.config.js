@@ -34,17 +34,7 @@ function createConfig(rootPath = '', packages, hotReload = true) {
         {
           test: /\.(js|jsx)$/,
           loader: ['babel-loader'],
-          include: [
-            path.resolve(__dirname, 'src'),
-            // Transpile react-element-to-jsx-string dependency
-            // https://github.com/algolia/react-element-to-jsx-string/issues/71
-            // https://github.com/sindresorhus/file-type/issues/70
-            path.resolve(__dirname, 'node_modules/stringify-object'),
-            path.resolve(
-              __dirname,
-              'node_modules/get-own-enumerable-property-symbols'
-            )
-          ].concat(packagePaths)
+          include: [path.resolve(__dirname, 'src')].concat(packagePaths)
         }
       ]
     },

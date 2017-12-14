@@ -69,6 +69,7 @@
     "lint-staged": "^5.0.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.6",
+    "memory-fs": "^0.4.1",
     "mkdir-recursive": "^0.3.0",
     "mz": "^2.7.0",
     "node-notifier": "^5.1.2",
