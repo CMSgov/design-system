@@ -1,0 +1,2355 @@
+{
+	"core/src/components/Alert/Alert.jsx": [
+		{
+			"description": "",
+			"displayName": "Alert",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"heading": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"hideIcon": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"role": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'alert'",
+								"computed": false
+							},
+							{
+								"value": "'alertdialog'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>ARIA <code>role</code></p>\n"
+				},
+				"variation": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'error'",
+								"computed": false
+							},
+							{
+								"value": "'warn'",
+								"computed": false
+							},
+							{
+								"value": "'success'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": ""
+				}
+			}
+		}
+	],
+	"core/src/components/AutocompleteField/AutocompleteField.jsx": [
+		{
+			"description": "<p>An <code>AutocompleteField</code> component renders a typeahead input field, form label, and a clear input link.</p>\n",
+			"displayName": "AutocompleteField",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": false,
+					"description": ""
+				},
+				"clearAriaLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link&#39;s behavior.</p>\n",
+					"defaultValue": {
+						"value": "'Clear typeahead and search again'",
+						"computed": false
+					}
+				},
+				"clearInputText": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Clear link text that will appear on the page as part of the rendered component</p>\n",
+					"defaultValue": {
+						"value": "'Search again'",
+						"computed": false
+					}
+				},
+				"constrainedList": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Adds a conditional header to <code>&lt;div.ds-c-autocomplete__list&gt;</code></p>\n"
+				},
+				"constrainedListText": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Text string for the <code>&lt;h5&gt;</code> header added to the<code>&lt;div.ds-c-autocomplete__list&gt;</code> when prop <code>constrainedList</code>is passed to <code>&lt;Autocomplete&gt;</code></p>\n",
+					"defaultValue": {
+						"value": "'Select from the options below:'",
+						"computed": false
+					}
+				},
+				"isDisabled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Passes prop <code>disabled</code> to the child <code>&lt;Textfield&gt;</code> component</p>\n"
+				},
+				"itemToString": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p><a href=\"https://github.com/paypal/downshift#itemtostring\">https://github.com/paypal/downshift#itemtostring</a></p>\n<p>Used to determine the string value for the selected item (which is used to compute the <code>inputValue</code>.</p>\n"
+				},
+				"items": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "shape",
+							"value": {
+								"id": {
+									"name": "string",
+									"required": false
+								},
+								"name": {
+									"name": "custom",
+									"raw": "PropTypes.name",
+									"required": false
+								}
+							}
+						}
+					},
+					"required": true,
+					"description": "<p>Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.</p>\n"
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p><a href=\"https://github.com/paypal/downshift#onchange\">https://github.com/paypal/downshift#onchange</a></p>\n<p>Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of <code>downshift</code>.</p>\n"
+				},
+				"onStateChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p><a href=\"https://github.com/paypal/downshift#onstatechange\">https://github.com/paypal/downshift#onstatechange</a></p>\n<p>This function is called anytime the internal state changes. This can be useful if you&#39;re using downshift as a &quot;controlled&quot; component, where you manage some or all of the state (e.g. <code>isOpen, selectedItem, highlightedIndex</code>, etc) and then pass it as props, rather than letting downshift control all its state itself.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/Button/Button.jsx": [
+		{
+			"description": "<p>The <code>Button</code> component accepts its text as children (AKA inner HTML), which\nmeans you can also pass in HTML or custom components. This gives you a lot of\nflexibility and supports a variety of advanced use cases. The most common use\ncase would be passing in an SVG icon along with the text.</p>\n<p>In addition to the supported props listed, you can also pass in additional\nprops, which will be passed to the rendered root component. For example,\nyou could pass in a <code>target</code> prop to pass to the rendered anchor element.</p>\n",
+			"displayName": "Button",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root button element.\nUseful for adding utility classes.</p>\n"
+				},
+				"component": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "element"
+							},
+							{
+								"name": "func"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>When provided, this will render the passed in component. This is useful when\nintegrating with React Router&#39;s <code>&lt;Link&gt;</code> or using your own custom component.</p>\n"
+				},
+				"disabled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"href": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>When provided the root component will render as an <code>&lt;a&gt;</code> element\nrather than <code>button</code>.</p>\n"
+				},
+				"inverse": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the inverse theme styling</p>\n"
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Returns the <a href=\"https://facebook.github.io/react/docs/events.html\"><code>SyntheticEvent</code></a>.\nNot called when the button is disabled.</p>\n"
+				},
+				"size": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'small'",
+								"computed": false
+							},
+							{
+								"value": "'big'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": ""
+				},
+				"type": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'button'",
+								"computed": false
+							},
+							{
+								"value": "'submit'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Button <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type\"><code>type</code></a> attribute</p>\n",
+					"defaultValue": {
+						"value": "'button'",
+						"computed": false
+					}
+				},
+				"variation": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'primary'",
+								"computed": false
+							},
+							{
+								"value": "'danger'",
+								"computed": false
+							},
+							{
+								"value": "'success'",
+								"computed": false
+							},
+							{
+								"value": "'transparent'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": ""
+				}
+			}
+		}
+	],
+	"core/src/components/Badge/Badge.jsx": [
+		{
+			"description": "",
+			"props": {
+				"children": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "node"
+							},
+							{
+								"name": "string"
+							}
+						]
+					},
+					"required": true,
+					"description": "<p>In most cases this will be the badge&#39;s label, but you could also use this\nto nest more advanced JSX.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/ChoiceList/Choice.jsx": [
+		{
+			"description": "<p>A <code>Choice</code> component can be used to render a checkbox or radio button.</p>\n<p>Any <em>undocumented</em> props that you pass to this component will be passed\nto the <code>input</code> element, so you can use this to set additional attributes if\nnecessary.</p>\n",
+			"displayName": "Choice",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Label text or HTML.</p>\n"
+				},
+				"checked": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Sets the input&#39;s <code>checked</code> state. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>defaultChecked</code>.</p>\n"
+				},
+				"checkedChildren": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Content to be shown when the choice is checked</p>\n"
+				},
+				"uncheckedChildren": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Content to be shown when the choice is not checked</p>\n"
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root <code>div</code> element.</p>\n"
+				},
+				"inputClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the <code>input</code> element.</p>\n"
+				},
+				"defaultChecked": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Sets the initial <code>checked</code> state. Use this for an uncontrolled component;\notherwise, use the <code>checked</code> property.</p>\n"
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>A unique ID to be used for the input field, as well as the label&#39;s\n<code>for</code> attribute. A unique ID will be generated if one isn&#39;t provided.</p>\n"
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"inputPlacement": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'left'",
+								"computed": false
+							},
+							{
+								"value": "'right'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Placement of the input relative to the text label</p>\n",
+					"defaultValue": {
+						"value": "'left'",
+						"computed": false
+					}
+				},
+				"size": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'small'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": ""
+				},
+				"name": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The <code>input</code> field&#39;s <code>name</code> attribute</p>\n"
+				},
+				"onBlur": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"type": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'checkbox'",
+								"computed": false
+							},
+							{
+								"value": "'radio'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "'checkbox'",
+						"computed": false
+					}
+				},
+				"value": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "number"
+							},
+							{
+								"name": "string"
+							}
+						]
+					},
+					"required": true,
+					"description": "<p>The <code>input</code> <code>value</code> attribute</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/ChoiceList/ChoiceList.jsx": [
+		{
+			"description": "<p>A <code>ChoiceList</code> component can be used to render a select menu, radio\nbutton group, or checkbox group.</p>\n<p>By default the component determines the type of field for you, taking\ninto account accessibility and usability best practices. So, you can pass in\nan array of <code>choices</code> and let it determine what type of field would be best for\nthe user, or alternatively you can manually pass in the <code>type</code> prop.</p>\n",
+			"displayName": "ChoiceList",
+			"props": {
+				"choices": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "shape",
+							"value": {
+								"checked": {
+									"name": "custom",
+									"raw": "Choice.propTypes.checked",
+									"required": false
+								},
+								"defaultChecked": {
+									"name": "custom",
+									"raw": "Choice.propTypes.defaultChecked",
+									"required": false
+								},
+								"disabled": {
+									"name": "custom",
+									"raw": "Choice.propTypes.disabled",
+									"required": false
+								},
+								"label": {
+									"name": "custom",
+									"raw": "Choice.propTypes.children",
+									"required": false
+								},
+								"value": {
+									"name": "custom",
+									"raw": "Choice.propTypes.value",
+									"required": false
+								},
+								"requirementLabel": {
+									"name": "union",
+									"value": [
+										{
+											"name": "string"
+										},
+										{
+											"name": "node"
+										}
+									],
+									"required": false
+								}
+							}
+						}
+					},
+					"required": true,
+					"description": "<p>The list of choices to be rendered. The number of choices you pass in may\naffect the type of field(s) rendered. See <code>type</code> for more info.</p>\n"
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element.</p>\n"
+				},
+				"disabled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Disables the entire field.</p>\n"
+				},
+				"errorMessage": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"hint": {
+					"type": {
+						"name": "node"
+					},
+					"required": false,
+					"description": "<p>Additional hint text to display</p>\n"
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"label": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Label for the field</p>\n"
+				},
+				"labelClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the <code>FormLabel</code>.</p>\n"
+				},
+				"multiple": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Allows the user to select multiple choices. Setting this to <code>true</code> results\nin a list of checkbox fields to be rendered.</p>\n"
+				},
+				"name": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The field&#39;s <code>name</code> attribute</p>\n"
+				},
+				"onBlur": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"type": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'checkbox'",
+								"computed": false
+							},
+							{
+								"value": "'radio'",
+								"computed": false
+							},
+							{
+								"value": "'select'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>You can manually set the <code>type</code> if you prefer things to be less magical.\nOtherwise, the type will be inferred by the other <code>props</code>, based\non what&#39;s best for accessibility and usability. If <code>multiple</code> is <code>true</code>, then\n<code>checkbox</code> fields will be rendered. If less than 10 choices are passed in,\nthen <code>radio</code> buttons will be rendered.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/ChoiceList/Select.jsx": [
+		{
+			"description": "<p>A <code>Select</code> component can be used to render an HTML <code>select</code> menu.\nAny <em>undocumented</em> props that you pass to this component will be passed\nto the <code>select</code> element, so you can use this to set additional attributes if\nnecessary.</p>\n",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root <code>select</code> element.</p>\n"
+				},
+				"defaultValue": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the initial selected state. Use this for an uncontrolled component;\notherwise, use the <code>selected</code> property.</p>\n"
+				},
+				"disabled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>A unique ID to be used for the select field. A unique ID will be generated\nif one isn&#39;t provided.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"multiple": {
+					"type": {
+						"name": "custom",
+						"raw": "function(props, propName, componentName) {\n  if (props[propName]) {\n    /* eslint-disable quotes */\n    return new Error(\n      `'${propName}' supplied to '${\n        componentName\n      }'. [A11Y]: Users often don’t` +\n        ` understand how to select multiple items from dropdowns. Use checkboxes instead.`\n    );\n    /* eslint-enable */\n  }\n}"
+					},
+					"required": false,
+					"description": "<p>Setting this prop will result in a PropTypes error message due to\naccessibility concerns. Use checkboxes instead if you need to support multiple\nselections. See the Guidance tab for more info.</p>\n"
+				},
+				"name": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The <code>select</code> field&#39;s <code>name</code> attribute</p>\n"
+				},
+				"onBlur": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"value": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the field&#39;s <code>value</code>. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>defaultValue</code>.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/DateField/DateField.jsx": [
+		{
+			"description": "",
+			"displayName": "DateField",
+			"props": {
+				"dateFormatter": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Optional method to format the <code>input</code> field values. If this\nmethod is provided, the returned value will be passed as a second argument\nto the <code>onBlur</code> and <code>onChange</code> callbacks. This method receives an object as\nits only argument, in the shape of: <code>{ day, month, year }</code></p>\n"
+				},
+				"errorMessage": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"hint": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional hint text to display above the individual month/day/year fields</p>\n",
+					"defaultValue": {
+						"value": "'For example: 4 25 1986'",
+						"computed": false
+					}
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"label": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The primary label, rendered above the individual month/day/year fields</p>\n",
+					"defaultValue": {
+						"value": "'Date'",
+						"computed": false
+					}
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"onBlur": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called anytime any date input is blurred</p>\n"
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called anytime any date input is changed</p>\n"
+				},
+				"dayLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Label for the day field</p>\n",
+					"defaultValue": {
+						"value": "'Day'",
+						"computed": false
+					}
+				},
+				"dayName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p><code>name</code> for the day <code>input</code> field</p>\n",
+					"defaultValue": {
+						"value": "'day'",
+						"computed": false
+					}
+				},
+				"dayDefaultValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Initial value for the day <code>input</code> field. Use this for an uncontrolled\ncomponent; otherwise, use the <code>dayValue</code> property.</p>\n"
+				},
+				"dayFieldRef": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Access a reference to the day <code>input</code> element</p>\n"
+				},
+				"dayValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Sets the day input&#39;s <code>value</code>. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>dayDefaultValue</code>.</p>\n"
+				},
+				"monthLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Label for the month field</p>\n",
+					"defaultValue": {
+						"value": "'Month'",
+						"computed": false
+					}
+				},
+				"monthName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p><code>name</code> for the month <code>input</code> field</p>\n",
+					"defaultValue": {
+						"value": "'month'",
+						"computed": false
+					}
+				},
+				"monthDefaultValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Initial value for the month <code>input</code> field. Use this for an uncontrolled\ncomponent; otherwise, use the <code>monthValue</code> property.</p>\n"
+				},
+				"monthFieldRef": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Access a reference to the month <code>input</code> element</p>\n"
+				},
+				"monthValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Sets the month input&#39;s <code>value</code>. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>monthDefaultValue</code>.</p>\n"
+				},
+				"yearDefaultValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Initial value for the year <code>input</code> field. Use this for an uncontrolled\ncomponent; otherwise, use the <code>yearValue</code> property.</p>\n"
+				},
+				"yearFieldRef": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Access a reference to the year <code>input</code> element</p>\n"
+				},
+				"yearLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Label for the year <code>input</code> field</p>\n",
+					"defaultValue": {
+						"value": "'Year'",
+						"computed": false
+					}
+				},
+				"yearMax": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Max value for the year <code>input</code> field</p>\n"
+				},
+				"yearMin": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Minimum value for the year <code>input</code> field</p>\n",
+					"defaultValue": {
+						"value": "1900",
+						"computed": false
+					}
+				},
+				"yearName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p><code>name</code> for the year field</p>\n",
+					"defaultValue": {
+						"value": "'year'",
+						"computed": false
+					}
+				},
+				"yearValue": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "number"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Sets the year input&#39;s <code>value</code>. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>yearDefaultValue</code>.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/FormLabel/FormLabel.jsx": [
+		{
+			"description": "<p>The FormLabel component provides the label/legend for a field, along with any\nassociated hint text and error messaging.</p>\n",
+			"displayName": "FormLabel",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element.</p>\n"
+				},
+				"labelClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the label text.</p>\n"
+				},
+				"component": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'label'",
+								"computed": false
+							},
+							{
+								"value": "'legend'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>The root HTML element used to render the label</p>\n",
+					"defaultValue": {
+						"value": "'label'",
+						"computed": false
+					}
+				},
+				"errorMessage": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Enable the error state by providing an error message.</p>\n"
+				},
+				"fieldId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The ID of the field this label is for. This is used for the label&#39;s <code>for</code>\nattribute and any related ARIA attributes, such as for the error message.</p>\n"
+				},
+				"hint": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Additional hint text to display</p>\n"
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Set to <code>true</code> to apply the &quot;inverse&quot; theme</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/MonthPicker/MonthPicker.jsx": [
+		{
+			"description": "<p>The <code>MonthPicker</code> component renders a grid of checkboxes with shortened month\nnames as well as buttons for selecting or deselecting all. For internationalization\none can pass a <code>locale</code> prop, and the month names will change to match the\nlanguage of the locale. Full month names are also included as <code>aria-label</code>\nattributes.</p>\n",
+			"displayName": "MonthPicker",
+			"props": {
+				"name": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The <code>input</code> field&#39;s <code>name</code> attribute</p>\n"
+				},
+				"locale": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>A <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation\">BCP 47 language tag</a>\nfor month name localization. For example: Passing <code>es-US</code> as a value\nwill render month names in Spanish.</p>\n"
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"buttonVariation": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Variation string to be applied to buttons. See <a href=\"/components/button/#components.button.react\">Button component</a></p>\n"
+				},
+				"label": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Label for the field</p>\n"
+				},
+				"labelClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the <code>FormLabel</code>.</p>\n"
+				},
+				"errorMessage": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"hint": {
+					"type": {
+						"name": "node"
+					},
+					"required": false,
+					"description": "<p>Additional hint text to display</p>\n"
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"disabledMonths": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "number"
+						}
+					},
+					"required": false,
+					"description": "<p>Array of month numbers, where <code>1</code> is January, and any month included\nis disabled for selection.</p>\n"
+				},
+				"selectedMonths": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "number"
+						}
+					},
+					"required": false,
+					"description": "<p>Array of month numbers, where <code>1</code> is January, and any month included\nis selected. This will render a read-only field. If the field should\nbe mutable, use <code>defaultSelectedMonths</code>.</p>\n"
+				},
+				"defaultSelectedMonths": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "number"
+						}
+					},
+					"required": false,
+					"description": "<p>Array of month numbers, where <code>1</code> is January, and any month included\nis selected by default. Sets the initial checked state for the 12 month\ncheckboxes. Use this for an uncontrolled component; otherwise, use the\n<code>selectedMonths</code> property.</p>\n"
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>A callback function that&#39;s invoked when a month&#39;s checked state is changed.\nNote: This callback is not called when a month is selected or deselected\nvia the &quot;Select all&quot; or &quot;Clear all&quot; buttons – use the <code>onSelectAll</code> and\n<code>onClearAll</code> event handlers for those instances.</p>\n"
+				},
+				"onSelectAll": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onClearAll": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"selectAllText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>For internationalization purposes, the text for the &quot;Select all&quot;\nbutton must be passed in as a prop.</p>\n",
+					"defaultValue": {
+						"value": "'Select all'",
+						"computed": false
+					}
+				},
+				"clearAllText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>For internationalization purposes, the text for the &quot;Clear all&quot;\nbutton must be passed in as a prop.</p>\n",
+					"defaultValue": {
+						"value": "'Clear all'",
+						"computed": false
+					}
+				}
+			}
+		}
+	],
+	"core/src/components/SkipNav/SkipNav.jsx": [
+		{
+			"description": "",
+			"displayName": "SkipNav",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "",
+					"defaultValue": {
+						"value": "'Skip to main content'",
+						"computed": false
+					}
+				},
+				"href": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The anchor or target for the link (where the link will jump the user to)</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/Spinner/Spinner.jsx": [
+		{
+			"description": "",
+			"props": {
+				"aria-valuetext": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The text announced to screen readers</p>\n",
+					"defaultValue": {
+						"value": "'Loading'",
+						"computed": false
+					}
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the spinner element.\nUseful for adding utility classes.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the inverse theme styling</p>\n"
+				},
+				"filled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Adds a background behind the spinner for extra contrast</p>\n"
+				},
+				"role": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Landmark role so the spinner can receive keyboard focus</p>\n",
+					"defaultValue": {
+						"value": "'progressbar'",
+						"computed": false
+					}
+				},
+				"size": {
+					"type": {
+						"name": "enum",
+						"value": [
+							{
+								"value": "'small'",
+								"computed": false
+							},
+							{
+								"value": "'big'",
+								"computed": false
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Smaller or larger variant</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/StepList/StepLink.jsx": [
+		{
+			"description": "",
+			"displayName": "StepLink",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Label text or HTML.</p>\n"
+				},
+				"href": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": ""
+				},
+				"stepId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"screenReaderText": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				}
+			}
+		}
+	],
+	"core/src/components/StepList/StepList.jsx": [
+		{
+			"description": "<p>The <code>StepList</code> component is the preferred method for building a step list,\nsince it handles all the state logic necessary to produce its markup. A\nstep is represented by an object with text, progress, and routing information\nand can optionally include an array of substeps as well as a description.</p>\n",
+			"props": {
+				"steps": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "shape",
+							"value": {
+								"id": {
+									"name": "string",
+									"required": false
+								},
+								"href": {
+									"name": "string",
+									"required": true
+								},
+								"title": {
+									"name": "string",
+									"required": true
+								},
+								"description": {
+									"name": "string",
+									"required": false
+								},
+								"completed": {
+									"name": "bool",
+									"required": false
+								},
+								"started": {
+									"name": "bool",
+									"required": false
+								},
+								"isNextStep": {
+									"name": "bool",
+									"required": false
+								}
+							}
+						}
+					},
+					"required": true,
+					"description": "<p>An array of step objects that contain information needed to render\nthem like text, state, and link/button URLs.\nSee <a href=\"/patterns/step-list/#patterns.step-list.buttons\">Start, Resume, and Edit links</a>\nand <a href=\"/patterns/step-list/#patterns.step-list.step-object\">Step object</a></p>\n"
+				},
+				"showSubSubSteps": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Whether or not to render a substep&#39;s substeps.</p>\n",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				},
+				"onStepLinkClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Function called when a step&#39;s Edit, Start, or Resume button/link is\nclicked. The step&#39;s <code>href</code> property will be passed as a parameter.</p>\n"
+				},
+				"completedText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "",
+					"defaultValue": {
+						"value": "'Completed'",
+						"computed": false
+					}
+				},
+				"editText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "",
+					"defaultValue": {
+						"value": "'Edit'",
+						"computed": false
+					}
+				},
+				"resumeText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "",
+					"defaultValue": {
+						"value": "'Resume'",
+						"computed": false
+					}
+				},
+				"startText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "",
+					"defaultValue": {
+						"value": "'Start'",
+						"computed": false
+					}
+				},
+				"actionsLabelText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>A template string for the aria-label describing a step&#39;s actions where\nthe substring <code>%{step}</code> is replaced with that step&#39;s <code>title</code>.</p>\n",
+					"defaultValue": {
+						"value": "'Primary actions for %{step}'",
+						"computed": false
+					}
+				},
+				"descriptionLabelText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>A template string for the aria-label for a step&#39;s description where\nthe substring <code>%{step}</code> is replaced with that step&#39;s <code>title</code>.</p>\n",
+					"defaultValue": {
+						"value": "'Description for %{step}'",
+						"computed": false
+					}
+				},
+				"substepsLabelText": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>A template string for the aria-label describing a step&#39;s substeps where\nthe substring <code>%{step}</code> is replaced with that step&#39;s <code>title</code>.</p>\n",
+					"defaultValue": {
+						"value": "'Secondary actions for %{step}'",
+						"computed": false
+					}
+				}
+			}
+		}
+	],
+	"core/src/components/Tabs/Tab.jsx": [
+		{
+			"description": "",
+			"displayName": "Tab",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root tab element.</p>\n"
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>A unique <code>id</code>, to be used on the rendered tab element.</p>\n"
+				},
+				"href": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the <code>href</code> attribute used for the tab. This can be useful if you want\nto use relative links rather than a URL hash (the default).</p>\n"
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called when the tab is clicked, with the following arguments:\n<a href=\"https://facebook.github.io/react/docs/events.html\"><code>SyntheticEvent</code></a>,\n<code>panelId</code>, <code>id</code>, <code>href</code></p>\n"
+				},
+				"onKeyDown": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called when the tab is selected and a keydown event is triggered.\nCalled with the following arguments:\n<a href=\"https://facebook.github.io/react/docs/events.html\"><code>SyntheticEvent</code></a>,\n<code>panelId</code>, <code>id</code>, <code>href</code></p>\n"
+				},
+				"panelId": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>The <code>id</code> of the associated <code>TabPanel</code>. Used for the <code>aria-controls</code> attribute.</p>\n"
+				},
+				"selected": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				}
+			}
+		}
+	],
+	"core/src/components/Tabs/TabPanel.jsx": [
+		{
+			"description": "<p>A <code>TabPanel</code> is a presentational component which accepts a tab&#39;s content as\nits <code>children</code>.</p>\n",
+			"displayName": "TabPanel",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element.</p>\n"
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>A unique <code>id</code>, to be used on the rendered panel element.</p>\n"
+				},
+				"selected": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				},
+				"tab": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The associated tab&#39;s label. Only applicable when the panel is a\nchild of <code>Tabs</code>.</p>\n"
+				},
+				"tabClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes for the associated tab. Only applicable when the panel\nis a child of <code>Tabs</code>.</p>\n"
+				},
+				"tabHref": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The associated tab&#39;s <code>href</code>. Only applicable when the panel is a\nchild of <code>Tabs</code>.</p>\n"
+				},
+				"tabId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The <code>id</code> of the associated <code>Tab</code>. Used for the <code>aria-labelledby</code> attribute.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/Tabs/Tabs.jsx": [
+		{
+			"description": "<p><code>Tabs</code> is a container component that manages the state of your tabs for you.\nIn most cases, you&#39;ll want to use this component rather than the presentational\ncomponents (<code>Tab</code>, <code>TabPanel</code>) on their own.</p>\n",
+			"displayName": "Tabs",
+			"props": {
+				"children": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"defaultSelectedId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the initial selected <code>TabPanel</code> state. If this isn&#39;t set, the first\n<code>TabPanel</code> will be selected.</p>\n"
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>A callback function that&#39;s invoked when the selected tab is changed.\n<code>(selectedId, prevSelectedId) =&gt; void</code></p>\n"
+				},
+				"tablistClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the component wrapping the tabs</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/TextField/TextField.jsx": [
+		{
+			"description": "<p>A <code>TextField</code> component renders an input field as well as supporting UI\nelements like a label, error message, and hint text.</p>\n",
+			"displayName": "TextField",
+			"props": {
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root <code>div</code> element</p>\n"
+				},
+				"defaultValue": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the initial value. Use this for an uncontrolled component; otherwise,\nuse the <code>value</code> property.</p>\n"
+				},
+				"disabled": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"errorMessage": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"fieldClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the field element</p>\n"
+				},
+				"fieldRef": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Access a reference to the <code>input</code> or <code>textarea</code> element</p>\n"
+				},
+				"hint": {
+					"type": {
+						"name": "node"
+					},
+					"required": false,
+					"description": "<p>Additional hint text to display</p>\n"
+				},
+				"inputId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Optional String ID, useful if you are trying to pass an ID into\n<code>&lt;FormLabel&gt;</code> and <code>&lt;FieldComponent&gt;</code> from a parent like <code>&lt;Autocomplete&gt;</code></p>\n"
+				},
+				"requirementLabel": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "string"
+							},
+							{
+								"name": "node"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Text showing the requirement (&quot;Required&quot;, &quot;Optional&quot;, etc.). See <a href=\"/guidelines/forms/#required-and-optional-fields\">Required and Optional Fields</a>.</p>\n"
+				},
+				"inversed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Applies the &quot;inverse&quot; UI theme</p>\n"
+				},
+				"label": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Label for the input</p>\n"
+				},
+				"labelClassName": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the label</p>\n"
+				},
+				"max": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "number"
+							},
+							{
+								"name": "string"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p><code>max</code> HTML input attribute</p>\n"
+				},
+				"min": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "number"
+							},
+							{
+								"name": "string"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p><code>min</code> HTML input attribute</p>\n"
+				},
+				"multiline": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Whether or not the textfield is a multiline textfield</p>\n"
+				},
+				"name": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": ""
+				},
+				"onBlur": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"rows": {
+					"type": {
+						"name": "union",
+						"value": [
+							{
+								"name": "number"
+							},
+							{
+								"name": "string"
+							}
+						]
+					},
+					"required": false,
+					"description": "<p>Optionally specify the number of visible text lines for the field. Only\napplicable if this is a multiline field.</p>\n"
+				},
+				"type": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Any valid <code>input</code> <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input\">type</a>.</p>\n",
+					"defaultValue": {
+						"value": "'text'",
+						"computed": false
+					}
+				},
+				"value": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Sets the input&#39;s <code>value</code>. Use this in combination with <code>onChange</code>\nfor a controlled component; otherwise, set <code>defaultValue</code>.</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/VerticalNav/VerticalNav.jsx": [
+		{
+			"description": "<p>A <code>VerticalNav</code> component accepts list items as a JSON object and\nincludes additional functionality like collapsible nested menus.</p>\n",
+			"displayName": "VerticalNav",
+			"props": {
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element</p>\n"
+				},
+				"collapsed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Whether or not the menu is in a collapsed state</p>\n",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				},
+				"selectedId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>The <code>id</code> of the selected <code>VerticalNavItem</code>. This will also set the\n<code>selected</code> prop on the item&#39;s parents.</p>\n"
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"items": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "object"
+						}
+					},
+					"required": true,
+					"description": "<p>An array of <code>VerticalNavItem</code> data objects</p>\n"
+				},
+				"nested": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Indicates this list is nested within another nav item.</p>\n"
+				},
+				"onLinkClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called when one of the nav links is clicked, with the following arguments:\n<a href=\"https://facebook.github.io/react/docs/events.html\"><code>SyntheticEvent</code></a>,\n<code>id</code>, <code>url</code></p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/VerticalNav/VerticalNavItem.jsx": [
+		{
+			"description": "",
+			"displayName": "VerticalNavItem",
+			"props": {
+				"_selectedId": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				},
+				"ariaCollapsedStateButtonLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Aria label for the toggle button when the sub-navigation is collapsed</p>\n",
+					"defaultValue": {
+						"value": "'Expand sub-navigation'",
+						"computed": false
+					}
+				},
+				"ariaExpandedStateButtonLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Aria label for the toggle button when the sub-navigation is expanded</p>\n",
+					"defaultValue": {
+						"value": "'Collapse sub-navigation'",
+						"computed": false
+					}
+				},
+				"className": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Additional classes to be added to the root element</p>\n"
+				},
+				"defaultCollapsed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Whether or not the item&#39;s sub-navigation is in a collapsed state by default</p>\n",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called when the link is clicked, with the following arguments:\n<a href=\"https://facebook.github.io/react/docs/events.html\"><code>SyntheticEvent</code></a>,\n<code>id</code>, <code>url</code>.</p>\n<p>This takes precedence over the <code>VerticalNav</code> <code>onLinkClick</code> prop</p>\n"
+				},
+				"onSubnavToggle": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Called when this item&#39;s subnav is collapsed or expanded, with the\nfollowing arguments: <code>id</code>, <code>collapsed</code></p>\n"
+				},
+				"id": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Optional identifier. This can be handy if you&#39;re passing in an\n<code>onClick</code> handler. A unique ID will be generated if one isn&#39;t provided.</p>\n"
+				},
+				"items": {
+					"type": {
+						"name": "arrayOf",
+						"value": {
+							"name": "shape",
+							"value": "VerticalNavItem.propTypes",
+							"computed": true
+						}
+					},
+					"required": false,
+					"description": "<p>An array of nested <code>VerticalNavItem</code> data objects to be rendered in a\nsub-navigation list.</p>\n"
+				},
+				"label": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": "<p>Text to render for this nav item</p>\n"
+				},
+				"url": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>A URL to navigate to if this item is a link</p>\n"
+				},
+				"selected": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>If this item is currently selected</p>\n"
+				}
+			}
+		}
+	],
+	"core/src/components/VerticalNav/VerticalNavItemLabel.jsx": [
+		{
+			"description": "",
+			"displayName": "VerticalNavItemLabel",
+			"props": {
+				"ariaCollapsedStateButtonLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "'Expand sub-navigation'",
+						"computed": false
+					}
+				},
+				"ariaExpandedStateButtonLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "'Collapse sub-navigation'",
+						"computed": false
+					}
+				},
+				"collapsed": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"hasSubnav": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"label": {
+					"type": {
+						"name": "node"
+					},
+					"required": true,
+					"description": ""
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": ""
+				},
+				"selected": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": ""
+				},
+				"subnavId": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": ""
+				},
+				"url": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": ""
+				}
+			}
+		}
+	],
+	"themes/ds-healthcare-gov/src/components/ZipCodeCountyPicker/ZipCodeCountyPicker.jsx": [
+		{
+			"description": "<p>A <code>ZipCodeCountyPicker</code> component is composed of a <code>&lt;ZipCodeFetcher&gt;</code> and a\n<code>&lt;ChoiceList&gt;</code> radio group. The component can pass an <code>onClick</code> prop to the\n<code>&lt;Button&gt;</code> in the fetcher, and is intended to initate a data call for ZIP\ncode information. The data callback function should update the countyChoiceList\nand showCounty states. This will populate the hidden <code>&lt;ChoiceList&gt;</code> and append\nit to the DOM accessibly.</p>\n",
+			"displayName": "ZipCodeCountyPicker",
+			"props": {
+				"hiddenCountyLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Text string label for county confirmation radio group, visually hidden\nbut accessible for screen readers and assistive devices. Can be overriden\nfrom the default string <code>Possible ZIP code matches</code> or internationalized.</p>\n",
+					"defaultValue": {
+						"value": "'Confirm your county'",
+						"computed": false
+					}
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>A callback function that&#39;s invoked when the county choice list object is changed.\n<code>(selectedId, prevSelectedId) =&gt; void</code></p>\n"
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Callback function invoked to initiate a data API call. That data call should\nreturn an array of 1 to N objects to update the countyChoiceList state.</p>\n"
+				},
+				"requireCounty": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Boolean to require the county confirmation radio group. Defaults to true.</p>\n",
+					"defaultValue": {
+						"value": "true",
+						"computed": false
+					}
+				}
+			}
+		}
+	],
+	"themes/ds-healthcare-gov/src/components/ZipCodeFetcher/ZipCodeFetcher.jsx": [
+		{
+			"description": "<p><code>&lt;ZipCodeFetcher&gt;</code>  is composed from a <code>&lt;ZipCodeField&gt;</code> and a <code>&lt;Button&gt;</code>.\nIt validates user input using Zippo&#39;s ( <a href=\"https://www.npmjs.com/package/zippo\">https://www.npmjs.com/package/zippo</a> )\nparse function to ensure only numbers are added to the state value.\nIt also passes an <code>onClick</code> prop to the <code>&lt;Button&gt;</code> element as a placeholder\nfor data API calls.</p>\n",
+			"displayName": "ZipCodeFetcher",
+			"props": {
+				"buttonLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Text label than can be internationalized and passed to override the\n<code>&lt;Button&gt;</code> default label <code>Search</code></p>\n",
+					"defaultValue": {
+						"value": "'Search'",
+						"computed": false
+					}
+				},
+				"onClick": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Callback function invoked by an <code>onClick</code> prop passed from\n<code>ZipCodeCountyPicker</code> or other parent container</p>\n"
+				}
+			}
+		}
+	],
+	"themes/ds-healthcare-gov/src/components/ZipCodeField/ZipCodeField.jsx": [
+		{
+			"description": "<p><code>&lt;ZipCodeField&gt;</code> component is a <code>&lt;TextField&gt;</code> with specific attributes\napplied to make it suitable for zip code data capture. It validates\nstring length when the input loses focus, and throws an error message\nif the length is less than 5. The component removes the error message\nwhen it regains focus.</p>\n",
+			"displayName": "ZipCodeField",
+			"props": {
+				"hcGovSite": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "<p>Boolean to add HC.gov site package classes if passed to component</p>\n",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
+				},
+				"onChange": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "<p>Callback function invoked from an <code>onChange</code> prop passed from <code>ZipCodeFetcher</code>\nor other parent container</p>\n"
+				},
+				"value": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Input value returned as a <code>string</code> prop</p>\n"
+				},
+				"zipFieldLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": true,
+					"description": "<p>Zip primary label, used to override the default\nlabel string <code>Enter your ZIP code</code></p>\n",
+					"defaultValue": {
+						"value": "'Enter your ZIP code'",
+						"computed": false
+					}
+				},
+				"zipErrorMessage": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "<p>Error message <code>string</code> that can be internationalized and passed to override\nthe default message `Zip code must be five digits&#39;</p>\n",
+					"defaultValue": {
+						"value": "'ZIP code must be five digits'",
+						"computed": false
+					}
+				}
+			}
+		}
+	]
+}

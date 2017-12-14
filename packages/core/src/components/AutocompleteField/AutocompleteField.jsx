@@ -148,7 +148,7 @@ AutocompleteField.defaultProps = {
 };
 
 AutocompleteField.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
    */
