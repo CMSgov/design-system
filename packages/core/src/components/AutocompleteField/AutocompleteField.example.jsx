@@ -79,7 +79,7 @@ ReactDOM.render(
     </AutocompleteField>
 
     <AutocompleteField
-      isDisabled
+      disabled
       itemToString={i => {
         return i ? i.name : '';
       }}

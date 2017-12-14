@@ -28,14 +28,14 @@ export class AutocompleteField extends React.PureComponent {
     // Extend props on the TextField, by passing them through
     // Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
-      const { isDisabled } = this.props;
+      const { disabled } = this.props;
 
       if (isTextField(child)) {
         return React.cloneElement(
           child,
           getInputProps({
-            className: isDisabled ? 'ds-c-autocomplete__inner--disabled' : '',
-            disabled: isDisabled,
+            className: disabled ? 'ds-c-autocomplete__inner--disabled' : '',
+            disabled: disabled,
             fieldClassName: 'ds-c-autocomplete__input',
             id: this.id,
             inputId: this.id,
@@ -165,7 +165,7 @@ AutocompleteField.propTypes = {
   /**
    * Passes prop `disabled` to the child `<Textfield>` component
    */
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   /**
    * https://github.com/paypal/downshift#itemtostring
    *
