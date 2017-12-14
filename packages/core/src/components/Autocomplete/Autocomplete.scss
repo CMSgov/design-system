@@ -2,11 +2,9 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
 /*
-Autocomplete field
+Autocomplete
 
-@paypal https://github.com/paypal/downshift#itemtostring
-
-Autocomplete fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
+Autocompletes allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
 
 Markup:
 <div class="ds-u-clearfix ds-c-autocomplete">
@@ -20,7 +18,7 @@ Markup:
   <a aria-label="Clear typeahead and search again" class="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button" href="javascript:void(0);">Search again</a>
 </div>
 
-Style guide: components.autocomplete-field
+Style guide: components.autocomplete
 */
 
 // autocomplete component
@@ -69,11 +67,11 @@ Style guide: components.autocomplete-field
 }
 
 /*
-`<AutocompleteField>`
+`<Autocomplete>`
 
-@react-component AutocompleteField
+@react-component Autocomplete
 
-Style guide: components.autocomplete-field.react
+Style guide: components.autocomplete.react
 */
 
 /*

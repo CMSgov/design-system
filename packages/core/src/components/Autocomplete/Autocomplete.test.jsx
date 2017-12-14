@@ -1,5 +1,5 @@
 import { mount, shallow } from 'enzyme';
-import AutocompleteField from './AutocompleteField';
+import Autocomplete from './Autocomplete';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -10,7 +10,7 @@ function render(customProps = {}, deep = false) {
     },
     customProps
   );
-  const component = <AutocompleteField {...props} />;
+  const component = <Autocomplete {...props} />;
 
   return {
     props: props,
@@ -18,13 +18,13 @@ function render(customProps = {}, deep = false) {
   };
 }
 
-describe('AutocompleteField', () => {
-  it('renders AutocompleteField component', () => {
+describe('Autocomplete', () => {
+  it('renders Autocomplete component', () => {
     const data = render({}, false);
     const wrapper = data.wrapper;
     const inst = wrapper.instance();
 
-    expect(inst).toBeInstanceOf(AutocompleteField);
+    expect(inst).toBeInstanceOf(Autocomplete);
   });
 
   it('returns correct default props', () => {
@@ -79,9 +79,7 @@ describe('AutocompleteField', () => {
   it('renders a snapshot', () => {
     const tree = renderer
       .create(
-        <AutocompleteField
-          items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
-        />
+        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} />
       )
       .toJSON();
 

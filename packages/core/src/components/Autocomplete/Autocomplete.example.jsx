@@ -1,12 +1,12 @@
-import AutocompleteField from './AutocompleteField';
+import Autocomplete from './Autocomplete';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TextField from '../TextField/TextField';
 
 ReactDOM.render(
   <div>
-    <AutocompleteField
-      constrainedList
+    <Autocomplete
+      label="Select from the options below:"
       itemToString={i => {
         return i ? i.name : '';
       }}
@@ -40,9 +40,9 @@ ReactDOM.render(
         label="Constrained list"
         name="Downshift_autocomplete"
       />
-    </AutocompleteField>
+    </Autocomplete>
 
-    <AutocompleteField
+    <Autocomplete
       itemToString={i => {
         return i ? i.name : '';
       }}
@@ -76,34 +76,7 @@ ReactDOM.render(
         label="Unconstrained list"
         name="Downshift_autocomplete"
       />
-    </AutocompleteField>
-
-    <AutocompleteField
-      disabled
-      itemToString={i => {
-        return i ? i.name : '';
-      }}
-      items={[
-        {
-          id: 'kRf6c2fY',
-          name: 'Cook County, IL'
-        },
-        {
-          id: 'lYf5cGfM',
-          name: 'Cook County, MD'
-        },
-        {
-          id: 'mZfKcGf9',
-          name: 'Cook County, TN'
-        }
-      ]}
-    >
-      <TextField
-        hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
-        label="Disabled autocomplete"
-        name="Downshift_autocomplete_disabled"
-      />
-    </AutocompleteField>
+    </Autocomplete>
   </div>,
   document.getElementById('js-example')
 );

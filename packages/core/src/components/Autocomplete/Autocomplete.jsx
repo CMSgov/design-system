@@ -15,13 +15,14 @@ function isTextField(child) {
 }
 
 /**
- * An `AutocompleteField` component renders a typeahead input field, form label, and a clear input link.
+ * The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField component.
  */
-export class AutocompleteField extends React.PureComponent {
+export class Autocomplete extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.id = uniqueId('autocomplete_');
+    this.labelId = uniqueId('constrained-list-header_');
   }
 
   renderChildren(getInputProps) {
@@ -52,10 +53,9 @@ export class AutocompleteField extends React.PureComponent {
     const {
       clearAriaLabel,
       clearInputText,
-      constrainedList,
-      constrainedListText,
       items,
       itemToString,
+      label,
       onChange,
       onStateChange
     } = this.props;
@@ -78,19 +78,17 @@ export class AutocompleteField extends React.PureComponent {
 
             {isOpen ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
-                {constrainedList ? (
+                {label && (
                   <h5
                     className="ds-u-margin--0 ds-u-padding--1"
-                    id="constrained-list-header"
+                    id={this.labelId}
                   >
-                    {constrainedListText}
+                    {label}
                   </h5>
-                ) : null}
+                )}
 
                 <ul
-                  aria-labelledby={
-                    constrainedList ? 'constrained-list-header' : null
-                  }
+                  aria-labelledby={label ? this.labelId : null}
                   className="ds-c-list--bare"
                   role="listbox"
                 >
@@ -138,13 +136,12 @@ export class AutocompleteField extends React.PureComponent {
   }
 }
 
-AutocompleteField.defaultProps = {
+Autocomplete.defaultProps = {
   clearAriaLabel: 'Clear typeahead and search again',
-  clearInputText: 'Search again',
-  constrainedListText: 'Select from the options below:'
+  clearInputText: 'Search again'
 };
 
-AutocompleteField.propTypes = {
+Autocomplete.propTypes = {
   children: PropTypes.node,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
@@ -153,15 +150,7 @@ AutocompleteField.propTypes = {
   /**
    * Clear link text that will appear on the page as part of the rendered component
    */
-  clearInputText: PropTypes.string,
-  /**
-   * Adds a conditional header to `<div.ds-c-autocomplete__list>`
-   */
-  constrainedList: PropTypes.bool,
-  /**
-   * Text string for the `<h5>` header added to the`<div.ds-c-autocomplete__list>` when prop `constrainedList`is passed to `<Autocomplete>`
-   */
-  constrainedListText: PropTypes.string,
+  clearInputText: PropTypes.node,
   /**
    * Passes prop `disabled` to the child `<Textfield>` component
    */
@@ -182,6 +171,10 @@ AutocompleteField.propTypes = {
     })
   ).isRequired,
   /**
+   * Adds a conditional header to `<div.ds-c-autocomplete__list>`
+   */
+  label: PropTypes.node,
+  /**
    * https://github.com/paypal/downshift#onchange
    *
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
@@ -195,4 +188,4 @@ AutocompleteField.propTypes = {
   onStateChange: PropTypes.func
 };
 
-export default AutocompleteField;
+export default Autocomplete;
