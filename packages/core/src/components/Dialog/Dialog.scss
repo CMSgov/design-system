@@ -19,9 +19,7 @@ Markup:
         <h1 class="ds-h2" id="dialog-title">Dialog title</h1>
         <button class="ds-c-button ds-c-button--transparent ds-c-dialog__close">Close</button>
       </header>
-      <div class="ds-c-dialog__body">
-        <p class="ds-text"><strong>Dialog body text.</strong>  {{lorem-l}}</p>
-      </div>
+      <p class="ds-text ds-u-margin-top--0"><strong>Dialog body text.</strong>  {{lorem-l}}</p>
       <div class="ds-c-dialog__actions">
         <button class="ds-c-button ds-c-button--danger">Dialog action</button>
         <button class="ds-c-button ds-c-button--transparent">Cancel</button>
@@ -67,7 +65,7 @@ $dialog-spacer: $spacer-4;
 }
 
 .ds-c-dialog__actions {
-  margin-top: $dialog-spacer / 2;
+  margin-top: $spacer-3;
 }
 
 .ds-c-dialog__close {
