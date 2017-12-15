@@ -60,17 +60,24 @@ Style guide: components.button
 }
 
 .ds-c-button--primary {
-  background-color: $color-primary;
+  background-color: $button-primary-bg;
   color: $color-white;
 
   &:focus,
   &:hover {
-    background-color: $color-primary-darker;
     color: $color-white;
   }
 
+  &:focus {
+    background-color: $button-primary-bg--focus;
+  }
+
+  &:hover {
+    background-color: $button-primary-bg--hover;
+  }
+
   &:active {
-    background-color: $color-primary-darkest;
+    background-color: $button-primary-bg--active;
   }
 }
 

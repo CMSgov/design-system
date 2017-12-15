@@ -62,15 +62,7 @@ var Step = function Step(_ref) {
       _react2.default.createElement(
         'h2',
         { className: 'ds-c-step__title' },
-        step.completed || step.started || step.isNextStep ? _react2.default.createElement(
-          _StepLink2.default,
-          {
-            href: step.href,
-            stepId: step.id,
-            onClick: props.onStepLinkClick
-          },
-          step.title
-        ) : step.title
+        step.title
       ),
       step.description && _react2.default.createElement(
         'div',

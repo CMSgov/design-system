@@ -210,12 +210,12 @@ DateField.propTypes = {
    */
   dayDefaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
-    * Access a reference to the day `input` element
-    */
+   * Access a reference to the day `input` element
+   */
   dayFieldRef: _propTypes2.default.func,
   /**
-   * This will render a read-only field. If the field should be mutable, use
-   * `dayDefaultValue`; otherwise, set `onChange`.
+   * Sets the day input's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `dayDefaultValue`.
    */
   dayValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
@@ -232,12 +232,12 @@ DateField.propTypes = {
    */
   monthDefaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
-    * Access a reference to the month `input` element
-    */
+   * Access a reference to the month `input` element
+   */
   monthFieldRef: _propTypes2.default.func,
   /**
-   * This will render a read-only field. If the field should be mutable, use
-   * `monthDefaultValue`; otherwise, set `onChange`.
+   * Sets the month input's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `monthDefaultValue`.
    */
   monthValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
@@ -266,8 +266,8 @@ DateField.propTypes = {
    */
   yearName: _propTypes2.default.string,
   /**
-   * This will render a read-only field. If the field should be mutable, use
-   * `yearDefaultValue`; otherwise, set `onChange`.
+   * Sets the year input's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `yearDefaultValue`.
    */
   yearValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
 };
