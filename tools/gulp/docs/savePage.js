@@ -32,25 +32,11 @@ function template(page) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   ${page.head}
-  ${analytics()}
 </head>
 <body class="ds-base">
   ${page.body}
 </body>
 </html>`;
-}
-
-/**
- * Blast Analytics code to be included in the <head> of any generated page.
- * This loads additional tracking scripts, like Google Analytics.
- * @return {String}
- */
-function analytics() {
-  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return `<script>
-window.tealiumEnvironment = "${env}";
-</script>
-<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>`;
 }
 
 /**

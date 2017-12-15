@@ -1,7 +1,5 @@
-/* eslint-disable react/display-name */
 import Badge from './Badge';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-export default function() {
-  return <Badge>Today</Badge>;
-}
+ReactDOM.render(<Badge>Today</Badge>, document.getElementById('js-example'));
