@@ -75,11 +75,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                   Close
                 </button>
               </header>
-              <div
-                className="ds-c-dialog__body"
-              >
-                Bar
-              </div>
+              Bar
             </div>
           </div>
         </div>
