@@ -6,64 +6,31 @@ Autocomplete
 
 Autocompletes allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
 
-Markup:
-<div class="ds-u-clearfix ds-c-autocomplete">
-  <div class="ds-u-clearfix">
-    <label class="ds-c-label ds-u-margin-top--0 ds-c-autocomplete__label" for="autocomplete_7">
-      <span class="">What zip code did this person live during 2017?</span>
-      <span class="ds-c-field__hint">This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type.</span>
-    </label>
-    <input aria-autocomplete="list" aria-expanded="false" autocomplete="off" class="ds-c-field ds-c-autocomplete__input" id="autocomplete_7" name="Downshift_autocomplete" role="combobox" type="text" value="">
-  </div>
-  <a aria-label="Clear typeahead and search again" class="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button" href="javascript:void(0);">Search again</a>
-</div>
-
 Style guide: components.autocomplete
 */
 
 // autocomplete component
 .ds-c-autocomplete {
+  max-width: $input-max-width;
   position: relative;
-  width: 460px;
+}
 
-  &__inner--disabled {
-    + .ds-c-autocomplete__button {
-      background: transparent;
-      border: transparent;
-      color: $color-gray-dark;
-      pointer-events: none;
-    }
-  }
-  
-  &__label {
-    > .ds-c-field__hint {
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-      word-wrap: normal;
-    }
-  }
+.ds-c-autocomplete__list {
+  background-color: $color-white;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  z-index: $z-dialog;
+}
 
-  &__list {
-    background-color: $color-white;
-    max-width: 442px;
-    position: absolute;
-    width: 100%;
-    z-index: $z-dialog;
-  }
+.ds-c-autocomplete__list-item {
+  color: $color-primary;
+  padding: $spacer-1 $spacer-2;
+}
 
-  &__list-item {
-    color: $color-primary;
-  }
-
-  &__list-item--active {
-    background-color: $color-primary-alt-darkest;
-    color: $color-white; 
-  }
+.ds-c-autocomplete__list-item--active {
+  background-color: $color-primary-alt-darkest;
+  color: $color-white; 
 }
 
 /*
@@ -91,7 +58,6 @@ Style guide: components.autocomplete.react
 - `<Autocomplete>` makes use of the `<Downshift>` component from Paypal: https://github.com/paypal/downshift
 - Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
 - The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line `input` box; use a `textarea` instead.
-- Custom props can be added to the `<input>` by passing them to the `<Autocomplete>` component
 
 **[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
 
@@ -100,16 +66,6 @@ Style guide: components.autocomplete.react
 - The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
 - `<Autocomplete>` has visually hidden hint text nested in the `<label>` element. This hint `<span>` is being used to provide contextual instructions for the typeahead, and can be overriden by passing a custom `String` into the `labelHint` prop.
 - `<Autocomplete>` has a link to clear the search, and refocus the `<input>` element. This resets the `selectedItem` prop to `null`, and will re-read the label and screenreader hint text.
-- Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
-- Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
-
-## Learn more
-
-- [Form Guidelines]({{root}}/guidelines/forms/)
-- ["Placeholders in Form Fields Are Harmful"](https://www.nngroup.com/articles/form-design-placeholders/)
-- [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
-- [GOV.UK text boxes discussion](https://paper.dropbox.com/doc/Text-boxes-8NLlgz9tjR8OzTz2N9wE3)
-- [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 
 Style guide: components.autocomplete-field.guidance
 */

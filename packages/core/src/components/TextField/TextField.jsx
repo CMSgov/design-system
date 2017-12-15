@@ -11,7 +11,7 @@ import uniqueId from 'lodash.uniqueid';
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.id = uniqueId('textfield_');
+    this.id = props.id || uniqueId('textfield_');
   }
 
   render() {
@@ -21,7 +21,7 @@ export class TextField extends React.PureComponent {
       fieldClassName,
       errorMessage,
       hint,
-      inputId,
+      id,
       requirementLabel,
       inversed,
       rows,
@@ -53,7 +53,7 @@ export class TextField extends React.PureComponent {
         <FormLabel
           className={labelClassName}
           errorMessage={errorMessage}
-          fieldId={inputId || this.id}
+          fieldId={this.id}
           hint={hint}
           requirementLabel={requirementLabel}
           inversed={inversed}
@@ -62,7 +62,7 @@ export class TextField extends React.PureComponent {
         </FormLabel>
         <FieldComponent
           className={fieldClasses}
-          id={inputId || this.id}
+          id={this.id}
           ref={fieldRef}
           rows={_rows}
           type={multiline ? undefined : type}
@@ -102,10 +102,9 @@ TextField.propTypes = {
    */
   hint: PropTypes.node,
   /**
-   * Optional String ID, useful if you are trying to pass an ID into
-   * `<FormLabel>` and `<FieldComponent>` from a parent like `<Autocomplete>`
+   * A unique `id` to be used on the text field.
    */
-  inputId: PropTypes.string,
+  id: PropTypes.string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

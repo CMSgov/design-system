@@ -29,17 +29,12 @@ export class Autocomplete extends React.PureComponent {
     // Extend props on the TextField, by passing them through
     // Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
-      const { disabled } = this.props;
-
       if (isTextField(child)) {
         return React.cloneElement(
           child,
           getInputProps({
-            className: disabled ? 'ds-c-autocomplete__inner--disabled' : '',
-            disabled: disabled,
             fieldClassName: 'ds-c-autocomplete__input',
             id: this.id,
-            inputId: this.id,
             labelClassName: 'ds-u-margin-top--0 ds-c-autocomplete__label'
           })
         );
@@ -56,15 +51,13 @@ export class Autocomplete extends React.PureComponent {
       items,
       itemToString,
       label,
-      onChange,
-      onStateChange
+      onChange
     } = this.props;
 
     return (
       <Downshift
         itemToString={itemToString}
         onChange={onChange}
-        onStateChange={onStateChange}
         render={({
           clearSelection,
           getInputProps,
@@ -80,7 +73,7 @@ export class Autocomplete extends React.PureComponent {
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
                 {label && (
                   <h5
-                    className="ds-u-margin--0 ds-u-padding--1"
+                    className="ds-u-margin--0 ds-u-padding--1 ds-u-padding-left--2"
                     id={this.labelId}
                   >
                     {label}
@@ -105,8 +98,8 @@ export class Autocomplete extends React.PureComponent {
                         aria-selected={highlightedIndex === index}
                         className={
                           highlightedIndex === index
-                            ? 'ds-u-padding--1 ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
-                            : 'ds-u-padding--1 ds-c-autocomplete__list-item'
+                            ? 'ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
+                            : 'ds-c-autocomplete__list-item'
                         }
                         key={item.id}
                         role="option"
@@ -121,7 +114,7 @@ export class Autocomplete extends React.PureComponent {
 
             <Button
               aria-label={clearAriaLabel}
-              className="ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button"
+              className="ds-u-float--right ds-u-padding-right--0"
               href="javascript:void(0);"
               onClick={clearSelection}
               size="small"
@@ -138,7 +131,7 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   clearAriaLabel: 'Clear typeahead and search again',
-  clearInputText: 'Search again'
+  clearInputText: 'Clear search'
 };
 
 Autocomplete.propTypes = {
@@ -151,10 +144,6 @@ Autocomplete.propTypes = {
    * Clear link text that will appear on the page as part of the rendered component
    */
   clearInputText: PropTypes.node,
-  /**
-   * Passes prop `disabled` to the child `<Textfield>` component
-   */
-  disabled: PropTypes.bool,
   /**
    * https://github.com/paypal/downshift#itemtostring
    *
@@ -171,21 +160,15 @@ Autocomplete.propTypes = {
     })
   ).isRequired,
   /**
-   * Adds a conditional header to `<div.ds-c-autocomplete__list>`
+   * Adds a heading to the top of the autocomplete list. This is used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
   /**
-   * https://github.com/paypal/downshift#onchange
-   *
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
-   */
-  onChange: PropTypes.func,
-  /**
-   * https://github.com/paypal/downshift#onstatechange
    *
-   * This function is called anytime the internal state changes. This can be useful if you're using downshift as a "controlled" component, where you manage some or all of the state (e.g. `isOpen, selectedItem, highlightedIndex`, etc) and then pass it as props, rather than letting downshift control all its state itself.
+   * Also see: https://github.com/paypal/downshift#onchange
    */
-  onStateChange: PropTypes.func
+  onChange: PropTypes.func
 };
 
 export default Autocomplete;

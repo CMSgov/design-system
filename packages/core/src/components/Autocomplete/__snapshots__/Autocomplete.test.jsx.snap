@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AutocompleteField renders a snapshot 1`] = `
+exports[`Autocomplete renders a snapshot 1`] = `
 <div
   className="ds-u-clearfix ds-c-autocomplete"
 >
   <a
     aria-label="Clear typeahead and search again"
-    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0 ds-c-autocomplete__button"
+    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0"
     href="javascript:void(0);"
     onClick={[Function]}
   >
-    Search again
+    Clear search
   </a>
 </div>
 `;

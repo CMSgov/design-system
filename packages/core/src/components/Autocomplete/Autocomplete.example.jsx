@@ -25,15 +25,6 @@ ReactDOM.render(
         }
       ]}
       onChange={selectedItem => console.log(selectedItem)}
-      onStateChange={changes => {
-        if (changes.type === '__autocomplete_keydown_enter__') {
-          console.log('Yep, the user pressed Enter!');
-        }
-
-        if (changes.type === '__autocomplete_change_input__') {
-          console.log(changes.inputValue);
-        }
-      }}
     >
       <TextField
         hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
@@ -61,18 +52,9 @@ ReactDOM.render(
         }
       ]}
       onChange={selectedItem => console.log(selectedItem)}
-      onStateChange={changes => {
-        if (changes.type === '__autocomplete_keydown_enter__') {
-          console.log('Yep, the user pressed Enter!');
-        }
-
-        if (changes.type === '__autocomplete_change_input__') {
-          console.log(changes.inputValue);
-        }
-      }}
     >
       <TextField
-        hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
+        hint="This is an autocomplete field. Begin typing to search for relevant information. Results will be updated as you type."
         label="Unconstrained list"
         name="Downshift_autocomplete"
       />

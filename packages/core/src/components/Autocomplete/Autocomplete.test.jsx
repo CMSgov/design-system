@@ -34,15 +34,10 @@ describe('Autocomplete', () => {
     expect(wrapper.prop('clearAriaLabel')).toBe(
       'Clear typeahead and search again'
     );
-    expect(wrapper.prop('constrainedList')).toBe(undefined);
-    expect(wrapper.prop('constrainedListText')).toBe(
-      'Select from the options below:'
-    );
-    expect(wrapper.prop('clearInputText')).toBe('Search again');
-    expect(wrapper.prop('isDisabled')).toBe(undefined);
+    expect(wrapper.prop('clearInputText')).toBe('Clear search');
     expect(wrapper.prop('itemToString')).toBe(undefined);
+    expect(wrapper.prop('label')).toBe(undefined);
     expect(wrapper.prop('onChange')).toBe(undefined);
-    expect(wrapper.prop('onStateChange')).toBe(undefined);
   });
 
   it('only renders expected elements', () => {
@@ -50,6 +45,12 @@ describe('Autocomplete', () => {
     const wrapper = data.wrapper;
     const downshift = wrapper.find('Downshift');
 
+    expect(
+      downshift
+        .find('div')
+        .first()
+        .exists()
+    ).toBe(true);
     expect(downshift.find('ul').exists()).toBe(false);
     expect(downshift.find('li').exists()).toBe(false);
     expect(downshift.find('a').exists()).toBe(true);
@@ -60,7 +61,6 @@ describe('Autocomplete', () => {
     const wrapper = data.wrapper;
     const child = wrapper.find('Downshift').childAt(0);
 
-    expect(child.type()).toBe('div');
     expect(child.hasClass('ds-c-autocomplete')).toBe(true);
   });
 
