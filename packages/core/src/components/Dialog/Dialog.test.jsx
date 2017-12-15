@@ -10,7 +10,8 @@ function render(customProps = {}, deep = false) {
     customProps
   );
 
-  const component = <Dialog>{props.children}</Dialog>;
+  const { children, ...dialogProps } = props;
+  const component = <Dialog {...dialogProps}>{children}</Dialog>;
 
   return {
     props: props,
