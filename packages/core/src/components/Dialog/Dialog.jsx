@@ -35,7 +35,7 @@ export const Dialog = function(props) {
           Close
         </button>
       </header>
-      <div className="ds-c-dialog__body">{children}</div>
+      {children}
       {actions && <div className="ds-c-dialog__actions">{actions}</div>}
     </AriaModal>
   );
