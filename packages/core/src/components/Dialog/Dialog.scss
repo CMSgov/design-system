@@ -22,10 +22,10 @@ Markup:
       <main role="main">
         <p class="ds-text"><strong>Dialog body text.</strong>  {{lorem-l}}</p>
       </main>
-      <div class="ds-c-dialog__actions">
+      <footer class="ds-c-dialog__actions" role="contentinfo">
         <button class="ds-c-button ds-c-button--danger">Dialog action</button>
         <button class="ds-c-button ds-c-button--transparent">Cancel</button>
-      </div>
+      </footer>
     </div>
   </div>
 </div>

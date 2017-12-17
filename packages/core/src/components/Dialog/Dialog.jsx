@@ -39,7 +39,11 @@ export const Dialog = function(props) {
           </button>
         </header>
         <main role="main">{children}</main>
-        {actions && <div className="ds-c-dialog__actions">{actions}</div>}
+        {actions && (
+          <footer className="ds-c-dialog__actions" role="contentinfo">
+            {actions}
+          </footer>
+        )}
       </div>
     </AriaModal>
   );
