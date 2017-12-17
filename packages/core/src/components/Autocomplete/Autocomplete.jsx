@@ -15,7 +15,7 @@ function isTextField(child) {
 }
 
 /**
- * The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField component.
+ * The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField` component.
  */
 export class Autocomplete extends React.PureComponent {
   constructor(props) {
