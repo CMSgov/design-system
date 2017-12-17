@@ -75,6 +75,12 @@ $dialog-spacer: $spacer-4;
   background-size: 12px 12px;
   margin-left: auto;
   padding: 0 0 0 (12px + $spacer-1);
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-image: url('../images/close--primary-darker.svg');
+  }
 }
 
 .ds-c-dialog-wrap {
