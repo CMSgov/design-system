@@ -22,21 +22,23 @@ export const Dialog = function(props) {
       underlayClass="ds-c-dialog-wrap"
       {...modalProps}
     >
-      <header className="ds-c-dialog__header">
-        {title && (
-          <h1 className="ds-h2" id="dialog-title">
-            {title}
-          </h1>
-        )}
-        <button
-          className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
-          onClick={onExit}
-        >
-          Close
-        </button>
-      </header>
-      {children}
-      {actions && <div className="ds-c-dialog__actions">{actions}</div>}
+      <div role="document">
+        <header className="ds-c-dialog__header">
+          {title && (
+            <h1 className="ds-h2" id="dialog-title">
+              {title}
+            </h1>
+          )}
+          <button
+            className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+            onClick={onExit}
+          >
+            Close
+          </button>
+        </header>
+        {children}
+        {actions && <div className="ds-c-dialog__actions">{actions}</div>}
+      </div>
     </AriaModal>
   );
 };
