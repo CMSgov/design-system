@@ -24,7 +24,7 @@ export const Dialog = function(props) {
       {...modalProps}
     >
       <div role="document">
-        <header className="ds-c-dialog__header">
+        <header className="ds-c-dialog__header" role="banner">
           {title && (
             <h1 className="ds-h2" id="dialog-title">
               {title}
