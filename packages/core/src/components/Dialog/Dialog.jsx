@@ -5,6 +5,7 @@ import React from 'react';
 export const Dialog = function(props) {
   const {
     actions,
+    ariaCloseLabel,
     children,
     escapeExitDisabled,
     onExit,
@@ -30,6 +31,7 @@ export const Dialog = function(props) {
             </h1>
           )}
           <button
+            aria-label={ariaCloseLabel}
             className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
             onClick={onExit}
           >
@@ -44,6 +46,7 @@ export const Dialog = function(props) {
 };
 
 Dialog.defaultProps = {
+  ariaCloseLabel: 'Close modal dialog',
   escapeExitDisabled: false,
   underlayClickExits: false
 };
@@ -66,7 +69,7 @@ Dialog.propTypes = {
       return new Error(
         `Invalid prop \`${propName}\` supplied to \`${
           componentName
-        }\`. Expected a DOM node. You may also be intersted in the getApplicationNode prop`
+        }\`. Expected a DOM node. You may also be interested in the getApplicationNode prop`
       );
     }
   },
@@ -75,6 +78,10 @@ Dialog.propTypes = {
    * at the bottom of the dialog.
    */
   actions: PropTypes.node,
+  /**
+   * Aria label for the close button
+   */
+  ariaCloseLabel: PropTypes.string,
   /**
    * The modal's body content
    */

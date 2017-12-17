@@ -17,7 +17,7 @@ Markup:
     <div class="ds-c-dialog {{modifier}}" role="document">
       <header class="ds-c-dialog__header">
         <h1 class="ds-h2" id="dialog-title">Dialog title</h1>
-        <button class="ds-c-button ds-c-button--transparent ds-c-dialog__close">Close</button>
+        <button class="ds-c-button ds-c-button--transparent ds-c-dialog__close" aria-label="Close modal dialog">Close</button>
       </header>
       <p class="ds-text ds-u-margin-top--0"><strong>Dialog body text.</strong>  {{lorem-l}}</p>
       <div class="ds-c-dialog__actions">
