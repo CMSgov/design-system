@@ -61,6 +61,7 @@ Style guide: components.button
 
 .ds-c-button--primary {
   background-color: $button-primary-bg;
+  border-color: $button-primary-bg;
   color: $color-white;
 
   &:focus,
