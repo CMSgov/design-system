@@ -27,8 +27,8 @@ ReactDOM.render(
       onChange={selectedItem => console.log(selectedItem)}
     >
       <TextField
-        hint="This is an autocomplete field. Begin typing to search for relevant information. The number of results will be updated as you type."
-        label="Constrained list"
+        hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
+        label="Labeled list"
         name="Downshift_autocomplete"
       />
     </Autocomplete>
@@ -54,8 +54,8 @@ ReactDOM.render(
       onChange={selectedItem => console.log(selectedItem)}
     >
       <TextField
-        hint="This is an autocomplete field. Begin typing to search for relevant information. Results will be updated as you type."
-        label="Unconstrained list"
+        hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
+        label="Simple list"
         name="Downshift_autocomplete"
       />
     </Autocomplete>

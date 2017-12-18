@@ -33,9 +33,7 @@ export class Autocomplete extends React.PureComponent {
         return React.cloneElement(
           child,
           getInputProps({
-            fieldClassName: 'ds-c-autocomplete__input',
-            id: this.id,
-            labelClassName: 'ds-u-margin-top--0 ds-c-autocomplete__label'
+            id: this.id
           })
         );
       }
@@ -46,7 +44,7 @@ export class Autocomplete extends React.PureComponent {
 
   render() {
     const {
-      clearAriaLabel,
+      ariaClearLabel,
       clearInputText,
       items,
       itemToString,
@@ -113,9 +111,8 @@ export class Autocomplete extends React.PureComponent {
             ) : null}
 
             <Button
-              aria-label={clearAriaLabel}
+              aria-label={ariaClearLabel}
               className="ds-u-float--right ds-u-padding-right--0"
-              href="javascript:void(0);"
               onClick={clearSelection}
               size="small"
               variation="transparent"
@@ -130,16 +127,16 @@ export class Autocomplete extends React.PureComponent {
 }
 
 Autocomplete.defaultProps = {
-  clearAriaLabel: 'Clear typeahead and search again',
+  ariaClearLabel: 'Clear typeahead and search again',
   clearInputText: 'Clear search'
 };
 
 Autocomplete.propTypes = {
-  children: PropTypes.node,
   /**
    * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
    */
-  clearAriaLabel: PropTypes.string,
+  ariaClearLabel: PropTypes.string,
+  children: PropTypes.node,
   /**
    * Clear link text that will appear on the page as part of the rendered component
    */
@@ -156,11 +153,11 @@ Autocomplete.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
-      name: PropTypes.name
+      name: PropTypes.string
     })
   ).isRequired,
   /**
-   * Adds a heading to the top of the autocomplete list. This is used to convey to the user that they're required to select an option from the autocomplete list.
+   * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
   /**

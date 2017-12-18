@@ -2822,10 +2822,6 @@ downgrade-root@^1.0.0:
     default-uid "^1.0.0"
     is-root "^1.0.0"
 
-downshift@^1.22.1:
-  version "1.22.1"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.1.tgz#93ba5576f40e9bf83a10bac9806c5b71078776d3"
-
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
