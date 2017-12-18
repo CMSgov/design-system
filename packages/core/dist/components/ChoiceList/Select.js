@@ -96,8 +96,8 @@ Select.propTypes = {
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * This will render a read-only field. If the field should be
-   * mutable, use `defaultValue`. Otherwise, set either `onChange` or `readOnly`
+   * Sets the field's `value`. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultValue`.
    */
   value: _propTypes2.default.string
 };

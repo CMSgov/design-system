@@ -15,7 +15,7 @@ function isTextField(child) {
 }
 
 /**
- * The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField component.
+ * The `Autocomplete` component is a parent component that adds autocomplete functionality to a `TextField` component.
  */
 export class Autocomplete extends React.PureComponent {
   constructor(props) {
@@ -142,9 +142,9 @@ Autocomplete.propTypes = {
    */
   clearInputText: PropTypes.node,
   /**
-   * https://github.com/paypal/downshift#itemtostring
-   *
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`.
+   *
+   * Also see: https://github.com/paypal/downshift#itemtostring
    */
   itemToString: PropTypes.func,
   /**
