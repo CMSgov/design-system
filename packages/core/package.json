@@ -17,6 +17,7 @@
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.0.0 || ^16.0.0",
     "react": "^15.0.0 || ^16.0.0",
+    "react-aria-modal": "^2.11.1",
     "react-dom": "^15.0.0 || ^16.0.0"
   }
 }
