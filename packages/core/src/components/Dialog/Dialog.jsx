@@ -13,6 +13,7 @@ export const Dialog = function(props) {
     ...modalProps
   } = props;
 
+  /* eslint-disable jsx-a11y/no-redundant-roles */
   return (
     <AriaModal
       dialogClass="ds-c-dialog"
@@ -40,9 +41,9 @@ export const Dialog = function(props) {
         </header>
         <main role="main">{children}</main>
         {actions && (
-          <footer className="ds-c-dialog__actions" role="contentinfo">
+          <aside className="ds-c-dialog__actions" role="complementary">
             {actions}
-          </footer>
+          </aside>
         )}
       </div>
     </AriaModal>
