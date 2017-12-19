@@ -37,6 +37,7 @@ describe('Autocomplete', () => {
     expect(wrapper.prop('clearInputText')).toBe('Clear search');
     expect(wrapper.prop('itemToString')).toBe(undefined);
     expect(wrapper.prop('label')).toBe(undefined);
+    expect(wrapper.prop('loading')).toBe(undefined);
     expect(wrapper.prop('onChange')).toBe(undefined);
   });
 
@@ -67,13 +68,17 @@ describe('Autocomplete', () => {
   it('allows default props to be overridden', () => {
     const data = render(
       {
-        clearAriaLabel: 'New ARIA label'
+        ariaClearLabel: 'New ARIA label',
+        clearInputText: 'Clear search box',
+        loading: true
       },
       true
     );
     const wrapper = data.wrapper;
 
-    expect(wrapper.prop('clearAriaLabel')).toBe('New ARIA label');
+    expect(wrapper.prop('ariaClearLabel')).toBe('New ARIA label');
+    expect(wrapper.prop('clearInputText')).toBe('Clear search box');
+    expect(wrapper.prop('loading')).toBe(true);
   });
 
   it('renders a snapshot', () => {
