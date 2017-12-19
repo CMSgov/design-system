@@ -34,7 +34,9 @@ export class Autocomplete extends React.PureComponent {
   ) {
     if (this.props.loading) {
       return (
-        <li className="ds-c-autocomplete__list-item--message">Loading...</li>
+        <li className="ds-c-autocomplete__list-item--message">
+          {this.props.loadingMessage}
+        </li>
       );
     }
 
@@ -58,7 +60,7 @@ export class Autocomplete extends React.PureComponent {
 
     return (
       <li className="ds-c-autocomplete__list-item--message">
-        No results found
+        {this.props.noResultsMessage}
       </li>
     );
   }
@@ -152,7 +154,10 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
-  clearInputText: 'Clear search'
+  clearInputText: 'Clear search',
+  itemToString: item => (item ? item.name : ''),
+  loadingMessage: 'Loading...',
+  noResultsMessage: 'No results'
 };
 
 Autocomplete.propTypes = {
@@ -170,7 +175,7 @@ Autocomplete.propTypes = {
    *
    * Also see: https://github.com/paypal/downshift#itemtostring
    */
-  itemToString: PropTypes.func,
+  itemToString: PropTypes.func.isRequired,
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
@@ -184,7 +189,18 @@ Autocomplete.propTypes = {
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
+  /**
+   * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
+   */
   loading: PropTypes.bool,
+  /**
+   * Message users will see when the `loading` prop is passed to `<Autcomplete />`.
+   */
+  loadingMessage: PropTypes.node,
+  /**
+   * Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.
+   */
+  noResultsMessage: PropTypes.node,
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
    *

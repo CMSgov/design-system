@@ -35,7 +35,6 @@ describe('Autocomplete', () => {
       'Clear typeahead and search again'
     );
     expect(wrapper.prop('clearInputText')).toBe('Clear search');
-    expect(wrapper.prop('itemToString')).toBe(undefined);
     expect(wrapper.prop('label')).toBe(undefined);
     expect(wrapper.prop('loading')).toBe(undefined);
     expect(wrapper.prop('onChange')).toBe(undefined);
