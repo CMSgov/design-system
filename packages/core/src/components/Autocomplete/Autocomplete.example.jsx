@@ -6,7 +6,6 @@ import TextField from '../TextField/TextField';
 ReactDOM.render(
   <div>
     <Autocomplete
-      label="Select from the options below:"
       itemToString={i => {
         return i ? i.name : '';
       }}
@@ -24,6 +23,7 @@ ReactDOM.render(
           name: 'Cook County, TN'
         }
       ]}
+      label="Select from the options below:"
       onChange={selectedItem => console.log(selectedItem)}
     >
       <TextField
@@ -56,6 +56,36 @@ ReactDOM.render(
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Simple list"
+        name="Downshift_autocomplete"
+      />
+    </Autocomplete>
+
+    <Autocomplete
+      getA11yStatusMessage={() => console.log('Yep, triggered')}
+      itemToString={i => {
+        return i ? i.name : '';
+      }}
+      items={[]}
+      label="Select from the options below:"
+      loading
+      onChange={selectedItem => console.log(selectedItem)}
+    >
+      <TextField
+        hint="List should return string Loading to simulate async data call"
+        label="Loading message"
+        name="Downshift_autocomplete"
+      />
+    </Autocomplete>
+
+    <Autocomplete
+      itemToString={i => {
+        return i ? i.name : '';
+      }}
+      items={[]}
+    >
+      <TextField
+        hint="List should return string No results found"
+        label="No results message"
         name="Downshift_autocomplete"
       />
     </Autocomplete>

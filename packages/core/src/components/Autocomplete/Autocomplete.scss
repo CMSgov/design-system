@@ -35,6 +35,11 @@ Style guide: components.autocomplete
   color: $color-white;
 }
 
+.ds-c-autocomplete__list-item--message {
+  color: $color-gray-medium;
+  padding: $spacer-1;
+}
+
 /*
 `<Autocomplete>`
 

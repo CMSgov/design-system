@@ -25,6 +25,44 @@ export class Autocomplete extends React.PureComponent {
     this.labelId = uniqueId('constrained-list-header_');
   }
 
+  filterItems(
+    items,
+    inputValue,
+    getInputProps,
+    getItemProps,
+    highlightedIndex
+  ) {
+    if (this.props.loading) {
+      return (
+        <li className="ds-c-autocomplete__list-item--message">Loading...</li>
+      );
+    }
+
+    if (items.length) {
+      return items.map((item, index) => (
+        <li
+          aria-selected={highlightedIndex === index}
+          className={
+            highlightedIndex === index
+              ? 'ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
+              : 'ds-c-autocomplete__list-item'
+          }
+          key={item.id}
+          role="option"
+          {...getItemProps({ item })}
+        >
+          {this.props.itemToString(item)}
+        </li>
+      ));
+    }
+
+    return (
+      <li className="ds-c-autocomplete__list-item--message">
+        No results found
+      </li>
+    );
+  }
+
   renderChildren(getInputProps) {
     // Extend props on the TextField, by passing them through
     // Downshift's `getInputProps` method
@@ -49,6 +87,7 @@ export class Autocomplete extends React.PureComponent {
       items,
       itemToString,
       label,
+      loading,
       onChange
     } = this.props;
 
@@ -61,51 +100,36 @@ export class Autocomplete extends React.PureComponent {
           getInputProps,
           getItemProps,
           highlightedIndex,
-          isOpen,
-          inputValue
+          inputValue,
+          isOpen
         }) => (
           <div className="ds-u-clearfix ds-c-autocomplete">
             {this.renderChildren(getInputProps)}
 
             {isOpen ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
-                {label && (
-                  <h5
-                    className="ds-u-margin--0 ds-u-padding--1 ds-u-padding-left--2"
-                    id={this.labelId}
-                  >
-                    {label}
-                  </h5>
-                )}
+                {label &&
+                  !loading && (
+                    <h5
+                      className="ds-u-margin--0 ds-u-padding--1 ds-u-padding-left--2"
+                      id={this.labelId}
+                    >
+                      {label}
+                    </h5>
+                  )}
 
                 <ul
                   aria-labelledby={label ? this.labelId : null}
                   className="ds-c-list--bare"
                   role="listbox"
                 >
-                  {items
-                    .filter(
-                      item =>
-                        !inputValue ||
-                        item.name
-                          .toLowerCase()
-                          .includes(inputValue.toLowerCase())
-                    )
-                    .map((item, index) => (
-                      <li
-                        aria-selected={highlightedIndex === index}
-                        className={
-                          highlightedIndex === index
-                            ? 'ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
-                            : 'ds-c-autocomplete__list-item'
-                        }
-                        key={item.id}
-                        role="option"
-                        {...getItemProps({ item })}
-                      >
-                        {itemToString(item)}
-                      </li>
-                    ))}
+                  {this.filterItems(
+                    items,
+                    inputValue,
+                    getInputProps,
+                    getItemProps,
+                    highlightedIndex
+                  )}
                 </ul>
               </div>
             ) : null}
@@ -160,6 +184,7 @@ Autocomplete.propTypes = {
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
+  loading: PropTypes.bool,
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
    *

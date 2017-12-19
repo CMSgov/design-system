@@ -31,7 +31,7 @@ describe('Autocomplete', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
 
-    expect(wrapper.prop('clearAriaLabel')).toBe(
+    expect(wrapper.prop('ariaClearLabel')).toBe(
       'Clear typeahead and search again'
     );
     expect(wrapper.prop('clearInputText')).toBe('Clear search');
@@ -53,7 +53,7 @@ describe('Autocomplete', () => {
     ).toBe(true);
     expect(downshift.find('ul').exists()).toBe(false);
     expect(downshift.find('li').exists()).toBe(false);
-    expect(downshift.find('a').exists()).toBe(true);
+    expect(downshift.find('button').exists()).toBe(true);
   });
 
   it('renders default class names', () => {
