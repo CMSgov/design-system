@@ -2,6 +2,7 @@
 
 exports[`Dialog renders react-aria-modal 1`] = `
 <Dialog
+  ariaCloseLabel="Close modal dialog"
   escapeExitDisabled={false}
   getApplicationNode={[Function]}
   onExit={[Function]}
@@ -59,23 +60,33 @@ exports[`Dialog renders react-aria-modal 1`] = `
               role="dialog"
               style={Object {}}
             >
-              <header
-                className="ds-c-dialog__header"
+              <div
+                role="document"
               >
-                <h1
-                  className="ds-h2"
-                  id="dialog-title"
+                <header
+                  className="ds-c-dialog__header"
+                  role="banner"
                 >
-                  Foo
-                </h1>
-                <button
-                  className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
-                  onClick={[Function]}
+                  <h1
+                    className="ds-h2"
+                    id="dialog-title"
+                  >
+                    Foo
+                  </h1>
+                  <button
+                    aria-label="Close modal dialog"
+                    className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                    onClick={[Function]}
+                  >
+                    Close
+                  </button>
+                </header>
+                <main
+                  role="main"
                 >
-                  Close
-                </button>
-              </header>
-              Bar
+                  Bar
+                </main>
+              </div>
             </div>
           </div>
         </div>
