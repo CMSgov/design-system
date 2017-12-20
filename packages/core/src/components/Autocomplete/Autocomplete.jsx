@@ -113,7 +113,7 @@ export class Autocomplete extends React.PureComponent {
                 {label &&
                   !loading && (
                     <h5
-                      className="ds-u-margin--0 ds-u-padding--1 ds-u-padding-left--2"
+                      className="ds-u-margin--0 ds-u-padding--1"
                       id={this.labelId}
                     >
                       {label}
