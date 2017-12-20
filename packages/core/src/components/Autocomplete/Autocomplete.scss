@@ -1,0 +1,80 @@
+// Form-specific variables can be found in _variables.forms
+@import '@cmsgov/design-system-support/src/settings/index';
+
+/*
+Autocomplete
+
+@status beta
+
+Autocompletes allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
+
+Style guide: components.autocomplete
+*/
+
+// autocomplete component
+.ds-c-autocomplete {
+  max-width: $input-max-width;
+  position: relative;
+}
+
+.ds-c-autocomplete__list {
+  background-color: $color-white;
+  box-sizing: border-box;
+  max-height: ($base-font-size + $spacer-2) * 10;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: $z-dialog;
+}
+
+.ds-c-autocomplete__list-item {
+  color: $color-primary;
+  padding: $spacer-1;
+}
+
+.ds-c-autocomplete__list-item--active {
+  background-color: $color-primary-alt-darkest;
+  color: $color-white;
+}
+
+.ds-c-autocomplete__list-item--message {
+  color: $color-muted;
+  padding: $spacer-1;
+}
+
+/*
+`<Autocomplete>`
+
+@react-component Autocomplete
+
+Style guide: components.autocomplete.react
+*/
+
+/*
+---
+
+## When to use
+
+- If you are returning results from a known domain like a database of zip codes or a taxonomy of keywords
+- If you have a list of options that would cause a [select menu]({{root}}/components/select) to be unusually long
+
+## When to consider alternatives
+
+- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons]({{root}}/components/choice), or a [select menu]({{root}}/components/select) in these cases.
+
+## Guidance
+
+- `<Autocomplete>` makes use of the `<Downshift>` component from Paypal: https://github.com/paypal/downshift
+- Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
+- The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line `input` box; use a `textarea` instead.
+
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
+## Accessibility
+
+- The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
+- `<Autocomplete>` has visually hidden hint text nested in the `<label>` element. This hint `<span>` is being used to provide contextual instructions for the typeahead, and can be overriden by passing a custom `String` into the `labelHint` prop.
+- `<Autocomplete>` has a link to clear the search, and refocus the `<input>` element. This resets the `selectedItem` prop to `null`, and will re-read the label and screenreader hint text.
+
+Style guide: components.autocomplete-field.guidance
+*/
