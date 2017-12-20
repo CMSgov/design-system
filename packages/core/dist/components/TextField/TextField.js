@@ -51,7 +51,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
 
     var _this = _possibleConstructorReturn(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
-    _this.id = (0, _lodash2.default)('textfield_');
+    _this.id = props.id || (0, _lodash2.default)('textfield_');
     return _this;
   }
 
@@ -64,6 +64,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           fieldClassName = _props.fieldClassName,
           errorMessage = _props.errorMessage,
           hint = _props.hint,
+          id = _props.id,
           requirementLabel = _props.requirementLabel,
           inversed = _props.inversed,
           rows = _props.rows,
@@ -71,7 +72,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           label = _props.label,
           fieldRef = _props.fieldRef,
           type = _props.type,
-          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'type']);
+          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'type']);
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
@@ -140,6 +141,10 @@ TextField.propTypes = {
    * Additional hint text to display
    */
   hint: _propTypes2.default.node,
+  /**
+   * A unique `id` to be used on the text field.
+   */
+  id: _propTypes2.default.string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

@@ -16,6 +16,18 @@ Object.keys(_Alert).forEach(function (key) {
   });
 });
 
+var _Autocomplete = require('./Autocomplete/Autocomplete');
+
+Object.keys(_Autocomplete).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Autocomplete[key];
+    }
+  });
+});
+
 var _Badge = require('./Badge/Badge');
 
 Object.keys(_Badge).forEach(function (key) {
@@ -84,6 +96,18 @@ Object.keys(_DateField).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _DateField[key];
+    }
+  });
+});
+
+var _Dialog = require('./Dialog/Dialog');
+
+Object.keys(_Dialog).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Dialog[key];
     }
   });
 });
