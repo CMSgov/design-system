@@ -18,6 +18,26 @@ ReactDOM.render(
         {
           id: 'mZfKcGf9',
           name: 'Cook County, TN'
+        },
+        {
+          id: 'xFz6dLba',
+          name: 'Cook County, AK'
+        },
+        {
+          id: 'vTr5c99',
+          name: 'Cook County, FL'
+        },
+        {
+          id: 'ntY8Lha',
+          name: 'Cook County, AL'
+        },
+        {
+          id: 'uRe0Wqo',
+          name: 'Cook County, WA'
+        },
+        {
+          id: 'yUR7MWl',
+          name: 'Cook County, OR'
         }
       ]}
       label="Select from the options below:"
