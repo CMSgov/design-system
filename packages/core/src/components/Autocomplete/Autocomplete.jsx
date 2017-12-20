@@ -175,7 +175,7 @@ Autocomplete.propTypes = {
    *
    * Also see: https://github.com/paypal/downshift#itemtostring
    */
-  itemToString: PropTypes.func.isRequired,
+  itemToString: PropTypes.func,
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
