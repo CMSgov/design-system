@@ -22,7 +22,7 @@ export class Autocomplete extends React.PureComponent {
     super(props);
 
     this.id = uniqueId('autocomplete_');
-    this.labelId = uniqueId('constrained-list-header_');
+    this.labelId = uniqueId('autocomplete_header_');
   }
 
   filterItems(

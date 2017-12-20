@@ -24,6 +24,7 @@ npm-debug.log*
 pids
 *.pid
 *.seed
+*.swp
 tmp
 
 # node-waf configuration
