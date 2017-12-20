@@ -1,12 +1,14 @@
 'use strict';
 
 export * from './Alert/Alert';
+export * from './Autocomplete/Autocomplete';
 export * from './Badge/Badge';
 export * from './Button/Button';
 export * from './ChoiceList/Choice';
 export * from './ChoiceList/ChoiceList';
 export * from './ChoiceList/Select';
 export * from './DateField/DateField';
+export * from './Dialog/Dialog';
 export * from './FormLabel/FormLabel';
 export * from './MonthPicker/MonthPicker';
 export * from './SkipNav/SkipNav';
