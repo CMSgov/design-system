@@ -91,20 +91,14 @@ export class Autocomplete extends React.PureComponent {
       ariaClearLabel,
       clearInputText,
       items,
-      itemToString,
       label,
       loading,
-      onChange,
-      onInputValueChange,
       children,
       ...autocompleteProps
     } = this.props;
 
     return (
       <Downshift
-        itemToString={itemToString}
-        onChange={onChange}
-        onInputValueChange={onInputValueChange}
         render={({
           clearSelection,
           getInputProps,
@@ -204,7 +198,7 @@ Autocomplete.propTypes = {
    */
   loading: PropTypes.bool,
   /**
-   * Message users will see when the `loading` prop is passed to `Autcomplete`.
+   * Message users will see when the `loading` prop is passed to `Autocomplete`.
    */
   loadingMessage: PropTypes.node,
   /**
@@ -212,13 +206,13 @@ Autocomplete.propTypes = {
    */
   noResultsMessage: PropTypes.node,
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `Downshift`.
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state.
    *
    * Also see: https://github.com/paypal/downshift#onchange
    */
   onChange: PropTypes.func,
   /**
-   * Called whenever the child `TextField` value changes. Returns a String `inputValue`.
+   * Called when the child `TextField` value changes. Returns a String `inputValue`.
    *
    * Also see: https://github.com/paypal/downshift#oninputvaluechange
    */
