@@ -35,9 +35,7 @@ function generateReactExample(page, rootPath) {
       const head = `<title>Example: ${page.reference}</title>
   <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
       const body = `<div id="js-example"></div>
-      <script type="text/javascript" src="/${
-        rootPath
-      }public/scripts/example.js"></script>
+      <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
       <script type="text/javascript">${exampleScripts}</script>`;
 
       const output = savePage({
@@ -81,10 +79,7 @@ function createWebpackCompiler(examplePath) {
   };
 
   if (process.env.NODE_ENV === 'production') {
-    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      mangle: false // Mangle messes up React code snippets
-    });
-
+    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin();
     webpackConfig.plugins.push(uglifyPlugin);
   }
 
