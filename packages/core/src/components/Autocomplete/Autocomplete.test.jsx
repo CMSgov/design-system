@@ -38,6 +38,7 @@ describe('Autocomplete', () => {
     expect(wrapper.prop('label')).toBe(undefined);
     expect(wrapper.prop('loading')).toBe(undefined);
     expect(wrapper.prop('onChange')).toBe(undefined);
+    expect(wrapper.prop('onInputValueChange')).toBe(undefined);
   });
 
   it('only renders expected elements', () => {

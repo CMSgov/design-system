@@ -23,6 +23,7 @@ export class Autocomplete extends React.PureComponent {
 
     this.id = uniqueId('autocomplete_');
     this.labelId = uniqueId('autocomplete_header_');
+    this.listboxId = uniqueId('autocomplete_owned_listbox_');
   }
 
   filterItems(
@@ -70,12 +71,15 @@ export class Autocomplete extends React.PureComponent {
     // Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
-        return React.cloneElement(
-          child,
-          getInputProps({
-            id: this.id
-          })
-        );
+        const propOverrides = {
+          'aria-controls': this.listboxId,
+          id: this.id,
+          onBlur: child.props.onBlur,
+          onChange: child.props.onChange,
+          onKeyDown: child.props.onKeyDown
+        };
+
+        return React.cloneElement(child, getInputProps(propOverrides));
       }
 
       return child;
@@ -87,16 +91,14 @@ export class Autocomplete extends React.PureComponent {
       ariaClearLabel,
       clearInputText,
       items,
-      itemToString,
       label,
       loading,
-      onChange
+      children,
+      ...autocompleteProps
     } = this.props;
 
     return (
       <Downshift
-        itemToString={itemToString}
-        onChange={onChange}
         render={({
           clearSelection,
           getInputProps,
@@ -123,6 +125,7 @@ export class Autocomplete extends React.PureComponent {
                 <ul
                   aria-labelledby={label ? this.labelId : null}
                   className="ds-c-list--bare"
+                  id={this.listboxId}
                   role="listbox"
                 >
                   {this.filterItems(
@@ -147,6 +150,7 @@ export class Autocomplete extends React.PureComponent {
             </Button>
           </div>
         )}
+        {...autocompleteProps}
       />
     );
   }
@@ -162,12 +166,12 @@ Autocomplete.defaultProps = {
 
 Autocomplete.propTypes = {
   /**
-   * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
+   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel: PropTypes.string,
   children: PropTypes.node,
   /**
-   * Clear link text that will appear on the page as part of the rendered component
+   * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
   clearInputText: PropTypes.node,
   /**
@@ -194,7 +198,7 @@ Autocomplete.propTypes = {
    */
   loading: PropTypes.bool,
   /**
-   * Message users will see when the `loading` prop is passed to `<Autcomplete />`.
+   * Message users will see when the `loading` prop is passed to `Autocomplete`.
    */
   loadingMessage: PropTypes.node,
   /**
@@ -202,11 +206,17 @@ Autocomplete.propTypes = {
    */
   noResultsMessage: PropTypes.node,
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state.
    *
    * Also see: https://github.com/paypal/downshift#onchange
    */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  /**
+   * Called when the child `TextField` value changes. Returns a String `inputValue`.
+   *
+   * Also see: https://github.com/paypal/downshift#oninputvaluechange
+   */
+  onInputValueChange: PropTypes.func
 };
 
 export default Autocomplete;

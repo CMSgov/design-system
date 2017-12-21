@@ -42,6 +42,9 @@ ReactDOM.render(
       ]}
       label="Select from the options below:"
       onChange={selectedItem => console.log(selectedItem)}
+      onInputValueChange={inputVal =>
+        console.log('[Autocomplete]: ' + inputVal)
+      }
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
@@ -66,6 +69,9 @@ ReactDOM.render(
         }
       ]}
       onChange={selectedItem => console.log(selectedItem)}
+      onInputValueChange={inputVal =>
+        console.log('[Autocomplete]: ' + inputVal)
+      }
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
@@ -74,12 +80,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete
-      items={[]}
-      label="Select from the options below:"
-      loading
-      onChange={selectedItem => console.log(selectedItem)}
-    >
+    <Autocomplete items={[]} loading>
       <TextField
         hint="List should return string Loading to simulate async data call."
         label="Loading message"
