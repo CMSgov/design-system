@@ -4,18 +4,30 @@ exports[`Dialog renders react-aria-modal 1`] = `
 <Dialog
   ariaCloseLabel="Close modal dialog"
   escapeExitDisabled={false}
-  getApplicationNode={[Function]}
-  onExit={[Function]}
+  getApplicationNode={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
+  onExit={[MockFunction]}
   title="Foo"
   underlayClickExits={false}
 >
   <Displaced
     dialogClass="ds-c-dialog"
     escapeExits={true}
-    getApplicationNode={[Function]}
+    getApplicationNode={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+      }
+    }
     includeDefaultStyles={false}
     mounted={true}
-    onExit={[Function]}
+    onExit={[MockFunction]}
     titleId="dialog-title"
     underlayClass="ds-c-dialog-wrap"
     underlayClickExits={false}
@@ -25,10 +37,16 @@ exports[`Dialog renders react-aria-modal 1`] = `
       dialogId="react-aria-modal-dialog"
       escapeExits={true}
       focusTrapPaused={false}
-      getApplicationNode={[Function]}
+      getApplicationNode={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        }
+      }
       includeDefaultStyles={false}
       mounted={true}
-      onExit={[Function]}
+      onExit={[MockFunction]}
       scrollDisabled={true}
       titleId="dialog-title"
       underlayClass="ds-c-dialog-wrap"
@@ -76,7 +94,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                   <button
                     aria-label="Close modal dialog"
                     className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                   >
                     Close
                   </button>
