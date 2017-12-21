@@ -45,7 +45,6 @@ ReactDOM.render(
       onInputValueChange={inputVal => console.log('[INPUT_VALUE]: ' + inputVal)}
     >
       <TextField
-        aria-controls="owned_listbox"
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Labeled list"
         name="Downshift_autocomplete"
@@ -70,7 +69,6 @@ ReactDOM.render(
       onChange={selectedItem => console.log(selectedItem)}
     >
       <TextField
-        aria-controls="owned_listbox"
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Simple list"
         name="Downshift_autocomplete"
@@ -84,7 +82,6 @@ ReactDOM.render(
       onChange={selectedItem => console.log(selectedItem)}
     >
       <TextField
-        aria-controls="owned_listbox"
         hint="List should return string Loading to simulate async data call."
         label="Loading message"
         name="Downshift_autocomplete"
@@ -93,7 +90,6 @@ ReactDOM.render(
 
     <Autocomplete items={[]}>
       <TextField
-        aria-controls="owned_listbox"
         hint="List should return string No results found."
         label="No results message"
         name="Downshift_autocomplete"

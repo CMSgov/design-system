@@ -23,6 +23,7 @@ export class Autocomplete extends React.PureComponent {
 
     this.id = uniqueId('autocomplete_');
     this.labelId = uniqueId('autocomplete_header_');
+    this.listboxId = uniqueId('autocomplete_owned_listbox_');
   }
 
   filterItems(
@@ -73,6 +74,7 @@ export class Autocomplete extends React.PureComponent {
         return React.cloneElement(
           child,
           getInputProps({
+            'aria-controls': this.listboxId,
             id: this.id
           })
         );
@@ -125,7 +127,7 @@ export class Autocomplete extends React.PureComponent {
                 <ul
                   aria-labelledby={label ? this.labelId : null}
                   className="ds-c-list--bare"
-                  id="owned_listbox"
+                  id={this.listboxId}
                   role="listbox"
                 >
                   {this.filterItems(
