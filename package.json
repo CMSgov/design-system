@@ -1,8 +1,7 @@
 {
   "name": "design-system",
   "private": true,
-  "description":
-    "A shared set of design and code elements for creating accessible and consistent websites",
+  "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
     "build": "NODE_ENV=production gulp build --env=production",
@@ -18,14 +17,11 @@
     "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
     "update-snapshots": "NODE_ENV=test jest -u",
-    "lint":
-      "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
+    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
-    "@cmsgov/eslint-config-design-system":
-      "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system":
-      "file:./packages/stylelint-config-design-system",
+    "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
+    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.3",
@@ -106,7 +102,9 @@
       "<rootDir>/tools/jest/polyfills.js",
       "<rootDir>/tools/jest/setupEnzyme.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/examples/",
       "<rootDir>/node_modules/",
@@ -116,7 +114,11 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx}": ["prettier --write", "eslint --fix", "git add"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.7.2"
