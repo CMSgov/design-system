@@ -90,13 +90,15 @@ export class Autocomplete extends React.PureComponent {
       itemToString,
       label,
       loading,
-      onChange
+      onChange,
+      onInputValueChange
     } = this.props;
 
     return (
       <Downshift
         itemToString={itemToString}
         onChange={onChange}
+        onInputValueChange={onInputValueChange}
         render={({
           clearSelection,
           getInputProps,
@@ -123,6 +125,7 @@ export class Autocomplete extends React.PureComponent {
                 <ul
                   aria-labelledby={label ? this.labelId : null}
                   className="ds-c-list--bare"
+                  id="owned_listbox"
                   role="listbox"
                 >
                   {this.filterItems(
@@ -162,12 +165,12 @@ Autocomplete.defaultProps = {
 
 Autocomplete.propTypes = {
   /**
-   * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
+   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel: PropTypes.string,
   children: PropTypes.node,
   /**
-   * Clear link text that will appear on the page as part of the rendered component
+   * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
   clearInputText: PropTypes.node,
   /**
@@ -194,7 +197,7 @@ Autocomplete.propTypes = {
    */
   loading: PropTypes.bool,
   /**
-   * Message users will see when the `loading` prop is passed to `<Autcomplete />`.
+   * Message users will see when the `loading` prop is passed to `Autcomplete`.
    */
   loadingMessage: PropTypes.node,
   /**
@@ -202,11 +205,17 @@ Autocomplete.propTypes = {
    */
   noResultsMessage: PropTypes.node,
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `Downshift`.
    *
    * Also see: https://github.com/paypal/downshift#onchange
    */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  /**
+   * Called whenever the child `TextField` value changes. Returns a String `inputValue`.
+   *
+   * Also see: https://github.com/paypal/downshift#oninputvaluechange
+   */
+  onInputValueChange: PropTypes.func
 };
 
 export default Autocomplete;
