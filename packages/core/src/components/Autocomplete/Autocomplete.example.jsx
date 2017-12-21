@@ -42,12 +42,17 @@ ReactDOM.render(
       ]}
       label="Select from the options below:"
       onChange={selectedItem => console.log(selectedItem)}
-      onInputValueChange={inputVal => console.log('[INPUT_VALUE]: ' + inputVal)}
+      onInputValueChange={inputVal =>
+        console.log('[AUTOCOMPLETE_VALUE]: ' + inputVal)
+      }
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Labeled list"
         name="Downshift_autocomplete"
+        onBlur={() => console.log('Blur event')}
+        onChange={e => console.log(e)}
+        onKeyDown={() => console.log('Keydown event')}
       />
     </Autocomplete>
 
@@ -72,6 +77,9 @@ ReactDOM.render(
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Simple list"
         name="Downshift_autocomplete"
+        onBlur={() => console.log('Blur event')}
+        onChange={e => console.log(e)}
+        onKeyDown={() => console.log('Keydown event')}
       />
     </Autocomplete>
 

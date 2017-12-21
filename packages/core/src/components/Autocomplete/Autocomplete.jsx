@@ -71,13 +71,15 @@ export class Autocomplete extends React.PureComponent {
     // Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
-        return React.cloneElement(
-          child,
-          getInputProps({
-            'aria-controls': this.listboxId,
-            id: this.id
-          })
-        );
+        const propOverrides = {
+          'aria-controls': this.listboxId,
+          id: this.id,
+          onBlur: child.props.onBlur,
+          onChange: child.props.onChange,
+          onKeyDown: child.props.onKeyDown
+        };
+
+        return React.cloneElement(child, getInputProps(propOverrides));
       }
 
       return child;
@@ -93,7 +95,9 @@ export class Autocomplete extends React.PureComponent {
       label,
       loading,
       onChange,
-      onInputValueChange
+      onInputValueChange,
+      children,
+      ...autocompleteProps
     } = this.props;
 
     return (
@@ -152,6 +156,7 @@ export class Autocomplete extends React.PureComponent {
             </Button>
           </div>
         )}
+        {...autocompleteProps}
       />
     );
   }
