@@ -82,10 +82,7 @@ function createWebpackCompiler(examplePath) {
 
   if (process.env.NODE_ENV === 'production') {
     const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        drop_console: true,
-        warnings: false
-      }
+      mangle: false // Mangle messes up React code snippets
     });
 
     webpackConfig.plugins.push(uglifyPlugin);
