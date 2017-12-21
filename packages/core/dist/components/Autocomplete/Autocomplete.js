@@ -35,6 +35,8 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -64,6 +66,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
 
     _this.id = (0, _lodash2.default)('autocomplete_');
     _this.labelId = (0, _lodash2.default)('autocomplete_header_');
+    _this.listboxId = (0, _lodash2.default)('autocomplete_owned_listbox_');
     return _this;
   }
 
@@ -110,9 +113,15 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
       // Downshift's `getInputProps` method
       return _react2.default.Children.map(this.props.children, function (child) {
         if (isTextField(child)) {
-          return _react2.default.cloneElement(child, getInputProps({
-            id: _this3.id
-          }));
+          var propOverrides = {
+            'aria-controls': _this3.listboxId,
+            id: _this3.id,
+            onBlur: child.props.onBlur,
+            onChange: child.props.onChange,
+            onKeyDown: child.props.onKeyDown
+          };
+
+          return _react2.default.cloneElement(child, getInputProps(propOverrides));
         }
 
         return child;
@@ -127,15 +136,12 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
           ariaClearLabel = _props.ariaClearLabel,
           clearInputText = _props.clearInputText,
           items = _props.items,
-          itemToString = _props.itemToString,
           label = _props.label,
           loading = _props.loading,
-          onChange = _props.onChange;
+          children = _props.children,
+          autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children']);
 
-
-      return _react2.default.createElement(_downshift2.default, {
-        itemToString: itemToString,
-        onChange: onChange,
+      return _react2.default.createElement(_downshift2.default, _extends({
         render: function render(_ref) {
           var clearSelection = _ref.clearSelection,
               getInputProps = _ref.getInputProps,
@@ -163,6 +169,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
                 {
                   'aria-labelledby': label ? _this4.labelId : null,
                   className: 'ds-c-list--bare',
+                  id: _this4.listboxId,
                   role: 'listbox'
                 },
                 _this4.filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex)
@@ -181,7 +188,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
             )
           );
         }
-      });
+      }, autocompleteProps));
     }
   }]);
 
@@ -200,12 +207,12 @@ Autocomplete.defaultProps = {
 
 Autocomplete.propTypes = {
   /**
-   * Screenreader-specific label for the Clear input link. Intended to provide a longer, more descriptive explanation of the link's behavior.
+   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel: _propTypes2.default.string,
   children: _propTypes2.default.node,
   /**
-   * Clear link text that will appear on the page as part of the rendered component
+   * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
   clearInputText: _propTypes2.default.node,
   /**
@@ -230,7 +237,7 @@ Autocomplete.propTypes = {
    */
   loading: _propTypes2.default.bool,
   /**
-   * Message users will see when the `loading` prop is passed to `<Autcomplete />`.
+   * Message users will see when the `loading` prop is passed to `Autocomplete`.
    */
   loadingMessage: _propTypes2.default.node,
   /**
@@ -238,11 +245,17 @@ Autocomplete.propTypes = {
    */
   noResultsMessage: _propTypes2.default.node,
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state of `downshift`.
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state.
    *
    * Also see: https://github.com/paypal/downshift#onchange
    */
-  onChange: _propTypes2.default.func
+  onChange: _propTypes2.default.func,
+  /**
+   * Called when the child `TextField` value changes. Returns a String `inputValue`.
+   *
+   * Also see: https://github.com/paypal/downshift#oninputvaluechange
+   */
+  onInputValueChange: _propTypes2.default.func
 };
 
 exports.default = Autocomplete;
