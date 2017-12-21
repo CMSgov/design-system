@@ -22,7 +22,7 @@
   "devDependencies": {
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
     "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
-    "autoprefixer": "^7.1.6",
+    "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.3",
     "babel-loader": "^7.1.2",
