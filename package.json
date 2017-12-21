@@ -1,8 +1,7 @@
 {
   "name": "design-system",
   "private": true,
-  "description":
-    "A shared set of design and code elements for creating accessible and consistent websites",
+  "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
     "build": "NODE_ENV=production gulp build --env=production",
@@ -18,17 +17,14 @@
     "test": "jest",
     "test:watch": "NODE_ENV=test jest --watch",
     "update-snapshots": "NODE_ENV=test jest -u",
-    "lint":
-      "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
+    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
-    "@cmsgov/eslint-config-design-system":
-      "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system":
-      "file:./packages/stylelint-config-design-system",
+    "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
+    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
-    "babel-jest": "^21.0.2",
+    "babel-jest": "^22.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
@@ -45,8 +41,8 @@
     "del": "^3.0.0",
     "ejs": "^2.5.7",
     "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "enzyme-to-json": "^3.2.2",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
     "eslint": "^4.12.1",
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.3.0",
@@ -66,7 +62,7 @@
     "gulp-stylelint": "^5.0.0",
     "gulp-util": "^3.0.8",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.0.3",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
     "lint-staged": "^5.0.0",
@@ -106,7 +102,9 @@
       "<rootDir>/tools/jest/polyfills.js",
       "<rootDir>/tools/jest/setupEnzyme.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/examples/",
       "<rootDir>/node_modules/",
@@ -116,7 +114,11 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx}": ["prettier --write", "eslint --fix", "git add"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.5.3"
