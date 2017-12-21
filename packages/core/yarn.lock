@@ -18,9 +18,9 @@ core-js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
-downshift@^1.22.1:
-  version "1.22.3"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.3.tgz#e8d19586edbaaf5379ef0ab3ff83609a57c03193"
+downshift@^1.22.5:
+  version "1.22.5"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.22.5.tgz#48103b2f80259157b01b96d6bdc344c51ce0743e"
 
 encoding@^0.1.11:
   version "0.1.12"
