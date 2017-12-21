@@ -35,15 +35,15 @@ describe('DateField', () => {
   it('returns reference to input fields', () => {
     const refs = {};
     const props = {
-      dayDefaultValue: 'DD',
+      dayDefaultValue: '1',
       dayFieldRef: el => {
         refs.day = el;
       },
-      monthDefaultValue: 'MM',
+      monthDefaultValue: '22',
       monthFieldRef: el => {
         refs.month = el;
       },
-      yearDefaultValue: 'YYYY',
+      yearDefaultValue: '3333',
       yearFieldRef: el => {
         refs.year = el;
       }
@@ -107,9 +107,9 @@ describe('DateField', () => {
           dateFormatter: values => {
             return `${values.month} ${values.day} ${values.year}`;
           },
-          monthValue: 'M',
-          dayValue: 'DD',
-          yearValue: 'YYYY'
+          monthValue: '1',
+          dayValue: '22',
+          yearValue: '3333'
         },
         props
       );
@@ -128,8 +128,8 @@ describe('DateField', () => {
 
       expect(props.onBlur.mock.calls.length).toBe(1);
       expect(props.onChange.mock.calls.length).toBe(1);
-      expect(props.onBlur.mock.calls[0][1]).toBe('M DD YYYY');
-      expect(props.onChange.mock.calls[0][1]).toBe('M DD YYYY');
+      expect(props.onBlur.mock.calls[0][1]).toBe('1 22 3333');
+      expect(props.onChange.mock.calls[0][1]).toBe('1 22 3333');
     });
   });
 });
