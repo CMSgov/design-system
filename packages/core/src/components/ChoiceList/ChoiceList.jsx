@@ -159,7 +159,7 @@ ChoiceList.propTypes = {
       disabled: Choice.propTypes.disabled,
       label: Choice.propTypes.children,
       value: Choice.propTypes.value,
-      requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+      requirementLabel: PropTypes.node
     })
   ).isRequired,
   /**
@@ -170,7 +170,7 @@ ChoiceList.propTypes = {
    * Disables the entire field.
    */
   disabled: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.node,
   /**
    * Additional hint text to display
    */
@@ -178,7 +178,7 @@ ChoiceList.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  requirementLabel: PropTypes.node,
   /**
    * Applies the "inverse" UI theme
    */

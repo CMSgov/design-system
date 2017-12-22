@@ -20,7 +20,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -138,7 +138,7 @@ exports[`DateField has errorMessage 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -588,7 +588,7 @@ exports[`DateField has requirementLabel 1`] = `
         Optional
       </span>
        
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -699,7 +699,7 @@ exports[`DateField is inversed 1`] = `
     <span
       className="ds-c-field__hint ds-c-field__hint--inverse"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -810,7 +810,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
