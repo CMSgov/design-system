@@ -3,10 +3,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <DateField
-    monthDefaultValue={10}
-    dayDefaultValue="31"
-    yearDefaultValue="2020"
-  />,
+  <React.Fragment>
+    <DateField
+      monthDefaultValue={10}
+      dayDefaultValue="31"
+      yearDefaultValue="2020"
+    />
+
+    <DateField
+      errorMessage="Please enter a year in the past"
+      monthDefaultValue={10}
+      dayDefaultValue="31"
+      yearDefaultValue="2020"
+      yearInvalid
+    />
+  </React.Fragment>,
   document.getElementById('js-example')
 );
