@@ -103,7 +103,7 @@ export class DateField extends React.PureComponent {
 
 DateField.defaultProps = {
   label: 'Date',
-  hint: 'For example: 4 25 1986',
+  hint: 'For example: 4/25/1986',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
@@ -121,11 +121,11 @@ DateField.propTypes = {
    * its only argument, in the shape of: `{ day, month, year }`
    */
   dateFormatter: PropTypes.func,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.node,
   /**
    * Additional hint text to display above the individual month/day/year fields
    */
-  hint: PropTypes.string,
+  hint: PropTypes.node,
   /**
    * Applies the "inverse" UI theme
    */
@@ -133,11 +133,11 @@ DateField.propTypes = {
   /**
    * The primary label, rendered above the individual month/day/year fields
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  requirementLabel: PropTypes.node,
   /**
    * Called anytime any date input is blurred
    */
@@ -149,7 +149,7 @@ DateField.propTypes = {
   /**
    * Label for the day field
    */
-  dayLabel: PropTypes.string,
+  dayLabel: PropTypes.node,
   /**
    * `name` for the day `input` field
    */
@@ -171,7 +171,7 @@ DateField.propTypes = {
   /**
    * Label for the month field
    */
-  monthLabel: PropTypes.string,
+  monthLabel: PropTypes.node,
   /**
    * `name` for the month `input` field
    */
@@ -202,7 +202,7 @@ DateField.propTypes = {
   /**
    * Label for the year `input` field
    */
-  yearLabel: PropTypes.string,
+  yearLabel: PropTypes.node,
   /**
    * Max value for the year `input` field
    */
