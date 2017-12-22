@@ -249,7 +249,7 @@ exports[`DateField has invalid day 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -360,7 +360,7 @@ exports[`DateField has invalid month 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
@@ -471,7 +471,7 @@ exports[`DateField has invalid year 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 25 1986
+      For example: 4/25/1986
     </span>
   </legend>
   <div
