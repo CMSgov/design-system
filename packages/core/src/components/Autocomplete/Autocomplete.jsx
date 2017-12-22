@@ -110,7 +110,7 @@ export class Autocomplete extends React.PureComponent {
           <div className="ds-u-clearfix ds-c-autocomplete">
             {this.renderChildren(getInputProps)}
 
-            {isOpen ? (
+            {isOpen && (loading || items) ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
                 {label &&
                   !loading && (
@@ -188,7 +188,7 @@ Autocomplete.propTypes = {
       id: PropTypes.string,
       name: PropTypes.string
     })
-  ).isRequired,
+  ),
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */

@@ -27,6 +27,22 @@ describe('Autocomplete', () => {
     expect(inst).toBeInstanceOf(Autocomplete);
   });
 
+  it('renders items', () => {
+    const { wrapper } = render({ isOpen: true }, true);
+
+    const list = wrapper.find('ul');
+    expect(list.exists()).toBe(true);
+
+    const items = list.find('li');
+    expect(items.length).toEqual(1);
+    expect(items.text()).toEqual('Cook County, IL');
+  });
+
+  it('renders Autocomplete component without items', () => {
+    const { wrapper } = render({ items: undefined, isOpen: true }, true);
+    expect(wrapper.find('ul').exists()).toBe(false);
+  });
+
   it('returns correct default props', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
