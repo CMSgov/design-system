@@ -87,7 +87,7 @@ describe('DateField', () => {
       expect(props.onChange.mock.calls.length).toBe(0);
     });
 
-    it('calls onBlur when day is changed', () => {
+    it('calls onChange when day is changed', () => {
       const wrapper = shallow(<DateField {...props} />);
 
       wrapper
@@ -99,6 +99,53 @@ describe('DateField', () => {
       expect(props.onChange.mock.calls.length).toBe(1);
       // No date formatter
       expect(props.onChange.mock.calls[0][1]).toBeUndefined();
+    });
+
+    it('calls onComponentBlur when component loses focus', done => {
+      const onComponentBlur = jest.fn();
+      const dateFormatter = jest.fn();
+      let yearFieldRef;
+      mount(
+        <DateField
+          onComponentBlur={onComponentBlur}
+          dateFormatter={dateFormatter}
+          yearFieldRef={ref => {
+            yearFieldRef = ref;
+          }}
+        />
+      );
+
+      const body = document.activeElement;
+      yearFieldRef.focus();
+      body.focus();
+
+      setTimeout(() => {
+        console.log(document.activeElement);
+        expect(onComponentBlur).toHaveBeenCalled();
+        expect(dateFormatter).toHaveBeenCalled();
+        done();
+      }, 30);
+    });
+
+    it('does not call onComponentBlur when focus switches to other date component', done => {
+      const onComponentBlur = jest.fn();
+      const dateFormatter = jest.fn();
+      const wrapper = mount(
+        <DateField
+          onComponentBlur={onComponentBlur}
+          dateFormatter={dateFormatter}
+        />
+      );
+
+      const textFields = wrapper.find('TextField');
+      textFields.at(1).simulate('blur');
+      textFields.at(2).simulate('focus');
+
+      setTimeout(() => {
+        expect(onComponentBlur).not.toHaveBeenCalled();
+        expect(dateFormatter).not.toHaveBeenCalled();
+        done();
+      }, 30);
     });
 
     it('formats the date as a single string', () => {

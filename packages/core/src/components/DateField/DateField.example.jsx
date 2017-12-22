@@ -2,11 +2,26 @@ import DateField from './DateField';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <DateField
-    monthDefaultValue={10}
-    dayDefaultValue="31"
-    yearDefaultValue="2020"
-  />,
-  document.getElementById('js-example')
-);
+class DateFieldExample extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <DateField
+        monthDefaultValue={10}
+        dayDefaultValue="31"
+        yearDefaultValue="2020"
+        hint={this.state.hint}
+        onComponentBlur={() =>
+          this.setState({ hint: '[DateField]: Component lost focus' })
+        }
+      />
+    );
+  }
+}
+
+ReactDOM.render(<DateFieldExample />, document.getElementById('js-example'));
