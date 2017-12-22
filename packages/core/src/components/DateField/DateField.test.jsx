@@ -104,23 +104,17 @@ describe('DateField', () => {
     it('calls onComponentBlur when component loses focus', done => {
       const onComponentBlur = jest.fn();
       const dateFormatter = jest.fn();
-      let yearFieldRef;
-      mount(
+      const wrapper = mount(
         <DateField
           onComponentBlur={onComponentBlur}
           dateFormatter={dateFormatter}
-          yearFieldRef={ref => {
-            yearFieldRef = ref;
-          }}
         />
       );
 
-      const body = document.activeElement;
-      yearFieldRef.focus();
-      body.focus();
+      const yearField = wrapper.find('.ds-c-field--year');
+      yearField.simulate('blur');
 
       setTimeout(() => {
-        console.log(document.activeElement);
         expect(onComponentBlur).toHaveBeenCalled();
         expect(dateFormatter).toHaveBeenCalled();
         done();
@@ -130,16 +124,20 @@ describe('DateField', () => {
     it('does not call onComponentBlur when focus switches to other date component', done => {
       const onComponentBlur = jest.fn();
       const dateFormatter = jest.fn();
+      let yearField;
       const wrapper = mount(
         <DateField
           onComponentBlur={onComponentBlur}
           dateFormatter={dateFormatter}
+          yearFieldRef={ref => {
+            yearField = ref;
+          }}
         />
       );
 
-      const textFields = wrapper.find('TextField');
-      textFields.at(1).simulate('blur');
-      textFields.at(2).simulate('focus');
+      const monthField = wrapper.find('.ds-c-field--month');
+      monthField.simulate('blur');
+      yearField.focus();
 
       setTimeout(() => {
         expect(onComponentBlur).not.toHaveBeenCalled();
