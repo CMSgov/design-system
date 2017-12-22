@@ -3,8 +3,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 /**
- * The FormLabel component provides the label/legend for a field, along with any
- * associated hint text and error messaging.
+ * The `FormLabel` component provides the `label` (or `legend`) for a field,
+ * along with any associated hint text and error message.
  */
 export class FormLabel extends React.PureComponent {
   errorMessage() {
@@ -22,31 +22,19 @@ export class FormLabel extends React.PureComponent {
   }
 
   hint() {
-    const { hint } = this.props;
-    const requirementLabel = this.requirementLabel();
+    const { hint, requirementLabel } = this.props;
+    if (!hint && !requirementLabel) return;
+
     const classes = classNames('ds-c-field__hint', {
       'ds-c-field__hint--inverse': this.props.inversed
     });
 
-    if (hint && requirementLabel) {
-      return (
-        <span className={classes}>
-          {requirementLabel} {hint}
-        </span>
-      );
-    } else if (requirementLabel) {
-      return <span className={classes}>{requirementLabel}</span>;
-    } else if (hint) {
-      return <span className={classes}>{hint}</span>;
-    }
-  }
-
-  requirementLabel() {
-    const { requirementLabel } = this.props;
-    return typeof requirementLabel === 'string' ? (
-      <span className="ds-u-font-weight--bold">{requirementLabel}</span>
-    ) : (
-      requirementLabel
+    return (
+      <span className={classes}>
+        {requirementLabel}
+        {requirementLabel && hint && ' '}
+        {hint}
+      </span>
     );
   }
 
@@ -92,7 +80,9 @@ FormLabel.propTypes = {
    */
   hint: PropTypes.node,
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement (ie. "Optional", or "Required").
+   * In most cases, this should be used to indicate which fields are optional.
+   * See the [form guidelines]({{root}}/guidelines/forms/) for more info.
    */
   requirementLabel: PropTypes.node,
   /**

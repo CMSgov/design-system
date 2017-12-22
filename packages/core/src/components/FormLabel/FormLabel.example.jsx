@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <FormLabel
-    errorMessage="Your favorite number cannot be the same as your favorite color."
-    hint="It must not be the same as your favorite number"
-    fieldId="an-input-field"
+    errorMessage="Please enter a valid phone number."
+    hint="We'll use this number as a backup if we need to contact you about your application."
+    fieldId="number-field-id"
+    requirementLabel="Optional."
   >
-    Please enter your favorite color
+    Phone number
   </FormLabel>,
   document.getElementById('js-example')
 );
