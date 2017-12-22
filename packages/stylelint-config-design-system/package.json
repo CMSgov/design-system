@@ -1,21 +1,20 @@
 {
   "name": "@cmsgov/stylelint-config-design-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publishConfig": {
     "access": "public"
   },
-  "description": "A sharable stylelint config that enforces the design system's CSS and Sass rules",
+  "description":
+    "A sharable stylelint config that enforces the design system's CSS and Sass rules",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "engines": {
     "node": ">=4.0.0"
   },
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "dependencies": {
-    "stylelint-order": "^0.7.0",
-    "stylelint-scss": "^2.1.0"
+    "stylelint-order": "^0.8.0",
+    "stylelint-scss": "^2.2.0"
   },
   "peerDependencies": {
     "stylelint": ">=8.1.1"

@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/eslint-config-design-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -13,11 +13,11 @@
   "files": ["index.js"],
   "dependencies": {
     "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-jest": "^21.1.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2"
+    "eslint-plugin-jest": "^21.5.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3"
   },
   "peerDependencies": {
     "eslint": ">=3.17.1",
-    "eslint-config-nava": ">=2.0.0"
+    "eslint-config-nava": ">=2.1.0"
   }
 }

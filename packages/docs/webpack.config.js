@@ -55,8 +55,10 @@ function createConfig(rootPath = '', packages, hotReload = true) {
 
   if (process.env.NODE_ENV === 'production') {
     const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        drop_console: true
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        }
       }
     });
 
