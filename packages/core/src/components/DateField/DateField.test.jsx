@@ -12,7 +12,7 @@ describe('DateField', () => {
 
   it('has requirementLabel', () => {
     expect(
-      renderer.create(<DateField requirementLabel="Optional" />)
+      renderer.create(<DateField requirementLabel="Optional." />)
     ).toMatchSnapshot();
   });
 

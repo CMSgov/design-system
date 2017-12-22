@@ -53,10 +53,8 @@ describe('FormLabel', () => {
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
     const hint = wrapper.find('.ds-c-field__hint');
-    const boldWrapper = hint.children().first();
 
     expect(hint.text()).toEqual('Optional.');
-    expect(boldWrapper.hasClass('ds-u-font-weight--bold')).toBe(true);
   });
 
   it('renders requirementLabel node', () => {
@@ -68,12 +66,6 @@ describe('FormLabel', () => {
 
     expect(hint.html()).toMatch(/<em>/);
     expect(hint.text()).toEqual('It is really optional');
-    expect(
-      hint
-        .children()
-        .first()
-        .hasClass('ds-u-font-weight--bold')
-    ).toEqual(false);
   });
 
   it('renders as a legend element', () => {

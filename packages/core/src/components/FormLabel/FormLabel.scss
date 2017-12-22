@@ -4,10 +4,10 @@
 Form Label & Legend
 
 Markup:
-<label class="ds-c-label" for="lastname">
-  ID Number
+<label class="ds-c-label" for="number-field-id">
+  Phone number
   <span class="ds-c-field__hint">
-    It's on your benefit card and benefit letter. For example, ‘12 34 56B’.
+    Optional. We'll use this number as a backup if we need to contact you about your application.
   </span>
 </label>
 
