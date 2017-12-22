@@ -52,6 +52,8 @@ class ReactPropDoc extends React.PureComponent {
       }
 
       return `${propType}[${valueType}]`;
+    } else if (propType === 'node') {
+      return 'string, number, element, or array';
     } else if (validValues) {
       return validValues;
     }
