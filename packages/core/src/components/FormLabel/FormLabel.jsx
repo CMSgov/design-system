@@ -81,7 +81,7 @@ FormLabel.propTypes = {
   /** The root HTML element used to render the label */
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  errorMessage: PropTypes.node,
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
@@ -90,11 +90,11 @@ FormLabel.propTypes = {
   /**
    * Additional hint text to display
    */
-  hint: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  hint: PropTypes.node,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  requirementLabel: PropTypes.node,
   /**
    * Set to `true` to apply the "inverse" theme
    */

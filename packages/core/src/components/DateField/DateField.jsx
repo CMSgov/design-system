@@ -137,7 +137,7 @@ DateField.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  requirementLabel: PropTypes.node,
   /**
    * Called anytime any date input is blurred
    */

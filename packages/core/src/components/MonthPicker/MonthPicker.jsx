@@ -223,7 +223,7 @@ MonthPicker.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  requirementLabel: PropTypes.node,
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.
