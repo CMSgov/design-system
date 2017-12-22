@@ -103,7 +103,7 @@ export class DateField extends React.PureComponent {
 
 DateField.defaultProps = {
   label: 'Date',
-  hint: 'For example: 4 25 1986',
+  hint: 'For example: 4/25/1986',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
