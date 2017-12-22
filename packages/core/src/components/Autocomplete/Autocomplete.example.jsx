@@ -95,6 +95,14 @@ ReactDOM.render(
         name="Downshift_autocomplete"
       />
     </Autocomplete>
+
+    <Autocomplete>
+      <TextField
+        hint="No list should be shown if no item array is provided and it's not loading. This could be the case if a user has not yet entered the minimum number of characters required for a search."
+        label="Nothing shown"
+        name="Downshift_autocomplete"
+      />
+    </Autocomplete>
   </div>,
   document.getElementById('js-example')
 );
