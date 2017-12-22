@@ -170,7 +170,7 @@ ChoiceList.propTypes = {
    * Disables the entire field.
    */
   disabled: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.node,
   /**
    * Additional hint text to display
    */

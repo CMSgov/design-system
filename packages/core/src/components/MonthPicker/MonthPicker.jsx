@@ -215,7 +215,7 @@ MonthPicker.propTypes = {
    * Additional classes to be added to the `FormLabel`.
    */
   labelClassName: PropTypes.string,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.node,
   /**
    * Additional hint text to display
    */

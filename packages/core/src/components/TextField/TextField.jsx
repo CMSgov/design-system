@@ -88,7 +88,7 @@ TextField.propTypes = {
    */
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.node,
   /**
    * Additional classes to be added to the field element
    */
