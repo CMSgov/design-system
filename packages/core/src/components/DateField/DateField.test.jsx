@@ -26,6 +26,18 @@ describe('DateField', () => {
     expect(renderer.create(<DateField inversed />)).toMatchSnapshot();
   });
 
+  it('has invalid month', () => {
+    expect(renderer.create(<DateField monthInvalid />)).toMatchSnapshot();
+  });
+
+  it('has invalid day', () => {
+    expect(renderer.create(<DateField dayInvalid />)).toMatchSnapshot();
+  });
+
+  it('has invalid year', () => {
+    expect(renderer.create(<DateField yearInvalid />)).toMatchSnapshot();
+  });
+
   it('has custom yearMax and yearMin', () => {
     expect(
       renderer.create(<DateField yearMax={2000} yearMin="1990" />)

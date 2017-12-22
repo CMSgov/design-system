@@ -2,6 +2,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
+import classNames from 'classnames';
 
 export class DateField extends React.PureComponent {
   constructor(props) {
@@ -55,7 +56,9 @@ export class DateField extends React.PureComponent {
         <div className="ds-l-form-row">
           <TextField
             {...sharedDateFieldProps}
-            fieldClassName="ds-c-field--month"
+            fieldClassName={classNames('ds-c-field--month', {
+              'ds-c-field--error': this.props.monthInvalid
+            })}
             fieldRef={el => {
               this.monthInput = el;
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
@@ -69,7 +72,9 @@ export class DateField extends React.PureComponent {
           />
           <TextField
             {...sharedDateFieldProps}
-            fieldClassName="ds-c-field--day"
+            fieldClassName={classNames('ds-c-field--day', {
+              'ds-c-field--error': this.props.dayInvalid
+            })}
             fieldRef={el => {
               this.dayInput = el;
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
@@ -83,7 +88,9 @@ export class DateField extends React.PureComponent {
           />
           <TextField
             {...sharedDateFieldProps}
-            fieldClassName="ds-c-field--year"
+            fieldClassName={classNames('ds-c-field--year', {
+              'ds-c-field--error': this.props.yearInvalid
+            })}
             fieldRef={el => {
               this.yearInput = el;
               if (this.props.yearFieldRef) this.props.yearFieldRef(el);
@@ -160,9 +167,13 @@ DateField.propTypes = {
    */
   dayDefaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
-   * Access a reference to the day `input` element
+   * Access a reference to the day `input`
    */
   dayFieldRef: PropTypes.func,
+  /**
+   * Apply error styling to the day `input`
+   */
+  dayInvalid: PropTypes.bool,
   /**
    * Sets the day input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `dayDefaultValue`.
@@ -182,9 +193,13 @@ DateField.propTypes = {
    */
   monthDefaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
-   * Access a reference to the month `input` element
+   * Access a reference to the month `input`
    */
   monthFieldRef: PropTypes.func,
+  /**
+   * Apply error styling to the month `input`
+   */
+  monthInvalid: PropTypes.bool,
   /**
    * Sets the month input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `monthDefaultValue`.
@@ -196,9 +211,13 @@ DateField.propTypes = {
    */
   yearDefaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
-   * Access a reference to the year `input` element
+   * Access a reference to the year `input`
    */
   yearFieldRef: PropTypes.func,
+  /**
+   * Apply error styling to the year `input`
+   */
+  yearInvalid: PropTypes.bool,
   /**
    * Label for the year `input` field
    */
