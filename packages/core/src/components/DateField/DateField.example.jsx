@@ -11,15 +11,25 @@ class DateFieldExample extends React.PureComponent {
 
   render() {
     return (
-      <DateField
-        monthDefaultValue={10}
-        dayDefaultValue="31"
-        yearDefaultValue="2020"
-        hint={this.state.hint}
-        onComponentBlur={() =>
-          this.setState({ hint: '[DateField]: Component lost focus' })
-        }
-      />
+      <React.Fragment>
+        <DateField
+          monthDefaultValue={10}
+          dayDefaultValue="31"
+          yearDefaultValue="2020"
+          hint={this.state.hint}
+          onComponentBlur={() =>
+            this.setState({ hint: '[DateField]: Component lost focus' })
+          }
+        />
+
+        <DateField
+          errorMessage="Please enter a year in the past"
+          monthDefaultValue={10}
+          dayDefaultValue="31"
+          yearDefaultValue="2020"
+          yearInvalid
+        />
+      </React.Fragment>
     );
   }
 }
