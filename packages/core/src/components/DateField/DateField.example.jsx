@@ -8,6 +8,7 @@ ReactDOM.render(
       monthDefaultValue={10}
       dayDefaultValue="31"
       yearDefaultValue="2020"
+      onComponentBlur={() => console.log('[DateField]: Component lost focus')}
     />
 
     <DateField

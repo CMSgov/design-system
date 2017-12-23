@@ -24,11 +24,33 @@ export class DateField extends React.PureComponent {
   }
 
   handleBlur(evt) {
-    this.props.onBlur(evt, this.formatDate());
+    if (this.props.onBlur) {
+      this.props.onBlur(evt, this.formatDate());
+    }
+
+    if (this.props.onComponentBlur) {
+      this.handleComponentBlur(evt);
+    }
   }
 
   handleChange(evt) {
     this.props.onChange(evt, this.formatDate());
+  }
+
+  handleComponentBlur(evt) {
+    // The active element is always the document body during a focus
+    // transition, so in order to check if the newly focused element
+    // is one of our other date inputs, we're going to have to wait
+    // a bit.
+    setTimeout(() => {
+      if (
+        document.activeElement !== this.dayInput &&
+        document.activeElement !== this.monthInput &&
+        document.activeElement !== this.yearInput
+      ) {
+        this.props.onComponentBlur(evt, this.formatDate());
+      }
+    }, 20);
   }
 
   render() {
@@ -36,7 +58,8 @@ export class DateField extends React.PureComponent {
       className: 'ds-l-col--auto',
       labelClassName: 'ds-u-margin-top--1',
       inversed: this.props.inversed,
-      onBlur: this.props.onBlur && this.handleBlur,
+      onBlur:
+        (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
       onChange: this.props.onChange && this.handleChange,
       type: 'number'
     };
@@ -149,6 +172,12 @@ DateField.propTypes = {
    * Called anytime any date input is blurred
    */
   onBlur: PropTypes.func,
+  /**
+   * Called when any date input is blurred and the focus does not land on one
+   * of the other date inputs inside this component (i.e., when the whole
+   * component loses focus)
+   */
+  onComponentBlur: PropTypes.func,
   /**
    * Called anytime any date input is changed
    */
