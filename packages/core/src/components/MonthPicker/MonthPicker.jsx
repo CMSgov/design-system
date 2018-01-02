@@ -107,19 +107,20 @@ export class MonthPicker extends React.PureComponent {
     return (
       <ol className="ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap">
         {this.months.map((month, i) => (
-          <Choice
-            name={name}
-            value={i + 1}
-            checked={selectedMonths.includes(i + 1)}
-            key={month}
-            onChange={e => this.handleChange(e)}
-            className="ds-c-month-picker__month"
-            disabled={disabledMonths.includes(i + 1)}
-            inversed={inversed}
-            aria-label={this.monthsLong[i]}
-          >
-            {month}
-          </Choice>
+          <li key={month}>
+            <Choice
+              name={name}
+              value={i + 1}
+              checked={selectedMonths.includes(i + 1)}
+              onChange={e => this.handleChange(e)}
+              className="ds-c-month-picker__month"
+              disabled={disabledMonths.includes(i + 1)}
+              inversed={inversed}
+              aria-label={this.monthsLong[i]}
+            >
+              {month}
+            </Choice>
+          </li>
         ))}
       </ol>
     );
