@@ -226,7 +226,7 @@ ChoiceList.propTypes = {
     disabled: _Choice2.default.propTypes.disabled,
     label: _Choice2.default.propTypes.children,
     value: _Choice2.default.propTypes.value,
-    requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node])
+    requirementLabel: _propTypes2.default.node
   })).isRequired,
   /**
    * Additional classes to be added to the root element.
@@ -236,7 +236,7 @@ ChoiceList.propTypes = {
    * Disables the entire field.
    */
   disabled: _propTypes2.default.bool,
-  errorMessage: _propTypes2.default.string,
+  errorMessage: _propTypes2.default.node,
   /**
    * Additional hint text to display
    */
@@ -244,7 +244,7 @@ ChoiceList.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Applies the "inverse" UI theme
    */

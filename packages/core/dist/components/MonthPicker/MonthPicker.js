@@ -164,21 +164,24 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         { className: 'ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap' },
         this.months.map(function (month, i) {
           return _react2.default.createElement(
-            _Choice2.default,
-            {
-              name: name,
-              value: i + 1,
-              checked: selectedMonths.includes(i + 1),
-              key: month,
-              onChange: function onChange(e) {
-                return _this2.handleChange(e);
+            'li',
+            { key: month },
+            _react2.default.createElement(
+              _Choice2.default,
+              {
+                name: name,
+                value: i + 1,
+                checked: selectedMonths.includes(i + 1),
+                onChange: function onChange(e) {
+                  return _this2.handleChange(e);
+                },
+                className: 'ds-c-month-picker__month',
+                disabled: disabledMonths.includes(i + 1),
+                inversed: inversed,
+                'aria-label': _this2.monthsLong[i]
               },
-              className: 'ds-c-month-picker__month',
-              disabled: disabledMonths.includes(i + 1),
-              inversed: inversed,
-              'aria-label': _this2.monthsLong[i]
-            },
-            month
+              month
+            )
           );
         })
       );
@@ -287,7 +290,7 @@ MonthPicker.propTypes = {
    * Additional classes to be added to the `FormLabel`.
    */
   labelClassName: _propTypes2.default.string,
-  errorMessage: _propTypes2.default.string,
+  errorMessage: _propTypes2.default.node,
   /**
    * Additional hint text to display
    */
@@ -295,7 +298,7 @@ MonthPicker.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Array of month numbers, where `1` is January, and any month included
    * is disabled for selection.

@@ -192,11 +192,11 @@ Choice.propTypes = {
   /**
    * Content to be shown when the choice is checked
    */
-  checkedChildren: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  checkedChildren: _propTypes2.default.node,
   /**
    * Content to be shown when the choice is not checked
    */
-  uncheckedChildren: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  uncheckedChildren: _propTypes2.default.node,
   /**
    * Additional classes to be added to the root `div` element.
    */
@@ -218,7 +218,7 @@ Choice.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Applies the "inverse" UI theme
    */

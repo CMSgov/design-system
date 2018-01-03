@@ -126,9 +126,9 @@ TextField.propTypes = {
    * Sets the initial value. Use this for an uncontrolled component; otherwise,
    * use the `value` property.
    */
-  defaultValue: _propTypes2.default.string,
+  defaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   disabled: _propTypes2.default.bool,
-  errorMessage: _propTypes2.default.string,
+  errorMessage: _propTypes2.default.node,
   /**
    * Additional classes to be added to the field element
    */
@@ -148,7 +148,7 @@ TextField.propTypes = {
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Applies the "inverse" UI theme
    */
@@ -189,7 +189,7 @@ TextField.propTypes = {
    * Sets the input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value: _propTypes2.default.string
+  value: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
 };
 
 exports.default = TextField;

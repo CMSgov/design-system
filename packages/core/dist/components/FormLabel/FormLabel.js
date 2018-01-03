@@ -28,8 +28,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * The FormLabel component provides the label/legend for a field, along with any
- * associated hint text and error messaging.
+ * The `FormLabel` component provides the `label` (or `legend`) for a field,
+ * along with any associated hint text and error message.
  */
 var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   _inherits(FormLabel, _React$PureComponent);
@@ -58,45 +58,23 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   }, {
     key: 'hint',
     value: function hint() {
-      var hint = this.props.hint;
+      var _props = this.props,
+          hint = _props.hint,
+          requirementLabel = _props.requirementLabel;
 
-      var requirementLabel = this.requirementLabel();
+      if (!hint && !requirementLabel) return;
+
       var classes = (0, _classnames2.default)('ds-c-field__hint', {
         'ds-c-field__hint--inverse': this.props.inversed
       });
 
-      if (hint && requirementLabel) {
-        return _react2.default.createElement(
-          'span',
-          { className: classes },
-          requirementLabel,
-          ' ',
-          hint
-        );
-      } else if (requirementLabel) {
-        return _react2.default.createElement(
-          'span',
-          { className: classes },
-          requirementLabel
-        );
-      } else if (hint) {
-        return _react2.default.createElement(
-          'span',
-          { className: classes },
-          hint
-        );
-      }
-    }
-  }, {
-    key: 'requirementLabel',
-    value: function requirementLabel() {
-      var requirementLabel = this.props.requirementLabel;
-
-      return typeof requirementLabel === 'string' ? _react2.default.createElement(
+      return _react2.default.createElement(
         'span',
-        { className: 'ds-u-font-weight--bold' },
-        requirementLabel
-      ) : requirementLabel;
+        { className: classes },
+        requirementLabel,
+        requirementLabel && hint && ' ',
+        hint
+      );
     }
   }, {
     key: 'render',
@@ -138,7 +116,7 @@ FormLabel.propTypes = {
   /** The root HTML element used to render the label */
   component: _propTypes2.default.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
-  errorMessage: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  errorMessage: _propTypes2.default.node,
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
@@ -147,11 +125,13 @@ FormLabel.propTypes = {
   /**
    * Additional hint text to display
    */
-  hint: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  hint: _propTypes2.default.node,
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   * Text showing the requirement (ie. "Optional", or "Required").
+   * In most cases, this should be used to indicate which fields are optional.
+   * See the [form guidelines]({{root}}/guidelines/forms/) for more info.
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Set to `true` to apply the "inverse" theme
    */

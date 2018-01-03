@@ -25,6 +25,10 @@ var _TextField = require('../TextField/TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62,7 +66,13 @@ var DateField = exports.DateField = function (_React$PureComponent) {
   }, {
     key: 'handleBlur',
     value: function handleBlur(evt) {
-      this.props.onBlur(evt, this.formatDate());
+      if (this.props.onBlur) {
+        this.props.onBlur(evt, this.formatDate());
+      }
+
+      if (this.props.onComponentBlur) {
+        this.handleComponentBlur(evt);
+      }
     }
   }, {
     key: 'handleChange',
@@ -70,15 +80,30 @@ var DateField = exports.DateField = function (_React$PureComponent) {
       this.props.onChange(evt, this.formatDate());
     }
   }, {
+    key: 'handleComponentBlur',
+    value: function handleComponentBlur(evt) {
+      var _this2 = this;
+
+      // The active element is always the document body during a focus
+      // transition, so in order to check if the newly focused element
+      // is one of our other date inputs, we're going to have to wait
+      // a bit.
+      setTimeout(function () {
+        if (document.activeElement !== _this2.dayInput && document.activeElement !== _this2.monthInput && document.activeElement !== _this2.yearInput) {
+          _this2.props.onComponentBlur(evt, _this2.formatDate());
+        }
+      }, 20);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var sharedDateFieldProps = {
         className: 'ds-l-col--auto',
         labelClassName: 'ds-u-margin-top--1',
         inversed: this.props.inversed,
-        onBlur: this.props.onBlur && this.handleBlur,
+        onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
         onChange: this.props.onChange && this.handleChange,
         type: 'number'
       };
@@ -105,10 +130,12 @@ var DateField = exports.DateField = function (_React$PureComponent) {
           'div',
           { className: 'ds-l-form-row' },
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
-            fieldClassName: 'ds-c-field--month',
+            fieldClassName: (0, _classnames2.default)('ds-c-field--month', {
+              'ds-c-field--error': this.props.monthInvalid
+            }),
             fieldRef: function fieldRef(el) {
-              _this2.monthInput = el;
-              if (_this2.props.monthFieldRef) _this2.props.monthFieldRef(el);
+              _this3.monthInput = el;
+              if (_this3.props.monthFieldRef) _this3.props.monthFieldRef(el);
             },
             max: '12',
             min: '1',
@@ -118,10 +145,12 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             value: this.props.monthValue
           })),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
-            fieldClassName: 'ds-c-field--day',
+            fieldClassName: (0, _classnames2.default)('ds-c-field--day', {
+              'ds-c-field--error': this.props.dayInvalid
+            }),
             fieldRef: function fieldRef(el) {
-              _this2.dayInput = el;
-              if (_this2.props.dayFieldRef) _this2.props.dayFieldRef(el);
+              _this3.dayInput = el;
+              if (_this3.props.dayFieldRef) _this3.props.dayFieldRef(el);
             },
             max: '31',
             min: '1',
@@ -131,10 +160,12 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             value: this.props.dayValue
           })),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
-            fieldClassName: 'ds-c-field--year',
+            fieldClassName: (0, _classnames2.default)('ds-c-field--year', {
+              'ds-c-field--error': this.props.yearInvalid
+            }),
             fieldRef: function fieldRef(el) {
-              _this2.yearInput = el;
-              if (_this2.props.yearFieldRef) _this2.props.yearFieldRef(el);
+              _this3.yearInput = el;
+              if (_this3.props.yearFieldRef) _this3.props.yearFieldRef(el);
             },
             defaultValue: this.props.yearDefaultValue,
             label: this.props.yearLabel,
@@ -153,7 +184,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
 
 DateField.defaultProps = {
   label: 'Date',
-  hint: 'For example: 4 25 1986',
+  hint: 'For example: 4/25/1986',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
@@ -171,11 +202,11 @@ DateField.propTypes = {
    * its only argument, in the shape of: `{ day, month, year }`
    */
   dateFormatter: _propTypes2.default.func,
-  errorMessage: _propTypes2.default.string,
+  errorMessage: _propTypes2.default.node,
   /**
    * Additional hint text to display above the individual month/day/year fields
    */
-  hint: _propTypes2.default.string,
+  hint: _propTypes2.default.node,
   /**
    * Applies the "inverse" UI theme
    */
@@ -183,15 +214,21 @@ DateField.propTypes = {
   /**
    * The primary label, rendered above the individual month/day/year fields
    */
-  label: _propTypes2.default.string,
+  label: _propTypes2.default.node,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
-  requirementLabel: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.node]),
+  requirementLabel: _propTypes2.default.node,
   /**
    * Called anytime any date input is blurred
    */
   onBlur: _propTypes2.default.func,
+  /**
+   * Called when any date input is blurred and the focus does not land on one
+   * of the other date inputs inside this component (i.e., when the whole
+   * component loses focus)
+   */
+  onComponentBlur: _propTypes2.default.func,
   /**
    * Called anytime any date input is changed
    */
@@ -199,7 +236,7 @@ DateField.propTypes = {
   /**
    * Label for the day field
    */
-  dayLabel: _propTypes2.default.string,
+  dayLabel: _propTypes2.default.node,
   /**
    * `name` for the day `input` field
    */
@@ -210,9 +247,13 @@ DateField.propTypes = {
    */
   dayDefaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
-   * Access a reference to the day `input` element
+   * Access a reference to the day `input`
    */
   dayFieldRef: _propTypes2.default.func,
+  /**
+   * Apply error styling to the day `input`
+   */
+  dayInvalid: _propTypes2.default.bool,
   /**
    * Sets the day input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `dayDefaultValue`.
@@ -221,7 +262,7 @@ DateField.propTypes = {
   /**
    * Label for the month field
    */
-  monthLabel: _propTypes2.default.string,
+  monthLabel: _propTypes2.default.node,
   /**
    * `name` for the month `input` field
    */
@@ -232,9 +273,13 @@ DateField.propTypes = {
    */
   monthDefaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
-   * Access a reference to the month `input` element
+   * Access a reference to the month `input`
    */
   monthFieldRef: _propTypes2.default.func,
+  /**
+   * Apply error styling to the month `input`
+   */
+  monthInvalid: _propTypes2.default.bool,
   /**
    * Sets the month input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `monthDefaultValue`.
@@ -246,13 +291,17 @@ DateField.propTypes = {
    */
   yearDefaultValue: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   /**
-   * Access a reference to the year `input` element
+   * Access a reference to the year `input`
    */
   yearFieldRef: _propTypes2.default.func,
   /**
+   * Apply error styling to the year `input`
+   */
+  yearInvalid: _propTypes2.default.bool,
+  /**
    * Label for the year `input` field
    */
-  yearLabel: _propTypes2.default.string,
+  yearLabel: _propTypes2.default.node,
   /**
    * Max value for the year `input` field
    */

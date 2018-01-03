@@ -153,7 +153,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
             'div',
             { className: 'ds-u-clearfix ds-c-autocomplete' },
             _this4.renderChildren(getInputProps),
-            isOpen ? _react2.default.createElement(
+            isOpen && (loading || items) ? _react2.default.createElement(
               'div',
               { className: 'ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list' },
               label && !loading && _react2.default.createElement(
@@ -227,7 +227,7 @@ Autocomplete.propTypes = {
   items: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     id: _propTypes2.default.string,
     name: _propTypes2.default.string
-  })).isRequired,
+  })),
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
