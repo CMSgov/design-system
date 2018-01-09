@@ -9,9 +9,7 @@
       ]
     }
   },
-  "packages": [
-    "packages/*",
-    "packages/themes/*"
-  ],
+  "npmClient": "yarn",
+  "packages": ["packages/*", "packages/themes/*"],
   "version": "1.9.0"
 }
