@@ -47,14 +47,21 @@ function packageDirectories() {
 }
 
 module.exports = gulp => {
-  const packages = packageDirectories();
+  // where docs files are compiled to (useful for themes. ie. packages/themes/foo/docs)
+  const docsPath = argv.docs || 'docs';
+  // support placing docs in a subdirectory (ie. design.cms.gov/v1/index.html)
   const rootPath = argv.root || '';
+  const packages = packageDirectories();
+
+  // These properties are shared with every Gulp task
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
     packages: packages,
+    docsPath: docsPath,
     rootPath: rootPath,
     webpackConfig: require('../../packages/docs/webpack.config')(
+      docsPath,
       rootPath,
       packages
     )

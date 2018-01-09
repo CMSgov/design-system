@@ -7,6 +7,7 @@
  */
 
 const argv = require('yargs').argv;
+const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -17,9 +18,9 @@ module.exports = (gulp, shared) => {
     const bundler = webpack(shared.webpackConfig);
 
     shared.browserSync.init({
-      files: ['./docs/**/*.html'],
+      files: [`./${path.join(shared.docsPath, '/**/*.html')}`],
       server: {
-        baseDir: 'docs',
+        baseDir: shared.docsPath,
         middleware: [
           webpackDevMiddleware(bundler, {
             publicPath: shared.webpackConfig.output.publicPath,

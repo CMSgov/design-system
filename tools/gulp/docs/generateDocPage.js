@@ -7,7 +7,7 @@ const savePage = require('./savePage');
  * Create an HTML page with the documentation's UI
  * @return {Promise}
  */
-function generateDocPage(routes, page, rootPath) {
+function generateDocPage(routes, page, docsPath, rootPath) {
   const componentRenderer = () => {
     if (process.env.NODE_ENV === 'development') {
       // In development mode we let the client handle all of the React rendering,
@@ -24,9 +24,7 @@ function generateDocPage(routes, page, rootPath) {
   }
 
   const head = `${seo(page, rootPath)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${
-    rootPath
-  }public/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
   ${analytics()}`;
@@ -39,11 +37,14 @@ function generateDocPage(routes, page, rootPath) {
 </script>
 <script src="/${rootPath}public/scripts/index.js"></script>`;
 
-  return savePage({
-    uri: page.referenceURI,
-    head: head,
-    body: body
-  });
+  return savePage(
+    {
+      uri: page.referenceURI,
+      head: head,
+      body: body
+    },
+    docsPath
+  );
 }
 
 /**

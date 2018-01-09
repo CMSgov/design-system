@@ -5,12 +5,13 @@ const path = require('path');
 const webpack = require('webpack');
 
 /**
+ * @param {String} docsPath
  * @param {String} rootPath - Root docs site path
  * @param {Array} packages - Design system and theme package directory names
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createConfig(rootPath = '', packages, hotReload = true) {
+function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
   const packagePaths = packages.map(dir =>
     fs.realpathSync(path.resolve(__dirname, '..', dir, 'src'))
   );
@@ -24,7 +25,7 @@ function createConfig(rootPath = '', packages, hotReload = true) {
     output: {
       path: path.resolve(
         __dirname,
-        `../../${buildPath(rootPath, '/public/scripts/')}`
+        `../../${buildPath(docsPath, rootPath, '/public/scripts/')}`
       ),
       publicPath: path.join('/', rootPath, '/public/scripts/'),
       filename: '[name].js'

@@ -105,7 +105,10 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('sass:process:docs', () =>
-    processSass('packages/docs/', buildPath(shared.rootPath, '/public'))
+    processSass(
+      'packages/docs/',
+      buildPath(shared.docsPath, shared.rootPath, '/public')
+    )
   );
 
   gulp.task('sass:add-version', () => {

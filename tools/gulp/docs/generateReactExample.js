@@ -8,10 +8,11 @@ const webpack = require('webpack');
  * This can then be viewed in a browser, or rendered in an iFrame in
  * the documentation.
  * @param {Object} page
+ * @param {String} docsPath
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateReactExample(page, rootPath) {
+function generateReactExample(page, docsPath, rootPath) {
   return new Promise((resolve, reject) => {
     if (rootPath) {
       rootPath = `${rootPath}/`;
@@ -38,11 +39,14 @@ function generateReactExample(page, rootPath) {
       <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
       <script type="text/javascript">${exampleScripts}</script>`;
 
-      const output = savePage({
-        uri: `${rootPath}example/${page.reference}`,
-        head: head,
-        body: body
-      });
+      const output = savePage(
+        {
+          uri: `${rootPath}example/${page.reference}`,
+          head: head,
+          body: body
+        },
+        docsPath
+      );
       resolve(output);
     });
   });
