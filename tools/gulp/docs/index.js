@@ -243,7 +243,7 @@ module.exports = (gulp, shared) => {
 
     dutil.logMessage(
       '📝 ',
-      `Created ${generatedPagesCount} documentation pages`
+      `Added ${generatedPagesCount} docs pages to ./${shared.docsPath}`
     );
 
     return Promise.resolve();
