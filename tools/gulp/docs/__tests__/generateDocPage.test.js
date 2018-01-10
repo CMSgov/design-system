@@ -43,7 +43,7 @@ describe('generateDocPage', () => {
       parentReference: 'components'
     };
 
-    output = await generateDocPage(routes, pageData, '');
+    output = await generateDocPage(routes, pageData, 'docs', '');
   });
 
   it('renders React content', () => {
