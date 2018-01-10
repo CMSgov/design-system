@@ -122,7 +122,10 @@ Button.propTypes = {
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
   type: PropTypes.oneOf(['button', 'submit']),
-  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
+  /**
+   * A string corresponding to the button-component variation classes (`primary`, `danger`, `success`, `transparent`)
+   */
+  variation: PropTypes.string
 };
 
 export default Button;
