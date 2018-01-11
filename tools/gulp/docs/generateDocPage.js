@@ -16,6 +16,11 @@ function generateDocPage(routes, page, docsPath, rootPath) {
       return '';
     }
 
+    // On the client-side the "root" variable is defined via Webpack,
+    // but we also need to define it here for "server-side" rendering
+    process.env = Object.assign(process.env, {
+      root: rootPath
+    });
     return ReactDOMServer.renderToString(<Docs page={page} routes={[]} />);
   };
 
