@@ -7,6 +7,24 @@
 const argv = require('yargs').argv;
 const dutil = require('./common/log-util');
 const glob = require('glob');
+const themePackageDir = argv.theme && findThemePackageDir();
+
+/**
+ * Get the directory name of the theme package, relative to ./packages/
+ * @returns {String}
+ */
+function findThemePackageDir() {
+  if (typeof argv.theme === 'string') {
+    // Manually specified theme package
+    return `themes/${argv.theme}`;
+  } else {
+    const themePackages = glob.sync('packages/themes/*').map(packageName);
+
+    if (themePackages.length) {
+      return themePackages[0];
+    }
+  }
+}
 
 /**
  * Get the name of a package, relative to packages/
@@ -24,37 +42,42 @@ function packageName(packagePath) {
  * files. These will be used for watching, compiling, and docs generation
  */
 function packageDirectories() {
-  let directories = glob
+  const directories = glob
     .sync('packages/*', {
       ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
     })
     .map(packageName);
 
   if (argv.theme) {
-    if (typeof argv.theme === 'string') {
-      // Manually specified theme package
-      directories.push(`themes/${argv.theme}`);
+    if (themePackageDir) {
+      directories.push(themePackageDir);
+      dutil.logMessage('🎨 ', `Including theme: ${themePackageDir}`);
     } else {
-      directories = directories.concat(
-        glob.sync('packages/themes/*').map(packageName)
-      );
+      dutil.logMessage('🎨 ', "Couldn't find a theme package, skipping.");
     }
-
-    dutil.logMessage('🎨 ', 'Including theme package');
   }
 
   return directories;
 }
 
 module.exports = gulp => {
-  const packages = packageDirectories();
+  // compile docs to the themes directory if it's being applied
+  const docsPath = themePackageDir
+    ? `packages/${themePackageDir}/docs`
+    : 'docs';
+  // support placing docs in a subdirectory (ie. design.cms.gov/v1/index.html)
   const rootPath = argv.root || '';
+  const packages = packageDirectories();
+
+  // These properties are shared with every Gulp task
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
     packages: packages,
+    docsPath: docsPath,
     rootPath: rootPath,
     webpackConfig: require('../../packages/docs/webpack.config')(
+      docsPath,
       rootPath,
       packages
     )

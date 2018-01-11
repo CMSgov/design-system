@@ -6,9 +6,12 @@ const recursive = require('mkdir-recursive');
 /**
  * Creates or updates an HTML file if it is new or has changed. If its contents
  * are the same, no action is taken on the file.
+ * @param {Object} page
+ * @param {String} docsPath
+ * @returns {Promise}
  */
-function savePage(page) {
-  const pathObj = docsPath(page.uri);
+function savePage(page, docsPath) {
+  const pathObj = docsFilePath(page.uri, docsPath);
   const html = template(page);
 
   return checkCache(html, pathObj.path).then(changed => {
@@ -61,9 +64,14 @@ function checkCache(html, path) {
     .catch(() => true); // File doesn't exist
 }
 
-function docsPath(uri) {
+/**
+ * @param {String} uri
+ * @param {String} docsPath
+ * @returns {Object}
+ */
+function docsFilePath(uri, docsPath) {
   if (uri === 'public') throw Error('Filename can\'t be "public"');
-  const dir = path.resolve(__dirname, `../../../docs/${uri}`);
+  const dir = path.resolve(__dirname, '../../../', docsPath, uri);
 
   return {
     dir: dir,

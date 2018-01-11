@@ -19,7 +19,9 @@ module.exports = (gulp, shared) => {
   gulp.task('build:gh-pages', () => {
     if (shared.rootPath !== '') {
       dutil.logMessage('🤝 ', 'Moving files to root of docs directory');
-      return gulp.src(`docs/${shared.rootPath}/**/*`).pipe(gulp.dest('docs'));
+      return gulp
+        .src(`${shared.docsPath}/${shared.rootPath}/**/*`)
+        .pipe(gulp.dest(shared.docsPath));
     }
   });
 

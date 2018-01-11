@@ -10,11 +10,11 @@ Below you'll find information on how to setup a local development environment an
 
 In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
 
-- Pattern proposal process
-- Coding guidelines
-- Guiding principles
-- How to write documentation
-- etc.
+* Pattern proposal process
+* Coding guidelines
+* Guiding principles
+* How to write documentation
+* etc.
 
 ## Running locally
 
@@ -25,7 +25,7 @@ This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn help
 ### Getting started
 
 1. `yarn install`
-   - This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
+   * This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 1. `yarn start`
 
 _Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
@@ -34,43 +34,47 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 
 These scripts can all be run from the root level of the repo:
 
-- `yarn start`
-  - Starts local server running the documentation site
-  - Regenerates documentation when files change
-- `yarn build`
-  - Compile/transpile/uglify everything and makes things release-ready.
-- `yarn bump`
-  - Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
-- `yarn generate`
-  - Generates the necessary files for a new core component
-  - Alias: `yarn g`
-- `yarn test`
-  - Runs JS unit tests
-  - Lints JS using ESLint
-  - Lints Sass using stylelint
-- `yarn test:watch`
-  - Runs JS unit tests and will continue to run tests as files change
-- `yarn update-snapshots`
-  - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
-- `yarn lint`
-  - Runs just the linting portion of the tests
+* `yarn start`
+  * Starts local server running the documentation site
+  * Regenerates documentation when files change
+* `yarn build`
+  * Compile/transpile/uglify everything and makes things release-ready.
+* `yarn bump`
+  * Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+* `yarn generate`
+  * Generates the necessary files for a new core component
+  * Alias: `yarn g`
+* `yarn test`
+  * Runs JS unit tests
+  * Lints JS using ESLint
+  * Lints Sass using stylelint
+* `yarn test:watch`
+  * Runs JS unit tests and will continue to run tests as files change
+* `yarn update-snapshots`
+  * Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+* `yarn lint`
+  * Runs just the linting portion of the tests
 
 #### Theme scripts
 
 You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
 
-- `yarn start:theme`
-- `yarn build:theme`
+* `yarn start:theme`
+* `yarn build:theme`
 
-If you have multiple directories inside of `packages/themes`, you can specify which theme to use by passing the scripts the name of the folder. For example: `yarn start:theme -- my-theme-folder-name`
+These scripts will also place the documentation into a `docs` subdirectory in your theme's directory.
+
+If you have multiple directories inside of `packages/themes`, you can specify which theme to use by passing the scripts the name of the folder. For example: `yarn start:theme my-theme-folder-name`
+
+If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
 ## Submitting a pull request
 
 Here are a few guidelines to follow when submitting a pull request:
 
-- Branch off of `master`: `git checkout -b username/branch-name`
-- Commit your changes
-- Make a pull request against the `master` branch
+* Branch off of `master`: `git checkout -b username/branch-name`
+* Commit your changes
+* Make a pull request against the `master` branch
 
 ## Licenses and attribution
 

@@ -96,11 +96,21 @@ module.exports = (gulp, shared) => {
 
     return Promise.all(
       pages.map(page => {
-        return generatePage(routes, page, shared.rootPath).then(created => {
+        return generatePage(
+          routes,
+          page,
+          shared.docsPath,
+          shared.rootPath
+        ).then(created => {
           if (page.sections) {
             return Promise.all(
               page.sections.map(subpage => {
-                return generatePage(routes, subpage, shared.rootPath);
+                return generatePage(
+                  routes,
+                  subpage,
+                  shared.docsPath,
+                  shared.rootPath
+                );
               })
             ).then(results => [created].concat(results)); // return results for generatedPagesCount
           }
@@ -118,8 +128,6 @@ module.exports = (gulp, shared) => {
    * @return {Promise<Array>}
    */
   function generateMarkupPages(kssSections) {
-    // See note about this requirement in the generateDocPages method
-    const generatePage = require('./generatePage');
     const pagesWithMarkup = kssSections.filter(
       page =>
         !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
@@ -127,9 +135,13 @@ module.exports = (gulp, shared) => {
 
     return Promise.all(
       pagesWithMarkup.map(page => {
-        return generatePage(null, page, shared.rootPath, true).then(created => [
-          created
-        ]);
+        return generatePage(
+          null,
+          page,
+          shared.docsPath,
+          shared.rootPath,
+          true
+        ).then(created => [created]);
       })
     );
   }
@@ -139,7 +151,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🚮 ', 'Emptying the build and data directories');
 
     // pass empty version so entire build directory is emptied
-    return del(buildPath(''));
+    return del(buildPath(shared.docsPath, ''));
   });
 
   // Convenience-task for copying assets to the "public" directory
@@ -153,7 +165,9 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src('packages/core/fonts/*')
-      .pipe(gulp.dest(buildPath(shared.rootPath, '/public/fonts')));
+      .pipe(
+        gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts'))
+      );
   });
 
   // The docs use the design system's Sass files, which don't have the
@@ -166,7 +180,7 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src(`${docsPkgDirectory}/src/**/images/*`)
-      .pipe(gulp.dest(buildPath(shared.rootPath, '/public')));
+      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
   });
 
   gulp.task('docs:images:core', () => {
@@ -177,7 +191,9 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src('packages/core/images/*')
-      .pipe(gulp.dest(buildPath(shared.rootPath, '/public/images')));
+      .pipe(
+        gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images'))
+      );
   });
 
   /**
@@ -227,7 +243,7 @@ module.exports = (gulp, shared) => {
 
     dutil.logMessage(
       '📝 ',
-      `Created ${generatedPagesCount} documentation pages`
+      `Added ${generatedPagesCount} docs pages to ./${shared.docsPath}`
     );
 
     return Promise.resolve();

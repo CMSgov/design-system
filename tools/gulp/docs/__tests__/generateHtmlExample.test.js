@@ -16,7 +16,7 @@ describe('generateHtmlExample', () => {
 
   describe('with no modifier', () => {
     it('generates correctly', async function() {
-      const output = await generateHtmlExample(pageData, null, '');
+      const output = await generateHtmlExample(pageData, null, 'docs', '');
       expect(output).toMatchSnapshot();
     });
   });
@@ -26,6 +26,7 @@ describe('generateHtmlExample', () => {
       const output = await generateHtmlExample(
         pageData,
         { name: 'secondary' },
+        'docs',
         ''
       );
       expect(output).toMatchSnapshot();
