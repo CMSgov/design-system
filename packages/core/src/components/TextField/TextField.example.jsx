@@ -9,6 +9,7 @@ ReactDOM.render(
       label="Single line"
       labelClassName="ds-u-margin-top--0"
       name="single_example"
+      requirementLabel="Optional"
     />
     <TextField
       errorMessage="Error message example"

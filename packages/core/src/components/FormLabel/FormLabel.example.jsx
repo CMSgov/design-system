@@ -7,7 +7,7 @@ ReactDOM.render(
     errorMessage="Please enter a valid phone number."
     hint="We'll use this number as a backup if we need to contact you about your application."
     fieldId="number-field-id"
-    requirementLabel="Optional."
+    requirementLabel="Optional"
   >
     Phone number
   </FormLabel>,
