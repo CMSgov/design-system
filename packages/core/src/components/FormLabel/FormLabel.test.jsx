@@ -61,6 +61,20 @@ describe('FormLabel', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('adds punctuation to requirementLabel when hint is also present', () => {
+    const props = { hint: 'Hint', requirementLabel: 'Optional' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('avoids duplicate punctuation after requirementLabel', () => {
+    const props = { hint: 'Hint', requirementLabel: 'Optional.' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders as a legend element', () => {
     const props = { component: 'legend' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);

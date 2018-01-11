@@ -22,17 +22,28 @@ export class FormLabel extends React.PureComponent {
   }
 
   hint() {
-    const { hint, requirementLabel } = this.props;
+    let { hint, requirementLabel } = this.props;
     if (!hint && !requirementLabel) return;
 
     const classes = classNames('ds-c-field__hint', {
       'ds-c-field__hint--inverse': this.props.inversed
     });
 
+    if (requirementLabel && hint) {
+      if (typeof requirementLabel === 'string') {
+        // Remove any existing spacing and punctuation
+        requirementLabel = requirementLabel.trim().replace(/\.$/, '');
+        // Add punctuation after the requirementLabel so it doesn't run into the hint
+        requirementLabel = requirementLabel + '.';
+      }
+
+      // Add space between hint and preceding requirementLabel
+      hint = ' ' + hint;
+    }
+
     return (
       <span className={classes}>
         {requirementLabel}
-        {requirementLabel && hint && ' '}
         {hint}
       </span>
     );
