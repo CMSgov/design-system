@@ -12,6 +12,7 @@ describe('FormLabel', () => {
     expect(wrapper.text()).toBe(labelText);
     expect(wrapper.is('label')).toBe(true);
     expect(wrapper.prop('htmlFor')).toBe(props.fieldId);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders error state', () => {
@@ -20,21 +21,17 @@ describe('FormLabel', () => {
       fieldId: 'name'
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const $error = wrapper.render().find('.ds-u-color--error');
 
-    expect($error.text()).toBe(props.errorMessage);
-    expect($error.attr('id')).toBe(`${props.fieldId}-message`);
     // Label becomes bold when there's an error
     expect(wrapper.find('.ds-u-font-weight--bold').length).toBe(1);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hint string', () => {
     const props = { hint: 'President #44' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.text()).toBe(props.hint);
-    expect(hint.hasClass('ds-c-field__hint--inverse')).toBe(false);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders hint node', () => {
@@ -42,19 +39,17 @@ describe('FormLabel', () => {
       hint: <strong>President #44</strong>
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.html()).toMatch(/<strong>/);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders requirementLabel string', () => {
     const props = {
-      requirementLabel: 'Optional.'
+      requirementLabel: 'Optional'
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.text()).toEqual('Optional.');
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders requirementLabel node', () => {
@@ -62,10 +57,22 @@ describe('FormLabel', () => {
       requirementLabel: <em>It is really optional</em>
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-    const hint = wrapper.find('.ds-c-field__hint');
 
-    expect(hint.html()).toMatch(/<em>/);
-    expect(hint.text()).toEqual('It is really optional');
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('adds punctuation to requirementLabel when hint is also present', () => {
+    const props = { hint: 'Hint', requirementLabel: 'Optional' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('avoids duplicate punctuation after requirementLabel', () => {
+    const props = { hint: 'Hint', requirementLabel: 'Optional.' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders as a legend element', () => {
@@ -88,24 +95,13 @@ describe('FormLabel', () => {
         .first()
         .hasClass('ds-c-field__hint--inverse')
     ).toBe(true);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('supports additional classNames', () => {
-    const props = { className: 'ds-u-foo' };
+    const props = { className: 'ds-u-foo', labelClassName: 'ds-u-bar' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.hasClass('ds-u-foo')).toBe(true);
-  });
-
-  it('supports additional label classNames', () => {
-    const props = { labelClassName: 'ds-u-foo' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
-
-    expect(
-      wrapper
-        .children()
-        .first()
-        .hasClass('ds-u-foo')
-    ).toBe(true);
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormLabel adds punctuation to requirementLabel when hint is also present 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    Optional.
+     Hint
+  </span>
+</label>
+`;
+
+exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    Optional.
+     Hint
+  </span>
+</label>
+`;
+
+exports[`FormLabel is inversed 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint ds-c-field__hint--inverse"
+  >
+    Foo
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders error state 1`] = `
+<label
+  className="ds-c-label"
+  htmlFor="name"
+>
+  <span
+    className="ds-u-font-weight--bold"
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint ds-u-color--error"
+    id="name-message"
+    role="alert"
+  >
+    Nah, try again.
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders hint node 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    <strong>
+      President #44
+    </strong>
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders hint string 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    President #44
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders label text 1`] = `
+<label
+  className="ds-c-label"
+  htmlFor="name"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders requirementLabel node 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    <em>
+      It is really optional
+    </em>
+  </span>
+</label>
+`;
+
+exports[`FormLabel renders requirementLabel string 1`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    Optional
+  </span>
+</label>
+`;
+
+exports[`FormLabel supports additional classNames 1`] = `
+<label
+  className="ds-c-label ds-u-foo"
+>
+  <span
+    className="ds-u-bar"
+  >
+    Hello world
+  </span>
+</label>
+`;
