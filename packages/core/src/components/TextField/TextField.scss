@@ -45,6 +45,7 @@ Style guide: components.text-field
   box-sizing: border-box; // ensure padding doesn't affect width
   color: $color-base;
   display: block;
+  font-family: $font-sans;
   font-size: $base-font-size;
   line-height: $input-line-height;
   margin: $spacer-half 0;
