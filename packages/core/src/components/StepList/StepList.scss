@@ -107,7 +107,8 @@ $step-list-number-font-size-mobile: $small-font-size !default;
 $step-list-number-border-size: 2px !default;
 $step-list-number-margin: 10px !default;
 $step-list-padding-h: 0 !default;
-$step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
+$step-list-padding-left: $step-list-padding-h + $step-list-number-margin +
+  $step-list-number-size;
 $step-list-breakpoint: $width-md !default;
 $step-margin: $spacer-2 !default;
 $step-border-width: 1px !default;
@@ -138,7 +139,8 @@ $current-step-color: $color-primary !default;
     font-size: $step-list-number-font-size-mobile;
     height: $step-list-number-size-mobile;
     left: -($step-list-number-margin + $step-list-number-size-mobile);
-    line-height: $step-list-number-size-mobile - $step-list-number-border-size * 2;
+    line-height: $step-list-number-size-mobile - $step-list-number-border-size *
+      2;
     position: absolute;
     text-align: center;
     top: ($step-button-height - $step-list-number-size-mobile) / 2;
@@ -229,6 +231,7 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step__actions {
   font-size: $small-font-size;
+  margin-left: auto;
 
   .ds-c-step__content--with-content + & {
     margin-top: $spacer-2;
