@@ -68,11 +68,22 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
         'ds-c-field__hint--inverse': this.props.inversed
       });
 
+      if (requirementLabel && hint) {
+        if (typeof requirementLabel === 'string') {
+          // Remove any existing spacing and punctuation
+          requirementLabel = requirementLabel.trim().replace(/\.$/, '');
+          // Add punctuation after the requirementLabel so it doesn't run into the hint
+          requirementLabel = requirementLabel + '.';
+        }
+
+        // Add space between hint and preceding requirementLabel
+        hint = ' ' + hint;
+      }
+
       return _react2.default.createElement(
         'span',
         { className: classes },
         requirementLabel,
-        requirementLabel && hint && ' ',
         hint
       );
     }

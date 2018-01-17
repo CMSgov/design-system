@@ -10,6 +10,9 @@
     }
   },
   "npmClient": "yarn",
-  "packages": ["packages/*", "packages/themes/*"],
-  "version": "1.9.0"
+  "packages": [
+    "packages/*",
+    "packages/themes/*"
+  ],
+  "version": "1.10.0"
 }
