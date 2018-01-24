@@ -52,7 +52,10 @@ module.exports = (gulp, shared) => {
       // inline/base64 images
       postcssPlugins.push(
         postcssInliner({
-          assetPaths: [path.resolve(__dirname, `../../../${cwd}/src/`)],
+          assetPaths: [
+            path.resolve(__dirname, '../../../', cwd, 'images'),
+            path.resolve(__dirname, '../../../', 'packages/core/images')
+          ],
           strict: true
         })
       );
