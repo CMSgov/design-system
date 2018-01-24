@@ -10,6 +10,7 @@ const runSequence = require('run-sequence');
 
 module.exports = (gulp, shared) => {
   const babelTasks = shared.packages.map(pkg => `build:babel:${pkg}`);
+  const jsonTasks = shared.packages.map(pkg => `build:json:${pkg}`);
   const cleanTasks = shared.packages.map(pkg => `build:clean:${pkg}`);
 
   // Form tasks for each package...
@@ -31,6 +32,16 @@ module.exports = (gulp, shared) => {
           `!packages/${pkg}/src/**/*.test.{js,jsx}`
         ])
         .pipe(babel())
+        .pipe(gulp.dest(`packages/${pkg}/dist`));
+    });
+
+    // Copy any JSON files that our components might depend on
+    gulp.task(jsonTasks[i], () => {
+      return gulp
+        .src([
+          `packages/${pkg}/src/**/*.json`,
+          `!packages/${pkg}/src/**/{__mocks__,__tests__}/*.json`
+        ])
         .pipe(gulp.dest(`packages/${pkg}/dist`));
     });
 
@@ -66,6 +77,7 @@ module.exports = (gulp, shared) => {
 
     runSequence(
       cleanTasks,
+      jsonTasks,
       babelTasks, // Important: This needs ran before docs:build!
       'docs:build',
       'webpack',
