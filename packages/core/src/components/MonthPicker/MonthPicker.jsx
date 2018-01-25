@@ -4,6 +4,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 /*
 `<MonthPicker>`
@@ -45,6 +46,9 @@ export class MonthPicker extends React.PureComponent {
     } else {
       this.isControlled = true;
     }
+
+    this.containerId = uniqueId('monthpicker_container_');
+    this.localId = uniqueId('monthpicker_local_');
   }
 
   selectedMonths() {
@@ -116,9 +120,15 @@ export class MonthPicker extends React.PureComponent {
               className="ds-c-month-picker__month"
               disabled={disabledMonths.includes(i + 1)}
               inversed={inversed}
-              aria-label={this.monthsLong[i]}
+              aria-labelledby={`${this.localId}${i} ${this.containerId}`}
             >
-              {month}
+              <span aria-hidden="true">{month}</span>
+              <span
+                className="ds-u-visibility--screen-reader"
+                id={`${this.localId}${i}`}
+              >
+                {this.monthsLong[i]}
+              </span>
             </Choice>
           </li>
         ))}
@@ -153,6 +163,7 @@ export class MonthPicker extends React.PureComponent {
         hint={this.props.hint}
         requirementLabel={this.props.requirementLabel}
         inversed={this.props.inversed}
+        id={this.containerId}
       >
         {this.props.label}
       </FormLabel>
