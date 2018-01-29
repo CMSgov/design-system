@@ -48,7 +48,7 @@ describe('MonthPicker', () => {
     const { wrapper, props } = renderMonthPicker({
       labelClassName: 'ds-u-color--primary',
       errorMessage: 'Error!',
-      hint: 'Tips and tricks'
+      hint: null
     });
     const label = wrapper.find('FormLabel');
     expect(label.props()).toMatchObject({
