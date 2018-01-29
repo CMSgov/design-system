@@ -57,11 +57,7 @@ export class FormLabel extends React.PureComponent {
     const classes = classNames('ds-c-label', this.props.className);
 
     return (
-      <ComponentType
-        className={classes}
-        htmlFor={this.props.fieldId}
-        id={this.props.id}
-      >
+      <ComponentType className={classes} htmlFor={this.props.fieldId}>
         <span className={labelTextClasses}>{this.props.children}</span>
         {this.errorMessage()}
         {this.hint()}
@@ -94,7 +90,6 @@ FormLabel.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
-  id: PropTypes.string,
   /**
    * Text showing the requirement (ie. "Optional", or "Required").
    * In most cases, this should be used to indicate which fields are optional.
