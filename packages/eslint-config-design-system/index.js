@@ -47,7 +47,7 @@ module.exports = {
     'react/no-multi-comp': 'error',
     'react/prefer-es6-class': 'error',
     'react/prefer-stateless-function': 'error',
-    'react/prop-types': ['error', { ignore: ['className'] }],
+    'react/prop-types': ['error', { ignore: ['className', 't'] }],
     'react/sort-comp': 'error',
     'standard/computed-property-even-spacing': 'off'
   }

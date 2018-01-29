@@ -96,7 +96,8 @@ Border color
 @hide-markup
 
 Markup:
-<% ['inverse',
+<% ['dark',
+    'inverse',
     'error', 'error-light', 'error-lighter',
     'warn', 'warn-light', 'warn-lighter',
     'success', 'success-light', 'success-lighter'].forEach(color => { -%>
@@ -109,6 +110,10 @@ Markup:
 
 Style guide: utilities.border.color
 */
+.ds-u-border--dark {
+  border-color: $border-color-dark !important;
+}
+
 .ds-u-border--inverse {
   border-color: $border-color-inverse !important;
 }
@@ -157,6 +162,7 @@ Style guide: utilities.border.color
 The following Sass variables can be overridden to theme the border utility:
 
 - `$border-color`
+- `$border-color-dark`
 - `$border-color-inverse`
 
 Style guide: utilities.border.guidance

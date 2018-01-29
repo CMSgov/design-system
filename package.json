@@ -45,7 +45,6 @@
     "enzyme-to-json": "^3.3.0",
     "eslint": "^4.13.1",
     "eslint-config-nava": "^2.1.0",
-    "event-source-polyfill": "^0.0.12",
     "front-matter": "^2.3.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "github": "^13.0.1",
