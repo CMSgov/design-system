@@ -1,3 +1,4 @@
+import 'core-js/fn/array/includes';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import FormLabel from '../FormLabel/FormLabel';
@@ -33,6 +34,8 @@ const monthNumbers = (() => {
 export class MonthPicker extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.hintId = uniqueId('monthpicker_hint_');
+    this.labelId = uniqueId('monthpicker_label_');
     this.months = getMonthNames(props.locale);
     this.monthsLong = getMonthNames(props.locale, false);
 
@@ -46,9 +49,6 @@ export class MonthPicker extends React.PureComponent {
     } else {
       this.isControlled = true;
     }
-
-    this.containerId = uniqueId('monthpicker_container_');
-    this.localId = uniqueId('monthpicker_local_');
   }
 
   selectedMonths() {
@@ -113,22 +113,17 @@ export class MonthPicker extends React.PureComponent {
         {this.months.map((month, i) => (
           <li key={month}>
             <Choice
-              name={name}
-              value={i + 1}
+              aria-describedby={this.hintId}
+              aria-label={this.monthsLong[i]}
               checked={selectedMonths.includes(i + 1)}
-              onChange={e => this.handleChange(e)}
               className="ds-c-month-picker__month"
               disabled={disabledMonths.includes(i + 1)}
               inversed={inversed}
-              aria-labelledby={`${this.localId}${i} ${this.containerId}`}
+              onChange={e => this.handleChange(e)}
+              name={name}
+              value={i + 1}
             >
-              <span aria-hidden="true">{month}</span>
-              <span
-                className="ds-u-visibility--screen-reader"
-                id={`${this.localId}${i}`}
-              >
-                {this.monthsLong[i]}
-              </span>
+              {month}
             </Choice>
           </li>
         ))}
@@ -139,6 +134,7 @@ export class MonthPicker extends React.PureComponent {
   renderButton(text, onClick) {
     return (
       <Button
+        aria-describedby={this.labelId}
         size="small"
         className="ds-u-margin-right--1"
         onClick={onClick}
@@ -157,13 +153,13 @@ export class MonthPicker extends React.PureComponent {
     );
     return (
       <FormLabel
+        className="ds-u-visibility--screen-reader"
         labelClassName={classes}
         component="legend"
         errorMessage={this.props.errorMessage}
-        hint={this.props.hint}
+        hint={null}
         requirementLabel={this.props.requirementLabel}
         inversed={this.props.inversed}
-        id={this.containerId}
       >
         {this.props.label}
       </FormLabel>
@@ -179,14 +175,24 @@ export class MonthPicker extends React.PureComponent {
       this.props.className
     );
     return (
-      <fieldset className={classes}>
-        {this.renderLabel()}
+      <div className={classes}>
+        <div className="ds-c-label">
+          <h4 className="ds-u-margin--0" id={this.labelId}>
+            {this.props.label}
+          </h4>
+          <p className="ds-u-margin--0 ds-c-field__hint" id={this.hintId}>
+            {this.props.hint}
+          </p>
+        </div>
         <div className="ds-u-margin-y--3">
           {this.renderButton(selectAllText, () => this.handleSelectAll())}
           {this.renderButton(clearAllText, () => this.handleClearAll())}
         </div>
-        <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
-      </fieldset>
+        <fieldset className={classes}>
+          {this.renderLabel()}
+          <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+        </fieldset>
+      </div>
     );
   }
 }
