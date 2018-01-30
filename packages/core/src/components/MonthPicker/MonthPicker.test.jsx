@@ -50,7 +50,7 @@ describe('MonthPicker', () => {
       hint: 'Tips and tricks'
     });
     const title = wrapper.find('h4.ds-c-label');
-    const hint = wrapper.find('p.ds-u-margin--0.ds-c-field__hint');
+    const hint = wrapper.find('p.ds-c-field__hint');
     expect(title.exists()).toEqual(true);
     expect(title.text()).toEqual('Select a month');
     expect(hint.exists()).toEqual(true);
@@ -60,7 +60,7 @@ describe('MonthPicker', () => {
   it('renders a title block without hint', () => {
     const { wrapper } = renderMonthPicker({
       label: 'Select a preference',
-      headingType: '3'
+      headingType: 3
     });
     const title = wrapper.find('h3.ds-c-label');
     const hint = wrapper.find('p.ds-c-field__hint');

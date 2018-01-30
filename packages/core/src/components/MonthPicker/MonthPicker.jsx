@@ -250,7 +250,7 @@ MonthPicker.propTypes = {
   /**
    * Heading type to override default `<h4>` in title block
    */
-  headingType: PropTypes.string,
+  headingType: PropTypes.number,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

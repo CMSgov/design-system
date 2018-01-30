@@ -24,13 +24,6 @@ ReactDOM.render(
       label="Select the months you were in cryosleep during 2046"
       disabledMonths={[7, 8, 9, 10, 11, 12]}
     />
-    <MonthPicker
-      name="cryosleep-months"
-      label="Select the months you were in cryosleep during 2046"
-      disabledMonths={[7, 8, 9, 10, 11, 12]}
-      inversed
-      headingType="3"
-    />
   </div>,
   document.getElementById('js-example')
 );
