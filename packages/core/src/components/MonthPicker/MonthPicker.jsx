@@ -113,7 +113,7 @@ export class MonthPicker extends React.PureComponent {
         {this.months.map((month, i) => (
           <li key={month}>
             <Choice
-              aria-describedby={this.hintId}
+              aria-describedby={this.props.hint ? this.hintId : null}
               aria-label={this.monthsLong[i]}
               checked={selectedMonths.includes(i + 1)}
               className="ds-c-month-picker__month"
