@@ -47,10 +47,6 @@ module.exports = (gulp, shared) => {
   gulp.task('watch', () => {
     dutil.logMessage('👀 ', 'Transpiling + watching files for future changes');
 
-    runSequence('docs:build', 'sass:process:docs', [
-      'server',
-      'watch:packages',
-      'watch:docs'
-    ]);
+    runSequence('build:dev', ['server', 'watch:packages', 'watch:docs']);
   });
 };

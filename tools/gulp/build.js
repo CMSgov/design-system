@@ -72,6 +72,13 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('✅ ', 'Build succeeded');
   });
 
+  /**
+   * Tasks ran before starting a local dev environment
+   */
+  gulp.task('build:dev', done => {
+    runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:process:docs', done);
+  });
+
   gulp.task('build', done => {
     dutil.logIntroduction();
 
