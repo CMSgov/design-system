@@ -157,7 +157,6 @@ export class MonthPicker extends React.PureComponent {
         labelClassName={classes}
         component="legend"
         errorMessage={this.props.errorMessage}
-        hint={null}
         requirementLabel={this.props.requirementLabel}
         inversed={this.props.inversed}
       >
@@ -168,21 +167,31 @@ export class MonthPicker extends React.PureComponent {
 
   render() {
     const { selectAllText, clearAllText } = this.props;
+    const Heading = this.props.headingType
+      ? `h${this.props.headingType}`
+      : `h4`;
     const classes = classNames(
-      'ds-c-month-picker',
       'ds-c-fieldset',
       'ds-u-margin-y--3',
       this.props.className
     );
     return (
-      <div className={classes}>
-        <div className="ds-c-label">
-          <h4 className="ds-u-margin--0" id={this.labelId}>
+      <div className="ds-c-month-picker ds-u-margin-y--3">
+        <div className="ds-u-margin-top--0">
+          <Heading
+            className="ds-c-label ds-u-font-weight--bold ds-u-margin--0"
+            id={this.labelId}
+          >
             {this.props.label}
-          </h4>
-          <p className="ds-u-margin--0 ds-c-field__hint" id={this.hintId}>
-            {this.props.hint}
-          </p>
+          </Heading>
+          {this.props.hint ? (
+            <p
+              className="ds-c-label ds-c-field__hint ds-u-margin--0"
+              id={this.hintId}
+            >
+              {this.props.hint}
+            </p>
+          ) : null}
         </div>
         <div className="ds-u-margin-y--3">
           {this.renderButton(selectAllText, () => this.handleSelectAll())}
@@ -238,6 +247,10 @@ MonthPicker.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Heading type to override default `<h4>` in title block
+   */
+  headingType: PropTypes.string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
