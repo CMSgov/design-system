@@ -167,17 +167,18 @@ export class MonthPicker extends React.PureComponent {
 
   render() {
     const { selectAllText, clearAllText } = this.props;
-    const Heading = this.props.headingType
-      ? `h${this.props.headingType}`
+    const Heading = this.props.headingLevel
+      ? `h${this.props.headingLevel}`
       : `h4`;
     const classes = classNames(
+      'ds-c-month-picker',
       'ds-c-fieldset',
       'ds-u-margin-y--3',
       this.props.className
     );
     return (
-      <div className="ds-c-month-picker ds-u-margin-y--3">
-        <div className="ds-u-margin-top--0">
+      <div className={classes}>
+        <div>
           <Heading
             className="ds-c-label ds-u-font-weight--bold ds-u-margin--0"
             id={this.labelId}
@@ -193,11 +194,11 @@ export class MonthPicker extends React.PureComponent {
             </p>
           ) : null}
         </div>
-        <div className="ds-u-margin-y--3">
+        <div className="ds-u-margin-top--3">
           {this.renderButton(selectAllText, () => this.handleSelectAll())}
           {this.renderButton(clearAllText, () => this.handleClearAll())}
         </div>
-        <fieldset className={classes}>
+        <fieldset className="ds-c-fieldset">
           {this.renderLabel()}
           <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
         </fieldset>
@@ -250,7 +251,7 @@ MonthPicker.propTypes = {
   /**
    * Heading type to override default `<h4>` in title block
    */
-  headingType: PropTypes.number,
+  headingLevel: PropTypes.number,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

@@ -60,7 +60,7 @@ describe('MonthPicker', () => {
   it('renders a title block without hint', () => {
     const { wrapper } = renderMonthPicker({
       label: 'Select a preference',
-      headingType: 3
+      headingLevel: 3
     });
     const title = wrapper.find('h3.ds-c-label');
     const hint = wrapper.find('p.ds-c-field__hint');
