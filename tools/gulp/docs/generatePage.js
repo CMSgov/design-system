@@ -3,9 +3,9 @@ require('babel-register')({
   only: /(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generateDocPage)/
 });
 
-const generateDocPage = require('./generateDocPage');
 const generateHtmlExample = require('./generateHtmlExample');
 const generateReactExample = require('./generateReactExample');
+let generateDocPage;
 
 /**
  * Create an HTML page
@@ -18,6 +18,14 @@ const generateReactExample = require('./generateReactExample');
  * @return {Promise<Boolean>}
  */
 function generatePage(routes, page, docsPath, rootPath, isExample) {
+  if (!generateDocPage) {
+    // We need to require this module inside of the method because
+    // it depends on compiled React files. Those files are compiled
+    // in a preceding Gulp task, and requiring this outside of the
+    // method will break things.
+    generateDocPage = require('./generateDocPage');
+  }
+
   if (isExample) {
     return generateExamples(page, docsPath, rootPath);
   } else if (typeof page.referenceURI === 'string') {
