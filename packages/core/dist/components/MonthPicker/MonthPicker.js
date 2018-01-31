@@ -9,6 +9,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 exports.getMonthNames = getMonthNames;
 
+require('core-js/fn/array/includes');
+
 var _Button = require('../Button/Button');
 
 var _Button2 = _interopRequireDefault(_Button);
@@ -32,6 +34,10 @@ var _react2 = _interopRequireDefault(_react);
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
+
+var _lodash = require('lodash.uniqueid');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74,6 +80,8 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
 
     var _this = _possibleConstructorReturn(this, (MonthPicker.__proto__ || Object.getPrototypeOf(MonthPicker)).call(this, props));
 
+    _this.hintId = (0, _lodash2.default)('monthpicker_hint_');
+    _this.labelId = (0, _lodash2.default)('monthpicker_label_');
     _this.months = getMonthNames(props.locale);
     _this.monthsLong = getMonthNames(props.locale, false);
 
@@ -169,16 +177,17 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
             _react2.default.createElement(
               _Choice2.default,
               {
-                name: name,
-                value: i + 1,
+                'aria-describedby': _this2.props.hint ? _this2.hintId : null,
+                'aria-label': _this2.monthsLong[i],
                 checked: selectedMonths.includes(i + 1),
-                onChange: function onChange(e) {
-                  return _this2.handleChange(e);
-                },
                 className: 'ds-c-month-picker__month',
                 disabled: disabledMonths.includes(i + 1),
                 inversed: inversed,
-                'aria-label': _this2.monthsLong[i]
+                onChange: function onChange(e) {
+                  return _this2.handleChange(e);
+                },
+                name: name,
+                value: i + 1
               },
               month
             )
@@ -192,6 +201,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       return _react2.default.createElement(
         _Button2.default,
         {
+          'aria-describedby': this.labelId,
           size: 'small',
           className: 'ds-u-margin-right--1',
           onClick: onClick,
@@ -208,10 +218,10 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       return _react2.default.createElement(
         _FormLabel2.default,
         {
+          className: 'ds-u-visibility--screen-reader',
           labelClassName: classes,
           component: 'legend',
           errorMessage: this.props.errorMessage,
-          hint: this.props.hint,
           requirementLabel: this.props.requirementLabel,
           inversed: this.props.inversed
         },
@@ -227,14 +237,34 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
           selectAllText = _props2.selectAllText,
           clearAllText = _props2.clearAllText;
 
+      var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h4';
       var classes = (0, _classnames2.default)('ds-c-month-picker', 'ds-c-fieldset', 'ds-u-margin-y--3', this.props.className);
       return _react2.default.createElement(
-        'fieldset',
+        'div',
         { className: classes },
-        this.renderLabel(),
         _react2.default.createElement(
           'div',
-          { className: 'ds-u-margin-y--3' },
+          null,
+          _react2.default.createElement(
+            Heading,
+            {
+              className: 'ds-c-label ds-u-font-weight--bold ds-u-margin--0',
+              id: this.labelId
+            },
+            this.props.label
+          ),
+          this.props.hint ? _react2.default.createElement(
+            'p',
+            {
+              className: 'ds-c-label ds-c-field__hint ds-u-margin--0',
+              id: this.hintId
+            },
+            this.props.hint
+          ) : null
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'ds-u-margin-top--3' },
           this.renderButton(selectAllText, function () {
             return _this3.handleSelectAll();
           }),
@@ -243,9 +273,14 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
           })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'ds-c-month-picker__months' },
-          this.renderMonths()
+          'fieldset',
+          { className: 'ds-c-fieldset' },
+          this.renderLabel(),
+          _react2.default.createElement(
+            'div',
+            { className: 'ds-c-month-picker__months' },
+            this.renderMonths()
+          )
         )
       );
     }
@@ -295,6 +330,10 @@ MonthPicker.propTypes = {
    * Additional hint text to display
    */
   hint: _propTypes2.default.node,
+  /**
+   * Heading type to override default `<h4>` in title block
+   */
+  headingLevel: _propTypes2.default.number,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
