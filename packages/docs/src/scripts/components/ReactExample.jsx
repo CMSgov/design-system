@@ -16,7 +16,8 @@ class ReactExample extends React.PureComponent {
 
   render() {
     const rootPath = process.env.root ? `/${process.env.root}` : '';
-    const iframeURL = `${rootPath}/example/${this.props.reference}`;
+    // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
+    const iframeURL = `${rootPath}/example/${this.props.reference}/`;
 
     return (
       <div className="ds-u-margin-top--3 markup markup--react">
