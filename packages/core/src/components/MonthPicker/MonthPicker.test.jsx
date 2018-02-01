@@ -6,7 +6,9 @@ const defaultProps = {
   name: 'months',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  label: 'Select months'
+  label: 'Select months',
+  selectAll: false,
+  clearAll: false
 };
 
 function renderMonthPicker(props) {
@@ -37,11 +39,27 @@ describe('MonthPicker', () => {
       onSelectAll,
       onClearAll
     });
-    const buttons = wrapper.find('Button');
+
+    // Changing to let to allow multiple find references
+    let buttons = wrapper.find('Button');
+
+    // Click Select All button
     buttons.at(0).simulate('click');
-    buttons.at(1).simulate('click');
     expect(onSelectAll).toHaveBeenCalled();
+
+    // Create point of reference to Select All
+    buttons = wrapper.find('Button');
+    expect(wrapper.state('selectAllPressed')).toEqual(true);
+    expect(buttons.at(0).props()['aria-pressed']).toEqual(true);
+
+    // Click Clear All button
+    buttons.at(1).simulate('click');
     expect(onClearAll).toHaveBeenCalled();
+
+    // Create new point of reference to Clear All
+    buttons = wrapper.find('Button');
+    expect(wrapper.state('clearAllPressed')).toEqual(true);
+    expect(buttons.at(1).props()['aria-pressed']).toEqual(true);
   });
 
   it('renders a title block with hint', () => {

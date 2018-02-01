@@ -44,6 +44,8 @@ export class MonthPicker extends React.PureComponent {
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       this.state = {
+        clearAllPressed: false,
+        selectAllPressed: false,
         selectedMonths: props.defaultSelectedMonths || []
       };
     } else {
@@ -76,6 +78,16 @@ export class MonthPicker extends React.PureComponent {
       } else {
         selectedMonths.push(month);
       }
+
+      // Set buttons' aria-pressed attribute to months checked do not
+      // equal 0 or 12
+      if (selectedMonths.length > 0 || selectedMonths.length < 12) {
+        this.setState({
+          selectAllPressed: false,
+          clearAllPressed: false
+        });
+      }
+
       this.setState({ selectedMonths });
     }
   }
@@ -90,7 +102,11 @@ export class MonthPicker extends React.PureComponent {
       const selectedMonths = monthNumbers.filter(
         m => !disabledMonths.includes(m)
       );
-      this.setState({ selectedMonths });
+      this.setState({
+        selectedMonths,
+        selectAllPressed: true,
+        clearAllPressed: false
+      });
     }
   }
 
@@ -100,7 +116,11 @@ export class MonthPicker extends React.PureComponent {
     }
 
     if (!this.isControlled) {
-      this.setState({ selectedMonths: [] });
+      this.setState({
+        selectedMonths: [],
+        selectAllPressed: false,
+        clearAllPressed: true
+      });
     }
   }
 
@@ -131,10 +151,11 @@ export class MonthPicker extends React.PureComponent {
     );
   }
 
-  renderButton(text, onClick) {
+  renderButton(text, pressed, onClick) {
     return (
       <Button
         aria-describedby={this.labelId}
+        aria-pressed={pressed}
         size="small"
         className="ds-u-margin-right--1"
         onClick={onClick}
@@ -167,6 +188,7 @@ export class MonthPicker extends React.PureComponent {
 
   render() {
     const { selectAllText, clearAllText } = this.props;
+    const { selectAllPressed, clearAllPressed } = this.state;
     const Heading = this.props.headingLevel
       ? `h${this.props.headingLevel}`
       : `h4`;
@@ -195,8 +217,12 @@ export class MonthPicker extends React.PureComponent {
           ) : null}
         </div>
         <div className="ds-u-margin-top--3">
-          {this.renderButton(selectAllText, () => this.handleSelectAll())}
-          {this.renderButton(clearAllText, () => this.handleClearAll())}
+          {this.renderButton(selectAllText, selectAllPressed, () =>
+            this.handleSelectAll()
+          )}
+          {this.renderButton(clearAllText, clearAllPressed, () =>
+            this.handleClearAll()
+          )}
         </div>
         <fieldset className="ds-c-fieldset">
           {this.renderLabel()}
