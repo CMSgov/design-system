@@ -90,6 +90,8 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       _this.state = {
+        clearAllPressed: false,
+        selectAllPressed: false,
         selectedMonths: props.defaultSelectedMonths || []
       };
     } else {
@@ -127,6 +129,16 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         } else {
           selectedMonths.push(month);
         }
+
+        // Set buttons' aria-pressed attribute to months checked do not
+        // equal 0 or 12
+        if (selectedMonths.length > 0 || selectedMonths.length < 12) {
+          this.setState({
+            selectAllPressed: false,
+            clearAllPressed: false
+          });
+        }
+
         this.setState({ selectedMonths: selectedMonths });
       }
     }
@@ -142,7 +154,11 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         var selectedMonths = monthNumbers.filter(function (m) {
           return !disabledMonths.includes(m);
         });
-        this.setState({ selectedMonths: selectedMonths });
+        this.setState({
+          selectedMonths: selectedMonths,
+          selectAllPressed: true,
+          clearAllPressed: false
+        });
       }
     }
   }, {
@@ -153,7 +169,11 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       }
 
       if (!this.isControlled) {
-        this.setState({ selectedMonths: [] });
+        this.setState({
+          selectedMonths: [],
+          selectAllPressed: false,
+          clearAllPressed: true
+        });
       }
     }
   }, {
@@ -197,11 +217,12 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
     }
   }, {
     key: 'renderButton',
-    value: function renderButton(text, onClick) {
+    value: function renderButton(text, pressed, onClick) {
       return _react2.default.createElement(
         _Button2.default,
         {
           'aria-describedby': this.labelId,
+          'aria-pressed': pressed,
           size: 'small',
           className: 'ds-u-margin-right--1',
           onClick: onClick,
@@ -236,6 +257,9 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       var _props2 = this.props,
           selectAllText = _props2.selectAllText,
           clearAllText = _props2.clearAllText;
+      var _state = this.state,
+          selectAllPressed = _state.selectAllPressed,
+          clearAllPressed = _state.clearAllPressed;
 
       var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h4';
       var classes = (0, _classnames2.default)('ds-c-month-picker', 'ds-c-fieldset', 'ds-u-margin-y--3', this.props.className);
@@ -265,10 +289,10 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         _react2.default.createElement(
           'div',
           { className: 'ds-u-margin-top--3' },
-          this.renderButton(selectAllText, function () {
+          this.renderButton(selectAllText, selectAllPressed, function () {
             return _this3.handleSelectAll();
           }),
-          this.renderButton(clearAllText, function () {
+          this.renderButton(clearAllText, clearAllPressed, function () {
             return _this3.handleClearAll();
           })
         ),
