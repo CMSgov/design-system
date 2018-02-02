@@ -79,16 +79,19 @@ export class MonthPicker extends React.PureComponent {
         selectedMonths.push(month);
       }
 
-      // Set buttons' aria-pressed attribute to months checked do not
-      // equal 0 or 12
-      if (selectedMonths.length > 0 || selectedMonths.length < 12) {
-        this.setState({
-          selectAllPressed: false,
-          clearAllPressed: false
-        });
-      }
-
       this.setState({ selectedMonths });
+
+      this.handleAriaPressed(selectedMonths);
+    }
+  }
+
+  handleAriaPressed(selectedMonths) {
+    const selectedMonthsLen = selectedMonths.length;
+    if (selectedMonthsLen > 0 || selectedMonthsLen < 12) {
+      this.setState({
+        selectAllPressed: false,
+        clearAllPressed: false
+      });
     }
   }
 
