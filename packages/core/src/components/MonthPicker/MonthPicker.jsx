@@ -86,11 +86,10 @@ export class MonthPicker extends React.PureComponent {
   }
 
   handleAriaPressed(selectedMonths) {
-    const selectedMonthsLen = selectedMonths.length;
-    if (selectedMonthsLen > 0 || selectedMonthsLen < 12) {
+    if (!this.isControlled) {
       this.setState({
-        selectAllPressed: false,
-        clearAllPressed: false
+        selectAllPressed: selectedMonths.length === 12,
+        clearAllPressed: selectedMonths.length === 0
       });
     }
   }

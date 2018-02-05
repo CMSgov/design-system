@@ -130,16 +130,20 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
           selectedMonths.push(month);
         }
 
-        // Set buttons' aria-pressed attribute to months checked do not
-        // equal 0 or 12
-        if (selectedMonths.length > 0 || selectedMonths.length < 12) {
-          this.setState({
-            selectAllPressed: false,
-            clearAllPressed: false
-          });
-        }
-
         this.setState({ selectedMonths: selectedMonths });
+
+        this.handleAriaPressed(selectedMonths);
+      }
+    }
+  }, {
+    key: 'handleAriaPressed',
+    value: function handleAriaPressed(selectedMonths) {
+      var selectedMonthsLen = selectedMonths.length;
+      if (selectedMonthsLen > 0 || selectedMonthsLen < 12) {
+        this.setState({
+          selectAllPressed: false,
+          clearAllPressed: false
+        });
       }
     }
   }, {
@@ -260,6 +264,13 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       var _state = this.state,
           selectAllPressed = _state.selectAllPressed,
           clearAllPressed = _state.clearAllPressed;
+
+
+      if (this.isControlled) {
+        var selectedMonths = this.props.selectedMonths;
+        selectAllPressed = selectedMonths.length === 12;
+        clearAllPressed = selectedMonths.length === 0;
+      }
 
       var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h4';
       var classes = (0, _classnames2.default)('ds-c-month-picker', 'ds-c-fieldset', 'ds-u-margin-y--3', this.props.className);
