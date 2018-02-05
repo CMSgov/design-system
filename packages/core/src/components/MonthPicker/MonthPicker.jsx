@@ -190,14 +190,14 @@ export class MonthPicker extends React.PureComponent {
   }
 
   render() {
-    const selectedMonths = this.selectedMonths();
     const { selectAllText, clearAllText } = this.props;
-    const selectAllPressed = selectedMonths
-      ? selectedMonths.length === 12
-      : this.state.selectAllPressed;
-    const clearAllPressed = selectedMonths
-      ? selectedMonths.length === 0
-      : this.state.clearAllPressed;
+    let { selectAllPressed, clearAllPressed } = this.state;
+
+    if (this.isControlled) {
+      const selectedMonths = this.props.selectedMonths;
+      selectAllPressed = selectedMonths.length === 12;
+      clearAllPressed = selectedMonths.length === 0;
+    }
 
     const Heading = this.props.headingLevel
       ? `h${this.props.headingLevel}`
