@@ -86,13 +86,10 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
     _this.monthsLong = getMonthNames(props.locale, false);
 
     if (typeof props.selectedMonths === 'undefined') {
-      console.log('[MESSAGE]: Uncontrolled component');
       _this.isControlled = false;
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       _this.state = {
-        clearAllPressed: false,
-        selectAllPressed: false,
         selectedMonths: props.defaultSelectedMonths || []
       };
     } else {
@@ -132,20 +129,6 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         }
 
         this.setState({ selectedMonths: selectedMonths });
-
-        this.updateAriaPressed(selectedMonths);
-      }
-    }
-  }, {
-    key: 'updateAriaPressed',
-    value: function updateAriaPressed(selectedMonths) {
-      if (!this.isControlled) {
-        var disabledMonths = this.disabledMonths();
-
-        this.setState({
-          selectAllPressed: selectedMonths.length === NUM_MONTHS - disabledMonths.length,
-          clearAllPressed: selectedMonths.length === 0
-        });
       }
     }
   }, {
@@ -263,17 +246,11 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       var _props2 = this.props,
           selectAllText = _props2.selectAllText,
           clearAllText = _props2.clearAllText;
-      var _state = this.state,
-          selectAllPressed = _state.selectAllPressed,
-          clearAllPressed = _state.clearAllPressed;
 
-
-      if (this.isControlled) {
-        var selectedMonths = this.selectedMonths();
-        var disabledMonths = this.disabledMonths();
-        selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
-        clearAllPressed = selectedMonths.length === 0;
-      }
+      var selectedMonths = this.selectedMonths();
+      var disabledMonths = this.disabledMonths();
+      var selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+      var clearAllPressed = selectedMonths.length === 0;
 
       var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h4';
       var classes = (0, _classnames2.default)('ds-c-month-picker', 'ds-c-fieldset', 'ds-u-margin-y--3', this.props.className);
