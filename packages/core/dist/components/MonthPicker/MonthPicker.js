@@ -86,6 +86,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
     _this.monthsLong = getMonthNames(props.locale, false);
 
     if (typeof props.selectedMonths === 'undefined') {
+      console.log('[MESSAGE]: Uncontrolled component');
       _this.isControlled = false;
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
@@ -132,17 +133,18 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
 
         this.setState({ selectedMonths: selectedMonths });
 
-        this.handleAriaPressed(selectedMonths);
+        this.updateAriaPressed(selectedMonths);
       }
     }
   }, {
-    key: 'handleAriaPressed',
-    value: function handleAriaPressed(selectedMonths) {
-      var selectedMonthsLen = selectedMonths.length;
-      if (selectedMonthsLen > 0 || selectedMonthsLen < 12) {
+    key: 'updateAriaPressed',
+    value: function updateAriaPressed(selectedMonths) {
+      if (!this.isControlled) {
+        var disabledMonths = this.disabledMonths();
+
         this.setState({
-          selectAllPressed: false,
-          clearAllPressed: false
+          selectAllPressed: selectedMonths.length === NUM_MONTHS - disabledMonths.length,
+          clearAllPressed: selectedMonths.length === 0
         });
       }
     }
@@ -267,8 +269,9 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
 
 
       if (this.isControlled) {
-        var selectedMonths = this.props.selectedMonths;
-        selectAllPressed = selectedMonths.length === 12;
+        var selectedMonths = this.selectedMonths();
+        var disabledMonths = this.disabledMonths();
+        selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
         clearAllPressed = selectedMonths.length === 0;
       }
 

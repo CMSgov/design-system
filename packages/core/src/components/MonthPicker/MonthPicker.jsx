@@ -44,8 +44,6 @@ export class MonthPicker extends React.PureComponent {
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       this.state = {
-        clearAllPressed: false,
-        selectAllPressed: false,
         selectedMonths: props.defaultSelectedMonths || []
       };
     } else {
@@ -80,17 +78,6 @@ export class MonthPicker extends React.PureComponent {
       }
 
       this.setState({ selectedMonths });
-
-      this.handleAriaPressed(selectedMonths);
-    }
-  }
-
-  handleAriaPressed(selectedMonths) {
-    if (!this.isControlled) {
-      this.setState({
-        selectAllPressed: selectedMonths.length === 12,
-        clearAllPressed: selectedMonths.length === 0
-      });
     }
   }
 
@@ -190,18 +177,11 @@ export class MonthPicker extends React.PureComponent {
 
   render() {
     const { selectAllText, clearAllText } = this.props;
-    let { selectAllPressed, clearAllPressed } = this.state;
-
-    if (this.isControlled) {
-      const selectedMonths = this.selectedMonths();
-      const disabledMonths = this.disabledMonths();
-      const selectedAvailable = selectedMonths.filter(
-        m => !disabledMonths.includes(m)
-      );
-      selectAllPressed =
-        selectedAvailable.length === 12 - disabledMonths.length;
-      clearAllPressed = selectedMonths.length === 0;
-    }
+    const selectedMonths = this.selectedMonths();
+    const disabledMonths = this.disabledMonths();
+    const selectAllPressed =
+      selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+    const clearAllPressed = selectedMonths.length === 0;
 
     const Heading = this.props.headingLevel
       ? `h${this.props.headingLevel}`

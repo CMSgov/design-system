@@ -6,9 +6,7 @@ const defaultProps = {
   name: 'months',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  label: 'Select months',
-  selectAll: false,
-  clearAll: false
+  label: 'Select months'
 };
 
 function renderMonthPicker(props) {
@@ -42,6 +40,8 @@ describe('MonthPicker', () => {
 
     // Changing to let to allow multiple find references
     let buttons = wrapper.find('Button');
+    expect(buttons.at(0).props()['aria-pressed']).toBe(false);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(true);
 
     // Click Select All button
     buttons.at(0).simulate('click');
@@ -49,8 +49,8 @@ describe('MonthPicker', () => {
 
     // Create point of reference to Select All
     buttons = wrapper.find('Button');
-    expect(wrapper.state('selectAllPressed')).toEqual(true);
-    expect(buttons.at(0).props()['aria-pressed']).toEqual(true);
+    expect(buttons.at(0).props()['aria-pressed']).toBe(true);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(false);
 
     // Click Clear All button
     buttons.at(1).simulate('click');
@@ -58,8 +58,8 @@ describe('MonthPicker', () => {
 
     // Create new point of reference to Clear All
     buttons = wrapper.find('Button');
-    expect(wrapper.state('clearAllPressed')).toEqual(true);
-    expect(buttons.at(1).props()['aria-pressed']).toEqual(true);
+    expect(buttons.at(0).props()['aria-pressed']).toBe(false);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(true);
   });
 
   it('renders a title block with hint', () => {
@@ -69,9 +69,9 @@ describe('MonthPicker', () => {
     });
     const title = wrapper.find('h4.ds-c-label');
     const hint = wrapper.find('p.ds-c-field__hint');
-    expect(title.exists()).toEqual(true);
+    expect(title.exists()).toBe(true);
     expect(title.text()).toEqual('Select a month');
-    expect(hint.exists()).toEqual(true);
+    expect(hint.exists()).toBe(true);
     expect(hint.text()).toEqual('Tips and tricks');
   });
 
@@ -82,9 +82,9 @@ describe('MonthPicker', () => {
     });
     const title = wrapper.find('h3.ds-c-label');
     const hint = wrapper.find('p.ds-c-field__hint');
-    expect(title.exists()).toEqual(true);
+    expect(title.exists()).toBe(true);
     expect(title.text()).toEqual('Select a preference');
-    expect(hint.exists()).toEqual(false);
+    expect(hint.exists()).toBe(false);
   });
 
   it('renders a FormLabel with correct props', () => {
@@ -179,12 +179,29 @@ describe('MonthPicker', () => {
   it('disables month choices according to `disabledMonths` prop', () => {
     const disabledMonths = [5, 9];
     const { wrapper } = renderMonthPicker({ disabledMonths });
+    let buttons = wrapper.find('Button');
     const choices = wrapper.find('Choice');
     expect(choices.get(0).props.disabled).toBe(false);
     expect(choices.get(1).props.disabled).toBe(false);
     expect(choices.get(4).props.disabled).toBe(true);
     expect(choices.get(8).props.disabled).toBe(true);
     expect(choices.get(11).props.disabled).toBe(false);
+
+    // Check buttons' default aria-pressed
+    expect(buttons.at(0).props()['aria-pressed']).toBe(false);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(true);
+
+    // Create point of reference to Select All
+    buttons.at(0).simulate('click');
+    buttons = wrapper.find('Button');
+    expect(buttons.at(0).props()['aria-pressed']).toBe(true);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(false);
+
+    // Create point of reference to Clear All
+    buttons.at(1).simulate('click');
+    buttons = wrapper.find('Button');
+    expect(buttons.at(0).props()['aria-pressed']).toBe(false);
+    expect(buttons.at(1).props()['aria-pressed']).toBe(true);
   });
 
   it('checks month choices according to `selectedMonths` prop', () => {
