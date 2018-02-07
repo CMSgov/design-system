@@ -16,13 +16,16 @@ Markup:
 <% var groups = {
   'white': [
     'base',
-    'muted',
     'black',
-    'primary', 'primary-darker', 'primary-darkest',
+    'muted',
     'gray',
+    'primary', 'primary-darker', 'primary-darkest',
     'error', 'error-dark',
     'success'
   ],
+  'gray-lightest': ['muted', 'primary', 'error-dark'],
+  'gray-lighter': ['base', 'primary-darker'],
+  'gray-light': ['base', 'primary-darkest'],
   'background-inverse': ['base-inverse', 'muted-inverse', 'error-light'],
   'base': ['white'],
   'gray-dark': ['white'],
@@ -47,8 +50,6 @@ Markup:
   'error-dark': ['white'],
   'secondary': ['white'],
   'error': ['white'],
-  'gray-light': ['base'],
-  'gray-lighter': ['base'],
   'primary-alt-lightest': ['base'],
   'green-lighter': ['base'],
   'success-lighter': ['base'],
