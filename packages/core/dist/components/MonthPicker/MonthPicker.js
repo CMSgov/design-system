@@ -142,7 +142,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         var selectedMonths = monthNumbers.filter(function (m) {
           return !disabledMonths.includes(m);
         });
-        this.setState({ selectMonths: selectMonths });
+        this.setState({ selectedMonths: selectedMonths });
       }
     }
   }, {
