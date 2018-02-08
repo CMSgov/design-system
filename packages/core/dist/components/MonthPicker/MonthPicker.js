@@ -127,7 +127,6 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         } else {
           selectedMonths.push(month);
         }
-
         this.setState({ selectedMonths: selectedMonths });
       }
     }
@@ -143,9 +142,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         var selectedMonths = monthNumbers.filter(function (m) {
           return !disabledMonths.includes(m);
         });
-        this.setState({
-          selectedMonths: selectedMonths
-        });
+        this.setState({ selectMonths: selectMonths });
       }
     }
   }, {
@@ -156,9 +153,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
       }
 
       if (!this.isControlled) {
-        this.setState({
-          selectedMonths: []
-        });
+        this.setState({ selectedMonths: [] });
       }
     }
   }, {

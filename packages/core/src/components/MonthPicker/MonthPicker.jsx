@@ -76,7 +76,6 @@ export class MonthPicker extends React.PureComponent {
       } else {
         selectedMonths.push(month);
       }
-
       this.setState({ selectedMonths });
     }
   }
@@ -91,9 +90,7 @@ export class MonthPicker extends React.PureComponent {
       const selectedMonths = monthNumbers.filter(
         m => !disabledMonths.includes(m)
       );
-      this.setState({
-        selectedMonths
-      });
+      this.setState({ selectedMonths });
     }
   }
 
@@ -103,9 +100,7 @@ export class MonthPicker extends React.PureComponent {
     }
 
     if (!this.isControlled) {
-      this.setState({
-        selectedMonths: []
-      });
+      this.setState({ selectedMonths: [] });
     }
   }
 
