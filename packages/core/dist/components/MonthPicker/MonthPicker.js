@@ -144,9 +144,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
           return !disabledMonths.includes(m);
         });
         this.setState({
-          selectedMonths: selectedMonths,
-          selectAllPressed: true,
-          clearAllPressed: false
+          selectedMonths: selectedMonths
         });
       }
     }
@@ -159,9 +157,7 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
 
       if (!this.isControlled) {
         this.setState({
-          selectedMonths: [],
-          selectAllPressed: false,
-          clearAllPressed: true
+          selectedMonths: []
         });
       }
     }

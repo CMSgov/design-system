@@ -1,5 +1,6 @@
 import MonthPicker from './MonthPicker.jsx';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
@@ -232,5 +233,13 @@ describe('MonthPicker', () => {
 
     wrapper.update();
     expect(wrapper.find('Choice').get(0).props.checked).toBe(true);
+  });
+
+  it('renders a snapshot', () => {
+    const tree = renderer
+      .create(<MonthPicker name="months" label="Months" />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 });

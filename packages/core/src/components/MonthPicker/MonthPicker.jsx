@@ -92,9 +92,7 @@ export class MonthPicker extends React.PureComponent {
         m => !disabledMonths.includes(m)
       );
       this.setState({
-        selectedMonths,
-        selectAllPressed: true,
-        clearAllPressed: false
+        selectedMonths
       });
     }
   }
@@ -106,9 +104,7 @@ export class MonthPicker extends React.PureComponent {
 
     if (!this.isControlled) {
       this.setState({
-        selectedMonths: [],
-        selectAllPressed: false,
-        clearAllPressed: true
+        selectedMonths: []
       });
     }
   }
