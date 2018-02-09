@@ -136,6 +136,18 @@ Object.keys(_MonthPicker).forEach(function (key) {
   });
 });
 
+var _Review = require('./Review/Review');
+
+Object.keys(_Review).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Review[key];
+    }
+  });
+});
+
 var _SkipNav = require('./SkipNav/SkipNav');
 
 Object.keys(_SkipNav).forEach(function (key) {
