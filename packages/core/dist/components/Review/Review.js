@@ -19,6 +19,10 @@ var _ReviewLink = require('./ReviewLink');
 
 var _ReviewLink2 = _interopRequireDefault(_ReviewLink);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28,11 +32,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /*
-Review
+`<Review>`
 
 @react-component Review
 
-Style guide: patterns.review
+Style guide: components.review.react
 */
 
 /**
@@ -54,7 +58,7 @@ var Review = exports.Review = function (_React$PureComponent) {
       if (this.props.heading) {
         return _react2.default.createElement(
           'h3',
-          { className: 'ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block' },
+          { className: 'ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block' },
           this.props.heading
         );
       }
@@ -62,16 +66,17 @@ var Review = exports.Review = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.alignTop && 'ds-u-align-items--center');
       return _react2.default.createElement(
         'div',
-        { className: 'ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex' },
+        { className: classes },
         _react2.default.createElement(
           'div',
           { className: 'ds-u-margin-right--2' },
           this.heading(),
           _react2.default.createElement(
             'div',
-            null,
+            { className: 'ds-c-review__body' },
             this.props.children
           )
         ),
@@ -88,10 +93,15 @@ var Review = exports.Review = function (_React$PureComponent) {
 }(_react2.default.PureComponent);
 
 Review.defaultProps = {
+  alignTop: true,
   linkText: 'Edit'
 };
 
 Review.propTypes = {
+  /**
+   * Set to false to vertically center the edit link.
+   */
+  alignTop: _propTypes2.default.bool,
   children: _propTypes2.default.node.isRequired,
   /**
    * An optional function that is executed on link click. The href value is

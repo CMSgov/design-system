@@ -19,7 +19,7 @@ export class Review extends React.PureComponent {
   heading() {
     if (this.props.heading) {
       return (
-        <h3 className="ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block">
+        <h3 className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block">
           {this.props.heading}
         </h3>
       );
@@ -29,7 +29,7 @@ export class Review extends React.PureComponent {
   render() {
     const classes = classNames(
       'ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex',
-      this.props.alignTop && 'ds-u-align-items--center'
+      !this.props.alignTop && 'ds-u-align-items--center'
     );
     return (
       <div className={classes}>
@@ -52,7 +52,7 @@ Review.defaultProps = {
 
 Review.propTypes = {
   /**
-   * Set to false to vertically align the edit link.
+   * Set to false to vertically center the edit link.
    */
   alignTop: PropTypes.bool,
   children: PropTypes.node.isRequired,
