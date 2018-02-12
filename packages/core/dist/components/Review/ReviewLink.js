@@ -36,8 +36,7 @@ var ReviewLink = exports.ReviewLink = function (_React$PureComponent) {
     key: 'handleClick',
     value: function handleClick(event) {
       if (this.props.onClick) {
-        event.preventDefault();
-        this.props.onClick(this.props.href);
+        this.props.onClick(event, this.props.href);
       }
     }
   }, {
@@ -48,7 +47,8 @@ var ReviewLink = exports.ReviewLink = function (_React$PureComponent) {
       var _props = this.props,
           href = _props.href,
           className = _props.className,
-          children = _props.children;
+          children = _props.children,
+          ariaLabel = _props.ariaLabel;
 
       var onClick = function onClick(event) {
         return _this2.handleClick(event);
@@ -58,7 +58,12 @@ var ReviewLink = exports.ReviewLink = function (_React$PureComponent) {
         { className: 'ds-u-margin--0' },
         _react2.default.createElement(
           'a',
-          { href: href, onClick: onClick, className: className },
+          {
+            href: href,
+            onClick: onClick,
+            className: className,
+            'aria-label': ariaLabel
+          },
           children
         )
       );
@@ -72,7 +77,12 @@ ReviewLink.propTypes = {
   children: _propTypes2.default.node.isRequired,
   href: _propTypes2.default.string.isRequired,
   className: _propTypes2.default.string,
-  onClick: _propTypes2.default.func
+  onClick: _propTypes2.default.func,
+  /**
+   * Provide this value to give screenreaders longer, more descriptive text to
+   * explain the context of the link.
+   */
+  ariaLabel: _propTypes2.default.string
 };
 
 exports.default = ReviewLink;

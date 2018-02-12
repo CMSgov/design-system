@@ -5,10 +5,10 @@ import { shallow } from 'enzyme';
 const noop = () => {};
 const text = 'review text';
 const defaultProps = {
-  onClick: noop,
+  onEditClick: noop,
   heading: 'review heading',
-  href: 'my-href',
-  linkText: 'edit'
+  editHref: 'edit-href',
+  editText: 'edit'
 };
 
 function render(props, children = text) {
@@ -45,8 +45,8 @@ describe('Review', function() {
     expect($p.text()).toBe(text);
   });
 
-  it('vertically centers if props.alignTop is false', () => {
-    const { wrapper } = render({ alignTop: false });
-    expect(wrapper.hasClass('ds-u-align-items--center')).toBe(true);
+  it('adds a class from props', () => {
+    const { wrapper } = render({ className: 'my-class' });
+    expect(wrapper.hasClass('my-class')).toBe(true);
   });
 });

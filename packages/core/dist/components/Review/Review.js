@@ -31,17 +31,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*
-`<Review>`
-
-@react-component Review
-
-Style guide: components.review.react
-*/
-
 /**
- * The `Review` component is used for listing a summary of information entered
- * by a user. Its content includes a heading, value, and edit link.
+ * The `Review` component wraps up the styles and markup required to make a
+ * single reviewable row. They are designed to be used either alone, as a single
+ * row, or multiple rows can be combined together one after the other to present
+ * more information. The component can take text or HTML as row content.
  */
 var Review = exports.Review = function (_React$PureComponent) {
   _inherits(Review, _React$PureComponent);
@@ -55,9 +49,10 @@ var Review = exports.Review = function (_React$PureComponent) {
   _createClass(Review, [{
     key: 'heading',
     value: function heading() {
+      var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h3';
       if (this.props.heading) {
         return _react2.default.createElement(
-          'h3',
+          Heading,
           { className: 'ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block' },
           this.props.heading
         );
@@ -66,7 +61,7 @@ var Review = exports.Review = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
-      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', !this.props.alignTop && 'ds-u-align-items--center');
+      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.className);
       return _react2.default.createElement(
         'div',
         { className: classes },
@@ -98,10 +93,7 @@ Review.defaultProps = {
 };
 
 Review.propTypes = {
-  /**
-   * Set to false to vertically center the edit link.
-   */
-  alignTop: _propTypes2.default.bool,
+  className: _propTypes2.default.string,
   children: _propTypes2.default.node.isRequired,
   /**
    * An optional function that is executed on link click. The href value is
@@ -110,7 +102,11 @@ Review.propTypes = {
   onClick: _propTypes2.default.func,
   heading: _propTypes2.default.string,
   href: _propTypes2.default.string.isRequired,
-  linkText: _propTypes2.default.node.isRequired
+  linkText: _propTypes2.default.node.isRequired,
+  /**
+   * Heading type to override default `<h3>`
+   */
+  headingLevel: _propTypes2.default.number
 };
 
 exports.default = Review;

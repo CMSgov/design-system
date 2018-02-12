@@ -37,7 +37,7 @@ describe('ReviewLink', function() {
     const link = wrapper.find('a');
     expect(link.length).toEqual(1);
 
-    link.simulate('click', { preventDefault: () => {} });
-    expect(onClick).toHaveBeenCalledWith('my-href');
+    link.simulate('click', { event: 'mock' });
+    expect(onClick).toHaveBeenCalledWith({ event: 'mock' }, 'my-href');
   });
 });
