@@ -197,11 +197,12 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
     }
   }, {
     key: 'renderButton',
-    value: function renderButton(text, onClick) {
+    value: function renderButton(text, pressed, onClick) {
       return _react2.default.createElement(
         _Button2.default,
         {
           'aria-describedby': this.labelId,
+          'aria-pressed': pressed,
           size: 'small',
           className: 'ds-u-margin-right--1',
           onClick: onClick,
@@ -237,6 +238,11 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
           selectAllText = _props2.selectAllText,
           clearAllText = _props2.clearAllText;
 
+      var selectedMonths = this.selectedMonths();
+      var disabledMonths = this.disabledMonths();
+      var selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+      var clearAllPressed = selectedMonths.length === 0;
+
       var Heading = this.props.headingLevel ? 'h' + this.props.headingLevel : 'h4';
       var classes = (0, _classnames2.default)('ds-c-month-picker', 'ds-c-fieldset', 'ds-u-margin-y--3', this.props.className);
       return _react2.default.createElement(
@@ -265,10 +271,10 @@ var MonthPicker = exports.MonthPicker = function (_React$PureComponent) {
         _react2.default.createElement(
           'div',
           { className: 'ds-u-margin-top--3' },
-          this.renderButton(selectAllText, function () {
+          this.renderButton(selectAllText, selectAllPressed, function () {
             return _this3.handleSelectAll();
           }),
-          this.renderButton(clearAllText, function () {
+          this.renderButton(clearAllText, clearAllPressed, function () {
             return _this3.handleClearAll();
           })
         ),

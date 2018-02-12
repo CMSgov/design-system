@@ -131,10 +131,11 @@ export class MonthPicker extends React.PureComponent {
     );
   }
 
-  renderButton(text, onClick) {
+  renderButton(text, pressed, onClick) {
     return (
       <Button
         aria-describedby={this.labelId}
+        aria-pressed={pressed}
         size="small"
         className="ds-u-margin-right--1"
         onClick={onClick}
@@ -167,6 +168,12 @@ export class MonthPicker extends React.PureComponent {
 
   render() {
     const { selectAllText, clearAllText } = this.props;
+    const selectedMonths = this.selectedMonths();
+    const disabledMonths = this.disabledMonths();
+    const selectAllPressed =
+      selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+    const clearAllPressed = selectedMonths.length === 0;
+
     const Heading = this.props.headingLevel
       ? `h${this.props.headingLevel}`
       : `h4`;
@@ -195,8 +202,12 @@ export class MonthPicker extends React.PureComponent {
           ) : null}
         </div>
         <div className="ds-u-margin-top--3">
-          {this.renderButton(selectAllText, () => this.handleSelectAll())}
-          {this.renderButton(clearAllText, () => this.handleClearAll())}
+          {this.renderButton(selectAllText, selectAllPressed, () =>
+            this.handleSelectAll()
+          )}
+          {this.renderButton(clearAllText, clearAllPressed, () =>
+            this.handleClearAll()
+          )}
         </div>
         <fieldset className="ds-c-fieldset">
           {this.renderLabel()}
