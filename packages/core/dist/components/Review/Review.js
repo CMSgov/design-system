@@ -66,7 +66,7 @@ var Review = exports.Review = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
-      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.alignTop && 'ds-u-align-items--center');
+      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', !this.props.alignTop && 'ds-u-align-items--center');
       return _react2.default.createElement(
         'div',
         { className: classes },

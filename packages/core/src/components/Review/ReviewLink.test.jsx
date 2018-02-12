@@ -40,25 +40,4 @@ describe('ReviewLink', function() {
     link.simulate('click', { preventDefault: () => {} });
     expect(onClick).toHaveBeenCalledWith('my-href');
   });
-
-  // it('renders a heading', () => {
-  //   const { props, wrapper } = render();
-  //   const $heading = wrapper.render().find('.ds-c-review__heading');
-  //
-  //   expect($heading.length).toBe(1);
-  //   expect($heading.text()).toBe(props.heading);
-  // });
-  //
-  // it('renders HTML children', () => {
-  //   const { wrapper } = render({}, <p className="my-p">{text}</p>);
-  //   const $p = wrapper.render().find('.my-p');
-  //
-  //   expect($p.length).toBe(1);
-  //   expect($p.text()).toBe(text);
-  // });
-  //
-  // it('vertically centers if props.alignTop is false', () => {
-  //   const { wrapper } = render({ alignTop: false });
-  //   expect(wrapper.hasClass('ds-u-align-items--center')).toBe(true);
-  // });
 });
