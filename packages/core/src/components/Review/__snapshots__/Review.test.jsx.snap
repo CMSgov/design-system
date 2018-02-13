@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review adds a class from props 1`] = `
+<div
+  className="ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex my-class"
+>
+  <div
+    className="ds-u-margin-right--2"
+  >
+    <h3
+      className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block"
+    >
+      review heading
+    </h3>
+    <div
+      className="ds-c-review__body"
+    >
+      review text
+    </div>
+  </div>
+  <ReviewLink
+    href="edit-href"
+    onClick={[Function]}
+  >
+    edit
+  </ReviewLink>
+</div>
+`;
+
+exports[`Review renders HTML children 1`] = `
+<div
+  className="ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex"
+>
+  <div
+    className="ds-u-margin-right--2"
+  >
+    <h3
+      className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block"
+    >
+      review heading
+    </h3>
+    <div
+      className="ds-c-review__body"
+    >
+      <p
+        className="my-p"
+      >
+        review text
+      </p>
+    </div>
+  </div>
+  <ReviewLink
+    href="edit-href"
+    onClick={[Function]}
+  >
+    edit
+  </ReviewLink>
+</div>
+`;
+
+exports[`Review renders a heading 1`] = `
+<div
+  className="ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex"
+>
+  <div
+    className="ds-u-margin-right--2"
+  >
+    <h3
+      className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block"
+    >
+      review heading
+    </h3>
+    <div
+      className="ds-c-review__body"
+    >
+      review text
+    </div>
+  </div>
+  <ReviewLink
+    href="edit-href"
+    onClick={[Function]}
+  >
+    edit
+  </ReviewLink>
+</div>
+`;
+
+exports[`Review renders review 1`] = `
+<div
+  className="ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex"
+>
+  <div
+    className="ds-u-margin-right--2"
+  >
+    <h3
+      className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block"
+    >
+      review heading
+    </h3>
+    <div
+      className="ds-c-review__body"
+    >
+      review text
+    </div>
+  </div>
+  <ReviewLink
+    href="edit-href"
+    onClick={[Function]}
+  >
+    edit
+  </ReviewLink>
+</div>
+`;

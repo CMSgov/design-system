@@ -27,6 +27,7 @@ describe('Review', function() {
     expect(wrapper.hasClass('ds-c-review')).toBe(true);
     expect($body.length).toBe(1);
     expect($body.text()).toBe(text);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders a heading', () => {
@@ -35,6 +36,7 @@ describe('Review', function() {
 
     expect($heading.length).toBe(1);
     expect($heading.text()).toBe(props.heading);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders HTML children', () => {
@@ -43,10 +45,12 @@ describe('Review', function() {
 
     expect($p.length).toBe(1);
     expect($p.text()).toBe(text);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('adds a class from props', () => {
     const { wrapper } = render({ className: 'my-class' });
     expect(wrapper.hasClass('my-class')).toBe(true);
+    expect(wrapper).toMatchSnapshot();
   });
 });
