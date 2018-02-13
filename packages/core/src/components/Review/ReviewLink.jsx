@@ -12,7 +12,7 @@ export class ReviewLink extends React.PureComponent {
     const { href, className, children, ariaLabel } = this.props;
     const onClick = event => this.handleClick(event);
     return (
-      <div className="ds-u-margin--0">
+      <div>
         <a
           href={href}
           onClick={onClick}

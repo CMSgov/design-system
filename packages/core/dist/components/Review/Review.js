@@ -61,7 +61,7 @@ var Review = exports.Review = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
-      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.className);
+      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.className && this.props.className);
       return _react2.default.createElement(
         'div',
         { className: classes },
@@ -77,8 +77,8 @@ var Review = exports.Review = function (_React$PureComponent) {
         ),
         _react2.default.createElement(
           _ReviewLink2.default,
-          { onClick: this.props.onClick, href: this.props.href },
-          this.props.linkText
+          { onClick: this.props.onEditClick, href: this.props.editHref },
+          this.props.editText
         )
       );
     }
@@ -88,25 +88,24 @@ var Review = exports.Review = function (_React$PureComponent) {
 }(_react2.default.PureComponent);
 
 Review.defaultProps = {
-  alignTop: true,
-  linkText: 'Edit'
+  editText: 'Edit'
 };
 
 Review.propTypes = {
-  className: _propTypes2.default.string,
   children: _propTypes2.default.node.isRequired,
+  className: _propTypes2.default.string,
+  heading: _propTypes2.default.node,
   /**
-   * An optional function that is executed on link click. The href value is
-   * passed to this function.
+   * Heading type to override default `<h3>`.
    */
-  onClick: _propTypes2.default.func,
-  heading: _propTypes2.default.string,
-  href: _propTypes2.default.string.isRequired,
-  linkText: _propTypes2.default.node.isRequired,
+  headingLevel: _propTypes2.default.number,
+  editHref: _propTypes2.default.string.isRequired,
+  editText: _propTypes2.default.node.isRequired,
   /**
-   * Heading type to override default `<h3>`
+   * An optional function that is executed on edit link click. The event and
+   * props.href value are passed to this function.
    */
-  headingLevel: _propTypes2.default.number
+  onEditClick: _propTypes2.default.func
 };
 
 exports.default = Review;
