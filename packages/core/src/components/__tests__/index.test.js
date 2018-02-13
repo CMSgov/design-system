@@ -34,7 +34,7 @@ function getDirectories(paths) {
   return paths.filter(filePath => fs.lstatSync(filePath).isDirectory());
 }
 
-const ignoredComponents = ['Step', 'SubStep', 'StepLink'];
+const ignoredComponents = ['Step', 'SubStep', 'StepLink', 'ReviewLink'];
 
 describe('Components index', () => {
   it("exports all components except ones we don't want to expose", () => {
