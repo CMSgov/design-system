@@ -20,4 +20,15 @@ describe('SkipNav', function() {
 
     expect(wrapper.text()).toBe('Skip to main content');
   });
+
+  it('calls onClick when clicked', () => {
+    const spy = jest.fn();
+    const href = 'javascript:void(0)';
+    const wrapper = shallow(<SkipNav href={href} onClick={spy} />);
+
+    const fakeEvent = { anEventProperty: 'hey' };
+    wrapper.simulate('click', fakeEvent);
+
+    expect(spy).toHaveBeenCalledWith(fakeEvent);
+  });
 });
