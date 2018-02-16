@@ -36,6 +36,7 @@ module.exports = (gulp, shared) => {
       },
       notify: false,
       open: !argv.noopen,
+      port: argv.port || '3000',
       startPath: shared.rootPath
     });
   });
