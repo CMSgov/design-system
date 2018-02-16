@@ -15,11 +15,15 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function SkipNav(props) {
+function SkipNav(_ref) {
+  var children = _ref.children,
+      href = _ref.href,
+      onClick = _ref.onClick;
+
   return _react2.default.createElement(
     'a',
-    { className: 'ds-c-skip-nav', href: props.href },
-    props.children
+    { className: 'ds-c-skip-nav', href: href, onClick: onClick },
+    children
   );
 }
 
@@ -32,7 +36,13 @@ SkipNav.propTypes = {
   /**
    * The anchor or target for the link (where the link will jump the user to)
    */
-  href: _propTypes2.default.string.isRequired
+  href: _propTypes2.default.string.isRequired,
+  /**
+   * An onClick handler used for manually setting focus on the content.
+   * Sometimes it's necessary to manually set focus, like when an app uses hash
+   * routing and element-id links will be mistaken for routes.
+   */
+  onClick: _propTypes2.default.func
 };
 
 exports.default = SkipNav;

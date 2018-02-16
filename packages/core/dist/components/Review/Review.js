@@ -103,7 +103,7 @@ Review.propTypes = {
   editText: _propTypes2.default.node.isRequired,
   /**
    * An optional function that is executed on edit link click. The event and
-   * props.href value are passed to this function.
+   * props.editHref value are passed to this function.
    */
   onEditClick: _propTypes2.default.func
 };

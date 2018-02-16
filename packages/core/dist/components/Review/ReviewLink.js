@@ -55,7 +55,7 @@ var ReviewLink = exports.ReviewLink = function (_React$PureComponent) {
       };
       return _react2.default.createElement(
         'div',
-        { className: 'ds-u-margin--0' },
+        null,
         _react2.default.createElement(
           'a',
           {
