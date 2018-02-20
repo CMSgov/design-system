@@ -17,7 +17,6 @@ const cmsLinks = {
   'http://www.cms.gov': 'CMS.gov',
   'http://www.medicare.gov': 'Medicare.gov',
   'http://www.mymedicare.gov': 'MyMedicare.gov',
-  'http://www.stopmedicarefraud.gov': 'StopMedicareFraud.gov',
   'http://www.medicaid.gov': 'Medicaid.gov',
   'http://www.healthcare.gov': 'HealthCare.gov',
   'http://www.HHS.gov/open': 'HHS.gov'
