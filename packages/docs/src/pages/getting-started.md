@@ -11,11 +11,11 @@ The design system consists of two packages which are installed separately.
 
 The [**core** package](https://www.npmjs.com/package/@cmsgov/design-system-core) includes the bulk of the design system:
 
-- Base styles
-- Utility classes
-- Sass/CSS and React components
-- Sass mixins and variables
-- Fonts and images
+* Base styles
+* Utility classes
+* Sass/CSS and React components
+* Sass mixins and variables
+* Fonts and images
 
 ```
 npm install --save @cmsgov/design-system-core
@@ -23,7 +23,7 @@ npm install --save @cmsgov/design-system-core
 
 The [**layout** package](https://www.npmjs.com/package/@cmsgov/design-system-layout) includes:
 
-- Responsive flexbox grid framework
+* Responsive flexbox grid framework
 
 ```
 npm install --save @cmsgov/design-system-layout
@@ -46,8 +46,8 @@ You can manually copy these directories, or you could integrate this step into y
 
 You can change the default paths by overriding the following Sass variables:
 
-- `$font-path`
-- `$image-path`
+* `$font-path`
+* `$image-path`
 
 <h2 id="usage" class="ds-h2 ds-u-color--primary-darker">Usage</h2>
 
@@ -78,16 +78,13 @@ If you're already using Sass to style your site, another way to include the desi
 
 1. First, make sure your build system is configured so that the `node_modules` directory is in the list of Sass [`includePaths`](https://github.com/sass/node-sass#includepaths).
 2. Add the following to your Sass file:
-  ```css
-  @import '@cmsgov/design-system-core/src/index';
-  ```
 
-To override any of the design system's Sass variables, include the variable definitions _before_ the line where the design system is imported. For example:
 
 ```css
-@import 'variable-overrides';
 @import '@cmsgov/design-system-core/src/index';
 ```
+
+[Learn how to override and theme Sass variables]({{root}}/guidelines/themes/).
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/styles/index.scss)
 
