@@ -113,3 +113,55 @@ exports[`Dialog renders react-aria-modal 1`] = `
   </Displaced>
 </Dialog>
 `;
+
+exports[`Dialog renders with additional classNames 1`] = `
+Object {
+  "props": Object {
+    "actions": <span>
+      Pretend these are actions
+    </span>,
+    "actionsClassName": "test-action",
+    "children": "Foo",
+    "className": "test-dialog",
+    "headerClassName": "test-header",
+  },
+  "wrapper": <Displaced
+    dialogClass="ds-c-dialog test-dialog"
+    escapeExits={true}
+    includeDefaultStyles={false}
+    mounted={true}
+    titleId="dialog-title"
+    underlayClass="ds-c-dialog-wrap"
+    underlayClickExits={false}
+  >
+    <div
+      role="document"
+    >
+      <header
+        className="ds-c-dialog__header test-header"
+        role="banner"
+      >
+        <button
+          aria-label="Close modal dialog"
+          className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+        >
+          Close
+        </button>
+      </header>
+      <main
+        role="main"
+      >
+        Foo
+      </main>
+      <aside
+        className="ds-c-dialog__actions test-action"
+        role="complementary"
+      >
+        <span>
+          Pretend these are actions
+        </span>
+      </aside>
+    </div>
+  </Displaced>,
+}
+`;

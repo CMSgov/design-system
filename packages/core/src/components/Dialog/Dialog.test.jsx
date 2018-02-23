@@ -34,6 +34,17 @@ describe('Dialog', function() {
     ).toMatchSnapshot();
   });
 
+  it('renders with additional classNames', () => {
+    expect(
+      render({
+        actions: <span>Pretend these are actions</span>,
+        actionsClassName: 'test-action',
+        className: 'test-dialog',
+        headerClassName: 'test-header'
+      })
+    ).toMatchSnapshot();
+  });
+
   it('calls onExit when close button is clicked', () => {
     const { props, wrapper } = render({ onExit: jest.fn() });
     const close = wrapper.find('.ds-c-dialog__close');
