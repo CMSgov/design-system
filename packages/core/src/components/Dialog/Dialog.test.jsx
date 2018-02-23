@@ -34,13 +34,14 @@ describe('Dialog', function() {
     ).toMatchSnapshot();
   });
 
-  it('renders with additional classNames', () => {
+  it('renders with additional classNames and size', () => {
     expect(
       render({
         actions: <span>Pretend these are actions</span>,
         actionsClassName: 'test-action',
         className: 'test-dialog',
-        headerClassName: 'test-header'
+        headerClassName: 'test-header',
+        size: 'full'
       })
     ).toMatchSnapshot();
   });

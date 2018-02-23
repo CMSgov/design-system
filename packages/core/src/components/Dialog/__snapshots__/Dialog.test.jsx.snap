@@ -114,7 +114,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
 </Dialog>
 `;
 
-exports[`Dialog renders with additional classNames 1`] = `
+exports[`Dialog renders with additional classNames and size 1`] = `
 Object {
   "props": Object {
     "actions": <span>
@@ -124,9 +124,10 @@ Object {
     "children": "Foo",
     "className": "test-dialog",
     "headerClassName": "test-header",
+    "size": "full",
   },
   "wrapper": <Displaced
-    dialogClass="ds-c-dialog test-dialog"
+    dialogClass="ds-c-dialog test-dialog ds-c-dialog--full"
     escapeExits={true}
     includeDefaultStyles={false}
     mounted={true}
