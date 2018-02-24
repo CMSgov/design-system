@@ -46,6 +46,15 @@ describe('Dialog', function() {
     ).toMatchSnapshot();
   });
 
+  it('close button text and variation can be changed', () => {
+    expect(
+      render({
+        closeButtonVariation: 'danger',
+        closeText: "No thank you. I don't like saving money"
+      })
+    ).toMatchSnapshot();
+  });
+
   it('calls onExit when close button is clicked', () => {
     const { props, wrapper } = render({ onExit: jest.fn() });
     const close = wrapper.find('.ds-c-dialog__close');

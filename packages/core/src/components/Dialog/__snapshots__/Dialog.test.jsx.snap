@@ -1,8 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Dialog close button text and variation can be changed 1`] = `
+Object {
+  "props": Object {
+    "children": "Foo",
+    "closeButtonVariation": "danger",
+    "closeText": "No thank you. I don't like saving money",
+  },
+  "wrapper": <Displaced
+    dialogClass="ds-c-dialog"
+    escapeExits={true}
+    includeDefaultStyles={false}
+    mounted={true}
+    titleId="dialog-title"
+    underlayClass="ds-c-dialog-wrap"
+    underlayClickExits={false}
+  >
+    <div
+      role="document"
+    >
+      <header
+        className="ds-c-dialog__header"
+        role="banner"
+      >
+        <Button
+          aria-label="Close modal dialog"
+          className="ds-c-dialog__close"
+          type="button"
+          variation="danger"
+        >
+          No thank you. I don't like saving money
+        </Button>
+      </header>
+      <main
+        role="main"
+      >
+        Foo
+      </main>
+    </div>
+  </Displaced>,
+}
+`;
+
 exports[`Dialog renders react-aria-modal 1`] = `
 <Dialog
   ariaCloseLabel="Close modal dialog"
+  closeButtonVariation="transparent"
+  closeText="Close"
   escapeExitDisabled={false}
   getApplicationNode={
     [MockFunction] {
@@ -91,13 +135,22 @@ exports[`Dialog renders react-aria-modal 1`] = `
                   >
                     Foo
                   </h1>
-                  <button
+                  <Button
                     aria-label="Close modal dialog"
-                    className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                    className="ds-c-dialog__close"
                     onClick={[MockFunction]}
+                    type="button"
+                    variation="transparent"
                   >
-                    Close
-                  </button>
+                    <button
+                      aria-label="Close modal dialog"
+                      className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Close
+                    </button>
+                  </Button>
                 </header>
                 <main
                   role="main"
@@ -142,12 +195,14 @@ Object {
         className="ds-c-dialog__header test-header"
         role="banner"
       >
-        <button
+        <Button
           aria-label="Close modal dialog"
-          className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+          className="ds-c-dialog__close"
+          type="button"
+          variation="transparent"
         >
           Close
-        </button>
+        </Button>
       </header>
       <main
         role="main"

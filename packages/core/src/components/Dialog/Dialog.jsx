@@ -1,4 +1,5 @@
 import AriaModal from 'react-aria-modal';
+import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -10,6 +11,8 @@ export const Dialog = function(props) {
     ariaCloseLabel,
     children,
     className,
+    closeButtonVariation,
+    closeText,
     escapeExitDisabled,
     headerClassName,
     onExit,
@@ -47,13 +50,14 @@ export const Dialog = function(props) {
               {title}
             </h1>
           )}
-          <button
+          <Button
             aria-label={ariaCloseLabel}
-            className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+            className="ds-c-dialog__close"
             onClick={onExit}
+            variation={closeButtonVariation}
           >
-            Close
-          </button>
+            {closeText}
+          </Button>
         </header>
         <main role="main">{children}</main>
         {actions && (
@@ -68,6 +72,8 @@ export const Dialog = function(props) {
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
+  closeButtonVariation: 'transparent',
+  closeText: 'Close',
   escapeExitDisabled: false,
   underlayClickExits: false
 };
@@ -113,6 +119,12 @@ Dialog.propTypes = {
    * Additional classes to be added to the root dialog element.
    */
   className: PropTypes.string,
+  closeButtonVariation: Button.propTypes.variation,
+  /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeText: PropTypes.string,
   /**
    * Disable exiting the dialog when a user presses the Escape key.
    */
