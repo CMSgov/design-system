@@ -104,7 +104,7 @@ Dialog.propTypes = {
    */
   actions: PropTypes.node,
   /**
-   * Additional classes to be added to the actions element.
+   * Additional classes to be added to the actions container.
    */
   actionsClassName: PropTypes.string,
   /**
@@ -137,7 +137,8 @@ Dialog.propTypes = {
    */
   getApplicationNode: PropTypes.func,
   /**
-   * Additional classes to be added to the header element.
+   * Additional classes to be added to the header, which wraps the title and
+   * close button.
    */
   headerClassName: PropTypes.string,
   /**
