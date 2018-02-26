@@ -1,22 +1,41 @@
 import AriaModal from 'react-aria-modal';
+import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 export const Dialog = function(props) {
   const {
     actions,
+    actionsClassName,
     ariaCloseLabel,
     children,
+    className,
+    closeButtonVariation,
+    closeText,
     escapeExitDisabled,
+    headerClassName,
     onExit,
+    size,
     title,
     ...modalProps
   } = props;
 
+  const dialogClassNames = classNames(
+    'ds-c-dialog',
+    className,
+    size && `ds-c-dialog--${size}`
+  );
+  const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
+  const actionsClassNames = classNames(
+    'ds-c-dialog__actions',
+    actionsClassName
+  );
+
   /* eslint-disable jsx-a11y/no-redundant-roles */
   return (
     <AriaModal
-      dialogClass="ds-c-dialog"
+      dialogClass={dialogClassNames}
       escapeExits={!escapeExitDisabled}
       includeDefaultStyles={false}
       onExit={onExit}
@@ -25,23 +44,24 @@ export const Dialog = function(props) {
       {...modalProps}
     >
       <div role="document">
-        <header className="ds-c-dialog__header" role="banner">
+        <header className={headerClassNames} role="banner">
           {title && (
             <h1 className="ds-h2" id="dialog-title">
               {title}
             </h1>
           )}
-          <button
+          <Button
             aria-label={ariaCloseLabel}
-            className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+            className="ds-c-dialog__close"
             onClick={onExit}
+            variation={closeButtonVariation}
           >
-            Close
-          </button>
+            {closeText}
+          </Button>
         </header>
         <main role="main">{children}</main>
         {actions && (
-          <aside className="ds-c-dialog__actions" role="complementary">
+          <aside className={actionsClassNames} role="complementary">
             {actions}
           </aside>
         )}
@@ -52,6 +72,8 @@ export const Dialog = function(props) {
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
+  closeButtonVariation: 'transparent',
+  closeText: 'Close',
   escapeExitDisabled: false,
   underlayClickExits: false
 };
@@ -72,9 +94,7 @@ Dialog.propTypes = {
   applicationNode: function(props, propName, componentName) {
     if (props[propName] && props[propName] instanceof Element === false) {
       return new Error(
-        `Invalid prop \`${propName}\` supplied to \`${
-          componentName
-        }\`. Expected a DOM node. You may also be interested in the getApplicationNode prop`
+        `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Expected a DOM node. You may also be interested in the getApplicationNode prop`
       );
     }
   },
@@ -84,6 +104,10 @@ Dialog.propTypes = {
    */
   actions: PropTypes.node,
   /**
+   * Additional classes to be added to the actions container.
+   */
+  actionsClassName: PropTypes.string,
+  /**
    * Aria label for the close button
    */
   ariaCloseLabel: PropTypes.string,
@@ -91,6 +115,16 @@ Dialog.propTypes = {
    * The modal's body content
    */
   children: PropTypes.node.isRequired,
+  /**
+   * Additional classes to be added to the root dialog element.
+   */
+  className: PropTypes.string,
+  closeButtonVariation: Button.propTypes.variation,
+  /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeText: PropTypes.string,
   /**
    * Disable exiting the dialog when a user presses the Escape key.
    */
@@ -103,11 +137,17 @@ Dialog.propTypes = {
    */
   getApplicationNode: PropTypes.func,
   /**
+   * Additional classes to be added to the header, which wraps the title and
+   * close button.
+   */
+  headerClassName: PropTypes.string,
+  /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
    * the dialog (if `underlayClickExits=true`).
    */
   onExit: PropTypes.func,
+  size: PropTypes.oneOf(['narrow', 'wide', 'full']),
   /**
    * The Dialog's title, to be rendered in the header alongside the close button.
    */
