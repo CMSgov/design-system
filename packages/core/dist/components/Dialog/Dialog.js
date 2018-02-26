@@ -11,6 +11,10 @@ var _reactAriaModal = require('react-aria-modal');
 
 var _reactAriaModal2 = _interopRequireDefault(_reactAriaModal);
 
+var _Button = require('../Button/Button');
+
+var _Button2 = _interopRequireDefault(_Button);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -19,26 +23,38 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var Dialog = function Dialog(props) {
   var actions = props.actions,
+      actionsClassName = props.actionsClassName,
       ariaCloseLabel = props.ariaCloseLabel,
       children = props.children,
+      className = props.className,
+      closeButtonVariation = props.closeButtonVariation,
+      closeText = props.closeText,
       escapeExitDisabled = props.escapeExitDisabled,
+      headerClassName = props.headerClassName,
       onExit = props.onExit,
+      size = props.size,
       title = props.title,
-      modalProps = _objectWithoutProperties(props, ['actions', 'ariaCloseLabel', 'children', 'escapeExitDisabled', 'onExit', 'title']);
+      modalProps = _objectWithoutProperties(props, ['actions', 'actionsClassName', 'ariaCloseLabel', 'children', 'className', 'closeButtonVariation', 'closeText', 'escapeExitDisabled', 'headerClassName', 'onExit', 'size', 'title']);
+
+  var dialogClassNames = (0, _classnames2.default)('ds-c-dialog', className, size && 'ds-c-dialog--' + size);
+  var headerClassNames = (0, _classnames2.default)('ds-c-dialog__header', headerClassName);
+  var actionsClassNames = (0, _classnames2.default)('ds-c-dialog__actions', actionsClassName);
 
   /* eslint-disable jsx-a11y/no-redundant-roles */
-
-
   return _react2.default.createElement(
     _reactAriaModal2.default,
     _extends({
-      dialogClass: 'ds-c-dialog',
+      dialogClass: dialogClassNames,
       escapeExits: !escapeExitDisabled,
       includeDefaultStyles: false,
       onExit: onExit,
@@ -50,20 +66,21 @@ var Dialog = function Dialog(props) {
       { role: 'document' },
       _react2.default.createElement(
         'header',
-        { className: 'ds-c-dialog__header', role: 'banner' },
+        { className: headerClassNames, role: 'banner' },
         title && _react2.default.createElement(
           'h1',
           { className: 'ds-h2', id: 'dialog-title' },
           title
         ),
         _react2.default.createElement(
-          'button',
+          _Button2.default,
           {
             'aria-label': ariaCloseLabel,
-            className: 'ds-c-button ds-c-button--transparent ds-c-dialog__close',
-            onClick: onExit
+            className: 'ds-c-dialog__close',
+            onClick: onExit,
+            variation: closeButtonVariation
           },
-          'Close'
+          closeText
         )
       ),
       _react2.default.createElement(
@@ -73,7 +90,7 @@ var Dialog = function Dialog(props) {
       ),
       actions && _react2.default.createElement(
         'aside',
-        { className: 'ds-c-dialog__actions', role: 'complementary' },
+        { className: actionsClassNames, role: 'complementary' },
         actions
       )
     )
@@ -83,6 +100,8 @@ var Dialog = function Dialog(props) {
 exports.Dialog = Dialog;
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
+  closeButtonVariation: 'transparent',
+  closeText: 'Close',
   escapeExitDisabled: false,
   underlayClickExits: false
 };
@@ -111,6 +130,10 @@ Dialog.propTypes = {
    */
   actions: _propTypes2.default.node,
   /**
+   * Additional classes to be added to the actions container.
+   */
+  actionsClassName: _propTypes2.default.string,
+  /**
    * Aria label for the close button
    */
   ariaCloseLabel: _propTypes2.default.string,
@@ -118,6 +141,16 @@ Dialog.propTypes = {
    * The modal's body content
    */
   children: _propTypes2.default.node.isRequired,
+  /**
+   * Additional classes to be added to the root dialog element.
+   */
+  className: _propTypes2.default.string,
+  closeButtonVariation: _Button2.default.propTypes.variation,
+  /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeText: _propTypes2.default.string,
   /**
    * Disable exiting the dialog when a user presses the Escape key.
    */
@@ -130,11 +163,17 @@ Dialog.propTypes = {
    */
   getApplicationNode: _propTypes2.default.func,
   /**
+   * Additional classes to be added to the header, which wraps the title and
+   * close button.
+   */
+  headerClassName: _propTypes2.default.string,
+  /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
    * the dialog (if `underlayClickExits=true`).
    */
   onExit: _propTypes2.default.func,
+  size: _propTypes2.default.oneOf(['narrow', 'wide', 'full']),
   /**
    * The Dialog's title, to be rendered in the header alongside the close button.
    */
