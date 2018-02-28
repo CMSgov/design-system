@@ -60,6 +60,7 @@ function generateReactExample(page, docsPath, rootPath) {
  */
 function createWebpackCompiler(examplePath) {
   const webpackConfig = {
+    mode: process.env.NODE_ENV,
     entry: examplePath,
     output: { filename: 'bundle.js', path: '/build' },
     externals: {
@@ -75,16 +76,17 @@ function createWebpackCompiler(examplePath) {
         }
       ]
     },
-    plugins: [
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new webpack.optimize.ModuleConcatenationPlugin()
-    ],
-    resolve: { extensions: ['.js', '.jsx'] }
+    plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
+    resolve: { extensions: ['.js', '.jsx'] },
+    performance: {
+      hints: false
+    }
   };
 
   if (process.env.NODE_ENV === 'production') {
-    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin();
-    webpackConfig.plugins.push(uglifyPlugin);
+    webpackConfig.optimization = {
+      minimize: true
+    };
   }
 
   return webpack(webpackConfig);

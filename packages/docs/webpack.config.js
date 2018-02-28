@@ -17,6 +17,7 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
   );
 
   const config = {
+    mode: process.env.NODE_ENV,
     context: __dirname,
     entry: {
       index: ['./src/scripts/helpers/polyfills.js', './src/scripts/index.jsx'],
@@ -31,10 +32,10 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
       filename: '[name].js'
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.(js|jsx)$/,
-          loader: ['babel-loader'],
+          use: [{ loader: 'babel-loader' }],
           include: [path.resolve(__dirname, 'src')].concat(packagePaths)
         }
       ]
@@ -45,25 +46,21 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
           root: JSON.stringify(rootPath),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
-      }),
-      new webpack.optimize.ModuleConcatenationPlugin()
+      })
     ],
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
       modules: ['../', 'node_modules']
+    },
+    performance: {
+      hints: false
     }
   };
 
   if (process.env.NODE_ENV === 'production') {
-    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          drop_console: true
-        }
-      }
-    });
-
-    config.plugins.push(uglifyPlugin);
+    config.optimization = {
+      minimize: true
+    };
   } else if (hotReload) {
     const keys = ['index']; // Object.keys(config.entry);
 
