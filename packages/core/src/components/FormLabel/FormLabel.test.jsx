@@ -22,8 +22,6 @@ describe('FormLabel', () => {
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    // Label becomes bold when there's an error
-    expect(wrapper.find('.ds-u-font-weight--bold').length).toBe(1);
     expect(wrapper).toMatchSnapshot();
   });
 
