@@ -91,9 +91,7 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
     key: 'render',
     value: function render() {
       var ComponentType = this.props.component;
-      var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName, {
-        'ds-u-font-weight--bold': this.props.errorMessage
-      });
+      var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName);
       var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
 
       return _react2.default.createElement(
