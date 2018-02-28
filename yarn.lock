@@ -4361,13 +4361,14 @@ gulp-changed@^3.1.1:
     through2 "^2.0.0"
     touch "^3.1.0"
 
-gulp-count@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/gulp-count/-/gulp-count-0.3.0.tgz#88c36b87952bf40d9a5d1e16580a76b394ac3f1e"
+gulp-count@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-count/-/gulp-count-1.0.0.tgz#4aa7e35eff381c43e23f537837e5d4ad7643f7ee"
   dependencies:
-    gulp-util "~3.0.0"
-    through2 "~2.0.0"
-    xtend "~4.0.0"
+    ansi-colors "^1.0.1"
+    lodash.template "^4.4.0"
+    through2 "^2.0.3"
+    xtend "^4.0.1"
 
 gulp-if@^2.0.2:
   version "2.0.2"
@@ -4444,7 +4445,7 @@ gulp-stylelint@^6.0.0:
     strip-ansi "^4.0.0"
     through2 "^2.0.3"
 
-gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.8, gulp-util@~3.0.0:
+gulp-util@^3.0, gulp-util@^3.0.0, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -6415,7 +6416,7 @@ lodash.template@^3.0.0:
     lodash.restparam "^3.0.0"
     lodash.templatesettings "^3.0.0"
 
-lodash.template@^4.0.2:
+lodash.template@^4.0.2, lodash.template@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
   dependencies:
@@ -9969,7 +9970,7 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
 
-through2@2.X, through2@^2.0.0, through2@^2.0.1, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0:
+through2@2.X, through2@^2.0.0, through2@^2.0.1, through2@^2.0.2, through2@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
