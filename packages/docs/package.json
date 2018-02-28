@@ -10,9 +10,9 @@
     "@cmsgov/design-system-support": "^1.15.0",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
-    "lodash": "^4.17.4",
-    "prismjs": "^1.9.0",
-    "prop-types": "^15.6.0",
+    "lodash": "^4.17.5",
+    "prismjs": "^1.11.0",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^3.1.3"
