@@ -11,6 +11,7 @@ export const Dialog = function(props) {
     ariaCloseLabel,
     children,
     className,
+    closeButtonSize,
     closeButtonVariation,
     closeText,
     escapeExitDisabled,
@@ -55,6 +56,7 @@ export const Dialog = function(props) {
             aria-label={ariaCloseLabel}
             className="ds-c-dialog__close"
             onClick={onExit}
+            size={closeButtonSize}
             variation={closeButtonVariation}
           >
             {closeText}
@@ -120,7 +122,14 @@ Dialog.propTypes = {
    * Additional classes to be added to the root dialog element.
    */
   className: PropTypes.string,
-  closeButtonVariation: Button.propTypes.variation,
+  /**
+   * Size of the close button. See [Button component]({{root}}/components/button/#components.button.react)
+   */
+  closeButtonSize: PropTypes.oneOf(['small', 'big']),
+  /**
+   * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
+   */
+  closeButtonVariation: PropTypes.string,
   /**
    * For internationalization purposes, the text for the "Close" button must be
    * passed in as a prop.
