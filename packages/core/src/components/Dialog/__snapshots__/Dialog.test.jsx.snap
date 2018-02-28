@@ -8,7 +8,7 @@ Object {
     "closeText": "No thank you. I don't like saving money",
   },
   "wrapper": <Displaced
-    dialogClass="ds-c-dialog"
+    dialogClass="ds-c-dialog ds-base"
     escapeExits={true}
     includeDefaultStyles={false}
     mounted={true}
@@ -60,7 +60,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
   underlayClickExits={false}
 >
   <Displaced
-    dialogClass="ds-c-dialog"
+    dialogClass="ds-c-dialog ds-base"
     escapeExits={true}
     getApplicationNode={
       [MockFunction] {
@@ -77,7 +77,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
     underlayClickExits={false}
   >
     <Modal
-      dialogClass="ds-c-dialog"
+      dialogClass="ds-c-dialog ds-base"
       dialogId="react-aria-modal-dialog"
       escapeExits={true}
       focusTrapPaused={false}
@@ -116,7 +116,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
           >
             <div
               aria-labelledby="dialog-title"
-              className="ds-c-dialog"
+              className="ds-c-dialog ds-base"
               id="react-aria-modal-dialog"
               key="b"
               role="dialog"
@@ -180,7 +180,7 @@ Object {
     "size": "full",
   },
   "wrapper": <Displaced
-    dialogClass="ds-c-dialog test-dialog ds-c-dialog--full"
+    dialogClass="ds-c-dialog ds-base test-dialog ds-c-dialog--full"
     escapeExits={true}
     includeDefaultStyles={false}
     mounted={true}

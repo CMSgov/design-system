@@ -23,6 +23,7 @@ export const Dialog = function(props) {
 
   const dialogClassNames = classNames(
     'ds-c-dialog',
+    'ds-base',
     className,
     size && `ds-c-dialog--${size}`
   );
