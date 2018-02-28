@@ -73,7 +73,7 @@ export class DateField extends React.PureComponent {
           inversed={this.props.inversed}
           requirementLabel={this.props.requirementLabel}
         >
-          <span className="ds-u-font-weight--bold">{this.props.label}</span>
+          {this.props.label}
         </FormLabel>
 
         <div className="ds-l-form-row">

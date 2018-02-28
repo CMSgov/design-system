@@ -11,11 +11,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"
@@ -122,11 +118,7 @@ exports[`DateField has errorMessage 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint ds-u-color--error"
@@ -240,11 +232,7 @@ exports[`DateField has invalid day 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"
@@ -351,11 +339,7 @@ exports[`DateField has invalid month 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"
@@ -462,11 +446,7 @@ exports[`DateField has invalid year 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"
@@ -573,11 +553,7 @@ exports[`DateField has requirementLabel 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"
@@ -685,11 +661,7 @@ exports[`DateField is inversed 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint ds-c-field__hint--inverse"
@@ -796,11 +768,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     <span
       className=""
     >
-      <span
-        className="ds-u-font-weight--bold"
-      >
-        Date
-      </span>
+      Date
     </span>
     <span
       className="ds-c-field__hint"

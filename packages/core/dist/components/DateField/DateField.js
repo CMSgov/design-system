@@ -120,11 +120,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             inversed: this.props.inversed,
             requirementLabel: this.props.requirementLabel
           },
-          _react2.default.createElement(
-            'span',
-            { className: 'ds-u-font-weight--bold' },
-            this.props.label
-          )
+          this.props.label
         ),
         _react2.default.createElement(
           'div',
