@@ -59,7 +59,7 @@ exports[`FormLabel renders error state 1`] = `
   htmlFor="name"
 >
   <span
-    className="ds-u-font-weight--bold"
+    className=""
   >
     Hello world
   </span>

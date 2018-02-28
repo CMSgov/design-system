@@ -16,7 +16,7 @@ Style guide: components.form-label
 .ds-c-label {
   display: block;
   font-size: $base-font-size;
-  font-weight: $font-normal;
+  font-weight: $font-bold;
   margin-bottom: 0;
   margin-top: $spacer-3;
   max-width: $input-max-width;
@@ -43,6 +43,7 @@ Hint text
 .ds-c-field__hint {
   color: $color-muted;
   display: block;
+  font-weight: $font-normal;
 }
 
 .ds-c-field__hint--inverse {

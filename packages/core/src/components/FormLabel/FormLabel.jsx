@@ -51,9 +51,7 @@ export class FormLabel extends React.PureComponent {
 
   render() {
     const ComponentType = this.props.component;
-    const labelTextClasses = classNames(this.props.labelClassName, {
-      'ds-u-font-weight--bold': this.props.errorMessage
-    });
+    const labelTextClasses = classNames(this.props.labelClassName);
     const classes = classNames('ds-c-label', this.props.className);
 
     return (
