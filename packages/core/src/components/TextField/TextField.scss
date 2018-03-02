@@ -128,21 +128,6 @@ Style guide: components.text-field.inverse
   top: $input-padding;
 }
 
-// Dollar mask
-.ds-c-field__before--dollar {
-  // Increase dollar size so it serves more as an icon and
-  // better aligns with the input value text
-  font-size: $base-font-size + 2;
-  font-weight: $font-bold;
-  // Adjust to better align icon with value's baseline
-  padding-top: 1px;
-}
-
-.ds-c-field--dollar {
-  // Normal padding + space for the icon + normal padding
-  padding-left: $input-padding + 6px + $input-padding;
-}
-
 /*
 `<TextField>`
 
@@ -195,7 +180,8 @@ The following Sass variables can be overridden to theme a field:
 
 ## Related patterns
 
-- [Date field]({{root}}/patterns/date-field/)
+- [Currency field]({{root}}/components/currency-field/)
+- [Date field]({{root}}/components/date-field/)
 
 ## Learn more
 

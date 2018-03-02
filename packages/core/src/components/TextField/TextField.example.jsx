@@ -12,12 +12,6 @@ ReactDOM.render(
       requirementLabel="Optional"
     />
     <TextField
-      ariaLabel="Enter amount in dollars"
-      label="Currency input"
-      mask="dollar"
-      name="currency_example"
-    />
-    <TextField
       errorMessage="Error message example"
       hint="Example of a multiline field with an error"
       label="Multiline"

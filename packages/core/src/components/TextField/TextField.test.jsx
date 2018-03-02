@@ -144,9 +144,9 @@ describe('TextField', function() {
     expect(field.prop('aria-label')).toBe(data.props.ariaLabel);
   });
 
-  it('adds default aria-label for dollar mask', () => {
+  it('adds default aria-label for currency mask', () => {
     const data = render({
-      mask: 'dollar'
+      mask: 'currency'
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -156,7 +156,7 @@ describe('TextField', function() {
   it('adds overrides default aria-label with defined prop', () => {
     const data = render({
       ariaLabel: 'Foo',
-      mask: 'dollar'
+      mask: 'currency'
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -263,9 +263,9 @@ describe('TextField', function() {
   });
 
   describe('masked', () => {
-    it('renders dollar mask', () => {
+    it('renders currency mask', () => {
       const data = render({
-        mask: 'dollar'
+        mask: 'currency'
       });
 
       expect(data.wrapper).toMatchSnapshot();

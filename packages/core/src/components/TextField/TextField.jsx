@@ -17,7 +17,7 @@ export class TextField extends React.PureComponent {
   ariaLabel() {
     if (this.props.ariaLabel) {
       return this.props.ariaLabel;
-    } else if (this.props.mask === 'dollar') {
+    } else if (this.props.mask === 'currency') {
       return 'Enter amount in dollars';
     }
   }
@@ -46,7 +46,7 @@ export class TextField extends React.PureComponent {
   renderMask() {
     if (this.props.mask) {
       const content = {
-        dollar: '$'
+        currency: '$'
       };
 
       return (
@@ -188,7 +188,7 @@ TextField.propTypes = {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask: PropTypes.oneOf(['dollar']),
+  mask: PropTypes.oneOf(['currency']),
   /**
    * `max` HTML input attribute
    */
