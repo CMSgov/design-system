@@ -14,8 +14,56 @@ export class TextField extends React.PureComponent {
     this.id = props.id || uniqueId('textfield_');
   }
 
+  ariaLabel() {
+    if (this.props.ariaLabel) {
+      return this.props.ariaLabel;
+    } else if (this.props.mask === 'dollar') {
+      return 'Enter amount in dollars';
+    }
+  }
+
+  /**
+   * @param {React.Component} field
+   * @returns {React.Component} The input field, optionally including mask
+   *  markup if a mask is present
+   */
+  renderFieldAndMask(field) {
+    const maskName = this.props.mask;
+
+    return maskName ? (
+      <div className={`ds-c-field-mask ds-c-field-mask--${maskName}`}>
+        {this.renderMask()}
+        {field}
+      </div>
+    ) : (
+      field
+    );
+  }
+
+  /**
+   * UI overlayed on top of a field to support certain masks
+   */
+  renderMask() {
+    if (this.props.mask) {
+      const content = {
+        dollar: '$'
+      };
+
+      return (
+        <div
+          className={`ds-c-field__before ds-c-field__before--${
+            this.props.mask
+          }`}
+        >
+          {content[this.props.mask]}
+        </div>
+      );
+    }
+  }
+
   render() {
     const {
+      ariaLabel,
       className,
       labelClassName,
       fieldClassName,
@@ -25,6 +73,7 @@ export class TextField extends React.PureComponent {
       requirementLabel,
       inversed,
       rows,
+      mask,
       multiline,
       label,
       fieldRef,
@@ -39,13 +88,27 @@ export class TextField extends React.PureComponent {
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
       className
     );
+
     const fieldClasses = classNames(
       'ds-c-field',
+      mask && `ds-c-field--${mask}`,
       {
         'ds-c-field--error': typeof errorMessage === 'string',
         'ds-c-field--inverse': inversed
       },
       fieldClassName
+    );
+
+    const field = (
+      <FieldComponent
+        aria-label={this.ariaLabel()}
+        className={fieldClasses}
+        id={this.id}
+        ref={fieldRef}
+        rows={_rows}
+        type={multiline ? undefined : type}
+        {...fieldProps}
+      />
     );
 
     return (
@@ -60,14 +123,8 @@ export class TextField extends React.PureComponent {
         >
           {label}
         </FormLabel>
-        <FieldComponent
-          className={fieldClasses}
-          id={this.id}
-          ref={fieldRef}
-          rows={_rows}
-          type={multiline ? undefined : type}
-          {...fieldProps}
-        />
+
+        {this.renderFieldAndMask(field, mask)}
       </div>
     );
   }
@@ -78,6 +135,11 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
+  /**
+   * Apply an `aria-label` to the text field to provide additional
+   * context to assistive devices.
+   */
+  ariaLabel: PropTypes.string,
   /**
    * Additional classes to be added to the root `div` element
    */
@@ -122,6 +184,12 @@ TextField.propTypes = {
    */
   labelClassName: PropTypes.string,
   /**
+   * Apply formatting to the field that's unique to the value
+   * you expect to be entered. Depending on the mask, the
+   * field's appearance and functionality may be affected.
+   */
+  mask: PropTypes.oneOf(['dollar']),
+  /**
    * `max` HTML input attribute
    */
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -130,7 +198,7 @@ TextField.propTypes = {
    */
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
-   * Whether or not the textfield is a multiline textfield
+   * Whether or not the text field is a multiline text field
    */
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,

@@ -45,9 +45,6 @@ Style guide: components.text-field
   box-sizing: border-box; // ensure padding doesn't affect width
   color: $color-base;
   display: block;
-  font-family: $font-sans;
-  font-size: $base-font-size;
-  line-height: $input-line-height;
   margin: $spacer-half 0;
   max-width: $input-max-width;
   outline: none;
@@ -62,6 +59,13 @@ Style guide: components.text-field
   &:focus {
     box-shadow: $focus-shadow;
   }
+}
+
+.ds-c-field,
+.ds-c-field-mask {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $input-line-height;
 }
 
 /*
@@ -102,12 +106,41 @@ Style guide: components.text-field.inverse
 }
 
 // State modifiers and message
+// ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
 }
 
 .ds-c-field--success {
   border: 3px solid $color-success-light;
+}
+
+// Masks
+// ==============================
+.ds-c-field-mask {
+  position: relative;
+}
+
+.ds-c-field__before {
+  bottom: $input-padding;
+  left: $input-padding;
+  position: absolute;
+  top: $input-padding;
+}
+
+// Dollar mask
+.ds-c-field__before--dollar {
+  // Increase dollar size so it serves more as an icon and
+  // better aligns with the input value text
+  font-size: $base-font-size + 2;
+  font-weight: $font-bold;
+  // Adjust to better align icon with value's baseline
+  padding-top: 1px;
+}
+
+.ds-c-field--dollar {
+  // Normal padding + space for the icon + normal padding
+  padding-left: $input-padding + 6px + $input-padding;
 }
 
 /*

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField masked renders dollar mask 1`] = `
+<div
+  className="ds-u-clearfix"
+>
+  <FormLabel
+    component="label"
+    fieldId="textfield_27"
+  >
+    Foo
+  </FormLabel>
+  <div
+    className="ds-c-field-mask ds-c-field-mask--dollar"
+  >
+    <div
+      className="ds-c-field__before ds-c-field__before--dollar"
+    >
+      $
+    </div>
+    <input
+      aria-label="Enter amount in dollars"
+      className="ds-c-field ds-c-field--dollar"
+      id="textfield_27"
+      name="spec-field"
+      type="text"
+    />
+  </div>
+</div>
+`;
