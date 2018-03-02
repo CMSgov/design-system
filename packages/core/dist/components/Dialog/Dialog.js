@@ -37,6 +37,7 @@ var Dialog = function Dialog(props) {
       ariaCloseLabel = props.ariaCloseLabel,
       children = props.children,
       className = props.className,
+      closeButtonSize = props.closeButtonSize,
       closeButtonVariation = props.closeButtonVariation,
       closeText = props.closeText,
       escapeExitDisabled = props.escapeExitDisabled,
@@ -44,9 +45,9 @@ var Dialog = function Dialog(props) {
       onExit = props.onExit,
       size = props.size,
       title = props.title,
-      modalProps = _objectWithoutProperties(props, ['actions', 'actionsClassName', 'ariaCloseLabel', 'children', 'className', 'closeButtonVariation', 'closeText', 'escapeExitDisabled', 'headerClassName', 'onExit', 'size', 'title']);
+      modalProps = _objectWithoutProperties(props, ['actions', 'actionsClassName', 'ariaCloseLabel', 'children', 'className', 'closeButtonSize', 'closeButtonVariation', 'closeText', 'escapeExitDisabled', 'headerClassName', 'onExit', 'size', 'title']);
 
-  var dialogClassNames = (0, _classnames2.default)('ds-c-dialog', className, size && 'ds-c-dialog--' + size);
+  var dialogClassNames = (0, _classnames2.default)('ds-c-dialog', 'ds-base', className, size && 'ds-c-dialog--' + size);
   var headerClassNames = (0, _classnames2.default)('ds-c-dialog__header', headerClassName);
   var actionsClassNames = (0, _classnames2.default)('ds-c-dialog__actions', actionsClassName);
 
@@ -78,6 +79,7 @@ var Dialog = function Dialog(props) {
             'aria-label': ariaCloseLabel,
             className: 'ds-c-dialog__close',
             onClick: onExit,
+            size: closeButtonSize,
             variation: closeButtonVariation
           },
           closeText
@@ -145,7 +147,14 @@ Dialog.propTypes = {
    * Additional classes to be added to the root dialog element.
    */
   className: _propTypes2.default.string,
-  closeButtonVariation: _Button2.default.propTypes.variation,
+  /**
+   * Size of the close button. See [Button component]({{root}}/components/button/#components.button.react)
+   */
+  closeButtonSize: _propTypes2.default.oneOf(['small', 'big']),
+  /**
+   * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
+   */
+  closeButtonVariation: _propTypes2.default.string,
   /**
    * For internationalization purposes, the text for the "Close" button must be
    * passed in as a prop.
