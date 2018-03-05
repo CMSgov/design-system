@@ -18,7 +18,12 @@ ReactDOM.render(
       multiline
       name="multiline_example"
     />
-
+    <TextField
+      label="Disabled field"
+      disabled
+      name="disabled_example"
+      value="Example value"
+    />
     <TextField label="Password field" name="disabled_example" type="password" />
   </div>,
   document.getElementById('js-example')
