@@ -150,7 +150,9 @@ describe('TextField', function() {
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('aria-label')).toBe('Enter amount in dollars');
+    expect(field.prop('aria-label')).toBe(
+      `${data.props.label}. Enter amount in dollars.`
+    );
   });
 
   it('adds overrides default aria-label with defined prop', () => {

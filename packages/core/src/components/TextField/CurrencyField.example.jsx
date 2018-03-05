@@ -4,7 +4,7 @@ import TextField from './TextField';
 
 ReactDOM.render(
   <TextField
-    ariaLabel="Enter amount in dollars"
+    ariaLabel="Enter monthly income amount in dollars."
     label="Monthly income"
     mask="currency"
     name="currency_example"

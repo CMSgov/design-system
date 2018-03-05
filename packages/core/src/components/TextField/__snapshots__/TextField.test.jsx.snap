@@ -19,7 +19,7 @@ exports[`TextField masked renders currency mask 1`] = `
       $
     </div>
     <input
-      aria-label="Enter amount in dollars"
+      aria-label="Foo. Enter amount in dollars."
       className="ds-c-field ds-c-field--currency"
       id="textfield_27"
       name="spec-field"

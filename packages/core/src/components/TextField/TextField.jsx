@@ -18,7 +18,7 @@ export class TextField extends React.PureComponent {
     if (this.props.ariaLabel) {
       return this.props.ariaLabel;
     } else if (this.props.mask === 'currency') {
-      return 'Enter amount in dollars';
+      return `${this.props.label}. Enter amount in dollars.`;
     }
   }
 
