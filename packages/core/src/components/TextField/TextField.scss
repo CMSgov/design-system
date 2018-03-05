@@ -49,9 +49,6 @@ Style guide: components.text-field
   box-sizing: border-box; // ensure padding doesn't affect width
   color: $color-base;
   display: block;
-  font-family: $font-sans;
-  font-size: $base-font-size;
-  line-height: $input-line-height;
   margin: $spacer-half 0;
   max-width: $input-max-width;
   outline: none;
@@ -74,6 +71,13 @@ Style guide: components.text-field
 
 .ds-c-field--medium {
   max-width: $input-medium-width;
+}
+
+.ds-c-field,
+.ds-c-field-mask {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $input-line-height;
 }
 
 /*
@@ -114,12 +118,26 @@ Style guide: components.text-field.inverse
 }
 
 // State modifiers and message
+// ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
 }
 
 .ds-c-field--success {
   border: 3px solid $color-success-light;
+}
+
+// Masks
+// ==============================
+.ds-c-field-mask {
+  position: relative;
+}
+
+.ds-c-field__before {
+  bottom: $input-padding;
+  left: $input-padding;
+  position: absolute;
+  top: $input-padding;
 }
 
 /*
@@ -174,7 +192,8 @@ The following Sass variables can be overridden to theme a field:
 
 ## Related patterns
 
-- [Date field]({{root}}/patterns/date-field/)
+- [Currency field]({{root}}/components/currency-field/)
+- [Date field]({{root}}/components/date-field/)
 
 ## Learn more
 
