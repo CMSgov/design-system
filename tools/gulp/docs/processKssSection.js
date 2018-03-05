@@ -76,6 +76,9 @@ function processFlags(section) {
             // Include the React component's documentation
             section.reactComponent = value;
             break;
+          case 'react-example':
+            section.reactExample = value;
+            break;
           case 'responsive':
             // Render breakpoint toggles on markup example
             section.responsive = true;
