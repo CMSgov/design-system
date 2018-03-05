@@ -144,6 +144,8 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
   }, {
     key: 'select',
     value: function select(selectProps, options) {
+      var sizeClass = this.props.size ? 'ds-c-field--' + this.props.size : undefined;
+      var classes = (0, _classnames2.default)(sizeClass);
       return _react2.default.createElement(
         _Select2.default,
         _extends({
@@ -152,7 +154,8 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
           inversed: this.props.inversed,
           name: this.props.name,
           onBlur: this.props.onBlur,
-          onChange: this.props.onChange
+          onChange: this.props.onChange,
+          className: classes
         }, selectProps),
         options
       );
@@ -268,6 +271,10 @@ ChoiceList.propTypes = {
   name: _propTypes2.default.string.isRequired,
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
+  /**
+   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   */
+  size: _propTypes2.default.string,
   /**
    * You can manually set the `type` if you prefer things to be less magical.
    * Otherwise, the type will be inferred by the other `props`, based

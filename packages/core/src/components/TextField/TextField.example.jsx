@@ -11,6 +11,12 @@ ReactDOM.render(
       name="single_example"
       requirementLabel="Optional"
     />
+    <TextField label="Small size modifier" name="small_example" size="small" />
+    <TextField
+      label="Medium size modifier"
+      name="medium_example"
+      size="medium"
+    />
     <TextField
       errorMessage="Error message example"
       hint="Example of a multiline field with an error"

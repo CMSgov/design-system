@@ -81,6 +81,10 @@ export class ChoiceList extends React.PureComponent {
    * @param {array} options - <option> components
    */
   select(selectProps, options) {
+    const sizeClass = this.props.size
+      ? `ds-c-field--${this.props.size}`
+      : undefined;
+    const classes = classNames(sizeClass);
     return (
       <Select
         disabled={this.props.disabled}
@@ -89,6 +93,7 @@ export class ChoiceList extends React.PureComponent {
         name={this.props.name}
         onBlur={this.props.onBlur}
         onChange={this.props.onChange}
+        className={classes}
         {...selectProps}
       >
         {options}
@@ -202,6 +207,10 @@ ChoiceList.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * If the component renders a select, set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   */
+  size: PropTypes.string,
   /**
    * You can manually set the `type` if you prefer things to be less magical.
    * Otherwise, the type will be inferred by the other `props`, based

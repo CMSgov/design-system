@@ -71,18 +71,20 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           multiline = _props.multiline,
           label = _props.label,
           fieldRef = _props.fieldRef,
+          size = _props.size,
           type = _props.type,
-          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'type']);
+          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'size', 'type']);
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
+      var sizeClass = size ? 'ds-c-field--' + size : undefined;
 
       var classes = (0, _classnames2.default)('ds-u-clearfix', // fixes issue where the label's margin is collapsed
       className);
       var fieldClasses = (0, _classnames2.default)('ds-c-field', {
         'ds-c-field--error': typeof errorMessage === 'string',
         'ds-c-field--inverse': inversed
-      }, fieldClassName);
+      }, fieldClassName, sizeClass);
 
       return _react2.default.createElement(
         'div',
@@ -181,6 +183,10 @@ TextField.propTypes = {
    * applicable if this is a multiline field.
    */
   rows: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+  /**
+   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   */
+  size: _propTypes2.default.string,
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */
