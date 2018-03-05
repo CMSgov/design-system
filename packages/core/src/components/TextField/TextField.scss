@@ -12,9 +12,9 @@ Markup:
 <label class="ds-c-label ds-u-margin-top--0" for="input-firstname">First name</label>
 <input class="ds-c-field" id="input-firstname" name="firstname" type="text">
 <label class="ds-c-label" for="input-tiny">Tiny size modifier</label>
-<input class="ds-c-field ds-c-field--tiny ds-c-field--inverse" id="input-tiny" name="tinysize" type="text">
+<input class="ds-c-field ds-c-field--tiny" id="input-tiny" name="tinysize" type="text">
 <label class="ds-c-label" for="input-medium">Medium size modifier</label>
-<input class="ds-c-field ds-c-field--medium ds-c-field--inverse" id="input-medium" name="mediumsize" type="text">
+<input class="ds-c-field ds-c-field--medium" id="input-medium" name="mediumsize" type="text">
 <label class="ds-c-label" for="input-lastname">
   <span class="ds-u-font-weight--bold">Last name</span>
   <span class="ds-c-field__hint ds-u-color--error" role="alert">
