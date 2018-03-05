@@ -17,6 +17,6 @@
 @import 'TextField/TextField';
 // Currency and Date field styles need imported
 // after TextField since they modify it
-@import 'CurrencyField/CurrencyField';
+@import 'TextField/CurrencyField';
 @import 'DateField/DateField';
 @import 'VerticalNav/VerticalNav';
