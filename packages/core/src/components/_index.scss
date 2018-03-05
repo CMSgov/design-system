@@ -15,5 +15,8 @@
 @import 'Table/Table';
 @import 'Tabs/Tabs';
 @import 'TextField/TextField';
-@import 'DateField/DateField'; // needs imported after TextField since it modifies it
+// Currency and Date field styles need imported
+// after TextField since they modify it
+@import 'TextField/CurrencyField';
+@import 'DateField/DateField';
 @import 'VerticalNav/VerticalNav';
