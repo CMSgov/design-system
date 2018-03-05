@@ -247,7 +247,7 @@ describe('ChoiceList', () => {
     it('adds size classes to root element', () => {
       props.size = 'small';
       const data = shallowRender(props);
-      console.log(data.wrapper.debug());
+
       expect(data.wrapper.find('Select').hasClass('ds-c-field--small')).toBe(
         true
       );
