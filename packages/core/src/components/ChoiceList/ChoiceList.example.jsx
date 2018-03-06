@@ -91,6 +91,5 @@ function choices() {
 function options() {
   const options = generateChoices(8);
   options[1].defaultChecked = true;
-  console.log(options);
   return options;
 }
