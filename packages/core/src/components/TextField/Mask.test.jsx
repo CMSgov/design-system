@@ -21,10 +21,13 @@ describe('Mask', function() {
     const onBlur = jest.fn();
     const wrapper = render(
       { mask: 'currency' },
-      { value: '123', onBlur: onBlur }
+      { value: '123', onBlur: onBlur },
+      true
     ).wrapper;
 
-    wrapper.simulate('blur', { target: { value: '123' } });
+    wrapper
+      .find('input')
+      .simulate('blur', { target: { value: '123' }, persist: jest.fn() });
 
     expect(onBlur.mock.calls.length).toBe(1);
   });

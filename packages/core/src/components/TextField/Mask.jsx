@@ -16,6 +16,15 @@ export class Mask extends React.PureComponent {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevState.debouncedOnBlurEvent && this.state.debouncedOnBlurEvent) {
+      this.field.props.onBlur(this.state.debouncedOnBlurEvent);
+
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ debouncedOnBlurEvent: null });
+    }
+  }
+
   /**
    * @param {String} value
    * @returns {Number}
@@ -77,11 +86,20 @@ export class Mask extends React.PureComponent {
    * @param {Object} evt
    */
   handleBlur(evt) {
-    this.setState({ value: this.maskedValue(evt.target.value) });
+    const debounceOnBlur = typeof this.field.props.onBlur === 'function';
 
-    if (typeof this.field.props.onBlur === 'function') {
-      this.field.props.onBlur(evt);
+    // We need to retain a reference to the event after the callback
+    // has been called. We pass this onto the consuming app's onBlur
+    // only after the value has been manipulated – this way, the
+    // value returned by event.target.value is the value after masking
+    if (debounceOnBlur) {
+      evt.persist();
     }
+
+    this.setState({
+      value: this.maskedValue(evt.target.value),
+      debouncedOnBlurEvent: debounceOnBlur ? evt : null
+    });
   }
 
   handleChange(evt) {
