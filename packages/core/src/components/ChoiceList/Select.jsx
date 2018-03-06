@@ -17,6 +17,7 @@ export const Select = function(props) {
     className,
     id,
     inversed,
+    size,
     ...selectProps
   } = props;
   /* eslint-enable prefer-const */
@@ -24,7 +25,8 @@ export const Select = function(props) {
   const classes = classNames(
     'ds-c-field',
     { 'ds-c-field--inverse': inversed },
-    className
+    className,
+    size && `ds-c-field--${size}`
   );
 
   if (!id) {
@@ -68,9 +70,7 @@ Select.propTypes = {
     if (props[propName]) {
       /* eslint-disable quotes */
       return new Error(
-        `'${propName}' supplied to '${
-          componentName
-        }'. [A11Y]: Users often don’t` +
+        `'${propName}' supplied to '${componentName}'. [A11Y]: Users often don’t` +
           ` understand how to select multiple items from dropdowns. Use checkboxes instead.`
       );
       /* eslint-enable */
@@ -82,6 +82,10 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * Set the max-width of the input either to `'small'` or `'medium'`.
+   */
+  size: PropTypes.oneOf(['small', 'medium']),
   /**
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.

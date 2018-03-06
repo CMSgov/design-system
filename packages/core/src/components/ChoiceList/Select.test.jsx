@@ -90,6 +90,14 @@ describe('Select', () => {
     expect(data.wrapper.hasClass('ds-c-field')).toBe(true);
   });
 
+  it('adds size classes to root element', () => {
+    const mediumData = shallowRender({ size: 'medium' });
+    const smallData = shallowRender({ size: 'small' });
+
+    expect(mediumData.wrapper.hasClass('ds-c-field--medium')).toBe(true);
+    expect(smallData.wrapper.hasClass('ds-c-field--small')).toBe(true);
+  });
+
   it('is disabled', () => {
     const data = shallowRender({ disabled: true });
 

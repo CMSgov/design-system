@@ -30,6 +30,27 @@ ReactDOM.render(
       label="Select example"
       name="select_choices_field"
     />
+    <ChoiceList
+      choices={[
+        { label: 'A', value: 'A' },
+        { defaultChecked: true, label: 'B', value: 'B' },
+        { label: 'C', value: 'C' },
+        { label: 'D', value: 'D' },
+        { label: 'E', value: 'E' },
+        { label: 'F', value: 'F' },
+        { label: 'G', value: 'G' },
+        { label: 'H', value: 'H' }
+      ]}
+      size="small"
+      label="Small select example"
+      name="small_select_choices_field"
+    />
+    <ChoiceList
+      choices={options()}
+      size="medium"
+      label="Medium select example"
+      name="medium_select_choices_field"
+    />
   </div>,
   document.getElementById('js-example')
 );
@@ -70,5 +91,6 @@ function choices() {
 function options() {
   const options = generateChoices(8);
   options[1].defaultChecked = true;
+  console.log(options);
   return options;
 }
