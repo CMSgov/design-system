@@ -56,9 +56,60 @@ var TextField = exports.TextField = function (_React$PureComponent) {
   }
 
   _createClass(TextField, [{
+    key: 'ariaLabel',
+    value: function ariaLabel() {
+      if (this.props.ariaLabel) {
+        return this.props.ariaLabel;
+      } else if (this.props.mask === 'currency') {
+        return this.props.label + '. Enter amount in dollars.';
+      }
+    }
+
+    /**
+     * @param {React.Component} field
+     * @returns {React.Component} The input field, optionally including mask
+     *  markup if a mask is present
+     */
+
+  }, {
+    key: 'renderFieldAndMask',
+    value: function renderFieldAndMask(field) {
+      var maskName = this.props.mask;
+
+      return maskName ? _react2.default.createElement(
+        'div',
+        { className: 'ds-c-field-mask ds-c-field-mask--' + maskName },
+        this.renderMask(),
+        field
+      ) : field;
+    }
+
+    /**
+     * UI overlayed on top of a field to support certain masks
+     */
+
+  }, {
+    key: 'renderMask',
+    value: function renderMask() {
+      if (this.props.mask) {
+        var content = {
+          currency: '$'
+        };
+
+        return _react2.default.createElement(
+          'div',
+          {
+            className: 'ds-c-field__before ds-c-field__before--' + this.props.mask
+          },
+          content[this.props.mask]
+        );
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          ariaLabel = _props.ariaLabel,
           className = _props.className,
           labelClassName = _props.labelClassName,
           fieldClassName = _props.fieldClassName,
@@ -68,12 +119,13 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           requirementLabel = _props.requirementLabel,
           inversed = _props.inversed,
           rows = _props.rows,
+          mask = _props.mask,
           multiline = _props.multiline,
           label = _props.label,
           fieldRef = _props.fieldRef,
           size = _props.size,
           type = _props.type,
-          fieldProps = _objectWithoutProperties(_props, ['className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'multiline', 'label', 'fieldRef', 'size', 'type']);
+          fieldProps = _objectWithoutProperties(_props, ['ariaLabel', 'className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'mask', 'multiline', 'label', 'fieldRef', 'size', 'type']);
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
@@ -81,10 +133,20 @@ var TextField = exports.TextField = function (_React$PureComponent) {
 
       var classes = (0, _classnames2.default)('ds-u-clearfix', // fixes issue where the label's margin is collapsed
       className);
-      var fieldClasses = (0, _classnames2.default)('ds-c-field', {
+
+      var fieldClasses = (0, _classnames2.default)('ds-c-field', mask && 'ds-c-field--' + mask, {
         'ds-c-field--error': typeof errorMessage === 'string',
         'ds-c-field--inverse': inversed
       }, fieldClassName, sizeClass);
+
+      var field = _react2.default.createElement(FieldComponent, _extends({
+        'aria-label': this.ariaLabel(),
+        className: fieldClasses,
+        id: this.id,
+        ref: fieldRef,
+        rows: _rows,
+        type: multiline ? undefined : type
+      }, fieldProps));
 
       return _react2.default.createElement(
         'div',
@@ -101,13 +163,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           },
           label
         ),
-        _react2.default.createElement(FieldComponent, _extends({
-          className: fieldClasses,
-          id: this.id,
-          ref: fieldRef,
-          rows: _rows,
-          type: multiline ? undefined : type
-        }, fieldProps))
+        this.renderFieldAndMask(field, mask)
       );
     }
   }]);
@@ -120,6 +176,11 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
+  /**
+   * Apply an `aria-label` to the text field to provide additional
+   * context to assistive devices.
+   */
+  ariaLabel: _propTypes2.default.string,
   /**
    * Additional classes to be added to the root `div` element
    */
@@ -164,6 +225,12 @@ TextField.propTypes = {
    */
   labelClassName: _propTypes2.default.string,
   /**
+   * Apply formatting to the field that's unique to the value
+   * you expect to be entered. Depending on the mask, the
+   * field's appearance and functionality may be affected.
+   */
+  mask: _propTypes2.default.oneOf(['currency']),
+  /**
    * `max` HTML input attribute
    */
   max: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
@@ -172,7 +239,7 @@ TextField.propTypes = {
    */
   min: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
   /**
-   * Whether or not the textfield is a multiline textfield
+   * Whether or not the text field is a multiline text field
    */
   multiline: _propTypes2.default.bool,
   name: _propTypes2.default.string.isRequired,

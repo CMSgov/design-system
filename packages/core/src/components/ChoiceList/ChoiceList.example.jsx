@@ -30,6 +30,18 @@ ReactDOM.render(
       label="Select example"
       name="select_choices_field"
     />
+    <ChoiceList
+      choices={options()}
+      size="small"
+      label="Small select example"
+      name="small_select_choices_field"
+    />
+    <ChoiceList
+      choices={options()}
+      size="medium"
+      label="Medium select example"
+      name="medium_select_choices_field"
+    />
   </div>,
   document.getElementById('js-example')
 );

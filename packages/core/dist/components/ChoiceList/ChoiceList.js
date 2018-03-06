@@ -272,7 +272,7 @@ ChoiceList.propTypes = {
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   * If the component renders a select, set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
    */
   size: _propTypes2.default.string,
   /**

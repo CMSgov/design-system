@@ -84,7 +84,6 @@ export class TextField extends React.PureComponent {
 
     const FieldComponent = multiline ? 'textarea' : 'input';
     const _rows = multiline && rows ? rows : undefined;
-    const sizeClass = size ? `ds-c-field--${size}` : undefined;
 
     const classes = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
@@ -99,7 +98,7 @@ export class TextField extends React.PureComponent {
         'ds-c-field--inverse': inversed
       },
       fieldClassName,
-      sizeClass
+      size && `ds-c-field--${size}`
     );
 
     const field = (
@@ -213,9 +212,9 @@ TextField.propTypes = {
    */
   rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
-   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium']),
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */
