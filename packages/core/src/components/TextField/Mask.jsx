@@ -16,12 +16,10 @@ export class Mask extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevState.debouncedOnBlurEvent && this.state.debouncedOnBlurEvent) {
-      this.field.props.onBlur(this.state.debouncedOnBlurEvent);
-
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ debouncedOnBlurEvent: null });
+  componentDidUpdate() {
+    if (this.debouncedOnBlurEvent) {
+      this.field.props.onBlur(this.debouncedOnBlurEvent);
+      this.debouncedOnBlurEvent = null;
     }
   }
 
@@ -65,15 +63,17 @@ export class Mask extends React.PureComponent {
   }
 
   maskedValue(value) {
-    value = value.trim();
+    if (value && typeof value === 'string') {
+      value = value.trim();
 
-    if (value === '') return value;
+      if (value === '') return value;
 
-    if (this.props.mask === 'currency') {
-      // Format number with commas. If the number includes a decimal,
-      // ensure it includes two decimal points
-      value = this.toNumber(value);
-      value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
+      if (this.props.mask === 'currency') {
+        // Format number with commas. If the number includes a decimal,
+        // ensure it includes two decimal points
+        value = this.toNumber(value);
+        value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
+      }
     }
 
     return value;
@@ -86,20 +86,33 @@ export class Mask extends React.PureComponent {
    * @param {Object} evt
    */
   handleBlur(evt) {
-    const debounceOnBlur = typeof this.field.props.onBlur === 'function';
+    const value = this.maskedValue(evt.target.value);
 
-    // We need to retain a reference to the event after the callback
-    // has been called. We pass this onto the consuming app's onBlur
-    // only after the value has been manipulated – this way, the
-    // value returned by event.target.value is the value after masking
-    if (debounceOnBlur) {
+    // We only debounce the onBlur when we know for sure that
+    // this component will re-render (AKA when the value changes)
+    // and when an onBlur callback is present
+    const debounce =
+      value !== this.state.value &&
+      typeof this.field.props.onBlur === 'function';
+
+    if (debounce) {
+      // We need to retain a reference to the event after the callback
+      // has been called. We pass this onto the consuming app's onBlur
+      // only after the value has been manipulated – this way, the
+      // value returned by event.target.value is the value after masking
       evt.persist();
+      this.debouncedOnBlurEvent = evt;
     }
 
     this.setState({
-      value: this.maskedValue(evt.target.value),
-      debouncedOnBlurEvent: debounceOnBlur ? evt : null
+      value
     });
+
+    if (!debounce && typeof this.field.props.onBlur === 'function') {
+      // If we didn't debounce the onBlur event, then we need to
+      // call the onBlur callback from here
+      this.field.props.onBlur(evt);
+    }
   }
 
   handleChange(evt) {

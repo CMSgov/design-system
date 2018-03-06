@@ -17,7 +17,19 @@ function render(customProps = {}, inputProps = {}, deep = false) {
 }
 
 describe('Mask', function() {
-  it('calls onBlur', () => {
+  it('calls onBlur when the value is the same', () => {
+    const onBlur = jest.fn();
+    const wrapper = render(
+      { mask: 'currency' },
+      { value: '123', onBlur: onBlur }
+    ).wrapper;
+
+    wrapper.simulate('blur', { target: { value: '123' }, persist: jest.fn() });
+
+    expect(onBlur.mock.calls.length).toBe(1);
+  });
+
+  it('calls onBlur when the value changes', () => {
     const onBlur = jest.fn();
     const wrapper = render(
       { mask: 'currency' },
@@ -27,7 +39,7 @@ describe('Mask', function() {
 
     wrapper
       .find('input')
-      .simulate('blur', { target: { value: '123' }, persist: jest.fn() });
+      .simulate('blur', { target: { value: '1234' }, persist: jest.fn() });
 
     expect(onBlur.mock.calls.length).toBe(1);
   });
@@ -45,6 +57,13 @@ describe('Mask', function() {
   });
 
   describe('Currency', () => {
+    it('renders a blank controlled field', () => {
+      const data = render({ mask: 'currency' }, { value: '' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBeUndefined();
+    });
+
     it('adds commas to value with decimal ending in 0', () => {
       const data = render({ mask: 'currency' }, { value: '12345678.90' });
       const input = data.wrapper.find('input');
