@@ -124,6 +124,16 @@ describe('TextField', function() {
     expect(data.wrapper.find('FormLabel').hasClass('bar')).toBe(true);
   });
 
+  it('adds size classes to input', () => {
+    const mediumData = render({ size: 'medium' });
+    const mediumField = mediumData.wrapper.find('.ds-c-field').first();
+    const smallData = render({ size: 'small' });
+    const smallField = smallData.wrapper.find('.ds-c-field').first();
+
+    expect(mediumField.hasClass('ds-c-field--medium')).toBe(true);
+    expect(smallField.hasClass('ds-c-field--small')).toBe(true);
+  });
+
   it('adds min/max input attributes', () => {
     const data = render({
       max: 10,

@@ -77,6 +77,7 @@ export class TextField extends React.PureComponent {
       multiline,
       label,
       fieldRef,
+      size,
       type,
       ...fieldProps
     } = this.props;
@@ -96,7 +97,8 @@ export class TextField extends React.PureComponent {
         'ds-c-field--error': typeof errorMessage === 'string',
         'ds-c-field--inverse': inversed
       },
-      fieldClassName
+      fieldClassName,
+      size && `ds-c-field--${size}`
     );
 
     const field = (
@@ -209,6 +211,10 @@ TextField.propTypes = {
    * applicable if this is a multiline field.
    */
   rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * Set the max-width of the input either to `'small'` or `'medium'`.
+   */
+  size: PropTypes.oneOf(['small', 'medium']),
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */
