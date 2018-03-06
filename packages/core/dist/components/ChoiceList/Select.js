@@ -43,9 +43,7 @@ var Select = function Select(props) {
       selectProps = _objectWithoutProperties(props, ['children', 'className', 'id', 'inversed', 'size']);
   /* eslint-enable prefer-const */
 
-  var sizeClass = size ? 'ds-c-field--' + size : undefined;
-
-  var classes = (0, _classnames2.default)('ds-c-field', { 'ds-c-field--inverse': inversed }, className, sizeClass);
+  var classes = (0, _classnames2.default)('ds-c-field', { 'ds-c-field--inverse': inversed }, className, size && 'ds-c-field--' + size);
 
   if (!id) {
     id = (0, _lodash2.default)('select_' + selectProps.name + '_');
@@ -99,9 +97,9 @@ Select.propTypes = {
   onBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
-   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size: _propTypes2.default.string,
+  size: _propTypes2.default.oneOf(['small', 'medium']),
   /**
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.

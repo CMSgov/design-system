@@ -129,7 +129,6 @@ var TextField = exports.TextField = function (_React$PureComponent) {
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
-      var sizeClass = size ? 'ds-c-field--' + size : undefined;
 
       var classes = (0, _classnames2.default)('ds-u-clearfix', // fixes issue where the label's margin is collapsed
       className);
@@ -137,7 +136,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
       var fieldClasses = (0, _classnames2.default)('ds-c-field', mask && 'ds-c-field--' + mask, {
         'ds-c-field--error': typeof errorMessage === 'string',
         'ds-c-field--inverse': inversed
-      }, fieldClassName, sizeClass);
+      }, fieldClassName, size && 'ds-c-field--' + size);
 
       var field = _react2.default.createElement(FieldComponent, _extends({
         'aria-label': this.ariaLabel(),
@@ -251,9 +250,9 @@ TextField.propTypes = {
    */
   rows: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
   /**
-   * Set the max-width of the input either to `'small'` (maps to `ds-c-field--small` class) or `'medium'` (maps to `ds-c-field--medium` class)
+   * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size: _propTypes2.default.string,
+  size: _propTypes2.default.oneOf(['small', 'medium']),
   /**
    * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
    */
