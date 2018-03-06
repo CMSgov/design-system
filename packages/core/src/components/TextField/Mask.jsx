@@ -73,7 +73,7 @@ export class Mask extends React.PureComponent {
       // Format number with commas. If the number includes a decimal,
       // ensure it includes two decimal points
       value = this.toNumber(value);
-      value = this.stringWithFixedDigits(value.toLocaleString());
+      value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
     }
 
     return value;
