@@ -13,6 +13,10 @@ var _FormLabel = require('../FormLabel/FormLabel');
 
 var _FormLabel2 = _interopRequireDefault(_FormLabel);
 
+var _Mask = require('./Mask');
+
+var _Mask2 = _interopRequireDefault(_Mask);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -79,8 +83,12 @@ var TextField = exports.TextField = function (_React$PureComponent) {
       return maskName ? _react2.default.createElement(
         'div',
         { className: 'ds-c-field-mask ds-c-field-mask--' + maskName },
-        this.renderMask(),
-        field
+        this.renderMaskOverlay(),
+        _react2.default.createElement(
+          _Mask2.default,
+          { mask: maskName },
+          field
+        )
       ) : field;
     }
 
@@ -89,8 +97,8 @@ var TextField = exports.TextField = function (_React$PureComponent) {
      */
 
   }, {
-    key: 'renderMask',
-    value: function renderMask() {
+    key: 'renderMaskOverlay',
+    value: function renderMaskOverlay() {
       if (this.props.mask) {
         var content = {
           currency: '$'
