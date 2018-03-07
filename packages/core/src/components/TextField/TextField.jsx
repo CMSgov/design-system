@@ -1,4 +1,5 @@
 import FormLabel from '../FormLabel/FormLabel';
+import Mask from './Mask';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -32,8 +33,8 @@ export class TextField extends React.PureComponent {
 
     return maskName ? (
       <div className={`ds-c-field-mask ds-c-field-mask--${maskName}`}>
-        {this.renderMask()}
-        {field}
+        {this.renderMaskOverlay()}
+        <Mask mask={maskName}>{field}</Mask>
       </div>
     ) : (
       field
@@ -43,7 +44,7 @@ export class TextField extends React.PureComponent {
   /**
    * UI overlayed on top of a field to support certain masks
    */
-  renderMask() {
+  renderMaskOverlay() {
     if (this.props.mask) {
       const content = {
         currency: '$'

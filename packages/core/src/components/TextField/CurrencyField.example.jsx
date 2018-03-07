@@ -8,6 +8,7 @@ ReactDOM.render(
     label="Monthly income"
     mask="currency"
     name="currency_example"
+    value="2500"
   />,
   document.getElementById('js-example')
 );
