@@ -57,8 +57,22 @@ describe('Mask', function() {
   });
 
   describe('Currency', () => {
-    it('renders a blank controlled field', () => {
+    it('renders a blank controlled field when value is empty', () => {
       const data = render({ mask: 'currency' }, { value: '' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('');
+    });
+
+    it('renders a blank controlled field when value is null', () => {
+      const data = render({ mask: 'currency' }, { value: null });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('');
+    });
+
+    it('renders a blank controlled field when value is undefined', () => {
+      const data = render({ mask: 'currency' });
       const input = data.wrapper.find('input');
 
       expect(input.prop('value')).toBe('');
