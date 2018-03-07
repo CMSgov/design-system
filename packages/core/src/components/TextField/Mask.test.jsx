@@ -61,7 +61,7 @@ describe('Mask', function() {
       const data = render({ mask: 'currency' }, { value: '' });
       const input = data.wrapper.find('input');
 
-      expect(input.prop('value')).toBeUndefined();
+      expect(input.prop('value')).toBe('');
     });
 
     it('adds commas to value with decimal ending in 0', () => {

@@ -44,6 +44,7 @@ export class Mask extends React.PureComponent {
    * though a decimal is only fixed if the string included a decimal already
    * @param {String} value - A stringified number (i.e. "1234")
    * @param {Number} digits - The number of digits to appear after the decimal point
+   * @returns {String}
    */
   stringWithFixedDigits(value, digits = 2) {
     const decimalRegex = /\.[\d]+$/;
@@ -62,11 +63,14 @@ export class Mask extends React.PureComponent {
     return value;
   }
 
-  maskedValue(value) {
+  /**
+   * Returns the value with additional masking characters
+   * @param {String} value
+   * @returns {String}
+   */
+  maskedValue(value = '') {
     if (value && typeof value === 'string') {
       value = value.trim();
-
-      if (value === '') return value;
 
       if (this.props.mask === 'currency') {
         // Format number with commas. If the number includes a decimal,
