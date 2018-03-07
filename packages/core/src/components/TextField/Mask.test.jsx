@@ -3,15 +3,14 @@ import Mask from './Mask';
 import React from 'react';
 
 function render(customProps = {}, inputProps = {}, deep = false) {
-  const props = Object.assign({}, customProps);
   const component = (
-    <Mask {...props}>
+    <Mask {...customProps}>
       <input name="foo" type="text" {...inputProps} />
     </Mask>
   );
 
   return {
-    props: props,
+    props: customProps,
     wrapper: deep ? mount(component) : shallow(component)
   };
 }
