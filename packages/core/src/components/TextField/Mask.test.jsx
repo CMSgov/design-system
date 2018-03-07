@@ -64,6 +64,13 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('');
     });
 
+    it('accepts already masked value', () => {
+      const data = render({ mask: 'currency' }, { value: '1,234.50' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('1,234.50');
+    });
+
     it('adds commas to value with decimal ending in 0', () => {
       const data = render({ mask: 'currency' }, { value: '12345678.90' });
       const input = data.wrapper.find('input');
