@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 /**
- * A `Mask` component renders a controlled input field. When the
+ * A Mask component renders a controlled input field. When the
  * field is blurred, it applies formatting to improve the readability
- * of the value. When the field is focused, formatting is removed
- * to be screen reader friendly.
+ * of the value.
  */
 export class Mask extends React.PureComponent {
   constructor(props) {
