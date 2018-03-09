@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/index.js",
   "dependencies": {
-    "@cmsgov/design-system-support": "^1.17.0",
+    "@cmsgov/design-system-support": "^1.17.1",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "downshift": "^1.28.2",

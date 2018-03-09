@@ -64,7 +64,7 @@ var Mask = exports.Mask = function (_React$PureComponent) {
 
       // 0 = number, 1 = decimals
       var parts = value.split('.');
-      var digitsRegex = /\d/g;
+      var digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
       var a = parts[0].match(digitsRegex).join('');
       var b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
 
