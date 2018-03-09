@@ -31,7 +31,7 @@ export class Mask extends React.PureComponent {
 
     // 0 = number, 1 = decimals
     const parts = value.split('.');
-    const digitsRegex = /\d/g;
+    const digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
     const a = parts[0].match(digitsRegex).join('');
     const b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
 
