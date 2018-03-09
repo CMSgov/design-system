@@ -114,5 +114,12 @@ describe('Mask', function() {
 
       expect(input.prop('value')).toBe('12,345,678.90');
     });
+
+    it('accepts negative values', () => {
+      const data = render({ mask: 'currency' }, { value: '-1,234' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('-1,234');
+    });
   });
 });
