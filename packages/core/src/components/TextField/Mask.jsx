@@ -146,4 +146,21 @@ Mask.propTypes = {
   mask: PropTypes.string.isRequired
 };
 
+/**
+ * Remove mask characters from value
+ * @param {String} value
+ * @param {String} mask
+ * @returns {String}
+ */
+export function unmask(value, mask) {
+  if (!value) return value;
+
+  if (mask === 'currency') {
+    // Preserve only digits, decimal point, or negative symbol
+    value = value.match(/^-|[\d.]/g).join('');
+  }
+
+  return value;
+}
+
 export default Mask;
