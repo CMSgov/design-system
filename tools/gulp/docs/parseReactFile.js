@@ -45,7 +45,7 @@ function parseExample(file) {
   let source = file.contents.toString();
   // We use relative paths for the components, so this removes the import statements
   // from the example code to avoid causing confusion
-  const imports = source.match(/import.+/g);
+  const imports = source.match(/^import.+/gm);
   if (imports) {
     // Remove everything up to the end of the last import statement
     const lastImport = imports[imports.length - 1];
