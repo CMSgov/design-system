@@ -234,6 +234,10 @@ describe('unmask', () => {
     expect(unmask('-1,234,000.50', name)).toBe('-1234000.50');
   });
 
+  /**
+   * USPS expects the hyphen to be included in a ZIP+4 Code.
+   *  Source: https://pe.usps.com/text/pub28/28c2_007.htm
+   */
   it('does not remove mask from zip code', () => {
     const name = 'zip';
 
