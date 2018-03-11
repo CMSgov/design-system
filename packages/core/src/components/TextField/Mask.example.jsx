@@ -20,6 +20,14 @@ const Example = () => {
       />
 
       <TextField
+        label="Social security number (SSN)"
+        mask="ssn"
+        name="ssn_example"
+        onBlur={evt => handleBlur(evt, 'ssn')}
+        value="123456789"
+      />
+
+      <TextField
         label="Zip code"
         mask="zip"
         name="zip_example"

@@ -2,6 +2,9 @@ import Mask, { unmask } from './Mask';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
+// Some tests are generated. When a new mask is added, add it here:
+const masks = ['currency', 'ssn', 'zip'];
+
 function render(customProps = {}, inputProps = {}, deep = false) {
   const component = (
     <Mask {...customProps}>
@@ -16,6 +19,31 @@ function render(customProps = {}, inputProps = {}, deep = false) {
 }
 
 describe('Mask', function() {
+  masks.forEach(mask => {
+    describe(`${mask} fallbacks`, () => {
+      it('renders a blank controlled field when value is empty', () => {
+        const data = render({ mask: mask }, { value: '' });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+
+      it('renders a blank controlled field when value is null', () => {
+        const data = render({ mask: mask }, { value: null });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+
+      it('renders a blank controlled field when value is undefined', () => {
+        const data = render({ mask: mask });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+    });
+  });
+
   it('calls onBlur when the value is the same', () => {
     const onBlur = jest.fn();
     const wrapper = render(
@@ -62,31 +90,6 @@ describe('Mask', function() {
     expect(input.prop('value')).toBe('1,234');
   });
 
-  ['currency', 'zip'].forEach(mask => {
-    describe(`${mask} fallbacks`, () => {
-      it('renders a blank controlled field when value is empty', () => {
-        const data = render({ mask: mask }, { value: '' });
-        const input = data.wrapper.find('input');
-
-        expect(input.prop('value')).toBe('');
-      });
-
-      it('renders a blank controlled field when value is null', () => {
-        const data = render({ mask: mask }, { value: null });
-        const input = data.wrapper.find('input');
-
-        expect(input.prop('value')).toBe('');
-      });
-
-      it('renders a blank controlled field when value is undefined', () => {
-        const data = render({ mask: mask });
-        const input = data.wrapper.find('input');
-
-        expect(input.prop('value')).toBe('');
-      });
-    });
-  });
-
   describe('Currency', () => {
     it('accepts already masked value', () => {
       const data = render({ mask: 'currency' }, { value: '1,234.50' });
@@ -121,6 +124,43 @@ describe('Mask', function() {
       const input = data.wrapper.find('input');
 
       expect(input.prop('value')).toBe('-1,234');
+    });
+  });
+
+  describe('SSN', () => {
+    it('accepts partial ssn', () => {
+      const data = render({ mask: 'ssn' }, { value: '123' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123');
+    });
+
+    it('accepts masked ssn', () => {
+      const data = render({ mask: 'ssn' }, { value: '123-45-6789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-45-6789');
+    });
+
+    it('masks full ssn', () => {
+      const data = render({ mask: 'ssn' }, { value: '123456789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-45-6789');
+    });
+
+    it('masks partial (5) ssn', () => {
+      const data = render({ mask: 'ssn' }, { value: '12345' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-45');
+    });
+
+    it('masks partial (7) ssn', () => {
+      const data = render({ mask: 'ssn' }, { value: '1234567' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-45-67');
     });
   });
 
@@ -194,5 +234,13 @@ describe('unmask', () => {
     expect(unmask(' 12345 ', name)).toBe('12345'); // whitespace
     expect(unmask('12345', name)).toBe('12345');
     expect(unmask('12345-6789', name)).toBe('123456789');
+  });
+
+  it('removes mask from ssn value', () => {
+    const name = 'ssn';
+
+    expect(unmask('', name)).toBe('');
+    expect(unmask(' 123-45-6789 ', name)).toBe('123456789');
+    expect(unmask('123456789', name)).toBe('123456789');
   });
 });

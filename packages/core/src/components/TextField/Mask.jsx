@@ -9,13 +9,17 @@ Style guide: components.masked-field
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Most masks will fall within this group, which
+// is simply an integer when unmasked
+const integerMasks = ['ssn', 'zip'];
+
 /**
  * Remove all non-digits
  * @param {String} value
  * @returns {String}
  */
 function toInt(value) {
-  return value.replace(/\D+/, '');
+  return value.replace(/\D+/g, '');
 }
 
 /*
@@ -109,11 +113,20 @@ export class Mask extends React.PureComponent {
         // ensure it includes two decimal points
         value = this.toNumber(value);
         value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
-      } else if (mask === 'zip') {
-        const matches = toInt(value).match(/(\d{5})(\d{1,4})/);
+      } else if (integerMasks.indexOf(mask) >= 0) {
+        // Format chunks of integers
+        const maskRegex = {
+          ssn: /(\d{3})(\d{1,2})?(\d{1,4})?/,
+          zip: /(\d{5})(\d{1,4})/
+        };
+
+        const matches = toInt(value).match(maskRegex[mask]);
 
         if (matches && matches.length > 1) {
-          value = matches.slice(1).join('-');
+          value = matches
+            .slice(1)
+            .filter(a => !!a) // remove undefined groups
+            .join('-');
         }
       }
     }
@@ -199,7 +212,7 @@ export function unmask(value, mask) {
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
     value = value.match(/^-|[\d.]/g).join('');
-  } else if (mask === 'zip') {
+  } else if (integerMasks.indexOf(mask) >= 0) {
     value = toInt(value);
   }
 
