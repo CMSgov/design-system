@@ -109,9 +109,10 @@ export class Mask extends React.PureComponent {
         // ensure it includes two decimal points
         value = this.toNumber(value);
         value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
-      } else if (['ssn', 'zip'].indexOf(mask) >= 0) {
+      } else if (['phone', 'ssn', 'zip'].indexOf(mask) >= 0) {
         // Format chunks of integers
         const maskRegex = {
+          phone: /(\d{3})(\d{1,3})?(\d{1,4})?/,
           ssn: /(\d{3})(\d{1,2})?(\d{1,4})?/,
           zip: /(\d{5})(\d{1,4})/
         };
@@ -208,7 +209,7 @@ export function unmask(value, mask) {
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
     value = value.match(/^-|[\d.]/g).join('');
-  } else if (mask === 'ssn') {
+  } else if (['phone', 'ssn'].indexOf(mask) >= 0) {
     value = toInt(value);
   }
 

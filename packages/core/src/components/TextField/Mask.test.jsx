@@ -127,6 +127,29 @@ describe('Mask', function() {
     });
   });
 
+  describe('Phone', () => {
+    it('accepts partial phone #', () => {
+      const data = render({ mask: 'phone' }, { value: '123' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123');
+    });
+
+    it('accepts masked phone #', () => {
+      const data = render({ mask: 'phone' }, { value: '123-456-7890' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-456-7890');
+    });
+
+    it('masks phone #', () => {
+      const data = render({ mask: 'phone' }, { value: '1234567890' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-456-7890');
+    });
+  });
+
   describe('SSN', () => {
     it('accepts partial ssn', () => {
       const data = render({ mask: 'ssn' }, { value: '123' });
@@ -252,5 +275,12 @@ describe('unmask', () => {
     expect(unmask('', name)).toBe('');
     expect(unmask(' 123-45-6789 ', name)).toBe('123456789');
     expect(unmask('123456789', name)).toBe('123456789');
+  });
+
+  it('removes mask from phone number', () => {
+    const name = 'phone';
+
+    expect(unmask('', name)).toBe('');
+    expect(unmask(' 123-456-7890 ', name)).toBe('1234567890');
   });
 });

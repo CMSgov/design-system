@@ -20,6 +20,15 @@ const Example = () => {
       />
 
       <TextField
+        label="Phone number"
+        mask="phone"
+        name="phone_example"
+        onBlur={evt => handleBlur(evt, 'phone')}
+        type="tel"
+        value="1234567890"
+      />
+
+      <TextField
         label="Social security number (SSN)"
         mask="ssn"
         name="ssn_example"
