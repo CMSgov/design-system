@@ -55,28 +55,39 @@ describe('Mask', function() {
     expect(onChange.mock.calls.length).toBe(1);
   });
 
+  it('changes to a controlled field using defaultValue', () => {
+    const data = render({ mask: 'currency' }, { defaultValue: '1234' });
+    const input = data.wrapper.find('input');
+
+    expect(input.prop('value')).toBe('1,234');
+  });
+
+  ['currency', 'zip'].forEach(mask => {
+    describe(`${mask} fallbacks`, () => {
+      it('renders a blank controlled field when value is empty', () => {
+        const data = render({ mask: mask }, { value: '' });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+
+      it('renders a blank controlled field when value is null', () => {
+        const data = render({ mask: mask }, { value: null });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+
+      it('renders a blank controlled field when value is undefined', () => {
+        const data = render({ mask: mask });
+        const input = data.wrapper.find('input');
+
+        expect(input.prop('value')).toBe('');
+      });
+    });
+  });
+
   describe('Currency', () => {
-    it('renders a blank controlled field when value is empty', () => {
-      const data = render({ mask: 'currency' }, { value: '' });
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('');
-    });
-
-    it('renders a blank controlled field when value is null', () => {
-      const data = render({ mask: 'currency' }, { value: null });
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('');
-    });
-
-    it('renders a blank controlled field when value is undefined', () => {
-      const data = render({ mask: 'currency' });
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('');
-    });
-
     it('accepts already masked value', () => {
       const data = render({ mask: 'currency' }, { value: '1,234.50' });
       const input = data.wrapper.find('input');
@@ -105,21 +116,41 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('1,234');
     });
 
-    it('adds commas to defaultValue and replaces with value prop', () => {
-      const data = render(
-        { mask: 'currency' },
-        { defaultValue: '12345678.90' }
-      );
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('12,345,678.90');
-    });
-
     it('accepts negative values', () => {
       const data = render({ mask: 'currency' }, { value: '-1,234' });
       const input = data.wrapper.find('input');
 
       expect(input.prop('value')).toBe('-1,234');
+    });
+  });
+
+  describe('Zip code', () => {
+    it('accepts partial zip code', () => {
+      const data = render({ mask: 'zip' }, { value: '123' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123');
+    });
+
+    it('accepts five-digit zip code', () => {
+      const data = render({ mask: 'zip' }, { value: '12345' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345');
+    });
+
+    it('accepts nine-digit zip code', () => {
+      const data = render({ mask: 'zip' }, { value: '123456789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345-6789');
+    });
+
+    it('accepts masked nine-digit zip code', () => {
+      const data = render({ mask: 'zip' }, { value: '12345-6789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345-6789');
     });
   });
 });

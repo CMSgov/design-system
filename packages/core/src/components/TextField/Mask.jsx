@@ -1,5 +1,28 @@
+/*
+Masked field
+
+A masked field is an enhanced input field that provides visual and non-visual
+cues to a user about the expected value.
+
+Style guide: components.masked-field
+*/
 import PropTypes from 'prop-types';
 import React from 'react';
+import chunk from 'lodash.chunk';
+
+/*
+`<TextField mask={...}>`
+
+Passing a `mask` prop into the `TextField` component with a valid value will
+enable formatting to occur when the field is blurred. To "unmask" the
+value, you can import and call the `unmaskValue` method.
+
+@react-component TextField
+
+@react-example Mask
+
+Style guide: components.masked-field.react
+*/
 
 /**
  * A Mask component renders a controlled input field. When the
@@ -23,6 +46,7 @@ export class Mask extends React.PureComponent {
   }
 
   /**
+   * Convert string into a number (positive or negative float or integer)
    * @param {String} value
    * @returns {Number}
    */
@@ -69,13 +93,20 @@ export class Mask extends React.PureComponent {
    */
   maskedValue(value = '') {
     if (value && typeof value === 'string') {
+      const { mask } = this.props;
       value = value.trim();
 
-      if (this.props.mask === 'currency') {
+      if (mask === 'currency') {
         // Format number with commas. If the number includes a decimal,
         // ensure it includes two decimal points
         value = this.toNumber(value);
         value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
+      } else if (mask === 'zip') {
+        // Break string of numbers into chunks of 5. If there are multiple
+        // "chunks" then join using a hyphen
+        const chunks = chunk(value.replace(/\D+/, '').split(''), 5);
+
+        value = chunks.map(numberArray => numberArray.join('')).join('-');
       }
     }
 

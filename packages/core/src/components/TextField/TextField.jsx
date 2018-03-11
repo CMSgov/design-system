@@ -193,7 +193,7 @@ TextField.propTypes = {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask: PropTypes.oneOf(['currency']),
+  mask: PropTypes.oneOf(['currency', 'zip']),
   /**
    * `max` HTML input attribute
    */

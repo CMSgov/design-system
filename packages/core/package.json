@@ -14,6 +14,7 @@
     "core-js": "^2.5.3",
     "downshift": "^1.28.2",
     "ev-emitter": "^1.1.1",
+    "lodash.chunk": "^4.2.0",
     "lodash.uniqueid": "^4.0.1",
     "react-aria-modal": "^2.11.1"
   },
