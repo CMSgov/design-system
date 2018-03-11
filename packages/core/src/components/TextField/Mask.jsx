@@ -184,11 +184,16 @@ Mask.propTypes = {
  * @returns {String}
  */
 export function unmask(value, mask) {
-  if (!value) return value;
+  if (!value || typeof value !== 'string') return value;
+
+  value = value.trim();
 
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
     value = value.match(/^-|[\d.]/g).join('');
+  } else if (mask === 'zip') {
+    // Preserve only digits
+    value = value.replace(/\D/, '');
   }
 
   return value;

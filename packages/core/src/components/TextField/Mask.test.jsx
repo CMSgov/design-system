@@ -179,4 +179,13 @@ describe('unmask', () => {
     expect(unmask('1,234,000.50', name)).toBe('1234000.50');
     expect(unmask('-1,234,000.50', name)).toBe('-1234000.50');
   });
+
+  it('removes mask from zip code value', () => {
+    const name = 'zip';
+
+    expect(unmask('', name)).toBe('');
+    expect(unmask(' 12345 ', name)).toBe('12345'); // whitespace
+    expect(unmask('12345', name)).toBe('12345');
+    expect(unmask('12345-6789', name)).toBe('123456789');
+  });
 });
