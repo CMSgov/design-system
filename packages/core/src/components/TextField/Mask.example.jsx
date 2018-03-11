@@ -12,7 +12,7 @@ const Example = () => {
     <div>
       <TextField
         ariaLabel="Enter monthly income amount in dollars."
-        label="Currency mask"
+        label="Currency"
         mask="currency"
         name="currency_example"
         onBlur={evt => handleBlur(evt, 'currency')}
