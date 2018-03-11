@@ -146,6 +146,13 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('12345-6789');
     });
 
+    it('accepts partial +4 zip code', () => {
+      const data = render({ mask: 'zip' }, { value: '1234567' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345-67');
+    });
+
     it('accepts masked nine-digit zip code', () => {
       const data = render({ mask: 'zip' }, { value: '12345-6789' });
       const input = data.wrapper.find('input');

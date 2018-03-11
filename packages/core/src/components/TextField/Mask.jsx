@@ -8,7 +8,15 @@ Style guide: components.masked-field
 */
 import PropTypes from 'prop-types';
 import React from 'react';
-import chunk from 'lodash.chunk';
+
+/**
+ * Remove all non-digits
+ * @param {String} value
+ * @returns {String}
+ */
+function toInt(value) {
+  return value.replace(/\D+/, '');
+}
 
 /*
 `<TextField mask={...}>`
@@ -102,11 +110,11 @@ export class Mask extends React.PureComponent {
         value = this.toNumber(value);
         value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
       } else if (mask === 'zip') {
-        // Break string of numbers into chunks of 5. If there are multiple
-        // "chunks" then join using a hyphen
-        const chunks = chunk(value.replace(/\D+/, '').split(''), 5);
+        const matches = toInt(value).match(/(\d{5})(\d{1,4})/);
 
-        value = chunks.map(numberArray => numberArray.join('')).join('-');
+        if (matches && matches.length > 1) {
+          value = matches.slice(1).join('-');
+        }
       }
     }
 
@@ -192,8 +200,7 @@ export function unmask(value, mask) {
     // Preserve only digits, decimal point, or negative symbol
     value = value.match(/^-|[\d.]/g).join('');
   } else if (mask === 'zip') {
-    // Preserve only digits
-    value = value.replace(/\D/, '');
+    value = toInt(value);
   }
 
   return value;
