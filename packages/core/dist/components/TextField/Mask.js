@@ -7,6 +7,8 @@ exports.Mask = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+exports.unmask = unmask;
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -21,13 +23,112 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Masked field
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               A masked field is an enhanced input field that provides visual and non-visual
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               cues to a user about the expected value.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Style guide: components.masked-field
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+
+// Deliminate chunks of integers
+var deliminatedMaskRegex = {
+  phone: /(\d{3})(\d{1,3})?(\d+)?/,
+  ssn: /(\d{3})(\d{1,2})?(\d+)?/,
+  zip: /(\d{5})(\d+)/
+};
+
+/**
+ * Split value into groups and insert a hyphen deliminator between each
+ * @param {String} value
+ * @param {RegExp} rx - Regular expression with capturing groups
+ * @returns {String}
+ */
+function deliminateRegexGroups(value, rx) {
+  var matches = toInt(value).match(rx);
+
+  if (matches && matches.length > 1) {
+    value = matches.slice(1).filter(function (a) {
+      return !!a;
+    }) // remove undefined groups
+    .join('-');
+  }
+
+  return value;
+}
+
+/**
+ * Format a string using fixed-point notation, similar to Number.prototype.toFixed
+ * though a decimal is only fixed if the string included a decimal already
+ * @param {String} value - A stringified number (i.e. "1234")
+ * @param {Number} digits - The number of digits to appear after the decimal point
+ * @returns {String}
+ */
+function stringWithFixedDigits(value) {
+  var digits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+
+  var decimalRegex = /\.[\d]+$/;
+
+  // Check for existing decimal
+  var decimal = value.match(decimalRegex);
+
+  if (decimal) {
+    var fixedDecimal = parseFloat(decimal).toFixed(digits).match(decimalRegex)[0];
+
+    return value.replace(decimal, fixedDecimal);
+  }
+
+  return value;
+}
+
+/**
+ * Remove all non-digits
+ * @param {String} value
+ * @returns {String}
+ */
+function toInt(value) {
+  return value.replace(/\D+/g, '');
+}
+
+/**
+ * Convert string into a number (positive or negative float or integer)
+ * @param {String} value
+ * @returns {Number}
+ */
+function toNumber(value) {
+  if (typeof value !== 'string') return value;
+
+  // 0 = number, 1 = decimals
+  var parts = value.split('.');
+  var digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
+  var a = parts[0].match(digitsRegex).join('');
+  var b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
+
+  return b ? parseFloat(a + '.' + b) : parseInt(a);
+}
+
+/*
+`<TextField mask={...}>`
+
+Passing a `mask` prop into the `TextField` component with a valid value will
+enable formatting to occur when the field is blurred. To "unmask" the
+value, you can import and call the `unmaskValue` method.
+
+@react-component TextField
+
+@react-example Mask
+
+Style guide: components.masked-field.react
+*/
 
 /**
  * A Mask component renders a controlled input field. When the
  * field is blurred, it applies formatting to improve the readability
  * of the value.
  */
+
 var Mask = exports.Mask = function (_React$PureComponent) {
   _inherits(Mask, _React$PureComponent);
 
@@ -53,52 +154,6 @@ var Mask = exports.Mask = function (_React$PureComponent) {
     }
 
     /**
-     * @param {String} value
-     * @returns {Number}
-     */
-
-  }, {
-    key: 'toNumber',
-    value: function toNumber(value) {
-      if (typeof value !== 'string') return value;
-
-      // 0 = number, 1 = decimals
-      var parts = value.split('.');
-      var digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
-      var a = parts[0].match(digitsRegex).join('');
-      var b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
-
-      return b ? parseFloat(a + '.' + b) : parseInt(a);
-    }
-
-    /**
-     * Format a string using fixed-point notation, similar to Number.prototype.toFixed
-     * though a decimal is only fixed if the string included a decimal already
-     * @param {String} value - A stringified number (i.e. "1234")
-     * @param {Number} digits - The number of digits to appear after the decimal point
-     * @returns {String}
-     */
-
-  }, {
-    key: 'stringWithFixedDigits',
-    value: function stringWithFixedDigits(value) {
-      var digits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
-
-      var decimalRegex = /\.[\d]+$/;
-
-      // Check for existing decimal
-      var decimal = value.match(decimalRegex);
-
-      if (decimal) {
-        var fixedDecimal = parseFloat(decimal).toFixed(digits).match(decimalRegex)[0];
-
-        return value.replace(decimal, fixedDecimal);
-      }
-
-      return value;
-    }
-
-    /**
      * Returns the value with additional masking characters
      * @param {String} value
      * @returns {String}
@@ -110,13 +165,16 @@ var Mask = exports.Mask = function (_React$PureComponent) {
       var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
       if (value && typeof value === 'string') {
+        var mask = this.props.mask;
+
         value = value.trim();
 
-        if (this.props.mask === 'currency') {
+        if (mask === 'currency') {
           // Format number with commas. If the number includes a decimal,
           // ensure it includes two decimal points
-          value = this.toNumber(value);
-          value = this.stringWithFixedDigits(value.toLocaleString('en-US'));
+          value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+        } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+          value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
         }
       }
 
@@ -199,5 +257,27 @@ Mask.propTypes = {
   children: _propTypes2.default.node.isRequired,
   mask: _propTypes2.default.string.isRequired
 };
+
+/**
+ * Remove mask characters from value
+ * @param {String} value
+ * @param {String} mask
+ * @returns {String}
+ */
+function unmask(value, mask) {
+  if (!value || typeof value !== 'string') return value;
+
+  value = value.trim();
+
+  if (mask === 'currency') {
+    // Preserve only digits, decimal point, or negative symbol
+    value = value.match(/^-|[\d.]/g).join('');
+  } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+    // Remove the deliminators and revert to single ungrouped string
+    value = toInt(value);
+  }
+
+  return value;
+}
 
 exports.default = Mask;

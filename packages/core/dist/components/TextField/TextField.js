@@ -3,19 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TextField = undefined;
+exports.TextField = exports.unmaskValue = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _FormLabel = require('../FormLabel/FormLabel');
-
-var _FormLabel2 = _interopRequireDefault(_FormLabel);
-
 var _Mask = require('./Mask');
 
 var _Mask2 = _interopRequireDefault(_Mask);
+
+var _FormLabel = require('../FormLabel/FormLabel');
+
+var _FormLabel2 = _interopRequireDefault(_FormLabel);
 
 var _propTypes = require('prop-types');
 
@@ -43,10 +43,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+exports.unmaskValue = _Mask.unmask;
+
 /**
  * A `TextField` component renders an input field as well as supporting UI
  * elements like a label, error message, and hint text.
  */
+
 var TextField = exports.TextField = function (_React$PureComponent) {
   _inherits(TextField, _React$PureComponent);
 
@@ -236,7 +239,7 @@ TextField.propTypes = {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask: _propTypes2.default.oneOf(['currency']),
+  mask: _propTypes2.default.oneOf(['currency', 'phone', 'ssn', 'zip']),
   /**
    * `max` HTML input attribute
    */
