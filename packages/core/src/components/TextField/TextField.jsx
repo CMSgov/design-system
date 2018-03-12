@@ -1,9 +1,11 @@
+import Mask, { unmask } from './Mask';
 import FormLabel from '../FormLabel/FormLabel';
-import Mask from './Mask';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
+
+export { unmask as unmaskValue };
 
 /**
  * A `TextField` component renders an input field as well as supporting UI

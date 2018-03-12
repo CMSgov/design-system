@@ -1,6 +1,6 @@
+import TextField, { unmaskValue } from './TextField';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import TextField from './TextField';
 
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
@@ -274,7 +274,11 @@ describe('TextField', function() {
     });
   });
 
-  describe('masked', () => {
+  describe('masks', () => {
+    it('exports unmaskValue method', () => {
+      expect(typeof unmaskValue).toBe('function');
+    });
+
     it('renders currency mask', () => {
       const data = render({
         mask: 'currency'

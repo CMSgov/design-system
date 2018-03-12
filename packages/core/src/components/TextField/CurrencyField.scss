@@ -21,6 +21,10 @@ Style guide: components.currency-field
 /*
 `<TextField mask="currency">`
 
+Passing a `mask="currency"` prop into the `TextField` component will
+enable formatting to occur when the field is blurred. To "unmask" the
+value, you can import the `unmaskValue` method.
+
 @react-component TextField
 
 @react-example CurrencyField

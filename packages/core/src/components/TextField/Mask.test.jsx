@@ -1,5 +1,5 @@
+import Mask, { unmask } from './Mask';
 import { mount, shallow } from 'enzyme';
-import Mask from './Mask';
 import React from 'react';
 
 function render(customProps = {}, inputProps = {}, deep = false) {
@@ -121,5 +121,31 @@ describe('Mask', function() {
 
       expect(input.prop('value')).toBe('-1,234');
     });
+  });
+});
+
+describe('unmask', () => {
+  it('returns value when mask is undefined', () => {
+    expect(unmask('1,234')).toBe('1,234');
+  });
+
+  it('returns value when mask is unknown', () => {
+    expect(unmask('1,234', 'foo')).toBe('1,234');
+  });
+
+  it('exits when value is undefined or null', () => {
+    expect(unmask()).toBeUndefined();
+    expect(unmask(null)).toBeNull();
+  });
+
+  it('removes mask from currency value', () => {
+    const name = 'currency';
+
+    expect(unmask('', name)).toBe('');
+    expect(unmask(' 1,234 ', name)).toBe('1234'); // whitespace
+    expect(unmask('1,234', name)).toBe('1234');
+    expect(unmask('1,234.5', name)).toBe('1234.5');
+    expect(unmask('1,234,000.50', name)).toBe('1234000.50');
+    expect(unmask('-1,234,000.50', name)).toBe('-1234000.50');
   });
 });

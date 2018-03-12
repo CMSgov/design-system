@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextField masked renders currency mask 1`] = `
+exports[`TextField masks renders currency mask 1`] = `
 <div
   className="ds-u-clearfix"
 >
