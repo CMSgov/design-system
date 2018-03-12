@@ -112,9 +112,9 @@ export class Mask extends React.PureComponent {
       } else if (['phone', 'ssn', 'zip'].indexOf(mask) >= 0) {
         // Format chunks of integers
         const maskRegex = {
-          phone: /(\d{3})(\d{1,3})?(\d{1,4})?/,
-          ssn: /(\d{3})(\d{1,2})?(\d{1,4})?/,
-          zip: /(\d{5})(\d{1,4})/
+          phone: /(\d{3})(\d{1,3})?(\d+)?/,
+          ssn: /(\d{3})(\d{1,2})?(\d+)?/,
+          zip: /(\d{5})(\d+)/
         };
 
         const matches = toInt(value).match(maskRegex[mask]);

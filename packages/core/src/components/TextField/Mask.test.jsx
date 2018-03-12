@@ -135,6 +135,16 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('123');
     });
 
+    it('accepts unexpectedly long value', () => {
+      const data = render({ mask: 'phone' }, { value: '123456789000' });
+      const input = data.wrapper.find('input');
+
+      // Yes, this is invalid, but it should be up to to the app
+      // to surface an error in these cases. The mask shouldn't
+      // be changing the raw value a user has entered.
+      expect(input.prop('value')).toBe('123-456-789000');
+    });
+
     it('accepts masked phone #', () => {
       const data = render({ mask: 'phone' }, { value: '123-456-7890' });
       const input = data.wrapper.find('input');
@@ -156,6 +166,13 @@ describe('Mask', function() {
       const input = data.wrapper.find('input');
 
       expect(input.prop('value')).toBe('123');
+    });
+
+    it('accepts unexpectedly long value', () => {
+      const data = render({ mask: 'ssn' }, { value: '1234567890' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('123-45-67890');
     });
 
     it('accepts masked ssn', () => {
@@ -200,6 +217,13 @@ describe('Mask', function() {
       const input = data.wrapper.find('input');
 
       expect(input.prop('value')).toBe('123');
+    });
+
+    it('accepts unexpectedly long value', () => {
+      const data = render({ mask: 'zip' }, { value: '1234567890' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345-67890');
     });
 
     it('accepts five-digit zip code', () => {
