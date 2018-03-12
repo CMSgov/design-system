@@ -1,36 +1,5 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
-/*
-Currency field
-
-A currency field is an enhanced input field that provides visual and non-visual
-cues to a user to enter an amount of money in a specified currency.
-
-Markup:
-<label class="ds-c-label" for="currency_field">
-  Monthly income
-</label>
-<div class="ds-c-field-mask ds-c-field-mask--currency">
-  <div class="ds-c-field__before ds-c-field__before--currency">$</div>
-  <input type="text" aria-label="Enter amount in dollars" class="ds-c-field ds-c-field--currency" id="currency_field" name="currency_example">
-</div>
-
-Style guide: components.currency-field
-*/
-
-/*
-`<TextField mask="currency">`
-
-Passing a `mask="currency"` prop into the `TextField` component will
-enable formatting to occur when the field is blurred. To "unmask" the
-value, you can import the `unmaskValue` method.
-
-@react-component TextField
-
-@react-example CurrencyField
-
-Style guide: components.currency-field.react
-*/
 .ds-c-field__before--currency {
   // Increase currency size so it serves more as an icon and
   // better aligns with the input value text
@@ -44,28 +13,3 @@ Style guide: components.currency-field.react
   // Normal padding + space for the icon + normal padding
   padding-left: $input-padding + 4px + $input-padding;
 }
-
-/*
----
-
-## When to use
-
-- Use the Currency input component anytime users should enter an amount of money in a particular currency, like dollars.
-
-**[View the "Text field" guidance for additional guidance and best practices.]({{root}}/patterns/text-field#guidance)**
-
-## Accessibility
-
-- Ensure the field includes an `aria-label` describing the expected currency for users using assistive devices.
-
-## Related patterns
-
-- [Text field]({{root}}/components/text-field/)
-
-## Learn more
-
-- [Form Guidelines]({{root}}/guidelines/forms/)
-- [GOV.UK - Currency input testing and research](https://github.com/alphagov/govuk-design-system/wiki/Currency-input-testing-and-research)
-
-Style guide: components.currency-field.guidance
-*/
