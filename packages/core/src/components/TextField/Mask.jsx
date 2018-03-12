@@ -209,7 +209,7 @@ export function unmask(value, mask) {
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
     value = value.match(/^-|[\d.]/g).join('');
-  } else if (['phone', 'ssn'].indexOf(mask) >= 0) {
+  } else if (['phone', 'ssn', 'zip'].indexOf(mask) >= 0) {
     value = toInt(value);
   }
 
