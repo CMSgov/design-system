@@ -35,7 +35,7 @@ function ReactContent(props) {
     );
   }
 
-  if (props.reactComponentDocs.props) {
+  if (props.reactComponentDocs && props.reactComponentDocs.props) {
     content.push(
       <ReactPropDocs key="propDocs" propDocs={props.reactComponentDocs.props} />
     );

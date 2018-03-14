@@ -15,18 +15,21 @@ module.exports = function(pages, dataPath) {
 
     pages.forEach(page => {
       if (page.reactComponent || page.reactExample) {
-        const componentPath = `${reactPathFromSource(
-          page.source.path,
-          page.reactComponent
-        )}.jsx`;
-        const componentData = data[componentPath];
+        if (page.reactComponent) {
+          const componentPath = `${reactPathFromSource(
+            page.source.path,
+            page.reactComponent
+          )}.jsx`;
+          const componentData = data[componentPath];
+
+          page.reactComponentPath = componentPath;
+          // There should only ever be one exported component definition
+          page.reactComponentDocs =
+            componentData && componentData.length ? componentData[0] : null;
+        }
+
         const examplePath = formExamplePath(page);
         const exampleData = data[examplePath];
-
-        page.reactComponentPath = componentPath;
-        // There should only ever be one exported component definition
-        page.reactComponentDocs =
-          componentData && componentData.length ? componentData[0] : null;
 
         if (exampleData && exampleData.source) {
           page.reactExamplePath = examplePath;

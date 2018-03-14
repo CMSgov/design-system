@@ -260,8 +260,8 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src([
-        `packages/${packages}/src/components/**/*.jsx`,
-        `!packages/${packages}/src/components/**/*.test.jsx`
+        `packages/${packages}/src/**/*.jsx`,
+        `!packages/${packages}/src/**/*.test.jsx`
       ])
       .pipe(parseReactFile({ nameAfter: 'packages/' }, shared.rootPath))
       .pipe(merge({ fileName: reactDataFilename }))
