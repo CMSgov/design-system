@@ -26,7 +26,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -54,7 +54,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -82,7 +82,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -143,7 +143,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -171,7 +171,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -199,7 +199,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -253,7 +253,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -281,7 +281,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -309,7 +309,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -363,7 +363,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -391,7 +391,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -419,7 +419,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -473,7 +473,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -501,7 +501,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -529,7 +529,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -584,7 +584,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -612,7 +612,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -640,7 +640,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -694,7 +694,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -722,7 +722,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -750,7 +750,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -804,7 +804,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -832,7 +832,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span
@@ -860,7 +860,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
       >
         <span

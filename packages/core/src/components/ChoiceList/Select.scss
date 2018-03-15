@@ -39,13 +39,14 @@ Style guide: components.select
 
 // stylelint-disable selector-no-qualifying-type
 select.ds-c-field {
+  $select-icon-size: 10px;
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-both.svg');
-  background-position: right $small-font-size center;
+  background-position: right $spacer-1 center;
   background-repeat: no-repeat;
-  background-size: $small-font-size;
-  padding-right: ($small-font-size * 2) + $spacer-1;
+  background-size: $select-icon-size;
+  padding-right: ($select-icon-size * 2) + $spacer-1;
 
   &[multiple] {
     background-image: none;

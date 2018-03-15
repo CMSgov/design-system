@@ -137,7 +137,12 @@ Style guide: style.typography
 }
 
 .ds-h1 {
-  font-size: $h1-font-size;
+  font-size: $h1-mobile-font-size;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $h1-font-size;
+  }
 }
 
 .ds-h2 {
@@ -196,19 +201,19 @@ Style guide: style.typography
 /*
 Responsive typography
 
-The `ds-display` and `ds-title` classes are responsive by default. To apply responsive typography elsewhere, use the [font size utility class](/utilites/font-size#responsive). Since the base typography margins and line height is measured in `em` units, they'll automatically adjust as you change the font size.
+The `ds-display`, `ds-title`, and `ds-h1` classes are responsive by default.
+To apply responsive typography elsewhere, use the [font size utility class](/utilites/font-size#responsive).
+Since the base typography margins and line height is measured in `em` units,
+they'll automatically adjust as you change the font size.
 
 _Resize your browser to see each breakpoint in action:_
 
 Markup:
 <article class="ds-base--inverse ds-u-padding--2">
-  <h1 class="ds-display">Responsive heading</h1>
-  <p class="ds-text ds-u-font-size--small ds-u-md-font-size--base ds-u-lg-font-size--lead ds-u-measure--wide">
-    <strong>Responsive body text.</strong>
-    {{ lorem-l }}
-  </p>
-  <h2 class="ds-h2 ds-u-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2">Responsive subheading</h2>
-  <p class="ds-text ds-u-measure--wide ds-u-color--muted-inverse">{{ lorem-l }}</p>
+  <h1 class="ds-display ds-u-margin-y--1">Display</h1>
+  <h2 class="ds-title ds-u-margin-y--1">Title</h1>
+  <h3 class="ds-h1 ds-u-margin-y--1">Heading 1</h1>
+  <h4 class="ds-h2 ds-u-margin-y--1 ds-u-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2">Responsive utility classes</h4>
 </div>
 
 Style guide: style.typography.responsive
@@ -228,6 +233,7 @@ The following Sass variables can be overridden to change the type sizes:
 - `$h3-font-size`
 - `$h2-font-size`
 - `$h1-font-size`
+- `$h1-mobile-font-size`
 - `$title-font-size`
 - `$display-font-size`
 
