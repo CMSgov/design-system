@@ -159,16 +159,13 @@ Style guide: style.typography
 
 .ds-h5 {
   font-size: $h5-font-size;
-  font-weight: $font-normal;
-  text-transform: uppercase;
+  font-weight: $font-bold;
 }
 
 .ds-h6 {
   color: $color-muted;
   font-size: $h6-font-size;
   font-weight: $font-normal;
-  letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
 .ds-base--inverse .ds-h6 {
