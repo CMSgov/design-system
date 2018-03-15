@@ -56,7 +56,7 @@ export class DateField extends React.PureComponent {
   render() {
     const sharedDateFieldProps = {
       className: 'ds-l-col--auto',
-      labelClassName: 'ds-u-margin-top--1',
+      labelClassName: 'ds-u-font-weight--normal ds-u-margin-top--1',
       inversed: this.props.inversed,
       onBlur:
         (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,

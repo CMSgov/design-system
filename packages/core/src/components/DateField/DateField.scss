@@ -15,15 +15,15 @@ Markup:
   </legend>
   <div class="ds-l-form-row">
     <div class="ds-l-col--auto">
-      <label class="ds-c-label ds-u-margin-top--1" for="month">Month</label>
+      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="month">Month</label>
       <input class="ds-c-field ds-c-field--month" type="number" min="1" max="12" id="month" name="birthdate[month]">
     </div>
     <div class="ds-l-col--auto">
-      <label class="ds-c-label ds-u-margin-top--1" for="day">Day</label>
+      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="day">Day</label>
       <input class="ds-c-field ds-c-field--day" type="number" min="1" max="31" id="day" name="birthdate[day]">
     </div>
     <div class="ds-l-col--auto">
-      <label class="ds-c-label ds-u-margin-top--1" for="year">Year</label>
+      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="year">Year</label>
       <input class="ds-c-field ds-c-field--year" type="number" min="1900" max="2000" id="year" name="birthdate[year]">
     </div>
   </div>
