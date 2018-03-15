@@ -101,7 +101,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
 
       var sharedDateFieldProps = {
         className: 'ds-l-col--auto',
-        labelClassName: 'ds-u-margin-top--1',
+        labelClassName: 'ds-u-font-weight--normal ds-u-margin-top--1',
         inversed: this.props.inversed,
         onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
         onChange: this.props.onChange && this.handleChange,
