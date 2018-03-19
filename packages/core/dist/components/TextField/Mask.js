@@ -266,7 +266,7 @@ Mask.propTypes = {
  */
 function unmask(value, mask) {
   if (!value || typeof value !== 'string') return value;
-
+  var rawValue = value;
   value = value.trim();
 
   if (mask === 'currency') {
@@ -275,6 +275,8 @@ function unmask(value, mask) {
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string
     value = toInt(value);
+  } else {
+    return rawValue;
   }
 
   return value;
