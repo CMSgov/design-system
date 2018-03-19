@@ -258,7 +258,7 @@ describe('Mask', function() {
 
 describe('unmask', () => {
   it('returns value when mask is undefined', () => {
-    expect(unmask('1,234')).toBe('1,234');
+    expect(unmask(' 1,234 Foo ')).toBe(' 1,234 Foo ');
   });
 
   it('returns value when mask is unknown', () => {
