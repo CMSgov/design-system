@@ -70,7 +70,7 @@ FormLabel.propTypes = {
   children: PropTypes.node.isRequired,
   /**
    * A unique `id` for the label element. Useful for referencing the label from
-   * other components with aria-describedby.
+   * other components with `aria-describedby`.
    */
   id: PropTypes.string,
   /**
