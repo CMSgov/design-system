@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 export class DateField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  labelId() {
+    if (!this._labelId) {
+      // Cache the ID so we're not regenerating it on each method call
+      this._labelId = uniqueId('datefield_label_');
+    }
+
+    return this._labelId;
   }
 
   formatDate() {
@@ -63,6 +73,7 @@ export class DateField extends React.PureComponent {
       onChange: this.props.onChange && this.handleChange,
       type: 'number'
     };
+    const labelId = this.labelId();
 
     return (
       <fieldset className="ds-c-fieldset">
@@ -72,6 +83,7 @@ export class DateField extends React.PureComponent {
           hint={this.props.hint}
           inversed={this.props.inversed}
           requirementLabel={this.props.requirementLabel}
+          id={labelId}
         >
           {this.props.label}
         </FormLabel>
@@ -92,6 +104,7 @@ export class DateField extends React.PureComponent {
             label={this.props.monthLabel}
             name={this.props.monthName}
             value={this.props.monthValue}
+            aria-describedby={labelId}
           />
           <TextField
             {...sharedDateFieldProps}
@@ -108,6 +121,7 @@ export class DateField extends React.PureComponent {
             label={this.props.dayLabel}
             name={this.props.dayName}
             value={this.props.dayValue}
+            aria-describedby={labelId}
           />
           <TextField
             {...sharedDateFieldProps}
@@ -124,6 +138,7 @@ export class DateField extends React.PureComponent {
             max={this.props.yearMax}
             name={this.props.yearName}
             value={this.props.yearValue}
+            aria-describedby={labelId}
           />
         </div>
       </fieldset>

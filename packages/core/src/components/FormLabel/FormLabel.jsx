@@ -50,13 +50,14 @@ export class FormLabel extends React.PureComponent {
   }
 
   render() {
+    const { fieldId, id, children } = this.props;
     const ComponentType = this.props.component;
     const labelTextClasses = classNames(this.props.labelClassName);
     const classes = classNames('ds-c-label', this.props.className);
 
     return (
-      <ComponentType className={classes} htmlFor={this.props.fieldId}>
-        <span className={labelTextClasses}>{this.props.children}</span>
+      <ComponentType className={classes} htmlFor={fieldId} id={id}>
+        <span className={labelTextClasses}>{children}</span>
         {this.errorMessage()}
         {this.hint()}
       </ComponentType>
@@ -67,6 +68,11 @@ export class FormLabel extends React.PureComponent {
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
   children: PropTypes.node.isRequired,
+  /**
+   * A unique `id` for the label element. Useful for referencing the label from
+   * other components with aria-describedby.
+   */
+  id: PropTypes.string,
   /**
    * Additional classes to be added to the root element.
    */
