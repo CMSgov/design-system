@@ -42,6 +42,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
     <legend
       className="ds-c-label ds-u-visibility--screen-reader"
       htmlFor={undefined}
+      id={undefined}
     >
       <span
         className="ds-u-font-weight--bold"
@@ -74,6 +75,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_33"
+              id={undefined}
             >
               <span
                 className=""
@@ -102,6 +104,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_34"
+              id={undefined}
             >
               <span
                 className=""
@@ -130,6 +133,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_35"
+              id={undefined}
             >
               <span
                 className=""
@@ -158,6 +162,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_36"
+              id={undefined}
             >
               <span
                 className=""
@@ -186,6 +191,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_37"
+              id={undefined}
             >
               <span
                 className=""
@@ -214,6 +220,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_38"
+              id={undefined}
             >
               <span
                 className=""
@@ -242,6 +249,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_39"
+              id={undefined}
             >
               <span
                 className=""
@@ -270,6 +278,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_40"
+              id={undefined}
             >
               <span
                 className=""
@@ -298,6 +307,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_41"
+              id={undefined}
             >
               <span
                 className=""
@@ -326,6 +336,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_42"
+              id={undefined}
             >
               <span
                 className=""
@@ -354,6 +365,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_43"
+              id={undefined}
             >
               <span
                 className=""
@@ -382,6 +394,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             <label
               className="ds-c-label"
               htmlFor="checkbox_months_44"
+              id={undefined}
             >
               <span
                 className=""

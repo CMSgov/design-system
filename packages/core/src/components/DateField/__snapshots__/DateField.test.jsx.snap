@@ -7,6 +7,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -28,6 +29,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -36,6 +38,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -56,6 +59,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -64,6 +68,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -84,6 +89,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -92,6 +98,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
@@ -117,6 +124,7 @@ exports[`DateField has errorMessage 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -145,6 +153,7 @@ exports[`DateField has errorMessage 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -153,6 +162,7 @@ exports[`DateField has errorMessage 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -173,6 +183,7 @@ exports[`DateField has errorMessage 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -181,6 +192,7 @@ exports[`DateField has errorMessage 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -201,6 +213,7 @@ exports[`DateField has errorMessage 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -209,6 +222,7 @@ exports[`DateField has errorMessage 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
@@ -234,6 +248,7 @@ exports[`DateField has invalid day 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -255,6 +270,7 @@ exports[`DateField has invalid day 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -263,6 +279,7 @@ exports[`DateField has invalid day 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -283,6 +300,7 @@ exports[`DateField has invalid day 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -291,6 +309,7 @@ exports[`DateField has invalid day 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day ds-c-field--error"
         defaultValue={undefined}
@@ -311,6 +330,7 @@ exports[`DateField has invalid day 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -319,6 +339,7 @@ exports[`DateField has invalid day 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
@@ -344,6 +365,7 @@ exports[`DateField has invalid month 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -365,6 +387,7 @@ exports[`DateField has invalid month 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -373,6 +396,7 @@ exports[`DateField has invalid month 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month ds-c-field--error"
         defaultValue={undefined}
@@ -393,6 +417,7 @@ exports[`DateField has invalid month 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -401,6 +426,7 @@ exports[`DateField has invalid month 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -421,6 +447,7 @@ exports[`DateField has invalid month 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -429,6 +456,7 @@ exports[`DateField has invalid month 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
@@ -454,6 +482,7 @@ exports[`DateField has invalid year 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -475,6 +504,7 @@ exports[`DateField has invalid year 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -483,6 +513,7 @@ exports[`DateField has invalid year 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -503,6 +534,7 @@ exports[`DateField has invalid year 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -511,6 +543,7 @@ exports[`DateField has invalid year 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -531,6 +564,7 @@ exports[`DateField has invalid year 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -539,6 +573,7 @@ exports[`DateField has invalid year 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year ds-c-field--error"
         defaultValue={undefined}
@@ -564,6 +599,7 @@ exports[`DateField has requirementLabel 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -586,6 +622,7 @@ exports[`DateField has requirementLabel 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -594,6 +631,7 @@ exports[`DateField has requirementLabel 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -614,6 +652,7 @@ exports[`DateField has requirementLabel 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -622,6 +661,7 @@ exports[`DateField has requirementLabel 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -642,6 +682,7 @@ exports[`DateField has requirementLabel 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -650,6 +691,7 @@ exports[`DateField has requirementLabel 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
@@ -675,6 +717,7 @@ exports[`DateField is inversed 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -696,6 +739,7 @@ exports[`DateField is inversed 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -704,6 +748,7 @@ exports[`DateField is inversed 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--inverse ds-c-field--month"
         defaultValue={undefined}
@@ -724,6 +769,7 @@ exports[`DateField is inversed 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -732,6 +778,7 @@ exports[`DateField is inversed 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--inverse ds-c-field--day"
         defaultValue={undefined}
@@ -752,6 +799,7 @@ exports[`DateField is inversed 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -760,6 +808,7 @@ exports[`DateField is inversed 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--inverse ds-c-field--year"
         defaultValue={undefined}
@@ -785,6 +834,7 @@ exports[`DateField renders with all defaultProps 1`] = `
   <legend
     className="ds-c-label"
     htmlFor={undefined}
+    id="datefield_label_snapshot"
   >
     <span
       className=""
@@ -806,6 +856,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -814,6 +865,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
@@ -834,6 +886,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -842,6 +895,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
@@ -862,6 +916,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
+        id={undefined}
       >
         <span
           className=""
@@ -870,6 +925,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
+        aria-describedby="datefield_label_snapshot"
         aria-label={undefined}
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
