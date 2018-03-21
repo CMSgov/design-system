@@ -11,15 +11,21 @@
   "dependencies": {
     "@cmsgov/design-system-support": "^1.19.1",
     "classnames": "^2.2.5",
+    "colorutilities": "^0.0.2",
     "core-js": "^2.5.3",
     "downshift": "^1.28.2",
+    "emotion": "^9.0.2",
     "ev-emitter": "^1.1.1",
     "lodash.uniqueid": "^4.0.1",
-    "react-aria-modal": "^2.11.1"
+    "react-aria-modal": "^2.11.1",
+    "react-emotion": "^9.0.2"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0 || ^16.0.0",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "rewire": "^3.0.2"
   }
 }

@@ -1,17 +1,18 @@
 {
   "env": {
-    "test": {
-      "presets": [
-        "jest"
+    "production": {
+      "plugins": ["transform-object-assign", ["emotion", { "hoist": true }]]
+    },
+    "development": {
+      "plugins": [
+        "transform-object-assign",
+        ["emotion", { "sourceMap": true, "autoLabel": true }]
       ]
+    },
+    "test": {
+      "presets": ["jest"]
     }
   },
-  "plugins": [
-    "transform-object-assign"
-  ],
-  "presets": [
-    "react",
-    "es2015",
-    "stage-3"
-  ]
+  "plugins": ["transform-object-assign", "emotion"],
+  "presets": ["react", "es2015", "stage-3"]
 }

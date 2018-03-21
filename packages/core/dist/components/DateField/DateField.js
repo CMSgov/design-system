@@ -29,6 +29,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _lodash = require('lodash.uniqueid');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51,6 +55,16 @@ var DateField = exports.DateField = function (_React$PureComponent) {
   }
 
   _createClass(DateField, [{
+    key: 'labelId',
+    value: function labelId() {
+      if (!this._labelId) {
+        // Cache the ID so we're not regenerating it on each method call
+        this._labelId = (0, _lodash2.default)('datefield_label_');
+      }
+
+      return this._labelId;
+    }
+  }, {
     key: 'formatDate',
     value: function formatDate() {
       if (this.props.dateFormatter) {
@@ -107,6 +121,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
         onChange: this.props.onChange && this.handleChange,
         type: 'number'
       };
+      var labelId = this.labelId();
 
       return _react2.default.createElement(
         'fieldset',
@@ -118,7 +133,8 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             errorMessage: this.props.errorMessage,
             hint: this.props.hint,
             inversed: this.props.inversed,
-            requirementLabel: this.props.requirementLabel
+            requirementLabel: this.props.requirementLabel,
+            id: labelId
           },
           this.props.label
         ),
@@ -138,7 +154,8 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             defaultValue: this.props.monthDefaultValue,
             label: this.props.monthLabel,
             name: this.props.monthName,
-            value: this.props.monthValue
+            value: this.props.monthValue,
+            'aria-describedby': labelId
           })),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
             fieldClassName: (0, _classnames2.default)('ds-c-field--day', {
@@ -153,7 +170,8 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             defaultValue: this.props.dayDefaultValue,
             label: this.props.dayLabel,
             name: this.props.dayName,
-            value: this.props.dayValue
+            value: this.props.dayValue,
+            'aria-describedby': labelId
           })),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
             fieldClassName: (0, _classnames2.default)('ds-c-field--year', {
@@ -168,7 +186,8 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             min: this.props.yearMin,
             max: this.props.yearMax,
             name: this.props.yearName,
-            value: this.props.yearValue
+            value: this.props.yearValue,
+            'aria-describedby': labelId
           }))
         )
       );
