@@ -83,6 +83,7 @@ export class Choice extends React.PureComponent {
       checkedChildren,
       children,
       className,
+      hint,
       inversed,
       inputPlacement,
       inputClassName,
@@ -113,7 +114,11 @@ export class Choice extends React.PureComponent {
           }}
           {...inputProps}
         />
-        <FormLabel fieldId={this.id} requirementLabel={requirementLabel}>
+        <FormLabel
+          fieldId={this.id}
+          hint={hint}
+          requirementLabel={requirementLabel}
+        >
           {children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
@@ -158,6 +163,10 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: PropTypes.bool,
+  /**
+   * Additional hint text to display below the choice's label
+   */
+  hint: PropTypes.node,
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.
