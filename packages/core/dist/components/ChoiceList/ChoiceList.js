@@ -226,9 +226,10 @@ ChoiceList.propTypes = {
     checked: _Choice2.default.propTypes.checked,
     defaultChecked: _Choice2.default.propTypes.defaultChecked,
     disabled: _Choice2.default.propTypes.disabled,
+    hint: _Choice2.default.propTypes.hint,
     label: _Choice2.default.propTypes.children,
-    value: _Choice2.default.propTypes.value,
-    requirementLabel: _propTypes2.default.node
+    requirementLabel: _Choice2.default.propTypes.requirementLabel,
+    value: _Choice2.default.propTypes.value
   })).isRequired,
   /**
    * Additional classes to be added to the root element.

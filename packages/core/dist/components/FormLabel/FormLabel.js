@@ -90,17 +90,22 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      var _props2 = this.props,
+          fieldId = _props2.fieldId,
+          id = _props2.id,
+          children = _props2.children;
+
       var ComponentType = this.props.component;
       var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName);
       var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
 
       return _react2.default.createElement(
         ComponentType,
-        { className: classes, htmlFor: this.props.fieldId },
+        { className: classes, htmlFor: fieldId, id: id },
         _react2.default.createElement(
           'span',
           { className: labelTextClasses },
-          this.props.children
+          children
         ),
         this.errorMessage(),
         this.hint()
@@ -114,6 +119,11 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
   children: _propTypes2.default.node.isRequired,
+  /**
+   * A unique `id` for the label element. Useful for referencing the label from
+   * other components with `aria-describedby`.
+   */
+  id: _propTypes2.default.string,
   /**
    * Additional classes to be added to the root element.
    */
