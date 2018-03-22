@@ -94,6 +94,15 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--inverse')).toBe(false);
   });
 
+  it('has a hint and requirementLabel', () => {
+    const wrapper = shallowRender({
+      hint: 'Hello world',
+      requirementLabel: 'Optional '
+    }).wrapper;
+
+    expect(wrapper.find('FormLabel')).toMatchSnapshot();
+  });
+
   it('applies inverse className to input', () => {
     const wrapper = shallowRender({ inversed: true }).wrapper;
     const input = wrapper.find('input');

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Choice has a hint and requirementLabel 1`] = `
+<FormLabel
+  component="label"
+  fieldId="checkbox_foo_9"
+  hint="Hello world"
+  requirementLabel="Optional "
+>
+  George Washington
+</FormLabel>
+`;
