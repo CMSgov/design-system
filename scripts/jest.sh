@@ -48,7 +48,7 @@ if [ -n "$SLOW_MO" ]; then
   export SLOW_MO
 fi
 
-export LOCALE=en-US
+OPTS="${OPTS} ${EXTRA_OPTS[@]}"
 
 if [ "$WATCH" = true ]; then
   # By default if we're watching, build it once up front and then tell jest to
@@ -56,13 +56,11 @@ if [ "$WATCH" = true ]; then
   # initial build.
   if [ "$SKIP_BUILD" = false ]; then
     set +x
-    sh ops/build-local.sh
+    yarn build
     set -x
   fi
   export SKIP_BUILD=true
-  set -- "${EXTRA_OPTS[@]}"
   yarn jest $OPTS --watch
 else
-  set -- "${EXTRA_OPTS[@]}"
   yarn jest $OPTS
 fi
