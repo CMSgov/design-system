@@ -132,13 +132,14 @@ var Choice = exports.Choice = function (_React$PureComponent) {
           checkedChildren = _props.checkedChildren,
           children = _props.children,
           className = _props.className,
+          hint = _props.hint,
           inversed = _props.inversed,
           inputPlacement = _props.inputPlacement,
           inputClassName = _props.inputClassName,
           requirementLabel = _props.requirementLabel,
           size = _props.size,
           uncheckedChildren = _props.uncheckedChildren,
-          inputProps = _objectWithoutProperties(_props, ['checkedChildren', 'children', 'className', 'inversed', 'inputPlacement', 'inputClassName', 'requirementLabel', 'size', 'uncheckedChildren']);
+          inputProps = _objectWithoutProperties(_props, ['checkedChildren', 'children', 'className', 'hint', 'inversed', 'inputPlacement', 'inputClassName', 'requirementLabel', 'size', 'uncheckedChildren']);
 
       var inputClasses = (0, _classnames2.default)(inputClassName, 'ds-c-choice', {
         'ds-c-choice--inverse': inversed,
@@ -163,7 +164,11 @@ var Choice = exports.Choice = function (_React$PureComponent) {
         }, inputProps)),
         _react2.default.createElement(
           _FormLabel2.default,
-          { fieldId: this.id, requirementLabel: requirementLabel },
+          {
+            fieldId: this.id,
+            hint: hint,
+            requirementLabel: requirementLabel
+          },
           children
         ),
         this.checked() ? checkedChildren : uncheckedChildren
@@ -210,6 +215,10 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: _propTypes2.default.bool,
+  /**
+   * Additional hint text to display below the choice's label
+   */
+  hint: _propTypes2.default.node,
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.
