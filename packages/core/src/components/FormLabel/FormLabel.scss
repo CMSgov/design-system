@@ -30,6 +30,10 @@ Style guide: components.form-label
   margin-top: 0;
 }
 
+.ds-c-label__container {
+  min-height: $choice-size;
+}
+
 /*
 Hint text
 
