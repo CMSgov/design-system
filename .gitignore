@@ -45,3 +45,6 @@ node_modules
 # .DS_Store Mac
 .DS_Store
 /.vscode
+
+# Regression-testing diffs
+**/__image_snapshots__/__diff_output__
