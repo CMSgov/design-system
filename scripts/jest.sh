@@ -34,9 +34,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ "$E2E" = true ]; then
-  OPTS="--config=jest.e2e.config.js"
+  OPTS="--config=tools/jest/e2e.config.js"
 else
-  OPTS="--config=jest.config.js"
+  OPTS="--config=tools/jest/unit.config.js"
 fi
 
 if [ "$SKIP_BUILD" = true ]; then

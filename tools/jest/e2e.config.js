@@ -1,4 +1,5 @@
 module.exports = {
+  rootDir: '../../',
   globalSetup: '<rootDir>/tools/jest/e2e.global-setup.js',
   globalTeardown: '<rootDir>/tools/jest/e2e.global-teardown.js',
   setupTestFrameworkScriptFile: '<rootDir>/tools/jest/e2e.test-setup.js',
