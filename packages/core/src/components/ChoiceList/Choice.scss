@@ -27,22 +27,25 @@ Markup:
   <legend class="ds-c-label">Historical figures</legend>
   <span class="ds-c-field__hint">Select all that apply</span>
   <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
-  <label for="truth-1">Sojourner Truth</label>
+  <label for="truth-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">
+    <span class="ds-c-label-content__container">Sojourner Truth</span>
+    <span class="ds-c-field__hint">Example hint text</span>
+  </label>
   <input class="ds-c-choice" id="douglass-1" type="checkbox" name="historical-figures-1" value="douglass">
-  <label for="douglass-1">Frederick Douglass</label>
+  <label for="douglass-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Frederick Douglass</label>
   <input class="ds-c-choice" id="washington-1" type="checkbox" name="historical-figures-1" value="washington">
-  <label for="washington-1">Booker T. Washington</label>
+  <label for="washington-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Booker T. Washington</label>
   <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled>
-  <label for="carver-1">George Washington Carver</label>
+  <label for="carver-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">George Washington Carver</label>
 </fieldset>
 <fieldset class="ds-c-fieldset">
   <legend class="ds-c-label">Select a historical figure</legend>
   <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
-  <label for="truth-3">Sojourner Truth</label>
+  <label for="truth-3" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Sojourner Truth</label>
   <input class="ds-c-choice" id="douglass-3" type="radio" name="historical-figures-3" value="douglass">
-  <label for="douglass-3">Frederick Douglass</label>
+  <label for="douglass-3" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Frederick Douglass</label>
   <input class="ds-c-choice" id="washington-3" type="radio" name="historical-figures-3" value="washington">
-  <label for="washington-3">Booker T. Washington</label>
+  <label for="washington-3" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Booker T. Washington</label>
 </fieldset>
 
 Style guide: components.choice
@@ -57,22 +60,22 @@ Markup:
     <legend class="ds-c-label">Historical figures</legend>
     <span class="ds-c-field__hint ds-c-field__hint--inverse">Select all that apply</span>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
-    <label for="truth-2">Sojourner Truth</label>
+    <label for="truth-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Sojourner Truth</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
-    <label for="douglass-2">Frederick Douglass</label>
+    <label for="douglass-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Frederick Douglass</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
-    <label for="washington-2">Booker T. Washington</label>
+    <label for="washington-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Booker T. Washington</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
-    <label for="carver-2">George Washington Carver</label>
+    <label for="carver-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">George Washington Carver</label>
   </fieldset>
   <fieldset class="ds-c-fieldset">
     <legend class="ds-c-label">Select a historical figure</legend>
     <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
-    <label for="truth-4">Sojourner Truth</label>
+    <label for="truth-4" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Sojourner Truth</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
-    <label for="douglass-4">Frederick Douglass</label>
+    <label for="douglass-4" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Frederick Douglass</label>
     <input class="ds-c-choice ds-c-choice--inverse" id="washington-4" type="radio" name="historical-figures-4" value="washington">
-    <label for="washington-4">Booker T. Washington</label>
+    <label for="washington-4" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Booker T. Washington</label>
   </fieldset>
 </div>
 
@@ -89,7 +92,7 @@ Style guide: components.choice.inversed
 
 .ds-c-choice + label {
   cursor: pointer;
-  display: block;
+  display: flex;
   font-weight: $font-normal;
   margin: $spacer-1 0;
   max-width: $measure-base;
@@ -177,13 +180,13 @@ Markup:
       <legend class="ds-c-label">Right to left</legend>
       <span class="ds-c-field__hint ds-u-margin-bottom--1">Select desired fruits</span>
       <input class="ds-c-choice ds-c-choice--right" id="apple-1" type="checkbox" name="fruit-1" value="apple" checked>
-      <label for="apple-1">Apple</label>
+      <label for="apple-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Apple</label>
       <input class="ds-c-choice ds-c-choice--right" id="banana-1" type="checkbox" name="fruit-1" value="banana">
-      <label for="banana-1">Banana</label>
+      <label for="banana-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Banana</label>
       <input class="ds-c-choice ds-c-choice--right" id="fig-1" type="checkbox" name="fruit-1" value="fig">
-      <label for="fig-1">Fig</label>
+      <label for="fig-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Fig</label>
       <input class="ds-c-choice ds-c-choice--right" id="plum-1" type="checkbox" name="fruit-1" disabled>
-      <label for="plum-1">Plum</label>
+      <label for="plum-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Plum</label>
     </fieldset>
   </div>
   <div class="ds-u-padding--2 ds-u-text-align--right ds-u-float--left ds-u-margin-left--2 ds-base--inverse">
@@ -191,11 +194,11 @@ Markup:
       <legend class="ds-c-label">Right to left</legend>
       <span class="ds-c-field__hint ds-c-field__hint--inverse ds-u-margin-bottom--1">Select desired fruits</span>
       <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="apple-2" type="radio" name="fruit-2" value="apple" checked>
-      <label for="apple-2">Apple</label>
+      <label for="apple-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Apple</label>
       <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="banana-2" type="radio" name="fruit-2" value="banana">
-      <label for="banana-2">Banana</label>
+      <label for="banana-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Banana</label>
       <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="fig-2" type="radio" name="fruit-2" value="fig">
-      <label for="fig-2">Fig</label>
+      <label for="fig-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Fig</label>
     </fieldset>
   </div>
 </div>
@@ -222,9 +225,9 @@ Markup:
       <legend class="ds-c-label">Size variants</legend>
       <span class="ds-c-field__hint ds-u-margin-bottom--1">Select a size</span>
       <input class="ds-c-choice" id="normal-1" type="checkbox" name="size-1" value="normal" checked>
-      <label for="normal-1">Normal</label>
+      <label for="normal-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Normal</label>
       <input class="ds-c-choice ds-c-choice--small" id="small-1" type="checkbox" name="size-1" value="small">
-      <label for="small-1">Small</label>
+      <label for="small-1" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Small</label>
     </fieldset>
   </div>
   <div class="ds-u-padding--2 ds-u-border--2 ds-u-float--left ds-u-margin-left--2">
@@ -232,9 +235,9 @@ Markup:
       <legend class="ds-c-label">Size variants</legend>
       <span class="ds-c-field__hint ds-u-margin-bottom--1">Select a size</span>
       <input class="ds-c-choice" id="normal-2" type="radio" name="size-2" value="normal" checked>
-      <label for="normal-2">Normal</label>
+      <label for="normal-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Normal</label>
       <input class="ds-c-choice ds-c-choice--small" id="small-2" type="radio" name="size-2" value="small">
-      <label for="small-2">Small</label>
+      <label for="small-2" class="ds-u-flex-wrap--wrap ds-u-align-items--center">Small</label>
     </fieldset>
   </div>
 </div>

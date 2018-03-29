@@ -96,8 +96,8 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
           children = _props2.children;
 
       var ComponentType = this.props.component;
-      var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName);
-      var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
+      var labelTextClasses = (0, _classnames2.default)('ds-c-label-content__container', this.props.labelClassName);
+      var classes = (0, _classnames2.default)('ds-c-label', 'ds-u-flex-wrap--wrap', 'ds-u-align-items--center', this.props.className);
 
       return _react2.default.createElement(
         ComponentType,
