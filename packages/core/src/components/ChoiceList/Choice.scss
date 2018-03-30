@@ -91,16 +91,16 @@ Style guide: components.choice.inversed
 }
 
 .ds-c-choice + label {
+  align-items: center;
   cursor: pointer;
   display: flex;
+  flex-wrap: wrap;
   font-weight: $font-normal;
   margin: $spacer-1 0;
   max-width: $measure-base;
   min-height: $choice-size;
   padding-left: $choice-size + $spacer-1;
   position: relative;
-  flex-wrap: wrap !important;
-  align-items: center !important;
 }
 
 // Create a custom checkbox/radio button

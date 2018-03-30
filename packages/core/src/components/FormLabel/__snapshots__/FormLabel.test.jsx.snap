@@ -2,10 +2,10 @@
 
 exports[`FormLabel adds punctuation to requirementLabel when hint is also present 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -20,10 +20,10 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 
 exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -38,10 +38,10 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 
 exports[`FormLabel is inversed 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -55,11 +55,11 @@ exports[`FormLabel is inversed 1`] = `
 
 exports[`FormLabel renders error state 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
   htmlFor="name"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -75,10 +75,10 @@ exports[`FormLabel renders error state 1`] = `
 
 exports[`FormLabel renders hint node 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -94,10 +94,10 @@ exports[`FormLabel renders hint node 1`] = `
 
 exports[`FormLabel renders hint string 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -111,11 +111,11 @@ exports[`FormLabel renders hint string 1`] = `
 
 exports[`FormLabel renders label text 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
   htmlFor="name"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -124,10 +124,10 @@ exports[`FormLabel renders label text 1`] = `
 
 exports[`FormLabel renders requirementLabel node 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -143,10 +143,10 @@ exports[`FormLabel renders requirementLabel node 1`] = `
 
 exports[`FormLabel renders requirementLabel string 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+  className="ds-c-label"
 >
   <span
-    className="ds-c-label-content__container"
+    className=""
   >
     Hello world
   </span>
@@ -160,10 +160,10 @@ exports[`FormLabel renders requirementLabel string 1`] = `
 
 exports[`FormLabel supports additional classNames 1`] = `
 <label
-  className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-foo"
+  className="ds-c-label ds-u-foo"
 >
   <span
-    className="ds-c-label-content__container ds-u-bar"
+    className="ds-u-bar"
   >
     Hello world
   </span>

@@ -5,12 +5,12 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -27,12 +27,12 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -57,12 +57,12 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -87,12 +87,12 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -122,12 +122,12 @@ exports[`DateField has errorMessage 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -151,12 +151,12 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -181,12 +181,12 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -211,12 +211,12 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -246,12 +246,12 @@ exports[`DateField has invalid day 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -268,12 +268,12 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -298,12 +298,12 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -328,12 +328,12 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -363,12 +363,12 @@ exports[`DateField has invalid month 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -385,12 +385,12 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -415,12 +415,12 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -445,12 +445,12 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -480,12 +480,12 @@ exports[`DateField has invalid year 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -502,12 +502,12 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -532,12 +532,12 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -562,12 +562,12 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -597,12 +597,12 @@ exports[`DateField has requirementLabel 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -620,12 +620,12 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -650,12 +650,12 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -680,12 +680,12 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -715,12 +715,12 @@ exports[`DateField is inversed 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -737,12 +737,12 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -767,12 +767,12 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -797,12 +797,12 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
@@ -832,12 +832,12 @@ exports[`DateField renders with all defaultProps 1`] = `
   className="ds-c-fieldset"
 >
   <legend
-    className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center"
+    className="ds-c-label"
     htmlFor={undefined}
     id="datefield_label_snapshot"
   >
     <span
-      className="ds-c-label-content__container"
+      className=""
     >
       Date
     </span>
@@ -854,12 +854,12 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Month
         </span>
@@ -884,12 +884,12 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Day
         </span>
@@ -914,12 +914,12 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-flex-wrap--wrap ds-u-align-items--center ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
         htmlFor="textfield_snapshot"
         id={undefined}
       >
         <span
-          className="ds-c-label-content__container"
+          className=""
         >
           Year
         </span>
