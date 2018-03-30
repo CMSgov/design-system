@@ -22,12 +22,15 @@ export class FormLabel extends React.PureComponent {
   }
 
   hint() {
-    let { hint, requirementLabel } = this.props;
+    const { hint } = this.props;
+    let { requirementLabel } = this.props;
     if (!hint && !requirementLabel) return;
 
     const classes = classNames('ds-c-field__hint', {
       'ds-c-field__hint--inverse': this.props.inversed
     });
+
+    let hintPadding = null;
 
     if (requirementLabel && hint) {
       if (typeof requirementLabel === 'string') {
@@ -38,12 +41,13 @@ export class FormLabel extends React.PureComponent {
       }
 
       // Add space between hint and preceding requirementLabel
-      hint = ' ' + hint;
+      hintPadding = ' ';
     }
 
     return (
       <span className={classes}>
         {requirementLabel}
+        {hintPadding}
         {hint}
       </span>
     );
