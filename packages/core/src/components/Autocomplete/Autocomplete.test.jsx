@@ -81,6 +81,15 @@ describe('Autocomplete', () => {
     expect(child.hasClass('ds-c-autocomplete')).toBe(true);
   });
 
+  it('renders custom class names', () => {
+    const data = render({ className: 'additional-class' }, true);
+    const wrapper = data.wrapper;
+    const child = wrapper.find('Downshift').childAt(0);
+
+    expect(child.hasClass('ds-c-autocomplete')).toBe(true);
+    expect(child.hasClass('additional-class')).toBe(true);
+  });
+
   it('allows default props to be overridden', () => {
     const data = render(
       {
