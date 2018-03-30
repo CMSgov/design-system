@@ -52,16 +52,8 @@ export class FormLabel extends React.PureComponent {
   render() {
     const { fieldId, id, children } = this.props;
     const ComponentType = this.props.component;
-    const labelTextClasses = classNames(
-      'ds-c-label-content__container',
-      this.props.labelClassName
-    );
-    const classes = classNames(
-      'ds-c-label',
-      'ds-u-flex-wrap--wrap',
-      'ds-u-align-items--center',
-      this.props.className
-    );
+    const labelTextClasses = classNames(this.props.labelClassName);
+    const classes = classNames('ds-c-label', this.props.className);
 
     return (
       <ComponentType className={classes} htmlFor={fieldId} id={id}>

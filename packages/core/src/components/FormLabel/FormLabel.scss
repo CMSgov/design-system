@@ -30,10 +30,6 @@ Style guide: components.form-label
   margin-top: 0;
 }
 
-.ds-c-label-content__container {
-  width: 100%;
-}
-
 /*
 Hint text
 
@@ -52,6 +48,10 @@ Hint text
 
 .ds-c-field__hint--inverse {
   color: $color-muted-inverse;
+}
+
+.ds-c-choice + label .ds-c-field__hint {
+  flex-basis: 100%;
 }
 
 /*
