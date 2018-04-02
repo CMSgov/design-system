@@ -13,7 +13,31 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
     className="ds-c-field__hint"
   >
     Optional.
-     Hint
+     
+    Hint
+  </span>
+</label>
+`;
+
+exports[`FormLabel adds punctuation to requirementLabel when hint is also present 2`] = `
+<label
+  className="ds-c-label"
+>
+  <span
+    className=""
+  >
+    Hello world
+  </span>
+  <span
+    className="ds-c-field__hint"
+  >
+    <span>
+      Optional
+    </span>
+     
+    <span>
+      Hint
+    </span>
   </span>
 </label>
 `;
@@ -31,7 +55,8 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
     className="ds-c-field__hint"
   >
     Optional.
-     Hint
+     
+    Hint
   </span>
 </label>
 `;

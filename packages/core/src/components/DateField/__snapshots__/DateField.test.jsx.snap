@@ -610,7 +610,8 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-c-field__hint"
     >
       Optional.
-       For example: 4 28 1986
+       
+      For example: 4 28 1986
     </span>
   </legend>
   <div

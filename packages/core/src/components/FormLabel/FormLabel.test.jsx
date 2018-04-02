@@ -60,8 +60,16 @@ describe('FormLabel', () => {
   });
 
   it('adds punctuation to requirementLabel when hint is also present', () => {
-    const props = { hint: 'Hint', requirementLabel: 'Optional' };
-    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    let props = { hint: 'Hint', requirementLabel: 'Optional' };
+    let wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper).toMatchSnapshot();
+
+    props = {
+      hint: <span>Hint</span>,
+      requirementLabel: <span>Optional</span>
+    };
+    wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper).toMatchSnapshot();
   });
