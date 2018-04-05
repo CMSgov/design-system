@@ -107,7 +107,7 @@ Style guide: components.masked-field.react
 export class Mask extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.field = React.Children.only(this.props.children);
+
     this.state = {
       value: this.maskedValue(this.initialValue())
     };
@@ -115,9 +115,18 @@ export class Mask extends React.PureComponent {
 
   componentDidUpdate() {
     if (this.debouncedOnBlurEvent) {
-      this.field.props.onBlur(this.debouncedOnBlurEvent);
+      this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
     }
+  }
+
+  /**
+   * Get the child text field. Called as a method so that
+   * updates to the field cause the mask to re-render
+   * @returns {React.ReactElement} Child TextField
+   */
+  field() {
+    return React.Children.only(this.props.children);
   }
 
   /**
@@ -147,16 +156,16 @@ export class Mask extends React.PureComponent {
    * add/remove characters after the field has been blurred,
    * rather than when the user is typing in the field
    * @param {Object} evt
+   * @param {React.Element} field - Child TextField
    */
-  handleBlur(evt) {
+  handleBlur(evt, field) {
     const value = this.maskedValue(evt.target.value);
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
     // and when an onBlur callback is present
     const debounce =
-      value !== this.state.value &&
-      typeof this.field.props.onBlur === 'function';
+      value !== this.state.value && typeof field.props.onBlur === 'function';
 
     if (debounce) {
       // We need to retain a reference to the event after the callback
@@ -171,30 +180,37 @@ export class Mask extends React.PureComponent {
       value
     });
 
-    if (!debounce && typeof this.field.props.onBlur === 'function') {
+    if (!debounce && typeof field.props.onBlur === 'function') {
       // If we didn't debounce the onBlur event, then we need to
       // call the onBlur callback from here
-      this.field.props.onBlur(evt);
+      field.props.onBlur(evt);
     }
   }
 
-  handleChange(evt) {
+  /**
+   * @param {Object} evt
+   * @param {React.Element} field - Child TextField
+   */
+  handleChange(evt, field) {
     this.setState({ value: evt.target.value });
 
-    if (typeof this.field.props.onChange === 'function') {
-      this.field.props.onChange(evt);
+    if (typeof field.props.onChange === 'function') {
+      field.props.onChange(evt);
     }
   }
 
   initialValue() {
-    return this.field.props.value || this.field.props.defaultValue;
+    const field = this.field();
+    return field.props.value || field.props.defaultValue;
   }
 
   render() {
-    return React.cloneElement(this.field, {
+    const field = this.field();
+
+    return React.cloneElement(field, {
       defaultValue: undefined,
-      onBlur: evt => this.handleBlur(evt),
-      onChange: evt => this.handleChange(evt),
+      onBlur: evt => this.handleBlur(evt, field),
+      onChange: evt => this.handleChange(evt, field),
       value: this.state.value
     });
   }
