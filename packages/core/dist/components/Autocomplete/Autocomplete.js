@@ -31,6 +31,10 @@ var _TextField = require('../TextField/TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _lodash = require('lodash.uniqueid');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -141,7 +145,10 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
           label = _props.label,
           loading = _props.loading,
           children = _props.children,
-          autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children']);
+          className = _props.className,
+          autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children', 'className']);
+
+      var rootClassName = (0, _classnames2.default)('ds-u-clearfix', 'ds-c-autocomplete', className);
 
       return _react2.default.createElement(_downshift2.default, _extends({
         render: function render(_ref) {
@@ -153,7 +160,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
               isOpen = _ref.isOpen;
           return _react2.default.createElement(
             'div',
-            { className: 'ds-u-clearfix ds-c-autocomplete' },
+            { className: rootClassName },
             _this4.renderChildren(getInputProps),
             isOpen && (loading || items) ? _react2.default.createElement(
               'div',
@@ -213,6 +220,11 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: _propTypes2.default.string,
   children: _propTypes2.default.node,
+  /**
+   * Additional classes to be added to the root element.
+   * Useful for adding utility classes.
+   */
+  className: _propTypes2.default.string,
   /**
    * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
