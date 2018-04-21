@@ -1,6 +1,10 @@
 const { css } = require('emotion');
 
 const multiple = 8;
+const sm = '544px';
+const md = '768px';
+const lg = '1024px';
+const xl = '1280px';
 
 const property = prop => value =>
   css`
@@ -8,14 +12,14 @@ const property = prop => value =>
   `;
 
 const basePaddingFunction = property('padding'); /**
+ * @variation 3
+ * @param {number} [vertical]
+ * @param {number} [horizontal]
+ */ /**
  * @variation 2
  * @param {number} [top]
  * @param {number} [horizontal]
  * @param {number} [bottom]
- */ /**
- * @variation 3
- * @param {number} [vertical]
- * @param {number} [horizontal]
  */
 
 /**
@@ -56,6 +60,19 @@ const basePaddingFunction = property('padding'); /**
   }
 };
 
+const wrapWithBreakpoint = (breakpoint, fn) => () => css`
+  @media (min-width: ${breakpoint}) {
+    ${fn.call(fn, arguments)};
+  }
+`;
+
+const addBreakpoints = fn => {
+  fn.sm = wrapWithBreakpoint(sm, fn);
+  fn.md = wrapWithBreakpoint(md, fn);
+  fn.lg = wrapWithBreakpoint(lg, fn);
+  fn.xl = wrapWithBreakpoint(xl, fn);
+};
+
 padding.top = property('padding-top');
 padding.bottom = property('padding-bottom');
 padding.left = property('padding-left');
@@ -68,5 +85,8 @@ padding.y = y => css`
   ${padding.top(y)};
   ${padding.bottom(y)};
 `;
+
+Object.keys(padding).forEach(key => addBreakpoints(padding[key]));
+addBreakpoints(padding);
 
 module.exports = { padding };

@@ -21,13 +21,13 @@ const { padding } = paddingModule;
 // console.log(templateToString`hey ${'you'} ${'guys'}`);
 // console.log(padding(1, 2));
 const css = [
-  createRules(i => `.ds-padding--${i} { ${padding(i)} }`),
-  createRules(i => `.ds-padding-x--${i} { ${padding.x(i)} }`),
-  createRules(i => `.ds-padding-y--${i} { ${padding.y(i)} }`),
-  createRules(i => `.ds-padding-top--${i} { ${padding.top(i)} }`),
-  createRules(i => `.ds-padding-right--${i} { ${padding.right(i)} }`),
-  createRules(i => `.ds-padding-bottom--${i} { ${padding.bottom(i)} }`),
-  createRules(i => `.ds-padding-left--${i} { ${padding.left(i)} }`)
+  createRules(i => `.ds-u-padding--${i} { ${padding(i)} }`),
+  createRules(i => `.ds-u-padding-x--${i} { ${padding.x(i)} }`),
+  createRules(i => `.ds-u-padding-y--${i} { ${padding.y(i)} }`),
+  createRules(i => `.ds-u-padding-top--${i} { ${padding.top(i)} }`),
+  createRules(i => `.ds-u-padding-right--${i} { ${padding.right(i)} }`),
+  createRules(i => `.ds-u-padding-bottom--${i} { ${padding.bottom(i)} }`),
+  createRules(i => `.ds-u-padding-left--${i} { ${padding.left(i)} }`)
 ].join('');
 
 postcss([clean(), stylelint({ fix: true }), stylefmt])
