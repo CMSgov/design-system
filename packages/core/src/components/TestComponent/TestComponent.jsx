@@ -1,8 +1,11 @@
-import { color, colors, fill } from '../../utilities/colors';
+import { color, fill } from '../../utilities/colors';
+import React from 'react';
 import { css } from 'emotion';
 import { padding } from '../../utilities/padding';
-import React from 'react';
 import styled from 'react-emotion';
+import variables from '../../utilities/variables';
+
+const { colors } = variables;
 
 const Container = styled.div`
   ${padding(2, 4)};
