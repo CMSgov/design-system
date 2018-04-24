@@ -85,6 +85,7 @@ module.exports = gulp => {
 
   [
     'build',
+    'css',
     'docs',
     'lint',
     'sass',
