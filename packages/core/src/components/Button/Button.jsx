@@ -11,6 +11,34 @@ import variables from '../../utilities/variables';
 
 const { colors } = variables;
 
+export const baseButtonStyle = css`
+  ${color.primary};
+  ${border.radius};
+  ${fill.transparent};
+  ${font.sans};
+  ${font.size.base};
+  ${font.weight.bold};
+  ${lineHeight.input};
+  ${padding(1, 3)};
+  appearance: none;
+  border: 1px solid ${colors.primary};
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    ${border.color.primaryDarker};
+    ${color.primaryDarker};
+  }
+
+  &:active {
+    ${border.color.primaryDarkest};
+    ${color.primaryDarkest};
+  }
+`;
+
 const disabled = inverse => {
   const background = inverse ? fill.backgroundInverse : fill.grayLighter;
   const borderColor = inverse
@@ -117,33 +145,8 @@ export const variations = {
   `
 };
 
-const generateStyledComponent = type => styled(type)`
-  ${color.primary};
-  ${border.radius};
-  ${fill.transparent};
-  ${font.sans};
-  ${font.size.base};
-  ${font.weight.bold};
-  ${lineHeight.input};
-  ${padding(1, 3)};
-  appearance: none;
-  border: 1px solid ${colors.primary};
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-
-  &:focus,
-  &:hover {
-    ${border.color.primaryDarker};
-    ${color.primaryDarker};
-  }
-
-  &:active {
-    ${border.color.primaryDarkest};
-    ${color.primaryDarkest};
-  }
-
+const buttonStyledComponent = type => styled(type)`
+  ${baseButtonStyle};
   ${props => props.inverse && !props.disabled && inverse};
   ${props => props.variation && variations[props.variation]};
   ${props => props.size && sizes[props.size]};
@@ -202,7 +205,7 @@ export class Button extends React.PureComponent {
       delete attrs.type;
     }
 
-    const StyledComponent = generateStyledComponent(componentType);
+    const StyledComponent = buttonStyledComponent(componentType);
     return <StyledComponent {...attrs}>{this.props.children}</StyledComponent>;
   }
 }
