@@ -1,6 +1,6 @@
 require('./mockEmotion');
 const { padding } = require('./padding');
-const { multipleRules, breakpointRules } = require('./rules');
+const { multipleRules, breakpointMultipleRules } = require('./rules');
 
 const css = [
   multipleRules(m => `.ds-u-padding--${m} { ${padding(m)} }`),
@@ -10,7 +10,7 @@ const css = [
   multipleRules(m => `.ds-u-padding-right--${m} { ${padding.right(m)} }`),
   multipleRules(m => `.ds-u-padding-bottom--${m} { ${padding.bottom(m)} }`),
   multipleRules(m => `.ds-u-padding-left--${m} { ${padding.left(m)} }`),
-  breakpointRules([
+  breakpointMultipleRules([
     (bp, m) => `.ds-u-${bp}-padding--${m} { ${padding(m)} }`,
     (bp, m) => `.ds-u-${bp}-padding-x--${m} { ${padding.x(m)} }`,
     (bp, m) => `.ds-u-${bp}-padding-y--${m} { ${padding.y(m)} }`,
