@@ -4,6 +4,7 @@ import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
+import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 /**
@@ -95,8 +96,15 @@ export class Autocomplete extends React.PureComponent {
       label,
       loading,
       children,
+      className,
       ...autocompleteProps
     } = this.props;
+
+    const rootClassName = classNames(
+      'ds-u-clearfix',
+      'ds-c-autocomplete',
+      className
+    );
 
     return (
       <Downshift
@@ -108,7 +116,7 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <div className="ds-u-clearfix ds-c-autocomplete">
+          <div className={rootClassName}>
             {this.renderChildren(getInputProps)}
 
             {isOpen && (loading || items) ? (
@@ -171,6 +179,11 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: PropTypes.string,
   children: PropTypes.node,
+  /**
+   * Additional classes to be added to the root element.
+   * Useful for adding utility classes.
+   */
+  className: PropTypes.string,
   /**
    * Clear search text that will appear on the page as part of the rendered `<button>` component
    */

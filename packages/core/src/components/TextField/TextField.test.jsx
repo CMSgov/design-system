@@ -286,5 +286,15 @@ describe('TextField', function() {
 
       expect(data.wrapper).toMatchSnapshot();
     });
+
+    it('updates input classes when props are updated', () => {
+      const wrapper = render({ mask: 'currency' }, true).wrapper;
+
+      expect(wrapper.find('input').hasClass('ds-c-field--error')).toBe(false);
+
+      wrapper.setProps({ errorMessage: 'Oh no' });
+
+      expect(wrapper.find('input').hasClass('ds-c-field--error')).toBe(true);
+    });
   });
 });

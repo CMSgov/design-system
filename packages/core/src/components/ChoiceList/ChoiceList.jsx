@@ -159,9 +159,10 @@ ChoiceList.propTypes = {
       checked: Choice.propTypes.checked,
       defaultChecked: Choice.propTypes.defaultChecked,
       disabled: Choice.propTypes.disabled,
+      hint: Choice.propTypes.hint,
       label: Choice.propTypes.children,
-      value: Choice.propTypes.value,
-      requirementLabel: PropTypes.node
+      requirementLabel: Choice.propTypes.requirementLabel,
+      value: Choice.propTypes.value
     })
   ).isRequired,
   /**

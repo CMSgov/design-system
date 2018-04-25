@@ -27,7 +27,10 @@ Markup:
   <legend class="ds-c-label">Historical figures</legend>
   <span class="ds-c-field__hint">Select all that apply</span>
   <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
-  <label for="truth-1">Sojourner Truth</label>
+  <label for="truth-1">
+    Sojourner Truth
+    <span class="ds-c-field__hint">Example hint text</span>
+  </label>
   <input class="ds-c-choice" id="douglass-1" type="checkbox" name="historical-figures-1" value="douglass">
   <label for="douglass-1">Frederick Douglass</label>
   <input class="ds-c-choice" id="washington-1" type="checkbox" name="historical-figures-1" value="washington">
@@ -88,14 +91,15 @@ Style guide: components.choice.inversed
 }
 
 .ds-c-choice + label {
+  align-items: center;
   cursor: pointer;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   font-weight: $font-normal;
   margin: $spacer-1 0;
   max-width: $measure-base;
   min-height: $choice-size;
   padding-left: $choice-size + $spacer-1;
-  padding-top: $spacer-half;
   position: relative;
 }
 

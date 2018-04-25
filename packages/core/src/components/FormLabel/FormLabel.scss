@@ -50,6 +50,10 @@ Hint text
   color: $color-muted-inverse;
 }
 
+.ds-c-choice + label .ds-c-field__hint {
+  flex-basis: 100%;
+}
+
 /*
 `<FormLabel>`
 

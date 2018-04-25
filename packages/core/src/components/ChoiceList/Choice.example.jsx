@@ -4,7 +4,12 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <div>
-    <Choice defaultChecked name="checkbox_choice" value="a">
+    <Choice
+      defaultChecked
+      hint="Checkbox A hint"
+      name="checkbox_choice"
+      value="a"
+    >
       Checkbox A
     </Choice>
     <Choice name="checkbox_choice" value="b">
