@@ -1,16 +1,4 @@
-const mock = require('mock-require');
-const postcss = require('postcss');
-const safe = require('postcss-safe-parser');
-const clean = require('postcss-clean');
-const stylelint = require('stylelint');
-const stylefmt = require('stylefmt');
-
-const templateToString = (strings, ...values) =>
-  strings.reduce((out, string, i) => out + string + (values[i] || ''), '');
-
-mock('emotion', {
-  css: templateToString
-});
+require('./mockEmotion');
 const { padding } = require('./padding');
 
 const createRules = fn =>

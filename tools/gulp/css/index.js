@@ -7,7 +7,6 @@ const cssnano = require('cssnano');
 const postcss = require('gulp-postcss');
 const safe = require('postcss-safe-parser');
 const exec = require('gulp-exec');
-const stylelint = require('stylelint');
 const stylefmt = require('stylefmt');
 const rename = require('gulp-rename');
 const runSequence = require('run-sequence');
@@ -17,7 +16,6 @@ module.exports = (gulp, shared) => {
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
   function extractRules(cwd, dest) {
     const postcssPlugins = [
-      stylelint({ fix: true }),
       stylefmt,
       autoprefixer() // add any necessary vendor prefixes
     ];
