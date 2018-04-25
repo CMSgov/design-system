@@ -3,7 +3,7 @@
 const autoprefixer = require('autoprefixer');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
-const cssnano = require('cssnano');
+// const cssnano = require('cssnano');
 const postcss = require('gulp-postcss');
 const safe = require('postcss-safe-parser');
 const exec = require('gulp-exec');
@@ -20,9 +20,9 @@ module.exports = (gulp, shared) => {
       autoprefixer() // add any necessary vendor prefixes
     ];
 
-    if (shared.env !== 'development') {
-      postcssPlugins.push(cssnano()); // minify css
-    }
+    // if (shared.env !== 'development') {
+    //   postcssPlugins.push(cssnano()); // minify css
+    // }
 
     return gulp
       .src(`${cwd}src/**/*.rules.js`)

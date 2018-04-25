@@ -14,3 +14,10 @@ export const addBreakpoints = fn => {
     fn[key] = wrapWithBreakpoint(breakpoints[key], fn);
   });
 };
+
+export const colorVariations = cssFunction =>
+  Object.keys(variables.colors).reduce((utility, colorName) => {
+    const color = variables.colors[colorName];
+    utility[colorName] = cssFunction(color);
+    return utility;
+  }, {});

@@ -59,6 +59,8 @@ variables.fontStyles = {
 const colors = {};
 variables.colors = colors;
 
+colors.inherit = 'inherit';
+
 colors.primary = '#0071bc';
 colors.primaryDarker = '#205493';
 colors.primaryDarkest = '#112e51';

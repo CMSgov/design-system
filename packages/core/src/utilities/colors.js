@@ -1,21 +1,13 @@
+import { colorVariations } from './utilities';
 import { css } from 'emotion';
-import variables from './variables';
 
-function createUtility(cssFunction) {
-  return Object.keys(variables.colors).reduce((utility, colorName) => {
-    const color = variables.colors[colorName];
-    utility[colorName] = cssFunction(color);
-    return utility;
-  }, {});
-}
-
-export const fill = createUtility(
+export const fill = colorVariations(
   color =>
     css`
       background-color: ${color} !important;
     `
 );
-export const color = createUtility(
+export const color = colorVariations(
   color =>
     css`
       color: ${color} !important;
