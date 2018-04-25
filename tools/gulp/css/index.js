@@ -16,6 +16,7 @@ const postcssInliner = require('postcss-image-inliner');
 const gulpEval = require('gulp-eval');
 const gulpIf = require('gulp-if');
 const safe = require('postcss-safe-parser');
+const exec = require('gulp-exec');
 const stylelint = require('stylelint');
 const stylefmt = require('stylefmt');
 const tap = require('gulp-tap');
@@ -38,41 +39,21 @@ module.exports = (gulp, shared) => {
       postcssPlugins.push(cssnano()); // minify css
     }
 
-    return (
-      gulp
-        .src(`${cwd}src/**/*.rules.js`)
-        .pipe(
-          changed(dest, {
-            extension: '.css',
-            // compare contents so files that import the updated file also get piped through
-            hasChanged: changed.compareSha1Digest
-          })
-        )
-        .pipe(
-          tap(function(file) {
-            file.contents = new Buffer(require(file.path));
-          })
-        )
-        // .pipe(
-        //   babel({
-        //     presets: ['env'],
-        //     plugins: ['rewire']
-        //   })
-        // )
-        // .pipe(gulpEval())
-        // .pipe(
-        //   through.obj(function(file, env, next) {
-        //     console.log('data: ', file.data);
-        //     file.contents = new Buffer(file.data);
-        //     next(null, file);
-        //   })
-        // )
-        .pipe(postcss(postcssPlugins, { parser: safe }))
-        .pipe(rename({ extname: '.css' }))
-        .pipe(gulp.dest(dest))
-        .pipe(count(`## Rules files processed in ${cwd}`))
-        .pipe(shared.browserSync.stream({ match: '**/public/styles/*.css' }))
-    ); // Auto-inject into docs
+    return gulp
+      .src(`${cwd}src/**/*.rules.js`)
+      .pipe(
+        changed(dest, {
+          extension: '.css',
+          // compare contents so files that import the updated file also get piped through
+          hasChanged: changed.compareSha1Digest
+        })
+      )
+      .pipe(exec('node <%= file.path %>', { pipeStdout: true }))
+      .pipe(postcss(postcssPlugins, { parser: safe }))
+      .pipe(rename({ extname: '.css' }))
+      .pipe(gulp.dest(dest))
+      .pipe(count(`## Rules files processed in ${cwd}`))
+      .pipe(shared.browserSync.stream({ match: '**/public/styles/*.css' })); // Auto-inject into docs
   }
 
   // Form tasks for each package...
