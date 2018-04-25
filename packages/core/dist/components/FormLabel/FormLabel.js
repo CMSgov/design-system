@@ -58,15 +58,16 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
   }, {
     key: 'hint',
     value: function hint() {
-      var _props = this.props,
-          hint = _props.hint,
-          requirementLabel = _props.requirementLabel;
+      var hint = this.props.hint;
+      var requirementLabel = this.props.requirementLabel;
 
       if (!hint && !requirementLabel) return;
 
       var classes = (0, _classnames2.default)('ds-c-field__hint', {
         'ds-c-field__hint--inverse': this.props.inversed
       });
+
+      var hintPadding = null;
 
       if (requirementLabel && hint) {
         if (typeof requirementLabel === 'string') {
@@ -77,23 +78,24 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
         }
 
         // Add space between hint and preceding requirementLabel
-        hint = ' ' + hint;
+        hintPadding = ' ';
       }
 
       return _react2.default.createElement(
         'span',
         { className: classes },
         requirementLabel,
+        hintPadding,
         hint
       );
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          fieldId = _props2.fieldId,
-          id = _props2.id,
-          children = _props2.children;
+      var _props = this.props,
+          fieldId = _props.fieldId,
+          id = _props.id,
+          children = _props.children;
 
       var ComponentType = this.props.component;
       var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName);
