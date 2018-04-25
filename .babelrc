@@ -1,18 +1,31 @@
 {
   "env": {
     "production": {
+      "presets": ["react", "es2015", "stage-3"],
       "plugins": ["transform-object-assign", ["emotion", { "hoist": true }]]
     },
     "development": {
+      "presets": ["react", "es2015", "stage-3"],
       "plugins": [
         "transform-object-assign",
         ["emotion", { "sourceMap": true, "autoLabel": true }]
       ]
     },
     "test": {
+      "presets": ["react", "es2015", "stage-3"],
       "presets": ["jest"]
+    },
+    "node": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "8.9"
+            }
+          }
+        ]
+      ]
     }
-  },
-  "plugins": ["transform-object-assign", "emotion"],
-  "presets": ["react", "es2015", "stage-3"]
+  }
 }

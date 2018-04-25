@@ -1,6 +1,6 @@
-const variables = require('./variables');
-const { addBreakpoints } = require('./utilities');
-const { css } = require('emotion');
+import { addBreakpoints } from './utilities';
+import { css } from 'emotion';
+import variables from './variables';
 
 const { multiple } = variables;
 
@@ -27,7 +27,7 @@ const basePaddingFunction = property('padding');
  * @param {number} [bottom]
  * @param {number} [left]
  */
-const padding = (top, right, bottom, left) => {
+export const padding = (top, right, bottom, left) => {
   if (top === undefined) {
     throw new Error('Padding function requires at least one parameter');
   }
@@ -75,4 +75,4 @@ padding.y = y => css`
 Object.keys(padding).forEach(key => addBreakpoints(padding[key]));
 addBreakpoints(padding);
 
-module.exports = { padding };
+export default padding;

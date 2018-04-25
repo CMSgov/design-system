@@ -1,8 +1,8 @@
-const { lighten } = require('colorutilities');
+import { lighten } from 'colorutilities';
 
 const darken = (color, amount) => lighten(color, -amount);
 
-const variables = {};
+export const variables = {};
 
 variables.borderRadius = '3px';
 
@@ -138,4 +138,4 @@ colors.backgroundInverse = colors.primaryDarkest;
 colors.backgroundDialogMask = 'rgba(0, 0, 0, 0.5)';
 colors.backgroundDialog = colors.white;
 
-module.exports = variables;
+export default variables;

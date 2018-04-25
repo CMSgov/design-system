@@ -1,29 +1,16 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const babel = require('gulp-babel');
 const changed = require('gulp-changed');
-const clean = require('postcss-clean');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
-const del = require('del');
-const dutil = require('../common/log-util');
-const path = require('path');
-const packageVersions = require('../common/packageVersions');
 const postcss = require('gulp-postcss');
-const postcssImport = require('postcss-import');
-const postcssInliner = require('postcss-image-inliner');
-const gulpEval = require('gulp-eval');
-const gulpIf = require('gulp-if');
 const safe = require('postcss-safe-parser');
 const exec = require('gulp-exec');
 const stylelint = require('stylelint');
 const stylefmt = require('stylefmt');
-const tap = require('gulp-tap');
-const through = require('through2');
 const rename = require('gulp-rename');
 const runSequence = require('run-sequence');
-const packagesRegex = require('../common/packagesRegex');
 
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
@@ -48,7 +35,11 @@ module.exports = (gulp, shared) => {
           hasChanged: changed.compareSha1Digest
         })
       )
-      .pipe(exec('node <%= file.path %>', { pipeStdout: true }))
+      .pipe(
+        exec('BABEL_ENV=node ./node_modules/.bin/babel-node <%= file.path %>', {
+          pipeStdout: true
+        })
+      )
       .pipe(postcss(postcssPlugins, { parser: safe }))
       .pipe(rename({ extname: '.css' }))
       .pipe(gulp.dest(dest))

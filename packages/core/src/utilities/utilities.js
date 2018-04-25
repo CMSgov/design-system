@@ -1,5 +1,5 @@
-const variables = require('./variables');
-const { css } = require('emotion');
+import { css } from 'emotion';
+import variables from './variables';
 
 const { breakpoints } = variables;
 
@@ -9,10 +9,8 @@ const wrapWithBreakpoint = (breakpoint, fn) => () => css`
   }
 `;
 
-const addBreakpoints = fn => {
+export const addBreakpoints = fn => {
   Object.keys(breakpoints).forEach(key => {
     fn[key] = wrapWithBreakpoint(breakpoints[key], fn);
   });
 };
-
-module.exports = { addBreakpoints };
