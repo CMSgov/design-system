@@ -2,7 +2,6 @@ import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
-import TabPanel from './TabPanel';
 import classnames from 'classnames';
 
 /** CONSTANTS
@@ -46,7 +45,7 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  return child != null && child.type === TabPanel;
+  return child != null && child.children;
 }
 
 /**
@@ -150,6 +149,7 @@ export class Tabs extends React.PureComponent {
         <Tab
           className={panel.props.tabClassName}
           href={panel.props.tabHref}
+          disabled={panel.props.disabled}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}

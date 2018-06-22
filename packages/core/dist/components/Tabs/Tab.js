@@ -72,12 +72,13 @@ var Tab = exports.Tab = function (_React$PureComponent) {
         'a',
         {
           'aria-selected': String(this.props.selected),
+          'aria-disabled': String(this.props.disabled),
           'aria-controls': this.props.panelId,
           className: classes,
           href: this.href,
           id: this.props.id,
-          onClick: this.handleClick,
-          onKeyDown: this.handleKeyDown,
+          onClick: !this.props.disabled && this.handleClick,
+          onKeyDown: !this.props.disabled && this.handleKeyDown,
           role: 'tab',
           ref: function ref(tab) {
             _this2.tab = tab;
@@ -127,7 +128,8 @@ Tab.propTypes = {
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
   panelId: _propTypes2.default.string.isRequired,
-  selected: _propTypes2.default.bool
+  selected: _propTypes2.default.bool,
+  disabled: _propTypes2.default.bool
 };
 
 exports.default = Tab;

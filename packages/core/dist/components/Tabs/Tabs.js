@@ -21,10 +21,6 @@ var _Tab = require('./Tab');
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _TabPanel = require('./TabPanel');
-
-var _TabPanel2 = _interopRequireDefault(_TabPanel);
-
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -78,7 +74,7 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  return child != null && child.type === _TabPanel2.default;
+  return child != null && child.children;
 }
 
 /**
@@ -205,6 +201,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
           {
             className: panel.props.tabClassName,
             href: panel.props.tabHref,
+            disabled: panel.props.disabled,
             id: panelTabId(panel),
             key: panel.key,
             onClick: _this3.handleTabClick,
