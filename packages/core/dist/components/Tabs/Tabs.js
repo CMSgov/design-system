@@ -21,6 +21,10 @@ var _Tab = require('./Tab');
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
+var _TabPanel = require('./TabPanel');
+
+var _TabPanel2 = _interopRequireDefault(_TabPanel);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -74,7 +78,8 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  return child != null && child.children;
+  // Preact doesn't support child.type, React doesn't support child.nodeName
+  return child != null && (child.type === _TabPanel2.default || child.nodeName && child.nodeName.prototype && child.nodeName.prototype.displayName === 'TabPanel');
 }
 
 /**

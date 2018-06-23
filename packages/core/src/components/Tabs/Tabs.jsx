@@ -2,6 +2,7 @@ import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
+import TabPanel from './TabPanel';
 import classnames from 'classnames';
 
 /** CONSTANTS
@@ -45,7 +46,14 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  return child != null && child.children;
+  // Preact doesn't support child.type, React doesn't support child.nodeName
+  return (
+    child != null &&
+    (child.type === TabPanel ||
+      (child.nodeName &&
+        child.nodeName.prototype &&
+        child.nodeName.prototype.displayName === 'TabPanel'))
+  );
 }
 
 /**
