@@ -77,8 +77,8 @@ var Tab = exports.Tab = function (_React$PureComponent) {
           className: classes,
           href: this.href,
           id: this.props.id,
-          onClick: !this.props.disabled && this.handleClick,
-          onKeyDown: !this.props.disabled && this.handleKeyDown,
+          onClick: this.props.disabled ? undefined : this.handleClick,
+          onKeyDown: this.props.disabled ? undefined : this.handleKeyDown,
           role: 'tab',
           ref: function ref(tab) {
             _this2.tab = tab;

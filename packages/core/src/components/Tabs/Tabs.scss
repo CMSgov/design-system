@@ -149,6 +149,12 @@ Style guide: components.tabs.react-tab
     }
   }
 
+  &[aria-disabled='true'] {
+    background: $color-gray-lighter;
+    color: $color-gray-medium;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover {
     color: $color-primary;
