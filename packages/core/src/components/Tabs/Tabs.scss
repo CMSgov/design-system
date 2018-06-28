@@ -150,9 +150,18 @@ Style guide: components.tabs.react-tab
   }
 
   &[aria-disabled='true'] {
-    background: $color-gray-lighter;
-    color: $color-gray-medium;
+    background-color: $color-gray-lighter;
+    border-color: $color-gray-lighter;
+    color: $color-gray-dark;
     pointer-events: none;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $color-gray-lighter;
+      border-color: $color-gray-lighter;
+      color: $color-gray-dark;
+    }
   }
 
   &:focus,
