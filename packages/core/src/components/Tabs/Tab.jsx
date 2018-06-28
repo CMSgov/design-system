@@ -33,12 +33,13 @@ export class Tab extends React.PureComponent {
     return (
       <a
         aria-selected={String(this.props.selected)}
+        aria-disabled={String(this.props.disabled)}
         aria-controls={this.props.panelId}
         className={classes}
         href={this.href}
         id={this.props.id}
-        onClick={this.handleClick}
-        onKeyDown={this.handleKeyDown}
+        onClick={this.props.disabled ? undefined : this.handleClick}
+        onKeyDown={this.props.disabled ? undefined : this.handleKeyDown}
         role="tab"
         ref={tab => {
           this.tab = tab;
@@ -86,7 +87,8 @@ Tab.propTypes = {
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
   panelId: PropTypes.string.isRequired,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export default Tab;

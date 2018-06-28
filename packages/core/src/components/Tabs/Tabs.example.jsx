@@ -54,6 +54,9 @@ ReactDOM.render(
         <li>Congressional pay raises</li>
       </ol>
     </TabPanel>
+    <TabPanel id="disabled" tab="Disabled" disabled>
+      You should not see this.
+    </TabPanel>
   </Tabs>,
   document.getElementById('js-example')
 );

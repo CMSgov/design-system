@@ -31,6 +31,7 @@ function TabPanel(props) {
     {
       'aria-labelledby': props.tabId,
       'aria-hidden': String(!props.selected),
+      'aria-disabled': String(props.disabled),
       className: classes,
       id: props.id,
       role: 'tabpanel'
@@ -54,6 +55,7 @@ TabPanel.propTypes = {
    */
   id: _propTypes2.default.string.isRequired,
   selected: _propTypes2.default.bool,
+  disabled: _propTypes2.default.bool,
   /* eslint-disable react/no-unused-prop-types */
   /**
    * The associated tab's label. Only applicable when the panel is a
