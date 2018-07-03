@@ -42,6 +42,16 @@ describe('Tab', function() {
     expect(onClickMock.mock.calls[0][3]).toBe(`#${data.props.panelId}`);
   });
 
+  it("doesn't call onClick when disabled", () => {
+    const onClickMock = jest.fn();
+    const data = shallowRender({ onClick: onClickMock, disabled: true });
+
+    data.wrapper.simulate('click');
+    data.wrapper.simulate('onKeyDown');
+
+    expect(onClickMock.mock.calls.length).toBe(0);
+  });
+
   it('is selected', () => {
     const wrapper = shallowRender({ selected: true }).wrapper;
     expect(wrapper.prop('aria-selected')).toBe('true');

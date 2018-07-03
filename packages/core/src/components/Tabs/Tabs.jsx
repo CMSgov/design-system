@@ -46,7 +46,14 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  return child != null && child.type === TabPanel;
+  // Preact doesn't support child.type, React doesn't support child.nodeName
+  return (
+    child != null &&
+    (child.type === TabPanel ||
+      (child.nodeName &&
+        child.nodeName.prototype &&
+        child.nodeName.prototype.displayName === 'TabPanel'))
+  );
 }
 
 /**
@@ -150,6 +157,7 @@ export class Tabs extends React.PureComponent {
         <Tab
           className={panel.props.tabClassName}
           href={panel.props.tabHref}
+          disabled={panel.props.disabled}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
