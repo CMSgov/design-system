@@ -49,8 +49,7 @@ function isTabPanel(child) {
   // Preact doesn't support child.type, React doesn't support child.attributes
   return (
     child &&
-    (child.type === TabPanel ||
-      (child.attributes && child.attributes.tab != null))
+    (child.type === TabPanel || (child.attributes && child.attributes.tab))
   );
 }
 
