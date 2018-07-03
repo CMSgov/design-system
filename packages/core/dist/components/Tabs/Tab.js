@@ -68,24 +68,39 @@ var Tab = exports.Tab = function (_React$PureComponent) {
 
       var classes = (0, _classnames2.default)('ds-c-tabs__item', this.props.className);
 
-      return _react2.default.createElement(
-        'a',
-        {
-          'aria-selected': String(this.props.selected),
-          'aria-disabled': String(this.props.disabled),
-          'aria-controls': this.props.panelId,
-          className: classes,
-          href: this.href,
-          id: this.props.id,
-          onClick: this.props.disabled ? undefined : this.handleClick,
-          onKeyDown: this.props.disabled ? undefined : this.handleKeyDown,
-          role: 'tab',
-          ref: function ref(tab) {
-            _this2.tab = tab;
-          }
-        },
-        this.props.children
-      );
+      if (!this.props.disabled) {
+        return _react2.default.createElement(
+          'a',
+          {
+            'aria-selected': String(this.props.selected),
+            'aria-controls': this.props.panelId,
+            className: classes,
+            href: this.href,
+            id: this.props.id,
+            onClick: this.handleClick,
+            onKeyDown: this.handleKeyDown,
+            role: 'tab',
+            ref: function ref(tab) {
+              _this2.tab = tab;
+            }
+          },
+          this.props.children
+        );
+      } else {
+        return _react2.default.createElement(
+          'span',
+          {
+            'aria-disabled': 'true',
+            className: classes,
+            id: this.props.id,
+            role: 'tab',
+            ref: function ref(tab) {
+              _this2.tab = tab;
+            }
+          },
+          this.props.children
+        );
+      }
     }
   }]);
 
