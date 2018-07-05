@@ -13,7 +13,7 @@ export function TabPanel(props) {
     <div
       aria-labelledby={props.tabId}
       aria-hidden={String(!props.selected)}
-      aria-disabled={String(props.disabled)}
+      aria-disabled={String(!!props.disabled)}
       className={classes}
       id={props.id}
       role="tabpanel"

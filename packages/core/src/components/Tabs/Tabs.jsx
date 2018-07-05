@@ -46,13 +46,10 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  // Preact doesn't support child.type, React doesn't support child.nodeName
+  // Preact doesn't support child.type, React doesn't support child.attributes
   return (
-    child != null &&
-    (child.type === TabPanel ||
-      (child.nodeName &&
-        child.nodeName.prototype &&
-        child.nodeName.prototype.displayName === 'TabPanel'))
+    child &&
+    (child.type === TabPanel || (child.attributes && child.attributes.tab))
   );
 }
 

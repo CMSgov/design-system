@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tab = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _propTypes = require('prop-types');
@@ -67,25 +69,37 @@ var Tab = exports.Tab = function (_React$PureComponent) {
       var _this2 = this;
 
       var classes = (0, _classnames2.default)('ds-c-tabs__item', this.props.className);
+      var sharedTabProps = {
+        role: 'tab',
+        className: classes,
+        id: this.props.id,
+        ref: function ref(tab) {
+          _this2.tab = tab;
+        }
+      };
 
-      return _react2.default.createElement(
-        'a',
-        {
-          'aria-selected': String(this.props.selected),
-          'aria-disabled': String(this.props.disabled),
-          'aria-controls': this.props.panelId,
-          className: classes,
-          href: this.href,
-          id: this.props.id,
-          onClick: this.props.disabled ? undefined : this.handleClick,
-          onKeyDown: this.props.disabled ? undefined : this.handleKeyDown,
-          role: 'tab',
-          ref: function ref(tab) {
-            _this2.tab = tab;
-          }
-        },
-        this.props.children
-      );
+      if (!this.props.disabled) {
+        return (
+          // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+          _react2.default.createElement(
+            'a',
+            _extends({
+              'aria-selected': String(this.props.selected),
+              'aria-controls': this.props.panelId,
+              href: this.href,
+              onClick: this.handleClick,
+              onKeyDown: this.handleKeyDown
+            }, sharedTabProps),
+            this.props.children
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'span',
+          _extends({ 'aria-disabled': 'true' }, sharedTabProps),
+          this.props.children
+        );
+      }
     }
   }]);
 
