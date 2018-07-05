@@ -29,36 +29,31 @@ export class Tab extends React.PureComponent {
 
   render() {
     const classes = classnames('ds-c-tabs__item', this.props.className);
+    const sharedTabProps = {
+      className: classes,
+      id: this.props.id,
+      ref: tab => {
+        this.tab = tab;
+      }
+    };
 
     if (!this.props.disabled) {
       return (
         <a
+          role="tab"
           aria-selected={String(this.props.selected)}
           aria-controls={this.props.panelId}
-          className={classes}
           href={this.href}
-          id={this.props.id}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
-          role="tab"
-          ref={tab => {
-            this.tab = tab;
-          }}
+          {...sharedTabProps}
         >
           {this.props.children}
         </a>
       );
     } else {
       return (
-        <span
-          aria-disabled="true"
-          className={classes}
-          id={this.props.id}
-          role="tab"
-          ref={tab => {
-            this.tab = tab;
-          }}
-        >
+        <span role="tab" aria-disabled="true" {...sharedTabProps}>
           {this.props.children}
         </span>
       );
