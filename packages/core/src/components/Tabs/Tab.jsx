@@ -30,6 +30,7 @@ export class Tab extends React.PureComponent {
   render() {
     const classes = classnames('ds-c-tabs__item', this.props.className);
     const sharedTabProps = {
+      role: 'tab',
       className: classes,
       id: this.props.id,
       ref: tab => {
@@ -39,8 +40,8 @@ export class Tab extends React.PureComponent {
 
     if (!this.props.disabled) {
       return (
+        // eslint-disable-next-line jsx-a11y/role-supports-aria-props
         <a
-          role="tab"
           aria-selected={String(this.props.selected)}
           aria-controls={this.props.panelId}
           href={this.href}
@@ -53,7 +54,7 @@ export class Tab extends React.PureComponent {
       );
     } else {
       return (
-        <span role="tab" aria-disabled="true" {...sharedTabProps}>
+        <span aria-disabled="true" {...sharedTabProps}>
           {this.props.children}
         </span>
       );

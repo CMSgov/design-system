@@ -70,6 +70,7 @@ var Tab = exports.Tab = function (_React$PureComponent) {
 
       var classes = (0, _classnames2.default)('ds-c-tabs__item', this.props.className);
       var sharedTabProps = {
+        role: 'tab',
         className: classes,
         id: this.props.id,
         ref: function ref(tab) {
@@ -78,25 +79,24 @@ var Tab = exports.Tab = function (_React$PureComponent) {
       };
 
       if (!this.props.disabled) {
-        return _react2.default.createElement(
-          'a',
-          _extends({
-            role: 'tab',
-            'aria-selected': String(this.props.selected),
-            'aria-controls': this.props.panelId,
-            href: this.href,
-            onClick: this.handleClick,
-            onKeyDown: this.handleKeyDown
-          }, sharedTabProps),
-          this.props.children
+        return (
+          // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+          _react2.default.createElement(
+            'a',
+            _extends({
+              'aria-selected': String(this.props.selected),
+              'aria-controls': this.props.panelId,
+              href: this.href,
+              onClick: this.handleClick,
+              onKeyDown: this.handleKeyDown
+            }, sharedTabProps),
+            this.props.children
+          )
         );
       } else {
         return _react2.default.createElement(
           'span',
-          _extends({
-            role: 'tab',
-            'aria-disabled': 'true'
-          }, sharedTabProps),
+          _extends({ 'aria-disabled': 'true' }, sharedTabProps),
           this.props.children
         );
       }
