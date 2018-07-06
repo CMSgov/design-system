@@ -23,6 +23,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * A `TabPanel` is a presentational component which accepts a tab's content as
  * its `children`.
  */
+
+// eslint-disable-next-line sort-imports, no-unused-vars
 function TabPanel(props) {
   var classes = (0, _classnames2.default)('ds-c-tabs__panel', props.className);
 

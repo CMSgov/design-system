@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+// eslint-disable-next-line sort-imports, no-unused-vars
+import React, { h } from 'react';
 import classnames from 'classnames';
 
 /**
