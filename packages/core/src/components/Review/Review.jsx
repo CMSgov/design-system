@@ -57,6 +57,9 @@ Review.propTypes = {
    * Heading type to override default `<h3>`.
    */
   headingLevel: PropTypes.number,
+  /**
+   * Href for the edit link. If this is undefined, no edit link will be shown.
+   */
   editHref: PropTypes.string,
   editText: PropTypes.node,
   /**
