@@ -309,6 +309,7 @@ describe('unmask', () => {
     expect(unmask('', name)).toBe('');
     expect(unmask(' 123-45-6789 ', name)).toBe('123456789');
     expect(unmask('123456789', name)).toBe('123456789');
+    expect(unmask('***-**-6789', name)).toBe('*****6789');
   });
 
   it('removes mask from phone number', () => {
