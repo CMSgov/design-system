@@ -55,10 +55,10 @@ describe('Review', function() {
 
   it('renders HTML children', () => {
     const { wrapper } = render({}, <p className="my-p">{text}</p>);
-    const $p = wrapper.render().find('.my-p');
+    const p = wrapper.find('.my-p');
 
-    expect($p.length).toBe(1);
-    expect($p.text()).toBe(text);
+    expect(p.length).toBe(1);
+    expect(p.text()).toBe(text);
   });
 
   it('adds a class from props', () => {
