@@ -12,7 +12,7 @@ import React from 'react';
 // Deliminate chunks of integers
 const deliminatedMaskRegex = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
-  ssn: /(\d{3})(\d{1,2})?(\d+)?/,
+  ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d+)/
 };
 
@@ -23,7 +23,7 @@ const deliminatedMaskRegex = {
  * @returns {String}
  */
 function deliminateRegexGroups(value, rx) {
-  const matches = toInt(value).match(rx);
+  const matches = toDigitsAndAsterisks(value).match(rx);
 
   if (matches && matches.length > 1) {
     value = matches
@@ -64,8 +64,8 @@ function stringWithFixedDigits(value, digits = 2) {
  * @param {String} value
  * @returns {String}
  */
-function toInt(value) {
-  return value.replace(/\D+/g, '');
+function toDigitsAndAsterisks(value) {
+  return value.replace(/[^\d*]/g, '');
 }
 
 /**
@@ -238,7 +238,7 @@ export function unmask(value, mask) {
     value = value.match(/^-|[\d.]/g).join('');
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string
-    value = toInt(value);
+    value = toDigitsAndAsterisks(value);
   } else {
     return rawValue;
   }
