@@ -189,6 +189,20 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('123-45-6789');
     });
 
+    it('accepts obfuscated ssns', () => {
+      const data = render({ mask: 'ssn' }, { value: '*****6789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('***-**-6789');
+    });
+
+    it('accepts masked, obfuscated ssns', () => {
+      const data = render({ mask: 'ssn' }, { value: '***-**-6789' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('***-**-6789');
+    });
+
     it('masks full ssn', () => {
       const data = render({ mask: 'ssn' }, { value: '123456789' });
       const input = data.wrapper.find('input');
@@ -295,6 +309,7 @@ describe('unmask', () => {
     expect(unmask('', name)).toBe('');
     expect(unmask(' 123-45-6789 ', name)).toBe('123456789');
     expect(unmask('123456789', name)).toBe('123456789');
+    expect(unmask('***-**-6789', name)).toBe('*****6789');
   });
 
   it('removes mask from phone number', () => {

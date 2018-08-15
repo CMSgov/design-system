@@ -30,3 +30,7 @@ Examples of the design system in use can be found in the [`examples` directory](
 ## Contributing
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.
+
+## Contact
+
+To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`

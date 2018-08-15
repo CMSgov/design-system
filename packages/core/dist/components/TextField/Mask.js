@@ -36,7 +36,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Deliminate chunks of integers
 var deliminatedMaskRegex = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
-  ssn: /(\d{3})(\d{1,2})?(\d+)?/,
+  ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d+)/
 };
 
@@ -47,7 +47,7 @@ var deliminatedMaskRegex = {
  * @returns {String}
  */
 function deliminateRegexGroups(value, rx) {
-  var matches = toInt(value).match(rx);
+  var matches = toDigitsAndAsterisks(value).match(rx);
 
   if (matches && matches.length > 1) {
     value = matches.slice(1).filter(function (a) {
@@ -88,8 +88,8 @@ function stringWithFixedDigits(value) {
  * @param {String} value
  * @returns {String}
  */
-function toInt(value) {
-  return value.replace(/\D+/g, '');
+function toDigitsAndAsterisks(value) {
+  return value.replace(/[^\d*]/g, '');
 }
 
 /**
@@ -295,7 +295,7 @@ function unmask(value, mask) {
     value = value.match(/^-|[\d.]/g).join('');
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string
-    value = toInt(value);
+    value = toDigitsAndAsterisks(value);
   } else {
     return rawValue;
   }

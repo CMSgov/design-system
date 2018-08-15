@@ -61,7 +61,14 @@ var Review = exports.Review = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
-      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', this.props.className && this.props.className);
+      var _props = this.props,
+          children = _props.children,
+          className = _props.className,
+          editHref = _props.editHref,
+          editText = _props.editText,
+          onEditClick = _props.onEditClick;
+
+      var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', className && className);
       return _react2.default.createElement(
         'div',
         { className: classes },
@@ -72,13 +79,13 @@ var Review = exports.Review = function (_React$PureComponent) {
           _react2.default.createElement(
             'div',
             { className: 'ds-c-review__body' },
-            this.props.children
+            children
           )
         ),
-        _react2.default.createElement(
+        editHref && _react2.default.createElement(
           _ReviewLink2.default,
-          { onClick: this.props.onEditClick, href: this.props.editHref },
-          this.props.editText
+          { onClick: onEditClick, href: editHref },
+          editText
         )
       );
     }
@@ -99,8 +106,11 @@ Review.propTypes = {
    * Heading type to override default `<h3>`.
    */
   headingLevel: _propTypes2.default.number,
-  editHref: _propTypes2.default.string.isRequired,
-  editText: _propTypes2.default.node.isRequired,
+  /**
+   * Href for the edit link. If this is undefined, no edit link will be shown.
+   */
+  editHref: _propTypes2.default.string,
+  editText: _propTypes2.default.node,
   /**
    * An optional function that is executed on edit link click. The event and
    * props.editHref value are passed to this function.
