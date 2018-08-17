@@ -50,9 +50,9 @@ Style guide: components.date-field
 
 .ds-c-datefield__separator {
   font-size: $h2-font-size;
-  line-height: $reset-line-height;
+  line-height: $base-font-size * $input-line-height + 0px;
   padding: $input-padding 0;
-  margin: $spacer-half 0;
+  margin: ($input-border-width + $spacer-half) 0;
 }
 
 /*
