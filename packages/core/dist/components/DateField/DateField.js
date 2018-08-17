@@ -140,7 +140,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'ds-l-form-row ds-u-align-items--end' },
+          { className: 'ds-l-form-row' },
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
             fieldClassName: (0, _classnames2.default)('ds-c-field--month', {
               'ds-c-field--error': this.props.monthInvalid
@@ -157,11 +157,6 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             value: this.props.monthValue,
             'aria-describedby': labelId
           })),
-          _react2.default.createElement(
-            'span',
-            { role: 'presentation', className: 'ds-c-datefield__separator' },
-            '/'
-          ),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
             fieldClassName: (0, _classnames2.default)('ds-c-field--day', {
               'ds-c-field--error': this.props.dayInvalid
@@ -178,11 +173,6 @@ var DateField = exports.DateField = function (_React$PureComponent) {
             value: this.props.dayValue,
             'aria-describedby': labelId
           })),
-          _react2.default.createElement(
-            'span',
-            { role: 'presentation', className: 'ds-c-datefield__separator' },
-            '/'
-          ),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
             fieldClassName: (0, _classnames2.default)('ds-c-field--year', {
               'ds-c-field--error': this.props.yearInvalid
