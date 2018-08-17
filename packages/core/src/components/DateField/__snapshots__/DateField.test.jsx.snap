@@ -54,6 +54,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -90,6 +91,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -190,6 +192,7 @@ exports[`DateField has errorMessage 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -226,6 +229,7 @@ exports[`DateField has errorMessage 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -319,6 +323,7 @@ exports[`DateField has invalid day 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -355,6 +360,7 @@ exports[`DateField has invalid day 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -448,6 +454,7 @@ exports[`DateField has invalid month 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -484,6 +491,7 @@ exports[`DateField has invalid month 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -577,6 +585,7 @@ exports[`DateField has invalid year 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -613,6 +622,7 @@ exports[`DateField has invalid year 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -708,6 +718,7 @@ exports[`DateField has requirementLabel 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -744,6 +755,7 @@ exports[`DateField has requirementLabel 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -837,6 +849,7 @@ exports[`DateField is inversed 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -873,6 +886,7 @@ exports[`DateField is inversed 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -966,6 +980,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >
@@ -1002,6 +1017,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       />
     </div>
     <span
+      aria-hidden="true"
       className="ds-c-datefield__separator"
       role="presentation"
     >

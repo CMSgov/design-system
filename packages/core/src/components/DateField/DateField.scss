@@ -51,8 +51,8 @@ Style guide: components.date-field
 .ds-c-datefield__separator {
   font-size: $h2-font-size;
   line-height: $input-line-height * $base-font-size; // vertical dimensions should match adjacent inputs
-  padding: $input-padding 0;
   margin: ($input-border-width + $spacer-half) 0;
+  padding: $input-padding 0;
 }
 
 /*
