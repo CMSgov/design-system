@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-layout",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "publishConfig": {
     "access": "public"
   },
@@ -8,6 +8,6 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@cmsgov/design-system-support": "^1.23.0"
+    "@cmsgov/design-system-support": "^1.24.0"
   }
 }
