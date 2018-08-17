@@ -21,7 +21,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -53,6 +53,13 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -83,6 +90,13 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -145,7 +159,7 @@ exports[`DateField has errorMessage 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -177,6 +191,13 @@ exports[`DateField has errorMessage 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -207,6 +228,13 @@ exports[`DateField has errorMessage 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -262,7 +290,7 @@ exports[`DateField has invalid day 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -294,6 +322,13 @@ exports[`DateField has invalid day 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -324,6 +359,13 @@ exports[`DateField has invalid day 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -379,7 +421,7 @@ exports[`DateField has invalid month 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -411,6 +453,13 @@ exports[`DateField has invalid month 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -441,6 +490,13 @@ exports[`DateField has invalid month 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -496,7 +552,7 @@ exports[`DateField has invalid year 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -528,6 +584,13 @@ exports[`DateField has invalid year 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -558,6 +621,13 @@ exports[`DateField has invalid year 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -615,7 +685,7 @@ exports[`DateField has requirementLabel 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -647,6 +717,13 @@ exports[`DateField has requirementLabel 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -677,6 +754,13 @@ exports[`DateField has requirementLabel 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -732,7 +816,7 @@ exports[`DateField is inversed 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -764,6 +848,13 @@ exports[`DateField is inversed 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -794,6 +885,13 @@ exports[`DateField is inversed 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -849,7 +947,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row"
+    className="ds-l-form-row ds-u-align-items--end"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
@@ -881,6 +979,13 @@ exports[`DateField renders with all defaultProps 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
@@ -911,6 +1016,13 @@ exports[`DateField renders with all defaultProps 1`] = `
         value={undefined}
       />
     </div>
+    <span
+      aria-hidden="true"
+      className="ds-c-datefield__separator"
+      role="presentation"
+    >
+      /
+    </span>
     <div
       className="ds-u-clearfix ds-l-col--auto"
     >
