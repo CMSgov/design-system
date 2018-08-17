@@ -106,7 +106,11 @@ export class DateField extends React.PureComponent {
             value={this.props.monthValue}
             aria-describedby={labelId}
           />
-          <span role="presentation" className="ds-c-datefield__separator">
+          <span
+            aria-hidden="true"
+            role="presentation"
+            className="ds-c-datefield__separator"
+          >
             /
           </span>
           <TextField
@@ -126,7 +130,11 @@ export class DateField extends React.PureComponent {
             value={this.props.dayValue}
             aria-describedby={labelId}
           />
-          <span role="presentation" className="ds-c-datefield__separator">
+          <span
+            aria-hidden="true"
+            role="presentation"
+            className="ds-c-datefield__separator"
+          >
             /
           </span>
           <TextField
