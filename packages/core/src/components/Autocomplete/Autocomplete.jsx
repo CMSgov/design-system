@@ -107,15 +107,8 @@ export class Autocomplete extends React.PureComponent {
     );
 
     return (
-      <Downshift
-        render={({
-          clearSelection,
-          getInputProps,
-          getItemProps,
-          highlightedIndex,
-          inputValue,
-          isOpen
-        }) => (
+      <Downshift>
+        {(downshift, clearSelection, getInputProps, highlightedIndex, inputValue, isOpen) => (
           <div className={rootClassName}>
             {this.renderChildren(getInputProps)}
 
@@ -160,7 +153,63 @@ export class Autocomplete extends React.PureComponent {
           </div>
         )}
         {...autocompleteProps}
-      />
+        )}
+      </Downshift>
+
+      // <Downshift
+      //   {({
+      //     clearSelection,
+      //     getInputProps,
+      //     getItemProps,
+      //     highlightedIndex,
+      //     inputValue,
+      //     isOpen
+      //   }) => (
+      //     <div className={rootClassName}>
+      //       {this.renderChildren(getInputProps)}
+      //
+      //       {isOpen && (loading || items) ? (
+      //         <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
+      //           {label &&
+      //             !loading && (
+      //               <h5
+      //                 className="ds-u-margin--0 ds-u-padding--1"
+      //                 id={this.labelId}
+      //               >
+      //                 {label}
+      //               </h5>
+      //             )}
+      //
+      //           <ul
+      //             aria-labelledby={label ? this.labelId : null}
+      //             className="ds-c-list--bare"
+      //             id={this.listboxId}
+      //             role="listbox"
+      //           >
+      //             {this.filterItems(
+      //               items,
+      //               inputValue,
+      //               getInputProps,
+      //               getItemProps,
+      //               highlightedIndex
+      //             )}
+      //           </ul>
+      //         </div>
+      //       ) : null}
+      //
+      //       <Button
+      //         aria-label={ariaClearLabel}
+      //         className="ds-u-float--right ds-u-padding-right--0"
+      //         onClick={clearSelection}
+      //         size="small"
+      //         variation="transparent"
+      //       >
+      //         {clearInputText}
+      //       </Button>
+      //     </div>
+      //   )}
+      //   {...autocompleteProps}
+      // </Downshift>
     );
   }
 }
