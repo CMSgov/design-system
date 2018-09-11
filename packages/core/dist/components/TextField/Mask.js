@@ -99,6 +99,7 @@ function toDigitsAndAsterisks(value) {
  */
 function toNumber(value) {
   if (typeof value !== 'string') return value;
+  if (!value.match(/\d/)) return undefined;
 
   // 0 = number, 1 = decimals
   var parts = value.split('.');
@@ -183,7 +184,12 @@ var Mask = exports.Mask = function (_React$PureComponent) {
         if (mask === 'currency') {
           // Format number with commas. If the number includes a decimal,
           // ensure it includes two decimal points
-          value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+          var number = toNumber(value);
+          if (number === undefined) {
+            value = '';
+          } else {
+            value = stringWithFixedDigits(number.toLocaleString('en-US'));
+          }
         } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
           value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
         }
