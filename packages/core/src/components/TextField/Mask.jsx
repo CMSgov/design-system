@@ -245,7 +245,7 @@ export function unmask(value, mask) {
     if (matches) {
       value = matches.join('');
     } else {
-      value = null;
+      value = '';
     }
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string

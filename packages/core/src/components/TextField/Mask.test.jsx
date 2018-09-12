@@ -284,11 +284,11 @@ describe('unmask', () => {
     expect(unmask(null)).toBeNull();
   });
 
-  it('returns null when there are no numeric characters in the value', () => {
-    expect(unmask('banana', 'currency')).toBeNull();
-    expect(unmask('banana', 'zip')).toBeNull();
-    expect(unmask('banana', 'ssn')).toBeNull();
-    expect(unmask('banana', 'phone')).toBeNull();
+  it('returns empty string when there are no numeric characters in the value', () => {
+    expect(unmask('banana', 'currency')).toBe('');
+    expect(unmask('banana', 'zip')).toBe('');
+    expect(unmask('banana', 'ssn')).toBe('');
+    expect(unmask('banana', 'phone')).toBe('');
   });
 
   it('removes mask from currency value', () => {
