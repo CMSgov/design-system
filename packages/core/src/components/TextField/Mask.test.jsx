@@ -247,6 +247,20 @@ describe('Mask', function() {
       expect(input.prop('value')).toBe('12345');
     });
 
+    it('accepts five-digits with bad extra chars', () => {
+      const data = render({ mask: 'zip' }, { value: '1234-5' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345');
+    });
+
+    it('accepts nine-digits with bad extra chars', () => {
+      const data = render({ mask: 'zip' }, { value: '1234-5-67-89' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('12345-6789');
+    });
+
     it('accepts nine-digit zip code', () => {
       const data = render({ mask: 'zip' }, { value: '123456789' });
       const input = data.wrapper.find('input');
