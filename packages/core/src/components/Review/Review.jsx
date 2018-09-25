@@ -24,7 +24,14 @@ export class Review extends React.PureComponent {
   }
 
   render() {
-    const { children, className, editHref, editText, onEditClick } = this.props;
+    const {
+      children,
+      className,
+      editHref,
+      editText,
+      onEditClick,
+      editContent
+    } = this.props;
     const classes = classNames(
       'ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex',
       className && className
@@ -35,11 +42,13 @@ export class Review extends React.PureComponent {
           {this.heading()}
           <div className="ds-c-review__body">{children}</div>
         </div>
-        {editHref && (
-          <ReviewLink onClick={onEditClick} href={editHref}>
-            {editText}
-          </ReviewLink>
-        )}
+        {editContent}
+        {!editContent &&
+          editHref && (
+            <ReviewLink onClick={onEditClick} href={editHref}>
+              {editText}
+            </ReviewLink>
+          )}
       </div>
     );
   }
@@ -66,7 +75,11 @@ Review.propTypes = {
    * An optional function that is executed on edit link click. The event and
    * props.editHref value are passed to this function.
    */
-  onEditClick: PropTypes.func
+  onEditClick: PropTypes.func,
+  /**
+   * An optional node in place of the edit link. If this defined, no edit link will be shown.
+   */
+  editContent: PropTypes.node
 };
 
 export default Review;
