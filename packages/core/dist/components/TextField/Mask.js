@@ -37,7 +37,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var deliminatedMaskRegex = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
-  zip: /(\d{5})(\d+)/
+  zip: /(\d{5})(\d*)/
 };
 
 /**

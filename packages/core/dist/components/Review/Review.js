@@ -66,7 +66,8 @@ var Review = exports.Review = function (_React$PureComponent) {
           className = _props.className,
           editHref = _props.editHref,
           editText = _props.editText,
-          onEditClick = _props.onEditClick;
+          onEditClick = _props.onEditClick,
+          editContent = _props.editContent;
 
       var classes = (0, _classnames2.default)('ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex', className && className);
       return _react2.default.createElement(
@@ -82,7 +83,8 @@ var Review = exports.Review = function (_React$PureComponent) {
             children
           )
         ),
-        editHref && _react2.default.createElement(
+        editContent,
+        !editContent && editHref && _react2.default.createElement(
           _ReviewLink2.default,
           { onClick: onEditClick, href: editHref },
           editText
@@ -115,7 +117,11 @@ Review.propTypes = {
    * An optional function that is executed on edit link click. The event and
    * props.editHref value are passed to this function.
    */
-  onEditClick: _propTypes2.default.func
+  onEditClick: _propTypes2.default.func,
+  /**
+   * An optional node in place of the edit link. If this defined, no edit link will be shown.
+   */
+  editContent: _propTypes2.default.node
 };
 
 exports.default = Review;
