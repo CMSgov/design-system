@@ -36,6 +36,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// eslint-disable-next-line sort-imports, no-unused-vars
+
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -54,9 +56,10 @@ function getDefaultSelectedId(props) {
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  _react2.default.Children.forEach(props.children, function (child) {
+  var children = _react2.default.Children ? _react2.default.Children.toArray(props.children) : props.children;
+  children.forEach(function (child) {
     if (isTabPanel(child) && !selectedId) {
-      selectedId = child.props.id;
+      selectedId = (child.props || child.attributes).id;
     }
   });
 
@@ -69,7 +72,8 @@ function getDefaultSelectedId(props) {
  * @return {String} Tab ID
  */
 function panelTabId(panel) {
-  return panel.props.tabId || 'ds-c-tabs__item--' + panel.props.id;
+  var props = panel.props || panel.attributes;
+  return props.tabId || 'ds-c-tabs__item--' + props.id;
 }
 
 /**
@@ -88,8 +92,8 @@ function isTabPanel(child) {
  * components (`Tab`, `TabPanel`) on their own.
  */
 
-var Tabs = exports.Tabs = function (_React$PureComponent) {
-  _inherits(Tabs, _React$PureComponent);
+var Tabs = exports.Tabs = function (_Component) {
+  _inherits(Tabs, _Component);
 
   function Tabs(props) {
     _classCallCheck(this, Tabs);
@@ -132,7 +136,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
     value: function handleTabKeyDown(evt, panelId) {
       var tabs = this.panelChildren();
       var tabIndex = tabs.findIndex(function (elem) {
-        return elem.props.id === panelId;
+        return (elem.props || elem.attributes).id === panelId;
       });
       var target = void 0;
 
@@ -166,21 +170,22 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
 
   }, {
     key: 'panelChildren',
-    value: function panelChildren() {
-      return _react2.default.Children.toArray(this.props.children).filter(isTabPanel);
+    value: function panelChildren(all) {
+      var children = _react2.default.Children ? _react2.default.Children.toArray(this.props.children) : this.props.children;
+      return all ? children : children.filter(isTabPanel);
     }
   }, {
     key: 'renderChildren',
     value: function renderChildren() {
       var _this2 = this;
 
-      return _react2.default.Children.map(this.props.children, function (child) {
+      return this.panelChildren(true).map(function (child) {
         if (isTabPanel(child)) {
           // Extend props on panels before rendering. Also removes any props
           // that don't need passed into TabPanel but are used to generate
           // the Tab components
           return _react2.default.cloneElement(child, {
-            selected: _this2.state.selectedId === child.props.id,
+            selected: _this2.state.selectedId === (child.props || child.attributes).id,
             tab: undefined,
             tabHref: undefined,
             tabId: panelTabId(child)
@@ -201,23 +206,24 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
       this.tabs = {};
 
       var tabs = panels.map(function (panel) {
+        var props = panel.props || panel.attributes;
         return _react2.default.createElement(
           _Tab2.default,
           {
-            className: panel.props.tabClassName,
-            href: panel.props.tabHref,
-            disabled: panel.props.disabled,
+            className: props.tabClassName,
+            href: props.tabHref,
+            disabled: props.disabled,
             id: panelTabId(panel),
             key: panel.key,
             onClick: _this3.handleTabClick,
             onKeyDown: _this3.handleTabKeyDown,
-            panelId: panel.props.id,
+            panelId: props.id,
             ref: function ref(tab) {
-              _this3.tabs[panel.props.id] = tab;
+              _this3.tabs[props.id] = tab;
             },
-            selected: _this3.state.selectedId === panel.props.id
+            selected: _this3.state.selectedId === props.id
           },
-          panel.props.tab
+          props.tab
         );
       });
 
@@ -253,7 +259,7 @@ var Tabs = exports.Tabs = function (_React$PureComponent) {
   }]);
 
   return Tabs;
-}(_react2.default.PureComponent);
+}(_react.Component);
 
 Tabs.propTypes = {
   children: _propTypes2.default.node.isRequired,

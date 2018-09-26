@@ -1,6 +1,7 @@
 import 'core-js/fn/array/find-index';
 import PropTypes from 'prop-types';
-import React from 'react';
+// eslint-disable-next-line sort-imports, no-unused-vars
+import React, { h, Component } from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
@@ -22,9 +23,12 @@ function getDefaultSelectedId(props) {
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  React.Children.forEach(props.children, function(child) {
+  const children = React.Children
+    ? React.Children.toArray(props.children)
+    : props.children;
+  children.forEach(child => {
     if (isTabPanel(child) && !selectedId) {
-      selectedId = child.props.id;
+      selectedId = (child.props || child.attributes).id;
     }
   });
 
@@ -37,7 +41,8 @@ function getDefaultSelectedId(props) {
  * @return {String} Tab ID
  */
 function panelTabId(panel) {
-  return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
+  const props = panel.props || panel.attributes;
+  return props.tabId || `ds-c-tabs__item--${props.id}`;
 }
 
 /**
@@ -58,7 +63,7 @@ function isTabPanel(child) {
  * In most cases, you'll want to use this component rather than the presentational
  * components (`Tab`, `TabPanel`) on their own.
  */
-export class Tabs extends React.PureComponent {
+export class Tabs extends Component {
   constructor(props) {
     super(props);
     let selectedId;
@@ -91,7 +96,9 @@ export class Tabs extends React.PureComponent {
 
   handleTabKeyDown(evt, panelId) {
     const tabs = this.panelChildren();
-    const tabIndex = tabs.findIndex(elem => elem.props.id === panelId);
+    const tabIndex = tabs.findIndex(
+      elem => (elem.props || elem.attributes).id === panelId
+    );
     let target;
 
     switch (evt.key) {
@@ -121,18 +128,22 @@ export class Tabs extends React.PureComponent {
   /**
    * Filter children and return only TabPanel components
    */
-  panelChildren() {
-    return React.Children.toArray(this.props.children).filter(isTabPanel);
+  panelChildren(all) {
+    const children = React.Children
+      ? React.Children.toArray(this.props.children)
+      : this.props.children;
+    return all ? children : children.filter(isTabPanel);
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, child => {
+    return this.panelChildren(true).map(child => {
       if (isTabPanel(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
         return React.cloneElement(child, {
-          selected: this.state.selectedId === child.props.id,
+          selected:
+            this.state.selectedId === (child.props || child.attributes).id,
           tab: undefined,
           tabHref: undefined,
           tabId: panelTabId(child)
@@ -150,22 +161,23 @@ export class Tabs extends React.PureComponent {
     this.tabs = {};
 
     const tabs = panels.map(panel => {
+      const props = panel.props || panel.attributes;
       return (
         <Tab
-          className={panel.props.tabClassName}
-          href={panel.props.tabHref}
-          disabled={panel.props.disabled}
+          className={props.tabClassName}
+          href={props.tabHref}
+          disabled={props.disabled}
           id={panelTabId(panel)}
           key={panel.key}
           onClick={this.handleTabClick}
           onKeyDown={this.handleTabKeyDown}
-          panelId={panel.props.id}
+          panelId={props.id}
           ref={tab => {
-            this.tabs[panel.props.id] = tab;
+            this.tabs[props.id] = tab;
           }}
-          selected={this.state.selectedId === panel.props.id}
+          selected={this.state.selectedId === props.id}
         >
-          {panel.props.tab}
+          {props.tab}
         </Tab>
       );
     });

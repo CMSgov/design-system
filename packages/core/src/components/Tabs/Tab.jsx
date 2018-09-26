@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+// eslint-disable-next-line sort-imports, no-unused-vars
+import React, { h, Component } from 'react';
 import classnames from 'classnames';
 
-export class Tab extends React.PureComponent {
+export class Tab extends Component {
   constructor(props) {
     super(props);
     this.focus = this.focus.bind(this);
