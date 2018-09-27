@@ -108,15 +108,31 @@ export class Mask extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    const field = this.field();
+    const initialValue = field.props.value || field.props.defaultValue;
+
     this.state = {
-      value: this.maskedValue(this.initialValue())
+      value: this.maskedValue(initialValue)
     };
+
+    if (field.props.value !== undefined) {
+      this.isControlled = true;
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(previousMaskProps) {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
+    }
+
+    if (this.isControlled) {
+      const newProps = this.field().props;
+      const oldProps = this.field(previousMaskProps).props;
+      const { mask } = this.props;
+      if (newProps.value !== oldProps.value && unmask(newProps.value, mask) !== unmask(this.state.value, mask)) {
+        this.setState({ value: this.maskedValue(newProps.value) });
+      }
     }
   }
 
@@ -125,8 +141,9 @@ export class Mask extends React.PureComponent {
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
-  field() {
-    return React.Children.only(this.props.children);
+  field(props) {
+    if (!props) props = this.props;
+    return React.Children.only(props.children);
   }
 
   /**
@@ -197,11 +214,6 @@ export class Mask extends React.PureComponent {
     if (typeof field.props.onChange === 'function') {
       field.props.onChange(evt);
     }
-  }
-
-  initialValue() {
-    const field = this.field();
-    return field.props.value || field.props.defaultValue;
   }
 
   render() {
