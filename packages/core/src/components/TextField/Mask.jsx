@@ -113,7 +113,7 @@ class _Mask extends React.PureComponent {
       const { mask } = props;
       if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
         return {
-          value: maskValue(fieldProps.value, mask)
+          value: maskValue(fieldProps.value || '', mask)
         };
       }
     }
@@ -125,9 +125,10 @@ class _Mask extends React.PureComponent {
 
     const field = this.field();
     const initialValue = field.props.value || field.props.defaultValue;
+    // console.log('initial value', initialValue, maskValue(initialValue, props.mask), props.mask)
 
     this.state = {
-      value: maskValue(initialValue, this.props.mask)
+      value: maskValue(initialValue, props.mask)
     };
   }
 
