@@ -105,7 +105,7 @@ Style guide: components.masked-field.react
  * field is blurred, it applies formatting to improve the readability
  * of the value.
  */
-class Mask extends React.PureComponent {
+class _Mask extends React.PureComponent {
   static getDerivedStateFromProps(props, state) {
     const fieldProps = React.Children.only(props.children).props;
     const isControlled = fieldProps.value !== undefined;
@@ -207,7 +207,7 @@ class Mask extends React.PureComponent {
   }
 }
 
-Mask.propTypes = {
+_Mask.propTypes = {
   /** Pass the input as the child */
   children: PropTypes.node.isRequired,
   mask: PropTypes.string.isRequired
@@ -258,7 +258,7 @@ export function unmask(value, mask) {
   return value;
 }
 
-const PolyfilledMask = polyfill(Mask);
+const Mask = polyfill(_Mask);
 
-export { PolyfilledMask as Mask };
-export default PolyfilledMask;
+export { Mask };
+export default Mask;

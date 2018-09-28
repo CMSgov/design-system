@@ -17,8 +17,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLifecyclesCompat = require('react-lifecycles-compat');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -131,37 +129,16 @@ Style guide: components.masked-field.react
  * of the value.
  */
 
-var Mask = function (_React$PureComponent) {
+var Mask = exports.Mask = function (_React$PureComponent) {
   _inherits(Mask, _React$PureComponent);
-
-  _createClass(Mask, null, [{
-    key: 'getDerivedStateFromProps',
-    value: function getDerivedStateFromProps(props, state) {
-      var fieldProps = _react2.default.Children.only(props.children).props;
-      var isControlled = fieldProps.value !== undefined;
-      if (isControlled) {
-        var mask = props.mask;
-
-        if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
-          return {
-            value: maskValue(fieldProps.value, mask)
-          };
-        }
-      }
-      return null;
-    }
-  }]);
 
   function Mask(props) {
     _classCallCheck(this, Mask);
 
     var _this = _possibleConstructorReturn(this, (Mask.__proto__ || Object.getPrototypeOf(Mask)).call(this, props));
 
-    var field = _this.field();
-    var initialValue = field.props.value || field.props.defaultValue;
-
     _this.state = {
-      value: maskValue(initialValue, _this.props.mask)
+      value: _this.maskedValue(_this.initialValue())
     };
     return _this;
   }
@@ -188,6 +165,34 @@ var Mask = function (_React$PureComponent) {
     }
 
     /**
+     * Returns the value with additional masking characters
+     * @param {String} value
+     * @returns {String}
+     */
+
+  }, {
+    key: 'maskedValue',
+    value: function maskedValue() {
+      var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      if (value && typeof value === 'string') {
+        var mask = this.props.mask;
+
+        value = value.trim();
+
+        if (mask === 'currency') {
+          // Format number with commas. If the number includes a decimal,
+          // ensure it includes two decimal points
+          value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+        } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+          value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
+        }
+      }
+
+      return value;
+    }
+
+    /**
      * To avoid a jarring experience for screen readers, we only
      * add/remove characters after the field has been blurred,
      * rather than when the user is typing in the field
@@ -198,7 +203,7 @@ var Mask = function (_React$PureComponent) {
   }, {
     key: 'handleBlur',
     value: function handleBlur(evt, field) {
-      var value = maskValue(evt.target.value, this.props.mask);
+      var value = this.maskedValue(evt.target.value);
 
       // We only debounce the onBlur when we know for sure that
       // this component will re-render (AKA when the value changes)
@@ -240,6 +245,12 @@ var Mask = function (_React$PureComponent) {
       }
     }
   }, {
+    key: 'initialValue',
+    value: function initialValue() {
+      var field = this.field();
+      return field.props.value || field.props.defaultValue;
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -269,30 +280,6 @@ Mask.propTypes = {
 };
 
 /**
- * Returns the value with additional masking characters
- * @param {String} value
- * @returns {String}
- */
-function maskValue() {
-  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var mask = arguments[1];
-
-  if (value && typeof value === 'string') {
-    value = value.trim();
-
-    if (mask === 'currency') {
-      // Format number with commas. If the number includes a decimal,
-      // ensure it includes two decimal points
-      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
-    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
-    }
-  }
-
-  return value;
-}
-
-/**
  * Remove mask characters from value
  * @param {String} value
  * @param {String} mask
@@ -316,7 +303,4 @@ function unmask(value, mask) {
   return value;
 }
 
-var PolyfilledMask = (0, _reactLifecyclesCompat.polyfill)(Mask);
-
-exports.Mask = PolyfilledMask;
-exports.default = PolyfilledMask;
+exports.default = Mask;
