@@ -125,6 +125,13 @@ describe('Mask', function() {
 
       expect(input.prop('value')).toBe('-1,234');
     });
+
+    it('converts non-number values to 0', () => {
+      const data = render({ mask: 'currency' }, { value: 'wat' });
+      const input = data.wrapper.find('input');
+
+      expect(input.prop('value')).toBe('0');
+    });
   });
 
   describe('Phone', () => {

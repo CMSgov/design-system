@@ -103,6 +103,10 @@ function toNumber(value) {
   // 0 = number, 1 = decimals
   var parts = value.split('.');
   var digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
+
+  // If this doesn't appear to be a number, just return 0
+  if (!digitsRegex.test(value)) return 0;
+
   var a = parts[0].match(digitsRegex).join('');
   var b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
 
@@ -287,20 +291,20 @@ Mask.propTypes = {
  */
 function unmask(value, mask) {
   if (!value || typeof value !== 'string') return value;
+
   var rawValue = value;
   value = value.trim();
 
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
-    value = value.match(/^-|[\d.]/g).join('');
+    var matches = value.match(/^-|[\d.]/g);
+    return matches ? matches.join('') : rawValue;
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string
-    value = toDigitsAndAsterisks(value);
+    return toDigitsAndAsterisks(value);
   } else {
     return rawValue;
   }
-
-  return value;
 }
 
 exports.default = Mask;
