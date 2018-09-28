@@ -1,48 +1,57 @@
+import Button from '../Button/Button';
 import TextField, { unmaskValue } from './TextField';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { unmaskValue } from '@cmsgov/design-system-core';
 
-function handleBlur(evt, mask) {
-  console.log('Unmasked value:', unmaskValue(evt.target.value, mask));
+class Currency extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currencyValue: '2500'
+    };
+  }
+
+  clearCurrencyValue() {
+    this.setState({ currencyValue: '' });
+  }
+
+  randomizeCurrencyValue() {
+    this.setState({ currencyValue: (Math.random() * 10000).toFixed(2) });
+  }
+
+  setCurrencyValue(currencyValue) {
+    console.log(`Setting currencyValue to ${currencyValue}`);
+    this.setState({ currencyValue });
+  }
+
+  render() {
+    return (
+      <div className="ds-margin-y--2">
+        <TextField
+          label={this.props.connected ? 'Connected' : 'Unconnected'}
+          mask="currency"
+          name="currency_example"
+          onChange={evt =>
+            this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))
+          }
+          value={this.props.connected ? this.state.currencyValue : undefined}
+          defaultValue={
+            this.props.connected ? undefined : this.state.currencyValue
+          }
+        />
+        <Button onClick={() => this.clearCurrencyValue()}>Clear</Button>
+        <Button onClick={() => this.randomizeCurrencyValue()}>Randomize</Button>
+      </div>
+    );
+  }
 }
 
 const Example = () => {
   return (
     <div>
-      <TextField
-        ariaLabel="Enter monthly income amount in dollars."
-        label="Currency"
-        mask="currency"
-        name="currency_example"
-        onBlur={evt => handleBlur(evt, 'currency')}
-        value="2500"
-      />
-
-      <TextField
-        label="Phone number"
-        mask="phone"
-        name="phone_example"
-        onBlur={evt => handleBlur(evt, 'phone')}
-        type="tel"
-        value="1234567890"
-      />
-
-      <TextField
-        label="Social security number (SSN)"
-        mask="ssn"
-        name="ssn_example"
-        onBlur={evt => handleBlur(evt, 'ssn')}
-        value="123456789"
-      />
-
-      <TextField
-        label="Zip code"
-        mask="zip"
-        name="zip_example"
-        onBlur={evt => handleBlur(evt, 'zip')}
-        value="123456789"
-      />
+      <Currency connected />
+      <Currency />
     </div>
   );
 };

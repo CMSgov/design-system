@@ -8,6 +8,7 @@ Style guide: components.masked-field
 */
 import PropTypes from 'prop-types';
 import React from 'react';
+import { polyfill } from 'react-lifecycles-compat';
 
 // Deliminate chunks of integers
 const deliminatedMaskRegex = {
@@ -104,7 +105,7 @@ Style guide: components.masked-field.react
  * field is blurred, it applies formatting to improve the readability
  * of the value.
  */
-export class Mask extends React.PureComponent {
+class Mask extends React.PureComponent {
   static getDerivedStateFromProps(props, state) {
     const fieldProps = React.Children.only(props.children).props;
     const isControlled = fieldProps.value !== undefined;
@@ -134,18 +135,6 @@ export class Mask extends React.PureComponent {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
-    }
-
-    let [major, minor] = React.version.split('.');
-    major = parseInt(major, 10);
-    minor = parseInt(minor, 10);
-    const getDerivedStateFromPropsIsSupported =
-      major > 16 || (major === 16 && minor >= 3);
-    if (!getDerivedStateFromPropsIsSupported) {
-      const newState = Mask.getDerivedStateFromProps(this.props, this.state);
-      if (newState) {
-        this.setState(newState);
-      }
     }
   }
 
@@ -269,4 +258,7 @@ export function unmask(value, mask) {
   return value;
 }
 
-export default Mask;
+const PolyfilledMask = polyfill(Mask);
+
+export { PolyfilledMask as Mask };
+export default PolyfilledMask;
