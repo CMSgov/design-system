@@ -105,6 +105,20 @@ Style guide: components.masked-field.react
  * of the value.
  */
 export class Mask extends React.PureComponent {
+  static getDerivedStateFromProps(props, state) {
+    const fieldProps = React.Children.only(props.children).props;
+    const isControlled = fieldProps.value !== undefined;
+    if (isControlled) {
+      const { mask } = props;
+      if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
+        return {
+          value: maskValue(fieldProps.value, mask)
+        };
+      }
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
@@ -112,26 +126,25 @@ export class Mask extends React.PureComponent {
     const initialValue = field.props.value || field.props.defaultValue;
 
     this.state = {
-      value: this.maskedValue(initialValue)
+      value: maskValue(initialValue, this.props.mask)
     };
-
-    if (field.props.value !== undefined) {
-      this.isControlled = true;
-    }
   }
 
-  componentDidUpdate(previousMaskProps) {
+  componentDidUpdate() {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
     }
 
-    if (this.isControlled) {
-      const newProps = this.field().props;
-      const oldProps = this.field(previousMaskProps).props;
-      const { mask } = this.props;
-      if (newProps.value !== oldProps.value && unmask(newProps.value, mask) !== unmask(this.state.value, mask)) {
-        this.setState({ value: this.maskedValue(newProps.value) });
+    let [major, minor] = React.version.split('.');
+    major = parseInt(major, 10);
+    minor = parseInt(minor, 10);
+    const getDerivedStateFromPropsIsSupported =
+      major > 16 || (major === 16 && minor >= 3);
+    if (!getDerivedStateFromPropsIsSupported) {
+      const newState = Mask.getDerivedStateFromProps(this.props, this.state);
+      if (newState) {
+        this.setState(newState);
       }
     }
   }
@@ -141,31 +154,8 @@ export class Mask extends React.PureComponent {
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
-  field(props) {
-    if (!props) props = this.props;
-    return React.Children.only(props.children);
-  }
-
-  /**
-   * Returns the value with additional masking characters
-   * @param {String} value
-   * @returns {String}
-   */
-  maskedValue(value = '') {
-    if (value && typeof value === 'string') {
-      const { mask } = this.props;
-      value = value.trim();
-
-      if (mask === 'currency') {
-        // Format number with commas. If the number includes a decimal,
-        // ensure it includes two decimal points
-        value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
-      } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-        value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
-      }
-    }
-
-    return value;
+  field() {
+    return React.Children.only(this.props.children);
   }
 
   /**
@@ -176,7 +166,7 @@ export class Mask extends React.PureComponent {
    * @param {React.Element} field - Child TextField
    */
   handleBlur(evt, field) {
-    const value = this.maskedValue(evt.target.value);
+    const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
@@ -233,6 +223,27 @@ Mask.propTypes = {
   children: PropTypes.node.isRequired,
   mask: PropTypes.string.isRequired
 };
+
+/**
+ * Returns the value with additional masking characters
+ * @param {String} value
+ * @returns {String}
+ */
+function maskValue(value = '', mask) {
+  if (value && typeof value === 'string') {
+    value = value.trim();
+
+    if (mask === 'currency') {
+      // Format number with commas. If the number includes a decimal,
+      // ensure it includes two decimal points
+      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
+    }
+  }
+
+  return value;
+}
 
 /**
  * Remove mask characters from value
