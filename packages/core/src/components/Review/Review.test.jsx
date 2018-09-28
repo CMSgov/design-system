@@ -53,6 +53,15 @@ describe('Review', function() {
     expect(reviewLink.length).toBe(0);
   });
 
+  it('it renders the edit content', () => {
+    const content = <div id="editContent" />;
+    const { wrapper } = render({ editContent: content });
+    const editContent = wrapper.find('#editContent');
+    const reviewLink = wrapper.find(ReviewLink);
+    expect(editContent.length).toBe(1);
+    expect(reviewLink.length).toBe(0);
+  });
+
   it('renders HTML children', () => {
     const { wrapper } = render({}, <p className="my-p">{text}</p>);
     const p = wrapper.find('.my-p');
