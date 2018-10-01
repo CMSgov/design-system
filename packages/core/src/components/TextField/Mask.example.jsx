@@ -16,7 +16,7 @@ const Example = () => {
         mask="currency"
         name="currency_example"
         onBlur={evt => handleBlur(evt, 'currency')}
-        value="2500"
+        defaultValue="2500"
       />
 
       <TextField
@@ -25,7 +25,7 @@ const Example = () => {
         name="phone_example"
         onBlur={evt => handleBlur(evt, 'phone')}
         type="tel"
-        value="1234567890"
+        defaultValue="1234567890"
       />
 
       <TextField
@@ -33,7 +33,7 @@ const Example = () => {
         mask="ssn"
         name="ssn_example"
         onBlur={evt => handleBlur(evt, 'ssn')}
-        value="123456789"
+        defaultValue="123456789"
       />
 
       <TextField
@@ -41,7 +41,7 @@ const Example = () => {
         mask="zip"
         name="zip_example"
         onBlur={evt => handleBlur(evt, 'zip')}
-        value="123456789"
+        defaultValue="123456789"
       />
     </div>
   );

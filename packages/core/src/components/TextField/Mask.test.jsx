@@ -90,6 +90,42 @@ describe('Mask', function() {
     expect(input.prop('value')).toBe('1,234');
   });
 
+  describe('Controlled component behavior', () => {
+    it('will not cause masking until blur when value prop still matches unmasked input', () => {
+      const { wrapper } = render({ mask: 'currency' }, { value: '1000' }, true);
+      const input = () => wrapper.find('input');
+
+      expect(input().prop('value')).toBe('1,000');
+      // Simulate user typing input and the component calling onChange, and that
+      // cascading back down to a new prop for the input.
+      input()
+        .props()
+        .onChange({ target: { value: '1,0000' } });
+      wrapper.setProps({
+        children: <input name="foo" type="text" value="10000" />
+      });
+      expect(input().prop('value')).toBe('1,0000');
+
+      input().simulate('blur', {
+        target: { value: '1,0000' },
+        persist: jest.fn()
+      });
+      expect(input().prop('value')).toBe('10,000');
+    });
+
+    it('will change the value of the input when value prop changes (beyond unmasked/masked differences)', () => {
+      const { wrapper } = render({ mask: 'currency' }, { value: '1000' }, true);
+      const input = () => wrapper.find('input');
+
+      expect(input().prop('value')).toBe('1,000');
+      // Make sure we can change the value
+      wrapper.setProps({
+        children: <input name="foo" type="text" value="2000" />
+      });
+      expect(input().prop('value')).toBe('2,000');
+    });
+  });
+
   describe('Currency', () => {
     it('accepts already masked value', () => {
       const data = render({ mask: 'currency' }, { value: '1,234.50' });
