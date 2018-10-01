@@ -334,6 +334,26 @@ describe('unmask', () => {
     expect(unmask(null)).toBeNull();
   });
 
+  it('returns empty string when there are no numeric characters in the value', () => {
+    expect(unmask('banana', 'currency')).toBe('');
+    expect(unmask('banana', 'zip')).toBe('');
+    expect(unmask('banana', 'ssn')).toBe('');
+    expect(unmask('banana', 'phone')).toBe('');
+  });
+
+  it('returns just the numbers when there is other garbage mixed in', () => {
+    expect(unmask('b4n4n4', 'currency')).toBe('444');
+    expect(unmask('b4n4n4', 'zip')).toBe('444');
+    expect(unmask('b4n4n4', 'ssn')).toBe('444');
+    expect(unmask('b4n4n4', 'phone')).toBe('444');
+
+    expect(unmask('a1.b2c3', 'currency')).toBe('1.23');
+    expect(unmask('1,,00.b', 'currency')).toBe('100.');
+    expect(unmask('1-1-1-2-3-4', 'zip')).toBe('111234');
+    expect(unmask('4---31', 'ssn')).toBe('431');
+    expect(unmask('--2-3444', 'phone')).toBe('23444');
+  });
+
   it('removes mask from currency value', () => {
     const name = 'currency';
 

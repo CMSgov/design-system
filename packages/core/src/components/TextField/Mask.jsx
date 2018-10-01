@@ -61,12 +61,21 @@ function stringWithFixedDigits(value, digits = 2) {
 }
 
 /**
- * Remove all non-digits
+ * Remove everything that isn't a digit or asterisk
  * @param {String} value
  * @returns {String}
  */
 function toDigitsAndAsterisks(value) {
   return value.replace(/[^\d*]/g, '');
+}
+
+/**
+ * Remove all non-digits
+ * @param {String} value
+ * @returns {String}
+ */
+function toDigits(value) {
+  return value.replace(/[^\d]/g, '');
 }
 
 /**
@@ -76,14 +85,21 @@ function toDigitsAndAsterisks(value) {
  */
 function toNumber(value) {
   if (typeof value !== 'string') return value;
+  if (!value.match(/\d/)) return undefined;
 
-  // 0 = number, 1 = decimals
+  const sign = value.charAt(0) === '-' ? -1 : 1;
   const parts = value.split('.');
-  const digitsRegex = /^-|\d/g; // include a check for a beginning "-" for negative numbers
-  const a = parts[0].match(digitsRegex).join('');
-  const b = parts.length >= 2 && parts[1].match(digitsRegex).join('');
-
-  return b ? parseFloat(`${a}.${b}`) : parseInt(a);
+  // This assumes if the user adds a "." it should be a float. If we want it to
+  // evaluate as an integer if there are no digits beyond the decimal, then we
+  // can change it.
+  const hasDecimal = parts[1] !== undefined;
+  if (hasDecimal) {
+    const a = toDigits(parts[0]);
+    const b = toDigits(parts[1]);
+    return sign * parseFloat(`${a}.${b}`);
+  } else {
+    return sign * parseInt(toDigits(parts[0]));
+  }
 }
 
 /**
@@ -98,7 +114,12 @@ function maskValue(value = '', mask) {
     if (mask === 'currency') {
       // Format number with commas. If the number includes a decimal,
       // ensure it includes two decimal points
-      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+      const number = toNumber(value);
+      if (number === undefined) {
+        value = '';
+      } else {
+        value = stringWithFixedDigits(number.toLocaleString('en-US'));
+      }
     } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
       value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
     }
@@ -248,7 +269,12 @@ export function unmask(value, mask) {
 
   if (mask === 'currency') {
     // Preserve only digits, decimal point, or negative symbol
-    value = value.match(/^-|[\d.]/g).join('');
+    const matches = value.match(/^-|[\d.]/g);
+    if (matches) {
+      value = matches.join('');
+    } else {
+      value = '';
+    }
   } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
     // Remove the deliminators and revert to single ungrouped string
     value = toDigitsAndAsterisks(value);
