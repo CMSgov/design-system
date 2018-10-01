@@ -86,6 +86,27 @@ function toNumber(value) {
   return b ? parseFloat(`${a}.${b}`) : parseInt(a);
 }
 
+/**
+ * Returns the value with additional masking characters
+ * @param {String} value
+ * @returns {String}
+ */
+function maskValue(value = '', mask) {
+  if (value && typeof value === 'string') {
+    value = value.trim();
+
+    if (mask === 'currency') {
+      // Format number with commas. If the number includes a decimal,
+      // ensure it includes two decimal points
+      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
+    }
+  }
+
+  return value;
+}
+
 /*
 `<TextField mask={...}>`
 
@@ -213,27 +234,6 @@ _Mask.propTypes = {
   children: PropTypes.node.isRequired,
   mask: PropTypes.string.isRequired
 };
-
-/**
- * Returns the value with additional masking characters
- * @param {String} value
- * @returns {String}
- */
-function maskValue(value = '', mask) {
-  if (value && typeof value === 'string') {
-    value = value.trim();
-
-    if (mask === 'currency') {
-      // Format number with commas. If the number includes a decimal,
-      // ensure it includes two decimal points
-      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
-    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
-    }
-  }
-
-  return value;
-}
 
 /**
  * Remove mask characters from value
