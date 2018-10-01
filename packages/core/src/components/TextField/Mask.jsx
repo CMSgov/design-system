@@ -8,6 +8,7 @@ Style guide: components.masked-field
 */
 import PropTypes from 'prop-types';
 import React from 'react';
+import { polyfill } from 'react-lifecycles-compat';
 
 // Deliminate chunks of integers
 const deliminatedMaskRegex = {
@@ -85,6 +86,27 @@ function toNumber(value) {
   return b ? parseFloat(`${a}.${b}`) : parseInt(a);
 }
 
+/**
+ * Returns the value with additional masking characters
+ * @param {String} value
+ * @returns {String}
+ */
+function maskValue(value = '', mask) {
+  if (value && typeof value === 'string') {
+    value = value.trim();
+
+    if (mask === 'currency') {
+      // Format number with commas. If the number includes a decimal,
+      // ensure it includes two decimal points
+      value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
+    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
+    }
+  }
+
+  return value;
+}
+
 /*
 `<TextField mask={...}>`
 
@@ -104,12 +126,30 @@ Style guide: components.masked-field.react
  * field is blurred, it applies formatting to improve the readability
  * of the value.
  */
-export class Mask extends React.PureComponent {
+class _Mask extends React.PureComponent {
+  static getDerivedStateFromProps(props, state) {
+    const fieldProps = React.Children.only(props.children).props;
+    const isControlled = fieldProps.value !== undefined;
+    if (isControlled) {
+      const { mask } = props;
+      if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
+        return {
+          value: maskValue(fieldProps.value || '', mask)
+        };
+      }
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
+    const field = this.field();
+    const initialValue = field.props.value || field.props.defaultValue;
+    // console.log('initial value', initialValue, maskValue(initialValue, props.mask), props.mask)
+
     this.state = {
-      value: this.maskedValue(this.initialValue())
+      value: maskValue(initialValue, props.mask)
     };
   }
 
@@ -130,28 +170,6 @@ export class Mask extends React.PureComponent {
   }
 
   /**
-   * Returns the value with additional masking characters
-   * @param {String} value
-   * @returns {String}
-   */
-  maskedValue(value = '') {
-    if (value && typeof value === 'string') {
-      const { mask } = this.props;
-      value = value.trim();
-
-      if (mask === 'currency') {
-        // Format number with commas. If the number includes a decimal,
-        // ensure it includes two decimal points
-        value = stringWithFixedDigits(toNumber(value).toLocaleString('en-US'));
-      } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-        value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
-      }
-    }
-
-    return value;
-  }
-
-  /**
    * To avoid a jarring experience for screen readers, we only
    * add/remove characters after the field has been blurred,
    * rather than when the user is typing in the field
@@ -159,7 +177,7 @@ export class Mask extends React.PureComponent {
    * @param {React.Element} field - Child TextField
    */
   handleBlur(evt, field) {
-    const value = this.maskedValue(evt.target.value);
+    const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
@@ -199,11 +217,6 @@ export class Mask extends React.PureComponent {
     }
   }
 
-  initialValue() {
-    const field = this.field();
-    return field.props.value || field.props.defaultValue;
-  }
-
   render() {
     const field = this.field();
 
@@ -216,7 +229,7 @@ export class Mask extends React.PureComponent {
   }
 }
 
-Mask.propTypes = {
+_Mask.propTypes = {
   /** Pass the input as the child */
   children: PropTypes.node.isRequired,
   mask: PropTypes.string.isRequired
@@ -246,4 +259,7 @@ export function unmask(value, mask) {
   return value;
 }
 
+const Mask = polyfill(_Mask);
+
+export { Mask };
 export default Mask;
