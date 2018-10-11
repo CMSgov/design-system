@@ -8,37 +8,44 @@ import uniqueId from 'lodash.uniqueid';
  * Any _undocumented_ props that you pass to this component will be passed
  * to the `select` element, so you can use this to set additional attributes if
  * necessary.
+ *
+ * Class-based component gives flexibility for active focus management
+ * by allowing refs to be passed.
  */
-export const Select = function(props) {
-  /* eslint-disable prefer-const */
-  let {
-    // Using let rather than const since we sometimes rewrite id
-    children,
-    className,
-    id,
-    inversed,
-    size,
-    ...selectProps
-  } = props;
-  /* eslint-enable prefer-const */
 
-  const classes = classNames(
-    'ds-c-field',
-    { 'ds-c-field--inverse': inversed },
-    className,
-    size && `ds-c-field--${size}`
-  );
+/* eslint-disable react/prefer-stateless-function */
+export class Select extends React.PureComponent {
+  render() {
+    /* eslint-disable prefer-const */
+    let {
+      // Using let rather than const since we sometimes rewrite id
+      children,
+      className,
+      id,
+      inversed,
+      size,
+      ...selectProps
+    } = this.props;
+    /* eslint-enable prefer-const */
 
-  if (!id) {
-    id = uniqueId(`select_${selectProps.name}_`);
+    const classes = classNames(
+      'ds-c-field',
+      { 'ds-c-field--inverse': inversed },
+      className,
+      size && `ds-c-field--${size}`
+    );
+
+    if (!id) {
+      id = uniqueId(`select_${selectProps.name}_`);
+    }
+
+    return (
+      <select className={classes} id={id} {...selectProps}>
+        {children}
+      </select>
+    );
   }
-
-  return (
-    <select className={classes} id={id} {...selectProps}>
-      {children}
-    </select>
-  );
-};
+}
 
 Select.propTypes = {
   children: PropTypes.node.isRequired,
