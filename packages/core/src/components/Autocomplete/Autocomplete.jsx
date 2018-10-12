@@ -76,6 +76,7 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': this.listboxId,
+          autocomplete: 'nope',
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           onBlur: child.props.onBlur,
