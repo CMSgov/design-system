@@ -23,9 +23,10 @@ export class Autocomplete extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.id = uniqueId('autocomplete_');
+    this.id = this.props.id || uniqueId('autocomplete_');
     this.labelId = uniqueId('autocomplete_header_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
+    this.loader = null;
   }
 
   filterItems(
@@ -75,6 +76,7 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': this.listboxId,
+          focusTrigger: this.props.focusTrigger,
           id: this.id,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
@@ -188,6 +190,14 @@ Autocomplete.propTypes = {
    * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
   clearInputText: PropTypes.node,
+  /**
+   * Used to focus child `TextField` on `componentDidMount()`
+   */
+  focusTrigger: PropTypes.bool,
+  /**
+   * A unique `id` to be passed to the child `TextField`.
+   */
+  id: PropTypes.string,
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
    *

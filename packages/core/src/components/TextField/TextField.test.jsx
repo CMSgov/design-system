@@ -199,6 +199,20 @@ describe('TextField', function() {
     expect(ref.value).toBe(data.props.defaultValue);
   });
 
+  it('focuses the input when focusTrigger is passed', () => {
+    const data = render(
+      {
+        id: 'focus',
+        focusTrigger: true
+      },
+      true
+    );
+
+    expect(data.wrapper.find('input').props().id).toEqual(
+      document.activeElement.id
+    );
+  });
+
   describe('has error', () => {
     let data;
 
@@ -220,8 +234,6 @@ describe('TextField', function() {
           .hasClass('ds-c-field--error')
       ).toBe(true);
     });
-
-    it('sets aria-describedby field attribute');
   });
 
   describe('has inversed theme', () => {
