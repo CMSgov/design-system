@@ -76,7 +76,7 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': this.listboxId,
-          autocomplete: 'nope',
+          autoComplete: 'off',
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           onBlur: child.props.onBlur,
@@ -196,7 +196,10 @@ Autocomplete.propTypes = {
    */
   focusTrigger: PropTypes.bool,
   /**
-   * A unique `id` to be passed to the child `TextField`.
+   * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
+   * the `Autocomplete` component will auto-generate one. This prop was provided in cases
+   * where an id might need to be passed to multiple components, such as the `htmlFor`
+   * attribute on a label and the id of an input.
    */
   id: PropTypes.string,
   /**
