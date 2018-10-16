@@ -76,7 +76,7 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': this.listboxId,
-          autoComplete: 'off',
+          autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           onBlur: child.props.onBlur,
@@ -170,6 +170,7 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
+  autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
@@ -181,6 +182,11 @@ Autocomplete.propTypes = {
    * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel: PropTypes.string,
+  /**
+   * Control the `TextField` autocomplete attribute. Defaults to 'off' to prevent Chrome
+   * from autofilling user presets.
+   */
+  autoCompleteLabel: PropTypes.string,
   children: PropTypes.node,
   /**
    * Additional classes to be added to the root element.
