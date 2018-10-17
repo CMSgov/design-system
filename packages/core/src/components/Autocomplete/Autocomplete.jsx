@@ -170,7 +170,7 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
-  autoCompleteLabel: 'off',
+  autoCompleteLabel: 'nope',
   clearInputText: 'Clear search',
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
