@@ -183,8 +183,10 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: PropTypes.string,
   /**
-   * Control the `TextField` autocomplete attribute. Defaults to 'off' to prevent Chrome
+   * Control the `TextField` autocomplete attribute. Defaults to 'nope' to prevent Chrome
    * from autofilling user presets.
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
    */
   autoCompleteLabel: PropTypes.string,
   children: PropTypes.node,
