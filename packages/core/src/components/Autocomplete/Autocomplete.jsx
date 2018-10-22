@@ -70,8 +70,8 @@ export class Autocomplete extends React.PureComponent {
   }
 
   renderChildren(getInputProps) {
-    // Extend props on the TextField, by passing them through
-    // Downshift's `getInputProps` method
+    // Extend props on the TextField, by passing them
+    // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
         const propOverrides = {
