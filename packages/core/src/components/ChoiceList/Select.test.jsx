@@ -1,6 +1,6 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import Select from './Select';
-import { shallow } from 'enzyme';
 
 /**
  * Generate <option> elements
@@ -27,44 +27,43 @@ function generateOptions(count) {
  * @param {number} optionsCount - Total number of <option>'s
  * @return {object}
  */
-function shallowRender(customProps = {}, optionsCount = 1) {
+function render(customProps = {}, optionsCount = 1, deep = false) {
   const props = Object.assign(
     {
       name: 'presidents'
     },
     customProps
   );
+  const component = <Select {...props}>{generateOptions(optionsCount)}</Select>;
 
   return {
     props: props,
-    wrapper: shallow(
-      <Select {...props}>{generateOptions(optionsCount)}</Select>
-    )
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
 describe('Select', () => {
   it('renders a select menu', () => {
-    const data = shallowRender();
+    const data = render();
 
     expect(data.wrapper.is('select')).toBe(true);
     expect(data.wrapper.prop('name')).toBe(data.props.name);
   });
 
   it('has correct class names', () => {
-    const data = shallowRender();
+    const data = render();
 
     expect(data.wrapper.hasClass('ds-c-field')).toBe(true);
   });
 
   it("renders <option>'s as children", () => {
-    const data = shallowRender({}, 10);
+    const data = render({}, 10);
 
     expect(data.wrapper.children('option').length).toBe(10);
   });
 
   it('has a selected <option>', () => {
-    const data = shallowRender(
+    const data = render(
       {
         defaultValue: '2' // the second generated option
       },
@@ -83,7 +82,7 @@ describe('Select', () => {
   });
 
   it('applies additional classNames to root element', () => {
-    const data = shallowRender({ className: 'foo' });
+    const data = render({ className: 'foo' });
 
     expect(data.wrapper.hasClass(data.props.className)).toBe(true);
     // Make sure we're not replacing the other class names
@@ -91,48 +90,63 @@ describe('Select', () => {
   });
 
   it('adds size classes to root element', () => {
-    const mediumData = shallowRender({ size: 'medium' });
-    const smallData = shallowRender({ size: 'small' });
+    const mediumData = render({ size: 'medium' });
+    const smallData = render({ size: 'small' });
 
     expect(mediumData.wrapper.hasClass('ds-c-field--medium')).toBe(true);
     expect(smallData.wrapper.hasClass('ds-c-field--small')).toBe(true);
   });
 
   it('is disabled', () => {
-    const data = shallowRender({ disabled: true });
+    const data = render({ disabled: true });
 
     expect(data.wrapper.prop('disabled')).toBe(true);
   });
 
   it('is not disabled', () => {
-    const data = shallowRender();
+    const data = render();
 
     expect(data.wrapper.prop('disabled')).toBeUndefined();
   });
 
   it('is required', () => {
-    const data = shallowRender({ required: true });
+    const data = render({ required: true });
 
     expect(data.wrapper.prop('required')).toBe(true);
   });
 
   it('is inversed', () => {
-    const data = shallowRender({ inversed: true });
+    const data = render({ inversed: true });
 
     expect(data.wrapper.hasClass('ds-c-field--inverse')).toBe(true);
   });
 
   it('accepts a custom id', () => {
-    const data = shallowRender({ id: 'custom_id' });
+    const data = render({ id: 'custom_id' });
 
     expect(data.wrapper.prop('id')).toBe(data.props.id);
   });
 
   it('generates a unique id', () => {
-    const data = shallowRender();
+    const data = render();
     const idRegex = new RegExp(`select_${data.props.name}_[0-9]+`);
 
     expect(data.wrapper.prop('id')).toMatch(idRegex);
+  });
+
+  it('focuses the select when focusTrigger is passed', () => {
+    const data = render(
+      {
+        id: 'focus',
+        focusTrigger: true
+      },
+      null,
+      true
+    );
+
+    expect(data.wrapper.find('select').props().id).toEqual(
+      document.activeElement.id
+    );
   });
 
   describe('event handlers', () => {

@@ -8,37 +8,58 @@ import uniqueId from 'lodash.uniqueid';
  * Any _undocumented_ props that you pass to this component will be passed
  * to the `select` element, so you can use this to set additional attributes if
  * necessary.
+ *
+ * Class-based component gives flexibility for active focus management
+ * by allowing refs to be passed.
  */
-export const Select = function(props) {
-  /* eslint-disable prefer-const */
-  let {
-    // Using let rather than const since we sometimes rewrite id
-    children,
-    className,
-    id,
-    inversed,
-    size,
-    ...selectProps
-  } = props;
-  /* eslint-enable prefer-const */
 
-  const classes = classNames(
-    'ds-c-field',
-    { 'ds-c-field--inverse': inversed },
-    className,
-    size && `ds-c-field--${size}`
-  );
-
-  if (!id) {
-    id = uniqueId(`select_${selectProps.name}_`);
+export class Select extends React.PureComponent {
+  componentDidMount() {
+    if (this.props.focusTrigger) {
+      this.loader && this.loader.focus();
+    }
   }
 
-  return (
-    <select className={classes} id={id} {...selectProps}>
-      {children}
-    </select>
-  );
-};
+  render() {
+    /* eslint-disable prefer-const */
+    let {
+      // Using let rather than const since we sometimes rewrite id
+      children,
+      className,
+      focusTrigger,
+      id,
+      inversed,
+      selectRef,
+      size,
+      ...selectProps
+    } = this.props;
+    /* eslint-enable prefer-const */
+
+    const classes = classNames(
+      'ds-c-field',
+      { 'ds-c-field--inverse': inversed },
+      className,
+      size && `ds-c-field--${size}`
+    );
+
+    if (!id) {
+      id = uniqueId(`select_${selectProps.name}_`);
+    }
+
+    return (
+      <select
+        className={classes}
+        id={id}
+        /* eslint-disable no-return-assign */
+        ref={focusTrigger ? loader => (this.loader = loader) : selectRef}
+        /* eslint-enable no-return-assign */
+        {...selectProps}
+      >
+        {children}
+      </select>
+    );
+  }
+}
 
 Select.propTypes = {
   children: PropTypes.node.isRequired,
@@ -52,6 +73,10 @@ Select.propTypes = {
    */
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
+  /**
+   * Used to focus `select` on `componentDidMount()`
+   */
+  focusTrigger: PropTypes.bool,
   /**
    * A unique ID to be used for the select field. A unique ID will be generated
    * if one isn't provided.
@@ -82,6 +107,10 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * Access a reference to the `select` element
+   */
+  selectRef: PropTypes.func,
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
