@@ -8,7 +8,6 @@ Style guide: components.masked-field
 */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { polyfill } from 'react-lifecycles-compat';
 
 // Deliminate chunks of integers
 const deliminatedMaskRegex = {
@@ -107,7 +106,7 @@ function toNumber(value) {
  * @param {String} value
  * @returns {String}
  */
-function maskValue(value = '', mask) {
+export function maskValue(value = '', mask) {
   if (value && typeof value === 'string') {
     value = value.trim();
 
@@ -147,37 +146,40 @@ Style guide: components.masked-field.react
  * field is blurred, it applies formatting to improve the readability
  * of the value.
  */
-class _Mask extends React.PureComponent {
-  static getDerivedStateFromProps(props, state) {
-    const fieldProps = React.Children.only(props.children).props;
-    const isControlled = fieldProps.value !== undefined;
-    if (isControlled) {
-      const { mask } = props;
-      if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
-        return {
-          value: maskValue(fieldProps.value || '', mask)
-        };
-      }
-    }
-    return null;
-  }
-
+export class Mask extends React.PureComponent {
   constructor(props) {
     super(props);
 
     const field = this.field();
     const initialValue = field.props.value || field.props.defaultValue;
-    // console.log('initial value', initialValue, maskValue(initialValue, props.mask), props.mask)
 
     this.state = {
       value: maskValue(initialValue, props.mask)
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
+    }
+
+    const fieldProps = this.field().props;
+    const prevFieldProps = React.Children.only(prevProps.children).props;
+    const isControlled = fieldProps.value !== undefined;
+    if (isControlled && prevFieldProps.value !== fieldProps.value) {
+      const { mask } = this.props;
+      // For controlled components, the value prop should ideally be changed by
+      // the controlling component once we've called onChange with our updates.
+      // If the change was triggered this way through user input, then the prop
+      // given should match our internal state when unmasked. If what we're
+      // given and what we have locally don't match, that means the controlling
+      // component has made its own unrelated change, so we should update our
+      // state and mask this new value.
+      if (unmask(fieldProps.value, mask) !== unmask(this.state.value, mask)) {
+        const value = maskValue(fieldProps.value || '', mask);
+        this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
+      }
     }
   }
 
@@ -250,7 +252,7 @@ class _Mask extends React.PureComponent {
   }
 }
 
-_Mask.propTypes = {
+Mask.propTypes = {
   /** Pass the input as the child */
   children: PropTypes.node.isRequired,
   mask: PropTypes.string.isRequired
@@ -285,7 +287,4 @@ export function unmask(value, mask) {
   return value;
 }
 
-const Mask = polyfill(_Mask);
-
-export { Mask };
 export default Mask;

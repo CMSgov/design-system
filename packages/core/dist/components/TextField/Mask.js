@@ -7,6 +7,7 @@ exports.Mask = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+exports.maskValue = maskValue;
 exports.unmask = unmask;
 
 var _propTypes = require('prop-types');
@@ -16,8 +17,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactLifecyclesCompat = require('react-lifecycles-compat');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -176,35 +175,16 @@ Style guide: components.masked-field.react
  * of the value.
  */
 
-var _Mask = function (_React$PureComponent) {
-  _inherits(_Mask, _React$PureComponent);
+var Mask = exports.Mask = function (_React$PureComponent) {
+  _inherits(Mask, _React$PureComponent);
 
-  _createClass(_Mask, null, [{
-    key: 'getDerivedStateFromProps',
-    value: function getDerivedStateFromProps(props, state) {
-      var fieldProps = _react2.default.Children.only(props.children).props;
-      var isControlled = fieldProps.value !== undefined;
-      if (isControlled) {
-        var mask = props.mask;
+  function Mask(props) {
+    _classCallCheck(this, Mask);
 
-        if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
-          return {
-            value: maskValue(fieldProps.value || '', mask)
-          };
-        }
-      }
-      return null;
-    }
-  }]);
-
-  function _Mask(props) {
-    _classCallCheck(this, _Mask);
-
-    var _this = _possibleConstructorReturn(this, (_Mask.__proto__ || Object.getPrototypeOf(_Mask)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Mask.__proto__ || Object.getPrototypeOf(Mask)).call(this, props));
 
     var field = _this.field();
     var initialValue = field.props.value || field.props.defaultValue;
-    // console.log('initial value', initialValue, maskValue(initialValue, props.mask), props.mask)
 
     _this.state = {
       value: maskValue(initialValue, props.mask)
@@ -212,12 +192,32 @@ var _Mask = function (_React$PureComponent) {
     return _this;
   }
 
-  _createClass(_Mask, [{
+  _createClass(Mask, [{
     key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
+    value: function componentDidUpdate(prevProps) {
       if (this.debouncedOnBlurEvent) {
         this.field().props.onBlur(this.debouncedOnBlurEvent);
         this.debouncedOnBlurEvent = null;
+      }
+
+      var fieldProps = this.field().props;
+      var prevFieldProps = _react2.default.Children.only(prevProps.children).props;
+      var isControlled = fieldProps.value !== undefined;
+      if (isControlled && prevFieldProps.value !== fieldProps.value) {
+        var mask = this.props.mask;
+        // For controlled components, the value prop should ideally be changed by
+        // the controlling component once we've called onChange with our updates.
+        // If the change was triggered this way through user input, then the prop
+        // given should match our internal state when unmasked. If what we're
+        // given and what we have locally don't match, that means the controlling
+        // component has made its own unrelated change, so we should update our
+        // state and mask this new value.
+
+        if (unmask(fieldProps.value, mask) !== unmask(this.state.value, mask)) {
+          this.setState({
+            value: maskValue(fieldProps.value || '', mask)
+          });
+        }
       }
     }
 
@@ -305,10 +305,10 @@ var _Mask = function (_React$PureComponent) {
     }
   }]);
 
-  return _Mask;
+  return Mask;
 }(_react2.default.PureComponent);
 
-_Mask.propTypes = {
+Mask.propTypes = {
   /** Pass the input as the child */
   children: _propTypes2.default.node.isRequired,
   mask: _propTypes2.default.string.isRequired
@@ -343,7 +343,4 @@ function unmask(value, mask) {
   return value;
 }
 
-var Mask = (0, _reactLifecyclesCompat.polyfill)(_Mask);
-
-exports.Mask = Mask;
 exports.default = Mask;

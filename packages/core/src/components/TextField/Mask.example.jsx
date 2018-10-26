@@ -1,10 +1,56 @@
+/* eslint-disable react/no-multi-comp */
 import TextField, { unmaskValue } from './TextField';
+import Button from '../Button/Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { unmaskValue } from '@cmsgov/design-system-core';
 
 function handleBlur(evt, mask) {
   console.log('Unmasked value:', unmaskValue(evt.target.value, mask));
+}
+
+class ControlledCurrencyField extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currencyValue: '2500'
+    };
+  }
+
+  clearCurrencyValue() {
+    this.setState({ currencyValue: '' });
+  }
+
+  randomizeCurrencyValue() {
+    this.setState({ currencyValue: (Math.random() * 10000).toFixed(2) });
+  }
+
+  setCurrencyValue(currencyValue) {
+    console.log(`Setting currencyValue to ${currencyValue}`);
+    this.setState({ currencyValue });
+  }
+
+  render() {
+    return (
+      <fieldset className="ds-u-margin-top--3 ds-u-padding-left--3 ds-u-padding-bottom--3 ds-u-border--2">
+        <legend className="ds-u-font-size--h3">
+          Controlled Component Example
+        </legend>
+        <TextField
+          label="This is a controlled component"
+          mask="currency"
+          name="controlled_currency_example"
+          className="ds-u-margin-bottom--2"
+          onChange={evt =>
+            this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))
+          }
+          value={this.state.currencyValue}
+        />
+        <Button onClick={() => this.clearCurrencyValue()}>Clear</Button>
+        <Button onClick={() => this.randomizeCurrencyValue()}>Randomize</Button>
+      </fieldset>
+    );
+  }
 }
 
 const Example = () => {
@@ -43,6 +89,8 @@ const Example = () => {
         onBlur={evt => handleBlur(evt, 'zip')}
         defaultValue="123456789"
       />
+
+      <ControlledCurrencyField />
     </div>
   );
 };

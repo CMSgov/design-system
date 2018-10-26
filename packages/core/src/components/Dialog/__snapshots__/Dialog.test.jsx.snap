@@ -76,93 +76,140 @@ exports[`Dialog renders react-aria-modal 1`] = `
     underlayClass="ds-c-dialog-wrap"
     underlayClickExits={false}
   >
-    <Modal
-      dialogClass="ds-c-dialog ds-base"
-      dialogId="react-aria-modal-dialog"
-      escapeExits={true}
-      focusTrapPaused={false}
-      getApplicationNode={
-        [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        }
-      }
-      includeDefaultStyles={false}
-      mounted={true}
-      onExit={[MockFunction]}
-      scrollDisabled={true}
-      titleId="dialog-title"
-      underlayClass="ds-c-dialog-wrap"
-      underlayClickExits={false}
-      underlayColor="rgba(0,0,0,0.5)"
-      underlayProps={Object {}}
-    >
-      <FocusTrap
-        _createFocusTrap={[Function]}
-        active={true}
-        focusTrapOptions={
-          Object {
-            "initialFocus": undefined,
-          }
-        }
-        paused={false}
-        tag="div"
-      >
+    <Portal
+      containerInfo={
         <div>
-          <div
-            className="ds-c-dialog-wrap"
-            style={Object {}}
-          >
+          <div>
             <div
-              aria-labelledby="dialog-title"
-              className="ds-c-dialog ds-base"
-              id="react-aria-modal-dialog"
-              key="b"
-              role="dialog"
-              style={Object {}}
+              class="ds-c-dialog-wrap"
             >
               <div
-                role="document"
+                aria-labelledby="dialog-title"
+                class="ds-c-dialog ds-base"
+                id="react-aria-modal-dialog"
+                role="dialog"
               >
-                <header
-                  className="ds-c-dialog__header"
-                  role="banner"
+                <div
+                  role="document"
                 >
-                  <h1
-                    className="ds-h2"
-                    id="dialog-title"
+                  <header
+                    class="ds-c-dialog__header"
+                    role="banner"
                   >
-                    Foo
-                  </h1>
-                  <Button
-                    aria-label="Close modal dialog"
-                    className="ds-c-dialog__close"
-                    onClick={[MockFunction]}
-                    type="button"
-                    variation="transparent"
-                  >
+                    <h1
+                      class="ds-h2"
+                      id="dialog-title"
+                    >
+                      Foo
+                    </h1>
                     <button
                       aria-label="Close modal dialog"
-                      className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
-                      onClick={[Function]}
+                      class="ds-c-button ds-c-button--transparent ds-c-dialog__close"
                       type="button"
                     >
                       Close
                     </button>
-                  </Button>
-                </header>
-                <main
-                  role="main"
-                >
-                  Bar
-                </main>
+                  </header>
+                  <main
+                    role="main"
+                  >
+                    Bar
+                  </main>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </FocusTrap>
-    </Modal>
+      }
+    >
+      <Modal
+        dialogClass="ds-c-dialog ds-base"
+        dialogId="react-aria-modal-dialog"
+        escapeExits={true}
+        focusTrapPaused={false}
+        getApplicationNode={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+          }
+        }
+        includeDefaultStyles={false}
+        mounted={true}
+        onExit={[MockFunction]}
+        scrollDisabled={true}
+        titleId="dialog-title"
+        underlayClass="ds-c-dialog-wrap"
+        underlayClickExits={false}
+        underlayColor="rgba(0,0,0,0.5)"
+        underlayProps={Object {}}
+      >
+        <FocusTrap
+          _createFocusTrap={[Function]}
+          active={true}
+          focusTrapOptions={
+            Object {
+              "initialFocus": undefined,
+            }
+          }
+          paused={false}
+          tag="div"
+        >
+          <div>
+            <div
+              className="ds-c-dialog-wrap"
+              style={Object {}}
+            >
+              <div
+                aria-labelledby="dialog-title"
+                className="ds-c-dialog ds-base"
+                id="react-aria-modal-dialog"
+                key="b"
+                role="dialog"
+                style={Object {}}
+              >
+                <div
+                  role="document"
+                >
+                  <header
+                    className="ds-c-dialog__header"
+                    role="banner"
+                  >
+                    <h1
+                      className="ds-h2"
+                      id="dialog-title"
+                    >
+                      Foo
+                    </h1>
+                    <Button
+                      aria-label="Close modal dialog"
+                      className="ds-c-dialog__close"
+                      onClick={[MockFunction]}
+                      type="button"
+                      variation="transparent"
+                    >
+                      <button
+                        aria-label="Close modal dialog"
+                        className="ds-c-button ds-c-button--transparent ds-c-dialog__close"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Close
+                      </button>
+                    </Button>
+                  </header>
+                  <main
+                    role="main"
+                  >
+                    Bar
+                  </main>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FocusTrap>
+      </Modal>
+    </Portal>
   </Displaced>
 </Dialog>
 `;
