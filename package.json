@@ -98,6 +98,7 @@
     "node": ">=7.0.0"
   },
   "jest": {
+    "testURL": "http://localhost",
     "setupFiles": [
       "<rootDir>/tools/jest/polyfills.js",
       "<rootDir>/tools/jest/setupEnzyme.js"
