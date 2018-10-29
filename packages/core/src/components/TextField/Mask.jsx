@@ -6,6 +6,7 @@ cues to a user about the expected value.
 
 Style guide: components.masked-field
 */
+import 'core-js/fn/array/includes';
 import PropTypes from 'prop-types';
 import React from 'react';
 
