@@ -21,8 +21,9 @@ module.exports = {
             loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
             options: {
               includePaths: [
-                // path.resolve(__dirname, 'src/scss'),
-                path.resolve(__dirname, 'node_modules')
+                path.resolve(__dirname, './src/scss'),
+                path.resolve(__dirname, './node_modules')
+                // console.log(__dirname + '/node_modules')
               ]
             }
           }
@@ -43,10 +44,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               includePaths: [
-                path.resolve(__dirname, 'src/fonts'),
+                path.resolve(__dirname, '/src/fonts'),
                 path.resolve(
                   __dirname,
-                  'node_modules/@cmsgov/design-system-core'
+                  '/node_modules/@cmsgov/design-system-core'
                 )
               ]
             }

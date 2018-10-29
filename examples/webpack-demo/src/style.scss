@@ -1,5 +1,5 @@
-@import '@cmsgov/design-system-layout/src/index.scss';
-// THIS IS CAUSING PROBLEMS ^ LOOK FOR PATH
+@import '/uswds/src/stylesheets/uswds.scss';
+@import '/@cmsgov/design-system-layout/src/index.scss';
 
 @font-face {
   font-family: 'OpenSans';
