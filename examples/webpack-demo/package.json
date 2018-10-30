@@ -5,12 +5,16 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "node-sass": "^4.9.4",
@@ -20,6 +24,8 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "@cmsgov/design-system-core": "^1.27.0",
     "@cmsgov/design-system-layout": "^1.27.0",
     "lodash": "^4.17.11",

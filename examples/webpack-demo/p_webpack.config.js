@@ -1,20 +1,13 @@
-// webpack v4
 const path = require('path');
+
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
       {
         test: /\.scss$/,
         use: [
@@ -43,8 +36,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               includePaths: [
-                path.resolve(__dirname, '/src/img'),
-                path.resolve(__dirname, '/node_modules')
+                path.resolve(__dirname, './src/img'),
+                path.resolve(__dirname, './node_modules')
               ]
             }
           }
@@ -57,12 +50,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               includePaths: [
-                path.resolve(__dirname, '/src/fonts'),
-                path.resolve(
-                  __dirname,
-                  '/node_modules/@cmsgov/design-system-core'
-                ),
-                path.resolve(__dirname, '/node_modules')
+                path.resolve(__dirname, './src/fonts'),
+                path.resolve(__dirname, './node_modules')
               ]
             }
           }
