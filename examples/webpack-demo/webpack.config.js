@@ -27,6 +27,7 @@ module.exports = {
           {
             loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
             options: {
+              sourceMap: true,
               includePaths: [
                 path.resolve(__dirname, './src/scss'),
                 path.resolve(__dirname, './node_modules')
@@ -43,8 +44,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               includePaths: [
-                path.resolve(__dirname, '/src/img'),
-                path.resolve(__dirname, '/node_modules')
+                path.resolve(__dirname, './src/img'),
+                path.resolve(__dirname, './node_modules')
               ]
             }
           }
@@ -54,17 +55,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {
-              includePaths: [
-                path.resolve(__dirname, '/src/fonts'),
-                path.resolve(
-                  __dirname,
-                  '/node_modules/@cmsgov/design-system-core'
-                ),
-                path.resolve(__dirname, '/node_modules')
-              ]
-            }
+            loader: 'file-loader'
           }
         ]
       }
