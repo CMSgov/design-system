@@ -22,7 +22,13 @@ module.exports = {
             loader: 'style-loader' // creates style nodes from JS strings
           },
           {
-            loader: 'css-loader' // translates CSS into CommonJS
+            loader: 'css-loader', // translates CSS into CommonJS
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'resolve-url-loader'
           },
           {
             loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
@@ -31,7 +37,6 @@ module.exports = {
               includePaths: [
                 path.resolve(__dirname, './src/scss'),
                 path.resolve(__dirname, './node_modules')
-                // console.log(__dirname + '/node_modules')
               ]
             }
           }
@@ -55,7 +60,14 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [path.resolve(__dirname, './node_modules')]
+            }
+          },
+          {
+            loader: 'url-loader'
           }
         ]
       }
