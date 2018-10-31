@@ -16,7 +16,7 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.scss|.css$/,
         use: [
           {
             loader: 'style-loader' // creates style nodes from JS strings
@@ -50,7 +50,8 @@ module.exports = {
             options: {
               includePaths: [
                 path.resolve(__dirname, './src/img'),
-                path.resolve(__dirname, './node_modules')
+                path.resolve(__dirname, './node_modules'),
+                path.resolve(__dirname)
               ]
             }
           }
