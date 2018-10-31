@@ -1,5 +1,7 @@
 // webpack v4
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // to move static assets from src to dist
+
 module.exports = {
   entry: { main: './src/index.js' },
   output: {
@@ -50,8 +52,7 @@ module.exports = {
             options: {
               includePaths: [
                 path.resolve(__dirname, './src/img'),
-                path.resolve(__dirname, './node_modules'),
-                path.resolve(__dirname)
+                path.resolve(__dirname, './node_modules')
               ]
             }
           }
@@ -73,5 +74,6 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [new CopyWebpackPlugin([{ from: './src/img', to: 'img' }])]
 };
