@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Webpack + WDS demo (static site)</title>
+  </head>
+
+  <body class="ds-base">
+
+      <!-- USWDS HEADER BECAUSE WDS DOESN'T HAVE ONE -->
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+    <section class="usa-banner">
+      <div class="usa-accordion">
+        <header class="usa-banner-header">
+          <div class="usa-grid usa-banner-inner">
+          <img src="./img/favicons/favicon-57.png" alt="U.S. flag">
+          <p>An official website of the United States government</p>
+          <button class="usa-accordion-button usa-banner-button"
+            aria-expanded="false" aria-controls="gov-banner">
+            <span class="usa-banner-button-text">Here's how you know</span>
+          </button>
+          </div>
+        </header>
+        <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+          <div class="usa-banner-guidance-gov usa-width-one-half">
+            <img class="usa-banner-icon usa-media_block-img" src="./img/icon-dot-gov.svg" alt="Dot gov">
+            <div class="usa-media_block-body">
+              <p>
+                <strong>The .gov means it’s official.</strong>
+                <br>
+                Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+              </p>
+            </div>
+          </div>
+          <div class="usa-banner-guidance-ssl usa-width-one-half">
+            <img class="usa-banner-icon usa-media_block-img" src="./img/icon-https.svg" alt="Https">
+            <div class="usa-media_block-body">
+              <p>
+                <strong>The site is secure.</strong>
+                <br>
+                The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header class="usa-header usa-header-basic" role="banner">
+      <div class="usa-nav-container">
+        <div class="usa-navbar">
+      <div class="usa-logo" id="basic-logo">
+        <em class="usa-logo-text">
+          <a href="/"
+            title="Home"
+            aria-label="Home">
+            Department of Web Design
+          </a>
+        </em>
+      </div>
+      <button class="usa-menu-btn">Menu</button>
+    </div>
+        <nav role="navigation" class="usa-nav">
+
+          <button class="usa-nav-close">
+          <img src="./img/close.svg" alt="close">
+        </button>
+        <ul class="usa-nav-primary usa-accordion"><li><button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-one">
+              <span>Section title</span>
+            </button>
+            <ul id="basic-nav-section-one" class="usa-nav-submenu"><li>
+                      <a href="#">Subsection title</a>
+                    </li><li>
+                      <a href="#">Subsection title</a>
+                    </li><li>
+                      <a href="#">Subsection title</a>
+                    </li></ul></li><li><button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-two">
+              <span>Simple terms</span>
+            </button>
+            <ul id="basic-nav-section-two" class="usa-nav-submenu"><li>
+                      <a href="#">Subsection title</a>
+                    </li><li>
+                      <a href="#">Subsection title</a>
+                    </li><li>
+                      <a href="#">Subsection title</a>
+                    </li></ul></li><li><a class="usa-nav-link" href="javascript:void(0)">
+              <span>Distinct from each other</span>
+            </a></li></ul><form class="usa-search usa-search-small ">
+          <div role="search">
+            <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
+            <input id="basic-search-field-small" type="search" name="search">
+            <button type="submit">
+              <span class="usa-sr-only">Search</span>
+            </button>
+          </div>
+        </form>
+        </nav>
+      </div>
+    </header>
+
+    <div class="usa-overlay"></div>
+
+    <main class="ds-base ds-l-container">
+      <a class="ds-c-skip-nav" href="#content">Skip to main content</a>
+
+      <div class="ds-l-row">
+        <aside class="ds-u-margin-bottom--4 ds-u-md-margin-bottom--0 ds-l-md-col--4 ds-l-lg-col--3">
+          <ul class="ds-c-vertical-nav">
+            <li class="ds-c-vertical-nav__item">
+              <a class="ds-c-vertical-nav__label" href="javascript:void(0);">
+                Page title
+              </a>
+            </li>
+            <li class="ds-c-vertical-nav__item">
+              <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="javascript:void(0);">
+                Page heading (h1)
+              </a>
+              <ul class="ds-c-vertical-nav__subnav">
+                <li class="ds-c-vertical-nav__item">
+                  <a class="ds-c-vertical-nav__label" href="#section-heading-h2">
+                    Section heading (h2)
+                  </a>
+                </li>
+                <li class="ds-c-vertical-nav__item">
+                  <a class="ds-c-vertical-nav__label" href="#section-heading-h3">
+                    Subsection heading (h3)
+                  </a>
+                </li>
+                <li class="ds-c-vertical-nav__item">
+                  <a class="ds-c-vertical-nav__label" href="#section-heading-h4">
+                    Subsection heading (h4)
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="ds-c-vertical-nav__item">
+              <a class="ds-c-vertical-nav__label" href="javascript:void(0);">
+                Page title
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <article id="content" class="ds-l-md-col--8 ds-l-lg-col--9">
+          <h1 class="ds-h1">Page heading (h1)</h1>
+          <p class="ds-text--lead">The page heading communicates the main focus of the page. Make your page heading descriptive and keep it succinct.</p>
+          <h2 class="ds-h2" id="section-heading-h2">Section heading (h2)</h2>
+          <p class="ds-text">These headings introduce, respectively, sections and subsections within your body copy. As you create these headings, follow the same guidelines that you use when writing section headings: Be succinct, descriptive, and precise.</p>
+          <h3 class="ds-h3" id="section-heading-h3">Subsection heading (h3)</h3>
+          <p class="ds-text">The particulars of your body copy will be determined by the topic of your page. Regardless of topic, it’s a good practice to follow the inverted pyramid structure when writing copy: Begin with the information that’s most important to your users and then present information of less importance.</p>
+          <p class="ds-text">Keep each section and subsection focused — a good approach is to include one theme (topic) per section.</p>
+          <h4 class="ds-h4" id="section-heading-h4">Subsection heading (h4)</h4>
+          <p class="ds-text">Use the vertical navigation menu to help your users quickly skip to different sections of your page. The menu is best suited to displaying a hierarchy with one to three levels and, as we mentioned, to display the sub-navigation of a given page.</p>
+        </article>
+      </div>
+    </main>
+
+    <!-- USWDS FOOTER BECAUSE WDS DOESN'T HAVE ONE -->
+
+    <footer class="usa-footer usa-footer-slim" role="contentinfo">
+      <div class="usa-grid usa-footer-return-to-top">
+        <a href="javascript:void(0);">Return to top</a>
+      </div>
+      <div class="usa-footer-primary-section">
+        <div class="usa-grid">
+          <nav class="usa-footer-nav usa-width-two-thirds">
+            <ul class="usa-unstyled-list">
+              <li class="usa-width-one-fourth usa-footer-primary-content">
+                <a class="usa-footer-primary-link" href="javascript:void(0);">Primary link</a>
+              </li>
+              <li class="usa-width-one-fourth usa-footer-primary-content">
+                <a class="usa-footer-primary-link" href="javascript:void(0);">Primary link</a>
+              </li>
+              <li class="usa-width-one-fourth usa-footer-primary-content">
+                <a class="usa-footer-primary-link" href="javascript:void(0);">Primary link</a>
+              </li>
+              <li class="usa-width-one-fourth usa-footer-primary-content">
+                <a class="usa-footer-primary-link" href="javascript:void(0);">Primary link</a>
+              </li>
+            </ul>
+          </nav>
+          <address>
+            <div class="usa-width-one-third">
+              <div class="usa-footer-primary-content usa-footer-contact_info">
+                <p>
+                  <a href="tel:1-800-555-5555">(800) CALL-GOVT</a>
+                </p>
+              </div>
+              <div class="usa-footer-primary-content usa-footer-contact_info">
+                <p><a href="mailto:info@agency.gov">info@agency.gov</a></p>
+              </div>
+            </div>
+          </address>
+        </div>
+      </div>
+
+      <div class="usa-footer-secondary_section">
+        <div class="usa-grid">
+          <div class="usa-footer-logo">
+            <img class="usa-footer-slim-logo-img" src="./img/logo-img.png" alt="">
+            <h3 class="usa-footer-slim-logo-heading">Name of Agency</h3>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>

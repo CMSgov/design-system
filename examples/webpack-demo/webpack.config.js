@@ -75,5 +75,11 @@ module.exports = {
       }
     ]
   },
-  plugins: [new CopyWebpackPlugin([{ from: './src/img', to: 'img' }])]
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: './src/img', to: 'img' },
+      { from: './src/fonts', to: 'fonts' },
+      { from: './src/pages', to: '' }
+    ])
+  ]
 };
