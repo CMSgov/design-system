@@ -40,6 +40,7 @@ ReactDOM.render(
           name: 'Cook County, OR'
         }
       ]}
+      focusTrigger
       label="Select from the options below:"
       onChange={selectedItem => console.log(selectedItem)}
       onInputValueChange={inputVal =>

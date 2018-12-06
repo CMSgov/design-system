@@ -63,6 +63,13 @@ var TextField = exports.TextField = function (_React$PureComponent) {
   }
 
   _createClass(TextField, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.focusTrigger) {
+        this.loader && this.loader.focus();
+      }
+    }
+  }, {
     key: 'ariaLabel',
     value: function ariaLabel() {
       if (this.props.ariaLabel) {
@@ -119,11 +126,14 @@ var TextField = exports.TextField = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           ariaLabel = _props.ariaLabel,
           className = _props.className,
           labelClassName = _props.labelClassName,
           fieldClassName = _props.fieldClassName,
+          focusTrigger = _props.focusTrigger,
           errorMessage = _props.errorMessage,
           hint = _props.hint,
           id = _props.id,
@@ -136,7 +146,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
           fieldRef = _props.fieldRef,
           size = _props.size,
           type = _props.type,
-          fieldProps = _objectWithoutProperties(_props, ['ariaLabel', 'className', 'labelClassName', 'fieldClassName', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'mask', 'multiline', 'label', 'fieldRef', 'size', 'type']);
+          fieldProps = _objectWithoutProperties(_props, ['ariaLabel', 'className', 'labelClassName', 'fieldClassName', 'focusTrigger', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'mask', 'multiline', 'label', 'fieldRef', 'size', 'type']);
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
@@ -152,9 +162,13 @@ var TextField = exports.TextField = function (_React$PureComponent) {
       var field = _react2.default.createElement(FieldComponent, _extends({
         'aria-label': this.ariaLabel(),
         className: fieldClasses,
-        id: this.id,
-        ref: fieldRef,
-        rows: _rows,
+        id: this.id
+        /* eslint-disable no-return-assign */
+        , ref: focusTrigger ? function (loader) {
+          return _this2.loader = loader;
+        } : fieldRef
+        /* eslint-enable no-return-assign */
+        , rows: _rows,
         type: multiline ? undefined : type
       }, fieldProps));
 
@@ -210,6 +224,10 @@ TextField.propTypes = {
    * Access a reference to the `input` or `textarea` element
    */
   fieldRef: _propTypes2.default.func,
+  /**
+   * Used to focus `input` on `componentDidMount()`
+   */
+  focusTrigger: _propTypes2.default.bool,
   /**
    * Additional hint text to display
    */

@@ -23,9 +23,10 @@ export class Autocomplete extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.id = uniqueId('autocomplete_');
+    this.id = this.props.id || uniqueId('autocomplete_');
     this.labelId = uniqueId('autocomplete_header_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
+    this.loader = null;
   }
 
   filterItems(
@@ -69,12 +70,14 @@ export class Autocomplete extends React.PureComponent {
   }
 
   renderChildren(getInputProps) {
-    // Extend props on the TextField, by passing them through
-    // Downshift's `getInputProps` method
+    // Extend props on the TextField, by passing them
+    // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': this.listboxId,
+          autoComplete: this.props.autoCompleteLabel,
+          focusTrigger: this.props.focusTrigger,
           id: this.id,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
@@ -167,6 +170,7 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
+  autoCompleteLabel: 'nope',
   clearInputText: 'Clear search',
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
@@ -178,6 +182,13 @@ Autocomplete.propTypes = {
    * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
   ariaClearLabel: PropTypes.string,
+  /**
+   * Control the `TextField` autocomplete attribute. Defaults to 'nope' to prevent Chrome
+   * from autofilling user presets.
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
+   */
+  autoCompleteLabel: PropTypes.string,
   children: PropTypes.node,
   /**
    * Additional classes to be added to the root element.
@@ -188,6 +199,17 @@ Autocomplete.propTypes = {
    * Clear search text that will appear on the page as part of the rendered `<button>` component
    */
   clearInputText: PropTypes.node,
+  /**
+   * Used to focus child `TextField` on `componentDidMount()`
+   */
+  focusTrigger: PropTypes.bool,
+  /**
+   * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
+   * the `Autocomplete` component will auto-generate one. This prop was provided in cases
+   * where an id might need to be passed to multiple components, such as the `htmlFor`
+   * attribute on a label and the id of an input.
+   */
+  id: PropTypes.string,
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
    *

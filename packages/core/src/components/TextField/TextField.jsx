@@ -17,6 +17,12 @@ export class TextField extends React.PureComponent {
     this.id = props.id || uniqueId('textfield_');
   }
 
+  componentDidMount() {
+    if (this.props.focusTrigger) {
+      this.loader && this.loader.focus();
+    }
+  }
+
   ariaLabel() {
     if (this.props.ariaLabel) {
       return this.props.ariaLabel;
@@ -70,6 +76,7 @@ export class TextField extends React.PureComponent {
       className,
       labelClassName,
       fieldClassName,
+      focusTrigger,
       errorMessage,
       hint,
       id,
@@ -109,7 +116,9 @@ export class TextField extends React.PureComponent {
         aria-label={this.ariaLabel()}
         className={fieldClasses}
         id={this.id}
-        ref={fieldRef}
+        /* eslint-disable no-return-assign */
+        ref={focusTrigger ? loader => (this.loader = loader) : fieldRef}
+        /* eslint-enable no-return-assign */
         rows={_rows}
         type={multiline ? undefined : type}
         {...fieldProps}
@@ -164,6 +173,10 @@ TextField.propTypes = {
    * Access a reference to the `input` or `textarea` element
    */
   fieldRef: PropTypes.func,
+  /**
+   * Used to focus `input` on `componentDidMount()`
+   */
+  focusTrigger: PropTypes.bool,
   /**
    * Additional hint text to display
    */
