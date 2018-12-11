@@ -1,19 +1,7 @@
-$asset-path: '/../../../../../';
+$asset-path: '/../';
 $font-path: '#{$asset-path}fonts';
-$image-path: '#{$asset-path}img';
+$image-path: '#{$asset-path}images';
 
-@import 'uswds/src/stylesheets/uswds';
+//@import 'uswds/src/stylesheets/uswds';
 @import '~@cmsgov/design-system-layout/src/index';
-
-@font-face {
-  font-family: 'OpenSans';
-  src:  url('./fonts/OpenSans-Regular-webfont.woff2') format('woff2'),
-        url('./fonts/OpenSans-Regular-webfont.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-}
-
-.hello {
-  font-family: 'OpenSans';
-  color: red;
-}
+@import '~@cmsgov/design-system-core/src/index';
