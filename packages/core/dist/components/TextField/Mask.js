@@ -10,6 +10,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 exports.maskValue = maskValue;
 exports.unmask = unmask;
 
+require('core-js/fn/array/includes');
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
