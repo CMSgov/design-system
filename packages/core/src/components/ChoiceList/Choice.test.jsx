@@ -231,7 +231,7 @@ describe('Choice', () => {
       const data = shallowRender({ checked: true });
 
       expect(data.wrapper.instance().isControlled).toBe(true);
-      expect(data.wrapper.state('checked')).toBeUndefined();
+      expect(data.wrapper.state()).toBeNull();
     });
   });
 
@@ -279,7 +279,7 @@ describe('Choice', () => {
           target: { checked: false }
         });
 
-        expect(data.wrapper.state('checked')).toBeUndefined();
+        expect(data.wrapper.state()).toBeNull();
       });
     });
 
