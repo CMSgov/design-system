@@ -34,15 +34,6 @@ Markup:
 Style guide: components.date-field
 */
 
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 .ds-c-field--month,
 .ds-c-field--day,
 .ds-c-field--year {

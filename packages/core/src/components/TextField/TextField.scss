@@ -42,6 +42,15 @@ Style guide: components.text-field
 */
 
 // input, textarea, select
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .ds-c-field {
   appearance: none;
   border: $input-border-width solid $input-border-color;
