@@ -60,13 +60,14 @@ describe('Mask', function() {
     const onBlur = jest.fn();
     const wrapper = render(
       { mask: 'currency' },
-      { value: '123', onBlur: onBlur },
-      true
+      { value: '123', onBlur: onBlur }
     ).wrapper;
 
+    // The wrapper is actually the input element that it renders
     wrapper
       .find('input')
-      .simulate('blur', { target: { value: '1234' }, persist: jest.fn() });
+      .props()
+      .onBlur({ target: { value: '1234' }, persist: jest.fn() });
 
     expect(onBlur.mock.calls.length).toBe(1);
   });
@@ -92,29 +93,40 @@ describe('Mask', function() {
 
   describe('Controlled component behavior', () => {
     it('will not cause masking until blur when value prop still matches unmasked input', () => {
-      const { wrapper } = render({ mask: 'currency' }, { value: '1000' }, true);
+      const onChange = event => {
+        // Simulate the change bubbling up to the controlling component and the
+        // controlling component then updating the value prop.
+        wrapper.setProps({
+          children: (
+            <input
+              name="foo"
+              type="text"
+              value={unmask(event.target.value, 'currency')}
+            />
+          )
+        });
+      };
+      const { wrapper } = render(
+        { mask: 'currency', onChange },
+        { value: '1000' }
+      );
       const input = () => wrapper.find('input');
 
       expect(input().prop('value')).toBe('1,000');
-      // Simulate user typing input and the component calling onChange, and that
-      // cascading back down to a new prop for the input.
+
       input()
         .props()
         .onChange({ target: { value: '1,0000' } });
-      wrapper.setProps({
-        children: <input name="foo" type="text" value="10000" />
-      });
       expect(input().prop('value')).toBe('1,0000');
 
-      input().simulate('blur', {
-        target: { value: '1,0000' },
-        persist: jest.fn()
-      });
+      input()
+        .props()
+        .onBlur({ target: { value: '1,0000' }, persist: jest.fn() });
       expect(input().prop('value')).toBe('10,000');
     });
 
     it('will change the value of the input when value prop changes (beyond unmasked/masked differences)', () => {
-      const { wrapper } = render({ mask: 'currency' }, { value: '1000' }, true);
+      const { wrapper } = render({ mask: 'currency' }, { value: '1000' });
       const input = () => wrapper.find('input');
 
       expect(input().prop('value')).toBe('1,000');
