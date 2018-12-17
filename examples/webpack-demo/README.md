@@ -1,4 +1,4 @@
-# Bringing WDS into a static HTML site (with bonus Webpack!)
+# Bringing WDS into a static HTML site (with Webpack!)
 
 There comes a time that you might want to use WDS on a website without having to worry about running anything more complicated than plain HTML/CSS, with maybe a tiny smidgen of Javascript. You don't want to worry about building in React, Vue.js, Pug, or anything else -- you just want to get going. Here's how.
 
