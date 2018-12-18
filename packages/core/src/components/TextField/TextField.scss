@@ -41,7 +41,6 @@ Markup:
 Style guide: components.text-field
 */
 
-// input, textarea, select
 .ds-c-field {
   appearance: none;
   border: $input-border-width solid $input-border-color;
@@ -62,6 +61,15 @@ Style guide: components.text-field
 
   &:focus {
     box-shadow: $focus-shadow;
+  }
+
+  &[type='number'] {
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
   }
 }
 
