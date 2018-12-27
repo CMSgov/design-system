@@ -69,13 +69,14 @@ export class Autocomplete extends React.PureComponent {
     );
   }
 
-  renderChildren(getInputProps) {
+  renderChildren(getInputProps, listboxOpen) {
+    const isOpen = listboxOpen;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
         const propOverrides = {
-          'aria-controls': this.listboxId,
+          'aria-controls': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
@@ -120,7 +121,7 @@ export class Autocomplete extends React.PureComponent {
           isOpen
         }) => (
           <div className={rootClassName}>
-            {this.renderChildren(getInputProps)}
+            {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
               <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
@@ -170,7 +171,7 @@ export class Autocomplete extends React.PureComponent {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
-  autoCompleteLabel: 'nope',
+  autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
@@ -183,8 +184,7 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: PropTypes.string,
   /**
-   * Control the `TextField` autocomplete attribute. Defaults to 'nope' to prevent Chrome
-   * from autofilling user presets.
+   * Control the `TextField` autocomplete attribute. Changed to "off" to support accessibility. Chrome 70 appears to support this correct behavior in early testing.
    *
    * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
    */
