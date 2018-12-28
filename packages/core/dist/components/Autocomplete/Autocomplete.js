@@ -113,15 +113,16 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
     }
   }, {
     key: 'renderChildren',
-    value: function renderChildren(getInputProps) {
+    value: function renderChildren(getInputProps, listboxOpen) {
       var _this3 = this;
 
+      var isOpen = listboxOpen;
       // Extend props on the TextField, by passing them
       // through Downshift's `getInputProps` method
       return _react2.default.Children.map(this.props.children, function (child) {
         if (isTextField(child)) {
           var propOverrides = {
-            'aria-controls': _this3.listboxId,
+            'aria-controls': isOpen ? _this3.listboxId : null,
             autoComplete: _this3.props.autoCompleteLabel,
             focusTrigger: _this3.props.focusTrigger,
             id: _this3.id,
@@ -164,7 +165,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
           return _react2.default.createElement(
             'div',
             { className: rootClassName },
-            _this4.renderChildren(getInputProps),
+            _this4.renderChildren(getInputProps, isOpen),
             isOpen && (loading || items) ? _react2.default.createElement(
               'div',
               { className: 'ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list' },
@@ -209,7 +210,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
 
 Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
-  autoCompleteLabel: 'nope',
+  autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   itemToString: function itemToString(item) {
     return item ? item.name : '';
@@ -224,8 +225,7 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: _propTypes2.default.string,
   /**
-   * Control the `TextField` autocomplete attribute. Defaults to 'nope' to prevent Chrome
-   * from autofilling user presets.
+   * Control the `TextField` autocomplete attribute. Changed to "off" to support accessibility. Chrome 70 appears to support this correct behavior in early testing.
    *
    * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
    */
