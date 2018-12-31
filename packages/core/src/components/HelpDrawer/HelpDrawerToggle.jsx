@@ -14,22 +14,14 @@ export class HelpDrawerToggle extends React.PureComponent {
     this.id = uniqueId('helpDrawer');
   }
 
-  componentWillUpdate(nextProps) {
-    if (
-      this.props.activeHelpDrawer &&
-      this.props.activeHelpDrawer === this.id &&
-      !nextProps.activeHelpDrawer
-    ) {
-      // Return focus when help drawer triggered by this toggle has become hidden
-      this.buttonRef.focus();
-    }
-  }
-
   handleToggleClick() {
     this.props.showDrawer(this.id);
   }
 
   render() {
+    if (!this.props.activeHelpDrawer && this.buttonRef) {
+      this.buttonRef.focus();
+    }
     const blockInlineClass = `ds-u-display--${
       this.props.inline ? 'inline-block' : 'block'
     }`;

@@ -38,7 +38,7 @@ export class HelpDrawer extends React.PureComponent {
               {title}
             </h3>
             <Button
-              ariaLabel={ariaLabel}
+              aria-label={ariaLabel}
               className="ds-u-margin-left--auto"
               size="small"
               onClick={onCloseClick}
