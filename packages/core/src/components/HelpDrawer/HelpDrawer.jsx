@@ -14,6 +14,7 @@ export class HelpDrawer extends React.PureComponent {
 
   render() {
     const {
+      ariaLabel,
       title,
       children,
       onCloseClick,
@@ -37,6 +38,7 @@ export class HelpDrawer extends React.PureComponent {
               {title}
             </h3>
             <Button
+              ariaLabel={ariaLabel}
               className="ds-u-margin-left--auto"
               size="small"
               onClick={onCloseClick}
@@ -62,7 +64,10 @@ export class HelpDrawer extends React.PureComponent {
   }
 }
 
+HelpDrawer.defaultProps = { ariaLabel: 'Close help drawer' };
 HelpDrawer.propTypes = {
+  /** Helps give more context to screen readers on the button that closes the Help Drawer */
+  ariaLabel: PropTypes.string,
   children: PropTypes.node.isRequired,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
