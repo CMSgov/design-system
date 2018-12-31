@@ -8,17 +8,16 @@ class HelpDrawerExample extends React.PureComponent {
     super(props);
 
     this.state = {
-      showHelp: false,
-      activeHelpDrawer: null
+      showHelp: false
     };
   }
 
   handleDrawerClose() {
-    this.setState({ showHelp: false, activeHelpDrawer: null });
+    this.setState({ showHelp: false });
   }
 
-  handleDrawerOpen(id) {
-    this.setState({ showHelp: true, activeHelpDrawer: id });
+  handleDrawerOpen() {
+    this.setState({ showHelp: true });
   }
 
   render() {
@@ -34,8 +33,8 @@ class HelpDrawerExample extends React.PureComponent {
           aliquip ex ea commodo consequat.
         </p>
         <HelpDrawerToggle
-          activeHelpDrawer={this.state.activeHelpDrawer}
-          showDrawer={id => this.handleDrawerOpen(id)}
+          helpDrawerOpen={this.state.showHelp}
+          showDrawer={() => this.handleDrawerOpen()}
         >
           Toggle the help drawer.
         </HelpDrawerToggle>

@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
-  activeHelpDrawer: 'helpDrawer1',
+  helpDrawerOpen: false,
   inline: true,
   showDrawer: () => {}
 };
