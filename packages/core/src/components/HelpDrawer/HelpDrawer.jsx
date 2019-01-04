@@ -53,11 +53,7 @@ export class HelpDrawer extends React.PureComponent {
         </div>
         <div className="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
           <h4 className="ds-text ds-u-margin--0">{footerTitle}</h4>
-          {/* dangerouslySetInnerHTML since footerBody can include HTML tags */}
-          <p
-            className="ds-text ds-u-margin--0"
-            dangerouslySetInnerHTML={{ __html: footerBody }}
-          />
+          <div className="ds-text ds-u-margin--0">{footerBody}</div>
         </div>
       </div>
     );

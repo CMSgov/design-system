@@ -41,18 +41,15 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     >
       Footer title
     </h4>
-    <p
+    <div
       className="ds-text ds-u-margin--0"
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": <div>
-            <p>
-              Some footer content
-            </p>
-          </div>,
-        }
-      }
-    />
+    >
+      <div>
+        <p>
+          Some footer content
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 `;
