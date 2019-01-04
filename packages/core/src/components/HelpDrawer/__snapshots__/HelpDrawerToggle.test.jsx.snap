@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpDrawerToggle renders a snapshot 1`] = `
+<span
+  className="ds-u-display--inline-block"
+>
+  <a
+    className={undefined}
+    href="javascript:void(0);"
+    onClick={[Function]}
+  >
+    <p>
+      link content
+    </p>
+  </a>
+</span>
+`;
