@@ -7,7 +7,7 @@ The design system is a set of open source design and front-end development resou
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
 
-<a href="{{root}}/getting-started" class="ds-c-button ds-c-button--primary ds-c-button--big">Learn how to get started</a>
+<a href="{{root}}/startup/installation/" class="ds-c-button ds-c-button--primary ds-c-button--big">Learn how to get started</a>
 
 ## Goals
 

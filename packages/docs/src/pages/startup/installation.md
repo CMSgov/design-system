@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Installation
 weight: 0
 ---
 
