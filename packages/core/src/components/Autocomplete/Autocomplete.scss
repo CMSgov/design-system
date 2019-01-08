@@ -64,9 +64,9 @@ Style guide: components.autocomplete.react
 
 ## Guidance
 
-- `<Autocomplete>` makes use of the `<Downshift>` component from Paypal: https://github.com/paypal/downshift
+- `<Autocomplete>` makes use of the `<Downshift>` component, maintained by Paypal: [Downshift docs on Github](https://github.com/paypal/downshift). Currently we are holding to version 1.31.16. This will be changing in the future, but has been held to ensure good compatibility with assistive devices (JAWS, NVDA, VoiceOver). 
 - Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
-- The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line `input` box; use a `textarea` instead.
+- The length of the text field provides a hint to users as to how much text to write. Do not ask users to write paragraphs of text in this component; use a `textarea` instead.
 
 **[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
 
@@ -74,7 +74,13 @@ Style guide: components.autocomplete.react
 
 - The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
 - `<Autocomplete>` has visually hidden hint text nested in the `<label>` element. This hint `<span>` is being used to provide contextual instructions for the typeahead, and can be overriden by passing a custom `String` into the `labelHint` prop.
-- `<Autocomplete>` has a link to clear the search, and refocus the `<input>` element. This resets the `selectedItem` prop to `null`, and will re-read the label and screenreader hint text.
+- `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
 
-Style guide: components.autocomplete-field.guidance
+## Focus Management
+
+- `<Autocomplete>` has a new Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
+- This is useful when components are added dynamically, after the application has been rendered. All major screen readers (JAWS, NVDA, VoiceOver) have been tested with this feature, and announce the new input correctly.
+- Instances that contain the `focusTrigger` prop may fire Downshift's [onInputValueChange](https://github.com/paypal/downshift#oninputvaluechange) method, causing the `inputValue` to be set back to an empty string. In these cases, you may want to access Downshift's [state reducer](https://github.com/paypal/downshift#statereducer) and manage your component's local state for `blur` and `click` events.
+
+Style guide: components.autocomplete.guidance
 */

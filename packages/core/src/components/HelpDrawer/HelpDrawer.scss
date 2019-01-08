@@ -1,0 +1,112 @@
+@import '@cmsgov/design-system-support/src/settings/index';
+
+/*
+Help Drawer
+
+A help drawer provides a space for medium to long-form help
+content — content that's too long or not common enough to warrant
+being on the page by default.
+
+On large screens it's fixed to the side of the screen, and on
+smaller screens it overlays the entire screen.
+
+Render the drawer below the toggle bottom that triggers it.
+This way the markup remains semantically sound and screen reader friendly.
+
+Markup:
+<div>
+  <p><strong>Note: This is just an example of the HTML markup. See the React example for a functioning example.</strong></p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <span class="ds-u-display--block">
+    <a href="javascript:void(0);">Toggle the help drawer.</a>
+  </span>
+  <div class="ds-c-help-drawer">
+    <div class="ds-c-help-drawer__header">
+      <div class="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
+        <h3 tabindex="0" class="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2">Help Drawer Title</h3>
+        <button class="ds-c-button ds-c-button--secondary ds-c-button--small ds-u-margin-left--auto" type="button">Close</button>
+      </div>
+    </div>
+    <div class="ds-c-help-drawer__body ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
+      <strong>An Explanation</strong>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div class="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
+      <h4 class="ds-text ds-u-margin--0">Footer title</h4>
+      <p class="ds-text ds-u-margin--0">Footer content</p>
+    </div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+Style guide: components.help-drawer
+*/
+
+/*
+`<HelpDrawer>`
+
+@react-component HelpDrawer
+
+Style guide: components.help-drawer.react-help-drawer
+*/
+
+/*
+`<HelpDrawerToggle>`
+
+@hide-example
+
+@react-component HelpDrawerToggle
+
+Style guide: components.help-drawer.react-help-drawer-toggle
+*/
+
+@keyframes slideInHelpDrawer {
+  from {
+    opacity: 0;
+    transform: translate3d(200px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ds-c-help-drawer {
+  background: $color-background;
+  bottom: 0;
+  box-shadow: -2px 0 0 $border-color;
+  display: flex; // flex layout helps stick the footer to the bottom
+  flex-direction: column;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  @media (min-width: $width-md) {
+    animation: slideInHelpDrawer $animation-speed-2 ease-in-out both; // slide in from the right
+    max-width: 33%; // this equates to 4 grid columns
+  }
+
+  @media (min-width: $width-xl) {
+    max-width: $measure-base;
+  }
+}
+
+.ds-c-help-drawer__header {
+  position: sticky;
+  top: 0;
+}
+
+.ds-c-help-drawer__body {
+  // Stretch the body so that the footer sticks to the
+  // bottom of the screen
+  flex-grow: 1;
+
+  p:first-child {
+    // Prevent too much space at the top of the body area
+    margin-top: 0;
+  }
+}

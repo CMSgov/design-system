@@ -18,7 +18,7 @@ exports[`TextField masks renders currency mask 1`] = `
     >
       $
     </div>
-    <_Mask
+    <Mask
       mask="currency"
     >
       <input
@@ -28,7 +28,7 @@ exports[`TextField masks renders currency mask 1`] = `
         name="spec-field"
         type="text"
       />
-    </_Mask>
+    </Mask>
   </div>
 </div>
 `;
