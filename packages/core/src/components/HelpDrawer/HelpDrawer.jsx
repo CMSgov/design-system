@@ -68,7 +68,7 @@ HelpDrawer.defaultProps = {
 HelpDrawer.propTypes = {
   /** Helps give more context to screen readers on the button that closes the Help Drawer */
   ariaLabel: PropTypes.string,
-  closeButtonText: PropTypes.string.isRequired,
+  closeButtonText: PropTypes.string,
   children: PropTypes.node.isRequired,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
