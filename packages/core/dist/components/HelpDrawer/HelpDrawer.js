@@ -51,6 +51,7 @@ var HelpDrawer = exports.HelpDrawer = function (_React$PureComponent) {
 
       var _props = this.props,
           ariaLabel = _props.ariaLabel,
+          closeButtonText = _props.closeButtonText,
           title = _props.title,
           children = _props.children,
           onCloseClick = _props.onCloseClick,
@@ -87,7 +88,7 @@ var HelpDrawer = exports.HelpDrawer = function (_React$PureComponent) {
                 onClick: onCloseClick,
                 variation: 'secondary'
               },
-              'Close'
+              closeButtonText
             )
           )
         ),
@@ -117,10 +118,14 @@ var HelpDrawer = exports.HelpDrawer = function (_React$PureComponent) {
   return HelpDrawer;
 }(_react2.default.PureComponent);
 
-HelpDrawer.defaultProps = { ariaLabel: 'Close help drawer' };
+HelpDrawer.defaultProps = {
+  ariaLabel: 'Close help drawer',
+  closeButtonText: 'Close'
+};
 HelpDrawer.propTypes = {
   /** Helps give more context to screen readers on the button that closes the Help Drawer */
   ariaLabel: _propTypes2.default.string,
+  closeButtonText: _propTypes2.default.string,
   children: _propTypes2.default.node.isRequired,
   footerBody: _propTypes2.default.node,
   footerTitle: _propTypes2.default.string,
