@@ -10,6 +10,8 @@ export * from './ChoiceList/Select';
 export * from './DateField/DateField';
 export * from './Dialog/Dialog';
 export * from './FormLabel/FormLabel';
+export * from './HelpDrawer/HelpDrawer';
+export * from './HelpDrawer/HelpDrawerToggle';
 export * from './MonthPicker/MonthPicker';
 export * from './Review/Review';
 export * from './SkipNav/SkipNav';

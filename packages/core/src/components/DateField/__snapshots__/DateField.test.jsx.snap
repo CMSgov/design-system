@@ -17,7 +17,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -54,9 +54,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -91,9 +89,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -155,7 +151,7 @@ exports[`DateField has errorMessage 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -192,9 +188,7 @@ exports[`DateField has errorMessage 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -229,9 +223,7 @@ exports[`DateField has errorMessage 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -286,7 +278,7 @@ exports[`DateField has invalid day 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -323,9 +315,7 @@ exports[`DateField has invalid day 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -360,9 +350,7 @@ exports[`DateField has invalid day 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -417,7 +405,7 @@ exports[`DateField has invalid month 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -454,9 +442,7 @@ exports[`DateField has invalid month 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -491,9 +477,7 @@ exports[`DateField has invalid month 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -548,7 +532,7 @@ exports[`DateField has invalid year 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -585,9 +569,7 @@ exports[`DateField has invalid year 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -622,9 +604,7 @@ exports[`DateField has invalid year 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -681,7 +661,7 @@ exports[`DateField has requirementLabel 1`] = `
     >
       Optional.
        
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -718,9 +698,7 @@ exports[`DateField has requirementLabel 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -755,9 +733,7 @@ exports[`DateField has requirementLabel 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -812,7 +788,7 @@ exports[`DateField is inversed 1`] = `
     <span
       className="ds-c-field__hint ds-c-field__hint--inverse"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -849,9 +825,7 @@ exports[`DateField is inversed 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -886,9 +860,7 @@ exports[`DateField is inversed 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -943,7 +915,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     <span
       className="ds-c-field__hint"
     >
-      For example: 4 28 1986
+      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
@@ -980,9 +952,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>
@@ -1017,9 +987,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       />
     </div>
     <span
-      aria-hidden="true"
       className="ds-c-datefield__separator"
-      role="presentation"
     >
       /
     </span>

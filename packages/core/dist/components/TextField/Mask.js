@@ -216,9 +216,8 @@ var Mask = exports.Mask = function (_React$PureComponent) {
         // state and mask this new value.
 
         if (unmask(fieldProps.value, mask) !== unmask(this.state.value, mask)) {
-          this.setState({
-            value: maskValue(fieldProps.value || '', mask)
-          });
+          var value = maskValue(fieldProps.value || '', mask);
+          this.setState({ value: value }); // eslint-disable-line react/no-did-update-set-state
         }
       }
     }

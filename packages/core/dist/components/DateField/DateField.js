@@ -159,11 +159,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
           })),
           _react2.default.createElement(
             'span',
-            {
-              'aria-hidden': 'true',
-              role: 'presentation',
-              className: 'ds-c-datefield__separator'
-            },
+            { className: 'ds-c-datefield__separator' },
             '/'
           ),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
@@ -184,11 +180,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
           })),
           _react2.default.createElement(
             'span',
-            {
-              'aria-hidden': 'true',
-              role: 'presentation',
-              className: 'ds-c-datefield__separator'
-            },
+            { className: 'ds-c-datefield__separator' },
             '/'
           ),
           _react2.default.createElement(_TextField2.default, _extends({}, sharedDateFieldProps, {
@@ -217,7 +209,7 @@ var DateField = exports.DateField = function (_React$PureComponent) {
 
 DateField.defaultProps = {
   label: 'Date',
-  hint: 'For example: 4 28 1986',
+  hint: 'For example: 4 / 28 / 1986',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
