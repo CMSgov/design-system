@@ -18,20 +18,17 @@ There is a very basic Webpack config included in this demo. It reads and copies 
 
 This project uses `yarn` to manage Node packages. If you're already set up', skip ahead. Otherwise, here's a quick primer on setting up a dev environment from scratch (on a Mac, at any rate):
 
-* Install `homebrew`: https://brew.sh/ This will also install Node for you, if it doesn't already exist, and sets you up to then install Yarn
-* Install `yarn`: https://yarnpkg.com/en/docs/getting-started
+1. Install `homebrew`: https://brew.sh/ This will also install Node for you, if it doesn't already exist, and sets you up to then install Yarn
+2. Install `yarn`: https://yarnpkg.com/en/docs/getting-started
 
 #### Set up the project locally
 
-* Download the repo `https://github.com/CMSgov/design-system` and navigate to `examples/webpack-demo`. This is the core of this project.
-* Since you have `yarn` installed, you should be able to run `yarn install` to get all the packages and dependencies -- including Webpack.
+1. Download the repo `https://github.com/CMSgov/design-system` and navigate to `examples/webpack-demo`. This is the core of this project.
+2. Since you have `yarn` installed, you should be able to run `yarn install` to get all the packages and dependencies -- including Webpack.
 
 > If you run into trouble with `yarn` commands, try running `yarn install --ignore-engines` instead.
 
-* Install the design system: in your Terminal, run `yarn add @cmsgov/design-system-core` and `yarn add @cmsgov/design-system-layout`. This will install all the design system's packages for you, including Webpack.
-* Run `yarn run dev` to compile the files into the `dist` folder.
-
-You should now be able to navigate to `examples/webpack-demo/dist/index.html`, which you can open in any browser. Changes you make to the files in `examples/webpack-demo/src` will be picked up by Webpack and recompiled, and if you refresh the browser those changes should be visible.
+3. You should now be able to navigate to `examples/webpack-demo/dist/index.html`, which you can open in any browser. Changes you make to the files in `examples/webpack-demo/src` will be picked up by Webpack and recompiled, and if you refresh the browser those changes should be visible.
 
 ### Go forth and edit!
 
