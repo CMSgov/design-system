@@ -136,6 +136,18 @@ Object.keys(_HelpDrawer).forEach(function (key) {
   });
 });
 
+var _HelpDrawerToggle = require('./HelpDrawer/HelpDrawerToggle');
+
+Object.keys(_HelpDrawerToggle).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _HelpDrawerToggle[key];
+    }
+  });
+});
+
 var _MonthPicker = require('./MonthPicker/MonthPicker');
 
 Object.keys(_MonthPicker).forEach(function (key) {
