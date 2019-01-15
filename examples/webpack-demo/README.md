@@ -28,7 +28,9 @@ This project uses `yarn` to manage Node packages. If you're already set up', ski
 
 > If you run into trouble with `yarn` commands, try running `yarn install --ignore-engines` instead.
 
-3. You should now be able to navigate to `examples/webpack-demo/dist/index.html`, which you can open in any browser. Changes you make to the files in `examples/webpack-demo/src` will be picked up by Webpack and recompiled, and if you refresh the browser those changes should be visible.
+3. Run `yarn dev` to compile the files into the `dist` folder.
+
+4. You should now be able to navigate to `examples/webpack-demo/dist/index.html`, which you can open in any browser. Changes you make to the files in `examples/webpack-demo/src` will be picked up by Webpack and recompiled, and if you refresh the browser those changes should be visible.
 
 ### Go forth and edit!
 
