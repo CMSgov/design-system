@@ -5,10 +5,13 @@ import React from 'react';
  * A link that triggers the visibility of a help drawer
  */
 export class HelpDrawerToggle extends React.PureComponent {
-  render() {
-    if (!this.props.helpDrawerOpen && this.buttonRef) {
+  componentDidUpdate(prevProps) {
+    if (!this.props.helpDrawerOpen && prevProps.helpDrawerOpen) {
       this.buttonRef.focus();
     }
+  }
+
+  render() {
     const blockInlineClass = `ds-u-display--${
       this.props.inline ? 'inline-block' : 'block'
     }`;
