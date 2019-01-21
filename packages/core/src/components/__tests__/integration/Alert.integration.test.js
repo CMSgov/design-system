@@ -1,8 +1,8 @@
 import 'chromedriver';
-import { DRIVER, ROOT_URL } from '../../../helpers/constants';
+import { DRIVER, ROOT_URL, RULESET_ALL } from '../../../helpers/constants';
 import AxeBuilder from 'axe-webdriverjs';
 
-const rootURL = `${ROOT_URL}example/components.alert.react/`;
+const rootURL = `${ROOT_URL}/example/components.alert.react/`;
 let driver;
 
 afterAll(() => {
@@ -20,7 +20,7 @@ describe('Alert component', () => {
     await driver.get(rootURL);
 
     AxeBuilder(driver)
-      .withTags(['section508', 'wcag2a', 'wcag2aa', 'wcag21aa'])
+      .withTags(RULESET_ALL)
       .analyze(results => {
         console.log(results.violations);
         expect(results.violations.length).toBe(0);
