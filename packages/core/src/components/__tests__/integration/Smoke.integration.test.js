@@ -1,13 +1,10 @@
-import 'selenium-webdriver/chrome';
 import 'chromedriver';
+import { DRIVER, ROOT_URL } from '../../../helpers/constants';
 import {
   getElementById,
   getElementByXPath
 } from '../../../helpers/e2eTestHelpers';
-import { Builder } from 'selenium-webdriver';
 
-const d = new Builder().forBrowser('chrome').build();
-const rootURL = 'http://localhost:3000/';
 let actual, driver, el, expected;
 
 afterAll(() => {
@@ -16,7 +13,7 @@ afterAll(() => {
 
 describe('CMS Design System smoke test', () => {
   it('Waits for the driver to start', () => {
-    return d.then(_d => {
+    return DRIVER.then(_d => {
       driver = _d;
     });
   });
@@ -30,7 +27,7 @@ describe('CMS Design System smoke test', () => {
       .manage()
       .window()
       .setSize(1280, 1024);
-    await driver.get(rootURL);
+    await driver.get(ROOT_URL);
   });
 
   it('Should click Getting Started and load the /getting-started page', async() => {

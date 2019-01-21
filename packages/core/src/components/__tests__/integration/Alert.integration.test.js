@@ -1,10 +1,8 @@
-import 'selenium-webdriver/chrome';
 import 'chromedriver';
+import { DRIVER, ROOT_URL } from '../../../helpers/constants';
 import AxeBuilder from 'axe-webdriverjs';
-import { Builder } from 'selenium-webdriver';
 
-const d = new Builder().forBrowser('chrome').build();
-const rootURL = 'http://localhost:3000/example/components.alert.react/';
+const rootURL = `${ROOT_URL}example/components.alert.react/`;
 let driver;
 
 afterAll(() => {
@@ -13,7 +11,7 @@ afterAll(() => {
 
 describe('Alert component', () => {
   it('Waits for the driver to start', () => {
-    return d.then(_d => {
+    return DRIVER.then(_d => {
       driver = _d;
     });
   });
@@ -22,7 +20,7 @@ describe('Alert component', () => {
     await driver.get(rootURL);
 
     AxeBuilder(driver)
-      .withTags(['section508', 'wcag2a', 'wcag2aa'])
+      .withTags(['section508', 'wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze(results => {
         console.log(results.violations);
         expect(results.violations.length).toBe(0);
