@@ -36,13 +36,17 @@ var HelpDrawerToggle = exports.HelpDrawerToggle = function (_React$PureComponent
   }
 
   _createClass(HelpDrawerToggle, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (!this.props.helpDrawerOpen && prevProps.helpDrawerOpen) {
+        this.buttonRef.focus();
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      if (!this.props.helpDrawerOpen && this.buttonRef) {
-        this.buttonRef.focus();
-      }
       var blockInlineClass = 'ds-u-display--' + (this.props.inline ? 'inline-block' : 'block');
       /* eslint-disable jsx-a11y/anchor-is-valid */
       return (
