@@ -3,8 +3,6 @@ title: Examples
 weight: 4
 ---
 
-<h2 id="examples" class="ds-h2 ds-u-color--primary-darker">Examples</h2>
-
 Additional examples of the design system in use can be viewed on GitHub. These projects demonstrate the various ways you can incorporate the design system into your development process and various use cases.
 
 <a href="https://github.com/CMSgov/design-system/tree/master/examples/" class="ds-c-button">Browse example projects</a>

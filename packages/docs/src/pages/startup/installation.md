@@ -3,8 +3,6 @@ title: Installation
 weight: 0
 ---
 
-<h2 id="installation" class="ds-h2 ds-u-color--primary-darker">Installation</h2>
-
 The design system is available as NPM packages or via a <a href="https://github.com/CMSgov/design-system/archive/v1.30.0.zip">.zip download</a>.
 
 The design system consists of two packages which are installed separately.
@@ -29,10 +27,10 @@ The [**layout** package](https://www.npmjs.com/package/@cmsgov/design-system-lay
 npm install --save @cmsgov/design-system-layout
 ```
 
-<h2 id="need-help" class="ds-h2 ds-u-color--primary-darker">Need more information on NPM?</h2>
+<h3 id="need-help" class="ds-h3 ds-u-color--primary-darker">Need more information on NPM?</h2>
 <p class="ds-c-alert__text">Learn more about using packages and NPM at <a href="https://www.npmjs.com/">npmjs.org</a>.</p>
 
-<h3>Usage</h3>
+<h2>Usage</h2>
 
 We offer two versions of design system assets: a minified + compiled version (located in a `dist` directory), and an un-minified + non-compiled version (located in a `src` directory). Use the minified version in production environments. Use the un-minified version in a development environment to debug in the browser, or if you'd like to manage the un-compiled files with your own build system.
 

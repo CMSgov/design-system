@@ -3,8 +3,6 @@ title: Fonts and Images
 weight: 1
 ---
 
-<h2 id="fonts" class="ds-h2 ds-u-color--primary-darker">Fonts and images</h2>
-
 Once you've downloaded the core package, copy the design system's `fonts` and `images` directories into the same directory as your site's CSS directory.
 
 By default, the design system expects a file structure like this:

@@ -3,8 +3,6 @@ title: Using Sass/CSS
 weight: 2
 ---
 
-<h2 id="installation" class="ds-h2 ds-u-color--primary-darker">Using Sass and CSS</h2>
-
 <h4 class="ds-h4 ds-u-font-size--base">Minified CSS</h4>
 
 The easiest way to add the design system's styles to your site is by referencing its minified CSS.
