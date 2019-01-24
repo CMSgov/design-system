@@ -14,9 +14,9 @@
     "posttest": "yarn lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "yarn start --theme",
-    "test": "jest",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "update-snapshots": "NODE_ENV=test jest -u",
+    "test": "yarn test:unit && yarn:test:e2e && yarn lint",
+    "test:unit": "bash scripts/jest.sh",
+    "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {

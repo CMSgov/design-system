@@ -21,7 +21,10 @@ describe('Alert component', () => {
 
     AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .analyze(results => {
+      .analyze((err, results) => {
+        if (err) {
+          // handle error
+        }
         console.log(results.violations);
         expect(results.violations.length).toBe(0);
         done();
