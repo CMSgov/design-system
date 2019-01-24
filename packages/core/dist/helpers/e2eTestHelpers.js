@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getElementByXPath = exports.getElementById = undefined;
+exports.getElementByXPath = exports.getElementById = exports._driver = undefined;
 
 var getElementById = exports.getElementById = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(driver, id) {
@@ -63,4 +63,12 @@ var _seleniumWebdriver = require('selenium-webdriver');
 
 var _constants = require('./constants');
 
+var _chrome = require('selenium-webdriver/chrome');
+
+var _chrome2 = _interopRequireDefault(_chrome);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var _driver = exports._driver = new _seleniumWebdriver.Builder().forBrowser('chrome').setChromeOptions(new _chrome2.default.Options().headless()).build();

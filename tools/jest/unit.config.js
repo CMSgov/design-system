@@ -7,10 +7,10 @@ module.exports = {
   ],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: [
-    '<rootDir>/e2e/',
     '<rootDir>/examples/',
     '<rootDir>/node_modules/',
     '<rootDir>/packages/*/node_modules/',
+    '<rootDir>/packages/core/src/e2e/',
     '<rootDir>/packages/themes/*/node_modules/',
     '<rootDir>/packages/generator-cmsgov/generators/app/templates/'
   ]

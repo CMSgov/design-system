@@ -1,6 +1,7 @@
 import 'chromedriver';
-import { DRIVER, ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
 import AxeBuilder from 'axe-webdriverjs';
+import { _driver } from '../helpers/e2eTestHelpers';
 
 const rootURL = `${ROOT_URL}/example/components.alert.react/`;
 let driver;
@@ -11,7 +12,7 @@ afterAll(() => {
 
 describe('Alert component', () => {
   it('Waits for the driver to start', () => {
-    return DRIVER.then(_d => {
+    return _driver.then(_d => {
       driver = _d;
     });
   });

@@ -1,6 +1,10 @@
 import 'chromedriver';
-import { DRIVER, ROOT_URL } from '../helpers/constants';
-import { getElementById, getElementByXPath } from '../helpers/e2eTestHelpers';
+import {
+  _driver,
+  getElementById,
+  getElementByXPath
+} from '../helpers/e2eTestHelpers';
+import { ROOT_URL } from '../helpers/constants';
 
 let actual, driver, el, expected;
 
@@ -10,7 +14,7 @@ afterAll(() => {
 
 describe('CMS Design System smoke test', () => {
   it('Waits for the driver to start', () => {
-    return DRIVER.then(_d => {
+    return _driver.then(_d => {
       driver = _d;
     });
   });

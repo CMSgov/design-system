@@ -1,11 +1,4 @@
-import { Builder } from 'selenium-webdriver';
-import chrome from 'selenium-webdriver/chrome';
-
-export const DRIVER = new Builder()
-  .forBrowser('chrome')
-  .setChromeOptions(new chrome.Options().headless())
-  .build();
-export const ROOT_URL = 'http://localhost:3000';
+export const ROOT_URL = 'http://localhost:3001';
 export const RULESET_ALL = ['section508', 'wcag2a', 'wcag2aa', 'wcag21aa'];
 export const RULESET_BEST_PRACTICE = ['best-practice'];
 export const RULESET_WCAG_TWO = ['section508', 'wcag2a', 'wcag2aa'];
