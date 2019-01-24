@@ -2,7 +2,7 @@
 # Reorganized Jest controller for unit tests, e2e, and snapshots
 
 # Initialize variables
-WATCH = false
+WATCH=false
 SKIP_BUILD=${SKIP_BUILD:-false}
 E2E=false
 EXTRA_OPTS=()
@@ -22,11 +22,6 @@ while [[ $# -gt 0 ]]; do
       E2E=true
       shift # past argument
       ;;
-    --slow-mo)
-      SLOW_MO="$2"
-      shift # past argument
-      shift # past value
-      ;;
     *) # unknown option
       EXTRA_OPTS+=("$1") # save it in an array for later
       shift # past argument
@@ -35,17 +30,13 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ "$E2E" = true ]; then
-  # e2e config here
+  OPTS="--config tools/jest/e2e.config.js"
 else
-  OPTS="--config=tools/jest/unit.config.js"
+  OPTS="--config tools/jest/unit.config.js"
 fi
 
 if [ "$SKIP_BUILD" = true ]; then
   export SKIP_BUILD
-fi
-
-if [ "$SLOW_MO" = true ]; then
-  export SLOW_MO
 fi
 
 OPTS="${OPTS} ${EXTRA_OPTS[@]}"

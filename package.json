@@ -14,8 +14,9 @@
     "posttest": "yarn lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "yarn start --theme",
-    "test": "yarn test:unit && yarn:test:e2e && yarn lint",
+    "test": "yarn test:unit && yarn test:e2e && yarn lint",
     "test:unit": "bash scripts/jest.sh",
+    "test:e2e": "bash scripts/jest.sh --e2e",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
@@ -28,6 +29,7 @@
     "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.3",
     "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
@@ -100,23 +102,6 @@
   },
   "engines": {
     "node": ">=7.0.0"
-  },
-  "jest": {
-    "testURL": "http://localhost",
-    "setupFiles": [
-      "<rootDir>/tools/jest/polyfills.js",
-      "<rootDir>/tools/jest/setupEnzyme.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/examples/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/packages/*/node_modules/",
-      "<rootDir>/packages/themes/*/node_modules/",
-      "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
-    ]
   },
   "lint-staged": {
     "*.{js,jsx}": [

@@ -1,9 +1,6 @@
 import 'chromedriver';
-import { DRIVER, ROOT_URL } from '../../../helpers/constants';
-import {
-  getElementById,
-  getElementByXPath
-} from '../../../helpers/e2eTestHelpers';
+import { DRIVER, ROOT_URL } from '../helpers/constants';
+import { getElementById, getElementByXPath } from '../helpers/e2eTestHelpers';
 
 let actual, driver, el, expected;
 
