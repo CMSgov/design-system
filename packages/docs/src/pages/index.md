@@ -3,6 +3,13 @@ title: Introduction
 weight: -100
 ---
 
+<div class="ds-c-alert">
+  <div class="ds-c-alert__body">
+    <h3 class="ds-c-alert__heading">Tell us how the system is working for you</h3>
+    <p class="ds-c-alert__text">We're conducting a survey of design system users in order to understand how they use it, what’s working well, and where it has room to grow. <br><a href="https://forms.cms.gov/cms-wide-design-system-survey" target="_blank">Take the survey</a></p>
+  </div>
+</div>
+
 The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities), and a [grid framework]({{root}}/layout/grid) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
