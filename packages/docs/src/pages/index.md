@@ -14,7 +14,7 @@ The design system is a set of open source design and front-end development resou
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
 
-<a href="{{root}}/getting-started" class="ds-c-button ds-c-button--primary ds-c-button--big">Learn how to get started</a>
+<a href="{{root}}/startup/installation/" class="ds-c-button ds-c-button--primary ds-c-button--big">Learn how to get started</a>
 
 ## Goals
 
@@ -31,4 +31,4 @@ In order to meet these goals we are:
 - Reducing the overall footprint of websites by writing [scalable CSS]({{root}}/guidelines/code-conventions).
 - Supporting rapid development with [utility classes]({{root}}/utilities) and easy-to-use components with best practices baked in.
 - Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/style/typography), [layout]({{root}}/layout/grid), and [color]({{root}}/style/color).
-- Distributing resources as [NPM packages]({{root}}/getting-started) which can be easily installed, updated, and imported.
+- Distributing resources as [NPM packages]({{root}}/startup/installation/) which can be easily installed, updated, and imported.
