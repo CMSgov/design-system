@@ -22,16 +22,12 @@ afterEach(() => {
 });
 
 describe('CMS Design System smoke test', () => {
-  it('Initialises the context', async() => {
+  it('Sets window size and scroll position', async() => {
     await driver.get(ROOT_URL);
     await driver
       .manage()
       .window()
-      .setPosition(0, 0);
-    await driver
-      .manage()
-      .window()
-      .setSize(1280, 1024);
+      .setRect(1024, 768, 0, 0);
   });
 
   it('Should click Getting Started and load the /getting-started page', async() => {

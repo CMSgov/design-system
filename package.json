@@ -89,7 +89,7 @@
     "react-test-renderer": "^16.2.0",
     "recast": "^0.14.4",
     "run-sequence": "^2.2.0",
-    "selenium-webdriver": "3.x",
+    "selenium-webdriver": "4.0.0-alpha.1",
     "static-server": "^2.2.1",
     "stylelint": "^9.1.1",
     "stylelint-config-prettier": "^2.1.0",
