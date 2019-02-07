@@ -103,7 +103,7 @@ Style guide: components.help-drawer.react-help-drawer-toggle
 .ds-c-help-drawer__body {
   // Stretch the body so that the footer sticks to the
   // bottom of the screen
-  flex-grow: 1;
+  flex: 1 0 auto;
 
   p:first-child {
     // Prevent too much space at the top of the body area
