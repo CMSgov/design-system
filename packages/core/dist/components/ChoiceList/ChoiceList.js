@@ -154,7 +154,8 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
           name: this.props.name,
           onBlur: this.props.onBlur,
           onChange: this.props.onChange,
-          className: classes
+          className: classes,
+          'aria-label': this.props.ariaLabel
         }, selectProps),
         options
       );
@@ -282,7 +283,11 @@ ChoiceList.propTypes = {
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.
    */
-  type: _propTypes2.default.oneOf(['checkbox', 'radio', 'select'])
+  type: _propTypes2.default.oneOf(['checkbox', 'radio', 'select']),
+  /**
+   * Adds `aria-label` attribute if component renders a select
+   */
+  ariaLabel: _propTypes2.default.string
 };
 
 exports.default = ChoiceList;
