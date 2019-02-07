@@ -91,6 +91,7 @@ export class ChoiceList extends React.PureComponent {
         onBlur={this.props.onBlur}
         onChange={this.props.onChange}
         className={classes}
+        aria-label={this.props.ariaLabel}
         {...selectProps}
       >
         {options}
@@ -216,7 +217,11 @@ ChoiceList.propTypes = {
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.
    */
-  type: PropTypes.oneOf(['checkbox', 'radio', 'select'])
+  type: PropTypes.oneOf(['checkbox', 'radio', 'select']),
+  /**
+   * Adds `aria-label` attribute if component renders a select
+   */
+  ariaLabel: PropTypes.string
 };
 
 export default ChoiceList;
