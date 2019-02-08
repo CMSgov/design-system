@@ -17,6 +17,20 @@ ReactDOM.render(
   <div>
     <ChoiceList
       choices={[
+        { label: 'Option 1 - no children', value: 'option1' },
+        {
+          label: 'Option 2 - children',
+          value: 'option2',
+          checkedChildren: '123,ABC'
+        }
+      ]}
+      className="ds-u-margin-top--0"
+      label="Radio example with children"
+      name="choices_field_children"
+    />
+
+    <ChoiceList
+      choices={[
         { label: 'Choice 1', value: 'A' },
         { defaultChecked: true, label: 'Choice 2', value: 'B' }
       ]}
