@@ -66,16 +66,16 @@ ReactDOM.render(
     <div className="ds-u-margin-top--4">
       <fieldset className="ds-c-fieldset">
         <legend className="ds-c-label">Radios with children</legend>
-        <Choice name="radio_choice" type="radio" value="a">
-          Radio A
+        <Choice name="radio_choice_children" type="radio" value="c">
+          Radio C
         </Choice>
         <Choice
-          name="radio_choice"
+          name="radio_choice_children"
           type="radio"
-          value="b"
+          value="d"
           checkedChildren={childSelect}
         >
-          Radio B - with children
+          Radio D - with children
         </Choice>
       </fieldset>
     </div>
