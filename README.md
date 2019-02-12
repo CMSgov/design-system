@@ -29,8 +29,63 @@ Examples of the design system in use can be found in the [`examples` directory](
 
 ## Contributing
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about setting up a local development environment, contributing to the design system, and our coding guidelines.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
+
+## Running locally
+
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
+
+[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+
+### Getting started
+
+1. `yarn install`
+   * This will also run [Lerna](https://lernajs.io/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
+1. `yarn start`
+
+_Note_: When you create a Git commit, any staged scripts will be automatically ran through ESLint and Prettier. If the linter catches an error, your commit will fail. This is a feature, not a bug :)
+
+### Scripts
+
+These scripts can all be run from the root level of the repo:
+
+* `yarn start`
+  * Starts local server running the documentation site
+  * Regenerates documentation when files change
+* `yarn build`
+  * Compile/transpile/uglify everything and makes things release-ready.
+* `yarn bump`
+  * Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+* `yarn generate`
+  * Generates the necessary files for a new core component
+  * Alias: `yarn g`
+* `yarn test`
+  * Runs JS unit tests
+  * Lints JS using ESLint
+  * Lints Sass using stylelint
+* `yarn test:watch`
+  * Runs JS unit tests and will continue to run tests as files change
+* `yarn update-snapshots`
+  * Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+* `yarn lint`
+  * Runs just the linting portion of the tests
+
+#### Theme scripts
+
+You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
+
+* `yarn start:theme`
+* `yarn build:theme`
+
+These scripts will also place the documentation into a `docs` subdirectory in your theme's directory.
+
+If you have multiple directories inside of `packages/themes`, you can specify which theme to use by passing the scripts the name of the folder. For example: `yarn start:theme my-theme-folder-name`
+
+If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
+
 
 ## Contact
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
+
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
