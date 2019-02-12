@@ -14,3 +14,5 @@ List deprecated features or components removed in this PR.
 
 ### Fixed
 List any bug fixes.
+
+**Note:** If your changes involve code please update the snapshots by running `yarn update-snapshots`.
