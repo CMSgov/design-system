@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-support",
-  "version": "1.30.2",
+  "version": "1.30.3",
   "publishConfig": {
     "access": "public"
   },
