@@ -85,6 +85,7 @@ Style guide: components.button
 .ds-c-button--transparent,
 .ds-c-button--transparent-inverse {
   border-color: transparent;
+  text-decoration: underline;
 
   &:focus,
   &:hover,
