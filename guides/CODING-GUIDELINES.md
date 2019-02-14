@@ -6,7 +6,7 @@ These should be treated as guides — rules can be modified according to project
 
 ## Tooling
 
-To make it easier to catch issues early, we suggest integrating linting tools into your IDE.
+To make it easier to catch issues early, we suggest integrating linting tools into your development environment.
 
 - Sublime Text
   - [SublimeLinter](http://www.sublimelinter.com)
