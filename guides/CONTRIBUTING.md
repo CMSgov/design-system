@@ -37,7 +37,7 @@ At this stage, you just need to present your idea and evidence of the user needs
 
 ### 3. The issue is reviewed
 
-The [Design System working group](#) will review your item proposal and decide if it is useful and unique.
+The [Design System team](/guides/GOVERNANCE.md#design-system-team) will review your item proposal and decide if it is useful and unique.
 This review helps people avoid spending time and effort on something that’s not needed.
 
 The Design System team will let you know the decision and recommendations, if there are any.
@@ -92,34 +92,7 @@ If the working group agrees your contribution meets the criteria, the Design Sys
 
 After this the pattern or component will be published as Ready.
 
-
-
-
-
-
-
-
-
---------
---------
-
-### Additional information
-
-In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
-
-* Pattern proposal process
-* Coding guidelines
-* Guiding principles
-* How to write documentation
-* etc.
-
-## Submitting a pull request
-
-Here are a few guidelines to follow when submitting a pull request:
-
-* Branch off of `master`: `git checkout -b username/branch-name`
-* Commit your changes
-* Make a pull request against the `master` branch
+-----
 
 ## Licenses and attribution
 
