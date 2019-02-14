@@ -29,7 +29,7 @@ Examples of the design system in use can be found in the [`examples` directory](
 
 ## Contributing
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
+Please read the [CONTRIBUTING.md](/guides/CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
 
 ## Running locally
 
@@ -88,4 +88,4 @@ If your documentation site will be uploaded to a subdirectory (ie. example.com/d
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](/guides/CODE-OF-CONDUCT.md) to learn more.
