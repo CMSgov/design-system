@@ -172,6 +172,22 @@ Style guide: components.choice.inversed
   border-radius: 100%;
 }
 
+// Checked child container
+$ds-c-inset-border-width: $spacer-half;
+
+.ds-c-choice__checkedChild {
+  border-left: $ds-c-inset-border-width solid $color-primary;
+  margin-bottom: $spacer-2;
+  margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+  padding: $spacer-2;
+}
+
+.ds-c-choice--inverse {
+  .ds-c-choice__checkedChild {
+    border-left-color: $color-white;
+  }
+}
+
 /*
 Right-to-Left
 
@@ -315,6 +331,19 @@ Style guide: components.choice.react
 - Use caution if you decide to set a default value. Setting a default value can discourage users from making conscious decisions, seem pushy, or alienate users who don’t fit into your assumptions. In addition, you'll never know if the user explicitly chose that option or just didn't notice the question. If you're unsure, leave nothing selected by default.
 
 **[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+
+## Checked children and the expose within pattern
+
+- The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
+- Checked children can be exposed by checking the parent checkbox or radio button
+- Checked children will be announced to screen readers when they are exposed. They have been tested with the following devices:
+  - Windows 10 + Internet Explorer 11 + JAWS screen reader
+  - Windows 10 + Chrome + JAWS
+  - Windows 10 + Firefox + NVDA
+  - MacOS Mojave + Safari + VoiceOver
+- The checkedChildren prop should return one or more items wrapped in a `div` with the following className: `ds-c-choice__checkedChild`. This class sets the spacing and border color for the exposed elements.
+- Add the className `ds-c-choice--inverse` to the parent `<Choice />` component for the inverse white border
+- You may need to add the className `ds-u-margin--0` to your child element(s) to avoid extra top margin
 
 ## Accessibility
 

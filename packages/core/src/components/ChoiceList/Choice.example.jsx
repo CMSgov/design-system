@@ -18,7 +18,7 @@ const childSelect = (
   <ChoiceList
     choices={selectChoices}
     label="Select example"
-    className=""
+    labelClassName="ds-c-label ds-u-margin-top--0"
     name="select_choices_field"
   />
 );
@@ -56,7 +56,9 @@ ReactDOM.render(
       <Choice
         name="checkbox_choice_children"
         value="b"
-        checkedChildren={childSelect}
+        checkedChildren={
+          <div className="ds-c-choice__checkedChild">{childSelect}</div>
+        }
       >
         Checkbox B - with children
       </Choice>
@@ -84,11 +86,40 @@ ReactDOM.render(
         name="radio_choice_children"
         type="radio"
         value="d"
-        checkedChildren={childSelect}
+        checkedChildren={
+          <div className="ds-c-choice__checkedChild">{childSelect}</div>
+        }
       >
         Radio B - with children
       </Choice>
     </fieldset>
+
+    <div className="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
+      <fieldset className="ds-c-fieldset ds-u-margin-top--0">
+        <legend className="ds-c-label">
+          Inverse radio example with children
+        </legend>
+        <Choice
+          className="ds-c-choice--inverse"
+          name="radio_choice_children"
+          type="radio"
+          value="c"
+        >
+          Radio A
+        </Choice>
+        <Choice
+          className="ds-c-choice--inverse"
+          name="radio_choice_children"
+          type="radio"
+          value="d"
+          checkedChildren={
+            <div className="ds-c-choice__checkedChild">{childSelect}</div>
+          }
+        >
+          Radio B - with children
+        </Choice>
+      </fieldset>
+    </div>
   </div>,
   document.getElementById('js-example')
 );
