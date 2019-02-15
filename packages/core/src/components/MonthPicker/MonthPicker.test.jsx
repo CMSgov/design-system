@@ -237,7 +237,7 @@ describe('MonthPicker', () => {
 
   it('renders a snapshot', () => {
     const tree = renderer
-      .create(<MonthPicker name="months" label="Months" />)
+      .create(<MonthPicker name="months" label="Months" locale="en" />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

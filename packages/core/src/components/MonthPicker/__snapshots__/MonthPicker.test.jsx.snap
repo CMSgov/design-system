@@ -58,11 +58,14 @@ exports[`MonthPicker renders a snapshot 1`] = `
       >
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M01"
+              aria-label="January"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -80,18 +83,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M01
+                Jan
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M02"
+              aria-label="February"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -109,18 +115,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M02
+                Feb
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M03"
+              aria-label="March"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -138,18 +147,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M03
+                Mar
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M04"
+              aria-label="April"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -167,18 +179,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M04
+                Apr
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M05"
+              aria-label="May"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -196,18 +211,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M05
+                May
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M06"
+              aria-label="June"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -225,18 +243,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M06
+                Jun
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M07"
+              aria-label="July"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -254,18 +275,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M07
+                Jul
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M08"
+              aria-label="August"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -283,18 +307,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M08
+                Aug
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M09"
+              aria-label="September"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -312,18 +339,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M09
+                Sep
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M10"
+              aria-label="October"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -341,18 +371,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M10
+                Oct
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M11"
+              aria-label="November"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -370,18 +403,21 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M11
+                Nov
               </span>
             </label>
           </div>
         </li>
         <li>
           <div
+            aria-atomic={null}
+            aria-live={null}
+            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
               aria-describedby={null}
-              aria-label="M12"
+              aria-label="December"
               checked={false}
               className="ds-c-choice"
               disabled={false}
@@ -399,7 +435,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <span
                 className=""
               >
-                M12
+                Dec
               </span>
             </label>
           </div>
