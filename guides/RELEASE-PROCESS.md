@@ -20,11 +20,11 @@ Below are the steps for creating a new release and publishing it to NPM.
    1. Follow the format below for the release notes, then publish.
 
       ```
-      ## Added
-      ## Breaking changes
-      ## Changes
-      ## Fixed
-      ## Internal
+      ## 🚀 Added
+      ## 🚨 Breaking changes
+      ## 💅 Changes
+      ## 🛠 Fixed
+      ## 📦 Interna
       ```
 
     ProTip: To view a log of commits since the last release, run:
