@@ -1,5 +1,7 @@
 # Component validation checklist
 
+Here is a checklist of items that need to be completed before a component or pattern can be marked as Ready in the Design System.
+
 - [ ] Documentation is complete. [Documentation writing info](#)
     - Read through documentation and make sure the following is done
       - [ ] Description of component or pattern
@@ -10,8 +12,12 @@
       - [ ] Guidance on when not to use this item
       - [ ] Accessibility considerations
 
+---
+
 - [ ] Validate HTML
   - Go to [validator.w3.org](https://validator.w3.org/#validate_by_input) paste your code in and make sure it validates without error.
+
+---
 
 - [ ] Keyboard testing
   - Navigate the item using your Keyboard
@@ -31,6 +37,7 @@
     - [ ] Tabs - **Tab** once to navigate into the group of tabs and once to navigate out of the group of tabs. **up/down** arrows or **left/right** arrows to move through tabs.
     - [ ] Scroll - **up/down** arrows to scroll vertically. **Left/right** arrows to scroll horizontally. **Spacebar** scroll down or **shift + spacebar** to scroll up by page.
 
+---
 
 - [ ] Color blindness checks
   - View the component to check for visual issues. If using Google Chrome [Colorblinding](https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en) or [ChromeLens](https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd/related?hl=en) are great plugins.
@@ -44,6 +51,7 @@
       - [ ] Monochromacy / Achromatopsia
       - [ ] Blue Cone Monochromacy / Achromatomaly
 
+---
 
 - [ ] 400% Zoom
   - Set your browser to 1280px width, and scale up to 400%
