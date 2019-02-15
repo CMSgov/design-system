@@ -101,7 +101,7 @@ ReactDOM.render(
         </legend>
         <Choice
           className="ds-c-choice--inverse"
-          name="radio_choice_children"
+          name="radio_choice_children_inv"
           type="radio"
           value="c"
         >
@@ -109,7 +109,7 @@ ReactDOM.render(
         </Choice>
         <Choice
           className="ds-c-choice--inverse"
-          name="radio_choice_children"
+          name="radio_choice_children_inv"
           type="radio"
           value="d"
           checkedChildren={
