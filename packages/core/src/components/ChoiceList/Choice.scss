@@ -82,12 +82,22 @@ Markup:
 Style guide: components.choice.inversed
 */
 
+$ds-c-inset-border-width: $spacer-half;
+
 // Hide the default browser checkbox/radio button since we'll
 // create our own custom version
 .ds-c-choice {
   left: -999em;
   opacity: 0;
   position: absolute;
+
+  // Checked child container
+  &__checkedChild {
+    border-left: $ds-c-inset-border-width solid $color-primary;
+    margin-bottom: $spacer-2;
+    margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+    padding: $spacer-2;
+  }
 }
 
 .ds-c-choice + label {
@@ -156,6 +166,13 @@ Style guide: components.choice.inversed
   }
 }
 
+.ds-c-choice--inverse {
+  // Checked child border override
+  &__checkedChild {
+    border-left-color: $color-white;
+  }
+}
+
 .ds-c-choice--inverse:disabled {
   + label {
     color: $color-muted-inverse;
@@ -170,22 +187,6 @@ Style guide: components.choice.inversed
 // Display a circular radio button
 .ds-c-choice[type='radio'] + label::before {
   border-radius: 100%;
-}
-
-// Checked child container
-$ds-c-inset-border-width: $spacer-half;
-
-.ds-c-choice__checkedChild {
-  border-left: $ds-c-inset-border-width solid $color-primary;
-  margin-bottom: $spacer-2;
-  margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
-  padding: $spacer-2;
-}
-
-.ds-c-choice--inverse {
-  .ds-c-choice__checkedChild {
-    border-left-color: $color-white;
-  }
 }
 
 /*
