@@ -1,6 +1,7 @@
 // Apply custom styling for the marker so it's consistent across all browsers
 summary {
   display: block;
+  text-decoration: none !important;
 }
 
 summary::-webkit-details-marker {
