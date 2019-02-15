@@ -104,7 +104,12 @@ export class Choice extends React.PureComponent {
     if (inputProps.onChange) delete inputProps.onChange;
 
     return (
-      <div className={className}>
+      <div
+        className={className}
+        aria-live={checkedChildren ? 'polite' : null}
+        aria-relevant={checkedChildren ? 'additions text' : null}
+        aria-atomic={checkedChildren ? 'false' : null}
+      >
         <input
           className={inputClasses}
           id={this.id}
