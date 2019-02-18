@@ -99,21 +99,17 @@ ReactDOM.render(
         <legend className="ds-c-label">
           Inverse radio example with children
         </legend>
-        <Choice
-          className="ds-c-choice--inverse"
-          name="radio_choice_children_inv"
-          type="radio"
-          value="c"
-        >
+        <Choice name="radio_choice_children_inv" type="radio" value="c">
           Radio A
         </Choice>
         <Choice
-          className="ds-c-choice--inverse"
           name="radio_choice_children_inv"
           type="radio"
           value="d"
           checkedChildren={
-            <div className="ds-c-choice__checkedChild">{childSelect}</div>
+            <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--inverse">
+              {childSelect}
+            </div>
           }
         >
           Radio B - with children

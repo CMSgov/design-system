@@ -91,12 +91,16 @@ $ds-c-inset-border-width: $spacer-half;
   opacity: 0;
   position: absolute;
 
-  // Checked child container
+  // Checked children container
   &__checkedChild {
     border-left: $ds-c-inset-border-width solid $color-primary;
     margin-bottom: $spacer-2;
     margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
     padding: $spacer-2;
+
+    &--inverse {
+      border-left-color: $color-white;
+    }
   }
 }
 
@@ -163,13 +167,6 @@ $ds-c-inset-border-width: $spacer-half;
       border: 1px solid $color-gray-light;
       cursor: not-allowed;
     }
-  }
-}
-
-.ds-c-choice--inverse {
-  // Checked child border override
-  .ds-c-choice__checkedChild {
-    border-left-color: $color-white;
   }
 }
 
@@ -343,7 +340,7 @@ Style guide: components.choice.react
   - Windows 10 + Firefox + NVDA
   - MacOS Mojave + Safari + VoiceOver
 - The checkedChildren prop should return one or more items wrapped in a `div` with the following className: `ds-c-choice__checkedChild`. This class sets the spacing and border color for the exposed elements.
-- Add the className `ds-c-choice--inverse` to the parent `<Choice />` component for the inverse white border
+- Add the className `ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
 - You may need to add the className `ds-u-margin--0` to your child element(s) to avoid extra top margin
 
 ## Accessibility
