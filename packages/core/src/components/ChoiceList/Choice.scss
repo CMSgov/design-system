@@ -168,7 +168,7 @@ $ds-c-inset-border-width: $spacer-half;
 
 .ds-c-choice--inverse {
   // Checked child border override
-  &__checkedChild {
+  .ds-c-choice__checkedChild {
     border-left-color: $color-white;
   }
 }
