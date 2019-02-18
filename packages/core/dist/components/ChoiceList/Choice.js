@@ -153,7 +153,12 @@ var Choice = exports.Choice = function (_React$PureComponent) {
 
       return _react2.default.createElement(
         'div',
-        { className: className },
+        {
+          className: className,
+          'aria-live': checkedChildren ? 'polite' : null,
+          'aria-relevant': checkedChildren ? 'additions text' : null,
+          'aria-atomic': checkedChildren ? 'false' : null
+        },
         _react2.default.createElement('input', _extends({
           className: inputClasses,
           id: this.id,
@@ -195,7 +200,9 @@ Choice.propTypes = {
    */
   checked: _propTypes2.default.bool,
   /**
-   * Content to be shown when the choice is checked
+   * Content to be shown when the choice is checked. See
+   * **Checked children and the expose within pattern** on
+   * the Guidance tab for detailed instructions.
    */
   checkedChildren: _propTypes2.default.node,
   /**
