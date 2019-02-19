@@ -7,26 +7,44 @@ ReactDOM.render(
     selectedId="team"
     items={[
       {
-        label: 'Home',
+        label: 'Parent link',
         url: 'javascript:void(0);'
       },
       {
-        label: 'About',
+        label: 'Current page',
+        selected: true,
         items: [
           {
-            id: 'team',
-            label: 'Team',
+            id: 'childlink1',
+            label: 'Child link',
             url: 'javascript:void(0);'
           },
           {
-            id: 'company',
-            label: 'Company',
+            label: 'Child link',
+            selected: true,
+            items: [
+              {
+                id: 'grandchildlink1',
+                label: 'Grandchild link',
+                url: 'javascript:void(0);'
+              },
+              {
+                id: 'grandchildlink2',
+                label: 'Grandchild link',
+                url: 'javascript:void(0);',
+                selected: true
+              }
+            ]
+          },
+          {
+            id: 'childlink3',
+            label: 'Child link',
             url: 'javascript:void(0);'
           }
         ]
       },
       {
-        label: 'Contact',
+        label: 'Parent link',
         url: 'javascript:void(0);'
       }
     ]}
