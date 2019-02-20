@@ -148,7 +148,9 @@ Choice.propTypes = {
    */
   checked: PropTypes.bool,
   /**
-   * Content to be shown when the choice is checked
+   * Content to be shown when the choice is checked. See
+   * **Checked children and the expose within pattern** on
+   * the Guidance tab for detailed instructions.
    */
   checkedChildren: PropTypes.node,
   /**
