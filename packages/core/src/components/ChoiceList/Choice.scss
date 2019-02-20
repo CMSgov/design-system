@@ -98,8 +98,28 @@ $ds-c-inset-border-width: $spacer-half;
     margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
     padding: $spacer-2;
 
+    // Checked children container on dark background
     &--inverse {
       border-left-color: $color-white;
+    }
+
+    // Inputs to the right of labels
+    &--right {
+      border-left: 0;
+      border-right: $ds-c-inset-border-width solid $color-primary;
+      margin-left: 0;
+      margin-right: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+      padding: $spacer-1 0 $spacer-1 ($spacer-2 * 0.75);
+    }
+
+    // Max recommended parent width is $ds-u-measure--narrow (12em)
+    &--right select {
+      max-width: $input-medium-width;
+    }
+
+    // Small input variant
+    &--small {
+      margin-left: $spacer-1;
     }
   }
 }
@@ -334,14 +354,11 @@ Style guide: components.choice.react
 
 - The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
 - Checked children can be exposed by checking the parent checkbox or radio button
-- Checked children will be announced to screen readers when they are exposed. They have been tested with the following devices:
-  - Windows 10 + Internet Explorer 11 + JAWS screen reader
-  - Windows 10 + Chrome + JAWS
-  - Windows 10 + Firefox + NVDA
-  - MacOS Mojave + Safari + VoiceOver
 - The checkedChildren prop should return one or more items wrapped in a `div` with the following className: `ds-c-choice__checkedChild`. This class sets the spacing and border color for the exposed elements.
 - Add the className `ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
 - You may need to add the className `ds-u-margin--0` to your child element(s) to avoid extra top margin
+- If you opt for smaller radio buttons or checkboxes, add className `ds-c-choice__checkedChild--small` to your checked child container
+- If you opt for labels before inputs (right inputs), we recommend using the measure className `ds-u-measure--narrow` to maintain readability. You should also add className `ds-c-choice__checkedChild--right` to your checked child container to set the proper spacing and borders.
 
 ## Accessibility
 
@@ -349,6 +366,12 @@ Style guide: components.choice.react
 - Some screen readers read the `legend` text for each `fieldset`, so it should be brief and descriptive.
 - Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
 - The custom checkboxes and radio buttons here are accessible to screen readers because the default fields are moved off-screen.
+- `checkedChildren` will be announced to screen readers when they are exposed. They have been tested with the following devices:
+  - Windows 10 + Internet Explorer 11 + JAWS screen reader
+  - Windows 10 + Chrome + JAWS
+  - Windows10 - Firefox + NVDA
+    - NVDA reads out the `<select>` label and every `<option>` value
+  - MacOS Mojave + Safari + VoiceOver 
 
 ## Theming
 
