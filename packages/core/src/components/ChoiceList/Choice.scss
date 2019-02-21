@@ -103,20 +103,6 @@ $ds-c-inset-border-width: $spacer-half;
       border-left-color: $color-white;
     }
 
-    // Inputs to the right of labels
-    &--right {
-      border-left: 0;
-      border-right: $ds-c-inset-border-width solid $color-primary;
-      margin-left: 0;
-      margin-right: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
-      padding: $spacer-1 0 $spacer-1 ($spacer-2 * 0.75);
-    }
-
-    // Max recommended parent width is $ds-u-measure--narrow (12em)
-    &--right select {
-      max-width: $input-medium-width;
-    }
-
     // Small input variant
     &--small {
       margin-left: $spacer-1;
@@ -358,7 +344,6 @@ Style guide: components.choice.react
 - Add the className `ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
 - You may need to add the className `ds-u-margin--0` to your child element(s) to avoid extra top margin
 - If you opt for smaller radio buttons or checkboxes, add className `ds-c-choice__checkedChild--small` to your checked child container
-- If you opt for labels before inputs (right inputs), we recommend using the measure className `ds-u-measure--narrow` to maintain readability. You should also add className `ds-c-choice__checkedChild--right` to your checked child container to set the proper spacing and borders.
 
 ## Accessibility
 

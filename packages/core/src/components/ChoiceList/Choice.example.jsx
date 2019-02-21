@@ -118,39 +118,6 @@ ReactDOM.render(
       </Choice>
     </fieldset>
 
-    <div className="ds-u-measure--narrow ds-u-margin-top--4 ds-u-margin-bottom--5 ds-u-padding--2 ds-u-border--2">
-      <fieldset className="ds-c-fieldset ds-u-margin-top--0">
-        <legend className="ds-c-label">Right checkboxes with children</legend>
-        <Choice
-          inputPlacement="right"
-          name="checkbox_choice_children"
-          value="a"
-        >
-          Checkbox A
-        </Choice>
-        <Choice
-          defaultChecked
-          inputPlacement="right"
-          name="checkbox_choice_children"
-          value="b"
-          checkedChildren={
-            <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--right">
-              {childSelect}
-            </div>
-          }
-        >
-          Checkbox B - with children
-        </Choice>
-        <Choice
-          inputPlacement="right"
-          name="checkbox_choice_children"
-          value="c"
-        >
-          Checkbox C
-        </Choice>
-      </fieldset>
-    </div>
-
     <div className="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
       <fieldset className="ds-c-fieldset ds-u-margin-top--0">
         <legend className="ds-c-label">
