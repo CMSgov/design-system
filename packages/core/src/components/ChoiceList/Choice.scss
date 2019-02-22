@@ -8,7 +8,7 @@ Markup:
 */
 .ds-c-fieldset {
   border: 0;
-  // We apply the same margin as a label has, since in the context of a fieldset
+  // We apply the same margin as a label, since in the context of a fieldset
   // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
   margin: $spacer-3 0 0;
   min-width: 0;
