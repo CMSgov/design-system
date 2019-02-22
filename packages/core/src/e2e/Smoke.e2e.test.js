@@ -30,18 +30,18 @@ describe('CMS Design System smoke test', () => {
       .setRect(1024, 768, 0, 0);
   });
 
-  it('Should click Getting Started and load the /getting-started page', async() => {
+  it('Should click Learn how to get started and open startup/installation/', async() => {
     await driver.get(ROOT_URL);
 
     el = await getElementByXPath(
       driver,
-      '//*[@id="js-root"]/div/div/nav/ul/li[2]/a'
+      '//*[@id="main"]/div/div/article/div/p[3]/a'
     );
     el.click();
-    el = await getElementById(driver, 'getting-started');
+    el = await getElementById(driver, 'startup.installation');
 
     actual = await el.getText();
-    expected = 'Getting started';
+    expected = 'Installation';
     expect(actual).toEqual(expected);
   });
 });
