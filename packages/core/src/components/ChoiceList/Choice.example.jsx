@@ -26,7 +26,7 @@ const childSelect = (
 ReactDOM.render(
   <div>
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Checkbox example</legend>
+      <legend className="ds-c-label">Checkboxes</legend>
       <Choice
         defaultChecked
         hint="Checkbox A hint"
@@ -44,16 +44,12 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Checkbox example with children</legend>
-      <Choice
-        hint="Checkbox A hint"
-        defaultChecked
-        name="checkbox_choice_children"
-        value="a"
-      >
+      <legend className="ds-c-label">Checkboxes with children</legend>
+      <Choice hint="Checkbox A hint" name="checkbox_choice_children" value="a">
         Checkbox A
       </Choice>
       <Choice
+        defaultChecked
         name="checkbox_choice_children"
         value="b"
         checkedChildren={
@@ -67,9 +63,11 @@ ReactDOM.render(
       </Choice>
     </fieldset>
 
+    <hr className="ds-u-margin-top--2" />
+
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio example</legend>
-      <Choice name="radio_choice" type="radio" value="a">
+      <legend className="ds-c-label">Radio buttons</legend>
+      <Choice defaultChecked name="radio_choice" type="radio" value="a">
         Radio A
       </Choice>
       <Choice name="radio_choice" type="radio" value="b">
@@ -78,11 +76,12 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio example with children</legend>
+      <legend className="ds-c-label">Radio buttons with children</legend>
       <Choice name="radio_choice_children" type="radio" value="c">
         Radio A
       </Choice>
       <Choice
+        defaultChecked
         name="radio_choice_children"
         type="radio"
         value="d"
@@ -94,15 +93,41 @@ ReactDOM.render(
       </Choice>
     </fieldset>
 
+    <hr className="ds-u-margin-top--2" />
+
+    <fieldset className="ds-c-fieldset">
+      <legend className="ds-c-label">Small checkboxes with children</legend>
+      <Choice name="checkbox_choice_children_small" size="small" value="a">
+        Checkbox A
+      </Choice>
+      <Choice
+        defaultChecked
+        name="checkbox_choice_children_small"
+        value="b"
+        checkedChildren={
+          <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--small">
+            {childSelect}
+          </div>
+        }
+        size="small"
+      >
+        Checkbox B - with children
+      </Choice>
+      <Choice name="checkbox_choice_children_small" size="small" value="c">
+        Checkbox C
+      </Choice>
+    </fieldset>
+
     <div className="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
       <fieldset className="ds-c-fieldset ds-u-margin-top--0">
         <legend className="ds-c-label">
-          Inverse radio example with children
+          Inverse radio buttons with children
         </legend>
         <Choice name="radio_choice_children_inv" type="radio" value="c">
           Radio A
         </Choice>
         <Choice
+          defaultChecked
           name="radio_choice_children_inv"
           type="radio"
           value="d"
