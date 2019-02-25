@@ -44,12 +44,23 @@ These scripts can all be run from the root level of the repo:
 * `yarn generate`
   * Generates the necessary files for a new core component
   * Alias: `yarn g`
-* `yarn test`
+* `yarn test:unit`
   * Runs JS unit tests
   * Lints JS using ESLint
   * Lints Sass using stylelint
-* `yarn test:watch`
-  * Runs JS unit tests and will continue to run tests as files change
+* `yarn test:e2e`
+  * Builds documentation pages, starts webserver and headless Chrome browser
+  * Runs JS e2e tests
+  * Quits webserver and Chrome headless browser
+* `yarn test:e2e:noBuild`
+  * Skips building documentation pages, starts webserver and headless Chrome browser
+  * Runs JS e2e tests
+  * Quits webserver and Chrome headless browser
+* `yarn test`
+  * Runs JS unit tests
+  * Runs JS e2e tests
+  * Lints JS using ESLint
+  * Lints Sass using stylelint
 * `yarn update-snapshots`
   * Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 * `yarn lint`
