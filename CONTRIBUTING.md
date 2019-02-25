@@ -46,8 +46,6 @@ These scripts can all be run from the root level of the repo:
   * Alias: `yarn g`
 * `yarn test:unit`
   * Runs JS unit tests
-  * Lints JS using ESLint
-  * Lints Sass using stylelint
 * `yarn test:e2e`
   * Builds documentation pages, starts webserver and headless Chrome browser
   * Runs JS e2e tests
