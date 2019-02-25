@@ -19,8 +19,9 @@ Here is a checklist of items that need to be completed before a component or pat
 
 ---
 
-- [ ] Keyboard testing
-  - Navigate the item using your Keyboard
+- [ ] [Keyboard testing]
+Navigate the item using your keyboard
+More details: https://webaim.org/techniques/keyboard
   - What to check:
     - [ ] Navigate using **tab (navigate forward)** and **shift + tab (navigate backward)**
       - Keyboard focus indicators are present
@@ -54,7 +55,8 @@ Here is a checklist of items that need to be completed before a component or pat
 ---
 
 - [ ] 400% Zoom
-  - Set your browser to 1280px width, and scale up to 400%
+Set your browser to 1280px width, and scale up to 400%
+More details - https://www.w3.org/WAI/WCAG21/Understanding/reflow.html
   - What to check for:
       - [ ] Still usable at 400% increase in size
       - [ ] Content does not overlap or force users to scroll horizontally
