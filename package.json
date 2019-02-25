@@ -16,8 +16,9 @@
     "start:theme": "yarn start --theme",
     "test": "yarn test:unit && yarn test:e2e && yarn lint",
     "test:unit": "bash scripts/jest.sh",
+    "test:unit:watch": "NODE_ENV=test bash scripts/jest.sh --skip-build --watch",
     "test:e2e": "bash scripts/jest.sh --e2e",
-    "test:e2e:noBuild": "bash scripts/jest.sh --e2e --skip-build",
+    "test:e2e:skipBuild": "bash scripts/jest.sh --e2e --skip-build",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },

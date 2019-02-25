@@ -50,7 +50,7 @@ These scripts can all be run from the root level of the repo:
   * Builds documentation pages, starts webserver and headless Chrome browser
   * Runs JS e2e tests
   * Quits webserver and Chrome headless browser
-* `yarn test:e2e:noBuild`
+* `yarn test:e2e:skipBuild`
   * Skips building documentation pages, starts webserver and headless Chrome browser
   * Runs JS e2e tests
   * Quits webserver and Chrome headless browser
