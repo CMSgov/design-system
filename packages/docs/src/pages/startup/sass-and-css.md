@@ -18,13 +18,12 @@ For example:
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/article/index.html)
 
-<h4 class="ds-h4 ds-u-font-size--base">Sass</h4>
+<h4 class="ds-h4 ds-u-font-size--base" id="sass">Sass</h4>
 
 If you're already using Sass to style your site, another way to include the design system's styles is by importing its un-minified Sass file.
 
 1. First, make sure your build system is configured so that the `node_modules` directory is in the list of Sass [`includePaths`](https://github.com/sass/node-sass#includepaths).
 2. Add the following to your Sass file:
-
 
 ```css
 @import '@cmsgov/design-system-core/src/index';

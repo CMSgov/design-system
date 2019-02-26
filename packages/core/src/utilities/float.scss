@@ -6,7 +6,7 @@ Float
 
 Set an element's `float` property using the float utility.
 
-You can use the [clearfix utility class]({{root}}/utilities/clearfix) to automatically clear your floats.
+You can use the [clearfix utility class](/utilities/clearfix) to automatically clear your floats.
 
 **Format**: `ds-u-float--[VALUE]`
 
@@ -38,7 +38,7 @@ Responsive
 
 @responsive
 
-Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change how an element is floated at specific breakpoints.
+Use a [breakpoint prefix](/guidelines/responsive) to change how an element is floated at specific breakpoints.
 
 Markup:
 <div class="ds-u-clearfix">

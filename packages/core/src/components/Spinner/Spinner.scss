@@ -104,7 +104,7 @@ Style guide: components.spinner
 /*
 Changing the spinner color
 
-To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes]({{root}}/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
+To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
 
 Markup:
 <span class="ds-c-spinner ds-u-color--primary" aria-valuetext="Loading" role="progressbar"></span>
