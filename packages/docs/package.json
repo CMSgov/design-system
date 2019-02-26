@@ -1,13 +1,13 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "1.31.0",
+  "version": "1.31.1",
   "private": true,
   "description": "Design system's documentation website",
   "repository": "CMSgov/design-system",
   "dependencies": {
-    "@cmsgov/design-system-core": "^1.31.0",
-    "@cmsgov/design-system-layout": "^1.31.0",
-    "@cmsgov/design-system-support": "^1.31.0",
+    "@cmsgov/design-system-core": "^1.31.1",
+    "@cmsgov/design-system-layout": "^1.31.1",
+    "@cmsgov/design-system-support": "^1.31.1",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "lodash": "^4.17.5",
