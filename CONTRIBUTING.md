@@ -2,14 +2,12 @@
 
 We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. 
+Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
+If you are interessted in running this site locally please take a look at [setting up your local development environment](/README.md#running-locally). 
 
-Below you'll find information on [how to setup a local development environment](/README.md#running-locally) and how to contribute code to the design system.
 
-
-### Additional information
-
-In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find additional information like:
+Use **[our Wiki](https://github.com/CMSgov/design-system/wiki)** to find additional information like:
 
 * Pattern proposal process
 * Coding guidelines
@@ -17,7 +15,7 @@ In **[our Wiki](https://github.com/CMSgov/design-system/wiki)** you can find add
 * How to write documentation
 * etc.
 
-
+Below you'll find information onhow to contribute code to the design system.
 
 ## Submitting a pull request
 
