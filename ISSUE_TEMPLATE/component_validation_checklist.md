@@ -19,7 +19,7 @@ If you are using Google Chrome or Firefox consider getting the [axe plugin](http
 - If testing on W3.org
   - [ ] Go to [validator.w3.org](https://validator.w3.org/#validate_by_input) paste your code in and make sure it validates without error.
 - If testing with axe plugin
-  - [ ] Run the ax plugin on the component or pattern. You should not receive any violations. Some best practices errors such as `Means to skip repeated blocks` of content, or `No main section` can be ignored as they do not apply.
+  - [ ] Run the axe plugin on the component or pattern. You should not receive any violations. Best practices warnings like `Means to skip repeated blocks of content` or `No main section` are page-level warnings and generally be ignored when developing new components.  
 
 ## Screen reader testing
 
