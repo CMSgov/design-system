@@ -26,7 +26,7 @@ If you are using Google Chrome or Firefox consider getting the [axe plugin](http
 **What to check:**
 - [ ] Windows: IE11 + JAWS
 - [ ] Windows: NVDA + Firefox
-- [ ] MacOS: Safari + VoiceOver
+- [ ] MacOS: Safari + VoiceOver - [How to](https://webaim.org/articles/voiceover/)
 
 ## Keyboard testing
 Navigate the item using your keyboard
