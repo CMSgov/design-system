@@ -5,7 +5,6 @@ Tabs
 
 Tabs are a secondary navigation pattern, allowing a user to view only the content they're interested in. They build upon a real world metaphor, and the selected state simulates a folder being physically in front of others in the group.
 
-@status beta
 
 Markup:
 <div class="ds-c-tabs" role="tablist" aria-label="Settings">
@@ -154,7 +153,7 @@ Style guide: components.tabs.react-tab
     border-color: $color-gray-lighter;
     color: $color-gray-dark;
     pointer-events: none;
-  
+
     &:hover,
     &:active,
     &:focus {
@@ -207,7 +206,7 @@ Style guide: components.tabs.react-tab
 
 ## Related patterns
 
-- [Vertical navigation]({{root}}/components/vertical-nav)
+- [Vertical navigation](/components/vertical-nav)
 
 ## Learn more
 

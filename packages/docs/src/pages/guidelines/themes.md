@@ -20,7 +20,7 @@ To override Sass variables, create a new `.sass` or `.scss` file where you will 
 $color-primary: #ff0000;
 ```
 
-Then, in your main stylesheet, import your overrides file _before_ you [import the design system's Sass files]({{root}}/getting-started/):
+Then, in your main stylesheet, import your overrides file _before_ you [import the design system's Sass files](/startup/sass-and-css/#sass):
 
 ```css
 /* main.scss */
@@ -32,11 +32,11 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 
 Sass variables are documented on the relevant documentation pages, and are defined in the `@cmsgov/design-system-support` package:
 
-* [Breakpoints]({{root}}/guidelines/responsive/)
-* [Colors]({{root}}/style/color/)
-* [Spacing]({{root}}/layout/spacing/)
-* [Type sizes]({{root}}/style/typography/)
-* You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/support/src).
+- [Breakpoints]({{root}}/guidelines/responsive/)
+- [Colors]({{root}}/style/color/)
+- [Spacing]({{root}}/layout/spacing/)
+- [Type sizes]({{root}}/style/typography/)
+- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/support/src).
 
 ## CSS declarations
 
@@ -44,5 +44,5 @@ If you're not using Sass, another way to "theme" the design system is by overrid
 
 ## Learn more
 
-* [Previewing and compiling themes](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes)
-* [View an example project with a Sass build process](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
+- [Previewing and compiling themes](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes)
+- [View an example project with a Sass build process](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
