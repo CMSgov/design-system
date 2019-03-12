@@ -24,7 +24,7 @@ Below are the steps for creating a new release and publishing it to NPM.
       ## 🚨 Breaking changes
       ## 💅 Changes
       ## 🛠 Fixed
-      ## 📦 Interna
+      ## 📦 Internal
       ```
 
     ProTip: To view a log of commits since the last release, run:
@@ -49,7 +49,6 @@ Below are the steps for creating a new release and publishing it to NPM.
 ## 3) Update the documentation website
 
 Visit the "Docs site deploy process" page in Confluence for these instructions.
-
 
 # Versioning
 

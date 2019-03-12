@@ -5,7 +5,7 @@ The design system uses multiples of `8px` for all spacing values: dimensions, pa
 
 ## Usage
 
-- Use the [margin]({{root}}/utilities/margin) and [padding]({{root}}/utilities/padding) utility classes to change a UI's spacing. These utility classes are named in a way that allows you to use the modifier to calculate the amount of spacing. For example, a margin utility class that adds `16px` of spacing would be `ds-u-margin--2`. We can calculate this by looking at the class's modifier (`2`) and multiplying that by our multiple: `2 × 8px = 16px`
+- Use the [margin](/utilities/margin) and [padding](/utilities/padding) utility classes to change a UI's spacing. These utility classes are named in a way that allows you to use the modifier to calculate the amount of spacing. For example, a margin utility class that adds `16px` of spacing would be `ds-u-margin--2`. We can calculate this by looking at the class's modifier (`2`) and multiplying that by our multiple: `2 × 8px = 16px`
 - If you've imported the design system's Sass file, you can also use the spacer Sass variables, which follow the format `$spacer-*` where `*` is a number between 1–7 (i.e. `$spacer-4`)
 
 ## Learn more
@@ -17,16 +17,15 @@ Style guide: layout.spacing
 $multiple: 8px !default;
 
 $spacers: (
-    0,
-    $multiple,
-    $multiple * 2,
-    $multiple * 3,
-    $multiple * 4,
-    $multiple * 5,
-    $multiple * 6,
-    $multiple * 7
-  )
-  !default;
+  0,
+  $multiple,
+  $multiple * 2,
+  $multiple * 3,
+  $multiple * 4,
+  $multiple * 5,
+  $multiple * 6,
+  $multiple * 7
+) !default;
 
 $spacer-1: nth($spacers, 2) !default; // 8px
 $spacer-2: nth($spacers, 3) !default; // 16px
@@ -47,8 +46,12 @@ $width-lg: 1024px !default;
 $width-xl: 1280px !default;
 
 // Breakpoints
-$breakpoints: (sm: $width-sm, md: $width-md, lg: $width-lg, xl: $width-xl)
-  !default;
+$breakpoints: (
+  sm: $width-sm,
+  md: $width-md,
+  lg: $width-lg,
+  xl: $width-xl
+) !default;
 
 // Borders
 $border-radius-circle: 100%;
