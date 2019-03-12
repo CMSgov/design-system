@@ -9,7 +9,7 @@ Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
 If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally). 
 
-Use [our Wiki](https://github.com/CMSgov/design-system/wiki) to find additional information like:
+Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
 
 * Pattern proposal process
 * Coding guidelines
