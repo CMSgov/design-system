@@ -16,8 +16,6 @@ Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to 
 * Guiding principles
 * How to write documentation
 
-Below you'll find information on how to contribute code to the design system.
-
 ## Submitting a pull request
 
 Here are a few guidelines to follow when submitting a pull request:
@@ -25,6 +23,7 @@ Here are a few guidelines to follow when submitting a pull request:
 * Branch off of `master`: `git checkout -b username/branch-name`
 * Commit your changes
 * Make a pull request against the `master` branch
+* [More info about creating a pull request](https://help.github.com/en/articles/creating-a-pull-request#creating-the-pull-request)
 
 ## Licenses and attribution
 
