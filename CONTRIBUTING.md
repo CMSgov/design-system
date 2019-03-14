@@ -20,10 +20,12 @@ Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to 
 
 Here are a few guidelines to follow when submitting a pull request:
 
-* Create a branch from master: `git checkout -b username/branch-name` in your terminal
-* Commit your changes: `git commit -a -m "YOUR MESSAGE"`
-* Push your changes: `git push origin username/branch-name`
-* Make a [pull request](https://help.github.com/en/articles/creating-a-pull-request#creating-the-pull-request) against the master branch
+* [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from master
+* Commit your changes
+* Push your changes
+* [Make a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the master branch
+
+**Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
 
 ## Licenses and attribution
 
