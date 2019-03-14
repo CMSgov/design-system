@@ -29,7 +29,7 @@ Examples of the design system in use can be found in the [`examples` directory](
 
 ## Contributing
 
-Please read the [CONTRIBUTING.md](/guides/CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
 
 ## Running locally
 
