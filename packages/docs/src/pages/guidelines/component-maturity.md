@@ -18,3 +18,6 @@ title: Component maturity
 - **Ready to implement**
 - Documentation and guidance is complete
 - Testing and validation is complete
+
+## Deprecated
+- **Do not use**
