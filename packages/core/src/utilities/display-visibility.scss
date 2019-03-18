@@ -110,6 +110,9 @@ Markup:
   <div class="ds-u-<%= breakpoint %>-display--block">
     Displayed as block on <%= breakpoint %> screens and larger
   </div>
+  <div class="ds-u-<%= breakpoint %>-display--flex">
+    Displayed as flex on <%= breakpoint %> screens and larger
+  </div>
   <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
     Invisible on <%= breakpoint %> screens and larger
   </div>
@@ -130,6 +133,10 @@ Style guide: utilities.display-visibility.responsive
 
     .ds-u-#{$breakpoint}-display--inline-block {
       display: inline-block !important;
+    }
+
+    .ds-u-#{$breakpoint}-display--flex {
+      display: flex !important;
     }
 
     .ds-u-#{$breakpoint}-display--none {
