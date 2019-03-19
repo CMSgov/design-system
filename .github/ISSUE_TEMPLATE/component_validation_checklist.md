@@ -9,8 +9,9 @@ Here is a checklist of items that need to be completed before a component or pat
 - [ ] HTML code snippet example(s)
 - [ ] React code snippet example(s)
 - [ ] All react properties are explained
-- [ ] Guidance on when to use this item
-- [ ] Guidance on when not to use this item or consider alternatives
+- [ ] General guidance or best practices
+- [ ] Usability - when to use
+- [ ] Usability - when to consider something else
 - [ ] Accessibility considerations
 
 ## Validate HTML
