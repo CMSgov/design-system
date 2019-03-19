@@ -118,6 +118,11 @@ In general, the guidance comment block should be placed at the end of the CSS fi
 /*
 ---
 
+## Guidance
+
+- List any design or content guidelines related to how
+  this component should be used
+
 ## When to use
 
 - List typical use cases for this component
@@ -127,25 +132,15 @@ In general, the guidance comment block should be placed at the end of the CSS fi
 - List commonly confused use cases where an alternative
   component would be a better solution
 
-## Guidance
-
-- List any design or content guidelines related to how
-  this component should be used
-
 ## Accessibility
 
 - List any accessibility considerations like required
-  keyboard functionality, ARIA attributes, etc
+  keyboard functionality, ARIA attributes, etc...
 
 ## Theming
 
 - List any Sass variables a developer could override
   to customize the appearance of the component
-
-## Future research
-
-- Optionally list any suggestions for future research
-  that could mature and extend the component
 
 ## Related patterns
 
@@ -171,7 +166,7 @@ The example below would create a new documentation page with a URL path of `/com
 <details>
 <summary>View example</summary>
 
-```css
+```scss
 /*
 Buttons
 
@@ -179,8 +174,7 @@ Use buttons to signal actions.
 
 @react-component Button
 
-Markup:
-<button type="button" class="ds-c-button {{modifier}}">Button label</button>
+Markup: button.example.html
 
 .ds-c-button--primary - The primary call-to-action
 
