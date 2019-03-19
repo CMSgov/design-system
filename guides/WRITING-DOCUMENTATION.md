@@ -28,9 +28,9 @@ For a component named "Foo", you would have the following:
 
 [Description]
 
-[Modifiers]
+[Flags]
 
-[@flags]
+[Modifiers]
 
 Markup: [filename]
 
@@ -48,11 +48,7 @@ The heading is used for the title of a generated page or the heading if this is 
 
 The description should describe what pattern does or should be used for in plain language.
 
-## Modifiers
-
-If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section.
-
-## @flags
+## Flags
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
@@ -68,63 +64,55 @@ Supported flags:
     See [File naming](#file-naming) above for more info.
 - **`@react-example [NAME]`** Displays an example using this React component.
 - **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [Draft|Work in progress, Ready, Deprecated]`** Displays a status badge. Supported values: `alpha`, `beta`.
-- **`@uswds [URL]`** Marks the component as a US Web Design Standard component. Enter the URL so the documentation can link to the corresponding USWDS page.
+- **`@status [Draft, Work in progress, Ready, Deprecated]`** Displays a status badge. Supported values: `alpha`, `beta`.
+- **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
+
+## Modifiers
+
+If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
 
 ## Markup
 
-Markup examples can be written in plain HTML or [EJS](http://ejs.co/). The markup can be written inline or within a separate `.html` or `.ejs` file, relative to the CSS file:
-
-<details>
-<summary>Inline HTML example</summary>
-
-```
-Markup:
-<button class="ds-c-button {{modifier}}">Button label</button>
-```
-</details>
-
-
-<details>
-<summary>Inline EJS example</summary>
-
-```
-Markup:
-<% ['bottom', 'left', 'right', 'top'].forEach(name => { -%>
-  <div class="ds-u-margin-<%= name %>--1"></div>
-<% }) -%>
-```
-</details>
-
-<details>
-<summary>HTML file example</summary>
+Markup examples should be written in plain HTML and in a separate `.html` file, relative to the CSS file:
 
 ```
 Markup: Button.example.html
 ```
-</details>
 
-## Reference - URL's and hierarchy
+### Button.example.html file
+```HTML
+<button class="ds-c-button {{modifier}}">Button label</button>
+```
+
+## Style guide: Reference
 
 The `reference` defines the documentation site's structure.
 
 The expected format is:
-`[Top-level slug].[Subpage slug].[Page section slug]`
+`[Top-level slug].[Subpage slug].[Page section slug]` for example `Style guide: components.button.disabled`
 
-As you might be able to tell from the format, the docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd level will be displayed in the body of their parent page.
+The docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd level will be displayed in the body of their parent page.
 
-Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the CSS file.
+Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the SCSS file.
 
 ## Guidance
 
-To add content to the "Guidance" tab of a page, the page section's slug should begin with `guidance`. For example: `components.buttons.guidance`
+To add "Guidance" content to the page, the page section's slug should be `guidance`. 
+For example: `components.buttons.guidance`
 
-To link to another documentation page, you can prefix the relative url with `{{root}}` to have the correct path added to the URL when the site is generated. For example: `{{root}}/components/button`
+Guidance can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`. For example
+
+```
+/*
+---
+
+## Guidance
+```
+
+To link to another documentation page use a relative url. For example: `/components/button`
 
 In general, the guidance comment block should be placed at the end of the CSS file and conform to the following format:
 
-<details>
-<summary>View example</summary>
 
 ```css
 /*
