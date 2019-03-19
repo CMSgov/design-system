@@ -15,6 +15,7 @@ For a component named "Foo", you would have the following:
         ├── Foo.jsx             React component
         ├── Foo.test.jsx        React component tests
         └── Foo.example.jsx     React component used to render an example
+        └── Foo.example.html    HTML example
 ```
 
 # CSS components
@@ -27,24 +28,31 @@ For a component named "Foo", you would have the following:
 
 [Description]
 
+[Modifiers]
+
 [@flags]
 
-Markup:
-[Inline HTML/EJS or filename]
-
-[Modifiers]
+Markup: [filename]
 
 Style guide: [Reference]
 */
 ```
 
-### Heading
+## Heading (required)
 
 The heading is used for the title of a generated page or the heading if this is a subsection of a page.
 
-This is a required field, but if you want to create a subsection without a heading, you can enter `---`.
+**note:** If you want to create a subsection without a heading, add `---` after the opening `/*`.
 
-### @flags
+## Description
+
+The description should describe what pattern does or should be used for in plain language.
+
+## Modifiers
+
+If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section.
+
+## @flags
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
@@ -60,10 +68,10 @@ Supported flags:
     See [File naming](#file-naming) above for more info.
 - **`@react-example [NAME]`** Displays an example using this React component.
 - **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [alpha|beta]`** Displays a status badge. Supported values: `alpha`, `beta`.
+- **`@status [Draft|Work in progress, Ready, Deprecated]`** Displays a status badge. Supported values: `alpha`, `beta`.
 - **`@uswds [URL]`** Marks the component as a US Web Design Standard component. Enter the URL so the documentation can link to the corresponding USWDS page.
 
-### Markup
+## Markup
 
 Markup examples can be written in plain HTML or [EJS](http://ejs.co/). The markup can be written inline or within a separate `.html` or `.ejs` file, relative to the CSS file:
 
@@ -96,7 +104,7 @@ Markup: Button.example.html
 ```
 </details>
 
-### Reference - URL's and hierarchy
+## Reference - URL's and hierarchy
 
 The `reference` defines the documentation site's structure.
 
@@ -107,7 +115,7 @@ As you might be able to tell from the format, the docs site supports a maximum o
 
 Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the CSS file.
 
-### Guidance
+## Guidance
 
 To add content to the "Guidance" tab of a page, the page section's slug should begin with `guidance`. For example: `components.buttons.guidance`
 
