@@ -56,13 +56,13 @@ Supported flags:
 
 - **`@hide-example`** Hides the example and code snippet. Useful for rendering just the prop docs for React components.
 - **`@hide-markup`** Hides the code snippet.
-- **`@react-component [NAME]`** Displays the React component's example and `PropType` documentation.
-  - where `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`
+- **`@react-component [NAME]`** Displays the React `.jsx` component example, documentation and `Props`.
+    - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
+    - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
 
-    **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
-
-    See [File naming](#file-naming) above for more info.
-- **`@react-example [NAME]`** Displays an example using this React component.
+- **`@react-example [NAME]`** Displays example.jsx file using this React component. 
+    - **Example**: `@react-component Mask` displays `Mask.example.jsx`
+ 
 - **`@responsive`** Renders breakpoint toggles for the markup example.
 - **`@status [Draft, Work in progress, Ready, Deprecated]`** Displays a status badge. Supported values: `alpha`, `beta`.
 - **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
