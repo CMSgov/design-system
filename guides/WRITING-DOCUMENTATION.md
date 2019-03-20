@@ -106,7 +106,7 @@ Guidance can be written using [Markdown](https://github.com/adam-p/markdown-here
 
 To link to another documentation page in your guidance content use a relative url. **Example:** `/components/button`
 
-Documenation and guidance should be placed at the end of the SCSS file and conform to the following format:
+Documentation and guidance should be placed at the end of the SCSS file and conform to the following format:
 
 
 ```scss
@@ -121,7 +121,7 @@ Style guide: components.component-name-goes-here.guidance
 */
 ```
 
-When writing documentationa and guidance please include the following sections. 
+When writing documentation and guidance please include the following sections. 
 
 - **Usability**
     - **When to use**
@@ -187,7 +187,7 @@ content here
 ## Documenting React components
 
 Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract documentation from comments in React component files. The documentation can include an overall description and a description for each of the component's `propTypes`.
-**Note:** Documenation can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+**Note:** Documentation can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Description
 
@@ -216,7 +216,7 @@ Button.propTypes = {
 
 For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
 
-## General documenation pages 
+## General documentation pages 
 
 There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
