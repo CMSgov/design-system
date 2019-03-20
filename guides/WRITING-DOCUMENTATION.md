@@ -64,7 +64,7 @@ Supported flags:
     - **Example**: `@react-component Mask` displays `Mask.example.jsx`
  
 - **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [Draft, Work in progress, Ready, Deprecated]`** Displays a status badge. Supported values: `alpha`, `beta`.
+- **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
 - **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
 
 ## Modifiers
