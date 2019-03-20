@@ -2,7 +2,7 @@
 
 Documentation for the design system's components are automatically generated from their CSS and JS comments. In order for this to work, you need to follow some conventions set by the tools we use to generate the documentation: [KSS](https://github.com/kss-node/kss-node) and [react-docgen](https://github.com/reactjs/react-docgen).
 
-# File naming
+## File naming
 
 Name and structure components as follows in order for docs generation to work as expected.
 
@@ -18,11 +18,11 @@ For a component named "Foo", you would have the following:
         └── Foo.example.html    HTML example
 ```
 
-# CSS components
+## CSS components
 
 [KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written. They establish what pages get created and the content on those pages. We use KSS to parse CSS comment blocks to extract documentation, and it expects your comment block to follow this particular format:
 
-```css
+```scss
 /*
 [Heading]
 
@@ -35,20 +35,22 @@ For a component named "Foo", you would have the following:
 Markup: [filename]
 
 Style guide: [Reference]
+
+[Documentation and guidance]
 */
 ```
 
-## Heading (required)
+### Heading (required)
 
 The heading is used for the title of a generated page or the heading if this is a subsection of a page.
 
 **note:** If you want to create a subsection without a heading, add `---` after the opening `/*`.
 
-## Description
+### Description
 
 The description should describe what pattern does or should be used for in plain language.
 
-## Flags
+### Flags
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
@@ -67,11 +69,11 @@ Supported flags:
 - **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
 - **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
 
-## Modifiers
+### Modifiers
 
 If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
 
-## Markup
+### Markup
 
 Markup examples should be written in plain HTML and in a separate `.html` file, relative to the CSS file:
 
@@ -79,12 +81,12 @@ Markup examples should be written in plain HTML and in a separate `.html` file, 
 Markup: Button.example.html
 ```
 
-### Button.example.html file
+#### Button.example.html file
 ```HTML
 <button class="ds-c-button {{modifier}}">Button label</button>
 ```
 
-## Style guide: Reference
+### Style guide: Reference
 
 The `reference` defines the documentation site's structure.
 
@@ -95,76 +97,55 @@ The docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd leve
 
 Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the SCSS file.
 
-## Guidance
+### Documentation and guidance
 
-To add "Guidance" content to the page, the page section's slug should be `guidance`. 
+To add guidance content to the page, the page section's slug should be `guidance`. 
 For example: `components.buttons.guidance`
 
 Guidance can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`. For example
 
-```
-/*
----
+To link to another documentation page in your guidance content use a relative url. **Example:** `/components/button`
 
-## Guidance
-```
-
-To link to another documentation page use a relative url. For example: `/components/button`
-
-In general, the guidance comment block should be placed at the end of the CSS file and conform to the following format:
+Documenation and guidance should be placed at the end of the SCSS file and conform to the following format:
 
 
-```css
+```scss
 /*
 ---
 
 ## Guidance
 
-- List any design or content guidelines related to how
-  this component should be used
-
-## When to use
-
-- List typical use cases for this component
-
-## When to consider alternatives
-
-- List commonly confused use cases where an alternative
-  component would be a better solution
-
-## Accessibility
-
-- List any accessibility considerations like required
-  keyboard functionality, ARIA attributes, etc...
-
-## Theming
-
-- List any Sass variables a developer could override
-  to customize the appearance of the component
-
-## Related patterns
-
-- List any related components or utility classes that
-  connect with the component, whether as a parent, sibling,
-  or child within the pattern's taxonomy.
-
-## Learn more
-
-- List any links that served as inspiration, references,
-  or research related to this component.
+Content here
 
 Style guide: components.component-name-goes-here.guidance
 */
 ```
 
-</details>
+When writing documentationa and guidance please include the following sections. 
 
-### Example
+- **Usability**
+    - **When to use**
+        - List typical use cases for this component
+    - **When to consider alternatives**
+        - List commonly confused use cases where an alternative component would be a better solution
+    - **General guidance**
+        - List any design or content guidelines related to how this component should be used
+- **Accessibility**
+    - List any accessibility considerations like required keyboard functionality, ARIA attributes, etc...
+- **Theming (optional)**
+    - List any Sass variables a developer could override to customize the appearance of the component
+- **Related patterns (optional)**
+    - List any related components or utility classes that connect with the component, whether as a parent, sibling, or child within the pattern's taxonomy.
+- **Learn more**
+    - List any links that served as inspiration, references, or research related to this component.
 
-The example below would create a new documentation page with a URL path of `/components/buttons`.
+
+## Sample page 
+
+The example below is a new documentation page with a URL path of `/components/buttons`.
 
 <details>
-<summary>View example</summary>
+<summary>View sample page</summary>
 
 ```scss
 /*
@@ -190,7 +171,10 @@ Style guide: components.buttons
 }
 
 /*
-KSS doesn't care about this comment since it doesn't have a Reference
+---
+## Guidance 
+
+content here
 */
 ```
 </details>
