@@ -183,11 +183,11 @@ content here
 
 - [Build a Style Guide Straight from Sass](https://css-tricks.com/build-style-guide-straight-sass)
 
-----
 
-# React components
+## Documenting React components
 
 Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract documentation from comments in React component files. The documentation can include an overall description and a description for each of the component's `propTypes`.
+**Note:** Documenation can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Description
 
@@ -195,8 +195,8 @@ To document a description for your component, include it on a line above the cla
 
 ```js
 /**
- * A Button component description
- */
+A Button component description
+*/
 export class Button extends React.PureComponent {
 ```
 
@@ -208,25 +208,23 @@ If a React component expects any `props`, you should document them within the co
 Button.propTypes = {
   label: React.PropTypes.node.isRequired,
   /**
-   * Overwrite the button's `class` attribute by providing your own
-   */
+  Overwrite the button's `class` attribute by providing your own
+  */
   className: React.PropTypes.string
 };
 ```
 
 For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
 
-----
+## General documenation pages 
 
-# Markdown pages
-
-For the most part, documentation will be generated from CSS and JS comments as detailed above. However, there might be cases where you need to create a page that's not associated with another file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 
 ### Front-matter
 
-At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, or any support [flags](#flags)). Front-matter must be wrapped between these triple-dashed lines. For example:
+At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines. **Note:** The weight property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
 
 ```
 ---
