@@ -8,25 +8,24 @@ Here is a checklist of items that need to be completed before a component or pat
 - [ ] Description of component or pattern
 - [ ] HTML code snippet example(s)
 - [ ] React code snippet example(s)
-- [ ] All react properties are explained
+- [ ] All React `props` are explained
 - [ ] General guidance or best practices
 - [ ] Usability - when to use
 - [ ] Usability - when to consider something else
 - [ ] Accessibility considerations
 
-## Validate HTML
-If you are using Google Chrome or Firefox consider getting the [axe plugin](https://www.deque.com/axe) for validation.
+## Validate markup
+
 **What to check:**
-- If testing on W3.org
-  - [ ] Go to [validator.w3.org](https://validator.w3.org/#validate_by_input) paste your code in and make sure it validates without error.
-- If testing with axe plugin
-  - [ ] Run the axe plugin on the component or pattern. You should not receive any violations. Best practices warnings like `Means to skip repeated blocks of content` or `No main section` are page-level warnings and generally be ignored when developing new components.  
+- [ ] Go to [validator.w3.org](https://validator.w3.org/#validate_by_input) paste your code in and make sure it validates without error.
+- [ ] Test locally with the [axe plugin](https://www.deque.com/axe) for Google Chrome or Firefox.
+  - Run the axe plugin on the component or pattern. You should not receive any violations. Best practices warnings like `Means to skip repeated blocks of content` or `No main section` are page-level warnings and generally be ignored when developing new components.  
 
 ## Screen reader testing
 
 **What to check:**
-- [ ] Windows: IE11 + JAWS
-- [ ] Windows: NVDA + Firefox
+- [ ] Windows: [IE11 + JAWS](https://webaim.org/articles/jaws/)
+- [ ] Windows: [NVDA + Firefox](https://webaim.org/articles/nvda/)
 - [ ] MacOS: Safari + VoiceOver - [How to](https://webaim.org/articles/voiceover/)
 
 ## Keyboard testing
