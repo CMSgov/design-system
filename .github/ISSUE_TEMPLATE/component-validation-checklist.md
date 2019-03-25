@@ -1,6 +1,16 @@
+---
+name: Component validation checklist
+about: To be completed before a component or pattern can be marked as "Ready" in the
+  CMS Design System
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 # Component validation checklist
 
-Here is a checklist of items that need to be completed before a component or pattern can be marked as **Ready** in the CMS Design System.
+To be completed before a component or pattern can be marked as **Ready** in the CMS Design System.
 
 ## Documentation is complete
 
