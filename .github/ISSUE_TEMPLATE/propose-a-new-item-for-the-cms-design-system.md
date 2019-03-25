@@ -1,10 +1,18 @@
-<!--
-Note:
+---
+name: Propose a new item for the CMS design system
+about: What new component, pattern or style would you like to see added
+title: ''
+labels: proposal/feature request
+assignees: ''
+
+---
+
+**Note:**
 If you are suggesting a change to something that already exists in the Design System,
 please propose it by commenting on the issue for that style, component or pattern.
 You can find issues for all published content in the 'Published' column of the Design System backlog.
 https://github.com/CMSgov/design-system/projects/3
--->
+
 
 ## What
 > Give a brief description of the style, component or pattern you want to propose.
