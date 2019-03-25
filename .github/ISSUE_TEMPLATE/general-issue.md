@@ -1,5 +1,5 @@
 ---
-name: 'General issue'
+name: General issue
 about: Suggest an idea for this project
 title: ''
 labels: ''
