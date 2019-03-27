@@ -26,16 +26,23 @@ To be completed before a component or pattern can be marked as **Ready** in the 
 
 ## Validate markup
 
-**What to check:**
+**Check HTML:**
+Use one of the following options to validate the HTML of the component. 
+
 - [ ] Go to [validator.w3.org](https://validator.w3.org/#validate_by_input) paste your code in and make sure it validates without error.
-- [ ] Test locally with the [axe plugin](https://www.deque.com/axe) for Google Chrome or Firefox.
-  - Run the axe plugin on the component or pattern. You should not receive any violations. Best practices warnings like `Means to skip repeated blocks of content` or `No main section` are page-level warnings and generally be ignored when developing new components.  
+- [ ] Test locally with [HTML Validator for Firefox](https://addons.mozilla.org/en-US/firefox/addon/html-validator/
+- [ ] Test locally with [HTML Validator for Chrome](https://chrome.google.com/webstore/detail/html-validator/mpbelhhnfhfjnaehkcnnaknldmnocglk/related)
+
+**Check accessibility:** 
+- [ ] Test with the [axe plugin](https://www.deque.com/axe) for Google Chrome or Firefox.
+  - Run the axe plugin on the component or pattern. You should not receive any violations. Best practices warnings like `Means to skip repeated blocks of content` or `No main section` are page-level warnings and can generally be ignored when developing new components.
 
 ## Screen reader testing
 
 **What to check:**
 - [ ] Windows: [IE11 + JAWS](https://webaim.org/articles/jaws/)
 - [ ] Windows: [NVDA + Firefox](https://webaim.org/articles/nvda/)
+  - **Note:** Recommended NVDA addon: https://addons.nvda-project.org/addons/focusHighlight.en.html 
 - [ ] MacOS: Safari + VoiceOver - [How to](https://webaim.org/articles/voiceover/)
 
 ## Keyboard testing
@@ -55,11 +62,10 @@ More details: https://webaim.org/techniques/keyboard
 - [ ] Dialog/modal - **Esc** should close the window
   - Modal dialogs should maintain keyboard focus.
   - When a dialog closes, focus should usually return to the element that opened the dialog.
-- [ ] Tabs - **Tab** once to navigate into the group of tabs and once to navigate out of the group of tabs. **up/down** arrows or **left/right** arrows to move through tabs.
 - [ ] Scroll - **up/down** arrows to scroll vertically. **Left/right** arrows to scroll horizontally. **Spacebar** scroll down or **shift + spacebar** to scroll up by page.
 
 ## Color blindness checks
-View the component to check for visual issues. If using Google Chrome [Colorblinding](https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en) or [ChromeLens](https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd/related?hl=en) are great plugins.
+View the component to check for visual issues. If you are using Google Chrome, [Colorblinding](https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en) or [ChromeLens](https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd/related?hl=en) are great plugins.
 
 **What to check:**
 - [ ] Red-Blind / Protanopia
@@ -78,4 +84,5 @@ More details - https://www.w3.org/WAI/WCAG21/Understanding/reflow.html
 **What to check:**
 - [ ] Still usable at 400% increase in size
 - [ ] Content does not overlap or force users to scroll horizontally
+  - **Note:* Some content is OK to scroll horizontally - images, maps, diagrams, video, games, presentations, data tables, and interfaces where it is necessary to keep toolbars in view while manipulating content
 - [ ] All content is available
