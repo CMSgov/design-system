@@ -84,5 +84,5 @@ More details - https://www.w3.org/WAI/WCAG21/Understanding/reflow.html
 **What to check:**
 - [ ] Still usable at 400% increase in size
 - [ ] Content does not overlap or force users to scroll horizontally
-  - **Note:* Some content is OK to scroll horizontally - images, maps, diagrams, video, games, presentations, data tables, and interfaces where it is necessary to keep toolbars in view while manipulating content
+  - **Note:** Some content is OK to scroll horizontally - images, maps, diagrams, video, games, presentations, data tables, and interfaces where it is necessary to keep toolbars in view while manipulating content
 - [ ] All content is available
