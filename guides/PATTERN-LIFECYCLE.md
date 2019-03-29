@@ -5,7 +5,7 @@
 When considering what to do with a proposed pattern, there are several questions the team should answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
 
-![CMS Design System component decision workflow](https://github.com/CMSgov/design-system/blob/master/.github/images/CMS-Design-System-component-decision-workflow.jpg?raw=true)
+![CMS Design System component decision workflow](https://github.com/CMSgov/design-system/blob/9fa6d831b059727e0cb12a3b0e0fc7755ce52e8e/.github/images/CMS-Design-System-component-decision-workflow.jpg?raw=true)
 
 ## Proposing new patterns
 
