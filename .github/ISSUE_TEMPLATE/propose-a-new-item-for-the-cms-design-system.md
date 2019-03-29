@@ -17,10 +17,8 @@ https://github.com/CMSgov/design-system/projects/3
 ## What
 > Give a brief description of the style, component or pattern you want to propose.
 ## Why
-> Explain why you think this should be added to the Design System.
->
-> - What evidence do you have that it can serve more than one use case and be reusable in multiple scenarios?
-> - What evidence do you have that it meets the needs in multiple scenarios?
+> Explain why you think this should be added to the CMS Design System.
+> - Identify the need the proposal solves.
 > - Have you checked that it doesn't already exist in the Design System?
-## Anything else
-> Include links to any examples, research or code to support your proposal, if available.
+> - Can this serve more than one use case and be reusable in multiple scenarios? Please explain.
+> - Please include links to any examples, research or code to support your proposal, if available.
