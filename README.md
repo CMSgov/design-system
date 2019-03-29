@@ -4,7 +4,7 @@
 
 ## Packages
 
-You're currently at the root of a monorepo which contains multiple NPM packages in the `packages/` directory. The following packages located in the [`packages` directory](packages/) of this repo. View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
 | Name | Description |
 | ---- | ----------- |
@@ -33,9 +33,7 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contr
 
 ## Running locally
 
-This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
-
-[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
 ### Getting started
 
