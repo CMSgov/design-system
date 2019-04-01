@@ -13,7 +13,7 @@ When a new pattern is created, it’s worth asking if it's a one-off use case or
 
 Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design).
 
-Our design contribution and review process has five stages. As a contributor to the CMS Design System, you’ll only need to participate in the first stage — our team will handle the rest.
+Our design contribution and review process has four stages. As a contributor to the CMS Design System, you’ll only need to participate in the first stage — our team will handle the rest.
 
 ### Step 1 - Proposal (This is your part)
 
