@@ -24,8 +24,9 @@ export class Autocomplete extends React.PureComponent {
     super(props);
 
     this.id = this.props.id || uniqueId('autocomplete_');
-    this.labelId = uniqueId('autocomplete_header_');
+    this.labelId = uniqueId('autocomplete_label_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
+    this.listboxHeadingId = uniqueId('autocomplete_header_');
     this.loader = null;
   }
 
@@ -77,9 +78,11 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-controls': isOpen ? this.listboxId : null,
+          'aria-labelledby': null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
+          labelId: this.labelId,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
           onKeyDown: child.props.onKeyDown
@@ -111,8 +114,8 @@ export class Autocomplete extends React.PureComponent {
     );
 
     return (
-      <Downshift
-        render={({
+      <Downshift {...autocompleteProps}>
+        {({
           clearSelection,
           getInputProps,
           getItemProps,
@@ -120,7 +123,7 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <div className={rootClassName}>
+          <div aria-labelledby={this.labelId} className={rootClassName}>
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
@@ -129,14 +132,14 @@ export class Autocomplete extends React.PureComponent {
                   !loading && (
                     <h5
                       className="ds-u-margin--0 ds-u-padding--1"
-                      id={this.labelId}
+                      id={this.listboxHeadingId}
                     >
                       {label}
                     </h5>
                   )}
 
                 <ul
-                  aria-labelledby={label ? this.labelId : null}
+                  aria-labelledby={label ? this.listboxHeadingId : null}
                   className="ds-c-list--bare"
                   id={this.listboxId}
                   role="listbox"
@@ -163,8 +166,7 @@ export class Autocomplete extends React.PureComponent {
             </Button>
           </div>
         )}
-        {...autocompleteProps}
-      />
+      </Downshift>
     );
   }
 }
