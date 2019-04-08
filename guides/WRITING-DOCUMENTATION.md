@@ -28,7 +28,7 @@ For a component named "Foo", you would have the following:
 
 [Description]
 
-[Flags]
+[@Flags]
 
 [Modifiers]
 
@@ -50,7 +50,7 @@ The heading is used for the title of a generated page or the heading if this is 
 
 The description should describe what pattern does or should be used for in plain language.
 
-### Flags
+### @Flags
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
