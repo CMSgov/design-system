@@ -32,7 +32,7 @@ For a component named "Foo", you would have the following:
 
 [Modifiers]
 
-Markup: [filename]
+Markup: [filename or inline HTML/EJS]
 
 Style guide: [Reference]
 
@@ -74,8 +74,8 @@ Supported flags:
 If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
 
 ### Markup
+Markup examples can be written in plain HTML inline or in a separate `.html` file, relative to the CSS file:
 
-Markup examples should be written in plain HTML and in a separate `.html` file, relative to the CSS file:
 
 ```
 Markup: Button.example.html
