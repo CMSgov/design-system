@@ -36,7 +36,7 @@ Markup: [filename or inline HTML/EJS]
 
 Style guide: [Reference]
 
-[Documentation and guidance]
+[Documentation and guidance content inline]
 */
 ```
 
