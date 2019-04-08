@@ -1,14 +1,10 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
-import {
-  getElementByClassName,
-  getElementById,
-  getElementByXPath
-} from '../helpers/e2eTestHelpers';
 import AxeBuilder from 'axe-webdriverjs';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.help-drawer.react-help-drawer/`;
+const rootURL = `${ROOT_URL}/example/components.dialog.react/`;
 let driver, el;
 
 beforeEach(() => {
@@ -27,31 +23,31 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Help Drawer component', () => {
+describe('Modal Dialog component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementById(driver, 'js-example');
+    el = await getElementByClassName(driver, 'ds-c-button');
     expect(el).toBeTruthy();
   });
 
-  it('Should open the help drawer on click', async() => {
+  it('Should open the modal dialog on click', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByXPath(driver, '//*[@id="js-example"]/div/span/a');
+    el = await getElementByClassName(driver, 'ds-c-button--success');
     el.click();
 
-    el = await getElementByClassName(driver, 'ds-c-help-drawer');
+    el = await getElementByClassName(driver, 'ds-c-dialog');
     expect(el).toBeTruthy();
   });
 
   it('Should have no accessibility violations', async done => {
     await driver.get(rootURL);
 
-    el = await getElementByXPath(driver, '//*[@id="js-example"]/div/span/a');
+    el = await getElementByClassName(driver, 'ds-c-button--success');
     el.click();
 
-    el = await getElementByClassName(driver, 'ds-c-help-drawer');
+    el = await getElementByClassName(driver, 'ds-c-dialog');
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)

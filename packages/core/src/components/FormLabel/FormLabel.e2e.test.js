@@ -1,10 +1,10 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
-import { getElementByClassName } from '../helpers/e2eTestHelpers';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.vertical-nav.VerticalNav/`;
+const rootURL = `${ROOT_URL}/example/components.form-label.react/`;
 let driver, el;
 
 beforeEach(() => {
@@ -23,11 +23,11 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Vertical Navigation component', () => {
+describe('Form Label component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-vertical-nav');
+    el = await getElementByClassName(driver, 'ds-c-label');
     expect(el).toBeTruthy();
   });
 
@@ -36,7 +36,6 @@ describe('Vertical Navigation component', () => {
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);

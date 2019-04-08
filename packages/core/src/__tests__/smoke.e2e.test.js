@@ -1,7 +1,7 @@
 import 'chromedriver';
 import WebDriver, { Builder } from 'selenium-webdriver';
-import { getElementById, getElementByXPath } from '../helpers/e2eTestHelpers';
-import { ROOT_URL } from '../helpers/constants';
+import { getElementById, getElementByXPath } from '../helpers/e2e';
+import { ROOT_URL } from '../helpers/e2e/constants';
 
 let actual, driver, el, expected;
 

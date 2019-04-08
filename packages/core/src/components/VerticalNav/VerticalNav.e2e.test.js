@@ -1,10 +1,10 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
-import { getElementByClassName } from '../helpers/e2eTestHelpers';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.text-field.react/`;
+const rootURL = `${ROOT_URL}/example/components.vertical-nav.VerticalNav/`;
 let driver, el;
 
 beforeEach(() => {
@@ -23,11 +23,11 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Text Field component', () => {
+describe('Vertical Navigation component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-label');
+    el = await getElementByClassName(driver, 'ds-c-vertical-nav');
     expect(el).toBeTruthy();
   });
 
@@ -36,6 +36,7 @@ describe('Text Field component', () => {
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
+      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);

@@ -10,7 +10,7 @@ module.exports = {
     '<rootDir>/examples/',
     '<rootDir>/node_modules/',
     '<rootDir>/packages/*/node_modules/',
-    '<rootDir>/packages/core/src/e2e/',
+    '<rootDir>/packages/core/src/**/?*.e2e.test.js',
     '<rootDir>/packages/themes/*/node_modules/',
     '<rootDir>/packages/generator-cmsgov/generators/app/templates/'
   ]

@@ -1,10 +1,10 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
-import { getElementByClassName } from '../helpers/e2eTestHelpers';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.spinner.react/`;
+const rootURL = `${ROOT_URL}/example/components.text-field.react/`;
 let driver, el;
 
 beforeEach(() => {
@@ -23,11 +23,11 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Spinner component', () => {
+describe('Text Field component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-spinner');
+    el = await getElementByClassName(driver, 'ds-c-label');
     expect(el).toBeTruthy();
   });
 

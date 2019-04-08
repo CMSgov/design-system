@@ -1,15 +1,14 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
-import { getElementByClassName } from '../helpers/e2eTestHelpers';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.button/`;
-const primaryURL = `${ROOT_URL}/example/components.button..ds-c-button--primary/`;
-const transparentURL = `${ROOT_URL}/example/components.button..ds-c-button--transparent/`;
-const dangerURL = `${ROOT_URL}/example/components.button..ds-c-button--danger/`;
-const successURL = `${ROOT_URL}/example/components.button..ds-c-button--success/`;
-const disabledURL = `${ROOT_URL}/example/components.button.disabled/`;
+const rootURL = `${ROOT_URL}/example/components.badge/`;
+const infoURL = `${ROOT_URL}/example/components.badge..ds-c-badge--info/`;
+const successURL = `${ROOT_URL}/example/components.badge..ds-c-badge--success/`;
+const warnURL = `${ROOT_URL}/example/components.badge..ds-c-badge--warn/`;
+const alertURL = `${ROOT_URL}/example/components.badge..ds-c-badge--alert/`;
 let driver, el;
 
 beforeEach(() => {
@@ -28,20 +27,47 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Button component', () => {
-  it('Button should render', async() => {
+describe('Badge component', () => {
+  it('Badge should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-button');
+    el = await getElementByClassName(driver, 'ds-c-badge');
     expect(el).toBeTruthy();
   });
 
-  it('Button should have no accessibility violations', async done => {
+  it('Info badge should render', async() => {
+    await driver.get(infoURL);
+
+    el = await getElementByClassName(driver, 'ds-c-badge');
+    expect(el).toBeTruthy();
+  });
+
+  it('Success badge should render', async() => {
+    await driver.get(successURL);
+
+    el = await getElementByClassName(driver, 'ds-c-badge');
+    expect(el).toBeTruthy();
+  });
+
+  it('Warning badge should render', async() => {
+    await driver.get(warnURL);
+
+    el = await getElementByClassName(driver, 'ds-c-badge');
+    expect(el).toBeTruthy();
+  });
+
+  it('Alert badge should render', async() => {
+    await driver.get(alertURL);
+
+    el = await getElementByClassName(driver, 'ds-c-badge');
+    expect(el).toBeTruthy();
+  });
+
+  it('Badge should have no accessibility violations', async done => {
     await driver.get(rootURL);
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);
@@ -54,12 +80,11 @@ describe('Button component', () => {
       });
   });
 
-  it('Primary button should have no accessibility violations', async done => {
-    await driver.get(primaryURL);
+  it('Info badge should have no accessibility violations', async done => {
+    await driver.get(infoURL);
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);
@@ -72,48 +97,11 @@ describe('Button component', () => {
       });
   });
 
-  it('Transparent button should have no accessibility violations', async done => {
-    await driver.get(transparentURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
-  });
-
-  it('Danger button should have no accessibility violations', async done => {
-    await driver.get(dangerURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
-  });
-
-  it('Success button should have no accessibility violations', async done => {
+  it('Success badge should have no accessibility violations', async done => {
     await driver.get(successURL);
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);
@@ -126,12 +114,28 @@ describe('Button component', () => {
       });
   });
 
-  it('Disabled button should have no accessibility violations', async done => {
-    await driver.get(disabledURL);
+  it('Warning badge should have no accessibility violations', async done => {
+    await driver.get(warnURL);
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
+      .analyze((err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        if (results.violations.length >= 1) {
+          console.log(results.violations);
+        }
+        expect(results.violations.length).toBe(0);
+        done();
+      });
+  });
+
+  it('Alert badge should have no accessibility violations', async done => {
+    await driver.get(alertURL);
+
+    await AxeBuilder(driver)
+      .withTags(RULESET_ALL)
       .analyze((err, results) => {
         if (err) {
           console.log(err);

@@ -1,10 +1,11 @@
 import 'chromedriver';
-import { ROOT_URL, RULESET_ALL } from '../helpers/constants';
+import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
-import { getElementByClassName } from '../helpers/e2eTestHelpers';
+import { getElementByClassName } from '../../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.dialog.react/`;
+const rootURL = `${ROOT_URL}/example/components.choice.choicelist/`;
+const inverseURL = `${ROOT_URL}/example/components.choice.inversed/`;
 let driver, el;
 
 beforeEach(() => {
@@ -23,35 +24,36 @@ afterEach(() => {
   driver.quit();
 });
 
-describe('Modal Dialog component', () => {
+describe('Choice component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-button');
-    expect(el).toBeTruthy();
-  });
-
-  it('Should open the modal dialog on click', async() => {
-    await driver.get(rootURL);
-
-    el = await getElementByClassName(driver, 'ds-c-button--success');
-    el.click();
-
-    el = await getElementByClassName(driver, 'ds-c-dialog');
+    el = await getElementByClassName(driver, 'ds-c-fieldset');
     expect(el).toBeTruthy();
   });
 
   it('Should have no accessibility violations', async done => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-button--success');
-    el.click();
+    await AxeBuilder(driver)
+      .withTags(RULESET_ALL)
+      .analyze((err, results) => {
+        if (err) {
+          console.log(err);
+        }
+        if (results.violations.length >= 1) {
+          console.log(results.violations);
+        }
+        expect(results.violations.length).toBe(0);
+        done();
+      });
+  });
 
-    el = await getElementByClassName(driver, 'ds-c-dialog');
+  it('Inverse layout should have no accessibility violations', async done => {
+    await driver.get(inverseURL);
 
     await AxeBuilder(driver)
       .withTags(RULESET_ALL)
-      .disableRules('bypass')
       .analyze((err, results) => {
         if (err) {
           console.log(err);
