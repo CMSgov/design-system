@@ -1,6 +1,5 @@
-import 'chromedriver';
+/* global driver */
 import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
-import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
 import { getElementByClassName } from '../../helpers/e2e';
 
@@ -10,29 +9,12 @@ const transparentURL = `${ROOT_URL}/example/components.button..ds-c-button--tran
 const dangerURL = `${ROOT_URL}/example/components.button..ds-c-button--danger/`;
 const successURL = `${ROOT_URL}/example/components.button..ds-c-button--success/`;
 const disabledURL = `${ROOT_URL}/example/components.button.disabled/`;
-let driver, el;
-
-beforeEach(() => {
-  const chromeCapabilities = WebDriver.Capabilities.chrome();
-  chromeCapabilities.set('chromeOptions', {
-    args: ['--headless', '--window-size=1024,768']
-  });
-
-  driver = new Builder()
-    .forBrowser('chrome')
-    .withCapabilities(chromeCapabilities)
-    .build();
-});
-
-afterEach(() => {
-  driver.quit();
-});
 
 describe('Button component', () => {
   it('Button should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-button');
+    const el = await getElementByClassName('ds-c-button');
     expect(el).toBeTruthy();
   });
 

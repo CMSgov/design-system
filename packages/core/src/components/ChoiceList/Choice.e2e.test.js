@@ -1,34 +1,16 @@
-import 'chromedriver';
+/* global driver */
 import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
-import WebDriver, { Builder } from 'selenium-webdriver';
 import AxeBuilder from 'axe-webdriverjs';
 import { getElementByClassName } from '../../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.choice.choicelist/`;
 const inverseURL = `${ROOT_URL}/example/components.choice.inversed/`;
-let driver, el;
-
-beforeEach(() => {
-  const chromeCapabilities = WebDriver.Capabilities.chrome();
-  chromeCapabilities.set('chromeOptions', {
-    args: ['--headless', '--window-size=1024,768']
-  });
-
-  driver = new Builder()
-    .forBrowser('chrome')
-    .withCapabilities(chromeCapabilities)
-    .build();
-});
-
-afterEach(() => {
-  driver.quit();
-});
 
 describe('Choice component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    el = await getElementByClassName(driver, 'ds-c-fieldset');
+    const el = await getElementByClassName('ds-c-fieldset');
     expect(el).toBeTruthy();
   });
 

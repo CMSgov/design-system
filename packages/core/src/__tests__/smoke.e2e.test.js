@@ -1,25 +1,6 @@
-import 'chromedriver';
-import WebDriver, { Builder } from 'selenium-webdriver';
+/* global driver */
 import { getElementById, getElementByXPath } from '../helpers/e2e';
 import { ROOT_URL } from '../helpers/e2e/constants';
-
-let actual, driver, el, expected;
-
-beforeEach(() => {
-  const chromeCapabilities = WebDriver.Capabilities.chrome();
-  chromeCapabilities.set('chromeOptions', {
-    args: ['--headless', '--window-size=1024,768']
-  });
-
-  driver = new Builder()
-    .forBrowser('chrome')
-    .withCapabilities(chromeCapabilities)
-    .build();
-});
-
-afterEach(() => {
-  driver.quit();
-});
 
 describe('CMS Design System smoke test', () => {
   it('Sets window size and scroll position', async() => {
@@ -33,15 +14,14 @@ describe('CMS Design System smoke test', () => {
   it('Should click Learn how to get started and open startup/installation/', async() => {
     await driver.get(ROOT_URL);
 
-    el = await getElementByXPath(
-      driver,
+    let el = await getElementByXPath(
       '//*[@id="main"]/div/div/article/div/p[3]/a'
     );
     el.click();
-    el = await getElementById(driver, 'startup.installation');
+    el = await getElementById('startup.installation');
 
-    actual = await el.getText();
-    expected = 'Installation';
+    const actual = await el.getText();
+    const expected = 'Installation';
     expect(actual).toEqual(expected);
   });
 });

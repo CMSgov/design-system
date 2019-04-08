@@ -1,25 +1,25 @@
-import { By, until } from 'selenium-webdriver';
+/* global driver, by, until */
 import { WAIT_UNTIL_TIME } from './constants';
 
-export async function getElementByClassName(driver, className) {
+export async function getElementByClassName(className) {
   const el = await driver.wait(
-    until.elementLocated(By.className(className)),
+    until.elementLocated(by.className(className)),
     WAIT_UNTIL_TIME
   );
   return driver.wait(until.elementIsVisible(el), WAIT_UNTIL_TIME);
 }
 
-export async function getElementById(driver, id) {
+export async function getElementById(id) {
   const el = await driver.wait(
-    until.elementLocated(By.id(id)),
+    until.elementLocated(by.id(id)),
     WAIT_UNTIL_TIME
   );
   return driver.wait(until.elementIsVisible(el), WAIT_UNTIL_TIME);
 }
 
-export async function getElementByXPath(driver, xpath) {
+export async function getElementByXPath(xpath) {
   const el = await driver.wait(
-    until.elementLocated(By.xpath(xpath)),
+    until.elementLocated(by.xpath(xpath)),
     WAIT_UNTIL_TIME
   );
   return driver.wait(until.elementIsVisible(el), WAIT_UNTIL_TIME);
