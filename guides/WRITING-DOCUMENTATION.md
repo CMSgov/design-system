@@ -2,7 +2,7 @@
 
 Documentation for the design system's components are automatically generated from their CSS and JS comments. In order for this to work, you need to follow some conventions set by the tools we use to generate the documentation: [KSS](https://github.com/kss-node/kss-node) and [react-docgen](https://github.com/reactjs/react-docgen).
 
-# File naming
+## File naming
 
 Name and structure components as follows in order for docs generation to work as expected.
 
@@ -15,36 +15,42 @@ For a component named "Foo", you would have the following:
         ├── Foo.jsx             React component
         ├── Foo.test.jsx        React component tests
         └── Foo.example.jsx     React component used to render an example
+        └── Foo.example.html    HTML example
 ```
 
-# CSS components
+## CSS components
 
 [KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written. They establish what pages get created and the content on those pages. We use KSS to parse CSS comment blocks to extract documentation, and it expects your comment block to follow this particular format:
 
-```css
+```scss
 /*
 [Heading]
 
 [Description]
 
-[@flags]
-
-Markup:
-[Inline HTML/EJS or filename]
+[@Flags]
 
 [Modifiers]
 
+Markup: [filename or inline HTML/EJS]
+
 Style guide: [Reference]
+
+[Documentation and guidance content inline]
 */
 ```
 
-### Heading
+### Heading (required)
 
 The heading is used for the title of a generated page or the heading if this is a subsection of a page.
 
-This is a required field, but if you want to create a subsection without a heading, you can enter `---`.
+**note:** If you want to create a subsection without a heading, add `---` after the opening `/*`.
 
-### @flags
+### Description
+
+The description should describe what pattern does or should be used for in plain language.
+
+### @Flags
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
@@ -52,130 +58,96 @@ Supported flags:
 
 - **`@hide-example`** Hides the example and code snippet. Useful for rendering just the prop docs for React components.
 - **`@hide-markup`** Hides the code snippet.
-- **`@react-component [NAME]`** Displays the React component's example and `PropType` documentation.
-  - where `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`
+- **`@react-component [NAME]`** Displays the React `.jsx` component example, documentation and `Props`.
+    - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
+    - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
 
-    **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
-
-    See [File naming](#file-naming) above for more info.
-- **`@react-example [NAME]`** Displays an example using this React component.
+- **`@react-example [NAME]`** Displays example.jsx file using this React component. 
+    - **Example**: `@react-component Mask` displays `Mask.example.jsx`
+ 
 - **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [alpha|beta]`** Displays a status badge. Supported values: `alpha`, `beta`.
-- **`@uswds [URL]`** Marks the component as a US Web Design Standard component. Enter the URL so the documentation can link to the corresponding USWDS page.
+- **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
+- **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
+
+### Modifiers
+
+If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
 
 ### Markup
+Markup examples can be written in plain HTML inline or in a separate `.html` file, relative to the CSS file:
 
-Markup examples can be written in plain HTML or [EJS](http://ejs.co/). The markup can be written inline or within a separate `.html` or `.ejs` file, relative to the CSS file:
-
-<details>
-<summary>Inline HTML example</summary>
-
-```
-Markup:
-<button class="ds-c-button {{modifier}}">Button label</button>
-```
-</details>
-
-
-<details>
-<summary>Inline EJS example</summary>
-
-```
-Markup:
-<% ['bottom', 'left', 'right', 'top'].forEach(name => { -%>
-  <div class="ds-u-margin-<%= name %>--1"></div>
-<% }) -%>
-```
-</details>
-
-<details>
-<summary>HTML file example</summary>
 
 ```
 Markup: Button.example.html
 ```
-</details>
 
-### Reference - URL's and hierarchy
+#### Button.example.html file
+```HTML
+<button class="ds-c-button {{modifier}}">Button label</button>
+```
+
+### Style guide: Reference
 
 The `reference` defines the documentation site's structure.
 
 The expected format is:
-`[Top-level slug].[Subpage slug].[Page section slug]`
+`[Top-level slug].[Subpage slug].[Page section slug]` for example `Style guide: components.button.disabled`
 
-As you might be able to tell from the format, the docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd level will be displayed in the body of their parent page.
+The docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd level will be displayed in the body of their parent page.
 
-Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the CSS file.
+Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the SCSS file.
 
-### Guidance
+### Documentation and guidance
 
-To add content to the "Guidance" tab of a page, the page section's slug should begin with `guidance`. For example: `components.buttons.guidance`
+To add guidance content to the page, the page section's slug should be `guidance`. 
+For example: `components.buttons.guidance`
 
-To link to another documentation page, you can prefix the relative url with `{{root}}` to have the correct path added to the URL when the site is generated. For example: `{{root}}/components/button`
+Guidance can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`. For example
 
-In general, the guidance comment block should be placed at the end of the CSS file and conform to the following format:
+To link to another documentation page in your guidance content use a relative url. **Example:** `/components/button`
 
-<details>
-<summary>View example</summary>
+Documentation and guidance should be placed at the end of the SCSS file and conform to the following format:
 
-```css
+
+```scss
 /*
 ---
 
-## When to use
-
-- List typical use cases for this component
-
-## When to consider alternatives
-
-- List commonly confused use cases where an alternative
-  component would be a better solution
-
 ## Guidance
 
-- List any design or content guidelines related to how
-  this component should be used
-
-## Accessibility
-
-- List any accessibility considerations like required
-  keyboard functionality, ARIA attributes, etc
-
-## Theming
-
-- List any Sass variables a developer could override
-  to customize the appearance of the component
-
-## Future research
-
-- Optionally list any suggestions for future research
-  that could mature and extend the component
-
-## Related patterns
-
-- List any related components or utility classes that
-  connect with the component, whether as a parent, sibling,
-  or child within the pattern's taxonomy.
-
-## Learn more
-
-- List any links that served as inspiration, references,
-  or research related to this component.
+Content here
 
 Style guide: components.component-name-goes-here.guidance
 */
 ```
 
-</details>
+When writing documentation and guidance please include the following sections. 
 
-### Example
+- **Usability**
+    - **When to use**
+        - List typical use cases for this component
+    - **When to consider alternatives**
+        - List commonly confused use cases where an alternative component would be a better solution
+    - **General guidance**
+        - List any design or content guidelines related to how this component should be used
+- **Accessibility**
+    - List any accessibility considerations like required keyboard functionality, ARIA attributes, etc...
+- **Theming (optional)**
+    - List any Sass variables a developer could override to customize the appearance of the component
+- **Related patterns (optional)**
+    - List any related components or utility classes that connect with the component, whether as a parent, sibling, or child within the pattern's taxonomy.
+- **Learn more**
+    - List any links that served as inspiration, references, or research related to this component.
 
-The example below would create a new documentation page with a URL path of `/components/buttons`.
+
+## Sample page 
+
+The example below is a new documentation page with a URL path of `/components/buttons`.
 
 <details>
-<summary>View example</summary>
+<summary>View sample page</summary>
 
-```css
+```scss
 /*
 Buttons
 
@@ -183,8 +155,7 @@ Use buttons to signal actions.
 
 @react-component Button
 
-Markup:
-<button type="button" class="ds-c-button {{modifier}}">Button label</button>
+Markup: button.example.html
 
 .ds-c-button--primary - The primary call-to-action
 
@@ -200,7 +171,10 @@ Style guide: components.buttons
 }
 
 /*
-KSS doesn't care about this comment since it doesn't have a Reference
+---
+## Guidance 
+
+content here
 */
 ```
 </details>
@@ -209,11 +183,11 @@ KSS doesn't care about this comment since it doesn't have a Reference
 
 - [Build a Style Guide Straight from Sass](https://css-tricks.com/build-style-guide-straight-sass)
 
-----
 
-# React components
+## Documenting React components
 
 Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract documentation from comments in React component files. The documentation can include an overall description and a description for each of the component's `propTypes`.
+**Note:** Documentation can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Description
 
@@ -221,8 +195,8 @@ To document a description for your component, include it on a line above the cla
 
 ```js
 /**
- * A Button component description
- */
+* A Button component description
+*/
 export class Button extends React.PureComponent {
 ```
 
@@ -234,25 +208,23 @@ If a React component expects any `props`, you should document them within the co
 Button.propTypes = {
   label: React.PropTypes.node.isRequired,
   /**
-   * Overwrite the button's `class` attribute by providing your own
-   */
+  * Overwrite the button's `class` attribute by providing your own
+  */
   className: React.PropTypes.string
 };
 ```
 
 For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
 
-----
+## General documentation pages 
 
-# Markdown pages
-
-For the most part, documentation will be generated from CSS and JS comments as detailed above. However, there might be cases where you need to create a page that's not associated with another file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 
 ### Front-matter
 
-At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, or any support [flags](#flags)). Front-matter must be wrapped between these triple-dashed lines. For example:
+At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines. **Note:** The weight property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
 
 ```
 ---
