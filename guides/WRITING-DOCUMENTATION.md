@@ -195,7 +195,7 @@ To document a description for your component, include it on a line above the cla
 
 ```js
 /**
-A Button component description
+* A Button component description
 */
 export class Button extends React.PureComponent {
 ```
@@ -208,7 +208,7 @@ If a React component expects any `props`, you should document them within the co
 Button.propTypes = {
   label: React.PropTypes.node.isRequired,
   /**
-  Overwrite the button's `class` attribute by providing your own
+  * Overwrite the button's `class` attribute by providing your own
   */
   className: React.PropTypes.string
 };
