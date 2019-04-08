@@ -26,6 +26,7 @@ export class Autocomplete extends React.PureComponent {
     this.id = this.props.id || uniqueId('autocomplete_');
     this.labelId = uniqueId('autocomplete_label_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
+    this.listboxContainerId = uniqueId('autocomplete_owned_container_');
     this.listboxHeadingId = uniqueId('autocomplete_header_');
     this.loader = null;
   }
@@ -37,14 +38,7 @@ export class Autocomplete extends React.PureComponent {
     getItemProps,
     highlightedIndex
   ) {
-    if (this.props.loading) {
-      return (
-        <li className="ds-c-autocomplete__list-item--message">
-          {this.props.loadingMessage}
-        </li>
-      );
-    }
-
+    // If we have results, create a mapped list
     if (items.length) {
       return items.map((item, index) => (
         <li
@@ -63,8 +57,26 @@ export class Autocomplete extends React.PureComponent {
       ));
     }
 
+    // If we're waiting for results to load, show the non-selected message
+    if (this.props.loading) {
+      return (
+        <li
+          aria-selected="false"
+          className="ds-c-autocomplete__list-item--message"
+          role="option"
+        >
+          {this.props.loadingMessage}
+        </li>
+      );
+    }
+
+    // If we have no results, show the non-selected message
     return (
-      <li className="ds-c-autocomplete__list-item--message">
+      <li
+        aria-selected="false"
+        className="ds-c-autocomplete__list-item--message"
+        role="option"
+      >
         {this.props.noResultsMessage}
       </li>
     );
@@ -123,11 +135,18 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <div aria-labelledby={this.labelId} className={rootClassName}>
+          <div
+            aria-labelledby={this.labelId}
+            aria-owns={isOpen ? this.listboxContainerId : null}
+            className={rootClassName}
+          >
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
-              <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
+              <div
+                className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list"
+                id={this.listboxContainerId}
+              >
                 {label &&
                   !loading && (
                     <h5
