@@ -1,6 +1,7 @@
 /* global driver */
-import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
-import AxeBuilder from 'axe-webdriverjs';
+import { ROOT_URL } from '../../helpers/e2e/constants';
+
+import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.badge/`;
@@ -45,88 +46,23 @@ describe('Badge component', () => {
     expect(el).toBeTruthy();
   });
 
-  it('Badge should have no accessibility violations', async done => {
-    await driver.get(rootURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Badge should have no accessibility violations', async() => {
+    await assertNoAxeViolations(rootURL);
   });
 
-  it('Info badge should have no accessibility violations', async done => {
-    await driver.get(infoURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Info badge should have no accessibility violations', async() => {
+    await assertNoAxeViolations(infoURL);
   });
 
-  it('Success badge should have no accessibility violations', async done => {
-    await driver.get(successURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Success badge should have no accessibility violations', async() => {
+    await assertNoAxeViolations(successURL);
   });
 
-  it('Warning badge should have no accessibility violations', async done => {
-    await driver.get(warnURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Warning badge should have no accessibility violations', async() => {
+    await assertNoAxeViolations(warnURL);
   });
 
-  it('Alert badge should have no accessibility violations', async done => {
-    await driver.get(alertURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Alert badge should have no accessibility violations', async() => {
+    await assertNoAxeViolations(alertURL);
   });
 });

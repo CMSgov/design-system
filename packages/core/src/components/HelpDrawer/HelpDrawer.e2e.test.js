@@ -1,11 +1,11 @@
 /* global driver */
-import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
 import {
   getElementByClassName,
   getElementById,
   getElementByXPath
 } from '../../helpers/e2e';
-import AxeBuilder from 'axe-webdriverjs';
+import { ROOT_URL } from '../../helpers/e2e/constants';
+import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 
 const rootURL = `${ROOT_URL}/example/components.help-drawer.react-help-drawer/`;
 
@@ -27,7 +27,7 @@ describe('Help Drawer component', () => {
     expect(el).toBeTruthy();
   });
 
-  it('Should have no accessibility violations', async done => {
+  it('Should have no accessibility violations', async() => {
     await driver.get(rootURL);
 
     let el = await getElementByXPath('//*[@id="js-example"]/div/span/a');
@@ -35,18 +35,6 @@ describe('Help Drawer component', () => {
 
     el = await getElementByClassName('ds-c-help-drawer');
 
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+    await assertNoAxeViolations();
   });
 });

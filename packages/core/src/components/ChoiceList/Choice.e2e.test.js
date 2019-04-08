@@ -1,6 +1,7 @@
 /* global driver */
-import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
-import AxeBuilder from 'axe-webdriverjs';
+import { ROOT_URL } from '../../helpers/e2e/constants';
+
+import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.choice.choicelist/`;
@@ -14,37 +15,11 @@ describe('Choice component', () => {
     expect(el).toBeTruthy();
   });
 
-  it('Should have no accessibility violations', async done => {
-    await driver.get(rootURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Should have no accessibility violations', async() => {
+    await assertNoAxeViolations(rootURL);
   });
 
-  it('Inverse layout should have no accessibility violations', async done => {
-    await driver.get(inverseURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Inverse layout should have no accessibility violations', async() => {
+    await assertNoAxeViolations(inverseURL);
   });
 });

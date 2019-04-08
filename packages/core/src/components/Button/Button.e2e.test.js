@@ -1,6 +1,7 @@
 /* global driver */
-import { ROOT_URL, RULESET_ALL } from '../../helpers/e2e/constants';
-import AxeBuilder from 'axe-webdriverjs';
+import { ROOT_URL } from '../../helpers/e2e/constants';
+
+import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.button/`;
@@ -18,111 +19,27 @@ describe('Button component', () => {
     expect(el).toBeTruthy();
   });
 
-  it('Button should have no accessibility violations', async done => {
-    await driver.get(rootURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(rootURL);
   });
 
-  it('Primary button should have no accessibility violations', async done => {
-    await driver.get(primaryURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Primary button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(primaryURL);
   });
 
-  it('Transparent button should have no accessibility violations', async done => {
-    await driver.get(transparentURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Transparent button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(transparentURL);
   });
 
-  it('Danger button should have no accessibility violations', async done => {
-    await driver.get(dangerURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Danger button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(dangerURL);
   });
 
-  it('Success button should have no accessibility violations', async done => {
-    await driver.get(successURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Success button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(successURL);
   });
 
-  it('Disabled button should have no accessibility violations', async done => {
-    await driver.get(disabledURL);
-
-    await AxeBuilder(driver)
-      .withTags(RULESET_ALL)
-      .disableRules('bypass')
-      .analyze((err, results) => {
-        if (err) {
-          console.log(err);
-        }
-        if (results.violations.length >= 1) {
-          console.log(results.violations);
-        }
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+  it('Disabled button should have no accessibility violations', async() => {
+    await assertNoAxeViolations(disabledURL);
   });
 });
