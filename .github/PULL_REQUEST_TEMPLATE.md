@@ -1,6 +1,8 @@
-**Pro tip:** Add the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) to the PR title like this `[WNMGDS-10] - title of pr here` to link to the related issue in Jira.
+**Note:** 
+- Add the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) to the PR title like this `[WNMGDS-10] - title of pr here` to link to the related issue in Jira.
+- You can automatically [close related GitHub issues by using keywords](https://help.github.com/en/articles/closing-issues-using-keywords).
+- If your changes involve code please update the snapshots by running `yarn update-snapshots`.
 
-**Note:** If your changes involve code please update the snapshots by running `yarn update-snapshots`.
 
 **Please follow the format below and remove any sections that aren't relevant.**
 
