@@ -6,6 +6,7 @@ import TextField from '../TextField/TextField';
 ReactDOM.render(
   <div>
     <Autocomplete
+      clearInput
       items={[
         {
           id: 'kRf6c2fY',
@@ -55,6 +56,7 @@ ReactDOM.render(
     </Autocomplete>
 
     <Autocomplete
+      clearInput
       items={[
         {
           id: 'kRf6c2fY',

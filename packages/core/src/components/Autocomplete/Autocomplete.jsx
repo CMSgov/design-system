@@ -130,6 +130,7 @@ export class Autocomplete extends React.PureComponent {
     const {
       ariaClearLabel,
       clearInputText,
+      clearInput,
       items,
       label,
       loading,
@@ -189,16 +190,17 @@ export class Autocomplete extends React.PureComponent {
               </div>
             ) : null}
 
-            <Button
-              aria-label={ariaClearLabel}
-              className="ds-u-float--right ds-u-padding-right--0"
-              onClick={clearSelection}
-              role="button"
-              size="small"
-              variation="transparent"
-            >
-              {clearInputText}
-            </Button>
+            {clearInput ? (
+              <Button
+                aria-label={ariaClearLabel}
+                className="ds-u-float--right ds-u-padding-right--0"
+                onClick={clearSelection}
+                size="small"
+                variation="transparent"
+              >
+                {clearInputText}
+              </Button>
+            ) : null}
           </div>
         )}
       </Downshift>
@@ -233,7 +235,11 @@ Autocomplete.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Clear search text that will appear on the page as part of the rendered `<button>` component
+   * Show the Clear search `<button>` when prop is passed
+   */
+  clearInput: PropTypes.bool,
+  /**
+   * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
   clearInputText: PropTypes.node,
   /**

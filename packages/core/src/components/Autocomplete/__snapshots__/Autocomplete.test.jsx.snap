@@ -2,12 +2,7 @@
 
 exports[`Autocomplete renders a snapshot 1`] = `
 <div
-  aria-expanded={false}
-  aria-haspopup="listbox"
-  aria-labelledby="autocomplete_label_34"
-  aria-owns={null}
   className="ds-u-clearfix ds-c-autocomplete"
-  role="combobox"
 >
   <button
     aria-label="Clear typeahead and search again"
