@@ -6,7 +6,6 @@ import TextField from '../TextField/TextField';
 ReactDOM.render(
   <div>
     <Autocomplete
-      clearInput
       items={[
         {
           id: 'kRf6c2fY',
@@ -56,7 +55,6 @@ ReactDOM.render(
     </Autocomplete>
 
     <Autocomplete
-      clearInput
       items={[
         {
           id: 'kRf6c2fY',
@@ -83,7 +81,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete items={[]} loading>
+    <Autocomplete items={[]} loading noClearInput>
       <TextField
         hint="List should return string Loading to simulate async data call."
         label="Loading message"
@@ -91,7 +89,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete items={[]}>
+    <Autocomplete items={[]} noClearInput>
       <TextField
         hint="List should return string No results found."
         label="No results message"
@@ -99,7 +97,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete>
+    <Autocomplete noClearInput>
       <TextField
         hint="No list should be shown if no item array is provided and it's not loading. This could be the case if a user has not yet entered the minimum number of characters required for a search."
         label="Nothing shown"

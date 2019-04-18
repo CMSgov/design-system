@@ -130,12 +130,12 @@ export class Autocomplete extends React.PureComponent {
     const {
       ariaClearLabel,
       clearInputText,
-      clearInput,
       items,
       label,
       loading,
       children,
       className,
+      noClearInput,
       ...autocompleteProps
     } = this.props;
 
@@ -190,7 +190,7 @@ export class Autocomplete extends React.PureComponent {
               </div>
             ) : null}
 
-            {clearInput ? (
+            {!noClearInput && (
               <Button
                 aria-label={ariaClearLabel}
                 className="ds-u-float--right ds-u-padding-right--0"
@@ -200,7 +200,7 @@ export class Autocomplete extends React.PureComponent {
               >
                 {clearInputText}
               </Button>
-            ) : null}
+            )}
           </div>
         )}
       </Downshift>
@@ -234,10 +234,6 @@ Autocomplete.propTypes = {
    * Useful for adding utility classes.
    */
   className: PropTypes.string,
-  /**
-   * Show the Clear search `<button>` when prop is passed
-   */
-  clearInput: PropTypes.bool,
   /**
    * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
@@ -284,6 +280,10 @@ Autocomplete.propTypes = {
    * Message users will see when the `loading` prop is passed to `Autocomplete`.
    */
   loadingMessage: PropTypes.node,
+  /**
+   * Do not render the Clear search `<button>` when prop is passed
+   */
+  noClearInput: PropTypes.bool,
   /**
    * Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.
    */

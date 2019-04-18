@@ -70,11 +70,11 @@ describe('Autocomplete', () => {
     ).toBe(true);
     expect(downshift.find('ul').exists()).toBe(false);
     expect(downshift.find('li').exists()).toBe(false);
-    expect(downshift.find('button').exists()).toBe(false);
+    expect(downshift.find('button').exists()).toBe(true);
   });
 
-  it('renders a clear search button when clearInput is passed', () => {
-    const { wrapper } = render({ clearInput: true }, true);
+  it('does not render a clear search button when noClearInput is passed', () => {
+    const { wrapper } = render({ noClearInput: true }, true);
     const downshift = wrapper.find('Downshift');
 
     expect(
@@ -83,8 +83,7 @@ describe('Autocomplete', () => {
         .first()
         .exists()
     ).toBe(true);
-    expect(downshift.find('button').exists()).toBe(true);
-    expect(downshift.find('button').text()).toBe('Clear search');
+    expect(downshift.find('button').exists()).toBe(false);
   });
 
   it('renders default class names', () => {
