@@ -89,7 +89,9 @@ export class Autocomplete extends React.PureComponent {
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
         const propOverrides = {
+          'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
+          'aria-expanded': null,
           'aria-labelledby': null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
@@ -137,8 +139,13 @@ export class Autocomplete extends React.PureComponent {
         }) => (
           <div
             aria-labelledby={this.labelId}
+            aria-expanded={isOpen}
+            aria-haspopup="listbox"
             aria-owns={isOpen ? this.listboxContainerId : null}
             className={rootClassName}
+            // https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/442
+            // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+            role="combobox"
           >
             {this.renderChildren(getInputProps, isOpen)}
 
@@ -178,6 +185,7 @@ export class Autocomplete extends React.PureComponent {
               aria-label={ariaClearLabel}
               className="ds-u-float--right ds-u-padding-right--0"
               onClick={clearSelection}
+              role="button"
               size="small"
               variation="transparent"
             >
