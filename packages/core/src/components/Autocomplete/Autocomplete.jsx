@@ -1,3 +1,19 @@
+/**
+ * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+ * https://www.digitala11y.com/aria-autocomplete-properties/
+ *
+ * We have opted to retain the ARIA 1.0 markup pattern for comboboxes.
+ * This was done because the ARIA 1.1 markup pattern triggers a different
+ * behavior on containers with a role="combobox" attribute. WCAG refers to
+ * this as a composite widget: https://www.w3.org/TR/wai-aria-1.1/#h-composite
+ *
+ * Our testing with screen readers, specifically JAWS, has been the deciding
+ * factor in going back to the ARIA 1.0 markup pattern. There were a number
+ * of confusing and conflicting interactions using the 1.1 markup pattern
+ * that were deemed an unnecessary regression.
+ */
+
 import 'core-js/fn/array/find';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
@@ -24,7 +40,7 @@ export class Autocomplete extends React.PureComponent {
     super(props);
 
     this.id = this.props.id || uniqueId('autocomplete_');
-    this.labelId = uniqueId('autocomplete_label_');
+    this.labelId = this.props.labelId || uniqueId('autocomplete_label_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
     this.listboxContainerId = uniqueId('autocomplete_owned_container_');
     this.listboxHeadingId = uniqueId('autocomplete_header_');
@@ -91,15 +107,16 @@ export class Autocomplete extends React.PureComponent {
         const propOverrides = {
           'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
-          'aria-expanded': null,
-          'aria-labelledby': null,
+          'aria-expanded': isOpen,
+          'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           labelId: this.labelId,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
-          onKeyDown: child.props.onKeyDown
+          onKeyDown: child.props.onKeyDown,
+          role: 'combobox'
         };
 
         return React.cloneElement(child, getInputProps(propOverrides));
@@ -137,16 +154,7 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <div
-            aria-labelledby={this.labelId}
-            aria-expanded={isOpen}
-            aria-haspopup="listbox"
-            aria-owns={isOpen ? this.listboxContainerId : null}
-            className={rootClassName}
-            // https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/442
-            // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-            role="combobox"
-          >
+          <div className={rootClassName}>
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
@@ -258,6 +266,10 @@ Autocomplete.propTypes = {
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
+  /**
+   * A unique `id` to be used on the child `TextField` label tag
+   */
+  labelId: PropTypes.string,
   /**
    * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
    */
