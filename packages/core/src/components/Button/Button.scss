@@ -22,7 +22,7 @@ Style guide: components.button
 .ds-c-button {
   appearance: none;
   background-color: transparent;
-  border: 1px solid $color-primary;
+  border: $button-border-width solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
   cursor: pointer;
