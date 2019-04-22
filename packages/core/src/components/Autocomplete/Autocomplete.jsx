@@ -10,8 +10,8 @@
  *
  * Our testing with screen readers, specifically JAWS, has been the deciding
  * factor in going back to the ARIA 1.0 markup pattern. There were a number
- * of confusing and conflicting interactions using the 1.1 markup pattern
- * that were deemed an unnecessary regression.
+ * of conflicting interactions using the 1.1 markup pattern that felt like
+ * an unacceptable regression of the user experience.
  */
 
 import 'core-js/fn/array/find';
@@ -108,6 +108,7 @@ export class Autocomplete extends React.PureComponent {
           'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
           'aria-expanded': isOpen,
+          'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
@@ -139,6 +140,13 @@ export class Autocomplete extends React.PureComponent {
       ...autocompleteProps
     } = this.props;
 
+    // Custom container returns a plain div, without the ARIA markup
+    // required for a WAI-ARIA 1.1 combobox. See the comments at the
+    // top of the component file for an explanation of this decision.
+    const ComponentDiv = ({ innerRef, ...rest }) => (
+      <div ref={innerRef} {...rest} />
+    );
+
     const rootClassName = classNames(
       'ds-u-clearfix',
       'ds-c-autocomplete',
@@ -151,11 +159,21 @@ export class Autocomplete extends React.PureComponent {
           clearSelection,
           getInputProps,
           getItemProps,
+          getRootProps,
           highlightedIndex,
           inputValue,
           isOpen
         }) => (
-          <div className={rootClassName}>
+          <ComponentDiv
+            {...getRootProps({
+              'aria-expanded': null,
+              'aria-haspopup': null,
+              'aria-labelledby': null,
+              className: rootClassName,
+              refKey: 'innerRef',
+              role: null
+            })}
+          >
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
@@ -201,7 +219,7 @@ export class Autocomplete extends React.PureComponent {
                 {clearInputText}
               </Button>
             )}
-          </div>
+          </ComponentDiv>
         )}
       </Downshift>
     );
