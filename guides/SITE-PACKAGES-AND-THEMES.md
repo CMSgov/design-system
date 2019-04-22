@@ -1,25 +1,18 @@
 # What is a site package?
 
-HealthCare.gov consists of multiple codebases maintained by different teams. Currently this means some design assets and code are duplicated across codebases, going against the software development principle to keep things [DRY](https://en.m.wikipedia.org/wiki/Don%27t_repeat_yourself). These multiple codebases naturally tend to have differences, and as a result have caused inefficiencies and inconsistencies to creep into the user interface.
+The CMS Design system provides a set of components and styles to meet many design and development needs. However, the CMS Design System does not fit every single need. When a custom component or design is needed that is not provided in the CMS Design System a site package should be created.
 
-The CMS (Centers for Medicare & Medicaid Services) Design System is one way we're addressing this issue. However, the CMS design system is meant to be used by many CMS websites, not just HealthCare.gov. As a result, the resources within the CMS design system are not tied to a particular website.
-
-
-## Site package goals
-
-* **Primary goal:** Reduce the amount of duplicate instances of front-end components and design assets by having a single source of truth.
-
-* **Secondary goal:** Serve as an intermediate step in a component's journey to becoming part of the CMS design system. This gives the teams working on HealthCare.gov a space to share and iterate on components that at first appear to only have a use case on HealthCare.gov.
+A site package is custom code (components, styles, etc...) that extends the CMS Design System. 
 
 ## Site package guidelines
 
-* A site package is not meant to be as robust or as large as the CMS Design System. 
 * A site package should be as small as possible.
+* A site package is not meant to be as robust or as large as the entire CMS Design System. 
 * A site package is not meant to serve as a resource for best practices or accessibility guidelines, that's the responsibility of the design system.
 
-# Site packages and themes
+## Theming colors, typography and spacing
 
-The design system supports the ability to "theme" certain aspects like its color palette, type scale, and spacing. This is accomplished by overriding the default Sass variables, as documented on [design.cms.gov](https://design.cms.gov). You can also [browse the source files](https://github.com/CMSgov/design-system/tree/master/packages/support) to identify all Sass variables used in the design system.
+The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables, as documented on [design.cms.gov](https://design.cms.gov). You can also [browse the source files](https://github.com/CMSgov/design-system/tree/master/packages/support) to identify all Sass variables used in the design system.
 
 ## Previewing and compiling themes
 
@@ -78,8 +71,10 @@ $color-primary: #ff0000;
 
 ### Generating documentation for your theme
 
+**Note**: If you plan to document and show React component examples, your theme directory should include a valid [`.babelrc`](https://babeljs.io/docs/usage/babelrc/) to describe how your modules should be transformed.
+
 Since your theme is now using the design system's tooling, this means you can also create new documentation pages from your theme's files using the same methods used for creating the design system's documentation! [Learn how to write documentation](https://github.com/CMSgov/design-system/wiki/writing-documentation).
 
 When you run `yarn build:theme`, the documentation will be placed in a `docs` sub-directory within your theme's directory.
 
-**Important**: If you plan to document and show React component examples, your theme directory should include a valid [`.babelrc`](https://babeljs.io/docs/usage/babelrc/) to describe how your modules should be transformed.
+
