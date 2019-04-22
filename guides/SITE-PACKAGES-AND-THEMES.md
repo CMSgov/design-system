@@ -32,7 +32,7 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
         1. Create an **`index.js`** file and leave it empty.
         1. Create an **`index.scss`** file.
         1. add the following to the `index.scss` file
-        
+
          ```SCSS
          // Set your site package variables first
          @import "styles/variables";
@@ -44,7 +44,11 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
 
          // Set your overrides to classes and styles
          @import "styles/overrides";
-     ```
+         ```
+     1. Create a **`styles`** directory inside the `src` directory.
+         1. Inside the `styles` directory
+             1. Create a **`variables.scss`** file
+             2. Create an **`overrides.scss`** file
 
 1. At this point, the site package theme structure should look like this...
 ```
