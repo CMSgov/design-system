@@ -63,10 +63,9 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
                     │   └── overrides.scss
                     ├── index.scss
                     └── index.js
+                    ```
 
-     ```
-
-1. From the root of the design system's directory, run `yarn install && yarn start` to install and symlink your theme's dependencies. The documentation site should load at the address: http://localhost:3000/
+5. From the root of the design system's directory, run `yarn install && yarn start` to install and symlink your theme's dependencies. The documentation site should load at the address: http://localhost:3000/
 
  **Note:** You may be tempted to symlink your theme into the `packages/themes` directory, but unfortunately this won't work due to the way Lerna manages dependencies. [See this issue for more info](https://github.com/lerna/lerna/issues/1068).
 
