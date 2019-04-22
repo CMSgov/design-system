@@ -63,7 +63,7 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
                     │   └── overrides.scss
                     ├── index.scss
                     └── index.js
-                    ```
+  ```
 
 5. From the root of the design system's directory, run `yarn install && yarn start` to install and symlink your theme's dependencies. The documentation site should load at the address: http://localhost:3000/
 
