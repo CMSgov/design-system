@@ -1,54 +1,45 @@
 # Release process
 
-Below are the steps for creating a new release and publishing it to NPM.
-
-## 1) Create a release commit
-
-1. **Run prepublish script**: From the root of your local git repo, run the following to bump the [version](versioning), build the documentation, and transpile + bundle `dist` assets.
-
-   ```
-   ./scripts/prepublish.sh
-   ```
-1. Commit and push to `master`:
-   ```
-   git commit -a -m "Release v[1.1.0]"
-   ```
-1. Create a release
-   1. Draft a new release on GitHub
-   1. For the tag, use the format `v*` (ie. `v1.1.0`)
-   1. For the title, use the release number (ie. `1.1.0`)
-   1. Follow the format below for the release notes, then publish.
+1. **Create a release commit**
+   1. Run prepublish script from the root of your local git repo. This will bump the version, build the documentation, and transpile + bundle `dist` assets.
+      ```
+      ./scripts/prepublish.sh
+      ```
+   
+   1. Commit and push to `master`:
+      ```
+      git commit -a -m "Release v[1.1.0]"
+      ```
+   1. Create a release
+      1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
+      1. Tag the release using the release number format. For example, `v1.1.0`
+      1. Title the release using the release number. For example, `1.1.0`
+      1. Follow the format below for the release notes, then publish.
 
       ```
-      ## 🚀 Added
       ## 🚨 Breaking changes
-      ## 💅 Changes
+      ## 🚀 Added
+      ## 💅 Changed
       ## 🛠 Fixed
       ## 📦 Internal
       ```
 
-    ProTip: To view a log of commits since the last release, run:
-    ```
-    git log `git describe --tags --abbrev=0`..HEAD --oneline
-    ```
-
-
-## 2) Publish to NPM
-
-1. Ensure you're logged into NPM as `cmsgov`: `npm whoami`
-  1. To use an access token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
-1. Ensure tests pass locally: `yarn test`
-1. **Publish packages**: From the root of your local git repo, run the following to publish the release to NPM. This will run `npm publish` for each public package in `packages/`.
-
-   You should only ever publish the `master` branch to NPM. The script mentioned below will checkout the `master` branch if it isn't currently the `HEAD`.
-
-   ```
-   ./scripts/publish.sh
-   ```
-
-## 3) Update the documentation website
-
-Visit the "Docs site deploy process" page in Confluence for these instructions.
+      **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: ```git log `git describe --tags --abbrev=0`..HEAD --oneline```
+1. **Publish to NPM**
+   1. Log into NPM as `cmsgov`: `npm whoami`.
+      1. To use an access token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
+   1. Ensure JS unit tests, JS linting, and Sass linting pass locally.
+      ```
+      yarn test
+      ```
+   1. Publish the release to NPM. This will run for each public package in `packages/`.
+      ```
+      npm publish
+      ```
+   
+      **Note**: You should only publish the `master` branch to NPM. Run `./scripts/publish.sh` to checkout the `master` branch      if it isn't currently the `HEAD`.
+1. **Update the documentation website**
+   1. Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
 # Automated Deployments (via Jenkins)
 
