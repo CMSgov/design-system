@@ -168,6 +168,7 @@ export class Autocomplete extends React.PureComponent {
               'aria-expanded': null,
               'aria-haspopup': null,
               'aria-labelledby': null,
+              'aria-owns': null,
               className: rootClassName,
               refKey: 'innerRef',
               role: null
@@ -257,7 +258,7 @@ Autocomplete.propTypes = {
    */
   clearInputText: PropTypes.node,
   /**
-   * Do not render the Clear search button when set to `false`
+   * Removes the Clear search button when set to `false`
    */
   clearSearchButton: PropTypes.bool,
   /**
