@@ -73,8 +73,8 @@ describe('Autocomplete', () => {
     expect(downshift.find('button').exists()).toBe(true);
   });
 
-  it('does not render a clear search button when noClearInput is passed', () => {
-    const { wrapper } = render({ noClearInput: true }, true);
+  it('does not render a clear search button when clearSearchButton is set to false', () => {
+    const { wrapper } = render({ clearSearchButton: false }, true);
     const downshift = wrapper.find('Downshift');
 
     expect(

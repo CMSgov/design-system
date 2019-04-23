@@ -81,7 +81,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete items={[]} loading noClearInput>
+    <Autocomplete items={[]} loading clearSearchButton={false}>
       <TextField
         hint="List should return string Loading to simulate async data call."
         label="Loading message"
@@ -89,7 +89,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete items={[]} noClearInput>
+    <Autocomplete items={[]} clearSearchButton={false}>
       <TextField
         hint="List should return string No results found."
         label="No results message"
@@ -97,7 +97,7 @@ ReactDOM.render(
       />
     </Autocomplete>
 
-    <Autocomplete noClearInput>
+    <Autocomplete clearSearchButton={false}>
       <TextField
         hint="No list should be shown if no item array is provided and it's not loading. This could be the case if a user has not yet entered the minimum number of characters required for a search."
         label="Nothing shown"

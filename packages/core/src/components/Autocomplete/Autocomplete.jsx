@@ -136,16 +136,15 @@ export class Autocomplete extends React.PureComponent {
       loading,
       children,
       className,
-      noClearInput,
+      clearSearchButton,
       ...autocompleteProps
     } = this.props;
 
+    // See https://github.com/downshift-js/downshift#getrootprops
     // Custom container returns a plain div, without the ARIA markup
     // required for a WAI-ARIA 1.1 combobox. See the comments at the
     // top of the component file for an explanation of this decision.
-    const ComponentDiv = ({ innerRef, ...rest }) => (
-      <div ref={innerRef} {...rest} />
-    );
+    const MyDiv = ({ innerRef, ...rest }) => <div ref={innerRef} {...rest} />;
 
     const rootClassName = classNames(
       'ds-u-clearfix',
@@ -164,7 +163,7 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <ComponentDiv
+          <MyDiv
             {...getRootProps({
               'aria-expanded': null,
               'aria-haspopup': null,
@@ -208,7 +207,7 @@ export class Autocomplete extends React.PureComponent {
               </div>
             ) : null}
 
-            {!noClearInput && (
+            {clearSearchButton && (
               <Button
                 aria-label={ariaClearLabel}
                 className="ds-u-float--right ds-u-padding-right--0"
@@ -219,7 +218,7 @@ export class Autocomplete extends React.PureComponent {
                 {clearInputText}
               </Button>
             )}
-          </ComponentDiv>
+          </MyDiv>
         )}
       </Downshift>
     );
@@ -230,6 +229,7 @@ Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
   autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
+  clearSearchButton: true,
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
   noResultsMessage: 'No results'
@@ -256,6 +256,10 @@ Autocomplete.propTypes = {
    * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
   clearInputText: PropTypes.node,
+  /**
+   * Do not render the Clear search button when set to `false`
+   */
+  clearSearchButton: PropTypes.bool,
   /**
    * Used to focus child `TextField` on `componentDidMount()`
    */
@@ -298,10 +302,6 @@ Autocomplete.propTypes = {
    * Message users will see when the `loading` prop is passed to `Autocomplete`.
    */
   loadingMessage: PropTypes.node,
-  /**
-   * Do not render the Clear search `<button>` when prop is passed
-   */
-  noClearInput: PropTypes.bool,
   /**
    * Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.
    */
