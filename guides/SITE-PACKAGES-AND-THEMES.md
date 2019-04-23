@@ -20,8 +20,8 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
    ```
 
 1. Inside your newly cloned `design-system` directory:
-    1. Create a **`themes`** directory inside the `packages` directory:
-    1. Create a **`my-theme`** directory inside the `themes` directory you just created. **Note** you can replace `my-theme` with whatever name you like.
+    1. Create a **`themes`** directory inside the `packages` directory.
+    1. Create a **`my-theme`** directory inside the `themes` directory. **Note**: You can replace `my-theme` with whatever name you like.
     1. Create a **`src`** directory inside the `my-theme` directory.
     1. Inside the `src` directory:
         1. Create an **`index.js`** file and leave it empty.
@@ -59,9 +59,11 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
                     └── index.scss
   ```
 
-5. Run `yarn install && yarn start` from the root of the design system directory to install design system dependencies. The documentation site should load at the address: http://localhost:3000/
+4. Run `yarn install && yarn start` from the root of the design system directory to install design system dependencies.
 
-## Previewing your site package
+The documentation site should load at the address: http://localhost:3000/
+
+## Previewing your site package theme
 
 The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles.
 
