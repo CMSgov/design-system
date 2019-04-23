@@ -28,10 +28,9 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
     1. Create a **`themes`** directory inside the `packages` directory:
     1. Create a **`my-theme`** directory inside the `themes` directory you just created. **Note** you can replace `my-theme` with whatever name you like.
     1. Create a **`src`** directory inside the `my-theme` directory.
-    1. Inside the `src` directory
-        1. Create an **`index.js`** file and leave it empty.
-        1. Create an **`index.scss`** file.
-        1. add the following to the `index.scss` file
+    1. Inside the `src` directory create the following:
+        1. An **`index.js`** file and leave it empty.
+        1. An **`index.scss`** file with the following contents:
 
          ```SCSS
          // Set your site package variables first
@@ -46,9 +45,9 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
          @import "styles/overrides";
          ```
      1. Create a **`styles`** directory inside the `src` directory.
-         1. Inside the `styles` directory
-             1. Create a **`variables.scss`** file
-             2. Create an **`overrides.scss`** file
+         1. Inside the `styles` directory create the following:
+             1. A **`variables.scss`** file
+             2. An **`overrides.scss`** file
 
 1. At this point, the site package theme structure should look like this...
 
