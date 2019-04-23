@@ -39,15 +39,20 @@
    
       **Note**: You should only publish the `master` branch to NPM. Run `./scripts/publish.sh` to checkout the `master` branch      if it isn't currently the `HEAD`.
 1. **Update the documentation website**
-   1. Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
+   1. The only parameter needed for deployment is the Git branch you'd like to deploy. The default is set to `master`.
 
-# Automated Deployments (via Jenkins)
+   1. [Deploy the CMS Design System](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Akamai Netstorage via an automated Jenkins pipeline. 
+   
+   It is a multi-stage pipeline that executes the deploy in two stages:
+      * The first child job builds `design-system`, creates a tarball from the resulting artifacts, then uploads the tarball to S3.
+      * The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
+   
+   **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
+   
+   **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
-You can deploy `design-system` to Akamai Netstorage via an automated Jenkins pipeline.  You can find that job [here](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/).  It is a multi-stage pipeline that executes the deploy in two stages:
 
-1. The first child job builds `design-system`, creates a tarball from the resulting artifacts, then uploads the tarball to S3.
-2. The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
 
-The only parameter needed to initiate a deployment is the Git branch you'd like to deploy.  The default is set to `master` so if that is what you are deploying then you are just one click away.
 
-NOTE: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
+
+
