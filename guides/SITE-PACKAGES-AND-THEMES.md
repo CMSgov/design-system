@@ -13,24 +13,19 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
 
 ## How to create a site package
 
-1. Clone the CMS design system repo onto your local machine.
+1. Clone the CMS design system repo onto your local machine. We're cloning into a directory named `design-system`, but feel free to name your directory something else.
 
    ```bash
    git clone https://github.com/CMSgov/design-system.git design-system
    ```
 
-1. Change directories to the `design-system`.
-    ```bash
-    cd design-system
-    ```
-
-1. Let's create a few directories and files
+1. Inside your newly cloned `design-system` directory:
     1. Create a **`themes`** directory inside the `packages` directory:
     1. Create a **`my-theme`** directory inside the `themes` directory you just created. **Note** you can replace `my-theme` with whatever name you like.
     1. Create a **`src`** directory inside the `my-theme` directory.
-    1. Inside the `src` directory create the following:
-        1. An **`index.js`** file and leave it empty.
-        1. An **`index.scss`** file with the following contents:
+    1. Inside the `src` directory:
+        1. Create an **`index.js`** file and leave it empty.
+        1. Create an **`index.scss`** file with the following contents:
 
          ```SCSS
          // Set your site package variables first
@@ -45,9 +40,9 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
          @import "styles/overrides";
          ```
      1. Create a **`styles`** directory inside the `src` directory.
-         1. Inside the `styles` directory create the following:
-             1. A **`variables.scss`** file
-             2. An **`overrides.scss`** file
+         1. Inside the `styles` directory:
+             1. Create a **`variables.scss`** file
+             2. Create an **`overrides.scss`** file
 
 1. At this point, the site package theme structure should look like this...
 
@@ -58,31 +53,34 @@ A site package is custom code (components, styles, etc...) that extends the CMS 
             └── my-theme
                 └── src
                     ├── styles
-                    │   ├── variables.scss
-                    │   └── overrides.scss
-                    ├── index.scss
-                    └── index.js
+                    │   ├── overrides.scss
+                    │   └── variables.scss
+                    ├── index.js
+                    └── index.scss
   ```
 
-5. From the root of the design system's directory, run `yarn install && yarn start` to install and symlink your theme's dependencies. The documentation site should load at the address: http://localhost:3000/
-
- **Note:** You may be tempted to symlink your theme into the `packages/themes` directory, but unfortunately this won't work due to the way Lerna manages dependencies. [See this issue for more info](https://github.com/lerna/lerna/issues/1068).
-
-### Generating documentation for your theme
-
-You can [create documentation pages](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md) from your theme's files using the same methods used for creating the design system's documentation.
-
-**Note**: If you plan to document and show React component examples, your theme directory should include a valid [`.babelrc`](https://babeljs.io/docs/usage/babelrc/) to describe how your modules should be transformed.
-
-### Theming colors, typography and spacing
-
-The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables. You can browse the source files on GitHub for [color variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_variables.color.scss), [typography variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_override.uswds.scss), [margin variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/margin.scss), and [padding variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/padding.scss) used in the CMS Design System.
+5. Run `yarn install && yarn start` from the root of the design system directory to install design system dependencies. The documentation site should load at the address: http://localhost:3000/
 
 ## Previewing your site package
 
 The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles.
 
-* Run **`yarn start:theme`** to generate documentation and preview your theme's styles.
+* Run **`yarn start:theme`** to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
 * Run **`yarn build:theme`** to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
+* **Note**:
+  - If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
+  - If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+
+## How to create documentation for your site package
+
+You can [create documentation pages](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md) from your theme's files using the same methods used for creating the design system's documentation.
+
+## How to modify colors, typography and spacing
+
+The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables. You can browse the source files on GitHub for [color variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_variables.color.scss), [typography variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_override.uswds.scss), [margin variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/margin.scss), and [padding variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/padding.scss) used in the CMS Design System.
+
+---
+
+**Note**: If you plan to document and show React component examples, your theme directory should include a valid [`.babelrc`](https://babeljs.io/docs/usage/babelrc/) to describe how your modules should be transformed.
 
 [Read more about running the design system locally](https://github.com/CMSgov/design-system/blob/master/README.md#running-locally)
