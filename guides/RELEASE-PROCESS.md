@@ -9,6 +9,7 @@
    1. Commit and push to `master`:
       ```
       git commit -a -m "Release v[1.1.0]"
+      git push
       ```
    1. Create a release
       1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
