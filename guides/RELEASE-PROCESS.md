@@ -13,7 +13,7 @@
       ```
    1. Create a release
       1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
-      1. Tag the release using the release number format. For example, `v1.1.0`
+      1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
       1. Title the release using the release number. For example, `1.1.0`
       1. Follow the format below for the release notes, then publish.
 
@@ -51,3 +51,44 @@
    **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
    **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
+
+# Versioning
+
+The design system follows the [SemVer specification](http://semver.org/).
+
+## Semantic Versioning
+
+### Patch release
+
+Bug fixes and other minor changes: Increment the last number, e.g. `1.0.1`
+
+Examples:
+
+* Backwards compatible Sass/JS bug fixes
+* Tiny visual changes to make the UI more consistent
+
+### Minor release
+Backwards compatible new functionality, newly deprecated APIs, or substantial new functionality/improvements to private code: Increment the middle number, e.g. `1.1.0`
+
+Examples:
+
+* Addition of a new component
+* New classes, global variables, mixins, functions, or deprecated code
+* Minor visual changes to existing components
+
+### Major release
+
+Changes which break backwards compatibility: Increment the first number, e.g. `2.0.0`
+
+Example changes:
+
+* Renamed or removed classes, mixins, functions, placeholders, or global variables.
+* Major visual changes to existing components
+
+## Auto-increment package versions
+
+```
+./scripts/prepublish.sh
+```
+
+This will prompt you to select the version bump type and update the versions in the `package.json` files in the repo.
