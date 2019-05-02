@@ -20,7 +20,7 @@
     "test:e2e": "bash scripts/jest.sh --e2e",
     "test:e2e:skipBuild": "bash scripts/jest.sh --e2e --skip-build",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
-    "lint": "yarn eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
+    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
@@ -52,7 +52,6 @@
     "enzyme-to-json": "^3.3.0",
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
-    "eslint-plugin-filenames": "^1.3.2",
     "front-matter": "^2.3.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "github": "^13.0.1",
