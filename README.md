@@ -53,7 +53,7 @@ These scripts can all be run from the root level of the repo:
 * `yarn build`
   * Compile/transpile/uglify everything and makes things release-ready.
 * `yarn bump`
-  * Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+  * Increments package versions. Read "[Versioning](/guides/RELEASE-PROCESS.md#versioning)" for more info.
 * `yarn generate`
   * Generates the necessary files for a new core component
   * Alias: `yarn g`
@@ -70,7 +70,7 @@ These scripts can all be run from the root level of the repo:
 
 #### Theme scripts
 
-You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
+You can also use the following scripts to [build and preview a theme](/guides/SITE-PACKAGES-AND-THEMES.md):
 
 * `yarn start:theme`
 * `yarn build:theme`
@@ -86,4 +86,4 @@ If your documentation site will be uploaded to a subdirectory (ie. example.com/d
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](/guides/CODE-OF-CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE-OF-CONDUCT.md) to learn more.
