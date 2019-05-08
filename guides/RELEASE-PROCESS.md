@@ -5,14 +5,15 @@
       ```
       ./scripts/prepublish.sh
       ```
-   
+
    1. Commit and push to `master`:
       ```
       git commit -a -m "Release v[1.1.0]"
+      git push
       ```
    1. Create a release
       1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
-      1. Tag the release using the release number format. For example, `v1.1.0`
+      1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
       1. Title the release using the release number. For example, `1.1.0`
       1. Follow the format below for the release notes, then publish.
 
@@ -32,27 +33,55 @@
       ```
       yarn test
       ```
-   1. Publish the release to NPM. This will run for each public package in `packages/`.
+   1. Publish the release to NPM by running
       ```
-      npm publish
+      ./scripts/publish.sh
       ```
-   
-      **Note**: You should only publish the `master` branch to NPM. Run `./scripts/publish.sh` to checkout the `master` branch      if it isn't currently the `HEAD`.
+      This will run `npm publish` for each public package in `packages/`.
+      **Note**: You should only publish the `master` branch to NPM. The publish script above will check out the `master` branch if it isn't currently the `HEAD`.
 1. **Update the documentation website**
    1. The only parameter needed for deployment is the Git branch you'd like to deploy. The default is set to `master`.
 
-   1. [Deploy the CMS Design System](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Akamai Netstorage via an automated Jenkins pipeline. 
-   
+   1. [Deploy the CMS Design System](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Akamai Netstorage via an automated Jenkins pipeline.
+
    It is a multi-stage pipeline that executes the deploy in two stages:
       * The first child job builds `design-system`, creates a tarball from the resulting artifacts, then uploads the tarball to S3.
       * The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
-   
+
    **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
-   
+
    **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
+# Versioning
 
+The design system follows the [SemVer specification](http://semver.org/).
 
+## Semantic Versioning
 
+### Patch release
 
+Bug fixes and other minor changes: Increment the last number, e.g. `1.0.1`
 
+Examples:
+
+* Backwards compatible Sass/JS bug fixes
+* Tiny visual changes to make the UI more consistent
+
+### Minor release
+
+Backwards compatible new functionality, newly deprecated APIs, or substantial new functionality/improvements to private code: Increment the middle number, e.g. `1.1.0`
+
+Examples:
+
+* Addition of a new component
+* New classes, global variables, mixins, functions, or deprecated code
+* Minor visual changes to existing components
+
+### Major release
+
+Changes which break backwards compatibility: Increment the first number, e.g. `2.0.0`
+
+Example changes:
+
+* Renamed or removed classes, mixins, functions, placeholders, or global variables.
+* Major visual changes to existing components

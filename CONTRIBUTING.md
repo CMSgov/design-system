@@ -1,13 +1,13 @@
-## Welcome!
+# Contributing to the CMS Design System 
 
 We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
 
-One of our goals is to ensure a welcoming environment for all contributors. 
+One of our goals is to ensure a welcoming environment for all contributors.
 Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
-## Getting started 
+## Getting started
 
-If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally). 
+If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally).
 
 Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
 
