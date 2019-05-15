@@ -2,7 +2,7 @@ The CMS Design system (CMSDS) provides a set of components and styles to meet ma
 
 # What is a site package?
 
-A site package is custom code (components, styles, etc..) that extends the CMSDS and is published in a way that can be consumed via NPM by other teams. A site package could contain in new components, modifications to existing components, or modifications to styles. A site package can also contain a theme, but doesn’t have to.
+A site package is custom code (components, styles, etc..) that extends the CMSDS and is published in a way that can be consumed via NPM by other teams. A site package could contain new components, modifications to existing components, or modifications to styles. A site package can also contain a theme, but doesn’t have to.
 
 ## Site package guidelines
 
