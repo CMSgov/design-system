@@ -76,6 +76,10 @@ The CMS Design System supports the ability to preview your project's theme in th
 
 You can [create documentation pages](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md) from your theme's files using the same methods used for creating the design system's documentation.
 
+# What is a theme?
+
+The CMS Design System supports the ability to "theme" the visual layer. Colors, typography, and spacing can be modified by overriding the default Sass variables or CSS. Theming does not extend the functionality of the design system – i.e., it does not add new components, or modify the functionality of existing ones.
+
 ## How to modify colors, typography and spacing
 
 The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables. You can browse the source files on GitHub for [color variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_variables.color.scss), [typography variables](https://github.com/CMSgov/design-system/blob/master/packages/support/src/settings/_override.uswds.scss), [margin variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/margin.scss), and [padding variables](https://github.com/CMSgov/design-system/blob/master/packages/core/src/utilities/padding.scss) used in the CMS Design System.
