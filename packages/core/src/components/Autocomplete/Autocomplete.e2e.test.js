@@ -1,4 +1,4 @@
-/* global driver, key */
+/* global driver, by, key */
 import { getElementByClassName, getElementByXPath } from '../../helpers/e2e';
 import { ROOT_URL } from '../../helpers/e2e/constants';
 
@@ -10,102 +10,126 @@ describe('Autocomplete component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    const el = await getElementByClassName('ds-u-clearfix ds-c-autocomplete');
-    expect(el).toBeTruthy();
+    const autocompleteField = await getElementByClassName(
+      'ds-u-clearfix ds-c-autocomplete'
+    );
+    expect(autocompleteField).toBeTruthy();
   });
 
   it('Should expand the listbox when keys are pressed', async() => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
+    const autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
+    );
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
 
-    el = await getElementByXPath('//*[@id="autocomplete_owned_container_4"]');
-    expect(el).toBeTruthy();
+    const listbox = await getElementByXPath(
+      '//*[@id="autocomplete_owned_container_4"]'
+    );
+    expect(listbox).toBeTruthy();
   });
 
   it('Should set the input value correctly when a listbox selection is clicked', async() => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
+    let autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
+    );
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
 
-    el = await getElementByXPath('//*[@id="downshift-0-item-0"]');
-    el.click();
+    const listboxItem = await getElementByXPath(
+      '//*[@id="downshift-0-item-0"]'
+    );
+    listboxItem.click();
 
-    el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el = await el.getAttribute('value');
-    expect(el).toEqual('Cook County, IL');
+    autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
+    autocompleteField = await autocompleteField.getAttribute('value');
+    expect(autocompleteField).toEqual('Cook County, IL');
   });
 
   it('Should set the input value to empty when Clear search is clicked', async() => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
+    let autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
+    );
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
 
-    el = await getElementByXPath('//*[@id="downshift-0-item-0"]');
-    el.click();
+    const listboxItem = await getElementByXPath(
+      '//*[@id="downshift-0-item-0"]'
+    );
+    listboxItem.click();
 
-    el = await getElementByXPath('//*[@id="js-example"]/div/div[1]/button');
-    el.click();
+    const clearButton = await getElementByXPath(
+      '//*[@id="js-example"]/div/div[1]/button'
+    );
+    clearButton.click();
 
-    el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el = await el.getAttribute('value');
-    expect(el).toEqual('');
+    autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
+    autocompleteField = await autocompleteField.getAttribute('value');
+    expect(autocompleteField).toEqual('');
   });
 
   it('Should select list items by keyboard', async() => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
-    await el.sendKeys(key.ARROW_DOWN);
-    await el.sendKeys(key.ENTER);
+    let autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
+    );
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
+    await autocompleteField.sendKeys(key.ARROW_DOWN);
+    await autocompleteField.sendKeys(key.ENTER);
 
-    el = await el.getAttribute('value');
-    expect(el).toEqual('Cook County, IL');
+    autocompleteField = await autocompleteField.getAttribute('value');
+    expect(autocompleteField).toEqual('Cook County, IL');
   });
 
   it('Should clear the input value by keyboard', async() => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
-    await el.sendKeys(key.ARROW_DOWN);
-    await el.sendKeys(key.ENTER);
-    await el.sendKeys(key.TAB);
+    let autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
+    );
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
+    await autocompleteField.sendKeys(key.ARROW_DOWN);
+    await autocompleteField.sendKeys(key.ENTER);
+    await autocompleteField.sendKeys(key.TAB);
 
-    el = await getElementByXPath('//*[@id="js-example"]/div/div[1]/button');
-    el.click();
+    const clearSearch = await getElementByXPath(
+      '//*[@id="js-example"]/div/div[1]/button'
+    );
 
-    el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el = await el.getAttribute('value');
-    expect(el).toEqual('');
+    clearSearch.click();
+
+    autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
+    autocompleteField = await autocompleteField.getAttribute('value');
+    expect(autocompleteField).toEqual('');
   });
 
   it('Closes the listbox when ESC is pressed', async() => {
     await driver.get(rootURL);
 
-    let container = await getElementByXPath(
-      '//*[@id="js-example"]/div/div[1]/div'
+    const autocompleteField = await getElementByXPath(
+      '//*[@id="autocomplete_1"]'
     );
-    container = await container.getAttribute('outerHTML');
+    autocompleteField.click();
+    await autocompleteField.sendKeys('c');
+    let listbox = await driver.findElements(
+      by.css('#autocomplete_owned_container_4')
+    );
+    expect(listbox.length).toEqual(1);
 
-    let el = await getElementByXPath('//*[@id="autocomplete_1"]');
-    el.click();
-    await el.sendKeys('c');
-    await el.sendKeys(key.ESCAPE);
-
-    el = await getElementByXPath('//*[@id="js-example"]/div/div[1]/div');
-    el = await el.getAttribute('outerHTML');
-
-    expect(el).toEqual(container);
+    await autocompleteField.sendKeys(key.ESCAPE);
+    listbox = await driver.findElements(
+      by.css('#autocomplete_owned_container_4')
+    );
+    expect(listbox.length).toEqual(0);
   });
 
   it('Should have no accessibility violations', async() => {
