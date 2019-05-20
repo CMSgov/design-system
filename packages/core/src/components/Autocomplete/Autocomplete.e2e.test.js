@@ -95,15 +95,26 @@ describe('Autocomplete component', () => {
     let autocompleteField = await getElementByXPath(
       '//*[@id="autocomplete_1"]'
     );
+    const clearSearch = await getElementByXPath(
+      '//*[@id="js-example"]/div/div[1]/button'
+    );
+
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
     await autocompleteField.sendKeys(key.ARROW_DOWN);
     await autocompleteField.sendKeys(key.ENTER);
     await autocompleteField.sendKeys(key.TAB);
 
-    const clearSearch = await getElementByXPath(
-      '//*[@id="js-example"]/div/div[1]/button'
-    );
+    /* Assert the clear search button has keyboard focus, then click it.
+     * We are using the Selenium driver object to determine keyboard
+     * focus after sending the TAB key.
+     */
+    expect(
+      await driver
+        .switchTo()
+        .activeElement()
+        .getAttribute('innerText')
+    ).toEqual('Clear search');
 
     clearSearch.click();
 
