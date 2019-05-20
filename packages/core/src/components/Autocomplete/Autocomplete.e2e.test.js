@@ -1,5 +1,9 @@
 /* global driver, by, key */
-import { getElementByClassName, getElementByXPath } from '../../helpers/e2e';
+import {
+  getElementByClassName,
+  getElementByXPath,
+  getFocusInnerText
+} from '../../helpers/e2e';
 import { ROOT_URL } from '../../helpers/e2e/constants';
 
 import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
@@ -109,12 +113,7 @@ describe('Autocomplete component', () => {
      * We are using the Selenium driver object to determine keyboard
      * focus after sending the TAB key.
      */
-    expect(
-      await driver
-        .switchTo()
-        .activeElement()
-        .getAttribute('innerText')
-    ).toEqual('Clear search');
+    expect(await getFocusInnerText()).toEqual('Clear search');
 
     clearSearch.click();
 
