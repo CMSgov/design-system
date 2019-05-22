@@ -24,3 +24,11 @@ export async function getElementByXPath(xpath) {
   );
   return driver.wait(until.elementIsVisible(el), WAIT_UNTIL_TIME);
 }
+
+export async function getFocusInnerText() {
+  const el = await driver
+    .switchTo()
+    .activeElement()
+    .getAttribute('innerText');
+  return el;
+}

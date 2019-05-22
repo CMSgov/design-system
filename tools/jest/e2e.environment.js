@@ -1,6 +1,6 @@
 /* eslint-disable  filenames/match-exported */
 const NodeEnvironment = require('jest-environment-node');
-const { Builder, By, Capabilities, until } = require('selenium-webdriver');
+const { Builder, By, Capabilities, Key, until } = require('selenium-webdriver');
 
 class WebDriverEnvironment extends NodeEnvironment {
   constructor(config) {
@@ -29,6 +29,7 @@ class WebDriverEnvironment extends NodeEnvironment {
     this.global.by = By;
     this.global.element = locator => this.driver.findElement(locator);
     this.global.element.all = locator => this.driver.findElements(locator);
+    this.global.key = Key;
     this.global.until = until;
   }
 
