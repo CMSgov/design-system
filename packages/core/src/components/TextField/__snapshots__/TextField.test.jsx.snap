@@ -6,7 +6,8 @@ exports[`TextField masks renders currency mask 1`] = `
 >
   <FormLabel
     component="label"
-    fieldId="textfield_29"
+    fieldId="textfield_58"
+    id="textfield_label_59"
   >
     Foo
   </FormLabel>
@@ -24,7 +25,7 @@ exports[`TextField masks renders currency mask 1`] = `
       <input
         aria-label="Foo. Enter amount in dollars."
         className="ds-c-field ds-c-field--currency"
-        id="textfield_29"
+        id="textfield_58"
         name="spec-field"
         type="text"
       />

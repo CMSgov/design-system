@@ -1,3 +1,19 @@
+/**
+ * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+ * https://www.digitala11y.com/aria-autocomplete-properties/
+ *
+ * We have opted to retain the ARIA 1.0 markup pattern for comboboxes.
+ * This was done because the ARIA 1.1 markup pattern triggers a different
+ * behavior on containers with a role="combobox" attribute. WCAG refers to
+ * this as a composite widget: https://www.w3.org/TR/wai-aria-1.1/#h-composite
+ *
+ * Our testing with screen readers, specifically JAWS, has been the deciding
+ * factor in going back to the ARIA 1.0 markup pattern. There were a number
+ * of conflicting interactions using the 1.1 markup pattern that felt like
+ * an unacceptable regression of the user experience.
+ */
+
 import 'core-js/fn/array/find';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
@@ -24,8 +40,10 @@ export class Autocomplete extends React.PureComponent {
     super(props);
 
     this.id = this.props.id || uniqueId('autocomplete_');
-    this.labelId = uniqueId('autocomplete_header_');
+    this.labelId = this.props.labelId || uniqueId('autocomplete_label_');
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
+    this.listboxContainerId = uniqueId('autocomplete_owned_container_');
+    this.listboxHeadingId = uniqueId('autocomplete_header_');
     this.loader = null;
   }
 
@@ -36,14 +54,7 @@ export class Autocomplete extends React.PureComponent {
     getItemProps,
     highlightedIndex
   ) {
-    if (this.props.loading) {
-      return (
-        <li className="ds-c-autocomplete__list-item--message">
-          {this.props.loadingMessage}
-        </li>
-      );
-    }
-
+    // If we have results, create a mapped list
     if (items.length) {
       return items.map((item, index) => (
         <li
@@ -62,8 +73,26 @@ export class Autocomplete extends React.PureComponent {
       ));
     }
 
+    // If we're waiting for results to load, show the non-selected message
+    if (this.props.loading) {
+      return (
+        <li
+          aria-selected="false"
+          className="ds-c-autocomplete__list-item--message"
+          role="option"
+        >
+          {this.props.loadingMessage}
+        </li>
+      );
+    }
+
+    // If we have no results, show the non-selected message
     return (
-      <li className="ds-c-autocomplete__list-item--message">
+      <li
+        aria-selected="false"
+        className="ds-c-autocomplete__list-item--message"
+        role="option"
+      >
         {this.props.noResultsMessage}
       </li>
     );
@@ -76,13 +105,19 @@ export class Autocomplete extends React.PureComponent {
     return React.Children.map(this.props.children, child => {
       if (isTextField(child)) {
         const propOverrides = {
+          'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
+          'aria-expanded': isOpen,
+          'aria-labelledby': null,
+          'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
+          labelId: this.labelId,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
-          onKeyDown: child.props.onKeyDown
+          onKeyDown: child.props.onKeyDown,
+          role: 'combobox'
         };
 
         return React.cloneElement(child, getInputProps(propOverrides));
@@ -101,8 +136,15 @@ export class Autocomplete extends React.PureComponent {
       loading,
       children,
       className,
+      clearSearchButton,
       ...autocompleteProps
     } = this.props;
+
+    // See https://github.com/downshift-js/downshift#getrootprops
+    // Custom container returns a plain div, without the ARIA markup
+    // required for a WAI-ARIA 1.1 combobox. See the comments at the
+    // top of the component file for an explanation of this decision.
+    const MyDiv = ({ innerRef, ...rest }) => <div ref={innerRef} {...rest} />;
 
     const rootClassName = classNames(
       'ds-u-clearfix',
@@ -111,32 +153,46 @@ export class Autocomplete extends React.PureComponent {
     );
 
     return (
-      <Downshift
-        render={({
+      <Downshift {...autocompleteProps}>
+        {({
           clearSelection,
           getInputProps,
           getItemProps,
+          getRootProps,
           highlightedIndex,
           inputValue,
           isOpen
         }) => (
-          <div className={rootClassName}>
+          <MyDiv
+            {...getRootProps({
+              'aria-expanded': null,
+              'aria-haspopup': null,
+              'aria-labelledby': null,
+              'aria-owns': null,
+              className: rootClassName,
+              refKey: 'innerRef',
+              role: null
+            })}
+          >
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
-              <div className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list">
+              <div
+                className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list"
+                id={this.listboxContainerId}
+              >
                 {label &&
                   !loading && (
                     <h5
                       className="ds-u-margin--0 ds-u-padding--1"
-                      id={this.labelId}
+                      id={this.listboxHeadingId}
                     >
                       {label}
                     </h5>
                   )}
 
                 <ul
-                  aria-labelledby={label ? this.labelId : null}
+                  aria-labelledby={label ? this.listboxHeadingId : null}
                   className="ds-c-list--bare"
                   id={this.listboxId}
                   role="listbox"
@@ -152,19 +208,20 @@ export class Autocomplete extends React.PureComponent {
               </div>
             ) : null}
 
-            <Button
-              aria-label={ariaClearLabel}
-              className="ds-u-float--right ds-u-padding-right--0"
-              onClick={clearSelection}
-              size="small"
-              variation="transparent"
-            >
-              {clearInputText}
-            </Button>
-          </div>
+            {clearSearchButton && (
+              <Button
+                aria-label={ariaClearLabel}
+                className="ds-u-float--right ds-u-padding-right--0"
+                onClick={clearSelection}
+                size="small"
+                variation="transparent"
+              >
+                {clearInputText}
+              </Button>
+            )}
+          </MyDiv>
         )}
-        {...autocompleteProps}
-      />
+      </Downshift>
     );
   }
 }
@@ -173,6 +230,7 @@ Autocomplete.defaultProps = {
   ariaClearLabel: 'Clear typeahead and search again',
   autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
+  clearSearchButton: true,
   itemToString: item => (item ? item.name : ''),
   loadingMessage: 'Loading...',
   noResultsMessage: 'No results'
@@ -196,9 +254,13 @@ Autocomplete.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Clear search text that will appear on the page as part of the rendered `<button>` component
+   * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
   clearInputText: PropTypes.node,
+  /**
+   * Removes the Clear search button when set to `false`
+   */
+  clearSearchButton: PropTypes.bool,
   /**
    * Used to focus child `TextField` on `componentDidMount()`
    */
@@ -229,6 +291,10 @@ Autocomplete.propTypes = {
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: PropTypes.node,
+  /**
+   * A unique `id` to be used on the child `TextField` label tag
+   */
+  labelId: PropTypes.string,
   /**
    * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
    */

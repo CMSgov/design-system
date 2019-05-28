@@ -73,6 +73,19 @@ describe('Autocomplete', () => {
     expect(downshift.find('button').exists()).toBe(true);
   });
 
+  it('does not render a clear search button when clearSearchButton is set to false', () => {
+    const { wrapper } = render({ clearSearchButton: false }, true);
+    const downshift = wrapper.find('Downshift');
+
+    expect(
+      downshift
+        .find('div')
+        .first()
+        .exists()
+    ).toBe(true);
+    expect(downshift.find('button').exists()).toBe(false);
+  });
+
   it('renders default class names', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
@@ -95,7 +108,9 @@ describe('Autocomplete', () => {
       {
         ariaClearLabel: 'New ARIA label',
         clearInputText: 'Clear search box',
-        loading: true
+        loading: true,
+        loadingMessage: 'Custom loading message',
+        noResultsMessage: 'Custom no results message'
       },
       true
     );
@@ -104,12 +119,17 @@ describe('Autocomplete', () => {
     expect(wrapper.prop('ariaClearLabel')).toBe('New ARIA label');
     expect(wrapper.prop('clearInputText')).toBe('Clear search box');
     expect(wrapper.prop('loading')).toBe(true);
+    expect(wrapper.prop('loadingMessage')).toBe('Custom loading message');
+    expect(wrapper.prop('noResultsMessage')).toBe('Custom no results message');
   });
 
   it('renders a snapshot', () => {
     const tree = renderer
       .create(
-        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} />
+        <Autocomplete
+          items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
+          clearInput
+        />
       )
       .toJSON();
 
