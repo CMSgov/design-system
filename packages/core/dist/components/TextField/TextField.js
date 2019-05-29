@@ -59,6 +59,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
     var _this = _possibleConstructorReturn(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
     _this.id = props.id || (0, _lodash2.default)('textfield_');
+    _this.labelId = props.labelId || (0, _lodash2.default)('textfield_label_');
     return _this;
   }
 
@@ -131,22 +132,23 @@ var TextField = exports.TextField = function (_React$PureComponent) {
       var _props = this.props,
           ariaLabel = _props.ariaLabel,
           className = _props.className,
-          labelClassName = _props.labelClassName,
-          fieldClassName = _props.fieldClassName,
-          focusTrigger = _props.focusTrigger,
           errorMessage = _props.errorMessage,
+          fieldClassName = _props.fieldClassName,
+          fieldRef = _props.fieldRef,
+          focusTrigger = _props.focusTrigger,
           hint = _props.hint,
           id = _props.id,
-          requirementLabel = _props.requirementLabel,
           inversed = _props.inversed,
-          rows = _props.rows,
+          label = _props.label,
+          labelClassName = _props.labelClassName,
+          labelId = _props.labelId,
           mask = _props.mask,
           multiline = _props.multiline,
-          label = _props.label,
-          fieldRef = _props.fieldRef,
+          requirementLabel = _props.requirementLabel,
+          rows = _props.rows,
           size = _props.size,
           type = _props.type,
-          fieldProps = _objectWithoutProperties(_props, ['ariaLabel', 'className', 'labelClassName', 'fieldClassName', 'focusTrigger', 'errorMessage', 'hint', 'id', 'requirementLabel', 'inversed', 'rows', 'mask', 'multiline', 'label', 'fieldRef', 'size', 'type']);
+          fieldProps = _objectWithoutProperties(_props, ['ariaLabel', 'className', 'errorMessage', 'fieldClassName', 'fieldRef', 'focusTrigger', 'hint', 'id', 'inversed', 'label', 'labelClassName', 'labelId', 'mask', 'multiline', 'requirementLabel', 'rows', 'size', 'type']);
 
       var FieldComponent = multiline ? 'textarea' : 'input';
       var _rows = multiline && rows ? rows : undefined;
@@ -182,6 +184,7 @@ var TextField = exports.TextField = function (_React$PureComponent) {
             errorMessage: errorMessage,
             fieldId: this.id,
             hint: hint,
+            id: this.labelId,
             requirementLabel: requirementLabel,
             inversed: inversed
           },
@@ -252,6 +255,10 @@ TextField.propTypes = {
    * Additional classes to be added to the label
    */
   labelClassName: _propTypes2.default.string,
+  /**
+   * A unique `id` to be used on the label field.
+   */
+  labelId: _propTypes2.default.string,
   /**
    * Apply formatting to the field that's unique to the value
    * you expect to be entered. Depending on the mask, the

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getElementByXPath = exports.getElementById = exports.getElementByClassName = undefined;
+exports.getFocusInnerText = exports.getElementByXPath = exports.getElementById = exports.getElementByClassName = undefined;
 
 var getElementByClassName = exports.getElementByClassName = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(className) {
@@ -83,6 +83,33 @@ var getElementByXPath = exports.getElementByXPath = function () {
 
   return function getElementByXPath(_x3) {
     return _ref3.apply(this, arguments);
+  };
+}();
+
+var getFocusInnerText = exports.getFocusInnerText = function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+    var el;
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return driver.switchTo().activeElement().getAttribute('innerText');
+
+          case 2:
+            el = _context4.sent;
+            return _context4.abrupt('return', el);
+
+          case 4:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this);
+  }));
+
+  return function getFocusInnerText() {
+    return _ref4.apply(this, arguments);
   };
 }();
 
