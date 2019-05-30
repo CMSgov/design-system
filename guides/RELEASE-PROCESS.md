@@ -6,7 +6,7 @@
          ```
         git pull
          ```
-    1. Check the status of your working directory to see which changes have been staged, which haven’t, and which files aren’t being tracked by Git.
+    1. Check the status of your working directory to ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
          ```
         git status
          ```
@@ -19,7 +19,7 @@
       ./scripts/prepublish.sh
       ```
 
-   1. Add, commit and push to `master` with the new release number:
+   1. Add, commit and push to `master` with a new version number, replacing v1.1.0 with your version:
       ```
       git add --all
       ```
