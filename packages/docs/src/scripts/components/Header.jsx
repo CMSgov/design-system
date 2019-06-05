@@ -13,7 +13,7 @@ const Header = () => {
               <div className="grid-col-auto">
                 <img
                   className="usa-banner__header-flag"
-                  src="../../dist/img/us_flag_small.png"
+                  src="/public/images/us_flag_small.png"
                   alt="U.S. flag"
                 />
               </div>
@@ -44,7 +44,7 @@ const Header = () => {
               <div className="usa-banner__guidance tablet:grid-col-6">
                 <img
                   className="usa-banner__icon usa-media-block__img"
-                  src="../../dist/img/icon-dot-gov.svg"
+                  src="/public/images/icon-dot-gov.svg"
                   alt="Dot gov"
                 />
                 <div className="usa-media-block__body">
@@ -59,7 +59,7 @@ const Header = () => {
               <div className="usa-banner__guidance tablet:grid-col-6">
                 <img
                   className="usa-banner__icon usa-media-block__img"
-                  src="../../dist/img/icon-https.svg"
+                  src="/public/images/icon-https.svg"
                   alt="Https"
                 />
                 <div className="usa-media-block__body">
