@@ -21,9 +21,6 @@ const Header = () => {
                 <p className="usa-banner__header-text">
                   An official website of the United States government
                 </p>
-                <p className="usa-banner__header-action" aria-hidden="true">
-                  Here’s how you know
-                </p>
               </div>
               <button
                 className="usa-accordion__button usa-banner__button"
@@ -39,6 +36,7 @@ const Header = () => {
           <div
             className="usa-banner__content usa-accordion__content"
             id="gov-banner"
+            hidden
           >
             <div className="grid-row grid-gap-lg">
               <div className="usa-banner__guidance tablet:grid-col-6">
