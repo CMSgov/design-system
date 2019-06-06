@@ -10,7 +10,8 @@ const helpfulLinks = {
     'No Fear Act',
   'http://www.medicare.gov/about-us/plain-writing/plain-writing.html':
     'Plain Writing',
-  'http://www.usa.gov': 'USA.gov'
+  'http://www.usa.gov': 'USA.gov',
+  'https://cms.gov/privacy/': 'Privacy Policy'
 };
 
 const cmsLinks = {
@@ -69,6 +70,16 @@ const Footer = () => {
             <h2 className="ds-h4">Additional resources</h2>
             <ul className="ds-c-list ds-c-list--bare ds-u-font-size--small">
               {renderLinks(helpfulLinks)}
+              <li>
+                <button
+                  type="button"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--0"
+                  onClick="window.location.href = '#';"
+                  data-privacy-policy="modal-trigger-footer"
+                >
+                  Privacy settings
+                </button>
+              </li>
             </ul>
           </article>
         </div>
