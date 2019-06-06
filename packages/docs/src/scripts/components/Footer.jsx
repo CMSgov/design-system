@@ -55,6 +55,11 @@ const Footer = () => {
             >
               Ask questions on GitHub
             </a>
+            <p>
+              <a href="https://forms.cms.gov/cms-wds-design-system-contact-form/responses/new">
+                Contact the CMSDS team
+              </a>
+            </p>
             <p className="ds-text ds-u-color--primary-darkest ds-u-font-size--small ds-u-margin-top--3 ds-u-measure--base">
               A federal government website managed by the Centers for Medicare &
               Medicaid Services 7500 Security Boulevard, Baltimore, MD 21124
