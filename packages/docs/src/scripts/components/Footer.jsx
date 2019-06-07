@@ -78,8 +78,8 @@ const Footer = () => {
               <li>
                 <button
                   type="button"
-                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--0"
-                  onClick="window.location.href = '#';"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--0 titlelink"
+                  onClick={() => (window.location.href = '#')}
                   data-privacy-policy="modal-trigger-footer"
                 >
                   Privacy settings
