@@ -36,6 +36,13 @@ ReactDOM.render(
       label="Medium dropdown example"
       name="medium_dropdown_choices_field"
     />
+    <Dropdown
+      options={dropdownOptions}
+      defaultValue={'B'}
+      label="Disabled example"
+      disabled
+      name="disabled_dropdown_choices_field"
+    />
   </div>,
   document.getElementById('js-example')
 );
