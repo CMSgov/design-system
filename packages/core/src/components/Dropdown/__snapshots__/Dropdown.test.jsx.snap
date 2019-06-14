@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown renders a select menu 1`] = `
+<div
+  className=""
+>
+  <FormLabel
+    component="label"
+    fieldId="select_dropdown_1"
+  >
+    Select an option
+  </FormLabel>
+  <select
+    className="ds-c-field"
+    id="select_dropdown_1"
+    name="dropdown"
+  >
+    <option
+      key="1"
+    >
+      1
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Dropdown renders options correctly 1`] = `
+<div
+  className=""
+>
+  <FormLabel
+    component="label"
+    fieldId="select_dropdown_2"
+  >
+    Select an option
+  </FormLabel>
+  <select
+    className="ds-c-field"
+    id="select_dropdown_2"
+    name="dropdown"
+  >
+    <option
+      key="1"
+    >
+      1
+    </option>
+    <option
+      key="2"
+    >
+      2
+    </option>
+    <option
+      key="3"
+    >
+      3
+    </option>
+    <option
+      key="4"
+    >
+      4
+    </option>
+    <option
+      key="5"
+    >
+      5
+    </option>
+    <option
+      key="6"
+    >
+      6
+    </option>
+    <option
+      key="7"
+    >
+      7
+    </option>
+    <option
+      key="8"
+    >
+      8
+    </option>
+    <option
+      key="9"
+    >
+      9
+    </option>
+    <option
+      key="10"
+    >
+      10
+    </option>
+  </select>
+</div>
+`;
