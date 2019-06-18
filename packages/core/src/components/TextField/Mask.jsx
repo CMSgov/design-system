@@ -25,7 +25,6 @@ const deliminatedMaskRegex = {
  */
 function deliminateRegexGroups(value, rx) {
   const matches = toDigitsAndAsterisks(value).match(rx);
-
   if (matches && matches.length > 1) {
     value = matches
       .slice(1)
@@ -84,9 +83,6 @@ function toDigits(value) {
  * @returns {Number}
  */
 function toNumber(value) {
-  if (typeof value !== 'string') return value;
-  if (!value.match(/\d/)) return undefined;
-
   const sign = value.charAt(0) === '-' ? -1 : 1;
   const parts = value.split('.');
   // This assumes if the user adds a "." it should be a float. If we want it to
@@ -109,19 +105,24 @@ function toNumber(value) {
  */
 export function maskValue(value = '', mask) {
   if (value && typeof value === 'string') {
+    const hasDigit = value.match(/\d/);
     value = value.trim();
 
-    if (mask === 'currency') {
-      // Format number with commas. If the number includes a decimal,
-      // ensure it includes two decimal points
-      const number = toNumber(value);
-      if (number === undefined) {
-        value = '';
-      } else {
-        value = stringWithFixedDigits(number.toLocaleString('en-US'));
+    if (!hasDigit) {
+      value = '';
+    } else {
+      if (mask === 'currency') {
+        // Format number with commas. If the number includes a decimal,
+        // ensure it includes two decimal points
+        const number = toNumber(value);
+        if (number !== undefined) {
+          value = stringWithFixedDigits(number.toLocaleString('en-US'));
+        }
+      } else if (deliminatedMaskRegex[mask]) {
+        // Use deliminator regex to mask value and remove unwanted characters
+        // If the regex does not match, return the numeric digits.
+        value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
       }
-    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
     }
   }
 
@@ -201,7 +202,10 @@ export class Mask extends React.PureComponent {
    * @param {React.Element} field - Child TextField
    */
   handleBlur(evt, field) {
-    const value = maskValue(evt.target.value, this.props.mask);
+    let value = maskValue(evt.target.value, this.props.mask);
+    if (value === '') {
+      value = evt.target.value;
+    }
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
@@ -266,23 +270,24 @@ Mask.propTypes = {
  * @returns {String}
  */
 export function unmask(value, mask) {
-  if (!value || typeof value !== 'string') return value;
-  const rawValue = value;
-  value = value.trim();
+  if (value && typeof value === 'string') {
+    const hasDigit = value.match(/\d/);
+    value = value.trim();
 
-  if (mask === 'currency') {
-    // Preserve only digits, decimal point, or negative symbol
-    const matches = value.match(/^-|[\d.]/g);
-    if (matches) {
-      value = matches.join('');
-    } else {
+    if (!hasDigit) {
       value = '';
+    } else {
+      if (mask === 'currency') {
+        // Preserve only digits, decimal point, or negative symbol
+        const matches = value.match(/^-|[\d.]/g);
+        if (matches) {
+          value = matches.join('');
+        }
+      } else if (deliminatedMaskRegex[mask]) {
+        // Remove the deliminators and revert to single ungrouped string
+        value = toDigitsAndAsterisks(value);
+      }
     }
-  } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-    // Remove the deliminators and revert to single ungrouped string
-    value = toDigitsAndAsterisks(value);
-  } else {
-    return rawValue;
   }
 
   return value;
