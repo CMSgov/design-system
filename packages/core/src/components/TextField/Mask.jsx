@@ -188,7 +188,10 @@ export class Mask extends React.PureComponent {
       // given and what we have locally don't match, that means the controlling
       // component has made its own unrelated change, so we should update our
       // state and mask this new value.
-      if (unmask(fieldProps.value, mask) !== unmask(this.state.value, mask)) {
+      if (
+        unmaskValue(fieldProps.value, mask) !==
+        unmaskValue(this.state.value, mask)
+      ) {
         const value = maskValue(fieldProps.value || '', mask);
         this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
       }
@@ -276,7 +279,7 @@ Mask.propTypes = {
  * @param {String} mask
  * @returns {String}
  */
-export function unmask(value, mask) {
+export function unmaskValue(value, mask) {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Preserve only digits, decimal point, or negative symbol
