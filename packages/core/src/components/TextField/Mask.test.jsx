@@ -346,11 +346,11 @@ describe('unmaskValue', () => {
     expect(unmaskValue(null)).toBeNull();
   });
 
-  it('returns empty string when there are no numeric characters in the value', () => {
-    expect(unmaskValue('banana', 'currency')).toBe('');
-    expect(unmaskValue('banana', 'zip')).toBe('');
-    expect(unmaskValue('banana', 'ssn')).toBe('');
-    expect(unmaskValue('banana', 'phone')).toBe('');
+  it('returns same string back when there are no numeric characters in the value', () => {
+    expect(unmaskValue('banana', 'currency')).toBe('banana');
+    expect(unmaskValue('banana', 'zip')).toBe('banana');
+    expect(unmaskValue('banana', 'ssn')).toBe('banana');
+    expect(unmaskValue('banana', 'phone')).toBe('banana');
   });
 
   it('returns just the numbers when there is other garbage mixed in', () => {

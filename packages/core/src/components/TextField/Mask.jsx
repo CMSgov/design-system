@@ -120,7 +120,7 @@ function isValueMaskable(value, mask) {
  * @param {String} value
  * @returns {String}
  */
-export function maskValue(value, mask) {
+export function maskValue(value = '', mask) {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Format number with commas. If the number includes a decimal,
