@@ -1,7 +1,6 @@
 /* global driver */
 import AxeBuilder from 'axe-webdriverjs';
 import { RULESET_ALL } from '../../helpers/e2e/constants';
-import { get } from 'lodash';
 
 export default async function assertNoAxeViolations(url) {
   if (url) {
@@ -11,15 +10,13 @@ export default async function assertNoAxeViolations(url) {
   await AxeBuilder(driver)
     .withTags(RULESET_ALL)
     .disableRules('bypass')
-    .analyze()
-    .then(results => {
-      const violations = get(results, 'violations', null);
-      if (violations.length >= 1) {
-        console.log(violations);
+    .analyze((err, results) => {
+      if (err) {
+        console.error(err);
       }
-      expect(violations.length).toBe(0);
-    })
-    .catch(err => {
-      console.error(err);
+      if (results.violations.length >= 1) {
+        console.log(results.violations);
+      }
+      expect(results.violations.length).toBe(0);
     });
 }
