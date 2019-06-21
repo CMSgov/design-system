@@ -62,9 +62,9 @@ Supported flags:
     - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
     - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
 
-- **`@react-example [NAME]`** Displays example.jsx file using this React component. 
+- **`@react-example [NAME]`** Displays example.jsx file using this React component.
     - **Example**: `@react-component Mask` displays `Mask.example.jsx`
- 
+
 - **`@responsive`** Renders breakpoint toggles for the markup example.
 - **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
 - **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
@@ -99,7 +99,7 @@ Pages generated from KSS comment blocks are ordered alphabetically, and page sec
 
 ### Documentation and guidance
 
-To add guidance content to the page, the page section's slug should be `guidance`. 
+To add guidance content to the page, the page section's slug should be `guidance`.
 For example: `components.buttons.guidance`
 
 Guidance can be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`. For example
@@ -121,7 +121,7 @@ Style guide: components.component-name-goes-here.guidance
 */
 ```
 
-When writing documentation and guidance please include the following sections. 
+When writing documentation and guidance please include the following sections.
 
 - **Usability**
     - **When to use**
@@ -140,7 +140,7 @@ When writing documentation and guidance please include the following sections.
     - List any links that served as inspiration, references, or research related to this component.
 
 
-## Sample page 
+## Sample page
 
 The example below is a new documentation page with a URL path of `/components/buttons`.
 
@@ -172,7 +172,7 @@ Style guide: components.buttons
 
 /*
 ---
-## Guidance 
+## Guidance
 
 content here
 */
@@ -216,7 +216,7 @@ Button.propTypes = {
 
 For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
 
-## General documentation pages 
+## General documentation pages
 
 There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
@@ -240,4 +240,4 @@ The content of the page comes after the front-matter section. You can write your
 
 ### Themes
 
-To override a Markdown page from a [theme](https://github.com/cmsgov/design-system/wiki/site-packages-and-themes), create a Markdown file with the same filename as the one you're overriding in a `src/pages` sub-directory (ie. `packages/themes/my-theme/src/pages/getting-started.md`
+To override a Markdown page from a [theme](https://design.cms.gov/startup/site-package/#what-is-a-theme-), create a Markdown file with the same filename as the one you're overriding in a `src/pages` sub-directory (ie. `packages/themes/my-theme/src/pages/getting-started.md`
