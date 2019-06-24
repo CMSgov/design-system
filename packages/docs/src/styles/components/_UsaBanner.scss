@@ -25,7 +25,6 @@
 .usa-banner__inner {
     margin-left: auto;
     margin-right: auto;
-    max-width: 64rem;
     padding-left: 1rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -99,13 +98,12 @@ width: auto;
 margin-left: .5rem;
 }
 .usa-banner__content {
-    margin-left: auto;
     margin-right: auto;
     max-width: 64rem;
     background-color: transparent;
     font-size: .99816rem;
     overflow: hidden;
-    padding: .25rem 1rem 1rem .5rem;
+    padding: 1rem;
     width: 100%;
 }
 .usa-banner__icon {
@@ -149,5 +147,25 @@ max-width: 100%;
 }
 .tablet\:grid-col-6 {
     width: 50%;
+}
+.usa-banner__header--expanded {
+    background-color: transparent;
+    color: #1b1b1b;
+    display: block;
+    font-size: .79853rem;
+    font-weight: 400;
+    min-height: 0;
+    padding-right: 0;
+}
+.usa-banner__button::after {
+  background-image: url(../images/arrow-down.svg),linear-gradient(transparent,transparent);
+  content: "";
+  background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: .5rem;
+    display: inline-block;
+    height: .5rem;
+    width: .5rem;
+    margin-left: 2px;
 }
 }
