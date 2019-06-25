@@ -141,6 +141,7 @@ cursor: pointer;
     width: auto;
 max-width: 100%;
 }
+@media (min-width: 40em) {
 .tablet\:grid-col-1, .tablet\:grid-col-auto {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
@@ -149,7 +150,10 @@ max-width: 100%;
 .tablet\:grid-col-6 {
   width: 50%;
 }
-
+}
+.usa-banner__guidance {
+    padding-top: 1rem;
+}
 .usa-banner__button::after {
   background-image: url(../images/arrow-down.svg),linear-gradient(transparent,transparent);
   content: "";
