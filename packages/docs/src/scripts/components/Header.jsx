@@ -41,7 +41,7 @@ class Header extends React.PureComponent {
                 <button
                   onClick={this.handleToggleBannerButton}
                   className="usa-accordion__button usa-banner__button"
-                  aria-expanded="false"
+                  aria-expanded={this.state.isBannerOpen}
                   aria-controls="gov-banner"
                 >
                   <span className="usa-banner__button-text">
