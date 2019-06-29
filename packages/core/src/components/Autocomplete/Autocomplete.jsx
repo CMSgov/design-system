@@ -20,6 +20,7 @@ import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
+import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -144,10 +145,6 @@ export class Autocomplete extends React.PureComponent {
       'ds-u-clearfix',
       'ds-c-autocomplete',
       className
-    );
-
-    const WrapperDiv = ({ innerRef, ...rest }) => (
-      <div ref={innerRef} {...rest} />
     );
 
     return (
