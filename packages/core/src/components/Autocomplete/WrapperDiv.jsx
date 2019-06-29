@@ -1,4 +1,5 @@
 /* eslint-disable */
+import React from 'react';
 
 // See https://github.com/downshift-js/downshift#getrootprops
 // Custom container returns a plain div, without the ARIA markup
