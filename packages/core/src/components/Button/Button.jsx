@@ -29,6 +29,7 @@ export class Button extends React.PureComponent {
       onClick,
       size,
       variation,
+      buttonRef,
       ...props
     } = this.props;
 
@@ -87,7 +88,11 @@ export class Button extends React.PureComponent {
       delete attrs.type;
     }
 
-    return <ComponentType {...attrs}>{this.props.children}</ComponentType>;
+    return (
+      <ComponentType ref={this.props.buttonRef} {...attrs}>
+        {this.props.children}
+      </ComponentType>
+    );
   }
 }
 
@@ -117,6 +122,10 @@ Button.propTypes = {
    * Not called when the button is disabled.
    */
   onClick: PropTypes.func,
+  /**
+   * Access a reference to the `button` or `a` element
+   */
+  buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
