@@ -12,7 +12,7 @@
     "@cmsgov/design-system-support": "^2.0.2",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
-    "downshift": "^3.0.0",
+    "downshift": "^3.2.10",
     "ev-emitter": "^1.1.1",
     "lodash.uniqueid": "^4.0.1",
     "react-aria-modal": "^2.11.1"
