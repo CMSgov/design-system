@@ -49,6 +49,7 @@ Alert.propTypes = {
   ariaLabelledBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   heading: PropTypes.string,
+  headingId: PropTypes.string,
   hideIcon: PropTypes.bool,
   /** ARIA `role` */
   role: PropTypes.oneOf(['alert', 'alertdialog', 'region']),
