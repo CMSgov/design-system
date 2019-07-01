@@ -10,7 +10,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
   role={null}
 >
   <button
-    aria-label="Clear typeahead and search again"
+    aria-label="Clear search to try again"
     className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0"
     onClick={[Function]}
     type="button"
