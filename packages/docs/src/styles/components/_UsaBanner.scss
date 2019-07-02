@@ -1,185 +1,179 @@
 .usa-banner {
-  font-family: Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+  background-color: #f0f0f0;
+  font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.06471rem;
   line-height: 1.52155;
-  background-color: #f0f0f0;
 
   .usa-accordion {
-    list-style-type: none;
     color: #1b1b1b;
+    font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+    font-size: 1.06471rem;
+    line-height: 1.52155;
+    list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: Source Sans Pro Web,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
-    font-size: 1.06471rem;
-    line-height: 1.52155;
   }
+
   .usa-banner__header {
-    padding-bottom: .25rem;
-    padding-top: .25rem;
-    font-size: .79853rem;
+    font-size: 0.79853rem;
     font-weight: 400;
     min-height: 0;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
     position: relative;
-}
-.usa-banner__inner {
+  }
+
+  .usa-banner__inner {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
     padding-right: 0;
-}
-[class*=grid-col] {
+  }
+
+  [class*='grid-col'] {
+    box-sizing: border-box;
     position: relative;
     width: 100%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.usa-banner__header-flag {
+  }
+
+  .usa-banner__header-flag {
     float: left;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     width: 1rem;
-}
-.usa-banner__header-text {
+  }
+
+  .usa-banner__header-text {
+    font-size: 0.79853rem;
+    line-height: 1.12707;
     margin-bottom: 0;
     margin-top: 0;
-    font-size: .79853rem;
-    line-height: 1.12707;
-}
-.usa-banner__header-action {
+  }
+
+  .usa-banner__header-action {
     color: #005ea2;
+    font-family: Helvetica;
     line-height: 1.12707;
     margin-bottom: 0;
     text-decoration: underline;
-    font-family: Helvetica;
+
     &::before {
       content: none;
     }
-}
-.usa-banner__button {
-    position: static;
+  }
+
+  .usa-banner__button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
     bottom: auto;
-    left: auto;
-    right: auto;
-    top: auto;
-    display: inline;
-    margin-left: .5rem;
+    box-shadow: none;
+    color: #005ea2;
+    cursor: pointer;
+    display: block;
+    font-size: 0.79853rem;
+    font-weight: 400;
+    height: auto;
+    left: 0;
+    line-height: 1.12707;
+    margin: 0;
+    margin-left: 0.5rem;
+    padding: 0;
     position: relative;
-    -moz-osx-font-smoothing: auto;
--webkit-font-smoothing: subpixel-antialiased;
-background-color: transparent;
-border: 0;
-border-radius: 0;
--webkit-box-shadow: none;
-box-shadow: none;
-font-weight: 400;
-margin: 0;
-text-align: left;
-left: 0;
-bottom: 0;
-top: 0;
-color: #005ea2;
-text-decoration: underline;
-vertical-align: baseline;
-display: block;
-font-size: .79853rem;
-height: auto;
-line-height: 1.12707;
-padding: 0;
-text-decoration: underline;
-width: auto;
-margin-left: .5rem;
-cursor: pointer;
-}
-.usa-banner__content {
+    right: auto;
+    text-align: left;
+    text-decoration: underline;
+    top: 0;
+    vertical-align: baseline;
+    width: auto;
+  }
+
+  .usa-banner__content {
+    background-color: transparent;
+    font-size: 0.99816rem;
     margin-right: auto;
     max-width: 64rem;
-    background-color: transparent;
-    font-size: .99816rem;
     overflow: hidden;
     padding: 1rem;
     width: 100%;
-}
-.usa-banner__icon {
-    width: 2.5rem;
-}
-.usa-media-block__img {
-    float: left;
-    margin-right: .5rem;
-}
-.usa-media-block__body {
-    overflow: hidden;
-}
-.usa-banner__content p:first-child {
-    margin: 0;
-}
-.grid-row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-.grid-col-fill {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0 0px;
-    flex: 1 0 0;
-    width: auto;
-    max-width: 100%;
-}
-.grid-col-auto {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    width: auto;
-max-width: 100%;
-}
-@media (min-width: 40em) {
-.tablet\:grid-col-1, .tablet\:grid-col-auto {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-}
-.tablet\:grid-col-6 {
-  width: 50%;
-}
-}
-.usa-banner__guidance {
-    padding-top: 1rem;
-}
-.usa-banner__button::after {
-  background-image: url(../images/arrow-down.svg),linear-gradient(transparent,transparent);
-  content: "";
-  background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: .5rem;
-    display: inline-block;
-    height: .5rem;
-    width: .5rem;
-    margin-left: 2px;
-}
+  }
 
-.usa-banner__header--expanded {
+  .usa-banner__icon {
+    width: 2.5rem;
+  }
+
+  .usa-media-block__img {
+    float: left;
+    margin-right: 0.5rem;
+  }
+
+  .usa-media-block__body {
+    overflow: hidden;
+  }
+
+  .usa-banner__content p:first-child {
+    margin: 0;
+  }
+
+  .grid-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .grid-col-fill {
+    flex: 1 0 0;
+    max-width: 100%;
+    width: auto;
+  }
+
+  .grid-col-auto {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: auto;
+  }
+  @media (min-width: $width-sm) {
+    .tablet\:grid-col-1,
+    .tablet\:grid-col-auto {
+      flex: 0 0 auto;
+    }
+
+    .tablet\:grid-col-6 {
+      width: 50%;
+    }
+  }
+
+  .usa-banner__guidance {
+    padding-top: 1rem;
+  }
+
+  .usa-banner__button::after {
+    background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    content: '';
+    display: inline-block;
+    height: 0.5rem;
+    margin-left: 2px;
+    width: 0.5rem;
+  }
+
+  .usa-banner__header--expanded {
     background-color: transparent;
     color: #1b1b1b;
     display: block;
-    font-size: .79853rem;
+    font-size: 0.79853rem;
     font-weight: 400;
     min-height: 0;
     padding-right: 0;
-    .usa-banner__button::after {
-      background-image: url(../images/arrow-down.svg),linear-gradient(transparent,transparent);
-      content: "";
-      -webkit-transform: rotate(180deg);
-transform: rotate(180deg);
-    }
-}
 
+    .usa-banner__button::after {
+      background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);
+      content: '';
+      transform: rotate(180deg);
+    }
+  }
 }
