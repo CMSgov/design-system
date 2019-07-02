@@ -63,7 +63,7 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 
 exports[`FormLabel is inversed 1`] = `
 <label
-  className="ds-c-label"
+  className="ds-c-label ds-c-label--inverse"
 >
   <span
     className=""
