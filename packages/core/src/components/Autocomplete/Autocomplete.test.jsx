@@ -47,9 +47,7 @@ describe('Autocomplete', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
 
-    expect(wrapper.prop('ariaClearLabel')).toBe(
-      'Clear typeahead and search again'
-    );
+    expect(wrapper.prop('ariaClearLabel')).toBe('Clear search to try again');
     expect(wrapper.prop('clearInputText')).toBe('Clear search');
     expect(wrapper.prop('label')).toBe(undefined);
     expect(wrapper.prop('loading')).toBe(undefined);

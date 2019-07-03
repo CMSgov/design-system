@@ -20,6 +20,7 @@ import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
+import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -140,12 +141,6 @@ export class Autocomplete extends React.PureComponent {
       ...autocompleteProps
     } = this.props;
 
-    // See https://github.com/downshift-js/downshift#getrootprops
-    // Custom container returns a plain div, without the ARIA markup
-    // required for a WAI-ARIA 1.1 combobox. See the comments at the
-    // top of the component file for an explanation of this decision.
-    const MyDiv = ({ innerRef, ...rest }) => <div ref={innerRef} {...rest} />;
-
     const rootClassName = classNames(
       'ds-u-clearfix',
       'ds-c-autocomplete',
@@ -163,7 +158,7 @@ export class Autocomplete extends React.PureComponent {
           inputValue,
           isOpen
         }) => (
-          <MyDiv
+          <WrapperDiv
             {...getRootProps({
               'aria-expanded': null,
               'aria-haspopup': null,
@@ -219,7 +214,7 @@ export class Autocomplete extends React.PureComponent {
                 {clearInputText}
               </Button>
             )}
-          </MyDiv>
+          </WrapperDiv>
         )}
       </Downshift>
     );
@@ -227,7 +222,7 @@ export class Autocomplete extends React.PureComponent {
 }
 
 Autocomplete.defaultProps = {
-  ariaClearLabel: 'Clear typeahead and search again',
+  ariaClearLabel: 'Clear search to try again',
   autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   clearSearchButton: true,
