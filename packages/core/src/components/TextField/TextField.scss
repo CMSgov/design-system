@@ -56,7 +56,7 @@ Style guide: components.text-field
 
   &:disabled {
     background-color: $color-gray-lighter;
-    border-width: 0;
+    border-color: $color-gray-light;
   }
 
   &:focus {

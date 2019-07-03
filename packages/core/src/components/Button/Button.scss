@@ -22,7 +22,7 @@ Style guide: components.button
 .ds-c-button {
   appearance: none;
   background-color: transparent;
-  border: 1px solid $color-primary;
+  border: $button-border-width solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
   cursor: pointer;
@@ -61,7 +61,7 @@ Style guide: components.button
 
 .ds-c-button--primary {
   background-color: $button-primary-bg;
-  border: 0; // Remove the default border to support easier theming
+  border-color: transparent;
   color: $color-white;
 
   &:focus,
@@ -71,14 +71,17 @@ Style guide: components.button
 
   &:focus {
     background-color: $button-primary-bg--focus;
+    border-color: transparent;
   }
 
   &:hover {
     background-color: $button-primary-bg--hover;
+    border-color: transparent;
   }
 
   &:active {
     background-color: $button-primary-bg--active;
+    border-color: transparent;
   }
 }
 
@@ -96,37 +99,37 @@ Style guide: components.button
 
 .ds-c-button--danger {
   background-color: $color-error;
-  border-color: $color-error;
+  border-color: transparent;
   color: $color-white;
 
   &:focus,
   &:hover {
     background-color: $color-error-dark;
-    border-color: $color-error-dark;
+    border-color: transparent;
     color: $color-white;
   }
 
   &:active {
     background-color: $color-error-darkest;
-    border-color: $color-error-darkest;
+    border-color: transparent;
   }
 }
 
 .ds-c-button--success {
   background-color: $color-success;
-  border-color: $color-success;
+  border-color: transparent;
   color: $color-white;
 
   &:focus,
   &:hover {
     background-color: $color-success-dark;
-    border-color: $color-success-dark;
+    border-color: transparent;
     color: $color-white;
   }
 
   &:active {
     background-color: $color-success-darker;
-    border-color: $color-success-darker;
+    border-color: transparent;
   }
 }
 
@@ -145,7 +148,7 @@ Style guide: components.button.disabled
 .ds-c-button:disabled,
 .ds-c-button--disabled {
   background-color: $color-gray-lighter;
-  border-color: $color-gray-lighter;
+  border-color: transparent;
   color: $color-gray-dark;
   pointer-events: none;
 
@@ -153,7 +156,7 @@ Style guide: components.button.disabled
   &:active,
   &:focus {
     background-color: $color-gray-lighter;
-    border-color: $color-gray-lighter;
+    border-color: transparent;
     color: $color-gray-dark;
   }
 }

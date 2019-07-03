@@ -4,7 +4,7 @@
 
 ## Packages
 
-You're currently at the root of a monorepo which contains multiple NPM packages in the `packages/` directory. The following packages located in the [`packages` directory](packages/) of this repo. View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
 | Name | Description |
 | ---- | ----------- |
@@ -34,9 +34,7 @@ Please read the [CONTRIBUTING.md](/guides/CONTRIBUTING.md) document to learn abo
 
 ## Running locally
 
-This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
-
-[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
 ### Getting started
 
@@ -56,7 +54,7 @@ These scripts can all be run from the root level of the repo:
 * `yarn build`
   * Compile/transpile/uglify everything and makes things release-ready.
 * `yarn bump`
-  * Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+  * Increments package versions. Read "[Versioning](/guides/RELEASE-PROCESS.md#versioning)" for more info.
 * `yarn generate`
   * Generates the necessary files for a new core component
   * Alias: `yarn g`
@@ -73,7 +71,7 @@ These scripts can all be run from the root level of the repo:
 
 #### Theme scripts
 
-You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
+You can also use the following scripts to [build and preview a theme](/guides/SITE-PACKAGES-AND-THEMES.md):
 
 * `yarn start:theme`
 * `yarn build:theme`
@@ -89,4 +87,4 @@ If your documentation site will be uploaded to a subdirectory (ie. example.com/d
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](/guides/CODE-OF-CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE-OF-CONDUCT.md) to learn more.

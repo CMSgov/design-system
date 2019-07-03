@@ -1,13 +1,13 @@
-## Welcome!
+# Contributing to the CMS Design System 
 
 We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
 
-One of our goals is to ensure a welcoming environment for all contributors. 
+One of our goals is to ensure a welcoming environment for all contributors.
 Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
-## Getting started 
+## Getting started
 
-If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally). 
+If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally).
 
 Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
 
@@ -20,10 +20,9 @@ Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to 
 
 Here are a few guidelines to follow when submitting a pull request:
 
-* [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from master
-* Commit your changes
-* Push your changes
-* [Make a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the master branch
+* [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
+* [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `master` that defines what you’re working on (for example, fix-autocomplete-bug).
+* [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `master` branch
 
 **Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
 

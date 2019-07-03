@@ -15,6 +15,7 @@ export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.id = props.id || uniqueId('textfield_');
+    this.labelId = props.labelId || uniqueId('textfield_label_');
   }
 
   componentDidMount() {
@@ -74,19 +75,20 @@ export class TextField extends React.PureComponent {
     const {
       ariaLabel,
       className,
-      labelClassName,
-      fieldClassName,
-      focusTrigger,
       errorMessage,
+      fieldClassName,
+      fieldRef,
+      focusTrigger,
       hint,
       id,
-      requirementLabel,
       inversed,
-      rows,
+      label,
+      labelClassName,
+      labelId,
       mask,
       multiline,
-      label,
-      fieldRef,
+      requirementLabel,
+      rows,
       size,
       type,
       ...fieldProps
@@ -132,6 +134,7 @@ export class TextField extends React.PureComponent {
           errorMessage={errorMessage}
           fieldId={this.id}
           hint={hint}
+          id={this.labelId}
           requirementLabel={requirementLabel}
           inversed={inversed}
         >
@@ -201,6 +204,10 @@ TextField.propTypes = {
    * Additional classes to be added to the label
    */
   labelClassName: PropTypes.string,
+  /**
+   * A unique `id` to be used on the label field.
+   */
+  labelId: PropTypes.string,
   /**
    * Apply formatting to the field that's unique to the value
    * you expect to be entered. Depending on the mask, the

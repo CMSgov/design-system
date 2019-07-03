@@ -14,25 +14,32 @@
     "posttest": "yarn lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "yarn start --theme",
-    "test": "jest",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "update-snapshots": "NODE_ENV=test jest -u",
+    "test": "yarn test:unit && yarn test:e2e && yarn lint",
+    "test:unit": "bash scripts/jest.sh",
+    "test:unit:watch": "NODE_ENV=test bash scripts/jest.sh --skip-build --watch",
+    "test:e2e": "bash scripts/jest.sh --e2e",
+    "test:e2e:skipBuild": "bash scripts/jest.sh --e2e --skip-build",
+    "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
     "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
     "autoprefixer": "^8.0.0",
+    "axe-webdriverjs": "^2.1.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.3",
     "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "browser-sync": "^2.20.0",
     "bytes": "^3.0.0",
+    "chalk": "^2.4.2",
+    "chromedriver": "^2.46.0",
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
     "core-js": "^2.5.3",
@@ -63,6 +70,7 @@
     "gulp-util": "^3.0.8",
     "husky": "^0.14.3",
     "jest": "^22.4.2",
+    "jest-environment-selenium": "^2.1.0",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
     "lint-staged": "^7.0.0",
@@ -83,6 +91,8 @@
     "react-test-renderer": "^16.2.0",
     "recast": "^0.14.4",
     "run-sequence": "^2.2.0",
+    "selenium-webdriver": "4.0.0-alpha.1",
+    "static-server": "^2.2.1",
     "stylelint": "^9.1.1",
     "stylelint-config-prettier": "^2.1.0",
     "through2": "^2.0.3",
@@ -96,23 +106,6 @@
   },
   "engines": {
     "node": ">=7.0.0"
-  },
-  "jest": {
-    "testURL": "http://localhost",
-    "setupFiles": [
-      "<rootDir>/tools/jest/polyfills.js",
-      "<rootDir>/tools/jest/setupEnzyme.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/examples/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/packages/*/node_modules/",
-      "<rootDir>/packages/themes/*/node_modules/",
-      "<rootDir>/packages/generator-cmsgov/generators/app/templates/"
-    ]
   },
   "lint-staged": {
     "*.{js,jsx}": [
