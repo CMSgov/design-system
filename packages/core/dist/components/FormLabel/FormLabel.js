@@ -44,10 +44,14 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
     key: 'errorMessage',
     value: function errorMessage() {
       if (this.props.errorMessage) {
+        var classes = (0, _classnames2.default)('ds-c-field__hint', 'ds-u-color--error', {
+          'ds-u-color--error-light': this.props.inversed
+        });
+
         return _react2.default.createElement(
           'span',
           {
-            className: 'ds-c-field__hint ds-u-color--error',
+            className: classes,
             id: this.props.fieldId + '-message',
             role: 'alert'
           },
@@ -99,7 +103,9 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
 
       var ComponentType = this.props.component;
       var labelTextClasses = (0, _classnames2.default)(this.props.labelClassName);
-      var classes = (0, _classnames2.default)('ds-c-label', this.props.className);
+      var classes = (0, _classnames2.default)('ds-c-label', this.props.className, {
+        'ds-c-label--inverse': this.props.inversed
+      });
 
       return _react2.default.createElement(
         ComponentType,
