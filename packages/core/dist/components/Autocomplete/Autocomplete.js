@@ -31,6 +31,10 @@ var _TextField = require('../TextField/TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _WrapperDiv = require('./WrapperDiv');
+
+var _WrapperDiv2 = _interopRequireDefault(_WrapperDiv);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -186,34 +190,21 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
           clearSearchButton = _props.clearSearchButton,
           autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children', 'className', 'clearSearchButton']);
 
-      // See https://github.com/downshift-js/downshift#getrootprops
-      // Custom container returns a plain div, without the ARIA markup
-      // required for a WAI-ARIA 1.1 combobox. See the comments at the
-      // top of the component file for an explanation of this decision.
-
-
-      var MyDiv = function MyDiv(_ref) {
-        var innerRef = _ref.innerRef,
-            rest = _objectWithoutProperties(_ref, ['innerRef']);
-
-        return _react2.default.createElement('div', _extends({ ref: innerRef }, rest));
-      };
-
       var rootClassName = (0, _classnames2.default)('ds-u-clearfix', 'ds-c-autocomplete', className);
 
       return _react2.default.createElement(
         _downshift2.default,
         autocompleteProps,
-        function (_ref2) {
-          var clearSelection = _ref2.clearSelection,
-              getInputProps = _ref2.getInputProps,
-              getItemProps = _ref2.getItemProps,
-              getRootProps = _ref2.getRootProps,
-              highlightedIndex = _ref2.highlightedIndex,
-              inputValue = _ref2.inputValue,
-              isOpen = _ref2.isOpen;
+        function (_ref) {
+          var clearSelection = _ref.clearSelection,
+              getInputProps = _ref.getInputProps,
+              getItemProps = _ref.getItemProps,
+              getRootProps = _ref.getRootProps,
+              highlightedIndex = _ref.highlightedIndex,
+              inputValue = _ref.inputValue,
+              isOpen = _ref.isOpen;
           return _react2.default.createElement(
-            MyDiv,
+            _WrapperDiv2.default,
             getRootProps({
               'aria-expanded': null,
               'aria-haspopup': null,
@@ -270,7 +261,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
 }(_react2.default.PureComponent);
 
 Autocomplete.defaultProps = {
-  ariaClearLabel: 'Clear typeahead and search again',
+  ariaClearLabel: 'Clear search to try again',
   autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   clearSearchButton: true,
