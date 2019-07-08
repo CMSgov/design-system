@@ -25,7 +25,7 @@ Markup:
 <div class="ds-l-container">
   <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %> | <a href="{{root}}/public/images/<%= icon%>.svg" target="_blank">Download SVG</a></span>
     </div>
   <% }) -%>
 </div>
@@ -47,7 +47,7 @@ Markup:
 <div class="ds-l-container">
   <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %> | <a href="{{root}}/public/images/<%= icon%>.svg" target="_blank">Download SVG</a></span>
     </div>
   <% }) -%>
 </div>
@@ -69,7 +69,7 @@ Markup:
 <div class="ds-l-container">
   <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %> | <a href="{{root}}/public/images/<%= icon%>.svg" target="_blank">Download SVG</a></span>
     </div>
   <% }) -%>
 </div>
@@ -90,13 +90,13 @@ Style guide: style.icons.supplemental
   padding-right: 16px;
 
   &.information {
-    background-image: url('#{$image-path}/info.svg');
+    background-image: url('#{$image-path}/information.svg');
     background-size: 32px;
     background-repeat: no-repeat;
   }
 
   &.success {
-    background-image: url('#{$image-path}/checkmark-black.svg');
+    background-image: url('#{$image-path}/success.svg');
     background-size: 24px;
     background-repeat: no-repeat;
     margin-left: 4px;
@@ -104,7 +104,7 @@ Style guide: style.icons.supplemental
   }
 
   &.success-fill {
-    background-image: url('#{$image-path}/success.svg');
+    background-image: url('#{$image-path}/success-fill.svg');
     background-size: 32px;
     background-repeat: no-repeat;
   }
@@ -126,7 +126,6 @@ Style guide: style.icons.supplemental
     background-size: 16px;
     margin-top: 5px;
     background-repeat: no-repeat;
-    border: 1px solid red;
   }
 
   &.arrow-up {
@@ -150,19 +149,19 @@ Style guide: style.icons.supplemental
   }
 
   &.star {
-    background-image: url('#{$image-path}/star-open.svg');
+    background-image: url('#{$image-path}/star.svg');
     background-size: 24px;
     background-repeat: no-repeat;
   }
 
   &.information-new-hover {
-    background-image: url('#{$image-path}/info-new-hover.svg');
+    background-image: url('#{$image-path}/information-new-hover.svg');
     background-size: 24px;
     background-repeat: no-repeat;
   }
 
   &.information-new {
-    background-image: url('#{$image-path}/info-new.svg');
+    background-image: url('#{$image-path}/information-new.svg');
     background-size: 16px;
     margin-left: 4px;
     margin-right: -4px;
