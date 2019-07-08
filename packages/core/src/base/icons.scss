@@ -122,21 +122,25 @@ Style guide: style.icons.supplemental
   }
 
   &.close {
-    background-image: url('#{$image-path}/close-black.svg');
-    background-size: 32px;
+    background-image: url('#{$image-path}/close.svg');
+    background-size: 16px;
+    margin-top: 5px;
     background-repeat: no-repeat;
+    border: 1px solid red;
   }
 
   &.arrow-up {
     background-image: url('#{$image-path}/arrow-up.svg');
-    background-size: 32px;
+    background-size: 16px;
     background-repeat: no-repeat;
+    margin-top: 5px;
   }
 
   &.arrow-down {
     background-image: url('#{$image-path}/arrow-down.svg');
-    background-size: 32px;
+    background-size: 16px;
     background-repeat: no-repeat;
+    margin-top: 5px;
   }
 
   &.star-filled {
