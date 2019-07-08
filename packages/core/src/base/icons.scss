@@ -1,0 +1,32 @@
+/* stylelint-disable selector-class-pattern */
+@import '@cmsgov/design-system-support/src/settings/index';
+
+/*
+Icons
+
+Iconography should be used sparingly and only with support of labels. Please refer to [USWDS' documentation](https://designsystem.digital.gov/components/icons/) for more detail.
+
+Markup:
+<div class="ds-base {{modifier}} ds-u-padding--2">
+  {{lorem-l}}
+</div>
+
+Style guide: style.icons
+*/
+%ds-base {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+.ds-base {
+  @extend %ds-base;
+  color: $color-base;
+}
+
+.ds-base--inverse {
+  @extend %ds-base;
+  background-color: $color-background-inverse;
+  color: $color-base-inverse;
+}
+/* stylelint-enable */
