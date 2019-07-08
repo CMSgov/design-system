@@ -69,7 +69,8 @@ var Button = exports.Button = function (_React$PureComponent) {
           onClick = _props.onClick,
           size = _props.size,
           variation = _props.variation,
-          props = _objectWithoutProperties(_props, ['className', 'component', 'inverse', 'onClick', 'size', 'variation']);
+          buttonRef = _props.buttonRef,
+          props = _objectWithoutProperties(_props, ['className', 'component', 'inverse', 'onClick', 'size', 'variation', 'buttonRef']);
 
       var attrs = _extends({
         className: this.classNames()
@@ -123,7 +124,7 @@ var Button = exports.Button = function (_React$PureComponent) {
 
       return _react2.default.createElement(
         ComponentType,
-        attrs,
+        _extends({ ref: this.props.buttonRef }, attrs),
         this.props.children
       );
     }
@@ -158,6 +159,10 @@ Button.propTypes = {
    * Not called when the button is disabled.
    */
   onClick: _propTypes2.default.func,
+  /**
+   * Access a reference to the `button` or `a` element
+   */
+  buttonRef: _propTypes2.default.func,
   size: _propTypes2.default.oneOf(['small', 'big']),
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
