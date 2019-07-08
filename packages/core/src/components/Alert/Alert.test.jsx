@@ -17,7 +17,7 @@ describe('Alert', function() {
     const $body = wrapper.render().find('.ds-c-alert__body');
 
     expect(wrapper.hasClass('ds-c-alert')).toBe(true);
-    expect(wrapper.prop('role')).toBeUndefined();
+    expect(wrapper.prop('role')).toBe('region');
     expect($body.length).toBe(1);
     expect($body.text()).toBe(text);
   });
