@@ -11,15 +11,11 @@ export class Alert extends React.PureComponent {
   }
 
   heading() {
-    if (typeof id !== 'undefined') {
-      return (
-        <h3 className="ds-c-alert__heading" id={this.props.ariaLabelledBy}>
-          {this.props.heading}
-        </h3>
-      );
-    } else {
-      return <h3 className="ds-c-alert__heading">{this.props.heading}</h3>;
-    }
+    return (
+      <h3 className="ds-c-alert__heading" id={this.headingId}>
+        {this.props.heading}
+      </h3>
+    );
   }
 
   render() {
@@ -34,7 +30,7 @@ export class Alert extends React.PureComponent {
       <div
         className={classes}
         role={this.props.role}
-        aria-labelledby={this.props.ariaLabelledBy}
+        aria-labelledby={this.headingId}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
@@ -44,9 +40,10 @@ export class Alert extends React.PureComponent {
     );
   }
 }
-
+Alert.defaultProps = {
+  role: 'region'
+};
 Alert.propTypes = {
-  ariaLabelledBy: PropTypes.string,
   children: PropTypes.node.isRequired,
   heading: PropTypes.string,
   headingId: PropTypes.string,
