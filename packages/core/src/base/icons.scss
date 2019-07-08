@@ -4,29 +4,286 @@
 /*
 Icons
 
-Iconography should be used sparingly and only with support of labels. Please refer to [USWDS' documentation](https://designsystem.digital.gov/components/icons/) for more detail.
+Iconography should be used sparingly and only with support of labels. We use a subset of FontAwesome icons, with one or two bespoke icons.
 
-Markup:
-<div class="ds-base {{modifier}} ds-u-padding--2">
-  {{lorem-l}}
-</div>
+Please refer to [USWDS' documentation](https://designsystem.digital.gov/components/icons/) for more detail.
 
 Style guide: style.icons
 */
-%ds-base {
-  font-family: $font-sans;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+
+/*
+Alert Icons
+
+@hide-markup
+
+These icons are used primarily as part of the Alert Box component, though the Checkmark can sometimes be found in other places, without the background.
+
+Markup:
+<% var icons = [
+  'information', 'success', 'success-filled', 'warning', 'error'
+]; -%>
+<div class="ds-l-container">
+  <div class="ds-l-row">
+    <% icons.forEach(icon => { -%>
+    <% }) -%>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container information'></span>Information
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container success'></span>Success
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container success-fill'></span>Success (filled)
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container warning'></span>Warning
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container error'></span>Error
+    </div>
+  </div>
+
+
+Style guide: style.icons.alert
+*/
+
+/*
+Interaction Icons
+
+@hide-markup
+
+These icons are used primarily for interaction with the user interface.
+
+Markup:
+<% var icons = [
+  'information', 'success', 'success-filled', 'warning', 'error'
+]; -%>
+<div class="ds-l-container">
+  <div class="ds-l-row">
+    <% icons.forEach(icon => { -%>
+    <% }) -%>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container close'></span>Close
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container arrow-up'></span>Arrow up - close an accordion element
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container arrow-down'></span>Arrow down - open an accordion element (filled)
+    </div>
+  </div>
+
+Style guide: style.icons.interaction
+*/
+
+/*
+Supplemental Icons
+
+@hide-markup
+
+These icons are used to convey more information about a given block of text or interaction. They should be used sparingly.
+
+Markup:
+<% var icons = [
+  'information', 'success', 'success-filled', 'warning', 'error'
+]; -%>
+<div class="ds-l-container">
+  <div class="ds-l-row">
+    <% icons.forEach(icon => { -%>
+    <% }) -%>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container star-filled'></span>Star, filled
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container star'></span>Star, open
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container information-new'></span>Information (new)
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container information-new-hover'></span>Information (new), hover
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container PDF'></span>PDF
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container image'></span>Image
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container download'></span>Download
+    </div>
+  </div>
+
+  <div class="ds-l-container">
+    <div class="ds-l-row">
+      <span class='icon-container next'></span>Next
+    </div>
+  </div>
+
+Style guide: style.icons.interaction
+*/
+
+.icon-container {
+
+  overflow: auto;
+  width: 32px;
+  height: auto;
+  padding-bottom: 48px;
+  padding-right: 16px;
+
+  &.information {
+    background-image: url('#{$image-path}/info.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.success {
+    background-image: url('#{$image-path}/checkmark-black.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    margin-left: 4px;
+    margin-right: -4px;
+  }
+
+  &.success-fill {
+    background-image: url('#{$image-path}/success.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.warning {
+    background-image: url('#{$image-path}/warning.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.error {
+    background-image: url('#{$image-path}/error.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.close {
+    background-image: url('#{$image-path}/close-black.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.arrow-up {
+    background-image: url('#{$image-path}/arrow-up.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.arrow-down {
+    background-image: url('#{$image-path}/arrow-down.svg');
+    background-size: 32px;
+    background-repeat: no-repeat;
+  }
+
+  &.star-filled {
+    background-image: url('#{$image-path}/star-filled.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
+  &.star {
+    background-image: url('#{$image-path}/star-open.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
+  &.information-new-hover {
+    background-image: url('#{$image-path}/info-new-hover.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
+  &.information-new {
+    background-image: url('#{$image-path}/info-new.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+  }
+
+  &.PDF {
+    background-image: url('#{$image-path}/pdf.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 2px;
+  }
+
+  &.image {
+    background-image: url('#{$image-path}/image.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 5px;
+  }
+
+  &.download {
+    background-image: url('#{$image-path}/download.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    margin-right: -5px;
+  }
+
+  &.next {
+    background-image: url('#{$image-path}/next.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 5px;
+  }
 }
 
-.ds-base {
-  @extend %ds-base;
-  color: $color-base;
-}
-
-.ds-base--inverse {
-  @extend %ds-base;
-  background-color: $color-background-inverse;
-  color: $color-base-inverse;
-}
 /* stylelint-enable */
