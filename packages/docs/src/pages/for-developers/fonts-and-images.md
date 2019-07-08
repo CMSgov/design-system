@@ -1,5 +1,5 @@
 ---
-title: Fonts and Images
+title: Using fonts and images
 weight: 1
 ---
 
