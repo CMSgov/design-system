@@ -44,5 +44,5 @@ If you're not using Sass, another way to "theme" the design system is by overrid
 
 ## Learn more
 
-- [Previewing and compiling themes](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes)
+- [Previewing and compiling themes](https://design.cms.gov/startup/site-package/#previewing-your-site-package)
 - [View an example project with a Sass build process](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
