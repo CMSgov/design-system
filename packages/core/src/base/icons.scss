@@ -246,7 +246,10 @@ Style guide: style.icons.interaction
 
   &.information-new {
     background-image: url('#{$image-path}/info-new.svg');
-    background-size: 24px;
+    background-size: 16px;
+    margin-left: 4px;
+    margin-right: -4px;
+    margin-top: 5px;
     background-repeat: no-repeat;
   }
 
