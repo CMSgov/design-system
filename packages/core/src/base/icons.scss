@@ -20,44 +20,15 @@ These icons are used primarily as part of the Alert Box component, though the Ch
 
 Markup:
 <% var icons = [
-  'information', 'success', 'success-filled', 'warning', 'error'
+  'information', 'success', 'success-fill', 'warning', 'error'
 ]; -%>
 <div class="ds-l-container">
-  <div class="ds-l-row">
-    <% icons.forEach(icon => { -%>
-    <% }) -%>
-  </div>
-
-  <div class="ds-l-container">
+  <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container information'></span>Information
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
     </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container success'></span>Success
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container success-fill'></span>Success (filled)
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container warning'></span>Warning
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container error'></span>Error
-    </div>
-  </div>
-
+  <% }) -%>
+</div>
 
 Style guide: style.icons.alert
 */
@@ -71,31 +42,15 @@ These icons are used primarily for interaction with the user interface.
 
 Markup:
 <% var icons = [
-  'information', 'success', 'success-filled', 'warning', 'error'
+  'close', 'arrow-up', 'arrow-down'
 ]; -%>
 <div class="ds-l-container">
-  <div class="ds-l-row">
-    <% icons.forEach(icon => { -%>
-    <% }) -%>
-  </div>
-
-  <div class="ds-l-container">
+  <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container close'></span>Close
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
     </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container arrow-up'></span>Arrow up - close an accordion element
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container arrow-down'></span>Arrow down - open an accordion element (filled)
-    </div>
-  </div>
+  <% }) -%>
+</div>
 
 Style guide: style.icons.interaction
 */
@@ -109,64 +64,22 @@ These icons are used to convey more information about a given block of text or i
 
 Markup:
 <% var icons = [
-  'information', 'success', 'success-filled', 'warning', 'error'
+  'star','star-filled', 'information-new', 'information-new-hover', 'PDF', 'image', 'download', 'next'
 ]; -%>
 <div class="ds-l-container">
-  <div class="ds-l-row">
-    <% icons.forEach(icon => { -%>
-    <% }) -%>
-  </div>
-
-  <div class="ds-l-container">
+  <% icons.forEach(icon => { -%>
     <div class="ds-l-row">
-      <span class='icon-container star-filled'></span>Star, filled
+      <span class='icon-container <%= icon %>'></span><span class='icon-text'><%= icon %></span>
     </div>
-  </div>
+  <% }) -%>
+</div>
 
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container star'></span>Star, open
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container information-new'></span>Information (new)
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container information-new-hover'></span>Information (new), hover
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container PDF'></span>PDF
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container image'></span>Image
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container download'></span>Download
-    </div>
-  </div>
-
-  <div class="ds-l-container">
-    <div class="ds-l-row">
-      <span class='icon-container next'></span>Next
-    </div>
-  </div>
-
-Style guide: style.icons.interaction
+Style guide: style.icons.supplemental
 */
+
+.icon-text {
+  text-transform: capitalize;
+}
 
 .icon-container {
 
