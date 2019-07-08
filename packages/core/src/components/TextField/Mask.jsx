@@ -25,7 +25,6 @@ const deliminatedMaskRegex = {
  */
 function deliminateRegexGroups(value, rx) {
   const matches = toDigitsAndAsterisks(value).match(rx);
-
   if (matches && matches.length > 1) {
     value = matches
       .slice(1)
@@ -84,9 +83,6 @@ function toDigits(value) {
  * @returns {Number}
  */
 function toNumber(value) {
-  if (typeof value !== 'string') return value;
-  if (!value.match(/\d/)) return undefined;
-
   const sign = value.charAt(0) === '-' ? -1 : 1;
   const parts = value.split('.');
   // This assumes if the user adds a "." it should be a float. If we want it to
@@ -103,24 +99,39 @@ function toNumber(value) {
 }
 
 /**
- * Returns the value with additional masking characters
+ * Determines if a value is a valid string with numeric digits
+ * @param {String} value
+ * @param {String} mask
+ * @returns {Boolean}
+ */
+function isValueMaskable(value, mask) {
+  if (value && typeof value === 'string') {
+    const hasDigits = value.match(/\d/);
+    const hasDigitsAsterisks = value.match(/[\d*]/g);
+    if (hasDigits || (hasDigitsAsterisks && mask === 'ssn')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Returns the value with additional masking characters, or the same value back if invalid numeric string
  * @param {String} value
  * @returns {String}
  */
 export function maskValue(value = '', mask) {
-  if (value && typeof value === 'string') {
-    value = value.trim();
-
+  if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Format number with commas. If the number includes a decimal,
       // ensure it includes two decimal points
       const number = toNumber(value);
-      if (number === undefined) {
-        value = '';
-      } else {
+      if (number !== undefined) {
         value = stringWithFixedDigits(number.toLocaleString('en-US'));
       }
-    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+    } else if (deliminatedMaskRegex[mask]) {
+      // Use deliminator regex to mask value and remove unwanted characters
+      // If the regex does not match, return the numeric digits.
       value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
     }
   }
@@ -177,7 +188,10 @@ export class Mask extends React.PureComponent {
       // given and what we have locally don't match, that means the controlling
       // component has made its own unrelated change, so we should update our
       // state and mask this new value.
-      if (unmask(fieldProps.value, mask) !== unmask(this.state.value, mask)) {
+      if (
+        unmaskValue(fieldProps.value, mask) !==
+        unmaskValue(this.state.value, mask)
+      ) {
         const value = maskValue(fieldProps.value || '', mask);
         this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
       }
@@ -260,29 +274,23 @@ Mask.propTypes = {
 };
 
 /**
- * Remove mask characters from value
+ * Remove mask characters from value, or the same value back if invalid numeric string
  * @param {String} value
  * @param {String} mask
  * @returns {String}
  */
-export function unmask(value, mask) {
-  if (!value || typeof value !== 'string') return value;
-  const rawValue = value;
-  value = value.trim();
-
-  if (mask === 'currency') {
-    // Preserve only digits, decimal point, or negative symbol
-    const matches = value.match(/^-|[\d.]/g);
-    if (matches) {
-      value = matches.join('');
-    } else {
-      value = '';
+export function unmaskValue(value, mask) {
+  if (isValueMaskable(value, mask)) {
+    if (mask === 'currency') {
+      // Preserve only digits, decimal point, or negative symbol
+      const matches = value.match(/^-|[\d.]/g);
+      if (matches) {
+        value = matches.join('');
+      }
+    } else if (deliminatedMaskRegex[mask]) {
+      // Remove the deliminators and revert to single ungrouped string
+      value = toDigitsAndAsterisks(value);
     }
-  } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-    // Remove the deliminators and revert to single ungrouped string
-    value = toDigitsAndAsterisks(value);
-  } else {
-    return rawValue;
   }
 
   return value;

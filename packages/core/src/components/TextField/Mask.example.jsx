@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function handleBlur(evt, mask) {
-  console.log('Unmasked value:', unmaskValue(evt.target.value, mask));
+  console.log('Unmasked value: ', unmaskValue(evt.target.value, mask));
 }
 
 class ControlledCurrencyField extends React.PureComponent {
