@@ -1,0 +1,42 @@
+{
+  "testSuite": "BackstopJS",
+  "tests": [
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/backstop_default_CMSDS_0__0_phone.png",
+        "test": "../bitmaps_test/20190709-095630/backstop_default_CMSDS_0__0_phone.png",
+        "selector": "",
+        "fileName": "backstop_default_CMSDS_0__0_phone.png",
+        "label": "CMSDS",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "https://design.gms.gov",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "phone",
+        "engineErrorMsg": "net::ERR_NAME_NOT_RESOLVED at https://design.gms.gov",
+        "error": "Reference file not found /Users/sophia/Desktop/cms/design-system/backstop_data/bitmaps_reference/backstop_default_CMSDS_0__0_phone.png"
+      },
+      "status": "fail"
+    },
+    {
+      "pair": {
+        "reference": "../bitmaps_reference/backstop_default_CMSDS_0__1_tablet.png",
+        "test": "../bitmaps_test/20190709-095630/backstop_default_CMSDS_0__1_tablet.png",
+        "selector": "",
+        "fileName": "backstop_default_CMSDS_0__1_tablet.png",
+        "label": "CMSDS",
+        "requireSameDimensions": true,
+        "misMatchThreshold": 0.1,
+        "url": "https://design.gms.gov",
+        "referenceUrl": "",
+        "expect": 0,
+        "viewportLabel": "tablet",
+        "engineErrorMsg": "net::ERR_NAME_NOT_RESOLVED at https://design.gms.gov",
+        "error": "Reference file not found /Users/sophia/Desktop/cms/design-system/backstop_data/bitmaps_reference/backstop_default_CMSDS_0__1_tablet.png"
+      },
+      "status": "fail"
+    }
+  ],
+  "id": "backstop_default"
+}
