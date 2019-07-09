@@ -11,11 +11,18 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _Mask = require('./Mask');
 
-var _Mask2 = _interopRequireDefault(_Mask);
+Object.defineProperty(exports, 'unmaskValue', {
+  enumerable: true,
+  get: function get() {
+    return _Mask.unmaskValue;
+  }
+});
 
 var _FormLabel = require('../FormLabel/FormLabel');
 
 var _FormLabel2 = _interopRequireDefault(_FormLabel);
+
+var _Mask2 = _interopRequireDefault(_Mask);
 
 var _propTypes = require('prop-types');
 
@@ -43,13 +50,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-exports.unmaskValue = _Mask.unmask;
-
 /**
  * A `TextField` component renders an input field as well as supporting UI
  * elements like a label, error message, and hint text.
  */
-
 var TextField = exports.TextField = function (_React$PureComponent) {
   _inherits(TextField, _React$PureComponent);
 
