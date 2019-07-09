@@ -70,7 +70,7 @@ These scripts can all be run from the root level of the repo:
 
 #### Theme scripts
 
-You can also use the following scripts to [build and preview a theme](/guides/SITE-PACKAGES-AND-THEMES.md):
+You can also use the following scripts to [build and preview a theme](https://design.cms.gov/startup/site-package/):
 
 * `yarn start:theme`
 * `yarn build:theme`
