@@ -116,10 +116,5 @@
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.7.2"
-  },
-  "dependencies": {
-    "handlebars": "^4.0.14",
-    "js-yaml": "^3.13.1",
-    "tunnel-agent": "^0.6.0"
   }
 }
