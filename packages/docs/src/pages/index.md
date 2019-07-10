@@ -14,7 +14,8 @@ The design system is a set of open source design and front-end development resou
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
 
-<a href="{{root}}/startup/installation/" class="ds-c-button ds-c-button--primary ds-c-button--big">Learn how to get started</a>
+## Getting started
+Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/archive/master.zip), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
 
 ## Goals
 

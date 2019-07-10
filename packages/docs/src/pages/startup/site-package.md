@@ -1,6 +1,6 @@
 ---
 title: Building a site package
-weight: 1
+weight: 9
 ---
 The CMS Design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, the CMSDS does not fit every single need.
 
