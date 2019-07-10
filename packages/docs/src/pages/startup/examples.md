@@ -1,6 +1,6 @@
 ---
 title: Examples
-weight: 4
+weight: 10
 ---
 
 Additional examples of the design system in use can be viewed on [GitHub](https://github.com/CMSgov/design-system). These projects demonstrate the various ways you can incorporate the design system into your development process and various use cases.

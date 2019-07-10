@@ -1,6 +1,6 @@
 ---
-title: Fonts and Images
-weight: 1
+title: Using fonts and images
+weight: 2
 ---
 
 Once you've downloaded the core package, copy the design system's `fonts` and `images` directories into the same directory as your site's CSS directory.
