@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Install with NPM
 weight: 0
 ---
 
