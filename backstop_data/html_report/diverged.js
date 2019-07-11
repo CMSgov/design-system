@@ -1,6 +1,6 @@
 'use strict';
 const noop = function() {};
-let LCS_DIFF_ARRAY_METHOD;
+let LCS_DIFF_ARRAY_METHOD = undefined;
 // debugger
 if (typeof require !== 'undefined') {
   LCS_DIFF_ARRAY_METHOD = require('diff').diffArrays;
@@ -37,7 +37,7 @@ if (typeof module !== 'undefined') {
 function diverged(reference, test, h, w) {
   console.time('diverged_total_time');
 
-  const spread = Math.floor(h / 80); // override
+  const spread = Math.floor(h / 80); //override
 
   console.log('spread:', spread);
 
@@ -47,8 +47,8 @@ function diverged(reference, test, h, w) {
   console.timeEnd('imgDataToWords');
 
   console.time('imgDataWordArrToColsAndRows');
-  const cols_rows_ref = imgDataWordArrToColsAndRows(img1wordArr, h, w);
-  const cols_rows_test = imgDataWordArrToColsAndRows(img2wordArr, h, w);
+  let cols_rows_ref = imgDataWordArrToColsAndRows(img1wordArr, h, w);
+  let cols_rows_test = imgDataWordArrToColsAndRows(img2wordArr, h, w);
   console.timeEnd('imgDataWordArrToColsAndRows');
 
   console.time('groupAdjacent');
@@ -102,8 +102,8 @@ function diverged(reference, test, h, w) {
 function columnWordDataToImgDataFormatAsWords(columns, h, w) {
   const imgDataWordsLength = w * h;
 
-  const convertedArr = new Array(imgDataWordsLength);
-  for (let i = 0; i < imgDataWordsLength; i++) {
+  let convertedArr = new Array(imgDataWordsLength);
+  for (var i = 0; i < imgDataWordsLength; i++) {
     const { column, depth } = serialToColumnMap(i, h, w);
     convertedArr[i] = columns[column][depth];
   }
@@ -111,8 +111,8 @@ function columnWordDataToImgDataFormatAsWords(columns, h, w) {
 }
 
 function convertImgDataWordsToClampedImgData(wordsArr) {
-  const convertedArr = new Uint8ClampedArray(wordsArr.length * 4);
-  for (let i = 0; i < wordsArr.length; i++) {
+  let convertedArr = new Uint8ClampedArray(wordsArr.length * 4);
+  for (var i = 0; i < wordsArr.length; i++) {
     const convertedOffset = i * 4;
     const segments = wordsArr[i].split('_');
     convertedArr[convertedOffset] = segments[0];
@@ -124,14 +124,14 @@ function convertImgDataWordsToClampedImgData(wordsArr) {
 }
 
 function reduceColumnDiffRaw(columnDiffs, h, w) {
-  const reducedColumns = new Array(columnDiffs.length);
+  let reducedColumns = new Array(columnDiffs.length);
   for (let columnIndex = 0; columnIndex < columnDiffs.length; columnIndex++) {
     const columnDiff = columnDiffs[columnIndex];
     let resultColumn = new Array();
     let removedCounter = 0;
     let resultClass = '';
     let segment = [];
-    const debug = false;
+    let debug = false;
 
     for (let depthIndex = 0; depthIndex < columnDiff.length; depthIndex++) {
       let segmentLength = 0;
@@ -201,7 +201,7 @@ function reduceColumnDiffRaw(columnDiffs, h, w) {
 }
 
 function diffArr(refArr, testArr, h, w) {
-  const rawResultArr = [];
+  let rawResultArr = [];
   for (let i = 0; i < refArr.length; i++) {
     rawResultArr.push(LCS_DIFF_ARRAY_METHOD(refArr[i], testArr[i]));
   }
@@ -261,7 +261,7 @@ function groupAdjacent(columns, spread, h, w) {
     );
 
     const columnComposite = new Array();
-    for (let depth = 0; depth < h; depth++) {
+    for (var depth = 0; depth < h; depth++) {
       columnComposite[depth] = getCompositeColumnDepthValues(
         columns,
         interpolatedColumns,
@@ -274,7 +274,7 @@ function groupAdjacent(columns, spread, h, w) {
 
   const groupedRows = new Array();
   if (rowSpread > 1) {
-    for (let index = 0; index < groupedColumns.length; index++) {
+    for (var index = 0; index < groupedColumns.length; index++) {
       const rowComposite = new Array();
       let depthPointer = 0;
       while (depthPointer < h) {
@@ -325,7 +325,9 @@ function ungroupAdjacent(grouped, spread, columnUnderlay, h, w) {
           ? mapUngroupedColumnIndexToGroupedIndex(depth, rowSpread)
           : depth;
       const value = grouped[groupedIndexMap][groupedDepthMap].split('|')[0];
-      ungrouped[index][depth] = value || columnUnderlay[index][depth].replace(/\d+$/, OPACITY);
+      ungrouped[index][depth] = value
+        ? value
+        : columnUnderlay[index][depth].replace(/\d+$/, OPACITY);
     }
   }
 
@@ -333,19 +335,19 @@ function ungroupAdjacent(grouped, spread, columnUnderlay, h, w) {
 }
 
 function imgDataWordArrToColsAndRows(arr, h, w) {
-  const columns = new Array(w);
-  const rows = new Array(h);
+  let columns = new Array(w);
+  let rows = new Array(h);
 
-  for (let i = 0; i < arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     const word = arr[i];
 
-    const { column, depth } = serialToColumnMap(i, h, w);
+    var { column, depth } = serialToColumnMap(i, h, w);
     if (!columns[column]) {
       columns[column] = new Array(h);
     }
     columns[column][depth] = word;
 
-    const { row, index } = serialToRowMap(i, h, w);
+    var { row, index } = serialToRowMap(i, h, w);
     if (!rows[row]) {
       rows[row] = new Array(w);
     }
@@ -369,7 +371,7 @@ function serialToRowMap(index, h, w) {
 }
 
 function imgDataToWords(arr) {
-  const result = [];
+  let result = [];
   for (let i = 0; i < arr.length - 1; i += 4) {
     result.push(`${arr[i]}_${arr[i + 1]}_${arr[i + 2]}_${arr[i + 3]}`);
   }

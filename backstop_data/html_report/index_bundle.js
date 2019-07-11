@@ -1,8 +1,8 @@
 !(function(e) {
-  const t = {};
+  var t = {};
   function n(r) {
     if (t[r]) return t[r].exports;
-    const o = (t[r] = { i: r, l: !1, exports: {} });
+    var o = (t[r] = { i: r, l: !1, exports: {} });
     return e[r].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
   }
   (n.m = e),
@@ -11,34 +11,32 @@
       n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: r });
     }),
     (n.r = function(e) {
-      typeof Symbol !== 'undefined' &&
+      'undefined' != typeof Symbol &&
         Symbol.toStringTag &&
         Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
         Object.defineProperty(e, '__esModule', { value: !0 });
     }),
     (n.t = function(e, t) {
       if ((1 & t && (e = n(e)), 8 & t)) return e;
-      if (4 & t && typeof e === 'object' && e && e.__esModule) return e;
-      const r = Object.create(null);
+      if (4 & t && 'object' == typeof e && e && e.__esModule) return e;
+      var r = Object.create(null);
       if (
         (n.r(r),
         Object.defineProperty(r, 'default', { enumerable: !0, value: e }),
-        2 & t && typeof e !== 'string')
-      ) {
- for (const o in e) {
-n.d(
+        2 & t && 'string' != typeof e)
+      )
+        for (var o in e)
+          n.d(
             r,
             o,
             function(t) {
               return e[t];
             }.bind(null, o)
           );
-}
-}
       return r;
     }),
     (n.n = function(e) {
-      const t =
+      var t =
         e && e.__esModule
           ? function() {
               return e.default;
@@ -60,16 +58,16 @@ n.d(
   },
   function(e, t, n) {
     'use strict';
-    const r = function(e) {};
+    var r = function(e) {};
     e.exports = function(e, t, n, o, i, a, s, u) {
       if ((r(t), !e)) {
-        let l;
-        if (void 0 === t) {
- l = new Error(
+        var l;
+        if (void 0 === t)
+          l = new Error(
             'Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.'
           );
-} else {
-          let c = [n, o, i, a, s, u],
+        else {
+          var c = [n, o, i, a, s, u],
             p = 0;
           (l = new Error(
             t.replace(/%s/g, function() {
@@ -86,7 +84,7 @@ n.d(
   },
   function(e, t, n) {
     'use strict';
-    const r = n(11);
+    var r = n(11);
     e.exports = r;
   },
   function(e, t, n) {
@@ -102,17 +100,18 @@ n.d(
           r = 0;
         r < t;
         r++
-      ) { n += '&args[]=' + encodeURIComponent(arguments[r + 1]); }
+      )
+        n += '&args[]=' + encodeURIComponent(arguments[r + 1]);
       n +=
         ' for the full message or use the non-minified dev environment for full errors and additional helpful warnings.';
-      const o = new Error(n);
+      var o = new Error(n);
       throw ((o.name = 'Invariant Violation'), (o.framesToPop = 1), o);
     };
   },
   function(e, t, n) {
     'use strict';
     n.r(t),
-      (function(e) {
+      function(e) {
         n.d(t, 'css', function() {
           return x;
         }),
@@ -134,7 +133,7 @@ n.d(
           n.d(t, 'StyleSheetManager', function() {
             return W;
           });
-        let r = n(38),
+        var r = n(38),
           o = n.n(r),
           i = n(102),
           a = n.n(i),
@@ -145,7 +144,7 @@ n.d(
           p = n(103),
           f = n.n(p),
           d = /([A-Z])/g;
-        let h = function(e) {
+        var h = function(e) {
             return e.replace(d, '-$1').toLowerCase();
           },
           m = /^ms-/;
@@ -155,27 +154,27 @@ n.d(
           },
           g = function e(t, n) {
             return t.reduce(function(t, r) {
-              return void 0 === r || r === null || !1 === r || r === ''
+              return void 0 === r || null === r || !1 === r || '' === r
                 ? t
                 : Array.isArray(r)
                   ? [].concat(t, e(r, n))
                   : r.hasOwnProperty('styledComponentId')
                     ? [].concat(t, ['.' + r.styledComponentId])
-                    : typeof r === 'function'
+                    : 'function' == typeof r
                       ? n
                         ? t.concat.apply(t, e([r(n)], n))
                         : t.concat(r)
                       : t.concat(
                           o()(r)
                             ? (function e(t, n) {
-                                const r = Object.keys(t)
+                                var r = Object.keys(t)
                                   .filter(function(e) {
-                                    const n = t[e];
+                                    var n = t[e];
                                     return (
                                       void 0 !== n &&
-                                      n !== null &&
+                                      null !== n &&
                                       !1 !== n &&
-                                      n !== ''
+                                      '' !== n
                                     );
                                   })
                                   .map(function(n) {
@@ -199,7 +198,7 @@ n.d(
             semicolon: !0
           }),
           w = function(e, t, n) {
-            const r = e.join('').replace(/^\s*\/\/.*$/gm, '');
+            var r = e.join('').replace(/^\s*\/\/.*$/gm, '');
             return b(
               n || !t ? '' : t,
               t && n ? n + ' ' + t + ' { ' + r + ' }' : r
@@ -208,7 +207,7 @@ n.d(
           _ = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
           C = _.length,
           O = function(e) {
-            let t = '',
+            var t = '',
               n = void 0;
             for (n = e; n > C; n = Math.floor(n / C)) t = _[n % C] + t;
             return _[n % C] + t;
@@ -218,7 +217,8 @@ n.d(
               var t = arguments.length, n = Array(t > 1 ? t - 1 : 0), r = 1;
               r < t;
               r++
-            ) { n[r - 1] = arguments[r]; }
+            )
+              n[r - 1] = arguments[r];
             return g(
               (function(e, t) {
                 return t.reduce(
@@ -232,14 +232,14 @@ n.d(
           },
           E = /^[^\S\n]*?\/\* sc-component-id:\s+(\S+)\s+\*\//gm,
           k = function(e) {
-            let t = '' + (e || ''),
+            var t = '' + (e || ''),
               n = [];
             return (
               t.replace(E, function(e, t, r) {
                 return n.push({ componentId: t, matchIndex: r }), e;
               }),
               n.map(function(e, r) {
-                let o = e.componentId,
+                var o = e.componentId,
                   i = e.matchIndex,
                   a = n[r + 1];
                 return {
@@ -253,12 +253,13 @@ n.d(
             return n.nc;
           },
           S = function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           },
           P = (function() {
             function e(e, t) {
-              for (let n = 0; n < t.length; n++) {
-                const r = t[n];
+              for (var n = 0; n < t.length; n++) {
+                var r = t[n];
                 (r.enumerable = r.enumerable || !1),
                   (r.configurable = !0),
                   'value' in r && (r.writable = !0),
@@ -272,19 +273,19 @@ n.d(
           A =
             Object.assign ||
             function(e) {
-              for (let t = 1; t < arguments.length; t++) {
-                const n = arguments[t];
-                for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+              for (var t = 1; t < arguments.length; t++) {
+                var n = arguments[t];
+                for (var r in n)
+                  Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
               }
               return e;
             },
           I = function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -299,31 +300,29 @@ throw new TypeError(
                   : (e.__proto__ = t));
           },
           j = function(e, t) {
-            const n = {};
-            for (const r in e) {
- t.indexOf(r) >= 0 ||
+            var n = {};
+            for (var r in e)
+              t.indexOf(r) >= 0 ||
                 (Object.prototype.hasOwnProperty.call(e, r) && (n[r] = e[r]));
-}
             return n;
           },
           M = function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           },
           R = (function() {
             function e(t, n) {
-              const r =
+              var r =
                 arguments.length > 2 && void 0 !== arguments[2]
                   ? arguments[2]
                   : '';
               S(this, e), (this.el = t), (this.isLocal = n), (this.ready = !1);
-              const o = k(r);
+              var o = k(r);
               (this.size = o.length),
                 (this.components = o.reduce(function(e, t) {
                   return (e[t.componentId] = t), e;
@@ -335,7 +334,7 @@ throw new ReferenceError(
               }),
               (e.prototype.addComponent = function(e) {
                 this.ready || this.replaceElement();
-                const t = {
+                var t = {
                   componentId: e,
                   textNode: document.createTextNode('')
                 };
@@ -345,19 +344,19 @@ throw new ReferenceError(
               }),
               (e.prototype.inject = function(e, t, n) {
                 this.ready || this.replaceElement();
-                const r = this.components[e];
+                var r = this.components[e];
                 if (
-                  (r.textNode.data === '' &&
+                  ('' === r.textNode.data &&
                     r.textNode.appendData(
                       '\n/* sc-component-id: ' + e + ' */\n'
                     ),
                   r.textNode.appendData(t),
                   n)
                 ) {
-                  const o = this.el.getAttribute(D);
+                  var o = this.el.getAttribute(D);
                   this.el.setAttribute(D, o ? o + ' ' + n : n);
                 }
-                const i = T();
+                var i = T();
                 i && this.el.setAttribute('nonce', i);
               }),
               (e.prototype.toHTML = function() {
@@ -370,22 +369,21 @@ throw new ReferenceError(
                 throw new Error('BrowserTag cannot be cloned!');
               }),
               (e.prototype.replaceElement = function() {
-                const e = this;
-                if (((this.ready = !0), this.size !== 0)) {
-                  const t = this.el.cloneNode();
+                var e = this;
+                if (((this.ready = !0), 0 !== this.size)) {
+                  var t = this.el.cloneNode();
                   if (
                     (t.appendChild(document.createTextNode('\n')),
                     Object.keys(this.components).forEach(function(n) {
-                      const r = e.components[n];
+                      var r = e.components[n];
                       (r.textNode = document.createTextNode(r.cssFromDOM)),
                         t.appendChild(r.textNode);
                     }),
                     !this.el.parentNode)
-                  ) {
-throw new Error(
+                  )
+                    throw new Error(
                       "Trying to replace an element that wasn't mounted!"
                     );
-}
                   this.el.parentNode.replaceChild(t, this.el), (this.el = t);
                 }
               }),
@@ -403,9 +401,9 @@ throw new Error(
                 o < r;
                 o += 1
               ) {
-                const i = n[o];
-                e.push(new R(i, i.getAttribute(L) === 'true', i.innerHTML));
-                const a = i.getAttribute(D);
+                var i = n[o];
+                e.push(new R(i, 'true' === i.getAttribute(L), i.innerHTML));
+                var a = i.getAttribute(D);
                 a &&
                   a
                     .trim()
@@ -416,13 +414,14 @@ throw new Error(
               }
               return new V(
                 function(e) {
-                  const t = document.createElement('style');
+                  var t = document.createElement('style');
                   if (
                     ((t.type = 'text/css'),
                     t.setAttribute(D, ''),
                     t.setAttribute(L, e ? 'true' : 'false'),
                     !document.head)
-                  ) { throw new Error('Missing document <head>'); }
+                  )
+                    throw new Error('Missing document <head>');
                   return document.head.appendChild(t), new R(t, e);
                 },
                 e,
@@ -437,7 +436,7 @@ throw new Error(
           B = [],
           V = (function() {
             function e(t) {
-              let n =
+              var n =
                   arguments.length > 1 && void 0 !== arguments[1]
                     ? arguments[1]
                     : [],
@@ -448,7 +447,7 @@ throw new Error(
               S(this, e),
                 (this.hashes = {}),
                 (this.deferredInjections = {}),
-                (this.stylesCacheable = typeof document !== 'undefined'),
+                (this.stylesCacheable = 'undefined' != typeof document),
                 (this.tagConstructor = t),
                 (this.tags = n),
                 (this.names = r),
@@ -456,7 +455,7 @@ throw new Error(
             }
             return (
               (e.prototype.constructComponentTagMap = function() {
-                const e = this;
+                var e = this;
                 (this.componentTags = {}),
                   this.tags.forEach(function(t) {
                     Object.keys(t.components).forEach(function(n) {
@@ -486,7 +485,7 @@ throw new Error(
                   B.forEach(function(r) {
                     r.inject(e, t, n);
                   });
-                let i = this.getOrCreateTag(e, t),
+                var i = this.getOrCreateTag(e, t),
                   a = this.deferredInjections[e];
                 a && (i.inject(e, a), delete this.deferredInjections[e]),
                   i.inject(e, n, o),
@@ -505,9 +504,9 @@ throw new Error(
                 });
               }),
               (e.prototype.getOrCreateTag = function(e, t) {
-                const n = this.componentTags[e];
+                var n = this.componentTags[e];
                 if (n) return n;
-                let r = this.tags[this.tags.length - 1],
+                var r = this.tags[this.tags.length - 1],
                   o =
                     !r || r.isFull() || r.isLocal !== t
                       ? this.createNewTag(t)
@@ -515,7 +514,7 @@ throw new Error(
                 return (this.componentTags[e] = o), o.addComponent(e), o;
               }),
               (e.prototype.createNewTag = function(e) {
-                const t = this.tagConstructor(e);
+                var t = this.tagConstructor(e);
                 return this.tags.push(t), t;
               }),
               (e.reset = function(t) {
@@ -524,13 +523,13 @@ throw new Error(
               (e.create = function() {
                 return ((arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : typeof document === 'undefined')
+                : 'undefined' == typeof document)
                   ? z
                   : N
                 ).create();
               }),
               (e.clone = function(t) {
-                const n = new e(
+                var n = new e(
                   t.tagConstructor,
                   t.tags.map(function(e) {
                     return e.clone();
@@ -562,7 +561,7 @@ throw new Error(
             return (
               I(t, e),
               (t.prototype.getChildContext = function() {
-                let e;
+                var e;
                 return ((e = {})[U] = this.props.sheet), e;
               }),
               (t.prototype.render = function() {
@@ -597,19 +596,19 @@ throw new Error(
                   (this.size += 1);
               }),
               (e.prototype.concatenateCSS = function() {
-                const e = this;
+                var e = this;
                 return Object.keys(this.components).reduce(function(t, n) {
                   return t + e.components[n].css;
                 }, '');
               }),
               (e.prototype.inject = function(e, t, n) {
-                const r = this.components[e];
-                r.css === '' && (r.css = '/* sc-component-id: ' + e + ' */\n'),
+                var r = this.components[e];
+                '' === r.css && (r.css = '/* sc-component-id: ' + e + ' */\n'),
                   (r.css += t.replace(/\n*$/, '\n')),
                   n && this.names.push(n);
               }),
               (e.prototype.toHTML = function() {
-                let e = [
+                var e = [
                     'type="text/css"',
                     D + '="' + this.names.join(' ') + '"',
                     L + '="' + (this.isLocal ? 'true' : 'false') + '"'
@@ -625,7 +624,7 @@ throw new Error(
                 );
               }),
               (e.prototype.toReactElement = function(e) {
-                let t,
+                var t,
                   n = (((t = {})[D] = this.names.join(' ')),
                   (t[L] = this.isLocal.toString()),
                   t),
@@ -641,7 +640,7 @@ throw new Error(
                 );
               }),
               (e.prototype.clone = function() {
-                let t = this,
+                var t = this,
                   n = new e(this.isLocal);
                 return (
                   (n.names = [].concat(this.names)),
@@ -665,11 +664,10 @@ throw new Error(
             }
             return (
               (e.prototype.collectStyles = function(e) {
-                if (this.closed) {
-throw new Error(
+                if (this.closed)
+                  throw new Error(
                     "Can't collect styles once you've called getStyleTags!"
                   );
-}
                 return u.a.createElement(W, { sheet: this.instance }, e);
               }),
               (e.prototype.getStyleTags = function() {
@@ -701,18 +699,18 @@ throw new Error(
             )
           );
         function Y(e) {
-          return typeof e === 'string';
+          return 'string' == typeof e;
         }
         function K(e) {
           return (
-            typeof e === 'function' && typeof e.styledComponentId === 'string'
+            'function' == typeof e && 'string' == typeof e.styledComponentId
           );
         }
         function X(e) {
           return e.displayName || e.name || 'Component';
         }
-        let Q = function(e, t, n) {
-            const r = n && e.theme === n.theme;
+        var Q = function(e, t, n) {
+            var r = n && e.theme === n.theme;
             return e.theme && !r ? e.theme : t;
           },
           J = /[[\].#*$><+~=|^:(),"'`-]+/g,
@@ -720,7 +718,7 @@ throw new Error(
         function $(e) {
           return e.replace(J, '-').replace(Z, '');
         }
-        let ee,
+        var ee,
           te,
           ne = '__styled-components__',
           re = ne + 'next__',
@@ -732,7 +730,7 @@ throw new Error(
         var ie = (function(e) {
           function t() {
             S(this, t);
-            const n = M(this, e.call(this));
+            var n = M(this, e.call(this));
             return (
               (n.unsubscribeToOuterId = -1),
               (n.getTheme = n.getTheme.bind(n)),
@@ -742,25 +740,25 @@ throw new Error(
           return (
             I(t, e),
             (t.prototype.componentWillMount = function() {
-              let e = this,
+              var e = this,
                 t = this.context[re];
               void 0 !== t &&
                 (this.unsubscribeToOuterId = t.subscribe(function(t) {
                   e.outerTheme = t;
                 })),
                 (this.broadcast = (function(e) {
-                  let t = {},
+                  var t = {},
                     n = 0,
                     r = e;
                   return {
                     publish: function(e) {
-                      for (const n in ((r = e), t)) {
-                        const o = t[n];
+                      for (var n in ((r = e), t)) {
+                        var o = t[n];
                         void 0 !== o && o(r);
                       }
                     },
                     subscribe: function(e) {
-                      const o = n;
+                      var o = n;
                       return (t[o] = e), (n += 1), e(r), o;
                     },
                     unsubscribe: function(e) {
@@ -770,7 +768,7 @@ throw new Error(
                 })(this.getTheme()));
             }),
             (t.prototype.getChildContext = function() {
-              let e,
+              var e,
                 t = this;
               return A(
                 {},
@@ -781,7 +779,7 @@ throw new Error(
                   unsubscribe: this.broadcast.unsubscribe
                 }),
                 (e[ne] = function(e) {
-                  const n = t.broadcast.subscribe(e);
+                  var n = t.broadcast.subscribe(e);
                   return function() {
                     return t.broadcast.unsubscribe(n);
                   };
@@ -794,21 +792,21 @@ throw new Error(
                 this.broadcast.publish(this.getTheme(e.theme));
             }),
             (t.prototype.componentWillUnmount = function() {
-              this.unsubscribeToOuterId !== -1 &&
+              -1 !== this.unsubscribeToOuterId &&
                 this.context[re].unsubscribe(this.unsubscribeToOuterId);
             }),
             (t.prototype.getTheme = function(e) {
-              const t = e || this.props.theme;
+              var t = e || this.props.theme;
               if (
                 (function(e) {
-                  return typeof e === 'function';
+                  return 'function' == typeof e;
                 })(t)
-              ) { return t(this.outerTheme); }
-              if (!o()(t)) {
-throw new Error(
+              )
+                return t(this.outerTheme);
+              if (!o()(t))
+                throw new Error(
                   '[ThemeProvider] Please make your theme prop a plain object'
                 );
-}
               return A({}, this.outerTheme, t);
             }),
             (t.prototype.render = function() {
@@ -823,14 +821,14 @@ throw new Error(
         (ee[re] = oe),
         ee)),
           (ie.contextTypes = (((te = {})[re] = oe), te));
-        const ae = {};
+        var ae = {};
         function se(e, t) {
           for (
             var n = 1540483477, r = t ^ e.length, o = e.length, i = 0;
             o >= 4;
 
           ) {
-            let a = ue(e, i);
+            var a = ue(e, i);
             (a = ce(a, n)),
               (a = ce((a ^= a >>> 24), n)),
               (r = ce(r, n)),
@@ -869,16 +867,15 @@ throw new Error(
           );
         }
         var pe = function e(t, n) {
-            for (let r = 0; r < t.length; r += 1) {
-              const o = t[r];
+            for (var r = 0; r < t.length; r += 1) {
+              var o = t[r];
               if (Array.isArray(o) && !e(o)) return !1;
-              if (typeof o === 'function' && !K(o)) return !1;
+              if ('function' == typeof o && !K(o)) return !1;
             }
-            if (void 0 !== n) {
-for (const i in n) {
-                if (typeof n[i] === 'function') return !1;
+            if (void 0 !== n)
+              for (var i in n) {
+                if ('function' == typeof n[i]) return !1;
               }
-}
             return !0;
           },
           fe = void 0 !== e && e.hot && !1,
@@ -1018,21 +1015,22 @@ for (const i in n) {
             'tspan'
           ],
           he = function(e) {
-            let t,
+            var t,
               n = e.displayName || e.name || 'Component',
               r =
                 K(e) ||
-                (typeof e === 'function' &&
+                ('function' == typeof e &&
                   !(e.prototype && 'isReactComponent' in e.prototype)),
               o = (function(t) {
                 function n() {
-                  let e, r;
+                  var e, r;
                   S(this, n);
                   for (
                     var o = arguments.length, i = Array(o), a = 0;
                     a < o;
                     a++
-                  ) { i[a] = arguments[a]; }
+                  )
+                    i[a] = arguments[a];
                   return (
                     (e = r = M(this, t.call.apply(t, [this].concat(i)))),
                     (r.state = {}),
@@ -1043,30 +1041,32 @@ for (const i in n) {
                 return (
                   I(n, t),
                   (n.prototype.componentWillMount = function() {
-                    let e = this,
+                    var e = this,
                       t = this.constructor.defaultProps,
                       n = this.context[re],
                       r = Q(this.props, void 0, t);
-                    if (void 0 === n && void 0 !== r) { this.setState({ theme: r }); } else {
-                      const o = n.subscribe;
+                    if (void 0 === n && void 0 !== r)
+                      this.setState({ theme: r });
+                    else {
+                      var o = n.subscribe;
                       this.unsubscribeId = o(function(n) {
-                        const r = Q(e.props, n, t);
+                        var r = Q(e.props, n, t);
                         e.setState({ theme: r });
                       });
                     }
                   }),
                   (n.prototype.componentWillReceiveProps = function(e) {
-                    const t = this.constructor.defaultProps;
+                    var t = this.constructor.defaultProps;
                     this.setState(function(n) {
                       return { theme: Q(e, n.theme, t) };
                     });
                   }),
                   (n.prototype.componentWillUnmount = function() {
-                    this.unsubscribeId !== -1 &&
+                    -1 !== this.unsubscribeId &&
                       this.context[re].unsubscribe(this.unsubscribeId);
                   }),
                   (n.prototype.render = function() {
-                    let t = this.props.innerRef,
+                    var t = this.props.innerRef,
                       n = this.state.theme;
                     return u.a.createElement(
                       e,
@@ -1098,19 +1098,21 @@ for (const i in n) {
               }
               return (
                 (r.prototype.generateAndInjectStyles = function(r, o) {
-                  let i = this.isStatic,
+                  var i = this.isStatic,
                     a = this.lastClassName;
                   if (i && void 0 !== a) return a;
-                  let s = t(this.rules, r),
+                  var s = t(this.rules, r),
                     u = se(this.componentId + s.join('')),
                     l = o.getName(u);
-                  if (void 0 !== l) { return o.stylesCacheable && (this.lastClassName = l), l; }
-                  const c = e(u);
+                  if (void 0 !== l)
+                    return o.stylesCacheable && (this.lastClassName = l), l;
+                  var c = e(u);
                   if (
                     (o.stylesCacheable && (this.lastClassName = l),
                     o.alreadyInjected(u, c))
-                  ) { return c; }
-                  const p = '\n' + n(s, '.' + c);
+                  )
+                    return c;
+                  var p = '\n' + n(s, '.' + c);
                   return o.inject(this.componentId, !0, p, u, c), c;
                 }),
                 (r.generateName = function(t) {
@@ -1122,7 +1124,7 @@ for (const i in n) {
           })(O, g, w),
           ye = (function(e) {
             return function t(n, r) {
-              let o =
+              var o =
                   arguments.length > 2 && void 0 !== arguments[2]
                     ? arguments[2]
                     : {},
@@ -1133,7 +1135,8 @@ for (const i in n) {
                       s = 1;
                     s < i;
                     s++
-                  ) { a[s - 1] = arguments[s]; }
+                  )
+                    a[s - 1] = arguments[s];
                   return n(r, o, e.apply(void 0, [t].concat(a)));
                 };
               return (
@@ -1148,16 +1151,17 @@ for (const i in n) {
             };
           })(x),
           ve = (function(e, t) {
-            let n = {},
+            var n = {},
               r = (function(e) {
                 function t() {
-                  let n, r;
+                  var n, r;
                   S(this, t);
                   for (
                     var o = arguments.length, i = Array(o), a = 0;
                     a < o;
                     a++
-                  ) { i[a] = arguments[a]; }
+                  )
+                    i[a] = arguments[a];
                   return (
                     (n = r = M(this, e.call.apply(e, [this].concat(i)))),
                     (r.attrs = {}),
@@ -1169,54 +1173,55 @@ for (const i in n) {
                 return (
                   I(t, e),
                   (t.prototype.unsubscribeFromContext = function() {
-                    this.unsubscribeId !== -1 &&
+                    -1 !== this.unsubscribeId &&
                       this.context[re].unsubscribe(this.unsubscribeId);
                   }),
                   (t.prototype.buildExecutionContext = function(e, t) {
-                    let n = this.constructor.attrs,
+                    var n = this.constructor.attrs,
                       r = A({}, t, { theme: e });
                     return void 0 === n
                       ? r
                       : ((this.attrs = Object.keys(n).reduce(function(e, t) {
-                          const o = n[t];
-                          return (e[t] = typeof o === 'function' ? o(r) : o), e;
+                          var o = n[t];
+                          return (e[t] = 'function' == typeof o ? o(r) : o), e;
                         }, {})),
                         A({}, r, this.attrs));
                   }),
                   (t.prototype.generateAndInjectStyles = function(e, t) {
-                    let n = this.constructor,
+                    var n = this.constructor,
                       r = n.attrs,
                       o = n.componentStyle,
                       i = (n.warnTooManyClasses, this.context[U] || V.instance);
-                    if (o.isStatic && void 0 === r) { return o.generateAndInjectStyles(ae, i); }
-                    const a = this.buildExecutionContext(e, t);
+                    if (o.isStatic && void 0 === r)
+                      return o.generateAndInjectStyles(ae, i);
+                    var a = this.buildExecutionContext(e, t);
                     return o.generateAndInjectStyles(a, i);
                   }),
                   (t.prototype.componentWillMount = function() {
-                    let e = this,
+                    var e = this,
                       t = this.constructor.componentStyle,
                       n = this.context[re];
                     if (t.isStatic) {
-                      const r = this.generateAndInjectStyles(ae, this.props);
+                      var r = this.generateAndInjectStyles(ae, this.props);
                       this.setState({ generatedClassName: r });
                     } else if (void 0 !== n) {
-                      const o = n.subscribe;
+                      var o = n.subscribe;
                       this.unsubscribeId = o(function(t) {
-                        let n = Q(e.props, t, e.constructor.defaultProps),
+                        var n = Q(e.props, t, e.constructor.defaultProps),
                           r = e.generateAndInjectStyles(n, e.props);
                         e.setState({ theme: n, generatedClassName: r });
                       });
                     } else {
-                      let i = this.props.theme || {},
+                      var i = this.props.theme || {},
                         a = this.generateAndInjectStyles(i, this.props);
                       this.setState({ theme: i, generatedClassName: a });
                     }
                   }),
                   (t.prototype.componentWillReceiveProps = function(e) {
-                    const t = this;
+                    var t = this;
                     this.constructor.componentStyle.isStatic ||
                       this.setState(function(n) {
-                        const r = Q(e, n.theme, t.constructor.defaultProps);
+                        var r = Q(e, n.theme, t.constructor.defaultProps);
                         return {
                           theme: r,
                           generatedClassName: t.generateAndInjectStyles(r, e)
@@ -1227,7 +1232,7 @@ for (const i in n) {
                     this.unsubscribeFromContext();
                   }),
                   (t.prototype.render = function() {
-                    let e = this,
+                    var e = this,
                       t = this.props.innerRef,
                       n = this.state.generatedClassName,
                       r = this.constructor,
@@ -1239,10 +1244,10 @@ for (const i in n) {
                         .join(' '),
                       l = A({}, this.attrs, { className: u });
                     K(i) ? (l.innerRef = t) : (l.ref = t);
-                    const c = Object.keys(this.props).reduce(function(t, n) {
+                    var c = Object.keys(this.props).reduce(function(t, n) {
                       return (
-                        n === 'innerRef' ||
-                          n === 'className' ||
+                        'innerRef' === n ||
+                          'className' === n ||
                           (a &&
                             !(function(e) {
                               return q.test(e) || G(e.toLowerCase());
@@ -1257,7 +1262,7 @@ for (const i in n) {
                 );
               })(s.Component);
             return function o(i, a, s) {
-              let u,
+              var u,
                 l = a.displayName,
                 p =
                   void 0 === l
@@ -1269,11 +1274,11 @@ for (const i in n) {
                 d =
                   void 0 === f
                     ? (function(t, r) {
-                        let o = typeof t !== 'string' ? 'sc' : $(t),
+                        var o = 'string' != typeof t ? 'sc' : $(t),
                           i = void 0;
                         if (t) i = o + '-' + e.generateName(o);
                         else {
-                          const a = (n[o] || 0) + 1;
+                          var a = (n[o] || 0) + 1;
                           (n[o] = a), (i = o + '-' + e.generateName(o + a));
                         }
                         return void 0 !== r ? r + '-' + i : i;
@@ -1295,7 +1300,7 @@ for (const i in n) {
                   return (
                     I(n, e),
                     (n.withComponent = function(e) {
-                      let t = a.componentId,
+                      var t = a.componentId,
                         r = j(a, ['componentId']),
                         i = t && t + '-' + (Y(e) ? e : $(X(e))),
                         u = A({}, r, { componentId: i, ParentComponent: n });
@@ -1305,7 +1310,7 @@ for (const i in n) {
                       {
                         key: 'extend',
                         get: function() {
-                          let e = a.rules,
+                          var e = a.rules,
                             r = a.componentId,
                             u = j(a, ['rules', 'componentId']),
                             l = void 0 === e ? s : e.concat(s),
@@ -1341,8 +1346,9 @@ for (const i in n) {
                 var o = arguments.length, i = Array(o > 1 ? o - 1 : 0), a = 1;
                 a < o;
                 a++
-              ) { i[a - 1] = arguments[a]; }
-              let s = n.apply(void 0, [r].concat(i)),
+              )
+                i[a - 1] = arguments[a];
+              var s = n.apply(void 0, [r].concat(i)),
                 u = se(
                   (function(e) {
                     return e.replace(/\s|\\n/g, '');
@@ -1350,9 +1356,9 @@ for (const i in n) {
                 ),
                 l = V.instance.getName(u);
               if (l) return l;
-              const c = e(u);
+              var c = e(u);
               if (V.instance.alreadyInjected(u, c)) return c;
-              const p = t(s, c, '@keyframes');
+              var p = t(s, c, '@keyframes');
               return V.instance.inject('sc-keyframes-' + c, !0, p, u, c), c;
             };
           })(O, w, x),
@@ -1362,15 +1368,16 @@ for (const i in n) {
                 var r = arguments.length, o = Array(r > 1 ? r - 1 : 0), i = 1;
                 i < r;
                 i++
-              ) { o[i - 1] = arguments[i]; }
-              let a = t.apply(void 0, [n].concat(o)),
+              )
+                o[i - 1] = arguments[i];
+              var a = t.apply(void 0, [n].concat(o)),
                 s = 'sc-global-' + se(JSON.stringify(a));
               V.instance.hasInjectedComponent(s) ||
                 V.instance.inject(s, !1, e(a));
             };
           })(w, x),
           we = (function(e, t) {
-            const n = function(n) {
+            var n = function(n) {
               return t(e, n);
             };
             return (
@@ -1381,11 +1388,11 @@ for (const i in n) {
             );
           })(ve, ye);
         t.default = we;
-      }.call(this, n(92)(e)));
+      }.call(this, n(92)(e));
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(19),
       i = n(67),
       a = (n(1), o.ID_ATTRIBUTE_NAME),
@@ -1397,66 +1404,66 @@ for (const i in n) {
           .slice(2);
     function l(e, t) {
       return (
-        (e.nodeType === 1 && e.getAttribute(a) === String(t)) ||
-        (e.nodeType === 8 && e.nodeValue === ' react-text: ' + t + ' ') ||
-        (e.nodeType === 8 && e.nodeValue === ' react-empty: ' + t + ' ')
+        (1 === e.nodeType && e.getAttribute(a) === String(t)) ||
+        (8 === e.nodeType && e.nodeValue === ' react-text: ' + t + ' ') ||
+        (8 === e.nodeType && e.nodeValue === ' react-empty: ' + t + ' ')
       );
     }
     function c(e) {
-      for (var t; (t = e._renderedComponent);) e = t;
+      for (var t; (t = e._renderedComponent); ) e = t;
       return e;
     }
     function p(e, t) {
-      const n = c(e);
+      var n = c(e);
       (n._hostNode = t), (t[u] = n);
     }
     function f(e, t) {
       if (!(e._flags & s.hasCachedChildNodes)) {
-        let n = e._renderedChildren,
+        var n = e._renderedChildren,
           o = t.firstChild;
-        e: for (const i in n) {
-if (n.hasOwnProperty(i)) {
-            let a = n[i],
+        e: for (var i in n)
+          if (n.hasOwnProperty(i)) {
+            var a = n[i],
               u = c(a)._domID;
-            if (u !== 0) {
-              for (; o !== null; o = o.nextSibling) {
-if (l(o, u)) {
+            if (0 !== u) {
+              for (; null !== o; o = o.nextSibling)
+                if (l(o, u)) {
                   p(a, o);
                   continue e;
                 }
-}
               r('32', u);
             }
           }
-}
         e._flags |= s.hasCachedChildNodes;
       }
     }
     function d(e) {
       if (e[u]) return e[u];
-      for (var t, n, r = []; !e[u];) {
+      for (var t, n, r = []; !e[u]; ) {
         if ((r.push(e), !e.parentNode)) return null;
         e = e.parentNode;
       }
       for (; e && (n = e[u]); e = r.pop()) (t = n), r.length && f(n, e);
       return t;
     }
-    const h = {
+    var h = {
       getClosestInstanceFromNode: d,
       getInstanceFromNode: function(e) {
-        const t = d(e);
-        return t != null && t._hostNode === e ? t : null;
+        var t = d(e);
+        return null != t && t._hostNode === e ? t : null;
       },
       getNodeFromInstance: function(e) {
-        if ((void 0 === e._hostNode && r('33'), e._hostNode)) { return e._hostNode; }
-        for (var t = []; !e._hostNode;) { t.push(e), e._hostParent || r('34'), (e = e._hostParent); }
+        if ((void 0 === e._hostNode && r('33'), e._hostNode))
+          return e._hostNode;
+        for (var t = []; !e._hostNode; )
+          t.push(e), e._hostParent || r('34'), (e = e._hostParent);
         for (; t.length; e = t.pop()) f(e, e._hostNode);
         return e._hostNode;
       },
       precacheChildNodes: f,
       precacheNode: p,
       uncacheNode: function(e) {
-        const t = e._hostNode;
+        var t = e._hostNode;
         t && (delete t[u], (e._hostNode = null));
       }
     };
@@ -1468,30 +1475,33 @@ if (l(o, u)) {
 object-assign
 (c) Sindre Sorhus
 @license MIT
-*/ let r =
+*/ var r =
         Object.getOwnPropertySymbols,
       o = Object.prototype.hasOwnProperty,
       i = Object.prototype.propertyIsEnumerable;
     e.exports = (function() {
       try {
         if (!Object.assign) return !1;
-        const e = new String('abc');
-        if (((e[5] = 'de'), Object.getOwnPropertyNames(e)[0] === '5')) { return !1; }
-        for (var t = {}, n = 0; n < 10; n++) { t['_' + String.fromCharCode(n)] = n; }
+        var e = new String('abc');
+        if (((e[5] = 'de'), '5' === Object.getOwnPropertyNames(e)[0]))
+          return !1;
+        for (var t = {}, n = 0; n < 10; n++)
+          t['_' + String.fromCharCode(n)] = n;
         if (
+          '0123456789' !==
           Object.getOwnPropertyNames(t)
             .map(function(e) {
               return t[e];
             })
-            .join('') !==
-          '0123456789'
-        ) { return !1; }
-        const r = {};
+            .join('')
+        )
+          return !1;
+        var r = {};
         return (
           'abcdefghijklmnopqrst'.split('').forEach(function(e) {
             r[e] = e;
           }),
-          Object.keys(Object.assign({}, r)).join('') === 'abcdefghijklmnopqrst'
+          'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, r)).join('')
         );
       } catch (e) {
         return !1;
@@ -1503,21 +1513,22 @@ object-assign
             var n,
               a,
               s = (function(e) {
-                if (e === null || void 0 === e) {
-throw new TypeError(
+                if (null === e || void 0 === e)
+                  throw new TypeError(
                     'Object.assign cannot be called with null or undefined'
                   );
-}
                 return Object(e);
               })(e),
               u = 1;
             u < arguments.length;
             u++
           ) {
-            for (const l in (n = Object(arguments[u]))) { o.call(n, l) && (s[l] = n[l]); }
+            for (var l in (n = Object(arguments[u])))
+              o.call(n, l) && (s[l] = n[l]);
             if (r) {
               a = r(n);
-              for (let c = 0; c < a.length; c++) { i.call(n, a[c]) && (s[a[c]] = n[a[c]]); }
+              for (var c = 0; c < a.length; c++)
+                i.call(n, a[c]) && (s[a[c]] = n[a[c]]);
             }
           }
           return s;
@@ -1550,14 +1561,14 @@ throw new TypeError(
   },
   function(e, t, n) {
     'use strict';
-    let r = !(
-        typeof window === 'undefined' ||
+    var r = !(
+        'undefined' == typeof window ||
         !window.document ||
         !window.document.createElement
       ),
       o = {
         canUseDOM: r,
-        canUseWorkers: typeof Worker !== 'undefined',
+        canUseWorkers: 'undefined' != typeof Worker,
         canUseEventListeners:
           r && !(!window.addEventListener && !window.attachEvent),
         canUseViewport: r && !!window.screen,
@@ -1568,7 +1579,7 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     n.r(t);
-    let r = n(0),
+    var r = n(0),
       o = n(2),
       i = n.n(o),
       a = i.a.shape({
@@ -1583,7 +1594,7 @@ throw new TypeError(
         getState: i.a.func.isRequired
       });
     function u() {
-      let e,
+      var e,
         t =
           arguments.length > 0 && void 0 !== arguments[0]
             ? arguments[0]
@@ -1592,15 +1603,15 @@ throw new TypeError(
         o = (function(e) {
           function o(n, r) {
             !(function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, o);
-            const i = (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+            var i = (function(e, t) {
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(this, e.call(this, n, r));
@@ -1608,12 +1619,11 @@ throw new ReferenceError(
           }
           return (
             (function(e, t) {
-              if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+              if ('function' != typeof t && null !== t)
+                throw new TypeError(
                   'Super expression must either be null or a function, not ' +
                     typeof t
                 );
-}
               (e.prototype = Object.create(t && t.prototype, {
                 constructor: {
                   value: e,
@@ -1628,7 +1638,7 @@ throw new TypeError(
                     : (e.__proto__ = t));
             })(o, e),
             (o.prototype.getChildContext = function() {
-              let e;
+              var e;
               return ((e = {})[t] = this[t]), (e[n] = null), e;
             }),
             (o.prototype.render = function() {
@@ -1646,17 +1656,18 @@ throw new TypeError(
         o
       );
     }
-    let l = u(),
+    var l = u(),
       c = n(99),
       p = n.n(c),
       f = n(37),
       d = n.n(f);
-    let h = null,
+    var h = null,
       m = { notify: function() {} };
-    let y = (function() {
+    var y = (function() {
         function e(t, n, r) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, e),
             (this.store = t),
             (this.parentSub = n),
@@ -1680,20 +1691,20 @@ throw new TypeError(
                 ? this.parentSub.addNestedSub(this.onStateChange)
                 : this.store.subscribe(this.onStateChange)),
               (this.listeners = (function() {
-                let e = [],
+                var e = [],
                   t = [];
                 return {
                   clear: function() {
                     (t = h), (e = h);
                   },
                   notify: function() {
-                    for (let n = (e = t), r = 0; r < n.length; r++) n[r]();
+                    for (var n = (e = t), r = 0; r < n.length; r++) n[r]();
                   },
                   get: function() {
                     return t;
                   },
                   subscribe: function(n) {
-                    let r = !0;
+                    var r = !0;
                     return (
                       t === e && (t = e.slice()),
                       t.push(n),
@@ -1722,17 +1733,18 @@ throw new TypeError(
       v =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         };
-    let g = 0,
+    var g = 0,
       b = {};
     function w() {}
     function _(e) {
-      let t,
+      var t,
         n,
         o = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
         i = o.getDisplayName,
@@ -1753,11 +1765,10 @@ throw new TypeError(
         x = o.withRef,
         E = void 0 !== x && x,
         k = (function(e, t) {
-          const n = {};
-          for (const r in e) {
-t.indexOf(r) >= 0 ||
+          var n = {};
+          for (var r in e)
+            t.indexOf(r) >= 0 ||
               (Object.prototype.hasOwnProperty.call(e, r) && (n[r] = e[r]));
-}
           return n;
         })(o, [
           'getDisplayName',
@@ -1773,11 +1784,11 @@ t.indexOf(r) >= 0 ||
         A = (((n = {})[T] = a), n);
       return function(t) {
         d()(
-          typeof t === 'function',
+          'function' == typeof t,
           'You must pass a component to the function returned by connect. Instead received ' +
             JSON.stringify(t)
         );
-        let n = t.displayName || t.name || 'Component',
+        var n = t.displayName || t.name || 'Component',
           o = u(n),
           i = v({}, k, {
             getDisplayName: u,
@@ -1793,15 +1804,15 @@ t.indexOf(r) >= 0 ||
           a = (function(n) {
             function a(e, t) {
               !(function(e, t) {
-                if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+                if (!(e instanceof t))
+                  throw new TypeError('Cannot call a class as a function');
               })(this, a);
-              const r = (function(e, t) {
-                if (!e) {
-throw new ReferenceError(
+              var r = (function(e, t) {
+                if (!e)
+                  throw new ReferenceError(
                     "this hasn't been initialised - super() hasn't been called"
                   );
-}
-                return !t || (typeof t !== 'object' && typeof t !== 'function')
+                return !t || ('object' != typeof t && 'function' != typeof t)
                   ? e
                   : t;
               })(this, n.call(this, e, t));
@@ -1831,12 +1842,11 @@ throw new ReferenceError(
             }
             return (
               (function(e, t) {
-                if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+                if ('function' != typeof t && null !== t)
+                  throw new TypeError(
                     'Super expression must either be null or a function, not ' +
                       typeof t
                   );
-}
                 (e.prototype = Object.create(t && t.prototype, {
                   constructor: {
                     value: e,
@@ -1851,7 +1861,7 @@ throw new TypeError(
                       : (e.__proto__ = t));
               })(a, n),
               (a.prototype.getChildContext = function() {
-                let e,
+                var e,
                   t = this.propsMode ? null : this.subscription;
                 return ((e = {})[T] = t || this.context[T]), e;
               }),
@@ -1890,12 +1900,12 @@ throw new TypeError(
                 this.wrappedInstance = e;
               }),
               (a.prototype.initSelector = function() {
-                const t = e(this.store.dispatch, i);
+                var t = e(this.store.dispatch, i);
                 (this.selector = (function(e, t) {
                   var n = {
                     run: function(r) {
                       try {
-                        const o = e(t.getState(), r);
+                        var o = e(t.getState(), r);
                         (o !== n.props || n.error) &&
                           ((n.shouldComponentUpdate = !0),
                           (n.props = o),
@@ -1911,7 +1921,7 @@ throw new TypeError(
               }),
               (a.prototype.initSubscription = function() {
                 if (_) {
-                  const e = (this.propsMode ? this.props : this.context)[T];
+                  var e = (this.propsMode ? this.props : this.context)[T];
                   (this.subscription = new y(
                     this.store,
                     e,
@@ -1938,8 +1948,9 @@ throw new TypeError(
                 );
               }),
               (a.prototype.addExtraProps = function(e) {
-                if (!(E || h || (this.propsMode && this.subscription))) { return e; }
-                const t = v({}, e);
+                if (!(E || h || (this.propsMode && this.subscription)))
+                  return e;
+                var t = v({}, e);
                 return (
                   E && (t.ref = this.setWrappedInstance),
                   h && (t[h] = this.renderCount++),
@@ -1950,7 +1961,7 @@ throw new TypeError(
                 );
               }),
               (a.prototype.render = function() {
-                const e = this.selector;
+                var e = this.selector;
                 if (((e.shouldComponentUpdate = !1), e.error)) throw e.error;
                 return Object(r.createElement)(t, this.addExtraProps(e.props));
               }),
@@ -1967,29 +1978,31 @@ throw new TypeError(
         );
       };
     }
-    const C = Object.prototype.hasOwnProperty;
+    var C = Object.prototype.hasOwnProperty;
     function O(e, t) {
-      return e === t ? e !== 0 || t !== 0 || 1 / e == 1 / t : e != e && t != t;
+      return e === t ? 0 !== e || 0 !== t || 1 / e == 1 / t : e != e && t != t;
     }
     function x(e, t) {
       if (O(e, t)) return !0;
       if (
-        typeof e !== 'object' ||
-        e === null ||
-        typeof t !== 'object' ||
-        t === null
-      ) { return !1; }
-      let n = Object.keys(e),
+        'object' != typeof e ||
+        null === e ||
+        'object' != typeof t ||
+        null === t
+      )
+        return !1;
+      var n = Object.keys(e),
         r = Object.keys(t);
       if (n.length !== r.length) return !1;
-      for (let o = 0; o < n.length; o++) { if (!C.call(t, n[o]) || !O(e[n[o]], t[n[o]])) return !1; }
+      for (var o = 0; o < n.length; o++)
+        if (!C.call(t, n[o]) || !O(e[n[o]], t[n[o]])) return !1;
       return !0;
     }
-    const E = n(36);
+    var E = n(36);
     n(22);
     function k(e) {
       return function(t, n) {
-        const r = e(t, n);
+        var r = e(t, n);
         function o() {
           return r;
         }
@@ -1997,9 +2010,9 @@ throw new TypeError(
       };
     }
     function T(e) {
-      return e.dependsOnOwnProps !== null && void 0 !== e.dependsOnOwnProps
+      return null !== e.dependsOnOwnProps && void 0 !== e.dependsOnOwnProps
         ? Boolean(e.dependsOnOwnProps)
-        : e.length !== 1;
+        : 1 !== e.length;
     }
     function S(e, t) {
       return function(t, n) {
@@ -2011,9 +2024,9 @@ throw new TypeError(
           (r.dependsOnOwnProps = !0),
           (r.mapToProps = function(t, n) {
             (r.mapToProps = e), (r.dependsOnOwnProps = T(e));
-            let o = r(t, n);
+            var o = r(t, n);
             return (
-              typeof o === 'function' &&
+              'function' == typeof o &&
                 ((r.mapToProps = o),
                 (r.dependsOnOwnProps = T(o)),
                 (o = r(t, n))),
@@ -2024,9 +2037,9 @@ throw new TypeError(
         );
       };
     }
-    const P = [
+    var P = [
       function(e) {
-        return typeof e === 'function' ? S(e) : void 0;
+        return 'function' == typeof e ? S(e) : void 0;
       },
       function(e) {
         return e
@@ -2036,16 +2049,16 @@ throw new TypeError(
             });
       },
       function(e) {
-        return e && typeof e === 'object'
+        return e && 'object' == typeof e
           ? k(function(t) {
               return Object(E.bindActionCreators)(e, t);
             })
           : void 0;
       }
     ];
-    let A = [
+    var A = [
         function(e) {
-          return typeof e === 'function' ? S(e) : void 0;
+          return 'function' == typeof e ? S(e) : void 0;
         },
         function(e) {
           return e
@@ -2058,27 +2071,28 @@ throw new TypeError(
       I =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         };
     function j(e, t, n) {
       return I({}, n, e, t);
     }
-    const M = [
+    var M = [
       function(e) {
-        return typeof e === 'function'
+        return 'function' == typeof e
           ? (function(e) {
               return function(t, n) {
                 n.displayName;
-                let r = n.pure,
+                var r = n.pure,
                   o = n.areMergedPropsEqual,
                   i = !1,
                   a = void 0;
                 return function(t, n, s) {
-                  const u = e(t, n, s);
+                  var u = e(t, n, s);
                   return i ? (r && o(u, a)) || (a = u) : ((i = !0), (a = u)), a;
                 };
               };
@@ -2099,7 +2113,7 @@ throw new TypeError(
       };
     }
     function N(e, t, n, r, o) {
-      let i = o.areStatesEqual,
+      var i = o.areStatesEqual,
         a = o.areOwnPropsEqual,
         s = o.areStatePropsEqual,
         u = !1,
@@ -2109,7 +2123,7 @@ throw new TypeError(
         f = void 0,
         d = void 0;
       function h(o, u) {
-        let h = !a(u, c),
+        var h = !a(u, c),
           m = !i(o, l);
         return (
           (l = o),
@@ -2124,7 +2138,7 @@ throw new TypeError(
                 (d = n(p, f, c)))
               : m
                 ? (function() {
-                    let t = e(l, c),
+                    var t = e(l, c),
                       r = !s(t, p);
                     return (p = t), r && (d = n(p, f, c)), d;
                   })()
@@ -2146,15 +2160,14 @@ throw new TypeError(
       };
     }
     function D(e, t) {
-      let n = t.initMapStateToProps,
+      var n = t.initMapStateToProps,
         r = t.initMapDispatchToProps,
         o = t.initMergeProps,
         i = (function(e, t) {
-          const n = {};
-          for (const r in e) {
- t.indexOf(r) >= 0 ||
+          var n = {};
+          for (var r in e)
+            t.indexOf(r) >= 0 ||
               (Object.prototype.hasOwnProperty.call(e, r) && (n[r] = e[r]));
-}
           return n;
         })(t, [
           'initMapStateToProps',
@@ -2166,18 +2179,19 @@ throw new TypeError(
         u = o(e, i);
       return (i.pure ? N : R)(a, s, u, e, i);
     }
-    const L =
+    var L =
       Object.assign ||
       function(e) {
-        for (let t = 1; t < arguments.length; t++) {
-          const n = arguments[t];
-          for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+        for (var t = 1; t < arguments.length; t++) {
+          var n = arguments[t];
+          for (var r in n)
+            Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
         }
         return e;
       };
     function U(e, t, n) {
-      for (let r = t.length - 1; r >= 0; r--) {
-        const o = t[r](e);
+      for (var r = t.length - 1; r >= 0; r--) {
+        var o = t[r](e);
         if (o) return o;
       }
       return function(t, r) {
@@ -2195,8 +2209,8 @@ throw new TypeError(
     function F(e, t) {
       return e === t;
     }
-    const B = (function() {
-      let e =
+    var B = (function() {
+      var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
         t = e.connectHOC,
         n = void 0 === t ? _ : t,
@@ -2209,7 +2223,7 @@ throw new TypeError(
         l = e.selectorFactory,
         c = void 0 === l ? D : l;
       return function(e, t, r) {
-        let i =
+        var i =
             arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : {},
           s = i.pure,
           l = void 0 === s || s,
@@ -2222,11 +2236,10 @@ throw new TypeError(
           v = i.areMergedPropsEqual,
           g = void 0 === v ? x : v,
           b = (function(e, t) {
-            const n = {};
-            for (const r in e) {
- t.indexOf(r) >= 0 ||
+            var n = {};
+            for (var r in e)
+              t.indexOf(r) >= 0 ||
                 (Object.prototype.hasOwnProperty.call(e, r) && (n[r] = e[r]));
-}
             return n;
           })(i, [
             'pure',
@@ -2281,7 +2294,7 @@ throw new TypeError(
         return e;
       };
     }
-    const o = function() {};
+    var o = function() {};
     (o.thatReturns = r),
       (o.thatReturnsFalse = r(!1)),
       (o.thatReturnsTrue = r(!0)),
@@ -2300,7 +2313,7 @@ throw new TypeError(
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(71),
       a = n(16),
@@ -2316,7 +2329,7 @@ throw new TypeError(
     function y() {
       (C.ReactReconcileTransaction && m) || r('123');
     }
-    const v = [
+    var v = [
       {
         initialize: function() {
           this.dirtyComponentsLength = p.length;
@@ -2346,14 +2359,14 @@ throw new TypeError(
       return e._mountOrder - t._mountOrder;
     }
     function w(e) {
-      const t = e.dirtyComponentsLength;
+      var t = e.dirtyComponentsLength;
       t !== p.length && r('124', t, p.length), p.sort(b), f++;
-      for (let n = 0; n < t; n++) {
+      for (var n = 0; n < t; n++) {
         var o,
           i = p[n],
           a = i._pendingCallbacks;
         if (((i._pendingCallbacks = null), s.logTopLevelRenders)) {
-          let l = i;
+          var l = i;
           i._currentElement.type.isReactTopLevelWrapper &&
             (l = i._renderedComponent),
             (o = 'React update: ' + l.getName()),
@@ -2363,9 +2376,9 @@ throw new TypeError(
           (u.performUpdateIfNecessary(i, e.reconcileTransaction, f),
           o && console.timeEnd(o),
           a)
-        ) {
-for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicInstance()); }
-}
+        )
+          for (var c = 0; c < a.length; c++)
+            e.callbackQueue.enqueue(a[c], i.getPublicInstance());
       }
     }
     o(g.prototype, l, {
@@ -2392,14 +2405,14 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
     }),
       a.addPoolingTo(g);
     var _ = function() {
-      for (; p.length || h;) {
+      for (; p.length || h; ) {
         if (p.length) {
-          const e = g.getPooled();
+          var e = g.getPooled();
           e.perform(w, null, e), g.release(e);
         }
         if (h) {
           h = !1;
-          const t = d;
+          var t = d;
           (d = i.getPooled()), t.notifyAll(), i.release(t);
         }
       }
@@ -2413,7 +2426,7 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
         y(),
           m.isBatchingUpdates
             ? (p.push(t),
-              t._updateBatchNumber == null && (t._updateBatchNumber = f + 1))
+              null == t._updateBatchNumber && (t._updateBatchNumber = f + 1))
             : m.batchedUpdates(e, t);
       },
       flushBatchedUpdates: _,
@@ -2423,8 +2436,8 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
         },
         injectBatchingStrategy: function(e) {
           e || r('127'),
-            typeof e.batchedUpdates !== 'function' && r('128'),
-            typeof e.isBatchingUpdates !== 'boolean' && r('129'),
+            'function' != typeof e.batchedUpdates && r('128'),
+            'boolean' != typeof e.isBatchingUpdates && r('129'),
             (m = e);
         }
       },
@@ -2445,7 +2458,7 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(16),
       i = n(11),
       a = (n(3),
@@ -2473,20 +2486,19 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
       };
     function u(e, t, n, r) {
       (this.dispatchConfig = e), (this._targetInst = t), (this.nativeEvent = n);
-      const o = this.constructor.Interface;
-      for (const a in o) {
- if (o.hasOwnProperty(a)) {
+      var o = this.constructor.Interface;
+      for (var a in o)
+        if (o.hasOwnProperty(a)) {
           0;
-          const s = o[a];
+          var s = o[a];
           s
             ? (this[a] = s(n))
-            : a === 'target'
+            : 'target' === a
               ? (this.target = r)
               : (this[a] = n[a]);
         }
-}
-      const u =
-        n.defaultPrevented != null ? n.defaultPrevented : !1 === n.returnValue;
+      var u =
+        null != n.defaultPrevented ? n.defaultPrevented : !1 === n.returnValue;
       return (
         (this.isDefaultPrevented = u ? i.thatReturnsTrue : i.thatReturnsFalse),
         (this.isPropagationStopped = i.thatReturnsFalse),
@@ -2496,19 +2508,19 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
     r(u.prototype, {
       preventDefault: function() {
         this.defaultPrevented = !0;
-        const e = this.nativeEvent;
+        var e = this.nativeEvent;
         e &&
           (e.preventDefault
             ? e.preventDefault()
-            : typeof e.returnValue !== 'unknown' && (e.returnValue = !1),
+            : 'unknown' != typeof e.returnValue && (e.returnValue = !1),
           (this.isDefaultPrevented = i.thatReturnsTrue));
       },
       stopPropagation: function() {
-        const e = this.nativeEvent;
+        var e = this.nativeEvent;
         e &&
           (e.stopPropagation
             ? e.stopPropagation()
-            : typeof e.cancelBubble !== 'unknown' && (e.cancelBubble = !0),
+            : 'unknown' != typeof e.cancelBubble && (e.cancelBubble = !0),
           (this.isPropagationStopped = i.thatReturnsTrue));
       },
       persist: function() {
@@ -2516,16 +2528,16 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
       },
       isPersistent: i.thatReturnsFalse,
       destructor: function() {
-        const e = this.constructor.Interface;
-        for (const t in e) this[t] = null;
-        for (let n = 0; n < a.length; n++) this[a[n]] = null;
+        var e = this.constructor.Interface;
+        for (var t in e) this[t] = null;
+        for (var n = 0; n < a.length; n++) this[a[n]] = null;
       }
     }),
       (u.Interface = s),
       (u.augmentClass = function(e, t) {
-        const n = function() {};
+        var n = function() {};
         n.prototype = this.prototype;
-        const i = new n();
+        var i = new n();
         r(i, e.prototype),
           (e.prototype = i),
           (e.prototype.constructor = e),
@@ -2538,11 +2550,11 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(1),
       function(e) {
         if (this.instancePool.length) {
-          const t = this.instancePool.pop();
+          var t = this.instancePool.pop();
           return this.call(t, e), t;
         }
         return new this(e);
@@ -2555,7 +2567,7 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
       a = o,
       s = {
         addPoolingTo: function(e, t) {
-          const n = e;
+          var n = e;
           return (
             (n.instancePool = []),
             (n.getPooled = t || a),
@@ -2567,21 +2579,21 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
         oneArgumentPooler: o,
         twoArgumentPooler: function(e, t) {
           if (this.instancePool.length) {
-            const n = this.instancePool.pop();
+            var n = this.instancePool.pop();
             return this.call(n, e, t), n;
           }
           return new this(e, t);
         },
         threeArgumentPooler: function(e, t, n) {
           if (this.instancePool.length) {
-            const r = this.instancePool.pop();
+            var r = this.instancePool.pop();
             return this.call(r, e, t, n), r;
           }
           return new this(e, t, n);
         },
         fourArgumentPooler: function(e, t, n, r) {
           if (this.instancePool.length) {
-            const o = this.instancePool.pop();
+            var o = this.instancePool.pop();
             return this.call(o, e, t, n, r), o;
           }
           return new this(e, t, n, r);
@@ -2591,7 +2603,7 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
   },
   function(e, t, n) {
     'use strict';
-    let r = n(39),
+    var r = n(39),
       o = n(60),
       i = n(106),
       a = n(111),
@@ -2631,7 +2643,7 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
   },
   function(e, t, n) {
     'use strict';
-    let r = n(39),
+    var r = n(39),
       o = n(14),
       i = (n(3), n(62), Object.prototype.hasOwnProperty),
       a = n(63),
@@ -2642,59 +2654,57 @@ for (let c = 0; c < a.length; c++) { e.callbackQueue.enqueue(a[c], i.getPublicIn
     function l(e) {
       return void 0 !== e.key;
     }
-    const c = function(e, t, n, r, o, i, s) {
+    var c = function(e, t, n, r, o, i, s) {
       return { $$typeof: a, type: e, key: t, ref: n, props: s, _owner: i };
     };
     (c.createElement = function(e, t, n) {
-      let r,
+      var r,
         a = {},
         p = null,
         f = null;
-      if (t != null) {
- for (r in (u(t) && (f = t.ref),
+      if (null != t)
+        for (r in (u(t) && (f = t.ref),
         l(t) && (p = '' + t.key),
         void 0 === t.__self ? null : t.__self,
         void 0 === t.__source ? null : t.__source,
-        t)) { i.call(t, r) && !s.hasOwnProperty(r) && (a[r] = t[r]); }
-}
-      const d = arguments.length - 2;
-      if (d === 1) a.children = n;
+        t))
+          i.call(t, r) && !s.hasOwnProperty(r) && (a[r] = t[r]);
+      var d = arguments.length - 2;
+      if (1 === d) a.children = n;
       else if (d > 1) {
         for (var h = Array(d), m = 0; m < d; m++) h[m] = arguments[m + 2];
         0, (a.children = h);
       }
       if (e && e.defaultProps) {
-        const y = e.defaultProps;
+        var y = e.defaultProps;
         for (r in y) void 0 === a[r] && (a[r] = y[r]);
       }
       return c(e, p, f, 0, 0, o.current, a);
     }),
       (c.createFactory = function(e) {
-        const t = c.createElement.bind(null, e);
+        var t = c.createElement.bind(null, e);
         return (t.type = e), t;
       }),
       (c.cloneAndReplaceKey = function(e, t) {
         return c(e.type, t, e.ref, e._self, e._source, e._owner, e.props);
       }),
       (c.cloneElement = function(e, t, n) {
-        let a,
+        var a,
           p,
           f = r({}, e.props),
           d = e.key,
           h = e.ref,
           m = (e._self, e._source, e._owner);
-        if (t != null) {
-for (a in (u(t) && ((h = t.ref), (m = o.current)),
+        if (null != t)
+          for (a in (u(t) && ((h = t.ref), (m = o.current)),
           l(t) && (d = '' + t.key),
           e.type && e.type.defaultProps && (p = e.type.defaultProps),
-          t)) {
-i.call(t, a) &&
+          t))
+            i.call(t, a) &&
               !s.hasOwnProperty(a) &&
               (void 0 === t[a] && void 0 !== p ? (f[a] = p[a]) : (f[a] = t[a]));
-}
-}
-        const y = arguments.length - 2;
-        if (y === 1) f.children = n;
+        var y = arguments.length - 2;
+        if (1 === y) f.children = n;
         else if (y > 1) {
           for (var v = Array(y), g = 0; g < y; g++) v[g] = arguments[g + 2];
           f.children = v;
@@ -2702,13 +2712,13 @@ i.call(t, a) &&
         return c(e.type, d, h, 0, 0, m, f);
       }),
       (c.isValidElement = function(e) {
-        return typeof e === 'object' && e !== null && e.$$typeof === a;
+        return 'object' == typeof e && null !== e && e.$$typeof === a;
       }),
       (e.exports = c);
   },
   function(e, t, n) {
     'use strict';
-    const r = n(4);
+    var r = n(4);
     n(1);
     function o(e, t) {
       return (e & t) === t;
@@ -2720,17 +2730,17 @@ i.call(t, a) &&
         HAS_POSITIVE_NUMERIC_VALUE: 24,
         HAS_OVERLOADED_BOOLEAN_VALUE: 32,
         injectDOMPropertyConfig: function(e) {
-          let t = i,
+          var t = i,
             n = e.Properties || {},
             a = e.DOMAttributeNamespaces || {},
             u = e.DOMAttributeNames || {},
             l = e.DOMPropertyNames || {},
             c = e.DOMMutationMethods || {};
-          for (const p in (e.isCustomAttribute &&
+          for (var p in (e.isCustomAttribute &&
             s._isCustomAttributeFunctions.push(e.isCustomAttribute),
           n)) {
             s.properties.hasOwnProperty(p) && r('48', p);
-            let f = p.toLowerCase(),
+            var f = p.toLowerCase(),
               d = n[p],
               h = {
                 attributeName: f,
@@ -2750,7 +2760,7 @@ i.call(t, a) &&
                 1 || r('50', p),
               u.hasOwnProperty(p))
             ) {
-              const m = u[p];
+              var m = u[p];
               h.attributeName = m;
             }
             a.hasOwnProperty(p) && (h.attributeNamespace = a[p]),
@@ -2771,7 +2781,7 @@ i.call(t, a) &&
         getPossibleStandardName: null,
         _isCustomAttributeFunctions: [],
         isCustomAttribute: function(e) {
-          for (let t = 0; t < s._isCustomAttributeFunctions.length; t++) {
+          for (var t = 0; t < s._isCustomAttributeFunctions.length; t++) {
             if ((0, s._isCustomAttributeFunctions[t])(e)) return !0;
           }
           return !1;
@@ -2782,17 +2792,17 @@ i.call(t, a) &&
   },
   function(e, t, n) {
     'use strict';
-    const r = n(128);
+    var r = n(128);
     n(12), n(3);
     function o() {
       r.attachRefs(this, this._currentElement);
     }
-    const i = {
+    var i = {
       mountComponent: function(e, t, n, r, i, a) {
-        const s = e.mountComponent(t, n, r, i, a);
+        var s = e.mountComponent(t, n, r, i, a);
         return (
           e._currentElement &&
-            e._currentElement.ref != null &&
+            null != e._currentElement.ref &&
             t.getReactMountReady().enqueue(o, e),
           s
         );
@@ -2804,15 +2814,15 @@ i.call(t, a) &&
         r.detachRefs(e, e._currentElement), e.unmountComponent(t);
       },
       receiveComponent: function(e, t, n, i) {
-        const a = e._currentElement;
+        var a = e._currentElement;
         if (t !== a || i !== e._context) {
           0;
-          const s = r.shouldUpdateRefs(a, t);
+          var s = r.shouldUpdateRefs(a, t);
           s && r.detachRefs(e, a),
             e.receiveComponent(t, n, i),
             s &&
               e._currentElement &&
-              e._currentElement.ref != null &&
+              null != e._currentElement.ref &&
               n.getReactMountReady().enqueue(o, e);
         }
       },
@@ -2824,29 +2834,29 @@ i.call(t, a) &&
   },
   function(e, t, n) {
     'use strict';
-    let r = n(47),
+    var r = n(47),
       o = n(33),
       i = n(48),
       a = n(76),
       s =
-        (typeof document !== 'undefined' &&
-          typeof document.documentMode === 'number') ||
-        (typeof navigator !== 'undefined' &&
-          typeof navigator.userAgent === 'string' &&
+        ('undefined' != typeof document &&
+          'number' == typeof document.documentMode) ||
+        ('undefined' != typeof navigator &&
+          'string' == typeof navigator.userAgent &&
           /\bEdge\/\d/.test(navigator.userAgent));
     function u(e) {
       if (s) {
-        let t = e.node,
+        var t = e.node,
           n = e.children;
-        if (n.length) for (let r = 0; r < n.length; r++) l(t, n[r], null);
-        else e.html != null ? o(t, e.html) : e.text != null && a(t, e.text);
+        if (n.length) for (var r = 0; r < n.length; r++) l(t, n[r], null);
+        else null != e.html ? o(t, e.html) : null != e.text && a(t, e.text);
       }
     }
     var l = i(function(e, t, n) {
-      t.node.nodeType === 11 ||
-      (t.node.nodeType === 1 &&
-        t.node.nodeName.toLowerCase() === 'object' &&
-        (t.node.namespaceURI == null || t.node.namespaceURI === r.html))
+      11 === t.node.nodeType ||
+      (1 === t.node.nodeType &&
+        'object' === t.node.nodeName.toLowerCase() &&
+        (null == t.node.namespaceURI || t.node.namespaceURI === r.html))
         ? (u(t), e.insertBefore(t.node, n))
         : (e.insertBefore(t.node, n), u(t));
     });
@@ -2873,32 +2883,32 @@ i.call(t, a) &&
   },
   function(e, t, n) {
     'use strict';
-    let r = n(100),
-      o = typeof self === 'object' && self && self.Object === Object && self,
+    var r = n(100),
+      o = 'object' == typeof self && self && self.Object === Object && self,
       i = (r.a || o || Function('return this')()).Symbol,
       a = Object.prototype,
       s = a.hasOwnProperty,
       u = a.toString,
       l = i ? i.toStringTag : void 0;
-    let c = function(e) {
-        let t = s.call(e, l),
+    var c = function(e) {
+        var t = s.call(e, l),
           n = e[l];
         try {
           e[l] = void 0;
           var r = !0;
         } catch (e) {}
-        const o = u.call(e);
+        var o = u.call(e);
         return r && (t ? (e[l] = n) : delete e[l]), o;
       },
       p = Object.prototype.toString;
-    let f = function(e) {
+    var f = function(e) {
         return p.call(e);
       },
       d = '[object Null]',
       h = '[object Undefined]',
       m = i ? i.toStringTag : void 0;
-    const y = function(e) {
-      return e == null
+    var y = function(e) {
+      return null == e
         ? void 0 === e
           ? h
           : d
@@ -2906,13 +2916,13 @@ i.call(t, a) &&
           ? c(e)
           : f(e);
     };
-    const v = (function(e, t) {
+    var v = (function(e, t) {
       return function(n) {
         return e(t(n));
       };
     })(Object.getPrototypeOf, Object);
-    let g = function(e) {
-        return e != null && typeof e === 'object';
+    var g = function(e) {
+        return null != e && 'object' == typeof e;
       },
       b = '[object Object]',
       w = Function.prototype,
@@ -2922,10 +2932,10 @@ i.call(t, a) &&
       x = C.call(Object);
     t.a = function(e) {
       if (!g(e) || y(e) != b) return !1;
-      const t = v(e);
-      if (t === null) return !0;
-      const n = O.call(t, 'constructor') && t.constructor;
-      return typeof n === 'function' && n instanceof n && C.call(n) == x;
+      var t = v(e);
+      if (null === t) return !0;
+      var n = O.call(t, 'constructor') && t.constructor;
+      return 'function' == typeof n && n instanceof n && C.call(n) == x;
     };
   },
   function(e, t, n) {
@@ -2941,23 +2951,24 @@ i.call(t, a) &&
           r = 0;
         r < t;
         r++
-      ) { n += '&args[]=' + encodeURIComponent(arguments[r + 1]); }
+      )
+        n += '&args[]=' + encodeURIComponent(arguments[r + 1]);
       n +=
         ' for the full message or use the non-minified dev environment for full errors and additional helpful warnings.';
-      const o = new Error(n);
+      var o = new Error(n);
       throw ((o.name = 'Invariant Violation'), (o.framesToPop = 1), o);
     };
   },
   function(e, t, n) {
     'use strict';
-    let r = n(25),
+    var r = n(25),
       o = n(41),
       i = n(68),
       a = n(69),
       s = (n(3), r.getListener);
     function u(e, t, n) {
-      const r = (function(e, t, n) {
-        const r = t.dispatchConfig.phasedRegistrationNames[n];
+      var r = (function(e, t, n) {
+        var r = t.dispatchConfig.phasedRegistrationNames[n];
         return s(e, r);
       })(e, n, t);
       r &&
@@ -2971,14 +2982,14 @@ i.call(t, a) &&
     }
     function c(e) {
       if (e && e.dispatchConfig.phasedRegistrationNames) {
-        let t = e._targetInst,
+        var t = e._targetInst,
           n = t ? o.getParentInstance(t) : null;
         o.traverseTwoPhase(n, u, e);
       }
     }
     function p(e, t, n) {
       if (n && n.dispatchConfig.registrationName) {
-        let r = n.dispatchConfig.registrationName,
+        var r = n.dispatchConfig.registrationName,
           o = s(e, r);
         o &&
           ((n._dispatchListeners = i(n._dispatchListeners, o)),
@@ -2988,7 +2999,7 @@ i.call(t, a) &&
     function f(e) {
       e && e.dispatchConfig.registrationName && p(e._targetInst, 0, e);
     }
-    const d = {
+    var d = {
       accumulateTwoPhaseDispatches: function(e) {
         a(e, l);
       },
@@ -3006,7 +3017,7 @@ i.call(t, a) &&
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(40),
       i = n(41),
       a = n(42),
@@ -3028,20 +3039,20 @@ i.call(t, a) &&
       h = function(e) {
         return '.' + e._rootNodeID;
       };
-    const m = {
+    var m = {
       injection: {
         injectEventPluginOrder: o.injectEventPluginOrder,
         injectEventPluginsByName: o.injectEventPluginsByName
       },
       putListener: function(e, t, n) {
-        typeof n !== 'function' && r('94', t, typeof n);
-        const i = h(e);
+        'function' != typeof n && r('94', t, typeof n);
+        var i = h(e);
         (l[t] || (l[t] = {}))[i] = n;
-        const a = o.registrationNameModules[t];
+        var a = o.registrationNameModules[t];
         a && a.didPutListener && a.didPutListener(e, t, n);
       },
       getListener: function(e, t) {
-        const n = l[t];
+        var n = l[t];
         if (
           (function(e, t, n) {
             switch (e) {
@@ -3059,10 +3070,10 @@ i.call(t, a) &&
                   !n.disabled ||
                   !(function(e) {
                     return (
-                      e === 'button' ||
-                      e === 'input' ||
-                      e === 'select' ||
-                      e === 'textarea'
+                      'button' === e ||
+                      'input' === e ||
+                      'select' === e ||
+                      'textarea' === e
                     );
                   })(t)
                 );
@@ -3070,31 +3081,31 @@ i.call(t, a) &&
                 return !1;
             }
           })(t, e._currentElement.type, e._currentElement.props)
-        ) { return null; }
-        const r = h(e);
+        )
+          return null;
+        var r = h(e);
         return n && n[r];
       },
       deleteListener: function(e, t) {
-        const n = o.registrationNameModules[t];
+        var n = o.registrationNameModules[t];
         n && n.willDeleteListener && n.willDeleteListener(e, t);
-        const r = l[t];
+        var r = l[t];
         r && delete r[h(e)];
       },
       deleteAllListeners: function(e) {
-        const t = h(e);
-        for (const n in l) {
-if (l.hasOwnProperty(n) && l[n][t]) {
-            const r = o.registrationNameModules[n];
+        var t = h(e);
+        for (var n in l)
+          if (l.hasOwnProperty(n) && l[n][t]) {
+            var r = o.registrationNameModules[n];
             r && r.willDeleteListener && r.willDeleteListener(e, n),
               delete l[n][t];
           }
-}
       },
       extractEvents: function(e, t, n, r) {
         for (var i, a = o.plugins, u = 0; u < a.length; u++) {
-          const l = a[u];
+          var l = a[u];
           if (l) {
-            const c = l.extractEvents(e, t, n, r);
+            var c = l.extractEvents(e, t, n, r);
             c && (i = s(i, c));
           }
         }
@@ -3104,7 +3115,7 @@ if (l.hasOwnProperty(n) && l[n][t]) {
         e && (c = s(c, e));
       },
       processEventQueue: function(e) {
-        const t = c;
+        var t = c;
         (c = null), u(t, e ? f : d), c && r('95'), a.rethrowCaughtError();
       },
       __purge: function() {
@@ -3118,14 +3129,14 @@ if (l.hasOwnProperty(n) && l[n][t]) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(15),
+    var r = n(15),
       o = n(43),
       i = {
         view: function(e) {
           if (e.view) return e.view;
-          const t = o(e);
+          var t = o(e);
           if (t.window === t) return t;
-          const n = t.ownerDocument;
+          var n = t.ownerDocument;
           return n ? n.defaultView || n.parentWindow : window;
         },
         detail: function(e) {
@@ -3139,7 +3150,7 @@ if (l.hasOwnProperty(n) && l[n][t]) {
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       remove: function(e) {
         e._reactInternalInstance = void 0;
       },
@@ -3202,7 +3213,7 @@ if (l.hasOwnProperty(n) && l[n][t]) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(1), {}),
       i = {
         reinitializeTransaction: function() {
@@ -3218,7 +3229,7 @@ if (l.hasOwnProperty(n) && l[n][t]) {
           return !!this._isInTransaction;
         },
         perform: function(e, t, n, o, i, a, s, u) {
-          let c, l;
+          var l, c;
           this.isInTransaction() && r('27');
           try {
             (this._isInTransaction = !0),
@@ -3228,11 +3239,11 @@ if (l.hasOwnProperty(n) && l[n][t]) {
               (l = !1);
           } finally {
             try {
-              if (l) {
-try {
+              if (l)
+                try {
                   this.closeAll(0);
                 } catch (e) {}
-} else this.closeAll(0);
+              else this.closeAll(0);
             } finally {
               this._isInTransaction = !1;
             }
@@ -3240,36 +3251,34 @@ try {
           return c;
         },
         initializeAll: function(e) {
-          for (let t = this.transactionWrappers, n = e; n < t.length; n++) {
-            const r = t[n];
+          for (var t = this.transactionWrappers, n = e; n < t.length; n++) {
+            var r = t[n];
             try {
               (this.wrapperInitData[n] = o),
                 (this.wrapperInitData[n] = r.initialize
                   ? r.initialize.call(this)
                   : null);
             } finally {
-              if (this.wrapperInitData[n] === o) {
-try {
+              if (this.wrapperInitData[n] === o)
+                try {
                   this.initializeAll(n + 1);
                 } catch (e) {}
-}
             }
           }
         },
         closeAll: function(e) {
           this.isInTransaction() || r('28');
-          for (let t = this.transactionWrappers, n = e; n < t.length; n++) {
+          for (var t = this.transactionWrappers, n = e; n < t.length; n++) {
             var i,
               a = t[n],
               s = this.wrapperInitData[n];
             try {
               (i = !0), s !== o && a.close && a.close.call(this, s), (i = !1);
             } finally {
-              if (i) {
-try {
+              if (i)
+                try {
                   this.closeAll(n + 1);
                 } catch (e) {}
-}
             }
           }
           this.wrapperInitData.length = 0;
@@ -3279,7 +3288,7 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(26),
+    var r = n(26),
       o = n(75),
       i = {
         screenX: null,
@@ -3292,8 +3301,8 @@ try {
         metaKey: null,
         getModifierState: n(45),
         button: function(e) {
-          const t = e.button;
-          return 'which' in e ? t : t === 2 ? 2 : t === 4 ? 1 : 0;
+          var t = e.button;
+          return 'which' in e ? t : 2 === t ? 2 : 4 === t ? 1 : 0;
         },
         buttons: null,
         relatedTarget: function(e) {
@@ -3316,7 +3325,7 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o = n(9),
       i = n(47),
       a = /^[ \r\n\t\f]/,
@@ -3326,21 +3335,22 @@ try {
         else {
           (r = r || document.createElement('div')).innerHTML =
             '<svg>' + t + '</svg>';
-          for (let n = r.firstChild; n.firstChild;) { e.appendChild(n.firstChild); }
+          for (var n = r.firstChild; n.firstChild; )
+            e.appendChild(n.firstChild);
         }
       });
     if (o.canUseDOM) {
-      let l = document.createElement('div');
+      var l = document.createElement('div');
       (l.innerHTML = ' '),
-        l.innerHTML === '' &&
+        '' === l.innerHTML &&
           (u = function(e, t) {
             if (
               (e.parentNode && e.parentNode.replaceChild(e, e),
-              a.test(t) || (t[0] === '<' && s.test(t)))
+              a.test(t) || ('<' === t[0] && s.test(t)))
             ) {
               e.innerHTML = String.fromCharCode(65279) + t;
-              const n = e.firstChild;
-              n.data.length === 1 ? e.removeChild(n) : n.deleteData(0, 1);
+              var n = e.firstChild;
+              1 === n.data.length ? e.removeChild(n) : n.deleteData(0, 1);
             } else e.innerHTML = t;
           }),
         (l = null);
@@ -3349,17 +3359,17 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    const r = /["'&<>]/;
+    var r = /["'&<>]/;
     e.exports = function(e) {
-      return typeof e === 'boolean' || typeof e === 'number'
+      return 'boolean' == typeof e || 'number' == typeof e
         ? '' + e
         : (function(e) {
-            let t,
+            var t,
               n = '' + e,
               o = r.exec(n);
             if (!o) return n;
-            let a = 0,
-              i = '',
+            var i = '',
+              a = 0,
               s = 0;
             for (a = o.index; a < n.length; a++) {
               switch (n.charCodeAt(a)) {
@@ -3389,7 +3399,7 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o = n(7),
       i = n(40),
       a = n(149),
@@ -3481,7 +3491,7 @@ try {
       },
       listenTo: function(e, t) {
         for (
-          let n = t,
+          var n = t,
             r = (function(e) {
               return (
                 Object.prototype.hasOwnProperty.call(e, h) ||
@@ -3494,9 +3504,9 @@ try {
           a < o.length;
           a++
         ) {
-          const s = o[a];
+          var s = o[a];
           (r.hasOwnProperty(s) && r[s]) ||
-            (s === 'topWheel'
+            ('topWheel' === s
               ? l('wheel')
                 ? m.ReactEventListener.trapBubbledEvent('topWheel', 'wheel', n)
                 : l('mousewheel')
@@ -3510,7 +3520,7 @@ try {
                       'DOMMouseScroll',
                       n
                     )
-              : s === 'topScroll'
+              : 'topScroll' === s
                 ? l('scroll', !0)
                   ? m.ReactEventListener.trapCapturedEvent(
                       'topScroll',
@@ -3522,7 +3532,7 @@ try {
                       'scroll',
                       m.ReactEventListener.WINDOW_HANDLE
                     )
-                : s === 'topFocus' || s === 'topBlur'
+                : 'topFocus' === s || 'topBlur' === s
                   ? (l('focus', !0)
                       ? (m.ReactEventListener.trapCapturedEvent(
                           'topFocus',
@@ -3560,12 +3570,12 @@ try {
       },
       supportsEventPageXY: function() {
         if (!document.createEvent) return !1;
-        const e = document.createEvent('MouseEvent');
-        return e != null && 'pageX' in e;
+        var e = document.createEvent('MouseEvent');
+        return null != e && 'pageX' in e;
       },
       ensureScrollValueMonitoring: function() {
         if ((void 0 === r && (r = m.supportsEventPageXY()), !r && !p)) {
-          const e = s.refreshScrollValues;
+          var e = s.refreshScrollValues;
           m.ReactEventListener.monitorScrollValue(e), (p = !0);
         }
       }
@@ -3575,20 +3585,22 @@ try {
   function(e, t, n) {
     'use strict';
     n.r(t);
-    let r = n(22),
+    var r = n(22),
       o = n(59),
       i = { INIT: '@@redux/INIT' };
     function a(e, t, n) {
-      let s;
+      var s;
       if (
-        (typeof t === 'function' && void 0 === n && ((n = t), (t = void 0)),
+        ('function' == typeof t && void 0 === n && ((n = t), (t = void 0)),
         void 0 !== n)
       ) {
-        if (typeof n !== 'function') { throw new Error('Expected the enhancer to be a function.'); }
+        if ('function' != typeof n)
+          throw new Error('Expected the enhancer to be a function.');
         return n(a)(e, t);
       }
-      if (typeof e !== 'function') { throw new Error('Expected the reducer to be a function.'); }
-      let u = e,
+      if ('function' != typeof e)
+        throw new Error('Expected the reducer to be a function.');
+      var u = e,
         l = t,
         c = [],
         p = c,
@@ -3600,38 +3612,37 @@ try {
         return l;
       }
       function m(e) {
-        if (typeof e !== 'function') { throw new Error('Expected listener to be a function.'); }
-        let t = !0;
+        if ('function' != typeof e)
+          throw new Error('Expected listener to be a function.');
+        var t = !0;
         return (
           d(),
           p.push(e),
           function() {
             if (t) {
               (t = !1), d();
-              const n = p.indexOf(e);
+              var n = p.indexOf(e);
               p.splice(n, 1);
             }
           }
         );
       }
       function y(e) {
-        if (!Object(r.a)(e)) {
- throw new Error(
+        if (!Object(r.a)(e))
+          throw new Error(
             'Actions must be plain objects. Use custom middleware for async actions.'
           );
-}
-        if (void 0 === e.type) {
-throw new Error(
+        if (void 0 === e.type)
+          throw new Error(
             'Actions may not have an undefined "type" property. Have you misspelled a constant?'
           );
-}
         if (f) throw new Error('Reducers may not dispatch actions.');
         try {
           (f = !0), (l = u(l, e));
         } finally {
           f = !1;
         }
-        for (let t = (c = p), n = 0; n < t.length; n++) {
+        for (var t = (c = p), n = 0; n < t.length; n++) {
           (0, t[n])();
         }
         return e;
@@ -3643,16 +3654,18 @@ throw new Error(
           subscribe: m,
           getState: h,
           replaceReducer: function(e) {
-            if (typeof e !== 'function') { throw new Error('Expected the nextReducer to be a function.'); }
+            if ('function' != typeof e)
+              throw new Error('Expected the nextReducer to be a function.');
             (u = e), y({ type: i.INIT });
           }
         })[o.a] = function() {
-          let e,
+          var e,
             t = m;
           return (
             ((e = {
               subscribe: function(e) {
-                if (typeof e !== 'object') { throw new TypeError('Expected the observer to be an object.'); }
+                if ('object' != typeof e)
+                  throw new TypeError('Expected the observer to be an object.');
                 function n() {
                   e.next && e.next(h());
                 }
@@ -3668,7 +3681,7 @@ throw new Error(
       );
     }
     function s(e, t) {
-      const n = t && t.type;
+      var n = t && t.type;
       return (
         'Given action ' +
         ((n && '"' + n.toString() + '"') || 'an action') +
@@ -3679,22 +3692,21 @@ throw new Error(
     }
     function u(e) {
       for (var t = Object.keys(e), n = {}, r = 0; r < t.length; r++) {
-        const o = t[r];
-        0, typeof e[o] === 'function' && (n[o] = e[o]);
+        var o = t[r];
+        0, 'function' == typeof e[o] && (n[o] = e[o]);
       }
-      const a = Object.keys(n);
-      let u = void 0;
+      var a = Object.keys(n);
+      var u = void 0;
       try {
         !(function(e) {
           Object.keys(e).forEach(function(t) {
-            const n = e[t];
-            if (void 0 === n(void 0, { type: i.INIT })) {
- throw new Error(
+            var n = e[t];
+            if (void 0 === n(void 0, { type: i.INIT }))
+              throw new Error(
                 'Reducer "' +
                   t +
                   '" returned undefined during initialization. If the state passed to the reducer is undefined, you must explicitly return the initial state. The initial state may not be undefined. If you don\'t want to set a value for this reducer, you can use null instead of undefined.'
               );
-}
             if (
               void 0 ===
               n(void 0, {
@@ -3706,32 +3718,31 @@ throw new Error(
                     .split('')
                     .join('.')
               })
-            ) {
-throw new Error(
+            )
+              throw new Error(
                 'Reducer "' +
                   t +
                   '" returned undefined when probed with a random type. Don\'t try to handle ' +
                   i.INIT +
                   ' or other actions in "redux/*" namespace. They are considered private. Instead, you must return the current state for any unknown actions, unless it is undefined, in which case you must return the initial state, regardless of the action type. The initial state may not be undefined, but can be null.'
               );
-}
           });
         })(n);
       } catch (e) {
         u = e;
       }
       return function() {
-        let e =
+        var e =
             arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
           t = arguments[1];
         if (u) throw u;
         for (var r = !1, o = {}, i = 0; i < a.length; i++) {
-          let l = a[i],
+          var l = a[i],
             c = n[l],
             p = e[l],
             f = c(p, t);
           if (void 0 === f) {
-            const d = s(l, t);
+            var d = s(l, t);
             throw new Error(d);
           }
           (o[l] = f), (r = r || f !== p);
@@ -3745,28 +3756,28 @@ throw new Error(
       };
     }
     function c(e, t) {
-      if (typeof e === 'function') return l(e, t);
-      if (typeof e !== 'object' || e === null) {
- throw new Error(
+      if ('function' == typeof e) return l(e, t);
+      if ('object' != typeof e || null === e)
+        throw new Error(
           'bindActionCreators expected an object or a function, instead received ' +
-            (e === null ? 'null' : typeof e) +
+            (null === e ? 'null' : typeof e) +
             '. Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?'
         );
-}
       for (var n = Object.keys(e), r = {}, o = 0; o < n.length; o++) {
-        let i = n[o],
+        var i = n[o],
           a = e[i];
-        typeof a === 'function' && (r[i] = l(a, t));
+        'function' == typeof a && (r[i] = l(a, t));
       }
       return r;
     }
     function p() {
-      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++) { t[n] = arguments[n]; }
-      return t.length === 0
+      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++)
+        t[n] = arguments[n];
+      return 0 === t.length
         ? function(e) {
             return e;
           }
-        : t.length === 1
+        : 1 === t.length
           ? t[0]
           : t.reduce(function(e, t) {
               return function() {
@@ -3774,20 +3785,22 @@ throw new Error(
               };
             });
     }
-    const f =
+    var f =
       Object.assign ||
       function(e) {
-        for (let t = 1; t < arguments.length; t++) {
-          const n = arguments[t];
-          for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+        for (var t = 1; t < arguments.length; t++) {
+          var n = arguments[t];
+          for (var r in n)
+            Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
         }
         return e;
       };
     function d() {
-      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++) { t[n] = arguments[n]; }
+      for (var e = arguments.length, t = Array(e), n = 0; n < e; n++)
+        t[n] = arguments[n];
       return function(e) {
         return function(n, r, o) {
-          let i,
+          var i,
             a = e(n, r, o),
             s = a.dispatch,
             u = {
@@ -3826,13 +3839,13 @@ throw new Error(
     'use strict';
     e.exports = function(e, t, n, r, o, i, a, s) {
       if (!e) {
-        let u;
-        if (void 0 === t) {
- u = new Error(
+        var u;
+        if (void 0 === t)
+          u = new Error(
             'Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.'
           );
-} else {
-          let l = [n, r, o, i, a, s],
+        else {
+          var l = [n, r, o, i, a, s],
             c = 0;
           (u = new Error(
             t.replace(/%s/g, function() {
@@ -3851,19 +3864,19 @@ throw new Error(
  *
  * Copyright (c) 2014-2017, Jon Schlinkert.
  * Released under the MIT License.
- */ const r = n(
+ */ var r = n(
       205
     );
     function o(e) {
       return (
-        !0 === r(e) && Object.prototype.toString.call(e) === '[object Object]'
+        !0 === r(e) && '[object Object]' === Object.prototype.toString.call(e)
       );
     }
     e.exports = function(e) {
-      let n, t;
+      var t, n;
       return (
         !1 !== o(e) &&
-        (typeof (t = e.constructor) === 'function' &&
+        ('function' == typeof (t = e.constructor) &&
           (!1 !== o((n = t.prototype)) &&
             !1 !== n.hasOwnProperty('isPrototypeOf')))
       );
@@ -3875,30 +3888,33 @@ throw new Error(
 object-assign
 (c) Sindre Sorhus
 @license MIT
-*/ let r =
+*/ var r =
         Object.getOwnPropertySymbols,
       o = Object.prototype.hasOwnProperty,
       i = Object.prototype.propertyIsEnumerable;
     e.exports = (function() {
       try {
         if (!Object.assign) return !1;
-        const e = new String('abc');
-        if (((e[5] = 'de'), Object.getOwnPropertyNames(e)[0] === '5')) { return !1; }
-        for (var t = {}, n = 0; n < 10; n++) { t['_' + String.fromCharCode(n)] = n; }
+        var e = new String('abc');
+        if (((e[5] = 'de'), '5' === Object.getOwnPropertyNames(e)[0]))
+          return !1;
+        for (var t = {}, n = 0; n < 10; n++)
+          t['_' + String.fromCharCode(n)] = n;
         if (
+          '0123456789' !==
           Object.getOwnPropertyNames(t)
             .map(function(e) {
               return t[e];
             })
-            .join('') !==
-          '0123456789'
-        ) { return !1; }
-        const r = {};
+            .join('')
+        )
+          return !1;
+        var r = {};
         return (
           'abcdefghijklmnopqrst'.split('').forEach(function(e) {
             r[e] = e;
           }),
-          Object.keys(Object.assign({}, r)).join('') === 'abcdefghijklmnopqrst'
+          'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, r)).join('')
         );
       } catch (e) {
         return !1;
@@ -3910,21 +3926,22 @@ object-assign
             var n,
               a,
               s = (function(e) {
-                if (e === null || void 0 === e) {
- throw new TypeError(
+                if (null === e || void 0 === e)
+                  throw new TypeError(
                     'Object.assign cannot be called with null or undefined'
                   );
-}
                 return Object(e);
               })(e),
               u = 1;
             u < arguments.length;
             u++
           ) {
-            for (const l in (n = Object(arguments[u]))) { o.call(n, l) && (s[l] = n[l]); }
+            for (var l in (n = Object(arguments[u])))
+              o.call(n, l) && (s[l] = n[l]);
             if (r) {
               a = r(n);
-              for (let c = 0; c < a.length; c++) { i.call(n, a[c]) && (s[a[c]] = n[a[c]]); }
+              for (var c = 0; c < a.length; c++)
+                i.call(n, a[c]) && (s[a[c]] = n[a[c]]);
             }
           }
           return s;
@@ -3932,28 +3949,27 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(1), null),
       i = {};
     function a() {
-      if (o) {
-for (const e in i) {
-          let t = i[e],
+      if (o)
+        for (var e in i) {
+          var t = i[e],
             n = o.indexOf(e);
           if ((n > -1 || r('96', e), !l.plugins[n])) {
             t.extractEvents || r('97', e), (l.plugins[n] = t);
-            const a = t.eventTypes;
-            for (const u in a) s(a[u], t, u) || r('98', u, e);
+            var a = t.eventTypes;
+            for (var u in a) s(a[u], t, u) || r('98', u, e);
           }
         }
-}
     }
     function s(e, t, n) {
       l.eventNameDispatchConfigs.hasOwnProperty(n) && r('99', n),
         (l.eventNameDispatchConfigs[n] = e);
-      const o = e.phasedRegistrationNames;
+      var o = e.phasedRegistrationNames;
       if (o) {
-        for (const i in o) {
+        for (var i in o) {
           if (o.hasOwnProperty(i)) u(o[i], t, n);
         }
         return !0;
@@ -3975,50 +3991,49 @@ for (const e in i) {
         o && r('101'), (o = Array.prototype.slice.call(e)), a();
       },
       injectEventPluginsByName: function(e) {
-        let t = !1;
-        for (const n in e) {
-if (e.hasOwnProperty(n)) {
-            const o = e[n];
+        var t = !1;
+        for (var n in e)
+          if (e.hasOwnProperty(n)) {
+            var o = e[n];
             (i.hasOwnProperty(n) && i[n] === o) ||
               (i[n] && r('102', n), (i[n] = o), (t = !0));
           }
-}
         t && a();
       },
       getPluginModuleForEvent: function(e) {
-        const t = e.dispatchConfig;
-        if (t.registrationName) { return l.registrationNameModules[t.registrationName] || null; }
+        var t = e.dispatchConfig;
+        if (t.registrationName)
+          return l.registrationNameModules[t.registrationName] || null;
         if (void 0 !== t.phasedRegistrationNames) {
-          const n = t.phasedRegistrationNames;
-          for (const r in n) {
-if (n.hasOwnProperty(r)) {
-              const o = l.registrationNameModules[n[r]];
+          var n = t.phasedRegistrationNames;
+          for (var r in n)
+            if (n.hasOwnProperty(r)) {
+              var o = l.registrationNameModules[n[r]];
               if (o) return o;
             }
-}
         }
         return null;
       },
       _resetEventPlugins: function() {
-        for (const e in ((o = null), i)) i.hasOwnProperty(e) && delete i[e];
+        for (var e in ((o = null), i)) i.hasOwnProperty(e) && delete i[e];
         l.plugins.length = 0;
-        const t = l.eventNameDispatchConfigs;
-        for (const n in t) t.hasOwnProperty(n) && delete t[n];
-        const r = l.registrationNameModules;
-        for (const a in r) r.hasOwnProperty(a) && delete r[a];
+        var t = l.eventNameDispatchConfigs;
+        for (var n in t) t.hasOwnProperty(n) && delete t[n];
+        var r = l.registrationNameModules;
+        for (var a in r) r.hasOwnProperty(a) && delete r[a];
       }
     };
     e.exports = l;
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o,
       i = n(4),
       a = n(42);
     n(1), n(3);
     function s(e, t, n, r) {
-      const o = e.type || 'unknown-event';
+      var o = e.type || 'unknown-event';
       (e.currentTarget = u.getNodeFromInstance(r)),
         t
           ? a.invokeGuardedCallbackWithCatch(o, n, e)
@@ -4028,21 +4043,21 @@ if (n.hasOwnProperty(r)) {
     var u = {
       isEndish: function(e) {
         return (
-          e === 'topMouseUp' || e === 'topTouchEnd' || e === 'topTouchCancel'
+          'topMouseUp' === e || 'topTouchEnd' === e || 'topTouchCancel' === e
         );
       },
       isMoveish: function(e) {
-        return e === 'topMouseMove' || e === 'topTouchMove';
+        return 'topMouseMove' === e || 'topTouchMove' === e;
       },
       isStartish: function(e) {
-        return e === 'topMouseDown' || e === 'topTouchStart';
+        return 'topMouseDown' === e || 'topTouchStart' === e;
       },
       executeDirectDispatch: function(e) {
-        let t = e._dispatchListeners,
+        var t = e._dispatchListeners,
           n = e._dispatchInstances;
         Array.isArray(t) && i('103'),
           (e.currentTarget = t ? u.getNodeFromInstance(n) : null);
-        const r = t ? t(e) : null;
+        var r = t ? t(e) : null;
         return (
           (e.currentTarget = null),
           (e._dispatchListeners = null),
@@ -4051,19 +4066,21 @@ if (n.hasOwnProperty(r)) {
         );
       },
       executeDispatchesInOrder: function(e, t) {
-        let n = e._dispatchListeners,
+        var n = e._dispatchListeners,
           r = e._dispatchInstances;
-        if (Array.isArray(n)) {
-for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], r[o]); }
-} else n && s(e, t, n, r);
+        if (Array.isArray(n))
+          for (var o = 0; o < n.length && !e.isPropagationStopped(); o++)
+            s(e, t, n[o], r[o]);
+        else n && s(e, t, n, r);
         (e._dispatchListeners = null), (e._dispatchInstances = null);
       },
       executeDispatchesInOrderStopAtTrue: function(e) {
-        const t = (function(e) {
-          let t = e._dispatchListeners,
+        var t = (function(e) {
+          var t = e._dispatchListeners,
             n = e._dispatchInstances;
           if (Array.isArray(t)) {
-            for (let r = 0; r < t.length && !e.isPropagationStopped(); r++) { if (t[r](e, n[r])) return n[r]; }
+            for (var r = 0; r < t.length && !e.isPropagationStopped(); r++)
+              if (t[r](e, n[r])) return n[r];
           } else if (t && t(e, n)) return n;
           return null;
         })(e);
@@ -4106,20 +4123,20 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    let r = null;
+    var r = null;
     function o(e, t, n) {
       try {
         t(n);
       } catch (e) {
-        r === null && (r = e);
+        null === r && (r = e);
       }
     }
-    const i = {
+    var i = {
       invokeGuardedCallback: o,
       invokeGuardedCallbackWithCatch: o,
       rethrowCaughtError: function() {
         if (r) {
-          const e = r;
+          var e = r;
           throw ((r = null), e);
         }
       }
@@ -4129,16 +4146,16 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   function(e, t, n) {
     'use strict';
     e.exports = function(e) {
-      let t = e.target || e.srcElement || window;
+      var t = e.target || e.srcElement || window;
       return (
         t.correspondingUseElement && (t = t.correspondingUseElement),
-        t.nodeType === 3 ? t.parentNode : t
+        3 === t.nodeType ? t.parentNode : t
       );
     };
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o = n(9);
     o.canUseDOM &&
       (r =
@@ -4160,16 +4177,16 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
        * @license Modernizr 3.0.0pre (Custom Build) | MIT
        */ (e.exports = function(e, t) {
         if (!o.canUseDOM || (t && !('addEventListener' in document))) return !1;
-        let n = 'on' + e,
+        var n = 'on' + e,
           i = n in document;
         if (!i) {
-          const a = document.createElement('div');
-          a.setAttribute(n, 'return;'), (i = typeof a[n] === 'function');
+          var a = document.createElement('div');
+          a.setAttribute(n, 'return;'), (i = 'function' == typeof a[n]);
         }
         return (
           !i &&
             r &&
-            e === 'wheel' &&
+            'wheel' === e &&
             (i = document.implementation.hasFeature('Events.wheel', '3.0')),
           i
         );
@@ -4177,16 +4194,16 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       Alt: 'altKey',
       Control: 'ctrlKey',
       Meta: 'metaKey',
       Shift: 'shiftKey'
     };
     function o(e) {
-      const t = this.nativeEvent;
+      var t = this.nativeEvent;
       if (t.getModifierState) return t.getModifierState(e);
-      const n = r[e];
+      var n = r[e];
       return !!n && !!t[n];
     }
     e.exports = function(e) {
@@ -4195,7 +4212,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    let r = n(21),
+    var r = n(21),
       o = n(134),
       i = (n(6), n(12), n(48)),
       a = n(33),
@@ -4203,7 +4220,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     function u(e, t) {
       return Array.isArray(t) && (t = t[1]), t ? t.nextSibling : e.firstChild;
     }
-    const l = i(function(e, t, n) {
+    var l = i(function(e, t, n) {
       e.insertBefore(t, n);
     });
     function c(e, t, n) {
@@ -4212,9 +4229,9 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     function p(e, t, n) {
       Array.isArray(t)
         ? (function(e, t, n, r) {
-            let o = t;
+            var o = t;
             for (;;) {
-              const i = o.nextSibling;
+              var i = o.nextSibling;
               if ((l(e, o, r), o === n)) break;
               o = i;
             }
@@ -4223,22 +4240,22 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     }
     function f(e, t) {
       if (Array.isArray(t)) {
-        const n = t[1];
+        var n = t[1];
         d(e, (t = t[0]), n), e.removeChild(n);
       }
       e.removeChild(t);
     }
     function d(e, t, n) {
       for (;;) {
-        const r = t.nextSibling;
+        var r = t.nextSibling;
         if (r === n) break;
         e.removeChild(r);
       }
     }
-    const h = {
+    var h = {
       dangerouslyReplaceNodeWithMarkup: o.dangerouslyReplaceNodeWithMarkup,
       replaceDelimitedText: function(e, t, n) {
-        let r = e.parentNode,
+        var r = e.parentNode,
           o = e.nextSibling;
         o === t
           ? n && l(r, document.createTextNode(n), o)
@@ -4247,8 +4264,8 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
             : d(r, e, t);
       },
       processUpdates: function(e, t) {
-        for (let n = 0; n < t.length; n++) {
-          const r = t[n];
+        for (var n = 0; n < t.length; n++) {
+          var r = t[n];
           switch (r.type) {
             case 'INSERT_MARKUP':
               c(e, r.content, u(e, r.afterNode));
@@ -4281,7 +4298,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   function(e, t, n) {
     'use strict';
     e.exports = function(e) {
-      return typeof MSApp !== 'undefined' && MSApp.execUnsafeLocalFunction
+      return 'undefined' != typeof MSApp && MSApp.execUnsafeLocalFunction
         ? function(t, n, r, o) {
             MSApp.execUnsafeLocalFunction(function() {
               return e(t, n, r, o);
@@ -4292,7 +4309,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(152),
       i = n(64)(n(17).isValidElement),
       a = (n(1),
@@ -4307,15 +4324,15 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
         submit: !0
       });
     function s(e) {
-      e.checkedLink != null && e.valueLink != null && r('87');
+      null != e.checkedLink && null != e.valueLink && r('87');
     }
     function u(e) {
-      s(e), (e.value != null || e.onChange != null) && r('88');
+      s(e), (null != e.value || null != e.onChange) && r('88');
     }
     function l(e) {
-      s(e), (e.checked != null || e.onChange != null) && r('89');
+      s(e), (null != e.checked || null != e.onChange) && r('89');
     }
-    let c = {
+    var c = {
         value: function(e, t, n) {
           return !e[t] || a[e.type] || e.onChange || e.readOnly || e.disabled
             ? null
@@ -4335,14 +4352,14 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
       p = {};
     function f(e) {
       if (e) {
-        const t = e.getName();
+        var t = e.getName();
         if (t) return ' Check the render method of `' + t + '`.';
       }
       return '';
     }
-    const d = {
+    var d = {
       checkPropTypes: function(e, t, n) {
-        for (const r in c) {
+        for (var r in c) {
           if (c.hasOwnProperty(r)) var i = c[r](t, r, e, 'prop', null, o);
           if (i instanceof Error && !(i.message in p)) {
             p[i.message] = !0;
@@ -4387,7 +4404,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     e.exports = i;
   },
   function(e, t) {
-    let n,
+    var n,
       r,
       o = (e.exports = {});
     function i() {
@@ -4398,7 +4415,8 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     }
     function s(e) {
       if (n === setTimeout) return setTimeout(e, 0);
-      if ((n === i || !n) && setTimeout) { return (n = setTimeout), setTimeout(e, 0); }
+      if ((n === i || !n) && setTimeout)
+        return (n = setTimeout), setTimeout(e, 0);
       try {
         return n(e, 0);
       } catch (t) {
@@ -4411,17 +4429,17 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     }
     !(function() {
       try {
-        n = typeof setTimeout === 'function' ? setTimeout : i;
+        n = 'function' == typeof setTimeout ? setTimeout : i;
       } catch (e) {
         n = i;
       }
       try {
-        r = typeof clearTimeout === 'function' ? clearTimeout : a;
+        r = 'function' == typeof clearTimeout ? clearTimeout : a;
       } catch (e) {
         r = a;
       }
     })();
-    let u,
+    var u,
       l = [],
       c = !1,
       p = -1;
@@ -4432,17 +4450,18 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     }
     function d() {
       if (!c) {
-        const e = s(f);
+        var e = s(f);
         c = !0;
-        for (let t = l.length; t;) {
-          for (u = l, l = []; ++p < t;) u && u[p].run();
+        for (var t = l.length; t; ) {
+          for (u = l, l = []; ++p < t; ) u && u[p].run();
           (p = -1), (t = l.length);
         }
         (u = null),
           (c = !1),
           (function(e) {
             if (r === clearTimeout) return clearTimeout(e);
-            if ((r === a || !r) && clearTimeout) { return (r = clearTimeout), clearTimeout(e); }
+            if ((r === a || !r) && clearTimeout)
+              return (r = clearTimeout), clearTimeout(e);
             try {
               r(e);
             } catch (t) {
@@ -4460,9 +4479,10 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     }
     function m() {}
     (o.nextTick = function(e) {
-      const t = new Array(arguments.length - 1);
-      if (arguments.length > 1) { for (let n = 1; n < arguments.length; n++) t[n - 1] = arguments[n]; }
-      l.push(new h(e, t)), l.length !== 1 || c || s(d);
+      var t = new Array(arguments.length - 1);
+      if (arguments.length > 1)
+        for (var n = 1; n < arguments.length; n++) t[n - 1] = arguments[n];
+      l.push(new h(e, t)), 1 !== l.length || c || s(d);
     }),
       (h.prototype.run = function() {
         this.fun.apply(null, this.array);
@@ -4500,43 +4520,45 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    const r = Object.prototype.hasOwnProperty;
+    var r = Object.prototype.hasOwnProperty;
     function o(e, t) {
-      return e === t ? e !== 0 || t !== 0 || 1 / e == 1 / t : e != e && t != t;
+      return e === t ? 0 !== e || 0 !== t || 1 / e == 1 / t : e != e && t != t;
     }
     e.exports = function(e, t) {
       if (o(e, t)) return !0;
       if (
-        typeof e !== 'object' ||
-        e === null ||
-        typeof t !== 'object' ||
-        t === null
-      ) { return !1; }
-      let n = Object.keys(e),
+        'object' != typeof e ||
+        null === e ||
+        'object' != typeof t ||
+        null === t
+      )
+        return !1;
+      var n = Object.keys(e),
         i = Object.keys(t);
       if (n.length !== i.length) return !1;
-      for (let a = 0; a < n.length; a++) { if (!r.call(t, n[a]) || !o(e[n[a]], t[n[a]])) return !1; }
+      for (var a = 0; a < n.length; a++)
+        if (!r.call(t, n[a]) || !o(e[n[a]], t[n[a]])) return !1;
       return !0;
     };
   },
   function(e, t, n) {
     'use strict';
     e.exports = function(e, t) {
-      let n = e === null || !1 === e,
-        r = t === null || !1 === t;
+      var n = null === e || !1 === e,
+        r = null === t || !1 === t;
       if (n || r) return n === r;
-      let o = typeof e,
+      var o = typeof e,
         i = typeof t;
-      return o === 'string' || o === 'number'
-        ? i === 'string' || i === 'number'
-        : i === 'object' && e.type === t.type && e.key === t.key;
+      return 'string' === o || 'number' === o
+        ? 'string' === i || 'number' === i
+        : 'object' === i && e.type === t.type && e.key === t.key;
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       escape: function(e) {
-        const t = { '=': '=0', ':': '=2' };
+        var t = { '=': '=0', ':': '=2' };
         return (
           '$' +
           ('' + e).replace(/[=:]/g, function(e) {
@@ -4545,9 +4567,9 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
         );
       },
       unescape: function(e) {
-        const t = { '=0': '=', '=2': ':' };
+        var t = { '=0': '=', '=2': ':' };
         return (
-          '' + (e[0] === '.' && e[1] === '$' ? e.substring(2) : e.substring(1))
+          '' + ('.' === e[0] && '$' === e[1] ? e.substring(2) : e.substring(1))
         ).replace(/(=0|=2)/g, function(e) {
           return t[e];
         });
@@ -4557,7 +4579,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(14), n(27)),
       i = (n(12), n(13));
     n(1), n(3);
@@ -4565,17 +4587,17 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
       i.enqueueUpdate(e);
     }
     function s(e, t) {
-      const n = o.get(e);
+      var n = o.get(e);
       return n || null;
     }
     var u = {
       isMounted: function(e) {
-        const t = o.get(e);
+        var t = o.get(e);
         return !!t && !!t._renderedComponent;
       },
       enqueueCallback: function(e, t, n) {
         u.validateCallback(t, n);
-        const r = s(e);
+        var r = s(e);
         if (!r) return null;
         r._pendingCallbacks
           ? r._pendingCallbacks.push(t)
@@ -4589,16 +4611,16 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
           a(e);
       },
       enqueueForceUpdate: function(e) {
-        const t = s(e);
+        var t = s(e);
         t && ((t._pendingForceUpdate = !0), a(t));
       },
       enqueueReplaceState: function(e, t, n) {
-        const r = s(e);
+        var r = s(e);
         r &&
           ((r._pendingStateQueue = [t]),
           (r._pendingReplaceState = !0),
           void 0 !== n &&
-            n !== null &&
+            null !== n &&
             (u.validateCallback(n, 'replaceState'),
             r._pendingCallbacks
               ? r._pendingCallbacks.push(n)
@@ -4606,7 +4628,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
           a(r));
       },
       enqueueSetState: function(e, t) {
-        const n = s(e);
+        var n = s(e);
         n &&
           ((n._pendingStateQueue || (n._pendingStateQueue = [])).push(t), a(n));
       },
@@ -4615,14 +4637,14 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
       },
       validateCallback: function(e, t) {
         e &&
-          typeof e !== 'function' &&
+          'function' != typeof e &&
           r(
             '122',
             t,
             (function(e) {
-              const t = typeof e;
-              if (t !== 'object') return t;
-              let n = (e.constructor && e.constructor.name) || t,
+              var t = typeof e;
+              if ('object' !== t) return t;
+              var n = (e.constructor && e.constructor.name) || t,
                 r = Object.keys(e);
               return r.length > 0 && r.length < 20
                 ? n + ' (keys: ' + r.join(', ') + ')'
@@ -4636,55 +4658,55 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   function(e, t, n) {
     'use strict';
     n(7);
-    let r = n(11),
+    var r = n(11),
       o = (n(3), r);
     e.exports = o;
   },
   function(e, t, n) {
     'use strict';
     e.exports = function(e) {
-      let t,
+      var t,
         n = e.keyCode;
       return (
         'charCode' in e
-          ? (t = e.charCode) === 0 && n === 13 && (t = 13)
+          ? 0 === (t = e.charCode) && 13 === n && (t = 13)
           : (t = n),
-        t >= 32 || t === 13 ? t : 0
+        t >= 32 || 13 === t ? t : 0
       );
     };
   },
   function(e, t) {
-    let n;
+    var n;
     n = (function() {
       return this;
     })();
     try {
       n = n || Function('return this')() || (0, eval)('this');
     } catch (e) {
-      typeof window === 'object' && (n = window);
+      'object' == typeof window && (n = window);
     }
     e.exports = n;
   },
   function(e, t, n) {
     'use strict';
     (function(e, r) {
-      let o,
+      var o,
         i = n(101);
       o =
-        typeof self !== 'undefined'
+        'undefined' != typeof self
           ? self
-          : typeof window !== 'undefined'
+          : 'undefined' != typeof window
             ? window
             : void 0 !== e
               ? e
               : r;
-      const a = Object(i.a)(o);
+      var a = Object(i.a)(o);
       t.a = a;
     }.call(this, n(58), n(92)(e)));
   },
   function(e, t, n) {
     'use strict';
-    let r = n(23),
+    var r = n(23),
       o = n(39),
       i = n(61),
       a = (n(62), n(29));
@@ -4704,7 +4726,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
     function l() {}
     (s.prototype.isReactComponent = {}),
       (s.prototype.setState = function(e, t) {
-        typeof e !== 'object' && typeof e !== 'function' && e != null && r('85'),
+        'object' != typeof e && 'function' != typeof e && null != e && r('85'),
           this.updater.enqueueSetState(this, e),
           t && this.updater.enqueueCallback(this, t, 'setState');
       }),
@@ -4722,7 +4744,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   function(e, t, n) {
     'use strict';
     n(3);
-    const r = {
+    var r = {
       isMounted: function(e) {
         return !1;
       },
@@ -4739,8 +4761,8 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    const r =
-      (typeof Symbol === 'function' &&
+    var r =
+      ('function' == typeof Symbol &&
         Symbol.for &&
         Symbol.for('react.element')) ||
       60103;
@@ -4748,7 +4770,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    const r = n(113);
+    var r = n(113);
     e.exports = function(e) {
       return r(e, !1);
     };
@@ -4759,7 +4781,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
   },
   function(e, t, n) {
     'use strict';
-    let r = n(118),
+    var r = n(118),
       o = n(29),
       i = n(1),
       a = 'mixins';
@@ -4789,7 +4811,7 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
             e.displayName = t;
           },
           mixins: function(e, t) {
-            if (t) for (let n = 0; n < t.length; n++) p(e, t[n]);
+            if (t) for (var n = 0; n < t.length; n++) p(e, t[n]);
           },
           childContextTypes: function(e, t) {
             e.childContextTypes = r({}, e.childContextTypes, t);
@@ -4807,17 +4829,17 @@ for (let o = 0; o < n.length && !e.isPropagationStopped(); o++) { s(e, t, n[o], 
           },
           statics: function(e, t) {
             !(function(e, t) {
-              if (t) {
-for (const n in t) {
-                  const r = t[n];
+              if (t)
+                for (var n in t) {
+                  var r = t[n];
                   if (t.hasOwnProperty(n)) {
-                    const o = n in l;
+                    var o = n in l;
                     i(
                       !o,
                       'ReactClass: You are attempting to define a reserved property, `%s`, that shouldn\'t be on the "statics" key. Define it as an instance property instead; it will still be accessible on the constructor.',
                       n
                     );
-                    const a = n in e;
+                    var a = n in e;
                     i(
                       !a,
                       'ReactClass: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.',
@@ -4826,22 +4848,21 @@ for (const n in t) {
                       (e[n] = r);
                   }
                 }
-}
             })(e, t);
           },
           autobind: function() {}
         };
       function c(e, t) {
-        const n = u.hasOwnProperty(t) ? u[t] : null;
+        var n = u.hasOwnProperty(t) ? u[t] : null;
         g.hasOwnProperty(t) &&
           i(
-            n === 'OVERRIDE_BASE',
+            'OVERRIDE_BASE' === n,
             'ReactClassInterface: You are attempting to override `%s` from your class specification. Ensure that your method names do not overlap with React methods.',
             t
           ),
           e &&
             i(
-              n === 'DEFINE_MANY' || n === 'DEFINE_MANY_MERGED',
+              'DEFINE_MANY' === n || 'DEFINE_MANY_MERGED' === n,
               'ReactClassInterface: You are attempting to define `%s` on your component more than once. This conflict may be due to a mixin.',
               t
             );
@@ -4849,64 +4870,62 @@ for (const n in t) {
       function p(e, n) {
         if (n) {
           i(
-            typeof n !== 'function',
+            'function' != typeof n,
             "ReactClass: You're attempting to use a component class or function as a mixin. Instead, just use a regular object."
           ),
             i(
               !t(n),
               "ReactClass: You're attempting to use a component as a mixin. Instead, just use a regular object."
             );
-          let r = e.prototype,
+          var r = e.prototype,
             o = r.__reactAutoBindPairs;
-          for (const s in (n.hasOwnProperty(a) && l.mixins(e, n.mixins), n)) {
-if (n.hasOwnProperty(s) && s !== a) {
-              let p = n[s],
+          for (var s in (n.hasOwnProperty(a) && l.mixins(e, n.mixins), n))
+            if (n.hasOwnProperty(s) && s !== a) {
+              var p = n[s],
                 f = r.hasOwnProperty(s);
               if ((c(f, s), l.hasOwnProperty(s))) l[s](e, p);
               else {
-                const m = u.hasOwnProperty(s);
-                if (typeof p !== 'function' || m || f || !1 === n.autobind) {
-if (f) {
-                    const y = u[s];
+                var m = u.hasOwnProperty(s);
+                if ('function' != typeof p || m || f || !1 === n.autobind)
+                  if (f) {
+                    var y = u[s];
                     i(
-                      m && (y === 'DEFINE_MANY_MERGED' || y === 'DEFINE_MANY'),
+                      m && ('DEFINE_MANY_MERGED' === y || 'DEFINE_MANY' === y),
                       'ReactClass: Unexpected spec policy %s for key %s when mixing in component specs.',
                       y,
                       s
                     ),
-                      y === 'DEFINE_MANY_MERGED'
+                      'DEFINE_MANY_MERGED' === y
                         ? (r[s] = d(r[s], p))
-                        : y === 'DEFINE_MANY' && (r[s] = h(r[s], p));
+                        : 'DEFINE_MANY' === y && (r[s] = h(r[s], p));
                   } else r[s] = p;
-} else o.push(s, p), (r[s] = p);
+                else o.push(s, p), (r[s] = p);
               }
             }
-}
         }
       }
       function f(e, t) {
-        for (const n in (i(
-          e && t && typeof e === 'object' && typeof t === 'object',
+        for (var n in (i(
+          e && t && 'object' == typeof e && 'object' == typeof t,
           'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.'
         ),
-        t)) {
- t.hasOwnProperty(n) &&
+        t))
+          t.hasOwnProperty(n) &&
             (i(
               void 0 === e[n],
               'mergeIntoWithNoDuplicateKeys(): Tried to merge two objects with the same key: `%s`. This conflict may be due to a mixin; in particular, this may be caused by two getInitialState() or getDefaultProps() methods returning objects with clashing keys.',
               n
             ),
             (e[n] = t[n]));
-}
         return e;
       }
       function d(e, t) {
         return function() {
-          let n = e.apply(this, arguments),
+          var n = e.apply(this, arguments),
             r = t.apply(this, arguments);
-          if (n == null) return r;
-          if (r == null) return n;
-          const o = {};
+          if (null == n) return r;
+          if (null == r) return n;
+          var o = {};
           return f(o, n), f(o, r), o;
         };
       }
@@ -4946,11 +4965,11 @@ if (f) {
             this.__reactAutoBindPairs.length &&
               (function(e) {
                 for (
-                  let t = e.__reactAutoBindPairs, n = 0;
+                  var t = e.__reactAutoBindPairs, n = 0;
                   n < t.length;
                   n += 2
                 ) {
-                  let r = t[n],
+                  var r = t[n],
                     o = t[n + 1];
                   e[r] = m(e, o);
                 }
@@ -4960,15 +4979,15 @@ if (f) {
               (this.refs = o),
               (this.updater = a || n),
               (this.state = null);
-            const s = this.getInitialState ? this.getInitialState() : null;
+            var s = this.getInitialState ? this.getInitialState() : null;
             i(
-              typeof s === 'object' && !Array.isArray(s),
+              'object' == typeof s && !Array.isArray(s),
               '%s.getInitialState(): must return an object or null',
               t.displayName || 'ReactCompositeComponent'
             ),
               (this.state = s);
           });
-          for (const r in ((t.prototype = new b()),
+          for (var r in ((t.prototype = new b()),
           (t.prototype.constructor = t),
           (t.prototype.__reactAutoBindPairs = []),
           s.forEach(p.bind(null, t)),
@@ -4980,7 +4999,8 @@ if (f) {
             t.prototype.render,
             'createClass(...): Class specification must implement a `render` method.'
           ),
-          u)) { t.prototype[r] || (t.prototype[r] = null); }
+          u))
+            t.prototype[r] || (t.prototype[r] = null);
           return t;
         }
       );
@@ -4992,12 +5012,12 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(4);
+    var r = n(4);
     n(1);
     e.exports = function(e, t) {
       return (
-        t == null && r('30'),
-        e == null
+        null == t && r('30'),
+        null == e
           ? t
           : Array.isArray(e)
             ? Array.isArray(t)
@@ -5017,7 +5037,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(9),
+    var r = n(9),
       o = null;
     e.exports = function() {
       return (
@@ -5033,13 +5053,14 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(4);
-    let o = n(16),
+    var r = n(4);
+    var o = n(16),
       i = (n(1),
       (function() {
         function e(t) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, e),
             (this._callbacks = null),
             (this._contexts = null),
@@ -5053,14 +5074,14 @@ if (f) {
               this._contexts.push(t);
           }),
           (e.prototype.notifyAll = function() {
-            let e = this._callbacks,
+            var e = this._callbacks,
               t = this._contexts,
               n = this._arg;
             if (e && t) {
               e.length !== t.length && r('24'),
                 (this._callbacks = null),
                 (this._contexts = null);
-              for (let o = 0; o < e.length; o++) e[o].call(t[o], n);
+              for (var o = 0; o < e.length; o++) e[o].call(t[o], n);
               (e.length = 0), (t.length = 0);
             }
           }),
@@ -5089,12 +5110,12 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(6);
+    var r = n(6);
     function o(e) {
-      let t = e.type,
+      var t = e.type,
         n = e.nodeName;
       return (
-        n && n.toLowerCase() === 'input' && (t === 'checkbox' || t === 'radio')
+        n && 'input' === n.toLowerCase() && ('checkbox' === t || 'radio' === t)
       );
     }
     function i(e) {
@@ -5106,13 +5127,13 @@ if (f) {
       },
       track: function(e) {
         if (!i(e)) {
-          let t = r.getNodeFromInstance(e),
+          var t = r.getNodeFromInstance(e),
             n = o(t) ? 'checked' : 'value',
             a = Object.getOwnPropertyDescriptor(t.constructor.prototype, n),
             s = '' + t[n];
           t.hasOwnProperty(n) ||
-            typeof a.get !== 'function' ||
-            typeof a.set !== 'function' ||
+            'function' != typeof a.get ||
+            'function' != typeof a.set ||
             (Object.defineProperty(t, n, {
               enumerable: a.enumerable,
               configurable: !0,
@@ -5143,17 +5164,17 @@ if (f) {
       },
       updateValueIfChanged: function(e) {
         if (!e) return !1;
-        const t = i(e);
+        var t = i(e);
         if (!t) return a.track(e), !0;
-        let n = t.getValue(),
+        var n = t.getValue(),
           s = (function(e) {
-            let t;
+            var t;
             return e && (t = o(e) ? '' + e.checked : e.value), t;
           })(r.getNodeFromInstance(e));
         return s !== n && (t.setValue(s), !0);
       },
       stopTracking: function(e) {
-        const t = i(e);
+        var t = i(e);
         t && t.stopTracking();
       }
     };
@@ -5161,7 +5182,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       color: !0,
       date: !0,
       datetime: !0,
@@ -5179,8 +5200,8 @@ if (f) {
       week: !0
     };
     e.exports = function(e) {
-      const t = e && e.nodeName && e.nodeName.toLowerCase();
-      return t === 'input' ? !!r[e.type] : t === 'textarea';
+      var t = e && e.nodeName && e.nodeName.toLowerCase();
+      return 'input' === t ? !!r[e.type] : 'textarea' === t;
     };
   },
   function(e, t, n) {
@@ -5196,20 +5217,21 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(9),
+    var r = n(9),
       o = n(34),
       i = n(33),
       a = function(e, t) {
         if (t) {
-          const n = e.firstChild;
-          if (n && n === e.lastChild && n.nodeType === 3) { return void (n.nodeValue = t); }
+          var n = e.firstChild;
+          if (n && n === e.lastChild && 3 === n.nodeType)
+            return void (n.nodeValue = t);
         }
         e.textContent = t;
       };
     r.canUseDOM &&
       ('textContent' in document.documentElement ||
         (a = function(e, t) {
-          e.nodeType !== 3 ? i(e, o(t)) : (e.nodeValue = t);
+          3 !== e.nodeType ? i(e, o(t)) : (e.nodeValue = t);
         })),
       (e.exports = a);
   },
@@ -5223,7 +5245,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       animationIterationCount: !0,
       borderImageOutset: !0,
       borderImageSlice: !0,
@@ -5266,7 +5288,7 @@ if (f) {
       strokeOpacity: !0,
       strokeWidth: !0
     };
-    const o = ['Webkit', 'ms', 'Moz', 'O'];
+    var o = ['Webkit', 'ms', 'Moz', 'O'];
     Object.keys(r).forEach(function(e) {
       o.forEach(function(t) {
         r[
@@ -5276,7 +5298,7 @@ if (f) {
         ] = r[e];
       });
     });
-    const i = {
+    var i = {
       isUnitlessNumber: r,
       shorthandPropertyExpansions: {
         background: {
@@ -5327,7 +5349,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(19),
+    var r = n(19),
       o = (n(6), n(12), n(148)),
       i = (n(3),
       new RegExp(
@@ -5348,7 +5370,7 @@ if (f) {
     }
     function l(e, t) {
       return (
-        t == null ||
+        null == t ||
         (e.hasBooleanValue && !t) ||
         (e.hasNumericValue && isNaN(t)) ||
         (e.hasPositiveNumericValue && t < 1) ||
@@ -5369,33 +5391,33 @@ if (f) {
         e.setAttribute(r.ROOT_ATTRIBUTE_NAME, '');
       },
       createMarkupForProperty: function(e, t) {
-        const n = r.properties.hasOwnProperty(e) ? r.properties[e] : null;
+        var n = r.properties.hasOwnProperty(e) ? r.properties[e] : null;
         if (n) {
           if (l(n, t)) return '';
-          const i = n.attributeName;
+          var i = n.attributeName;
           return n.hasBooleanValue || (n.hasOverloadedBooleanValue && !0 === t)
             ? i + '=""'
             : i + '=' + o(t);
         }
         return r.isCustomAttribute(e)
-          ? t == null
+          ? null == t
             ? ''
             : e + '=' + o(t)
           : null;
       },
       createMarkupForCustomAttribute: function(e, t) {
-        return u(e) && t != null ? e + '=' + o(t) : '';
+        return u(e) && null != t ? e + '=' + o(t) : '';
       },
       setValueForProperty: function(e, t, n) {
-        const o = r.properties.hasOwnProperty(t) ? r.properties[t] : null;
+        var o = r.properties.hasOwnProperty(t) ? r.properties[t] : null;
         if (o) {
-          const i = o.mutationMethod;
+          var i = o.mutationMethod;
           if (i) i(e, n);
           else {
             if (l(o, n)) return void this.deleteValueForProperty(e, t);
             if (o.mustUseProperty) e[o.propertyName] = n;
             else {
-              let a = o.attributeName,
+              var a = o.attributeName,
                 s = o.attributeNamespace;
               s
                 ? e.setAttributeNS(s, a, '' + n)
@@ -5404,21 +5426,22 @@ if (f) {
                   : e.setAttribute(a, '' + n);
             }
           }
-        } else if (r.isCustomAttribute(t)) { return void c.setValueForAttribute(e, t, n); }
+        } else if (r.isCustomAttribute(t))
+          return void c.setValueForAttribute(e, t, n);
       },
       setValueForAttribute: function(e, t, n) {
-        u(t) && (n == null ? e.removeAttribute(t) : e.setAttribute(t, '' + n));
+        u(t) && (null == n ? e.removeAttribute(t) : e.setAttribute(t, '' + n));
       },
       deleteValueForAttribute: function(e, t) {
         e.removeAttribute(t);
       },
       deleteValueForProperty: function(e, t) {
-        const n = r.properties.hasOwnProperty(t) ? r.properties[t] : null;
+        var n = r.properties.hasOwnProperty(t) ? r.properties[t] : null;
         if (n) {
-          const o = n.mutationMethod;
+          var o = n.mutationMethod;
           if (o) o(e, void 0);
           else if (n.mustUseProperty) {
-            const i = n.propertyName;
+            var i = n.propertyName;
             n.hasBooleanValue ? (e[i] = !1) : (e[i] = '');
           } else e.removeAttribute(n.attributeName);
         } else r.isCustomAttribute(t) && e.removeAttribute(t);
@@ -5428,7 +5451,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(49),
       i = n(6),
       a = n(13),
@@ -5436,38 +5459,39 @@ if (f) {
     function u() {
       if (this._rootNodeID && this._wrapperState.pendingUpdate) {
         this._wrapperState.pendingUpdate = !1;
-        let e = this._currentElement.props,
+        var e = this._currentElement.props,
           t = o.getValue(e);
-        t != null && l(this, Boolean(e.multiple), t);
+        null != t && l(this, Boolean(e.multiple), t);
       }
     }
     function l(e, t, n) {
-      let r,
+      var r,
         o,
         a = i.getNodeFromInstance(e).options;
       if (t) {
         for (r = {}, o = 0; o < n.length; o++) r['' + n[o]] = !0;
         for (o = 0; o < a.length; o++) {
-          const s = r.hasOwnProperty(a[o].value);
+          var s = r.hasOwnProperty(a[o].value);
           a[o].selected !== s && (a[o].selected = s);
         }
       } else {
-        for (r = '' + n, o = 0; o < a.length; o++) { if (a[o].value === r) return void (a[o].selected = !0); }
+        for (r = '' + n, o = 0; o < a.length; o++)
+          if (a[o].value === r) return void (a[o].selected = !0);
         a.length && (a[0].selected = !0);
       }
     }
-    const c = {
+    var c = {
       getHostProps: function(e, t) {
         return r({}, t, { onChange: e._wrapperState.onChange, value: void 0 });
       },
       mountWrapper: function(e, t) {
-        const n = o.getValue(t);
+        var n = o.getValue(t);
         (e._wrapperState = {
           pendingUpdate: !1,
-          initialValue: n != null ? n : t.defaultValue,
+          initialValue: null != n ? n : t.defaultValue,
           listeners: null,
           onChange: function(e) {
-            let t = this._currentElement.props,
+            var t = this._currentElement.props,
               n = o.executeOnChange(t, e);
             this._rootNodeID && (this._wrapperState.pendingUpdate = !0);
             return a.asap(u, this), n;
@@ -5480,15 +5504,15 @@ if (f) {
         return e._wrapperState.initialValue;
       },
       postUpdateWrapper: function(e) {
-        const t = e._currentElement.props;
+        var t = e._currentElement.props;
         e._wrapperState.initialValue = void 0;
-        const n = e._wrapperState.wasMultiple;
+        var n = e._wrapperState.wasMultiple;
         e._wrapperState.wasMultiple = Boolean(t.multiple);
-        const r = o.getValue(t);
-        r != null
+        var r = o.getValue(t);
+        null != r
           ? ((e._wrapperState.pendingUpdate = !1), l(e, Boolean(t.multiple), r))
           : n !== Boolean(t.multiple) &&
-            (t.defaultValue != null
+            (null != t.defaultValue
               ? l(e, Boolean(t.multiple), t.defaultValue)
               : l(e, Boolean(t.multiple), t.multiple ? [] : ''));
       }
@@ -5497,7 +5521,7 @@ if (f) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(157),
       a = n(83),
@@ -5509,41 +5533,40 @@ if (f) {
         this.construct(e);
       });
     function l(e, t) {
-      let n;
-      if (e === null || !1 === e) n = a.create(l);
-      else if (typeof e === 'object') {
-        let o = e,
+      var n;
+      if (null === e || !1 === e) n = a.create(l);
+      else if ('object' == typeof e) {
+        var o = e,
           i = o.type;
-        if (typeof i !== 'function' && typeof i !== 'string') {
-          let c = '';
+        if ('function' != typeof i && 'string' != typeof i) {
+          var c = '';
           0,
             (c += (function(e) {
               if (e) {
-                const t = e.getName();
+                var t = e.getName();
                 if (t) return ' Check the render method of `' + t + '`.';
               }
               return '';
             })(o._owner)),
-            r('130', i == null ? i : typeof i, c);
+            r('130', null == i ? i : typeof i, c);
         }
-        typeof o.type === 'string'
+        'string' == typeof o.type
           ? (n = s.createInternalComponent(o))
           : !(function(e) {
               return (
-                typeof e === 'function' &&
+                'function' == typeof e &&
                 void 0 !== e.prototype &&
-                typeof e.prototype.mountComponent === 'function' &&
-                typeof e.prototype.receiveComponent === 'function'
+                'function' == typeof e.prototype.mountComponent &&
+                'function' == typeof e.prototype.receiveComponent
               );
             })(o.type)
             ? (n = new u(o))
             : (n = new o.type(o)).getHostNode ||
               (n.getHostNode = n.getNativeNode);
-      } else {
-typeof e === 'string' || typeof e === 'number'
+      } else
+        'string' == typeof e || 'number' == typeof e
           ? (n = s.createInstanceForText(e))
           : r('131', typeof e);
-}
       return (n._mountIndex = 0), (n._mountImage = null), n;
     }
     o(u.prototype, i, { _instantiateReactComponent: l }), (e.exports = l);
@@ -5558,10 +5581,10 @@ typeof e === 'string' || typeof e === 'number'
         COMPOSITE: 1,
         EMPTY: 2,
         getType: function(e) {
-          return e === null || !1 === e
+          return null === e || !1 === e
             ? i.EMPTY
             : o.isValidElement(e)
-              ? typeof e.type === 'function'
+              ? 'function' == typeof e.type
                 ? i.COMPOSITE
                 : i.HOST
               : void r('26', e);
@@ -5571,7 +5594,7 @@ typeof e === 'string' || typeof e === 'number'
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o = {
         injectEmptyComponentFactory: function(e) {
           r = e;
@@ -5586,10 +5609,10 @@ typeof e === 'string' || typeof e === 'number'
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(1), null),
       i = null;
-    const a = {
+    var a = {
       createInternalComponent: function(e) {
         return o || r('111', e.type), new o(e);
       },
@@ -5612,44 +5635,47 @@ typeof e === 'string' || typeof e === 'number'
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(14), n(159)),
       i = n(160),
       a = (n(1), n(54)),
       s = (n(3), '.'),
       u = ':';
     function l(e, t) {
-      return e && typeof e === 'object' && e.key != null
+      return e && 'object' == typeof e && null != e.key
         ? a.escape(e.key)
         : t.toString(36);
     }
     e.exports = function(e, t, n) {
-      return e == null
+      return null == e
         ? 0
         : (function e(t, n, c, p) {
-            let f,
+            var f,
               d = typeof t;
             if (
-              ((d !== 'undefined' && d !== 'boolean') || (t = null),
-              t === null ||
-                d === 'string' ||
-                d === 'number' ||
-                (d === 'object' && t.$$typeof === o))
-            ) { return c(p, t, n === '' ? s + l(t, 0) : n), 1; }
-            let h = 0,
-              m = n === '' ? s : n + u;
-            if (Array.isArray(t)) {
- for (let y = 0; y < t.length; y++) { h += e((f = t[y]), m + l(f, y), c, p); }
-} else {
-              const v = i(t);
+              (('undefined' !== d && 'boolean' !== d) || (t = null),
+              null === t ||
+                'string' === d ||
+                'number' === d ||
+                ('object' === d && t.$$typeof === o))
+            )
+              return c(p, t, '' === n ? s + l(t, 0) : n), 1;
+            var h = 0,
+              m = '' === n ? s : n + u;
+            if (Array.isArray(t))
+              for (var y = 0; y < t.length; y++)
+                h += e((f = t[y]), m + l(f, y), c, p);
+            else {
+              var v = i(t);
               if (v) {
-                let g,
+                var g,
                   b = v.call(t);
-                if (v !== t.entries) {
- for (let w = 0; !(g = b.next()).done;) { h += e((f = g.value), m + l(f, w++), c, p); }
-} else {
-for (; !(g = b.next()).done;) {
-                    const _ = g.value;
+                if (v !== t.entries)
+                  for (var w = 0; !(g = b.next()).done; )
+                    h += e((f = g.value), m + l(f, w++), c, p);
+                else
+                  for (; !(g = b.next()).done; ) {
+                    var _ = g.value;
                     _ &&
                       (h += e(
                         (f = _[1]),
@@ -5658,12 +5684,11 @@ for (; !(g = b.next()).done;) {
                         p
                       ));
                   }
-}
-              } else if (d === 'object') {
-                const C = String(t);
+              } else if ('object' === d) {
+                var C = String(t);
                 r(
                   '31',
-                  C === '[object Object]'
+                  '[object Object]' === C
                     ? 'object with keys {' + Object.keys(t).join(', ') + '}'
                     : C,
                   ''
@@ -5676,7 +5701,7 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r,
+    var r,
       o,
       i,
       a,
@@ -5687,7 +5712,7 @@ for (; !(g = b.next()).done;) {
       p = n(14);
     n(1), n(3);
     function f(e) {
-      let t = Function.prototype.toString,
+      var t = Function.prototype.toString,
         n = Object.prototype.hasOwnProperty,
         r = RegExp(
           '^' +
@@ -5701,26 +5726,26 @@ for (; !(g = b.next()).done;) {
             '$'
         );
       try {
-        const o = t.call(e);
+        var o = t.call(e);
         return r.test(o);
       } catch (e) {
         return !1;
       }
     }
     if (
-      typeof Array.from === 'function' &&
-      typeof Map === 'function' &&
+      'function' == typeof Array.from &&
+      'function' == typeof Map &&
       f(Map) &&
-      Map.prototype != null &&
-      typeof Map.prototype.keys === 'function' &&
+      null != Map.prototype &&
+      'function' == typeof Map.prototype.keys &&
       f(Map.prototype.keys) &&
-      typeof Set === 'function' &&
+      'function' == typeof Set &&
       f(Set) &&
-      Set.prototype != null &&
-      typeof Set.prototype.keys === 'function' &&
+      null != Set.prototype &&
+      'function' == typeof Set.prototype.keys &&
       f(Set.prototype.keys)
     ) {
-      let d = new Map(),
+      var d = new Map(),
         h = new Set();
       (r = function(e, t) {
         d.set(e, t);
@@ -5744,7 +5769,7 @@ for (; !(g = b.next()).done;) {
           return Array.from(h.keys());
         });
     } else {
-      let m = {},
+      var m = {},
         y = {},
         v = function(e) {
           return '.' + e;
@@ -5753,37 +5778,37 @@ for (; !(g = b.next()).done;) {
           return parseInt(e.substr(1), 10);
         };
       (r = function(e, t) {
-        const n = v(e);
+        var n = v(e);
         m[n] = t;
       }),
         (o = function(e) {
-          const t = v(e);
+          var t = v(e);
           return m[t];
         }),
         (i = function(e) {
-          const t = v(e);
+          var t = v(e);
           delete m[t];
         }),
         (a = function() {
           return Object.keys(m).map(g);
         }),
         (s = function(e) {
-          const t = v(e);
+          var t = v(e);
           y[t] = !0;
         }),
         (u = function(e) {
-          const t = v(e);
+          var t = v(e);
           delete y[t];
         }),
         (l = function() {
           return Object.keys(y).map(g);
         });
     }
-    const b = [];
+    var b = [];
     function w(e) {
-      const t = o(e);
+      var t = o(e);
       if (t) {
-        const n = t.childIDs;
+        var n = t.childIDs;
         i(e), n.forEach(w);
       }
     }
@@ -5803,16 +5828,16 @@ for (; !(g = b.next()).done;) {
       );
     }
     function C(e) {
-      return e == null
+      return null == e
         ? '#empty'
-        : typeof e === 'string' || typeof e === 'number'
+        : 'string' == typeof e || 'number' == typeof e
           ? '#text'
-          : typeof e.type === 'string'
+          : 'string' == typeof e.type
             ? e.type
             : e.type.displayName || e.type.name || 'Unknown';
     }
     function O(e) {
-      let t,
+      var t,
         n = x.getDisplayName(e),
         r = x.getElement(e),
         o = x.getOwnerID(e);
@@ -5820,18 +5845,18 @@ for (; !(g = b.next()).done;) {
     }
     var x = {
       onSetChildren: function(e, t) {
-        const n = o(e);
+        var n = o(e);
         n || c('144'), (n.childIDs = t);
-        for (let r = 0; r < t.length; r++) {
-          let i = t[r],
+        for (var r = 0; r < t.length; r++) {
+          var i = t[r],
             a = o(i);
           a || c('140'),
-            a.childIDs == null &&
-              typeof a.element === 'object' &&
-              a.element != null &&
+            null == a.childIDs &&
+              'object' == typeof a.element &&
+              null != a.element &&
               c('141'),
             a.isMounted || c('71'),
-            a.parentID == null && (a.parentID = e),
+            null == a.parentID && (a.parentID = e),
             a.parentID !== e && c('142', i, a.parentID, e);
         }
       },
@@ -5846,87 +5871,87 @@ for (; !(g = b.next()).done;) {
         });
       },
       onBeforeUpdateComponent: function(e, t) {
-        const n = o(e);
+        var n = o(e);
         n && n.isMounted && (n.element = t);
       },
       onMountComponent: function(e) {
-        const t = o(e);
-        t || c('144'), (t.isMounted = !0), t.parentID === 0 && s(e);
+        var t = o(e);
+        t || c('144'), (t.isMounted = !0), 0 === t.parentID && s(e);
       },
       onUpdateComponent: function(e) {
-        const t = o(e);
+        var t = o(e);
         t && t.isMounted && t.updateCount++;
       },
       onUnmountComponent: function(e) {
-        const t = o(e);
-        t && ((t.isMounted = !1), t.parentID === 0 && u(e));
+        var t = o(e);
+        t && ((t.isMounted = !1), 0 === t.parentID && u(e));
         b.push(e);
       },
       purgeUnmountedComponents: function() {
         if (!x._preventPurging) {
-          for (let e = 0; e < b.length; e++) {
+          for (var e = 0; e < b.length; e++) {
             w(b[e]);
           }
           b.length = 0;
         }
       },
       isMounted: function(e) {
-        const t = o(e);
+        var t = o(e);
         return !!t && t.isMounted;
       },
       getCurrentStackAddendum: function(e) {
-        let t = '';
+        var t = '';
         if (e) {
-          let n = C(e),
+          var n = C(e),
             r = e._owner;
           t += _(n, e._source, r && r.getName());
         }
-        let o = p.current,
+        var o = p.current,
           i = o && o._debugID;
         return (t += x.getStackAddendumByID(i));
       },
       getStackAddendumByID: function(e) {
-        for (var t = ''; e;) (t += O(e)), (e = x.getParentID(e));
+        for (var t = ''; e; ) (t += O(e)), (e = x.getParentID(e));
         return t;
       },
       getChildIDs: function(e) {
-        const t = o(e);
+        var t = o(e);
         return t ? t.childIDs : [];
       },
       getDisplayName: function(e) {
-        const t = x.getElement(e);
+        var t = x.getElement(e);
         return t ? C(t) : null;
       },
       getElement: function(e) {
-        const t = o(e);
+        var t = o(e);
         return t ? t.element : null;
       },
       getOwnerID: function(e) {
-        const t = x.getElement(e);
+        var t = x.getElement(e);
         return t && t._owner ? t._owner._debugID : null;
       },
       getParentID: function(e) {
-        const t = o(e);
+        var t = o(e);
         return t ? t.parentID : null;
       },
       getSource: function(e) {
-        let t = o(e),
+        var t = o(e),
           n = t ? t.element : null;
-        return n != null ? n._source : null;
+        return null != n ? n._source : null;
       },
       getText: function(e) {
-        const t = x.getElement(e);
-        return typeof t === 'string' ? t : typeof t === 'number' ? '' + t : null;
+        var t = x.getElement(e);
+        return 'string' == typeof t ? t : 'number' == typeof t ? '' + t : null;
       },
       getUpdateCount: function(e) {
-        const t = o(e);
+        var t = o(e);
         return t ? t.updateCount : 0;
       },
       getRootIDs: l,
       getRegisteredIDs: a,
       pushNonStandardWarningStack: function(e, t) {
-        if (typeof console.reactStack === 'function') {
-          let n = [],
+        if ('function' == typeof console.reactStack) {
+          var n = [],
             r = p.current,
             o = r && r._debugID;
           try {
@@ -5940,7 +5965,7 @@ for (; !(g = b.next()).done;) {
               o;
 
             ) {
-              let i = x.getElement(o),
+              var i = x.getElement(o),
                 a = x.getParentID(o),
                 s = x.getOwnerID(o),
                 u = s ? x.getDisplayName(s) : null,
@@ -5957,14 +5982,14 @@ for (; !(g = b.next()).done;) {
         }
       },
       popNonStandardWarningStack: function() {
-        typeof console.reactStackEnd === 'function' && console.reactStackEnd();
+        'function' == typeof console.reactStackEnd && console.reactStackEnd();
       }
     };
     e.exports = x;
   },
   function(e, t, n) {
     'use strict';
-    let r = n(11),
+    var r = n(11),
       o = {
         listen: function(e, t, n) {
           return e.addEventListener
@@ -5999,22 +6024,22 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(172),
+    var r = n(172),
       o = n(174),
       i = n(77),
       a = n(89);
     var s = {
       hasSelectionCapabilities: function(e) {
-        const t = e && e.nodeName && e.nodeName.toLowerCase();
+        var t = e && e.nodeName && e.nodeName.toLowerCase();
         return (
           t &&
-          ((t === 'input' && e.type === 'text') ||
-            t === 'textarea' ||
-            e.contentEditable === 'true')
+          (('input' === t && 'text' === e.type) ||
+            'textarea' === t ||
+            'true' === e.contentEditable)
         );
       },
       getSelectionInformation: function() {
-        const e = a();
+        var e = a();
         return {
           focusedElem: e,
           selectionRange: s.hasSelectionCapabilities(e)
@@ -6023,7 +6048,7 @@ for (; !(g = b.next()).done;) {
         };
       },
       restoreSelection: function(e) {
-        let t = a(),
+        var t = a(),
           n = e.focusedElem,
           r = e.selectionRange;
         t !== n &&
@@ -6033,13 +6058,15 @@ for (; !(g = b.next()).done;) {
           (s.hasSelectionCapabilities(n) && s.setSelection(n, r), i(n));
       },
       getSelection: function(e) {
-        let t;
-        if ('selectionStart' in e) { t = { start: e.selectionStart, end: e.selectionEnd }; } else if (
+        var t;
+        if ('selectionStart' in e)
+          t = { start: e.selectionStart, end: e.selectionEnd };
+        else if (
           document.selection &&
           e.nodeName &&
-          e.nodeName.toLowerCase() === 'input'
+          'input' === e.nodeName.toLowerCase()
         ) {
-          const n = document.selection.createRange();
+          var n = document.selection.createRange();
           n.parentElement() === e &&
             (t = {
               start: -n.moveStart('character', -e.value.length),
@@ -6049,17 +6076,17 @@ for (; !(g = b.next()).done;) {
         return t || { start: 0, end: 0 };
       },
       setSelection: function(e, t) {
-        let n = t.start,
+        var n = t.start,
           o = t.end;
-        if ((void 0 === o && (o = n), 'selectionStart' in e)) {
- (e.selectionStart = n),
+        if ((void 0 === o && (o = n), 'selectionStart' in e))
+          (e.selectionStart = n),
             (e.selectionEnd = Math.min(o, e.value.length));
-} else if (
+        else if (
           document.selection &&
           e.nodeName &&
-          e.nodeName.toLowerCase() === 'input'
+          'input' === e.nodeName.toLowerCase()
         ) {
-          const i = e.createTextRange();
+          var i = e.createTextRange();
           i.collapse(!0),
             i.moveStart('character', n),
             i.moveEnd('character', o - n),
@@ -6074,8 +6101,9 @@ for (; !(g = b.next()).done;) {
     e.exports = function(e) {
       if (
         void 0 ===
-        (e = e || (typeof document !== 'undefined' ? document : void 0))
-      ) { return null; }
+        (e = e || ('undefined' != typeof document ? document : void 0))
+      )
+        return null;
       try {
         return e.activeElement || e.body;
       } catch (t) {
@@ -6085,7 +6113,7 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(21),
       i = n(19),
       a = n(17),
@@ -6113,21 +6141,21 @@ for (; !(g = b.next()).done;) {
       return e ? (e.nodeType === x ? e.documentElement : e.firstChild) : null;
     }
     function S(e, t, n, r, o) {
-      let i;
+      var i;
       if (p.logTopLevelRenders) {
-        const a = e._currentElement.props.child.type;
+        var a = e._currentElement.props.child.type;
         (i =
           'React mount: ' +
-          (typeof a === 'string' ? a : a.displayName || a.name)),
+          ('string' == typeof a ? a : a.displayName || a.name)),
           console.time(i);
       }
-      const s = h.mountComponent(e, n, null, l(e, t), o, 0);
+      var s = h.mountComponent(e, n, null, l(e, t), o, 0);
       i && console.timeEnd(i),
         (e._renderedComponent._topLevelWrapper = e),
         D._mountImageIntoNode(s, t, e, r, n);
     }
     function P(e, t, n, r) {
-      const o = y.ReactReconcileTransaction.getPooled(!n && c.useCreateElement);
+      var o = y.ReactReconcileTransaction.getPooled(!n && c.useCreateElement);
       o.perform(S, null, e, t, o, n, r), y.ReactReconcileTransaction.release(o);
     }
     function A(e, t, n) {
@@ -6137,12 +6165,13 @@ for (; !(g = b.next()).done;) {
           t.nodeType === x && (t = t.documentElement);
         t.lastChild;
 
-      ) { t.removeChild(t.lastChild); }
+      )
+        t.removeChild(t.lastChild);
     }
     function I(e) {
-      const t = T(e);
+      var t = T(e);
       if (t) {
-        const n = u.getInstanceFromNode(t);
+        var n = u.getInstanceFromNode(t);
         return !(!n || !n._hostParent);
       }
     }
@@ -6153,14 +6182,14 @@ for (; !(g = b.next()).done;) {
       );
     }
     function M(e) {
-      const t = (function(e) {
-        let t = T(e),
+      var t = (function(e) {
+        var t = T(e),
           n = t && u.getInstanceFromNode(t);
         return n && !n._hostParent ? n : null;
       })(e);
       return t ? t._hostContainerInfo._topLevelWrapper : null;
     }
-    let R = 1,
+    var R = 1,
       N = function() {
         this.rootID = R++;
       };
@@ -6186,14 +6215,14 @@ for (; !(g = b.next()).done;) {
       },
       _renderNewRootComponent: function(e, t, n, o) {
         j(t) || r('37'), s.ensureScrollValueMonitoring();
-        const i = g(e, !1);
+        var i = g(e, !1);
         y.batchedUpdates(P, i, t, n, o);
-        const a = i._instance.rootID;
+        var a = i._instance.rootID;
         return (k[a] = i), i;
       },
       renderSubtreeIntoContainer: function(e, t, n, o) {
         return (
-          (e != null && f.has(e)) || r('38'),
+          (null != e && f.has(e)) || r('38'),
           D._renderSubtreeIntoContainer(e, t, n, o)
         );
       },
@@ -6202,25 +6231,25 @@ for (; !(g = b.next()).done;) {
           a.isValidElement(t) ||
             r(
               '39',
-              typeof t === 'string'
+              'string' == typeof t
                 ? " Instead of passing a string like 'div', pass React.createElement('div') or <div />."
-                : typeof t === 'function'
+                : 'function' == typeof t
                   ? ' Instead of passing a class like Foo, pass React.createElement(Foo) or <Foo />.'
-                  : t != null && void 0 !== t.props
+                  : null != t && void 0 !== t.props
                     ? ' This may be caused by unintentionally loading two independent copies of React.'
                     : ''
             );
-        let i,
+        var i,
           s = a.createElement(N, { child: t });
         if (e) {
-          const u = f.get(e);
+          var u = f.get(e);
           i = u._processChildContext(u._context);
         } else i = v;
-        const l = M(n);
+        var l = M(n);
         if (l) {
-          const c = l._currentElement.props.child;
+          var c = l._currentElement.props.child;
           if (w(c, t)) {
-            let p = l._renderedComponent.getPublicInstance(),
+            var p = l._renderedComponent.getPublicInstance(),
               d =
                 o &&
                 function() {
@@ -6230,7 +6259,7 @@ for (; !(g = b.next()).done;) {
           }
           D.unmountComponentAtNode(n);
         }
-        let h = T(n),
+        var h = T(n),
           y =
             h &&
             !!(function(e) {
@@ -6251,24 +6280,25 @@ for (; !(g = b.next()).done;) {
       },
       unmountComponentAtNode: function(e) {
         j(e) || r('40');
-        const t = M(e);
+        var t = M(e);
         if (!t) {
-          I(e), e.nodeType === 1 && e.hasAttribute(C);
+          I(e), 1 === e.nodeType && e.hasAttribute(C);
           return !1;
         }
         return delete k[t._instance.rootID], y.batchedUpdates(A, t, e, !1), !0;
       },
       _mountImageIntoNode: function(e, t, n, i, a) {
         if ((j(t) || r('41'), i)) {
-          const s = T(t);
+          var s = T(t);
           if (d.canReuseMarkup(e, s)) return void u.precacheNode(n, s);
-          const l = s.getAttribute(d.CHECKSUM_ATTR_NAME);
+          var l = s.getAttribute(d.CHECKSUM_ATTR_NAME);
           s.removeAttribute(d.CHECKSUM_ATTR_NAME);
-          const c = s.outerHTML;
+          var c = s.outerHTML;
           s.setAttribute(d.CHECKSUM_ATTR_NAME, l);
-          let p = e,
+          var p = e,
             f = (function(e, t) {
-              for (var n = Math.min(e.length, t.length), r = 0; r < n; r++) { if (e.charAt(r) !== t.charAt(r)) return r; }
+              for (var n = Math.min(e.length, t.length), r = 0; r < n; r++)
+                if (e.charAt(r) !== t.charAt(r)) return r;
               return e.length === t.length ? -1 : n;
             })(p, c),
             h =
@@ -6279,7 +6309,7 @@ for (; !(g = b.next()).done;) {
           t.nodeType === x && r('42', h);
         }
         if ((t.nodeType === x && r('43'), a.useCreateElement)) {
-          for (; t.lastChild;) t.removeChild(t.lastChild);
+          for (; t.lastChild; ) t.removeChild(t.lastChild);
           o.insertTreeBefore(t, e, null);
         } else b(t, e), u.precacheNode(n, t.firstChild);
       }
@@ -6288,9 +6318,10 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(82);
+    var r = n(82);
     e.exports = function(e) {
-      for (var t; (t = e._renderedNodeType) === r.COMPOSITE;) { e = e._renderedComponent; }
+      for (var t; (t = e._renderedNodeType) === r.COMPOSITE; )
+        e = e._renderedComponent;
       return t === r.HOST
         ? e._renderedComponent
         : t === r.EMPTY
@@ -6325,7 +6356,7 @@ for (; !(g = b.next()).done;) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 }),
       (t.StickyContainer = t.Sticky = void 0);
-    let r = i(n(206)),
+    var r = i(n(206)),
       o = i(n(207));
     function i(e) {
       return e && e.__esModule ? e : { default: e };
@@ -6337,10 +6368,10 @@ for (; !(g = b.next()).done;) {
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -6365,20 +6396,20 @@ for (; !(g = b.next()).done;) {
     function u(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let l = a.default.img(o),
+    var l = a.default.img(o),
       c = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -6389,12 +6420,11 @@ for (; !(g = b.next()).done;) {
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -6445,21 +6475,21 @@ for (; !(g = b.next()).done;) {
  *
  * http://api.jqueryui.com/category/ui-core/
  */
-    const r = /input|select|textarea|button|object/;
+    var r = /input|select|textarea|button|object/;
     function o(e) {
-      const t = e.offsetWidth <= 0 && e.offsetHeight <= 0;
+      var t = e.offsetWidth <= 0 && e.offsetHeight <= 0;
       if (t && !e.innerHTML) return !0;
-      const n = window.getComputedStyle(e);
+      var n = window.getComputedStyle(e);
       return t
-        ? n.getPropertyValue('overflow') !== 'visible'
-        : n.getPropertyValue('display') == 'none';
+        ? 'visible' !== n.getPropertyValue('overflow')
+        : 'none' == n.getPropertyValue('display');
     }
     function i(e, t) {
-      const n = e.nodeName.toLowerCase();
+      var n = e.nodeName.toLowerCase();
       return (
-        ((r.test(n) && !e.disabled) || (n === 'a' && e.href) || t) &&
+        ((r.test(n) && !e.disabled) || ('a' === n && e.href) || t) &&
         (function(e) {
-          for (let t = e; t && t !== document.body;) {
+          for (var t = e; t && t !== document.body; ) {
             if (o(t)) return !1;
             t = t.parentNode;
           }
@@ -6468,9 +6498,9 @@ for (; !(g = b.next()).done;) {
       );
     }
     function a(e) {
-      let t = e.getAttribute('tabindex');
-      t === null && (t = void 0);
-      const n = isNaN(t);
+      var t = e.getAttribute('tabindex');
+      null === t && (t = void 0);
+      var n = isNaN(t);
       return (n || t >= 0) && i(e, !n);
     }
     e.exports = t.default;
@@ -6480,9 +6510,9 @@ for (; !(g = b.next()).done;) {
     Object.defineProperty(t, '__esModule', { value: !0 }),
       (t.assertNodeList = i),
       (t.setElement = function(e) {
-        let t = e;
-        if (typeof t === 'string') {
-          const n = document.querySelectorAll(t);
+        var t = e;
+        if ('string' == typeof t) {
+          var n = document.querySelectorAll(t);
           i(n, t), (t = 'length' in n ? n[0] : n);
         }
         return (o = t || o);
@@ -6500,16 +6530,15 @@ for (; !(g = b.next()).done;) {
       (t.resetForTesting = function() {
         o = null;
       });
-    const r = (function(e) {
+    var r = (function(e) {
       return e && e.__esModule ? e : { default: e };
     })(n(247));
     var o = null;
     function i(e, t) {
-      if (!e || !e.length) {
- throw new Error(
+      if (!e || !e.length)
+        throw new Error(
           'react-modal: No elements were found for selector ' + t + '.'
         );
-}
     }
     function a(e) {
       return (
@@ -6553,7 +6582,7 @@ for (; !(g = b.next()).done;) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 }),
       (t.canUseDOM = void 0);
-    let r = (function(e) {
+    var r = (function(e) {
         return e && e.__esModule ? e : { default: e };
       })(n(249)).default,
       o = r.canUseDOM ? window.HTMLElement : {};
@@ -6562,7 +6591,7 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = {
+    var r = {
         childContextTypes: !0,
         contextTypes: !0,
         defaultProps: !0,
@@ -6588,17 +6617,17 @@ for (; !(g = b.next()).done;) {
       l = Object.getPrototypeOf,
       c = l && l(Object);
     e.exports = function e(t, n, p) {
-      if (typeof n !== 'string') {
+      if ('string' != typeof n) {
         if (c) {
-          const f = l(n);
+          var f = l(n);
           f && f !== c && e(t, f, p);
         }
-        let d = a(n);
+        var d = a(n);
         s && (d = d.concat(s(n)));
-        for (let h = 0; h < d.length; ++h) {
-          const m = d[h];
+        for (var h = 0; h < d.length; ++h) {
+          var m = d[h];
           if (!(r[m] || o[m] || (p && p[m]))) {
-            const y = u(n, m);
+            var y = u(n, m);
             try {
               i(t, m, y);
             } catch (e) {}
@@ -6612,17 +6641,17 @@ for (; !(g = b.next()).done;) {
   function(e, t, n) {
     'use strict';
     (function(e) {
-      const n = typeof e === 'object' && e && e.Object === Object && e;
+      var n = 'object' == typeof e && e && e.Object === Object && e;
       t.a = n;
     }.call(this, n(58)));
   },
   function(e, t, n) {
     'use strict';
     function r(e) {
-      let t,
+      var t,
         n = e.Symbol;
       return (
-        typeof n === 'function'
+        'function' == typeof n
           ? n.observable
             ? (t = n.observable)
             : ((t = n('observable')), (n.observable = t))
@@ -6637,7 +6666,7 @@ for (; !(g = b.next()).done;) {
   function(e, t, n) {
     e.exports = (function e(t) {
       'use strict';
-      let n = /^\0+/g,
+      var n = /^\0+/g,
         r = /[\0\r\f]/g,
         o = /: */g,
         i = /zoo|gra/,
@@ -6763,7 +6792,7 @@ for (; !(g = b.next()).done;) {
             ((b = o.charCodeAt(Ce)),
             Ce === ze &&
               p + d + f + c !== 0 &&
-              (p !== 0 && (b = p === Q ? L : Q), (d = f = c = 0), He++, ze++),
+              (0 !== p && (b = p === Q ? L : Q), (d = f = c = 0), He++, ze++),
             p + d + f + c === 0)
           ) {
             if (
@@ -6782,8 +6811,8 @@ for (; !(g = b.next()).done;) {
               }
               b = A;
             }
-            if (Ee === 1) {
- switch (b) {
+            if (1 === Ee)
+              switch (b) {
                 case j:
                 case I:
                 case A:
@@ -6799,8 +6828,8 @@ for (; !(g = b.next()).done;) {
                 case V:
                   break;
                 default:
-                  for (Ee = 0, Ue = Ce, v = b, Ce--, b = A; Ue < He;) {
-switch (o.charCodeAt(++Ue)) {
+                  for (Ee = 0, Ue = Ce, v = b, Ce--, b = A; Ue < He; )
+                    switch (o.charCodeAt(++Ue)) {
                       case L:
                       case U:
                       case A:
@@ -6809,9 +6838,7 @@ switch (o.charCodeAt(++Ue)) {
                       case j:
                         Ue = He;
                     }
-}
               }
-}
             switch (b) {
               case j:
                 for (
@@ -6826,7 +6853,7 @@ switch (o.charCodeAt(++Ue)) {
                     case I:
                       E--;
                   }
-                  if (E === 0) break;
+                  if (0 === E) break;
                   Ce++;
                 }
                 switch (
@@ -6852,17 +6879,17 @@ switch (o.charCodeAt(++Ue)) {
                     if (
                       ((Ye = De(t, s, Ye, g, a + 1)),
                       (Ue = Ye.length),
-                      we > 0 && Ue === 0 && (Ue = Ge.length),
+                      we > 0 && 0 === Ue && (Ue = Ge.length),
                       Oe > 0 &&
                         ((s = Le(_e, Ge, ke)),
                         (u = We(Ae, Ye, s, t, de, fe, Ue, g, a)),
                         (Ge = s.join('')),
                         void 0 !== u &&
-                          (Ue = (Ye = u.trim()).length) === 0 &&
+                          0 === (Ue = (Ye = u.trim()).length) &&
                           ((g = 0), (Ye = ''))),
                       Ue > 0)
-                    ) {
- switch (g) {
+                    )
+                      switch (g) {
                         case ie:
                           Ge = Ge.replace(O, Ve);
                         case ce:
@@ -6874,14 +6901,14 @@ switch (o.charCodeAt(++Ue)) {
                           (Ge = Ge.replace(h, '$1 $2' + (je > 0 ? Me : ''))),
                             (Ye = Ge + '{' + Ye + '}'),
                             (Ye =
-                              ye === 1 || (ye === 2 && Be('@' + Ye, 3))
+                              1 === ye || (2 === ye && Be('@' + Ye, 3))
                                 ? '@' + T + Ye + '@' + Ye
                                 : '@' + Ye);
                           break;
                         default:
                           (Ye = Ge + Ye), i === pe && ((Ke += Ye), (Ye = ''));
                       }
-} else Ye = '';
+                    else Ye = '';
                     break;
                   default:
                     Ye = De(t, Le(t, Ge, ke), Ye, i, a + 1);
@@ -6902,15 +6929,15 @@ switch (o.charCodeAt(++Ue)) {
                 if (
                   ((Ge = (xe > 0 ? Ge.replace(r, '') : Ge).trim()),
                   (Ue = Ge.length) > 1)
-                ) {
-switch (
-                    (ge === 0 &&
+                )
+                  switch (
+                    (0 === ge &&
                       ((v = Ge.charCodeAt(0)) === H || (v > 96 && v < 123)) &&
                       (Ue = (Ge = Ge.replace(' ', ':')).length),
                     Oe > 0 &&
                       void 0 !==
                         (u = We(Se, Ge, t, e, de, fe, Ke.length, i, a)) &&
-                      (Ue = (Ge = u.trim()).length) === 0 &&
+                      0 === (Ue = (Ge = u.trim()).length) &&
                       (Ge = '\0\0'),
                     (v = Ge.charCodeAt(0)),
                     (g = Ge.charCodeAt(1)),
@@ -6926,7 +6953,6 @@ switch (
                       if (Ge.charCodeAt(Ue - 1) === Y) break;
                       Ke += Fe(Ge, v, g, Ge.charCodeAt(2));
                   }
-}
                 (k = 0),
                   (Ee = 0),
                   (ge = 0),
@@ -6939,8 +6965,8 @@ switch (
           switch (b) {
             case U:
             case L:
-              if (p + d + f + c + be === 0) {
-switch (x) {
+              if (p + d + f + c + be === 0)
+                switch (x) {
                   case R:
                   case K:
                   case X:
@@ -6960,7 +6986,6 @@ switch (x) {
                   default:
                     ge > 0 && (Ee = 1);
                 }
-}
               p === Q ? (p = 0) : me + k === 0 && ((xe = 1), (Ge += '\0')),
                 Oe * Ie > 0 && We(Te, Ge, t, e, de, fe, Ke.length, i, a),
                 (fe = 1),
@@ -6976,8 +7001,8 @@ switch (x) {
               switch ((fe++, (qe = o.charAt(Ce)), b)) {
                 case F:
                 case V:
-                  if (d + c + p === 0) {
- switch (w) {
+                  if (d + c + p === 0)
+                    switch (w) {
                       case G:
                       case Y:
                       case F:
@@ -6987,7 +7012,6 @@ switch (x) {
                       default:
                         b !== V && (qe = ' ');
                     }
-}
                   break;
                 case ee:
                   qe = '\\0';
@@ -7004,14 +7028,13 @@ switch (x) {
                     ((ke = 1), (xe = 1), (qe = '\f' + qe));
                   break;
                 case 108:
-                  if (d + p + c + he === 0 && ge > 0) {
-switch (Ce - ge) {
+                  if (d + p + c + he === 0 && ge > 0)
+                    switch (Ce - ge) {
                       case 2:
                         w === ae && o.charCodeAt(Ce - 3) === Y && (he = w);
                       case 8:
                         C === se && (he = C);
                     }
-}
                   break;
                 case Y:
                   d + p + c === 0 && (ge = Ce);
@@ -7021,7 +7044,7 @@ switch (Ce - ge) {
                   break;
                 case X:
                 case K:
-                  p === 0 && (d = d === b ? 0 : d === 0 ? b : d);
+                  0 === p && (d = d === b ? 0 : 0 === d ? b : d);
                   break;
                 case N:
                   d + p + f === 0 && c++;
@@ -7034,14 +7057,13 @@ switch (Ce - ge) {
                   break;
                 case M:
                   if (d + p + c === 0) {
-                    if (k === 0) {
-switch (2 * w + 3 * C) {
+                    if (0 === k)
+                      switch (2 * w + 3 * C) {
                         case 533:
                           break;
                         default:
                           (E = 0), (k = 1);
                       }
-}
                     f++;
                   }
                   break;
@@ -7064,22 +7086,22 @@ switch (2 * w + 3 * C) {
                     case q:
                       b === Q &&
                         w === q &&
-                        (o.charCodeAt(Ue + 2) === 33 &&
+                        (33 === o.charCodeAt(Ue + 2) &&
                           (Ke += o.substring(Ue, Ce + 1)),
                         (qe = ''),
                         (p = 0));
                   }
               }
-              if (p === 0) {
-                if (me + d + c + z === 0 && i !== re && b !== A) {
- switch (b) {
+              if (0 === p) {
+                if (me + d + c + z === 0 && i !== re && b !== A)
+                  switch (b) {
                     case G:
                     case $:
                     case J:
                     case Z:
                     case R:
                     case M:
-                      if (k === 0) {
+                      if (0 === k) {
                         switch (w) {
                           case F:
                           case V:
@@ -7091,15 +7113,14 @@ switch (2 * w + 3 * C) {
                             qe = '\0' + qe + (b === G ? '' : '\0');
                         }
                         xe = 1;
-                      } else {
- switch (b) {
+                      } else
+                        switch (b) {
                           case M:
                             k = ++E;
                             break;
                           case R:
-                            (k = --E) == 0 && ((xe = 1), (qe += '\0'));
+                            0 == (k = --E) && ((xe = 1), (qe += '\0'));
                         }
-}
                       break;
                     case F:
                     case V:
@@ -7116,10 +7137,9 @@ switch (2 * w + 3 * C) {
                         case U:
                           break;
                         default:
-                          k === 0 && ((xe = 1), (qe += '\0'));
+                          0 === k && ((xe = 1), (qe += '\0'));
                       }
                   }
-}
                 (Ge += qe), b !== V && b !== F && (x = b);
               }
           }
@@ -7128,16 +7148,16 @@ switch (2 * w + 3 * C) {
         if (
           ((Ue = Ke.length),
           we > 0 &&
-            Ue === 0 &&
-            Xe.length === 0 &&
-            (t[0].length === 0) == 0 &&
-            (i !== oe || (t.length === 1 && (me > 0 ? Re : Ne) === t[0])) &&
+            0 === Ue &&
+            0 === Xe.length &&
+            (0 === t[0].length) == 0 &&
+            (i !== oe || (1 === t.length && (me > 0 ? Re : Ne) === t[0])) &&
             (Ue = t.join(',').length + 2),
           Ue > 0)
         ) {
           if (
             ((s =
-              me === 0 && i !== re
+              0 === me && i !== re
                 ? (function(e) {
                     for (
                       var t, n, o = 0, i = e.length, a = Array(i);
@@ -7154,15 +7174,15 @@ switch (2 * w + 3 * C) {
                           h = s.length;
                         c < h;
                         ++c
-                      ) {
-if (!((p = (n = s[c]).length) === 0 && h > 1)) {
+                      )
+                        if (!(0 === (p = (n = s[c]).length) && h > 1)) {
                           if (
                             ((f = u.charCodeAt(u.length - 1)),
                             (d = n.charCodeAt(0)),
                             (t = ''),
-                            c !== 0)
-                          ) {
- switch (f) {
+                            0 !== c)
+                          )
+                            switch (f) {
                               case q:
                               case $:
                               case J:
@@ -7173,7 +7193,6 @@ if (!((p = (n = s[c]).length) === 0 && h > 1)) {
                               default:
                                 t = ' ';
                             }
-}
                           switch (d) {
                             case W:
                               n = t + Re;
@@ -7211,7 +7230,6 @@ if (!((p = (n = s[c]).length) === 0 && h > 1)) {
                           }
                           u += n;
                         }
-}
                       a[o] = u.replace(r, '').trim();
                     }
                     return a;
@@ -7219,10 +7237,11 @@ if (!((p = (n = s[c]).length) === 0 && h > 1)) {
                 : t),
             Oe > 0 &&
               void 0 !== (u = We(Pe, Ke, s, e, de, fe, Ue, i, a)) &&
-              (Ke = u).length === 0)
-          ) { return Qe + Ke + Xe; }
+              0 === (Ke = u).length)
+          )
+            return Qe + Ke + Xe;
           if (((Ke = s.join(',') + '{' + Ke + '}'), ye * he != 0)) {
-            switch ((ye !== 2 || Be(Ke, 2) || (he = 0), he)) {
+            switch ((2 !== ye || Be(Ke, 2) || (he = 0), he)) {
               case se:
                 Ke = Ke.replace(y, ':' + S + '$1') + Ke;
                 break;
@@ -7246,24 +7265,25 @@ if (!((p = (n = s[c]).length) === 0 && h > 1)) {
         switch (a) {
           case 0:
           case 1:
-            for (var s = 0, u = a === 0 ? '' : e[0] + ' '; s < i; ++s) { o[s] = Ue(u, o[s], n, a).trim(); }
+            for (var s = 0, u = 0 === a ? '' : e[0] + ' '; s < i; ++s)
+              o[s] = Ue(u, o[s], n, a).trim();
             break;
           default:
-            for (var s = 0, l = 0, o = []; s < i; ++s) {
- for (let p = 0; p < a; ++p) { o[l++] = Ue(e[p] + ' ', r[s], n, a).trim(); }
-}
+            for (var s = 0, l = 0, o = []; s < i; ++s)
+              for (var p = 0; p < a; ++p)
+                o[l++] = Ue(e[p] + ' ', r[s], n, a).trim();
         }
         return o;
       }
       function Ue(e, t, n, r) {
-        let o = t,
+        var o = t,
           i = o.charCodeAt(0);
         switch ((i < 33 && (i = (o = o.trim()).charCodeAt(0)), i)) {
           case W:
             switch (me + r) {
               case 0:
               case 1:
-                if (e.trim().length === 0) break;
+                if (0 === e.trim().length) break;
               default:
                 return o.replace(p, '$1' + e.trim());
             }
@@ -7271,28 +7291,28 @@ if (!((p = (n = s[c]).length) === 0 && h > 1)) {
           case Y:
             switch (o.charCodeAt(1)) {
               case 103:
-                if (ve > 0 && me > 0) { return o.replace(f, '$1').replace(p, '$1' + Ne); }
+                if (ve > 0 && me > 0)
+                  return o.replace(f, '$1').replace(p, '$1' + Ne);
                 break;
               default:
                 return e.trim() + o.replace(p, '$1' + e.trim());
             }
           default:
-            if (n * me > 0 && o.indexOf('\f') > 0) {
-return o.replace(
+            if (n * me > 0 && o.indexOf('\f') > 0)
+              return o.replace(
                 p,
                 (e.charCodeAt(0) === Y ? '' : '$1') + e.trim()
               );
-}
         }
         return e + o;
       }
       function Fe(e, t, n, r) {
-        let l,
+        var l,
           c = 0,
           p = e + ';',
           f = 2 * t + 3 * n + 4 * r;
-        if (f === 944) {
-return (function(e) {
+        if (944 === f)
+          return (function(e) {
             var t = e.length,
               n = e.indexOf(':', 9) + 1,
               r = e.substring(0, n).trim(),
@@ -7301,23 +7321,23 @@ return (function(e) {
               case 0:
                 break;
               case H:
-                if (e.charCodeAt(10) !== 110) break;
+                if (110 !== e.charCodeAt(10)) break;
               default:
                 for (
                   var i = o.split(((o = ''), s)), a = 0, n = 0, t = i.length;
                   a < t;
                   n = 0, ++a
                 ) {
-                  for (var l = i[a], c = l.split(u); (l = c[n]);) {
-                    const p = l.charCodeAt(0);
+                  for (var l = i[a], c = l.split(u); (l = c[n]); ) {
+                    var p = l.charCodeAt(0);
                     if (
-                      je === 1 &&
+                      1 === je &&
                       ((p > B && p < 90) ||
                         (p > 96 && p < 123) ||
                         p === z ||
                         (p === H && l.charCodeAt(1) !== H))
-                    ) {
-switch (isNaN(parseFloat(l)) + (l.indexOf('(') !== -1)) {
+                    )
+                      switch (isNaN(parseFloat(l)) + (-1 !== l.indexOf('('))) {
                         case 1:
                           switch (l) {
                             case 'infinite':
@@ -7346,28 +7366,26 @@ switch (isNaN(parseFloat(l)) + (l.indexOf('(') !== -1)) {
                               l += Me;
                           }
                       }
-}
                     c[n++] = l;
                   }
-                  o += (a === 0 ? '' : ',') + c.join(' ');
+                  o += (0 === a ? '' : ',') + c.join(' ');
                 }
             }
             return (
               (o = r + o + ';'),
-              ye === 1 || (ye === 2 && Be(o, 1)) ? T + o + o : o
+              1 === ye || (2 === ye && Be(o, 1)) ? T + o + o : o
             );
           })(p);
-}
-        if (ye === 0 || (ye === 2 && !Be(p, 1))) return p;
+        if (0 === ye || (2 === ye && !Be(p, 1))) return p;
         switch (f) {
           case 1015:
             return p.charCodeAt(9) === H ? T + p + p : p;
           case 951:
-            return p.charCodeAt(3) === 116 ? T + p + p : p;
+            return 116 === p.charCodeAt(3) ? T + p + p : p;
           case 963:
-            return p.charCodeAt(5) === 110 ? T + p + p : p;
+            return 110 === p.charCodeAt(5) ? T + p + p : p;
           case 1009:
-            if (p.charCodeAt(4) !== 100) break;
+            if (100 !== p.charCodeAt(4)) break;
           case 969:
           case 942:
             return T + p + p;
@@ -7379,8 +7397,8 @@ switch (isNaN(parseFloat(l)) + (l.indexOf('(') !== -1)) {
           case 883:
             return p.charCodeAt(8) === H ? T + p + p : p;
           case 932:
-            if (p.charCodeAt(4) === H) {
-switch (p.charCodeAt(5)) {
+            if (p.charCodeAt(4) === H)
+              switch (p.charCodeAt(5)) {
                 case 103:
                   return (
                     T +
@@ -7397,12 +7415,11 @@ switch (p.charCodeAt(5)) {
                 case 98:
                   return T + p + P + p.replace('basis', 'preferred-size') + p;
               }
-}
             return T + p + P + p + p;
           case 964:
             return T + p + P + 'flex-' + p + p;
           case 1023:
-            if (p.charCodeAt(8) !== 99) break;
+            if (99 !== p.charCodeAt(8)) break;
             return (
               (l = p
                 .substring(p.indexOf(':', 15))
@@ -7434,11 +7451,11 @@ switch (p.charCodeAt(5)) {
             }
             return T + p + P + l + p;
           case 1017:
-            if (p.indexOf('sticky', 9) === -1) return p;
+            if (-1 === p.indexOf('sticky', 9)) return p;
           case 975:
             switch (
               ((c = (p = e).length - 10),
-              (l = (p.charCodeAt(c) === 33 ? p.substring(0, c) : p)
+              (l = (33 === p.charCodeAt(c) ? p.substring(0, c) : p)
                 .substring(e.indexOf(':', 7) + 1)
                 .trim()),
               (f = l.charCodeAt(0) + (0 | l.charCodeAt(7))))
@@ -7461,8 +7478,8 @@ switch (p.charCodeAt(5)) {
             }
             return p + ';';
           case 938:
-            if (p.charCodeAt(5) === H) {
- switch (p.charCodeAt(6)) {
+            if (p.charCodeAt(5) === H)
+              switch (p.charCodeAt(6)) {
                 case 105:
                   return (
                     (l = p.replace('-items', '')),
@@ -7480,51 +7497,48 @@ switch (p.charCodeAt(5)) {
                     p
                   );
               }
-}
             break;
           case 953:
             if (
               (c = p.indexOf('-content', 9)) > 0 &&
-              p.charCodeAt(c - 3) === 109 &&
-              p.charCodeAt(c - 4) !== 45
-            ) {
- return (
+              109 === p.charCodeAt(c - 3) &&
+              45 !== p.charCodeAt(c - 4)
+            )
+              return (
                 (l = p.substring(c - 3)),
                 'width:' + T + l + 'width:' + S + l + 'width:' + l
               );
-}
             break;
           case 962:
             if (
-              ((p = T + p + (p.charCodeAt(5) === 102 ? P + p : '') + p),
+              ((p = T + p + (102 === p.charCodeAt(5) ? P + p : '') + p),
               n + r === 211 &&
-                p.charCodeAt(13) === 105 &&
+                105 === p.charCodeAt(13) &&
                 p.indexOf('transform', 10) > 0)
-            ) {
- return (
+            )
+              return (
                 p
                   .substring(0, p.indexOf(';', 27) + 1)
                   .replace(a, '$1' + T + '$2') + p
               );
-}
         }
         return p;
       }
       function Be(e, t) {
-        let n = e.indexOf(t === 1 ? ':' : '{'),
-          r = e.substring(0, t !== 3 ? n : 10),
+        var n = e.indexOf(1 === t ? ':' : '{'),
+          r = e.substring(0, 3 !== t ? n : 10),
           o = e.substring(n + 1, e.length - 1);
-        return xe(t !== 2 ? r : r.replace(k, '$1'), o, t);
+        return xe(2 !== t ? r : r.replace(k, '$1'), o, t);
       }
       function Ve(e, t) {
-        const n = Fe(t, t.charCodeAt(0), t.charCodeAt(1), t.charCodeAt(2));
+        var n = Fe(t, t.charCodeAt(0), t.charCodeAt(1), t.charCodeAt(2));
         return n !== t + ';'
           ? n.replace(x, ' or ($1)').substring(4)
           : '(' + t + ')';
       }
       function We(e, t, n, r, o, i, a, s, u) {
-        for (var l, c = 0, p = t; c < Oe; ++c) {
- switch ((l = Ce[c].call(ze, e, p, n, r, o, i, a, s, u))) {
+        for (var l, c = 0, p = t; c < Oe; ++c)
+          switch ((l = Ce[c].call(ze, e, p, n, r, o, i, a, s, u))) {
             case void 0:
             case !1:
             case !0:
@@ -7533,7 +7547,6 @@ switch (p.charCodeAt(5)) {
             default:
               p = l;
           }
-}
         switch (p) {
           case void 0:
           case !1:
@@ -7546,8 +7559,8 @@ switch (p.charCodeAt(5)) {
         }
       }
       function He(e) {
-        for (const t in e) {
-          const n = e[t];
+        for (var t in e) {
+          var n = e[t];
           switch (t) {
             case 'keyframe':
               je = 0 | n;
@@ -7570,7 +7583,7 @@ switch (p.charCodeAt(5)) {
             case 'prefix':
               (xe = null),
                 n
-                  ? typeof n !== 'function'
+                  ? 'function' != typeof n
                     ? (ye = 1)
                     : ((ye = 2), (xe = n))
                   : (ye = 0);
@@ -7580,23 +7593,23 @@ switch (p.charCodeAt(5)) {
       }
       function ze(t, n) {
         if (void 0 !== this && this.constructor === ze) return e(t);
-        let o = t,
+        var o = t,
           i = o.charCodeAt(0);
         i < 33 && (i = (o = o.trim()).charCodeAt(0)),
           je > 0 && (Me = o.replace(d, i === N ? '' : '-')),
           (i = 1),
-          me === 1 ? (Ne = o) : (Re = o);
-        let a,
+          1 === me ? (Ne = o) : (Re = o);
+        var a,
           s = [Ne];
         Oe > 0 &&
           void 0 !== (a = We(ke, n, s, s, de, fe, 0, 0, 0)) &&
-          typeof a === 'string' &&
+          'string' == typeof a &&
           (n = a);
-        let u = De(_e, s, n, 0, 0);
+        var u = De(_e, s, n, 0, 0);
         return (
           Oe > 0 &&
             void 0 !== (a = We(Ee, u, s, s, de, fe, u.length, 0, 0)) &&
-            typeof (u = a) !== 'string' &&
+            'string' != typeof (u = a) &&
             (i = 0),
           (Me = ''),
           (Ne = ''),
@@ -7626,7 +7639,7 @@ switch (p.charCodeAt(5)) {
             default:
               switch (t.constructor) {
                 case Array:
-                  for (let n = 0, r = t.length; n < r; ++n) e(t[n]);
+                  for (var n = 0, r = t.length; n < r; ++n) e(t[n]);
                   break;
                 case Function:
                   Ce[Oe++] = t;
@@ -7645,7 +7658,7 @@ switch (p.charCodeAt(5)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = {
+    var r = {
         childContextTypes: !0,
         contextTypes: !0,
         defaultProps: !0,
@@ -7663,25 +7676,23 @@ switch (p.charCodeAt(5)) {
         arguments: !0,
         arity: !0
       },
-      i = typeof Object.getOwnPropertySymbols === 'function';
+      i = 'function' == typeof Object.getOwnPropertySymbols;
     e.exports = function(e, t, n) {
-      if (typeof t !== 'string') {
-        let a = Object.getOwnPropertyNames(t);
+      if ('string' != typeof t) {
+        var a = Object.getOwnPropertyNames(t);
         i && (a = a.concat(Object.getOwnPropertySymbols(t)));
-        for (let s = 0; s < a.length; ++s) {
- if (!(r[a[s]] || o[a[s]] || (n && n[a[s]]))) {
- try {
+        for (var s = 0; s < a.length; ++s)
+          if (!(r[a[s]] || o[a[s]] || (n && n[a[s]])))
+            try {
               e[a[s]] = t[a[s]];
             } catch (e) {}
-}
-}
       }
       return e;
     };
   },
   function(e, t, n) {
     'use strict';
-    let r = u(n(0)),
+    var r = u(n(0)),
       o = u(n(30)),
       i = n(10),
       a = u(n(197)),
@@ -7704,7 +7715,7 @@ switch (p.charCodeAt(5)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(107),
+    var r = n(107),
       o = n(18),
       i = n(11),
       a = n(108),
@@ -7718,7 +7729,7 @@ switch (p.charCodeAt(5)) {
       (this.func = e), (this.context = t), (this.count = 0);
     }
     function f(e, t, n) {
-      let r = e.func,
+      var r = e.func,
         o = e.context;
       r.call(o, t, e.count++);
     }
@@ -7730,14 +7741,14 @@ switch (p.charCodeAt(5)) {
         (this.count = 0);
     }
     function h(e, t, n) {
-      let r = e.result,
+      var r = e.result,
         a = e.keyPrefix,
         s = e.func,
         u = e.context,
         l = s.call(u, t, e.count++);
       Array.isArray(l)
         ? m(l, r, n, i.thatReturnsArgument)
-        : l != null &&
+        : null != l &&
           (o.isValidElement(l) &&
             (l = o.cloneAndReplaceKey(
               l,
@@ -7746,9 +7757,9 @@ switch (p.charCodeAt(5)) {
           r.push(l));
     }
     function m(e, t, n, r, o) {
-      let i = '';
-      n != null && (i = c(n) + '/');
-      const s = d.getPooled(t, i, r, o);
+      var i = '';
+      null != n && (i = c(n) + '/');
+      var s = d.getPooled(t, i, r, o);
       a(e, h, s), d.release(s);
     }
     function y(e, t, n) {
@@ -7766,15 +7777,15 @@ switch (p.charCodeAt(5)) {
           (this.count = 0);
       }),
       r.addPoolingTo(d, u);
-    const v = {
+    var v = {
       forEach: function(e, t, n) {
-        if (e == null) return e;
-        const r = p.getPooled(t, n);
+        if (null == e) return e;
+        var r = p.getPooled(t, n);
         a(e, f, r), p.release(r);
       },
       map: function(e, t, n) {
-        if (e == null) return e;
-        const r = [];
+        if (null == e) return e;
+        var r = [];
         return m(e, r, null, t, n), r;
       },
       mapIntoWithKeyPrefixInternal: m,
@@ -7782,7 +7793,7 @@ switch (p.charCodeAt(5)) {
         return a(e, y, null);
       },
       toArray: function(e) {
-        const t = [];
+        var t = [];
         return m(e, t, null, i.thatReturnsArgument), t;
       }
     };
@@ -7790,11 +7801,11 @@ switch (p.charCodeAt(5)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(23),
+    var r = n(23),
       o = (n(1),
       function(e) {
         if (this.instancePool.length) {
-          const t = this.instancePool.pop();
+          var t = this.instancePool.pop();
           return this.call(t, e), t;
         }
         return new this(e);
@@ -7807,7 +7818,7 @@ switch (p.charCodeAt(5)) {
       a = o,
       s = {
         addPoolingTo: function(e, t) {
-          const n = e;
+          var n = e;
           return (
             (n.instancePool = []),
             (n.getPooled = t || a),
@@ -7819,21 +7830,21 @@ switch (p.charCodeAt(5)) {
         oneArgumentPooler: o,
         twoArgumentPooler: function(e, t) {
           if (this.instancePool.length) {
-            const n = this.instancePool.pop();
+            var n = this.instancePool.pop();
             return this.call(n, e, t), n;
           }
           return new this(e, t);
         },
         threeArgumentPooler: function(e, t, n) {
           if (this.instancePool.length) {
-            const r = this.instancePool.pop();
+            var r = this.instancePool.pop();
             return this.call(r, e, t, n), r;
           }
           return new this(e, t, n);
         },
         fourArgumentPooler: function(e, t, n, r) {
           if (this.instancePool.length) {
-            const o = this.instancePool.pop();
+            var o = this.instancePool.pop();
             return this.call(o, e, t, n, r), o;
           }
           return new this(e, t, n, r);
@@ -7843,44 +7854,47 @@ switch (p.charCodeAt(5)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(23),
+    var r = n(23),
       o = (n(14), n(63)),
       i = n(109),
       a = (n(1), n(110)),
       s = (n(3), '.'),
       u = ':';
     function l(e, t) {
-      return e && typeof e === 'object' && e.key != null
+      return e && 'object' == typeof e && null != e.key
         ? a.escape(e.key)
         : t.toString(36);
     }
     e.exports = function(e, t, n) {
-      return e == null
+      return null == e
         ? 0
         : (function e(t, n, c, p) {
-            let f,
+            var f,
               d = typeof t;
             if (
-              ((d !== 'undefined' && d !== 'boolean') || (t = null),
-              t === null ||
-                d === 'string' ||
-                d === 'number' ||
-                (d === 'object' && t.$$typeof === o))
-            ) { return c(p, t, n === '' ? s + l(t, 0) : n), 1; }
-            let h = 0,
-              m = n === '' ? s : n + u;
-            if (Array.isArray(t)) {
- for (let y = 0; y < t.length; y++) { h += e((f = t[y]), m + l(f, y), c, p); }
-} else {
-              const v = i(t);
+              (('undefined' !== d && 'boolean' !== d) || (t = null),
+              null === t ||
+                'string' === d ||
+                'number' === d ||
+                ('object' === d && t.$$typeof === o))
+            )
+              return c(p, t, '' === n ? s + l(t, 0) : n), 1;
+            var h = 0,
+              m = '' === n ? s : n + u;
+            if (Array.isArray(t))
+              for (var y = 0; y < t.length; y++)
+                h += e((f = t[y]), m + l(f, y), c, p);
+            else {
+              var v = i(t);
               if (v) {
-                let g,
+                var g,
                   b = v.call(t);
-                if (v !== t.entries) {
-for (let w = 0; !(g = b.next()).done;) { h += e((f = g.value), m + l(f, w++), c, p); }
-} else {
-for (; !(g = b.next()).done;) {
-                    const _ = g.value;
+                if (v !== t.entries)
+                  for (var w = 0; !(g = b.next()).done; )
+                    h += e((f = g.value), m + l(f, w++), c, p);
+                else
+                  for (; !(g = b.next()).done; ) {
+                    var _ = g.value;
                     _ &&
                       (h += e(
                         (f = _[1]),
@@ -7889,12 +7903,11 @@ for (; !(g = b.next()).done;) {
                         p
                       ));
                   }
-}
-              } else if (d === 'object') {
-                const C = String(t);
+              } else if ('object' === d) {
+                var C = String(t);
                 r(
                   '31',
-                  C === '[object Object]'
+                  '[object Object]' === C
                     ? 'object with keys {' + Object.keys(t).join(', ') + '}'
                     : C,
                   ''
@@ -7907,18 +7920,18 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = typeof Symbol === 'function' && Symbol.iterator,
+    var r = 'function' == typeof Symbol && Symbol.iterator,
       o = '@@iterator';
     e.exports = function(e) {
-      const t = e && ((r && e[r]) || e[o]);
-      if (typeof t === 'function') return t;
+      var t = e && ((r && e[r]) || e[o]);
+      if ('function' == typeof t) return t;
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = {
+    var r = {
       escape: function(e) {
-        const t = { '=': '=0', ':': '=2' };
+        var t = { '=': '=0', ':': '=2' };
         return (
           '$' +
           ('' + e).replace(/[=:]/g, function(e) {
@@ -7927,9 +7940,9 @@ for (; !(g = b.next()).done;) {
         );
       },
       unescape: function(e) {
-        const t = { '=0': '=', '=2': ':' };
+        var t = { '=0': '=', '=2': ':' };
         return (
-          '' + (e[0] === '.' && e[1] === '$' ? e.substring(2) : e.substring(1))
+          '' + ('.' === e[0] && '$' === e[1] ? e.substring(2) : e.substring(1))
         ).replace(/(=0|=2)/g, function(e) {
           return t[e];
         });
@@ -7939,7 +7952,7 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(18).createFactory,
+    var r = n(18).createFactory,
       o = {
         a: r('a'),
         abbr: r('abbr'),
@@ -8078,22 +8091,22 @@ for (; !(g = b.next()).done;) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(18).isValidElement,
+    var r = n(18).isValidElement,
       o = n(64);
     e.exports = o(r);
   },
   function(e, t, n) {
     'use strict';
-    let r = n(11),
+    var r = n(11),
       o = n(1),
       i = n(3),
       a = n(114),
       s = n(65),
       u = n(115);
     e.exports = function(e, t) {
-      let n = typeof Symbol === 'function' && Symbol.iterator,
+      var n = 'function' == typeof Symbol && Symbol.iterator,
         l = '@@iterator';
-      let c = '<<anonymous>>',
+      var c = '<<anonymous>>',
         p = {
           array: m('array'),
           bool: m('boolean'),
@@ -8105,18 +8118,17 @@ for (; !(g = b.next()).done;) {
           any: h(r.thatReturnsNull),
           arrayOf: function(e) {
             return h(function(t, n, r, o, i) {
-              if (typeof e !== 'function') {
-return new d(
+              if ('function' != typeof e)
+                return new d(
                   'Property `' +
                     i +
                     '` of component `' +
                     r +
                     '` has invalid PropType notation inside arrayOf.'
                 );
-}
-              const a = t[n];
+              var a = t[n];
               if (!Array.isArray(a)) {
-                const u = v(a);
+                var u = v(a);
                 return new d(
                   'Invalid ' +
                     o +
@@ -8129,8 +8141,8 @@ return new d(
                     '`, expected an array.'
                 );
               }
-              for (let l = 0; l < a.length; l++) {
-                const c = e(a, l, r, o, i + '[' + l + ']', s);
+              for (var l = 0; l < a.length; l++) {
+                var c = e(a, l, r, o, i + '[' + l + ']', s);
                 if (c instanceof Error) return c;
               }
               return null;
@@ -8138,9 +8150,9 @@ return new d(
           },
           element: (function() {
             return h(function(t, n, r, o, i) {
-              const a = t[n];
+              var a = t[n];
               if (!e(a)) {
-                const s = v(a);
+                var s = v(a);
                 return new d(
                   'Invalid ' +
                     o +
@@ -8159,7 +8171,7 @@ return new d(
           instanceOf: function(e) {
             return h(function(t, n, r, o, i) {
               if (!(t[n] instanceof e)) {
-                let a = e.name || c,
+                var a = e.name || c,
                   s = (function(e) {
                     if (!e.constructor || !e.constructor.name) return c;
                     return e.constructor.name;
@@ -8183,8 +8195,8 @@ return new d(
           },
           node: (function() {
             return h(function(e, t, n, r, o) {
-              if (!y(e[t])) {
- return new d(
+              if (!y(e[t]))
+                return new d(
                   'Invalid ' +
                     r +
                     ' `' +
@@ -8193,25 +8205,23 @@ return new d(
                     n +
                     '`, expected a ReactNode.'
                 );
-}
               return null;
             });
           })(),
           objectOf: function(e) {
             return h(function(t, n, r, o, i) {
-              if (typeof e !== 'function') {
- return new d(
+              if ('function' != typeof e)
+                return new d(
                   'Property `' +
                     i +
                     '` of component `' +
                     r +
                     '` has invalid PropType notation inside objectOf.'
                 );
-}
-              let a = t[n],
+              var a = t[n],
                 u = v(a);
-              if (u !== 'object') {
-return new d(
+              if ('object' !== u)
+                return new d(
                   'Invalid ' +
                     o +
                     ' `' +
@@ -8222,21 +8232,20 @@ return new d(
                     r +
                     '`, expected an object.'
                 );
-}
-              for (const l in a) {
- if (a.hasOwnProperty(l)) {
-                  const c = e(a, l, r, o, i + '.' + l, s);
+              for (var l in a)
+                if (a.hasOwnProperty(l)) {
+                  var c = e(a, l, r, o, i + '.' + l, s);
                   if (c instanceof Error) return c;
                 }
-}
               return null;
             });
           },
           oneOf: function(e) {
             if (!Array.isArray(e)) return r.thatReturnsNull;
             return h(function(t, n, r, o, i) {
-              for (var a = t[n], s = 0; s < e.length; s++) { if (f(a, e[s])) return null; }
-              const u = JSON.stringify(e);
+              for (var a = t[n], s = 0; s < e.length; s++)
+                if (f(a, e[s])) return null;
+              var u = JSON.stringify(e);
               return new d(
                 'Invalid ' +
                   o +
@@ -8254,10 +8263,10 @@ return new d(
           },
           oneOfType: function(e) {
             if (!Array.isArray(e)) return r.thatReturnsNull;
-            for (let t = 0; t < e.length; t++) {
-              const n = e[t];
-              if (typeof n !== 'function') {
- return (
+            for (var t = 0; t < e.length; t++) {
+              var n = e[t];
+              if ('function' != typeof n)
+                return (
                   i(
                     !1,
                     'Invalid argument supplied to oneOfType. Expected an array of check functions, but received %s at index %s.',
@@ -8266,12 +8275,11 @@ return new d(
                   ),
                   r.thatReturnsNull
                 );
-}
             }
             return h(function(t, n, r, o, i) {
-              for (let a = 0; a < e.length; a++) {
-                const u = e[a];
-                if (u(t, n, r, o, i, s) == null) return null;
+              for (var a = 0; a < e.length; a++) {
+                var u = e[a];
+                if (null == u(t, n, r, o, i, s)) return null;
               }
               return new d(
                 'Invalid ' + o + ' `' + i + '` supplied to `' + r + '`.'
@@ -8280,10 +8288,10 @@ return new d(
           },
           shape: function(e) {
             return h(function(t, n, r, o, i) {
-              let a = t[n],
+              var a = t[n],
                 u = v(a);
-              if (u !== 'object') {
-return new d(
+              if ('object' !== u)
+                return new d(
                   'Invalid ' +
                     o +
                     ' `' +
@@ -8294,11 +8302,10 @@ return new d(
                     r +
                     '`, expected `object`.'
                 );
-}
-              for (const l in e) {
-                const c = e[l];
+              for (var l in e) {
+                var c = e[l];
                 if (c) {
-                  const p = c(a, l, r, o, i + '.' + l, s);
+                  var p = c(a, l, r, o, i + '.' + l, s);
                   if (p) return p;
                 }
               }
@@ -8307,10 +8314,10 @@ return new d(
           },
           exact: function(e) {
             return h(function(t, n, r, o, i) {
-              let u = t[n],
+              var u = t[n],
                 l = v(u);
-              if (l !== 'object') {
- return new d(
+              if ('object' !== l)
+                return new d(
                   'Invalid ' +
                     o +
                     ' `' +
@@ -8321,12 +8328,11 @@ return new d(
                     r +
                     '`, expected `object`.'
                 );
-}
-              const c = a({}, t[n], e);
-              for (const p in c) {
-                const f = e[p];
-                if (!f) {
-return new d(
+              var c = a({}, t[n], e);
+              for (var p in c) {
+                var f = e[p];
+                if (!f)
+                  return new d(
                     'Invalid ' +
                       o +
                       ' `' +
@@ -8340,8 +8346,7 @@ return new d(
                       '\nValid keys: ' +
                       JSON.stringify(Object.keys(e), null, '  ')
                   );
-}
-                const h = f(u, p, r, o, i + '.' + p, s);
+                var h = f(u, p, r, o, i + '.' + p, s);
                 if (h) return h;
               }
               return null;
@@ -8349,7 +8354,7 @@ return new d(
           }
         };
       function f(e, t) {
-        return e === t ? e !== 0 || 1 / e == 1 / t : e != e && t != t;
+        return e === t ? 0 !== e || 1 / e == 1 / t : e != e && t != t;
       }
       function d(e) {
         (this.message = e), (this.stack = '');
@@ -8362,9 +8367,9 @@ return new d(
                 !1,
                 'Calling PropTypes validators directly is not supported by the `prop-types` package. Use `PropTypes.checkPropTypes()` to call them. Read more at http://fb.me/use-check-prop-types'
               ));
-          return r[i] == null
+          return null == r[i]
             ? n
-              ? r[i] === null
+              ? null === r[i]
                 ? new d(
                     'The ' +
                       u +
@@ -8386,12 +8391,12 @@ return new d(
               : null
             : e(r, i, a, u, l);
         }
-        const r = n.bind(null, !1);
+        var r = n.bind(null, !1);
         return (r.isRequired = n.bind(null, !0)), r;
       }
       function m(e) {
         return h(function(t, n, r, o, i, a) {
-          const s = t[n];
+          var s = t[n];
           return v(s) !== e
             ? new d(
                 'Invalid ' +
@@ -8419,54 +8424,53 @@ return new d(
             return !t;
           case 'object':
             if (Array.isArray(t)) return t.every(y);
-            if (t === null || e(t)) return !0;
+            if (null === t || e(t)) return !0;
             var r = (function(e) {
-              const t = e && ((n && e[n]) || e[l]);
-              if (typeof t === 'function') return t;
+              var t = e && ((n && e[n]) || e[l]);
+              if ('function' == typeof t) return t;
             })(t);
             if (!r) return !1;
             var o,
               i = r.call(t);
             if (r !== t.entries) {
-              for (; !(o = i.next()).done;) if (!y(o.value)) return !1;
-            } else {
- for (; !(o = i.next()).done;) {
-                const a = o.value;
+              for (; !(o = i.next()).done; ) if (!y(o.value)) return !1;
+            } else
+              for (; !(o = i.next()).done; ) {
+                var a = o.value;
                 if (a && !y(a[1])) return !1;
               }
-}
             return !0;
           default:
             return !1;
         }
       }
       function v(e) {
-        const t = typeof e;
+        var t = typeof e;
         return Array.isArray(e)
           ? 'array'
           : e instanceof RegExp
             ? 'object'
             : (function(e, t) {
                 return (
-                  e === 'symbol' ||
-                  t['@@toStringTag'] === 'Symbol' ||
-                  (typeof Symbol === 'function' && t instanceof Symbol)
+                  'symbol' === e ||
+                  'Symbol' === t['@@toStringTag'] ||
+                  ('function' == typeof Symbol && t instanceof Symbol)
                 );
               })(t, e)
               ? 'symbol'
               : t;
       }
       function g(e) {
-        if (void 0 === e || e === null) return '' + e;
-        const t = v(e);
-        if (t === 'object') {
+        if (void 0 === e || null === e) return '' + e;
+        var t = v(e);
+        if ('object' === t) {
           if (e instanceof Date) return 'date';
           if (e instanceof RegExp) return 'regexp';
         }
         return t;
       }
       function b(e) {
-        const t = g(e);
+        var t = g(e);
         switch (t) {
           case 'array':
           case 'object':
@@ -8493,30 +8497,33 @@ return new d(
 object-assign
 (c) Sindre Sorhus
 @license MIT
-*/ let r =
+*/ var r =
         Object.getOwnPropertySymbols,
       o = Object.prototype.hasOwnProperty,
       i = Object.prototype.propertyIsEnumerable;
     e.exports = (function() {
       try {
         if (!Object.assign) return !1;
-        const e = new String('abc');
-        if (((e[5] = 'de'), Object.getOwnPropertyNames(e)[0] === '5')) { return !1; }
-        for (var t = {}, n = 0; n < 10; n++) { t['_' + String.fromCharCode(n)] = n; }
+        var e = new String('abc');
+        if (((e[5] = 'de'), '5' === Object.getOwnPropertyNames(e)[0]))
+          return !1;
+        for (var t = {}, n = 0; n < 10; n++)
+          t['_' + String.fromCharCode(n)] = n;
         if (
+          '0123456789' !==
           Object.getOwnPropertyNames(t)
             .map(function(e) {
               return t[e];
             })
-            .join('') !==
-          '0123456789'
-        ) { return !1; }
-        const r = {};
+            .join('')
+        )
+          return !1;
+        var r = {};
         return (
           'abcdefghijklmnopqrst'.split('').forEach(function(e) {
             r[e] = e;
           }),
-          Object.keys(Object.assign({}, r)).join('') === 'abcdefghijklmnopqrst'
+          'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, r)).join('')
         );
       } catch (e) {
         return !1;
@@ -8528,21 +8535,22 @@ object-assign
             var n,
               a,
               s = (function(e) {
-                if (e === null || void 0 === e) {
-throw new TypeError(
+                if (null === e || void 0 === e)
+                  throw new TypeError(
                     'Object.assign cannot be called with null or undefined'
                   );
-}
                 return Object(e);
               })(e),
               u = 1;
             u < arguments.length;
             u++
           ) {
-            for (const l in (n = Object(arguments[u]))) { o.call(n, l) && (s[l] = n[l]); }
+            for (var l in (n = Object(arguments[u])))
+              o.call(n, l) && (s[l] = n[l]);
             if (r) {
               a = r(n);
-              for (let c = 0; c < a.length; c++) { i.call(n, a[c]) && (s[a[c]] = n[a[c]]); }
+              for (var c = 0; c < a.length; c++)
+                i.call(n, a[c]) && (s[a[c]] = n[a[c]]);
             }
           }
           return s;
@@ -8558,7 +8566,7 @@ throw new TypeError(
   },
   function(e, t, n) {
     'use strict';
-    let r = n(60).Component,
+    var r = n(60).Component,
       o = n(18).isValidElement,
       i = n(61),
       a = n(66);
@@ -8570,30 +8578,33 @@ throw new TypeError(
 object-assign
 (c) Sindre Sorhus
 @license MIT
-*/ let r =
+*/ var r =
         Object.getOwnPropertySymbols,
       o = Object.prototype.hasOwnProperty,
       i = Object.prototype.propertyIsEnumerable;
     e.exports = (function() {
       try {
         if (!Object.assign) return !1;
-        const e = new String('abc');
-        if (((e[5] = 'de'), Object.getOwnPropertyNames(e)[0] === '5')) { return !1; }
-        for (var t = {}, n = 0; n < 10; n++) { t['_' + String.fromCharCode(n)] = n; }
+        var e = new String('abc');
+        if (((e[5] = 'de'), '5' === Object.getOwnPropertyNames(e)[0]))
+          return !1;
+        for (var t = {}, n = 0; n < 10; n++)
+          t['_' + String.fromCharCode(n)] = n;
         if (
+          '0123456789' !==
           Object.getOwnPropertyNames(t)
             .map(function(e) {
               return t[e];
             })
-            .join('') !==
-          '0123456789'
-        ) { return !1; }
-        const r = {};
+            .join('')
+        )
+          return !1;
+        var r = {};
         return (
           'abcdefghijklmnopqrst'.split('').forEach(function(e) {
             r[e] = e;
           }),
-          Object.keys(Object.assign({}, r)).join('') === 'abcdefghijklmnopqrst'
+          'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, r)).join('')
         );
       } catch (e) {
         return !1;
@@ -8605,21 +8616,22 @@ object-assign
             var n,
               a,
               s = (function(e) {
-                if (e === null || void 0 === e) {
- throw new TypeError(
+                if (null === e || void 0 === e)
+                  throw new TypeError(
                     'Object.assign cannot be called with null or undefined'
                   );
-}
                 return Object(e);
               })(e),
               u = 1;
             u < arguments.length;
             u++
           ) {
-            for (const l in (n = Object(arguments[u]))) { o.call(n, l) && (s[l] = n[l]); }
+            for (var l in (n = Object(arguments[u])))
+              o.call(n, l) && (s[l] = n[l]);
             if (r) {
               a = r(n);
-              for (let c = 0; c < a.length; c++) { i.call(n, a[c]) && (s[a[c]] = n[a[c]]); }
+              for (var c = 0; c < a.length; c++)
+                i.call(n, a[c]) && (s[a[c]] = n[a[c]]);
             }
           }
           return s;
@@ -8627,7 +8639,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(23),
+    var r = n(23),
       o = n(18);
     n(1);
     e.exports = function(e) {
@@ -8636,7 +8648,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(6),
+    var r = n(6),
       o = n(121),
       i = n(90),
       a = n(20),
@@ -8647,7 +8659,7 @@ object-assign
       p = n(195);
     n(3);
     o.inject();
-    const f = {
+    var f = {
       findDOMNode: l,
       render: i.render,
       unmountComponentAtNode: i.unmountComponentAtNode,
@@ -8655,8 +8667,8 @@ object-assign
       unstable_batchedUpdates: s.batchedUpdates,
       unstable_renderSubtreeIntoContainer: p
     };
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' &&
-      typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.inject === 'function' &&
+    'undefined' != typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ &&
+      'function' == typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.inject &&
       __REACT_DEVTOOLS_GLOBAL_HOOK__.inject({
         ComponentTree: {
           getClosestInstanceFromNode: r.getClosestInstanceFromNode,
@@ -8674,7 +8686,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(122),
+    var r = n(122),
       o = n(123),
       i = n(127),
       a = n(130),
@@ -8782,7 +8794,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(24),
+    var r = n(24),
       o = n(9),
       i = n(124),
       a = n(125),
@@ -8792,20 +8804,20 @@ object-assign
       c = o.canUseDOM && 'CompositionEvent' in window,
       p = null;
     o.canUseDOM && 'documentMode' in document && (p = document.documentMode);
-    let f =
+    var f =
         o.canUseDOM &&
         'TextEvent' in window &&
         !p &&
         !(function() {
-          const e = window.opera;
+          var e = window.opera;
           return (
-            typeof e === 'object' &&
-            typeof e.version === 'function' &&
+            'object' == typeof e &&
+            'function' == typeof e.version &&
             parseInt(e.version(), 10) <= 12
           );
         })(),
       d = o.canUseDOM && (!c || (p && p > 8 && p <= 11));
-    let h = 32,
+    var h = 32,
       m = String.fromCharCode(h),
       y = {
         beforeInput: {
@@ -8867,7 +8879,7 @@ object-assign
     function g(e, t) {
       switch (e) {
         case 'topKeyUp':
-          return u.indexOf(t.keyCode) !== -1;
+          return -1 !== u.indexOf(t.keyCode);
         case 'topKeyDown':
           return t.keyCode !== l;
         case 'topKeyPress':
@@ -8879,12 +8891,12 @@ object-assign
       }
     }
     function b(e) {
-      const t = e.detail;
-      return typeof t === 'object' && 'data' in t ? t.data : null;
+      var t = e.detail;
+      return 'object' == typeof t && 'data' in t ? t.data : null;
     }
-    let w = null;
+    var w = null;
     function _(e, t, n, o) {
-      let s, u;
+      var s, u;
       if (
         (c
           ? (s = (function(e) {
@@ -8900,24 +8912,25 @@ object-assign
           : w
             ? g(e, n) && (s = y.compositionEnd)
             : (function(e, t) {
-                return e === 'topKeyDown' && t.keyCode === l;
+                return 'topKeyDown' === e && t.keyCode === l;
               })(e, n) && (s = y.compositionStart),
         !s)
-      ) { return null; }
+      )
+        return null;
       d &&
         (w || s !== y.compositionStart
           ? s === y.compositionEnd && w && (u = w.getData())
           : (w = i.getPooled(o)));
-      const p = a.getPooled(s, t, n, o);
+      var p = a.getPooled(s, t, n, o);
       if (u) p.data = u;
       else {
-        const f = b(n);
-        f !== null && (p.data = f);
+        var f = b(n);
+        null !== f && (p.data = f);
       }
       return r.accumulateTwoPhaseDispatches(p), p;
     }
     function C(e, t, n, o) {
-      let a;
+      var a;
       if (
         !(a = f
           ? (function(e, t) {
@@ -8935,8 +8948,8 @@ object-assign
             })(e, n)
           : (function(e, t) {
               if (w) {
-                if (e === 'topCompositionEnd' || (!c && g(e, t))) {
-                  const n = w.getData();
+                if ('topCompositionEnd' === e || (!c && g(e, t))) {
+                  var n = w.getData();
                   return i.release(w), (w = null), n;
                 }
                 return null;
@@ -8960,11 +8973,12 @@ object-assign
                   return null;
               }
             })(e, n))
-      ) { return null; }
-      const u = s.getPooled(y.beforeInput, t, n, o);
+      )
+        return null;
+      var u = s.getPooled(y.beforeInput, t, n, o);
       return (u.data = a), r.accumulateTwoPhaseDispatches(u), u;
     }
-    const O = {
+    var O = {
       eventTypes: y,
       extractEvents: function(e, t, n, r) {
         return [_(e, t, n, r), C(e, t, n, r)];
@@ -8974,7 +8988,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(16),
       i = n(70);
     function a(e) {
@@ -8993,16 +9007,16 @@ object-assign
       },
       getData: function() {
         if (this._fallbackText) return this._fallbackText;
-        let e,
+        var e,
           t,
           n = this._startText,
           r = n.length,
           o = this.getText(),
           i = o.length;
         for (e = 0; e < r && n[e] === o[e]; e++);
-        const a = r - e;
+        var a = r - e;
         for (t = 1; t <= a && n[r - t] === o[i - t]; t++);
-        const s = t > 1 ? 1 - t : void 0;
+        var s = t > 1 ? 1 - t : void 0;
         return (this._fallbackText = o.slice(e, s)), this._fallbackText;
       }
     }),
@@ -9011,7 +9025,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    const r = n(15);
+    var r = n(15);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -9019,7 +9033,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    const r = n(15);
+    var r = n(15);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -9027,7 +9041,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(25),
+    var r = n(25),
       o = n(24),
       i = n(9),
       a = n(6),
@@ -9056,14 +9070,14 @@ object-assign
         }
       };
     function h(e, t, n) {
-      const r = u.getPooled(d.change, e, t, n);
+      var r = u.getPooled(d.change, e, t, n);
       return (r.type = 'change'), o.accumulateTwoPhaseDispatches(r), r;
     }
-    let m = null,
+    var m = null,
       y = null;
-    let v = !1;
+    var v = !1;
     function g(e) {
-      const t = h(y, e, c(e));
+      var t = h(y, e, c(e));
       s.batchedUpdates(b, t);
     }
     function b(e) {
@@ -9073,47 +9087,48 @@ object-assign
       m && (m.detachEvent('onchange', g), (m = null), (y = null));
     }
     function _(e, t) {
-      let n = l.updateValueIfChanged(e),
+      var n = l.updateValueIfChanged(e),
         r = !0 === t.simulated && I._allowSimulatedPassThrough;
       if (n || r) return e;
     }
     function C(e, t) {
-      if (e === 'topChange') return t;
+      if ('topChange' === e) return t;
     }
     function O(e, t, n) {
-      e === 'topFocus'
+      'topFocus' === e
         ? (w(),
           (function(e, t) {
             (y = t), (m = e).attachEvent('onchange', g);
           })(t, n))
-        : e === 'topBlur' && w();
+        : 'topBlur' === e && w();
     }
     i.canUseDOM &&
       (v =
         p('change') && (!document.documentMode || document.documentMode > 8));
-    let x = !1;
+    var x = !1;
     function E() {
       m && (m.detachEvent('onpropertychange', k), (m = null), (y = null));
     }
     function k(e) {
-      e.propertyName === 'value' && _(y, e) && g(e);
+      'value' === e.propertyName && _(y, e) && g(e);
     }
     function T(e, t, n) {
-      e === 'topFocus'
+      'topFocus' === e
         ? (E(),
           (function(e, t) {
             (y = t), (m = e).attachEvent('onpropertychange', k);
           })(t, n))
-        : e === 'topBlur' && E();
+        : 'topBlur' === e && E();
     }
     function S(e, t, n) {
-      if (e === 'topSelectionChange' || e === 'topKeyUp' || e === 'topKeyDown') { return _(y, n); }
+      if ('topSelectionChange' === e || 'topKeyUp' === e || 'topKeyDown' === e)
+        return _(y, n);
     }
     function P(e, t, n) {
-      if (e === 'topClick') return _(t, n);
+      if ('topClick' === e) return _(t, n);
     }
     function A(e, t, n) {
-      if (e === 'topInput' || e === 'topChange') return _(t, n);
+      if ('topInput' === e || 'topChange' === e) return _(t, n);
     }
     i.canUseDOM &&
       (x = p('input') && (!document.documentMode || document.documentMode > 9));
@@ -9122,24 +9137,24 @@ object-assign
       _allowSimulatedPassThrough: !0,
       _isInputEventSupported: x,
       extractEvents: function(e, t, n, r) {
-        let o,
+        var o,
           i,
           s = t ? a.getNodeFromInstance(t) : window;
         if (
           (!(function(e) {
-            const t = e.nodeName && e.nodeName.toLowerCase();
-            return t === 'select' || (t === 'input' && e.type === 'file');
+            var t = e.nodeName && e.nodeName.toLowerCase();
+            return 'select' === t || ('input' === t && 'file' === e.type);
           })(s)
             ? f(s)
               ? x
                 ? (o = A)
                 : ((o = S), (i = T))
               : (function(e) {
-                  const t = e.nodeName;
+                  var t = e.nodeName;
                   return (
                     t &&
-                    t.toLowerCase() === 'input' &&
-                    (e.type === 'checkbox' || e.type === 'radio')
+                    'input' === t.toLowerCase() &&
+                    ('checkbox' === e.type || 'radio' === e.type)
                   );
                 })(s) && (o = P)
             : v
@@ -9147,16 +9162,16 @@ object-assign
               : (i = O),
           o)
         ) {
-          const u = o(e, t, n);
+          var u = o(e, t, n);
           if (u) return h(u, n, r);
         }
         i && i(e, s, t),
-          e === 'topBlur' &&
+          'topBlur' === e &&
             (function(e, t) {
-              if (e != null) {
-                const n = e._wrapperState || t._wrapperState;
-                if (n && n.controlled && t.type === 'number') {
-                  const r = '' + t.value;
+              if (null != e) {
+                var n = e._wrapperState || t._wrapperState;
+                if (n && n.controlled && 'number' === t.type) {
+                  var r = '' + t.value;
                   t.getAttribute('value') !== r && t.setAttribute('value', r);
                 }
               }
@@ -9167,36 +9182,36 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(129),
+    var r = n(129),
       o = {};
     (o.attachRefs = function(e, t) {
-      if (t !== null && typeof t === 'object') {
-        const n = t.ref;
-        n != null &&
+      if (null !== t && 'object' == typeof t) {
+        var n = t.ref;
+        null != n &&
           (function(e, t, n) {
-            typeof e === 'function'
+            'function' == typeof e
               ? e(t.getPublicInstance())
               : r.addComponentAsRefTo(t, e, n);
           })(n, e, t._owner);
       }
     }),
       (o.shouldUpdateRefs = function(e, t) {
-        let n = null,
+        var n = null,
           r = null;
-        e !== null && typeof e === 'object' && ((n = e.ref), (r = e._owner));
-        let i = null,
-          o = null;
+        null !== e && 'object' == typeof e && ((n = e.ref), (r = e._owner));
+        var o = null,
+          i = null;
         return (
-          t !== null && typeof t === 'object' && ((o = t.ref), (i = t._owner)),
-          n !== o || (typeof o === 'string' && i !== r)
+          null !== t && 'object' == typeof t && ((o = t.ref), (i = t._owner)),
+          n !== o || ('string' == typeof o && i !== r)
         );
       }),
       (o.detachRefs = function(e, t) {
-        if (t !== null && typeof t === 'object') {
-          const n = t.ref;
-          n != null &&
+        if (null !== t && 'object' == typeof t) {
+          var n = t.ref;
+          null != n &&
             (function(e, t, n) {
-              typeof e === 'function'
+              'function' == typeof e
                 ? e(null)
                 : r.removeComponentAsRefFrom(t, e, n);
             })(n, e, t._owner);
@@ -9206,22 +9221,22 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    const r = n(4);
+    var r = n(4);
     n(1);
     function o(e) {
       return !(
         !e ||
-        typeof e.attachRef !== 'function' ||
-        typeof e.detachRef !== 'function'
+        'function' != typeof e.attachRef ||
+        'function' != typeof e.detachRef
       );
     }
-    const i = {
+    var i = {
       addComponentAsRefTo: function(e, t, n) {
         o(n) || r('119'), n.attachRef(t, e);
       },
       removeComponentAsRefFrom: function(e, t, n) {
         o(n) || r('120');
-        const i = n.getPublicInstance();
+        var i = n.getPublicInstance();
         i && i.refs[t] === e.getPublicInstance() && n.detachRef(t);
       }
     };
@@ -9241,7 +9256,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(24),
+    var r = n(24),
       o = n(6),
       i = n(32),
       a = {
@@ -9257,25 +9272,26 @@ object-assign
       s = {
         eventTypes: a,
         extractEvents: function(e, t, n, s) {
-          if (e === 'topMouseOver' && (n.relatedTarget || n.fromElement)) { return null; }
-          if (e !== 'topMouseOut' && e !== 'topMouseOver') return null;
-          let c, l, u;
+          if ('topMouseOver' === e && (n.relatedTarget || n.fromElement))
+            return null;
+          if ('topMouseOut' !== e && 'topMouseOver' !== e) return null;
+          var u, l, c;
           if (s.window === s) u = s;
           else {
-            const p = s.ownerDocument;
+            var p = s.ownerDocument;
             u = p ? p.defaultView || p.parentWindow : window;
           }
-          if (e === 'topMouseOut') {
+          if ('topMouseOut' === e) {
             l = t;
-            const f = n.relatedTarget || n.toElement;
+            var f = n.relatedTarget || n.toElement;
             c = f ? o.getClosestInstanceFromNode(f) : null;
           } else (l = null), (c = t);
           if (l === c) return null;
-          let d = l == null ? u : o.getNodeFromInstance(l),
-            h = c == null ? u : o.getNodeFromInstance(c),
+          var d = null == l ? u : o.getNodeFromInstance(l),
+            h = null == c ? u : o.getNodeFromInstance(c),
             m = i.getPooled(a.mouseLeave, l, n, s);
           (m.type = 'mouseleave'), (m.target = d), (m.relatedTarget = h);
-          const y = i.getPooled(a.mouseEnter, c, n, s);
+          var y = i.getPooled(a.mouseEnter, c, n, s);
           return (
             (y.type = 'mouseenter'),
             (y.target = h),
@@ -9289,7 +9305,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(19),
+    var r = n(19),
       o = r.injection.MUST_USE_PROPERTY,
       i = r.injection.HAS_BOOLEAN_VALUE,
       a = r.injection.HAS_NUMERIC_VALUE,
@@ -9456,8 +9472,8 @@ object-assign
         DOMPropertyNames: {},
         DOMMutationMethods: {
           value: function(e, t) {
-            if (t == null) return e.removeAttribute('value');
-            e.type !== 'number' || !1 === e.hasAttribute('value')
+            if (null == t) return e.removeAttribute('value');
+            'number' !== e.type || !1 === e.hasAttribute('value')
               ? e.setAttribute('value', '' + t)
               : e.validity &&
                 !e.validity.badInput &&
@@ -9470,7 +9486,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(46),
+    var r = n(46),
       o = {
         processChildrenUpdates: n(138).dangerouslyProcessChildrenUpdates,
         replaceNodeWithMarkup: r.dangerouslyReplaceNodeWithMarkup
@@ -9479,7 +9495,7 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(21),
       i = n(9),
       a = n(135),
@@ -9490,10 +9506,10 @@ object-assign
           if (
             (i.canUseDOM || r('56'),
             t || r('57'),
-            e.nodeName === 'HTML' && r('58'),
-            typeof t === 'string')
+            'HTML' === e.nodeName && r('58'),
+            'string' == typeof t)
           ) {
-            const n = a(t, s)[0];
+            var n = a(t, s)[0];
             e.parentNode.replaceChild(n, e);
           } else o.replaceChildWithTree(e, t);
         }
@@ -9502,61 +9518,61 @@ object-assign
   },
   function(e, t, n) {
     'use strict';
-    let r = n(9),
+    var r = n(9),
       o = n(136),
       i = n(137),
       a = n(1),
       s = r.canUseDOM ? document.createElement('div') : null,
       u = /^\s*<(\w+)/;
     e.exports = function(e, t) {
-      let n = s;
+      var n = s;
       s || a(!1);
-      let r = (function(e) {
-          const t = e.match(u);
+      var r = (function(e) {
+          var t = e.match(u);
           return t && t[1].toLowerCase();
         })(e),
         l = r && i(r);
       if (l) {
         n.innerHTML = l[1] + e + l[2];
-        for (let c = l[0]; c--;) n = n.lastChild;
+        for (var c = l[0]; c--; ) n = n.lastChild;
       } else n.innerHTML = e;
-      const p = n.getElementsByTagName('script');
+      var p = n.getElementsByTagName('script');
       p.length && (t || a(!1), o(p).forEach(t));
-      for (var f = Array.from(n.childNodes); n.lastChild;) { n.removeChild(n.lastChild); }
+      for (var f = Array.from(n.childNodes); n.lastChild; )
+        n.removeChild(n.lastChild);
       return f;
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = n(1);
+    var r = n(1);
     e.exports = function(e) {
       return (function(e) {
         return (
           !!e &&
-          (typeof e === 'object' || typeof e === 'function') &&
+          ('object' == typeof e || 'function' == typeof e) &&
           'length' in e &&
           !('setInterval' in e) &&
-          typeof e.nodeType !== 'number' &&
+          'number' != typeof e.nodeType &&
           (Array.isArray(e) || 'callee' in e || 'item' in e)
         );
       })(e)
         ? Array.isArray(e)
           ? e.slice()
           : (function(e) {
-              const t = e.length;
+              var t = e.length;
               if (
                 ((Array.isArray(e) ||
-                  (typeof e !== 'object' && typeof e !== 'function')) &&
+                  ('object' != typeof e && 'function' != typeof e)) &&
                   r(!1),
-                typeof t !== 'number' && r(!1),
-                t === 0 || t - 1 in e || r(!1),
-                typeof e.callee === 'function' && r(!1),
+                'number' != typeof t && r(!1),
+                0 === t || t - 1 in e || r(!1),
+                'function' == typeof e.callee && r(!1),
                 e.hasOwnProperty)
-              ) {
-try {
+              )
+                try {
                   return Array.prototype.slice.call(e);
                 } catch (e) {}
-}
               for (var n = Array(t), o = 0; o < t; o++) n[o] = e[o];
               return n;
             })(e)
@@ -9565,7 +9581,7 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(9),
+    var r = n(9),
       o = n(1),
       i = r.canUseDOM ? document.createElement('div') : null,
       a = {},
@@ -9617,7 +9633,7 @@ try {
           i || o(!1),
           p.hasOwnProperty(e) || (e = '*'),
           a.hasOwnProperty(e) ||
-            ((i.innerHTML = e === '*' ? '<link />' : '<' + e + '></' + e + '>'),
+            ((i.innerHTML = '*' === e ? '<link />' : '<' + e + '></' + e + '>'),
             (a[e] = !i.firstChild)),
           a[e] ? p[e] : null
         );
@@ -9625,11 +9641,11 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(46),
+    var r = n(46),
       o = n(6),
       i = {
         dangerouslyProcessChildrenUpdates: function(e, t) {
-          const n = o.getNodeFromInstance(e);
+          var n = o.getNodeFromInstance(e);
           r.processUpdates(n, t);
         }
       };
@@ -9637,7 +9653,7 @@ try {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(140),
       a = n(141),
@@ -9674,7 +9690,7 @@ try {
     function M(e, t) {
       t &&
         (q[e._tag] &&
-          (t.children != null || t.dangerouslySetInnerHTML != null) &&
+          (null != t.children || null != t.dangerouslySetInnerHTML) &&
           r(
             '137',
             e._tag,
@@ -9684,20 +9700,20 @@ try {
                 '.'
               : ''
           ),
-        t.dangerouslySetInnerHTML != null &&
-          (t.children != null && r('60'),
-          (typeof t.dangerouslySetInnerHTML === 'object' &&
+        null != t.dangerouslySetInnerHTML &&
+          (null != t.children && r('60'),
+          ('object' == typeof t.dangerouslySetInnerHTML &&
             A in t.dangerouslySetInnerHTML) ||
             r('61')),
-        t.style != null &&
-          typeof t.style !== 'object' &&
+        null != t.style &&
+          'object' != typeof t.style &&
           r(
             '62',
             (function(e) {
               if (e) {
-                const t = e._currentElement._owner || null;
+                var t = e._currentElement._owner || null;
                 if (t) {
-                  const n = t.getName();
+                  var n = t.getName();
                   if (n) return ' This DOM node was rendered by `' + n + '`.';
                 }
               }
@@ -9708,7 +9724,7 @@ try {
     function R(e, t, n, r) {
       if (!(r instanceof _)) {
         0;
-        let o = e._hostContainerInfo,
+        var o = e._hostContainerInfo,
           i = o._node && o._node.nodeType === j ? o._node : o._ownerDocument;
         T(t, i),
           r
@@ -9728,7 +9744,7 @@ try {
     function U() {
       v.postMountWrapper(this);
     }
-    const F = {
+    var F = {
       topAbort: 'abort',
       topCanPlay: 'canplay',
       topCanPlayThrough: 'canplaythrough',
@@ -9758,7 +9774,7 @@ try {
     }
     function V() {
       this._rootNodeID || r('63');
-      const e = k(this);
+      var e = k(this);
       switch ((e || r('64'), this._tag)) {
         case 'iframe':
         case 'object':
@@ -9768,10 +9784,9 @@ try {
           break;
         case 'video':
         case 'audio':
-          for (const t in ((this._wrapperState.listeners = []), F)) {
- F.hasOwnProperty(t) &&
+          for (var t in ((this._wrapperState.listeners = []), F))
+            F.hasOwnProperty(t) &&
               this._wrapperState.listeners.push(d.trapBubbledEvent(t, F[t], e));
-}
           break;
         case 'source':
           this._wrapperState.listeners = [
@@ -9824,11 +9839,11 @@ try {
       Y = {},
       K = {}.hasOwnProperty;
     function X(e, t) {
-      return e.indexOf('-') >= 0 || t.is != null;
+      return e.indexOf('-') >= 0 || null != t.is;
     }
-    let Q = 1;
+    var Q = 1;
     function J(e) {
-      const t = e.type;
+      var t = e.type;
       !(function(e) {
         K.call(Y, e) || (G.test(e) || r('65', e), (Y[e] = !0));
       })(t),
@@ -9854,7 +9869,7 @@ try {
             (this._domID = n._idCounter++),
             (this._hostParent = t),
             (this._hostContainerInfo = n);
-          let o,
+          var o,
             a,
             l,
             p = this._currentElement.props;
@@ -9892,40 +9907,39 @@ try {
           }
           if (
             (M(this, p),
-            t != null
+            null != t
               ? ((o = t._namespaceURI), (a = t._tag))
               : n._tag && ((o = n._namespaceURI), (a = n._tag)),
-            (o == null || (o === u.svg && a === 'foreignobject')) &&
+            (null == o || (o === u.svg && 'foreignobject' === a)) &&
               (o = u.html),
             o === u.html &&
-              (this._tag === 'svg'
+              ('svg' === this._tag
                 ? (o = u.svg)
-                : this._tag === 'math' && (o = u.mathml)),
+                : 'math' === this._tag && (o = u.mathml)),
             (this._namespaceURI = o),
             e.useCreateElement)
           ) {
-            let f,
+            var f,
               d = n._ownerDocument;
-            if (o === u.html) {
- if (this._tag === 'script') {
-                let h = d.createElement('div'),
+            if (o === u.html)
+              if ('script' === this._tag) {
+                var h = d.createElement('div'),
                   w = this._currentElement.type;
                 (h.innerHTML = '<' + w + '></' + w + '>'),
                   (f = h.removeChild(h.firstChild));
-              } else {
-f = p.is
+              } else
+                f = p.is
                   ? d.createElement(this._currentElement.type, p.is)
                   : d.createElement(this._currentElement.type);
-}
-} else f = d.createElementNS(o, this._currentElement.type);
+            else f = d.createElementNS(o, this._currentElement.type);
             m.precacheNode(this, f),
               (this._flags |= x.hasCachedChildNodes),
               this._hostParent || c.setAttributeForRoot(f),
               this._updateDOMProperties(null, p, e);
-            const _ = s(f);
+            var _ = s(f);
             this._createInitialChildren(e, p, r, _), (l = _);
           } else {
-            let C = this._createOpenTagMarkupAndPutListeners(e, p),
+            var C = this._createOpenTagMarkupAndPutListeners(e, p),
               O = this._createContentMarkup(e, p, r);
             l =
               !O && H[this._tag]
@@ -9954,67 +9968,65 @@ f = p.is
           return l;
         },
         _createOpenTagMarkupAndPutListeners: function(e, t) {
-          let n = '<' + this._currentElement.type;
-          for (const r in t) {
-if (t.hasOwnProperty(r)) {
-              let i = t[r];
-              if (i != null) {
-if (S.hasOwnProperty(r)) i && R(this, r, i, e);
+          var n = '<' + this._currentElement.type;
+          for (var r in t)
+            if (t.hasOwnProperty(r)) {
+              var i = t[r];
+              if (null != i)
+                if (S.hasOwnProperty(r)) i && R(this, r, i, e);
                 else {
-                  r === 'style' &&
+                  'style' === r &&
                     (i && (i = this._previousStyleCopy = o({}, t.style)),
                     (i = a.createMarkupForStyles(i, this)));
-                  let s = null;
-                  this._tag != null && X(this._tag, t)
+                  var s = null;
+                  null != this._tag && X(this._tag, t)
                     ? I.hasOwnProperty(r) ||
                       (s = c.createMarkupForCustomAttribute(r, i))
                     : (s = c.createMarkupForProperty(r, i)),
                     s && (n += ' ' + s);
                 }
-}
             }
-}
           return e.renderToStaticMarkup
             ? n
             : (this._hostParent || (n += ' ' + c.createMarkupForRoot()),
               (n += ' ' + c.createMarkupForID(this._domID)));
         },
         _createContentMarkup: function(e, t, n) {
-          let r = '',
+          var r = '',
             o = t.dangerouslySetInnerHTML;
-          if (o != null) o.__html != null && (r = o.__html);
+          if (null != o) null != o.__html && (r = o.__html);
           else {
-            let i = P[typeof t.children] ? t.children : null,
-              a = i != null ? null : t.children;
-            if (i != null) r = C(i);
-            else if (a != null) {
+            var i = P[typeof t.children] ? t.children : null,
+              a = null != i ? null : t.children;
+            if (null != i) r = C(i);
+            else if (null != a) {
               r = this.mountChildren(a, e, n).join('');
             }
           }
-          return z[this._tag] && r.charAt(0) === '\n' ? '\n' + r : r;
+          return z[this._tag] && '\n' === r.charAt(0) ? '\n' + r : r;
         },
         _createInitialChildren: function(e, t, n, r) {
-          const o = t.dangerouslySetInnerHTML;
-          if (o != null) o.__html != null && s.queueHTML(r, o.__html);
+          var o = t.dangerouslySetInnerHTML;
+          if (null != o) null != o.__html && s.queueHTML(r, o.__html);
           else {
-            let i = P[typeof t.children] ? t.children : null,
-              a = i != null ? null : t.children;
-            if (i != null) i !== '' && s.queueText(r, i);
-            else if (a != null) {
- for (
-                let u = this.mountChildren(a, e, n), l = 0;
+            var i = P[typeof t.children] ? t.children : null,
+              a = null != i ? null : t.children;
+            if (null != i) '' !== i && s.queueText(r, i);
+            else if (null != a)
+              for (
+                var u = this.mountChildren(a, e, n), l = 0;
                 l < u.length;
                 l++
-              ) { s.queueChild(r, u[l]); }
-}
+              )
+                s.queueChild(r, u[l]);
           }
         },
         receiveComponent: function(e, t, n) {
-          const r = this._currentElement;
+          var r = this._currentElement;
           (this._currentElement = e), this.updateComponent(t, r, e, n);
         },
         updateComponent: function(e, t, n, r) {
-          let o = t.props,
+          var o = t.props,
             i = this._currentElement.props;
           switch (this._tag) {
             case 'input':
@@ -10046,78 +10058,76 @@ if (S.hasOwnProperty(r)) i && R(this, r, i, e);
           }
         },
         _updateDOMProperties: function(e, t, n) {
-          let i, r, s;
-          for (r in e) {
-if (!t.hasOwnProperty(r) && e.hasOwnProperty(r) && e[r] != null) {
-if (r === 'style') {
-                const u = this._previousStyleCopy;
+          var r, i, s;
+          for (r in e)
+            if (!t.hasOwnProperty(r) && e.hasOwnProperty(r) && null != e[r])
+              if ('style' === r) {
+                var u = this._previousStyleCopy;
                 for (i in u) u.hasOwnProperty(i) && ((s = s || {})[i] = '');
                 this._previousStyleCopy = null;
-              } else {
-S.hasOwnProperty(r)
+              } else
+                S.hasOwnProperty(r)
                   ? e[r] && E(this, r)
                   : X(this._tag, e)
                     ? I.hasOwnProperty(r) ||
                       c.deleteValueForAttribute(k(this), r)
                     : (l.properties[r] || l.isCustomAttribute(r)) &&
                       c.deleteValueForProperty(k(this), r);
-}
-}
-}
           for (r in t) {
-            let p = t[r],
+            var p = t[r],
               f =
-                r === 'style'
+                'style' === r
                   ? this._previousStyleCopy
-                  : e != null
+                  : null != e
                     ? e[r]
                     : void 0;
-            if (t.hasOwnProperty(r) && p !== f && (p != null || f != null)) {
-if (r === 'style') {
-if (
+            if (t.hasOwnProperty(r) && p !== f && (null != p || null != f))
+              if ('style' === r)
+                if (
                   (p
                     ? (p = this._previousStyleCopy = o({}, p))
                     : (this._previousStyleCopy = null),
                   f)
                 ) {
-                  for (i in f) {
- !f.hasOwnProperty(i) ||
+                  for (i in f)
+                    !f.hasOwnProperty(i) ||
                       (p && p.hasOwnProperty(i)) ||
                       ((s = s || {})[i] = '');
-}
-                  for (i in p) {
- p.hasOwnProperty(i) &&
+                  for (i in p)
+                    p.hasOwnProperty(i) &&
                       f[i] !== p[i] &&
                       ((s = s || {})[i] = p[i]);
-}
                 } else s = p;
-} else if (S.hasOwnProperty(r)) { p ? R(this, r, p, n) : f && E(this, r); } else if (X(this._tag, t)) { I.hasOwnProperty(r) || c.setValueForAttribute(k(this), r, p); } else if (l.properties[r] || l.isCustomAttribute(r)) {
-                const d = k(this);
-                p != null
+              else if (S.hasOwnProperty(r))
+                p ? R(this, r, p, n) : f && E(this, r);
+              else if (X(this._tag, t))
+                I.hasOwnProperty(r) || c.setValueForAttribute(k(this), r, p);
+              else if (l.properties[r] || l.isCustomAttribute(r)) {
+                var d = k(this);
+                null != p
                   ? c.setValueForProperty(d, r, p)
                   : c.deleteValueForProperty(d, r);
               }
-}
           }
           s && a.setValueForStyles(k(this), s, this);
         },
         _updateDOMChildren: function(e, t, n, r) {
-          let o = P[typeof e.children] ? e.children : null,
+          var o = P[typeof e.children] ? e.children : null,
             i = P[typeof t.children] ? t.children : null,
             a = e.dangerouslySetInnerHTML && e.dangerouslySetInnerHTML.__html,
             s = t.dangerouslySetInnerHTML && t.dangerouslySetInnerHTML.__html,
-            u = o != null ? null : e.children,
-            l = i != null ? null : t.children,
-            c = o != null || a != null,
-            p = i != null || s != null;
-          u != null && l == null
+            u = null != o ? null : e.children,
+            l = null != i ? null : t.children,
+            c = null != o || null != a,
+            p = null != i || null != s;
+          null != u && null == l
             ? this.updateChildren(null, n, r)
             : c && !p && this.updateTextContent(''),
-            i != null
+            null != i
               ? o !== i && this.updateTextContent('' + i)
-              : s != null
+              : null != s
                 ? a !== s && this.updateMarkup('' + s)
-                : l != null && this.updateChildren(l, n, r);
+                : null != l && this.updateChildren(l, n, r);
         },
         getHostNode: function() {
           return k(this);
@@ -10133,7 +10143,7 @@ if (
             case 'source':
             case 'video':
               var t = this._wrapperState.listeners;
-              if (t) for (let n = 0; n < t.length; n++) t[n].remove();
+              if (t) for (var n = 0; n < t.length; n++) t[n].remove();
               break;
             case 'input':
             case 'textarea':
@@ -10160,7 +10170,7 @@ if (
   },
   function(e, t, n) {
     'use strict';
-    let r = n(6),
+    var r = n(6),
       o = n(77),
       i = {
         focusDOMComponent: function() {
@@ -10171,7 +10181,7 @@ if (
   },
   function(e, t, n) {
     'use strict';
-    let r = n(78),
+    var r = n(78),
       o = n(9),
       i = (n(12), n(142), n(144)),
       a = n(145),
@@ -10183,7 +10193,7 @@ if (
       l = !1,
       c = 'cssFloat';
     if (o.canUseDOM) {
-      const p = document.createElement('div').style;
+      var p = document.createElement('div').style;
       try {
         p.font = '';
       } catch (e) {
@@ -10191,40 +10201,40 @@ if (
       }
       void 0 === document.documentElement.style.cssFloat && (c = 'styleFloat');
     }
-    const f = {
+    var f = {
       createMarkupForStyles: function(e, t) {
-        let n = '';
-        for (const r in e) {
-if (e.hasOwnProperty(r)) {
-            let o = r.indexOf('--') === 0,
+        var n = '';
+        for (var r in e)
+          if (e.hasOwnProperty(r)) {
+            var o = 0 === r.indexOf('--'),
               a = e[r];
-            0, a != null && ((n += u(r) + ':'), (n += i(r, a, t, o) + ';'));
+            0, null != a && ((n += u(r) + ':'), (n += i(r, a, t, o) + ';'));
           }
-}
         return n || null;
       },
       setValueForStyles: function(e, t, n) {
-        const o = e.style;
-        for (let a in t) {
-if (t.hasOwnProperty(a)) {
-            const s = a.indexOf('--') === 0;
+        var o = e.style;
+        for (var a in t)
+          if (t.hasOwnProperty(a)) {
+            var s = 0 === a.indexOf('--');
             0;
-            const u = i(a, t[a], n, s);
-            if (((a !== 'float' && a !== 'cssFloat') || (a = c), s)) { o.setProperty(a, u); } else if (u) o[a] = u;
+            var u = i(a, t[a], n, s);
+            if ((('float' !== a && 'cssFloat' !== a) || (a = c), s))
+              o.setProperty(a, u);
+            else if (u) o[a] = u;
             else {
-              const p = l && r.shorthandPropertyExpansions[a];
-              if (p) for (const f in p) o[f] = '';
+              var p = l && r.shorthandPropertyExpansions[a];
+              if (p) for (var f in p) o[f] = '';
               else o[a] = '';
             }
           }
-}
       }
     };
     e.exports = f;
   },
   function(e, t, n) {
     'use strict';
-    let r = n(143),
+    var r = n(143),
       o = /^-ms-/;
     e.exports = function(e) {
       return r(e.replace(o, 'ms-'));
@@ -10232,7 +10242,7 @@ if (t.hasOwnProperty(a)) {
   },
   function(e, t, n) {
     'use strict';
-    const r = /-(.)/g;
+    var r = /-(.)/g;
     e.exports = function(e) {
       return e.replace(r, function(e, t) {
         return t.toUpperCase();
@@ -10241,19 +10251,19 @@ if (t.hasOwnProperty(a)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(78),
+    var r = n(78),
       o = (n(3), r.isUnitlessNumber);
     e.exports = function(e, t, n, r) {
-      if (t == null || typeof t === 'boolean' || t === '') return '';
-      const i = isNaN(t);
-      return r || i || t === 0 || (o.hasOwnProperty(e) && o[e])
+      if (null == t || 'boolean' == typeof t || '' === t) return '';
+      var i = isNaN(t);
+      return r || i || 0 === t || (o.hasOwnProperty(e) && o[e])
         ? '' + t
-        : (typeof t === 'string' && (t = t.trim()), t + 'px');
+        : ('string' == typeof t && (t = t.trim()), t + 'px');
     };
   },
   function(e, t, n) {
     'use strict';
-    let r = n(146),
+    var r = n(146),
       o = /^ms-/;
     e.exports = function(e) {
       return r(e).replace(o, '-ms-');
@@ -10261,7 +10271,7 @@ if (t.hasOwnProperty(a)) {
   },
   function(e, t, n) {
     'use strict';
-    const r = /([A-Z])/g;
+    var r = /([A-Z])/g;
     e.exports = function(e) {
       return e.replace(r, '-$1').toLowerCase();
     };
@@ -10269,7 +10279,7 @@ if (t.hasOwnProperty(a)) {
   function(e, t, n) {
     'use strict';
     e.exports = function(e) {
-      const t = {};
+      var t = {};
       return function(n) {
         return t.hasOwnProperty(n) || (t[n] = e.call(this, n)), t[n];
       };
@@ -10277,15 +10287,15 @@ if (t.hasOwnProperty(a)) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(34);
+    var r = n(34);
     e.exports = function(e) {
       return '"' + r(e) + '"';
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = n(25);
-    const o = {
+    var r = n(25);
+    var o = {
       handleTopLevel: function(e, t, n, o) {
         !(function(e) {
           r.enqueueEvents(e), r.processEventQueue(!1);
@@ -10296,9 +10306,9 @@ if (t.hasOwnProperty(a)) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(9);
+    var r = n(9);
     function o(e, t) {
-      const n = {};
+      var n = {};
       return (
         (n[e.toLowerCase()] = t.toLowerCase()),
         (n['Webkit' + e] = 'webkit' + t),
@@ -10308,7 +10318,7 @@ if (t.hasOwnProperty(a)) {
         n
       );
     }
-    let i = {
+    var i = {
         animationend: o('Animation', 'AnimationEnd'),
         animationiteration: o('Animation', 'AnimationIteration'),
         animationstart: o('Animation', 'AnimationStart'),
@@ -10326,14 +10336,15 @@ if (t.hasOwnProperty(a)) {
       (e.exports = function(e) {
         if (a[e]) return a[e];
         if (!i[e]) return e;
-        const t = i[e];
-        for (const n in t) { if (t.hasOwnProperty(n) && n in s) return (a[e] = t[n]); }
+        var t = i[e];
+        for (var n in t)
+          if (t.hasOwnProperty(n) && n in s) return (a[e] = t[n]);
         return '';
       });
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(79),
       a = n(49),
@@ -10345,40 +10356,41 @@ if (t.hasOwnProperty(a)) {
     }
     var c = {
       getHostProps: function(e, t) {
-        let n = a.getValue(t),
+        var n = a.getValue(t),
           r = a.getChecked(t);
         return o({ type: void 0, step: void 0, min: void 0, max: void 0 }, t, {
           defaultChecked: void 0,
           defaultValue: void 0,
-          value: n != null ? n : e._wrapperState.initialValue,
-          checked: r != null ? r : e._wrapperState.initialChecked,
+          value: null != n ? n : e._wrapperState.initialValue,
+          checked: null != r ? r : e._wrapperState.initialChecked,
           onChange: e._wrapperState.onChange
         });
       },
       mountWrapper: function(e, t) {
-        const n = t.defaultValue;
+        var n = t.defaultValue;
         e._wrapperState = {
-          initialChecked: t.checked != null ? t.checked : t.defaultChecked,
-          initialValue: t.value != null ? t.value : n,
+          initialChecked: null != t.checked ? t.checked : t.defaultChecked,
+          initialValue: null != t.value ? t.value : n,
           listeners: null,
           onChange: function(e) {
-            let t = this._currentElement.props,
+            var t = this._currentElement.props,
               n = a.executeOnChange(t, e);
             u.asap(l, this);
-            const o = t.name;
-            if (t.type === 'radio' && o != null) {
-              for (var i = s.getNodeFromInstance(this), c = i; c.parentNode;) { c = c.parentNode; }
+            var o = t.name;
+            if ('radio' === t.type && null != o) {
+              for (var i = s.getNodeFromInstance(this), c = i; c.parentNode; )
+                c = c.parentNode;
               for (
-                let p = c.querySelectorAll(
+                var p = c.querySelectorAll(
                     'input[name=' + JSON.stringify('' + o) + '][type="radio"]'
                   ),
                   f = 0;
                 f < p.length;
                 f++
               ) {
-                const d = p[f];
+                var d = p[f];
                 if (d !== i && d.form === i.form) {
-                  const h = s.getInstanceFromNode(d);
+                  var h = s.getInstanceFromNode(d);
                   h || r('90'), u.asap(l, h);
                 }
               }
@@ -10386,37 +10398,36 @@ if (t.hasOwnProperty(a)) {
             return n;
           }.bind(e),
           controlled: (function(e) {
-            return e.type === 'checkbox' || e.type === 'radio'
-              ? e.checked != null
-              : e.value != null;
+            return 'checkbox' === e.type || 'radio' === e.type
+              ? null != e.checked
+              : null != e.value;
           })(t)
         };
       },
       updateWrapper: function(e) {
-        let t = e._currentElement.props,
+        var t = e._currentElement.props,
           n = t.checked;
-        n != null &&
+        null != n &&
           i.setValueForProperty(s.getNodeFromInstance(e), 'checked', n || !1);
-        let r = s.getNodeFromInstance(e),
+        var r = s.getNodeFromInstance(e),
           o = a.getValue(t);
-        if (o != null) {
- if (o === 0 && r.value === '') r.value = '0';
-          else if (t.type === 'number') {
-            const u = parseFloat(r.value, 10) || 0;
+        if (null != o)
+          if (0 === o && '' === r.value) r.value = '0';
+          else if ('number' === t.type) {
+            var u = parseFloat(r.value, 10) || 0;
             (o != u || (o == u && r.value != o)) && (r.value = '' + o);
           } else r.value !== '' + o && (r.value = '' + o);
-} else {
-t.value == null &&
-            t.defaultValue != null &&
+        else
+          null == t.value &&
+            null != t.defaultValue &&
             r.defaultValue !== '' + t.defaultValue &&
             (r.defaultValue = '' + t.defaultValue),
-            t.checked == null &&
-              t.defaultChecked != null &&
+            null == t.checked &&
+              null != t.defaultChecked &&
               (r.defaultChecked = !!t.defaultChecked);
-}
       },
       postMountWrapper: function(e) {
-        let t = e._currentElement.props,
+        var t = e._currentElement.props,
           n = s.getNodeFromInstance(e);
         switch (t.type) {
           case 'submit':
@@ -10434,11 +10445,11 @@ t.value == null &&
           default:
             n.value = n.value;
         }
-        const r = n.name;
-        r !== '' && (n.name = ''),
+        var r = n.name;
+        '' !== r && (n.name = ''),
           (n.defaultChecked = !n.defaultChecked),
           (n.defaultChecked = !n.defaultChecked),
-          r !== '' && (n.name = r);
+          '' !== r && (n.name = r);
       }
     };
     e.exports = c;
@@ -10449,61 +10460,59 @@ t.value == null &&
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(17),
       i = n(6),
       a = n(80),
       s = (n(3), !1);
     function u(e) {
-      let t = '';
+      var t = '';
       return (
         o.Children.forEach(e, function(e) {
-          e != null &&
-            (typeof e === 'string' || typeof e === 'number'
+          null != e &&
+            ('string' == typeof e || 'number' == typeof e
               ? (t += e)
               : s || (s = !0));
         }),
         t
       );
     }
-    const l = {
+    var l = {
       mountWrapper: function(e, t, n) {
-        let r = null;
-        if (n != null) {
-          let o = n;
-          o._tag === 'optgroup' && (o = o._hostParent),
-            o != null &&
-              o._tag === 'select' &&
+        var r = null;
+        if (null != n) {
+          var o = n;
+          'optgroup' === o._tag && (o = o._hostParent),
+            null != o &&
+              'select' === o._tag &&
               (r = a.getSelectValueContext(o));
         }
-        let i,
+        var i,
           s = null;
-        if (r != null) {
- if (
-            ((i = t.value != null ? t.value + '' : u(t.children)),
+        if (null != r)
+          if (
+            ((i = null != t.value ? t.value + '' : u(t.children)),
             (s = !1),
             Array.isArray(r))
           ) {
-            for (let l = 0; l < r.length; l++) {
-if ('' + r[l] === i) {
+            for (var l = 0; l < r.length; l++)
+              if ('' + r[l] === i) {
                 s = !0;
                 break;
               }
-}
           } else s = '' + r === i;
-}
         e._wrapperState = { selected: s };
       },
       postMountWrapper: function(e) {
-        const t = e._currentElement.props;
-        t.value != null &&
+        var t = e._currentElement.props;
+        null != t.value &&
           i.getNodeFromInstance(e).setAttribute('value', t.value);
       },
       getHostProps: function(e, t) {
-        const n = r({ selected: void 0, children: void 0 }, t);
-        e._wrapperState.selected != null &&
+        var n = r({ selected: void 0, children: void 0 }, t);
+        null != e._wrapperState.selected &&
           (n.selected = e._wrapperState.selected);
-        const o = u(t.children);
+        var o = u(t.children);
         return o && (n.children = o), n;
       }
     };
@@ -10511,7 +10520,7 @@ if ('' + r[l] === i) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(49),
       a = n(6),
@@ -10523,7 +10532,7 @@ if ('' + r[l] === i) {
     var l = {
       getHostProps: function(e, t) {
         return (
-          t.dangerouslySetInnerHTML != null && r('91'),
+          null != t.dangerouslySetInnerHTML && r('91'),
           o({}, t, {
             value: void 0,
             defaultValue: void 0,
@@ -10533,41 +10542,41 @@ if ('' + r[l] === i) {
         );
       },
       mountWrapper: function(e, t) {
-        let n = i.getValue(t),
+        var n = i.getValue(t),
           o = n;
-        if (n == null) {
-          let a = t.defaultValue,
+        if (null == n) {
+          var a = t.defaultValue,
             l = t.children;
-          l != null &&
-            (a != null && r('92'),
+          null != l &&
+            (null != a && r('92'),
             Array.isArray(l) && (l.length <= 1 || r('93'), (l = l[0])),
             (a = '' + l)),
-            a == null && (a = ''),
+            null == a && (a = ''),
             (o = a);
         }
         e._wrapperState = {
           initialValue: '' + o,
           listeners: null,
           onChange: function(e) {
-            let t = this._currentElement.props,
+            var t = this._currentElement.props,
               n = i.executeOnChange(t, e);
             return s.asap(u, this), n;
           }.bind(e)
         };
       },
       updateWrapper: function(e) {
-        let t = e._currentElement.props,
+        var t = e._currentElement.props,
           n = a.getNodeFromInstance(e),
           r = i.getValue(t);
-        if (r != null) {
-          const o = '' + r;
+        if (null != r) {
+          var o = '' + r;
           o !== n.value && (n.value = o),
-            t.defaultValue == null && (n.defaultValue = o);
+            null == t.defaultValue && (n.defaultValue = o);
         }
-        t.defaultValue != null && (n.defaultValue = t.defaultValue);
+        null != t.defaultValue && (n.defaultValue = t.defaultValue);
       },
       postMountWrapper: function(e) {
-        let t = a.getNodeFromInstance(e),
+        var t = a.getNodeFromInstance(e),
           n = t.textContent;
         n === e._wrapperState.initialValue && (t.value = n);
       }
@@ -10576,7 +10585,7 @@ if ('' + r[l] === i) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(50),
       i = (n(27), n(12), n(14), n(20)),
       a = n(156),
@@ -10588,13 +10597,13 @@ if ('' + r[l] === i) {
     function l(e, t) {
       o.processChildrenUpdates(e, t);
     }
-    const c = {
+    var c = {
       Mixin: {
         _reconcilerInstantiateChildren: function(e, t, n) {
           return a.instantiateChildren(e, t, n);
         },
         _reconcilerUpdateChildren: function(e, t, n, r, o, i) {
-          let u;
+          var u;
           return (
             (u = s(t, 0)),
             a.updateChildren(
@@ -10612,15 +10621,15 @@ if ('' + r[l] === i) {
           );
         },
         mountChildren: function(e, t, n) {
-          const r = this._reconcilerInstantiateChildren(e, t, n);
+          var r = this._reconcilerInstantiateChildren(e, t, n);
           this._renderedChildren = r;
-          let o = [],
+          var o = [],
             a = 0;
-          for (const s in r) {
- if (r.hasOwnProperty(s)) {
-              const u = r[s];
+          for (var s in r)
+            if (r.hasOwnProperty(s)) {
+              var u = r[s];
               0;
-              const l = i.mountComponent(
+              var l = i.mountComponent(
                 u,
                 t,
                 this,
@@ -10630,12 +10639,12 @@ if ('' + r[l] === i) {
               );
               (u._mountIndex = a++), o.push(l);
             }
-}
           return o;
         },
         updateTextContent: function(e) {
-          const t = this._renderedChildren;
-          for (const n in (a.unmountChildren(t, !1), t)) { t.hasOwnProperty(n) && r('118'); }
+          var t = this._renderedChildren;
+          for (var n in (a.unmountChildren(t, !1), t))
+            t.hasOwnProperty(n) && r('118');
           l(this, [
             (function(e) {
               return {
@@ -10650,8 +10659,9 @@ if ('' + r[l] === i) {
           ]);
         },
         updateMarkup: function(e) {
-          const t = this._renderedChildren;
-          for (const n in (a.unmountChildren(t, !1), t)) { t.hasOwnProperty(n) && r('118'); }
+          var t = this._renderedChildren;
+          for (var n in (a.unmountChildren(t, !1), t))
+            t.hasOwnProperty(n) && r('118');
           l(this, [
             (function(e) {
               return {
@@ -10669,20 +10679,20 @@ if ('' + r[l] === i) {
           this._updateChildren(e, t, n);
         },
         _updateChildren: function(e, t, n) {
-          let r = this._renderedChildren,
+          var r = this._renderedChildren,
             o = {},
             a = [],
             s = this._reconcilerUpdateChildren(r, e, a, o, t, n);
           if (s || r) {
-            let c,
-              d = 0,
+            var c,
+              p = null,
               f = 0,
+              d = 0,
               h = 0,
-              m = null,
-              p = null;
-            for (c in s) {
-if (s.hasOwnProperty(c)) {
-                let y = r && r[c],
+              m = null;
+            for (c in s)
+              if (s.hasOwnProperty(c)) {
+                var y = r && r[c],
                   v = s[c];
                 y === v
                   ? ((p = u(p, this.moveChild(y, m, f, d))),
@@ -10694,18 +10704,18 @@ if (s.hasOwnProperty(c)) {
                   f++,
                   (m = i.getHostNode(v));
               }
-}
-            for (c in o) { o.hasOwnProperty(c) && (p = u(p, this._unmountChild(r[c], o[c]))); }
+            for (c in o)
+              o.hasOwnProperty(c) && (p = u(p, this._unmountChild(r[c], o[c])));
             p && l(this, p), (this._renderedChildren = s);
           }
         },
         unmountChildren: function(e) {
-          const t = this._renderedChildren;
+          var t = this._renderedChildren;
           a.unmountChildren(t, e), (this._renderedChildren = null);
         },
         moveChild: function(e, t, n, r) {
-          if (e._mountIndex < r) {
-return (function(e, t, n) {
+          if (e._mountIndex < r)
+            return (function(e, t, n) {
               return {
                 type: 'MOVE_EXISTING',
                 content: null,
@@ -10715,7 +10725,6 @@ return (function(e, t, n) {
                 afterNode: t
               };
             })(e, t, n);
-}
         },
         createChild: function(e, t, n) {
           return (function(e, t, n) {
@@ -10745,7 +10754,7 @@ return (function(e, t, n) {
           return (e._mountIndex = r), this.createChild(e, n, t);
         },
         _unmountChild: function(e, t) {
-          const n = this.removeChild(e, t);
+          var n = this.removeChild(e, t);
           return (e._mountIndex = null), n;
         }
       }
@@ -10755,54 +10764,53 @@ return (function(e, t, n) {
   function(e, t, n) {
     'use strict';
     (function(t) {
-      let r = n(20),
+      var r = n(20),
         o = n(81),
         i = (n(54), n(53)),
         a = n(85);
       n(3);
       function s(e, t, n, r) {
-        const i = void 0 === e[n];
-        t != null && i && (e[n] = o(t, !0));
+        var i = void 0 === e[n];
+        null != t && i && (e[n] = o(t, !0));
       }
       void 0 !== t && t.env;
-      const u = {
+      var u = {
         instantiateChildren: function(e, t, n, r) {
-          if (e == null) return null;
-          const o = {};
+          if (null == e) return null;
+          var o = {};
           return a(e, s, o), o;
         },
         updateChildren: function(e, t, n, a, s, u, l, c, p) {
           if (t || e) {
-            let d, f;
-            for (f in t) {
- if (t.hasOwnProperty(f)) {
-                let h = (d = e && e[f]) && d._currentElement,
+            var f, d;
+            for (f in t)
+              if (t.hasOwnProperty(f)) {
+                var h = (d = e && e[f]) && d._currentElement,
                   m = t[f];
-                if (d != null && i(h, m)) { r.receiveComponent(d, m, s, c), (t[f] = d); } else {
+                if (null != d && i(h, m))
+                  r.receiveComponent(d, m, s, c), (t[f] = d);
+                else {
                   d && ((a[f] = r.getHostNode(d)), r.unmountComponent(d, !1));
-                  const y = o(m, !0);
+                  var y = o(m, !0);
                   t[f] = y;
-                  const v = r.mountComponent(y, s, u, l, c, p);
+                  var v = r.mountComponent(y, s, u, l, c, p);
                   n.push(v);
                 }
               }
-}
-            for (f in e) {
-!e.hasOwnProperty(f) ||
+            for (f in e)
+              !e.hasOwnProperty(f) ||
                 (t && t.hasOwnProperty(f)) ||
                 ((d = e[f]),
                 (a[f] = r.getHostNode(d)),
                 r.unmountComponent(d, !1));
-}
           }
         },
         unmountChildren: function(e, t) {
-          for (const n in e) {
- if (e.hasOwnProperty(n)) {
-              const o = e[n];
+          for (var n in e)
+            if (e.hasOwnProperty(n)) {
+              var o = e[n];
               r.unmountComponent(o, t);
             }
-}
         }
       };
       e.exports = u;
@@ -10810,7 +10818,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(17),
       a = n(50),
@@ -10830,11 +10838,11 @@ return (function(e, t, n) {
       0;
     }
     g.prototype.render = function() {
-      let e = l.get(this)._currentElement.type,
+      var e = l.get(this)._currentElement.type,
         t = e(this.props, this.context, this.updater);
       return b(e, t), t;
     };
-    let w = 1,
+    var w = 1,
       _ = {
         construct: function(e) {
           (this._currentElement = e),
@@ -10861,7 +10869,7 @@ return (function(e, t, n) {
             (this._mountOrder = w++),
             (this._hostParent = t),
             (this._hostContainerInfo = n);
-          let a,
+          var a,
             s = this._currentElement.props,
             u = this._processContext(o),
             c = this._currentElement.type,
@@ -10870,7 +10878,7 @@ return (function(e, t, n) {
               return !(!e.prototype || !e.prototype.isReactComponent);
             })(c),
             h = this._constructComponent(d, s, u, p);
-          d || (h != null && h.render != null)
+          d || (null != h && null != h.render)
             ? !(function(e) {
                 return !(!e.prototype || !e.prototype.isPureReactComponent);
               })(c)
@@ -10878,7 +10886,7 @@ return (function(e, t, n) {
               : (this._compositeType = y)
             : ((a = h),
               b(),
-              h === null ||
+              null === h ||
                 !1 === h ||
                 i.isValidElement(h) ||
                 r('105', c.displayName || c.name || 'Component'),
@@ -10890,11 +10898,11 @@ return (function(e, t, n) {
             (h.updater = p),
             (this._instance = h),
             l.set(h, this);
-          let _,
+          var _,
             C = h.state;
           return (
             void 0 === C && (h.state = C = null),
-            (typeof C !== 'object' || Array.isArray(C)) &&
+            ('object' != typeof C || Array.isArray(C)) &&
               r('106', this.getName() || 'ReactCompositeComponent'),
             (this._pendingStateQueue = null),
             (this._pendingReplaceState = !1),
@@ -10911,11 +10919,11 @@ return (function(e, t, n) {
           return this._constructComponentWithoutOwner(e, t, n, r);
         },
         _constructComponentWithoutOwner: function(e, t, n, r) {
-          const o = this._currentElement.type;
+          var o = this._currentElement.type;
           return e ? new o(t, n, r) : o(t, n, r);
         },
         performInitialMountWithErrorHandling: function(e, t, n, r, o) {
-          let i,
+          var i,
             a = r.checkpoint();
           try {
             i = this.performInitialMount(e, t, n, r, o);
@@ -10935,15 +10943,15 @@ return (function(e, t, n) {
           return i;
         },
         performInitialMount: function(e, t, n, r, o) {
-          const i = this._instance;
+          var i = this._instance;
           i.componentWillMount &&
             (i.componentWillMount(),
             this._pendingStateQueue &&
               (i.state = this._processPendingState(i.props, i.context))),
             void 0 === e && (e = this._renderValidatedComponent());
-          const a = c.getType(e);
+          var a = c.getType(e);
           this._renderedNodeType = a;
-          const s = this._instantiateReactComponent(e, a !== c.EMPTY);
+          var s = this._instantiateReactComponent(e, a !== c.EMPTY);
           return (
             (this._renderedComponent = s),
             p.mountComponent(s, r, t, n, this._processChildContext(o), 0)
@@ -10954,13 +10962,12 @@ return (function(e, t, n) {
         },
         unmountComponent: function(e) {
           if (this._renderedComponent) {
-            const t = this._instance;
-            if (t.componentWillUnmount && !t._calledComponentWillUnmount) {
- if (((t._calledComponentWillUnmount = !0), e)) {
-                const n = this.getName() + '.componentWillUnmount()';
+            var t = this._instance;
+            if (t.componentWillUnmount && !t._calledComponentWillUnmount)
+              if (((t._calledComponentWillUnmount = !0), e)) {
+                var n = this.getName() + '.componentWillUnmount()';
                 u.invokeGuardedCallback(n, t.componentWillUnmount.bind(t));
               } else t.componentWillUnmount();
-}
             this._renderedComponent &&
               (p.unmountComponent(this._renderedComponent, e),
               (this._renderedNodeType = null),
@@ -10978,26 +10985,25 @@ return (function(e, t, n) {
           }
         },
         _maskContext: function(e) {
-          const t = this._currentElement.type.contextTypes;
+          var t = this._currentElement.type.contextTypes;
           if (!t) return f;
-          const n = {};
-          for (const r in t) n[r] = e[r];
+          var n = {};
+          for (var r in t) n[r] = e[r];
           return n;
         },
         _processContext: function(e) {
           return this._maskContext(e);
         },
         _processChildContext: function(e) {
-          let t,
+          var t,
             n = this._currentElement.type,
             i = this._instance;
           if ((i.getChildContext && (t = i.getChildContext()), t)) {
-            for (const a in (typeof n.childContextTypes !== 'object' &&
+            for (var a in ('object' != typeof n.childContextTypes &&
               r('107', this.getName() || 'ReactCompositeComponent'),
-            t)) {
- a in n.childContextTypes ||
+            t))
+              a in n.childContextTypes ||
                 r('108', this.getName() || 'ReactCompositeComponent', a);
-}
             return o({}, e, t);
           }
           return e;
@@ -11006,14 +11012,14 @@ return (function(e, t, n) {
           0;
         },
         receiveComponent: function(e, t, n) {
-          let r = this._currentElement,
+          var r = this._currentElement,
             o = this._context;
           (this._pendingElement = null), this.updateComponent(t, r, e, o, n);
         },
         performUpdateIfNecessary: function(e) {
-          this._pendingElement != null
+          null != this._pendingElement
             ? p.receiveComponent(this, this._pendingElement, e, this._context)
-            : this._pendingStateQueue !== null || this._pendingForceUpdate
+            : null !== this._pendingStateQueue || this._pendingForceUpdate
               ? this.updateComponent(
                   e,
                   this._currentElement,
@@ -11024,20 +11030,20 @@ return (function(e, t, n) {
               : (this._updateBatchNumber = null);
         },
         updateComponent: function(e, t, n, o, i) {
-          const a = this._instance;
-          a == null && r('136', this.getName() || 'ReactCompositeComponent');
-          let s,
+          var a = this._instance;
+          null == a && r('136', this.getName() || 'ReactCompositeComponent');
+          var s,
             u = !1;
           this._context === i
             ? (s = a.context)
             : ((s = this._processContext(i)), (u = !0));
-          let l = t.props,
+          var l = t.props,
             c = n.props;
           t !== n && (u = !0),
             u &&
               a.componentWillReceiveProps &&
               a.componentWillReceiveProps(c, s);
-          let p = this._processPendingState(c, s),
+          var p = this._processPendingState(c, s),
             f = !0;
           this._pendingForceUpdate ||
             (a.shouldComponentUpdate
@@ -11054,27 +11060,28 @@ return (function(e, t, n) {
                 (a.context = s));
         },
         _processPendingState: function(e, t) {
-          let n = this._instance,
+          var n = this._instance,
             r = this._pendingStateQueue,
             i = this._pendingReplaceState;
           if (
             ((this._pendingReplaceState = !1),
             (this._pendingStateQueue = null),
             !r)
-          ) { return n.state; }
-          if (i && r.length === 1) return r[0];
+          )
+            return n.state;
+          if (i && 1 === r.length) return r[0];
           for (
             var a = o({}, i ? r[0] : n.state), s = i ? 1 : 0;
             s < r.length;
             s++
           ) {
-            const u = r[s];
-            o(a, typeof u === 'function' ? u.call(n, a, e, t) : u);
+            var u = r[s];
+            o(a, 'function' == typeof u ? u.call(n, a, e, t) : u);
           }
           return a;
         },
         _performComponentUpdate: function(e, t, n, r, o, i) {
-          let a,
+          var a,
             s,
             u,
             l = this._instance,
@@ -11093,17 +11100,19 @@ return (function(e, t, n) {
                 .enqueue(l.componentDidUpdate.bind(l, a, s, u), l);
         },
         _updateRenderedComponent: function(e, t) {
-          let n = this._renderedComponent,
+          var n = this._renderedComponent,
             r = n._currentElement,
             o = this._renderValidatedComponent();
-          if (h(r, o)) { p.receiveComponent(n, o, e, this._processChildContext(t)); } else {
-            const i = p.getHostNode(n);
+          if (h(r, o))
+            p.receiveComponent(n, o, e, this._processChildContext(t));
+          else {
+            var i = p.getHostNode(n);
             p.unmountComponent(n, !1);
-            const a = c.getType(o);
+            var a = c.getType(o);
             this._renderedNodeType = a;
-            const s = this._instantiateReactComponent(o, a !== c.EMPTY);
+            var s = this._instantiateReactComponent(o, a !== c.EMPTY);
             this._renderedComponent = s;
-            const u = p.mountComponent(
+            var u = p.mountComponent(
               s,
               e,
               this._hostParent,
@@ -11121,7 +11130,7 @@ return (function(e, t, n) {
           return this._instance.render();
         },
         _renderValidatedComponent: function() {
-          let e;
+          var e;
           if (this._compositeType !== v) {
             s.current = this;
             try {
@@ -11131,7 +11140,7 @@ return (function(e, t, n) {
             }
           } else e = this._renderValidatedComponentWithoutOwnerOrContext();
           return (
-            e === null ||
+            null === e ||
               !1 === e ||
               i.isValidElement(e) ||
               r('109', this.getName() || 'ReactCompositeComponent'),
@@ -11139,16 +11148,16 @@ return (function(e, t, n) {
           );
         },
         attachRef: function(e, t) {
-          const n = this.getPublicInstance();
-          n == null && r('110');
-          const o = t.getPublicInstance();
+          var n = this.getPublicInstance();
+          null == n && r('110');
+          var o = t.getPublicInstance();
           (n.refs === f ? (n.refs = {}) : n.refs)[e] = o;
         },
         detachRef: function(e) {
           delete this.getPublicInstance().refs[e];
         },
         getName: function() {
-          let e = this._currentElement.type,
+          var e = this._currentElement.type,
             t = this._instance && this._instance.constructor;
           return (
             e.displayName ||
@@ -11159,7 +11168,7 @@ return (function(e, t, n) {
           );
         },
         getPublicInstance: function() {
-          const e = this._instance;
+          var e = this._instance;
           return this._compositeType === v ? null : e;
         },
         _instantiateReactComponent: null
@@ -11168,15 +11177,15 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = 1;
+    var r = 1;
     e.exports = function() {
       return r++;
     };
   },
   function(e, t, n) {
     'use strict';
-    const r =
-      (typeof Symbol === 'function' &&
+    var r =
+      ('function' == typeof Symbol &&
         Symbol.for &&
         Symbol.for('react.element')) ||
       60103;
@@ -11184,48 +11193,48 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = typeof Symbol === 'function' && Symbol.iterator,
+    var r = 'function' == typeof Symbol && Symbol.iterator,
       o = '@@iterator';
     e.exports = function(e) {
-      const t = e && ((r && e[r]) || e[o]);
-      if (typeof t === 'function') return t;
+      var t = e && ((r && e[r]) || e[o]);
+      if ('function' == typeof t) return t;
     };
   },
   function(e, t, n) {
     'use strict';
     (function(t) {
       n(54);
-      const r = n(85);
+      var r = n(85);
       n(3);
       function o(e, t, n, r) {
-        if (e && typeof e === 'object') {
-          const o = e;
-          0, void 0 === o[n] && t != null && (o[n] = t);
+        if (e && 'object' == typeof e) {
+          var o = e;
+          0, void 0 === o[n] && null != t && (o[n] = t);
         }
       }
       void 0 !== t && t.env,
         (e.exports = function(e, t) {
-          if (e == null) return e;
-          const n = {};
+          if (null == e) return e;
+          var n = {};
           return r(e, o, n), n;
         });
     }.call(this, n(51)));
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(16),
       i = n(31),
       a = (n(12), n(163)),
       s = [];
-    const u = { enqueue: function() {} };
+    var u = { enqueue: function() {} };
     function l(e) {
       this.reinitializeTransaction(),
         (this.renderToStaticMarkup = e),
         (this.useCreateElement = !1),
         (this.updateQueue = new a(this));
     }
-    const c = {
+    var c = {
       getTransactionWrappers: function() {
         return s;
       },
@@ -11243,12 +11252,13 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(55);
+    var r = n(55);
     n(3);
-    const o = (function() {
+    var o = (function() {
       function e(t) {
         !(function(e, t) {
-          if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+          if (!(e instanceof t))
+            throw new TypeError('Cannot call a class as a function');
         })(this, e),
           (this.transaction = t);
       }
@@ -11275,7 +11285,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(21),
       i = n(6),
       a = function(e) {
@@ -11287,13 +11297,13 @@ return (function(e, t, n) {
       };
     r(a.prototype, {
       mountComponent: function(e, t, n, r) {
-        const a = n._idCounter++;
+        var a = n._idCounter++;
         (this._domID = a),
           (this._hostParent = t),
           (this._hostContainerInfo = n);
-        const s = ' react-empty: ' + this._domID + ' ';
+        var s = ' react-empty: ' + this._domID + ' ';
         if (e.useCreateElement) {
-          const u = n._ownerDocument.createComment(s);
+          var u = n._ownerDocument.createComment(s);
           return i.precacheNode(this, u), o(u);
         }
         return e.renderToStaticMarkup ? '' : '\x3c!--' + s + '--\x3e';
@@ -11310,15 +11320,15 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(4);
+    var r = n(4);
     n(1);
     function o(e, t) {
       '_hostNode' in e || r('33'), '_hostNode' in t || r('33');
       for (var n = 0, o = e; o; o = o._hostParent) n++;
       for (var i = 0, a = t; a; a = a._hostParent) i++;
-      for (; n - i > 0;) (e = e._hostParent), n--;
-      for (; i - n > 0;) (t = t._hostParent), i--;
-      for (let s = n; s--;) {
+      for (; n - i > 0; ) (e = e._hostParent), n--;
+      for (; i - n > 0; ) (t = t._hostParent), i--;
+      for (var s = n; s--; ) {
         if (e === t) return e;
         (e = e._hostParent), (t = t._hostParent);
       }
@@ -11327,7 +11337,7 @@ return (function(e, t, n) {
     e.exports = {
       isAncestor: function(e, t) {
         '_hostNode' in e || r('35'), '_hostNode' in t || r('35');
-        for (; t;) {
+        for (; t; ) {
           if (t === e) return !0;
           t = t._hostParent;
         }
@@ -11338,21 +11348,22 @@ return (function(e, t, n) {
         return '_hostNode' in e || r('36'), e._hostParent;
       },
       traverseTwoPhase: function(e, t, n) {
-        for (var r, o = []; e;) o.push(e), (e = e._hostParent);
-        for (r = o.length; r-- > 0;) t(o[r], 'captured', n);
+        for (var r, o = []; e; ) o.push(e), (e = e._hostParent);
+        for (r = o.length; r-- > 0; ) t(o[r], 'captured', n);
         for (r = 0; r < o.length; r++) t(o[r], 'bubbled', n);
       },
       traverseEnterLeave: function(e, t, n, r, i) {
-        for (var a = e && t ? o(e, t) : null, s = []; e && e !== a;) { s.push(e), (e = e._hostParent); }
-        for (var u, l = []; t && t !== a;) l.push(t), (t = t._hostParent);
+        for (var a = e && t ? o(e, t) : null, s = []; e && e !== a; )
+          s.push(e), (e = e._hostParent);
+        for (var u, l = []; t && t !== a; ) l.push(t), (t = t._hostParent);
         for (u = 0; u < s.length; u++) n(s[u], 'bubbled', r);
-        for (u = l.length; u-- > 0;) n(l[u], 'captured', i);
+        for (u = l.length; u-- > 0; ) n(l[u], 'captured', i);
       }
     };
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(7),
       i = n(46),
       a = n(21),
@@ -11372,10 +11383,10 @@ return (function(e, t, n) {
       });
     o(l.prototype, {
       mountComponent: function(e, t, n, r) {
-        let o = n._idCounter++,
+        var o = n._idCounter++,
           i = ' react-text: ' + o + ' ';
         if (((this._domID = o), (this._hostParent = t), e.useCreateElement)) {
-          let l = n._ownerDocument,
+          var l = n._ownerDocument,
             c = l.createComment(i),
             p = l.createComment(' /react-text '),
             f = a(l.createDocumentFragment());
@@ -11389,7 +11400,7 @@ return (function(e, t, n) {
             f
           );
         }
-        const d = u(this._stringText);
+        var d = u(this._stringText);
         return e.renderToStaticMarkup
           ? d
           : '\x3c!--' + i + '--\x3e' + d + '\x3c!-- /react-text --\x3e';
@@ -11397,29 +11408,28 @@ return (function(e, t, n) {
       receiveComponent: function(e, t) {
         if (e !== this._currentElement) {
           this._currentElement = e;
-          const n = '' + e;
+          var n = '' + e;
           if (n !== this._stringText) {
             this._stringText = n;
-            const r = this.getHostNode();
+            var r = this.getHostNode();
             i.replaceDelimitedText(r[0], r[1], n);
           }
         }
       },
       getHostNode: function() {
-        let e = this._commentNodes;
+        var e = this._commentNodes;
         if (e) return e;
-        if (!this._closingComment) {
- for (let t = s.getNodeFromInstance(this).nextSibling; ;) {
+        if (!this._closingComment)
+          for (var t = s.getNodeFromInstance(this).nextSibling; ; ) {
             if (
-              (t == null && r('67', this._domID),
-              t.nodeType === 8 && t.nodeValue === ' /react-text ')
+              (null == t && r('67', this._domID),
+              8 === t.nodeType && ' /react-text ' === t.nodeValue)
             ) {
               this._closingComment = t;
               break;
             }
             t = t.nextSibling;
           }
-}
         return (
           (e = [this._hostNode, this._closingComment]),
           (this._commentNodes = e),
@@ -11436,7 +11446,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(13),
       i = n(31),
       a = n(11),
@@ -11459,7 +11469,7 @@ return (function(e, t, n) {
       p = {
         isBatchingUpdates: !1,
         batchedUpdates: function(e, t, n, r, o, i) {
-          const a = p.isBatchingUpdates;
+          var a = p.isBatchingUpdates;
           return (
             (p.isBatchingUpdates = !0),
             a ? e(t, n, r, o, i) : c.perform(e, null, t, n, r, o, i)
@@ -11470,7 +11480,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(87),
       i = n(9),
       a = n(16),
@@ -11479,24 +11489,23 @@ return (function(e, t, n) {
       l = n(43),
       c = n(169);
     function p(e) {
-      for (; e._hostParent;) e = e._hostParent;
-      const t = s.getNodeFromInstance(e).parentNode;
+      for (; e._hostParent; ) e = e._hostParent;
+      var t = s.getNodeFromInstance(e).parentNode;
       return s.getClosestInstanceFromNode(t);
     }
     function f(e, t) {
       (this.topLevelType = e), (this.nativeEvent = t), (this.ancestors = []);
     }
     function d(e) {
-      let t = l(e.nativeEvent),
+      var t = l(e.nativeEvent),
         n = s.getClosestInstanceFromNode(t),
         r = n;
       do {
         e.ancestors.push(r), (r = r && p(r));
       } while (r);
-      for (let o = 0; o < e.ancestors.length; o++) {
- (n = e.ancestors[o]),
+      for (var o = 0; o < e.ancestors.length; o++)
+        (n = e.ancestors[o]),
           h._handleTopLevel(e.topLevelType, n, e.nativeEvent, l(e.nativeEvent));
-}
     }
     r(f.prototype, {
       destructor: function() {
@@ -11526,14 +11535,14 @@ return (function(e, t, n) {
         return n ? o.capture(n, t, h.dispatchEvent.bind(null, e)) : null;
       },
       monitorScrollValue: function(e) {
-        const t = function(e) {
+        var t = function(e) {
           e(c(window));
         }.bind(null, e);
         o.listen(window, 'scroll', t);
       },
       dispatchEvent: function(e, t) {
         if (h._enabled) {
-          const n = f.getPooled(e, t);
+          var n = f.getPooled(e, t);
           try {
             u.batchedUpdates(d, n);
           } finally {
@@ -11557,7 +11566,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(19),
+    var r = n(19),
       o = n(25),
       i = n(41),
       a = n(50),
@@ -11579,7 +11588,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(7),
+    var r = n(7),
       o = n(71),
       i = n(16),
       a = n(35),
@@ -11590,7 +11599,7 @@ return (function(e, t, n) {
         { initialize: s.getSelectionInformation, close: s.restoreSelection },
         {
           initialize: function() {
-            const e = a.isEnabled();
+            var e = a.isEnabled();
             return a.setEnabled(!1), e;
           },
           close: function(e) {
@@ -11612,7 +11621,7 @@ return (function(e, t, n) {
         (this.reactMountReady = o.getPooled(null)),
         (this.useCreateElement = e);
     }
-    const f = {
+    var f = {
       getTransactionWrappers: function() {
         return c;
       },
@@ -11636,28 +11645,28 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(9),
+    var r = n(9),
       o = n(173),
       i = n(70);
     function a(e, t, n, r) {
       return e === n && t === r;
     }
-    let s =
+    var s =
         r.canUseDOM && 'selection' in document && !('getSelection' in window),
       u = {
         getOffsets: s
           ? function(e) {
-              let t = document.selection.createRange(),
+              var t = document.selection.createRange(),
                 n = t.text.length,
                 r = t.duplicate();
               r.moveToElementText(e), r.setEndPoint('EndToStart', t);
-              const o = r.text.length;
+              var o = r.text.length;
               return { start: o, end: o + n };
             }
           : function(e) {
-              const t = window.getSelection && window.getSelection();
-              if (!t || t.rangeCount === 0) return null;
-              let n = t.anchorNode,
+              var t = window.getSelection && window.getSelection();
+              if (!t || 0 === t.rangeCount) return null;
+              var n = t.anchorNode,
                 r = t.anchorOffset,
                 o = t.focusNode,
                 i = t.focusOffset,
@@ -11667,7 +11676,7 @@ return (function(e, t, n) {
               } catch (e) {
                 return null;
               }
-              let u = a(
+              var u = a(
                   t.anchorNode,
                   t.anchorOffset,
                   t.focusNode,
@@ -11678,7 +11687,7 @@ return (function(e, t, n) {
                 l = s.cloneRange();
               l.selectNodeContents(e),
                 l.setEnd(s.startContainer, s.startOffset);
-              let c = a(
+              var c = a(
                   l.startContainer,
                   l.startOffset,
                   l.endContainer,
@@ -11689,12 +11698,12 @@ return (function(e, t, n) {
                 p = c + u,
                 f = document.createRange();
               f.setStart(n, r), f.setEnd(o, i);
-              const d = f.collapsed;
+              var d = f.collapsed;
               return { start: d ? p : c, end: d ? c : p };
             },
         setOffsets: s
           ? function(e, t) {
-              let n,
+              var n,
                 r,
                 o = document.selection.createRange().duplicate();
               void 0 === t.end
@@ -11710,18 +11719,18 @@ return (function(e, t, n) {
             }
           : function(e, t) {
               if (window.getSelection) {
-                let n = window.getSelection(),
+                var n = window.getSelection(),
                   r = e[i()].length,
                   a = Math.min(t.start, r),
                   s = void 0 === t.end ? a : Math.min(t.end, r);
                 if (!n.extend && a > s) {
-                  const u = s;
+                  var u = s;
                   (s = a), (a = u);
                 }
-                let l = o(e, a),
+                var l = o(e, a),
                   c = o(e, s);
                 if (l && c) {
-                  const p = document.createRange();
+                  var p = document.createRange();
                   p.setStart(l.node, l.offset),
                     n.removeAllRanges(),
                     a > s
@@ -11736,19 +11745,20 @@ return (function(e, t, n) {
   function(e, t, n) {
     'use strict';
     function r(e) {
-      for (; e && e.firstChild;) e = e.firstChild;
+      for (; e && e.firstChild; ) e = e.firstChild;
       return e;
     }
     function o(e) {
-      for (; e;) {
+      for (; e; ) {
         if (e.nextSibling) return e.nextSibling;
         e = e.parentNode;
       }
     }
     e.exports = function(e, t) {
-      for (let n = r(e), i = 0, a = 0; n;) {
-        if (n.nodeType === 3) {
-          if (((a = i + n.textContent.length), i <= t && a >= t)) { return { node: n, offset: t - i }; }
+      for (var n = r(e), i = 0, a = 0; n; ) {
+        if (3 === n.nodeType) {
+          if (((a = i + n.textContent.length), i <= t && a >= t))
+            return { node: n, offset: t - i };
           i = a;
         }
         n = r(o(n));
@@ -11757,7 +11767,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(175);
+    var r = n(175);
     e.exports = function e(t, n) {
       return (
         !(!t || !n) &&
@@ -11774,28 +11784,28 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(176);
+    var r = n(176);
     e.exports = function(e) {
-      return r(e) && e.nodeType == 3;
+      return r(e) && 3 == e.nodeType;
     };
   },
   function(e, t, n) {
     'use strict';
     e.exports = function(e) {
-      const t = (e ? e.ownerDocument || e : document).defaultView || window;
+      var t = (e ? e.ownerDocument || e : document).defaultView || window;
       return !(
         !e ||
-        !(typeof t.Node === 'function'
+        !('function' == typeof t.Node
           ? e instanceof t.Node
-          : typeof e === 'object' &&
-            typeof e.nodeType === 'number' &&
-            typeof e.nodeName === 'string')
+          : 'object' == typeof e &&
+            'number' == typeof e.nodeType &&
+            'string' == typeof e.nodeName)
       );
     };
   },
   function(e, t, n) {
     'use strict';
-    let r = 'http://www.w3.org/1999/xlink',
+    var r = 'http://www.w3.org/1999/xlink',
       o = 'http://www.w3.org/XML/1998/namespace',
       i = {
         accentHeight: 'accent-height',
@@ -12061,7 +12071,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(24),
+    var r = n(24),
       o = n(9),
       i = n(6),
       a = n(88),
@@ -12097,11 +12107,12 @@ return (function(e, t, n) {
       y = !1,
       v = !1;
     function g(e, t) {
-      if (y || d == null || d !== u()) return null;
-      const n = (function(e) {
-        if ('selectionStart' in e && a.hasSelectionCapabilities(e)) { return { start: e.selectionStart, end: e.selectionEnd }; }
+      if (y || null == d || d !== u()) return null;
+      var n = (function(e) {
+        if ('selectionStart' in e && a.hasSelectionCapabilities(e))
+          return { start: e.selectionStart, end: e.selectionEnd };
         if (window.getSelection) {
-          const t = window.getSelection();
+          var t = window.getSelection();
           return {
             anchorNode: t.anchorNode,
             anchorOffset: t.anchorOffset,
@@ -12110,7 +12121,7 @@ return (function(e, t, n) {
           };
         }
         if (document.selection) {
-          const n = document.selection.createRange();
+          var n = document.selection.createRange();
           return {
             parentElement: n.parentElement(),
             text: n.text,
@@ -12121,7 +12132,7 @@ return (function(e, t, n) {
       })(d);
       if (!m || !c(m, n)) {
         m = n;
-        const o = s.getPooled(f.select, h, e, t);
+        var o = s.getPooled(f.select, h, e, t);
         return (
           (o.type = 'select'),
           (o.target = d),
@@ -12131,14 +12142,14 @@ return (function(e, t, n) {
       }
       return null;
     }
-    const b = {
+    var b = {
       eventTypes: f,
       extractEvents: function(e, t, n, r) {
         if (!v) return null;
-        const o = t ? i.getNodeFromInstance(t) : window;
+        var o = t ? i.getNodeFromInstance(t) : window;
         switch (e) {
           case 'topFocus':
-            (l(o) || o.contentEditable === 'true') &&
+            (l(o) || 'true' === o.contentEditable) &&
               ((d = o), (h = t), (m = null));
             break;
           case 'topBlur':
@@ -12159,14 +12170,14 @@ return (function(e, t, n) {
         return null;
       },
       didPutListener: function(e, t, n) {
-        t === 'onSelect' && (v = !0);
+        'onSelect' === t && (v = !0);
       }
     };
     e.exports = b;
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = n(87),
       i = n(24),
       a = n(6),
@@ -12249,7 +12260,7 @@ return (function(e, t, n) {
       'waiting',
       'wheel'
     ].forEach(function(e) {
-      let t = e[0].toUpperCase() + e.slice(1),
+      var t = e[0].toUpperCase() + e.slice(1),
         n = 'on' + t,
         r = 'top' + t,
         o = {
@@ -12258,19 +12269,19 @@ return (function(e, t, n) {
         };
       (w[e] = o), (_[r] = o);
     });
-    const C = {};
+    var C = {};
     function O(e) {
       return '.' + e._rootNodeID;
     }
     function x(e) {
       return (
-        e === 'button' || e === 'input' || e === 'select' || e === 'textarea'
+        'button' === e || 'input' === e || 'select' === e || 'textarea' === e
       );
     }
-    const E = {
+    var E = {
       eventTypes: w,
       extractEvents: function(e, t, n, o) {
-        let a,
+        var a,
           g = _[e];
         if (!g) return null;
         switch (e) {
@@ -12305,7 +12316,7 @@ return (function(e, t, n) {
             a = l;
             break;
           case 'topKeyPress':
-            if (b(n) === 0) return null;
+            if (0 === b(n)) return null;
           case 'topKeyDown':
           case 'topKeyUp':
             a = p;
@@ -12315,7 +12326,7 @@ return (function(e, t, n) {
             a = c;
             break;
           case 'topClick':
-            if (n.button === 2) return null;
+            if (2 === n.button) return null;
           case 'topDoubleClick':
           case 'topMouseDown':
           case 'topMouseMove':
@@ -12361,19 +12372,19 @@ return (function(e, t, n) {
             a = u;
         }
         a || r('86', e);
-        const w = a.getPooled(g, t, n, o);
+        var w = a.getPooled(g, t, n, o);
         return i.accumulateTwoPhaseDispatches(w), w;
       },
       didPutListener: function(e, t, n) {
-        if (t === 'onClick' && !x(e._tag)) {
-          let r = O(e),
+        if ('onClick' === t && !x(e._tag)) {
+          var r = O(e),
             i = a.getNodeFromInstance(e);
           C[r] || (C[r] = o.listen(i, 'click', g));
         }
       },
       willDeleteListener: function(e, t) {
-        if (t === 'onClick' && !x(e._tag)) {
-          const n = O(e);
+        if ('onClick' === t && !x(e._tag)) {
+          var n = O(e);
           C[n].remove(), delete C[n];
         }
       }
@@ -12382,7 +12393,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(15);
+    var r = n(15);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -12395,7 +12406,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(15),
+    var r = n(15),
       o = {
         clipboardData: function(e) {
           return 'clipboardData' in e ? e.clipboardData : window.clipboardData;
@@ -12408,7 +12419,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(26);
+    var r = n(26);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -12416,7 +12427,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(26),
+    var r = n(26),
       o = n(57),
       i = {
         key: n(184),
@@ -12429,15 +12440,15 @@ return (function(e, t, n) {
         locale: null,
         getModifierState: n(45),
         charCode: function(e) {
-          return e.type === 'keypress' ? o(e) : 0;
+          return 'keypress' === e.type ? o(e) : 0;
         },
         keyCode: function(e) {
-          return e.type === 'keydown' || e.type === 'keyup' ? e.keyCode : 0;
+          return 'keydown' === e.type || 'keyup' === e.type ? e.keyCode : 0;
         },
         which: function(e) {
-          return e.type === 'keypress'
+          return 'keypress' === e.type
             ? o(e)
-            : e.type === 'keydown' || e.type === 'keyup'
+            : 'keydown' === e.type || 'keyup' === e.type
               ? e.keyCode
               : 0;
         }
@@ -12449,7 +12460,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(57),
+    var r = n(57),
       o = {
         Esc: 'Escape',
         Spacebar: ' ',
@@ -12504,21 +12515,21 @@ return (function(e, t, n) {
       };
     e.exports = function(e) {
       if (e.key) {
-        const t = o[e.key] || e.key;
-        if (t !== 'Unidentified') return t;
+        var t = o[e.key] || e.key;
+        if ('Unidentified' !== t) return t;
       }
-      if (e.type === 'keypress') {
-        const n = r(e);
-        return n === 13 ? 'Enter' : String.fromCharCode(n);
+      if ('keypress' === e.type) {
+        var n = r(e);
+        return 13 === n ? 'Enter' : String.fromCharCode(n);
       }
-      return e.type === 'keydown' || e.type === 'keyup'
+      return 'keydown' === e.type || 'keyup' === e.type
         ? i[e.keyCode] || 'Unidentified'
         : '';
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = n(32);
+    var r = n(32);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -12526,7 +12537,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(26),
+    var r = n(26),
       o = {
         touches: null,
         targetTouches: null,
@@ -12544,7 +12555,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(15);
+    var r = n(15);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -12557,7 +12568,7 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = n(32);
+    var r = n(32);
     function o(e, t, n, o) {
       return r.call(this, e, t, n, o);
     }
@@ -12586,7 +12597,7 @@ return (function(e, t, n) {
   function(e, t, n) {
     'use strict';
     n(56);
-    const r = 9;
+    var r = 9;
     e.exports = function(e, t) {
       return {
         _topLevelWrapper: e,
@@ -12610,13 +12621,13 @@ return (function(e, t, n) {
       a = {
         CHECKSUM_ATTR_NAME: 'data-react-checksum',
         addChecksumToMarkup: function(e) {
-          const t = r(e);
+          var t = r(e);
           return i.test(e)
             ? e
             : e.replace(o, ' ' + a.CHECKSUM_ATTR_NAME + '="' + t + '"$&');
         },
         canReuseMarkup: function(e, t) {
-          let n = t.getAttribute(a.CHECKSUM_ATTR_NAME);
+          var n = t.getAttribute(a.CHECKSUM_ATTR_NAME);
           return (n = n && parseInt(n, 10)), r(e) === n;
         }
       };
@@ -12624,16 +12635,15 @@ return (function(e, t, n) {
   },
   function(e, t, n) {
     'use strict';
-    const r = 65521;
+    var r = 65521;
     e.exports = function(e) {
-      for (var t = 1, n = 0, o = 0, i = e.length, a = -4 & i; o < a;) {
-        for (let s = Math.min(o + 4096, a); o < s; o += 4) {
-n +=
+      for (var t = 1, n = 0, o = 0, i = e.length, a = -4 & i; o < a; ) {
+        for (var s = Math.min(o + 4096, a); o < s; o += 4)
+          n +=
             (t += e.charCodeAt(o)) +
             (t += e.charCodeAt(o + 1)) +
             (t += e.charCodeAt(o + 2)) +
             (t += e.charCodeAt(o + 3));
-}
         (t %= r), (n %= r);
       }
       for (; o < i; o++) n += t += e.charCodeAt(o);
@@ -12646,27 +12656,27 @@ n +=
   },
   function(e, t, n) {
     'use strict';
-    let r = n(4),
+    var r = n(4),
       o = (n(14), n(6)),
       i = n(27),
       a = n(91);
     n(1), n(3);
     e.exports = function(e) {
-      if (e == null) return null;
-      if (e.nodeType === 1) return e;
-      let t = i.get(e);
+      if (null == e) return null;
+      if (1 === e.nodeType) return e;
+      var t = i.get(e);
       if (t) return (t = a(t)) ? o.getNodeFromInstance(t) : null;
-      typeof e.render === 'function' ? r('44') : r('45', Object.keys(e));
+      'function' == typeof e.render ? r('44') : r('45', Object.keys(e));
     };
   },
   function(e, t, n) {
     'use strict';
-    const r = n(90);
+    var r = n(90);
     e.exports = r.renderSubtreeIntoContainer;
   },
   function(e, t, n) {
     'use strict';
-    let r = n(11),
+    var r = n(11),
       o = n(1),
       i = n(65);
     e.exports = function() {
@@ -12681,7 +12691,7 @@ n +=
         return e;
       }
       e.isRequired = e;
-      const n = {
+      var n = {
         array: e,
         bool: e,
         func: e,
@@ -12706,11 +12716,11 @@ n +=
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = n(36),
+    var r = n(36),
       o = (function(e) {
         return e && e.__esModule ? e : { default: e };
       })(n(198));
-    let i = {
+    var i = {
         suiteInfo: {
           testSuiteName: window.tests.testSuite,
           idConfig: window.tests.id
@@ -12726,14 +12736,14 @@ n +=
             id: 'pass',
             label: 'passed',
             count: window.tests.tests.filter(function(e) {
-              return e.status === 'pass';
+              return 'pass' === e.status;
             }).length
           },
           {
             id: 'fail',
             label: 'failed',
             count: window.tests.tests.filter(function(e) {
-              return e.status === 'fail';
+              return 'fail' === e.status;
             }).length
           }
         ],
@@ -12756,7 +12766,7 @@ n +=
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = n(36),
+    var r = n(36),
       o = l(n(199)),
       i = l(n(200)),
       a = l(n(201)),
@@ -12765,7 +12775,7 @@ n +=
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    const c = (0, r.combineReducers)({
+    var c = (0, r.combineReducers)({
       suiteInfo: i.default,
       tests: o.default,
       availableStatus: s.default,
@@ -12778,12 +12788,12 @@ n +=
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     t.default = function() {
-      let e =
+      var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
         t = arguments[1];
       switch (t.type) {
         case 'FILTER_TESTS':
-          return t.status !== 'all'
+          return 'all' !== t.status
             ? Object.assign({}, e, {
                 filtered: e.all.filter(function(e) {
                   return e.status === t.status;
@@ -12795,15 +12805,16 @@ n +=
           return t.value.length > 0
             ? Object.assign({}, e, {
                 filtered: e.all.filter(function(n) {
-                  let r = n.pair.fileName.toLowerCase(),
+                  var r = n.pair.fileName.toLowerCase(),
                     o = n.pair.label.toLowerCase();
-                  if (e.filterStatus !== 'all') {
+                  if ('all' !== e.filterStatus) {
                     if (
                       n.status === e.filterStatus &&
-                      (o.indexOf(t.value.toLowerCase()) !== -1 ||
-                        r.indexOf(t.value.toLowerCase()) !== -1)
-                    ) { return !0; }
-                  } else if (o.indexOf(t.value.toLowerCase()) !== -1 || r.indexOf(t.value.toLowerCase()) !== -1) return !0;
+                      (-1 !== o.indexOf(t.value.toLowerCase()) ||
+                        -1 !== r.indexOf(t.value.toLowerCase()))
+                    )
+                      return !0;
+                  } else if (-1 !== o.indexOf(t.value.toLowerCase()) || -1 !== r.indexOf(t.value.toLowerCase())) return !0;
                 })
               })
             : e;
@@ -12816,7 +12827,7 @@ n +=
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     t.default = function() {
-      let e =
+      var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
         t = arguments[1];
       switch (t.type) {
@@ -12831,7 +12842,7 @@ n +=
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     t.default = function() {
-      let e =
+      var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
         t = arguments[1];
       switch (t.type) {
@@ -12868,7 +12879,7 @@ n +=
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     t.default = function() {
-      const e =
+      var e =
         arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [];
       return arguments[1].type, e;
     };
@@ -12888,7 +12899,7 @@ n +=
     }
     Object.defineProperty(t, '__esModule', { value: !0 });
     t.default = function() {
-      let e =
+      var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {},
         t = arguments[1];
       switch (t.type) {
@@ -12954,10 +12965,10 @@ n +=
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -12982,20 +12993,20 @@ n +=
     function p(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let f = a.default.section(o),
+    var f = a.default.section(o),
       d = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -13006,12 +13017,11 @@ n +=
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -13058,16 +13068,16 @@ n +=
  */ e.exports = function(
       e
     ) {
-      return e != null && typeof e === 'object' && !1 === Array.isArray(e);
+      return null != e && 'object' == typeof e && !1 === Array.isArray(e);
     };
   },
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13086,20 +13096,21 @@ n +=
       return e && e.__esModule ? e : { default: e };
     }
     function l(e, t) {
-      if (!e) {
- throw new ReferenceError(
+      if (!e)
+        throw new ReferenceError(
           "this hasn't been initialised - super() hasn't been called"
         );
-}
-      return !t || (typeof t !== 'object' && typeof t !== 'function') ? e : t;
+      return !t || ('object' != typeof t && 'function' != typeof t) ? e : t;
     }
-    const c = (function(e) {
+    var c = (function(e) {
       function t() {
-        let e, n, r;
+        var e, n, r;
         !(function(e, t) {
-          if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+          if (!(e instanceof t))
+            throw new TypeError('Cannot call a class as a function');
         })(this, t);
-        for (var o = arguments.length, i = Array(o), a = 0; a < o; a++) { i[a] = arguments[a]; }
+        for (var o = arguments.length, i = Array(o), a = 0; a < o; a++)
+          i[a] = arguments[a];
         return (
           (n = r = l(
             this,
@@ -13110,7 +13121,7 @@ n +=
           )),
           (r.state = { isSticky: !1, wasSticky: !1, style: {} }),
           (r.handleContainerEvent = function(e) {
-            let t = e.distanceFromTop,
+            var t = e.distanceFromTop,
               n = e.distanceFromBottom,
               o = e.eventSource,
               i = r.context.getParent(),
@@ -13118,13 +13129,13 @@ n +=
             r.props.relative &&
               ((a = o !== i),
               (t = -(o.scrollTop + o.offsetTop) + r.placeholder.offsetTop));
-            let s = r.placeholder.getBoundingClientRect(),
+            var s = r.placeholder.getBoundingClientRect(),
               u = r.content.getBoundingClientRect().height,
               l = n - r.props.bottomOffset - u,
               c = !!r.state.isSticky,
               p = a ? c : t <= -r.props.topOffset && n > -r.props.bottomOffset;
             n = (r.props.relative ? i.scrollHeight - i.scrollTop : n) - u;
-            const f = p
+            var f = p
               ? {
                   position: 'fixed',
                   top:
@@ -13153,12 +13164,11 @@ n +=
       }
       return (
         (function(e, t) {
-          if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+          if ('function' != typeof t && null !== t)
+            throw new TypeError(
               'Super expression must either be null or a function, not ' +
                 typeof t
             );
-}
           (e.prototype = Object.create(t && t.prototype, {
             constructor: {
               value: e,
@@ -13176,11 +13186,10 @@ n +=
           {
             key: 'componentWillMount',
             value: function() {
-              if (!this.context.subscribe) {
- throw new TypeError(
+              if (!this.context.subscribe)
+                throw new TypeError(
                   'Expected Sticky to be mounted within StickyContainer'
                 );
-}
               this.context.subscribe(this.handleContainerEvent);
             }
           },
@@ -13203,7 +13212,7 @@ n +=
           {
             key: 'render',
             value: function() {
-              let e = this,
+              var e = this,
                 t = i.default.cloneElement(
                   this.props.children({
                     isSticky: this.state.isSticky,
@@ -13258,19 +13267,20 @@ n +=
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r =
+    var r =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         },
       o = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13289,20 +13299,21 @@ n +=
       return e && e.__esModule ? e : { default: e };
     }
     function c(e, t) {
-      if (!e) {
- throw new ReferenceError(
+      if (!e)
+        throw new ReferenceError(
           "this hasn't been initialised - super() hasn't been called"
         );
-}
-      return !t || (typeof t !== 'object' && typeof t !== 'function') ? e : t;
+      return !t || ('object' != typeof t && 'function' != typeof t) ? e : t;
     }
-    const p = (function(e) {
+    var p = (function(e) {
       function t() {
-        let e, n, r;
+        var e, n, r;
         !(function(e, t) {
-          if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+          if (!(e instanceof t))
+            throw new TypeError('Cannot call a class as a function');
         })(this, t);
-        for (var o = arguments.length, i = Array(o), a = 0; a < o; a++) { i[a] = arguments[a]; }
+        for (var o = arguments.length, i = Array(o), a = 0; a < o; a++)
+          i[a] = arguments[a];
         return (
           (n = r = c(
             this,
@@ -13331,10 +13342,10 @@ n +=
           }),
           (r.notifySubscribers = function(e) {
             if (!r.framePending) {
-              const t = e.currentTarget;
+              var t = e.currentTarget;
               (0, u.default)(function() {
                 r.framePending = !1;
-                let e = r.node.getBoundingClientRect(),
+                var e = r.node.getBoundingClientRect(),
                   n = e.top,
                   o = e.bottom;
                 r.subscribers.forEach(function(e) {
@@ -13356,12 +13367,11 @@ n +=
       }
       return (
         (function(e, t) {
-          if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+          if ('function' != typeof t && null !== t)
+            throw new TypeError(
               'Super expression must either be null or a function, not ' +
                 typeof t
             );
-}
           (e.prototype = Object.create(t && t.prototype, {
             constructor: {
               value: e,
@@ -13389,7 +13399,7 @@ n +=
           {
             key: 'componentDidMount',
             value: function() {
-              const e = this;
+              var e = this;
               this.events.forEach(function(t) {
                 return window.addEventListener(t, e.notifySubscribers);
               });
@@ -13398,7 +13408,7 @@ n +=
           {
             key: 'componentWillUnmount',
             value: function() {
-              const e = this;
+              var e = this;
               this.events.forEach(function(t) {
                 return window.removeEventListener(t, e.notifySubscribers);
               });
@@ -13407,7 +13417,7 @@ n +=
           {
             key: 'render',
             value: function() {
-              const e = this;
+              var e = this;
               return a.default.createElement(
                 'div',
                 r({}, this.props, {
@@ -13437,7 +13447,7 @@ n +=
     (function(t) {
       for (
         var r = n(209),
-          o = typeof window === 'undefined' ? t : window,
+          o = 'undefined' == typeof window ? t : window,
           i = ['moz', 'webkit'],
           a = 'AnimationFrame',
           s = o['request' + a],
@@ -13445,39 +13455,37 @@ n +=
           l = 0;
         !s && l < i.length;
         l++
-      ) {
- (s = o[i[l] + 'Request' + a]),
+      )
+        (s = o[i[l] + 'Request' + a]),
           (u = o[i[l] + 'Cancel' + a] || o[i[l] + 'CancelRequest' + a]);
-}
       if (!s || !u) {
-        let c = 0,
+        var c = 0,
           p = 0,
           f = [];
         (s = function(e) {
-          if (f.length === 0) {
-            let t = r(),
+          if (0 === f.length) {
+            var t = r(),
               n = Math.max(0, 1e3 / 60 - (t - c));
             (c = n + t),
               setTimeout(function() {
-                const e = f.slice(0);
+                var e = f.slice(0);
                 f.length = 0;
-                for (let t = 0; t < e.length; t++) {
- if (!e[t].cancelled) {
- try {
+                for (var t = 0; t < e.length; t++)
+                  if (!e[t].cancelled)
+                    try {
                       e[t].callback(c);
                     } catch (e) {
                       setTimeout(function() {
                         throw e;
                       }, 0);
                     }
-}
-}
               }, Math.round(n));
           }
           return f.push({ handle: ++p, callback: e, cancelled: !1 }), p;
         }),
           (u = function(e) {
-            for (let t = 0; t < f.length; t++) { f[t].handle === e && (f[t].cancelled = !0); }
+            for (var t = 0; t < f.length; t++)
+              f[t].handle === e && (f[t].cancelled = !0);
           });
       }
       (e.exports = function(e) {
@@ -13496,20 +13504,20 @@ n +=
   function(e, t, n) {
     (function(t) {
       (function() {
-        let a, i, n, o, r, s;
-        typeof performance !== 'undefined' &&
-        performance !== null &&
+        var n, r, o, i, a, s;
+        'undefined' != typeof performance &&
+        null !== performance &&
         performance.now
           ? (e.exports = function() {
               return performance.now();
             })
-          : void 0 !== t && t !== null && t.hrtime
+          : void 0 !== t && null !== t && t.hrtime
             ? ((e.exports = function() {
                 return (n() - a) / 1e6;
               }),
               (r = t.hrtime),
               (i = (n = function() {
-                let e;
+                var e;
                 return 1e9 * (e = r())[0] + e[1];
               })()),
               (s = 1e9 * t.uptime()),
@@ -13529,10 +13537,10 @@ n +=
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13563,20 +13571,20 @@ n +=
     function c(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let p = a.default.section(o),
+    var p = a.default.section(o),
       f = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -13587,12 +13595,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -13618,7 +13625,7 @@ throw new TypeError(
                     e
                   ) {
                     e.isSticky, e.wasSticky;
-                    const t = e.style;
+                    var t = e.style;
                     e.distanceFromTop, e.distanceFromBottom, e.calculatedHeight;
                     return i.default.createElement(l.default, { style: t });
                   })
@@ -13634,10 +13641,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13680,21 +13687,21 @@ throw new TypeError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let h = s.default.section(o),
+    var h = s.default.section(o),
       m = s.default.div(i, u.colors.borderGray),
       y = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -13705,12 +13712,11 @@ throw new TypeError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -13747,10 +13753,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13784,20 +13790,20 @@ throw new TypeError(
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = s.default.h1(o, u.fonts.latoRegular, u.colors.primaryText),
+    var c = s.default.h1(o, u.fonts.latoRegular, u.colors.primaryText),
       p = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -13808,12 +13814,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -13851,10 +13856,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13890,7 +13895,7 @@ throw new ReferenceError(
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = s.default.h3(
+    var c = s.default.h3(
         o,
         u.fonts.arial,
         u.colors.secondaryText,
@@ -13900,15 +13905,15 @@ throw new ReferenceError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -13919,12 +13924,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -13960,10 +13964,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -13997,20 +14001,20 @@ throw new TypeError(
     function p(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let f = a.default.section(o, c.colors.bodyColor),
+    var f = a.default.section(o, c.colors.bodyColor),
       d = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14021,12 +14025,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14062,10 +14065,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14092,9 +14095,9 @@ throw new TypeError(
     function c(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    const p = s.default.div(o);
+    var p = s.default.div(o);
     function f(e) {
-      const t = e.availableStatus.map(function(t) {
+      var t = e.availableStatus.map(function(t) {
         return i.default.createElement(l.default, {
           status: t.id,
           key: t.id,
@@ -14108,19 +14111,19 @@ throw new TypeError(
       });
       return i.default.createElement('div', { style: { height: '100%' } }, t);
     }
-    let d = (function(e) {
+    var d = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14131,12 +14134,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14154,7 +14156,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props.tests,
+                var e = this.props.tests,
                   t = this.props.availableStatus;
                 return i.default.createElement(
                   p,
@@ -14188,10 +14190,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14240,7 +14242,7 @@ throw new ReferenceError(
     function u(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let l = a.default.button(
+    var l = a.default.button(
         o,
         s.fonts.latoRegular,
         s.colors.white,
@@ -14263,15 +14265,15 @@ throw new ReferenceError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14282,12 +14284,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14305,7 +14306,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.count,
                   n = e.label,
                   r = e.status;
@@ -14316,7 +14317,7 @@ throw new TypeError(
                     selected: this.props.selected,
                     className: r
                   },
-                  r !== 'all' ? t : '',
+                  'all' !== r ? t : '',
                   ' ',
                   n
                 );
@@ -14331,10 +14332,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14361,20 +14362,20 @@ throw new TypeError(
     function c(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let p = s.default.div(o),
+    var p = s.default.div(o),
       f = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14385,12 +14386,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14408,7 +14408,7 @@ throw new ReferenceError(
             {
               key: 'onChange',
               value: function(e) {
-                const t = e.target.value;
+                var t = e.target.value;
                 t.length > 0
                   ? this.props.findTest(t)
                   : this.props.filterTests(this.props.tests.filterStatus);
@@ -14450,10 +14450,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14493,7 +14493,7 @@ throw new ReferenceError(
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = a.default.input(
+    var c = a.default.input(
         o,
         s.colors.lightGray,
         s.fonts.latoRegular,
@@ -14505,15 +14505,15 @@ throw new ReferenceError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14524,12 +14524,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14566,10 +14565,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14596,19 +14595,19 @@ throw new TypeError(
     function c(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let p = s.default.div(o),
+    var p = s.default.div(o),
       f = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
- throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -14616,12 +14615,11 @@ throw new TypeError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14645,7 +14643,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                const e = this.state.popup;
+                var e = this.state.popup;
                 return i.default.createElement(
                   p,
                   null,
@@ -14674,10 +14672,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14719,7 +14717,7 @@ throw new TypeError(
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = a.default.button(
+    var c = a.default.button(
         o,
         s.colors.lightGray,
         s.shadows.shadow01,
@@ -14734,15 +14732,15 @@ throw new TypeError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -14753,12 +14751,11 @@ throw new TypeError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14776,7 +14773,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                const e = this.props.active ? 'active' : '';
+                var e = this.props.active ? 'active' : '';
                 return i.default.createElement(
                   c,
                   { onClick: this.props.onClick, className: e },
@@ -14797,10 +14794,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14838,7 +14835,7 @@ throw new TypeError(
     function p(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let f = s.default.div(
+    var f = s.default.div(
         o,
         l.colors.lightGray,
         l.shadows.shadow01,
@@ -14847,15 +14844,15 @@ throw new TypeError(
       d = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -14863,12 +14860,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -14898,7 +14894,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                const e = this.props.settings;
+                var e = this.props.settings;
                 return i.default.createElement(
                   f,
                   null,
@@ -14962,10 +14958,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -14999,20 +14995,20 @@ throw new ReferenceError(
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = a.default.div(o, u.fonts.latoRegular, u.colors.primaryText),
+    var c = a.default.div(o, u.fonts.latoRegular, u.colors.primaryText),
       p = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -15023,12 +15019,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -15046,7 +15041,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.label,
                   n = e.value,
                   r = e.onToggle;
@@ -15072,7 +15067,7 @@ throw new ReferenceError(
       return (function(e) {
         function t(r) {
           if (n[r]) return n[r].exports;
-          const o = (n[r] = { exports: {}, id: r, loaded: !1 });
+          var o = (n[r] = { exports: {}, id: r, loaded: !1 });
           return (
             e[r].call(o.exports, o, o.exports, t), (o.loaded = !0), o.exports
           );
@@ -15090,11 +15085,10 @@ throw new ReferenceError(
           'use strict';
           (t.__esModule = !0),
             (t.default = function(e) {
-              const t = {};
-              for (const n in e) {
- Object.prototype.hasOwnProperty.call(e, n) &&
-                  (t[n] = typeof e[n] === 'number' ? e[n] : e[n].val);
-}
+              var t = {};
+              for (var n in e)
+                Object.prototype.hasOwnProperty.call(e, n) &&
+                  (t[n] = 'number' == typeof e[n] ? e[n] : e[n].val);
               return t;
             }),
             (e.exports = t.default);
@@ -15105,20 +15099,20 @@ throw new ReferenceError(
         function(e, t, n) {
           (function(t) {
             (function() {
-              let n, o, r;
-              typeof performance !== 'undefined' &&
-              performance !== null &&
+              var n, r, o;
+              'undefined' != typeof performance &&
+              null !== performance &&
               performance.now
                 ? (e.exports = function() {
                     return performance.now();
                   })
-                : void 0 !== t && t !== null && t.hrtime
+                : void 0 !== t && null !== t && t.hrtime
                   ? ((e.exports = function() {
                       return (n() - o) / 1e6;
                     }),
                     (r = t.hrtime),
                     (o = (n = function() {
-                      let e;
+                      var e;
                       return 1e9 * (e = r())[0] + e[1];
                     })()))
                   : Date.now
@@ -15137,7 +15131,7 @@ throw new ReferenceError(
           (function(t) {
             for (
               var r = n(19),
-                o = typeof window === 'undefined' ? t : window,
+                o = 'undefined' == typeof window ? t : window,
                 i = ['moz', 'webkit'],
                 a = 'AnimationFrame',
                 s = o['request' + a],
@@ -15145,39 +15139,37 @@ throw new ReferenceError(
                 l = 0;
               !s && l < i.length;
               l++
-            ) {
- (s = o[i[l] + 'Request' + a]),
+            )
+              (s = o[i[l] + 'Request' + a]),
                 (u = o[i[l] + 'Cancel' + a] || o[i[l] + 'CancelRequest' + a]);
-}
             if (!s || !u) {
-              let c = 0,
+              var c = 0,
                 p = 0,
                 f = [];
               (s = function(e) {
-                if (f.length === 0) {
-                  let t = r(),
+                if (0 === f.length) {
+                  var t = r(),
                     n = Math.max(0, 1e3 / 60 - (t - c));
                   (c = n + t),
                     setTimeout(function() {
-                      const e = f.slice(0);
+                      var e = f.slice(0);
                       f.length = 0;
-                      for (let t = 0; t < e.length; t++) {
- if (!e[t].cancelled) {
-try {
+                      for (var t = 0; t < e.length; t++)
+                        if (!e[t].cancelled)
+                          try {
                             e[t].callback(c);
                           } catch (e) {
                             setTimeout(function() {
                               throw e;
                             }, 0);
                           }
-}
-}
                     }, Math.round(n));
                 }
                 return f.push({ handle: ++p, callback: e, cancelled: !1 }), p;
               }),
                 (u = function(e) {
-                  for (let t = 0; t < f.length; t++) { f[t].handle === e && (f[t].cancelled = !0); }
+                  for (var t = 0; t < f.length; t++)
+                    f[t].handle === e && (f[t].cancelled = !0);
                 });
             }
             (e.exports = function(e) {
@@ -15202,8 +15194,9 @@ try {
           'use strict';
           (t.__esModule = !0),
             (t.default = function(e) {
-              const t = {};
-              for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = 0); }
+              var t = {};
+              for (var n in e)
+                Object.prototype.hasOwnProperty.call(e, n) && (t[n] = 0);
               return t;
             }),
             (e.exports = t.default);
@@ -15212,13 +15205,12 @@ try {
           'use strict';
           (t.__esModule = !0),
             (t.default = function(e, t, n) {
-              for (const r in t) {
-if (Object.prototype.hasOwnProperty.call(t, r)) {
-                  if (n[r] !== 0) return !1;
-                  const o = typeof t[r] === 'number' ? t[r] : t[r].val;
+              for (var r in t)
+                if (Object.prototype.hasOwnProperty.call(t, r)) {
+                  if (0 !== n[r]) return !1;
+                  var o = 'number' == typeof t[r] ? t[r] : t[r].val;
                   if (e[r] !== o) return !1;
                 }
-}
               return !0;
             }),
             (e.exports = t.default);
@@ -15227,7 +15219,7 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
           'use strict';
           (t.__esModule = !0),
             (t.default = function(e, t, r, o, i, a, s) {
-              let u = r + (-i * (t - o) + -a * r) * e,
+              var u = r + (-i * (t - o) + -a * r) * e,
                 l = t + u * e;
               return Math.abs(u) < s && Math.abs(l - o) < s
                 ? ((n[0] = o), (n[1] = 0), n)
@@ -15245,7 +15237,8 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
           }
           function o(e) {
             if (l === setTimeout) return setTimeout(e, 0);
-            if ((l === n || !l) && setTimeout) { return (l = setTimeout), setTimeout(e, 0); }
+            if ((l === n || !l) && setTimeout)
+              return (l = setTimeout), setTimeout(e, 0);
             try {
               return l(e, 0);
             } catch (t) {
@@ -15265,17 +15258,18 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
           }
           function a() {
             if (!h) {
-              const e = o(i);
+              var e = o(i);
               h = !0;
-              for (let t = d.length; t;) {
-                for (f = d, d = []; ++m < t;) f && f[m].run();
+              for (var t = d.length; t; ) {
+                for (f = d, d = []; ++m < t; ) f && f[m].run();
                 (m = -1), (t = d.length);
               }
               (f = null),
                 (h = !1),
                 (function(e) {
                   if (c === clearTimeout) return clearTimeout(e);
-                  if ((c === r || !c) && clearTimeout) { return (c = clearTimeout), clearTimeout(e); }
+                  if ((c === r || !c) && clearTimeout)
+                    return (c = clearTimeout), clearTimeout(e);
                   try {
                     c(e);
                   } catch (t) {
@@ -15292,17 +15286,17 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             (this.fun = e), (this.array = t);
           }
           function u() {}
-          let l,
+          var l,
             c,
             p = (e.exports = {});
           !(function() {
             try {
-              l = typeof setTimeout === 'function' ? setTimeout : n;
+              l = 'function' == typeof setTimeout ? setTimeout : n;
             } catch (e) {
               l = n;
             }
             try {
-              c = typeof clearTimeout === 'function' ? clearTimeout : r;
+              c = 'function' == typeof clearTimeout ? clearTimeout : r;
             } catch (e) {
               c = r;
             }
@@ -15312,11 +15306,11 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             h = !1,
             m = -1;
           (p.nextTick = function(e) {
-            const t = new Array(arguments.length - 1);
-            if (arguments.length > 1) {
- for (let n = 1; n < arguments.length; n++) { t[n - 1] = arguments[n]; }
-}
-            d.push(new s(e, t)), d.length !== 1 || h || o(a);
+            var t = new Array(arguments.length - 1);
+            if (arguments.length > 1)
+              for (var n = 1; n < arguments.length; n++)
+                t[n - 1] = arguments[n];
+            d.push(new s(e, t)), 1 !== d.length || h || o(a);
           }),
             (s.prototype.run = function() {
               this.fun.apply(null, this.array);
@@ -15366,18 +15360,17 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
         function(e, t) {
           'use strict';
           function n(e) {
-            let t = e.indexOf('rgb') != -1,
-              n = e.indexOf('rgba') != -1,
+            var t = -1 != e.indexOf('rgb'),
+              n = -1 != e.indexOf('rgba'),
               r = e.match(/\d+/g);
-            if (t && !n) {
- return {
+            if (t && !n)
+              return {
                 r: parseInt(r[0]),
                 g: parseInt(r[1]),
                 b: parseInt(r[2])
               };
-}
             if (t && n) {
-              const o = r[3] == '0' ? '0.' + r[4] : r[3];
+              var o = '0' == r[3] ? '0.' + r[4] : r[3];
               return {
                 r: parseInt(r[0]),
                 g: parseInt(r[1]),
@@ -15388,18 +15381,18 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             return null;
           }
           function r(e, t, n, r, o) {
-            let i = n - t,
+            var i = n - t,
               a = o - r,
               s = (e - t) / i;
             return r + s * a;
           }
           Object.defineProperty(t, '__esModule', { value: !0 }),
             (t.hexToRGB = function(e) {
-              let t = e;
+              var t = e;
               if (o[t]) return o[t];
-              (t = t.replace('#', '')).length === 3 &&
+              3 === (t = t.replace('#', '')).length &&
                 (t = t[0] + t[0] + t[1] + t[1] + t[2] + t[2]);
-              let n = t.match(/.{2}/g),
+              var n = t.match(/.{2}/g),
                 r = {
                   r: parseInt(n[0], 16),
                   g: parseInt(n[1], 16),
@@ -15409,7 +15402,7 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             }),
             (t.rgbToObj = n),
             (t.rgbToHex = function(e, t, n) {
-              let r = e.toString(16),
+              var r = e.toString(16),
                 o = t.toString(16),
                 i = n.toString(16);
               return (
@@ -15421,7 +15414,7 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             }),
             (t.mapValueInRange = r),
             (t.interpolateColor = function(e, t, o, i, a, s) {
-              let u = void 0 === i ? 0 : i,
+              var u = void 0 === i ? 0 : i,
                 l = void 0 === a ? 1 : a,
                 c = n(t),
                 p = n(o),
@@ -15440,7 +15433,7 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
         },
         function(e, t, n) {
           'use strict';
-          let r = n(13),
+          var r = n(13),
             o = (function(e) {
               return e && e.__esModule ? e : { default: e };
             })(r);
@@ -15452,19 +15445,20 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             return e && e.__esModule ? e : { default: e };
           }
           Object.defineProperty(t, '__esModule', { value: !0 });
-          let o =
+          var o =
               Object.assign ||
               function(e) {
-                for (let t = 1; t < arguments.length; t++) {
-                  const n = arguments[t];
-                  for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+                for (var t = 1; t < arguments.length; t++) {
+                  var n = arguments[t];
+                  for (var r in n)
+                    Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
                 }
                 return e;
               },
             i = (function() {
               function e(e, t) {
-                for (let n = 0; n < t.length; n++) {
-                  const r = t[n];
+                for (var n = 0; n < t.length; n++) {
+                  var r = t[n];
                   (r.enumerable = r.enumerable || !1),
                     (r.configurable = !0),
                     'value' in r && (r.writable = !0),
@@ -15498,15 +15492,15 @@ if (Object.prototype.hasOwnProperty.call(t, r)) {
             m = (function(e) {
               function t(e) {
                 !(function(e, t) {
-                  if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+                  if (!(e instanceof t))
+                    throw new TypeError('Cannot call a class as a function');
                 })(this, t);
-                const n = (function(e, t) {
-                  if (!e) {
-throw new ReferenceError(
+                var n = (function(e, t) {
+                  if (!e)
+                    throw new ReferenceError(
                       "this hasn't been initialised - super() hasn't been called"
                     );
-}
-                  return !t || (typeof t !== 'object' && typeof t !== 'function')
+                  return !t || ('object' != typeof t && 'function' != typeof t)
                     ? e
                     : t;
                 })(
@@ -15517,12 +15511,11 @@ throw new ReferenceError(
               }
               return (
                 (function(e, t) {
-                  if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+                  if ('function' != typeof t && null !== t)
+                    throw new TypeError(
                       'Super expression must either be null or a function, not ' +
                         typeof t
                     );
-}
                   (e.prototype = Object.create(t && t.prototype, {
                     constructor: {
                       value: e,
@@ -15552,17 +15545,17 @@ throw new ReferenceError(
                   {
                     key: '_convertToRgb',
                     value: function(e, t) {
-                      if (e.indexOf('#') != -1) {
-                        const n = (0, f.hexToRGB)(e);
+                      if (-1 != e.indexOf('#')) {
+                        var n = (0, f.hexToRGB)(e);
                         return 'rgb(' + n.r + ', ' + n.g + ', ' + n.b + ')';
                       }
-                      return e.indexOf('rgb') == -1 ? t : e;
+                      return -1 == e.indexOf('rgb') ? t : e;
                     }
                   },
                   {
                     key: 'checkAllColors',
                     value: function(e) {
-                      const t = this;
+                      var t = this;
                       return (
                         Object.keys(e).forEach(function(n) {
                           t.checkColors(e, n);
@@ -15600,7 +15593,7 @@ throw new ReferenceError(
                   {
                     key: 'interpolateColorWithHover',
                     value: function(e, t, n) {
-                      const r = this.props.colors;
+                      var r = this.props.colors;
                       return (
                         this.checkColors(r, t),
                         this.checkColors(r, n),
@@ -15644,7 +15637,7 @@ throw new ReferenceError(
                   {
                     key: 'render',
                     value: function() {
-                      let e = this,
+                      var e = this,
                         t = this.props,
                         n = t.internalSpringSetting,
                         r = t.internalHoverSpringSetting,
@@ -15686,7 +15679,7 @@ throw new ReferenceError(
                           }
                         },
                         function(t) {
-                          let n = t.opacity,
+                          var n = t.opacity,
                             r = t.left,
                             a = t.colorNumber,
                             u = t.hoverNumber,
@@ -15878,12 +15871,13 @@ throw new ReferenceError(
         function(e, t) {
           'use strict';
           Object.defineProperty(t, '__esModule', { value: !0 });
-          let n =
+          var n =
               Object.assign ||
               function(e) {
-                for (let t = 1; t < arguments.length; t++) {
-                  const n = arguments[t];
-                  for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+                for (var t = 1; t < arguments.length; t++) {
+                  var n = arguments[t];
+                  for (var r in n)
+                    Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
                 }
                 return e;
               },
@@ -15999,7 +15993,7 @@ throw new ReferenceError(
               return e;
             };
           }
-          const r = function() {};
+          var r = function() {};
           (r.thatReturns = n),
             (r.thatReturnsFalse = n(!1)),
             (r.thatReturnsTrue = n(!0)),
@@ -16014,16 +16008,16 @@ throw new ReferenceError(
         },
         function(e, t, n) {
           'use strict';
-          const r = function(e) {};
+          var r = function(e) {};
           e.exports = function(e, t, n, o, i, a, s, u) {
             if ((r(t), !e)) {
-              let l;
-              if (void 0 === t) {
- l = new Error(
+              var l;
+              if (void 0 === t)
+                l = new Error(
                   'Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.'
                 );
-} else {
-                let c = [n, o, i, a, s, u],
+              else {
+                var c = [n, o, i, a, s, u],
                   p = 0;
                 (l = new Error(
                   t.replace(/%s/g, function() {
@@ -16037,7 +16031,7 @@ throw new ReferenceError(
         },
         function(e, t, n) {
           'use strict';
-          let r = n(15),
+          var r = n(15),
             o = n(16),
             i = n(18);
           e.exports = function() {
@@ -16052,7 +16046,7 @@ throw new ReferenceError(
               return e;
             }
             e.isRequired = e;
-            const n = {
+            var n = {
               array: e,
               bool: e,
               func: e,
@@ -16081,20 +16075,20 @@ throw new ReferenceError(
         function(e, t, n) {
           (function(t) {
             (function() {
-              let a, i, n, o, r, s;
-              typeof performance !== 'undefined' &&
-              performance !== null &&
+              var n, r, o, i, a, s;
+              'undefined' != typeof performance &&
+              null !== performance &&
               performance.now
                 ? (e.exports = function() {
                     return performance.now();
                   })
-                : void 0 !== t && t !== null && t.hrtime
+                : void 0 !== t && null !== t && t.hrtime
                   ? ((e.exports = function() {
                       return (n() - a) / 1e6;
                     }),
                     (r = t.hrtime),
                     (i = (n = function() {
-                      let e;
+                      var e;
                       return 1e9 * (e = r())[0] + e[1];
                     })()),
                     (s = 1e9 * t.uptime()),
@@ -16117,19 +16111,20 @@ throw new ReferenceError(
             return e && e.__esModule ? e : { default: e };
           }
           t.__esModule = !0;
-          let o =
+          var o =
               Object.assign ||
               function(e) {
-                for (let t = 1; t < arguments.length; t++) {
-                  const n = arguments[t];
-                  for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+                for (var t = 1; t < arguments.length; t++) {
+                  var n = arguments[t];
+                  for (var r in n)
+                    Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
                 }
                 return e;
               },
             i = (function() {
               function e(e, t) {
-                for (let n = 0; n < t.length; n++) {
-                  const r = t[n];
+                for (var n = 0; n < t.length; n++) {
+                  var r = t[n];
                   (r.enumerable = r.enumerable || !1),
                     (r.configurable = !0),
                     'value' in r && (r.writable = !0),
@@ -16159,9 +16154,10 @@ throw new ReferenceError(
             C = 1e3 / 60,
             O = (function(e) {
               function t(n) {
-                const r = this;
+                var r = this;
                 (function(e, t) {
-                  if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+                  if (!(e instanceof t))
+                    throw new TypeError('Cannot call a class as a function');
                 })(this, t),
                   e.call(this, n),
                   (this.wasAnimating = !1),
@@ -16170,16 +16166,16 @@ throw new ReferenceError(
                   (this.accumulatedTime = 0),
                   (this.unreadPropStyle = null),
                   (this.clearUnreadPropStyle = function(e) {
-                    let t = !1,
+                    var t = !1,
                       n = r.state,
                       i = n.currentStyle,
                       a = n.currentVelocity,
                       s = n.lastIdealStyle,
                       u = n.lastIdealVelocity;
-                    for (const l in e) {
-if (Object.prototype.hasOwnProperty.call(e, l)) {
-                        const c = e[l];
-                        typeof c === 'number' &&
+                    for (var l in e)
+                      if (Object.prototype.hasOwnProperty.call(e, l)) {
+                        var c = e[l];
+                        'number' == typeof c &&
                           (t ||
                             ((t = !0),
                             (i = o({}, i)),
@@ -16191,7 +16187,6 @@ if (Object.prototype.hasOwnProperty.call(e, l)) {
                           (s[l] = c),
                           (u[l] = 0));
                       }
-}
                     t &&
                       r.setState({
                         currentStyle: i,
@@ -16202,36 +16197,34 @@ if (Object.prototype.hasOwnProperty.call(e, l)) {
                   }),
                   (this.startAnimationIfNecessary = function() {
                     r.animationID = m.default(function(e) {
-                      const t = r.props.style;
+                      var t = r.props.style;
                       if (
                         v.default(
                           r.state.currentStyle,
                           t,
                           r.state.currentVelocity
                         )
-                      ) {
- return (
+                      )
+                        return (
                           r.wasAnimating && r.props.onRest && r.props.onRest(),
                           (r.animationID = null),
                           (r.wasAnimating = !1),
                           void (r.accumulatedTime = 0)
                         );
-}
                       r.wasAnimating = !0;
-                      let n = e || d.default(),
+                      var n = e || d.default(),
                         o = n - r.prevTime;
                       if (
                         ((r.prevTime = n),
                         (r.accumulatedTime = r.accumulatedTime + o),
                         r.accumulatedTime > 10 * C && (r.accumulatedTime = 0),
-                        r.accumulatedTime === 0)
-                      ) {
-return (
+                        0 === r.accumulatedTime)
+                      )
+                        return (
                           (r.animationID = null),
                           void r.startAnimationIfNecessary()
                         );
-}
-                      let i =
+                      var i =
                           (r.accumulatedTime -
                             Math.floor(r.accumulatedTime / C) * C) /
                           C,
@@ -16240,10 +16233,12 @@ return (
                         u = {},
                         l = {},
                         c = {};
-                      for (const f in t) {
- if (Object.prototype.hasOwnProperty.call(t, f)) {
-                          const h = t[f];
-                          if (typeof h === 'number') { (l[f] = h), (c[f] = 0), (s[f] = h), (u[f] = 0); } else {
+                      for (var f in t)
+                        if (Object.prototype.hasOwnProperty.call(t, f)) {
+                          var h = t[f];
+                          if ('number' == typeof h)
+                            (l[f] = h), (c[f] = 0), (s[f] = h), (u[f] = 0);
+                          else {
                             for (
                               var m = r.state.lastIdealStyle[f],
                                 y = r.state.lastIdealVelocity[f],
@@ -16251,7 +16246,7 @@ return (
                               g < a;
                               g++
                             ) {
-                              const b = p.default(
+                              var b = p.default(
                                 C / 1e3,
                                 m,
                                 y,
@@ -16262,7 +16257,7 @@ return (
                               );
                               (m = b[0]), (y = b[1]);
                             }
-                            let w = p.default(
+                            var w = p.default(
                                 C / 1e3,
                                 m,
                                 y,
@@ -16279,7 +16274,6 @@ return (
                               (u[f] = y);
                           }
                         }
-}
                       (r.animationID = null),
                         (r.accumulatedTime -= a * C),
                         r.setState({
@@ -16296,12 +16290,11 @@ return (
               }
               return (
                 (function(e, t) {
-                  if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+                  if ('function' != typeof t && null !== t)
+                    throw new TypeError(
                       'Super expression must either be null or a function, not ' +
                         typeof t
                     );
-}
                   (e.prototype = Object.create(t && t.prototype, {
                     constructor: {
                       value: e,
@@ -16333,7 +16326,7 @@ throw new TypeError(
                   }
                 ]),
                 (t.prototype.defaultState = function() {
-                  let e = this.props,
+                  var e = this.props,
                     t = e.defaultStyle,
                     n = e.style,
                     r = t || l.default(n),
@@ -16350,20 +16343,20 @@ throw new TypeError(
                     this.startAnimationIfNecessary();
                 }),
                 (t.prototype.componentWillReceiveProps = function(e) {
-                  this.unreadPropStyle != null &&
+                  null != this.unreadPropStyle &&
                     this.clearUnreadPropStyle(this.unreadPropStyle),
                     (this.unreadPropStyle = e.style),
-                    this.animationID == null &&
+                    null == this.animationID &&
                       ((this.prevTime = d.default()),
                       this.startAnimationIfNecessary());
                 }),
                 (t.prototype.componentWillUnmount = function() {
-                  this.animationID != null &&
+                  null != this.animationID &&
                     (m.default.cancel(this.animationID),
                     (this.animationID = null));
                 }),
                 (t.prototype.render = function() {
-                  const e = this.props.children(this.state.currentStyle);
+                  var e = this.props.children(this.state.currentStyle);
                   return e && b.default.Children.only(e);
                 }),
                 t
@@ -16377,23 +16370,25 @@ throw new TypeError(
             return e && e.__esModule ? e : { default: e };
           }
           function o(e, t, n) {
-            for (let r = 0; r < e.length; r++) { if (!g.default(e[r], t[r], n[r])) return !1; }
+            for (var r = 0; r < e.length; r++)
+              if (!g.default(e[r], t[r], n[r])) return !1;
             return !0;
           }
           t.__esModule = !0;
           var i =
               Object.assign ||
               function(e) {
-                for (let t = 1; t < arguments.length; t++) {
-                  const n = arguments[t];
-                  for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+                for (var t = 1; t < arguments.length; t++) {
+                  var n = arguments[t];
+                  for (var r in n)
+                    Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
                 }
                 return e;
               },
             a = (function() {
               function e(e, t) {
-                for (let n = 0; n < t.length; n++) {
-                  const r = t[n];
+                for (var n = 0; n < t.length; n++) {
+                  var r = t[n];
                   (r.enumerable = r.enumerable || !1),
                     (r.configurable = !0),
                     'value' in r && (r.writable = !0),
@@ -16423,9 +16418,10 @@ throw new TypeError(
             O = 1e3 / 60,
             x = (function(e) {
               function t(n) {
-                const r = this;
+                var r = this;
                 (function(e, t) {
-                  if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+                  if (!(e instanceof t))
+                    throw new TypeError('Cannot call a class as a function');
                 })(this, t),
                   e.call(this, n),
                   (this.animationID = null),
@@ -16444,12 +16440,12 @@ throw new TypeError(
                       l < e.length;
                       l++
                     ) {
-                      let c = e[l],
+                      var c = e[l],
                         p = !1;
-                      for (const f in c) {
-if (Object.prototype.hasOwnProperty.call(c, f)) {
-                          const d = c[f];
-                          typeof d === 'number' &&
+                      for (var f in c)
+                        if (Object.prototype.hasOwnProperty.call(c, f)) {
+                          var d = c[f];
+                          'number' == typeof d &&
                             (p ||
                               ((p = !0),
                               (u = !0),
@@ -16462,7 +16458,6 @@ if (Object.prototype.hasOwnProperty.call(c, f)) {
                             (a[l][f] = d),
                             (s[l][f] = 0));
                         }
-}
                     }
                     u &&
                       r.setState({
@@ -16474,27 +16469,25 @@ if (Object.prototype.hasOwnProperty.call(c, f)) {
                   }),
                   (this.startAnimationIfNecessary = function() {
                     r.animationID = y.default(function(e) {
-                      const t = r.props.styles(r.state.lastIdealStyles);
+                      var t = r.props.styles(r.state.lastIdealStyles);
                       if (
                         o(r.state.currentStyles, t, r.state.currentVelocities)
-                      ) {
-return (
+                      )
+                        return (
                           (r.animationID = null), void (r.accumulatedTime = 0)
                         );
-}
-                      let n = e || h.default(),
+                      var n = e || h.default(),
                         i = n - r.prevTime;
                       if (
                         ((r.prevTime = n),
                         (r.accumulatedTime = r.accumulatedTime + i),
                         r.accumulatedTime > 10 * O && (r.accumulatedTime = 0),
-                        r.accumulatedTime === 0)
-                      ) {
-return (
+                        0 === r.accumulatedTime)
+                      )
+                        return (
                           (r.animationID = null),
                           void r.startAnimationIfNecessary()
                         );
-}
                       for (
                         var a =
                             (r.accumulatedTime -
@@ -16509,15 +16502,17 @@ return (
                         d < t.length;
                         d++
                       ) {
-                        let m = t[d],
+                        var m = t[d],
                           y = {},
                           v = {},
                           g = {},
                           b = {};
-                        for (const w in m) {
- if (Object.prototype.hasOwnProperty.call(m, w)) {
-                            const _ = m[w];
-                            if (typeof _ === 'number') { (y[w] = _), (v[w] = 0), (g[w] = _), (b[w] = 0); } else {
+                        for (var w in m)
+                          if (Object.prototype.hasOwnProperty.call(m, w)) {
+                            var _ = m[w];
+                            if ('number' == typeof _)
+                              (y[w] = _), (v[w] = 0), (g[w] = _), (b[w] = 0);
+                            else {
                               for (
                                 var C = r.state.lastIdealStyles[d][w],
                                   x = r.state.lastIdealVelocities[d][w],
@@ -16525,7 +16520,7 @@ return (
                                 E < s;
                                 E++
                               ) {
-                                const k = f.default(
+                                var k = f.default(
                                   O / 1e3,
                                   C,
                                   x,
@@ -16536,7 +16531,7 @@ return (
                                 );
                                 (C = k[0]), (x = k[1]);
                               }
-                              let T = f.default(
+                              var T = f.default(
                                   O / 1e3,
                                   C,
                                   x,
@@ -16553,7 +16548,6 @@ return (
                                 (b[w] = x);
                             }
                           }
-}
                         (c[d] = y), (p[d] = v), (u[d] = g), (l[d] = b);
                       }
                       (r.animationID = null),
@@ -16572,12 +16566,11 @@ return (
               }
               return (
                 (function(e, t) {
-                  if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+                  if ('function' != typeof t && null !== t)
+                    throw new TypeError(
                       'Super expression must either be null or a function, not ' +
                         typeof t
                     );
-}
                   (e.prototype = Object.create(t && t.prototype, {
                     constructor: {
                       value: e,
@@ -16605,7 +16598,7 @@ return (
                   }
                 ]),
                 (t.prototype.defaultState = function() {
-                  let e = this.props,
+                  var e = this.props,
                     t = e.defaultStyles,
                     n = e.styles,
                     r = t || n().map(c.default),
@@ -16624,22 +16617,22 @@ return (
                     this.startAnimationIfNecessary();
                 }),
                 (t.prototype.componentWillReceiveProps = function(e) {
-                  this.unreadPropStyles != null &&
+                  null != this.unreadPropStyles &&
                     this.clearUnreadPropStyle(this.unreadPropStyles),
                     (this.unreadPropStyles = e.styles(
                       this.state.lastIdealStyles
                     )),
-                    this.animationID == null &&
+                    null == this.animationID &&
                       ((this.prevTime = h.default()),
                       this.startAnimationIfNecessary());
                 }),
                 (t.prototype.componentWillUnmount = function() {
-                  this.animationID != null &&
+                  null != this.animationID &&
                     (y.default.cancel(this.animationID),
                     (this.animationID = null));
                 }),
                 (t.prototype.render = function() {
-                  const e = this.props.children(this.state.currentStyles);
+                  var e = this.props.children(this.state.currentStyles);
                   return e && w.default.Children.only(e);
                 }),
                 t
@@ -16653,29 +16646,31 @@ return (
             return e && e.__esModule ? e : { default: e };
           }
           function o(e, t, n) {
-            const r = t;
-            return r == null
+            var r = t;
+            return null == r
               ? e.map(function(e, t) {
                   return { key: e.key, data: e.data, style: n[t] };
                 })
               : e.map(function(e, t) {
-                  for (let o = 0; o < r.length; o++) {
- if (r[o].key === e.key) { return { key: r[o].key, data: r[o].data, style: n[t] }; }
-}
+                  for (var o = 0; o < r.length; o++)
+                    if (r[o].key === e.key)
+                      return { key: r[o].key, data: r[o].data, style: n[t] };
                   return { key: e.key, data: e.data, style: n[t] };
                 });
           }
           function i(e, t, n, r) {
             if (r.length !== t.length) return !1;
-            for (var o = 0; o < r.length; o++) { if (r[o].key !== t[o].key) return !1; }
-            for (var o = 0; o < r.length; o++) { if (!C.default(e[o], t[o].style, n[o])) return !1; }
+            for (var o = 0; o < r.length; o++)
+              if (r[o].key !== t[o].key) return !1;
+            for (var o = 0; o < r.length; o++)
+              if (!C.default(e[o], t[o].style, n[o])) return !1;
             return !0;
           }
           function a(e, t, n, r, o, i, a, s, u) {
             for (
               var l = y.default(r, o, function(e, r) {
-                  const o = t(r);
-                  return o == null
+                  var o = t(r);
+                  return null == o
                     ? (n({ key: r.key, data: r.data }), null)
                     : C.default(i[e], o, a[e])
                       ? (n({ key: r.key, data: r.data }), null)
@@ -16689,16 +16684,15 @@ return (
               m < l.length;
               m++
             ) {
-              for (var v = l[m], g = null, b = 0; b < r.length; b++) {
- if (r[b].key === v.key) {
+              for (var v = l[m], g = null, b = 0; b < r.length; b++)
+                if (r[b].key === v.key) {
                   g = b;
                   break;
                 }
-}
-              if (g == null) {
-                const w = e(v);
+              if (null == g) {
+                var w = e(v);
                 (p[m] = w), (d[m] = w);
-                const _ = c.default(v.style);
+                var _ = c.default(v.style);
                 (f[m] = _), (h[m] = _);
               } else (p[m] = i[g]), (d[m] = s[g]), (f[m] = a[g]), (h[m] = u[g]);
             }
@@ -16708,16 +16702,17 @@ return (
           var s =
               Object.assign ||
               function(e) {
-                for (let t = 1; t < arguments.length; t++) {
-                  const n = arguments[t];
-                  for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+                for (var t = 1; t < arguments.length; t++) {
+                  var n = arguments[t];
+                  for (var r in n)
+                    Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
                 }
                 return e;
               },
             u = (function() {
               function e(e, t) {
-                for (let n = 0; n < t.length; n++) {
-                  const r = t[n];
+                for (var n = 0; n < t.length; n++) {
+                  var r = t[n];
                   (r.enumerable = r.enumerable || !1),
                     (r.configurable = !0),
                     'value' in r && (r.writable = !0),
@@ -16749,9 +16744,10 @@ return (
             T = 1e3 / 60,
             S = (function(e) {
               function t(n) {
-                const r = this;
+                var r = this;
                 (function(e, t) {
-                  if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+                  if (!(e instanceof t))
+                    throw new TypeError('Cannot call a class as a function');
                 })(this, t),
                   e.call(this, n),
                   (this.unmounting = !1),
@@ -16781,12 +16777,12 @@ return (
                       c < e.length;
                       c++
                     ) {
-                      let p = e[c].style,
+                      var p = e[c].style,
                         f = !1;
-                      for (const d in p) {
- if (Object.prototype.hasOwnProperty.call(p, d)) {
-                          const h = p[d];
-                          typeof h === 'number' &&
+                      for (var d in p)
+                        if (Object.prototype.hasOwnProperty.call(p, d)) {
+                          var h = p[d];
+                          'number' == typeof h &&
                             (f ||
                               ((f = !0),
                               (o[c] = s({}, o[c])),
@@ -16804,7 +16800,6 @@ return (
                             (l[c][d] = 0),
                             (n[c].style[d] = h));
                         }
-}
                     }
                     r.setState({
                       currentStyles: o,
@@ -16818,9 +16813,9 @@ return (
                     r.unmounting ||
                       (r.animationID = w.default(function(e) {
                         if (!r.unmounting) {
-                          let t = r.props.styles,
+                          var t = r.props.styles,
                             n =
-                              typeof t === 'function'
+                              'function' == typeof t
                                 ? t(
                                     o(
                                       r.state.mergedPropsStyles,
@@ -16836,26 +16831,24 @@ return (
                               r.state.currentVelocities,
                               r.state.mergedPropsStyles
                             )
-                          ) {
- return (
+                          )
+                            return (
                               (r.animationID = null),
                               void (r.accumulatedTime = 0)
                             );
-}
-                          let s = e || g.default(),
+                          var s = e || g.default(),
                             u = s - r.prevTime;
                           if (
                             ((r.prevTime = s),
                             (r.accumulatedTime = r.accumulatedTime + u),
                             r.accumulatedTime > 10 * T &&
                               (r.accumulatedTime = 0),
-                            r.accumulatedTime === 0)
-                          ) {
- return (
+                            0 === r.accumulatedTime)
+                          )
+                            return (
                               (r.animationID = null),
                               void r.startAnimationIfNecessary()
                             );
-}
                           for (
                             var l =
                                 (r.accumulatedTime -
@@ -16882,26 +16875,26 @@ return (
                             b < f.length;
                             b++
                           ) {
-                            let w = f[b].style,
+                            var w = f[b].style,
                               _ = {},
                               C = {},
                               O = {},
                               x = {};
-                            for (const E in w) {
-if (Object.prototype.hasOwnProperty.call(w, E)) {
-                                const k = w[E];
-                                if (typeof k === 'number') {
- (_[E] = k),
+                            for (var E in w)
+                              if (Object.prototype.hasOwnProperty.call(w, E)) {
+                                var k = w[E];
+                                if ('number' == typeof k)
+                                  (_[E] = k),
                                     (C[E] = 0),
                                     (O[E] = k),
                                     (x[E] = 0);
-} else {
+                                else {
                                   for (
                                     var S = y[b][E], P = v[b][E], A = 0;
                                     A < c;
                                     A++
                                   ) {
-                                    const I = h.default(
+                                    var I = h.default(
                                       T / 1e3,
                                       S,
                                       P,
@@ -16912,7 +16905,7 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                                     );
                                     (S = I[0]), (P = I[1]);
                                   }
-                                  let j = h.default(
+                                  var j = h.default(
                                       T / 1e3,
                                       S,
                                       P,
@@ -16929,7 +16922,6 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                                     (x[E] = P);
                                 }
                               }
-}
                             (y[b] = O), (v[b] = x), (d[b] = _), (m[b] = C);
                           }
                           (r.animationID = null),
@@ -16950,12 +16942,11 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
               }
               return (
                 (function(e, t) {
-                  if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+                  if ('function' != typeof t && null !== t)
+                    throw new TypeError(
                       'Super expression must either be null or a function, not ' +
                         typeof t
                     );
-}
                   (e.prototype = Object.create(t && t.prototype, {
                     constructor: {
                       value: e,
@@ -17017,23 +17008,24 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                   }
                 ]),
                 (t.prototype.defaultState = function() {
-                  let e = this.props,
+                  var e = this.props,
                     t = e.defaultStyles,
                     n = e.styles,
                     r = e.willEnter,
                     o = e.willLeave,
                     i = e.didLeave,
-                    s = typeof n === 'function' ? n(t) : n,
+                    s = 'function' == typeof n ? n(t) : n,
                     u = void 0;
                   u =
-                    t == null
+                    null == t
                       ? s
                       : t.map(function(e) {
-                          for (let t = 0; t < s.length; t++) { if (s[t].key === e.key) return s[t]; }
+                          for (var t = 0; t < s.length; t++)
+                            if (s[t].key === e.key) return s[t];
                           return e;
                         });
-                  let l =
-                      t == null
+                  var l =
+                      null == t
                         ? s.map(function(e) {
                             return f.default(e.style);
                           })
@@ -17041,7 +17033,7 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                             return f.default(e.style);
                           }),
                     p =
-                      t == null
+                      null == t
                         ? s.map(function(e) {
                             return c.default(e.style);
                           })
@@ -17069,9 +17061,9 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                 (t.prototype.componentWillReceiveProps = function(e) {
                   this.unreadPropStyles &&
                     this.clearUnreadPropStyle(this.unreadPropStyles);
-                  const t = e.styles;
+                  var t = e.styles;
                   (this.unreadPropStyles =
-                    typeof t === 'function'
+                    'function' == typeof t
                       ? t(
                           o(
                             this.state.mergedPropsStyles,
@@ -17080,18 +17072,18 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
                           )
                         )
                       : t),
-                    this.animationID == null &&
+                    null == this.animationID &&
                       ((this.prevTime = g.default()),
                       this.startAnimationIfNecessary());
                 }),
                 (t.prototype.componentWillUnmount = function() {
                   (this.unmounting = !0),
-                    this.animationID != null &&
+                    null != this.animationID &&
                       (w.default.cancel(this.animationID),
                       (this.animationID = null));
                 }),
                 (t.prototype.render = function() {
-                  let e = o(
+                  var e = o(
                       this.state.mergedPropsStyles,
                       this.unreadPropStyles,
                       this.state.currentStyles
@@ -17111,20 +17103,19 @@ if (Object.prototype.hasOwnProperty.call(w, E)) {
               for (var r = {}, o = 0; o < e.length; o++) r[e[o].key] = o;
               for (var i = {}, o = 0; o < t.length; o++) i[t[o].key] = o;
               for (var a = [], o = 0; o < t.length; o++) a[o] = t[o];
-              for (var o = 0; o < e.length; o++) {
-if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
-                  const s = n(o, e[o]);
-                  s != null && a.push(s);
+              for (var o = 0; o < e.length; o++)
+                if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
+                  var s = n(o, e[o]);
+                  null != s && a.push(s);
                 }
-}
               return a.sort(function(e, n) {
-                let o = i[e.key],
+                var o = i[e.key],
                   a = i[n.key],
                   s = r[e.key],
                   u = r[n.key];
-                if (o != null && a != null) return i[e.key] - i[n.key];
-                if (s != null && u != null) return r[e.key] - r[n.key];
-                if (o != null) {
+                if (null != o && null != a) return i[e.key] - i[n.key];
+                if (null != s && null != u) return r[e.key] - r[n.key];
+                if (null != o) {
                   for (var l = 0; l < t.length; l++) {
                     var c = t[l].key;
                     if (Object.prototype.hasOwnProperty.call(r, c)) {
@@ -17152,19 +17143,19 @@ if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
             return e && e.__esModule ? e.default : e;
           }
           t.__esModule = !0;
-          const o = n(20);
+          var o = n(20);
           t.Motion = r(o);
-          const i = n(21);
+          var i = n(21);
           t.StaggeredMotion = r(i);
-          const a = n(22);
+          var a = n(22);
           t.TransitionMotion = r(a);
-          const s = n(26);
+          var s = n(26);
           t.spring = r(s);
-          const u = n(10);
+          var u = n(10);
           t.presets = r(u);
-          const l = n(2);
+          var l = n(2);
           t.stripStyle = r(l);
-          const c = n(25);
+          var c = n(25);
           t.reorderKeys = r(c);
         },
         function(e, t, n) {
@@ -17176,12 +17167,13 @@ if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
         function(e, t, n) {
           'use strict';
           t.__esModule = !0;
-          const r =
+          var r =
             Object.assign ||
             function(e) {
-              for (let t = 1; t < arguments.length; t++) {
-                const n = arguments[t];
-                for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+              for (var t = 1; t < arguments.length; t++) {
+                var n = arguments[t];
+                for (var r in n)
+                  Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
               }
               return e;
             };
@@ -17201,10 +17193,10 @@ if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17234,20 +17226,20 @@ if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
     function l(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let c = a.default.section(o),
+    var c = a.default.section(o),
       p = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -17258,12 +17250,11 @@ if (!Object.prototype.hasOwnProperty.call(i, e[o].key)) {
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -17281,7 +17272,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.tests,
                   n = e.settings,
                   r = !n.refImage && !n.testImage && !n.diffImage;
@@ -17313,10 +17304,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17355,24 +17346,24 @@ throw new TypeError(
     function f(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let d = a.default.div(o, s.colors.cardWhite, s.shadows.shadow01, function(
+    var d = a.default.div(o, s.colors.cardWhite, s.shadows.shadow01, function(
         e
       ) {
-        return e.status === 'pass' ? s.colors.green : s.colors.red;
+        return 'pass' === e.status ? s.colors.green : s.colors.red;
       }),
       h = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -17383,12 +17374,11 @@ throw new TypeError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -17406,7 +17396,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props.test,
+                var e = this.props.test,
                   t = e.pair,
                   n = e.status,
                   r = this.props.onlyText;
@@ -17433,10 +17423,10 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17483,7 +17473,7 @@ throw new TypeError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let f = u.default.div(
+    var f = u.default.div(
         o,
         function(e) {
           return e.display ? 'block' : 'none';
@@ -17497,15 +17487,15 @@ throw new TypeError(
       h = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -17513,12 +17503,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -17536,7 +17525,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props.info.error,
+                var e = this.props.info.error,
                   t = this.props.info.engineErrorMsg,
                   n = !!t || !!e;
                 return a.default.createElement(
@@ -17569,19 +17558,20 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r =
+    var r =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         },
       o = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17644,7 +17634,7 @@ throw new ReferenceError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let g = f.default.div(i),
+    var g = f.default.div(i),
       b = f.default.div(a),
       w = f.default.span(s, m.fonts.latoRegular, m.colors.secondaryText),
       _ = f.default.span(u, m.fonts.latoBold, m.colors.primaryText),
@@ -17658,15 +17648,15 @@ throw new ReferenceError(
       O = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
- throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -17679,12 +17669,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -17715,7 +17704,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props.info,
+                var e = this.props.info,
                   t = e.label,
                   n = e.fileName,
                   o = e.selector,
@@ -17791,10 +17780,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17840,21 +17829,21 @@ throw new ReferenceError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let p = s.default.span(o, u.fonts.latoRegular, u.colors.secondaryText),
+    var p = s.default.span(o, u.fonts.latoRegular, u.colors.secondaryText),
       f = s.default.span(i, u.fonts.latoBold, u.colors.primaryText),
       d = (function(e) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -17865,12 +17854,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -17888,7 +17876,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.diff,
                   n = e.suppress;
                 return !t || n
@@ -17929,10 +17917,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -17982,7 +17970,7 @@ throw new ReferenceError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let f = u.default.span(o, l.fonts.latoRegular, l.colors.secondaryText),
+    var f = u.default.span(o, l.fonts.latoRegular, l.colors.secondaryText),
       d = u.default.span(i, l.fonts.latoBold, l.colors.primaryText),
       h = u.default.a(
         a,
@@ -17997,15 +17985,15 @@ throw new ReferenceError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -18016,12 +18004,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -18039,7 +18026,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.url,
                   n = e.referenceUrl;
                 return s.default.createElement(
@@ -18073,10 +18060,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -18124,7 +18111,7 @@ throw new ReferenceError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let d = s.default.div(o),
+    var d = s.default.div(o),
       h = s.default.div(
         i,
         l.colors.lightGray,
@@ -18138,15 +18125,15 @@ throw new ReferenceError(
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
- throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -18157,12 +18144,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -18180,14 +18166,14 @@ throw new ReferenceError(
             {
               key: 'nextTest',
               value: function() {
-                const e = '#test' + (this.props.currentId + 1);
+                var e = '#test' + (this.props.currentId + 1);
                 this.jumpTo(e);
               }
             },
             {
               key: 'prevTest',
               value: function() {
-                const e = '#test' + (this.props.currentId - 1);
+                var e = '#test' + (this.props.currentId - 1);
                 this.jumpTo(e);
               }
             },
@@ -18200,13 +18186,13 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.currentId,
                   n = e.lastId;
                 return a.default.createElement(
                   d,
                   null,
-                  t !== 0 &&
+                  0 !== t &&
                     a.default.createElement(h, {
                       onClick: this.prevTest.bind(this),
                       prev: !0
@@ -18227,26 +18213,26 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     n.r(t);
-    let r = function(e, t, n, r) {
+    var r = function(e, t, n, r) {
         return (e /= r / 2) < 1
           ? (n / 2) * e * e + t
           : (-n / 2) * (--e * (e - 2) - 1) + t;
       },
       o =
-        typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
+        'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
           ? function(e) {
               return typeof e;
             }
           : function(e) {
               return e &&
-                typeof Symbol === 'function' &&
+                'function' == typeof Symbol &&
                 e.constructor === Symbol &&
                 e !== Symbol.prototype
                 ? 'symbol'
                 : typeof e;
             },
       i = (function() {
-        let e = void 0,
+        var e = void 0,
           t = void 0,
           n = void 0,
           i = void 0,
@@ -18269,11 +18255,11 @@ throw new ReferenceError(
               ? window.requestAnimationFrame(m)
               : (window.scrollTo(0, t + u),
                 e && s && (e.setAttribute('tabindex', '-1'), e.focus()),
-                typeof d === 'function' && d(),
+                'function' == typeof d && d(),
                 (c = !1));
         }
         return function(c) {
-          const p =
+          var p =
             arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
           switch (
             ((l = p.duration || 1e3),
@@ -18312,10 +18298,10 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -18342,19 +18328,19 @@ throw new ReferenceError(
     function c(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let p = a.default.div(o),
+    var p = a.default.div(o),
       f = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
- throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -18362,12 +18348,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -18385,14 +18370,14 @@ throw new TypeError(
             {
               key: 'onImageClick',
               value: function(e) {
-                const t = this.props.openModal;
+                var t = this.props.openModal;
                 (this.props.info.targetImg = e), t(this.props.info);
               }
             },
             {
               key: 'render',
               value: function() {
-                let e = this,
+                var e = this,
                   t = this.props.info,
                   n = t.reference,
                   r = t.test,
@@ -18414,7 +18399,7 @@ throw new TypeError(
                       visible: s.testImage
                     }
                   ]),
-                  a !== 'pass' &&
+                  'pass' !== a &&
                     this.state.images.push({
                       id: 'diffImage',
                       label: 'Diff',
@@ -18459,19 +18444,20 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r =
+    var r =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         },
       o = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -18527,7 +18513,7 @@ throw new TypeError(
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let m = p.default.img(i, function(e) {
+    var m = p.default.img(i, function(e) {
         return e.settings.textInfo ? '150px' : '400px';
       }),
       y = p.default.div(a, function(e) {
@@ -18538,15 +18524,15 @@ throw new TypeError(
       b = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
- throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -18559,12 +18545,11 @@ throw new TypeError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -18597,13 +18582,13 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.hidden,
                   n = e.settings,
                   o = e.label,
                   i = e.src;
                 return (
-                  (i && i !== '../..' && !this.state.imgLoadError) ||
+                  (i && '../..' !== i && !this.state.imgLoadError) ||
                     (i =
                       'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'),
                   this.state.isVisible
@@ -18637,13 +18622,13 @@ throw new TypeError(
   },
   function(e, t, n) {
     'use strict';
-    let r = n(0),
+    var r = n(0),
       o = n(30),
       i = n(2),
       a = n(239),
       s = n(240),
       u = i.any;
-    typeof window !== 'undefined' && (u = i.instanceOf(window.Element)),
+    'undefined' != typeof window && (u = i.instanceOf(window.Element)),
       (e.exports = a({
         displayName: 'VisibilitySensor',
         propTypes: {
@@ -18716,9 +18701,9 @@ throw new TypeError(
           return this.props.containment || window;
         },
         addEventListener: function(e, t, n, r) {
-          let o;
+          var o;
           this.debounceCheck || (this.debounceCheck = {});
-          let i = function() {
+          var i = function() {
               (o = null), this.check();
             }.bind(this),
             a = {
@@ -18762,43 +18747,40 @@ throw new TypeError(
             !this.props.delayedCall && this.check());
         },
         stopWatching: function() {
-          if (this.debounceCheck) {
- for (const e in this.debounceCheck) {
-if (this.debounceCheck.hasOwnProperty(e)) {
-                const t = this.debounceCheck[e];
+          if (this.debounceCheck)
+            for (var e in this.debounceCheck)
+              if (this.debounceCheck.hasOwnProperty(e)) {
+                var t = this.debounceCheck[e];
                 clearTimeout(t.getLastTimeout()),
                   t.target.removeEventListener(e, t.fn),
                   (this.debounceCheck[e] = null);
               }
-}
-}
           (this.debounceCheck = null),
             this.interval && (this.interval = clearInterval(this.interval));
         },
         check: function() {
-          let e,
+          var e,
             t,
             n = this.node;
           if (!n) return this.state;
           if (((e = n.getBoundingClientRect()), this.props.containment)) {
-            const r = this.props.containment.getBoundingClientRect();
+            var r = this.props.containment.getBoundingClientRect();
             t = { top: r.top, left: r.left, bottom: r.bottom, right: r.right };
-          } else {
- t = {
+          } else
+            t = {
               top: 0,
               left: 0,
               bottom:
                 window.innerHeight || document.documentElement.clientHeight,
               right: window.innerWidth || document.documentElement.clientWidth
             };
-}
-          const o = this.props.offset || {};
-          typeof o === 'object' &&
+          var o = this.props.offset || {};
+          'object' == typeof o &&
             ((t.top += o.top || 0),
             (t.left += o.left || 0),
             (t.bottom -= o.bottom || 0),
             (t.right -= o.right || 0));
-          let i = {
+          var i = {
               top: e.top >= t.top,
               left: e.left >= t.left,
               bottom: e.bottom <= t.bottom,
@@ -18806,26 +18788,26 @@ if (this.debounceCheck.hasOwnProperty(e)) {
             },
             a = i.top && i.left && i.bottom && i.right;
           if (this.props.partialVisibility) {
-            let u =
+            var u =
               e.top <= t.bottom &&
               e.bottom >= t.top &&
               e.left <= t.right &&
               e.right >= t.left;
-            typeof this.props.partialVisibility === 'string' &&
+            'string' == typeof this.props.partialVisibility &&
               (u = i[this.props.partialVisibility]),
               (a = this.props.minTopValue
                 ? u && e.top <= t.bottom - this.props.minTopValue
                 : u);
           }
-          typeof o.direction === 'string' &&
-            typeof o.value === 'number' &&
+          'string' == typeof o.direction &&
+            'number' == typeof o.value &&
             (console.warn(
               '[notice] offset.direction and offset.value have been deprecated. They still work for now, but will be removed in next major version. Please upgrade to the new syntax: { %s: %d }',
               o.direction,
               o.value
             ),
             (a = s(o, e, t)));
-          let l = this.state;
+          var l = this.state;
           return (
             this.state.isVisible !== a &&
               ((l = { isVisible: a, visibilityRect: i }),
@@ -18846,19 +18828,18 @@ if (this.debounceCheck.hasOwnProperty(e)) {
   },
   function(e, t, n) {
     'use strict';
-    let r = n(0),
+    var r = n(0),
       o = n(66);
-    if (void 0 === r) {
- throw Error(
+    if (void 0 === r)
+      throw Error(
         'create-react-class could not find the React object. If you are using script tags, make sure that React is being loaded before create-react-class.'
       );
-}
-    const i = new r.Component().updater;
+    var i = new r.Component().updater;
     e.exports = o(r.Component, r.isValidElement, i);
   },
   function(e, t) {
     e.exports = function(e, t, n) {
-      let r = e.direction,
+      var r = e.direction,
         o = e.value;
       switch (r) {
         case 'top':
@@ -18895,10 +18876,10 @@ if (this.debounceCheck.hasOwnProperty(e)) {
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -18944,7 +18925,7 @@ if (this.debounceCheck.hasOwnProperty(e)) {
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let v = l.default.div(o),
+    var v = l.default.div(o),
       g = l.default.div(i),
       b = l.default.button(a, f.default),
       w = {
@@ -18963,15 +18944,15 @@ if (this.debounceCheck.hasOwnProperty(e)) {
         function t() {
           return (
             (function(e, t) {
-              if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+              if (!(e instanceof t))
+                throw new TypeError('Cannot call a class as a function');
             })(this, t),
             (function(e, t) {
-              if (!e) {
-throw new ReferenceError(
+              if (!e)
+                throw new ReferenceError(
                   "this hasn't been initialised - super() hasn't been called"
                 );
-}
-              return !t || (typeof t !== 'object' && typeof t !== 'function')
+              return !t || ('object' != typeof t && 'function' != typeof t)
                 ? e
                 : t;
             })(
@@ -18982,12 +18963,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -19005,7 +18985,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props.scrubber.test,
+                var e = this.props.scrubber.test,
                   t = e.reference,
                   n = e.test,
                   r = e.diffImage,
@@ -19094,7 +19074,7 @@ throw new TypeError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    const r = (function(e) {
+    var r = (function(e) {
       return e && e.__esModule ? e : { default: e };
     })(n(243));
     (t.default = r.default), (e.exports = t.default);
@@ -19103,19 +19083,20 @@ throw new TypeError(
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 }),
       (t.bodyOpenClassName = t.portalClassName = void 0);
-    let r =
+    var r =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         },
       o = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -19133,10 +19114,10 @@ throw new TypeError(
       l = d(n(244)),
       c = (function(e) {
         if (e && e.__esModule) return e;
-        const t = {};
-        if (e != null) {
- for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]); }
-}
+        var t = {};
+        if (null != e)
+          for (var n in e)
+            Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
         return (t.default = e), t;
       })(n(96)),
       p = n(98),
@@ -19145,14 +19126,13 @@ throw new TypeError(
       return e && e.__esModule ? e : { default: e };
     }
     function h(e, t) {
-      if (!e) {
-throw new ReferenceError(
+      if (!e)
+        throw new ReferenceError(
           "this hasn't been initialised - super() hasn't been called"
         );
-}
-      return !t || (typeof t !== 'object' && typeof t !== 'function') ? e : t;
+      return !t || ('object' != typeof t && 'function' != typeof t) ? e : t;
     }
-    let m = (t.portalClassName = 'ReactModalPortal'),
+    var m = (t.portalClassName = 'ReactModalPortal'),
       y = (t.bodyOpenClassName = 'ReactModal__Body--open'),
       v = void 0 !== s.default.createPortal,
       g = v
@@ -19161,13 +19141,15 @@ throw new ReferenceError(
     function b(e) {
       return e();
     }
-    const w = (function(e) {
+    var w = (function(e) {
       function t() {
-        let e, n, o;
+        var e, n, o;
         !(function(e, t) {
-          if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+          if (!(e instanceof t))
+            throw new TypeError('Cannot call a class as a function');
         })(this, t);
-        for (var i = arguments.length, u = Array(i), c = 0; c < i; c++) { u[c] = arguments[c]; }
+        for (var i = arguments.length, u = Array(i), c = 0; c < i; c++)
+          u[c] = arguments[c];
         return (
           (n = o = h(
             this,
@@ -19184,7 +19166,7 @@ throw new ReferenceError(
             o.portal = e;
           }),
           (o.renderPortal = function(e) {
-            const n = g(
+            var n = g(
               o,
               a.default.createElement(
                 l.default,
@@ -19199,12 +19181,11 @@ throw new ReferenceError(
       }
       return (
         (function(e, t) {
-          if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+          if ('function' != typeof t && null !== t)
+            throw new TypeError(
               'Super expression must either be null or a function, not ' +
                 typeof t
             );
-}
           (e.prototype = Object.create(t && t.prototype, {
             constructor: {
               value: e,
@@ -19235,9 +19216,9 @@ throw new ReferenceError(
               key: 'componentWillReceiveProps',
               value: function(e) {
                 if (p.canUseDOM) {
-                  const t = e.isOpen;
+                  var t = e.isOpen;
                   if (this.props.isOpen || t) {
-                    let n = b(this.props.parentSelector),
+                    var n = b(this.props.parentSelector),
                       r = b(e.parentSelector);
                     r !== n &&
                       (n.removeChild(this.node), r.appendChild(this.node)),
@@ -19258,7 +19239,7 @@ throw new ReferenceError(
               key: 'componentWillUnmount',
               value: function() {
                 if (p.canUseDOM && this.node && this.portal) {
-                  let e = this.portal.state,
+                  var e = this.portal.state,
                     t = Date.now(),
                     n =
                       e.isOpen &&
@@ -19388,23 +19369,24 @@ throw new ReferenceError(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r =
+    var r =
         Object.assign ||
         function(e) {
-          for (let t = 1; t < arguments.length; t++) {
-            const n = arguments[t];
-            for (const r in n) { Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]); }
+          for (var t = 1; t < arguments.length; t++) {
+            var n = arguments[t];
+            for (var r in n)
+              Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
           }
           return e;
         },
       o =
-        typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
+        'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
           ? function(e) {
               return typeof e;
             }
           : function(e) {
               return e &&
-                typeof Symbol === 'function' &&
+                'function' == typeof Symbol &&
                 e.constructor === Symbol &&
                 e !== Symbol.prototype
                 ? 'symbol'
@@ -19412,8 +19394,8 @@ throw new ReferenceError(
             },
       i = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -19435,30 +19417,30 @@ throw new ReferenceError(
       h = y(n(98));
     function m(e) {
       if (e && e.__esModule) return e;
-      const t = {};
-      if (e != null) {
-for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]); }
-}
+      var t = {};
+      if (null != e)
+        for (var n in e)
+          Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
       return (t.default = e), t;
     }
     function y(e) {
       return e && e.__esModule ? e : { default: e };
     }
-    let v = { overlay: 'ReactModal__Overlay', content: 'ReactModal__Content' },
+    var v = { overlay: 'ReactModal__Overlay', content: 'ReactModal__Content' },
       g = 9,
       b = 27,
       w = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -19473,7 +19455,7 @@ throw new ReferenceError(
               n.content = e;
             }),
             (n.afterClose = function() {
-              let e = n.props,
+              var e = n.props,
                 t = e.appElement,
                 r = e.ariaHideApp;
               d.remove(n.props.bodyOpenClassName),
@@ -19506,7 +19488,7 @@ throw new ReferenceError(
               return n.content && !n.contentHasFocus() && n.content.focus();
             }),
             (n.closeWithTimeout = function() {
-              const e = Date.now() + n.props.closeTimeoutMS;
+              var e = Date.now() + n.props.closeTimeoutMS;
               n.setState({ beforeClose: !0, closesAt: e }, function() {
                 n.closeTimer = setTimeout(
                   n.closeWithoutTimeout,
@@ -19527,7 +19509,7 @@ throw new ReferenceError(
                   (e.stopPropagation(), n.requestClose(e));
             }),
             (n.handleOverlayOnClick = function(e) {
-              n.shouldClose === null && (n.shouldClose = !0),
+              null === n.shouldClose && (n.shouldClose = !0),
                 n.shouldClose &&
                   n.props.shouldCloseOnOverlayClick &&
                   (n.ownerHandlesClose()
@@ -19537,7 +19519,7 @@ throw new ReferenceError(
                 (n.moveFromContentToOverlay = null);
             }),
             (n.handleOverlayOnMouseUp = function() {
-              n.moveFromContentToOverlay === null && (n.shouldClose = !1),
+              null === n.moveFromContentToOverlay && (n.shouldClose = !1),
                 n.props.shouldCloseOnOverlayClick && (n.shouldClose = !0);
             }),
             (n.handleContentOnMouseUp = function() {
@@ -19571,8 +19553,8 @@ throw new ReferenceError(
               );
             }),
             (n.buildClassName = function(e, t) {
-              let r =
-                  (void 0 === t ? 'undefined' : o(t)) === 'object'
+              var r =
+                  'object' === (void 0 === t ? 'undefined' : o(t))
                     ? t
                     : {
                         base: v[e],
@@ -19583,7 +19565,7 @@ throw new ReferenceError(
               return (
                 n.state.afterOpen && (i = i + ' ' + r.afterOpen),
                 n.state.beforeClose && (i = i + ' ' + r.beforeClose),
-                typeof t === 'string' && t ? i + ' ' + t : i
+                'string' == typeof t && t ? i + ' ' + t : i
               );
             }),
             (n.ariaAttributes = function(e) {
@@ -19599,12 +19581,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -19650,7 +19631,7 @@ throw new ReferenceError(
             {
               key: 'beforeOpen',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.appElement,
                   n = e.ariaHideApp,
                   r = e.bodyOpenClassName;
@@ -19660,7 +19641,7 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.className,
                   n = e.overlayClassName,
                   o = e.defaultStyles,
@@ -19748,9 +19729,9 @@ throw new ReferenceError(
         o.push(document.activeElement);
       }),
       (t.returnFocus = function() {
-        let e = null;
+        var e = null;
         try {
-          return void (o.length !== 0 && (e = o.pop()).focus());
+          return void (0 !== o.length && (e = o.pop()).focus());
         } catch (t) {
           console.warn(
             [
@@ -19780,7 +19761,7 @@ throw new ReferenceError(
             : (window.detachEvent('onBlur', s),
               document.detachEvent('onFocus', u));
       });
-    const r = (function(e) {
+    var r = (function(e) {
       return e && e.__esModule ? e : { default: e };
     })(n(95));
     var o = [],
@@ -19803,9 +19784,9 @@ throw new ReferenceError(
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 }),
       (t.default = function(e, t) {
-        const n = (0, r.default)(e);
+        var n = (0, r.default)(e);
         if (!n.length) return void t.preventDefault();
-        let o,
+        var o,
           i = t.shiftKey,
           a = n[0],
           s = n[n.length - 1];
@@ -19813,13 +19794,14 @@ throw new ReferenceError(
         s !== document.activeElement || i || (o = a);
         a === document.activeElement && i && (o = s);
         if (o) return t.preventDefault(), void o.focus();
-        const u = /(\bChrome\b|\bSafari\b)\//.exec(navigator.userAgent);
+        var u = /(\bChrome\b|\bSafari\b)\//.exec(navigator.userAgent);
         if (
-          u == null ||
-          u[1] == 'Chrome' ||
-          /\biPod\b|\biPad\b/g.exec(navigator.userAgent) != null
-        ) { return; }
-        let l = n.indexOf(document.activeElement);
+          null == u ||
+          'Chrome' == u[1] ||
+          null != /\biPod\b|\biPad\b/g.exec(navigator.userAgent)
+        )
+          return;
+        var l = n.indexOf(document.activeElement);
         l > -1 && (l += i ? -1 : 1);
         t.preventDefault(), n[l].focus();
       });
@@ -19843,11 +19825,11 @@ throw new ReferenceError(
           });
       }),
       (t.remove = function(e) {
-        const t = r.get();
+        var t = r.get();
         e.split(' ')
           .map(r.remove)
           .filter(function(e) {
-            return t[e] === 0;
+            return 0 === t[e];
           })
           .forEach(function(e) {
             return document.body.classList.remove(e);
@@ -19855,15 +19837,15 @@ throw new ReferenceError(
       });
     var r = (function(e) {
       if (e && e.__esModule) return e;
-      const t = {};
-      if (e != null) {
-for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]); }
-}
+      var t = {};
+      if (null != e)
+        for (var n in e)
+          Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n]);
       return (t.default = e), t;
     })(n(97));
   },
   function(e, t, n) {
-    let r;
+    var r;
     /*!
   Copyright (c) 2015 Jed Watson.
   Based on code that is Copyright 2013-2015, Facebook, Inc.
@@ -19876,22 +19858,22 @@ for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n])
 */
     !(function() {
       'use strict';
-      let o = !(
-          typeof window === 'undefined' ||
+      var o = !(
+          'undefined' == typeof window ||
           !window.document ||
           !window.document.createElement
         ),
         i = {
           canUseDOM: o,
-          canUseWorkers: typeof Worker !== 'undefined',
+          canUseWorkers: 'undefined' != typeof Worker,
           canUseEventListeners:
             o && !(!window.addEventListener && !window.attachEvent),
           canUseViewport: o && !!window.screen
         };
       void 0 ===
-        (r = (function() {
+        (r = function() {
           return i;
-        }.call(t, n, t, e))) || (e.exports = r);
+        }.call(t, n, t, e)) || (e.exports = r);
     })();
   },
   function(e, t) {
@@ -19901,10 +19883,10 @@ for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n])
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -19971,7 +19953,7 @@ for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n])
         Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
       );
     }
-    let h = l.default.button(
+    var h = l.default.button(
         o,
         function(e) {
           return e.selected ? p.colors.secondaryText : p.colors.lightGray;
@@ -19993,15 +19975,15 @@ for (const n in e) { Object.prototype.hasOwnProperty.call(e, n) && (t[n] = e[n])
       g = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -20014,12 +19996,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
-throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -20049,7 +20030,7 @@ throw new TypeError(
             {
               key: 'render',
               value: function() {
-                let e = this.props,
+                var e = this.props,
                   t = e.scrubberModalMode,
                   n = e.testImageType,
                   r = e.position,
@@ -20064,8 +20045,8 @@ throw new TypeError(
                   g = e.showScrubberDivergedImage,
                   _ = e.showScrubber,
                   C = this.props[n];
-                const O = this;
-                const x = this.state.dontUseScrubberView || !l;
+                var O = this;
+                var x = this.state.dontUseScrubberView || !l;
                 return u.default.createElement(
                   'div',
                   null,
@@ -20079,7 +20060,7 @@ throw new TypeError(
                         u.default.createElement(
                           h,
                           {
-                            selected: t === 'SHOW_SCRUBBER_REF_IMAGE',
+                            selected: 'SHOW_SCRUBBER_REF_IMAGE' === t,
                             onClick: f
                           },
                           'REFERENCE'
@@ -20087,7 +20068,7 @@ throw new TypeError(
                         u.default.createElement(
                           h,
                           {
-                            selected: t === 'SHOW_SCRUBBER_TEST_IMAGE',
+                            selected: 'SHOW_SCRUBBER_TEST_IMAGE' === t,
                             onClick: p
                           },
                           'TEST'
@@ -20095,29 +20076,29 @@ throw new TypeError(
                         u.default.createElement(
                           h,
                           {
-                            selected: t === 'SHOW_SCRUBBER_DIFF_IMAGE',
+                            selected: 'SHOW_SCRUBBER_DIFF_IMAGE' === t,
                             onClick: d
                           },
                           'DIFF'
                         ),
                         u.default.createElement(
                           h,
-                          { selected: t === 'SCRUB', onClick: _ },
+                          { selected: 'SCRUB' === t, onClick: _ },
                           'SCRUBBER'
                         ),
                         u.default.createElement(
                           h,
                           {
-                            selected: t === 'SHOW_SCRUBBER_DIVERGED_IMAGE',
+                            selected: 'SHOW_SCRUBBER_DIVERGED_IMAGE' === t,
                             onClick: function() {
-                              if (O.state.isLoading) {
-console.error(
+                              if (O.state.isLoading)
+                                console.error(
                                   'Diverged process is already running. Please hang on.'
                                 );
-} else if (s) g(s);
+                              else if (s) g(s);
                               else {
                                 g(''), O.loadingDiverge(!0);
-                                let e = document.images.isolatedRefImage,
+                                var e = document.images.isolatedRefImage,
                                   t = document.images.isolatedTestImage,
                                   n = e.height,
                                   r = e.width,
@@ -20136,10 +20117,11 @@ console.error(
                                         i = t.length - 1;
                                       i >= 0;
                                       i--
-                                    ) { o.data[i] = t[i]; }
-                                    const a = w(null, n, r);
+                                    )
+                                      o.data[i] = t[i];
+                                    var a = w(null, n, r);
                                     a.putImageData(o, 0, 0);
-                                    const s = a.canvas.toDataURL('image/png');
+                                    var s = a.canvas.toDataURL('image/png');
                                     g(s), O.loadingDiverge(!1);
                                   },
                                   !1
@@ -20224,11 +20206,11 @@ console.error(
       return e.getImageData(0, 0, e.canvas.width, e.canvas.height).data;
     }
     function w(e, t, n) {
-      let r = e;
+      var r = e;
       e || (r = { height: t, width: n });
-      const o = document.createElement('canvas');
+      var o = document.createElement('canvas');
       (o.width = r.width), (o.height = r.height);
-      const i = o.getContext('2d');
+      var i = o.getContext('2d');
       return e && i.drawImage(r, 0, 0), i;
     }
     t.default = g;
@@ -20236,10 +20218,10 @@ console.error(
   function(e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
-    let r = (function() {
+    var r = (function() {
         function e(e, t) {
-          for (let n = 0; n < t.length; n++) {
-            const r = t[n];
+          for (var n = 0; n < t.length; n++) {
+            var r = t[n];
             (r.enumerable = r.enumerable || !1),
               (r.configurable = !0),
               'value' in r && (r.writable = !0),
@@ -20254,19 +20236,19 @@ console.error(
       i = (function(e) {
         return e && e.__esModule ? e : { default: e };
       })(o);
-    let a = 180 / Math.PI,
+    var a = 180 / Math.PI,
       s = (function(e) {
         function t(e) {
           !(function(e, t) {
-            if (!(e instanceof t)) { throw new TypeError('Cannot call a class as a function'); }
+            if (!(e instanceof t))
+              throw new TypeError('Cannot call a class as a function');
           })(this, t);
-          const n = (function(e, t) {
-            if (!e) {
-throw new ReferenceError(
+          var n = (function(e, t) {
+            if (!e)
+              throw new ReferenceError(
                 "this hasn't been initialised - super() hasn't been called"
               );
-}
-            return !t || (typeof t !== 'object' && typeof t !== 'function')
+            return !t || ('object' != typeof t && 'function' != typeof t)
               ? e
               : t;
           })(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
@@ -20285,12 +20267,11 @@ throw new ReferenceError(
         }
         return (
           (function(e, t) {
-            if (typeof t !== 'function' && t !== null) {
- throw new TypeError(
+            if ('function' != typeof t && null !== t)
+              throw new TypeError(
                 'Super expression must either be null or a function, not ' +
                   typeof t
               );
-}
             (e.prototype = Object.create(t && t.prototype, {
               constructor: {
                 value: e,
@@ -20314,7 +20295,7 @@ throw new ReferenceError(
             {
               key: 'componentWillReceiveProps',
               value: function(e) {
-                const t = e.newPosition;
+                var t = e.newPosition;
                 this.setState({ position: t });
               }
             },
@@ -20322,23 +20303,24 @@ throw new ReferenceError(
               key: 'onDragMove',
               value: function(e) {
                 if (this.props.isDraggingEnabled) {
-                  let t = this.state.isDragging,
+                  var t = this.state.isDragging,
                     n = 'touches' in e,
                     r = n ? e.touches[0] : e,
                     o = r.pageX,
                     i = r.pageY;
                   if (!t && n) {
-                    let s = this.props,
+                    var s = this.props,
                       u = s.maxAngleToBeginInteraction,
                       l = s.minDistanceToBeginInteraction,
                       c = this.state,
                       p = c.startX - o,
                       f = c.startY - i,
                       d = Math.atan(f / p) * a;
-                    if ((t = Math.sqrt(p * p + f * f) >= l) && Math.abs(d) > u) { return void this.endDrag(); }
+                    if ((t = Math.sqrt(p * p + f * f) >= l) && Math.abs(d) > u)
+                      return void this.endDrag();
                     if (!t) return;
                   }
-                  let h = this.refs.component.getBoundingClientRect(),
+                  var h = this.refs.component.getBoundingClientRect(),
                     m = (100 * (o - h.left)) / h.width;
                   (m = Math.max(Math.min(m, 100), 0)),
                     this.setState({ position: m, isDragging: t });
@@ -20349,7 +20331,7 @@ throw new ReferenceError(
               key: 'beginDrag',
               value: function(e) {
                 if ((e && e.preventDefault(), this.props.isDraggingEnabled)) {
-                  let t = 'touches' in e ? e.touches[0] : e,
+                  var t = 'touches' in e ? e.touches[0] : e,
                     n = t.pageX,
                     r = t.pageY;
                   this.setState({ startX: n, startY: r }),
@@ -20373,13 +20355,13 @@ throw new ReferenceError(
             {
               key: 'render',
               value: function() {
-                let e = this.state.position,
+                var e = this.state.position,
                   t = this.props,
                   n = t.children,
                   r = t.verticalAlign,
                   o = t.leftHorizontalAlign,
                   a = t.rightHorizontalAlign;
-                return n.length !== 2 && n.length !== 3
+                return 2 !== n.length && 3 !== n.length
                   ? (console.warn('Expected exactly two or three children'),
                     null)
                   : i.default.createElement(

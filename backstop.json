@@ -2,13 +2,23 @@
   "id": "backstop_default",
   "viewports": [
     {
-      "label": "phone",
-      "width": 320,
+      "label": "sm",
+      "width": 544,
       "height": 480
     },
     {
-      "label": "tablet",
+      "label": "md",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "lg",
       "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "xl",
+      "width": 1280,
       "height": 768
     }
   ],
