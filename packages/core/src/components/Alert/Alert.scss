@@ -29,7 +29,7 @@ $alert-icon-size: $spacer-5;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
-  background-image: url('#{$image-path}/info.svg');
+  background-image: url('#{$image-path}/information.svg');
   background-position: $alert-padding $alert-padding;
   background-repeat: no-repeat;
   background-size: $alert-icon-size;

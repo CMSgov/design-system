@@ -1,6 +1,6 @@
 ---
 title: Using Sass/CSS
-weight: 2
+weight: 1
 ---
 
 <h4 class="ds-h4 ds-u-font-size--base">Minified CSS</h4>
