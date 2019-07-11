@@ -11,17 +11,17 @@ describe('CMS Design System smoke test', () => {
       .setRect(1024, 768, 0, 0);
   });
 
-  it('Should click Learn how to get started and open startup/installation/', async() => {
+  it('Should click Learn how to get started and open startup/Installation/', async() => {
     await driver.get(ROOT_URL);
 
     let el = await getElementByXPath(
-      '//*[@id="main"]/div/div/article/div/p[3]/a'
+      '//*[@id="main"]/div/div/article/div/p[3]/a[2]'
     );
     el.click();
     el = await getElementById('startup.installation');
 
     const actual = await el.getText();
-    const expected = 'Installation';
+    const expected = 'Install with NPM';
     expect(actual).toEqual(expected);
   });
 });
