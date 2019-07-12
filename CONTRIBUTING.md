@@ -1,6 +1,6 @@
 # Contributing to the CMS Design System
 
-We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please submit an issue or create a pull request.
+We're excited you're considering contributing to our design system. If you have a question, noticed a bug, or have suggestions, then please [submit an issue](https://github.com/CMSgov/design-system/issues/new/choose) or create a pull request.
 
 One of our goals is to ensure a welcoming environment for all contributors.
 Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
@@ -11,9 +11,8 @@ If you are interested in running this site locally, please take a look at [setti
 
 Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
 
-* Pattern proposal process
-* Coding guidelines
 * Guiding principles
+* Coding guidelines
 * How to write documentation
 
 ## Submitting a pull request
@@ -26,37 +25,11 @@ Here are a few guidelines to follow when submitting a pull request:
 
 **Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
 
-## Licenses and attribution
-
-### A few parts of this project are not in the public domain
-
-For complete attribution and licensing information for parts of the project that are not in the public domain, see `LICENSE.md`.
-
-### The rest of this project is in the public domain
-
-The rest of this project is in the worldwide public domain.
-
-This project is in the public domain within the United States, and
-copyright and related rights in the work worldwide are waived through
-the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
-
-### Contributions will be released into the public domain
-
-All contributions to this project will be released under the CC0
-dedication. By submitting a pull request, you are agreeing to comply
-with this waiver of copyright interest.
-
-
-# Pattern lifecycle
-
-## Becoming a design system pattern
+## Proposing new patterns
 
 When considering what to do with a proposed pattern, there are several questions the team should answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
-
 ![CMS Design System component decision workflow](https://github.com/CMSgov/design-system/blob/9fa6d831b059727e0cb12a3b0e0fc7755ce52e8e/.github/images/CMS-Design-System-component-decision-workflow.jpg?raw=true)
-
-## Proposing new patterns
 
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
@@ -124,6 +97,27 @@ Amendment proposals should follow the same process as outlined above. During the
 ## Retiring patterns
 
 As technology changes, certain UI patterns will become less relevant or may be replaced by better patterns. As we become aware of such changes, we’ll remove patterns from the library. To avoid pulling the rug out from under people relying on those patterns in their projects, deprecated patterns will remain within the codebase for at least a month after deprecation. The patterns will also be marked as deprecated in the documentation and in the developer's console when used in a project.
+
+
+## Licenses and attribution
+
+### A few parts of this project are not in the public domain
+
+For complete attribution and licensing information for parts of the project that are not in the public domain, see `LICENSE.md`.
+
+### The rest of this project is in the public domain
+
+The rest of this project is in the worldwide public domain.
+
+This project is in the public domain within the United States, and
+copyright and related rights in the work worldwide are waived through
+the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+
+### Contributions will be released into the public domain
+
+All contributions to this project will be released under the CC0
+dedication. By submitting a pull request, you are agreeing to comply
+with this waiver of copyright interest.
 
 ----
 
