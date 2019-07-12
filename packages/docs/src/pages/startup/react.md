@@ -1,5 +1,5 @@
 ---
-title: Using React Components
+title: Using React components
 weight: 3
 ---
 
