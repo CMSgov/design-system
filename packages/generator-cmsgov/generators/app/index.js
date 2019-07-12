@@ -58,7 +58,7 @@ module.exports = class extends Generator {
           {
             type: 'input',
             name: 'package',
-            message: 'Create files in which package folder?',
+            message: 'Enter the package the component should be added to',
             default: 'core'
           }
         ]);
