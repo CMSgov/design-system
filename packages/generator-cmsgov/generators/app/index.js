@@ -68,8 +68,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const dir = `packages/${this.props.package}/src/components/${this.props
-      .name}/`;
+    const dir = `packages/${this.props.package}/src/components/${
+      this.props.name
+    }/`;
+
+    this.fs.copyTpl(
+      this.templatePath('index.example.html'),
+      this.destinationPath(`${dir}${this.props.name}.example.html`),
+      this.props
+    );
 
     this.fs.copyTpl(
       this.templatePath('index.scss'),
