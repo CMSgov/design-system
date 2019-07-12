@@ -5474,9 +5474,10 @@ inquirer@^6.0.0:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-insight@^0.10.1:
+insight@0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/insight/-/insight-0.10.1.tgz#a0ecf668484a95d66e9be59644964e719cc83380"
+  integrity sha512-kLGeYQkh18f8KuC68QKdi0iwUcIaayJVB/STpX7x452/7pAUm1yfG4giJwcxbrTh0zNYtc8kBR+6maLMOzglOQ==
   dependencies:
     async "^2.1.4"
     chalk "^2.3.0"
@@ -12031,9 +12032,10 @@ yeoman-generator@^2.0.3:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
-yo@^2.0.0:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/yo/-/yo-2.0.5.tgz#2f747f5d279ab777e0167b0aa63d7b607507d73d"
+yo@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/yo/-/yo-2.0.6.tgz#7b562f68a0434237c24a1fd3982f235035839516"
+  integrity sha512-1OleNumZXtE/Lo/ZDPsMXqOX8oXr8tpBXYgUGEDAONYqLX3/n3PV3BWkXI7Iwq6vhuAAYPRLinncUe30izlcSg==
   dependencies:
     async "^2.6.1"
     chalk "^2.4.1"
@@ -12046,7 +12048,7 @@ yo@^2.0.0:
     got "^8.3.2"
     humanize-string "^1.0.2"
     inquirer "^6.0.0"
-    insight "^0.10.1"
+    insight "0.10.1"
     lodash "^4.17.10"
     meow "^3.0.0"
     npm-keyword "^5.0.0"
