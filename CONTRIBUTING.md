@@ -9,15 +9,9 @@ Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
 If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally).
 
-Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
-
-* Guiding principles
-* Coding guidelines
-* How to write documentation
+Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like: Guiding principles, Coding guidelines, and How to write documentation.
 
 ## Submitting a pull request
-
-Here are a few guidelines to follow when submitting a pull request:
 
 * [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
 * [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `master` that defines what you’re working on (for example, fix-autocomplete-bug).
@@ -27,7 +21,7 @@ Here are a few guidelines to follow when submitting a pull request:
 
 ## Proposing new patterns
 
-When considering what to do with a proposed pattern, there are several questions the team should answer first. The decision tree below outlines those questions to be answered and the various outcomes:
+When considering what to do with a proposed pattern, there are several questions to answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
 ![CMS Design System component decision workflow](https://github.com/CMSgov/design-system/blob/9fa6d831b059727e0cb12a3b0e0fc7755ce52e8e/.github/images/CMS-Design-System-component-decision-workflow.jpg?raw=true)
 
@@ -98,30 +92,18 @@ Amendment proposals should follow the same process as outlined above. During the
 
 As technology changes, certain UI patterns will become less relevant or may be replaced by better patterns. As we become aware of such changes, we’ll remove patterns from the library. To avoid pulling the rug out from under people relying on those patterns in their projects, deprecated patterns will remain within the codebase for at least a month after deprecation. The patterns will also be marked as deprecated in the documentation and in the developer's console when used in a project.
 
+----
 
 ## Licenses and attribution
 
-### A few parts of this project are not in the public domain
+A few parts of this project are not in the public domain. Attribution and licensing information for those parts are described in detail in [LICENSE.md](LICENSE.md).
 
-For complete attribution and licensing information for parts of the project that are not in the public domain, see `LICENSE.md`.
+The rest of this project is in the worldwide public domain, released under the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
-### The rest of this project is in the public domain
+## Contributions
+All contributions to this project will be released under the CC0 dedication alongside the public domain portions of this project. For more information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The rest of this project is in the worldwide public domain.
-
-This project is in the public domain within the United States, and
-copyright and related rights in the work worldwide are waived through
-the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
-
-### Contributions will be released into the public domain
-
-All contributions to this project will be released under the CC0
-dedication. By submitting a pull request, you are agreeing to comply
-with this waiver of copyright interest.
-
-----
-
-#### Credits
+**Credits**
 
 - [US Web Design Standards](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design)
 - [Atomic Design](http://atomicdesign.bradfrost.com/chapter-5/)
