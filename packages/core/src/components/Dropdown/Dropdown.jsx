@@ -80,7 +80,9 @@ export class Dropdown extends React.PureComponent {
             if (focusTrigger) {
               this.selectRef = ref;
             }
-            this.props.fieldRef(ref);
+            if (fieldRef) {
+              fieldRef(ref);
+            }
           }}
           /* eslint-enable no-return-assign */
           {...selectProps}
