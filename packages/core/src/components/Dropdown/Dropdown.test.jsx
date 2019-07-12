@@ -42,7 +42,7 @@ function render(customProps = {}, optionsCount = 1, deep = false) {
 
 describe('Dropdown', () => {
   it('renders a select menu', () => {
-    const data = render();
+    const data = render({ value: '1' });
 
     expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper.find('select').length).toBe(1);
@@ -51,7 +51,7 @@ describe('Dropdown', () => {
   });
 
   it('renders options correctly', () => {
-    const data = render({}, 10);
+    const data = render({ defaultValue: '1' }, 10);
 
     expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper.find('select').length).toBe(1);

@@ -16,7 +16,7 @@ import uniqueId from 'lodash.uniqueid';
 export class Dropdown extends React.PureComponent {
   componentDidMount() {
     if (this.props.focusTrigger) {
-      this.loader && this.loader.focus();
+      this.selectRef && this.selectRef.focus();
     }
   }
 
@@ -30,8 +30,7 @@ export class Dropdown extends React.PureComponent {
 
   render() {
     /* eslint-disable prefer-const */
-    let {
-      // Using let rather than const since we sometimes rewrite id
+    const {
       className,
       errorMessage,
       fieldClassName,
@@ -77,7 +76,12 @@ export class Dropdown extends React.PureComponent {
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
-          ref={focusTrigger ? loader => (this.loader = loader) : fieldRef}
+          ref={ref => {
+            if (focusTrigger) {
+              this.selectRef = ref;
+            }
+            this.props.fieldRef(ref);
+          }}
           /* eslint-enable no-return-assign */
           {...selectProps}
         >

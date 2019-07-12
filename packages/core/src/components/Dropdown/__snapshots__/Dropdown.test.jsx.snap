@@ -14,6 +14,7 @@ exports[`Dropdown renders a select menu 1`] = `
     className="ds-c-field"
     id="select_dropdown_1"
     name="dropdown"
+    value="1"
   >
     <option
       key="1"
@@ -36,6 +37,7 @@ exports[`Dropdown renders options correctly 1`] = `
   </FormLabel>
   <select
     className="ds-c-field"
+    defaultValue="1"
     id="select_dropdown_2"
     name="dropdown"
   >
