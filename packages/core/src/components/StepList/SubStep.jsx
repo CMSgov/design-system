@@ -14,7 +14,7 @@ export const SubStep = ({ step, ...props }) => (
         onClick={props.onStepLinkClick}
         className="ds-c-substep__edit"
       >
-        {props.editText}
+        {step.linkText || props.editText}
       </StepLink>
     )}
     {step.steps &&
