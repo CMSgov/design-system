@@ -48,7 +48,7 @@ export const Step = ({ step, ...props }) => {
               screenReaderText={`"${step.title}"`}
               onClick={props.onStepLinkClick}
             >
-              {props.editText}
+              {step.linkText || props.editText}
             </StepLink>
           )}
         {start && (
@@ -59,7 +59,7 @@ export const Step = ({ step, ...props }) => {
             onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
-            {props.startText}
+            {step.linkText || props.startText}
           </StepLink>
         )}
         {resume && (
@@ -70,7 +70,7 @@ export const Step = ({ step, ...props }) => {
             onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
-            {props.resumeText}
+            {step.linkText || props.resumeText}
           </StepLink>
         )}
       </div>

@@ -10,7 +10,9 @@ import Step from './Step';
  */
 export const StepList = ({ steps, ...props }) => (
   <ol className="ds-c-step-list ds-u-margin-top--4">
-    {steps.map((step, i) => <Step step={step} key={step.id || i} {...props} />)}
+    {steps.map((step, i) => (
+      <Step step={step} key={step.id || i} {...props} />
+    ))}
   </ol>
 );
 
@@ -22,6 +24,7 @@ export const stepShape = {
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
+  linkText: PropTypes.string,
   completed: PropTypes.bool,
   started: PropTypes.bool,
   isNextStep: PropTypes.bool
