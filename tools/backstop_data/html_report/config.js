@@ -4,7 +4,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_0_document_0_sm.png",
         "label": "CMSDS",
@@ -26,7 +26,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_0_document_1_md.png",
         "label": "CMSDS",
@@ -48,7 +48,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_0_document_2_lg.png",
         "label": "CMSDS",
@@ -70,7 +70,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_0_document_3_xl.png",
         "label": "CMSDS",
@@ -92,7 +92,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Install with NPM",
@@ -114,7 +114,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Install with NPM",
@@ -136,7 +136,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Install with NPM",
@@ -158,7 +158,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Install_with_NPM_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Install with NPM",
@@ -180,7 +180,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Using Sass/CSS",
@@ -202,7 +202,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Using Sass/CSS",
@@ -224,7 +224,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Using Sass/CSS",
@@ -246,7 +246,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Sass_CSS_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Using Sass/CSS",
@@ -268,7 +268,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Using Fonts and Images",
@@ -290,7 +290,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Using Fonts and Images",
@@ -312,7 +312,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Using Fonts and Images",
@@ -334,7 +334,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_Fonts_and_Images_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Using Fonts and Images",
@@ -356,7 +356,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Using React Components",
@@ -378,7 +378,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Using React Components",
@@ -400,7 +400,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Using React Components",
@@ -422,7 +422,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Using_React_Components_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Using React Components",
@@ -444,7 +444,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Browser Support",
@@ -466,7 +466,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Browser Support",
@@ -488,7 +488,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Browser Support",
@@ -510,7 +510,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Browser_Support_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Browser Support",
@@ -532,7 +532,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Building a Site Package",
@@ -547,7 +547,7 @@ report({
             "height": 0
           },
           "misMatchPercentage": "0.00",
-          "analysisTime": 440
+          "analysisTime": 1230
         }
       },
       "status": "pass"
@@ -555,7 +555,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Building a Site Package",
@@ -577,7 +577,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Building a Site Package",
@@ -599,7 +599,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Building_a_Site_Package_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Building a Site Package",
@@ -621,7 +621,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_0_sm.png",
         "label": "CMSDS - Getting Started - Examples",
@@ -643,7 +643,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_1_md.png",
         "label": "CMSDS - Getting Started - Examples",
@@ -665,7 +665,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_2_lg.png",
         "label": "CMSDS - Getting Started - Examples",
@@ -687,7 +687,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Getting_Started_-_Examples_0_document_3_xl.png",
         "label": "CMSDS - Getting Started - Examples",
@@ -709,7 +709,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Code conventions",
@@ -731,7 +731,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Code conventions",
@@ -753,7 +753,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Code conventions",
@@ -775,7 +775,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Code_conventions_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Code conventions",
@@ -797,7 +797,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Component maturity",
@@ -819,7 +819,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Component maturity",
@@ -841,7 +841,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Component maturity",
@@ -855,8 +855,7 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00",
-          "analysisTime": 956
+          "misMatchPercentage": "0.00"
         }
       },
       "status": "pass"
@@ -864,7 +863,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Component_maturity_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Component maturity",
@@ -886,7 +885,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Forms",
@@ -908,7 +907,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Forms",
@@ -922,8 +921,7 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00",
-          "analysisTime": 1195
+          "misMatchPercentage": "0.00"
         }
       },
       "status": "pass"
@@ -931,7 +929,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Forms",
@@ -953,7 +951,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Forms_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Forms",
@@ -975,7 +973,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Internationalization",
@@ -997,7 +995,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Internationalization",
@@ -1019,7 +1017,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Internationalization",
@@ -1041,7 +1039,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Internationalization_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Internationalization",
@@ -1063,7 +1061,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Responsive design",
@@ -1077,17 +1075,17 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "1.03",
-          "analysisTime": 1133
+          "misMatchPercentage": "1.09",
+          "analysisTime": 1199
         },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png"
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_0_sm.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Responsive design",
@@ -1101,17 +1099,17 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.68",
-          "analysisTime": 736
+          "misMatchPercentage": "0.47",
+          "analysisTime": 1123
         },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png"
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_1_md.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Responsive design",
@@ -1125,17 +1123,17 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.92",
-          "analysisTime": 435
+          "misMatchPercentage": "0.95",
+          "analysisTime": 1153
         },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png"
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_2_lg.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Responsive design",
@@ -1149,17 +1147,17 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.48",
-          "analysisTime": 748
+          "misMatchPercentage": "0.33",
+          "analysisTime": 1026
         },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png"
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Guidelines_-_Responsive_design_0_document_3_xl.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_0_sm.png",
         "label": "CMSDS - Guidelines - Themeing",
@@ -1181,7 +1179,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_1_md.png",
         "label": "CMSDS - Guidelines - Themeing",
@@ -1203,7 +1201,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_2_lg.png",
         "label": "CMSDS - Guidelines - Themeing",
@@ -1225,7 +1223,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Guidelines_-_Themeing_0_document_3_xl.png",
         "label": "CMSDS - Guidelines - Themeing",
@@ -1247,7 +1245,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Grid_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Grid_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Grid_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Grid_0_document_0_sm.png",
         "label": "CMSDS - Layout - Grid",
@@ -1269,7 +1267,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Grid_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Grid_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Grid_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Grid_0_document_1_md.png",
         "label": "CMSDS - Layout - Grid",
@@ -1291,7 +1289,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Grid_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Grid_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Grid_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Grid_0_document_2_lg.png",
         "label": "CMSDS - Layout - Grid",
@@ -1313,7 +1311,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Grid_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Grid_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Grid_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Grid_0_document_3_xl.png",
         "label": "CMSDS - Layout - Grid",
@@ -1335,7 +1333,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Spacing_0_document_0_sm.png",
         "label": "CMSDS - Layout - Spacing",
@@ -1357,7 +1355,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Spacing_0_document_1_md.png",
         "label": "CMSDS - Layout - Spacing",
@@ -1379,7 +1377,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Spacing_0_document_2_lg.png",
         "label": "CMSDS - Layout - Spacing",
@@ -1401,7 +1399,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Layout_-_Spacing_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Layout_-_Spacing_0_document_3_xl.png",
         "label": "CMSDS - Layout - Spacing",
@@ -1423,7 +1421,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Base_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Base_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Base_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Base_0_document_0_sm.png",
         "label": "CMSDS - Style - Base",
@@ -1445,7 +1443,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Base_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Base_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Base_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Base_0_document_1_md.png",
         "label": "CMSDS - Style - Base",
@@ -1467,7 +1465,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Base_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Base_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Base_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Base_0_document_2_lg.png",
         "label": "CMSDS - Style - Base",
@@ -1489,7 +1487,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Base_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Base_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Base_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Base_0_document_3_xl.png",
         "label": "CMSDS - Style - Base",
@@ -1511,7 +1509,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Color_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Color_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Color_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Color_0_document_0_sm.png",
         "label": "CMSDS - Style - Color",
@@ -1533,7 +1531,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Color_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Color_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Color_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Color_0_document_1_md.png",
         "label": "CMSDS - Style - Color",
@@ -1555,7 +1553,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Color_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Color_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Color_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Color_0_document_2_lg.png",
         "label": "CMSDS - Style - Color",
@@ -1577,7 +1575,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Color_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Color_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Color_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Color_0_document_3_xl.png",
         "label": "CMSDS - Style - Color",
@@ -1599,7 +1597,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Icons_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Icons_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Icons_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Icons_0_document_0_sm.png",
         "label": "CMSDS - Style - Icons",
@@ -1608,20 +1606,22 @@ report({
         "expect": 0,
         "viewportLabel": "sm",
         "diff": {
-          "isSameDimensions": true,
+          "isSameDimensions": false,
           "dimensionDifference": {
             "width": 0,
-            "height": 0
+            "height": -242
           },
-          "misMatchPercentage": "0.00"
-        }
+          "misMatchPercentage": "16.57",
+          "analysisTime": 1240
+        },
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Style_-_Icons_0_document_0_sm.png"
       },
-      "status": "pass"
+      "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Icons_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Icons_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Icons_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Icons_0_document_1_md.png",
         "label": "CMSDS - Style - Icons",
@@ -1643,7 +1643,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Icons_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Icons_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Icons_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Icons_0_document_2_lg.png",
         "label": "CMSDS - Style - Icons",
@@ -1665,7 +1665,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Icons_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Icons_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Icons_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Icons_0_document_3_xl.png",
         "label": "CMSDS - Style - Icons",
@@ -1687,7 +1687,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Typography_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Typography_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Typography_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Typography_0_document_0_sm.png",
         "label": "CMSDS - Style - Typography",
@@ -1709,7 +1709,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Typography_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Typography_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Typography_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Typography_0_document_1_md.png",
         "label": "CMSDS - Style - Typography",
@@ -1731,7 +1731,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Typography_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Typography_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Typography_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Typography_0_document_2_lg.png",
         "label": "CMSDS - Style - Typography",
@@ -1753,7 +1753,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Style_-_Typography_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Style_-_Typography_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Style_-_Typography_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Style_-_Typography_0_document_3_xl.png",
         "label": "CMSDS - Style - Typography",
@@ -1775,7 +1775,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_Utilities_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_Utilities_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_Utilities_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_Utilities_0_document_0_sm.png",
         "label": "CMSDS Utilities",
@@ -1789,7 +1789,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00"
+          "misMatchPercentage": "0.00",
+          "analysisTime": 1139
         }
       },
       "status": "pass"
@@ -1797,7 +1798,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_Utilities_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_Utilities_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_Utilities_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_Utilities_0_document_1_md.png",
         "label": "CMSDS Utilities",
@@ -1819,7 +1820,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_Utilities_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_Utilities_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_Utilities_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_Utilities_0_document_2_lg.png",
         "label": "CMSDS Utilities",
@@ -1841,7 +1842,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_Utilities_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_Utilities_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_Utilities_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_Utilities_0_document_3_xl.png",
         "label": "CMSDS Utilities",
@@ -1863,7 +1864,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Background Color",
@@ -1885,7 +1886,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_1_md.png",
         "label": "CMSDS - Utilities - Background Color",
@@ -1907,7 +1908,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Background Color",
@@ -1929,7 +1930,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Background_Color_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Background Color",
@@ -1951,7 +1952,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Border",
@@ -1973,7 +1974,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_0_document_1_md.png",
         "label": "CMSDS - Utilities - Border",
@@ -1995,7 +1996,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Border",
@@ -2017,7 +2018,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Border",
@@ -2039,7 +2040,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Border Radius",
@@ -2061,7 +2062,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_1_md.png",
         "label": "CMSDS - Utilities - Border Radius",
@@ -2083,7 +2084,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Border Radius",
@@ -2105,7 +2106,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Border_Radius_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Border Radius",
@@ -2127,7 +2128,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Clearfix",
@@ -2149,7 +2150,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_1_md.png",
         "label": "CMSDS - Utilities - Clearfix",
@@ -2171,7 +2172,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Clearfix",
@@ -2193,7 +2194,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Clearfix_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Clearfix",
@@ -2215,7 +2216,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Color_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Color_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Color_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Color_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Color",
@@ -2237,7 +2238,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Color_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Color_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Color_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Color_0_document_1_md.png",
         "label": "CMSDS - Utilities - Color",
@@ -2259,7 +2260,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Color_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Color_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Color_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Color_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Color",
@@ -2281,7 +2282,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Color_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Color_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Color_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Color_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Color",
@@ -2303,7 +2304,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Display/Visibility",
@@ -2325,7 +2326,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_1_md.png",
         "label": "CMSDS - Utilities - Display/Visibility",
@@ -2347,7 +2348,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Display/Visibility",
@@ -2369,7 +2370,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Display_Visibility_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Display/Visibility",
@@ -2391,7 +2392,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Flexbox",
@@ -2413,7 +2414,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_1_md.png",
         "label": "CMSDS - Utilities - Flexbox",
@@ -2435,7 +2436,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Flexbox",
@@ -2457,7 +2458,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Flexbox_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Flexbox",
@@ -2479,7 +2480,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Float_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Float_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Float_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Float_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Float",
@@ -2501,7 +2502,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Float_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Float_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Float_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Float_0_document_1_md.png",
         "label": "CMSDS - Utilities - Float",
@@ -2523,7 +2524,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Float_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Float_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Float_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Float_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Float",
@@ -2545,7 +2546,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Float_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Float_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Float_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Float_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Float",
@@ -2567,7 +2568,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Font Family",
@@ -2589,7 +2590,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_1_md.png",
         "label": "CMSDS - Utilities - Font Family",
@@ -2611,7 +2612,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Font Family",
@@ -2633,7 +2634,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Family_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Font Family",
@@ -2655,7 +2656,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Font Size",
@@ -2677,7 +2678,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_1_md.png",
         "label": "CMSDS - Utilities - Font Size",
@@ -2699,7 +2700,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Font Size",
@@ -2721,7 +2722,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Size_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Font Size",
@@ -2743,7 +2744,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Font Style",
@@ -2765,7 +2766,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_1_md.png",
         "label": "CMSDS - Utilities - Font Style",
@@ -2787,7 +2788,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Font Style",
@@ -2809,7 +2810,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Style_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Font Style",
@@ -2831,7 +2832,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Font Weight",
@@ -2853,7 +2854,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_1_md.png",
         "label": "CMSDS - Utilities - Font Weight",
@@ -2875,7 +2876,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Font Weight",
@@ -2897,7 +2898,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Font_Weight_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Font Weight",
@@ -2919,7 +2920,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Line Height",
@@ -2941,7 +2942,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_1_md.png",
         "label": "CMSDS - Utilities - Line Height",
@@ -2963,7 +2964,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Line Height",
@@ -2985,7 +2986,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Line_Height_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Line Height",
@@ -3007,7 +3008,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Margin_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Margin",
@@ -3029,7 +3030,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Margin_0_document_1_md.png",
         "label": "CMSDS - Utilities - Margin",
@@ -3051,7 +3052,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Margin_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Margin",
@@ -3073,7 +3074,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Margin_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Margin_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Margin",
@@ -3095,7 +3096,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Measure_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Measure",
@@ -3117,7 +3118,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Measure_0_document_1_md.png",
         "label": "CMSDS - Utilities - Measure",
@@ -3139,7 +3140,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Measure_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Measure",
@@ -3161,7 +3162,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Measure_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Measure_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Measure",
@@ -3183,7 +3184,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Overflow",
@@ -3205,7 +3206,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_1_md.png",
         "label": "CMSDS - Utilities - Overflow",
@@ -3227,7 +3228,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Overflow",
@@ -3249,7 +3250,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Overflow_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Overflow",
@@ -3271,7 +3272,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Padding_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Padding",
@@ -3293,7 +3294,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Padding_0_document_1_md.png",
         "label": "CMSDS - Utilities - Padding",
@@ -3315,7 +3316,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Padding_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Padding",
@@ -3337,7 +3338,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Padding_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Padding_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Padding",
@@ -3359,7 +3360,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Text Alignment",
@@ -3381,7 +3382,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_1_md.png",
         "label": "CMSDS - Utilities - Text Alignment",
@@ -3403,7 +3404,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Text Alignment",
@@ -3425,7 +3426,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Alignment_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Text Alignment",
@@ -3447,7 +3448,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Text Decoration",
@@ -3469,7 +3470,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_1_md.png",
         "label": "CMSDS - Utilities - Text Decoration",
@@ -3491,7 +3492,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Text Decoration",
@@ -3513,7 +3514,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Decoration_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Text Decoration",
@@ -3535,7 +3536,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Text Transform",
@@ -3557,7 +3558,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_1_md.png",
         "label": "CMSDS - Utilities - Text Transform",
@@ -3579,7 +3580,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Text Transform",
@@ -3601,7 +3602,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Text_Transform_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Text Transform",
@@ -3623,7 +3624,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Truncate",
@@ -3645,7 +3646,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_1_md.png",
         "label": "CMSDS - Utilities - Truncate",
@@ -3667,7 +3668,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Truncate",
@@ -3689,7 +3690,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Truncate_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Truncate",
@@ -3711,7 +3712,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_0_sm.png",
         "label": "CMSDS - Utilities - Vertical Align",
@@ -3733,7 +3734,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_1_md.png",
         "label": "CMSDS - Utilities - Vertical Align",
@@ -3755,7 +3756,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_2_lg.png",
         "label": "CMSDS - Utilities - Vertical Align",
@@ -3777,7 +3778,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Utilities_-_Vertical_Align_0_document_3_xl.png",
         "label": "CMSDS - Utilities - Vertical Align",
@@ -3799,7 +3800,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Alert_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Alert_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Alert_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Alert_0_document_0_sm.png",
         "label": "CMSDS - Components - Alert",
@@ -3821,7 +3822,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Alert_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Alert_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Alert_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Alert_0_document_1_md.png",
         "label": "CMSDS - Components - Alert",
@@ -3843,7 +3844,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Alert_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Alert_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Alert_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Alert_0_document_2_lg.png",
         "label": "CMSDS - Components - Alert",
@@ -3865,7 +3866,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Alert_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Alert_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Alert_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Alert_0_document_3_xl.png",
         "label": "CMSDS - Components - Alert",
@@ -3887,7 +3888,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_0_sm.png",
         "label": "CMSDS - Components - Autocomplete",
@@ -3909,7 +3910,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_1_md.png",
         "label": "CMSDS - Components - Autocomplete",
@@ -3931,7 +3932,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_2_lg.png",
         "label": "CMSDS - Components - Autocomplete",
@@ -3945,8 +3946,7 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00",
-          "analysisTime": 970
+          "misMatchPercentage": "0.00"
         }
       },
       "status": "pass"
@@ -3954,7 +3954,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Autocomplete_0_document_3_xl.png",
         "label": "CMSDS - Components - Autocomplete",
@@ -3968,7 +3968,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00"
+          "misMatchPercentage": "0.00",
+          "analysisTime": 437
         }
       },
       "status": "pass"
@@ -3976,7 +3977,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Badge_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Badge_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Badge_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Badge_0_document_0_sm.png",
         "label": "CMSDS - Components - Badge",
@@ -3998,7 +3999,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Badge_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Badge_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Badge_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Badge_0_document_1_md.png",
         "label": "CMSDS - Components - Badge",
@@ -4012,8 +4013,7 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.00",
-          "analysisTime": 954
+          "misMatchPercentage": "0.00"
         }
       },
       "status": "pass"
@@ -4021,7 +4021,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Badge_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Badge_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Badge_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Badge_0_document_2_lg.png",
         "label": "CMSDS - Components - Badge",
@@ -4043,7 +4043,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Badge_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Badge_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Badge_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Badge_0_document_3_xl.png",
         "label": "CMSDS - Components - Badge",
@@ -4065,7 +4065,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Button_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Button_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Button_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Button_0_document_0_sm.png",
         "label": "CMSDS - Components - Button",
@@ -4087,7 +4087,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Button_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Button_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Button_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Button_0_document_1_md.png",
         "label": "CMSDS - Components - Button",
@@ -4109,7 +4109,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Button_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Button_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Button_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Button_0_document_2_lg.png",
         "label": "CMSDS - Components - Button",
@@ -4131,7 +4131,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Button_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Button_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Button_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Button_0_document_3_xl.png",
         "label": "CMSDS - Components - Button",
@@ -4153,7 +4153,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_0_sm.png",
         "label": "CMSDS - Components - Checkbox & Radio",
@@ -4162,20 +4162,22 @@ report({
         "expect": 0,
         "viewportLabel": "sm",
         "diff": {
-          "isSameDimensions": true,
+          "isSameDimensions": false,
           "dimensionDifference": {
             "width": 0,
-            "height": 0
+            "height": -1208
           },
-          "misMatchPercentage": "0.00"
-        }
+          "misMatchPercentage": "16.12",
+          "analysisTime": 343
+        },
+        "diffImage": "../bitmaps_test/20190729-154902/failed_diff_backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_0_sm.png"
       },
-      "status": "pass"
+      "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_1_md.png",
         "label": "CMSDS - Components - Checkbox & Radio",
@@ -4197,7 +4199,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_2_lg.png",
         "label": "CMSDS - Components - Checkbox & Radio",
@@ -4219,7 +4221,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Checkbox__Radio_0_document_3_xl.png",
         "label": "CMSDS - Components - Checkbox & Radio",
@@ -4241,7 +4243,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Datefield_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Datefield_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Datefield_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Datefield_0_document_0_sm.png",
         "label": "CMSDS - Components - Datefield",
@@ -4263,7 +4265,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Datefield_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Datefield_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Datefield_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Datefield_0_document_1_md.png",
         "label": "CMSDS - Components - Datefield",
@@ -4285,7 +4287,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Datefield_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Datefield_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Datefield_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Datefield_0_document_2_lg.png",
         "label": "CMSDS - Components - Datefield",
@@ -4307,7 +4309,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Datefield_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Datefield_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Datefield_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Datefield_0_document_3_xl.png",
         "label": "CMSDS - Components - Datefield",
@@ -4329,7 +4331,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_0_sm.png",
         "label": "CMSDS - Components - Form label & legend",
@@ -4351,7 +4353,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_1_md.png",
         "label": "CMSDS - Components - Form label & legend",
@@ -4373,7 +4375,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_2_lg.png",
         "label": "CMSDS - Components - Form label & legend",
@@ -4395,7 +4397,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Form_label__legend_0_document_3_xl.png",
         "label": "CMSDS - Components - Form label & legend",
@@ -4417,7 +4419,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_0_sm.png",
         "label": "CMSDS - Components - Help drawer",
@@ -4439,7 +4441,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_1_md.png",
         "label": "CMSDS - Components - Help drawer",
@@ -4461,7 +4463,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_2_lg.png",
         "label": "CMSDS - Components - Help drawer",
@@ -4483,7 +4485,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Help_drawer_0_document_3_xl.png",
         "label": "CMSDS - Components - Help drawer",
@@ -4505,7 +4507,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_List_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_List_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_List_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_List_0_document_0_sm.png",
         "label": "CMSDS - Components - List",
@@ -4527,7 +4529,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_List_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_List_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_List_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_List_0_document_1_md.png",
         "label": "CMSDS - Components - List",
@@ -4549,7 +4551,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_List_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_List_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_List_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_List_0_document_2_lg.png",
         "label": "CMSDS - Components - List",
@@ -4571,7 +4573,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_List_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_List_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_List_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_List_0_document_3_xl.png",
         "label": "CMSDS - Components - List",
@@ -4593,7 +4595,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_0_sm.png",
         "label": "CMSDS - Components - Masked Field",
@@ -4615,7 +4617,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_1_md.png",
         "label": "CMSDS - Components - Masked Field",
@@ -4637,7 +4639,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_2_lg.png",
         "label": "CMSDS - Components - Masked Field",
@@ -4659,7 +4661,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Masked_Field_0_document_3_xl.png",
         "label": "CMSDS - Components - Masked Field",
@@ -4681,7 +4683,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_0_sm.png",
         "label": "CMSDS - Components - Modal Dialog",
@@ -4703,7 +4705,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_1_md.png",
         "label": "CMSDS - Components - Modal Dialog",
@@ -4725,7 +4727,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_2_lg.png",
         "label": "CMSDS - Components - Modal Dialog",
@@ -4747,7 +4749,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Modal_Dialog_0_document_3_xl.png",
         "label": "CMSDS - Components - Modal Dialog",
@@ -4769,7 +4771,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_0_sm.png",
         "label": "CMSDS - Components - Month Picker",
@@ -4791,7 +4793,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_1_md.png",
         "label": "CMSDS - Components - Month Picker",
@@ -4813,7 +4815,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_2_lg.png",
         "label": "CMSDS - Components - Month Picker",
@@ -4835,7 +4837,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Month_Picker_0_document_3_xl.png",
         "label": "CMSDS - Components - Month Picker",
@@ -4857,7 +4859,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Select_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Select_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Select_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Select_0_document_0_sm.png",
         "label": "CMSDS - Components - Select",
@@ -4879,7 +4881,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Select_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Select_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Select_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Select_0_document_1_md.png",
         "label": "CMSDS - Components - Select",
@@ -4901,7 +4903,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Select_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Select_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Select_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Select_0_document_2_lg.png",
         "label": "CMSDS - Components - Select",
@@ -4923,7 +4925,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Select_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Select_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Select_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Select_0_document_3_xl.png",
         "label": "CMSDS - Components - Select",
@@ -4945,7 +4947,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Skipnav_0_document_0_sm.png",
         "label": "CMSDS - Components - Skipnav",
@@ -4967,7 +4969,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Skipnav_0_document_1_md.png",
         "label": "CMSDS - Components - Skipnav",
@@ -4989,7 +4991,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Skipnav_0_document_2_lg.png",
         "label": "CMSDS - Components - Skipnav",
@@ -5011,7 +5013,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Skipnav_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Skipnav_0_document_3_xl.png",
         "label": "CMSDS - Components - Skipnav",
@@ -5033,7 +5035,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Spinner_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Spinner_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Spinner_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Spinner_0_document_0_sm.png",
         "label": "CMSDS - Components - Spinner",
@@ -5047,8 +5049,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.08",
-          "analysisTime": 646
+          "misMatchPercentage": "0.07",
+          "analysisTime": 422
         }
       },
       "status": "pass"
@@ -5056,7 +5058,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Spinner_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Spinner_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Spinner_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Spinner_0_document_1_md.png",
         "label": "CMSDS - Components - Spinner",
@@ -5070,8 +5072,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.06",
-          "analysisTime": 676
+          "misMatchPercentage": "0.03",
+          "analysisTime": 431
         }
       },
       "status": "pass"
@@ -5079,7 +5081,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Spinner_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Spinner_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Spinner_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Spinner_0_document_2_lg.png",
         "label": "CMSDS - Components - Spinner",
@@ -5093,8 +5095,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.07",
-          "analysisTime": 690
+          "misMatchPercentage": "0.06",
+          "analysisTime": 399
         }
       },
       "status": "pass"
@@ -5102,7 +5104,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Spinner_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Spinner_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Spinner_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Spinner_0_document_3_xl.png",
         "label": "CMSDS - Components - Spinner",
@@ -5116,8 +5118,8 @@ report({
             "width": 0,
             "height": 0
           },
-          "misMatchPercentage": "0.05",
-          "analysisTime": 571
+          "misMatchPercentage": "0.03",
+          "analysisTime": 308
         }
       },
       "status": "pass"
@@ -5125,7 +5127,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Table_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Table_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Table_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Table_0_document_0_sm.png",
         "label": "CMSDS - Components - Table",
@@ -5147,7 +5149,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Table_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Table_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Table_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Table_0_document_1_md.png",
         "label": "CMSDS - Components - Table",
@@ -5169,7 +5171,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Table_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Table_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Table_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Table_0_document_2_lg.png",
         "label": "CMSDS - Components - Table",
@@ -5191,7 +5193,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Table_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Table_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Table_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Table_0_document_3_xl.png",
         "label": "CMSDS - Components - Table",
@@ -5213,7 +5215,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Tabs_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Tabs_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Tabs_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Tabs_0_document_0_sm.png",
         "label": "CMSDS - Components - Tabs",
@@ -5235,7 +5237,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Tabs_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Tabs_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Tabs_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Tabs_0_document_1_md.png",
         "label": "CMSDS - Components - Tabs",
@@ -5257,7 +5259,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Tabs_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Tabs_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Tabs_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Tabs_0_document_2_lg.png",
         "label": "CMSDS - Components - Tabs",
@@ -5279,7 +5281,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Tabs_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Tabs_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Tabs_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Tabs_0_document_3_xl.png",
         "label": "CMSDS - Components - Tabs",
@@ -5301,7 +5303,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Textfield_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Textfield_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Textfield_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Textfield_0_document_0_sm.png",
         "label": "CMSDS - Components - Textfield",
@@ -5323,7 +5325,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Textfield_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Textfield_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Textfield_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Textfield_0_document_1_md.png",
         "label": "CMSDS - Components - Textfield",
@@ -5345,7 +5347,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Textfield_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Textfield_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Textfield_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Textfield_0_document_2_lg.png",
         "label": "CMSDS - Components - Textfield",
@@ -5367,7 +5369,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Textfield_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Textfield_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Textfield_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Textfield_0_document_3_xl.png",
         "label": "CMSDS - Components - Textfield",
@@ -5389,7 +5391,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_0_sm.png",
         "label": "CMSDS - Components - Vertical Navigation",
@@ -5411,7 +5413,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_1_md.png",
         "label": "CMSDS - Components - Vertical Navigation",
@@ -5433,7 +5435,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_2_lg.png",
         "label": "CMSDS - Components - Vertical Navigation",
@@ -5455,7 +5457,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Components_-_Vertical_Navigation_0_document_3_xl.png",
         "label": "CMSDS - Components - Vertical Navigation",
@@ -5477,7 +5479,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_0_sm.png",
         "label": "CMSDS - Patterns - Documentation Page",
@@ -5499,7 +5501,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_1_md.png",
         "label": "CMSDS - Patterns - Documentation Page",
@@ -5521,7 +5523,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_2_lg.png",
         "label": "CMSDS - Patterns - Documentation Page",
@@ -5543,7 +5545,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Documentation_Page_0_document_3_xl.png",
         "label": "CMSDS - Patterns - Documentation Page",
@@ -5565,7 +5567,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Review_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Review_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Review_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Review_0_document_0_sm.png",
         "label": "CMSDS - Patterns - Review",
@@ -5587,7 +5589,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Review_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Review_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Review_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Review_0_document_1_md.png",
         "label": "CMSDS - Patterns - Review",
@@ -5609,7 +5611,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Review_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Review_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Review_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Review_0_document_2_lg.png",
         "label": "CMSDS - Patterns - Review",
@@ -5631,7 +5633,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Review_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Review_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Review_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Review_0_document_3_xl.png",
         "label": "CMSDS - Patterns - Review",
@@ -5653,7 +5655,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_0_sm.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_0_sm.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_0_sm.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_0_sm.png",
         "label": "CMSDS - Patterns - Step List",
@@ -5675,7 +5677,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_1_md.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_1_md.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_1_md.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_1_md.png",
         "label": "CMSDS - Patterns - Step List",
@@ -5697,7 +5699,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_2_lg.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_2_lg.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_2_lg.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_2_lg.png",
         "label": "CMSDS - Patterns - Step List",
@@ -5706,22 +5708,20 @@ report({
         "expect": 0,
         "viewportLabel": "lg",
         "diff": {
-          "isSameDimensions": false,
+          "isSameDimensions": true,
           "dimensionDifference": {
             "width": 0,
-            "height": -812
+            "height": 0
           },
-          "misMatchPercentage": "11.97",
-          "analysisTime": 444
-        },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_2_lg.png"
+          "misMatchPercentage": "0.00"
+        }
       },
-      "status": "fail"
+      "status": "pass"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_3_xl.png",
-        "test": "../bitmaps_test/20190729-151851/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_3_xl.png",
+        "test": "../bitmaps_test/20190729-154902/backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_3_xl.png",
         "selector": "document",
         "fileName": "backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_3_xl.png",
         "label": "CMSDS - Patterns - Step List",
@@ -5730,17 +5730,15 @@ report({
         "expect": 0,
         "viewportLabel": "xl",
         "diff": {
-          "isSameDimensions": false,
+          "isSameDimensions": true,
           "dimensionDifference": {
             "width": 0,
-            "height": -917
+            "height": 0
           },
-          "misMatchPercentage": "12.36",
-          "analysisTime": 486
-        },
-        "diffImage": "../bitmaps_test/20190729-151851/failed_diff_backstop_default_CMSDS_-_Patterns_-_Step_List_0_document_3_xl.png"
+          "misMatchPercentage": "0.00"
+        }
       },
-      "status": "fail"
+      "status": "pass"
     }
   ],
   "id": "backstop_default"
