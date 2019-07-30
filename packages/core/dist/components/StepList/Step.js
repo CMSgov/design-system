@@ -93,7 +93,7 @@ var Step = function Step(_ref) {
           screenReaderText: '"' + step.title + '"',
           onClick: props.onStepLinkClick
         },
-        props.editText
+        step.linkText || props.editText
       ),
       start && _react2.default.createElement(
         _StepLink2.default,
@@ -104,7 +104,7 @@ var Step = function Step(_ref) {
           onClick: props.onStepLinkClick,
           className: 'ds-c-button ds-c-button--primary'
         },
-        props.startText
+        step.linkText || props.startText
       ),
       resume && _react2.default.createElement(
         _StepLink2.default,
@@ -115,7 +115,7 @@ var Step = function Step(_ref) {
           onClick: props.onStepLinkClick,
           className: 'ds-c-button ds-c-button--primary'
         },
-        props.resumeText
+        step.linkText || props.resumeText
       )
     )
   );

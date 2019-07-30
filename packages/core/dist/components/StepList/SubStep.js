@@ -46,7 +46,7 @@ var SubStep = function SubStep(_ref) {
         onClick: props.onStepLinkClick,
         className: 'ds-c-substep__edit'
       },
-      props.editText
+      step.linkText || props.editText
     ),
     step.steps && props.showSubSubSteps && _react2.default.createElement(
       'ul',
