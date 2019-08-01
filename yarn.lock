@@ -2022,7 +2022,7 @@ chrome-trace-event@^1.0.0:
   dependencies:
     tslib "^1.9.0"
 
-chromedriver@^2.3.5:
+chromedriver@^2.35.0:
   version "2.46.0"
   resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-2.46.0.tgz#3d78e7eb9bb65dd804fe327a6bf76fced12be053"
   integrity sha512-dLtKIJW3y/PuFrPmcw6Mb8Nh+HwSqgVrK1rWgTARXhHfWvV822X2VRkx2meU/tg2+YQL6/nNgT6n5qWwIDHbwg==
