@@ -9,6 +9,7 @@ export * from './ChoiceList/ChoiceList';
 export * from './ChoiceList/Select';
 export * from './DateField/DateField';
 export * from './Dialog/Dialog';
+export * from './Dropdown/Dropdown';
 export * from './FormLabel/FormLabel';
 export * from './HelpDrawer/HelpDrawer';
 export * from './HelpDrawer/HelpDrawerToggle';
