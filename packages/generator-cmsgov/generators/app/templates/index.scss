@@ -3,12 +3,11 @@
 /*
 <%= title %>
 
-@status alpha
+TODO: @status Draft
 
 TODO: Enter your description here
 
-Markup:
-<p>TODO: Enter your markup here</p>
+TODO: Markup: [filename.example.html]
 
 Style guide: components.<%= slug %>
 */
@@ -36,15 +35,11 @@ Style guide: components.<%= slug %>
 
 - List any accessibility considerations like required keyboard functionality, ARIA attributes, etc
 
-## Theming
+## Theming (optional)
 
 - List any Sass variables a developer could override to customize the appearance of the component
 
-## Future research
-
-- Optionally list any suggestions for future research that could mature and extend the component
-
-## Related patterns
+## Related patterns (optional)
 
 - List any related components or utility classes that connect with the component, whether as a parent, sibling, or child within the pattern's taxonomy.
 

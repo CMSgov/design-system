@@ -40,17 +40,16 @@ export const Step = ({ step, ...props }) => {
         {step.completed && (
           <div className="ds-c-step__completed-text">{props.completedText}</div>
         )}
-        {step.completed &&
-          !step.steps && (
-            <StepLink
-              href={step.href}
-              stepId={step.id}
-              screenReaderText={`"${step.title}"`}
-              onClick={props.onStepLinkClick}
-            >
-              {props.editText}
-            </StepLink>
-          )}
+        {step.completed && !step.steps && (
+          <StepLink
+            href={step.href}
+            stepId={step.id}
+            screenReaderText={`"${step.title}"`}
+            onClick={props.onStepLinkClick}
+          >
+            {step.linkText || props.editText}
+          </StepLink>
+        )}
         {start && (
           <StepLink
             href={step.href}
@@ -59,7 +58,7 @@ export const Step = ({ step, ...props }) => {
             onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
-            {props.startText}
+            {step.linkText || props.startText}
           </StepLink>
         )}
         {resume && (
@@ -70,7 +69,7 @@ export const Step = ({ step, ...props }) => {
             onClick={props.onStepLinkClick}
             className="ds-c-button ds-c-button--primary"
           >
-            {props.resumeText}
+            {step.linkText || props.resumeText}
           </StepLink>
         )}
       </div>

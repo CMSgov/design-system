@@ -51,6 +51,7 @@ var stepShape = exports.stepShape = {
   href: _propTypes2.default.string.isRequired,
   title: _propTypes2.default.string.isRequired,
   description: _propTypes2.default.string,
+  linkText: _propTypes2.default.string,
   completed: _propTypes2.default.bool,
   started: _propTypes2.default.bool,
   isNextStep: _propTypes2.default.bool

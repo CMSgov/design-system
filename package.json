@@ -40,7 +40,7 @@
     "browser-sync": "^2.20.0",
     "bytes": "^3.0.0",
     "chalk": "^2.4.2",
-    "chromedriver": "^2.46.0",
+    "chromedriver": "2.35.0",
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
     "core-js": "^2.5.3",
@@ -75,7 +75,7 @@
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
     "lint-staged": "^7.0.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.14",
     "marked": "^0.3.17",
     "memory-fs": "^0.4.1",
     "mkdir-recursive": "^0.4.0",
@@ -103,7 +103,7 @@
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "^2.21.1",
     "yargs": "^11.0.0",
-    "yo": "^2.0.0"
+    "yo": "^2.0.6"
   },
   "engines": {
     "node": ">=7.0.0"

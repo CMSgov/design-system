@@ -14,17 +14,16 @@ export const SubStep = ({ step, ...props }) => (
         onClick={props.onStepLinkClick}
         className="ds-c-substep__edit"
       >
-        {props.editText}
+        {step.linkText || props.editText}
       </StepLink>
     )}
-    {step.steps &&
-      props.showSubSubSteps && (
-        <ul>
-          {step.steps.map((s, i) => (
-            <SubStep step={s} key={s.id || i} {...props} />
-          ))}
-        </ul>
-      )}
+    {step.steps && props.showSubSubSteps && (
+      <ul>
+        {step.steps.map((s, i) => (
+          <SubStep step={s} key={s.id || i} {...props} />
+        ))}
+      </ul>
+    )}
   </li>
 );
 
