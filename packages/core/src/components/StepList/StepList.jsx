@@ -27,7 +27,8 @@ export const stepShape = {
   linkText: PropTypes.string,
   completed: PropTypes.bool,
   started: PropTypes.bool,
-  isNextStep: PropTypes.bool
+  isNextStep: PropTypes.bool,
+  onClick: PropTypes.func
 };
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
