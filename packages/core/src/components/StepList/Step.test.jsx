@@ -166,6 +166,22 @@ describe('Step', () => {
     expect(hasAlternateLinkText({ linkText, started: true })).toBe(true);
   });
 
+  it('uses step.onClick handler when provided', () => {
+    const onStepLinkClick = jest.fn();
+    const onClick = jest.fn();
+    const { wrapper } = renderStep(
+      { onClick, isNextStep: true },
+      { onStepLinkClick }
+    );
+
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
+    expect(editLink.length).toEqual(1);
+    expect(editLink.props().children).toEqual('Start!');
+    editLink.props().onClick();
+    expect(onClick).toHaveBeenCalled();
+    expect(onStepLinkClick).not.toHaveBeenCalled();
+  });
+
   it('renders substeps', () => {
     const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
     const { wrapper, props } = renderStep({ steps });

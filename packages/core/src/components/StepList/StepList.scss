@@ -358,7 +358,9 @@ Step object properties:
 - **title** (`string`) - Text to display as the step title
 - **description** (`string`) - Additional text to display under (only rendered for top-level steps)
 - **linkText** (`string`) - Alternative text for the link or button for this step. Will override the defaults
+- **onClick** (`func`) - onClick handler for this specific step's link/button
 - **steps** (`Step[]`) - Array of substeps
+
 
 Style guide: patterns.step-list.step-object
 */
