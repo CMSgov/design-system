@@ -54,7 +54,8 @@ var stepShape = exports.stepShape = {
   linkText: _propTypes2.default.string,
   completed: _propTypes2.default.bool,
   started: _propTypes2.default.bool,
-  isNextStep: _propTypes2.default.bool
+  isNextStep: _propTypes2.default.bool,
+  onClick: _propTypes2.default.func
 };
 stepShape.steps = _propTypes2.default.arrayOf(_propTypes2.default.shape(stepShape));
 
