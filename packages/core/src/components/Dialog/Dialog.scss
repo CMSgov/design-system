@@ -58,7 +58,7 @@ $dialog-spacer: $spacer-4;
 }
 
 .ds-c-dialog__header {
-  align-items: start;
+  align-items: flex-start;
   display: flex;
   // Provide some spacing when the header only includes the close button
   padding-bottom: $spacer-1;

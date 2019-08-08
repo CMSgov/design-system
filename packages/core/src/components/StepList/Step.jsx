@@ -19,6 +19,21 @@ export const Step = ({ step, ...props }) => {
   const actionsLabel = actionsLabelText.replace('%{step}', step.title);
   const substepsLabel = substepsLabelText.replace('%{step}', step.title);
   const descriptionLabel = descriptionLabelText.replace('%{step}', step.title);
+
+  let linkLabel;
+  if (step.completed && !step.steps) {
+    linkLabel = step.linkText || props.editText;
+  } else if (start) {
+    linkLabel = step.linkText || props.startText;
+  } else if (resume) {
+    linkLabel = step.linkText || props.resumeText;
+  }
+
+  let linkClassName;
+  if (start || resume) {
+    linkClassName = 'ds-c-button ds-c-button--primary';
+  }
+
   return (
     <li className={className}>
       <div className={contentClassName}>
@@ -40,36 +55,15 @@ export const Step = ({ step, ...props }) => {
         {step.completed && (
           <div className="ds-c-step__completed-text">{props.completedText}</div>
         )}
-        {step.completed && !step.steps && (
+        {linkLabel && (
           <StepLink
             href={step.href}
             stepId={step.id}
             screenReaderText={`"${step.title}"`}
-            onClick={props.onStepLinkClick}
+            onClick={step.onClick || props.onStepLinkClick}
+            className={linkClassName}
           >
-            {step.linkText || props.editText}
-          </StepLink>
-        )}
-        {start && (
-          <StepLink
-            href={step.href}
-            stepId={step.id}
-            screenReaderText={`"${step.title}"`}
-            onClick={props.onStepLinkClick}
-            className="ds-c-button ds-c-button--primary"
-          >
-            {step.linkText || props.startText}
-          </StepLink>
-        )}
-        {resume && (
-          <StepLink
-            href={step.href}
-            stepId={step.id}
-            screenReaderText={`"${step.title}"`}
-            onClick={props.onStepLinkClick}
-            className="ds-c-button ds-c-button--primary"
-          >
-            {step.linkText || props.resumeText}
+            {linkLabel}
           </StepLink>
         )}
       </div>
