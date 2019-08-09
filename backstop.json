@@ -1,0 +1,301 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "tablet",
+      "width": 1024,
+      "height": 768
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "CMSDS",
+      "url": "https://design.cms.gov"
+    }
+    ,
+    {
+      "label": "CMSDS - Getting Started - Install with NPM",
+      "url": "https://design.cms.gov/startup/installation/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Using Sass/CSS",
+      "url": "https://design.cms.gov/startup/sass-and-css/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Using Fonts and Images",
+      "url": "https://design.cms.gov/startup/fonts-and-images/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Using React Components",
+      "url": "https://design.cms.gov/startup/react/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Browser Support",
+      "url": "https://design.cms.gov/startup/browser-support/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Building a Site Package",
+      "url": "https://design.cms.gov/startup/site-package/"
+    },
+    {
+      "label": "CMSDS - Getting Started - Examples",
+      "url": "https://design.cms.gov/startup/examples/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Code conventions",
+      "url": "https://design.cms.gov/guidelines/code-conventions/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Component maturity",
+      "url": "https://design.cms.gov/guidelines/component-maturity/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Forms",
+      "url": "https://design.cms.gov/guidelines/forms/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Internationalization",
+      "url": "https://design.cms.gov/guidelines/i18n/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Responsive design",
+      "url": "https://design.cms.gov/guidelines/responsive/"
+    },
+    {
+      "label": "CMSDS - Guidelines - Themeing",
+      "url": "https://design.cms.gov/guidelines/themes/"
+    },
+    {
+      "label": "CMSDS - Layout - Grid",
+      "url": "https://design.cms.gov/layout/grid/"
+    },
+    {
+      "label": "CMSDS - Layout - Spacing",
+      "url": "https://design.cms.gov/layout/spacing/"
+    },
+    {
+      "label": "CMSDS - Style - Base",
+      "url": "https://design.cms.gov/style/base/"
+    },
+    {
+      "label": "CMSDS - Style - Color",
+      "url": "https://design.cms.gov/style/color/"
+    },
+    {
+      "label": "CMSDS - Style - Icons",
+      "url": "https://design.cms.gov/style/icons/"
+    },
+    {
+      "label": "CMSDS - Style - Typography",
+      "url": "https://design.cms.gov/style/typography/"
+    },
+    {
+      "label": "CMSDS Utilities",
+      "url": "https://design.cms.gov/utilities/"
+    },
+    {
+      "label": "CMSDS - Utilities - Background Color",
+      "url": "https://design.cms.gov/utilities/background-color"
+    },
+    {
+      "label": "CMSDS - Utilities - Border",
+      "url": "https://design.cms.gov/utilities/border/"
+    },
+    {
+      "label": "CMSDS - Utilities - Border Radius",
+      "url": "https://design.cms.gov/utilities/border-radius/"
+    },
+    {
+      "label": "CMSDS - Utilities - Clearfix",
+      "url": "https://design.cms.gov/utilities/clearfix/"
+    },
+    {
+      "label": "CMSDS - Utilities - Color",
+      "url": "https://design.cms.gov/utilities/color/"
+    },
+    {
+      "label": "CMSDS - Utilities - Display/Visibility",
+      "url": "https://design.cms.gov/utilities/display-visibility/"
+    },
+    {
+      "label": "CMSDS - Utilities - Flexbox",
+      "url": "https://design.cms.gov/utilities/flexbox/"
+    },
+    {
+      "label": "CMSDS - Utilities - Float",
+      "url": "https://design.cms.gov/utilities/float/"
+    },
+    {
+      "label": "CMSDS - Utilities - Font Family",
+      "url": "https://design.cms.gov/utilities/font-family/"
+    },
+    {
+      "label": "CMSDS - Utilities - Font Size",
+      "url": "https://design.cms.gov/utilities/font-size/"
+    },
+    {
+      "label": "CMSDS - Utilities - Font Style",
+      "url": "https://design.cms.gov/utilities/font-style/"
+    },
+    {
+      "label": "CMSDS - Utilities - Font Weight",
+      "url": "https://design.cms.gov/utilities/font-weight/"
+    },
+    {
+      "label": "CMSDS - Utilities - Line Height",
+      "url": "https://design.cms.gov/utilities/line-height/"
+    },
+    {
+      "label": "CMSDS - Utilities - Margin",
+      "url": "https://design.cms.gov/utilities/margin/"
+    },
+    {
+      "label": "CMSDS - Utilities - Measure",
+      "url": "https://design.cms.gov/utilities/measure/"
+    },
+    {
+      "label": "CMSDS - Utilities - Overflow",
+      "url": "https://design.cms.gov/utilities/overflow/"
+    },
+    {
+      "label": "CMSDS - Utilities - Padding",
+      "url": "https://design.cms.gov/utilities/padding/"
+    },
+    {
+      "label": "CMSDS - Utilities - Text Alignment",
+      "url": "https://design.cms.gov/utilities/text-align/"
+    },
+    {
+      "label": "CMSDS - Utilities - Text Decoration",
+      "url": "https://design.cms.gov/utilities/text-decoration/"
+    },
+    {
+      "label": "CMSDS - Utilities - Text Transform",
+      "url": "https://design.cms.gov/utilities/text-transform/"
+    },
+    {
+      "label": "CMSDS - Utilities - Truncate",
+      "url": "https://design.cms.gov/utilities/truncate/"
+    },
+    {
+      "label": "CMSDS - Utilities - Vertical Align",
+      "url": "https://design.cms.gov/utilities/vertical-align/"
+    },
+    {
+      "label": "CMSDS - Components - Alert",
+      "url": "https://design.cms.gov/components/alert/"
+    },
+    {
+      "label": "CMSDS - Components - Autocomplete",
+      "url": "https://design.cms.gov/components/autocomplete/"
+    },
+    {
+      "label": "CMSDS - Components - Badge",
+      "url": "https://design.cms.gov/components/badge/"
+    },
+    {
+      "label": "CMSDS - Components - Button",
+      "url": "https://design.cms.gov/components/button/"
+    },
+    {
+      "label": "CMSDS - Components - Checkbox & Radio",
+      "url": "https://design.cms.gov/components/choice/"
+    },
+    {
+      "label": "CMSDS - Components - Dropdown",
+      "url": "https://design.cms.gov/components/dropdown/"
+    },
+
+    {
+      "label": "CMSDS - Components - Datefield",
+      "url": "https://design.cms.gov/components/date-field/"
+    },
+    {
+      "label": "CMSDS - Components - Form label & legend",
+      "url": "https://design.cms.gov/components/form-label/"
+    },
+    {
+      "label": "CMSDS - Components - Help drawer",
+      "url": "https://design.cms.gov/components/help-drawer/"
+    },
+    {
+      "label": "CMSDS - Components - List",
+      "url": "https://design.cms.gov/components/list/"
+    },
+    {
+      "label": "CMSDS - Components - Masked Field",
+      "url": "https://design.cms.gov/components/masked-field/"
+    },
+    {
+      "label": "CMSDS - Components - Modal Dialog",
+      "url": "https://design.cms.gov/components/dialog/"
+    },
+    {
+      "label": "CMSDS - Components - Month Picker",
+      "url": "https://design.cms.gov/components/month-picker/"
+    },
+    {
+      "label": "CMSDS - Components - Select",
+      "url": "https://design.cms.gov/components/select/"
+    },
+    {
+      "label": "CMSDS - Components - Skipnav",
+      "url": "https://design.cms.gov/components/skip-nav/"
+    },
+    {
+      "label": "CMSDS - Components - Spinner",
+      "url": "https://design.cms.gov/components/spinner/"
+    },
+    {
+      "label": "CMSDS - Components - Table",
+      "url": "https://design.cms.gov/components/table/"
+    },
+    {
+      "label": "CMSDS - Components - Tabs",
+      "url": "https://design.cms.gov/components/tabs/"
+    },
+    {
+      "label": "CMSDS - Components - Textfield",
+      "url": "https://design.cms.gov/components/text-field/"
+    },
+    {
+      "label": "CMSDS - Components - Vertical Navigation",
+      "url": "https://design.cms.gov/components/vertical-nav/"
+    },
+    {
+      "label": "CMSDS - Patterns - Documentation Page",
+      "url": "https://design.cms.gov/patterns/documentation-page/"
+    },
+    {
+      "label": "CMSDS - Patterns - Review",
+      "url": "https://design.cms.gov/patterns/review/"
+    },
+    {
+      "label": "CMSDS - Patterns - Step List",
+      "url": "https://design.cms.gov/patterns/step-list/"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "tools/backstop_data/bitmaps_reference",
+    "bitmaps_test": "tools/backstop_data/bitmaps_test",
+    "engine_scripts": "tools/backstop_data/engine_scripts",
+    "html_report": "tools/backstop_data/html_report",
+    "ci_report": "tools/backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
