@@ -53,6 +53,21 @@ var Step = function Step(_ref) {
   var actionsLabel = actionsLabelText.replace('%{step}', step.title);
   var substepsLabel = substepsLabelText.replace('%{step}', step.title);
   var descriptionLabel = descriptionLabelText.replace('%{step}', step.title);
+
+  var linkLabel = void 0;
+  if (step.completed && !step.steps) {
+    linkLabel = step.linkText || props.editText;
+  } else if (start) {
+    linkLabel = step.linkText || props.startText;
+  } else if (resume) {
+    linkLabel = step.linkText || props.resumeText;
+  }
+
+  var linkClassName = void 0;
+  if (start || resume) {
+    linkClassName = 'ds-c-button ds-c-button--primary';
+  }
+
   return _react2.default.createElement(
     'li',
     { className: className },
@@ -85,37 +100,16 @@ var Step = function Step(_ref) {
         { className: 'ds-c-step__completed-text' },
         props.completedText
       ),
-      step.completed && !step.steps && _react2.default.createElement(
+      linkLabel && _react2.default.createElement(
         _StepLink2.default,
         {
           href: step.href,
           stepId: step.id,
           screenReaderText: '"' + step.title + '"',
-          onClick: props.onStepLinkClick
+          onClick: step.onClick || props.onStepLinkClick,
+          className: linkClassName
         },
-        props.editText
-      ),
-      start && _react2.default.createElement(
-        _StepLink2.default,
-        {
-          href: step.href,
-          stepId: step.id,
-          screenReaderText: '"' + step.title + '"',
-          onClick: props.onStepLinkClick,
-          className: 'ds-c-button ds-c-button--primary'
-        },
-        props.startText
-      ),
-      resume && _react2.default.createElement(
-        _StepLink2.default,
-        {
-          href: step.href,
-          stepId: step.id,
-          screenReaderText: '"' + step.title + '"',
-          onClick: props.onStepLinkClick,
-          className: 'ds-c-button ds-c-button--primary'
-        },
-        props.resumeText
+        linkLabel
       )
     )
   );

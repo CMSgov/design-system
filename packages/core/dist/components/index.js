@@ -112,6 +112,18 @@ Object.keys(_Dialog).forEach(function (key) {
   });
 });
 
+var _Dropdown = require('./Dropdown/Dropdown');
+
+Object.keys(_Dropdown).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Dropdown[key];
+    }
+  });
+});
+
 var _FormLabel = require('./FormLabel/FormLabel');
 
 Object.keys(_FormLabel).forEach(function (key) {
