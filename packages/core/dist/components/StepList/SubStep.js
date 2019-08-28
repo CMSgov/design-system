@@ -43,10 +43,10 @@ var SubStep = function SubStep(_ref) {
         href: step.href,
         stepId: step.id,
         screenReaderText: '"' + step.title + '"',
-        onClick: props.onStepLinkClick,
+        onClick: step.onClick || props.onStepLinkClick,
         className: 'ds-c-substep__edit'
       },
-      props.editText
+      step.linkText || props.editText
     ),
     step.steps && props.showSubSubSteps && _react2.default.createElement(
       'ul',
