@@ -61,6 +61,10 @@ These scripts can all be run from the root level of the repo:
   * Runs JS unit tests
   * Lints JS using ESLint
   * Lints Sass using stylelint
+* `yarn test:e2e`
+  * Runs end to end tests
+* `yarn test:e2e packages/core/Autocomplete`
+  * Runs a single end to end test, this example runs Autocomplete
 * `yarn test:watch`
   * Runs JS unit tests and will continue to run tests as files change
 * `yarn update-snapshots`
