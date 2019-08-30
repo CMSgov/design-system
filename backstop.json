@@ -12,274 +12,405 @@
       "height": 768
     }
   ],
-  "onBeforeScript": "puppet/onBefore.js",
-  "onReadyScript": "puppet/onReady.js",
   "scenarios": [
+
     {
       "label": "CMSDS",
-      "url": "https://design.cms.gov"
+      "url": "https://design.cms.gov",
+      "referenceUrl": "http://localhost:3000",
+      "delay": 5000
     }
     ,
     {
       "label": "CMSDS - Getting Started - Install with NPM",
-      "url": "https://design.cms.gov/startup/installation/"
+      "url": "https://design.cms.gov/startup/installation/",
+      "referenceUrl": "http://localhost:3000/startup/installation/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Using Sass/CSS",
-      "url": "https://design.cms.gov/startup/sass-and-css/"
+      "url": "https://design.cms.gov/startup/sass-and-css/",
+      "referenceUrl": "http://localhost:3000/startup/sass-and-css/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Using Fonts and Images",
-      "url": "https://design.cms.gov/startup/fonts-and-images/"
+      "url": "https://design.cms.gov/startup/fonts-and-images/",
+      "referenceUrl": "http://localhost:3000/startup/fonts-and-images/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Using React Components",
-      "url": "https://design.cms.gov/startup/react/"
+      "url": "https://design.cms.gov/startup/react/",
+      "referenceUrl": "http://localhost:3000/startup/react/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Browser Support",
-      "url": "https://design.cms.gov/startup/browser-support/"
+      "url": "https://design.cms.gov/startup/browser-support/",
+      "referenceUrl": "http://localhost:3000/startup/browser-support/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Building a Site Package",
-      "url": "https://design.cms.gov/startup/site-package/"
+      "url": "https://design.cms.gov/startup/site-package/",
+      "referenceUrl": "http://localhost:3000/startup/site-package/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Getting Started - Examples",
-      "url": "https://design.cms.gov/startup/examples/"
+      "url": "https://design.cms.gov/startup/examples/",
+      "referenceUrl": "http://localhost:3000/startup/examples/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Code conventions",
-      "url": "https://design.cms.gov/guidelines/code-conventions/"
+      "url": "https://design.cms.gov/guidelines/code-conventions/",
+      "referenceUrl": "http://localhost:3000/guidelines/code-conventions/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Component maturity",
-      "url": "https://design.cms.gov/guidelines/component-maturity/"
+      "url": "https://design.cms.gov/guidelines/component-maturity/",
+      "referenceUrl": "http://localhost:3000/guidelines/component-maturity/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Forms",
-      "url": "https://design.cms.gov/guidelines/forms/"
+      "url": "https://design.cms.gov/guidelines/forms/",
+      "referenceUrl": "http://localhost:3000/guidelines/forms/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Internationalization",
-      "url": "https://design.cms.gov/guidelines/i18n/"
+      "url": "https://design.cms.gov/guidelines/i18n/",
+      "referenceUrl": "http://localhost:3000/guidelines/i18n/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Responsive design",
-      "url": "https://design.cms.gov/guidelines/responsive/"
+      "url": "https://design.cms.gov/guidelines/responsive/",
+      "referenceUrl": "http://localhost:3000/guidelines/responsive/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Guidelines - Themeing",
-      "url": "https://design.cms.gov/guidelines/themes/"
+      "url": "https://design.cms.gov/guidelines/themes/",
+      "referenceUrl": "http://localhost:3000/guidelines/themes/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Layout - Grid",
-      "url": "https://design.cms.gov/layout/grid/"
+      "url": "https://design.cms.gov/layout/grid/",
+      "referenceUrl": "http://localhost:3000/layout/grid/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Layout - Spacing",
-      "url": "https://design.cms.gov/layout/spacing/"
+      "url": "https://design.cms.gov/layout/spacing/",
+      "referenceUrl": "http://localhost:3000/layout/spacing/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Style - Base",
-      "url": "https://design.cms.gov/style/base/"
+      "url": "https://design.cms.gov/style/base/",
+      "referenceUrl": "http://localhost:3000/style/base/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Style - Color",
-      "url": "https://design.cms.gov/style/color/"
+      "url": "https://design.cms.gov/style/color/",
+      "referenceUrl": "http://localhost:3000/style/color/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Style - Icons",
-      "url": "https://design.cms.gov/style/icons/"
+      "url": "https://design.cms.gov/style/icons/",
+      "referenceUrl": "http://localhost:3000/style/icons/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Style - Typography",
-      "url": "https://design.cms.gov/style/typography/"
+      "url": "https://design.cms.gov/style/typography/",
+      "referenceUrl": "http://localhost:3000/typography/",
+      "delay": 5000
     },
     {
       "label": "CMSDS Utilities",
-      "url": "https://design.cms.gov/utilities/"
+      "url": "https://design.cms.gov/utilities/",
+      "referenceUrl": "http://localhost:3000/utilities/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Background Color",
-      "url": "https://design.cms.gov/utilities/background-color"
+      "url": "https://design.cms.gov/utilities/background-color/",
+      "referenceUrl": "http://localhost:3000/utilities/background-color/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Border",
-      "url": "https://design.cms.gov/utilities/border/"
+      "url": "https://design.cms.gov/utilities/border/",
+      "referenceUrl": "http://localhost:3000/utilities/border/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Border Radius",
-      "url": "https://design.cms.gov/utilities/border-radius/"
+      "url": "https://design.cms.gov/utilities/border-radius/",
+      "referenceUrl": "http://localhost:3000/utilities/border-radius/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Clearfix",
-      "url": "https://design.cms.gov/utilities/clearfix/"
+      "url": "https://design.cms.gov/utilities/clearfix/",
+      "referenceUrl": "http://localhost:3000/utilities/clearfix/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Color",
-      "url": "https://design.cms.gov/utilities/color/"
+      "url": "https://design.cms.gov/utilities/color/",
+      "referenceUrl": "http://localhost:3000/utilities/color/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Display/Visibility",
-      "url": "https://design.cms.gov/utilities/display-visibility/"
+      "url": "https://design.cms.gov/utilities/display-visibility/",
+      "referenceUrl": "http://localhost:3000/utilities/display-visibility/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Flexbox",
-      "url": "https://design.cms.gov/utilities/flexbox/"
+      "url": "https://design.cms.gov/utilities/flexbox/",
+      "referenceUrl": "http://localhost:3000/utilities/flexbox/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Float",
-      "url": "https://design.cms.gov/utilities/float/"
+      "url": "https://design.cms.gov/utilities/float/",
+      "referenceUrl": "http://localhost:3000/utilities/float/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Font Family",
-      "url": "https://design.cms.gov/utilities/font-family/"
+      "url": "https://design.cms.gov/utilities/font-family/",
+      "referenceUrl": "http://localhost:3000/utilities/font-family/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Font Size",
-      "url": "https://design.cms.gov/utilities/font-size/"
+      "url": "https://design.cms.gov/utilities/font-size/",
+      "referenceUrl": "http://localhost:3000/utilities/font-size/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Font Style",
-      "url": "https://design.cms.gov/utilities/font-style/"
+      "url": "https://design.cms.gov/utilities/font-style/",
+      "referenceUrl": "http://localhost:3000/utilities/font-style/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Font Weight",
-      "url": "https://design.cms.gov/utilities/font-weight/"
+      "url": "https://design.cms.gov/utilities/font-weight/",
+      "referenceUrl": "http://localhost:3000/utilities/font-weight/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Line Height",
-      "url": "https://design.cms.gov/utilities/line-height/"
+      "url": "https://design.cms.gov/utilities/line-height/",
+      "referenceUrl": "http://localhost:3000/utilities/line-height/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Margin",
-      "url": "https://design.cms.gov/utilities/margin/"
+      "url": "https://design.cms.gov/utilities/margin/",
+      "referenceUrl": "http://localhost:3000/utilities/margin/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Measure",
-      "url": "https://design.cms.gov/utilities/measure/"
+      "url": "https://design.cms.gov/utilities/measure/",
+      "referenceUrl": "http://localhost:3000/utilities/measure/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Overflow",
-      "url": "https://design.cms.gov/utilities/overflow/"
+      "url": "https://design.cms.gov/utilities/overflow/",
+      "referenceUrl": "http://localhost:3000/utilities/overflow/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Padding",
-      "url": "https://design.cms.gov/utilities/padding/"
+      "url": "https://design.cms.gov/utilities/padding/",
+      "referenceUrl": "http://localhost:3000/utilities/padding/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Text Alignment",
-      "url": "https://design.cms.gov/utilities/text-align/"
+      "url": "https://design.cms.gov/utilities/text-align/",
+      "referenceUrl": "http://localhost:3000/utilities/text-align/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Text Decoration",
-      "url": "https://design.cms.gov/utilities/text-decoration/"
+      "url": "https://design.cms.gov/utilities/text-decoration/",
+      "referenceUrl": "http://localhost:3000/utilities/text-decoration/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Text Transform",
-      "url": "https://design.cms.gov/utilities/text-transform/"
+      "url": "https://design.cms.gov/utilities/text-transform/",
+      "referenceUrl": "http://localhost:3000/utilities/text-transform/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Truncate",
-      "url": "https://design.cms.gov/utilities/truncate/"
+      "url": "https://design.cms.gov/utilities/truncate/",
+      "referenceUrl": "http://localhost:3000/utilities/truncate/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Utilities - Vertical Align",
-      "url": "https://design.cms.gov/utilities/vertical-align/"
+      "url": "https://design.cms.gov/utilities/vertical-align/",
+      "referenceUrl": "http://localhost:3000/utilities/vertical-align/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Alert",
-      "url": "https://design.cms.gov/components/alert/"
+      "url": "https://design.cms.gov/components/alert/",
+      "referenceUrl": "http://localhost:3000/components/alert/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Autocomplete",
-      "url": "https://design.cms.gov/components/autocomplete/"
+      "url": "https://design.cms.gov/components/autocomplete/",
+      "referenceUrl": "http://localhost:3000/components/autocomplete/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Badge",
-      "url": "https://design.cms.gov/components/badge/"
+      "url": "https://design.cms.gov/components/badge/",
+      "referenceUrl": "http://localhost:3000/components/badge/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Button",
-      "url": "https://design.cms.gov/components/button/"
+      "url": "https://design.cms.gov/components/button/",
+      "referenceUrl": "http://localhost:3000/components/button/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Checkbox & Radio",
-      "url": "https://design.cms.gov/components/choice/"
+      "url": "https://design.cms.gov/components/choice/",
+      "referenceUrl": "http://localhost:3000/components/choice/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Dropdown",
-      "url": "https://design.cms.gov/components/dropdown/"
+      "url": "https://design.cms.gov/components/dropdown/",
+      "referenceUrl": "http://localhost:3000/components/dropdown/",
+      "delay": 5000
     },
 
     {
       "label": "CMSDS - Components - Datefield",
-      "url": "https://design.cms.gov/components/date-field/"
+      "url": "https://design.cms.gov/components/date-field/",
+      "referenceUrl": "http://localhost:3000/components/date-field/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Form label & legend",
-      "url": "https://design.cms.gov/components/form-label/"
+      "url": "https://design.cms.gov/components/form-label/",
+      "referenceUrl": "http://localhost:3000/components/form-label",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Help drawer",
-      "url": "https://design.cms.gov/components/help-drawer/"
+      "url": "https://design.cms.gov/components/help-drawer/",
+      "referenceUrl": "http://localhost:3000/components/help-drawer/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - List",
-      "url": "https://design.cms.gov/components/list/"
+      "url": "https://design.cms.gov/components/list/",
+      "referenceUrl": "http://localhost:3000/components/list/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Masked Field",
-      "url": "https://design.cms.gov/components/masked-field/"
+      "url": "https://design.cms.gov/components/masked-field/",
+      "referenceUrl": "http://localhost:3000/components/masked-field/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Modal Dialog",
-      "url": "https://design.cms.gov/components/dialog/"
+      "url": "https://design.cms.gov/components/dialog/",
+      "referenceUrl": "http://localhost:3000/components/dialog/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Month Picker",
-      "url": "https://design.cms.gov/components/month-picker/"
+      "url": "https://design.cms.gov/components/month-picker/",
+      "referenceUrl": "http://localhost:3000/components/month-picker/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Select",
-      "url": "https://design.cms.gov/components/select/"
+      "url": "https://design.cms.gov/components/select/",
+      "referenceUrl": "http://localhost:3000/components/select/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Skipnav",
-      "url": "https://design.cms.gov/components/skip-nav/"
+      "url": "https://design.cms.gov/components/skip-nav/",
+      "referenceUrl": "http://localhost:3000/components/skip-nav/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Spinner",
-      "url": "https://design.cms.gov/components/spinner/"
+      "url": "https://design.cms.gov/components/spinner/",
+      "referenceUrl": "http://localhost:3000/components/spinner/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Table",
-      "url": "https://design.cms.gov/components/table/"
+      "url": "https://design.cms.gov/components/table/",
+      "referenceUrl": "http://localhost:3000/components/table/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Tabs",
-      "url": "https://design.cms.gov/components/tabs/"
+      "url": "https://design.cms.gov/components/tabs/",
+      "referenceUrl": "http://localhost:3000/components/tabs/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Textfield",
-      "url": "https://design.cms.gov/components/text-field/"
+      "url": "https://design.cms.gov/components/text-field/",
+      "referenceUrl": "http://localhost:3000/components/text-field/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Components - Vertical Navigation",
-      "url": "https://design.cms.gov/components/vertical-nav/"
+      "url": "https://design.cms.gov/components/vertical-nav/",
+      "referenceUrl": "http://localhost:3000/components/vertical-nav/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Patterns - Documentation Page",
-      "url": "https://design.cms.gov/patterns/documentation-page/"
+      "url": "https://design.cms.gov/patterns/documentation-page/",
+      "referenceUrl": "http://localhost:3000/patterns/documentation-page/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Patterns - Review",
-      "url": "https://design.cms.gov/patterns/review/"
+      "url": "https://design.cms.gov/patterns/review/",
+      "referenceUrl": "http://localhost:3000/patterns/review/",
+      "delay": 5000
     },
     {
       "label": "CMSDS - Patterns - Step List",
-      "url": "https://design.cms.gov/patterns/step-list/"
+      "url": "https://design.cms.gov/patterns/step-list/",
+      "referenceUrl": "http://localhost:3000/patterns/step-list/",
+      "delay": 5000
     }
   ],
   "paths": {
