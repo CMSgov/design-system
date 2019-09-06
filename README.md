@@ -86,6 +86,18 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
 
+### Visual regression testing
+
+We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
+
+* Install backstopJS `yarn install`
+* Run the site locally `yarn start`
+* In a new terminal window run the backstop tests `backstop test`
+  - This will test the local CMSDS documentation site against the CMSDS production documentation site
+* After the tests run an html report will open in your browser showing passed and failed tests
+
+**Note:** Use `backstop reference` to create new reference files. This would need to be run when adding a new component. 
+
 ## Contact
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
