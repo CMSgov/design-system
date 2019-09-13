@@ -37,6 +37,11 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-clearfix" />
         <div className="ds-u-font-size--small">
           {this.statusBadge()}
+
+          <a className="ds-u-margin-right--2" href="#guidance">
+            View guidance
+          </a>
+
           <Source
             reactComponentPath={this.props.reactComponentPath}
             source={this.props.source}

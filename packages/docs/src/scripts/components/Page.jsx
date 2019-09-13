@@ -7,7 +7,6 @@ import PageHeader from './PageHeader';
 import PropTypes from 'prop-types';
 import React from 'react';
 /* eslint-disable sort-imports */
-import { Tabs, TabPanel } from '@cmsgov/design-system-core';
 
 function isGuidanceSection(section) {
   return Boolean(section.reference.match(/\.guidance([a-z-_]+)?$/i));
@@ -21,9 +20,7 @@ class Page extends React.PureComponent {
       default: 3,
       sm: 6
     };
-    this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this
-      .horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding
-      .sm} ds-u-padding-y--0`;
+    this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm} ds-u-padding-y--0`;
   }
 
   defaultSelectedTabId() {
@@ -58,42 +55,33 @@ class Page extends React.PureComponent {
     return <PageBlock {...this.props} hideHeader />;
   }
 
+  renderGuidanceTabPanel() {
+    const sections = this.guidanceSections();
+
+    if (sections.length) {
+      return <div id="guidance">{this.renderChildPageBlocks(sections)}</div>;
+    }
+  }
+
   renderContent() {
     if (this.hasTabs) {
       return (
-        <Tabs
-          defaultSelectedId={this.defaultSelectedTabId()}
-          tablistClassName="ds-u-padding-left--3 ds-u-sm-padding-left--6 ds-u-fill--gray-lightest"
-        >
-          <TabPanel className={this.tabPanelClasses} id="usage" tab="Usage">
-            {this.renderBody()}
-            {this.renderChildPageBlocks(this.usageSections())}
-          </TabPanel>
+        <div className="ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0">
+          {this.renderBody()}
+          {this.renderChildPageBlocks(this.usageSections())}
+
           {this.renderGuidanceTabPanel()}
-        </Tabs>
+        </div>
       );
     }
 
     return (
       <div
-        className={`ds-u-border-top--1 ds-u-padding-x--${this.horizontalPadding
-          .default} ds-u-sm-padding-x--${this.horizontalPadding.sm}`}
+        className={`ds-u-border-top--1 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm}`}
       >
         {this.renderBody()}
       </div>
     );
-  }
-
-  renderGuidanceTabPanel() {
-    const sections = this.guidanceSections();
-
-    if (sections.length) {
-      return (
-        <TabPanel className={this.tabPanelClasses} id="guidance" tab="Guidance">
-          {this.renderChildPageBlocks(sections)}
-        </TabPanel>
-      );
-    }
   }
 
   render() {
