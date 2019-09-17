@@ -34,6 +34,9 @@ module.exports = (gulp, shared) => {
           })
         ]
       },
+      snippetOptions: {
+        blacklist: ['/example/*']
+      },
       notify: false,
       open: !argv.noopen,
       port: argv.port || '3000',
