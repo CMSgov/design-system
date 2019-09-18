@@ -56,7 +56,9 @@ export class Dropdown extends React.PureComponent {
     );
 
     const optionElements = options.map(option => (
-      <option key={option.value}>{option.label}</option>
+      <option key={option.value} value={option.value}>
+        {option.label}
+      </option>
     ));
 
     return (

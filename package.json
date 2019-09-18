@@ -109,6 +109,10 @@
       "prettier --write",
       "eslint --fix",
       "git add"
+    ],
+    "*.scss": [
+      "stylelint",
+      "stylelint --syntax=scss"
     ]
   },
   "resolutions": {
