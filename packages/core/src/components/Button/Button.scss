@@ -11,11 +11,10 @@ Use buttons to signal actions.
 .ds-c-button--transparent - A button closer to resembling an anchor element
 .ds-c-button--danger - Indicates an action is destructive or dangerous
 .ds-c-button--success - Indicates a positive or successful action
+.ds-c-button--disabled - Disabled button
 
-Markup:
-<button type="button" class="ds-c-button ds-c-button--small {{modifier}}">Small</button>
-<button type="button" class="ds-c-button {{modifier}}">Default</button>
-<a class="ds-c-button  ds-c-button--big {{modifier}}" href="javascript:void(0);">Big</a>
+
+Markup: button.example.html
 
 Style guide: components.button
 */
@@ -133,18 +132,6 @@ Style guide: components.button
   }
 }
 
-/*
----
-
-### Disabled button
-
-Markup:
-<a href="javascript:void(0);" class="ds-c-button ds-c-button--disabled">Link</a>
-<button disabled class="ds-c-button">Button</button>
-<input disabled type="submit" class="ds-c-button" />
-
-Style guide: components.button.disabled
-*/
 .ds-c-button:disabled,
 .ds-c-button--disabled {
   background-color: $color-gray-lighter;
@@ -164,17 +151,11 @@ Style guide: components.button.disabled
 /*
 ---
 
-### Inverse theme
+### Inverse buttons
+Examples of buttons on a dark background.
 
-Markup:
-<div class="ds-base--inverse ds-u-padding--2">
-  <button class="ds-c-button ds-c-button--inverse">Button</button>
-  <button class="ds-c-button ds-c-button--transparent-inverse">Button</button>
-  <button class="ds-c-button ds-c-button--primary">Button</button>
-  <button class="ds-c-button ds-c-button--danger">Button</button>
-  <button class="ds-c-button ds-c-button--success">Button</button>
-  <button disabled class="ds-c-button ds-c-button--disabled-inverse">Button</button>
-</div>
+Markup: button-inverse.example.html
+
 
 Style guide: components.button.inverse
 */
@@ -226,20 +207,7 @@ Button icons
 - Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
 - Use the margin utility class to add spacing between the icon and button text.
 
-Markup:
-<button class="ds-c-button">
-  <svg class="ds-u-margin-right--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
-    <use xlink:href="{{root}}/public/images/symbols.svg#download"></use>
-  </svg>Left icon
-</button>
-<button class="ds-c-button ds-c-button--primary">
-  Right icon<svg class="ds-u-margin-left--1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24">
-    <use xlink:href="{{root}}/public/images/symbols.svg#arrow-right"></use>
-  </svg>
-</button>
-<button class="ds-c-button ds-c-button--outline">
-  No icon
-</button>
+Markup: button-icons.example.html
 
 Style guide: components.button.icons
 */
@@ -253,9 +221,7 @@ Button inline with field
 
 The button is the same height as a single-line text field.
 
-Markup:
-<input type="text" class="ds-c-field ds-u-display--inline-block" />
-<button class="ds-c-button">Submit</button>
+Markup: button-inline.example.html
 
 Style guide: components.button.inline-field
 */
