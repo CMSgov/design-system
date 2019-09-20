@@ -5769,10 +5769,6 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inert-polyfill@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/inert-polyfill/-/inert-polyfill-0.2.5.tgz#16fb7280d3acc6b5314ce4b1af3418cb0d273c1e"
-
 infer-owner@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/infer-owner/-/infer-owner-1.0.4.tgz#c4cefcaa8e51051c2a40ba2ce8a3d27295af9467"
