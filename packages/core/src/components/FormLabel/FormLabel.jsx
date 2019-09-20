@@ -68,8 +68,8 @@ export class FormLabel extends React.PureComponent {
     return (
       <ComponentType className={classes} htmlFor={fieldId} id={id}>
         <span className={labelTextClasses}>{children}</span>
-        {this.errorMessage()}
         {this.hint()}
+        {this.errorMessage()}
       </ComponentType>
     );
   }
