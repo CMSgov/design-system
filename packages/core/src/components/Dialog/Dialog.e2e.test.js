@@ -31,8 +31,6 @@ describe('Modal Dialog component', () => {
 
     el = await getElementByClassName('ds-c-dialog');
 
-    // TODO: implement `inert` to prevent main application node from containing focusable elements
-    // Remove this temporarily disabled rule
-    await assertNoAxeViolations(null, 'aria-hidden-focus');
+    await assertNoAxeViolations();
   });
 });
