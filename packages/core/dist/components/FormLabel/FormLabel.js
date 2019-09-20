@@ -115,8 +115,8 @@ var FormLabel = exports.FormLabel = function (_React$PureComponent) {
           { className: labelTextClasses },
           children
         ),
-        this.hint(),
-        this.errorMessage()
+        this.errorMessage(),
+        this.hint()
       );
     }
   }]);
