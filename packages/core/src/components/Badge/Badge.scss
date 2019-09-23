@@ -12,10 +12,7 @@ Badges hold small amounts of information and draw attention to new or important 
 .ds-c-badge--warn - Warning badge
 .ds-c-badge--alert - Alert or error badge
 
-Markup:
-<span class="ds-c-badge {{modifier}}">5</span>
-<span class="ds-c-badge {{modifier}}">Badge label</span>
-<span class="ds-c-badge {{modifier}} ds-u-font-size--base">Badge label</span>
+Markup: badge.example.html
 
 Style guide: components.badge
 */
