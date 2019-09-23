@@ -3,13 +3,9 @@
 /*
 Form Label & Legend
 
-Markup:
-<label class="ds-c-label" for="number-field-id">
-  Phone number
-  <span class="ds-c-field__hint">
-    Optional. We'll use this number as a backup if we need to contact you about your application.
-  </span>
-</label>
+Form Labels & Legends are used with form inputs to provide labels, hints, and errors that help the user enter information.
+
+Markup: form-label.example.html
 
 Style guide: components.form-label
 */
@@ -28,22 +24,22 @@ Style guide: components.form-label
   color: $color-base-inverse;
 }
 
+// Applies to "Checkbox & Radio" and "Date field"
+.ds-c-fieldset {
+  border: 0;
+  // We apply the same margin as a label, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
+  padding: 0;
+}
+
 // Webkit won't render a top margin on a fieldset's <legend>, so we apply
 // the top margin to the fieldset instead.
 .ds-c-fieldset > .ds-c-label:first-child {
   margin-top: 0;
 }
 
-/*
-Hint text
-
-(docs stolen from Gov.UK)
-
-- don’t use placeholder text in form fields, as this will disappear once content is entered into the form field
-- use hint text for supporting contextual help, this will always be shown
-- hint text should sit above a form field
-- ensure hint text can be read correctly by screen readers
-*/
 .ds-c-field__hint {
   color: $color-muted;
   display: block;
