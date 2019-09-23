@@ -5,7 +5,7 @@ weight: 10
 
 The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile first**.
 
-![Responsive demo]({{root}}/public/images/responsive-demo.gif)
+<img id="responsive-gif" alt="Responsive demo" src="{{root}}/public/images/responsive-demo.gif"/>
 
 ## Usage
 

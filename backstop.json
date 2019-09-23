@@ -133,6 +133,9 @@
       "referenceUrl": "https://design.cms.gov/guidelines/responsive/",
       "url": "http://localhost:3000/guidelines/responsive/",
       "delay": 5000,
+      "hideSelectors": [
+        "#responsive-gif"
+      ],
 "removeSelectors": [
   "#tota11y-toolbar"
 ]
