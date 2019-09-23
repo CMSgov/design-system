@@ -3,6 +3,8 @@
 /*
 Form Label & Legend
 
+Form Labels & Legends are used with form inputs to provide labels, hints, and errors that help the user enter information.
+
 Markup: form-label.example.html
 
 Style guide: components.form-label
@@ -28,16 +30,6 @@ Style guide: components.form-label
   margin-top: 0;
 }
 
-/*
-Hint text
-
-(docs stolen from Gov.UK)
-
-- don’t use placeholder text in form fields, as this will disappear once content is entered into the form field
-- use hint text for supporting contextual help, this will always be shown
-- hint text should sit above a form field
-- ensure hint text can be read correctly by screen readers
-*/
 .ds-c-field__hint {
   color: $color-muted;
   display: block;

@@ -142,16 +142,16 @@ exports[`DateField has errorMessage 1`] = `
       Date
     </span>
     <span
+      className="ds-c-field__hint"
+    >
+      For example: 4 / 28 / 1986
+    </span>
+    <span
       className="ds-c-field__hint ds-u-color--error"
       id="undefined-message"
       role="alert"
     >
       This is required.
-    </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
     </span>
   </legend>
   <div
