@@ -1,14 +1,5 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
-.ds-c-fieldset {
-  border: 0;
-  // We apply the same margin as a label, since in the context of a fieldset
-  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
-  margin: $spacer-3 0 0;
-  min-width: 0;
-  padding: 0;
-}
-
 /*
 Checkbox & Radio
 
