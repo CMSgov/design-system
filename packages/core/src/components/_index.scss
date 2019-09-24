@@ -4,7 +4,9 @@
 @import 'Button/Button.docs';
 @import 'ChoiceList/Choice.docs';
 @import 'ChoiceList/Select.docs';
+@import 'DateField/DateField.docs';
 @import 'Dialog/Dialog.docs';
+@import 'Dropdown/Dropdown.docs';
 @import 'FormLabel/FormLabel.docs';
 @import 'HelpDrawer/HelpDrawer.docs';
 @import 'List/List.docs';
@@ -16,8 +18,5 @@
 @import 'Table/Table.docs';
 @import 'Tabs/Tabs.docs';
 @import 'TextField/TextField.docs';
-// Currency and Date field styles need imported
-// after TextField since they modify it
-@import 'TextField/CurrencyField';
-@import 'DateField/DateField.docs';
+@import 'TextField/Mask.docs';
 @import 'VerticalNav/VerticalNav.docs';

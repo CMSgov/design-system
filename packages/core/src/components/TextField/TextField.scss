@@ -69,16 +69,3 @@ Inverse theme
 .ds-c-field--success {
   border: 3px solid $color-success-light;
 }
-
-// Masks
-// ==============================
-.ds-c-field-mask {
-  position: relative;
-}
-
-.ds-c-field__before {
-  bottom: $input-padding;
-  left: $input-padding;
-  position: absolute;
-  top: $input-padding;
-}

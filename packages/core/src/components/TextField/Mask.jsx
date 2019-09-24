@@ -1,11 +1,3 @@
-/*
-Masked field
-
-A masked field is an enhanced input field that provides visual and non-visual
-cues to a user about the expected value.
-
-Style guide: components.masked-field
-*/
 import 'core-js/fn/array/includes';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -138,20 +130,6 @@ export function maskValue(value = '', mask) {
 
   return value;
 }
-
-/*
-`<TextField mask={...}>`
-
-Passing a `mask` prop into the `TextField` component with a valid value will
-enable formatting to occur when the field is blurred. To "unmask" the
-value, you can import and call the `unmaskValue` method.
-
-@react-component TextField
-
-@react-example Mask
-
-Style guide: components.masked-field.react
-*/
 
 /**
  * A Mask component renders a controlled input field. When the
