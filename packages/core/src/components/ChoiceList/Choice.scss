@@ -1,52 +1,13 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
 /*
-Fieldset
-
-Markup:
-<fieldset class="ds-c-fieldset">...</fieldset>
-*/
-.ds-c-fieldset {
-  border: 0;
-  // We apply the same margin as a label, since in the context of a fieldset
-  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
-  margin: $spacer-3 0 0;
-  min-width: 0;
-  padding: 0;
-}
-
-/*
 Checkbox & Radio
 
 Checkboxes allow users to select one or more options from a visible list, whereas radio buttons allow a user to select only one option.
 
 @uswds https://standards.usa.gov/components/form-controls
 
-Markup:
-<fieldset class="ds-c-fieldset ds-u-margin-top--0">
-  <legend class="ds-c-label">Historical figures</legend>
-  <span class="ds-c-field__hint">Select all that apply</span>
-  <input class="ds-c-choice" id="truth-1" type="checkbox" name="historical-figures-1" value="truth" checked>
-  <label for="truth-1">
-    Sojourner Truth
-    <span class="ds-c-field__hint">Example hint text</span>
-  </label>
-  <input class="ds-c-choice" id="douglass-1" type="checkbox" name="historical-figures-1" value="douglass">
-  <label for="douglass-1">Frederick Douglass</label>
-  <input class="ds-c-choice" id="washington-1" type="checkbox" name="historical-figures-1" value="washington">
-  <label for="washington-1">Booker T. Washington</label>
-  <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled>
-  <label for="carver-1">George Washington Carver</label>
-</fieldset>
-<fieldset class="ds-c-fieldset">
-  <legend class="ds-c-label">Select a historical figure</legend>
-  <input class="ds-c-choice" id="truth-3" type="radio" name="historical-figures-3" value="truth" checked>
-  <label for="truth-3">Sojourner Truth</label>
-  <input class="ds-c-choice" id="douglass-3" type="radio" name="historical-figures-3" value="douglass">
-  <label for="douglass-3">Frederick Douglass</label>
-  <input class="ds-c-choice" id="washington-3" type="radio" name="historical-figures-3" value="washington">
-  <label for="washington-3">Booker T. Washington</label>
-</fieldset>
+Markup: checkbox-radio.example.html
 
 Style guide: components.choice
 */
@@ -54,30 +15,7 @@ Style guide: components.choice
 /*
 Inverse theme
 
-Markup:
-<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-    <legend class="ds-c-label">Historical figures</legend>
-    <span class="ds-c-field__hint ds-c-field__hint--inverse">Select all that apply</span>
-    <input class="ds-c-choice ds-c-choice--inverse" id="truth-2" type="checkbox" name="historical-figures-2" value="truth" checked>
-    <label for="truth-2">Sojourner Truth</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-2" type="checkbox" name="historical-figures-2" value="douglass">
-    <label for="douglass-2">Frederick Douglass</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="washington-2" type="checkbox" name="historical-figures-2" value="washington">
-    <label for="washington-2">Booker T. Washington</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="carver-2" type="checkbox" name="historical-figures-2" disabled>
-    <label for="carver-2">George Washington Carver</label>
-  </fieldset>
-  <fieldset class="ds-c-fieldset">
-    <legend class="ds-c-label">Select a historical figure</legend>
-    <input class="ds-c-choice ds-c-choice--inverse" id="truth-4" type="radio" name="historical-figures-4" value="truth" checked>
-    <label for="truth-4">Sojourner Truth</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="douglass-4" type="radio" name="historical-figures-4" value="douglass">
-    <label for="douglass-4">Frederick Douglass</label>
-    <input class="ds-c-choice ds-c-choice--inverse" id="washington-4" type="radio" name="historical-figures-4" value="washington">
-    <label for="washington-4">Booker T. Washington</label>
-  </fieldset>
-</div>
+Markup: checkbox-radio-inverse.example.html
 
 Style guide: components.choice.inversed
 */
@@ -192,38 +130,11 @@ $ds-c-inset-border-width: $spacer-half;
   border-radius: 100%;
 }
 
+
 /*
 Right-to-Left
 
-Markup:
-<div class="ds-u-clearfix">
-  <div class="ds-u-padding--2 ds-u-text-align--right ds-u-border--2 ds-u-float--left">
-    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-      <legend class="ds-c-label">Right to left</legend>
-      <span class="ds-c-field__hint ds-u-margin-bottom--1">Select desired fruits</span>
-      <input class="ds-c-choice ds-c-choice--right" id="apple-1" type="checkbox" name="fruit-1" value="apple" checked>
-      <label for="apple-1">Apple</label>
-      <input class="ds-c-choice ds-c-choice--right" id="banana-1" type="checkbox" name="fruit-1" value="banana">
-      <label for="banana-1">Banana</label>
-      <input class="ds-c-choice ds-c-choice--right" id="fig-1" type="checkbox" name="fruit-1" value="fig">
-      <label for="fig-1">Fig</label>
-      <input class="ds-c-choice ds-c-choice--right" id="plum-1" type="checkbox" name="fruit-1" disabled>
-      <label for="plum-1">Plum</label>
-    </fieldset>
-  </div>
-  <div class="ds-u-padding--2 ds-u-text-align--right ds-u-float--left ds-u-margin-left--2 ds-base--inverse">
-    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-      <legend class="ds-c-label">Right to left</legend>
-      <span class="ds-c-field__hint ds-c-field__hint--inverse ds-u-margin-bottom--1">Select desired fruits</span>
-      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="apple-2" type="radio" name="fruit-2" value="apple" checked>
-      <label for="apple-2">Apple</label>
-      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="banana-2" type="radio" name="fruit-2" value="banana">
-      <label for="banana-2">Banana</label>
-      <input class="ds-c-choice ds-c-choice--right ds-c-choice--inverse" id="fig-2" type="radio" name="fruit-2" value="fig">
-      <label for="fig-2">Fig</label>
-    </fieldset>
-  </div>
-</div>
+Markup: checkbox-radio-right-to-left.example.html
 
 Style guide: components.choice.rtl
 */
@@ -240,29 +151,7 @@ Style guide: components.choice.rtl
 /*
 Size variants
 
-Markup:
-<div class="ds-u-clearfix">
-  <div class="ds-u-padding--2 ds-u-border--2 ds-u-float--left">
-    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-      <legend class="ds-c-label">Size variants</legend>
-      <span class="ds-c-field__hint ds-u-margin-bottom--1">Select a size</span>
-      <input class="ds-c-choice" id="normal-1" type="checkbox" name="size-1" value="normal" checked>
-      <label for="normal-1">Normal</label>
-      <input class="ds-c-choice ds-c-choice--small" id="small-1" type="checkbox" name="size-1" value="small">
-      <label for="small-1">Small</label>
-    </fieldset>
-  </div>
-  <div class="ds-u-padding--2 ds-u-border--2 ds-u-float--left ds-u-margin-left--2">
-    <fieldset class="ds-c-fieldset ds-u-margin-top--0">
-      <legend class="ds-c-label">Size variants</legend>
-      <span class="ds-c-field__hint ds-u-margin-bottom--1">Select a size</span>
-      <input class="ds-c-choice" id="normal-2" type="radio" name="size-2" value="normal" checked>
-      <label for="normal-2">Normal</label>
-      <input class="ds-c-choice ds-c-choice--small" id="small-2" type="radio" name="size-2" value="small">
-      <label for="small-2">Small</label>
-    </fieldset>
-  </div>
-</div>
+Markup: checkbox-radio-size.example.html
 
 Style guide: components.choice.size
 */
@@ -356,7 +245,7 @@ Style guide: components.choice.react
   - Windows 10 + Chrome + JAWS
   - Windows10 - Firefox + NVDA
     - NVDA reads out the `<select>` label and every `<option>` value
-  - MacOS Mojave + Safari + VoiceOver 
+  - MacOS Mojave + Safari + VoiceOver
 
 ## Theming
 
