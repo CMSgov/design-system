@@ -153,6 +153,35 @@ describe('Step', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('renders alternative linkText', () => {
+    const linkText = 'Hello';
+    const hasAlternateLinkText = step => {
+      const { wrapper } = renderStep(step);
+      const link = wrapper.find('.ds-c-step__actions').find('StepLink');
+      return link.length > 0 && link.prop('children') === linkText;
+    };
+
+    expect(hasAlternateLinkText({ linkText, isNextStep: true })).toBe(true);
+    expect(hasAlternateLinkText({ linkText, completed: true })).toBe(true);
+    expect(hasAlternateLinkText({ linkText, started: true })).toBe(true);
+  });
+
+  it('uses step.onClick handler when provided', () => {
+    const onStepLinkClick = jest.fn();
+    const onClick = jest.fn();
+    const { wrapper } = renderStep(
+      { onClick, isNextStep: true },
+      { onStepLinkClick }
+    );
+
+    const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
+    expect(editLink.length).toEqual(1);
+    expect(editLink.props().children).toEqual('Start!');
+    editLink.props().onClick();
+    expect(onClick).toHaveBeenCalled();
+    expect(onStepLinkClick).not.toHaveBeenCalled();
+  });
+
   it('renders substeps', () => {
     const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
     const { wrapper, props } = renderStep({ steps });
