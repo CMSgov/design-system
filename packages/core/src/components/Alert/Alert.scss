@@ -12,13 +12,8 @@ Alerts keep users informed of important and sometimes time-sensitive changes.
 .ds-c-alert--success - Success message
 .ds-c-alert--hide-icon - Hide icon
 
-Markup:
-<div class="ds-c-alert {{modifier}}">
-  <div class="ds-c-alert__body">
-    <h3 class="ds-c-alert__heading">Status heading</h3>
-    <p class="ds-c-alert__text">Lorem ipsum dolor sit <a href="javascript:void(0);">link text</a>, consectetur adipiscing elit, sed do eiusmod.</p>
-  </div>
-</div>
+Markup: alert.example.html
+
 
 Style guide: components.alert
 */
@@ -107,28 +102,8 @@ Additional examples
 
 Alerts support various types and lengths of content, including lists and links. You can use the [measure utility](/utilities/measure) to maintain a legible line length.
 
-Markup:
-<div class="ds-c-alert">
-  <div class="ds-c-alert__body ds-u-measure--wide">
-    <p class="ds-c-alert__text">{{lorem-s}}</p>
-  </div>
-</div>
-<div class="ds-c-alert ds-u-margin-top--2">
-  <div class="ds-c-alert__body ds-u-measure--wide">
-    <p class="ds-c-alert__text">{{lorem-l}}</p>
-  </div>
-</div>
-<div class="ds-c-alert ds-u-margin-top--2">
-  <div class="ds-c-alert__body ds-u-measure--wide">
-    <h3 class="ds-c-alert__heading">Status heading</h3>
-    <p class="ds-c-alert__text">{{lorem-m}}</p>
-    <ul class="ds-c-list">
-      <li>Alert list item</li>
-      <li>Alert list item</li>
-    </ul>
-    <a href="javascript:void(0);">Link text</a>
-  </div>
-</div>
+Markup: alert.example-additional.html
+
 
 Style guide: components.alert.variations
 */
