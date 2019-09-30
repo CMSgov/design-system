@@ -7,7 +7,8 @@ exports.Mask = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.unmask = unmask;
+exports.maskValue = maskValue;
+exports.unmaskValue = unmaskValue;
 
 require('core-js/fn/array/includes');
 
@@ -18,8 +19,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactLifecyclesCompat = require('react-lifecycles-compat');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52,7 +51,6 @@ var deliminatedMaskRegex = {
  */
 function deliminateRegexGroups(value, rx) {
   var matches = toDigitsAndAsterisks(value).match(rx);
-
   if (matches && matches.length > 1) {
     value = matches.slice(1).filter(function (a) {
       return !!a;
@@ -111,9 +109,6 @@ function toDigits(value) {
  * @returns {Number}
  */
 function toNumber(value) {
-  if (typeof value !== 'string') return value;
-  if (!value.match(/\d/)) return undefined;
-
   var sign = value.charAt(0) === '-' ? -1 : 1;
   var parts = value.split('.');
   // This assumes if the user adds a "." it should be a float. If we want it to
@@ -130,7 +125,24 @@ function toNumber(value) {
 }
 
 /**
- * Returns the value with additional masking characters
+ * Determines if a value is a valid string with numeric digits
+ * @param {String} value
+ * @param {String} mask
+ * @returns {Boolean}
+ */
+function isValueMaskable(value, mask) {
+  if (value && typeof value === 'string') {
+    var hasDigits = value.match(/\d/);
+    var hasDigitsAsterisks = value.match(/[\d*]/g);
+    if (hasDigits || hasDigitsAsterisks && mask === 'ssn') {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Returns the value with additional masking characters, or the same value back if invalid numeric string
  * @param {String} value
  * @returns {String}
  */
@@ -138,19 +150,17 @@ function maskValue() {
   var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var mask = arguments[1];
 
-  if (value && typeof value === 'string') {
-    value = value.trim();
-
+  if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Format number with commas. If the number includes a decimal,
       // ensure it includes two decimal points
       var number = toNumber(value);
-      if (number === undefined) {
-        value = '';
-      } else {
+      if (number !== undefined) {
         value = stringWithFixedDigits(number.toLocaleString('en-US'));
       }
-    } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
+    } else if (deliminatedMaskRegex[mask]) {
+      // Use deliminator regex to mask value and remove unwanted characters
+      // If the regex does not match, return the numeric digits.
       value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
     }
   }
@@ -178,35 +188,16 @@ Style guide: components.masked-field.react
  * of the value.
  */
 
-var _Mask = function (_React$PureComponent) {
-  _inherits(_Mask, _React$PureComponent);
+var Mask = exports.Mask = function (_React$PureComponent) {
+  _inherits(Mask, _React$PureComponent);
 
-  _createClass(_Mask, null, [{
-    key: 'getDerivedStateFromProps',
-    value: function getDerivedStateFromProps(props, state) {
-      var fieldProps = _react2.default.Children.only(props.children).props;
-      var isControlled = fieldProps.value !== undefined;
-      if (isControlled) {
-        var mask = props.mask;
+  function Mask(props) {
+    _classCallCheck(this, Mask);
 
-        if (unmask(fieldProps.value, mask) !== unmask(state.value, mask)) {
-          return {
-            value: maskValue(fieldProps.value || '', mask)
-          };
-        }
-      }
-      return null;
-    }
-  }]);
-
-  function _Mask(props) {
-    _classCallCheck(this, _Mask);
-
-    var _this = _possibleConstructorReturn(this, (_Mask.__proto__ || Object.getPrototypeOf(_Mask)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Mask.__proto__ || Object.getPrototypeOf(Mask)).call(this, props));
 
     var field = _this.field();
     var initialValue = field.props.value || field.props.defaultValue;
-    // console.log('initial value', initialValue, maskValue(initialValue, props.mask), props.mask)
 
     _this.state = {
       value: maskValue(initialValue, props.mask)
@@ -214,12 +205,31 @@ var _Mask = function (_React$PureComponent) {
     return _this;
   }
 
-  _createClass(_Mask, [{
+  _createClass(Mask, [{
     key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
+    value: function componentDidUpdate(prevProps) {
       if (this.debouncedOnBlurEvent) {
         this.field().props.onBlur(this.debouncedOnBlurEvent);
         this.debouncedOnBlurEvent = null;
+      }
+
+      var fieldProps = this.field().props;
+      var prevFieldProps = _react2.default.Children.only(prevProps.children).props;
+      var isControlled = fieldProps.value !== undefined;
+      if (isControlled && prevFieldProps.value !== fieldProps.value) {
+        var mask = this.props.mask;
+        // For controlled components, the value prop should ideally be changed by
+        // the controlling component once we've called onChange with our updates.
+        // If the change was triggered this way through user input, then the prop
+        // given should match our internal state when unmasked. If what we're
+        // given and what we have locally don't match, that means the controlling
+        // component has made its own unrelated change, so we should update our
+        // state and mask this new value.
+
+        if (unmaskValue(fieldProps.value, mask) !== unmaskValue(this.state.value, mask)) {
+          var value = maskValue(fieldProps.value || '', mask);
+          this.setState({ value: value }); // eslint-disable-line react/no-did-update-set-state
+        }
       }
     }
 
@@ -307,45 +317,36 @@ var _Mask = function (_React$PureComponent) {
     }
   }]);
 
-  return _Mask;
+  return Mask;
 }(_react2.default.PureComponent);
 
-_Mask.propTypes = {
+Mask.propTypes = {
   /** Pass the input as the child */
   children: _propTypes2.default.node.isRequired,
   mask: _propTypes2.default.string.isRequired
 };
 
 /**
- * Remove mask characters from value
+ * Remove mask characters from value, or the same value back if invalid numeric string
  * @param {String} value
  * @param {String} mask
  * @returns {String}
  */
-function unmask(value, mask) {
-  if (!value || typeof value !== 'string') return value;
-  var rawValue = value;
-  value = value.trim();
-
-  if (mask === 'currency') {
-    // Preserve only digits, decimal point, or negative symbol
-    var matches = value.match(/^-|[\d.]/g);
-    if (matches) {
-      value = matches.join('');
-    } else {
-      value = '';
+function unmaskValue(value, mask) {
+  if (isValueMaskable(value, mask)) {
+    if (mask === 'currency') {
+      // Preserve only digits, decimal point, or negative symbol
+      var matches = value.match(/^-|[\d.]/g);
+      if (matches) {
+        value = matches.join('');
+      }
+    } else if (deliminatedMaskRegex[mask]) {
+      // Remove the deliminators and revert to single ungrouped string
+      value = toDigitsAndAsterisks(value);
     }
-  } else if (Object.keys(deliminatedMaskRegex).includes(mask)) {
-    // Remove the deliminators and revert to single ungrouped string
-    value = toDigitsAndAsterisks(value);
-  } else {
-    return rawValue;
   }
 
   return value;
 }
 
-var Mask = (0, _reactLifecyclesCompat.polyfill)(_Mask);
-
-exports.Mask = Mask;
 exports.default = Mask;

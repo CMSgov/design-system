@@ -108,7 +108,7 @@ Mobile, tablet, and desktop grids
 
 @responsive
 
-Each column class can include a [breakpoint "prefix"]({{root}}/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
+Each column class can include a [breakpoint "prefix"](/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
 
 An element with a `ds-l-{breakpoint}-col--*` class will span `*` columns at viewports matching `breakpoint` and larger.
 
@@ -179,7 +179,7 @@ Style guide: layout.grid.nested
 /*
 Offsetting columns
 
-Offset columns using the [margin auto utility class]({{root}}/utilities/margin):
+Offset columns using the [margin auto utility class](/utilities/margin):
 
 Markup:
 <section class="ds-l-container preview__grid">
@@ -199,7 +199,7 @@ Style guide: layout.grid.offset
 /*
 Alignment
 
-Align columns horizontally or vertically using [flexbox utility classes]({{root}}/utilities/flexbox). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
+Align columns horizontally or vertically using [flexbox utility classes](/utilities/flexbox). To align columns horizontally, use the `justify-content` utility class. To align columns vertically, use the `align-items` utility class.
 
 Markup:
 <section class="ds-l-container preview__grid">
@@ -268,7 +268,7 @@ Style guide: layout.grid.form-row
 ## Guidance
 
 - Choose a 12-column grid with flexible column widths and fixed gutters.
-- Avoid text lines longer than 75 characters. Place text in narrower columns to keep text lines from becoming too wide or use the [measure utility classes]({{root}}/utilities/measure).
+- Avoid text lines longer than 75 characters. Place text in narrower columns to keep text lines from becoming too wide or use the [measure utility classes](/utilities/measure).
 
 ## Accessibility
 

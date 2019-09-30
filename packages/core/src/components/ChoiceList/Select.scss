@@ -7,32 +7,7 @@ A select field allows users to select one option from a list.
 
 @uswds https://standards.usa.gov/components/form-controls/#dropdown
 
-Markup:
-<label class="ds-c-label ds-u-margin-top--0" for="options">Field label</label>
-<select class="ds-c-field" name="options" id="options">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-  <option value="4">Option 4</option>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-  <option value="7">Option 7</option>
-</select>
-<div class="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
-  <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">
-    Field label
-    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
-  </label>
-  <select class="ds-c-field ds-c-field--inverse" name="options-inverse" id="options-inverse">
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-    <option value="4">Option 4</option>
-    <option value="5">Option 5</option>
-    <option value="6">Option 6</option>
-    <option value="7">Option 7</option>
-  </select>
-</div>
+Markup: select.example.html
 
 Style guide: components.select
 */
@@ -79,8 +54,8 @@ Style guide: components.select.react
 
 ### When to consider alternatives
 
-- If the list of options is short. Use [radio buttons or checkboxes]({{root}}/components/choice) instead.
-- If the list of options is very long. Let users type the same information into a [text input]({{root}}/components/text-field) that suggests possible options instead. Long lists can sometimes be broken into multiple shorter lists by asking a few questions up-front to filter out options.
+- If the list of options is short. Use [radio buttons or checkboxes](/components/choice) instead.
+- If the list of options is very long. Let users type the same information into a [text input](/components/text-field) that suggests possible options instead. Long lists can sometimes be broken into multiple shorter lists by asking a few questions up-front to filter out options.
 - If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use checkboxes instead.
 - If the data is highly familiar to users, such as the day, month, or year of their birth.
 
@@ -92,7 +67,7 @@ Style guide: components.select.react
 - When most users will (or should) pick a particular option, make it the default: `<option selected="selected">Default</option>`
 - Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Offer a “submit” button at the end of the form instead. Users often change their choices multiple times. Auto-submission is also less accessible.
 
-**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
+**[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
 
 ## Accessibility
 
@@ -102,12 +77,12 @@ Style guide: components.select.react
 
 ## Related patterns
 
-- [Checkbox and Radio]({{root}}/components/choice)
-- [Text field]({{root}}/components/text-field)
+- [Checkbox and Radio](/components/choice)
+- [Text field](/components/text-field)
 
 ## Learn more
 
-- [Form Guidelines]({{root}}/guidelines/forms/)
+- [Form Guidelines](/guidelines/forms/)
 - [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
 - [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 - [Dropdowns: Design Guidelines](https://www.nngroup.com/articles/drop-down-menus/)

@@ -19,6 +19,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _lodash = require('lodash.uniqueid');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30,22 +34,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Alert = exports.Alert = function (_React$PureComponent) {
   _inherits(Alert, _React$PureComponent);
 
-  function Alert() {
+  function Alert(props) {
     _classCallCheck(this, Alert);
 
-    return _possibleConstructorReturn(this, (Alert.__proto__ || Object.getPrototypeOf(Alert)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Alert.__proto__ || Object.getPrototypeOf(Alert)).call(this, props));
+
+    _this.headingId = _this.props.headingId || (0, _lodash2.default)('alert_');
+    return _this;
   }
 
   _createClass(Alert, [{
     key: 'heading',
     value: function heading() {
-      if (this.props.heading) {
-        return _react2.default.createElement(
-          'h3',
-          { className: 'ds-c-alert__heading' },
-          this.props.heading
-        );
-      }
+      return _react2.default.createElement(
+        'h3',
+        { className: 'ds-c-alert__heading', id: this.headingId },
+        this.props.heading
+      );
     }
   }, {
     key: 'render',
@@ -54,7 +59,11 @@ var Alert = exports.Alert = function (_React$PureComponent) {
 
       return _react2.default.createElement(
         'div',
-        { className: classes, role: this.props.role },
+        {
+          className: classes,
+          role: this.props.role,
+          'aria-labelledby': this.headingId
+        },
         _react2.default.createElement(
           'div',
           { className: 'ds-c-alert__body' },
@@ -68,12 +77,16 @@ var Alert = exports.Alert = function (_React$PureComponent) {
   return Alert;
 }(_react2.default.PureComponent);
 
+Alert.defaultProps = {
+  role: 'region'
+};
 Alert.propTypes = {
   children: _propTypes2.default.node.isRequired,
   heading: _propTypes2.default.string,
+  headingId: _propTypes2.default.string,
   hideIcon: _propTypes2.default.bool,
   /** ARIA `role` */
-  role: _propTypes2.default.oneOf(['alert', 'alertdialog']),
+  role: _propTypes2.default.oneOf(['alert', 'alertdialog', 'region']),
   variation: _propTypes2.default.oneOf(['error', 'warn', 'success'])
 };
 

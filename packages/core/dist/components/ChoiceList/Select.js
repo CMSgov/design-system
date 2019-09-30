@@ -158,7 +158,12 @@ Select.propTypes = {
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value: _propTypes2.default.string
+  value: _propTypes2.default.string,
+
+  /**
+   * Adds `aria-label` attribute
+   */
+  'aria-label': _propTypes2.default.string
 };
 
 exports.default = Select;

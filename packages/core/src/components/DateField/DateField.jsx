@@ -106,13 +106,7 @@ export class DateField extends React.PureComponent {
             value={this.props.monthValue}
             aria-describedby={labelId}
           />
-          <span
-            aria-hidden="true"
-            role="presentation"
-            className="ds-c-datefield__separator"
-          >
-            /
-          </span>
+          <span className="ds-c-datefield__separator">/</span>
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--day', {
@@ -130,13 +124,7 @@ export class DateField extends React.PureComponent {
             value={this.props.dayValue}
             aria-describedby={labelId}
           />
-          <span
-            aria-hidden="true"
-            role="presentation"
-            className="ds-c-datefield__separator"
-          >
-            /
-          </span>
+          <span className="ds-c-datefield__separator">/</span>
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--year', {
@@ -162,7 +150,7 @@ export class DateField extends React.PureComponent {
 
 DateField.defaultProps = {
   label: 'Date',
-  hint: 'For example: 4 28 1986',
+  hint: 'For example: 4 / 28 / 1986',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',

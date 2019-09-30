@@ -17,8 +17,8 @@ class PageHeader extends React.PureComponent {
       const classes = classNames(
         'ds-c-badge ds-u-margin-right--1 ds-u-text-transform--capitalize',
         {
-          'ds-c-badge--warn': this.props.status === 'beta',
-          'ds-c-badge--alert': this.props.status === 'alpha'
+          'ds-c-badge--success': this.props.status === 'Ready',
+          'ds-c-badge--alert': this.props.status === 'Draft'
         }
       );
 
@@ -40,10 +40,9 @@ class PageHeader extends React.PureComponent {
           <Source
             reactComponentPath={this.props.reactComponentPath}
             source={this.props.source}
+            className="ds-u-margin-right--2"
           />
-          {this.props.uswds && (
-            <span className="ds-u-margin-x--1">&middot;</span>
-          )}
+
           {this.uswdsLink()}
         </div>
       </header>

@@ -7,28 +7,7 @@ Tables show tabular data in columns and rows.
 
 @uswds https://standards.usa.gov/components/tables/
 
-Markup:
-<table class="ds-c-table {{modifier}}">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th class="ds-u-text-align--right" scope="col">Rate</th>
-      <th scope="col">Favorite fruit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Fred</td>
-      <td class="ds-u-text-align--right">51.25%</td>
-      <td>Apples</td>
-    </tr>
-    <tr>
-      <td>Tamara</td>
-      <td class="ds-u-text-align--right">98.70%</td>
-      <td>Strawberries</td>
-    </tr>
-  </tbody>
-</table>
+Markup: table.example.html
 
 .ds-c-table--borderless - Borderless table
 
@@ -38,7 +17,6 @@ Style guide: components.table
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
-  min-width: 100%;
 
   td {
     background-color: $color-white;
@@ -57,7 +35,7 @@ Style guide: components.table
   th,
   td {
     border: 1px solid $color-gray;
-    padding: 1.5rem;
+    padding: $spacer-2;
   }
 }
 
@@ -130,7 +108,7 @@ Style guide: components.table.complex
 
 ## Guidance
 
-- Right-align numerical data in tables. You can use a [text alignment utility class]({{root}}/utilities/text-align) for this. This makes it easier to scan and compare values.
+- Right-align numerical data in tables. You can use a [text alignment utility class](/utilities/text-align) for this. This makes it easier to scan and compare values.
 
 ## Accessibility
 

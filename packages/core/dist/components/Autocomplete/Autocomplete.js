@@ -31,6 +31,10 @@ var _TextField = require('../TextField/TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _WrapperDiv = require('./WrapperDiv');
+
+var _WrapperDiv2 = _interopRequireDefault(_WrapperDiv);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -47,7 +51,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * https://www.digitala11y.com/aria-autocomplete-properties/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * We have opted to retain the ARIA 1.0 markup pattern for comboboxes.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This was done because the ARIA 1.1 markup pattern triggers a different
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * behavior on containers with a role="combobox" attribute. WCAG refers to
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * this as a composite widget: https://www.w3.org/TR/wai-aria-1.1/#h-composite
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Our testing with screen readers, specifically JAWS, has been the deciding
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * factor in going back to the ARIA 1.0 markup pattern. There were a number
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * of conflicting interactions using the 1.1 markup pattern that felt like
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * an unacceptable regression of the user experience.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 /**
  * Determine if a React component is a TextField
@@ -71,8 +89,10 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
     var _this = _possibleConstructorReturn(this, (Autocomplete.__proto__ || Object.getPrototypeOf(Autocomplete)).call(this, props));
 
     _this.id = _this.props.id || (0, _lodash2.default)('autocomplete_');
-    _this.labelId = (0, _lodash2.default)('autocomplete_header_');
+    _this.labelId = _this.props.labelId || (0, _lodash2.default)('autocomplete_label_');
     _this.listboxId = (0, _lodash2.default)('autocomplete_owned_listbox_');
+    _this.listboxContainerId = (0, _lodash2.default)('autocomplete_owned_container_');
+    _this.listboxHeadingId = (0, _lodash2.default)('autocomplete_header_');
     _this.loader = null;
     return _this;
   }
@@ -82,14 +102,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
     value: function filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex) {
       var _this2 = this;
 
-      if (this.props.loading) {
-        return _react2.default.createElement(
-          'li',
-          { className: 'ds-c-autocomplete__list-item--message' },
-          this.props.loadingMessage
-        );
-      }
-
+      // If we have results, create a mapped list
       if (items.length) {
         return items.map(function (item, index) {
           return _react2.default.createElement(
@@ -105,29 +118,54 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
         });
       }
 
+      // If we're waiting for results to load, show the non-selected message
+      if (this.props.loading) {
+        return _react2.default.createElement(
+          'li',
+          {
+            'aria-selected': 'false',
+            className: 'ds-c-autocomplete__list-item--message',
+            role: 'option'
+          },
+          this.props.loadingMessage
+        );
+      }
+
+      // If we have no results, show the non-selected message
       return _react2.default.createElement(
         'li',
-        { className: 'ds-c-autocomplete__list-item--message' },
+        {
+          'aria-selected': 'false',
+          className: 'ds-c-autocomplete__list-item--message',
+          role: 'option'
+        },
         this.props.noResultsMessage
       );
     }
   }, {
     key: 'renderChildren',
-    value: function renderChildren(getInputProps) {
+    value: function renderChildren(getInputProps, listboxOpen) {
       var _this3 = this;
 
+      var isOpen = listboxOpen;
       // Extend props on the TextField, by passing them
       // through Downshift's `getInputProps` method
       return _react2.default.Children.map(this.props.children, function (child) {
         if (isTextField(child)) {
           var propOverrides = {
-            'aria-controls': _this3.listboxId,
+            'aria-autocomplete': 'list',
+            'aria-controls': isOpen ? _this3.listboxId : null,
+            'aria-expanded': isOpen,
+            'aria-labelledby': null,
+            'aria-owns': isOpen ? _this3.listboxId : null,
             autoComplete: _this3.props.autoCompleteLabel,
             focusTrigger: _this3.props.focusTrigger,
             id: _this3.id,
+            labelId: _this3.labelId,
             onBlur: child.props.onBlur,
             onChange: child.props.onChange,
-            onKeyDown: child.props.onKeyDown
+            onKeyDown: child.props.onKeyDown,
+            role: 'combobox'
           };
 
           return _react2.default.cloneElement(child, getInputProps(propOverrides));
@@ -149,37 +187,52 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
           loading = _props.loading,
           children = _props.children,
           className = _props.className,
-          autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children', 'className']);
+          clearSearchButton = _props.clearSearchButton,
+          autocompleteProps = _objectWithoutProperties(_props, ['ariaClearLabel', 'clearInputText', 'items', 'label', 'loading', 'children', 'className', 'clearSearchButton']);
 
       var rootClassName = (0, _classnames2.default)('ds-u-clearfix', 'ds-c-autocomplete', className);
 
-      return _react2.default.createElement(_downshift2.default, _extends({
-        render: function render(_ref) {
+      return _react2.default.createElement(
+        _downshift2.default,
+        autocompleteProps,
+        function (_ref) {
           var clearSelection = _ref.clearSelection,
               getInputProps = _ref.getInputProps,
               getItemProps = _ref.getItemProps,
+              getRootProps = _ref.getRootProps,
               highlightedIndex = _ref.highlightedIndex,
               inputValue = _ref.inputValue,
               isOpen = _ref.isOpen;
           return _react2.default.createElement(
-            'div',
-            { className: rootClassName },
-            _this4.renderChildren(getInputProps),
+            _WrapperDiv2.default,
+            getRootProps({
+              'aria-expanded': null,
+              'aria-haspopup': null,
+              'aria-labelledby': null,
+              'aria-owns': null,
+              className: rootClassName,
+              refKey: 'innerRef',
+              role: null
+            }),
+            _this4.renderChildren(getInputProps, isOpen),
             isOpen && (loading || items) ? _react2.default.createElement(
               'div',
-              { className: 'ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list' },
+              {
+                className: 'ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list',
+                id: _this4.listboxContainerId
+              },
               label && !loading && _react2.default.createElement(
                 'h5',
                 {
                   className: 'ds-u-margin--0 ds-u-padding--1',
-                  id: _this4.labelId
+                  id: _this4.listboxHeadingId
                 },
                 label
               ),
               _react2.default.createElement(
                 'ul',
                 {
-                  'aria-labelledby': label ? _this4.labelId : null,
+                  'aria-labelledby': label ? _this4.listboxHeadingId : null,
                   className: 'ds-c-list--bare',
                   id: _this4.listboxId,
                   role: 'listbox'
@@ -187,7 +240,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
                 _this4.filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex)
               )
             ) : null,
-            _react2.default.createElement(
+            clearSearchButton && _react2.default.createElement(
               _Button2.default,
               {
                 'aria-label': ariaClearLabel,
@@ -200,7 +253,7 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
             )
           );
         }
-      }, autocompleteProps));
+      );
     }
   }]);
 
@@ -208,9 +261,10 @@ var Autocomplete = exports.Autocomplete = function (_React$PureComponent) {
 }(_react2.default.PureComponent);
 
 Autocomplete.defaultProps = {
-  ariaClearLabel: 'Clear typeahead and search again',
-  autoCompleteLabel: 'nope',
+  ariaClearLabel: 'Clear search to try again',
+  autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
+  clearSearchButton: true,
   itemToString: function itemToString(item) {
     return item ? item.name : '';
   },
@@ -224,8 +278,7 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: _propTypes2.default.string,
   /**
-   * Control the `TextField` autocomplete attribute. Defaults to 'nope' to prevent Chrome
-   * from autofilling user presets.
+   * Control the `TextField` autocomplete attribute. Changed to "off" to support accessibility. Chrome 70 appears to support this correct behavior in early testing.
    *
    * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
    */
@@ -237,9 +290,13 @@ Autocomplete.propTypes = {
    */
   className: _propTypes2.default.string,
   /**
-   * Clear search text that will appear on the page as part of the rendered `<button>` component
+   * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
   clearInputText: _propTypes2.default.node,
+  /**
+   * Removes the Clear search button when set to `false`
+   */
+  clearSearchButton: _propTypes2.default.bool,
   /**
    * Used to focus child `TextField` on `componentDidMount()`
    */
@@ -268,6 +325,10 @@ Autocomplete.propTypes = {
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
   label: _propTypes2.default.node,
+  /**
+   * A unique `id` to be used on the child `TextField` label tag
+   */
+  labelId: _propTypes2.default.string,
   /**
    * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
    */

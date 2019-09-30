@@ -7,37 +7,7 @@ Hierarchical, vertical navigation.
 
 @uswds https://standards.usa.gov/components/sidenav/
 
-Markup:
-<ul class="ds-c-vertical-nav">
-  <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Parent link</a>
-  </li>
-  <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="javascript:void(0);">Current page</a>
-    <ul class="ds-c-vertical-nav__subnav">
-      <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Child link</a>
-      </li>
-      <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Child link</a>
-        <ul class="ds-c-vertical-nav__subnav">
-          <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Grandchild link</a>
-          </li>
-          <li class="ds-c-vertical-nav__item">
-            <a class="ds-c-vertical-nav__label ds-c-vertical-nav__label--current" href="javascript:void(0);">Grandchild link</a>
-          </li>
-        </ul>
-      </li>
-      <li class="ds-c-vertical-nav__item">
-        <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Child link</a>
-      </li>
-    </ul>
-  </li>
-  <li class="ds-c-vertical-nav__item">
-    <a class="ds-c-vertical-nav__label" href="javascript:void(0);">Parent link</a>
-  </li>
-</ul>
+Markup: verticalnav.example.html
 
 Style guide: components.vertical-nav
 */
@@ -175,7 +145,7 @@ if you're using the React components.
 
 ## Related patterns
 
-- [Tabs]({{root}}/components/tabs)
+- [Tabs](/components/tabs)
 
 ## Learn more
 

@@ -42,6 +42,21 @@ describe('SubStep', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('calls step.onClick when provided', () => {
+    const onClick = jest.fn();
+    const onStepLinkClick = jest.fn();
+    const step = generateStep({ completed: true, onClick });
+    const wrapper = shallow(
+      <SubStep step={step} onStepLinkClick={onStepLinkClick} editText="Edit" />
+    );
+
+    const editLink = wrapper.find('StepLink');
+    expect(editLink.length).toEqual(1);
+    editLink.props().onClick();
+    expect(onClick).toHaveBeenCalled();
+    expect(onStepLinkClick).not.toHaveBeenCalled();
+  });
+
   it('renders a substep with substeps', () => {
     const step = generateStep({
       title: 'Do stuff',
