@@ -1,5 +1,16 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
+.ds-c-field-mask {
+  position: relative;
+}
+
+.ds-c-field__before {
+  bottom: $input-padding;
+  left: $input-padding;
+  position: absolute;
+  top: $input-padding;
+}
+
 .ds-c-field__before--currency {
   // Increase currency size so it serves more as an icon and
   // better aligns with the input value text
