@@ -179,6 +179,7 @@ describe('ChoiceList', () => {
         .simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();
+      // Enzyme simulated `blur` event will automatically focus on the next choice element
       setTimeout(() => {
         expect(onComponentBlur).not.toHaveBeenCalled();
       }, 20);
