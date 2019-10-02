@@ -162,10 +162,6 @@ Inverse buttons
   }
 }
 
-.ds-c-button--transparent-inverse {
-  background-color: transparent;
-}
-
 .ds-c-button--disabled-inverse,
 .ds-c-button--disabled-inverse:disabled {
   background-color: darken($color-background-inverse, 10%);
