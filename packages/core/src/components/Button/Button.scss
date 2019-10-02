@@ -2,7 +2,7 @@
 
 .ds-c-button {
   appearance: none;
-  background-color: transparent;
+  background-color: $color-white;
   border: $button-border-width solid $color-primary;
   border-radius: $border-radius;
   color: $color-primary;
@@ -68,6 +68,7 @@
 
 .ds-c-button--transparent,
 .ds-c-button--transparent-inverse {
+  background-color: transparent;
   border-color: transparent;
   text-decoration: underline;
 
@@ -135,6 +136,7 @@ Inverse buttons
 */
 
 .ds-c-button--inverse {
+  background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
   &:active,
