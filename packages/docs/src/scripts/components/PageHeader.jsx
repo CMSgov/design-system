@@ -26,6 +26,16 @@ class PageHeader extends React.PureComponent {
     }
   }
 
+  guidanceLink() {
+    if (this.props.showGuidanceLink) {
+      return (
+        <a className="ds-u-margin-right--2" href="#guidance">
+          View guidance
+        </a>
+      );
+    }
+  }
+
   render() {
     return (
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
@@ -38,9 +48,7 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-font-size--small">
           {this.statusBadge()}
 
-          <a className="ds-u-margin-right--2" href="#guidance">
-            View guidance
-          </a>
+          {this.guidanceLink()}
 
           <Source
             reactComponentPath={this.props.reactComponentPath}
@@ -61,7 +69,8 @@ PageHeader.propTypes = {
   reference: PropTypes.string,
   source: Source.propTypes.source,
   status: PropTypes.string,
-  uswds: PropTypes.string
+  uswds: PropTypes.string,
+  showGuidanceLink: PropTypes.bool.isRequired
 };
 
 export default PageHeader;
