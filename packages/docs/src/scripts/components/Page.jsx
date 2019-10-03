@@ -59,7 +59,12 @@ class Page extends React.PureComponent {
     const sections = this.guidanceSections();
 
     if (sections.length) {
-      return <div id="guidance">{this.renderChildPageBlocks(sections)}</div>;
+      return (
+        <div id="guidance">
+          <h2>Guidance</h2>
+          {this.renderChildPageBlocks(sections)}
+        </div>
+      );
     }
   }
 
@@ -85,9 +90,11 @@ class Page extends React.PureComponent {
   }
 
   render() {
+    const sections = this.guidanceSections();
+
     return (
       <div>
-        <PageHeader {...this.props} />
+        <PageHeader {...this.props} showGuidanceLink={sections.length > 0} />
         {this.renderContent()}
       </div>
     );
