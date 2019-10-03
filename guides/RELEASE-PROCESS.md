@@ -2,7 +2,7 @@
 
 1. **Create a release commit**
 
-   1. Get the latest from the `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
+   1. Checkout the latest `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
       ```
       git pull && git status
       ```
@@ -10,7 +10,7 @@
       ```
       yarn install && yarn test
       ```
-   1. Run backstop to check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
+   1. Check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
       ```
       backstop test
       ```
@@ -18,7 +18,7 @@
       ```
       ./scripts/prepublish.sh
       ```
-   1. Create a new branch for the new version number, commit the changes and push the branch up. This branch should then be reviewed and In this example replace v1.1.0 with your version:
+   1. Create a new branch for the new release, commit the changes and push the branch up. Follow the normal PR process for reviewing and merging the branch into master. In this example replace v1.1.0 with your version:
       ```
       git checkout -b v1.1.0
       git add --all
@@ -44,7 +44,7 @@
       
 1. **Publish to NPM**
 
-   1. Log into NPM as `cmsgov`. Check your login status with `npm whoami`.
+   1. Log into NPM as `cmsgov` with `npm adduser`. Check your user account with `npm whoami`.
       1. To use an access token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
    1. Run the publish to NPM script.
@@ -53,6 +53,8 @@
       ```
       This will run `npm publish` for each public package in `packages/`.
       **Note**: You should only publish the `master` branch to NPM. The publish script above will check out the `master` branch if it isn't currently the `HEAD`.
+   
+   1. Publish the release notes after the npm package is updated
       
 1. **Update the design.cms.gov documentation website**
 
