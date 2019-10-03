@@ -2,36 +2,28 @@
 
 1. **Create a release commit**
 
-    1. Get the latest from the `master` branch
-         ```
-        git pull
-         ```
-    1. Check the status of your working directory to ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
-         ```
-        git status
-         ```
+   1. Get the latest from the `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
+      ```
+      git pull && git status
+      ```
    1. Run the test suite and ensure JS unit tests, JS linting, and Sass linting pass locally.
-         ```
-         yarn test
-         ```
-   1. Check for visual regression.
-        ```
-        backstop test
-        ```
+      ```
+      yarn install && yarn test
+      ```
+   1. Run backstop to check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
+      ```
+      backstop test
+      ```
    1. Run the prepublish script from the root of your local git repo. This will bump the version, build the documentation, and transpile + bundle `dist` assets.
       ```
       ./scripts/prepublish.sh
       ```
-
-   1. Add, commit and push to `master` with a new version number, replacing v1.1.0 with your version:
+   1. Create a new branch for the new version number, commit the changes and push the branch up. This branch should then be reviewed and In this example replace v1.1.0 with your version:
       ```
+      git checkout -b v1.1.0
       git add --all
-      ```
-      ```
       git commit -m "Release v1.1.0"
-      ```
-      ```
-      git push
+      git push --set-upstream origin v1.1.0
       ```
    1. Create a new release on GitHub 
       1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
@@ -52,7 +44,7 @@
       
 1. **Publish to NPM**
 
-   1. Log into NPM as `cmsgov`: `npm whoami`.
+   1. Log into NPM as `cmsgov`. Check your login status with `npm whoami`.
       1. To use an access token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
    1. Run the publish to NPM script.
@@ -76,10 +68,10 @@
       
    **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
-    1. After the new site is deployed update the backstop references and put in a PR for the update.
-    ```
-    backstop reference
-    ```
+   1. After the new site is deployed, update the visual regression references and put up a PR for the updates.
+   ```
+   backstop reference
+   ```
 
 # Versioning
 
