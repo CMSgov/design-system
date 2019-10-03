@@ -14,6 +14,10 @@
          ```
          yarn test
          ```
+   1. Check for visual regression.
+        ```
+        backstop test
+        ```
    1. Run the prepublish script from the root of your local git repo. This will bump the version, build the documentation, and transpile + bundle `dist` assets.
       ```
       ./scripts/prepublish.sh
@@ -41,6 +45,7 @@
       ## 💅 Changed
       ## 🛠 Fixed
       ## 📦 Internal
+      ## 🚫 Deprecated
       ```
 
       **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: ```git log `git describe --tags --abbrev=0`..HEAD --oneline```
@@ -70,6 +75,11 @@
       * The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
       
    **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
+
+    1. After the new site is deployed update the backstop references and put in a PR for the update.
+    ```
+    backstop reference
+    ```
 
 # Versioning
 
