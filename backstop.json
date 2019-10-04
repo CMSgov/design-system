@@ -135,7 +135,7 @@
       "delay": 5000,
       "removeSelectors": [
         "#tota11y-toolbar"
-      ],
+      ]
     },
     {
       "label": "CMSDS - Guidelines - Themeing",
