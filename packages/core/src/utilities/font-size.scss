@@ -61,9 +61,9 @@ Style guide: utilities.font-size
 /*
 Responsive font sizes
 
-Use a [breakpoint prefix](/guidelines/responsive) to change the font size at specific breakpoints.
+@responsive
 
-_Resize your browser to see each breakpoint in action:_
+Use a [breakpoint prefix](/guidelines/responsive) to change the font size at specific breakpoints.
 
 Markup:
 <div class="ds-u-font-size--base ds-u-sm-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2 ds-u-xl-font-size--h1">
