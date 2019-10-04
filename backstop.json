@@ -136,7 +136,6 @@
       "removeSelectors": [
         "#tota11y-toolbar"
       ],
-      "misMatchThreshold": "0.5"
     },
     {
       "label": "CMSDS - Guidelines - Themeing",
