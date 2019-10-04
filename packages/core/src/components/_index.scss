@@ -5,7 +5,6 @@
 @import 'Button/Button';
 @import 'ChoiceList/Choice';
 @import 'ChoiceList/Select';
-@import 'DateField/DateField';
 @import 'Dialog/Dialog';
 @import 'Dropdown/Dropdown';
 @import 'FormLabel/FormLabel';
@@ -17,8 +16,11 @@
 @import 'StepList/StepList';
 @import 'Table/Table';
 @import 'Tabs/Tabs';
+// Mask and Date field styles need imported
+// after TextField since they modify it
 @import 'TextField/TextField';
 @import 'TextField/Mask';
+@import 'DateField/DateField';
 @import 'VerticalNav/VerticalNav';
 
 // Documentation
