@@ -308,7 +308,7 @@ Style guide: components.choice.react
 /*
 ---
 
-## When to use
+### When to use
 
 **Checkboxes**
 
@@ -321,12 +321,12 @@ Style guide: components.choice.react
 
 - When users need to select only one option out of a set of mutually exclusive choices.
 
-## When to consider alternatives
+### When to consider alternatives
 
 - If there are too many options to display on a mobile screen. Consider a `select` menu if you don’t have enough space to list out all available options, and if the user can only select one of the options.
 - Never use radio buttons for optional questions, since once a radio button is selected from a list, it or another choice will remain selected.
 
-## Guidance
+### Usage
 
 - Don't rely on the visual difference between radio buttons and checkboxes. Make it clear with words when users can select one or multiple options.
 - Users should be able to tap on or click on either the text label or the checkbox to select or deselect an option.
@@ -336,7 +336,7 @@ Style guide: components.choice.react
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
 
-## Checked children and the expose within pattern
+### Checked children and the expose within pattern
 
 - The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
 - Checked children can be exposed by checking the parent checkbox or radio button
@@ -345,7 +345,7 @@ Style guide: components.choice.react
 - You may need to add the className `ds-u-margin--0` to your child element(s) to avoid extra top margin
 - If you opt for smaller radio buttons or checkboxes, add className `ds-c-choice__checkedChild--small` to your checked child container
 
-## Accessibility
+### Accessibility
 
 - Surround a related set of choices with a `<fieldset>`. The `<legend>` provides context for the grouping. Do not use `fieldset` and `legend` for a single checkbox.
 - Some screen readers read the `legend` text for each `fieldset`, so it should be brief and descriptive.
@@ -356,9 +356,9 @@ Style guide: components.choice.react
   - Windows 10 + Chrome + JAWS
   - Windows10 - Firefox + NVDA
     - NVDA reads out the `<select>` label and every `<option>` value
-  - MacOS Mojave + Safari + VoiceOver 
+  - MacOS Mojave + Safari + VoiceOver
 
-## Theming
+### Customization
 
 The following Sass variables can be overridden to theme choice fields:
 
@@ -367,11 +367,11 @@ The following Sass variables can be overridden to theme choice fields:
 - `$choice-border-color-inverse`
 - `$choice-checked-background-color`
 
-## Related patterns
+### Related patterns
 
 - [Select menu](/components/select)
 
-## Learn more
+### Learn more
 
 - [Form Guidelines](/guidelines/forms/)
 - [GOV.UK Checkbox/Radio buttons discussion](https://paper.dropbox.com/doc/Radio-buttons-oIwWoxwBKClt5IXvDbnpF)

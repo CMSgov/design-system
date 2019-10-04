@@ -61,7 +61,7 @@ class Page extends React.PureComponent {
     if (sections.length) {
       return (
         <div id="guidance">
-          <h2>Guidance</h2>
+          <h2 className="ds-u-font-size--h1">Guidance</h2>
           {this.renderChildPageBlocks(sections)}
         </div>
       );

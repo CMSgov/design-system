@@ -144,7 +144,7 @@ Style guide: components.alert.react
 /*
 ---
 
-## When to use
+### When to use
 
 - As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
 - As a callout or notification for important or timely information. This includes errors, warnings, and general information.
@@ -154,7 +154,7 @@ Style guide: components.alert.react
 - On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
 - If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
 
-## Guidance
+### Usage
 
 - Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
 - Write the message in concise, human readable language; avoid jargon and computer code.
@@ -167,7 +167,7 @@ Style guide: components.alert.react
 - Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
 - If the error relates to specific text fields, give these fields an error state as well.
 
-## Accessibility
+### Accessibility
 
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
@@ -175,7 +175,7 @@ Style guide: components.alert.react
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
-## Learn more
+### Learn more
 
 - [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
 

@@ -15,7 +15,7 @@ The grid consists of three distinct pieces:
 - A **container** adds a maximum width and centers the content
 - A **row** enables the flexbox layout and holds between 1-12 **columns**
 
-### Installation
+## Installation
 
 The grid is opt-in and not distributed with the core design system package. Install the NPM package or [download the latest release](https://github.com/CMSgov/design-system/releases).
 
@@ -25,7 +25,7 @@ npm install @cmsgov/design-system-layout --save
 
 [View the package's README for additional info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
 
-### Browser support
+## Browser support
 
 Flexbox grid supports modern browsers and Internet Explorer 10+. In older versions of Internet Explorer the grid columns will be stacked.
 
@@ -257,25 +257,25 @@ Style guide: layout.grid.form-row
 /*
 ---
 
-## When to use
+### When to use
 
 - Almost always use a grid layout — visitors can read more quickly on pages that use grids. Choose a single grid system for your entire site.
 
-## When to consider alternatives
+### When to consider alternatives
 
 - Avoid mixing this grid and other grid systems.
 
-## Guidance
+### Usage
 
 - Choose a 12-column grid with flexible column widths and fixed gutters.
 - Avoid text lines longer than 75 characters. Place text in narrower columns to keep text lines from becoming too wide or use the [measure utility classes](/utilities/measure).
 
-## Accessibility
+### Accessibility
 
 - Low-vision users should be able to increase the size of the text by up to 200 percent without breaking the layout.
 - The DOM order and visual presentation of content should be consistent, in order to not break keyboard navigation. This means you should avoid changing the flexbox `order` property of the grid columns.
 
-## Customization
+### Customization
 
 The following Sass variables can be overridden to customize the grid:
 
