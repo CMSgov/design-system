@@ -29,7 +29,8 @@ module.exports = (gulp, shared) => {
           `packages/${pkg}/src/**/*.{js,jsx}`,
           `!packages/${pkg}/src/**/{__mocks__,__tests__}/*.{js,jsx}`,
           `!packages/${pkg}/src/**/*.example.{js,jsx}`,
-          `!packages/${pkg}/src/**/*.test.{js,jsx}`
+          `!packages/${pkg}/src/**/*.test.{js,jsx}`,
+          `!packages/${pkg}/src/helpers/**/*.{js,jsx}`
         ])
         .pipe(babel())
         .pipe(gulp.dest(`packages/${pkg}/dist`));
