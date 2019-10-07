@@ -139,7 +139,8 @@ var Choice = exports.Choice = function (_React$PureComponent) {
           requirementLabel = _props.requirementLabel,
           size = _props.size,
           uncheckedChildren = _props.uncheckedChildren,
-          inputProps = _objectWithoutProperties(_props, ['checkedChildren', 'children', 'className', 'hint', 'inversed', 'inputPlacement', 'inputClassName', 'requirementLabel', 'size', 'uncheckedChildren']);
+          inputRef = _props.inputRef,
+          inputProps = _objectWithoutProperties(_props, ['checkedChildren', 'children', 'className', 'hint', 'inversed', 'inputPlacement', 'inputClassName', 'requirementLabel', 'size', 'uncheckedChildren', 'inputRef']);
 
       var inputClasses = (0, _classnames2.default)(inputClassName, 'ds-c-choice', {
         'ds-c-choice--inverse': inversed,
@@ -165,6 +166,9 @@ var Choice = exports.Choice = function (_React$PureComponent) {
           onChange: this.handleChange,
           ref: function ref(input) {
             _this2.input = input;
+            if (inputRef) {
+              inputRef(input);
+            }
           }
         }, inputProps)),
         _react2.default.createElement(
@@ -222,6 +226,10 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: _propTypes2.default.bool,
+  /**
+   * Access a reference to the `input` element
+   */
+  inputRef: _propTypes2.default.func,
   /**
    * Additional hint text to display below the choice's label
    */
