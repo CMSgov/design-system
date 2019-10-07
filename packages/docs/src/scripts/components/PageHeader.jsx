@@ -30,7 +30,7 @@ class PageHeader extends React.PureComponent {
     if (this.props.showGuidanceLink) {
       return (
         <a className="ds-u-margin-right--2" href="#guidance">
-          View guidance
+          Jump to guidance
         </a>
       );
     }
