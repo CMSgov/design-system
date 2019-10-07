@@ -26,15 +26,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Masked field
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               A masked field is an enhanced input field that provides visual and non-visual
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               cues to a user about the expected value.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Style guide: components.masked-field
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // Deliminate chunks of integers
 var deliminatedMaskRegex = {
@@ -167,20 +159,6 @@ function maskValue() {
 
   return value;
 }
-
-/*
-`<TextField mask={...}>`
-
-Passing a `mask` prop into the `TextField` component with a valid value will
-enable formatting to occur when the field is blurred. To "unmask" the
-value, you can import and call the `unmaskValue` method.
-
-@react-component TextField
-
-@react-example Mask
-
-Style guide: components.masked-field.react
-*/
 
 /**
  * A Mask component renders a controlled input field. When the

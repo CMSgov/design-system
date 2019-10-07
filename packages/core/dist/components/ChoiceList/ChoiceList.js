@@ -48,7 +48,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * A `ChoiceList` component can be used to render a select menu, radio
+ * A `ChoiceList` component can be used to render a radio
  * button group, or checkbox group.
  *
  * By default the component determines the type of field for you, taking
@@ -59,19 +59,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
   _inherits(ChoiceList, _React$PureComponent);
 
-  function ChoiceList() {
+  function ChoiceList(props) {
     _classCallCheck(this, ChoiceList);
 
-    return _possibleConstructorReturn(this, (ChoiceList.__proto__ || Object.getPrototypeOf(ChoiceList)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (ChoiceList.__proto__ || Object.getPrototypeOf(ChoiceList)).call(this, props));
+
+    _this.handleBlur = _this.handleBlur.bind(_this);
+    _this.choiceRefs = [];
+    return _this;
   }
+
+  /**
+   * Creates the field component(s) based on the type of field we've determined
+   * it should be.
+   */
+
 
   _createClass(ChoiceList, [{
     key: 'field',
-
-    /**
-     * Creates the field component(s) based on the type of field we've determined
-     * it should be.
-     */
     value: function field() {
       var _this2 = this;
 
@@ -98,9 +103,12 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
           props.disabled = props.disabled || _this2.props.disabled;
           props.inversed = _this2.props.inversed;
           props.name = _this2.props.name;
-          props.onBlur = _this2.props.onBlur;
+          props.onBlur = (_this2.props.onBlur || _this2.props.onComponentBlur) && _this2.handleBlur;
           props.onChange = _this2.props.onChange;
           props.type = type;
+          props.inputRef = function (ref) {
+            _this2.choiceRefs.push(ref);
+          };
         }
 
         return _react2.default.createElement(
@@ -187,6 +195,31 @@ var ChoiceList = exports.ChoiceList = function (_React$PureComponent) {
       return 'radio';
     }
   }, {
+    key: 'handleBlur',
+    value: function handleBlur(evt) {
+      if (this.props.onBlur) {
+        this.props.onBlur(evt);
+      }
+
+      if (this.props.onComponentBlur) {
+        this.handleComponentBlur(evt);
+      }
+    }
+  }, {
+    key: 'handleComponentBlur',
+    value: function handleComponentBlur(evt) {
+      var _this3 = this;
+
+      // The active element is always the document body during a focus
+      // transition, so in order to check if the newly focused element
+      // is one of our choices, we're going to have to wait a bit.
+      setTimeout(function () {
+        if (!_this3.choiceRefs.includes(document.activeElement)) {
+          _this3.props.onComponentBlur(evt);
+        }
+      }, 20);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var type = this.type();
@@ -270,7 +303,16 @@ ChoiceList.propTypes = {
    * The field's `name` attribute
    */
   name: _propTypes2.default.string.isRequired,
+  /**
+   * Called anytime any choice is blurred
+   */
   onBlur: _propTypes2.default.func,
+  /**
+   * Called when any choice is blurred and the focus does not land on one
+   * of the other choices inside this component (i.e., when the whole
+   * component loses focus)
+   */
+  onComponentBlur: _propTypes2.default.func,
   onChange: _propTypes2.default.func,
   /**
    * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.

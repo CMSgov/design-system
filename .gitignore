@@ -5,6 +5,10 @@
 # in order to use the same tooling and documentation processes
 packages/themes
 
+# Backstop JS
+tools/backstop_data/html_report
+tools/backstop_data/bitmaps_test
+
 # Compiled example files
 examples/**/dist
 

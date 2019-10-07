@@ -9,7 +9,7 @@ const primaryURL = `${ROOT_URL}/example/components.button..ds-c-button--primary/
 const transparentURL = `${ROOT_URL}/example/components.button..ds-c-button--transparent/`;
 const dangerURL = `${ROOT_URL}/example/components.button..ds-c-button--danger/`;
 const successURL = `${ROOT_URL}/example/components.button..ds-c-button--success/`;
-const disabledURL = `${ROOT_URL}/example/components.button.disabled/`;
+const disabledURL = `${ROOT_URL}/example/components.button..ds-c-button--disabled/`;
 
 describe('Button component', () => {
   it('Button should render', async() => {

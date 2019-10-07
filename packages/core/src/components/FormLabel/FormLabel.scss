@@ -1,18 +1,5 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
-/*
-Form Label & Legend
-
-Markup:
-<label class="ds-c-label" for="number-field-id">
-  Phone number
-  <span class="ds-c-field__hint">
-    Optional. We'll use this number as a backup if we need to contact you about your application.
-  </span>
-</label>
-
-Style guide: components.form-label
-*/
 .ds-c-label {
   display: block;
   font-size: $base-font-size;
@@ -28,22 +15,22 @@ Style guide: components.form-label
   color: $color-base-inverse;
 }
 
+// Applies to "Checkbox & Radio" and "Date field"
+.ds-c-fieldset {
+  border: 0;
+  // We apply the same margin as a label, since in the context of a fieldset
+  // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
+  margin: $spacer-3 0 0;
+  min-width: 0;
+  padding: 0;
+}
+
 // Webkit won't render a top margin on a fieldset's <legend>, so we apply
 // the top margin to the fieldset instead.
 .ds-c-fieldset > .ds-c-label:first-child {
   margin-top: 0;
 }
 
-/*
-Hint text
-
-(docs stolen from Gov.UK)
-
-- don’t use placeholder text in form fields, as this will disappear once content is entered into the form field
-- use hint text for supporting contextual help, this will always be shown
-- hint text should sit above a form field
-- ensure hint text can be read correctly by screen readers
-*/
 .ds-c-field__hint {
   color: $color-muted;
   display: block;
@@ -57,54 +44,3 @@ Hint text
 .ds-c-choice + label .ds-c-field__hint {
   flex-basis: 100%;
 }
-
-/*
-`<FormLabel>`
-
-@react-component FormLabel
-
-Style guide: components.form-label.react
-*/
-
-/*
----
-
-### When to use
-
-#### Labels
-
-- Each form field should have a <label>. Never use a field's placeholder attribute as the primary way to label the field.
-
-#### Legends
-
-- Use a single legend for fieldset (this is required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
-
-### Usage
-
-#### Labels
-
-- Apply the `ds-c-label` class to `<label>` elements.
-- Each field should have a `<label>`. Never use a field's `placeholder` attribute as the primary way to label the field.
-- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
-- Labels should be placed above their fields.
-- Label text should be short and in sentence case.
-- Avoid colons at the end of labels.
-
-#### Hint text
-
-- Place hint text within the field's `<label>` element.
-- Apply the `ds-c-field__hint` class to hint text.
-- Use hint text for supporting contextual help, which will always be shown.
-- Hint text should sit above a form field and below the label text.
-
-#### Validation
-
-- Place inline validation messages within the field's `<label>` element.
-- Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
-
-### Learn More
-
-- [Form Guidelines](/guidelines/forms/)
-
-Style guide: components.form-label.guidance
-*/

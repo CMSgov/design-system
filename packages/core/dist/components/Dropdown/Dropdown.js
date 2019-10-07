@@ -101,7 +101,7 @@ var Dropdown = exports.Dropdown = function (_React$PureComponent) {
       var optionElements = options.map(function (option) {
         return _react2.default.createElement(
           'option',
-          { key: option.value },
+          { key: option.value, value: option.value },
           option.label
         );
       });
