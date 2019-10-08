@@ -169,7 +169,19 @@ module.exports = (gulp, shared) => {
   // Convenience-task for copying assets to the "public" directory
   gulp.task('docs:public', ['docs:fonts', 'docs:images']);
 
-  gulp.task('docs:fonts', () => {
+  gulp.task('docs:fonts', ['docs:fonts:core'], () => {
+    dutil.logMessage(
+      '🔡 ',
+      'Copying fonts from "src" directory into "public" directory' +
+        shared.docsPath
+    );
+
+    return gulp
+      .src(`${docsPkgDirectory}/src/**/fonts/*`)
+      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
+  });
+
+  gulp.task('docs:fonts:core', () => {
     dutil.logMessage(
       '🔡 ',
       'Copying fonts from core package into "public" directory'
