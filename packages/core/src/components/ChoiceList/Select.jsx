@@ -18,6 +18,10 @@ export class Select extends React.PureComponent {
     if (this.props.focusTrigger) {
       this.loader && this.loader.focus();
     }
+
+    console.error(
+      `[Deprecated] The <Select> component is no longer supported and will be removed in a future release, please use <Dropdown> instead.`
+    );
   }
 
   render() {

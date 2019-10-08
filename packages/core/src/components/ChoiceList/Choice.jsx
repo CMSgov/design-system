@@ -19,6 +19,12 @@ export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if (props['inputPlacement']) {
+      console.error(
+        `[Deprecated]: 'inputPlacement' is no longer supported and will be removed in a future release, please remove right-to-left <Choice>`
+      );
+    }
+
     this.handleChange = this.handleChange.bind(this);
     this.id =
       this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
