@@ -33,6 +33,7 @@ ReactDOM.render(
         hint="Checkbox A hint"
         name="checkbox_choice"
         value="a"
+        inputPlacement="right"
       >
         Checkbox A
       </Choice>
