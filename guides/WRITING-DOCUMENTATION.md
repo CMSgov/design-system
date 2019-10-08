@@ -224,15 +224,22 @@ The format of these markdown pages follow the same format as Jekyll pages:
 
 ### Front-matter
 
-At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines. **Note:** The weight property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
+At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines. 
 
 ```
 ---
+label: Get started
 title: Hello world
 markup: hello-world.example.html
 weight: 100
 ---
 ```
+
+#### Label (optional)
+The `label` property is used for the nav label for a page. If it is not provided, the title property is used instead
+
+#### Weight (optional)
+The `weight` property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
 
 ### Body
 

@@ -51,9 +51,11 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     referenceURI = path.join(rootPath, referenceURI);
   }
 
+  const header = parts.attributes.title || 'Untitled';
   let page = {
     depth: depth,
-    header: parts.attributes.title || 'Untitled',
+    label: parts.attributes.label || header,
+    header,
     description: formatText(description, rootPath),
     markup: parts.attributes.markup || '',
     reference: reference,
