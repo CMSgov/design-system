@@ -55,7 +55,7 @@ class Page extends React.PureComponent {
     return <PageBlock {...this.props} hideHeader />;
   }
 
-  renderGuidanceTabPanel() {
+  renderGuidanceSection() {
     const sections = this.guidanceSections();
 
     if (sections.length) {
@@ -75,7 +75,7 @@ class Page extends React.PureComponent {
           {this.renderBody()}
           {this.renderChildPageBlocks(this.usageSections())}
 
-          {this.renderGuidanceTabPanel()}
+          {this.renderGuidanceSection()}
         </div>
       );
     }
