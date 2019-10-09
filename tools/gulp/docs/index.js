@@ -189,13 +189,15 @@ module.exports = (gulp, shared) => {
     if (shared.theme) {
       dutil.logMessage(
         '🔡 ',
-        `Copying fonts from theme "${shared.theme}/src" directory into "public" directory`
+        `Copying fonts from "${shared.theme}/src/font" directory into "public" directory`
       );
 
       return gulp
-        .src(`packages/${shared.theme}/src/**/fonts/*`)
+        .src(`packages/${shared.theme}/src/fonts/**/*`)
         .pipe(
-          gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public'))
+          gulp.dest(
+            buildPath(shared.docsPath, shared.rootPath, '/public/fonts')
+          )
         );
     }
   });
