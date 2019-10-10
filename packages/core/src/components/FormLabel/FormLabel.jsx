@@ -9,9 +9,13 @@ import classNames from 'classnames';
 export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
+      const classes = classNames('ds-c-field__hint', 'ds-u-color--error', {
+        'ds-u-color--error-light': this.props.inversed
+      });
+
       return (
         <span
-          className="ds-c-field__hint ds-u-color--error"
+          className={classes}
           id={`${this.props.fieldId}-message`}
           role="alert"
         >
@@ -57,13 +61,15 @@ export class FormLabel extends React.PureComponent {
     const { fieldId, id, children } = this.props;
     const ComponentType = this.props.component;
     const labelTextClasses = classNames(this.props.labelClassName);
-    const classes = classNames('ds-c-label', this.props.className);
+    const classes = classNames('ds-c-label', this.props.className, {
+      'ds-c-label--inverse': this.props.inversed
+    });
 
     return (
       <ComponentType className={classes} htmlFor={fieldId} id={id}>
         <span className={labelTextClasses}>{children}</span>
-        {this.errorMessage()}
         {this.hint()}
+        {this.errorMessage()}
       </ComponentType>
     );
   }

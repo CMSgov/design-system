@@ -1,44 +1,9 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
-/*
-Table
-
-Tables show tabular data in columns and rows.
-
-@uswds https://standards.usa.gov/components/tables/
-
-Markup:
-<table class="ds-c-table {{modifier}}">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th class="ds-u-text-align--right" scope="col">Rate</th>
-      <th scope="col">Favorite fruit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Fred</td>
-      <td class="ds-u-text-align--right">51.25%</td>
-      <td>Apples</td>
-    </tr>
-    <tr>
-      <td>Tamara</td>
-      <td class="ds-u-text-align--right">98.70%</td>
-      <td>Strawberries</td>
-    </tr>
-  </tbody>
-</table>
-
-.ds-c-table--borderless - Borderless table
-
-Style guide: components.table
-*/
 .ds-c-table {
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
-  min-width: 100%;
 
   td {
     background-color: $color-white;
@@ -57,7 +22,7 @@ Style guide: components.table
   th,
   td {
     border: 1px solid $color-gray;
-    padding: 1.5rem;
+    padding: $spacer-2;
   }
 }
 
@@ -84,64 +49,3 @@ Style guide: components.table
   margin-bottom: $spacer-1;
   text-align: left;
 }
-
-/*
-Table with two headers and a caption
-
-Markup:
-<table class="ds-c-table {{modifier}}">
-  <caption class="ds-c-table__caption">Household members</caption>
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Street</th>
-      <th scope="col">Employer</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">John Doe</th>
-      <td>123 Braavos Ave.</td>
-      <td>Acme Co.</td>
-    </tr>
-    <tr>
-      <th scope="row">Jane Doe</th>
-      <td>456 King's Landing</td>
-      <td>Acme Co.</td>
-    </tr>
-  </tbody>
-</table>
-
-Style guide: components.table.complex
-*/
-
-/*
----
-
-## When to use
-
-- When you need tabular information, such as statistical data.
-- When users need to compare sets of information.
-
-## When to consider alternatives
-
-- Depending on the type of content, consider using other presentation formats such as definition lists or hierarchical lists.
-- If you're writing out name / value pairs, there's often a more compact way compared to using a table.
-
-## Guidance
-
-- Right-align numerical data in tables. You can use a [text alignment utility class](/utilities/text-align) for this. This makes it easier to scan and compare values.
-
-## Accessibility
-
-- Tables can have two levels of headers. Each header cell should have `scope="col"` or `scope="row"`. [Learn more about the "scope" attribute.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope)
-- Complex tables are tables with more than two levels of headers. Each header should be given a unique `id` and each data cell should have a `headers` attribute with each related header cell’s `id` listed.
-- When adding a title to a table, include it in a `<caption>` tag inside of the `<table>` element.
-
-## Learn more
-
-- [W3C Web Accessibility Tutorial \- Table Concepts](https://www.w3.org/WAI/tutorials/tables/)
-- [Design Better Data Tables](https://medium.com/mission-log/design-better-data-tables-430a30a00d8c)
-
-Style guide: components.table.guidance
-*/

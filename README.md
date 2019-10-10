@@ -4,7 +4,7 @@
 
 ## Packages
 
-You're currently at the root of a monorepo which contains multiple NPM packages in the `packages/` directory. The following packages located in the [`packages` directory](packages/) of this repo. View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
 | Name | Description |
 | ---- | ----------- |
@@ -33,9 +33,7 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contr
 
 ## Running locally
 
-This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps ensure everyone is using the same package versions. If you've used NPM before, you'll have no trouble using Yarn.
-
-[**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
+This project uses [Yarn](https://yarnpkg.com/) for package management. Yarn helps to ensure everyone is using the same package versions. [**Install Yarn**](https://yarnpkg.com/docs/install), if you don't have it yet.
 
 ### Getting started
 
@@ -55,7 +53,7 @@ These scripts can all be run from the root level of the repo:
 * `yarn build`
   * Compile/transpile/uglify everything and makes things release-ready.
 * `yarn bump`
-  * Increments package versions. Read "[Versioning](https://github.com/CMSgov/design-system/wiki/Versioning)" for more info.
+  * Increments package versions. Read "[Versioning](/guides/RELEASE-PROCESS.md#versioning)" for more info.
 * `yarn generate`
   * Generates the necessary files for a new core component
   * Alias: `yarn g`
@@ -63,6 +61,10 @@ These scripts can all be run from the root level of the repo:
   * Runs JS unit tests
   * Lints JS using ESLint
   * Lints Sass using stylelint
+* `yarn test:e2e`
+  * Runs end to end tests
+* `yarn test:e2e packages/core/Autocomplete`
+  * Runs a single end to end test, this example runs Autocomplete
 * `yarn test:watch`
   * Runs JS unit tests and will continue to run tests as files change
 * `yarn update-snapshots`
@@ -72,7 +74,7 @@ These scripts can all be run from the root level of the repo:
 
 #### Theme scripts
 
-You can also use the following scripts to [preview and build a theme](https://github.com/CMSgov/design-system/wiki/site-packages-and-themes):
+You can also use the following scripts to [build and preview a theme](https://design.cms.gov/startup/site-package/):
 
 * `yarn start:theme`
 * `yarn build:theme`
@@ -84,8 +86,20 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
 
+### Visual regression testing
+
+We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
+
+* Install backstopJS `yarn install`
+* Run the site locally `yarn start`
+* In a new terminal window run the backstop tests `backstop test`
+  - This will test the local CMSDS documentation site against the CMSDS production documentation site
+* After the tests run an html report will open in your browser showing passed and failed tests
+
+**Note:** Use `backstop reference` to create new reference files. This would need to be run when adding a new component. 
+
 ## Contact
 
 To contact the CMS Design System product owners, please email `WPMG_Web@cms.hhs.gov`
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](/guides/CODE-OF-CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE-OF-CONDUCT.md) to learn more.

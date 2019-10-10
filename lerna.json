@@ -14,5 +14,5 @@
     "packages/*",
     "packages/themes/*"
   ],
-  "version": "1.31.1"
+  "version": "3.2.0"
 }

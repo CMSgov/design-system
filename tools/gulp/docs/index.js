@@ -40,7 +40,7 @@ function addTopLevelPages(kssSections) {
   return Promise.resolve(
     [
       {
-        header: 'Getting Started',
+        header: 'Getting started',
         reference: 'startup',
         sections: [],
         weight: 4
@@ -62,6 +62,12 @@ function addTopLevelPages(kssSections) {
         reference: 'style',
         sections: [],
         weight: 7
+      },
+      {
+        header: 'Utilities',
+        reference: 'utilities',
+        sections: [],
+        weight: 20
       },
       {
         header: 'Components',

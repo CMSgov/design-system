@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-core",
-  "version": "1.31.1",
+  "version": "3.2.0",
   "publishConfig": {
     "access": "public"
   },
@@ -9,10 +9,10 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/index.js",
   "dependencies": {
-    "@cmsgov/design-system-support": "^1.31.1",
+    "@cmsgov/design-system-support": "^3.2.0",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
-    "downshift": "1.31.16",
+    "downshift": "^3.2.10",
     "ev-emitter": "^1.1.1",
     "lodash.uniqueid": "^4.0.1",
     "react-aria-modal": "^2.11.1"

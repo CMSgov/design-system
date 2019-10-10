@@ -1,11 +1,11 @@
 import Choice from './Choice';
-import ChoiceList from './ChoiceList';
+import Dropdown from '../Dropdown/Dropdown';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const selectChoices = [
+const dropdownOptions = [
   { label: 'A', value: 'A' },
-  { defaultChecked: true, label: 'B', value: 'B' },
+  { label: 'B', value: 'B' },
   { label: 'C', value: 'C' },
   { label: 'D', value: 'D' },
   { label: 'E', value: 'E' },
@@ -14,12 +14,13 @@ const selectChoices = [
   { label: 'H', value: 'H' }
 ];
 
-const childSelect = (
-  <ChoiceList
-    choices={selectChoices}
-    label="Select example"
+const childDropdown = (
+  <Dropdown
+    options={dropdownOptions}
+    defaultValue={'B'}
+    label="Dropdown example"
     labelClassName="ds-c-label ds-u-margin-top--0"
-    name="select_choices_field"
+    name="dropdown_choices_field"
   />
 );
 
@@ -53,7 +54,7 @@ ReactDOM.render(
         name="checkbox_choice_children"
         value="b"
         checkedChildren={
-          <div className="ds-c-choice__checkedChild">{childSelect}</div>
+          <div className="ds-c-choice__checkedChild">{childDropdown}</div>
         }
       >
         Checkbox B - with children
@@ -86,7 +87,7 @@ ReactDOM.render(
         type="radio"
         value="d"
         checkedChildren={
-          <div className="ds-c-choice__checkedChild">{childSelect}</div>
+          <div className="ds-c-choice__checkedChild">{childDropdown}</div>
         }
       >
         Radio B - with children
@@ -106,7 +107,7 @@ ReactDOM.render(
         value="b"
         checkedChildren={
           <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--small">
-            {childSelect}
+            {childDropdown}
           </div>
         }
         size="small"
@@ -133,7 +134,7 @@ ReactDOM.render(
           value="d"
           checkedChildren={
             <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--inverse">
-              {childSelect}
+              {childDropdown}
             </div>
           }
         >

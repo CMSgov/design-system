@@ -90,6 +90,7 @@ export class Choice extends React.PureComponent {
       requirementLabel,
       size,
       uncheckedChildren,
+      inputRef,
       ...inputProps
     } = this.props;
 
@@ -116,6 +117,9 @@ export class Choice extends React.PureComponent {
           onChange={this.handleChange}
           ref={input => {
             this.input = input;
+            if (inputRef) {
+              inputRef(input);
+            }
           }}
           {...inputProps}
         />
@@ -170,6 +174,10 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: PropTypes.bool,
+  /**
+   * Access a reference to the `input` element
+   */
+  inputRef: PropTypes.func,
   /**
    * Additional hint text to display below the choice's label
    */
