@@ -4,9 +4,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 --no-sandbox --disable-dev-shm-usage http://localhost &
 install:
-  - yarn install
-  - yarn build
-  - yarn test
+  - yarn
 branches:
   only:
     - master
