@@ -3,7 +3,11 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.1.0
   - export PATH="$HOME/.yarn/bin:$PATH"
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 --no-sandbox --disable-dev-shm-usage http://localhost &
-branches:
+install:
+  - yarn install
+  - yarn build
+  - yarn test
+ranches:
   only:
     - master
 cache: yarn
