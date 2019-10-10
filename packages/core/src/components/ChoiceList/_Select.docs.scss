@@ -42,7 +42,7 @@ Style guide: components.select.react
 - If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use checkboxes instead.
 - If the data is highly familiar to users, such as the day, month, or year of their birth.
 
-## Guidance
+### Usage
 
 - Choose a sensible order for the options to enable visual scanning of the lists.
 - Test dropdowns thoroughly with members of your target audience. Several usability experts suggest they should be the “UI of last resort.” Many users find them confusing and difficult to use.
@@ -52,18 +52,18 @@ Style guide: components.select.react
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
 
-## Accessibility
+### Accessibility
 
 - Make sure your dropdown has a label. Don’t replace it with the default menu option (for example, removing the “State” label and just having the dropdown read “Select a state” by default).
 - Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
 - On some devices the list of options cannot be zoomed, which means that some people with visual impairments cannot use them.
 
-## Related patterns
+### Related patterns
 
 - [Checkbox and Radio](/components/choice)
 - [Text field](/components/text-field)
 
-## Learn more
+### Learn more
 
 - [Form Guidelines](/guidelines/forms/)
 - [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
