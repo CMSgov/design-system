@@ -7,7 +7,7 @@ install:
   - yarn install
   - yarn build
   - yarn test
-ranches:
+branches:
   only:
     - master
 cache: yarn
