@@ -257,9 +257,9 @@ ChoiceList.propTypes = {
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.
    */
-  type: PropTypes.oneOf(['checkbox', 'radio', 'select']),
+  type: PropTypes.oneOf(['checkbox', 'radio']),
   /**
-   * Adds `aria-label` attribute if component renders a select
+   * Adds `aria-label` attribute if component renders a select (deprecated)
    */
   ariaLabel: PropTypes.string
 };
