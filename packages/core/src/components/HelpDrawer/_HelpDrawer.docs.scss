@@ -1,0 +1,35 @@
+/*
+Help Drawer
+
+A help drawer provides a space for medium to long-form help
+content — content that's too long or not common enough to warrant
+being on the page by default.
+
+On large screens it's fixed to the side of the screen, and on
+smaller screens it overlays the entire screen.
+
+Render the drawer below the toggle bottom that triggers it.
+This way the markup remains semantically sound and screen reader friendly.
+
+Markup: help-drawer.example.html
+
+Style guide: components.help-drawer
+*/
+
+/*
+`<HelpDrawer>`
+
+@react-component HelpDrawer
+
+Style guide: components.help-drawer.react-help-drawer
+*/
+
+/*
+`<HelpDrawerToggle>`
+
+@hide-example
+
+@react-component HelpDrawerToggle
+
+Style guide: components.help-drawer.react-help-drawer-toggle
+*/
