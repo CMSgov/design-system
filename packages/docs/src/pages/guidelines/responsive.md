@@ -5,9 +5,7 @@ weight: 10
 
 The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile first**.
 
-![Responsive demo]({{root}}/public/images/responsive-demo.gif)
-
-## Usage
+## Breakpoints
 
 Use the breakpoint prefixes `sm`, `md`, `lg`, and `xl` to apply styles at different viewport sizes. For example: `ds-u-lg-display--none` sets an element's `display` property to `none` when the viewport is `1024px` or wider.
 
@@ -23,9 +21,9 @@ Use the breakpoint prefixes `sm`, `md`, `lg`, and `xl` to apply styles at differ
 
 In order to reduce code bloat, not everything supports a breakpoint prefix. Only the items below support breakpoint prefixes.
 
-* [Grid]({{root}}/layout/grid)
+* [Grid]({{root}}/layout/grid#layout.grid.responsive)
 * [Typography]({{root}}/style/typography#style.typography.responsive)
-* [Flexbox]({{root}}/utilities/flexbox)
+* [Flexbox]({{root}}/utilities/flexbox#utilities.flexbox.responsive)
 * [Float]({{root}}/utilities/float#utilities.float.responsive)
 * [Font size]({{root}}/utilities/font-size#utilities.font-size.responsive)
 * [Margin]({{root}}/utilities/margin#utilities.margin.responsive)
