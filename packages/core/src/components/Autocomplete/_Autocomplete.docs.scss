@@ -17,16 +17,16 @@ Style guide: components.autocomplete.react
 /*
 ---
 
-## When to use
+### When to use
 
 - If you are returning results from a known domain like a database of zip codes or a taxonomy of keywords
 - If you have a list of options that would cause a [select menu](/components/select) to be unusually long
 
-## When to consider alternatives
+### When to consider alternatives
 
 - When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/choice), or a [select menu](/components/select) in these cases.
 
-## Guidance
+### Usage
 
 - `<Autocomplete>` makes use of the `<Downshift>` component, maintained by Paypal: [Downshift docs on Github](https://github.com/paypal/downshift). We recently bumped the Downshift component to Version 3.2.7.
 - We continue to use the [ARIA 1.0 Combobox With List Autocomplete](https://www.w3.org/TR/wai-aria-practices-1.1/examples/combobox/aria1.0pattern/combobox-autocomplete-list.html) pattern. This decision was made ensures good compatibility with assistive devices (JAWS, NVDA, VoiceOver). This was done because the ARIA 1.1 markup pattern triggers a different behavior on containers with a role="combobox" attribute.
@@ -35,13 +35,13 @@ Style guide: components.autocomplete.react
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
 
-## Accessibility
+### Accessibility
 
 - The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
 - `<Autocomplete>` allows developers to add hint text in the `<label>` element. This hint `<span>` is added to the markup by passing a  `String` into the `hint` prop.
 - `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
 
-## Focus Management
+### Focus Management
 
 - `<Autocomplete>` has a new Boolean prop called `focusTrigger`. Adding this prop will set keyboard focus on the internal `<Textfield>`. Focus is set immediately when the `componentDidMount()` lifecycle method fires.
 - This is useful when components are added dynamically, after the application has been rendered. All major screen readers (JAWS, NVDA, VoiceOver) have been tested with this feature, and announce the new input correctly.
