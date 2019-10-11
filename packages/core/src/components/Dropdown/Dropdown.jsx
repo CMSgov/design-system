@@ -14,9 +14,19 @@ import uniqueId from 'lodash.uniqueid';
  * by allowing refs to be passed.
  */
 export class Dropdown extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    if (props['fieldRef']) {
+      console.error(
+        `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+      );
+    }
+  }
+
   componentDidMount() {
     if (this.props.focusTrigger) {
-      this.selectRef && this.selectRef.focus();
+      this.focusRef && this.focusRef.focus();
     }
   }
 
@@ -37,6 +47,7 @@ export class Dropdown extends React.PureComponent {
       fieldRef,
       focusTrigger,
       hint,
+      inputRef,
       inversed,
       label,
       labelClassName,
@@ -78,14 +89,9 @@ export class Dropdown extends React.PureComponent {
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
-          ref={ref => {
-            if (focusTrigger) {
-              this.selectRef = ref;
-            }
-            if (fieldRef) {
-              fieldRef(ref);
-            }
-          }}
+          ref={
+            focusTrigger ? ref => (this.focusRef = ref) : inputRef || fieldRef
+          }
           /* eslint-enable no-return-assign */
           {...selectProps}
         >
@@ -120,7 +126,7 @@ Dropdown.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Access a reference to the `select` element
+   * (Deprecated) Access a reference to the `select` element
    */
   fieldRef: PropTypes.func,
   /**
@@ -131,6 +137,10 @@ Dropdown.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Access a reference to the `select` element
+   */
+  inputRef: PropTypes.func,
   /**
    * Applies the "inverse" UI theme
    */

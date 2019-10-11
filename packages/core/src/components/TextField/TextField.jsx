@@ -16,11 +16,17 @@ export class TextField extends React.PureComponent {
     super(props);
     this.id = props.id || uniqueId('textfield_');
     this.labelId = props.labelId || uniqueId('textfield_label_');
+
+    if (props['fieldRef']) {
+      console.error(
+        `[Deprecated]: Please remove the React property 'fieldRef' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+      );
+    }
   }
 
   componentDidMount() {
     if (this.props.focusTrigger) {
-      this.loader && this.loader.focus();
+      this.focusRef && this.focusRef.focus();
     }
   }
 
@@ -61,9 +67,7 @@ export class TextField extends React.PureComponent {
 
       return (
         <div
-          className={`ds-c-field__before ds-c-field__before--${
-            this.props.mask
-          }`}
+          className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}
         >
           {content[this.props.mask]}
         </div>
@@ -82,6 +86,7 @@ export class TextField extends React.PureComponent {
       hint,
       id,
       inversed,
+      inputRef,
       label,
       labelClassName,
       labelId,
@@ -119,7 +124,7 @@ export class TextField extends React.PureComponent {
         className={fieldClasses}
         id={this.id}
         /* eslint-disable no-return-assign */
-        ref={focusTrigger ? loader => (this.loader = loader) : fieldRef}
+        ref={focusTrigger ? ref => (this.focusRef = ref) : inputRef || fieldRef}
         /* eslint-enable no-return-assign */
         rows={_rows}
         type={multiline ? undefined : type}
@@ -173,7 +178,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Access a reference to the `input` or `textarea` element
+   * (Deprecated) Access a reference to the `input` or `textarea` element
    */
   fieldRef: PropTypes.func,
   /**
@@ -188,6 +193,10 @@ TextField.propTypes = {
    * A unique `id` to be used on the text field.
    */
   id: PropTypes.string,
+  /**
+   * Access a reference to the `input` or `textarea` element
+   */
+  inputRef: PropTypes.func,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
