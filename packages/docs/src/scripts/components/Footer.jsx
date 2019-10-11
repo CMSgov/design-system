@@ -32,7 +32,7 @@ function renderLinks(links) {
 
   return urls.map(function(url) {
     return (
-      <dd key={url} className="ds-u-font-size--small">
+      <dd key={url} className="ds-u-font-size--small ds-u-margin-left--0">
         <a href={url} target="_blank">
           {links[url]}
         </a>
@@ -92,8 +92,8 @@ const Footer = () => {
             <div className="ds-l-col--12 ds-l-sm-col--6 ds-l-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
               <h6 className="ds-h4">Contact Us</h6>
               <p className="ds-u-font-size--small">
-                Need help with the CMS Design System for your web or mobile
-                application?{' '}
+                Need help with the CMS Design System?
+                <br />
                 <a href="https://forms.cms.gov/cms-wds-design-system-contact-form/responses/new">
                   Drop us a line{' '}
                 </a>
@@ -106,7 +106,7 @@ const Footer = () => {
             <dl className="ds-l-col--12 ds-l-sm-col--6 ds-l-lg-col--4 ds-u-margin-bottom--4">
               <dt className="ds-h4">Additional resources</dt>
               {renderLinks(helpfulLinks)}
-              <dd className="ds-u-font-size--small">
+              <dd className="ds-u-font-size--small ds-u-margin-left--0">
                 <button
                   type="button"
                   className="ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--0 titlelink"
