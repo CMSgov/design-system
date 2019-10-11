@@ -30,7 +30,7 @@ describe('Page', () => {
     });
   });
 
-  describe('with tabs', () => {
+  describe('with guidance', () => {
     let page;
 
     beforeEach(() => {
@@ -72,11 +72,11 @@ describe('Page', () => {
       };
     });
 
-    it('should have tabs', () => {
+    it('should have guidance section', () => {
       const wrapper = shallow(<Page {...page} />);
-      const panels = wrapper.find('TabPanel');
+      const panels = wrapper.find('#guidance');
 
-      expect(panels.length).toBe(2);
+      expect(panels.length).toBe(1);
     });
   });
 });
