@@ -19,6 +19,12 @@ export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if (props['inputPlacement'] === 'right') {
+      console.error(
+        `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+      );
+    }
+
     this.handleChange = this.handleChange.bind(this);
     this.id =
       this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
@@ -196,7 +202,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Placement of the input relative to the text label
+   * (Deprecated) Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),
