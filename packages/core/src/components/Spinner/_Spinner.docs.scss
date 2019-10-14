@@ -14,10 +14,7 @@ Changing the spinner color
 
 To change the color of the spinner, one only has to change the `color` property of the spinner element. This can be done with the standard Design System [utility classes](/utilities/color). The color of the spinner also defaults to `inherit`, so it will take on the color of the text in its parent container.
 
-Markup:
-<span class="ds-c-spinner ds-u-color--primary" aria-valuetext="Loading" role="progressbar"></span>
-<span class="ds-c-spinner ds-u-color--success" aria-valuetext="Loading" role="progressbar"></span>
-<span class="ds-c-spinner ds-u-color--muted" aria-valuetext="Loading" role="progressbar"></span>
+Markup: spinner.example.html
 
 Style guide: components.spinner.colors
 */
@@ -75,20 +72,20 @@ Style guide: components.spinner.react
 /*
 ---
 
-## When to use
+### When to use
 
 - To indicate a loading state for quick asynchronous tasks
 
-## When to consider alternatives
+### When to consider alternatives
 
 - When the process it is waiting for takes a long time. Spinners provide no feedback other than that _we're waiting_, so long processes can make users nervous that something went wrong. Consider adding descriptive text or another UX pattern entirely.
 - When you are loading a whole page of content. If all you show the user is a spinner, the user may spend several seconds watching the spinner to be surprised with all the content all at once. Consider using a [_skeleton screen_](https://www.lukew.com/ff/entry.asp?1797) so the user knows what to expect.
 
-## Guidance
+### Usage
 
 - If the process takes a long time, use something else.
 
-## Accessibility
+### Accessibility
 
 - The Spinner element should have an [`aria-valuetext`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-valuetext_attribute) attribute with a value of `loading` to provide a human readable text alternative for screen readers.
 - When placed within a parent container, the parent element should include several ARIA attributes: `aria-relevant`, `aria-live`, and optionally `aria-atomic`.
@@ -96,7 +93,7 @@ Style guide: components.spinner.react
   - `aria-live` should be set to `polite` for a screen reader to speak the changes whenever the user is idle. `aria-live="assertive"` should only be used in situations that require a user&rsquo;s immediate attention.
   - By default, a screen reader will only speak the contents of a changed node, and not the entire contents of the element. Set `aria-atomic="true"` for cases, such as an address, where a screen reader should read the contents of the entire element.
 
-## Learn more
+### Learn more
 
 - [Response Times](https://www.nngroup.com/articles/response-times-3-important-limits/)
 - [Progress Indicators](https://www.nngroup.com/articles/progress-indicators/)

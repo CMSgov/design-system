@@ -94,7 +94,7 @@ Style guide: utilities.display-visibility.visibility
 }
 
 /*
-Toggling visibility by breakpoint
+Responsive visibility
 
 @responsive
 
@@ -104,20 +104,13 @@ A breakpoint prefix is supported on all of the utility classes mentioned above, 
 
 Markup:
 <% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
-  <div class="ds-u-<%= breakpoint %>-display--none ds-u-color--muted">
-    Hidden on <%= breakpoint %> screens and larger
-  </div>
-  <div class="ds-u-<%= breakpoint %>-display--block">
-    Displayed as block on <%= breakpoint %> screens and larger
-  </div>
-  <div class="ds-u-<%= breakpoint %>-display--flex">
-    Displayed as flex on <%= breakpoint %> screens and larger
-  </div>
-  <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
-    Invisible on <%= breakpoint %> screens and larger
-  </div>
-  <div class="ds-u-<%= breakpoint %>-visibility--visible">
-    Visible on <%= breakpoint %> screens and larger
+  <div class="ds-u-margin--1">
+    <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
+      Hidden on <%= breakpoint %> screens and larger
+    </div>
+    <div class="ds-u-<%= breakpoint %>-visibility--visible">
+      Visible on <%= breakpoint %> screens and larger
+    </div>
   </div>
 <% }) %>
 
