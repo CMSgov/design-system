@@ -17,11 +17,13 @@ export class Alert extends React.PureComponent {
   }
 
   heading() {
-    return (
-      <h3 className="ds-c-alert__heading" id={this.headingId}>
-        {this.props.heading}
-      </h3>
-    );
+    if (this.props.heading) {
+      return (
+        <h3 className="ds-c-alert__heading" id={this.headingId}>
+          {this.props.heading}
+        </h3>
+      );
+    }
   }
 
   render() {
@@ -36,7 +38,7 @@ export class Alert extends React.PureComponent {
       <div
         className={classes}
         role={this.props.role}
-        aria-labelledby={this.headingId}
+        aria-labelledby={this.props.heading ? this.headingId : undefined}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
