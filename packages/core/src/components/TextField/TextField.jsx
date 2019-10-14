@@ -61,9 +61,7 @@ export class TextField extends React.PureComponent {
 
       return (
         <div
-          className={`ds-c-field__before ds-c-field__before--${
-            this.props.mask
-          }`}
+          className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}
         >
           {content[this.props.mask]}
         </div>
@@ -93,7 +91,6 @@ export class TextField extends React.PureComponent {
       type,
       ...fieldProps
     } = this.props;
-
     const FieldComponent = multiline ? 'textarea' : 'input';
     const _rows = multiline && rows ? rows : undefined;
 
@@ -214,17 +211,6 @@ TextField.propTypes = {
    * field's appearance and functionality may be affected.
    */
   mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
-  /**
-   * `max` HTML input attribute
-   */
-  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  /**
-   * `min` HTML input attribute
-   */
-  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  /**
-   * Whether or not the text field is a multiline text field
-   */
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
