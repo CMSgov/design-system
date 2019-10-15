@@ -70,11 +70,30 @@ The documentation site should load at the address: http://localhost:3000/
 
 The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles.
 
-* Run **`yarn start:theme`** to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
-* Run **`yarn build:theme`** to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
-* **Note**:
-  - If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
-  - If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+1. Run `yarn start:theme` to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
+1. Run `yarn build:theme` to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
+
+**Note**:
+* If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
+* If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+
+### How to preview a site package from another GitHub repo
+
+1. Get the latest from the GitHub repo branch where the site package is located.
+
+1. Fork the CMS Design System to your own GitHub account.
+
+1. Go to your fork of the CMS Design System.
+
+1. In the packages/themes directory copy and replace local site package files like the images, fonts, and src folder as well as the package.json file.
+
+1. Run `yarn install` to get any new dependencies.
+
+1. Run `yarn build:theme`
+
+1. Run `yarn start:theme`
+
+1. You should now see your site package documentation site at http://localhost:3000/
 
 ### How to create documentation for your site package
 
