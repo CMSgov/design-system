@@ -4,9 +4,13 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <div>
-    <Alert heading="Alert heading">This is a React Alert component.</Alert>
+    <Alert heading="Status heading">
+      <p className="ds-c-alert__text">This is a React Alert component.</p>
+    </Alert>
     <Alert className={'ds-u-margin-top--2'}>
-      This is a React Alert component without a heading
+      <p className="ds-c-alert__text">
+        This is a React Alert component without a heading.
+      </p>
     </Alert>
     <Alert
       heading="Alert with only a heading"
