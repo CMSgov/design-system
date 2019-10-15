@@ -8,14 +8,22 @@ export class Alert extends React.PureComponent {
     super(props);
 
     this.headingId = this.props.headingId || uniqueId('alert_');
+
+    if (!props.heading && !props.children) {
+      console.error(
+        `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
+      );
+    }
   }
 
   heading() {
-    return (
-      <h3 className="ds-c-alert__heading" id={this.headingId}>
-        {this.props.heading}
-      </h3>
-    );
+    if (this.props.heading) {
+      return (
+        <h3 className="ds-c-alert__heading" id={this.headingId}>
+          {this.props.heading}
+        </h3>
+      );
+    }
   }
 
   render() {
@@ -30,7 +38,7 @@ export class Alert extends React.PureComponent {
       <div
         className={classes}
         role={this.props.role}
-        aria-labelledby={this.headingId}
+        aria-labelledby={this.props.heading ? this.headingId : undefined}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
@@ -44,12 +52,26 @@ Alert.defaultProps = {
   role: 'region'
 };
 Alert.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+  /**
+   * Text for the alert heading
+   */
   heading: PropTypes.string,
+  /**
+   * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
+   */
   headingId: PropTypes.string,
+  /**
+   * Boolean to hide the `Alert` icon
+   */
   hideIcon: PropTypes.bool,
-  /** ARIA `role` */
+  /**
+   * ARIA `role`, defaults to 'region'
+   */
   role: PropTypes.oneOf(['alert', 'alertdialog', 'region']),
+  /**
+   * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
+   */
   variation: PropTypes.oneOf(['error', 'warn', 'success'])
 };
 

@@ -3,8 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <Alert heading="A react component">
-    This is an example of a React Alert component.
-  </Alert>,
+  <div>
+    <Alert heading="Alert heading">This is a React Alert component.</Alert>
+    <Alert className={'ds-u-margin-top--2'}>
+      This is a React Alert component without a heading
+    </Alert>
+    <Alert
+      heading="Alert with only a heading"
+      className={'ds-u-margin-top--2'}
+    />
+  </div>,
   document.getElementById('js-example')
 );
