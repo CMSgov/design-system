@@ -124,7 +124,18 @@ export class TextField extends React.PureComponent {
         className={fieldClasses}
         id={this.id}
         /* eslint-disable no-return-assign */
-        ref={focusTrigger ? ref => (this.focusRef = ref) : inputRef || fieldRef}
+        ref={ref => {
+          if (focusTrigger) {
+            this.focusRef = ref;
+          } else {
+            if (inputRef) {
+              inputRef(ref);
+            }
+            if (fieldRef) {
+              fieldRef(ref);
+            }
+          }
+        }}
         /* eslint-enable no-return-assign */
         rows={_rows}
         type={multiline ? undefined : type}
