@@ -202,8 +202,8 @@
     },
     {
       "label": "CMSDS Utilities",
-      "referenceUrl": "https://design.cms.gov/utilities/",
-      "url": "http://localhost:3000/utilities/",
+      "referenceUrl": "https://design.cms.gov/utilities/overview",
+      "url": "http://localhost:3000/utilities/overview/",
       "delay": 5000,
       "removeSelectors": [
         "#tota11y-toolbar"
