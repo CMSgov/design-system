@@ -11,6 +11,7 @@ const del = require('del');
 const dutil = require('../common/log-util');
 const generatePage = require('./generatePage');
 const kss = require('kss');
+
 const merge = require('gulp-merge-json');
 const nestSections = require('./nestSections');
 const packagesRegex = require('../common/packagesRegex');
@@ -169,7 +170,9 @@ module.exports = (gulp, shared) => {
   // Convenience-task for copying assets to the "public" directory
   gulp.task('docs:public', ['docs:fonts', 'docs:images']);
 
-  gulp.task('docs:fonts', () => {
+  gulp.task('docs:fonts', ['docs:fonts:core', 'docs:fonts:theme']);
+
+  gulp.task('docs:fonts:core', () => {
     dutil.logMessage(
       '🔡 ',
       'Copying fonts from core package into "public" directory'
@@ -180,6 +183,23 @@ module.exports = (gulp, shared) => {
       .pipe(
         gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts'))
       );
+  });
+
+  gulp.task('docs:fonts:theme', () => {
+    if (shared.theme) {
+      dutil.logMessage(
+        '🔡 ',
+        `Copying fonts from "${shared.theme}/src/font" directory into "public" directory`
+      );
+
+      return gulp
+        .src(`packages/${shared.theme}/src/fonts/**/*`)
+        .pipe(
+          gulp.dest(
+            buildPath(shared.docsPath, shared.rootPath, '/public/fonts')
+          )
+        );
+    }
   });
 
   // The docs use the design system's Sass files, which don't have the
