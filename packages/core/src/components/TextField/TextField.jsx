@@ -233,6 +233,9 @@ TextField.propTypes = {
    * field's appearance and functionality may be affected.
    */
   mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
+  /**
+   * Whether or not the text field is a multiline text field
+   */
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
