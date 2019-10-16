@@ -51,7 +51,7 @@ const Footer = () => {
           design feedback, and any other suggestions you may have.
         </p>
         <div className="ds-l-row">
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4">
+          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2">
             <a
               className="ds-c-button"
               href={githubUrl(
@@ -62,7 +62,7 @@ const Footer = () => {
               Report a bug
             </a>
           </div>
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4">
+          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2">
             <a
               className="ds-c-button"
               href={githubUrl(
@@ -86,10 +86,10 @@ const Footer = () => {
           </div>
         </div>
       </section>
-      <section className="ds-u-fill--primary-alt-lightest">
+      <section className="ds-base--inverse">
         <div className="ds-l-container ds-u-padding-y--4">
           <div className="ds-l-row">
-            <div className="ds-l-col--12 ds-l-sm-col--6 ds-l-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
+            <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
               <h6 className="ds-h4">Contact Us</h6>
               <p className="ds-u-font-size--small">
                 Need help with the CMS Design System?
@@ -99,17 +99,17 @@ const Footer = () => {
                 </a>
               </p>
             </div>
-            <dl className="ds-l-col--12 ds-l-sm-col--6 ds-l-lg-col--4 ds-u-margin-bottom--4">
+            <dl className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4">
               <dt className="ds-h4">CMS &amp; HHS Websites</dt>
               {renderLinks(cmsLinks)}
             </dl>
-            <dl className="ds-l-col--12 ds-l-sm-col--6 ds-l-lg-col--4 ds-u-margin-bottom--4">
+            <dl className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4">
               <dt className="ds-h4">Additional resources</dt>
               {renderLinks(helpfulLinks)}
               <dd className="ds-u-font-size--small ds-u-margin-left--0">
                 <button
                   type="button"
-                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--0 titlelink"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent-inverse ds-u-padding--0 titlelink"
                   onClick={() => (window.location.href = '#')}
                   data-privacy-policy="modal-trigger-footer"
                 >
