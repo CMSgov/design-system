@@ -70,7 +70,7 @@ The documentation site should load at the address: http://localhost:3000/
 
 The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles.
 
-1. Run `yarn start:theme` to generate documentation and preview your theme's styles. A `docs` sub-?directory will be placed in your theme's directory.
+1. Run `yarn start:theme` to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
 1. Run `yarn build:theme` to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
 
 **Note**:
