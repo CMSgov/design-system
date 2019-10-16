@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Color
 
@@ -76,66 +73,6 @@ Markup:
 Style guide: utilities.color
 */
 
-// primary
-.ds-u-color--primary {
-  color: $color-primary !important;
-}
-
-.ds-u-color--primary-darker {
-  color: $color-primary-darker !important;
-}
-
-.ds-u-color--primary-darkest {
-  color: $color-primary-darkest !important;
-}
-
-// gray
-.ds-u-color--gray {
-  color: $color-gray !important;
-}
-
-.ds-u-color--muted {
-  color: $color-muted !important;
-}
-
-// states
-.ds-u-color--error {
-  color: $color-error !important;
-}
-
-.ds-u-color--error-dark {
-  color: $color-error-dark !important;
-}
-
-.ds-u-color--error-light {
-  color: $color-error-light !important;
-}
-
-.ds-u-color--success {
-  color: $color-success !important;
-}
-
-// base colors
-.ds-u-color--base {
-  color: $color-base !important;
-}
-
-.ds-u-color--base-inverse {
-  color: $color-base-inverse !important;
-}
-
-.ds-u-color--muted-inverse {
-  color: $color-muted-inverse !important;
-}
-
-.ds-u-color--black {
-  color: $color-black !important;
-}
-
-.ds-u-color--white {
-  color: $color-white !important;
-}
-
 /*
 Inherit a color
 
@@ -148,9 +85,6 @@ Markup:
 
 Style guide: utilities.color.inherit
 */
-.ds-u-color--inherit {
-  color: inherit !important;
-}
 
 /*
 ---

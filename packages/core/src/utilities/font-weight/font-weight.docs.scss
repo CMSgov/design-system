@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Font weight
 
@@ -15,14 +12,3 @@ Markup:
 
 Style guide: utilities.font-weight
 */
-.ds-u-font-weight--normal {
-  font-weight: $font-normal !important;
-}
-
-.ds-u-font-weight--semibold {
-  font-weight: $font-semibold !important;
-}
-
-.ds-u-font-weight--bold {
-  font-weight: $font-bold !important;
-}
