@@ -25,6 +25,7 @@ export class Choice extends React.PureComponent {
       );
     }
 
+    this.input = null;
     this.handleChange = this.handleChange.bind(this);
     this.id =
       this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
@@ -121,10 +122,10 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
-          ref={input => {
-            this.input = input;
+          ref={ref => {
+            this.input = ref;
             if (inputRef) {
-              inputRef(input);
+              inputRef(ref);
             }
           }}
           {...inputProps}
