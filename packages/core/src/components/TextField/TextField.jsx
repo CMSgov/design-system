@@ -98,7 +98,6 @@ export class TextField extends React.PureComponent {
       type,
       ...fieldProps
     } = this.props;
-
     const FieldComponent = multiline ? 'textarea' : 'input';
     const _rows = multiline && rows ? rows : undefined;
 
@@ -234,14 +233,6 @@ TextField.propTypes = {
    * field's appearance and functionality may be affected.
    */
   mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
-  /**
-   * `max` HTML input attribute
-   */
-  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  /**
-   * `min` HTML input attribute
-   */
-  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
    * Whether or not the text field is a multiline text field
    */
