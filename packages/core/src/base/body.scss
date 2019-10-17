@@ -37,5 +37,15 @@ Style guide: style.base
   @extend %ds-base;
   background-color: $color-background-inverse;
   color: $color-base-inverse;
+    a {
+      color: $color-base-inverse;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $color-base-inverse;
+        opacity: 0.8;
+      }
+    }
 }
 /* stylelint-enable */
