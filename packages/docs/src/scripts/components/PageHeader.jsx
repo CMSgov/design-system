@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Source from './Source';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
@@ -50,12 +49,6 @@ class PageHeader extends React.PureComponent {
 
           {this.guidanceLink()}
 
-          <Source
-            reactComponentPath={this.props.reactComponentPath}
-            source={this.props.source}
-            className="ds-u-margin-right--2"
-          />
-
           {this.uswdsLink()}
         </div>
       </header>
@@ -65,9 +58,7 @@ class PageHeader extends React.PureComponent {
 
 PageHeader.propTypes = {
   header: PropTypes.string.isRequired,
-  reactComponentPath: Source.propTypes.reactComponentPath,
   reference: PropTypes.string,
-  source: Source.propTypes.source,
   status: PropTypes.string,
   uswds: PropTypes.string,
   showGuidanceLink: PropTypes.bool.isRequired
