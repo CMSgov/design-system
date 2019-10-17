@@ -87,7 +87,7 @@ const Footer = () => {
         </div>
       </section>
       <section className="ds-base--inverse">
-        <div className="ds-l-container ds-u-padding-y--4">
+        <div className="ds-l-container ds-u-padding-top--4">
           <div className="ds-l-row">
             <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
               <h6 className="ds-h4">Contact Us</h6>
@@ -95,7 +95,7 @@ const Footer = () => {
                 Need help with the CMS Design System?
                 <br />
                 <a href="https://forms.cms.gov/cms-wds-design-system-contact-form/responses/new">
-                  Drop us a line{' '}
+                  Drop us a line
                 </a>
               </p>
             </div>
@@ -120,7 +120,7 @@ const Footer = () => {
           </div>
         </div>
       </section>
-      <section className="ds-base--inverse">
+      <section className="ds-base--inverse ds-u-padding-bottom--4">
         <div className="ds-l-container ds-u-padding-y--2">
           <p className="ds-text ds-u-font-size--small">
             A federal government website managed by the Centers for Medicare &
