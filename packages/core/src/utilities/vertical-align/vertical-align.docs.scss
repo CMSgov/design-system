@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Vertical align
 
@@ -37,14 +34,3 @@ Markup:
 
 Style guide: utilities.vertical-align
 */
-.ds-u-valign--top {
-  vertical-align: top !important;
-}
-
-.ds-u-valign--middle {
-  vertical-align: middle !important;
-}
-
-.ds-u-valign--bottom {
-  vertical-align: bottom !important;
-}

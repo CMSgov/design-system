@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Line height
 
@@ -20,21 +17,6 @@ Markup:
 
 Style guide: utilities.line-height
 */
-.ds-u-leading--base {
-  line-height: $base-line-height !important;
-}
-
-.ds-u-leading--lead {
-  line-height: $lead-line-height !important;
-}
-
-.ds-u-leading--heading {
-  line-height: $heading-line-height !important;
-}
-
-.ds-u-leading--reset {
-  line-height: $reset-line-height !important;
-}
 
 /*
 ---

@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/tools/index';
-
 /*
 Overflow
 
@@ -20,17 +17,6 @@ Markup:
 
 Style guide: utilities.overflow
 */
-.ds-u-overflow--hidden {
-  overflow: hidden !important;
-}
-
-.ds-u-overflow--scroll {
-  overflow: scroll !important;
-}
-
-.ds-u-overflow--auto {
-  overflow: auto !important;
-}
 
 /*
 Clearfix
@@ -48,6 +34,3 @@ Markup:
 
 Style guide: utilities.clearfix
 */
-.ds-u-clearfix {
-  @include clearfix;
-}
