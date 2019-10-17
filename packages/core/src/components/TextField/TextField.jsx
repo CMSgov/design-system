@@ -7,10 +7,6 @@ import uniqueId from 'lodash.uniqueid';
 
 export { unmaskValue } from './Mask';
 
-/**
- * A `TextField` component renders an input field as well as supporting UI
- * elements like a label, error message, and hint text.
- */
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);

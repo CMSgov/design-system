@@ -131,11 +131,6 @@ export function maskValue(value = '', mask) {
   return value;
 }
 
-/**
- * A Mask component renders a controlled input field. When the
- * field is blurred, it applies formatting to improve the readability
- * of the value.
- */
 export class Mask extends React.PureComponent {
   constructor(props) {
     super(props);
