@@ -39,6 +39,10 @@ Style guide: components.choice.size
 /*
 `<ChoiceList>`
 
+A `ChoiceList` component can be used to render a radio button group, or checkbox group.
+
+By default the component determines the type of field for you, taking into account accessibility and usability best practices. So, you can pass in an array of `choices` and let it determine what type of field would be best for the user, or alternatively you can manually pass in the `type` prop.
+
 @react-component ChoiceList
 
 Style guide: components.choice.choicelist
@@ -46,6 +50,10 @@ Style guide: components.choice.choicelist
 
 /*
 `<Choice>`
+
+A `Choice` component can be used to render a checkbox or radio button.
+
+Any _undocumented_ props that you pass to this component will be passed to the `input` element, so you can use this to set additional attributes if necessary.
 
 @react-component Choice
 
