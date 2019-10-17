@@ -51,7 +51,7 @@ const Footer = () => {
           design feedback, and any other suggestions you may have.
         </p>
         <div className="ds-l-row">
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2">
+          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
               href={githubUrl(
@@ -62,7 +62,7 @@ const Footer = () => {
               Report a bug
             </a>
           </div>
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2">
+          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
               href={githubUrl(
