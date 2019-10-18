@@ -188,5 +188,68 @@ describe('DateField', () => {
       expect(props.onBlur.mock.calls[0][1]).toBe('1 22 3333');
       expect(props.onChange.mock.calls[0][1]).toBe('1 22 3333');
     });
+
+    it('corrects date values when they are entered incorrectly', () => {
+      props = Object.assign(
+        {
+          dateFormatter: values => {
+            return `${values.month} ${values.day} ${values.year}`;
+          }, // Cannot test alphabetic values because jest-dom is smart enough to not allow it
+          monthValue: '111',
+          dayValue: '222',
+          yearValue: '333333'
+        },
+        props
+      );
+
+      const wrapper = mount(<DateField {...props} />);
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('change');
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('blur');
+
+      expect(props.onBlur.mock.calls.length).toBe(1);
+      expect(props.onChange.mock.calls.length).toBe(1);
+      expect(props.onBlur.mock.calls[0][1]).toBe('11 22 3333');
+      expect(props.onChange.mock.calls[0][1]).toBe('11 22 3333');
+    });
+
+    it('limits the year length correctly', () => {
+      props = Object.assign(
+        {
+          dateFormatter: values => {
+            return `${values.month} ${values.day} ${values.year}`;
+          },
+          monthValue: '111',
+          dayValue: '222',
+          yearLimit: 2,
+          yearValue: '333333'
+        },
+        props
+      ); // Cannot test alphabetic values because jest-dom is smart enough to not allow it
+
+      const wrapper = mount(<DateField {...props} />);
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('change');
+
+      wrapper
+        .find('input')
+        .at(1)
+        .simulate('blur');
+
+      expect(props.onBlur.mock.calls.length).toBe(1);
+      expect(props.onChange.mock.calls.length).toBe(1);
+      expect(props.onBlur.mock.calls[0][1]).toBe('11 22 33');
+      expect(props.onChange.mock.calls[0][1]).toBe('11 22 33');
+    });
   });
 });

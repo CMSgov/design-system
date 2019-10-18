@@ -23,10 +23,12 @@ export class DateField extends React.PureComponent {
 
   formatDate() {
     if (this.props.dateFormatter) {
+      const yearLimit = this.props.yearLimit || 4;
+
       const values = {
-        month: this.monthInput.value,
-        day: this.dayInput.value,
-        year: this.yearInput.value
+        month: this.monthInput.value.replace(/\D+/, '').substring(0, 2),
+        day: this.dayInput.value.replace(/\D+/, '').substring(0, 2),
+        year: this.yearInput.value.replace(/\D+/, '').substring(0, yearLimit)
       };
 
       return this.props.dateFormatter(values);
@@ -156,6 +158,7 @@ DateField.defaultProps = {
   monthLabel: 'Month',
   monthName: 'month',
   yearLabel: 'Year',
+  yearLimit: 4,
   yearMin: 1900,
   yearName: 'year'
 };
@@ -268,6 +271,10 @@ DateField.propTypes = {
    * Label for the year `input` field
    */
   yearLabel: PropTypes.node,
+  /**
+   * Maximum number of digits to allow in the year `input` field
+   */
+  yearLimit: PropTypes.number,
   /**
    * Max value for the year `input` field
    */
