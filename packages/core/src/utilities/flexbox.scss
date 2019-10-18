@@ -162,6 +162,26 @@ Markup:
 
 Style guide: utilities.flexbox.flex-wrap
 */
+
+/*
+Responsive flexbox
+
+@responsive
+
+Use a [breakpoint prefix](/guidelines/responsive) to change the flexbox at specific breakpoints.
+
+Markup:
+<section>
+  <article class="ds-u-sm-justify-content--center ds-u-md-justify-content--between ds-u-lg-justify-content--around ds-u-display--flex ds-u-fill--primary-darkest">
+    <div class="ds-u-fill--white ds-u-margin--1">element #1</div>
+    <div class="ds-u-fill--white ds-u-margin--1">element #2</div>
+    <div class="ds-u-fill--white ds-u-margin--1">element #3</div>
+  </article>
+</section>
+
+Style guide: utilities.flexbox.responsive
+*/
+
 $_flex-wrap-values: (
   nowrap: nowrap,
   wrap: wrap,

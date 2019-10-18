@@ -59,7 +59,7 @@ class Docs extends React.PureComponent {
           </main>
         </div>
         <button
-          className="ds-c-button ds-u-fill--background-inverse ds-u-color--base-inverse ds-c-button--transparent ds-u-md-display--none docs__toggle"
+          className="ds-c-button ds-c-button--primary ds-u-md-display--none docs__toggle"
           onClick={() => this.toggleMenu()}
         >
           {menuOpen ? 'Close' : 'Menu'}

@@ -68,13 +68,15 @@ The documentation site should load at the address: http://localhost:3000/
 
 ### Previewing your site package
 
-The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles.
+The CMS Design System supports the ability to preview your project's theme in the context of the design system's documentation site. This can be a convenient way to preview how your project's Sass affects the existing component styles as well as test any custom components.
 
-* Run **`yarn start:theme`** to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
-* Run **`yarn build:theme`** to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
-* **Note**:
-  - If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
-  - If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+1. Run `yarn start:theme` to generate documentation and preview your theme's styles. A `docs` sub-directory will be placed in your theme's directory.
+1. Run `yarn build:theme` to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
+
+**Note**:
+* If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
+* If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+* If you are wanting to preview your theme from another GitHub repo copy the site package files into the packages > themes directory.
 
 ### How to create documentation for your site package
 

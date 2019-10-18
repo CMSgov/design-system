@@ -45,7 +45,6 @@ export class Autocomplete extends React.PureComponent {
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
     this.listboxContainerId = uniqueId('autocomplete_owned_container_');
     this.listboxHeadingId = uniqueId('autocomplete_header_');
-    this.loader = null;
   }
 
   filterItems(
@@ -114,6 +113,7 @@ export class Autocomplete extends React.PureComponent {
           autoComplete: this.props.autoCompleteLabel,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
+          inputRef: this.props.inputRef,
           labelId: this.labelId,
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
@@ -176,15 +176,14 @@ export class Autocomplete extends React.PureComponent {
                 className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list"
                 id={this.listboxContainerId}
               >
-                {label &&
-                  !loading && (
-                    <h5
-                      className="ds-u-margin--0 ds-u-padding--1"
-                      id={this.listboxHeadingId}
-                    >
-                      {label}
-                    </h5>
-                  )}
+                {label && !loading && (
+                  <h5
+                    className="ds-u-margin--0 ds-u-padding--1"
+                    id={this.listboxHeadingId}
+                  >
+                    {label}
+                  </h5>
+                )}
 
                 <ul
                   aria-labelledby={label ? this.listboxHeadingId : null}
@@ -267,6 +266,10 @@ Autocomplete.propTypes = {
    * attribute on a label and the id of an input.
    */
   id: PropTypes.string,
+  /**
+   * Access a reference to the child `TextField`'s `input` element
+   */
+  inputRef: PropTypes.func,
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
    *

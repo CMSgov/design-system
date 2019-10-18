@@ -166,18 +166,38 @@ describe('ChoiceList', () => {
         .first()
         .simulate('change');
 
-      expect(onChange.mock.calls.length).toBe(1);
+      expect(onChange).toHaveBeenCalled();
     });
 
     it('calls onBlur', () => {
       const onBlur = jest.fn();
-      const data = shallowRender({ onBlur });
+      const onComponentBlur = jest.fn();
+      const data = shallowRender({ onBlur, onComponentBlur });
       data.wrapper
         .find('Choice')
         .first()
         .simulate('blur');
 
-      expect(onBlur.mock.calls.length).toBe(1);
+      expect(onBlur).toHaveBeenCalled();
+      // Enzyme simulated `blur` event will automatically focus on the next choice element
+      setTimeout(() => {
+        expect(onComponentBlur).not.toHaveBeenCalled();
+      }, 20);
+    });
+
+    it('calls onComponentBlur', () => {
+      const onBlur = jest.fn();
+      const onComponentBlur = jest.fn();
+      const data = shallowRender({ onBlur, onComponentBlur });
+      data.wrapper
+        .find('Choice')
+        .last()
+        .simulate('blur');
+
+      expect(onBlur).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(onComponentBlur).toHaveBeenCalled();
+      }, 20);
     });
   });
 
@@ -286,7 +306,7 @@ describe('ChoiceList', () => {
         .first()
         .simulate('change');
 
-      expect(onChange.mock.calls.length).toBe(1);
+      expect(onChange).toHaveBeenCalled();
     });
 
     it('calls onBlur', () => {
@@ -298,7 +318,7 @@ describe('ChoiceList', () => {
         .first()
         .simulate('blur');
 
-      expect(onBlur.mock.calls.length).toBe(1);
+      expect(onBlur).toHaveBeenCalled();
     });
   });
 

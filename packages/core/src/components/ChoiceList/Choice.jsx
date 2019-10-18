@@ -19,6 +19,13 @@ export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if (props['inputPlacement'] === 'right') {
+      console.error(
+        `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+      );
+    }
+
+    this.input = null;
     this.handleChange = this.handleChange.bind(this);
     this.id =
       this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
@@ -90,6 +97,7 @@ export class Choice extends React.PureComponent {
       requirementLabel,
       size,
       uncheckedChildren,
+      inputRef,
       ...inputProps
     } = this.props;
 
@@ -114,8 +122,11 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
-          ref={input => {
-            this.input = input;
+          ref={ref => {
+            this.input = ref;
+            if (inputRef) {
+              inputRef(ref);
+            }
           }}
           {...inputProps}
         />
@@ -171,6 +182,10 @@ Choice.propTypes = {
    */
   defaultChecked: PropTypes.bool,
   /**
+   * Access a reference to the `input` element
+   */
+  inputRef: PropTypes.func,
+  /**
    * Additional hint text to display below the choice's label
    */
   hint: PropTypes.node,
@@ -188,7 +203,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Placement of the input relative to the text label
+   * (Deprecated) Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),
