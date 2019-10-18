@@ -55,6 +55,33 @@ module.exports = (gulp, shared) => {
     });
   });
 
+  // Convenience-task for copying assets to the "dist" directory
+  gulp.task('build:assets', ['build:fonts', 'build:images']);
+
+  gulp.task('build:fonts', () => {
+    dutil.logMessage(
+      '🔡 ',
+      'Copying fonts from "src" package into "dist/font" directory'
+    );
+
+    return gulp
+      .src('packages/core/src/fonts/*')
+      .pipe(gulp.dest('packages/core/dist/fonts/'));
+  });
+
+  // The docs use the design system's Sass files, which don't have the
+  // images inlined, so we need to be able to reference them by their URL
+  gulp.task('build:images', () => {
+    dutil.logMessage(
+      '🏞 ',
+      'Copying images from "src" directory into "dist/images" directory'
+    );
+
+    return gulp
+      .src('packages/core/src/images/*')
+      .pipe(gulp.dest('packages/core/dist/images/'));
+  });
+
   /**
    * GitHub pages relies on the documentation to be in the root of the "docs"
    * directory, so once everything is built with the proper relative URLs, we
@@ -87,6 +114,7 @@ module.exports = (gulp, shared) => {
       cleanTasks,
       jsonTasks,
       babelTasks, // Important: This needs ran before docs:build!
+      'build:assets',
       'docs:build',
       'webpack',
       'sass',

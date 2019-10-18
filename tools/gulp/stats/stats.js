@@ -16,7 +16,7 @@ const fs = require('mz/fs');
 const getValues = require('./getValues');
 const path = require('path');
 
-const fontsDir = 'packages/core/fonts';
+const fontsDir = 'packages/core/src/fonts';
 const git = new GitHub();
 // repoParts[0] = Owner, repoParts[1] = Repo name
 const repoParts = require('../../../package.json').repository.split('/');
@@ -33,9 +33,7 @@ function createSpecificityGraph(stats, filename) {
   const specificity = stats.selectors.getSpecificityGraph();
   const selectors = stats.selectors.values;
   const chartRows = specificity.map((val, index) => {
-    const tooltip = `<strong>${val}</strong><br /><code>${selectors[
-      index
-    ]}</code>`;
+    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
     return [index, val, tooltip];
   });
 
@@ -128,9 +126,11 @@ function getCurrentBranchFontSizes() {
     .then(files => {
       return Promise.all(
         // Array of .woff2 file sizes
-        files.filter(name => name.match(/\.woff2$/)).map(name => {
-          return fs.stat(path.resolve(dir, name)).then(stats => stats.size);
-        })
+        files
+          .filter(name => name.match(/\.woff2$/))
+          .map(name => {
+            return fs.stat(path.resolve(dir, name)).then(stats => stats.size);
+          })
       );
     })
     .then(_.sum);

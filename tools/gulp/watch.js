@@ -12,7 +12,11 @@ module.exports = (gulp, shared) => {
     const packages = packagesRegex(shared.packages);
 
     // Documentation dependencies
-    gulp.watch(['packages/core/src/images/*'], ['docs:images']);
+    gulp.watch(
+      ['packages/core/src/images/*'],
+      ['packages/core/src/fonts/*'],
+      ['docs:images']
+    );
 
     // Sass files
     gulp.watch(`packages/${packages}/src/**/*.scss`, [

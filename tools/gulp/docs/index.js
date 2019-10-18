@@ -179,7 +179,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp
-      .src('packages/core/fonts/*')
+      .src('packages/core/src/fonts/*')
       .pipe(
         gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts'))
       );

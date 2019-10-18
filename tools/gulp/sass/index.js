@@ -54,7 +54,7 @@ module.exports = (gulp, shared) => {
         postcssInliner({
           assetPaths: [
             path.resolve(__dirname, '../../../', cwd, 'images'),
-            path.resolve(__dirname, '../../../', 'packages/core/images')
+            path.resolve(__dirname, '../../../', 'packages/core/src/images')
           ],
           strict: true
         })
