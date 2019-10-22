@@ -1,6 +1,3 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Word Break
 
@@ -17,8 +14,3 @@ Markup:
 
 Style guide: utilities.word-break
 */
-.ds-u-word-break {
-  overflow-wrap: break-word;
-  // IE fallback
-  word-wrap: break-word;
-}
