@@ -109,6 +109,10 @@
       "eslint --fix",
       "git add"
     ],
+    "*.{md,html}": [
+      "prettier --write",
+      "git add"
+    ],
     "*.scss": [
       "stylelint",
       "stylelint --syntax=scss"
