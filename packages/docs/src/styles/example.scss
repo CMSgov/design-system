@@ -4,6 +4,10 @@
 @import '~theme/index';
 @import 'settings/index';
 
+// Path to assets in dist folder
+$font-path: './public/fonts';
+$image-path: './public/images';
+
 body {
   margin: 0;
   // Padding added to ensure *:focus outlines are visible when shown in an iframe
