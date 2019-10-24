@@ -15,7 +15,7 @@ module.exports = (gulp, shared) => {
     gulp.watch(
       ['packages/core/src/images/*'],
       ['packages/core/src/fonts/*'],
-      ['docs:images']
+      ['docs:public']
     );
 
     // Sass files
