@@ -21,7 +21,7 @@ const processKssSection = require('./processKssSection');
 const runSequence = require('run-sequence');
 const uniquePages = require('./uniquePages');
 
-const docsPkgDirectory = 'packages/docs';
+// const docsPkgDirectory = 'packages/docs';
 const reactDataDirectory = `tmp/data`;
 const reactDataFilename = 'react-doc.json';
 const reactDataPath = path.resolve(
@@ -179,7 +179,7 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp
-      .src('packages/core/fonts/*')
+      .src('packages/core/src/fonts/*')
       .pipe(
         gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts'))
       );
@@ -204,16 +204,7 @@ module.exports = (gulp, shared) => {
 
   // The docs use the design system's Sass files, which don't have the
   // images inlined, so we need to be able to reference them by their URL
-  gulp.task('docs:images', ['docs:images:core'], () => {
-    dutil.logMessage(
-      '🏞 ',
-      'Copying images from "src" directory into "public" directory'
-    );
-
-    return gulp
-      .src(`${docsPkgDirectory}/src/**/images/*`)
-      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
-  });
+  gulp.task('docs:images', ['docs:images:core', 'docs:images:theme']);
 
   gulp.task('docs:images:core', () => {
     dutil.logMessage(
@@ -222,10 +213,42 @@ module.exports = (gulp, shared) => {
     );
 
     return gulp
-      .src('packages/core/images/*')
+      .src('packages/core/src/images/*')
       .pipe(
         gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images'))
       );
+  });
+
+  gulp.task('docs:images:theme', () => {
+    if (shared.theme) {
+      // Copy images from theme directory
+      dutil.logMessage(
+        '🏞 ',
+        `Copying images from "${shared.theme}/src/font" directory into "public" directory`
+      );
+
+      return gulp
+        .src(`packages/${shared.theme}/src/images/**/*`)
+        .pipe(
+          gulp.dest(
+            buildPath(shared.docsPath, shared.rootPath, '/public/images')
+          )
+        );
+    } else {
+      // Copy images from docs directory
+      dutil.logMessage(
+        '🏞 ',
+        `Copying images from docs package into "public" directory`
+      );
+
+      return gulp
+        .src(`packages/docs/src/images/**/*`)
+        .pipe(
+          gulp.dest(
+            buildPath(shared.docsPath, shared.rootPath, '/public/images')
+          )
+        );
+    }
   });
 
   /**
