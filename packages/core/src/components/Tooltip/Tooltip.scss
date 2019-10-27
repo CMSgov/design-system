@@ -3,15 +3,16 @@
 $tooltip-icon-size: 16px;
 $tooltip-plus-border-size: 24px;
 
+// stylelint-disable selector-no-qualifying-type
 .ds-tooltip-trigger,
 button.ds-tooltip-trigger {
   // overrideuser agent button styles
   background: none;
-  border: none;
-  margin: 0;
-  text-decoration: none;
+  border: 0;
   display: inline-block;
+  margin: 0;
   padding: 4px;
+  text-decoration: none;
   &:hover {
     // Turn off cursor style as most of it is covered by the pseudo-after element
     // that makes it so that hovering in area including tooltip trigger means that
@@ -20,95 +21,99 @@ button.ds-tooltip-trigger {
     text-decoration: none;
   }
 }
+// stylelint-enable selector-no-qualifying-type
 
 // icon container is the border that appears on hover or focus
 .ds-tooltip-icon-container {
-  display: inline-block;
-  width: $tooltip-plus-border-size;
-  height: $tooltip-plus-border-size;
-  border-radius: $tooltip-plus-border-size;
-  border: 4px solid rgba(0, 0, 0, 0);
   background-clip: content-box;
+  border: 4px solid rgba(0, 0, 0, 0);
+  border-radius: $tooltip-plus-border-size;
   box-sizing: border-box;
+  display: inline-block;
+  height: $tooltip-plus-border-size;
   position: relative;
+  width: $tooltip-plus-border-size;
   &.trigger-inverse {
     .ds-tooltip-icon-fill {
       fill: #fff;
     }
     &.trigger-focused {
       border: 4px solid $color-gray-lighter;
-      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0);
     }
   }
   &.trigger-focused {
     border: 4px solid #fff;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
   }
 }
 
 .ds-tooltip-icon-container--has-trigger-content {
-  vertical-align: top;
   margin-left: $spacer-half;
+  vertical-align: top;
 }
 
 // styles/positioning for the SVG icon itself
 .ds-tooltip-icon {
+  display: inline-block;
+  height: $tooltip-icon-size;
+  left: 0;
+  // stylelint-disable declaration-no-important
   // fixes clipping issue in Firefox, overrides vendor style
   overflow: visible !important;
+  // stylelint-enable declaration-no-important
   position: absolute;
-  display: inline-block;
   text-align: center;
-  left: 0px;
-  top: 0px;
+  top: 0;
   width: $tooltip-icon-size;
-  height: $tooltip-icon-size;
+
   .ds-tooltip-icon-fill {
     fill: $color-gray;
   }
 }
 
 .ds-tooltip-arrow {
-  width: $tooltip-icon-size;
   height: $tooltip-icon-size;
+  overflow: hidden;
   position: absolute;
   top: 100%;
   transform: translateX(-50%);
-  overflow: hidden;
+  width: $tooltip-icon-size;
 }
 
 // Interior content of tooltip
 .ds-tooltip-content {
   color: $color-base;
-  font-weight: 400;
   font-size: $small-font-size;
+  font-weight: 400;
   padding: 8px;
 }
 
 // this gets positioned over the tooltip trigger (in front of the invisible hover
 // area -- ds-tooltip-container:before) and handles the click event for hiding the tooltip
 .ds-tooltip-invisible-button {
+  border-radius: $tooltip-icon-size;
+  height: $tooltip-icon-size;
   position: absolute;
   width: $tooltip-icon-size;
-  height: $tooltip-icon-size;
-  border-radius: $tooltip-icon-size;
 }
 
 // The greater tooltip container which gets added in via state
 // max-width and z-index are set via props to account for different uses
 .ds-tooltip-container {
+  background: #fff;
   border: 1px solid $color-gray-lighter;
   border-radius: 4px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
-  background: #fff;
   .ds-tooltip-arrow {
-    &:after {
+    &::after {
+      background: #fff;
       content: '';
+      height: 8px;
+      left: 50%;
       position: absolute;
       width: 8px;
-      height: 8px;
-      background: #fff;
-      left: 50%;
     }
   }
   // When the tooltip is positioned on top of the trigger
@@ -117,22 +122,24 @@ button.ds-tooltip-trigger {
       bottom: -30px;
     }
     // The invisible area that on hover still keeps tooltip visible
-    &:before {
+    &::before {
       bottom: -36px;
-      left: 0;
       content: '';
       height: 36px;
-      width: 100%;
-      position: absolute;
+      left: 0;
       opacity: 0;
+      position: absolute;
+      width: 100%;
     }
     // The box shadow of the tooltip arrow
     .ds-tooltip-arrow {
-      &:after {
-        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      // stylelint-disable max-nesting-depth
+      &::after {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
         top: 0;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
       }
+      // stylelint-enable max-nesting-depth
     }
   }
   // When the tooltip is positioned on bottom of the trigger
@@ -141,53 +148,57 @@ button.ds-tooltip-trigger {
       top: -33px;
     }
     // The invisible area that on hover still keeps tooltip visible
-    &:before {
-      top: -36px;
-      left: 0;
+    &::before {
       content: '';
       height: 36px;
-      width: 100%;
-      position: absolute;
+      left: 0;
       opacity: 0;
+      position: absolute;
+      top: -36px;
+      width: 100%;
     }
     // The box shadow of the tooltip arrow
     .ds-tooltip-arrow {
       top: -8px;
       transform: translateX(-50%);
-      &:after {
-        transform: translateX(-50%) translateY(-50%) rotate(-135deg);
+      // stylelint-disable max-nesting-depth
+      &::after {
         bottom: 0;
-        box-shadow: 1px 1px 0px 0px $color-gray-lighter;
+        box-shadow: 1px 1px 0 0 $color-gray-lighter;
+        transform: translateX(-50%) translateY(-50%) rotate(-135deg);
       }
+      // stylelint-enable max-nesting-depth
     }
   }
 }
 
 // styles for the dark/inverse version of the tooltip body/content
 .ds-tooltip-container.inverse-tooltip-body {
-  border: 1px solid $color-gray-dark;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
   background: $color-gray;
+  border: 1px solid $color-gray-dark;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
   .ds-tooltip-arrow {
-    &:after {
+    &::after {
       background: $color-gray;
     }
   }
-  &[data-placement*='bottom'] .ds-tooltip-arrow:after {
-    box-shadow: 1px 1px 0px 0px $color-gray-dark;
+  // stylelint-disable selector-max-specificity
+  &[data-placement*='bottom'] .ds-tooltip-arrow::after {
+    box-shadow: 1px 1px 0 0 $color-gray-dark;
   }
+  // stylelint-enable selector-max-specificity
 
   .ds-tooltip-content {
     color: #fff;
   }
 }
 // to override extremely specific anchor styles that are messing with tooltip anchor
-.force-no-border-bottom {
-  border-bottom-width: 0 !important;
-}
+// .force-no-border-bottom {
+//   border-bottom-width: 0 !important;
+// }
 
-// overrides dark grey color on plan details
-.tooltip-override-dark-blue-bg {
-  color: #063346 !important;
-}
+// // overrides dark grey color on plan details
+// .tooltip-override-dark-blue-bg {
+//   color: #063346 !important;
+// }
