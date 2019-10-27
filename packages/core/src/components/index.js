@@ -21,6 +21,7 @@ export * from './StepList/StepList';
 export * from './Tabs/Tab';
 export * from './Tabs/Tabs';
 export * from './Tabs/TabPanel';
+export * from './Tooltip/Tooltip';
 export * from './TextField/TextField';
 export * from './VerticalNav/VerticalNav';
 export * from './VerticalNav/VerticalNavItem';
