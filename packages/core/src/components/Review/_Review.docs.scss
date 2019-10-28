@@ -12,6 +12,8 @@ Style guide: patterns.review
 /*
 `<Review>`
 
+The `Review` component wraps up the styles and markup required to make a single reviewable row. They are designed to be used either alone, as a single row, or multiple rows can be combined together one after the other to present more information. The component can take text or HTML as row content.
+
 @react-component Review
 
 Style guide: patterns.review.react

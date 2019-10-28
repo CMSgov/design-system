@@ -8,13 +8,6 @@ import uniqueId from 'lodash.uniqueid';
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
 
-/**
- * A `Choice` component can be used to render a checkbox or radio button.
- *
- * Any _undocumented_ props that you pass to this component will be passed
- * to the `input` element, so you can use this to set additional attributes if
- * necessary.
- */
 export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
