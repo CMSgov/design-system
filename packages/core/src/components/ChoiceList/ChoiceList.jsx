@@ -70,6 +70,29 @@ export class ChoiceList extends React.PureComponent {
     return choices;
   }
 
+  formLabel() {
+    // Return custom FormLabel component if provided
+    if (this.props.formLabel) {
+      return this.props.formLabel;
+    }
+
+    const type = this.type();
+    const FormLabelComponent = type === 'select' ? 'label' : 'legend';
+    return (
+      <FormLabel
+        className={this.props.labelClassName}
+        component={FormLabelComponent}
+        errorMessage={this.props.errorMessage}
+        fieldId={this.id()}
+        hint={this.props.hint}
+        requirementLabel={this.props.requirementLabel}
+        inversed={this.props.inversed}
+      >
+        {this.props.label}
+      </FormLabel>
+    );
+  }
+
   /**
    * If this is a <select> element, then we need to generate the ID here
    * so it can be shared between the FormLabel and Select component
@@ -160,21 +183,10 @@ export class ChoiceList extends React.PureComponent {
       this.props.className
     );
     const RootComponent = type === 'select' ? 'div' : 'fieldset';
-    const FormLabelComponent = type === 'select' ? 'label' : 'legend';
 
     return (
       <RootComponent className={classes || null}>
-        <FormLabel
-          className={this.props.labelClassName}
-          component={FormLabelComponent}
-          errorMessage={this.props.errorMessage}
-          fieldId={this.id()}
-          hint={this.props.hint}
-          requirementLabel={this.props.requirementLabel}
-          inversed={this.props.inversed}
-        >
-          {this.props.label}
-        </FormLabel>
+        {this.formLabel()}
         {this.field()}
       </RootComponent>
     );
@@ -206,6 +218,10 @@ ChoiceList.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Custom FormLabel component
+   */
+  formLabel: PropTypes.node,
   /**
    * Additional hint text to display
    */

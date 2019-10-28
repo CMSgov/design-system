@@ -1,5 +1,6 @@
+import React, { Fragment } from 'react';
 import ChoiceList from './ChoiceList';
-import React from 'react';
+import FormLabel from '../FormLabel/FormLabel';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
@@ -43,6 +44,28 @@ ReactDOM.render(
       multiple
       name="some_optional_choices_field"
       requirementLabel="Optional"
+    />
+
+    <ChoiceList
+      choices={[
+        { label: 'Choice 1', value: 'A' },
+        { label: 'Choice 2', value: 'B' }
+      ]}
+      formLabel={
+        <Fragment>
+          <FormLabel component="legend">Custom LabelForm</FormLabel>
+          <a
+            href="https://design.cms.gov"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Custom link element
+          </a>
+        </Fragment>
+      }
+      label=""
+      name="some_optional_choices_field"
+      multiple
     />
   </div>,
   document.getElementById('js-example')
