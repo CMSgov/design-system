@@ -127,6 +127,7 @@ class Tooltip extends React.Component {
                         style={newStyle}
                         modifiers={{ offset: TOOLTIP_OFFSET }}
                         data-placement={placement}
+                        aria-labelledby={this.props.id}
                       >
                         {this.props.hasInteractiveContent &&
                         this.state.focusEventTriggered ? (
