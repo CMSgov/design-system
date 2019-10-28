@@ -131,28 +131,31 @@ class Tooltip extends React.Component {
                         {this.props.hasInteractiveContent &&
                         this.state.focusEventTriggered ? (
                           <FocusTrap>
-                            <div
-                              className="ds-tooltip-arrow"
-                              ref={arrowProps.ref}
-                              style={arrowStyle}
-                            />
-                            <div className="ds-tooltip-content ds-base">
-                              {this.props.children}
-                              <div className="ds-u-justify-content--end ds-u-display--flex">
-                                <Button
-                                  className="qa-tooltip-close-button"
-                                  size="small"
-                                  onClick={() => this.hideTooltip()}
-                                >
-                                  Close
-                                </Button>
+                            {/* child of focus trap must be a single node, and must a valid HTML element, so no fragment */}
+                            <div>
+                              <div
+                                className="ds-tooltip-arrow"
+                                ref={arrowProps.ref}
+                                style={arrowStyle}
+                              />
+                              <div className="ds-tooltip-content ds-base">
+                                {this.props.children}
+                                <div className="ds-u-justify-content--end ds-u-display--flex">
+                                  <Button
+                                    className="qa-tooltip-close-button"
+                                    size="small"
+                                    onClick={() => this.hideTooltip()}
+                                  >
+                                    Close
+                                  </Button>
+                                </div>
                               </div>
+                              <div
+                                style={{ left: arrowProps.style.left }}
+                                className="ds-tooltip-invisible-button"
+                                onTouchStart={() => this.hideTooltip()}
+                              />
                             </div>
-                            <div
-                              style={{ left: arrowProps.style.left }}
-                              className="ds-tooltip-invisible-button"
-                              onTouchStart={() => this.hideTooltip()}
-                            />
                           </FocusTrap>
                         ) : (
                           <React.Fragment>
