@@ -68,7 +68,7 @@ class Tooltip extends React.Component {
               id={this.props.id}
               aria-label={`Tooltip: ${this.props.ariaLabel || ''}`}
               className={classNames(
-                'ds-tooltip-trigger',
+                'ds-c-tooltip__trigger',
                 this.props.triggerClasses
               )}
               ref={ref}
@@ -118,7 +118,7 @@ class Tooltip extends React.Component {
                     newStyle.zIndex = this.props.tooltipZIndex || '1';
                     return (
                       <div
-                        className={classNames('ds-tooltip-container', {
+                        className={classNames('ds-c-tooltip__container', {
                           'inverse-tooltip-body': this.props.tooltipBodyInverse
                         })}
                         onMouseEnter={() => this.showTooltip()}
@@ -134,11 +134,11 @@ class Tooltip extends React.Component {
                             {/* child of focus trap must be a single node, and must a valid HTML element, so no fragment */}
                             <div>
                               <div
-                                className="ds-tooltip-arrow"
+                                className="ds-c-tooltip__arrow"
                                 ref={arrowProps.ref}
                                 style={arrowStyle}
                               />
-                              <div className="ds-tooltip-content ds-base">
+                              <div className="ds-c-tooltip__content ds-base">
                                 {this.props.children}
                                 <div className="ds-u-justify-content--end ds-u-display--flex">
                                   <Button
@@ -152,7 +152,7 @@ class Tooltip extends React.Component {
                               </div>
                               <div
                                 style={{ left: arrowProps.style.left }}
-                                className="ds-tooltip-invisible-button"
+                                className="ds-c-tooltip__invisible-button"
                                 onTouchStart={() => this.hideTooltip()}
                               />
                             </div>
@@ -160,16 +160,16 @@ class Tooltip extends React.Component {
                         ) : (
                           <React.Fragment>
                             <div
-                              className="ds-tooltip-arrow"
+                              className="ds-c-tooltip__arrow"
                               ref={arrowProps.ref}
                               style={arrowStyle}
                             />
-                            <div className="ds-tooltip-content ds-base">
+                            <div className="ds-c-tooltip__content ds-base">
                               {this.props.children}
                             </div>
                             <div
                               style={{ left: arrowProps.style.left }}
-                              className="ds-tooltip-invisible-button"
+                              className="ds-c-tooltip__invisible-button"
                               onTouchStart={() => this.hideTooltip()}
                             />
                           </React.Fragment>

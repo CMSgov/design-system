@@ -5,15 +5,15 @@ import classNames from 'classnames';
 export const TooltipIcon = props => {
   return (
     <span
-      className={classNames('ds-tooltip-icon-container', {
-        'ds-tooltip-icon-container--has-trigger-content':
+      className={classNames('ds-c-tooltip__icon-container', {
+        'ds-c-tooltip__icon-container--has-trigger-content':
           props.hasTriggerContent,
         'trigger-focused': props.showTooltip,
         'trigger-inverse': props.inverse
       })}
     >
       <svg
-        className="ds-tooltip-icon"
+        className="ds-c-tooltip__icon"
         width="16px"
         height="16px"
         viewBox="0 0 16 16"
@@ -21,7 +21,10 @@ export const TooltipIcon = props => {
       >
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g
-            className={classNames('ds-tooltip-icon-fill', props.iconClasses)}
+            className={classNames(
+              'ds-c-tooltip__icon--fill',
+              props.iconClasses
+            )}
             fillRule="nonzero"
           >
             <g>
