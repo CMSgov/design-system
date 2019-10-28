@@ -13,8 +13,8 @@
     "lodash": "^4.17.13",
     "prismjs": "^1.11.0",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-hot-loader": "^3.1.3"
   }
 }
