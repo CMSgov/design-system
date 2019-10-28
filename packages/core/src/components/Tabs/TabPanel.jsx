@@ -2,10 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-/**
- * A `TabPanel` is a presentational component which accepts a tab's content as
- * its `children`.
- */
 export function TabPanel(props) {
   const classes = classnames('ds-c-tabs__panel', props.className);
 

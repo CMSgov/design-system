@@ -1,0 +1,26 @@
+/*
+Measure
+
+Line length, also called "measure", is an important part of readability. CMSDS has 3 measure options to control reading length.
+
+**Format:** `ds-u-measure--[NAME]`
+
+.ds-u-measure--narrow - line length ~45 characters
+.ds-u-measure--base - line length ~65 characters
+.ds-u-measure--wide - line length ~80 characters
+
+Markup: 
+<div class="{{modifier}}">{{ lorem-l }}</div>
+
+Style guide: utilities.measure
+*/
+
+/*
+---
+
+## Accessibility
+
+> A line of text shouldn’t be longer than 80 characters. This helps users with certain reading or visual disabilities that have trouble keeping their place when reading long lines of text. If the width of the text container is resized, it should be allowed to scale in a way so 80 characters or less are shown...Another way to ensure good line-length is to use a fluid layout or apply responsive web design techniques that allow the user to resize the window to find a comfortable line length. &mdash; [W3C](https://www.w3.org/WAI/tutorials/page-structure/styling/#line-length)
+
+Style guide: utilities.measure.guidance
+*/

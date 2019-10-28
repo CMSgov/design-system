@@ -1,0 +1,59 @@
+/*
+Border
+
+Use the border utility classes to control the border size and color properties.
+
+The border utility class sets the `border-color` and `border-size`, with support for the following sizes: `0`, `1px`, or `2px`.
+
+**Format**: `ds-u-border-[x|y|bottom|left|right|top]--[SIZE]`
+
+@hide-markup
+
+Markup:
+<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
+<% for (var i = 0; i < 3; i++) { %>
+<div class="ds-u-border<%= name %>--<%= i %> ds-u-margin-y--1 ds-u-padding--1">
+  <code class="ds-u-fill--background">ds-u-border<%= name %>--<%= i %></code>
+</div>
+<% } -%>
+<% }) -%>
+
+Style guide: utilities.border
+*/
+
+/*
+Border color
+
+**Format**: `ds-u-border--[COLOR NAME]`
+
+@hide-markup
+
+Markup:
+<% ['dark',
+    'inverse',
+    'error', 'error-light', 'error-lighter',
+    'warn', 'warn-light', 'warn-lighter',
+    'success', 'success-light', 'success-lighter'].forEach(color => { -%>
+<div <% if (color.match(/(lighte|inverse)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
+  <div class="ds-u-border--<%= color %> ds-u-border--2 ds-u-margin-y--1 ds-u-padding--1">
+    <code class="ds-u-fill--background">ds-u-border--<%= color %></code>
+  </div>
+</div>
+<% }) -%>
+
+Style guide: utilities.border.color
+*/
+
+/*
+---
+
+### Customization
+
+The following Sass variables can be overridden to theme the border utility:
+
+- `$border-color`
+- `$border-color-dark`
+- `$border-color-inverse`
+
+Style guide: utilities.border.guidance
+*/

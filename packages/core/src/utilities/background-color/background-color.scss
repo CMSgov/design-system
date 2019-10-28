@@ -1,0 +1,190 @@
+/* stylelint-disable declaration-no-important */
+@import '@cmsgov/design-system-support/src/settings/index';
+
+// primary
+.ds-u-fill--primary {
+  background-color: $color-primary !important;
+}
+
+.ds-u-fill--primary-darker {
+  background-color: $color-primary-darker !important;
+}
+
+.ds-u-fill--primary-darkest {
+  background-color: $color-primary-darkest !important;
+}
+
+// primary-alt
+.ds-u-fill--primary-alt {
+  background-color: $color-primary-alt !important;
+}
+
+.ds-u-fill--primary-alt-dark {
+  background-color: $color-primary-alt-dark !important;
+}
+
+.ds-u-fill--primary-alt-darkest {
+  background-color: $color-primary-alt-darkest !important;
+}
+
+.ds-u-fill--primary-alt-light {
+  background-color: $color-primary-alt-light !important;
+}
+
+.ds-u-fill--primary-alt-lightest {
+  background-color: $color-primary-alt-lightest !important;
+}
+
+// secondary
+.ds-u-fill--secondary {
+  background-color: $color-secondary !important;
+}
+
+.ds-u-fill--secondary-dark {
+  background-color: $color-secondary-dark !important;
+}
+
+.ds-u-fill--secondary-darkest {
+  background-color: $color-secondary-darkest !important;
+}
+
+.ds-u-fill--secondary-light {
+  background-color: $color-secondary-light !important;
+}
+
+.ds-u-fill--secondary-lightest {
+  background-color: $color-secondary-lightest !important;
+}
+
+// gray
+.ds-u-fill--gray {
+  background-color: $color-gray !important;
+}
+
+.ds-u-fill--gray-dark {
+  background-color: $color-gray-dark !important;
+}
+
+.ds-u-fill--gray-light {
+  background-color: $color-gray-light !important;
+}
+
+.ds-u-fill--gray-lighter {
+  background-color: $color-gray-lighter !important;
+}
+
+.ds-u-fill--gray-lightest {
+  background-color: $color-gray-lightest !important;
+}
+
+// gold
+.ds-u-fill--gold {
+  background-color: $color-gold !important;
+}
+
+.ds-u-fill--gold-light {
+  background-color: $color-gold-light !important;
+}
+
+.ds-u-fill--gold-lighter {
+  background-color: $color-gold-lighter !important;
+}
+
+.ds-u-fill--gold-lightest {
+  background-color: $color-gold-lightest !important;
+}
+
+// green
+.ds-u-fill--green {
+  background-color: $color-green !important;
+}
+
+.ds-u-fill--green-light {
+  background-color: $color-green-light !important;
+}
+
+.ds-u-fill--green-lighter {
+  background-color: $color-green-lighter !important;
+}
+
+.ds-u-fill--green-lightest {
+  background-color: $color-green-lightest !important;
+}
+
+// state colors
+.ds-u-fill--error {
+  background-color: $color-error !important;
+}
+
+.ds-u-fill--error-dark {
+  background-color: $color-error-dark !important;
+}
+
+.ds-u-fill--error-darkest {
+  background-color: $color-error-darkest !important;
+}
+
+.ds-u-fill--error-light {
+  background-color: $color-error-light !important;
+}
+
+.ds-u-fill--error-lighter {
+  background-color: $color-error-lighter !important;
+}
+
+.ds-u-fill--error-lightest {
+  background-color: $color-error-lightest !important;
+}
+
+.ds-u-fill--warn {
+  background-color: $color-warn !important;
+}
+
+.ds-u-fill--warn-light {
+  background-color: $color-warn-light !important;
+}
+
+.ds-u-fill--warn-lighter {
+  background-color: $color-warn-lighter !important;
+}
+
+.ds-u-fill--warn-lightest {
+  background-color: $color-warn-lightest !important;
+}
+
+.ds-u-fill--success {
+  background-color: $color-success !important;
+}
+
+.ds-u-fill--success-light {
+  background-color: $color-success-light !important;
+}
+
+.ds-u-fill--success-lighter {
+  background-color: $color-success-lighter !important;
+}
+
+.ds-u-fill--success-lightest {
+  background-color: $color-success-lightest !important;
+}
+
+// base colors
+.ds-u-fill--base {
+  background-color: $color-base !important;
+}
+
+.ds-u-fill--white {
+  background-color: $color-white !important;
+}
+
+.ds-u-fill--background {
+  background-color: $color-background !important;
+}
+
+.ds-u-fill--background-inverse {
+  background-color: $color-background-inverse !important;
+}
+
+.ds-u-fill--transparent {
+  background-color: transparent !important;
+}
