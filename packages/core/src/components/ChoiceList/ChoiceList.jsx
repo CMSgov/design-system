@@ -6,15 +6,6 @@ import Select from './Select';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/**
- * A `ChoiceList` component can be used to render a radio
- * button group, or checkbox group.
- *
- * By default the component determines the type of field for you, taking
- * into account accessibility and usability best practices. So, you can pass in
- * an array of `choices` and let it determine what type of field would be best for
- * the user, or alternatively you can manually pass in the `type` prop.
- */
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
     super(props);

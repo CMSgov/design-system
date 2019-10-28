@@ -13,6 +13,10 @@ Style guide: components.dropdown
 /*
 `<Dropdown>`
 
+A `Dropdown` component can be used to render an HTML `select` menu. Any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
+
+Class-based component gives flexibility for active focus management by allowing refs to be passed.
+
 @react-component Dropdown
 
 Style guide: components.dropdown.react

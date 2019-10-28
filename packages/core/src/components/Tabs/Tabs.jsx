@@ -50,11 +50,6 @@ function isTabPanel(child) {
   return child && (child.type === TabPanel || (child.props && child.props.tab));
 }
 
-/**
- * `Tabs` is a container component that manages the state of your tabs for you.
- * In most cases, you'll want to use this component rather than the presentational
- * components (`Tab`, `TabPanel`) on their own.
- */
 export class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
