@@ -23,6 +23,10 @@ Style guide: components.select.choicelist
 /*
 `<Select>`
 
+A `Select` component can be used to render an HTML `select` menu. Any _undocumented_ props that you pass to this component will be passed to the `select` element, so you can use this to set additional attributes if necessary.
+
+Class-based component gives flexibility for active focus management by allowing refs to be passed.
+
 @react-component Select
 
 Style guide: components.select.react

@@ -3,7 +3,7 @@
 @import 'Autocomplete/Autocomplete';
 @import 'Badge/Badge';
 @import 'Button/Button';
-@import 'ChoiceList/Choice';
+@import 'ChoiceList/Choice'; // This should eventually be renamed to `ChoiceList`
 @import 'ChoiceList/Select';
 @import 'Dialog/Dialog';
 @import 'Dropdown/Dropdown';
@@ -22,27 +22,3 @@
 @import 'TextField/Mask';
 @import 'DateField/DateField';
 @import 'VerticalNav/VerticalNav';
-
-// Documentation
-@import 'Alert/Alert.docs';
-@import 'Autocomplete/Autocomplete.docs';
-@import 'Badge/Badge.docs';
-@import 'Button/Button.docs';
-@import 'ChoiceList/Choice.docs';
-@import 'ChoiceList/Select.docs';
-@import 'DateField/DateField.docs';
-@import 'Dialog/Dialog.docs';
-@import 'Dropdown/Dropdown.docs';
-@import 'FormLabel/FormLabel.docs';
-@import 'HelpDrawer/HelpDrawer.docs';
-@import 'List/List.docs';
-@import 'MonthPicker/MonthPicker.docs';
-@import 'Review/Review.docs';
-@import 'SkipNav/SkipNav.docs';
-@import 'Spinner/Spinner.docs';
-@import 'StepList/StepList.docs';
-@import 'Table/Table.docs';
-@import 'Tabs/Tabs.docs';
-@import 'TextField/TextField.docs';
-@import 'TextField/Mask.docs';
-@import 'VerticalNav/VerticalNav.docs';
