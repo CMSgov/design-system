@@ -10,5 +10,13 @@ body {
   padding: $spacer-2;
 }
 
+.example--wrapper>*+* {
+  @extend .ds-u-margin-top--2;
+}
+
+.example--wrapper>:first-child {
+  margin-top: 0;
+}
+
 @import 'components/preview';
 @import 'components/swatch';

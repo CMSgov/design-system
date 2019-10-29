@@ -78,12 +78,3 @@ $alert-icon-size: $spacer-5;
   background-image: url('#{$image-path}/success.svg');
   border-color: $color-success;
 }
-
-// Doc site example only
-.alert-wrapper>.ds-c-alert+* {
-  @extend .ds-u-margin-top--2;
-}
-
-.alert-wrapper>:first-child {
-  margin-top: 0;
-}
