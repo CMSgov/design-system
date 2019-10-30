@@ -9,7 +9,6 @@ module.exports = {
   ],
   rules: {
     // Prettier sometimes wraps !default to a new line
-    'declaration-bang-space-before': null,
-    'scss/at-extend-no-missing-placeholder': null
+    'declaration-bang-space-before': null
   }
 };
