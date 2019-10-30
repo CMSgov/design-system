@@ -46,7 +46,7 @@
     />
     <label for="radio-1">
       Radio 1
-      <span class="ds-c-field__hint">Example hint text</span>
+      <span class="ds-c-field__hint">Choice hint text</span>
     </label>
     <input
       class="ds-c-choice"
@@ -85,4 +85,45 @@
     />
     <label for="small-2">Choice 2</label>
   </fieldset>
+  <div
+    class="example--wrapper ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2"
+  >
+    <fieldset class="ds-c-fieldset">
+      <legend class="ds-c-label">Inverse example</legend>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse"
+        >Helpful hint text</span
+      >
+      <span class="ds-c-field__hint ds-u-color--error-light"
+        >Error message example</span
+      >
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =1"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =1"
+        checked
+      />
+      <label for="inverse =1">
+        Checkbox 1
+      </label>
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =2"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =2"
+      />
+      <label for="inverse =2">Checkbox 2</label>
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =3"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =3"
+        disabled
+      />
+      <label for="inverse =3">Disabled checkbox 3</label>
+    </fieldset>
+  </div>
 </div>
