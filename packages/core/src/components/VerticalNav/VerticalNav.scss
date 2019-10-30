@@ -27,12 +27,25 @@
   padding: $spacer-1 $spacer-2;
   text-align: left; // necessary for <button>
   text-decoration: none;
+
+  &:active {
+    color: $color-primary;
+  }
+
+  &:visited {
+    color: $color-base;
+  }
+
 }
 
 .ds-c-vertical-nav__label--current {
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
+
+  &:visited {
+    color: $color-primary;
+  }
 }
 
 // Subnav toggle
