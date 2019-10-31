@@ -40,7 +40,7 @@
   padding: $spacer-half $spacer-1;
 }
 
-.ds-c-button--primary {
+.ds-c-button--primary, .ds-c-button--primary:visited {
   background-color: $button-primary-bg;
   border-color: transparent;
   color: $color-white;
@@ -146,7 +146,7 @@ Inverse buttons
   }
 }
 
-.ds-c-button--inverse, .ds-c-button--inverse:visited, 
+.ds-c-button--inverse, .ds-c-button--inverse:visited,
 .ds-c-button--transparent-inverse {
   color: $color-base-inverse;
 
