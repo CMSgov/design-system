@@ -20,11 +20,11 @@ Style guide: components.autocomplete.react
 ### When to use
 
 - If you are returning results from a known domain like a database of zip codes or a taxonomy of keywords
-- If you have a list of options that would cause a [select menu](/components/select) to be unusually long
+- If you have a list of options that would cause a [dropdown](/components/dropdown) to be unusually long
 
 ### When to consider alternatives
 
-- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/choice), or a [select menu](/components/select) in these cases.
+- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/choice), or a [dropdown](/components/dropdown) in these cases.
 
 ### Usage
 
