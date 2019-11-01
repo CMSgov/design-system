@@ -1,62 +1,111 @@
-<fieldset class="ds-c-fieldset ds-u-margin-top--0">
-  <legend class="ds-c-label">Historical figures</legend>
-  <span class="ds-c-field__hint">Select all that apply</span>
-  <input
-    class="ds-c-choice"
-    id="truth-1"
-    type="checkbox"
-    name="historical-figures-1"
-    value="truth"
-    checked
-  />
-  <label for="truth-1">
-    Sojourner Truth
-    <span class="ds-c-field__hint">Example hint text</span>
-  </label>
-  <input
-    class="ds-c-choice"
-    id="douglass-1"
-    type="checkbox"
-    name="historical-figures-1"
-    value="douglass"
-  />
-  <label for="douglass-1">Frederick Douglass</label>
-  <input
-    class="ds-c-choice"
-    id="washington-1"
-    type="checkbox"
-    name="historical-figures-1"
-    value="washington"
-  />
-  <label for="washington-1">Booker T. Washington</label>
-  <input class="ds-c-choice" id="carver-1" type="checkbox" name="historical-figures-1" disabled />
-  <label for="carver-1">George Washington Carver</label>
-</fieldset>
-<fieldset class="ds-c-fieldset">
-  <legend class="ds-c-label">Select a historical figure</legend>
-  <input
-    class="ds-c-choice"
-    id="truth-3"
-    type="radio"
-    name="historical-figures-3"
-    value="truth"
-    checked
-  />
-  <label for="truth-3">Sojourner Truth</label>
-  <input
-    class="ds-c-choice"
-    id="douglass-3"
-    type="radio"
-    name="historical-figures-3"
-    value="douglass"
-  />
-  <label for="douglass-3">Frederick Douglass</label>
-  <input
-    class="ds-c-choice"
-    id="washington-3"
-    type="radio"
-    name="historical-figures-3"
-    value="washington"
-  />
-  <label for="washington-3">Booker T. Washington</label>
-</fieldset>
+<div class="example--wrapper">
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-c-label">Checkbox example</legend>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+    <input
+      class="ds-c-choice"
+      id="checkbox-1"
+      type="checkbox"
+      name="checkbox-choices"
+      value="checkbox-1"
+      checked
+    />
+    <label for="checkbox-1">
+      Checkbox 1
+    </label>
+    <input
+      class="ds-c-choice"
+      id="checkbox-2"
+      type="checkbox"
+      name="checkbox-choices"
+      value="checkbox-2"
+    />
+    <label for="checkbox-2">Checkbox 2</label>
+    <input
+      class="ds-c-choice"
+      id="checkbox-3"
+      type="checkbox"
+      name="checkbox-choices"
+      value="checkbox-3"
+      disabled
+    />
+    <label for="checkbox-3">Disabled checkbox 3</label>
+  </fieldset>
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-c-label">Radio example</legend>
+    <span class="ds-c-field__hint ds-u-color--error" role="alert">
+      Example error message
+    </span>
+    <input
+      class="ds-c-choice"
+      id="radio-1"
+      type="radio"
+      name="radio-choices"
+      value="radio-1"
+      checked
+    />
+    <label for="radio-1">
+      Radio 1
+      <span class="ds-c-field__hint">Choice hint text</span>
+    </label>
+    <input class="ds-c-choice" id="radio-2" type="radio" name="radio-choices" value="radio-2" />
+    <label for="radio-2">Radio 2</label>
+    <input class="ds-c-choice" id="radio-3" type="radio" name="radio-choices" value="radio-3" />
+    <label for="radio-3">Radio 3</label>
+  </fieldset>
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-c-label">Small choice variants</legend>
+    <input
+      class="ds-c-choice ds-c-choice--small"
+      id="small-1"
+      type="radio"
+      name="size-variants"
+      value="normal"
+      checked
+    />
+    <label for="small-1">Choice 1</label>
+    <input
+      class="ds-c-choice ds-c-choice--small"
+      id="small-2"
+      type="radio"
+      name="size-variants"
+      value="small"
+    />
+    <label for="small-2">Choice 2</label>
+  </fieldset>
+  <div class="example--wrapper example--inverse ds-u-margin-top--2">
+    <fieldset class="ds-c-fieldset">
+      <legend class="ds-c-label">Inverse example</legend>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+      <span class="ds-c-field__hint ds-u-color--error-light">Error message example</span>
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =1"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =1"
+        checked
+      />
+      <label for="inverse =1">
+        Checkbox 1
+      </label>
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =2"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =2"
+      />
+      <label for="inverse =2">Checkbox 2</label>
+      <input
+        class="ds-c-choice ds-c-choice--inverse"
+        id="inverse =3"
+        type="checkbox"
+        name="inverse =choices"
+        value="inverse =3"
+        disabled
+      />
+      <label for="inverse =3">Disabled checkbox 3</label>
+    </fieldset>
+  </div>
+</div>
