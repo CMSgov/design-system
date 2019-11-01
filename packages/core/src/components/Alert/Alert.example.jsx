@@ -9,9 +9,7 @@ ReactDOM.render(
     </Alert>
     <Alert heading="Alert with only a heading" />
     <Alert>
-      <p className="ds-c-alert__text">
-        This is a React Alert component without a heading.
-      </p>
+      <p className="ds-c-alert__text">This is a React Alert component without a heading.</p>
     </Alert>
   </div>,
   document.getElementById('js-example')
