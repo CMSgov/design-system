@@ -4,15 +4,6 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/**
- * A `Dropdown` component can be used to render an HTML `select` menu.
- * Any _undocumented_ props that you pass to this component will be passed
- * to the `select` element, so you can use this to set additional attributes if
- * necessary.
- *
- * Class-based component gives flexibility for active focus management
- * by allowing refs to be passed.
- */
 export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -172,8 +163,7 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node.isRequired,
-      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-        .isRequired
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
     })
   ).isRequired,
   onBlur: PropTypes.func,
