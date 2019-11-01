@@ -5,7 +5,6 @@ import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.choice.choicelist/`;
-const inverseURL = `${ROOT_URL}/example/components.choice.inversed/`;
 
 describe('Choice component', () => {
   it('Should render', async() => {
@@ -17,9 +16,5 @@ describe('Choice component', () => {
 
   it('Should have no accessibility violations', async() => {
     await assertNoAxeViolations(rootURL);
-  });
-
-  it('Inverse layout should have no accessibility violations', async() => {
-    await assertNoAxeViolations(inverseURL);
   });
 });

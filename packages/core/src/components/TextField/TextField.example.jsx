@@ -36,7 +36,12 @@ ReactDOM.render(
       name="disabled_example"
       value="Example value"
     />
-    <TextField label="Password field" name="disabled_example" type="password" />
+    <TextField
+      label="Password field"
+      name="disabled_example"
+      type="password"
+      value="Example value"
+    />
   </div>,
   document.getElementById('js-example')
 );
