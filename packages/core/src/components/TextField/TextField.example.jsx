@@ -11,18 +11,9 @@ ReactDOM.render(
       name="single_example"
       requirementLabel="Optional"
     />
-    <TextField
-      defaultValue="123"
-      label="Number field"
-      name="number_example"
-      type="number"
-    />
+    <TextField defaultValue="123" label="Number field" name="number_example" type="number" />
     <TextField label="Small size modifier" name="small_example" size="small" />
-    <TextField
-      label="Medium size modifier"
-      name="medium_example"
-      size="medium"
-    />
+    <TextField label="Medium size modifier" name="medium_example" size="medium" />
     <TextField
       errorMessage="Error message example"
       hint="Example of a multiline field with an error"
@@ -30,13 +21,13 @@ ReactDOM.render(
       multiline
       name="multiline_example"
     />
+    <TextField label="Disabled field" disabled name="disabled_example" value="Example value" />
     <TextField
-      label="Disabled field"
-      disabled
+      label="Password field"
       name="disabled_example"
+      type="password"
       value="Example value"
     />
-    <TextField label="Password field" name="disabled_example" type="password" />
   </div>,
   document.getElementById('js-example')
 );
