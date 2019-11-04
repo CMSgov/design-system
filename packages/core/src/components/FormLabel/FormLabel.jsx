@@ -1,5 +1,5 @@
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import classNames from 'classnames';
 
 export class FormLabel extends React.PureComponent {
@@ -10,11 +10,7 @@ export class FormLabel extends React.PureComponent {
       });
 
       return (
-        <span
-          className={classes}
-          id={`${this.props.fieldId}-message`}
-          role="alert"
-        >
+        <span className={classes} id={`${this.props.fieldId}-message`} role="alert">
           {this.props.errorMessage}
         </span>
       );
@@ -55,19 +51,32 @@ export class FormLabel extends React.PureComponent {
 
   render() {
     const { fieldId, id, children } = this.props;
-    const ComponentType = this.props.component;
     const labelTextClasses = classNames(this.props.labelClassName);
     const classes = classNames('ds-c-label', this.props.className, {
       'ds-c-label--inverse': this.props.inversed
     });
 
-    return (
-      <ComponentType className={classes} htmlFor={fieldId} id={id}>
-        <span className={labelTextClasses}>{children}</span>
-        {this.hint()}
-        {this.errorMessage()}
-      </ComponentType>
-    );
+    // Hint and error message are outside of the legend
+    // https://www.powermapper.com/tests/screen-readers/labelling/fieldset-links/
+    if (this.props.component === 'legend') {
+      return (
+        <Fragment>
+          <legend className={classes} htmlFor={fieldId} id={id}>
+            <span className={labelTextClasses}>{children}</span>
+          </legend>
+          {this.hint()}
+          {this.errorMessage()}
+        </Fragment>
+      );
+    } else if (this.props.component === 'legend') {
+      return (
+        <label className={classes} htmlFor={fieldId} id={id}>
+          <span className={labelTextClasses}>{children}</span>
+          {this.hint()}
+          {this.errorMessage()}
+        </label>
+      );
+    }
   }
 }
 
