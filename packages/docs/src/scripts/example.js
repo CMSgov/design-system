@@ -25,4 +25,26 @@ function setSwatchHexValues() {
   }
 }
 
+// Only used in the modal dialog size variant example
+function setModalExamples() {
+  const dialog = document.getElementById('dialog');
+  const dialogTitle = document.getElementById('dialog-title');
+  const dialogWrap = document.getElementById('dialog-wrap');
+
+  document.querySelectorAll('.dialog-open-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      dialog.classList.add(btn.dataset.type);
+      dialogTitle.textContent = btn.dataset.title;
+      dialogWrap.classList.remove('ds-u-display--none');
+    });
+  });
+  document.querySelectorAll('.dialog-close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      dialog.className = 'ds-c-dialog';
+      dialogWrap.classList.add('ds-u-display--none');
+    });
+  });
+}
+
 setSwatchHexValues();
+setModalExamples();
