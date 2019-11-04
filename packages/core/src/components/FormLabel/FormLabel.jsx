@@ -68,7 +68,7 @@ export class FormLabel extends React.PureComponent {
           {this.errorMessage()}
         </Fragment>
       );
-    } else if (this.props.component === 'legend') {
+    } else if (this.props.component === 'label') {
       return (
         <label className={classes} htmlFor={fieldId} id={id}>
           <span className={labelTextClasses}>{children}</span>
