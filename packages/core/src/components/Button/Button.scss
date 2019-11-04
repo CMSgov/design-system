@@ -17,12 +17,15 @@
   text-decoration: none;
 
   &:focus,
-  &:hover {
+  &:hover,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover {
     border-color: $color-primary-darker;
     color: $color-primary-darker;
   }
 
-  &:active {
+  &:active,
+  &.ds-c-button--active {
     border-color: $color-primary-darkest;
     color: $color-primary-darkest;
   }
@@ -46,23 +49,28 @@
   color: $color-white;
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: transparent;
     color: $color-white;
   }
 
-  &:focus {
+  &:focus,   
+  &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-color: transparent;
   }
 
-  &:hover {
+  &:hover,
+  &.ds-c-button--hover {
     background-color: $button-primary-bg--hover;
-    border-color: transparent;
   }
 
-  &:active {
+  &:active,
+  &.ds-c-button--active {
     background-color: $button-primary-bg--active;
-    border-color: transparent;
   }
 }
 
@@ -74,7 +82,10 @@
 
   &:focus,
   &:hover,
-  &:active {
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     border-color: transparent;
   }
 }
@@ -85,15 +96,19 @@
   color: $color-white;
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     background-color: $color-error-dark;
     border-color: transparent;
     color: $color-white;
   }
 
-  &:active {
+  &:active,
+  &.ds-c-button--active  {
     background-color: $color-error-darkest;
-    border-color: transparent;
   }
 }
 
@@ -103,15 +118,19 @@
   color: $color-white;
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     background-color: $color-success-dark;
     border-color: transparent;
     color: $color-white;
   }
 
-  &:active {
+  &:active,
+  &.ds-c-button--active {
     background-color: $color-success-darker;
-    border-color: transparent;
   }
 }
 
@@ -122,9 +141,12 @@
   color: $color-gray-dark;
   pointer-events: none;
 
+  &:focus,
   &:hover,
   &:active,
-  &:focus {
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     background-color: $color-gray-lighter;
     border-color: transparent;
     color: $color-gray-dark;
@@ -139,9 +161,12 @@ Inverse buttons
   background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
-  &:active,
   &:focus,
-  &:hover {
+  &:hover,
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     border-color: $color-base-inverse;
   }
 }
@@ -150,14 +175,18 @@ Inverse buttons
 .ds-c-button--transparent-inverse {
   color: $color-base-inverse;
 
-  &:active,
   &:focus,
-  &:hover {
+  &:hover, 
+  &:active,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     color: $color-base-inverse;
     opacity: 0.8;
   }
 
-  &:active {
+  &:active,
+  &.ds-c-button--active {
     opacity: 0.6;
   }
 }
@@ -169,9 +198,12 @@ Inverse buttons
   color: $color-muted-inverse;
   pointer-events: none;
 
+  &:focus,
   &:hover,
   &:active,
-  &:focus {
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
     background-color: $color-background-inverse;
     border-color: $color-background-inverse;
     color: $color-muted-inverse;
