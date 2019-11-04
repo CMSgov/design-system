@@ -24,6 +24,13 @@
     color: $color-primary-darker;
   }
 
+  &:disabled {
+    background-color: $color-white;
+    border-color: $color-gray-lighter;
+    color: $color-gray-lighter;
+    pointer-events: none;
+  }
+
   &:active,
   &.ds-c-button--active {
     border-color: $color-primary-darkest;
@@ -48,6 +55,13 @@
   border-color: transparent;
   color: $color-white;
 
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -58,7 +72,7 @@
     color: $color-white;
   }
 
-  &:focus,   
+  &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
   }
@@ -80,6 +94,13 @@
   border-color: transparent;
   text-decoration: underline;
 
+  &:disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-gray-lighter;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -94,6 +115,13 @@
   background-color: $color-error;
   border-color: transparent;
   color: $color-white;
+
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
 
   &:focus,
   &:hover,
@@ -117,6 +145,13 @@
   border-color: transparent;
   color: $color-white;
 
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -134,8 +169,8 @@
   }
 }
 
-.ds-c-button:disabled,
 .ds-c-button--disabled {
+
   background-color: $color-gray-lighter;
   border-color: transparent;
   color: $color-gray-dark;
@@ -161,6 +196,13 @@ Inverse buttons
   background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
+  &:disabled {
+    background-color: $color-background-inverse;
+    border-color: $color-gray-light;
+    color: $color-gray-light;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -176,7 +218,7 @@ Inverse buttons
   color: $color-base-inverse;
 
   &:focus,
-  &:hover, 
+  &:hover,
   &:active,
   &.ds-c-button--focus,
   &.ds-c-button--hover,
