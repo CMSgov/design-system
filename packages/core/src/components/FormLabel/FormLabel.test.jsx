@@ -84,8 +84,9 @@ describe('FormLabel', () => {
   it('renders as a legend element', () => {
     const props = { component: 'legend' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+    const legend = wrapper.find('legend');
 
-    expect(wrapper.is('legend')).toBe(true);
+    expect(legend.length).toBe(1);
   });
 
   it('is inversed', () => {

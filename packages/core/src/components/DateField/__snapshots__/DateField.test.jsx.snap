@@ -14,12 +14,12 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -141,19 +141,19 @@ exports[`DateField has errorMessage 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
-    <span
-      className="ds-c-field__hint ds-u-color--error"
-      id="undefined-message"
-      role="alert"
-    >
-      This is required.
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
+  <span
+    className="ds-c-field__hint ds-u-color--error"
+    id="undefined-message"
+    role="alert"
+  >
+    This is required.
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -275,12 +275,12 @@ exports[`DateField has invalid day 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -402,12 +402,12 @@ exports[`DateField has invalid month 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -529,12 +529,12 @@ exports[`DateField has invalid year 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -656,14 +656,14 @@ exports[`DateField has requirementLabel 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      Optional.
-       
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    Optional.
+     
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -785,12 +785,12 @@ exports[`DateField is inversed 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint ds-c-field__hint--inverse"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint ds-c-field__hint--inverse"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
@@ -912,12 +912,12 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       Date
     </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
   </legend>
+  <span
+    className="ds-c-field__hint"
+  >
+    For example: 4 / 28 / 1986
+  </span>
   <div
     className="ds-l-form-row ds-u-align-items--end"
   >
