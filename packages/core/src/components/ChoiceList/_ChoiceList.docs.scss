@@ -11,22 +11,6 @@ Style guide: components.choice
 */
 
 /*
-Inverse theme
-
-Markup: checkbox-radio-inverse.example.html
-
-Style guide: components.choice.inversed
-*/
-
-/*
-Size variants
-
-Markup: checkbox-radio-size.example.html
-
-Style guide: components.choice.size
-*/
-
-/*
 `<ChoiceList>`
 
 A `ChoiceList` component can be used to render a radio button group, or checkbox group.
@@ -68,7 +52,7 @@ Style guide: components.choice.react
 
 ### When to consider alternatives
 
-- If there are too many options to display on a mobile screen. Consider a `select` menu if you don’t have enough space to list out all available options, and if the user can only select one of the options.
+- If there are too many options to display on a mobile screen. Consider a `dropdown` menu if you don’t have enough space to list out all available options, and if the user can only select one of the options.
 - Never use radio buttons for optional questions, since once a radio button is selected from a list, it or another choice will remain selected.
 
 ### Usage
