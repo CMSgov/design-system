@@ -68,8 +68,7 @@ export class DateField extends React.PureComponent {
       className: 'ds-l-col--auto',
       labelClassName: 'ds-u-font-weight--normal ds-u-margin-top--1',
       inversed: this.props.inversed,
-      onBlur:
-        (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
+      onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
       onChange: this.props.onChange && this.handleChange,
       type: 'number'
     };
@@ -94,7 +93,7 @@ export class DateField extends React.PureComponent {
             fieldClassName={classNames('ds-c-field--month', {
               'ds-c-field--error': this.props.monthInvalid
             })}
-            fieldRef={el => {
+            inputRef={el => {
               this.monthInput = el;
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
             }}
@@ -112,7 +111,7 @@ export class DateField extends React.PureComponent {
             fieldClassName={classNames('ds-c-field--day', {
               'ds-c-field--error': this.props.dayInvalid
             })}
-            fieldRef={el => {
+            inputRef={el => {
               this.dayInput = el;
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
             }}
@@ -130,7 +129,7 @@ export class DateField extends React.PureComponent {
             fieldClassName={classNames('ds-c-field--year', {
               'ds-c-field--error': this.props.yearInvalid
             })}
-            fieldRef={el => {
+            inputRef={el => {
               this.yearInput = el;
               if (this.props.yearFieldRef) this.props.yearFieldRef(el);
             }}
