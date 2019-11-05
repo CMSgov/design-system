@@ -24,7 +24,8 @@
     color: $color-primary-darker;
   }
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: $color-white;
     border-color: $color-gray-lighter;
     color: $color-gray-lighter;
@@ -55,7 +56,8 @@
   border-color: transparent;
   color: $color-white;
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: $color-gray-lighter;
     border-color: transparent;
     color: $color-gray-dark;
@@ -94,7 +96,8 @@
   border-color: transparent;
   text-decoration: underline;
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: transparent;
     border-color: transparent;
     color: $color-gray-lighter;
@@ -116,7 +119,8 @@
   border-color: transparent;
   color: $color-white;
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: $color-gray-lighter;
     border-color: transparent;
     color: $color-gray-dark;
@@ -145,7 +149,8 @@
   border-color: transparent;
   color: $color-white;
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: $color-gray-lighter;
     border-color: transparent;
     color: $color-gray-dark;
@@ -170,7 +175,6 @@
 }
 
 .ds-c-button--disabled {
-
   background-color: $color-gray-lighter;
   border-color: transparent;
   color: $color-gray-dark;
@@ -196,7 +200,8 @@ Inverse buttons
   background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
-  &:disabled {
+  &:disabled,
+  &.ds-c-button--disabled {
     background-color: $color-background-inverse;
     border-color: $color-gray-light;
     color: $color-gray-light;
