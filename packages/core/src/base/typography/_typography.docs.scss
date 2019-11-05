@@ -26,6 +26,7 @@ Markup: links.example.html
 
 - Navigating to a new page or view in your application
 - Navigating to a different web page, e.g. external documentation
+- **Note:** Warn the user if links open a new window or downloads a file (PDF, for example).
 
 ### When to consider alternatives
 
@@ -33,12 +34,7 @@ Markup: links.example.html
 - Triggering a dropdown menu
 - Submitting data to the server
 
-### Usage
 
-- Don’t overdo it — if everything on a page is called out as important, nothing is important.
-- Users may confuse badges as buttons. Always conduct usability testing to make sure your particular implementation is not causing frustration.
-- Don’t mix interactive and static badges on your site. Once you establish a pattern for how badges behave, users will expect that behavior every time.
-- **Note:** Warn the user if links open a new window or downloads a file (PDF, for example).
 
 Your link should always describe where it will take users. Users tend to scan text online, and elements that stand out (like links) grab attention. Clear links can help users navigate more quickly.
 
