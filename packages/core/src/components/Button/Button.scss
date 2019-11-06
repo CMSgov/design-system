@@ -24,6 +24,14 @@
     color: $color-primary-darker;
   }
 
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-white;
+    border-color: $color-gray-lighter;
+    color: $color-gray-lighter;
+    pointer-events: none;
+  }
+
   &:active,
   &.ds-c-button--active {
     border-color: $color-primary-darkest;
@@ -48,6 +56,14 @@
   border-color: transparent;
   color: $color-white;
 
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -58,7 +74,7 @@
     color: $color-white;
   }
 
-  &:focus,   
+  &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
   }
@@ -74,26 +90,18 @@
   }
 }
 
-.ds-c-button--transparent,
-.ds-c-button--transparent-inverse {
-  background-color: transparent;
-  border-color: transparent;
-  text-decoration: underline;
-
-  &:focus,
-  &:hover,
-  &:active,
-  &.ds-c-button--focus,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-  }
-}
-
 .ds-c-button--danger {
   background-color: $color-error;
   border-color: transparent;
   color: $color-white;
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
 
   &:focus,
   &:hover,
@@ -117,6 +125,14 @@
   border-color: transparent;
   color: $color-white;
 
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+    pointer-events: none;
+  }
+
   &:focus,
   &:hover,
   &:active,
@@ -134,12 +150,18 @@
   }
 }
 
-.ds-c-button:disabled,
-.ds-c-button--disabled {
-  background-color: $color-gray-lighter;
+.ds-c-button--transparent,
+.ds-c-button--transparent-inverse { 
+  background-color: transparent;
   border-color: transparent;
-  color: $color-gray-dark;
-  pointer-events: none;
+  text-decoration: underline;
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-gray-lighter;
+  }
 
   &:focus,
   &:hover,
@@ -147,36 +169,19 @@
   &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    background-color: $color-gray-lighter;
     border-color: transparent;
-    color: $color-gray-dark;
   }
 }
 
 /*
 Inverse buttons
 */
-
-.ds-c-button--inverse {
-  background-color: $color-background-inverse;
-  border-color: $border-color-inverse;
-
-  &:focus,
-  &:hover,
-  &:active,
-  &.ds-c-button--focus,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: $color-base-inverse;
-  }
-}
-
 .ds-c-button--inverse,
 .ds-c-button--transparent-inverse {
   color: $color-base-inverse;
 
   &:focus,
-  &:hover, 
+  &:hover,
   &:active,
   &.ds-c-button--focus,
   &.ds-c-button--hover,
@@ -191,12 +196,17 @@ Inverse buttons
   }
 }
 
-.ds-c-button--disabled-inverse,
-.ds-c-button--disabled-inverse:disabled {
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
-  pointer-events: none;
+.ds-c-button--inverse {
+  background-color: $color-background-inverse;
+  border-color: $border-color-inverse;
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: darken($color-background-inverse, 10%);
+    border-color: darken($color-background-inverse, 10%);
+    color: $color-muted-inverse;
+    pointer-events: none;
+  }
 
   &:focus,
   &:hover,
@@ -204,8 +214,13 @@ Inverse buttons
   &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    background-color: $color-background-inverse;
-    border-color: $color-background-inverse;
+    border-color: $color-base-inverse;
+  }
+}
+
+.ds-c-button--transparent-inverse {
+  &:disabled,
+  &.ds-c-button--disabled {
     color: $color-muted-inverse;
   }
 }
