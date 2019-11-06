@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
-export const defaultDateFormatter = ({ day, month, year }) => ({
+export const standardDateFormatter = ({ day, month, year }) => ({
   day: day.length > 2 ? day.substring(0, 2) : day,
   month: month.length > 2 ? month.substring(0, 2) : month,
   year: year.length > 4 ? year.substring(0, 4) : year
@@ -164,7 +164,7 @@ DateField.defaultProps = {
   yearLabel: 'Year',
   yearMin: 1900,
   yearName: 'year',
-  dateFormatter: defaultDateFormatter
+  dateFormatter: standardDateFormatter
 };
 
 DateField.propTypes = {
@@ -174,7 +174,7 @@ DateField.propTypes = {
    * to the `onBlur` and `onChange` callbacks. This method receives an object as
    * its only argument, in the shape of: `{ day, month, year }`
    *
-   * By default `dateFormatter` will be a function that prevents day/month values greater than 2 digits and year values greater than 4 digits. This function can be acessed and used through `defaultDateFormatter`.
+   * By default `dateFormatter` will be set to `standardDateFormatter` function which prevents day/month values greater than 2 digits and year values greater than 4 digits.
    */
   dateFormatter: PropTypes.func,
   errorMessage: PropTypes.node,
