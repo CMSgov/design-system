@@ -1,6 +1,7 @@
 @import '@cmsgov/design-system-support/src/index';
 
-.ds-c-button {
+.ds-c-button, 
+.ds-c-button:visited  {
   appearance: none;
   background-color: $color-white;
   border: $button-border-width solid $color-primary;
@@ -51,7 +52,8 @@
   padding: $spacer-half $spacer-1;
 }
 
-.ds-c-button--primary {
+.ds-c-button--primary,
+.ds-c-button--primary:visited {
   background-color: $button-primary-bg;
   border-color: transparent;
   color: $color-white;
@@ -90,7 +92,8 @@
   }
 }
 
-.ds-c-button--danger {
+.ds-c-button--danger,
+.ds-c-button--danger:visited {
   background-color: $color-error;
   border-color: transparent;
   color: $color-white;
@@ -120,7 +123,8 @@
   }
 }
 
-.ds-c-button--success {
+.ds-c-button--success,
+.ds-c-button--success:visited {
   background-color: $color-success;
   border-color: transparent;
   color: $color-white;
@@ -151,7 +155,9 @@
 }
 
 .ds-c-button--transparent,
-.ds-c-button--transparent-inverse { 
+.ds-c-button--transparent:visited,
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
   background-color: transparent;
   border-color: transparent;
   text-decoration: underline;
@@ -176,8 +182,10 @@
 /*
 Inverse buttons
 */
-.ds-c-button--inverse,
-.ds-c-button--transparent-inverse {
+.ds-c-button--inverse, 
+.ds-c-button--inverse:visited, 
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
   color: $color-base-inverse;
 
   &:focus,
@@ -196,7 +204,8 @@ Inverse buttons
   }
 }
 
-.ds-c-button--inverse {
+.ds-c-button--inverse, 
+.ds-c-button--inverse:visited {
   background-color: $color-background-inverse;
   border-color: $border-color-inverse;
 
@@ -218,7 +227,8 @@ Inverse buttons
   }
 }
 
-.ds-c-button--transparent-inverse {
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
   &:disabled,
   &.ds-c-button--disabled {
     color: $color-muted-inverse;
