@@ -155,7 +155,9 @@
 }
 
 .ds-c-button--transparent,
-.ds-c-button--transparent:visited {
+.ds-c-button--transparent:visited,
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
   background-color: transparent;
   border-color: transparent;
   text-decoration: underline;
@@ -181,7 +183,7 @@
 Inverse buttons
 */
 .ds-c-button--inverse, 
-.ds-c-button--inverse:visited,
+.ds-c-button--inverse:visited, 
 .ds-c-button--transparent-inverse,
 .ds-c-button--transparent-inverse:visited {
   color: $color-base-inverse;
