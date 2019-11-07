@@ -44,7 +44,7 @@ Style guide: style.base
       &:active,
       &:focus,
       &:hover {
-        color: $color-base-inverse;
+        color: $color-muted-inverse;
         opacity: 0.8;
       }
     }
