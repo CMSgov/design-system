@@ -29,7 +29,7 @@ export class DateField extends React.PureComponent {
   }
 
   formatDate() {
-    if (this.props.dateFormatter) {
+    if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
       const values = {
         month: this.monthInput.value,
         day: this.dayInput.value,
