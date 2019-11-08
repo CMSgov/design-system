@@ -17,7 +17,7 @@
   position: relative;
 }
 
-.ds-c-vertical-nav__label {
+.ds-c-vertical-nav__label, .ds-c-vertical-nav__label:visited  {
   border-left: 4px solid transparent;
   color: $color-base;
   display: block;
@@ -27,9 +27,10 @@
   padding: $spacer-1 $spacer-2;
   text-align: left; // necessary for <button>
   text-decoration: none;
+
 }
 
-.ds-c-vertical-nav__label--current {
+.ds-c-vertical-nav__label--current, .ds-c-vertical-nav__label--current:visited {
   border-left-color: $color-primary;
   color: $color-primary;
   font-weight: $font-bold;
