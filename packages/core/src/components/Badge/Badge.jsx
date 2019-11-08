@@ -17,7 +17,7 @@ export const Badge = props => {
 
 Badge.propTypes = {
   /**
-   * Additional classes to be added to the root button element.
+   * Additional classes to be added to the root badge element.
    * Useful for adding utility classes.
    */
   className: PropTypes.string,
