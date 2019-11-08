@@ -5,9 +5,7 @@ import classNames from 'classnames';
 
 export class Review extends React.PureComponent {
   heading() {
-    const Heading = this.props.headingLevel
-      ? `h${this.props.headingLevel}`
-      : `h3`;
+    const Heading = this.props.headingLevel ? `h${this.props.headingLevel}` : `h3`;
     if (this.props.heading) {
       return (
         <Heading className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block">
@@ -21,6 +19,7 @@ export class Review extends React.PureComponent {
     const {
       children,
       className,
+      editAriaLabel,
       editHref,
       editText,
       onEditClick,
@@ -38,7 +37,7 @@ export class Review extends React.PureComponent {
         </div>
         {editContent}
         {!editContent && editHref && (
-          <ReviewLink onClick={onEditClick} href={editHref}>
+          <ReviewLink onClick={onEditClick} href={editHref} ariaLabel={editAriaLabel}>
             {editText}
           </ReviewLink>
         )}
@@ -54,25 +53,33 @@ Review.defaultProps = {
 Review.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  /**
+   * Optional label to give screenreaders longer, more descriptive text to
+   * explain the context of an edit link.
+   */
+  editAriaLabel: PropTypes.string,
+  /**
+   * An optional node in place of the edit link. If this defined, no edit link will be shown.
+   */
+  editContent: PropTypes.node,
+  /**
+   * Href for the edit link. If this is undefined, no edit link will be shown.
+   */
+  editHref: PropTypes.string,
+  editText: PropTypes.node,
   heading: PropTypes.node,
   /**
    * Heading type to override default `<h3>`.
    */
   headingLevel: PropTypes.number,
   /**
-   * Href for the edit link. If this is undefined, no edit link will be shown.
-   */
-  editHref: PropTypes.string,
-  editText: PropTypes.node,
-  /**
    * An optional function that is executed on edit link click. The event and
    * props.editHref value are passed to this function.
    */
-  onEditClick: PropTypes.func,
+  onEditClick: PropTypes.func
   /**
    * An optional node in place of the edit link. If this defined, no edit link will be shown.
    */
-  editContent: PropTypes.node
 };
 
 export default Review;
