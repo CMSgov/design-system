@@ -5,12 +5,13 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <Fragment>
     <Badge>Default badge</Badge>
-    <Badge variation="info">Variant badge</Badge>
+    <Badge variation="info">Info badge</Badge>
     <Badge variation="success">
-      Badge with <b>nested</b>
+      Success Badge with <b>bold text</b>
     </Badge>
+    <Badge variation="warn">Warning badge</Badge>
     <Badge className="ds-u-font-size--base" variation="alert">
-      Large badge
+      Large alert badge
     </Badge>
   </Fragment>,
   document.getElementById('js-example')
