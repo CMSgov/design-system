@@ -3,12 +3,6 @@ import React from 'react';
 import ReviewLink from './ReviewLink';
 import classNames from 'classnames';
 
-/**
- * The `Review` component wraps up the styles and markup required to make a
- * single reviewable row. They are designed to be used either alone, as a single
- * row, or multiple rows can be combined together one after the other to present
- * more information. The component can take text or HTML as row content.
- */
 export class Review extends React.PureComponent {
   heading() {
     const Heading = this.props.headingLevel
@@ -43,12 +37,11 @@ export class Review extends React.PureComponent {
           <div className="ds-c-review__body">{children}</div>
         </div>
         {editContent}
-        {!editContent &&
-          editHref && (
-            <ReviewLink onClick={onEditClick} href={editHref}>
-              {editText}
-            </ReviewLink>
-          )}
+        {!editContent && editHref && (
+          <ReviewLink onClick={onEditClick} href={editHref}>
+            {editText}
+          </ReviewLink>
+        )}
       </div>
     );
   }

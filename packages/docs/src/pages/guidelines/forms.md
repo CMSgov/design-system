@@ -2,7 +2,7 @@
 title: Forms
 ---
 
-The design system includes components for the standard HTML form elements: [checkboxes and radio buttons]({{root}}/components/choice), [text fields]({{root}}/components/text-field), [select menus]({{root}}/components/select), fieldsets, labels, and so on.
+The design system includes components for the standard HTML form elements: [checkboxes and radio buttons]({{root}}/components/choice), [text fields]({{root}}/components/text-field), [dropdowns ]({{root}}/components/dropdown), fieldsets, labels, and so on.
 
 Below are some best practices your project should aim to follow in order to provide the most accessible and usable experience for your users. Additional guidance, specific to each form field, is provided in each component's guidance tab.
 

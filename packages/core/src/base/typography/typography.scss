@@ -1,0 +1,124 @@
+/* stylelint-disable selector-class-pattern */
+@import 'link';
+@import '@cmsgov/design-system-support/src/settings/index';
+
+// Titles and headings
+.ds-display,
+.ds-title,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6 {
+  line-height: $heading-line-height;
+  margin: 0;
+}
+
+// Bold title and headings
+.ds-display,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4 {
+  font-weight: $font-bold;
+}
+
+// Headings
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6 {
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-display {
+  font-size: $h1-font-size;
+
+  @media (min-width: $width-sm) {
+    font-size: $title-font-size;
+  }
+
+  @media (min-width: $width-md) {
+    font-size: $display-font-size;
+  }
+}
+
+.ds-title {
+  font-size: $h1-font-size;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $title-font-size;
+  }
+}
+
+.ds-h1 {
+  font-size: $h1-mobile-font-size;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $h1-font-size;
+  }
+}
+
+.ds-h2 {
+  font-size: $h2-font-size;
+}
+
+.ds-h3 {
+  font-size: $h3-font-size;
+}
+
+.ds-h4 {
+  font-size: $h4-font-size;
+}
+
+.ds-h5 {
+  font-size: $h5-font-size;
+  font-weight: $font-bold;
+}
+
+.ds-h6 {
+  color: $color-muted;
+  font-size: $h6-font-size;
+  font-weight: $font-normal;
+}
+
+.ds-base--inverse .ds-h6 {
+  color: $color-muted-inverse;
+}
+
+.ds-text,
+.ds-text--lead {
+  line-height: $base-line-height;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-text {
+  font-size: $base-font-size;
+}
+
+.ds-text--lead {
+  font-size: $lead-font-size;
+}
