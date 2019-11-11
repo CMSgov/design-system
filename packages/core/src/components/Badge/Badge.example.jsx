@@ -8,7 +8,7 @@ ReactDOM.render(
     <Badge variation="info">
       Badge with <code>variation</code> prop
     </Badge>
-    <Badge size="medium">
+    <Badge size="big">
       Badge with <code>size</code> prop
     </Badge>
   </Fragment>,
