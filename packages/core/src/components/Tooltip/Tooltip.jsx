@@ -1,13 +1,9 @@
 import { Manager, Popper, Reference } from 'react-popper';
-import Transition, {
-  ENTERED,
-  ENTERING,
-  EXITING
-} from 'react-transition-group/Transition';
+import React, { Fragment } from 'react';
+import Transition, { ENTERED, ENTERING, EXITING } from 'react-transition-group/Transition';
 import Button from '../Button/Button';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import TooltipIcon from './TooltipIcon';
 import classNames from 'classnames';
@@ -48,141 +44,153 @@ class Tooltip extends React.Component {
     this.setState({ showTooltip: true });
   }
 
-  render() {
-    const body = document.querySelector('body');
+  renderTrigger() {
+    const {
+      ariaLabel,
+      hasInteractiveContent,
+      iconClasses,
+      id,
+      inverse,
+      triggerClasses,
+      triggerContent
+    } = this.props;
     return (
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <button
-              type="button"
-              onTouchStart={() => this.showTooltip()}
-              onFocus={() => this.handleFocus()}
-              onBlur={
-                this.props.hasInteractiveContent
-                  ? null
-                  : () => this.hideTooltip()
-              }
-              onMouseEnter={() => this.showTooltip()}
-              onMouseLeave={() => this.hideTooltip()}
-              id={this.props.id}
-              aria-label={`Tooltip: ${this.props.ariaLabel || ''}`}
-              className={classNames(
-                'ds-c-tooltip__trigger',
-                this.props.triggerClasses
-              )}
-              ref={ref}
-            >
-              {this.props.triggerContent}
+      <Reference>
+        {({ ref }) => (
+          <button
+            id={id}
+            type="button"
+            onTouchStart={() => this.showTooltip()}
+            onFocus={this.handleFocus}
+            onBlur={hasInteractiveContent ? null : () => this.hideTooltip()}
+            onMouseEnter={() => this.showTooltip()}
+            onMouseLeave={() => this.hideTooltip()}
+            aria-label={`Tooltip: ${ariaLabel || ''}`}
+            className={classNames('ds-c-tooltip__trigger', triggerClasses)}
+            ref={ref}
+          >
+            {triggerContent || (
               <TooltipIcon
-                hasTriggerContent={this.props.triggerContent != null}
-                iconClasses={this.props.iconClasses}
-                inverse={this.props.inverse}
+                hasTriggerContent={triggerContent != null}
+                iconClasses={iconClasses}
+                inverse={inverse}
                 showTooltip={this.state.showTooltip}
               />
-            </button>
-          )}
-        </Reference>
-        {body !== null &&
-          // Need to use portal or else positioning is off in IE11 sometimes
-          ReactDOM.createPortal(
-            <Transition
-              in={this.state.showTooltip}
-              unmountOnExit
-              timeout={transitionDuration}
-            >
-              {transitionState => (
-                <Popper
-                  positionFixed={this.props.positionFixed}
-                  placement={this.props.placement}
-                  modifiers={{ offset: { offset: TOOLTIP_OFFSET_OPT } }}
-                >
-                  {({ placement, ref, style, arrowProps }) => {
-                    // Need to add back 1/2 width of arrow to the left placement of the
-                    // tooltip container so the arrow shows up at exactly 50% as the
-                    // arrow container has a width/height we are setting that the
-                    // arrowProps positioning here does not account for
-                    let leftArrowOffset = 0;
-                    if (parseInt(arrowProps.style.left, 10)) {
-                      leftArrowOffset = arrowProps.style.left + 8;
-                    }
-                    const arrowStyle = { left: leftArrowOffset };
+            )}
+          </button>
+        )}
+      </Reference>
+    );
+  }
 
-                    // Can't directly modify style, so copy and add styles from props
-                    const newStyle = {
-                      ...style,
-                      ...defaultTransitionStyle,
-                      ...transitionStyles[transitionState]
-                    };
-                    newStyle.maxWidth = this.props.tooltipMaxWidth || '300px';
-                    newStyle.zIndex = this.props.tooltipZIndex || '1';
-                    return (
-                      <div
-                        className={classNames('ds-c-tooltip__container', {
-                          'inverse-tooltip-body': this.props.tooltipBodyInverse
-                        })}
-                        onMouseEnter={() => this.showTooltip()}
-                        onMouseLeave={() => this.hideTooltip()}
-                        ref={ref}
-                        style={newStyle}
-                        modifiers={{ offset: TOOLTIP_OFFSET }}
-                        data-placement={placement}
-                        aria-labelledby={this.props.id}
-                      >
-                        {this.props.hasInteractiveContent &&
-                        this.state.focusEventTriggered ? (
-                          <FocusTrap>
-                            {/* child of focus trap must be a single node, and must a valid HTML element, so no fragment */}
-                            <div>
-                              <div
-                                className="ds-c-tooltip__arrow"
-                                ref={arrowProps.ref}
-                                style={arrowStyle}
-                              />
-                              <div className="ds-c-tooltip__content ds-base">
-                                {this.props.children}
-                                <div className="ds-u-justify-content--end ds-u-display--flex">
-                                  <Button
-                                    className="qa-tooltip-close-button"
-                                    size="small"
-                                    onClick={() => this.hideTooltip()}
-                                  >
-                                    Close
-                                  </Button>
-                                </div>
-                              </div>
-                              <div
-                                style={{ left: arrowProps.style.left }}
-                                className="ds-c-tooltip__invisible-button"
-                                onTouchStart={() => this.hideTooltip()}
-                              />
-                            </div>
-                          </FocusTrap>
-                        ) : (
-                          <React.Fragment>
-                            <div
-                              className="ds-c-tooltip__arrow"
-                              ref={arrowProps.ref}
-                              style={arrowStyle}
-                            />
-                            <div className="ds-c-tooltip__content ds-base">
-                              {this.props.children}
-                            </div>
-                            <div
-                              style={{ left: arrowProps.style.left }}
-                              className="ds-c-tooltip__invisible-button"
-                              onTouchStart={() => this.hideTooltip()}
-                            />
-                          </React.Fragment>
-                        )}
-                      </div>
-                    );
-                  }}
-                </Popper>
-              )}
-            </Transition>,
-            body
-          )}
+  renderContent() {
+    const {
+      children,
+      id,
+      hasInteractiveContent,
+      positionFixed,
+      placement,
+      tooltipMaxWidth,
+      tooltipZIndex,
+      tooltipBodyInverse
+    } = this.props;
+    const bodyElement = document.querySelector('body');
+
+    const interactiveContent = (arrowProps, arrowStyle) => (
+      // Child of focus trap must be a single node and valid HTML element, no <Fragment>
+      <FocusTrap>
+        <div>
+          <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
+          <div className="ds-c-tooltip__content ds-base">
+            {children}
+            <div className="ds-u-justify-content--end ds-u-display--flex">
+              <Button
+                className="qa-tooltip-close-button"
+                size="small"
+                onClick={() => this.hideTooltip()}
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+          <div
+            style={{ left: arrowProps.style.left }}
+            className="ds-c-tooltip__invisible-button"
+            onTouchStart={() => this.hideTooltip()}
+          />
+        </div>
+      </FocusTrap>
+    );
+    const nonInteractiveContent = (arrowProps, arrowStyle) => (
+      <Fragment>
+        <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
+        <div className="ds-c-tooltip__content ds-base">{children}</div>
+        <div
+          style={{ left: arrowProps.style.left }}
+          className="ds-c-tooltip__invisible-button"
+          onTouchStart={() => this.hideTooltip()}
+        />
+      </Fragment>
+    );
+    return ReactDOM.createPortal(
+      <Transition in={this.state.showTooltip} unmountOnExit timeout={transitionDuration}>
+        {transitionState => (
+          <Popper
+            positionFixed={positionFixed}
+            placement={placement}
+            modifiers={{ offset: { offset: TOOLTIP_OFFSET_OPT } }}
+          >
+            {({ placement, ref, style, arrowProps }) => {
+              // Need to add back 1/2 width of arrow to the left placement of the
+              // tooltip container so the arrow shows up at exactly 50% as the
+              // arrow container has a width/height we are setting that the
+              // arrowProps positioning here does not account for
+              let leftArrowOffset = 0;
+              if (parseInt(arrowProps.style.left, 10)) {
+                leftArrowOffset = arrowProps.style.left + 8;
+              }
+              const arrowStyle = { left: leftArrowOffset };
+
+              // Can't directly modify style, so copy and add styles from props
+              const newStyle = {
+                ...style,
+                ...defaultTransitionStyle,
+                ...transitionStyles[transitionState],
+                ...{ maxWidth: tooltipMaxWidth || '300px' },
+                ...{ zIndex: tooltipZIndex || '1' }
+              };
+              return (
+                <div
+                  className={classNames('ds-c-tooltip__container', {
+                    'inverse-tooltip-body': tooltipBodyInverse
+                  })}
+                  onMouseEnter={() => this.showTooltip()}
+                  onMouseLeave={() => this.hideTooltip()}
+                  ref={ref}
+                  style={newStyle}
+                  modifiers={{ offset: TOOLTIP_OFFSET }}
+                  data-placement={placement}
+                  aria-labelledby={id}
+                >
+                  {hasInteractiveContent && this.state.focusEventTriggered
+                    ? interactiveContent(arrowProps, arrowStyle)
+                    : nonInteractiveContent(arrowProps, arrowStyle)}
+                </div>
+              );
+            }}
+          </Popper>
+        )}
+      </Transition>,
+      bodyElement
+    );
+  }
+
+  render() {
+    const bodyElement = document.querySelector('body');
+    return (
+      <Manager>
+        {this.renderTrigger()}
+        {bodyElement !== null && this.renderContent()}
       </Manager>
     );
   }
