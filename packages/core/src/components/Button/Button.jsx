@@ -57,8 +57,7 @@ export class Button extends React.PureComponent {
   }
 
   classNames() {
-    let variationClass =
-      this.props.variation && `ds-c-button--${this.props.variation}`;
+    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
     let disabledClass = this.props.disabled && 'ds-c-button--disabled';
 
     if (this.props.inverse) {
@@ -100,10 +99,7 @@ export class Button extends React.PureComponent {
     }
 
     return (
-      <ComponentType
-        ref={this.props.inputRef || this.props.buttonRef}
-        {...attrs}
-      >
+      <ComponentType ref={this.props.inputRef || this.props.buttonRef} {...attrs}>
         {this.props.children}
       </ComponentType>
     );
@@ -150,9 +146,9 @@ Button.propTypes = {
    */
   type: PropTypes.oneOf(['button', 'submit']),
   /**
-   * A string corresponding to the button-component variation classes (`primary`, `danger`, `success`, `transparent`)
+   * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.string
+  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
 };
 
 export default Button;
