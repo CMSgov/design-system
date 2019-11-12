@@ -6,11 +6,16 @@ import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
-export const standardDateFormatter = ({ day, month, year }) => ({
+const standardLengthFormatter = ({ day, month, year }) => ({
   day: day.length > 2 ? day.substring(0, 2) : day,
   month: month.length > 2 ? month.substring(0, 2) : month,
   year: year.length > 4 ? year.substring(0, 4) : year
 });
+
+export const defaultDateFormatter = dateObject => {
+  const standardDate = standardLengthFormatter(dateObject);
+  return standardDate;
+};
 
 export class DateField extends React.PureComponent {
   constructor(props) {
@@ -164,7 +169,7 @@ DateField.defaultProps = {
   yearLabel: 'Year',
   yearMin: 1900,
   yearName: 'year',
-  dateFormatter: standardDateFormatter
+  dateFormatter: defaultDateFormatter
 };
 
 DateField.propTypes = {
@@ -174,7 +179,7 @@ DateField.propTypes = {
    * to the `onBlur` and `onChange` callbacks. This method receives an object as
    * its only argument, in the shape of: `{ day, month, year }`
    *
-   * By default `dateFormatter` will be set to `standardDateFormatter` function which prevents day/month values greater than 2 digits and year values greater than 4 digits.
+   * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter: PropTypes.func,
   errorMessage: PropTypes.node,

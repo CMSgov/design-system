@@ -22,7 +22,7 @@ class ControlledDateField extends React.PureComponent {
               DateField using default <code>dateFormatter</code>
             </span>
           }
-          hint={'Try to enter an invalid date'}
+          hint={'Try to enter a date with invalid number of digits'}
           monthValue={this.state.month}
           dayValue={this.state.day}
           yearValue={this.state.year}
