@@ -48,7 +48,7 @@ class Tooltip extends React.Component {
     const {
       ariaLabel,
       hasInteractiveContent,
-      iconClasses,
+      triggerIconClasses,
       id,
       inverse,
       triggerClasses,
@@ -72,7 +72,7 @@ class Tooltip extends React.Component {
             {triggerContent || (
               <TooltipIcon
                 hasTriggerContent={triggerContent != null}
-                iconClasses={iconClasses}
+                triggerIconClasses={triggerIconClasses}
                 inverse={inverse}
                 showTooltip={this.state.showTooltip}
               />
@@ -156,8 +156,8 @@ class Tooltip extends React.Component {
                 ...style,
                 ...defaultTransitionStyle,
                 ...transitionStyles[transitionState],
-                ...{ maxWidth: tooltipMaxWidth || '300px' },
-                ...{ zIndex: tooltipZIndex || '1' }
+                ...{ maxWidth: tooltipMaxWidth },
+                ...{ zIndex: tooltipZIndex }
               };
               return (
                 <div
@@ -197,26 +197,47 @@ class Tooltip extends React.Component {
 }
 
 Tooltip.defaultProps = {
-  placement: 'top'
+  placement: 'top',
+  tooltipMaxWidth: '300px',
+  tooltipZIndex: '1'
 };
 Tooltip.propTypes = {
+  /**
+   * Helpful description of the tooltip for screenreaders
+   */
+  ariaLabel: PropTypes.string.required,
   children: PropTypes.node.isRequired,
-  // tooltip content includes links or buttons that needs to be tabbable
+  /**
+   * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips have a focus trap, close button, and other accessibility changes to account for interactive elements.
+   */
   hasInteractiveContent: PropTypes.bool,
   positionFixed: PropTypes.bool,
-  placement: PropTypes.string,
+  /**
+   * Placement of the tooltip relative to the trigger
+   */
+  placement: PropTypes.oneOf(['top', 'bottom']),
   // the tooltip icon/trigger inverse style applied or not
   inverse: PropTypes.bool,
   // the tooltip itself (text content/container) inverse style applied or not
   tooltipBodyInverse: PropTypes.bool,
-  id: PropTypes.string,
+  /**
+   * Id applied to the trigger element for `aria-labelledby`
+   */
+  id: PropTypes.string.required,
+  /**
+   * Optional custom trigger node. This replaces the default trigger icon.
+   */
   triggerContent: PropTypes.node,
+  /**
+   * Classes applied to the tooltip trigger
+   */
   triggerClasses: PropTypes.string,
-  ariaLabel: PropTypes.string,
+  /**
+   * Classes applied to the default tooltip icon, can be used to override icon fill color
+   */
+  triggerIconClasses: PropTypes.string,
   tooltipMaxWidth: PropTypes.string,
-  tooltipZIndex: PropTypes.string,
-  // added to <g> that controls SVG fill color, for overriding color
-  iconClasses: PropTypes.string
+  tooltipZIndex: PropTypes.string
 };
 
 export default Tooltip;
