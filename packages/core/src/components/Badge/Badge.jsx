@@ -30,7 +30,7 @@ Badge.propTypes = {
   /**
    * Sets the font size of the Badge
    */
-  size: PropTypes.oneOfType(['big']),
+  size: PropTypes.oneOf(['big']),
   /**
    * A string corresponding to the badge-component variation classes
    */
