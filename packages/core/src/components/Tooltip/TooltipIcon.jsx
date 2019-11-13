@@ -19,7 +19,7 @@ export const TooltipIcon = props => {
       >
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g
-            className={classNames('ds-c-tooltip__icon--fill', props.iconClasses)}
+            className={classNames('ds-c-tooltip__icon--fill', props.iconClassName)}
             fillRule="nonzero"
           >
             <g>
@@ -35,7 +35,7 @@ export const TooltipIcon = props => {
 TooltipIcon.propTypes = {
   showTooltip: PropTypes.bool.isRequired,
   inverse: PropTypes.bool,
-  iconClasses: PropTypes.string
+  iconClassName: PropTypes.string
 };
 
 export default TooltipIcon;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders default trigger icon 1`] = `
+<Manager>
+  <Reference>
+    <Component />
+  </Reference>
+  <Portal
+    containerInfo={<body />}
+  >
+    <Transition
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      mountOnEnter={false}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      timeout={300}
+      unmountOnExit={true}
+    >
+      <Component />
+    </Transition>
+  </Portal>
+</Manager>
+`;
+
+exports[`Tooltip renders interactive tooltip 1`] = `
+<Manager>
+  <Reference>
+    <Component />
+  </Reference>
+  <Portal
+    containerInfo={<body />}
+  >
+    <Transition
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      mountOnEnter={false}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      timeout={300}
+      unmountOnExit={true}
+    >
+      <Component />
+    </Transition>
+  </Portal>
+</Manager>
+`;
