@@ -1,8 +1,10 @@
 // Loaded within the markup example iframes
 @import '@cmsgov/design-system-core/src/index';
 @import '@cmsgov/design-system-layout/src/index';
+
 @import '~theme/index';
 @import 'settings/index';
+@import 'base/code';
 
 body {
   margin: 0;
@@ -10,25 +12,6 @@ body {
   padding: $spacer-2;
 }
 
-// stylelint-disable scss/at-extend-no-missing-placeholder
-.example--wrapper>*+* {
-  @extend .ds-u-margin-top--2;
-}
-
-.example--wrapper>:first-child {
-  margin-top: 0;
-}
-
-.example--inverse {
-  @extend .ds-base;
-  @extend .ds-base--inverse;
-  @extend .ds-u-padding--2;
-  max-width: fit-content;
-  >.ds-c-field {
-    width: $input-max-width;
-  }
-}
-// stylelint-enable
-
+@import 'components/example';
 @import 'components/preview';
 @import 'components/swatch';
