@@ -32,6 +32,27 @@ class Tooltip extends React.Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown.bind(this));
+  }
+
+  handleKeyDown(e) {
+    if (this.props.hasInteractiveContent && this.state.showTooltip) {
+      const ESCAPE_KEY = 27;
+      switch (e.keyCode) {
+        case ESCAPE_KEY:
+          this.hideTooltip();
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
   handleFocus() {
     this.setState({ showTooltip: true, focusEventTriggered: true });
   }
