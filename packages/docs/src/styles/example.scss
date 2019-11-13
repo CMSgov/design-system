@@ -12,6 +12,11 @@ body {
   padding: $spacer-2;
 }
 
+code {
+  // Slightly larger than on the main doc site
+  font-size: 1em;
+}
+
 @import 'components/example';
 @import 'components/preview';
 @import 'components/swatch';
