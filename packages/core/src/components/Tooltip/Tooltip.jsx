@@ -69,10 +69,10 @@ class Tooltip extends React.Component {
     const {
       ariaLabel,
       hasInteractiveContent,
-      triggerIconClasses,
+      triggerIconClassName,
       id,
       inverse,
-      triggerClasses,
+      triggerClassName,
       triggerContent
     } = this.props;
     return (
@@ -87,13 +87,13 @@ class Tooltip extends React.Component {
             onMouseEnter={() => this.showTooltip()}
             onMouseLeave={() => this.hideTooltip()}
             aria-label={`Tooltip: ${ariaLabel || ''}`}
-            className={classNames('ds-c-tooltip__trigger', triggerClasses)}
+            className={classNames('ds-c-tooltip__trigger', triggerClassName)}
             ref={ref}
           >
             {triggerContent || (
               <TooltipIcon
                 hasTriggerContent={triggerContent != null}
-                triggerIconClasses={triggerIconClasses}
+                triggerIconClassName={triggerIconClassName}
                 inverse={inverse}
                 showTooltip={this.state.showTooltip}
               />
@@ -108,12 +108,13 @@ class Tooltip extends React.Component {
     const {
       children,
       id,
+      inverse,
       hasInteractiveContent,
       positionFixed,
       placement,
       tooltipMaxWidth,
       tooltipZIndex,
-      tooltipBodyInverse
+      tooltipBodyClassName
     } = this.props;
     const bodyElement = document.querySelector('body');
 
@@ -182,13 +183,13 @@ class Tooltip extends React.Component {
               };
               return (
                 <div
-                  className={classNames('ds-c-tooltip__container', {
-                    'inverse-tooltip-body': tooltipBodyInverse
+                  ref={ref}
+                  className={classNames('ds-c-tooltip__container', tooltipBodyClassName, {
+                    'inverse-tooltip-body': inverse
                   })}
+                  style={newStyle}
                   onMouseEnter={() => this.showTooltip()}
                   onMouseLeave={() => this.hideTooltip()}
-                  ref={ref}
-                  style={newStyle}
                   modifiers={{ offset: TOOLTIP_OFFSET }}
                   data-placement={placement}
                   aria-labelledby={id}
@@ -219,6 +220,7 @@ class Tooltip extends React.Component {
 
 Tooltip.defaultProps = {
   placement: 'top',
+  positionFixed: false,
   tooltipMaxWidth: '300px',
   tooltipZIndex: '1'
 };
@@ -226,25 +228,29 @@ Tooltip.propTypes = {
   /**
    * Helpful description of the tooltip for screenreaders
    */
-  ariaLabel: PropTypes.string.required,
+  ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   /**
    * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips have a focus trap, close button, and other accessibility changes to account for interactive elements.
    */
   hasInteractiveContent: PropTypes.bool,
+  /**
+   * Set prop to `true` to use `position: fixed` strategy to place the popper element. By default it is `false`, meaning it will use `position: absolute`
+   */
   positionFixed: PropTypes.bool,
   /**
    * Placement of the tooltip relative to the trigger
    */
   placement: PropTypes.oneOf(['top', 'bottom']),
-  // the tooltip icon/trigger inverse style applied or not
   inverse: PropTypes.bool,
-  // the tooltip itself (text content/container) inverse style applied or not
-  tooltipBodyInverse: PropTypes.bool,
   /**
-   * Id applied to the trigger element for `aria-labelledby`
+   * Id applied to the trigger element, used in  `aria-labelledby`
    */
-  id: PropTypes.string.required,
+  id: PropTypes.string.isRequired,
+  /**
+   * Classes applied to the tooltip body
+   */
+  tooltipBodyClassName: PropTypes.string,
   /**
    * Optional custom trigger node. This replaces the default trigger icon.
    */
@@ -252,11 +258,11 @@ Tooltip.propTypes = {
   /**
    * Classes applied to the tooltip trigger
    */
-  triggerClasses: PropTypes.string,
+  triggerClassName: PropTypes.string,
   /**
-   * Classes applied to the default tooltip icon, can be used to override icon fill color
+   * Classes applied to the default tooltip trigger icon, can be used to override icon fill color
    */
-  triggerIconClasses: PropTypes.string,
+  triggerIconClassName: PropTypes.string,
   tooltipMaxWidth: PropTypes.string,
   tooltipZIndex: PropTypes.string
 };

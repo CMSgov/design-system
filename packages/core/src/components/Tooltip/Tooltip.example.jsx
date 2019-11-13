@@ -10,13 +10,17 @@ const TooltipExample = () => {
     <Fragment>
       <div className="ds-u-display--flex">
         <p>Tooltip</p>
-        <Tooltip id="tooltip-1-id" ariaLabel="aria label" positionFixed>
+        <Tooltip id="tooltip-1-id" ariaLabel="Label describing the subject of the tooltip">
           <p>{loremM}</p>
         </Tooltip>
       </div>
       <div className="ds-u-display--flex">
         <p>Tooltip with interactive content</p>
-        <Tooltip id="tooltip-2-id" hasInteractiveContent ariaLabel="aria label" positionFixed>
+        <Tooltip
+          id="tooltip-2-id"
+          ariaLabel="Label describing the subject of the interactive tooltip"
+          hasInteractiveContent
+        >
           <p>
             <a href="#noop">Link to website</a>
             {' ' + loremM}
@@ -28,17 +32,9 @@ const TooltipExample = () => {
           <p>Inverse tooltip</p>
           <Tooltip
             id="tooltip-3-id"
-            ariaLabel="aria label"
+            ariaLabel="Label describing the subject of the inverse tooltip"
             inverse
-            tooltipBodyInverse
-            positionFixed
           >
-            <p>{loremM}</p>
-          </Tooltip>
-        </div>
-        <div className="ds-u-display--flex">
-          <p>Inverse tooltip trigger only</p>
-          <Tooltip id="tooltip-4-id" ariaLabel="aria label" inverse positionFixed>
             <p>{loremM}</p>
           </Tooltip>
         </div>
