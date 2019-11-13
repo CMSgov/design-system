@@ -92,7 +92,6 @@ class Tooltip extends React.Component {
           >
             {triggerContent || (
               <TooltipIcon
-                hasTriggerContent={triggerContent != null}
                 triggerIconClassName={triggerIconClassName}
                 inverse={inverse}
                 showTooltip={this.state.showTooltip}

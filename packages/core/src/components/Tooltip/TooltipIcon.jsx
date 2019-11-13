@@ -6,8 +6,6 @@ export const TooltipIcon = props => {
   return (
     <span
       className={classNames('ds-c-tooltip__icon-container', {
-        'ds-c-tooltip__icon-container--has-trigger-content':
-          props.hasTriggerContent,
         'trigger-focused': props.showTooltip,
         'trigger-inverse': props.inverse
       })}
@@ -21,10 +19,7 @@ export const TooltipIcon = props => {
       >
         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g
-            className={classNames(
-              'ds-c-tooltip__icon--fill',
-              props.iconClasses
-            )}
+            className={classNames('ds-c-tooltip__icon--fill', props.iconClasses)}
             fillRule="nonzero"
           >
             <g>
@@ -40,8 +35,7 @@ export const TooltipIcon = props => {
 TooltipIcon.propTypes = {
   showTooltip: PropTypes.bool.isRequired,
   inverse: PropTypes.bool,
-  iconClasses: PropTypes.string,
-  hasTriggerContent: PropTypes.bool
+  iconClasses: PropTypes.string
 };
 
 export default TooltipIcon;
