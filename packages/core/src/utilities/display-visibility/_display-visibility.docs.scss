@@ -1,7 +1,7 @@
 /*
 Display/Visibility
 
-Use the `display` and `visibility` utility classes to show and hide elements.
+Use the display and visibility utility classes to show and hide elements.
 
 Style guide: utilities.display-visibility
 */
@@ -11,14 +11,9 @@ Display
 
 > The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from behaviors described in the HTML specifications or from the browser/user default stylesheet. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
-**Format**: `ds-u-display--[VALUE]`
+**Format**: `ds-u-display--[block|inline-block|flex|none]`
 
-#### Available `display` utilities:
-
-- `ds-u-display--block`
-- `ds-u-display--inline-block`
-- `ds-u-display--flex`
-- `ds-u-display--none`
+**Responsive format**: `ds-u-[breakpoint]-display--[block|inline-block|flex|none]`
 
 Markup:
 <% ['ds-u-display--block',
@@ -36,17 +31,10 @@ Visibility
 
 > The visibility property can be used to hide an element while leaving the space where it would have been. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
 
-**Format**: `ds-u-visibility--[VALUE]`
-
-#### Available `visibility` utilities:
-
-- `ds-u-visibility--hidden`
-- `ds-u-visibility--visible`
-- `ds-u-visibility--screen-reader`
-
-#### Accessibility
-
 There may be times when you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
+
+
+**Format**: `ds-u-visibility--[hidden|visible|screen-reader]`
 
 Markup:
 <span class="ds-u-visibility--hidden">I'm hidden</span>
