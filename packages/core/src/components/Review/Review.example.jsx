@@ -16,7 +16,7 @@ ReactDOM.render(
       Multiple Review components can be combined together one after another.
     </Review>
     <Review
-      heading="A Review component with edit content"
+      heading="A Review component with custom edit content"
       editContent={
         <div>
           <a href={editButtonHref}>Edit</a>
@@ -33,7 +33,11 @@ ReactDOM.render(
     <Review heading="Date of Birth" editHref={editButtonHref}>
       October 11, 1980
     </Review>
-    <Review heading="Shopping List" editHref={editButtonHref}>
+    <Review
+      heading="Shopping List"
+      editHref={editButtonHref}
+      editAriaLabel="Edit this shopping list"
+    >
       <ul>
         <li>Milk</li>
         <li>Eggs</li>
