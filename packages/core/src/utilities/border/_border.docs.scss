@@ -9,7 +9,7 @@ The border utility class sets the `border-color` and `border-size`, with support
 
 @hide-markup
 
-Markup: border.example.html
+Markup: border.example.ejs.html
 
 Style guide: utilities.border
 */
@@ -21,18 +21,7 @@ Border color
 
 @hide-markup
 
-Markup:
-<% ['dark',
-    'inverse',
-    'error', 'error-light', 'error-lighter',
-    'warn', 'warn-light', 'warn-lighter',
-    'success', 'success-light', 'success-lighter'].forEach(color => { -%>
-<div <% if (color.match(/(lighte|inverse)/)) { -%>class="ds-u-fill--primary-darkest ds-u-padding--1"<% } -%>>
-  <div class="ds-u-border--<%= color %> ds-u-border--2 ds-u-margin-y--1 ds-u-padding--1">
-    <code class="ds-u-fill--background">ds-u-border--<%= color %></code>
-  </div>
-</div>
-<% }) -%>
+Markup: border-color.example.ejs.html
 
 Style guide: utilities.border.color
 */
