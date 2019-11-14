@@ -13,12 +13,7 @@ export class ReviewLink extends React.PureComponent {
     const onClick = event => this.handleClick(event);
     return (
       <div>
-        <a
-          href={href}
-          onClick={onClick}
-          className={className}
-          aria-label={ariaLabel}
-        >
+        <a href={href} onClick={onClick} className={className} aria-label={ariaLabel}>
           {children}
         </a>
       </div>
@@ -27,15 +22,15 @@ export class ReviewLink extends React.PureComponent {
 }
 
 ReviewLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  onClick: PropTypes.func,
   /**
    * Provide this value to give screenreaders longer, more descriptive text to
    * explain the context of the link.
    */
-  ariaLabel: PropTypes.string
+  ariaLabel: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 };
 
 export default ReviewLink;
