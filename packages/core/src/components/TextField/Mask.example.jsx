@@ -33,17 +33,13 @@ class ControlledCurrencyField extends React.PureComponent {
   render() {
     return (
       <fieldset className="ds-u-margin-top--3 ds-u-padding-left--3 ds-u-padding-bottom--3 ds-u-border--2">
-        <legend className="ds-u-font-size--h3">
-          Controlled Component Example
-        </legend>
+        <legend className="ds-u-font-size--h3">Controlled Example</legend>
         <TextField
           label="This is a controlled component"
           mask="currency"
           name="controlled_currency_example"
           className="ds-u-margin-bottom--2"
-          onChange={evt =>
-            this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))
-          }
+          onChange={evt => this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))}
           value={this.state.currencyValue}
         />
         <Button onClick={() => this.clearCurrencyValue()}>Clear</Button>
