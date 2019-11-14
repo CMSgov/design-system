@@ -15,13 +15,7 @@ Display
 
 **Responsive format**: `ds-u-[breakpoint]-display--[block|inline-block|flex|none]`
 
-Markup:
-<% ['ds-u-display--block',
-  'ds-u-display--inline-block',
-  'ds-u-display--flex',
-  'ds-u-display--none'].forEach(util => { -%>
-<p class="<%= util %> ds-base--inverse ds-u-padding--2"><%= util %></p>
-<% }) %>
+Markup: display.example.ejs.html
 
 Style guide: utilities.display-visibility.display
 */
@@ -33,13 +27,9 @@ Visibility
 
 There may be times when you want to hide an element, but still want its text to be read by a screen reader. The `ds-u-visibility--screen-reader` class will hide the content visually, but provide the content to screen readers.
 
-
 **Format**: `ds-u-visibility--[hidden|visible|screen-reader]`
 
-Markup:
-<span class="ds-u-visibility--hidden">I'm hidden</span>
-<span class="ds-u-visibility--screen-reader">I'm visible to screen readers only</span>
-<span class="ds-u-visibility--visible">I'm visible</span>
+Markup: visibility.example.html
 
 Style guide: utilities.display-visibility.visibility
 */
@@ -53,17 +43,7 @@ Use a [breakpoint prefix](/guidelines/responsive) to show/hide content at specif
 
 A breakpoint prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
 
-Markup:
-<% ['sm', 'md', 'lg', 'xl'].forEach(breakpoint => { %>
-  <div class="ds-u-margin--1">
-    <div class="ds-u-<%= breakpoint %>-visibility--hidden ds-u-color--muted">
-      Hidden on <%= breakpoint %> screens and larger
-    </div>
-    <div class="ds-u-<%= breakpoint %>-visibility--visible">
-      Visible on <%= breakpoint %> screens and larger
-    </div>
-  </div>
-<% }) %>
+Markup: display-visibility-responsive.example.ejs.html
 
 Style guide: utilities.display-visibility.responsive
 */

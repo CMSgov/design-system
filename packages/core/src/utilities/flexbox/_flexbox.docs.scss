@@ -20,19 +20,7 @@ Use the `justify-content` utility class on a flexbox container to change the ali
 
 **Responsive format**: `ds-u-[breakpoint]-justify-content--[start|end|center|between|around]`
 
-Markup:
-<section class="example--wrapper">
-<% ['start','end','center','between','around'].forEach(value => { %>
-  <div>
-    <code class="ds-u-margin-bottom--1">ds-u-justify-content--<%= value %></code>
-    <article class="ds-u-justify-content--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest">
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-    </article>
-  </div>
-<% }) %>
-</section>
+Markup: justify-content.example.ejs.html
 
 Style guide: utilities.flexbox.justify-content
 */
@@ -48,19 +36,7 @@ Use the `align-items` utility class on a flexbox container to change the alignme
 
 **Responsive format**: `ds-u-[breakpoint]-align-items--[start|end|center|baseline|stretch]`
 
-Markup:
-<section class="example--wrapper">
-<% ['start','end','center','baseline','stretch'].forEach(value => { %>
-  <div>
-    <code class="ds-u-margin-bottom--1">ds-u-align-items--<%= value %></code>
-    <article class="ds-u-align-items--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest" style="height: 75px">
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-      <div class="ds-u-fill--white ds-u-margin--1"><%= value %></div>
-    </article>
-  </div>
-<% }) %>
-</section>
+Markup: align-items.example.ejs.html
 
 Style guide: utilities.flexbox.align-items
 */
@@ -76,19 +52,7 @@ Use the `flex-wrap` utility class on a flexbox container to change how its child
 
 **Responsive format**: `ds-u-[breakpoint]-wrap--[nowrap|wrap|reverse]`
 
-Markup:
-<section class="example--wrapper">
-<% ['nowrap','wrap','reverse'].forEach(value => { %>
-  <div>
-    <code class="ds-u-margin-bottom--1">ds-u-flex-wrap--<%= value %></code>
-    <article class="ds-u-flex-wrap--<%= value %> ds-u-display--flex ds-u-fill--primary-darkest">
-      <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #1</div>
-      <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #2</div>
-      <div class="ds-u-fill--white ds-u-margin--1 ds-u-padding-y--2 ds-u-text-align--center" style="width: 50%"><%= value %> element #3</div>
-    </article>
-  </div>
-<% }) %>
-</section>
+Markup: flex-wrap.example.ejs.html
 
 Style guide: utilities.flexbox.flex-wrap
 */
@@ -100,14 +64,7 @@ Responsive flexbox
 
 Use a [breakpoint prefix](/guidelines/responsive) to change the flexbox at specific breakpoints.
 
-Markup:
-<section>
-  <article class="ds-u-sm-justify-content--center ds-u-md-justify-content--between ds-u-lg-justify-content--around ds-u-display--flex ds-u-fill--primary-darkest">
-    <div class="ds-u-fill--white ds-u-margin--1">element #1</div>
-    <div class="ds-u-fill--white ds-u-margin--1">element #2</div>
-    <div class="ds-u-fill--white ds-u-margin--1">element #3</div>
-  </article>
-</section>
+Markup: flexbox-responsive.example.html
 
 Style guide: utilities.flexbox.responsive
 */
