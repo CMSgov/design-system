@@ -9,14 +9,7 @@ The border utility class sets the `border-color` and `border-size`, with support
 
 @hide-markup
 
-Markup:
-<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
-<% for (var i = 0; i < 3; i++) { %>
-<div class="ds-u-border<%= name %>--<%= i %> ds-u-margin-y--1 ds-u-padding--1">
-  <code class="ds-u-fill--background">ds-u-border<%= name %>--<%= i %></code>
-</div>
-<% } -%>
-<% }) -%>
+Markup: border.example.html
 
 Style guide: utilities.border
 */
