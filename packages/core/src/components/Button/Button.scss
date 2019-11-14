@@ -1,6 +1,6 @@
 @import '@cmsgov/design-system-support/src/index';
 
-.ds-c-button, 
+.ds-c-button,
 .ds-c-button:visited  {
   appearance: none;
   background-color: $color-white;
@@ -182,8 +182,8 @@
 /*
 Inverse buttons
 */
-.ds-c-button--inverse, 
-.ds-c-button--inverse:visited, 
+.ds-c-button--inverse,
+.ds-c-button--inverse:visited,
 .ds-c-button--transparent-inverse,
 .ds-c-button--transparent-inverse:visited {
   color: $color-base-inverse;
@@ -204,7 +204,7 @@ Inverse buttons
   }
 }
 
-.ds-c-button--inverse, 
+.ds-c-button--inverse,
 .ds-c-button--inverse:visited {
   background-color: $color-background-inverse;
   border-color: $border-color-inverse;
@@ -234,6 +234,16 @@ Inverse buttons
     color: $color-muted-inverse;
   }
 }
+
+/* stylelint-disable */
+.ds-c-button--disabled-inverse {
+  @extend .ds-c-button--inverse;
+  background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
+}
+/* stylelint-enable */
 
 .ds-c-button > svg {
   @include inline-icon;
