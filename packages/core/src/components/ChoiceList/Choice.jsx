@@ -8,20 +8,19 @@ import uniqueId from 'lodash.uniqueid';
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
 
-/**
- * A `Choice` component can be used to render a checkbox or radio button.
- *
- * Any _undocumented_ props that you pass to this component will be passed
- * to the `input` element, so you can use this to set additional attributes if
- * necessary.
- */
 export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    if (props['inputPlacement'] === 'right') {
+      console.error(
+        `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+      );
+    }
+
+    this.input = null;
     this.handleChange = this.handleChange.bind(this);
-    this.id =
-      this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -33,10 +32,7 @@ export class Choice extends React.PureComponent {
       // Event emitters are only relevant for uncontrolled radio buttons
       if (this.props.type === 'radio') {
         this.uncheckEventName = `${this.props.name}-uncheck`;
-        dsChoiceEmitter.on(
-          this.uncheckEventName,
-          this.handleUncheck.bind(this)
-        );
+        dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck.bind(this));
       }
     } else {
       this.isControlled = true;
@@ -115,19 +111,15 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
-          ref={input => {
-            this.input = input;
+          ref={ref => {
+            this.input = ref;
             if (inputRef) {
-              inputRef(input);
+              inputRef(ref);
             }
           }}
           {...inputProps}
         />
-        <FormLabel
-          fieldId={this.id}
-          hint={hint}
-          requirementLabel={requirementLabel}
-        >
+        <FormLabel fieldId={this.id} hint={hint} requirementLabel={requirementLabel}>
           {children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
@@ -196,7 +188,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Placement of the input relative to the text label
+   * (Deprecated) Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),

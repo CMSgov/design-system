@@ -59,11 +59,13 @@ Supported flags:
 - **`@hide-example`** Hides the example and code snippet. Useful for rendering just the prop docs for React components.
 - **`@hide-markup`** Hides the code snippet.
 - **`@react-component [NAME]`** Displays the React `.jsx` component example, documentation and `Props`.
-    - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
-    - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
+
+  - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
+  - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
 
 - **`@react-example [NAME]`** Displays example.jsx file using this React component.
-    - **Example**: `@react-component Mask` displays `Mask.example.jsx`
+
+  - **Example**: `@react-component Mask` displays `Mask.example.jsx`
 
 - **`@responsive`** Renders breakpoint toggles for the markup example.
 - **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
@@ -74,14 +76,15 @@ Supported flags:
 If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
 
 ### Markup
-Markup examples can be written in plain HTML inline or in a separate `.html` file, relative to the CSS file:
 
+Markup examples can be written in plain HTML inline or in a separate `.html` file, relative to the CSS file:
 
 ```
 Markup: Button.example.html
 ```
 
 #### Button.example.html file
+
 ```HTML
 <button class="ds-c-button {{modifier}}">Button label</button>
 ```
@@ -108,7 +111,6 @@ To link to another documentation page in your guidance content use a relative ur
 
 Documentation and guidance should be placed at the end of the SCSS file and conform to the following format:
 
-
 ```scss
 /*
 ---
@@ -124,21 +126,20 @@ Style guide: components.component-name-goes-here.guidance
 When writing documentation and guidance please include the following sections.
 
 - **Usability**
-    - **When to use**
-        - List typical use cases for this component
-    - **When to consider alternatives**
-        - List commonly confused use cases where an alternative component would be a better solution
-    - **General guidance**
-        - List any design or content guidelines related to how this component should be used
+  - **When to use**
+    - List typical use cases for this component
+  - **When to consider alternatives**
+    - List commonly confused use cases where an alternative component would be a better solution
+  - **General guidance**
+    - List any design or content guidelines related to how this component should be used
 - **Accessibility**
-    - List any accessibility considerations like required keyboard functionality, ARIA attributes, etc...
+  - List any accessibility considerations like required keyboard functionality, ARIA attributes, etc...
 - **Theming (optional)**
-    - List any Sass variables a developer could override to customize the appearance of the component
+  - List any Sass variables a developer could override to customize the appearance of the component
 - **Related patterns (optional)**
-    - List any related components or utility classes that connect with the component, whether as a parent, sibling, or child within the pattern's taxonomy.
+  - List any related components or utility classes that connect with the component, whether as a parent, sibling, or child within the pattern's taxonomy.
 - **Learn more**
-    - List any links that served as inspiration, references, or research related to this component.
-
+  - List any links that served as inspiration, references, or research related to this component.
 
 ## Sample page
 
@@ -177,12 +178,12 @@ Style guide: components.buttons
 content here
 */
 ```
+
 </details>
 
 #### Additional references
 
 - [Build a Style Guide Straight from Sass](https://css-tricks.com/build-style-guide-straight-sass)
-
 
 ## Documenting React components
 
@@ -208,8 +209,8 @@ If a React component expects any `props`, you should document them within the co
 Button.propTypes = {
   label: React.PropTypes.node.isRequired,
   /**
-  * Overwrite the button's `class` attribute by providing your own
-  */
+   * Overwrite the button's `class` attribute by providing your own
+   */
   className: React.PropTypes.string
 };
 ```
@@ -224,15 +225,24 @@ The format of these markdown pages follow the same format as Jekyll pages:
 
 ### Front-matter
 
-At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines. **Note:** The weight property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
+At the top of the Markdown page is YAML "front-matter". This defines the page's title and any other page properties (like `markup`, `weight`, etc...). Front-matter must be wrapped between these triple-dashed lines.
 
 ```
 ---
+label: Get started
 title: Hello world
 markup: hello-world.example.html
 weight: 100
 ---
 ```
+
+#### Label (optional)
+
+The `label` property is used for the nav label for a page. If it is not provided, the title property is used instead
+
+#### Weight (optional)
+
+The `weight` property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on.
 
 ### Body
 

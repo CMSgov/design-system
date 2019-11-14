@@ -2,10 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * The `FormLabel` component provides the `label` (or `legend`) for a field,
- * along with any associated hint text and error message.
- */
 export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
@@ -14,11 +10,7 @@ export class FormLabel extends React.PureComponent {
       });
 
       return (
-        <span
-          className={classes}
-          id={`${this.props.fieldId}-message`}
-          role="alert"
-        >
+        <span className={classes} id={`${this.props.fieldId}-message`} role="alert">
           {this.props.errorMessage}
         </span>
       );

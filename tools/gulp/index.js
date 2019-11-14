@@ -37,9 +37,21 @@ function packageName(packagePath) {
   return packagePath.match(/packages\/([a-z-_/]+)/)[1];
 }
 
+function themeDirectory() {
+  if (argv.theme) {
+    if (themePackageDir) {
+      dutil.logMessage('🎨 ', `Including theme: ${themePackageDir}`);
+      return themePackageDir;
+    } else {
+      dutil.logMessage('🎨 ', "Couldn't find a theme package, skipping.");
+    }
+  }
+  return null;
+}
+
 /**
- * Get the names of the directories containing design system (or theme)
- * files. These will be used for watching, compiling, and docs generation
+ * Get the names of the directories containing design system files.
+ * These will be used for watching, compiling, and docs generation
  */
 function packageDirectories() {
   const directories = glob
@@ -47,52 +59,32 @@ function packageDirectories() {
       ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
     })
     .map(packageName);
-
-  if (argv.theme) {
-    if (themePackageDir) {
-      directories.push(themePackageDir);
-      dutil.logMessage('🎨 ', `Including theme: ${themePackageDir}`);
-    } else {
-      dutil.logMessage('🎨 ', "Couldn't find a theme package, skipping.");
-    }
-  }
-
   return directories;
 }
 
 module.exports = gulp => {
   // compile docs to the themes directory if it's being applied
-  const docsPath = themePackageDir
-    ? `packages/${themePackageDir}/docs`
-    : 'docs';
+  const docsPath = themePackageDir ? `packages/${themePackageDir}/docs` : 'docs';
   // support placing docs in a subdirectory (ie. design.cms.gov/v1/index.html)
   const rootPath = argv.root || '';
-  const packages = packageDirectories();
+  const theme = themeDirectory();
+  // Include theme directory in packages to watch, compile, and generate theme docs
+  const packages = theme ? packageDirectories().concat(theme) : packageDirectories();
 
   // These properties are shared with every Gulp task
   const shared = {
     browserSync: require('browser-sync').create(),
     env: argv.env,
+    theme: theme,
     packages: packages,
     docsPath: docsPath,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(
-      docsPath,
-      rootPath,
-      packages
-    )
+    webpackConfig: require('../../packages/docs/webpack.config')(docsPath, rootPath, packages)
   };
 
-  [
-    'build',
-    'docs',
-    'lint',
-    'sass',
-    'server',
-    'stats/stats',
-    'watch',
-    'webpack'
-  ].forEach(taskGroup => {
-    require(`./${taskGroup}`)(gulp, shared);
-  });
+  ['build', 'docs', 'lint', 'sass', 'server', 'stats/stats', 'watch', 'webpack'].forEach(
+    taskGroup => {
+      require(`./${taskGroup}`)(gulp, shared);
+    }
+  );
 };

@@ -6,15 +6,6 @@ import Select from './Select';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/**
- * A `ChoiceList` component can be used to render a radio
- * button group, or checkbox group.
- *
- * By default the component determines the type of field for you, taking
- * into account accessibility and usability best practices. So, you can pass in
- * an array of `choices` and let it determine what type of field would be best for
- * the user, or alternatively you can manually pass in the `type` prop.
- */
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -47,8 +38,7 @@ export class ChoiceList extends React.PureComponent {
         props.disabled = props.disabled || this.props.disabled;
         props.inversed = this.props.inversed;
         props.name = this.props.name;
-        props.onBlur =
-          (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
+        props.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
         props.onChange = this.props.onChange;
         props.type = type;
         props.inputRef = ref => {
@@ -155,10 +145,7 @@ export class ChoiceList extends React.PureComponent {
 
   render() {
     const type = this.type();
-    const classes = classNames(
-      { 'ds-c-fieldset': type !== 'select' },
-      this.props.className
-    );
+    const classes = classNames({ 'ds-c-fieldset': type !== 'select' }, this.props.className);
     const RootComponent = type === 'select' ? 'div' : 'fieldset';
     const FormLabelComponent = type === 'select' ? 'label' : 'legend';
 
@@ -257,9 +244,9 @@ ChoiceList.propTypes = {
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.
    */
-  type: PropTypes.oneOf(['checkbox', 'radio', 'select']),
+  type: PropTypes.oneOf(['checkbox', 'radio']),
   /**
-   * Adds `aria-label` attribute if component renders a select
+   * Adds `aria-label` attribute if component renders a select (deprecated)
    */
   ariaLabel: PropTypes.string
 };

@@ -1,0 +1,9 @@
+/* stylelint-disable declaration-no-important */
+@import '@cmsgov/design-system-support/src/settings/index';
+
+.ds-u-truncate {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}

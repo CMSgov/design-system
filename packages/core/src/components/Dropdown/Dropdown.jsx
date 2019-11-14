@@ -4,19 +4,20 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/**
- * A `Dropdown` component can be used to render an HTML `select` menu.
- * Any _undocumented_ props that you pass to this component will be passed
- * to the `select` element, so you can use this to set additional attributes if
- * necessary.
- *
- * Class-based component gives flexibility for active focus management
- * by allowing refs to be passed.
- */
 export class Dropdown extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    if (props['fieldRef']) {
+      console.error(
+        `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+      );
+    }
+  }
+
   componentDidMount() {
     if (this.props.focusTrigger) {
-      this.selectRef && this.selectRef.focus();
+      this.focusRef && this.focusRef.focus();
     }
   }
 
@@ -37,6 +38,7 @@ export class Dropdown extends React.PureComponent {
       fieldRef,
       focusTrigger,
       hint,
+      inputRef,
       inversed,
       label,
       labelClassName,
@@ -80,10 +82,14 @@ export class Dropdown extends React.PureComponent {
           /* eslint-disable no-return-assign */
           ref={ref => {
             if (focusTrigger) {
-              this.selectRef = ref;
-            }
-            if (fieldRef) {
-              fieldRef(ref);
+              this.focusRef = ref;
+            } else {
+              if (inputRef) {
+                inputRef(ref);
+              }
+              if (fieldRef) {
+                fieldRef(ref);
+              }
             }
           }}
           /* eslint-enable no-return-assign */
@@ -120,7 +126,7 @@ Dropdown.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Access a reference to the `select` element
+   * (Deprecated) Access a reference to the `select` element
    */
   fieldRef: PropTypes.func,
   /**
@@ -131,6 +137,10 @@ Dropdown.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * Access a reference to the `select` element
+   */
+  inputRef: PropTypes.func,
   /**
    * Applies the "inverse" UI theme
    */
@@ -153,8 +163,7 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node.isRequired,
-      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-        .isRequired
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
     })
   ).isRequired,
   onBlur: PropTypes.func,

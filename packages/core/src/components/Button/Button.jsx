@@ -13,6 +13,16 @@ import classNames from 'classnames';
  * you could pass in a `target` prop to pass to the rendered anchor element.
  */
 export class Button extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    if (props['buttonRef']) {
+      console.error(
+        `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
+      );
+    }
+  }
+
   // Get an object of props to pass to the rendered <Button> component
   attrs() {
     /**
@@ -25,6 +35,7 @@ export class Button extends React.PureComponent {
     const {
       className,
       component,
+      inputRef,
       inverse,
       onClick,
       size,
@@ -46,8 +57,7 @@ export class Button extends React.PureComponent {
   }
 
   classNames() {
-    let variationClass =
-      this.props.variation && `ds-c-button--${this.props.variation}`;
+    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
     let disabledClass = this.props.disabled && 'ds-c-button--disabled';
 
     if (this.props.inverse) {
@@ -89,7 +99,7 @@ export class Button extends React.PureComponent {
     }
 
     return (
-      <ComponentType ref={this.props.buttonRef} {...attrs}>
+      <ComponentType ref={this.props.inputRef || this.props.buttonRef} {...attrs}>
         {this.props.children}
       </ComponentType>
     );
@@ -115,6 +125,10 @@ Button.propTypes = {
    * rather than `button`.
    */
   href: PropTypes.string,
+  /**
+   * Access a reference to the `button` or `a` element
+   */
+  inputRef: PropTypes.func,
   /** Applies the inverse theme styling */
   inverse: PropTypes.bool,
   /**
@@ -123,7 +137,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * Access a reference to the `button` or `a` element
+   * (Deprecated) Access a reference to the `button` or `a` element
    */
   buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),
@@ -132,9 +146,9 @@ Button.propTypes = {
    */
   type: PropTypes.oneOf(['button', 'submit']),
   /**
-   * A string corresponding to the button-component variation classes (`primary`, `danger`, `success`, `transparent`)
+   * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.string
+  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
 };
 
 export default Button;

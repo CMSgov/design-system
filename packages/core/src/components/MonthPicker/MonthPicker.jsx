@@ -7,14 +7,6 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/*
-`<MonthPicker>`
-
-@react-component MonthPicker
-
-Style guide: components.month-picker.react
-*/
-
 const NUM_MONTHS = 12;
 const monthNumbers = (() => {
   const months = [];
@@ -24,13 +16,6 @@ const monthNumbers = (() => {
   return months;
 })();
 
-/**
- * The `MonthPicker` component renders a grid of checkboxes with shortened month
- * names as well as buttons for selecting or deselecting all. For internationalization
- * one can pass a `locale` prop, and the month names will change to match the
- * language of the locale. Full month names are also included as `aria-label`
- * attributes.
- */
 export class MonthPicker extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -87,9 +72,7 @@ export class MonthPicker extends React.PureComponent {
 
     if (!this.isControlled) {
       const disabledMonths = this.disabledMonths();
-      const selectedMonths = monthNumbers.filter(
-        m => !disabledMonths.includes(m)
-      );
+      const selectedMonths = monthNumbers.filter(m => !disabledMonths.includes(m));
       this.setState({ selectedMonths });
     }
   }
@@ -148,10 +131,7 @@ export class MonthPicker extends React.PureComponent {
   }
 
   renderLabel() {
-    const classes = classNames(
-      'ds-u-font-weight--bold',
-      this.props.labelClassName
-    );
+    const classes = classNames('ds-u-font-weight--bold', this.props.labelClassName);
     return (
       <FormLabel
         className="ds-u-visibility--screen-reader"
@@ -170,13 +150,10 @@ export class MonthPicker extends React.PureComponent {
     const { selectAllText, clearAllText } = this.props;
     const selectedMonths = this.selectedMonths();
     const disabledMonths = this.disabledMonths();
-    const selectAllPressed =
-      selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+    const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
     const clearAllPressed = selectedMonths.length === 0;
 
-    const Heading = this.props.headingLevel
-      ? `h${this.props.headingLevel}`
-      : `h4`;
+    const Heading = this.props.headingLevel ? `h${this.props.headingLevel}` : `h4`;
     const classes = classNames(
       'ds-c-month-picker',
       'ds-c-fieldset',
@@ -186,28 +163,18 @@ export class MonthPicker extends React.PureComponent {
     return (
       <div className={classes}>
         <div>
-          <Heading
-            className="ds-c-label ds-u-font-weight--bold ds-u-margin--0"
-            id={this.labelId}
-          >
+          <Heading className="ds-c-label ds-u-font-weight--bold ds-u-margin--0" id={this.labelId}>
             {this.props.label}
           </Heading>
           {this.props.hint ? (
-            <p
-              className="ds-c-label ds-c-field__hint ds-u-margin--0"
-              id={this.hintId}
-            >
+            <p className="ds-c-label ds-c-field__hint ds-u-margin--0" id={this.hintId}>
               {this.props.hint}
             </p>
           ) : null}
         </div>
         <div className="ds-u-margin-top--3">
-          {this.renderButton(selectAllText, selectAllPressed, () =>
-            this.handleSelectAll()
-          )}
-          {this.renderButton(clearAllText, clearAllPressed, () =>
-            this.handleClearAll()
-          )}
+          {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
+          {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
         </div>
         <fieldset className="ds-c-fieldset">
           {this.renderLabel()}

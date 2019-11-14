@@ -1,0 +1,14 @@
+/* stylelint-disable declaration-no-important */
+@import '@cmsgov/design-system-support/src/settings/index';
+
+.ds-u-radius {
+  border-radius: $border-radius;
+}
+
+.ds-u-radius--pill {
+  border-radius: $border-radius-pill;
+}
+
+.ds-u-radius--circle {
+  border-radius: $border-radius-circle;
+}

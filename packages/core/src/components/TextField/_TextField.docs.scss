@@ -11,15 +11,9 @@ Style guide: components.text-field
 */
 
 /*
-Inverse theme
-
-Markup: textfield-inverse.example.html
-
-Style guide: components.text-field.inverse
-*/
-
-/*
 `<TextField>`
+
+A `TextField` component renders an input field as well as supporting UI elements like a label, error message, and hint text.
 
 @react-component TextField
 
@@ -29,17 +23,17 @@ Style guide: components.text-field.react
 /*
 ---
 
-## When to use
+### When to use
 
 - If you can’t reasonably predict a user’s answer to a prompt and there might be wide variability in users’ answers.
 - When using another type of input will make answering more difficult. For example, birthdays and other known dates are easier to type in than they are to select from a calendar picker.
 - When users want to paste in a response.
 
-## When to consider alternatives
+### When to consider alternatives
 
-- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/choice), or a [select menu](/components/select) in these cases.
+- When users are choosing from a specific set of options. Consider [checkboxes, radio buttons](/components/choice), or a [dropdown](/components/dropdown) in these cases.
 
-## Guidance
+### Usage
 
 - Don't use placeholder text in form fields. Use hint text instead, if you need to provide contextual information. Placeholder text disappears after a user types a value, therefore users will no longer have that text available when they need to review their entries. People who have cognitive or visual disabilities have additional problems with placeholder text.
 - The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line `input` box; use a `textarea` instead.
@@ -48,12 +42,12 @@ Style guide: components.text-field.react
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
 
-## Accessibility
+### Accessibility
 
 - Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
 - Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
 
-## Theming
+### Customization
 
 The following Sass variables can be overridden to theme a field:
 
@@ -68,12 +62,12 @@ The following Sass variables can be overridden to theme a field:
 - `$input-border-width`
 - `$input-padding`
 
-## Related patterns
+### Related patterns
 
 - [Masked field](/components/masked-field/)
 - [Date field](/components/date-field/)
 
-## Learn more
+### Learn more
 
 - [Form Guidelines](/guidelines/forms/)
 - ["Placeholders in Form Fields Are Harmful"](https://www.nngroup.com/articles/form-design-placeholders/)

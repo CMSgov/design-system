@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Source from './Source';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
   uswdsLink() {
     if (this.props.uswds) {
-      return (
-        <a href={this.props.uswds}>View related U.S. Web Design Standard</a>
-      );
+      return <a href={this.props.uswds}>View related U.S. Web Design Standard</a>;
     }
   }
 
@@ -26,6 +23,16 @@ class PageHeader extends React.PureComponent {
     }
   }
 
+  guidanceLink() {
+    if (this.props.showGuidanceLink) {
+      return (
+        <a className="ds-u-margin-right--2" href="#guidance">
+          Jump to guidance
+        </a>
+      );
+    }
+  }
+
   render() {
     return (
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
@@ -37,11 +44,8 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-clearfix" />
         <div className="ds-u-font-size--small">
           {this.statusBadge()}
-          <Source
-            reactComponentPath={this.props.reactComponentPath}
-            source={this.props.source}
-            className="ds-u-margin-right--2"
-          />
+
+          {this.guidanceLink()}
 
           {this.uswdsLink()}
         </div>
@@ -52,11 +56,10 @@ class PageHeader extends React.PureComponent {
 
 PageHeader.propTypes = {
   header: PropTypes.string.isRequired,
-  reactComponentPath: Source.propTypes.reactComponentPath,
   reference: PropTypes.string,
-  source: Source.propTypes.source,
   status: PropTypes.string,
-  uswds: PropTypes.string
+  uswds: PropTypes.string,
+  showGuidanceLink: PropTypes.bool.isRequired
 };
 
 export default PageHeader;

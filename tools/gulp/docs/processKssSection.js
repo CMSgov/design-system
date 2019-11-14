@@ -6,7 +6,7 @@ const replaceTemplateTags = require('./replaceTemplateTags');
  * @param {String} value
  * @return {String}
  */
-function converMarkdownCode(value) {
+function convertMarkdownCode(value) {
   const CODE_REGEX = new RegExp(/(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/);
   const match = value.match(CODE_REGEX);
 
@@ -46,7 +46,7 @@ function processKssSection(kssSection, rootPath) {
 
   // We only need to support Markdown's code syntax in headers, so we manually
   // parse those rather than running it through the marked library.
-  section.header = converMarkdownCode(section.header);
+  section.header = convertMarkdownCode(section.header);
 
   const sectionPromise = processMarkup(section, rootPath);
   return sectionPromise;
@@ -103,9 +103,7 @@ function processFlags(section) {
 }
 
 function hrefUrl(str) {
-  const match = str.match(
-    /href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/
-  );
+  const match = str.match(/href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/);
   if (match) return match[1];
   return str;
 }

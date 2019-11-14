@@ -3,17 +3,12 @@ import React from 'react';
 import VerticalNavItem from './VerticalNavItem';
 import classNames from 'classnames';
 
-/**
- * A `VerticalNav` component accepts list items as a JSON object and
- * includes additional functionality like collapsible nested menus.
- */
 export class VerticalNav extends React.PureComponent {
   renderItems() {
     return this.props.items.map(item => {
       let onClick = item.onClick || this.props.onLinkClick;
       const selected =
-        item.selected ||
-        (this.props.selectedId && this.props.selectedId === item.id);
+        item.selected || (this.props.selectedId && this.props.selectedId === item.id);
 
       if (!onClick) {
         onClick = undefined;

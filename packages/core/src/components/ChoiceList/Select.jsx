@@ -3,21 +3,15 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-/**
- * A `Select` component can be used to render an HTML `select` menu.
- * Any _undocumented_ props that you pass to this component will be passed
- * to the `select` element, so you can use this to set additional attributes if
- * necessary.
- *
- * Class-based component gives flexibility for active focus management
- * by allowing refs to be passed.
- */
-
 export class Select extends React.PureComponent {
   componentDidMount() {
     if (this.props.focusTrigger) {
       this.loader && this.loader.focus();
     }
+
+    console.error(
+      `[Deprecated] The <Select> component is no longer supported and will be removed in a future release, please use <Dropdown> instead.`
+    );
   }
 
   render() {
