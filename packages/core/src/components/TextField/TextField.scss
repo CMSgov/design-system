@@ -19,7 +19,10 @@
   }
 
   &:focus {
+    border-radius: 0;
     box-shadow: $focus-shadow;
+    outline: 3px solid $color-focus;
+    outline-offset: 0;
   }
 
   &[type='number'] {
@@ -64,8 +67,18 @@ Inverse theme
 // ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
+
+  &:focus {
+    border-color: $color-base;
+    box-shadow: none;
+  }
 }
 
 .ds-c-field--success {
   border: 3px solid $color-success-light;
+
+  &:focus {
+    border-color: $color-base;
+    box-shadow: none;
+  }
 }

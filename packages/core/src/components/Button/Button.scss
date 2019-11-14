@@ -17,12 +17,21 @@
   text-align: center;
   text-decoration: none;
 
-  &:focus,
   &:hover,
-  &.ds-c-button--focus,
   &.ds-c-button--hover {
     border-color: $color-primary-darker;
     color: $color-primary-darker;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    background-color: $color-focus;
+    border-color: $color-base;
+    border-bottom-width: 3px;
+    color: $color-base;
+    outline: 0 none;
+    // We do this to prevent content jump when adding a thicker bottom border.
+    padding-bottom: 6px;
   }
 
   &:disabled,
@@ -44,12 +53,22 @@
   font-size: $h3-font-size;
   padding-bottom: $spacer-2;
   padding-top: $spacer-2;
+
+  &:focus {
+    // We do this to prevent content jump when adding a thicker bottom border.
+    padding-bottom: 14px;
+  }
 }
 
 .ds-c-button--small {
   font-size: $small-font-size;
   font-weight: $font-normal;
   padding: $spacer-half $spacer-1;
+
+  &:focus {
+    // We do this to prevent content jump when adding a thicker bottom border.
+    padding-bottom: 6px;
+  }
 }
 
 .ds-c-button--primary,
@@ -66,19 +85,12 @@
     pointer-events: none;
   }
 
-  &:focus,
   &:hover,
   &:active,
-  &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: transparent;
     color: $color-white;
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
   }
 
   &:hover,
@@ -106,10 +118,8 @@
     pointer-events: none;
   }
 
-  &:focus,
   &:hover,
   &:active,
-  &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     background-color: $color-error-dark;
@@ -137,10 +147,8 @@
     pointer-events: none;
   }
 
-  &:focus,
   &:hover,
   &:active,
-  &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     background-color: $color-success-dark;
@@ -169,13 +177,17 @@
     color: $color-gray-lighter;
   }
 
-  &:focus,
   &:hover,
   &:active,
-  &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: transparent;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-bottom-color: $color-base;
+    text-decoration: none;
   }
 }
 
@@ -188,10 +200,8 @@ Inverse buttons
 .ds-c-button--transparent-inverse:visited {
   color: $color-base-inverse;
 
-  &:focus,
   &:hover,
   &:active,
-  &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
     color: $color-base-inverse;
@@ -224,6 +234,11 @@ Inverse buttons
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: $color-base-inverse;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-color: $color-base;
   }
 }
 
