@@ -3,6 +3,10 @@
   background-color: $color-primary-alt-lightest;
   margin: 2px;
   outline: 2px dashed $color-primary-alt;
+
+  code {
+    background-color: $color-primary-alt-lightest;
+  }
 }
 
 .preview__grid .ds-l-row > [class*='ds-l-'],

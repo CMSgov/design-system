@@ -17,20 +17,3 @@ Markup:
 
 Style guide: utilities.overflow
 */
-
-/*
-Clearfix
-
-The clearfix utility can be applied to an element to clear floats around the element.
-
-**Format**: `ds-u-clearfix`
-
-Markup:
-<div class="ds-u-clearfix ds-u-fill--gray">
-  <div class="ds-u-float--right ds-u-fill--primary-alt-lightest" style="width: 100px; height: 100px;">
-    Floated right
-  </div>
-</div>
-
-Style guide: utilities.clearfix
-*/
