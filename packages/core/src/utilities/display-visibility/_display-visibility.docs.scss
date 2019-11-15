@@ -15,7 +15,7 @@ Display
 
 **Responsive format**: `ds-u-[breakpoint]-display--[block|inline-block|flex|none]`
 
-Markup: display.example.ejs.html
+Markup: display.example.html
 
 Style guide: utilities.display-visibility.display
 */
@@ -43,7 +43,7 @@ Use a [breakpoint prefix](/guidelines/responsive) to show/hide content at specif
 
 A breakpoint prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
 
-Markup: display-visibility-responsive.example.ejs.html
+Markup: display-visibility-responsive.example.html
 
 Style guide: utilities.display-visibility.responsive
 */

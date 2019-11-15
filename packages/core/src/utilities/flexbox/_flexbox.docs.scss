@@ -20,7 +20,7 @@ Use the `justify-content` utility class on a flexbox container to change the ali
 
 **Responsive format**: `ds-u-[breakpoint]-justify-content--[start|end|center|between|around]`
 
-Markup: justify-content.example.ejs.html
+Markup: justify-content.example.html
 
 Style guide: utilities.flexbox.justify-content
 */
@@ -36,7 +36,7 @@ Use the `align-items` utility class on a flexbox container to change the alignme
 
 **Responsive format**: `ds-u-[breakpoint]-align-items--[start|end|center|baseline|stretch]`
 
-Markup: align-items.example.ejs.html
+Markup: align-items.example.html
 
 Style guide: utilities.flexbox.align-items
 */
@@ -52,7 +52,7 @@ Use the `flex-wrap` utility class on a flexbox container to change how its child
 
 **Responsive format**: `ds-u-[breakpoint]-wrap--[nowrap|wrap|reverse]`
 
-Markup: flex-wrap.example.ejs.html
+Markup: flex-wrap.example.html
 
 Style guide: utilities.flexbox.flex-wrap
 */
