@@ -1,12 +1,32 @@
 //Helpers for component examples
 
 // stylelint-disable scss/at-extend-no-missing-placeholder
-.example--wrapper>*+* {
-  @extend .ds-u-margin-top--2;
+.example--wrapper > * {
+  @extend .ds-u-margin-top--3;
 }
 
 .example--wrapper>:first-child {
-  margin-top: 0;
+  @extend .ds-u-margin-top--0;
+}
+
+.example--wrapper>:last-child {
+  @extend .ds-u-margin-bottom--0;
+}
+
+.example--list > * {
+  @extend .ds-u-margin-top--2;
+  @extend .ds-u-border-bottom--1;
+  @extend .ds-u-padding-bottom--2;
+}
+
+.example--list>:first-child {
+  @extend .ds-u-margin-top--0;
+  @extend .ds-u-border-top--0;
+}
+
+.example--list>:last-child {
+  @extend .ds-u-margin-bottom--0;
+  @extend .ds-u-border-bottom--0;
 }
 
 .example--inverse {
