@@ -63,12 +63,24 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Display an outline
 .ds-c-choice:focus + label::before {
-  box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
+  border-color: $color-base;
+  border-width: 3px;
+  box-shadow: 0 0 0 3px $color-focus;
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+}
+
+.ds-c-choice--small:focus + label::before {
+  border-width: 2px;
+}
+
+.ds-c-choice:checked:focus + label::before {
+  border-color: $color-primary-darker;
 }
 
 .ds-c-choice--inverse:focus + label::before {
-  box-shadow: 0 0 0 2px $color-background-inverse,
-    0 0 2px 4px $color-focus-inverse;
+  border-color: $choice-border-color-inverse;
+  box-shadow: 0 0 0 3px $color-focus-inverse;
 }
 
 // Display a checkmark

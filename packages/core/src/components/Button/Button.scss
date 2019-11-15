@@ -26,8 +26,8 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $color-focus;
-    border-color: $color-base;
     border-bottom-width: 3px;
+    border-color: $color-base;
     color: $color-base;
     outline: 0 none;
     // We do this to prevent content jump when adding a thicker bottom border.
