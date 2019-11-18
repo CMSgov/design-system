@@ -10,17 +10,26 @@
   a {
     color: $color-primary;
 
-    &:hover,
-    &:focus {
+    &:hover {
       color: $color-primary-darker;
     }
 
     &:active {
       color: $color-primary-darkest;
+      outline: 0 none;
     }
 
     &:visited {
       color: $color-visited;
+    }
+
+    &:focus,
+    &:focus:visited {
+      background-color: $color-focus;
+      box-shadow: $focus-shadow-link;
+      color: $color-base;
+      outline: 3px solid transparent;
+      text-decoration: none;
     }
   }
 }

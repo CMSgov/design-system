@@ -42,7 +42,6 @@ Style guide: style.base
 
       &:visited,
       &:active,
-      &:focus,
       &:hover {
         // :visited links can only style color, not opacity. This color styling is equivalent to:
         // color: $color-base-inverse;
