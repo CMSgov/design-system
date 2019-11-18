@@ -66,6 +66,7 @@ $ds-c-inset-border-width: $spacer-half;
   border-color: $color-base;
   border-width: 3px;
   box-shadow: 0 0 0 3px $color-focus;
+  // Transparent outline for Windows High Contrast Mode
   outline: 3px solid transparent;
   outline-offset: 3px;
 }
