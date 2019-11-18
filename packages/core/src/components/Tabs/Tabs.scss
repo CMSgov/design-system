@@ -84,6 +84,14 @@
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
+
+    &[aria-selected='true']:focus {
+      color: $color-base;
+    }
+
+    &[aria-selected='true']:focus::after {
+      background-color: $color-base;
+    }
   }
 
   &[aria-disabled='true'] {
@@ -101,9 +109,16 @@
     }
   }
 
-  &:focus,
   &:hover {
     color: $color-primary;
+  }
+
+  &:focus {
+    box-shadow: none;
+    border-bottom: 3px solid $color-base;
+    border-color: transparent;
+    border-bottom-color: $color-base;
+    padding-bottom: 13px;
   }
 
   &:active {
