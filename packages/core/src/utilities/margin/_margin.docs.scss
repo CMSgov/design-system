@@ -3,28 +3,13 @@ Margin
 
 Use the margin utility to change an element's margin.
 
-**Format**: `ds-u-margin-[x|y|bottom|left|right|top]--[MULTIPLE]`
+**Format**: `ds-u-margin-[x|y|bottom|left|right|top]--[0-7]`
 
 [Read more about how the design system approaches spacing here.](/layout/spacing)
 
 @hide-markup
 
-Markup:
-<% var backgrounds = ['-cool-light', '-warm-light', '-lightest', '-lighter', '-light', '-medium', '', '-dark']; %>
-<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
-<% for (var i = 0; i < 8; i++) { %>
-<div class="ds-u-fill--gray<%= backgrounds[i] %>">
-  <div class="ds-u-margin<%= name %>--<%= i %> ds-u-display--inline-block">
-    <code class="ds-u-fill--background ds-u-margin--0">ds-u-margin<%= name %>--<%= i %></code>
-  </div>
-</div>
-<% } -%>
-<div class="ds-u-fill--gray<%= backgrounds[i] %>">
-  <div class="ds-u-margin<%= name %>--auto" style="width: 250px">
-    <code class="ds-u-fill--background ds-u-margin--0 ds-u-display--block">ds-u-margin<%= name %>--auto</code>
-  </div>
-</div>
-<% }) -%>
+Markup: margin.example.html
 
 Style guide: utilities.margin
 */
@@ -36,12 +21,7 @@ Responsive margins
 
 Use a [breakpoint prefix](/guidelines/responsive) to change the margin at specific breakpoints.
 
-Markup:
-<div class="ds-u-fill--gray-dark">
-  <div class="ds-u-margin--1 ds-u-sm-margin--2 ds-u-md-margin--3 ds-u-lg-margin--4 ds-u-xl-margin--5 ds-u-display--inline-block">
-    <span class="ds-u-fill--background">Responsive margins</span>
-  </div>
-</div>
+Markup: margin-responsive.example.html
 
 Style guide: utilities.margin.responsive
 */
