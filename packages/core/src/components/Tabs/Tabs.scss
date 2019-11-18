@@ -114,10 +114,10 @@
   }
 
   &:focus {
-    box-shadow: none;
     border-bottom: 3px solid $color-base;
-    border-color: transparent;
     border-bottom-color: $color-base;
+    border-color: transparent;
+    box-shadow: none;
     padding-bottom: 13px;
   }
 
