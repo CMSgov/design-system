@@ -56,6 +56,14 @@
   &[aria-expanded='true'] {
     background-image: url('#{$image-path}/arrow-up.svg');
   }
+
+  &:focus {
+    background-color: $color-focus;
+    border-bottom-width: 3px;
+    border-color: $color-base;
+    color: $color-base;
+    outline: 0 none;
+  }
 }
 
 /* stylelint-disable-next-line selector-no-qualifying-type */
