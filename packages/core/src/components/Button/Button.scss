@@ -102,6 +102,13 @@
   &.ds-c-button--active {
     background-color: $button-primary-bg--active;
   }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
 }
 
 .ds-c-button--danger,
@@ -130,6 +137,13 @@
   &:active,
   &.ds-c-button--active  {
     background-color: $color-error-darkest;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
   }
 }
 
@@ -160,6 +174,13 @@
   &.ds-c-button--active {
     background-color: $color-success-darker;
   }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
 }
 
 .ds-c-button--transparent,
@@ -187,6 +208,9 @@
   &:focus,
   &.ds-c-button--focus {
     border-bottom-color: $color-base;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
     text-decoration: none;
   }
 }
