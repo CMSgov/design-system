@@ -49,6 +49,11 @@ $dialog-spacer: $spacer-4;
   &:hover {
     background-image: url('#{$image-path}/close--primary-darker.svg');
   }
+
+  &:focus {
+    background-image: url('#{$image-path}/close.svg');
+    padding-bottom: 0;
+  }
 }
 
 .ds-c-dialog-wrap {
