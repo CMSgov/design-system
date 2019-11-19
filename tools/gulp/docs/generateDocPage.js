@@ -29,7 +29,6 @@ function generateDocPage(routes, page, docsPath, rootPath) {
 
   const head = `${seo(page, rootPath)}
   <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
   ${analytics()}`;
 
@@ -78,9 +77,7 @@ function seo(page, rootPath = '') {
     html.push(
       '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
     );
-    html.push(
-      '<title>CMS Design System | An open source design and front-end toolkit</title>'
-    );
+    html.push('<title>CMS Design System | An open source design and front-end toolkit</title>');
   } else {
     html.push(`<title>${page.header} - CMS Design System</title>`);
   }

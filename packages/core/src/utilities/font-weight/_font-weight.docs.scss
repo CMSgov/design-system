@@ -3,12 +3,9 @@ Font weight
 
 Change an element's `font-weight` property using the font weight utility.
 
-**Format**: `ds-u-font-weight--[VALUE]`
+**Format**: `ds-u-font-weight--[normal|semibold|bold]`
 
-Markup:
-<p class="ds-u-font-weight--normal">ds-u-font-weight--normal</p>
-<p class="ds-u-font-weight--semibold">ds-u-font-weight--semibold</p>
-<p class="ds-u-font-weight--bold">ds-u-font-weight--bold</p>
+Markup: font-weight.example.html
 
 Style guide: utilities.font-weight
 */

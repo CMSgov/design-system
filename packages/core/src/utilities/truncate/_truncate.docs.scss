@@ -1,16 +1,19 @@
 /*
 Truncate
 
-Use the truncate utility (`ds-u-truncate`) to limit a text string to one line.
+Use the truncate utility to limit a text string to one line.
+
+**Format**: `ds-u-truncate`
+
+Markup: truncate.example.html
+*/
+
+/*
+---
 
 ### Accessibility
 
 Place the full text in a `title` attribute so that it’s accessible on hover.
 
-Markup:
-<p class="ds-u-truncate" title="{{lorem-l}}">
-  {{lorem-l}}
-</p>
-
-Style guide: utilities.truncate
+Style guide: utilities.truncate.guidance
 */

@@ -1,8 +1,20 @@
 // Visualize grid layout
+.preview__element {
+  background-color: $color-primary-alt-lightest;
+  margin: 2px;
+  outline: 2px dashed $color-primary-alt;
+
+  code {
+    background-color: $color-primary-alt-lightest;
+  }
+}
+
 .preview__grid .ds-l-row > [class*='ds-l-'],
 .preview__grid .ds-l-form-row > [class*='ds-l-'] {
-  background-color: $color-primary-alt-lightest;
-  border: 1px dashed $color-primary-alt;
+  /* stylelint-disable scss/at-extend-no-missing-placeholder */
+  @extend .preview__element;
+  /* stylelint-enable scss/at-extend-no-missing-placeholder */
+  margin: 0;
   padding-bottom: $spacer-2;
   padding-top: $spacer-2;
 }
