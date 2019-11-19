@@ -3,15 +3,9 @@ Text transform
 
 Set the capitalization of text using the text transform utility.
 
-**Format**: `ds-u-text-transform--[VALUE]`
+**Format**: `ds-u-text-transform--[uppercase|lowercase|capitalize]`
 
-Markup:
-<code class="preview__label">ds-u-text-transform--uppercase</code>
-<div class="ds-u-text-transform--uppercase">{{lorem-m}}</div>
-<code class="preview__label">ds-u-text-transform--lowercase</code>
-<div class="ds-u-text-transform--lowercase">{{lorem-m}}</div>
-<code class="preview__label">ds-u-text-transform--capitalize</code>
-<div class="ds-u-text-transform--capitalize">{{lorem-m}}</div>
+Markup: text-transform.example.html
 
 Style guide: utilities.text-transform
 */

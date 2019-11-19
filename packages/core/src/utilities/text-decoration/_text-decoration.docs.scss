@@ -3,15 +3,9 @@ Text decoration
 
 Set whether text is underlined or not using the `text-decoration` utility.
 
-**Format**: `ds-u-text-decoration--[VALUE]`
+**Format**: `ds-u-text-decoration--[underline|line-through|none]`
 
-Markup:
-<code class="preview__label">ds-u-text-decoration--underline</code>
-<span class="ds-u-text-decoration--underline">Underlined text</span>
-<code class="preview__label">ds-u-text-decoration--line-through</code>
-<span class="ds-u-text-decoration--line-through">Line-through text</span>
-<code class="preview__label">ds-u-text-decoration--none</code>
-<a class="ds-u-text-decoration--none" href="javascript:void(0);">Link text without underline</a>
+Markup: text-decoration.example.html
 
 Style guide: utilities.text-decoration
 */

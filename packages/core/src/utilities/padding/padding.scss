@@ -1,28 +1,6 @@
 /* stylelint-disable declaration-no-important */
 @import '@cmsgov/design-system-support/src/index';
 
-/*
-Padding
-
-Use the padding utility to change an element's padding.
-
-**Format**: `ds-u-padding-[x|y|bottom|left|right|top]--[MULTIPLE]`
-
-[Read more about how the design system approaches spacing here.](/layout/spacing)
-
-@hide-markup
-
-Markup:
-<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
-<% for (var i = 0; i < 8; i++) { %>
-<div class="ds-base--inverse ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
-  <code>ds-u-padding<%= name %>--<%= i %></code>
-</div>
-<% } -%>
-<% }) -%>
-
-Style guide: utilities.padding
-*/
 @for $i from 1 through length($spacers) {
   $size: #{nth($spacers, $i)};
   $scale: #{$i - 1};
@@ -60,22 +38,6 @@ Style guide: utilities.padding
   }
 }
 
-/*
-Responsive padding
-
-@responsive
-
-Use a [breakpoint prefix](/guidelines/responsive) to change the padding at specific breakpoints.
-
-Markup:
-<div class="ds-base--inverse">
-  <div class="ds-u-padding--1 ds-u-sm-padding--2 ds-u-md-padding--3 ds-u-lg-padding--4 ds-u-xl-padding--5">
-    Responsive padding
-  </div>
-</div>
-
-Style guide: utilities.padding.responsive
-*/
 @each $breakpoint in map-keys($breakpoints) {
   $value: map-get($breakpoints, $breakpoint);
 
