@@ -25,24 +25,6 @@
       git commit -m "Release v1.1.0"
       git push --set-upstream origin v1.1.0
       ```
-   1. Create a new release on GitHub
-
-      1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
-      1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
-      1. Title the release using the release number. For example, `1.1.0`
-      1. Follow the format below for the release notes, then publish.
-
-      ```
-      ## 🚨 Breaking/Behavioral changes
-      ## 🚀 Added
-      ## 💅 Changed
-      ## 🛠 Fixed
-      ## 📦 Internal
-      ## 🚫 Deprecated
-      ```
-
-      **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
-
 1. **Publish to NPM**
 
    1. Log into NPM as `cmsgov` with `npm adduser`. Check your user account with `npm whoami`.
@@ -82,6 +64,25 @@
    ```
    backstop reference
    ```
+
+1. **Create a new release on GitHub**
+
+      1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
+      1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
+      1. Title the release using the release number. For example, `1.1.0`
+      1. Follow the format below for the release notes, then publish.
+
+      ```
+      ## 🚨 Breaking/Behavioral changes
+      ## 🚀 Added
+      ## 💅 Changed
+      ## 🛠 Fixed
+      ## 📦 Internal
+      ## 🚫 Deprecated
+      ```
+
+      **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+
 
 # Versioning
 
