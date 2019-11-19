@@ -24,7 +24,8 @@
 /*
 `<Tab>`
 */
-.ds-c-tabs__item, .ds-c-tabs__item:visited {
+.ds-c-tabs__item,
+.ds-c-tabs__item:visited {
   appearance: none;
   background-color: $color-background;
   border-bottom: 1px solid $border-color;
@@ -85,12 +86,9 @@
       transform: scale3d(1, 1, 1);
     }
 
-    &[aria-selected='true']:focus {
+    &:focus {
+      border-bottom-color: $color-focus;
       color: $color-base;
-    }
-
-    &[aria-selected='true']:focus::after {
-      background-color: $color-base;
     }
   }
 
@@ -116,7 +114,8 @@
   &:focus {
     border-bottom: 3px solid $color-base;
     border-bottom-color: $color-base;
-    border-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
     box-shadow: none;
     padding-bottom: 13px;
   }
@@ -129,4 +128,8 @@
   > svg {
     @include inline-icon;
   }
+}
+
+.ds-c-tabs__item[aria-selected='true']:focus::after {
+  background-color: $color-base;
 }
