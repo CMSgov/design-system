@@ -99,7 +99,7 @@ class Frame extends React.PureComponent {
       : null;
 
     return (
-      <div className={rootClasses}>
+      <div id="frame" className={rootClasses}>
         {this.props.responsive && (
           <BreakpointToggles
             activeBreakpoint={this.state.activeBreakpoint}
@@ -115,7 +115,6 @@ class Frame extends React.PureComponent {
         >
           <div className="frame__preview" style={previewStyle}>
             <iframe
-              id="frame"
               className="ds-u-fill--white ds-u-valign--bottom"
               frameBorder="0"
               height={this.state.iframeHeight}
