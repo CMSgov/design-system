@@ -28,6 +28,8 @@
     background-color: $color-focus;
     border-bottom-width: 3px;
     border-color: $color-base;
+    // Remove default link focus style if the class is on a link.
+    box-shadow: none;
     color: $color-base;
     outline: 0 none;
     // We do this to prevent content jump when adding a thicker bottom border.
