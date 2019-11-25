@@ -28,7 +28,7 @@ Style guide: components.autocomplete.react
 
 ### Usage
 
-- `<Autocomplete>` makes use of the `<Downshift>` component, maintained by Paypal: [Downshift docs on Github](https://github.com/paypal/downshift). We recently bumped the Downshift component to Version 3.2.7.
+- `<Autocomplete>` makes use of the `<Downshift>` component, maintained by Paypal: [Downshift docs on Github](https://github.com/paypal/downshift). The above documented props are only those directly exposed by the `<Autocomplete>` component, but you can pass props specific to `<Downshift>` here as well, e.g. you can set the [`inputValue`](https://github.com/downshift-js/downshift#inputvalue) prop if you'd like to provide an initial value to the component or control the input more directly.
 - We continue to use the [ARIA 1.0 Combobox With List Autocomplete](https://www.w3.org/TR/wai-aria-practices-1.1/examples/combobox/aria1.0pattern/combobox-autocomplete-list.html) pattern. This decision was made ensures good compatibility with assistive devices (JAWS, NVDA, VoiceOver). This was done because the ARIA 1.1 markup pattern triggers a different behavior on containers with a role="combobox" attribute.
 - Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
 - The length of the text field provides a hint to users as to how much text to write. Do not ask users to write paragraphs of text in this component; use a `textarea` instead.
