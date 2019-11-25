@@ -34,6 +34,11 @@
     padding-bottom: 6px;
   }
 
+  // Removes inner outline on buttons in Firefox.
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
   &:disabled,
   &.ds-c-button--disabled {
     background-color: $color-white;
