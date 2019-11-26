@@ -94,6 +94,11 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--inverse')).toBe(false);
   });
 
+  it('applies className to label', () => {
+    const wrapper = shallowRender({ labelClassName: 'ds-u-font-weight--bold' }).wrapper;
+    expect(wrapper.find('FormLabel')).toMatchSnapshot();
+  });
+
   it('has a hint and requirementLabel', () => {
     const wrapper = shallowRender({
       hint: 'Hello world',
@@ -297,9 +302,7 @@ describe('Choice', () => {
       it('sets uncheckEventName for uncontrolled radio buttons', () => {
         const data = shallowRender({ type: 'radio', defaultChecked: false });
 
-        expect(data.wrapper.instance().uncheckEventName).toBe(
-          `${data.props.name}-uncheck`
-        );
+        expect(data.wrapper.instance().uncheckEventName).toBe(`${data.props.name}-uncheck`);
       });
 
       it('does not set uncheckEventName for controlled radio buttons', () => {
@@ -331,12 +334,8 @@ describe('Choice', () => {
 
     beforeEach(() => {
       props = {
-        checkedChildren: (
-          <strong className="checked-child">I am checked</strong>
-        ),
-        uncheckedChildren: (
-          <strong className="unchecked-child">I am unchecked</strong>
-        ),
+        checkedChildren: <strong className="checked-child">I am checked</strong>,
+        uncheckedChildren: <strong className="unchecked-child">I am unchecked</strong>,
         name: 'foo',
         value: 'bar'
       };

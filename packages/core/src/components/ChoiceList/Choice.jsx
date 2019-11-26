@@ -20,8 +20,7 @@ export class Choice extends React.PureComponent {
 
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
-    this.id =
-      this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -33,10 +32,7 @@ export class Choice extends React.PureComponent {
       // Event emitters are only relevant for uncontrolled radio buttons
       if (this.props.type === 'radio') {
         this.uncheckEventName = `${this.props.name}-uncheck`;
-        dsChoiceEmitter.on(
-          this.uncheckEventName,
-          this.handleUncheck.bind(this)
-        );
+        dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck.bind(this));
       }
     } else {
       this.isControlled = true;
@@ -87,6 +83,7 @@ export class Choice extends React.PureComponent {
       inversed,
       inputPlacement,
       inputClassName,
+      labelClassName,
       requirementLabel,
       size,
       uncheckedChildren,
@@ -124,6 +121,7 @@ export class Choice extends React.PureComponent {
           {...inputProps}
         />
         <FormLabel
+          className={labelClassName}
           fieldId={this.id}
           hint={hint}
           requirementLabel={requirementLabel}
@@ -169,6 +167,10 @@ Choice.propTypes = {
    * Additional classes to be added to the `input` element.
    */
   inputClassName: PropTypes.string,
+  /**
+   * Additional classes to be added to the `label` element.
+   */
+  labelClassName: PropTypes.string,
   /**
    * Sets the initial `checked` state. Use this for an uncontrolled component;
    * otherwise, use the `checked` property.
