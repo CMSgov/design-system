@@ -40,6 +40,11 @@
   top: 0;
 }
 
+// This element is focusable via a tabindex attribute.
+.ds-c-help-drawer__header h3:focus {
+  @include focus-text;
+}
+
 .ds-c-help-drawer__body {
   // Stretch the body so that the footer sticks to the
   // bottom of the screen
