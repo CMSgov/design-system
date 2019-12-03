@@ -23,9 +23,23 @@
     color: $color-primary-darker;
   }
 
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-white;
+    border-color: $color-gray-lighter;
+    color: $color-gray-lighter;
+    pointer-events: none;
+  }
+
+  &:active,
+  &.ds-c-button--active {
+    border-color: $color-primary-darkest;
+    color: $color-primary-darkest;
+  }
+
   &:focus,
   &.ds-c-button--focus {
-    background-color: $color-focus;
+    background-color: $button-primary-bg--focus;
     border-bottom-width: 3px;
     border-color: $color-base;
     // Remove default link focus style if the class is on a link.
@@ -39,20 +53,6 @@
   // Removes inner outline on buttons in Firefox.
   &::-moz-focus-inner {
     border: 0;
-  }
-
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-white;
-    border-color: $color-gray-lighter;
-    color: $color-gray-lighter;
-    pointer-events: none;
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    border-color: $color-primary-darkest;
-    color: $color-primary-darkest;
   }
 }
 
@@ -112,9 +112,12 @@
 
   &:focus,
   &.ds-c-button--focus {
+    background-color: $button-primary-bg--focus;
+    border-bottom-color: $color-base;
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
+    color: $color-base;
   }
 }
 
@@ -148,9 +151,12 @@
 
   &:focus,
   &.ds-c-button--focus {
+    background-color: $button-primary-bg--focus;
+    border-bottom-color: $color-base;
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
+    color: $color-base;
   }
 }
 
@@ -184,9 +190,12 @@
 
   &:focus,
   &.ds-c-button--focus {
+    background-color: $button-primary-bg--focus;
+    border-bottom-color: $color-base;
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
+    color: $color-base;
   }
 }
 
