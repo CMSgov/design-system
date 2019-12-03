@@ -184,7 +184,7 @@ export class Autocomplete extends React.PureComponent {
             {clearSearchButton && (
               <Button
                 aria-label={ariaClearLabel}
-                className="ds-u-float--right"
+                className="ds-u-float--right ds-u-margin-right--0"
                 onClick={clearSelection}
                 size="small"
                 variation="transparent"
