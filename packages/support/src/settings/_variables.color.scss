@@ -28,15 +28,12 @@ Markup:
   'primary', 'primary-darker', 'primary-darkest',
   'base', 'gray-dark', 'gray-light', 'white'
 ]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
+  <div class="">
     <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
+      <article class="ds-u-margin-bottom--1">
+        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
+        <code class="ds-u-fill--transparent">.ds-u-fill--<%= color %></code>
+        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
       </article>
     <% }) -%>
   </div>
@@ -55,18 +52,16 @@ Markup:
 <% var colors = [
   'primary-alt-darkest', 'primary-alt-dark', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest'
 ]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
+<div class="">
     <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
+      <article class="ds-u-margin-bottom--1">
+        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
+        <code class="ds-u-fill--transparent">.ds-u-fill--<%= color %></code>
+        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
       </article>
     <% }) -%>
   </div>
+
 
 Style guide: style.color.secondary
 */
@@ -82,18 +77,16 @@ Markup:
 <% var colors = [
   'background', 'background-inverse', 'gray-dark', 'gray', 'gray-light', 'gray-lighter', 'gray-lightest'
 ]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
+<div class="">
     <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
+      <article class="ds-u-margin-bottom--1">
+        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
+        <code class="ds-u-fill--transparent">.ds-u-fill--<%= color %></code>
+        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
       </article>
     <% }) -%>
   </div>
+
 
 Style guide: style.color.background
 */
@@ -111,18 +104,16 @@ Markup:
   'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
   'error-darkest', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
 ]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
+<div class="">
     <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
+      <article class="ds-u-margin-bottom--1">
+        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
+        <code class="ds-u-fill--transparent">.ds-u-fill--<%= color %></code>
+        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
       </article>
     <% }) -%>
   </div>
+
 
 Style guide: style.color.status
 */

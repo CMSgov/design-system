@@ -7,12 +7,14 @@
 'secondary-lightest'], ['error', 'error-dark', 'error-darkest', 'error-light', 'error-lighter',
 'error-lightest'], ['base', 'white', 'background', 'background-inverse', 'transparent'] ]; -%> <%
 groups.forEach(group => { -%>
-<section class="ds-l-row ds-u-margin-x--0 ds-u-margin-bottom--3">
+<section class="ds-u-border-bottom--1 ds-u-padding-bottom--3 ds-u-margin-bottom--4">
   <% group.forEach(color => { -%>
-  <article class="ds-l-col--12 ds-l-sm-col--6 ds-u-padding--0 ds-u-margin-bottom--2">
-    <code class="ds-u-margin-bottom--1">.ds-u-fill--<%= color %></code>
-    <span class="ds-u-color--muted js-swatch-hex">#</span>
-    <div class="c-swatch__preview c-swatch__preview--condensed ds-u-fill--<%= color %>"></div>
+  <article class="ds-u-margin-bottom--1">
+    <div
+      class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"
+    ></div>
+    <code class="ds-u-fill--transparent">.ds-u-fill--<%= color %></code>
+    <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
   </article>
   <% }) -%>
 </section>

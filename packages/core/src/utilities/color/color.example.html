@@ -1,0 +1,27 @@
+<% var groups = { 'white': ['base', 'black', 'gray', 'primary', 'primary-darker', 'primary-darkest',
+'error', 'error-dark', 'success'], 'gray-lightest': ['muted', 'primary', 'error-dark'],
+'gray-lighter': ['base', 'primary-darker'], 'gray-light': ['base', 'primary-darkest'],
+'background-inverse': ['base-inverse', 'muted-inverse', 'error-light'], 'black': ['white'], 'base':
+['white'], 'gray-dark': ['white'], 'gray': ['white'], 'primary-darkest': ['white'],
+'primary-darker': ['white'], 'primary': ['white'], 'primary-alt-darkest': ['white'],
+'primary-alt-dark': ['base'], 'primary-alt': ['base'], 'green': ['white'], 'success': ['white'],
+'green-light': ['base'], 'success-light': ['base'], 'gold': ['base'], 'warn': ['base'],
+'gold-light': ['base'], 'warn-light': ['base'], 'secondary-darkest': ['white'], 'error-darkest':
+['white'], 'secondary-dark': ['white'], 'error-dark': ['white'], 'secondary': ['white'], 'error':
+['white'], 'primary-alt-lightest': ['base'], 'green-lighter': ['base'], 'success-lighter': ['base'],
+'green-lightest': ['base'], 'success-lightest': ['base'], 'gold-lighter': ['base'], 'warn-lighter':
+['base'], 'gold-lightest': ['base'], 'warn-lightest': ['base'], 'secondary-lightest': ['base'],
+'error-lightest': ['base'], }; -%> <% Object.keys(groups).forEach(fill => { -%>
+<section class="ds-u-border-bottom--1 ds-u-padding-bottom--3 ds-u-margin-bottom--4">
+  <h1 class="ds-u-font-size--h3">.ds-u-fill--<%= fill%> background</h1>
+  <% groups[fill].forEach(color => { -%>
+  <article class="ds-u-margin-bottom--1">
+    <div
+      class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"
+    ></div>
+    <code class="ds-u-fill--<%= fill %> ds-u-color--<%= color %>">.ds-u-color--<%= color %></code>
+    <code class="js-swatch-hex c-swatch__label ds-u-fill--transparent ds-u-color--gray">#</code>
+  </article>
+  <% }) -%>
+</section>
+<% }) %>
