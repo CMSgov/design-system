@@ -57,7 +57,8 @@
     background-image: url('#{$image-path}/arrow-up.svg');
   }
 
-  &:focus {
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
     background-color: $color-focus;
     border-bottom-width: 3px;
     border-color: $color-base;
