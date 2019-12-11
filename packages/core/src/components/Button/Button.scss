@@ -279,7 +279,7 @@ Inverse buttons
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-color: $color-base;
+    border-color: $focus-border-inverse;
     color: $color-base;
     opacity: 1;
   }
