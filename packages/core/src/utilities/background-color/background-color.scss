@@ -35,29 +35,8 @@
   background-color: $color-primary-alt-lightest !important;
 }
 
-// secondary
-.ds-u-fill--secondary {
-  background-color: $color-secondary !important;
-}
-
-.ds-u-fill--secondary-dark {
-  background-color: $color-secondary-dark !important;
-}
-
-.ds-u-fill--secondary-darkest {
-  background-color: $color-secondary-darkest !important;
-}
-
-.ds-u-fill--secondary-light {
-  background-color: $color-secondary-light !important;
-}
-
-.ds-u-fill--secondary-lightest {
-  background-color: $color-secondary-lightest !important;
-}
-
 // gray
-.ds-u-fill--gray {
+.ds-u-fill--gray{
   background-color: $color-gray !important;
 }
 
@@ -75,6 +54,9 @@
 
 .ds-u-fill--gray-lightest {
   background-color: $color-gray-lightest !important;
+}
+.ds-u-fill--muted-inverse {
+  background-color: $color-muted-inverse
 }
 
 // gold
