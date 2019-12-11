@@ -31,14 +31,8 @@ class Frame extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.iframe.contentWindow.removeEventListener(
-      'load',
-      this.handleIframeLoad
-    );
-    this.iframe.contentWindow.removeEventListener(
-      'resize',
-      this.handleIframeResize
-    );
+    this.iframe.contentWindow.removeEventListener('load', this.handleIframeLoad);
+    this.iframe.contentWindow.removeEventListener('resize', this.handleIframeResize);
   }
 
   handleIframeResize() {
@@ -48,15 +42,10 @@ class Frame extends React.PureComponent {
   handleIframeLoad() {
     // Attach the resize listener after the load event has been triggered, to
     // avoid an unnecessary setHeight call in Firefox
-    this.iframe.contentWindow.addEventListener(
-      'resize',
-      this.handleIframeResize
-    );
+    this.iframe.contentWindow.addEventListener('resize', this.handleIframeResize);
     // We don't want scrollbars on the iframe. We need to set this class before
     // calculating the height since a scrollbar may affect the height
-    this.iframe.contentDocument.documentElement.classList.add(
-      'ds-u-overflow--hidden'
-    );
+    this.iframe.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
     this.setIframeHeight();
     this.setState({ loaded: true });
   }
@@ -110,7 +99,7 @@ class Frame extends React.PureComponent {
       : null;
 
     return (
-      <div className={rootClasses}>
+      <div id="frame" className={rootClasses}>
         {this.props.responsive && (
           <BreakpointToggles
             activeBreakpoint={this.state.activeBreakpoint}

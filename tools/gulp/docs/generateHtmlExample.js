@@ -1,5 +1,4 @@
-const processMarkup = require('../../../packages/docs/src/scripts/shared/processMarkup')
-  .default;
+const processMarkup = require('../../../packages/docs/src/scripts/shared/processMarkup').default;
 const savePage = require('./savePage');
 
 /**
@@ -19,7 +18,8 @@ function generateHtmlExample(page, modifier, docsPath, rootPath) {
   if (modifier) id += `.${modifier.name}`;
 
   const head = `<title>Example: ${page.reference}</title>
-  <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
+  <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />`;
 
   const body = `${processMarkup(page.markup, modifier)}
   <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>`;
