@@ -23,6 +23,7 @@
   color: $color-muted !important;
 } 
 
+
 // states
 .ds-u-color--error {
   color: $color-error !important;
@@ -30,6 +31,10 @@
 
 .ds-u-color--error-dark {
   color: $color-error-dark !important;
+}
+
+.ds-u-color--error-darkest {
+  color: $color-error-darkest !important;
 }
 
 .ds-u-color--error-light {
