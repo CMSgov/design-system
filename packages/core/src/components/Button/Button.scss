@@ -40,14 +40,12 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-bottom-width: 3px;
+    border-bottom-color: transparent;
     border-color: $color-base;
-    // Remove default link focus style if the class is on a link.
-    box-shadow: none;
+    box-shadow: $focus-shadow-link;
     color: $color-base;
-    outline: 0 none;
-    // We do this to prevent content jump when adding a thicker bottom border.
-    padding-bottom: 6px;
+    outline: 3px solid transparent;
+    outline-offset: 2px;
   }
 
   // Removes inner outline on buttons in Firefox.
@@ -60,22 +58,12 @@
   font-size: $h3-font-size;
   padding-bottom: $spacer-2;
   padding-top: $spacer-2;
-
-  &:focus {
-    // We do this to prevent content jump when adding a thicker bottom border.
-    padding-bottom: 14px;
-  }
 }
 
 .ds-c-button--small {
   font-size: $small-font-size;
   font-weight: $font-normal;
   padding: $spacer-half $spacer-1;
-
-  &:focus {
-    // We do this to prevent content jump when adding a thicker bottom border.
-    padding-bottom: 2px;
-  }
 }
 
 .ds-c-button--primary,
@@ -113,10 +101,7 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-bottom-color: $color-base;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
+    border-color: transparent;
     color: $color-base;
   }
 }
@@ -152,10 +137,7 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-bottom-color: $color-base;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
+    border-color: transparent;
     color: $color-base;
   }
 }
@@ -191,10 +173,7 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-bottom-color: $color-base;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
+    border-color: transparent;
     color: $color-base;
   }
 }
@@ -223,10 +202,7 @@
 
   &:focus,
   &.ds-c-button--focus {
-    border-bottom-color: $color-base;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
+    border-color: transparent;
     text-decoration: none;
   }
 }
@@ -279,7 +255,8 @@ Inverse buttons
   &:focus,
   &.ds-c-button--focus {
     background-color: $button-primary-bg--focus;
-    border-color: $focus-border-inverse;
+    border-color: transparent;
+    box-shadow: $focus-shadow-link-inverse;
     color: $color-base;
     opacity: 1;
   }

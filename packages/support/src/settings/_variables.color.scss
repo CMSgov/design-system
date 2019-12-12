@@ -170,6 +170,7 @@ $focus-shadow-link: 0 3px $color-base;
 $color-focus-inverse: #ffde11 !default;
 $focus-shadow-inverse: inset 0 0 0 1px $color-base !default;
 $focus-border-inverse: #8f7c00 !default;
+$focus-shadow-link-inverse: 0 3px $focus-border-inverse !default;
 
 // Background
 $color-background: $color-white !default;
