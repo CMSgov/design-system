@@ -149,7 +149,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
           active={true}
           focusTrapOptions={
             Object {
-              "initialFocus": undefined,
+              "escapeDeactivates": true,
             }
           }
           paused={false}
