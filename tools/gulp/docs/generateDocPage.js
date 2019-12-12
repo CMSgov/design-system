@@ -29,6 +29,7 @@ function generateDocPage(routes, page, docsPath, rootPath) {
 
   const head = `${seo(page, rootPath)}
   <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
   ${analytics()}`;
 
