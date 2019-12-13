@@ -49,6 +49,7 @@ export class HelpDrawer extends React.PureComponent {
                 className="ds-u-margin-left--auto"
                 size="small"
                 onClick={onCloseClick}
+                style={{ width: '100%' }}
               >
                 {closeButtonText}
               </Button>
