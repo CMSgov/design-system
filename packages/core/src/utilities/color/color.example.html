@@ -1,13 +1,19 @@
 <div class="example--list">
-  <% var groups = { 'white': ['base', 'black', 'gray', 'gray-dark', 'primary', 'primary-darker',
-  'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark', 'error-darkest', 'success'],
-  'gray-lightest': ['gray', 'gray-dark', 'base', 'primary', 'primary-darker', 'primary-darkest',
-  'primary-alt-darkest', 'error-dark', 'error-darkest'], 'background-inverse': ['white',
-  'muted-inverse', 'error-light'], 'primary-alt-lightest': ['base'], 'success-lightest': ['base'],
-  'warn-lightest': ['base'], 'error-lightest': ['base'], }; -%> <% Object.keys(groups).forEach(fill
-  => { -%>
+  <% var groups = { 'background': ['base', 'black', 'gray', 'gray-dark', 'primary',
+  'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark',
+  'error-darkest', 'success'], 'background-inverse': ['white','gray-lightest', 'gray-lighter',
+  'gray-light', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest', 'primary-alt-dark'],
+  'gray-lightest': ['gray', 'gray-dark', 'base', 'primary', 'primary-darker',
+  'primary-darkest','primary-alt-darkest', 'error-dark', 'error-darkest'], 'primary-alt-lightest':
+  ['base', 'gray', 'gray-dark', 'primary-darker', 'primary-darkest', 'primary-alt-darkest',
+  'error-dark', 'error-darkest' ], 'success-lightest': ['base', 'gray', 'gray-dark', 'primary',
+  'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error-dark', 'error-darkest' ],
+  'warn-lightest': ['base', 'gray', 'gray-dark', 'primary', 'primary-darker', 'primary-darkest',
+  'primary-alt-darkest', 'error-dark', 'error-darkest' ], 'error-lightest': ['base', 'gray',
+  'gray-dark', 'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error-darkest' ], }; -%>
+  <% Object.keys(groups).forEach(fill => { -%>
   <section>
-    <h1 class="ds-u-font-size--h3">.ds-u-fill--<%= fill%> background</h1>
+    <h1 class="preview__label">.ds-u-fill--<%= fill%> background</h1>
     <% groups[fill].forEach(color => { -%>
     <article class="ds-u-margin-bottom--1">
       <div

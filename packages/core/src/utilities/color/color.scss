@@ -13,10 +13,43 @@
 .ds-u-color--primary-darkest {
   color: $color-primary-darkest !important;
 }
+
+// primary alt
+.ds-u-color--primary-alt {
+  color: $color-primary-alt !important;
+}
+
+.ds-u-color--primary-alt-light {
+  color: $color-primary-alt-light !important;
+}
  
+.ds-u-color--primary-alt-lightest {
+  color: $color-primary-alt-lightest !important;
+}
+
+.ds-u-color--primary-alt-dark {
+  color: $color-primary-alt-dark !important;
+}
+
+.ds-u-color--primary-alt-darkest {
+  color: $color-primary-alt-darkest !important;
+}
+
 // gray
 .ds-u-color--gray {
   color: $color-gray !important;
+}
+
+.ds-u-color--gray-lightest {
+  color: $color-gray-lightest !important;
+}
+
+.ds-u-color--gray-lighter {
+  color: $color-gray-lighter !important;
+}
+
+.ds-u-color--gray-light {
+  color: $color-gray-light !important;
 }
 
 .ds-u-color--muted {
