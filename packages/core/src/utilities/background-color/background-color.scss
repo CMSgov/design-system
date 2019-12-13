@@ -56,7 +56,7 @@
   background-color: $color-gray-lightest !important;
 }
 .ds-u-fill--muted-inverse {
-  background-color: $color-muted-inverse
+  background-color: $color-muted-inverse !important;
 }
 
 // gold
@@ -91,6 +91,23 @@
 
 .ds-u-fill--green-lightest {
   background-color: $color-green-lightest !important;
+}
+
+// red
+.ds-u-fill--red {
+  background-color: $color-red !important;
+}
+
+.ds-u-fill--red-light {
+  background-color: $color-red-light !important;
+}
+
+.ds-u-fill--red-lighter {
+  background-color: $color-red-lighter !important;
+}
+
+.ds-u-fill--red-lightest {
+  background-color: $color-red-lightest !important;
 }
 
 // state colors

@@ -1,26 +1,22 @@
-<% var groups = { 'white': ['base', 'black', 'gray', 'gray-dark', 'primary', 'primary-darker',
-'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark', 'error-darkest', 'success'],
-'gray-lightest': ['gray', 'gray-dark', 'base', 'primary', 'primary-darker', 'primary-darkest',
-'primary-alt-darkest', 'error-dark', 'error-darkest'], 'gray-lighter': ['base', 'gray-dark',
-'primary-darker', 'error-darkest'], 'gray-light': ['base', 'gray-dark'], 'background-inverse':
-['white', 'muted-inverse', 'error-light'], 'black': ['white'], 'base': ['white'], 'gray-dark':
-['white'], 'gray': ['white'], 'primary-darkest': ['white'], 'primary-darker': ['white'], 'primary':
-['white'], 'primary-alt-darkest': ['white'], 'primary-alt-dark': ['base'], 'primary-alt': ['base'],
-'success': ['white'], 'success-light': ['base'], 'warn': ['base'], 'warn-light': ['base'],
-'error-darkest': ['white'], 'error-dark': ['white'], 'error':['white'], 'primary-alt-lightest':
-['base'], 'success-lighter': ['base'], 'success-lightest': ['base'], 'warn-lighter': ['base'],
-'warn-lightest': ['base'], 'error-lightest': ['base'], }; -%> <% Object.keys(groups).forEach(fill =>
-{ -%>
-<section class="ds-u-border-bottom--1 ds-u-padding-bottom--3 ds-u-margin-bottom--4">
-  <h1 class="ds-u-font-size--h3">.ds-u-fill--<%= fill%> background</h1>
-  <% groups[fill].forEach(color => { -%>
-  <article class="ds-u-margin-bottom--1">
-    <div
-      class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"
-    ></div>
-    <code class="ds-u-fill--<%= fill %> ds-u-color--<%= color %>">.ds-u-color--<%= color %></code>
-    <code class="js-swatch-hex c-swatch__label ds-u-fill--transparent ds-u-color--gray">#</code>
-  </article>
-  <% }) -%>
-</section>
-<% }) %>
+<div class="example--list">
+  <% var groups = { 'white': ['base', 'black', 'gray', 'gray-dark', 'primary', 'primary-darker',
+  'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark', 'error-darkest', 'success'],
+  'gray-lightest': ['gray', 'gray-dark', 'base', 'primary', 'primary-darker', 'primary-darkest',
+  'primary-alt-darkest', 'error-dark', 'error-darkest'], 'background-inverse': ['white',
+  'muted-inverse', 'error-light'], 'primary-alt-lightest': ['base'], 'success-lightest': ['base'],
+  'warn-lightest': ['base'], 'error-lightest': ['base'], }; -%> <% Object.keys(groups).forEach(fill
+  => { -%>
+  <section>
+    <h1 class="ds-u-font-size--h3">.ds-u-fill--<%= fill%> background</h1>
+    <% groups[fill].forEach(color => { -%>
+    <article class="ds-u-margin-bottom--1">
+      <div
+        class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"
+      ></div>
+      <code class="ds-u-fill--<%= fill %> ds-u-color--<%= color %>">.ds-u-color--<%= color %></code>
+      <code class="js-swatch-hex c-swatch__label ds-u-color--gray">#</code>
+    </article>
+    <% }) -%>
+  </section>
+  <% }) %>
+</div>
