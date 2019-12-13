@@ -1,15 +1,19 @@
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Stickyfill from 'stickyfilljs';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.titleRef = null;
+    this.stickyRef = null;
   }
 
   componentDidMount() {
     if (this.titleRef) this.titleRef.focus();
+    // Polyfill `position: sticky` for IE11
+    if (this.stickyRef) Stickyfill.add(this.stickyRef);
   }
 
   render() {
@@ -25,28 +29,30 @@ export class HelpDrawer extends React.PureComponent {
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
       <div className="ds-c-help-drawer">
-        <div className="ds-c-help-drawer__header">
-          {/* The nested div below might seem redundant, but we need a
-            * separation between our sticky header, and the flex container
-            * so things display as expected when the body content overflows
-            */}
-          <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
-            <h3
-              ref={el => (this.titleRef = el)}
-              tabIndex="0"
-              className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
-            >
-              {title}
-            </h3>
-            <Button
-              aria-label={ariaLabel}
-              className="ds-u-margin-left--auto"
-              size="small"
-              onClick={onCloseClick}
-              variation="secondary"
-            >
-              {closeButtonText}
-            </Button>
+        {/* The div below is used by the Stickyfill polyfill for IE11, it needs to be separate from .ds-c-help-drawer */}
+        <div>
+          <div className="ds-c-help-drawer__header" ref={el => (this.stickyRef = el)}>
+            {/* The nested div below might seem redundant, but we need a
+             * separation between our sticky header, and the flex container
+             * so things display as expected when the body content overflows
+             */}
+            <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
+              <h3
+                ref={el => (this.titleRef = el)}
+                tabIndex="0"
+                className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
+              >
+                {title}
+              </h3>
+              <Button
+                aria-label={ariaLabel}
+                className="ds-u-margin-left--auto"
+                size="small"
+                onClick={onCloseClick}
+              >
+                {closeButtonText}
+              </Button>
+            </div>
           </div>
         </div>
         <div className="ds-c-help-drawer__body ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">

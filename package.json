@@ -123,6 +123,7 @@
   },
   "dependencies": {
     "axe-webdriverjs": "2.3.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "stickyfilljs": "^2.1.0"
   }
 }
