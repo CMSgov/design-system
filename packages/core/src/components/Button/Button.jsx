@@ -57,24 +57,26 @@ export class Button extends React.PureComponent {
   }
 
   classNames() {
-    let variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-    let disabledClass = this.props.disabled && 'ds-c-button--disabled';
+    const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
+    const disabledClass = this.props.disabled && 'ds-c-button--disabled';
+    const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
+    let inverseClass = this.props.inverse && 'ds-c-button--inverse';
 
-    if (this.props.inverse) {
-      if (disabledClass) {
-        disabledClass += '-inverse';
-      } else if (variationClass) {
-        variationClass += '-inverse';
-      } else {
-        variationClass = 'ds-c-button--inverse';
-      }
+    // primary/danger/success variations don't need the inverse class
+    if (
+      this.props.variation === 'primary' ||
+      this.props.variation === 'danger' ||
+      this.props.variation === 'success'
+    ) {
+      inverseClass = '';
     }
 
     return classNames(
       'ds-c-button',
       disabledClass,
-      !disabledClass && variationClass,
-      this.props.size && `ds-c-button--${this.props.size}`,
+      variationClass,
+      inverseClass,
+      sizeClass,
       this.props.className
     );
   }
