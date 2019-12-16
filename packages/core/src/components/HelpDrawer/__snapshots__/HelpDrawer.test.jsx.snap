@@ -4,26 +4,33 @@ exports[`HelpDrawer renders a snapshot 1`] = `
 <div
   className="ds-c-help-drawer"
 >
-  <div
-    className="ds-c-help-drawer__header"
-  >
+  <div>
     <div
-      className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start"
+      className="ds-c-help-drawer__header"
     >
-      <h3
-        className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
-        tabIndex="0"
+      <div
+        className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start"
       >
-        HelpDrawer title
-      </h3>
-      <button
-        aria-label="Close help drawer"
-        className="ds-c-button ds-c-button--secondary ds-c-button--small ds-u-margin-left--auto"
-        onClick={[Function]}
-        type="button"
-      >
-        Close
-      </button>
+        <h3
+          className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
+          tabIndex="0"
+        >
+          HelpDrawer title
+        </h3>
+        <button
+          aria-label="Close help drawer"
+          className="ds-c-button ds-c-button--small ds-u-margin-left--auto"
+          onClick={[Function]}
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+          type="button"
+        >
+          Close
+        </button>
+      </div>
     </div>
   </div>
   <div
