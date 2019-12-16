@@ -10,6 +10,22 @@ Style guide: utilities.flexbox
 */
 
 /*
+Flex direction
+
+Use the `flex-direction` utility class on a flexbox container to change the alignment of its child elements on the main axis (x-axis by default).
+
+> The CSS `flex-direction` property defines how the browser distributes space between and around content items along the main axis of their container. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)
+
+**Format**: `ds-u-flex-direction--[row|column|row-reverse|column-reverse]`
+
+**Responsive format**: `ds-u-[breakpoint]-flex-direction--[row|column|row-reverse|column-reverse]`
+
+Markup: flex-direction.example.html
+
+Style guide: utilities.flexbox.flex-direction
+*/
+
+/*
 Justify content
 
 Use the `justify-content` utility class on a flexbox container to change the alignment of its child elements on the main axis (x-axis by default).
