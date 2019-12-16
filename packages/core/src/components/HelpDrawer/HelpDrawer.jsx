@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Stickyfill from 'stickyfilljs';
+import Stickyfill from 'stickyfilljs/dist/stickyfill.es6';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -49,7 +49,6 @@ export class HelpDrawer extends React.PureComponent {
                 className="ds-u-margin-left--auto"
                 size="small"
                 onClick={onCloseClick}
-                style={{ width: '100%' }}
               >
                 {closeButtonText}
               </Button>
