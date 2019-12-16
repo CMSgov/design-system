@@ -64,9 +64,9 @@ Use the `flex-wrap` utility class on a flexbox container to change how its child
 
 > The CSS `flex-wrap` property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked. &mdash; [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
 
-**Format**: `ds-u-wrap--[nowrap|wrap|reverse]`
+**Format**: `ds-u-flex-wrap--[nowrap|wrap|reverse]`
 
-**Responsive format**: `ds-u-[breakpoint]-wrap--[nowrap|wrap|reverse]`
+**Responsive format**: `ds-u-[breakpoint]-flex-wrap--[nowrap|wrap|reverse]`
 
 Markup: flex-wrap.example.html
 
