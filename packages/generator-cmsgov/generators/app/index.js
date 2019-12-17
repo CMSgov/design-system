@@ -22,8 +22,7 @@ module.exports = class extends Generator {
           {
             type: 'input',
             name: 'name',
-            message:
-              "Enter a component name - Used for filenames and React's displayName",
+            message: "Enter a component name - Used for filenames and React's displayName",
             default: this.props.title.replace(/\s/, '')
           }
         ]);
@@ -35,17 +34,13 @@ module.exports = class extends Generator {
           {
             type: 'input',
             name: 'slug',
-            message:
-              'Enter a slug - Used for the CSS class name and the documentation URL',
-            default: this.props.name
-              .replace(/([a-z])([A-Z])/g, '$1-$2')
-              .toLowerCase()
+            message: 'Enter a slug - Used for the CSS class name and the documentation URL',
+            default: this.props.name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
           },
           {
             type: 'confirm',
             name: 'react',
-            message:
-              'Generate React files too? - this will create a .jsx starter file',
+            message: 'Generate React files too? - this will create a .jsx starter file',
             default: true
           }
         ]);
@@ -84,11 +79,7 @@ module.exports = class extends Generator {
     );
 
     if (this.props.react) {
-      this.fs.copyTpl(
-        this.templatePath('**/*.jsx'),
-        this.destinationPath(dir),
-        this.props
-      );
+      this.fs.copyTpl(this.templatePath('**/*.jsx'), this.destinationPath(dir), this.props);
 
       ['', '.example', '.test'].forEach(prefix => {
         this.fs.move(

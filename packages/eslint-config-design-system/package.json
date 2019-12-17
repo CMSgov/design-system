@@ -10,7 +10,9 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-jest": "^21.12.2",
