@@ -6,10 +6,8 @@ const helpfulLinks = {
   'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/FOIA.html':
     'Freedom of Information Act',
   'https://oig.hhs.gov/': 'Inspector General',
-  'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/NoFearAct.html':
-    'No Fear Act',
-  'http://www.medicare.gov/about-us/plain-writing/plain-writing.html':
-    'Plain Writing',
+  'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/NoFearAct.html': 'No Fear Act',
+  'http://www.medicare.gov/about-us/plain-writing/plain-writing.html': 'Plain Writing',
   'http://www.usa.gov': 'USA.gov',
   'https://cms.gov/privacy/': 'Privacy Policy'
 };
@@ -47,16 +45,14 @@ const Footer = () => {
       <section className="ds-u-padding-y--4 ds-l-container">
         <h2 className="ds-h4">Help make the CMS Design System better</h2>
         <p className="ds-u-measure--wide">
-          We use Github issues to keep track of new component submissions, bugs,
-          design feedback, and any other suggestions you may have.
+          We use Github issues to keep track of new component submissions, bugs, design feedback,
+          and any other suggestions you may have.
         </p>
         <div className="ds-l-row">
           <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
-              href={githubUrl(
-                'issues/new?assignees=&labels=Bug&template=bug_report.md&title='
-              )}
+              href={githubUrl('issues/new?assignees=&labels=Bug&template=bug_report.md&title=')}
               target="_blank"
             >
               Report a bug
@@ -65,9 +61,7 @@ const Footer = () => {
           <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
-              href={githubUrl(
-                'issues/new?assignees=&labels=&template=general-issue.md&title='
-              )}
+              href={githubUrl('issues/new?assignees=&labels=&template=general-issue.md&title=')}
               target="_blank"
             >
               Request a change
@@ -123,8 +117,8 @@ const Footer = () => {
       <section className="ds-base--inverse ds-u-padding-bottom--4">
         <div className="ds-l-container ds-u-padding-y--2">
           <p className="ds-text ds-u-font-size--small">
-            A federal government website managed by the Centers for Medicare &
-            Medicaid Services 7500 Security Boulevard, Baltimore, MD 21124
+            A federal government website managed by the Centers for Medicare & Medicaid Services
+            7500 Security Boulevard, Baltimore, MD 21124
           </p>
         </div>
       </section>

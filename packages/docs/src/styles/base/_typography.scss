@@ -8,15 +8,14 @@ blockquote {
   padding-left: $spacer-6;
   position: relative;
 
-
   &::before {
-    color:$color-gray-light;
+    color: $color-gray-light;
     content: '\201C';
     font-family: $font-serif;
-    font-size:4em;
+    font-size: 4em;
     left: 10px;
     position: absolute;
-    top:-10px;
+    top: -10px;
   }
 
   p:first-child {

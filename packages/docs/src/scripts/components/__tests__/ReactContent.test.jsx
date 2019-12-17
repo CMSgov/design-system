@@ -5,10 +5,7 @@ import React from 'react';
 import ReactContent from '../ReactContent';
 import { mount } from 'enzyme';
 
-function render(
-  customProps = {},
-  docsContent = { description: true, props: true }
-) {
+function render(customProps = {}, docsContent = { description: true, props: true }) {
   const props = Object.assign(
     {
       reactExamplePath: 'components/Button/Button.example.jsx',
@@ -69,8 +66,6 @@ describe('ReactContent', () => {
 
   it('uses reactExamplePath prop for rendering example', () => {
     const data = render();
-    expect(data.wrapper.find('ReactExample').prop('path')).toMatch(
-      /Button.example.jsx/
-    );
+    expect(data.wrapper.find('ReactExample').prop('path')).toMatch(/Button.example.jsx/);
   });
 });

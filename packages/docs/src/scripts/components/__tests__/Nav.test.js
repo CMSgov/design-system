@@ -23,9 +23,7 @@ describe('Nav', () => {
       />
     );
 
-    expect(wrapper.find('VerticalNav').prop('items')[0].defaultCollapsed).toBe(
-      false
-    );
+    expect(wrapper.find('VerticalNav').prop('items')[0].defaultCollapsed).toBe(false);
   });
 
   it('should expand sub-navigation when parent when is selected', () => {
@@ -49,8 +47,6 @@ describe('Nav', () => {
       />
     );
 
-    expect(wrapper.find('VerticalNav').prop('items')[0].defaultCollapsed).toBe(
-      false
-    );
+    expect(wrapper.find('VerticalNav').prop('items')[0].defaultCollapsed).toBe(false);
   });
 });
