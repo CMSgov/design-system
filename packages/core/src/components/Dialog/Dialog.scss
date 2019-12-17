@@ -45,7 +45,6 @@ $dialog-spacer: $spacer-4;
   padding: 0 0 0 (12px + $spacer-1);
 
   &:active,
-  &:focus,
   &:hover {
     background-image: url('#{$image-path}/close--primary-darker.svg');
   }
