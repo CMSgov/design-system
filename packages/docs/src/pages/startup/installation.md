@@ -3,7 +3,7 @@ title: Install with NPM
 weight: 0
 ---
 
-The design system is available as NPM packages or via a <a href="https://github.com/CMSgov/design-system/releases">.zip download</a>.
+The design system is available as NPM packages or via a <a href="https://github.com/CMSgov/design-system/releases/latest">.zip download</a>.
 
 The design system consists of two packages which are installed separately.
 
