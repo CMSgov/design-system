@@ -71,23 +71,22 @@ describe('Button', () => {
     expect(wrapper.render().text()).toBe(buttonText);
   });
 
-  it('appends additional class names', () => {
+  it('applies additional classes', () => {
     const props = { className: 'foobar' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.hasClass('foobar')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
   });
 
-  it('renders as a success button', () => {
-    const props = { variation: 'success' };
+  it('applies variation classes', () => {
+    const props = { variation: 'danger' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--success')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--primary')).toBe(false);
+    expect(wrapper.hasClass('ds-c-button--danger')).toBe(true);
   });
 
-  it('renders as a small button', () => {
+  it('applies size classes', () => {
     const props = { size: 'small' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
@@ -95,46 +94,47 @@ describe('Button', () => {
     expect(wrapper.hasClass('ds-c-button--small')).toBe(true);
   });
 
-  it('overrides variation class when disabled', () => {
+  it('applies disabled class', () => {
+    const props = { disabled: true };
+    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+
+    expect(wrapper.hasClass('ds-c-button')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
+  });
+
+  it('applies disabled, inverse, and variation classes together', () => {
     const props = {
       disabled: true,
+      inverse: true,
+      variation: 'transparent'
+    };
+    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+
+    expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button')).toBe(true);
+  });
+
+  it('doesnt apply inverse to primary/danger/success variations', () => {
+    const props = {
+      inverse: true,
       variation: 'primary'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--primary')).toBe(false);
+    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(false);
+    expect(wrapper.hasClass('ds-c-button--primary')).toBe(true);
   });
 
-  it('applies inverse suffix to variation class', () => {
+  it('applies inverse to default/transparent variations', () => {
     const props = {
       inverse: true,
       variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
-    expect(wrapper.hasClass('ds-c-button--transparent-inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--transparent')).toBe(false);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(false);
-  });
-
-  it('applies inverse suffix to disabled class', () => {
-    const props = {
-      inverse: true,
-      disabled: true
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
-    expect(wrapper.hasClass('ds-c-button--disabled-inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
-  });
-
-  it('applies inverse suffix to default button class', () => {
-    const props = { inverse: true };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
   });
 });
