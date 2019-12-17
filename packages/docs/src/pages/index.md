@@ -3,19 +3,13 @@ title: Introduction
 weight: -100
 ---
 
-<div class="ds-c-alert">
-  <div class="ds-c-alert__body">
-    <h2 class="ds-c-alert__heading">Tell us how the system is working for you</h2>
-    <p class="ds-c-alert__text">We're conducting a survey of design system users in order to understand how they use it, what’s working well, and where it has room to grow. <br><a href="https://forms.cms.gov/cms-wide-design-system-survey" target="_blank" rel="noopener noreferrer">Take the survey</a></p>
-  </div>
-</div>
-
 The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities), and a [grid framework]({{root}}/layout/grid) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
 
 ## Getting started
-Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/archive/master.zip), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
+
+Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/releases/latest), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
 
 ## Goals
 

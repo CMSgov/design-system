@@ -1,5 +1,23 @@
 # Release process
 
+1. **Create a release draft on GitHub**
+
+   1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
+   1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
+   1. Title the release using the release number. For example, `1.1.0`
+   1. Follow the format below for the release notes
+
+   ```
+   ## 🚨 Breaking/Behavioral changes
+   ## 🚀 Added
+   ## 💅 Changed
+   ## 🛠 Fixed
+   ## 📦 Internal
+   ## 🚫 Deprecated
+   ```
+
+   **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+
 1. **Create a release commit**
 
    1. Checkout the latest `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
@@ -14,6 +32,7 @@
       ```
       backstop test
       ```
+      If there are expected visual changes, run `backstop approve` to save the new reference files.
    1. Run the prepublish script from the root of your local git repo. This will bump the version, build the documentation, and transpile + bundle `dist` assets.
       ```
       ./scripts/prepublish.sh
@@ -25,6 +44,7 @@
       git commit -m "Release v1.1.0"
       git push --set-upstream origin v1.1.0
       ```
+
 1. **Publish to NPM**
 
    1. Log into NPM as `cmsgov` with `npm adduser`. Check your user account with `npm whoami`.
@@ -65,24 +85,17 @@
    backstop reference
    ```
 
-1. **Create a new release on GitHub**
+1. **Finalize and publish release on GitHub**
 
-      1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
-      1. Tag the release using the [SemVer specification release format](#versioning). For example, `v1.1.0`
-      1. Title the release using the release number. For example, `1.1.0`
-      1. Follow the format below for the release notes, then publish.
+   1. Create a release zip that includes all the build files
+   1. Name it according to the following naming convention (i.e. design-system-v1.1.0.zip)
 
-      ```
-      ## 🚨 Breaking/Behavioral changes
-      ## 🚀 Added
-      ## 💅 Changed
-      ## 🛠 Fixed
-      ## 📦 Internal
-      ## 🚫 Deprecated
-      ```
+   ```
+   design-system-v{version}.zip
+   ```
 
-      **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
-
+   1. Upload the zip as a release asset
+   1. Review the release notes and publish
 
 # Versioning
 
