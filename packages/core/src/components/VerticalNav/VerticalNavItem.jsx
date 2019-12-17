@@ -15,10 +15,7 @@ export class VerticalNavItem extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      this.props.onSubnavToggle &&
-      prevState.collapsed !== this.state.collapsed
-    ) {
+    if (this.props.onSubnavToggle && prevState.collapsed !== this.state.collapsed) {
       this.props.onSubnavToggle(this.props.id, this.state.collapsed);
     }
   }
@@ -77,10 +74,7 @@ export class VerticalNavItem extends React.PureComponent {
   childIsSelected(children) {
     if (children && children.length) {
       return children.some(child => {
-        return (
-          child.id === this.props._selectedId ||
-          this.childIsSelected(child.items)
-        );
+        return child.id === this.props._selectedId || this.childIsSelected(child.items);
       });
     }
 
@@ -121,9 +115,7 @@ export class VerticalNavItem extends React.PureComponent {
     return (
       <li className={classes}>
         <VerticalNavItemLabel
-          ariaCollapsedStateButtonLabel={
-            this.props.ariaCollapsedStateButtonLabel
-          }
+          ariaCollapsedStateButtonLabel={this.props.ariaCollapsedStateButtonLabel}
           ariaExpandedStateButtonLabel={this.props.ariaExpandedStateButtonLabel}
           collapsed={this.state.collapsed}
           label={this.props.label}

@@ -16,10 +16,7 @@ export class StepLink extends React.PureComponent {
       <a href={href} onClick={onClick} className={className}>
         {children}
         {screenReaderText && (
-          <span className="ds-u-visibility--screen-reader">
-            {' '}
-            {screenReaderText}
-          </span>
+          <span className="ds-u-visibility--screen-reader"> {screenReaderText}</span>
         )}
       </a>
     );

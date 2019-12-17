@@ -67,8 +67,7 @@ $ds-c-inset-border-width: $spacer-half;
 }
 
 .ds-c-choice--inverse:focus + label::before {
-  box-shadow: 0 0 0 2px $color-background-inverse,
-    0 0 2px 4px $color-focus-inverse;
+  box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
 }
 
 // Display a checkmark

@@ -52,9 +52,7 @@ export const Step = ({ step, ...props }) => {
         )}
       </div>
       <div className="ds-c-step__actions" aria-label={actionsLabel}>
-        {step.completed && (
-          <div className="ds-c-step__completed-text">{props.completedText}</div>
-        )}
+        {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
         {linkLabel && (
           <StepLink
             href={step.href}

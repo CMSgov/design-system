@@ -77,9 +77,7 @@ describe('ChoiceList', () => {
       const data = shallowRender();
       const choice = data.wrapper.find('Choice').first();
 
-      expect(data.wrapper.find('Choice').length).toBe(
-        data.props.choices.length
-      );
+      expect(data.wrapper.find('Choice').length).toBe(data.props.choices.length);
       expect(choice.prop('name')).toBe(data.props.name);
       expect(choice.prop('value')).toBe(data.props.choices[0].value);
     });
@@ -116,9 +114,7 @@ describe('ChoiceList', () => {
       choices[1].defaultChecked = true;
       const data = shallowRender({ choices });
 
-      expect(data.wrapper.find('Choice').get(1).props.defaultChecked).toBe(
-        true
-      );
+      expect(data.wrapper.find('Choice').get(1).props.defaultChecked).toBe(true);
     });
 
     it('passes disabled prop', () => {
@@ -234,18 +230,14 @@ describe('ChoiceList', () => {
       props.choices[0].checked = true;
       const data = shallowRender(props);
 
-      expect(data.wrapper.find('Select').prop('value')).toBe(
-        props.choices[0].value
-      );
+      expect(data.wrapper.find('Select').prop('value')).toBe(props.choices[0].value);
     });
 
     it('converts defaultChecked prop to defaultValue', () => {
       props.choices[0].defaultChecked = true;
       const data = shallowRender(props);
 
-      expect(data.wrapper.find('Select').prop('defaultValue')).toBe(
-        props.choices[0].value
-      );
+      expect(data.wrapper.find('Select').prop('defaultValue')).toBe(props.choices[0].value);
     });
 
     it('generates a unique ID', () => {
@@ -268,9 +260,7 @@ describe('ChoiceList', () => {
       props.size = 'small';
       const data = shallowRender(props);
 
-      expect(data.wrapper.find('Select').hasClass('ds-c-field--small')).toBe(
-        true
-      );
+      expect(data.wrapper.find('Select').hasClass('ds-c-field--small')).toBe(true);
     });
 
     it('is disabled', () => {
@@ -325,17 +315,13 @@ describe('ChoiceList', () => {
   it('applies additional classNames to FormLabel', () => {
     const data = shallowRender({ labelClassName: 'ds-u-foo' });
 
-    expect(data.wrapper.find('FormLabel').prop('className')).toBe(
-      data.props.labelClassName
-    );
+    expect(data.wrapper.find('FormLabel').prop('className')).toBe(data.props.labelClassName);
   });
 
   it('passes errorMessage to FormLabel', () => {
     const data = shallowRender({ errorMessage: 'Nah son' });
 
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(
-      data.props.errorMessage
-    );
+    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
   });
 
   it('passes inversed prop to FormLabel', () => {

@@ -24,7 +24,8 @@
 /*
 `<Tab>`
 */
-.ds-c-tabs__item, .ds-c-tabs__item:visited {
+.ds-c-tabs__item,
+.ds-c-tabs__item:visited {
   appearance: none;
   background-color: $color-background;
   border-bottom: 1px solid $border-color;

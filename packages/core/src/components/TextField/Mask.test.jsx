@@ -46,10 +46,7 @@ describe('Mask', function() {
 
   it('calls onBlur when the value is the same', () => {
     const onBlur = jest.fn();
-    const wrapper = render(
-      { mask: 'currency' },
-      { value: '123', onBlur: onBlur }
-    ).wrapper;
+    const wrapper = render({ mask: 'currency' }, { value: '123', onBlur: onBlur }).wrapper;
 
     wrapper.simulate('blur', { target: { value: '123' }, persist: jest.fn() });
 
@@ -58,10 +55,7 @@ describe('Mask', function() {
 
   it('calls onBlur when the value changes', () => {
     const onBlur = jest.fn();
-    const wrapper = render(
-      { mask: 'currency' },
-      { value: '123', onBlur: onBlur }
-    ).wrapper;
+    const wrapper = render({ mask: 'currency' }, { value: '123', onBlur: onBlur }).wrapper;
 
     // The wrapper is actually the input element that it renders
     wrapper
@@ -74,10 +68,7 @@ describe('Mask', function() {
 
   it('calls onChange', () => {
     const onChange = jest.fn();
-    const wrapper = render(
-      { mask: 'currency' },
-      { value: '123', onChange: onChange }
-    ).wrapper;
+    const wrapper = render({ mask: 'currency' }, { value: '123', onChange: onChange }).wrapper;
 
     wrapper.simulate('change', { target: { value: '123' } });
 
@@ -98,18 +89,11 @@ describe('Mask', function() {
         // controlling component then updating the value prop.
         wrapper.setProps({
           children: (
-            <input
-              name="foo"
-              type="text"
-              value={unmaskValue(event.target.value, 'currency')}
-            />
+            <input name="foo" type="text" value={unmaskValue(event.target.value, 'currency')} />
           )
         });
       };
-      const { wrapper } = render(
-        { mask: 'currency', onChange },
-        { value: '1000' }
-      );
+      const { wrapper } = render({ mask: 'currency', onChange }, { value: '1000' });
       const input = () => wrapper.find('input');
 
       expect(input().prop('value')).toBe('1,000');

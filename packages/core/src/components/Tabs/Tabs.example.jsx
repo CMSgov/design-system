@@ -6,15 +6,13 @@ import Tabs from './Tabs';
 ReactDOM.render(
   <Tabs>
     <TabPanel id="summary" tab="Summary">
-      The Bill of Rights is the first ten amendments to the United States
-      Constitution.
+      The Bill of Rights is the first ten amendments to the United States Constitution.
     </TabPanel>
     <TabPanel id="preamble" tab="Preamble">
-      We the People of the United States, in Order to form a more perfect Union,
-      establish Justice, insure domestic Tranquility, provide for the common
-      defence, promote the general Welfare, and secure the Blessings of Liberty
-      to ourselves and our Posterity, do ordain and establish this Constitution
-      for the United States of America.
+      We the People of the United States, in Order to form a more perfect Union, establish Justice,
+      insure domestic Tranquility, provide for the common defence, promote the general Welfare, and
+      secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this
+      Constitution for the United States of America.
     </TabPanel>
     <TabPanel id="amendments" tab="Amendments">
       <h2 className="ds-h4">Bill of Rights</h2>

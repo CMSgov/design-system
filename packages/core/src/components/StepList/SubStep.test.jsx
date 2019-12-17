@@ -24,9 +24,7 @@ describe('SubStep', () => {
   it('renders a basic complete substep', () => {
     const step = generateStep({ completed: true });
     const spy = jest.fn();
-    const wrapper = shallow(
-      <SubStep step={step} onStepLinkClick={spy} editText="Edit" />
-    );
+    const wrapper = shallow(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
 
     const title = wrapper.find('.ds-c-substep__title');
     expect(title.length).toEqual(1);
@@ -60,19 +58,11 @@ describe('SubStep', () => {
   it('renders a substep with substeps', () => {
     const step = generateStep({
       title: 'Do stuff',
-      steps: [
-        generateStep({ title: 'subsubstep1' }),
-        generateStep({ title: 'subsubstep2' })
-      ]
+      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })]
     });
     const spy = jest.fn();
     const wrapper = shallow(
-      <SubStep
-        step={step}
-        onStepLinkClick={spy}
-        showSubSubSteps
-        editText="Edit"
-      />
+      <SubStep step={step} onStepLinkClick={spy} showSubSubSteps editText="Edit" />
     );
 
     const title = wrapper.find('.ds-c-substep__title');
@@ -95,14 +85,9 @@ describe('SubStep', () => {
   it('does not render a substep with substeps when showSubSubSteps is false', () => {
     const step = generateStep({
       title: 'Do stuff',
-      steps: [
-        generateStep({ title: 'subsubstep1' }),
-        generateStep({ title: 'subsubstep2' })
-      ]
+      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })]
     });
-    const wrapper = shallow(
-      <SubStep step={step} showSubSubSteps={false} editText="Edit" />
-    );
+    const wrapper = shallow(<SubStep step={step} showSubSubSteps={false} editText="Edit" />);
 
     const subs = wrapper.find(SubStep);
     expect(subs.length).toEqual(0);

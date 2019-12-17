@@ -38,8 +38,7 @@ export class ChoiceList extends React.PureComponent {
         props.disabled = props.disabled || this.props.disabled;
         props.inversed = this.props.inversed;
         props.name = this.props.name;
-        props.onBlur =
-          (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
+        props.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
         props.onChange = this.props.onChange;
         props.type = type;
         props.inputRef = ref => {
@@ -146,10 +145,7 @@ export class ChoiceList extends React.PureComponent {
 
   render() {
     const type = this.type();
-    const classes = classNames(
-      { 'ds-c-fieldset': type !== 'select' },
-      this.props.className
-    );
+    const classes = classNames({ 'ds-c-fieldset': type !== 'select' }, this.props.className);
     const RootComponent = type === 'select' ? 'div' : 'fieldset';
     const FormLabelComponent = type === 'select' ? 'label' : 'legend';
 

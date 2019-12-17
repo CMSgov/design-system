@@ -12,9 +12,7 @@ export class HelpDrawerToggle extends React.PureComponent {
   }
 
   render() {
-    const blockInlineClass = `ds-u-display--${
-      this.props.inline ? 'inline-block' : 'block'
-    }`;
+    const blockInlineClass = `ds-u-display--${this.props.inline ? 'inline-block' : 'block'}`;
     /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       // Use a <span> since a <div> may be invalid depending where this link is nested
