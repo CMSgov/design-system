@@ -26,7 +26,7 @@ This palette’s primary colors are blue, gray, and white. Blue is commonly asso
 Markup:
 <% var colors = [
   'primary', 'primary-darker', 'primary-darkest',
-  'base', 'black', 'gray-dark', 'gray-light', 'white'
+  'black', 'base', 'gray-dark', 'gray-light', 'white'
 ]; -%>
   <div class="">
     <% colors.forEach(color => { -%>
@@ -116,33 +116,4 @@ Markup:
 
 
 Style guide: style.color.status
-*/
-
-
-/*
-Additional colors
-
-@hide-markup
-
-Use these colors when the status colors are not specific enough or don't give enough information. In some situations `color-green-lighter` might make more sense to use than `color-success-lighter.`
-
-Markup:
-<% var colors = [
-  'green', 'green-light', 'green-lighter', 'green-lightest',
-  'gold', 'gold-light', 'gold-lighter', 'gold-lightest',
-  'red', 'red-light', 'red-lighter', 'red-lightest',
-  'muted-inverse', `transparent`
-]; -%>
-<div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
-
-
-Style guide: style.color.additional
 */
