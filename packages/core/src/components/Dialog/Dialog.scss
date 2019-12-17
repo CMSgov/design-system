@@ -51,7 +51,6 @@ $dialog-spacer: $spacer-4;
 
   &:focus {
     background-image: url('#{$image-path}/close.svg');
-    padding-bottom: 0;
   }
 }
 
