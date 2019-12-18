@@ -33,10 +33,7 @@ class Example extends React.PureComponent {
             getApplicationNode={() => document.getElementById('App')}
             title="Dialog title"
             actions={[
-              <button
-                className="ds-c-button ds-c-button--primary"
-                key="primary"
-              >
+              <button className="ds-c-button ds-c-button--primary" key="primary">
                 Dialog action
               </button>,
               <button
@@ -48,8 +45,8 @@ class Example extends React.PureComponent {
               </button>
             ]}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            accumsan diam vitae metus lacinia, eget tempor purus placerat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+            lacinia, eget tempor purus placerat.
           </Dialog>
         )}
       </div>

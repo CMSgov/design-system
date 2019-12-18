@@ -10,11 +10,7 @@ export class FormLabel extends React.PureComponent {
       });
 
       return (
-        <span
-          className={classes}
-          id={`${this.props.fieldId}-message`}
-          role="alert"
-        >
+        <span className={classes} id={`${this.props.fieldId}-message`} role="alert">
           {this.props.errorMessage}
         </span>
       );

@@ -13,9 +13,7 @@ class ReactPropDoc extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      return (
-        <div dangerouslySetInnerHTML={{ __html: this.props.description }} />
-      );
+      return <div dangerouslySetInnerHTML={{ __html: this.props.description }} />;
     }
   }
 
@@ -66,9 +64,7 @@ class ReactPropDoc extends React.PureComponent {
     const values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
-      return values
-        .map(v => (this.props.type.name === 'enum' ? v.value : v.name))
-        .join(', ');
+      return values.map(v => (this.props.type.name === 'enum' ? v.value : v.name)).join(', ');
     }
   }
 

@@ -47,13 +47,7 @@ export class Autocomplete extends React.PureComponent {
     this.listboxHeadingId = uniqueId('autocomplete_header_');
   }
 
-  filterItems(
-    items,
-    inputValue,
-    getInputProps,
-    getItemProps,
-    highlightedIndex
-  ) {
+  filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex) {
     // If we have results, create a mapped list
     if (items.length) {
       return items.map((item, index) => (
@@ -76,11 +70,7 @@ export class Autocomplete extends React.PureComponent {
     // If we're waiting for results to load, show the non-selected message
     if (this.props.loading) {
       return (
-        <li
-          aria-selected="false"
-          className="ds-c-autocomplete__list-item--message"
-          role="option"
-        >
+        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
           {this.props.loadingMessage}
         </li>
       );
@@ -88,11 +78,7 @@ export class Autocomplete extends React.PureComponent {
 
     // If we have no results, show the non-selected message
     return (
-      <li
-        aria-selected="false"
-        className="ds-c-autocomplete__list-item--message"
-        role="option"
-      >
+      <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
         {this.props.noResultsMessage}
       </li>
     );
@@ -141,11 +127,7 @@ export class Autocomplete extends React.PureComponent {
       ...autocompleteProps
     } = this.props;
 
-    const rootClassName = classNames(
-      'ds-u-clearfix',
-      'ds-c-autocomplete',
-      className
-    );
+    const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
 
     return (
       <Downshift {...autocompleteProps}>
@@ -177,10 +159,7 @@ export class Autocomplete extends React.PureComponent {
                 id={this.listboxContainerId}
               >
                 {label && !loading && (
-                  <h5
-                    className="ds-u-margin--0 ds-u-padding--1"
-                    id={this.listboxHeadingId}
-                  >
+                  <h5 className="ds-u-margin--0 ds-u-padding--1" id={this.listboxHeadingId}>
                     {label}
                   </h5>
                 )}

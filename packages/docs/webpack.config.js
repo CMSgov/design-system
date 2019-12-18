@@ -24,10 +24,7 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
       example: ['./src/scripts/example.js']
     },
     output: {
-      path: path.resolve(
-        __dirname,
-        `../../${buildPath(docsPath, rootPath, '/public/scripts/')}`
-      ),
+      path: path.resolve(__dirname, `../../${buildPath(docsPath, rootPath, '/public/scripts/')}`),
       publicPath: path.join('/', rootPath, '/public/scripts/'),
       filename: '[name].js'
     },
@@ -65,10 +62,9 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
     const keys = ['index']; // Object.keys(config.entry);
 
     keys.forEach(key => {
-      config.entry[key] = [
-        'react-hot-loader/patch',
-        'webpack-hot-middleware/client'
-      ].concat(config.entry[key]);
+      config.entry[key] = ['react-hot-loader/patch', 'webpack-hot-middleware/client'].concat(
+        config.entry[key]
+      );
     });
 
     config.plugins.push(new webpack.HotModuleReplacementPlugin());

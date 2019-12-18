@@ -29,10 +29,7 @@ export const Dialog = function(props) {
     size && `ds-c-dialog--${size}`
   );
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
-  const actionsClassNames = classNames(
-    'ds-c-dialog__actions',
-    actionsClassName
-  );
+  const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   /* eslint-disable jsx-a11y/no-redundant-roles */
   return (

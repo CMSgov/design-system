@@ -43,9 +43,7 @@ ReactDOM.render(
       focusTrigger
       label="Select from the options below:"
       onChange={selectedItem => console.log(selectedItem)}
-      onInputValueChange={inputVal =>
-        console.log('[Autocomplete]: ' + inputVal)
-      }
+      onInputValueChange={inputVal => console.log('[Autocomplete]: ' + inputVal)}
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
@@ -70,9 +68,7 @@ ReactDOM.render(
         }
       ]}
       onChange={selectedItem => console.log(selectedItem)}
-      onInputValueChange={inputVal =>
-        console.log('[Autocomplete]: ' + inputVal)
-      }
+      onInputValueChange={inputVal => console.log('[Autocomplete]: ' + inputVal)}
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."

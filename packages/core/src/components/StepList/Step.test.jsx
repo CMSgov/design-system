@@ -81,10 +81,7 @@ describe('Step', () => {
 
   it('renders completed text and an edit link for completed steps', () => {
     const spy = jest.fn();
-    const { wrapper, step } = renderStep(
-      { completed: true },
-      { onStepLinkClick: spy }
-    );
+    const { wrapper, step } = renderStep({ completed: true }, { onStepLinkClick: spy });
 
     const title = wrapper.find('.ds-c-step__title');
     expect(title.length).toEqual(1);
@@ -141,10 +138,7 @@ describe('Step', () => {
 
   it('renders start button for steps with isNextStep', () => {
     const spy = jest.fn();
-    const { wrapper } = renderStep(
-      { isNextStep: true },
-      { onStepLinkClick: spy }
-    );
+    const { wrapper } = renderStep({ isNextStep: true }, { onStepLinkClick: spy });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
@@ -169,10 +163,7 @@ describe('Step', () => {
   it('uses step.onClick handler when provided', () => {
     const onStepLinkClick = jest.fn();
     const onClick = jest.fn();
-    const { wrapper } = renderStep(
-      { onClick, isNextStep: true },
-      { onStepLinkClick }
-    );
+    const { wrapper } = renderStep({ onClick, isNextStep: true }, { onStepLinkClick });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
@@ -206,21 +197,15 @@ describe('Step', () => {
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
-    expect(description.props()['aria-label']).toEqual(
-      '!Description for Do something!'
-    );
+    expect(description.props()['aria-label']).toEqual('!Description for Do something!');
 
     const actions = wrapper.find('.ds-c-step__actions');
     expect(actions.length).toEqual(1);
-    expect(actions.props()['aria-label']).toEqual(
-      '!Primary actions for Do something!'
-    );
+    expect(actions.props()['aria-label']).toEqual('!Primary actions for Do something!');
 
     const substeps = wrapper.find('.ds-c-step__substeps');
     expect(substeps.length).toEqual(1);
-    expect(substeps.props()['aria-label']).toEqual(
-      '!Secondary actions for Do something!'
-    );
+    expect(substeps.props()['aria-label']).toEqual('!Secondary actions for Do something!');
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
   });

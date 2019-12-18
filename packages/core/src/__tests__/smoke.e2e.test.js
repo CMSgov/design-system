@@ -14,9 +14,7 @@ describe('CMS Design System smoke test', () => {
   it('Should click Learn how to get started and open startup/Installation/', async() => {
     await driver.get(ROOT_URL);
 
-    let el = await getElementByXPath(
-      '//*[@id="main"]/div/div/article/div/p[3]/a[2]'
-    );
+    let el = await getElementByXPath('//*[@id="main"]/div/div/article/div/p[3]/a[2]');
     el.click();
     el = await getElementById('startup.installation');
 

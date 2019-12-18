@@ -1,9 +1,5 @@
 /* global driver, by, key */
-import {
-  getElementByClassName,
-  getElementByXPath,
-  getFocusInnerText
-} from '../../helpers/e2e';
+import { getElementByClassName, getElementByXPath, getFocusInnerText } from '../../helpers/e2e';
 import { ROOT_URL } from '../../helpers/e2e/constants';
 
 import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
@@ -14,39 +10,29 @@ describe('Autocomplete component', () => {
   it('Should render', async() => {
     await driver.get(rootURL);
 
-    const autocompleteField = await getElementByClassName(
-      'ds-u-clearfix ds-c-autocomplete'
-    );
+    const autocompleteField = await getElementByClassName('ds-u-clearfix ds-c-autocomplete');
     expect(autocompleteField).toBeTruthy();
   });
 
   it('Should expand the listbox when keys are pressed', async() => {
     await driver.get(rootURL);
 
-    const autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
+    const autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
 
-    const listbox = await getElementByXPath(
-      '//*[@id="autocomplete_owned_container_4"]'
-    );
+    const listbox = await getElementByXPath('//*[@id="autocomplete_owned_container_4"]');
     expect(listbox).toBeTruthy();
   });
 
   it('Should set the input value correctly when a listbox selection is clicked', async() => {
     await driver.get(rootURL);
 
-    let autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
+    let autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
 
-    const listboxItem = await getElementByXPath(
-      '//*[@id="downshift-0-item-0"]'
-    );
+    const listboxItem = await getElementByXPath('//*[@id="downshift-0-item-0"]');
     listboxItem.click();
 
     autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
@@ -57,20 +43,14 @@ describe('Autocomplete component', () => {
   it('Should set the input value to empty when Clear search is clicked', async() => {
     await driver.get(rootURL);
 
-    let autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
+    let autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
 
-    const listboxItem = await getElementByXPath(
-      '//*[@id="downshift-0-item-0"]'
-    );
+    const listboxItem = await getElementByXPath('//*[@id="downshift-0-item-0"]');
     listboxItem.click();
 
-    const clearButton = await getElementByXPath(
-      '//*[@id="js-example"]/div/div[1]/button'
-    );
+    const clearButton = await getElementByXPath('//*[@id="js-example"]/div/div[1]/button');
     clearButton.click();
 
     autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
@@ -81,9 +61,7 @@ describe('Autocomplete component', () => {
   it('Should select list items by keyboard', async() => {
     await driver.get(rootURL);
 
-    let autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
+    let autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
     await autocompleteField.sendKeys(key.ARROW_DOWN);
@@ -96,12 +74,8 @@ describe('Autocomplete component', () => {
   it('Should clear the input value by keyboard', async() => {
     await driver.get(rootURL);
 
-    let autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
-    const clearSearch = await getElementByXPath(
-      '//*[@id="js-example"]/div/div[1]/button'
-    );
+    let autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
+    const clearSearch = await getElementByXPath('//*[@id="js-example"]/div/div[1]/button');
 
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
@@ -125,20 +99,14 @@ describe('Autocomplete component', () => {
   it('Closes the listbox when ESC is pressed', async() => {
     await driver.get(rootURL);
 
-    const autocompleteField = await getElementByXPath(
-      '//*[@id="autocomplete_1"]'
-    );
+    const autocompleteField = await getElementByXPath('//*[@id="autocomplete_1"]');
     autocompleteField.click();
     await autocompleteField.sendKeys('c');
-    let listbox = await driver.findElements(
-      by.css('#autocomplete_owned_container_4')
-    );
+    let listbox = await driver.findElements(by.css('#autocomplete_owned_container_4'));
     expect(listbox.length).toEqual(1);
 
     await autocompleteField.sendKeys(key.ESCAPE);
-    listbox = await driver.findElements(
-      by.css('#autocomplete_owned_container_4')
-    );
+    listbox = await driver.findElements(by.css('#autocomplete_owned_container_4'));
     expect(listbox.length).toEqual(0);
   });
 

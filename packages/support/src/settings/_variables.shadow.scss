@@ -6,4 +6,5 @@ $shadow-base-offset-x: 2px;
 $shadow-base-offset-y: 2px;
 $shadow-base-blur-radius: 4px;
 $shadow-base-color: rgba(0, 0, 0, 0.25);
-$shadow-base: $shadow-base-offset-x $shadow-base-offset-y $shadow-base-blur-radius $shadow-base-color;
+$shadow-base: $shadow-base-offset-x $shadow-base-offset-y $shadow-base-blur-radius
+  $shadow-base-color;
