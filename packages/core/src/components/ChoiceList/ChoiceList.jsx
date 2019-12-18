@@ -234,6 +234,9 @@ ChoiceList.propTypes = {
    */
   onComponentBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * Sets the size of the checkbox or radio button
+   */
   size: PropTypes.oneOf(['small']),
   /**
    * You can manually set the `type` if you prefer things to be less magical.
