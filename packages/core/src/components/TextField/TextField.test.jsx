@@ -160,9 +160,7 @@ describe('TextField', function() {
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
-    expect(field.prop('aria-label')).toBe(
-      `${data.props.label}. Enter amount in dollars.`
-    );
+    expect(field.prop('aria-label')).toBe(`${data.props.label}. Enter amount in dollars.`);
   });
 
   it('adds overrides default aria-label with defined prop', () => {
@@ -208,9 +206,7 @@ describe('TextField', function() {
       true
     );
 
-    expect(data.wrapper.find('input').props().id).toEqual(
-      document.activeElement.id
-    );
+    expect(data.wrapper.find('input').props().id).toEqual(document.activeElement.id);
   });
 
   describe('has error', () => {
@@ -221,9 +217,7 @@ describe('TextField', function() {
     });
 
     it('passes error to FormLabel', () => {
-      expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(
-        data.props.errorMessage
-      );
+      expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
     });
 
     it('adds error class to field', () => {

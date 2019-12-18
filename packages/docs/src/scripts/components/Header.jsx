@@ -44,9 +44,7 @@ class Header extends React.PureComponent {
                   aria-expanded={this.state.isBannerOpen}
                   aria-controls="gov-banner"
                 >
-                  <span className="usa-banner__button-text">
-                    Here’s how you know
-                  </span>
+                  <span className="usa-banner__button-text">Here’s how you know</span>
                 </button>
               </div>
             </header>
@@ -65,9 +63,8 @@ class Header extends React.PureComponent {
                   <div className="usa-media-block__body">
                     <p>
                       <strong>The .gov means it’s official.</strong>
-                      <br /> Federal government websites often end in .gov or
-                      .mil. Before sharing sensitive information, make sure
-                      you’re on a federal government site.
+                      <br /> Federal government websites often end in .gov or .mil. Before sharing
+                      sensitive information, make sure you’re on a federal government site.
                     </p>
                   </div>
                 </div>
@@ -80,10 +77,9 @@ class Header extends React.PureComponent {
                   <div className="usa-media-block__body">
                     <p>
                       <strong>The site is secure.</strong>
-                      <br /> The <strong>https://</strong> ensures that you are
-                      connecting to the official website and that any
-                      information you provide is encrypted and transmitted
-                      securely.
+                      <br /> The <strong>https://</strong> ensures that you are connecting to the
+                      official website and that any information you provide is encrypted and
+                      transmitted securely.
                     </p>
                   </div>
                 </div>
@@ -97,10 +93,7 @@ class Header extends React.PureComponent {
               CMS Design System
             </a>
           </h1>
-          <GitHubLinks
-            className="ds-u-display--none ds-u-md-display--block"
-            inverse
-          />
+          <GitHubLinks className="ds-u-display--none ds-u-md-display--block" inverse />
         </header>
       </div>
     );

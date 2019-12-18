@@ -8,8 +8,7 @@ export class VerticalNav extends React.PureComponent {
     return this.props.items.map(item => {
       let onClick = item.onClick || this.props.onLinkClick;
       const selected =
-        item.selected ||
-        (this.props.selectedId && this.props.selectedId === item.id);
+        item.selected || (this.props.selectedId && this.props.selectedId === item.id);
 
       if (!onClick) {
         onClick = undefined;

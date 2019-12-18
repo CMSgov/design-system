@@ -62,9 +62,7 @@ export class TextField extends React.PureComponent {
       };
 
       return (
-        <div
-          className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}
-        >
+        <div className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}>
           {content[this.props.mask]}
         </div>
       );

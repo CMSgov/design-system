@@ -12,9 +12,7 @@ class ReactPropDocs extends React.PureComponent {
     return props.map(prop => {
       if (prop === 'children' || prop.match(/^_/)) return null;
 
-      return (
-        <ReactPropDoc key={prop} name={prop} {...this.props.propDocs[prop]} />
-      );
+      return <ReactPropDoc key={prop} name={prop} {...this.props.propDocs[prop]} />;
     });
   }
 

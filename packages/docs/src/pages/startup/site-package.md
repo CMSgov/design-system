@@ -2,6 +2,7 @@
 title: Building a site package
 weight: 9
 ---
+
 The CMS Design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, the CMSDS does not fit every single need.
 
 ## What is a site package?
@@ -10,9 +11,9 @@ A site package is custom code (components, styles, etc..) that extends the CMSDS
 
 ### Site package guidelines
 
-* A site package should be as small as possible.
-* A site package is not meant to be as robust or as large as the entire CMS Design System.
-* A site package is not meant to serve as a resource for best practices or accessibility guidelines, that's the responsibility of the design system.
+- A site package should be as small as possible.
+- A site package is not meant to be as robust or as large as the entire CMS Design System.
+- A site package is not meant to serve as a resource for best practices or accessibility guidelines, that's the responsibility of the design system.
 
 ### How to create a site package
 
@@ -23,44 +24,47 @@ A site package is custom code (components, styles, etc..) that extends the CMSDS
    ```
 
 1. Inside your newly cloned `design-system` directory:
-    1. Create a **`themes`** directory inside the `packages` directory.
-    1. Create a **`my-theme`** directory inside the `themes` directory. **Note**: You can replace `my-theme` with whatever name you like.
-    1. Create a **`src`** directory inside the `my-theme` directory.
-    1. Inside the `src` directory:
-        1. Create an **`index.js`** file and leave it empty.
-        1. Create an **`index.scss`** file with the following contents:
 
-         ```SCSS
-         // Set your site package variables first
-         @import "styles/variables";
+   1. Create a **`themes`** directory inside the `packages` directory.
+   1. Create a **`my-theme`** directory inside the `themes` directory. **Note**: You can replace `my-theme` with whatever name you like.
+   1. Create a **`src`** directory inside the `my-theme` directory.
+   1. Inside the `src` directory:
 
-         // Original CMS Design System sass files"
-         @import "@cmsgov/design-system-core/src/index.scss";
-         @import "@cmsgov/design-system-support/src/index.scss";
-         @import "@cmsgov/design-system-layout/src/index.scss";
+      1. Create an **`index.js`** file and leave it empty.
+      1. Create an **`index.scss`** file with the following contents:
 
-         // Set your overrides to classes and styles
-         @import "styles/overrides";
-         ```
-     1. Create a **`styles`** directory inside the `src` directory.
-         1. Inside the `styles` directory:
-             1. Create a **`variables.scss`** file
-             2. Create an **`overrides.scss`** file
+      ```SCSS
+      // Set your site package variables first
+      @import "styles/variables";
+
+      // Original CMS Design System sass files"
+      @import "@cmsgov/design-system-core/src/index.scss";
+      @import "@cmsgov/design-system-support/src/index.scss";
+      @import "@cmsgov/design-system-layout/src/index.scss";
+
+      // Set your overrides to classes and styles
+      @import "styles/overrides";
+      ```
+
+   1. Create a **`styles`** directory inside the `src` directory.
+      1. Inside the `styles` directory:
+         1. Create a **`variables.scss`** file
+         2. Create an **`overrides.scss`** file
 
 1. At this point, the site package theme structure should look like this...
 
-  ```
-  design-system
-    └── packages
-        └── themes
-            └── my-theme
-                └── src
-                    ├── styles
-                    │   ├── overrides.scss
-                    │   └── variables.scss
-                    ├── index.js
-                    └── index.scss
-  ```
+```
+design-system
+  └── packages
+      └── themes
+          └── my-theme
+              └── src
+                  ├── styles
+                  │   ├── overrides.scss
+                  │   └── variables.scss
+                  ├── index.js
+                  └── index.scss
+```
 
 4. Run `yarn install && yarn start` from the root of the design system directory to install design system dependencies.
 
@@ -74,9 +78,10 @@ The CMS Design System supports the ability to preview your project's theme in th
 1. Run `yarn build:theme` to compile the documentation site for your theme. A `docs` sub-directory will be placed in your theme's directory.
 
 **Note**:
-* If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
-* If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
-* If you are wanting to preview your theme from another GitHub repo copy the site package files into the packages > themes directory.
+
+- If you have multiple themes inside of `packages/themes`, you can specify which theme to run by passing the name of the folder. For example, `yarn start:theme my-theme-folder-name`
+- If your documentation site will be uploaded to a subdirectory like `example.com/design-system`, you can set the root path by passing the `--root` option. For example, `yarn build:theme --root design-system`
+- If you are wanting to preview your theme from another GitHub repo copy the site package files into the packages > themes directory.
 
 ### How to create documentation for your site package
 
