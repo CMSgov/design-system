@@ -96,7 +96,10 @@ Status colors
 
 @hide-markup
 
-These colors are used largely to indicate the status of something. Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
+These colors are used largely to indicate the status of something. 
+Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
+
+Status colors can also be used with these aliases where `green`, `gold`, and `red` are identical to `success`, `warn`, and `error`. Use these alternate naming options when statuses aren't approproiate or give enough detail. For example, in some situations, `$color-red-darker` might be more accurate and descriptive than `$color-error-darker`.
 
 Markup:
 <% var colors = [
@@ -116,4 +119,26 @@ Markup:
 
 
 Style guide: style.color.status
+*/
+
+/*
+Additional colors
+
+@hide-markup
+
+Markup:
+<% var colors = [
+  'muted-inverse', `transparent`
+]; -%>
+<div class="">
+    <% colors.forEach(color => { -%>
+      <article class="ds-u-margin-bottom--1">
+        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
+        <code>$color-<%= color %></code>
+        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
+      </article>
+    <% }) -%>
+  </div>
+
+Style guide: style.color.additional
 */
