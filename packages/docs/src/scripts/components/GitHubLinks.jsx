@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import githubUrl from '../shared/githubUrl';
 import pkg from '../../../package.json';
 
-const zipUrl = githubUrl(`archive/v${pkg.version}.zip`);
+const zipUrl = githubUrl(`releases/download/${pkg.version}/design-system-v${pkg.version}.zip`);
 
 const GitHubLinks = props => {
   const downloadBtnClassName = classNames(
@@ -13,14 +13,11 @@ const GitHubLinks = props => {
       'ds-u-display--block': props.vertical
     }
   );
-  const githubBtnClassName = classNames(
-    'ds-c-button ds-u-font-weight--normal',
-    {
-      'ds-u-margin-left--2': !props.vertical,
-      'ds-u-margin-top--2 ds-u-display--block': props.vertical,
-      'ds-c-button--inverse': props.inverse
-    }
-  );
+  const githubBtnClassName = classNames('ds-c-button ds-u-font-weight--normal', {
+    'ds-u-margin-left--2': !props.vertical,
+    'ds-u-margin-top--2 ds-u-display--block': props.vertical,
+    'ds-c-button--inverse': props.inverse
+  });
   return (
     <div className={props.className}>
       <a href={zipUrl} className={downloadBtnClassName}>
