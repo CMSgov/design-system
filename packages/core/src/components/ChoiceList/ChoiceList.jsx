@@ -44,6 +44,7 @@ export class ChoiceList extends React.PureComponent {
         props.inputRef = ref => {
           this.choiceRefs.push(ref);
         };
+        props.size = this.props.size;
       }
 
       return (
@@ -234,9 +235,9 @@ ChoiceList.propTypes = {
   onComponentBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
-   * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
+   * Sets the size of the checkbox or radio button
    */
-  size: PropTypes.oneOf(['small', 'medium']),
+  size: PropTypes.oneOf(['small']),
   /**
    * You can manually set the `type` if you prefer things to be less magical.
    * Otherwise, the type will be inferred by the other `props`, based
