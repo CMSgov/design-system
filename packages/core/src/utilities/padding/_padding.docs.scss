@@ -1,23 +1,17 @@
-
 /*
 Padding
 
 Use the padding utility to change an element's padding.
 
-**Format**: `ds-u-padding-[x|y|bottom|left|right|top]--[MULTIPLE]`
+**Format**: `ds-u-padding-[x|y|bottom|left|right|top]--[0-7]`
+
+**Responsive format**: `ds-u-[breakpoint]-padding-[x|y|bottom|left|right|top]--[0-7]`
 
 [Read more about how the design system approaches spacing here.](/layout/spacing)
 
 @hide-markup
 
-Markup:
-<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%>
-<% for (var i = 0; i < 8; i++) { %>
-<div class="ds-base--inverse ds-u-padding<%= name %>--<%= i %> ds-u-margin-bottom--2">
-  <code>ds-u-padding<%= name %>--<%= i %></code>
-</div>
-<% } -%>
-<% }) -%>
+Markup: padding.example.html
 
 Style guide: utilities.padding
 */
@@ -29,12 +23,7 @@ Responsive padding
 
 Use a [breakpoint prefix](/guidelines/responsive) to change the padding at specific breakpoints.
 
-Markup:
-<div class="ds-base--inverse">
-  <div class="ds-u-padding--1 ds-u-sm-padding--2 ds-u-md-padding--3 ds-u-lg-padding--4 ds-u-xl-padding--5">
-    Responsive padding
-  </div>
-</div>
+Markup: padding-responsive.example.html
 
 Style guide: utilities.padding.responsive
 */

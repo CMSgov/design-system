@@ -1,0 +1,14 @@
+<% ['', '-x', '-y', '-bottom', '-left', '-right', '-top'].forEach(name => { -%> <% for (var i = 0; i
+< 8; i++) { %>
+<div class="ds-u-fill--primary-alt ds-u-margin-bottom--2" style="max-width: fit-content;">
+  <div class="ds-u-margin<%= name %>--<%= i %> ds-u-display--inline-block">
+    <code>ds-u-margin<%= name %>--<%= i %></code>
+  </div>
+</div>
+<% } -%>
+<div class="ds-u-fill--primary-alt ds-u-margin-bottom--2" style="max-width: fit-content;">
+  <div class="ds-u-margin<%= name %>--auto" style="width: 250px">
+    <code>ds-u-margin<%= name %>--auto</code>
+  </div>
+</div>
+<% }) -%>

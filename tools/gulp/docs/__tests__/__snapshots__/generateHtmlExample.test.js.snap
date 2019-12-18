@@ -5,7 +5,8 @@ Object {
   "body": "<button>Foo</button>
   <script type=\\"text/javascript\\" src=\\"/public/scripts/example.js\\"></script>",
   "head": "<title>Example: components.button</title>
-  <link rel=\\"stylesheet\\" href=\\"/public/styles/example.css\\" />",
+  <link rel=\\"stylesheet\\" href=\\"/public/styles/example.css\\" />
+  <link href=\\"https://fonts.googleapis.com/css?family=Roboto+Mono:400,700\\" rel=\\"stylesheet\\" />",
   "uri": "example/components.button.secondary",
 }
 `;
@@ -15,7 +16,8 @@ Object {
   "body": "<button>Foo</button>
   <script type=\\"text/javascript\\" src=\\"/public/scripts/example.js\\"></script>",
   "head": "<title>Example: components.button</title>
-  <link rel=\\"stylesheet\\" href=\\"/public/styles/example.css\\" />",
+  <link rel=\\"stylesheet\\" href=\\"/public/styles/example.css\\" />
+  <link href=\\"https://fonts.googleapis.com/css?family=Roboto+Mono:400,700\\" rel=\\"stylesheet\\" />",
   "uri": "example/components.button",
 }
 `;

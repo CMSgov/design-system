@@ -1,6 +1,38 @@
 /* stylelint-disable declaration-no-important */
 @import '@cmsgov/design-system-support/src/index';
 
+$_flex-direction-values: (
+  row: row,
+  column: column,
+  row-reverse: row-reverse,
+  column-reverse: column-reverse
+);
+
+@each $name in map-keys($_flex-direction-values) {
+  $value: map-get($_flex-direction-values, $name);
+  // Example: .ds-u-flex-direction--column
+  .ds-u-flex-direction--#{$name} {
+    // Example: flex-direction: column
+    flex-direction: $value !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_flex-direction-values) {
+      $value: map-get($_flex-direction-values, $name);
+      // Example: .ds-u-lg-flex-direction--column
+      .ds-u-#{$breakpoint}-flex-direction--#{$name} {
+        // Example: flex-direction: column
+        flex-direction: $value !important;
+      }
+    }
+  }
+}
+
+
 $_justify-content-values: (
   start: flex-start,
   end: flex-end,

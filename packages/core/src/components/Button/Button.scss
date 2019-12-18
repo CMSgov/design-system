@@ -1,6 +1,6 @@
 @import '@cmsgov/design-system-support/src/index';
 
-.ds-c-button, 
+.ds-c-button,
 .ds-c-button:visited  {
   appearance: none;
   background-color: $color-white;
@@ -38,6 +38,10 @@
     border-color: $color-primary-darkest;
     color: $color-primary-darkest;
   }
+}
+
+.ds-c-button > svg {
+  @include inline-icon;
 }
 
 .ds-c-button--big {
@@ -182,10 +186,10 @@
 /*
 Inverse buttons
 */
-.ds-c-button--inverse, 
-.ds-c-button--inverse:visited, 
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
+.ds-c-button--inverse,
+.ds-c-button--inverse:visited {
+  background-color: $color-background-inverse;
+  border-color: $border-color-inverse;
   color: $color-base-inverse;
 
   &:focus,
@@ -204,37 +208,61 @@ Inverse buttons
   }
 }
 
-.ds-c-button--inverse, 
-.ds-c-button--inverse:visited {
-  background-color: $color-background-inverse;
-  border-color: $border-color-inverse;
+/*
+Equivalent to ".ds-c-button--disabled-inverse"
+*/
+.ds-c-button--inverse:disabled,
+.ds-c-button--inverse.ds-c-button--disabled {
+  background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
+}
 
+/*
+Equivalent to ".ds-c-button--transparent-inverse"
+*/
+.ds-c-button--inverse.ds-c-button--transparent,
+.ds-c-button--inverse.ds-c-button--transparent:visited {
+  border-color: $color-background-inverse; 
+  
   &:disabled,
-  &.ds-c-button--disabled {
-    background-color: darken($color-background-inverse, 10%);
-    border-color: darken($color-background-inverse, 10%);
-    color: $color-muted-inverse;
-    pointer-events: none;
-  }
-
   &:focus,
   &:hover,
   &:active,
+  &.ds-c-button--disabled,
   &.ds-c-button--focus,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    border-color: $color-base-inverse;
+    border-color: $color-background-inverse;
   }
 }
 
+/* stylelint-disable */
 .ds-c-button--transparent-inverse,
 .ds-c-button--transparent-inverse:visited {
+  @extend .ds-c-button--inverse;
+  border-color: $color-background-inverse;
+
   &:disabled,
-  &.ds-c-button--disabled {
-    color: $color-muted-inverse;
+  &:focus,
+  &:hover,
+  &:active,
+  &.ds-c-button--disabled,
+  &.ds-c-button--focus,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: $color-background-inverse;
   }
 }
 
-.ds-c-button > svg {
-  @include inline-icon;
+.ds-c-button--disabled-inverse,
+.ds-c-button--disabled-inverse:visited {
+  @extend .ds-c-button--inverse;
+  background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
 }
+
+/* stylelint-enable */
