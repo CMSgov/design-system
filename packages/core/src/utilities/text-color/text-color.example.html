@@ -1,4 +1,4 @@
-<div class="example--list">
+<section class="example--list">
   <% var groups = { 'background': ['base', 'black', 'gray', 'gray-dark', 'primary',
   'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error', 'error-dark',
   'error-darkest', 'success'], 'background-inverse': ['white','gray-lightest', 'gray-lighter',
@@ -12,8 +12,10 @@
   'primary-alt-darkest', 'error-dark', 'error-darkest' ], 'error-lightest': ['base', 'gray',
   'gray-dark', 'primary-darker', 'primary-darkest', 'primary-alt-darkest', 'error-darkest' ], }; -%>
   <% Object.keys(groups).forEach(fill => { -%>
-  <section>
-    <h1 class="preview__label">.ds-u-fill--<%= fill%> background</h1>
+  <article>
+    <h2 class="preview__label ds-u-margin-top--2 ds-u-margin-bottom--4">
+      Text on <code>.ds-u-fill--<%= fill%></code> background
+    </h2>
     <% groups[fill].forEach(color => { -%>
     <article class="ds-u-margin-bottom--1">
       <div
@@ -23,6 +25,6 @@
       <code class="js-swatch-hex c-swatch__label ds-u-color--gray">#</code>
     </article>
     <% }) -%>
-  </section>
+  </article>
   <% }) %>
-</div>
+</section>
