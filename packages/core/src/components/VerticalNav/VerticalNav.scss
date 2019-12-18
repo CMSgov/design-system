@@ -60,7 +60,6 @@
   &:focus,
   &.ds-c-vertical-nav__label--current:focus {
     background-color: $color-focus;
-    border-bottom-width: 3px;
     border-color: $color-base;
     color: $color-base;
     outline: 0 none;
@@ -74,6 +73,14 @@ a.ds-c-vertical-nav__label:hover,
   color: $color-primary;
   text-decoration: none;
 }
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+a.ds-c-vertical-nav__label:focus,
+.ds-c-vertical-nav__label--parent:focus {
+  border-left-color: $color-base;
+  box-shadow: none;
+}
+
 
 .ds-c-vertical-nav__subnav {
   @include ds-unstyled-list;

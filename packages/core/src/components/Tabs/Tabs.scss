@@ -75,21 +75,6 @@
       transform $animation-speed-2 $ease-in-out-expo;
   }
 
-  // A pseudo-element for the bottom border on focused tabs
-  &::before {
-    background-color: $color-base;
-    bottom: -1px;
-    content: '';
-    height: $spacer-half;
-    left: -1px;
-    opacity: 0;
-    position: absolute;
-    right: -1px;
-    transform: scale3d(0, 1, 1);
-    transition: opacity $animation-speed-2 $ease-in-out-expo,
-      transform $animation-speed-2 $ease-in-out-expo;
-  }
-
   // States
   &[aria-selected='true'] {
     border-bottom-color: $color-white;
@@ -131,7 +116,8 @@
     box-shadow: none;
     color: $color-base;
 
-    &::before {
+    &::after {
+      background-color: $color-base;
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
