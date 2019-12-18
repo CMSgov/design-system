@@ -2,65 +2,65 @@
 @import '@cmsgov/design-system-support/src/settings/index';
 
 // primary
-.ds-u-color--primary {
+.ds-u-color--primary:not(:focus) {
   color: $color-primary !important;
 }
 
-.ds-u-color--primary-darker {
+.ds-u-color--primary-darker:not(:focus) {
   color: $color-primary-darker !important;
 }
 
-.ds-u-color--primary-darkest {
+.ds-u-color--primary-darkest:not(:focus) {
   color: $color-primary-darkest !important;
 }
 
 // gray
-.ds-u-color--gray {
+.ds-u-color--gray:not(:focus) {
   color: $color-gray !important;
 }
 
-.ds-u-color--muted {
+.ds-u-color--muted:not(:focus) {
   color: $color-muted !important;
 }
 
 // states
-.ds-u-color--error {
+.ds-u-color--error:not(:focus) {
   color: $color-error !important;
 }
 
-.ds-u-color--error-dark {
+.ds-u-color--error-dark:not(:focus) {
   color: $color-error-dark !important;
 }
 
-.ds-u-color--error-light {
+.ds-u-color--error-light:not(:focus) {
   color: $color-error-light !important;
 }
 
-.ds-u-color--success {
+.ds-u-color--success:not(:focus) {
   color: $color-success !important;
 }
 
 // base colors
-.ds-u-color--base {
+.ds-u-color--base:not(:focus) {
   color: $color-base !important;
 }
 
-.ds-u-color--base-inverse {
+.ds-u-color--base-inverse:not(:focus) {
   color: $color-base-inverse !important;
 }
 
-.ds-u-color--muted-inverse {
+.ds-u-color--muted-inverse:not(:focus) {
   color: $color-muted-inverse !important;
 }
 
-.ds-u-color--black {
+.ds-u-color--black:not(:focus) {
   color: $color-black !important;
 }
 
-.ds-u-color--white {
+.ds-u-color--white:not(:focus) {
   color: $color-white !important;
 }
 
-.ds-u-color--inherit {
+.ds-u-color--inherit:not(:focus) {
   color: inherit !important;
 }
