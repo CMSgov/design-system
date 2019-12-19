@@ -58,7 +58,7 @@ export class Button extends React.PureComponent {
 
   classNames() {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-    const disabledClass = this.props.disabled && 'ds-c-button--disabled';
+    const disabledClass = this.props.disabled && this.props.href && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
     const inverseClass = this.props.inverse && 'ds-c-button--inverse';
 
