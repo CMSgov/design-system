@@ -16,11 +16,11 @@ To avoid conflicting with other libraries and existing code, the design system n
 
 Prefixes are added to class names to make it more apparent what job the class is doing.
 
-| Prefix | Description |
-| ------ | ----------- |
-| `l-`  | Indicates layout-related styles. Example: `.ds-l-container` |
-| `c-` | Indicates a component. Example: `.ds-c-button`
-| `u-` | Indicates a utility. Example: `.ds-u-color--base` |
+| Prefix | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| `l-`   | Indicates layout-related styles. Example: `.ds-l-container` |
+| `c-`   | Indicates a component. Example: `.ds-c-button`              |
+| `u-`   | Indicates a utility. Example: `.ds-u-color--base`           |
 
 These prefixes can sometimes be followed by a "breakpoint prefix". [Learn more about breakpoint prefixes.]({{root}}/guidelines/responsive/)
 

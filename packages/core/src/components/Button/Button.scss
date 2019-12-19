@@ -1,7 +1,7 @@
 @import '@cmsgov/design-system-support/src/index';
 
 .ds-c-button,
-.ds-c-button:visited  {
+.ds-c-button:visited {
   appearance: none;
   background-color: $color-white;
   border: $button-border-width solid $color-primary;
@@ -134,7 +134,7 @@
   }
 
   &:active,
-  &.ds-c-button--active  {
+  &.ds-c-button--active {
     background-color: $color-error-darkest;
   }
 
@@ -250,8 +250,8 @@ Equivalent to ".ds-c-button--transparent-inverse"
 */
 .ds-c-button--inverse.ds-c-button--transparent,
 .ds-c-button--inverse.ds-c-button--transparent:visited {
-  border-color: $color-background-inverse; 
-  
+  border-color: $color-background-inverse;
+
   &:disabled,
   &:focus,
   &:hover,

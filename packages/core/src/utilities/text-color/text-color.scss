@@ -14,14 +14,48 @@
   color: $color-primary-darkest !important;
 }
 
+// primary alt
+.ds-u-color--primary-alt:not(:focus) {
+  color: $color-primary-alt !important;
+}
+
+.ds-u-color--primary-alt-light:not(:focus) {
+  color: $color-primary-alt-light !important;
+}
+ 
+.ds-u-color--primary-alt-lightest:not(:focus) {
+  color: $color-primary-alt-lightest !important;
+}
+
+.ds-u-color--primary-alt-dark:not(:focus) {
+  color: $color-primary-alt-dark !important;
+}
+
+.ds-u-color--primary-alt-darkest:not(:focus) {
+  color: $color-primary-alt-darkest !important;
+}
+
 // gray
 .ds-u-color--gray:not(:focus) {
   color: $color-gray !important;
 }
 
+.ds-u-color--gray-lightest:not(:focus) {
+  color: $color-gray-lightest !important;
+}
+
+.ds-u-color--gray-lighter:not(:focus) {
+  color: $color-gray-lighter !important;
+}
+
+.ds-u-color--gray-light:not(:focus) {
+  color: $color-gray-light !important;
+}
+
 .ds-u-color--muted:not(:focus) {
   color: $color-muted !important;
-}
+} 
+
 
 // states
 .ds-u-color--error:not(:focus) {
@@ -30,6 +64,10 @@
 
 .ds-u-color--error-dark:not(:focus) {
   color: $color-error-dark !important;
+}
+
+.ds-u-color--error-darkest:not(:focus) {
+  color: $color-error-darkest !important;
 }
 
 .ds-u-color--error-light:not(:focus) {

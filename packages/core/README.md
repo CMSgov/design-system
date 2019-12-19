@@ -17,13 +17,13 @@ npm install --save @cmsgov/design-system-core
 The source files included are written in Sass (`.scss`). You can add your `node_modules` directory to your Sass [`includePaths`](https://github.com/sass/node-sass#includepaths) and import the file like this:
 
 ```css
-@import "@cmsgov/design-system-core/src/index";
+@import '@cmsgov/design-system-core/src/index';
 ```
 
 or import the transpiled CSS:
 
 ```css
-@import "@cmsgov/design-system-core/dist/index.css";
+@import '@cmsgov/design-system-core/dist/index.css';
 ```
 
 [Please view the documentation site for additional information.](https://design.cms.gov/)

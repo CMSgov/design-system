@@ -60,17 +60,13 @@ describe('VerticalNavItem', () => {
     it('is not selected', () => {
       const data = render();
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
-        false
-      );
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(false);
     });
 
     it('is selected', () => {
       const data = render({ selected: true });
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
-        true
-      );
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(true);
     });
 
     it('has no subnav', () => {
@@ -130,9 +126,7 @@ describe('VerticalNavItem', () => {
     it('is not selected', () => {
       const data = render(props);
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
-        false
-      );
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(false);
     });
 
     it('is selected', () => {
@@ -140,9 +134,7 @@ describe('VerticalNavItem', () => {
       props.items[0].id = 'selected-child';
       const data = render(props);
 
-      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(
-        true
-      );
+      expect(data.wrapper.find('VerticalNavItemLabel').prop('selected')).toBe(true);
     });
 
     it('has collapsed subnav', () => {

@@ -28,12 +28,7 @@ ReactDOM.render(
   <div>
     <fieldset className="ds-c-fieldset">
       <legend className="ds-c-label">Checkboxes</legend>
-      <Choice
-        defaultChecked
-        hint="Checkbox A hint"
-        name="checkbox_choice"
-        value="a"
-      >
+      <Choice defaultChecked hint="Checkbox A hint" name="checkbox_choice" value="a">
         Checkbox A
       </Choice>
       <Choice name="checkbox_choice" value="b">
@@ -53,9 +48,7 @@ ReactDOM.render(
         defaultChecked
         name="checkbox_choice_children"
         value="b"
-        checkedChildren={
-          <div className="ds-c-choice__checkedChild">{childDropdown}</div>
-        }
+        checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
       >
         Checkbox B - with children
       </Choice>
@@ -86,9 +79,7 @@ ReactDOM.render(
         name="radio_choice_children"
         type="radio"
         value="d"
-        checkedChildren={
-          <div className="ds-c-choice__checkedChild">{childDropdown}</div>
-        }
+        checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
       >
         Radio B - with children
       </Choice>
@@ -121,9 +112,7 @@ ReactDOM.render(
 
     <div className="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
       <fieldset className="ds-c-fieldset ds-u-margin-top--0">
-        <legend className="ds-c-label">
-          Inverse radio buttons with children
-        </legend>
+        <legend className="ds-c-label">Inverse radio buttons with children</legend>
         <Choice name="radio_choice_children_inv" type="radio" value="c">
           Radio A
         </Choice>

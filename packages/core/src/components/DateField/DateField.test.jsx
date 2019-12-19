@@ -11,15 +11,11 @@ describe('DateField', () => {
   });
 
   it('has requirementLabel', () => {
-    expect(
-      renderer.create(<DateField requirementLabel="Optional." />)
-    ).toMatchSnapshot();
+    expect(renderer.create(<DateField requirementLabel="Optional." />)).toMatchSnapshot();
   });
 
   it('has errorMessage', () => {
-    expect(
-      renderer.create(<DateField errorMessage="This is required." />)
-    ).toMatchSnapshot();
+    expect(renderer.create(<DateField errorMessage="This is required." />)).toMatchSnapshot();
   });
 
   it('is inversed', () => {
@@ -39,9 +35,7 @@ describe('DateField', () => {
   });
 
   it('has custom yearMax and yearMin', () => {
-    expect(
-      renderer.create(<DateField yearMax={2000} yearMin="1990" />)
-    ).toMatchSnapshot();
+    expect(renderer.create(<DateField yearMax={2000} yearMin="1990" />)).toMatchSnapshot();
   });
 
   it('returns reference to input fields', () => {
@@ -117,10 +111,7 @@ describe('DateField', () => {
       const onComponentBlur = jest.fn();
       const dateFormatter = jest.fn();
       const wrapper = mount(
-        <DateField
-          onComponentBlur={onComponentBlur}
-          dateFormatter={dateFormatter}
-        />
+        <DateField onComponentBlur={onComponentBlur} dateFormatter={dateFormatter} />
       );
 
       const yearField = wrapper.find('.ds-c-field--year');

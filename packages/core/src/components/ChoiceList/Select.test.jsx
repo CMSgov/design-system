@@ -144,9 +144,7 @@ describe('Select', () => {
       true
     );
 
-    expect(data.wrapper.find('select').props().id).toEqual(
-      document.activeElement.id
-    );
+    expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
   });
 
   describe('event handlers', () => {
@@ -164,9 +162,7 @@ describe('Select', () => {
         onChange: onChangeMock
       };
 
-      wrapper = shallow(
-        <Select {...sharedProps}>{generateOptions(10)}</Select>
-      );
+      wrapper = shallow(<Select {...sharedProps}>{generateOptions(10)}</Select>);
     });
 
     it('calls the onChange handler', () => {
