@@ -1,8 +1,9 @@
 // Visualize colors
 .c-swatch__preview {
   box-shadow: inset 0 0 1px rgba(#000, 0.2);
+  display: inline-block;
   margin-bottom: $spacer-half;
-  padding-top: 50%;
+  vertical-align: middle;
 
   &.ds-u-fill--transparent {
     background-image: url('#{$image-path}/canvas.png');
@@ -11,5 +12,5 @@
 
 .c-swatch__preview--condensed {
   height: $spacer-4;
-  padding-top: 0;
+  width: $spacer-4;
 }

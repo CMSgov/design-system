@@ -1,143 +1,20 @@
-// NOTE: This file defines new color variables that aren't part of the set of
-// USWDS variables. The default USWDS color variables are located in
-// vendor/uswds/core/_variables
-
-/*
-Color
-
-@uswds https://standards.usa.gov/components/colors/
-
-<p class="ds-text--lead">The design system provides a flexible, yet distinctly American palette designed to communicate warmth and trustworthiness while meeting the highest standards of 508 color contrast requirements.</p>
-
-The palette is designed to support a range of distinct visual styles that continue to feel connected. The intent of the palette is to convey a warm and open American spirit, with bright saturated tints of blue, grounded in sophisticated deeper shades of cool blues and grays. These colors — combined with clear hierarchy, good information design, and ample white space — should leave users feeling welcomed and in good hands.
-
-This is a simple, minimalist color palette. Shades of blue dominate, providing a neutral backdrop on which brighter shades, clean type treatment, and bright white content areas “pop” on the page.
-
-Style guide: style.color
-*/
-
-/*
-Primary colors
-
-@hide-markup
-
-This palette’s primary colors are blue, gray, and white. Blue is commonly associated with trust, confidence, and sincerity; it is also used to represent calmness and responsibility.
-
-Markup:
-<% var colors = [
-  'primary', 'primary-darker', 'primary-darkest',
-  'base', 'gray-dark', 'gray-light', 'white'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.primary
-*/
-
-/*
-Secondary colors
-
-@hide-markup
-
-These are accent colors to provide additional lightness and style to pages looking for a more modern flair. These colors should be used to highlight important features on a page, such as buttons, or for visual style elements, such as illustrations. They should be used sparingly and never draw the eye to more than one piece of information at a time.
-
-Markup:
-<% var colors = [
-  'primary-alt-darkest', 'primary-alt-dark', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.secondary
-*/
-
-/*
-Background colors
-
-@hide-markup
-
-These colors are used largely for background blocks and large content areas. When alternating between tones, be sure to use enough contrast between adjacent colors.
-
-Markup:
-<% var colors = [
-  'background', 'background-inverse', 'gray-dark', 'gray', 'gray-light', 'gray-lighter', 'gray-lightest'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.background
-*/
-
-/*
-Status colors
-
-@hide-markup
-
-These colors are used largely to indicate the status of something. Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
-
-Markup:
-<% var colors = [
-  'success', 'success-light', 'success-lighter', 'success-lightest',
-  'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
-  'error-darkest', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.status
-*/
-
 // Generic
 // USWDS doesn't include a "lighter" variant for red, so we create one
 // in order to be consistent with the other "state" colors.
 $color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest) !default;
 
+// USE COLOR RED HERE
 $color-error: $color-secondary !default;
 $color-error-dark: $color-secondary-dark !default;
 $color-error-darkest: $color-secondary-darkest !default;
 $color-error-light: $color-secondary-light !default;
 $color-error-lighter: $color-secondary-lighter !default;
 $color-error-lightest: $color-secondary-lightest !default;
+
+$color-red: $color-secondary !default;
+$color-red-light: $color-secondary-light !default;
+$color-red-lighter: $color-secondary-lighter !default;
+$color-red-lightest: $color-secondary-lightest !default;
 
 $color-warn: $color-gold !default;
 $color-warn-light: $color-gold-light !default;
