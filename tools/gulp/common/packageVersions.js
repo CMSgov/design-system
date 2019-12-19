@@ -23,12 +23,7 @@ function packageVersions(names) {
  * @return {Promise}
  */
 function packageVersion(name) {
-  const filePath = path.resolve(
-    __dirname,
-    '../../../packages',
-    name,
-    'package.json'
-  );
+  const filePath = path.resolve(__dirname, '../../../packages', name, 'package.json');
 
   return fs
     .readFile(filePath, 'utf8')

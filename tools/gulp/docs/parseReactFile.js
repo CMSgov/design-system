@@ -49,9 +49,7 @@ function parseExample(file) {
   if (imports) {
     // Remove everything up to the end of the last import statement
     const lastImport = imports[imports.length - 1];
-    source = source
-      .substring(source.indexOf(lastImport) + lastImport.length)
-      .trim();
+    source = source.substring(source.indexOf(lastImport) + lastImport.length).trim();
   }
 
   return { source };

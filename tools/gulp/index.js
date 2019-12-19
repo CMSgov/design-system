@@ -64,16 +64,12 @@ function packageDirectories() {
 
 module.exports = gulp => {
   // compile docs to the themes directory if it's being applied
-  const docsPath = themePackageDir
-    ? `packages/${themePackageDir}/docs`
-    : 'docs';
+  const docsPath = themePackageDir ? `packages/${themePackageDir}/docs` : 'docs';
   // support placing docs in a subdirectory (ie. design.cms.gov/v1/index.html)
   const rootPath = argv.root || '';
   const theme = themeDirectory();
   // Include theme directory in packages to watch, compile, and generate theme docs
-  const packages = theme
-    ? packageDirectories().concat(theme)
-    : packageDirectories();
+  const packages = theme ? packageDirectories().concat(theme) : packageDirectories();
 
   // These properties are shared with every Gulp task
   const shared = {
@@ -83,23 +79,12 @@ module.exports = gulp => {
     packages: packages,
     docsPath: docsPath,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(
-      docsPath,
-      rootPath,
-      packages
-    )
+    webpackConfig: require('../../packages/docs/webpack.config')(docsPath, rootPath, packages)
   };
 
-  [
-    'build',
-    'docs',
-    'lint',
-    'sass',
-    'server',
-    'stats/stats',
-    'watch',
-    'webpack'
-  ].forEach(taskGroup => {
-    require(`./${taskGroup}`)(gulp, shared);
-  });
+  ['build', 'docs', 'lint', 'sass', 'server', 'stats/stats', 'watch', 'webpack'].forEach(
+    taskGroup => {
+      require(`./${taskGroup}`)(gulp, shared);
+    }
+  );
 };
