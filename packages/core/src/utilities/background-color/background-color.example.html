@@ -6,9 +6,8 @@
   'gray-lightest'], 'Status colors': ['success', 'success-light',
   'success-lighter','success-lightest', 'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
   'error', 'error-dark', 'error-darkest', 'error-light', 'error-lighter','error-lightest'],
-  'Additional colors': ['gold', 'gold-light', 'gold-lighter','gold-lightest', 'green',
-  'green-light','green-lighter', 'green-lightest', 'red', 'red-light','red-lighter', 'red-lightest',
-  'muted-inverse', 'transparent'], }; -%> <% Object.keys(groups).forEach(fill => { -%>
+  'Additional colors': ['muted-inverse', 'transparent'], }; -%> <% Object.keys(groups).forEach(fill
+  => { -%>
   <section>
     <h1 class="preview__label"><%= fill%></h1>
     <% groups[fill].forEach(color => { -%>
