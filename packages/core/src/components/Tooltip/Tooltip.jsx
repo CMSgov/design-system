@@ -1,6 +1,6 @@
 import { Manager, Popper, Reference } from 'react-popper';
 import React, { Fragment } from 'react';
-import Transition, { ENTERED, ENTERING, EXITING } from 'react-transition-group/Transition';
+import Transition, { ENTERED, ENTERING, EXITED, EXITING } from 'react-transition-group/Transition';
 import Button from '../Button/Button';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
@@ -8,28 +8,23 @@ import ReactDOM from 'react-dom';
 import TooltipIcon from './TooltipIcon';
 import classNames from 'classnames';
 
-const transitionDuration = 300;
-const defaultTransitionStyle = {
-  transition: `opacity ${transitionDuration}ms`,
-  opacity: 0
-};
+// Transition component config
+const transitionDuration = 300; // Equivalent to $animation-speed-2
 const transitionStyles = {
-  [ENTERING]: { opacity: 0 },
+  [ENTERING]: { opacity: 1 },
   [ENTERED]: { opacity: 1 },
-  [EXITING]: { opacity: 0 }
+  [EXITING]: { opacity: 0 },
+  [EXITED]: { opacity: 0 }
 };
 
+// React popper config
 const TOOLTIP_OFFSET_OPT = '5, 5, 5, 5';
 const TOOLTIP_OFFSET = 5;
 
 class Tooltip extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showTooltip: false,
-      focusEventTriggered: false
-    };
+    this.state = { showTooltip: true };
   }
 
   componentDidMount() {
@@ -41,24 +36,14 @@ class Tooltip extends React.Component {
   }
 
   handleKeyDown(e) {
-    if (this.props.hasInteractiveContent && this.state.showTooltip) {
-      const ESCAPE_KEY = 27;
-      switch (e.keyCode) {
-        case ESCAPE_KEY:
-          this.hideTooltip();
-          break;
-        default:
-          break;
-      }
+    const ESCAPE_KEY = 27;
+    if (this.props.hasInteractiveContent && this.state.showTooltip && e.keyCode === ESCAPE_KEY) {
+      this.hideTooltip();
     }
   }
 
-  handleFocus() {
-    this.setState({ showTooltip: true, focusEventTriggered: true });
-  }
-
   hideTooltip() {
-    this.setState({ showTooltip: false, focusEventTriggered: false });
+    this.setState({ showTooltip: false });
   }
 
   showTooltip() {
@@ -82,11 +67,12 @@ class Tooltip extends React.Component {
             id={id}
             type="button"
             onTouchStart={() => this.showTooltip()}
-            onFocus={this.handleFocus}
+            onFocus={() => this.showTooltip()}
             onBlur={hasInteractiveContent ? null : () => this.hideTooltip()}
             onMouseEnter={() => this.showTooltip()}
             onMouseLeave={() => this.hideTooltip()}
             aria-label={`Tooltip: ${ariaLabel || ''}`}
+            aria-describedby={`tooltip-${id}`}
             className={classNames('ds-c-tooltip__trigger', triggerClassName)}
             ref={ref}
           >
@@ -142,6 +128,7 @@ class Tooltip extends React.Component {
         </div>
       </FocusTrap>
     );
+
     const nonInteractiveContent = (arrowProps, arrowStyle) => (
       <Fragment>
         <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
@@ -153,6 +140,7 @@ class Tooltip extends React.Component {
         />
       </Fragment>
     );
+
     return ReactDOM.createPortal(
       <Transition in={this.state.showTooltip} unmountOnExit timeout={transitionDuration}>
         {transitionState => (
@@ -175,13 +163,15 @@ class Tooltip extends React.Component {
               // Can't directly modify style, so copy and add styles from props
               const newStyle = {
                 ...style,
-                ...defaultTransitionStyle,
                 ...transitionStyles[transitionState],
-                ...{ maxWidth: tooltipMaxWidth },
-                ...{ zIndex: tooltipZIndex }
+                ...{
+                  maxWidth: tooltipMaxWidth,
+                  zIndex: tooltipZIndex
+                }
               };
               return (
                 <div
+                  id={`tooltip-${id}`}
                   ref={ref}
                   className={classNames('ds-c-tooltip__container', tooltipBodyClassName, {
                     'inverse-tooltip-body': inverse
@@ -189,11 +179,12 @@ class Tooltip extends React.Component {
                   style={newStyle}
                   onMouseEnter={() => this.showTooltip()}
                   onMouseLeave={() => this.hideTooltip()}
-                  modifiers={{ offset: TOOLTIP_OFFSET }}
                   data-placement={placement}
+                  modifiers={{ offset: TOOLTIP_OFFSET }}
                   aria-labelledby={id}
+                  role={hasInteractiveContent ? 'dialog' : 'tooltip'}
                 >
-                  {hasInteractiveContent && this.state.focusEventTriggered
+                  {hasInteractiveContent
                     ? interactiveContent(arrowProps, arrowStyle)
                     : nonInteractiveContent(arrowProps, arrowStyle)}
                 </div>
