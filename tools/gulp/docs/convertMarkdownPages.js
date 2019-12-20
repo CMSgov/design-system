@@ -21,9 +21,7 @@ const processMarkdownPage = require('./processMarkdownPage');
 function createPageObject(rootPath, dir, filename) {
   const filePath = path.join(dir, filename);
 
-  return fs
-    .readFile(filePath, 'utf8')
-    .then(data => processMarkdownPage(filePath, data, rootPath));
+  return fs.readFile(filePath, 'utf8').then(data => processMarkdownPage(filePath, data, rootPath));
 }
 
 /**
@@ -61,9 +59,7 @@ function convertMarkdownPages(rootPath, packages) {
     const themeSrc = path.join(packagesDir, themePackages[0]);
 
     return docsPages.then(pages =>
-      createPages(rootPath, themeSrc).then(themePages =>
-        pages.concat(themePages)
-      )
+      createPages(rootPath, themeSrc).then(themePages => pages.concat(themePages))
     );
   }
 

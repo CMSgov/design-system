@@ -43,7 +43,6 @@ export class HelpDrawer extends React.PureComponent {
               className="ds-u-margin-left--auto"
               size="small"
               onClick={onCloseClick}
-              variation="secondary"
             >
               {closeButtonText}
             </Button>

@@ -23,7 +23,7 @@ describe('Button', () => {
 
     expect(wrapper.text()).toBe(buttonText);
     expect(wrapper.prop('disabled')).toBe(disabled);
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(disabled);
+    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(false);
     expect(onClickMock.mock.calls.length).toBe(expectedCallCount);
   }
 
@@ -71,6 +71,16 @@ describe('Button', () => {
     expect(wrapper.render().text()).toBe(buttonText);
   });
 
+  it('renders disabled Link correctly', () => {
+    const props = {
+      href: 'javascript:void(0)',
+      disabled: true
+    };
+    const wrapper = shallow(<Button {...props}>Link button</Button>);
+    expect(wrapper.prop('disabled')).not.toBe(true);
+    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
+  });
+
   it('applies additional classes', () => {
     const props = { className: 'foobar' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
@@ -99,7 +109,7 @@ describe('Button', () => {
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
+    expect(wrapper.prop('disabled')).toBe(true);
   });
 
   it('applies disabled, inverse, and variation classes together', () => {
@@ -112,19 +122,8 @@ describe('Button', () => {
 
     expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
     expect(wrapper.hasClass('ds-c-button--inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
+    expect(wrapper.prop('disabled')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-  });
-
-  it('doesnt apply inverse to primary/danger/success variations', () => {
-    const props = {
-      inverse: true,
-      variation: 'primary'
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
-
-    expect(wrapper.hasClass('ds-c-button--inverse')).toBe(false);
-    expect(wrapper.hasClass('ds-c-button--primary')).toBe(true);
   });
 
   it('applies inverse to default/transparent variations', () => {

@@ -58,6 +58,10 @@
   @include inline-icon;
 }
 
+/**
+ *  Size variants
+ */
+
 .ds-c-button--big {
   font-size: $h3-font-size;
   padding-bottom: $spacer-2;
@@ -70,6 +74,133 @@
   padding: $spacer-half $spacer-1;
 }
 
+.ds-c-button--transparent,
+.ds-c-button--transparent:visited,
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-gray-lighter;
+  }
+
+  &:hover,
+  &:active,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: transparent;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    border-color: transparent;
+    text-decoration: none;
+  }
+}
+
+/**
+ *  Inverse buttons (mainly affects default and transparent buttons)
+ */
+.ds-c-button--inverse,
+.ds-c-button--inverse:visited {
+  background-color: $color-background-inverse;
+  border-color: $border-color-inverse;
+  color: $color-base-inverse;
+
+  &:hover,
+  &:active,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: rgba($border-color-inverse, 0.8);
+    color: rgba($color-base-inverse, 0.8);
+  }
+
+  &:active,
+  &.ds-c-button--active {
+    border-color: rgba($border-color-inverse, 0.6);
+    color: rgba($color-base-inverse, 0.6);
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    background-color: $button-primary-bg--focus;
+    border-color: transparent;
+    box-shadow: $focus-shadow-link-inverse;
+    color: $color-base;
+    opacity: 1;
+  }
+}
+
+/* Equivalent to ".ds-c-button--transparent-inverse" */
+.ds-c-button--inverse.ds-c-button--transparent,
+.ds-c-button--inverse.ds-c-button--transparent:visited {
+  border-color: $color-background-inverse;
+
+  &:disabled,
+  &:hover,
+  &:active,
+  &.ds-c-button--disabled,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: $color-background-inverse;
+  }
+
+  // Default inverse focus styles are overridden above
+  &:focus,
+  &.ds-c-button--focus {
+    border-color: transparent;
+  }
+}
+
+/* stylelint-disable */
+.ds-c-button--transparent-inverse,
+.ds-c-button--transparent-inverse:visited {
+  @extend .ds-c-button--inverse;
+  border-color: $color-background-inverse;
+
+  &:disabled,
+  &:hover,
+  &:active,
+  &.ds-c-button--disabled,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: $color-background-inverse;
+  }
+
+  // Default inverse focus styles are overridden above
+  &:focus,
+  &.ds-c-button--focus {
+    border-color: transparent;
+  }
+}
+
+/* Equivalent to ".ds-c-button--disabled-inverse" */
+.ds-c-button--inverse:disabled,
+.ds-c-button--inverse.ds-c-button--disabled {
+  background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
+}
+
+.ds-c-button--disabled-inverse,
+.ds-c-button--disabled-inverse:visited {
+  @extend .ds-c-button--inverse;
+  background-color: darken($color-background-inverse, 10%);
+  border-color: darken($color-background-inverse, 10%);
+  color: $color-muted-inverse;
+  pointer-events: none;
+}
+/* stylelint-enable */
+
+/**
+ *  Status variants
+ */
 .ds-c-button--primary,
 .ds-c-button--primary:visited {
   background-color: $button-primary-bg;
@@ -181,123 +312,3 @@
     color: $color-base;
   }
 }
-
-.ds-c-button--transparent,
-.ds-c-button--transparent:visited,
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  background-color: transparent;
-  border-color: transparent;
-  text-decoration: underline;
-
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: transparent;
-    border-color: transparent;
-    color: $color-gray-lighter;
-  }
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
-    text-decoration: none;
-  }
-}
-
-/*
-Inverse buttons
-*/
-.ds-c-button--inverse,
-.ds-c-button--inverse:visited {
-  background-color: $color-background-inverse;
-  border-color: $border-color-inverse;
-  color: $color-base-inverse;
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    color: $color-base-inverse;
-    opacity: 0.8;
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    opacity: 0.6;
-  }
-}
-
-/*
-Equivalent to ".ds-c-button--disabled-inverse"
-*/
-.ds-c-button--inverse:disabled,
-.ds-c-button--inverse.ds-c-button--disabled {
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
-  pointer-events: none;
-}
-
-/*
-Equivalent to ".ds-c-button--transparent-inverse"
-*/
-.ds-c-button--inverse.ds-c-button--transparent,
-.ds-c-button--inverse.ds-c-button--transparent:visited {
-  border-color: $color-background-inverse;
-
-  &:disabled,
-  &:focus,
-  &:hover,
-  &:active,
-  &.ds-c-button--disabled,
-  &.ds-c-button--focus,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: $color-background-inverse;
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
-    border-color: transparent;
-    box-shadow: $focus-shadow-link-inverse;
-    color: $color-base;
-    opacity: 1;
-  }
-}
-
-/* stylelint-disable */
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  @extend .ds-c-button--inverse;
-  border-color: $color-background-inverse;
-
-  &:disabled,
-  &:focus,
-  &:hover,
-  &:active,
-  &.ds-c-button--disabled,
-  &.ds-c-button--focus,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: $color-background-inverse;
-  }
-}
-
-.ds-c-button--disabled-inverse,
-.ds-c-button--disabled-inverse:visited {
-  @extend .ds-c-button--inverse;
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
-  pointer-events: none;
-}
-
-/* stylelint-enable */

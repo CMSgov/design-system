@@ -87,9 +87,7 @@ module.exports = (gulp, shared) => {
   // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
   // distribute them along with our Sass files
   gulp.task('sass:copy-vendor', () => {
-    const packages = [
-      './packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'
-    ];
+    const packages = ['./packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'];
 
     return gulp.src(packages).pipe(
       gulp.dest(file => {
@@ -108,10 +106,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('sass:process:docs', () =>
-    processSass(
-      'packages/docs/',
-      buildPath(shared.docsPath, shared.rootPath, '/public')
-    )
+    processSass('packages/docs/', buildPath(shared.docsPath, shared.rootPath, '/public'))
   );
 
   gulp.task('sass:add-version', () => {
@@ -124,10 +119,7 @@ module.exports = (gulp, shared) => {
           through.obj((file, encoding, cb) => {
             const name = file.path.match(/packages\/([a-z\-_]+)/i)[1];
             const version = packages[name];
-            const contents = String(file.contents).replace(
-              /{{version}}/,
-              version
-            );
+            const contents = String(file.contents).replace(/{{version}}/, version);
             file.contents = Buffer.from(contents);
             return cb(null, file);
           })

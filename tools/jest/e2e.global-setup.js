@@ -5,9 +5,7 @@ const childProcess = require('child_process');
 const APP_PORT = 3001;
 
 function buildApp() {
-  process.stdout.write(
-    chalk.green('\nBuilding docs site in production mode...\n')
-  );
+  process.stdout.write(chalk.green('\nBuilding docs site in production mode...\n'));
   childProcess.execSync('yarn build', {
     stdio: ['ignore', 'ignore', process.stderr]
   });
@@ -15,9 +13,7 @@ function buildApp() {
 }
 
 async function startServer() {
-  process.stdout.write(
-    chalk.green('\nStarting local server hosting production build...')
-  );
+  process.stdout.write(chalk.green('\nStarting local server hosting production build...'));
   const server = new StaticServer({
     rootPath: './docs',
     port: APP_PORT
@@ -36,9 +32,7 @@ module.exports = async function() {
     buildApp();
   } else {
     process.stdout.write('\n');
-    process.stdout.write(
-      chalk.yellow('Skipping build and using existing build instead ⚠️')
-    );
+    process.stdout.write(chalk.yellow('Skipping build and using existing build instead ⚠️'));
   }
   await startServer();
   process.stdout.write('\n\n');
