@@ -5,9 +5,7 @@ import classNames from 'classnames';
 class PageHeader extends React.PureComponent {
   uswdsLink() {
     if (this.props.uswds) {
-      return (
-        <a href={this.props.uswds}>View related U.S. Web Design Standard</a>
-      );
+      return <a href={this.props.uswds}>View related U.S. Web Design Standard</a>;
     }
   }
 

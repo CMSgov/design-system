@@ -111,9 +111,7 @@ describe('MonthPicker', () => {
   it('buttonVariation prop applied to buttons', () => {
     const { wrapper } = renderMonthPicker({ buttonVariation: 'primary' });
     const buttons = wrapper.find('Button');
-    buttons.forEach(button =>
-      expect(button.props().variation).toEqual('primary')
-    );
+    buttons.forEach(button => expect(button.props().variation).toEqual('primary'));
   });
 
   it('name prop propagates to all children', () => {
@@ -236,9 +234,7 @@ describe('MonthPicker', () => {
   });
 
   it('renders a snapshot', () => {
-    const tree = renderer
-      .create(<MonthPicker name="months" label="Months" locale="en" />)
-      .toJSON();
+    const tree = renderer.create(<MonthPicker name="months" label="Months" locale="en" />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

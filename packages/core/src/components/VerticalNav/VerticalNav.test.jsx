@@ -25,9 +25,7 @@ describe('VerticalNav', () => {
     expect(wrapper.hasClass('ds-c-vertical-nav')).toBe(true);
     expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
     expect(data.wrapper.hasClass('ds-u-display--none')).toBe(false);
-    expect(wrapper.find('VerticalNavItem').length).toBe(
-      data.props.items.length
-    );
+    expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
     expect(
       wrapper
         .find('VerticalNavItem')
@@ -124,21 +122,11 @@ describe('VerticalNav', () => {
       ]
     };
     const wrapper = mount(<VerticalNav {...props} />);
-    const parentWrapper = wrapper
-      .findWhere(n => n.prop('id') === 'parent')
-      .first();
-    const childWrapper = wrapper
-      .findWhere(n => n.prop('id') === 'child')
-      .first();
-    const grandchild1Wrapper = wrapper
-      .findWhere(n => n.prop('id') === 'grandchild-1')
-      .first();
-    const grandchild2Wrapper = wrapper
-      .findWhere(n => n.prop('id') === 'grandchild-2')
-      .first();
-    const fooWrapper = wrapper
-      .findWhere(n => n.prop('label') === 'Foo')
-      .first();
+    const parentWrapper = wrapper.findWhere(n => n.prop('id') === 'parent').first();
+    const childWrapper = wrapper.findWhere(n => n.prop('id') === 'child').first();
+    const grandchild1Wrapper = wrapper.findWhere(n => n.prop('id') === 'grandchild-1').first();
+    const grandchild2Wrapper = wrapper.findWhere(n => n.prop('id') === 'grandchild-2').first();
+    const fooWrapper = wrapper.findWhere(n => n.prop('label') === 'Foo').first();
 
     // Parents and self are selected
     expect(

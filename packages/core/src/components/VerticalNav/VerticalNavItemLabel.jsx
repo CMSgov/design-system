@@ -59,9 +59,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
       props = Object.assign(props, this.buttonProps());
     }
 
-    return (
-      <this.LabelComponent {...props}>{this.props.label}</this.LabelComponent>
-    );
+    return <this.LabelComponent {...props}>{this.props.label}</this.LabelComponent>;
   }
 }
 

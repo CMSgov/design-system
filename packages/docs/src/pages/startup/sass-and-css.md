@@ -40,12 +40,12 @@ Once your page is loading the design system's CSS, you can then begin applying i
 
 ```html
 <html>
-<head>
-  <link rel="stylesheet" src="/css/vendor/design-system-core/index.css" />
-</head>
-<body class="ds-base">
-  <h1 class="ds-u-font-size--title">Hello world</h1>
-</body>
+  <head>
+    <link rel="stylesheet" src="/css/vendor/design-system-core/index.css" />
+  </head>
+  <body class="ds-base">
+    <h1 class="ds-u-font-size--title">Hello world</h1>
+  </body>
 </html>
 ```
 

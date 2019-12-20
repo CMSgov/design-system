@@ -20,8 +20,7 @@ export class Choice extends React.PureComponent {
 
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
-    this.id =
-      this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
 
     if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
@@ -33,10 +32,7 @@ export class Choice extends React.PureComponent {
       // Event emitters are only relevant for uncontrolled radio buttons
       if (this.props.type === 'radio') {
         this.uncheckEventName = `${this.props.name}-uncheck`;
-        dsChoiceEmitter.on(
-          this.uncheckEventName,
-          this.handleUncheck.bind(this)
-        );
+        dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck.bind(this));
       }
     } else {
       this.isControlled = true;
@@ -123,11 +119,7 @@ export class Choice extends React.PureComponent {
           }}
           {...inputProps}
         />
-        <FormLabel
-          fieldId={this.id}
-          hint={hint}
-          requirementLabel={requirementLabel}
-        >
+        <FormLabel fieldId={this.id} hint={hint} requirementLabel={requirementLabel}>
           {children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}

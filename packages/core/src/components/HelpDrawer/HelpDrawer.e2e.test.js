@@ -1,9 +1,5 @@
 /* global driver */
-import {
-  getElementByClassName,
-  getElementById,
-  getElementByXPath
-} from '../../helpers/e2e';
+import { getElementByClassName, getElementById, getElementByXPath } from '../../helpers/e2e';
 import { ROOT_URL } from '../../helpers/e2e/constants';
 import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
 
