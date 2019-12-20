@@ -136,9 +136,8 @@
   }
 }
 
-/* Equivalent to ".ds-c-button--transparent-inverse" */
-.ds-c-button--inverse.ds-c-button--transparent,
-.ds-c-button--inverse.ds-c-button--transparent:visited {
+/* stylelint-disable */
+%transparent-inverse-button {
   border-color: $color-background-inverse;
 
   &:disabled,
@@ -157,44 +156,41 @@
   }
 }
 
-/* stylelint-disable */
+.ds-c-button--inverse.ds-c-button--transparent,
+.ds-c-button--inverse.ds-c-button--transparent:visited {
+  @extend %transparent-inverse-button;
+}
+
+/**
+ *  Not recommended usage
+ *  Equivalent to ".ds-c-button--inverse.ds-c-button--transparent" 
+ */
 .ds-c-button--transparent-inverse,
 .ds-c-button--transparent-inverse:visited {
   @extend .ds-c-button--inverse;
-  border-color: $color-background-inverse;
-
-  &:disabled,
-  &:hover,
-  &:active,
-  &.ds-c-button--disabled,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: $color-background-inverse;
-  }
-
-  // Default inverse focus styles are overridden above
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
-  }
+  @extend %transparent-inverse-button;
 }
 
-/* Equivalent to ".ds-c-button--disabled-inverse" */
-.ds-c-button--inverse:disabled,
-.ds-c-button--inverse.ds-c-button--disabled {
+%disabled-inverse-button {
   background-color: darken($color-background-inverse, 10%);
   border-color: darken($color-background-inverse, 10%);
   color: $color-muted-inverse;
   pointer-events: none;
 }
 
+.ds-c-button--inverse:disabled,
+.ds-c-button--inverse.ds-c-button--disabled {
+  @extend %disabled-inverse-button;
+}
+
+/**
+ *  Not recommended usage
+ *  Equivalent to ".ds-c-button--inverse.ds-c-button--disabled" 
+ */
 .ds-c-button--disabled-inverse,
 .ds-c-button--disabled-inverse:visited {
   @extend .ds-c-button--inverse;
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
-  pointer-events: none;
+  @extend %disabled-inverse-button;
 }
 /* stylelint-enable */
 
@@ -259,9 +255,13 @@
   &:active,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    background-color: $color-error-dark;
     border-color: transparent;
     color: $color-white;
+  }
+
+  &:hover,
+  &.ds-c-button--hover {
+    background-color: $color-error-dark;
   }
 
   &:active,
@@ -295,9 +295,13 @@
   &:active,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    background-color: $color-success-dark;
     border-color: transparent;
     color: $color-white;
+  }
+
+  &:hover,
+  &.ds-c-button--hover {
+    background-color: $color-success-dark;
   }
 
   &:active,
