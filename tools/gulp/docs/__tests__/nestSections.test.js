@@ -21,8 +21,8 @@ describe('nestSections', () => {
         }
       },
       {
-        header: 'buttons.secondary',
-        reference: 'components.buttons.secondary',
+        header: 'buttons.success',
+        reference: 'components.buttons.success',
         source: {
           line: 2
         }
@@ -35,8 +35,8 @@ describe('nestSections', () => {
         }
       },
       {
-        header: 'buttons.tertiary',
-        reference: 'components.buttons.tertiary',
+        header: 'buttons.danger',
+        reference: 'components.buttons.danger',
         source: {
           line: 3
         }
@@ -150,8 +150,8 @@ describe('nestSections', () => {
 
     expect(buttonSection.sections.length).toBe(3);
     expect(buttonSection.sections[0].reference).toBe('components.buttons.primary');
-    expect(buttonSection.sections[1].reference).toBe('components.buttons.secondary');
-    expect(buttonSection.sections[2].reference).toBe('components.buttons.tertiary');
+    expect(buttonSection.sections[1].reference).toBe('components.buttons.success');
+    expect(buttonSection.sections[2].reference).toBe('components.buttons.danger');
   });
 
   it('removes line number prop', () => {
