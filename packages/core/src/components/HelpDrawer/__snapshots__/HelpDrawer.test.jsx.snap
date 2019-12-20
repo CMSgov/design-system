@@ -18,7 +18,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       </h3>
       <button
         aria-label="Close help drawer"
-        className="ds-c-button ds-c-button--secondary ds-c-button--small ds-u-margin-left--auto"
+        className="ds-c-button ds-c-button--small ds-u-margin-left--auto"
         onClick={[Function]}
         type="button"
       >
