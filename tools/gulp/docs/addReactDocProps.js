@@ -16,16 +16,12 @@ module.exports = function(pages, dataPath) {
     pages.forEach(page => {
       if (page.reactComponent || page.reactExample) {
         if (page.reactComponent) {
-          const componentPath = `${reactPathFromSource(
-            page.source.path,
-            page.reactComponent
-          )}.jsx`;
+          const componentPath = `${reactPathFromSource(page.source.path, page.reactComponent)}.jsx`;
           const componentData = data[componentPath];
 
           page.reactComponentPath = componentPath;
           // There should only ever be one exported component definition
-          page.reactComponentDocs =
-            componentData && componentData.length ? componentData[0] : null;
+          page.reactComponentDocs = componentData && componentData.length ? componentData[0] : null;
         }
 
         const examplePath = formExamplePath(page);
@@ -46,10 +42,7 @@ module.exports = function(pages, dataPath) {
  *  React component's example. Relative to packages/
  */
 function formExamplePath(page) {
-  let examplePath = reactPathFromSource(
-    page.source.path,
-    page.reactExample || page.reactComponent
-  );
+  let examplePath = reactPathFromSource(page.source.path, page.reactExample || page.reactComponent);
 
   // Provide support to pass in a component with or without the extension
   examplePath = examplePath.replace(/\.example\.jsx$/, '');

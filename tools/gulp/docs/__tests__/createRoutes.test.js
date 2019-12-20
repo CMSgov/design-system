@@ -27,9 +27,7 @@ describe('createRoutes', () => {
 
     expect(Object.keys(page)).toEqual(expect.arrayContaining(expectedProps));
     // Nested sections also get processed
-    expect(Object.keys(page.items[0])).toEqual(
-      expect.arrayContaining(expectedProps)
-    );
+    expect(Object.keys(page.items[0])).toEqual(expect.arrayContaining(expectedProps));
   });
 
   it('removes 404 page', () => {

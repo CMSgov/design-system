@@ -32,9 +32,8 @@ This project uses `yarn` to manage Node packages. If you're already set up', ski
 
 4. You should now be able to navigate to `examples/webpack-demo/dist/index.html`, which you can open in any browser. Changes you make to the files in `examples/webpack-demo/src` will be picked up by Webpack and recompiled, and if you refresh the browser those changes should be visible.
 
-
 ### Go forth and edit!
 
 You can add `html` files inside the `pages` directory to build bigger sites, add more CSS or SCSS files, images, fonts, what have you. This is the very basic scaffolding one might need to build bigger. If you get stuck or need help, feel free to file a Github issue: https://github.com/CMSgov/design-system/issues.
 
-*A quick note:* This demo is having some trouble with loading fonts. If you solve the problem, please let us know!
+_A quick note:_ This demo is having some trouble with loading fonts. If you solve the problem, please let us know!

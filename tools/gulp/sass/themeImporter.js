@@ -10,13 +10,7 @@ const path = require('path');
  *                   directory, or null if the file doesn't exist
  */
 function filePath(themeDirectory, filename) {
-  return path.join(
-    __dirname,
-    '../../../packages',
-    themeDirectory,
-    'src',
-    filename
-  );
+  return path.join(__dirname, '../../../packages', themeDirectory, 'src', filename);
 }
 
 /**

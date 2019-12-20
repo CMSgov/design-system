@@ -10,9 +10,7 @@ require('prismjs/components/prism-scss');
 
 const markdownRenderer = new marked.Renderer();
 
-Prism.languages.bash[
-  'function'
-].pattern = /(^|\s|;|\||&)(?:npm|yarn|install)(?=$|\s|;|\||&)/;
+Prism.languages.bash['function'].pattern = /(^|\s|;|\||&)(?:npm|yarn|install)(?=$|\s|;|\||&)/;
 
 function highlightCode(code, lang) {
   lang = lang === 'html' ? 'markup' : lang;

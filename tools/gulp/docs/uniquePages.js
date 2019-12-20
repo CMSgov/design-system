@@ -8,10 +8,7 @@ function uniquePages(pages) {
 
   pages.forEach(page => {
     // Use reference since referenceURI may sometimes be blank
-    if (
-      routes[page.reference] &&
-      !page.source.path.match(/^packages\/themes\//)
-    ) {
+    if (routes[page.reference] && !page.source.path.match(/^packages\/themes\//)) {
       // Only overwrite the page if the page is coming from a theme file
       return;
     }
