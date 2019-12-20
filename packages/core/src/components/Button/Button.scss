@@ -39,7 +39,7 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
+    background-color: $color-focus;
     border-bottom-color: transparent;
     border-color: $color-base;
     box-shadow: $focus-shadow-link;
@@ -128,7 +128,7 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
+    background-color: $color-focus;
     border-color: transparent;
     box-shadow: $focus-shadow-link-inverse;
     color: $color-base;
@@ -197,122 +197,52 @@
 /**
  *  Status variants
  */
-.ds-c-button--primary,
-.ds-c-button--primary:visited {
-  background-color: $button-primary-bg;
-  border-color: transparent;
-  color: $color-white;
+$button-color-variants: (
+  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $color-focus,
+  success: $color-success $color-success-dark $color-success-darker $color-focus,
+  danger: $color-error $color-error-dark $color-error-darkest $color-focus,
+);
 
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-    pointer-events: none;
-  }
+@each $colors in map-keys($button-color-variants) {
+  $color: map-get($button-color-variants, $colors);
 
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
+  .ds-c-button--#{$colors},
+  .ds-c-button--#{$colors}:visited {
+    background-color: nth($color, 1);
     border-color: transparent;
     color: $color-white;
-  }
 
-  &:hover,
-  &.ds-c-button--hover {
-    background-color: $button-primary-bg--hover;
-  }
+    &:disabled,
+    &.ds-c-button--disabled {
+      background-color: $color-gray-lighter;
+      border-color: transparent;
+      color: $color-gray-dark;
+      pointer-events: none;
+    }
 
-  &:active,
-  &.ds-c-button--active {
-    background-color: $button-primary-bg--active;
-  }
+    &:hover,
+    &:active,
+    &.ds-c-button--hover,
+    &.ds-c-button--active {
+      border-color: transparent;
+      color: $color-white;
+    }
 
-  &:focus,
-  &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
-    border-color: transparent;
-    color: $color-base;
-  }
-}
+    &:hover,
+    &.ds-c-button--hover {
+      background-color: nth($color, 2);
+    }
 
-.ds-c-button--danger,
-.ds-c-button--danger:visited {
-  background-color: $color-error;
-  border-color: transparent;
-  color: $color-white;
+    &:active,
+    &.ds-c-button--active {
+      background-color: nth($color, 3);
+    }
 
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-    pointer-events: none;
-  }
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-    color: $color-white;
-  }
-
-  &:hover,
-  &.ds-c-button--hover {
-    background-color: $color-error-dark;
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    background-color: $color-error-darkest;
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
-    border-color: transparent;
-    color: $color-base;
-  }
-}
-
-.ds-c-button--success,
-.ds-c-button--success:visited {
-  background-color: $color-success;
-  border-color: transparent;
-  color: $color-white;
-
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-    pointer-events: none;
-  }
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-    color: $color-white;
-  }
-
-  &:hover,
-  &.ds-c-button--hover {
-    background-color: $color-success-dark;
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    background-color: $color-success-darker;
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    background-color: $button-primary-bg--focus;
-    border-color: transparent;
-    color: $color-base;
+    &:focus,
+    &.ds-c-button--focus {
+      background-color: nth($color, 4);
+      border-color: transparent;
+      color: $color-base;
+    }
   }
 }
