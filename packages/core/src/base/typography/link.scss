@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 @import '@cmsgov/design-system-support/src/settings/index';
 
 @if $ds-include-base-html-rulesets {
@@ -40,3 +41,4 @@
     color: #cfd5dc;
   }
 }
+/* stylelint-enable */
