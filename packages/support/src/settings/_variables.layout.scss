@@ -54,6 +54,7 @@ $breakpoints: (
 ) !default;
 
 // Borders
+$border-radius: 3px !default;
 $border-radius-circle: 100%;
 $border-radius-pill: 9999px;
 
@@ -64,3 +65,15 @@ $grid-form-gutter-width: $spacer-2 !default;
 
 // Z-index
 $z-dialog: 1000 !default;
+
+// Site variables
+$site-margins: 3rem !default;
+$site-margins-mobile: 1.5rem !default;
+$site-max-width: 1040px !default;
+$text-max-width: 53rem !default;
+$lead-max-width: 77rem !default;
+$article-max-width: 600px !default;
+$nav-width: 951px !default;
+
+// 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
+$hit-area: 4.4rem !default;
