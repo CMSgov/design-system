@@ -45,7 +45,7 @@
     "cssnano": "4.1.10",
     "cssstats": "3.3.0",
     "del": "^3.0.0",
-    "ejs": "2.6.2",
+    "ejs": "^3.0.1",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "enzyme-to-json": "3.3.5",
