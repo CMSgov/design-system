@@ -136,6 +136,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.6.3":
+  version "7.7.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.7.tgz#194769ca8d6d7790ec23605af9ee3e42a0aa79cf"
+  integrity sha512-uCnC2JEVAu8AKB5do1WRIsvrdJ0flYx/A/9f/6chdacnEZ7LmavjdsDXr5ksYBegxtuTPR5Va9/+13QF/kFkCA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.1.2.tgz#090484a574fef5a2d2d7726a674eceda5c5b5644"
@@ -6995,9 +7002,10 @@ known-css-properties@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.14.0.tgz#d7032b4334a32dc22e6e46b081ec789daf18756c"
 
-kss@^3.0.0-beta.18:
-  version "3.0.0-beta.23"
-  resolved "https://registry.yarnpkg.com/kss/-/kss-3.0.0-beta.23.tgz#79706dd1b5e80e43d951b855be8a797442722b07"
+kss@^3.0.0-beta.25:
+  version "3.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/kss/-/kss-3.0.0-beta.25.tgz#bf3607b21dc06d56fc84dd66779c941b83f335b9"
+  integrity sha512-jF8zh0HXUZfcysCyyKsftWyLAXkRh1Qt7ikd6WgmfKVhMRygq0x0YUFzTRB/SB57jSyk1DybbfopmFutY6Qo6Q==
   dependencies:
     bluebird "^3.3.3"
     fs-extra "^7.0.0"
@@ -7007,7 +7015,7 @@ kss@^3.0.0-beta.18:
     markdown-it "^8.4.1"
     nunjucks "^3.0.1"
     resolve "^1.6.0"
-    twig "^1.10.4"
+    twig "^1.13.0"
     twig-drupal-filters "^2.0.0"
     yargs "^12.0.1"
 
@@ -11718,10 +11726,20 @@ twig-drupal-filters@^2.0.0:
     slugg "^1.2.1"
     twig "^1.12.0"
 
-twig@^1.10.4, twig@^1.10.5, twig@^1.12.0:
+twig@^1.10.5, twig@^1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/twig/-/twig-1.12.0.tgz#04450bf18ee05532ff70098f10b07227f956b8cf"
   dependencies:
+    locutus "^2.0.5"
+    minimatch "3.0.x"
+    walk "2.3.x"
+
+twig@^1.13.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/twig/-/twig-1.14.0.tgz#64b64d4dae3e34c157f356a270d7dfff9ee3aa0c"
+  integrity sha512-ut1LslUKAeF56TYQglabJaATUqbNuGO3EcXDhUspAdNbxez5VwTk2n8H00V0VfNy9Scet+VGQP8oPxt4v6mykQ==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
     locutus "^2.0.5"
     minimatch "3.0.x"
     walk "2.3.x"
