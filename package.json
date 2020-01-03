@@ -87,7 +87,7 @@
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
     "run-sequence": "^2.2.0",
-    "selenium-webdriver": "4.0.0-alpha.1",
+    "selenium-webdriver": "4.0.0-alpha.5",
     "static-server": "^2.2.1",
     "stylelint": "10.1.0",
     "stylelint-config-prettier": "^2.1.0",
