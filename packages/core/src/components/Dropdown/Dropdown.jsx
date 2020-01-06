@@ -32,6 +32,7 @@ export class Dropdown extends React.PureComponent {
   render() {
     /* eslint-disable prefer-const */
     const {
+      ariaLabel,
       className,
       errorMessage,
       fieldClassName,
@@ -77,6 +78,7 @@ export class Dropdown extends React.PureComponent {
           {label}
         </FormLabel>
         <select
+          aria-label={ariaLabel}
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
