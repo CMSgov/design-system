@@ -11,17 +11,12 @@
   a {
     color: $color-primary;
 
-    &:hover {
-      color: $color-primary-darker;
-    }
-
-    &:active {
-      color: $color-primary-darkest;
-      outline: 0 none;
-    }
-
     &:visited {
       color: $color-visited;
+    }
+
+    &:hover {
+      color: $color-primary-darker;
     }
 
     &:focus,
@@ -32,6 +27,11 @@
       outline: 3px solid transparent;
       text-decoration: none;
     }
+
+    &:active {
+      color: $color-primary-darkest;
+      outline: 0 none;
+    }
   }
 }
 
@@ -41,8 +41,8 @@
   color: $color-base-inverse;
 
   &:visited,
-  &:active,
-  &:hover {
+  &:hover,
+  &:active {
     // :visited links can only style color, not opacity. This color styling is equivalent to:
     // color: $color-base-inverse;
     // opacity: 0.8;
