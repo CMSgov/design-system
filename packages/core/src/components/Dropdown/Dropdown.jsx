@@ -96,8 +96,8 @@ export class Dropdown extends React.PureComponent {
           /* eslint-enable no-return-assign */
           {...selectProps}
         >
-          {optionElements}
-          {children}
+          {/* Render custom options if provided */
+          children || optionElements}
         </select>
       </div>
     );
