@@ -23,20 +23,6 @@
     color: $color-primary-darker;
   }
 
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-white;
-    border-color: $color-gray-lighter;
-    color: $color-gray-lighter;
-    pointer-events: none;
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    border-color: $color-primary-darkest;
-    color: $color-primary-darkest;
-  }
-
   &:focus,
   &.ds-c-button--focus {
     background-color: $color-focus;
@@ -51,6 +37,27 @@
   // Removes inner outline on buttons in Firefox.
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &:active,
+  &.ds-c-button--active {
+    border-color: $color-primary-darkest;
+    color: $color-primary-darkest;
+  }
+
+  // Make sure we can see an active class when it's also focused.
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-white;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-white;
+    border-color: $color-gray-lighter;
+    color: $color-gray-lighter;
+    pointer-events: none;
   }
 }
 
@@ -82,11 +89,10 @@
   border-color: transparent;
   text-decoration: underline;
 
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: transparent;
+  &:focus,
+  &.ds-c-button--focus {
     border-color: transparent;
-    color: $color-gray-lighter;
+    text-decoration: none;
   }
 
   &:hover,
@@ -96,10 +102,17 @@
     border-color: transparent;
   }
 
-  &:focus,
-  &.ds-c-button--focus {
+  // Make sure the active class is visible when it's also focused.
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    color: $color-primary-darkest;
+  }
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: transparent;
     border-color: transparent;
-    text-decoration: none;
+    color: $color-gray-lighter;
   }
 }
 
@@ -120,12 +133,6 @@
     color: rgba($color-base-inverse, 0.8);
   }
 
-  &:active,
-  &.ds-c-button--active {
-    border-color: rgba($border-color-inverse, 0.6);
-    color: rgba($color-base-inverse, 0.6);
-  }
-
   &:focus,
   &.ds-c-button--focus {
     background-color: $color-focus;
@@ -134,11 +141,30 @@
     color: $color-base;
     opacity: 1;
   }
+
+  &:active,
+  &.ds-c-button--active {
+    border-color: rgba($border-color-inverse, 0.6);
+    color: rgba($color-base-inverse, 0.6);
+  }
+
+  // Make sure the active class is visible when it's also focused.
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-background-inverse;
+    color: rgba($color-base-inverse, 0.6);
+  }
 }
 
 /* stylelint-disable */
 %transparent-inverse-button {
   border-color: $color-background-inverse;
+
+  // Default inverse focus styles are overridden above
+  &:focus,
+  &.ds-c-button--focus {
+    border-color: transparent;
+  }
 
   &:disabled,
   &:hover,
@@ -147,12 +173,6 @@
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: $color-background-inverse;
-  }
-
-  // Default inverse focus styles are overridden above
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
   }
 }
 
@@ -233,16 +253,24 @@ $button-color-variants: (
       background-color: nth($color, 2);
     }
 
-    &:active,
-    &.ds-c-button--active {
-      background-color: nth($color, 3);
-    }
-
     &:focus,
     &.ds-c-button--focus {
       background-color: nth($color, 4);
       border-color: transparent;
       color: $color-base;
+    }
+
+    &:active,
+    &.ds-c-button--active {
+      background-color: nth($color, 3);
+    }
+
+    // Make sure the active class is visible when it's also focused.
+    &:active:focus,
+    &.ds-c-button--active:focus {
+      background-color: nth($color, 3);
+      box-shadow: none;
+      color: $color-white;
     }
   }
 }
