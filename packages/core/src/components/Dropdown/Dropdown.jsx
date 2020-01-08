@@ -33,6 +33,7 @@ export class Dropdown extends React.PureComponent {
     /* eslint-disable prefer-const */
     const {
       className,
+      children,
       errorMessage,
       fieldClassName,
       fieldRef,
@@ -96,6 +97,7 @@ export class Dropdown extends React.PureComponent {
           {...selectProps}
         >
           {optionElements}
+          {children}
         </select>
       </div>
     );
@@ -111,6 +113,10 @@ Dropdown.propTypes = {
    * Additional classes to be added to the root element.
    */
   className: PropTypes.string,
+  /**
+   * Optional prop for defining custom dropdown options
+   */
+  children: PropTypes.node,
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
