@@ -18,10 +18,10 @@ Some other design systems user abstract and condensed naming conventions (ie. "`
 
 Here are a few examples of how the design system favors clarity over succinctness with its CSS class names:
 
-| Design system (Good) | Abstract names (Bad) | Description |
-| ---------------------- | ----- | ----- |
-| 👍 `ds-u-margin-right--1` | 🙅 `mr1` | A utility class, applies a right margin that is 1x the baseline |
-| 👍 `ds-c-button` | 🙅 `btn` | A button component |
+| Design system (Good)      | Abstract names (Bad) | Description                                                     |
+| ------------------------- | -------------------- | --------------------------------------------------------------- |
+| 👍 `ds-u-margin-right--1` | 🙅 `mr1`             | A utility class, applies a right margin that is 1x the baseline |
+| 👍 `ds-c-button`          | 🙅 `btn`             | A button component                                              |
 
 ## Favor generalized names
 

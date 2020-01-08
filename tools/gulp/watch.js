@@ -15,22 +15,14 @@ module.exports = (gulp, shared) => {
     gulp.watch(['packages/core/src/images/*'], ['docs:images']);
 
     // Sass files
-    gulp.watch(`packages/${packages}/src/**/*.scss`, [
-      'sass:process:docs',
-      'docs:generate-pages'
-    ]);
+    gulp.watch(`packages/${packages}/src/**/*.scss`, ['sass:process:docs', 'docs:generate-pages']);
 
     // HTML/EJS examples
-    gulp.watch(`packages/**/src/**/*.example.{ejs,html}`, [
-      'docs:generate-pages'
-    ]);
+    gulp.watch(`packages/**/src/**/*.example.{ejs,html}`, ['docs:generate-pages']);
 
     // React components and examples
     gulp.watch(
-      [
-        `packages/${packages}/src/**/*.{js,jsx}`,
-        `!packages/${packages}/src/**/*.test.{js,jsx}`
-      ],
+      [`packages/${packages}/src/**/*.{js,jsx}`, `!packages/${packages}/src/**/*.test.{js,jsx}`],
       () => {
         runSequence('docs:react', 'docs:generate-pages');
       }

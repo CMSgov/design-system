@@ -11,13 +11,7 @@ export const Spinner = props => {
     props.className
   );
 
-  return (
-    <span
-      className={className}
-      aria-valuetext={props['aria-valuetext']}
-      role={props.role}
-    />
-  );
+  return <span className={className} aria-valuetext={props['aria-valuetext']} role={props.role} />;
 };
 
 Spinner.propTypes = {

@@ -10,9 +10,7 @@ const Example = function() {
   return (
     <div>
       <Alert heading="Hello world">
-        <p className="ds-c-alert__text">
-          You did it! You&rsquo;ve ran the example.
-        </p>
+        <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
         <Button className="ds-u-margin-top--2">Learn more</Button>
       </Alert>
     </div>

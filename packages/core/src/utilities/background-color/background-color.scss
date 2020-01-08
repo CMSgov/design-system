@@ -35,29 +35,8 @@
   background-color: $color-primary-alt-lightest !important;
 }
 
-// secondary
-.ds-u-fill--secondary {
-  background-color: $color-secondary !important;
-}
-
-.ds-u-fill--secondary-dark {
-  background-color: $color-secondary-dark !important;
-}
-
-.ds-u-fill--secondary-darkest {
-  background-color: $color-secondary-darkest !important;
-}
-
-.ds-u-fill--secondary-light {
-  background-color: $color-secondary-light !important;
-}
-
-.ds-u-fill--secondary-lightest {
-  background-color: $color-secondary-lightest !important;
-}
-
 // gray
-.ds-u-fill--gray {
+.ds-u-fill--gray{
   background-color: $color-gray !important;
 }
 
@@ -75,6 +54,9 @@
 
 .ds-u-fill--gray-lightest {
   background-color: $color-gray-lightest !important;
+}
+.ds-u-fill--muted-inverse {
+  background-color: $color-muted-inverse !important;
 }
 
 // gold
@@ -109,6 +91,23 @@
 
 .ds-u-fill--green-lightest {
   background-color: $color-green-lightest !important;
+}
+
+// red
+.ds-u-fill--red {
+  background-color: $color-red !important;
+}
+
+.ds-u-fill--red-light {
+  background-color: $color-red-light !important;
+}
+
+.ds-u-fill--red-lighter {
+  background-color: $color-red-lighter !important;
+}
+
+.ds-u-fill--red-lightest {
+  background-color: $color-red-lightest !important;
 }
 
 // state colors
@@ -175,6 +174,10 @@
 
 .ds-u-fill--white {
   background-color: $color-white !important;
+}
+
+.ds-u-fill--black {
+  background-color: $color-black !important;
 }
 
 .ds-u-fill--background {

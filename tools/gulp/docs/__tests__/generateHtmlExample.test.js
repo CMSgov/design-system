@@ -23,12 +23,7 @@ describe('generateHtmlExample', () => {
 
   describe('with modifier', () => {
     it('generates correctly', async function() {
-      const output = await generateHtmlExample(
-        pageData,
-        { name: 'secondary' },
-        'docs',
-        ''
-      );
+      const output = await generateHtmlExample(pageData, { name: 'primary' }, 'docs', '');
       expect(output).toMatchSnapshot();
     });
   });

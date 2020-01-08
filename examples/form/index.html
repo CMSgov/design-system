@@ -1,81 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Design System</title>
-  <link rel="stylesheet" href="../../packages/core/dist/index.css" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="ds-base">
-  <div class="ds-u-margin-y--5 container">
-    <h1 class="ds-h1">Report an issue</h1>
-    <p class="ds-text ds-u-measure--base">Please fill out the fields below to report your issue. After you've reported an issue, you'll receive a response within 24 hours.</p>
+  <head>
+    <meta charset="utf-8" />
+    <title>Design System</title>
+    <link rel="stylesheet" href="../../packages/core/dist/index.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="ds-base">
+    <div class="ds-u-margin-y--5 container">
+      <h1 class="ds-h1">Report an issue</h1>
+      <p class="ds-text ds-u-measure--base">
+        Please fill out the fields below to report your issue. After you've reported an issue,
+        you'll receive a response within 24 hours.
+      </p>
 
-    <div class="ds-c-alert ds-c-alert--error">
-      <div class="ds-c-alert__body">
-        <h2 class="ds-c-alert__heading">1 error with your application</h2>
-        <p class="ds-c-alert__text">Please enter your last name.</p>
+      <div class="ds-c-alert ds-c-alert--error">
+        <div class="ds-c-alert__body">
+          <h2 class="ds-c-alert__heading">1 error with your application</h2>
+          <p class="ds-c-alert__text">Please enter your last name.</p>
+        </div>
       </div>
+
+      <form>
+        <label class="ds-c-label" for="input-firstname">First name</label>
+        <input class="ds-c-field" id="input-firstname" name="firstname" type="text" />
+
+        <label class="ds-c-label" for="input-lastname">
+          <strong>Last name</strong>
+
+          <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
+            A last name is required
+          </span>
+        </label>
+        <input
+          class="ds-c-field ds-c-field--error"
+          id="input-lastname"
+          name="lastname"
+          type="text"
+        />
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label">Which days can we call you?</legend>
+          <span class="ds-c-field__hint">Select all days that would work for you</span>
+
+          <input class="ds-c-choice" id="input-monday" type="checkbox" name="day" value="monday" />
+          <label for="input-monday">Monday</label>
+
+          <input
+            class="ds-c-choice"
+            id="input-tuesday"
+            type="checkbox"
+            name="day"
+            value="tuesday"
+          />
+          <label for="input-tuesday">Tuesday</label>
+
+          <input
+            class="ds-c-choice"
+            id="input-wednesday"
+            type="checkbox"
+            name="day"
+            value="wednesday"
+          />
+          <label for="input-wednesday">Wednesday</label>
+
+          <input
+            class="ds-c-choice"
+            id="input-thursday"
+            type="checkbox"
+            name="day"
+            value="thursday"
+          />
+          <label for="input-thursday">Thursday</label>
+
+          <input class="ds-c-choice" id="input-friday" type="checkbox" name="day" value="friday" />
+          <label for="input-friday">Friday</label>
+        </fieldset>
+
+        <label class="ds-c-label" for="input-description">Describe your issue</label>
+        <textarea class="ds-c-field" id="input-description" name="description" rows="6"></textarea>
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label">Have you contacted us about this issue before?</legend>
+
+          <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes" />
+          <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes">Yes</label>
+
+          <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no" />
+          <label class="ds-u-display--inline-block" for="input-no">No</label>
+        </fieldset>
+
+        <button class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit">
+          <span id="spinner" class="ds-c-spinner ds-u-display--none"></span>
+          Report issue
+        </button>
+        <a class="ds-c-button" href="#">Cancel</a>
+      </form>
     </div>
-
-    <form>
-      <label class="ds-c-label" for="input-firstname">First name</label>
-      <input class="ds-c-field" id="input-firstname" name="firstname" type="text" />
-
-      <label class="ds-c-label" for="input-lastname">
-        <strong>Last name</strong>
-
-        <span class="ds-c-field__hint ds-u-color--error" id="input-lastname-message" role="alert">
-          A last name is required
-        </span>
-      </label>
-      <input class="ds-c-field ds-c-field--error" id="input-lastname" name="lastname" type="text" />
-
-      <fieldset class="ds-c-fieldset">
-        <legend class="ds-c-label">Which days can we call you?</legend>
-        <span class="ds-c-field__hint">Select all days that would work for you</span>
-
-        <input class="ds-c-choice" id="input-monday" type="checkbox" name="day" value="monday">
-        <label for="input-monday">Monday</label>
-
-        <input class="ds-c-choice" id="input-tuesday" type="checkbox" name="day" value="tuesday">
-        <label for="input-tuesday">Tuesday</label>
-
-        <input class="ds-c-choice" id="input-wednesday" type="checkbox" name="day" value="wednesday">
-        <label for="input-wednesday">Wednesday</label>
-
-        <input class="ds-c-choice" id="input-thursday" type="checkbox" name="day" value="thursday">
-        <label for="input-thursday">Thursday</label>
-
-        <input class="ds-c-choice" id="input-friday" type="checkbox" name="day" value="friday">
-        <label for="input-friday">Friday</label>
-      </fieldset>
-
-      <label class="ds-c-label" for="input-description">Describe your issue</label>
-      <textarea class="ds-c-field" id="input-description" name="description" rows="6"></textarea>
-
-      <fieldset class="ds-c-fieldset">
-        <legend class="ds-c-label">Have you contacted us about this issue before?</legend>
-
-        <input class="ds-c-choice" id="input-yes" type="radio" name="duplicate" value="yes">
-        <label class="ds-u-display--inline-block ds-u-margin-right--3" for="input-yes">Yes</label>
-
-        <input class="ds-c-choice" id="input-no" type="radio" name="duplicate" value="no">
-        <label class="ds-u-display--inline-block" for="input-no">No</label>
-      </fieldset>
-
-      <button class="ds-c-button ds-c-button--primary ds-u-margin-top--3" type="submit">
-        <span id="spinner" class="ds-c-spinner ds-u-display--none"></span>
-        Report issue
-      </button>
-      <a class="ds-c-button" href="#">Cancel</a>
-    </form>
-  </div>
-  <script>
-    document.querySelector("form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.querySelector("#spinner").classList.toggle("ds-u-display--none");
-    });
-  </script>
-</body>
+    <script>
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.querySelector('#spinner').classList.toggle('ds-u-display--none');
+      });
+    </script>
+  </body>
 </html>

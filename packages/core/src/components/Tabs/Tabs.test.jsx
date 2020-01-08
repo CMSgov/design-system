@@ -13,9 +13,7 @@ function render(customProps = {}, children, deep) {
   const props = Object.assign({}, customProps);
 
   if (!children) {
-    children = (
-      <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>
-    );
+    children = <TabPanel {...defaultPanelProps}>{defaultPanelChildren}</TabPanel>;
   }
 
   return {
@@ -44,9 +42,7 @@ describe('Tabs', function() {
 
     expect(tabs.length).toBe(1);
     expect(tabs.first().hasClass('bar')).toBe(true);
-    expect(tabs.first().prop('id')).toBe(
-      `ds-c-tabs__item--${defaultPanelProps.id}`
-    );
+    expect(tabs.first().prop('id')).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
     expect(tabs.first().prop('panelId')).toBe(defaultPanelProps.id);
     expect(tabs.first().prop('href')).toBe('/foo');
     expect(
@@ -63,9 +59,7 @@ describe('Tabs', function() {
 
     expect(panels.length).toBe(1);
     expect(panels.first().prop('id')).toBe(defaultPanelProps.id);
-    expect(panels.first().prop('tabId')).toBe(
-      `ds-c-tabs__item--${defaultPanelProps.id}`
-    );
+    expect(panels.first().prop('tabId')).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
   });
 
   it('adds additional class names to tablist', () => {

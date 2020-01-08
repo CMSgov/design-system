@@ -18,11 +18,7 @@ function generateReactExample(page, docsPath, rootPath) {
       rootPath = `${rootPath}/`;
     }
 
-    const examplePath = path.resolve(
-      __dirname,
-      '../../../packages',
-      page.reactExamplePath
-    );
+    const examplePath = path.resolve(__dirname, '../../../packages', page.reactExamplePath);
 
     const compiler = createWebpackCompiler(examplePath);
     // Compile file to memory

@@ -103,9 +103,7 @@ function processFlags(section) {
 }
 
 function hrefUrl(str) {
-  const match = str.match(
-    /href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/
-  );
+  const match = str.match(/href="(https?:\/\/[a-zA-Z0-9-.]+\.[a-zA-Z]{2,3}\/\S*)"/);
   if (match) return match[1];
   return str;
 }

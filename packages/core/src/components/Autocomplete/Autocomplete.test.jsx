@@ -123,12 +123,7 @@ describe('Autocomplete', () => {
 
   it('renders a snapshot', () => {
     const tree = renderer
-      .create(
-        <Autocomplete
-          items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]}
-          clearInput
-        />
-      )
+      .create(<Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

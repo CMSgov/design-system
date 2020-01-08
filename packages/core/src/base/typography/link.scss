@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 @import '@cmsgov/design-system-support/src/settings/index';
 
 @if $ds-include-base-html-rulesets {
@@ -24,3 +25,19 @@
     }
   }
 }
+
+// Change color of links that are descendants of .ds-base--inverse
+.ds-base--inverse a {
+  color: $color-base-inverse;
+
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
+    // :visited links can only style color, not opacity. This color styling is equivalent to:
+    // color: $color-base-inverse;
+    // opacity: 0.8;
+    color: #cfd5dc;
+  }
+}
+/* stylelint-enable */

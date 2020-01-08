@@ -69,12 +69,11 @@ hide-example: true
     });
 
     it('clears referenceURI for index.md', () => {
-      return processMarkdownPage(
-        filePath.replace('boom-bap.md', 'index.md'),
-        markdown
-      ).then(output => {
-        expect(output.referenceURI).toBe('');
-      });
+      return processMarkdownPage(filePath.replace('boom-bap.md', 'index.md'), markdown).then(
+        output => {
+          expect(output.referenceURI).toBe('');
+        }
+      );
     });
 
     it('replaces {{root}}', () => {
@@ -99,9 +98,7 @@ Guidance`;
 
     it('sets usage as top-level description', () => {
       return processMarkdownPage(filePath, markdown).then(output => {
-        expect(output.description.trim()).toBe(
-          '<h1 id="hello-world">Hello world</h1>'
-        );
+        expect(output.description.trim()).toBe('<h1 id="hello-world">Hello world</h1>');
       });
     });
 
