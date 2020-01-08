@@ -1,20 +1,60 @@
 // Generic
-// USWDS doesn't include a "lighter" variant for red, so we create one
-// in order to be consistent with the other "state" colors.
-$color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest) !default;
+$color-white: #fff !default;
+$color-base: #212121 !default;
+$color-black: #000 !default;
 
-// USE COLOR RED HERE
-$color-error: $color-secondary !default;
-$color-error-dark: $color-secondary-dark !default;
-$color-error-darkest: $color-secondary-darkest !default;
-$color-error-light: $color-secondary-light !default;
-$color-error-lighter: $color-secondary-lighter !default;
-$color-error-lightest: $color-secondary-lightest !default;
+$color-gray-dark: #323a45 !default;
+$color-gray: #5b616b !default;
+$color-gray-medium: #757575 !default;
+$color-gray-light: #aeb0b5 !default;
+$color-gray-lighter: #d6d7d9 !default;
+$color-gray-lightest: #f1f1f1 !default;
 
-$color-red: $color-secondary !default;
-$color-red-light: $color-secondary-light !default;
-$color-red-lighter: $color-secondary-lighter !default;
-$color-red-lightest: $color-secondary-lightest !default;
+$color-gray-warm-dark: #494440 !default;
+$color-gray-warm-light: #e4e2e0 !default;
+$color-gray-cool-light: #dce4ef !default;
+
+$color-primary: #0071bc !default;
+$color-primary-darker: #205493 !default;
+$color-primary-darkest: #112e51 !default;
+
+$color-primary-alt: #02bfe7 !default;
+$color-primary-alt-dark: #00a6d2 !default;
+$color-primary-alt-darkest: #046b99 !default;
+$color-primary-alt-light: #9bdaf1 !default;
+$color-primary-alt-lightest: #e1f3f8 !default;
+
+$color-red: #e31c3d !default;
+$color-red-dark: #cd2026 !default;
+$color-red-darkest: #981b1e !default;
+$color-red-light: #e59393 !default;
+$color-red-lighter: #f5adb9 !default;
+$color-red-lightest: #f9dede !default;
+
+$color-gold: #fdb81e !default;
+$color-gold-light: #f9c642 !default;
+$color-gold-lighter: #fad980 !default;
+$color-gold-lightest: #fff1d2 !default;
+
+$color-green: #2e8540 !default;
+$color-green-dark: #2a7a3b !default;
+$color-green-darker: #266e35 !default;
+$color-green-light: #4aa564 !default;
+$color-green-lighter: #94bfa2 !default;
+$color-green-lightest: #e7f4e4 !default;
+
+$color-cool-blue: #205493 !default;
+$color-cool-blue-light: #4773aa !default;
+$color-cool-blue-lighter: #8ba6ca !default;
+$color-cool-blue-lightest: #dce4ef !default;
+
+// Status
+$color-error: $color-red !default;
+$color-error-dark: $color-red-dark !default;
+$color-error-darkest: $color-red-darkest !default;
+$color-error-light: $color-red-light !default;
+$color-error-lighter: $color-red-lighter !default;
+$color-error-lightest: $color-red-lightest !default;
 
 $color-warn: $color-gold !default;
 $color-warn-light: $color-gold-light !default;
@@ -22,8 +62,8 @@ $color-warn-lighter: $color-gold-lighter !default;
 $color-warn-lightest: $color-gold-lightest !default;
 
 $color-success: $color-green !default;
-$color-success-dark: darken($color-green, 3%) !default;
-$color-success-darker: darken($color-green, 6%) !default;
+$color-success-dark: $color-green-dark !default;
+$color-success-darker: $color-green-darker !default;
 $color-success-light: $color-green-light !default;
 $color-success-lighter: $color-green-lighter !default;
 $color-success-lightest: $color-green-lightest !default;
@@ -34,27 +74,29 @@ $color-base-inverse: $color-white !default;
 $color-muted-inverse: #bac5cf !default;
 
 // Focus
-// General focus style color
-$color-focus: #ffde11;
-$focus-shadow: inset 0 0 0 1px $color-base;
-$focus-shadow-link: 0 3px $color-base;
-
-
-
-// USWDS has a default focus color, but we want one that can be applied to
-// fields that are displayed on top of an inverted background
+$color-focus: #ffde11 !default;
 $color-focus-inverse: #ffde11 !default;
+$focus-shadow: inset 0 0 0 1px $color-base;
 $focus-shadow-inverse: inset 0 0 0 1px $color-base !default;
-$focus-border-inverse: #8f7c00 !default;
+$focus-shadow-link: 0 3px $color-base;
 $focus-shadow-link-inverse: 0 3px $focus-border-inverse !default;
+$focus-border-inverse: #8f7c00 !default;
 
 // Background
 $color-background: $color-white !default;
 $color-background-inverse: $color-primary-darkest;
-$color-background-dialog-mask: rgba(0, 0, 0, 0.5) !default;
+$color-background-dialog-mask: rgba($color-black, 0.5) !default;
 $color-background-dialog: $color-white !default;
 
 // Border
 $border-color: $color-gray-lighter !default;
 $border-color-dark: $color-gray-dark !default;
 $border-color-inverse: $color-white !default;
+
+// TODO: deprecate $color-secondary
+$color-secondary: $color-red !default;
+$color-secondary-dark: $color-red-dark !default;
+$color-secondary-darkest: $color-red-darkest !default;
+$color-secondary-light: $color-red-light !default;
+$color-secondary-lighter: $color-red-lighter !default;
+$color-secondary-lightest: $color-red-lightest !default;
