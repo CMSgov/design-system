@@ -8,7 +8,7 @@
   // would cause the selector's specificity to be higher than most other component
   // selectors (i.e. ds-c-button), necessitating overly specific selectors anytime
   // a developer wanted to change an anchor's color property.
-  a {
+  a, .ds-c-link {
     color: $color-primary;
 
     &:hover,
@@ -27,7 +27,7 @@
 }
 
 // Change color of links that are descendants of .ds-base--inverse
-.ds-base--inverse a {
+.ds-base--inverse a, .ds-c-link--inverse {
   color: $color-base-inverse;
 
   &:visited,
