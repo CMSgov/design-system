@@ -3,6 +3,8 @@
 
 %link {
   color: $color-primary;
+  cursor: pointer;
+  text-decoration: underline;
 
   &:hover,
   &:focus {
@@ -18,8 +20,26 @@
   }
 }
 
+%link-darker {
+  color: $color-primary-darker;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: $color-primary-darkest;
+  }
+
+  &:visited {
+    color: $color-visited;
+  }
+}
+
 %link-inverse {
   color: $color-base-inverse;
+  cursor: pointer;
+  text-decoration: underline;
 
   &:visited,
   &:active,
@@ -31,6 +51,11 @@
 
 .ds-c-link {
   @extend %link;
+}
+
+// Style for links on darker backgrounds that aren't quite dark as inverse (i.e. Alert)
+.ds-c-link--darker {
+  @extend %link-darker;
 }
 
 .ds-c-link--inverse {
