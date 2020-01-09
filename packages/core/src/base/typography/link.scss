@@ -40,6 +40,11 @@
 .ds-base--inverse a:not(.ds-u-button) {
   color: $color-base-inverse;
 
+  &:focus,
+  &:focus:visited {
+    @include focus-text-inverse;
+  }
+
   &:visited,
   &:hover,
   &:active {
