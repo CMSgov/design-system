@@ -2,7 +2,7 @@
 .c-header__title {
   // Fix TODO: !important is needed here because `.ds-base--inverse a` is too specific of a selector
   color: $color-white !important;
-  text-decoration: none;
+  text-decoration: none !important;
 
   &:hover,
   &:focus,
