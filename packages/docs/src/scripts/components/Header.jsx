@@ -22,18 +22,16 @@ class Header extends React.PureComponent {
 
     return (
       <div>
-        <div className="usa-banner">
+        <div className="usa-banner ds-u-padding-x--3">
           <div className="usa-accordion">
             <header className={bannerHeader}>
               <div className="usa-banner__inner">
-                <div className="grid-col-auto">
+                <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-align-items--start ds-u-sm-align-items--center">
                   <img
                     className="usa-banner__header-flag"
                     src="/public/images/us_flag_small.png"
                     alt="U.S. flag"
                   />
-                </div>
-                <div className="grid-col-fill tablet:grid-col-auto">
                   <p className="usa-banner__header-text">
                     An official website of the United States government
                   </p>
@@ -49,12 +47,12 @@ class Header extends React.PureComponent {
               </div>
             </header>
             <div
-              className="usa-banner__content usa-accordion__content"
+              className="usa-banner__content usa-accordion__content ds-u-padding-y--3"
               id="gov-banner"
               hidden={bannerHidden}
             >
-              <div className="grid-row grid-gap-lg">
-                <div className="usa-banner__guidance tablet:grid-col-6">
+              <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
+                <div className="usa-banner__guidance ds-u-padding-right--0 ds-u-sm-padding-right--2">
                   <img
                     className="usa-banner__icon usa-media-block__img"
                     src="/public/images/icon-dot-gov.svg"
@@ -68,7 +66,7 @@ class Header extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <div className="usa-banner__guidance tablet:grid-col-6">
+                <div className="usa-banner__guidance ds-u-padding-top--2 ds-u-sm-padding-top--0">
                   <img
                     className="usa-banner__icon usa-media-block__img"
                     src="/public/images/icon-https.svg"
@@ -93,7 +91,7 @@ class Header extends React.PureComponent {
               CMS Design System
             </a>
           </h1>
-          <GitHubLinks className="ds-u-display--none ds-u-md-display--block" inverse />
+          <GitHubLinks className="ds-u-display--none ds-u-sm-display--block" inverse />
         </header>
       </div>
     );
