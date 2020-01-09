@@ -1,6 +1,44 @@
 /* stylelint-disable selector-class-pattern */
 @import '@cmsgov/design-system-support/src/settings/index';
 
+%link {
+  color: $color-primary;
+
+  &:hover,
+  &:focus {
+    color: $color-primary-darker;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+  }
+
+  &:visited {
+    color: $color-visited;
+  }
+
+}
+
+%link-inverse {
+  color: $color-base-inverse;
+
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
+    color: $color-muted-inverse;
+  }
+}
+
+.ds-c-link {
+  @extend %link;
+}
+
+.ds-c-link--inverse {
+  @extend %link-inverse;
+}
+
+
 @if $ds-include-base-html-rulesets {
   // <a> is the only base HTML element in the design system that
   // has a style declaration. In all other cases, styles are applied using a
@@ -8,36 +46,16 @@
   // would cause the selector's specificity to be higher than most other component
   // selectors (i.e. ds-c-button), necessitating overly specific selectors anytime
   // a developer wanted to change an anchor's color property.
-  a, .ds-c-link {
-    color: $color-primary;
-
-    &:hover,
-    &:focus {
-      color: $color-primary-darker;
-    }
-
-    &:active {
-      color: $color-primary-darkest;
-    }
-
-    &:visited {
-      color: $color-visited;
-    }
+  a {
+    @extend %link;
   }
+
+  // Change color of links that are descendants of .ds-base--inverse
+  .ds-base--inverse a {
+  @extend %link-inverse;
+  }
+
 }
 
-// Change color of links that are descendants of .ds-base--inverse
-.ds-base--inverse a, .ds-c-link--inverse {
-  color: $color-base-inverse;
 
-  &:visited,
-  &:active,
-  &:focus,
-  &:hover {
-    // :visited links can only style color, not opacity. This color styling is equivalent to:
-    // color: $color-base-inverse;
-    // opacity: 0.8;
-    color: #cfd5dc;
-  }
-}
 /* stylelint-enable */
