@@ -1,19 +1,3 @@
-/*
-Spacing
-
-The design system uses multiples of `8px` for all spacing values: dimensions, padding, and margins. The goal behind this is to achieve a consistent vertical rhythm and to reduce the cognitive load of fiddling with different spacing options.
-
-## Usage
-
-- Use the [margin](/utilities/margin) and [padding](/utilities/padding) utility classes to change a UI's spacing. These utility classes are named in a way that allows you to use the modifier to calculate the amount of spacing. For example, a margin utility class that adds `16px` of spacing would be `ds-u-margin--2`. We can calculate this by looking at the class's modifier (`2`) and multiplying that by our multiple: `2 × 8px = 16px`
-- If you've imported the design system's Sass file, you can also use the spacer Sass variables, which follow the format `$spacer-*` where `*` is a number between 1–7 (i.e. `$spacer-4`)
-
-## Learn more
-
-- [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
-
-Style guide: layout.spacing
-*/
 $multiple: 8px !default;
 
 $spacers: (
@@ -54,6 +38,7 @@ $breakpoints: (
 ) !default;
 
 // Borders
+$border-radius: 3px !default;
 $border-radius-circle: 100%;
 $border-radius-pill: 9999px;
 
@@ -64,3 +49,15 @@ $grid-form-gutter-width: $spacer-2 !default;
 
 // Z-index
 $z-dialog: 1000 !default;
+
+// Site variables
+$site-margins: 3rem !default;
+$site-margins-mobile: 1.5rem !default;
+$site-max-width: 1040px !default;
+$text-max-width: 53rem !default;
+$lead-max-width: 77rem !default;
+$article-max-width: 600px !default;
+$nav-width: 951px !default;
+
+// 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
+$hit-area: 4.4rem !default;
