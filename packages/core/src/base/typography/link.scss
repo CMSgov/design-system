@@ -39,6 +39,7 @@
 .ds-base--inverse a {
   color: $color-base-inverse;
 
+  /* stylelint-disable selector-max-specificity */
   &:focus,
   &:focus:visited {
     @include focus-text-inverse;
