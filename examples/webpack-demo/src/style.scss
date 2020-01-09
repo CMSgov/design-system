@@ -2,6 +2,5 @@ $asset-path: '/dist/';
 $font-path: '#{$asset-path}fonts';
 $image-path: '#{$asset-path}images';
 
-//@import 'uswds/src/stylesheets/uswds';
 @import '~@cmsgov/design-system-layout/src/index';
 @import '~@cmsgov/design-system-core/src/index';

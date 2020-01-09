@@ -36,8 +36,7 @@
 }
 
 // Change color of links that are descendants of .ds-base--inverse
-// Exclude <a> that are being styled as a button
-.ds-base--inverse a:not(.ds-u-button) {
+.ds-base--inverse a {
   color: $color-base-inverse;
 
   &:focus,

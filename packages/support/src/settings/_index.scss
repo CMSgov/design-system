@@ -1,22 +1,9 @@
-// Vendor overrides
-@import 'override.uswds';
-
-// Vendor variables
-// Defined after overrides so overrides work
-
-// Manually set Bourbon's font stack variables. This allows us to avoid
-// installing Bourbon as a USWDS dependency.
-$georgia: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
-$helvetica: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
-
-@import '../vendor/uswds/core/variables';
-
 // Design system variables
 // Defined after vendor variables so we can use them as values here
-@import 'variables.shadow';
-@import 'variables.animation';
 @import 'variables.build';
+@import 'variables.animation';
 @import 'variables.color';
-@import 'variables.forms';
+@import 'variables.shadow';
 @import 'variables.layout';
+@import 'variables.forms';
 @import 'variables.type';
