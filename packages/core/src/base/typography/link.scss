@@ -16,7 +16,6 @@
   &:visited {
     color: $color-visited;
   }
-
 }
 
 %link-inverse {
@@ -38,7 +37,6 @@
   @extend %link-inverse;
 }
 
-
 @if $ds-include-base-html-rulesets {
   // <a> is the only base HTML element in the design system that
   // has a style declaration. In all other cases, styles are applied using a
@@ -50,12 +48,16 @@
     @extend %link;
   }
 
-  // Change color of links that are descendants of .ds-base--inverse
-  .ds-base--inverse a {
-  @extend %link-inverse;
+  // Change color of links that are descendants of '.ds-base--inverse'
+  // 
+  // Fix TODO: Because this selector's specificity is higher than most components,
+  // changing inverse links will require unusually specific selectors
+  // 
+  // Specifically exclude '.ds-c-button' because this is most likely case where
+  // a inverse link element will have other styles applied
+  .ds-base--inverse a:not(.ds-c-button) {
+    @extend %link-inverse;
   }
-
 }
-
 
 /* stylelint-enable */

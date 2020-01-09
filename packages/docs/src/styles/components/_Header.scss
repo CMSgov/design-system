@@ -1,5 +1,7 @@
+/* stylelint-disable declaration-no-important */
 .c-header__title {
-  color: $color-white;
+  // Fix TODO: !important is needed here because `.ds-base--inverse a` is too specific of a selector
+  color: $color-white !important;
   text-decoration: none;
 
   &:hover,
@@ -17,3 +19,4 @@
     outline: $focus-shadow-inverse;
   }
 }
+/* stylelint-enable declaration-no-important */
