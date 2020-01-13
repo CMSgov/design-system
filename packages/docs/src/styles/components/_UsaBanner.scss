@@ -103,6 +103,10 @@
   .usa-banner__guidance {
     width: 100%;
   }
+  
+  .usa-accordion__button {
+    @extend %link-darker;
+  }
 
   .usa-banner__button::after {
     background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);

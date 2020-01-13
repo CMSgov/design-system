@@ -25,27 +25,25 @@ class Header extends React.PureComponent {
         <div className="usa-banner ds-u-padding-x--3">
           <div className="usa-accordion">
             <header className={bannerHeader}>
-              <div className="usa-banner__inner">
-                <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-align-items--start ds-u-sm-align-items--center">
-                  <img
-                    className="usa-banner__header-flag"
-                    src="/public/images/us_flag_small.png"
-                    alt="U.S. flag"
-                  />
+              <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-align-items--start ds-u-sm-align-items--center">
+                <img
+                  className="usa-banner__header-flag"
+                  src="/public/images/us_flag_small.png"
+                  alt="U.S. flag"
+                />
+                <div>
                   <p className="usa-banner__header-text">
                     An official website of the United States government
+                    <button
+                      onClick={this.handleToggleBannerButton}
+                      className="usa-accordion__button usa-banner__button"
+                      aria-expanded={this.state.isBannerOpen}
+                      aria-controls="gov-banner"
+                    >
+                      Here’s how you know
+                    </button>
                   </p>
                 </div>
-                <button
-                  onClick={this.handleToggleBannerButton}
-                  className="usa-accordion__button usa-banner__button"
-                  aria-expanded={this.state.isBannerOpen}
-                  aria-controls="gov-banner"
-                >
-                  <span className="usa-banner__button-text ds-c-link--darker">
-                    Here’s how you know
-                  </span>
-                </button>
               </div>
             </header>
             <div
