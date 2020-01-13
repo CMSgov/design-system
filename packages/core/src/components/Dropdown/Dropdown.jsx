@@ -8,7 +8,7 @@ export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV !== 'production') {
       if (props.fieldRef) {
         console.error(
           `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
