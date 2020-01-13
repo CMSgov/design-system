@@ -10,12 +10,12 @@ export class Dropdown extends React.PureComponent {
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.fieldRef) {
-        console.error(
+        console.warn(
           `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
         );
       }
       if (props.children && props.options.length > 0) {
-        console.error(
+        console.warn(
           `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
         );
       }
