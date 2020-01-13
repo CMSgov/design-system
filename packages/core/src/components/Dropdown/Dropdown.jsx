@@ -19,15 +19,8 @@ export class Dropdown extends React.PureComponent {
           `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
         );
       }
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
       // 'ariaLabel' is provided with a `label` prop that is not an empty string
-      if (
-        props.ariaLabel &&
-        props.label &&
-        (typeof props.label !== 'string' || props.label.length > 0)
-      ) {
+      if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
         console.warn(
           `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
         );
