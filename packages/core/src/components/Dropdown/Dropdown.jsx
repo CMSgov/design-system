@@ -13,6 +13,25 @@ export class Dropdown extends React.PureComponent {
         `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
       );
     }
+
+    if (process.env.NODE_ENV !== 'production') {
+      // 'ariaLabel' is provided with a `label` prop that is not an empty string
+      if (
+        props.ariaLabel &&
+        props.label &&
+        (typeof props.label !== 'string' || props.label.length > 0)
+      ) {
+        console.warn(
+          `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
+        );
+      }
+      // An empty string `label` is provided without a corresponding `ariaLabel` prop
+      if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
+        console.warn(
+          `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
+        );
+      }
+    }
   }
 
   componentDidMount() {
@@ -106,7 +125,7 @@ export class Dropdown extends React.PureComponent {
 
 Dropdown.propTypes = {
   /**
-   * Adds `aria-label` attribute if component renders a select
+   * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */
   ariaLabel: PropTypes.string,
   /**
@@ -148,7 +167,7 @@ Dropdown.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Label for the field
+   * Label for the field. If using `Dropdown` without a label, provide an empty string for `label` and use the `ariaLabel` prop instead.
    */
   label: PropTypes.node.isRequired,
   /**
