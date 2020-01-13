@@ -50,7 +50,7 @@ export class HelpDrawer extends React.PureComponent {
         </div>
         <div className="ds-c-help-drawer__body">
           <div className="ds-c-help-drawer__content-container">
-            <div className="ds-c-help-drawer__content ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2"> 
+            <div className="ds-c-help-drawer__content ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
               {children}
             </div>
             <div className="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
