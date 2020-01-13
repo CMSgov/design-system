@@ -9,10 +9,12 @@ export class Alert extends React.PureComponent {
 
     this.headingId = this.props.headingId || uniqueId('alert_');
 
-    if (!props.heading && !props.children) {
-      console.error(
-        `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (!props.heading && !props.children) {
+        console.warn(
+          `Empty <Alert> components are not allowed, please use the 'heading' prop or include children.`
+        );
+      }
     }
   }
 

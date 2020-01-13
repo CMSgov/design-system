@@ -8,10 +8,17 @@ export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (props['fieldRef']) {
-      console.error(
-        `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.fieldRef) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+        );
+      }
+      if (props.children && props.options.length > 0) {
+        console.warn(
+          `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
+        );
+      }
     }
 
     if (process.env.NODE_ENV !== 'production') {
@@ -53,6 +60,7 @@ export class Dropdown extends React.PureComponent {
     const {
       ariaLabel,
       className,
+      children,
       errorMessage,
       fieldClassName,
       fieldRef,
@@ -116,7 +124,8 @@ export class Dropdown extends React.PureComponent {
           /* eslint-enable no-return-assign */
           {...selectProps}
         >
-          {optionElements}
+          {/* Render custom options if provided */
+          children || optionElements}
         </select>
       </div>
     );
@@ -132,6 +141,10 @@ Dropdown.propTypes = {
    * Additional classes to be added to the root element.
    */
   className: PropTypes.string,
+  /**
+   * Used to define custom dropdown options. When using the `children` prop, `options` should be an empty list.
+   */
+  children: PropTypes.node,
   /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
@@ -179,7 +192,7 @@ Dropdown.propTypes = {
    */
   name: PropTypes.string.isRequired,
   /**
-   * The list of options to be rendered.
+   * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
    */
   options: PropTypes.arrayOf(
     PropTypes.shape({
