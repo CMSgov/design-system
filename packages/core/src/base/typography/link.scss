@@ -20,6 +20,7 @@
   }
 }
 
+// Style for links on darker backgrounds that aren't quite dark as inverse (i.e. Alert)
 %link-darker {
   color: $color-primary-darker;
   cursor: pointer;
@@ -51,11 +52,6 @@
 
 .ds-c-link {
   @extend %link;
-}
-
-// Style for links on darker backgrounds that aren't quite dark as inverse (i.e. Alert)
-.ds-c-link--darker {
-  @extend %link-darker;
 }
 
 .ds-c-link--inverse {
