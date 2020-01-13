@@ -121,7 +121,7 @@ Dropdown.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Optional prop for defining custom dropdown options. When using the `children` prop, `options` should be an empty list.
+   * Used to define custom dropdown options. When using the `children` prop, `options` should be an empty list.
    */
   children: PropTypes.node,
   /**
