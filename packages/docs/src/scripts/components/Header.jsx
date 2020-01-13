@@ -44,7 +44,9 @@ class Header extends React.PureComponent {
                   aria-expanded={this.state.isBannerOpen}
                   aria-controls="gov-banner"
                 >
-                  <span className="usa-banner__button-text">Here’s how you know</span>
+                  <span className="usa-banner__button-text ds-c-link--darker">
+                    Here’s how you know
+                  </span>
                 </button>
               </div>
             </header>
