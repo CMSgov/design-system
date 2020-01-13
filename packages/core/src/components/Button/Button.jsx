@@ -16,10 +16,12 @@ export class Button extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (props['buttonRef']) {
-      console.error(
-        `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.buttonRef) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
+        );
+      }
     }
   }
 
