@@ -170,8 +170,7 @@ Dropdown.propTypes = {
    */
   hint: PropTypes.node,
   /**
-   * A unique ID to be used for the select field. A unique ID will be generated
-   * if one isn't provided.
+   * A unique ID to be used for the dropdown field. If one isn't provided, a unique ID will be generated.
    */
   id: PropTypes.string,
   /**
