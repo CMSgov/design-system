@@ -46,7 +46,7 @@ ReactDOM.render(
     <Dropdown
       options={[]}
       defaultValue={'1-1'}
-      label="Custom option dropdown example"
+      label="Option group dropdown example"
       name="custom_dropdown_field"
     >
       <optgroup label="Option group">
