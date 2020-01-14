@@ -40,7 +40,7 @@ function render(customProps = {}, optionsCount = 1, deep = false) {
 
 describe('Dropdown', () => {
   it('renders a select menu', () => {
-    const data = render({ value: '1' });
+    const data = render({ value: '1', ariaLabel: 'test aria label' });
 
     expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper.find('select').length).toBe(1);
