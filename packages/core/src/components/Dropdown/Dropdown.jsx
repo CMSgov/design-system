@@ -19,6 +19,18 @@ export class Dropdown extends React.PureComponent {
           `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
         );
       }
+      // 'ariaLabel' is provided with a `label` prop that is not an empty string
+      if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
+        console.warn(
+          `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
+        );
+      }
+      // An empty string `label` is provided without a corresponding `ariaLabel` prop
+      if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
+        console.warn(
+          `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
+        );
+      }
     }
   }
 
@@ -39,6 +51,7 @@ export class Dropdown extends React.PureComponent {
   render() {
     /* eslint-disable prefer-const */
     const {
+      ariaLabel,
       className,
       children,
       errorMessage,
@@ -85,6 +98,7 @@ export class Dropdown extends React.PureComponent {
           {label}
         </FormLabel>
         <select
+          aria-label={ariaLabel}
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
@@ -113,7 +127,7 @@ export class Dropdown extends React.PureComponent {
 
 Dropdown.propTypes = {
   /**
-   * Adds `aria-label` attribute if component renders a select
+   * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
    */
   ariaLabel: PropTypes.string,
   /**
@@ -121,7 +135,7 @@ Dropdown.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Used to define custom dropdown options. When using the `children` prop, `options` should be an empty list.
+   * Used to define custom dropdown options (i.e. option groups). When using the `children` prop, `options` should be an empty list.
    */
   children: PropTypes.node,
   /**
@@ -159,7 +173,7 @@ Dropdown.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * Label for the field
+   * Label for the field. If using `Dropdown` without a label, provide an empty string for `label` and use the `ariaLabel` prop instead.
    */
   label: PropTypes.node.isRequired,
   /**

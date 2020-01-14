@@ -11,6 +11,7 @@ exports[`Dropdown renders a select menu 1`] = `
     Select an option
   </FormLabel>
   <select
+    aria-label="test aria label"
     className="ds-c-field"
     id="select_dropdown_1"
     name="dropdown"
