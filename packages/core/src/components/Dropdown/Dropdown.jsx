@@ -41,6 +41,11 @@ export class Dropdown extends React.PureComponent {
   }
 
   id() {
+    // Use provided custom id
+    if (this.props.id) {
+      return this.props.id;
+    }
+    // Use generated id
     if (!this._id) {
       // Cache the ID so we're not regenerating it on each method call
       this._id = uniqueId(`select_${this.props.name}_`);
@@ -164,6 +169,10 @@ Dropdown.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
+  /**
+   * A unique ID to be used for the dropdown field. If one isn't provided, a unique ID will be generated.
+   */
+  id: PropTypes.string,
   /**
    * Access a reference to the `select` element
    */
