@@ -5,7 +5,6 @@ const buildPath = require('../common/buildPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
-const del = require('del');
 const dutil = require('../common/log-util');
 const path = require('path');
 const packageVersions = require('../common/packageVersions');
@@ -19,10 +18,6 @@ const through = require('through2');
 const runSequence = require('run-sequence');
 const packagesRegex = require('../common/packagesRegex');
 const themeImporter = require('./themeImporter');
-
-const config = {
-  vendorSrc: 'packages/support/src/vendor'
-};
 
 module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
@@ -79,24 +74,6 @@ module.exports = (gulp, shared) => {
       .pipe(shared.browserSync.stream({ match: '**/public/styles/*.css' })); // Auto-inject into docs
   }
 
-  // Empty the vendor directory to ensure unused files aren't kept around
-  gulp.task('sass:clean-vendor', () => {
-    return del(config.vendorSrc);
-  });
-
-  // Copy 3rd-party Sass dependencies into a "vendor" subdirectory so we can
-  // distribute them along with our Sass files
-  gulp.task('sass:copy-vendor', () => {
-    const packages = ['./packages/support/node_modules/uswds/src/stylesheets/**/_variables.scss'];
-
-    return gulp.src(packages).pipe(
-      gulp.dest(file => {
-        const packageName = file.path.match(/node_modules\/([a-zA-Z_]*)\//)[1];
-        return `${config.vendorSrc}/${packageName}`;
-      })
-    );
-  });
-
   // Form tasks for each package...
   const processPackageTasks = shared.packages.map(pkg => `sass:process:${pkg}`);
   shared.packages.forEach((pkg, i) => {
@@ -129,13 +106,6 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('sass', done => {
-    runSequence(
-      'sass:clean-vendor',
-      'sass:copy-vendor',
-      processPackageTasks,
-      'sass:process:docs',
-      'sass:add-version',
-      done
-    );
+    runSequence(processPackageTasks, 'sass:process:docs', 'sass:add-version', done);
   });
 };

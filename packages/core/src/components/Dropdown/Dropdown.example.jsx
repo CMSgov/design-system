@@ -17,32 +17,49 @@ ReactDOM.render(
   <div>
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'2'}
+      defaultValue={'1'}
       hint="Example hint text"
       label="Dropdown example"
-      name="dropdown_choices_field"
+      name="dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'2'}
+      defaultValue={'1'}
       size="small"
       label="Small dropdown example"
-      name="small_dropdown_choices_field"
+      name="small_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'2'}
+      defaultValue={'1'}
       size="medium"
       label="Medium dropdown example"
-      name="medium_dropdown_choices_field"
+      name="medium_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'2'}
-      label="Disabled example"
+      defaultValue={'1'}
+      label="Disabled dropdown example"
       disabled
-      name="disabled_dropdown_choices_field"
+      name="disabled_dropdown_field"
     />
+    <Dropdown
+      options={[]}
+      defaultValue={'1-1'}
+      label="Option group dropdown example"
+      name="custom_dropdown_field"
+    >
+      <optgroup label="Option group">
+        <option value="1-1">Option 1</option>
+        <option value="1-2">Option 2</option>
+        <option value="1-3">Option 3</option>
+      </optgroup>
+      <optgroup label="More option groups">
+        <option value="2-1">Option 4</option>
+        <option value="2-2">Option 5</option>
+        <option value="2-3">Option 6</option>
+      </optgroup>
+    </Dropdown>
   </div>,
   document.getElementById('js-example')
 );
