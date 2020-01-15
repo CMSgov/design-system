@@ -29,6 +29,35 @@
   }
 }
 
+// Style for links on darker backgrounds that aren't quite dark as inverse (i.e. Alert)
+%link-darker {
+  color: $color-primary-darker;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:visited {
+    color: $color-visited;
+  }
+  
+  &:hover {
+    color: $color-primary-darkest;
+  }
+
+  &:focus,
+  &:focus:visited {
+    background-color: $color-focus;
+    box-shadow: $focus-shadow-link;
+    color: $color-base;
+    outline: 3px solid transparent;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+    outline: 0 none;
+  }
+}
+
 %link-inverse {
   color: $color-base-inverse;
   cursor: pointer;
