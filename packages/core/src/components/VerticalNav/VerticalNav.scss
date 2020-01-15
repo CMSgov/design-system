@@ -1,5 +1,19 @@
 @import '@cmsgov/design-system-support/src/index';
 
+%nav-item-hover {
+  background-color: $color-gray-lightest;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+%nav-item-focus {
+  background-color: $color-focus;
+  border-color: $color-base;
+  box-shadow: none;
+  color: $color-base;
+  outline: 0 none;
+}
+
 .ds-c-vertical-nav {
   @include ds-unstyled-list;
 
@@ -28,13 +42,15 @@
   padding: $spacer-1 $spacer-2;
   text-align: left; // necessary for <button>
   text-decoration: none;
-}
 
-.ds-c-vertical-nav__label--current,
-.ds-c-vertical-nav__label--current:visited {
-  border-left-color: $color-primary;
-  color: $color-primary;
-  font-weight: $font-bold;
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
 }
 
 // Subnav toggle
@@ -58,30 +74,22 @@
     background-image: url('#{$image-path}/arrow-up.svg');
   }
 
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
   &:focus,
   &.ds-c-vertical-nav__label--current:focus {
-    background-color: $color-focus;
-    border-color: $color-base;
-    color: $color-base;
-    outline: 0 none;
+    @extend %nav-item-focus;
   }
 }
 
-/* stylelint-disable-next-line selector-no-qualifying-type */
-a.ds-c-vertical-nav__label:hover,
-.ds-c-vertical-nav__label--parent:hover {
-  background-color: $color-gray-lightest;
+.ds-c-vertical-nav__label--current,
+.ds-c-vertical-nav__label--current:visited {
+  border-left-color: $color-primary;
   color: $color-primary;
-  text-decoration: none;
+  font-weight: $font-bold;
 }
-
-/* stylelint-disable-next-line selector-no-qualifying-type */
-a.ds-c-vertical-nav__label:focus,
-.ds-c-vertical-nav__label--parent:focus {
-  border-left-color: $color-base;
-  box-shadow: none;
-}
-
 
 .ds-c-vertical-nav__subnav {
   @include ds-unstyled-list;
