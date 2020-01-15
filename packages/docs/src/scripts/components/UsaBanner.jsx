@@ -16,7 +16,7 @@ const UsaBanner = function(props) {
             alt="U.S. flag"
           />
           <p className="c-usa-banner__header-text">
-            An official website of the United States government
+            <span>An official website of the United States government</span>
             <button
               onClick={props.onToggleBanner}
               className="c-usa-banner__button"
