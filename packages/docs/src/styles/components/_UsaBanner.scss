@@ -23,6 +23,9 @@
 
 .c-usa-banner__header-text {
   margin: 0;
+  span {
+    margin-right: 0.5rem;
+  }
 }
 
 .c-usa-banner__content {
@@ -39,7 +42,6 @@
   font-size: inherit;
   line-height: inherit;
   margin: 0;
-  margin-left: 0.5rem;
   padding: 0;
   
   &::after {
