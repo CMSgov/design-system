@@ -1,155 +1,50 @@
-.usa-banner {
+.c-usa-banner {
   background-color: #f0f0f0;
+  color: #1b1b1b;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.06471rem;
   line-height: 1.52155;
+}
 
-  .usa-accordion {
-    color: #1b1b1b;
-    font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-    font-size: 1.06471rem;
-    line-height: 1.52155;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
+.c-usa-banner__header {
+  font-size: 0.79853rem;
+  font-weight: 400;
+  line-height: 1.12707;
+  min-height: 0;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+  position: relative;
+}
 
-  .usa-banner__header {
-    font-size: 0.79853rem;
-    font-weight: 400;
-    min-height: 0;
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
-    position: relative;
-  }
+.c-usa-banner__header-flag {
+  margin-right: 0.5rem;
+  width: 1rem;
+}
 
-  .usa-banner__inner {
-    align-items: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 0;
-  }
-
-  [class*='grid-col'] {
-    box-sizing: border-box;
-    position: relative;
-    width: 100%;
-  }
-
-  .usa-banner__header-flag {
-    float: left;
-    margin-right: 0.5rem;
-    width: 1rem;
-  }
-
-  .usa-banner__header-text {
-    font-size: 0.79853rem;
-    line-height: 1.12707;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  .usa-banner__header-action {
-    color: #005ea2;
-    font-family: Helvetica;
-    line-height: 1.12707;
-    margin-bottom: 0;
-    text-decoration: underline;
-
-    &::before {
-      content: none;
-    }
-  }
-
-  .usa-banner__button {
-    background-color: transparent;
-    border: 0;
-    border-radius: 0;
-    bottom: auto;
-    box-shadow: none;
-    color: #005ea2;
-    cursor: pointer;
-    display: block;
-    font-size: 0.79853rem;
-    font-weight: 400;
-    height: auto;
-    left: 0;
-    line-height: 1.12707;
-    margin: 0;
-    margin-left: 0.5rem;
-    padding: 0;
-    position: relative;
-    right: auto;
-    text-align: left;
-    text-decoration: underline;
-    top: 0;
-    vertical-align: baseline;
-    width: auto;
-  }
-
-  .usa-banner__content {
-    background-color: transparent;
-    font-size: 0.99816rem;
-    margin-right: auto;
-    max-width: 64rem;
-    overflow: hidden;
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .usa-banner__icon {
-    width: 2.5rem;
-  }
-
-  .usa-media-block__img {
-    float: left;
+.c-usa-banner__header-text {
+  margin: 0;
+  span {
     margin-right: 0.5rem;
   }
+}
 
-  .usa-media-block__body {
-    overflow: hidden;
-  }
+.c-usa-banner__content {
+  font-size: 0.99816rem;
+  overflow: hidden;
+  width: 100%;
+}
 
-  .usa-banner__content p:first-child {
-    margin: 0;
-  }
-
-  .grid-row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .grid-col-fill {
-    flex: 1 0 0;
-    max-width: 100%;
-    width: auto;
-  }
-
-  .grid-col-auto {
-    flex: 0 0 auto;
-    max-width: 100%;
-    width: auto;
-  }
-  @media (min-width: $width-sm) {
-    .tablet\:grid-col-1,
-    .tablet\:grid-col-auto {
-      flex: 0 0 auto;
-    }
-
-    .tablet\:grid-col-6 {
-      width: 50%;
-    }
-  }
-
-  .usa-banner__guidance {
-    padding-top: 1rem;
-  }
-
-  .usa-banner__button::after {
+.c-usa-banner__button {
+  @extend %link-darker;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  
+  &::after {
     background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
@@ -160,20 +55,26 @@
     margin-left: 2px;
     width: 0.5rem;
   }
+}
 
-  .usa-banner__header--expanded {
-    background-color: transparent;
-    color: #1b1b1b;
-    display: block;
-    font-size: 0.79853rem;
-    font-weight: 400;
-    min-height: 0;
-    padding-right: 0;
+.c-usa-banner__icon {
+  width: 2.5rem;
+}
 
-    .usa-banner__button::after {
-      background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);
-      content: '';
-      transform: rotate(180deg);
-    }
+.c-usa-banner__media-img {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.c-usa-banner__media-body {
+  margin: 0;
+  overflow: hidden;
+}
+
+// stylelint-disable no-duplicate-selectors
+.c-usa-banner__header--expanded {
+  .c-usa-banner__button::after {
+    transform: rotate(180deg);
   }
 }
+// stylelint-enable no-duplicate-selectors
