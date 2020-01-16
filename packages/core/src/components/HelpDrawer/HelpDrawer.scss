@@ -42,6 +42,8 @@
 
 .ds-c-help-drawer__content-container {
   bottom: 0;
+  display: flex; // Flex layout helps stick the footer to the bottom
+  flex-direction: column;
   left: 0;
   overflow: scroll;
   position: absolute;
@@ -54,4 +56,6 @@
     // Prevent too much space at the top of the body area
     margin-top: 0;
   }
+  // Stretch so that the footer sticks to the bottom of the screen
+  flex-grow: 1;
 }
