@@ -93,9 +93,16 @@ export class Button extends React.PureComponent {
       delete attrs.type;
     }
 
+    const buttonChildren =
+      this.props.variation === 'transparent' ? (
+        <span className="ds-c-button--transparent-text">{this.props.children}</span>
+      ) : (
+        this.props.children
+      );
+
     return (
       <ComponentType ref={this.props.inputRef || this.props.buttonRef} {...attrs}>
-        {this.props.children}
+        {buttonChildren}
       </ComponentType>
     );
   }
