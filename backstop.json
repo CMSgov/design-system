@@ -478,27 +478,27 @@
       ]
     },
     {
-      "label": "CMSDS - Utilities - Color",
-      "referenceUrl": "https://design.cms.gov/utilities/color/",
-      "url": "http://localhost:3000/utilities/color/",
+      "label": "CMSDS - Utilities - Text color",
+      "referenceUrl": "https://design.cms.gov/utilities/text-color/",
+      "url": "http://localhost:3000/utilities/text-color/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Utilities - Color - Default",
-      "referenceUrl": "https://design.cms.gov/example/utilities.color/",
-      "url": "http://localhost:3000/example/utilities.color/",
+      "label": "CMSDS - Utilities - Text color - Default",
+      "referenceUrl": "https://design.cms.gov/example/utilities.text-color/",
+      "url": "http://localhost:3000/example/utilities.text-color/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Utilities - Color - Inherit",
-      "referenceUrl": "https://design.cms.gov/example/utilities.color.inherit/",
-      "url": "http://localhost:3000/example/utilities.color.inherit/",
+      "label": "CMSDS - Utilities - Text color - Inherit",
+      "referenceUrl": "https://design.cms.gov/example/utilities.text-color.inherit/",
+      "url": "http://localhost:3000/example/utilities.text-color.inherit/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -544,6 +544,15 @@
       "label": "CMSDS - Utilities - Flexbox",
       "referenceUrl": "https://design.cms.gov/utilities/flexbox/",
       "url": "http://localhost:3000/utilities/flexbox/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Flexbox - Flex direction",
+      "referenceUrl": "https://design.cms.gov/example/utilities.flexbox.flex-direction/",
+      "url": "http://localhost:3000/example/utilities.flexbox.flex-direction/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"

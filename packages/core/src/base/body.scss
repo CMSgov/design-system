@@ -37,18 +37,5 @@ Style guide: style.base
   @extend %ds-base;
   background-color: $color-background-inverse;
   color: $color-base-inverse;
-  a {
-    color: $color-base-inverse;
-
-    &:visited,
-    &:active,
-    &:focus,
-    &:hover {
-      // :visited links can only style color, not opacity. This color styling is equivalent to:
-      // color: $color-base-inverse;
-      // opacity: 0.8;
-      color: #cfd5dc;
-    }
-  }
 }
 /* stylelint-enable */

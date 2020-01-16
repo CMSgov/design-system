@@ -78,10 +78,7 @@ function sort(sections) {
   sections = _.sortBy(sections, ['weight', 'header']);
 
   sections.forEach(topLevelPage => {
-    topLevelPage.sections = _.sortBy(topLevelPage.sections, [
-      'weight',
-      'header'
-    ]);
+    topLevelPage.sections = _.sortBy(topLevelPage.sections, ['weight', 'header']);
 
     topLevelPage.sections.forEach(subpage => {
       if (subpage.sections) {
