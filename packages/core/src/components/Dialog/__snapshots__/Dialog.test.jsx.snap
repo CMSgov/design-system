@@ -107,7 +107,11 @@ exports[`Dialog renders react-aria-modal 1`] = `
                       class="ds-c-button ds-c-button--transparent ds-c-dialog__close"
                       type="button"
                     >
-                      Close
+                      <span
+                        class="ds-c-button--transparent-text"
+                      >
+                        Close
+                      </span>
                     </button>
                   </header>
                   <main
@@ -194,7 +198,11 @@ exports[`Dialog renders react-aria-modal 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
-                        Close
+                        <span
+                          className="ds-c-button--transparent-text"
+                        >
+                          Close
+                        </span>
                       </button>
                     </Button>
                   </header>

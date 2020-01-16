@@ -91,6 +91,7 @@
     &:focus::after {
       background-color: $color-base;
     }
+    /* stylelint-enable selector-max-specificity */
   }
 
   &[aria-disabled='true'] {

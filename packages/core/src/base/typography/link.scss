@@ -16,11 +16,7 @@
 
   &:focus,
   &:focus:visited {
-    background-color: $color-focus;
-    box-shadow: $focus-shadow-link;
-    color: $color-base;
-    outline: 3px solid transparent;
-    text-decoration: none;
+    @include focus-text;
   }
 
   &:active {
@@ -68,6 +64,7 @@
   &:focus:visited {
     @include focus-text-inverse;
   }
+  /* stylelint-enable selector-max-specificity */
 
   &:visited,
   &:hover,
@@ -109,5 +106,3 @@
     @extend %link-inverse;
   }
 }
-
-/* stylelint-enable */
