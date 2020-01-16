@@ -163,6 +163,13 @@
     border-color: rgba($border-color-inverse, 0.6);
     color: rgba($color-base-inverse, 0.6);
   }
+
+  // Make sure active overrides focus styles
+  &:active:focus,	
+  &.ds-c-button--active:focus {	
+    background-color: $color-background-inverse;	
+    color: rgba($color-base-inverse, 0.6);	
+  }
 }
 
 /* stylelint-disable */
