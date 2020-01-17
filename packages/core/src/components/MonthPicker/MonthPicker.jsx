@@ -131,11 +131,9 @@ export class MonthPicker extends React.PureComponent {
   }
 
   renderLabel() {
-    const classes = classNames('ds-u-font-weight--bold', this.props.labelClassName);
     return (
       <FormLabel
         className="ds-u-visibility--screen-reader"
-        labelClassName={classes}
         component="legend"
         errorMessage={this.props.errorMessage}
         requirementLabel={this.props.requirementLabel}
@@ -217,10 +215,6 @@ MonthPicker.propTypes = {
    * Label for the field
    */
   label: PropTypes.node.isRequired,
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName: PropTypes.string,
   errorMessage: PropTypes.node,
   /**
    * Additional hint text to display
