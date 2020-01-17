@@ -170,7 +170,7 @@ Choice.propTypes = {
    */
   inputClassName: PropTypes.string,
   /**
-   * Additional classes to be added to the `label` element.
+   * Additional classes to be added to the `FormLabel`.
    */
   labelClassName: PropTypes.string,
   /**
