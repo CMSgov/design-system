@@ -19,7 +19,7 @@ export class Button extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.buttonRef) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
+          `[Deprecated]: Please remove the 'buttonRef' prop in <Button>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -132,7 +132,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * (Deprecated) Access a reference to the `button` or `a` element
+   * (Deprecated) Access a reference to the `button` or `a` element. Please use `inputRef` instead.
    */
   buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),
