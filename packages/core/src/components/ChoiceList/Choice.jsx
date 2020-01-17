@@ -12,10 +12,12 @@ export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (props['inputPlacement'] === 'right') {
-      console.error(
-        `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.inputPlacement === 'right') {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+        );
+      }
     }
 
     this.input = null;

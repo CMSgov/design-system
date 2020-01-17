@@ -34,7 +34,8 @@ $_link-spacer: $spacer-1;
   bottom: 0;
   font-size: $_link-font-size;
   line-height: $reset-line-height;
-  padding: $_link-spacer ($_link-font-size + $_link-spacer + $_link-spacer) $_link-spacer $_link-spacer;
+  padding: $_link-spacer ($_link-font-size + $_link-spacer + $_link-spacer) $_link-spacer
+    $_link-spacer;
   position: absolute;
   right: 0;
   text-decoration: none;

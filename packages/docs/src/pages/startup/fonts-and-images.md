@@ -15,6 +15,7 @@ By default, the design system expects a file structure like this:
 ```
 
 You can manually copy these directories, or you could integrate this step into your build process.
+
 - [Here's an example of how this step could be accomplished using a Gulp task](https://github.com/CMSgov/design-system/blob/master/examples/react-app/Gulpfile.js).
 - [Here's an example of how this step could be accomplished using Webpack](https://github.com/CMSgov/design-system/blob/master/examples/webpack-demo/webpack.config.js).
 
@@ -22,8 +23,8 @@ You can manually copy these directories, or you could integrate this step into y
 
 You can change the default paths by overriding the following Sass variables:
 
-* `$font-path`
-* `$image-path`
+- `$font-path`
+- `$image-path`
 
 Without overriding these variables, it's possible that your fonts and images will not render correctly in your project.
 

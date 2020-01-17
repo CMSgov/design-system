@@ -9,10 +9,7 @@ const colors = require('colors/safe');
  */
 function getValues(retrievalMethod, preferSmaller = true, diffMethod) {
   const values = ['current', 'master'].map(retrievalMethod);
-  let diff =
-    typeof diffMethod === 'function'
-      ? diffMethod()
-      : parseInt(values[0] - values[1]);
+  let diff = typeof diffMethod === 'function' ? diffMethod() : parseInt(values[0] - values[1]);
 
   if (parseInt(diff) > 0) {
     diff = preferSmaller ? colors.red(diff) : colors.green(diff);

@@ -53,8 +53,8 @@ class Example extends React.PureComponent {
               </Button>
             ]}
           >
-            You are leaving URL and connecting to a 3rd party site. Please click
-            OK to continue or CANCEL to stay on this site.
+            You are leaving URL and connecting to a 3rd party site. Please click OK to continue or
+            CANCEL to stay on this site.
           </Dialog>
         )}
       </div>

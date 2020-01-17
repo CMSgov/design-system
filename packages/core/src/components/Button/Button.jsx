@@ -16,10 +16,12 @@ export class Button extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    if (props['buttonRef']) {
-      console.error(
-        `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.buttonRef) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
+        );
+      }
     }
   }
 
@@ -58,18 +60,9 @@ export class Button extends React.PureComponent {
 
   classNames() {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-    const disabledClass = this.props.disabled && 'ds-c-button--disabled';
+    const disabledClass = this.props.disabled && this.props.href && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
-    let inverseClass = this.props.inverse && 'ds-c-button--inverse';
-
-    // primary/danger/success variations don't need the inverse class
-    if (
-      this.props.variation === 'primary' ||
-      this.props.variation === 'danger' ||
-      this.props.variation === 'success'
-    ) {
-      inverseClass = '';
-    }
+    const inverseClass = this.props.inverse && 'ds-c-button--inverse';
 
     return classNames(
       'ds-c-button',

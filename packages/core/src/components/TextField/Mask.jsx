@@ -161,10 +161,7 @@ export class Mask extends React.PureComponent {
       // given and what we have locally don't match, that means the controlling
       // component has made its own unrelated change, so we should update our
       // state and mask this new value.
-      if (
-        unmaskValue(fieldProps.value, mask) !==
-        unmaskValue(this.state.value, mask)
-      ) {
+      if (unmaskValue(fieldProps.value, mask) !== unmaskValue(this.state.value, mask)) {
         const value = maskValue(fieldProps.value || '', mask);
         this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
       }
@@ -193,8 +190,7 @@ export class Mask extends React.PureComponent {
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
     // and when an onBlur callback is present
-    const debounce =
-      value !== this.state.value && typeof field.props.onBlur === 'function';
+    const debounce = value !== this.state.value && typeof field.props.onBlur === 'function';
 
     if (debounce) {
       // We need to retain a reference to the event after the callback

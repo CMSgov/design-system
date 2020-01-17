@@ -13,10 +13,12 @@ export class TextField extends React.PureComponent {
     this.id = props.id || uniqueId('textfield_');
     this.labelId = props.labelId || uniqueId('textfield_label_');
 
-    if (props['fieldRef']) {
-      console.error(
-        `[Deprecated]: Please remove the React property 'fieldRef' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
-      );
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.fieldRef) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'fieldRef' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+        );
+      }
     }
   }
 
@@ -62,9 +64,7 @@ export class TextField extends React.PureComponent {
       };
 
       return (
-        <div
-          className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}
-        >
+        <div className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}>
           {content[this.props.mask]}
         </div>
       );

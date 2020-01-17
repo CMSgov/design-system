@@ -33,11 +33,7 @@ class BreakpointToggles extends React.PureComponent {
   }
 
   render() {
-    return (
-      <div className="bp-toggles ds-l-row ds-u-margin-x--0">
-        {this.toggles()}
-      </div>
-    );
+    return <div className="bp-toggles ds-l-row ds-u-margin-x--0">{this.toggles()}</div>;
   }
 }
 

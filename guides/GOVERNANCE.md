@@ -40,10 +40,9 @@ A core design system team member makes significant and valuable contributions to
 - Participate in the review, validation, and testing
 - Introduce new users to the design system
 
-
 ### Contributors
 
-A Contributor is any individual creating or commenting on an issue or pull request. Anyone may propose a new pattern or an amendment to existing patterns. 
+A Contributor is any individual creating or commenting on an issue or pull request. Anyone may propose a new pattern or an amendment to existing patterns.
 
 #### Ways to contribute
 
@@ -52,8 +51,7 @@ A Contributor is any individual creating or commenting on an issue or pull reque
 - Submit bugs
 - Participate in reviews, validation, and testing
 
-
-----
+---
 
 #### Credits
 

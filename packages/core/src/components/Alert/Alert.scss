@@ -1,4 +1,5 @@
 @import '@cmsgov/design-system-support/src/settings/index';
+@import '../../base/typography/link';
 
 $alert-padding: $spacer-2;
 $alert-bar-size: $spacer-1;
@@ -21,13 +22,8 @@ $alert-icon-size: $spacer-5;
     background-image: none;
   }
 
-  a {
-    color: $color-primary-darker;
-
-    &:focus,
-    &:hover {
-      color: $color-primary-darkest;
-    }
+  a, .ds-c-link {
+    @extend %link-darker;
   }
 
   ul {

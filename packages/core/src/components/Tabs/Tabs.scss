@@ -24,7 +24,8 @@
 /*
 `<Tab>`
 */
-.ds-c-tabs__item, .ds-c-tabs__item:visited {
+.ds-c-tabs__item,
+.ds-c-tabs__item:visited {
   appearance: none;
   background-color: $color-background;
   border-bottom: 1px solid $border-color;
@@ -41,7 +42,8 @@
   padding: $spacer-2 $spacer-1;
   position: relative;
   text-decoration: none;
-  transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+  // Temporarily disable animation
+  //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   @media (min-width: $width-sm) {
     padding-left: $spacer-2;
@@ -70,8 +72,8 @@
     right: -1px;
     top: -1px;
     transform: scale3d(0, 1, 1);
-    transition: opacity $animation-speed-2 $ease-in-out-expo,
-      transform $animation-speed-2 $ease-in-out-expo;
+    // Temporarily disable animation
+    //transition: opacity $animation-speed-2 $ease-in-out-expo, transform $animation-speed-2 $ease-in-out-expo;
   }
 
   // States

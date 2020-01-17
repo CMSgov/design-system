@@ -45,9 +45,7 @@ class Page extends React.PureComponent {
 
   renderChildPageBlocks(sections) {
     if (sections) {
-      return sections.map(section => (
-        <PageBlock key={section.referenceURI} {...section} />
-      ));
+      return sections.map(section => <PageBlock key={section.referenceURI} {...section} />);
     }
   }
 

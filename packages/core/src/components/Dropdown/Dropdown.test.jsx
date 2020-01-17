@@ -30,9 +30,7 @@ function generateOptions(count) {
  */
 function render(customProps = {}, optionsCount = 1, deep = false) {
   const props = { ...defaultProps, ...customProps };
-  const component = (
-    <Dropdown {...props} options={generateOptions(optionsCount)} />
-  );
+  const component = <Dropdown {...props} options={generateOptions(optionsCount)} />;
 
   return {
     props: props,
@@ -42,7 +40,7 @@ function render(customProps = {}, optionsCount = 1, deep = false) {
 
 describe('Dropdown', () => {
   it('renders a select menu', () => {
-    const data = render({ value: '1' });
+    const data = render({ value: '1', ariaLabel: 'test aria label' });
 
     expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper.find('select').length).toBe(1);
@@ -92,9 +90,7 @@ describe('Dropdown', () => {
   it('applies additional classNames to select element', () => {
     const data = render({ fieldClassName: 'foo' });
 
-    expect(
-      data.wrapper.find('select').hasClass(data.props.fieldClassName)
-    ).toBe(true);
+    expect(data.wrapper.find('select').hasClass(data.props.fieldClassName)).toBe(true);
     // Make sure we're not replacing the other class names
     expect(data.wrapper.find('select').hasClass('ds-c-field')).toBe(true);
   });
@@ -103,12 +99,8 @@ describe('Dropdown', () => {
     const mediumData = render({ size: 'medium' });
     const smallData = render({ size: 'small' });
 
-    expect(
-      mediumData.wrapper.find('select').hasClass('ds-c-field--medium')
-    ).toBe(true);
-    expect(smallData.wrapper.find('select').hasClass('ds-c-field--small')).toBe(
-      true
-    );
+    expect(mediumData.wrapper.find('select').hasClass('ds-c-field--medium')).toBe(true);
+    expect(smallData.wrapper.find('select').hasClass('ds-c-field--small')).toBe(true);
   });
 
   it('is disabled', () => {
@@ -126,9 +118,7 @@ describe('Dropdown', () => {
   it('is inversed', () => {
     const data = render({ inversed: true });
 
-    expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(
-      true
-    );
+    expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(true);
   });
 
   it('focuses the select when focusTrigger is passed', () => {
@@ -141,9 +131,7 @@ describe('Dropdown', () => {
       true
     );
 
-    expect(data.wrapper.find('select').props().id).toEqual(
-      document.activeElement.id
-    );
+    expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
   });
 
   describe('event handlers', () => {
@@ -161,9 +149,7 @@ describe('Dropdown', () => {
         onChange: onChangeMock
       };
 
-      wrapper = shallow(
-        <Dropdown {...sharedProps} options={generateOptions(10)} />
-      );
+      wrapper = shallow(<Dropdown {...sharedProps} options={generateOptions(10)} />);
     });
 
     it('calls the onChange handler', () => {

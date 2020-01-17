@@ -1,144 +1,60 @@
-// NOTE: This file defines new color variables that aren't part of the set of
-// USWDS variables. The default USWDS color variables are located in
-// vendor/uswds/core/_variables
-
-/*
-Color
-
-@uswds https://standards.usa.gov/components/colors/
-
-<p class="ds-text--lead">The design system provides a flexible, yet distinctly American palette designed to communicate warmth and trustworthiness while meeting the highest standards of 508 color contrast requirements.</p>
-
-The palette is designed to support a range of distinct visual styles that continue to feel connected. The intent of the palette is to convey a warm and open American spirit, with bright saturated tints of blue, grounded in sophisticated deeper shades of cool blues and grays. These colors — combined with clear hierarchy, good information design, and ample white space — should leave users feeling welcomed and in good hands.
-
-This is a simple, minimalist color palette. Shades of blue dominate, providing a neutral backdrop on which brighter shades, clean type treatment, and bright white content areas “pop” on the page.
-
-Style guide: style.color
-*/
-
-/*
-Primary colors
-
-@hide-markup
-
-This palette’s primary colors are blue, gray, and white. Blue is commonly associated with trust, confidence, and sincerity; it is also used to represent calmness and responsibility.
-
-Markup:
-<% var colors = [
-  'primary', 'primary-darker', 'primary-darkest',
-  'base', 'gray-dark', 'gray-light', 'white'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.primary
-*/
-
-/*
-Secondary colors
-
-@hide-markup
-
-These are accent colors to provide additional lightness and style to pages looking for a more modern flair. These colors should be used to highlight important features on a page, such as buttons, or for visual style elements, such as illustrations. They should be used sparingly and never draw the eye to more than one piece of information at a time.
-
-Markup:
-<% var colors = [
-  'primary-alt-darkest', 'primary-alt-dark', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.secondary
-*/
-
-/*
-Background colors
-
-@hide-markup
-
-These colors are used largely for background blocks and large content areas. When alternating between tones, be sure to use enough contrast between adjacent colors.
-
-Markup:
-<% var colors = [
-  'background', 'background-inverse', 'gray-dark', 'gray', 'gray-light', 'gray-lighter', 'gray-lightest'
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.background
-*/
-
-/*
-Status colors
-
-@hide-markup
-
-These colors are used largely to indicate the status of something. Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
-
-Markup:
-<% var colors = [
-  'success', 'success-light', 'success-lighter', 'success-lightest',
-  'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
-  'error-darkest', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
-]; -%>
-<div class="ds-l-container">
-  <div class="ds-l-row">
-    <% colors.forEach(color => { -%>
-      <article class="ds-l-col--6 ds-l-md-col--4 ds-l-lg-col--3 ds-u-padding-x--1 ds-u-padding-bottom--2 c-swatch">
-        <div class="c-swatch__preview ds-u-fill--<%= color %>"></div>
-        <strong class="js-swatch-hex">#</strong>
-        <code class="c-swatch__label">
-          $color-<%= color %>
-        </code>
-      </article>
-    <% }) -%>
-  </div>
-
-Style guide: style.color.status
-*/
-
 // Generic
-// USWDS doesn't include a "lighter" variant for red, so we create one
-// in order to be consistent with the other "state" colors.
-$color-secondary-lighter: mix($color-secondary-light, $color-secondary-lightest)
-  !default;
+$color-white: #fff !default;
+$color-base: #212121 !default;
+$color-black: #000 !default;
 
-$color-error: $color-secondary !default;
-$color-error-dark: $color-secondary-dark !default;
-$color-error-darkest: $color-secondary-darkest !default;
-$color-error-light: $color-secondary-light !default;
-$color-error-lighter: $color-secondary-lighter !default;
-$color-error-lightest: $color-secondary-lightest !default;
+$color-gray-dark: #323a45 !default;
+$color-gray: #5b616b !default;
+$color-gray-medium: #757575 !default;
+$color-gray-light: #aeb0b5 !default;
+$color-gray-lighter: #d6d7d9 !default;
+$color-gray-lightest: #f1f1f1 !default;
+
+$color-gray-warm-dark: #494440 !default;
+$color-gray-warm-light: #e4e2e0 !default;
+$color-gray-cool-light: #dce4ef !default;
+
+$color-primary: #0071bc !default;
+$color-primary-darker: #205493 !default;
+$color-primary-darkest: #112e51 !default;
+
+$color-primary-alt: #02bfe7 !default;
+$color-primary-alt-dark: #00a6d2 !default;
+$color-primary-alt-darkest: #046b99 !default;
+$color-primary-alt-light: #9bdaf1 !default;
+$color-primary-alt-lightest: #e1f3f8 !default;
+
+$color-red: #e31c3d !default;
+$color-red-dark: #cd2026 !default;
+$color-red-darkest: #981b1e !default;
+$color-red-light: #e59393 !default;
+$color-red-lighter: #f5adb9 !default;
+$color-red-lightest: #f9dede !default;
+
+$color-gold: #fdb81e !default;
+$color-gold-light: #f9c642 !default;
+$color-gold-lighter: #fad980 !default;
+$color-gold-lightest: #fff1d2 !default;
+
+$color-green: #2e8540 !default;
+$color-green-dark: #2a7a3b !default;
+$color-green-darker: #266e35 !default;
+$color-green-light: #4aa564 !default;
+$color-green-lighter: #94bfa2 !default;
+$color-green-lightest: #e7f4e4 !default;
+
+$color-cool-blue: #205493 !default;
+$color-cool-blue-light: #4773aa !default;
+$color-cool-blue-lighter: #8ba6ca !default;
+$color-cool-blue-lightest: #dce4ef !default;
+
+// Status
+$color-error: $color-red !default;
+$color-error-dark: $color-red-dark !default;
+$color-error-darkest: $color-red-darkest !default;
+$color-error-light: $color-red-light !default;
+$color-error-lighter: $color-red-lighter !default;
+$color-error-lightest: $color-red-lightest !default;
 
 $color-warn: $color-gold !default;
 $color-warn-light: $color-gold-light !default;
@@ -146,8 +62,8 @@ $color-warn-lighter: $color-gold-lighter !default;
 $color-warn-lightest: $color-gold-lightest !default;
 
 $color-success: $color-green !default;
-$color-success-dark: darken($color-green, 3%) !default;
-$color-success-darker: darken($color-green, 6%) !default;
+$color-success-dark: $color-green-dark !default;
+$color-success-darker: $color-green-darker !default;
 $color-success-light: $color-green-light !default;
 $color-success-lighter: $color-green-lighter !default;
 $color-success-lightest: $color-green-lightest !default;
@@ -158,19 +74,25 @@ $color-base-inverse: $color-white !default;
 $color-muted-inverse: #bac5cf !default;
 
 // Focus
-// USWDS has a default focus color, but we want one that can be applied to
-// fields that are displayed on top of an inverted background
+$color-focus: #3e94cf !default;
 $color-focus-inverse: #59bcff !default;
-$focus-shadow-inverse: 0 0 3px $color-focus-inverse,
-  0 0 7px $color-focus-inverse !default;
+$color-visited: #4c2c92 !default;
 
 // Background
 $color-background: $color-white !default;
 $color-background-inverse: $color-primary-darkest;
-$color-background-dialog-mask: rgba(0, 0, 0, 0.5) !default;
+$color-background-dialog-mask: rgba($color-black, 0.5) !default;
 $color-background-dialog: $color-white !default;
 
 // Border
 $border-color: $color-gray-lighter !default;
 $border-color-dark: $color-gray-dark !default;
 $border-color-inverse: $color-white !default;
+
+// TODO: deprecate $color-secondary
+$color-secondary: $color-red !default;
+$color-secondary-dark: $color-red-dark !default;
+$color-secondary-darkest: $color-red-darkest !default;
+$color-secondary-light: $color-red-light !default;
+$color-secondary-lighter: $color-red-lighter !default;
+$color-secondary-lightest: $color-red-lightest !default;

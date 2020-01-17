@@ -6,8 +6,6 @@ describe('githubUrl', () => {
   });
 
   it('return repo URL with path', () => {
-    expect(githubUrl('foo')).toBe(
-      'https://github.com/CMSgov/design-system/foo'
-    );
+    expect(githubUrl('foo')).toBe('https://github.com/CMSgov/design-system/foo');
   });
 });

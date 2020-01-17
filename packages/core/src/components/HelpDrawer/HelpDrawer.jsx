@@ -27,9 +27,9 @@ export class HelpDrawer extends React.PureComponent {
       <div className="ds-c-help-drawer">
         <div className="ds-c-help-drawer__header">
           {/* The nested div below might seem redundant, but we need a
-            * separation between our sticky header, and the flex container
-            * so things display as expected when the body content overflows
-            */}
+           * separation between our sticky header, and the flex container
+           * so things display as expected when the body content overflows
+           */}
           <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
             <h3
               ref={el => (this.titleRef = el)}
@@ -43,7 +43,6 @@ export class HelpDrawer extends React.PureComponent {
               className="ds-u-margin-left--auto"
               size="small"
               onClick={onCloseClick}
-              variation="secondary"
             >
               {closeButtonText}
             </Button>
