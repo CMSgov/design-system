@@ -17,6 +17,8 @@ export class VerticalNavItemLabel extends React.PureComponent {
   componentType() {
     if (this.props.hasSubnav) {
       return 'button';
+    } else if (this.props.component) {
+      return this.props.component;
     } else if (this.props.url) {
       return 'a';
     }
@@ -53,10 +55,11 @@ export class VerticalNavItemLabel extends React.PureComponent {
       onClick: this.props.onClick ? this.handleClick : undefined
     };
 
-    if (this.LabelComponent === 'a') {
-      props = Object.assign(props, this.anchorProps());
-    } else if (this.LabelComponent === 'button') {
+    if (this.LabelComponent === 'button') {
       props = Object.assign(props, this.buttonProps());
+    } else if (this.LabelComponent !== 'div') {
+      // Apply href if <a> or custom component type
+      props = Object.assign(props, this.anchorProps());
     }
 
     return <this.LabelComponent {...props}>{this.props.label}</this.LabelComponent>;
@@ -72,6 +75,7 @@ VerticalNavItemLabel.propTypes = {
   ariaCollapsedStateButtonLabel: PropTypes.string,
   ariaExpandedStateButtonLabel: PropTypes.string,
   collapsed: PropTypes.bool,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   hasSubnav: PropTypes.bool,
   label: PropTypes.node.isRequired,
   onClick: PropTypes.func,

@@ -58,6 +58,12 @@ VerticalNav.propTypes = {
    */
   collapsed: PropTypes.bool,
   /**
+   * When provided, this will render the passed in component for all `VerticalNavItem`s. This is useful when
+   * integrating with React Router's `<Link>` or using your own custom component.
+   * If more specific control is needed, each `VerticalNavItem` object also accepts a `component` prop.
+   */
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  /**
    * The `id` of the selected `VerticalNavItem`. This will also set the
    * `selected` prop on the item's parents.
    */
@@ -66,7 +72,7 @@ VerticalNav.propTypes = {
   /**
    * An array of `VerticalNavItem` data objects
    */
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape(VerticalNavItem.propTypes)).isRequired,
   /**
    * Indicates this list is nested within another nav item.
    */
