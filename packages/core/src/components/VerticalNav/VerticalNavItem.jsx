@@ -103,6 +103,7 @@ export class VerticalNavItem extends React.PureComponent {
           collapsed={this.state.collapsed}
           id={this.subnavId}
           items={this.subnavItems()}
+          component={this.props.component}
           nested
         />
       );

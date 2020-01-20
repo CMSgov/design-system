@@ -16,7 +16,8 @@ ReactDOM.render(
     items={[
       {
         label: 'Parent link',
-        url: 'javascript:void(0);'
+        url: 'javascript:void(0);',
+        id: 'parentlink1'
       },
       {
         label: 'Current page',
@@ -30,18 +31,17 @@ ReactDOM.render(
           {
             label: 'Child link',
             selected: true,
+            component: Link,
             items: [
               {
                 id: 'grandchildlink1',
                 label: 'Grandchild link',
-                url: 'javascript:void(0);',
-                component: Link
+                url: 'javascript:void(0);'
               },
               {
                 id: 'grandchildlink2',
                 label: 'Grandchild link',
                 url: 'javascript:void(0);',
-                component: Link,
                 selected: true
               }
             ]
@@ -55,7 +55,8 @@ ReactDOM.render(
       },
       {
         label: 'Parent link',
-        url: 'javascript:void(0);'
+        url: 'javascript:void(0);',
+        id: 'parentlink2'
       }
     ]}
   />,
