@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import VerticalNav from './VerticalNav';
 
 // Mock react-router example
-const Link = props => {
-  // return <Link to={props.href} {...props}>{props.children}</Link>
-  return <span {...props}>{props.children}</span>;
-};
+const Link = props => (
+  // <Link to={props.href} {...props}>{props.children}</Link>
+  <span {...props}>{props.children}</span>
+);
 Link.propTypes = { children: PropTypes.node };
 
 ReactDOM.render(

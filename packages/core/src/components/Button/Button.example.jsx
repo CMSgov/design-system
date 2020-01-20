@@ -1,6 +1,14 @@
 import React, { Fragment } from 'react';
 import Button from './Button';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+
+// Mock react-router example
+const Link = props => (
+  // <Link to={props.href} {...props}>{props.children}</Link>
+  <span {...props}>{props.children}</span>
+);
+Link.propTypes = { children: PropTypes.node };
 
 ReactDOM.render(
   <Fragment>
@@ -13,6 +21,9 @@ ReactDOM.render(
     </Button>
     <Button className="ds-u-margin-right--1" href="javascript:void(0);">
       Button with `href` prop
+    </Button>
+    <Button className="ds-u-margin-right--1" component={Link}>
+      Button with `component` prop
     </Button>
   </Fragment>,
   document.getElementById('js-example')
