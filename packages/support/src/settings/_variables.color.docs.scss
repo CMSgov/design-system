@@ -99,9 +99,9 @@ Status colors can also be used with these aliases where `green`, `gold`, and `re
 
 Markup:
 <% var colors = [
-  'success', 'success-light', 'success-lighter', 'success-lightest',
-  'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
-  'error-darkest', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
+  'success-darkest', 'success-darker', 'success-dark', 'success', 'success-light', 'success-lighter', 'success-lightest',
+  'warn-darkest', 'warn-darker', 'warn-dark', 'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
+  'error-darkest', 'error-darker', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
 ]; -%>
 <div class="">
     <% colors.forEach(color => { -%>
