@@ -40,13 +40,15 @@
   // width: 100%;
     // height: 100vh;
     overflow-y: scroll;
+   
 }
 
 .ds-c-help-drawer__content-container {
   // bottom: 0;
   display: flex; // Flex layout helps stick the footer to the bottom
   flex-direction: column;
-  height: calc(100vh - 60px);
+  padding-bottom: 80px;
+  // height: calc(100vh - 60px);
   // height: 100vh;
   // left: 0;
   // overflow-y: scroll;
@@ -64,4 +66,9 @@
   }
   // Stretch so that the footer sticks to the bottom of the screen
   flex-grow: 1;
+}
+.ds-c-help-drawer__footer {
+  bottom:0;
+  position: absolute;
+  width: 100%;
 }
