@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+const DEFAULT_COMPONENT_TYPE = 'div';
+
 export class VerticalNavItemLabel extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
       return 'a';
     }
 
-    return 'div';
+    return DEFAULT_COMPONENT_TYPE;
   }
 
   handleClick(evt) {
@@ -57,7 +59,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
 
     if (this.LabelComponent === 'button') {
       props = Object.assign(props, this.buttonProps());
-    } else if (this.LabelComponent !== 'div') {
+    } else if (this.LabelComponent !== DEFAULT_COMPONENT_TYPE) {
       // Apply href if <a> or custom component type
       props = Object.assign(props, this.anchorProps());
     }
