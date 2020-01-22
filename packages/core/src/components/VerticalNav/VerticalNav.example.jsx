@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import VerticalNav from './VerticalNav';
+import classNames from 'classnames';
 
 // Mock react-router example
-const Link = props => (
+const Link = ({ className, ...props }) => (
   // <Link to={props.href} {...props}>{props.children}</Link>
-  <span {...props}>{props.children}</span>
+  <a className={classNames(className, 'special-link')} {...props}>
+    {props.children}
+  </a>
 );
 Link.propTypes = { children: PropTypes.node };
 

@@ -60,7 +60,8 @@ export class Button extends React.PureComponent {
 
   classNames() {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-    const disabledClass = this.props.disabled && this.props.href && 'ds-c-button--disabled';
+    const disabledClass =
+      this.props.disabled && (this.props.href || this.props.component) && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
     const inverseClass = this.props.inverse && 'ds-c-button--inverse';
 
@@ -86,6 +87,9 @@ export class Button extends React.PureComponent {
 
     if (this.props.component) {
       ComponentType = this.props.component;
+      // Assume `component` is not a <button>
+      delete attrs.disabled;
+      delete attrs.type;
     } else if (this.props.href) {
       ComponentType = 'a';
       // Remove <button> specific attributes

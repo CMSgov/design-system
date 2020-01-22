@@ -7,9 +7,9 @@ import classNames from 'classnames';
 // Mock react-router example
 const Link = ({ className, ...props }) => (
   // <Link to={props.href} {...props}>{props.children}</Link>
-  <span className={classNames(className, 'ds-c-link')} {...props}>
+  <a className={classNames(className, 'special-link')} {...props}>
     {props.children}
-  </span>
+  </a>
 );
 Link.propTypes = { children: PropTypes.node };
 
