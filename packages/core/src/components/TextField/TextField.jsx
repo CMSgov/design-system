@@ -216,7 +216,7 @@ TextField.propTypes = {
    */
   label: PropTypes.node.isRequired,
   /**
-   * Additional classes to be added to the label
+   * Additional classes to be added to the `FormLabel`.
    */
   labelClassName: PropTypes.string,
   /**
