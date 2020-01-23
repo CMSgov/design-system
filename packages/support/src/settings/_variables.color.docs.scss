@@ -95,13 +95,13 @@ Status colors
 These colors are used largely to indicate the status of something. 
 Be cautious using these colors to signify something that may contradict what most people would expect the colors to be used for.
 
-Status colors can also be used with these aliases where `green`, `gold`, and `red` are identical to `success`, `warn`, and `error`. Use these alternate naming options when statuses aren't approproiate or give enough detail. For example, in some situations, `$color-red-darker` might be more accurate and descriptive than `$color-error-darker`.
+Status colors can also be used with these aliases where `green`, `gold`, and `red` are identical to `success`, `warn`, and `error`. Use these alternate naming options when statuses aren't approproiate or give enough detail. For example, in some situations, `$color-red-dark` might be more accurate and descriptive than `$color-error-darker`.
 
 Markup:
 <% var colors = [
-  'success', 'success-light', 'success-lighter', 'success-lightest',
-  'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
-  'error-darkest', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
+  'success-darkest', 'success-darker', 'success-dark', 'success', 'success-light', 'success-lighter', 'success-lightest',
+  'warn-darkest', 'warn-darker', 'warn-dark', 'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
+  'error-darkest', 'error-darker', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
 ]; -%>
 <div class="">
     <% colors.forEach(color => { -%>
