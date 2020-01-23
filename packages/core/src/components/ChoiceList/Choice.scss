@@ -65,7 +65,7 @@ $ds-c-inset-border-width: $spacer-half;
 .ds-c-choice:focus + label::before {
   border-color: $color-base;
   border-width: 3px;
-  box-shadow: 0 0 0 3px $color-focus;
+  box-shadow: 0 0 0 3px $focus-color;
   // Transparent outline for Windows High Contrast Mode
   outline: 3px solid transparent;
   outline-offset: 3px;
@@ -81,7 +81,7 @@ $ds-c-inset-border-width: $spacer-half;
 
 .ds-c-choice--inverse:focus + label::before {
   border-color: $choice-border-color-inverse;
-  box-shadow: 0 0 0 3px $color-focus-inverse;
+  box-shadow: 0 0 0 3px $focus-color-inverse;
 }
 
 // Display a checkmark

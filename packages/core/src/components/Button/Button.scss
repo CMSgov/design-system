@@ -25,7 +25,7 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $color-focus;
+    background-color: $focus-color;
     border-bottom-color: transparent;
     border-color: $color-base;
     box-shadow: $focus-shadow-link;
@@ -151,7 +151,7 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $color-focus;
+    background-color: $focus-color;
     border-color: transparent;
     box-shadow: $focus-shadow-link-inverse;
     color: $color-base;
@@ -251,9 +251,9 @@
  *  Status variants
  */
 $button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $color-focus,
-  success: $color-success $color-success-dark $color-success-darker $color-focus,
-  danger: $color-error $color-error-dark $color-error-darkest $color-focus,
+  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color,
+  success: $color-success $color-success-dark $color-success-darker $focus-color,
+  danger: $color-error $color-error-dark $color-error-darkest $focus-color,
 );
 
 @each $colors in map-keys($button-color-variants) {

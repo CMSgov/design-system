@@ -1,5 +1,5 @@
 @mixin focus-text {
-  background-color: $color-focus;
+  background-color: $focus-color;
   box-shadow: $focus-shadow-link;
   color: $color-base;
   outline: 3px solid transparent;
@@ -7,7 +7,7 @@
 }
 
 @mixin focus-text-inverse {
-  background-color: $color-focus-inverse;
+  background-color: $focus-color-inverse;
   box-shadow: $focus-shadow-link-inverse;
   color: $color-base;
   outline: 3px solid transparent;
