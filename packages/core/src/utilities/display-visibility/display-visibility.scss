@@ -37,6 +37,12 @@
   word-wrap: normal;
 }
 
+@media print {
+  .ds-u-visibility--hidden-print {
+    display: none !important;
+  }
+}
+
 @each $breakpoint in map-keys($breakpoints) {
   $value: map-get($breakpoints, $breakpoint);
 
