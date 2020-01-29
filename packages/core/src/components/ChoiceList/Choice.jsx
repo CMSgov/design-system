@@ -15,7 +15,7 @@ export class Choice extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.inputPlacement === 'right') {
         console.warn(
-          `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+          `[Deprecated]: Please remove the 'inputPlacement' prop in <Choice>. This prop is no longer supported and will be removed in a future release.`
         );
       }
     }
