@@ -3,61 +3,11 @@
  * Via: github.com/18F/web-design-standards-docs
  */
 const pkg = require('../../../package.json');
-const gutil = require('gulp-util');
-const chalk = gutil.colors;
+const log = require('fancy-log');
+const c = require('ansi-colors');
 const notifier = require('node-notifier');
 
 const shellPrefix = '$';
-
-function drawFlag() {
-  // American Flag in ASCII
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.blue('xxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.white('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-  gutil.log(
-    chalk.red('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-  );
-}
 
 function notify(title, message, wait) {
   notifier.notify({
@@ -73,30 +23,28 @@ module.exports = {
 
   logIntroduction: function(message) {
     message = message || 'CMS.gov Design System';
-
-    gutil.log(chalk.yellow(pkg.name), message);
-    drawFlag();
+    log(c.yellow(pkg.name), message);
   },
 
   logCommand: function(name, message) {
-    gutil.log(shellPrefix, chalk.cyan(name), chalk.magenta(message));
+    log(shellPrefix, c.cyan(name), c.magenta(message));
   },
 
   logHelp: function(name, message) {
-    gutil.log(shellPrefix, chalk.cyan(name), chalk.yellow(message));
+    log(shellPrefix, c.cyan(name), c.yellow(message));
   },
 
   logData: function(name, message) {
-    gutil.log(chalk.cyan(name), chalk.yellow(message));
+    log(c.cyan(name), c.yellow(message));
   },
 
   logError: function(name, message) {
-    gutil.log(chalk.red(name), chalk.yellow(message));
+    log(c.red(name), c.yellow(message));
     notify(this.dirName + ' gulp ' + name, message, true);
   },
 
   logMessage: function(name, message) {
-    gutil.log(chalk.cyan(name), chalk.green(message));
+    log(c.cyan(name), c.green(message));
     notify(this.dirName + ' gulp ' + name, message, false);
   }
 };
