@@ -60,17 +60,20 @@ module.exports = (gulp, shared) => {
    * directory, so once everything is built with the proper relative URLs, we
    * move everything into the root of the directory.
    */
-  gulp.task('build:gh-pages', () => {
+  gulp.task('build:gh-pages', done => {
     if (shared.rootPath !== '') {
       dutil.logMessage('🤝 ', 'Moving files to root of docs directory');
       return gulp
         .src(`${shared.docsPath}/${shared.rootPath}/**/*`)
         .pipe(gulp.dest(shared.docsPath));
+    } else {
+      done();
     }
   });
 
-  gulp.task('build:success', () => {
+  gulp.task('build:success', done => {
     dutil.logMessage('✅ ', 'Build succeeded');
+    done();
   });
 
   /**

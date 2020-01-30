@@ -182,13 +182,16 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images')));
   });
 
-  gulp.task('docs:images', gulp.series(['docs:images:core']), () => {
-    dutil.logMessage('🏞 ', 'Copying images from "src" directory into "public" directory');
+  gulp.task(
+    'docs:images',
+    gulp.series('docs:images:core', () => {
+      dutil.logMessage('🏞 ', 'Copying images from "src" directory into "public" directory');
 
-    return gulp
-      .src(`${docsPkgDirectory}/src/**/images/*`)
-      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
-  });
+      return gulp
+        .src(`${docsPkgDirectory}/src/**/images/*`)
+        .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
+    })
+  );
 
   gulp.task('docs:fonts', gulp.series('docs:fonts:core', 'docs:fonts:theme'));
 
@@ -267,10 +270,8 @@ module.exports = (gulp, shared) => {
       'docs:generate-pages',
       'docs:public',
       seriesDone => {
-        console.log('before series');
         seriesDone();
         done();
-        console.log('after series');
       }
     )();
 
