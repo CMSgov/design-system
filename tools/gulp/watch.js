@@ -4,7 +4,7 @@
  * automatically be reflected in the browser when the changes are saved.
  */
 const dutil = require('./common/log-util');
-const runSequence = require('run-sequence');
+const runSequence = require('gulp4-run-sequence');
 const packagesRegex = require('./common/packagesRegex');
 
 module.exports = (gulp, shared) => {

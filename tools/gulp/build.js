@@ -6,7 +6,7 @@
 const babel = require('gulp-babel');
 const del = require('del');
 const dutil = require('./common/log-util');
-const runSequence = require('run-sequence');
+const runSequence = require('gulp4-run-sequence');
 
 module.exports = (gulp, shared) => {
   const babelTasks = shared.packages.map(pkg => `build:babel:${pkg}`);

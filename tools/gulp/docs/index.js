@@ -18,7 +18,6 @@ const packagesRegex = require('../common/packagesRegex');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
 const processKssSection = require('./processKssSection');
-const runSequence = require('run-sequence');
 const uniquePages = require('./uniquePages');
 
 const docsPkgDirectory = 'packages/docs';
@@ -148,9 +147,6 @@ module.exports = (gulp, shared) => {
   });
 
   // Convenience-task for copying assets to the "public" directory
-  gulp.task('docs:public', ['docs:fonts', 'docs:images']);
-
-  gulp.task('docs:fonts', ['docs:fonts:core', 'docs:fonts:theme']);
 
   gulp.task('docs:fonts:core', () => {
     dutil.logMessage('🔡 ', 'Copying fonts from core package into "public" directory');
@@ -160,7 +156,7 @@ module.exports = (gulp, shared) => {
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
   });
 
-  gulp.task('docs:fonts:theme', () => {
+  gulp.task('docs:fonts:theme', done => {
     if (shared.theme) {
       dutil.logMessage(
         '🔡 ',
@@ -170,18 +166,13 @@ module.exports = (gulp, shared) => {
       return gulp
         .src(`packages/${shared.theme}/src/fonts/**/*`)
         .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
+    } else {
+      done();
     }
   });
 
   // The docs use the design system's Sass files, which don't have the
   // images inlined, so we need to be able to reference them by their URL
-  gulp.task('docs:images', ['docs:images:core'], () => {
-    dutil.logMessage('🏞 ', 'Copying images from "src" directory into "public" directory');
-
-    return gulp
-      .src(`${docsPkgDirectory}/src/**/images/*`)
-      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
-  });
 
   gulp.task('docs:images:core', () => {
     dutil.logMessage('🏞 ', 'Copying images from core package into "public" directory');
@@ -190,6 +181,18 @@ module.exports = (gulp, shared) => {
       .src('packages/core/images/*')
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images')));
   });
+
+  gulp.task('docs:images', gulp.series(['docs:images:core']), () => {
+    dutil.logMessage('🏞 ', 'Copying images from "src" directory into "public" directory');
+
+    return gulp
+      .src(`${docsPkgDirectory}/src/**/images/*`)
+      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
+  });
+
+  gulp.task('docs:fonts', gulp.series('docs:fonts:core', 'docs:fonts:theme'));
+
+  gulp.task('docs:public', gulp.series('docs:fonts', 'docs:images'));
 
   /**
    * Generate HTML pages from CSS and JS comments and Markdown files. This
@@ -258,6 +261,22 @@ module.exports = (gulp, shared) => {
 
     dutil.logMessage('🏃 ', message);
 
-    runSequence('docs:clean', 'docs:react', ['docs:generate-pages', 'docs:public'], done);
+    return gulp.series(
+      'docs:clean',
+      'docs:react',
+      'docs:generate-pages',
+      'docs:public',
+      seriesDone => {
+        console.log('before series');
+        seriesDone();
+        done();
+        console.log('after series');
+      }
+    )();
+
+    // return gulp.series(...tasks, (seriesDone) => {
+    //   seriesDone();
+    //   done();
+    // })();
   });
 };
