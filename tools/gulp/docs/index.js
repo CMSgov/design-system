@@ -146,8 +146,6 @@ module.exports = (gulp, shared) => {
     return del(buildPath(shared.docsPath, ''));
   });
 
-  // Convenience-task for copying assets to the "public" directory
-
   gulp.task('docs:fonts:core', () => {
     dutil.logMessage('🔡 ', 'Copying fonts from core package into "public" directory');
 
@@ -194,6 +192,8 @@ module.exports = (gulp, shared) => {
   );
 
   gulp.task('docs:fonts', gulp.series('docs:fonts:core', 'docs:fonts:theme'));
+
+  // Convenience-task for copying assets to the "public" directory
 
   gulp.task('docs:public', gulp.series('docs:fonts', 'docs:images'));
 
@@ -274,10 +274,5 @@ module.exports = (gulp, shared) => {
         done();
       }
     )();
-
-    // return gulp.series(...tasks, (seriesDone) => {
-    //   seriesDone();
-    //   done();
-    // })();
   });
 };
