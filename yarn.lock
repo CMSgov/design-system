@@ -8381,13 +8381,13 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nunjucks@^3.0.1:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.1.3.tgz#9a23c844af01c143a0b40f3bdd1212a9d7877260"
+nunjucks@>=3.2.0, nunjucks@^3.0.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/nunjucks/-/nunjucks-3.2.0.tgz#53e95f43c9555e822e8950008a201b1002d49933"
+  integrity sha512-YS/qEQ6N7qCnUdm6EoYRBfJUdWNT0PpKbbRnogV2XyXbBm2STIP1O6yrdZHgwMVK7fIYUx7i8+yatEixnXSB1w==
   dependencies:
     a-sync-waterfall "^1.0.0"
     asap "^2.0.3"
-    postinstall-build "^5.0.1"
     yargs "^3.32.0"
   optionalDependencies:
     chokidar "^2.0.0"
@@ -9470,10 +9470,6 @@ postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.7:
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
-
-postinstall-build@^5.0.1:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/postinstall-build/-/postinstall-build-5.0.3.tgz#238692f712a481d8f5bc8960e94786036241efc7"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
