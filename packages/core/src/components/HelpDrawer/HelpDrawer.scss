@@ -34,29 +34,18 @@
   }
 }
 
-.ds-c-help-drawer__body {
-  // flex-grow: 1; // Stretch so that the container takes up the rest of the screen
-  // position: relative;
-  // width: 100%;
-    // height: 100vh;
-    overflow-y: scroll;
-   
+.ds-c-help-drawer__close-button {
+  flex-shrink: 0;
 }
 
-.ds-c-help-drawer__content-container {
-  // bottom: 0;
-  display: flex; // Flex layout helps stick the footer to the bottom
-  flex-direction: column;
-  padding-bottom: 80px;
-  // height: calc(100vh - 60px);
-  // height: 100vh;
-  // left: 0;
-  // overflow-y: scroll;
-  // overflow-x: hidden;
-  
-  // position: absolute;
-  // right: 0;
-  // top: 0;
+.ds-c-help-drawer__header {
+  flex-shrink:0;
+}
+
+.ds-c-help-drawer__body {
+  flex-grow: 1;    
+  overflow-y: scroll;
+    
 }
 
 .ds-c-help-drawer__content {
@@ -64,11 +53,4 @@
     // Prevent too much space at the top of the body area
     margin-top: 0;
   }
-  // Stretch so that the footer sticks to the bottom of the screen
-  flex-grow: 1;
-}
-.ds-c-help-drawer__footer {
-  bottom:0;
-  position: absolute;
-  width: 100%;
 }
