@@ -19,7 +19,7 @@ export class Button extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.buttonRef) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'buttonRef' for the <Button> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead`
+          `[Deprecated]: Please remove the 'buttonRef' prop in <Button>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -60,7 +60,8 @@ export class Button extends React.PureComponent {
 
   classNames() {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
-    const disabledClass = this.props.disabled && this.props.href && 'ds-c-button--disabled';
+    const disabledClass =
+      this.props.disabled && (this.props.href || this.props.component) && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
     const inverseClass = this.props.inverse && 'ds-c-button--inverse';
 
@@ -86,6 +87,9 @@ export class Button extends React.PureComponent {
 
     if (this.props.component) {
       ComponentType = this.props.component;
+      // Assume `component` is not a <button>
+      delete attrs.disabled;
+      delete attrs.type;
     } else if (this.props.href) {
       ComponentType = 'a';
       // Remove <button> specific attributes
@@ -139,7 +143,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * (Deprecated) Access a reference to the `button` or `a` element
+   * (Deprecated) Access a reference to the `button` or `a` element. Please use `inputRef` instead.
    */
   buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),

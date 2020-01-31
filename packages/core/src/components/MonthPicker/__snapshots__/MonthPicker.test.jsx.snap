@@ -45,7 +45,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       id={undefined}
     >
       <span
-        className="ds-u-font-weight--bold"
+        className=""
       >
         Months
       </span>

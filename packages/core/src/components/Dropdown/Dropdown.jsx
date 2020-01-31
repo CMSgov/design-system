@@ -11,7 +11,7 @@ export class Dropdown extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.fieldRef) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'fieldRef' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+          `[Deprecated]: Please remove the 'fieldRef' prop in <Dropdown>, use 'inputRef' instead. This prop is no longer supported and will be removed in a future release.`
         );
       }
       if (props.children && props.options.length > 0) {
@@ -158,7 +158,7 @@ Dropdown.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * (Deprecated) Access a reference to the `select` element
+   * (Deprecated) Access a reference to the `select` element. Please use `inputRef` instead.
    */
   fieldRef: PropTypes.func,
   /**

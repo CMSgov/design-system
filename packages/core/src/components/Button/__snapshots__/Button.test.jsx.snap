@@ -68,7 +68,6 @@ exports[`Button applies variation classes 1`] = `
 exports[`Button renders as a Link 1`] = `
 <Link
   className="ds-c-button"
-  type="submit"
 >
   Foo
 </Link>

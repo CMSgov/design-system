@@ -59,7 +59,7 @@
   background-color: $color-muted-inverse !important;
 }
 
-// gold
+// Gold
 .ds-u-fill--gold {
   background-color: $color-gold !important;
 }
@@ -76,7 +76,19 @@
   background-color: $color-gold-lightest !important;
 }
 
-// green
+.ds-u-fill--gold-dark {
+  background-color: $color-gold-dark !important;
+}
+
+.ds-u-fill--gold-darker {
+  background-color: $color-gold-darker !important;
+}
+
+.ds-u-fill--gold-darkest {
+  background-color: $color-gold-darkest !important;
+}
+
+// Green
 .ds-u-fill--green {
   background-color: $color-green !important;
 }
@@ -91,6 +103,18 @@
 
 .ds-u-fill--green-lightest {
   background-color: $color-green-lightest !important;
+}
+
+.ds-u-fill--green-dark {
+  background-color: $color-green-dark !important;
+}
+
+.ds-u-fill--green-darker {
+  background-color: $color-green-darker !important;
+}
+
+.ds-u-fill--green-darkest {
+  background-color: $color-green-darkest !important;
 }
 
 // red
@@ -110,17 +134,22 @@
   background-color: $color-red-lightest !important;
 }
 
-// state colors
+.ds-u-fill--red-dark {
+  background-color: $color-red-dark !important;
+}
+
+.ds-u-fill--red-darker {
+  background-color: $color-red-darker !important;
+}
+
+.ds-u-fill--red-darkest {
+  background-color: $color-red-darkest !important;
+}
+
+// State color - error
+
 .ds-u-fill--error {
   background-color: $color-error !important;
-}
-
-.ds-u-fill--error-dark {
-  background-color: $color-error-dark !important;
-}
-
-.ds-u-fill--error-darkest {
-  background-color: $color-error-darkest !important;
 }
 
 .ds-u-fill--error-light {
@@ -134,6 +163,20 @@
 .ds-u-fill--error-lightest {
   background-color: $color-error-lightest !important;
 }
+
+.ds-u-fill--error-dark {
+  background-color: $color-error-dark !important;
+}
+
+.ds-u-fill--error-darker {
+  background-color: $color-error-darker !important;
+}
+
+.ds-u-fill--error-darkest {
+  background-color: $color-error-darkest !important;
+}
+
+// State color - warn
 
 .ds-u-fill--warn {
   background-color: $color-warn !important;
@@ -151,6 +194,20 @@
   background-color: $color-warn-lightest !important;
 }
 
+.ds-u-fill--warn-dark {
+  background-color: $color-warn-dark !important;
+}
+
+.ds-u-fill--warn-darker {
+  background-color: $color-warn-darker !important;
+}
+
+.ds-u-fill--warn-darkest {
+  background-color: $color-warn-darkest !important;
+}
+
+// State color - success
+
 .ds-u-fill--success {
   background-color: $color-success !important;
 }
@@ -165,6 +222,18 @@
 
 .ds-u-fill--success-lightest {
   background-color: $color-success-lightest !important;
+}
+
+.ds-u-fill--success-dark {
+  background-color: $color-success-dark !important;
+}
+
+.ds-u-fill--success-darker {
+  background-color: $color-success-darker !important;
+}
+
+.ds-u-fill--success-darkest {
+  background-color: $color-success-darkest !important;
 }
 
 // base colors
