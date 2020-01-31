@@ -43,14 +43,26 @@
 }
 
 .ds-c-help-drawer__body {
-  flex-grow: 1;    
+  height: 100%;   
   overflow-y: scroll;
     
 }
+.ds-c-help-drawer__content-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 .ds-c-help-drawer__content {
+  flex-grow: 1;
+  flex-shrink: 0;
+
   p:first-child {
     // Prevent too much space at the top of the body area
     margin-top: 0;
   }
+}
+
+.ds-c-help-drawer__footer {
+  flex-shrink: 0;
 }
