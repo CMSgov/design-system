@@ -15,7 +15,7 @@ export class Choice extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.inputPlacement === 'right') {
         console.warn(
-          `[Deprecated]: Please remove the React property 'inputPlacement' for the <Choice> component. It is no longer supported and will be removed in a future release.`
+          `[Deprecated]: Please remove the 'inputPlacement' prop in <Choice>. This prop is no longer supported and will be removed in a future release.`
         );
       }
     }
@@ -85,6 +85,7 @@ export class Choice extends React.PureComponent {
       inversed,
       inputPlacement,
       inputClassName,
+      labelClassName,
       requirementLabel,
       size,
       uncheckedChildren,
@@ -121,7 +122,12 @@ export class Choice extends React.PureComponent {
           }}
           {...inputProps}
         />
-        <FormLabel fieldId={this.id} hint={hint} requirementLabel={requirementLabel}>
+        <FormLabel
+          className={labelClassName}
+          fieldId={this.id}
+          hint={hint}
+          requirementLabel={requirementLabel}
+        >
           {children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
@@ -163,6 +169,10 @@ Choice.propTypes = {
    * Additional classes to be added to the `input` element.
    */
   inputClassName: PropTypes.string,
+  /**
+   * Additional classes to be added to the `FormLabel`.
+   */
+  labelClassName: PropTypes.string,
   /**
    * Sets the initial `checked` state. Use this for an uncontrolled component;
    * otherwise, use the `checked` property.

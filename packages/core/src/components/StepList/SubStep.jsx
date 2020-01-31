@@ -8,6 +8,7 @@ export const SubStep = ({ step, ...props }) => (
     <div className="ds-c-substep__title">{step.title}</div>
     {step.completed && (
       <StepLink
+        component={step.component}
         href={step.href}
         stepId={step.id}
         screenReaderText={`"${step.title}"`}

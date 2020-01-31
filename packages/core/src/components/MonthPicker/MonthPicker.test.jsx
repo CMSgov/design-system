@@ -90,12 +90,11 @@ describe('MonthPicker', () => {
 
   it('renders a FormLabel with correct props', () => {
     const { wrapper, props } = renderMonthPicker({
-      labelClassName: 'ds-u-color--primary',
       errorMessage: 'Error!'
     });
     const label = wrapper.find('FormLabel');
     expect(label.props()).toMatchObject({
-      labelClassName: 'ds-u-font-weight--bold ds-u-color--primary',
+      className: 'ds-u-visibility--screen-reader',
       errorMessage: props.errorMessage
     });
   });

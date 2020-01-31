@@ -1,6 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import VerticalNav from './VerticalNav';
+import classNames from 'classnames';
+
+// Mock react-router example
+const Link = ({ className, ...props }) => (
+  // <Link to={props.href} {...props}>{props.children}</Link>
+  <a className={classNames(className, 'special-link')} {...props}>
+    {props.children}
+  </a>
+);
+Link.propTypes = { children: PropTypes.node };
 
 ReactDOM.render(
   <VerticalNav
@@ -8,7 +19,8 @@ ReactDOM.render(
     items={[
       {
         label: 'Parent link',
-        url: 'javascript:void(0);'
+        url: 'javascript:void(0);',
+        id: 'parentlink1'
       },
       {
         label: 'Current page',
@@ -22,6 +34,7 @@ ReactDOM.render(
           {
             label: 'Child link',
             selected: true,
+            component: Link,
             items: [
               {
                 id: 'grandchildlink1',
@@ -45,7 +58,8 @@ ReactDOM.render(
       },
       {
         label: 'Parent link',
-        url: 'javascript:void(0);'
+        url: 'javascript:void(0);',
+        id: 'parentlink2'
       }
     ]}
   />,
