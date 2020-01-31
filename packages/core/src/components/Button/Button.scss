@@ -94,14 +94,8 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: transparent;
-    border-color: transparent;  
-    box-shadow: none;
+    border-color: transparent;
     text-decoration: none;
-
-    .ds-c-button--transparent-text {
-      @include focus-text;
-    }
   }
 
   &:hover,
@@ -111,18 +105,12 @@
     border-color: transparent;
   }
 
-  /* stylelint-disable selector-max-specificity */
   // Make sure active overrides focus styles
   &:active:focus,
   &.ds-c-button--active:focus {
-    .ds-c-button--transparent-text {
-      background-color: transparent;
-      box-shadow: none;
-      color: $color-primary-darkest;
-      text-decoration: underline;
-    }
+    color: $color-primary-darkest;
+    text-decoration: underline;
   }
-  /* stylelint-enable selector-max-specificity */
 
   &:disabled,
   &.ds-c-button--disabled {
@@ -179,13 +167,7 @@
   // Default inverse focus styles are overridden above
   &:focus,
   &.ds-c-button--focus {
-    background-color: transparent;
     border-color: transparent;
-    box-shadow: none;
-
-    .ds-c-button--transparent-text {
-      @include focus-text-inverse;
-    }
   }
 
   &:disabled,
@@ -195,17 +177,6 @@
   &.ds-c-button--hover,
   &.ds-c-button--active {
     border-color: $color-background-inverse;
-  }
-
-  // Make sure active overrides focus styles
-  &:active:focus,
-  &.ds-c-button--active:focus {
-    .ds-c-button--transparent-text {
-      background-color: transparent;
-      box-shadow: none;
-      color: rgba($color-base-inverse, 0.6);
-      text-decoration: underline;
-    }
   }
 }
 
