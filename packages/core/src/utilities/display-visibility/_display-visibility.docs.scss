@@ -29,6 +29,8 @@ There may be times when you want to hide an element, but still want its text to 
 
 **Format**: `ds-u-visibility--[hidden|visible|screen-reader|hidden-print]`
 
+**Responsive format**: `ds-u-[breakpoint]-visibility--[hidden|visible]`
+
 Markup: visibility.example.html
 
 Style guide: utilities.display-visibility.visibility
@@ -41,7 +43,7 @@ Responsive visibility
 
 Use a [breakpoint prefix](/guidelines/responsive) to show/hide content at specific breakpoints.
 
-A breakpoint prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader`.
+A breakpoint prefix is supported on all of the utility classes mentioned above, except for `ds-u-visibility--screen-reader` and `ds-u-visibility--hidden-print`.
 
 Markup: display-visibility-responsive.example.html
 
