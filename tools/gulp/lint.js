@@ -49,5 +49,5 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('lint:docs', () => runStylelint('packages/docs/', false));
-  gulp.task('lint', ['lint:docs'].concat(lintPackageTasks));
+  gulp.task('lint', gulp.series(['lint:docs'].concat(lintPackageTasks)));
 };
