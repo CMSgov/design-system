@@ -15,11 +15,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <span
-      className="ds-c-button--transparent-text"
-    >
-      Clear search
-    </span>
+    Clear search
   </button>
 </div>
 `;

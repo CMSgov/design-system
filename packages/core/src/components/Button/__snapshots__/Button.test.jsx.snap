@@ -26,11 +26,7 @@ exports[`Button applies disabled, inverse, and variation classes together 1`] = 
   disabled={true}
   type="button"
 >
-  <span
-    className="ds-c-button--transparent-text"
-  >
-    Foo
-  </span>
+  Foo
 </button>
 `;
 
@@ -39,11 +35,7 @@ exports[`Button applies inverse to default/transparent variations 1`] = `
   className="ds-c-button ds-c-button--transparent ds-c-button--inverse"
   type="button"
 >
-  <span
-    className="ds-c-button--transparent-text"
-  >
-    Foo
-  </span>
+  Foo
 </button>
 `;
 
