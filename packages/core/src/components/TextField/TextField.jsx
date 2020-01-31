@@ -16,7 +16,7 @@ export class TextField extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.fieldRef) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'fieldRef' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'inputRef' instead.`
+          `[Deprecated]: Please remove the 'fieldRef' prop in <TextField>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -184,7 +184,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * (Deprecated) Access a reference to the `input` or `textarea` element
+   * (Deprecated) Access a reference to the `input` or `textarea` element. Please use `inputRef` instead.
    */
   fieldRef: PropTypes.func,
   /**

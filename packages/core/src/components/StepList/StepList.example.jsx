@@ -1,6 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import StepList from './StepList';
+import classNames from 'classnames';
+
+// Mock react-router example
+const Link = ({ className, ...props }) => (
+  // <Link to={props.href} {...props}>{props.children}</Link>
+  <a className={classNames(className, 'special-link')} {...props}>
+    {props.children}
+  </a>
+);
+Link.propTypes = { children: PropTypes.node };
 
 ReactDOM.render(
   <div style={{ maxWidth: '628px' }}>
@@ -25,6 +36,7 @@ ReactDOM.render(
           href: '#step-2',
           started: true,
           completed: false,
+          component: Link,
           steps: [
             {
               id: 'household.overall',

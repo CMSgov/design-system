@@ -46,7 +46,11 @@ export const Step = ({ step, ...props }) => {
         {step.steps && (
           <ol className="ds-c-step__substeps" aria-label={substepsLabel}>
             {step.steps.map((s, i) => (
-              <SubStep step={s} key={s.id || i} {...props} />
+              <SubStep
+                step={{ ...s, ...{ component: step.component || s.component } }}
+                key={s.id || i}
+                {...props}
+              />
             ))}
           </ol>
         )}
@@ -55,6 +59,7 @@ export const Step = ({ step, ...props }) => {
         {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
         {linkLabel && (
           <StepLink
+            component={step.component}
             href={step.href}
             stepId={step.id}
             screenReaderText={`"${step.title}"`}
