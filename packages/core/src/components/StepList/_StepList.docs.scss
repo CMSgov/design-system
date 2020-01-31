@@ -46,21 +46,100 @@ Style guide: patterns.step-list.react
 /*
 Step object
 
-A `step` object contains all information needed to render the step, including
-text, progress, and routing information.
-
-Step object properties:
-- **id** (`string`) - Unique string representing the step. Will be passed to onStepLinkClick as second parameter
-- **href** (`string`) - URL or partial URL that routes to the step. Will be passed to onStepLinkClick as first parameter
-- **completed** (`bool`) - Whether the step has been completed
-- **started** (`bool`) - Whether the step has been started
-- **isNextStep** (`bool`) - Whether this is the next unstarted step
-- **title** (`string`) - Text to display as the step title
-- **description** (`string`) - Additional text to display under (only rendered for top-level steps)
-- **linkText** (`string`) - Alternative text for the link or button for this step. Will override the defaults
-- **onClick** (`func`) - onClick handler for this specific step's link/button
-- **steps** (`Step[]`) - Array of substeps
-
+<table class="ds-c-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">completed</code></td>
+      <td><code>bool</code></td>
+      <td>
+        <p>Whether the step has been completed</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">component</code></td>
+      <td><code>element, func</code></td>
+      <td>
+        <p>When provided, this will render the passed in component for link elements in this Step. This is useful when integrating with React Router's <code>&lt;Link&gt;</code> or using your own custom component.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">description</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Additional text to display under (only rendered for top-level steps)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">href</code>
+        <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
+      </td>
+      <td><code>string</code></td>
+      <td>
+        <p>URL or partial URL that routes to the step. Will be passed to <code>onStepLinkClick</code> as first parameter</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">id</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Unique string representing the step. Will be passed to <code>onStepLinkClick</code> as second parameter</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">isNextStep</code></td>
+      <td><code>bool</code></td>
+      <td>
+        <p>Whether this is the next unstarted step</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">linkText</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Alternative text for the link or button for this step. Will override the defaults</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">onClick</code></td>
+      <td><code>func</code></td>
+      <td>
+        <p><code>onClick</code> handler for this specific step's link/button</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">started</code></td>
+      <td><code>bool</code></td>
+      <td>
+        <p>Whether the step has been started</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">steps</code></td>
+      <td><code>arrayOf[stepShape]</code></td>
+      <td>
+        <p>Array of substeps</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">title</code>
+        <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
+      </td>
+      <td><code>string</code></td>
+      <td>
+        <p>Text to display as the step title</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 Style guide: patterns.step-list.step-object
 */
