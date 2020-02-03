@@ -45,12 +45,8 @@
 .ds-c-help-drawer__body {
   height: 100%;   
   overflow-y: scroll;
-    
-}
-.ds-c-help-drawer__content-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .ds-c-help-drawer__content {
