@@ -16,9 +16,8 @@
   background: $color-background;
   bottom: 0;
   box-shadow: -2px 0 0 $border-color;
-  display: flex; // flex layout helps stick the footer to the bottom
+  display: flex; // Flex layout helps ds-c-help-drawer__body take up full height regardless of ds-c-help-drawer__header height
   flex-direction: column;
-  overflow: auto;
   position: fixed;
   right: 0;
   top: 0;
@@ -35,9 +34,12 @@
   }
 }
 
+.ds-c-help-drawer__close-button {
+  flex-shrink: 0;
+}
+
 .ds-c-help-drawer__header {
-  position: sticky;
-  top: 0;
+  flex-shrink:0;
 }
 
 // This element is focusable via a tabindex attribute.
@@ -46,12 +48,22 @@
 }
 
 .ds-c-help-drawer__body {
-  // Stretch the body so that the footer sticks to the
-  // bottom of the screen
-  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;   
+  overflow-y: scroll;
+}
+
+.ds-c-help-drawer__content {
+  flex-grow: 1;
+  flex-shrink: 0;
 
   p:first-child {
     // Prevent too much space at the top of the body area
     margin-top: 0;
   }
+}
+
+.ds-c-help-drawer__footer {
+  flex-shrink: 0;
 }

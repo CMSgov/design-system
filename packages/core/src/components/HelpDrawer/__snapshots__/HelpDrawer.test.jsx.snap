@@ -18,7 +18,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       </h3>
       <button
         aria-label="Close help drawer"
-        className="ds-c-button ds-c-button--small ds-u-margin-left--auto"
+        className="ds-c-button ds-c-button--small ds-u-margin-left--auto ds-c-help-drawer__close-button"
         onClick={[Function]}
         type="button"
       >
@@ -27,27 +27,31 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     </div>
   </div>
   <div
-    className="ds-c-help-drawer__body ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2"
+    className="ds-c-help-drawer__body"
   >
-    <p>
-      content
-    </p>
-  </div>
-  <div
-    className="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2"
-  >
-    <h4
-      className="ds-text ds-u-margin--0"
-    >
-      Footer title
-    </h4>
     <div
-      className="ds-text ds-u-margin--0"
+      className="ds-c-help-drawer__content ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2"
     >
-      <div>
-        <p>
-          Some footer content
-        </p>
+      <p>
+        content
+      </p>
+    </div>
+    <div
+      className="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2"
+    >
+      <h4
+        className="ds-text ds-u-margin--0"
+      >
+        Footer title
+      </h4>
+      <div
+        className="ds-text ds-u-margin--0"
+      >
+        <div>
+          <p>
+            Some footer content
+          </p>
+        </div>
       </div>
     </div>
   </div>
