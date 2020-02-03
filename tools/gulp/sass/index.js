@@ -15,7 +15,7 @@ const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const through = require('through2');
-const runSequence = require('run-sequence');
+const runSequence = require('gulp4-run-sequence');
 const packagesRegex = require('../common/packagesRegex');
 const themeImporter = require('./themeImporter');
 
