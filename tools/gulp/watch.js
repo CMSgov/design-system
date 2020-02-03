@@ -39,9 +39,13 @@ module.exports = (gulp, shared) => {
 
   gulp.task('watch', seriesDone => {
     dutil.logMessage('👀 ', 'Transpiling + watching files for future changes');
-    return gulp.series('build:dev', 'server', 'watch:packages', 'watch:docs', done => {
-      seriesDone();
-      done();
-    })();
+    return gulp.series(
+      'build:dev',
+      gulp.parallel('server', 'watch:packages', 'watch:docs'),
+      done => {
+        seriesDone();
+        done();
+      }
+    )();
   });
 };
