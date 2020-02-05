@@ -14,5 +14,11 @@ select.ds-c-field {
   &[multiple] {
     background-image: none;
   }
+
+  // Removes inner outline on select elements in Firefox.
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
 }
 // stylelint-enable selector-no-qualifying-type

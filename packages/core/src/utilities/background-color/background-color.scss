@@ -260,3 +260,14 @@
 .ds-u-fill--transparent {
   background-color: transparent !important;
 }
+
+// Focus colors
+.ds-u-fill--focus-color {
+  background-color: $focus-color !important;
+}
+.ds-u-fill--focus-color-inverse {
+  background-color: $focus-color-inverse !important;
+}
+.ds-u-fill--focus-border-inverse {
+  background-color: $focus-border-inverse !important;
+}

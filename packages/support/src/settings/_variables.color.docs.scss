@@ -124,7 +124,7 @@ Additional colors
 
 Markup:
 <% var colors = [
-  'muted-inverse', `transparent`
+  'focus-color', 'focus-color-inverse', 'focus-border-inverse', 'muted-inverse', 'transparent'
 ]; -%>
 <div class="">
     <% colors.forEach(color => { -%>

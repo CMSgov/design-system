@@ -6,17 +6,22 @@
   cursor: pointer;
   text-decoration: underline;
 
-  &:hover,
-  &:focus {
+  &:visited {
+    color: $color-visited;
+  }
+  
+  &:hover {
     color: $color-primary-darker;
+  }
+
+  &:focus,
+  &:focus:visited {
+    @include focus-text;
   }
 
   &:active {
     color: $color-primary-darkest;
-  }
-
-  &:visited {
-    color: $color-visited;
+    outline: 0 none;
   }
 }
 
@@ -26,14 +31,26 @@
   cursor: pointer;
   text-decoration: underline;
 
-  &:focus,
-  &:hover,
-  &:active {
+  &:visited {
+    color: $color-visited;
+  }
+  
+  &:hover {
     color: $color-primary-darkest;
   }
 
-  &:visited {
-    color: $color-visited;
+  &:focus,
+  &:focus:visited {
+    background-color: $focus-color;
+    box-shadow: $focus-shadow-link;
+    color: $color-base;
+    outline: 3px solid transparent;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $color-primary-darkest;
+    outline: 0 none;
   }
 }
 
@@ -42,10 +59,19 @@
   cursor: pointer;
   text-decoration: underline;
 
-  &:visited,
-  &:active,
+  /* stylelint-disable selector-max-specificity */
   &:focus,
-  &:hover {
+  &:focus:visited {
+    @include focus-text-inverse;
+  }
+  /* stylelint-enable selector-max-specificity */
+
+  &:visited,
+  &:hover,
+  &:active {
+    // :visited links can only style color, not opacity. This color styling is equivalent to:
+    // color: $color-base-inverse;
+    // opacity: 0.8;
     color: $color-muted-inverse;
   }
 }
@@ -80,5 +106,3 @@
     @extend %link-inverse;
   }
 }
-
-/* stylelint-enable */

@@ -11,7 +11,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
 >
   <button
     aria-label="Clear search to try again"
-    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-padding-right--0"
+    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-margin-right--0"
     onClick={[Function]}
     type="button"
   >

@@ -22,7 +22,7 @@ ReactDOM.render(
     <Button className="ds-u-margin-right--1" disabled>
       Button with `disabled` prop
     </Button>
-    <Button className="ds-u-margin-right--1" href="javascript:void(0);">
+    <Button className="ds-u-margin-right--1" variation="transparent" href="javascript:void(0);">
       Button with `href` prop
     </Button>
     <Button className="ds-u-margin-right--1" component={Link}>
