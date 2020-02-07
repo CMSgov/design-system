@@ -79,7 +79,7 @@
     "mkdir-recursive": "^0.4.0",
     "mz": "^2.7.0",
     "node-notifier": "5.4.0",
-    "postcss-image-inliner": "3.0.9",
+    "postcss-image-inliner": "^3.0.9",
     "postcss-import": "^11.1.0",
     "prettier": "1.18.2",
     "prismjs": "1.16.0",

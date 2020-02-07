@@ -10156,7 +10156,7 @@ postcss-html@^0.36.0:
   dependencies:
     htmlparser2 "^3.10.0"
 
-postcss-image-inliner@3.0.9:
+postcss-image-inliner@^3.0.9:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/postcss-image-inliner/-/postcss-image-inliner-3.0.9.tgz#73c75864a1828645cc426e49333d6ea71df4a8da"
   integrity sha512-4mPwnRCXmNbe33cquZSDgyr4z2aFDI1HiXOLu64BLP6tBfsgSVUqiFHi42Qt9ZkqgxpR62A7+B+FssoIDg4d2g==
