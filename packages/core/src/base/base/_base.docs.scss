@@ -5,7 +5,7 @@ A base layer of styling can be applied to an area of your site by adding the `ds
 
 Specifically, the base styling sets the following CSS properties:
 
--  `color` is set to `$color-base`
+- `color` is set to `$color-base`
 - `font-family` is set to `$font-sans`
 - `font-size` is set to `$base-font-size`
 - `line-height` is set to `$base-line-height`
@@ -13,4 +13,6 @@ Specifically, the base styling sets the following CSS properties:
 .ds-base--inverse - Applies an inverse `text color` and `background-color`
 
 Markup: base.example.html
+
+Style guide: style.base
 */
