@@ -68,13 +68,7 @@ To apply responsive typography elsewhere, use the [font size utility class](/uti
 Since the base typography margins and line height is measured in `em` units,
 they'll automatically adjust as you change the font size.
 
-Markup:
-<article class="ds-base--inverse ds-u-padding--2">
-  <h1 class="ds-display ds-u-margin-y--1">Display</h1>
-  <h2 class="ds-title ds-u-margin-y--1">Title</h1>
-  <h3 class="ds-h1 ds-u-margin-y--1">Heading 1</h1>
-  <h4 class="ds-h2 ds-u-margin-y--1 ds-u-font-size--h4 ds-u-md-font-size--h3 ds-u-lg-font-size--h2">Responsive utility classes</h4>
-</div>
+Markup: responsive-typography.example.html
 
 Style guide: style.typography.responsive
 */

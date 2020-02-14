@@ -1,6 +1,3 @@
-/* stylelint-disable selector-class-pattern */
-@import '@cmsgov/design-system-support/src/settings/index';
-
 /*
 Base
 
@@ -8,34 +5,14 @@ A base layer of styling can be applied to an area of your site by adding the `ds
 
 Specifically, the base styling sets the following CSS properties:
 
--  `color` is set to `$color-base`
+- `color` is set to `$color-base`
 - `font-family` is set to `$font-sans`
 - `font-size` is set to `$base-font-size`
 - `line-height` is set to `$base-line-height`
 
-.ds-base--inverse - Applies an inverse `color` and `background-color`
+.ds-base--inverse - Applies an inverse `text color` and `background-color`
 
-Markup:
-<div class="ds-base {{modifier}} ds-u-padding--2">
-  {{lorem-l}}
-</div>
+Markup: base.example.html
 
 Style guide: style.base
 */
-%ds-base {
-  font-family: $font-sans;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-}
-
-.ds-base {
-  @extend %ds-base;
-  color: $color-base;
-}
-
-.ds-base--inverse {
-  @extend %ds-base;
-  background-color: $color-background-inverse;
-  color: $color-base-inverse;
-}
-/* stylelint-enable */

@@ -19,20 +19,7 @@ Primary colors
 
 This palette’s primary colors are blue, gray, and white. Blue is commonly associated with trust, confidence, and sincerity; it is also used to represent calmness and responsibility.
 
-Markup:
-<% var colors = [
-  'primary', 'primary-darker', 'primary-darkest',
-  'black', 'base', 'gray-dark', 'gray-light', 'white'
-]; -%>
-  <div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
+Markup: color-primary.example.html
 
 Style guide: style.color.primary
 */
@@ -44,19 +31,7 @@ Secondary colors
 
 These are accent colors to provide additional lightness and style to pages looking for a more modern flair. These colors should be used to highlight important features on a page, such as buttons, or for visual style elements, such as illustrations. They should be used sparingly and never draw the eye to more than one piece of information at a time.
 
-Markup:
-<% var colors = [
-  'primary-alt-darkest', 'primary-alt-dark', 'primary-alt', 'primary-alt-light', 'primary-alt-lightest'
-]; -%>
-<div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
+Markup: color-secondary.example.html
 
 
 Style guide: style.color.secondary
@@ -69,19 +44,7 @@ Background colors
 
 These colors are used largely for background blocks and large content areas. When alternating between tones, be sure to use enough contrast between adjacent colors.
 
-Markup:
-<% var colors = [
-  'background', 'background-inverse', 'gray-dark', 'gray', 'gray-light', 'gray-lighter', 'gray-lightest'
-]; -%>
-<div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
+Markup: color-background.example.html
 
 
 Style guide: style.color.background
@@ -97,21 +60,8 @@ Be cautious using these colors to signify something that may contradict what mos
 
 Status colors can also be used with these aliases where `green`, `gold`, and `red` are identical to `success`, `warn`, and `error`. Use these alternate naming options when statuses aren't approproiate or give enough detail. For example, in some situations, `$color-red-dark` might be more accurate and descriptive than `$color-error-darker`.
 
-Markup:
-<% var colors = [
-  'success-darkest', 'success-darker', 'success-dark', 'success', 'success-light', 'success-lighter', 'success-lightest',
-  'warn-darkest', 'warn-darker', 'warn-dark', 'warn', 'warn-light', 'warn-lighter', 'warn-lightest',
-  'error-darkest', 'error-darker', 'error-dark', 'error', 'error-light', 'error-lighter', 'error-lightest',
-]; -%>
-<div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
+Markup: color-status.example.html
+
 
 
 Style guide: style.color.status
@@ -122,19 +72,7 @@ Additional colors
 
 @hide-markup
 
-Markup:
-<% var colors = [
-  'focus-color', 'focus-color-inverse', 'focus-border-inverse', 'muted-inverse', 'transparent'
-]; -%>
-<div class="">
-    <% colors.forEach(color => { -%>
-      <article class="ds-u-margin-bottom--1">
-        <div class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"></div>
-        <code>$color-<%= color %></code>
-        <code class="c-swatch__label js-swatch-hex ds-u-fill--transparent ds-u-color--gray">#</code>
-      </article>
-    <% }) -%>
-  </div>
+Markup: color-additional.example.html
 
 Style guide: style.color.additional
 */

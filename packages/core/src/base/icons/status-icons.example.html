@@ -1,0 +1,12 @@
+<% var icons = [ 'information', 'success', 'success-fill', 'warning', 'error' ]; -%>
+<div class="ds-u-padding--1 ">
+  <% icons.forEach(icon => { -%>
+  <div class="ds-l-row">
+    <span class="icon-container <%= icon %>"></span
+    ><span class="icon-text"
+      ><%= icon %> |
+      <a href="{{root}}/public/images/<%= icon%>.svg" target="_blank">Download SVG</a></span
+    >
+  </div>
+  <% }) -%>
+</div>
