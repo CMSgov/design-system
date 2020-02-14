@@ -88,7 +88,7 @@ export class Choice extends React.PureComponent {
       labelClassName,
       requirementLabel,
       size,
-    CuncheckedChildren,
+      uncheckedChildren,
       inputRef,
       ...inputProps
     } = this.props;
@@ -130,7 +130,7 @@ export class Choice extends React.PureComponent {
         >
           {children}
         </FormLabel>
-        {this.checked() ? checkedChildren :CuncheckedChildren}
+        {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
     );
   }
