@@ -215,9 +215,7 @@ Autocomplete.propTypes = {
    */
   ariaClearLabel: PropTypes.string,
   /**
-   * Control the `TextField` autocomplete attribute. Changed to "off" to support accessibility. Chrome 70 appears to support this correct behavior in early testing.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
+   * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
    */
   autoCompleteLabel: PropTypes.string,
   /**
@@ -253,9 +251,7 @@ Autocomplete.propTypes = {
    */
   inputRef: PropTypes.func,
   /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
-   *
-   * Also see: https://github.com/paypal/downshift#itemtostring
+   * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
    */
   itemToString: PropTypes.func,
   /**
@@ -288,15 +284,11 @@ Autocomplete.propTypes = {
    */
   noResultsMessage: PropTypes.node,
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state.
-   *
-   * Also see: https://github.com/paypal/downshift#onchange
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
    */
   onChange: PropTypes.func,
   /**
-   * Called when the child `TextField` value changes. Returns a String `inputValue`.
-   *
-   * Also see: https://github.com/paypal/downshift#oninputvaluechange
+   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
    */
   onInputValueChange: PropTypes.func
 };
