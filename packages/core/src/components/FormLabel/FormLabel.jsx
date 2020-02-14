@@ -80,7 +80,10 @@ export class FormLabel extends React.PureComponent {
 
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
-  children: PropTypes.node.isRequired,
+  /**
+   * Label text or HTML.
+   */
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Additional classes to be added to the root element.
    */

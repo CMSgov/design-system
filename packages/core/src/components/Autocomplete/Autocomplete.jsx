@@ -220,7 +220,10 @@ Autocomplete.propTypes = {
    * https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
    */
   autoCompleteLabel: PropTypes.string,
-  children: PropTypes.node,
+  /**
+   * Must contain a `TextField` component
+   */
+  children: PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the root element.
    * Useful for adding utility classes.

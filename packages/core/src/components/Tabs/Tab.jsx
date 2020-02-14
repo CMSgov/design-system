@@ -67,7 +67,10 @@ Tab.defaultProps = {
 };
 
 Tab.propTypes = {
-  children: PropTypes.node.isRequired,
+  /**
+   * Tab label text or HTML.
+   */
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Additional classes to be added to the root tab element.
    */

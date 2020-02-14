@@ -107,7 +107,10 @@ export class Button extends React.PureComponent {
 
 Button.defaultProps = { type: 'button' };
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  /**
+   * Label text or HTML
+   */
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.

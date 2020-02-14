@@ -88,7 +88,7 @@ export class Choice extends React.PureComponent {
       labelClassName,
       requirementLabel,
       size,
-      uncheckedChildren,
+    CuncheckedChildren,
       inputRef,
       ...inputProps
     } = this.props;
@@ -130,7 +130,7 @@ export class Choice extends React.PureComponent {
         >
           {children}
         </FormLabel>
-        {this.checked() ? checkedChildren : uncheckedChildren}
+        {this.checked() ? checkedChildren :CuncheckedChildren}
       </div>
     );
   }
@@ -145,7 +145,7 @@ Choice.propTypes = {
   /**
    * Label text or HTML.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
