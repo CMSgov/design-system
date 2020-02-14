@@ -111,7 +111,7 @@ FormLabel.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * (Deprecated) Additional classes to be added to the label text. Please use `textClassName` instead.
+   * @HidePropDoc [Deprecated] Additional classes to be added to the label text. Please use `textClassName` instead.
    */
   labelClassName: PropTypes.string,
   /**

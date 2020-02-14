@@ -143,7 +143,9 @@ VerticalNavItem.defaultProps = {
 };
 
 VerticalNavItem.propTypes = {
-  // This gets passed through from the parent VerticalNav to a nested VerticalNav
+  /**
+   * @HidePropDoc This gets passed through from the parent VerticalNav to a nested VerticalNav
+   */
   _selectedId: PropTypes.string,
   /**
    * Aria label for the toggle button when the sub-navigation is collapsed

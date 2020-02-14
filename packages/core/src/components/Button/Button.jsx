@@ -139,7 +139,7 @@ Button.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * (Deprecated) Access a reference to the `button` or `a` element. Please use `inputRef` instead.
+   * @HidePropDoc [Deprecated] Access a reference to the `button` or `a` element. Please use `inputRef` instead.
    */
   buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),
