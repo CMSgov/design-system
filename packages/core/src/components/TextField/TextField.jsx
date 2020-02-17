@@ -184,7 +184,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * @HidePropDoc [Deprecated] Access a reference to the `input` or `textarea` element. Please use `inputRef` instead.
+   * @hide-prop [Deprecated] Access a reference to the `input` or `textarea` element. Please use `inputRef` instead.
    */
   fieldRef: PropTypes.func,
   /**

@@ -144,7 +144,7 @@ VerticalNavItem.defaultProps = {
 
 VerticalNavItem.propTypes = {
   /**
-   * @HidePropDoc This gets passed through from the parent VerticalNav to a nested VerticalNav
+   * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId: PropTypes.string,
   /**

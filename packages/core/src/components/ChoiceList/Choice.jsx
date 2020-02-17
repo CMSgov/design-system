@@ -200,7 +200,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * @HidePropDoc [Deprecated] Placement of the input relative to the text label
+   * @hide-prop [Deprecated] Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),

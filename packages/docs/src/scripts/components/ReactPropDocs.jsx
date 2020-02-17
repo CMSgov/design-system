@@ -10,9 +10,9 @@ class ReactPropDocs extends React.PureComponent {
     const props = Object.getOwnPropertyNames(this.props.propDocs);
 
     return props.map(prop => {
-      // Hides docs for react props with `@HidePropDoc` tag in the description
+      // Hides docs for react props with `@hide-prop` tag in the description
       const description = this.props.propDocs[prop].description;
-      if (!description.match(/^@HidePropDoc/i)) {
+      if (!description.match(/@hide-prop/i)) {
         return <ReactPropDoc key={prop} name={prop} {...this.props.propDocs[prop]} />;
       }
     });
