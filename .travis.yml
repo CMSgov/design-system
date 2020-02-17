@@ -6,7 +6,6 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
   - google-chrome-stable --version
   - chromedriver --version
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 install:
   - yarn
 branches:
