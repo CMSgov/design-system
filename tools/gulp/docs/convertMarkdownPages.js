@@ -31,14 +31,12 @@ function createPageObject(rootPath, dir, filename) {
  */
 function createPages(rootPath, dir) {
   const pages = [];
-  const filenames = glob.sync('src/pages/**/*.md', { cwd: dir });
+  const filenames = glob.sync('src/**/*.md', { cwd: dir });
 
   return Promise.all(
-    filenames.map(filename =>
-      createPageObject(rootPath, dir, filename).then(data => {
-        pages.push(data);
-      })
-    )
+    filenames.map(filename => createPageObject(rootPath, dir, filename).then(data => {
+      pages.push(data);
+    }))
   ).then(() => pages);
 }
 
@@ -51,19 +49,18 @@ function createPages(rootPath, dir) {
  */
 function convertMarkdownPages(rootPath, packages) {
   const packagesDir = path.join(__dirname, '../../../packages');
-  const docsSrc = path.join(packagesDir, 'docs');
   const themePackages = packages.filter(name => name.match(/^themes\//));
+
+  const docsSrc = path.join(packagesDir, 'docs');
+  const coreSrc = path.join(packagesDir, 'core');
+  const themeSrc = themePackages.length ? path.join(packagesDir, themePackages[0]) : '';
+  
   const docsPages = createPages(rootPath, docsSrc);
+  const corePages = createPages(rootPath, coreSrc);
+  const themePages = themePackages.length ? createPages(rootPath, themeSrc) : Promise.resolve([]);
 
-  if (themePackages.length) {
-    const themeSrc = path.join(packagesDir, themePackages[0]);
-
-    return docsPages.then(pages =>
-      createPages(rootPath, themeSrc).then(themePages => pages.concat(themePages))
-    );
-  }
-
-  return docsPages;
+  // Concat pages by flattening array of page arrays
+  return Promise.all([docsPages, corePages, themePages]).then(pages => [].concat(...pages));
 }
 
 module.exports = convertMarkdownPages;
