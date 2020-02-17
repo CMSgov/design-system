@@ -1,5 +1,6 @@
 ---
 title: Documentation page
+path: patterns/documentation-page
 markup: documentation-page.example.html
 responsive: true
 uswds: https://standards.usa.gov/page-templates/
