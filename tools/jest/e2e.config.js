@@ -1,8 +1,6 @@
 const headless = process.env.HEADLESS ? JSON.parse(process.env.HEADLESS) : true;
 const browser = headless ? 'chrome' : process.env.BROWSER || 'chrome';
-const chromeOptions = headless && {
-  args: ['--headless', '--window-size=1024,768', '--no-sandbox', '--disable-dev-shm-usage']
-};
+const chromeOptions = headless && ['--headless', '--window-size=1024,768', '--no-sandbox', '--disable-dev-shm-usage'];
 
 const validBrowsers = ['chrome', 'firefox', 'safari', 'ie', 'edge'];
 if (!validBrowsers.includes(browser)) {
