@@ -1,6 +1,7 @@
 /* eslint-disable  filenames/match-exported */
 const NodeEnvironment = require('jest-environment-node');
-const { Builder, By, Capabilities, Key, until } = require('selenium-webdriver');
+const { Builder, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 class WebDriverEnvironment extends NodeEnvironment {
   constructor(config) {
@@ -11,12 +12,12 @@ class WebDriverEnvironment extends NodeEnvironment {
   }
 
   async buildDriver() {
-    let driver = new Builder().forBrowser(this.browserName);
+    const driver = new Builder().forBrowser(this.browserName);
 
     if (this.chromeOptions) {
-      const chromeCapabilities = Capabilities.chrome();
-      chromeCapabilities.set('chromeOptions', this.chromeOptions);
-      driver = driver.withCapabilities(chromeCapabilities);
+      const chromeOptions = new chrome.Options();
+      chromeOptions.addArguments(this.chromeOptions);
+      driver.setChromeOptions(chromeOptions);
     }
 
     return driver.build();
