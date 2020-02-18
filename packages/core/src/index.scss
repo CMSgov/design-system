@@ -11,5 +11,8 @@
 // Components: Designed UI units
 @import 'components/index';
 
+// Patterns: Common UI Solutions
+@import 'patterns/index';
+
 // Utilities: Overrides, helpers; These trump the above rules.
 @import 'utilities/index';
