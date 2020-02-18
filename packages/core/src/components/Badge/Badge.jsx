@@ -23,10 +23,9 @@ Badge.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * In most cases this will be the badge's label, but you could also use this
-   * to nest more advanced JSX.
+   * Label text or HTML.
    */
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Sets the font size of the Badge
    */

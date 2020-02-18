@@ -80,7 +80,10 @@ export class FormLabel extends React.PureComponent {
 
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
-  children: PropTypes.node.isRequired,
+  /**
+   * Label text or HTML.
+   */
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Additional classes to be added to the root element.
    */
@@ -108,7 +111,7 @@ FormLabel.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * (Deprecated) Additional classes to be added to the label text. Please use `textClassName` instead.
+   * @hide-prop [Deprecated] Additional classes to be added to the label text. Please use `textClassName` instead.
    */
   labelClassName: PropTypes.string,
   /**

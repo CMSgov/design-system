@@ -247,7 +247,7 @@ ChoiceList.propTypes = {
    */
   type: PropTypes.oneOf(['checkbox', 'radio']),
   /**
-   * (Deprecated) Adds `aria-label` attribute if component renders a select
+   * @hide-prop [Deprecated] Adds `aria-label` attribute if component renders a select
    */
   ariaLabel: PropTypes.string
 };

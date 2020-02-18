@@ -14,7 +14,10 @@ SkipNav.defaultProps = {
 };
 
 SkipNav.propTypes = {
-  children: PropTypes.node.isRequired,
+  /**
+   * Skip nav label
+   */
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * The anchor or target for the link (where the link will jump the user to)
    */
