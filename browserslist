@@ -1,5 +1,4 @@
 # Browsers that we support. This is used by postcss-autoprefixer.
-# TODO(sawyer): Look at analytics to confirm we're covering all browsers
 
-> 5%
+> 2%
 Last 2 versions
