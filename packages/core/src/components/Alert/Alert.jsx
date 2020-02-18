@@ -54,6 +54,9 @@ Alert.defaultProps = {
   role: 'region'
 };
 Alert.propTypes = {
+  /**
+   * The alert's body content
+   */
   children: PropTypes.node,
   /**
    * Text for the alert heading

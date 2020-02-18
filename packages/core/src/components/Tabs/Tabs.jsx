@@ -190,6 +190,9 @@ export class Tabs extends React.PureComponent {
 }
 
 Tabs.propTypes = {
+  /**
+   * Must only contain `TabPanel` components
+   */
   children: PropTypes.node.isRequired,
   /**
    * Sets the initial selected `TabPanel` state. If this isn't set, the first

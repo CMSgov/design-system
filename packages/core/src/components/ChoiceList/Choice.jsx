@@ -145,7 +145,7 @@ Choice.propTypes = {
   /**
    * Label text or HTML.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -200,7 +200,7 @@ Choice.propTypes = {
    */
   inversed: PropTypes.bool,
   /**
-   * (Deprecated) Placement of the input relative to the text label
+   * @hide-prop [Deprecated] Placement of the input relative to the text label
    */
   inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),
