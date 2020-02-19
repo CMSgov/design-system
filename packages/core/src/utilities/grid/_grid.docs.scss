@@ -1,5 +1,5 @@
 /*
-Grid
+Layout grid
 
 The design system provides a 12-column, responsive, flexbox grid to provide structure and align content.
 
@@ -8,21 +8,11 @@ The grid consists of three distinct pieces:
 - A **container** adds a maximum width and centers the content
 - A **row** enables the flexbox layout and holds between 1-12 **columns**
 
-## Installation
-
-The grid is opt-in and not distributed with the core design system package. Install the NPM package or [download the latest release](https://github.com/CMSgov/design-system/releases).
-
-```
-npm install @cmsgov/design-system-layout --save
-```
-
-[View the package's README for additional info.](https://github.com/CMSgov/design-system/blob/master/packages/layout/README.md)
-
 ## Browser support
 
 Flexbox grid supports modern browsers and Internet Explorer 10+. In older versions of Internet Explorer the grid columns will be stacked.
 
-Style guide: layout.grid
+Style guide: utilities.grid
 */
 
 /*
@@ -34,7 +24,7 @@ Column widths are set in percentages, so they’re always responsive and will be
 
 Markup: grid-default.example.html
 
-Style guide: layout.grid.default
+Style guide: utilities.grid.default
 */
 
 /*
@@ -44,7 +34,7 @@ Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These
 
 Markup: grid-number-col.example.html
 
-Style guide: layout.grid.columns
+Style guide: utilities.grid.columns
 */
 
 /*
@@ -54,7 +44,7 @@ Use a `.ds-l-col--auto` class to size a column to the natural width of its conte
 
 Markup: grid-natural-width.example.html
 
-Style guide: layout.grid.column-auto
+Style guide: utilities.grid.column-auto
 */
 
 /*
@@ -76,7 +66,7 @@ In the example below, the cells span:
 
 Markup: grid-responsive.example.html
 
-Style guide: layout.grid.responsive
+Style guide: utilities.grid.responsive
 */
 
 /*
@@ -84,7 +74,7 @@ Nested grids
 
 Markup: grid-nested.example.html
 
-Style guide: layout.grid.nested
+Style guide: utilities.grid.nested
 */
 
 /*
@@ -94,7 +84,7 @@ Offset columns using the [margin auto utility class](/utilities/margin):
 
 Markup: grid-offset.example.html
 
-Style guide: layout.grid.offset
+Style guide: utilities.grid.offset
 */
 
 /*
@@ -104,7 +94,7 @@ Align columns horizontally or vertically using [flexbox utility classes](/utilit
 
 Markup: grid-alignment.example.html
 
-Style guide: layout.grid.alignment
+Style guide: utilities.grid.alignment
 */
 
 /*
@@ -114,7 +104,7 @@ Use a `.ds-l-form-row` class to tighten the column spacing when laying out form 
 
 Markup: grid-forms.example.html
 
-Style guide: layout.grid.form-row
+Style guide: utilities.grid.form-row
 */
 
 /*
@@ -150,5 +140,5 @@ The following Sass variables can be overridden to customize the grid:
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox & the keyboard navigation disconnect](https://tink.uk/flexbox-the-keyboard-navigation-disconnect/)
 
-Style guide: layout.grid.guidance
+Style guide: utilities.grid.guidance
 */
