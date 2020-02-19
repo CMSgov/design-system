@@ -1,5 +1,6 @@
 /* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/index';
+@import 'styles/settings/index';
+@import 'styles/tools/index';
 
 .ds-u-float--left {
   float: left !important;

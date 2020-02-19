@@ -1,5 +1,6 @@
 /* stylelint-disable selector-class-pattern */
-@import '@cmsgov/design-system-support/src/index';
+@import 'styles/settings/index';
+@import 'styles/tools/index';
 
 %link {
   color: $color-primary;

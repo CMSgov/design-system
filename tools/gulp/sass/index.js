@@ -27,7 +27,7 @@ module.exports = (gulp, shared) => {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       importer: themeImporter.bind(null, shared.packages),
-      includePaths: [`${cwd}node_modules`]
+      includePaths: [`${cwd}node_modules`, `packages/core/src`]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
       dutil.logData(err.messageFormatted);
