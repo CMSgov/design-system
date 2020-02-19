@@ -54,7 +54,7 @@ function convertMarkdownPages(rootPath, packages) {
   const docsSrc = path.join(packagesDir, 'docs');
   const coreSrc = path.join(packagesDir, 'core');
   const themeSrc = themePackages.length ? path.join(packagesDir, themePackages[0]) : '';
-  
+
   const docsPages = createPages(rootPath, docsSrc);
   const corePages = createPages(rootPath, coreSrc);
   const themePages = themePackages.length ? createPages(rootPath, themeSrc) : Promise.resolve([]);

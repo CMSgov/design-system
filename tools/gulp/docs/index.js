@@ -199,9 +199,6 @@ module.exports = (gulp, shared) => {
   gulp.task('docs:generate-pages', async function() {
     dutil.logMessage('📝 ', 'Generating documentation pages');
 
-    const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
-
     // Parse Markdown files, and return the data in the same format as a KssSection
     const markdownPagesData = await convertMarkdownPages(shared.rootPath, shared.packages);
 
@@ -210,6 +207,8 @@ module.exports = (gulp, shared) => {
      * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
      * @return {Array} KssSections
      */
+    const packages = ['docs', ...shared.packages].map(pkg => `packages/${pkg}/src/`) // Temporarily hardcode task to process KSS in docs too
+    const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
     const kssSections = await kss.traverse(packages, { mask }).then(styleguide =>
       Promise.all(
         styleguide.sections().map(kssSection =>
