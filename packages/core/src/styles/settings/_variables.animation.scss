@@ -1,0 +1,10 @@
+$ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+
+// Changing the base to a larger number will slow down all animations.
+// This can be useful when debugging animations.
+$speed-base: 1;
+// 250ms is the quickest an animation can be for it to even be noticeable
+$animation-speed-1: 0.25s * $speed-base;
+$animation-speed-2: 0.3s * $speed-base;
+$animation-speed-3: 0.5s * $speed-base;
+$animation-speed-4: 0.8s * $speed-base;

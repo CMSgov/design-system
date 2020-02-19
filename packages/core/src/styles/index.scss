@@ -1,3 +1,18 @@
+// Settings: Globally-available settings and config options
+@import 'settings/index';
+
+// Tools: Helper functions and public mixins
+@import 'tools/index';
+
+// Styles: Namespaced element selectors (i.e. ds-base, ds-h1)
 @import 'base/base';
-@import 'icons/icons';
 @import 'typography/typography';
+
+// TODO: Move icons to components and namespace css
+@import 'icons/icons';
+
+// Components: Designed UI units
+@import '../components/index';
+
+// Utilities: Overrides, helpers; These trump the above rules.
+@import '../utilities/index';
