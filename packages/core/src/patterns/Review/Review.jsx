@@ -51,6 +51,9 @@ Review.defaultProps = {
 };
 
 Review.propTypes = {
+  /**
+   * `Review` component's body HTML.
+   */
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   /**

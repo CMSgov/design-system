@@ -215,7 +215,7 @@ Button.propTypes = {
 };
 ```
 
-For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
+For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
 
 ## General documentation pages
 

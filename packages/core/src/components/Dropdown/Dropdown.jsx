@@ -158,7 +158,7 @@ Dropdown.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * (Deprecated) Access a reference to the `select` element. Please use `inputRef` instead.
+   * @hide-prop [Deprecated] Access a reference to the `select` element. Please use `inputRef` instead.
    */
   fieldRef: PropTypes.func,
   /**
