@@ -1,6 +1,6 @@
 /* global driver */
-import { getElementById, getElementByXPath } from '../helpers/e2e';
-import { ROOT_URL } from '../helpers/e2e/constants';
+import { getElementById, getElementByXPath } from '../../helpers/e2e';
+import { ROOT_URL } from '../../helpers/e2e/constants';
 
 describe('CMS Design System smoke test', () => {
   it('Sets window size and scroll position', async() => {
