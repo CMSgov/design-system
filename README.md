@@ -8,9 +8,7 @@ You're currently at the root of a monorepo which contains multiple NPM packages 
 
 | Name                         | Description                                                                                                                                                                                                                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Core](packages/core/)       | The core CSS and React components for the design system. Includes the Support package. <br> [![@cmsgov/design-system-core](https://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core) |
-| [Layout](packages/layout/)   | A responsive flexbox grid framework. <br> [![@cmsgov/design-system-layout](https://img.shields.io/npm/v/@cmsgov/design-system-layout.svg?label=@cmsgov%2Fdesign-system-layout)](https://www.npmjs.com/package/@cmsgov/design-system-layout)                                           |
-| [Support](packages/support/) | Sass variables, mixins, and functions. Included in the Core package. <br> [![@cmsgov/design-system-support](https://img.shields.io/npm/v/@cmsgov/design-system-support.svg?label=@cmsgov%2Fdesign-system-support)](https://www.npmjs.com/package/@cmsgov/design-system-support)       |
+| [Core](packages/core/)       | The core CSS and React components for the design system. <br> [![@cmsgov/design-system-core](https://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core) |
 
 **Internal packages**
 

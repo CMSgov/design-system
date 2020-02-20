@@ -6,8 +6,6 @@
   "repository": "CMSgov/design-system",
   "dependencies": {
     "@cmsgov/design-system-core": "^3.6.0",
-    "@cmsgov/design-system-layout": "^3.6.0",
-    "@cmsgov/design-system-support": "^3.6.0",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "lodash": "^4.17.13",
