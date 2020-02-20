@@ -19,7 +19,6 @@ These packages are project dependencies, mostly focused around the design system
 | [Documentation site](packages/docs/)                         | This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                                  |
 | [ESLint config](packages/eslint-config-design-system/)       | The ESLint rules we use to lint the design system's JS and React components <br> [![@cmsgov/eslint-config-design-system](https://img.shields.io/npm/v/@cmsgov/eslint-config-design-system.svg?label=@cmsgov%2Feslint-config-design-system)](https://www.npmjs.com/package/@cmsgov/eslint-config-design-system) |
 | [Stylelint config](packages/stylelint-config-design-system/) | The Stylelint rules we use to lint the design system's Sass <br> [![@cmsgov/stylelint-config-design-system](https://img.shields.io/npm/v/@cmsgov/stylelint-config-design-system.svg?label=@cmsgov%2Fstylelint-config-design-system)](https://www.npmjs.com/package/@cmsgov/stylelint-config-design-system)     |
-| [Yeoman generator](packages/generator-cmsgov/)               | A [Yeoman](http://yeoman.io/) generator used in the development process. Again, unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                     |
 
 ## Examples
 

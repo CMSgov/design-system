@@ -1,5 +1,4 @@
 /docs/**/*
 packages/themes/**/docs/**/*
 **/dist/**/*.js
-packages/generator-cmsgov/generators/app/templates/*.scss
 CONTRIBUTING.md

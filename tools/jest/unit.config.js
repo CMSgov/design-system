@@ -8,7 +8,6 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/packages/*/node_modules/',
     '<rootDir>/packages/themes/*/node_modules/',
-    '<rootDir>/packages/generator-cmsgov/generators/app/templates/',
     '.+\\.e2e\\.test\\.js$'
   ],
   moduleNameMapper: {

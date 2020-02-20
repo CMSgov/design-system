@@ -52,7 +52,6 @@
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.3.0",
-    "generator-cmsgov": "file:./packages/generator-cmsgov",
     "github": "^13.0.1",
     "glob": "7.1.4",
     "gulp": "^4.0.2",
