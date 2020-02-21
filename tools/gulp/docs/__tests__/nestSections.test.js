@@ -56,8 +56,8 @@ describe('nestSections', () => {
         weight: 5
       },
       {
-        header: 'style',
-        reference: 'style'
+        header: 'design',
+        reference: 'design'
       },
       {
         header: 'delta',

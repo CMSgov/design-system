@@ -235,16 +235,16 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Base",
-      "referenceUrl": "https://design.cms.gov/style/base/",
-      "url": "http://localhost:3000/style/base/",
+      "label": "CMSDS - Design - Base",
+      "referenceUrl": "https://design.cms.gov/design/base/",
+      "url": "http://localhost:3000/design/base/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Base - Default",
+      "label": "CMSDS - Design - Base - Default",
       "referenceUrl": "https://design.cms.gov/example/style.base/",
       "url": "http://localhost:3000/example/style.base/",
       "removeSelectors": [
@@ -253,7 +253,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Base - Inverse",
+      "label": "CMSDS - Design - Base - Inverse",
       "referenceUrl": "https://design.cms.gov/style.base..ds-base--inverse/",
       "url": "http://localhost:3000/example/style.base..ds-base--inverse/",
       "removeSelectors": [
@@ -262,16 +262,16 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Color",
-      "referenceUrl": "https://design.cms.gov/style/color/",
-      "url": "http://localhost:3000/style/color/",
+      "label": "CMSDS - Design - Color",
+      "referenceUrl": "https://design.cms.gov/design/color/",
+      "url": "http://localhost:3000/design/color/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Primary",
+      "label": "CMSDS - Design - Color - Primary",
       "referenceUrl": "https://design.cms.gov/example/style.color.primary/",
       "url": "http://localhost:3000/example/style.color.primary/",
       "removeSelectors": [
@@ -280,7 +280,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Secondary",
+      "label": "CMSDS - Design - Color - Secondary",
       "referenceUrl": "https://design.cms.gov/example/style.color.secondary/",
       "url": "http://localhost:3000/example/style.color.secondary/",
       "removeSelectors": [
@@ -289,7 +289,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Background",
+      "label": "CMSDS - Design - Color - Background",
       "referenceUrl": "https://design.cms.gov/example/style.color.background/",
       "url": "http://localhost:3000/example/style.color.background/",
       "removeSelectors": [
@@ -298,7 +298,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Status",
+      "label": "CMSDS - Design - Color - Status",
       "referenceUrl": "https://design.cms.gov/example/style.color.status/",
       "url": "http://localhost:3000/example/style.color.status/",
       "removeSelectors": [
@@ -307,7 +307,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Primary",
+      "label": "CMSDS - Design - Color - Primary",
       "referenceUrl": "https://design.cms.gov/example/style.color.primary/",
       "url": "http://localhost:3000/example/style.color.primary/",
       "removeSelectors": [
@@ -316,16 +316,16 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Icons",
-      "referenceUrl": "https://design.cms.gov/style/icons/",
-      "url": "http://localhost:3000/style/icons/",
+      "label": "CMSDS - Design - Icons",
+      "referenceUrl": "https://design.cms.gov/design/icons/",
+      "url": "http://localhost:3000/design/icons/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Icons - Alert",
+      "label": "CMSDS - Design - Icons - Alert",
       "referenceUrl": "https://design.cms.gov/example/style.icons.alert/",
       "url": "http://localhost:3000/example/style.icons.alert/",
       "removeSelectors": [
@@ -334,7 +334,7 @@
       ]
     }, 
     {
-      "label": "CMSDS - Style - Icons - Interaction",
+      "label": "CMSDS - Design - Icons - Interaction",
       "referenceUrl": "https://design.cms.gov/example/style.icons.interaction/",
       "url": "http://localhost:3000/example/style.icons.interaction/",
       "removeSelectors": [
@@ -343,7 +343,7 @@
       ]
     }, 
     {
-      "label": "CMSDS - Style - Icons - Supplemental",
+      "label": "CMSDS - Design - Icons - Supplemental",
       "referenceUrl": "https://design.cms.gov/example/style.icons.supplemental/",
       "url": "http://localhost:3000/example/style.icons.supplemental/",
       "removeSelectors": [
@@ -352,16 +352,16 @@
       ]
     }, 
     {
-      "label": "CMSDS - Style - Typography",
-      "referenceUrl": "https://design.cms.gov/style/typography/",
-      "url": "http://localhost:3000/style/typography/",
+      "label": "CMSDS - Design - Typography",
+      "referenceUrl": "https://design.cms.gov/design/typography/",
+      "url": "http://localhost:3000/design/typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Typography - Default",
+      "label": "CMSDS - Design - Typography - Default",
       "referenceUrl": "https://design.cms.gov/example/style.typography/",
       "url": "http://localhost:3000/example/style.typography/",
       "removeSelectors": [
@@ -370,7 +370,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Typography - Links",
+      "label": "CMSDS - Design - Typography - Links",
       "referenceUrl": "https://design.cms.gov/example/style.typography.links/",
       "url": "http://localhost:3000/example/style.typography.links/",
       "removeSelectors": [
@@ -379,7 +379,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Typography - Responsive",
+      "label": "CMSDS - Design - Typography - Responsive",
       "referenceUrl": "https://design.cms.gov/example/style.typography.responsive/",
       "url": "http://localhost:3000/example/style.typography.responsive/",
       "removeSelectors": [
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Typography - Default",
+      "label": "CMSDS - Design - Typography - Default",
       "referenceUrl": "https://design.cms.gov/example/style.typography/",
       "url": "http://localhost:3000/example/style.typography/",
       "removeSelectors": [

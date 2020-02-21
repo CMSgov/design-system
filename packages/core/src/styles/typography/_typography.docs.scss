@@ -10,7 +10,7 @@ The design system doesn't style base HTML typography elements (like `h1`, `h2`, 
 
 Markup: typography.example.html
 
-Style guide: style.typography
+Style guide: design.typography
 */
 
 /*
@@ -53,7 +53,7 @@ Never use a link to say “click here.” A nondescript link forces users to bac
 - Users should be able to identify links without relying on color alone.
 - Users should be able to activate hover and focus states with both a mouse and a keyboard.
 
-Style guide: style.typography.links
+Style guide: design.typography.links
 
 
 */
@@ -70,7 +70,7 @@ they'll automatically adjust as you change the font size.
 
 Markup: responsive-typography.example.html
 
-Style guide: style.typography.responsive
+Style guide: design.typography.responsive
 */
 
 /*
@@ -91,5 +91,5 @@ The following Sass variables can be overridden to change the type sizes:
 - `$title-font-size`
 - `$display-font-size`
 
-Style guide: style.typography.variables
+Style guide: design.typography.variables
 */
