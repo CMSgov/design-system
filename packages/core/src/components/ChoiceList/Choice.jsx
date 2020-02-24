@@ -11,15 +11,6 @@ const dsChoiceEmitter = new EvEmitter();
 export class Choice extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.inputPlacement === 'right') {
-        console.warn(
-          `[Deprecated]: Please remove the 'inputPlacement' prop in <Choice>. This prop is no longer supported and will be removed in a future release.`
-        );
-      }
-    }
-
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
     this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
@@ -83,7 +74,6 @@ export class Choice extends React.PureComponent {
       className,
       hint,
       inversed,
-      inputPlacement,
       inputClassName,
       labelClassName,
       requirementLabel,
@@ -95,7 +85,6 @@ export class Choice extends React.PureComponent {
 
     const inputClasses = classNames(inputClassName, 'ds-c-choice', {
       'ds-c-choice--inverse': inversed,
-      'ds-c-choice--right': inputPlacement === 'right',
       'ds-c-choice--small': size === 'small'
     });
 
@@ -137,8 +126,7 @@ export class Choice extends React.PureComponent {
 }
 
 Choice.defaultProps = {
-  type: 'checkbox',
-  inputPlacement: 'left'
+  type: 'checkbox'
 };
 
 Choice.propTypes = {
@@ -199,10 +187,6 @@ Choice.propTypes = {
    * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
-  /**
-   * @hide-prop [Deprecated] Placement of the input relative to the text label
-   */
-  inputPlacement: PropTypes.oneOf(['left', 'right']),
   size: PropTypes.oneOf(['small']),
   /**
    * The `input` field's `name` attribute

@@ -124,14 +124,6 @@ describe('Choice', () => {
     expect(input.hasClass('ds-c-choice--right')).toBe(false);
   });
 
-  it('places input on right', () => {
-    const wrapper = shallowRender({ inputPlacement: 'right' }).wrapper;
-    const input = wrapper.find('input');
-
-    expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--right')).toBe(true);
-  });
-
   it('applies small className to input', () => {
     const wrapper = shallowRender({ size: 'small' }).wrapper;
     const input = wrapper.find('input');
