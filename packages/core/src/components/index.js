@@ -6,7 +6,6 @@ export * from './Badge/Badge';
 export * from './Button/Button';
 export * from './ChoiceList/Choice';
 export * from './ChoiceList/ChoiceList';
-export * from './ChoiceList/Select';
 export * from './DateField/DateField';
 export * from './Dialog/Dialog';
 export * from './Dropdown/Dropdown';
