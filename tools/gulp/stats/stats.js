@@ -4,7 +4,7 @@
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
-const Table = require('cli-table'); // cli-table2 is available and is a newer, forked version
+const Table = require('cli-table2');
 const _ = require('lodash');
 const argv = require('yargs').argv;
 const bytes = require('bytes');
