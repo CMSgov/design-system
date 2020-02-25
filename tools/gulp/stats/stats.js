@@ -15,66 +15,20 @@ const getValues = require('./getValues');
 const path = require('path');
 
 /**
- * Creates an HTML file where a specificity graph can be viewed.
- * @param {Object} stats - CSS Stats output
- * @param {String} filename - Name of the CSS file being analyzed
- * @return {Promise}
- */
-function createSpecificityGraph(stats, filename) {
-  const tmpPath = path.resolve(__dirname, '../../../tmp');
-  const outputPath = path.resolve(tmpPath, `specificity.${filename}.html`);
-  const specificity = stats.selectors.getSpecificityGraph();
-  const selectors = stats.selectors.values;
-  const chartRows = specificity.map((val, index) => {
-    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
-    return [index, val, tooltip];
-  });
-
-  return fs
-    .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
-    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
-    .then(body => {
-      if (!fs.existsSync(tmpPath)) {
-        fs.mkdir(tmpPath).then(() => body);
-      }
-
-      return body;
-    })
-    .then(body => fs.writeFile(outputPath, body, 'utf8'))
-    .then(() => {
-      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
-    });
-}
-
-/**
- * Retrieves the latest release file's css. Useful when comparing a file from
- * the current branch to identify a change in a particular stat.
- */
-function getLatestCSS() {
-  const latestPath = `node_modules/@cmsgov/design-system-core/dist/index.css`;
-  return fs
-    .readFile(latestPath, 'utf8')
-    .catch(() => {
-      // Catch errors
-      dutil.logError('getLatestCSS', 'Skipping latest release stats.');
-      return {};
-    });
-}
-
-/**
- * Get the CSS stats from a file on the current branch as well as latest release.
- * @param {string} cssPath - Path to the file to analyze, relative to project root
+ * Get the CSS stats from a file on the current branch and the latest release.
  * @param {boolean} skiplatest - Whether to also get stats for the file in the latest release
  * @return {Promise<{current, latest}>}
  */
-function getCSSStats(cssPath, skiplatest = false) {
+function getCSSStats(skiplatest = false) {
+  const currentPath = 'packages/core/dist/index.css';
+  const latestPath = 'node_modules/@cmsgov/design-system-core/dist/index.css';
   const stats = {
     current: {},
     latest: {}
   };
 
   return fs
-    .readFile(cssPath, 'utf8')
+    .readFile(currentPath, 'utf8')
     .then(css => cssstats(css))
     .then(data => {
       stats.current = data;
@@ -83,12 +37,14 @@ function getCSSStats(cssPath, skiplatest = false) {
       // Conditionally check the file in the latest release. Allowing this step to
       // be skipped enables us to run it on files that don't yet exist in the latest release
       if (!skiplatest) {
-        return getLatestCSS()
+        return fs
+          .readFile(latestPath, 'utf8')
           .then(css => cssstats(css))
           .then(data => {
             stats.latest = data;
           })
           .catch(() => {
+            dutil.logError('getCSSStats', 'Unable to get latest release CSS');
             stats.latest = stats.current;
           });
       } else {
@@ -119,22 +75,29 @@ function getFontSizes(fontDir) {
 }
 
 /**
- * Output the CSS Stats to the CLI and create a specificity graph
+ * Analyze the file sizes of all .woff2 font files and add to the stats object
  * @param {Object} currentStats - Current and latest release stats
- * @param {String} filename - Name of the CSS file being analyzed
  * @return {Promise}
  */
-function logCSSStats(currentStats, filename) {
-  logCSSStatsTable(currentStats);
-
-  return createSpecificityGraph(currentStats.current, filename).then(() => currentStats);
+function getFontStats(currentStats) {
+  const currentFontDir = path.resolve(__dirname, `../../../packages/core/fonts`);
+  const latestFontDir = 'node_modules/@cmsgov/design-system-core/fonts';
+  return getFontSizes(currentFontDir)
+    .then(total => {
+      currentStats.current.totalFontFileSize = total;
+    })
+    .then(() => getFontSizes(latestFontDir))
+    .then(total => {
+      currentStats.latest.totalFontFileSize = total;
+    })
+    .then(() => currentStats);
 }
 
 /**
  * Log stats table to CLI
  * @param {Object} stats - Current and latest release stats
  */
-function logCSSStatsTable(stats) {
+function logStats(stats) {
   const table = new Table({
     head: ['index.css', 'Current', 'Latest', 'Diff', 'Description'],
     style: {
@@ -222,6 +185,7 @@ over time as browser support improves`
   );
 
   console.log(table.toString());
+  return stats;
 }
 
 /**
@@ -237,10 +201,41 @@ function row(label, values, description) {
   return data;
 }
 
-// IMPORTANT: This needs to be called AFTER any method that relies on the
-// functions within the object.
-function saveCurrentCSSStats(currentStats, filename) {
-  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.${filename}.json`);
+/**
+ * Creates an HTML file where a specificity graph can be viewed.
+ * @param {Object} stats - CSS Stats output
+ * @return {Promise}
+ */
+function createSpecificityGraph(stats) {
+  const tmpPath = path.resolve(__dirname, '../../../tmp');
+  const outputPath = path.resolve(tmpPath, `specificity.html`);
+  const specificity = stats.current.selectors.getSpecificityGraph();
+  const selectors = stats.current.selectors.values;
+  const chartRows = specificity.map((val, index) => {
+    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
+    return [index, val, tooltip];
+  });
+
+  return fs
+    .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
+    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
+    .then(body => {
+      if (!fs.existsSync(tmpPath)) {
+        fs.mkdir(tmpPath).then(() => body);
+      }
+
+      return body;
+    })
+    .then(body => fs.writeFile(outputPath, body, 'utf8'))
+    .then(() => {
+      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
+    })
+    .then(() => stats);
+}
+
+// IMPORTANT: This needs to be called AFTER any method that relies on the functions within the object.
+function saveStats(currentStats) {
+  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.json`);
   const body = JSON.stringify(currentStats.current);
 
   return fs.writeFile(outputPath, body, 'utf8').then(() => {
@@ -249,34 +244,13 @@ function saveCurrentCSSStats(currentStats, filename) {
   });
 }
 
-/**
- * Analyze the file sizes of all .woff2 font files and add to the stats object
- * @param {Object} currentStats - Current and latest release stats
- * @return {Promise}
- */
-function setTotalFontFileSize(currentStats) {
-  const currentFontDir = path.resolve(__dirname, `../../../packages/core/fonts`);
-  const latestFontDir = 'node_modules/@cmsgov/design-system-core/fonts';
-  return getFontSizes(currentFontDir)
-    .then(total => {
-      currentStats.current.totalFontFileSize = total;
-    })
-    .then(() => getFontSizes(latestFontDir))
-    .then(total => {
-      currentStats.latest.totalFontFileSize = total;
-    })
-    .then(() => currentStats);
-}
-
 module.exports = gulp => {
   gulp.task('stats', () => {
     dutil.logMessage('🔍 ', 'Gathering stats and comparing against the latest release');
-    const cssPath = argv.path || 'packages/core/dist/index.css';
-    const filename = path.parse(cssPath).name;
-
-    return getCSSStats(cssPath, argv.skiplatest)
-      .then(setTotalFontFileSize)
-      .then(currentStats => logCSSStats(currentStats, filename))
-      .then(currentStats => saveCurrentCSSStats(currentStats, filename));
+    return getCSSStats(argv.skiplatest)
+      .then(getFontStats)
+      .then(stats => logStats(stats))
+      .then(stats => createSpecificityGraph(stats))
+      .then(stats => saveStats(stats));
   });
 };
