@@ -3,17 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 export class FormLabel extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.labelClassName) {
-        console.warn(
-          `[Deprecated]: Please remove the 'labelClassName' prop in <FormLabel>, use 'textClassName' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
-    }
-  }
   errorMessage() {
     if (this.props.errorMessage) {
       const classes = classNames('ds-c-field__hint', 'ds-u-color--error', {
@@ -63,7 +52,7 @@ export class FormLabel extends React.PureComponent {
   render() {
     const { fieldId, id, children } = this.props;
     const ComponentType = this.props.component;
-    const textClasses = classNames(this.props.labelClassName, this.props.textClassName);
+    const textClasses = this.props.textClassName;
     const classes = classNames('ds-c-label', this.props.className, {
       'ds-c-label--inverse': this.props.inversed
     });
@@ -110,10 +99,6 @@ FormLabel.propTypes = {
    * Set to `true` to apply the "inverse" theme
    */
   inversed: PropTypes.bool,
-  /**
-   * @hide-prop [Deprecated] Additional classes to be added to the label text. Please use `textClassName` instead.
-   */
-  labelClassName: PropTypes.string,
   /**
    * Text showing the requirement (ie. "Optional", or "Required").
    * In most cases, this should be used to indicate which fields are optional.

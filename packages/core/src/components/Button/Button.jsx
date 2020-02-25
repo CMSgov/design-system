@@ -13,18 +13,6 @@ import classNames from 'classnames';
  * you could pass in a `target` prop to pass to the rendered anchor element.
  */
 export class Button extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.buttonRef) {
-        console.warn(
-          `[Deprecated]: Please remove the 'buttonRef' prop in <Button>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
-    }
-  }
-
   // Get an object of props to pass to the rendered <Button> component
   attrs() {
     /**
@@ -42,7 +30,6 @@ export class Button extends React.PureComponent {
       onClick,
       size,
       variation,
-      buttonRef,
       ...props
     } = this.props;
 
@@ -98,7 +85,7 @@ export class Button extends React.PureComponent {
     }
 
     return (
-      <ComponentType ref={this.props.inputRef || this.props.buttonRef} {...attrs}>
+      <ComponentType ref={this.props.inputRef} {...attrs}>
         {this.props.children}
       </ComponentType>
     );
@@ -138,10 +125,6 @@ Button.propTypes = {
    * Not called when the button is disabled.
    */
   onClick: PropTypes.func,
-  /**
-   * @hide-prop [Deprecated] Access a reference to the `button` or `a` element. Please use `inputRef` instead.
-   */
-  buttonRef: PropTypes.func,
   size: PropTypes.oneOf(['small', 'big']),
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute

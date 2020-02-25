@@ -45,7 +45,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       id={undefined}
     >
       <span
-        className=""
+        className={undefined}
       >
         Months
       </span>
@@ -81,7 +81,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Jan
               </span>
@@ -113,7 +113,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Feb
               </span>
@@ -145,7 +145,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Mar
               </span>
@@ -177,7 +177,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Apr
               </span>
@@ -209,7 +209,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 May
               </span>
@@ -241,7 +241,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Jun
               </span>
@@ -273,7 +273,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Jul
               </span>
@@ -305,7 +305,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Aug
               </span>
@@ -337,7 +337,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Sep
               </span>
@@ -369,7 +369,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Oct
               </span>
@@ -401,7 +401,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Nov
               </span>
@@ -433,7 +433,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               id={undefined}
             >
               <span
-                className=""
+                className={undefined}
               >
                 Dec
               </span>

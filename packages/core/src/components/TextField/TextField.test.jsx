@@ -187,7 +187,7 @@ describe('TextField', function() {
     const data = render(
       {
         defaultValue: 'Yay',
-        fieldRef: el => {
+        inputRef: el => {
           ref = el;
         }
       },

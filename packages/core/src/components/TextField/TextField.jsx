@@ -12,14 +12,6 @@ export class TextField extends React.PureComponent {
     super(props);
     this.id = props.id || uniqueId('textfield_');
     this.labelId = props.labelId || uniqueId('textfield_label_');
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (props.fieldRef) {
-        console.warn(
-          `[Deprecated]: Please remove the 'fieldRef' prop in <TextField>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
-    }
   }
 
   componentDidMount() {
@@ -77,7 +69,6 @@ export class TextField extends React.PureComponent {
       className,
       errorMessage,
       fieldClassName,
-      fieldRef,
       focusTrigger,
       hint,
       id,
@@ -125,9 +116,6 @@ export class TextField extends React.PureComponent {
           } else {
             if (inputRef) {
               inputRef(ref);
-            }
-            if (fieldRef) {
-              fieldRef(ref);
             }
           }
         }}
@@ -183,10 +171,6 @@ TextField.propTypes = {
    * Additional classes to be added to the field element
    */
   fieldClassName: PropTypes.string,
-  /**
-   * @hide-prop [Deprecated] Access a reference to the `input` or `textarea` element. Please use `inputRef` instead.
-   */
-  fieldRef: PropTypes.func,
   /**
    * Used to focus `input` on `componentDidMount()`
    */
