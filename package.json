@@ -8,7 +8,6 @@
     "build:theme": "yarn build --theme",
     "bump": "lerna publish --skip-git --skip-npm",
     "generate": "yo cmsgov",
-    "g": "yarn generate",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap",
     "posttest": "yarn lint",

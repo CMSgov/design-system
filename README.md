@@ -51,9 +51,6 @@ These scripts can all be run from the root level of the repo:
   - Compile/transpile/uglify everything and makes things release-ready.
 - `yarn bump`
   - Increments package versions. Read "[Versioning](/guides/RELEASE-PROCESS.md#versioning)" for more info.
-- `yarn generate`
-  - Generates the necessary files for a new core component
-  - Alias: `yarn g`
 - `yarn test`
   - Runs JS unit tests
   - Lints JS using ESLint

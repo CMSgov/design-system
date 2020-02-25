@@ -61,17 +61,17 @@ describe('nestSections', () => {
       },
       {
         header: 'delta',
-        reference: 'style.delta',
+        reference: 'design.delta',
         weight: 0
       },
       {
         header: 'charlie',
-        reference: 'style.charlie',
+        reference: 'design.charlie',
         weight: 0
       },
       {
         header: 'alpha',
-        reference: 'style.alpha',
+        reference: 'design.alpha',
         weight: 0
       }
     ];
@@ -127,16 +127,16 @@ describe('nestSections', () => {
       reference: 'guidelines'
     }).sections;
 
-    const style = _.find(nestedSections, {
-      reference: 'style'
+    const design = _.find(nestedSections, {
+      reference: 'design'
     }).sections;
 
     expect(guidelines[0].reference).toBe('guidelines.colors');
     expect(guidelines[1].reference).toBe('guidelines.a11y');
 
-    expect(style[0].reference).toBe('style.alpha');
-    expect(style[1].reference).toBe('style.charlie');
-    expect(style[2].reference).toBe('style.delta');
+    expect(design[0].reference).toBe('design.alpha');
+    expect(design[1].reference).toBe('design.charlie');
+    expect(design[2].reference).toBe('design.delta');
   });
 
   it('sorts third-level sections by their line number', () => {
