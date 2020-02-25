@@ -23,6 +23,7 @@
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },
   "devDependencies": {
+    "@cmsgov/design-system-core": "latest",
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
     "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
     "autoprefixer": "9.6.0",
@@ -53,7 +54,6 @@
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.3.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
-    "github": "^13.0.1",
     "glob": "7.1.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^7.0.0",
