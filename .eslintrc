@@ -5,11 +5,5 @@
 {
   "extends": [
     "./packages/eslint-config-design-system/index.js"
-  ],
-  "ignorePatterns": [
-    "node_modules",
-    "vendor/*",
-    "**/dist/**/*.js",
-    "tools/backstop_data/*"
   ]
 }
