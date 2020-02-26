@@ -10,28 +10,28 @@ describe('getValues', () => {
       current: {
         size: 10
       },
-      master: {
+      latest: {
         size: 25
       }
     };
   });
 
-  it('returns array of current value, master value, and difference between the two', () => {
+  it('returns array of current value, latest value, and difference between the two', () => {
     const values = getValues(retrievalMethod);
     expect(values).toEqual([
       stats.current.size,
-      stats.master.size,
-      colors.green(stats.current.size - stats.master.size)
+      stats.latest.size,
+      colors.green(stats.current.size - stats.latest.size)
     ]);
   });
 
-  it('colors difference with red when less than master value', () => {
+  it('colors difference with red when less than latest value', () => {
     const values = getValues(retrievalMethod, false);
-    expect(values[2]).toEqual(colors.red(stats.current.size - stats.master.size));
+    expect(values[2]).toEqual(colors.red(stats.current.size - stats.latest.size));
   });
 
   it('skips color when no difference', () => {
-    stats.master.size = stats.current.size;
+    stats.latest.size = stats.current.size;
     const values = getValues(retrievalMethod, false);
     expect(values[2]).toEqual(0);
   });

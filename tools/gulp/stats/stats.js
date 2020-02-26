@@ -1,12 +1,10 @@
 /**
- * Analyze the transpiled files and compare against the files in the master
- * branch. This is a useful way to track the impact of any changes made in the
+ * Analyze the transpiled files and compare against the files in the latest release. This is a useful way to track the impact of any changes made in the
  * current branch, allowing us to track effects on filesize, specificity, etc.
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
-const GitHub = require('github');
-const Table = require('cli-table'); // cli-table2 is available and is a newer, forked version
+const Table = require('cli-table2');
 const _ = require('lodash');
 const argv = require('yargs').argv;
 const bytes = require('bytes');
@@ -16,95 +14,42 @@ const fs = require('mz/fs');
 const getValues = require('./getValues');
 const path = require('path');
 
-const fontsDir = 'packages/core/fonts';
-const git = new GitHub();
-// repoParts[0] = Owner, repoParts[1] = Repo name
-const repoParts = require('../../../package.json').repository.split('/');
-
 /**
- * Creates an HTML file where a specificity graph can be viewed.
- * @param {Object} stats - CSS Stats output
- * @param {String} filename - Name of the CSS file being analyzed
- * @return {Promise}
+ * Get the CSS stats from a file on the current branch and the latest release.
+ * @param {boolean} skiplatest - Whether to also get stats for the file in the latest release
+ * @return {Promise<{current, latest}>}
  */
-function createSpecificityGraph(stats, filename) {
-  const tmpPath = path.resolve(__dirname, '../../../tmp');
-  const outputPath = path.resolve(tmpPath, `specificity.${filename}.html`);
-  const specificity = stats.selectors.getSpecificityGraph();
-  const selectors = stats.selectors.values;
-  const chartRows = specificity.map((val, index) => {
-    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
-    return [index, val, tooltip];
-  });
-
-  return fs
-    .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
-    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
-    .then(body => {
-      if (!fs.existsSync(tmpPath)) {
-        fs.mkdir(tmpPath).then(() => body);
-      }
-
-      return body;
-    })
-    .then(body => fs.writeFile(outputPath, body, 'utf8'))
-    .then(() => {
-      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
-    });
-}
-
-/**
- * Retrieves a master branch file's content. Useful when comparing a file from
- * the current branch to identify a change in a particular stat.
- */
-function getMasterContent(filepath) {
-  return git.repos
-    .getContent({
-      owner: repoParts[0],
-      repo: repoParts[1],
-      path: filepath
-    })
-    .catch(() => {
-      // Catch connection errors
-      dutil.logError('getMasterContent', 'Connection error. Skipping master branch stats.');
-      return {};
-    });
-}
-
-/**
- * Get the CSS stats from a file on the current branch as well as master branch.
- * @param {string} cssPath - Path to the file to analyze, relative to project root
- * @param {boolean} skipmaster - Whether to also get stats for the file on the master branch
- * @return {Promise<{current, master}>}
- */
-function getCSSStats(cssPath, skipmaster = false) {
+function getCSSStats(skiplatest = false) {
+  const currentPath = 'packages/core/dist/index.css';
+  const latestPath = 'node_modules/@cmsgov/design-system-core/dist/index.css';
   const stats = {
     current: {},
-    master: {}
+    latest: {}
   };
 
   return fs
-    .readFile(cssPath, 'utf8')
+    .readFile(currentPath, 'utf8')
     .then(css => cssstats(css))
     .then(data => {
       stats.current = data;
     })
     .then(() => {
-      // Conditionally check the file on the master branch. Allowing this step to
-      // be skipped enables us to run it on files that don't yet exist on master
-      if (!skipmaster) {
-        return getMasterContent(cssPath)
-          .then(response => Buffer.from(response.data.content, 'base64').toString())
+      // Conditionally check the file in the latest release. Allowing this step to
+      // be skipped enables us to run it on files that don't yet exist in the latest release
+      if (!skiplatest) {
+        return fs
+          .readFile(latestPath, 'utf8')
           .then(css => cssstats(css))
           .then(data => {
-            stats.master = data;
+            stats.latest = data;
           })
           .catch(() => {
-            stats.master = stats.current;
+            dutil.logError('getCSSStats', 'Unable to get latest release CSS');
+            stats.latest = stats.current;
           });
       } else {
-        dutil.logMessage('getCSSStats', 'Not checking against master branch');
-        stats.master = stats.current;
+        dutil.logMessage('getCSSStats', 'Not checking against latest release');
+        stats.latest = stats.current;
       }
     })
     .then(() => stats);
@@ -113,65 +58,63 @@ function getCSSStats(cssPath, skipmaster = false) {
 /**
  * @return {Promise} Resolves with the sum of all .woff2 file sizes
  */
-function getCurrentBranchFontSizes() {
-  const dir = path.resolve(__dirname, `../../../${fontsDir}`);
-
+function getFontSizes(fontDir) {
   return fs
-    .readdir(dir)
+    .readdir(fontDir)
     .then(files => {
       return Promise.all(
         // Array of .woff2 file sizes
         files
           .filter(name => name.match(/\.woff2$/))
           .map(name => {
-            return fs.stat(path.resolve(dir, name)).then(stats => stats.size);
+            return fs.stat(path.resolve(fontDir, name)).then(stats => stats.size);
           })
       );
     })
     .then(_.sum);
 }
 
-function getMasterBranchFontSizes() {
-  return getMasterContent(fontsDir)
-    .then(response => response.data.filter(e => e.name.match(/\.woff2$/))) // return .woff2 entries
-    .then(files => _.sumBy(files, 'size'))
-    .catch(() => 0);
-}
-
 /**
- * Output the CSS Stats to the CLI and create a specificity graph
- * @param {Object} branchStats - Current and master branch stats
- * @param {String} filename - Name of the CSS file being analyzed
+ * Analyze the file sizes of all .woff2 font files and add to the stats object
+ * @param {Object} currentStats - Current and latest release stats
  * @return {Promise}
  */
-function logCSSStats(branchStats, filename) {
-  logCSSStatsTable(branchStats);
-
-  return createSpecificityGraph(branchStats.current, filename).then(() => branchStats);
+function getFontStats(currentStats) {
+  const currentFontDir = path.resolve(__dirname, `../../../packages/core/fonts`);
+  const latestFontDir = 'node_modules/@cmsgov/design-system-core/fonts';
+  return getFontSizes(currentFontDir)
+    .then(total => {
+      currentStats.current.totalFontFileSize = total;
+    })
+    .then(() => getFontSizes(latestFontDir))
+    .then(total => {
+      currentStats.latest.totalFontFileSize = total;
+    })
+    .then(() => currentStats);
 }
 
 /**
  * Log stats table to CLI
- * @param {Object} stats - Current and master branch stats
+ * @param {Object} stats - Current and latest release stats
  */
-function logCSSStatsTable(stats) {
+function logStats(stats) {
   const table = new Table({
-    head: ['index.css', 'Current', 'Master', 'Diff', 'Description'],
+    head: ['index.css', 'Current', 'Latest', 'Diff', 'Description'],
     style: {
       head: ['cyan']
     }
   });
 
   const gzipValues = getValues(branch => stats[branch].humanizedGzipSize, true, () =>
-    bytes(stats.current.gzipSize - stats.master.gzipSize)
+    bytes(stats.current.gzipSize - stats.latest.gzipSize)
   );
 
   const sizeValues = getValues(branch => stats[branch].humanizedSize, true, () =>
-    bytes(stats.current.size - stats.master.size)
+    bytes(stats.current.size - stats.latest.size)
   );
 
   const fontSizeValues = getValues(branch => bytes(stats[branch].totalFontFileSize), true, () =>
-    bytes(stats.current.totalFontFileSize - stats.master.totalFontFileSize)
+    bytes(stats.current.totalFontFileSize - stats.latest.totalFontFileSize)
   );
 
   table.push(
@@ -242,14 +185,15 @@ over time as browser support improves`
   );
 
   console.log(table.toString());
+  return stats;
 }
 
 /**
  * Form an array of tabel row values
  * @param {String} label - Row label
- * @param {Array} values - Current and Master branch values, and their difference
+ * @param {Array} values - Current and latest release values, and their difference
  * @param {String} description
- * @return {Array} [label, currentValue, masterValue, difference, description]
+ * @return {Array} [label, currentValue, latestValue, difference, description]
  */
 function row(label, values, description) {
   const data = [label].concat(values);
@@ -257,46 +201,56 @@ function row(label, values, description) {
   return data;
 }
 
-// IMPORTANT: This needs to be called AFTER any method that relies on the
-// functions within the object.
-function saveCurrentCSSStats(branchStats, filename) {
-  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.${filename}.json`);
-  const body = JSON.stringify(branchStats.current);
+/**
+ * Creates an HTML file where a specificity graph can be viewed.
+ * @param {Object} stats - CSS Stats output
+ * @return {Promise}
+ */
+function createSpecificityGraph(stats) {
+  const tmpPath = path.resolve(__dirname, '../../../tmp');
+  const outputPath = path.resolve(tmpPath, `specificity.html`);
+  const specificity = stats.current.selectors.getSpecificityGraph();
+  const selectors = stats.current.selectors.values;
+  const chartRows = specificity.map((val, index) => {
+    const tooltip = `<strong>${val}</strong><br /><code>${selectors[index]}</code>`;
+    return [index, val, tooltip];
+  });
+
+  return fs
+    .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
+    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
+    .then(body => {
+      if (!fs.existsSync(tmpPath)) {
+        fs.mkdir(tmpPath).then(() => body);
+      }
+
+      return body;
+    })
+    .then(body => fs.writeFile(outputPath, body, 'utf8'))
+    .then(() => {
+      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
+    })
+    .then(() => stats);
+}
+
+// IMPORTANT: This needs to be called AFTER any method that relies on the functions within the object.
+function saveStats(currentStats) {
+  const outputPath = path.resolve(__dirname, '../../../tmp', `cssstats.json`);
+  const body = JSON.stringify(currentStats.current);
 
   return fs.writeFile(outputPath, body, 'utf8').then(() => {
     dutil.logMessage('cssstats', `Exported cssstats: ${outputPath}`);
-    return branchStats;
+    return currentStats;
   });
-}
-
-/**
- * Analyze the file sizes of all .woff2 font files and add to the stats object
- * @param {Object} branchStats - Current and master branch stats
- * @return {Promise}
- */
-function setTotalFontFileSize(branchStats) {
-  return getCurrentBranchFontSizes()
-    .then(total => {
-      branchStats.current.totalFontFileSize = total;
-    })
-    .then(getMasterBranchFontSizes)
-    .then(total => {
-      branchStats.master.totalFontFileSize = total;
-    })
-    .then(() => branchStats);
 }
 
 module.exports = gulp => {
   gulp.task('stats', () => {
-    dutil.logMessage('🔍 ', 'Gathering stats and comparing against master');
-    // Run CSSStats on another CSS file by running:
-    // yarn run gulp stats -- --path=foo/bar/path/file.css --skipmaster
-    const cssPath = argv.path || 'packages/core/dist/index.css';
-    const filename = path.parse(cssPath).name;
-
-    return getCSSStats(cssPath, argv.skipmaster)
-      .then(setTotalFontFileSize)
-      .then(branchStats => logCSSStats(branchStats, filename))
-      .then(branchStats => saveCurrentCSSStats(branchStats, filename));
+    dutil.logMessage('🔍 ', 'Gathering stats and comparing against the latest release');
+    return getCSSStats(argv.skiplatest)
+      .then(getFontStats)
+      .then(stats => logStats(stats))
+      .then(stats => createSpecificityGraph(stats))
+      .then(stats => saveStats(stats));
   });
 };
