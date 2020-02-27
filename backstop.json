@@ -145,88 +145,124 @@
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid",
-      "referenceUrl": "https://design.cms.gov/layout/grid/",
-      "url": "http://localhost:3000/layout/grid/",
+      "label": "CMSDS - Design - Base",
+      "referenceUrl": "https://design.cms.gov/design/base/",
+      "url": "http://localhost:3000/design/base/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Default",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.default/",
-      "url": "http://localhost:3000/example/layout.grid.default/",
+      "label": "CMSDS - Design - Base - Default",
+      "referenceUrl": "https://design.cms.gov/example/design.base/",
+      "url": "http://localhost:3000/example/design.base/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Columns",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.columns/",
-      "url": "http://localhost:3000/example/layout.grid.columns/",
+      "label": "CMSDS - Design - Base - Inverse",
+      "referenceUrl": "https://design.cms.gov/design.base..ds-base--inverse/",
+      "url": "http://localhost:3000/example/design.base..ds-base--inverse/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Auto",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.column-auto/",
-      "url": "http://localhost:3000/example/layout.grid.column-auto/",
+      "label": "CMSDS - Design - Color",
+      "referenceUrl": "https://design.cms.gov/design/color/",
+      "url": "http://localhost:3000/design/color/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Responsive",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.responsive/",
-      "url": "http://localhost:3000/example/layout.grid.responsive/",
+      "label": "CMSDS - Design - Color - Primary",
+      "referenceUrl": "https://design.cms.gov/example/design.color.primary/",
+      "url": "http://localhost:3000/example/design.color.primary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Nested",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.nested/",
-      "url": "http://localhost:3000/example/layout.grid.nested/",
+      "label": "CMSDS - Design - Color - Secondary",
+      "referenceUrl": "https://design.cms.gov/example/design.color.secondary/",
+      "url": "http://localhost:3000/example/design.color.secondary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Offset",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.offset/",
-      "url": "http://localhost:3000/example/layout.grid.offset/",
+      "label": "CMSDS - Design - Color - Background",
+      "referenceUrl": "https://design.cms.gov/example/design.color.background/",
+      "url": "http://localhost:3000/example/design.color.background/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Alignment",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.alignment/",
-      "url": "http://localhost:3000/example/layout.grid.alignment/",
+      "label": "CMSDS - Design - Color - Status",
+      "referenceUrl": "https://design.cms.gov/example/design.color.status/",
+      "url": "http://localhost:3000/example/design.color.status/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Grid - Form Row",
-      "referenceUrl": "https://design.cms.gov/example/layout.grid.form-row/",
-      "url": "http://localhost:3000/example/layout.grid.form-row/",
+      "label": "CMSDS - Design - Color - Primary",
+      "referenceUrl": "https://design.cms.gov/example/design.color.primary/",
+      "url": "http://localhost:3000/example/design.color.primary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Layout - Spacing",
+      "label": "CMSDS - Design - Icons",
+      "referenceUrl": "https://design.cms.gov/design/icons/",
+      "url": "http://localhost:3000/design/icons/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Design - Icons - Alert",
+      "referenceUrl": "https://design.cms.gov/example/design.icons.alert/",
+      "url": "http://localhost:3000/example/design.icons.alert/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    }, 
+    {
+      "label": "CMSDS - Design - Icons - Interaction",
+      "referenceUrl": "https://design.cms.gov/example/design.icons.interaction/",
+      "url": "http://localhost:3000/example/design.icons.interaction/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    }, 
+    {
+      "label": "CMSDS - Design - Icons - Supplemental",
+      "referenceUrl": "https://design.cms.gov/example/design.icons.supplemental/",
+      "url": "http://localhost:3000/example/design.icons.supplemental/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    }, 
+    {
+      "label": "CMSDS - Design - Spacing",
       "referenceUrl": "https://design.cms.gov/layout/spacing/",
       "url": "http://localhost:3000/layout/spacing/",
       "removeSelectors": [
@@ -235,162 +271,45 @@
       ]
     },
     {
-      "label": "CMSDS - Style - Base",
-      "referenceUrl": "https://design.cms.gov/style/base/",
-      "url": "http://localhost:3000/style/base/",
+      "label": "CMSDS - Design - Typography",
+      "referenceUrl": "https://design.cms.gov/design/typography/",
+      "url": "http://localhost:3000/design/typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Base - Default",
-      "referenceUrl": "https://design.cms.gov/example/style.base/",
-      "url": "http://localhost:3000/example/style.base/",
+      "label": "CMSDS - Design - Typography - Default",
+      "referenceUrl": "https://design.cms.gov/example/design.typography/",
+      "url": "http://localhost:3000/example/design.typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Base - Inverse",
-      "referenceUrl": "https://design.cms.gov/style.base..ds-base--inverse/",
-      "url": "http://localhost:3000/example/style.base..ds-base--inverse/",
+      "label": "CMSDS - Design - Typography - Links",
+      "referenceUrl": "https://design.cms.gov/example/design.typography.links/",
+      "url": "http://localhost:3000/example/design.typography.links/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Color",
-      "referenceUrl": "https://design.cms.gov/style/color/",
-      "url": "http://localhost:3000/style/color/",
+      "label": "CMSDS - Design - Typography - Responsive",
+      "referenceUrl": "https://design.cms.gov/example/design.typography.responsive/",
+      "url": "http://localhost:3000/example/design.typography.responsive/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
       ]
     },
     {
-      "label": "CMSDS - Style - Color - Primary",
-      "referenceUrl": "https://design.cms.gov/example/style.color.primary/",
-      "url": "http://localhost:3000/example/style.color.primary/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Color - Secondary",
-      "referenceUrl": "https://design.cms.gov/example/style.color.secondary/",
-      "url": "http://localhost:3000/example/style.color.secondary/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Color - Background",
-      "referenceUrl": "https://design.cms.gov/example/style.color.background/",
-      "url": "http://localhost:3000/example/style.color.background/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Color - Status",
-      "referenceUrl": "https://design.cms.gov/example/style.color.status/",
-      "url": "http://localhost:3000/example/style.color.status/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Color - Primary",
-      "referenceUrl": "https://design.cms.gov/example/style.color.primary/",
-      "url": "http://localhost:3000/example/style.color.primary/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Icons",
-      "referenceUrl": "https://design.cms.gov/style/icons/",
-      "url": "http://localhost:3000/style/icons/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Icons - Alert",
-      "referenceUrl": "https://design.cms.gov/example/style.icons.alert/",
-      "url": "http://localhost:3000/example/style.icons.alert/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    }, 
-    {
-      "label": "CMSDS - Style - Icons - Interaction",
-      "referenceUrl": "https://design.cms.gov/example/style.icons.interaction/",
-      "url": "http://localhost:3000/example/style.icons.interaction/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    }, 
-    {
-      "label": "CMSDS - Style - Icons - Supplemental",
-      "referenceUrl": "https://design.cms.gov/example/style.icons.supplemental/",
-      "url": "http://localhost:3000/example/style.icons.supplemental/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    }, 
-    {
-      "label": "CMSDS - Style - Typography",
-      "referenceUrl": "https://design.cms.gov/style/typography/",
-      "url": "http://localhost:3000/style/typography/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Typography - Default",
-      "referenceUrl": "https://design.cms.gov/example/style.typography/",
-      "url": "http://localhost:3000/example/style.typography/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Typography - Links",
-      "referenceUrl": "https://design.cms.gov/example/style.typography.links/",
-      "url": "http://localhost:3000/example/style.typography.links/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Typography - Responsive",
-      "referenceUrl": "https://design.cms.gov/example/style.typography.responsive/",
-      "url": "http://localhost:3000/example/style.typography.responsive/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Style - Typography - Default",
-      "referenceUrl": "https://design.cms.gov/example/style.typography/",
-      "url": "http://localhost:3000/example/style.typography/",
+      "label": "CMSDS - Design - Typography - Default",
+      "referenceUrl": "https://design.cms.gov/example/design.typography/",
+      "url": "http://localhost:3000/example/design.typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -706,6 +625,87 @@
       "label": "CMSDS - Utilities - Font Weight - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.font-weight/",
       "url": "http://localhost:3000/example/utilities.font-weight/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid",
+      "referenceUrl": "https://design.cms.gov/utilities/grid//",
+      "url": "http://localhost:3000/utilities/grid//",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Default",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.default/",
+      "url": "http://localhost:3000/example/utilities.grid.default/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Columns",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.columns/",
+      "url": "http://localhost:3000/example/utilities.grid.columns/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Auto",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.column-auto/",
+      "url": "http://localhost:3000/example/utilities.grid.column-auto/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Responsive",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.responsive/",
+      "url": "http://localhost:3000/example/utilities.grid.responsive/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Nested",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.nested/",
+      "url": "http://localhost:3000/example/utilities.grid.nested/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Offset",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.offset/",
+      "url": "http://localhost:3000/example/utilities.grid.offset/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Alignment",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.alignment/",
+      "url": "http://localhost:3000/example/utilities.grid.alignment/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Utilities - Layout Grid - Form Row",
+      "referenceUrl": "https://design.cms.gov/example/utilities.grid.form-row/",
+      "url": "http://localhost:3000/example/utilities.grid.form-row/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"

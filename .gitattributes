@@ -13,7 +13,6 @@ Gulpfile.js export-ignore
 lerna.json export-ignore
 tools export-ignore
 packages/docs export-ignore
-packages/generator-cmsgov export-ignore
 packages/*/.npmignore export-ignore
 packages/*/yarn.lock export-ignore
 packages/*/src/.eslintrc export-ignore

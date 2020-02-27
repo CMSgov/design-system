@@ -1,5 +1,5 @@
 /* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/index';
+@import 'styles/settings/index';
 
 @for $i from 1 through length($spacers) {
   $size: #{nth($spacers, $i)};

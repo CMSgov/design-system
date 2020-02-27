@@ -23,7 +23,7 @@ usage: |
 
 ### Used in this pattern
 
-- [Grid]({{root}}/layout/grid)
+- [Grid]({{root}}/utilities/grid/)
 - [Base styling]({{root}}/style/base)
 - [Base typography]({{root}}/style/typography)
 - [Vertical Navigation]({{root}}/components/vertical-nav)

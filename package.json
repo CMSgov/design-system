@@ -7,8 +7,6 @@
     "build": "NODE_ENV=production gulp build --env=production",
     "build:theme": "yarn build --theme",
     "bump": "lerna publish --skip-git --skip-npm",
-    "generate": "yo cmsgov",
-    "g": "yarn generate",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap",
     "posttest": "yarn lint",
@@ -53,7 +51,6 @@
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
     "front-matter": "^2.3.0",
-    "generator-cmsgov": "file:./packages/generator-cmsgov",
     "glob": "7.1.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^7.0.0",
@@ -97,8 +94,7 @@
     "webpack": "4.35.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "2.25.0",
-    "yargs": "^11.0.0",
-    "yo": "2.0.6"
+    "yargs": "^11.0.0"
   },
   "engines": {
     "node": ">=11.0.0 <12.0.0",

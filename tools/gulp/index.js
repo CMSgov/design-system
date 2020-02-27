@@ -49,19 +49,6 @@ function themeDirectory() {
   return null;
 }
 
-/**
- * Get the names of the directories containing design system files.
- * These will be used for watching, compiling, and docs generation
- */
-function packageDirectories() {
-  const directories = glob
-    .sync('packages/*', {
-      ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
-    })
-    .map(packageName);
-  return directories;
-}
-
 module.exports = gulp => {
   // compile docs to the themes directory if it's being applied
   const docsPath = themePackageDir ? `packages/${themePackageDir}/docs` : 'docs';
@@ -69,7 +56,7 @@ module.exports = gulp => {
   const rootPath = argv.root || '';
   const theme = themeDirectory();
   // Include theme directory in packages to watch, compile, and generate theme docs
-  const packages = theme ? packageDirectories().concat(theme) : packageDirectories();
+  const packages = theme ? ['core', theme] : ['core'];
 
   // These properties are shared with every Gulp task
   const shared = {

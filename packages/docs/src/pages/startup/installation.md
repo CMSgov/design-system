@@ -3,28 +3,19 @@ title: Install with NPM
 weight: 0
 ---
 
-The design system is available as NPM packages or via a <a href="https://github.com/CMSgov/design-system/releases/latest">.zip download</a>.
+The design system is available an NPM package or via a <a href="https://github.com/CMSgov/design-system/releases/latest">.zip download</a>.
 
-The design system consists of two packages which are installed separately.
-
-The [**core** package](https://www.npmjs.com/package/@cmsgov/design-system-core) includes the bulk of the design system:
+The [**core** package](https://www.npmjs.com/package/@cmsgov/design-system-core) includes:
 
 - Base styles
 - Utility classes
 - Sass/CSS and React components
 - Sass mixins and variables
+- Responsive flexbox grid framework
 - Fonts and images
 
 ```
 npm install --save @cmsgov/design-system-core
-```
-
-The [**layout** package](https://www.npmjs.com/package/@cmsgov/design-system-layout) includes:
-
-- Responsive flexbox grid framework
-
-```
-npm install --save @cmsgov/design-system-layout
 ```
 
 <h3 id="need-help" class="ds-h3 ds-u-color--primary-darker">Need more information on NPM?</h2>
