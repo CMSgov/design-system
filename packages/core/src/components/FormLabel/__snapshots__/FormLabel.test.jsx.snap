@@ -188,7 +188,7 @@ exports[`FormLabel supports additional classNames 1`] = `
   className="ds-c-label ds-u-foo"
 >
   <span
-    className="ds-u-bar"
+    className=""
   >
     Hello world
   </span>

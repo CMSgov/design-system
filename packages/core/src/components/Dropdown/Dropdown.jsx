@@ -9,11 +9,6 @@ export class Dropdown extends React.PureComponent {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (props.fieldRef) {
-        console.warn(
-          `[Deprecated]: Please remove the 'fieldRef' prop in <Dropdown>, use 'inputRef' instead. This prop is no longer supported and will be removed in a future release.`
-        );
-      }
       if (props.children && props.options.length > 0) {
         console.warn(
           `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
@@ -61,7 +56,6 @@ export class Dropdown extends React.PureComponent {
       children,
       errorMessage,
       fieldClassName,
-      fieldRef,
       focusTrigger,
       hint,
       inputRef,
@@ -110,13 +104,8 @@ export class Dropdown extends React.PureComponent {
           ref={ref => {
             if (focusTrigger) {
               this.focusRef = ref;
-            } else {
-              if (inputRef) {
-                inputRef(ref);
-              }
-              if (fieldRef) {
-                fieldRef(ref);
-              }
+            } else if (inputRef) {
+              inputRef(ref);
             }
           }}
           /* eslint-enable no-return-assign */
@@ -157,10 +146,6 @@ Dropdown.propTypes = {
    * Additional classes to be added to the select element
    */
   fieldClassName: PropTypes.string,
-  /**
-   * @hide-prop [Deprecated] Access a reference to the `select` element. Please use `inputRef` instead.
-   */
-  fieldRef: PropTypes.func,
   /**
    * Used to focus `select` on `componentDidMount()`
    */
