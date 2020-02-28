@@ -10,7 +10,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -32,7 +32,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -67,7 +67,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -102,7 +102,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -137,7 +137,7 @@ exports[`DateField has errorMessage 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -166,7 +166,7 @@ exports[`DateField has errorMessage 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -201,7 +201,7 @@ exports[`DateField has errorMessage 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -236,7 +236,7 @@ exports[`DateField has errorMessage 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -271,7 +271,7 @@ exports[`DateField has invalid day 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -293,7 +293,7 @@ exports[`DateField has invalid day 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -328,7 +328,7 @@ exports[`DateField has invalid day 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -363,7 +363,7 @@ exports[`DateField has invalid day 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -398,7 +398,7 @@ exports[`DateField has invalid month 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -420,7 +420,7 @@ exports[`DateField has invalid month 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -455,7 +455,7 @@ exports[`DateField has invalid month 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -490,7 +490,7 @@ exports[`DateField has invalid month 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -525,7 +525,7 @@ exports[`DateField has invalid year 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -547,7 +547,7 @@ exports[`DateField has invalid year 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -582,7 +582,7 @@ exports[`DateField has invalid year 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -617,7 +617,7 @@ exports[`DateField has invalid year 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -652,7 +652,7 @@ exports[`DateField has requirementLabel 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -676,7 +676,7 @@ exports[`DateField has requirementLabel 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -711,7 +711,7 @@ exports[`DateField has requirementLabel 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -746,7 +746,7 @@ exports[`DateField has requirementLabel 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -781,7 +781,7 @@ exports[`DateField is inversed 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -803,7 +803,7 @@ exports[`DateField is inversed 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -838,7 +838,7 @@ exports[`DateField is inversed 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -873,7 +873,7 @@ exports[`DateField is inversed 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>
@@ -908,7 +908,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     id="datefield_label_snapshot"
   >
     <span
-      className={undefined}
+      className=""
     >
       Date
     </span>
@@ -930,7 +930,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Month
         </span>
@@ -965,7 +965,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Day
         </span>
@@ -1000,7 +1000,7 @@ exports[`DateField renders with all defaultProps 1`] = `
         id="textfield_label_snapshot"
       >
         <span
-          className={undefined}
+          className=""
         >
           Year
         </span>

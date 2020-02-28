@@ -4,7 +4,9 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -21,7 +23,9 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -42,7 +46,9 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -59,7 +65,9 @@ exports[`FormLabel is inversed 1`] = `
 <label
   className="ds-c-label ds-c-label--inverse"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -75,7 +83,9 @@ exports[`FormLabel renders error state 1`] = `
   className="ds-c-label"
   htmlFor="name"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -92,7 +102,9 @@ exports[`FormLabel renders hint node 1`] = `
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -109,7 +121,9 @@ exports[`FormLabel renders hint string 1`] = `
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -125,7 +139,9 @@ exports[`FormLabel renders label text 1`] = `
   className="ds-c-label"
   htmlFor="name"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
 </label>
@@ -135,7 +151,9 @@ exports[`FormLabel renders requirementLabel node 1`] = `
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -152,7 +170,9 @@ exports[`FormLabel renders requirementLabel string 1`] = `
 <label
   className="ds-c-label"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
   <span
@@ -167,7 +187,9 @@ exports[`FormLabel supports additional classNames 1`] = `
 <label
   className="ds-c-label ds-u-foo"
 >
-  <span>
+  <span
+    className=""
+  >
     Hello world
   </span>
 </label>

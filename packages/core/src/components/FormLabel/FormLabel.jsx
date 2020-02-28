@@ -50,16 +50,15 @@ export class FormLabel extends React.PureComponent {
   }
 
   render() {
-    const { fieldId, id, children } = this.props;
+    const { fieldId, id, children, textClassName, className, inversed } = this.props;
     const ComponentType = this.props.component;
-    const textClasses = this.props.textClassName;
-    const classes = classNames('ds-c-label', this.props.className, {
-      'ds-c-label--inverse': this.props.inversed
+    const classes = classNames('ds-c-label', className, {
+      'ds-c-label--inverse': inversed
     });
 
     return (
       <ComponentType className={classes} htmlFor={fieldId} id={id}>
-        <span className={textClasses}>{children}</span>
+        <span className={classNames(textClassName)}>{children}</span>
         {this.hint()}
         {this.errorMessage()}
       </ComponentType>
