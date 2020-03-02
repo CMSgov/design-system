@@ -10,9 +10,10 @@ Object {
   "wrapper": <Displaced
     dialogClass="ds-c-dialog ds-base"
     escapeExits={true}
+    focusDialog={true}
     includeDefaultStyles={false}
     mounted={true}
-    titleId="dialog-title"
+    titleId="dialog-title dialog-content"
     underlayClass="ds-c-dialog-wrap"
     underlayClickExits={false}
   >
@@ -33,6 +34,7 @@ Object {
         </Button>
       </header>
       <main
+        id="dialog-content"
         role="main"
       >
         Foo
@@ -62,6 +64,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
   <Displaced
     dialogClass="ds-c-dialog ds-base"
     escapeExits={true}
+    focusDialog={true}
     getApplicationNode={
       [MockFunction] {
         "calls": Array [
@@ -72,7 +75,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
     includeDefaultStyles={false}
     mounted={true}
     onExit={[MockFunction]}
-    titleId="dialog-title"
+    titleId="dialog-title dialog-content"
     underlayClass="ds-c-dialog-wrap"
     underlayClickExits={false}
   >
@@ -84,10 +87,11 @@ exports[`Dialog renders react-aria-modal 1`] = `
               class="ds-c-dialog-wrap"
             >
               <div
-                aria-labelledby="dialog-title"
+                aria-labelledby="dialog-title dialog-content"
                 class="ds-c-dialog ds-base"
                 id="react-aria-modal-dialog"
                 role="dialog"
+                tabindex="-1"
               >
                 <div
                   role="document"
@@ -111,6 +115,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </button>
                   </header>
                   <main
+                    id="dialog-content"
                     role="main"
                   >
                     Bar
@@ -126,6 +131,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
         dialogClass="ds-c-dialog ds-base"
         dialogId="react-aria-modal-dialog"
         escapeExits={true}
+        focusDialog={true}
         focusTrapPaused={false}
         getApplicationNode={
           [MockFunction] {
@@ -138,7 +144,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
         mounted={true}
         onExit={[MockFunction]}
         scrollDisabled={true}
-        titleId="dialog-title"
+        titleId="dialog-title dialog-content"
         underlayClass="ds-c-dialog-wrap"
         underlayClickExits={false}
         underlayColor="rgba(0,0,0,0.5)"
@@ -149,7 +155,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
           active={true}
           focusTrapOptions={
             Object {
-              "initialFocus": undefined,
+              "initialFocus": "#react-aria-modal-dialog",
             }
           }
           paused={false}
@@ -161,12 +167,13 @@ exports[`Dialog renders react-aria-modal 1`] = `
               style={Object {}}
             >
               <div
-                aria-labelledby="dialog-title"
+                aria-labelledby="dialog-title dialog-content"
                 className="ds-c-dialog ds-base"
                 id="react-aria-modal-dialog"
                 key="b"
                 role="dialog"
                 style={Object {}}
+                tabIndex="-1"
               >
                 <div
                   role="document"
@@ -199,6 +206,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </Button>
                   </header>
                   <main
+                    id="dialog-content"
                     role="main"
                   >
                     Bar
@@ -229,9 +237,10 @@ Object {
   "wrapper": <Displaced
     dialogClass="ds-c-dialog ds-base test-dialog ds-c-dialog--full"
     escapeExits={true}
+    focusDialog={true}
     includeDefaultStyles={false}
     mounted={true}
-    titleId="dialog-title"
+    titleId="dialog-title dialog-content"
     underlayClass="ds-c-dialog-wrap"
     underlayClickExits={false}
   >
@@ -252,6 +261,7 @@ Object {
         </Button>
       </header>
       <main
+        id="dialog-content"
         role="main"
       >
         Foo
