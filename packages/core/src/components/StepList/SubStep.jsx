@@ -5,7 +5,7 @@ import { stepShape } from './StepList';
 
 export const SubStep = ({ step, ...props }) => (
   <li className="ds-c-substep">
-    <div className="ds-c-substep__title">{step.title}</div>
+    <div className="ds-c-substep__heading">{step.title}</div>
     {step.completed && (
       <StepLink
         component={step.component}

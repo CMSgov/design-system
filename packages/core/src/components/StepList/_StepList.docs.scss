@@ -78,12 +78,12 @@ Step object
     </tr>
     <tr>
       <td>
-        <code class="ds-u-font-weight--bold">href</code>
+        <code class="ds-u-font-weight--bold">heading</code>
         <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
       </td>
       <td><code>string</code></td>
       <td>
-        <p>URL or partial URL that routes to the step. Will be passed to <code>onStepLinkClick</code> as first parameter</p>
+        <p>Text to display as the step heading</p>
       </td>
     </tr>
     <tr>
@@ -92,7 +92,17 @@ Step object
       </td>
       <td><code>'1', '2', '3', '4', '5'</code></td>
       <td>
-        <p>Heading type to override default `<h2>`.</p>
+        <p>Heading type to override default <code>&lt;h2&gt;</code>.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">href</code>
+        <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
+      </td>
+      <td><code>string</code></td>
+      <td>
+        <p>URL or partial URL that routes to the step. Will be passed to <code>onStepLinkClick</code> as first parameter</p>
       </td>
     </tr>
     <tr>
@@ -135,16 +145,6 @@ Step object
       <td><code>arrayOf[stepShape]</code></td>
       <td>
         <p>Array of substeps</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code class="ds-u-font-weight--bold">title</code>
-        <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
-      </td>
-      <td><code>string</code></td>
-      <td>
-        <p>Text to display as the step title</p>
       </td>
     </tr>
   </tbody>

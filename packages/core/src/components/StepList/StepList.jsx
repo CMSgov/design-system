@@ -20,7 +20,8 @@ export const StepList = ({ steps, ...props }) => (
 export const stepShape = {
   id: PropTypes.string,
   href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired, // [Deprecated]
+  heading: PropTypes.string.isRequired,
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   description: PropTypes.string,
   linkText: PropTypes.string,
