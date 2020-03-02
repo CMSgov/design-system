@@ -22,6 +22,8 @@ export class HelpDrawer extends React.PureComponent {
       footerBody,
       footerTitle
     } = this.props;
+    const Heading = `h${this.props.headingLevel}` || `h3`;
+
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
       <div className="ds-c-help-drawer">
@@ -31,13 +33,13 @@ export class HelpDrawer extends React.PureComponent {
            * so things display as expected when the body content overflows
            */}
           <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
-            <h3
+            <Heading
               ref={el => (this.titleRef = el)}
               tabIndex="0"
               className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
             >
               {title}
-            </h3>
+            </Heading>
             <Button
               aria-label={ariaLabel}
               className="ds-u-margin-left--auto ds-c-help-drawer__close-button"
@@ -64,15 +66,22 @@ export class HelpDrawer extends React.PureComponent {
 
 HelpDrawer.defaultProps = {
   ariaLabel: 'Close help drawer',
-  closeButtonText: 'Close'
+  closeButtonText: 'Close',
+  headingLevel: '3'
 };
 HelpDrawer.propTypes = {
-  /** Helps give more context to screen readers on the button that closes the Help Drawer */
+  /**
+   * Helps give more context to screen readers on the button that closes the Help Drawer 
+   */
   ariaLabel: PropTypes.string,
   closeButtonText: PropTypes.string,
   children: PropTypes.node.isRequired,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
+  /**
+   * Heading type to override default `<h3>` in title block
+   */
+  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   onCloseClick: PropTypes.func.isRequired,
   /** Required because the title is what gets focused on mount */
   title: PropTypes.string.isRequired

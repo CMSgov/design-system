@@ -21,6 +21,7 @@ export const stepShape = {
   id: PropTypes.string,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   description: PropTypes.string,
   linkText: PropTypes.string,
   completed: PropTypes.bool,

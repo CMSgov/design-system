@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { stepShape } from './StepList';
 
 export const Step = ({ step, ...props }) => {
+  const Heading = `h${step.headingLevel || '2'}`;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
@@ -37,7 +38,7 @@ export const Step = ({ step, ...props }) => {
   return (
     <li className={className}>
       <div className={contentClassName}>
-        <h2 className="ds-c-step__title">{step.title}</h2>
+        <Heading className="ds-c-step__title">{step.title}</Heading>
         {step.description && (
           <div className="ds-c-step__description" aria-label={descriptionLabel}>
             {step.description}
