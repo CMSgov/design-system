@@ -55,8 +55,8 @@ exports[`Dialog renders react-aria-modal 1`] = `
       ],
     }
   }
+  heading="Foo"
   onExit={[MockFunction]}
-  title="Foo"
   underlayClickExits={false}
 >
   <Displaced
