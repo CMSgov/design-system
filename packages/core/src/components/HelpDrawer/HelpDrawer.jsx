@@ -5,11 +5,24 @@ import React from 'react';
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.titleRef = null;
+    this.headingRef = null;
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.title) {
+        console.warn(
+          `[Deprecated]: Please remove the 'title' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
+      if (!props.title && !props.heading) {
+        console.warn(
+          `The 'heading' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
+    }
   }
 
   componentDidMount() {
-    if (this.titleRef) this.titleRef.focus();
+    if (this.headingRef) this.headingRef.focus();
   }
 
   render() {
@@ -19,6 +32,7 @@ export class HelpDrawer extends React.PureComponent {
       title,
       children,
       onCloseClick,
+      heading,
       footerBody,
       footerTitle
     } = this.props;
@@ -34,11 +48,12 @@ export class HelpDrawer extends React.PureComponent {
            */}
           <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
             <Heading
-              ref={el => (this.titleRef = el)}
+              ref={el => (this.headingRef = el)}
               tabIndex="0"
               className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
             >
-              {title}
+              { // TODO: make heading required after removing title
+              title || heading}
             </Heading>
             <Button
               aria-label={ariaLabel}
@@ -79,12 +94,18 @@ HelpDrawer.propTypes = {
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
   /**
-   * Heading type to override default `<h3>` in title block
+   * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
+   */
+  heading: PropTypes.string,
+  /**
+   * Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   onCloseClick: PropTypes.func.isRequired,
-  /** Required because the title is what gets focused on mount */
-  title: PropTypes.string.isRequired
+  /**
+   * @hide-prop [Deprecated] This prop has been renamed to `heading`.
+   */
+  title: PropTypes.string
 };
 
 export default HelpDrawer;
