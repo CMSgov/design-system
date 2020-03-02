@@ -28,13 +28,13 @@ function setSwatchHexValues() {
 // Only used in the modal dialog size variant example
 function setModalExamples() {
   const dialog = document.getElementById('dialog');
-  const dialogTitle = document.getElementById('dialog-title');
+  const dialogHeading = document.getElementById('dialog-heading');
   const dialogWrap = document.getElementById('dialog-wrap');
 
   document.querySelectorAll('.dialog-open-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       dialog.classList.add(btn.dataset.type);
-      dialogTitle.textContent = btn.dataset.title;
+      dialogHeading.textContent = btn.dataset.heading;
       dialogWrap.classList.remove('ds-u-display--none');
     });
   });
