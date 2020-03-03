@@ -74,7 +74,7 @@
     "jest-environment-selenium": "2.1.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
-    "lint-staged": "10.0.8",
+    "lint-staged": "^10.0.8",
     "marked": "^0.3.17",
     "memory-fs": "^0.4.1",
     "mkdir-recursive": "^0.4.0",
