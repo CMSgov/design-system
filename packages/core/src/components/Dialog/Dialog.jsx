@@ -60,8 +60,10 @@ export const Dialog = function(props) {
             {closeText}
           </Button>
         </header>
-        <main role="main" id="dialog-content">
-          {children}
+        <main role="main">
+          <div id="dialog-content">
+            {children}
+          </div>
         </main>
         {actions && (
           <aside className={actionsClassNames} role="complementary">
