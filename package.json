@@ -52,6 +52,7 @@
     "enzyme-to-json": "3.3.5",
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
+    "eslint-config-prettier": "^6.10.0",
     "front-matter": "^2.3.0",
     "generator-cmsgov": "file:./packages/generator-cmsgov",
     "glob": "7.1.4",
@@ -68,12 +69,12 @@
     "gulp-stylelint": "^6.0.0",
     "gulp-util": "^3.0.8",
     "gulp4-run-sequence": "^1.0.1",
-    "husky": "^0.14.3",
+    "husky": "^4.2.3",
     "jest": "^22.4.2",
     "jest-environment-selenium": "2.1.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^10.0.8",
     "marked": "^0.3.17",
     "memory-fs": "^0.4.1",
     "mkdir-recursive": "^0.4.0",
@@ -107,17 +108,20 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{md,html}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.scss": [
-      "stylelint",
-      "stylelint --syntax=scss"
+      "prettier --write",
+      "stylelint --fix"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "resolutions": {
     "gulp-sass/node-sass": ">=4.7.2",
