@@ -154,7 +154,7 @@ Dialog.propTypes = {
    */
   getApplicationNode: PropTypes.func,
   /**
-   * Additional classes to be added to the header, which wraps the title and
+   * Additional classes to be added to the header, which wraps the heading and
    * close button.
    */
   headerClassName: PropTypes.string,
