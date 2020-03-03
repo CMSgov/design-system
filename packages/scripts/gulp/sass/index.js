@@ -1,7 +1,7 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const buildPath = require('../common/buildPath');
+const getDocsDistPath = require('../common/getDocsDistPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
@@ -80,7 +80,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('sass:process:docs', () =>
-    processSass('packages/docs/', buildPath(shared.docsPath, shared.rootPath, '/public'))
+    processSass('packages/docs/', getDocsDistPath(shared.docsPath, shared.rootPath, '/public'))
   );
 
   gulp.task('sass', done => {

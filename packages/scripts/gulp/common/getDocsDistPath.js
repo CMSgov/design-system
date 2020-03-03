@@ -5,5 +5,5 @@ const path = require('path');
  * a simple helper method for outputting the proper build path.
  */
 module.exports = (docsPath, rootPath, basename = '') => {
-  return path.join(docsPath, rootPath, basename);
+  return path.join(docsPath, 'dist', rootPath, basename);
 };

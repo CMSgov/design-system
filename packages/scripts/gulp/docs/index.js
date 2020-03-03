@@ -4,7 +4,7 @@
  * generating the HTML files which get published as the public site.
  */
 const addReactDocProps = require('./addReactDocProps');
-const buildPath = require('../common/buildPath');
+const getDocsDistPath = require('../common/getDocsDistPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const del = require('del');
@@ -137,7 +137,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🚮 ', 'Emptying the build and data directories');
 
     // pass empty version so entire build directory is emptied
-    return del(buildPath(shared.docsPath, ''));
+    return del(getDocsDistPath(shared.docsPath, ''));
   });
 
   gulp.task('docs:fonts:core', () => {
@@ -145,7 +145,7 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src('packages/core/fonts/*')
-      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
+      .pipe(gulp.dest(getDocsDistPath(shared.docsPath, shared.rootPath, '/public/fonts')));
   });
 
   gulp.task('docs:fonts:theme', done => {
@@ -157,7 +157,7 @@ module.exports = (gulp, shared) => {
 
       return gulp
         .src(`packages/${shared.theme}/src/fonts/**/*`)
-        .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
+        .pipe(gulp.dest(getDocsDistPath(shared.docsPath, shared.rootPath, '/public/fonts')));
     } else {
       done();
     }
@@ -171,7 +171,7 @@ module.exports = (gulp, shared) => {
 
     return gulp
       .src('packages/core/images/*')
-      .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images')));
+      .pipe(gulp.dest(getDocsDistPath(shared.docsPath, shared.rootPath, '/public/images')));
   });
 
   gulp.task(
@@ -181,7 +181,7 @@ module.exports = (gulp, shared) => {
 
       return gulp
         .src(`${docsPkgDirectory}/src/**/images/*`)
-        .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public')));
+        .pipe(gulp.dest(getDocsDistPath(shared.docsPath, shared.rootPath, '/public')));
     })
   );
 
