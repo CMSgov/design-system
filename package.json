@@ -114,8 +114,8 @@
       "prettier --write"
     ],
     "*.scss": [
-      "stylelint",
-      "stylelint --syntax=scss"
+      "prettier --write",
+      "stylelint --fix"
     ]
   },
   "husky": {
