@@ -53,8 +53,8 @@ export const Dialog = function(props) {
     >
       <div role="document">
         <header className={headerClassNames} role="banner">
-          { // TODO: make heading required after removing title
-            (title || heading) && (
+          {// TODO: make heading required after removing title
+          (title || heading) && (
             <h1 className="ds-h2" id="dialog-title">
               {heading}
             </h1>

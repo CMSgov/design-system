@@ -18,7 +18,7 @@ export const Step = ({ step, ...props }) => {
       );
     }
   }
-  
+
   const Heading = `h${step.headingLevel || '2'}`;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;

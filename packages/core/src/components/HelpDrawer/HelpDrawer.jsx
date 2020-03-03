@@ -52,7 +52,7 @@ export class HelpDrawer extends React.PureComponent {
               tabIndex="0"
               className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
             >
-              { // TODO: make heading required after removing title
+              {// TODO: make heading required after removing title
               title || heading}
             </Heading>
             <Button
@@ -86,7 +86,7 @@ HelpDrawer.defaultProps = {
 };
 HelpDrawer.propTypes = {
   /**
-   * Helps give more context to screen readers on the button that closes the Help Drawer 
+   * Helps give more context to screen readers on the button that closes the Help Drawer
    */
   ariaLabel: PropTypes.string,
   closeButtonText: PropTypes.string,
