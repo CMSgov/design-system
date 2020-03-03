@@ -153,10 +153,10 @@
   }
 
   // Make sure active overrides focus styles
-  &:active:focus,	
-  &.ds-c-button--active:focus {	
-    background-color: $color-background-inverse;	
-    color: rgba($color-base-inverse, 0.6);	
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-background-inverse;
+    color: rgba($color-base-inverse, 0.6);
   }
 }
 
@@ -224,7 +224,7 @@
 $button-color-variants: (
   primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color,
   success: $color-success $color-success-dark $color-success-darker $focus-color,
-  danger: $color-error $color-error-dark $color-error-darkest $focus-color,
+  danger: $color-error $color-error-dark $color-error-darkest $focus-color
 );
 
 @each $colors in map-keys($button-color-variants) {

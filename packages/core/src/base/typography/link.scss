@@ -9,7 +9,7 @@
   &:visited {
     color: $color-visited;
   }
-  
+
   &:hover {
     color: $color-primary-darker;
   }
@@ -34,7 +34,7 @@
   &:visited {
     color: $color-visited;
   }
-  
+
   &:hover {
     color: $color-primary-darkest;
   }
@@ -96,10 +96,10 @@
   }
 
   // Change color of links that are descendants of '.ds-base--inverse'
-  // 
+  //
   // Fix TODO: Because this selector's specificity is higher than most components,
   // changing inverse links will require unusually specific selectors
-  // 
+  //
   // Specifically exclude '.ds-c-button' because this is most likely case where
   // a inverse link element will have other styles applied
   .ds-base--inverse a:not(.ds-c-button) {
