@@ -34,10 +34,13 @@ Object {
         </Button>
       </header>
       <main
-        id="dialog-content"
         role="main"
       >
-        Foo
+        <div
+          id="dialog-content"
+        >
+          Foo
+        </div>
       </main>
     </div>
   </Displaced>,
@@ -115,10 +118,13 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </button>
                   </header>
                   <main
-                    id="dialog-content"
                     role="main"
                   >
-                    Bar
+                    <div
+                      id="dialog-content"
+                    >
+                      Bar
+                    </div>
                   </main>
                 </div>
               </div>
@@ -206,10 +212,13 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     </Button>
                   </header>
                   <main
-                    id="dialog-content"
                     role="main"
                   >
-                    Bar
+                    <div
+                      id="dialog-content"
+                    >
+                      Bar
+                    </div>
                   </main>
                 </div>
               </div>
@@ -261,10 +270,13 @@ Object {
         </Button>
       </header>
       <main
-        id="dialog-content"
         role="main"
       >
-        Foo
+        <div
+          id="dialog-content"
+        >
+          Foo
+        </div>
       </main>
       <aside
         className="ds-c-dialog__actions test-action"
