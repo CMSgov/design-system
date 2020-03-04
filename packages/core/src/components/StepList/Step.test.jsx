@@ -66,7 +66,7 @@ describe('Step', () => {
   it('renders basic incomplete, unstarted step', () => {
     const { wrapper } = renderStep();
 
-    const title = wrapper.find('.ds-c-step__title');
+    const title = wrapper.find('.ds-c-step__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual('Do something!');
 
@@ -83,7 +83,7 @@ describe('Step', () => {
     const spy = jest.fn();
     const { wrapper, step } = renderStep({ completed: true }, { onStepLinkClick: spy });
 
-    const title = wrapper.find('.ds-c-step__title');
+    const title = wrapper.find('.ds-c-step__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual('Do something!');
 

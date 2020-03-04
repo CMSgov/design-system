@@ -31,7 +31,7 @@ class Example extends React.PureComponent {
           <Dialog
             onExit={() => this.hideModal()}
             getApplicationNode={() => document.getElementById('App')}
-            title="Dialog title"
+            heading="Dialog heading"
             actions={[
               <button className="ds-c-button ds-c-button--primary" key="primary">
                 Dialog action

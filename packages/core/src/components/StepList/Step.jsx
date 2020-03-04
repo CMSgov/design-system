@@ -6,6 +6,20 @@ import classNames from 'classnames';
 import { stepShape } from './StepList';
 
 export const Step = ({ step, ...props }) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (step.title) {
+      console.warn(
+        `[Deprecated]: Please remove the 'title' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+    if (!step.title && !step.heading) {
+      console.warn(
+        `The 'heading' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+  }
+
+  const Heading = `h${step.headingLevel || '2'}`;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
@@ -16,9 +30,9 @@ export const Step = ({ step, ...props }) => {
     'ds-c-step__content--with-content': step.description || step.steps
   });
   const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
-  const actionsLabel = actionsLabelText.replace('%{step}', step.title);
-  const substepsLabel = substepsLabelText.replace('%{step}', step.title);
-  const descriptionLabel = descriptionLabelText.replace('%{step}', step.title);
+  const actionsLabel = actionsLabelText.replace('%{step}', step.heading || step.title);
+  const substepsLabel = substepsLabelText.replace('%{step}', step.heading || step.title);
+  const descriptionLabel = descriptionLabelText.replace('%{step}', step.heading || step.title);
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -34,10 +48,11 @@ export const Step = ({ step, ...props }) => {
     linkClassName = 'ds-c-button ds-c-button--primary';
   }
 
+  // TODO: make heading required after removing title
   return (
     <li className={className}>
       <div className={contentClassName}>
-        <h2 className="ds-c-step__title">{step.title}</h2>
+        <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
         {step.description && (
           <div className="ds-c-step__description" aria-label={descriptionLabel}>
             {step.description}
@@ -62,7 +77,7 @@ export const Step = ({ step, ...props }) => {
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={`"${step.title}"`}
+            screenReaderText={`"${step.heading || step.title}"`}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >

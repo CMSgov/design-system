@@ -19,11 +19,12 @@ export class Alert extends React.PureComponent {
   }
 
   heading() {
+    const Heading = `h${this.props.headingLevel}` || `h3`;
     if (this.props.heading) {
       return (
-        <h3 className="ds-c-alert__heading" id={this.headingId}>
+        <Heading className="ds-c-alert__heading" id={this.headingId}>
           {this.props.heading}
-        </h3>
+        </Heading>
       );
     }
   }
@@ -51,7 +52,8 @@ export class Alert extends React.PureComponent {
   }
 }
 Alert.defaultProps = {
-  role: 'region'
+  role: 'region',
+  headingLevel: '3'
 };
 Alert.propTypes = {
   /**
@@ -66,6 +68,10 @@ Alert.propTypes = {
    * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
    */
   headingId: PropTypes.string,
+  /**
+   * Heading type to override default `<h3>`.
+   */
+  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   /**
    * Boolean to hide the `Alert` icon
    */

@@ -20,7 +20,9 @@ export const StepList = ({ steps, ...props }) => (
 export const stepShape = {
   id: PropTypes.string,
   href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired, // [Deprecated]
+  heading: PropTypes.string.isRequired,
+  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   description: PropTypes.string,
   linkText: PropTypes.string,
   completed: PropTypes.bool,
@@ -71,17 +73,17 @@ StepList.propTypes = {
   startText: PropTypes.string.isRequired,
   /**
    * A template string for the aria-label describing a step's actions where
-   * the substring `%{step}` is replaced with that step's `title`.
+   * the substring `%{step}` is replaced with that step's `heading`.
    */
   actionsLabelText: PropTypes.string.isRequired,
   /**
    * A template string for the aria-label for a step's description where
-   * the substring `%{step}` is replaced with that step's `title`.
+   * the substring `%{step}` is replaced with that step's `heading`.
    */
   descriptionLabelText: PropTypes.string.isRequired,
   /**
    * A template string for the aria-label describing a step's substeps where
-   * the substring `%{step}` is replaced with that step's `title`.
+   * the substring `%{step}` is replaced with that step's `heading`.
    */
   substepsLabelText: PropTypes.string.isRequired
 };
