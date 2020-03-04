@@ -16,11 +16,20 @@ export const Dialog = function(props) {
     closeText,
     escapeExitDisabled,
     headerClassName,
+    heading,
     onExit,
     size,
     title,
     ...modalProps
   } = props;
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.title) {
+      console.warn(
+        `[Deprecated]: Please remove the 'title' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+  }
 
   const dialogClassNames = classNames(
     'ds-c-dialog',
@@ -45,9 +54,10 @@ export const Dialog = function(props) {
     >
       <div role="document">
         <header className={headerClassNames} role="banner">
-          {title && (
+          {// TODO: make heading required after removing title
+          (title || heading) && (
             <h1 className="ds-h2" id="dialog-title">
-              {title}
+              {heading}
             </h1>
           )}
           <Button
@@ -147,10 +157,14 @@ Dialog.propTypes = {
    */
   getApplicationNode: PropTypes.func,
   /**
-   * Additional classes to be added to the header, which wraps the title and
+   * Additional classes to be added to the header, which wraps the heading and
    * close button.
    */
   headerClassName: PropTypes.string,
+  /**
+   * The Dialog's heading, to be rendered in the header alongside the close button.
+   */
+  heading: PropTypes.node,
   /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
@@ -159,7 +173,7 @@ Dialog.propTypes = {
   onExit: PropTypes.func,
   size: PropTypes.oneOf(['narrow', 'wide', 'full']),
   /**
-   * The Dialog's title, to be rendered in the header alongside the close button.
+   * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
   title: PropTypes.node,
   /**

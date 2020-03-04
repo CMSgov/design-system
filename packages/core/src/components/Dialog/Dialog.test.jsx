@@ -27,7 +27,7 @@ describe('Dialog', function() {
     // https://github.com/reactjs/react-modal/issues/553
     expect(
       mount(
-        <Dialog getApplicationNode={jest.fn()} onExit={jest.fn()} title="Foo">
+        <Dialog getApplicationNode={jest.fn()} onExit={jest.fn()} heading="Foo">
           Bar
         </Dialog>
       )
