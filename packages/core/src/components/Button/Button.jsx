@@ -141,7 +141,7 @@ Button.propTypes = {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   disabled: PropTypes.bool,
   /**
    * When provided the root component will render as an `<a>` element

@@ -57,7 +57,7 @@ StepList.propTypes = {
    * integrating with React Router's `<Link>` or using your own custom component.
    * If more specific control is needed, each `step` object also accepts a `component` prop.
    */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   /**
    * Whether or not to render a substep's substeps.
    */
