@@ -26,6 +26,7 @@ Object {
         <Button
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
+          component="button"
           type="button"
           variation="danger"
         >
@@ -149,7 +150,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
           active={true}
           focusTrapOptions={
             Object {
-              "initialFocus": undefined,
+              "escapeDeactivates": true,
             }
           }
           paused={false}
@@ -184,6 +185,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                     <Button
                       aria-label="Close modal dialog"
                       className="ds-c-dialog__close"
+                      component="button"
                       onClick={[MockFunction]}
                       type="button"
                       variation="transparent"
@@ -245,6 +247,7 @@ Object {
         <Button
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
+          component="button"
           type="button"
           variation="transparent"
         >
