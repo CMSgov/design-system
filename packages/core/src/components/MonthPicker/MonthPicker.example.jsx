@@ -23,9 +23,10 @@ ReactDOM.render(
     <div className="example--inverse">
       <MonthPicker
         name="cryosleep-months"
+        errorMessage="Select at least one month"
         label="Select the months you were in cryosleep during 2046"
         disabledMonths={[7, 8, 9, 10, 11, 12]}
-        inverse
+        inversed
       />
     </div>
   </div>,
