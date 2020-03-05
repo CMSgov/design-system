@@ -19,13 +19,13 @@ const GitHubLinks = props => {
     <div className={props.className}>
       <Button
         href={zipUrl}
-        inversed={props.inversed}
+        inverse={props.inversed}
         variation="primary"
         className={downloadBtnClassName}
       >
         Download code and design files
       </Button>
-      <Button href={githubUrl()} inversed={props.inversed} className={githubBtnClassName}>
+      <Button href={githubUrl()} inverse={props.inversed} className={githubBtnClassName}>
         View on GitHub
       </Button>
     </div>
