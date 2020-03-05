@@ -22,6 +22,11 @@ export class Button extends React.PureComponent {
           `[Deprecated]: Please remove the 'buttonRef' prop in <Button>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.inverse) {
+        console.warn(
+          `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -152,6 +157,8 @@ Button.propTypes = {
    * Access a reference to the `button` or `a` element
    */
   inputRef: PropTypes.func,
+  /** @hide-prop [Deprecated] Use inversed instead */
+  inverse: PropTypes.bool,
   /** Applies the inverse theme styling */
   inversed: PropTypes.bool,
   /**

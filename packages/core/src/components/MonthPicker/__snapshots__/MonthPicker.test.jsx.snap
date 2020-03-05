@@ -26,7 +26,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       </span>
     </legend>
     <div
-      className="ds-c-month-picker__buttons margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix"
+      className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix"
     >
       <a
         aria-describedby="monthpicker_label_26"
