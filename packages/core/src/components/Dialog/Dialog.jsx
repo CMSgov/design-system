@@ -44,10 +44,11 @@ export const Dialog = function(props) {
   return (
     <AriaModal
       dialogClass={dialogClassNames}
+      focusDialog
       escapeExits={!escapeExitDisabled}
       includeDefaultStyles={false}
       onExit={onExit}
-      titleId="dialog-title"
+      titleId="dialog-title dialog-content"
       underlayClass="ds-c-dialog-wrap"
       {...modalProps}
     >
@@ -69,7 +70,11 @@ export const Dialog = function(props) {
             {closeText}
           </Button>
         </header>
-        <main role="main">{children}</main>
+        <main role="main">
+          <div id="dialog-content">
+            {children}
+          </div>
+        </main>
         {actions && (
           <aside className={actionsClassNames} role="complementary">
             {actions}
