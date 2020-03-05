@@ -124,7 +124,6 @@ export class MonthPicker extends React.PureComponent {
         onClick={onClick}
         inversed={this.props.inversed}
         variation={this.props.buttonVariation}
-        href="javascript:void(0);"
       >
         {text}
       </Button>

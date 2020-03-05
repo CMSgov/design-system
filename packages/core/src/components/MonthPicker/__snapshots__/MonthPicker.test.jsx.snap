@@ -28,28 +28,26 @@ exports[`MonthPicker renders a snapshot 1`] = `
     <div
       className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix"
     >
-      <a
+      <button
         aria-describedby="monthpicker_label_26"
         aria-pressed={false}
         className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
-        href="javascript:void(0);"
         onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
+        onKeyPress={undefined}
+        type="button"
       >
         Select all
-      </a>
-      <a
+      </button>
+      <button
         aria-describedby="monthpicker_label_26"
         aria-pressed={true}
         className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
-        href="javascript:void(0);"
         onClick={[Function]}
-        onKeyPress={[Function]}
-        role="button"
+        onKeyPress={undefined}
+        type="button"
       >
         Clear all
-      </a>
+      </button>
     </div>
     <div
       className="ds-c-month-picker__months"
