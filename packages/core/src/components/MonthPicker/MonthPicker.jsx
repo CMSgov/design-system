@@ -1,9 +1,9 @@
 import 'core-js/fn/array/includes';
+import React, { Fragment } from 'react';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
-import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -120,10 +120,11 @@ export class MonthPicker extends React.PureComponent {
         aria-describedby={this.labelId}
         aria-pressed={pressed}
         size="small"
-        className="ds-u-margin-right--1"
+        className="ds-u-margin-right--1 ds-u-float--left"
         onClick={onClick}
         inversed={this.props.inversed}
         variation={this.props.buttonVariation}
+        href="javascript:void(0);"
       >
         {text}
       </Button>
@@ -131,13 +132,28 @@ export class MonthPicker extends React.PureComponent {
   }
 
   renderLabel() {
+    const { selectAllText, clearAllText } = this.props;
+    const selectedMonths = this.selectedMonths();
+    const disabledMonths = this.disabledMonths();
+    const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
+    const clearAllPressed = selectedMonths.length === 0;
+
     return (
       <FormLabel
-        className="ds-u-visibility--screen-reader"
         component="legend"
         errorMessage={this.props.errorMessage}
         requirementLabel={this.props.requirementLabel}
+        hint={
+          <Fragment>
+            <div id={this.hintId}>{this.props.hint}</div>
+            <div className="ds-c-month-picker__buttons ds-u-margin-y--1 ds-u-clearfix">
+              {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
+              {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
+            </div>
+          </Fragment>
+        }
         inversed={this.props.inversed}
+        id={this.labelId}
       >
         {this.props.label}
       </FormLabel>
@@ -145,13 +161,6 @@ export class MonthPicker extends React.PureComponent {
   }
 
   render() {
-    const { selectAllText, clearAllText } = this.props;
-    const selectedMonths = this.selectedMonths();
-    const disabledMonths = this.disabledMonths();
-    const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
-    const clearAllPressed = selectedMonths.length === 0;
-
-    const Heading = this.props.headingLevel ? `h${this.props.headingLevel}` : `h4`;
     const classes = classNames(
       'ds-c-month-picker',
       'ds-c-fieldset',
@@ -160,20 +169,6 @@ export class MonthPicker extends React.PureComponent {
     );
     return (
       <div className={classes}>
-        <div>
-          <Heading className="ds-c-label ds-u-font-weight--bold ds-u-margin--0" id={this.labelId}>
-            {this.props.label}
-          </Heading>
-          {this.props.hint ? (
-            <p className="ds-c-label ds-c-field__hint ds-u-margin--0" id={this.hintId}>
-              {this.props.hint}
-            </p>
-          ) : null}
-        </div>
-        <div className="ds-u-margin-top--3">
-          {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
-          {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
-        </div>
         <fieldset className="ds-c-fieldset">
           {this.renderLabel()}
           <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
@@ -220,10 +215,6 @@ MonthPicker.propTypes = {
    * Additional hint text to display
    */
   hint: PropTypes.node,
-  /**
-   * Heading type to override default `<h4>` in title block
-   */
-  headingLevel: PropTypes.number,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
