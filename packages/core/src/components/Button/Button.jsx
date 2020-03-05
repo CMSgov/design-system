@@ -41,7 +41,7 @@ export class Button extends React.PureComponent {
       className,
       component,
       inputRef,
-      inverse,
+      inversed,
       onClick,
       size,
       variation,
@@ -82,7 +82,7 @@ export class Button extends React.PureComponent {
     const disabledClass =
       this.props.disabled && this.componentType() !== 'button' && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
-    const inverseClass = this.props.inverse && 'ds-c-button--inverse';
+    const inverseClass = this.props.inversed && 'ds-c-button--inverse';
 
     return classNames(
       'ds-c-button',
@@ -153,7 +153,7 @@ Button.propTypes = {
    */
   inputRef: PropTypes.func,
   /** Applies the inverse theme styling */
-  inverse: PropTypes.bool,
+  inversed: PropTypes.bool,
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.

@@ -30,7 +30,7 @@ exports[`Button applies disabled, inverse, and variation classes together 1`] = 
 </button>
 `;
 
-exports[`Button applies inverse to default/transparent variations 1`] = `
+exports[`Button applies inversed to default/transparent variations 1`] = `
 <button
   className="ds-c-button ds-c-button--transparent ds-c-button--inverse"
   type="button"
