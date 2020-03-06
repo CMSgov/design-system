@@ -19,7 +19,6 @@ const monthNumbers = (() => {
 export class MonthPicker extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.hintId = uniqueId('monthpicker_hint_');
     this.labelId = uniqueId('monthpicker_label_');
     this.months = getMonthNames(props.locale);
     this.monthsLong = getMonthNames(props.locale, false);
@@ -96,7 +95,6 @@ export class MonthPicker extends React.PureComponent {
         {this.months.map((month, i) => (
           <li key={month}>
             <Choice
-              aria-describedby={this.props.hint ? this.hintId : null}
               aria-label={this.monthsLong[i]}
               checked={selectedMonths.includes(i + 1)}
               className="ds-c-month-picker__month"
@@ -136,7 +134,7 @@ export class MonthPicker extends React.PureComponent {
         component="legend"
         errorMessage={this.props.errorMessage}
         requirementLabel={this.props.requirementLabel}
-        hint={<div id={this.hintId}>{this.props.hint}</div>}
+        hint={this.props.hint}
         inversed={this.props.inversed}
         id={this.labelId}
       >

@@ -10,26 +10,19 @@ exports[`MonthPicker renders a snapshot 1`] = `
     <legend
       className="ds-c-label"
       htmlFor={undefined}
-      id="monthpicker_label_26"
+      id="monthpicker_label_13"
     >
       <span
         className=""
       >
         Months
       </span>
-      <span
-        className="ds-c-field__hint"
-      >
-        <div
-          id="monthpicker_hint_25"
-        />
-      </span>
     </legend>
     <div
       className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix"
     >
       <button
-        aria-describedby="monthpicker_label_26"
+        aria-describedby="monthpicker_label_13"
         aria-pressed={false}
         className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
         onClick={[Function]}
@@ -39,7 +32,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
         Select all
       </button>
       <button
-        aria-describedby="monthpicker_label_26"
+        aria-describedby="monthpicker_label_13"
         aria-pressed={true}
         className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
         onClick={[Function]}
@@ -63,12 +56,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="January"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_27"
+              id="checkbox_months_14"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -76,7 +68,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_27"
+              htmlFor="checkbox_months_14"
               id={undefined}
             >
               <span
@@ -95,12 +87,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="February"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_28"
+              id="checkbox_months_15"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -108,7 +99,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_28"
+              htmlFor="checkbox_months_15"
               id={undefined}
             >
               <span
@@ -127,12 +118,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="March"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_29"
+              id="checkbox_months_16"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -140,7 +130,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_29"
+              htmlFor="checkbox_months_16"
               id={undefined}
             >
               <span
@@ -159,12 +149,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="April"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_30"
+              id="checkbox_months_17"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -172,7 +161,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_30"
+              htmlFor="checkbox_months_17"
               id={undefined}
             >
               <span
@@ -191,12 +180,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="May"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_31"
+              id="checkbox_months_18"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -204,7 +192,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_31"
+              htmlFor="checkbox_months_18"
               id={undefined}
             >
               <span
@@ -223,12 +211,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="June"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_32"
+              id="checkbox_months_19"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -236,7 +223,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_32"
+              htmlFor="checkbox_months_19"
               id={undefined}
             >
               <span
@@ -255,12 +242,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="July"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_33"
+              id="checkbox_months_20"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -268,7 +254,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_33"
+              htmlFor="checkbox_months_20"
               id={undefined}
             >
               <span
@@ -287,12 +273,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="August"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_34"
+              id="checkbox_months_21"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -300,7 +285,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_34"
+              htmlFor="checkbox_months_21"
               id={undefined}
             >
               <span
@@ -319,12 +304,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="September"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_35"
+              id="checkbox_months_22"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -332,7 +316,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_35"
+              htmlFor="checkbox_months_22"
               id={undefined}
             >
               <span
@@ -351,12 +335,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="October"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_36"
+              id="checkbox_months_23"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -364,7 +347,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_36"
+              htmlFor="checkbox_months_23"
               id={undefined}
             >
               <span
@@ -383,12 +366,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="November"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_37"
+              id="checkbox_months_24"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -396,7 +378,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_37"
+              htmlFor="checkbox_months_24"
               id={undefined}
             >
               <span
@@ -415,12 +397,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
             className="ds-c-month-picker__month"
           >
             <input
-              aria-describedby={null}
               aria-label="December"
               checked={false}
               className="ds-c-choice"
               disabled={false}
-              id="checkbox_months_38"
+              id="checkbox_months_25"
               name="months"
               onChange={[Function]}
               type="checkbox"
@@ -428,7 +409,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              htmlFor="checkbox_months_38"
+              htmlFor="checkbox_months_25"
               id={undefined}
             >
               <span
