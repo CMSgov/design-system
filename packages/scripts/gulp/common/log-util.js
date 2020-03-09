@@ -2,7 +2,7 @@
  * Just some utility functions to log things.
  * Via: github.com/18F/web-design-standards-docs
  */
-const pkg = require('../../../package.json');
+const pkg = require('../../package.json');
 const gutil = require('gulp-util');
 const chalk = gutil.colors;
 const notifier = require('node-notifier');

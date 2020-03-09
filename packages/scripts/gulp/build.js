@@ -8,77 +8,66 @@ const del = require('del');
 const dutil = require('./common/log-util');
 const runSequence = require('gulp4-run-sequence');
 
-module.exports = (gulp, shared) => {
-  const babelTasks = shared.packages.map(pkg => `build:babel:${pkg}`);
-  const jsonTasks = shared.packages.map(pkg => `build:json:${pkg}`);
-  const cleanTasks = shared.packages.map(pkg => `build:clean:${pkg}`);
+/**
+ * Empty the dist/ directory so any stale files are removed
+ */
+function cleanDist(gulp, dir) {
+  return del([`${dir}/dist`]);
+}
 
-  // Form tasks for each package...
-  shared.packages.forEach((pkg, i) => {
-    /**
-     * Transpile design system React components.
-     *  Note: If you're running a dev server and try to use a newly
-     *  babelfied React component in the docs site, you need to run
-     *  this task first, otherwise the component won't be found.
-     */
-    gulp.task(babelTasks[i], () => {
-      dutil.logMessage('🐠 ', `Babelfying JS components: ${pkg}`);
+/**
+ * Copy any JSON files that our components might depend on
+ */
+function copyJson(gulp, dir) {
+  return gulp
+    .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
+    .pipe(gulp.dest(`${dir}/dist`));
+}
 
-      return gulp
-        .src([
-          `packages/${pkg}/src/**/*.{js,jsx}`,
-          `!packages/${pkg}/src/**/{__mocks__,__tests__}/*.{js,jsx}`,
-          `!packages/${pkg}/src/**/*.example.{js,jsx}`,
-          `!packages/${pkg}/src/**/*.test.{js,jsx}`,
-          `!packages/${pkg}/src/helpers/e2e/*.{js,jsx}`
-        ])
-        .pipe(babel())
-        .pipe(gulp.dest(`packages/${pkg}/dist`));
-    });
+/**
+ * Transpile design system React components.
+ *  Note: If you're running a dev server and try to use a newly
+ *  babelfied React component in the docs site, you need to run
+ *  this task first, otherwise the component won't be found.
+ */
+function compileJs(gulp, dir) {
+  return gulp
+    .src([
+      `${dir}/src/**/*.{js,jsx}`,
+      `!${dir}/src/**/{__mocks__,__tests__}/*.{js,jsx}`,
+      `!${dir}/src/**/*.example.{js,jsx}`,
+      `!${dir}/src/**/*.test.{js,jsx}`,
+      `!${dir}/src/helpers/e2e/*.{js,jsx}`
+    ])
+    .pipe(babel())
+    .pipe(gulp.dest(`${dir}/dist`));
+}
 
-    // Copy any JSON files that our components might depend on
-    gulp.task(jsonTasks[i], () => {
-      return gulp
-        .src([
-          `packages/${pkg}/src/**/*.json`,
-          `!packages/${pkg}/src/**/{__mocks__,__tests__}/*.json`
-        ])
-        .pipe(gulp.dest(`packages/${pkg}/dist`));
-    });
-
-    /**
-     * Empty the dist/ directory so any stale files are removed
-     */
-    gulp.task(cleanTasks[i], () => {
-      dutil.logMessage('🚮 ', `Resetting "dist" directory: ${pkg}`);
-      return del([`packages/${pkg}/dist`]);
-    });
-  });
-
+module.exports = (gulp, dir) => {
+  gulp.task('build:clean', () => cleanDist(gulp, dir));
+  gulp.task('build:json', () => copyJson(gulp, dir));
+  gulp.task('build:babel', () => compileJs(gulp, dir));
   gulp.task('build:success', done => {
     dutil.logMessage('✅ ', 'Build succeeded');
     done();
   });
 
-  /**
-   * Tasks ran before starting a local dev environment
-   */
-  gulp.task('build:dev', done => {
-    runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:process:docs', done);
-  });
+  // gulp.task('build:dev', done => {
+  //   runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:process:docs', done);
+  // });
 
   gulp.task('build', done => {
     dutil.logIntroduction();
 
     runSequence(
-      cleanTasks,
-      jsonTasks,
-      babelTasks, // Important: This needs ran before docs:build!
-      'docs:build',
-      'webpack',
-      'sass',
+      'build:clean',
+      'build:json',
+      'build:babel', // Important: This needs ran before docs:build!
+      // 'docs:build',
+      // 'webpack',
+      // 'sass',
       'build:success',
-      'stats',
+      // 'stats',
       done
     );
   });
