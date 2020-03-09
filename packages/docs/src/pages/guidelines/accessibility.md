@@ -7,10 +7,11 @@ CMS strives to make its Design System work for as many people as possible, inclu
 ## What we do to help meet and exceed standards
 
 - build accessibility into our [guiding principles](https://github.com/CMSgov/design-system/blob/master/guides/GUIDING-PRINCIPLES.md).
-- include accessibility as part of our design process when working on new or existing components.
 - provide accessibility as a [checkpoint in new components](https://github.com/CMSgov/design-system/blob/master/.github/ISSUE_TEMPLATE/component-validation-checklist.md) created in the design system.
 - add accessibility as a key aspect to much of the [component documentation](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md).
 - conduct regular accessibility reviews of new and existing features and documentation for the design system.
+- Embed [accessibility and inclusive design practices](https://accessibility.digital.gov/) into our workflow.
+- automated accessibility testing using [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs)
 
 ## What level we meet currently
 
