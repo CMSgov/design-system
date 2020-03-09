@@ -11,7 +11,14 @@ ReactDOM.render(
       name="single_example"
       requirementLabel="Optional"
     />
-    <TextField defaultValue="123" label="Number field" name="number_example" type="number" />
+    <TextField
+      defaultValue="123"
+      label="Number field"
+      name="number_example"
+      type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
+    />
     <TextField label="Small size modifier" name="small_example" size="small" />
     <TextField label="Medium size modifier" name="medium_example" size="medium" />
     <TextField

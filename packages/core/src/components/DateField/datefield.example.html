@@ -10,7 +10,9 @@
       >
       <input
         class="ds-c-field ds-c-field--month"
-        type="number"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
         min="1"
         max="12"
         id="month"
@@ -22,7 +24,9 @@
       <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="day">Day</label>
       <input
         class="ds-c-field ds-c-field--day"
-        type="number"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
         min="1"
         max="31"
         id="day"
@@ -34,7 +38,9 @@
       <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="year">Year</label>
       <input
         class="ds-c-field ds-c-field--year"
-        type="number"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
         min="1900"
         max="2000"
         id="year"
