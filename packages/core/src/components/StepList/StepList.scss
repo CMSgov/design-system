@@ -88,7 +88,7 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step--current {
-  .ds-c-step__title {
+  .ds-c-step__heading {
     color: $current-step-color;
   }
 
@@ -98,7 +98,7 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step--completed {
-  .ds-c-step__title {
+  .ds-c-step__heading {
     color: $color-base;
   }
 
@@ -117,7 +117,7 @@ $current-step-color: $color-primary !default;
   }
 }
 
-.ds-c-step__title {
+.ds-c-step__heading {
   font-size: $h5-font-size;
   line-height: $step-button-height;
   margin: 0;
@@ -204,7 +204,7 @@ $current-step-color: $color-primary !default;
   }
 }
 
-.ds-c-substep__title {
+.ds-c-substep__heading {
   display: inline-block;
   margin-right: $spacer-1;
 }

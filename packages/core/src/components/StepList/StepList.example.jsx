@@ -23,14 +23,14 @@ ReactDOM.render(
       steps={[
         {
           id: 'taxYear',
-          title: 'Choose a tax year',
+          heading: 'Choose a tax year',
           href: '#step-1',
           started: true,
           completed: true
         },
         {
           id: 'household',
-          title: 'Enter household details',
+          heading: 'Enter household details',
           description:
             'Answer questions about who in your household qualifies for a premium tax credit and information on each person, including date of birth, location(s) they lived in for the year, and months of marketplace coverage.',
           href: '#step-2',
@@ -40,21 +40,21 @@ ReactDOM.render(
           steps: [
             {
               id: 'household.overall',
-              title: 'Overall household',
+              heading: 'Overall household',
               href: '#step-2a',
               started: true,
               completed: true
             },
             {
               id: 'household.bob',
-              title: "Bob's information",
+              heading: "Bob's information",
               href: '#step-2b',
               started: false,
               completed: false
             },
             {
               id: 'household.barb',
-              title: "Barb's information",
+              heading: "Barb's information",
               href: '#step-2c',
               started: false,
               completed: false
@@ -63,14 +63,14 @@ ReactDOM.render(
         },
         {
           id: 'review',
-          title: 'Review your information',
+          heading: 'Review your information',
           href: '#step-3',
           started: false,
           completed: false
         },
         {
           id: 'finish',
-          title: 'View premium results',
+          heading: 'View premium results',
           href: '#step-4',
           started: false,
           completed: false

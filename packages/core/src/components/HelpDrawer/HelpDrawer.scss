@@ -39,7 +39,7 @@
 }
 
 .ds-c-help-drawer__header {
-  flex-shrink:0;
+  flex-shrink: 0;
 }
 
 // This element is focusable via a tabindex attribute.
@@ -50,7 +50,7 @@
 .ds-c-help-drawer__body {
   display: flex;
   flex-direction: column;
-  height: 100%;   
+  height: 100%;
   overflow-y: scroll;
 }
 

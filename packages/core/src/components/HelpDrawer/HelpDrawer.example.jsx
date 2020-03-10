@@ -41,7 +41,7 @@ class HelpDrawerExample extends React.PureComponent {
           <HelpDrawer
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            title="Help Drawer Title"
+            heading="Help Drawer Heading"
             onCloseClick={() => this.handleDrawerClose()}
           >
             <strong>An Explanation</strong>

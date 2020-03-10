@@ -22,7 +22,8 @@ $alert-icon-size: $spacer-5;
     background-image: none;
   }
 
-  a, .ds-c-link {
+  a,
+  .ds-c-link {
     @extend %link-darker;
   }
 

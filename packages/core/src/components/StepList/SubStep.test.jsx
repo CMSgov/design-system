@@ -15,7 +15,7 @@ describe('SubStep', () => {
     const wrapper = shallow(
       <SubStep step={generateStep()} onStepLinkClick={noop} editText="Edit" />
     );
-    const title = wrapper.find('.ds-c-substep__title');
+    const title = wrapper.find('.ds-c-substep__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual('Do stuff');
     expect(wrapper.find('StepLink').length).toEqual(0);
@@ -26,7 +26,7 @@ describe('SubStep', () => {
     const spy = jest.fn();
     const wrapper = shallow(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
 
-    const title = wrapper.find('.ds-c-substep__title');
+    const title = wrapper.find('.ds-c-substep__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual('Do stuff');
 
@@ -65,7 +65,7 @@ describe('SubStep', () => {
       <SubStep step={step} onStepLinkClick={spy} showSubSubSteps editText="Edit" />
     );
 
-    const title = wrapper.find('.ds-c-substep__title');
+    const title = wrapper.find('.ds-c-substep__heading');
     expect(title.length).toEqual(1);
     expect(title.text()).toEqual('Do stuff');
 

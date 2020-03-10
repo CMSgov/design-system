@@ -16,11 +16,20 @@ export const Dialog = function(props) {
     closeText,
     escapeExitDisabled,
     headerClassName,
+    heading,
     onExit,
     size,
     title,
     ...modalProps
   } = props;
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.title) {
+      console.warn(
+        `[Deprecated]: Please remove the 'title' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+  }
 
   const dialogClassNames = classNames(
     'ds-c-dialog',
@@ -35,18 +44,20 @@ export const Dialog = function(props) {
   return (
     <AriaModal
       dialogClass={dialogClassNames}
+      focusDialog
       escapeExits={!escapeExitDisabled}
       includeDefaultStyles={false}
       onExit={onExit}
-      titleId="dialog-title"
+      titleId="dialog-title dialog-content"
       underlayClass="ds-c-dialog-wrap"
       {...modalProps}
     >
       <div role="document">
         <header className={headerClassNames} role="banner">
-          {title && (
+          {// TODO: make heading required after removing title
+          (title || heading) && (
             <h1 className="ds-h2" id="dialog-title">
-              {title}
+              {heading}
             </h1>
           )}
           <Button
@@ -59,7 +70,9 @@ export const Dialog = function(props) {
             {closeText}
           </Button>
         </header>
-        <main role="main">{children}</main>
+        <main role="main">
+          <div id="dialog-content">{children}</div>
+        </main>
         {actions && (
           <aside className={actionsClassNames} role="complementary">
             {actions}
@@ -144,10 +157,14 @@ Dialog.propTypes = {
    */
   getApplicationNode: PropTypes.func,
   /**
-   * Additional classes to be added to the header, which wraps the title and
+   * Additional classes to be added to the header, which wraps the heading and
    * close button.
    */
   headerClassName: PropTypes.string,
+  /**
+   * The Dialog's heading, to be rendered in the header alongside the close button.
+   */
+  heading: PropTypes.node,
   /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
@@ -156,7 +173,7 @@ Dialog.propTypes = {
   onExit: PropTypes.func,
   size: PropTypes.oneOf(['narrow', 'wide', 'full']),
   /**
-   * The Dialog's title, to be rendered in the header alongside the close button.
+   * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
   title: PropTypes.node,
   /**
