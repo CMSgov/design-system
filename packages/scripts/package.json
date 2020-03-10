@@ -7,9 +7,7 @@
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
-  "bin": {
-    "cms-ds-build": "./bin/build.js"
-  },
+  "bin": "./cli.js",
   "dependencies": {
     "autoprefixer": "9.6.0",
     "babel-core": "^6.26.0",

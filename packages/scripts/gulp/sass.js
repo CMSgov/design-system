@@ -21,12 +21,14 @@ module.exports = (gulp, shared) => {
   // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
   // a variety of postcss processes (inlining, prefixing, minifying, etc).
   function processSass(dir) {
-    const dest = `${dir}/dist`;
+    const src = path.join(dir, 'src');
+    const srcFiles = path.join(src, '**', '*.scss');
+    const dest = path.join(dir, 'dist');
 
     const createSourcemaps = env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
-      includePaths: [`${dir}/node_modules`]
+      includePaths: [path.resolve('dir', 'node_modules'), src]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
       dutil.logData(err.messageFormatted);
@@ -46,16 +48,14 @@ module.exports = (gulp, shared) => {
       // inline/base64 images
       postcssPlugins.push(
         postcssInliner({
-          assetPaths: [path.resolve(__dirname, '../../', dir, 'images')],
+          assetPaths: [path.resolve(dir, 'images')],
           strict: true
         })
       );
     }
 
-    dutil.logMessage('!!', 'Processing sass');
-
     let stream = gulp
-      .src(`${dir}src/**/*.scss`)
+      .src(srcFiles)
       .pipe(
         changed(dest, {
           extension: '.css',
