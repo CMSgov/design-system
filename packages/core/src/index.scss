@@ -1,1 +1,8 @@
+// Styles: Global settings and base styles and partials
 @import 'styles/index';
+
+// Components: Designed UI units
+@import 'components/index';
+
+// Utilities: Overrides, helpers; These trump the above rules.
+@import 'utilities/index';
