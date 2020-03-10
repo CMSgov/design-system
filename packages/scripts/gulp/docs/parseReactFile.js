@@ -1,5 +1,5 @@
 const dutil = require('../common/log-util');
-const gutil = require('gulp-util');
+const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
@@ -32,7 +32,7 @@ module.exports = function(options = {}, rootPath) {
     }
 
     file.contents = Buffer.from(JSON.stringify(response));
-    file.path = gutil.replaceExtension(file.path, '.json');
+    file.path = replaceExtension(file.path, '.json');
     return cb(null, file);
   });
 };

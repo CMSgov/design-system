@@ -4,7 +4,7 @@
  * Browsersync server (see server.js)
  */
 const dutil = require('./common/log-util');
-const gutil = require('gulp-util');
+const log = require('fancy-log');
 const webpack = require('webpack');
 const webpackStatsConfig = require('../webpack-stats');
 
@@ -21,7 +21,7 @@ module.exports = (gulp, shared) => {
     if (stats.hasErrors()) dutil.logError('webpack', info.errors);
     if (stats.hasWarnings()) dutil.logData('webpack', info.warnings);
 
-    gutil.log(stats.toString(webpackStatsConfig));
+    log(stats.toString(webpackStatsConfig));
   }
 
   gulp.task('webpack', done => {

@@ -68,7 +68,12 @@ module.exports = (gulp, shared) => {
       .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
       .pipe(postcss(postcssPlugins))
       .pipe(gulp.dest(dest))
-      .pipe(count(`## Sass files processed in ${dir}`));
+      .pipe(
+        count({
+          message: `## Sass files processed in ${dir}`,
+          logger: message => dutil.logMessage('👓 ', message)
+        })
+      );
 
     if (browserSync) {
       // Auto-inject into docs

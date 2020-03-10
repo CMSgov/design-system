@@ -4,6 +4,7 @@
  *  everything production-ready.
  */
 const babel = require('gulp-babel');
+const count = require('gulp-count');
 const del = require('del');
 const dutil = require('./common/log-util');
 const runSequence = require('gulp4-run-sequence');
@@ -12,6 +13,7 @@ const runSequence = require('gulp4-run-sequence');
  * Empty the dist/ directory so any stale files are removed
  */
 function cleanDist(gulp, dir) {
+  dutil.logMessage('🚮 ', `Resetting "dist" directory: ${dir}`);
   return del([`${dir}/dist`]);
 }
 
@@ -40,7 +42,13 @@ function compileJs(gulp, dir) {
       `!${dir}/src/helpers/e2e/*.{js,jsx}`
     ])
     .pipe(babel())
-    .pipe(gulp.dest(`${dir}/dist`));
+    .pipe(gulp.dest(`${dir}/dist`))
+    .pipe(
+      count({
+        message: `## JS files processed in ${dir}`,
+        logger: message => dutil.logMessage('📜 ', message)
+      })
+    );
 }
 
 module.exports = (gulp, { sourcePackageDir }) => {
