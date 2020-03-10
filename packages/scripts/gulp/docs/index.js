@@ -8,7 +8,7 @@ const getDocsDistPath = require('../common/getDocsDistPath');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const del = require('del');
-const dutil = require('../common/log-util');
+const dutil = require('../common/logUtil');
 const generatePage = require('./generatePage');
 const kss = require('kss');
 

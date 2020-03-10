@@ -1,4 +1,4 @@
-const dutil = require('../common/log-util');
+const dutil = require('../common/logUtil');
 const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');

@@ -3,7 +3,7 @@
  * enables :fire: features like hot module replacement when running the
  * Browsersync server (see server.js)
  */
-const dutil = require('./common/log-util');
+const dutil = require('./common/logUtil');
 const log = require('fancy-log');
 const webpack = require('webpack');
 const webpackStatsConfig = require('../webpack-stats');

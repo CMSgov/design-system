@@ -6,7 +6,7 @@
 const babel = require('gulp-babel');
 const count = require('gulp-count');
 const del = require('del');
-const dutil = require('./common/log-util');
+const dutil = require('./common/logUtil');
 const runSequence = require('gulp4-run-sequence');
 
 /**

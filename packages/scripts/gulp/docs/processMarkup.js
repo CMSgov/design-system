@@ -1,4 +1,4 @@
-const dutil = require('../common/log-util');
+const dutil = require('../common/logUtil');
 const ejs = require('ejs');
 const fs = require('mz/fs');
 const replaceTemplateTags = require('./replaceTemplateTags');
