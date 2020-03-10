@@ -11,7 +11,7 @@ module.exports = (gulp, shared) => {
     const packages = packagesRegex(shared.packages);
 
     // Documentation dependencies
-    gulp.watch(['packages/core/src/images/*'], gulp.series('docs:images'));
+    gulp.watch(['packages/cmsds/src/images/*'], gulp.series('docs:images'));
 
     // Sass files
     gulp.watch(

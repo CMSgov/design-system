@@ -6,7 +6,7 @@ describe('uniquePages', () => {
       {
         reference: 'foo',
         header: 'Core foo',
-        source: { path: 'packages/core/foo.js' }
+        source: { path: 'packages/cmsds/foo.js' }
       },
       {
         reference: 'foo',
@@ -16,7 +16,7 @@ describe('uniquePages', () => {
       {
         reference: 'bar',
         header: 'Bar',
-        source: { path: 'packages/core/bar.js' }
+        source: { path: 'packages/cmsds/bar.js' }
       }
     ]);
 

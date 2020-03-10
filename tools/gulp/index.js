@@ -56,7 +56,7 @@ module.exports = gulp => {
   const rootPath = argv.root || '';
   const theme = themeDirectory();
   // Include theme directory in packages to watch, compile, and generate theme docs
-  const packages = theme ? ['core', theme] : ['core'];
+  const packages = theme ? ['cmsds', theme] : ['cmsds'];
 
   // These properties are shared with every Gulp task
   const shared = {

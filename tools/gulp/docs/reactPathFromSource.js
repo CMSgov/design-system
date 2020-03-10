@@ -12,11 +12,11 @@ function reactPathFromSource(path, name) {
   if (name.split('/').length > 1) return name;
 
   // Get path relative to packages/
-  // Example: packages/core/components/Button.scss -> core/component/Button
+  // Example: packages/cmsds/components/Button.scss -> cmsds/component/Button
   path = path.match(/packages\/([a-z0-9_\-/]+)/i)[1];
 
   // Replace the filename with the component's name
-  // Example: core/component/Button -> core/component/ButtonGroup
+  // Example: cmsds/component/Button -> cmsds/component/ButtonGroup
   return path.replace(/\/([a-z0-9_-]+)$/i, `/${name}`);
 }
 

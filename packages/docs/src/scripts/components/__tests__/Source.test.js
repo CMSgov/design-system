@@ -11,7 +11,7 @@ describe('Source', () => {
     props = {
       source: {
         filename: 'components/Button/Button.scss',
-        path: 'packages/core/src/components/Button/Button.scss'
+        path: 'packages/cmsds/src/components/Button/Button.scss'
       }
     };
   });
@@ -23,7 +23,7 @@ describe('Source', () => {
   });
 
   it('links to JSX file', () => {
-    props.reactComponentPath = 'core/src/components/ButtonGroup/ButtonGroup.jsx';
+    props.reactComponentPath = 'cmsds/src/components/ButtonGroup/ButtonGroup.jsx';
 
     const wrapper = shallow(<Source {...props} />);
 
