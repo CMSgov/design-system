@@ -8,13 +8,13 @@ weight: 1
 The easiest way to add the design system's styles to your site is by referencing its minified CSS.
 
 1. Download the zip file from the latest CMS design system release and open that file.
-1. Copy the `packages/core/dist/index.css` file into a relevant place in your code base — likely a directory where you keep third-party libraries. In the example below, our directory is `css/vendor`.
+1. Copy the `packages/cmsds/dist/index.css` file into a relevant place in your code base — likely a directory where you keep third-party libraries. In the example below, our directory is `css/vendor`.
 1. Add a `<link>` to the stylesheet in your site's `<head>`
 
 For example:
 
 ```html
-<link rel="stylesheet" src="/css/vendor/design-system-core/index.css" />
+<link rel="stylesheet" src="/css/vendor/design-system/index.css" />
 ```
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/article/index.html)
@@ -27,7 +27,7 @@ If you're already using Sass to style your site, another way to include the desi
 2. Add the following to your Sass file:
 
 ```css
-@import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system/src/index';
 ```
 
 [Learn how to override and theme Sass variables]({{root}}/guidelines/themes/).
@@ -41,7 +41,7 @@ Once your page is loading the design system's CSS, you can then begin applying i
 ```html
 <html>
   <head>
-    <link rel="stylesheet" src="/css/vendor/design-system-core/index.css" />
+    <link rel="stylesheet" src="/css/vendor/design-system/index.css" />
   </head>
   <body class="ds-base">
     <h1 class="ds-u-font-size--title">Hello world</h1>

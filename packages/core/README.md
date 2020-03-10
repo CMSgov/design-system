@@ -4,12 +4,13 @@ This package contains the following design system assets:
 - Utility classes
 - Sass/CSS and React components
 - Sass mixins and variables
+- Responsive flexbox grid framework
 - Fonts and images
 
 ## Installation
 
 ```
-npm install --save @cmsgov/design-system-core
+npm install --save @cmsgov/design-system
 ```
 
 ## Usage
@@ -17,13 +18,13 @@ npm install --save @cmsgov/design-system-core
 The source files included are written in Sass (`.scss`). You can add your `node_modules` directory to your Sass [`includePaths`](https://github.com/sass/node-sass#includepaths) and import the file like this:
 
 ```css
-@import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system/src/index';
 ```
 
 or import the transpiled CSS:
 
 ```css
-@import '@cmsgov/design-system-core/dist/index.css';
+@import '@cmsgov/design-system/dist/index.css';
 ```
 
 [Please view the documentation site for additional information.](https://design.cms.gov/)
@@ -49,10 +50,14 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 ├── fonts
 ├── images
 └── src                 Non-compiled Sass and JSX
-    ├── base            Base HTML styles
-    ├── components      Sass and React components
+    ├── components      React component source and test files
     │   ├── Button
     │   └── etc...
-    ├── generics        Far reaching selectors
-    └── utilities       Functional CSS classes to apply individual traits
+    ├── utilities       Functional css classes to apply individual traits
+    │   ├── grid        Responsive flexbox grid utilities
+    │   └── etc...
+    └── styles
+        ├── settings    Global variables, mixins, and functions
+        ├── typography  Namespaced element selector for typography
+        └── etc...
 ```
