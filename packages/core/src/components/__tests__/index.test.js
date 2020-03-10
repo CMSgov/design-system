@@ -40,8 +40,10 @@ const ignoredComponents = [
   'Step',
   'SubStep',
   'StepLink',
-  'HelpDrawerToggle',
-  'WrapperDiv'
+  'Tab',
+  'WrapperDiv',
+  'VerticalNavItem',
+  'VerticalNavItemLabel'
 ];
 
 describe('Components index', () => {
