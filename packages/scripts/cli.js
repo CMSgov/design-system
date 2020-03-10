@@ -6,6 +6,10 @@ const yargs = require('yargs');
 
 yargs
   .usage('Usage: $0 <command> [options]')
+  .describe(
+    'skiplatest',
+    'Use this option when collecting stats on output files that do not yet exist in the latest release'
+  )
   .command({
     command: 'build <sourcePackageDir>',
     desc: 'Builds the JavaScript and Sass for your main design-system package',
@@ -13,6 +17,7 @@ yargs
       describeSourcePackageDir(yargs);
     },
     handler: argv => {
+      require('./gulp/stats')(gulp, argv);
       require('./gulp/sass')(gulp, argv);
       require('./gulp/build')(gulp, argv);
       gulp.task('build')();

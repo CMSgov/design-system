@@ -75,7 +75,7 @@ module.exports = (gulp, { sourcePackageDir }) => {
       // 'webpack',
       'sass:src',
       'build:success',
-      // 'stats',
+      'stats',
       done
     );
   });
