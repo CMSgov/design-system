@@ -28,7 +28,7 @@ module.exports = (gulp, shared) => {
     const createSourcemaps = env === 'development';
     const sassCompiler = sass({
       outputStyle: 'expanded',
-      includePaths: [path.resolve('dir', 'node_modules'), src]
+      includePaths: [path.resolve(dir, 'node_modules'), src]
     }).on('error', function(err) {
       logError('sass', 'Error transpiling Sass!');
       logData(err.messageFormatted);
