@@ -14,7 +14,7 @@ module.exports = (gulp, shared) => {
     gulp.watch([`${srcPath}/images/*`], gulp.series('docs:images'));
 
     // Sass files
-    gulp.watch(`${srcPath}/**/*.scss`, gulp.series('sass:process:docs', 'docs:generate-pages'));
+    gulp.watch(`${srcPath}/**/*.scss`, gulp.series('sass:docs', 'docs:generate-pages'));
 
     // HTML/EJS examples
     gulp.watch(`${srcPath}/**/*.example.{ejs,html}`, gulp.series('docs:generate-pages'));
@@ -27,7 +27,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch:docs', done => {
-    gulp.watch(`${docsPath}/src/styles/**/*.scss`, gulp.series('sass:process:docs'));
+    gulp.watch(`${docsPath}/src/styles/**/*.scss`, gulp.series('sass:docs'));
     gulp.watch(`${docsPath}/src/pages/**/*.md`, gulp.series('docs:generate-pages'));
     done();
   });

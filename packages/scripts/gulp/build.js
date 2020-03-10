@@ -43,17 +43,17 @@ function compileJs(gulp, dir) {
     .pipe(gulp.dest(`${dir}/dist`));
 }
 
-module.exports = (gulp, dir) => {
-  gulp.task('build:clean', () => cleanDist(gulp, dir));
-  gulp.task('build:json', () => copyJson(gulp, dir));
-  gulp.task('build:babel', () => compileJs(gulp, dir));
+module.exports = (gulp, { sourcePackageDir }) => {
+  gulp.task('build:clean', () => cleanDist(gulp, sourcePackageDir));
+  gulp.task('build:json', () => copyJson(gulp, sourcePackageDir));
+  gulp.task('build:babel', () => compileJs(gulp, sourcePackageDir));
   gulp.task('build:success', done => {
     dutil.logMessage('✅ ', 'Build succeeded');
     done();
   });
 
   // gulp.task('build:dev', done => {
-  //   runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:process:docs', done);
+  //   runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:docs', done);
   // });
 
   gulp.task('build', done => {
@@ -65,7 +65,7 @@ module.exports = (gulp, dir) => {
       'build:babel', // Important: This needs ran before docs:build!
       // 'docs:build',
       // 'webpack',
-      // 'sass',
+      'sass:src',
       'build:success',
       // 'stats',
       done
