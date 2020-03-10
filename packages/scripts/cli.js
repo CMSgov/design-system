@@ -23,6 +23,22 @@ yargs
       gulp.task('build')();
     }
   })
+  // An example of the next command. Note the 'shared' part
+  // .command({
+  //   command: 'start <sourcePackageDir> <docsPackageDirs..>',
+  //   desc: 'Hosts the docs site locally with a webpack dev server',
+  //   builder: yargs => {
+  //     describeSourcePackageDir(yargs);
+  //     describeDocsPackageDirs(yargs);
+  //   },
+  //   handler: argv => {
+  //     const shared = require('./gulp/shared')(argv);
+  //     require('./gulp/stats')(gulp, shared);
+  //     require('./gulp/sass')(gulp, shared);
+  //     require('./gulp/build')(gulp, shared);
+  //     gulp.task('build')();
+  //   }
+  // })
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
@@ -33,7 +49,7 @@ function describeSourcePackageDir(yargs) {
 }
 
 function describeDocsPackageDirs(yargs) {
-  yargs.positional('docsPackageDirs...', {
+  yargs.positional('docsPackageDirs..', {
     desc:
       'The relative paths to one or more docs-package directories. The first directory will be the default set of docs, and every docs directory specified after it will override files in the previous one, where the rightmost directory path takes the most precedence.',
     type: 'string'
