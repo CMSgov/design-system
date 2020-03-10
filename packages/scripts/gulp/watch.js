@@ -3,8 +3,8 @@
  * make to a component, a component's example code, or the documentation will
  * automatically be reflected in the browser when the changes are saved.
  */
-const dutil = require('./common/logUtil');
 const packagesRegex = require('./common/packagesRegex');
+const { logTask } = require('./common/logUtil');
 
 module.exports = (gulp, shared) => {
   const { docsPath, srcPath } = shared;
@@ -33,7 +33,7 @@ module.exports = (gulp, shared) => {
   });
 
   gulp.task('watch', seriesDone => {
-    dutil.logMessage('👀 ', 'Transpiling + watching files for future changes');
+    logTask('👀 ', 'Transpiling + watching files for future changes');
     return gulp.series('build:dev', gulp.parallel('server', 'watch:src', 'watch:docs'), done => {
       seriesDone();
       done();

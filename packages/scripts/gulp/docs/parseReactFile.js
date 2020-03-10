@@ -1,9 +1,9 @@
-const dutil = require('../common/logUtil');
 const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
 const through = require('through2');
+const { logData, logError } = require('../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -27,8 +27,8 @@ module.exports = function(options = {}, rootPath) {
       // so we can merge the JSON files in another stream
       response[getNameAfter(options.nameAfter, file.path)] = data;
     } catch (e) {
-      dutil.logError('react-docgen', e);
-      dutil.logData('react-docgen', file.path);
+      logError('react-docgen', e);
+      logData('react-docgen', file.path);
     }
 
     file.contents = Buffer.from(JSON.stringify(response));

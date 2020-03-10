@@ -7,8 +7,6 @@ const log = require('fancy-log');
 const chalk = require('chalk');
 const notifier = require('node-notifier');
 
-const shellPrefix = '$';
-
 function drawFlag() {
   // American Flag in ASCII
   log('');
@@ -59,21 +57,13 @@ function notify(title, message, wait) {
 }
 
 module.exports = {
-  dirName: pkg.name,
+  log,
 
   logIntroduction: function(message) {
     message = message || 'CMS.gov Design System';
 
-    log(chalk.yellow(pkg.name), message);
+    log(chalk.cyan(pkg.name), message);
     drawFlag();
-  },
-
-  logCommand: function(name, message) {
-    log(shellPrefix, chalk.cyan(name), chalk.magenta(message));
-  },
-
-  logHelp: function(name, message) {
-    log(shellPrefix, chalk.cyan(name), chalk.yellow(message));
   },
 
   logData: function(name, message) {
@@ -82,11 +72,11 @@ module.exports = {
 
   logError: function(name, message) {
     log(chalk.red(name), chalk.yellow(message));
-    notify(this.dirName + ' gulp ' + name, message, true);
+    notify(pkg.name + ' gulp ' + name, message, true);
   },
 
-  logMessage: function(name, message) {
+  logTask: function(name, message) {
     log(chalk.cyan(name), chalk.green(message));
-    notify(this.dirName + ' gulp ' + name, message, false);
+    notify(pkg.name + ' gulp ' + name, message, false);
   }
 };

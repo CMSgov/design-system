@@ -1,8 +1,8 @@
-const dutil = require('../common/logUtil');
 const ejs = require('ejs');
 const fs = require('mz/fs');
 const replaceTemplateTags = require('./replaceTemplateTags');
 const path = require('path');
+const { logData, logError } = require('../common/logUtil');
 
 /**
  * Take the raw markup value and convert or retrieve the markup to be displayed
@@ -28,8 +28,8 @@ function processMarkup(page, rootPath) {
     try {
       markup = ejs.render(markup);
     } catch (e) {
-      dutil.logError('ejs error', e.message);
-      dutil.logData('ejs error', `${page.source.path}\n${markup}`);
+      logError('ejs error', e.message);
+      logData('ejs error', `${page.source.path}\n${markup}`);
     }
   }
 
@@ -46,7 +46,7 @@ function loadMarkup(page) {
   const dir = path.parse(page.source.path).dir;
   const src = `../../../${dir}/${page.markup}`;
   return fs.readFile(path.resolve(__dirname, src), 'utf8').catch(e => {
-    dutil.logError('markup error', e.message);
+    logError('markup error', e.message);
     return '';
   });
 }

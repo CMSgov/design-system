@@ -5,7 +5,6 @@ const getDocsDistPath = require('./common/getDocsDistPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
-const dutil = require('./common/logUtil');
 const path = require('path');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
@@ -14,6 +13,7 @@ const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const runSequence = require('gulp4-run-sequence');
+const { logData, logError, logTask } = require('./common/logUtil');
 
 module.exports = (gulp, shared) => {
   const { env, browserSync, sourcePackageDir, docsPath, rootPath } = shared;
@@ -30,8 +30,8 @@ module.exports = (gulp, shared) => {
       outputStyle: 'expanded',
       includePaths: [path.resolve('dir', 'node_modules'), src]
     }).on('error', function(err) {
-      dutil.logError('sass', 'Error transpiling Sass!');
-      dutil.logData(err.messageFormatted);
+      logError('sass', 'Error transpiling Sass!');
+      logData(err.messageFormatted);
       this.emit('end');
     });
 
@@ -71,7 +71,7 @@ module.exports = (gulp, shared) => {
       .pipe(
         count({
           message: `## Sass files processed in ${dir}`,
-          logger: message => dutil.logMessage('👓 ', message)
+          logger: message => logTask('👓 ', message)
         })
       );
 

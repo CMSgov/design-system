@@ -6,14 +6,14 @@
 const babel = require('gulp-babel');
 const count = require('gulp-count');
 const del = require('del');
-const dutil = require('./common/logUtil');
 const runSequence = require('gulp4-run-sequence');
+const { log, logTask, logIntroduction } = require('./common/logUtil');
 
 /**
  * Empty the dist/ directory so any stale files are removed
  */
 function cleanDist(gulp, dir) {
-  dutil.logMessage('🚮 ', `Resetting "dist" directory: ${dir}`);
+  logTask('🚮 ', `Resetting "dist" directory: ${dir}`);
   return del([`${dir}/dist`]);
 }
 
@@ -46,7 +46,7 @@ function compileJs(gulp, dir) {
     .pipe(
       count({
         message: `## JS files processed in ${dir}`,
-        logger: message => dutil.logMessage('📜 ', message)
+        logger: message => logTask('📜 ', message)
       })
     );
 }
@@ -56,27 +56,38 @@ module.exports = (gulp, { sourcePackageDir }) => {
   gulp.task('build:json', () => copyJson(gulp, sourcePackageDir));
   gulp.task('build:babel', () => compileJs(gulp, sourcePackageDir));
   gulp.task('build:success', done => {
-    dutil.logMessage('✅ ', 'Build succeeded');
+    logTask('✅ ', 'Build succeeded');
+    log('');
     done();
   });
 
-  // gulp.task('build:dev', done => {
-  //   runSequence(jsonTasks, babelTasks, 'docs:build', 'sass:docs', done);
-  // });
-
-  gulp.task('build', done => {
-    dutil.logIntroduction();
-
+  gulp.task('build:src', done => {
     runSequence(
       'build:clean',
       'build:json',
       'build:babel', // Important: This needs ran before docs:build!
-      // 'docs:build',
-      // 'webpack',
       'sass:src',
       'build:success',
       'stats',
       done
     );
+  });
+
+  /**
+   * Builds the docs site. Note that build:src must run before this
+   */
+  gulp.task('build:docs', done => {
+    logIntroduction();
+
+    runSequence('docs:build', 'webpack', 'sass:docs', done);
+  });
+
+  gulp.task('build', done => {
+    logIntroduction();
+    runSequence('build:src', done);
+  });
+
+  gulp.task('build:dev', done => {
+    runSequence('build:src', 'build:docs', done);
   });
 };

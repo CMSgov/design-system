@@ -6,10 +6,10 @@
  */
 const _ = require('lodash');
 const cssstats = require('cssstats');
-const dutil = require('../common/logUtil');
 const fs = require('mz/fs');
 const logStats = require('./logStats');
 const path = require('path');
+const { logError, logTask } = require('../common/logUtil');
 
 const tmpPath = path.resolve('./tmp');
 
@@ -27,30 +27,28 @@ async function getPackageName(dir) {
 async function getCSSStats(dir, packageName, skiplatest = false) {
   const currentPath = path.resolve(dir, 'dist/index.css');
   const latestPath = path.resolve('node_modules', packageName, 'dist/index.css');
-  const stats = {
-    current: {},
-    latest: {}
-  };
+  let current;
+  let latest;
 
   const css = await fs.readFile(currentPath, 'utf8');
-  stats.current = cssstats(css);
+  current = cssstats(css);
 
   // Conditionally check the file in the latest release. Allowing this step to
   // be skipped enables us to run it on files that don't yet exist in the latest release
   if (!skiplatest) {
     try {
       const css = await fs.readFile(latestPath, 'utf8');
-      stats.latest = cssstats(css);
+      latest = cssstats(css);
     } catch {
-      dutil.logError('getCSSStats', 'Unable to get latest release CSS');
-      stats.latest = stats.current;
+      logError('getCSSStats', 'Unable to get latest release CSS');
+      latest = current;
     }
   } else {
-    dutil.logMessage('getCSSStats', 'Not checking against latest release');
-    stats.latest = stats.current;
+    logTask('getCSSStats', 'Not checking against latest release');
+    latest = current;
   }
 
-  return stats;
+  return { current, latest };
 }
 
 /**
@@ -117,7 +115,7 @@ function createSpecificityGraph(stats) {
     })
     .then(body => fs.writeFile(outputPath, body, 'utf8'))
     .then(() => {
-      dutil.logMessage('📈 ', `Specificity graph created: ${outputPath}`);
+      logTask('📈 ', `Specificity graph created: ${outputPath}`);
     });
 }
 
@@ -127,14 +125,14 @@ function saveStats(currentStats) {
   const body = JSON.stringify(currentStats.current);
 
   return fs.writeFile(outputPath, body, 'utf8').then(() => {
-    dutil.logMessage('cssstats', `Exported cssstats: ${outputPath}`);
+    logTask('📈 ', `Exported cssstats: ${outputPath}`);
     return currentStats;
   });
 }
 
 module.exports = (gulp, argv) => {
   gulp.task('stats', async () => {
-    dutil.logMessage('🔍 ', 'Gathering stats and comparing against the latest release');
+    logTask('🔍 ', 'Gathering stats and comparing against the latest release');
 
     const dir = argv.sourcePackageDir;
     const packageName = await getPackageName(dir);
