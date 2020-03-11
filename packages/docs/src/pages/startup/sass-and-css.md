@@ -36,7 +36,7 @@ If you're already using Sass to style your site, another way to include the desi
 
 <h4 class="ds-h4 ds-u-font-size--base">Applying styles to your page</h4>
 
-Once your page is loading the design system's CSS, you can then begin applying its styling to your pages. Below is an example of a project applying the [base-level of styles]({{root}}/style/base) and a [utility class]({{root}}/utilities/).
+Once your page is loading the design system's CSS, you can then begin applying its styling to your pages. Below is an example of a project applying the [base-level of styles]({{root}}/design/base) and a [utility class]({{root}}/utilities/).
 
 ```html
 <html>

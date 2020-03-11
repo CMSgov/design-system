@@ -33,9 +33,9 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 Sass variables are documented on the relevant documentation pages, and are defined in the `@cmsgov/design-system` package:
 
 - [Breakpoints]({{root}}/guidelines/responsive/)
-- [Colors]({{root}}/style/color/)
+- [Colors]({{root}}/design/color/)
 - [Spacing]({{root}}/layout/spacing/)
-- [Type sizes]({{root}}/style/typography/)
+- [Type sizes]({{root}}/design/typography/)
 - You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/cmsds/src/styles/).
 
 ## CSS declarations

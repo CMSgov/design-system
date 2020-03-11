@@ -22,6 +22,13 @@
     lodash.uniqueid "^4.0.1"
     react-aria-modal "^2.11.1"
 
+"@cmsgov/design-system-layout@^3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@cmsgov/design-system-layout/-/design-system-layout-3.6.1.tgz#9bbda716a9065773ff0f4a0d4c6d831ef121f5b8"
+  integrity sha512-b5NPZN6goApWR7Ot4Smxpkg6NZ501pTeypx1umMwQ8WlBJ4bhRQEXFz75UeABqx+ZhG6t5qtxcsKuYciYR6FEA==
+  dependencies:
+    "@cmsgov/design-system-support" "^3.6.1"
+
 "@cmsgov/design-system-support@^3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@cmsgov/design-system-support/-/design-system-support-3.6.1.tgz#fdc100a30412c8bef83afc3d76b21524e0c92814"
