@@ -115,7 +115,7 @@ module.exports = (gulp, { sourcePackageDir }) => {
 
   gulp.task('build', done => {
     logIntroduction();
-    runSequence('build:src', /*'stats',*/ done);
+    runSequence('build:src', 'stats', done);
   });
 
   gulp.task('build:dev', done => {

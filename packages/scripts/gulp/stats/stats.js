@@ -14,6 +14,9 @@ const { logError, logTask } = require('../common/logUtil');
 
 const tmpPath = path.resolve('./tmp');
 
+const SKIP_LATEST_MESSAGE =
+  'If it is expected that the latest release does not exist in node_modules, add the `--skiplatest` flag to skip this part.';
+
 /**
  * Get the CSS stats from a file on the current branch and the latest release.
  * @param {boolean} skiplatest - Whether to also get stats for the file in the latest release
@@ -35,7 +38,7 @@ async function getCSSStats(dir, packageName, skiplatest = false) {
       const css = await fs.readFile(latestPath, 'utf8');
       latest = cssstats(css);
     } catch {
-      logError('getCSSStats', 'Unable to get latest release CSS');
+      logError('getCSSStats', `Unable to get latest release CSS. ${SKIP_LATEST_MESSAGE}`);
       latest = current;
     }
   } else {
@@ -70,23 +73,33 @@ function getFontSizes(fontDir) {
  * @param {Object} currentStats - Current and latest release stats
  * @return {Promise}
  */
-function getFontStats(dir, packageName, currentStats) {
+async function getFontStats(dir, packageName, currentStats, skiplatest = false) {
+  let current;
+  let latest;
+
   const currentFontDir = path.resolve(dir, 'dist', 'fonts');
-  const latestFontDir = path.resolve(
-    'node_modules',
-    packageName,
-    // TODO: Add this once we're in v4: 'dist',
-    'fonts'
-  );
-  return getFontSizes(currentFontDir)
-    .then(total => {
-      currentStats.current.totalFontFileSize = total;
-    })
-    .then(() => getFontSizes(latestFontDir))
-    .then(total => {
-      currentStats.latest.totalFontFileSize = total;
-    })
-    .then(() => currentStats);
+  current = await getFontSizes(currentFontDir);
+
+  if (!skiplatest) {
+    try {
+      // TODO: Remove this branching logic once we've released v4
+      const oldPackageFontDir = path.resolve('node_modules', packageName, 'fonts');
+      const newPackageFontDir = path.resolve('node_modules', packageName, 'dist', 'fonts');
+      const previousFontDir = fs.existsSync(newPackageFontDir)
+        ? newPackageFontDir
+        : oldPackageFontDir;
+
+      latest = await getFontSizes(previousFontDir);
+    } catch {
+      logError('getFontStats', `Unable to get latest release fonts. ${SKIP_LATEST_MESSAGE}`);
+      latest = current;
+    }
+  } else {
+    latest = current;
+  }
+
+  currentStats.current.totalFontFileSize = current;
+  currentStats.latest.totalFontFileSize = latest;
 }
 
 /**
@@ -131,13 +144,18 @@ function saveStats(currentStats) {
 }
 
 module.exports = (gulp, argv) => {
+  /**
+   * Note: Unless the `--skiplatest` flag is specified, this task requires that
+   * the package being built has a copy of the latest published version of itself
+   * in node_modules, whether that be as a `devDependency` or some other mechanism.
+   */
   gulp.task('stats', async () => {
     logTask('🔍 ', 'Gathering stats and comparing against the latest release');
 
     const dir = argv.sourcePackageDir;
     const packageName = await getPackageName(dir);
     const stats = await getCSSStats(dir, packageName, argv.skiplatest);
-    await getFontStats(dir, packageName, stats);
+    await getFontStats(dir, packageName, stats, argv.skiplatest);
     await logStats(stats);
     await createSpecificityGraph(stats);
     await saveStats(stats);
