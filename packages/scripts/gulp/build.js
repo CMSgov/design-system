@@ -108,6 +108,9 @@ module.exports = (gulp, { sourcePackageDir }) => {
     done();
   });
 
+  /**
+   * Builds the source package
+   */
   gulp.task('build:src', done => {
     runSequence(
       'build:clean',
@@ -120,7 +123,10 @@ module.exports = (gulp, { sourcePackageDir }) => {
   });
 
   /**
-   * Builds the docs site. Note that build:src must run before this
+   * Builds the docs site
+   *
+   * Note that build:src must run before this in order to ensure that the
+   * documentation reflects the most recent version of the source.
    */
   gulp.task('build:docs', done => {
     logIntroduction();
@@ -128,12 +134,12 @@ module.exports = (gulp, { sourcePackageDir }) => {
     runSequence('docs:build', 'webpack', 'sass:docs', done);
   });
 
+  /**
+   * Builds just the source package for the purpose of publishing and then
+   * collects and prints statistics on the new build
+   */
   gulp.task('build', done => {
     logIntroduction();
     runSequence('build:src', 'stats', done);
-  });
-
-  gulp.task('build:dev', done => {
-    runSequence('build:src', 'build:docs', done);
   });
 };
