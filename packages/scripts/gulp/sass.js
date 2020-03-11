@@ -44,16 +44,6 @@ module.exports = (gulp, shared) => {
       postcssPlugins.push(cssnano()); // minify css
     }
 
-    if (!dir.match(/\/docs\//)) {
-      // inline/base64 images
-      postcssPlugins.push(
-        postcssInliner({
-          assetPaths: [path.resolve(dir, 'images')],
-          strict: true
-        })
-      );
-    }
-
     let stream = gulp
       .src(srcFiles)
       .pipe(

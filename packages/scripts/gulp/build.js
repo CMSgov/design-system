@@ -6,8 +6,13 @@
 const babel = require('gulp-babel');
 const count = require('gulp-count');
 const del = require('del');
+const getPackageName = require('./common/getPackageName');
 const runSequence = require('gulp4-run-sequence');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
+const { promisify } = require('util');
+const finished = promisify(require('stream').finished);
+
+const CORE_PACKAGE_NAME = '@cmsgov/design-system-core';
 
 /**
  * Empty the dist/ directory so any stale files are removed
@@ -24,6 +29,27 @@ function copyJson(gulp, dir) {
   return gulp
     .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
     .pipe(gulp.dest(`${dir}/dist`));
+}
+
+function copyDir(gulp, srcDir, destDir) {
+  return gulp.src(`${srcDir}/**/*`).pipe(gulp.dest(destDir));
+}
+
+/**
+ * Copy all assets stored in a certain folder
+ */
+async function copyAssets(gulp, dir) {
+  // Read the package name and optionally add the core design system assets from node_modules?
+  const packageName = await getPackageName(dir);
+  if (packageName !== CORE_PACKAGE_NAME) {
+    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME}`);
+    const pkgDist = `node_modules/${CORE_PACKAGE_NAME}/dist`;
+    await finished(copyDir(gulp, `${pkgDist}/fonts`, `${dir}/dist/fonts`));
+    await finished(copyDir(gulp, `${pkgDist}/images`, `${dir}/dist/images`));
+  }
+
+  await finished(copyDir(gulp, `${dir}/src/fonts`, `${dir}/dist/fonts`));
+  await finished(copyDir(gulp, `${dir}/src/images`, `${dir}/dist/images`));
 }
 
 /**
@@ -54,6 +80,7 @@ function compileJs(gulp, dir) {
 module.exports = (gulp, { sourcePackageDir }) => {
   gulp.task('build:clean', () => cleanDist(gulp, sourcePackageDir));
   gulp.task('build:json', () => copyJson(gulp, sourcePackageDir));
+  gulp.task('build:assets', () => copyAssets(gulp, sourcePackageDir));
   gulp.task('build:babel', () => compileJs(gulp, sourcePackageDir));
   gulp.task('build:success', done => {
     logTask('✅ ', 'Build succeeded');
@@ -65,10 +92,10 @@ module.exports = (gulp, { sourcePackageDir }) => {
     runSequence(
       'build:clean',
       'build:json',
+      'build:assets',
       'build:babel', // Important: This needs ran before docs:build!
       'sass:src',
       'build:success',
-      'stats',
       done
     );
   });
@@ -84,7 +111,7 @@ module.exports = (gulp, { sourcePackageDir }) => {
 
   gulp.task('build', done => {
     logIntroduction();
-    runSequence('build:src', done);
+    runSequence('build:src', /*'stats',*/ done);
   });
 
   gulp.task('build:dev', done => {

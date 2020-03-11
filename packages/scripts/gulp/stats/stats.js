@@ -7,17 +7,12 @@
 const _ = require('lodash');
 const cssstats = require('cssstats');
 const fs = require('mz/fs');
+const getPackageName = require('../common/getPackageName');
 const logStats = require('./logStats');
 const path = require('path');
 const { logError, logTask } = require('../common/logUtil');
 
 const tmpPath = path.resolve('./tmp');
-
-async function getPackageName(dir) {
-  const pkgPath = path.resolve(dir, 'package.json');
-  const pkg = JSON.parse(await fs.readFile(pkgPath));
-  return pkg.name;
-}
 
 /**
  * Get the CSS stats from a file on the current branch and the latest release.
@@ -76,8 +71,13 @@ function getFontSizes(fontDir) {
  * @return {Promise}
  */
 function getFontStats(dir, packageName, currentStats) {
-  const currentFontDir = path.resolve(dir, 'fonts');
-  const latestFontDir = path.resolve('node_modules', packageName, 'fonts');
+  const currentFontDir = path.resolve(dir, 'dist', 'fonts');
+  const latestFontDir = path.resolve(
+    'node_modules',
+    packageName,
+    // TODO: Add this once we're in v4: 'dist',
+    'fonts'
+  );
   return getFontSizes(currentFontDir)
     .then(total => {
       currentStats.current.totalFontFileSize = total;
