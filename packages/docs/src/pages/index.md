@@ -9,6 +9,13 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). 
 
 ## Getting started
 
+<div class="ds-c-alert">
+  <div class="ds-c-alert__body">
+    <h2 class="ds-c-alert__heading">CMS Design System v4 has been released</h2>
+    <p class="ds-c-alert__text">For more information on v4 and how to upgrade, see our <a href="http://localhost:3000/startup/migrating-v4/">migration guide</a>.</p>
+  </div>
+</div>
+
 Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/releases/latest), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
 
 ## Goals
