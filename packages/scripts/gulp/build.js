@@ -39,17 +39,21 @@ function copyDir(gulp, srcDir, destDir) {
  * Copy all assets stored in a certain folder
  */
 async function copyAssets(gulp, dir) {
-  // Read the package name and optionally add the core design system assets from node_modules?
+  // Check to see if this is the core package. If it's not, copy assets from core
   const packageName = await getPackageName(dir);
   if (packageName !== CORE_PACKAGE_NAME) {
     logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME}`);
     const pkgDist = `node_modules/${CORE_PACKAGE_NAME}/dist`;
-    await finished(copyDir(gulp, `${pkgDist}/fonts`, `${dir}/dist/fonts`));
-    await finished(copyDir(gulp, `${pkgDist}/images`, `${dir}/dist/images`));
+    await Promise.all([
+      finished(copyDir(gulp, `${pkgDist}/fonts`, `${dir}/dist/fonts`)),
+      finished(copyDir(gulp, `${pkgDist}/images`, `${dir}/dist/images`))
+    ]);
   }
 
-  await finished(copyDir(gulp, `${dir}/src/fonts`, `${dir}/dist/fonts`));
-  await finished(copyDir(gulp, `${dir}/src/images`, `${dir}/dist/images`));
+  await Promise.all([
+    finished(copyDir(gulp, `${dir}/src/fonts`, `${dir}/dist/fonts`)),
+    finished(copyDir(gulp, `${dir}/src/images`, `${dir}/dist/images`))
+  ]);
 }
 
 /**
