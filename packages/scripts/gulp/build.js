@@ -57,6 +57,23 @@ async function copyAssets(gulp, dir) {
 }
 
 /**
+ * Copy Sass files from src to dist because we don't distribute the src folder
+ */
+function copySass(gulp, dir) {
+  return gulp
+    .src([`${dir}/src/**/*.{scss,sass}`, `!${dir}/src/**/*.docs.{scss,sass}`])
+    .pipe(gulp.dest(`${dir}/dist`));
+}
+
+function copyAll(gulp, dir) {
+  return Promise.all([
+    copyAssets(gulp, dir),
+    finished(copyJson(gulp, dir)),
+    finished(copySass(gulp, dir))
+  ]);
+}
+
+/**
  * Transpile design system React components.
  *  Note: If you're running a dev server and try to use a newly
  *  babelfied React component in the docs site, you need to run
@@ -83,8 +100,7 @@ function compileJs(gulp, dir) {
 
 module.exports = (gulp, { sourcePackageDir }) => {
   gulp.task('build:clean', () => cleanDist(gulp, sourcePackageDir));
-  gulp.task('build:json', () => copyJson(gulp, sourcePackageDir));
-  gulp.task('build:assets', () => copyAssets(gulp, sourcePackageDir));
+  gulp.task('build:copy', () => copyAll(gulp, sourcePackageDir));
   gulp.task('build:babel', () => compileJs(gulp, sourcePackageDir));
   gulp.task('build:success', done => {
     logTask('✅ ', 'Build succeeded');
@@ -95,8 +111,7 @@ module.exports = (gulp, { sourcePackageDir }) => {
   gulp.task('build:src', done => {
     runSequence(
       'build:clean',
-      'build:json',
-      'build:assets',
+      'build:copy',
       'build:babel', // Important: This needs ran before docs:build!
       'sass:src',
       'build:success',

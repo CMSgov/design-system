@@ -23,8 +23,8 @@ const SKIP_LATEST_MESSAGE =
  * @return {Promise<{current, latest}>}
  */
 async function getCSSStats(dir, packageName, skiplatest = false) {
-  const currentPath = path.resolve(dir, 'dist/index.css');
-  const latestPath = path.resolve('node_modules', packageName, 'dist/index.css');
+  const currentPath = path.resolve(dir, 'dist', 'index.css');
+  const latestPath = path.resolve('node_modules', packageName, 'dist', 'index.css');
   let current;
   let latest;
 
