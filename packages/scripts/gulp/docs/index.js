@@ -12,7 +12,6 @@ const generatePage = require('./generatePage');
 const kss = require('kss');
 const merge = require('gulp-merge-json');
 const nestSections = require('./nestSections');
-const packagesRegex = require('../common/packagesRegex');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
 const processKssSection = require('./processKssSection');
@@ -238,7 +237,7 @@ module.exports = (gulp, shared) => {
   gulp.task('docs:react', () => {
     logTask('🌪 ', 'Generating React propType documentation and grabbing raw example code');
 
-    const packages = packagesRegex(shared.packages);
+    const packages = `{${shared.packages.join(',')}}`;
 
     return gulp
       .src([`packages/${packages}/src/**/*.jsx`, `!packages/${packages}/src/**/*.test.jsx`])

@@ -3,7 +3,6 @@
  * make to a component, a component's example code, or the documentation will
  * automatically be reflected in the browser when the changes are saved.
  */
-const packagesRegex = require('./common/packagesRegex');
 const { logTask } = require('./common/logUtil');
 
 module.exports = (gulp, shared) => {
