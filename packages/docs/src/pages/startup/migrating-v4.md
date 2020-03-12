@@ -35,13 +35,13 @@ For JavaScript imports, this will likely result in no changes. While JavaScript 
 For your Sass imports, this will require a change for everyone. We previously did not distribute the Sass files in our packages’ `dist` directories, so you likely had an import path that looked like this:
 
 ```
-@import "~@cmsgov/ds-healthcare-gov/src/index.scss";
+@import "~@cmsgov/design-system-core/src/index.scss";
 ```
 
 In v4, it will need to be changed to
 
 ```
-@import "~@cmsgov/ds-healthcare-gov/dist/index.scss";
+@import "~@cmsgov/design-system/dist/index.scss";
 ```
 
 ## Fonts and Images
@@ -53,13 +53,13 @@ If you’re using a tool like webpack to collect the images and fonts during you
 ```
 $font-path: "~@cmsgov/design-system-core/fonts";
 $image-path: "~@cmsgov/design-system-core/images";
-@import "~@cmsgov/ds-healthcare-gov/src/index.scss";
+@import "~@cmsgov/design-system-core/src/index.scss";
 ```
 
 When migrating to v4, it will need to be changed to:
 
 ```
-$font-path: "~@cmsgov/design-system-core/dist/fonts";
-$image-path: "~@cmsgov/design-system-core/dist/images";
-@import "~@cmsgov/ds-healthcare-gov/dist/index.scss";
+$font-path: "~@cmsgov/design-system/dist/fonts";
+$image-path: "~@cmsgov/design-system/dist/images";
+@import "~@cmsgov/design-system/dist/index.scss";
 ```

@@ -38,7 +38,7 @@ A site package is custom code (components, styles, etc..) that extends the CMSDS
       @import "styles/variables";
 
       // Original CMS Design System sass files"
-      @import "@cmsgov/design-system/src/index.scss";
+      @import "@cmsgov/design-system/dist/index.scss";
 
       // Set your overrides to classes and styles
       @import "styles/overrides";

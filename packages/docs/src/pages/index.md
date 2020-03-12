@@ -12,7 +12,7 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). 
 <div class="ds-c-alert">
   <div class="ds-c-alert__body">
     <h2 class="ds-c-alert__heading">CMS Design System v4 has been released</h2>
-    <p class="ds-c-alert__text">For more information on v4 and how to upgrade, see our <a href="http://localhost:3000/startup/migrating-v4/">migration guide</a>.</p>
+    <p class="ds-c-alert__text">For more information on v4 and how to upgrade, see our <a href="https://design.cms.gov/startup/migrating-v4/">migration guide</a>.</p>
   </div>
 </div>
 

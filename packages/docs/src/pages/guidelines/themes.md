@@ -25,7 +25,7 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 ```css
 /* main.scss */
 @import 'overrides';
-@import '@cmsgov/design-system/src/index';
+@import '@cmsgov/design-system/dist/index.scss';
 ```
 
 ### Available variables
