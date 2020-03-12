@@ -17,10 +17,8 @@ yargs
       describeSourcePackageDir(yargs);
     },
     handler: argv => {
-      require('./gulp/stats')(gulp, argv);
-      require('./gulp/sass')(gulp, argv);
-      require('./gulp/build')(gulp, argv);
-      gulp.task('build')();
+      loadGulpTasks(argv, ['./gulp/stats', './gulp/sass', './gulp/build']);
+      runGulpTask('build');
     }
   })
   // An example of the next command. Note the 'shared' part
@@ -33,13 +31,25 @@ yargs
   //   },
   //   handler: argv => {
   //     const shared = require('./gulp/shared')(argv);
-  //     require('./gulp/stats')(gulp, shared);
-  //     require('./gulp/sass')(gulp, shared);
-  //     require('./gulp/build')(gulp, shared);
-  //     gulp.task('build')();
+  //     loadGulpTasks(shared, [
+  //       './gulp/stats',
+  //       './gulp/sass',
+  //       './gulp/build',
+  //       './gulp/docs',
+  //       './gulp/webpack'
+  //     ]);
+  //     runGulpTask('build');
   //   }
   // })
   .help().argv;
+
+function loadGulpTasks(settings, modulesPaths) {
+  modulesPaths.forEach(modulePath => require(modulePath)(gulp, settings));
+}
+
+function runGulpTask(taskName) {
+  gulp.task(taskName)();
+}
 
 function describeSourcePackageDir(yargs) {
   yargs.positional('sourcePackageDir', {
