@@ -3,32 +3,21 @@ title: Migrating to v4
 weight: 11
 ---
 
-CMS Design System v4 introduces several breaking changes, and this migration guide will outline several steps to upgrade to the latest version.
+CMS Design System v4 introduces several breaking changes, and this migration guide will outline high-level steps to upgrade to the latest version.
 
 ## NPM packages
 
-The `@cmsgov/design-system-core`, `@cmsgov/design-system-support`, `@cmsgov/design-system-layout` npm packages have been deprecated and replaced with a new consolidated package [`@cmsgov/design-system`](https://www.npmjs.com/package/@cmsgov/design-system). This is now the only dependency you need to use the design system and you can simply replace the old packages with `@cmsgov/design-system` in your `package.json`.
-
-The new file structure below illustrates where the old `support` and `layout` packages can now be found.
+The `core`, `support`, `layout` npm packages have been deprecated and replaced with a new consolidated package [`@cmsgov/design-system`](https://www.npmjs.com/package/@cmsgov/design-system). This is now the only dependency you need to use the design system and you can simply replace the old packages with `@cmsgov/design-system` in your `package.json`.
 
 ```
-design-system@4.0.0
-   ├── package.json
-   └── dist
-       ├── index.css        CSS
-       ├── index.scss
-       ├── index.js
-       ├── fonts
-       ├── images
-       ├── components
-       │   ├── Button
-       │   └── etc…
-       ├── utilities
-       │   ├── grid         `layout` has been moved to utilities
-       │   └── etc…
-       └── styles
-           ├── settings     `support` has been renamed to       │`settings` and moved to styles
-           └── etc...
+  "dependencies": {
+    // "@cmsgov/design-system-core": "^3.6.0",
+    // "@cmsgov/design-system-support": "^3.6.0",
+    // "@cmsgov/design-system-layout": "^3.6.0",
+    "@cmsgov/design-system": "^4.0.0",
+    ...
+  }
+
 ```
 
 ## Importing JavaScript and Sass

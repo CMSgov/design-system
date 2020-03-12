@@ -9,30 +9,15 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@cmsgov/design-system-core@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system-core/-/design-system-core-3.6.1.tgz#20bbb91b64b049f765a401bc22e4416472f46e9b"
-  integrity sha512-fbJ/WBIKUiRAu4hflqkTxD3TyyED7bejOICu8C9vbDtBPC6ToLoMwvaLmUWjZDoH8yQ4WXbKJjLgKPQ/kgkSYw==
+"@cmsgov/design-system@file:../design-system":
+  version "4.0.0-beta.1"
   dependencies:
-    "@cmsgov/design-system-support" "^3.6.1"
     classnames "^2.2.5"
     core-js "^2.5.3"
     downshift "^3.2.10"
     ev-emitter "^1.1.1"
     lodash.uniqueid "^4.0.1"
     react-aria-modal "^2.11.1"
-
-"@cmsgov/design-system-layout@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system-layout/-/design-system-layout-3.6.1.tgz#9bbda716a9065773ff0f4a0d4c6d831ef121f5b8"
-  integrity sha512-b5NPZN6goApWR7Ot4Smxpkg6NZ501pTeypx1umMwQ8WlBJ4bhRQEXFz75UeABqx+ZhG6t5qtxcsKuYciYR6FEA==
-  dependencies:
-    "@cmsgov/design-system-support" "^3.6.1"
-
-"@cmsgov/design-system-support@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system-support/-/design-system-support-3.6.1.tgz#fdc100a30412c8bef83afc3d76b21524e0c92814"
-  integrity sha512-o4G1UcrJRaD7iGQp5IXZoJkk13It2lw5CCR/5MSbiYRhbTBDTNn7HYK6rBW5gwgvEI0Co/SogNq58S3tL9y/rA==
 
 asap@~2.0.3:
   version "2.0.5"

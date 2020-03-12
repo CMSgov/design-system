@@ -11,7 +11,7 @@ module.exports = {
     '.+\\.e2e\\.test\\.js$'
   ],
   moduleNameMapper: {
-    '^@cmsgov/design-system-core/(.*)$': '<rootDir>/packages/design-system/src/$1',
-    '^@cmsgov/design-system-core$': '<rootDir>/packages/design-system/src/index.js'
+    '^@cmsgov/design-system/(.*)$': '<rootDir>/packages/design-system/src/$1',
+    '^@cmsgov/design-system$': '<rootDir>/packages/design-system/src/index.js'
   }
 };

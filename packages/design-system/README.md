@@ -50,10 +50,10 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 ├── fonts
 ├── images
 └── src                 Non-compiled Sass and JSX
-    ├── components      React component source and test files
+    ├── components      React component source, test & example files
     │   ├── Button
     │   └── etc...
-    ├── utilities       Functional css classes to apply individual traits
+    ├── utilities       Utility classes for modifying individual CSS properties
     │   ├── grid        Responsive flexbox grid utilities
     │   └── etc...
     └── styles
