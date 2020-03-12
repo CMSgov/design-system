@@ -10,11 +10,11 @@ CMS strives to make its Design System work for as many people as possible, inclu
 - Provide accessibility as a [checkpoint in new components](https://github.com/CMSgov/design-system/blob/master/.github/ISSUE_TEMPLATE/component-validation-checklist.md) created in the design system.
 - Add accessibility as a key aspect to much of the [component documentation](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md).
 - Conduct regular accessibility reviews of new and existing features and documentation for the design system.
-- Automated accessibility testing using [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs)
+- Utilize [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) for automated accessibility testing in our end to end testing.
 
 ## What level we meet currently
 
-The CMS Design System currently meets or exceeds Section 508 standards, which requires that information and computer technology (ICT) be accessible to people with disabilities. Section 508 requires that ICT developed, procured, maintained, or used by the federal government be accessible to both employees and members of the public with disabilities.
+The CMS Design System currently meets or exceeds [WCAG 2.0 AA](https://www.w3.org/TR/WCAG20/) and [Section 508](http://www.section508.gov/) standards, which requires information and communications technology developed, procured, maintained, or used by the federal government be accessible to both employees and members of the public with disabilities.
 
 More information on Section 508 can be found at:
 
@@ -32,4 +32,8 @@ The current browser support for the design system [can be viewed here](https://d
 
 ## How to provide feedback
 
-If you cannot access any content or use any features on this website due to a disability, please contact our Section 508 Team via email at [508Feedback@cms.hhs.gov](mailto:508Feedback@cms.hhs.gov) or file a [GitHub issue](https://github.com/CMSgov/design-system/issues/new?assignees=&labels=&template=general-issue.md&title=). Please include the URL and/or other identifying information if you are reporting a problem accessing specific content or features.
+If you cannot access any content or use any features on this website due to a disability, please reach out and include the URL and/or other identifying information.
+
+- [Contact the CMS Design System team](https://cms.gov1.qualtrics.com/jfe/form/SV_eqTlI7HbrXthrlX)
+- File a [GitHub issue](https://github.com/CMSgov/design-system/issues/new?assignees=&labels=&template=general-issue.md&title=).
+- Contact the CMS Section 508 Team via email at [508Feedback@cms.hhs.gov](mailto:508Feedback@cms.hhs.gov).
