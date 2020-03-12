@@ -6,9 +6,9 @@
 
 You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
-| Name                   | Description                                                                                                                                                                                                                                             |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Core](packages/core/) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system-core](https://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core) |
+| Name                                        | Description                                                                                                                                                                                                                         |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
 **Internal packages**
 
@@ -57,8 +57,6 @@ These scripts can all be run from the root level of the repo:
   - Lints Sass using stylelint
 - `yarn test:e2e`
   - Runs end to end tests
-- `yarn test:e2e packages/core/Autocomplete`
-  - Runs a single end to end test, this example runs Autocomplete
 - `yarn test:watch`
   - Runs JS unit tests and will continue to run tests as files change
 - `yarn update-snapshots`

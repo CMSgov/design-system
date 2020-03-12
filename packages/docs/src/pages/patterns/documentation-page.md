@@ -24,6 +24,6 @@ usage: |
 ### Used in this pattern
 
 - [Grid]({{root}}/utilities/grid/)
-- [Base styling]({{root}}/style/base)
-- [Base typography]({{root}}/style/typography)
+- [Base styling]({{root}}/design/base)
+- [Base typography]({{root}}/design/typography)
 - [Vertical Navigation]({{root}}/components/vertical-nav)

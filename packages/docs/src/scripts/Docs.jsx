@@ -8,7 +8,7 @@ import Nav from './components/Nav';
 import Page from './components/Page';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SkipNav } from '@cmsgov/design-system-core';
+import { SkipNav } from '@cmsgov/design-system';
 import classNames from 'classnames';
 
 class Docs extends React.PureComponent {

@@ -34,7 +34,7 @@ describe('generateDocPage', () => {
       markup: '<button>Foo</button>',
       source: {
         filename: 'components/Button/Button.scss',
-        path: 'packages/core/src/components/Button/Button.scss'
+        path: 'packages/design-system/src/components/Button/Button.scss'
       },
       depth: 2,
       modifiers: [],

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { VerticalNav } from '@cmsgov/design-system-core';
+import { VerticalNav } from '@cmsgov/design-system';
 
 /**
  * By default all the menus are collapsed, but we want to expand the menu

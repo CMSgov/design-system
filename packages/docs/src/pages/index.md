@@ -9,6 +9,13 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). 
 
 ## Getting started
 
+<div class="ds-c-alert">
+  <div class="ds-c-alert__body">
+    <h2 class="ds-c-alert__heading">CMS Design System v4 has been released</h2>
+    <p class="ds-c-alert__text">For more information on v4 and how to upgrade, see our <a href="{{root}}/startup/migrating-v4/">migration guide</a>.</p>
+  </div>
+</div>
+
 Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/releases/latest), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
 
 ## Goals
@@ -25,5 +32,5 @@ In order to meet these goals we are:
 - Using the [U.S. Web Design Standards](https://standards.usa.gov) components and visual design as a foundation. Read more about how we're applying the Standards in our [GitHub Wiki](https://github.com/CMSgov/design-system/wiki/faq).
 - Reducing the overall footprint of websites by writing [scalable CSS]({{root}}/guidelines/code-conventions).
 - Supporting rapid development with [utility classes]({{root}}/utilities) and easy-to-use components with best practices baked in.
-- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/style/typography), [layout]({{root}}/utilities/grid/), and [color]({{root}}/style/color).
+- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/design/typography), [layout]({{root}}/utilities/grid/), and [color]({{root}}/design/color).
 - Distributing resources as [NPM packages]({{root}}/startup/installation/) which can be easily installed, updated, and imported.

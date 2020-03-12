@@ -24,7 +24,7 @@ module.exports = (gulp, shared) => {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       importer: themeImporter.bind(null, shared.packages),
-      includePaths: [`${cwd}node_modules`, `packages/core/src`]
+      includePaths: [`${cwd}node_modules`, `packages/design-system/src`]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
       dutil.logData(err.messageFormatted);
@@ -46,7 +46,7 @@ module.exports = (gulp, shared) => {
         postcssInliner({
           assetPaths: [
             path.resolve(__dirname, '../../../', cwd, 'images'),
-            path.resolve(__dirname, '../../../', 'packages/core/images')
+            path.resolve(__dirname, '../../../', 'packages/design-system/images')
           ],
           strict: true
         })
