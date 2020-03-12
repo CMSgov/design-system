@@ -88,6 +88,7 @@ export class TextField extends React.PureComponent {
       labelId,
       mask,
       multiline,
+      numeric,
       requirementLabel,
       rows,
       size,
@@ -234,6 +235,10 @@ TextField.propTypes = {
    */
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  /**
+   * Numeric prop type
+   */
+  numeric: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   /**
@@ -246,7 +251,7 @@ TextField.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium']),
   /**
-   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). If you are using `type=number` please consider using the numeric prop instead.
    */
   type: PropTypes.string,
   /**
