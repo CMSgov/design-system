@@ -12,18 +12,23 @@ The `@cmsgov/design-system-core`, `@cmsgov/design-system-support`, `@cmsgov/desi
 The new file structure below illustrates where the old `support` and `layout` packages can now be found.
 
 ```
-cmsds@4.0.0
-   ├── fonts
-   ├── images
-   ├── components
-   │   ├── Button
-   │   └── etc…
-   ├── utilities
-   │   ├── grid        `layout` has been moved to utilities
-   │   └── etc…
-   └── styles
-       ├── settings    `support` has been renamed to `settings` and moved to styles
-       └── etc...
+design-system@4.0.0
+   ├── package.json
+   └── dist
+       ├── index.css        CSS
+       ├── index.scss
+       ├── index.js
+       ├── fonts
+       ├── images
+       ├── components
+       │   ├── Button
+       │   └── etc…
+       ├── utilities
+       │   ├── grid         `layout` has been moved to utilities
+       │   └── etc…
+       └── styles
+           ├── settings     `support` has been renamed to       │`settings` and moved to styles
+           └── etc...
 ```
 
 ## Importing JavaScript and Sass

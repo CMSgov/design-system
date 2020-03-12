@@ -2,7 +2,7 @@
 /docs
 
 # Do not commit package build files to github
-/packages/cmsds/dist
+/packages/design-system/dist
 /packages/layout/dist
 
 # Themes should be in their own repo, but can be included in this directory

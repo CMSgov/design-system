@@ -20,7 +20,7 @@ const path = require('path');
  * @return {Promise<{current, latest}>}
  */
 function getCSSStats(skiplatest = false) {
-  const currentPath = 'packages/cmsds/dist/index.css';
+  const currentPath = 'packages/design-system/dist/index.css';
   const latestPath = 'node_modules/@cmsgov/design-system-core/dist/index.css';
   const stats = {
     current: {},
@@ -80,7 +80,7 @@ function getFontSizes(fontDir) {
  * @return {Promise}
  */
 function getFontStats(currentStats) {
-  const currentFontDir = path.resolve(__dirname, `../../../packages/cmsds/fonts`);
+  const currentFontDir = path.resolve(__dirname, `../../../packages/design-system/fonts`);
   const latestFontDir = 'node_modules/@cmsgov/design-system-core/fonts';
   return getFontSizes(currentFontDir)
     .then(total => {

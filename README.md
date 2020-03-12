@@ -6,9 +6,9 @@
 
 You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
-| Name                                | Description                                                                                                                                                                                                                         |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [CMS Design System](packages/cmsds) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
+| Name                                        | Description                                                                                                                                                                                                                         |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
 **Internal packages**
 
