@@ -9,6 +9,13 @@ const deliminatedMaskRegex = {
   zip: /(\d{5})(\d*)/
 };
 
+const maskPattern = {
+  phone: '[0-9-]*',
+  ssn: '[0-9-*]*',
+  zip: '[0-9-]*',
+  currency: '[0-9.-]*'
+};
+
 /**
  * Split value into groups and insert a hyphen deliminator between each
  * @param {String} value
@@ -231,15 +238,20 @@ export class Mask extends React.PureComponent {
       defaultValue: undefined,
       onBlur: evt => this.handleBlur(evt, field),
       onChange: evt => this.handleChange(evt, field),
-      value: this.state.value
+      value: this.state.value,
+      type: 'text',
+      inputmode: 'numeric',
+      pattern: maskPattern[this.props.mask]
     });
   }
 }
 
 Mask.propTypes = {
-  /** Pass the input as the child */
+  /**
+   * Must contain a `TextField` component
+   */
   children: PropTypes.node.isRequired,
-  mask: PropTypes.string.isRequired
+  mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip'])
 };
 
 /**
