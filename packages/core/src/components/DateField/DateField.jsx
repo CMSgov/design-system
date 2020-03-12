@@ -110,8 +110,6 @@ export class DateField extends React.PureComponent {
               this.monthInput = el;
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
             }}
-            max="12"
-            min="1"
             defaultValue={this.props.monthDefaultValue}
             label={this.props.monthLabel}
             name={this.props.monthName}
@@ -128,8 +126,6 @@ export class DateField extends React.PureComponent {
               this.dayInput = el;
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
             }}
-            max="31"
-            min="1"
             defaultValue={this.props.dayDefaultValue}
             label={this.props.dayLabel}
             name={this.props.dayName}
@@ -148,8 +144,6 @@ export class DateField extends React.PureComponent {
             }}
             defaultValue={this.props.yearDefaultValue}
             label={this.props.yearLabel}
-            min={this.props.yearMin}
-            max={this.props.yearMax}
             name={this.props.yearName}
             value={this.props.yearValue}
             aria-describedby={labelId}
@@ -168,7 +162,6 @@ DateField.defaultProps = {
   monthLabel: 'Month',
   monthName: 'month',
   yearLabel: 'Year',
-  yearMin: 1900,
   yearName: 'year',
   dateFormatter: defaultDateFormatter
 };
@@ -283,14 +276,6 @@ DateField.propTypes = {
    * Label for the year `input` field
    */
   yearLabel: PropTypes.node,
-  /**
-   * Max value for the year `input` field
-   */
-  yearMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
-   * Minimum value for the year `input` field
-   */
-  yearMin: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * `name` for the year field
    */
