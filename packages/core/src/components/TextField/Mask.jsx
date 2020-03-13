@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Deliminate chunks of integers
-const deliminatedMaskRegex = {
+const maskDeliminatedRegex = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d*)/
@@ -14,6 +14,10 @@ const maskPattern = {
   ssn: '[0-9-*]*',
   zip: '[0-9-]*',
   currency: '[0-9.-]*'
+};
+
+const maskOverlayContent = {
+  currency: '$'
 };
 
 /**
@@ -128,10 +132,10 @@ export function maskValue(value = '', mask) {
       if (number !== undefined) {
         value = stringWithFixedDigits(number.toLocaleString('en-US'));
       }
-    } else if (deliminatedMaskRegex[mask]) {
+    } else if (maskDeliminatedRegex[mask]) {
       // Use deliminator regex to mask value and remove unwanted characters
       // If the regex does not match, return the numeric digits.
-      value = deliminateRegexGroups(value, deliminatedMaskRegex[mask]);
+      value = deliminateRegexGroups(value, maskDeliminatedRegex[mask]);
     }
   }
 
@@ -232,9 +236,10 @@ export class Mask extends React.PureComponent {
   }
 
   render() {
+    const { mask } = this.props;
     const field = this.field();
 
-    return React.cloneElement(field, {
+    const modifiedTextField = React.cloneElement(field, {
       defaultValue: undefined,
       onBlur: evt => this.handleBlur(evt, field),
       onChange: evt => this.handleChange(evt, field),
@@ -243,6 +248,20 @@ export class Mask extends React.PureComponent {
       inputMode: 'numeric',
       pattern: maskPattern[this.props.mask]
     });
+
+    // UI overlayed on top of a field to support certain masks
+    const maskOverlay = maskOverlayContent[mask] ? (
+      <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
+        {maskOverlayContent[mask]}
+      </div>
+    ) : null;
+
+    return (
+      <div className={`ds-c-field-mask ds-c-field-mask--${mask}`}>
+        {maskOverlay}
+        {modifiedTextField}
+      </div>
+    );
   }
 }
 
@@ -268,7 +287,7 @@ export function unmaskValue(value, mask) {
       if (matches) {
         value = matches.join('');
       }
-    } else if (deliminatedMaskRegex[mask]) {
+    } else if (maskDeliminatedRegex[mask]) {
       // Remove the deliminators and revert to single ungrouped string
       value = toDigitsAndAsterisks(value);
     }

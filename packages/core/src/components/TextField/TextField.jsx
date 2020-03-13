@@ -47,33 +47,7 @@ export class TextField extends React.PureComponent {
    *  markup if a mask is present
    */
   renderFieldAndMask(field) {
-    const maskName = this.props.mask;
-
-    return maskName ? (
-      <div className={`ds-c-field-mask ds-c-field-mask--${maskName}`}>
-        {this.renderMaskOverlay()}
-        <Mask mask={maskName}>{field}</Mask>
-      </div>
-    ) : (
-      field
-    );
-  }
-
-  /**
-   * UI overlayed on top of a field to support certain masks
-   */
-  renderMaskOverlay() {
-    if (this.props.mask) {
-      const content = {
-        currency: '$'
-      };
-
-      return (
-        <div className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}>
-          {content[this.props.mask]}
-        </div>
-      );
-    }
+    return this.props.mask ? <Mask mask={this.props.mask}>{field}</Mask> : field;
   }
 
   render() {
@@ -167,7 +141,6 @@ export class TextField extends React.PureComponent {
         >
           {label}
         </FormLabel>
-
         {this.renderFieldAndMask(field, mask)}
       </div>
     );

@@ -285,6 +285,12 @@ describe('TextField', function() {
       expect(typeof unmaskValue).toBe('function');
     });
 
+    it('renders TextField', () => {
+      const data = render();
+
+      expect(data.wrapper).toMatchSnapshot();
+    });
+
     it('renders currency mask', () => {
       const data = render({
         mask: 'currency'
