@@ -1,10 +1,10 @@
 // Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
-@import 'settings/index';
+@import 'settings/index.scss';
 
 // Font variables are imported separately to avoid being compiled and included in multiple css files
-@import 'settings/font';
+@import 'settings/font.scss';
 
 // Elements: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
-@import 'base/base';
-@import 'typography/typography';
-@import 'icons/icons'; // TODO: Move icons to components and namespace css
+@import 'base/base.scss';
+@import 'typography/typography.scss';
+@import 'icons/icons.scss'; // TODO: Move icons to components and namespace css
