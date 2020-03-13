@@ -20,11 +20,15 @@ ReactDOM.render(
       selectAllText="Select all"
       clearAllText="Clear all"
     />
-    <MonthPicker
-      name="cryosleep-months"
-      label="Select the months you were in cryosleep during 2046"
-      disabledMonths={[7, 8, 9, 10, 11, 12]}
-    />
+    <div className="example--inverse">
+      <MonthPicker
+        name="cryosleep-months"
+        errorMessage="Select at least one month"
+        label="Select the months you were in cryosleep during 2046"
+        disabledMonths={[7, 8, 9, 10, 11, 12]}
+        inversed
+      />
+    </div>
   </div>,
   document.getElementById('js-example')
 );

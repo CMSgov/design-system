@@ -13,6 +13,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
     aria-label="Clear search to try again"
     className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-margin-right--0"
     onClick={[Function]}
+    onKeyPress={undefined}
     type="button"
   >
     Clear search

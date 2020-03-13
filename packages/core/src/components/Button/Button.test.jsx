@@ -104,7 +104,7 @@ describe('Button', () => {
   it('applies disabled, inverse, and variation classes together', () => {
     const props = {
       disabled: true,
-      inverse: true,
+      inversed: true,
       variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
@@ -116,9 +116,9 @@ describe('Button', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('applies inverse to default/transparent variations', () => {
+  it('applies inversed to default/transparent variations', () => {
     const props = {
-      inverse: true,
+      inversed: true,
       variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);

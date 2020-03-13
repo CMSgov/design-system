@@ -15,7 +15,7 @@ ReactDOM.render(
       <Spinner filled inversed className="ds-u-valign--middle" />
     </div>
     <div className="ds-u-margin-top--2 ds-u-padding--2 ds-u-fill--background-inverse">
-      <Button inverse className="ds-u-margin-right--1">
+      <Button inversed className="ds-u-margin-right--1">
         Cancel
       </Button>
       <Button variation="primary" disabled>
