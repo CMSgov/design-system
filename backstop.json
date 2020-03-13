@@ -145,8 +145,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Base",
-      "referenceUrl": "https://design.cms.gov/design/base/",
+      "label": "CMSDS - Styles - Base",
+      "referenceUrl": "https://design.cms.gov/styles/base/",
       "url": "http://localhost:3000/design/base/",
       "removeSelectors": [
         "#frame",
@@ -154,8 +154,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Base - Default",
-      "referenceUrl": "https://design.cms.gov/example/design.base/",
+      "label": "CMSDS - Styles - Base - Default",
+      "referenceUrl": "https://design.cms.gov/example/styles.base/",
       "url": "http://localhost:3000/example/design.base/",
       "removeSelectors": [
         "#frame",
@@ -163,7 +163,7 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Base - Inverse",
+      "label": "CMSDS - Styles - Base - Inverse",
       "referenceUrl": "https://design.cms.gov/design.base..ds-base--inverse/",
       "url": "http://localhost:3000/example/design.base..ds-base--inverse/",
       "removeSelectors": [
@@ -172,8 +172,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color",
-      "referenceUrl": "https://design.cms.gov/design/color/",
+      "label": "CMSDS - Styles - Color",
+      "referenceUrl": "https://design.cms.gov/styles/color/",
       "url": "http://localhost:3000/design/color/",
       "removeSelectors": [
         "#frame",
@@ -181,8 +181,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color - Primary",
-      "referenceUrl": "https://design.cms.gov/example/design.color.primary/",
+      "label": "CMSDS - Styles - Color - Primary",
+      "referenceUrl": "https://design.cms.gov/example/styles.color.primary/",
       "url": "http://localhost:3000/example/design.color.primary/",
       "removeSelectors": [
         "#frame",
@@ -190,8 +190,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color - Secondary",
-      "referenceUrl": "https://design.cms.gov/example/design.color.secondary/",
+      "label": "CMSDS - Styles - Color - Secondary",
+      "referenceUrl": "https://design.cms.gov/example/styles.color.secondary/",
       "url": "http://localhost:3000/example/design.color.secondary/",
       "removeSelectors": [
         "#frame",
@@ -199,8 +199,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color - Background",
-      "referenceUrl": "https://design.cms.gov/example/design.color.background/",
+      "label": "CMSDS - Styles - Color - Background",
+      "referenceUrl": "https://design.cms.gov/example/styles.color.background/",
       "url": "http://localhost:3000/example/design.color.background/",
       "removeSelectors": [
         "#frame",
@@ -208,8 +208,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color - Status",
-      "referenceUrl": "https://design.cms.gov/example/design.color.status/",
+      "label": "CMSDS - Styles - Color - Status",
+      "referenceUrl": "https://design.cms.gov/example/styles.color.status/",
       "url": "http://localhost:3000/example/design.color.status/",
       "removeSelectors": [
         "#frame",
@@ -217,8 +217,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Color - Primary",
-      "referenceUrl": "https://design.cms.gov/example/design.color.primary/",
+      "label": "CMSDS - Styles - Color - Primary",
+      "referenceUrl": "https://design.cms.gov/example/styles.color.primary/",
       "url": "http://localhost:3000/example/design.color.primary/",
       "removeSelectors": [
         "#frame",
@@ -226,8 +226,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Icons",
-      "referenceUrl": "https://design.cms.gov/design/icons/",
+      "label": "CMSDS - Styles - Icons",
+      "referenceUrl": "https://design.cms.gov/styles/icons/",
       "url": "http://localhost:3000/design/icons/",
       "removeSelectors": [
         "#frame",
@@ -235,8 +235,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Icons - Alert",
-      "referenceUrl": "https://design.cms.gov/example/design.icons.alert/",
+      "label": "CMSDS - Styles - Icons - Alert",
+      "referenceUrl": "https://design.cms.gov/example/styles.icons.alert/",
       "url": "http://localhost:3000/example/design.icons.alert/",
       "removeSelectors": [
         "#frame",
@@ -244,8 +244,8 @@
       ]
     }, 
     {
-      "label": "CMSDS - Design - Icons - Interaction",
-      "referenceUrl": "https://design.cms.gov/example/design.icons.interaction/",
+      "label": "CMSDS - Styles - Icons - Interaction",
+      "referenceUrl": "https://design.cms.gov/example/styles.icons.interaction/",
       "url": "http://localhost:3000/example/design.icons.interaction/",
       "removeSelectors": [
         "#frame",
@@ -253,8 +253,8 @@
       ]
     }, 
     {
-      "label": "CMSDS - Design - Icons - Supplemental",
-      "referenceUrl": "https://design.cms.gov/example/design.icons.supplemental/",
+      "label": "CMSDS - Styles - Icons - Supplemental",
+      "referenceUrl": "https://design.cms.gov/example/styles.icons.supplemental/",
       "url": "http://localhost:3000/example/design.icons.supplemental/",
       "removeSelectors": [
         "#frame",
@@ -262,7 +262,7 @@
       ]
     }, 
     {
-      "label": "CMSDS - Design - Spacing",
+      "label": "CMSDS - Styles - Spacing",
       "referenceUrl": "https://design.cms.gov/layout/spacing/",
       "url": "http://localhost:3000/layout/spacing/",
       "removeSelectors": [
@@ -271,8 +271,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Typography",
-      "referenceUrl": "https://design.cms.gov/design/typography/",
+      "label": "CMSDS - Styles - Typography",
+      "referenceUrl": "https://design.cms.gov/styles/typography/",
       "url": "http://localhost:3000/design/typography/",
       "removeSelectors": [
         "#frame",
@@ -280,8 +280,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Typography - Default",
-      "referenceUrl": "https://design.cms.gov/example/design.typography/",
+      "label": "CMSDS - Styles - Typography - Default",
+      "referenceUrl": "https://design.cms.gov/example/styles.typography/",
       "url": "http://localhost:3000/example/design.typography/",
       "removeSelectors": [
         "#frame",
@@ -289,8 +289,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Typography - Links",
-      "referenceUrl": "https://design.cms.gov/example/design.typography.links/",
+      "label": "CMSDS - Styles - Typography - Links",
+      "referenceUrl": "https://design.cms.gov/example/styles.typography.links/",
       "url": "http://localhost:3000/example/design.typography.links/",
       "removeSelectors": [
         "#frame",
@@ -298,8 +298,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Typography - Responsive",
-      "referenceUrl": "https://design.cms.gov/example/design.typography.responsive/",
+      "label": "CMSDS - Styles - Typography - Responsive",
+      "referenceUrl": "https://design.cms.gov/example/styles.typography.responsive/",
       "url": "http://localhost:3000/example/design.typography.responsive/",
       "removeSelectors": [
         "#frame",
@@ -307,8 +307,8 @@
       ]
     },
     {
-      "label": "CMSDS - Design - Typography - Default",
-      "referenceUrl": "https://design.cms.gov/example/design.typography/",
+      "label": "CMSDS - Styles - Typography - Default",
+      "referenceUrl": "https://design.cms.gov/example/styles.typography/",
       "url": "http://localhost:3000/example/design.typography/",
       "removeSelectors": [
         "#frame",
