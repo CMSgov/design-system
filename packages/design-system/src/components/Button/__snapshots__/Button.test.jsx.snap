@@ -30,7 +30,7 @@ exports[`Button applies disabled, inverse, and variation classes together 1`] = 
 </button>
 `;
 
-exports[`Button applies inverse to default/transparent variations 1`] = `
+exports[`Button applies inversed to default/transparent variations 1`] = `
 <button
   className="ds-c-button ds-c-button--transparent ds-c-button--inverse"
   type="button"
@@ -60,6 +60,7 @@ exports[`Button applies variation classes 1`] = `
 exports[`Button renders as a Link 1`] = `
 <Link
   className="ds-c-button"
+  role="button"
 >
   Foo
 </Link>
@@ -69,6 +70,8 @@ exports[`Button renders as an anchor with custom prop 1`] = `
 <a
   className="ds-c-button"
   href="/example"
+  onKeyPress={[Function]}
+  role="button"
   target="_blank"
 >
   Foo
@@ -97,6 +100,8 @@ exports[`Button renders disabled Link correctly 1`] = `
 <a
   className="ds-c-button ds-c-button--disabled"
   href="javascript:void(0)"
+  onKeyPress={[Function]}
+  role="button"
 >
   Link button
 </a>

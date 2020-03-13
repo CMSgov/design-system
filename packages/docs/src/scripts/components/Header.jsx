@@ -28,7 +28,7 @@ class Header extends React.PureComponent {
               CMS Design System
             </a>
           </h1>
-          <GitHubLinks className="ds-u-display--none ds-u-sm-display--block" inverse />
+          <GitHubLinks className="ds-u-display--none ds-u-sm-display--block" inversed />
         </header>
       </div>
     );

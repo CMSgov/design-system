@@ -63,42 +63,6 @@ describe('MonthPicker', () => {
     expect(buttons.at(1).props()['aria-pressed']).toBe(true);
   });
 
-  it('renders a title block with hint', () => {
-    const { wrapper } = renderMonthPicker({
-      label: 'Select a month',
-      hint: 'Tips and tricks'
-    });
-    const title = wrapper.find('h4.ds-c-label');
-    const hint = wrapper.find('p.ds-c-field__hint');
-    expect(title.exists()).toBe(true);
-    expect(title.text()).toEqual('Select a month');
-    expect(hint.exists()).toBe(true);
-    expect(hint.text()).toEqual('Tips and tricks');
-  });
-
-  it('renders a title block without hint', () => {
-    const { wrapper } = renderMonthPicker({
-      label: 'Select a preference',
-      headingLevel: 3
-    });
-    const title = wrapper.find('h3.ds-c-label');
-    const hint = wrapper.find('p.ds-c-field__hint');
-    expect(title.exists()).toBe(true);
-    expect(title.text()).toEqual('Select a preference');
-    expect(hint.exists()).toBe(false);
-  });
-
-  it('renders a FormLabel with correct props', () => {
-    const { wrapper, props } = renderMonthPicker({
-      errorMessage: 'Error!'
-    });
-    const label = wrapper.find('FormLabel');
-    expect(label.props()).toMatchObject({
-      className: 'ds-u-visibility--screen-reader',
-      errorMessage: props.errorMessage
-    });
-  });
-
   it('inversed prop propagates to all children', () => {
     const { wrapper } = renderMonthPicker({ inversed: true });
     const buttons = wrapper.find('Button');
