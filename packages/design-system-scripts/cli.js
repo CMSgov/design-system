@@ -10,6 +10,12 @@ yargs
     'Use this option when collecting stats on output files that do not yet exist in the latest release'
   )
   .command({
+    command: '*',
+    handler: argv => {
+      yargs.showHelp();
+    }
+  })
+  .command({
     command: 'build <sourcePackageDir>',
     desc: 'Builds the JavaScript and Sass for your main design-system package',
     builder: yargs => {
@@ -20,6 +26,31 @@ yargs
       await build(argv.sourcePackageDir);
     }
   })
+  .command({
+    command: 'build-docs <sourcePackageDir> <docsPackageDirs..>',
+    desc: 'Builds your main design-system package and its corresponding documentation site',
+    builder: yargs => {
+      describeSourcePackageDir(yargs);
+      describeDocsPackageDirs(yargs);
+    },
+    handler: async argv => {
+      const { buildDocs } = require('./gulp/build');
+      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs);
+    }
+  })
+  .demandCommand()
+  // .command({
+  //   command: 'start <sourcePackageDir> <docsPackageDirs..>',
+  //   desc: 'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
+  //   builder: yargs => {
+  //     describeSourcePackageDir(yargs);
+  //     describeDocsPackageDirs(yargs);
+  //   },
+  //   handler: argv => {
+  //     const shared = require('./gulp/shared')(argv);
+  //
+  //   }
+  // })
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
@@ -32,7 +63,7 @@ function describeSourcePackageDir(yargs) {
 function describeDocsPackageDirs(yargs) {
   yargs.positional('docsPackageDirs..', {
     desc:
-      'The relative paths to one or more docs-package directories. The first directory will be the default set of docs, and every docs directory specified after it will override files in the previous one, where the rightmost directory path takes the most precedence.',
+      'The relative paths to one or more docs-package directories. The first directory will be the default set of docs, and every docs directory specified after it will override files in the previous one, where the rightmost directory path takes the most precedence. The built documentation site will be saved to the "dist" directory of the final path in this list.',
     type: 'string'
   });
 }

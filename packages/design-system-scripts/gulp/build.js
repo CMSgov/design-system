@@ -11,6 +11,7 @@ const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
+const { last } = require('lodash');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
 
 const CORE_PACKAGE_NAME = '@cmsgov/design-system-core';
@@ -119,10 +120,11 @@ async function buildSrc(sourcePackageDir) {
  * Note that build:src must run before this in order to ensure that the
  * documentation reflects the most recent version of the source.
  */
-// async function buildDocs(sourcePackageDir) {
-//   logIntroduction();
-//   runSequence('docs:build', 'webpack', 'sass:docs', done);
-// }
+async function buildDocs(sourcePackageDir, docsPackageDirs) {
+  await cleanDist(last(docsPackageDirs));
+
+  // runSequence('docs:build', 'webpack', 'sass:docs', done);
+}
 
 module.exports = {
   /**
@@ -132,6 +134,17 @@ module.exports = {
   async build(sourcePackageDir, skipLatest = false) {
     logIntroduction();
     await buildSrc(sourcePackageDir);
+    await printStats(sourcePackageDir, skipLatest);
+  },
+
+  /**
+   * Builds the source package and the docs package for the purpose of publishing
+   * and then collects and prints statistics on the new build
+   */
+  async buildDocs(sourcePackageDir, docsPackageDirs, skipLatest = false) {
+    logIntroduction();
+    await buildSrc(sourcePackageDir);
+    await buildDocs(sourcePackageDir, docsPackageDirs);
     await printStats(sourcePackageDir, skipLatest);
   }
 };
