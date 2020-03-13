@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const gulp = require('gulp');
 const path = require('path');
 const yargs = require('yargs');
 
@@ -16,40 +15,12 @@ yargs
     builder: yargs => {
       describeSourcePackageDir(yargs);
     },
-    handler: argv => {
-      loadGulpTasks(argv, ['./gulp/stats', './gulp/sass', './gulp/build']);
-      runGulpTask('build');
+    handler: async argv => {
+      const { build } = require('./gulp/build');
+      await build(argv.sourcePackageDir);
     }
   })
-  // An example of the next command. Note the 'shared' part
-  // .command({
-  //   command: 'start <sourcePackageDir> <docsPackageDirs..>',
-  //   desc: 'Hosts the docs site locally with a webpack dev server',
-  //   builder: yargs => {
-  //     describeSourcePackageDir(yargs);
-  //     describeDocsPackageDirs(yargs);
-  //   },
-  //   handler: argv => {
-  //     const shared = require('./gulp/shared')(argv);
-  //     loadGulpTasks(shared, [
-  //       './gulp/stats',
-  //       './gulp/sass',
-  //       './gulp/build',
-  //       './gulp/docs',
-  //       './gulp/webpack'
-  //     ]);
-  //     runGulpTask('build');
-  //   }
-  // })
   .help().argv;
-
-function loadGulpTasks(settings, modulesPaths) {
-  modulesPaths.forEach(modulePath => require(modulePath)(gulp, settings));
-}
-
-function runGulpTask(taskName) {
-  gulp.task(taskName)();
-}
 
 function describeSourcePackageDir(yargs) {
   yargs.positional('sourcePackageDir', {

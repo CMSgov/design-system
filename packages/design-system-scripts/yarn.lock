@@ -5527,11 +5527,6 @@ gulp-util@^3.0, gulp-util@^3.0.8:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp4-run-sequence@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gulp4-run-sequence/-/gulp4-run-sequence-1.0.1.tgz#aa958d99b96c832c61c1f924661e426b08c27556"
-  integrity sha512-6w845e/gi5TOc9OHmHtpEfumIiwKg7dj9vvapOeN9bzN4jPpSYlHNQ3TZzT9jyeafHVM4ALHFizSxQyRiZDIjw==
-
 gulp@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-4.0.2.tgz#543651070fd0f6ab0a0650c6a3e6ff5a7cb09caa"

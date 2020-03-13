@@ -19,10 +19,10 @@ const SKIP_LATEST_MESSAGE =
 
 /**
  * Get the CSS stats from a file on the current branch and the latest release.
- * @param {boolean} skiplatest - Whether to also get stats for the file in the latest release
+ * @param {boolean} skipLatest - Whether to also get stats for the file in the latest release
  * @return {Promise<{current, latest}>}
  */
-async function getCSSStats(dir, packageName, skiplatest = false) {
+async function getCSSStats(dir, packageName, skipLatest = false) {
   const currentPath = path.resolve(dir, 'dist', 'index.css');
   const latestPath = path.resolve('node_modules', packageName, 'dist', 'index.css');
   let current;
@@ -33,7 +33,7 @@ async function getCSSStats(dir, packageName, skiplatest = false) {
 
   // Conditionally check the file in the latest release. Allowing this step to
   // be skipped enables us to run it on files that don't yet exist in the latest release
-  if (!skiplatest) {
+  if (!skipLatest) {
     try {
       const css = await fs.readFile(latestPath, 'utf8');
       latest = cssstats(css);
@@ -70,17 +70,16 @@ function getFontSizes(fontDir) {
 
 /**
  * Analyze the file sizes of all .woff2 font files and add to the stats object
- * @param {Object} currentStats - Current and latest release stats
  * @return {Promise}
  */
-async function getFontStats(dir, packageName, currentStats, skiplatest = false) {
+async function getFontStats(dir, packageName, currentStats, skipLatest = false) {
   let current;
   let latest;
 
   const currentFontDir = path.resolve(dir, 'dist', 'fonts');
   current = await getFontSizes(currentFontDir);
 
-  if (!skiplatest) {
+  if (!skipLatest) {
     try {
       // TODO: Remove this branching logic once we've released v4
       const oldPackageFontDir = path.resolve('node_modules', packageName, 'fonts');
@@ -143,21 +142,20 @@ function saveStats(currentStats) {
   });
 }
 
-module.exports = (gulp, argv) => {
-  /**
-   * Note: Unless the `--skiplatest` flag is specified, this task requires that
-   * the package being built has a copy of the latest published version of itself
-   * in node_modules, whether that be as a `devDependency` or some other mechanism.
-   */
-  gulp.task('stats', async () => {
-    logTask('🔍 ', 'Gathering stats and comparing against the latest release');
+/**
+ * Note: Unless the `--skiplatest` flag is specified, this task requires that
+ * the package being built has a copy of the latest published version of itself
+ * in node_modules, whether that be as a `devDependency` or some other mechanism.
+ */
+async function printStats(sourcePackageDir, skipLatest) {
+  logTask('🔍 ', 'Gathering stats and comparing against the latest release');
 
-    const dir = argv.sourcePackageDir;
-    const packageName = await getPackageName(dir);
-    const stats = await getCSSStats(dir, packageName, argv.skiplatest);
-    await getFontStats(dir, packageName, stats, argv.skiplatest);
-    await logStats(stats);
-    await createSpecificityGraph(stats);
-    await saveStats(stats);
-  });
-};
+  const packageName = await getPackageName(sourcePackageDir);
+  const stats = await getCSSStats(sourcePackageDir, packageName, skipLatest);
+  await getFontStats(sourcePackageDir, packageName, stats, skipLatest);
+  await logStats(stats);
+  await createSpecificityGraph(stats);
+  await saveStats(stats);
+}
+
+module.exports = { printStats };
