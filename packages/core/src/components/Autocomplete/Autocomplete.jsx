@@ -14,7 +14,6 @@
  * an unacceptable regression of the user experience.
  */
 
-import 'core-js/fn/array/find';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
