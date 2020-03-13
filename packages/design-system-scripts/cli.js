@@ -35,7 +35,9 @@ yargs
     },
     handler: async argv => {
       const { buildDocs } = require('./gulp/build');
-      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs);
+      // The path of the docs site relative to the domain root (ie. design.cms.gov/v1/index.html)
+      const rootPath = argv.root || '';
+      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs, rootPath);
     }
   })
   .demandCommand()
