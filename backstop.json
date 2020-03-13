@@ -147,7 +147,7 @@
     {
       "label": "CMSDS - Styles - Base",
       "referenceUrl": "https://design.cms.gov/styles/base/",
-      "url": "http://localhost:3000/design/base/",
+      "url": "http://localhost:3000/styles/base/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -156,7 +156,7 @@
     {
       "label": "CMSDS - Styles - Base - Default",
       "referenceUrl": "https://design.cms.gov/example/styles.base/",
-      "url": "http://localhost:3000/example/design.base/",
+      "url": "http://localhost:3000/example/style.base/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -165,7 +165,7 @@
     {
       "label": "CMSDS - Styles - Base - Inverse",
       "referenceUrl": "https://design.cms.gov/design.base..ds-base--inverse/",
-      "url": "http://localhost:3000/example/design.base..ds-base--inverse/",
+      "url": "http://localhost:3000/example/style.base..ds-base--inverse/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -174,7 +174,7 @@
     {
       "label": "CMSDS - Styles - Color",
       "referenceUrl": "https://design.cms.gov/styles/color/",
-      "url": "http://localhost:3000/design/color/",
+      "url": "http://localhost:3000/styles/color/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -183,7 +183,7 @@
     {
       "label": "CMSDS - Styles - Color - Primary",
       "referenceUrl": "https://design.cms.gov/example/styles.color.primary/",
-      "url": "http://localhost:3000/example/design.color.primary/",
+      "url": "http://localhost:3000/example/style.color.primary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -192,7 +192,7 @@
     {
       "label": "CMSDS - Styles - Color - Secondary",
       "referenceUrl": "https://design.cms.gov/example/styles.color.secondary/",
-      "url": "http://localhost:3000/example/design.color.secondary/",
+      "url": "http://localhost:3000/example/style.color.secondary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -201,7 +201,7 @@
     {
       "label": "CMSDS - Styles - Color - Background",
       "referenceUrl": "https://design.cms.gov/example/styles.color.background/",
-      "url": "http://localhost:3000/example/design.color.background/",
+      "url": "http://localhost:3000/example/style.color.background/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -210,7 +210,7 @@
     {
       "label": "CMSDS - Styles - Color - Status",
       "referenceUrl": "https://design.cms.gov/example/styles.color.status/",
-      "url": "http://localhost:3000/example/design.color.status/",
+      "url": "http://localhost:3000/example/style.color.status/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -219,7 +219,7 @@
     {
       "label": "CMSDS - Styles - Color - Primary",
       "referenceUrl": "https://design.cms.gov/example/styles.color.primary/",
-      "url": "http://localhost:3000/example/design.color.primary/",
+      "url": "http://localhost:3000/example/style.color.primary/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -228,7 +228,7 @@
     {
       "label": "CMSDS - Styles - Icons",
       "referenceUrl": "https://design.cms.gov/styles/icons/",
-      "url": "http://localhost:3000/design/icons/",
+      "url": "http://localhost:3000/styles/icons/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -237,7 +237,7 @@
     {
       "label": "CMSDS - Styles - Icons - Alert",
       "referenceUrl": "https://design.cms.gov/example/styles.icons.alert/",
-      "url": "http://localhost:3000/example/design.icons.alert/",
+      "url": "http://localhost:3000/example/style.icons.alert/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -246,7 +246,7 @@
     {
       "label": "CMSDS - Styles - Icons - Interaction",
       "referenceUrl": "https://design.cms.gov/example/styles.icons.interaction/",
-      "url": "http://localhost:3000/example/design.icons.interaction/",
+      "url": "http://localhost:3000/example/style.icons.interaction/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -255,7 +255,7 @@
     {
       "label": "CMSDS - Styles - Icons - Supplemental",
       "referenceUrl": "https://design.cms.gov/example/styles.icons.supplemental/",
-      "url": "http://localhost:3000/example/design.icons.supplemental/",
+      "url": "http://localhost:3000/example/style.icons.supplemental/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -355,7 +355,7 @@
     {
       "label": "CMSDS - Styles - Typography",
       "referenceUrl": "https://design.cms.gov/styles/typography/",
-      "url": "http://localhost:3000/design/typography/",
+      "url": "http://localhost:3000/styles/typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -364,7 +364,7 @@
     {
       "label": "CMSDS - Styles - Typography - Default",
       "referenceUrl": "https://design.cms.gov/example/styles.typography/",
-      "url": "http://localhost:3000/example/design.typography/",
+      "url": "http://localhost:3000/example/style.typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -373,7 +373,7 @@
     {
       "label": "CMSDS - Styles - Typography - Links",
       "referenceUrl": "https://design.cms.gov/example/styles.typography.links/",
-      "url": "http://localhost:3000/example/design.typography.links/",
+      "url": "http://localhost:3000/example/style.typography.links/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -382,7 +382,7 @@
     {
       "label": "CMSDS - Styles - Typography - Responsive",
       "referenceUrl": "https://design.cms.gov/example/styles.typography.responsive/",
-      "url": "http://localhost:3000/example/design.typography.responsive/",
+      "url": "http://localhost:3000/example/style.typography.responsive/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -391,7 +391,7 @@
     {
       "label": "CMSDS - Styles - Typography - Default",
       "referenceUrl": "https://design.cms.gov/example/styles.typography/",
-      "url": "http://localhost:3000/example/design.typography/",
+      "url": "http://localhost:3000/example/style.typography/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"

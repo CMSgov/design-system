@@ -32,5 +32,5 @@ In order to meet these goals we are:
 - Using the [U.S. Web Design Standards](https://standards.usa.gov) components and visual design as a foundation. Read more about how we're applying the Standards in our [GitHub Wiki](https://github.com/CMSgov/design-system/wiki/faq).
 - Reducing the overall footprint of websites by writing [scalable CSS]({{root}}/guidelines/code-conventions).
 - Supporting rapid development with [utility classes]({{root}}/utilities) and easy-to-use components with best practices baked in.
-- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/design/typography), [layout]({{root}}/styles/grid/), and [color]({{root}}/design/color).
+- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/styles/typography), [layout]({{root}}/styles/grid/), and [color]({{root}}/styles/color).
 - Distributing resources as [NPM packages]({{root}}/startup/installation/) which can be easily installed, updated, and imported.
