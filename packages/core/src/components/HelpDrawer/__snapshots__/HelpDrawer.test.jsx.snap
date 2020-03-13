@@ -20,6 +20,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         aria-label="Close help drawer"
         className="ds-c-button ds-c-button--small ds-u-margin-left--auto ds-c-help-drawer__close-button"
         onClick={[Function]}
+        onKeyPress={undefined}
         type="button"
       >
         Close

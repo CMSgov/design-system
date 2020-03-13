@@ -63,7 +63,7 @@ VerticalNav.propTypes = {
    * integrating with React Router's `<Link>` or using your own custom component.
    * If more specific control is needed, each `VerticalNavItem` object also accepts a `component` prop.
    */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   /**
    * The `id` of the selected `VerticalNavItem`. This will also set the
    * `selected` prop on the item's parents.
