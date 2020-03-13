@@ -1,8 +1,8 @@
 const ejs = require('ejs');
 const fs = require('mz/fs');
-const replaceTemplateTags = require('./replaceTemplateTags');
+const replaceTemplateTags = require('../replaceTemplateTags');
 const path = require('path');
-const { logData, logError } = require('../common/logUtil');
+const { logData, logError } = require('../../common/logUtil');
 
 /**
  * Take the raw markup value and convert or retrieve the markup to be displayed

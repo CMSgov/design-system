@@ -4,8 +4,10 @@
  *  everything production-ready.
  */
 const babel = require('gulp-babel');
+const cleanDist = require('./common/cleanDist');
+const copyDir = require('./common/copyDir');
+const copyDocsToTempDir = require('./docs/copyDocsToTempDir');
 const count = require('gulp-count');
-const del = require('del');
 const gulp = require('gulp');
 const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
@@ -17,14 +19,6 @@ const { log, logTask, logIntroduction } = require('./common/logUtil');
 const CORE_PACKAGE_NAME = '@cmsgov/design-system-core';
 
 /**
- * Empty the dist/ directory so any stale files are removed
- */
-function cleanDist(dir) {
-  logTask('🚮 ', `Resetting "dist" directory: ${dir}`);
-  return del([`${dir}/dist`]);
-}
-
-/**
  * Copy any JSON files that our components might depend on
  */
 function copyJson(dir) {
@@ -33,10 +27,6 @@ function copyJson(dir) {
       .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
       .pipe(gulp.dest(`${dir}/dist`))
   );
-}
-
-function copyDir(srcDir, destDir) {
-  return streamPromise(gulp.src(`${srcDir}/**/*`).pipe(gulp.dest(destDir)));
 }
 
 /**
@@ -122,7 +112,8 @@ async function buildSrc(sourcePackageDir) {
  */
 async function buildDocs(sourcePackageDir, docsPackageDirs) {
   await cleanDist(last(docsPackageDirs));
-
+  const tempDir = await copyDocsToTempDir(docsPackageDirs);
+  // webpack(sourcePackageDir, tempDir)
   // runSequence('docs:build', 'webpack', 'sass:docs', done);
 }
 

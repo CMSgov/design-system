@@ -4,7 +4,7 @@ const marked = require('marked');
 const path = require('path');
 const processMarkup = require('./processMarkup');
 const renderer = require('./markdownRenderer');
-const replaceTemplateTags = require('./replaceTemplateTags');
+const replaceTemplateTags = require('../replaceTemplateTags');
 
 marked.setOptions({ renderer: renderer });
 
