@@ -240,7 +240,7 @@ export class Mask extends React.PureComponent {
       onChange: evt => this.handleChange(evt, field),
       value: this.state.value,
       type: 'text',
-      inputmode: 'numeric',
+      inputMode: 'numeric',
       pattern: maskPattern[this.props.mask]
     });
   }

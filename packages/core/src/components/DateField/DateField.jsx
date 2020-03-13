@@ -82,8 +82,7 @@ export class DateField extends React.PureComponent {
       inversed: this.props.inversed,
       onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
       onChange: this.props.onChange && this.handleChange,
-      inputMode: 'numeric',
-      pattern: '[0-9]*'
+      numeric: true
     };
     const labelId = this.labelId();
 

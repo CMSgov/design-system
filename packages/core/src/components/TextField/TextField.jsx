@@ -19,6 +19,11 @@ export class TextField extends React.PureComponent {
           `[Deprecated]: Please remove the 'fieldRef' prop in <TextField>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.type === 'number') {
+        console.warn(
+          `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
+        );
+      }
     }
   }
 
@@ -93,6 +98,7 @@ export class TextField extends React.PureComponent {
       rows,
       size,
       type,
+      pattern,
       ...fieldProps
     } = this.props;
     const FieldComponent = multiline ? 'textarea' : 'input';
@@ -114,6 +120,13 @@ export class TextField extends React.PureComponent {
       size && `ds-c-field--${size}`
     );
 
+    let inputType = type;
+    if (numeric) {
+      inputType = 'text';
+    } else if (multiline) {
+      inputType = undefined;
+    }
+
     const field = (
       <FieldComponent
         aria-label={this.ariaLabel()}
@@ -134,7 +147,9 @@ export class TextField extends React.PureComponent {
         }}
         /* eslint-enable no-return-assign */
         rows={_rows}
-        type={multiline ? undefined : type}
+        inputMode={numeric ? 'numeric' : undefined}
+        pattern={numeric && !pattern ? '[0-9]*' : pattern}
+        type={inputType}
         {...fieldProps}
       />
     );
@@ -236,11 +251,15 @@ TextField.propTypes = {
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   /**
-   * Numeric prop type
+   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"', see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
+   */
+  pattern: PropTypes.string,
   /**
    * Optionally specify the number of visible text lines for the field. Only
    * applicable if this is a multiline field.
@@ -251,7 +270,7 @@ TextField.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium']),
   /**
-   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). If you are using `type=number` please consider using the numeric prop instead.
+   * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
   type: PropTypes.string,
   /**
