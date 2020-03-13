@@ -4,6 +4,7 @@
 // applied to.
 {
   "extends": [
-    "./packages/eslint-config-design-system/index.js"
+    "./packages/eslint-config-design-system/index.js",
+    "prettier"
   ]
 }

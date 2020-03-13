@@ -144,7 +144,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🔡 ', 'Copying fonts from core package into "public" directory');
 
     return gulp
-      .src('packages/core/fonts/*')
+      .src('packages/design-system/fonts/*')
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
   });
 
@@ -170,7 +170,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🏞 ', 'Copying images from core package into "public" directory');
 
     return gulp
-      .src('packages/core/images/*')
+      .src('packages/design-system/images/*')
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images')));
   });
 

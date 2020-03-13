@@ -38,7 +38,7 @@ A site package is custom code (components, styles, etc..) that extends the CMSDS
       @import "styles/variables";
 
       // Original CMS Design System sass files"
-      @import "@cmsgov/design-system-core/src/index.scss";
+      @import "@cmsgov/design-system/dist/index.scss";
 
       // Set your overrides to classes and styles
       @import "styles/overrides";
@@ -91,7 +91,7 @@ The CMS Design System supports the ability to "theme" the visual layer. Colors, 
 
 ### How to modify colors, typography and spacing
 
-The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables. You can browse the source files on GitHub for [color variables](https://github.com/CMSgov/design-system/tree/master/packages/core/src/styles/settings/_variables.color.scss), [typography variables](https://github.com/CMSgov/design-system/tree/master/packages/core/src/styles/settings/_variables.type.scss) and [layout variables](https://github.com/CMSgov/design-system/tree/master/packages/core/src/styles/settings/_variables.layout.scss) used in the CMS Design System.
+The design system supports the ability to "theme" its colors, typography, and spacing. This is accomplished by overriding the default Sass variables. You can browse the source files on GitHub for [color variables](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables/_color.scss), [typography variables](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables/_type.scss) and [layout variables](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables/_layout.scss) used in the CMS Design System.
 
 ---
 

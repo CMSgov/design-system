@@ -15,7 +15,7 @@ function createConfig(docsPath, rootPath = '', srcPaths, hotReload = true) {
     mode: process.env.NODE_ENV,
     context: __dirname,
     entry: {
-      index: ['./src/scripts/helpers/polyfills.js', './src/scripts/index.jsx'],
+      index: ['./src/scripts/index.jsx'],
       example: ['./src/scripts/example.js']
     },
     output: {
@@ -27,7 +27,16 @@ function createConfig(docsPath, rootPath = '', srcPaths, hotReload = true) {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          use: [{ loader: 'babel-loader' }],
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: true,
+                presets: ['@babel/preset-env']
+              }
+            }
+          ],
           include: [path.resolve(__dirname, 'src')].concat(srcPaths)
         }
       ]
