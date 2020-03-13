@@ -5,7 +5,6 @@ import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 const NUM_MONTHS = 12;
 const monthNumbers = (() => {
@@ -19,7 +18,6 @@ const monthNumbers = (() => {
 export class MonthPicker extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.labelId = uniqueId('monthpicker_label_');
     this.months = getMonthNames(props.locale);
     this.monthsLong = getMonthNames(props.locale, false);
 
@@ -115,7 +113,6 @@ export class MonthPicker extends React.PureComponent {
   renderButton(text, pressed, onClick) {
     return (
       <Button
-        aria-describedby={this.labelId}
         aria-pressed={pressed}
         size="small"
         className="ds-u-margin-right--1 ds-u-float--left"
@@ -136,7 +133,6 @@ export class MonthPicker extends React.PureComponent {
         requirementLabel={this.props.requirementLabel}
         hint={this.props.hint}
         inversed={this.props.inversed}
-        id={this.labelId}
       >
         {this.props.label}
       </FormLabel>
