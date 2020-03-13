@@ -21,7 +21,7 @@ Use the breakpoint prefixes `sm`, `md`, `lg`, and `xl` to apply styles at differ
 
 In order to reduce code bloat, not everything supports a breakpoint prefix. Only the items below support breakpoint prefixes.
 
-- [Grid]({{root}}/utilities/grid/#utilities.grid.responsive)
+- [Grid]({{root}}/styles/grid/#styles.grid.responsive)
 - [Typography]({{root}}/design/typography#style.typography.responsive)
 - [Flexbox]({{root}}/utilities/flexbox#utilities.flexbox.responsive)
 - [Float]({{root}}/utilities/float#utilities.float.responsive)

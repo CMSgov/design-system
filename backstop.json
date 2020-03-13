@@ -261,6 +261,88 @@
         "#tota11y-toolbar"
       ]
     }, 
+
+    {
+      "label": "CMSDS - Styles - Layout Grid",
+      "referenceUrl": "https://design.cms.gov/styles/grid/",
+      "url": "http://localhost:3000/styles/grid/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Default",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.default/",
+      "url": "http://localhost:3000/example/styles.grid.default/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Columns",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.columns/",
+      "url": "http://localhost:3000/example/styles.grid.columns/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Auto",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.column-auto/",
+      "url": "http://localhost:3000/example/styles.grid.column-auto/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Responsive",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.responsive/",
+      "url": "http://localhost:3000/example/styles.grid.responsive/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Nested",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.nested/",
+      "url": "http://localhost:3000/example/styles.grid.nested/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Offset",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.offset/",
+      "url": "http://localhost:3000/example/styles.grid.offset/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Alignment",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.alignment/",
+      "url": "http://localhost:3000/example/styles.grid.alignment/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
+    {
+      "label": "CMSDS - Styles - Layout Grid - Form Row",
+      "referenceUrl": "https://design.cms.gov/example/styles.grid.form-row/",
+      "url": "http://localhost:3000/example/styles.grid.form-row/",
+      "removeSelectors": [
+        "#frame",
+        "#tota11y-toolbar"
+      ]
+    },
     {
       "label": "CMSDS - Styles - Spacing",
       "referenceUrl": "https://design.cms.gov/layout/spacing/",
@@ -625,87 +707,6 @@
       "label": "CMSDS - Utilities - Font Weight - Default",
       "referenceUrl": "https://design.cms.gov/example/utilities.font-weight/",
       "url": "http://localhost:3000/example/utilities.font-weight/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid",
-      "referenceUrl": "https://design.cms.gov/utilities/grid//",
-      "url": "http://localhost:3000/utilities/grid//",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Default",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.default/",
-      "url": "http://localhost:3000/example/utilities.grid.default/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Columns",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.columns/",
-      "url": "http://localhost:3000/example/utilities.grid.columns/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Auto",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.column-auto/",
-      "url": "http://localhost:3000/example/utilities.grid.column-auto/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Responsive",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.responsive/",
-      "url": "http://localhost:3000/example/utilities.grid.responsive/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Nested",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.nested/",
-      "url": "http://localhost:3000/example/utilities.grid.nested/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Offset",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.offset/",
-      "url": "http://localhost:3000/example/utilities.grid.offset/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Alignment",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.alignment/",
-      "url": "http://localhost:3000/example/utilities.grid.alignment/",
-      "removeSelectors": [
-        "#frame",
-        "#tota11y-toolbar"
-      ]
-    },
-    {
-      "label": "CMSDS - Utilities - Layout Grid - Form Row",
-      "referenceUrl": "https://design.cms.gov/example/utilities.grid.form-row/",
-      "url": "http://localhost:3000/example/utilities.grid.form-row/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
