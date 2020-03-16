@@ -22,7 +22,15 @@ export class Button extends React.PureComponent {
           `[Deprecated]: Please remove the 'buttonRef' prop in <Button>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.inverse) {
+        console.warn(
+          `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
     }
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   // Get an object of props to pass to the rendered <Button> component
@@ -38,7 +46,7 @@ export class Button extends React.PureComponent {
       className,
       component,
       inputRef,
-      inverse,
+      inversed,
       onClick,
       size,
       variation,
@@ -52,18 +60,34 @@ export class Button extends React.PureComponent {
     };
 
     if (this.props.onClick) {
-      attrs.onClick = this.handleClick.bind(this);
+      attrs.onClick = this.handleClick;
+    }
+
+    if (component !== 'button' || this.props.href) {
+      // Assume `component` is not a <button> and remove <button> specific attributes
+      attrs.role = 'button';
+      delete attrs.disabled;
+      delete attrs.type;
     }
 
     return attrs;
   }
 
+  componentType() {
+    let component = this.props.component;
+    if (component === 'button' && this.props.href) {
+      // If `href` is provided and a custom component is not, we render `<a>` instead
+      component = 'a';
+    }
+    return component;
+  }
+
   classNames() {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
     const disabledClass =
-      this.props.disabled && (this.props.href || this.props.component) && 'ds-c-button--disabled';
+      this.props.disabled && this.componentType() !== 'button' && 'ds-c-button--disabled';
     const sizeClass = this.props.size && `ds-c-button--${this.props.size}`;
-    const inverseClass = this.props.inverse && 'ds-c-button--inverse';
+    const inverseClass = this.props.inversed && 'ds-c-button--inverse';
 
     return classNames(
       'ds-c-button',
@@ -75,37 +99,39 @@ export class Button extends React.PureComponent {
     );
   }
 
+  handleKeyPress(e) {
+    // Trigger onClick on space key event for `<a>` elements
+    if (e.key === ' ') {
+      this.handleClick(e);
+    }
+  }
+
   handleClick(e) {
-    if (!this.props.disabled) {
+    if (!this.props.disabled && this.props.onClick) {
       this.props.onClick(e);
     }
   }
 
   render() {
     const attrs = this.attrs();
-    let ComponentType = 'button';
-
-    if (this.props.component) {
-      ComponentType = this.props.component;
-      // Assume `component` is not a <button>
-      delete attrs.disabled;
-      delete attrs.type;
-    } else if (this.props.href) {
-      ComponentType = 'a';
-      // Remove <button> specific attributes
-      delete attrs.disabled;
-      delete attrs.type;
-    }
+    const ComponentType = this.componentType();
 
     return (
-      <ComponentType ref={this.props.inputRef || this.props.buttonRef} {...attrs}>
+      <ComponentType
+        ref={this.props.inputRef || this.props.buttonRef}
+        onKeyPress={this.componentType() === 'a' ? this.handleKeyPress : undefined}
+        {...attrs}
+      >
         {this.props.children}
       </ComponentType>
     );
   }
 }
 
-Button.defaultProps = { type: 'button' };
+Button.defaultProps = {
+  type: 'button',
+  component: 'button'
+};
 Button.propTypes = {
   /**
    * Label text or HTML
@@ -120,7 +146,7 @@ Button.propTypes = {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   disabled: PropTypes.bool,
   /**
    * When provided the root component will render as an `<a>` element
@@ -131,8 +157,10 @@ Button.propTypes = {
    * Access a reference to the `button` or `a` element
    */
   inputRef: PropTypes.func,
-  /** Applies the inverse theme styling */
+  /** @hide-prop [Deprecated] Use inversed instead */
   inverse: PropTypes.bool,
+  /** Applies the inverse theme styling */
+  inversed: PropTypes.bool,
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.

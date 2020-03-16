@@ -163,7 +163,7 @@ VerticalNavItem.propTypes = {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   /**
    * Whether or not the item's sub-navigation is in a collapsed state by default
    */
