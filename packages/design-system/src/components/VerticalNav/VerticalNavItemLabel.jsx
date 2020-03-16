@@ -77,7 +77,7 @@ VerticalNavItemLabel.propTypes = {
   ariaCollapsedStateButtonLabel: PropTypes.string,
   ariaExpandedStateButtonLabel: PropTypes.string,
   collapsed: PropTypes.bool,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
   hasSubnav: PropTypes.bool,
   label: PropTypes.node.isRequired,
   onClick: PropTypes.func,
