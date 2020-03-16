@@ -12,7 +12,7 @@ The grid consists of three distinct pieces:
 
 Flexbox grid supports modern browsers and Internet Explorer 10+. In older versions of Internet Explorer the grid columns will be stacked.
 
-Style guide: utilities.grid
+Style guide: styles.grid
 */
 
 /*
@@ -24,7 +24,7 @@ Column widths are set in percentages, so they’re always responsive and will be
 
 Markup: grid-default.example.html
 
-Style guide: utilities.grid.default
+Style guide: styles.grid.default
 */
 
 /*
@@ -34,7 +34,7 @@ Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These
 
 Markup: grid-number-col.example.html
 
-Style guide: utilities.grid.columns
+Style guide: styles.grid.columns
 */
 
 /*
@@ -44,7 +44,7 @@ Use a `.ds-l-col--auto` class to size a column to the natural width of its conte
 
 Markup: grid-natural-width.example.html
 
-Style guide: utilities.grid.column-auto
+Style guide: styles.grid.column-auto
 */
 
 /*
@@ -66,7 +66,7 @@ In the example below, the cells span:
 
 Markup: grid-responsive.example.html
 
-Style guide: utilities.grid.responsive
+Style guide: styles.grid.responsive
 */
 
 /*
@@ -74,7 +74,7 @@ Nested grids
 
 Markup: grid-nested.example.html
 
-Style guide: utilities.grid.nested
+Style guide: styles.grid.nested
 */
 
 /*
@@ -84,7 +84,7 @@ Offset columns using the [margin auto utility class](/utilities/margin):
 
 Markup: grid-offset.example.html
 
-Style guide: utilities.grid.offset
+Style guide: styles.grid.offset
 */
 
 /*
@@ -94,7 +94,7 @@ Align columns horizontally or vertically using [flexbox utility classes](/utilit
 
 Markup: grid-alignment.example.html
 
-Style guide: utilities.grid.alignment
+Style guide: styles.grid.alignment
 */
 
 /*
@@ -104,7 +104,7 @@ Use a `.ds-l-form-row` class to tighten the column spacing when laying out form 
 
 Markup: grid-forms.example.html
 
-Style guide: utilities.grid.form-row
+Style guide: styles.grid.form-row
 */
 
 /*
@@ -140,5 +140,5 @@ The following Sass variables can be overridden to customize the grid:
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Flexbox & the keyboard navigation disconnect](https://tink.uk/flexbox-the-keyboard-navigation-disconnect/)
 
-Style guide: utilities.grid.guidance
+Style guide: styles.grid.guidance
 */

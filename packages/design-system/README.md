@@ -46,18 +46,21 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
-├── dist                Compiled CSS and JS
-├── fonts
-├── images
-└── src                 Non-compiled Sass and JSX
+└── dist
+    ├── fonts
+    ├── images
+    ├── index.css       Compiled CSS
+    ├── index.js        Compiled JSS
+    ├── index.scss      Uncompiled SCSS
     ├── components      React component source, test & example files
     │   ├── Button
     │   └── etc...
     ├── utilities       Utility classes for modifying individual CSS properties
-    │   ├── grid        Responsive flexbox grid utilities
+    │   ├── text-color
     │   └── etc...
     └── styles
         ├── settings    Global variables, mixins, and functions
-        ├── typography  Namespaced element selector for typography
+        ├── grid        Responsive flexbox grid utilities
+        ├── typography
         └── etc...
 ```

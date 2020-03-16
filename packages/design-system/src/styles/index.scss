@@ -4,6 +4,9 @@
 // Font variables are imported separately to avoid being compiled and included in multiple css files
 @import 'settings/font';
 
+// Layout: Flexbox grid (i.e. ds-l-container, ds-l-row)
+@import 'grid/grid';
+
 // Elements: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
 @import 'base/base';
 @import 'typography/typography';
