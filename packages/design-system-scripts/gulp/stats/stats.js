@@ -15,7 +15,7 @@ const { logError, logTask } = require('../common/logUtil');
 const tmpPath = path.resolve('./tmp');
 
 const SKIP_LATEST_MESSAGE =
-  'If it is expected that the latest release does not exist in node_modules, add the `--skiplatest` flag to skip this part.';
+  'If it is expected that the latest release does not exist in node_modules, add the `--skipLatest` flag to skip this part.';
 
 /**
  * Get the CSS stats from a file on the current branch and the latest release.
@@ -143,7 +143,7 @@ function saveStats(currentStats) {
 }
 
 /**
- * Note: Unless the `--skiplatest` flag is specified, this task requires that
+ * Note: Unless the `--skipLatest` flag is specified, this task requires that
  * the package being built has a copy of the latest published version of itself
  * in node_modules, whether that be as a `devDependency` or some other mechanism.
  */

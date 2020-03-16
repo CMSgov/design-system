@@ -1,4 +1,4 @@
-jest.mock('../../shared/breakpoints', () => {
+jest.mock('../../helpers/breakpoints', () => {
   return {
     sm: 100,
     lg: 200

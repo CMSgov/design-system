@@ -1,8 +1,6 @@
-const fs = require('mz/fs');
-const path = require('path');
+const getPackageJson = require('./getPackageJson');
 
 module.exports = async function getPackageName(dir) {
-  const pkgPath = path.resolve(dir, 'package.json');
-  const pkg = JSON.parse(await fs.readFile(pkgPath));
+  const pkg = await getPackageJson(dir);
   return pkg.name;
 };

@@ -85,20 +85,20 @@ module.exports = {
    * Builds just the source package for the purpose of publishing and then
    * collects and prints statistics on the new build
    */
-  async build(sourcePackageDir, skipLatest = false) {
+  async build(sourcePackageDir, options) {
     logIntroduction();
     await buildSrc(sourcePackageDir);
-    await printStats(sourcePackageDir, skipLatest);
+    await printStats(sourcePackageDir, options.skipLatest);
   },
 
   /**
    * Builds the source package and the docs package for the purpose of publishing
    * and then collects and prints statistics on the new build
    */
-  async buildDocs(sourcePackageDir, docsPackageDirs, rootPath, skipLatest = false) {
+  async buildDocs(sourcePackageDir, docsPackageDirs, options) {
     logIntroduction();
-    await buildSrc(sourcePackageDir);
-    await buildDocs(sourcePackageDir, docsPackageDirs, rootPath);
-    await printStats(sourcePackageDir, skipLatest);
+    // await buildSrc(sourcePackageDir);
+    await buildDocs(sourcePackageDir, docsPackageDirs, options);
+    await printStats(sourcePackageDir, options.skipLatest);
   }
 };

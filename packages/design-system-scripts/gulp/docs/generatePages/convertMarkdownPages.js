@@ -21,48 +21,31 @@ const processMarkdownPage = require('./processMarkdownPage');
 function createPageObject(rootPath, dir, filename) {
   const filePath = path.join(dir, filename);
 
-  return fs.readFile(filePath, 'utf8').then(data => processMarkdownPage(filePath, data, rootPath));
-}
-
-/**
- * @param {String} rootPath - Root docs site path
- * @param {String} dir - Source files directory
- * @return {Promise<Object[]>}
- */
-function createPages(rootPath, dir) {
-  const pages = [];
-  const filenames = glob.sync('src/**/*.md', { cwd: dir });
-
-  return Promise.all(
-    filenames.map(filename =>
-      createPageObject(rootPath, dir, filename).then(data => {
-        pages.push(data);
-      })
-    )
-  ).then(() => pages);
+  return fs
+    .readFile(filePath, 'utf8')
+    .then(data => processMarkdownPage(dir, filePath, data, rootPath));
 }
 
 /**
  * Reads all Markdown pages in the docs and (optionally) theme directory,
  * transforms markdown, and creates a JSON representation of each page.
  * @param {String} rootPath - Root docs site path
- * @param {Array} packages - Design system and theme package directory names
+ * @param {Array} dir - Directory containing the src directory where we will find markdown files
  * @return {Promise<Object[]>} Resolves with an array of JSON pages
  */
-function convertMarkdownPages(rootPath, packages) {
-  const packagesDir = path.join(__dirname, '../../../packages');
-  const themePackages = packages.filter(name => name.match(/^themes\//));
+async function convertMarkdownPages(rootPath, dir) {
+  const pages = [];
+  const filenames = glob.sync('src/**/*.md', { cwd: dir });
 
-  const docsSrc = path.join(packagesDir, 'docs');
-  const coreSrc = path.join(packagesDir, 'core');
-  const themeSrc = themePackages.length ? path.join(packagesDir, themePackages[0]) : '';
+  await Promise.all(
+    filenames.map(filename =>
+      createPageObject(rootPath, dir, filename).then(data => {
+        pages.push(data);
+      })
+    )
+  );
 
-  const docsPages = createPages(rootPath, docsSrc);
-  const corePages = createPages(rootPath, coreSrc);
-  const themePages = themePackages.length ? createPages(rootPath, themeSrc) : Promise.resolve([]);
-
-  // Concat pages by flattening array of page arrays
-  return Promise.all([docsPages, corePages, themePages]).then(pages => [].concat(...pages));
+  return pages;
 }
 
 module.exports = convertMarkdownPages;

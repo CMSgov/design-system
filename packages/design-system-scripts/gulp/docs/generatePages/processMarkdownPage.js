@@ -35,7 +35,7 @@ function setFlags(page, attributes) {
  * @param {String} rootPath - Root docs site path
  * @return {Promise<Object>} Resolves with the page object
  */
-function processMarkdownPage(filePath, body, rootPath = '') {
+function processMarkdownPage(dir, filePath, body, rootPath = '') {
   const parts = fm(body); // parse page properties from top of file
   const description = parts.attributes.usage || parts.body;
 
@@ -74,7 +74,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     reference: reference,
     referenceURI: referenceURI,
     source: {
-      path: filePath.match(/packages\/[a-z0-9.\-_/]+/i)[0] // relative to project directory
+      path: path.relative(dir, filePath)
     },
     weight: parseInt(parts.attributes.weight || 0)
   };

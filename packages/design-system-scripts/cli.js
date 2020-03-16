@@ -5,10 +5,11 @@ const yargs = require('yargs');
 
 yargs
   .usage('Usage: $0 <command> [options]')
-  .describe(
-    'skiplatest',
-    'Use this option when collecting stats on output files that do not yet exist in the latest release'
-  )
+  .option('skipLatest', {
+    default: false,
+    description:
+      'Use this option when collecting stats on output files that do not yet exist in the latest release'
+  })
   .command({
     command: '*',
     handler: argv => {
@@ -23,7 +24,7 @@ yargs
     },
     handler: async argv => {
       const { build } = require('./gulp/build');
-      await build(argv.sourcePackageDir, argv.skiplatest);
+      await build(argv.sourcePackageDir, { ...argv });
     }
   })
   .command({
@@ -32,12 +33,22 @@ yargs
     builder: yargs => {
       describeSourcePackageDir(yargs);
       describeDocsPackageDirs(yargs);
+
+      yargs
+        .option('rootPath', {
+          default: '',
+          description:
+            'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
+        })
+        .option('githubUrl', {
+          default: '',
+          description:
+            'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
+        });
     },
     handler: async argv => {
       const { buildDocs } = require('./gulp/build');
-      // The path of the docs site relative to the domain root (ie. design.cms.gov/v1/index.html)
-      const rootPath = argv.root || '';
-      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs, rootPath, argv.skiplatest);
+      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs, { ...argv });
     }
   })
   .demandCommand()

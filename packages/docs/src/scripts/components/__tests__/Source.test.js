@@ -1,6 +1,6 @@
 import React from 'react';
 import Source from '../Source';
-import githubUrl from '../../shared/githubUrl';
+import githubUrl from '../../helpers/githubUrl';
 import { shallow } from 'enzyme';
 
 describe('Source', () => {

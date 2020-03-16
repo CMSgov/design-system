@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import githubUrl from '../shared/githubUrl';
+import githubUrl from '../helpers/githubUrl';
 
 const Source = props => {
   // Only show the source link if this is for a non-theme React or CSS component

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import breakpoints from '../shared/breakpoints';
+import breakpoints from '../helpers/breakpoints';
 import classNames from 'classnames';
 
 class BreakpointToggles extends React.PureComponent {

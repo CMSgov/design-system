@@ -2,7 +2,7 @@ import { Button } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import githubUrl from '../shared/githubUrl';
+import githubUrl from '../helpers/githubUrl';
 import pkg from '../../../package.json';
 
 const zipUrl = githubUrl(`releases/download/${pkg.version}/design-system-v${pkg.version}.zip`);

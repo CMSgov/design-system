@@ -7,7 +7,7 @@ import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
-import processMarkup from '../shared/processMarkup';
+import processMarkup from '../helpers/processMarkup';
 
 class HtmlExample extends React.PureComponent {
   highlightedMarkup() {

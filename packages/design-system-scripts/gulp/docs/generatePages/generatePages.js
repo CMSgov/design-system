@@ -75,15 +75,15 @@ function generatedPagesCount(resultGroups) {
  * These HTML pages are what get published as the public documentation website.
  * @return {Promise<Array>}
  */
-async function generateDocPages(pages, destination, rootPath) {
+async function generateDocPages(pages, destination, options) {
   const routes = createRoutes(pages);
 
   const generatedPages = await Promise.all(
     pages.map(async page => {
-      const created = await generatePage(routes, page, destination, rootPath);
+      const created = await generatePage(routes, page, destination, options);
       if (page.sections) {
         const results = await Promise.all(
-          page.sections.map(subpage => generatePage(routes, subpage, destination, rootPath))
+          page.sections.map(subpage => generatePage(routes, subpage, destination, options))
         );
         // return results for generatedPagesCount
         return [created].concat(results);
@@ -118,13 +118,13 @@ function generateMarkupPages(kssSections, destination, rootPath) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(sourcePackageDirs, docsPackageDir, rootPath) {
+module.exports = async function generatePages(sourcePackageDirs, docsPackageDir, options) {
   logTask('📝 ', 'Generating documentation pages');
 
   const destination = `${docsPackageDir}/dist`;
 
   // Parse Markdown files, and return the data in the same format as a KssSection
-  const markdownPagesData = await convertMarkdownPages(rootPath, docsPackageDir);
+  const markdownPagesData = await convertMarkdownPages(options.rootPath, docsPackageDir);
 
   /**
    * Parse KSS documentation blocks in CSS and JSX files
@@ -138,7 +138,7 @@ module.exports = async function generatePages(sourcePackageDirs, docsPackageDir,
   const kssSections = Promise.all(
     kssStyleGuide.sections().map(kssSection =>
       // Cleanup and extend the section's properties
-      processKssSection(kssSection, rootPath)
+      processKssSection(kssSection, options.rootPath)
     )
   );
 
@@ -148,11 +148,11 @@ module.exports = async function generatePages(sourcePackageDirs, docsPackageDir,
 
   await addReactDocProps(pageSections, reactDataPath);
   // Create HTML files for markup examples
-  await generateMarkupPages(pageSections, destination, rootPath);
+  await generateMarkupPages(pageSections, destination, options.rootPath);
   // Add missing top-level pages and connect the page parts to their parent pages
   const pages = await addTopLevelPages(pageSections).then(nestSections);
   // Create HTML files from the pages array
-  const generatedPagesCount = await generateDocPages(pages, destination, rootPath);
+  const generatedPagesCount = await generateDocPages(pages, destination, options);
 
   logTask('📝 ', `Added ${generatedPagesCount} docs pages to ./${docsPackageDir}`);
 };

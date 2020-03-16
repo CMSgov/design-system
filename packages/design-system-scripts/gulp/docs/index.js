@@ -10,7 +10,8 @@ const cleanDist = require('../common/cleanDist');
 const del = require('del');
 const generatePages = require('./generatePages');
 const getDocsDistPath = require('../common/getDocsDistPath');
-const getPackageName = require('./common/getPackageName');
+const getPackageJson = require('../common/getPackageJson');
+const gulp = require('gulp');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
@@ -63,17 +64,23 @@ module.exports = {
    * Note that the source package must be built before this in order to ensure
    * that the documentation reflects the most recent version of the source.
    */
-  async buildDocs(sourcePackageDir, docsPackageDirs, rootPath) {
+  async buildDocs(sourcePackageDir, docsPackageDirs, options) {
     let message = 'Starting the documentation generation task';
-    if (rootPath !== '') {
-      message += ` with a root path of ${rootPath}`;
+    if (options.rootPath !== '') {
+      message += ` with a root path of ${options.rootPath}`;
     }
     logTask('🏃 ', message);
+
+    const pkg = await getPackageJson(sourcePackageDir);
+
+    if (!options.githubUrl) {
+      options.githubUrl = `https://github.com/${pkg.repository}`;
+    }
 
     // This is the docs package that we will receive the output dist folder.
     const docsPackageDir = last(docsPackageDirs);
     const sourcePackageDirs =
-      (await getPackageName(sourcePackageDir)) === CORE_PACKAGE_NAME
+      pkg.name === CORE_PACKAGE_NAME
         ? [sourcePackageDir]
         : [sourcePackageDir, `node_modules/${CORE_PACKAGE_NAME}`];
 
@@ -83,8 +90,8 @@ module.exports = {
     // own docs that inherit all the docs from the core design system.
     const tempDir = await copyDocsToTempDir(docsPackageDirs);
     await cleanDist(tempDir);
-    await extractReactDocs(sourcePackageDirs, rootPath);
-    await generatePages(sourcePackageDirs, tempDir, rootPath);
+    await extractReactDocs(sourcePackageDirs, options.rootPath);
+    await generatePages(sourcePackageDirs, tempDir, options);
 
     // Now copy out of the working directory into our docs package's dist
     await cleanDist(docsPackageDir);

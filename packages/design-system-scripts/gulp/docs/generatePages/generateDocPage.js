@@ -7,7 +7,7 @@ const savePage = require('./savePage');
  * Create an HTML page with the documentation's UI
  * @return {Promise}
  */
-function generateDocPage(routes, page, docsPath, rootPath) {
+function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
   const componentRenderer = () => {
     if (process.env.NODE_ENV === 'development') {
       // In development mode we let the client handle all of the React rendering,
@@ -38,6 +38,7 @@ function generateDocPage(routes, page, docsPath, rootPath) {
 <script type="text/javascript">
   window.page = ${JSON.stringify(page)};
   window.routes = ${JSON.stringify(routes)};
+  window.githubUrlBase = ${JSON.stringify(githubUrl)};
 </script>
 <script src="/${rootPath}public/scripts/index.js"></script>`;
 
