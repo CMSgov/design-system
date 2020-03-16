@@ -13,7 +13,7 @@ const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
 
-const CORE_PACKAGE_NAME = '@cmsgov/design-system-core';
+const CORE_PACKAGE_NAME = '@cmsgov/design-system';
 
 /**
  * Empty the dist/ directory so any stale files are removed
