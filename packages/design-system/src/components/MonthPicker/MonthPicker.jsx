@@ -1,4 +1,3 @@
-import 'core-js/fn/array/includes';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import FormLabel from '../FormLabel/FormLabel';
