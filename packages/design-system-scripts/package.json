@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "3.6.0",
+  "version": "4.0.0-beta",
   "publishConfig": {
     "access": "public"
   },
@@ -83,5 +83,8 @@
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "2.25.0",
     "yargs": "^11.0.0"
+  },
+  "peerDependencies": {
+    "@cmsgov/design-system": ">=4.0.0"
   }
 }
