@@ -224,7 +224,7 @@ TextField.propTypes = {
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
   /**
-   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"', see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric: PropTypes.bool,
   onBlur: PropTypes.func,
