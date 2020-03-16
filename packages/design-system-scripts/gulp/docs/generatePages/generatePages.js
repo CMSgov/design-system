@@ -6,6 +6,7 @@ const kss = require('kss');
 const nestSections = require('./nestSections');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
+const { last } = require('lodash');
 const { logTask } = require('../../common/logUtil');
 
 /**
@@ -114,24 +115,29 @@ function generateMarkupPages(kssSections) {
   );
 }
 
-module.exports = async function generatePages() {
+/**
+ * Generate HTML pages from CSS and JS comments and Markdown files. This
+ * happens within a chain of promises.
+ * @return {Promise}
+ */
+module.exports = async function generatePages(sourcePackageDir, docsPackageDirs, rootPath) {
   logTask('📝 ', 'Generating documentation pages');
 
   // Parse Markdown files, and return the data in the same format as a KssSection
-  const markdownPagesData = await convertMarkdownPages(shared.rootPath, shared.packages);
+  const markdownPagesData = await convertMarkdownPages(rootPath, docsPackageDirs);
 
   /**
    * Parse KSS documentation blocks in CSS and JSX files
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
-  const packages = ['docs', ...shared.packages].map(pkg => `packages/${pkg}/src/`); // Temporarily hardcode task to process KSS in docs too
+  const packages = docsPackageDirs.map(pkg => `${pkg}/src/`); // Temporarily hardcode task to process KSS in docs too
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssSections = await kss.traverse(packages, { mask }).then(styleguide =>
     Promise.all(
       styleguide.sections().map(kssSection =>
         // Cleanup and extend the section's properties
-        processKssSection(kssSection, shared.rootPath)
+        processKssSection(kssSection, rootPath)
       )
     )
   );
@@ -148,5 +154,5 @@ module.exports = async function generatePages() {
   // Create HTML files from the pages array
   const generatedPagesCount = await generateDocPages(pages);
 
-  logTask('📝 ', `Added ${generatedPagesCount} docs pages to ./${shared.docsPath}`);
+  logTask('📝 ', `Added ${generatedPagesCount} docs pages to ./${last(docsPackageDirs)}`);
 };

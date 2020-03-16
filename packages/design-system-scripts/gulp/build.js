@@ -5,18 +5,15 @@
  */
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
-const copyDir = require('./common/copyDir');
+const copyAssets = require('./common/copyAssets');
 const copyDocsToTempDir = require('./docs/copyDocsToTempDir');
 const count = require('gulp-count');
 const gulp = require('gulp');
-const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
 const { last } = require('lodash');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
-
-const CORE_PACKAGE_NAME = '@cmsgov/design-system-core';
 
 /**
  * Copy any JSON files that our components might depend on
@@ -27,27 +24,6 @@ function copyJson(dir) {
       .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
       .pipe(gulp.dest(`${dir}/dist`))
   );
-}
-
-/**
- * Copy all assets stored in a certain folder
- */
-async function copyAssets(dir) {
-  // Check to see if this is the core package. If it's not, copy assets from core
-  const packageName = await getPackageName(dir);
-  if (packageName !== CORE_PACKAGE_NAME) {
-    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME}`);
-    const pkgDist = `node_modules/${CORE_PACKAGE_NAME}/dist`;
-    await Promise.all([
-      copyDir(`${pkgDist}/fonts`, `${dir}/dist/fonts`),
-      copyDir(`${pkgDist}/images`, `${dir}/dist/images`)
-    ]);
-  }
-
-  await Promise.all([
-    copyDir(`${dir}/src/fonts`, `${dir}/dist/fonts`),
-    copyDir(`${dir}/src/images`, `${dir}/dist/images`)
-  ]);
 }
 
 /**

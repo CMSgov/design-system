@@ -9,10 +9,9 @@ const { logData, logError } = require('../common/logUtil');
  * A Gulp plugin that generates JSON objects from a stream of React
  * component or example files. The outputted objects are then used
  * for rendering propType documentation and JS markup examples
- * @param {Object} options
  * @param {String} rootPath - Root docs site path
  */
-module.exports = function(options = {}, rootPath) {
+module.exports = function(rootPath) {
   const response = {};
 
   return through.obj((file, encoding, cb) => {
@@ -25,7 +24,7 @@ module.exports = function(options = {}, rootPath) {
 
       // Assign the data to a unique property, based on the filename,
       // so we can merge the JSON files in another stream
-      response[getNameAfter(options.nameAfter, file.path)] = data;
+      response[file.path] = data;
     } catch (e) {
       logError('react-docgen', e);
       logData('react-docgen', file.path);
@@ -73,15 +72,4 @@ function parseComponent(file, rootPath) {
   });
 
   return docs;
-}
-
-/**
- * Grab a segment of a string that comes after nameAfter
- * @param {String} nameAfter - Where in the path to begin copying
- * @param {String} filePath - The full file path
- */
-function getNameAfter(nameAfter, filePath) {
-  if (!nameAfter) return path.basename(filePath);
-  const rx = new RegExp(`${nameAfter}([a-z0-9-_./]+)`, 'i');
-  return filePath.match(rx)[1];
 }
