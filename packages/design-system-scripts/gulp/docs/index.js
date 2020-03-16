@@ -3,9 +3,10 @@
  * like parsing our CSS/JSX comments, generating JSON data files, and ultimately
  * generating the HTML files which get published as the public site.
  */
-const copyAssets = require('./common/copyAssets');
-const copyDir = require('./common/copyDir');
-const cleanDist = require('./common/cleanDist');
+const copyAssets = require('../common/copyAssets');
+const copyDir = require('../common/copyDir');
+const copyDocsToTempDir = require('./copyDocsToTempDir');
+const cleanDist = require('../common/cleanDist');
 const del = require('del');
 const generatePages = require('./generatePages');
 const getDocsDistPath = require('../common/getDocsDistPath');
@@ -14,7 +15,7 @@ const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
 const streamPromise = require('../common/streamPromise');
-const { CORE_PACKAGE_NAME } = require('./common/constants');
+const { CORE_PACKAGE_NAME } = require('../common/constants');
 const { last } = require('lodash');
 const { logTask } = require('../common/logUtil');
 
@@ -26,14 +27,10 @@ const reactDataPath = path.resolve(reactDataDirectory, reactDataFilename);
  * Parses our JSX files for relevant documentation information and stores it for
  * our other tasks to read later
  */
-async function extractReactDocs(sourcePackageDir, rootPath) {
+async function extractReactDocs(sourcePackageDirs, rootPath) {
   logTask('🌪 ', 'Generating React propType documentation and grabbing raw example code');
 
-  const sources = [`${sourcePackageDir}/src`];
-  const packageName = await getPackageName(sourcePackageDir);
-  if (packageName !== CORE_PACKAGE_NAME) {
-    sources.push(`node_modules/${CORE_PACKAGE_NAME}/src`);
-  }
+  const sources = sourcePackageDirs.map(dir => [`${dir}/src`]);
   const sourcesGlob = `{${sources.join(',')}}`;
 
   return gulp
@@ -54,16 +51,18 @@ function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
 /**
  * Copies all the images from our docs packages
  */
-async function copyDocsImages(docsPackageDirs) {
-  const docsPackageDir = last(docsPackageDirs);
+function copyDocsPackageImages(tempDir, docsPackageDir) {
   logTask('🏞 ', `Copying images from docs packages into ${docsPackageDir}/dist`);
-  const dest = `${docsPackageDir}/dist/images`;
-  for (const pkgDir of docsPackageDirs) {
-    await copyDir(`${pkgDir}/src/images`, dest);
-  }
+  return copyDir(`${tempDir}/src/images`, `${docsPackageDir}/dist/images`);
 }
 
 module.exports = {
+  /**
+   * Builds the docs site
+   *
+   * Note that the source package must be built before this in order to ensure
+   * that the documentation reflects the most recent version of the source.
+   */
   async buildDocs(sourcePackageDir, docsPackageDirs, rootPath) {
     let message = 'Starting the documentation generation task';
     if (rootPath !== '') {
@@ -73,11 +72,25 @@ module.exports = {
 
     // This is the docs package that we will receive the output dist folder.
     const docsPackageDir = last(docsPackageDirs);
+    const sourcePackageDirs =
+      (await getPackageName(sourcePackageDir)) === CORE_PACKAGE_NAME
+        ? [sourcePackageDir]
+        : [sourcePackageDir, `node_modules/${CORE_PACKAGE_NAME}`];
 
-    await cleanDist(`${docsPackageDir}/dist`);
-    await extractReactDocs(sourcePackageDir, rootPath);
-    await generatePages(sourcePackageDir, docsPackageDirs, rootPath);
+    // Consolidate the chain of docs directories into one temporary working directory,
+    // then perform all our operations on that working directory as if it were
+    // our docs package. This allows us to have child design systems with their
+    // own docs that inherit all the docs from the core design system.
+    const tempDir = await copyDocsToTempDir(docsPackageDirs);
+    await cleanDist(tempDir);
+    await extractReactDocs(sourcePackageDirs, rootPath);
+    await generatePages(sourcePackageDirs, tempDir, rootPath);
+
+    // Now copy out of the working directory into our docs package's dist
+    await cleanDist(docsPackageDir);
+    await copyDir(`${tempDir}/dist`, `${docsPackageDir}/dist`);
+    // And copy our assets there too
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
-    await copyDocsImages(docsPackageDirs);
+    await copyDocsImages(tempDir, docsPackageDir);
   }
 };

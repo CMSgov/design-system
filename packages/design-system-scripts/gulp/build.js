@@ -6,10 +6,10 @@
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
-const copyDocsToTempDir = require('./docs/copyDocsToTempDir');
 const count = require('gulp-count');
 const gulp = require('gulp');
 const streamPromise = require('./common/streamPromise');
+const { buildDocs } = require('./docs');
 const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
 const { last } = require('lodash');
@@ -80,19 +80,6 @@ async function buildSrc(sourcePackageDir) {
   log('');
 }
 
-/**
- * Builds the docs site
- *
- * Note that build:src must run before this in order to ensure that the
- * documentation reflects the most recent version of the source.
- */
-async function buildDocs(sourcePackageDir, docsPackageDirs) {
-  await cleanDist(last(docsPackageDirs));
-  const tempDir = await copyDocsToTempDir(docsPackageDirs);
-  // webpack(sourcePackageDir, tempDir)
-  // runSequence('docs:build', 'webpack', 'sass:docs', done);
-}
-
 module.exports = {
   /**
    * Builds just the source package for the purpose of publishing and then
@@ -108,10 +95,10 @@ module.exports = {
    * Builds the source package and the docs package for the purpose of publishing
    * and then collects and prints statistics on the new build
    */
-  async buildDocs(sourcePackageDir, docsPackageDirs, skipLatest = false) {
+  async buildDocs(sourcePackageDir, docsPackageDirs, rootPath, skipLatest = false) {
     logIntroduction();
     await buildSrc(sourcePackageDir);
-    await buildDocs(sourcePackageDir, docsPackageDirs);
+    await buildDocs(sourcePackageDir, docsPackageDirs, rootPath);
     await printStats(sourcePackageDir, skipLatest);
   }
 };
