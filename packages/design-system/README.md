@@ -56,7 +56,7 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
     │   ├── Button
     │   └── etc...
     ├── utilities       Utility classes for modifying individual CSS properties
-    │   └── text-color
+    │   ├── text-color
     │   └── etc...
     └── styles
         ├── settings    Global variables, mixins, and functions
