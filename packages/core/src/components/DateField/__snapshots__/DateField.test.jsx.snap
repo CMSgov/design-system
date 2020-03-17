@@ -43,13 +43,13 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -78,13 +78,13 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -113,13 +113,13 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={2000}
-        min="1990"
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -177,13 +177,13 @@ exports[`DateField has errorMessage 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -212,13 +212,13 @@ exports[`DateField has errorMessage 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -247,13 +247,13 @@ exports[`DateField has errorMessage 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -304,13 +304,13 @@ exports[`DateField has invalid day 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -339,13 +339,13 @@ exports[`DateField has invalid day 1`] = `
         className="ds-c-field ds-c-field--day ds-c-field--error"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -374,13 +374,13 @@ exports[`DateField has invalid day 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -431,13 +431,13 @@ exports[`DateField has invalid month 1`] = `
         className="ds-c-field ds-c-field--month ds-c-field--error"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -466,13 +466,13 @@ exports[`DateField has invalid month 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -501,13 +501,13 @@ exports[`DateField has invalid month 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -558,13 +558,13 @@ exports[`DateField has invalid year 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -593,13 +593,13 @@ exports[`DateField has invalid year 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -628,13 +628,13 @@ exports[`DateField has invalid year 1`] = `
         className="ds-c-field ds-c-field--year ds-c-field--error"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -687,13 +687,13 @@ exports[`DateField has requirementLabel 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -722,13 +722,13 @@ exports[`DateField has requirementLabel 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -757,13 +757,13 @@ exports[`DateField has requirementLabel 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -814,13 +814,13 @@ exports[`DateField is inversed 1`] = `
         className="ds-c-field ds-c-field--inverse ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -849,13 +849,13 @@ exports[`DateField is inversed 1`] = `
         className="ds-c-field ds-c-field--inverse ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -884,13 +884,13 @@ exports[`DateField is inversed 1`] = `
         className="ds-c-field ds-c-field--inverse ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -941,13 +941,13 @@ exports[`DateField renders with all defaultProps 1`] = `
         className="ds-c-field ds-c-field--month"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="12"
-        min="1"
+        inputMode="numeric"
         name="month"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -976,13 +976,13 @@ exports[`DateField renders with all defaultProps 1`] = `
         className="ds-c-field ds-c-field--day"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max="31"
-        min="1"
+        inputMode="numeric"
         name="day"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>
@@ -1011,13 +1011,13 @@ exports[`DateField renders with all defaultProps 1`] = `
         className="ds-c-field ds-c-field--year"
         defaultValue={undefined}
         id="textfield_snapshot"
-        max={undefined}
-        min={1900}
+        inputMode="numeric"
         name="year"
         onBlur={undefined}
         onChange={undefined}
+        pattern="[0-9]*"
         rows={undefined}
-        type="number"
+        type="text"
         value={undefined}
       />
     </div>

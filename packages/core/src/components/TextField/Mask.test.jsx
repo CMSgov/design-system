@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 // Some tests are generated. When a new mask is added, add it here:
-const masks = ['currency', 'ssn', 'zip'];
+const masks = ['currency', 'ssn', 'zip', 'phone'];
 
 function render(customProps = {}, inputProps = {}, deep = false) {
   const component = (
@@ -44,11 +44,28 @@ describe('Mask', function() {
     });
   });
 
+  it('renders mask', () => {
+    const data = render({
+      mask: 'ssn'
+    });
+
+    expect(data.wrapper).toMatchSnapshot();
+  });
+
+  it('renders mask overlay', () => {
+    const data = render({
+      mask: 'currency'
+    });
+
+    expect(data.wrapper).toMatchSnapshot();
+  });
+
   it('calls onBlur when the value is the same', () => {
     const onBlur = jest.fn();
     const wrapper = render({ mask: 'currency' }, { value: '123', onBlur: onBlur }).wrapper;
+    const input = wrapper.find('input');
 
-    wrapper.simulate('blur', { target: { value: '123' }, persist: jest.fn() });
+    input.simulate('blur', { target: { value: '123' }, persist: jest.fn() });
 
     expect(onBlur.mock.calls.length).toBe(1);
   });
@@ -69,8 +86,9 @@ describe('Mask', function() {
   it('calls onChange', () => {
     const onChange = jest.fn();
     const wrapper = render({ mask: 'currency' }, { value: '123', onChange: onChange }).wrapper;
+    const input = wrapper.find('input');
 
-    wrapper.simulate('change', { target: { value: '123' } });
+    input.simulate('change', { target: { value: '123' } });
 
     expect(onChange.mock.calls.length).toBe(1);
   });

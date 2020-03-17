@@ -19,6 +19,11 @@ export class TextField extends React.PureComponent {
           `[Deprecated]: Please remove the 'fieldRef' prop in <TextField>, use 'inputRef' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.type === 'number') {
+        console.warn(
+          `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
+        );
+      }
     }
   }
 
@@ -42,33 +47,7 @@ export class TextField extends React.PureComponent {
    *  markup if a mask is present
    */
   renderFieldAndMask(field) {
-    const maskName = this.props.mask;
-
-    return maskName ? (
-      <div className={`ds-c-field-mask ds-c-field-mask--${maskName}`}>
-        {this.renderMaskOverlay()}
-        <Mask mask={maskName}>{field}</Mask>
-      </div>
-    ) : (
-      field
-    );
-  }
-
-  /**
-   * UI overlayed on top of a field to support certain masks
-   */
-  renderMaskOverlay() {
-    if (this.props.mask) {
-      const content = {
-        currency: '$'
-      };
-
-      return (
-        <div className={`ds-c-field__before ds-c-field__before--${this.props.mask}`}>
-          {content[this.props.mask]}
-        </div>
-      );
-    }
+    return this.props.mask ? <Mask mask={this.props.mask}>{field}</Mask> : field;
   }
 
   render() {
@@ -88,10 +67,12 @@ export class TextField extends React.PureComponent {
       labelId,
       mask,
       multiline,
+      numeric,
       requirementLabel,
       rows,
       size,
       type,
+      pattern,
       ...fieldProps
     } = this.props;
     const FieldComponent = multiline ? 'textarea' : 'input';
@@ -113,6 +94,13 @@ export class TextField extends React.PureComponent {
       size && `ds-c-field--${size}`
     );
 
+    let inputType = type;
+    if (numeric) {
+      inputType = 'text';
+    } else if (multiline) {
+      inputType = undefined;
+    }
+
     const field = (
       <FieldComponent
         aria-label={this.ariaLabel()}
@@ -133,7 +121,9 @@ export class TextField extends React.PureComponent {
         }}
         /* eslint-enable no-return-assign */
         rows={_rows}
-        type={multiline ? undefined : type}
+        inputMode={numeric ? 'numeric' : undefined}
+        pattern={numeric && !pattern ? '[0-9]*' : pattern}
+        type={inputType}
         {...fieldProps}
       />
     );
@@ -151,7 +141,6 @@ export class TextField extends React.PureComponent {
         >
           {label}
         </FormLabel>
-
         {this.renderFieldAndMask(field, mask)}
       </div>
     );
@@ -234,8 +223,16 @@ TextField.propTypes = {
    */
   multiline: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  /**
+   * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
+   */
+  numeric: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
+   */
+  pattern: PropTypes.string,
   /**
    * Optionally specify the number of visible text lines for the field. Only
    * applicable if this is a multiline field.
@@ -246,7 +243,7 @@ TextField.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium']),
   /**
-   * Any valid `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+   * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
   type: PropTypes.string,
   /**
