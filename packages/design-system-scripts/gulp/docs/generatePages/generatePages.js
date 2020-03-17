@@ -118,7 +118,12 @@ function generateMarkupPages(kssSections, destination, rootPath) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(sourcePackageDirs, docsPackageDir, options) {
+module.exports = async function generatePages(
+  sourcePackageDirs,
+  docsPackageDir,
+  reactDataPath,
+  options
+) {
   logTask('📝 ', 'Generating documentation pages');
 
   const destination = `${docsPackageDir}/dist`;

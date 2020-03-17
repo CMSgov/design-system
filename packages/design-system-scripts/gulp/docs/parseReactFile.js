@@ -31,7 +31,7 @@ module.exports = function(rootPath) {
     }
 
     file.contents = Buffer.from(JSON.stringify(response));
-    file.path = replaceExtension(file.path, '.json');
+    file.path = replaceExt(file.path, '.json');
     return cb(null, file);
   });
 };

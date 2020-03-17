@@ -91,7 +91,7 @@ module.exports = {
     const tempDir = await copyDocsToTempDir(docsPackageDirs);
     await cleanDist(tempDir);
     await extractReactDocs(sourcePackageDirs, options.rootPath);
-    await generatePages(sourcePackageDirs, tempDir, options);
+    await generatePages(sourcePackageDirs, tempDir, reactDataPath, options);
 
     // Now copy out of the working directory into our docs package's dist
     await cleanDist(docsPackageDir);
