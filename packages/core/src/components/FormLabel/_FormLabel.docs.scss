@@ -42,6 +42,10 @@ Style guide: components.form-label.react
 - Label text should be short and in sentence case.
 - Avoid colons at the end of labels.
 
+#### Legends
+
+- Links inside legends are not ready by screenreaders in IE11
+
 #### Hint text
 
 - Place hint text within the field's `<label>` element.
