@@ -6,7 +6,9 @@
 'use strict';
 const argv = require('yargs').argv;
 const dutil = require('./common/log-util');
+const fs = require('fs');
 const glob = require('glob');
+const path = require('path');
 const themePackageDir = argv.theme && findThemePackageDir();
 
 /**
@@ -66,7 +68,11 @@ module.exports = gulp => {
     packages: packages,
     docsPath: docsPath,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(docsPath, rootPath, packages)
+    webpackConfig: require('../../packages/docs/webpack.config')(
+      docsPath,
+      rootPath,
+      packages.map(name => fs.realpathSync(path.resolve(__dirname, '../../packages', name, 'src')))
+    )
   };
 
   ['build', 'docs', 'lint', 'sass', 'server', 'stats/stats', 'watch', 'webpack'].forEach(

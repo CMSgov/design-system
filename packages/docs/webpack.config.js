@@ -1,21 +1,16 @@
 /* eslint-disable filenames/match-exported */
 const buildPath = require('../../tools/gulp/common/buildPath');
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
 /**
  * @param {String} docsPath
  * @param {String} rootPath - Root docs site path
- * @param {Array} packages - Design system and theme package directory names
+ * @param {Array} srcPaths - Paths to directories to include in the babel-loader
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
-  const packagePaths = packages.map(dir =>
-    fs.realpathSync(path.resolve(__dirname, '..', dir, 'src'))
-  );
-
+function createConfig(docsPath, rootPath = '', srcPaths, hotReload = true) {
   const config = {
     mode: process.env.NODE_ENV,
     context: __dirname,
@@ -42,7 +37,7 @@ function createConfig(docsPath, rootPath = '', packages, hotReload = true) {
               }
             }
           ],
-          include: [path.resolve(__dirname, 'src')].concat(packagePaths)
+          include: [path.resolve(__dirname, 'src')].concat(srcPaths)
         }
       ]
     },

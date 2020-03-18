@@ -88,7 +88,6 @@ module.exports = {
     ],
     'scss/at-extend-no-missing-placeholder': true,
     'scss/at-import-no-partial-leading-underscore': true,
-    'scss/at-import-partial-extension-blacklist': ['scss'],
     'scss/at-mixin-argumentless-call-parentheses': 'never',
     'scss/dollar-variable-no-missing-interpolation': true,
     'scss/media-feature-value-dollar-variable': 'always',
