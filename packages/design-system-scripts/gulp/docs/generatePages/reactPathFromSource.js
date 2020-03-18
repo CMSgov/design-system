@@ -11,10 +11,6 @@ function reactPathFromSource(path, name) {
   // This allows us to reference components outside of the source directory
   if (name.split('/').length > 1) return name;
 
-  // Get path relative to packages/
-  // Example: packages/core/components/Button.scss -> core/component/Button
-  path = path.match(/packages\/([a-z0-9_\-/]+)/i)[1];
-
   // Replace the filename with the component's name
   // Example: core/component/Button -> core/component/ButtonGroup
   return path.replace(/\/([a-z0-9_-]+)$/i, `/${name}`);

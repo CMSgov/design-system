@@ -44,8 +44,8 @@ function processMarkup(page, rootPath) {
  */
 function loadMarkup(page) {
   const dir = path.parse(page.source.path).dir;
-  const src = `../../../${dir}/${page.markup}`;
-  return fs.readFile(path.resolve(__dirname, src), 'utf8').catch(e => {
+  const markupPath = path.resolve(dir, page.markup);
+  return fs.readFile(markupPath, 'utf8').catch(e => {
     logError('markup error', e.message);
     return '';
   });

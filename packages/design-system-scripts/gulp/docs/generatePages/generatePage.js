@@ -1,6 +1,6 @@
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
-require('babel-register')({
-  only: /(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generateDocPage)/
+require('@babel/register')({
+  only: [/(packages\/([a-z-_]+|themes\/[a-z_-]+)\/src|generateDocPage)/]
 });
 
 const generateHtmlExample = require('./generateHtmlExample');

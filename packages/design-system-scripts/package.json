@@ -17,8 +17,6 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.4",
     "autoprefixer": "9.6.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
     "browser-sync": "2.26.7",
     "bytes": "3.1.0",
@@ -26,7 +24,7 @@
     "chromedriver": "80.0.1",
     "cli-table2": "^0.2.0",
     "colors": "1.3.3",
-    "core-js": "^2.5.3",
+    "core-js": "3",
     "cssnano": "4.1.10",
     "cssstats": "3.3.0",
     "del": "^3.0.0",
@@ -53,8 +51,6 @@
     "gulp-stylelint": "^6.0.0",
     "gulp-util": "^3.0.8",
     "husky": "^4.2.3",
-    "jest": "^22.4.2",
-    "jest-environment-selenium": "2.1.1",
     "kss": "^3.0.0-beta.18",
     "lerna": "^2.5.1",
     "lint-staged": "^10.0.8",
@@ -85,6 +81,7 @@
     "yargs": "^11.0.0"
   },
   "peerDependencies": {
-    "@cmsgov/design-system": ">=4.0.0"
+    "@cmsgov/design-system": ">=4.0.0",
+    "@cmsgov/design-system-docs": ">=4.0.0"
   }
 }

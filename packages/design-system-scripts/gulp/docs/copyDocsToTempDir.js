@@ -1,10 +1,8 @@
 const copyDir = require('../common/copyDir');
 const del = require('del');
-const gulp = require('gulp');
 const path = require('path');
-const streamPromise = require('../common/streamPromise');
 
-const tempDir = path.resolve('docs-temp');
+const tempDir = path.resolve('tmp/docs');
 
 /**
  * Copy all docs directories into a temporary directory, where the order of copy

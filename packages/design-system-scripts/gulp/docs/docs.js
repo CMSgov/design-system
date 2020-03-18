@@ -7,15 +7,12 @@ const copyAssets = require('../common/copyAssets');
 const copyDir = require('../common/copyDir');
 const copyDocsToTempDir = require('./copyDocsToTempDir');
 const cleanDist = require('../common/cleanDist');
-const del = require('del');
 const generatePages = require('./generatePages');
-const getDocsDistPath = require('../common/getDocsDistPath');
 const getPackageJson = require('../common/getPackageJson');
 const gulp = require('gulp');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
-const streamPromise = require('../common/streamPromise');
 const { CORE_PACKAGE_NAME } = require('../common/constants');
 const { last } = require('lodash');
 const { logTask } = require('../common/logUtil');
@@ -98,6 +95,6 @@ module.exports = {
     await copyDir(`${tempDir}/dist`, `${docsPackageDir}/dist`);
     // And copy our assets there too
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
-    await copyDocsImages(tempDir, docsPackageDir);
+    await copyDocsPackageImages(tempDir, docsPackageDir);
   }
 };

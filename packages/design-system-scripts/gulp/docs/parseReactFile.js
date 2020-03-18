@@ -24,7 +24,8 @@ module.exports = function(rootPath) {
 
       // Assign the data to a unique property, based on the filename,
       // so we can merge the JSON files in another stream
-      response[file.path] = data;
+      const key = path.relative('./', file.path);
+      response[key] = data;
     } catch (e) {
       logError('react-docgen', e);
       logData('react-docgen', file.path);

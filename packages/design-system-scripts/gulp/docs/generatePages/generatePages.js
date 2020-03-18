@@ -6,7 +6,6 @@ const kss = require('kss');
 const nestSections = require('./nestSections');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
-const { last } = require('lodash');
 const { logTask } = require('../../common/logUtil');
 
 /**
@@ -140,7 +139,7 @@ module.exports = async function generatePages(
   const packages = [docsPackageDir, ...sourcePackageDirs].map(pkg => `${pkg}/src/`);
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
-  const kssSections = Promise.all(
+  const kssSections = await Promise.all(
     kssStyleGuide.sections().map(kssSection =>
       // Cleanup and extend the section's properties
       processKssSection(kssSection, options.rootPath)

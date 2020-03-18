@@ -3,6 +3,7 @@
 
 # Do not commit package build files to github
 /packages/design-system/dist
+/packages/docs/dist
 /packages/layout/dist
 
 # Themes should be in their own repo, but can be included in this directory
@@ -34,7 +35,6 @@ pids
 *.seed
 *.swp
 tmp
-docs-temp
 
 # node-waf configuration
 .lock-wscript

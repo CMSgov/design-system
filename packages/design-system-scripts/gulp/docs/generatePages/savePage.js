@@ -71,7 +71,7 @@ function checkCache(html, path) {
  */
 function docsFilePath(uri, docsPath) {
   if (uri === 'public') throw Error('Filename can\'t be "public"');
-  const dir = path.resolve(__dirname, '../../../', docsPath, uri);
+  const dir = path.resolve(docsPath, uri);
 
   return {
     dir: dir,

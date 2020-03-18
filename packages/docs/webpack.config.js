@@ -10,7 +10,7 @@ const webpack = require('webpack');
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createConfig(docsPath, rootPath = '', srcPaths, hotReload = true) {
+function createConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = true) {
   const config = {
     mode: process.env.NODE_ENV,
     context: __dirname,
@@ -45,6 +45,7 @@ function createConfig(docsPath, rootPath = '', srcPaths, hotReload = true) {
       new webpack.DefinePlugin({
         'process.env': {
           root: JSON.stringify(rootPath),
+          githubUrlBase: JSON.stringify(githubUrl),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
       })

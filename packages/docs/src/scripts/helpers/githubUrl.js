@@ -1,7 +1,7 @@
 import path from 'path';
 
 function githubUrl(pathname = '') {
-  return path.join(window.githubUrlBase, pathname);
+  return path.join(process.env.githubUrlBase ? process.env.githubUrlBase : '', pathname);
 }
 
 export default githubUrl;

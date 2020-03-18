@@ -1,4 +1,4 @@
-const Docs = require('../../../packages/docs/src/scripts/Docs').default;
+const Docs = require('@cmsgov/design-system-docs/src/scripts/Docs').default;
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const savePage = require('./savePage');
@@ -16,11 +16,12 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
       return '';
     }
 
-    // On the client-side the "root" variable is defined via Webpack,
-    // but we also need to define it here for "server-side" rendering
+    // On the client-side the "root" and "githubUrlBase" variables are defined
+    // via Webpack, but we also need to define them here for "server-side" rendering
     process.env.root = rootPath;
+    process.env.githubUrlBase = githubUrl;
 
-    return ReactDOMServer.renderToString(<Docs page={page} routes={[]} />);
+    return ReactDOMServer.renderToString(React.createElement(Docs, { page, routes: [] }, null));
   };
 
   if (rootPath) {
@@ -38,7 +39,6 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
 <script type="text/javascript">
   window.page = ${JSON.stringify(page)};
   window.routes = ${JSON.stringify(routes)};
-  window.githubUrlBase = ${JSON.stringify(githubUrl)};
 </script>
 <script src="/${rootPath}public/scripts/index.js"></script>`;
 
