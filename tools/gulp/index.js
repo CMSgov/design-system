@@ -6,7 +6,9 @@
 'use strict';
 const argv = require('yargs').argv;
 const dutil = require('./common/log-util');
+const fs = require('fs');
 const glob = require('glob');
+const path = require('path');
 const themePackageDir = argv.theme && findThemePackageDir();
 
 /**
@@ -49,19 +51,6 @@ function themeDirectory() {
   return null;
 }
 
-/**
- * Get the names of the directories containing design system files.
- * These will be used for watching, compiling, and docs generation
- */
-function packageDirectories() {
-  const directories = glob
-    .sync('packages/*', {
-      ignore: ['packages/{docs,eslint*,generator*,stylelint*,themes}']
-    })
-    .map(packageName);
-  return directories;
-}
-
 module.exports = gulp => {
   // compile docs to the themes directory if it's being applied
   const docsPath = themePackageDir ? `packages/${themePackageDir}/docs` : 'docs';
@@ -69,7 +58,7 @@ module.exports = gulp => {
   const rootPath = argv.root || '';
   const theme = themeDirectory();
   // Include theme directory in packages to watch, compile, and generate theme docs
-  const packages = theme ? packageDirectories().concat(theme) : packageDirectories();
+  const packages = theme ? ['design-system', theme] : ['design-system'];
 
   // These properties are shared with every Gulp task
   const shared = {
@@ -79,7 +68,11 @@ module.exports = gulp => {
     packages: packages,
     docsPath: docsPath,
     rootPath: rootPath,
-    webpackConfig: require('../../packages/docs/webpack.config')(docsPath, rootPath, packages)
+    webpackConfig: require('../../packages/docs/webpack.config')(
+      docsPath,
+      rootPath,
+      packages.map(name => fs.realpathSync(path.resolve(__dirname, '../../packages', name, 'src')))
+    )
   };
 
   ['build', 'docs', 'lint', 'sass', 'server', 'stats/stats', 'watch', 'webpack'].forEach(

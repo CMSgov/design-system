@@ -7,16 +7,13 @@ const count = require('gulp-count');
 const cssnano = require('cssnano');
 const dutil = require('../common/log-util');
 const path = require('path');
-const packageVersions = require('../common/packageVersions');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
 const postcssInliner = require('postcss-image-inliner');
 const gulpIf = require('gulp-if');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const through = require('through2');
 const runSequence = require('gulp4-run-sequence');
-const packagesRegex = require('../common/packagesRegex');
 const themeImporter = require('./themeImporter');
 
 module.exports = (gulp, shared) => {
@@ -27,7 +24,7 @@ module.exports = (gulp, shared) => {
     const sassCompiler = sass({
       outputStyle: 'expanded',
       importer: themeImporter.bind(null, shared.packages),
-      includePaths: [`${cwd}node_modules`]
+      includePaths: [`${cwd}node_modules`, `packages/design-system/src`]
     }).on('error', function(err) {
       dutil.logError('sass', 'Error transpiling Sass!');
       dutil.logData(err.messageFormatted);
@@ -49,7 +46,7 @@ module.exports = (gulp, shared) => {
         postcssInliner({
           assetPaths: [
             path.resolve(__dirname, '../../../', cwd, 'images'),
-            path.resolve(__dirname, '../../../', 'packages/core/images')
+            path.resolve(__dirname, '../../../', 'packages/design-system/images')
           ],
           strict: true
         })
@@ -86,26 +83,7 @@ module.exports = (gulp, shared) => {
     processSass('packages/docs/', buildPath(shared.docsPath, shared.rootPath, '/public'))
   );
 
-  gulp.task('sass:add-version', () => {
-    const rx = packagesRegex(shared.packages);
-
-    return packageVersions(shared.packages).then(packages =>
-      gulp
-        .src(`./packages/${rx}/dist/index.css`)
-        .pipe(
-          through.obj((file, encoding, cb) => {
-            const name = file.path.match(/packages\/([a-z\-_]+)/i)[1];
-            const version = packages[name];
-            const contents = String(file.contents).replace(/{{version}}/, version);
-            file.contents = Buffer.from(contents);
-            return cb(null, file);
-          })
-        )
-        .pipe(gulp.dest('./packages/'))
-    );
-  });
-
   gulp.task('sass', done => {
-    runSequence(processPackageTasks, 'sass:process:docs', 'sass:add-version', done);
+    runSequence(processPackageTasks, 'sass:process:docs', done);
   });
 };

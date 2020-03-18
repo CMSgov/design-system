@@ -1,8 +1,0 @@
-/* stylelint-disable declaration-no-important */
-@import '@cmsgov/design-system-support/src/settings/index';
-
-.ds-u-word-break {
-  overflow-wrap: break-word;
-  // IE fallback
-  word-wrap: break-word;
-}

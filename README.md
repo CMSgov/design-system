@@ -6,11 +6,9 @@
 
 You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
 
-| Name                         | Description                                                                                                                                                                                                                                                                           |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Core](packages/core/)       | The core CSS and React components for the design system. Includes the Support package. <br> [![@cmsgov/design-system-core](https://img.shields.io/npm/v/@cmsgov/design-system-core.svg?label=@cmsgov%2Fdesign-system-core)](https://www.npmjs.com/package/@cmsgov/design-system-core) |
-| [Layout](packages/layout/)   | A responsive flexbox grid framework. <br> [![@cmsgov/design-system-layout](https://img.shields.io/npm/v/@cmsgov/design-system-layout.svg?label=@cmsgov%2Fdesign-system-layout)](https://www.npmjs.com/package/@cmsgov/design-system-layout)                                           |
-| [Support](packages/support/) | Sass variables, mixins, and functions. Included in the Core package. <br> [![@cmsgov/design-system-support](https://img.shields.io/npm/v/@cmsgov/design-system-support.svg?label=@cmsgov%2Fdesign-system-support)](https://www.npmjs.com/package/@cmsgov/design-system-support)       |
+| Name                                        | Description                                                                                                                                                                                                                         |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
 **Internal packages**
 
@@ -21,7 +19,6 @@ These packages are project dependencies, mostly focused around the design system
 | [Documentation site](packages/docs/)                         | This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                                  |
 | [ESLint config](packages/eslint-config-design-system/)       | The ESLint rules we use to lint the design system's JS and React components <br> [![@cmsgov/eslint-config-design-system](https://img.shields.io/npm/v/@cmsgov/eslint-config-design-system.svg?label=@cmsgov%2Feslint-config-design-system)](https://www.npmjs.com/package/@cmsgov/eslint-config-design-system) |
 | [Stylelint config](packages/stylelint-config-design-system/) | The Stylelint rules we use to lint the design system's Sass <br> [![@cmsgov/stylelint-config-design-system](https://img.shields.io/npm/v/@cmsgov/stylelint-config-design-system.svg?label=@cmsgov%2Fstylelint-config-design-system)](https://www.npmjs.com/package/@cmsgov/stylelint-config-design-system)     |
-| [Yeoman generator](packages/generator-cmsgov/)               | A [Yeoman](http://yeoman.io/) generator used in the development process. Again, unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                     |
 
 ## Examples
 
@@ -54,17 +51,12 @@ These scripts can all be run from the root level of the repo:
   - Compile/transpile/uglify everything and makes things release-ready.
 - `yarn bump`
   - Increments package versions. Read "[Versioning](/guides/RELEASE-PROCESS.md#versioning)" for more info.
-- `yarn generate`
-  - Generates the necessary files for a new core component
-  - Alias: `yarn g`
 - `yarn test`
   - Runs JS unit tests
   - Lints JS using ESLint
   - Lints Sass using stylelint
 - `yarn test:e2e`
   - Runs end to end tests
-- `yarn test:e2e packages/core/Autocomplete`
-  - Runs a single end to end test, this example runs Autocomplete
 - `yarn test:watch`
   - Runs JS unit tests and will continue to run tests as files change
 - `yarn update-snapshots`

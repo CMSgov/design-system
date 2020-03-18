@@ -38,17 +38,30 @@ function setFlags(page, attributes) {
 function processMarkdownPage(filePath, body, rootPath = '') {
   const parts = fm(body); // parse page properties from top of file
   const description = parts.attributes.usage || parts.body;
-  let referenceURI = filePath.match(/src\/pages\/([a-z0-9-/]+)/i)[1];
-  const depth = referenceURI.split('/').length;
 
-  if (referenceURI === 'index') {
-    referenceURI = '';
-  }
+  let referenceURI;
+  let reference;
+  let depth;
 
-  const reference = referenceURI.replace('/', '.');
+  if (parts.attributes.path) {
+    // Page structure determined by frontmatter attribute named 'path'
+    referenceURI = parts.attributes.path;
+    reference = referenceURI.replace('/', '.');
+    depth = referenceURI.split('/').length;
+  } else {
+    // Temporarily keep filepath based legacy logic
+    referenceURI = filePath.match(/src\/pages\/([a-z0-9-/]+)/i)[1];
+    depth = referenceURI.split('/').length;
 
-  if (rootPath !== '') {
-    referenceURI = path.join(rootPath, referenceURI);
+    if (referenceURI === 'index') {
+      referenceURI = '';
+    }
+
+    reference = referenceURI.replace('/', '.');
+
+    if (rootPath !== '') {
+      referenceURI = path.join(rootPath, referenceURI);
+    }
   }
 
   const header = parts.attributes.title || 'Untitled';

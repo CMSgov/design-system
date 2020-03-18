@@ -10,7 +10,7 @@ The examples below assume you've installed the design system using NPM and have 
 Individual components can be imported from their individual export file.
 
 ```jsx
-import Button from '@cmsgov/design-system-core/dist/components/Button/Button';
+import Button from '@cmsgov/design-system/dist/components/Button/Button';
 ```
 
 <h4 class="ds-h4 ds-u-font-size--base">Named imports</h4>
@@ -27,7 +27,7 @@ Components can also be imported using the shorter syntax below.
 </div>
 
 ```jsx
-import { Button } from '@cmsgov/design-system-core';
+import { Button } from '@cmsgov/design-system';
 ```
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/scripts/index.js)

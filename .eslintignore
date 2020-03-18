@@ -1,4 +1,4 @@
-node_modules
-vendor/*
-**/dist/**/*.js
+node_modules	
+vendor/*	
+**/dist/**/*.js	
 tools/backstop_data/*

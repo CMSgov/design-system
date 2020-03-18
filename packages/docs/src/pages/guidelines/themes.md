@@ -25,18 +25,18 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 ```css
 /* main.scss */
 @import 'overrides';
-@import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system/dist/index.scss';
 ```
 
 ### Available variables
 
-Sass variables are documented on the relevant documentation pages, and are defined in the `@cmsgov/design-system-support` package:
+Sass variables are documented on the relevant documentation pages, and are defined in the `@cmsgov/design-system` package:
 
 - [Breakpoints]({{root}}/guidelines/responsive/)
-- [Colors]({{root}}/style/color/)
+- [Colors]({{root}}/styles/color/)
 - [Spacing]({{root}}/layout/spacing/)
-- [Type sizes]({{root}}/style/typography/)
-- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/support/src).
+- [Type sizes]({{root}}/styles/typography/)
+- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/).
 
 ## CSS declarations
 

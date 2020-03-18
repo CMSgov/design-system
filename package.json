@@ -7,14 +7,12 @@
     "build": "NODE_ENV=production gulp build --env=production",
     "build:theme": "yarn build --theme",
     "bump": "lerna publish --skip-git --skip-npm",
-    "generate": "yo cmsgov",
-    "g": "yarn generate",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap",
     "posttest": "yarn lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "yarn start --theme",
-    "test": "yarn test:unit && yarn test:e2e && yarn lint",
+    "test": "yarn test:unit && yarn lint",
     "test:unit": "bash scripts/jest.sh",
     "test:unit:watch": "NODE_ENV=test bash scripts/jest.sh --skip-build --watch",
     "test:e2e": "bash scripts/jest.sh --e2e",
@@ -53,7 +51,6 @@
     "eslint-config-nava": "^2.1.0",
     "eslint-config-prettier": "^6.10.0",
     "front-matter": "^2.3.0",
-    "generator-cmsgov": "file:./packages/generator-cmsgov",
     "glob": "7.1.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -97,8 +94,7 @@
     "webpack": "4.35.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "2.25.0",
-    "yargs": "^11.0.0",
-    "yo": "2.0.6"
+    "yargs": "^11.0.0"
   },
   "dependencies": {
     "axe-webdriverjs": "2.3.0",

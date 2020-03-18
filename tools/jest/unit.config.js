@@ -8,11 +8,10 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/packages/*/node_modules/',
     '<rootDir>/packages/themes/*/node_modules/',
-    '<rootDir>/packages/generator-cmsgov/generators/app/templates/',
     '.+\\.e2e\\.test\\.js$'
   ],
   moduleNameMapper: {
-    '^@cmsgov/design-system-core/(.*)$': '<rootDir>/packages/core/src/$1',
-    '^@cmsgov/design-system-core$': '<rootDir>/packages/core/src/index.js'
+    '^@cmsgov/design-system/(.*)$': '<rootDir>/packages/design-system/src/$1',
+    '^@cmsgov/design-system$': '<rootDir>/packages/design-system/src/index.js'
   }
 };

@@ -47,16 +47,10 @@ function addTopLevelPages(kssSections) {
         weight: 5
       },
       {
-        header: 'Layout',
-        reference: 'layout',
+        header: 'Styles',
+        reference: 'styles',
         sections: [],
         weight: 6
-      },
-      {
-        header: 'Style',
-        reference: 'style',
-        sections: [],
-        weight: 7
       },
       {
         header: 'Utilities',
@@ -150,7 +144,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🔡 ', 'Copying fonts from core package into "public" directory');
 
     return gulp
-      .src('packages/core/fonts/*')
+      .src('packages/design-system/fonts/*')
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/fonts')));
   });
 
@@ -176,7 +170,7 @@ module.exports = (gulp, shared) => {
     dutil.logMessage('🏞 ', 'Copying images from core package into "public" directory');
 
     return gulp
-      .src('packages/core/images/*')
+      .src('packages/design-system/images/*')
       .pipe(gulp.dest(buildPath(shared.docsPath, shared.rootPath, '/public/images')));
   });
 
@@ -205,9 +199,6 @@ module.exports = (gulp, shared) => {
   gulp.task('docs:generate-pages', async function() {
     dutil.logMessage('📝 ', 'Generating documentation pages');
 
-    const packages = shared.packages.map(pkg => `packages/${pkg}/src/`);
-    const mask = /^(?!.*\.(example|test)).*\.(css|less|sass|scss|jsx)$/;
-
     // Parse Markdown files, and return the data in the same format as a KssSection
     const markdownPagesData = await convertMarkdownPages(shared.rootPath, shared.packages);
 
@@ -216,6 +207,8 @@ module.exports = (gulp, shared) => {
      * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
      * @return {Array} KssSections
      */
+    const packages = ['docs', ...shared.packages].map(pkg => `packages/${pkg}/src/`); // Temporarily hardcode task to process KSS in docs too
+    const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
     const kssSections = await kss.traverse(packages, { mask }).then(styleguide =>
       Promise.all(
         styleguide.sections().map(kssSection =>

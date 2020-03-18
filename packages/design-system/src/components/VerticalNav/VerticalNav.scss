@@ -1,0 +1,110 @@
+@import '../../styles/settings/index.scss';
+
+%nav-item-hover {
+  background-color: $color-gray-lightest;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+%nav-item-focus {
+  background-color: $focus-color;
+  border-color: $color-base;
+  box-shadow: none;
+  color: $color-base;
+  outline: 0 none;
+}
+
+.ds-c-vertical-nav {
+  @include ds-unstyled-list;
+
+  > .ds-c-vertical-nav__item {
+    background-color: transparent;
+    border-top: 1px solid $color-gray;
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+}
+
+.ds-c-vertical-nav__item {
+  position: relative;
+}
+
+.ds-c-vertical-nav__label,
+.ds-c-vertical-nav__label:visited {
+  border-left: 4px solid transparent;
+  color: $color-base;
+  display: block;
+  font-family: $font-sans; // necessary for <button>
+  font-size: $base-font-size; // necessary for <button>
+  line-height: $heading-line-height;
+  padding: $spacer-1 $spacer-2;
+  text-align: left; // necessary for <button>
+  text-decoration: none;
+
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
+}
+
+// Subnav toggle
+// This class is applied to a <button>, so we need to reset some styling here...
+.ds-c-vertical-nav__label--parent {
+  appearance: none;
+  background-color: transparent;
+  background-image: url('#{$image-path}/arrow-down.svg');
+  background-position: right $spacer-1 center;
+  background-repeat: no-repeat;
+  background-size: $small-font-size;
+  border-bottom: 0; // Clear <button> borders (border-left is already set)
+  border-radius: 0; // Remove default browser radius in Chrome
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+  padding-right: $spacer-5; // Creates space for icon
+  width: 100%;
+
+  &[aria-expanded='true'] {
+    background-image: url('#{$image-path}/arrow-up.svg');
+  }
+
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
+  }
+}
+
+.ds-c-vertical-nav__label--current,
+.ds-c-vertical-nav__label--current:visited {
+  border-left-color: $color-primary;
+  color: $color-primary;
+  font-weight: $font-bold;
+}
+
+.ds-c-vertical-nav__subnav {
+  @include ds-unstyled-list;
+
+  .ds-c-vertical-nav__label {
+    font-size: $small-font-size;
+    line-height: $heading-line-height;
+    padding-left: $spacer-3;
+  }
+
+  .ds-c-vertical-nav__label--current {
+    border-color: transparent;
+  }
+
+  .ds-c-vertical-nav__subnav .ds-c-vertical-nav__label {
+    padding-left: $spacer-4;
+  }
+}
