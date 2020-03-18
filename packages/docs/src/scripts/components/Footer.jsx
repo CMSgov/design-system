@@ -88,7 +88,7 @@ const Footer = () => {
               <p className="ds-u-font-size--small">
                 Need help with the CMS Design System?
                 <br />
-                <a href="https://forms.cms.gov/cms-wds-design-system-contact-form/responses/new">
+                <a href="https://cms.gov1.qualtrics.com/jfe/form/SV_eqTlI7HbrXthrlX">
                   Drop us a line
                 </a>
               </p>

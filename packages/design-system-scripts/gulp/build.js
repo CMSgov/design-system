@@ -12,7 +12,6 @@ const streamPromise = require('./common/streamPromise');
 const { buildDocs } = require('./docs');
 const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
-const { last } = require('lodash');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
 
 /**
@@ -97,7 +96,7 @@ module.exports = {
    */
   async buildDocs(sourcePackageDir, docsPackageDirs, options) {
     logIntroduction();
-    // await buildSrc(sourcePackageDir);
+    await buildSrc(sourcePackageDir);
     await buildDocs(sourcePackageDir, docsPackageDirs, options);
     await printStats(sourcePackageDir, options.skipLatest);
   }

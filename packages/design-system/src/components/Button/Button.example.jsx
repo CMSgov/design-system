@@ -1,3 +1,4 @@
+/* eslint no-alert: 0 */
 import React, { Fragment } from 'react';
 import Button from './Button';
 import PropTypes from 'prop-types';
@@ -22,10 +23,14 @@ ReactDOM.render(
     <Button className="ds-u-margin-right--1" disabled>
       Button with `disabled` prop
     </Button>
-    <Button className="ds-u-margin-right--1" variation="transparent" href="javascript:void(0);">
+    <Button
+      className="ds-u-margin-right--1"
+      href="javascript:void(0);"
+      onClick={() => alert('Link styled as button clicked!')}
+    >
       Button with `href` prop
     </Button>
-    <Button className="ds-u-margin-right--1" component={Link}>
+    <Button className="ds-u-margin-right--1" component={Link} href="/">
       Button with `component` prop
     </Button>
   </Fragment>,

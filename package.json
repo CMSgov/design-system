@@ -12,7 +12,7 @@
     "posttest": "yarn lint",
     "start": "NODE_ENV=development gulp watch --env=development",
     "start:theme": "yarn start --theme",
-    "test": "yarn test:unit && yarn test:e2e && yarn lint",
+    "test": "yarn test:unit && yarn lint",
     "test:unit": "bash scripts/jest.sh",
     "test:unit:watch": "NODE_ENV=test bash scripts/jest.sh --skip-build --watch",
     "test:e2e": "bash scripts/jest.sh --e2e",
@@ -30,7 +30,7 @@
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
     "eslint-config-prettier": "^6.10.0",
-    "lerna": "^2.5.1",
+    "lerna": "^2.11.0",
     "lint-staged": "^10.0.8",
     "stylelint": "10.1.0",
     "stylelint-config-prettier": "^2.1.0"
@@ -48,9 +48,17 @@
     "kss/nunjucks": ">=3.2.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["prettier --write", "eslint --fix"],
-    "*.{md,html}": ["prettier --write"],
-    "*.scss": ["prettier --write", "stylelint --fix"]
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{md,html}": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
   },
   "husky": {
     "hooks": {

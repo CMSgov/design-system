@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "4.0.0",
+  "version": "4.0.0-beta.1",
   "publishConfig": {
     "access": "public"
   },
@@ -8,6 +8,7 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
+    "@cmsgov/design-system": "file:../design-system",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "lodash": "^4.17.13",

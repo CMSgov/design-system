@@ -56,6 +56,9 @@ const Example = () => {
         ariaLabel="Enter monthly income amount in dollars."
         label="Currency"
         mask="currency"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        type="text"
         name="currency_example"
         onBlur={evt => handleBlur(evt, 'currency')}
         defaultValue="2500"
@@ -73,6 +76,9 @@ const Example = () => {
       <TextField
         label="Social security number (SSN)"
         mask="ssn"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        type="text"
         name="ssn_example"
         onBlur={evt => handleBlur(evt, 'ssn')}
         defaultValue="123456789"
@@ -81,6 +87,9 @@ const Example = () => {
       <TextField
         label="Zip code"
         mask="zip"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        type="text"
         name="zip_example"
         onBlur={evt => handleBlur(evt, 'zip')}
         defaultValue="123456789"
