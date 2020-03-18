@@ -24,16 +24,6 @@
     outline: 3px solid $focus-color;
     outline-offset: 0;
   }
-
-  &[type='number'] {
-    appearance: textfield;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      appearance: none;
-      margin: 0;
-    }
-  }
 }
 
 .ds-c-field--small {
