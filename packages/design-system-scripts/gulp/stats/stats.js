@@ -28,8 +28,13 @@ async function getCSSStats(dir, packageName, skipLatest = false) {
   let current;
   let latest;
 
-  const css = await fs.readFile(currentPath, 'utf8');
-  current = cssstats(css);
+  try {
+    const css = await fs.readFile(currentPath, 'utf8');
+    current = cssstats(css);
+  } catch (error) {
+    logError('getCSSStats', `Error collecting CSS stats on build output.`);
+    console.error(error);
+  }
 
   // Conditionally check the file in the latest release. Allowing this step to
   // be skipped enables us to run it on files that don't yet exist in the latest release
@@ -37,8 +42,9 @@ async function getCSSStats(dir, packageName, skipLatest = false) {
     try {
       const css = await fs.readFile(latestPath, 'utf8');
       latest = cssstats(css);
-    } catch {
+    } catch (error) {
       logError('getCSSStats', `Unable to get latest release CSS. ${SKIP_LATEST_MESSAGE}`);
+      console.error(error);
       latest = current;
     }
   } else {
@@ -73,12 +79,10 @@ function getFontSizes(fontDir) {
  * @return {Promise}
  */
 async function getFontStats(dir, packageName, currentStats, skipLatest = false) {
-  let current;
-  let latest;
-
   const currentFontDir = path.resolve(dir, 'dist', 'fonts');
-  current = await getFontSizes(currentFontDir);
+  const current = await getFontSizes(currentFontDir);
 
+  let latest;
   if (!skipLatest) {
     try {
       // TODO: Remove this branching logic once we've released v4
@@ -89,8 +93,9 @@ async function getFontStats(dir, packageName, currentStats, skipLatest = false) 
         : oldPackageFontDir;
 
       latest = await getFontSizes(previousFontDir);
-    } catch {
+    } catch (error) {
       logError('getFontStats', `Unable to get latest release fonts. ${SKIP_LATEST_MESSAGE}`);
+      console.error(error);
       latest = current;
     }
   } else {
