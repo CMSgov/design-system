@@ -11,7 +11,7 @@ const { logData, logError } = require('../../common/logUtil');
  * @param {rootPath}
  * @return {Promise<Object>} page updated `markup` property
  */
-function processMarkup(page, rootPath) {
+function processMarkup(page, rootPath = '') {
   let markup = page.markup;
 
   if (markup && markup !== '') {

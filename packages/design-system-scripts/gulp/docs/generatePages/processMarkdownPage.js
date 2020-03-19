@@ -74,7 +74,7 @@ function processMarkdownPage(dir, filePath, body, rootPath = '') {
     reference: reference,
     referenceURI: referenceURI,
     source: {
-      path: path.relative(dir, filePath)
+      path: filePath,
     },
     weight: parseInt(parts.attributes.weight || 0)
   };
@@ -101,7 +101,7 @@ function processMarkdownPage(dir, filePath, body, rootPath = '') {
   delete parts.attributes.title;
   page = setFlags(page, parts.attributes);
 
-  return processMarkup(page);
+  return processMarkup(page, rootPath);
 }
 
 /**
