@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const path = require('path');
 const yargs = require('yargs');
 
 // The yargs library actually made it so you have to access `.argv` at the end
@@ -55,25 +54,25 @@ yargs
     }
   })
   .demandCommand()
-  // .command({
-  //   command: 'start <sourcePackageDir> <docsPackageDirs..>',
-  //   desc: 'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
-  //   builder: yargs => {
-  //     describeSourcePackageDir(yargs);
-  //     describeDocsPackageDirs(yargs);
-  //   },
-  //   handler: argv => {
-  //     const shared = require('./gulp/shared')(argv);
-  //
-  //   }
-  // })
+  .command({
+    command: 'start <sourcePackageDir> <docsPackageDirs..>',
+    desc:
+      'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
+    builder: yargs => {
+      describeSourcePackageDir(yargs);
+      describeDocsPackageDirs(yargs);
+    },
+    handler: () => {
+      // const { startDocsServer } = require('./gulp/server');
+      // await startDocsServer(argv.sourcePackageDir, argv.docsPackageDirs, { ...argv });
+    }
+  })
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
   yargs.positional('sourcePackageDir', {
     desc: 'The relative path to your main design-system package (that contains a src directory)',
-    type: 'string',
-    coerce: dir => path.resolve(dir)
+    type: 'string'
   });
 }
 
@@ -81,7 +80,6 @@ function describeDocsPackageDirs(yargs) {
   yargs.positional('docsPackageDirs..', {
     desc:
       'The relative paths to one or more docs-package directories. The first directory will be the default set of docs, and every docs directory specified after it will override files in the previous one, where the rightmost directory path takes the most precedence. The built documentation site will be saved to the "dist" directory of the final path in this list.',
-    type: 'string',
-    coerce: dirs => dirs.map(dir => path.resolve(dir))
+    type: 'string'
   });
 }
