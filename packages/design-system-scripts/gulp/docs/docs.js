@@ -13,6 +13,7 @@ const gulp = require('gulp');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
+const streamPromise = require('../common/streamPromise');
 const { CORE_PACKAGE_NAME } = require('../common/constants');
 const { last } = require('lodash');
 const { logTask } = require('../common/logUtil');
@@ -31,11 +32,13 @@ async function extractReactDocs(sourcePackageDirs, rootPath) {
   const sources = sourcePackageDirs.map(dir => [`${dir}/src`]);
   const sourcesGlob = `{${sources.join(',')}}`;
 
-  return gulp
-    .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
-    .pipe(parseReactFile(rootPath))
-    .pipe(merge({ fileName: reactDataFilename }))
-    .pipe(gulp.dest(reactDataDirectory));
+  return streamPromise(
+    gulp
+      .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
+      .pipe(parseReactFile(rootPath))
+      .pipe(merge({ fileName: reactDataFilename }))
+      .pipe(gulp.dest(reactDataDirectory))
+  );
 }
 
 /**

@@ -4,8 +4,7 @@
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "CMSgov/design-system",
   "scripts": {
-    "build": "NODE_ENV=production gulp build --env=production",
-    "build:theme": "yarn build --theme",
+    "build": "yarn cmsds build-docs packages/design-system packages/docs",
     "bump": "lerna publish --skip-git --skip-npm",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap",
