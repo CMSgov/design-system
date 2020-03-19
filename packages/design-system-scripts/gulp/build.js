@@ -7,12 +7,14 @@ const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
+const getPackageName = require('./common/getPackageName');
 const gulp = require('gulp');
 const streamPromise = require('./common/streamPromise');
 const { buildDocs } = require('./docs');
 const { compileSass } = require('./sass');
 const { printStats } = require('./stats');
 const { log, logTask, logIntroduction } = require('./common/logUtil');
+const { CORE_PACKAGE_NAME } = require('./common/constants');
 
 /**
  * Copy any JSON files that our components might depend on
@@ -37,7 +39,17 @@ function copySass(dir) {
 }
 
 function copyAll(dir) {
-  return Promise.all([copyAssets(dir), copyJson(dir), copySass(dir)]);
+  // Check to see if this is a core package. If it's not, copy assets from core npm package
+  const copyAssetsTask = async (dir) => {
+    const packageName = await getPackageName(dir);	
+    if (packageName !== CORE_PACKAGE_NAME) {	
+      logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME} to ${dir}`);	
+      return copyAssets(`node_modules/${CORE_PACKAGE_NAME}`, dir)
+    }
+    return copyAssets(dir);  
+  };
+
+  return Promise.all([copyAssetsTask(dir), copyJson(dir), copySass(dir)]);
 }
 
 /**

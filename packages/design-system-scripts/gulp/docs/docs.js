@@ -4,8 +4,6 @@
  * generating the HTML files which get published as the public site.
  */
 const copyAssets = require('../common/copyAssets');
-const copyDir = require('../common/copyDir');
-const copyDocsToTempDir = require('./copyDocsToTempDir');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
 const getPackageJson = require('../common/getPackageJson');
@@ -50,11 +48,11 @@ function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
 }
 
 /**
- * Copies all the images from our docs packages
+ * Copies all the fonts and images from our docs packages
  */
-function copyDocsPackageImages(tempDir, docsPackageDir) {
-  logTask('🏞 ', `Copying images from docs packages into ${docsPackageDir}/dist`);
-  return copyDir(`${tempDir}/src/images`, `${docsPackageDir}/dist/images`);
+function copyDocsPackageImages(docsPackageDir) {
+  logTask('🏞 ', `Copying fonts and images from docs packages into ${docsPackageDir}/dist`);
+  return copyAssets(docsPackageDir);
 }
 
 module.exports = {
@@ -84,20 +82,10 @@ module.exports = {
         ? [sourcePackageDir]
         : [sourcePackageDir, `node_modules/${CORE_PACKAGE_NAME}`];
 
-    // Consolidate the chain of docs directories into one temporary working directory,
-    // then perform all our operations on that working directory as if it were
-    // our docs package. This allows us to have child design systems with their
-    // own docs that inherit all the docs from the core design system.
-    const tempDir = await copyDocsToTempDir(docsPackageDirs);
-    await cleanDist(tempDir);
-    await extractReactDocs(sourcePackageDirs, options.rootPath);
-    await generatePages(sourcePackageDirs, tempDir, reactDataPath, options);
-
-    // Now copy out of the working directory into our docs package's dist
     await cleanDist(docsPackageDir);
-    await copyDir(`${tempDir}/dist`, `${docsPackageDir}/dist`);
-    // And copy our assets there too
+    await extractReactDocs(sourcePackageDirs, options.rootPath);
+    await generatePages(sourcePackageDirs, docsPackageDir, reactDataPath, options);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
-    await copyDocsPackageImages(tempDir, docsPackageDir);
+    await copyDocsPackageImages(docsPackageDir);
   }
 };
