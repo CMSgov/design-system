@@ -38,18 +38,17 @@ function copySass(dir) {
   );
 }
 
-function copyAll(dir) {
-  // Check to see if this is a core package. If it's not, copy assets from core npm package
-  const copyAssetsTask = async (dir) => {
-    const packageName = await getPackageName(dir);	
-    if (packageName !== CORE_PACKAGE_NAME) {	
-      logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME} to ${dir}`);	
-      return copyAssets(`node_modules/${CORE_PACKAGE_NAME}`, dir)
-    }
-    return copyAssets(dir);  
-  };
+async function copyAll(dir) {
+  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
 
-  return Promise.all([copyAssetsTask(dir), copyJson(dir), copySass(dir)]);
+  // Check to see if this is a core package. If it's not, also copy assets from the core npm package
+  const packageName = await getPackageName(dir);	
+  if (packageName !== CORE_PACKAGE_NAME) {	
+    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME} to ${dir}`);	
+    copyTasks.push(copyAssets(`node_modules/${CORE_PACKAGE_NAME}`, dir));
+  }
+
+  return Promise.all(copyTasks);
 }
 
 /**

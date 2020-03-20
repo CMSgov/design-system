@@ -10,7 +10,6 @@ const gulpIf = require('gulp-if');
 const path = require('path');
 const postcss = require('gulp-postcss');
 const postcssImport = require('postcss-import');
-const postcssInliner = require('postcss-image-inliner');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const streamPromise = require('./common/streamPromise');
