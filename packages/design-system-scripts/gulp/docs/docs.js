@@ -13,8 +13,9 @@ const parseReactFile = require('./parseReactFile');
 const path = require('path');
 const streamPromise = require('../common/streamPromise');
 const { CORE_PACKAGE_NAME } = require('../common/constants');
-const { last } = require('lodash');
 const { logTask } = require('../common/logUtil');
+const { last } = require('lodash');
+const { runWebpackStatically } = require('./runWebpackStatically');
 
 const reactDataDirectory = `tmp/data`;
 const reactDataFilename = 'react-doc.json';
@@ -85,6 +86,7 @@ module.exports = {
     await cleanDist(docsPackageDir);
     await extractReactDocs(sourcePackageDirs, options.rootPath);
     await generatePages(sourcePackageDirs, docsPackageDir, reactDataPath, options);
+    await runWebpackStatically(sourcePackageDir, docsPackageDir, options.rootPath);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
     await copyDocsPackageImages(docsPackageDir);
   }

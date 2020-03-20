@@ -1,5 +1,4 @@
 /* eslint-disable filenames/match-exported */
-const buildPath = require('../../tools/gulp/common/buildPath');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -10,17 +9,18 @@ const webpack = require('webpack');
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = true) {
+function createWebpackConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = true) {
+  const distPath = path.resolve(docsPath, 'dist', rootPath, 'public/scripts/');
   const config = {
     mode: process.env.NODE_ENV,
     context: __dirname,
     entry: {
-      index: ['./src/scripts/index.jsx'],
-      example: ['./src/scripts/example.js']
+      index: [path.resolve(docsPath, 'src/scripts/index.jsx')],
+      example: [path.resolve(docsPath, 'src/scripts/example.js')],
     },
     output: {
-      path: path.resolve(__dirname, `../../${buildPath(docsPath, rootPath, '/public/scripts/')}`),
-      publicPath: path.join('/', rootPath, '/public/scripts/'),
+      path: distPath,
+      publicPath: distPath,
       filename: '[name].js'
     },
     module: {
@@ -37,7 +37,7 @@ function createConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = 
               }
             }
           ],
-          include: [path.resolve(__dirname, 'src')].concat(srcPaths)
+          include: srcPaths
         }
       ]
     },
@@ -78,4 +78,4 @@ function createConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = 
   return config;
 }
 
-module.exports = createConfig;
+module.exports = createWebpackConfig;

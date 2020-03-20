@@ -5,37 +5,29 @@
  */
 const fs = require('fs');
 const log = require('fancy-log');
+const path = require('path');
 const util = require('util');
 const webpack = util.promisify(require('webpack'));
-const generateWebpackConfig = require('../../docs/webpack.config');
-const { logData, logError, logTask } = require('./common/logUtil');
+const createWebpackConfig = require('./webpack.config');
+const webpackStatsConfig = require('./webpackStats.config');
+const { logData, logError, logTask } = require('../common/logUtil');
 
 module.exports = {
-  async webpack(sourcePackageDir, docsPackageDir, docsPath, rootPath) {
+  async runWebpackStatically(sourcePackageDir, docsPackageDir, rootPath) {
     logTask('🚜 ', 'Running Webpack');
     try {
-      const config = generateWebpackConfig(docsPath, rootPath, [
+      const config = createWebpackConfig(docsPackageDir, [
         fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
         fs.realpathSync(path.resolve(docsPackageDir, 'src'))
-      ]);
-      const stats = await webpack(shared.webpackConfig);
+      ], rootPath, '');
+
+      const stats = await webpack(config);
       const info = stats.toJson();
 
       if (stats.hasErrors()) logError('webpack', info.errors);
       if (stats.hasWarnings()) logData('webpack', info.warnings);
 
-      log(
-        stats.toString({
-          assets: true,
-          chunks: false,
-          colors: true,
-          errorDetails: true,
-          hash: false,
-          source: false,
-          timings: true,
-          version: false
-        })
-      );
+      log(stats.toString(webpackStatsConfig));
     } catch (err) {
       logError('webpack', err.stack || err);
       if (err.details) {
