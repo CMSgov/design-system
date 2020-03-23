@@ -15,12 +15,9 @@ const streamPromise = require('../common/streamPromise');
 const { compileDocsSass } = require ('../sass');
 const { CORE_PACKAGE_NAME } = require('../common/constants');
 const { logTask, log } = require('../common/logUtil');
+const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
 const { last } = require('lodash');
 const { runWebpackStatically } = require('./runWebpackStatically');
-
-const reactDataDirectory = `tmp/data`;
-const reactDataFilename = 'react-doc.json';
-const reactDataPath = path.resolve(reactDataDirectory, reactDataFilename);
 
 /**
  * Parses our JSX files for relevant documentation information and stores it for
@@ -36,8 +33,8 @@ async function extractReactDocs(sourcePackageDirs, rootPath) {
     gulp
       .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
       .pipe(parseReactFile(rootPath))
-      .pipe(merge({ fileName: reactDataFilename }))
-      .pipe(gulp.dest(reactDataDirectory))
+      .pipe(merge({ fileName: REACT_DATA_FILENAME }))
+      .pipe(gulp.dest(REACT_DATA_DIR))
   );
 }
 
@@ -88,7 +85,7 @@ module.exports = {
 
     await cleanDist(docsPackageDir);
     await extractReactDocs(sourcePackageDirs, options.rootPath);
-    await generatePages(sourcePackageDirs, docsPackageDir, reactDataPath, options);
+    await generatePages(sourcePackageDirs, docsPackageDir, options);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
     await copyDocsPackageAssets(docsPackageDir);
     await runWebpackStatically(sourcePackageDir, docsPackageDir, options.rootPath);

@@ -7,6 +7,7 @@ const nestSections = require('./nestSections');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
 const { logTask } = require('../../common/logUtil');
+const { REACT_DATA_PATH } = require('../../common/constants');
 
 /**
  * Some KssSection's are nested under section's that don't exist, so we need
@@ -120,7 +121,6 @@ function generateMarkupPages(kssSections, destination, rootPath) {
 module.exports = async function generatePages(
   sourcePackageDirs,
   docsPackageDir,
-  reactDataPath,
   options
 ) {
   logTask('📝 ', 'Generating documentation pages');
@@ -150,7 +150,7 @@ module.exports = async function generatePages(
   // Also, remove pages with the same URL (so themes can override existing pages)
   const pageSections = uniquePages(markdownPagesData.concat(kssSections));
 
-  await addReactDocProps(pageSections, reactDataPath);
+  await addReactDocProps(pageSections, REACT_DATA_PATH);
   // Create HTML files for markup examples
   await generateMarkupPages(pageSections, destination, options.rootPath);
   // Add missing top-level pages and connect the page parts to their parent pages
