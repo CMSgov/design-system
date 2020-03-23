@@ -82,6 +82,7 @@ function compileJs(dir) {
  * Builds the source package
  */
 async function buildSrc(sourcePackageDir) {
+  logTask('🏃 ', 'Starting design system build task');
   await cleanDist(sourcePackageDir);
   await copyAll(sourcePackageDir);
   await compileJs(sourcePackageDir);

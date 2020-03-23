@@ -1,16 +1,17 @@
 /* eslint-disable filenames/match-exported */
 const path = require('path');
 const webpack = require('webpack');
+const getDocsDistPath = require('../common/getDocsDistPath');
 
 /**
  * @param {String} docsPath
- * @param {String} rootPath - Root docs site path
  * @param {Array} srcPaths - Paths to directories to include in the babel-loader
+ * @param {String} rootPath - Root docs site path
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createWebpackConfig(docsPath, srcPaths, githubUrl, rootPath = '', hotReload = true) {
-  const distPath = path.resolve(docsPath, 'dist', rootPath, 'public/scripts/');
+function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '', hotReload = true) {
+  const distPath = getDocsDistPath(docsPath, rootPath, 'public/scripts/');
   const config = {
     mode: process.env.NODE_ENV,
     context: __dirname,

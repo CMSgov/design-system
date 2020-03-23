@@ -17,14 +17,13 @@ const { logData, logError, logTask } = require('./common/logUtil');
 
 // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
 // a variety of postcss processes (inlining, prefixing, minifying, etc).
-function compileSass(dir, dest, env, browserSync) {
+function compileSass(dir, dest, browserSync) {
   const src = path.join(dir, 'src');
   const srcFiles = path.join(src, '**', '*.scss');
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
-
-  const createSourcemaps = env === 'development';
+  
   const sassCompiler = sass({
     outputStyle: 'expanded',
     includePaths: [path.resolve(dir, 'node_modules'), src]
@@ -39,7 +38,7 @@ function compileSass(dir, dest, env, browserSync) {
     autoprefixer() // add any necessary vendor prefixes
   ];
 
-  if (env !== 'development') {
+  if (process.env.NODE_ENV !== 'development') {
     postcssPlugins.push(cssnano()); // minify css
   }
 
@@ -52,9 +51,9 @@ function compileSass(dir, dest, env, browserSync) {
         hasChanged: changed.compareSha1Digest
       })
     )
-    .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
+    .pipe(gulpIf(process.env.NODE_ENV === 'development', sourcemaps.init()))
     .pipe(sassCompiler)
-    .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
+    .pipe(gulpIf(process.env.NODE_ENV === 'development', sourcemaps.write()))
     .pipe(postcss(postcssPlugins))
     .pipe(
       count({
@@ -75,8 +74,8 @@ function compileSass(dir, dest, env, browserSync) {
   return streamPromise(stream);
 }
 
-async function compileDocsSass(sourcePackageDir, docsPath, rootPath, env, browserSync) {
-  // await compileSass('packages/docs/', getDocsDistPath(docsPath, rootPath, '/public'))
+async function compileDocsSass(docsPackageDir, rootPath, browserSync) {
+  await compileSass(docsPackageDir, getDocsDistPath(docsPackageDir, rootPath, 'public'), browserSync)
 }
 
 module.exports = {

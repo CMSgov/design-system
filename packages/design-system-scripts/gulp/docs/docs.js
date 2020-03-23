@@ -12,8 +12,9 @@ const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const path = require('path');
 const streamPromise = require('../common/streamPromise');
+const { compileDocsSass } = require ('../sass');
 const { CORE_PACKAGE_NAME } = require('../common/constants');
-const { logTask } = require('../common/logUtil');
+const { logTask, log } = require('../common/logUtil');
 const { last } = require('lodash');
 const { runWebpackStatically } = require('./runWebpackStatically');
 
@@ -26,7 +27,7 @@ const reactDataPath = path.resolve(reactDataDirectory, reactDataFilename);
  * our other tasks to read later
  */
 async function extractReactDocs(sourcePackageDirs, rootPath) {
-  logTask('🌪 ', 'Generating React propType documentation and grabbing raw example code');
+  logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
   const sources = sourcePackageDirs.map(dir => [`${dir}/src`]);
   const sourcesGlob = `{${sources.join(',')}}`;
@@ -44,15 +45,16 @@ async function extractReactDocs(sourcePackageDirs, rootPath) {
  * Copies all the fonts and images from the source package and the core design system package
  */
 function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
-  logTask('🏞 ', `Copying fonts and images from source package into ${docsPackageDir}/dist`);
+  logTask('🏞  ', `Copying fonts and images from source package into ${docsPackageDir}/dist`);
   return copyAssets(sourcePackageDir, docsPackageDir);
 }
 
 /**
  * Copies all the fonts and images from our docs packages
+ * Usually there will only be images in the docs package
  */
-function copyDocsPackageImages(docsPackageDir) {
-  logTask('🏞 ', `Copying fonts and images from docs packages into ${docsPackageDir}/dist`);
+function copyDocsPackageAssets(docsPackageDir) {
+  logTask('🏞  ', `Copying fonts and images from docs packages into ${docsPackageDir}/dist`);
   return copyAssets(docsPackageDir);
 }
 
@@ -64,7 +66,7 @@ module.exports = {
    * that the documentation reflects the most recent version of the source.
    */
   async buildDocs(sourcePackageDir, docsPackageDirs, options) {
-    let message = 'Starting the documentation generation task';
+    let message = 'Starting the documentation site generation task';
     if (options.rootPath !== '') {
       message += ` with a root path of ${options.rootPath}`;
     }
@@ -72,6 +74,7 @@ module.exports = {
 
     const pkg = await getPackageJson(sourcePackageDir);
 
+    // TODO: handle this in other tasks too
     if (!options.githubUrl) {
       options.githubUrl = `https://github.com/${pkg.repository}`;
     }
@@ -86,8 +89,11 @@ module.exports = {
     await cleanDist(docsPackageDir);
     await extractReactDocs(sourcePackageDirs, options.rootPath);
     await generatePages(sourcePackageDirs, docsPackageDir, reactDataPath, options);
-    await runWebpackStatically(sourcePackageDir, docsPackageDir, options.rootPath);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
-    await copyDocsPackageImages(docsPackageDir);
+    await copyDocsPackageAssets(docsPackageDir);
+    await runWebpackStatically(sourcePackageDir, docsPackageDir, options.rootPath);
+    await compileDocsSass(docsPackageDir, options.rootPath)
+    logTask('✅ ', 'Docs generation succeeded');
+    log('');
   }
 };
