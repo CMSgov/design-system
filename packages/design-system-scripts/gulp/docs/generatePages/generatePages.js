@@ -2,7 +2,7 @@ const addReactDocProps = require('./addReactDocProps');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
-const getSources = require('../../common/getSources');
+const getSourceDirs = require('../../common/getPackageDirs');
 const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
@@ -137,7 +137,7 @@ module.exports = async function generatePages(
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
-  const sources = await getSources(sourcePackageDir)
+  const sources = await getSourceDirs(sourcePackageDir)
   // Temporarily hardcode task to process KSS in docs too
   const packages = [docsPackageDir, ...sources].map(pkg => `${pkg}/src/`);
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
