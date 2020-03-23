@@ -2,6 +2,8 @@ const addReactDocProps = require('./addReactDocProps');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
+const getSources = require('../../common/getSources');
+const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
 const processKssSection = require('./processKssSection');
@@ -119,13 +121,13 @@ function generateMarkupPages(kssSections, destination, rootPath) {
  * @return {Promise}
  */
 module.exports = async function generatePages(
-  sourcePackageDirs,
+  sourcePackageDir,
   docsPackageDir,
   options
 ) {
   logTask('📝 ', 'Generating documentation pages');
 
-  const destination = `${docsPackageDir}/dist`;
+  const dist = getDocsDistPath(docsPackageDir, options.rootPath);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
   const markdownPagesData = await convertMarkdownPages(options.rootPath, docsPackageDir);
@@ -135,8 +137,9 @@ module.exports = async function generatePages(
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
+  const sources = await getSources(sourcePackageDir)
   // Temporarily hardcode task to process KSS in docs too
-  const packages = [docsPackageDir, ...sourcePackageDirs].map(pkg => `${pkg}/src/`);
+  const packages = [docsPackageDir, ...sources].map(pkg => `${pkg}/src/`);
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
@@ -152,11 +155,11 @@ module.exports = async function generatePages(
 
   await addReactDocProps(pageSections, REACT_DATA_PATH);
   // Create HTML files for markup examples
-  await generateMarkupPages(pageSections, destination, options.rootPath);
+  await generateMarkupPages(pageSections, dist, options.rootPath);
   // Add missing top-level pages and connect the page parts to their parent pages
   const pages = await addTopLevelPages(pageSections).then(nestSections);
   // Create HTML files from the pages array
-  const generatedPagesCount = await generateDocPages(pages, destination, options);
+  const generatedPagesCount = await generateDocPages(pages, dist, options);
 
   logTask('📝 ', `Added ${generatedPagesCount} docs pages to ${docsPackageDir}`);
 };

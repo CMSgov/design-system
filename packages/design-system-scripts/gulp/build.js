@@ -7,7 +7,7 @@ const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
-const getPackageName = require('./common/getPackageName');
+const getSources = require('./common/getSources');
 const gulp = require('gulp');
 const streamPromise = require('./common/streamPromise');
 const { buildDocs } = require('./docs');
@@ -39,13 +39,12 @@ function copySass(dir) {
 }
 
 async function copyAll(dir) {
-  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
+  const sources = await getSources(dir);
+  const copyTasks = [copyJson(dir), copySass(dir)].concat(sources.map(s => copyAssets(s)));
 
-  // Check to see if this is a core package. If it's not, also copy assets from the core npm package
-  const packageName = await getPackageName(dir);	
-  if (packageName !== CORE_PACKAGE_NAME) {	
-    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME} to ${dir}`);	
-    copyTasks.push(copyAssets(`node_modules/${CORE_PACKAGE_NAME}`, dir));
+  if (sources.length > 1) {	
+    // If this a child DS we also need to copy assets from the core npm package
+    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME} to ${dir}`);
   }
 
   return Promise.all(copyTasks);
