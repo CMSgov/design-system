@@ -7,12 +7,12 @@ const copyAssets = require('../common/copyAssets');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
 const getPackageJson = require('../common/getPackageJson');
-const getSources = require('../common/getSources');
 const gulp = require('gulp');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const streamPromise = require('../common/streamPromise');
 const { compileDocsSass } = require ('../sass');
+const { getSourceDirs } = require('../common/getPackageDirs');
 const { logTask, log } = require('../common/logUtil');
 const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
 const { last } = require('lodash');
@@ -25,8 +25,8 @@ const { runWebpackStatically } = require('./runWebpackStatically');
 async function extractReactDocs(sourcePackageDir, rootPath) {
   logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
-  const sources = await getSources(sourcePackageDir).map(dir => `${dir}/src`);
-  const sourcesGlob = `{${sources.join(',')}}`;
+  const sources = await getSourceDirs(sourcePackageDir);
+  const sourcesGlob = `{${sources.map(dir => `${dir}/src`).join(',')}}`;
 
   return streamPromise(
     gulp
@@ -63,7 +63,7 @@ module.exports = {
    * Note that the source package must be built before this in order to ensure
    * that the documentation reflects the most recent version of the source.
    */
-  async buildDocs(sourcePackageDir, docsPackageDirs, options) {
+  async buildDocs(sourcePackageDir, docsPackageDir, options) {
     let message = 'Starting the documentation site generation task';
     if (options.rootPath !== '') {
       message += ` with a root path of ${options.rootPath}`;
@@ -76,9 +76,6 @@ module.exports = {
     if (!options.githubUrl) {
       options.githubUrl = `https://github.com/${pkg.repository}`;
     }
-
-    // This is the docs package that we will receive the output dist folder.
-    const docsPackageDir = last(docsPackageDirs);
 
     await cleanDist(docsPackageDir);
     await extractReactDocs(sourcePackageDir, options.rootPath);

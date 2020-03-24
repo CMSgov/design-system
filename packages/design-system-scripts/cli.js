@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
+const { logIntroduction } = require('./gulp/common/logUtil');
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
@@ -26,15 +27,16 @@ yargs
     },
     handler: async argv => {
       const { build } = require('./gulp/build');
+      logIntroduction();
       await build(argv.sourcePackageDir, { ...argv });
     }
   })
   .command({
-    command: 'build-docs <sourcePackageDir> <docsPackageDirs..>',
+    command: 'build-docs <sourcePackageDir> <docsPackageDir>',
     desc: 'Builds your main design-system package and its corresponding documentation site',
     builder: yargs => {
       describeSourcePackageDir(yargs);
-      describeDocsPackageDirs(yargs);
+      describeDocsPackageDir(yargs);
 
       yargs
         .option('rootPath', {
@@ -50,21 +52,23 @@ yargs
     },
     handler: async argv => {
       const { buildDocs } = require('./gulp/build');
-      await buildDocs(argv.sourcePackageDir, argv.docsPackageDirs, { ...argv });
+      logIntroduction();
+      await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
     }
   })
   .demandCommand()
   .command({
-    command: 'start <sourcePackageDir> <docsPackageDirs..>',
+    command: 'start <sourcePackageDir> <docsPackageDir>',
     desc:
       'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
     builder: yargs => {
       describeSourcePackageDir(yargs);
-      describeDocsPackageDirs(yargs);
+      describeDocsPackageDir(yargs);
     },
-    handler: () => {
-      // const { startDocsServer } = require('./gulp/server');
-      // await startDocsServer(argv.sourcePackageDir, argv.docsPackageDirs, { ...argv });
+    handler: async argv => {
+      const { startDocsServer } = require('./gulp/server');
+      logIntroduction();
+      await startDocsServer(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
     }
   })
   .help().argv;
@@ -76,10 +80,10 @@ function describeSourcePackageDir(yargs) {
   });
 }
 
-function describeDocsPackageDirs(yargs) {
-  yargs.positional('docsPackageDirs..', {
+function describeDocsPackageDir(yargs) {
+  yargs.positional('docsPackageDir', {
     desc:
-      'The relative paths to one or more docs-package directories. The first directory will be the default set of docs, and every docs directory specified after it will override files in the previous one, where the rightmost directory path takes the most precedence. The built documentation site will be saved to the "dist" directory of the final path in this list.',
+      'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
     type: 'string'
   });
 }

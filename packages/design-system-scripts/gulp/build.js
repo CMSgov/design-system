@@ -7,13 +7,13 @@ const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
-const getSourceDirs = require('./common/getPackageDirs');
 const gulp = require('gulp');
 const streamPromise = require('./common/streamPromise');
 const { buildDocs } = require('./docs');
 const { compileSass } = require('./sass');
+const { getSourceDirs } = require('./common/getPackageDirs');
 const { printStats } = require('./stats');
-const { log, logTask, logIntroduction } = require('./common/logUtil');
+const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
@@ -96,7 +96,6 @@ module.exports = {
    * collects and prints statistics on the new build
    */
   async build(sourcePackageDir, options) {
-    logIntroduction();
     await buildSrc(sourcePackageDir);
     await printStats(sourcePackageDir, options.skipLatest);
   },
@@ -105,10 +104,9 @@ module.exports = {
    * Builds the source package and the docs package for the purpose of publishing
    * and then collects and prints statistics on the new build
    */
-  async buildDocs(sourcePackageDir, docsPackageDirs, options) {
-    logIntroduction();
+  async buildDocs(sourcePackageDir, docsPackageDir, options) {
     await buildSrc(sourcePackageDir);
-    await buildDocs(sourcePackageDir, docsPackageDirs, options);
+    await buildDocs(sourcePackageDir, docsPackageDir, options);
     await printStats(sourcePackageDir, options.skipLatest);
   }
 };

@@ -2,12 +2,12 @@ const addReactDocProps = require('./addReactDocProps');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
-const getSourceDirs = require('../../common/getPackageDirs');
 const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
+const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
 const { logTask } = require('../../common/logUtil');
 const { REACT_DATA_PATH } = require('../../common/constants');
 
@@ -128,18 +128,21 @@ module.exports = async function generatePages(
   logTask('📝 ', 'Generating documentation pages');
 
   const dist = getDocsDistPath(docsPackageDir, options.rootPath);
+  const sourceDirs = await getSourceDirs(sourcePackageDir);
+  const docsDirs = await getDocsDirs(docsPackageDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
-  const markdownPagesData = await convertMarkdownPages(options.rootPath, docsPackageDir);
+  const markdownPagesData = await Promise.all(docsDirs.map(async dir => {
+    return convertMarkdownPages(options.rootPath, dir);
+  })).then(dirPages => dirPages.flat());
 
   /**
    * Parse KSS documentation blocks in CSS and JSX files
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
-  const sources = await getSourceDirs(sourcePackageDir)
   // Temporarily hardcode task to process KSS in docs too
-  const packages = [docsPackageDir, ...sources].map(pkg => `${pkg}/src/`);
+  const packages = [...docsDirs, ...sourceDirs].map(pkg => `${pkg}/src/`);
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
