@@ -17,7 +17,7 @@ function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '') 
     context: __dirname,
     entry: {
       index: [path.resolve(docsPath, 'src/scripts/index.jsx')],
-      example: [path.resolve(docsPath, 'src/scripts/example.js')],
+      example: [path.resolve(docsPath, 'src/scripts/example.js')]
     },
     output: {
       path: distPath,

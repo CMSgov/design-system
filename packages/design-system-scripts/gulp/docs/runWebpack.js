@@ -13,14 +13,19 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const createWebpackConfig = require('./webpack.config');
 const webpackStatsConfig = require('./webpackStats.config');
-const { log, logData, logTask, logError } = require('../common/logUtil');
+const { log, logTask, logError } = require('../common/logUtil');
 
-async function getConfig(sourcePackageDir, docsPackageDir, rootPath) {
-  return createWebpackConfig(docsPackageDir, [
-    fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
-    fs.realpathSync(path.resolve(docsPackageDir, 'src'))
-  ], rootPath, '');
-};
+function getConfig(sourcePackageDir, docsPackageDir, rootPath) {
+  return createWebpackConfig(
+    docsPackageDir,
+    [
+      fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
+      fs.realpathSync(path.resolve(docsPackageDir, 'src'))
+    ],
+    rootPath,
+    ''
+  );
+}
 
 module.exports = {
   async runWebpackStatically(sourcePackageDir, docsPackageDir, rootPath) {
@@ -28,9 +33,6 @@ module.exports = {
     try {
       const config = getConfig(sourcePackageDir, docsPackageDir, rootPath);
       const stats = await webpack(config);
-
-      if (stats.hasErrors()) logError('webpack', stats.toJson().errors);
-      if (stats.hasWarnings()) logData('webpack', stats.toJson().warnings);
 
       log(stats.toString(webpackStatsConfig));
     } catch (err) {
@@ -47,7 +49,9 @@ module.exports = {
       const bundler = await webpack(config);
 
       browserSync.init({
-        files: [`./${path.join(docsPackageDir, '/**/*.html')}`],
+        port: '3000',
+        notify: false,
+        startPath: rootPath,
         server: {
           baseDir: docsPackageDir,
           middleware: [
@@ -63,12 +67,10 @@ module.exports = {
             })
           ]
         },
+        files: [`./${path.join(docsPackageDir, '/**/*.html')}`],
         snippetOptions: {
           blacklist: ['/example/*']
-        },
-        notify: false,
-        port: '3000',
-        startPath: rootPath
+        }
       });
     } catch (err) {
       logError('webpack server', err.stack || err);

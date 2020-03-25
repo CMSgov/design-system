@@ -6,7 +6,6 @@ module.exports = {
   errorDetails: true,
   hash: false,
   source: false,
-  timings: true,
+  timings: false,
   version: false
 };
-  
