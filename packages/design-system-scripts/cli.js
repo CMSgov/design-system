@@ -27,8 +27,11 @@ yargs
     },
     handler: async argv => {
       logIntroduction();
-      const { build } = require('./gulp/build');
-      await build(argv.sourcePackageDir, { ...argv });
+      const { buildSrc } = require('./gulp/build');
+      const { printStats } = require('./gulp/stats');
+
+      await buildSrc(argv.sourcePackageDir, { ...argv });
+      await printStats(argv.sourcePackageDir, { ...argv });
     }
   })
   .command({
@@ -41,8 +44,13 @@ yargs
     },
     handler: async argv => {
       logIntroduction();
-      const { buildDocs } = require('./gulp/build');
+      const { buildSrc } = require('./gulp/build');
+      const { buildDocs } = require('./gulp/docs');
+      const { printStats } = require('./gulp/stats');
+
+      await buildSrc(argv.sourcePackageDir, { ...argv });
       await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
+      await printStats(argv.sourcePackageDir, { ...argv });
     }
   })
   .command({
@@ -56,8 +64,13 @@ yargs
     },
     handler: async argv => {
       logIntroduction();
-      const { startDocsServer } = require('./gulp/server');
-      await startDocsServer(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
+      const { buildSrc } = require('./gulp/build');
+      const { buildDocs } = require('./gulp/docs');
+      const { watchDocs } = require('./gulp/watch');
+
+      await buildSrc(argv.sourcePackageDir, { ...argv });
+      await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
+      await watchDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
     }
   })
   .demandCommand()
@@ -80,14 +93,14 @@ function describeDocsPackageDir(yargs) {
 
 function describeDocsOptions(yargs) {
   yargs
-  .option('rootPath', {
-    default: '',
-    description:
-      'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
-  })
-  .option('githubUrl', {
-    default: '',
-    description:
-      'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
-  });
+    .option('rootPath', {
+      default: '',
+      description:
+        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
+    })
+    .option('githubUrl', {
+      default: '',
+      description:
+        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
+    });
 }

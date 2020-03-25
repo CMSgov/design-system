@@ -5,7 +5,6 @@
  * replication, scroll and click mirroring, and injecting updated CSS and JS
  * without a page refresh :mindblown:
  */
-const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const webpack = util.promisify(require('webpack'));
@@ -15,25 +14,18 @@ const createWebpackConfig = require('./webpack.config');
 const webpackStatsConfig = require('./webpackStats.config');
 const { log, logTask, logError } = require('../common/logUtil');
 
-function getConfig(sourcePackageDir, docsPackageDir, rootPath) {
-  return createWebpackConfig(
-    docsPackageDir,
-    [
-      fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
-      fs.realpathSync(path.resolve(docsPackageDir, 'src'))
-    ],
-    rootPath,
-    ''
-  );
-}
-
 module.exports = {
-  async runWebpackStatically(sourcePackageDir, docsPackageDir, rootPath) {
+  async runWebpackStatically(sourcePackageDir, docsPackageDir, options) {
     logTask('🚜 ', 'Running Webpack statically');
     try {
-      const config = getConfig(sourcePackageDir, docsPackageDir, rootPath);
+      const config = createWebpackConfig(sourcePackageDir, docsPackageDir, options);
       const stats = await webpack(config);
 
+      // TODO: Replace stats module logging with clean logTask count
+      // const filesProcessed = stats.toJson(webpackStatsConfig).modules.length;
+      // logTask(`📜  ${filesProcessed}`, `JS files processed in ${docsPackageDir}`);
+
+      // Log out any errors or warnings
       log(stats.toString(webpackStatsConfig));
     } catch (err) {
       logError('webpack static', err.stack || err);
@@ -42,16 +34,16 @@ module.exports = {
       }
     }
   },
-  async runWebpackServer(sourcePackageDir, docsPackageDir, rootPath, browserSync) {
+  async runWebpackServer(sourcePackageDir, docsPackageDir, options, browserSync) {
     logTask('🚜 ', 'Running Webpack server');
     try {
-      const config = getConfig(sourcePackageDir, docsPackageDir, rootPath);
+      const config = createWebpackConfig(sourcePackageDir, docsPackageDir, options);
       const bundler = await webpack(config);
 
       browserSync.init({
         port: '3000',
         notify: false,
-        startPath: rootPath,
+        startPath: options.rootPath,
         server: {
           baseDir: docsPackageDir,
           middleware: [

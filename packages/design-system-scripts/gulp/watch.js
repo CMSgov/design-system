@@ -6,20 +6,19 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
 const { logTask } = require('./common/logUtil');
-const { buildDocs } = require('./build')
 const { compileSass, compileDocsSass } = require('./sass');
-const { 
-  extractReactDocs, 
+const {
+  extractReactDocs,
   generatePages,
   copySourcePackageAssets,
-  copyDocsPackageAssets 
+  copyDocsPackageAssets
 } = require('./docs');
 const { runWebpackServer } = require('./docs/runWebpack');
 
 async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
   // Source package assets
   gulp.watch(`${sourcePackageDir}/src/{images,fonts}/*`, async () => {
-    await copySourcePackageAssets(sourcePackageDir, docsPackageDir)
+    await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
   });
 
   // Source package Sass files
@@ -34,21 +33,24 @@ async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
   });
 
   // Source package React components and examples
-  gulp.watch([`${sourcePackageDir}/src/**/*.{js,jsx}`, `${sourcePackageDir}/src/**/*.test.{js,jsx}`], async () => {
-    await extractReactDocs(sourcePackageDir, options.rootPath);
-    await generatePages(sourcePackageDir, docsPackageDir, options);
-  });
+  gulp.watch(
+    [`${sourcePackageDir}/src/**/*.{js,jsx}`, `${sourcePackageDir}/src/**/*.test.{js,jsx}`],
+    async () => {
+      await extractReactDocs(sourcePackageDir, options.rootPath);
+      await generatePages(sourcePackageDir, docsPackageDir, options);
+    }
+  );
 }
 
 async function watchDocsPackage(sourcePackageDir, docsPackageDir, options) {
   // Docs assets
   gulp.watch(`${docsPackageDir}/src/{images,fonts}/*`, async () => {
-    await copyDocsPackageAssets(docsPackageDir)
+    await copyDocsPackageAssets(docsPackageDir);
   });
 
   // Docs Sass files
   gulp.watch(`${docsPackageDir}/src/**/*.scss`, async () => {
-    await compileDocsSass(docsPackageDir, options.rootPath, browserSync)
+    await compileDocsSass(docsPackageDir, options.rootPath, browserSync);
   });
 
   // Docs Markdown files
@@ -58,13 +60,11 @@ async function watchDocsPackage(sourcePackageDir, docsPackageDir, options) {
 }
 
 module.exports = {
-  async startDocsServer(sourcePackageDir, docsPackageDir, options) {
+  async watchDocs(sourcePackageDir, docsPackageDir, options) {
     logTask('👀 ', 'Transpiling + watching files for future changes');
 
     const sync = browserSync.create();
-    await buildDocs(sourcePackageDir, docsPackageDir, options);
-    await runWebpackServer(sourcePackageDir, docsPackageDir, options.rootPath, sync);
-
+    await runWebpackServer(sourcePackageDir, docsPackageDir, options, sync);
     watchSourcePackage(sourcePackageDir, docsPackageDir, options, sync);
     watchDocsPackage(sourcePackageDir, docsPackageDir, options, sync);
   }

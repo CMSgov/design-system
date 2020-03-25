@@ -11,7 +11,7 @@ const gulp = require('gulp');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const streamPromise = require('../common/streamPromise');
-const { compileDocsSass } = require ('../sass');
+const { compileDocsSass } = require('../sass');
 const { getSourceDirs } = require('../common/getPackageDirs');
 const { logTask, log } = require('../common/logUtil');
 const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
@@ -69,7 +69,6 @@ module.exports = {
     }
     logTask('🏃 ', message);
 
-
     // TODO: handle this in other tasks too
     const pkg = await getPackageJson(sourcePackageDir);
     if (!options.githubUrl) {
@@ -81,13 +80,13 @@ module.exports = {
     await generatePages(sourcePackageDir, docsPackageDir, options);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
     await copyDocsPackageAssets(docsPackageDir);
-    await runWebpackStatically(sourcePackageDir, docsPackageDir, options.rootPath);
-    await compileDocsSass(docsPackageDir, options.rootPath)
+    await runWebpackStatically(sourcePackageDir, docsPackageDir, options);
+    await compileDocsSass(docsPackageDir, options.rootPath);
     logTask('✅ ', 'Docs generation succeeded');
     log('');
   },
   extractReactDocs,
   generatePages,
   copySourcePackageAssets,
-  copyDocsPackageAssets,
+  copyDocsPackageAssets
 };

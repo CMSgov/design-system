@@ -159,12 +159,12 @@ function saveStats(currentStats) {
  * the package being built has a copy of the latest published version of itself
  * in node_modules, whether that be as a `devDependency` or some other mechanism.
  */
-async function printStats(sourcePackageDir, skipLatest) {
+async function printStats(sourcePackageDir, options) {
   logTask('🔍 ', 'Gathering stats and comparing against the latest release');
 
   const packageName = await getPackageName(sourcePackageDir);
-  const stats = await getCSSStats(sourcePackageDir, packageName, skipLatest);
-  await getFontStats(sourcePackageDir, packageName, stats, skipLatest);
+  const stats = await getCSSStats(sourcePackageDir, packageName, options.skipLatest);
+  await getFontStats(sourcePackageDir, packageName, stats, options.skipLatest);
   await logStats(stats);
   await createSpecificityGraph(stats);
   await saveStats(stats);

@@ -9,10 +9,8 @@ const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
 const streamPromise = require('./common/streamPromise');
-const { buildDocs } = require('./docs');
 const { compileSass } = require('./sass');
 const { getSourceDirs } = require('./common/getPackageDirs');
-const { printStats } = require('./stats');
 const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
@@ -42,7 +40,7 @@ async function copyAll(dir) {
   const sources = await getSourceDirs(dir);
   const copyTasks = [copyJson(dir), copySass(dir)].concat(sources.map(s => copyAssets(s)));
 
-  if (sources.length > 1) {	
+  if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
     logTask('🖼 ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
   }
@@ -77,36 +75,17 @@ function compileJs(dir) {
   );
 }
 
-/**
- * Builds the source package
- */
-async function buildSrc(sourcePackageDir) {
-  logTask('🏃 ', 'Starting design system build task');
-  await cleanDist(sourcePackageDir);
-  await copyAll(sourcePackageDir);
-  await compileJs(sourcePackageDir);
-  await compileSass(sourcePackageDir);
-  logTask('✅ ', 'Build succeeded');
-  log('');
-}
-
 module.exports = {
   /**
-   * Builds just the source package for the purpose of publishing and then
-   * collects and prints statistics on the new build
+   * Builds just the source package for the purpose of publishing
    */
-  async build(sourcePackageDir, options) {
-    await buildSrc(sourcePackageDir);
-    await printStats(sourcePackageDir, options.skipLatest);
-  },
-
-  /**
-   * Builds the source package and the docs package for the purpose of publishing
-   * and then collects and prints statistics on the new build
-   */
-  async buildDocs(sourcePackageDir, docsPackageDir, options) {
-    await buildSrc(sourcePackageDir);
-    await buildDocs(sourcePackageDir, docsPackageDir, options);
-    await printStats(sourcePackageDir, options.skipLatest);
+  async buildSrc(sourcePackageDir) {
+    logTask('🏃 ', 'Starting design system build task');
+    await cleanDist(sourcePackageDir);
+    await copyAll(sourcePackageDir);
+    await compileJs(sourcePackageDir);
+    await compileSass(sourcePackageDir);
+    logTask('✅ ', 'Build succeeded');
+    log('');
   }
 };

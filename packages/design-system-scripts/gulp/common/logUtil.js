@@ -76,7 +76,7 @@ module.exports = {
   },
 
   logTask: function(name, message) {
-    log(chalk.cyan(name), chalk.green(message));
+    log(chalk.magenta(name), chalk.green(message));
     notify(pkg.name + ' gulp ' + name, message, false);
   }
 };

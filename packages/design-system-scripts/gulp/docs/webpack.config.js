@@ -1,23 +1,23 @@
 /* eslint-disable filenames/match-exported */
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const getDocsDistPath = require('../common/getDocsDistPath');
 
-/**
- * @param {String} docsPath
- * @param {Array} srcPaths - Paths to directories to include in the babel-loader
- * @param {String} rootPath - Root docs site path
- * @param {Boolean} hotReload - Enable Webpack's hot module replacement
- * @return {Object} Webpack config
- */
-function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '') {
-  const distPath = getDocsDistPath(docsPath, rootPath, 'public/scripts/');
+function createWebpackConfig(sourcePackageDir, docsPackageDir, options) {
+  const distPath = getDocsDistPath(docsPackageDir, options.rootPath, 'public/scripts/');
+  // TODO: automatically include core npm package for child DS?
+  const includePaths = [
+    fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
+    fs.realpathSync(path.resolve(docsPackageDir, 'src'))
+  ];
+
   const config = {
     mode: process.env.NODE_ENV,
     context: __dirname,
     entry: {
-      index: [path.resolve(docsPath, 'src/scripts/index.jsx')],
-      example: [path.resolve(docsPath, 'src/scripts/example.js')]
+      index: [path.resolve(docsPackageDir, 'src/scripts/index.jsx')],
+      example: [path.resolve(docsPackageDir, 'src/scripts/example.js')]
     },
     output: {
       path: distPath,
@@ -38,15 +38,15 @@ function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '') 
               }
             }
           ],
-          include: srcPaths
+          include: includePaths
         }
       ]
     },
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
-          root: JSON.stringify(rootPath),
-          githubUrlBase: JSON.stringify(githubUrl),
+          root: JSON.stringify(options.rootPath),
+          githubUrlBase: JSON.stringify(options.githubUrl),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
       })

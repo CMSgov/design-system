@@ -23,7 +23,7 @@ function compileSass(dir, dest, browserSync) {
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
-  
+
   const sassCompiler = sass({
     outputStyle: 'expanded',
     includePaths: [path.resolve(dir, 'node_modules'), src]
@@ -74,8 +74,12 @@ function compileSass(dir, dest, browserSync) {
   return streamPromise(stream);
 }
 
-async function compileDocsSass(docsPackageDir, rootPath, browserSync) {
-  await compileSass(docsPackageDir, getDocsDistPath(docsPackageDir, rootPath, 'public'), browserSync)
+async function compileDocsSass(docsPackageDir, options, browserSync) {
+  await compileSass(
+    docsPackageDir,
+    getDocsDistPath(docsPackageDir, options.rootPath, 'public'),
+    browserSync
+  );
 }
 
 module.exports = {
