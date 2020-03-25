@@ -9,7 +9,7 @@
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap",
     "posttest": "yarn lint",
-    "start": "NODE_ENV=development gulp watch --env=development",
+    "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/docs",
     "start:theme": "yarn start --theme",
     "test": "yarn test:unit && yarn lint",
     "test:unit": "bash scripts/jest.sh",

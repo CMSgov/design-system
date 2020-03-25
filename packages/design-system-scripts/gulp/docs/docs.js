@@ -15,8 +15,7 @@ const { compileDocsSass } = require ('../sass');
 const { getSourceDirs } = require('../common/getPackageDirs');
 const { logTask, log } = require('../common/logUtil');
 const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
-const { last } = require('lodash');
-const { runWebpackStatically } = require('./runWebpackStatically');
+const { runWebpackStatically } = require('./runWebpack');
 
 /**
  * Parses our JSX files for relevant documentation information and stores it for

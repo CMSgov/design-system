@@ -10,7 +10,7 @@ const getDocsDistPath = require('../common/getDocsDistPath');
  * @param {Boolean} hotReload - Enable Webpack's hot module replacement
  * @return {Object} Webpack config
  */
-function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '', hotReload = true) {
+function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '') {
   const distPath = getDocsDistPath(docsPath, rootPath, 'public/scripts/');
   const config = {
     mode: process.env.NODE_ENV,
@@ -64,7 +64,8 @@ function createWebpackConfig(docsPath, srcPaths, rootPath = '', githubUrl = '', 
     config.optimization = {
       minimize: true
     };
-  } else if (hotReload) {
+  } else {
+    // Hot reload is enabled for non production envs
     const keys = ['index']; // Object.keys(config.entry);
 
     keys.forEach(key => {

@@ -26,8 +26,8 @@ yargs
       describeSourcePackageDir(yargs);
     },
     handler: async argv => {
-      const { build } = require('./gulp/build');
       logIntroduction();
+      const { build } = require('./gulp/build');
       await build(argv.sourcePackageDir, { ...argv });
     }
   })
@@ -37,26 +37,14 @@ yargs
     builder: yargs => {
       describeSourcePackageDir(yargs);
       describeDocsPackageDir(yargs);
-
-      yargs
-        .option('rootPath', {
-          default: '',
-          description:
-            'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
-        })
-        .option('githubUrl', {
-          default: '',
-          description:
-            'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
-        });
+      describeDocsOptions(yargs);
     },
     handler: async argv => {
-      const { buildDocs } = require('./gulp/build');
       logIntroduction();
+      const { buildDocs } = require('./gulp/build');
       await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
     }
   })
-  .demandCommand()
   .command({
     command: 'start <sourcePackageDir> <docsPackageDir>',
     desc:
@@ -64,13 +52,15 @@ yargs
     builder: yargs => {
       describeSourcePackageDir(yargs);
       describeDocsPackageDir(yargs);
+      describeDocsOptions(yargs);
     },
     handler: async argv => {
-      const { startDocsServer } = require('./gulp/server');
       logIntroduction();
+      const { startDocsServer } = require('./gulp/server');
       await startDocsServer(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
     }
   })
+  .demandCommand()
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
@@ -85,5 +75,19 @@ function describeDocsPackageDir(yargs) {
     desc:
       'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
     type: 'string'
+  });
+}
+
+function describeDocsOptions(yargs) {
+  yargs
+  .option('rootPath', {
+    default: '',
+    description:
+      'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
+  })
+  .option('githubUrl', {
+    default: '',
+    description:
+      'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
   });
 }
