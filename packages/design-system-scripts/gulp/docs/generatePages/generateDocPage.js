@@ -1,4 +1,5 @@
 const Docs = require('@cmsgov/design-system-docs/src/scripts/Docs').default;
+// const Docs = require('@cmsgov/design-system-docs/src/scripts/components/Docs').default;
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const savePage = require('./savePage');
@@ -29,9 +30,9 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
   }
 
   const head = `${seo(page, rootPath)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}public/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="/${rootPath}public/styles/docs.css" />
+  <link rel="stylesheet" href="/${rootPath}index.css" />
   ${analytics()}`;
 
   const body = `
@@ -40,7 +41,7 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
   window.page = ${JSON.stringify(page)};
   window.routes = ${JSON.stringify(routes)};
 </script>
-<script src="/${rootPath}public/scripts/index.js"></script>`;
+<script src="/${rootPath}index.js"></script>`;
 
   return savePage(
     {

@@ -1,11 +1,11 @@
 /**
  * This is main template file for the documentation site.
  */
-import Footer from './components/Footer';
-import GitHubLinks from './components/GitHubLinks';
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Page from './components/Page';
+import Footer from './Footer';
+import GitHubLinks from './GitHubLinks';
+import Header from './Header';
+import Nav from './Nav';
+import Page from './Page';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SkipNav } from '@cmsgov/design-system';

@@ -33,8 +33,8 @@ function addTopLevelPages(kssSections) {
         weight: 5
       },
       {
-        header: 'Design',
-        reference: 'design',
+        header: 'Styles',
+        reference: 'styles',
         sections: [],
         weight: 6
       },
@@ -120,11 +120,7 @@ function generateMarkupPages(kssSections, destination, rootPath) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(
-  sourcePackageDir,
-  docsPackageDir,
-  options
-) {
+module.exports = async function generatePages(sourcePackageDir, docsPackageDir, options) {
   logTask('📝 ', 'Generating documentation pages');
 
   const dist = getDocsDistPath(docsPackageDir, options.rootPath);
@@ -132,9 +128,11 @@ module.exports = async function generatePages(
   const docsDirs = await getDocsDirs(docsPackageDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
-  const markdownPagesData = await Promise.all(docsDirs.map(async dir => {
-    return convertMarkdownPages(options.rootPath, dir);
-  })).then(dirPages => dirPages.flat());
+  const markdownPagesData = await Promise.all(
+    docsDirs.map(async dir => {
+      return convertMarkdownPages(options.rootPath, dir);
+    })
+  ).then(dirPages => dirPages.flat());
 
   /**
    * Parse KSS documentation blocks in CSS and JSX files

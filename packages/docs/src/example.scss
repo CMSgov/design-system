@@ -2,8 +2,8 @@
 @import '@cmsgov/design-system/src/index';
 
 //@import '~theme/index';
-@import 'settings/index';
-@import 'base/code';
+@import 'styles/settings/index';
+@import 'styles/base/code';
 
 body {
   margin: 0;
@@ -16,6 +16,6 @@ code {
   font-size: 1em;
 }
 
-@import 'components/example';
-@import 'components/preview';
-@import 'components/swatch';
+@import 'styles/components/example';
+@import 'styles/components/preview';
+@import 'styles/components/swatch';

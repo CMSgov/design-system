@@ -1,5 +1,5 @@
 import { AppContainer } from 'react-hot-loader';
-import Docs from './Docs';
+import Docs from './scripts/components/Docs';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -25,5 +25,5 @@ render();
 
 if (module.hot) {
   // Enable Hot Module Replacement
-  module.hot.accept('./Docs', () => render());
+  module.hot.accept('./scripts/components/Docs', () => render());
 }

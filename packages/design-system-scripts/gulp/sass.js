@@ -19,7 +19,6 @@ const { logData, logError, logTask } = require('./common/logUtil');
 // a variety of postcss processes (inlining, prefixing, minifying, etc).
 function compileSass(dir, dest, browserSync) {
   const src = path.join(dir, 'src');
-  const srcFiles = path.join(src, '**', '*.scss');
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
@@ -43,7 +42,7 @@ function compileSass(dir, dest, browserSync) {
   }
 
   let stream = gulp
-    .src(srcFiles)
+    .src([`${src}/**/*.scss`, `!${src}/**/*.docs.scss}`])
     .pipe(
       changed(dest, {
         extension: '.css',
@@ -67,7 +66,7 @@ function compileSass(dir, dest, browserSync) {
     // Auto-inject into docs
     stream = stream.pipe(
       browserSync,
-      browserSync.stream({ match: '**/public/styles/*.css' })
+      browserSync.stream({ match: '*.css' })
     );
   }
 
@@ -75,11 +74,7 @@ function compileSass(dir, dest, browserSync) {
 }
 
 async function compileDocsSass(docsPackageDir, options, browserSync) {
-  await compileSass(
-    docsPackageDir,
-    getDocsDistPath(docsPackageDir, options.rootPath, 'public'),
-    browserSync
-  );
+  await compileSass(docsPackageDir, getDocsDistPath(docsPackageDir, options.rootPath), browserSync);
 }
 
 module.exports = {

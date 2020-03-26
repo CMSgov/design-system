@@ -2,7 +2,7 @@
 'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import getHexBackgroundColor from './helpers/getHexBackgroundColor';
+import getHexBackgroundColor from './scripts/helpers/getHexBackgroundColor';
 
 // Provide React modules as a global, so these aren't bundled in each
 // React example's inline script

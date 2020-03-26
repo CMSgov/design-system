@@ -12,7 +12,7 @@ const UsaBanner = function(props) {
         <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-align-items--start ds-u-sm-align-items--center">
           <img
             className="c-usa-banner__header-flag"
-            src="/public/images/us_flag_small.png"
+            src="/images/us_flag_small.png"
             alt="U.S. flag"
           />
           <p className="c-usa-banner__header-text">
@@ -37,7 +37,7 @@ const UsaBanner = function(props) {
           <div className="c-usa-banner__guidance ds-u-padding-right--0 ds-u-sm-padding-right--2">
             <img
               className="c-usa-banner__icon c-usa-banner__media-img"
-              src="/public/images/icon-dot-gov.svg"
+              src="/images/icon-dot-gov.svg"
               alt="Dot gov"
             />
             <p className="c-usa-banner__media-body">

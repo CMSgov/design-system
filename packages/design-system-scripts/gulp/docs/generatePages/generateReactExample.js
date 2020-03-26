@@ -30,9 +30,9 @@ function generateReactExample(page, docsPath, rootPath) {
       const exampleScripts = stats.compilation.assets['bundle.js'].source();
 
       const head = `<title>Example: ${page.reference}</title>
-  <link rel="stylesheet" href="/${rootPath}public/styles/example.css" />`;
+  <link rel="stylesheet" href="/${rootPath}/example.css" />`;
       const body = `<div id="js-example"></div>
-      <script type="text/javascript" src="/${rootPath}public/scripts/example.js"></script>
+      <script type="text/javascript" src="/${rootPath}/example.js"></script>
       <script type="text/javascript">${exampleScripts}</script>`;
 
       const output = savePage(
