@@ -15,13 +15,13 @@ const { compileDocsSass } = require('../sass');
 const { getSourceDirs } = require('../common/getPackageDirs');
 const { logTask, log } = require('../common/logUtil');
 const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
-const { runWebpackStatically } = require('./runWebpack');
+const { runWebpackStatically } = require('./webpack');
 
 /**
  * Parses our JSX files for relevant documentation information and stores it for
  * our other tasks to read later
  */
-async function extractReactDocs(sourcePackageDir, rootPath) {
+async function extractReactDocs(sourcePackageDir, options) {
   logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
   const sources = await getSourceDirs(sourcePackageDir);
@@ -30,7 +30,7 @@ async function extractReactDocs(sourcePackageDir, rootPath) {
   return streamPromise(
     gulp
       .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
-      .pipe(parseReactFile(rootPath))
+      .pipe(parseReactFile(options.rootPath))
       .pipe(merge({ fileName: REACT_DATA_FILENAME }))
       .pipe(gulp.dest(REACT_DATA_DIR))
   );
@@ -43,6 +43,7 @@ async function extractReactDocs(sourcePackageDir, rootPath) {
  */
 function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
   logTask('🏞  ', `Copying fonts and images from source package into ${docsPackageDir}/dist`);
+  // Handle rootPath when copying
   return copyAssets(sourcePackageDir, docsPackageDir);
 }
 
@@ -52,6 +53,7 @@ function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
  */
 function copyDocsPackageAssets(docsPackageDir) {
   logTask('🏞  ', `Copying fonts and images from docs packages into ${docsPackageDir}/dist`);
+  // Handle rootPath when copying
   return copyAssets(docsPackageDir);
 }
 
@@ -76,12 +78,12 @@ module.exports = {
     }
 
     await cleanDist(docsPackageDir);
-    await extractReactDocs(sourcePackageDir, options.rootPath);
+    await extractReactDocs(sourcePackageDir, options);
     await generatePages(sourcePackageDir, docsPackageDir, options);
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
     await copyDocsPackageAssets(docsPackageDir);
     await runWebpackStatically(sourcePackageDir, docsPackageDir, options);
-    await compileDocsSass(docsPackageDir, options.rootPath);
+    await compileDocsSass(docsPackageDir, options);
     logTask('✅ ', 'Docs generation succeeded');
     log('');
   },

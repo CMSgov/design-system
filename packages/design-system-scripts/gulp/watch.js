@@ -13,7 +13,7 @@ const {
   copySourcePackageAssets,
   copyDocsPackageAssets
 } = require('./docs');
-const { runWebpackServer } = require('./docs/runWebpack');
+const { runWebpackServer } = require('./docs/webpack');
 
 async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
   // Source package assets
