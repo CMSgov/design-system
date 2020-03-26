@@ -890,7 +890,7 @@
     lodash.uniqueid "^4.0.1"
     react-aria-modal "^2.11.1"
 
-"@cmsgov/design-system-docs@file:./packages/docs":
+"@cmsgov/design-system-docs@file:./packages/design-system-docs":
   version "4.0.0-beta.1"
   dependencies:
     "@cmsgov/design-system" "file:../../../Library/Caches/Yarn/v6/npm-@cmsgov-design-system-docs-4.0.0-beta.1-2c035c87-99e2-47e1-a639-404ec08cd87a-1585168759917/node_modules/@cmsgov/design-system"

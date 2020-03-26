@@ -4,7 +4,7 @@ describe('processMarkdownPage', () => {
   let filePath;
 
   beforeEach(() => {
-    filePath = '/cms/design/packages/docs/src/pages/boom-bap.md';
+    filePath = '/cms/design/packages/design-system-docs/src/pages/boom-bap.md';
   });
 
   describe('basic page', () => {
