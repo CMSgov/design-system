@@ -49,7 +49,7 @@ const UsaBanner = function(props) {
           <div className="c-usa-banner__guidance ds-u-padding-top--2 ds-u-sm-padding-top--0">
             <img
               className="c-usa-banner__icon c-usa-banner__media-img"
-              src="/public/images/icon-https.svg"
+              src="/images/icon-https.svg"
               alt="Https"
             />
             <p className="c-usa-banner__media-body">

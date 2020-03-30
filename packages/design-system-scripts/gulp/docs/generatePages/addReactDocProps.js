@@ -21,20 +21,26 @@ function reactComponentDir(docFilePath) {
 module.exports = function(pages, dataPath) {
   return fs.readFile(dataPath, 'utf8').then(contents => {
     const data = JSON.parse(contents);
-    
+
     pages.forEach(page => {
       if (page.reactComponent || page.reactExample) {
-        const reactComponentFile = `${path.join(reactComponentDir(page.source.path), page.reactComponent)}.jsx`;
-        const reactExampleFile = `${path.join(reactComponentDir(page.source.path), page.reactComponent)}.example.jsx`;
+        const reactComponentFile = `${path.join(
+          reactComponentDir(page.source.path),
+          page.reactComponent
+        )}.jsx`;
+        const reactExampleFile = `${path.join(
+          reactComponentDir(page.source.path),
+          page.reactComponent
+        )}.example.jsx`;
 
         if (page.reactComponent) {
           const componentData = data[reactComponentFile];
           if (componentData && componentData.length === 1) {
             page.reactComponentPath = reactComponentFile;
             // There should only ever be one exported component definition
-            page.reactComponentDocs = componentData;
+            page.reactComponentDocs = componentData[0];
           } else {
-            logError(`Invalid react component path or data for ${page.reactComponent}`)
+            logError(`Invalid react component path or data for ${page.reactComponent}`);
           }
         }
 

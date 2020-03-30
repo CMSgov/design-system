@@ -15,7 +15,7 @@ const {
 } = require('./docs');
 const { runWebpackServer } = require('./docs/webpack');
 
-async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
+async function watchSourcePackage(sourcePackageDir, docsPackageDir, options, browserSync) {
   // Source package assets
   gulp.watch(`${sourcePackageDir}/src/{images,fonts}/*`, async () => {
     await copySourcePackageAssets(sourcePackageDir, docsPackageDir);
@@ -34,7 +34,7 @@ async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
 
   // Source package React components and examples
   gulp.watch(
-    [`${sourcePackageDir}/src/**/*.{js,jsx}`, `${sourcePackageDir}/src/**/*.test.{js,jsx}`],
+    [`${sourcePackageDir}/src/**/*.{js,jsx}`, `!${sourcePackageDir}/src/**/*.test.{js,jsx}`],
     async () => {
       await extractReactDocs(sourcePackageDir, options.rootPath);
       await generatePages(sourcePackageDir, docsPackageDir, options);
@@ -42,7 +42,7 @@ async function watchSourcePackage(sourcePackageDir, docsPackageDir, options) {
   );
 }
 
-async function watchDocsPackage(sourcePackageDir, docsPackageDir, options) {
+async function watchDocsPackage(sourcePackageDir, docsPackageDir, options, browserSync) {
   // Docs assets
   gulp.watch(`${docsPackageDir}/src/{images,fonts}/*`, async () => {
     await copyDocsPackageAssets(docsPackageDir);

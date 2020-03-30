@@ -22,6 +22,7 @@ function compileSass(dir, dest, browserSync) {
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
+  const envDev = process.env.NODE_ENV === 'development';
 
   const sassCompiler = sass({
     outputStyle: 'expanded',
@@ -34,12 +35,9 @@ function compileSass(dir, dest, browserSync) {
 
   const postcssPlugins = [
     postcssImport(), // inline imports
-    autoprefixer() // add any necessary vendor prefixes
+    autoprefixer(), // add any necessary vendor prefixes
+    ...(!envDev ? [cssnano()] : []) // minify css
   ];
-
-  if (process.env.NODE_ENV !== 'development') {
-    postcssPlugins.push(cssnano()); // minify css
-  }
 
   let stream = gulp
     .src([`${src}/**/*.scss`, `!${src}/**/*.docs.scss}`])
@@ -50,9 +48,9 @@ function compileSass(dir, dest, browserSync) {
         hasChanged: changed.compareSha1Digest
       })
     )
-    .pipe(gulpIf(process.env.NODE_ENV === 'development', sourcemaps.init()))
+    .pipe(gulpIf(envDev, sourcemaps.init()))
     .pipe(sassCompiler)
-    .pipe(gulpIf(process.env.NODE_ENV === 'development', sourcemaps.write()))
+    .pipe(gulpIf(envDev, sourcemaps.write()))
     .pipe(postcss(postcssPlugins))
     .pipe(
       count({
@@ -64,12 +62,12 @@ function compileSass(dir, dest, browserSync) {
 
   if (browserSync) {
     // Auto-inject into docs
-    stream = stream.pipe(
-      browserSync,
-      browserSync.stream({ match: '*.css' })
-    );
+    stream = stream.pipe(browserSync.stream({ 
+      once: true,
+      match: '*.css' 
+    }));
   }
-
+  
   return streamPromise(stream);
 }
 

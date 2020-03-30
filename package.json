@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@cmsgov/design-system": "file:./packages/design-system",
-    "@cmsgov/design-system-core": "latest",
     "@cmsgov/design-system-docs": "file:./packages/design-system-docs",
     "@cmsgov/design-system-scripts": "file:./packages/design-system-scripts",
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",

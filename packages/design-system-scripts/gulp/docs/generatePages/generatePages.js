@@ -162,5 +162,5 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
   // Create HTML files from the pages array
   const generatedPagesCount = await generateDocPages(pages, dist, options);
 
-  logTask('📝 ', `Added ${generatedPagesCount} docs pages to ${docsPackageDir}`);
+  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsPackageDir}`);
 };

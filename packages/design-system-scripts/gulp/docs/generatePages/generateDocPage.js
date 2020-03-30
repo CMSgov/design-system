@@ -1,5 +1,4 @@
-const Docs = require('@cmsgov/design-system-docs/src/scripts/Docs').default;
-// const Docs = require('@cmsgov/design-system-docs/src/scripts/components/Docs').default;
+const Docs = require('@cmsgov/design-system-docs/src/scripts/components/Docs').default;
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const savePage = require('./savePage');
