@@ -21,7 +21,7 @@ module.exports = function createWebpackConfig(sourcePackageDir, docsPackageDir, 
     },
     output: {
       path: distPath,
-      publicPath: distPath,
+      publicPath: '/',
       filename: '[name].js'
     },
     module: {

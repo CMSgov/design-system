@@ -87,5 +87,7 @@ module.exports = {
     await compileSass(sourcePackageDir);
     logTask('✅ ', 'Build succeeded');
     log('');
-  }
+  },
+  copyAll,
+  compileJs
 };

@@ -63,8 +63,7 @@ function compileSass(dir, dest, browserSync) {
   if (browserSync) {
     // Auto-inject into docs
     stream = stream.pipe(browserSync.stream({ 
-      once: true,
-      match: '*.css' 
+      match: '**/*.css' 
     }));
   }
   
