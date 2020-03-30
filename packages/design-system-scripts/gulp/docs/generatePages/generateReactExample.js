@@ -2,6 +2,7 @@ const MemoryFS = require('memory-fs');
 const path = require('path');
 const savePage = require('./savePage');
 const webpack = require('webpack');
+const { log } = require('../../common/logUtil');
 
 /**
  * Creates an HTML page using the React component and no additional UI.
@@ -14,30 +15,38 @@ const webpack = require('webpack');
  */
 function generateReactExample(page, docsPath, rootPath) {
   return new Promise((resolve, reject) => {
-    if (rootPath) {
-      rootPath = `${rootPath}/`;
-    }
+    // TODO: Generalize for child DS case
+    const examplePath = path.resolve('packages', page.reactExamplePath);
+    // TODO: add include path
+    const config = createWebpackConfig(examplePath);
+    const compiler = webpack(config);
 
-    const examplePath = path.resolve(__dirname, '../../../packages', page.reactExamplePath);
-
-    const compiler = createWebpackCompiler(examplePath);
     // Compile file to memory
     // https://webpack.js.org/api/node/#custom-file-systems
     compiler.outputFileSystem = new MemoryFS();
 
     compiler.run((err, stats) => {
       if (err) return reject(err);
+      const webpackErrors = stats.toString('errors-warnings');
+      if (webpackErrors) {
+        log(webpackErrors)
+      }
+
       const exampleScripts = stats.compilation.assets['bundle.js'].source();
 
-      const head = `<title>Example: ${page.reference}</title>
-  <link rel="stylesheet" href="/${rootPath}/example.css" />`;
-      const body = `<div id="js-example"></div>
-      <script type="text/javascript" src="/${rootPath}/example.js"></script>
-      <script type="text/javascript">${exampleScripts}</script>`;
+      const head = `
+        <title>Example: ${page.reference}</title>
+        <link rel="stylesheet" href="/${path.join(rootPath, 'example.css')}" />
+      `;
+      const body = `
+        <div id="js-example"></div>
+        <script type="text/javascript" src="/${path.join(rootPath, 'example.js')}"></script>
+        <script type="text/javascript">${exampleScripts}</script>
+      `;
 
       const output = savePage(
         {
-          uri: `${rootPath}example/${page.reference}`,
+          uri: `${path.join(rootPath, 'example', page.reference)}`,
           head: head,
           body: body
         },
@@ -54,8 +63,8 @@ function generateReactExample(page, docsPath, rootPath) {
  * @param {String} examplePath - Path to entry file
  * @return {*} Webpack compiler instance
  */
-function createWebpackCompiler(examplePath) {
-  const webpackConfig = {
+function createWebpackConfig(examplePath) {
+  const config = {
     mode: process.env.NODE_ENV,
     entry: examplePath,
     output: { filename: 'bundle.js', path: '/build' },
@@ -80,12 +89,12 @@ function createWebpackCompiler(examplePath) {
   };
 
   if (process.env.NODE_ENV === 'production') {
-    webpackConfig.optimization = {
+    config.optimization = {
       minimize: true
     };
   }
 
-  return webpack(webpackConfig);
+  return config;
 }
 
 module.exports = generateReactExample;

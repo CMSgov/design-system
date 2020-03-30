@@ -1,5 +1,14 @@
-const reactPathFromSource = require('./reactPathFromSource');
 const fs = require('mz/fs');
+const path = require('path');
+const { logError } = require('../../common/logUtil');
+
+function reactComponentDir(docFilePath) {
+  // Get react component directory from the documentation file path
+  // Directory is relative to `packages/`
+  // Example: packages/design-system/components/Button/_Button.docs.scss -> packages/design-system/components/Button/
+  // TODO: replace hardcoded `.docs.scss` with mdx or a more robust regex logic
+  return docFilePath.match(/packages\/([a-z0-9\-/]+\/)[_a-z0-9]+\.docs\.scss/i)[1];
+}
 
 /**
  * Iterates through the un-nested pages and identifies those with a React
@@ -12,39 +21,29 @@ const fs = require('mz/fs');
 module.exports = function(pages, dataPath) {
   return fs.readFile(dataPath, 'utf8').then(contents => {
     const data = JSON.parse(contents);
-
+    
     pages.forEach(page => {
       if (page.reactComponent || page.reactExample) {
-        if (page.reactComponent) {
-          const componentPath = `${reactPathFromSource(page.source.path, page.reactComponent)}.jsx`;
-          const componentData = data[componentPath];
+        const reactComponentFile = `${path.join(reactComponentDir(page.source.path), page.reactComponent)}.jsx`;
+        const reactExampleFile = `${path.join(reactComponentDir(page.source.path), page.reactComponent)}.example.jsx`;
 
-          page.reactComponentPath = componentPath;
-          // There should only ever be one exported component definition
-          page.reactComponentDocs = componentData && componentData.length ? componentData[0] : null;
+        if (page.reactComponent) {
+          const componentData = data[reactComponentFile];
+          if (componentData && componentData.length === 1) {
+            page.reactComponentPath = reactComponentFile;
+            // There should only ever be one exported component definition
+            page.reactComponentDocs = componentData;
+          } else {
+            logError(`Invalid react component path or data for ${page.reactComponent}`)
+          }
         }
 
-        const examplePath = formExamplePath(page);
-        const exampleData = data[examplePath];
-
+        const exampleData = data[reactExampleFile];
         if (exampleData && exampleData.source) {
-          page.reactExamplePath = examplePath;
+          page.reactExamplePath = reactExampleFile;
           page.reactExampleSource = exampleData.source;
         }
       }
     });
   });
 };
-
-/**
- * @param {Object} page
- * @return {String} Path to the file responsible for rendering a
- *  React component's example. Relative to packages/
- */
-function formExamplePath(page) {
-  let examplePath = reactPathFromSource(page.source.path, page.reactExample || page.reactComponent);
-
-  // Provide support to pass in a component with or without the extension
-  examplePath = examplePath.replace(/\.example\.jsx$/, '');
-  return `${examplePath}.example.jsx`;
-}

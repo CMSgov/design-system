@@ -26,7 +26,6 @@ async function extractReactDocs(sourcePackageDir, options) {
 
   const sources = await getSourceDirs(sourcePackageDir);
   const sourcesGlob = `{${sources.map(dir => `${dir}/src`).join(',')}}`;
-
   return streamPromise(
     gulp
       .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
