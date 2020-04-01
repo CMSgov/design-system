@@ -88,6 +88,5 @@ module.exports = {
     logTask('✅ ', 'Build succeeded');
     log('');
   },
-  copyAll,
-  compileJs
+  copyAll
 };

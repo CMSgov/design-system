@@ -7,7 +7,7 @@ function reactComponentDir(docFilePath) {
   // Directory is relative to `packages/`
   // Example: packages/design-system/components/Button/_Button.docs.scss -> packages/design-system/components/Button/
   // TODO: replace hardcoded `.docs.scss` with mdx or a more robust regex logic
-  return docFilePath.match(/packages\/([a-z0-9\-/]+\/)[_a-z0-9]+\.docs\.scss/i)[1];
+  return docFilePath.match(/(packages\/[a-z0-9\-/]+\/)[_a-z0-9]+\.docs\.scss/i)[1];
 }
 
 /**
@@ -40,7 +40,10 @@ module.exports = function(pages, dataPath) {
             // There should only ever be one exported component definition
             page.reactComponentDocs = componentData[0];
           } else {
-            logError(`Invalid react component path or data for ${page.reactComponent}`);
+            logError(
+              'react doc props',
+              `Invalid react component path or data for ${page.reactComponent}`
+            );
           }
         }
 

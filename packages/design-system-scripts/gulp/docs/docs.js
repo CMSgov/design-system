@@ -25,7 +25,9 @@ async function extractReactDocs(sourcePackageDir, options) {
   logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
   const sources = await getSourceDirs(sourcePackageDir);
-  const sourcesGlob = `{${sources.map(dir => `${dir}/src`).join(',')}}`;
+  const sourcesGlob =
+    sources.length > 1 ? `{${sources.map(dir => `${dir}/src`).join(',')}}` : `${sources[0]}/src`;
+
   return streamPromise(
     gulp
       .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
