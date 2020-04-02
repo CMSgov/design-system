@@ -42,7 +42,7 @@ async function copyAll(dir) {
 
   if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
-    logTask('🖼 ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
+    logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
   }
 
   return Promise.all(copyTasks);

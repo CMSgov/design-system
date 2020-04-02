@@ -8,11 +8,6 @@ const { logIntroduction } = require('./gulp/common/logUtil');
 // eslint-disable-next-line no-unused-expressions
 yargs
   .usage('Usage: $0 <command> [options]')
-  .option('skipLatest', {
-    default: false,
-    description:
-      'Use this option when collecting stats on output files that do not yet exist in the latest release'
-  })
   .command({
     command: '*',
     handler: () => {
@@ -24,6 +19,7 @@ yargs
     desc: 'Builds the JavaScript and Sass for your main design-system package',
     builder: yargs => {
       describeSourcePackageDir(yargs);
+      describeStatsOptions(yargs);
     },
     handler: async argv => {
       logIntroduction();
@@ -41,6 +37,7 @@ yargs
       describeSourcePackageDir(yargs);
       describeDocsPackageDir(yargs);
       describeDocsOptions(yargs);
+      describeStatsOptions(yargs);
     },
     handler: async argv => {
       logIntroduction();
@@ -103,4 +100,12 @@ function describeDocsOptions(yargs) {
       description:
         'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
     });
+}
+
+function describeStatsOptions(yargs) {
+  yargs.option('skipLatest', {
+    default: false,
+    description:
+      'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.'
+  });
 }
