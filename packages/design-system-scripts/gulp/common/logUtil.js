@@ -2,10 +2,11 @@
  * Just some utility functions to log things.
  * Via: github.com/18F/web-design-standards-docs
  */
-const pkg = require('../../package.json');
 const log = require('fancy-log');
 const chalk = require('chalk');
 const notifier = require('node-notifier');
+const getPackageName = require('./getPackageName');
+const { CORE_SOURCE_PACKAGE } = require('./constants');
 
 function drawFlag() {
   // American Flag in ASCII
@@ -59,10 +60,11 @@ function notify(title, message, wait) {
 module.exports = {
   log,
 
-  logIntroduction: function(message) {
-    message = message || 'CMS.gov Design System';
-
-    log(chalk.cyan(pkg.name), message);
+  logIntroduction: async function(sourcePackageDir) {
+    const packageName = await getPackageName(sourcePackageDir);
+    const message =
+      packageName === CORE_SOURCE_PACKAGE ? 'CMS.gov Design System' : 'CMS.gov Child Design System';
+    log(chalk.cyan(packageName), message);
     drawFlag();
   },
 
@@ -72,11 +74,11 @@ module.exports = {
 
   logError: function(name, message) {
     log(chalk.red(name), chalk.yellow(message));
-    notify(pkg.name + ' gulp ' + name, message, true);
+    notify(name, message, true);
   },
 
   logTask: function(name, message) {
     log(chalk.magenta(name), chalk.green(message));
-    notify(pkg.name + ' gulp ' + name, message, false);
+    notify(name, message, false);
   }
 };

@@ -22,7 +22,7 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async argv => {
-      logIntroduction();
+      await logIntroduction(argv.sourcePackageDir);
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
 
@@ -40,7 +40,7 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async argv => {
-      logIntroduction();
+      await logIntroduction(argv.sourcePackageDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
@@ -60,7 +60,7 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async argv => {
-      logIntroduction();
+      await logIntroduction(argv.sourcePackageDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
