@@ -15,9 +15,7 @@ const { log } = require('../../common/logUtil');
  */
 function generateReactExample(page, docsPath, rootPath) {
   return new Promise((resolve, reject) => {
-    // TODO: Generalize for child DS case
     const examplePath = path.resolve(page.reactExamplePath);
-    // TODO: add include path
     const config = createWebpackConfig(examplePath);
     const compiler = webpack(config);
 
@@ -64,6 +62,7 @@ function generateReactExample(page, docsPath, rootPath) {
  * @return {*} Webpack compiler instance
  */
 function createWebpackConfig(examplePath) {
+  // TODO: Add include paths
   const config = {
     mode: process.env.NODE_ENV,
     entry: examplePath,

@@ -2,14 +2,6 @@ const fs = require('mz/fs');
 const path = require('path');
 const { logError } = require('../../common/logUtil');
 
-function reactComponentDir(docFilePath) {
-  // Get react component directory from the documentation file path
-  // Directory is relative to `packages/`
-  // Example: packages/design-system/components/Button/_Button.docs.scss -> packages/design-system/components/Button/
-  // TODO: replace hardcoded `.docs.scss` with mdx or a more robust regex logic
-  return docFilePath.match(/(packages\/[a-z0-9\-/]+\/)[_a-z0-9]+\.docs\.scss/i)[1];
-}
-
 /**
  * Iterates through the un-nested pages and identifies those with a React
  * component or example. For those pages, the relevant React documentation
@@ -23,13 +15,14 @@ module.exports = function(pages, dataPath) {
     const data = JSON.parse(contents);
 
     pages.forEach(page => {
+      // TODO: Replace this logic with explicitly defined paths in KSS/markdown
       if (page.reactComponent || page.reactExample) {
         const reactComponentFile = `${path.join(
-          reactComponentDir(page.source.path),
+          path.dirname(page.source.path),
           page.reactComponent
         )}.jsx`;
         const reactExampleFile = `${path.join(
-          reactComponentDir(page.source.path),
+          path.dirname(page.source.path),
           page.reactComponent
         )}.example.jsx`;
 

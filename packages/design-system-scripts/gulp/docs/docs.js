@@ -30,7 +30,7 @@ async function extractReactDocs(sourcePackageDir, options) {
 
   return streamPromise(
     gulp
-      .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
+      .src(`${sourcesGlob}/**/*.{jsx|!example|!test}`)
       .pipe(parseReactFile(options.rootPath))
       .pipe(merge({ fileName: REACT_DATA_FILENAME }))
       .pipe(gulp.dest(REACT_DATA_DIR))
