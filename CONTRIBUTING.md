@@ -26,7 +26,7 @@ Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to 
 
 When considering what to do with a proposed pattern, there are several questions to answer first. The decision tree below outlines those questions to be answered and the various outcomes:
 
-![CMS Design System component decision workflow](https://github.com/CMSgov/design-system/blob/9fa6d831b059727e0cb12a3b0e0fc7755ce52e8e/.github/images/CMS-Design-System-component-decision-workflow.jpg?raw=true)
+![CMS Design System component decision workflow](https://raw.githubusercontent.com/CMSgov/design-system/master/.github/images/CMS-Design-System-component-decision-workflow.jpg)
 
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
