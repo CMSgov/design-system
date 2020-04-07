@@ -65,8 +65,8 @@
     },
     {
       "label": "CMSDS - Getting Started - Browser Support",
-      "referenceUrl": "https://design.cms.gov/startup/browser-support/",
-      "url": "http://localhost:3000/startup/browser-support/",
+      "referenceUrl": "https://design.cms.gov/guidelines/browser-support/",
+      "url": "http://localhost:3000/guidelines/browser-support/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
