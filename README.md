@@ -17,9 +17,10 @@
 
 ## Packages
 
-You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
+You're currently at the root of a monorepo containing multiple NPM packages located in the [`packages` directory](packages/). Unless you're a contributor or a child design system maintainer, you can ignore the `@cmsgov/design-system-scripts` and `@cmsgov/design-system-docs` packages, as they are mostly focused on the design system's developer tooling and documentation. View the `README.md` in each of these for additional details.
 
-| Name                                        | Description                                                                                                                                                                                                                         |
+<<<<<<< HEAD
+| Name | Description |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
@@ -32,6 +33,15 @@ These packages are project dependencies, mostly focused around the design system
 | [Documentation site](packages/design-system-docs/)           | This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                                  |
 | [ESLint config](packages/eslint-config-design-system/)       | The ESLint rules we use to lint the design system's JS and React components <br> [![@cmsgov/eslint-config-design-system](https://img.shields.io/npm/v/@cmsgov/eslint-config-design-system.svg?label=@cmsgov%2Feslint-config-design-system)](https://www.npmjs.com/package/@cmsgov/eslint-config-design-system) |
 | [Stylelint config](packages/stylelint-config-design-system/) | The Stylelint rules we use to lint the design system's Sass <br> [![@cmsgov/stylelint-config-design-system](https://img.shields.io/npm/v/@cmsgov/stylelint-config-design-system.svg?label=@cmsgov%2Fstylelint-config-design-system)](https://www.npmjs.com/package/@cmsgov/stylelint-config-design-system)     |
+
+=======
+| Name | Description |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [CMS Design System](packages/design-system) | The core CSS, JS, and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
+| [Design System Documentation Site](packages/design-system-docs) | Markdown files containing documentation for the core design system site. These files are used by `@cmsgov/design-system-scripts` to generate our documentation site. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system-docs)](https://www.npmjs.com/package/@cmsgov/design-system-docs) |
+| [Design System Scripts](packages/design-system-docs) | Scripts for compiling, testing, and linting design system assets. Also contains scripts for building and serving the documentation site. This is used internally by the core CMS design system team, but is made publicly for child design systems. <br> [![@cmsgov/design-system-scripts](https://img.shields.io/npm/v/@cmsgov/design-system-scripts.svg?label=@cmsgov%2Fdesign-system-scripts)](https://www.npmjs.com/package/@cmsgov/design-system-scripts) |
+
+> > > > > > > a3bd57ba... Update documentation
 
 ## Examples
 
@@ -77,6 +87,8 @@ These scripts can all be run from the root level of the repo:
 - `yarn lint`
   - Runs just the linting portion of the tests
 
+<<<<<<< HEAD
+
 #### Theme scripts
 
 You can also use the following scripts to [build and preview a theme](https://design.cms.gov/startup/site-package/):
@@ -91,6 +103,12 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
 ## Visual regression testing
+
+=======
+
+### Visual regression testing
+
+> > > > > > > a3bd57ba... Update documentation
 
 We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
 
