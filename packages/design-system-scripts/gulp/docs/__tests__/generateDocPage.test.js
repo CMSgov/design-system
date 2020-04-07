@@ -39,7 +39,7 @@ describe('generateDocPage', () => {
       depth: 2,
       modifiers: [],
       sections: [],
-      uswds: 'https://standards.usa.gov/components/buttons',
+      uswds: 'https://designsystem.digital.gov/components/buttons',
       parentReference: 'components'
     };
 
