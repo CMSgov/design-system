@@ -6,7 +6,7 @@ The design system favors clarity over succinctness. This means the design system
 
 ## CSS class naming convention
 
-<img src="{{root}}/public/images/naming-convention.svg" class="ds-u-border--1" />
+<img src="{{root}}/images/naming-convention.svg" class="ds-u-border--1" />
 
 ### Namespace
 

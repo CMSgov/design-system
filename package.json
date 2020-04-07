@@ -11,7 +11,6 @@
     "test": "echo 'placeholder test script'",
     "posttest": "echo 'placeholder lint script'",
     "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
-    "start:theme": "yarn start --theme",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
   },

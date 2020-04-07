@@ -2,10 +2,6 @@
 /packages/design-system/dist
 /packages/design-system-docs/dist
 
-# Themes should be in their own repo, but can be included in this directory
-# in order to use the same tooling and documentation processes
-packages/themes
-
 # Backstop JS
 tools/backstop_data/html_report
 tools/backstop_data/bitmaps_test

@@ -12,7 +12,6 @@
   "npmClient": "yarn",
   "packages": [
     "packages/*",
-    "packages/themes/*"
   ],
   "version": "3.7.0"
 }

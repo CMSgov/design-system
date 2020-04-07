@@ -27,8 +27,8 @@ function createPageObject(rootPath, dir, filename) {
 }
 
 /**
- * Reads all Markdown pages in the docs and (optionally) theme directory,
- * transforms markdown, and creates a JSON representation of each page.
+ * Reads and transforms all Markdown pages in the docs directory,
+ * and creates a JSON representation of each page.
  * @param {String} rootPath - Root docs site path
  * @param {Array} dir - Directory containing the src directory where we will find markdown files
  * @return {Promise<Object[]>} Resolves with an array of JSON pages

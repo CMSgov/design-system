@@ -74,8 +74,8 @@
     },
     {
       "label": "CMSDS - Getting Started - Building a Site Package",
-      "referenceUrl": "https://design.cms.gov/startup/site-package/",
-      "url": "http://localhost:3000/startup/site-package/",
+      "referenceUrl": "https://design.cms.gov/startup/child-design-systems/",
+      "url": "http://localhost:3000/startup/child-design-systems/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"
@@ -136,9 +136,9 @@
       ]
     },
     {
-      "label": "CMSDS - Guidelines - Themeing",
-      "referenceUrl": "https://design.cms.gov/guidelines/themes/",
-      "url": "http://localhost:3000/guidelines/themes/",
+      "label": "CMSDS - Guidelines - Theming",
+      "referenceUrl": "https://design.cms.gov/startup/themes/",
+      "url": "http://localhost:3000/startup/themes/",
       "removeSelectors": [
         "#frame",
         "#tota11y-toolbar"

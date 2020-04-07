@@ -152,7 +152,7 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
   );
 
   // Merge both sets of KssSection objects into a single array of page parts.
-  // Also, remove pages with the same URL (so themes can override existing pages)
+  // Also, remove pages with the same URL (so child design systems can override existing pages)
   const pageSections = uniquePages(markdownPagesData.concat(kssSections));
 
   await addReactDocProps(pageSections, REACT_DATA_PATH);

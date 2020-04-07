@@ -247,7 +247,3 @@ The `weight` property controls the order of the page in the left navigation. `0`
 ### Body
 
 The content of the page comes after the front-matter section. You can write your content using a mix of Markdown and HTML.
-
-### Themes
-
-To override a Markdown page from a [theme](https://design.cms.gov/startup/site-package/#what-is-a-theme-), create a Markdown file with the same filename as the one you're overriding in a `src/pages` sub-directory (ie. `packages/themes/my-theme/src/pages/getting-started.md`
