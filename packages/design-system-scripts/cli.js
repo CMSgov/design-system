@@ -85,13 +85,31 @@ yargs
       await watchDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
     }
   })
+  .command({
+    command: 'lint <directories..>',
+    desc: 'Runs stylelint and eslint on the "src" of one or more directories.',
+    builder: yargs => {
+      yargs.positional('directories..', {
+        desc:
+          'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
+        type: 'string',
+        demandOption: true
+      });
+    },
+    handler: async argv => {
+      const { lintDirectories } = require('./gulp/lint');
+
+      await lintDirectories(argv.directories, { ...argv });
+    }
+  })
   .demandCommand()
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
   yargs.positional('sourcePackageDir', {
     desc: 'The relative path to your main design-system package (that contains a src directory)',
-    type: 'string'
+    type: 'string',
+    demandOption: true
   });
 }
 
@@ -99,7 +117,8 @@ function describeDocsPackageDir(yargs) {
   yargs.positional('docsPackageDir', {
     desc:
       'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
-    type: 'string'
+    type: 'string',
+    demandOption: true
   });
 }
 
