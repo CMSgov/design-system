@@ -20,15 +20,13 @@
     "@cmsgov/design-system-docs": "file:./packages/design-system-docs",
     "@cmsgov/design-system-scripts": "file:./packages/design-system-scripts",
     "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
     "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
     "eslint-config-prettier": "^6.10.0",
     "lerna": "^2.11.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "stylelint": "10.1.0",
-    "stylelint-config-prettier": "^2.1.0"
+    "stylelint": "10.1.0"
   },
   "engines": {
     "node": ">=11.0.0 <12.0.0",
