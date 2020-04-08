@@ -8,6 +8,7 @@ const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
+const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
 const { getSourceDirs } = require('./common/getPackageDirs');
@@ -18,10 +19,11 @@ const { CORE_SOURCE_PACKAGE } = require('./common/constants');
  * Copy any JSON files that our components might depend on
  */
 function copyJson(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
-      .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
-      .pipe(gulp.dest(`${dir}/dist`))
+      .src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
@@ -29,10 +31,11 @@ function copyJson(dir) {
  * Copy Sass files from src to dist because we don't distribute the src folder
  */
 function copySass(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
-      .src([`${dir}/src/**/*.{scss,sass}`, `!${dir}/src/**/*.docs.{scss,sass}`])
-      .pipe(gulp.dest(`${dir}/dist`))
+      .src([`${src}/**/*.{scss,sass}`, `!${src}/**/*.docs.{scss,sass}`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
@@ -55,14 +58,15 @@ async function copyAll(dir) {
  *  this task first, otherwise the component won't be found.
  */
 function compileJs(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
       .src([
-        `${dir}/src/**/*.{js,jsx}`,
-        `!${dir}/src/**/{__mocks__,__tests__}/*.{js,jsx}`,
-        `!${dir}/src/**/*.example.{js,jsx}`,
-        `!${dir}/src/**/*.test.{js,jsx}`,
-        `!${dir}/src/helpers/e2e/*.{js,jsx}`
+        `${src}/**/*.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__}/*.{js,jsx}`,
+        `!${src}/**/*.example.{js,jsx}`,
+        `!${src}/**/*.test.{js,jsx}`,
+        `!${src}/helpers/e2e/*.{js,jsx}`
       ])
       .pipe(babel())
       .pipe(
@@ -71,7 +75,7 @@ function compileJs(dir) {
           logger: message => logTask('📜 ', message)
         })
       )
-      .pipe(gulp.dest(`${dir}/dist`))
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 

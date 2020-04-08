@@ -7,7 +7,9 @@ const copyAssets = require('../common/copyAssets');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
 const getPackageJson = require('../common/getPackageJson');
+const getSourcePattern = require('../common/getSourcePattern');
 const gulp = require('gulp');
+const path = require('path');
 const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const streamPromise = require('../common/streamPromise');
@@ -25,8 +27,7 @@ async function extractReactDocs(sourcePackageDir, options) {
   logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
   const sources = await getSourceDirs(sourcePackageDir);
-  const sourcesGlob =
-    sources.length > 1 ? `{${sources.map(dir => `${dir}/src`).join(',')}}` : `${sources[0]}/src`;
+  const sourcesGlob = getSourcePattern(sources, 'src');
 
   return streamPromise(
     gulp
@@ -43,7 +44,10 @@ async function extractReactDocs(sourcePackageDir, options) {
  * from the `buildSrc` task that preceded `buildDocs`
  */
 function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
-  logTask('🏞  ', `Copying fonts and images from source package into ${docsPackageDir}/dist`);
+  logTask(
+    '🏞  ',
+    `Copying fonts and images from source package into ${path.join(docsPackageDir, 'dist')}`
+  );
   // Handle rootPath when copying
   return copyAssets(sourcePackageDir, docsPackageDir);
 }
@@ -53,7 +57,10 @@ function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
  * Usually there will only be images in the docs package
  */
 function copyDocsPackageAssets(docsPackageDir) {
-  logTask('🏞  ', `Copying fonts and images from docs packages into ${docsPackageDir}/dist`);
+  logTask(
+    '🏞  ',
+    `Copying fonts and images from docs packages into ${path.join(docsPackageDir, 'dist')}`
+  );
   // Handle rootPath when copying
   return copyAssets(docsPackageDir);
 }

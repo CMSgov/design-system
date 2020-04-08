@@ -5,6 +5,7 @@ const generatePage = require('./generatePage');
 const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
+const path = require('path');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
 const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
@@ -140,7 +141,7 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
    * @return {Array} KssSections
    */
   // Temporarily hardcode task to process KSS in docs too
-  const packages = [...docsDirs, ...sourceDirs].map(pkg => `${pkg}/src/`);
+  const packages = [...docsDirs, ...sourceDirs].map(pkg => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
