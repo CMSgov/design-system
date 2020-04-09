@@ -22,11 +22,18 @@ function compileSass(dir, dest, browserSync) {
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
+
+  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
+  const includePaths = [
+    path.resolve(dir, 'node_modules'),
+    path.resolve(dir, '../node_modules'),
+    src
+  ];
   const envDev = process.env.NODE_ENV === 'development';
 
   const sassCompiler = sass({
     outputStyle: 'expanded',
-    includePaths: [path.resolve(dir, 'node_modules'), src]
+    includePaths
   }).on('error', function(err) {
     logError('sass', 'Error transpiling Sass!');
     logData(err.messageFormatted);

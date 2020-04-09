@@ -6,7 +6,7 @@ const path = require('path');
  */
 module.exports = (dirs, additionalPath = '') => {
   if (dirs.length > 1) {
-    return dirs.map(dir => path.join(dir, additionalPath)).join(',');
+    return `{${dirs.map(dir => path.join(dir, additionalPath)).join(',')}}`;
   } else {
     return path.join(dirs[0], additionalPath);
   }

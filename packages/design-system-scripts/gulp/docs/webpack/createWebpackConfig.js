@@ -3,21 +3,25 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const getDocsDistPath = require('../../common/getDocsDistPath');
+const { last } = require('lodash');
+const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
 
-module.exports = function createWebpackConfig(sourcePackageDir, docsPackageDir, options) {
+module.exports = async function createWebpackConfig(sourcePackageDir, docsPackageDir, options) {
   const distPath = getDocsDistPath(docsPackageDir, options.rootPath);
-  // TODO: automatically include core npm package for child DS?
+  const sources = await getSourceDirs(sourcePackageDir);
+  const docs = await getDocsDirs(docsPackageDir);
+
   const includePaths = [
-    fs.realpathSync(path.resolve(sourcePackageDir, 'src')),
-    fs.realpathSync(path.resolve(docsPackageDir, 'src'))
+    fs.realpathSync(path.resolve(last(sources), 'src')),
+    fs.realpathSync(path.resolve(last(docs), 'src'))
   ];
 
   const config = {
     mode: process.env.NODE_ENV || 'production',
     context: __dirname,
     entry: {
-      index: [path.resolve(docsPackageDir, 'src/index.jsx')],
-      example: [path.resolve(docsPackageDir, 'src/example.js')]
+      index: [path.resolve(last(docs), 'src/index.jsx')],
+      example: [path.resolve(last(docs), 'src/example.js')]
     },
     output: {
       path: distPath,

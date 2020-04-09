@@ -2,7 +2,7 @@
   "name": "design-system",
   "private": true,
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
-  "repository": "CMSgov/design-system",
+  "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
     "build": "NODE_ENV=production yarn cmsds build-docs packages/design-system packages/design-system-docs --env=production",
     "bump": "lerna publish --skip-git --skip-npm",

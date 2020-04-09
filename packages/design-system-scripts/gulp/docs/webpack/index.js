@@ -18,7 +18,7 @@ module.exports = {
   async runWebpackStatically(sourcePackageDir, docsPackageDir, options) {
     logTask('🚜 ', 'Running Webpack statically');
     try {
-      const config = createWebpackConfig(sourcePackageDir, docsPackageDir, options);
+      const config = await createWebpackConfig(sourcePackageDir, docsPackageDir, options);
       const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
 
       // TODO: Replace stats module logging with clean logTask count
@@ -37,7 +37,7 @@ module.exports = {
   async runWebpackServer(sourcePackageDir, docsPackageDir, options, browserSync) {
     logTask('🚜 ', 'Running Webpack server');
     try {
-      const config = createWebpackConfig(sourcePackageDir, docsPackageDir, options);
+      const config = await createWebpackConfig(sourcePackageDir, docsPackageDir, options);
       const bundler = webpack(config);
 
       browserSync.init({

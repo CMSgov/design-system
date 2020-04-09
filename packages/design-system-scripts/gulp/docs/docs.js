@@ -4,6 +4,7 @@
  * generating the HTML files which get published as the public site.
  */
 const copyAssets = require('../common/copyAssets');
+const copyDir = require('../common/copyDir');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
 const getPackageJson = require('../common/getPackageJson');
@@ -49,7 +50,7 @@ function copySourcePackageAssets(sourcePackageDir, docsPackageDir) {
     `Copying fonts and images from source package into ${path.join(docsPackageDir, 'dist')}`
   );
   // Handle rootPath when copying
-  return copyAssets(sourcePackageDir, docsPackageDir);
+  return copyDir(path.join(sourcePackageDir, 'dist'), path.join(docsPackageDir, 'dist'));
 }
 
 /**
@@ -81,8 +82,8 @@ module.exports = {
 
     // TODO: handle this in other tasks too
     const pkg = await getPackageJson(sourcePackageDir);
-    if (!options.githubUrl) {
-      options.githubUrl = `https://github.com/${pkg.repository}`;
+    if (!options.githubUrl && pkg) {
+      options.githubUrl = pkg.repository;
     }
 
     await cleanDist(docsPackageDir);
