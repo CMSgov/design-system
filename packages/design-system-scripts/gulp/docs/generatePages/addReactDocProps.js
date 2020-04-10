@@ -35,7 +35,7 @@ module.exports = function(pages, dataPath) {
           } else {
             logError(
               'react doc props',
-              `Invalid react component path or data for ${page.reactComponent}`
+              `Invalid react component path or data for ${reactComponentFile}`
             );
           }
         }

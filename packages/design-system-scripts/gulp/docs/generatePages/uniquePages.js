@@ -1,3 +1,5 @@
+const { logTask } = require('../../common/logUtil');
+
 /**
  * Remove pages with duplicate references, giving precedence to theme files
  * @param {Array} pages
@@ -7,13 +9,13 @@ function uniquePages(pages) {
   const routes = {};
 
   pages.forEach(page => {
-    // Use reference since referenceURI may sometimes be blank
-    if (routes[page.reference] && !page.source.path.match(/^packages\/themes\//)) {
-      // Only overwrite the page if the page is coming from a theme file
-      return;
+    if (!routes[page.reference]) {
+      routes[page.reference] = page;
+    } else if (!page.source.path.match(/design-system-docs/)) {
+      // Override exisiting page if the new page comes from a child DS, aka path doesnt match `design-system-docs`
+      logTask('🖊️  ', `Overriding ${page.reference} documentation with ${page.source.path}`);
+      routes[page.reference] = page;
     }
-
-    routes[page.reference] = page;
   });
 
   return Object.keys(routes).map(key => routes[key]);
