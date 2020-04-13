@@ -33,7 +33,7 @@ function processMarkup(markup, modifier) {
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateHtmlExample(page, modifier, docsPath, rootPath) {
+function generateHtmlExample(page, modifier, docsPath, { rootPath }) {
   if (rootPath) rootPath = `${rootPath}/`;
   // ie. components.button
   let id = page.reference;

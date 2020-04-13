@@ -7,7 +7,7 @@ const savePage = require('./savePage');
  * Create an HTML page with the documentation's UI
  * @return {Promise}
  */
-function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
+function generateDocPage(routes, page, docsPath, { rootPath, githubUrl, name }) {
   const componentRenderer = () => {
     if (process.env.NODE_ENV === 'development') {
       // In development mode we let the client handle all of the React rendering,
@@ -16,10 +16,11 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl }) {
       return '';
     }
 
-    // On the client-side the "root" and "githubUrlBase" variables are defined
+    // On the client-side the "rootPath" and "githubUrl" variables are defined
     // via Webpack, but we also need to define them here for "server-side" rendering
-    process.env.root = rootPath;
-    process.env.githubUrlBase = githubUrl;
+    process.env.rootPath = rootPath;
+    process.env.githubUrl = githubUrl;
+    process.env.name = name;
 
     return ReactDOMServer.renderToString(React.createElement(Docs, { page, routes: [] }, null));
   };

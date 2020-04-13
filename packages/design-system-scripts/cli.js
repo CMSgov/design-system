@@ -1,7 +1,22 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs');
+const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
+
+async function initCommand(options) {
+  await logIntroduction(options.sourcePackageDir);
+
+  const pkg = await getPackageJson(process.cwd());
+  if (pkg) {
+    if (!options.githubUrl && pkg.repository) {
+      // Use package.json `repository` as default `githubUrl`
+      options.githubUrl = pkg.repository;
+    }
+  }
+
+  return options;
+}
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
@@ -22,12 +37,12 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async argv => {
-      await logIntroduction(argv.sourcePackageDir);
+      const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(argv.sourcePackageDir, { ...argv });
-      await printStats(argv.sourcePackageDir, { ...argv });
+      await buildSrc(options.sourcePackageDir, { ...options });
+      await printStats(options.sourcePackageDir, { ...options });
     }
   })
   .command({
@@ -40,14 +55,14 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async argv => {
-      await logIntroduction(argv.sourcePackageDir);
+      const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(argv.sourcePackageDir, { ...argv });
-      await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
-      await printStats(argv.sourcePackageDir, { ...argv });
+      await buildSrc(options.sourcePackageDir, { ...options });
+      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
+      await printStats(options.sourcePackageDir, { ...options });
     }
   })
   .command({
@@ -60,14 +75,14 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async argv => {
-      await logIntroduction(argv.sourcePackageDir);
+      const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
 
-      await buildSrc(argv.sourcePackageDir, { ...argv });
-      await buildDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
-      await watchDocs(argv.sourcePackageDir, argv.docsPackageDir, { ...argv });
+      await buildSrc(options.sourcePackageDir, { ...options });
+      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
+      await watchDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
     }
   })
   .demandCommand()
@@ -95,10 +110,14 @@ function describeDocsOptions(yargs) {
       description:
         'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
     })
+    .option('name', {
+      default: 'CMS Design System',
+      description: 'Name of the design system. This is used to render documentation content.'
+    })
     .option('githubUrl', {
       default: '',
       description:
-        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc.'
+        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.'
     });
 }
 

@@ -41,8 +41,9 @@ module.exports = async function createWebpackConfig(sourcePackageDir, docsPackag
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
-          root: JSON.stringify(options.rootPath),
-          githubUrlBase: JSON.stringify(options.githubUrl),
+          rootPath: JSON.stringify(options.rootPath),
+          githubUrl: JSON.stringify(options.githubUrl),
+          name: JSON.stringify(options.name),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
       })

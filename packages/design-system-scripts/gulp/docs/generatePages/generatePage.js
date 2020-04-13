@@ -14,12 +14,12 @@ let generateDocPage;
  * @param {Array} routes - The documentation's nested routes
  * @param {Object} page
  * @param {String} docsPath
- * @param {String} rootPath - Root docs site path
+ * @param {String} options
  * @param {Boolean} isExample - Whether this page should have the docs UI or
  *   if it only render the markup/reactComponent/reactExample
  * @return {Promise<Boolean>}
  */
-function generatePage(routes, page, docsPath, rootPath, isExample) {
+function generatePage(routes, page, docsPath, options, isExample) {
   if (!generateDocPage) {
     // We need to require this module inside of the method because
     // it depends on compiled React files. Those files are compiled
@@ -29,26 +29,26 @@ function generatePage(routes, page, docsPath, rootPath, isExample) {
   }
 
   if (isExample) {
-    return generateExamples(page, docsPath, rootPath);
+    return generateExamples(page, docsPath, options);
   } else if (typeof page.referenceURI === 'string') {
-    return generateDocPage(routes, page, docsPath, rootPath);
+    return generateDocPage(routes, page, docsPath, options);
   }
 
   return Promise.resolve(false);
 }
 
-function generateExamples(page, docsPath, rootPath) {
-  return generateHtmlExample(page, null, docsPath, rootPath)
+function generateExamples(page, docsPath, options) {
+  return generateHtmlExample(page, null, docsPath, options)
     .then(() => {
       if (page.modifiers) {
         return page.modifiers.map(modifier =>
-          generateHtmlExample(page, modifier, docsPath, rootPath)
+          generateHtmlExample(page, modifier, docsPath, options)
         );
       }
     })
     .then(() => {
       if (page.reactExamplePath) {
-        generateReactExample(page, docsPath, rootPath);
+        generateReactExample(page, docsPath, options);
       }
     });
 }

@@ -14,7 +14,7 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateReactExample(page, docsPath, rootPath) {
+function generateReactExample(page, docsPath, { rootPath }) {
   return new Promise((resolve, reject) => {
     const examplePath = path.resolve(page.reactExamplePath);
     const config = createReactExampleWebpackConfig(examplePath);

@@ -104,14 +104,14 @@ async function generateDocPages(pages, destination, options) {
  * @param {Array} kssSections
  * @return {Promise<Array>}
  */
-function generateMarkupPages(kssSections, destination, rootPath) {
+function generateMarkupPages(kssSections, destination, options) {
   const pagesWithMarkup = kssSections.filter(
     page => !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
   );
 
   return Promise.all(
     pagesWithMarkup.map(page => {
-      return generatePage(null, page, destination, rootPath, true).then(created => [created]);
+      return generatePage(null, page, destination, options, true).then(created => [created]);
     })
   );
 }
@@ -157,7 +157,7 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
 
   await addReactDocProps(pageSections, REACT_DATA_PATH);
   // Create HTML files for markup examples
-  await generateMarkupPages(pageSections, dist, options.rootPath);
+  await generateMarkupPages(pageSections, dist, options);
   // Add missing top-level pages and connect the page parts to their parent pages
   const pages = await addTopLevelPages(pageSections).then(nestSections);
   // Create HTML files from the pages array

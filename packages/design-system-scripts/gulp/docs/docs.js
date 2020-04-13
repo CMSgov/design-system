@@ -7,7 +7,6 @@ const copyAssets = require('../common/copyAssets');
 const copyDir = require('../common/copyDir');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
-const getPackageJson = require('../common/getPackageJson');
 const getSourcePattern = require('../common/getSourcePattern');
 const gulp = require('gulp');
 const path = require('path');
@@ -79,12 +78,6 @@ module.exports = {
       message += ` with a root path of ${options.rootPath}`;
     }
     logTask('🏃 ', message);
-
-    // TODO: handle this in other tasks too
-    const pkg = await getPackageJson(sourcePackageDir);
-    if (!options.githubUrl && pkg) {
-      options.githubUrl = pkg.repository;
-    }
 
     await cleanDist(docsPackageDir);
     await extractReactDocs(sourcePackageDir, options);
