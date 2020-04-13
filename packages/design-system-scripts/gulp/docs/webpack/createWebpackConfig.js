@@ -32,9 +32,9 @@ module.exports = async function createWebpackConfig(sourcePackageDir, docsPackag
       rules: [
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }],
-          include: includePaths
+          exclude: /node_modules(?!\/@cmsgov)/,
+          include: includePaths,
+          use: [{ loader: 'babel-loader' }]
         }
       ]
     },

@@ -4,13 +4,13 @@
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
-    "build": "NODE_ENV=production yarn cmsds build-docs packages/design-system packages/design-system-docs --env=production",
+    "build": "NODE_ENV=production yarn cmsds build-docs packages/design-system packages/design-system-docs",
     "bump": "lerna publish --skip-git --skip-npm",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap && npm link ./packages/design-system-scripts",
     "test": "echo 'placeholder test script'",
     "posttest": "echo 'placeholder lint script'",
-    "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs --env=development",
+    "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
     "start:theme": "yarn start --theme",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"

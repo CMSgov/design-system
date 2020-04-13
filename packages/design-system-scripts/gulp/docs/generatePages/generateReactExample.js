@@ -1,3 +1,4 @@
+const createReactExampleWebpackConfig = require('../webpack/createReactExampleWebpackConfig');
 const MemoryFS = require('memory-fs');
 const path = require('path');
 const savePage = require('./savePage');
@@ -16,7 +17,7 @@ const { log } = require('../../common/logUtil');
 function generateReactExample(page, docsPath, rootPath) {
   return new Promise((resolve, reject) => {
     const examplePath = path.resolve(page.reactExamplePath);
-    const config = createWebpackConfig(examplePath);
+    const config = createReactExampleWebpackConfig(examplePath);
     const compiler = webpack(config);
 
     // Compile file to memory
@@ -53,47 +54,6 @@ function generateReactExample(page, docsPath, rootPath) {
       resolve(output);
     });
   });
-}
-
-/**
- * Create an instance of the Webpack compiler to be used for
- * bundling and compiling the Example file.
- * @param {String} examplePath - Path to entry file
- * @return {*} Webpack compiler instance
- */
-function createWebpackConfig(examplePath) {
-  // TODO: Add include paths
-  const config = {
-    mode: process.env.NODE_ENV,
-    entry: examplePath,
-    output: { filename: 'bundle.js', path: '/build' },
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: [/node_modules/],
-          use: [{ loader: 'babel-loader' }]
-        }
-      ]
-    },
-    plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
-    resolve: { extensions: ['.js', '.jsx'] },
-    performance: {
-      hints: false
-    }
-  };
-
-  if (process.env.NODE_ENV === 'production') {
-    config.optimization = {
-      minimize: true
-    };
-  }
-
-  return config;
 }
 
 module.exports = generateReactExample;
