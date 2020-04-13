@@ -7,6 +7,7 @@ import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import path from 'path';
 import processMarkup from '../helpers/processMarkup';
 
 class HtmlExample extends React.PureComponent {
@@ -43,15 +44,11 @@ class HtmlExample extends React.PureComponent {
   }
 
   render() {
-    const rootPath = process.env.root ? `/${process.env.root}` : '';
-    let iframeURL = `${rootPath}/example/${this.props.reference}`;
-
-    if (this.props.modifier) {
-      iframeURL += `.${this.props.modifier.name}`;
-    }
-
+    const reference = this.props.modifier
+      ? `${this.props.reference}.${this.props.modifier.name}`
+      : this.props.reference;
     // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
-    iframeURL += '/';
+    const iframeURL = path.join('/', process.env.rootPath, 'example', reference, '/');
 
     return (
       <div className="markup markup--html">

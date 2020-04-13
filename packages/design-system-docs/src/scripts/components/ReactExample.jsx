@@ -7,6 +7,7 @@ import Frame from './Frame';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
 import React from 'react';
+import path from 'path';
 require('prismjs/components/prism-jsx');
 
 class ReactExample extends React.PureComponent {
@@ -15,9 +16,8 @@ class ReactExample extends React.PureComponent {
   }
 
   render() {
-    const rootPath = process.env.root ? `/${process.env.root}` : '';
     // GitHub Pages wants a trailing slash, otherwise it redirects to a blocked http page
-    const iframeURL = `${rootPath}/example/${this.props.reference}/`;
+    const iframeURL = path.join('/', process.env.rootPath, 'example', this.props.reference, '/');
 
     return (
       <div className="ds-u-margin-top--3 markup markup--react">
