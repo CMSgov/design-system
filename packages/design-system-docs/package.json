@@ -8,7 +8,7 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@cmsgov/design-system": "file:../design-system",
+    "@cmsgov/design-system": "4.0.0-beta.1",
     "classnames": "^2.2.5",
     "core-js": "^2.5.3",
     "lodash": "^4.17.13",
