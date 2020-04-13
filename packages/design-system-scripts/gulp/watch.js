@@ -53,6 +53,12 @@ async function watchDocsPackage(sourcePackageDir, docsPackageDir, options, brows
     await copyDocsPackageAssets(docsPackageDir);
   });
 
+  // Docs components
+  gulp.watch(`${src}/scripts/**/.{js|jsx}`, async () => {
+    // Rebuild the doc pages when the docs site js source is updated
+    await generatePages(sourcePackageDir, docsPackageDir, options);
+  });
+
   // Docs Sass files
   gulp.watch(`${src}/**/*.scss`, async () => {
     await compileDocsSass(docsPackageDir, options, browserSync);
