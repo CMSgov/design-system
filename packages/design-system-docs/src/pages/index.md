@@ -16,7 +16,7 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). 
   </div>
 </div>
 
-Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/releases/latest), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) for wireframes and prototypes.
+Get started by [downloading the code as a zip file](https://github.com/CMSgov/design-system/releases/latest), [installing with NPM](/startup/installation/), or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch) or [get the Sketch Library](sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml) for wireframes and prototypes.
 
 ## Goals
 
