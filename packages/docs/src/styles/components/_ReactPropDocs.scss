@@ -3,3 +3,52 @@
 .docs_table--wrapper {
   overflow-x: auto;
 }
+
+.docs_table {
+  @media (max-width: $width-sm) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    /* Hide table headers (.ds-u-visibility--screen-reader) */
+    thead tr {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+      word-wrap: normal;
+    }
+
+    td {
+      border: 1px solid $color-gray;
+      margin-top: -1px;
+      min-height: 1.5em;
+      padding-left: 40%;
+      position: relative;
+      word-break: break-word;
+    }
+
+    tr:first-child {
+      border-top: 1px solid $color-gray;
+    }
+
+    td::before {
+      content: attr(data-title);
+      font-weight: $font-bold;
+      left: 0;
+      padding-left: 6px;
+      padding-right: 5%;
+      position: absolute;
+      width: 30%;
+    }
+  }
+}
