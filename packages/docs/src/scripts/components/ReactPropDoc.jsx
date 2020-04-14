@@ -71,15 +71,15 @@ class ReactPropDoc extends React.PureComponent {
   render() {
     return (
       <tr>
-        <td>
+        <td data-title="Name">
           <code className="ds-u-font-weight--bold">{this.props.name}</code>
           {this.isRequired()}
         </td>
-        <td>
+        <td data-title="Type">
           <code>{this.type()}</code>
         </td>
-        <td>{this.defaultValue()}</td>
-        <td>{this.description()}</td>
+        <td data-title="Default">{this.defaultValue()}</td>
+        <td data-title="Description">{this.description()}</td>
       </tr>
     );
   }
