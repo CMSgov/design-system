@@ -2,6 +2,20 @@
 
 > The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the [U.S. Web Design System](https://designsystem.digital.gov/) and extends it to support additional CSS and React components, utility classes, and a grid framework to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
+## Contents
+
+- [Packages](#packages)
+  - [Internal packages](#internal-packages)
+- [Examples](#examples)
+- [Running locally](#running-locally)
+  - [Getting started](#getting-started)
+  - [Scripts](#scripts)
+    - [Theme scripts](#theme-scripts)
+  - [Visual regression testing](#visual-regression-testing)
+- [Design assets](#design-assets)
+  - [Using the CMSDS Sketch Library](#using-the-CMSDS-sketch-library)
+- [Contact](#contact)
+
 ## Packages
 
 You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
@@ -10,7 +24,7 @@ You're currently at the root of a monorepo which contains multiple NPM packages 
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
-**Internal packages**
+### Internal packages
 
 These packages are project dependencies, mostly focused around the design system's developer tooling and documentation.
 
@@ -89,6 +103,23 @@ We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regres
 - When introducing a visual change, run `backstop approve` to commit new reference files after confirming the change with `backstop test`
 
 **Note:** Use `backstop reference` to update and replace all reference files.
+
+## Design Assets
+
+You will find the following in the `design-assets` folder:
+
+- CMSDS Sketch file
+- CMSDS fonts (Bitter,Open Sans, and Font Awesome)
+
+### Using the CMSDS Sketch Library
+
+We encourge usage of the CMSDS Sketch Library. When you update components in a Library, documents that use them will get an update notification. You can review those changes and confirm them to make sure you’re always using the most up-to-date components in your work.
+
+- Visit the design.cms.gov homepage and click the `get the Sketch Library` link.
+  OR
+- paste this url into your browser `sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml`
+
+Sketch will then open and download the CMSDS Sketch Library.
 
 ## Contact
 
