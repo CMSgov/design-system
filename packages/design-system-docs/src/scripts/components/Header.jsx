@@ -21,6 +21,14 @@ class Header extends React.PureComponent {
           isBannerOpen={this.state.isBannerOpen}
           onToggleBanner={this.handleToggleBanner}
         />
+        <div className="ds-c-alert ds-c-alert--hide-icon ds-u-border--0">
+          <div className="ds-c-alert__body">
+            <p className="ds-c-alert__text">
+              <strong>CMS Design System v4 has been released!</strong> <br />For information on
+              how to upgrade, see our <a href="/startup/migrating-v4/">migration guide</a>.
+            </p>
+          </div>
+        </div>
         <header className="ds-base--inverse ds-u-padding--3 ds-u-display--flex ds-u-justify-content--between ds-u-align-items--center">
           <h1 className="ds-h3 ds-u-margin-bottom--0">
             <a
