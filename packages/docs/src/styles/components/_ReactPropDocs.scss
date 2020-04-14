@@ -37,17 +37,26 @@
       word-break: break-word;
     }
 
+    tr {
+      margin: 0 0 0.5rem;
+    }
+
     tr:first-child {
       border-top: 1px solid $color-gray;
     }
 
     td::before {
+      background-color: $color-gray-lightest;
+      border-right: 1px solid $color-gray;
+      bottom: 0;
       content: attr(data-title);
       font-weight: $font-bold;
       left: 0;
       padding-left: 6px;
       padding-right: 5%;
+      padding-top: 18px;
       position: absolute;
+      top: 0;
       width: 30%;
     }
   }
