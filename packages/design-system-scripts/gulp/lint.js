@@ -1,12 +1,16 @@
 const _ = require('lodash');
-const gulp = require('gulp');
+const count = require('gulp-count');
+const stylish = require('eslint/lib/formatters/stylish');
 const changedInPlace = require('gulp-changed-in-place');
+const eslint = require('gulp-eslint');
+const eslintConfig = require('../eslint.config');
+const gulp = require('gulp');
 const path = require('path');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../stylelint.config');
 const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
-const { logTask } = require('./common/logUtil');
+const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
@@ -35,6 +39,7 @@ async function lintSass(dir) {
     gulp
       .src([`${src}/**/*.scss`, `!${src}/**/*.docs.scss}`])
       .pipe(changedInPlace({ firstPass: true }))
+      .pipe(count(`## Sass files linted in ${src}`))
       .pipe(
         stylelint({
           config,
@@ -46,12 +51,33 @@ async function lintSass(dir) {
   );
 }
 
+// Lint JS files using eslint. Further configuration for JS linting
+// can be handled in eslint.config.js
+async function lintJS(dir) {
+  const src = path.join(dir, 'src');
+  return streamPromise(
+    gulp
+      .src([`${src}/**/*.{js,jsx}`, `!${src}/**/*.test.{js,jsx}`])
+      .pipe(count(`## JS files linted in ${src}`))
+      .pipe(eslint(eslintConfig))
+		  .pipe(eslint.result(result => {
+        // eslint.format() is not working some reason
+        // Manually output the results instead
+        const msg = stylish([result])
+        if (msg) {
+          log(msg)
+        }
+      }))
+  );
+}
+
 module.exports = {
   async lintDirectories(directories) {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
 
-    await directories.reduce((p, dir) => {
-      return p.then(() => lintSass(dir));
-    }, Promise.resolve());
+    await Promise.all(directories.map(async dir => {
+      await lintSass(dir);
+      await lintJS(dir);
+    }));
   }
 };
