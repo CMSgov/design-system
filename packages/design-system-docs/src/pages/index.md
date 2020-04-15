@@ -10,7 +10,7 @@ It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). 
 ## Getting started
 
 - **For developers** - [Download the code as a zip file](https://github.com/CMSgov/design-system/releases/latest) or [install with NPM](/startup/installation/).
-- **For designers** - [Get the Sketch Library](sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml) or [downloading the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch).
+- **For designers** - [Get the Sketch Library](sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml) or [download the Sketch UI kit](https://github.com/CMSgov/design-system/raw/master/design-assets/CMS-Design-System-UI-kit.sketch).
 
 ## Goals
 
@@ -23,7 +23,7 @@ The primary goals for the design system are to:
 
 In order to meet these goals we are:
 
-- Using the [U.S. Web Design Standards](https://standards.usa.gov) components and visual design as a foundation.
+- Using the [U.S. Web Design System](https://designsystem.digital.gov/) components and visual design as a foundation.
 - Reducing the overall footprint of websites by writing [scalable CSS]({{root}}/guidelines/code-conventions).
 - Supporting rapid development with utility classes and easy-to-use components with best practices baked in.
 - Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/styles/typography), [layout]({{root}}/styles/grid/), and [color]({{root}}/styles/color).
