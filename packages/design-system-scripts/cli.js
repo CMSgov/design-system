@@ -94,12 +94,17 @@ yargs
           'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
         type: 'string',
         demandOption: true
-      });
+      })
+      .option('fix', {
+        default: false,
+        description:
+          'Automatically fix, where possible, violations reported by rules.'
+      })
     },
     handler: async argv => {
       const { lintDirectories } = require('./gulp/lint');
 
-      await lintDirectories(argv.directories, { ...argv });
+      await lintDirectories(argv.directories, argv.fix);
     }
   })
   .demandCommand()

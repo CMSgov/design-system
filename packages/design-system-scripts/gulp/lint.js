@@ -5,6 +5,7 @@ const changedInPlace = require('gulp-changed-in-place');
 const eslint = require('gulp-eslint');
 const eslintConfig = require('../eslint.config');
 const gulp = require('gulp');
+const gulpIf = require('gulp-if');
 const path = require('path');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../stylelint.config');
@@ -25,7 +26,7 @@ const systemNamePattern = /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 // Lint Sass files using stylelint. Further configuration for CSS linting
 // can be handled in stylelint.config.js
-async function lintSass(dir) {
+async function lintSass(dir, fix) {
   const src = path.join(dir, 'src');
   const config = _.cloneDeep(stylelintConfig);
 
@@ -43,23 +44,30 @@ async function lintSass(dir) {
       .pipe(
         stylelint({
           config,
-          failAfterError: process.env.NODE_ENV === 'test',
+          fix,
           reporters: [{ formatter: 'string', console: true }],
           syntax: 'scss'
         })
       )
+      .pipe(gulpIf(fix, gulp.dest(src)))
   );
 }
 
 // Lint JS files using eslint. Further configuration for JS linting
 // can be handled in eslint.config.js
-async function lintJS(dir) {
+async function lintJS(dir, fix) {
+  // Taken from gulp-eslint example
+  // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
+  const isFixed = (file) => {
+    return file.eslint != null && file.eslint.fixed;
+  }
+
   const src = path.join(dir, 'src');
   return streamPromise(
     gulp
       .src([`${src}/**/*.{js,jsx}`, `!${src}/**/*.test.{js,jsx}`])
       .pipe(count(`## JS files linted in ${src}`))
-      .pipe(eslint(eslintConfig))
+      .pipe(eslint({ ...{ fix }, ...eslintConfig }))
 		  .pipe(eslint.result(result => {
         // eslint.format() is not working some reason
         // Manually output the results instead
@@ -68,16 +76,17 @@ async function lintJS(dir) {
           log(msg)
         }
       }))
+      .pipe(gulpIf(isFixed, gulp.dest(src)))
   );
 }
 
 module.exports = {
-  async lintDirectories(directories) {
+  async lintDirectories(directories, fix) {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
 
     await Promise.all(directories.map(async dir => {
-      await lintSass(dir);
-      await lintJS(dir);
+      await lintSass(dir, fix);
+      await lintJS(dir, fix);
     }));
   }
 };
