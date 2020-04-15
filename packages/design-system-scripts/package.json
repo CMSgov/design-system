@@ -32,7 +32,6 @@
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "enzyme-to-json": "3.3.5",
-    "eslint": "^4.18.1",
     "eslint-config-nava": "^2.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-filenames": "^1.2.0",
@@ -64,9 +63,7 @@
     "mkdir-recursive": "^0.4.0",
     "mz": "^2.7.0",
     "node-notifier": "5.4.0",
-    "postcss-image-inliner": "^3.0.9",
     "postcss-import": "^11.1.0",
-    "prettier": "1.18.2",
     "prismjs": "1.16.0",
     "react": "16.8.6",
     "react-docgen": "4.1.1",
@@ -75,7 +72,6 @@
     "replace-ext": "^1.0.0",
     "selenium-webdriver": "4.0.0-alpha.5",
     "static-server": "^2.2.1",
-    "stylelint": "10.1.0",
     "stylelint-config-prettier": "^2.1.0",
     "through2": "^2.0.3",
     "tota11y": "^0.1.6",
@@ -87,6 +83,9 @@
   },
   "peerDependencies": {
     "@cmsgov/design-system": ">=4.0.0",
-    "@cmsgov/design-system-docs": ">=4.0.0"
+    "@cmsgov/design-system-docs": ">=4.0.0",
+    "eslint": ">=4.18.1",
+    "prettier": ">=1.18.2",
+    "stylelint": ">=10.1.0"
   }
 }
