@@ -22,7 +22,7 @@ const { CORE_SOURCE_PACKAGE } = require('./common/constants');
  * Pattern:  [NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]
  * Examples: .ds-c-button--primary, .ds-c-card__title, .ds-u-text-underlined
  */
-const systemNamePattern = /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
+const coreSassClassNamingPattern = /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
 // Lint Sass files using stylelint. Further configuration for CSS linting
 // can be handled in stylelint.config.js
@@ -33,7 +33,7 @@ async function lintSass(dir, fix) {
   // Add class naming pattern linting for core DS
   const name = await getPackageName(dir);
   if (name === CORE_SOURCE_PACKAGE) {
-    _.set(config, ['rules', 'selector-class-pattern'], systemNamePattern);
+    _.set(config, ['rules', 'selector-class-pattern'], coreSassClassNamingPattern);
   }
 
   return streamPromise(
@@ -45,6 +45,7 @@ async function lintSass(dir, fix) {
         stylelint({
           config,
           fix,
+          failAfterError: process.env.NODE_ENV === 'test',
           reporters: [{ formatter: 'string', console: true }],
           syntax: 'scss'
         })
@@ -77,13 +78,14 @@ async function lintJS(dir, fix) {
         }
       }))
       .pipe(gulpIf(isFixed, gulp.dest(src)))
+      .pipe(gulpIf(process.env.NODE_ENV === 'test', eslint.failAfterError()))
   );
 }
 
 module.exports = {
   async lintDirectories(directories, fix) {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
-
+    // TODO: Fix failAfterError with streams
     await Promise.all(directories.map(async dir => {
       await lintSass(dir, fix);
       await lintJS(dir, fix);
