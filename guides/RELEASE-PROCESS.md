@@ -142,4 +142,4 @@ Example changes:
      - Example: `Mon, 13 Apr 2020 15:11:00`
    - Update `enclosure sparkle:version` number
      - Example: `sparkle:version="1.1"`
-1. Create a PR with the updates to the .xml file and Sketch file
+1. [Create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) with the updates to the .xml file and Sketch file
