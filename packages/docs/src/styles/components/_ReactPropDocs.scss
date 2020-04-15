@@ -6,17 +6,8 @@
 
 .docs_table {
   @media (max-width: $width-sm) {
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-      display: block;
-    }
-
-    /* Hide table headers (.ds-u-visibility--screen-reader) */
-    thead tr {
+    thead {
+      /* Hide table headers (.ds-u-visibility--screen-reader) */
       border: 0;
       clip: rect(0, 0, 0, 0);
       height: 1px;
@@ -28,36 +19,32 @@
       word-wrap: normal;
     }
 
-    td {
-      border: 1px solid $color-gray;
-      margin-top: -1px;
-      min-height: 1.5em;
-      padding-left: 40%;
-      position: relative;
-      word-break: break-word;
-    }
-
     tr {
+      border: 1px solid $color-gray;
+      display: block;
       margin: 0 0 0.5rem;
     }
 
-    tr:first-child {
+    td {
+      border-top: 1px solid $color-gray-lightest;
+      display: block;
+      margin-top: -1px;
+      word-break: break-word;
+    }
+
+    td:last-child {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      background-color: $color-gray-lightest;
       border-top: 1px solid $color-gray;
     }
 
     td::before {
-      background-color: $color-gray-lightest;
-      border-right: 1px solid $color-gray;
-      bottom: 0;
-      content: attr(data-title);
+      content: attr(data-title) '\00000A';
       font-weight: $font-bold;
-      left: 0;
-      padding-left: 6px;
-      padding-right: 5%;
-      padding-top: 18px;
-      position: absolute;
-      top: 0;
-      width: 30%;
+      white-space: pre-wrap;
     }
   }
 }

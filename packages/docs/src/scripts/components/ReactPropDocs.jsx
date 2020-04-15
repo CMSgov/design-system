@@ -22,13 +22,13 @@ class ReactPropDocs extends React.PureComponent {
     return [
       <h3 key="propDocsHeader">Props</h3>,
       <div key="propDocsTable" className="docs_table--wrapper">
-        <table className="ds-c-table docs_table">
+        <table className="ds-c-table ds-c-table--borderless docs_table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
+              <th scope="col">Type</th>
+              <th scope="col">Name</th>
+              <th scope="col">Default</th>
+              <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody>{this.rows()}</tbody>
