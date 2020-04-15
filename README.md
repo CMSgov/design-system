@@ -11,7 +11,7 @@
   - [Getting started](#getting-started)
   - [Scripts](#scripts)
     - [Theme scripts](#theme-scripts)
-  - [Visual regression testing](#visual-regression-testing)
+- [Visual regression testing](#visual-regression-testing)
 - [Design assets](#design-assets)
 - [Contact](#contact)
 
@@ -90,7 +90,7 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 
 If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
-### Visual regression testing
+## Visual regression testing
 
 We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
 
