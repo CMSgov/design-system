@@ -4,74 +4,52 @@
  *  everything production-ready.
  */
 const babel = require('gulp-babel');
+const cleanDist = require('./common/cleanDist');
+const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
-const del = require('del');
 const gulp = require('gulp');
-const getPackageName = require('./common/getPackageName');
+const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
-const { printStats } = require('./stats');
-const { log, logTask, logIntroduction } = require('./common/logUtil');
-
-const CORE_PACKAGE_NAME = '@cmsgov/design-system';
-
-/**
- * Empty the dist/ directory so any stale files are removed
- */
-function cleanDist(dir) {
-  logTask('🚮 ', `Resetting "dist" directory: ${dir}`);
-  return del([`${dir}/dist`]);
-}
+const { getSourceDirs } = require('./common/getPackageDirs');
+const { log, logTask } = require('./common/logUtil');
+const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
  * Copy any JSON files that our components might depend on
  */
 function copyJson(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
-      .src([`${dir}/src/**/*.json`, `!${dir}/src/**/{__mocks__,__tests__}/*.json`])
-      .pipe(gulp.dest(`${dir}/dist`))
+      .src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
-}
-
-function copyDir(srcDir, destDir) {
-  return streamPromise(gulp.src(`${srcDir}/**/*`).pipe(gulp.dest(destDir)));
-}
-
-/**
- * Copy all assets stored in a certain folder
- */
-async function copyAssets(dir) {
-  // Check to see if this is the core package. If it's not, copy assets from core
-  const packageName = await getPackageName(dir);
-  if (packageName !== CORE_PACKAGE_NAME) {
-    logTask('🖼 ', `Copying fonts and images from ${CORE_PACKAGE_NAME}`);
-    const pkgDist = `node_modules/${CORE_PACKAGE_NAME}/dist`;
-    await Promise.all([
-      copyDir(`${pkgDist}/fonts`, `${dir}/dist/fonts`),
-      copyDir(`${pkgDist}/images`, `${dir}/dist/images`)
-    ]);
-  }
-
-  await Promise.all([
-    copyDir(`${dir}/src/fonts`, `${dir}/dist/fonts`),
-    copyDir(`${dir}/src/images`, `${dir}/dist/images`)
-  ]);
 }
 
 /**
  * Copy Sass files from src to dist because we don't distribute the src folder
  */
 function copySass(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
-      .src([`${dir}/src/**/*.{scss,sass}`, `!${dir}/src/**/*.docs.{scss,sass}`])
-      .pipe(gulp.dest(`${dir}/dist`))
+      .src([`${src}/**/*.{scss,sass}`, `!${src}/**/*.docs.{scss,sass}`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
-function copyAll(dir) {
-  return Promise.all([copyAssets(dir), copyJson(dir), copySass(dir)]);
+async function copyAll(dir) {
+  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
+
+  const sources = await getSourceDirs(dir);
+  if (sources.length > 1) {
+    // If this a child DS we also need to copy assets from the core npm package
+    logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
+    copyTasks.push(copyAssets(sources[1], dir));
+  }
+
+  return Promise.all(copyTasks);
 }
 
 /**
@@ -81,14 +59,15 @@ function copyAll(dir) {
  *  this task first, otherwise the component won't be found.
  */
 function compileJs(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
       .src([
-        `${dir}/src/**/*.{js,jsx}`,
-        `!${dir}/src/**/{__mocks__,__tests__}/*.{js,jsx}`,
-        `!${dir}/src/**/*.example.{js,jsx}`,
-        `!${dir}/src/**/*.test.{js,jsx}`,
-        `!${dir}/src/helpers/e2e/*.{js,jsx}`
+        `${src}/**/*.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__}/*.{js,jsx}`,
+        `!${src}/**/*.example.{js,jsx}`,
+        `!${src}/**/*.test.{js,jsx}`,
+        `!${src}/helpers/e2e/*.{js,jsx}`
       ])
       .pipe(babel())
       .pipe(
@@ -97,41 +76,22 @@ function compileJs(dir) {
           logger: message => logTask('📜 ', message)
         })
       )
-      .pipe(gulp.dest(`${dir}/dist`))
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
-/**
- * Builds the source package
- */
-async function buildSrc(sourcePackageDir) {
-  await cleanDist(sourcePackageDir);
-  await copyAll(sourcePackageDir);
-  await compileJs(sourcePackageDir);
-  await compileSass(sourcePackageDir);
-  logTask('✅ ', 'Build succeeded');
-  log('');
-}
-
-/**
- * Builds the docs site
- *
- * Note that build:src must run before this in order to ensure that the
- * documentation reflects the most recent version of the source.
- */
-// async function buildDocs(sourcePackageDir) {
-//   logIntroduction();
-//   runSequence('docs:build', 'webpack', 'sass:docs', done);
-// }
-
 module.exports = {
   /**
-   * Builds just the source package for the purpose of publishing and then
-   * collects and prints statistics on the new build
+   * Builds just the source package for the purpose of publishing
    */
-  async build(sourcePackageDir, skipLatest = false) {
-    logIntroduction();
-    await buildSrc(sourcePackageDir);
-    await printStats(sourcePackageDir, skipLatest);
-  }
+  async buildSrc(sourcePackageDir) {
+    logTask('🏃 ', 'Starting design system build task');
+    await cleanDist(sourcePackageDir);
+    await copyAll(sourcePackageDir);
+    await compileJs(sourcePackageDir);
+    await compileSass(sourcePackageDir);
+    logTask('✅ ', 'Build succeeded');
+    log('');
+  },
+  copyAll
 };

@@ -219,7 +219,7 @@ For internal/private props that you don't want to be displayed in the documentat
 
 ## General documentation pages
 
-There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/design-system-docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 

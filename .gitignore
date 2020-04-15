@@ -1,9 +1,6 @@
-# Documentation is generated into this directory
-/docs
-
 # Do not commit package build files to github
 /packages/design-system/dist
-/packages/layout/dist
+/packages/design-system-docs/dist
 
 # Themes should be in their own repo, but can be included in this directory
 # in order to use the same tooling and documentation processes
