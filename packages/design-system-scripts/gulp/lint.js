@@ -1,6 +1,5 @@
 const _ = require('lodash');
 const count = require('gulp-count');
-const stylish = require('eslint/lib/formatters/stylish');
 const changedInPlace = require('gulp-changed-in-place');
 const eslint = require('gulp-eslint');
 const eslintConfig = require('../eslint.config');
@@ -11,7 +10,7 @@ const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../stylelint.config');
 const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
-const { log, logTask } = require('./common/logUtil');
+const { logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
@@ -24,11 +23,11 @@ const { CORE_SOURCE_PACKAGE } = require('./common/constants');
  */
 const coreSassClassNamingPattern = /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/;
 
-// Lint Sass files using stylelint. Further configuration for CSS linting
-// can be handled in stylelint.config.js
+// Lint Sass files using stylelint
 async function lintSass(dir, fix) {
   const src = path.join(dir, 'src');
   const config = _.cloneDeep(stylelintConfig);
+  const configBasedir = path.resolve(__dirname, '../node_modules');
 
   // Add class naming pattern linting for core DS
   const name = await getPackageName(dir);
@@ -44,24 +43,25 @@ async function lintSass(dir, fix) {
       .pipe(
         stylelint({
           config,
+          configBasedir,
           fix,
           failAfterError: process.env.NODE_ENV === 'test',
           reporters: [{ formatter: 'string', console: true }],
           syntax: 'scss'
         })
       )
-      .pipe(gulpIf(fix, gulp.dest(src)))
+    // TODO: Figure out why stylelint fix is causing the task to end early
+    // .pipe(gulpIf(fix, gulp.dest(src)))
   );
 }
 
-// Lint JS files using eslint. Further configuration for JS linting
-// can be handled in eslint.config.js
+// Lint JS files using eslint
 async function lintJS(dir, fix) {
   // Taken from gulp-eslint example
   // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
-  const isFixed = (file) => {
+  const isFixed = file => {
     return file.eslint != null && file.eslint.fixed;
-  }
+  };
 
   const src = path.join(dir, 'src');
   return streamPromise(
@@ -69,14 +69,7 @@ async function lintJS(dir, fix) {
       .src([`${src}/**/*.{js,jsx}`, `!${src}/**/*.test.{js,jsx}`])
       .pipe(count(`## JS files linted in ${src}`))
       .pipe(eslint({ ...{ fix }, ...eslintConfig }))
-		  .pipe(eslint.result(result => {
-        // eslint.format() is not working some reason
-        // Manually output the results instead
-        const msg = stylish([result])
-        if (msg) {
-          log(msg)
-        }
-      }))
+      .pipe(eslint.format())
       .pipe(gulpIf(isFixed, gulp.dest(src)))
       .pipe(gulpIf(process.env.NODE_ENV === 'test', eslint.failAfterError()))
   );
@@ -86,9 +79,11 @@ module.exports = {
   async lintDirectories(directories, fix) {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
     // TODO: Fix failAfterError with streams
-    await Promise.all(directories.map(async dir => {
-      await lintSass(dir, fix);
-      await lintJS(dir, fix);
-    }));
+    await Promise.all(
+      directories.map(async dir => {
+        await lintSass(dir, fix);
+        await lintJS(dir, fix);
+      })
+    );
   }
 };
