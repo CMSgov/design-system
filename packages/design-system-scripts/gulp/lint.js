@@ -50,8 +50,7 @@ async function lintSass(dir, fix) {
           syntax: 'scss'
         })
       )
-    // TODO: Figure out why stylelint fix is causing the task to end early
-    // .pipe(gulpIf(fix, gulp.dest(src)))
+      .pipe(gulp.dest(src))
   );
 }
 
@@ -78,7 +77,7 @@ async function lintJS(dir, fix) {
 module.exports = {
   async lintDirectories(directories, fix) {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
-    // TODO: Fix failAfterError with streams
+
     await Promise.all(
       directories.map(async dir => {
         await lintSass(dir, fix);
