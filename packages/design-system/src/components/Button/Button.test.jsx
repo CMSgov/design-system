@@ -2,7 +2,7 @@ import Button from './Button.jsx';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-/* eslint-disable react/display-name, react/prop-types */
+/* eslint-disable react/prop-types */
 const Link = props => {
   return <div {...props}>{props.children}</div>;
 };
