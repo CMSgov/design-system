@@ -130,3 +130,17 @@ Example changes:
 
 - Renamed or removed classes, mixins, functions, placeholders, or global variables.
 - Major visual changes to existing components
+
+# Sketch Library Release Process
+
+1. Download the [Sketch file from GitHub](https://github.com/CMSgov/design-system/blob/master/design-assets/CMS-Design-System-UI-kit.sketch)
+1. Update the CMSDS Sketch file locally with your changes
+1. Update the .xml file found in the `design-assets` folder in the following ways:
+   - Update the item `title` with the version number
+     - Example: `CMS Design System UI kit - v1.1`
+   - Update `pubDate` using [RFC822 format](https://hackage.haskell.org/package/time-http-0.5/docs/Data-Time-Format-RFC822.html)
+     - Example: `Mon, 13 Apr 2020 15:11:00`
+   - Update `enclosure sparkle:version` number
+     - Example: `sparkle:version="1.1"`
+1. [Create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) with the updates to the .xml file and Sketch file
+   - Add a title and short description for your changes.
