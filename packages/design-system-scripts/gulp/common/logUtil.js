@@ -60,8 +60,8 @@ function notify(title, message, wait) {
 module.exports = {
   log,
 
-  logIntroduction: async function(sourcePackageDir) {
-    const packageName = await getPackageName(sourcePackageDir);
+  logIntroduction: async function(sourceDir) {
+    const packageName = await getPackageName(sourceDir);
     const message =
       packageName === CORE_SOURCE_PACKAGE ? 'CMS.gov Design System' : 'CMS.gov Child Design System';
     log(chalk.cyan(packageName), message);

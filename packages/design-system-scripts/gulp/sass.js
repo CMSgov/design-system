@@ -80,8 +80,8 @@ function compileSass(dir, dest, browserSync) {
   return streamPromise(stream);
 }
 
-async function compileDocsSass(docsPackageDir, options, browserSync) {
-  await compileSass(docsPackageDir, getDocsDistPath(docsPackageDir, options.rootPath), browserSync);
+async function compileDocsSass(docsDir, options, browserSync) {
+  await compileSass(docsDir, getDocsDistPath(docsDir, options.rootPath), browserSync);
 }
 
 module.exports = {

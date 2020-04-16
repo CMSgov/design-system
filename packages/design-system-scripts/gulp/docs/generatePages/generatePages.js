@@ -8,7 +8,7 @@ const nestSections = require('./nestSections');
 const path = require('path');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
-const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
+const { getSourceDirs, getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
 const { REACT_DATA_PATH } = require('../../common/constants');
 
@@ -121,12 +121,12 @@ function generateMarkupPages(kssSections, destination, options) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(sourcePackageDir, docsPackageDir, options) {
+module.exports = async function generatePages(sourceDir, docsDir, options) {
   logTask('📝 ', 'Generating documentation pages');
 
-  const dist = getDocsDistPath(docsPackageDir, options.rootPath);
-  const sourceDirs = await getSourceDirs(sourcePackageDir);
-  const docsDirs = await getDocsDirs(docsPackageDir);
+  const dist = getDocsDistPath(docsDir, options.rootPath);
+  const sourceDirs = await getSourceDirs(sourceDir);
+  const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
   const markdownPagesData = await Promise.all(
@@ -163,5 +163,5 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
   // Create HTML files from the pages array
   const generatedPagesCount = await generateDocPages(pages, dist, options);
 
-  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsPackageDir}`);
+  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsDir}`);
 };

@@ -11,7 +11,7 @@ const gulp = require('gulp');
 const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
-const { getSourceDirs } = require('./common/getPackageDirs');
+const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
@@ -84,12 +84,12 @@ module.exports = {
   /**
    * Builds just the source package for the purpose of publishing
    */
-  async buildSrc(sourcePackageDir) {
+  async buildSrc(sourceDir) {
     logTask('🏃 ', 'Starting design system build task');
-    await cleanDist(sourcePackageDir);
-    await copyAll(sourcePackageDir);
-    await compileJs(sourcePackageDir);
-    await compileSass(sourcePackageDir);
+    await cleanDist(sourceDir);
+    await copyAll(sourceDir);
+    await compileJs(sourceDir);
+    await compileSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');
   },

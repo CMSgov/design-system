@@ -4,12 +4,12 @@ const path = require('path');
 const webpack = require('webpack');
 const getDocsDistPath = require('../../common/getDocsDistPath');
 const { last } = require('lodash');
-const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
+const { getSourceDirs, getDocsDirs } = require('../../common/getDirsToProcess');
 
-module.exports = async function createWebpackConfig(sourcePackageDir, docsPackageDir, options) {
-  const distPath = getDocsDistPath(docsPackageDir, options.rootPath);
-  const sources = await getSourceDirs(sourcePackageDir);
-  const docs = await getDocsDirs(docsPackageDir);
+module.exports = async function createWebpackConfig(sourceDir, docsDir, options) {
+  const distPath = getDocsDistPath(docsDir, options.rootPath);
+  const sources = await getSourceDirs(sourceDir);
+  const docs = await getDocsDirs(docsDir);
 
   const includePaths = [
     fs.realpathSync(path.resolve(last(sources), 'src')),

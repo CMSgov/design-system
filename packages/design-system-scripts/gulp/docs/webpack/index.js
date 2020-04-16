@@ -15,15 +15,15 @@ const webpackStatsConfig = require('./webpackStats.config');
 const { log, logTask, logError } = require('../../common/logUtil');
 
 module.exports = {
-  async runWebpackStatically(sourcePackageDir, docsPackageDir, options) {
+  async runWebpackStatically(sourceDir, docsDir, options) {
     logTask('🚜 ', 'Running Webpack statically');
     try {
-      const config = await createWebpackConfig(sourcePackageDir, docsPackageDir, options);
+      const config = await createWebpackConfig(sourceDir, docsDir, options);
       const stats = await util.promisify(webpack)(config); // Promisify webpack so the task will wait on the compilation to finish
 
       // TODO: Replace stats module logging with clean logTask count
       // const filesProcessed = stats.toJson(webpackStatsConfig).modules.length;
-      // logTask(`📜  ${filesProcessed}`, `JS files processed in ${docsPackageDir}`);
+      // logTask(`📜  ${filesProcessed}`, `JS files processed in ${docsDir}`);
 
       // Log out any errors or warnings
       log(stats.toString(webpackStatsConfig));
@@ -34,10 +34,10 @@ module.exports = {
       }
     }
   },
-  async runWebpackServer(sourcePackageDir, docsPackageDir, options, browserSync) {
+  async runWebpackServer(sourceDir, docsDir, options, browserSync) {
     logTask('🚜 ', 'Running Webpack server');
     try {
-      const config = await createWebpackConfig(sourcePackageDir, docsPackageDir, options);
+      const config = await createWebpackConfig(sourceDir, docsDir, options);
       const bundler = webpack(config);
 
       browserSync.init({
@@ -45,7 +45,7 @@ module.exports = {
         notify: false,
         startPath: options.rootPath,
         server: {
-          baseDir: path.resolve(docsPackageDir, 'dist'),
+          baseDir: path.resolve(docsDir, 'dist'),
           middleware: [
             webpackDevMiddleware(bundler, {
               publicPath: config.output.publicPath,
@@ -59,7 +59,7 @@ module.exports = {
             })
           ]
         },
-        files: [`./${path.join(docsPackageDir, '/**/*.html')}`],
+        files: [`./${path.join(docsDir, '/**/*.html')}`],
         snippetOptions: {
           blacklist: ['/example/*']
         }
