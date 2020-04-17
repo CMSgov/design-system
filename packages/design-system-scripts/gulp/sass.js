@@ -17,17 +17,23 @@ const { logData, logError, logTask } = require('./common/logUtil');
 
 // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
 // a variety of postcss processes (inlining, prefixing, minifying, etc).
-function compileSass(dir, dest, env, browserSync) {
+function compileSass(dir, dest, browserSync) {
   const src = path.join(dir, 'src');
-  const srcFiles = path.join(src, '**', '*.scss');
   if (!dest) {
     dest = path.join(dir, 'dist');
   }
 
-  const createSourcemaps = env === 'development';
+  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
+  const includePaths = [
+    path.resolve(dir, 'node_modules'),
+    path.resolve(dir, '../node_modules'),
+    src
+  ];
+  const envDev = process.env.NODE_ENV === 'development';
+
   const sassCompiler = sass({
     outputStyle: 'expanded',
-    includePaths: [path.resolve(dir, 'node_modules'), src]
+    includePaths
   }).on('error', function(err) {
     logError('sass', 'Error transpiling Sass!');
     logData(err.messageFormatted);
@@ -36,15 +42,12 @@ function compileSass(dir, dest, env, browserSync) {
 
   const postcssPlugins = [
     postcssImport(), // inline imports
-    autoprefixer() // add any necessary vendor prefixes
+    autoprefixer(), // add any necessary vendor prefixes
+    ...(!envDev ? [cssnano()] : []) // minify css
   ];
 
-  if (env !== 'development') {
-    postcssPlugins.push(cssnano()); // minify css
-  }
-
   let stream = gulp
-    .src(srcFiles)
+    .src([`${src}/**/*.scss`, `!${src}/**/*.docs.scss}`])
     .pipe(
       changed(dest, {
         extension: '.css',
@@ -52,9 +55,9 @@ function compileSass(dir, dest, env, browserSync) {
         hasChanged: changed.compareSha1Digest
       })
     )
-    .pipe(gulpIf(createSourcemaps, sourcemaps.init()))
+    .pipe(gulpIf(envDev, sourcemaps.init()))
     .pipe(sassCompiler)
-    .pipe(gulpIf(createSourcemaps, sourcemaps.write()))
+    .pipe(gulpIf(envDev, sourcemaps.write()))
     .pipe(postcss(postcssPlugins))
     .pipe(
       count({
@@ -67,16 +70,18 @@ function compileSass(dir, dest, env, browserSync) {
   if (browserSync) {
     // Auto-inject into docs
     stream = stream.pipe(
-      browserSync,
-      browserSync.stream({ match: '**/public/styles/*.css' })
+      browserSync.stream({
+        once: true,
+        match: '**/*.css'
+      })
     );
   }
 
   return streamPromise(stream);
 }
 
-async function compileDocsSass(sourcePackageDir, docsPath, rootPath, env, browserSync) {
-  // await compileSass('packages/docs/', getDocsDistPath(docsPath, rootPath, '/public'))
+async function compileDocsSass(docsPackageDir, options, browserSync) {
+  await compileSass(docsPackageDir, getDocsDistPath(docsPackageDir, options.rootPath), browserSync);
 }
 
 module.exports = {

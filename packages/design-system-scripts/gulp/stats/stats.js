@@ -4,61 +4,66 @@
  * This task assumes the file has already been transpiled, so it should be
  * preceded by other build tasks.
  */
-const _ = require('lodash');
 const cssstats = require('cssstats');
 const fs = require('mz/fs');
 const getPackageName = require('../common/getPackageName');
 const logStats = require('./logStats');
 const path = require('path');
+const { sum } = require('lodash');
 const { logError, logTask } = require('../common/logUtil');
 
 const tmpPath = path.resolve('./tmp');
 
 const SKIP_LATEST_MESSAGE =
-  'If it is expected that the latest release does not exist in node_modules, add the `--skiplatest` flag to skip this part.';
+  'If it is expected that the latest release does not exist in node_modules, add the `--skipLatest` flag to skip this part.';
+
+/**
+ * @return {Promise} Resolves with a css stats object
+ */
+async function getCSSStats(cssPath) {
+  try {
+    const css = await fs.readFile(cssPath, 'utf8');
+    return cssstats(css);
+  } catch (error) {
+    logError('getCSSStats', 'Error collecting CSS stats');
+    console.error(error);
+  }
+}
 
 /**
  * Get the CSS stats from a file on the current branch and the latest release.
  * @param {boolean} skipLatest - Whether to also get stats for the file in the latest release
  * @return {Promise<{current, latest}>}
  */
-async function getCSSStats(dir, packageName, skipLatest = false) {
-  const currentPath = path.resolve(dir, 'dist', 'index.css');
-  const latestPath = path.resolve('node_modules', packageName, 'dist', 'index.css');
+async function getStatsObject(dir, packageName, skipLatest = false) {
   let current;
   let latest;
 
-  try {
-    const css = await fs.readFile(currentPath, 'utf8');
-    current = cssstats(css);
-  } catch (error) {
-    logError('getCSSStats', `Error collecting CSS stats on build output.`);
-    console.error(error);
+  const currentCSSPath = path.resolve(dir, 'dist', 'index.css');
+  if (fs.existsSync(currentCSSPath)) {
+    current = await getCSSStats(currentCSSPath);
+  } else {
+    logError('getStatsObject', `Unable to find current css in ${currentCSSPath}`);
+    return;
   }
 
-  // Conditionally check the file in the latest release. Allowing this step to
-  // be skipped enables us to run it on files that don't yet exist in the latest release
-  if (!skipLatest) {
-    try {
-      const css = await fs.readFile(latestPath, 'utf8');
-      latest = cssstats(css);
-    } catch (error) {
-      logError('getCSSStats', `Unable to get latest release CSS. ${SKIP_LATEST_MESSAGE}`);
-      console.error(error);
+  if (!skipLatest && packageName) {
+    const latestCSSPath = path.resolve('node_modules', packageName, 'dist', 'index.css');
+    if (fs.existsSync(latestCSSPath)) {
+      latest = await getCSSStats(latestCSSPath);
+    } else {
+      logError('getStatsObject', `Unable to find latest release css in ${latestCSSPath}`);
       latest = current;
     }
-  } else {
-    logTask('getCSSStats', 'Not checking against latest release');
-    latest = current;
   }
 
   return { current, latest };
 }
 
 /**
- * @return {Promise} Resolves with the sum of all .woff2 file sizes
+ * @return {Promise} Resolves with the sum of all .woff2 file sizes, assumes valid fontDir
  */
-function getFontSizes(fontDir) {
+function getFontsSize(fontDir) {
   return fs
     .readdir(fontDir)
     .then(files => {
@@ -71,39 +76,41 @@ function getFontSizes(fontDir) {
           })
       );
     })
-    .then(_.sum);
+    .then(sum)
+    .catch(() => {
+      logError('getFontSize', 'Error collecting font sizes');
+    });
 }
 
 /**
  * Analyze the file sizes of all .woff2 font files and add to the stats object
  * @return {Promise}
  */
-async function getFontStats(dir, packageName, currentStats, skipLatest = false) {
+async function getFontsStats(dir, packageName, currentStats, skipLatest = false) {
+  // Get stats from current dist font directory if it exists
   const currentFontDir = path.resolve(dir, 'dist', 'fonts');
-  const current = await getFontSizes(currentFontDir);
-
-  let latest;
-  if (!skipLatest) {
-    try {
-      // TODO: Remove this branching logic once we've released v4
-      const oldPackageFontDir = path.resolve('node_modules', packageName, 'fonts');
-      const newPackageFontDir = path.resolve('node_modules', packageName, 'dist', 'fonts');
-      const previousFontDir = fs.existsSync(newPackageFontDir)
-        ? newPackageFontDir
-        : oldPackageFontDir;
-
-      latest = await getFontSizes(previousFontDir);
-    } catch (error) {
-      logError('getFontStats', `Unable to get latest release fonts. ${SKIP_LATEST_MESSAGE}`);
-      console.error(error);
-      latest = current;
-    }
+  if (fs.existsSync(currentFontDir)) {
+    const current = await getFontsSize(currentFontDir);
+    currentStats.current.totalFontFileSize = current;
   } else {
-    latest = current;
+    logError('getFontsStats', `Unable to find current fonts in ${currentFontDir}`);
+    currentStats.current.totalFontFileSize = '0';
   }
 
-  currentStats.current.totalFontFileSize = current;
-  currentStats.latest.totalFontFileSize = latest;
+  // Get stats from previous release font directory if it exists and if skipLatest flag is not used
+  if (!skipLatest && packageName) {
+    const previousFontDir = path.resolve('node_modules', packageName, 'dist', 'fonts');
+    if (fs.existsSync(previousFontDir)) {
+      const latest = await getFontsSize(previousFontDir);
+      currentStats.latest.totalFontFileSize = latest;
+    } else {
+      logError(
+        'getFontsStats',
+        `Unable to find latest release fonts in ${previousFontDir}. ${SKIP_LATEST_MESSAGE}`
+      );
+      currentStats.latest.totalFontFileSize = currentStats.current.totalFontFileSize;
+    }
+  }
 }
 
 /**
@@ -148,19 +155,25 @@ function saveStats(currentStats) {
 }
 
 /**
- * Note: Unless the `--skiplatest` flag is specified, this task requires that
+ * Note: Unless the `--skipLatest` flag is specified, this task requires that
  * the package being built has a copy of the latest published version of itself
  * in node_modules, whether that be as a `devDependency` or some other mechanism.
  */
-async function printStats(sourcePackageDir, skipLatest) {
-  logTask('🔍 ', 'Gathering stats and comparing against the latest release');
+async function printStats(sourcePackageDir, options) {
+  let message = 'Gathering css & font stats';
+  if (!options.skipLatest) {
+    message += 'and comparing against the latest release';
+  }
+  logTask('🔍 ', message);
 
   const packageName = await getPackageName(sourcePackageDir);
-  const stats = await getCSSStats(sourcePackageDir, packageName, skipLatest);
-  await getFontStats(sourcePackageDir, packageName, stats, skipLatest);
-  await logStats(stats);
-  await createSpecificityGraph(stats);
-  await saveStats(stats);
+  const stats = await getStatsObject(sourcePackageDir, packageName, options.skipLatest);
+  if (stats) {
+    await getFontsStats(sourcePackageDir, packageName, stats, options.skipLatest);
+    await logStats(stats, options.skipLatest);
+    await createSpecificityGraph(stats);
+    await saveStats(stats);
+  }
 }
 
 module.exports = { printStats };
