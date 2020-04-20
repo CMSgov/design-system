@@ -1,12 +1,19 @@
 // Responsive docs table
 
-.docs_table--wrapper {
+.docs_table--container {
   overflow-x: auto;
 }
 
 .docs_table {
+  @media (min-width: $width-sm) {
+    /* Hide individual cell heading */
+    tbody .docs_table__column-header {
+      display: none;
+    }
+  }
+
   @media (max-width: $width-sm) {
-    thead {
+    thead tr {
       /* Hide table headers (.ds-u-visibility--screen-reader) */
       border: 0;
       clip: rect(0, 0, 0, 0);
@@ -26,9 +33,9 @@
     }
 
     td {
-      border-top: 1px solid $color-gray-lightest;
+      border: 0;
+      border-top: 1px solid $color-gray-lighter;
       display: block;
-      margin-top: -1px;
       word-break: break-word;
     }
 
@@ -38,13 +45,10 @@
 
     td:first-child {
       background-color: $color-gray-lightest;
-      border-top: 1px solid $color-gray;
     }
 
-    td::before {
-      content: attr(data-title) '\00000A';
-      font-weight: $font-bold;
-      white-space: pre-wrap;
+    td::before .docs_table__column-header {
+      display: block;
     }
   }
 }

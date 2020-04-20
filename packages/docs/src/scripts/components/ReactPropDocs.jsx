@@ -21,14 +21,27 @@ class ReactPropDocs extends React.PureComponent {
   render() {
     return [
       <h3 key="propDocsHeader">Props</h3>,
-      <div key="propDocsTable" className="docs_table--wrapper">
-        <table className="ds-c-table ds-c-table--borderless docs_table">
+      <div key="propDocsTable" className="docs_table--container">
+        <table className="ds-c-table ds-c-table--borderless docs_table" role="table">
+          <caption>
+            <span className="ds-u-padding--1 ds-u-visibility--screen-reader">
+              React Properties Documentation
+            </span>
+          </caption>
           <thead>
-            <tr>
-              <th scope="col">Type</th>
-              <th scope="col">Name</th>
-              <th scope="col">Default</th>
-              <th scope="col">Description</th>
+            <tr role="row">
+              <th id="columnname" role="columnheader" scope="col">
+                Name
+              </th>
+              <th id="columntype" role="columnheader" scope="col">
+                Type
+              </th>
+              <th id="columndefault" role="columnheader" scope="col">
+                Default
+              </th>
+              <th id="columndescription" role="columnheader" scope="col">
+                Description
+              </th>
             </tr>
           </thead>
           <tbody>{this.rows()}</tbody>
