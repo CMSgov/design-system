@@ -19,6 +19,7 @@ class ReactPropDocs extends React.PureComponent {
   }
 
   render() {
+    // Specify ARIA roles attribute for table to make responsive HTML table accessible to screen readers
     return [
       <h3 key="propDocsHeader">Props</h3>,
       <div key="propDocsTable" className="docs_table--container">

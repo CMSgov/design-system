@@ -69,6 +69,7 @@ class ReactPropDoc extends React.PureComponent {
   }
 
   render() {
+    // Specify ARIA roles attribute for table to make responsive HTML table accessible to screen readers
     return (
       <tr role="row">
         <td role="cell" headers="columnname">
