@@ -5,7 +5,6 @@
  */
 module.exports = {
   extends: ['stylelint-config-prettier'],
-  ignoreFiles: [],
   plugins: ['stylelint-order', 'stylelint-scss'],
   rules: {
     'at-rule-name-case': 'lower',

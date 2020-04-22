@@ -99,12 +99,17 @@ yargs
         .option('fix', {
           default: false,
           description: 'Automatically fix, where possible, violations reported by rules.',
+        })
+        .option('ignorePaths', {
+          type: 'array',
+          default: ['node_modules', 'dist'],
+          description: 'Paths to be ignored by prettier, eslint, and stylelint',
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
 
-      await lintDirectories(argv.directories, argv.fix);
+      await lintDirectories(argv.directories, argv.fix, argv.ignorePaths);
     },
   })
   .demandCommand()

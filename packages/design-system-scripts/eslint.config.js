@@ -18,7 +18,6 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  ignorePatterns: ['node_modules/', 'helpers/', '__tests__'],
   plugins: ['filenames', 'jest', 'jsx-a11y', 'react'],
   rules: {
     'eol-last': 'warn',
