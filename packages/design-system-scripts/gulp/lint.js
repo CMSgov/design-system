@@ -6,12 +6,28 @@ const eslintConfig = require('../eslint.config');
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const path = require('path');
+const prettier = require('gulp-prettier');
+const prettierConfig = require('../prettier.config');
 const stylelint = require('gulp-stylelint');
 const stylelintConfig = require('../stylelint.config');
 const getPackageName = require('./common/getPackageName');
 const streamPromise = require('./common/streamPromise');
 const { logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
+
+async function runPrettier(dir) {
+  const src = path.join(dir, 'src');
+
+  return streamPromise(
+    gulp
+      .src(`${src}/**/*.{js,jsx,scss,html,md,mdx,json}`)
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(count(`## Files formatted with Prettier in ${src}`))
+      .pipe(gulpIf(process.env.NODE_ENV !== 'test', prettier({ ...prettierConfig })))
+      .pipe(gulpIf(process.env.NODE_ENV === 'test', prettier.check({ ...prettierConfig })))
+      .pipe(gulp.dest(src))
+  );
+}
 
 const getLinterConfig = async (dir, originalConfig, additionalCoreRules) => {
   const config = _.cloneDeep(originalConfig);
@@ -34,7 +50,7 @@ const getLinterConfig = async (dir, originalConfig, additionalCoreRules) => {
  * Examples: .ds-c-button--primary, .ds-c-card__title, .ds-u-text-underlined
  */
 const coreStyleLintRules = {
-  'selector-class-pattern': /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/
+  'selector-class-pattern': /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/,
 };
 
 // Lint Sass files using stylelint
@@ -55,7 +71,7 @@ async function lintSass(dir, fix) {
           fix,
           failAfterError: process.env.NODE_ENV === 'test',
           reporters: [{ formatter: 'string', console: true }],
-          syntax: 'scss'
+          syntax: 'scss',
         })
       )
       .pipe(gulp.dest(src))
@@ -64,7 +80,7 @@ async function lintSass(dir, fix) {
 
 // Taken from gulp-eslint example
 // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
-const isFixed = file => {
+const isFixed = (file) => {
   return file.eslint != null && file.eslint.fixed;
 };
 
@@ -72,7 +88,7 @@ const isFixed = file => {
 const coreEsLintRules = {
   // Avoid exploits. If you need dangerouslySetInnerHTML, then temporarily
   // disable this rule in the script rather than removing it from here.
-  'react/no-danger': 'error'
+  'react/no-danger': 'error',
 };
 
 // Lint JS files using eslint
@@ -96,10 +112,11 @@ module.exports = {
     logTask('🔎 ', `Linting "src" directory in: ${directories.join(', ')}`);
 
     await Promise.all(
-      directories.map(async dir => {
+      directories.map(async (dir) => {
+        await runPrettier(dir);
         await lintSass(dir, fix);
         await lintJS(dir, fix);
       })
     );
-  }
+  },
 };

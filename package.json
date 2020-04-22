@@ -56,14 +56,15 @@
     "> 2%",
     "Last 2 versions"
   ],
+  "prettier": "./packages/design-system-scripts/prettier.config.js",
   "eslintConfig": {
     "extends": [
-      "./node_modules/@cmsgov/design-system-scripts/eslint.config.js"
+      "./packages/design-system-scripts/eslint.config.js"
     ]
   },
   "stylelint": {
     "extends": [
-      "./node_modules/@cmsgov/design-system-scripts/stylelint.config.js"
+      "./packages/design-system-scripts/stylelint.config.js"
     ]
   }
 }
