@@ -1,22 +1,22 @@
 module.exports = {
   extends: [
     'nava',
-    'plugin:jsx-a11y/recommended', 
+    'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
-    'prettier', 
-    'prettier/react'
+    'prettier',
+    'prettier/react',
   ],
   env: {
     browser: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   ignorePatterns: ['node_modules/', 'helpers/', '__tests__'],
   plugins: ['filenames', 'jest', 'jsx-a11y', 'react'],
@@ -32,10 +32,10 @@ module.exports = {
       'error',
       {
         required: {
-          some: ['nesting', 'id']
+          some: ['nesting', 'id'],
         },
-        allowChildren: true
-      }
+        allowChildren: true,
+      },
     ],
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'jsx-quotes': 'off',
@@ -55,7 +55,6 @@ module.exports = {
     'react/prefer-stateless-function': 'error',
     'react/prop-types': ['error', { ignore: ['className', 't'] }],
     'react/sort-comp': 'error',
-    'standard/computed-property-even-spacing': 'off'
-  }
+    'standard/computed-property-even-spacing': 'off',
+  },
 };
-  
