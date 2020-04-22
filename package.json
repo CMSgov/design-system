@@ -13,7 +13,7 @@
     "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
     "start:theme": "yarn start --theme",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
-    "lint": "yarn cmsds lint packages --ignorePaths 'node_modules' 'dist' 'helpers' '__tests__'"
+    "lint": "yarn cmsds lint packages --ignorePatterns '/**/helpers/**' '/**/__tests__/**'"
   },
   "devDependencies": {
     "@cmsgov/design-system": "file:./packages/design-system",

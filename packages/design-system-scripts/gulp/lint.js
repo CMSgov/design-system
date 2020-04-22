@@ -28,21 +28,20 @@ const getLinterConfig = async (dir, originalConfig, additionalCoreRules) => {
 };
 
 // Rather than individually configure eslint, stylelint, and prettier to ignore paths,
-// Dynamically exclude paths from the gulp src for each linter
-const getSrcGlob = (glob, dir, ignorePaths) => {
-  ignorePaths.forEach((ignore) => {
-    glob.push(path.join(`!${dir}`, '**', ignore, '**'));
-  });
-
-  return glob;
+// Dynamically add ignore patterns to the src glob for each linter
+// This approach will also make gulp-count more accurate
+const getSrcGlob = (glob, dir, ignorePatterns) => {
+  const test = [...glob, ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore))];
+  console.log(test);
+  return test;
 };
 
-async function runPrettier(dir, ignorePaths) {
+async function runPrettier(dir, ignorePatterns) {
   const src = [path.join(dir, '**/*.{js,jsx,scss,html,md,mdx,json}')];
 
   return streamPromise(
     gulp
-      .src(getSrcGlob(src, dir, ignorePaths))
+      .src(getSrcGlob(src, dir, ignorePatterns))
       .pipe(changedInPlace({ firstPass: true }))
       .pipe(count(`## Files formatted with Prettier in ${dir}`))
       .pipe(gulpIf(process.env.NODE_ENV !== 'test', prettier({ ...prettierConfig })))
@@ -64,14 +63,14 @@ const coreStyleLintRules = {
 };
 
 // Lint Sass files using stylelint
-async function lintSass(dir, fix, ignorePaths) {
+async function lintSass(dir, fix, ignorePatterns) {
   const src = [path.join(dir, '**/*.scss'), path.join(`!${dir}`, '**/*.docs.scss')];
   const config = await getLinterConfig(dir, stylelintConfig, coreStyleLintRules);
   const configBasedir = path.resolve(__dirname, '../node_modules');
 
   return streamPromise(
     gulp
-      .src(getSrcGlob(src, dir, ignorePaths))
+      .src(getSrcGlob(src, dir, ignorePatterns))
       .pipe(changedInPlace({ firstPass: true }))
       .pipe(count(`## Sass files linted in ${dir}`))
       .pipe(
@@ -102,13 +101,13 @@ const coreEsLintRules = {
 };
 
 // Lint JS files using eslint
-async function lintJS(dir, fix, ignorePaths) {
+async function lintJS(dir, fix, ignorePatterns) {
   const src = [path.join(dir, '**/*.{js,jsx}')];
   const config = await getLinterConfig(dir, eslintConfig, coreEsLintRules);
 
   return streamPromise(
     gulp
-      .src(getSrcGlob(src, dir, ignorePaths))
+      .src(getSrcGlob(src, dir, ignorePatterns))
       .pipe(count(`## JS files linted in ${dir}`))
       .pipe(eslint({ ...{ fix }, ...config }))
       .pipe(eslint.format())
@@ -118,10 +117,10 @@ async function lintJS(dir, fix, ignorePaths) {
 }
 
 module.exports = {
-  async lintDirectories(directories, fix, ignorePaths) {
+  async lintDirectories(directories, fix, ignorePatterns) {
     logTask(
       '🔎 ',
-      `Linting files in: ${directories.join(', ')} and ignoring paths: ${ignorePaths.join(', ')}`
+      `Linting files in: ${directories.join(', ')} and ignoring paths: ${ignorePatterns.join(', ')}`
     );
 
     await Promise.all(
@@ -130,9 +129,9 @@ module.exports = {
         // and this order is needed in order for all 3 tasks to run correctly
         // Eslint and stylelint are configured to not conflict with Prettier so the order shouldnt matter
         // TODO: Fix this eventually
-        await lintSass(dir, fix, ignorePaths);
-        await runPrettier(dir, ignorePaths);
-        await lintJS(dir, fix, ignorePaths);
+        await lintSass(dir, fix, ignorePatterns);
+        await runPrettier(dir, ignorePatterns);
+        await lintJS(dir, fix, ignorePatterns);
       })
     );
   },

@@ -87,7 +87,7 @@ yargs
   })
   .command({
     command: 'lint <directories..>',
-    desc: 'Runs stylelint and eslint on the "src" of one or more directories.',
+    desc: 'Runs prettier, stylelint and eslint on one or more directories.',
     builder: (yargs) => {
       yargs
         .positional('directories..', {
@@ -100,16 +100,17 @@ yargs
           default: false,
           description: 'Automatically fix, where possible, violations reported by rules.',
         })
-        .option('ignorePaths', {
+        .option('ignorePatterns', {
           type: 'array',
-          default: ['node_modules', 'dist'],
-          description: 'Paths to be ignored by prettier, eslint, and stylelint',
+          description:
+            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
+      const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
 
-      await lintDirectories(argv.directories, argv.fix, argv.ignorePaths);
+      await lintDirectories(argv.directories, argv.fix, ignorePatterns);
     },
   })
   .demandCommand()
