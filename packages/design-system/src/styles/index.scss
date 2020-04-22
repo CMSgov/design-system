@@ -1,3 +1,12 @@
+// USWDS
+@import '../../node_modules/uswds/dist/scss/theme/uswds-theme-general';
+@import '../../node_modules/uswds/dist/scss/theme/uswds-theme-typography';
+@import '../../node_modules/uswds/dist/scss/theme/uswds-theme-spacing';
+@import '../../node_modules/uswds/dist/scss/theme/uswds-theme-color';
+@import '../../node_modules/uswds/dist/scss/theme/uswds-theme-utilities';
+@import '../../node_modules/uswds/dist/scss/uswds';
+@import 'uswds-theme-custom-styles';
+
 // Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
 @import 'settings/index.scss';
 

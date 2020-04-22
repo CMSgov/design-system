@@ -1,0 +1,37 @@
+/*
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+* * * * * ==============================
+========================================
+========================================
+========================================
+----------------------------------------
+USWDS THEME CUSTOM STYLES
+----------------------------------------
+!! Copy this file to your project's
+   sass root. Don't edit the version
+   in node_modules.
+----------------------------------------
+Custom project SASS goes here.
+
+i.e.
+@include u-padding-right('05');
+----------------------------------------
+*/
+
+// I'm not sure why these paths are not working for finding images
+$theme-font-path: '../../node_modules/uswds/dist/fonts';
+$theme-image-path: '../../node_modules/uswds/dist/img';
+
+.usa-alert {
+  font-size: 3rem;
+}
+
+// Info colors
+$theme-color-info-family: 'magenta-vivid';
+$theme-color-info-lighter: 'magenta-40v';
+$theme-color-info-light: 'cyan-20';
+$theme-color-info: 'cyan-30v';
+$theme-color-info-dark: 'cyan-40v';
+$theme-color-info-darker: 'blue-cool-60';

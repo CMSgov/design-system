@@ -22,7 +22,7 @@ export class Alert extends React.PureComponent {
     const Heading = `h${this.props.headingLevel}` || `h3`;
     if (this.props.heading) {
       return (
-        <Heading className="ds-c-alert__heading" id={this.headingId}>
+        <Heading className="usa-alert__heading" id={this.headingId}>
           {this.props.heading}
         </Heading>
       );
@@ -31,9 +31,10 @@ export class Alert extends React.PureComponent {
 
   render() {
     const classes = classNames(
-      'ds-c-alert',
-      this.props.hideIcon && 'ds-c-alert--hide-icon',
-      this.props.variation && `ds-c-alert--${this.props.variation}`,
+      'usa-alert',
+      this.props.hideIcon && 'usa-alert--no-icon',
+      this.props.slimAlert && 'usa-alert--slim',
+      this.props.variation && `usa-alert--${this.props.variation}`,
       this.props.className
     );
 
@@ -43,7 +44,7 @@ export class Alert extends React.PureComponent {
         role={this.props.role}
         aria-labelledby={this.props.heading ? this.headingId : undefined}
       >
-        <div className="ds-c-alert__body">
+        <div className="usa-alert__body">
           {this.heading()}
           {this.props.children}
         </div>
@@ -53,7 +54,8 @@ export class Alert extends React.PureComponent {
 }
 Alert.defaultProps = {
   role: 'region',
-  headingLevel: '3'
+  headingLevel: '3',
+  variation: 'info'
 };
 Alert.propTypes = {
   /**
@@ -77,13 +79,17 @@ Alert.propTypes = {
    */
   hideIcon: PropTypes.bool,
   /**
+   * Boolean to use a slim alert
+   */
+  slimAlert: PropTypes.bool,
+  /**
    * ARIA `role`, defaults to 'region'
    */
   role: PropTypes.oneOf(['alert', 'alertdialog', 'region']),
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation: PropTypes.oneOf(['error', 'warn', 'success'])
+  variation: PropTypes.oneOf(['error', 'warning', 'success', 'info'])
 };
 
 export default Alert;
