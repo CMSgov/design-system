@@ -6,7 +6,7 @@ import Tabs from './Tabs';
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
   id: 'panel-1',
-  tab: 'Tab label'
+  tab: 'Tab label',
 };
 
 function render(customProps = {}, children, deep) {
@@ -20,11 +20,11 @@ function render(customProps = {}, children, deep) {
     props: props,
     wrapper: deep
       ? mount(<Tabs {...props}>{children}</Tabs>)
-      : shallow(<Tabs {...props}>{children}</Tabs>)
+      : shallow(<Tabs {...props}>{children}</Tabs>),
   };
 }
 
-describe('Tabs', function() {
+describe('Tabs', function () {
   it('renders a tab', () => {
     const children = [
       <TabPanel
@@ -35,7 +35,7 @@ describe('Tabs', function() {
         tabHref="/foo"
       >
         {defaultPanelChildren}
-      </TabPanel>
+      </TabPanel>,
     ];
     const data = render(undefined, children);
     const tabs = data.wrapper.find('Tab');
@@ -45,12 +45,7 @@ describe('Tabs', function() {
     expect(tabs.first().prop('id')).toBe(`ds-c-tabs__item--${defaultPanelProps.id}`);
     expect(tabs.first().prop('panelId')).toBe(defaultPanelProps.id);
     expect(tabs.first().prop('href')).toBe('/foo');
-    expect(
-      tabs
-        .first()
-        .children()
-        .text()
-    ).toBe(defaultPanelProps.tab);
+    expect(tabs.first().children().text()).toBe(defaultPanelProps.tab);
   });
 
   it('renders panels', () => {
@@ -80,7 +75,7 @@ describe('Tabs', function() {
         </TabPanel>,
         <TabPanel key="2" id="panel-2" tab="Tab 2">
           {defaultPanelChildren}
-        </TabPanel>
+        </TabPanel>,
       ];
     });
 
@@ -107,7 +102,7 @@ describe('Tabs', function() {
       const data = render(
         {
           onChange: onChangeMock,
-          selectedId: 'panel-1'
+          selectedId: 'panel-1',
         },
         children,
         true

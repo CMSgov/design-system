@@ -4,10 +4,10 @@ import { shallow } from 'enzyme';
 
 const noop = () => {};
 
-const generateStep = id => ({
+const generateStep = (id) => ({
   id,
   href: '/some/path',
-  title: 'Do stuff'
+  title: 'Do stuff',
 });
 
 const defaultStepProps = {
@@ -16,7 +16,7 @@ const defaultStepProps = {
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',
-  startText: 'Start!'
+  startText: 'Start!',
 };
 
 describe('StepList', () => {

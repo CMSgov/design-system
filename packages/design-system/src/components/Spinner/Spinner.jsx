@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const Spinner = props => {
+export const Spinner = (props) => {
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
@@ -29,12 +29,12 @@ Spinner.propTypes = {
   /** Landmark role so the spinner can receive keyboard focus */
   role: PropTypes.string,
   /** Smaller or larger variant */
-  size: PropTypes.oneOf(['small', 'big'])
+  size: PropTypes.oneOf(['small', 'big']),
 };
 
 Spinner.defaultProps = {
   'aria-valuetext': 'Loading',
-  role: 'progressbar'
+  role: 'progressbar',
 };
 
 export default Spinner;

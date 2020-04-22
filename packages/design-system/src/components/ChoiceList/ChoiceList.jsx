@@ -15,7 +15,7 @@ export class ChoiceList extends React.PureComponent {
    * Creates a list of Choice components
    */
   choices() {
-    return this.props.choices.map(choiceProps => {
+    return this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
       choiceProps.name = this.props.name;
       choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
@@ -23,7 +23,7 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.size = this.props.size;
       choiceProps.type = this.type();
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
-      choiceProps.inputRef = ref => {
+      choiceProps.inputRef = (ref) => {
         this.choiceRefs.push(ref);
       };
 
@@ -106,7 +106,7 @@ ChoiceList.propTypes = {
       hint: Choice.propTypes.hint,
       label: Choice.propTypes.children,
       requirementLabel: Choice.propTypes.requirementLabel,
-      value: Choice.propTypes.value
+      value: Choice.propTypes.value,
     })
   ).isRequired,
   /**
@@ -169,7 +169,7 @@ ChoiceList.propTypes = {
    * `checkbox` fields will be rendered. If less than 10 choices are passed in,
    * then `radio` buttons will be rendered.
    */
-  type: PropTypes.oneOf(['checkbox', 'radio'])
+  type: PropTypes.oneOf(['checkbox', 'radio']),
 };
 
 export default ChoiceList;

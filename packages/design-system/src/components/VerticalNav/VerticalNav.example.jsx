@@ -20,7 +20,7 @@ ReactDOM.render(
       {
         label: 'Parent link',
         url: 'javascript:void(0);',
-        id: 'parentlink1'
+        id: 'parentlink1',
       },
       {
         label: 'Current page',
@@ -29,7 +29,7 @@ ReactDOM.render(
           {
             id: 'childlink1',
             label: 'Child link',
-            url: 'javascript:void(0);'
+            url: 'javascript:void(0);',
           },
           {
             label: 'Child link',
@@ -39,28 +39,28 @@ ReactDOM.render(
               {
                 id: 'grandchildlink1',
                 label: 'Grandchild link',
-                url: 'javascript:void(0);'
+                url: 'javascript:void(0);',
               },
               {
                 id: 'grandchildlink2',
                 label: 'Grandchild link',
                 url: 'javascript:void(0);',
-                selected: true
-              }
-            ]
+                selected: true,
+              },
+            ],
           },
           {
             id: 'childlink3',
             label: 'Child link',
-            url: 'javascript:void(0);'
-          }
-        ]
+            url: 'javascript:void(0);',
+          },
+        ],
       },
       {
         label: 'Parent link',
         url: 'javascript:void(0);',
-        id: 'parentlink2'
-      }
+        id: 'parentlink2',
+      },
     ]}
   />,
   document.getElementById('js-example')
