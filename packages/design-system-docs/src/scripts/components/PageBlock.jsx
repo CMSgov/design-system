@@ -14,7 +14,7 @@ class PageBlock extends React.PureComponent {
     let modifierMarkup;
 
     if (this.props.modifiers) {
-      modifierMarkup = this.props.modifiers.map(modifier => {
+      modifierMarkup = this.props.modifiers.map((modifier) => {
         return (
           <HtmlExample
             key={modifier.name}
@@ -48,7 +48,7 @@ class PageBlock extends React.PureComponent {
         <div
           className="c-details ds-u-margin-top--2 ds-u-measure--wide"
           dangerouslySetInnerHTML={{
-            __html: this.props.description
+            __html: this.props.description,
           }}
         />
       );
@@ -86,7 +86,7 @@ class PageBlock extends React.PureComponent {
         id={this.props.reference}
         key="header"
       />,
-      source
+      source,
     ];
   }
 
@@ -96,14 +96,13 @@ class PageBlock extends React.PureComponent {
         {this.header()}
         {this.description()}
         {this.markupExamples()}
-        <ReactContent
-          hideExample={this.props.hideExample}
-          reactComponentDocs={this.props.reactComponentDocs}
-          reactExamplePath={this.props.reactExamplePath}
-          reactExampleSource={this.props.reactExampleSource}
-          reference={this.props.reference}
-          responsive={this.props.responsive}
-        />
+          <ReactContent
+            reactComponentProps={this.props.reactComponentProps}
+            reactExamplePath={this.props.reactExamplePath}
+            reactExampleSource={this.props.reactExampleSource}
+            reference={this.props.reference}
+            responsive={this.props.responsive}
+          />
       </article>
     );
   }
@@ -112,18 +111,17 @@ class PageBlock extends React.PureComponent {
 PageBlock.propTypes = {
   description: PropTypes.string,
   header: PropTypes.string.isRequired,
-  hideExample: PropTypes.bool,
   hideHeader: PropTypes.bool,
   hideMarkup: PropTypes.bool,
   markup: PropTypes.string,
   modifiers: PropTypes.arrayOf(HtmlExample.propTypes.modifier),
-  reactComponentDocs: ReactContent.propTypes.reactComponentDocs,
+  reactComponentProps: ReactContent.propTypes.reactComponentProps,
   reactComponentPath: PropTypes.string,
   reactExamplePath: ReactContent.propTypes.reactExamplePath,
   reactExampleSource: ReactContent.propTypes.reactExampleSource,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
-  source: Source.propTypes.source
+  source: Source.propTypes.source,
 };
 
 export default PageBlock;
