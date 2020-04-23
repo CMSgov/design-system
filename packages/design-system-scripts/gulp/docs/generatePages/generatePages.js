@@ -1,4 +1,4 @@
-const addReactDocProps = require('./addReactDocProps');
+const addReactDocs = require('./addReactDocs');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
@@ -155,7 +155,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   // Also, remove pages with the same URL (so themes can override existing pages)
   const pageSections = uniquePages(markdownPagesData.concat(kssSections));
 
-  await addReactDocProps(pageSections, REACT_DATA_PATH);
+  await addReactDocs(pageSections, REACT_DATA_PATH);
   // Create HTML files for markup examples
   await generateMarkupPages(pageSections, dist, options);
   // Add missing top-level pages and connect the page parts to their parent pages

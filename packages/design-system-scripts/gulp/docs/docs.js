@@ -20,7 +20,7 @@ const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
 const { runWebpackStatically } = require('./webpack');
 
 /**
- * Parses our JSX files for relevant documentation information and stores it for
+ * Parses JSX files for prop documentation and example files and stores it for
  * our other tasks to read later
  */
 async function extractReactDocs(sourceDir, docsDir, options) {
