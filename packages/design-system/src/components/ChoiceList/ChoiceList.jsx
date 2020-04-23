@@ -7,6 +7,15 @@ import classNames from 'classnames';
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.multiple) {
+        console.warn(
+          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use 'type' instead. This prop is obsolete and will be removed in a future release.`
+        );
+      }
+    }
+
     this.handleBlur = this.handleBlur.bind(this);
     this.choiceRefs = [];
   }
@@ -21,7 +30,7 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
       choiceProps.onChange = this.props.onChange;
       choiceProps.size = this.props.size;
-      choiceProps.type = this.type();
+      choiceProps.type = this.props.type;
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
       choiceProps.inputRef = ref => {
         this.choiceRefs.push(ref);
@@ -33,24 +42,6 @@ export class ChoiceList extends React.PureComponent {
         </Choice>
       );
     });
-  }
-
-  /**
-   * Determines the type of field(s) we should render based on a few factors
-   */
-  type() {
-    if (this.props.type) {
-      return this.props.type;
-    }
-
-    if (this.props.multiple || this.props.choices.length === 1) {
-      // Prefer a checkbox when multiple choices can be selected, since users
-      // have trouble selecting multiple choices from a select menu. And if only
-      // one choice is available, then a radio button would prevent a user from
-      // deselecting the field.
-      return 'checkbox';
-    }
-    return 'radio';
   }
 
   handleBlur(evt) {
@@ -95,8 +86,7 @@ export class ChoiceList extends React.PureComponent {
 
 ChoiceList.propTypes = {
   /**
-   * The list of choices to be rendered. The number of choices you pass in may
-   * affect the type of field(s) rendered. See `type` for more info.
+   * The list of choices to be rendered.
    */
   choices: PropTypes.arrayOf(
     PropTypes.shape({
@@ -139,8 +129,7 @@ ChoiceList.propTypes = {
    */
   labelClassName: PropTypes.string,
   /**
-   * Allows the user to select multiple choices. Setting this to `true` results
-   * in a list of checkbox fields to be rendered.
+   * @hide-prop [Deprecated] This prop is obsolete after changing `type` to a required prop
    */
   multiple: PropTypes.bool,
   /**
@@ -163,13 +152,9 @@ ChoiceList.propTypes = {
    */
   size: PropTypes.oneOf(['small']),
   /**
-   * You can manually set the `type` if you prefer things to be less magical.
-   * Otherwise, the type will be inferred by the other `props`, based
-   * on what's best for accessibility and usability. If `multiple` is `true`, then
-   * `checkbox` fields will be rendered. If less than 10 choices are passed in,
-   * then `radio` buttons will be rendered.
+   * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: PropTypes.oneOf(['checkbox', 'radio'])
+  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired
 };
 
 export default ChoiceList;
