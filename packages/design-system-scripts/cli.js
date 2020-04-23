@@ -103,12 +103,14 @@ yargs
         .option('ignorePatterns', {
           type: 'array',
           description:
-            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
+            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules", "dist", and "tmp" directories are ignored.',
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
-      const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
+      const ignorePatterns = ['**/node_modules/**', '**/dist/**', '**/tmp/**'].concat(
+        argv.ignorePatterns || []
+      );
 
       await lintDirectories(argv.directories, argv.fix, ignorePatterns);
     },

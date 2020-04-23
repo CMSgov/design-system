@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const count = require('gulp-count');
 const changedInPlace = require('gulp-changed-in-place');
 const eslint = require('gulp-eslint');
@@ -16,25 +15,24 @@ const { logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 // Helper function for dynamically updating a linter config based off the package.json
-const getLinterConfig = async (dir, originalConfig, additionalCoreRules) => {
-  const config = _.cloneDeep(originalConfig);
-
+const getLinterConfig = async (dir, config, additionalCoreRules) => {
   // Add addition linting rules for core DS
   const name = await getPackageName(dir);
   if (name === CORE_SOURCE_PACKAGE) {
-    _.set(config, 'rules', { ...config.rules, ...additionalCoreRules });
+    const rules = { ...config.rules, ...additionalCoreRules };
+    return { ...config, ...{ rules } };
   }
+
   return config;
 };
 
 // Rather than individually configure eslint, stylelint, and prettier to ignore paths,
 // Dynamically add ignore patterns to the src glob for each linter
 // This approach will also make gulp-count more accurate
-const getSrcGlob = (glob, dir, ignorePatterns) => {
-  const test = [...glob, ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore))];
-  console.log(test);
-  return test;
-};
+const getSrcGlob = (glob, dir, ignorePatterns) => [
+  ...glob,
+  ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore)),
+];
 
 async function runPrettier(dir, ignorePatterns) {
   const src = [path.join(dir, '**/*.{js,jsx,scss,html,md,mdx,json}')];
@@ -42,7 +40,6 @@ async function runPrettier(dir, ignorePatterns) {
   return streamPromise(
     gulp
       .src(getSrcGlob(src, dir, ignorePatterns))
-      .pipe(changedInPlace({ firstPass: true }))
       .pipe(count(`## Files formatted with Prettier in ${dir}`))
       .pipe(gulpIf(process.env.NODE_ENV !== 'test', prettier({ ...prettierConfig })))
       .pipe(gulpIf(process.env.NODE_ENV === 'test', prettier.check({ ...prettierConfig })))
