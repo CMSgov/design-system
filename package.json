@@ -59,8 +59,5 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ],
-  "dependencies": {
-    "uswds": "^2.6.0"
-  }
+  ]
 }
