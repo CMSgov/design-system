@@ -1,4 +1,4 @@
-import ChoiceList from './ChoiceList';
+import { ChoiceList } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

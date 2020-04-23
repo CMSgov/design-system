@@ -1,7 +1,6 @@
-import Autocomplete from './Autocomplete';
+import { Autocomplete, TextField } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TextField from '../TextField/TextField';
 
 ReactDOM.render(
   <div>

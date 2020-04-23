@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Badge from './Badge';
+import { Badge } from '@cmsgov/design-system';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(

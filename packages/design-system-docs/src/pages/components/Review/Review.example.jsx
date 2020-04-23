@@ -1,6 +1,6 @@
+import { Review } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Review from './Review';
 
 const editButtonHref = 'javascript:void(0);';
 ReactDOM.render(

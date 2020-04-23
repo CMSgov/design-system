@@ -1,5 +1,4 @@
-import HelpDrawer from './HelpDrawer';
-import HelpDrawerToggle from './HelpDrawerToggle';
+import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

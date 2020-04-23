@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import VerticalNav from './VerticalNav';
+import { VerticalNav } from '@cmsgov/design-system';
 import classNames from 'classnames';
 
 // Mock react-router example

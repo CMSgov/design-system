@@ -1,6 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import TextField, { unmaskValue } from './TextField';
-import Button from '../Button/Button';
+import { Button, TextField, unmaskValue } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

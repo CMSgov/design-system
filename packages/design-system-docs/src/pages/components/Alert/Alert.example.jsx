@@ -1,4 +1,4 @@
-import Alert from './Alert';
+import { Alert } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

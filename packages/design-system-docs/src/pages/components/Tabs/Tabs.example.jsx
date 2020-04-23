@@ -1,7 +1,6 @@
+import { TabPanel, Tabs } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TabPanel from './TabPanel';
-import Tabs from './Tabs';
 
 ReactDOM.render(
   <Tabs>

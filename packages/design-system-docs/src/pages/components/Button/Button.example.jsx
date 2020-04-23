@@ -1,6 +1,6 @@
 /* eslint no-alert: 0 */
 import React, { Fragment } from 'react';
-import Button from './Button';
+import { Button } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';

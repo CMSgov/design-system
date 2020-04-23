@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import DateField from './DateField';
+import { DateField } from '@cmsgov/design-system';
 import ReactDOM from 'react-dom';
 
 class ControlledDateField extends React.PureComponent {

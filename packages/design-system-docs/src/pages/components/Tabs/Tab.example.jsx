@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tab from './Tab';
+import { Tab } from '@cmsgov/design-system';
 
 ReactDOM.render(
   <div className="ds-c-tabs" role="tablist">
