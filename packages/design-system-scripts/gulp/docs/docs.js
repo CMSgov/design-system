@@ -14,7 +14,7 @@ const merge = require('gulp-merge-json');
 const parseReactFile = require('./parseReactFile');
 const streamPromise = require('../common/streamPromise');
 const { compileDocsSass } = require('../sass');
-const { getSourceDirs } = require('../common/getDirsToProcess');
+const { getSourceDirs, getDocsDirs } = require('../common/getDirsToProcess');
 const { logTask, log } = require('../common/logUtil');
 const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
 const { runWebpackStatically } = require('./webpack');
@@ -23,15 +23,21 @@ const { runWebpackStatically } = require('./webpack');
  * Parses our JSX files for relevant documentation information and stores it for
  * our other tasks to read later
  */
-async function extractReactDocs(sourceDir, options) {
+async function extractReactDocs(sourceDir, docsDir, options) {
   logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
 
   const sources = await getSourceDirs(sourceDir);
   const sourcesGlob = getSourcePattern(sources, 'src');
+  const docs = await getDocsDirs(docsDir);
+  const docsGlob = getSourcePattern(docs, 'src');
 
   return streamPromise(
     gulp
-      .src([`${sourcesGlob}/**/*.jsx`, `!${sourcesGlob}/**/*.test.jsx`])
+      .src([
+        `${sourcesGlob}/**/*.jsx`,
+        `!${sourcesGlob}/**/*.test.jsx`,
+        `${docsGlob}/**/*.example.jsx`,
+      ])
       .pipe(parseReactFile(options.rootPath))
       .pipe(merge({ fileName: REACT_DATA_FILENAME }))
       .pipe(gulp.dest(REACT_DATA_DIR))
@@ -74,7 +80,7 @@ module.exports = {
     logTask('🏃 ', message);
 
     await cleanDist(docsDir);
-    await extractReactDocs(sourceDir, options);
+    await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
     await copySourceAssets(sourceDir, docsDir);
     await copyDocsAssets(docsDir);
@@ -86,5 +92,5 @@ module.exports = {
   extractReactDocs,
   generatePages,
   copySourceAssets,
-  copyDocsAssets
+  copyDocsAssets,
 };

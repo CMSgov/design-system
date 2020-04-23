@@ -1,3 +1,4 @@
+const { get } = require('lodash');
 const fs = require('mz/fs');
 const path = require('path');
 const { logError } = require('../../common/logUtil');
@@ -10,40 +11,34 @@ const { logError } = require('../../common/logUtil');
  * @param {String} dataPath
  * @returns {Promise}
  */
-module.exports = function(pages, dataPath) {
-  return fs.readFile(dataPath, 'utf8').then(contents => {
+module.exports = function (pages, dataPath) {
+  return fs.readFile(dataPath, 'utf8').then((contents) => {
     const data = JSON.parse(contents);
 
-    pages.forEach(page => {
+    pages.forEach((page) => {
       // TODO: Replace this logic with explicitly defined paths in KSS/markdown
-      if (page.reactComponent || page.reactExample) {
-        const reactComponentFile = `${path.join(
-          path.dirname(page.source.path),
-          page.reactComponent
-        )}.jsx`;
-        const reactExampleFile = `${path.join(
-          path.dirname(page.source.path),
-          page.reactComponent
-        )}.example.jsx`;
+      if (page.reactProps) {
+        const reactComponentFile = path.join(path.dirname(page.source.path), page.reactProps);
 
-        if (page.reactComponent) {
-          const componentData = data[reactComponentFile];
-          if (componentData && componentData.length === 1) {
-            page.reactComponentPath = reactComponentFile;
-            // There should only ever be one exported component definition
-            page.reactComponentDocs = componentData[0];
-          } else {
-            logError(
-              'react doc props',
-              `Invalid react component path or data for ${reactComponentFile}`
-            );
-          }
+        const reactProps = get(data, [page.reactProps, 0, 'props']);
+        if (reactProps) {
+          page.reactComponentPath = reactComponentFile;
+          // There should only ever be one exported component definition
+          page.reactComponentProps = reactProps;
+        } else {
+          logError('react doc props', `Invalid react component for ${page.source.path}`);
         }
+      }
 
-        const exampleData = data[reactExampleFile];
-        if (exampleData && exampleData.source) {
+      if (page.reactExample) {
+        const reactExampleFile = path.join(path.dirname(page.source.path), page.reactExample);
+
+        const reactExample = get(data, [page.reactExample, 'source']);
+        if (reactExample) {
           page.reactExamplePath = reactExampleFile;
-          page.reactExampleSource = exampleData.source;
+          page.reactExampleSource = reactExample;
+        } else {
+          logError('react doc props', `Invalid react example for ${page.source.path}`);
         }
       }
     });

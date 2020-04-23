@@ -3,7 +3,7 @@ const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
 const through = require('through2');
-const { logData, logError } = require('../common/logUtil');
+const { logTask, logData, logError } = require('../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -11,21 +11,23 @@ const { logData, logError } = require('../common/logUtil');
  * for rendering propType documentation and JS markup examples
  * @param {String} rootPath - Root docs site path
  */
-module.exports = function(rootPath) {
+module.exports = function (rootPath) {
   const response = {};
 
   return through.obj((file, encoding, cb) => {
     try {
       if (file.isNull()) return cb(null, file);
 
-      const data = file.path.match(/.example.(jsx|js)$/)
-        ? parseExample(file)
-        : parseComponent(file, rootPath);
+      const fileName = path.basename(file.path);
+      const exampleFile = fileName.match(/.example.jsx$/);
 
-      // Assign the data to a unique property, based on the filename,
-      // so we can merge the JSON files in another stream
-      const key = path.relative('./', file.path);
-      response[key] = data;
+      const data = exampleFile ? parseExample(file) : parseComponent(file, rootPath);
+
+      // Assign the data to the component name
+      if (response[fileName]) {
+        logTask('🖊️  ', `Overriding ${fileName} react props with ${file.path}`);
+      }
+      response[fileName] = data;
     } catch (e) {
       logError('react-docgen', e);
       logData('react-docgen', file.path);
@@ -52,7 +54,7 @@ function parseExample(file) {
     source = source.substring(source.indexOf(lastImport) + lastImport.length).trim();
   }
 
-  return { source };
+  return { source, path: file.path };
 }
 
 /**
@@ -67,9 +69,10 @@ function parseComponent(file, rootPath) {
     reactDocgenHandlers(rootPath)
   );
 
-  docs.forEach(doc => {
+  docs.forEach((doc) => {
     // Reduce filesize by removing properties we don't need
     delete doc.methods;
+    doc.path = file.path;
   });
 
   return docs;

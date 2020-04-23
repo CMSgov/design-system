@@ -10,12 +10,12 @@ module.exports = {
     const pkgName = await getPackageName(sourceDir);
     return pkgName === CORE_SOURCE_PACKAGE
       ? [sourceDir]
-      : [sourceDir, `node_modules/${CORE_SOURCE_PACKAGE}`];
+      : [`node_modules/${CORE_SOURCE_PACKAGE}`, sourceDir];
   },
   async getDocsDirs(docPackageDir) {
     const pkgName = await getPackageName(docPackageDir);
     return pkgName === CORE_DOCS_PACKAGE
       ? [docPackageDir]
-      : [docPackageDir, `node_modules/${CORE_DOCS_PACKAGE}`];
-  }
+      : [`node_modules/${CORE_DOCS_PACKAGE}`, docPackageDir];
+  },
 };
