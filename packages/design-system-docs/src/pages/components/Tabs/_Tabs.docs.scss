@@ -13,7 +13,9 @@ Style guide: components.tabs
 
 `Tabs` is a container component that manages the state of your tabs for you. In most cases, you'll want to use this component rather than the presentational components (`Tab`, `TabPanel`) on their own.
 
-@react-component Tabs
+@react-example Tabs.example.jsx
+
+@react-props Tabs.jsx
 
 Style guide: components.tabs.react-tabs
 */
@@ -23,9 +25,7 @@ Style guide: components.tabs.react-tabs
 
 A `TabPanel` is a presentational component which accepts a tab's content as its `children`.
 
-@hide-example
-
-@react-component TabPanel
+@react-props TabPanel.jsx
 
 Style guide: components.tabs.react-tabpanel
 */

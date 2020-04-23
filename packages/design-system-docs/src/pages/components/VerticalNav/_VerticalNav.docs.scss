@@ -15,7 +15,9 @@ Style guide: components.vertical-nav
 
 A `VerticalNav` component accepts list items as a JSON object and includes additional functionality like collapsible nested menus.
 
-@react-component VerticalNav
+@react-example VerticalNav.example.jsx
+
+@react-props VerticalNav.jsx
 
 Style guide: components.vertical-nav.VerticalNav
 */
@@ -23,9 +25,7 @@ Style guide: components.vertical-nav.VerticalNav
 /*
 `<VerticalNavItem>`
 
-@hide-example
-
-@react-component VerticalNavItem
+@react-props VerticalNavItem.jsx
 
 Style guide: components.vertical-nav.VerticalNavItem
 */

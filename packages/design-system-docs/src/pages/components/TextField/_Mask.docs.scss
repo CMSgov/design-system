@@ -15,9 +15,9 @@ Passing a `mask` prop into the `TextField` component with a valid value will
 enable formatting to occur when the field is blurred. To "unmask" the
 value, you can import and call the `unmaskValue` method.
 
-@react-component TextField
+@react-example Mask.example.jsx
 
-@react-example Mask
+@react-props TextField.jsx
 
 Style guide: components.masked-field.react
 */
