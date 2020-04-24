@@ -7,7 +7,7 @@ class Example extends React.PureComponent {
     super(props);
 
     this.state = {
-      showModal: false
+      showModal: false,
     };
   }
 
@@ -49,7 +49,7 @@ class Example extends React.PureComponent {
                 onClick={() => this.hideModal()}
               >
                 Cancel
-              </Button>
+              </Button>,
             ]}
           >
             You are leaving URL and connecting to a 3rd party site. Please click OK to continue or

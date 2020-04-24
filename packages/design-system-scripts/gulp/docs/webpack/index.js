@@ -51,18 +51,18 @@ module.exports = {
               publicPath: config.output.publicPath,
               stats: webpackStatsConfig,
               watchOptions: {
-                ignored: /node_modules/
-              }
+                ignored: /node_modules/,
+              },
             }),
             webpackHotMiddleware(bundler, {
-              reload: true
-            })
-          ]
+              reload: true,
+            }),
+          ],
         },
         files: [`./${path.join(docsDir, '/**/*.html')}`],
         snippetOptions: {
-          blacklist: ['/example/*']
-        }
+          blacklist: ['/example/*'],
+        },
       });
     } catch (err) {
       logError('webpack server', err.stack || err);
@@ -70,5 +70,5 @@ module.exports = {
         logError('webpack server', err.details);
       }
     }
-  }
+  },
 };

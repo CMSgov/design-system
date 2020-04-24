@@ -13,7 +13,7 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
 
   const includePaths = [
     fs.realpathSync(path.resolve(last(sources), 'src')),
-    fs.realpathSync(path.resolve(last(docs), 'src'))
+    fs.realpathSync(path.resolve(last(docs), 'src')),
   ];
 
   const config = {
@@ -21,12 +21,12 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
     context: __dirname,
     entry: {
       index: [path.resolve(last(docs), 'src/index.jsx')],
-      example: [path.resolve(last(docs), 'src/example.js')]
+      example: [path.resolve(last(docs), 'src/example.js')],
     },
     output: {
       path: distPath,
       publicPath: '/',
-      filename: '[name].js'
+      filename: '[name].js',
     },
     module: {
       rules: [
@@ -34,9 +34,9 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
           test: /\.(js|jsx)$/,
           exclude: /node_modules(?!\/@cmsgov)/,
           include: includePaths,
-          use: [{ loader: 'babel-loader' }]
-        }
-      ]
+          use: [{ loader: 'babel-loader' }],
+        },
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -44,28 +44,28 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
           rootPath: JSON.stringify(options.rootPath),
           githubUrl: JSON.stringify(options.githubUrl),
           name: JSON.stringify(options.name),
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-        }
-      })
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        },
+      }),
     ],
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
-      modules: ['../', 'node_modules']
+      modules: ['../', 'node_modules'],
     },
     performance: {
-      hints: false
-    }
+      hints: false,
+    },
   };
 
   if (process.env.NODE_ENV === 'production') {
     config.optimization = {
-      minimize: true
+      minimize: true,
     };
   } else {
     // Hot reload is enabled for non production envs
     const keys = ['index']; // Object.keys(config.entry);
 
-    keys.forEach(key => {
+    keys.forEach((key) => {
       config.entry[key] = ['react-hot-loader/patch', 'webpack-hot-middleware/client'].concat(
         config.entry[key]
       );

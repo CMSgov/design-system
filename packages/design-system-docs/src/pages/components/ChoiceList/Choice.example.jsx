@@ -10,7 +10,7 @@ const dropdownOptions = [
   { label: 'E', value: 'E' },
   { label: 'F', value: 'F' },
   { label: 'G', value: 'G' },
-  { label: 'H', value: 'H' }
+  { label: 'H', value: 'H' },
 ];
 
 const childDropdown = (

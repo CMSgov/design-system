@@ -84,7 +84,7 @@ export class Autocomplete extends React.PureComponent {
     const isOpen = listboxOpen;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
-    return React.Children.map(this.props.children, child => {
+    return React.Children.map(this.props.children, (child) => {
       if (isTextField(child)) {
         const propOverrides = {
           'aria-autocomplete': 'list',
@@ -100,7 +100,7 @@ export class Autocomplete extends React.PureComponent {
           onBlur: child.props.onBlur,
           onChange: child.props.onChange,
           onKeyDown: child.props.onKeyDown,
-          role: 'combobox'
+          role: 'combobox',
         };
 
         return React.cloneElement(child, getInputProps(propOverrides));
@@ -134,7 +134,7 @@ export class Autocomplete extends React.PureComponent {
           getRootProps,
           highlightedIndex,
           inputValue,
-          isOpen
+          isOpen,
         }) => (
           <WrapperDiv
             {...getRootProps({
@@ -144,7 +144,7 @@ export class Autocomplete extends React.PureComponent {
               'aria-owns': null,
               className: rootClassName,
               refKey: 'innerRef',
-              role: null
+              role: null,
             })}
           >
             {this.renderChildren(getInputProps, isOpen)}
@@ -200,9 +200,9 @@ Autocomplete.defaultProps = {
   autoCompleteLabel: 'off',
   clearInputText: 'Clear search',
   clearSearchButton: true,
-  itemToString: item => (item ? item.name : ''),
+  itemToString: (item) => (item ? item.name : ''),
   loadingMessage: 'Loading...',
-  noResultsMessage: 'No results'
+  noResultsMessage: 'No results',
 };
 
 Autocomplete.propTypes = {
@@ -256,7 +256,7 @@ Autocomplete.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
-      name: PropTypes.string
+      name: PropTypes.string,
     })
   ),
   /**
@@ -286,7 +286,7 @@ Autocomplete.propTypes = {
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
    */
-  onInputValueChange: PropTypes.func
+  onInputValueChange: PropTypes.func,
 };
 
 export default Autocomplete;

@@ -11,6 +11,6 @@ module.exports = async function copyAssets(sourceDir, destPackageDir = null) {
 
   await Promise.all([
     copyDir(`${src}/fonts`, `${dest}/fonts`),
-    copyDir(`${src}/images`, `${dest}/images`)
+    copyDir(`${src}/images`, `${dest}/images`),
   ]);
 };

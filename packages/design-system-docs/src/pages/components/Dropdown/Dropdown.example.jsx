@@ -10,7 +10,7 @@ const dropdownOptions = [
   { label: 'Option 5', value: '5' },
   { label: 'Option 6', value: '6' },
   { label: 'Option 7', value: '7' },
-  { label: 'Option 8', value: '8' }
+  { label: 'Option 8', value: '8' },
 ];
 
 ReactDOM.render(

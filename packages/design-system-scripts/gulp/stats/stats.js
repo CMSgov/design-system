@@ -66,13 +66,13 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
 function getFontsSize(fontDir) {
   return fs
     .readdir(fontDir)
-    .then(files => {
+    .then((files) => {
       return Promise.all(
         // Array of .woff2 file sizes
         files
-          .filter(name => name.match(/\.woff2$/))
-          .map(name => {
-            return fs.stat(path.resolve(fontDir, name)).then(stats => stats.size);
+          .filter((name) => name.match(/\.woff2$/))
+          .map((name) => {
+            return fs.stat(path.resolve(fontDir, name)).then((stats) => stats.size);
           })
       );
     })
@@ -129,15 +129,15 @@ function createSpecificityGraph(stats) {
 
   return fs
     .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
-    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
-    .then(body => {
+    .then((body) => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
+    .then((body) => {
       if (!fs.existsSync(tmpPath)) {
         fs.mkdir(tmpPath).then(() => body);
       }
 
       return body;
     })
-    .then(body => fs.writeFile(outputPath, body, 'utf8'))
+    .then((body) => fs.writeFile(outputPath, body, 'utf8'))
     .then(() => {
       logTask('📈 ', `Specificity graph created: ${outputPath}`);
     });

@@ -41,7 +41,7 @@ export class Button extends React.PureComponent {
 
     const attrs = {
       className: this.classNames(),
-      ...props
+      ...props,
     };
 
     if (this.props.onClick) {
@@ -115,7 +115,7 @@ export class Button extends React.PureComponent {
 
 Button.defaultProps = {
   type: 'button',
-  component: 'button'
+  component: 'button',
 };
 Button.propTypes = {
   /**
@@ -159,7 +159,7 @@ Button.propTypes = {
   /**
    * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
+  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
 };
 
 export default Button;

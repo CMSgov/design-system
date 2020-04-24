@@ -9,14 +9,14 @@ function shallowRender(customProps = {}, children = label) {
   const props = Object.assign(
     {
       name: 'foo',
-      value: 'boo'
+      value: 'boo',
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<Choice {...props}>{children}</Choice>)
+    wrapper: shallow(<Choice {...props}>{children}</Choice>),
   };
 }
 
@@ -30,14 +30,7 @@ describe('Choice', () => {
     ).wrapper;
     const labelNode = wrapper.find(FormLabel).dive();
 
-    expect(
-      labelNode
-        .children()
-        .first()
-        .children()
-        .first()
-        .is('p')
-    ).toBe(true);
+    expect(labelNode.children().first().children().first().is('p')).toBe(true);
   });
 
   it('is not checked', () => {
@@ -102,7 +95,7 @@ describe('Choice', () => {
   it('has a hint and requirementLabel', () => {
     const wrapper = shallowRender({
       hint: 'Hello world',
-      requirementLabel: 'Optional '
+      requirementLabel: 'Optional ',
     }).wrapper;
 
     expect(wrapper.find('FormLabel')).toMatchSnapshot();
@@ -170,7 +163,7 @@ describe('Choice', () => {
 
   it('generates a unique id', () => {
     const sharedProps = {
-      name: 'presidents'
+      name: 'presidents',
     };
     const wrapper = shallow(
       <div>
@@ -185,35 +178,19 @@ describe('Choice', () => {
     const $wrapper = wrapper.render();
 
     const idRegex = new RegExp(`checkbox_${sharedProps.name}_[0-9]+`);
-    const inputAId = $wrapper
-      .find('input')
-      .eq(0)
-      .attr('id');
-    const inputBId = $wrapper
-      .find('input')
-      .eq(1)
-      .attr('id');
+    const inputAId = $wrapper.find('input').eq(0).attr('id');
+    const inputBId = $wrapper.find('input').eq(1).attr('id');
 
     // IDs should be unique!
     expect(inputAId).not.toBe(inputBId);
 
     // First Choice
     expect(inputAId).toMatch(idRegex);
-    expect(
-      $wrapper
-        .find('label')
-        .eq(0)
-        .attr('for')
-    ).toBe(inputAId);
+    expect($wrapper.find('label').eq(0).attr('for')).toBe(inputAId);
 
     // Second choice
     expect(inputBId).toMatch(idRegex);
-    expect(
-      $wrapper
-        .find('label')
-        .eq(1)
-        .attr('for')
-    ).toBe(inputBId);
+    expect($wrapper.find('label').eq(1).attr('for')).toBe(inputBId);
   });
 
   describe('state', () => {
@@ -238,7 +215,7 @@ describe('Choice', () => {
     beforeEach(() => {
       props = {
         onBlur: jest.fn(),
-        onChange: jest.fn()
+        onChange: jest.fn(),
       };
     });
 
@@ -248,7 +225,7 @@ describe('Choice', () => {
         const input = data.wrapper.find('input');
 
         input.simulate('change', {
-          target: { checked: true }
+          target: { checked: true },
         });
 
         expect(data.props.onBlur.mock.calls.length).toBe(0);
@@ -261,7 +238,7 @@ describe('Choice', () => {
         const input = data.wrapper.find('input');
 
         input.simulate('change', {
-          target: { checked: false }
+          target: { checked: false },
         });
 
         expect(data.wrapper.state('checked')).toBe(false);
@@ -273,7 +250,7 @@ describe('Choice', () => {
         const input = data.wrapper.find('input');
 
         input.simulate('change', {
-          target: { checked: false }
+          target: { checked: false },
         });
 
         expect(data.wrapper.state()).toBeNull();
@@ -329,7 +306,7 @@ describe('Choice', () => {
         checkedChildren: <strong className="checked-child">I am checked</strong>,
         uncheckedChildren: <strong className="unchecked-child">I am unchecked</strong>,
         name: 'foo',
-        value: 'bar'
+        value: 'bar',
       };
     });
 
