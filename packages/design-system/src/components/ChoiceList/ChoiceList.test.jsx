@@ -27,7 +27,8 @@ function shallowRender(customProps = {}, choicesCount = 2) {
     {
       choices: generateChoices(choicesCount),
       label: 'Foo',
-      name: 'spec-field'
+      name: 'spec-field',
+      type: 'radio'
     },
     customProps
   );
@@ -41,7 +42,7 @@ function shallowRender(customProps = {}, choicesCount = 2) {
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
     it('is a radio button group', () => {
-      const data = shallowRender();
+      const data = shallowRender({ type: 'radio' });
 
       expect(
         data.wrapper
@@ -52,7 +53,7 @@ describe('ChoiceList', () => {
     });
 
     it('is a checkbox group', () => {
-      const data = shallowRender({ multiple: true });
+      const data = shallowRender({ type: 'checkbox' });
 
       expect(
         data.wrapper
