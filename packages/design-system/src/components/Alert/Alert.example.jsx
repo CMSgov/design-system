@@ -10,7 +10,7 @@ ReactDOM.render(
         eiusmod.
       </p>
     </Alert>
-    <Alert heading="Warning status" variation="warning">
+    <Alert heading="Warning status" variation="warn">
       <p className="usa-alert__text">
         Lorem ipsum dolor sit <a href="#/">link text</a>, consectetur adipiscing elit, sed do
         eiusmod.
