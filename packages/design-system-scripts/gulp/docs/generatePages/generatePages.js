@@ -8,7 +8,7 @@ const nestSections = require('./nestSections');
 const path = require('path');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
-const { getSourceDirs, getDocsDirs } = require('../../common/getDirsToProcess');
+const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
 const { REACT_DATA_PATH } = require('../../common/constants');
 
@@ -125,7 +125,6 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   logTask('📝 ', 'Generating documentation pages');
 
   const dist = getDocsDistPath(docsDir, options.rootPath);
-  const sourceDirs = await getSourceDirs(sourceDir);
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
@@ -136,12 +135,11 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   ).then((dirPages) => dirPages.flat());
 
   /**
-   * Parse KSS documentation blocks in CSS and JSX files
+   * Parse KSS documentation blocks in CSS files
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
-  // Temporarily hardcode task to process KSS in docs too
-  const packages = [...docsDirs, ...sourceDirs].map((pkg) => path.join(pkg, 'src'));
+  const packages = docsDirs.map((pkg) => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
