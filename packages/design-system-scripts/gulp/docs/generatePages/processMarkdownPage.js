@@ -19,8 +19,8 @@ function setFlags(page, attributes) {
   page = Object.assign({}, page);
 
   Object.keys(attributes)
-    .filter(key => Object.keys(page).indexOf(key) === -1)
-    .forEach(key => {
+    .filter((key) => Object.keys(page).indexOf(key) === -1)
+    .forEach((key) => {
       page[camelCase(key)] = attributes[key];
     });
 
@@ -76,7 +76,7 @@ function processMarkdownPage(dir, filePath, body, rootPath = '') {
     source: {
       path: filePath,
     },
-    weight: parseInt(parts.attributes.weight || 0)
+    weight: parseInt(parts.attributes.weight || 0),
   };
 
   if (parts.attributes.usage) {
@@ -90,8 +90,8 @@ function processMarkdownPage(dir, filePath, body, rootPath = '') {
         header: '---',
         description: formatText(parts.body, rootPath),
         reference: `${reference}.guidance`,
-        referenceURI: path.join(referenceURI, 'guidance')
-      }
+        referenceURI: path.join(referenceURI, 'guidance'),
+      },
     ];
 
     delete parts.attributes.usage;

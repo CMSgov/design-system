@@ -14,7 +14,7 @@ function generateOptions(count) {
   for (let i = 1; i < count + 1; i++) {
     options.push({
       value: String(i),
-      label: String(i)
+      label: String(i),
     });
   }
 
@@ -34,7 +34,7 @@ function render(customProps = {}, optionsCount = 1, deep = false) {
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component)
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
@@ -125,7 +125,7 @@ describe('Dropdown', () => {
     const data = render(
       {
         id: 'focus',
-        focusTrigger: true
+        focusTrigger: true,
       },
       null,
       true
@@ -146,7 +146,7 @@ describe('Dropdown', () => {
       const sharedProps = {
         ...defaultProps,
         onBlur: onBlurMock,
-        onChange: onChangeMock
+        onChange: onChangeMock,
       };
 
       wrapper = shallow(<Dropdown {...sharedProps} options={generateOptions(10)} />);

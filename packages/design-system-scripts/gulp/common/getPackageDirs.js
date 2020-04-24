@@ -1,4 +1,3 @@
-
 const getPackageName = require('./getPackageName');
 const { CORE_SOURCE_PACKAGE, CORE_DOCS_PACKAGE } = require('./constants');
 
@@ -19,5 +18,5 @@ module.exports = {
     return pkgName === CORE_DOCS_PACKAGE
       ? [docPackageDir]
       : [docPackageDir, `node_modules/${CORE_DOCS_PACKAGE}`];
-  }
-}
+  },
+};
