@@ -14,12 +14,12 @@ function render(customProps = {}, inputProps = {}, deep = false) {
 
   return {
     props: customProps,
-    wrapper: deep ? mount(component) : shallow(component)
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
-describe('Mask', function() {
-  masks.forEach(mask => {
+describe('Mask', function () {
+  masks.forEach((mask) => {
     describe(`${mask} fallbacks`, () => {
       it('renders a blank controlled field when value is empty', () => {
         const data = render({ mask: mask }, { value: '' });
@@ -46,7 +46,7 @@ describe('Mask', function() {
 
   it('renders mask', () => {
     const data = render({
-      mask: 'ssn'
+      mask: 'ssn',
     });
 
     expect(data.wrapper).toMatchSnapshot();
@@ -54,7 +54,7 @@ describe('Mask', function() {
 
   it('renders mask overlay', () => {
     const data = render({
-      mask: 'currency'
+      mask: 'currency',
     });
 
     expect(data.wrapper).toMatchSnapshot();
@@ -102,13 +102,13 @@ describe('Mask', function() {
 
   describe('Controlled component behavior', () => {
     it('will not cause masking until blur when value prop still matches unmasked input', () => {
-      const onChange = event => {
+      const onChange = (event) => {
         // Simulate the change bubbling up to the controlling component and the
         // controlling component then updating the value prop.
         wrapper.setProps({
           children: (
             <input name="foo" type="text" value={unmaskValue(event.target.value, 'currency')} />
-          )
+          ),
         });
       };
       const { wrapper } = render({ mask: 'currency', onChange }, { value: '1000' });
@@ -134,7 +134,7 @@ describe('Mask', function() {
       expect(input().prop('value')).toBe('1,000');
       // Make sure we can change the value
       wrapper.setProps({
-        children: <input name="foo" type="text" value="2000" />
+        children: <input name="foo" type="text" value="2000" />,
       });
       expect(input().prop('value')).toBe('2,000');
     });

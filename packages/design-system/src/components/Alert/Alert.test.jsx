@@ -7,11 +7,11 @@ const text = 'Ruhroh';
 function render(props = {}, children = text) {
   return {
     props: props,
-    wrapper: shallow(<Alert {...props}>{children}</Alert>)
+    wrapper: shallow(<Alert {...props}>{children}</Alert>),
   };
 }
 
-describe('Alert', function() {
+describe('Alert', function () {
   it('renders alert', () => {
     const { wrapper } = render();
     const $body = wrapper.render().find('.ds-c-alert__body');
@@ -39,7 +39,7 @@ describe('Alert', function() {
   it('renders additional className and role prop', () => {
     const { props, wrapper } = render({
       className: 'ds-u-test',
-      role: 'alert'
+      role: 'alert',
     });
 
     expect(wrapper.hasClass(props.className)).toBe(true);

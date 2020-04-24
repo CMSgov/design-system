@@ -1,4 +1,10 @@
+/*
+ *  Our stylelint rules are based on @18F/stylelint-rules and stylelint-config-primer
+ *  https://github.com/18F/stylelint-rules
+ *  https://github.com/primer/stylelint-config-primer
+ */
 module.exports = {
+  extends: ['stylelint-config-prettier'],
   plugins: ['stylelint-order', 'stylelint-scss'],
   rules: {
     'at-rule-name-case': 'lower',
@@ -19,16 +25,17 @@ module.exports = {
       'always',
       {
         except: ['first-nested'],
-        ignore: ['stylelint-commands']
-      }
+        ignore: ['stylelint-commands'],
+      },
     ],
     'comment-whitespace-inside': 'always',
+    'declaration-bang-space-before': 'always',
     'declaration-bang-space-after': 'never',
     'declaration-block-no-duplicate-properties': [
       true,
       {
-        ignore: ['consecutive-duplicates']
-      }
+        ignore: ['consecutive-duplicates'],
+      },
     ],
     'declaration-block-no-shorthand-property-overrides': true,
     'declaration-block-semicolon-newline-after': 'always',
@@ -42,10 +49,10 @@ module.exports = {
       '/^transition/': ['/all/'],
       '/^background/': ['http:', 'https:'],
       '/^border/': ['none'],
-      '/.+/': ['initial']
+      '/.+/': ['initial'],
     },
     'declaration-property-value-whitelist': {
-      '/color/': ['/($|#)/']
+      '/color/': ['/($|#)/'],
     },
     'font-family-name-quotes': 'always-where-recommended',
     'function-calc-no-unspaced-operator': true,
@@ -83,8 +90,8 @@ module.exports = {
       'always-multi-line',
       {
         except: ['first-nested'],
-        ignore: ['after-comment', 'inside-block']
-      }
+        ignore: ['after-comment', 'inside-block'],
+      },
     ],
     'scss/at-extend-no-missing-placeholder': true,
     'scss/at-import-no-partial-leading-underscore': true,
@@ -118,6 +125,6 @@ module.exports = {
     'value-list-comma-newline-after': 'always-multi-line',
     'value-list-comma-space-after': 'always-single-line',
     'value-list-comma-space-before': 'never',
-    'value-no-vendor-prefix': true
-  }
+    'value-no-vendor-prefix': true,
+  },
 };

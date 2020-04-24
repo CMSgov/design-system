@@ -13,22 +13,18 @@
     "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
     "start:theme": "yarn start --theme",
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
-    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
+    "lint": "yarn cmsds lint packages --ignorePatterns '/**/helpers/**' '/**/__tests__/**'"
   },
   "devDependencies": {
     "@cmsgov/design-system": "file:./packages/design-system",
     "@cmsgov/design-system-docs": "file:./packages/design-system-docs",
     "@cmsgov/design-system-scripts": "file:./packages/design-system-scripts",
-    "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
-    "eslint": "^4.18.1",
-    "eslint-config-nava": "^2.1.0",
-    "eslint-config-prettier": "^6.10.0",
-    "lerna": "^2.11.0",
+    "eslint": "^6.8.0",
     "husky": "^4.2.3",
+    "lerna": "^2.11.0",
     "lint-staged": "^10.0.8",
-    "stylelint": "10.1.0",
-    "stylelint-config-prettier": "^2.1.0"
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.2"
   },
   "engines": {
     "node": ">=11.0.0 <12.0.0",
@@ -59,5 +55,16 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ]
+  ],
+  "prettier": "./packages/design-system-scripts/prettier.config.js",
+  "eslintConfig": {
+    "extends": [
+      "./packages/design-system-scripts/eslint.config.js"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "./packages/design-system-scripts/stylelint.config.js"
+    ]
+  }
 }
