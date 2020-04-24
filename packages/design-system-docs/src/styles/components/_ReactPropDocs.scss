@@ -5,6 +5,13 @@
 }
 
 .docs_table {
+  border: 1px solid $color-gray;
+
+  td {
+    border: 0;
+    border-top: 1px solid $color-gray-lighter;
+  }
+
   @media (min-width: $width-sm) {
     /* Hide individual cell heading */
     tbody .docs_table__column-header {
@@ -13,6 +20,8 @@
   }
 
   @media (max-width: $width-sm) {
+    border: 0;
+
     thead tr {
       /* Hide table headers (.ds-u-visibility--screen-reader) */
       border: 0;
@@ -45,6 +54,7 @@
 
     td:first-child {
       background-color: $color-gray-lightest;
+      border-top: 0;
     }
 
     td::before .docs_table__column-header {
