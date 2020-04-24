@@ -20,7 +20,7 @@ export function TabPanel(props) {
 }
 
 TabPanel.defaultProps = {
-  selected: false
+  selected: false,
 };
 
 TabPanel.propTypes = {
@@ -58,7 +58,7 @@ TabPanel.propTypes = {
   /**
    * The `id` of the associated `Tab`. Used for the `aria-labelledby` attribute.
    */
-  tabId: PropTypes.string
+  tabId: PropTypes.string,
 };
 
 export default TabPanel;

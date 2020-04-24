@@ -16,7 +16,7 @@ function ReactContent(props) {
       <div
         className="c-details ds-u-margin-y--2 ds-u-measure--wide"
         dangerouslySetInnerHTML={{
-          __html: props.reactComponentDocs.description
+          __html: props.reactComponentDocs.description,
         }}
         key="description"
       />
@@ -46,12 +46,12 @@ ReactContent.propTypes = {
   hideExample: PropTypes.bool,
   reactComponentDocs: PropTypes.shape({
     description: PropTypes.string,
-    props: ReactPropDocs.propTypes.propDocs
+    props: ReactPropDocs.propTypes.propDocs,
   }),
   reactExamplePath: PropTypes.string,
   reactExampleSource: ReactExample.propTypes.markup,
   reference: PropTypes.string,
-  responsive: PropTypes.bool
+  responsive: PropTypes.bool,
 };
 
 export default ReactContent;

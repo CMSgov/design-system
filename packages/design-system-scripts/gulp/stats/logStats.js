@@ -12,45 +12,51 @@ function logStats(stats, skipLatest = false) {
     ? ['index.css', 'Current', 'Description']
     : ['index.css', 'Current', 'Latest', 'Diff', 'Description'];
   const style = {
-    head: ['cyan']
+    head: ['cyan'],
   };
   const table = new Table({ head, style });
 
-  const gzipValues = getValues(branch => stats[branch].humanizedGzipSize, skipLatest, true, () =>
-    bytes(stats.current.gzipSize - stats.latest.gzipSize)
+  const gzipValues = getValues(
+    (branch) => stats[branch].humanizedGzipSize,
+    skipLatest,
+    true,
+    () => bytes(stats.current.gzipSize - stats.latest.gzipSize)
   );
-  const sizeValues = getValues(branch => stats[branch].humanizedSize, skipLatest, true, () =>
-    bytes(stats.current.size - stats.latest.size)
+  const sizeValues = getValues(
+    (branch) => stats[branch].humanizedSize,
+    skipLatest,
+    true,
+    () => bytes(stats.current.size - stats.latest.size)
   );
   const fontSizeValues = getValues(
-    branch => bytes(stats[branch].totalFontFileSize),
+    (branch) => bytes(stats[branch].totalFontFileSize),
     skipLatest,
     true,
     () => bytes(stats.current.totalFontFileSize - stats.latest.totalFontFileSize)
   );
   const specificityValues = getValues(
-    branch => stats[branch].selectors.specificity.max,
+    (branch) => stats[branch].selectors.specificity.max,
     skipLatest
   );
   const uniqueFontSizes = getValues(
-    branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length,
+    (branch) => _.uniq(stats[branch].declarations.getAllFontSizes()).length,
     skipLatest
   );
   const uniqueFontFamilies = getValues(
-    branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length,
+    (branch) => _.uniq(stats[branch].declarations.getAllFontFamilies()).length,
     skipLatest
   );
   const uniqueColors = getValues(
-    branch => stats[branch].declarations.getUniquePropertyCount('color'),
+    (branch) => stats[branch].declarations.getUniquePropertyCount('color'),
     skipLatest
   );
   const uniqueBackgroundColors = getValues(
-    branch => stats[branch].declarations.getUniquePropertyCount('background-color'),
+    (branch) => stats[branch].declarations.getUniquePropertyCount('background-color'),
     skipLatest
   );
-  const uniqueMediaQueries = getValues(branch => stats[branch].mediaQueries.unique, skipLatest);
+  const uniqueMediaQueries = getValues((branch) => stats[branch].mediaQueries.unique, skipLatest);
   const totalVendorPrefixes = getValues(
-    branch => stats[branch].declarations.getVendorPrefixed().length,
+    (branch) => stats[branch].declarations.getVendorPrefixed().length,
     skipLatest
   );
 

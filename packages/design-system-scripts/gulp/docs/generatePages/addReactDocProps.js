@@ -10,11 +10,11 @@ const { logError } = require('../../common/logUtil');
  * @param {String} dataPath
  * @returns {Promise}
  */
-module.exports = function(pages, dataPath) {
-  return fs.readFile(dataPath, 'utf8').then(contents => {
+module.exports = function (pages, dataPath) {
+  return fs.readFile(dataPath, 'utf8').then((contents) => {
     const data = JSON.parse(contents);
 
-    pages.forEach(page => {
+    pages.forEach((page) => {
       // TODO: Replace this logic with explicitly defined paths in KSS/markdown
       if (page.reactComponent || page.reactExample) {
         const reactComponentFile = `${path.join(

@@ -10,7 +10,7 @@ export function SkipNav({ children, href, onClick }) {
 }
 
 SkipNav.defaultProps = {
-  children: 'Skip to main content'
+  children: 'Skip to main content',
 };
 
 SkipNav.propTypes = {
@@ -27,7 +27,7 @@ SkipNav.propTypes = {
    * Sometimes it's necessary to manually set focus, like when an app uses hash
    * routing and element-id links will be mistaken for routes.
    */
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default SkipNav;

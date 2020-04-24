@@ -32,7 +32,7 @@ SubStep.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,
   onStepLinkClick: PropTypes.func,
   showSubSubSteps: PropTypes.bool,
-  editText: PropTypes.string.isRequired
+  editText: PropTypes.string.isRequired,
 };
 
 export default SubStep;

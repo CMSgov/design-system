@@ -23,7 +23,7 @@ function createPageObject(rootPath, dir, filename) {
 
   return fs
     .readFile(filePath, 'utf8')
-    .then(data => processMarkdownPage(dir, filePath, data, rootPath));
+    .then((data) => processMarkdownPage(dir, filePath, data, rootPath));
 }
 
 /**
@@ -38,8 +38,8 @@ async function convertMarkdownPages(rootPath, dir) {
   const filenames = glob.sync('src/**/*.md', { cwd: dir });
 
   await Promise.all(
-    filenames.map(filename =>
-      createPageObject(rootPath, dir, filename).then(data => {
+    filenames.map((filename) =>
+      createPageObject(rootPath, dir, filename).then((data) => {
         pages.push(data);
       })
     )
