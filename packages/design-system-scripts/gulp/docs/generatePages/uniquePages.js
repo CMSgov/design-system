@@ -9,11 +9,20 @@ function uniquePages(pages) {
   const routes = {};
 
   pages.forEach((page) => {
-    if (routes[page.reference] && !page.source.path.match(/design-system-docs/)) {
-      // Override exisiting page if the new page comes from a child DS, aka path doesnt match `design-system-docs`
-      logTask('🖊️  ', `Overriding ${page.reference} page with ${page.source.path}`);
+    if (routes[page.reference]) {
+      if (routes[page.reference].source.path.match(/node_modules/)) {
+        // We override pages that come from `node_modules`
+        logTask('🖊️  ', `Overriding ${page.reference} page with ${page.source.path}`);
+        routes[page.reference] = page;
+      } else {
+        logTask(
+          '🖊️  ',
+          `Overriding ${page.reference} page with ${routes[page.reference].source.path}`
+        );
+      }
+    } else {
+      routes[page.reference] = page;
     }
-    routes[page.reference] = page;
   });
 
   return Object.keys(routes).map((key) => routes[key]);

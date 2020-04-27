@@ -3,7 +3,7 @@ const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
 const through = require('through2');
-const { logTask, logData, logError } = require('../common/logUtil');
+const { logData, logError } = require('../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -23,11 +23,12 @@ module.exports = function (rootPath) {
 
       const data = exampleFile ? parseExample(file) : parseComponent(file, rootPath);
 
-      // Assign the data to the component name
+      // Override logic mirrored from `uniquePages`
+      // TODO: process react docs with markdown pages
       if (response[fileName]) {
         if (response[fileName].path.match(/node_modules/)) {
           // We override react docs that come from `node_modules`
-          logTask('🖊️  ', `Overriding ${response[fileName].path} react props with ${file.path}`);
+          // logTask('🖊️  ', `Overriding ${fileName} ${exampleFile ? 'react example' : 'react props'} with ${file.path}`);
           response[fileName] = data;
         }
       } else {
