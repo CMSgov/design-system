@@ -64,10 +64,8 @@ function compileJs(dir) {
     gulp
       .src([
         `${src}/**/*.{js,jsx}`,
-        `!${src}/**/{__mocks__,__tests__}/*.{js,jsx}`,
-        `!${src}/**/*.example.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
-        `!${src}/helpers/e2e/*.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
       ])
       .pipe(babel())
       .pipe(
