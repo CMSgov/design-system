@@ -33,7 +33,7 @@ describe('ReactPropDoc', () => {
         .find('td')
         .first()
         .text()
-    ).toBe(data.props.name);
+    ).toMatch(data.props.name);
   });
 
   it('should render "required"', () => {
@@ -55,7 +55,7 @@ describe('ReactPropDoc', () => {
         .find('td')
         .at(1)
         .text()
-    ).toBe(data.props.type.name);
+    ).toMatch(data.props.type.name);
   });
 
   it('should render default value', () => {
@@ -66,7 +66,7 @@ describe('ReactPropDoc', () => {
         .find('td')
         .at(2)
         .text()
-    ).toBe(data.props.defaultValue.value);
+    ).toMatch(data.props.defaultValue.value);
   });
 
   it('should render description', () => {
@@ -103,7 +103,7 @@ describe('ReactPropDoc', () => {
         .find('td')
         .at(1)
         .text()
-    ).toBe('arrayOf[{onBlur, onChange}]');
+    ).toMatch('arrayOf[{onBlur, onChange}]');
   });
 
   it('should render computed shape value', () => {
@@ -123,7 +123,7 @@ describe('ReactPropDoc', () => {
         .find('td')
         .at(1)
         .text()
-    ).toBe('arrayOf[Bar.propTypes]');
+    ).toMatch('arrayOf[Bar.propTypes]');
   });
 
   it('should render valid values of PropType.oneOf', () => {
@@ -139,6 +139,6 @@ describe('ReactPropDoc', () => {
         .find('td')
         .at(1)
         .text()
-    ).toBe('string, bool');
+    ).toMatch('string, bool');
   });
 });
