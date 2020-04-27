@@ -1,6 +1,6 @@
 // Generic
-$color-white: #fff !default;
-$color-base: #212121 !default;
+$color-white: #fff !default; // no token for white?
+$color-base: color('ink') !default;
 $color-black: #000 !default;
 
 $color-gray-dark: #323a45 !default;
@@ -18,11 +18,11 @@ $color-primary: #0071bc !default;
 $color-primary-darker: #205493 !default;
 $color-primary-darkest: #112e51 !default;
 
-$color-primary-alt: #02bfe7 !default;
+$color-primary-alt: color('info') !default;
 $color-primary-alt-dark: #00a6d2 !default;
 $color-primary-alt-darkest: #046b99 !default;
 $color-primary-alt-light: #9bdaf1 !default;
-$color-primary-alt-lightest: #e1f3f8 !default;
+$color-primary-alt-lightest: color('info-lighter') !default;
 
 $color-red: #e31c3d !default;
 $color-red-dark: #cd2026 !default;

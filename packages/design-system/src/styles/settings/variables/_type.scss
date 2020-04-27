@@ -10,12 +10,12 @@ $em-base: 10px;
 // of this design system, we use px units instead.
 $base-font-size: 16px !default;
 $small-font-size: 14px !default;
-$lead-font-size: 18px !default;
+$lead-font-size: size('body', 'md') !default;
 
 $h1-font-size: 36px !default;
 $h1-mobile-font-size: 30px !default;
 $h2-font-size: 24px !default;
-$h3-font-size: 21px !default;
+$h3-font-size: size('body', 'lg') !default;
 $h4-font-size: 18px !default;
 $h5-font-size: $base-font-size !default;
 $h6-font-size: $small-font-size !default;
