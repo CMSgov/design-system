@@ -64,7 +64,7 @@ describe('ChoiceList', () => {
     });
 
     it('is a checkbox', () => {
-      const data = shallowRender({ choices: generateChoices(1) });
+      const data = shallowRender({ choices: generateChoices(1), type: 'checkbox' });
 
       expect(
         data.wrapper
