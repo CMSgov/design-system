@@ -6,7 +6,7 @@ function render(customProps = {}, deep = false) {
   const props = Object.assign(
     {
       label: 'Foo',
-      name: 'spec-field'
+      name: 'spec-field',
     },
     customProps
   );
@@ -14,11 +14,11 @@ function render(customProps = {}, deep = false) {
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component)
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
-describe('TextField', function() {
+describe('TextField', function () {
   it('is an input field', () => {
     const data = render();
     const field = data.wrapper.find('.ds-c-field').first();
@@ -70,7 +70,7 @@ describe('TextField', function() {
   it('shows 5 rows of text', () => {
     const data = render({
       multiline: true,
-      rows: 5
+      rows: 5,
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -137,7 +137,7 @@ describe('TextField', function() {
   it('adds min/max input attributes', () => {
     const data = render({
       max: 10,
-      min: 1
+      min: 1,
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -147,7 +147,7 @@ describe('TextField', function() {
 
   it('adds aria-label attribute', () => {
     const data = render({
-      ariaLabel: 'Foo'
+      ariaLabel: 'Foo',
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -156,7 +156,7 @@ describe('TextField', function() {
 
   it('adds default aria-label for currency mask', () => {
     const data = render({
-      mask: 'currency'
+      mask: 'currency',
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -166,7 +166,7 @@ describe('TextField', function() {
   it('adds overrides default aria-label with defined prop', () => {
     const data = render({
       ariaLabel: 'Foo',
-      mask: 'currency'
+      mask: 'currency',
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -175,7 +175,7 @@ describe('TextField', function() {
 
   it('adds undocumented prop to input field', () => {
     const data = render({
-      'data-foo': 'bar'
+      'data-foo': 'bar',
     });
     const field = data.wrapper.find('.ds-c-field').first();
 
@@ -187,9 +187,9 @@ describe('TextField', function() {
     const data = render(
       {
         defaultValue: 'Yay',
-        inputRef: el => {
+        inputRef: (el) => {
           ref = el;
-        }
+        },
       },
       true
     );
@@ -201,7 +201,7 @@ describe('TextField', function() {
     const data = render(
       {
         id: 'focus',
-        focusTrigger: true
+        focusTrigger: true,
       },
       true
     );
@@ -221,12 +221,7 @@ describe('TextField', function() {
     });
 
     it('adds error class to field', () => {
-      expect(
-        data.wrapper
-          .find('.ds-c-field')
-          .first()
-          .hasClass('ds-c-field--error')
-      ).toBe(true);
+      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--error')).toBe(true);
     });
   });
 
@@ -242,12 +237,7 @@ describe('TextField', function() {
     });
 
     it('adds inversed class to field', () => {
-      expect(
-        data.wrapper
-          .find('.ds-c-field')
-          .first()
-          .hasClass('ds-c-field--inverse')
-      ).toBe(true);
+      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--inverse')).toBe(true);
     });
   });
 
@@ -257,24 +247,18 @@ describe('TextField', function() {
     beforeEach(() => {
       data = render({
         onBlur: jest.fn(),
-        onChange: jest.fn()
+        onChange: jest.fn(),
       });
     });
 
     it('calls onBlur', () => {
-      data.wrapper
-        .find('.ds-c-field')
-        .first()
-        .simulate('blur');
+      data.wrapper.find('.ds-c-field').first().simulate('blur');
 
       expect(data.props.onBlur.mock.calls.length).toBe(1);
     });
 
     it('calls onChange', () => {
-      data.wrapper
-        .find('.ds-c-field')
-        .first()
-        .simulate('change');
+      data.wrapper.find('.ds-c-field').first().simulate('change');
 
       expect(data.props.onChange.mock.calls.length).toBe(1);
     });
@@ -293,7 +277,7 @@ describe('TextField', function() {
 
     it('renders currency mask', () => {
       const data = render({
-        mask: 'currency'
+        mask: 'currency',
       });
 
       expect(data.wrapper).toMatchSnapshot();

@@ -24,10 +24,10 @@ export const Step = ({ step, ...props }) => {
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
     'ds-c-step--current': start || resume,
-    'ds-c-step--completed': step.completed
+    'ds-c-step--completed': step.completed,
   });
   const contentClassName = classNames('ds-c-step__content', {
-    'ds-c-step__content--with-content': step.description || step.steps
+    'ds-c-step__content--with-content': step.description || step.steps,
   });
   const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
   const actionsLabel = actionsLabelText.replace('%{step}', step.heading || step.title);
@@ -99,7 +99,7 @@ Step.propTypes = {
   startText: PropTypes.string.isRequired,
   actionsLabelText: PropTypes.string.isRequired,
   descriptionLabelText: PropTypes.string.isRequired,
-  substepsLabelText: PropTypes.string.isRequired
+  substepsLabelText: PropTypes.string.isRequired,
 };
 
 export default Step;

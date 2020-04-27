@@ -26,7 +26,6 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $focus-color;
-    border-bottom-color: transparent;
     border-color: $color-base;
     box-shadow: $focus-shadow-link;
     color: $color-base;
@@ -224,7 +223,7 @@
 $button-color-variants: (
   primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color,
   success: $color-success $color-success-dark $color-success-darker $focus-color,
-  danger: $color-error $color-error-dark $color-error-darkest $focus-color
+  danger: $color-error $color-error-dark $color-error-darkest $focus-color,
 );
 
 @each $colors in map-keys($button-color-variants) {

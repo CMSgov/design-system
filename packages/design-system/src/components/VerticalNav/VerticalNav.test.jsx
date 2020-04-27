@@ -5,14 +5,14 @@ import VerticalNav from './VerticalNav';
 function shallowRender(customProps = {}) {
   const props = Object.assign(
     {
-      items: [{ label: 'Foo' }, { label: 'Bar' }]
+      items: [{ label: 'Foo' }, { label: 'Bar' }],
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<VerticalNav {...props} />)
+    wrapper: shallow(<VerticalNav {...props} />),
   };
 }
 
@@ -26,12 +26,7 @@ describe('VerticalNav', () => {
     expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
     expect(data.wrapper.hasClass('ds-u-display--none')).toBe(false);
     expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
-    expect(
-      wrapper
-        .find('VerticalNavItem')
-        .first()
-        .prop('onClick')
-    ).toBeUndefined();
+    expect(wrapper.find('VerticalNavItem').first().prop('onClick')).toBeUndefined();
   });
 
   it('adds additional class names', () => {
@@ -62,15 +57,12 @@ describe('VerticalNav', () => {
 
   it('passes onLinkClick to items', () => {
     const data = shallowRender({
-      onLinkClick: jest.fn()
+      onLinkClick: jest.fn(),
     });
 
-    expect(
-      data.wrapper
-        .find('VerticalNavItem')
-        .first()
-        .prop('onClick')
-    ).toBe(data.props.onLinkClick);
+    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick')).toBe(
+      data.props.onLinkClick
+    );
   });
 
   it("gives precedence to item's onClick callback", () => {
@@ -79,17 +71,14 @@ describe('VerticalNav', () => {
       items: [
         {
           label: 'Foo',
-          onClick: jest.fn()
-        }
-      ]
+          onClick: jest.fn(),
+        },
+      ],
     });
 
-    expect(
-      data.wrapper
-        .find('VerticalNavItem')
-        .first()
-        .prop('onClick')
-    ).toBe(data.props.items[0].onClick);
+    expect(data.wrapper.find('VerticalNavItem').first().prop('onClick')).toBe(
+      data.props.items[0].onClick
+    );
   });
 
   it('sets selected prop on selected item and its parents', () => {
@@ -106,27 +95,27 @@ describe('VerticalNav', () => {
               items: [
                 {
                   label: 'Grandchild 1',
-                  id: 'grandchild-1'
+                  id: 'grandchild-1',
                 },
                 {
                   label: 'Grandchild 2',
-                  id: 'grandchild-2'
-                }
-              ]
-            }
-          ]
+                  id: 'grandchild-2',
+                },
+              ],
+            },
+          ],
         },
         {
-          label: 'Foo'
-        }
-      ]
+          label: 'Foo',
+        },
+      ],
     };
     const wrapper = mount(<VerticalNav {...props} />);
-    const parentWrapper = wrapper.findWhere(n => n.prop('id') === 'parent').first();
-    const childWrapper = wrapper.findWhere(n => n.prop('id') === 'child').first();
-    const grandchild1Wrapper = wrapper.findWhere(n => n.prop('id') === 'grandchild-1').first();
-    const grandchild2Wrapper = wrapper.findWhere(n => n.prop('id') === 'grandchild-2').first();
-    const fooWrapper = wrapper.findWhere(n => n.prop('label') === 'Foo').first();
+    const parentWrapper = wrapper.findWhere((n) => n.prop('id') === 'parent').first();
+    const childWrapper = wrapper.findWhere((n) => n.prop('id') === 'child').first();
+    const grandchild1Wrapper = wrapper.findWhere((n) => n.prop('id') === 'grandchild-1').first();
+    const grandchild2Wrapper = wrapper.findWhere((n) => n.prop('id') === 'grandchild-2').first();
+    const fooWrapper = wrapper.findWhere((n) => n.prop('label') === 'Foo').first();
 
     // Parents and self are selected
     expect(

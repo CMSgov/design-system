@@ -33,7 +33,7 @@ function processKssSection(kssSection, rootPath) {
   delete section.parameters;
 
   section = Object.assign({}, section, {
-    sections: []
+    sections: [],
   });
 
   section = processFlags(section);

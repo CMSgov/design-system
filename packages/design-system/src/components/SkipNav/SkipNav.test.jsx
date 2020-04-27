@@ -2,7 +2,7 @@ import React from 'react';
 import SkipNav from './SkipNav';
 import { shallow } from 'enzyme';
 
-describe('SkipNav', function() {
+describe('SkipNav', function () {
   it('uses children as link text content', () => {
     const wrapper = shallow(<SkipNav href="#main">Foo</SkipNav>);
 
