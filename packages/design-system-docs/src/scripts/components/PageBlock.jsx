@@ -96,13 +96,13 @@ class PageBlock extends React.PureComponent {
         {this.header()}
         {this.description()}
         {this.markupExamples()}
-          <ReactContent
-            reactComponentProps={this.props.reactComponentProps}
-            reactExamplePath={this.props.reactExamplePath}
-            reactExampleSource={this.props.reactExampleSource}
-            reference={this.props.reference}
-            responsive={this.props.responsive}
-          />
+        <ReactContent
+          reactComponentProps={this.props.reactComponentProps}
+          reactExamplePath={this.props.reactExamplePath}
+          reactExampleSource={this.props.reactExampleSource}
+          reference={this.props.reference}
+          responsive={this.props.responsive}
+        />
       </article>
     );
   }

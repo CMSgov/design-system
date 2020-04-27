@@ -73,5 +73,5 @@ module.exports = {
     await runWebpackServer(sourceDir, docsDir, options, sync);
     watchSource(sourceDir, docsDir, options, sync);
     watchDocs(sourceDir, docsDir, options, sync);
-  }
+  },
 };
