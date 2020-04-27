@@ -13,7 +13,7 @@ class ReactPropDoc extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      return <div dangerouslySetInnerHTML={{ __html: this.props.description }} />;
+      return <span dangerouslySetInnerHTML={{ __html: this.props.description }} />;
     }
   }
 
@@ -69,17 +69,38 @@ class ReactPropDoc extends React.PureComponent {
   }
 
   render() {
+    // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
     return (
-      <tr>
-        <td>
+      <tr role="row">
+        <td role="cell" headers="columnname">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Name
+            <br />
+          </span>
           <code className="ds-u-font-weight--bold">{this.props.name}</code>
           {this.isRequired()}
         </td>
-        <td>
+        <td role="cell" headers="columntype">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Type
+            <br />
+          </span>
           <code>{this.type()}</code>
         </td>
-        <td>{this.defaultValue()}</td>
-        <td>{this.description()}</td>
+        <td role="cell" headers="columndefault">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Default
+            <br />
+          </span>
+          {this.defaultValue()}
+        </td>
+        <td role="cell" headers="columndescription">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Description
+            <br />
+          </span>
+          {this.description()}
+        </td>
       </tr>
     );
   }
