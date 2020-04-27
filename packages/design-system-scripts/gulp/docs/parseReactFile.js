@@ -25,9 +25,14 @@ module.exports = function (rootPath) {
 
       // Assign the data to the component name
       if (response[fileName]) {
-        logTask('🖊️  ', `Overriding ${fileName} react props with ${file.path}`);
+        if (response[fileName].path.match(/node_modules/)) {
+          // We override react docs that come from `node_modules`
+          logTask('🖊️  ', `Overriding ${response[fileName].path} react props with ${file.path}`);
+          response[fileName] = data;
+        }
+      } else {
+        response[fileName] = data;
       }
-      response[fileName] = data;
     } catch (e) {
       logError('react-docgen', e);
       logData('react-docgen', file.path);
@@ -75,5 +80,10 @@ function parseComponent(file, rootPath) {
     doc.path = file.path;
   });
 
-  return docs;
+  if (docs.length !== 1) {
+    // There should only ever be one component definition
+    logError('parseComponent', 'React doc gen should result in 1 document parsed');
+  }
+
+  return docs[0];
 }

@@ -30,8 +30,7 @@ module.exports = function (pages, dataPath) {
           const componentData = data[reactComponentFile];
           if (componentData && componentData.length === 1) {
             page.reactComponentPath = reactComponentFile;
-            // There should only ever be one exported component definition
-            page.reactComponentDocs = componentData[0];
+            page.reactComponentDocs = componentData;
           } else {
             logError(
               'react doc props',

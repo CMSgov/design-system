@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const getDocsDistPath = require('../../common/getDocsDistPath');
-const { last } = require('lodash');
 const { getSourceDirs, getDocsDirs } = require('../../common/getDirsToProcess');
 
 module.exports = async function createWebpackConfig(sourceDir, docsDir, options) {
@@ -11,18 +10,22 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
   const sources = await getSourceDirs(sourceDir);
   const docs = await getDocsDirs(docsDir);
 
-  const includePaths = [
-    fs.realpathSync(path.resolve(last(sources), 'src')),
-    fs.realpathSync(path.resolve(last(docs), 'src')),
+  // Entry and include paths are set to `design-system` and `design-system-docs`
+  // packages in `node_modules` for child design systems
+  // This is the first element in the dirs array from `getDirsToProcess`
+  const include = [
+    fs.realpathSync(path.resolve(sources[0], 'src')),
+    fs.realpathSync(path.resolve(docs[0], 'src')),
   ];
+  const entry = {
+    index: [path.resolve(docs[0], 'src/index.jsx')],
+    example: [path.resolve(docs[0], 'src/example.js')],
+  };
 
   const config = {
     mode: process.env.NODE_ENV || 'production',
     context: __dirname,
-    entry: {
-      index: [path.resolve(last(docs), 'src/index.jsx')],
-      example: [path.resolve(last(docs), 'src/example.js')],
-    },
+    entry,
     output: {
       path: distPath,
       publicPath: '/',
@@ -33,7 +36,7 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules(?!\/@cmsgov)/,
-          include: includePaths,
+          include,
           use: [{ loader: 'babel-loader' }],
         },
       ],

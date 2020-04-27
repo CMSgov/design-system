@@ -17,7 +17,7 @@ module.exports = function (pages, dataPath) {
 
     pages.forEach((page) => {
       if (page.reactProps) {
-        const reactProps = get(data, [page.reactProps, 0, 'props']);
+        const reactProps = get(data, [page.reactProps, 'props']);
         if (reactProps) {
           // There should only ever be one exported component definition
           page.reactComponentProps = reactProps;
