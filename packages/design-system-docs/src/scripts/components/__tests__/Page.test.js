@@ -10,7 +10,7 @@ describe('Page', () => {
       page = {
         description: 'Hello world',
         header: 'Getting started',
-        referenceURI: '1.0/'
+        referenceURI: '1.0/',
       };
     });
 
@@ -45,8 +45,8 @@ describe('Page', () => {
             source: {
               filename: '',
               line: 10,
-              path: ''
-            }
+              path: '',
+            },
           },
           {
             header: 'HTML',
@@ -55,8 +55,8 @@ describe('Page', () => {
             source: {
               filename: '',
               line: 1,
-              path: ''
-            }
+              path: '',
+            },
           },
           {
             header: 'Guidance',
@@ -65,10 +65,10 @@ describe('Page', () => {
             source: {
               filename: '',
               line: 100,
-              path: ''
-            }
-          }
-        ]
+              path: '',
+            },
+          },
+        ],
       };
     });
 

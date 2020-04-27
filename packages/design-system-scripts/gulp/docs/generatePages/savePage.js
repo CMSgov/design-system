@@ -14,7 +14,7 @@ function savePage(page, docsPath) {
   const pathObj = docsFilePath(page.uri, docsPath);
   const html = template(page);
 
-  return checkCache(html, pathObj.path).then(changed => {
+  return checkCache(html, pathObj.path).then((changed) => {
     if (changed) {
       return saveToFile(html, pathObj);
     }
@@ -50,15 +50,9 @@ function template(page) {
 function checkCache(html, path) {
   return fs
     .readFile(path, 'utf8')
-    .then(data => {
-      const fileHash = crypto
-        .createHash('md5')
-        .update(data)
-        .digest('hex');
-      const htmlHash = crypto
-        .createHash('md5')
-        .update(html)
-        .digest('hex');
+    .then((data) => {
+      const fileHash = crypto.createHash('md5').update(data).digest('hex');
+      const htmlHash = crypto.createHash('md5').update(html).digest('hex');
       return fileHash !== htmlHash;
     })
     .catch(() => true); // File doesn't exist
@@ -75,13 +69,13 @@ function docsFilePath(uri, docsPath) {
 
   return {
     dir: dir,
-    path: path.resolve(dir, 'index.html')
+    path: path.resolve(dir, 'index.html'),
   };
 }
 
 function saveToFile(html, pathObj, retry = true) {
-  return new Promise(resolve => {
-    recursive.mkdir(pathObj.dir, err => {
+  return new Promise((resolve) => {
+    recursive.mkdir(pathObj.dir, (err) => {
       if (err && retry) {
         // A race condition can sometimes occur where a directory is created
         // in the middle of this method's execution, resulting in a "file

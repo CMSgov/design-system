@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const Dialog = function(props) {
+export const Dialog = function (props) {
   const {
     actions,
     actionsClassName,
@@ -54,12 +54,14 @@ export const Dialog = function(props) {
     >
       <div role="document">
         <header className={headerClassNames} role="banner">
-          {// TODO: make heading required after removing title
-          (title || heading) && (
-            <h1 className="ds-h2" id="dialog-title">
-              {heading}
-            </h1>
-          )}
+          {
+            // TODO: make heading required after removing title
+            (title || heading) && (
+              <h1 className="ds-h2" id="dialog-title">
+                {heading}
+              </h1>
+            )
+          }
           <Button
             aria-label={ariaCloseLabel}
             className="ds-c-dialog__close"
@@ -88,7 +90,7 @@ Dialog.defaultProps = {
   closeButtonVariation: 'transparent',
   closeText: 'Close',
   escapeExitDisabled: false,
-  underlayClickExits: false
+  underlayClickExits: false,
 };
 
 Dialog.propTypes = {
@@ -104,7 +106,7 @@ Dialog.propTypes = {
    * This can help screen readers understand what's going on.
    * Also see `getApplicationNode`.
    */
-  applicationNode: function(props, propName, componentName) {
+  applicationNode: function (props, propName, componentName) {
     if (props[propName] && props[propName] instanceof Element === false) {
       return new Error(
         `Invalid prop \`${propName}\` supplied to \`${componentName}\`. Expected a DOM node. You may also be interested in the getApplicationNode prop`
@@ -179,7 +181,7 @@ Dialog.propTypes = {
   /**
    * Enable exiting the dialog when a user clicks the underlay.
    */
-  underlayClickExits: PropTypes.bool
+  underlayClickExits: PropTypes.bool,
 };
 
 export default Dialog;

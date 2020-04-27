@@ -11,8 +11,8 @@ describe('Source', () => {
     props = {
       source: {
         filename: 'components/Button/Button.scss',
-        path: 'packages/design-system/src/components/Button/Button.scss'
-      }
+        path: 'packages/design-system/src/components/Button/Button.scss',
+      },
     };
   });
 

@@ -8,5 +8,5 @@ module.exports = {
   hash: false,
   source: false,
   timings: false,
-  version: false
+  version: false,
 };

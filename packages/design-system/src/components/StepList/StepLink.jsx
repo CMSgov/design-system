@@ -14,7 +14,7 @@ export class StepLink extends React.PureComponent {
     const ComponentType = this.props.component || 'a';
 
     return (
-      <ComponentType href={href} onClick={e => this.handleClick(e)} className={className}>
+      <ComponentType href={href} onClick={(e) => this.handleClick(e)} className={className}>
         {children}
         {screenReaderText && (
           <span className="ds-u-visibility--screen-reader"> {screenReaderText}</span>
@@ -34,7 +34,7 @@ StepLink.propTypes = {
   screenReaderText: PropTypes.string,
   className: PropTypes.string,
   onClick: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 
 export default StepLink;

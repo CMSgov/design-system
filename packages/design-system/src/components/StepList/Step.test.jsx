@@ -11,12 +11,12 @@ const defaultStep = {
   isNextStep: false,
   href: '/some/path',
   title: 'Do something!',
-  description: 'Do something really cool!'
+  description: 'Do something really cool!',
 };
 
-const generateStep = id => ({
+const generateStep = (id) => ({
   ...defaultStep,
-  id
+  id,
 });
 
 const defaultStepProps = {
@@ -28,7 +28,7 @@ const defaultStepProps = {
   startText: 'Start!',
   actionsLabelText: '!Primary actions for %{step}',
   descriptionLabelText: '!Description for %{step}',
-  substepsLabelText: '!Secondary actions for %{step}'
+  substepsLabelText: '!Secondary actions for %{step}',
 };
 
 function renderStep(step, props) {
@@ -101,7 +101,7 @@ describe('Step', () => {
       children: 'Edit!',
       stepId: step.id,
       href: step.href,
-      screenReaderText: `"${step.title}"`
+      screenReaderText: `"${step.title}"`,
     });
     editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
@@ -112,7 +112,7 @@ describe('Step', () => {
   it('renders completed text and an no edit link for completed steps with substeps', () => {
     const { wrapper } = renderStep({
       completed: true,
-      steps: [generateStep('1')]
+      steps: [generateStep('1')],
     });
 
     const completed = wrapper.find('.ds-c-step__completed-text');
@@ -149,7 +149,7 @@ describe('Step', () => {
 
   it('renders alternative linkText', () => {
     const linkText = 'Hello';
-    const hasAlternateLinkText = step => {
+    const hasAlternateLinkText = (step) => {
       const { wrapper } = renderStep(step);
       const link = wrapper.find('.ds-c-step__actions').find('StepLink');
       return link.length > 0 && link.prop('children') === linkText;
@@ -181,7 +181,7 @@ describe('Step', () => {
 
     const expectedProps = {
       onStepLinkClick: props.onStepLinkClick,
-      editText: props.editText
+      editText: props.editText,
     };
     const substeps = wrapper.find('SubStep');
     for (let i = 0; i < steps.length; i++) {
@@ -192,7 +192,7 @@ describe('Step', () => {
 
   it('renders aria-labels for heading, description, and substeps', () => {
     const { wrapper } = renderStep({
-      steps: [generateStep('1')]
+      steps: [generateStep('1')],
     });
 
     const description = wrapper.find('.ds-c-step__description');
