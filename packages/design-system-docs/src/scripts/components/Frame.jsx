@@ -13,7 +13,7 @@ class Frame extends React.PureComponent {
       iframeHeight: 0,
       loaded: false,
       // used to calculate the scale when Frame is responsive
-      parentWidth: 0,
+      parentWidth: 0
     };
     this.handleIframeLoad = this.handleIframeLoad.bind(this);
     this.handleIframeResize = debounce(this.handleIframeResize.bind(this), 100);
@@ -80,7 +80,7 @@ class Frame extends React.PureComponent {
   render() {
     const rootClasses = classNames('frame ds-u-border--1', {
       'frame--loading': !this.state.loaded,
-      'frame--responsive': this.props.responsive,
+      'frame--responsive': this.props.responsive
     });
 
     const parentWidth = this.state.parentWidth;
@@ -88,13 +88,13 @@ class Frame extends React.PureComponent {
     const scale = Math.min(1, parentWidth / previewWidth);
     const parentStyle = this.props.responsive
       ? {
-          height: scale * this.state.iframeHeight,
+          height: scale * this.state.iframeHeight
         }
       : null;
     const previewStyle = this.props.responsive
       ? {
           transform: `scale(${scale})`,
-          width: previewWidth,
+          width: previewWidth
         }
       : null;
 
@@ -108,7 +108,7 @@ class Frame extends React.PureComponent {
         )}
         <div
           className="frame__parent"
-          ref={(el) => {
+          ref={el => {
             this.parent = el;
           }}
           style={parentStyle}
@@ -118,7 +118,7 @@ class Frame extends React.PureComponent {
               className="ds-u-fill--white ds-u-valign--bottom"
               frameBorder="0"
               height={this.state.iframeHeight}
-              ref={(iframe) => {
+              ref={iframe => {
                 this.iframe = iframe;
               }}
               src={this.props.src}
@@ -142,14 +142,14 @@ class Frame extends React.PureComponent {
 }
 
 Frame.defaultProps = {
-  responsive: false,
+  responsive: false
 };
 
 Frame.propTypes = {
   // Display breakpoint toggles and scale the frame
   responsive: PropTypes.bool,
   src: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Frame;

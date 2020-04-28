@@ -4,19 +4,19 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'prettier',
-    'prettier/react',
+    'prettier/react'
   ],
   env: {
     browser: true,
     es6: true,
-    jest: true,
+    jest: true
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['filenames', 'jest', 'jsx-a11y', 'react'],
   rules: {
@@ -31,10 +31,10 @@ module.exports = {
       'error',
       {
         required: {
-          some: ['nesting', 'id'],
+          some: ['nesting', 'id']
         },
-        allowChildren: true,
-      },
+        allowChildren: true
+      }
     ],
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'jsx-quotes': 'off',
@@ -54,6 +54,6 @@ module.exports = {
     'react/prefer-stateless-function': 'error',
     'react/prop-types': ['error', { ignore: ['className', 't'] }],
     'react/sort-comp': 'error',
-    'standard/computed-property-even-spacing': 'off',
-  },
+    'standard/computed-property-even-spacing': 'off'
+  }
 };

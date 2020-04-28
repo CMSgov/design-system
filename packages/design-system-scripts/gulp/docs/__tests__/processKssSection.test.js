@@ -2,7 +2,7 @@
 const processKssSection = require('../processKssSection');
 
 describe('processKssSection', () => {
-  const section = (reference) => {
+  const section = reference => {
     return {
       toJSON: () => ({
         // These paragraphs need to be separated by a newline in order for
@@ -16,15 +16,15 @@ describe('processKssSection', () => {
           {
             name: '.primary',
             description: 'The primary action',
-            className: '',
-          },
+            className: ''
+          }
         ],
         parameters: [],
         reference: reference,
         source: {
-          line: 1,
-        },
-      }),
+          line: 1
+        }
+      })
     };
   };
 
@@ -35,7 +35,7 @@ describe('processKssSection', () => {
   });
 
   it('sets and replaces flags', () => {
-    return promise.then((data) => {
+    return promise.then(data => {
       expect(data.reactComponent).toBe('Component');
       expect(data.hideMarkup).toBe(true);
       expect(data.responsive).toBe(true);
@@ -45,19 +45,19 @@ describe('processKssSection', () => {
   });
 
   it('prepends rootPath', () => {
-    return promise.then((data) => {
+    return promise.then(data => {
       expect(data.referenceURI).toBe('root/components/button');
     });
   });
 
   it('converts Markdown in header', () => {
-    return promise.then((data) => {
+    return promise.then(data => {
       expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
     });
   });
 
   it('adds a sections property', () => {
-    return promise.then((data) => {
+    return promise.then(data => {
       expect(data.sections).toEqual(expect.any(Array));
     });
   });

@@ -20,7 +20,7 @@ export class HelpDrawerToggle extends React.PureComponent {
         <a
           href="javascript:void(0);"
           className={this.props.className}
-          ref={(el) => (this.buttonRef = el)}
+          ref={el => (this.buttonRef = el)}
           onClick={() => this.props.showDrawer()}
         >
           {this.props.children}
@@ -41,7 +41,7 @@ HelpDrawerToggle.propTypes = {
   inline: PropTypes.bool,
   /** This function is called with an id that the toggle generates. It can
    be used in implementing the help drawer for keeping track of the drawer the toggle controls */
-  showDrawer: PropTypes.func.isRequired,
+  showDrawer: PropTypes.func.isRequired
 };
 
 export default HelpDrawerToggle;

@@ -5,7 +5,7 @@ import React from 'react';
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
     {
-      children: 'Foo',
+      children: 'Foo'
     },
     customProps
   );
@@ -15,11 +15,11 @@ function render(customProps = {}, deep = false) {
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component),
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
-describe('Dialog', function () {
+describe('Dialog', function() {
   it('renders react-aria-modal', () => {
     // We use Enzyme to snapshot test <Dialog> since there are issues between
     // react-aria-modal and react-test-renderer. This Snapshot should catch
@@ -41,7 +41,7 @@ describe('Dialog', function () {
         actionsClassName: 'test-action',
         className: 'test-dialog',
         headerClassName: 'test-header',
-        size: 'full',
+        size: 'full'
       })
     ).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe('Dialog', function () {
     expect(
       render({
         closeButtonVariation: 'danger',
-        closeText: "No thank you. I don't like saving money",
+        closeText: "No thank you. I don't like saving money"
       })
     ).toMatchSnapshot();
   });

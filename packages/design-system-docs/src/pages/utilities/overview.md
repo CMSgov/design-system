@@ -12,4 +12,4 @@ A utility class modifies a single trait, typically a single CSS property. To app
 
 Together, they can form a variety of UI patterns. You won't always want to use combinations of utilities to generate more complicated patterns, but the option is there. Once you've identified a set of traits that seem to be reused a lot, it's a good time to consider turning those into a component.
 
-**Format:** `ds-u-[NAME]`
+**Format:** `.ds-u-[NAME]`

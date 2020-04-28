@@ -73,7 +73,7 @@ export class VerticalNavItem extends React.PureComponent {
    */
   childIsSelected(children) {
     if (children && children.length) {
-      return children.some((child) => {
+      return children.some(child => {
         return child.id === this.props._selectedId || this.childIsSelected(child.items);
       });
     }
@@ -139,7 +139,7 @@ VerticalNavItem.defaultProps = {
   // TODO(sawyer): Update react-docgen so we don't have to do this
   ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
   ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
-  defaultCollapsed: false,
+  defaultCollapsed: false
 };
 
 VerticalNavItem.propTypes = {
@@ -202,7 +202,7 @@ VerticalNavItem.propTypes = {
   /**
    * If this item is currently selected
    */
-  selected: PropTypes.bool,
+  selected: PropTypes.bool
 };
 
 export default VerticalNavItem;
