@@ -7,21 +7,21 @@ const _ = require('lodash');
  * @param  {Array} sections - KssSection
  * @return {Array}
  */
-module.exports = (sections) => {
+module.exports = sections => {
   let pages = sections
     .concat([]) // don't mutate original array
     .map(setProps)
-    .map((section) => {
+    .map(section => {
       if (section.parentReference) {
         const parent = _.find(sections, {
-          reference: section.parentReference,
+          reference: section.parentReference
         });
 
         if (parent) parent.sections.push(section);
       }
       return section;
     })
-    .filter((section) => !section.parentReference);
+    .filter(section => !section.parentReference);
 
   pages = sort(pages);
   return removeLineProps(pages);
@@ -36,7 +36,7 @@ module.exports = (sections) => {
  * @return {Array} sections without their source.line property
  */
 function removeLineProps(sections) {
-  sections.forEach((section) => {
+  sections.forEach(section => {
     if (section.source) {
       delete section.source.line;
     }
@@ -77,10 +77,10 @@ function setProps(section) {
 function sort(sections) {
   sections = _.sortBy(sections, ['weight', 'header']);
 
-  sections.forEach((topLevelPage) => {
+  sections.forEach(topLevelPage => {
     topLevelPage.sections = _.sortBy(topLevelPage.sections, ['weight', 'header']);
 
-    topLevelPage.sections.forEach((subpage) => {
+    topLevelPage.sections.forEach(subpage => {
       if (subpage.sections) {
         // Sections nested three levels deep are rendered inline, and should be
         // sorted by their position within the file, rather than alphabetically

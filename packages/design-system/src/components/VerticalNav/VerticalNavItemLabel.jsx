@@ -34,7 +34,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
 
   anchorProps() {
     return {
-      href: this.props.url,
+      href: this.props.url
     };
   }
 
@@ -44,7 +44,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
       'aria-expanded': !this.props.collapsed,
       title: this.props.collapsed
         ? this.props.ariaCollapsedStateButtonLabel
-        : this.props.ariaExpandedStateButtonLabel,
+        : this.props.ariaExpandedStateButtonLabel
     };
   }
 
@@ -52,9 +52,9 @@ export class VerticalNavItemLabel extends React.PureComponent {
     let props = {
       className: classNames('ds-c-vertical-nav__label', {
         'ds-c-vertical-nav__label--current': this.props.selected,
-        'ds-c-vertical-nav__label--parent': this.props.hasSubnav,
+        'ds-c-vertical-nav__label--parent': this.props.hasSubnav
       }),
-      onClick: this.props.onClick ? this.handleClick : undefined,
+      onClick: this.props.onClick ? this.handleClick : undefined
     };
 
     if (this.LabelComponent === 'button') {
@@ -70,7 +70,7 @@ export class VerticalNavItemLabel extends React.PureComponent {
 
 VerticalNavItemLabel.defaultProps = {
   ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
-  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
+  ariaExpandedStateButtonLabel: 'Collapse sub-navigation'
 };
 
 VerticalNavItemLabel.propTypes = {
@@ -83,7 +83,7 @@ VerticalNavItemLabel.propTypes = {
   onClick: PropTypes.func,
   selected: PropTypes.bool,
   subnavId: PropTypes.string.isRequired,
-  url: PropTypes.string,
+  url: PropTypes.string
 };
 
 export default VerticalNavItemLabel;

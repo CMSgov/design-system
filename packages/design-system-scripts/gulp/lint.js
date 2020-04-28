@@ -31,7 +31,7 @@ const getLinterConfig = async (dir, config, additionalCoreRules) => {
 // This approach will also make gulp-count more accurate
 const getSrcGlob = (glob, dir, ignorePatterns) => [
   ...glob,
-  ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore)),
+  ...ignorePatterns.map(ignore => path.join(`!${dir}`, ignore))
 ];
 
 async function runPrettier(dir, ignorePatterns) {
@@ -56,7 +56,7 @@ async function runPrettier(dir, ignorePatterns) {
  * Examples: .ds-c-button--primary, .ds-c-card__title, .ds-u-text-underlined
  */
 const coreStyleLintRules = {
-  'selector-class-pattern': /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/,
+  'selector-class-pattern': /^(ds-)(l|c|u|)(-[a-z0-9]+)((--?|__)[a-z0-9]+)*$/
 };
 
 // Lint Sass files using stylelint
@@ -77,7 +77,7 @@ async function lintSass(dir, fix, ignorePatterns) {
           fix,
           failAfterError: process.env.NODE_ENV === 'test',
           reporters: [{ formatter: 'string', console: true }],
-          syntax: 'scss',
+          syntax: 'scss'
         })
       )
       .pipe(gulp.dest(dir))
@@ -86,7 +86,7 @@ async function lintSass(dir, fix, ignorePatterns) {
 
 // Taken from gulp-eslint example
 // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
-const isFixed = (file) => {
+const isFixed = file => {
   return file.eslint != null && file.eslint.fixed;
 };
 
@@ -94,7 +94,7 @@ const isFixed = (file) => {
 const coreEsLintRules = {
   // Avoid exploits. If you need dangerouslySetInnerHTML, then temporarily
   // disable this rule in the script rather than removing it from here.
-  'react/no-danger': 'error',
+  'react/no-danger': 'error'
 };
 
 // Lint JS files using eslint
@@ -121,7 +121,7 @@ module.exports = {
     );
 
     await Promise.all(
-      directories.map(async (dir) => {
+      directories.map(async dir => {
         // For some reason, these promisified gulp tasks aren't playing nice together,
         // and this order is needed in order for all 3 tasks to run correctly
         // Eslint and stylelint are configured to not conflict with Prettier so the order shouldnt matter
@@ -131,5 +131,5 @@ module.exports = {
         await lintJS(dir, fix, ignorePatterns);
       })
     );
-  },
+  }
 };

@@ -27,14 +27,14 @@ function compileSass(dir, dest, browserSync) {
   const includePaths = [
     path.resolve(dir, 'node_modules'),
     path.resolve(dir, '../node_modules'),
-    src,
+    src
   ];
   const envDev = process.env.NODE_ENV === 'development';
 
   const sassCompiler = sass({
     outputStyle: 'expanded',
-    includePaths,
-  }).on('error', function (err) {
+    includePaths
+  }).on('error', function(err) {
     logError('sass', 'Error transpiling Sass!');
     logData(err.messageFormatted);
     this.emit('end');
@@ -43,7 +43,7 @@ function compileSass(dir, dest, browserSync) {
   const postcssPlugins = [
     postcssImport(), // inline imports
     autoprefixer(), // add any necessary vendor prefixes
-    ...(!envDev ? [cssnano()] : []), // minify css
+    ...(!envDev ? [cssnano()] : []) // minify css
   ];
 
   let stream = gulp
@@ -52,7 +52,7 @@ function compileSass(dir, dest, browserSync) {
       changed(dest, {
         extension: '.css',
         // compare contents so files that import the updated file also get piped through
-        hasChanged: changed.compareSha1Digest,
+        hasChanged: changed.compareSha1Digest
       })
     )
     .pipe(gulpIf(envDev, sourcemaps.init()))
@@ -62,7 +62,7 @@ function compileSass(dir, dest, browserSync) {
     .pipe(
       count({
         message: `## Sass files processed in ${dir}`,
-        logger: (message) => logTask('👓 ', message),
+        logger: message => logTask('👓 ', message)
       })
     )
     .pipe(gulp.dest(dest));
@@ -72,7 +72,7 @@ function compileSass(dir, dest, browserSync) {
     stream = stream.pipe(
       browserSync.stream({
         once: true,
-        match: '**/*.css',
+        match: '**/*.css'
       })
     );
   }
@@ -86,5 +86,5 @@ async function compileDocsSass(docsPackageDir, options, browserSync) {
 
 module.exports = {
   compileSass,
-  compileDocsSass,
+  compileDocsSass
 };

@@ -26,7 +26,7 @@ ReactDOM.render(
           heading: 'Choose a tax year',
           href: '#step-1',
           started: true,
-          completed: true,
+          completed: true
         },
         {
           id: 'household',
@@ -43,38 +43,38 @@ ReactDOM.render(
               heading: 'Overall household',
               href: '#step-2a',
               started: true,
-              completed: true,
+              completed: true
             },
             {
               id: 'household.bob',
               heading: "Bob's information",
               href: '#step-2b',
               started: false,
-              completed: false,
+              completed: false
             },
             {
               id: 'household.barb',
               heading: "Barb's information",
               href: '#step-2c',
               started: false,
-              completed: false,
-            },
-          ],
+              completed: false
+            }
+          ]
         },
         {
           id: 'review',
           heading: 'Review your information',
           href: '#step-3',
           started: false,
-          completed: false,
+          completed: false
         },
         {
           id: 'finish',
           heading: 'View premium results',
           href: '#step-4',
           started: false,
-          completed: false,
-        },
+          completed: false
+        }
       ]}
     />
   </div>,

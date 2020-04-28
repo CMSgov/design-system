@@ -5,7 +5,7 @@ $_flex-direction-values: (
   row: row,
   column: column,
   row-reverse: row-reverse,
-  column-reverse: column-reverse,
+  column-reverse: column-reverse
 );
 
 @each $name in map-keys($_flex-direction-values) {
@@ -37,7 +37,7 @@ $_justify-content-values: (
   end: flex-end,
   center: center,
   between: space-between,
-  around: space-around,
+  around: space-around
 );
 
 @each $name in map-keys($_justify-content-values) {
@@ -69,7 +69,7 @@ $_align-items-values: (
   end: flex-end,
   center: center,
   baseline: baseline,
-  stretch: stretch,
+  stretch: stretch
 );
 
 @each $name in map-keys($_align-items-values) {
@@ -99,7 +99,7 @@ $_align-items-values: (
 $_flex-wrap-values: (
   nowrap: nowrap,
   wrap: wrap,
-  reverse: wrap-reverse,
+  reverse: wrap-reverse
 );
 
 @each $name in map-keys($_flex-wrap-values) {

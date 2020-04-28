@@ -16,7 +16,7 @@ function processMarkup(page, rootPath = '') {
 
   if (markup && markup !== '') {
     if (markup.search(/^[^\n]+\.(html|ejs)$/) >= 0) {
-      return loadMarkup(page).then((markup) => {
+      return loadMarkup(page).then(markup => {
         page.markup = markup;
         return processMarkup(page, rootPath);
       });
@@ -45,7 +45,7 @@ function processMarkup(page, rootPath = '') {
 function loadMarkup(page) {
   const dir = path.parse(page.source.path).dir;
   const markupPath = path.resolve(dir, page.markup);
-  return fs.readFile(markupPath, 'utf8').catch((e) => {
+  return fs.readFile(markupPath, 'utf8').catch(e => {
     logError('markup error', e.message);
     return '';
   });

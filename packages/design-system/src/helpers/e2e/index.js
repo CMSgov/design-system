@@ -17,6 +17,9 @@ export async function getElementByXPath(xpath) {
 }
 
 export async function getFocusInnerText() {
-  const el = await driver.switchTo().activeElement().getAttribute('innerText');
+  const el = await driver
+    .switchTo()
+    .activeElement()
+    .getAttribute('innerText');
   return el;
 }

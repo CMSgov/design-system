@@ -9,40 +9,40 @@ ReactDOM.render(
       items={[
         {
           id: 'kRf6c2fY',
-          name: 'Cook County, IL',
+          name: 'Cook County, IL'
         },
         {
           id: 'lYf5cGfM',
-          name: 'Cook County, MD',
+          name: 'Cook County, MD'
         },
         {
           id: 'mZfKcGf9',
-          name: 'Cook County, TN',
+          name: 'Cook County, TN'
         },
         {
           id: 'xFz6dLba',
-          name: 'Cook County, AK',
+          name: 'Cook County, AK'
         },
         {
           id: 'vTr5c99',
-          name: 'Cook County, FL',
+          name: 'Cook County, FL'
         },
         {
           id: 'ntY8Lha',
-          name: 'Cook County, AL',
+          name: 'Cook County, AL'
         },
         {
           id: 'uRe0Wqo',
-          name: 'Cook County, WA',
+          name: 'Cook County, WA'
         },
         {
           id: 'yUR7MWl',
-          name: 'Cook County, OR',
-        },
+          name: 'Cook County, OR'
+        }
       ]}
       label="Select from the options below:"
-      onChange={(selectedItem) => console.log(selectedItem)}
-      onInputValueChange={(inputVal) => console.log('[Autocomplete]: ' + inputVal)}
+      onChange={selectedItem => console.log(selectedItem)}
+      onInputValueChange={inputVal => console.log('[Autocomplete]: ' + inputVal)}
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
@@ -55,19 +55,19 @@ ReactDOM.render(
       items={[
         {
           id: 'kRf6c2fY',
-          name: 'Cook County, IL',
+          name: 'Cook County, IL'
         },
         {
           id: 'lYf5cGfM',
-          name: 'Cook County, MD',
+          name: 'Cook County, MD'
         },
         {
           id: 'mZfKcGf9',
-          name: 'Cook County, TN',
-        },
+          name: 'Cook County, TN'
+        }
       ]}
-      onChange={(selectedItem) => console.log(selectedItem)}
-      onInputValueChange={(inputVal) => console.log('[Autocomplete]: ' + inputVal)}
+      onChange={selectedItem => console.log(selectedItem)}
+      onInputValueChange={inputVal => console.log('[Autocomplete]: ' + inputVal)}
     >
       <TextField
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."

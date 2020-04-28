@@ -46,7 +46,7 @@ Style guide: components.vertical-nav.VerticalNavItem
 
 ### Usage
 
-- Indicate where a user is within the navigational hierarchy. Use the `ds-c-vertical-nav__label--current` modifier to show users which page they have navigated to.
+- Indicate where a user is within the navigational hierarchy. Use the `.ds-c-vertical-nav__label--current` modifier to show users which page they have navigated to.
 - Keep the navigation links short and follow sentence case. They can be shorter derivatives of page titles themselves.
 - If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
 

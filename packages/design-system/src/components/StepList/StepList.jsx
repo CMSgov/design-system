@@ -29,7 +29,7 @@ export const stepShape = {
   started: PropTypes.bool,
   isNextStep: PropTypes.bool,
   onClick: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
 };
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
@@ -41,7 +41,7 @@ StepList.defaultProps = {
   startText: 'Start',
   actionsLabelText: 'Primary actions for %{step}',
   descriptionLabelText: 'Description for %{step}',
-  substepsLabelText: 'Secondary actions for %{step}',
+  substepsLabelText: 'Secondary actions for %{step}'
 };
 
 StepList.propTypes = {
@@ -85,7 +85,7 @@ StepList.propTypes = {
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  substepsLabelText: PropTypes.string.isRequired,
+  substepsLabelText: PropTypes.string.isRequired
 };
 
 export default StepList;

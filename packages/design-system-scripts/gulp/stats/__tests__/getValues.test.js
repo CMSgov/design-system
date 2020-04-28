@@ -3,16 +3,16 @@ const getValues = require('../getValues');
 
 describe('getValues', () => {
   let stats = {};
-  const retrievalMethod = (branch) => stats[branch].size;
+  const retrievalMethod = branch => stats[branch].size;
 
   beforeEach(() => {
     stats = {
       current: {
-        size: 10,
+        size: 10
       },
       latest: {
-        size: 25,
-      },
+        size: 25
+      }
     };
   });
 
@@ -21,7 +21,7 @@ describe('getValues', () => {
     expect(values).toEqual([
       stats.current.size,
       stats.latest.size,
-      colors.green(stats.current.size - stats.latest.size),
+      colors.green(stats.current.size - stats.latest.size)
     ]);
   });
 

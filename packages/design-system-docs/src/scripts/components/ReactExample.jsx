@@ -37,7 +37,7 @@ class ReactExample extends React.PureComponent {
 ReactExample.propTypes = {
   markup: PropTypes.string,
   reference: PropTypes.string,
-  responsive: PropTypes.bool,
+  responsive: PropTypes.bool
 };
 
 export default ReactExample;

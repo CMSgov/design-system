@@ -8,18 +8,18 @@ function shallowRender(customProps = {}) {
   const props = Object.assign(
     {
       id: 'panel-1',
-      tabId: 'tab-1',
+      tabId: 'tab-1'
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<TabPanel {...props}>{defaultChildren}</TabPanel>),
+    wrapper: shallow(<TabPanel {...props}>{defaultChildren}</TabPanel>)
   };
 }
 
-describe('TabPanel', function () {
+describe('TabPanel', function() {
   it('is selected', () => {
     const wrapper = shallowRender({ selected: true }).wrapper;
     expect(wrapper.prop('aria-hidden')).toBe('false');

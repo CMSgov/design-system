@@ -18,5 +18,5 @@ module.exports = {
     return pkgName === CORE_DOCS_PACKAGE
       ? [docPackageDir]
       : [docPackageDir, `node_modules/${CORE_DOCS_PACKAGE}`];
-  },
+  }
 };

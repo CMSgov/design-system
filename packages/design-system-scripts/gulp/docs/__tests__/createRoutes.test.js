@@ -6,7 +6,7 @@ function mockPage(slug, sections = []) {
     description: `${slug} description`,
     reference: slug,
     referenceURI: slug,
-    sections: sections,
+    sections: sections
   };
 }
 

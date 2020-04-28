@@ -9,7 +9,7 @@ class ReactPropDocs extends React.PureComponent {
   rows() {
     const props = Object.getOwnPropertyNames(this.props.propDocs);
 
-    return props.map((prop) => {
+    return props.map(prop => {
       // Hides docs for react props with `@hide-prop` tag in the description
       const description = this.props.propDocs[prop].description;
       if (!description.match(/@hide-prop/i)) {
@@ -47,14 +47,14 @@ class ReactPropDocs extends React.PureComponent {
           </thead>
           <tbody>{this.rows()}</tbody>
         </table>
-      </div>,
+      </div>
     ];
   }
 }
 
 ReactPropDocs.propTypes = {
   /* eslint-disable react/forbid-prop-types */
-  propDocs: PropTypes.object,
+  propDocs: PropTypes.object
 };
 
 export default ReactPropDocs;

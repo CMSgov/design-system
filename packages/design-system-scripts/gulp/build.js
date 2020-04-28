@@ -67,13 +67,13 @@ function compileJs(dir) {
         `!${src}/**/{__mocks__,__tests__}/*.{js,jsx}`,
         `!${src}/**/*.example.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
-        `!${src}/helpers/e2e/*.{js,jsx}`,
+        `!${src}/helpers/e2e/*.{js,jsx}`
       ])
       .pipe(babel())
       .pipe(
         count({
           message: `## JS files processed in ${dir}`,
-          logger: (message) => logTask('📜 ', message),
+          logger: message => logTask('📜 ', message)
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist')))
@@ -93,5 +93,5 @@ module.exports = {
     logTask('✅ ', 'Build succeeded');
     log('');
   },
-  copyAll,
+  copyAll
 };

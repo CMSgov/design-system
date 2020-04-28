@@ -6,13 +6,13 @@ describe('Frame', () => {
   let wrapper;
   const props = {
     src: '/example',
-    title: 'Frame title',
+    title: 'Frame title'
   };
 
   describe('Normal Frame', () => {
     beforeEach(() => {
       wrapper = shallow(<Frame {...props} />, {
-        disableLifecycleMethods: true,
+        disableLifecycleMethods: true
       });
     });
 
@@ -43,7 +43,7 @@ describe('Frame', () => {
   describe('Frame with breakpoint toggles', () => {
     beforeEach(() => {
       wrapper = shallow(<Frame {...props} responsive />, {
-        disableLifecycleMethods: true,
+        disableLifecycleMethods: true
       });
     });
 

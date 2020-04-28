@@ -6,7 +6,7 @@ export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
       const classes = classNames('ds-c-field__hint', 'ds-u-color--error', {
-        'ds-u-color--error-light': this.props.inversed,
+        'ds-u-color--error-light': this.props.inversed
       });
 
       return (
@@ -23,7 +23,7 @@ export class FormLabel extends React.PureComponent {
     if (!hint && !requirementLabel) return;
 
     const classes = classNames('ds-c-field__hint', {
-      'ds-c-field__hint--inverse': this.props.inversed,
+      'ds-c-field__hint--inverse': this.props.inversed
     });
 
     let hintPadding = null;
@@ -53,7 +53,7 @@ export class FormLabel extends React.PureComponent {
     const { fieldId, id, children, textClassName, className, inversed } = this.props;
     const ComponentType = this.props.component;
     const classes = classNames('ds-c-label', className, {
-      'ds-c-label--inverse': inversed,
+      'ds-c-label--inverse': inversed
     });
 
     return (
@@ -107,7 +107,7 @@ FormLabel.propTypes = {
   /**
    * Additional classes to be added to the label text.
    */
-  textClassName: PropTypes.string,
+  textClassName: PropTypes.string
 };
 
 export default FormLabel;

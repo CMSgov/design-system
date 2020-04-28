@@ -13,7 +13,7 @@ class ControlledCurrencyField extends React.PureComponent {
     super(props);
 
     this.state = {
-      currencyValue: '2500',
+      currencyValue: '2500'
     };
   }
 
@@ -39,7 +39,7 @@ class ControlledCurrencyField extends React.PureComponent {
           mask="currency"
           name="controlled_currency_example"
           className="ds-u-margin-bottom--2"
-          onChange={(evt) => this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))}
+          onChange={evt => this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))}
           value={this.state.currencyValue}
         />
         <Button onClick={() => this.clearCurrencyValue()}>Clear</Button>
@@ -60,7 +60,7 @@ const Example = () => {
         pattern="[0-9]*"
         type="text"
         name="currency_example"
-        onBlur={(evt) => handleBlur(evt, 'currency')}
+        onBlur={evt => handleBlur(evt, 'currency')}
         defaultValue="2500"
       />
 
@@ -68,7 +68,7 @@ const Example = () => {
         label="Phone number"
         mask="phone"
         name="phone_example"
-        onBlur={(evt) => handleBlur(evt, 'phone')}
+        onBlur={evt => handleBlur(evt, 'phone')}
         type="tel"
         defaultValue="1234567890"
       />
@@ -80,7 +80,7 @@ const Example = () => {
         pattern="[0-9]*"
         type="text"
         name="ssn_example"
-        onBlur={(evt) => handleBlur(evt, 'ssn')}
+        onBlur={evt => handleBlur(evt, 'ssn')}
         defaultValue="123456789"
       />
 
@@ -91,7 +91,7 @@ const Example = () => {
         pattern="[0-9]*"
         type="text"
         name="zip_example"
-        onBlur={(evt) => handleBlur(evt, 'zip')}
+        onBlur={evt => handleBlur(evt, 'zip')}
         defaultValue="123456789"
       />
 
