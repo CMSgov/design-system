@@ -10,7 +10,7 @@ export class ReviewLink extends React.PureComponent {
 
   render() {
     const { href, className, children, ariaLabel } = this.props;
-    const onClick = event => this.handleClick(event);
+    const onClick = (event) => this.handleClick(event);
     return (
       <div>
         <a href={href} onClick={onClick} className={className} aria-label={ariaLabel}>
@@ -30,7 +30,7 @@ ReviewLink.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default ReviewLink;

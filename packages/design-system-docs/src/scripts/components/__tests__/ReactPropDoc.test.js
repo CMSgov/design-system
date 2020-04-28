@@ -13,14 +13,14 @@ function shallowRender(customProps = {}) {
     {
       name: 'foo',
       required: false,
-      type: { name: 'string' }
+      type: { name: 'string' },
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<ReactPropDoc {...props} />)
+    wrapper: shallow(<ReactPropDoc {...props} />),
   };
 }
 
@@ -39,12 +39,7 @@ describe('ReactPropDoc', () => {
   it('should render "required"', () => {
     const data = shallowRender({ required: true });
 
-    expect(
-      data.wrapper
-        .find('td .ds-c-badge')
-        .first()
-        .text()
-    ).toBe('Required');
+    expect(data.wrapper.find('td .ds-c-badge').first().text()).toBe('Required');
   });
 
   it('should render type', () => {
@@ -72,12 +67,7 @@ describe('ReactPropDoc', () => {
   it('should render description', () => {
     const data = shallowRender({ description: 'bar' });
 
-    expect(
-      data.wrapper
-        .find('td')
-        .at(3)
-        .html()
-    ).toMatch(/bar/);
+    expect(data.wrapper.find('td').at(3).html()).toMatch(/bar/);
   });
 
   it('should render shape for PropType.arrayOf(PropType.shape)', () => {
@@ -88,14 +78,14 @@ describe('ReactPropDoc', () => {
           name: 'shape',
           value: {
             onBlur: {
-              name: 'func'
+              name: 'func',
             },
             onChange: {
-              name: 'func'
-            }
-          }
-        }
-      }
+              name: 'func',
+            },
+          },
+        },
+      },
     });
 
     expect(
@@ -113,9 +103,9 @@ describe('ReactPropDoc', () => {
         value: {
           computed: true,
           name: 'shape',
-          value: 'Bar.propTypes'
-        }
-      }
+          value: 'Bar.propTypes',
+        },
+      },
     });
 
     expect(
@@ -130,8 +120,8 @@ describe('ReactPropDoc', () => {
     const data = shallowRender({
       type: {
         name: 'union',
-        value: [{ name: 'string' }, { name: 'bool' }]
-      }
+        value: [{ name: 'string' }, { name: 'bool' }],
+      },
     });
 
     expect(

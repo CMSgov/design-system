@@ -25,38 +25,38 @@ function addTopLevelPages(kssSections) {
         header: 'Getting started',
         reference: 'startup',
         sections: [],
-        weight: 4
+        weight: 4,
       },
       {
         header: 'Guidelines',
         reference: 'guidelines',
         sections: [],
-        weight: 5
+        weight: 5,
       },
       {
         header: 'Styles',
         reference: 'styles',
         sections: [],
-        weight: 6
+        weight: 6,
       },
       {
         header: 'Utilities',
         reference: 'utilities',
         sections: [],
-        weight: 20
+        weight: 20,
       },
       {
         header: 'Components',
         reference: 'components',
         sections: [],
-        weight: 30
+        weight: 30,
       },
       {
         header: 'Patterns',
         reference: 'patterns',
         sections: [],
-        weight: 40
-      }
+        weight: 40,
+      },
     ].concat(kssSections)
   );
 }
@@ -64,9 +64,9 @@ function addTopLevelPages(kssSections) {
 function generatedPagesCount(resultGroups) {
   let count = 0;
 
-  resultGroups.forEach(results => {
+  resultGroups.forEach((results) => {
     if (results) {
-      count += results.filter(createdFile => createdFile).length;
+      count += results.filter((createdFile) => createdFile).length;
     }
   });
 
@@ -82,11 +82,11 @@ async function generateDocPages(pages, destination, options) {
   const routes = createRoutes(pages);
 
   const generatedPages = await Promise.all(
-    pages.map(async page => {
+    pages.map(async (page) => {
       const created = await generatePage(routes, page, destination, options);
       if (page.sections) {
         const results = await Promise.all(
-          page.sections.map(subpage => generatePage(routes, subpage, destination, options))
+          page.sections.map((subpage) => generatePage(routes, subpage, destination, options))
         );
         // return results for generatedPagesCount
         return [created].concat(results);
@@ -106,12 +106,12 @@ async function generateDocPages(pages, destination, options) {
  */
 function generateMarkupPages(kssSections, destination, options) {
   const pagesWithMarkup = kssSections.filter(
-    page => !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
+    (page) => !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
   );
 
   return Promise.all(
-    pagesWithMarkup.map(page => {
-      return generatePage(null, page, destination, options, true).then(created => [created]);
+    pagesWithMarkup.map((page) => {
+      return generatePage(null, page, destination, options, true).then((created) => [created]);
     })
   );
 }
@@ -130,10 +130,10 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
 
   // Parse Markdown files, and return the data in the same format as a KssSection
   const markdownPagesData = await Promise.all(
-    docsDirs.map(async dir => {
+    docsDirs.map(async (dir) => {
       return convertMarkdownPages(options.rootPath, dir);
     })
-  ).then(dirPages => dirPages.flat());
+  ).then((dirPages) => dirPages.flat());
 
   /**
    * Parse KSS documentation blocks in CSS and JSX files
@@ -141,11 +141,11 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
    * @return {Array} KssSections
    */
   // Temporarily hardcode task to process KSS in docs too
-  const packages = [...docsDirs, ...sourceDirs].map(pkg => path.join(pkg, 'src'));
+  const packages = [...docsDirs, ...sourceDirs].map((pkg) => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
-    kssStyleGuide.sections().map(kssSection =>
+    kssStyleGuide.sections().map((kssSection) =>
       // Cleanup and extend the section's properties
       processKssSection(kssSection, options.rootPath)
     )

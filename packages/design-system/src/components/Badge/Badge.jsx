@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const Badge = props => {
+export const Badge = (props) => {
   const { className, children, size, variation, ...others } = props;
   const sizeClasses = { big: 'ds-u-font-size--base' };
 
@@ -33,7 +33,7 @@ Badge.propTypes = {
   /**
    * A string corresponding to the badge-component variation classes
    */
-  variation: PropTypes.oneOf(['info', 'success', 'warn', 'alert'])
+  variation: PropTypes.oneOf(['info', 'success', 'warn', 'alert']),
 };
 
 export default Badge;

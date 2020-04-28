@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 const defaultProps = {
   helpDrawerOpen: false,
   inline: true,
-  showDrawer: () => {}
+  showDrawer: () => {},
 };
 
 function renderHelpDrawerToggle(props) {

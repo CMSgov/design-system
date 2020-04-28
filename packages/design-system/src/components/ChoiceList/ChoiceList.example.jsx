@@ -7,7 +7,7 @@ ReactDOM.render(
     <ChoiceList
       choices={[
         { label: 'Choice 1', value: 'A' },
-        { defaultChecked: true, label: 'Choice 2', value: 'B' }
+        { defaultChecked: true, label: 'Choice 2', value: 'B' },
       ]}
       className="ds-u-margin-top--0"
       label="Radio example"
@@ -22,8 +22,8 @@ ReactDOM.render(
           defaultChecked: true,
           label: 'Choice 2',
           hint: 'Example hint text',
-          value: 'B'
-        }
+          value: 'B',
+        },
       ]}
       errorMessage="Example error message"
       label="Checkbox example"
@@ -37,8 +37,8 @@ ReactDOM.render(
         {
           label: 'Choice 2',
           requirementLabel: 'Optional',
-          value: 'B'
-        }
+          value: 'B',
+        },
       ]}
       label="Choices with requirementLabel"
       name="some_optional_choices_field"

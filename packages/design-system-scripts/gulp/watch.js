@@ -13,7 +13,7 @@ const {
   extractReactDocs,
   generatePages,
   copySourcePackageAssets,
-  copyDocsPackageAssets
+  copyDocsPackageAssets,
 } = require('./docs');
 const { runWebpackServer } = require('./docs/webpack');
 
@@ -78,5 +78,5 @@ module.exports = {
     await runWebpackServer(sourcePackageDir, docsPackageDir, options, sync);
     watchSourcePackage(sourcePackageDir, docsPackageDir, options, sync);
     watchDocsPackage(sourcePackageDir, docsPackageDir, options, sync);
-  }
+  },
 };

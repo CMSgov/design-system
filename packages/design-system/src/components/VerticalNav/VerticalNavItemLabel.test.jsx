@@ -6,21 +6,21 @@ function shallowRender(customProps = {}) {
   const props = Object.assign(
     {
       label: 'Foo',
-      subnavId: 'foo-subnav'
+      subnavId: 'foo-subnav',
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<VerticalNavItemLabel {...props} />)
+    wrapper: shallow(<VerticalNavItemLabel {...props} />),
   };
 }
 
 describe('VerticalNavItemLabel', () => {
   it('accepts a node as a label', () => {
     const wrapper = shallowRender({
-      label: <strong>Foo</strong>
+      label: <strong>Foo</strong>,
     }).wrapper;
 
     expect(wrapper.html()).toMatch(/<strong>/);
@@ -38,7 +38,7 @@ describe('VerticalNavItemLabel', () => {
 
   it('calls onClick', () => {
     const data = shallowRender({
-      onClick: jest.fn()
+      onClick: jest.fn(),
     });
 
     data.wrapper.simulate('click');
