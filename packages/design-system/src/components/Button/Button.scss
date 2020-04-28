@@ -26,7 +26,6 @@
   &:focus,
   &.ds-c-button--focus {
     background-color: $focus-color;
-    border-bottom-color: transparent;
     border-color: $color-base;
     box-shadow: $focus-shadow-link;
     color: $color-base;

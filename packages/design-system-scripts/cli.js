@@ -85,13 +85,42 @@ yargs
       await watchDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
     }
   })
+  .command({
+    command: 'lint <directories..>',
+    desc: 'Runs prettier, stylelint and eslint on one or more directories.',
+    builder: yargs => {
+      yargs
+        .positional('directories..', {
+          desc:
+            'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
+          type: 'string',
+          demandOption: true
+        })
+        .option('fix', {
+          default: false,
+          description: 'Automatically fix, where possible, violations reported by rules.'
+        })
+        .option('ignorePatterns', {
+          type: 'array',
+          description:
+            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.'
+        });
+    },
+    handler: async argv => {
+      const { lintDirectories } = require('./gulp/lint');
+      const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
+
+      await lintDirectories(argv.directories, argv.fix, ignorePatterns);
+    }
+  })
   .demandCommand()
   .help().argv;
 
 function describeSourcePackageDir(yargs) {
   yargs.positional('sourcePackageDir', {
     desc: 'The relative path to your main design-system package (that contains a src directory)',
-    type: 'string'
+    type: 'string',
+    demandOption: true
   });
 }
 
@@ -99,7 +128,8 @@ function describeDocsPackageDir(yargs) {
   yargs.positional('docsPackageDir', {
     desc:
       'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
-    type: 'string'
+    type: 'string',
+    demandOption: true
   });
 }
 

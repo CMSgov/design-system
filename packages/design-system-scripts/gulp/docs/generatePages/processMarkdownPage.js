@@ -74,7 +74,7 @@ function processMarkdownPage(dir, filePath, body, rootPath = '') {
     reference: reference,
     referenceURI: referenceURI,
     source: {
-      path: filePath,
+      path: filePath
     },
     weight: parseInt(parts.attributes.weight || 0)
   };

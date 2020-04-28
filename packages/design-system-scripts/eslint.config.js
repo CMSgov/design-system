@@ -1,5 +1,11 @@
 module.exports = {
-  extends: ['nava', 'plugin:jsx-a11y/recommended', 'plugin:react/recommended'],
+  extends: [
+    'nava',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'prettier',
+    'prettier/react'
+  ],
   env: {
     browser: true,
     es6: true,
@@ -7,10 +13,9 @@ module.exports = {
   },
   parserOptions: {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
       jsx: true
     },
-    ecmaVersion: 8,
+    ecmaVersion: 2018,
     sourceType: 'module'
   },
   plugins: ['filenames', 'jest', 'jsx-a11y', 'react'],

@@ -1,4 +1,10 @@
+/*
+ *  Our stylelint rules are based on @18F/stylelint-rules and stylelint-config-primer
+ *  https://github.com/18F/stylelint-rules
+ *  https://github.com/primer/stylelint-config-primer
+ */
 module.exports = {
+  extends: ['stylelint-config-prettier'],
   plugins: ['stylelint-order', 'stylelint-scss'],
   rules: {
     'at-rule-name-case': 'lower',
@@ -23,6 +29,7 @@ module.exports = {
       }
     ],
     'comment-whitespace-inside': 'always',
+    'declaration-bang-space-before': 'always',
     'declaration-bang-space-after': 'never',
     'declaration-block-no-duplicate-properties': [
       true,
