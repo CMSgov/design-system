@@ -28,14 +28,9 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  // Source package HTML/React examples and KSS documentation files
-  gulp.watch([`${src}/**/*.example.{ejs,html,jsx}`, `${src}/**/*.docs.scss`], async () => {
-    await generatePages(sourceDir, docsDir, options);
-  });
-
-  // Source package React components and examples
+  // Source package React components and React props
   gulp.watch([`${src}/**/*.jsx`, `!${src}/**/*.test.{js,jsx}`], async () => {
-    await extractReactDocs(sourceDir, options);
+    await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });
 }
@@ -48,19 +43,14 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
     await copyDocsAssets(docsDir);
   });
 
-  // Docs components
-  gulp.watch(`${src}/scripts/**/.{js|jsx}`, async () => {
-    // Rebuild the doc pages when the docs site js source is updated
-    await generatePages(sourceDir, docsDir, options);
-  });
-
   // Docs Sass files
-  gulp.watch(`${src}/**/*.scss`, async () => {
+  gulp.watch(`${src}/styles/**/*.scss`, async () => {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  // Docs Markdown files
-  gulp.watch([`${src}/pages/**/*.{md,mdx}`, `${src}/pages/**/*.docs.scss`], async () => {
+  // Docs Markdown files, KSS documentation files and HTML/React examples
+  gulp.watch([`${src}/pages/**/*.{md,mdx,scss,html,jsx}`], async () => {
+    await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });
 }
