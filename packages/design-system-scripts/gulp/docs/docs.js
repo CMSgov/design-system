@@ -92,5 +92,5 @@ module.exports = {
   extractReactDocs,
   generatePages,
   copySourcePackageAssets,
-  copyDocsPackageAssets
+  copyDocsPackageAssets,
 };

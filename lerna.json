@@ -2,17 +2,12 @@
   "lerna": "2.0.0",
   "command": {
     "publish": {
-      "allowBranch": "master",
-      "ignore": [
-        "eslint-config-design-system",
-        "stylelint-config-design-system"
-      ]
+      "allowBranch": "master"
     }
   },
   "npmClient": "yarn",
   "packages": [
-    "packages/*",
-    "packages/themes/*"
+    "packages/*"
   ],
   "version": "3.7.0"
 }

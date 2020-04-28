@@ -1,7 +1,7 @@
 jest.mock('../../helpers/breakpoints', () => {
   return {
     sm: 100,
-    lg: 200
+    lg: 200,
   };
 });
 
@@ -14,14 +14,14 @@ import { shallow } from 'enzyme';
 function shallowRender(customProps = {}) {
   const props = Object.assign(
     {
-      onClick: jest.fn()
+      onClick: jest.fn(),
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<BreakpointToggles {...props} />)
+    wrapper: shallow(<BreakpointToggles {...props} />),
   };
 }
 

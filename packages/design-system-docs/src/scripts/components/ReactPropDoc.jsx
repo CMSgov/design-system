@@ -13,7 +13,7 @@ class ReactPropDoc extends React.PureComponent {
 
   description() {
     if (this.props.description) {
-      return <div dangerouslySetInnerHTML={{ __html: this.props.description }} />;
+      return <span dangerouslySetInnerHTML={{ __html: this.props.description }} />;
     }
   }
 
@@ -64,22 +64,43 @@ class ReactPropDoc extends React.PureComponent {
     const values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
-      return values.map(v => (this.props.type.name === 'enum' ? v.value : v.name)).join(', ');
+      return values.map((v) => (this.props.type.name === 'enum' ? v.value : v.name)).join(', ');
     }
   }
 
   render() {
+    // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
     return (
-      <tr>
-        <td>
+      <tr role="row">
+        <td role="cell" headers="columnname">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Name
+            <br />
+          </span>
           <code className="ds-u-font-weight--bold">{this.props.name}</code>
           {this.isRequired()}
         </td>
-        <td>
+        <td role="cell" headers="columntype">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Type
+            <br />
+          </span>
           <code>{this.type()}</code>
         </td>
-        <td>{this.defaultValue()}</td>
-        <td>{this.description()}</td>
+        <td role="cell" headers="columndefault">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Default
+            <br />
+          </span>
+          {this.defaultValue()}
+        </td>
+        <td role="cell" headers="columndescription">
+          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
+            Description
+            <br />
+          </span>
+          {this.description()}
+        </td>
       </tr>
     );
   }
@@ -87,7 +108,7 @@ class ReactPropDoc extends React.PureComponent {
 
 ReactPropDoc.propTypes = {
   defaultValue: PropTypes.shape({
-    value: PropTypes.string
+    value: PropTypes.string,
   }),
   description: PropTypes.string,
   name: PropTypes.string,
@@ -102,12 +123,12 @@ ReactPropDoc.propTypes = {
         PropTypes.shape({
           computed: PropTypes.bool,
           name: PropTypes.string,
-          value: PropTypes.string
+          value: PropTypes.string,
         })
       ),
-      PropTypes.object // shape
-    ])
-  })
+      PropTypes.object, // shape
+    ]),
+  }),
 };
 
 export default ReactPropDoc;
