@@ -1,6 +1,5 @@
 const { get } = require('lodash');
 const fs = require('mz/fs');
-const path = require('path');
 const { logError } = require('../../common/logUtil');
 
 /**
@@ -17,11 +16,10 @@ module.exports = function (pages, dataPath) {
 
     pages.forEach((page) => {
       if (page.reactProps) {
-        const reactProps = get(data, [page.reactProps, 'props']);
-        if (reactProps) {
-          // There should only ever be one exported component definition
-          page.reactComponentProps = reactProps;
-          page.reactComponentPath = path.join(path.dirname(page.source.path), page.reactProps);
+        const reactComponent = get(data, [page.reactProps, 'props']);
+        if (reactComponent) {
+          page.reactComponentProps = reactComponent;
+          page.reactComponentPath = get(data, [page.reactProps, 'relativePath']);
         } else {
           logError('addReactDocs', `Invalid react component for ${page.source.path}`);
         }
@@ -31,7 +29,7 @@ module.exports = function (pages, dataPath) {
         const reactExample = get(data, [page.reactExample, 'source']);
         if (reactExample) {
           page.reactExampleSource = reactExample;
-          page.reactExamplePath = path.join(path.dirname(page.source.path), page.reactExample);
+          page.reactExampleEntry = get(data, [page.reactExample, 'path']);
         } else {
           logError('addReactDocs', `Invalid react example for ${page.source.path}`);
         }

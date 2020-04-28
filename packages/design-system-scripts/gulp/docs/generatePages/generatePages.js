@@ -106,7 +106,7 @@ async function generateDocPages(pages, destination, options) {
  */
 function generateMarkupPages(kssSections, destination, options) {
   const pagesWithMarkup = kssSections.filter(
-    (page) => page.markup.length > 0 || page.reactExamplePath
+    (page) => page.markup.length > 0 || page.reactExampleSource
   );
 
   return Promise.all(

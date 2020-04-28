@@ -10,11 +10,10 @@ import ReactPropDocs from './ReactPropDocs';
 function ReactContent(props) {
   return (
     <>
-      {props.reactExamplePath && (
+      {props.reactExampleSource && (
         <ReactExample
           key="example"
           markup={props.reactExampleSource}
-          path={props.reactExamplePath}
           reference={props.reference}
           responsive={props.responsive}
         />
@@ -28,7 +27,6 @@ function ReactContent(props) {
 
 ReactContent.propTypes = {
   reactComponentProps: ReactPropDocs.propTypes.propDocs,
-  reactExamplePath: PropTypes.string,
   reactExampleSource: ReactExample.propTypes.markup,
   reference: PropTypes.string,
   responsive: PropTypes.bool,

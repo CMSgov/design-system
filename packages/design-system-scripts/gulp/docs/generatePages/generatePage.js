@@ -47,7 +47,7 @@ function generateExamples(page, docsPath, options) {
       }
     })
     .then(() => {
-      if (page.reactExamplePath) {
+      if (page.reactExampleSource) {
         generateReactExample(page, docsPath, options);
       }
     });

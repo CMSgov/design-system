@@ -38,7 +38,7 @@ async function extractReactDocs(sourceDir, docsDir, options) {
         `!${sourcesGlob}/**/*.test.jsx`,
         `${docsGlob}/**/*.example.jsx`,
       ])
-      .pipe(parseReactFile(options.rootPath))
+      .pipe(parseReactFile(options.rootPath, options.githubUrl))
       .pipe(merge({ fileName: REACT_DATA_FILENAME }))
       .pipe(gulp.dest(REACT_DATA_DIR))
   );

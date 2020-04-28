@@ -64,11 +64,7 @@ class PageBlock extends React.PureComponent {
     if (this.props.hideHeader || this.props.header.match(/---/)) return;
 
     const source = this.props.reactComponentPath && (
-      <Source
-        key="reactSource"
-        reactComponentPath={this.props.reactComponentPath}
-        source={this.props.source}
-      />
+      <Source key="reactSource" reactComponentPath={this.props.reactComponentPath} />
     );
 
     const subheader = this.props.reactComponentPath && (
@@ -98,7 +94,6 @@ class PageBlock extends React.PureComponent {
         {this.markupExamples()}
         <ReactContent
           reactComponentProps={this.props.reactComponentProps}
-          reactExamplePath={this.props.reactExamplePath}
           reactExampleSource={this.props.reactExampleSource}
           reference={this.props.reference}
           responsive={this.props.responsive}
@@ -117,11 +112,9 @@ PageBlock.propTypes = {
   modifiers: PropTypes.arrayOf(HtmlExample.propTypes.modifier),
   reactComponentProps: ReactContent.propTypes.reactComponentProps,
   reactComponentPath: PropTypes.string,
-  reactExamplePath: ReactContent.propTypes.reactExamplePath,
   reactExampleSource: ReactContent.propTypes.reactExampleSource,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
-  source: Source.propTypes.source,
 };
 
 export default PageBlock;
