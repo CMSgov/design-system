@@ -30,7 +30,7 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
       choiceProps.onChange = this.props.onChange;
       choiceProps.size = this.props.size;
-      choiceProps.type = this.props.type;
+      choiceProps.type = this.type();
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
       choiceProps.inputRef = (ref) => {
         this.choiceRefs.push(ref);
@@ -42,6 +42,24 @@ export class ChoiceList extends React.PureComponent {
         </Choice>
       );
     });
+  }
+
+  /**
+   * Determines the type of field(s) we should render based on a few factors
+   */
+  type() {
+    if (this.props.type) {
+      return this.props.type;
+    }
+
+    if (this.props.multiple || this.props.choices.length === 1) {
+      // Prefer a checkbox when multiple choices can be selected, since users
+      // have trouble selecting multiple choices from a select menu. And if only
+      // one choice is available, then a radio button would prevent a user from
+      // deselecting the field.
+      return 'checkbox';
+    }
+    return 'radio';
   }
 
   handleBlur(evt) {
@@ -154,7 +172,7 @@ ChoiceList.propTypes = {
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired
+  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
 };
 
 export default ChoiceList;
