@@ -11,7 +11,7 @@ export class ChoiceList extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.multiple) {
         console.warn(
-          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use 'type="checkbox"' instead instead. This prop is deprecated and will be removed in a future release.`
+          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use \`type="checkbox"\` instead. This prop is deprecated and will be removed in a future release.`
         );
       }
     }
