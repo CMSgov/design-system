@@ -8,7 +8,7 @@ const gulp = require('gulp');
 const path = require('path');
 const { logTask } = require('./common/logUtil');
 const { compileSass, compileDocsSass } = require('./sass');
-const { copyAll } = require('./build');
+const { copyAll, compileJs } = require('./build');
 const { extractReactDocs, generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
 const { runWebpackServer } = require('./docs/webpack');
 
@@ -30,6 +30,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
 
   // Source package React components and React props
   gulp.watch([`${src}/**/*.jsx`, `!${src}/**/*.test.{js,jsx}`], async () => {
+    await compileJs(sourceDir);
     await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });

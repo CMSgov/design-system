@@ -51,7 +51,7 @@ module.exports = {
               publicPath: config.output.publicPath,
               stats: webpackStatsConfig,
               watchOptions: {
-                ignored: /node_modules/,
+                ignored: /node_modules(?!\/@cmsgov)/,
               },
             }),
             webpackHotMiddleware(bundler, {

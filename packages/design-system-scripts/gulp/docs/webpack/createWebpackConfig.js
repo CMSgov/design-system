@@ -13,14 +13,11 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
   // Entry and include paths are set to `design-system` and `design-system-docs`
   // packages in `node_modules` for child design systems
   // This is the first element in the dirs array from `getDirsToProcess`
-  const include = [
-    fs.realpathSync(path.resolve(sources[0], 'src')),
-    fs.realpathSync(path.resolve(docs[0], 'src')),
-  ];
   const entry = {
     index: [path.resolve(docs[0], 'src/index.jsx')],
     example: [path.resolve(docs[0], 'src/example.js')],
   };
+  const include = sources.concat(docs).map((dir) => fs.realpathSync(path.resolve(dir, 'src')));
 
   const config = {
     mode: process.env.NODE_ENV || 'production',

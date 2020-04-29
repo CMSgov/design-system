@@ -92,4 +92,5 @@ module.exports = {
     log('');
   },
   copyAll,
+  compileJs,
 };
