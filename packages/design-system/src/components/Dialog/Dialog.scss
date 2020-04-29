@@ -40,9 +40,9 @@ $dialog-spacer: $spacer-4;
 
 .ds-c-dialog__close {
   background: url('#{$image-path}/close--primary.svg') center left no-repeat;
-  background-size: 12px 12px;
+  background-size: units(1.5);
   margin-left: auto;
-  padding: 0 0 0 (12px + $spacer-1);
+  padding: 0 0 0 units(2.5);
 
   &:active,
   &:hover {

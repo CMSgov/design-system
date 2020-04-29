@@ -2,7 +2,7 @@
 
 // stylelint-disable selector-no-qualifying-type
 select.ds-c-field {
-  $select-icon-size: 10px;
+  $select-icon-size: units(1);
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-both.svg');

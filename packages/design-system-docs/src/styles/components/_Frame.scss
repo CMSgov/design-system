@@ -8,8 +8,8 @@ $_link-spacer: $spacer-1;
 
 .frame--loading .frame__parent {
   background: url('#{$image-path}/spinner-gray.svg') center center no-repeat;
-  background-size: 30px;
-  min-height: 30px + $spacer-2;
+  background-size: units(4);
+  min-height: units(4) + $spacer-2;
 }
 
 .frame--responsive {

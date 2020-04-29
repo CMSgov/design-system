@@ -8,7 +8,7 @@
 .ds-c-autocomplete__list {
   background-color: $color-white;
   box-sizing: border-box;
-  max-height: ($base-font-size + $spacer-2) * 10;
+  max-height: ($spacer-2 + $spacer-2) * 10;
   overflow-y: auto;
   position: absolute;
   width: 100%;
