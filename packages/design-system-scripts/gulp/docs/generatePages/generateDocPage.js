@@ -47,7 +47,7 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl, name }) 
     {
       uri: page.referenceURI,
       head: head,
-      body: body,
+      body: body
     },
     docsPath
   );

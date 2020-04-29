@@ -33,9 +33,9 @@ export class Tab extends React.PureComponent {
       role: 'tab',
       className: classes,
       id: this.props.id,
-      ref: (tab) => {
+      ref: tab => {
         this.tab = tab;
-      },
+      }
     };
 
     if (!this.props.disabled) {
@@ -63,7 +63,7 @@ export class Tab extends React.PureComponent {
 }
 
 Tab.defaultProps = {
-  selected: false,
+  selected: false
 };
 
 Tab.propTypes = {
@@ -102,7 +102,7 @@ Tab.propTypes = {
    */
   panelId: PropTypes.string.isRequired,
   selected: PropTypes.bool,
-  disabled: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export default Tab;

@@ -12,9 +12,9 @@ class BreakpointToggles extends React.PureComponent {
   }
 
   toggles() {
-    return Object.keys(breakpoints).map((key) => {
+    return Object.keys(breakpoints).map(key => {
       const classes = classNames(`ds-l-col bp-toggle bp-toggle--${key}`, {
-        'bp-toggle--active': key === this.props.activeBreakpoint,
+        'bp-toggle--active': key === this.props.activeBreakpoint
       });
       const width = breakpoints[key];
 
@@ -38,12 +38,12 @@ class BreakpointToggles extends React.PureComponent {
 }
 
 BreakpointToggles.defaultProps = {
-  activeBreakpoint: 'lg',
+  activeBreakpoint: 'lg'
 };
 
 BreakpointToggles.propTypes = {
   activeBreakpoint: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default BreakpointToggles;

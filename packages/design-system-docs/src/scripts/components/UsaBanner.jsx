@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const UsaBanner = function (props) {
+const UsaBanner = function(props) {
   const bannerHeader = props.isBannerOpen
     ? 'c-usa-banner__header c-usa-banner__header--expanded'
     : 'c-usa-banner__header';
@@ -66,7 +66,7 @@ const UsaBanner = function (props) {
 
 UsaBanner.propTypes = {
   isBannerOpen: PropTypes.bool.isRequired,
-  onToggleBanner: PropTypes.func.isRequired,
+  onToggleBanner: PropTypes.func.isRequired
 };
 
 export default UsaBanner;

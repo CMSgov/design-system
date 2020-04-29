@@ -11,7 +11,7 @@ const defaultProps = {
   ),
   footerTitle: 'Footer title',
   onCloseClick: () => {},
-  title: 'HelpDrawer title',
+  title: 'HelpDrawer title'
 };
 
 function renderHelpDrawer(props) {

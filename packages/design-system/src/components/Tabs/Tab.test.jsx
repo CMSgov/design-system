@@ -6,18 +6,18 @@ function shallowRender(customProps = {}) {
   const props = Object.assign(
     {
       id: 'tab',
-      panelId: 'panel',
+      panelId: 'panel'
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<Tab {...props}>Label</Tab>),
+    wrapper: shallow(<Tab {...props}>Label</Tab>)
   };
 }
 
-describe('Tab', function () {
+describe('Tab', function() {
   it('renders a tab', () => {
     const data = shallowRender();
 

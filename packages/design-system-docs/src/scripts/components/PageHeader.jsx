@@ -15,7 +15,7 @@ class PageHeader extends React.PureComponent {
         'ds-c-badge ds-u-margin-right--1 ds-u-text-transform--capitalize',
         {
           'ds-c-badge--success': this.props.status === 'Ready',
-          'ds-c-badge--alert': this.props.status === 'Draft',
+          'ds-c-badge--alert': this.props.status === 'Draft'
         }
       );
 
@@ -59,7 +59,7 @@ PageHeader.propTypes = {
   reference: PropTypes.string,
   status: PropTypes.string,
   uswds: PropTypes.string,
-  showGuidanceLink: PropTypes.bool.isRequired,
+  showGuidanceLink: PropTypes.bool.isRequired
 };
 
 export default PageHeader;

@@ -6,18 +6,18 @@ describe('uniquePages', () => {
       {
         reference: 'foo',
         header: 'Core foo',
-        source: { path: 'packages/core/foo.js' },
+        source: { path: 'packages/core/foo.js' }
       },
       {
         reference: 'foo',
         header: 'Theme foo',
-        source: { path: 'packages/themes/abc/foo.js' },
+        source: { path: 'packages/themes/abc/foo.js' }
       },
       {
         reference: 'bar',
         header: 'Bar',
-        source: { path: 'packages/core/bar.js' },
-      },
+        source: { path: 'packages/core/bar.js' }
+      }
     ]);
 
     expect(sections.length).toBe(2);

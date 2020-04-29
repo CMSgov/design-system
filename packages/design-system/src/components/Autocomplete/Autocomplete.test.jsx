@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
     {
-      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
+      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }]
     },
     customProps
   );
@@ -14,7 +14,7 @@ function render(customProps = {}, deep = false) {
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component),
+    wrapper: deep ? mount(component) : shallow(component)
   };
 }
 
@@ -60,7 +60,12 @@ describe('Autocomplete', () => {
     const wrapper = data.wrapper;
     const downshift = wrapper.find('Downshift');
 
-    expect(downshift.find('div').first().exists()).toBe(true);
+    expect(
+      downshift
+        .find('div')
+        .first()
+        .exists()
+    ).toBe(true);
     expect(downshift.find('ul').exists()).toBe(false);
     expect(downshift.find('li').exists()).toBe(false);
     expect(downshift.find('button').exists()).toBe(true);
@@ -70,7 +75,12 @@ describe('Autocomplete', () => {
     const { wrapper } = render({ clearSearchButton: false }, true);
     const downshift = wrapper.find('Downshift');
 
-    expect(downshift.find('div').first().exists()).toBe(true);
+    expect(
+      downshift
+        .find('div')
+        .first()
+        .exists()
+    ).toBe(true);
     expect(downshift.find('button').exists()).toBe(false);
   });
 
@@ -98,7 +108,7 @@ describe('Autocomplete', () => {
         clearInputText: 'Clear search box',
         loading: true,
         loadingMessage: 'Custom loading message',
-        noResultsMessage: 'Custom no results message',
+        noResultsMessage: 'Custom no results message'
       },
       true
     );

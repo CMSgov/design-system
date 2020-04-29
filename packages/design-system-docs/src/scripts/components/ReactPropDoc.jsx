@@ -64,7 +64,7 @@ class ReactPropDoc extends React.PureComponent {
     const values = this.props.type.value;
 
     if (values && typeof values.length !== 'undefined') {
-      return values.map((v) => (this.props.type.name === 'enum' ? v.value : v.name)).join(', ');
+      return values.map(v => (this.props.type.name === 'enum' ? v.value : v.name)).join(', ');
     }
   }
 
@@ -108,7 +108,7 @@ class ReactPropDoc extends React.PureComponent {
 
 ReactPropDoc.propTypes = {
   defaultValue: PropTypes.shape({
-    value: PropTypes.string,
+    value: PropTypes.string
   }),
   description: PropTypes.string,
   name: PropTypes.string,
@@ -123,12 +123,12 @@ ReactPropDoc.propTypes = {
         PropTypes.shape({
           computed: PropTypes.bool,
           name: PropTypes.string,
-          value: PropTypes.string,
+          value: PropTypes.string
         })
       ),
-      PropTypes.object, // shape
-    ]),
-  }),
+      PropTypes.object // shape
+    ])
+  })
 };
 
 export default ReactPropDoc;

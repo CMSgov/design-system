@@ -14,7 +14,7 @@ class PageBlock extends React.PureComponent {
     let modifierMarkup;
 
     if (this.props.modifiers) {
-      modifierMarkup = this.props.modifiers.map((modifier) => {
+      modifierMarkup = this.props.modifiers.map(modifier => {
         return (
           <HtmlExample
             key={modifier.name}
@@ -48,7 +48,7 @@ class PageBlock extends React.PureComponent {
         <div
           className="c-details ds-u-margin-top--2 ds-u-measure--wide"
           dangerouslySetInnerHTML={{
-            __html: this.props.description,
+            __html: this.props.description
           }}
         />
       );
@@ -86,7 +86,7 @@ class PageBlock extends React.PureComponent {
         id={this.props.reference}
         key="header"
       />,
-      source,
+      source
     ];
   }
 
@@ -123,7 +123,7 @@ PageBlock.propTypes = {
   reactExampleSource: ReactContent.propTypes.reactExampleSource,
   reference: PropTypes.string,
   responsive: PropTypes.bool,
-  source: Source.propTypes.source,
+  source: Source.propTypes.source
 };
 
 export default PageBlock;

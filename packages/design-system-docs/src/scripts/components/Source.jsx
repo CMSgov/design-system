@@ -8,7 +8,7 @@ const markdownPattern = /\.md$/;
 const packagesPattern = /packages\/([a-z-_]+)\//i;
 const nodeModulesPattern = /node_modules\/@cmsgov\/([a-z-_]+)\//i;
 
-const getBaseUrl = (source) => {
+const getBaseUrl = source => {
   // Only show the source link if this is React or CSS component
   if (!source || source.path.match(markdownPattern)) {
     return undefined;
@@ -21,7 +21,7 @@ const getBaseUrl = (source) => {
   }
 };
 
-const Source = (props) => {
+const Source = props => {
   const reactPath =
     props.reactComponentPath && props.reactComponentPath.replace(/[a-z-]+\/src\//, '');
   // This path is relative to the package directory
@@ -46,8 +46,8 @@ Source.propTypes = {
   reactComponentPath: PropTypes.string,
   source: PropTypes.shape({
     filename: PropTypes.string,
-    path: PropTypes.string.isRequired,
-  }),
+    path: PropTypes.string.isRequired
+  })
 };
 
 export default Source;

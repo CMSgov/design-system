@@ -82,7 +82,7 @@ export class TextField extends React.PureComponent {
       mask && `ds-c-field--${mask}`,
       {
         'ds-c-field--error': typeof errorMessage === 'string',
-        'ds-c-field--inverse': inversed,
+        'ds-c-field--inverse': inversed
       },
       fieldClassName,
       size && `ds-c-field--${size}`
@@ -101,7 +101,7 @@ export class TextField extends React.PureComponent {
         className={fieldClasses}
         id={this.id}
         /* eslint-disable no-return-assign */
-        ref={(ref) => {
+        ref={ref => {
           if (focusTrigger) {
             this.focusRef = ref;
           } else {
@@ -139,7 +139,7 @@ export class TextField extends React.PureComponent {
 }
 
 TextField.defaultProps = {
-  type: 'text',
+  type: 'text'
 };
 
 TextField.propTypes = {
@@ -237,7 +237,7 @@ TextField.propTypes = {
    * Sets the input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default TextField;

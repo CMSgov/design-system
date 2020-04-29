@@ -7,7 +7,7 @@ const noop = () => {};
 const generateStep = (step = {}) => ({
   href: '/some/path',
   title: 'Do stuff',
-  ...step,
+  ...step
 });
 
 describe('SubStep', () => {
@@ -34,7 +34,7 @@ describe('SubStep', () => {
     expect(editLink.length).toEqual(1);
     expect(editLink.props()).toMatchObject({
       href: '/some/path',
-      screenReaderText: '"Do stuff"',
+      screenReaderText: '"Do stuff"'
     });
     editLink.props().onClick();
     expect(spy).toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe('SubStep', () => {
   it('renders a substep with substeps', () => {
     const step = generateStep({
       title: 'Do stuff',
-      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })],
+      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })]
     });
     const spy = jest.fn();
     const wrapper = shallow(
@@ -73,16 +73,19 @@ describe('SubStep', () => {
     expect(subs.length).toEqual(2);
     expect(subs.at(1).props()).toMatchObject({
       step: step.steps[1],
-      onStepLinkClick: spy,
+      onStepLinkClick: spy
     });
-    subs.at(1).props().onStepLinkClick();
+    subs
+      .at(1)
+      .props()
+      .onStepLinkClick();
     expect(spy).toHaveBeenCalled();
   });
 
   it('does not render a substep with substeps when showSubSubSteps is false', () => {
     const step = generateStep({
       title: 'Do stuff',
-      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })],
+      steps: [generateStep({ title: 'subsubstep1' }), generateStep({ title: 'subsubstep2' })]
     });
     const wrapper = shallow(<SubStep step={step} showSubSubSteps={false} editText="Edit" />);
 

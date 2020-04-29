@@ -18,7 +18,7 @@ describe('FormLabel', () => {
   it('renders error state', () => {
     const props = {
       errorMessage: 'Nah, try again.',
-      fieldId: 'name',
+      fieldId: 'name'
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
@@ -34,7 +34,7 @@ describe('FormLabel', () => {
 
   it('renders hint node', () => {
     const props = {
-      hint: <strong>President #44</strong>,
+      hint: <strong>President #44</strong>
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
@@ -43,7 +43,7 @@ describe('FormLabel', () => {
 
   it('renders requirementLabel string', () => {
     const props = {
-      requirementLabel: 'Optional',
+      requirementLabel: 'Optional'
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
@@ -52,7 +52,7 @@ describe('FormLabel', () => {
 
   it('renders requirementLabel node', () => {
     const props = {
-      requirementLabel: <em>It is really optional</em>,
+      requirementLabel: <em>It is really optional</em>
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
@@ -67,7 +67,7 @@ describe('FormLabel', () => {
 
     props = {
       hint: <span>Hint</span>,
-      requirementLabel: <span>Optional</span>,
+      requirementLabel: <span>Optional</span>
     };
     wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
@@ -91,13 +91,16 @@ describe('FormLabel', () => {
   it('is inversed', () => {
     const props = {
       hint: 'Foo',
-      inversed: true,
+      inversed: true
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
-    expect(wrapper.find('.ds-c-field__hint').first().hasClass('ds-c-field__hint--inverse')).toBe(
-      true
-    );
+    expect(
+      wrapper
+        .find('.ds-c-field__hint')
+        .first()
+        .hasClass('ds-c-field__hint--inverse')
+    ).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 

@@ -7,7 +7,7 @@ function shallowRender(customProps = {}) {
 
   return {
     props: props,
-    wrapper: shallow(<Spinner {...props} />),
+    wrapper: shallow(<Spinner {...props} />)
   };
 }
 
@@ -41,7 +41,7 @@ describe('Spinner', () => {
     const data = shallowRender({
       inversed: true,
       filled: true,
-      size: 'small',
+      size: 'small'
     });
     const wrapper = data.wrapper;
 

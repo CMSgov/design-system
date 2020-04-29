@@ -9,18 +9,18 @@ const defaultProps = {
   onEditClick: noop,
   heading: 'review heading',
   editHref: 'edit-href',
-  editText: 'edit',
+  editText: 'edit'
 };
 
 function render(props, children = text) {
   props = Object.assign({}, defaultProps, props);
   return {
     props,
-    wrapper: shallow(<Review {...props}>{children}</Review>),
+    wrapper: shallow(<Review {...props}>{children}</Review>)
   };
 }
 
-describe('Review', function () {
+describe('Review', function() {
   it('renders review', () => {
     const { wrapper } = render();
     const body = wrapper.find('.ds-c-review__body');

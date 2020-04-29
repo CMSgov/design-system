@@ -8,7 +8,7 @@ class ControlledDateField extends React.PureComponent {
     this.state = {
       day: '10',
       month: '1',
-      year: '2000',
+      year: '2000'
     };
   }
 

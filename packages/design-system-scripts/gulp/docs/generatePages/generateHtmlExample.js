@@ -14,7 +14,7 @@ function processMarkup(markup, modifier) {
     s: 'We the People of the United States',
     m: 'We the People of the United States, in Order to form a more perfect Union',
     l:
-      'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.',
+      'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.'
   };
 
   return html
@@ -51,7 +51,7 @@ function generateHtmlExample(page, modifier, docsPath, { rootPath }) {
     {
       uri: `${rootPath}example/${id}`,
       head: head,
-      body: body,
+      body: body
     },
     docsPath
   );

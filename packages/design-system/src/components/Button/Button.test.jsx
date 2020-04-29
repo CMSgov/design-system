@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 /* eslint-disable react/prop-types */
-const Link = (props) => {
+const Link = props => {
   return <div {...props}>{props.children}</div>;
 };
 
@@ -29,7 +29,7 @@ describe('Button', () => {
     const props = {
       href: '/example',
       target: '_blank',
-      type: 'submit',
+      type: 'submit'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.is('a')).toBe(true);
@@ -42,7 +42,7 @@ describe('Button', () => {
   it('renders as a Link', () => {
     const props = {
       component: Link,
-      type: 'submit',
+      type: 'submit'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
     expect(wrapper.is('Link')).toBe(true);
@@ -54,7 +54,7 @@ describe('Button', () => {
   it('renders disabled Link correctly', () => {
     const props = {
       href: 'javascript:void(0)',
-      disabled: true,
+      disabled: true
     };
     const wrapper = shallow(<Button {...props}>Link button</Button>);
     expect(wrapper.prop('disabled')).not.toBe(true);
@@ -105,7 +105,7 @@ describe('Button', () => {
     const props = {
       disabled: true,
       inversed: true,
-      variation: 'transparent',
+      variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
@@ -119,7 +119,7 @@ describe('Button', () => {
   it('applies inversed to default/transparent variations', () => {
     const props = {
       inversed: true,
-      variation: 'transparent',
+      variation: 'transparent'
     };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 

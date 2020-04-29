@@ -12,7 +12,7 @@ import { VerticalNav } from '@cmsgov/design-system';
 function expandSelectedItems(items, selectedId) {
   items = [].concat(items); // Don't mutate items
 
-  items.some(function (item) {
+  items.some(function(item) {
     if (item.id === selectedId || isParentOfSelectedChild(item.items, selectedId)) {
       item.defaultCollapsed = false;
       return true;
@@ -24,13 +24,13 @@ function expandSelectedItems(items, selectedId) {
 
 function isParentOfSelectedChild(items, selectedId) {
   if (items && items.length) {
-    return items.some((item) => item.id === selectedId);
+    return items.some(item => item.id === selectedId);
   }
 
   return false;
 }
 
-const Nav = (props) => {
+const Nav = props => {
   return (
     <VerticalNav
       className="c-nav__list"
@@ -42,7 +42,7 @@ const Nav = (props) => {
 
 Nav.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectedId: PropTypes.string.isRequired,
+  selectedId: PropTypes.string.isRequired
 };
 
 export default Nav;

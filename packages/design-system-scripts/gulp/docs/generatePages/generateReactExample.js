@@ -47,7 +47,7 @@ function generateReactExample(page, docsPath, { rootPath }) {
         {
           uri: `${path.join(rootPath, 'example', page.reference)}`,
           head: head,
-          body: body,
+          body: body
         },
         docsPath
       );
