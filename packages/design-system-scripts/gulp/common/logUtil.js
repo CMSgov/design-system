@@ -53,14 +53,14 @@ function notify(title, message, wait) {
     title: title,
     message: message,
     icon: 'assets/img/favicons/favicon-192.png',
-    wait: wait,
+    wait: wait
   });
 }
 
 module.exports = {
   log,
 
-  logIntroduction: async function (sourcePackageDir) {
+  logIntroduction: async function(sourcePackageDir) {
     const packageName = await getPackageName(sourcePackageDir);
     const message =
       packageName === CORE_SOURCE_PACKAGE ? 'CMS.gov Design System' : 'CMS.gov Child Design System';
@@ -68,17 +68,17 @@ module.exports = {
     drawFlag();
   },
 
-  logData: function (name, message) {
+  logData: function(name, message) {
     log(chalk.cyan(name), chalk.yellow(message));
   },
 
-  logError: function (name, message) {
+  logError: function(name, message) {
     log(chalk.red(name), chalk.yellow(message));
     notify(name, message, true);
   },
 
-  logTask: function (name, message) {
+  logTask: function(name, message) {
     log(chalk.magenta(name), chalk.green(message));
     notify(name, message, false);
-  },
+  }
 };

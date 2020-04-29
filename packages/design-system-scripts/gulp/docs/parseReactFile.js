@@ -11,7 +11,7 @@ const { logData, logError } = require('../common/logUtil');
  * for rendering propType documentation and JS markup examples
  * @param {String} rootPath - Root docs site path
  */
-module.exports = function (rootPath) {
+module.exports = function(rootPath) {
   const response = {};
 
   return through.obj((file, encoding, cb) => {
@@ -67,7 +67,7 @@ function parseComponent(file, rootPath) {
     reactDocgenHandlers(rootPath)
   );
 
-  docs.forEach((doc) => {
+  docs.forEach(doc => {
     // Reduce filesize by removing properties we don't need
     delete doc.methods;
   });

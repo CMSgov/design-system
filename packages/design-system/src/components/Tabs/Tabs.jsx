@@ -21,7 +21,7 @@ function getDefaultSelectedId(props) {
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  React.Children.forEach(props.children, function (child) {
+  React.Children.forEach(props.children, function(child) {
     if (isTabPanel(child) && !selectedId) {
       selectedId = child.props.id;
     }
@@ -82,7 +82,7 @@ export class Tabs extends React.PureComponent {
 
   handleTabKeyDown(evt, panelId) {
     const tabs = this.panelChildren();
-    const tabIndex = tabs.findIndex((elem) => elem.props.id === panelId);
+    const tabIndex = tabs.findIndex(elem => elem.props.id === panelId);
     let target;
 
     switch (evt.key) {
@@ -117,7 +117,7 @@ export class Tabs extends React.PureComponent {
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, (child) => {
+    return React.Children.map(this.props.children, child => {
       if (isTabPanel(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
@@ -126,7 +126,7 @@ export class Tabs extends React.PureComponent {
           selected: this.state.selectedId === child.props.id,
           tab: undefined,
           tabHref: undefined,
-          tabId: panelTabId(child),
+          tabId: panelTabId(child)
         });
       }
 
@@ -140,7 +140,7 @@ export class Tabs extends React.PureComponent {
 
     this.tabs = {};
 
-    const tabs = panels.map((panel) => {
+    const tabs = panels.map(panel => {
       return (
         <Tab
           className={panel.props.tabClassName}
@@ -151,7 +151,7 @@ export class Tabs extends React.PureComponent {
           onClick={this.handleTabClick}
           onKeyDown={this.handleTabKeyDown}
           panelId={panel.props.id}
-          ref={(tab) => {
+          ref={tab => {
             this.tabs[panel.props.id] = tab;
           }}
           selected={this.state.selectedId === panel.props.id}
@@ -206,7 +206,7 @@ Tabs.propTypes = {
   /**
    * Additional classes to be added to the component wrapping the tabs
    */
-  tablistClassName: PropTypes.string,
+  tablistClassName: PropTypes.string
 };
 
 export default Tabs;

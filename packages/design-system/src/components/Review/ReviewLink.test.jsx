@@ -6,18 +6,18 @@ const noop = () => {};
 const text = 'link text';
 const defaultProps = {
   onClick: noop,
-  href: 'my-href',
+  href: 'my-href'
 };
 
 function render(props, children = text) {
   props = Object.assign({}, defaultProps, props);
   return {
     props,
-    wrapper: shallow(<ReviewLink {...props}>{children}</ReviewLink>),
+    wrapper: shallow(<ReviewLink {...props}>{children}</ReviewLink>)
   };
 }
 
-describe('ReviewLink', function () {
+describe('ReviewLink', function() {
   it('renders link', () => {
     const { wrapper } = render();
     const link = wrapper.render().find('a');

@@ -9,7 +9,7 @@ const helpfulLinks = {
   'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/NoFearAct.html': 'No Fear Act',
   'http://www.medicare.gov/about-us/plain-writing/plain-writing.html': 'Plain Writing',
   'http://www.usa.gov': 'USA.gov',
-  'https://cms.gov/privacy/': 'Privacy Policy',
+  'https://cms.gov/privacy/': 'Privacy Policy'
 };
 
 const cmsLinks = {
@@ -18,7 +18,7 @@ const cmsLinks = {
   'http://www.mymedicare.gov': 'MyMedicare.gov',
   'http://www.medicaid.gov': 'Medicaid.gov',
   'http://www.healthcare.gov': 'HealthCare.gov',
-  'http://www.HHS.gov/open': 'HHS.gov',
+  'http://www.HHS.gov/open': 'HHS.gov'
 };
 
 /**
@@ -28,7 +28,7 @@ const cmsLinks = {
 function renderLinks(links) {
   const urls = Object.getOwnPropertyNames(links);
 
-  return urls.map(function (url) {
+  return urls.map(function(url) {
     return (
       <dd key={url} className="ds-u-font-size--small ds-u-margin-left--0">
         <a href={url} target="_blank">

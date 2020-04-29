@@ -5,7 +5,10 @@ import { ROOT_URL } from '../../helpers/e2e/constants';
 describe('CMS Design System smoke test', () => {
   it('Sets window size and scroll position', async () => {
     await driver.get(ROOT_URL);
-    await driver.manage().window().setRect(1024, 768, 0, 0);
+    await driver
+      .manage()
+      .window()
+      .setRect(1024, 768, 0, 0);
   });
 
   it('Should click Learn how to get started and open startup/Installation/', async () => {

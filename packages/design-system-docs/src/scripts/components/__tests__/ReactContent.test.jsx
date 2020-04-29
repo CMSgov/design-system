@@ -17,12 +17,12 @@ function render(customProps = {}, docsContent = { description: true, props: true
               locale: {
                 type: { name: 'string' },
                 required: false,
-                description: '<p>A translation string</p>',
-              },
+                description: '<p>A translation string</p>'
+              }
             }
-          : null,
+          : null
       },
-      reactComponentPath: 'components/Button/Button.jsx',
+      reactComponentPath: 'components/Button/Button.jsx'
     },
     customProps
   );
@@ -35,7 +35,7 @@ function render(customProps = {}, docsContent = { description: true, props: true
       <div>
         <ReactContent {...props} />
       </div>
-    ),
+    )
   };
 }
 
@@ -58,7 +58,7 @@ describe('ReactContent', () => {
 
   it('hides example', () => {
     const data = render({
-      hideExample: true,
+      hideExample: true
     });
 
     expect(data.wrapper.find('ReactExample').length).toBe(0);

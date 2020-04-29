@@ -53,7 +53,7 @@ export class Alert extends React.PureComponent {
 }
 Alert.defaultProps = {
   role: 'region',
-  headingLevel: '3',
+  headingLevel: '3'
 };
 Alert.propTypes = {
   /**
@@ -83,7 +83,7 @@ Alert.propTypes = {
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation: PropTypes.oneOf(['error', 'warn', 'success']),
+  variation: PropTypes.oneOf(['error', 'warn', 'success'])
 };
 
 export default Alert;

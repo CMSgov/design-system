@@ -5,7 +5,7 @@ Use the border utility classes to control the border size and color properties.
 
 The border utility class sets the `border-color` and `border-size`, with support for the following sizes: `0`, `1px`, or `2px`.
 
-**Format**: `ds-u-border-[x|y|bottom|left|right|top]--[SIZE]`
+**Format**: `.ds-u-border-[x|y|bottom|left|right|top]--[SIZE]`
 
 @hide-markup
 
@@ -17,7 +17,7 @@ Style guide: utilities.border
 /*
 Border color
 
-**Format**: `ds-u-border--[COLOR NAME]`
+**Format**: `.ds-u-border--[COLOR NAME]`
 
 @hide-markup
 

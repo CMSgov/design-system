@@ -15,7 +15,7 @@ class Docs extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: false,
+      menuOpen: false
     };
   }
 
@@ -38,7 +38,7 @@ class Docs extends React.PureComponent {
       <div
         className={classNames('docs', {
           'docs--menu-open': menuOpen,
-          'docs--locked': menuOpen,
+          'docs--locked': menuOpen
         })}
       >
         <SkipNav href="#main" />
@@ -66,7 +66,7 @@ class Docs extends React.PureComponent {
 
 Docs.propTypes = {
   page: PropTypes.shape(Page.propTypes).isRequired,
-  routes: Nav.propTypes.items,
+  routes: Nav.propTypes.items
 };
 
 export default Docs;

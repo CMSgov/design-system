@@ -77,7 +77,7 @@ export class Dropdown extends React.PureComponent {
       fieldClassName
     );
 
-    const optionElements = options.map((option) => (
+    const optionElements = options.map(option => (
       <option key={option.value} value={option.value}>
         {option.label}
       </option>
@@ -101,7 +101,7 @@ export class Dropdown extends React.PureComponent {
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
-          ref={(ref) => {
+          ref={ref => {
             if (focusTrigger) {
               this.focusRef = ref;
             } else if (inputRef) {
@@ -183,7 +183,7 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node.isRequired,
-      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
     })
   ).isRequired,
   onBlur: PropTypes.func,
@@ -200,7 +200,7 @@ Dropdown.propTypes = {
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Dropdown;

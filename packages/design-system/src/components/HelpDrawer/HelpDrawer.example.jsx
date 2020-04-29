@@ -8,7 +8,7 @@ class HelpDrawerExample extends React.PureComponent {
     super(props);
 
     this.state = {
-      showHelp: false,
+      showHelp: false
     };
   }
 
