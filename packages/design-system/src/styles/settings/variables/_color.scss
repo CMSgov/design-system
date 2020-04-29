@@ -1,28 +1,31 @@
 // Generic
-$color-white: #fff !default; // no token for white?
+$color-white: color('white') !default;
 $color-base: color('ink') !default;
-$color-black: #000 !default;
+$color-black: color('black') !default;
 
-$color-gray-dark: #323a45 !default;
-$color-gray: #5b616b !default;
-$color-gray-medium: #757575 !default;
-$color-gray-light: #aeb0b5 !default;
-$color-gray-lighter: #d6d7d9 !default;
-$color-gray-lightest: #f1f1f1 !default;
+$color-gray-dark: color('base-darker') !default;
+$color-gray: color('base-dark') !default;
+$color-gray-medium: color('base') !default;
+$color-gray-light: color('base-light') !default;
+$color-gray-lighter: color('base-lighter') !default;
+$color-gray-lightest: color('base-lightest') !default;
 
 $color-gray-warm-dark: #494440 !default;
 $color-gray-warm-light: #e4e2e0 !default;
 $color-gray-cool-light: #dce4ef !default;
 
-$color-primary: #0071bc !default;
-$color-primary-darker: #205493 !default;
-$color-primary-darkest: #112e51 !default;
+$color-primary: color('primary') !default;
+$color-primary-darker: color('primary-dark') !default;
+$color-primary-darkest: color('primary-darker') !default;
 
-$color-primary-alt: color('info') !default;
-$color-primary-alt-dark: #00a6d2 !default;
-$color-primary-alt-darkest: #046b99 !default;
-$color-primary-alt-light: #9bdaf1 !default;
-$color-primary-alt-lightest: color('info-lighter') !default;
+$color-primary-alt: color('accent-cool') !default;
+$color-primary-alt-dark: color('accent-cool-darker') !default;
+$color-primary-alt-darkest: color('accent-cool-darker') !default;
+$color-primary-alt-light: color('accent-cool-light') !default;
+$color-primary-alt-lightest: color('accent-cool-lighter') !default;
+
+// I think we should get rid of all these color-red, color-gold and color-green.
+// USWDS has a lot of color tokens that folks to use for specific instances
 
 $color-red: #e31c3d !default;
 $color-red-dark: #cd2026 !default;
@@ -53,46 +56,46 @@ $color-cool-blue-light: #4773aa !default;
 $color-cool-blue-lighter: #8ba6ca !default;
 $color-cool-blue-lightest: #dce4ef !default;
 
-// Status
-$color-error: $color-red !default;
-$color-error-dark: $color-red-dark !default;
-$color-error-darker: $color-red-darker !default;
-$color-error-darkest: $color-red-darkest !default;
-$color-error-light: $color-red-light !default;
-$color-error-lighter: $color-red-lighter !default;
-$color-error-lightest: $color-red-lightest !default;
+// State Colors
+$color-error: color('error') !default;
+$color-error-dark: color('error-dark') !default;
+$color-error-darker: color('error-darker') !default;
+$color-error-light: color('error-light') !default;
+$color-error-lighter: color('error-lighter') !default;
+$color-error-darkest: $color-red-darkest !default; // doesn't exist in USWDS
+$color-error-lightest: $color-red-lightest !default; // doesn't exist in USWDS
 
-$color-warn: $color-gold !default;
-$color-warn-dark: $color-gold-dark !default;
-$color-warn-darker: $color-gold-darker !default;
-$color-warn-darkest: $color-gold-darkest !default;
-$color-warn-light: $color-gold-light !default;
-$color-warn-lighter: $color-gold-lighter !default;
-$color-warn-lightest: $color-gold-lightest !default;
+$color-warn: color('warning') !default;
+$color-warn-dark: color('warning-dark') !default;
+$color-warn-darker: color('warning-darker') !default;
+$color-warn-light: color('warning-light') !default;
+$color-warn-lighter: color('warning-lighter') !default;
+$color-warn-darkest: $color-gold-darkest !default; // doesn't exist in USWDS
+$color-warn-lightest: $color-gold-lightest !default; // doesn't exist in USWDS
 
-$color-success: $color-green !default;
-$color-success-dark: $color-green-dark !default;
-$color-success-darker: $color-green-darker !default;
-$color-success-darkest: $color-green-darkest !default;
-$color-success-light: $color-green-light !default;
-$color-success-lighter: $color-green-lighter !default;
-$color-success-lightest: $color-green-lightest !default;
+$color-success: color('success') !default;
+$color-success-dark: color('success-dark') !default;
+$color-success-darker: color('success-darker') !default;
+$color-success-light: color('success-light') !default;
+$color-success-lighter: color('success-lighter') !default;
+$color-success-darkest: $color-green-darkest !default; // doesn't exist in USWDS
+$color-success-lightest: $color-green-lightest !default; // doesn't exist in USWDS
 
 // Text
 $color-muted: $color-gray !default;
 $color-base-inverse: $color-white !default;
-$color-muted-inverse: #bac5cf !default;
+$color-muted-inverse: color('gray-10') !default;
 
 // Focus
-$focus-color: #ffde11 !default;
-$focus-color-inverse: #ffde11 !default;
-$focus-border-inverse: #8f7c00 !default;
-$focus-shadow: inset 0 0 0 1px $color-base;
-$focus-shadow-inverse: inset 0 0 0 1px $color-base !default;
-$focus-shadow-link: 0 3px $color-base;
-$focus-shadow-link-inverse: 0 3px $focus-border-inverse !default;
+$focus-color: color('yellow-20v') !default;
+$focus-color-inverse: color('yellow-20v') !default;
+$focus-border-inverse: color('yellow-50') !default;
+$focus-shadow: inset 0 0 0 units(1px) $color-base;
+$focus-shadow-inverse: inset 0 0 0 units(1px) $color-base !default;
+$focus-shadow-link: 0 units(0.5) $color-base;
+$focus-shadow-link-inverse: 0 units(0.5) $focus-border-inverse !default;
 
-$color-visited: #4c2c92 !default;
+$color-visited: color('indigo-70') !default;
 
 // Background
 $color-background: $color-white !default;
