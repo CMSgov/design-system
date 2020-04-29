@@ -44,12 +44,12 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
   });
 
   // Docs Sass files
-  gulp.watch(`${src}/styles/**/*.scss`, async () => {
+  gulp.watch(`${src}/**/*.scss`, async () => {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
   // Docs Markdown files, KSS documentation files and HTML/React examples
-  gulp.watch([`${src}/pages/**/*.{md,mdx,scss,html,jsx}`], async () => {
+  gulp.watch([`${src}/**/*.{md,mdx,docs.scss,html,jsx}`], async () => {
     await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });
