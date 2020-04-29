@@ -1,4 +1,4 @@
-$multiple: 8px !default;
+$multiple: units(1) !default;
 
 $spacers: (
   0,
@@ -51,13 +51,13 @@ $grid-form-gutter-width: $spacer-2 !default;
 $z-dialog: 1000 !default;
 
 // Site variables
-$site-margins: 3rem !default;
-$site-margins-mobile: 1.5rem !default;
-$site-max-width: 1040px !default;
-$text-max-width: 53rem !default;
-$lead-max-width: 77rem !default;
-$article-max-width: 600px !default;
-$nav-width: 951px !default;
+$site-margins: units(6) !default;
+$site-margins-mobile: units(3) !default;
+$site-max-width: units('desktop') !default;
+$text-max-width: measure(6) !default;
+$lead-max-width: measure(5) !default;
+$article-max-width: measure(6) !default;
+$nav-width: units('tablet-lg') !default;
 
 // 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
-$hit-area: 4.4rem !default;
+$hit-area: units(9) !default;
