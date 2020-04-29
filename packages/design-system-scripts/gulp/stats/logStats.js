@@ -7,24 +7,51 @@ const getValues = require('./getValues');
  * Log stats table to CLI
  * @param {Object} stats - Current and latest release stats
  */
-function logStats(stats) {
-  const table = new Table({
-    head: ['index.css', 'Current', 'Latest', 'Diff', 'Description'],
-    style: {
-      head: ['cyan']
-    }
-  });
+function logStats(stats, skipLatest = false) {
+  const head = skipLatest
+    ? ['index.css', 'Current', 'Description']
+    : ['index.css', 'Current', 'Latest', 'Diff', 'Description'];
+  const style = {
+    head: ['cyan']
+  };
+  const table = new Table({ head, style });
 
-  const gzipValues = getValues(branch => stats[branch].humanizedGzipSize, true, () =>
+  const gzipValues = getValues(branch => stats[branch].humanizedGzipSize, skipLatest, true, () =>
     bytes(stats.current.gzipSize - stats.latest.gzipSize)
   );
-
-  const sizeValues = getValues(branch => stats[branch].humanizedSize, true, () =>
+  const sizeValues = getValues(branch => stats[branch].humanizedSize, skipLatest, true, () =>
     bytes(stats.current.size - stats.latest.size)
   );
-
-  const fontSizeValues = getValues(branch => bytes(stats[branch].totalFontFileSize), true, () =>
-    bytes(stats.current.totalFontFileSize - stats.latest.totalFontFileSize)
+  const fontSizeValues = getValues(
+    branch => bytes(stats[branch].totalFontFileSize),
+    skipLatest,
+    true,
+    () => bytes(stats.current.totalFontFileSize - stats.latest.totalFontFileSize)
+  );
+  const specificityValues = getValues(
+    branch => stats[branch].selectors.specificity.max,
+    skipLatest
+  );
+  const uniqueFontSizes = getValues(
+    branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length,
+    skipLatest
+  );
+  const uniqueFontFamilies = getValues(
+    branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length,
+    skipLatest
+  );
+  const uniqueColors = getValues(
+    branch => stats[branch].declarations.getUniquePropertyCount('color'),
+    skipLatest
+  );
+  const uniqueBackgroundColors = getValues(
+    branch => stats[branch].declarations.getUniquePropertyCount('background-color'),
+    skipLatest
+  );
+  const uniqueMediaQueries = getValues(branch => stats[branch].mediaQueries.unique, skipLatest);
+  const totalVendorPrefixes = getValues(
+    branch => stats[branch].declarations.getVendorPrefixed().length,
+    skipLatest
   );
 
   table.push(
@@ -44,7 +71,7 @@ weight. See above`
     ),
     row(
       'Max specificity',
-      getValues(branch => stats[branch].selectors.specificity.max),
+      specificityValues,
       `Reducing the specificity of the most
 complex selectors is a good way to
 reducing the overall complexity of
@@ -52,34 +79,30 @@ a stylesheet`
     ),
     row(
       'Uniq. font sizes',
-      getValues(branch => _.uniq(stats[branch].declarations.getAllFontSizes()).length),
+      uniqueFontSizes,
       `An excessive number of font sizes (10+)
 indicates an overly-complex type scale`
     ),
     row(
       'Uniq. font\nfamilies',
-      getValues(branch => _.uniq(stats[branch].declarations.getAllFontFamilies()).length),
+      uniqueFontFamilies,
       `An excessive number of font families
 (3+) indicates an inconsistent and
 potentially slow-loading design`
     ),
     row(
       'Uniq. colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('color')),
+      uniqueColors,
       `An excessive number of colors
 indicates an overly-complex color
 scheme, or inconsistent use of color
 that forces an over-reliance of
 developers on design documents`
     ),
-    row(
-      'Uniq. bg colors',
-      getValues(branch => stats[branch].declarations.getUniquePropertyCount('background-color')),
-      'See above'
-    ),
+    row('Uniq. bg colors', uniqueBackgroundColors, 'See above'),
     row(
       'Uniq. media\nqueries',
-      getValues(branch => stats[branch].mediaQueries.unique),
+      uniqueMediaQueries,
       `Fewer media queries indicates a
 simpler stylesheet. Each unique
 media query adds complexity by
@@ -88,7 +111,7 @@ criteria is met by the device`
     ),
     row(
       'Total vendor\nprefixes',
-      getValues(branch => stats[branch].declarations.getVendorPrefixed().length),
+      totalVendorPrefixes,
       `Vendor prefixes should ideally decline
 over time as browser support improves`
     )

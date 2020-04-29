@@ -2,6 +2,19 @@
 
 > The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the [U.S. Web Design System](https://designsystem.digital.gov/) and extends it to support additional CSS and React components, utility classes, and a grid framework to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
+## Contents
+
+- [Packages](#packages)
+  - [Internal packages](#internal-packages)
+- [Examples](#examples)
+- [Running locally](#running-locally)
+  - [Getting started](#getting-started)
+  - [Scripts](#scripts)
+    - [Theme scripts](#theme-scripts)
+- [Visual regression testing](#visual-regression-testing)
+- [Design assets](#design-assets)
+- [Contact](#contact)
+
 ## Packages
 
 You're currently at the root of a monorepo which contains multiple NPM packages located in [`packages` directory](packages/). View the `README.md` in each of these for additional details.
@@ -10,13 +23,13 @@ You're currently at the root of a monorepo which contains multiple NPM packages 
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [CMS Design System](packages/design-system) | The core CSS and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system) |
 
-**Internal packages**
+### Internal packages
 
 These packages are project dependencies, mostly focused around the design system's developer tooling and documentation.
 
 | Name                                                         | Description                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Documentation site](packages/docs/)                         | This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                                  |
+| [Documentation site](packages/design-system-docs/)           | This directory contains code related to the documentation website. Unless you're a contributor, this directory isn't that interesting to you.                                                                                                                                                                  |
 | [ESLint config](packages/eslint-config-design-system/)       | The ESLint rules we use to lint the design system's JS and React components <br> [![@cmsgov/eslint-config-design-system](https://img.shields.io/npm/v/@cmsgov/eslint-config-design-system.svg?label=@cmsgov%2Feslint-config-design-system)](https://www.npmjs.com/package/@cmsgov/eslint-config-design-system) |
 | [Stylelint config](packages/stylelint-config-design-system/) | The Stylelint rules we use to lint the design system's Sass <br> [![@cmsgov/stylelint-config-design-system](https://img.shields.io/npm/v/@cmsgov/stylelint-config-design-system.svg?label=@cmsgov%2Fstylelint-config-design-system)](https://www.npmjs.com/package/@cmsgov/stylelint-config-design-system)     |
 
@@ -77,7 +90,7 @@ If you have multiple directories inside of `packages/themes`, you can specify wh
 
 If your documentation site will be uploaded to a subdirectory (ie. example.com/design-system), you can set its root path by passing the `--root` option. For example: `yarn build:theme --root design-system`
 
-### Visual regression testing
+## Visual regression testing
 
 We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
 
@@ -89,6 +102,10 @@ We're using [backstopJS](https://github.com/garris/BackstopJS) for visual regres
 - When introducing a visual change, run `backstop approve` to commit new reference files after confirming the change with `backstop test`
 
 **Note:** Use `backstop reference` to update and replace all reference files.
+
+## Design Assets
+
+- [Info on using Sketch](/design-assets/README.md)
 
 ## Contact
 

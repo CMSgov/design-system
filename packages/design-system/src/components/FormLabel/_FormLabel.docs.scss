@@ -35,7 +35,7 @@ Style guide: components.form-label.react
 
 #### Labels
 
-- Apply the `ds-c-label` class to `<label>` elements.
+- Apply the `.ds-c-label` class to `<label>` elements.
 - Each field should have a `<label>`. Never use a field's `placeholder` attribute as the primary way to label the field.
 - Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
 - Labels should be placed above their fields.
@@ -49,7 +49,7 @@ Style guide: components.form-label.react
 #### Hint text
 
 - Place hint text within the field's `<label>` element.
-- Apply the `ds-c-field__hint` class to hint text.
+- Apply the `.ds-c-field__hint` class to hint text.
 - Use hint text for supporting contextual help, which will always be shown.
 - Hint text should sit above a form field and below the label text.
 

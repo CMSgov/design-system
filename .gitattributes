@@ -12,7 +12,7 @@ GOVERNANCE.md export-ignore
 Gulpfile.js export-ignore
 lerna.json export-ignore
 tools export-ignore
-packages/docs export-ignore
+packages/design-system-docs export-ignore
 packages/*/.npmignore export-ignore
 packages/*/yarn.lock export-ignore
 packages/*/src/.eslintrc export-ignore

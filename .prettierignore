@@ -1,4 +1,0 @@
-/docs/**/*
-packages/themes/**/docs/**/*
-**/dist/**/*.js
-CONTRIBUTING.md
