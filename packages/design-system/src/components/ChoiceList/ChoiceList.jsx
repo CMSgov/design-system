@@ -11,7 +11,13 @@ export class ChoiceList extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.multiple) {
         console.warn(
-          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use \`type="checkbox"\` instead. This prop is deprecated and will be removed in a future release.`
+          `[Deprecated]: Please remove the 'multiple' prop in <ChoiceList>, use type="checkbox" instead. This prop is deprecated and will be removed in a future release.`
+        );
+      }
+
+      if (props.type !== 'checkbox' && props.choices.length === 1) {
+        console.warn(
+          `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
         );
       }
     }
@@ -24,7 +30,7 @@ export class ChoiceList extends React.PureComponent {
    * Creates a list of Choice components
    */
   choices() {
-    return this.props.choices.map(choiceProps => {
+    return this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
       choiceProps.name = this.props.name;
       choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
@@ -32,7 +38,7 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.size = this.props.size;
       choiceProps.type = this.type();
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
-      choiceProps.inputRef = ref => {
+      choiceProps.inputRef = (ref) => {
         this.choiceRefs.push(ref);
       };
 
@@ -114,7 +120,7 @@ ChoiceList.propTypes = {
       hint: Choice.propTypes.hint,
       label: Choice.propTypes.children,
       requirementLabel: Choice.propTypes.requirementLabel,
-      value: Choice.propTypes.value
+      value: Choice.propTypes.value,
     })
   ).isRequired,
   /**
@@ -172,7 +178,7 @@ ChoiceList.propTypes = {
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired
+  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
 };
 
 export default ChoiceList;
