@@ -7,7 +7,7 @@ const APP_PORT = 3001;
 function buildApp() {
   process.stdout.write(chalk.green('\nBuilding docs site in production mode...\n'));
   childProcess.execSync('yarn build', {
-    stdio: ['ignore', 'ignore', process.stderr]
+    stdio: ['ignore', 'ignore', process.stderr],
   });
   process.stdout.write(chalk.green('done ✓'));
 }
@@ -16,10 +16,10 @@ async function startServer() {
   process.stdout.write(chalk.green('\nStarting local server hosting production build...'));
   const server = new StaticServer({
     rootPath: './docs',
-    port: APP_PORT
+    port: APP_PORT,
   });
 
-  await new Promise(resolve => {
+  await new Promise((resolve) => {
     server.start(() => resolve());
   });
 
@@ -27,7 +27,7 @@ async function startServer() {
   process.stdout.write(chalk.green('done ✓'));
 }
 
-module.exports = async function() {
+module.exports = async function () {
   if (!process.env.SKIP_BUILD) {
     buildApp();
   } else {

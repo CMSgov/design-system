@@ -8,7 +8,7 @@
     "bump": "lerna publish --skip-git --skip-npm",
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap && npm link ./packages/design-system-scripts",
-    "test": "echo 'placeholder test script'",
+    "test": "NODE_ENV=test yarn cmsds test ./packages",
     "posttest": "echo 'placeholder lint script'",
     "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
     "start:theme": "yarn start --theme",

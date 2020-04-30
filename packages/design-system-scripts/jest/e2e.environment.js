@@ -28,8 +28,8 @@ class WebDriverEnvironment extends NodeEnvironment {
     this.driver = await this.buildDriver();
     this.global.driver = this.driver;
     this.global.by = By;
-    this.global.element = locator => this.driver.findElement(locator);
-    this.global.element.all = locator => this.driver.findElements(locator);
+    this.global.element = (locator) => this.driver.findElement(locator);
+    this.global.element.all = (locator) => this.driver.findElements(locator);
     this.global.key = Key;
     this.global.until = until;
   }

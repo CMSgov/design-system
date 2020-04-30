@@ -6,12 +6,12 @@ const validBrowsers = ['chrome', 'firefox', 'safari', 'ie', 'edge'];
 if (!validBrowsers.includes(browser)) {
   console.error(`Environment variable "BROWSER" has an invalid value of "${browser}".`);
   console.error('Please use one of the following strings for "BROWSER":');
-  console.error(validBrowsers.map(b => `  - "${b}"`).join('\n'));
+  console.error(validBrowsers.map((b) => `  - "${b}"`).join('\n'));
   process.exit(1);
 }
 
-module.exports = {
-  rootDir: '../../',
+module.exports = (rootDir) => ({
+  rootDir,
   testURL: 'http://localhost',
   globalSetup: '<rootDir>/tools/jest/e2e.global-setup.js',
   globalTeardown: '<rootDir>/tools/jest/e2e.global-teardown.js',
@@ -20,6 +20,6 @@ module.exports = {
   testEnvironment: '<rootDir>/tools/jest/e2e.environment.js',
   testEnvironmentOptions: {
     browser,
-    chromeOptions
-  }
-};
+    chromeOptions,
+  },
+});
