@@ -66,13 +66,13 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
 function getFontsSize(fontDir) {
   return fs
     .readdir(fontDir)
-    .then(files => {
+    .then((files) => {
       return Promise.all(
         // Array of .woff2 file sizes
         files
-          .filter(name => name.match(/\.woff2$/))
-          .map(name => {
-            return fs.stat(path.resolve(fontDir, name)).then(stats => stats.size);
+          .filter((name) => name.match(/\.woff2$/))
+          .map((name) => {
+            return fs.stat(path.resolve(fontDir, name)).then((stats) => stats.size);
           })
       );
     })
@@ -129,15 +129,15 @@ function createSpecificityGraph(stats) {
 
   return fs
     .readFile(path.resolve(__dirname, 'chart-template.html'), 'utf8')
-    .then(body => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
-    .then(body => {
+    .then((body) => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
+    .then((body) => {
       if (!fs.existsSync(tmpPath)) {
         fs.mkdir(tmpPath).then(() => body);
       }
 
       return body;
     })
-    .then(body => fs.writeFile(outputPath, body, 'utf8'))
+    .then((body) => fs.writeFile(outputPath, body, 'utf8'))
     .then(() => {
       logTask('📈 ', `Specificity graph created: ${outputPath}`);
     });
@@ -159,17 +159,17 @@ function saveStats(currentStats) {
  * the package being built has a copy of the latest published version of itself
  * in node_modules, whether that be as a `devDependency` or some other mechanism.
  */
-async function printStats(sourcePackageDir, options) {
+async function printStats(sourceDir, options) {
   let message = 'Gathering css & font stats';
   if (!options.skipLatest) {
     message += 'and comparing against the latest release';
   }
   logTask('🔍 ', message);
 
-  const packageName = await getPackageName(sourcePackageDir);
-  const stats = await getStatsObject(sourcePackageDir, packageName, options.skipLatest);
+  const packageName = await getPackageName(sourceDir);
+  const stats = await getStatsObject(sourceDir, packageName, options.skipLatest);
   if (stats) {
-    await getFontsStats(sourcePackageDir, packageName, stats, options.skipLatest);
+    await getFontsStats(sourceDir, packageName, stats, options.skipLatest);
     await logStats(stats, options.skipLatest);
     await createSpecificityGraph(stats);
     await saveStats(stats);

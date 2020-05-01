@@ -5,7 +5,7 @@ const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
 
 async function initCommand(options) {
-  await logIntroduction(options.sourcePackageDir);
+  await logIntroduction(options.sourceDir);
 
   const pkg = await getPackageJson(process.cwd());
   if (pkg) {
@@ -27,109 +27,109 @@ yargs
     command: '*',
     handler: () => {
       yargs.showHelp();
-    }
+    },
   })
   .command({
-    command: 'build <sourcePackageDir>',
+    command: 'build <sourceDir>',
     desc: 'Builds the JavaScript and Sass for your main design-system package',
-    builder: yargs => {
-      describeSourcePackageDir(yargs);
+    builder: (yargs) => {
+      describeSourceDir(yargs);
       describeStatsOptions(yargs);
     },
-    handler: async argv => {
+    handler: async (argv) => {
       const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await printStats(options.sourcePackageDir, { ...options });
-    }
+      await buildSrc(options.sourceDir, { ...options });
+      await printStats(options.sourceDir, { ...options });
+    },
   })
   .command({
-    command: 'build-docs <sourcePackageDir> <docsPackageDir>',
+    command: 'build-docs <sourceDir> <docsDir>',
     desc: 'Builds your main design-system package and its corresponding documentation site',
-    builder: yargs => {
-      describeSourcePackageDir(yargs);
-      describeDocsPackageDir(yargs);
+    builder: (yargs) => {
+      describeSourceDir(yargs);
+      describeDocsDir(yargs);
       describeDocsOptions(yargs);
       describeStatsOptions(yargs);
     },
-    handler: async argv => {
+    handler: async (argv) => {
       const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
-      await printStats(options.sourcePackageDir, { ...options });
-    }
+      await buildSrc(options.sourceDir, { ...options });
+      await buildDocs(options.sourceDir, options.docsDir, { ...options });
+      await printStats(options.sourceDir, { ...options });
+    },
   })
   .command({
-    command: 'start <sourcePackageDir> <docsPackageDir>',
+    command: 'start <sourceDir> <docsDir>',
     desc:
       'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
-    builder: yargs => {
-      describeSourcePackageDir(yargs);
-      describeDocsPackageDir(yargs);
+    builder: (yargs) => {
+      describeSourceDir(yargs);
+      describeDocsDir(yargs);
       describeDocsOptions(yargs);
     },
-    handler: async argv => {
+    handler: async (argv) => {
       const options = await initCommand(argv);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
-      await watchDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
-    }
+      await buildSrc(options.sourceDir, { ...options });
+      await buildDocs(options.sourceDir, options.docsDir, { ...options });
+      await watchDocs(options.sourceDir, options.docsDir, { ...options });
+    },
   })
   .command({
     command: 'lint <directories..>',
     desc: 'Runs prettier, stylelint and eslint on one or more directories.',
-    builder: yargs => {
+    builder: (yargs) => {
       yargs
         .positional('directories..', {
           desc:
             'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
           type: 'string',
-          demandOption: true
+          demandOption: true,
         })
         .option('fix', {
           default: false,
-          description: 'Automatically fix, where possible, violations reported by rules.'
+          description: 'Automatically fix, where possible, violations reported by rules.',
         })
         .option('ignorePatterns', {
           type: 'array',
           description:
-            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.'
+            'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
         });
     },
-    handler: async argv => {
+    handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
       const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
 
       await lintDirectories(argv.directories, argv.fix, ignorePatterns);
-    }
+    },
   })
   .demandCommand()
   .help().argv;
 
-function describeSourcePackageDir(yargs) {
-  yargs.positional('sourcePackageDir', {
+function describeSourceDir(yargs) {
+  yargs.positional('sourceDir', {
     desc: 'The relative path to your main design-system package (that contains a src directory)',
     type: 'string',
-    demandOption: true
+    demandOption: true,
   });
 }
 
-function describeDocsPackageDir(yargs) {
-  yargs.positional('docsPackageDir', {
+function describeDocsDir(yargs) {
+  yargs.positional('docsDir', {
     desc:
       'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
     type: 'string',
-    demandOption: true
+    demandOption: true,
   });
 }
 
@@ -138,16 +138,16 @@ function describeDocsOptions(yargs) {
     .option('rootPath', {
       default: '',
       description:
-        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`'
+        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
     })
     .option('name', {
       default: 'CMS Design System',
-      description: 'Name of the design system. This is used to render documentation content.'
+      description: 'Name of the design system. This is used to render documentation content.',
     })
     .option('githubUrl', {
       default: '',
       description:
-        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.'
+        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.',
     });
 }
 
@@ -155,6 +155,6 @@ function describeStatsOptions(yargs) {
   yargs.option('skipLatest', {
     default: false,
     description:
-      'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.'
+      'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
   });
 }

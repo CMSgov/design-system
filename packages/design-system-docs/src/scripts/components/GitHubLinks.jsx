@@ -7,13 +7,13 @@ import pkg from '../../../package.json';
 
 // TODO: Replace with link to self hosted download
 const zipUrl = githubUrl(`releases/download/${pkg.version}/design-system-v${pkg.version}.zip`);
-const GitHubLinks = props => {
+const GitHubLinks = (props) => {
   const downloadBtnClassName = classNames('ds-u-font-weight--normal', {
-    'ds-u-display--block': props.vertical
+    'ds-u-display--block': props.vertical,
   });
   const githubBtnClassName = classNames('ds-u-font-weight--normal', {
     'ds-u-margin-left--2': !props.vertical,
-    'ds-u-margin-top--2 ds-u-display--block': props.vertical
+    'ds-u-margin-top--2 ds-u-display--block': props.vertical,
   });
   return (
     <div className={props.className}>
@@ -35,7 +35,7 @@ const GitHubLinks = props => {
 GitHubLinks.propTypes = {
   className: PropTypes.string,
   inversed: PropTypes.bool,
-  vertical: PropTypes.bool
+  vertical: PropTypes.bool,
 };
 
 export default GitHubLinks;

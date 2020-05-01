@@ -18,7 +18,7 @@ class Page extends React.PureComponent {
     this.hasTabs = this.props.sections.length && this.props.depth >= 2;
     this.horizontalPadding = {
       default: 3,
-      sm: 6
+      sm: 6,
     };
     this.tabPanelClasses = `ds-u-border--0 ds-u-padding-x--${this.horizontalPadding.default} ds-u-sm-padding-x--${this.horizontalPadding.sm} ds-u-padding-y--0`;
   }
@@ -36,7 +36,7 @@ class Page extends React.PureComponent {
   }
 
   usageSections() {
-    return this.props.sections.filter(s => !isGuidanceSection(s));
+    return this.props.sections.filter((s) => !isGuidanceSection(s));
   }
 
   guidanceSections() {
@@ -45,7 +45,7 @@ class Page extends React.PureComponent {
 
   renderChildPageBlocks(sections) {
     if (sections) {
-      return sections.map(section => <PageBlock key={section.referenceURI} {...section} />);
+      return sections.map((section) => <PageBlock key={section.referenceURI} {...section} />);
     }
   }
 
@@ -101,12 +101,12 @@ class Page extends React.PureComponent {
 
 Page.defaultProps = {
   depth: 0,
-  sections: []
+  sections: [],
 };
 
 Page.propTypes = {
   depth: PropTypes.number,
-  sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes))
+  sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes)),
 };
 
 export default Page;

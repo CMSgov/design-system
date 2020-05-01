@@ -25,7 +25,7 @@ function highlightCode(code, lang) {
 
 // Format code blocks with Prism and ensure HTML is formatted
 // in a way that Prism's CSS will be appplied
-markdownRenderer.code = function(code, lang) {
+markdownRenderer.code = function (code, lang) {
   lang = lang === 'html' ? 'markup' : lang;
   let attrs = '';
 
@@ -38,7 +38,7 @@ markdownRenderer.code = function(code, lang) {
 };
 
 // Apply design system classes to base HTML elements
-markdownRenderer.table = function(header, body) {
+markdownRenderer.table = function (header, body) {
   return (
     '<table class="ds-c-table">\n' +
     '<thead>\n' +

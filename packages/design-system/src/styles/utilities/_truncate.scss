@@ -1,0 +1,9 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+.ds-u-truncate {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
