@@ -10,6 +10,7 @@ function shallowRender(customProps = {}, children = label) {
     {
       name: 'foo',
       value: 'boo',
+      type: 'checkbox',
     },
     customProps
   );
@@ -64,7 +65,7 @@ describe('Choice', () => {
     expect(input.prop('required')).toBe(true);
   });
 
-  it('is a checkbox by default', () => {
+  it('is a checkbox field', () => {
     const wrapper = shallowRender().wrapper;
     const input = wrapper.find('input');
 

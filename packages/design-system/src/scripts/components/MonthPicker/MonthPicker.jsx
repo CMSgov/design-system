@@ -99,6 +99,7 @@ export class MonthPicker extends React.PureComponent {
               inversed={inversed}
               onChange={(e) => this.handleChange(e)}
               name={name}
+              type="checkbox"
               value={i + 1}
             >
               {month}

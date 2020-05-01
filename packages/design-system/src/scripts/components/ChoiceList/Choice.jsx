@@ -190,6 +190,9 @@ Choice.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * Sets the type to render `checkbox` fields or `radio` buttons
+   */
   type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
   /**
    * The `input` `value` attribute
