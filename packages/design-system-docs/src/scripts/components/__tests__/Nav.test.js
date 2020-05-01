@@ -14,10 +14,10 @@ describe('Nav', () => {
               {
                 defaultCollapsed: true,
                 label: 'Child',
-                id: 'child'
-              }
-            ]
-          }
+                id: 'child',
+              },
+            ],
+          },
         ]}
         selectedId="child"
       />
@@ -38,10 +38,10 @@ describe('Nav', () => {
               {
                 defaultCollapsed: true,
                 label: 'Child',
-                id: 'child'
-              }
-            ]
-          }
+                id: 'child',
+              },
+            ],
+          },
         ]}
         selectedId="parent"
       />

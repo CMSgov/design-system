@@ -1,0 +1,8 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+.ds-u-word-break {
+  overflow-wrap: break-word;
+  // IE fallback
+  word-wrap: break-word;
+}
