@@ -96,16 +96,38 @@ yargs
         })
         .option('e2e', {
           default: false,
-          description: '',
+          description: 'Use this flag to run e2e tests instead of unit tests',
+        })
+        .option('updateSnapshot', {
+          alias: 'u',
+          default: false,
+          description:
+            'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
+        })
+        .option('watch', {
+          alias: 'w',
+          default: false,
+          description:
+            'Alias: -w. Watch files for changes and rerun all tests when something changes',
+        })
+        .option('ci', {
+          default: false,
+          description:
+            "Use this flag when running in a CI environment. This changes Jest's behavior to fail a test when a new snapshot is encountered",
         });
     },
     handler: async (argv) => {
-      const { runCLI } = require('jest');
+      const { run } = require('jest');
       const unitConfig = require('./jest/unit.config.js');
       const e2eConfig = require('./jest/e2e.config.js');
       const jestConfig = argv.e2e ? e2eConfig(argv.directory) : unitConfig(argv.directory);
 
-      runCLI(jestConfig, [argv.directory]);
+      run([
+        '--config',
+        JSON.stringify(jestConfig),
+        ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
+        ...(argv.watch ? ['--watch'] : []),
+      ]);
     },
   })
   .command({

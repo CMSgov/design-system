@@ -1,3 +1,5 @@
+const path = require('path');
+
 const headless = process.env.HEADLESS ? JSON.parse(process.env.HEADLESS) : true;
 const browser = headless ? 'chrome' : process.env.BROWSER || 'chrome';
 const chromeOptions = headless && ['--headless', '--window-size=1024,768'];
@@ -13,11 +15,12 @@ if (!validBrowsers.includes(browser)) {
 module.exports = (rootDir) => ({
   rootDir,
   testURL: 'http://localhost',
-  globalSetup: '<rootDir>/tools/jest/e2e.global-setup.js',
-  globalTeardown: '<rootDir>/tools/jest/e2e.global-teardown.js',
-  setupFiles: ['<rootDir>/tools/jest/polyfills.js'],
-  testMatch: ['<rootDir>/packages/design-system/src/**/?*.e2e.test.js'],
-  testEnvironment: '<rootDir>/tools/jest/e2e.environment.js',
+
+  globalSetup: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.global-setup.js`,
+  globalTeardown: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.global-teardown.js`,
+  setupFiles: [`<rootDir>/${path.relative(rootDir, __dirname)}/polyfills.js`],
+  testMatch: ['<rootDir>/*/?*.e2e.test.js'],
+  testEnvironment: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.environment.js`,
   testEnvironmentOptions: {
     browser,
     chromeOptions,
