@@ -33,7 +33,7 @@ function processKssSection(kssSection, rootPath) {
   delete section.parameters;
 
   section = Object.assign({}, section, {
-    sections: []
+    sections: [],
   });
 
   section = processFlags(section);
@@ -72,9 +72,9 @@ function processFlags(section) {
             // Hide code snippet, but show the example
             section.hideMarkup = true;
             break;
-          case 'react-component':
+          case 'react-props':
             // Include the React component's documentation
-            section.reactComponent = value;
+            section.reactProps = value;
             break;
           case 'react-example':
             section.reactExample = value;

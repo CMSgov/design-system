@@ -4,7 +4,7 @@ const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
 
 async function initCommand(options) {
-  await logIntroduction(options.sourcePackageDir);
+  await logIntroduction(options.sourceDir);
 
   const pkg = await getPackageJson(process.cwd());
   if (pkg) {
@@ -29,10 +29,10 @@ yargs
     },
   })
   .command({
-    command: 'build <sourcePackageDir>',
+    command: 'build <sourceDir>',
     desc: 'Builds the JavaScript and Sass for your main design-system package',
     builder: (yargs) => {
-      describeSourcePackageDir(yargs);
+      describeSourceDir(yargs);
       describeStatsOptions(yargs);
     },
     handler: async (argv) => {
@@ -40,16 +40,16 @@ yargs
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await printStats(options.sourcePackageDir, { ...options });
+      await buildSrc(options.sourceDir, { ...options });
+      await printStats(options.sourceDir, { ...options });
     },
   })
   .command({
-    command: 'build-docs <sourcePackageDir> <docsPackageDir>',
+    command: 'build-docs <sourceDir> <docsDir>',
     desc: 'Builds your main design-system package and its corresponding documentation site',
     builder: (yargs) => {
-      describeSourcePackageDir(yargs);
-      describeDocsPackageDir(yargs);
+      describeSourceDir(yargs);
+      describeDocsDir(yargs);
       describeDocsOptions(yargs);
       describeStatsOptions(yargs);
     },
@@ -59,18 +59,18 @@ yargs
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
-      await printStats(options.sourcePackageDir, { ...options });
+      await buildSrc(options.sourceDir, { ...options });
+      await buildDocs(options.sourceDir, options.docsDir, { ...options });
+      await printStats(options.sourceDir, { ...options });
     },
   })
   .command({
-    command: 'start <sourcePackageDir> <docsPackageDir>',
+    command: 'start <sourceDir> <docsDir>',
     desc:
       'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
     builder: (yargs) => {
-      describeSourcePackageDir(yargs);
-      describeDocsPackageDir(yargs);
+      describeSourceDir(yargs);
+      describeDocsDir(yargs);
       describeDocsOptions(yargs);
     },
     handler: async (argv) => {
@@ -79,9 +79,9 @@ yargs
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
 
-      await buildSrc(options.sourcePackageDir, { ...options });
-      await buildDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
-      await watchDocs(options.sourcePackageDir, options.docsPackageDir, { ...options });
+      await buildSrc(options.sourceDir, { ...options });
+      await buildDocs(options.sourceDir, options.docsDir, { ...options });
+      await watchDocs(options.sourceDir, options.docsDir, { ...options });
     },
   })
   .command({
@@ -161,16 +161,16 @@ yargs
   .demandCommand()
   .help().argv;
 
-function describeSourcePackageDir(yargs) {
-  yargs.positional('sourcePackageDir', {
+function describeSourceDir(yargs) {
+  yargs.positional('sourceDir', {
     desc: 'The relative path to your main design-system package (that contains a src directory)',
     type: 'string',
     demandOption: true,
   });
 }
 
-function describeDocsPackageDir(yargs) {
-  yargs.positional('docsPackageDir', {
+function describeDocsDir(yargs) {
+  yargs.positional('docsDir', {
     desc:
       'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
     type: 'string',

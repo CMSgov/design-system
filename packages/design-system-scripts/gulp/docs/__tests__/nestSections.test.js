@@ -10,80 +10,80 @@ describe('nestSections', () => {
         header: 'components',
         reference: 'components',
         source: {
-          line: 1
-        }
+          line: 1,
+        },
       },
       {
         header: 'buttons',
         reference: 'components.buttons',
         source: {
-          line: 1
-        }
+          line: 1,
+        },
       },
       {
         header: 'buttons.success',
         reference: 'components.buttons.success',
         source: {
-          line: 2
-        }
+          line: 2,
+        },
       },
       {
         header: 'buttons.primary',
         reference: 'components.buttons.primary',
         source: {
-          line: 1
-        }
+          line: 1,
+        },
       },
       {
         header: 'buttons.danger',
         reference: 'components.buttons.danger',
         source: {
-          line: 3
-        }
+          line: 3,
+        },
       },
       {
         header: 'guidelines',
-        reference: 'guidelines'
+        reference: 'guidelines',
       },
       {
         header: 'a11y',
         reference: 'guidelines.a11y',
-        weight: 10
+        weight: 10,
       },
       {
         header: 'colors',
         reference: 'guidelines.colors',
-        weight: 5
+        weight: 5,
       },
       {
         header: 'design',
-        reference: 'design'
+        reference: 'design',
       },
       {
         header: 'delta',
         reference: 'design.delta',
-        weight: 0
+        weight: 0,
       },
       {
         header: 'charlie',
         reference: 'design.charlie',
-        weight: 0
+        weight: 0,
       },
       {
         header: 'alpha',
         reference: 'design.alpha',
-        weight: 0
-      }
+        weight: 0,
+      },
     ];
   });
 
   it('adds sections prop', () => {
     const nestedSections = nestSections(sections);
     const guidelines = _.find(nestedSections, {
-      reference: 'guidelines'
+      reference: 'guidelines',
     });
     const section = _.find(guidelines.sections, {
-      reference: 'guidelines.a11y'
+      reference: 'guidelines.a11y',
     });
 
     expect(section.sections.length).toBe(0);
@@ -95,15 +95,15 @@ describe('nestSections', () => {
       reference: 'nested',
       sections: [
         {
-          header: 'nested child'
-        }
+          header: 'nested child',
+        },
       ],
-      weight: 0
+      weight: 0,
     });
 
     const nestedSections = nestSections(sections);
     const section = _.find(nestedSections, {
-      reference: 'nested'
+      reference: 'nested',
     });
 
     expect(section.sections.length).toBe(1);
@@ -113,7 +113,7 @@ describe('nestSections', () => {
   it('nests children within parent section', () => {
     const nestedSections = nestSections(sections);
     const components = _.find(nestedSections, {
-      reference: 'components'
+      reference: 'components',
     });
 
     expect(components.sections[0].reference).toBe('components.buttons');
@@ -124,11 +124,11 @@ describe('nestSections', () => {
   it('sorts subpages by weight and header', () => {
     const nestedSections = nestSections(sections);
     const guidelines = _.find(nestedSections, {
-      reference: 'guidelines'
+      reference: 'guidelines',
     }).sections;
 
     const design = _.find(nestedSections, {
-      reference: 'design'
+      reference: 'design',
     }).sections;
 
     expect(guidelines[0].reference).toBe('guidelines.colors');
@@ -142,10 +142,10 @@ describe('nestSections', () => {
   it('sorts third-level sections by their line number', () => {
     const nestedSections = nestSections(sections);
     const components = _.find(nestedSections, {
-      reference: 'components'
+      reference: 'components',
     });
     const buttonSection = _.find(components.sections, {
-      reference: 'components.buttons'
+      reference: 'components.buttons',
     });
 
     expect(buttonSection.sections.length).toBe(3);
@@ -157,7 +157,7 @@ describe('nestSections', () => {
   it('removes line number prop', () => {
     const nestedSections = nestSections(sections);
     const components = _.find(nestedSections, {
-      reference: 'components'
+      reference: 'components',
     });
 
     expect(components.source.line).toBeUndefined();

@@ -10,19 +10,16 @@ function render(customProps = {}, docsContent = { description: true, props: true
     {
       reactExamplePath: 'components/Button/Button.example.jsx',
       reactExampleSource: '<Foo />',
-      reactComponentDocs: {
-        description: docsContent.description ? '<p>Hello world</p>' : null,
-        props: docsContent.props
-          ? {
-              locale: {
-                type: { name: 'string' },
-                required: false,
-                description: '<p>A translation string</p>'
-              }
-            }
-          : null
-      },
-      reactComponentPath: 'components/Button/Button.jsx'
+      reactComponentProps: docsContent.props
+        ? {
+            locale: {
+              type: { name: 'string' },
+              required: false,
+              description: '<p>A translation string</p>',
+            },
+          }
+        : {},
+      reactComponentPath: 'components/Button/Button.jsx',
     },
     customProps
   );
@@ -35,7 +32,7 @@ function render(customProps = {}, docsContent = { description: true, props: true
       <div>
         <ReactContent {...props} />
       </div>
-    )
+    ),
   };
 }
 
@@ -54,14 +51,6 @@ describe('ReactContent', () => {
     expect(data.wrapper.find('.c-details').length).toBe(0);
     expect(data.wrapper.find('ReactExample').length).toBe(1);
     expect(data.wrapper.find('ReactPropDocs').length).toBe(0);
-  });
-
-  it('hides example', () => {
-    const data = render({
-      hideExample: true
-    });
-
-    expect(data.wrapper.find('ReactExample').length).toBe(0);
   });
 
   it('uses reactExamplePath prop for rendering example', () => {
