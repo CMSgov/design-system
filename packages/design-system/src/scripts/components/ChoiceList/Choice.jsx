@@ -125,10 +125,6 @@ export class Choice extends React.PureComponent {
   }
 }
 
-Choice.defaultProps = {
-  type: 'checkbox',
-};
-
 Choice.propTypes = {
   /**
    * Label text or HTML.
@@ -194,7 +190,7 @@ Choice.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  type: PropTypes.oneOf(['checkbox', 'radio']),
+  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
   /**
    * The `input` `value` attribute
    */
