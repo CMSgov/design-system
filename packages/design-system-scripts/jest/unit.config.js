@@ -3,10 +3,7 @@ const path = require('path');
 module.exports = (rootDir) => ({
   rootDir,
   testURL: 'http://localhost',
-  setupFiles: [
-    `<rootDir>/${path.relative(rootDir, __dirname)}/polyfills.js`,
-    `<rootDir>/${path.relative(rootDir, __dirname)}/setupEnzyme.js`,
-  ],
+  setupFiles: [`<rootDir>/${path.relative(rootDir, __dirname)}/polyfills.js`],
   setupFilesAfterEnv: [`<rootDir>/${path.relative(rootDir, __dirname)}/setupEnzyme.js`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: [
