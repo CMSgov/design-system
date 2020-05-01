@@ -1,10 +1,10 @@
-const processMarkdownPage = require('../processMarkdownPage');
+const processMarkdownPage = require('../generatePages/processMarkdownPage');
 
 describe('processMarkdownPage', () => {
   let filePath;
 
   beforeEach(() => {
-    filePath = '/cms/design/packages/design-system-docs/src/pages/boom-bap.md';
+    filePath = '/design-system/packages/design-system-docs/src/pages/boom-bap.md';
   });
 
   describe('basic page', () => {

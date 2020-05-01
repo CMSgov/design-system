@@ -6,7 +6,7 @@ jest.mock('mz/fs', () => {
 });
 
 const fs = require('mz/fs');
-const processMarkup = require('../processMarkup');
+const processMarkup = require('../generatePages/processMarkup');
 
 function createPage(markup = '') {
   return {

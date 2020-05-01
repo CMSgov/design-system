@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const nestSections = require('../nestSections');
+const nestSections = require('../generatePages/nestSections');
 
 describe('nestSections', () => {
   let sections;

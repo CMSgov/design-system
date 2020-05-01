@@ -1,5 +1,5 @@
 'use strict';
-const processKssSection = require('../processKssSection');
+const processKssSection = require('../generatePages/processKssSection');
 
 describe('processKssSection', () => {
   const section = (reference) => {
@@ -36,7 +36,7 @@ describe('processKssSection', () => {
 
   it('sets and replaces flags', () => {
     return promise.then((data) => {
-      expect(data.reactComponent).toBe('Component');
+      expect(data.reactProps).toBe('Component');
       expect(data.hideMarkup).toBe(true);
       expect(data.responsive).toBe(true);
       expect(data.status).toBe('prototype');
