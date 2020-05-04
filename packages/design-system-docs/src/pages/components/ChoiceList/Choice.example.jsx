@@ -27,31 +27,38 @@ ReactDOM.render(
   <div>
     <fieldset className="ds-c-fieldset">
       <legend className="ds-c-label">Checkboxes</legend>
-      <Choice defaultChecked hint="Checkbox A hint" name="checkbox_choice" value="a">
+      <Choice
+        defaultChecked
+        hint="Checkbox A hint"
+        name="checkbox_choice"
+        type="checkbox"
+        value="a"
+      >
         Checkbox A
       </Choice>
-      <Choice name="checkbox_choice" value="b">
+      <Choice name="checkbox_choice" type="checkbox" value="b">
         Checkbox B
       </Choice>
-      <Choice name="checkbox_choice" value="c">
+      <Choice name="checkbox_choice" type="checkbox" value="c">
         Checkbox C
       </Choice>
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
       <legend className="ds-c-label">Checkboxes with children</legend>
-      <Choice hint="Checkbox A hint" name="checkbox_choice_children" value="a">
+      <Choice hint="Checkbox A hint" name="checkbox_choice_children" type="checkbox" value="a">
         Checkbox A
       </Choice>
       <Choice
         defaultChecked
         name="checkbox_choice_children"
+        type="checkbox"
         value="b"
         checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
       >
         Checkbox B - with children
       </Choice>
-      <Choice name="checkbox_choice_children" value="c">
+      <Choice name="checkbox_choice_children" type="checkbox" value="c">
         Checkbox C
       </Choice>
     </fieldset>
@@ -88,12 +95,13 @@ ReactDOM.render(
 
     <fieldset className="ds-c-fieldset">
       <legend className="ds-c-label">Small checkboxes with children</legend>
-      <Choice name="checkbox_choice_children_small" size="small" value="a">
+      <Choice name="checkbox_choice_children_small" size="small" type="checkbox" value="a">
         Checkbox A
       </Choice>
       <Choice
         defaultChecked
         name="checkbox_choice_children_small"
+        type="checkbox"
         value="b"
         checkedChildren={
           <div className="ds-c-choice__checkedChild ds-c-choice__checkedChild--small">
@@ -104,7 +112,7 @@ ReactDOM.render(
       >
         Checkbox B - with children
       </Choice>
-      <Choice name="checkbox_choice_children_small" size="small" value="c">
+      <Choice name="checkbox_choice_children_small" size="small" type="checkbox" value="c">
         Checkbox C
       </Choice>
     </fieldset>
