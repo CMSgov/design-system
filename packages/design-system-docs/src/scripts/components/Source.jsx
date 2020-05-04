@@ -1,28 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import githubUrl from '../helpers/githubUrl';
-import path from 'path';
+import join from 'url-join';
 
 const cmsdsGithubUrl = 'https://github.com/CMSgov/design-system';
 
 const getBaseUrl = (filePath) => {
   if (filePath.match(/(design-system|design-system-docs)/i)) {
-    return path.join(cmsdsGithubUrl, 'blob/master/packages/');
+    // File source originates from core CMSDS, path is relative to `package` directory
+    // i.e. design-system/src/scripts/components/Button/Button.jsx
+    return join(cmsdsGithubUrl, 'blob/master/packages/');
   } else {
+    // File source from child DS, path relative to the repo root
     return githubUrl(`blob/master/`);
   }
 };
 
 const Source = (props) => {
-  // This path is relative to the package directory
-  // i.e. components/Button/Button.scss
-  const filePath = props.reactComponentPath;
-  const baseUrl = getBaseUrl(filePath);
+  const baseUrl = getBaseUrl(props.reactComponentPath);
 
-  if (filePath && baseUrl) {
-    const href = path.join(baseUrl, filePath);
+  if (baseUrl) {
+    const href = join(baseUrl, props.reactComponentPath);
     return (
-      <a className={props.className} href={href} title={`View source of ${filePath}`}>
+      <a
+        className={props.className}
+        href={href}
+        title={`View source of ${props.reactComponentPath}`}
+      >
         View source file
       </a>
     );
