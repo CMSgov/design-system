@@ -168,10 +168,10 @@ describe('Choice', () => {
     };
     const wrapper = shallow(
       <div>
-        <Choice value="a" {...sharedProps}>
+        <Choice type="checkbox" value="a" {...sharedProps}>
           {label}
         </Choice>
-        <Choice value="b" {...sharedProps}>
+        <Choice type="checkbox" value="b" {...sharedProps}>
           {label}
         </Choice>
       </div>
@@ -313,14 +313,22 @@ describe('Choice', () => {
 
     describe('controlled component', () => {
       it('renders uncheckedChildren when not checked', () => {
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
 
         expectUncheckedChildren(wrapper);
       });
 
       it('renders uncheckedChildren when checked is changed to false', () => {
         props.checked = true;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
         wrapper.setProps({ checked: false });
 
         expectUncheckedChildren(wrapper);
@@ -328,14 +336,22 @@ describe('Choice', () => {
 
       it('renders checkedChildren when checked', () => {
         props.checked = true;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
 
         expectCheckedChildren(wrapper);
       });
 
       it('renders checkedChildren when checked is changed to true', () => {
         props.checked = false;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
         wrapper.setProps({ checked: true });
 
         expectCheckedChildren(wrapper);
@@ -345,14 +361,22 @@ describe('Choice', () => {
     describe('uncontrolled component', () => {
       it('renders uncheckedChildren when not defaultChecked', () => {
         props.defaultChecked = false;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
 
         expectUncheckedChildren(wrapper);
       });
 
       it('renders uncheckedChildren when changed to unchecked', () => {
         props.defaultChecked = true;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
 
         wrapper.setState({ checked: false });
         expectUncheckedChildren(wrapper);
@@ -360,7 +384,11 @@ describe('Choice', () => {
 
       it('renders checkedChildren when defaultChecked', () => {
         props.defaultChecked = true;
-        const wrapper = shallow(<Choice {...props}>Foo</Choice>);
+        const wrapper = shallow(
+          <Choice type="checkbox" {...props}>
+            Foo
+          </Choice>
+        );
 
         expectCheckedChildren(wrapper);
       });

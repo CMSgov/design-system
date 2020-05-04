@@ -15,7 +15,7 @@ export class HelpDrawer extends React.PureComponent {
       }
       if (!props.title && !props.heading) {
         console.warn(
-          `The 'heading' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+          `The 'heading' prop in <Button> is required. The 'title' prop has been renamed to 'heading' and will be removed in a future release.`
         );
       }
     }

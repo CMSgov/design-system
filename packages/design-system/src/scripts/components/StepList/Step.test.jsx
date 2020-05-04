@@ -10,7 +10,7 @@ const defaultStep = {
   started: false,
   isNextStep: false,
   href: '/some/path',
-  title: 'Do something!',
+  heading: 'Do something!',
   description: 'Do something really cool!',
 };
 

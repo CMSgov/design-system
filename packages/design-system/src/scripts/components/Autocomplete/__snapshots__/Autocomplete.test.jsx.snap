@@ -9,11 +9,43 @@ exports[`Autocomplete renders a snapshot 1`] = `
   className="ds-u-clearfix ds-c-autocomplete"
   role={null}
 >
+  <div
+    className="ds-u-clearfix"
+  >
+    <label
+      className="ds-c-label"
+      htmlFor="autocomplete_46"
+      id="autocomplete_label_47"
+    >
+      <span
+        className=""
+      >
+        autocomplete
+      </span>
+    </label>
+    <input
+      aria-activedescendant={null}
+      aria-autocomplete="list"
+      aria-controls={null}
+      aria-expanded={false}
+      aria-labelledby={null}
+      aria-owns={null}
+      autoComplete="off"
+      className="ds-c-field"
+      id="autocomplete_46"
+      name="autocomplete_field"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      role="combobox"
+      type="text"
+      value=""
+    />
+  </div>
   <button
     aria-label="Clear search to try again"
     className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-margin-right--0"
     onClick={[Function]}
-    onKeyPress={undefined}
     type="button"
   >
     Clear search

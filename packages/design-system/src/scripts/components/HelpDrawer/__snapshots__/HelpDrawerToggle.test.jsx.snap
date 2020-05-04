@@ -5,7 +5,6 @@ exports[`HelpDrawerToggle renders a snapshot 1`] = `
   className="ds-u-display--inline-block"
 >
   <a
-    className={undefined}
     href="javascript:void(0);"
     onClick={[Function]}
   >
