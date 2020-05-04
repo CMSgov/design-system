@@ -28,7 +28,7 @@ describe('ReactPropDoc', () => {
   it('should render name', () => {
     const data = shallowRender();
 
-    expect(data.wrapper.find('td').first().text()).toBe(data.props.name);
+    expect(data.wrapper.find('td').first().text()).toMatch(data.props.name);
   });
 
   it('should render "required"', () => {
@@ -40,13 +40,13 @@ describe('ReactPropDoc', () => {
   it('should render type', () => {
     const data = shallowRender();
 
-    expect(data.wrapper.find('td').at(1).text()).toBe(data.props.type.name);
+    expect(data.wrapper.find('td').at(1).text()).toMatch(data.props.type.name);
   });
 
   it('should render default value', () => {
     const data = shallowRender({ defaultValue: { value: 'bar' } });
 
-    expect(data.wrapper.find('td').at(2).text()).toBe(data.props.defaultValue.value);
+    expect(data.wrapper.find('td').at(2).text()).toMatch(data.props.defaultValue.value);
   });
 
   it('should render description', () => {
@@ -73,7 +73,7 @@ describe('ReactPropDoc', () => {
       },
     });
 
-    expect(data.wrapper.find('td').at(1).text()).toBe('arrayOf[{onBlur, onChange}]');
+    expect(data.wrapper.find('td').at(1).text()).toMatch('arrayOf[{onBlur, onChange}]');
   });
 
   it('should render computed shape value', () => {
@@ -88,7 +88,7 @@ describe('ReactPropDoc', () => {
       },
     });
 
-    expect(data.wrapper.find('td').at(1).text()).toBe('arrayOf[Bar.propTypes]');
+    expect(data.wrapper.find('td').at(1).text()).toMatch('arrayOf[Bar.propTypes]');
   });
 
   it('should render valid values of PropType.oneOf', () => {
@@ -99,6 +99,6 @@ describe('ReactPropDoc', () => {
       },
     });
 
-    expect(data.wrapper.find('td').at(1).text()).toBe('string, bool');
+    expect(data.wrapper.find('td').at(1).text()).toMatch('string, bool');
   });
 });

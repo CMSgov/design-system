@@ -12,6 +12,7 @@ ReactDOM.render(
       className="ds-u-margin-top--0"
       label="Radio example"
       name="choices_field"
+      type="radio"
     />
 
     <ChoiceList
@@ -26,8 +27,8 @@ ReactDOM.render(
       ]}
       errorMessage="Example error message"
       label="Checkbox example"
-      multiple
       name="multiple_choices_field"
+      type="checkbox"
     />
 
     <ChoiceList
@@ -40,8 +41,8 @@ ReactDOM.render(
         },
       ]}
       label="Choices with requirementLabel"
-      multiple
       name="some_optional_choices_field"
+      type="checkbox"
       requirementLabel="Optional"
     />
   </div>,
