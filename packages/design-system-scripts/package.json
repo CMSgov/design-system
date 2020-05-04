@@ -72,6 +72,7 @@
     "react-docgen": "4.1.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
+    "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
     "selenium-webdriver": "4.0.0-alpha.5",
     "static-server": "^2.2.1",
