@@ -11,7 +11,7 @@ const gulp = require('gulp');
 const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
-const { getSourceDirs } = require('./common/getPackageDirs');
+const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
@@ -46,7 +46,7 @@ async function copyAll(dir) {
   if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
     logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(sources[1], dir));
+    copyTasks.push(copyAssets(sources[0], dir));
   }
 
   return Promise.all(copyTasks);
@@ -64,16 +64,14 @@ function compileJs(dir) {
     gulp
       .src([
         `${src}/**/*.{js,jsx}`,
-        `!${src}/**/{__mocks__,__tests__}/*.{js,jsx}`,
-        `!${src}/**/*.example.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
-        `!${src}/helpers/e2e/*.{js,jsx}`
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
       ])
       .pipe(babel())
       .pipe(
         count({
           message: `## JS files processed in ${dir}`,
-          logger: message => logTask('📜 ', message)
+          logger: (message) => logTask('📜 ', message),
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist')))
@@ -84,14 +82,15 @@ module.exports = {
   /**
    * Builds just the source package for the purpose of publishing
    */
-  async buildSrc(sourcePackageDir) {
+  async buildSrc(sourceDir) {
     logTask('🏃 ', 'Starting design system build task');
-    await cleanDist(sourcePackageDir);
-    await copyAll(sourcePackageDir);
-    await compileJs(sourcePackageDir);
-    await compileSass(sourcePackageDir);
+    await cleanDist(sourceDir);
+    await copyAll(sourceDir);
+    await compileJs(sourceDir);
+    await compileSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');
   },
-  copyAll
+  copyAll,
+  compileJs,
 };

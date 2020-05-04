@@ -71,15 +71,15 @@ HtmlExample.propTypes = {
   modifier: PropTypes.shape({
     className: PropTypes.string,
     description: PropTypes.string,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
   }),
   reference: PropTypes.string,
   responsive: PropTypes.bool,
-  showTitle: PropTypes.bool
+  showTitle: PropTypes.bool,
 };
 
 HtmlExample.defaultProps = {
-  showTitle: true
+  showTitle: true,
 };
 
 export default HtmlExample;
