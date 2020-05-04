@@ -26,7 +26,7 @@ hide-example: true
 
     it('sets source.path relative to project directory', () => {
       return processMarkdownPage(filePath, markdown).then((output) => {
-        const relativePath = filePath.match(/packages\/[a-zA-Z.\-_/]+/)[0];
+        const relativePath = filePath.match(/\/design-system\/packages\/[a-zA-Z.\-_/]+/)[0];
         expect(output.source.path).toBe(relativePath);
         expect(output.source.path).toMatch(/\.md$/);
       });

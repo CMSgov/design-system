@@ -35,7 +35,7 @@ function setFlags(page, attributes) {
  * @param {String} rootPath - Root docs site path
  * @return {Promise<Object>} Resolves with the page object
  */
-function processMarkdownPage(dir, filePath, body, rootPath = '') {
+function processMarkdownPage(filePath, body, rootPath = '') {
   const parts = fm(body); // parse page properties from top of file
   const description = parts.attributes.usage || parts.body;
 
