@@ -7,8 +7,4 @@ module.exports = (rootDir) => ({
   setupFilesAfterEnv: [`<rootDir>/${path.relative(rootDir, 'setupTests.js')}`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
-  moduleNameMapper: {
-    //  '^@cmsgov/design-system/(.*)$': '<rootDir>/packages/design-system/src/$1',
-    //  '^@cmsgov/design-system$': '<rootDir>/packages/design-system/src/index.js'
-  },
 });

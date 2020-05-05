@@ -1,5 +1,4 @@
-/* global driver */
-import AxeBuilder from 'axe-webdriverjs';
+/* global driver, axeBuilder */
 import { RULESET_ALL } from '../../helpers/e2e/constants';
 
 export default async function assertNoAxeViolations(url, disabledRules = []) {
@@ -8,7 +7,7 @@ export default async function assertNoAxeViolations(url, disabledRules = []) {
   }
   const defaultDisabledRules = ['bypass'];
 
-  await AxeBuilder(driver)
+  await axeBuilder(driver)
     .withTags(RULESET_ALL)
     .disableRules(defaultDisabledRules.concat(disabledRules))
     .analyze((err, results) => {

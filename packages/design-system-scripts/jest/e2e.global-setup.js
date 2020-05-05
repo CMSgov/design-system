@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 const StaticServer = require('static-server');
 const chalk = require('chalk');
 const childProcess = require('child_process');
@@ -15,7 +16,7 @@ function buildApp() {
 async function startServer() {
   process.stdout.write(chalk.green('\nStarting local server hosting production build...'));
   const server = new StaticServer({
-    rootPath: './docs',
+    rootPath: process.env.BUILD_PATH,
     port: APP_PORT,
   });
 

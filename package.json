@@ -9,6 +9,7 @@
     "precommit": "lint-staged",
     "postinstall": "lerna bootstrap && npm link ./packages/design-system-scripts",
     "test": "NODE_ENV=test yarn cmsds test ./packages",
+    "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
     "posttest": "echo 'placeholder lint script'",
     "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
     "start:theme": "yarn start --theme",

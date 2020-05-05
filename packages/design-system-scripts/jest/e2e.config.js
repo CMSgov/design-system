@@ -15,11 +15,10 @@ if (!validBrowsers.includes(browser)) {
 module.exports = (rootDir) => ({
   rootDir,
   testURL: 'http://localhost',
-
+  setupFiles: [require.resolve('react-app-polyfill/stable')],
+  testMatch: ['<rootDir>/**/*.e2e.test.[jt]s?(x)'],
   globalSetup: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.global-setup.js`,
   globalTeardown: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.global-teardown.js`,
-  setupFiles: [`<rootDir>/${path.relative(rootDir, __dirname)}/polyfills.js`],
-  testMatch: ['<rootDir>/*/?*.e2e.test.js'],
   testEnvironment: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.environment.js`,
   testEnvironmentOptions: {
     browser,

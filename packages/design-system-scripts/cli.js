@@ -88,16 +88,8 @@ yargs
     command: 'test <directory>',
     desc: 'Runs tests in one or more directory.',
     builder: (yargs) => {
+      describeTestOptions(yargs);
       yargs
-        .positional('directory', {
-          desc: 'The relative path to the directory where test files are located.',
-          type: 'string',
-          demandOption: true,
-        })
-        .option('e2e', {
-          default: false,
-          description: 'Use this flag to run e2e tests instead of unit tests',
-        })
         .option('updateSnapshot', {
           alias: 'u',
           default: false,
@@ -109,25 +101,45 @@ yargs
           default: false,
           description:
             'Alias: -w. Watch files for changes and rerun all tests when something changes',
-        })
-        .option('ci', {
-          default: false,
-          description:
-            "Use this flag when running in a CI environment. This changes Jest's behavior to fail a test when a new snapshot is encountered",
         });
     },
     handler: async (argv) => {
       const { run } = require('jest');
       const unitConfig = require('./jest/unit.config.js');
-      const e2eConfig = require('./jest/e2e.config.js');
-      const jestConfig = argv.e2e ? e2eConfig(argv.directory) : unitConfig(argv.directory);
 
       run([
         '--config',
-        JSON.stringify(jestConfig),
+        JSON.stringify(unitConfig(argv.directory)),
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
+        ...(argv.ci ? ['--ci'] : []),
       ]);
+    },
+  })
+  .command({
+    command: 'test:e2e <directory>',
+    desc: 'Runs tests in one or more directory.',
+    builder: (yargs) => {
+      describeTestOptions(yargs);
+      yargs
+        .option('buildPath', {
+          desc: 'The path to the directory containing documentation site build files.',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('skipBuild', {
+          desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
+          default: false,
+        });
+    },
+    handler: async (argv) => {
+      const { run } = require('jest');
+      const e2eConfig = require('./jest/e2e.config.js');
+
+      process.env.BUILD_PATH = argv.buildPath;
+      process.env.SKIP_BUILD = argv.skipBuild;
+
+      run(['--config', JSON.stringify(e2eConfig(argv.directory)), ...(argv.ci ? ['--ci'] : [])]);
     },
   })
   .command({
@@ -202,4 +214,18 @@ function describeStatsOptions(yargs) {
     description:
       'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
   });
+}
+
+function describeTestOptions(yargs) {
+  yargs
+    .positional('directory', {
+      desc: 'The relative path to the directory where test files are located.',
+      type: 'string',
+      demandOption: true,
+    })
+    .option('ci', {
+      default: false,
+      description:
+        "Use this flag when running in a CI environment. This changes Jest's behavior to fail a test when a new snapshot is encountered",
+    });
 }
