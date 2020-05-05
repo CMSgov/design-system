@@ -104,7 +104,6 @@ describe('DateField', () => {
       const wrapper = mount(
         <DateField onComponentBlur={onComponentBlur} dateFormatter={dateFormatter} />
       );
-
       const yearField = wrapper.find('.ds-c-field--year');
       yearField.simulate('blur');
 
@@ -137,7 +136,7 @@ describe('DateField', () => {
         expect(onComponentBlur).not.toHaveBeenCalled();
         expect(dateFormatter).not.toHaveBeenCalled();
         done();
-      }, 30);
+      }, 100);
     });
 
     it('formats the date as a single string', () => {

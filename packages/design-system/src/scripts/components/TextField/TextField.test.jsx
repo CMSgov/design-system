@@ -206,7 +206,9 @@ describe('TextField', function () {
       true
     );
 
-    expect(data.wrapper.find('input').props().id).toEqual(document.activeElement.id);
+    setTimeout(() => {
+      expect(data.wrapper.find('input').props().id).toEqual(document.activeElement.id);
+    }, 20);
   });
 
   describe('has error', () => {

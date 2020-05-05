@@ -131,7 +131,9 @@ describe('Dropdown', () => {
       true
     );
 
-    expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
+    setTimeout(() => {
+      expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
+    }, 20);
   });
 
   describe('event handlers', () => {

@@ -1,26 +1,11 @@
+import { defaultStep, generateStep } from '../../helpers/StepList';
 import React from 'react';
 import Step from './Step';
 import { shallow } from 'enzyme';
 
-const noop = () => {};
-
-const defaultStep = {
-  id: '123',
-  complete: false,
-  started: false,
-  isNextStep: false,
-  href: '/some/path',
-  heading: 'Do something!',
-  description: 'Do something really cool!',
-};
-
-const generateStep = (id) => ({
-  ...defaultStep,
-  id,
-});
-
+const onStepLinkClick = jest.fn();
 const defaultStepProps = {
-  onStepLinkClick: noop,
+  onStepLinkClick,
   showSubSubSteps: false,
   completedText: 'Completed!',
   editText: 'Edit!',
@@ -31,14 +16,18 @@ const defaultStepProps = {
   substepsLabelText: '!Secondary actions for %{step}',
 };
 
-function renderStep(step, props) {
-  step = Object.assign({}, defaultStep, step);
-  props = Object.assign({}, defaultStepProps, props);
+function renderStep(step = {}, props = {}) {
+  step = generateStep(step);
+  props = { ...defaultStepProps, ...props };
   const wrapper = shallow(<Step step={step} {...props} />);
   return { step, props, wrapper };
 }
 
 describe('Step', () => {
+  beforeEach(() => {
+    onStepLinkClick.mockClear();
+  });
+
   it('applies correct css classes based on step progress', () => {
     let li;
 
@@ -68,11 +57,11 @@ describe('Step', () => {
 
     const title = wrapper.find('.ds-c-step__heading');
     expect(title.length).toEqual(1);
-    expect(title.text()).toEqual('Do something!');
+    expect(title.text()).toEqual(defaultStep.heading);
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
-    expect(description.text()).toEqual('Do something really cool!');
+    expect(description.text()).toEqual(defaultStep.description);
 
     expect(wrapper.find('.ds-c-step__completed-text').length).toEqual(0);
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
@@ -80,16 +69,15 @@ describe('Step', () => {
   });
 
   it('renders completed text and an edit link for completed steps', () => {
-    const spy = jest.fn();
-    const { wrapper, step } = renderStep({ completed: true }, { onStepLinkClick: spy });
+    const { wrapper, props } = renderStep({ completed: true });
 
     const title = wrapper.find('.ds-c-step__heading');
     expect(title.length).toEqual(1);
-    expect(title.text()).toEqual('Do something!');
+    expect(title.text()).toEqual(defaultStep.heading);
 
     const description = wrapper.find('.ds-c-step__description');
     expect(description.length).toEqual(1);
-    expect(description.text()).toEqual('Do something really cool!');
+    expect(description.text()).toEqual(defaultStep.description);
 
     const completed = wrapper.find('.ds-c-step__completed-text');
     expect(completed.length).toEqual(1);
@@ -99,12 +87,12 @@ describe('Step', () => {
     expect(editLink.length).toEqual(1);
     expect(editLink.props()).toMatchObject({
       children: 'Edit!',
-      stepId: step.id,
-      href: step.href,
-      screenReaderText: `"${step.title}"`,
+      stepId: defaultStep.id,
+      href: defaultStep.href,
+      screenReaderText: defaultStep.heading,
     });
     editLink.props().onClick();
-    expect(spy).toHaveBeenCalled();
+    expect(props.onStepLinkClick).toHaveBeenCalled();
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(0);
   });
@@ -112,7 +100,7 @@ describe('Step', () => {
   it('renders completed text and an no edit link for completed steps with substeps', () => {
     const { wrapper } = renderStep({
       completed: true,
-      steps: [generateStep('1')],
+      steps: [generateStep({ id: '1' })],
     });
 
     const completed = wrapper.find('.ds-c-step__completed-text');
@@ -126,25 +114,23 @@ describe('Step', () => {
   });
 
   it('renders resume button for started, incomplete steps', () => {
-    const spy = jest.fn();
-    const { wrapper } = renderStep({ started: true }, { onStepLinkClick: spy });
+    const { wrapper, props } = renderStep({ started: true });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Resume!');
     editLink.props().onClick();
-    expect(spy).toHaveBeenCalled();
+    expect(props.onStepLinkClick).toHaveBeenCalled();
   });
 
   it('renders start button for steps with isNextStep', () => {
-    const spy = jest.fn();
-    const { wrapper } = renderStep({ isNextStep: true }, { onStepLinkClick: spy });
+    const { wrapper, props } = renderStep({ isNextStep: true });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Start!');
     editLink.props().onClick();
-    expect(spy).toHaveBeenCalled();
+    expect(props.onStepLinkClick).toHaveBeenCalled();
   });
 
   it('renders alternative linkText', () => {
@@ -161,20 +147,19 @@ describe('Step', () => {
   });
 
   it('uses step.onClick handler when provided', () => {
-    const onStepLinkClick = jest.fn();
     const onClick = jest.fn();
-    const { wrapper } = renderStep({ onClick, isNextStep: true }, { onStepLinkClick });
+    const { wrapper, props } = renderStep({ onClick, isNextStep: true }, { onClick });
 
     const editLink = wrapper.find('.ds-c-step__actions').find('StepLink');
     expect(editLink.length).toEqual(1);
     expect(editLink.props().children).toEqual('Start!');
     editLink.props().onClick();
-    expect(onClick).toHaveBeenCalled();
-    expect(onStepLinkClick).not.toHaveBeenCalled();
+    expect(props.onClick).toHaveBeenCalled();
+    expect(props.onStepLinkClick).not.toHaveBeenCalled();
   });
 
   it('renders substeps', () => {
-    const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
+    const steps = [generateStep({ id: '1' }), generateStep({ id: '2' }), generateStep({ id: 'c' })];
     const { wrapper, props } = renderStep({ steps });
 
     expect(wrapper.find('.ds-c-step__substeps').length).toEqual(1);
@@ -192,7 +177,7 @@ describe('Step', () => {
 
   it('renders aria-labels for heading, description, and substeps', () => {
     const { wrapper } = renderStep({
-      steps: [generateStep('1')],
+      steps: [generateStep({ id: '1' })],
     });
 
     const description = wrapper.find('.ds-c-step__description');

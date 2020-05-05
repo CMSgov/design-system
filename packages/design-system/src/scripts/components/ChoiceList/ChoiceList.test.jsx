@@ -156,6 +156,19 @@ describe('ChoiceList', () => {
         expect(onComponentBlur).toHaveBeenCalled();
       }, 20);
     });
+
+    it('doesnt call onComponentBlur', () => {
+      const onBlur = jest.fn();
+      const onComponentBlur = jest.fn();
+      const data = shallowRender({ onBlur, onComponentBlur });
+      data.wrapper.find('Choice').first().simulate('blur');
+
+      expect(onBlur).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(onBlur).toHaveBeenCalled();
+        expect(onComponentBlur).not.toHaveBeenCalled();
+      }, 20);
+    });
   });
 
   it('applies additional classNames to FormLabel', () => {

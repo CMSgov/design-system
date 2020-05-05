@@ -14,7 +14,7 @@ export const Step = ({ step, ...props }) => {
     }
     if (!step.title && !step.heading) {
       console.warn(
-        `The 'heading' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        `Please provide a 'heading' prop in the <StepList> step object, it is a required prop.`
       );
     }
   }
@@ -77,7 +77,7 @@ export const Step = ({ step, ...props }) => {
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={`"${step.heading || step.title}"`}
+            screenReaderText={step.heading || step.title}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >
