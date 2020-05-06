@@ -114,6 +114,7 @@ export class DateField extends React.PureComponent {
             name={this.props.monthName}
             value={this.props.monthValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-month'}
           />
           <span className="ds-c-datefield__separator">/</span>
           <TextField
@@ -130,6 +131,7 @@ export class DateField extends React.PureComponent {
             name={this.props.dayName}
             value={this.props.dayValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-day'}
           />
           <span className="ds-c-datefield__separator">/</span>
           <TextField
@@ -146,6 +148,7 @@ export class DateField extends React.PureComponent {
             name={this.props.yearName}
             value={this.props.yearValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-year'}
           />
         </div>
       </fieldset>
@@ -166,6 +169,10 @@ DateField.defaultProps = {
 };
 
 DateField.propTypes = {
+  /**
+   * Controls autocomplete attributes `bday-day`, `bday-month` and `bday-year` 
+   */
+  autoComplete: PropTypes.bool,
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
