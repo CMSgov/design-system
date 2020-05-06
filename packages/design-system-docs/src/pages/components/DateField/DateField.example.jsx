@@ -44,6 +44,20 @@ ReactDOM.render(
       yearInvalid
     />
     <ControlledDateField />
+    <fieldset className="ds-u-margin-top--3 ds-u-padding-left--3 ds-u-padding-bottom--3 ds-u-border--2">
+      <legend className="ds-u-font-size--h3">Autocomplete Example</legend>
+      <DateField
+        label={
+          <span>
+            DateField using <code>autoComplete</code> for a date of birth
+          </span>
+        }
+        autoComplete
+        monthName="dob-month"
+        dayName="dob-day"
+        yearName="dob-year"
+      />
+    </fieldset>
   </Fragment>,
   document.getElementById('js-example')
 );
