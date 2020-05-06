@@ -2,19 +2,20 @@ import 'regenerator-runtime/runtime';
 const StaticServer = require('static-server');
 const chalk = require('chalk');
 const childProcess = require('child_process');
+const log = require('fancy-log');
 
 const APP_PORT = 3001;
 
 function buildApp() {
-  process.stdout.write(chalk.green('\nBuilding docs site in production mode...\n'));
+  log(chalk.green('\nBuilding docs site in production mode...\n'));
   childProcess.execSync('yarn build', {
     stdio: ['ignore', 'ignore', process.stderr],
   });
-  process.stdout.write(chalk.green('done ✓'));
+  log(chalk.green('done ✓'));
 }
 
 async function startServer() {
-  process.stdout.write(chalk.green('\nStarting local server hosting production build...'));
+  log(chalk.green('\nStarting local server hosting production build...'));
   const server = new StaticServer({
     rootPath: process.env.BUILD_PATH,
     port: APP_PORT,
@@ -25,16 +26,16 @@ async function startServer() {
   });
 
   global.__SERVER__ = server;
-  process.stdout.write(chalk.green('done ✓'));
+  log(chalk.green('done ✓'));
 }
 
 module.exports = async function () {
-  if (!process.env.SKIP_BUILD) {
-    buildApp();
+  if (process.env.SKIP_BUILD === 'true') {
+    log('\n');
+    log(chalk.yellow('Skipping build and using existing build instead ⚠️'));
   } else {
-    process.stdout.write('\n');
-    process.stdout.write(chalk.yellow('Skipping build and using existing build instead ⚠️'));
+    buildApp();
   }
   await startServer();
-  process.stdout.write('\n\n');
+  log('\n\n');
 };

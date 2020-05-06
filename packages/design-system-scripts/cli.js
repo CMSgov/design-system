@@ -93,14 +93,13 @@ yargs
         .option('updateSnapshot', {
           alias: 'u',
           default: false,
-          description:
+          desc:
             'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
         })
         .option('watch', {
           alias: 'w',
           default: false,
-          description:
-            'Alias: -w. Watch files for changes and rerun all tests when something changes',
+          desc: 'Alias: -w. Watch files for changes and rerun all tests when something changes',
         });
     },
     handler: async (argv) => {
@@ -129,7 +128,13 @@ yargs
         })
         .option('skipBuild', {
           desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
+          type: 'boolean',
           default: false,
+        })
+        .option('headless', {
+          desc: 'Runs e2e tests with headless chrome browser testing.',
+          type: 'boolean',
+          default: true,
         });
     },
     handler: async (argv) => {
@@ -138,6 +143,7 @@ yargs
 
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
+      process.env.HEADLESS = argv.headless;
 
       run(['--config', JSON.stringify(e2eConfig(argv.directory)), ...(argv.ci ? ['--ci'] : [])]);
     },
@@ -154,20 +160,21 @@ yargs
           demandOption: true,
         })
         .option('fix', {
+          desc: 'Automatically fix, where possible, violations reported by rules.',
+          type: 'boolean',
           default: false,
-          description: 'Automatically fix, where possible, violations reported by rules.',
         })
         .option('ignorePatterns', {
-          type: 'array',
-          description:
+          desc:
             'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
+          type: 'array',
+          default: ['**/node_modules/**', '**/dist/**'],
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
-      const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
 
-      await lintDirectories(argv.directories, argv.fix, ignorePatterns);
+      await lintDirectories(argv.directories, argv.fix, argv.ignorePatterns);
     },
   })
   .demandCommand()
@@ -192,27 +199,30 @@ function describeDocsDir(yargs) {
 
 function describeDocsOptions(yargs) {
   yargs
-    .option('rootPath', {
-      default: '',
-      description:
-        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
-    })
     .option('name', {
+      desc: 'Name of the design system. This is used to render documentation content.',
+      type: 'string',
       default: 'CMS Design System',
-      description: 'Name of the design system. This is used to render documentation content.',
     })
     .option('githubUrl', {
-      default: '',
-      description:
+      type: 'string',
+      desc:
         'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.',
+    })
+    .option('rootPath', {
+      desc:
+        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
+      type: 'string',
+      default: '',
     });
 }
 
 function describeStatsOptions(yargs) {
   yargs.option('skipLatest', {
-    default: false,
-    description:
+    desc:
       'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+    type: 'boolean',
+    default: false,
   });
 }
 
@@ -224,8 +234,9 @@ function describeTestOptions(yargs) {
       demandOption: true,
     })
     .option('ci', {
-      default: false,
-      description:
+      desc:
         "Use this flag when running in a CI environment. This changes Jest's behavior to fail a test when a new snapshot is encountered",
+      type: 'boolean',
+      default: false,
     });
 }

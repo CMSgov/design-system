@@ -7,4 +7,5 @@ module.exports = (rootDir) => ({
   setupFilesAfterEnv: [`<rootDir>/${path.relative(rootDir, 'setupTests.js')}`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
+  transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
 });

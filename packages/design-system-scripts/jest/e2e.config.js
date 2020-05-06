@@ -1,17 +1,5 @@
 const path = require('path');
 
-const headless = process.env.HEADLESS ? JSON.parse(process.env.HEADLESS) : true;
-const browser = headless ? 'chrome' : process.env.BROWSER || 'chrome';
-const chromeOptions = headless && ['--headless', '--window-size=1024,768'];
-
-const validBrowsers = ['chrome', 'firefox', 'safari', 'ie', 'edge'];
-if (!validBrowsers.includes(browser)) {
-  console.error(`Environment variable "BROWSER" has an invalid value of "${browser}".`);
-  console.error('Please use one of the following strings for "BROWSER":');
-  console.error(validBrowsers.map((b) => `  - "${b}"`).join('\n'));
-  process.exit(1);
-}
-
 module.exports = (rootDir) => ({
   rootDir,
   testURL: 'http://localhost',
@@ -21,7 +9,7 @@ module.exports = (rootDir) => ({
   globalTeardown: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.global-teardown.js`,
   testEnvironment: `<rootDir>/${path.relative(rootDir, __dirname)}/e2e.environment.js`,
   testEnvironmentOptions: {
-    browser,
-    chromeOptions,
+    browser: 'chrome',
+    chromeOptions: process.env.HEADLESS === 'true' && ['--headless', '--window-size=1024,768'],
   },
 });
