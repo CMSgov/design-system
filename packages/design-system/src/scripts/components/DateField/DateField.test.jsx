@@ -83,8 +83,8 @@ describe('DateField', () => {
 
       wrapper.find('TextField').at(0).simulate('blur');
 
-      expect(props.onBlur.mock.calls.length).toBe(1);
-      expect(props.onChange.mock.calls.length).toBe(0);
+      expect(props.onBlur).toHaveBeenCalledTimes(1);
+      expect(props.onChange).not.toHaveBeenCalledTimes(1);
     });
 
     it('calls onChange when day is changed', () => {
@@ -92,51 +92,32 @@ describe('DateField', () => {
 
       wrapper.find('TextField').at(1).simulate('change');
 
-      expect(props.onBlur.mock.calls.length).toBe(0);
-      expect(props.onChange.mock.calls.length).toBe(1);
-      // No date formatter
-      expect(props.onChange.mock.calls[0][1]).toBeUndefined();
+      expect(props.onBlur).not.toHaveBeenCalledTimes(1);
+      expect(props.onChange).toHaveBeenCalledTimes(1);
     });
 
     it('calls onComponentBlur when component loses focus', (done) => {
       const onComponentBlur = jest.fn();
-      const dateFormatter = jest.fn();
-      const wrapper = mount(
-        <DateField onComponentBlur={onComponentBlur} dateFormatter={dateFormatter} />
-      );
-      const yearField = wrapper.find('.ds-c-field--year');
-      yearField.simulate('blur');
+      const wrapper = shallow(<DateField onComponentBlur={onComponentBlur} />);
+
+      wrapper.find('TextField').at(2).simulate('blur');
 
       setTimeout(() => {
-        expect(onComponentBlur).toHaveBeenCalled();
-        expect(dateFormatter).toHaveBeenCalled();
+        expect(onComponentBlur).toHaveBeenCalledTimes(1);
         done();
       }, 30);
     });
 
     it('does not call onComponentBlur when focus switches to other date component', (done) => {
       const onComponentBlur = jest.fn();
-      const dateFormatter = jest.fn();
-      let yearField;
-      const wrapper = mount(
-        <DateField
-          onComponentBlur={onComponentBlur}
-          dateFormatter={dateFormatter}
-          yearFieldRef={(ref) => {
-            yearField = ref;
-          }}
-        />
-      );
+      const wrapper = mount(<DateField onComponentBlur={onComponentBlur} />);
 
-      const monthField = wrapper.find('.ds-c-field--month');
-      monthField.simulate('blur');
-      yearField.focus();
+      wrapper.find('TextField').at(0).simulate('blur');
 
       setTimeout(() => {
-        expect(onComponentBlur).not.toHaveBeenCalled();
-        expect(dateFormatter).not.toHaveBeenCalled();
+        expect(onComponentBlur).not.toHaveBeenCalledTimes(1);
         done();
-      }, 100);
+      }, 30);
     });
 
     it('formats the date as a single string', () => {
@@ -153,13 +134,11 @@ describe('DateField', () => {
       );
 
       const wrapper = mount(<DateField {...props} />);
-
       wrapper.find('input').at(1).simulate('change');
-
       wrapper.find('input').at(1).simulate('blur');
 
-      expect(props.onBlur.mock.calls.length).toBe(1);
-      expect(props.onChange.mock.calls.length).toBe(1);
+      expect(props.onBlur).toHaveBeenCalledTimes(1);
+      expect(props.onChange).toHaveBeenCalledTimes(1);
       expect(props.onBlur.mock.calls[0][1]).toBe('1 22 3333');
       expect(props.onChange.mock.calls[0][1]).toBe('1 22 3333');
     });
