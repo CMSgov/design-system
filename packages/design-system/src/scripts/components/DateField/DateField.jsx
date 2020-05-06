@@ -170,7 +170,7 @@ DateField.defaultProps = {
 
 DateField.propTypes = {
   /**
-   * Controls autocomplete attributes `bday-day`, `bday-month` and `bday-year` 
+   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
    */
   autoComplete: PropTypes.bool,
   /**
