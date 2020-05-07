@@ -3,6 +3,9 @@
   "command": {
     "publish": {
       "allowBranch": "master"
+    },
+    "version": {
+      "allowBranch": "master"
     }
   },
   "npmClient": "yarn",

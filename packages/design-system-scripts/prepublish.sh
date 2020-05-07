@@ -6,23 +6,23 @@ GREEN='\033[0;32m'
 NC='\033[0m' # No color
 
 echo "${GREEN}Pulling latest from GitHub...${NC}"
+git stash
+git fetch origin
 git checkout master
-git pull
-git status
+git pull origin master
 
-echo "${GREEN}Building and testing from fresh install..${NC}"
-git clean -fdx
+echo "${GREEN}Cleaning directory and fresh installing..${NC}"
+lerna clean --yes
 yarn install
+
+echo "${GREEN}Building files and running tests..${NC}"
 yarn build
 yarn test
 yarn test:e2e --skipBuild
 backstop test
 
 echo "${GREEN}Bumping version...${NC}"
-./node_modules/.bin/lerna publish --skip-git --skip-npm --allow-branch master --scope "@cmsgov/design-system-*" --force-publish=*
+yarn lerna version --no-git-tag-version --force-publish
 
-echo "${GREEN}Creating release pull request...${NC}"
-git checkout -b v1.1.0
-git add --all
-git commit -m "Release v1.1.0"
-git push --set-upstream origin v1.1.0
+echo "${GREEN}Creating release...${NC}"
+# Use github cli
