@@ -3,17 +3,14 @@ const yargs = require('yargs');
 const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
 
-async function initCommand(options) {
-  await logIntroduction(options.sourceDir);
-
-  const pkg = await getPackageJson(process.cwd());
-  if (pkg) {
-    if (!options.githubUrl && pkg.repository) {
+async function updateOptions(options) {
+  if (!options.githubUrl) {
+    const pkg = await getPackageJson(process.cwd());
+    if (pkg && pkg.repository) {
       // Use package.json `repository` as default `githubUrl`
       options.githubUrl = pkg.repository;
     }
   }
-
   return options;
 }
 
@@ -36,9 +33,10 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await printStats(options.sourceDir, { ...options });
@@ -54,10 +52,11 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await buildDocs(options.sourceDir, options.docsDir, { ...options });
@@ -74,10 +73,11 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await buildDocs(options.sourceDir, options.docsDir, { ...options });
