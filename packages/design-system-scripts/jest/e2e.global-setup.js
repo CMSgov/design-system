@@ -8,7 +8,7 @@ const APP_PORT = 3001;
 
 function buildApp() {
   log(chalk.green('\nBuilding docs site in production mode...\n'));
-  childProcess.execSync('yarn build', {
+  childProcess.execSync('yarn build --skipLatest', {
     stdio: ['ignore', 'ignore', process.stderr],
   });
   log(chalk.green('done ✓'));
