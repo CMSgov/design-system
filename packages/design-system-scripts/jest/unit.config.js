@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = (rootDir) => ({
+module.exports = (rootDir, core) => ({
   rootDir,
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
@@ -8,14 +8,17 @@ module.exports = (rootDir) => ({
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
-  moduleNameMapper: {
-    '^@cmsgov/design-system/(.*)$': `<rootDir>/${path.relative(
-      rootDir,
-      'packages/design-system/src/$1'
-    )}`,
-    '^@cmsgov/design-system$': `<rootDir>/${path.relative(
-      rootDir,
-      'packages/design-system/src/index.js'
-    )}`,
-  },
+  // Add moduleNameMapper for core CMSDS to resolve imports from @cmsgov/design-system to packages/design-system
+  moduleNameMapper: core
+    ? {
+        '^@cmsgov/design-system/(.*)$': `<rootDir>/${path.relative(
+          rootDir,
+          'packages/design-system/src/$1'
+        )}`,
+        '^@cmsgov/design-system$': `<rootDir>/${path.relative(
+          rootDir,
+          'packages/design-system/src/index.js'
+        )}`,
+      }
+    : {},
 });

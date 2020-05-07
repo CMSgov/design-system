@@ -88,18 +88,30 @@ yargs
     command: 'test <directory>',
     desc: 'Runs tests in one or more directory.',
     builder: (yargs) => {
-      describeTestOptions(yargs);
       yargs
+        .positional('directory', {
+          desc: 'The relative path to the directory where test files are located.',
+          type: 'string',
+          demandOption: true,
+        })
         .option('updateSnapshot', {
-          alias: 'u',
-          default: false,
           desc:
             'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
+          alias: 'u',
+          type: 'boolean',
+          default: false,
         })
         .option('watch', {
-          alias: 'w',
-          default: false,
           desc: 'Alias: -w. Watch files for changes and rerun all tests when something changes',
+          alias: 'w',
+          type: 'boolean',
+          default: false,
+        })
+        .option('core', {
+          desc:
+            'Internal flag used by the core CMSDS to modify the jest config. Unless you are on the core CMSDS team, you can ignore this.',
+          type: 'boolean',
+          default: false,
         });
     },
     handler: async (argv) => {
@@ -108,10 +120,9 @@ yargs
 
       run([
         '--config',
-        JSON.stringify(unitConfig(argv.directory)),
+        JSON.stringify(unitConfig(argv.directory, argv.core)),
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
-        ...(argv.ci ? ['--ci'] : []),
       ]);
     },
   })
@@ -119,8 +130,12 @@ yargs
     command: 'test:e2e <directory>',
     desc: 'Runs tests in one or more directory.',
     builder: (yargs) => {
-      describeTestOptions(yargs);
       yargs
+        .positional('directory', {
+          desc: 'The relative path to the directory where test files are located.',
+          type: 'string',
+          demandOption: true,
+        })
         .option('buildPath', {
           desc: 'The path to the directory containing documentation site build files.',
           type: 'string',
@@ -145,7 +160,7 @@ yargs
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
 
-      run(['--config', JSON.stringify(e2eConfig(argv.directory)), ...(argv.ci ? ['--ci'] : [])]);
+      run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
     },
   })
   .command({
@@ -224,19 +239,4 @@ function describeStatsOptions(yargs) {
     type: 'boolean',
     default: false,
   });
-}
-
-function describeTestOptions(yargs) {
-  yargs
-    .positional('directory', {
-      desc: 'The relative path to the directory where test files are located.',
-      type: 'string',
-      demandOption: true,
-    })
-    .option('ci', {
-      desc:
-        "Use this flag when running in a CI environment. This changes Jest's behavior to fail a test when a new snapshot is encountered",
-      type: 'boolean',
-      default: false,
-    });
 }
