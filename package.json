@@ -25,6 +25,8 @@
     "lerna": "^2.11.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "stylelint": "^13.3.2"
   },
   "engines": {
