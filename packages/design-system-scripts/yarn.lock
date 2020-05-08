@@ -5988,7 +5988,7 @@ gulp-stylelint@^13.0.0:
     strip-ansi "^6.0.0"
     through2 "^3.0.1"
 
-gulp-util@^3.0, gulp-util@^3.0.8:
+gulp-util@^3.0:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   integrity sha1-AFTh50RQLifATBh8PsxQXdVLu08=
@@ -12458,11 +12458,6 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
-tota11y@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/tota11y/-/tota11y-0.1.6.tgz#312723614ff95ffbb874e56880494077471e1547"
-  integrity sha1-MScjYU/5X/u4dOVogElAd0ceFUc=
-
 touch@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/touch/-/touch-3.1.0.tgz#fe365f5f75ec9ed4e56825e0bb76d24ab74af83b"
@@ -13017,14 +13012,6 @@ vinyl-fs@^3.0.0:
     value-or-function "^3.0.0"
     vinyl "^2.0.0"
     vinyl-sourcemap "^1.1.0"
-
-vinyl-source-stream@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vinyl-source-stream/-/vinyl-source-stream-2.0.0.tgz#f38a5afb9dd1e93b65d550469ac6182ac4f54b8e"
-  integrity sha1-84pa+53R6Ttl1VBGmsYYKsT1S44=
-  dependencies:
-    through2 "^2.0.3"
-    vinyl "^2.1.0"
 
 vinyl-sourcemap@^1.1.0:
   version "1.1.0"
