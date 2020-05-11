@@ -3,12 +3,10 @@ import React from 'react';
 import VerticalNavItem from './VerticalNavItem';
 
 function render(customProps = {}, deep) {
-  const props = Object.assign(
-    {
-      label: 'Foo',
-    },
-    customProps
-  );
+  const props = {
+    ...{ label: 'Foo' },
+    ...customProps,
+  };
 
   const component = <VerticalNavItem {...props} />;
 

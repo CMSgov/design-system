@@ -23,7 +23,7 @@ function createPageObject(rootPath, dir, filename) {
 
   return fs
     .readFile(filePath, 'utf8')
-    .then((data) => processMarkdownPage(dir, filePath, data, rootPath));
+    .then((data) => processMarkdownPage(filePath, data, rootPath));
 }
 
 /**

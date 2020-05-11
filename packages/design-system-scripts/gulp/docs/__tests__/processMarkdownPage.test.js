@@ -1,10 +1,10 @@
-const processMarkdownPage = require('../processMarkdownPage');
+const processMarkdownPage = require('../generatePages/processMarkdownPage');
 
 describe('processMarkdownPage', () => {
   let filePath;
 
   beforeEach(() => {
-    filePath = '/cms/design/packages/design-system-docs/src/pages/boom-bap.md';
+    filePath = '/design-system/packages/design-system-docs/src/pages/boom-bap.md';
   });
 
   describe('basic page', () => {
@@ -26,7 +26,7 @@ hide-example: true
 
     it('sets source.path relative to project directory', () => {
       return processMarkdownPage(filePath, markdown).then((output) => {
-        const relativePath = filePath.match(/packages\/[a-zA-Z.\-_/]+/)[0];
+        const relativePath = filePath.match(/\/design-system\/packages\/[a-zA-Z.\-_/]+/)[0];
         expect(output.source.path).toBe(relativePath);
         expect(output.source.path).toMatch(/\.md$/);
       });

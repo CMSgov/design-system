@@ -1,4 +1,4 @@
-const createRoutes = require('../createRoutes');
+const createRoutes = require('../generatePages/createRoutes');
 
 function mockPage(slug, sections = []) {
   return {

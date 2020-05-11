@@ -1,26 +1,26 @@
-const uniquePages = require('../uniquePages');
+const uniquePages = require('../generatePages/uniquePages');
 
 describe('uniquePages', () => {
-  it('removes duplicate non-theme section', () => {
+  it('removes duplicate non-child ds section', () => {
     const sections = uniquePages([
       {
         reference: 'foo',
-        header: 'Core foo',
+        header: 'Child DS foo',
         source: { path: 'packages/core/foo.js' },
       },
       {
         reference: 'foo',
-        header: 'Theme foo',
-        source: { path: 'packages/themes/abc/foo.js' },
+        header: 'Core foo',
+        source: { path: 'node_modules/@cmsgov/design-system/abc/foo.js' },
       },
       {
         reference: 'bar',
-        header: 'Bar',
+        header: 'Child DS bar',
         source: { path: 'packages/core/bar.js' },
       },
     ]);
 
     expect(sections.length).toBe(2);
-    expect(sections[0].header).toBe('Theme foo');
+    expect(sections[0].header).toBe('Child DS foo');
   });
 });

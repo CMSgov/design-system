@@ -1,20 +1,16 @@
 #!/usr/bin/env node
-
 const yargs = require('yargs');
 const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
 
-async function initCommand(options) {
-  await logIntroduction(options.sourceDir);
-
-  const pkg = await getPackageJson(process.cwd());
-  if (pkg) {
-    if (!options.githubUrl && pkg.repository) {
+async function updateOptions(options) {
+  if (!options.githubUrl) {
+    const pkg = await getPackageJson(process.cwd());
+    if (pkg && pkg.repository) {
       // Use package.json `repository` as default `githubUrl`
       options.githubUrl = pkg.repository;
     }
   }
-
   return options;
 }
 
@@ -37,9 +33,10 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { printStats } = require('./gulp/stats');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await printStats(options.sourceDir, { ...options });
@@ -55,10 +52,11 @@ yargs
       describeStatsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { printStats } = require('./gulp/stats');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await buildDocs(options.sourceDir, options.docsDir, { ...options });
@@ -75,14 +73,94 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async (argv) => {
-      const options = await initCommand(argv);
+      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
+      const options = await updateOptions(argv);
 
       await buildSrc(options.sourceDir, { ...options });
       await buildDocs(options.sourceDir, options.docsDir, { ...options });
       await watchDocs(options.sourceDir, options.docsDir, { ...options });
+    },
+  })
+  .command({
+    command: 'test <directory>',
+    desc: 'Runs tests in one or more directory.',
+    builder: (yargs) => {
+      yargs
+        .positional('directory', {
+          desc: 'The relative path to the directory where test files are located.',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('updateSnapshot', {
+          desc:
+            'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
+          alias: 'u',
+          type: 'boolean',
+          default: false,
+        })
+        .option('watch', {
+          desc: 'Alias: -w. Watch files for changes and rerun all tests when something changes',
+          alias: 'w',
+          type: 'boolean',
+          default: false,
+        })
+        .option('core', {
+          desc:
+            'Internal flag used by the core CMSDS to modify the jest config. Unless you are on the core CMSDS team, you can ignore this.',
+          type: 'boolean',
+          default: false,
+        });
+    },
+    handler: async (argv) => {
+      const { run } = require('jest');
+      const unitConfig = require('./jest/unit.config.js');
+
+      run([
+        '--config',
+        JSON.stringify(unitConfig(argv.directory, argv.core)),
+        ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
+        ...(argv.watch ? ['--watch'] : []),
+      ]);
+    },
+  })
+  .command({
+    command: 'test:e2e <directory>',
+    desc: 'Runs tests in one or more directory.',
+    builder: (yargs) => {
+      yargs
+        .positional('directory', {
+          desc: 'The relative path to the directory where test files are located.',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('buildPath', {
+          desc: 'The path to the directory containing documentation site build files.',
+          type: 'string',
+          demandOption: true,
+        })
+        .option('skipBuild', {
+          desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('headless', {
+          desc: 'Runs e2e tests with headless chrome browser testing.',
+          type: 'boolean',
+          default: true,
+        });
+    },
+    handler: async (argv) => {
+      const { run } = require('jest');
+      const e2eConfig = require('./jest/e2e.config.js');
+
+      process.env.BUILD_PATH = argv.buildPath;
+      process.env.SKIP_BUILD = argv.skipBuild;
+      process.env.HEADLESS = argv.headless;
+
+      run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
     },
   })
   .command({
@@ -97,20 +175,21 @@ yargs
           demandOption: true,
         })
         .option('fix', {
+          desc: 'Automatically fix, where possible, violations reported by rules.',
+          type: 'boolean',
           default: false,
-          description: 'Automatically fix, where possible, violations reported by rules.',
         })
         .option('ignorePatterns', {
-          type: 'array',
-          description:
+          desc:
             'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
+          type: 'array',
+          default: ['**/node_modules/**', '**/dist/**'],
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
-      const ignorePatterns = ['**/node_modules/**', '**/dist/**'].concat(argv.ignorePatterns || []);
 
-      await lintDirectories(argv.directories, argv.fix, ignorePatterns);
+      await lintDirectories(argv.directories, argv.fix, argv.ignorePatterns);
     },
   })
   .demandCommand()
@@ -135,26 +214,29 @@ function describeDocsDir(yargs) {
 
 function describeDocsOptions(yargs) {
   yargs
-    .option('rootPath', {
-      default: '',
-      description:
-        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
-    })
     .option('name', {
+      desc: 'Name of the design system. This is used to render documentation content.',
+      type: 'string',
       default: 'CMS Design System',
-      description: 'Name of the design system. This is used to render documentation content.',
     })
     .option('githubUrl', {
-      default: '',
-      description:
+      type: 'string',
+      desc:
         'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.',
+    })
+    .option('rootPath', {
+      desc:
+        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
+      type: 'string',
+      default: '',
     });
 }
 
 function describeStatsOptions(yargs) {
   yargs.option('skipLatest', {
-    default: false,
-    description:
+    desc:
       'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+    type: 'boolean',
+    default: false,
   });
 }

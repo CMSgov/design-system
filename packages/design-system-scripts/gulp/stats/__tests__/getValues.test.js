@@ -27,7 +27,7 @@ describe('getValues', () => {
 
   it('colors difference with red when less than latest value', () => {
     const values = getValues(retrievalMethod, false);
-    expect(values[2]).toEqual(colors.red(stats.current.size - stats.latest.size));
+    expect(values[2]).toEqual(colors.green(stats.current.size - stats.latest.size));
   });
 
   it('skips color when no difference', () => {

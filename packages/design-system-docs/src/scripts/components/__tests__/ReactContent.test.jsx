@@ -5,24 +5,20 @@ import React from 'react';
 import ReactContent from '../ReactContent';
 import { mount } from 'enzyme';
 
-function render(customProps = {}, docsContent = { description: true, props: true }) {
-  const props = Object.assign(
-    {
-      reactExamplePath: 'components/Button/Button.example.jsx',
+function render(customProps = {}) {
+  const props = {
+    ...{
       reactExampleSource: '<Foo />',
-      reactComponentProps: docsContent.props
-        ? {
-            locale: {
-              type: { name: 'string' },
-              required: false,
-              description: '<p>A translation string</p>',
-            },
-          }
-        : {},
-      reactComponentPath: 'components/Button/Button.jsx',
+      reactComponentProps: {
+        locale: {
+          type: { name: 'string' },
+          required: false,
+          description: '<p>A translation string</p>',
+        },
+      },
     },
-    customProps
-  );
+    ...customProps,
+  };
 
   // Wrapping ReactContent in a <div> because Enzyme doesn't yet support
   // React 16 fragments: https://github.com/airbnb/enzyme/issues/1213
@@ -37,24 +33,24 @@ function render(customProps = {}, docsContent = { description: true, props: true
 }
 
 describe('ReactContent', () => {
-  it('has description, example, and props table', () => {
+  it('has example, and props table', () => {
     const data = render();
 
-    expect(data.wrapper.find('.c-details').length).toBe(1);
     expect(data.wrapper.find('ReactExample').length).toBe(1);
     expect(data.wrapper.find('ReactPropDocs').length).toBe(1);
   });
 
-  it('has no description or props table', () => {
-    const data = render({}, { description: false, props: false });
+  it('has no props table', () => {
+    const data = render({ reactComponentProps: undefined });
 
-    expect(data.wrapper.find('.c-details').length).toBe(0);
     expect(data.wrapper.find('ReactExample').length).toBe(1);
     expect(data.wrapper.find('ReactPropDocs').length).toBe(0);
   });
 
-  it('uses reactExamplePath prop for rendering example', () => {
-    const data = render();
-    expect(data.wrapper.find('ReactExample').prop('path')).toMatch(/Button.example.jsx/);
+  it('has no example', () => {
+    const data = render({ reactExampleSource: undefined });
+
+    expect(data.wrapper.find('ReactExample').length).toBe(0);
+    expect(data.wrapper.find('ReactPropDocs').length).toBe(1);
   });
 });

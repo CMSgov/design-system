@@ -1,15 +1,17 @@
 import { mount, shallow } from 'enzyme';
 import Autocomplete from './Autocomplete';
 import React from 'react';
+import TextField from '../TextField/TextField';
 import renderer from 'react-test-renderer';
 
 function render(customProps = {}, deep = false) {
-  const props = Object.assign(
-    {
+  const props = {
+    ...{
       items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
+      children: <TextField label="autocomplete" name="autocomplete_field" />,
     },
-    customProps
-  );
+    ...customProps,
+  };
   const component = <Autocomplete {...props} />;
 
   return {
@@ -113,7 +115,11 @@ describe('Autocomplete', () => {
 
   it('renders a snapshot', () => {
     const tree = renderer
-      .create(<Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput />)
+      .create(
+        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput>
+          <TextField label="autocomplete" name="autocomplete_field" />
+        </Autocomplete>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -59,6 +59,12 @@ exports[`Dialog renders react-aria-modal 1`] = `
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
     }
   }
   heading="Foo"
@@ -73,6 +79,12 @@ exports[`Dialog renders react-aria-modal 1`] = `
       [MockFunction] {
         "calls": Array [
           Array [],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
         ],
       }
     }
@@ -145,6 +157,12 @@ exports[`Dialog renders react-aria-modal 1`] = `
             "calls": Array [
               Array [],
             ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
           }
         }
         includeDefaultStyles={false}
@@ -162,6 +180,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
           active={true}
           focusTrapOptions={
             Object {
+              "escapeDeactivates": true,
               "initialFocus": "#react-aria-modal-dialog",
             }
           }

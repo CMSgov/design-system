@@ -2,14 +2,13 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import VerticalNav from './VerticalNav';
 
-function shallowRender(customProps = {}) {
-  const props = Object.assign(
-    {
+function render(customProps = {}) {
+  const props = {
+    ...{
       items: [{ label: 'Foo' }, { label: 'Bar' }],
     },
-    customProps
-  );
-
+    ...customProps,
+  };
   return {
     props: props,
     wrapper: shallow(<VerticalNav {...props} />),
@@ -18,7 +17,7 @@ function shallowRender(customProps = {}) {
 
 describe('VerticalNav', () => {
   it('renders list', () => {
-    const data = shallowRender();
+    const data = render();
     const wrapper = data.wrapper;
 
     expect(wrapper.is('ul')).toBe(true);
@@ -30,33 +29,33 @@ describe('VerticalNav', () => {
   });
 
   it('adds additional class names', () => {
-    const data = shallowRender({ className: 'foo' });
+    const data = render({ className: 'foo' });
 
     expect(data.wrapper.hasClass('ds-c-vertical-nav')).toBe(true);
     expect(data.wrapper.hasClass('foo')).toBe(true);
   });
 
   it('has an id attribute', () => {
-    const data = shallowRender({ id: 'foo' });
+    const data = render({ id: 'foo' });
 
     expect(data.wrapper.prop('id')).toBe(data.props.id);
   });
 
   it('is a subnav list', () => {
-    const data = shallowRender({ nested: true });
+    const data = render({ nested: true });
 
     expect(data.wrapper.hasClass('ds-c-vertical-nav')).toBe(false);
     expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(true);
   });
 
   it('is collapsed', () => {
-    const data = shallowRender({ collapsed: true });
+    const data = render({ collapsed: true });
 
     expect(data.wrapper.hasClass('ds-u-display--none')).toBe(true);
   });
 
   it('passes onLinkClick to items', () => {
-    const data = shallowRender({
+    const data = render({
       onLinkClick: jest.fn(),
     });
 
@@ -66,7 +65,7 @@ describe('VerticalNav', () => {
   });
 
   it("gives precedence to item's onClick callback", () => {
-    const data = shallowRender({
+    const data = render({
       onLinkClick: jest.fn(),
       items: [
         {

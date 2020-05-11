@@ -1,7 +1,7 @@
-jest.mock('../savePage', () => {
+jest.mock('../generatePages/savePage', () => {
   return jest.fn((page) => Promise.resolve(page));
 });
-const generateDocPage = require('../generateDocPage');
+const generateDocPage = require('../generatePages/generateDocPage');
 
 describe('generateDocPage', () => {
   let output;
