@@ -9,8 +9,6 @@
     }
   },
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "3.7.0"
 }
