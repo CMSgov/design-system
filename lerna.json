@@ -10,5 +10,6 @@
   },
   "npmClient": "yarn",
   "packages": ["packages/*"],
-  "version": "3.7.0"
+  "tagVersionPrefix": "core-",
+  "version": "4.0.0-beta.1"
 }
