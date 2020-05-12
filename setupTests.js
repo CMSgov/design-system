@@ -1,3 +1,9 @@
+/**
+ * setupTests.js
+ *
+ * Initializes Enzyme for running tests with design-system-scripts
+ */
+
 import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 

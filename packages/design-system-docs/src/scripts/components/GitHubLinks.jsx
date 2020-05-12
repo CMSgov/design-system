@@ -6,7 +6,9 @@ import githubUrl from '../helpers/githubUrl';
 import pkg from '../../../package.json';
 
 // TODO: Replace with link to self hosted download
-const zipUrl = githubUrl(`releases/download/${pkg.version}/design-system-v${pkg.version}.zip`);
+const zipUrl = githubUrl(
+  `releases/download/${pkg.version}/cmsgov-design-system-${pkg.version}.tgz`
+);
 const GitHubLinks = (props) => {
   const downloadBtnClassName = classNames('ds-u-font-weight--normal', {
     'ds-u-display--block': props.vertical,
