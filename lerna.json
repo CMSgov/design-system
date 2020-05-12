@@ -1,9 +1,6 @@
 {
   "lerna": "2.0.0",
   "command": {
-    "publish": {
-      "allowBranch": "master"
-    },
     "version": {
       "allowBranch": "master"
     }
