@@ -6,7 +6,7 @@ import Button from '@cmsgov/design-system-core/dist/components/Button/Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Example = function() {
+const Example = function () {
   return (
     <div>
       <Alert heading="Hello world">
