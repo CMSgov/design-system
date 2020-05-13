@@ -10,14 +10,12 @@ echo "${GREEN}Pulling latest from GitHub...${NC}"
 git checkout master
 git pull
 
-echo "${GREEN}Cleaning directory and fresh installing..${NC}"
-rm -rf **/node_modules
-# We need to delete the package-lock.json created by npm link in design-system-scripts
-# to prevent an error later on in `lerna version`
-rm -rf **/package-lock.json
+echo "${GREEN}Cleaning directory and fresh installing...${NC}"
+# TODO: Fix error on yarn build that happens when dist files are removed
+git clean -fdx --exclude="packages/design-system/dist/"
 yarn install
 
-echo "${GREEN}Building files and running tests..${NC}"
+echo "${GREEN}Building files and running tests...${NC}"
 yarn build
 yarn test
 yarn test:e2e --skipBuild
