@@ -25,11 +25,15 @@ echo "${GREEN}Bumping version and creating tagged release commit...${NC}"
 rm -f "packages/design-system-scripts/package-lock.json"
 yarn lerna version --no-push --force-publish
 
-echo "${GREEN}Pushing release commit to Github...${NC}"
+echo "${GREEN}Pushing tag and release commit to Github...${NC}"
 PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
 TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
-git checkout -b $TAG_PREFIX$PACKAGE_VERSION
-git push --set-upstream origin $TAG_PREFIX$PACKAGE_VERSION
+
+# Push up release branch containing the updated package versions
+git checkout -b release-$PACKAGE_VERSION
+git push --set-upstream origin release-$PACKAGE_VERSION
+# Push up tag
+git push origin $TAG_PREFIX$PACKAGE_VERSION
 
 echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/

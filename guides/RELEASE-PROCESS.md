@@ -16,8 +16,9 @@
       ```
       yarn release
       ```
-      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the package versions are updated, the script will create a tagged release commit, push up a release branch, and create a release zip for the Github release notes.
-   1. Lastly, `lerna publish` will prompt you to continue with publishing to NPM. Proceed if everything is ready, and don't forget to merge the release branch into master.
+      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
+   1. The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
+   1. After the release script is completed, make sure to merge the release branch (i.e. `release-2.0.0`) into master.
 
 1. **Create a release on GitHub**
 
@@ -46,7 +47,7 @@
 
       **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
-   1. Select the release branch created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
+   1. Select the tag created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
 
    Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
 
