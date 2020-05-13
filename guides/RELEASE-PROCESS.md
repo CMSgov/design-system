@@ -16,16 +16,16 @@
       ```
       yarn release
       ```
-      This will run a fresh install of dependencies, build assets, and automatically run the linter and tests. If everything passes, `lerna` will prompt you for a version number, choose an appropriate number using the[SemVer specification release format](#versioning). After this step the script will create a tagged release commit, push up a release branch to be merged with master, and create a release zip.
+      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the package versions are updated, the script will create a tagged release commit, push up a release branch, and create a release zip for the Github release notes.
    1. Lastly, `lerna publish` will prompt you to continue with publishing to NPM. Proceed if everything is ready, and don't forget to merge the release branch into master.
 
 1. **Create a release on GitHub**
 
    1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
    1. Tag the release with the newly created tag from the previous step (i.e. `core-2.0.0`).
-   1. Title the release using the release number. For example, `2.0.0`
-   1. Attach the release zip created from the previous step to the release notes (i.e. `cmsgov-design-system-2.0.0.tgz`).
-   1. Follow the format below for the release notes and publish when all changes are documented.
+   1. Title the release using the release number (i.e. `2.0.0`)
+   1. Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
+   1. Use the template below for the release notes
 
    ```
    ## 🚨 Breaking/Behavioral changes
@@ -36,7 +36,9 @@
    ## 🚫 Deprecated
    ```
 
-   **Note**: View commits since the last release on github by going to the [releases page](https://github.com/CMSgov/design-system/releases) or run: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+   **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+
+   1. Review the release notes and publish
 
 1. **Update the design.cms.gov documentation website**
 
@@ -44,7 +46,7 @@
 
       **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
-   1. Select the branch you'd like to deploy. The default is set to `master`.
+   1. Select the release branch created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
 
    Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
 
@@ -53,17 +55,19 @@
 
    **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
-1. **Finalize and publish release on GitHub**
+# Sketch Library Release Process
 
-   1. Create a release zip that includes all the build files
-   1. Name it according to the following naming convention (i.e. design-system-v1.1.0.zip)
-
-   ```
-   design-system-v{version}.zip
-   ```
-
-   1. Upload the zip as a release asset
-   1. Review the release notes and publish
+1. Download the [Sketch file from GitHub](https://github.com/CMSgov/design-system/blob/master/design-assets/CMS-Design-System-UI-kit.sketch)
+1. Update the CMSDS Sketch file locally with your changes
+1. Update the .xml file found in the `design-assets` folder in the following ways:
+   - Update the item `title` with the version number
+     - Example: `CMS Design System UI kit - v1.1`
+   - Update `pubDate` using [RFC822 format](https://hackage.haskell.org/package/time-http-0.5/docs/Data-Time-Format-RFC822.html)
+     - Example: `Mon, 13 Apr 2020 15:11:00`
+   - Update `enclosure sparkle:version` number
+     - Example: `sparkle:version="1.1"`
+1. [Create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) with the updates to the .xml file and Sketch file
+   - Add a title and short description for your changes.
 
 # Versioning
 
@@ -98,17 +102,3 @@ Example changes:
 
 - Renamed or removed classes, mixins, functions, placeholders, or global variables.
 - Major visual changes to existing components
-
-# Sketch Library Release Process
-
-1. Download the [Sketch file from GitHub](https://github.com/CMSgov/design-system/blob/master/design-assets/CMS-Design-System-UI-kit.sketch)
-1. Update the CMSDS Sketch file locally with your changes
-1. Update the .xml file found in the `design-assets` folder in the following ways:
-   - Update the item `title` with the version number
-     - Example: `CMS Design System UI kit - v1.1`
-   - Update `pubDate` using [RFC822 format](https://hackage.haskell.org/package/time-http-0.5/docs/Data-Time-Format-RFC822.html)
-     - Example: `Mon, 13 Apr 2020 15:11:00`
-   - Update `enclosure sparkle:version` number
-     - Example: `sparkle:version="1.1"`
-1. [Create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) with the updates to the .xml file and Sketch file
-   - Add a title and short description for your changes.
