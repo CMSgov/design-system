@@ -2,16 +2,16 @@
 
 1. **Publish to NPM**
 
-   1. Ensure you are logged into NPM. Check your user account with `npm whoami`.
-
-      **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
-
    1. Checkout the latest `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
    1. Check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
       ```
       backstop test
       ```
       If there are expected visual changes, run `backstop approve` to save the new reference files. This should ideally be handled before the release process begins.
+   1. Ensure you are logged into NPM. Check your user account with `npm whoami`.
+
+      **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
+
    1. Run the release script to automatically begin the release process and publish to NPM.
       ```
       yarn release
