@@ -13,7 +13,7 @@
     "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
     "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
     "posttest": "yarn lint",
-    "lint": "yarn cmsds lint ./packages --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
+    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
   },
   "devDependencies": {
     "@cmsgov/design-system": "file:./packages/design-system",

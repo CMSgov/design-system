@@ -1057,11 +1057,11 @@
     }
   ],
   "paths": {
-    "bitmaps_reference": "tools/backstop_data/bitmaps_reference",
-    "bitmaps_test": "tools/backstop_data/bitmaps_test",
-    "engine_scripts": "tools/backstop_data/engine_scripts",
-    "html_report": "tools/backstop_data/html_report",
-    "ci_report": "tools/backstop_data/ci_report"
+    "bitmaps_reference": "packages/design-system-docs/src/__tests__/backstop_reference",
+    "bitmaps_test": "tmp/backstop_data/bitmaps_test",
+    "engine_scripts": "tmp/backstop_data/engine_scripts",
+    "html_report": "tmp/backstop_data/html_report",
+    "ci_report": "tmp/backstop_data/ci_report"
   },
   "report": ["browser"],
   "engine": "puppet",
