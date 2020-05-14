@@ -6,7 +6,7 @@ module.exports = {
   entry: { main: './src/index.js' },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -14,23 +14,23 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.scss|.css$/,
         use: [
           {
-            loader: 'style-loader' // creates style nodes from JS strings
+            loader: 'style-loader', // creates style nodes from JS strings
           },
           {
             loader: 'css-loader', // translates CSS into CommonJS
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
-            loader: 'resolve-url-loader'
+            loader: 'resolve-url-loader',
           },
           {
             loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
@@ -38,11 +38,11 @@ module.exports = {
               sourceMap: true,
               includePaths: [
                 path.resolve(__dirname, './src/scss'),
-                path.resolve(__dirname, './node_modules')
-              ]
-            }
-          }
-        ]
+                path.resolve(__dirname, './node_modules'),
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -52,11 +52,11 @@ module.exports = {
             options: {
               includePaths: [
                 path.resolve(__dirname, './src/img'),
-                path.resolve(__dirname, './node_modules')
-              ]
-            }
-          }
-        ]
+                path.resolve(__dirname, './node_modules'),
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -65,21 +65,21 @@ module.exports = {
             loader: 'file-loader',
             options: {
               sourceMap: true,
-              includePaths: [path.resolve(__dirname, './node_modules')]
-            }
+              includePaths: [path.resolve(__dirname, './node_modules')],
+            },
           },
           {
-            loader: 'url-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'url-loader',
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new CopyWebpackPlugin([
       { from: './src/img', to: 'img' },
       { from: './src/fonts', to: 'fonts' },
-      { from: './src/pages', to: '' }
-    ])
-  ]
+      { from: './src/pages', to: '' },
+    ]),
+  ],
 };
