@@ -944,9 +944,9 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@cmsgov/design-system-docs@file:./packages/design-system-docs":
-  version "4.0.0-beta.1"
+  version "2.0.0-beta.1"
   dependencies:
-    "@cmsgov/design-system" "4.0.0-beta.1"
+    "@cmsgov/design-system" "2.0.0-beta.1"
     classnames "^2.2.5"
     lodash "^4.17.13"
     prismjs "^1.11.0"
@@ -955,7 +955,7 @@
     url-join "^4.0.1"
 
 "@cmsgov/design-system-scripts@file:./packages/design-system-scripts":
-  version "4.0.0-beta.1"
+  version "2.0.0-beta.1"
   dependencies:
     "@babel/core" "^7.8.4"
     "@babel/plugin-transform-object-assign" "^7.8.3"
@@ -1029,8 +1029,8 @@
     webpack-hot-middleware "2.25.0"
     yargs "^11.0.0"
 
-"@cmsgov/design-system@4.0.0-beta.1", "@cmsgov/design-system@file:./packages/design-system":
-  version "4.0.0-beta.1"
+"@cmsgov/design-system@2.0.0-beta.1", "@cmsgov/design-system@file:./packages/design-system":
+  version "2.0.0-beta.1"
   dependencies:
     classnames "^2.2.5"
     downshift "^3.2.10"
