@@ -946,7 +946,7 @@
 "@cmsgov/design-system-docs@file:./packages/design-system-docs":
   version "2.0.0-beta.1"
   dependencies:
-    "@cmsgov/design-system" "2.0.0-beta.1"
+    "@cmsgov/design-system" "4.0.0-beta.1"
     classnames "^2.2.5"
     lodash "^4.17.13"
     prismjs "^1.11.0"
@@ -1029,8 +1029,8 @@
     webpack-hot-middleware "2.25.0"
     yargs "^11.0.0"
 
-"@cmsgov/design-system@2.0.0-beta.1", "@cmsgov/design-system@file:./packages/design-system":
-  version "2.0.0-beta.1"
+"@cmsgov/design-system@4.0.0-beta.1", "@cmsgov/design-system@file:./packages/design-system":
+  version "4.0.0-beta.1"
   dependencies:
     classnames "^2.2.5"
     downshift "^3.2.10"
