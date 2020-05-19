@@ -58,15 +58,11 @@ async function copyAll(dir) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
-async function compileJs(dir) {
-  const sources = await getSourceDirs(dir);
-  // If core design system, unnest the `scripts` folder in `dist`
-  const src = sources.length === 1 ? path.join(dir, 'src', 'scripts') : path.join(dir, 'src');
-
+function compileJs(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
       .src([
-        `${path.join(dir, 'src')}/index.js`,
         `${src}/**/*.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
