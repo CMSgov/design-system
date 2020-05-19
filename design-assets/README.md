@@ -1,20 +1,21 @@
-You will find the following in the `design-assets` folder:
+The `design-assets` folder contains:
 
-- CMSDS Sketch file
+- CMS Design System (CMSDS) Sketch file
 - CMSDS fonts (Bitter, Open Sans, and Font Awesome)
 
-## CMSDS Sketch Library
+## Usage
 
-**We encourage you to install the CMSDS Sketch file as a Sketch Library**
-[Learn more about Sketch Libraries and how to use them](https://www.sketch.com/docs/libraries/).
+The CMSDS design assets are avaliable in two formats, as a Sketch Library, and as a Sketch file.
+
+**We highly recommend using the CMSDS Sketch Library**, as it automatically receives updates when new versions of the Sketch Library are released. [Learn more about Sketch Libraries and how to use them](https://www.sketch.com/docs/libraries/).
 
 ### Installing the Sketch library
 
-- Visit the design.cms.gov homepage and click the `get the Sketch Library` link.
-  - OR
-- paste this url into your browser `sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml`
+To add the CMSDS Sketch Library, simply click the button below or paste this url into your browser
 
-- Sketch will then open and download the CMSDS Sketch Library.
+[`Add Library to Sketch`](sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml)
+
+The library will then open and download in Sketch.
 
 <img src="/.github/images/Sketch-library-install.png?raw=true" width=500px;/>
 
