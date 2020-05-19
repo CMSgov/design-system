@@ -38,7 +38,7 @@ Sass variables are documented on the relevant documentation pages, and are defin
 - [Colors]({{root}}/styles/color/)
 - [Spacing]({{root}}/styles/spacing/)
 - [Type sizes]({{root}}/styles/typography/)
-- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/).
+- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
 
 ## CSS declarations
 
