@@ -48,6 +48,7 @@ These scripts can all be run from the root level of the repo:
   - Increments package versions and publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 - `yarn test`
   - Runs JS unit tests
+  - Runs Prettier for formatting
   - Lints JS using ESLint
   - Lints Sass using stylelint
 - `yarn test:e2e`
