@@ -1,3 +1,6 @@
+// USWDS
+@import 'styles/uswds/styles.scss';
+
 // Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
 @import 'styles/settings/index.scss';
 @import 'styles/settings/font.scss'; // Font variables are imported separately to avoid being compiled and included in multiple css files

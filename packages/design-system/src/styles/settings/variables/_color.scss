@@ -100,7 +100,7 @@ $color-visited: color('indigo-70') !default;
 // Background
 $color-background: $color-white !default;
 $color-background-inverse: $color-primary-darkest;
-$color-background-dialog-mask: rgba($color-black, 0.5) !default;
+$color-background-dialog-mask: rgba(color('black'), 0.5) !default;
 $color-background-dialog: $color-white !default;
 
 // Border
