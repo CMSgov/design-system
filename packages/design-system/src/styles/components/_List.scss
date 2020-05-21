@@ -1,0 +1,20 @@
+@import '../settings/index.scss';
+
+.ds-c-list {
+  margin-bottom: $spacer-2;
+  margin-top: $spacer-2;
+  padding-left: $spacer-4;
+
+  li {
+    line-height: $base-line-height;
+    margin-bottom: $spacer-1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ds-c-list--bare {
+  @include ds-unstyled-list;
+}

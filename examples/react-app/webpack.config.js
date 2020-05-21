@@ -7,7 +7,7 @@ const config = {
   entry: './src/scripts/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/scripts')
+    path: path.resolve(__dirname, 'dist/scripts'),
   },
   module: {
     rules: [
@@ -18,13 +18,13 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015', 'react']
-            }
-          }
-        ]
-      }
-    ]
-  }
+              presets: ['es2015', 'react'],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 module.exports = config;

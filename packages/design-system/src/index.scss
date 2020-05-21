@@ -1,8 +1,12 @@
-// Styles: Global settings and base styles and partials
-@import 'styles/index.scss';
+// Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
+@import 'styles/settings/index.scss';
+@import 'styles/settings/font.scss'; // Font variables are imported separately to avoid being compiled and included in multiple css files
+
+// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
+@import 'styles/base/index.scss';
 
 // Components: Designed UI units
-@import 'components/index.scss';
+@import 'styles/components/index.scss';
 
-// Utilities: Overrides, helpers; These trump the above rules.
-@import 'utilities/index.scss';
+// Utilities: Overrides, helpers
+@import 'styles/utilities/index.scss';

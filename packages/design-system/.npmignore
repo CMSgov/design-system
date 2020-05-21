@@ -1,4 +1,6 @@
-__tests__/
-.eslintrc
+**/__tests__/
+**/__snapshots__/
+**/helpers/
+**/*.test.js
+**/*.test.jsx
 yarn.lock
-helpers/

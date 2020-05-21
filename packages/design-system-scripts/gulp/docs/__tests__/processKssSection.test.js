@@ -1,13 +1,13 @@
 'use strict';
-const processKssSection = require('../processKssSection');
+const processKssSection = require('../generatePages/processKssSection');
 
 describe('processKssSection', () => {
-  const section = reference => {
+  const section = (reference) => {
     return {
       toJSON: () => ({
         // These paragraphs need to be separated by a newline in order for
         // the flag processing to work properly.
-        description: `<p>Hello world</p>\n<p>@react-component Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
+        description: `<p>Hello world</p>\n<p>@react-props Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
         deprecated: false,
         experimental: false,
         header: 'Title - `<Component>`',
@@ -16,15 +16,15 @@ describe('processKssSection', () => {
           {
             name: '.primary',
             description: 'The primary action',
-            className: ''
-          }
+            className: '',
+          },
         ],
         parameters: [],
         reference: reference,
         source: {
-          line: 1
-        }
-      })
+          line: 1,
+        },
+      }),
     };
   };
 
@@ -35,8 +35,8 @@ describe('processKssSection', () => {
   });
 
   it('sets and replaces flags', () => {
-    return promise.then(data => {
-      expect(data.reactComponent).toBe('Component');
+    return promise.then((data) => {
+      expect(data.reactProps).toBe('Component');
       expect(data.hideMarkup).toBe(true);
       expect(data.responsive).toBe(true);
       expect(data.status).toBe('prototype');
@@ -45,19 +45,19 @@ describe('processKssSection', () => {
   });
 
   it('prepends rootPath', () => {
-    return promise.then(data => {
+    return promise.then((data) => {
       expect(data.referenceURI).toBe('root/components/button');
     });
   });
 
   it('converts Markdown in header', () => {
-    return promise.then(data => {
+    return promise.then((data) => {
       expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
     });
   });
 
   it('adds a sections property', () => {
-    return promise.then(data => {
+    return promise.then((data) => {
       expect(data.sections).toEqual(expect.any(Array));
     });
   });

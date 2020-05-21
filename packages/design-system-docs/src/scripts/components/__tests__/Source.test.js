@@ -5,21 +5,12 @@ import { shallow } from 'enzyme';
 
 describe('Source', () => {
   let props;
-  const blobPath = githubUrl('/blob/master');
+  const blobPath = githubUrl('blob/master');
 
   beforeEach(() => {
     props = {
-      source: {
-        filename: 'components/Button/Button.scss',
-        path: 'packages/design-system/src/components/Button/Button.scss'
-      }
+      reactComponentPath: 'design-system/src/components/Button/Button.scss',
     };
-  });
-
-  it('links to SCSS file', () => {
-    const wrapper = shallow(<Source {...props} />);
-
-    expect(wrapper.prop('href')).toBe(`${blobPath}/${props.source.path}`);
   });
 
   it('links to JSX file', () => {
