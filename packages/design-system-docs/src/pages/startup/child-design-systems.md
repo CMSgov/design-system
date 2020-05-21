@@ -3,7 +3,7 @@ title: Child Design Systems
 weight: 6
 ---
 
-The CMS design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, there are cases where product teams need to modify a design system beyond [theming]({{root}}/startup/themes/) and publish the new system for other teams to consume.
+The CMS design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, there are cases where product teams need to modify a design system beyond [theming]({{root}}/startup/theming/) and publish the new system for other teams to consume.
 
 ## Who should use a child design system?
 

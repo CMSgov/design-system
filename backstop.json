@@ -98,8 +98,8 @@
     },
     {
       "label": "CMSDS - Guidelines - Theming",
-      "referenceUrl": "https://design.cms.gov/startup/themes/",
-      "url": "http://localhost:3000/startup/themes/",
+      "referenceUrl": "https://design.cms.gov/startup/theming/",
+      "url": "http://localhost:3000/startup/theming/",
       "removeSelectors": ["#frame"]
     },
     {
