@@ -30,7 +30,7 @@ exports[`Mask renders mask overlay 1`] = `
     name="foo"
     onBlur={[Function]}
     onChange={[Function]}
-    pattern="[0-9.-]*"
+    pattern="[0-9.,-]*"
     type="text"
     value=""
   />
