@@ -12,7 +12,7 @@ class ControlledCurrencyField extends React.PureComponent {
     super(props);
 
     this.state = {
-      currencyValue: '2,500',
+      currencyValue: '2500',
     };
   }
 
