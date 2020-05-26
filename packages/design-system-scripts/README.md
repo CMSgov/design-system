@@ -23,12 +23,21 @@ yarn cmsds
 npx cmsds
 ```
 
-Use the `--help` option to see the full list of available commands, or a command’s options
+Use the `--help` option to see the full list of available commands, or a specific command’s options
 
 ```
 yarn cmsds --help
 yarn cmsds build --help
 ```
+
+Available commands:
+
+- `yarn cmsds build` - Builds the JavaScript and Sass for your main design system package.
+- `yarn cmsds build-docs` - Builds your main design system package and its corresponding documentation site.
+- `yarn cmsds start` - Builds and hosts the documentation site, automatically rebuilds and refreshes when changes are detected
+- `yarn cmsds test` - Runs unit tests
+- `yarn cmsds test:e2e` - Runs end to end tests
+- `yarn cmsds lint` - Runs prettier, stylelint and eslint
 
 See the npm scripts in our [package.json](https://github.com/CMSgov/design-system/blob/master/package.json) for an example of how these scripts are used in the core CMS Design System.
 

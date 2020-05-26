@@ -11,6 +11,7 @@
   - [Visual regression testing](#visual-regression-testing)
 - [Design assets](#design-assets)
 - [Examples](#examples)
+- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## Packages
@@ -77,13 +78,13 @@ The CMS Design System provides a Sketch file and Sketch Library containing compo
 
 [Read more on using Sketch with the CMS Design System](/design-assets/README.md)
 
-## Contributing
-
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
-
 ## Examples
 
 Examples of the design system in use can be found in the [`examples` directory](examples/).
+
+## Contributing
+
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contributing to the design system, and our coding guidelines.
 
 ## Contact
 

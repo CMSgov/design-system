@@ -3,21 +3,26 @@ title: Child Design Systems
 weight: 6
 ---
 
-The CMS design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, there are cases where product teams need to modify a design system beyond [theming]({{root}}/startup/theming/) and publish the new system for other teams to consume.
-
-## Who should use a child design system?
-
-A common use case for child design systems is when multiple teams are working under the same CMS site. These teams would need to share custom assets and code (i.e. brand colors, site header, custom icons, etc), and would benefit from a documentation site to reference as single source of truth. If you are working as a single team and don't have a need for a documentation site, a child design system is probably not for you.
+The CMS design system (CMSDS) provides a set of components and styles to meet many design and development needs. However, there are cases where product teams need to modify a design system beyond [theming]({{root}}/startup/theming/) and publish a child design system for other product teams to consume.
 
 ## What is a child design systems?
 
-A child design system is a design system that built off of the core CMSDS for a specific context. They contain custom assets (components, styles, etc..) and are published via NPM to be consumed by multiple teams. A child design system can contain new components, modifications to existing components, or modifications to styles. Child design systems import the core CMSDS as a dependency to receive updates, and use developer tools, scripts, and documentation from the core CMSDS to manage their own design system.
+A child design system is a design system built off of the core CMSDS for a specific context. It contains custom assets (components, styles, etc..) and is published via NPM to be consumed by multiple product teams. A child design system can contain new components, modifications to existing core components, or modifications to styles. Child design systems import the core CMSDS as a dependency which allows for receiving updates, using developer tools, scripts, and documentation from the core CMSDS to manage their own design system.
+
+## Who should use a child design system?
+
+A common use case for child design systems is when multiple product teams are working under the same CMS site. These separate product teams would share custom assets and code (i.e. brand colors, site header, custom icons, etc), and would benefit from a documentation site to reference as a single source of truth. If you are working as a single team and don't have a need for a documentation site, a child design system is probably not for you.
 
 ### Child design system guidelines
 
 - A child design system should be actively maintained by other product teams. The core CMSDS team is not responsible for updating child design systems, however we are responsible for guidelines and assisting with training and adoption.
 - Users of child design system should contribute back to the larger CMS design system community by filing issues/bugs, giving feedback, and general maintenance. Collaboration and participation are essential to the success of the CMS design system family.
 - A child design system should defer to the core CMS design system for best practices or accessibility guidelines.
+
+### Existing child design systems
+
+- [Healthcare.gov Child Design System](https://github.cms.gov/CMS-WDS/ds-healthcare-gov)
+- [Medicare.gov Child Design System](https://github.cms.gov/MedicareGov/ds-site-package)
 
 ---
 

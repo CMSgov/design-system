@@ -11,11 +11,13 @@ The CMSDS design assets are avaliable in two formats, as a Sketch Library, and a
 
 ### Installing the Sketch library
 
-To add the CMSDS Sketch Library, simply click the button below or paste this url into your browser
+- Visit the [CMS Design System homepage](design.cms.gov) and click the `Get the Sketch Library` link under "Getting started".
 
-[`Add Library to Sketch`](sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml)
+- Paste the following url in your browser to open and download the library in Sketch
 
-The library will then open and download in Sketch.
+```
+sketch://add-library?url=https%3A%2F%2Fgithub.com%2FCMSgov%2Fdesign-system%2Fraw%2Fmaster%2Fdesign-assets%2Fcms-design-system-ui-kit.xml
+```
 
 <img src="/.github/images/Sketch-library-install.png?raw=true" width=500px;/>
 

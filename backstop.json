@@ -67,6 +67,12 @@
       "removeSelectors": ["#frame"]
     },
     {
+      "label": "CMSDS - Getting Started - Migrating to v2",
+      "referenceUrl": "https://design.cms.gov/startup/migrating-v2/",
+      "url": "http://localhost:3000/startup/migrating-v2/",
+      "removeSelectors": ["#frame"]
+    },
+    {
       "label": "CMSDS - Guidelines - Code conventions",
       "referenceUrl": "https://design.cms.gov/guidelines/code-conventions/",
       "url": "http://localhost:3000/guidelines/code-conventions/",
