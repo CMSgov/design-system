@@ -62,6 +62,6 @@ $image-path: "~@cmsgov/design-system/dist/images";
 
 When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/master/guides/RELEASE-PROCESS.md#versioning). These releases were not aligned with our product communication and marketing, and were limited to developer usage.
 
-With this major release, we have an opportunity to correct past inconsistencies, and unify our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will prefixed with `core-` (i.e. `core-2.0.0`).
+With this major release, we have an opportunity to correct past inconsistencies, and unify our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will be prefixed with `core-` (i.e. `core-2.0.0`).
 
 This was a difficult decision to make, but we believe this will make things more consistent and simpler going forward.
