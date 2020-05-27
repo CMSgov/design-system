@@ -12,7 +12,7 @@ const maskPattern = {
   phone: '[0-9-]*',
   ssn: '[0-9-*]*',
   zip: '[0-9-]*',
-  currency: '[0-9.-]*',
+  currency: '[0-9.,-]*',
 };
 
 const maskOverlayContent = {
