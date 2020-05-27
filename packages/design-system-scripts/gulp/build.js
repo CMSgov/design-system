@@ -8,6 +8,7 @@ const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
+const rename = require('gulp-rename');
 const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
@@ -53,6 +54,46 @@ async function copyAll(dir) {
 }
 
 /**
+ * Same as compileJS but with babel configured for esmodules
+ */
+function compileEsmJs(dir) {
+  const src = path.join(dir, 'src');
+  return streamPromise(
+    gulp
+      .src([
+        `${src}/**/*.{js,jsx}`,
+        `!${src}/**/*.test.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
+      ])
+      .pipe(
+        babel({
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'entry',
+                corejs: '3.0.0',
+                modules: false,
+              },
+            ],
+            '@babel/preset-react',
+          ],
+          plugins: ['@babel/plugin-transform-object-assign'],
+        })
+      )
+      .pipe(
+        rename(function (path) {
+          path.extname = '.es.js';
+        })
+      )
+      .pipe(gulp.dest(path.join(dir, 'dist')))
+      .on('finish', function () {
+        logTask('📜 ', 'ES module JS file processed');
+      })
+  );
+}
+
+/**
  * Transpile design system React components.
  *  Note: If you're running a dev server and try to use a newly
  *  babelfied React component in the docs site, you need to run
@@ -87,6 +128,7 @@ module.exports = {
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
     await compileJs(sourceDir);
+    await compileEsmJs(sourceDir);
     await compileSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');

@@ -9,6 +9,8 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "downshift": "^3.2.10",
