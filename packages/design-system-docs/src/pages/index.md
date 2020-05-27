@@ -3,7 +3,7 @@ title: Introduction
 weight: -100
 ---
 
-The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities), and a [grid framework]({{root}}/styles/grid/) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
+The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities/overview), and a [grid framework]({{root}}/styles/grid/) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open source and freely available to use by anyone.
 

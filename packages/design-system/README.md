@@ -47,17 +47,17 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 
 ```
 └── dist
-    ├── fonts
-    ├── images
     ├── index.css       Compiled CSS
     ├── index.js        Compiled JSS
     ├── index.scss      SASS entrypoint
-    ├── components      React component JS files
+    ├── fonts/
+    ├── images/
+    ├── components/      React component JS files
     │   ├── Button
     │   └── etc...
-    └── styles
-        ├── settings    Global variables, mixins, and functions
-        ├── base        Base styles, HTML element selectors
-        ├── components  Component styles
-        └── utilities   Utility classes for individual CSS properties
+    └── styles/
+        ├── settings/    Global variables, mixins, and functions
+        ├── base/        Base styles, HTML element selectors
+        ├── components/  Component styles
+        └── utilities/   Utility classes for individual CSS properties
 ```
