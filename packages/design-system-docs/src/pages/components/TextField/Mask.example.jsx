@@ -56,11 +56,10 @@ const Example = () => {
         label="Currency"
         mask="currency"
         inputMode="numeric"
-        pattern="[0-9]*"
         type="text"
         name="currency_example"
         onBlur={(evt) => handleBlur(evt, 'currency')}
-        defaultValue="2500"
+        defaultValue="2,500"
       />
 
       <TextField
@@ -76,7 +75,6 @@ const Example = () => {
         label="Social security number (SSN)"
         mask="ssn"
         inputMode="numeric"
-        pattern="[0-9]*"
         type="text"
         name="ssn_example"
         onBlur={(evt) => handleBlur(evt, 'ssn')}
@@ -87,7 +85,6 @@ const Example = () => {
         label="Zip code"
         mask="zip"
         inputMode="numeric"
-        pattern="[0-9]*"
         type="text"
         name="zip_example"
         onBlur={(evt) => handleBlur(evt, 'zip')}
