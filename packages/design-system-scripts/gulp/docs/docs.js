@@ -4,7 +4,6 @@
  * generating the HTML files which get published as the public site.
  */
 const copyAssets = require('../common/copyAssets');
-const copyDir = require('../common/copyDir');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
 const getSourcePattern = require('../common/getSourcePattern');
@@ -52,7 +51,7 @@ async function extractReactDocs(sourceDir, docsDir, options) {
 function copySourceAssets(sourceDir, docsDir) {
   logTask('🏞  ', `Copying fonts and images from source package into ${path.join(docsDir, 'dist')}`);
   // Handle rootPath when copying
-  return copyDir(path.join(sourceDir, 'dist'), path.join(docsDir, 'dist'));
+  return copyAssets(sourceDir, docsDir);
 }
 
 /**
