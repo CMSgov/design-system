@@ -2,7 +2,7 @@ import React from 'react';
 import githubUrl from '../helpers/githubUrl';
 
 const helpfulLinks = {
-  'https://standards.usa.gov/': 'U.S. Web Design Standards',
+  'https://designsystem.digital.gov/': 'U.S. Web Design System',
   'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/FOIA.html':
     'Freedom of Information Act',
   'https://oig.hhs.gov/': 'Inspector General',

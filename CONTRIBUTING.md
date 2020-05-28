@@ -31,7 +31,7 @@ When considering what to do with a proposed pattern, there are several questions
 
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
-Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design).
+Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design).
 
 Our design contribution and review process has four stages. As a contributor to the CMS Design System, you’ll only need to participate in the first stage — our team will handle the rest.
 
@@ -105,6 +105,6 @@ All contributions to this project will be released under the CC0 dedication alon
 
 **Credits**
 
-- [US Web Design Standards](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design)
+- [US Web Design Standards](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design)
 - [Atomic Design](http://atomicdesign.bradfrost.com/chapter-5/)
 - [Inayaili de León Persson](https://design.canonical.com/2016/07/getting-vanilla-ready-for-v1-the-roadmap/)

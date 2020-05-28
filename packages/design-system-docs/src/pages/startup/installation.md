@@ -5,7 +5,7 @@ weight: 0
 
 The design system is available an NPM package or via a <a href="https://github.com/CMSgov/design-system/releases/latest">.zip download</a>.
 
-The [@cmsgov/design-system package](https://www.npmjs.com/package/@cmsgov/design-system) includes:
+The [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system) package includes:
 
 - Base styles
 - Utility classes

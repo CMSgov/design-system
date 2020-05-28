@@ -27,7 +27,7 @@ yargs
   })
   .command({
     command: 'build <sourceDir>',
-    desc: 'Builds the JavaScript and Sass for your main design-system package',
+    desc: 'Builds the design system source and outputs compiled JavaScript and Sass.',
     builder: (yargs) => {
       describeSourceDir(yargs);
       describeStatsOptions(yargs);
@@ -44,7 +44,7 @@ yargs
   })
   .command({
     command: 'build-docs <sourceDir> <docsDir>',
-    desc: 'Builds your main design-system package and its corresponding documentation site',
+    desc: 'Builds the design system source and its corresponding documentation site',
     builder: (yargs) => {
       describeSourceDir(yargs);
       describeDocsDir(yargs);
@@ -66,7 +66,7 @@ yargs
   .command({
     command: 'start <sourceDir> <docsDir>',
     desc:
-      'Builds and hosts the docs site locally with a webpack dev server, watching for changes in either the design-system source package or the docs package and rebuilding and refreshing appropriately',
+      'Builds and hosts the documentation site locally with a webpack dev server. Changes will be automatically rebuilt and reloaded with browsersync when detected in either the source or docs directories',
     builder: (yargs) => {
       describeSourceDir(yargs);
       describeDocsDir(yargs);
@@ -86,7 +86,7 @@ yargs
   })
   .command({
     command: 'test <directory>',
-    desc: 'Runs tests in one or more directory.',
+    desc: 'Runs unit tests in a directory.',
     builder: (yargs) => {
       yargs
         .positional('directory', {
@@ -128,7 +128,7 @@ yargs
   })
   .command({
     command: 'test:e2e <directory>',
-    desc: 'Runs tests in one or more directory.',
+    desc: 'Runs e2e tests in a directory.',
     builder: (yargs) => {
       yargs
         .positional('directory', {
