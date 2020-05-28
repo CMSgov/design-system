@@ -8,8 +8,8 @@ const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
-const rename = require('gulp-rename');
 const path = require('path');
+const fs = require('fs');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -54,10 +54,14 @@ async function copyAll(dir) {
 }
 
 /**
- * Same as compileJS but with babel configured for esmodules
+ * Similar to compileJS but babel is configured for esmodules
  */
-function compileEsmJs(dir) {
-  const src = path.join(dir, 'src');
+async function compileEsmJs(dir) {
+  const src = path.join(dir, 'src', 'components');
+
+  // Create esm entry file
+  await fs.writeFileSync(path.join(dir, 'dist', 'index.es.js'), `export * from './esnext';`);
+
   return streamPromise(
     gulp
       .src([
@@ -81,14 +85,9 @@ function compileEsmJs(dir) {
           plugins: ['@babel/plugin-transform-object-assign'],
         })
       )
-      .pipe(
-        rename(function (path) {
-          path.extname = '.es.js';
-        })
-      )
-      .pipe(gulp.dest(path.join(dir, 'dist')))
+      .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
       .on('finish', function () {
-        logTask('📜 ', 'ES module JS file processed');
+        logTask('📜 ', 'ES module JS files processed');
       })
   );
 }

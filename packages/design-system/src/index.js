@@ -1,23 +1,3 @@
 'use strict';
 
-export * from './components/Alert/Alert';
-export * from './components/Autocomplete/Autocomplete';
-export * from './components/Badge/Badge';
-export * from './components/Button/Button';
-export * from './components/ChoiceList/Choice';
-export * from './components/ChoiceList/ChoiceList';
-export * from './components/DateField/DateField';
-export * from './components/Dialog/Dialog';
-export * from './components/Dropdown/Dropdown';
-export * from './components/FormLabel/FormLabel';
-export * from './components/HelpDrawer/HelpDrawer';
-export * from './components/HelpDrawer/HelpDrawerToggle';
-export * from './components/MonthPicker/MonthPicker';
-export * from './components/Review/Review';
-export * from './components/SkipNav/SkipNav';
-export * from './components/Spinner/Spinner';
-export * from './components/StepList/StepList';
-export * from './components/Tabs/Tabs';
-export * from './components/Tabs/TabPanel';
-export * from './components/TextField/TextField';
-export * from './components/VerticalNav/VerticalNav';
+export * from './components';
