@@ -30,7 +30,7 @@ If you're already using Sass to style your site, another way to include the desi
 @import '@cmsgov/design-system/dist/index.scss';
 ```
 
-[Learn how to override and theme Sass variables]({{root}}/guidelines/themes/).
+[Learn how to override and theme Sass variables]({{root}}/startup/theming/).
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/styles/index.scss)
 

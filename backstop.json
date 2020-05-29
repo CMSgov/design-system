@@ -56,14 +56,20 @@
     },
     {
       "label": "CMSDS - Getting Started - Building a Site Package",
-      "referenceUrl": "https://design.cms.gov/startup/site-package/",
-      "url": "http://localhost:3000/startup/site-package/",
+      "referenceUrl": "https://design.cms.gov/startup/child-design-systems/",
+      "url": "http://localhost:3000/startup/child-design-systems/",
       "removeSelectors": ["#frame"]
     },
     {
       "label": "CMSDS - Getting Started - Examples",
       "referenceUrl": "https://design.cms.gov/startup/examples/",
       "url": "http://localhost:3000/startup/examples/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Getting Started - Migrating to v2",
+      "referenceUrl": "https://design.cms.gov/startup/migrating-v2/",
+      "url": "http://localhost:3000/startup/migrating-v2/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -97,9 +103,9 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Guidelines - Themeing",
-      "referenceUrl": "https://design.cms.gov/guidelines/themes/",
-      "url": "http://localhost:3000/guidelines/themes/",
+      "label": "CMSDS - Guidelines - Theming",
+      "referenceUrl": "https://design.cms.gov/startup/theming/",
+      "url": "http://localhost:3000/startup/theming/",
       "removeSelectors": ["#frame"]
     },
     {

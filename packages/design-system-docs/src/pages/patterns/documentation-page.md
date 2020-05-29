@@ -2,7 +2,7 @@
 title: Documentation page
 markup: documentation-page.example.html
 responsive: true
-uswds: https://standards.usa.gov/page-templates/
+uswds: https://designsystem.digital.gov/page-templates/
 usage: |
   A documentation page presents information on a certain theme, topic, or idea. People often arrive here after visiting the landing page or after searching for a specific piece of information, so documentation pages don’t need to provide as much contextualizing information as more introductory pages would.
 ---

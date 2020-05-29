@@ -1,7 +1,7 @@
 const { logTask } = require('../../common/logUtil');
 
 /**
- * Remove pages with duplicate references, giving precedence to theme files
+ * Remove pages with duplicate references, giving precedence to child design system files
  * @param {Array} pages
  * @return {Array} pages without duplicates
  */

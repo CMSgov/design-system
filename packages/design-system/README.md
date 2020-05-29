@@ -3,9 +3,9 @@ This package contains the following design system assets:
 - Base styles
 - Utility classes
 - Sass/CSS and React components
-- Sass mixins and variables
 - Responsive flexbox grid framework
 - Fonts and images
+- Sass mixins and variables
 
 ## Installation
 
@@ -47,20 +47,17 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 
 ```
 └── dist
-    ├── fonts
-    ├── images
     ├── index.css       Compiled CSS
     ├── index.js        Compiled JSS
-    ├── index.scss      Uncompiled SCSS
-    ├── components      React component source, test & example files
+    ├── index.scss      SASS entrypoint
+    ├── fonts/
+    ├── images/
+    ├── components/      React component JS files
     │   ├── Button
     │   └── etc...
-    ├── utilities       Utility classes for modifying individual CSS properties
-    │   ├── text-color
-    │   └── etc...
-    └── styles
-        ├── settings    Global variables, mixins, and functions
-        ├── grid        Responsive flexbox grid utilities
-        ├── typography
-        └── etc...
+    └── styles/
+        ├── settings/    Global variables, mixins, and functions
+        ├── base/        Base styles, HTML element selectors
+        ├── components/  Component styles
+        └── utilities/   Utility classes for individual CSS properties
 ```

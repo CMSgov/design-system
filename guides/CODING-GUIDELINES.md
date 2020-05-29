@@ -1,6 +1,6 @@
 # Coding guidelines
 
-Our coding guidelines are enforced by our linting process, which gets ran automatically when a pull request is created. You can also manually run the linter by running `yarn test`.
+Our coding guidelines are enforced by our linting process, which gets ran automatically when a pull request is created. You can also manually run the linter by running `yarn lint`.
 
 These should be treated as guides — rules can be modified according to project needs.
 

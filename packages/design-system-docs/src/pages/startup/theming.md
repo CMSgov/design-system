@@ -1,9 +1,11 @@
 ---
 title: Theming
-weight: 10
+weight: 5
 ---
 
-The design system supports the ability to "theme" certain aspects like its color palette, type scale, and spacing. There are a few ways to accomplish this.
+The design system supports the ability to customize or theme certain styles like its color palette, type scale, and spacing. This is accomplished by overriding the default Sass variables or CSS declarations.
+
+Theming does not extend the functionality of the design system – i.e., it does not add new components, or modify the functionality of existing ones. If you wish to customize React components and publish your modifications as a new design system, consider creating a [child design system](/startup/child-design-systems).
 
 ## Sass variables
 
@@ -20,7 +22,7 @@ To override Sass variables, create a new `.sass` or `.scss` file where you will 
 $color-primary: #ff0000;
 ```
 
-Then, in your main stylesheet, import your overrides file _before_ you [import the design system's Sass files](/startup/sass-and-css/#sass):
+Then, in your main stylesheet, import your overrides file _before_ you [import the design system's Sass files]({{root}}/startup/sass-and-css/#sass):
 
 ```css
 /* main.scss */
@@ -34,15 +36,14 @@ Sass variables are documented on the relevant documentation pages, and are defin
 
 - [Breakpoints]({{root}}/guidelines/responsive/)
 - [Colors]({{root}}/styles/color/)
-- [Spacing]({{root}}/layout/spacing/)
+- [Spacing]({{root}}/styles/spacing/)
 - [Type sizes]({{root}}/styles/typography/)
-- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/).
+- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
 
 ## CSS declarations
 
-If you're not using Sass, another way to "theme" the design system is by overriding its CSS declarations. This isn't the most ideal solution since it'll require extra work on your end. It also means you'll be introducing more declarations. Be conscious of this and keep an eye on your file size. If you find yourself overriding a large portion of the design system, consider switching to Sass so you can take advantage of Sass variables.
+If you're not using Sass, another way to customize the design system is by overriding its CSS declarations. This isn't the most ideal solution since it'll require extra work on your end. It also means you'll be introducing more declarations. Be conscious of this and keep an eye on your file size. If you find yourself overriding a large portion of the design system, consider switching to Sass so you can take advantage of Sass variables.
 
 ## Learn more
 
-- [Previewing and compiling themes](https://design.cms.gov/startup/site-package/#previewing-your-site-package)
 - [View an example project with a Sass build process](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
