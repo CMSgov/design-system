@@ -2,15 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableHeader = ({
-  titleTag,
-  title,
-  type,
-  width,
-  scope,
-  className,
-  ...attributeOptions
-}) => {
+export const TableHeader = (props) => {
+  const { stackedTitle, title, type, width, scope, className, ...attributeOptions } = props;
+
   const classes = classNames(
     'ds-c-table__header',
     className,
@@ -25,7 +19,7 @@ export const TableHeader = ({
       scope={scope}
       {...attributeOptions}
     >
-      {titleTag}
+      {stackedTitle}
       {title}
     </th>
   );
@@ -34,7 +28,7 @@ export const TableHeader = ({
 TableHeader.defaultProps = {
   className: '',
   scope: 'col',
-  titleTag: '',
+  stackedTitle: '',
   type: 'text',
 };
 
@@ -62,7 +56,7 @@ TableHeader.propTypes = {
   /**
    * The stacked row title for responsive table accessiblity.
    */
-  titleTag: PropTypes.PropTypes.node,
+  stackedTitle: PropTypes.PropTypes.node,
 };
 
 export default TableHeader;

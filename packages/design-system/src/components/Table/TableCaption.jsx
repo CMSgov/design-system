@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableCaption = ({ tableCaption, className, ...attributeOptions }) => {
+export const TableCaption = ({ tableCaption, children, className, ...attributeOptions }) => {
   const classes = classNames('ds-c-table__caption', className);
 
   return (
     <caption className={classes} {...attributeOptions}>
       {tableCaption}
+      {children}
     </caption>
   );
 };
@@ -17,6 +18,10 @@ TableCaption.defaultProps = {
 };
 
 TableCaption.propTypes = {
+  /**
+   * The table caption content.
+   */
+  children: PropTypes.node,
   /**
    * Title of the table caption.
    */

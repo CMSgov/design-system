@@ -1,141 +1,118 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableBody from './TableBody';
-import TableCaption from './TableCaption';
 import TableCell from './TableCell';
 import TableHead from './TableHead';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
-export const Table = (props) => {
-  const {
-    caption,
-    captionClassName,
-    className,
-    data,
-    firstCellIsHeader,
-    headers,
-    stacked,
-    striped,
-    ...attributeOptions
-  } = props;
+export class Table extends React.PureComponent {
+  createStackedTitle(title) {
+    return (
+      <span
+        aria-hidden="true"
+        className="ds-c-table--stacked__col-header ds-u-font-weight--bold ds-u-padding-bottom--2"
+      >
+        {title}
+      </span>
+    );
+  }
 
-  const classes = classNames(
-    'ds-c-table',
-    striped === true ? 'ds-c-table--striped' : '',
-    stacked === true ? 'ds-c-table--stacked' : '',
-    className
-  );
+  render() {
+    const {
+      caption,
+      captionClassName,
+      className,
+      data,
+      firstCellIsHeader,
+      headers,
+      stacked,
+      striped,
+      ...attributeOptions
+    } = this.props;
 
-  return (
-    <table className={classes} role="table" {...attributeOptions}>
-      {caption && <TableCaption tableCaption={caption} />}
+    const classes = classNames(
+      'ds-c-table',
+      striped ? 'ds-c-table--striped' : '',
+      stacked ? `ds-c-table--stacked-${stacked}` : '',
+      className
+    );
 
-      <TableHead>
-        <TableRow>
-          {headers.map((header) => {
-            if (stacked) {
-              return (
-                <TableHeader
-                  key={header.key}
-                  title={header.title}
-                  type={header.type}
-                  width={header.width}
-                  scope="col"
-                  id={header.key}
-                />
-              );
-            } else {
-              return (
-                <TableHeader
-                  key={header.key}
-                  title={header.title}
-                  type={header.type}
-                  width={header.width}
-                  scope="col"
-                />
-              );
-            }
-          })}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((row) => (
-          <TableRow key={row}>
+    const tableId = uniqueId('tbl_') + '_';
+
+    const theadMarkup = (
+      <TableRow>
+        {headers.map((header) => {
+          return (
+            <TableHeader
+              key={header.key}
+              title={header.title}
+              type={header.type}
+              width={header.width}
+              scope="col"
+              id={tableId + 'col_' + header.key}
+            />
+          );
+        })}
+      </TableRow>
+    );
+
+    const tbodyMarkup = (
+      <>
+        {data.map((row, rowIndex) => (
+          <TableRow key={uniqueId('row_')}>
             {headers.map((header, columnIndex) => {
               // render first cell in rows as a header?
               if (columnIndex === 0 && firstCellIsHeader === true) {
-                if (stacked) {
-                  return (
-                    <TableHeader
-                      key={header.key}
-                      scope="row"
-                      title={row[header.key] ? row[header.key] : ''}
-                      headers={header.key}
-                      titleTag={
-                        <span
-                          aria-hidden="true"
-                          className="ds-c-table--stacked__col-header ds-u-font-weight--bold"
-                        >
-                          {header.title}
-                          <br />
-                        </span>
-                      }
-                    />
-                  );
-                } else {
-                  return (
-                    <TableHeader
-                      key={header.key}
-                      scope="row"
-                      title={row[header.key] ? row[header.key] : ''}
-                    />
-                  );
-                }
+                return (
+                  <TableHeader
+                    key={header.key}
+                    scope="row"
+                    title={row[header.key] ? row[header.key] : ''}
+                    headers={header.key}
+                    id={tableId + 'row_' + rowIndex}
+                    stackedTitle={stacked && this.createStackedTitle(header.title)}
+                  />
+                );
               } else {
-                if (stacked) {
-                  return (
-                    <TableCell
-                      key={header.key}
-                      data={row[header.key] ? row[header.key] : ''}
-                      type={header.type}
-                      headers={header.key}
-                      titleTag={
-                        <span
-                          aria-hidden="true"
-                          className="ds-c-table--stacked__col-header ds-u-font-weight--bold"
-                        >
-                          {header.title}
-                          <br />
-                        </span>
-                      }
-                    />
-                  );
-                } else {
-                  return (
-                    <TableCell
-                      key={header.key}
-                      data={row[header.key] ? row[header.key] : ''}
-                      type={header.type}
-                      cellFunc={header.cellFunc ? header.cellFunc(row[header.key], row) : null}
-                    />
-                  );
-                }
+                return (
+                  <TableCell
+                    key={header.key}
+                    data={row[header.key] ? row[header.key] : ''}
+                    type={header.type}
+                    headers={
+                      tableId +
+                      'col_' +
+                      header.key +
+                      ' ' +
+                      (firstCellIsHeader === true && tableId + 'row_' + rowIndex)
+                    }
+                    stackedTitle={stacked && this.createStackedTitle(header.title)}
+                    render={header.render ? header.render(row[header.key], row) : null}
+                  />
+                );
               }
             })}
           </TableRow>
         ))}
-      </TableBody>
-    </table>
-  );
-};
+      </>
+    );
+
+    return (
+      <table className={classes} role="table" {...attributeOptions}>
+        {/* {caption && <TableCaption tableCaption={caption} className={captionClassName} />} */}
+        <TableHead>{theadMarkup}</TableHead>
+        <TableBody>{tbodyMarkup}</TableBody>
+      </table>
+    );
+  }
+}
 
 Table.defaultProps = {
   captionClassName: '',
   className: '',
-  stacked: false,
-  striped: false,
 };
 
 Table.propTypes = {
@@ -164,9 +141,9 @@ Table.propTypes = {
    */
   headers: PropTypes.arrayOf(Object).isRequired,
   /**
-   * Responsive design to stack cells on detacting the viewpoint is smaller than the media breakpoint width.
+   * Responsive design breakpoint prefix to apply stack cells style at different viewpoint sizes.
    */
-  stacked: PropTypes.bool,
+  stacked: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
    * A striped variation of the table.
    */

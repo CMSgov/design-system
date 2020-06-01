@@ -1,3 +1,12 @@
+import {
+  TableBody,
+  TableBuilder,
+  TableCaption,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableWrapper,
+} from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactPropDoc from './ReactPropDoc';
@@ -22,32 +31,22 @@ class ReactPropDocs extends React.PureComponent {
     // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
     return [
       <h3 key="propDocsHeader">Props</h3>,
-      <div key="propDocsTable" className="docs_table--container">
-        <table className="ds-c-table ds-c-table--borderless docs_table" role="table">
-          <caption>
-            <span className="ds-u-padding--1 ds-u-visibility--screen-reader">
-              React Properties Documentation
-            </span>
-          </caption>
-          <thead>
-            <tr role="row">
-              <th id="columnname" role="columnheader" scope="col">
-                Name
-              </th>
-              <th id="columntype" role="columnheader" scope="col">
-                Type
-              </th>
-              <th id="columndefault" role="columnheader" scope="col">
-                Default
-              </th>
-              <th id="columndescription" role="columnheader" scope="col">
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>{this.rows()}</tbody>
-        </table>
-      </div>,
+      <TableWrapper key="propDocsTable">
+        <TableBuilder stacked="sm">
+          <TableCaption className="ds-u-visibility--screen-reader">
+            React Properties Documentation
+          </TableCaption>
+          <TableHead>
+            <TableRow>
+              <TableHeader type="text" title="Name" scope="col" />
+              <TableHeader type="text" title="Type" scope="col" />
+              <TableHeader type="text" title="Default" scope="col" />
+              <TableHeader type="text" title="Description" scope="col" />
+            </TableRow>
+          </TableHead>
+          <TableBody>{this.rows()}</TableBody>
+        </TableBuilder>
+      </TableWrapper>,
     ];
   }
 }

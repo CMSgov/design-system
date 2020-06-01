@@ -1,6 +1,7 @@
 /**
  * Render a table row for a single property
  */
+import { TableCell, TableRow } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -71,37 +72,33 @@ class ReactPropDoc extends React.PureComponent {
   render() {
     // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
     return (
-      <tr role="row">
-        <td role="cell" headers="columnname">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Name
-            <br />
-          </span>
-          <code className="ds-u-font-weight--bold">{this.props.name}</code>
-          {this.isRequired()}
-        </td>
-        <td role="cell" headers="columntype">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Type
-            <br />
-          </span>
-          <code>{this.type()}</code>
-        </td>
-        <td role="cell" headers="columndefault">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Default
-            <br />
-          </span>
-          {this.defaultValue()}
-        </td>
-        <td role="cell" headers="columndescription">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Description
-            <br />
-          </span>
-          {this.description()}
-        </td>
-      </tr>
+      <TableRow>
+        <TableCell
+          data={
+            <>
+              <code className="ds-u-font-weight--bold">{this.props.name}</code>
+              {this.isRequired()}
+            </>
+          }
+          headers="columnname"
+          colheading="Name"
+        />
+        <TableCell
+          data={
+            <>
+              <code>{this.type()}</code>
+            </>
+          }
+          headers="columntype"
+          colheading="Type"
+        />
+        <TableCell data={<>{this.defaultValue()}</>} headers="columndefault" colheading="Default" />
+        <TableCell
+          data={<>{this.description()}</>}
+          headers="columndescription"
+          colheading="Description"
+        />
+      </TableRow>
     );
   }
 }

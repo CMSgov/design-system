@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableCell = ({ className, cellFunc, data, titleTag, type, ...attributeOptions }) => {
+export const TableCell = ({ className, render, data, stackedTitle, type, ...attributeOptions }) => {
   const classes = classNames(
     'ds-c-table__cell',
     className,
@@ -11,15 +11,15 @@ export const TableCell = ({ className, cellFunc, data, titleTag, type, ...attrib
 
   return (
     <td className={classes} role="cell" {...attributeOptions}>
-      {titleTag}
-      {cellFunc || data}
+      {stackedTitle}
+      {render || data}
     </td>
   );
 };
 
 TableCell.defaultProps = {
   className: '',
-  titleTag: '',
+  stackedTitle: '',
   type: 'text',
 };
 
@@ -27,7 +27,7 @@ TableCell.propTypes = {
   /**
    * Customised function to render for the cell
    */
-  cellFunc: PropTypes.node,
+  render: PropTypes.node,
   /**
    * Additional classes to be added to the table cell element.
    */
@@ -39,7 +39,7 @@ TableCell.propTypes = {
   /**
    * The stacked row title for responsive table accessiblity.
    */
-  titleTag: PropTypes.node,
+  stackedTitle: PropTypes.node,
   /**
    * Type of the data, can be either text or numeric for left or right alignment respectively.
    */

@@ -19,6 +19,7 @@ export * from './components/Spinner/Spinner';
 export * from './components/StepList/StepList';
 export * from './components/Table/Table';
 export * from './components/Table/TableBody';
+export * from './components/Table/TableBuilder';
 export * from './components/Table/TableCaption';
 export * from './components/Table/TableCell';
 export * from './components/Table/TableHead';

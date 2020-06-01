@@ -20,7 +20,7 @@ TableWrapper.propTypes = {
   /**
    * The table wrapper content.
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the table wrapper element.
    */

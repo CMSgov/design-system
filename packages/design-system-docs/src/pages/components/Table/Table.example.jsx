@@ -30,17 +30,15 @@ const simpleData = [
 ];
 
 ReactDOM.render(
-  <div>
-    <TableWrapper>
-      <Table
-        caption="System of Government"
-        headers={simpleHeaders}
-        data={simpleData}
-        striped
-        stacked
-        firstCellIsHeader
-      />
-    </TableWrapper>
-  </div>,
+  <TableWrapper>
+    <Table
+      caption="System of Government"
+      headers={simpleHeaders}
+      data={simpleData}
+      striped
+      stacked="md"
+      firstCellIsHeader
+    />
+  </TableWrapper>,
   document.getElementById('js-example')
 );

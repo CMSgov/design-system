@@ -40,48 +40,68 @@
   }
 }
 
-.ds-c-table--stacked {
-  @media only screen and (max-width: $width-sm) {
+@mixin ds-c-table--stacked {
+  border: 0;
+
+  thead tr {
+    /* Hide column headings when responsive table stacked vertically on smaller viewports */
+    // ds-u-visibility--screen-reader
     border: 0;
-
-    thead tr {
-      /* Hide column headings when responsive table stacked vertically on smaller viewports */
-      // @include ds-u-visibility--screen-reader-mixin();
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      height: 1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-      // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
-      word-wrap: normal;
-    }
-
-    tr {
-      border: 1px solid $color-gray;
-      margin: 0 0 0.5rem;
-    }
-
-    td {
-      border: 0;
-      border-top: 1px solid $color-gray-lighter;
-    }
-
-    tr,
-    th,
-    td,
-    caption {
-      display: block;
-    }
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+    word-wrap: normal;
   }
 
-  @media only screen and (min-width: $width-sm) {
-    /* Hide individual cell heading reserved for responsive table */
-    .ds-c-table--stacked__col-header {
-      display: none;
-    }
+  tr {
+    border: 1px solid $color-gray;
+    margin: 0 0 0.5rem;
   }
+
+  td {
+    border: 0;
+    border-top: 1px solid $color-gray-lighter;
+  }
+
+  tr,
+  th,
+  td,
+  caption {
+    display: block;
+  }
+
+  /* Display individual cell heading reserved for stacked responsive table */
+  .ds-c-table--stacked__col-header {
+    border: 0;
+    display: block;
+  }
+}
+
+.ds-c-table--stacked-sm {
+  @media only screen and (max-width: $width-sm) {
+    @include ds-c-table--stacked;
+  }
+}
+
+.ds-c-table--stacked-md {
+  @media only screen and (max-width: $width-md) {
+    @include ds-c-table--stacked;
+  }
+}
+
+.ds-c-table--stacked-lg {
+  @media only screen and (max-width: $width-lg) {
+    @include ds-c-table--stacked;
+  }
+}
+
+/* Hide individual cell heading reserved for stacked responsive table */
+.ds-c-table--stacked__col-header {
+  display: none;
 }
 
 .ds-c-table--striped tbody {
