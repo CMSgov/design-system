@@ -14,7 +14,8 @@
     "babel-loader": "^8.0.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^3.1.0",
-    "webpack": "^4.42.1"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "sideEffects": false,
   "scripts": {
