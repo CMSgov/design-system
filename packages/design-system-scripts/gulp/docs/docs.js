@@ -51,7 +51,7 @@ async function extractReactDocs(sourceDir, docsDir, options) {
 function copySourceAssets(sourceDir, docsDir) {
   logTask('🏞  ', `Copying fonts and images from source package into ${path.join(docsDir, 'dist')}`);
   // Handle rootPath when copying
-  return copyAssets(sourceDir, docsDir);
+  return copyAssets(path.join(sourceDir, 'dist'), path.join(docsDir, 'dist'));
 }
 
 /**
@@ -61,7 +61,7 @@ function copySourceAssets(sourceDir, docsDir) {
 function copyDocsAssets(docsDir) {
   logTask('🏞  ', `Copying fonts and images from docs packages into ${path.join(docsDir, 'dist')}`);
   // Handle rootPath when copying
-  return copyAssets(docsDir);
+  return copyAssets(path.join(docsDir, 'src'), path.join(docsDir, 'dist'));
 }
 
 module.exports = {

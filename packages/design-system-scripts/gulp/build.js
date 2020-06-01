@@ -41,13 +41,17 @@ function copySass(dir) {
 }
 
 async function copyAll(dir) {
-  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
+  const copyTasks = [
+    copyJson(dir),
+    copySass(dir),
+    copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
+  ];
 
   const sources = await getSourceDirs(dir);
   if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
     logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(sources[0], dir));
+    copyTasks.push(copyAssets(path.join(sources[0], 'dist'), path.join(dir, 'dist')));
   }
 
   return Promise.all(copyTasks);
