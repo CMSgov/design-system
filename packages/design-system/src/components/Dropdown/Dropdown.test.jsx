@@ -121,6 +121,12 @@ describe('Dropdown', () => {
     expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(true);
   });
 
+  it('has error', () => {
+    const data = render({ errorMessage: 'Error' });
+
+    expect(data.wrapper.find('select').hasClass('ds-c-field--error')).toBe(true);
+  });
+
   it('focuses the select when focusTrigger is passed', () => {
     const data = render(
       {
@@ -134,18 +140,6 @@ describe('Dropdown', () => {
     setTimeout(() => {
       expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
     }, 20);
-  });
-
-  describe('has error', () => {
-    let data;
-
-    beforeEach(() => {
-      data = render({ errorMessage: 'Error' });
-    });
-
-    it('adds error class to field', () => {
-      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--error')).toBe(true);
-    });
   });
 
   describe('event handlers', () => {
