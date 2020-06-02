@@ -30,9 +30,24 @@ export const Step = ({ step, ...props }) => {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
   const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
-  const actionsLabel = actionsLabelText.replace('%{step}', step.heading || step.title);
-  const substepsLabel = substepsLabelText.replace('%{step}', step.heading || step.title);
-  const descriptionLabel = descriptionLabelText.replace('%{step}', step.heading || step.title);
+  const actionsLabel =
+    actionsLabelText === ''
+      ? {}
+      : {
+          'aria-label': actionsLabelText.replace('%{step}', step.heading || step.title),
+        };
+  const substepsLabel =
+    substepsLabelText === ''
+      ? {}
+      : {
+          'aria-label': substepsLabelText.replace('%{step}', step.heading || step.title),
+        };
+  const descriptionLabel =
+    descriptionLabelText === ''
+      ? {}
+      : {
+          'aria-label': descriptionLabelText.replace('%{step}', step.heading || step.title),
+        };
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -54,12 +69,12 @@ export const Step = ({ step, ...props }) => {
       <div className={contentClassName}>
         <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
         {step.description && (
-          <div className="ds-c-step__description" aria-label={descriptionLabel}>
+          <div className="ds-c-step__description" {...descriptionLabel}>
             {step.description}
           </div>
         )}
         {step.steps && (
-          <ol className="ds-c-step__substeps" aria-label={substepsLabel}>
+          <ol className="ds-c-step__substeps" {...substepsLabel}>
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
@@ -70,7 +85,7 @@ export const Step = ({ step, ...props }) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" aria-label={actionsLabel}>
+      <div className="ds-c-step__actions" {...actionsLabel}>
         {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
         {linkLabel && (
           <StepLink

@@ -74,16 +74,19 @@ StepList.propTypes = {
   /**
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.
+   * To remove `aria-label` from a step's actions,  set `actionsLabelText=""`
    */
   actionsLabelText: PropTypes.string.isRequired,
   /**
    * A template string for the aria-label for a step's description where
    * the substring `%{step}` is replaced with that step's `heading`.
+   * To remove `aria-label` from a step's description,  set `descriptionLabelText=""`
    */
   descriptionLabelText: PropTypes.string.isRequired,
   /**
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
+   * To remove `aria-label` from a step's subseps,  set `substepsLabelText=""`
    */
   substepsLabelText: PropTypes.string.isRequired,
 };
