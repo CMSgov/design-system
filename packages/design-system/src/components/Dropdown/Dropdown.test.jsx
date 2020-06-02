@@ -136,6 +136,18 @@ describe('Dropdown', () => {
     }, 20);
   });
 
+  describe('has error', () => {
+    let data;
+
+    beforeEach(() => {
+      data = render({ errorMessage: 'Error' });
+    });
+
+    it('adds error class to field', () => {
+      expect(data.wrapper.find('.ds-c-field').first().hasClass('ds-c-field--error')).toBe(true);
+    });
+  });
+
   describe('event handlers', () => {
     let wrapper;
     let onBlurMock;
