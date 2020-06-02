@@ -19,6 +19,11 @@ export const Step = ({ step, ...props }) => {
     }
   }
 
+  const getAriaLabel = (text) => {
+    const isValidTemplate = text && text.length > 0;
+    const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
+    return { 'aria-label': label };
+  };
   const Heading = `h${step.headingLevel || '2'}`;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
@@ -30,24 +35,9 @@ export const Step = ({ step, ...props }) => {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
   const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
-  const actionsLabel =
-    actionsLabelText === ''
-      ? {}
-      : {
-          'aria-label': actionsLabelText.replace('%{step}', step.heading || step.title),
-        };
-  const substepsLabel =
-    substepsLabelText === ''
-      ? {}
-      : {
-          'aria-label': substepsLabelText.replace('%{step}', step.heading || step.title),
-        };
-  const descriptionLabel =
-    descriptionLabelText === ''
-      ? {}
-      : {
-          'aria-label': descriptionLabelText.replace('%{step}', step.heading || step.title),
-        };
+  const actionsLabel = getAriaLabel(actionsLabelText);
+  const substepsLabel = getAriaLabel(substepsLabelText);
+  const descriptionLabel = getAriaLabel(descriptionLabelText);
 
   let linkLabel;
   if (step.completed && !step.steps) {
