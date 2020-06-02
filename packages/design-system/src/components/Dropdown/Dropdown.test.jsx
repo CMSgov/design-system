@@ -121,6 +121,12 @@ describe('Dropdown', () => {
     expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(true);
   });
 
+  it('has error', () => {
+    const data = render({ errorMessage: 'Error' });
+
+    expect(data.wrapper.find('select').hasClass('ds-c-field--error')).toBe(true);
+  });
+
   it('focuses the select when focusTrigger is passed', () => {
     const data = render(
       {
