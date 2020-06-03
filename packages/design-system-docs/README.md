@@ -12,4 +12,4 @@ This package is used to build a documentation site for CMS core and child design
 
 Please [submit an issue on GitHub](https://github.com/CMSgov/design-system) for any bugs or feature requests.
 
-To learn how documentation is generated, view the ["Writing documentation"](https://github.com/CMSgov/design-system/wiki/writing-documentation) page in the wiki.
+To learn how documentation is generated, view the ["Writing documentation"](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md) page.

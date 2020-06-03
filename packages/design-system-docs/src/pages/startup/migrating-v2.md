@@ -20,23 +20,60 @@ The `core`, `support`, `layout` npm packages have been deprecated and replaced w
 
 ```
 
-## Importing JavaScript and Sass
+## Folder structure
 
-Moving forward in v2, we will be distributing `sass` files in the `dist` directory in the `@cmsgov/design-system` npm package. If you were importing JavaScript or Sass directly from our packages’ `src` directories, it's recommended you update your import paths to import from `dist`.
-
-For JavaScript imports, this will likely result in no changes. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly, so your project likely will not contain any `src` folder imports for React components.
-
-For your Sass imports, we recommend everyone to update your import paths. We previously did not distribute the Sass files in our packages’ `dist` directories, so you likely had an import path that looked like this:
+The `dist` folder structure has been updated for the `@cmsgov/design-system` npm package. We recommend only importing files from the `dist` directory moving forward.
 
 ```
-@import "~@cmsgov/design-system-core/src/index.scss";
+└── @cmsgov/design-system/dist
+    ├── components/
+    │   └── index.js      Compiled JS (CommmonJS)
+    ├── css/
+    │   └── index.css     Compiled CSS
+    ├── esnext/
+    │   └── index.esm.js  Compiled JS (ES Module)
+    ├── fonts/
+    ├── images/
+    └── scss/             Uncompiled CSS
+```
+
+### Importing SCSS/CSS
+
+If you were importing Sass directly from our packages’ `src` directories, we recommended to update your import paths to import from `dist`.
+
+We previously did not distribute the Sass files in our packages’ `dist` directories, so you likely had an import path that looked like this:
+
+```
+@import "~@cmsgov/design-system-core/src/index";
 ```
 
 In v2, it will be changed to
 
 ```
-@import "~@cmsgov/design-system/dist/index.scss";
+@import "~@cmsgov/design-system/dist/scss/index";
 ```
+
+Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are now included in the main `scss` entry point. If you would like to only import specific styles, see the `@cmsgov/design-system` [`README.md`](https://github.com/CMSgov/design-system/blob/master/packages/design-system/README.md) for more info on our SASS architecture.
+
+Legacy imports:
+
+```
+@import '~@cmsgov/design-system-layout/src/index';
+@import '~@cmsgov/design-system-support/src/index';
+```
+
+New locations of legacy packages:
+
+```
+@import '~@cmsgov/design-system/dist/scss/settings/index';
+@import '~@cmsgov/design-system/dist/scss/base/grid';
+```
+
+### Importing Javascript
+
+For Javascript imports, v2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to use the new entry point when possible, so for most users this won't require any changes. See the documentation on [importing React components]({{root}}/startup/components/) for more information on importing Javascript and ES module support.
+
+Your project should also not contain any contain any `src` folder imports for React components. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly.
 
 ## Fonts and Images
 
@@ -47,7 +84,6 @@ If you’re using a tool like webpack to collect the images and fonts during you
 ```
 $font-path: "~@cmsgov/design-system-core/fonts";
 $image-path: "~@cmsgov/design-system-core/images";
-@import "~@cmsgov/design-system-core/src/index.scss";
 ```
 
 When migrating to v2, it will need to be changed to:
@@ -55,7 +91,6 @@ When migrating to v2, it will need to be changed to:
 ```
 $font-path: "~@cmsgov/design-system/dist/fonts";
 $image-path: "~@cmsgov/design-system/dist/images";
-@import "~@cmsgov/design-system/dist/index.scss";
 ```
 
 ## A note on versioning
