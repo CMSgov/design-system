@@ -75,17 +75,17 @@ StepList.propTypes = {
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  actionsLabelText: PropTypes.string.isRequired,
+  actionsLabelText: PropTypes.string,
   /**
    * A template string for the aria-label for a step's description where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  descriptionLabelText: PropTypes.string.isRequired,
+  descriptionLabelText: PropTypes.string,
   /**
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  substepsLabelText: PropTypes.string.isRequired,
+  substepsLabelText: PropTypes.string,
 };
 
 export default StepList;
