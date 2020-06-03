@@ -127,7 +127,7 @@ export class Choice extends React.PureComponent {
         >
           {children}
         </FormLabel>
-        {this.checked() ? this.renderCheckedChildren : uncheckedChildren}
+        {this.checked() ? this.renderCheckedChildren() : uncheckedChildren}
       </div>
     );
   }
