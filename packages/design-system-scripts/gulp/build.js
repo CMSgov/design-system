@@ -11,7 +11,7 @@ const gulp = require('gulp');
 const path = require('path');
 const rename = require('gulp-rename');
 const streamPromise = require('./common/streamPromise');
-const { compileSass } = require('./sass');
+const { compileSourceSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
@@ -135,7 +135,7 @@ module.exports = {
     await copyAll(sourceDir);
     await compileJs(sourceDir);
     await compileEsmJs(sourceDir);
-    await compileSass(sourceDir);
+    await compileSourceSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');
   },
