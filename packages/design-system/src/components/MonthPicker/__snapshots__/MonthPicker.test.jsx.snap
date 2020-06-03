@@ -44,9 +44,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
       >
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -74,9 +71,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -104,9 +98,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -134,9 +125,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -164,9 +152,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -194,9 +179,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -224,9 +206,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -254,9 +233,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -284,9 +260,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -314,9 +287,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -344,9 +314,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
@@ -374,9 +341,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
         </li>
         <li>
           <div
-            aria-atomic={null}
-            aria-live={null}
-            aria-relevant={null}
             className="ds-c-month-picker__month"
           >
             <input
