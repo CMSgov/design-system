@@ -16,10 +16,6 @@ Link.propTypes = { children: PropTypes.node };
 ReactDOM.render(
   <div style={{ maxWidth: '628px' }}>
     <StepList
-      completedText="Completed"
-      editText="Edit"
-      resumeText="Resume"
-      startText="Start"
       steps={[
         {
           id: 'taxYear',
