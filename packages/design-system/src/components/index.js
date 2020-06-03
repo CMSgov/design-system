@@ -1,3 +1,5 @@
+'use strict';
+
 export { Alert } from './Alert/Alert';
 export { Autocomplete } from './Autocomplete/Autocomplete';
 export { Badge } from './Badge/Badge';

@@ -8,9 +8,9 @@
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "dist/components/index.js",
+  "module": "dist/esnext/index.es.js",
+  "jsnext:main": "dist/esnext/index.es.js",
   "sideEffects": false,
   "dependencies": {
     "classnames": "^2.2.5",
