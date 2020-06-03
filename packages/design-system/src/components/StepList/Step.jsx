@@ -102,9 +102,9 @@ Step.propTypes = {
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,
   startText: PropTypes.string.isRequired,
-  actionsLabelText: PropTypes.string.isRequired,
-  descriptionLabelText: PropTypes.string.isRequired,
-  substepsLabelText: PropTypes.string.isRequired,
+  actionsLabelText: PropTypes.string,
+  descriptionLabelText: PropTypes.string,
+  substepsLabelText: PropTypes.string,
 };
 
 export default Step;
