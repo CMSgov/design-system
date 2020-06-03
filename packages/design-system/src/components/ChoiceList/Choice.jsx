@@ -67,6 +67,19 @@ export class Choice extends React.PureComponent {
     }
   }
 
+  renderCheckedChildren() {
+    if (this.props.checkedChildren && this.props.checkedChildren.type === 'div') {
+      const elementWithAriaInfo = React.cloneElement(this.props.checkedChildren, {
+        'aria-live': 'polite',
+        'aria-relevant': 'additions text',
+        'aria-atomic': 'false',
+      });
+      return elementWithAriaInfo;
+    }
+
+    return this.props.checkedChildren;
+  }
+
   render() {
     const {
       checkedChildren,
@@ -93,12 +106,7 @@ export class Choice extends React.PureComponent {
     if (inputProps.onChange) delete inputProps.onChange;
 
     return (
-      <div
-        className={className}
-        aria-live={checkedChildren ? 'polite' : null}
-        aria-relevant={checkedChildren ? 'additions text' : null}
-        aria-atomic={checkedChildren ? 'false' : null}
-      >
+      <div className={className}>
         <input
           className={inputClasses}
           id={this.id}
@@ -119,7 +127,7 @@ export class Choice extends React.PureComponent {
         >
           {children}
         </FormLabel>
-        {this.checked() ? checkedChildren : uncheckedChildren}
+        {this.checked() ? this.renderCheckedChildren : uncheckedChildren}
       </div>
     );
   }
