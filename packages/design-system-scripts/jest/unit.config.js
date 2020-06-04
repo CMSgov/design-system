@@ -13,11 +13,11 @@ module.exports = (rootDir, core) => ({
     ? {
         '^@cmsgov/design-system/(.*)$': `<rootDir>/${path.relative(
           rootDir,
-          'packages/design-system/src/$1'
+          'packages/design-system/$1'
         )}`,
         '^@cmsgov/design-system$': `<rootDir>/${path.relative(
           rootDir,
-          'packages/design-system/src/index.js'
+          'packages/design-system/src/components/index'
         )}`,
       }
     : {},

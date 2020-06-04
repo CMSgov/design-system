@@ -1,4 +1,4 @@
-import * as components from '../../index';
+import * as components from '../index';
 const fs = require('mz/fs');
 const path = require('path');
 const componentNames = Object.keys(components);
