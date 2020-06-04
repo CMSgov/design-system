@@ -37,7 +37,7 @@ HelpDrawerToggle.propTypes = {
   children: PropTypes.node.isRequired,
   /** Additional classes for the toggle button anchor element */
   className: PropTypes.string,
-  /** Add display inline or block to parent span */
+  /** Adds display inline or block style to the HelpDrawerToggle */
   inline: PropTypes.bool,
   /** This function is called with an id that the toggle generates. It can
    be used in implementing the help drawer for keeping track of the drawer the toggle controls */
