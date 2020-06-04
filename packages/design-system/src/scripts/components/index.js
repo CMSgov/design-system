@@ -1,3 +1,7 @@
+/**
+ * index.js - JS entry point
+ */
+
 'use strict';
 
 export { Alert } from './Alert/Alert';
