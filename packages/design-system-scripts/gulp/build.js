@@ -9,6 +9,7 @@ const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
 const path = require('path');
+const fs = require('fs');
 const streamPromise = require('./common/streamPromise');
 const { compileSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -40,16 +41,59 @@ function copySass(dir) {
 }
 
 async function copyAll(dir) {
-  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
+  const copyTasks = [
+    copyJson(dir),
+    copySass(dir),
+    copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
+  ];
 
   const sources = await getSourceDirs(dir);
   if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
     logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(sources[0], dir));
+    copyTasks.push(copyAssets(path.join(sources[0], 'dist'), path.join(dir, 'dist')));
   }
 
   return Promise.all(copyTasks);
+}
+
+/**
+ * Similar to compileJS but babel is configured for esmodules
+ */
+async function compileEsmJs(dir) {
+  const src = path.join(dir, 'src', 'components');
+
+  // Create esm entry file
+  await fs.writeFileSync(path.join(dir, 'dist', 'index.es.js'), `export * from './esnext';`);
+
+  return streamPromise(
+    gulp
+      .src([
+        `${src}/**/*.{js,jsx}`,
+        `!${src}/**/*.test.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
+      ])
+      .pipe(
+        babel({
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'entry',
+                corejs: '3.0.0',
+                modules: false,
+              },
+            ],
+            '@babel/preset-react',
+          ],
+          plugins: ['@babel/plugin-transform-object-assign'],
+        })
+      )
+      .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
+      .on('finish', function () {
+        logTask('📜 ', 'ES module JS files processed');
+      })
+  );
 }
 
 /**
@@ -87,6 +131,7 @@ module.exports = {
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
     await compileJs(sourceDir);
+    await compileEsmJs(sourceDir);
     await compileSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');

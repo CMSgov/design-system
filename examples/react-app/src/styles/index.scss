@@ -1,6 +1,10 @@
+// Update font and image paths relative to minified css path
+$font-path: '../fonts' !default;
+$image-path: '../images' !default;
+
 // In our Gulp Sass task, we've added node_modules to the list of paths that
 // are used to resolve @import declarations, so we omit it from the path below.
-@import '@cmsgov/design-system-core/src/index';
+@import '@cmsgov/design-system/dist/index.scss';
 
 .wrap {
   margin: auto;

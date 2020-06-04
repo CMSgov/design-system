@@ -1,8 +1,9 @@
-// Import all components and reference one by name. You can optimize this using
-// your build process (ie. Tree shaking in Webpack)
-import { Alert } from '@cmsgov/design-system-core';
-// Import individual component. No special optimizations needed.
-import Button from '@cmsgov/design-system-core/dist/components/Button/Button';
+// Named import from main entry file. This example has been configured to use Webpack's tree shaking
+// to only bundle imported components. Without this optimization, all components will be imported
+// your build process.
+import { Alert } from '@cmsgov/design-system';
+// Default import for individual component. No special optimizations needed.
+import Button from '@cmsgov/design-system/dist/components/Button/Button';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
