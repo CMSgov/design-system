@@ -9,10 +9,10 @@ const sass = require('gulp-sass');
 gulp.task('copy-design-system', function () {
   return gulp
     .src([
-      'node_modules/@cmsgov/design-system-core/**/fonts/*',
-      'node_modules/@cmsgov/design-system-core/**/images/*',
+      'node_modules/@cmsgov/design-system/dist/**/fonts/*',
+      'node_modules/@cmsgov/design-system/dist/**/images/*',
     ])
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist/'));
 });
 
 /**
@@ -30,4 +30,4 @@ gulp.task('sass', function () {
   return gulp.src('./src/styles/**/*.scss').pipe(transpiler).pipe(gulp.dest('./dist/styles'));
 });
 
-gulp.task('default', ['copy-design-system', 'sass']);
+gulp.task('default', gulp.series('copy-design-system', 'sass'));
