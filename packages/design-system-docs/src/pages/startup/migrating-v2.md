@@ -3,7 +3,7 @@ title: Migrating to v2
 weight: 11
 ---
 
-CMS Design System v2 introduces several breaking changes, and this migration guide will outline high-level steps to upgrade to the latest version.
+The CMS Design System v2 release introduces several breaking changes, and this migration guide outlines high-level steps to upgrade. See the [release notes](https://github.com/CMSgov/design-system/releases/tag/core-2.0.0) for a detailed list of changes.
 
 ## NPM packages
 
@@ -53,27 +53,13 @@ In v2, it will be changed to
 @import "~@cmsgov/design-system/dist/scss/index";
 ```
 
-Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are now included in the main `scss` entry point. If you would like to only import specific styles, see the `@cmsgov/design-system` [`README.md`](https://github.com/CMSgov/design-system/blob/master/packages/design-system/README.md) for more info on our SASS architecture.
-
-Legacy imports:
-
-```
-@import '~@cmsgov/design-system-layout/src/index';
-@import '~@cmsgov/design-system-support/src/index';
-```
-
-New locations of legacy packages:
-
-```
-@import '~@cmsgov/design-system/dist/scss/settings/index';
-@import '~@cmsgov/design-system/dist/scss/base/grid';
-```
+Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are now included in the main `scss` entry point. If you would like to only import specific styles, see the `@cmsgov/design-system` [`README.md`](https://github.com/CMSgov/design-system/blob/master/packages/design-system/README.md#file-structure) for more info on our SASS architecture.
 
 ### Importing Javascript
 
-For Javascript imports, v2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to use the new entry point when possible, so for most users this won't require any changes. See the documentation on [importing React components]({{root}}/startup/components/) for more information on importing Javascript and ES module support.
+V2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to point to the new ES module entry point when possible, so for most users this won't require any change. See the documentation on [importing React components]({{root}}/startup/components/#named-imports) for more information on importing Javascript and ES module support.
 
-Your project should also not contain any contain any `src` folder imports for React components. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly.
+Your project also should not contain any `src` folder imports for React components. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly.
 
 ## Fonts and Images
 
@@ -95,8 +81,8 @@ $image-path: "~@cmsgov/design-system/dist/images";
 
 ## A note on versioning
 
-When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/master/guides/RELEASE-PROCESS.md#versioning). These releases were not aligned with our product communication and marketing, and were limited to developer usage.
+When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/master/guides/RELEASE-PROCESS.md#versioning). These releases were also not aligned with our product communication and marketing, and were limited to developer usage.
 
-With this major release, we have an opportunity to correct past inconsistencies, and unify our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will be prefixed with `core-` (i.e. `core-2.0.0`).
+With this major release, we had an opportunity to correct past inconsistencies, and unify our versioning across NPM packages, our Sketch library, and product communication. Because we still have the same Github repo and release notes, we will be adopting a new naming convention for our release tags going forward; the version number will be prefixed with `core-` (i.e. `core-2.0.0`).
 
 This was a difficult decision to make, but we believe this will make things more consistent and simpler going forward.
