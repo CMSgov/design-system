@@ -9,9 +9,10 @@
     "release": "./prepublish.sh && yarn lerna publish from-git",
     "postinstall": "lerna bootstrap && npm link ./packages/design-system-scripts",
     "precommit": "lint-staged",
-    "test": "NODE_ENV=test yarn cmsds test ./packages --core",
-    "update-snapshots": "NODE_ENV=test yarn cmsds test ./packages --core --updateSnapshot",
+    "test": "yarn test:unit && yarn test:e2e",
+    "test:unit": "NODE_ENV=test yarn cmsds test ./packages --core",
     "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
+    "update-snapshots": "NODE_ENV=test yarn cmsds test ./packages --core --updateSnapshot",
     "posttest": "yarn lint",
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
   },
