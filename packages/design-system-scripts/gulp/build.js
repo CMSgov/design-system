@@ -87,8 +87,8 @@ async function compileEsmJs(dir) {
       )
       .pipe(
         rename((path) => {
-          // Updates the object in-place
           if (path.basename === 'index') {
+            // Renames `esnext/index.js` to `esnext/index.esm.js`
             path.extname = '.esm.js';
           }
         })

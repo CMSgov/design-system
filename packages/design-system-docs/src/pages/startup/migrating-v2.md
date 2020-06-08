@@ -39,7 +39,7 @@ The `dist` folder structure has been updated for the `@cmsgov/design-system` npm
 
 ### Importing SCSS/CSS
 
-If you were importing Sass directly from our packages’ `src` directories, we recommended to update your import paths to import from `dist`.
+If you were importing Sass directly from our packages’ `src` directories, we recommended updating your import paths to import from `dist`.
 
 We previously did not distribute the Sass files in our packages’ `dist` directories, so you likely had an import path that looked like this:
 
@@ -47,7 +47,7 @@ We previously did not distribute the Sass files in our packages’ `dist` direct
 @import "~@cmsgov/design-system-core/src/index";
 ```
 
-In v2, it will be changed to
+In CMSDS v2, it will be changed to
 
 ```
 @import "~@cmsgov/design-system/dist/scss/index";
