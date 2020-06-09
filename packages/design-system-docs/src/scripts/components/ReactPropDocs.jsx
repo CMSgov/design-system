@@ -1,11 +1,10 @@
 import {
+  Table,
   TableBody,
-  TableBuilder,
   TableCaption,
   TableHead,
   TableHeader,
   TableRow,
-  TableWrapper,
 } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -28,25 +27,24 @@ class ReactPropDocs extends React.PureComponent {
   }
 
   render() {
-    // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
+    const formattedScrollCaption = <small>Scroll using arrow keys to see more...</small>;
+
     return [
       <h3 key="propDocsHeader">Props</h3>,
-      <TableWrapper key="propDocsTable">
-        <TableBuilder stacked="sm">
-          <TableCaption className="ds-u-visibility--screen-reader">
-            React Properties Documentation
-          </TableCaption>
-          <TableHead>
-            <TableRow>
-              <TableHeader type="text" title="Name" scope="col" />
-              <TableHeader type="text" title="Type" scope="col" />
-              <TableHeader type="text" title="Default" scope="col" />
-              <TableHeader type="text" title="Description" scope="col" />
-            </TableRow>
-          </TableHead>
-          <TableBody>{this.rows()}</TableBody>
-        </TableBuilder>
-      </TableWrapper>,
+      <Table key="propDocsTable" stacked="sm" scrollTable>
+        <TableCaption scrollableCaption={formattedScrollCaption}>
+          React Properties Documentation
+        </TableCaption>
+        <TableHead>
+          <TableRow>
+            <TableHeader id="columnname" type="text" title="Name" scope="col" />
+            <TableHeader id="columntype" type="text" title="Type" scope="col" />
+            <TableHeader id="columndefault" type="text" title="Default" scope="col" />
+            <TableHeader id="columndescription" type="text" title="Description" scope="col" />
+          </TableRow>
+        </TableHead>
+        <TableBody>{this.rows()}</TableBody>
+      </Table>,
     ];
   }
 }

@@ -2,32 +2,59 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableCell = ({ className, render, data, stackedTitle, type, ...attributeOptions }) => {
+export const TableCell = ({
+  children,
+  className,
+  data,
+  stackedTitle,
+  stackedClassName,
+  type,
+  ...attributeOptions
+}) => {
   const classes = classNames(
     'ds-c-table__cell',
     className,
-    type === 'numeric' ? 'ds-c-table__cell--numeric' : ''
+    type === 'numeric' ? 'ds-c-table__cell--numeric' : null
   );
+
+  const stackedClasses = classNames(
+    'ds-c-table--stacked__col-header',
+    'ds-u-font-weight--bold',
+    stackedClassName
+  );
+
+  const renderStackedTitle = () => {
+    const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
+
+    return (
+      { isValidStackedTitle } && (
+        <span aria-hidden="true" className={stackedClasses}>
+          {stackedTitle}
+        </span>
+      )
+    );
+  };
 
   return (
     <td className={classes} role="cell" {...attributeOptions}>
-      {stackedTitle}
-      {render || data}
+      {renderStackedTitle()}
+      {data}
+      {children}
     </td>
   );
 };
 
 TableCell.defaultProps = {
   className: '',
-  stackedTitle: '',
+  stackedClassName: '',
   type: 'text',
 };
 
 TableCell.propTypes = {
   /**
-   * Customised function to render for the cell
+   * The table cell contents.
    */
-  render: PropTypes.node,
+  children: PropTypes.node,
   /**
    * Additional classes to be added to the table cell element.
    */
@@ -37,9 +64,17 @@ TableCell.propTypes = {
    */
   data: PropTypes.node.isRequired,
   /**
+   * The `headers` attribute contains a list of `id` attributes of the associated data. If there is more than one id, they are separated by spaces.
+   */
+  headers: PropTypes.string,
+  /**
+   * Additional classes to be added to the stacked Title element.
+   */
+  stackedClassName: PropTypes.string,
+  /**
    * The stacked row title for responsive table accessiblity.
    */
-  stackedTitle: PropTypes.node,
+  stackedTitle: PropTypes.string,
   /**
    * Type of the data, can be either text or numeric for left or right alignment respectively.
    */

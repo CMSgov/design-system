@@ -1,145 +1,106 @@
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
-import TableBody from './TableBody';
-import TableCell from './TableCell';
-import TableHead from './TableHead';
-import TableHeader from './TableHeader';
-import TableRow from './TableRow';
+import TableCaption from './TableCaption';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
-export class Table extends React.PureComponent {
-  createStackedTitle(title) {
-    return (
-      <span
-        aria-hidden="true"
-        className="ds-c-table--stacked__col-header ds-u-font-weight--bold ds-u-padding-bottom--2"
-      >
-        {title}
-      </span>
-    );
-  }
-
-  render() {
-    const {
-      caption,
-      captionClassName,
-      className,
-      data,
-      firstCellIsHeader,
-      headers,
-      stacked,
-      striped,
-      ...attributeOptions
-    } = this.props;
-
-    const classes = classNames(
-      'ds-c-table',
-      striped ? 'ds-c-table--striped' : '',
-      stacked ? `ds-c-table--stacked-${stacked}` : '',
-      className
-    );
-
-    const tableId = uniqueId('tbl_') + '_';
-
-    const theadMarkup = (
-      <TableRow>
-        {headers.map((header) => {
-          return (
-            <TableHeader
-              key={header.key}
-              title={header.title}
-              type={header.type}
-              width={header.width}
-              scope="col"
-              id={tableId + 'col_' + header.key}
-            />
-          );
-        })}
-      </TableRow>
-    );
-
-    const tbodyMarkup = (
-      <>
-        {data.map((row, rowIndex) => (
-          <TableRow key={uniqueId('row_')}>
-            {headers.map((header, columnIndex) => {
-              // render first cell in rows as a header?
-              if (columnIndex === 0 && firstCellIsHeader === true) {
-                return (
-                  <TableHeader
-                    key={header.key}
-                    scope="row"
-                    title={row[header.key] ? row[header.key] : ''}
-                    headers={header.key}
-                    id={tableId + 'row_' + rowIndex}
-                    stackedTitle={stacked && this.createStackedTitle(header.title)}
-                  />
-                );
-              } else {
-                return (
-                  <TableCell
-                    key={header.key}
-                    data={row[header.key] ? row[header.key] : ''}
-                    type={header.type}
-                    headers={
-                      tableId +
-                      'col_' +
-                      header.key +
-                      ' ' +
-                      (firstCellIsHeader === true && tableId + 'row_' + rowIndex)
-                    }
-                    stackedTitle={stacked && this.createStackedTitle(header.title)}
-                    render={header.render ? header.render(row[header.key], row) : null}
-                  />
-                );
-              }
-            })}
-          </TableRow>
-        ))}
-      </>
-    );
-
-    return (
-      <table className={classes} role="table" {...attributeOptions}>
-        {/* {caption && <TableCaption tableCaption={caption} className={captionClassName} />} */}
-        <TableHead>{theadMarkup}</TableHead>
-        <TableBody>{tbodyMarkup}</TableBody>
-      </table>
-    );
-  }
+function debounce(fn, ms) {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      fn.apply(this, arguments);
+    }, ms);
+  };
 }
 
+export const Table = ({
+  className,
+  stacked,
+  striped,
+  scrollTable,
+  children,
+  ...attributeOptions
+}) => {
+  const container = useRef(null);
+  const captionID = useRef('caption-' + Math.random().toString(36).substr(2, 9));
+  const [tabIndex, setTabIndex] = useState(null);
+
+  useEffect(() => {
+    if (scrollTable) {
+      const { scrollWidth, clientWidth } = container.current;
+      const scrollable = scrollWidth > clientWidth;
+      setTabIndex(scrollable ? '0' : null);
+
+      const debouncedHandleResize = debounce(function handleResize() {
+        const { scrollWidth, clientWidth } = container.current;
+        const scrollable = scrollWidth > clientWidth;
+        setTabIndex(scrollable ? '0' : null);
+      }, 1000);
+
+      // Create event listener that calls handler function
+      window.addEventListener('resize', debouncedHandleResize);
+
+      // Remove event listener on cleanup
+      return () => {
+        window.removeEventListener('resize', debouncedHandleResize);
+      };
+    }
+  });
+
+  const classes = classNames(
+    'ds-c-table',
+    striped ? 'ds-c-table--striped' : null,
+    stacked ? `ds-c-table--stacked-${stacked}` : null,
+    className
+  );
+
+  const attributeScrollTable = scrollTable && {
+    className: 'ds-c-table__wrapper',
+    role: 'region',
+    'aria-labelledby': captionID.current,
+  };
+
+  const isTableCaptionComponents = (child) => {
+    return child && child.type === TableCaption;
+  };
+
+  const renderChildren = (captionId) => {
+    return React.Children.map(children, (child) => {
+      if (scrollTable && isTableCaptionComponents(child)) {
+        // Extend props on tables before rendering.
+        return React.cloneElement(child, {
+          id: captionId,
+          scrollable: tabIndex === '0',
+        });
+      }
+
+      return child;
+    });
+  };
+
+  return (
+    <div ref={container} tabIndex={tabIndex} {...attributeScrollTable}>
+      <table className={classes} role="table" {...attributeOptions}>
+        {renderChildren(captionID.current)}
+      </table>
+    </div>
+  );
+};
+
 Table.defaultProps = {
-  captionClassName: '',
   className: '',
 };
 
 Table.propTypes = {
   /**
-   * The description or title of the table.
+   * The table contents, usually `TableCaption`, `TableHead` and `TableBody`.
    */
-  caption: PropTypes.string,
-  /**
-   * Additional classes to be added to the caption element.
-   */
-  captionClassName: PropTypes.string,
+  children: PropTypes.node.isRequired,
   /**
    * Additional classes to be added to the root table element.
    */
   className: PropTypes.string,
-  /**
-   * A list of all the rows to be rendered.
-   */
-  data: PropTypes.arrayOf(Object).isRequired,
-  /**
-   * Heading in the first cell of the body rows.
-   */
-  firstCellIsHeader: PropTypes.bool,
-  /**
-   * The table column headings.
-   */
-  headers: PropTypes.arrayOf(Object).isRequired,
   /**
    * Responsive design breakpoint prefix to apply stack cells style at different viewpoint sizes.
    */
@@ -148,6 +109,10 @@ Table.propTypes = {
    * A striped variation of the table.
    */
   striped: PropTypes.bool,
+  /**
+   * Horizontal scroll table.
+   */
+  scrollTable: PropTypes.bool,
 };
 
 export default Table;

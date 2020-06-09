@@ -127,6 +127,10 @@
       width: 25%;
     }
 
+    &.ds-c-table__header--width-30 {
+      width: 30%;
+    }
+
     &.ds-c-table__header--width-33 {
       width: 33%;
     }
@@ -167,4 +171,7 @@
   font-weight: $font-bold;
   margin-bottom: $spacer-1;
   text-align: left;
+  small {
+    display: block;
+  }
 }

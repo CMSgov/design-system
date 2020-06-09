@@ -2,14 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableHead = ({ children, className, ...attributeOptions }) => {
+export const TableHead = ({ children, className }) => {
   const classes = classNames('ds-c-table__head', className);
 
-  return (
-    <thead className={classes} {...attributeOptions}>
-      {children}
-    </thead>
-  );
+  return <thead className={classes}>{children}</thead>;
 };
 
 TableHead.defaultProps = {
@@ -18,7 +14,7 @@ TableHead.defaultProps = {
 
 TableHead.propTypes = {
   /**
-   * The table head content.
+   * The table head contents, usually `TableRow`.
    */
   children: PropTypes.node,
   /**

@@ -23,13 +23,73 @@ Style guide: components.table.complex
 /*
 `<Table>`
 
-A `Table` component renders data table using semantic markup.  In most cases, you'll want to use this component for smaller amounts of data that can be rendered all at once. Alternatively, use the individual components (TableHead, TableRow, TableHeader, TableBody, TableCell) on their own to control the rendering process. When a table exceeds the width of its container, use the responsive TableWrapper component to wrap the table to enable horizontal scrolling.
+A `Table` component renders data table using semantic HTML and ARIA.  The table components allows for customization as needed by the uesrs.
 
 @react-example Table.example.jsx
 
 @react-props Table.jsx
 
 Style guide: components.table.react
+*/
+
+/*
+`<TableBody>`
+
+A `TableBody` react component.
+
+@react-props TableBody.jsx
+
+Style guide: components.tabs.react-tablebody
+*/
+
+/*
+`<TableCaption>`
+
+A `TablecCaption` react component.
+
+@react-props TableCaption.jsx
+
+Style guide: components.table.react-tablecaption
+*/
+
+/*
+`<TableCell>`
+
+A `TableCell` react component.
+
+@react-props TableCell.jsx
+
+Style guide: components.table.react-tablecell
+*/
+
+/*
+`<TableHead>`
+
+A `TableHead` react component.
+
+@react-props TableHead.jsx
+
+Style guide: components.table.react-tablehead
+*/
+
+/*
+`<TableHeader>`
+
+A `TableHeader` react component.
+
+@react-props TableHeader.jsx
+
+Style guide: components.table.react-tableheader
+*/
+
+/*
+`<TableRow>`
+
+A `TableRow` react component.
+
+@react-props TableRow.jsx
+
+Style guide: components.table.react-tableroll
 */
 
 /*

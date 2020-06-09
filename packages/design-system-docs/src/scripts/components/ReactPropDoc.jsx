@@ -81,7 +81,7 @@ class ReactPropDoc extends React.PureComponent {
             </>
           }
           headers="columnname"
-          colheading="Name"
+          stackedTitle="Name"
         />
         <TableCell
           data={
@@ -90,13 +90,17 @@ class ReactPropDoc extends React.PureComponent {
             </>
           }
           headers="columntype"
-          colheading="Type"
+          stackedTitle="Type"
         />
-        <TableCell data={<>{this.defaultValue()}</>} headers="columndefault" colheading="Default" />
+        <TableCell
+          data={<>{this.defaultValue()}</>}
+          headers="columndefault"
+          stackedTitle="Default"
+        />
         <TableCell
           data={<>{this.description()}</>}
           headers="columndescription"
-          colheading="Description"
+          stackedTitle="Description"
         />
       </TableRow>
     );

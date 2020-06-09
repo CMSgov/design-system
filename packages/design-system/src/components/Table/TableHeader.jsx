@@ -3,14 +3,41 @@ import React from 'react';
 import classNames from 'classnames';
 
 export const TableHeader = (props) => {
-  const { stackedTitle, title, type, width, scope, className, ...attributeOptions } = props;
+  const {
+    title,
+    type,
+    width,
+    scope,
+    className,
+    stackedTitle,
+    stackedClassName,
+    ...attributeOptions
+  } = props;
 
   const classes = classNames(
     'ds-c-table__header',
     className,
-    type === 'numeric' ? 'ds-c-table__header--numeric' : '',
-    width ? 'ds-c-table__header--width-' + width : ''
+    type === 'numeric' ? 'ds-c-table__header--numeric' : null,
+    width ? 'ds-c-table__header--width-' + width : null
   );
+
+  const stackedClasses = classNames(
+    'ds-c-table--stacked__col-header',
+    'ds-u-font-weight--bold',
+    stackedClassName
+  );
+
+  const renderStackedTitle = () => {
+    const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
+
+    return (
+      { isValidStackedTitle } && (
+        <span aria-hidden="true" className={stackedClasses}>
+          {stackedTitle}
+        </span>
+      )
+    );
+  };
 
   return (
     <th
@@ -19,7 +46,7 @@ export const TableHeader = (props) => {
       scope={scope}
       {...attributeOptions}
     >
-      {stackedTitle}
+      {renderStackedTitle()}
       {title}
     </th>
   );
@@ -28,11 +55,31 @@ export const TableHeader = (props) => {
 TableHeader.defaultProps = {
   className: '',
   scope: 'col',
-  stackedTitle: '',
   type: 'text',
+  stackedClassName: '',
 };
 
 TableHeader.propTypes = {
+  /**
+   * Additional classes to be added to the row element.
+   */
+  className: PropTypes.string,
+  /**
+   * The `id` attribute that is used as a header for other cells.
+   */
+  id: PropTypes.string,
+  /**
+   * Scope of the header, can be 'row' or 'col'.
+   */
+  scope: PropTypes.oneOf(['row', 'col']),
+  /**
+   * Additional classes to be added to the stacked Title element.
+   */
+  stackedClassName: PropTypes.string,
+  /**
+   * The stacked row title for responsive table accessiblity.
+   */
+  stackedTitle: PropTypes.string,
   /**
    * The title of table header/column.
    */
@@ -44,19 +91,7 @@ TableHeader.propTypes = {
   /**
    * The width of the header.
    */
-  width: PropTypes.oneOf(['10', '20', '25', '33', '50', '75']),
-  /**
-   * Scope of the header, can be 'row' or 'col'.
-   */
-  scope: PropTypes.oneOf(['row', 'col']),
-  /**
-   * Additional classes to be added to the row element.
-   */
-  className: PropTypes.string,
-  /**
-   * The stacked row title for responsive table accessiblity.
-   */
-  stackedTitle: PropTypes.PropTypes.node,
+  width: PropTypes.oneOf(['10', '20', '25', '30', '33', '50', '75']),
 };
 
 export default TableHeader;

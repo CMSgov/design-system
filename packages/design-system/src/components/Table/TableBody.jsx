@@ -18,7 +18,7 @@ TableBody.defaultProps = {
 
 TableBody.propTypes = {
   /**
-   * The table body content.
+   * The table body contents, usually `TableRow`.
    */
   children: PropTypes.node,
   /**
