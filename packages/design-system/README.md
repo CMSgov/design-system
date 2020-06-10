@@ -48,16 +48,18 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 ```
 └── dist
     ├── index.css       Compiled CSS
-    ├── index.js        Compiled JSS
-    ├── index.scss      SASS entrypoint
+    ├── index.js        Compiled JS
+    ├── index.es.js     Compiled JS (ES Modules)
+    ├── index.scss      SCSS entry point
     ├── fonts/
     ├── images/
-    ├── components/      React component JS files
+    ├── components/     React component JS files
     │   ├── Button
     │   └── etc...
+    ├── esnext/         React component JS files (ES Modules)
     └── styles/
-        ├── settings/    Global variables, mixins, and functions
-        ├── base/        Base styles, HTML element selectors
-        ├── components/  Component styles
-        └── utilities/   Utility classes for individual CSS properties
+        ├── settings/   Global variables, mixins, and functions
+        ├── base/       Base styles, HTML element selectors
+        ├── components/ Component styles
+        └── utilities/  Utility classes for individual CSS properties
 ```
