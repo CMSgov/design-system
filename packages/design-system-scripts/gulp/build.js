@@ -81,7 +81,6 @@ async function compileEsmJs(dir) {
             ],
             '@babel/preset-react',
           ],
-          plugins: ['@babel/plugin-transform-object-assign'],
         })
       )
       .pipe(
