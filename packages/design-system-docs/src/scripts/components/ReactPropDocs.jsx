@@ -27,20 +27,9 @@ class ReactPropDocs extends React.PureComponent {
   }
 
   render() {
-    const formattedScrollCaption = (
-      <p aria-hidden="true">
-        <small>Scroll using arrow keys to see more...</small>
-      </p>
-    );
-
     return [
       <h3 key="propDocsHeader">Props</h3>,
-      <Table
-        key="propDocsTable"
-        stacked="sm"
-        scrollTable
-        scrollableCaption={formattedScrollCaption}
-      >
+      <Table key="propDocsTable" stacked="sm" scrollTable>
         <TableCaption className="ds-u-padding--1 ds-u-visibility--screen-reader">
           React Properties Documentation
         </TableCaption>

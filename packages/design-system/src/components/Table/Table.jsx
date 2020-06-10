@@ -86,23 +86,27 @@ export const Table = ({
   };
 
   return (
-    <div ref={container} tabIndex={tabIndex} {...attributeScrollTable}>
+    <>
       {renderScrollableCaption()}
-      <table className={classes} role="table" {...attributeOptions}>
-        {renderChildren(captionID.current)}
-      </table>
-    </div>
+      <div ref={container} tabIndex={tabIndex} {...attributeScrollTable}>
+        <table className={classes} role="table" {...attributeOptions}>
+          {renderChildren(captionID.current)}
+        </table>
+      </div>
+    </>
   );
 };
 
 Table.defaultProps = {
   className: '',
   scrollableCaption: (
-    <Alert>
-      <p className="ds-c-alert__text" aria-hidden="true">
-        Scroll using arrow keys to see more
-      </p>
-    </Alert>
+    <div className="ds-u-margin-y--1">
+      <Alert>
+        <p className="ds-c-alert__text" aria-hidden="true">
+          Scroll using arrow keys to see more
+        </p>
+      </Alert>
+    </div>
   ),
 };
 
