@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import TableCaption from './TableCaption';
 import classNames from 'classnames';
@@ -19,6 +20,7 @@ export const Table = ({
   stacked,
   striped,
   scrollTable,
+  scrollableCaption,
   children,
   ...attributeOptions
 }) => {
@@ -71,7 +73,6 @@ export const Table = ({
         // Extend props on tables before rendering.
         return React.cloneElement(child, {
           id: captionId,
-          scrollable: tabIndex === '0',
         });
       }
 
@@ -79,8 +80,14 @@ export const Table = ({
     });
   };
 
+  const renderScrollableCaption = () => {
+    const isScrollable = tabIndex === '0';
+    return scrollTable && isScrollable ? scrollableCaption : null;
+  };
+
   return (
     <div ref={container} tabIndex={tabIndex} {...attributeScrollTable}>
+      {renderScrollableCaption()}
       <table className={classes} role="table" {...attributeOptions}>
         {renderChildren(captionID.current)}
       </table>
@@ -90,6 +97,13 @@ export const Table = ({
 
 Table.defaultProps = {
   className: '',
+  scrollableCaption: (
+    <Alert>
+      <p className="ds-c-alert__text" aria-hidden="true">
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  ),
 };
 
 Table.propTypes = {
@@ -113,6 +127,10 @@ Table.propTypes = {
    * Horizontal scroll table.
    */
   scrollTable: PropTypes.bool,
+  /**
+   * Additional scrollable text/node to display
+   */
+  scrollableCaption: PropTypes.node,
 };
 
 export default Table;
