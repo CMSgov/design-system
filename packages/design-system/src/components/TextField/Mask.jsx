@@ -5,18 +5,18 @@ import React from 'react';
 const maskDeliminatedRegex = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
-  zip: /(\d{5})(\d*)/
+  zip: /(\d{5})(\d*)/,
 };
 
 const maskPattern = {
   phone: '[0-9-]*',
   ssn: '[0-9-*]*',
   zip: '[0-9-]*',
-  currency: '[0-9.-]*'
+  currency: '[0-9.,-]*',
 };
 
 const maskOverlayContent = {
-  currency: '$'
+  currency: '$',
 };
 
 /**
@@ -30,7 +30,7 @@ function deliminateRegexGroups(value, rx) {
   if (matches && matches.length > 1) {
     value = matches
       .slice(1)
-      .filter(a => !!a) // remove undefined groups
+      .filter((a) => !!a) // remove undefined groups
       .join('-');
   }
 
@@ -51,9 +51,7 @@ function stringWithFixedDigits(value, digits = 2) {
   const decimal = value.match(decimalRegex);
 
   if (decimal) {
-    const fixedDecimal = parseFloat(decimal)
-      .toFixed(digits)
-      .match(decimalRegex)[0];
+    const fixedDecimal = parseFloat(decimal).toFixed(digits).match(decimalRegex)[0];
 
     return value.replace(decimal, fixedDecimal);
   }
@@ -149,7 +147,7 @@ export class Mask extends React.PureComponent {
     const initialValue = field.props.value || field.props.defaultValue;
 
     this.state = {
-      value: maskValue(initialValue, props.mask)
+      value: maskValue(initialValue, props.mask),
     };
   }
 
@@ -212,7 +210,7 @@ export class Mask extends React.PureComponent {
     }
 
     this.setState({
-      value
+      value,
     });
 
     if (!debounce && typeof field.props.onBlur === 'function') {
@@ -240,12 +238,12 @@ export class Mask extends React.PureComponent {
 
     const modifiedTextField = React.cloneElement(field, {
       defaultValue: undefined,
-      onBlur: evt => this.handleBlur(evt, field),
-      onChange: evt => this.handleChange(evt, field),
+      onBlur: (evt) => this.handleBlur(evt, field),
+      onChange: (evt) => this.handleChange(evt, field),
       value: this.state.value,
       type: 'text',
       inputMode: 'numeric',
-      pattern: maskPattern[this.props.mask]
+      pattern: maskPattern[this.props.mask],
     });
 
     // UI overlayed on top of a field to support certain masks
@@ -269,7 +267,7 @@ Mask.propTypes = {
    * Must contain a `TextField` component
    */
   children: PropTypes.node.isRequired,
-  mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip'])
+  mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
 };
 
 /**

@@ -8,7 +8,7 @@ function generateChoices(length) {
   for (let i = 0; i < length; i++) {
     choices.push({
       label: `Choice ${i + 1}`,
-      value: String(i + 1)
+      value: String(i + 1),
     });
   }
 
@@ -27,50 +27,36 @@ function shallowRender(customProps = {}, choicesCount = 2) {
     {
       choices: generateChoices(choicesCount),
       label: 'Foo',
-      name: 'spec-field'
+      name: 'spec-field',
+      type: 'radio',
     },
     customProps
   );
 
   return {
     props: props,
-    wrapper: shallow(<ChoiceList {...props} />)
+    wrapper: shallow(<ChoiceList {...props} />),
   };
 }
 
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
     it('is a radio button group', () => {
-      const data = shallowRender();
+      const data = shallowRender({ type: 'radio' });
 
-      expect(
-        data.wrapper
-          .find('Choice')
-          .first()
-          .prop('type')
-      ).toBe('radio');
+      expect(data.wrapper.find('Choice').first().prop('type')).toBe('radio');
     });
 
     it('is a checkbox group', () => {
-      const data = shallowRender({ multiple: true });
+      const data = shallowRender({ type: 'checkbox' });
 
-      expect(
-        data.wrapper
-          .find('Choice')
-          .first()
-          .prop('type')
-      ).toBe('checkbox');
+      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('is a checkbox', () => {
-      const data = shallowRender({ choices: generateChoices(1) });
+      const data = shallowRender({ choices: generateChoices(1), type: 'checkbox' });
 
-      expect(
-        data.wrapper
-          .find('Choice')
-          .first()
-          .prop('type')
-      ).toBe('checkbox');
+      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('renders all choices', () => {
@@ -92,13 +78,7 @@ describe('ChoiceList', () => {
     it('renders the label prop as a legend element', () => {
       const data = shallowRender();
 
-      expect(
-        data.wrapper
-          .render()
-          .find('legend')
-          .first()
-          .text()
-      ).toBe(data.props.label);
+      expect(data.wrapper.render().find('legend').first().text()).toBe(data.props.label);
     });
 
     it('passes checked prop', () => {
@@ -135,32 +115,19 @@ describe('ChoiceList', () => {
     it("doesn't pass an ID prop", () => {
       const data = shallowRender();
 
-      expect(
-        data.wrapper
-          .find('Choice')
-          .first()
-          .prop('id')
-      ).toBeUndefined();
+      expect(data.wrapper.find('Choice').first().prop('id')).toBeUndefined();
     });
 
     it('is inversed Choice', () => {
       const data = shallowRender({ inversed: true });
 
-      expect(
-        data.wrapper
-          .find('Choice')
-          .first()
-          .prop('inversed')
-      ).toBe(true);
+      expect(data.wrapper.find('Choice').first().prop('inversed')).toBe(true);
     });
 
     it('calls onChange', () => {
       const onChange = jest.fn();
       const data = shallowRender({ onChange });
-      data.wrapper
-        .find('Choice')
-        .first()
-        .simulate('change');
+      data.wrapper.find('Choice').first().simulate('change');
 
       expect(onChange).toHaveBeenCalled();
     });
@@ -169,10 +136,7 @@ describe('ChoiceList', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
       const data = shallowRender({ onBlur, onComponentBlur });
-      data.wrapper
-        .find('Choice')
-        .first()
-        .simulate('blur');
+      data.wrapper.find('Choice').first().simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();
       // Enzyme simulated `blur` event will automatically focus on the next choice element
@@ -185,14 +149,24 @@ describe('ChoiceList', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
       const data = shallowRender({ onBlur, onComponentBlur });
-      data.wrapper
-        .find('Choice')
-        .last()
-        .simulate('blur');
+      data.wrapper.find('Choice').last().simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();
       setTimeout(() => {
         expect(onComponentBlur).toHaveBeenCalled();
+      }, 20);
+    });
+
+    it('doesnt call onComponentBlur', () => {
+      const onBlur = jest.fn();
+      const onComponentBlur = jest.fn();
+      const data = shallowRender({ onBlur, onComponentBlur });
+      data.wrapper.find('Choice').first().simulate('blur');
+
+      expect(onBlur).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(onBlur).toHaveBeenCalled();
+        expect(onComponentBlur).not.toHaveBeenCalled();
       }, 20);
     });
   });

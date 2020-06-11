@@ -1,27 +1,20 @@
 import React from 'react';
 import StepList from './StepList';
+import { generateStep } from '../helpers/StepList';
 import { shallow } from 'enzyme';
 
-const noop = () => {};
-
-const generateStep = id => ({
-  id,
-  href: '/some/path',
-  title: 'Do stuff'
-});
-
 const defaultStepProps = {
-  onStepLinkClick: noop,
+  onStepLinkClick: jest.fn(),
   showSubSubSteps: false,
   completedText: 'Completed!',
   editText: 'Edit!',
   resumeText: 'Resume!',
-  startText: 'Start!'
+  startText: 'Start!',
 };
 
 describe('StepList', () => {
   it('renders list of steps', () => {
-    const steps = [generateStep('1'), generateStep('2'), generateStep('c')];
+    const steps = [generateStep({ id: '1' }), generateStep({ id: '2' }), generateStep({ id: 'c' })];
     const props = defaultStepProps;
     const wrapper = shallow(<StepList steps={steps} {...props} />);
 

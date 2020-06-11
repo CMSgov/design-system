@@ -4,31 +4,29 @@
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
-    "build": "NODE_ENV=production yarn cmsds build-docs packages/design-system packages/design-system-docs",
-    "bump": "lerna publish --skip-git --skip-npm",
-    "precommit": "lint-staged",
+    "start": "NODE_ENV=development yarn cmsds start ./packages/design-system ./packages/design-system-docs",
+    "build": "NODE_ENV=production yarn cmsds build-docs ./packages/design-system ./packages/design-system-docs",
+    "release": "./prepublish.sh && yarn lerna publish from-git",
     "postinstall": "lerna bootstrap && npm link ./packages/design-system-scripts",
-    "test": "echo 'placeholder test script'",
-    "posttest": "echo 'placeholder lint script'",
-    "start": "NODE_ENV=development yarn cmsds start packages/design-system packages/design-system-docs",
-    "start:theme": "yarn start --theme",
-    "update-snapshots": "NODE_ENV=test bash scripts/jest.sh -u",
-    "lint": "eslint tools/ examples/**/src/ packages/**/src/ --ext .js --ext .jsx -f table && gulp lint --env=test --theme"
+    "precommit": "lint-staged",
+    "test": "NODE_ENV=test yarn cmsds test ./packages --core",
+    "update-snapshots": "NODE_ENV=test yarn cmsds test ./packages --core --updateSnapshot",
+    "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
+    "posttest": "yarn lint",
+    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
   },
   "devDependencies": {
     "@cmsgov/design-system": "file:./packages/design-system",
     "@cmsgov/design-system-docs": "file:./packages/design-system-docs",
     "@cmsgov/design-system-scripts": "file:./packages/design-system-scripts",
-    "@cmsgov/eslint-config-design-system": "file:./packages/eslint-config-design-system",
-    "@cmsgov/stylelint-config-design-system": "file:./packages/stylelint-config-design-system",
-    "eslint": "^4.18.1",
-    "eslint-config-nava": "^2.1.0",
-    "eslint-config-prettier": "^6.10.0",
-    "lerna": "^2.11.0",
+    "eslint": "^6.8.0",
     "husky": "^4.2.3",
+    "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
-    "stylelint": "10.1.0",
-    "stylelint-config-prettier": "^2.1.0"
+    "prettier": "^2.0.5",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "stylelint": "^13.3.2"
   },
   "engines": {
     "node": ">=11.0.0 <12.0.0",
@@ -59,5 +57,16 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ]
+  ],
+  "prettier": "./packages/design-system-scripts/prettier.config.js",
+  "eslintConfig": {
+    "extends": [
+      "./packages/design-system-scripts/eslint.config.js"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "./packages/design-system-scripts/stylelint.config.js"
+    ]
+  }
 }

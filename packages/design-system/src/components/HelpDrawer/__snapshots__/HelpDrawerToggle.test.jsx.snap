@@ -2,10 +2,9 @@
 
 exports[`HelpDrawerToggle renders a snapshot 1`] = `
 <span
-  className="ds-u-display--inline-block"
+  className="ds-u-display--inline"
 >
   <a
-    className={undefined}
     href="javascript:void(0);"
     onClick={[Function]}
   >

@@ -7,9 +7,7 @@ exports[`Dropdown renders a select menu 1`] = `
   <FormLabel
     component="label"
     fieldId="select_dropdown_1"
-  >
-    Select an option
-  </FormLabel>
+  />
   <select
     aria-label="test aria label"
     className="ds-c-field"

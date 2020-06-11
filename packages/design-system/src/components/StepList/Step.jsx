@@ -14,25 +14,30 @@ export const Step = ({ step, ...props }) => {
     }
     if (!step.title && !step.heading) {
       console.warn(
-        `The 'heading' prop the <StepList> step object, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        `Please provide a 'heading' prop in the <StepList> step object, it is a required prop.`
       );
     }
   }
 
+  const getAriaLabel = (text) => {
+    const isValidTemplate = text && text.length > 0;
+    const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
+    return { 'aria-label': label };
+  };
   const Heading = `h${step.headingLevel || '2'}`;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
     'ds-c-step--current': start || resume,
-    'ds-c-step--completed': step.completed
+    'ds-c-step--completed': step.completed,
   });
   const contentClassName = classNames('ds-c-step__content', {
-    'ds-c-step__content--with-content': step.description || step.steps
+    'ds-c-step__content--with-content': step.description || step.steps,
   });
   const { actionsLabelText, substepsLabelText, descriptionLabelText } = props;
-  const actionsLabel = actionsLabelText.replace('%{step}', step.heading || step.title);
-  const substepsLabel = substepsLabelText.replace('%{step}', step.heading || step.title);
-  const descriptionLabel = descriptionLabelText.replace('%{step}', step.heading || step.title);
+  const actionsLabel = getAriaLabel(actionsLabelText);
+  const substepsLabel = getAriaLabel(substepsLabelText);
+  const descriptionLabel = getAriaLabel(descriptionLabelText);
 
   let linkLabel;
   if (step.completed && !step.steps) {
@@ -54,12 +59,12 @@ export const Step = ({ step, ...props }) => {
       <div className={contentClassName}>
         <Heading className="ds-c-step__heading">{step.heading || step.title}</Heading>
         {step.description && (
-          <div className="ds-c-step__description" aria-label={descriptionLabel}>
+          <div className="ds-c-step__description" {...descriptionLabel}>
             {step.description}
           </div>
         )}
         {step.steps && (
-          <ol className="ds-c-step__substeps" aria-label={substepsLabel}>
+          <ol className="ds-c-step__substeps" {...substepsLabel}>
             {step.steps.map((s, i) => (
               <SubStep
                 step={{ ...s, ...{ component: step.component || s.component } }}
@@ -70,14 +75,14 @@ export const Step = ({ step, ...props }) => {
           </ol>
         )}
       </div>
-      <div className="ds-c-step__actions" aria-label={actionsLabel}>
+      <div className="ds-c-step__actions" {...actionsLabel}>
         {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
         {linkLabel && (
           <StepLink
             component={step.component}
             href={step.href}
             stepId={step.id}
-            screenReaderText={`"${step.heading || step.title}"`}
+            screenReaderText={step.heading || step.title}
             onClick={step.onClick || props.onStepLinkClick}
             className={linkClassName}
           >
@@ -97,9 +102,9 @@ Step.propTypes = {
   editText: PropTypes.string.isRequired,
   resumeText: PropTypes.string.isRequired,
   startText: PropTypes.string.isRequired,
-  actionsLabelText: PropTypes.string.isRequired,
-  descriptionLabelText: PropTypes.string.isRequired,
-  substepsLabelText: PropTypes.string.isRequired
+  actionsLabelText: PropTypes.string,
+  descriptionLabelText: PropTypes.string,
+  substepsLabelText: PropTypes.string,
 };
 
 export default Step;

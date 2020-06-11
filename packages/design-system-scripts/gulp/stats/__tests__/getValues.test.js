@@ -3,16 +3,16 @@ const getValues = require('../getValues');
 
 describe('getValues', () => {
   let stats = {};
-  const retrievalMethod = branch => stats[branch].size;
+  const retrievalMethod = (branch) => stats[branch].size;
 
   beforeEach(() => {
     stats = {
       current: {
-        size: 10
+        size: 10,
       },
       latest: {
-        size: 25
-      }
+        size: 25,
+      },
     };
   });
 
@@ -21,13 +21,13 @@ describe('getValues', () => {
     expect(values).toEqual([
       stats.current.size,
       stats.latest.size,
-      colors.green(stats.current.size - stats.latest.size)
+      colors.green(stats.current.size - stats.latest.size),
     ]);
   });
 
   it('colors difference with red when less than latest value', () => {
     const values = getValues(retrievalMethod, false);
-    expect(values[2]).toEqual(colors.red(stats.current.size - stats.latest.size));
+    expect(values[2]).toEqual(colors.green(stats.current.size - stats.latest.size));
   });
 
   it('skips color when no difference', () => {

@@ -9,10 +9,10 @@ import uniqueId from 'lodash.uniqueid';
 const standardLengthFormatter = ({ day, month, year }) => ({
   day: day.length > 2 ? day.substring(0, 2) : day,
   month: month.length > 2 ? month.substring(0, 2) : month,
-  year: year.length > 4 ? year.substring(0, 4) : year
+  year: year.length > 4 ? year.substring(0, 4) : year,
 });
 
-export const defaultDateFormatter = dateObject => {
+export const defaultDateFormatter = (dateObject) => {
   const standardDate = standardLengthFormatter(dateObject);
   return standardDate;
 };
@@ -38,7 +38,7 @@ export class DateField extends React.PureComponent {
       const values = {
         month: this.monthInput.value,
         day: this.dayInput.value,
-        year: this.yearInput.value
+        year: this.yearInput.value,
       };
 
       return this.props.dateFormatter(values);
@@ -82,7 +82,7 @@ export class DateField extends React.PureComponent {
       inversed: this.props.inversed,
       onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
       onChange: this.props.onChange && this.handleChange,
-      numeric: true
+      numeric: true,
     };
     const labelId = this.labelId();
 
@@ -103,9 +103,9 @@ export class DateField extends React.PureComponent {
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--month', {
-              'ds-c-field--error': this.props.monthInvalid
+              'ds-c-field--error': this.props.monthInvalid,
             })}
-            inputRef={el => {
+            inputRef={(el) => {
               this.monthInput = el;
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
             }}
@@ -114,14 +114,15 @@ export class DateField extends React.PureComponent {
             name={this.props.monthName}
             value={this.props.monthValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-month'}
           />
           <span className="ds-c-datefield__separator">/</span>
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--day', {
-              'ds-c-field--error': this.props.dayInvalid
+              'ds-c-field--error': this.props.dayInvalid,
             })}
-            inputRef={el => {
+            inputRef={(el) => {
               this.dayInput = el;
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
             }}
@@ -130,14 +131,15 @@ export class DateField extends React.PureComponent {
             name={this.props.dayName}
             value={this.props.dayValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-day'}
           />
           <span className="ds-c-datefield__separator">/</span>
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--year', {
-              'ds-c-field--error': this.props.yearInvalid
+              'ds-c-field--error': this.props.yearInvalid,
             })}
-            inputRef={el => {
+            inputRef={(el) => {
               this.yearInput = el;
               if (this.props.yearFieldRef) this.props.yearFieldRef(el);
             }}
@@ -146,6 +148,7 @@ export class DateField extends React.PureComponent {
             name={this.props.yearName}
             value={this.props.yearValue}
             aria-describedby={labelId}
+            autoComplete={this.props.autoComplete && 'bday-year'}
           />
         </div>
       </fieldset>
@@ -162,10 +165,14 @@ DateField.defaultProps = {
   monthName: 'month',
   yearLabel: 'Year',
   yearName: 'year',
-  dateFormatter: defaultDateFormatter
+  dateFormatter: defaultDateFormatter,
 };
 
 DateField.propTypes = {
+  /**
+   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
+   */
+  autoComplete: PropTypes.bool,
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
@@ -283,7 +290,7 @@ DateField.propTypes = {
    * Sets the year input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `yearDefaultValue`.
    */
-  yearValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  yearValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default DateField;

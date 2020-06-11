@@ -1,6 +1,6 @@
 ---
 title: Browser support
-weight: 5
+weight: 7
 ---
 
 The CMS design system follows the [2% rule](https://gds.blog.gov.uk/2012/01/25/support-for-browsers/): we officially support any browser above 2% usage and the last 2 browsers versions for each browser as observed by [analytics.usa.gov](https://analytics.usa.gov/). For specific browser details check out [browserlist](https://browserl.ist/?q=last+2+versions%2C+%3E2%25). **Currently, the latest 2 versions of Chrome, Firefox, Safari, Internet Explorer 11, and Edge are supported.**

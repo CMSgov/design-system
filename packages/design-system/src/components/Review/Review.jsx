@@ -23,7 +23,7 @@ export class Review extends React.PureComponent {
       editHref,
       editText,
       onEditClick,
-      editContent
+      editContent,
     } = this.props;
     const classes = classNames(
       'ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex',
@@ -48,7 +48,7 @@ export class Review extends React.PureComponent {
 
 Review.defaultProps = {
   editText: 'Edit',
-  headingLevel: '3'
+  headingLevel: '3',
 };
 
 Review.propTypes = {
@@ -80,7 +80,7 @@ Review.propTypes = {
    * An optional function that is executed on edit link click. The event and
    * props.editHref value are passed to this function.
    */
-  onEditClick: PropTypes.func
+  onEditClick: PropTypes.func,
   /**
    * An optional node in place of the edit link. If this defined, no edit link will be shown.
    */

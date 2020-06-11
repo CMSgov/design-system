@@ -6,31 +6,28 @@ const sass = require('gulp-sass');
  * We could do this manually, but why not automate it so it's easy to do
  * as things are updated :)
  */
-gulp.task('copy-design-system', function() {
+gulp.task('copy-design-system', function () {
   return gulp
     .src([
-      'node_modules/@cmsgov/design-system-core/**/fonts/*',
-      'node_modules/@cmsgov/design-system-core/**/images/*'
+      'node_modules/@cmsgov/design-system/dist/**/fonts/*',
+      'node_modules/@cmsgov/design-system/dist/**/images/*',
     ])
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist/'));
 });
 
 /**
  * Transpile Sass to CSS
  */
-gulp.task('sass', function() {
+gulp.task('sass', function () {
   const transpiler = sass({
     // Add node_modules to the list of paths used to resolve @import
     // declarations. This way it's easier to import our design system's
     // Sass files.
     includePaths: ['node_modules'],
-    outputStyle: 'compressed'
+    outputStyle: 'compressed',
   }).on('error', sass.logError);
 
-  return gulp
-    .src('./src/styles/**/*.scss')
-    .pipe(transpiler)
-    .pipe(gulp.dest('./dist/styles'));
+  return gulp.src('./src/styles/**/*.scss').pipe(transpiler).pipe(gulp.dest('./dist/styles'));
 });
 
-gulp.task('default', ['copy-design-system', 'sass']);
+gulp.task('default', gulp.series('copy-design-system', 'sass'));

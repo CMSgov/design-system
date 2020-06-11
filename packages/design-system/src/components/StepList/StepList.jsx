@@ -20,7 +20,7 @@ export const StepList = ({ steps, ...props }) => (
 export const stepShape = {
   id: PropTypes.string,
   href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired, // [Deprecated]
+  title: PropTypes.string, // [Deprecated]
   heading: PropTypes.string.isRequired,
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   description: PropTypes.string,
@@ -29,7 +29,7 @@ export const stepShape = {
   started: PropTypes.bool,
   isNextStep: PropTypes.bool,
   onClick: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
@@ -41,7 +41,7 @@ StepList.defaultProps = {
   startText: 'Start',
   actionsLabelText: 'Primary actions for %{step}',
   descriptionLabelText: 'Description for %{step}',
-  substepsLabelText: 'Secondary actions for %{step}'
+  substepsLabelText: 'Secondary actions for %{step}',
 };
 
 StepList.propTypes = {
@@ -75,17 +75,17 @@ StepList.propTypes = {
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  actionsLabelText: PropTypes.string.isRequired,
+  actionsLabelText: PropTypes.string,
   /**
    * A template string for the aria-label for a step's description where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  descriptionLabelText: PropTypes.string.isRequired,
+  descriptionLabelText: PropTypes.string,
   /**
    * A template string for the aria-label describing a step's substeps where
    * the substring `%{step}` is replaced with that step's `heading`.
    */
-  substepsLabelText: PropTypes.string.isRequired
+  substepsLabelText: PropTypes.string,
 };
 
 export default StepList;

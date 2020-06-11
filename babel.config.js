@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
 
   const presets = [
@@ -6,15 +6,15 @@ module.exports = function(api) {
       '@babel/preset-env',
       {
         useBuiltIns: 'entry',
-        corejs: '3.0.0'
-      }
+        corejs: '3.0.0',
+      },
     ],
-    '@babel/preset-react'
+    '@babel/preset-react',
   ];
   const plugins = ['@babel/plugin-transform-object-assign'];
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };

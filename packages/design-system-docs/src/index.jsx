@@ -16,11 +16,6 @@ function render() {
   }
 }
 
-if (process.env.NODE_ENV === 'development') {
-  // Enable tota11y in dev mode
-  require('tota11y/build/tota11y.min.js');
-}
-
 render();
 
 if (module.hot) {

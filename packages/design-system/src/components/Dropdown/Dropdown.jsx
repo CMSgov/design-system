@@ -72,12 +72,15 @@ export class Dropdown extends React.PureComponent {
     const classes = classNames(className);
     const fieldClasses = classNames(
       'ds-c-field',
-      { 'ds-c-field--inverse': inversed },
+      {
+        'ds-c-field--error': errorMessage,
+        'ds-c-field--inverse': inversed,
+      },
       size && `ds-c-field--${size}`,
       fieldClassName
     );
 
-    const optionElements = options.map(option => (
+    const optionElements = options.map((option) => (
       <option key={option.value} value={option.value}>
         {option.label}
       </option>
@@ -101,7 +104,7 @@ export class Dropdown extends React.PureComponent {
           className={fieldClasses}
           id={this.id()}
           /* eslint-disable no-return-assign */
-          ref={ref => {
+          ref={(ref) => {
             if (focusTrigger) {
               this.focusRef = ref;
             } else if (inputRef) {
@@ -111,8 +114,7 @@ export class Dropdown extends React.PureComponent {
           /* eslint-enable no-return-assign */
           {...selectProps}
         >
-          {/* Render custom options if provided */
-          children || optionElements}
+          {/* Render custom options if provided */ children || optionElements}
         </select>
       </div>
     );
@@ -184,7 +186,7 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node.isRequired,
-      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     })
   ).isRequired,
   onBlur: PropTypes.func,
@@ -201,7 +203,7 @@ Dropdown.propTypes = {
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default Dropdown;

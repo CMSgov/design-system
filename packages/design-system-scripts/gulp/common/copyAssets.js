@@ -1,16 +1,16 @@
-const copyDir = require('./copyDir');
-const path = require('path');
+const gulp = require('gulp');
+const streamPromise = require('./streamPromise');
+
+function copyDir(srcDir, destDir) {
+  return streamPromise(gulp.src(`${srcDir}/**/*`).pipe(gulp.dest(destDir)));
+}
 
 /**
- * Copy all fonts and images from a package directory's src folder to dist, and
- * also copy the fonts and images from the core design system package.
+ * Copy all fonts and images from one directory to another
  */
-module.exports = async function copyAssets(sourcePackageDir, destPackageDir = null) {
-  const src = path.join(sourcePackageDir, 'src');
-  const dest = path.join(destPackageDir || sourcePackageDir, 'dist');
-
+module.exports = async function copyAssets(srcDir, destDir) {
   await Promise.all([
-    copyDir(`${src}/fonts`, `${dest}/fonts`),
-    copyDir(`${src}/images`, `${dest}/images`)
+    copyDir(`${srcDir}/fonts`, `${destDir}/fonts`),
+    copyDir(`${srcDir}/images`, `${destDir}/images`),
   ]);
 };

@@ -1,4 +1,4 @@
-const createRoutes = require('../createRoutes');
+const createRoutes = require('../generatePages/createRoutes');
 
 function mockPage(slug, sections = []) {
   return {
@@ -6,7 +6,7 @@ function mockPage(slug, sections = []) {
     description: `${slug} description`,
     reference: slug,
     referenceURI: slug,
-    sections: sections
+    sections: sections,
   };
 }
 

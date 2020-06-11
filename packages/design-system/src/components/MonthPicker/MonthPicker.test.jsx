@@ -7,7 +7,7 @@ const defaultProps = {
   name: 'months',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  label: 'Select months'
+  label: 'Select months',
 };
 
 function renderMonthPicker(props) {
@@ -36,7 +36,7 @@ describe('MonthPicker', () => {
     const onClearAll = jest.fn();
     const { wrapper } = renderMonthPicker({
       onSelectAll,
-      onClearAll
+      onClearAll,
     });
 
     // Changing to let to allow multiple find references
@@ -67,20 +67,20 @@ describe('MonthPicker', () => {
     const { wrapper } = renderMonthPicker({ inversed: true });
     const buttons = wrapper.find('Button');
     const choices = wrapper.find('Choice');
-    buttons.forEach(button => expect(button.props().inversed).toEqual(true));
-    choices.forEach(choice => expect(choice.props().inversed).toEqual(true));
+    buttons.forEach((button) => expect(button.props().inversed).toEqual(true));
+    choices.forEach((choice) => expect(choice.props().inversed).toEqual(true));
   });
 
   it('buttonVariation prop applied to buttons', () => {
     const { wrapper } = renderMonthPicker({ buttonVariation: 'primary' });
     const buttons = wrapper.find('Button');
-    buttons.forEach(button => expect(button.props().variation).toEqual('primary'));
+    buttons.forEach((button) => expect(button.props().variation).toEqual('primary'));
   });
 
   it('name prop propagates to all children', () => {
     const { wrapper } = renderMonthPicker({ name: 'months' });
     const choices = wrapper.find('Choice');
-    choices.forEach(choice => expect(choice.props().name).toEqual('months'));
+    choices.forEach((choice) => expect(choice.props().name).toEqual('months'));
   });
 
   it('generates month names with based on locale', () => {
@@ -96,7 +96,7 @@ describe('MonthPicker', () => {
       'Sep',
       'Oct',
       'Nov',
-      'Dec'
+      'Dec',
     ];
     const longMonthNames = [
       'January',
@@ -110,7 +110,7 @@ describe('MonthPicker', () => {
       'September',
       'October',
       'November',
-      'December'
+      'December',
     ];
 
     const { wrapper } = renderMonthPicker({ locale: 'en' });

@@ -2,16 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * The `Button` component accepts its text as children (AKA inner HTML), which
- * means you can also pass in HTML or custom components. This gives you a lot of
- * flexibility and supports a variety of advanced use cases. The most common use
- * case would be passing in an SVG icon along with the text.
- *
- * In addition to the supported props listed, you can also pass in additional
- * props, which will be passed to the rendered root component. For example,
- * you could pass in a `target` prop to pass to the rendered anchor element.
- */
 export class Button extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -51,7 +41,7 @@ export class Button extends React.PureComponent {
 
     const attrs = {
       className: this.classNames(),
-      ...props
+      ...props,
     };
 
     if (this.props.onClick) {
@@ -125,7 +115,7 @@ export class Button extends React.PureComponent {
 
 Button.defaultProps = {
   type: 'button',
-  component: 'button'
+  component: 'button',
 };
 Button.propTypes = {
   /**
@@ -169,7 +159,7 @@ Button.propTypes = {
   /**
    * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent'])
+  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
 };
 
 export default Button;

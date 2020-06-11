@@ -25,14 +25,12 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl, name }) 
     return ReactDOMServer.renderToString(React.createElement(Docs, { page, routes: [] }, null));
   };
 
-  if (rootPath) {
-    rootPath = `${rootPath}/`;
-  }
+  if (rootPath) rootPath = `${rootPath}/`;
 
   const head = `${seo(page, rootPath)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath}images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="/${rootPath}index.css" />
+  <link rel="stylesheet" href="/${rootPath || ''}index.css" />
   ${analytics()}`;
 
   const body = `
@@ -41,13 +39,13 @@ function generateDocPage(routes, page, docsPath, { rootPath, githubUrl, name }) 
   window.page = ${JSON.stringify(page)};
   window.routes = ${JSON.stringify(routes)};
 </script>
-<script src="/${rootPath}index.js"></script>`;
+<script src="/${rootPath || ''}index.js"></script>`;
 
   return savePage(
     {
       uri: page.referenceURI,
       head: head,
-      body: body
+      body: body,
     },
     docsPath
   );
@@ -78,7 +76,7 @@ function seo(page, rootPath = '') {
   if (page.referenceURI.replace(rootPath.replace(/\/$/, ''), '') === '') {
     // Homepage
     html.push(
-      '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design Standards and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
+      '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
     );
     html.push('<title>CMS Design System | An open source design and front-end toolkit</title>');
   } else {

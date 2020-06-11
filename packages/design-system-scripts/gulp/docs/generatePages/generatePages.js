@@ -1,4 +1,4 @@
-const addReactDocProps = require('./addReactDocProps');
+const addReactDocs = require('./addReactDocs');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
@@ -8,7 +8,7 @@ const nestSections = require('./nestSections');
 const path = require('path');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
-const { getSourceDirs, getDocsDirs } = require('../../common/getPackageDirs');
+const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
 const { REACT_DATA_PATH } = require('../../common/constants');
 
@@ -25,38 +25,38 @@ function addTopLevelPages(kssSections) {
         header: 'Getting started',
         reference: 'startup',
         sections: [],
-        weight: 4
+        weight: 4,
       },
       {
         header: 'Guidelines',
         reference: 'guidelines',
         sections: [],
-        weight: 5
+        weight: 5,
       },
       {
         header: 'Styles',
         reference: 'styles',
         sections: [],
-        weight: 6
+        weight: 6,
       },
       {
         header: 'Utilities',
         reference: 'utilities',
         sections: [],
-        weight: 20
+        weight: 20,
       },
       {
         header: 'Components',
         reference: 'components',
         sections: [],
-        weight: 30
+        weight: 30,
       },
       {
         header: 'Patterns',
         reference: 'patterns',
         sections: [],
-        weight: 40
-      }
+        weight: 40,
+      },
     ].concat(kssSections)
   );
 }
@@ -64,9 +64,9 @@ function addTopLevelPages(kssSections) {
 function generatedPagesCount(resultGroups) {
   let count = 0;
 
-  resultGroups.forEach(results => {
+  resultGroups.forEach((results) => {
     if (results) {
-      count += results.filter(createdFile => createdFile).length;
+      count += results.filter((createdFile) => createdFile).length;
     }
   });
 
@@ -82,11 +82,11 @@ async function generateDocPages(pages, destination, options) {
   const routes = createRoutes(pages);
 
   const generatedPages = await Promise.all(
-    pages.map(async page => {
+    pages.map(async (page) => {
       const created = await generatePage(routes, page, destination, options);
       if (page.sections) {
         const results = await Promise.all(
-          page.sections.map(subpage => generatePage(routes, subpage, destination, options))
+          page.sections.map((subpage) => generatePage(routes, subpage, destination, options))
         );
         // return results for generatedPagesCount
         return [created].concat(results);
@@ -106,12 +106,12 @@ async function generateDocPages(pages, destination, options) {
  */
 function generateMarkupPages(kssSections, destination, options) {
   const pagesWithMarkup = kssSections.filter(
-    page => !page.hideExample && (page.markup.length > 0 || page.reactExamplePath)
+    (page) => page.markup.length > 0 || page.reactExampleSource
   );
 
   return Promise.all(
-    pagesWithMarkup.map(page => {
-      return generatePage(null, page, destination, options, true).then(created => [created]);
+    pagesWithMarkup.map((page) => {
+      return generatePage(null, page, destination, options, true).then((created) => [created]);
     })
   );
 }
@@ -121,41 +121,39 @@ function generateMarkupPages(kssSections, destination, options) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(sourcePackageDir, docsPackageDir, options) {
+module.exports = async function generatePages(sourceDir, docsDir, options) {
   logTask('📝 ', 'Generating documentation pages');
 
-  const dist = getDocsDistPath(docsPackageDir, options.rootPath);
-  const sourceDirs = await getSourceDirs(sourcePackageDir);
-  const docsDirs = await getDocsDirs(docsPackageDir);
+  const dist = getDocsDistPath(docsDir, options.rootPath);
+  const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
   const markdownPagesData = await Promise.all(
-    docsDirs.map(async dir => {
+    docsDirs.map(async (dir) => {
       return convertMarkdownPages(options.rootPath, dir);
     })
-  ).then(dirPages => dirPages.flat());
+  ).then((dirPages) => dirPages.flat());
 
   /**
-   * Parse KSS documentation blocks in CSS and JSX files
+   * Parse KSS documentation blocks in CSS files
    * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
    * @return {Array} KssSections
    */
-  // Temporarily hardcode task to process KSS in docs too
-  const packages = [...docsDirs, ...sourceDirs].map(pkg => path.join(pkg, 'src'));
+  const packages = docsDirs.map((pkg) => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
   const kssSections = await Promise.all(
-    kssStyleGuide.sections().map(kssSection =>
+    kssStyleGuide.sections().map((kssSection) =>
       // Cleanup and extend the section's properties
       processKssSection(kssSection, options.rootPath)
     )
   );
 
   // Merge both sets of KssSection objects into a single array of page parts.
-  // Also, remove pages with the same URL (so themes can override existing pages)
+  // Also, remove pages with the same URL (so child design systems can override existing pages)
   const pageSections = uniquePages(markdownPagesData.concat(kssSections));
 
-  await addReactDocProps(pageSections, REACT_DATA_PATH);
+  await addReactDocs(pageSections, REACT_DATA_PATH);
   // Create HTML files for markup examples
   await generateMarkupPages(pageSections, dist, options);
   // Add missing top-level pages and connect the page parts to their parent pages
@@ -163,5 +161,5 @@ module.exports = async function generatePages(sourcePackageDir, docsPackageDir, 
   // Create HTML files from the pages array
   const generatedPagesCount = await generateDocPages(pages, dist, options);
 
-  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsPackageDir}`);
+  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsDir}`);
 };

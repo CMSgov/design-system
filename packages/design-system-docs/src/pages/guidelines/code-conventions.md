@@ -6,7 +6,7 @@ The design system favors clarity over succinctness. This means the design system
 
 ## CSS class naming convention
 
-<img src="{{root}}/public/images/naming-convention.svg" class="ds-u-border--1" />
+<img src="{{root}}/images/naming-convention.svg" class="ds-u-border--1" />
 
 ### Namespace
 
@@ -30,9 +30,9 @@ Following the namespace and prefix is a name conforming to [BEM syntax](http://g
 
 Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE]-[PREFIX]-[BLOCK]__[ELEMENT]--[MODIFIER]`
 
-- **Block** is a standalone entity that is meaningful on its own. For example: `ds-c-card`, `ds-c-button`
-- **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `ds-c-card__title`
-- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `ds-c-button--primary`, `ds-u-color--base`, `ds-l-col--3`
+- **Block** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
+- **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
+- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
 
 [BEM’s strict naming rules can be found here](http://getbem.com/naming/).
 

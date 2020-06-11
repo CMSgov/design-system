@@ -1,38 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import githubUrl from '../helpers/githubUrl';
+import join from 'url-join';
 
 const cmsdsGithubUrl = 'https://github.com/CMSgov/design-system';
 
-const markdownPattern = /\.md$/;
-const packagesPattern = /packages\/([a-z-_]+)\//i;
-const nodeModulesPattern = /node_modules\/@cmsgov\/([a-z-_]+)\//i;
-
-const getBaseUrl = source => {
-  // Only show the source link if this is React or CSS component
-  if (!source || source.path.match(markdownPattern)) {
-    return undefined;
-  } else if (source.path.match(nodeModulesPattern)) {
-    const packageName = source.path.match(nodeModulesPattern)[1];
-    return `${cmsdsGithubUrl}/blob/master/packages/${packageName}/src`;
-  } else if (source.path.match(packagesPattern)) {
-    const packageName = source.path.match(packagesPattern)[1];
-    return githubUrl(`blob/master/packages/${packageName}/src`);
+const getBaseUrl = (filePath) => {
+  if (filePath.match(/(design-system|design-system-docs)/i)) {
+    // File source originates from core CMSDS, path is relative to `package` directory
+    // i.e. design-system/src/scripts/components/Button/Button.jsx
+    return join(cmsdsGithubUrl, 'blob/master/packages/');
+  } else {
+    // File source from child DS, path relative to the repo root
+    return githubUrl(`blob/master/`);
   }
 };
 
-const Source = props => {
-  const reactPath =
-    props.reactComponentPath && props.reactComponentPath.replace(/[a-z-]+\/src\//, '');
-  // This path is relative to the package directory
-  // i.e. components/Button/Button.scss
-  const filePath = reactPath || (props.source && props.source.filename);
-  const baseUrl = getBaseUrl(props.source);
+const Source = (props) => {
+  const baseUrl = getBaseUrl(props.reactComponentPath);
 
-  if (baseUrl && filePath) {
-    const href = `${baseUrl}/src/${filePath}`;
+  if (baseUrl) {
+    const href = join(baseUrl, props.reactComponentPath);
     return (
-      <a className={props.className} href={href} title={`View source of ${filePath}`}>
+      <a
+        className={props.className}
+        href={href}
+        title={`View source of ${props.reactComponentPath}`}
+      >
         View source file
       </a>
     );
@@ -44,10 +38,6 @@ const Source = props => {
 Source.propTypes = {
   className: PropTypes.string,
   reactComponentPath: PropTypes.string,
-  source: PropTypes.shape({
-    filename: PropTypes.string,
-    path: PropTypes.string.isRequired
-  })
 };
 
 export default Source;

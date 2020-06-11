@@ -1,7 +1,7 @@
 /* global driver */
-import { getElementByClassName, getElementById, getElementByXPath } from '../../helpers/e2e';
-import { ROOT_URL } from '../../helpers/e2e/constants';
-import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
+import { getElementByClassName, getElementById, getElementByXPath } from '../helpers/e2e';
+import { ROOT_URL } from '../helpers/e2e/constants';
+import assertNoAxeViolations from '../helpers/e2e/assertNoAxeViolations';
 
 const rootURL = `${ROOT_URL}/example/components.help-drawer.react-help-drawer/`;
 

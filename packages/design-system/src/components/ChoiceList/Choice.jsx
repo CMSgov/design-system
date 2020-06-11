@@ -85,7 +85,7 @@ export class Choice extends React.PureComponent {
 
     const inputClasses = classNames(inputClassName, 'ds-c-choice', {
       'ds-c-choice--inverse': inversed,
-      'ds-c-choice--small': size === 'small'
+      'ds-c-choice--small': size === 'small',
     });
 
     // Remove props we have our own implementations for
@@ -103,7 +103,7 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
-          ref={ref => {
+          ref={(ref) => {
             this.input = ref;
             if (inputRef) {
               inputRef(ref);
@@ -124,10 +124,6 @@ export class Choice extends React.PureComponent {
     );
   }
 }
-
-Choice.defaultProps = {
-  type: 'checkbox'
-};
 
 Choice.propTypes = {
   /**
@@ -194,11 +190,14 @@ Choice.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  type: PropTypes.oneOf(['checkbox', 'radio']),
+  /**
+   * Sets the type to render `checkbox` fields or `radio` buttons
+   */
+  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
   /**
    * The `input` `value` attribute
    */
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default Choice;

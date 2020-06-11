@@ -23,12 +23,12 @@ function createPageObject(rootPath, dir, filename) {
 
   return fs
     .readFile(filePath, 'utf8')
-    .then(data => processMarkdownPage(dir, filePath, data, rootPath));
+    .then((data) => processMarkdownPage(filePath, data, rootPath));
 }
 
 /**
- * Reads all Markdown pages in the docs and (optionally) theme directory,
- * transforms markdown, and creates a JSON representation of each page.
+ * Reads and transforms all Markdown pages in the docs directory,
+ * and creates a JSON representation of each page.
  * @param {String} rootPath - Root docs site path
  * @param {Array} dir - Directory containing the src directory where we will find markdown files
  * @return {Promise<Object[]>} Resolves with an array of JSON pages
@@ -38,8 +38,8 @@ async function convertMarkdownPages(rootPath, dir) {
   const filenames = glob.sync('src/**/*.md', { cwd: dir });
 
   await Promise.all(
-    filenames.map(filename =>
-      createPageObject(rootPath, dir, filename).then(data => {
+    filenames.map((filename) =>
+      createPageObject(rootPath, dir, filename).then((data) => {
         pages.push(data);
       })
     )

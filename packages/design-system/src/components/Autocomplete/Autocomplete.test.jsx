@@ -1,20 +1,22 @@
 import { mount, shallow } from 'enzyme';
 import Autocomplete from './Autocomplete';
 import React from 'react';
+import TextField from '../TextField/TextField';
 import renderer from 'react-test-renderer';
 
 function render(customProps = {}, deep = false) {
-  const props = Object.assign(
-    {
-      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }]
+  const props = {
+    ...{
+      items: [{ id: 'kRf6c2fY', name: 'Cook County, IL' }],
+      children: <TextField label="autocomplete" name="autocomplete_field" />,
     },
-    customProps
-  );
+    ...customProps,
+  };
   const component = <Autocomplete {...props} />;
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component)
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
@@ -60,12 +62,7 @@ describe('Autocomplete', () => {
     const wrapper = data.wrapper;
     const downshift = wrapper.find('Downshift');
 
-    expect(
-      downshift
-        .find('div')
-        .first()
-        .exists()
-    ).toBe(true);
+    expect(downshift.find('div').first().exists()).toBe(true);
     expect(downshift.find('ul').exists()).toBe(false);
     expect(downshift.find('li').exists()).toBe(false);
     expect(downshift.find('button').exists()).toBe(true);
@@ -75,12 +72,7 @@ describe('Autocomplete', () => {
     const { wrapper } = render({ clearSearchButton: false }, true);
     const downshift = wrapper.find('Downshift');
 
-    expect(
-      downshift
-        .find('div')
-        .first()
-        .exists()
-    ).toBe(true);
+    expect(downshift.find('div').first().exists()).toBe(true);
     expect(downshift.find('button').exists()).toBe(false);
   });
 
@@ -108,7 +100,7 @@ describe('Autocomplete', () => {
         clearInputText: 'Clear search box',
         loading: true,
         loadingMessage: 'Custom loading message',
-        noResultsMessage: 'Custom no results message'
+        noResultsMessage: 'Custom no results message',
       },
       true
     );
@@ -123,7 +115,11 @@ describe('Autocomplete', () => {
 
   it('renders a snapshot', () => {
     const tree = renderer
-      .create(<Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput />)
+      .create(
+        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput>
+          <TextField label="autocomplete" name="autocomplete_field" />
+        </Autocomplete>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

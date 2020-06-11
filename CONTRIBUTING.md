@@ -9,16 +9,17 @@ Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
 
 If you are interested in running this site locally, please take a look at [setting up your local development environment](/README.md#running-locally).
 
-Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like: 
-* Guiding principles
-* Coding guidelines
-* How to write documentation
+Use [our guides](https://github.com/CMSgov/design-system/tree/master/guides) to find additional information like:
+
+- Guiding principles
+- Coding guidelines
+- How to write documentation
 
 ## Submitting a pull request
 
-* [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
-* [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `master` that defines what you’re working on (for example, fix-autocomplete-bug).
-* [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `master` branch
+- [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
+- [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `master` that defines what you’re working on (for example, fix-autocomplete-bug).
+- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `master` branch
 
 **Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
 
@@ -30,7 +31,7 @@ When considering what to do with a proposed pattern, there are several questions
 
 When a new pattern is created, it’s worth asking if it's a one-off use case or something that can be used on other sites. New patterns come at a cost in terms of additional code, maintenance, documentation, and increased cognitive load on users. Care should therefore be taken when adding patterns to the design system.
 
-Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design).
+Our pattern proposal process is largely based on those by the [US Web Design System](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design).
 
 Our design contribution and review process has four stages. As a contributor to the CMS Design System, you’ll only need to participate in the first stage — our team will handle the rest.
 
@@ -47,7 +48,6 @@ Open a new [GitHub issue](https://github.com/CMSgov/design-system/issues/new?ass
     - Can this serve more than one use case and be reusable in multiple scenarios? Please explain.
     - Please include links to any examples, research or code to support your proposal, if available.
 
-
 ### Step 2 - Review (Core design system team)
 
 After an idea is proposed, it undergoes an evaluation by a team member. This review is to determine whether the contribution needs small fixes, visual improvements, or whether to reject it.
@@ -56,14 +56,13 @@ During this stage, the team will review supporting research — and link this re
 
 Revisions may be requested before moving the proposal to Draft. If the proposal is good to go as is, it's moved to Draft. If the proposal doesn’t pass the evaluation, the reviewer will reject it and close the issue.
 
-
 The criteria used in evaluating is:
 
-- **Usability**:  Is the pattern responsive? Is the interaction flow clearly documented?
+- **Usability**: Is the pattern responsive? Is the interaction flow clearly documented?
 - **Accessibility**: Is the pattern 508 compliant and accessible?
 - **Visual design**: Is the pattern consistent with the CMS Design system visual style?
 
- The pattern will be marked as *Draft* when it passes evaluation criteria.
+The pattern will be marked as _Draft_ when it passes evaluation criteria.
 
 ### Step 3 - Draft (Core design system team)
 
@@ -76,14 +75,11 @@ Acceptance criteria:
 - Pattern validates against accessibility criteria
 - Feedback has been collected on the pattern based on usage in real-world products and revised if necessary
 
-
-Finally, a team member will either move the pattern to *Ready*; ask for revisions; or, in some cases, reject the pattern.
-
+Finally, a team member will either move the pattern to _Ready_; ask for revisions; or, in some cases, reject the pattern.
 
 ### Step 4 - Ready
 
-When a pattern is moved to *Ready*, all criteria from the Draft step have been completed. The pattern is now a stable part of the design system in production and the core team will conduct ongoing maintenance (bug fixes, minor enhancements, and so on).
-
+When a pattern is moved to _Ready_, all criteria from the Draft step have been completed. The pattern is now a stable part of the design system in production and the core team will conduct ongoing maintenance (bug fixes, minor enhancements, and so on).
 
 ## Amending patterns
 
@@ -95,7 +91,7 @@ Amendment proposals should follow the same process as outlined above. During the
 
 As technology changes, certain UI patterns will become less relevant or may be replaced by better patterns. As we become aware of such changes, we’ll remove patterns from the library. To avoid pulling the rug out from under people relying on those patterns in their projects, deprecated patterns will remain within the codebase for at least a month after deprecation. The patterns will also be marked as deprecated in the documentation and in the developer's console when used in a project.
 
-----
+---
 
 ## Licenses and attribution
 
@@ -104,10 +100,11 @@ A few parts of this project are not in the public domain. Attribution and licens
 The rest of this project is in the worldwide public domain, released under the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## Contributions
+
 All contributions to this project will be released under the CC0 dedication alongside the public domain portions of this project. For more information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 **Credits**
 
-- [US Web Design Standards](https://github.com/18F/web-design-standards/wiki/Contribution-Guidelines%3A-Design)
+- [US Web Design Standards](https://github.com/uswds/uswds/wiki/Contribution-Guidelines%3A-Design)
 - [Atomic Design](http://atomicdesign.bradfrost.com/chapter-5/)
 - [Inayaili de León Persson](https://design.canonical.com/2016/07/getting-vanilla-ready-for-v1-the-roadmap/)

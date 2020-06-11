@@ -25,7 +25,7 @@ export class MonthPicker extends React.PureComponent {
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed.
       this.state = {
-        selectedMonths: props.defaultSelectedMonths || []
+        selectedMonths: props.defaultSelectedMonths || [],
       };
     } else {
       this.isControlled = true;
@@ -68,7 +68,7 @@ export class MonthPicker extends React.PureComponent {
 
     if (!this.isControlled) {
       const disabledMonths = this.disabledMonths();
-      const selectedMonths = monthNumbers.filter(m => !disabledMonths.includes(m));
+      const selectedMonths = monthNumbers.filter((m) => !disabledMonths.includes(m));
       this.setState({ selectedMonths });
     }
   }
@@ -97,8 +97,9 @@ export class MonthPicker extends React.PureComponent {
               className="ds-c-month-picker__month"
               disabled={disabledMonths.includes(i + 1)}
               inversed={inversed}
-              onChange={e => this.handleChange(e)}
+              onChange={(e) => this.handleChange(e)}
               name={name}
+              type="checkbox"
               value={i + 1}
             >
               {month}
@@ -167,7 +168,7 @@ export class MonthPicker extends React.PureComponent {
 
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
-  clearAllText: 'Clear all'
+  clearAllText: 'Clear all',
 };
 
 MonthPicker.propTypes = {
@@ -242,7 +243,7 @@ MonthPicker.propTypes = {
    * For internationalization purposes, the text for the "Clear all"
    * button must be passed in as a prop.
    */
-  clearAllText: PropTypes.string.isRequired
+  clearAllText: PropTypes.string.isRequired,
 };
 
 export default MonthPicker;

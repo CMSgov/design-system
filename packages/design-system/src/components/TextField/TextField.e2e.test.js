@@ -1,8 +1,8 @@
 /* global driver */
-import { ROOT_URL } from '../../helpers/e2e/constants';
+import { ROOT_URL } from '../helpers/e2e/constants';
 
-import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
-import { getElementByClassName } from '../../helpers/e2e';
+import assertNoAxeViolations from '../helpers/e2e/assertNoAxeViolations';
+import { getElementByClassName } from '../helpers/e2e';
 
 const rootURL = `${ROOT_URL}/example/components.text-field.react/`;
 

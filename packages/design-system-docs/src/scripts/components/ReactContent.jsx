@@ -8,50 +8,28 @@ import ReactPropDocs from './ReactPropDocs';
  * this component will return whatever is present.
  */
 function ReactContent(props) {
-  if (!props.reactComponentDocs && !props.reactExamplePath) return null;
-  const content = [];
-
-  if (props.reactComponentDocs && props.reactComponentDocs.description) {
-    content.push(
-      <div
-        className="c-details ds-u-margin-y--2 ds-u-measure--wide"
-        dangerouslySetInnerHTML={{
-          __html: props.reactComponentDocs.description
-        }}
-        key="description"
-      />
-    );
-  }
-
-  if (!props.hideExample) {
-    content.push(
-      <ReactExample
-        key="example"
-        markup={props.reactExampleSource}
-        path={props.reactExamplePath}
-        reference={props.reference}
-        responsive={props.responsive}
-      />
-    );
-  }
-
-  if (props.reactComponentDocs && props.reactComponentDocs.props) {
-    content.push(<ReactPropDocs key="propDocs" propDocs={props.reactComponentDocs.props} />);
-  }
-
-  return content;
+  return (
+    <>
+      {props.reactExampleSource && (
+        <ReactExample
+          key="example"
+          markup={props.reactExampleSource}
+          reference={props.reference}
+          responsive={props.responsive}
+        />
+      )}
+      {props.reactComponentProps && (
+        <ReactPropDocs key="propDocs" propDocs={props.reactComponentProps} />
+      )}
+    </>
+  );
 }
 
 ReactContent.propTypes = {
-  hideExample: PropTypes.bool,
-  reactComponentDocs: PropTypes.shape({
-    description: PropTypes.string,
-    props: ReactPropDocs.propTypes.propDocs
-  }),
-  reactExamplePath: PropTypes.string,
+  reactComponentProps: ReactPropDocs.propTypes.propDocs,
   reactExampleSource: ReactExample.propTypes.markup,
   reference: PropTypes.string,
-  responsive: PropTypes.bool
+  responsive: PropTypes.bool,
 };
 
 export default ReactContent;

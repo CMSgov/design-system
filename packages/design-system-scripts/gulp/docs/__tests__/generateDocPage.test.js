@@ -1,7 +1,7 @@
-jest.mock('../savePage', () => {
-  return jest.fn(page => Promise.resolve(page));
+jest.mock('../generatePages/savePage', () => {
+  return jest.fn((page) => Promise.resolve(page));
 });
-const generateDocPage = require('../generateDocPage');
+const generateDocPage = require('../generatePages/generateDocPage');
 
 describe('generateDocPage', () => {
   let output;
@@ -12,18 +12,18 @@ describe('generateDocPage', () => {
       id: '',
       items: [],
       label: 'Introduction',
-      url: '/'
+      url: '/',
     },
     {
       defaultCollapsed: true,
       id: 'getting-started',
       items: [],
       label: 'Getting started',
-      url: '/getting-started'
-    }
+      url: '/getting-started',
+    },
   ];
 
-  beforeEach(async function() {
+  beforeEach(async function () {
     pageData = {
       header: 'Button',
       description: '<p>Use buttons to signal actions.</p>',
@@ -34,13 +34,13 @@ describe('generateDocPage', () => {
       markup: '<button>Foo</button>',
       source: {
         filename: 'components/Button/Button.scss',
-        path: 'packages/core/src/components/Button/Button.scss'
+        path: 'packages/core/src/components/Button/Button.scss',
       },
       depth: 2,
       modifiers: [],
       sections: [],
-      uswds: 'https://standards.usa.gov/components/buttons',
-      parentReference: 'components'
+      uswds: 'https://designsystem.digital.gov/components/buttons',
+      parentReference: 'components',
     };
 
     output = await generateDocPage(routes, pageData, 'docs', '');

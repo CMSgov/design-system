@@ -1,9 +1,6 @@
 // Libraries
 @import '@cmsgov/design-system/dist/index.scss';
 
-// Theme, if applicable
-//@import '~theme/index';
-
 // Sass settings
 @import 'styles/settings/index';
 
@@ -23,6 +20,7 @@
 @import 'styles/components/Frame';
 @import 'styles/components/Header';
 @import 'styles/components/UsaBanner';
+@import 'styles/components/ReactPropDocs';
 
 // Utilities
 @import 'styles/utilities/colors';

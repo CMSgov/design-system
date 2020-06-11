@@ -1,8 +1,8 @@
 /* global driver, by, key */
-import { getElementByClassName, getElementByXPath, getFocusInnerText } from '../../helpers/e2e';
-import { ROOT_URL } from '../../helpers/e2e/constants';
+import { getElementByClassName, getElementByXPath, getFocusInnerText } from '../helpers/e2e';
+import { ROOT_URL } from '../helpers/e2e/constants';
 
-import assertNoAxeViolations from '../../helpers/e2e/assertNoAxeViolations';
+import assertNoAxeViolations from '../helpers/e2e/assertNoAxeViolations';
 
 const rootURL = `${ROOT_URL}/example/components.autocomplete.react/`;
 

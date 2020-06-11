@@ -15,7 +15,7 @@ export class HelpDrawer extends React.PureComponent {
       }
       if (!props.title && !props.heading) {
         console.warn(
-          `The 'heading' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+          `The 'heading' prop in <Button> is required. The 'title' prop has been renamed to 'heading' and will be removed in a future release.`
         );
       }
     }
@@ -34,7 +34,7 @@ export class HelpDrawer extends React.PureComponent {
       onCloseClick,
       heading,
       footerBody,
-      footerTitle
+      footerTitle,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
@@ -48,12 +48,14 @@ export class HelpDrawer extends React.PureComponent {
            */}
           <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
             <Heading
-              ref={el => (this.headingRef = el)}
+              ref={(el) => (this.headingRef = el)}
               tabIndex="0"
               className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
             >
-              {// TODO: make heading required after removing title
-              title || heading}
+              {
+                // TODO: make heading required after removing title
+                title || heading
+              }
             </Heading>
             <Button
               aria-label={ariaLabel}
@@ -82,7 +84,7 @@ export class HelpDrawer extends React.PureComponent {
 HelpDrawer.defaultProps = {
   ariaLabel: 'Close help drawer',
   closeButtonText: 'Close',
-  headingLevel: '3'
+  headingLevel: '3',
 };
 HelpDrawer.propTypes = {
   /**
@@ -105,7 +107,7 @@ HelpDrawer.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 export default HelpDrawer;

@@ -14,7 +14,7 @@ function generateOptions(count) {
   for (let i = 1; i < count + 1; i++) {
     options.push({
       value: String(i),
-      label: String(i)
+      label: String(i),
     });
   }
 
@@ -34,13 +34,13 @@ function render(customProps = {}, optionsCount = 1, deep = false) {
 
   return {
     props: props,
-    wrapper: deep ? mount(component) : shallow(component)
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
 describe('Dropdown', () => {
   it('renders a select menu', () => {
-    const data = render({ value: '1', ariaLabel: 'test aria label' });
+    const data = render({ value: '1', label: '', ariaLabel: 'test aria label' });
 
     expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper.find('select').length).toBe(1);
@@ -121,17 +121,25 @@ describe('Dropdown', () => {
     expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(true);
   });
 
+  it('has error', () => {
+    const data = render({ errorMessage: 'Error' });
+
+    expect(data.wrapper.find('select').hasClass('ds-c-field--error')).toBe(true);
+  });
+
   it('focuses the select when focusTrigger is passed', () => {
     const data = render(
       {
         id: 'focus',
-        focusTrigger: true
+        focusTrigger: true,
       },
       null,
       true
     );
 
-    expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
+    setTimeout(() => {
+      expect(data.wrapper.find('select').props().id).toEqual(document.activeElement.id);
+    }, 20);
   });
 
   describe('event handlers', () => {
@@ -146,7 +154,7 @@ describe('Dropdown', () => {
       const sharedProps = {
         ...defaultProps,
         onBlur: onBlurMock,
-        onChange: onChangeMock
+        onChange: onChangeMock,
       };
 
       wrapper = shallow(<Dropdown {...sharedProps} options={generateOptions(10)} />);
