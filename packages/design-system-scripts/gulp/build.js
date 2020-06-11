@@ -21,10 +21,10 @@ const { CORE_SOURCE_PACKAGE } = require('./common/constants');
  */
 function copyJson(dir) {
   const src = path.join(dir, 'src');
-  const dest = path.join(dir, 'dist');
-
   return streamPromise(
-    gulp.src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`]).pipe(gulp.dest(dest))
+    gulp
+      .src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
@@ -33,9 +33,9 @@ function copyJson(dir) {
  */
 function copySass(dir) {
   const src = path.join(dir, 'src', 'styles');
-  const dest = path.join(dir, 'dist', 'scss');
-
-  return streamPromise(gulp.src([`${src}/**/*.{scss,sass}`]).pipe(gulp.dest(dest)));
+  return streamPromise(
+    gulp.src([`${src}/**/*.{scss,sass}`]).pipe(gulp.dest(path.join(dir, 'dist', 'scss')))
+  );
 }
 
 async function copyAll(dir) {
@@ -59,8 +59,7 @@ async function copyAll(dir) {
  * Similar to compileJS but babel is configured for esmodules
  */
 async function compileEsmJs(dir) {
-  const src = path.join(dir, 'src', 'scripts', 'components');
-  const dest = path.join(dir, 'dist', 'esnext');
+  const src = path.join(dir, 'src', 'components');
 
   return streamPromise(
     gulp
@@ -93,7 +92,7 @@ async function compileEsmJs(dir) {
           }
         })
       )
-      .pipe(gulp.dest(dest))
+      .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
       .on('finish', function () {
         logTask('📜 ', 'ES module JS files processed');
       })
@@ -107,9 +106,7 @@ async function compileEsmJs(dir) {
  *  this task first, otherwise the component won't be found.
  */
 function compileJs(dir) {
-  const src = path.join(dir, 'src', 'scripts');
-  const dest = path.join(dir, 'dist');
-
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
       .src([
@@ -124,7 +121,7 @@ function compileJs(dir) {
           logger: (message) => logTask('📜 ', message),
         })
       )
-      .pipe(gulp.dest(dest))
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
 
