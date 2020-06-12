@@ -39,7 +39,7 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
   let current;
   let latest;
 
-  const currentCSSPath = path.resolve(dir, 'dist', 'index.css');
+  const currentCSSPath = path.resolve(dir, 'dist', 'css', 'index.css');
   if (fs.existsSync(currentCSSPath)) {
     current = await getCSSStats(currentCSSPath);
   } else {
@@ -48,7 +48,7 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
   }
 
   if (!skipLatest && packageName) {
-    const latestCSSPath = path.resolve('node_modules', packageName, 'dist', 'index.css');
+    const latestCSSPath = path.resolve('node_modules', packageName, 'dist', 'css', 'index.css');
     if (fs.existsSync(latestCSSPath)) {
       latest = await getCSSStats(latestCSSPath);
     } else {

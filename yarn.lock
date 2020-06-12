@@ -998,6 +998,7 @@
     gulp-merge-json "^1.2.0"
     gulp-postcss "8.0.0"
     gulp-prettier "^3.0.0"
+    gulp-rename "^2.0.0"
     gulp-sass "^3.1.0"
     gulp-sourcemaps "2.6.5"
     gulp-stylelint "^13.0.0"
@@ -7413,6 +7414,11 @@ gulp-prettier@^3.0.0:
     plugin-error "^1.0.1"
     prettier "^2.0.0"
     through2 "^3.0.0"
+
+gulp-rename@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-2.0.0.tgz#9bbc3962b0c0f52fc67cd5eaff6c223ec5b9cf6c"
+  integrity sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==
 
 gulp-sass@^3.1.0:
   version "3.2.1"
