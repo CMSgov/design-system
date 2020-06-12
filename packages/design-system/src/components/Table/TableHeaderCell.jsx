@@ -2,18 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableHeaderCell = (props) => {
-  const {
-    title,
-    type,
-    width,
-    scope,
-    className,
-    stackedTitle,
-    stackedClassName,
-    ...attributeOptions
-  } = props;
-
+export const TableHeaderCell = ({
+  title,
+  type,
+  width,
+  scope,
+  className,
+  stackedTitle,
+  stackedClassName,
+  ...attributeOptions
+}) => {
   const classes = classNames(
     'ds-c-table__header',
     className,
@@ -21,15 +19,13 @@ export const TableHeaderCell = (props) => {
     width ? 'ds-c-table__header--width-' + width : null
   );
 
-  const stackedClasses = classNames(
-    'ds-c-table--stacked__col-header',
-    'ds-u-font-weight--bold',
-    stackedClassName
-  );
-
   const renderStackedTitle = () => {
+    const stackedClasses = classNames(
+      'ds-c-table--stacked__col-header',
+      'ds-u-font-weight--bold',
+      stackedClassName
+    );
     const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
-
     return (
       { isValidStackedTitle } && (
         <span aria-hidden="true" className={stackedClasses}>
@@ -53,10 +49,8 @@ export const TableHeaderCell = (props) => {
 };
 
 TableHeaderCell.defaultProps = {
-  className: '',
   scope: 'col',
   type: 'text',
-  stackedClassName: '',
 };
 
 TableHeaderCell.propTypes = {

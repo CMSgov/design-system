@@ -12,10 +12,6 @@ export const TableBody = ({ children, className, ...attributeOptions }) => {
   );
 };
 
-TableBody.defaultProps = {
-  className: '',
-};
-
 TableBody.propTypes = {
   /**
    * The table body contents, usually `TableRow`.

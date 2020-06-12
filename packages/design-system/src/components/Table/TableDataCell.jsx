@@ -2,32 +2,28 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableDataCell = (props) => {
-  const {
-    children,
-    className,
-    data,
-    stackedTitle,
-    stackedClassName,
-    type,
-    ...attributeOptions
-  } = props;
-
+export const TableDataCell = ({
+  children,
+  className,
+  data,
+  stackedTitle,
+  stackedClassName,
+  type,
+  ...attributeOptions
+}) => {
   const classes = classNames(
     'ds-c-table__cell',
     className,
     type === 'numeric' ? 'ds-c-table__cell--numeric' : null
   );
 
-  const stackedClasses = classNames(
-    'ds-c-table--stacked__col-header',
-    'ds-u-font-weight--bold',
-    stackedClassName
-  );
-
   const renderStackedTitle = () => {
+    const stackedClasses = classNames(
+      'ds-c-table--stacked__col-header',
+      'ds-u-font-weight--bold',
+      stackedClassName
+    );
     const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
-
     return (
       { isValidStackedTitle } && (
         <span aria-hidden="true" className={stackedClasses}>
@@ -47,8 +43,6 @@ export const TableDataCell = (props) => {
 };
 
 TableDataCell.defaultProps = {
-  className: '',
-  stackedClassName: '',
   type: 'text',
 };
 

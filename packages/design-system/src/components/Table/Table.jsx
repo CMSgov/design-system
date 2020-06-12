@@ -110,7 +110,6 @@ export const Table = ({
 };
 
 Table.defaultProps = {
-  className: '',
   scrollableActiveAlert: (
     <div className="ds-u-margin-y--1">
       <Alert>
