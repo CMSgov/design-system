@@ -2,15 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableCell = ({
-  children,
-  className,
-  data,
-  stackedTitle,
-  stackedClassName,
-  type,
-  ...attributeOptions
-}) => {
+export const TableDataCell = (props) => {
+  const {
+    children,
+    className,
+    data,
+    stackedTitle,
+    stackedClassName,
+    type,
+    ...attributeOptions
+  } = props;
+
   const classes = classNames(
     'ds-c-table__cell',
     className,
@@ -44,13 +46,13 @@ export const TableCell = ({
   );
 };
 
-TableCell.defaultProps = {
+TableDataCell.defaultProps = {
   className: '',
   stackedClassName: '',
   type: 'text',
 };
 
-TableCell.propTypes = {
+TableDataCell.propTypes = {
   /**
    * The table cell contents.
    */
@@ -81,4 +83,4 @@ TableCell.propTypes = {
   type: PropTypes.oneOf(['text', 'numeric']),
 };
 
-export default TableCell;
+export default TableDataCell;

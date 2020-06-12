@@ -2,9 +2,9 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableCell,
+  TableDataCell,
   TableHead,
-  TableHeader,
+  TableHeaderCell,
   TableRow,
 } from '@cmsgov/design-system';
 import React from 'react';
@@ -38,14 +38,14 @@ const simpleData = [
   },
 ];
 
-const tableId = uniqueId('tbl_');
+const tableId = 'tbl-' + Math.random().toString(36).substr(2, 9);
 
 const renderHeader = () => {
   return (
     <TableRow>
       {simpleHeaders.map((header, index) => {
         return (
-          <TableHeader
+          <TableHeaderCell
             key={header.key}
             title={header.title}
             type={header.type}
@@ -63,19 +63,19 @@ const renderRows = () => {
   return simpleData.map((data, index) => {
     return (
       <TableRow key={uniqueId('row_')}>
-        <TableHeader
+        <TableHeaderCell
           scope="row"
           stackedTitle="Branch"
           title={data.branch}
           id={tableId + '_row_' + index}
           headers={tableId + '_col_' + '0'}
         />
-        <TableCell
+        <TableDataCell
           data={data.article}
           stackedTitle="Article"
           headers={(tableId + '_row_' + index, tableId + '_col_' + '1')}
         />
-        <TableCell
+        <TableDataCell
           data={data.responsibility}
           stackedTitle="Responsibility"
           headers={(tableId + '_row_' + index, tableId + '_col_' + '2')}
@@ -86,7 +86,7 @@ const renderRows = () => {
 };
 
 ReactDOM.render(
-  <Table stacked="sm" scrollTable striped>
+  <Table responsiveTable="sm" scrollable striped>
     <TableCaption>System of Government</TableCaption>
     <TableHead>{renderHeader()}</TableHead>
     <TableBody>{renderRows()}</TableBody>

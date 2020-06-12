@@ -17,33 +17,39 @@ function debounce(fn, ms) {
 
 export const Table = ({
   className,
-  stacked,
+  responsiveTable,
   striped,
-  scrollTable,
-  scrollableCaption,
+  scrollable,
+  scrollableActiveAlert,
   children,
   ...attributeOptions
 }) => {
   const container = useRef(null);
+  // The captionID is calculated and stored as init value of a ref.
+  // This ensures that the ID remains constant for all renders.
   const captionID = useRef('caption-' + Math.random().toString(36).substr(2, 9));
   const [tabIndex, setTabIndex] = useState(null);
 
+  // Use the Effect hook to listen for window resize event.
+  // React execute useEffect() on each re-render and returns a function that cleans up the event listener from the render.
+  // https://reactjs.org/docs/hooks-effect.html
   useEffect(() => {
-    if (scrollTable) {
+    // Set `tabIndex` to `0` if the table width is wider than the viewport and Table is set for horizontal scrolling.
+    if (scrollable) {
       const { scrollWidth, clientWidth } = container.current;
-      const scrollable = scrollWidth > clientWidth;
-      setTabIndex(scrollable ? '0' : null);
+      const scrollableActive = scrollWidth > clientWidth;
+      setTabIndex(scrollableActive ? '0' : null);
 
       const debouncedHandleResize = debounce(function handleResize() {
         const { scrollWidth, clientWidth } = container.current;
-        const scrollable = scrollWidth > clientWidth;
-        setTabIndex(scrollable ? '0' : null);
-      }, 1000);
+        const scrollableActive = scrollWidth > clientWidth;
+        setTabIndex(scrollableActive ? '0' : null);
+      }, 500);
 
-      // Create event listener that calls handler function
+      // Create window resize event listener that calls the debouncedHandleResize function
       window.addEventListener('resize', debouncedHandleResize);
 
-      // Remove event listener on cleanup
+      // Specify how to clean up after this effect to avoid memory leak by removing establishd event listeners
       return () => {
         window.removeEventListener('resize', debouncedHandleResize);
       };
@@ -53,14 +59,20 @@ export const Table = ({
   const classes = classNames(
     'ds-c-table',
     striped ? 'ds-c-table--striped' : null,
-    stacked ? `ds-c-table--stacked-${stacked}` : null,
+    responsiveTable ? `ds-c-table--stacked-${responsiveTable}` : null,
     className
   );
 
-  const attributeScrollTable = scrollTable && {
+  // `tabIndex` state is needed to make table container focusable and to display scrollable message when table width exceeds viewport.
+  // Set attribute `tabIndex = 0` to make table container focusable to enable keyboard support of using the arrow keys.
+  // Also, provide context for screen reader users as they are able to focus on the region.
+  // Do this by using table's <caption> to label the scrollable region using aira-labelleby
+  const attributescrollable = scrollable && {
     className: 'ds-c-table__wrapper',
-    role: 'region',
+    role: 'group',
     'aria-labelledby': captionID.current,
+    'aria-live': 'polite',
+    'aria-relevant': 'additions',
   };
 
   const isTableCaptionComponents = (child) => {
@@ -69,7 +81,7 @@ export const Table = ({
 
   const renderChildren = (captionId) => {
     return React.Children.map(children, (child) => {
-      if (scrollTable && isTableCaptionComponents(child)) {
+      if (scrollable && isTableCaptionComponents(child)) {
         // Extend props on tables before rendering.
         return React.cloneElement(child, {
           id: captionId,
@@ -80,15 +92,15 @@ export const Table = ({
     });
   };
 
-  const renderScrollableCaption = () => {
-    const isScrollable = tabIndex === '0';
-    return scrollTable && isScrollable ? scrollableCaption : null;
+  const renderScrollableActiveAlert = () => {
+    const isActive = tabIndex === '0';
+    return scrollable && isActive ? scrollableActiveAlert : null;
   };
 
   return (
     <>
-      {renderScrollableCaption()}
-      <div ref={container} tabIndex={tabIndex} {...attributeScrollTable}>
+      {renderScrollableActiveAlert()}
+      <div ref={container} tabIndex={tabIndex} {...attributescrollable}>
         <table className={classes} role="table" {...attributeOptions}>
           {renderChildren(captionID.current)}
         </table>
@@ -99,7 +111,7 @@ export const Table = ({
 
 Table.defaultProps = {
   className: '',
-  scrollableCaption: (
+  scrollableActiveAlert: (
     <div className="ds-u-margin-y--1">
       <Alert>
         <p className="ds-c-alert__text" aria-hidden="true">
@@ -122,19 +134,19 @@ Table.propTypes = {
   /**
    * Responsive design breakpoint prefix to apply stack cells style at different viewpoint sizes.
    */
-  stacked: PropTypes.oneOf(['sm', 'md', 'lg']),
+  responsiveTable: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
    * A striped variation of the table.
    */
   striped: PropTypes.bool,
   /**
-   * Horizontal scroll table.
+   * Applies a horizontal scrollbar when the `Table` contents exceed the container width. It's recommended to use the `scrollableCaption` prop with `scrollable`.
    */
-  scrollTable: PropTypes.bool,
+  scrollable: PropTypes.bool,
   /**
-   * Additional scrollable text/node to display
+   * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the `scrollable` prop is also set.
    */
-  scrollableCaption: PropTypes.node,
+  scrollableActiveAlert: PropTypes.node,
 };
 
 export default Table;

@@ -3,7 +3,7 @@ import {
   TableBody,
   TableCaption,
   TableHead,
-  TableHeader,
+  TableHeaderCell,
   TableRow,
 } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
@@ -28,17 +28,14 @@ class ReactPropDocs extends React.PureComponent {
 
   render() {
     return [
-      <h3 key="propDocsHeader">Props</h3>,
-      <Table key="propDocsTable" stacked="sm" scrollTable>
-        <TableCaption className="ds-u-padding--1 ds-u-visibility--screen-reader">
-          React Properties Documentation
-        </TableCaption>
+      <Table key="propDocsTable" responsiveTable="sm" scrollable>
+        <TableCaption className="ds-u-padding-y--2 ds-u-font-size--h3">Props</TableCaption>
         <TableHead>
           <TableRow>
-            <TableHeader id="columnname" type="text" title="Name" scope="col" />
-            <TableHeader id="columntype" type="text" title="Type" scope="col" />
-            <TableHeader id="columndefault" type="text" title="Default" scope="col" />
-            <TableHeader id="columndescription" type="text" title="Description" scope="col" />
+            <TableHeaderCell id="columnname" type="text" title="Name" scope="col" />
+            <TableHeaderCell id="columntype" type="text" title="Type" scope="col" />
+            <TableHeaderCell id="columndefault" type="text" title="Default" scope="col" />
+            <TableHeaderCell id="columndescription" type="text" title="Description" scope="col" />
           </TableRow>
         </TableHead>
         <TableBody>{this.rows()}</TableBody>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableHeader = (props) => {
+export const TableHeaderCell = (props) => {
   const {
     title,
     type,
@@ -52,14 +52,14 @@ export const TableHeader = (props) => {
   );
 };
 
-TableHeader.defaultProps = {
+TableHeaderCell.defaultProps = {
   className: '',
   scope: 'col',
   type: 'text',
   stackedClassName: '',
 };
 
-TableHeader.propTypes = {
+TableHeaderCell.propTypes = {
   /**
    * Additional classes to be added to the row element.
    */
@@ -89,9 +89,9 @@ TableHeader.propTypes = {
    */
   type: PropTypes.oneOf(['text', 'numeric']),
   /**
-   * The width of the header.
+   * Sets the width of `TableHeader` to a percentage of the `Table` width.
    */
   width: PropTypes.oneOf(['10', '20', '25', '30', '33', '50', '75']),
 };
 
-export default TableHeader;
+export default TableHeaderCell;

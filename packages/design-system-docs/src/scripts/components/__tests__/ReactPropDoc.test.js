@@ -3,7 +3,7 @@ import ReactPropDoc from '../ReactPropDoc';
 import { mount } from 'enzyme';
 
 /**
- * Helper method for shallow rendering the <ReactPropDoc> component. The only props
+ * Helper method for deep rendering the <ReactPropDoc> component. The only props
  * initially defined are the required props.
  * @param {object} customProps - Additional props
  * @return {object}
@@ -20,7 +20,13 @@ function render(customProps = {}) {
 
   return {
     props: props,
-    wrapper: mount(<ReactPropDoc {...props} />),
+    wrapper: mount(
+      <table>
+        <tbody>
+          <ReactPropDoc {...props} />
+        </tbody>
+      </table>
+    ),
   };
 }
 

@@ -1,7 +1,7 @@
 /**
  * Render a table row for a single property
  */
-import { TableCell, TableRow } from '@cmsgov/design-system';
+import { TableDataCell, TableRow } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -70,34 +70,23 @@ class ReactPropDoc extends React.PureComponent {
   }
 
   render() {
-    // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
+    const nameData = (
+      <>
+        <code className="ds-u-font-weight--bold">{this.props.name}</code>
+        {this.isRequired()}
+      </>
+    );
+
     return (
       <TableRow>
-        <TableCell
-          data={
-            <>
-              <code className="ds-u-font-weight--bold">{this.props.name}</code>
-              {this.isRequired()}
-            </>
-          }
-          headers="columnname"
-          stackedTitle="Name"
-        />
-        <TableCell
-          data={
-            <>
-              <code>{this.type()}</code>
-            </>
-          }
-          headers="columntype"
-          stackedTitle="Type"
-        />
-        <TableCell
+        <TableDataCell data={nameData} headers="columnname" stackedTitle="Name" />
+        <TableDataCell data={<code>{this.type()}</code>} headers="columntype" stackedTitle="Type" />
+        <TableDataCell
           data={<>{this.defaultValue()}</>}
           headers="columndefault"
           stackedTitle="Default"
         />
-        <TableCell
+        <TableDataCell
           data={<>{this.description()}</>}
           headers="columndescription"
           stackedTitle="Description"
