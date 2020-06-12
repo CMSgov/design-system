@@ -53,13 +53,13 @@ ReactDOM.render(
 );
 ```
 
-See [React component documentation]({{root}}/components/button/#components.button.react) for more react examples, guidance, and detailed prop documentation.
+More React prop documentation, examples, and guidance can be found on component documentation pages.
 
 ## Using CSS components
 
 If your project doesn't use React, we provide a HTML/CSS-only version of our components. This includes styles for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
 
-This example assumes you've already added [design system styles via CSS or Sass]({{root}}/startup/sass-and-css/) by including either the CSS or Sass.
+This example assumes you've already added [design system styles via CSS or Sass]({{root}}/startup/sass-and-css/).
 
 ```html
 <div class="ds-c-alert ds-c-alert--warn">
@@ -72,7 +72,7 @@ This example assumes you've already added [design system styles via CSS or Sass]
 </div>
 ```
 
-See [component documentation]({{root}}/components/alert/) for more HTML/CSS examples and guidance.
+More HTML/CSS examples and guidance can be found on component documentation pages.
 
 <h2 id="examples" class="ds-h2 ds-u-color--primary-darker">Examples</h2>
 
