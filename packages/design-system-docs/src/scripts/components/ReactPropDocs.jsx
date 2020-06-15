@@ -32,10 +32,18 @@ class ReactPropDocs extends React.PureComponent {
         <TableCaption className="ds-u-padding-y--2 ds-u-font-size--h3">Props</TableCaption>
         <TableHead>
           <TableRow>
-            <TableHeaderCell id="columnname" type="text" title="Name" scope="col" />
-            <TableHeaderCell id="columntype" type="text" title="Type" scope="col" />
-            <TableHeaderCell id="columndefault" type="text" title="Default" scope="col" />
-            <TableHeaderCell id="columndescription" type="text" title="Description" scope="col" />
+            <TableHeaderCell id="columnname" scope="col">
+              Name
+            </TableHeaderCell>
+            <TableHeaderCell id="columntype" scope="col">
+              Type
+            </TableHeaderCell>
+            <TableHeaderCell id="columndefault" scope="col">
+              Default
+            </TableHeaderCell>
+            <TableHeaderCell id="columndescription" scope="col">
+              Description
+            </TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>{this.rows()}</TableBody>

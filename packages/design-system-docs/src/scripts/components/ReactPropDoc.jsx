@@ -79,18 +79,18 @@ class ReactPropDoc extends React.PureComponent {
 
     return (
       <TableRow>
-        <TableDataCell data={nameData} headers="columnname" stackedTitle="Name" />
-        <TableDataCell data={<code>{this.type()}</code>} headers="columntype" stackedTitle="Type" />
-        <TableDataCell
-          data={<>{this.defaultValue()}</>}
-          headers="columndefault"
-          stackedTitle="Default"
-        />
-        <TableDataCell
-          data={<>{this.description()}</>}
-          headers="columndescription"
-          stackedTitle="Description"
-        />
+        <TableDataCell headers="columnname" stackedTitle="Name">
+          {nameData}
+        </TableDataCell>
+        <TableDataCell headers="columntype" stackedTitle="Type">
+          {<code>{this.type()}</code>}
+        </TableDataCell>
+        <TableDataCell headers="columndefault" stackedTitle="Default">
+          {<>{this.defaultValue()}</>}
+        </TableDataCell>
+        <TableDataCell headers="columndescription" stackedTitle="Description">
+          {<>{this.description()}</>}
+        </TableDataCell>
       </TableRow>
     );
   }

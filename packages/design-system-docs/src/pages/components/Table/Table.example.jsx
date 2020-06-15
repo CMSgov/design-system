@@ -12,9 +12,9 @@ import ReactDOM from 'react-dom';
 import uniqueId from 'lodash.uniqueid';
 
 const simpleHeaders = [
-  { title: 'Branch', key: 'branch', type: 'text', width: '20' },
-  { title: 'Article', key: 'article', type: 'text', width: '30' },
-  { title: 'Responsibility', key: 'responsibility', type: 'text', width: '50' },
+  { title: 'Branch', key: 'branch', width: '20' },
+  { title: 'Article', key: 'article', width: '30' },
+  { title: 'Responsibility', key: 'responsibility', width: '50' },
 ];
 
 const simpleData = [
@@ -38,21 +38,19 @@ const simpleData = [
   },
 ];
 
-const tableId = 'tbl-' + Math.random().toString(36).substr(2, 9);
-
 const renderHeader = () => {
   return (
     <TableRow>
-      {simpleHeaders.map((header, index) => {
+      {simpleHeaders.map((header) => {
         return (
           <TableHeaderCell
             key={header.key}
-            title={header.title}
-            type={header.type}
             width={header.width}
             scope="col"
-            id={tableId + '_col_' + index}
-          />
+            id={'column' + header.key}
+          >
+            {header.title}
+          </TableHeaderCell>
         );
       })}
     </TableRow>
@@ -60,26 +58,34 @@ const renderHeader = () => {
 };
 
 const renderRows = () => {
-  return simpleData.map((data, index) => {
+  return simpleData.map((row, rowIndex) => {
     return (
       <TableRow key={uniqueId('row_')}>
-        <TableHeaderCell
-          scope="row"
-          stackedTitle="Branch"
-          title={data.branch}
-          id={tableId + '_row_' + index}
-          headers={tableId + '_col_' + '0'}
-        />
-        <TableDataCell
-          data={data.article}
-          stackedTitle="Article"
-          headers={(tableId + '_row_' + index, tableId + '_col_' + '1')}
-        />
-        <TableDataCell
-          data={data.responsibility}
-          stackedTitle="Responsibility"
-          headers={(tableId + '_row_' + index, tableId + '_col_' + '2')}
-        />
+        {simpleHeaders.map((header, columnIndex) => {
+          if (columnIndex === 0) {
+            return (
+              <TableHeaderCell
+                key={header.key}
+                scope="row"
+                id={'row' + rowIndex}
+                stackedTitle={header.title}
+                headers={'column' + header.key}
+              >
+                {row[header.key]}
+              </TableHeaderCell>
+            );
+          } else {
+            return (
+              <TableDataCell
+                key={header.key}
+                stackedTitle={header.title}
+                headers={('row' + rowIndex, 'column' + header.key)}
+              >
+                {row[header.key]}
+              </TableDataCell>
+            );
+          }
+        })}
       </TableRow>
     );
   });

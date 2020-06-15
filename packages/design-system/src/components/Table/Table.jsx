@@ -20,7 +20,7 @@ export const Table = ({
   responsiveTable,
   striped,
   scrollable,
-  scrollableActiveAlert,
+  scrollableAlert,
   children,
   ...attributeOptions
 }) => {
@@ -67,7 +67,7 @@ export const Table = ({
   // Set attribute `tabIndex = 0` to make table container focusable to enable keyboard support of using the arrow keys.
   // Also, provide context for screen reader users as they are able to focus on the region.
   // Do this by using table's <caption> to label the scrollable region using aira-labelleby
-  const attributescrollable = scrollable && {
+  const attributeScrollable = scrollable && {
     className: 'ds-c-table__wrapper',
     role: 'group',
     'aria-labelledby': captionID.current,
@@ -79,12 +79,18 @@ export const Table = ({
     return child && child.type === TableCaption;
   };
 
+  const renderscrollableAlert = () => {
+    const isActive = tabIndex === '0';
+    return scrollable && isActive ? scrollableAlert : null;
+  };
+
   const renderChildren = (captionId) => {
     return React.Children.map(children, (child) => {
       if (scrollable && isTableCaptionComponents(child)) {
-        // Extend props on tables before rendering.
+        // Extend props on TableCaption before rendering.
         return React.cloneElement(child, {
           id: captionId,
+          scrollableAlert: renderscrollableAlert(),
         });
       }
 
@@ -92,32 +98,20 @@ export const Table = ({
     });
   };
 
-  const renderScrollableActiveAlert = () => {
-    const isActive = tabIndex === '0';
-    return scrollable && isActive ? scrollableActiveAlert : null;
-  };
-
   return (
-    <>
-      {renderScrollableActiveAlert()}
-      <div ref={container} tabIndex={tabIndex} {...attributescrollable}>
-        <table className={classes} role="table" {...attributeOptions}>
-          {renderChildren(captionID.current)}
-        </table>
-      </div>
-    </>
+    <div ref={container} tabIndex={tabIndex} {...attributeScrollable}>
+      <table className={classes} role="table" {...attributeOptions}>
+        {renderChildren(captionID.current)}
+      </table>
+    </div>
   );
 };
 
 Table.defaultProps = {
-  scrollableActiveAlert: (
-    <div className="ds-u-margin-y--1">
-      <Alert>
-        <p className="ds-c-alert__text" aria-hidden="true">
-          Scroll using arrow keys to see more
-        </p>
-      </Alert>
-    </div>
+  scrollableAlert: (
+    <Alert className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal">
+      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
+    </Alert>
   ),
 };
 
@@ -145,7 +139,7 @@ Table.propTypes = {
   /**
    * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the `scrollable` prop is also set.
    */
-  scrollableActiveAlert: PropTypes.node,
+  scrollableAlert: PropTypes.node,
 };
 
 export default Table;

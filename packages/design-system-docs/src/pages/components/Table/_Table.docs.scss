@@ -25,7 +25,8 @@ Style guide: components.table.complex
 /*
 `<Table>`
 
-A `Table` component renders data table using semantic markup and ARIA attributes. The table components allows for customization as needed by the users.
+`Table` and sub-table components render data table using semantic markup and ARIA attributes.
+Structure of the table and sub-table components is similar to html table elements with responsive design features such as horizontal scroll and vertically stacked rows on small screens.
 
 @react-example Table.example.jsx
 

@@ -3,13 +3,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 export const TableHeaderCell = ({
-  title,
-  type,
-  width,
-  scope,
+  children,
   className,
+  scope,
   stackedTitle,
   stackedClassName,
+  type,
+  width,
   ...attributeOptions
 }) => {
   const classes = classNames(
@@ -43,7 +43,7 @@ export const TableHeaderCell = ({
       {...attributeOptions}
     >
       {renderStackedTitle()}
-      {title}
+      {children}
     </th>
   );
 };
@@ -54,6 +54,10 @@ TableHeaderCell.defaultProps = {
 };
 
 TableHeaderCell.propTypes = {
+  /**
+   * The table header cell contents.
+   */
+  children: PropTypes.node,
   /**
    * Additional classes to be added to the row element.
    */
@@ -74,10 +78,6 @@ TableHeaderCell.propTypes = {
    * The stacked row title for responsive table accessiblity.
    */
   stackedTitle: PropTypes.string,
-  /**
-   * The title of table header/column.
-   */
-  title: PropTypes.PropTypes.node.isRequired,
   /**
    * Type of the header, can be either text or numeric for left or right alignment respectively.
    */

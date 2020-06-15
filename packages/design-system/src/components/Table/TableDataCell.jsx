@@ -5,7 +5,6 @@ import classNames from 'classnames';
 export const TableDataCell = ({
   children,
   className,
-  data,
   stackedTitle,
   stackedClassName,
   type,
@@ -36,7 +35,6 @@ export const TableDataCell = ({
   return (
     <td className={classes} role="cell" {...attributeOptions}>
       {renderStackedTitle()}
-      {data}
       {children}
     </td>
   );
@@ -48,17 +46,13 @@ TableDataCell.defaultProps = {
 
 TableDataCell.propTypes = {
   /**
-   * The table cell contents.
+   * The table data cell contents.
    */
   children: PropTypes.node,
   /**
    * Additional classes to be added to the table cell element.
    */
   className: PropTypes.string,
-  /**
-   * The table cell data.
-   */
-  data: PropTypes.node.isRequired,
   /**
    * The `headers` attribute contains a list of `id` attributes of the associated data. If there is more than one id, they are separated by spaces.
    */
