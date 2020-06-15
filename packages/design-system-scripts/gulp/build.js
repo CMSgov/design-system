@@ -9,9 +9,9 @@ const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
 const path = require('path');
-const fs = require('fs');
+const rename = require('gulp-rename');
 const streamPromise = require('./common/streamPromise');
-const { compileSass } = require('./sass');
+const { compileSourceSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
@@ -32,11 +32,9 @@ function copyJson(dir) {
  * Copy Sass files from src to dist because we don't distribute the src folder
  */
 function copySass(dir) {
-  const src = path.join(dir, 'src');
+  const src = path.join(dir, 'src', 'styles');
   return streamPromise(
-    gulp
-      .src([`${src}/**/*.{scss,sass}`, `!${src}/**/*.docs.{scss,sass}`])
-      .pipe(gulp.dest(path.join(dir, 'dist')))
+    gulp.src([`${src}/**/*.{scss,sass}`]).pipe(gulp.dest(path.join(dir, 'dist', 'scss')))
   );
 }
 
@@ -63,9 +61,6 @@ async function copyAll(dir) {
 async function compileEsmJs(dir) {
   const src = path.join(dir, 'src', 'components');
 
-  // Create esm entry file
-  await fs.writeFileSync(path.join(dir, 'dist', 'index.es.js'), `export * from './esnext';`);
-
   return streamPromise(
     gulp
       .src([
@@ -87,6 +82,14 @@ async function compileEsmJs(dir) {
             '@babel/preset-react',
           ],
           plugins: ['@babel/plugin-transform-object-assign'],
+        })
+      )
+      .pipe(
+        rename((path) => {
+          if (path.basename === 'index') {
+            // Renames `esnext/index.js` to `esnext/index.esm.js`
+            path.extname = '.esm.js';
+          }
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
@@ -132,7 +135,7 @@ module.exports = {
     await copyAll(sourceDir);
     await compileJs(sourceDir);
     await compileEsmJs(sourceDir);
-    await compileSass(sourceDir);
+    await compileSourceSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');
   },

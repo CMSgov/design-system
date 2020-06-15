@@ -3,13 +3,13 @@ title: Using components
 weight: 3
 ---
 
-<h2>Using React components</h2>
+## Using React components
 
-**We strongly recommend using the React versions of our components.** It allows for more complex, interactive components like `Tabs` or `VerticalNav`, and many of our React components include accessibility optimizations.
+**We strongly recommend using the React versions of our components.** React allows for more complex, interactive components like `Tabs` or `VerticalNav`, and many of our React components have built in accessibility optimizations.
 
 The examples below assume you've [installed the design system using NPM]({{root}}/startup/installation/) and have already setup your build system for React.
 
-<h3>Named imports</h3>
+### Named imports
 
 Components can be imported from the package entry point using the syntax below.
 
@@ -23,21 +23,21 @@ Components can be imported from the package entry point using the syntax below.
 </div>
 
 ```jsx
-import { Button } from '@cmsgov/design-system';
-import { TextField, ChoiceList } from '@cmsgov/design-system';
+import { Button, TextField } from '@cmsgov/design-system';
 ```
 
-The `@cmsgov/design-system` package is configured to automatically work with Webpack 4's tree shaking. We provide a separate entry point (`index.es.js`) and component directory (`esnext`) for ES modules to support these optimizations.
+The `@cmsgov/design-system` package provides an ES modules version of our code (located in `dist/esnext`) to support Webpack 4's tree shaking optimizations. Our package is configured to let Webpack know to resolve imports from `"@cmsgov/design-system"` to the ES modules version when preferred.
 
-<h3>Individual imports</h3>
+### Individual imports
 
 Components can also be imported from their individual export file. This method carries no risk of including unused or extra code, as you are only importing from a specific file.
 
 ```jsx
 import Button from '@cmsgov/design-system/dist/components/Button/Button';
+import TextField from '@cmsgov/design-system/dist/components/Button/TextField';
 ```
 
-<h3>Usage</h3>
+### Usage
 
 After importing the React component, tell React to render the component in the DOM:
 
@@ -53,13 +53,13 @@ ReactDOM.render(
 );
 ```
 
-See [React component documentation]({{root}}/components/button/#components.button.react) for more react examples, guidance, and detailed prop documentation.
+More React prop documentation, examples, and guidance can be found on component documentation pages.
 
-<h2>Using CSS components</h2>
+## Using CSS components
 
-If your project doesn't use React, we provide a CSS-only version of our components. This includes styles for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
+If your project doesn't use React, we provide a HTML/CSS-only version of our components. This includes styles for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
 
-This example assumes you've already added [design system styles via CSS or Sass]({{root}}/startup/sass-and-css/) by including either the CSS or Sass.
+This example assumes you've already added [design system styles via CSS or Sass]({{root}}/startup/sass-and-css/).
 
 ```html
 <div class="ds-c-alert ds-c-alert--warn">
@@ -72,7 +72,7 @@ This example assumes you've already added [design system styles via CSS or Sass]
 </div>
 ```
 
-See [component documentation]({{root}}/components/alert/) for more HTML/CSS examples and guidance.
+More HTML/CSS examples and guidance can be found on component documentation pages.
 
 <h2 id="examples" class="ds-h2 ds-u-color--primary-darker">Examples</h2>
 
