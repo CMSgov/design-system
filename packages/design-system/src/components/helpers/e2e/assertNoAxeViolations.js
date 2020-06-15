@@ -1,5 +1,5 @@
 /* global driver, axeBuilder */
-import { RULESET_ALL } from '../helpers/e2e/constants';
+import { RULESET_ALL } from './constants';
 
 export default async function assertNoAxeViolations(url, disabledRules = []) {
   if (url) {

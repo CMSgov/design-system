@@ -17,18 +17,7 @@ const { logData, logError, logTask } = require('./common/logUtil');
 
 // The bulk of our Sass task. Transforms our Sass into CSS, then runs through
 // a variety of postcss processes (inlining, prefixing, minifying, etc).
-function compileSass(dir, dest, browserSync) {
-  const src = path.join(dir, 'src');
-  if (!dest) {
-    dest = path.join(dir, 'dist');
-  }
-
-  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
-  const includePaths = [
-    path.resolve(dir, 'node_modules'),
-    path.resolve(dir, '../node_modules'),
-    src,
-  ];
+function compileSass(src, dest, includePaths, browserSync) {
   const envDev = process.env.NODE_ENV === 'development';
 
   const sassCompiler = sass({
@@ -61,7 +50,7 @@ function compileSass(dir, dest, browserSync) {
     .pipe(postcss(postcssPlugins))
     .pipe(
       count({
-        message: `## Sass files processed in ${dir}`,
+        message: `## Sass files processed in ${src}`,
         logger: (message) => logTask('👓 ', message),
       })
     )
@@ -80,11 +69,27 @@ function compileSass(dir, dest, browserSync) {
   return streamPromise(stream);
 }
 
+async function compileSourceSass(sourceDir, browserSync) {
+  // 'styles' folder is renamed to 'css'
+  const src = path.join(sourceDir, 'src', 'styles');
+  const dest = path.join(sourceDir, 'dist', 'css');
+  const includePaths = [path.resolve(sourceDir, 'node_modules'), src];
+  await compileSass(src, dest, includePaths, browserSync);
+}
+
 async function compileDocsSass(docsDir, options, browserSync) {
-  await compileSass(docsDir, getDocsDistPath(docsDir, options.rootPath), browserSync);
+  const src = path.join(docsDir, 'src');
+  const dest = getDocsDistPath(docsDir, options.rootPath);
+  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
+  const includePaths = [
+    path.resolve(docsDir, 'node_modules'),
+    path.resolve(docsDir, '../node_modules'),
+    src,
+  ];
+  await compileSass(src, dest, includePaths, browserSync);
 }
 
 module.exports = {
-  compileSass,
+  compileSourceSass,
   compileDocsSass,
 };
