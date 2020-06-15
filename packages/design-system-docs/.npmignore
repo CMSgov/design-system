@@ -1,3 +1,4 @@
+dist/
 **/__tests__/
 **/*.test.js
 yarn.lock
