@@ -100,7 +100,6 @@ class PageBlock extends React.PureComponent {
     return [
       subheader,
       <span
-        className="ds-h2 ds-u-margin-top--0"
         // Headers can contain HTML markup, therefore dangerously set...
         dangerouslySetInnerHTML={{ __html: this.props.header }}
         id={this.props.reference}
@@ -113,7 +112,7 @@ class PageBlock extends React.PureComponent {
   render() {
     return (
       <article className="ds-u-margin-y--3 ds-u-sm-margin-y--6 l-content">
-        <h2>{this.header()}</h2>
+        <h2 className="ds-h2 ds-u-margin-top--0">{this.header()}</h2>
         {this.statusBadge()}
         {this.GitHubSource()}
         {this.description()}
