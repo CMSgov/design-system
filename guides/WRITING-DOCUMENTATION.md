@@ -68,7 +68,7 @@ Supported flags:
   - `[NAME]` is the filename of the react example to be displayed
 
 - **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
+- **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Ready` and `Deprecated`.
 - **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
 
 ### Modifiers

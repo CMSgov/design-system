@@ -13,7 +13,7 @@ Each component in the design system is tested and validated before deciding on t
 
 ## <span class="ds-u-fill--error">&nbsp;&nbsp;</span> Draft
 
-- **Do not implement**
+- **Implement with caution**
 - Documentation and guidance is incomplete
 - Testing and validation is incomplete
 - Could be buggy or have accessibility issues
