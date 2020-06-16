@@ -2,7 +2,8 @@
   "name": "@cmsgov/design-system-scripts",
   "version": "2.0.0-beta.1",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "beta"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
   "repository": "CMSgov/design-system",
@@ -76,8 +77,8 @@
     "yargs": "^11.0.0"
   },
   "peerDependencies": {
-    "@cmsgov/design-system": ">=4.0.0",
-    "@cmsgov/design-system-docs": ">=4.0.0",
+    "@cmsgov/design-system": ">=2.0.0",
+    "@cmsgov/design-system-docs": ">=2.0.0",
     "react": ">=16.0.0",
     "react-dom": ">=16.0.0"
   }
