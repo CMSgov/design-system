@@ -13,7 +13,7 @@ const rename = require('gulp-rename');
 const streamPromise = require('./common/streamPromise');
 const { compileSourceSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
-const { log, logTask } = require('./common/logUtil');
+const { log, logTask, logError } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
@@ -83,6 +83,9 @@ async function compileEsmJs(dir) {
           ],
         })
       )
+      .on('error', (error) => {
+        logError('compileEsmJs', error);
+      })
       .pipe(
         rename((path) => {
           if (path.basename === 'index') {
@@ -114,6 +117,9 @@ function compileJs(dir) {
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
       ])
       .pipe(babel())
+      .on('error', (error) => {
+        logError('compileJs', error);
+      })
       .pipe(
         count({
           message: `## JS files processed in ${dir}`,
