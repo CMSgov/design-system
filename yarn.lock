@@ -15925,6 +15925,11 @@ yargs@^8.0.2:
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
 
+yarn@^1.22.4:
+  version "1.22.4"
+  resolved "https://artifactory.cms.gov/artifactory/api/npm/wds-npm/yarn/-/yarn-1.22.4.tgz#01c1197ca5b27f21edc8bc472cd4c8ce0e5a470e"
+  integrity sha1-AcEZfKWyfyHtyLxHLNTIzg5aRw4=
+
 yauzl@^2.10.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.10.0.tgz#c7eb17c93e112cb1086fa6d8e51fb0667b79a5f9"
