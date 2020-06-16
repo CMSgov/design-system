@@ -12,9 +12,10 @@ import ReactDOM from 'react-dom';
 import uniqueId from 'lodash.uniqueid';
 
 const simpleHeaders = [
-  { title: 'Branch', key: 'branch', width: '20' },
-  { title: 'Article', key: 'article', width: '30' },
-  { title: 'Responsibility', key: 'responsibility', width: '50' },
+  { title: 'Branch', key: 'branch', width: '10' },
+  { title: 'Article', key: 'article', width: '20' },
+  { title: 'Responsibility', key: 'responsibility', width: '40' },
+  { title: 'Checks and balances', key: 'checks', width: '30' },
 ];
 
 const simpleData = [
@@ -23,18 +24,24 @@ const simpleData = [
     article: 'Article I of the Constitution establishes the legislative branch',
     responsibility:
       'Article I explains that Congress makes laws. Congress (the Senate and the House of Representatives) is the legislative branch of the U.S. government.',
+    checks:
+      "Congress confirms or rejects the president's nominees and can remove the president from office in exceptional circumstances.",
   },
   {
     branch: 'Executive',
     article: 'Article II of the Constitution establishes the executive branch',
     responsibility:
       'The executive branch enforces the laws that Congress passes. The executive branch makes sure all the people follow the laws of the United States. The president is the head of the executive branch.',
+    checks:
+      'The president can veto legislation created by Congress and nominates heads of federal agencies.',
   },
   {
     branch: 'Judicial',
     article: 'Article III of the Constitution establishes the judicial branch',
     responsibility:
       'One responsibility of the judicial branch is to decide if government laws and actions follow the Constitution.',
+    checks:
+      'The Justices of the Supreme Court, who can overturn unconstitutional laws, are nominated by the president and confirmed by the Senate.',
   },
 ];
 
@@ -69,6 +76,7 @@ const renderRows = () => {
                 scope="row"
                 id={'row' + rowIndex}
                 stackedTitle={header.title}
+                stackedClassName="stackerCell"
                 headers={'column' + header.key}
               >
                 {row[header.key]}
@@ -79,6 +87,7 @@ const renderRows = () => {
               <TableDataCell
                 key={header.key}
                 stackedTitle={header.title}
+                stackedClassName="stackerCell"
                 headers={('row' + rowIndex, 'column' + header.key)}
               >
                 {row[header.key]}
@@ -92,7 +101,7 @@ const renderRows = () => {
 };
 
 ReactDOM.render(
-  <Table responsiveTable="sm" scrollable striped>
+  <Table stackBreakpoint="sm" scrollable striped>
     <TableCaption>System of Government</TableCaption>
     <TableHead>{renderHeader()}</TableHead>
     <TableBody>{renderRows()}</TableBody>

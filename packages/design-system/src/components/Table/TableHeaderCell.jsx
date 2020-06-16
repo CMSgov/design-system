@@ -10,7 +10,7 @@ export const TableHeaderCell = ({
   stackedClassName,
   type,
   width,
-  ...attributeOptions
+  ...tableHeaderProps
 }) => {
   const classes = classNames(
     'ds-c-table__header',
@@ -40,7 +40,7 @@ export const TableHeaderCell = ({
       className={classes}
       role={scope === 'col' ? 'columnheader' : 'rowheader'}
       scope={scope}
-      {...attributeOptions}
+      {...tableHeaderProps}
     >
       {renderStackedTitle()}
       {children}
@@ -85,7 +85,7 @@ TableHeaderCell.propTypes = {
   /**
    * Sets the width of `TableHeader` to a percentage of the `Table` width.
    */
-  width: PropTypes.oneOf(['10', '20', '25', '30', '33', '50', '75']),
+  width: PropTypes.oneOf(['10', '15', '20', '25', '30', '33', '40', '50', '75']),
 };
 
 export default TableHeaderCell;

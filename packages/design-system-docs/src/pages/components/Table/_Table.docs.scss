@@ -25,8 +25,8 @@ Style guide: components.table.complex
 /*
 `<Table>`
 
-`Table` and sub-table components render data table using semantic markup and ARIA attributes.
-Structure of the table and sub-table components is similar to html table elements with responsive design features such as horizontal scroll and vertically stacked rows on small screens.
+`Table` and sub-table components render data tables using semantic markup and ARIA attributes.
+Structure of the table and sub-table components is similar to html table elements with responsive design features such as horizontal scrolling and vertically stacked rows.
 
 @react-example Table.example.jsx
 
@@ -38,7 +38,7 @@ Style guide: components.table.react
 /*
 `<TableBody>`
 
-A `TableBody` component renders the table body element <tbody> and contains a set of table rows defining the table data cell.
+A `TableBody` component renders the table body element `<tbody>` and contains a set of table rows defining the table data cell.
 
 @react-props TableBody.jsx
 
@@ -48,7 +48,7 @@ Style guide: components.table.react-tablebody
 /*
 `<TableCaption>`
 
-A `TablecCaption` component specifies the caption of a table.
+A `TablecCaption` component specifies the `<caption>` of a table.
 
 @react-props TableCaption.jsx
 
@@ -58,7 +58,7 @@ Style guide: components.table.react-tablecaption
 /*
 `<TableDataCell>`
 
-A `TableDataCell` component renders the table data cell element <td>.
+A `TableDataCell` component renders the table data cell element `<td>`.
 
 @react-props TableDataCell.jsx
 
@@ -68,7 +68,7 @@ Style guide: components.table.react-tabledatacell
 /*
 `<TableHead>`
 
-A `TableHead` component renders the table head element <th> and contains a set of rows defining the table header columns.
+A `TableHead` component renders the table head element `<thead>` and contains a set of rows defining the table header columns.
 
 @react-props TableHead.jsx
 
@@ -78,7 +78,7 @@ Style guide: components.table.react-tablehead
 /*
 `<TableHeaderCell>`
 
-A `TableHeaderCell` component renders the table header <th> element.
+A `TableHeaderCell` component renders the table header `<th>` element.
 
 @react-props TableHeaderCell.jsx
 
@@ -88,7 +88,7 @@ Style guide: components.table.react-tableheadercell
 /*
 `<TableRow>`
 
-A `TableRow` component renders the table row <tr> element and contains a row of table cells.
+A `TableRow` component renders the table row `<tr>` element and contains a row of table cells.
 
 @react-props TableRow.jsx
 

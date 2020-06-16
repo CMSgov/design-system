@@ -41,7 +41,7 @@ describe('Table', function () {
   });
 
   it('supports responsive table', () => {
-    const data = render({ responsiveTable: 'sm' }, undefined);
+    const data = render({ stackBreakpoint: 'sm' }, undefined);
     const wrapper = data.wrapper;
 
     const table = wrapper.find('table');

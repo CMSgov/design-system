@@ -8,7 +8,7 @@ export const TableDataCell = ({
   stackedTitle,
   stackedClassName,
   type,
-  ...attributeOptions
+  ...tableDataProps
 }) => {
   const classes = classNames(
     'ds-c-table__cell',
@@ -33,7 +33,7 @@ export const TableDataCell = ({
   };
 
   return (
-    <td className={classes} role="cell" {...attributeOptions}>
+    <td className={classes} role="cell" {...tableDataProps}>
       {renderStackedTitle()}
       {children}
     </td>
