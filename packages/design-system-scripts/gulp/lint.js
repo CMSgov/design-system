@@ -33,7 +33,6 @@ async function runPrettier(dir, ignorePatterns) {
 // Lint Sass files using stylelint
 async function runStylelint(dir, fix, ignorePatterns) {
   const src = [path.join(dir, '**/*.scss'), path.join(`!${dir}`, '**/*.docs.scss')];
-  const configBasedir = path.resolve(__dirname, '../node_modules');
 
   return streamPromise(
     gulp
@@ -42,7 +41,6 @@ async function runStylelint(dir, fix, ignorePatterns) {
       .pipe(count(`## Sass files linted in ${dir}`))
       .pipe(
         stylelint({
-          configBasedir,
           fix,
           failAfterError: process.env.NODE_ENV === 'test',
           reporters: [{ formatter: 'string', console: true }],
@@ -83,12 +81,8 @@ module.exports = {
 
     await Promise.all(
       directories.map(async (dir) => {
-        // For some reason, these promisified gulp tasks aren't playing nice together,
-        // and this order is needed in order for all 3 tasks to run correctly
-        // Eslint and stylelint are configured to not conflict with Prettier so the order shouldnt matter
-        // TODO: Fix this eventually
-        await runStylelint(dir, fix, ignorePatterns);
         await runPrettier(dir, ignorePatterns);
+        await runStylelint(dir, fix, ignorePatterns);
         await runEslint(dir, fix, ignorePatterns);
       })
     );
