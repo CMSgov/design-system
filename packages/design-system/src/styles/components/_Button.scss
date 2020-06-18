@@ -96,7 +96,9 @@
   &:focus,
   &.ds-c-button--focus {
     border-color: transparent;
-    text-decoration: none;
+    @if $ds-include-focus-styles {
+      text-decoration: none;
+    }
   }
 
   &:hover,
@@ -273,13 +275,14 @@ $button-color-variants: (
     &.ds-c-button--active {
       background-color: nth($color, 3);
     }
-
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: nth($color, 3);
-      box-shadow: none;
-      color: $color-white;
+    @if $ds-include-focus-styles {
+      // Make sure active overrides focus styles
+      &:active:focus,
+      &.ds-c-button--active:focus {
+        background-color: nth($color, 3);
+        box-shadow: none;
+        color: $color-white;
+      }
     }
   }
 }

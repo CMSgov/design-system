@@ -19,10 +19,15 @@
   }
 
   &:focus {
-    border-radius: 0;
-    box-shadow: $focus-shadow;
-    outline: 3px solid $focus-color;
-    outline-offset: 0;
+    @if $ds-include-focus-styles {
+      border-radius: 0;
+      box-shadow: $focus-shadow;
+      outline: 3px solid $focus-color;
+      outline-offset: 0;
+    }
+    @else {
+      box-shadow: $uswds-focus-shadow;
+    }
   }
 }
 
@@ -49,7 +54,12 @@ Inverse theme
   border-color: $input-border-color-inverse;
 
   &:focus {
-    box-shadow: $focus-shadow-inverse;
+    @if $ds-include-focus-styles {
+      box-shadow: $focus-shadow-inverse;
+    }
+    @else {
+      box-shadow: $uswds-focus-shadow-inverse;
+    }
   }
 }
 
@@ -57,18 +67,20 @@ Inverse theme
 // ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
-
-  &:focus {
-    border-color: $color-base;
-    box-shadow: none;
+  @if $ds-include-focus-styles {
+    &:focus {
+      border-color: $color-base;
+      box-shadow: none;
+    }
   }
 }
 
 .ds-c-field--success {
   border: 3px solid $color-success-light;
-
-  &:focus {
-    border-color: $color-base;
-    box-shadow: none;
+  @if $ds-include-focus-styles {
+    &:focus {
+      border-color: $color-base;
+      box-shadow: none;
+    }
   }
 }

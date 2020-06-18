@@ -1,24 +1,25 @@
 /* stylelint-disable selector-class-pattern */
-@import '../settings/index.scss';
 
+@import '../settings/index.scss';
 %link {
   color: $color-primary;
   cursor: pointer;
   text-decoration: underline;
-
   &:visited {
     color: $color-visited;
   }
-
   &:hover {
     color: $color-primary-darker;
   }
-
-  &:focus,
-  &:focus:visited {
-    @include focus-text;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text;
+    }
   }
-
+  @else {
+    color: $color-primary-darker;
+  }
   &:active {
     color: $color-primary-darkest;
     outline: 0 none;
@@ -30,11 +31,9 @@
   color: $color-primary-darker;
   cursor: pointer;
   text-decoration: underline;
-
   &:visited {
     color: $color-visited;
   }
-
   &:hover {
     color: $color-primary-darkest;
   }
@@ -48,10 +47,17 @@
       text-decoration: none;
     }
   }
-
-  &:active {
+  @else {
     color: $color-primary-darkest;
-    outline: 0 none;
+  }
+  @if $ds-include-focus-styles {
+    &:active {
+      color: $color-primary-darkest;
+      outline: 0 none;
+    }
+  }
+  @else {
+    color: $color-primary-darkest;
   }
 }
 
@@ -59,7 +65,6 @@
   color: $color-base-inverse;
   cursor: pointer;
   text-decoration: underline;
-
   /* stylelint-disable selector-max-specificity */
   @if $ds-include-focus-styles {
     &:focus,
@@ -67,8 +72,10 @@
       @include focus-text-inverse;
     }
   }
+  @else {
+    color: $color-muted-inverse;
+  }
   /* stylelint-enable selector-max-specificity */
-
   &:visited,
   &:hover,
   &:active {
@@ -98,7 +105,6 @@
   a {
     @extend %link;
   }
-
   // Change color of links that are descendants of '.ds-base--inverse'
   //
   // Fix TODO: Because this selector's specificity is higher than most components,
