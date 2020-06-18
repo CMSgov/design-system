@@ -11,7 +11,7 @@
     "build": "NODE_ENV=production yarn cmsds build-docs ./packages/design-system ./packages/design-system-docs",
     "release": "./prepublish.sh && yarn lerna publish from-git",
     "precommit": "lint-staged",
-    "test": "yarn test:unit && yarn test:e2e",
+    "test": "yarn test:unit",
     "test:unit": "NODE_ENV=test yarn cmsds test ./packages --core",
     "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
     "update-snapshots": "NODE_ENV=test yarn cmsds test ./packages --core --updateSnapshot",
