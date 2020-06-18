@@ -38,14 +38,15 @@
   &:hover {
     color: $color-primary-darkest;
   }
-
-  &:focus,
-  &:focus:visited {
-    background-color: $focus-color;
-    box-shadow: $focus-shadow-link;
-    color: $color-base;
-    outline: 3px solid transparent;
-    text-decoration: none;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      background-color: $focus-color;
+      box-shadow: $focus-shadow-link;
+      color: $color-base;
+      outline: 3px solid transparent;
+      text-decoration: none;
+    }
   }
 
   &:active {
@@ -60,9 +61,11 @@
   text-decoration: underline;
 
   /* stylelint-disable selector-max-specificity */
-  &:focus,
-  &:focus:visited {
-    @include focus-text-inverse;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text-inverse;
+    }
   }
   /* stylelint-enable selector-max-specificity */
 
