@@ -80,9 +80,10 @@ async function compileSourceSass(sourceDir, browserSync) {
 async function compileDocsSass(docsDir, options, browserSync) {
   const src = path.join(docsDir, 'src');
   const dest = getDocsDistPath(docsDir, options.rootPath);
-  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
   const includePaths = [
-    path.resolve(docsDir, 'node_modules'),
+    // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
+    path.resolve(docsDir, '../../node_modules'),
+    // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
     path.resolve(docsDir, '../node_modules'),
     src,
   ];
