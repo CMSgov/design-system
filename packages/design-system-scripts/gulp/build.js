@@ -113,6 +113,7 @@ function compileJs(dir) {
     gulp
       .src([
         `${src}/**/*.{js,jsx}`,
+        `!${src}/setupTests.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
       ])
