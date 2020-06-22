@@ -3,14 +3,13 @@
  */
 
 // Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
-@import 'settings/index.scss';
-@import 'settings/font.scss'; // Font variables are imported separately to avoid being compiled and included in multiple css files
+@import 'settings/index';
 
 // Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
-@import 'base/index.scss';
+@import 'base/index';
 
 // Components: Designed UI units
-@import 'components/index.scss';
+@import 'components/index';
 
 // Utilities: Overrides, helpers
-@import 'utilities/index.scss';
+@import 'utilities/index';
