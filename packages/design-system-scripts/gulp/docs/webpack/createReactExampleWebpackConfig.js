@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 /**
  * Create an instance of the Webpack compiler to be used for
@@ -6,8 +7,7 @@ const webpack = require('webpack');
  * @param {String} entry - Path to entry file
  * @return {*} Webpack compiler instance
  */
-module.exports = (entry) => {
-  // TODO: Add include paths
+module.exports = (entry, sourceDir) => {
   const config = {
     mode: process.env.NODE_ENV,
     entry,
@@ -26,7 +26,10 @@ module.exports = (entry) => {
       ],
     },
     plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
-    resolve: { extensions: ['.js', '.jsx'] },
+    resolve: {
+      modules: ['node_modules', path.resolve(sourceDir)],
+      extensions: ['.js', '.jsx'],
+    },
     performance: {
       hints: false,
     },

@@ -1,8 +1,6 @@
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('@babel/register')({
   only: [/(@cmsgov\/design-system-docs|design-system\/packages\/([a-z-_]+)\/src|generateDocPage)/],
-  // presets: ["@babel/preset-env", "@babel/preset-react"],
-  // plugins: ["@babel/plugin-transform-object-assign"]
 });
 
 const generateHtmlExample = require('./generateHtmlExample');
@@ -19,7 +17,7 @@ let generateDocPage;
  *   if it only render the markup/reactComponent/reactExample
  * @return {Promise<Boolean>}
  */
-function generatePage(routes, page, docsPath, options, isExample) {
+function generatePage(routes, page, docsPath, sourceDir, options, isExample) {
   if (!generateDocPage) {
     // We need to require this module inside of the method because
     // it depends on compiled React files. Those files are compiled
@@ -29,7 +27,7 @@ function generatePage(routes, page, docsPath, options, isExample) {
   }
 
   if (isExample) {
-    return generateExamples(page, docsPath, options);
+    return generateExamples(page, docsPath, sourceDir, options);
   } else if (typeof page.referenceURI === 'string') {
     return generateDocPage(routes, page, docsPath, options);
   }
@@ -37,7 +35,7 @@ function generatePage(routes, page, docsPath, options, isExample) {
   return Promise.resolve(false);
 }
 
-function generateExamples(page, docsPath, options) {
+function generateExamples(page, docsPath, sourceDir, options) {
   return generateHtmlExample(page, null, docsPath, options)
     .then(() => {
       if (page.modifiers) {
@@ -48,7 +46,7 @@ function generateExamples(page, docsPath, options) {
     })
     .then(() => {
       if (page.reactExampleSource) {
-        generateReactExample(page, docsPath, options);
+        generateReactExample(page, docsPath, sourceDir, options);
       }
     });
 }
