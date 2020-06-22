@@ -28,13 +28,22 @@ class ControlledChoiceButton extends React.PureComponent {
     super(props);
     this.state = {
       selectedOption: 'y',
+      selectedOptionChild: 'child2',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeChild = this.handleChangeChild.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       selectedOption: event.target.value,
+      selectedOptionChild: '',
+    });
+  }
+
+  handleChangeChild(event) {
+    this.setState({
+      selectedOptionChild: event.target.value,
     });
   }
 
@@ -57,7 +66,34 @@ class ControlledChoiceButton extends React.PureComponent {
           name="radio_controlled_children"
           type="radio"
           value="y"
-          checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
+          checkedChildren={
+            <div className="ds-c-choice__checkedChild">
+              <fieldset className="ds-c-fieldset">
+                <legend className="ds-c-label">
+                  Child Radio buttons with multi-level children
+                </legend>
+                <Choice
+                  checked={this.state.selectedOptionChild === 'child1'}
+                  onChange={this.handleChangeChild}
+                  name="radio_controlled_children1"
+                  type="radio"
+                  value="child1"
+                >
+                  Child A
+                </Choice>
+                <Choice
+                  checked={this.state.selectedOptionChild === 'child2'}
+                  onChange={this.handleChangeChild}
+                  name="radio_controlled_children1"
+                  type="radio"
+                  value="child2"
+                  checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
+                >
+                  Child B - with children
+                </Choice>
+              </fieldset>
+            </div>
+          }
         >
           Radio B - with children
         </Choice>
