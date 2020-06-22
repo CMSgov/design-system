@@ -7,10 +7,13 @@ module.exports = function (api) {
       {
         useBuiltIns: 'entry',
         corejs: '3.0.0',
+        // CMSDS scripts will add this property when compiling for ESM
+        // modules: false
       },
     ],
     '@babel/preset-react',
   ];
+
   const plugins = ['@babel/plugin-transform-object-assign'];
 
   return {

@@ -17,6 +17,8 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.4",
+    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/react": "^10.3.0",
     "autoprefixer": "9.6.0",
     "axe-webdriverjs": "^2.3.0",
     "babel-loader": "^8.0.0",

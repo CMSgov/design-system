@@ -58,10 +58,13 @@ function copySourceAssets(sourceDir, docsDir) {
  * Copies all the fonts and images from our docs packages
  * Usually there will only be images in the docs package
  */
-function copyDocsAssets(docsDir) {
+async function copyDocsAssets(docsDir) {
   logTask('🏞  ', `Copying fonts and images from docs packages into ${path.join(docsDir, 'dist')}`);
   // Handle rootPath when copying
-  return copyAssets(path.join(docsDir, 'src'), path.join(docsDir, 'dist'));
+  const docs = await getDocsDirs(docsDir);
+  return Promise.all([
+    docs.map((doc) => copyAssets(path.join(doc, 'src'), path.join(docsDir, 'dist'))),
+  ]);
 }
 
 module.exports = {

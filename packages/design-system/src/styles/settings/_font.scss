@@ -1,5 +1,7 @@
 // Design system fonts
-// Font variables are imported separately to avoid being compiled and included in multiple css files
+// Fonts are separated from other settings scss because font-faces are compiled and included css build files
+
+// TODO: Find solution to remove unused @font-faces
 @font-face {
   font-family: Bitter;
   font-style: normal;
