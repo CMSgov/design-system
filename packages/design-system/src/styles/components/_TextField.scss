@@ -26,7 +26,7 @@
       outline-offset: 0;
     }
     @else {
-      box-shadow: $uswds-focus-shadow;
+      box-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus;
     }
   }
 }
@@ -58,7 +58,7 @@ Inverse theme
       box-shadow: $focus-shadow-inverse;
     }
     @else {
-      box-shadow: $uswds-focus-shadow-inverse;
+      box-shadow: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse;
     }
   }
 }

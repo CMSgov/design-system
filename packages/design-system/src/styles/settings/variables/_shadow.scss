@@ -8,8 +8,3 @@ $shadow-base-blur-radius: 4px;
 $shadow-base-color: rgba(0, 0, 0, 0.25);
 $shadow-base: $shadow-base-offset-x $shadow-base-offset-y $shadow-base-blur-radius
   $shadow-base-color;
-
-// Inherited from USWDS
-$uswds-box-shadow: 0 0 2px $shadow-base-color !default;
-$uswds-focus-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus !default;
-$uswds-focus-shadow-inverse: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse !default;
