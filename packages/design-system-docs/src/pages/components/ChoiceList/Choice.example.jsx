@@ -16,12 +16,55 @@ const dropdownOptions = [
 const childDropdown = (
   <Dropdown
     options={dropdownOptions}
-    defaultValue={'B'}
+    defaultValue="B"
     label="Dropdown example"
     labelClassName="ds-c-label ds-u-margin-top--0"
     name="dropdown_choices_field"
   />
 );
+
+class ControlledChoiceButton extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption: 'y',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      selectedOption: event.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <fieldset className="ds-c-fieldset">
+        <legend className="ds-c-label">Controlled Radio buttons with children</legend>
+        <Choice
+          checked={this.state.selectedOption === 'x'}
+          onChange={this.handleChange}
+          name="radio_controlled_children"
+          type="radio"
+          value="x"
+        >
+          Radio A
+        </Choice>
+        <Choice
+          checked={this.state.selectedOption === 'y'}
+          onChange={this.handleChange}
+          name="radio_controlled_children"
+          type="radio"
+          value="y"
+          checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
+        >
+          Radio B - with children
+        </Choice>
+      </fieldset>
+    );
+  }
+}
 
 ReactDOM.render(
   <div>
@@ -76,7 +119,7 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio buttons with children</legend>
+      <legend className="ds-c-label">Radio buttons with multi-level children</legend>
       <Choice name="radio_choice_children" type="radio" value="c">
         Radio A
       </Choice>
@@ -85,7 +128,25 @@ ReactDOM.render(
         name="radio_choice_children"
         type="radio"
         value="d"
-        checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
+        checkedChildren={
+          <div className="ds-c-choice__checkedChild">
+            <fieldset className="ds-c-fieldset">
+              <legend className="ds-c-label">Child Radio buttons with children</legend>
+              <Choice name="radio_choice_children1" type="radio" value="child1">
+                Child A
+              </Choice>
+              <Choice
+                defaultChecked
+                name="radio_choice_children1"
+                type="radio"
+                value="child2"
+                checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
+              >
+                Child B - with children
+              </Choice>
+            </fieldset>
+          </div>
+        }
       >
         Radio B - with children
       </Choice>
@@ -138,6 +199,10 @@ ReactDOM.render(
         </Choice>
       </fieldset>
     </div>
+
+    <hr className="ds-u-margin-top--2" />
+
+    <ControlledChoiceButton />
   </div>,
   document.getElementById('js-example')
 );
