@@ -23,85 +23,6 @@ const childDropdown = (
   />
 );
 
-class ControlledChoiceButton extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedOption: 'y',
-      selectedOptionChild: 'child2',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChangeChild = this.handleChangeChild.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      selectedOption: event.target.value,
-      selectedOptionChild: '',
-    });
-  }
-
-  handleChangeChild(event) {
-    this.setState({
-      selectedOptionChild: event.target.value,
-    });
-  }
-
-  render() {
-    return (
-      <fieldset className="ds-c-fieldset">
-        <legend className="ds-c-label">Controlled Radio buttons with children</legend>
-        <Choice
-          checked={this.state.selectedOption === 'x'}
-          onChange={this.handleChange}
-          name="radio_controlled_children"
-          type="radio"
-          value="x"
-        >
-          Radio A
-        </Choice>
-        <Choice
-          checked={this.state.selectedOption === 'y'}
-          onChange={this.handleChange}
-          name="radio_controlled_children"
-          type="radio"
-          value="y"
-          checkedChildren={
-            <div className="ds-c-choice__checkedChild">
-              <fieldset className="ds-c-fieldset">
-                <legend className="ds-c-label">
-                  Child Radio buttons with multi-level children
-                </legend>
-                <Choice
-                  checked={this.state.selectedOptionChild === 'child1'}
-                  onChange={this.handleChangeChild}
-                  name="radio_controlled_children1"
-                  type="radio"
-                  value="child1"
-                >
-                  Child A
-                </Choice>
-                <Choice
-                  checked={this.state.selectedOptionChild === 'child2'}
-                  onChange={this.handleChangeChild}
-                  name="radio_controlled_children1"
-                  type="radio"
-                  value="child2"
-                  checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
-                >
-                  Child B - with children
-                </Choice>
-              </fieldset>
-            </div>
-          }
-        >
-          Radio B - with children
-        </Choice>
-      </fieldset>
-    );
-  }
-}
-
 ReactDOM.render(
   <div>
     <fieldset className="ds-c-fieldset">
@@ -155,7 +76,7 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio buttons with multi-level children</legend>
+      <legend className="ds-c-label">Radio buttons with children</legend>
       <Choice name="radio_choice_children" type="radio" value="c">
         Radio A
       </Choice>
@@ -164,25 +85,7 @@ ReactDOM.render(
         name="radio_choice_children"
         type="radio"
         value="d"
-        checkedChildren={
-          <div className="ds-c-choice__checkedChild">
-            <fieldset className="ds-c-fieldset">
-              <legend className="ds-c-label">Child Radio buttons with children</legend>
-              <Choice name="radio_choice_children1" type="radio" value="child1">
-                Child A
-              </Choice>
-              <Choice
-                defaultChecked
-                name="radio_choice_children1"
-                type="radio"
-                value="child2"
-                checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
-              >
-                Child B - with children
-              </Choice>
-            </fieldset>
-          </div>
-        }
+        checkedChildren={<div className="ds-c-choice__checkedChild">{childDropdown}</div>}
       >
         Radio B - with children
       </Choice>
@@ -235,10 +138,6 @@ ReactDOM.render(
         </Choice>
       </fieldset>
     </div>
-
-    <hr className="ds-u-margin-top--2" />
-
-    <ControlledChoiceButton />
   </div>,
   document.getElementById('js-example')
 );

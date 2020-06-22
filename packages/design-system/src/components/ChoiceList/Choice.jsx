@@ -16,7 +16,7 @@ export class Choice extends React.PureComponent {
     this.handleUncheck = this.handleUncheck.bind(this);
     this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
 
-    if (typeof this.props.checked === 'undefined' || this.props.defaultChecked) {
+    if (typeof this.props.checked === 'undefined') {
       this.isControlled = false;
       // Since this isn't a controlled component, we need a way
       // to track when the value has changed. This can then be used
