@@ -9,4 +9,5 @@ $ds-include-base-html-rulesets: true !default;
 // Set $asset-pipeline to true if you're using the Rails Asset Pipeline
 $asset-pipeline: false !default;
 
+// Set $ds-include-focus-styles to enable the beta CMSDS focus styles. These styles can be further customized via the `$focus-color` variable and `focus-text` mixin
 $ds-include-focus-styles: false !default;
