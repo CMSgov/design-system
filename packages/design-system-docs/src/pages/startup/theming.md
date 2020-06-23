@@ -38,7 +38,31 @@ Sass variables are documented on the relevant documentation pages, and are defin
 - [Colors]({{root}}/styles/color/)
 - [Spacing]({{root}}/styles/spacing/)
 - [Type sizes]({{root}}/styles/typography/)
-- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
+
+You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
+
+#### Focus settings
+
+<table class="ds-c-table ds-c-table--borderless docs_table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Variable</th>
+      <th scope="col">Default</th>
+      <th scope="col">Kind</th>
+      <th scope="col">Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Focus styles</td>
+      <td>`$ds-include-focus-styles`</td>
+      <td>`false`</td>
+      <td>`bool`</td>
+      <td>Show the CMSDS focus styles. These styles can be further customized via the [Focus color variables](http://localhost:3000/styles/color/#styles.color.focus) and `focus-text` mixin</td>
+    </tr>
+  </tbody>
+</table>
 
 ## CSS declarations
 
