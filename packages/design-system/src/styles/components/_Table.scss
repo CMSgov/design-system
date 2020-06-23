@@ -41,8 +41,6 @@
 }
 
 @mixin ds-c-table--stacked {
-  border: 0;
-
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
     // ds-u-visibility--screen-reader
@@ -57,13 +55,17 @@
     word-wrap: normal;
   }
 
+  th,
+  td {
+    border: 0;
+  }
+
   tr {
     border: 1px solid $color-gray;
     margin: 0 0 0.5rem;
   }
 
   td {
-    border: 0;
     border-top: 1px solid $color-gray-lighter;
   }
 
@@ -72,6 +74,10 @@
   td,
   caption {
     display: block;
+  }
+
+  td:first-child {
+    background-color: $color-gray-lightest;
   }
 
   /* Display individual cell heading reserved for stacked responsive table */

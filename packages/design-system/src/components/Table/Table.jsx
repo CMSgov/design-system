@@ -28,18 +28,20 @@ export const Table = ({
   const captionID = useRef('caption-' + Math.random().toString(36).substr(2, 9));
   const [isTableScrollable, setTableScrollable] = useState(false);
 
-  // Listens to the window resize event to dynamically handle horizontal scrollable tables.
+  // Listens to the window resize event to dynamically handle horizontal scrollable tables
   useEffect(() => {
-    // Set isTableScrollable `true` if the table width is wider than the viewport and Table is set for horizontal scrolling.
-    if (scrollable) {
+    function checkScrollable() {
       const { scrollWidth, clientWidth } = container.current;
       const isScrollActive = scrollWidth > clientWidth;
       setTableScrollable(isScrollActive);
+    }
 
+    if (scrollable) {
+      checkScrollable();
+
+      // Set isTableScrollable `true` if the table width is wider than the viewport
       const debouncedHandleResize = debounce(function handleResize() {
-        const { scrollWidth, clientWidth } = container.current;
-        const isScrollActive = scrollWidth > clientWidth;
-        setTableScrollable(isScrollActive);
+        checkScrollable();
       }, 500);
 
       // Create window resize event listener that calls the debouncedHandleResize function
@@ -50,7 +52,7 @@ export const Table = ({
         window.removeEventListener('resize', debouncedHandleResize);
       };
     }
-  });
+  }, []);
 
   const classes = classNames(
     'ds-c-table',
@@ -65,7 +67,7 @@ export const Table = ({
   // Do this by using table's <caption> to label the scrollable region using aira-labelleby
   const attributeScrollable = scrollable && {
     className: 'ds-c-table__wrapper',
-    role: 'group',
+    role: 'status',
     'aria-labelledby': captionID.current,
     'aria-live': 'polite',
     'aria-relevant': 'additions',
