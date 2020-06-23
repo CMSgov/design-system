@@ -64,9 +64,10 @@ async function compileEsmJs(dir) {
   return streamPromise(
     gulp
       .src([
-        `${src}/**/*.{js,jsx}`,
-        `!${src}/**/*.test.{js,jsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
+        `${src}/**/*.{js,jsx,ts,tsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(
         babel({
@@ -88,8 +89,8 @@ async function compileEsmJs(dir) {
       })
       .pipe(
         rename((path) => {
-          if (path.basename === 'index') {
-            // Renames `esnext/index.js` to `esnext/index.esm.js`
+          if (path.dirname === 'component' && path.basename === 'index') {
+            // Renames `component/index.js` to `esnext/index.esm.js`
             path.extname = '.esm.js';
           }
         })
@@ -112,10 +113,10 @@ function compileJs(dir) {
   return streamPromise(
     gulp
       .src([
-        `${src}/**/*.{js,jsx}`,
-        `!${src}/setupTests.{js,jsx}`,
-        `!${src}/**/*.test.{js,jsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
+        `${src}/**/*.{js,jsx,ts,tsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(babel())
       .on('error', (error) => {
