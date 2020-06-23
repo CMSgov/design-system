@@ -69,8 +69,6 @@ export const Table = ({
     className: 'ds-c-table__wrapper',
     role: 'status',
     'aria-labelledby': captionID.current,
-    'aria-live': 'polite',
-    'aria-relevant': 'additions',
     tabIndex: isTableScrollable ? '0' : null,
   };
 
