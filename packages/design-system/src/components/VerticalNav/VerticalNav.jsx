@@ -73,7 +73,7 @@ VerticalNav.propTypes = {
   /**
    * An array of `VerticalNavItem` data objects
    */
-  items: PropTypes.arrayOf(PropTypes.shape(PropTypes.object)).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
    * Indicates this list is nested within another nav item.
    */

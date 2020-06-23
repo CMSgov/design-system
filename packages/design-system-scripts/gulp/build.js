@@ -9,10 +9,11 @@ const copyAssets = require('./common/copyAssets');
 const count = require('gulp-count');
 const gulp = require('gulp');
 const path = require('path');
+const rename = require('gulp-rename');
 const streamPromise = require('./common/streamPromise');
-const { compileSass } = require('./sass');
+const { compileSourceSass } = require('./sass');
 const { getSourceDirs } = require('./common/getDirsToProcess');
-const { log, logTask } = require('./common/logUtil');
+const { log, logTask, logError } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 /**
@@ -31,25 +32,73 @@ function copyJson(dir) {
  * Copy Sass files from src to dist because we don't distribute the src folder
  */
 function copySass(dir) {
-  const src = path.join(dir, 'src');
+  const src = path.join(dir, 'src', 'styles');
   return streamPromise(
-    gulp
-      .src([`${src}/**/*.{scss,sass}`, `!${src}/**/*.docs.{scss,sass}`])
-      .pipe(gulp.dest(path.join(dir, 'dist')))
+    gulp.src([`${src}/**/*.{scss,sass}`]).pipe(gulp.dest(path.join(dir, 'dist', 'scss')))
   );
 }
 
 async function copyAll(dir) {
-  const copyTasks = [copyJson(dir), copySass(dir), copyAssets(dir)];
+  const copyTasks = [
+    copyJson(dir),
+    copySass(dir),
+    copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
+  ];
 
   const sources = await getSourceDirs(dir);
   if (sources.length > 1) {
     // If this a child DS we also need to copy assets from the core npm package
     logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(sources[0], dir));
+    copyTasks.push(copyAssets(path.join(sources[0], 'dist'), path.join(dir, 'dist')));
   }
 
   return Promise.all(copyTasks);
+}
+
+/**
+ * Similar to compileJS but babel is configured for esmodules
+ */
+async function compileEsmJs(dir) {
+  const src = path.join(dir, 'src', 'components');
+
+  return streamPromise(
+    gulp
+      .src([
+        `${src}/**/*.{js,jsx}`,
+        `!${src}/**/*.test.{js,jsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
+      ])
+      .pipe(
+        babel({
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'entry',
+                corejs: '3.0.0',
+                modules: false,
+              },
+            ],
+            '@babel/preset-react',
+          ],
+        })
+      )
+      .on('error', (error) => {
+        logError('compileEsmJs', error);
+      })
+      .pipe(
+        rename((path) => {
+          if (path.basename === 'index') {
+            // Renames `esnext/index.js` to `esnext/index.esm.js`
+            path.extname = '.esm.js';
+          }
+        })
+      )
+      .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
+      .on('finish', function () {
+        logTask('📜 ', 'ES module JS files processed');
+      })
+  );
 }
 
 /**
@@ -64,10 +113,14 @@ function compileJs(dir) {
     gulp
       .src([
         `${src}/**/*.{js,jsx}`,
+        `!${src}/setupTests.{js,jsx}`,
         `!${src}/**/*.test.{js,jsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*.{js,jsx}`,
       ])
       .pipe(babel())
+      .on('error', (error) => {
+        logError('compileJs', error);
+      })
       .pipe(
         count({
           message: `## JS files processed in ${dir}`,
@@ -87,7 +140,8 @@ module.exports = {
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
     await compileJs(sourceDir);
-    await compileSass(sourceDir);
+    await compileEsmJs(sourceDir);
+    await compileSourceSass(sourceDir);
     logTask('✅ ', 'Build succeeded');
     log('');
   },

@@ -72,7 +72,10 @@ export class Dropdown extends React.PureComponent {
     const classes = classNames(className);
     const fieldClasses = classNames(
       'ds-c-field',
-      { 'ds-c-field--inverse': inversed },
+      {
+        'ds-c-field--error': errorMessage,
+        'ds-c-field--inverse': inversed,
+      },
       size && `ds-c-field--${size}`,
       fieldClassName
     );

@@ -27,10 +27,10 @@ If you're already using Sass to style your site, another way to include the desi
 2. Add the following to your Sass file:
 
 ```css
-@import '@cmsgov/design-system/dist/index.scss';
+@import '@cmsgov/design-system/dist/scss/index';
 ```
 
-[Learn how to override and theme Sass variables]({{root}}/guidelines/themes/).
+[Learn how to override and theme Sass variables]({{root}}/startup/theming/).
 
 [View an example](https://github.com/CMSgov/design-system/blob/master/examples/react-app/src/styles/index.scss)
 

@@ -1,6 +1,6 @@
 # Do not commit build files to github
 /packages/**/dist
-examples/**/dist
+/examples/**/dist
 
 # Package managers
 **/package-lock.json

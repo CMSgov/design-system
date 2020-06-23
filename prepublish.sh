@@ -11,8 +11,7 @@ git checkout master
 git pull
 
 echo "${GREEN}Cleaning directory and fresh installing...${NC}"
-# TODO: Fix error on yarn build that happens when dist files are removed
-git clean -fdx --exclude="packages/design-system/dist/"
+git clean -fdx
 yarn install
 
 echo "${GREEN}Building files and running tests...${NC}"
@@ -21,8 +20,6 @@ yarn test
 yarn test:e2e --skipBuild
 
 echo "${GREEN}Bumping version and creating tagged release commit...${NC}"
-# Remove package-lock.json to prevent a lerna error
-rm -f "packages/design-system-scripts/package-lock.json"
 yarn lerna version --no-push --force-publish
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"

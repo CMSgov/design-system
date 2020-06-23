@@ -4,7 +4,7 @@ module.exports = (rootDir, core) => ({
   rootDir,
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  setupFilesAfterEnv: [`<rootDir>/${path.relative(rootDir, 'setupTests.js')}`],
+  setupFilesAfterEnv: core ? [`<rootDir>/../setupTests.js`] : [`<rootDir>/src/setupTests.js`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
@@ -13,11 +13,11 @@ module.exports = (rootDir, core) => ({
     ? {
         '^@cmsgov/design-system/(.*)$': `<rootDir>/${path.relative(
           rootDir,
-          'packages/design-system/src/$1'
+          'packages/design-system/$1'
         )}`,
         '^@cmsgov/design-system$': `<rootDir>/${path.relative(
           rootDir,
-          'packages/design-system/src/index.js'
+          'packages/design-system/src/components/index'
         )}`,
       }
     : {},

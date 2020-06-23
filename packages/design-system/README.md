@@ -3,9 +3,9 @@ This package contains the following design system assets:
 - Base styles
 - Utility classes
 - Sass/CSS and React components
-- Sass mixins and variables
 - Responsive flexbox grid framework
 - Fonts and images
+- Sass mixins and variables
 
 ## Installation
 
@@ -18,13 +18,13 @@ npm install --save @cmsgov/design-system
 The source files included are written in Sass (`.scss`). You can add your `node_modules` directory to your Sass [`includePaths`](https://github.com/sass/node-sass#includepaths) and import the file like this:
 
 ```css
-@import '@cmsgov/design-system/dist/index.scss';
+@import '@cmsgov/design-system/dist/scss/index';
 ```
 
 or import the transpiled CSS:
 
 ```css
-@import '@cmsgov/design-system/dist/index.css';
+@import '@cmsgov/design-system/dist/css/index';
 ```
 
 [Please view the documentation site for additional information.](https://design.cms.gov/)
@@ -46,21 +46,19 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 <!-- You can regenerate the tree by running tree -d -I "node_modules" -->
 
 ```
-└── dist
-    ├── fonts
-    ├── images
-    ├── index.css       Compiled CSS
-    ├── index.js        Compiled JSS
-    ├── index.scss      Uncompiled SCSS
-    ├── components      React component source, test & example files
-    │   ├── Button
-    │   └── etc...
-    ├── utilities       Utility classes for modifying individual CSS properties
-    │   ├── text-color
-    │   └── etc...
-    └── styles
-        ├── settings    Global variables, mixins, and functions
-        ├── grid        Responsive flexbox grid utilities
-        ├── typography
-        └── etc...
+└── @cmsgov/design-system/dist
+    ├── components/
+    │   └── index.js        Compiled JS (CommmonJS)
+    ├── css/
+    │   └── index.css       Compiled CSS
+    ├── esnext/
+    │   └── index.esm.js    Compiled JS (ES Module)
+    ├── fonts/
+    ├── images/
+    └── scss/
+        ├── base/           Base styles, HTML element selectors
+        ├── components/     Component styles
+        ├── settings/       Global variables, mixins, and functions
+        └── utilities/      Utility classes for individual CSS properties
+        └── index.scss      Uncompiled SCSS
 ```

@@ -39,6 +39,13 @@ ReactDOM.render(
     <Dropdown
       options={dropdownOptions}
       defaultValue={'1'}
+      errorMessage="Error message example"
+      label="Error dropdown example "
+      name="dropdown_field"
+    />
+    <Dropdown
+      options={dropdownOptions}
+      defaultValue={'1'}
       label="Disabled dropdown example"
       disabled
       name="disabled_dropdown_field"
