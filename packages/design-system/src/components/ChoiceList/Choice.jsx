@@ -68,7 +68,7 @@ export class Choice extends React.PureComponent {
     if (!this.isControlled) {
       this.setState({ checked: evt.target.checked });
 
-      if (this.uncheckEventName && evt.target.checked) {
+      if (this.props.type === 'radio' && evt.target.checked) {
         // Emit the uncheck event so other radio options update their state
         dsChoiceEmitter.emitEvent(this.uncheckEventName, [this.id]);
       }
