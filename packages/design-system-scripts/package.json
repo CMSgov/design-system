@@ -69,6 +69,7 @@
     "selenium-webdriver": "4.0.0-alpha.7",
     "static-server": "^2.2.1",
     "through2": "^2.0.3",
+    "ts-loader": "^6.2.1",
     "webpack": "^4.42.1",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "2.25.0",

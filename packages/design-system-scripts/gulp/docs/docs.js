@@ -33,9 +33,9 @@ async function extractReactDocs(sourceDir, docsDir, options) {
   return streamPromise(
     gulp
       .src([
-        `${sourcesGlob}/**/*.jsx`,
-        `!${sourcesGlob}/**/*.test.jsx`,
-        `${docsGlob}/**/*.example.jsx`,
+        `${sourcesGlob}/**/*.{jsx,tsx}`, // React props
+        `${docsGlob}/**/*.example.{jsx,tsx}`, // React examples
+        `!${sourcesGlob}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
       ])
       .pipe(parseReactFile(options.rootPath, options.githubUrl))
       .pipe(merge({ fileName: REACT_DATA_FILENAME }))

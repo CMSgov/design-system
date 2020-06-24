@@ -3,7 +3,7 @@ const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
 const through = require('through2');
-const { logData, logError } = require('../common/logUtil');
+const { logTask, logData, logError } = require('../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -18,8 +18,8 @@ module.exports = function (rootPath, githubUrl) {
     try {
       if (file.isNull()) return cb(null, file);
 
-      const fileName = path.basename(file.path);
-      const exampleFile = fileName.match(/.example.jsx$/);
+      const fileName = file.basename;
+      const exampleFile = fileName.match(/.example.(jsx|tsx)/);
 
       const reactData = exampleFile
         ? parseExample(file)
@@ -30,7 +30,12 @@ module.exports = function (rootPath, githubUrl) {
       if (response[fileName]) {
         if (response[fileName].path.match(/node_modules/)) {
           // We override react docs that come from `node_modules`
-          // logTask('🖊️  ', `Overriding ${fileName} ${exampleFile ? 'react example' : 'react props'} with ${file.path}`);
+          logTask(
+            '🖊️  ',
+            `Overriding ${fileName} ${exampleFile ? 'react example' : 'react props'} with ${
+              file.path
+            }`
+          );
           response[fileName] = reactData;
         }
       } else {
@@ -74,7 +79,8 @@ function parseComponent(file, rootPath, githubUrl) {
   const docs = reactDocgen.parse(
     file.contents,
     reactDocgen.resolver.findAllExportedComponentDefinitions,
-    reactDocgenHandlers(rootPath)
+    reactDocgenHandlers(rootPath),
+    { filename: file.basename }
   );
 
   if (docs.length !== 1) {

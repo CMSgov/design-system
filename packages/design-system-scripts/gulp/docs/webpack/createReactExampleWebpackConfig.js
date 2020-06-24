@@ -23,12 +23,16 @@ module.exports = (entry, sourceDir) => {
           exclude: /node_modules(?!\/@cmsgov)/,
           use: [{ loader: 'babel-loader' }],
         },
+        {
+          test: /\.(ts|tsx)$/,
+          use: [{ loader: 'ts-loader' }],
+        },
       ],
     },
     plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
     resolve: {
       modules: ['node_modules', path.resolve(sourceDir)],
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     performance: {
       hints: false,

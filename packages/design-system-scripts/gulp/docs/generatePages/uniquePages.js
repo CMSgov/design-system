@@ -12,7 +12,7 @@ function uniquePages(pages) {
     if (routes[page.reference]) {
       if (routes[page.reference].source.path.match(/node_modules/)) {
         // We override pages that come from `node_modules`
-        logTask('🖊️  ', `Overriding ${page.reference} page with ${page.source.path}`);
+        logTask('🖊️  ', `Overriding ${page.reference || 'index'} page with ${page.source.path}`);
         routes[page.reference] = page;
       } else {
         logTask(

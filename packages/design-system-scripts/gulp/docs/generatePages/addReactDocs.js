@@ -21,7 +21,10 @@ module.exports = function (pages, dataPath) {
           page.reactComponentProps = reactComponent;
           page.reactComponentPath = get(data, [page.reactProps, 'relativePath']);
         } else {
-          logError('addReactDocs', `Invalid react component for ${page.source.path}`);
+          logError(
+            'addReactDocs',
+            `Invalid react props key ${page.reactProps} for ${page.source.path}`
+          );
         }
       }
 
@@ -31,7 +34,10 @@ module.exports = function (pages, dataPath) {
           page.reactExampleSource = reactExample;
           page.reactExampleEntry = get(data, [page.reactExample, 'path']);
         } else {
-          logError('addReactDocs', `Invalid react example for ${page.source.path}`);
+          logError(
+            'addReactDocs',
+            `Invalid react example key ${page.reactExample} for ${page.source.path}`
+          );
         }
       }
     });
