@@ -52,7 +52,7 @@ export const Table = ({
         window.removeEventListener('resize', debouncedHandleResize);
       };
     }
-  }, []);
+  }, [scrollable]);
 
   const classes = classNames(
     'ds-c-table',
@@ -82,7 +82,7 @@ export const Table = ({
       if (scrollable && isTableCaptionComponent(child)) {
         return React.cloneElement(child, {
           id: captionId,
-          scrollActive: isTableScrollable,
+          _scrollActive: isTableScrollable,
         });
       }
 
