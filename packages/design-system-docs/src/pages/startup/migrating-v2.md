@@ -66,6 +66,10 @@ Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are
 
 See the [theming page]({{root}}/startup/theming/) for more specific information on overriding the default Sass variables or CSS declarations.
 
+### Focus styles
+
+We released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0) and with this V2 update we are disabling these gold focus styles by default and placing them in `beta` development as we continue to iterate on them. If you want to continue to use the gold focus styles please see the guidance on the [theming page]({{root}}/startup/theming#focus-settings)on how to enable them.
+
 ### Importing Javascript
 
 V2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to point to the new ES module entry point when possible, so for most users this won't require any change. See the documentation on [importing React components]({{root}}/startup/components/#named-imports) for more information on importing Javascript and ES module support.
