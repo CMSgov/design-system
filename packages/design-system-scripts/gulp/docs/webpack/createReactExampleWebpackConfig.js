@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 /**
  * Create an instance of the Webpack compiler to be used for
@@ -7,7 +8,7 @@ const path = require('path');
  * @param {String} entry - Path to entry file
  * @return {*} Webpack compiler instance
  */
-module.exports = (reactExampleEntry, sourceDir) => {
+module.exports = (sourceDir, reactExampleEntry, typescript) => {
   const config = {
     mode: process.env.NODE_ENV,
     entry: path.resolve(reactExampleEntry),
@@ -30,23 +31,12 @@ module.exports = (reactExampleEntry, sourceDir) => {
           ],
           exclude: /node_modules(?!\/@cmsgov)/,
         },
-        {
-          test: /\.(ts|tsx)$/,
-          use: [
-            {
-              loader: 'ts-loader',
-              options: {
-                transpileOnly: true,
-              },
-            },
-          ],
-        },
       ],
     },
     plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
     resolve: {
       modules: ['node_modules', path.resolve(sourceDir)],
-      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      extensions: ['.js', '.jsx'],
     },
     performance: {
       hints: false,
@@ -57,6 +47,23 @@ module.exports = (reactExampleEntry, sourceDir) => {
     config.optimization = {
       minimize: true,
     };
+  }
+
+  if (typescript) {
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            // Disable type checker and use ForkTsCheckerWebpack plugin
+            transpileOnly: true,
+          },
+        },
+      ],
+    });
+    config.plugins.push(new ForkTsCheckerWebpackPlugin());
+    config.resolve.extensions.push('.ts', '.tsx');
   }
 
   return config;

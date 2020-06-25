@@ -31,6 +31,13 @@ yargs
     builder: (yargs) => {
       describeSourceDir(yargs);
       describeStatsOptions(yargs);
+      yargs.option('typescript', {
+        desc:
+          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
+        alias: 't',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
@@ -47,9 +54,16 @@ yargs
     desc: 'Builds the design system source and its corresponding documentation site',
     builder: (yargs) => {
       describeSourceDir(yargs);
+      describeStatsOptions(yargs);
       describeDocsDir(yargs);
       describeDocsOptions(yargs);
-      describeStatsOptions(yargs);
+      yargs.option('typescript', {
+        desc:
+          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
+        alias: 't',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
@@ -71,6 +85,13 @@ yargs
       describeSourceDir(yargs);
       describeDocsDir(yargs);
       describeDocsOptions(yargs);
+      yargs.option('typescript', {
+        desc:
+          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
+        alias: 't',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
