@@ -7,10 +7,10 @@ const path = require('path');
  * @param {String} entry - Path to entry file
  * @return {*} Webpack compiler instance
  */
-module.exports = (entry, sourceDir) => {
+module.exports = (reactExampleEntry, sourceDir) => {
   const config = {
     mode: process.env.NODE_ENV,
-    entry,
+    entry: path.resolve(reactExampleEntry),
     output: { filename: 'bundle.js', path: '/build' },
     externals: {
       react: 'React',
@@ -20,12 +20,26 @@ module.exports = (entry, sourceDir) => {
       rules: [
         {
           test: /\.(js|jsx)$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: true,
+              },
+            },
+          ],
           exclude: /node_modules(?!\/@cmsgov)/,
-          use: [{ loader: 'babel-loader' }],
         },
         {
           test: /\.(ts|tsx)$/,
-          use: [{ loader: 'ts-loader' }],
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              },
+            },
+          ],
         },
       ],
     },

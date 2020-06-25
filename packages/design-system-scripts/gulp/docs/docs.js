@@ -82,10 +82,10 @@ module.exports = {
     logTask('🏃 ', message);
 
     await cleanDist(docsDir);
-    await extractReactDocs(sourceDir, docsDir, options);
-    await generatePages(sourceDir, docsDir, options);
     await copySourceAssets(sourceDir, docsDir);
     await copyDocsAssets(docsDir);
+    await extractReactDocs(sourceDir, docsDir, options);
+    await generatePages(sourceDir, docsDir, options);
     await runWebpackStatically(sourceDir, docsDir, options);
     await compileDocsSass(docsDir, options);
     logTask('✅ ', 'Docs generation succeeded');
