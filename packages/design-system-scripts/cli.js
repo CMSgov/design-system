@@ -196,7 +196,9 @@ yargs
           demandOption: true,
         })
         .option('fix', {
-          desc: 'Automatically fix, where possible, violations reported by rules.',
+          desc:
+            'Alias: -f. Automatically fix, where possible, violations reported by eslint and stylelint. Prettier autoformats regardless of this flag.',
+          alias: 'f',
           type: 'boolean',
           default: false,
         })
@@ -205,12 +207,28 @@ yargs
             'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
           type: 'array',
           default: ['**/node_modules/**', '**/dist/**'],
+        })
+        .option('disableStylelint', {
+          desc: 'Flag to opt out of running stylelint on files.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('disableEslint', {
+          desc: 'Flag to opt out of running eslint on files.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('disablePrettier', {
+          desc: 'Flag to opt out of running prettier on files.',
+          type: 'boolean',
+          default: false,
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
+      const { directories, fix, ignorePatterns, ...disable } = argv;
 
-      await lintDirectories(argv.directories, argv.fix, argv.ignorePatterns);
+      await lintDirectories(directories, fix, ignorePatterns, disable);
     },
   })
   .demandCommand()

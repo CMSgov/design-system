@@ -73,7 +73,7 @@ async function runEslint(dir, fix, ignorePatterns) {
 }
 
 module.exports = {
-  async lintDirectories(directories, fix, ignorePatterns) {
+  async lintDirectories(directories, fix, ignorePatterns, disable) {
     logTask(
       '🔎 ',
       `Linting files in: ${directories.join(', ')} and ignoring paths: ${ignorePatterns.join(', ')}`
@@ -81,9 +81,15 @@ module.exports = {
 
     await Promise.all(
       directories.map(async (dir) => {
-        await runPrettier(dir, ignorePatterns);
-        await runStylelint(dir, fix, ignorePatterns);
-        await runEslint(dir, fix, ignorePatterns);
+        if (!disable.disablePrettier) {
+          await runPrettier(dir, ignorePatterns);
+        }
+        if (!disable.disableStylelint) {
+          await runStylelint(dir, fix, ignorePatterns);
+        }
+        if (!disable.disableEslint) {
+          await runEslint(dir, fix, ignorePatterns);
+        }
       })
     );
   },
