@@ -1,0 +1,20 @@
+// Loaded within the markup example iframes
+@import '@cmsgov/design-system/dist/scss/index';
+
+@import 'styles/settings/index';
+@import 'styles/base/code';
+
+body {
+  margin: 0;
+  // Padding added to ensure *:focus outlines are visible when shown in an iframe
+  padding: $spacer-2;
+}
+
+code {
+  // Slightly larger than on the main doc site
+  font-size: 1em;
+}
+
+@import 'styles/components/example';
+@import 'styles/components/preview';
+@import 'styles/components/swatch';

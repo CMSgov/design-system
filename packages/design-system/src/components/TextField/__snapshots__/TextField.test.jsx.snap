@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField masks renders TextField 1`] = `
+<div
+  className="ds-u-clearfix"
+>
+  <FormLabel
+    component="label"
+    fieldId="textfield_58"
+    id="textfield_label_59"
+  >
+    Foo
+  </FormLabel>
+  <input
+    className="ds-c-field"
+    id="textfield_58"
+    name="spec-field"
+    type="text"
+  />
+</div>
+`;
+
+exports[`TextField masks renders currency mask 1`] = `
+<div
+  className="ds-u-clearfix"
+>
+  <FormLabel
+    component="label"
+    fieldId="textfield_60"
+    id="textfield_label_61"
+  >
+    Foo
+  </FormLabel>
+  <Mask
+    mask="currency"
+  >
+    <input
+      aria-label="Foo. Enter amount in dollars."
+      className="ds-c-field ds-c-field--currency"
+      id="textfield_60"
+      name="spec-field"
+      type="text"
+    />
+  </Mask>
+</div>
+`;

@@ -1,0 +1,70 @@
+<label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
+  Single line field
+</label>
+<input
+  class="ds-c-field"
+  id="input-singleline"
+  name="singleline"
+  value="Example text"
+  type="text"
+/>
+<label class="ds-c-label" for="input-number">
+  Number field
+</label>
+<input
+  class="ds-c-field"
+  id="input-number"
+  name="number"
+  value="123"
+  type="text"
+  inputmode="numeric"
+  pattern="[0-9]*"
+/>
+<label class="ds-c-label" for="input-small">Small size modifier</label>
+<input class="ds-c-field ds-c-field--small" id="input-small" name="tinysize" type="text" />
+<label class="ds-c-label" for="input-medium">Medium size modifier</label>
+<input class="ds-c-field ds-c-field--medium" id="input-medium" name="mediumsize" type="text" />
+<label class="ds-c-label" for="input-multiline">
+  Multiline field
+  <span class="ds-c-field__hint">Helpful hint text</span>
+  <span class="ds-c-field__hint ds-u-color--error" role="alert">
+    Error message example
+  </span>
+</label>
+<textarea
+  class="ds-c-field ds-c-field--error"
+  id="input-multiline"
+  name="multiline"
+  rows="4"
+></textarea>
+<label class="ds-c-label" for="input-success">Success field</label>
+<input class="ds-c-field ds-c-field--success" id="input-success" name="success" type="text" />
+<label class="ds-c-label" for="input-disabled">
+  Disabled field
+</label>
+<input
+  class="ds-c-field ds-c-field--inverse"
+  id="input-disabled"
+  name="disabled"
+  type="text"
+  value="Example text"
+  disabled
+/>
+<label class="ds-c-label" for="input-password">
+  Password field
+</label>
+<input
+  class="ds-c-field ds-c-field--inverse"
+  id="input-password"
+  name="password"
+  type="password"
+  value="hidden"
+/>
+<div class="example--inverse ds-u-margin-top--3">
+  <label class="ds-c-label ds-u-margin-top--0" for="input-inverse">
+    Inverse field
+    <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+    <span class="ds-c-field__hint ds-u-color--error-light">Error message</span>
+  </label>
+  <input class="ds-c-field ds-c-field--inverse" id="input-inverse" name="inverse" type="text" />
+</div>

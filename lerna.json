@@ -1,18 +1,12 @@
 {
-  "lerna": "2.0.0",
   "command": {
-    "publish": {
-      "allowBranch": "master",
-      "ignore": [
-        "eslint-config-design-system",
-        "stylelint-config-design-system"
-      ]
+    "version": {
+      "allowBranch": "master"
     }
   },
   "npmClient": "yarn",
-  "packages": [
-    "packages/*",
-    "packages/themes/*"
-  ],
-  "version": "3.5.0"
+  "packages": ["packages/*"],
+  "tagVersionPrefix": "core-",
+  "version": "2.0.0-beta.1",
+  "useWorkspaces": true
 }

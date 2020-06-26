@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button applies additional classes 1`] = `
+<button
+  className="ds-c-button foobar"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button applies disabled class 1`] = `
+<button
+  className="ds-c-button"
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button applies disabled, inverse, and variation classes together 1`] = `
+<button
+  className="ds-c-button ds-c-button--transparent ds-c-button--inverse"
+  disabled={true}
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button applies inversed to default/transparent variations 1`] = `
+<button
+  className="ds-c-button ds-c-button--transparent ds-c-button--inverse"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button applies size classes 1`] = `
+<button
+  className="ds-c-button ds-c-button--small"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button applies variation classes 1`] = `
+<button
+  className="ds-c-button ds-c-button--danger"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders as a Link 1`] = `
+<Link
+  className="ds-c-button"
+  role="button"
+>
+  Foo
+</Link>
+`;
+
+exports[`Button renders as an anchor with custom prop 1`] = `
+<a
+  className="ds-c-button"
+  href="/example"
+  onKeyPress={[Function]}
+  role="button"
+  target="_blank"
+>
+  Foo
+</a>
+`;
+
+exports[`Button renders as button 1`] = `
+<button
+  className="ds-c-button"
+  type="button"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders as submit button 1`] = `
+<button
+  className="ds-c-button"
+  type="submit"
+>
+  Foo
+</button>
+`;
+
+exports[`Button renders disabled Link correctly 1`] = `
+<a
+  className="ds-c-button ds-c-button--disabled"
+  href="javascript:void(0)"
+  onKeyPress={[Function]}
+  role="button"
+>
+  Link button
+</a>
+`;

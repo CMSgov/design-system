@@ -1,0 +1,81 @@
+.c-usa-banner {
+  background-color: #f0f0f0;
+  color: #1b1b1b;
+  font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.06471rem;
+  line-height: 1.52155;
+}
+
+.c-usa-banner__header {
+  font-size: 0.79853rem;
+  font-weight: 400;
+  line-height: 1.12707;
+  min-height: 0;
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+  position: relative;
+}
+
+.c-usa-banner__header-flag {
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+.c-usa-banner__header-text {
+  margin: 0;
+  span {
+    margin-right: 0.5rem;
+  }
+}
+
+.c-usa-banner__content {
+  font-size: 0.99816rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.c-usa-banner__button {
+  @extend %link-darker;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+
+  &::after {
+    background-image: url('#{$image-path}/arrow-down.svg'),
+      linear-gradient(transparent, transparent);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    content: '';
+    display: inline-block;
+    height: 0.5rem;
+    margin-left: 2px;
+    width: 0.5rem;
+  }
+}
+
+.c-usa-banner__icon {
+  width: 2.5rem;
+}
+
+.c-usa-banner__media-img {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.c-usa-banner__media-body {
+  margin: 0;
+  overflow: hidden;
+}
+
+// stylelint-disable no-duplicate-selectors
+.c-usa-banner__header--expanded {
+  .c-usa-banner__button::after {
+    transform: rotate(180deg);
+  }
+}
+// stylelint-enable no-duplicate-selectors

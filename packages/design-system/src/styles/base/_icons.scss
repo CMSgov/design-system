@@ -1,0 +1,133 @@
+/* stylelint-disable selector-class-pattern */
+@import '../settings/index.scss';
+
+// TODO: Move icons to components and namespace css
+
+.icon-text {
+  text-transform: capitalize;
+}
+
+.icon-container {
+  height: auto;
+  overflow: auto;
+  padding-bottom: 48px;
+  padding-right: 16px;
+  width: 32px;
+
+  &.information {
+    background-image: url('#{$image-path}/information.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+  }
+
+  &.success {
+    background-image: url('#{$image-path}/success.svg');
+    background-repeat: no-repeat;
+    background-size: 24px;
+    margin-left: 4px;
+    margin-right: -4px;
+  }
+
+  &.success-fill {
+    background-image: url('#{$image-path}/success-fill.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+  }
+
+  &.warning {
+    background-image: url('#{$image-path}/warning.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+  }
+
+  &.error {
+    background-image: url('#{$image-path}/error.svg');
+    background-repeat: no-repeat;
+    background-size: 32px;
+  }
+
+  &.close {
+    background-image: url('#{$image-path}/close.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-top: 5px;
+  }
+
+  &.arrow-up {
+    background-image: url('#{$image-path}/arrow-up.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-top: 5px;
+  }
+
+  &.arrow-down {
+    background-image: url('#{$image-path}/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-top: 5px;
+  }
+
+  &.star-filled {
+    background-image: url('#{$image-path}/star-filled.svg');
+    background-repeat: no-repeat;
+    background-size: 24px;
+  }
+
+  &.star {
+    background-image: url('#{$image-path}/star.svg');
+    background-repeat: no-repeat;
+    background-size: 24px;
+  }
+
+  &.information-new-hover {
+    background-image: url('#{$image-path}/information-new-hover.svg');
+    background-repeat: no-repeat;
+    background-size: 24px;
+  }
+
+  &.information-new {
+    background-image: url('#{$image-path}/information-new.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-left: 4px;
+    margin-right: -4px;
+    margin-top: 5px;
+  }
+
+  &.PDF {
+    background-image: url('#{$image-path}/pdf.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 2px;
+  }
+
+  &.image {
+    background-image: url('#{$image-path}/image.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 5px;
+  }
+
+  &.download {
+    background-image: url('#{$image-path}/download.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-left: 5px;
+    margin-right: -5px;
+  }
+
+  &.next {
+    background-image: url('#{$image-path}/next.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    margin-left: 5px;
+    margin-right: -5px;
+    margin-top: 5px;
+  }
+}
+
+/* stylelint-enable */

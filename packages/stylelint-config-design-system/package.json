@@ -4,19 +4,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "description":
-    "A sharable stylelint config that enforces the design system's CSS and Sass rules",
+  "description": "A sharable stylelint config that enforces the design system's CSS and Sass rules",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
-  "engines": {
-    "node": ">=4.0.0"
-  },
-  "files": ["index.js"],
   "dependencies": {
-    "stylelint-order": "^0.8.1",
-    "stylelint-scss": "^2.4.0"
+    "stylelint-config-prettier": "^2.1.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.17.0"
   },
   "peerDependencies": {
-    "stylelint": ">=8.1.1"
+    "stylelint": ">=13.0.0"
   }
 }

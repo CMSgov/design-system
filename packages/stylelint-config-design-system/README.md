@@ -8,7 +8,7 @@ npm install @cmsgov/stylelint-config-design-system stylelint --save-dev
 
 ## Usage
 
-Once installed, you can use it by specifying `@cmsgov/stylelint-config-design-system` in the [`extends`](https://stylelint.io/user-guide/configuration/#extends) section of your [Stylelint configuration](https://stylelint.io/user-guide/configuration).
+Once installed, you can use it by specifying `@cmsgov/stylelint-config-design-system` in the [`extends`](https://stylelint.io/user-guide/configure#extends) section of your [Stylelint configuration](https://stylelint.io/user-guide/configure).
 
 ```js
 {

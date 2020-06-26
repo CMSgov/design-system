@@ -56,16 +56,16 @@ To extend the default functionality of KSS, we've implemented support for custom
 
 Supported flags:
 
-- **`@hide-example`** Hides the example and code snippet. Useful for rendering just the prop docs for React components.
 - **`@hide-markup`** Hides the code snippet.
-- **`@react-component [NAME]`** Displays the React `.jsx` component example, documentation and `Props`.
+- **`@react-props [NAME]`** Displays the React prop documentation for a component.
 
-  - **Example**: `@react-component Button` or `@react-component core/src/Components/Button/Button`.
-  - `[NAME]` is a component's name relative to the source documentation file, or a path (without a file extension) relative to `packages`. See [File naming](#file-naming) for more info.
+  - **Example**: `@react-props Button.jsx`
+  - `[NAME]` is the filename of the react component where the `Proptypes` are defined.
 
-- **`@react-example [NAME]`** Displays example.jsx file using this React component.
+- **`@react-example [NAME]`** Displays the example file using this React component.
 
-  - **Example**: `@react-component Mask` displays `Mask.example.jsx`
+  - **Example**: `@react-props Mask` displays `Mask.example.jsx`
+  - `[NAME]` is the filename of the react example to be displayed
 
 - **`@responsive`** Renders breakpoint toggles for the markup example.
 - **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
@@ -154,7 +154,9 @@ Buttons
 
 Use buttons to signal actions.
 
-@react-component Button
+@react-example Button.example.jsx
+
+@react-props Button.jsx
 
 Markup: button.example.html
 
@@ -211,15 +213,15 @@ Button.propTypes = {
   /**
    * Overwrite the button's `class` attribute by providing your own
    */
-  className: React.PropTypes.string
+  className: React.PropTypes.string,
 };
 ```
 
-For internal/private props that you don't want to be displayed in the documentation, prefix the prop with an underscore (ie. `_parentDefaultSelectedId`).
+For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
 
 ## General documentation pages
 
-There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create a page that's not associated with an example file. In these cases, you can create a markdown file in the `packages/design-system-docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 
@@ -247,7 +249,3 @@ The `weight` property controls the order of the page in the left navigation. `0`
 ### Body
 
 The content of the page comes after the front-matter section. You can write your content using a mix of Markdown and HTML.
-
-### Themes
-
-To override a Markdown page from a [theme](https://design.cms.gov/startup/site-package/#what-is-a-theme-), create a Markdown file with the same filename as the one you're overriding in a `src/pages` sub-directory (ie. `packages/themes/my-theme/src/pages/getting-started.md`

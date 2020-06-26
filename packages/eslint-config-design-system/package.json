@@ -7,19 +7,15 @@
   "description": "ESLint shareable config for the design system",
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
-  "engines": {
-    "node": ">=4.0.0"
-  },
-  "files": [
-    "index.js"
-  ],
   "dependencies": {
+    "eslint-config-nava": "^9.0.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-jest": "^21.12.2",
-    "eslint-plugin-jsx-a11y": "^6.0.3"
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.19.0"
   },
   "peerDependencies": {
-    "eslint": ">=3.17.1",
-    "eslint-config-nava": ">=2.1.0"
+    "eslint": ">=6.2.2"
   }
 }

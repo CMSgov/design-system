@@ -1,0 +1,74 @@
+@import '../settings/index.scss';
+
+.ds-c-field {
+  appearance: none;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  box-sizing: border-box; // ensure padding doesn't affect width
+  color: $color-base;
+  display: block;
+  margin: $spacer-half 0;
+  max-width: $input-max-width;
+  outline: none;
+  padding: $input-padding;
+  width: 100%;
+
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: $color-gray-light;
+  }
+
+  &:focus {
+    border-radius: 0;
+    box-shadow: $focus-shadow;
+    outline: 3px solid $focus-color;
+    outline-offset: 0;
+  }
+}
+
+.ds-c-field--small {
+  max-width: $input-small-width;
+}
+
+.ds-c-field--medium {
+  max-width: $input-medium-width;
+}
+
+.ds-c-field,
+.ds-c-field-mask {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $input-line-height;
+}
+
+/*
+Inverse theme
+*/
+
+.ds-c-field--inverse {
+  border-color: $input-border-color-inverse;
+
+  &:focus {
+    box-shadow: $focus-shadow-inverse;
+  }
+}
+
+// State modifiers and message
+// ==============================
+.ds-c-field--error {
+  border: 3px solid $color-error;
+
+  &:focus {
+    border-color: $color-base;
+    box-shadow: none;
+  }
+}
+
+.ds-c-field--success {
+  border: 3px solid $color-success-light;
+
+  &:focus {
+    border-color: $color-base;
+    box-shadow: none;
+  }
+}

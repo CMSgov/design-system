@@ -1,3 +1,5 @@
+A sharable [eslint](eslint.org) config object that enforces the design system's JS rules
+
 ## Installation
 
 ```
