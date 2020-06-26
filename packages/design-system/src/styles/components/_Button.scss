@@ -22,22 +22,29 @@
     border-color: $color-primary-darker;
     color: $color-primary-darker;
   }
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-button--focus {
+
+  &:focus,
+  &.ds-c-button--focus {
+    @if $ds-include-focus-styles {
       background-color: $focus-color;
       border-color: $color-base;
       box-shadow: $focus-shadow-link;
       color: $color-base;
       outline: 3px solid transparent;
       outline-offset: 2px;
+    } @else {
+      border-color: $color-primary-darker;
+      color: $color-primary-darker;
     }
+  }
 
+  @if $ds-include-focus-styles {
     // Removes inner outline on buttons in Firefox.
     &::-moz-focus-inner {
       border: 0;
     }
   }
+
   &:active,
   &.ds-c-button--active {
     border-color: $color-primary-darkest;
@@ -137,16 +144,21 @@
     border-color: rgba($border-color-inverse, 0.8);
     color: rgba($color-base-inverse, 0.8);
   }
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-button--focus {
+
+  &:focus,
+  &.ds-c-button--focus {
+    @if $ds-include-focus-styles {
       background-color: $focus-color;
       border-color: transparent;
       box-shadow: $focus-shadow-link-inverse;
       color: $color-base;
       opacity: 1;
+    } @else {
+      border-color: rgba($border-color-inverse, 0.8);
+      color: rgba($color-base-inverse, 0.8);
     }
   }
+
   &:active,
   &.ds-c-button--active {
     border-color: rgba($border-color-inverse, 0.6);
@@ -260,12 +272,17 @@ $button-color-variants: (
     &.ds-c-button--hover {
       background-color: nth($color, 2);
     }
-    @if $ds-include-focus-styles {
-      &:focus,
-      &.ds-c-button--focus {
+
+    &:focus,
+    &.ds-c-button--focus {
+      @if $ds-include-focus-styles {
         background-color: nth($color, 4);
         border-color: transparent;
         color: $color-base;
+      } @else {
+        background-color: nth($color, 2);
+        border-color: transparent;
+        color: $color-white;
       }
     }
 
