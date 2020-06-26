@@ -50,7 +50,7 @@ set the `$ds-include-focus-styles` variable to `true`.
 
 - `$focus-color` - Sets background highlight color.
 - `$focus-shadow` - Sets box-shadow on text fields.
-- `focus-shadow-link` - Sets box-shadow on buttons and links.
+- `$focus-shadow-link` - Sets box-shadow on buttons and links.
 - `$focus-color-inverse`- Sets background highlight color on dark backgrounds.
 - `$focus-shadow-inverse`- Sets box-shadow on text fields on dark backgrounds.
 - `$focus-shadow-link-inverse` - Sets box-shadow on buttons and links on dark backgrounds.
