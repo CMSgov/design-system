@@ -41,28 +41,26 @@ Sass variables are documented on the relevant documentation pages, and are defin
 
 You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
 
-#### Focus settings
+#### Focus style settings
 
-<table class="ds-c-table ds-c-table--borderless docs_table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Variable</th>
-      <th scope="col">Default</th>
-      <th scope="col">Kind</th>
-      <th scope="col">Usage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Focus styles</td>
-      <td>`$ds-include-focus-styles`</td>
-      <td>`false`</td>
-      <td>`bool`</td>
-      <td>Show the CMSDS focus styles. These styles can be further customized via the [Focus color variables](http://localhost:3000/styles/color/#styles.color.focus) and `focus-text` mixin</td>
-    </tr>
-  </tbody>
-</table>
+The focus styles are disabled by default. However if you'd ike to use them
+set the `$ds-include-focus-styles` variable to `true`.
+
+**Focus style variables**
+
+- `$focus-color` - Sets background highlight color.
+- `$focus-shadow` - Sets box-shadow on text fields.
+- `focus-shadow-link` - Sets box-shadow on buttons and links.
+- `$focus-color-inverse`- Sets background highlight color on dark backgrounds.
+- `$focus-shadow-inverse`- Sets box-shadow on text fields on dark backgrounds.
+- `$focus-shadow-link-inverse` - Sets box-shadow on buttons and links on dark backgrounds.
+
+**Mixins**
+
+- `focus-text` - Mixin for links and buttons.
+- `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
+
+Show the CMSDS focus styles. These styles can be further customized via the [Focus color variables](http://localhost:3000/styles/color/#styles.color.focus) and `focus-text` mixin
 
 ## CSS declarations
 
