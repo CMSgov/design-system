@@ -29,7 +29,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   });
 
   // Source package React components and React props
-  gulp.watch([`${src}/**/*.jsx`, `!${src}/**/*.test.{js,jsx}`], async () => {
+  gulp.watch([`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`], async () => {
     await compileJs(sourceDir);
     await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
@@ -50,7 +50,7 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
   });
 
   // Docs Markdown files, KSS documentation files and HTML/React examples
-  gulp.watch([`${src}/**/*.{md,mdx,docs.scss,html,jsx}`], async () => {
+  gulp.watch([`${src}/**/*.{md,mdx,docs.scss,html,jsx,tsx}`], async () => {
     await extractReactDocs(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });

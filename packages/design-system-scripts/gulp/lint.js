@@ -18,7 +18,7 @@ const getSrcGlob = (glob, dir, ignorePatterns) => [
 ];
 
 async function runPrettier(dir, ignorePatterns) {
-  const src = [path.join(dir, '**/*.{js,jsx,scss,html,md,mdx,json}')];
+  const src = [path.join(dir, '**/*.{js,jsx,ts,tsx,scss,html,md,mdx,json}')];
 
   return streamPromise(
     gulp
@@ -59,7 +59,7 @@ const isFixed = (file) => {
 
 // Lint JS files using eslint
 async function runEslint(dir, fix, ignorePatterns) {
-  const src = [path.join(dir, '**/*.{js,jsx}')];
+  const src = [path.join(dir, '**/*.{js,jsx,ts,tsx}')];
 
   return streamPromise(
     gulp
