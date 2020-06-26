@@ -36,7 +36,10 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     },
     plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
     resolve: {
-      modules: ['node_modules', path.resolve(sourceDir)],
+      modules: ['node_modules'],
+      alias: {
+        '@src': path.resolve(sourceDir),
+      },
       extensions: ['.js', '.jsx'],
       plugins: [],
     },
