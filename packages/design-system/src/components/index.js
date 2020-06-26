@@ -24,4 +24,6 @@ export { StepList } from './StepList/StepList';
 export { Tabs } from './Tabs/Tabs';
 export { TabPanel } from './Tabs/TabPanel';
 export { TextField, unmaskValue } from './TextField/TextField';
+export { Tooltip } from './Tooltip/Tooltip';
+export { TooltipIcon } from './Tooltip/TooltipIcon';
 export { VerticalNav } from './VerticalNav/VerticalNav';
