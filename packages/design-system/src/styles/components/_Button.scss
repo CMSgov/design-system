@@ -133,9 +133,7 @@
   color: $color-base-inverse;
 
   &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
+  &.ds-c-button--hover {
     border-color: rgba($border-color-inverse, 0.8);
     color: rgba($color-base-inverse, 0.8);
   }
