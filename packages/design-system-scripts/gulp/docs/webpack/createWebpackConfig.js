@@ -52,8 +52,8 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
       }),
     ],
     resolve: {
-      extensions: ['.js', '.jsx', '.json'],
       modules: ['node_modules'],
+      extensions: ['.js', '.jsx', '.json'],
     },
     performance: {
       hints: false,

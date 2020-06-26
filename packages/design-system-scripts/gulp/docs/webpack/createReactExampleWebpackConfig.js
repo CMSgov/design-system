@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 /**
  * Create an instance of the Webpack compiler to be used for
@@ -37,6 +38,7 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     resolve: {
       modules: ['node_modules', path.resolve(sourceDir)],
       extensions: ['.js', '.jsx'],
+      plugins: [],
     },
     performance: {
       hints: false,
@@ -64,6 +66,7 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     });
     config.plugins.push(new ForkTsCheckerWebpackPlugin());
     config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.plugins.push(new TsconfigPathsPlugin());
   }
 
   return config;
