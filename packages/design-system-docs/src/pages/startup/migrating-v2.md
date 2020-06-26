@@ -46,6 +46,34 @@ The `dist` folder structure has been updated for the `@cmsgov/design-system` npm
     └── scss/             Uncompiled CSS
 ```
 
+### Fonts and Images
+
+Fonts and images are now stored in `@cmsgov/design-system/dist/fonts` and `@cmsgov/design-system/dist/images`. Previously they were stored in `@cmsgov/design-system/fonts` and `@cmsgov/design-system/images`.
+
+If you’re using a tool like webpack to collect the images and fonts during your app’s build process, you will need to update the appropriate path variables. A typical Sass import might have looked like this:
+
+```
+$font-path: "~@cmsgov/design-system-core/fonts";
+$image-path: "~@cmsgov/design-system-core/images";
+```
+
+When migrating to v2, it will need to be changed to:
+
+```
+$font-path: "~@cmsgov/design-system/dist/fonts";
+$image-path: "~@cmsgov/design-system/dist/images";
+```
+
+## Focus styles
+
+CMSDS focus styles will now be considered a `draft` feature, and will be turned off by default. Focus styles can be reenabled by setting the `$ds-include-focus-styles` build variable to true, but these styles will likely change in the future as we iterate on our design. See the [theming page](https://design.cms.gov/startup/theming/#focus-settings) for more information on how to customize or enable focus styles.
+
+### Why the change?
+
+When we first released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0), our goal was to provide a recommended focus style implementation that would incorporate accessibility and best practices, much of which was informed by [UKgov's research](https://design-system.service.gov.uk/get-started/focus-states/) and [USWDS's focus state implementation](https://designsystem.digital.gov/). While we spent 4 months developing, iterating, and gathering feedback before the release, we made several mistakes in the process. Due to communication and process shortcomings, our team wasn't able to fully consider how our design would impact existing focus styles, or whether or not our design was too specific. Our team assumed that the SCSS variables we provided were sufficient to adapt the focus styles for different use cases and we neglected to add an easy way to opt out of the new feature.
+
+In this release, we worked to correct these mistakes by putting the new styles under a flag and turning them off by default. In the future, we plan on iterating on our default styles to be more generalized and more in line with existing focus styles on CMS products. We will also be adding additional mixins, variables, and documentation to make it easier for teams to customize focus styles.
+
 ### Importing SCSS/CSS
 
 If you were importing Sass directly from our packages’ `src` directories, we recommended updating your import paths to import from `dist`.
@@ -66,33 +94,11 @@ Imports to `@cmsgov/design-system-layout` or `@cmsgov/design-system-support` are
 
 See the [theming page]({{root}}/startup/theming/) for more specific information on overriding the default Sass variables or CSS declarations.
 
-### Focus styles
-
-We released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0) and with this V2 update we are disabling these gold focus styles by default and placing them in `beta` development as we continue to iterate on them. If you want to continue to use the gold focus styles please see the guidance on the [theming page]({{root}}/startup/theming#focus-settings)on how to enable them.
-
 ### Importing Javascript
 
 V2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to point to the new ES module entry point when possible, so for most users this won't require any change. See the documentation on [importing React components]({{root}}/startup/components/#named-imports) for more information on importing Javascript and ES module support.
 
 Your project also should not contain any `src` folder imports for React components. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly.
-
-## Fonts and Images
-
-Fonts and images are now stored in `@cmsgov/design-system/dist/fonts` and `@cmsgov/design-system/dist/images`. Previously they were stored in `@cmsgov/design-system/fonts` and `@cmsgov/design-system/images`.
-
-If you’re using a tool like webpack to collect the images and fonts during your app’s build process, you will need to update the appropriate path variables. A typical Sass import might have looked like this:
-
-```
-$font-path: "~@cmsgov/design-system-core/fonts";
-$image-path: "~@cmsgov/design-system-core/images";
-```
-
-When migrating to v2, it will need to be changed to:
-
-```
-$font-path: "~@cmsgov/design-system/dist/fonts";
-$image-path: "~@cmsgov/design-system/dist/images";
-```
 
 ## A note on versioning
 
