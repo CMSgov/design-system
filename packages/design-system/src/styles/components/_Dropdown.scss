@@ -1,4 +1,5 @@
 @import '../settings/index.scss';
+
 // stylelint-disable selector-no-qualifying-type
 select.ds-c-field {
   $select-icon-size: 10px;
@@ -9,9 +10,11 @@ select.ds-c-field {
   background-repeat: no-repeat;
   background-size: $select-icon-size;
   padding-right: ($select-icon-size * 2) + $spacer-1;
+
   &[multiple] {
     background-image: none;
   }
+
   @if $ds-include-focus-styles {
     // Removes inner outline on select elements in Firefox.
     &:-moz-focusring {

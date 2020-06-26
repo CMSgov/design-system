@@ -1,4 +1,5 @@
 @import '../settings/index.scss';
+
 $dialog-spacer: $spacer-4;
 
 .ds-c-dialog {
@@ -42,10 +43,12 @@ $dialog-spacer: $spacer-4;
   background-size: 12px 12px;
   margin-left: auto;
   padding: 0 0 0 (12px + $spacer-1);
+
   &:active,
   &:hover {
     background-image: url('#{$image-path}/close--primary-darker.svg');
   }
+
   @if $ds-include-focus-styles {
     &:focus {
       background-image: url('#{$image-path}/close.svg');

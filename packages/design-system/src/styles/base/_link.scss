@@ -1,16 +1,20 @@
 /* stylelint-disable selector-class-pattern */
 
 @import '../settings/index.scss';
+
 %link {
   color: $color-primary;
   cursor: pointer;
   text-decoration: underline;
+
   &:visited {
     color: $color-visited;
   }
+
   &:hover {
     color: $color-primary-darker;
   }
+
   @if $ds-include-focus-styles {
     &:focus,
     &:focus:visited {
@@ -20,6 +24,7 @@
   @else {
     color: $color-primary-darker;
   }
+
   &:active {
     color: $color-primary-darkest;
     outline: 0 none;
@@ -31,12 +36,15 @@
   color: $color-primary-darker;
   cursor: pointer;
   text-decoration: underline;
+
   &:visited {
     color: $color-visited;
   }
+
   &:hover {
     color: $color-primary-darkest;
   }
+
   @if $ds-include-focus-styles {
     &:focus,
     &:focus:visited {
@@ -50,6 +58,7 @@
   @else {
     color: $color-primary-darkest;
   }
+
   @if $ds-include-focus-styles {
     &:active {
       color: $color-primary-darkest;
@@ -67,6 +76,7 @@
   color: $color-base-inverse;
   cursor: pointer;
   text-decoration: underline;
+
   /* stylelint-disable selector-max-specificity */
   @if $ds-include-focus-styles {
     &:focus,
@@ -80,6 +90,7 @@
     }
   }
   /* stylelint-enable selector-max-specificity */
+
   &:visited,
   &:hover,
   &:active {
