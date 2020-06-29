@@ -64,6 +64,7 @@
     "prismjs": "1.16.0",
     "react-app-polyfill": "^1.0.6",
     "react-docgen": "4.1.1",
+    "react-docgen-typescript": "^1.18.0",
     "react-test-renderer": "16.8.6",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",

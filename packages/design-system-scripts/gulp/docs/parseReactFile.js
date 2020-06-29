@@ -2,6 +2,7 @@ const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
 const reactDocgenHandlers = require('./react-docgen-handlers');
+const tsDocgen = require('react-docgen-typescript');
 const through = require('through2');
 const { logTask, logData, logError } = require('../common/logUtil');
 
@@ -76,18 +77,20 @@ function parseExample(file) {
  * @param {String} rootPath
  */
 function parseComponent(file, rootPath, githubUrl) {
-  const docs = reactDocgen.parse(
-    file.contents,
-    reactDocgen.resolver.findAllExportedComponentDefinitions,
-    reactDocgenHandlers(rootPath),
-    { filename: file.basename }
-  );
+  const docs =
+    file.extname === '.tsx'
+      ? tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path)
+      : reactDocgen.parse(
+          file.contents,
+          reactDocgen.resolver.findAllExportedComponentDefinitions,
+          reactDocgenHandlers(rootPath),
+          { filename: file.basename }
+        );
 
   if (docs.length !== 1) {
     // There should only ever be one component definition
     logError('parseComponent', 'React doc gen should result in 1 document parsed');
   }
-
   const reactData = docs[0];
 
   // Reduce filesize by removing properties we don't need
