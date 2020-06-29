@@ -60,7 +60,7 @@ set the `$ds-include-focus-styles` variable to `true`.
 - `focus-text` - Mixin for links and buttons.
 - `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
 
-Show the CMSDS focus styles. These styles can be further customized via the [Focus color variables](http://localhost:3000/styles/color/#styles.color.focus) and `focus-text` mixin
+See the [v2 migration guide](https://design.cms.gov/startup/migrating-v2/#focus-styles) for more background on our focus styles.
 
 ## CSS declarations
 

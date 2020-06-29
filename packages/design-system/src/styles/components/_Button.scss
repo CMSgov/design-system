@@ -103,6 +103,7 @@
   &:focus,
   &.ds-c-button--focus {
     border-color: transparent;
+
     @if $ds-include-focus-styles {
       text-decoration: none;
     }
@@ -114,6 +115,7 @@
   &.ds-c-button--active {
     border-color: transparent;
   }
+
   @if $ds-include-focus-styles {
     // Make sure active overrides focus styles
     &:active:focus,
@@ -122,6 +124,7 @@
       text-decoration: underline;
     }
   }
+
   &:disabled,
   &.ds-c-button--disabled {
     background-color: transparent;
