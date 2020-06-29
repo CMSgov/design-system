@@ -1,4 +1,4 @@
-const addReactDocs = require('./addReactDocs');
+const addReactData = require('./addReactData');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generatePage = require('./generatePage');
@@ -10,7 +10,6 @@ const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
-const { REACT_DATA_PATH } = require('../../common/constants');
 
 /**
  * Some KssSection's are nested under section's that don't exist, so we need
@@ -156,8 +155,8 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   // Merge both sets of KssSection objects into a single array of page parts.
   // Also, remove pages with the same URL (so child design systems can override existing pages)
   const pageSections = uniquePages(markdownPagesData.concat(kssSections));
-
-  await addReactDocs(pageSections, REACT_DATA_PATH);
+  // Add react prop and example data to page sections
+  await addReactData(pageSections);
   // Create HTML files for markup examples
   await generateMarkupPages(pageSections, docsPath, sourceDir, options);
   // Add missing top-level pages and connect the page parts to their parent pages

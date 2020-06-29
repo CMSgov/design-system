@@ -6,42 +6,12 @@
 const copyAssets = require('../common/copyAssets');
 const cleanDist = require('../common/cleanDist');
 const generatePages = require('./generatePages');
-const getSourcePattern = require('../common/getSourcePattern');
-const gulp = require('gulp');
 const path = require('path');
-const merge = require('gulp-merge-json');
-const parseReactFile = require('./parseReactFile');
-const streamPromise = require('../common/streamPromise');
 const { compileDocsSass } = require('../sass');
-const { getSourceDirs, getDocsDirs } = require('../common/getDirsToProcess');
+const { extractReactData } = require('./extractReactData');
+const { getDocsDirs } = require('../common/getDirsToProcess');
 const { logTask, log } = require('../common/logUtil');
-const { REACT_DATA_FILENAME, REACT_DATA_DIR } = require('../common/constants');
 const { runWebpackStatically } = require('./webpack');
-
-/**
- * Parses JSX files for prop documentation and example files and stores it for
- * our other tasks to read later
- */
-async function extractReactDocs(sourceDir, docsDir, options) {
-  logTask('🌪  ', 'Generating React propType documentation and grabbing raw example code');
-
-  const sources = await getSourceDirs(sourceDir);
-  const sourcesGlob = getSourcePattern(sources, 'src');
-  const docs = await getDocsDirs(docsDir);
-  const docsGlob = getSourcePattern(docs, 'src');
-
-  return streamPromise(
-    gulp
-      .src([
-        `${sourcesGlob}/**/*.{jsx,tsx}`, // React props
-        `${docsGlob}/**/*.example.{jsx,tsx}`, // React examples
-        `!${sourcesGlob}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
-      ])
-      .pipe(parseReactFile(options.rootPath, options.githubUrl))
-      .pipe(merge({ fileName: REACT_DATA_FILENAME }))
-      .pipe(gulp.dest(REACT_DATA_DIR))
-  );
-}
 
 /**
  * Copies all the fonts and images from the source package and the core design system package
@@ -84,14 +54,13 @@ module.exports = {
     await cleanDist(docsDir);
     await copySourceAssets(sourceDir, docsDir);
     await copyDocsAssets(docsDir);
-    await extractReactDocs(sourceDir, docsDir, options);
+    await extractReactData(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
     await runWebpackStatically(sourceDir, docsDir, options);
     await compileDocsSass(docsDir, options);
     logTask('✅ ', 'Docs generation succeeded');
     log('');
   },
-  extractReactDocs,
   generatePages,
   copySourceAssets,
   copyDocsAssets,

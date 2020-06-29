@@ -9,7 +9,8 @@ const path = require('path');
 const { logTask } = require('./common/logUtil');
 const { compileSourceSass, compileDocsSass } = require('./sass');
 const { copyAll, compileJs } = require('./build');
-const { extractReactDocs, generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
+const { generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
+const { extractReactProps, extractReactExamples } = require('./docs/extractReactData');
 const { runWebpackServer } = require('./docs/webpack');
 
 async function watchSource(sourceDir, docsDir, options, browserSync) {
@@ -31,7 +32,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   // Source package React components and React props
   gulp.watch([`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`], async () => {
     await compileJs(sourceDir);
-    await extractReactDocs(sourceDir, docsDir, options);
+    await extractReactProps(sourceDir, options);
     await generatePages(sourceDir, docsDir, options);
   });
 }
@@ -49,9 +50,14 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  // Docs Markdown files, KSS documentation files and HTML/React examples
-  gulp.watch([`${src}/**/*.{md,mdx,docs.scss,html,jsx,tsx}`], async () => {
-    await extractReactDocs(sourceDir, docsDir, options);
+  // Docs Markdown files, KSS documentation files
+  gulp.watch([`${src}/**/*.{md,mdx,docs.scss}`], async () => {
+    await generatePages(sourceDir, docsDir, options);
+  });
+
+  // Docs HTML/React examples
+  gulp.watch([`${src}/**/*.example.{html,jsx,tsx}`], async () => {
+    await extractReactExamples(docsDir, options);
     await generatePages(sourceDir, docsDir, options);
   });
 }

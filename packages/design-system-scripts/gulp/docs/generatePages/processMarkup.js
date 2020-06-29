@@ -1,6 +1,6 @@
 const ejs = require('ejs');
 const fs = require('mz/fs');
-const replaceTemplateTags = require('../replaceTemplateTags');
+const replaceTemplateTags = require('../../common/replaceTemplateTags');
 const path = require('path');
 const { logData, logError } = require('../../common/logUtil');
 

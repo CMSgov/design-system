@@ -1,10 +1,10 @@
 const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
-const reactDocgenHandlers = require('./react-docgen-handlers');
+const reactDocgenHandler = require('./reactDocgenHandler');
 const tsDocgen = require('react-docgen-typescript');
 const through = require('through2');
-const { logTask, logData, logError } = require('../common/logUtil');
+const { logTask, logData, logError } = require('../../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -12,7 +12,7 @@ const { logTask, logData, logError } = require('../common/logUtil');
  * for rendering propType documentation and JS markup examples
  * @param {String} rootPath - Root docs site path
  */
-module.exports = function (rootPath, githubUrl) {
+function parseFile(isExample, options) {
   const response = {};
 
   return through.obj((file, encoding, cb) => {
@@ -20,11 +20,7 @@ module.exports = function (rootPath, githubUrl) {
       if (file.isNull()) return cb(null, file);
 
       const fileName = file.basename;
-      const exampleFile = fileName.match(/.example.(jsx|tsx)/);
-
-      const reactData = exampleFile
-        ? parseExample(file)
-        : parseComponent(file, rootPath, githubUrl);
+      const reactData = isExample ? parseExample(file) : parseComponent(file, options);
 
       // Override logic mirrored from `uniquePages`
       // TODO: process react docs with markdown pages
@@ -33,7 +29,7 @@ module.exports = function (rootPath, githubUrl) {
           // We override react docs that come from `node_modules`
           logTask(
             '🖊️  ',
-            `Overriding ${fileName} ${exampleFile ? 'react example' : 'react props'} with ${
+            `Overriding ${fileName} ${isExample ? 'react example' : 'react props'} with ${
               file.path
             }`
           );
@@ -51,7 +47,7 @@ module.exports = function (rootPath, githubUrl) {
     file.path = replaceExt(file.path, '.json');
     return cb(null, file);
   });
-};
+}
 
 /**
  * For an example file, we only need a reference to its uncompiled source code
@@ -76,14 +72,14 @@ function parseExample(file) {
  * @param {Object} file
  * @param {String} rootPath
  */
-function parseComponent(file, rootPath, githubUrl) {
+function parseComponent(file, options) {
   const docs =
     file.extname === '.tsx'
       ? tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path)
       : reactDocgen.parse(
           file.contents,
           reactDocgen.resolver.findAllExportedComponentDefinitions,
-          reactDocgenHandlers(rootPath),
+          reactDocgenHandler(options.rootPath),
           { filename: file.basename }
         );
 
@@ -105,7 +101,7 @@ function parseComponent(file, rootPath, githubUrl) {
     reactData.relativePath = coreFileMatch[2];
   } else {
     // Dynamically generate file path relative to repo root for child DS
-    const githubRepo = path.basename(githubUrl);
+    const githubRepo = path.basename(options.githubUrl);
     /* eslint-disable no-useless-escape */
     const childFileMatch = file.path.match(new RegExp(`${githubRepo}\/(.*)$`, 'i'));
     reactData.relativePath =
@@ -118,3 +114,8 @@ function parseComponent(file, rootPath, githubUrl) {
 
   return reactData;
 }
+
+module.exports = {
+  parseReactExample: (options) => parseFile(true, options),
+  parseReactProps: (options) => parseFile(false, options),
+};
