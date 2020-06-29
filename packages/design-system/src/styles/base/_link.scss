@@ -1,5 +1,4 @@
 /* stylelint-disable selector-class-pattern */
-
 @import '../settings/index.scss';
 
 %link {
@@ -20,8 +19,7 @@
     &:focus:visited {
       @include focus-text;
     }
-  }
-  @else {
+  } @else {
     color: $color-primary-darker;
   }
 
@@ -54,8 +52,7 @@
       outline: 3px solid transparent;
       text-decoration: none;
     }
-  }
-  @else {
+  } @else {
     color: $color-primary-darkest;
   }
 
@@ -64,8 +61,7 @@
       color: $color-primary-darkest;
       outline: 0 none;
     }
-  }
-  @else {
+  } @else {
     &:focus {
       color: $color-primary-darkest;
     }
@@ -83,8 +79,7 @@
     &:focus:visited {
       @include focus-text-inverse;
     }
-  }
-  @else {
+  } @else {
     &:focus {
       color: $color-muted-inverse;
     }
