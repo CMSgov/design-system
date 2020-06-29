@@ -12,6 +12,7 @@ const path = require('path');
 const rename = require('gulp-rename');
 const streamPromise = require('./common/streamPromise');
 const { compileSourceSass } = require('./sass');
+const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask, logError } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
@@ -136,13 +137,18 @@ module.exports = {
   /**
    * Builds just the source package for the purpose of publishing
    */
-  async buildSrc(sourceDir) {
+  async buildSrc(sourceDir, options) {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
     await compileJs(sourceDir);
-    await compileEsmJs(sourceDir);
+    if (options.core) {
+      await compileEsmJs(sourceDir);
+    }
     await compileSourceSass(sourceDir);
+    if (process.env.NODE_ENV === 'production') {
+      await printStats(sourceDir, options);
+    }
     logTask('✅ ', 'Build succeeded');
     log('');
   },

@@ -1,18 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
-const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
-
-async function updateOptions(options) {
-  if (!options.githubUrl) {
-    const pkg = await getPackageJson(process.cwd());
-    if (pkg && pkg.repository) {
-      // Use package.json `repository` as default `githubUrl`
-      options.githubUrl = pkg.repository;
-    }
-  }
-  return options;
-}
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
@@ -29,52 +17,29 @@ yargs
     command: 'build <sourceDir>',
     desc: 'Builds the design system source and outputs compiled JavaScript and Sass.',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeStatsOptions(yargs);
-      yargs.option('typescript', {
-        desc:
-          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
-        alias: 't',
-        type: 'boolean',
-        default: false,
-      });
+      describeSourceOptions(yargs);
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
-      const { printStats } = require('./gulp/stats');
-      const options = await updateOptions(argv);
-
-      await buildSrc(options.sourceDir, { ...options });
-      await printStats(options.sourceDir, { ...options });
+      
+      await buildSrc(argv.sourceDir, { ...argv });
     },
   })
   .command({
     command: 'build-docs <sourceDir> <docsDir>',
     desc: 'Builds the design system source and its corresponding documentation site',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeStatsOptions(yargs);
-      describeDocsDir(yargs);
+      describeSourceOptions(yargs);
       describeDocsOptions(yargs);
-      yargs.option('typescript', {
-        desc:
-          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
-        alias: 't',
-        type: 'boolean',
-        default: false,
-      });
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
-      const { printStats } = require('./gulp/stats');
-      const options = await updateOptions(argv);
 
-      await buildSrc(options.sourceDir, { ...options });
-      await buildDocs(options.sourceDir, options.docsDir, { ...options });
-      await printStats(options.sourceDir, { ...options });
+      await buildSrc(argv.sourceDir, { ...argv });
+      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv });
     },
   })
   .command({
@@ -82,27 +47,18 @@ yargs
     desc:
       'Builds and hosts the documentation site locally with a webpack dev server. Changes will be automatically rebuilt and reloaded with browsersync when detected in either the source or docs directories',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeDocsDir(yargs);
+      describeSourceOptions(yargs);
       describeDocsOptions(yargs);
-      yargs.option('typescript', {
-        desc:
-          'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
-        alias: 't',
-        type: 'boolean',
-        default: false,
-      });
     },
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
-      const options = await updateOptions(argv);
 
-      await buildSrc(options.sourceDir, { ...options });
-      await buildDocs(options.sourceDir, options.docsDir, { ...options });
-      await watchDocs(options.sourceDir, options.docsDir, { ...options });
+      await buildSrc(argv.sourceDir, { ...argv });
+      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv });
+      await watchDocs(argv.sourceDir, argv.docsDir, { ...argv });
     },
   })
   .command({
@@ -234,25 +190,42 @@ yargs
   .demandCommand()
   .help().argv;
 
-function describeSourceDir(yargs) {
-  yargs.positional('sourceDir', {
-    desc: 'The relative path to your main design-system package (that contains a src directory)',
-    type: 'string',
-    demandOption: true,
-  });
-}
-
-function describeDocsDir(yargs) {
-  yargs.positional('docsDir', {
-    desc:
-      'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
-    type: 'string',
-    demandOption: true,
-  });
+function describeSourceOptions(yargs) {
+  yargs
+    .positional('sourceDir', {
+      desc: 'The relative path to your main design-system package (that contains a src directory)',
+      type: 'string',
+      demandOption: true,
+    })
+    .option('typescript', {
+      desc:
+        'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
+      alias: 't',
+      type: 'boolean',
+      default: false,
+    })
+    .option('skipLatest', {
+      desc:
+        'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+      type: 'boolean',
+      default: false,
+    })
+    .option('core', {
+      desc:
+        'Internal flag used by the core CMSDS to modify supported module formats. Unless you are on the core CMSDS team, you can ignore this.',
+      type: 'boolean',
+      default: false,
+    });
 }
 
 function describeDocsOptions(yargs) {
   yargs
+    .positional('docsDir', {
+      desc:
+        'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
+      type: 'string',
+      demandOption: true,
+    })
     .option('name', {
       desc: 'Name of the design system. This is used to render documentation content.',
       type: 'string',
@@ -260,8 +233,8 @@ function describeDocsOptions(yargs) {
     })
     .option('githubUrl', {
       type: 'string',
-      desc:
-        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.',
+      desc: 'The base path for your GitHub repository URLs.',
+      default: 'https://github.com/CMSgov/design-system',
     })
     .option('rootPath', {
       desc:
@@ -269,13 +242,4 @@ function describeDocsOptions(yargs) {
       type: 'string',
       default: '',
     });
-}
-
-function describeStatsOptions(yargs) {
-  yargs.option('skipLatest', {
-    desc:
-      'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
-    type: 'boolean',
-    default: false,
-  });
 }
