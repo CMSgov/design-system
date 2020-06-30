@@ -22,7 +22,7 @@ yargs
     handler: async (argv) => {
       await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
-      
+
       await buildSrc(argv.sourceDir, { ...argv });
     },
   })
@@ -55,10 +55,12 @@ yargs
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
+      const browserSync = require('browser-sync');
 
+      const sync = browserSync.create();
       await buildSrc(argv.sourceDir, { ...argv });
-      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv });
-      await watchDocs(argv.sourceDir, argv.docsDir, { ...argv });
+      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
+      await watchDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
     },
   })
   .command({

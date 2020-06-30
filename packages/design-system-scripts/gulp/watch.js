@@ -3,7 +3,6 @@
  * make to a component, a component's example code, or the documentation will
  * automatically be reflected in the browser when the changes are saved.
  */
-const browserSync = require('browser-sync');
 const gulp = require('gulp');
 const path = require('path');
 const { logTask } = require('./common/logUtil');
@@ -11,7 +10,6 @@ const { compileSourceSass, compileDocsSass } = require('./sass');
 const { copyAll, compileJs } = require('./build');
 const { generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
 const { extractReactProps, extractReactExamples } = require('./docs/extractReactData');
-const { runWebpackServer } = require('./docs/webpack');
 
 async function watchSource(sourceDir, docsDir, options, browserSync) {
   const src = path.join(sourceDir, 'src');
@@ -63,11 +61,9 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
 }
 
 module.exports = {
-  async watchDocs(sourceDir, docsDir, options) {
+  async watchDocs(sourceDir, docsDir, options, sync) {
     logTask('👀 ', 'Transpiling + watching files for future changes');
 
-    const sync = browserSync.create();
-    await runWebpackServer(sourceDir, docsDir, options, sync);
     watchSource(sourceDir, docsDir, options, sync);
     watchDocs(sourceDir, docsDir, options, sync);
   },
