@@ -4,6 +4,7 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Hide the default browser checkbox/radio button since we'll
 // create our own custom version
+
 .ds-c-choice {
   left: -999em;
   opacity: 0;
@@ -63,25 +64,36 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Display an outline
 .ds-c-choice:focus + label::before {
-  border-color: $color-base;
-  border-width: 3px;
-  box-shadow: 0 0 0 3px $focus-color;
-  // Transparent outline for Windows High Contrast Mode
-  outline: 3px solid transparent;
-  outline-offset: 3px;
+  @if $ds-include-focus-styles {
+    border-color: $color-base;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px $focus-color;
+    // Transparent outline for Windows High Contrast Mode
+    outline: 3px solid transparent;
+    outline-offset: 3px;
+  }
+  @else {
+    box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
+  }
 }
 
-.ds-c-choice--small:focus + label::before {
-  border-width: 2px;
-}
-
-.ds-c-choice:checked:focus + label::before {
-  border-color: $color-primary-darker;
+@if $ds-include-focus-styles {
+  .ds-c-choice--small:focus + label::before {
+    border-width: 2px;
+  }
+  .ds-c-choice:checked:focus + label::before {
+    border-color: $color-primary-darker;
+  }
 }
 
 .ds-c-choice--inverse:focus + label::before {
-  border-color: $choice-border-color-inverse;
-  box-shadow: 0 0 0 3px $focus-color-inverse;
+  @if $ds-include-focus-styles {
+    border-color: $choice-border-color-inverse;
+    box-shadow: 0 0 0 3px $focus-color-inverse;
+  }
+  @else {
+    box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
+  }
 }
 
 // Display a checkmark
