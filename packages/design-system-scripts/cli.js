@@ -20,9 +20,10 @@ yargs
       describeSourceOptions(yargs);
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
 
+      process.env.NODE_ENV = 'production';
+      await logIntroduction(argv.sourceDir);
       await buildSrc(argv.sourceDir, { ...argv });
     },
   })
@@ -34,10 +35,11 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
 
+      process.env.NODE_ENV = 'production';
+      await logIntroduction(argv.sourceDir);
       await buildSrc(argv.sourceDir, { ...argv });
       await buildDocs(argv.sourceDir, argv.docsDir, { ...argv });
     },
@@ -51,13 +53,14 @@ yargs
       describeDocsOptions(yargs);
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
       const browserSync = require('browser-sync');
 
+      process.env.NODE_ENV = 'development';
       const sync = browserSync.create();
+      await logIntroduction(argv.sourceDir);
       await buildSrc(argv.sourceDir, { ...argv });
       await buildDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
       await watchDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
@@ -97,6 +100,7 @@ yargs
       const { run } = require('jest');
       const unitConfig = require('./jest/unit.config.js');
 
+      process.env.NODE_ENV = 'test';
       run([
         '--config',
         JSON.stringify(unitConfig(argv.directory, argv.core)),
@@ -135,10 +139,10 @@ yargs
       const { run } = require('jest');
       const e2eConfig = require('./jest/e2e.config.js');
 
+      process.env.NODE_ENV = 'test';
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
-
       run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
     },
   })
@@ -166,6 +170,11 @@ yargs
           type: 'array',
           default: ['**/node_modules/**', '**/dist/**'],
         })
+        .option('failAfterError', {
+          desc: 'Process will exit with an error code (1) on linter error.',
+          type: 'boolean',
+          default: false,
+        })
         .option('disableStylelint', {
           desc: 'Flag to opt out of running stylelint on files.',
           type: 'boolean',
@@ -184,9 +193,10 @@ yargs
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
-      const { directories, fix, ignorePatterns, ...disable } = argv;
+      const { directories, fix, ignorePatterns, failAfterError, ...disable } = argv;
 
-      await lintDirectories(directories, fix, ignorePatterns, disable);
+      process.env.NODE_ENV = 'test';
+      await lintDirectories(directories, fix, ignorePatterns, failAfterError, disable);
     },
   })
   .demandCommand()
