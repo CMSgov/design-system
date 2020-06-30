@@ -14,9 +14,13 @@
     color: $color-primary-darker;
   }
 
-  &:focus,
-  &:focus:visited {
-    @include focus-text;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text;
+    }
+  } @else {
+    color: $color-primary-darker;
   }
 
   &:active {
@@ -39,18 +43,28 @@
     color: $color-primary-darkest;
   }
 
-  &:focus,
-  &:focus:visited {
-    background-color: $focus-color;
-    box-shadow: $focus-shadow-link;
-    color: $color-base;
-    outline: 3px solid transparent;
-    text-decoration: none;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      background-color: $focus-color;
+      box-shadow: $focus-shadow-link;
+      color: $color-base;
+      outline: 3px solid transparent;
+      text-decoration: none;
+    }
+  } @else {
+    color: $color-primary-darkest;
   }
 
-  &:active {
-    color: $color-primary-darkest;
-    outline: 0 none;
+  @if $ds-include-focus-styles {
+    &:active {
+      color: $color-primary-darkest;
+      outline: 0 none;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darkest;
+    }
   }
 }
 
@@ -60,9 +74,15 @@
   text-decoration: underline;
 
   /* stylelint-disable selector-max-specificity */
-  &:focus,
-  &:focus:visited {
-    @include focus-text-inverse;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text-inverse;
+    }
+  } @else {
+    &:focus {
+      color: $color-muted-inverse;
+    }
   }
   /* stylelint-enable selector-max-specificity */
 
@@ -94,7 +114,6 @@
   a {
     @extend %link;
   }
-
   // Change color of links that are descendants of '.ds-base--inverse'
   //
   // Fix TODO: Because this selector's specificity is higher than most components,

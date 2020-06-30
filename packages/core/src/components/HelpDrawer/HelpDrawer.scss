@@ -41,10 +41,11 @@
 .ds-c-help-drawer__header {
   flex-shrink: 0;
 }
-
-// This element is focusable via a tabindex attribute.
-.ds-c-help-drawer__header h3:focus {
-  @include focus-text;
+@if $ds-include-focus-styles {
+  // This element is focusable via a tabindex attribute.
+  .ds-c-help-drawer__header h3:focus {
+    @include focus-text;
+  }
 }
 
 .ds-c-help-drawer__body {
