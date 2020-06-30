@@ -1,7 +1,13 @@
+// Run babel transforms on src files so we can run JSX scripts in Gulp tasks
+require('@babel/register')({
+  only: [/(@cmsgov\/design-system-docs|design-system\/packages\/([a-z-_]+)\/src|generateDocPage)/],
+});
+
 const addReactData = require('./addReactData');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
-const generatePage = require('./generatePage');
+const generateExamplePage = require('./generateExamplePage');
+let generateDocPage;
 const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
@@ -78,21 +84,25 @@ function generatedPagesCount(resultGroups) {
  * @return {Promise<Array>}
  */
 async function generateDocPages(pages, docsPath, sourceDir, options) {
-  const routes = createRoutes(pages);
+  if (!generateDocPage) {
+    // We need to require this module inside of the method because
+    // it depends on compiled React files. Those files are compiled
+    // in a preceding Gulp task, and requiring this outside of the
+    // method will break things.
+    generateDocPage = require('./generateDocPage');
+  }
 
+  const routes = createRoutes(pages);
   const generatedPages = await Promise.all(
     pages.map(async (page) => {
-      const created = await generatePage(routes, page, docsPath, sourceDir, options);
-      if (page.sections) {
-        const results = await Promise.all(
-          page.sections.map((subpage) =>
-            generatePage(routes, subpage, docsPath, sourceDir, options)
+      const pageResult = await generateDocPage(routes, page, docsPath, options);
+      const subPageResults = page.sections
+        ? await Promise.all(
+            page.sections.map((subpage) => generateDocPage(routes, subpage, docsPath, options))
           )
-        );
-        // return results for generatedPagesCount
-        return [created].concat(results);
-      }
-      return [created];
+        : [];
+
+      return [pageResult].concat(subPageResults);
     })
   );
 
@@ -102,21 +112,21 @@ async function generateDocPages(pages, docsPath, sourceDir, options) {
 /**
  * Create an HTML file for each KssSection's markup. These are loaded in an
  * embedded in an iframe on documentation pages.
- * @param {Array} kssSections
+ * @param {Array} pageSection
  * @return {Promise<Array>}
  */
-function generateMarkupPages(kssSections, docsPath, sourceDir, options) {
-  const pagesWithMarkup = kssSections.filter(
+async function generateExamplePages(pageSection, docsPath, sourceDir, options) {
+  const examplePages = pageSection.filter(
     (page) => page.markup.length > 0 || page.reactExampleSource
   );
 
-  return Promise.all(
-    pagesWithMarkup.map((page) => {
-      return generatePage(null, page, docsPath, sourceDir, options, true).then((created) => [
-        created,
-      ]);
+  const generatedPages = await Promise.all(
+    examplePages.map(async (page) => {
+      return generateExamplePage(page, docsPath, sourceDir, options);
     })
   );
+
+  return generatedPagesCount(generatedPages);
 }
 
 /**
@@ -131,7 +141,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
-  const markdownPagesData = await Promise.all(
+  const markdownSections = await Promise.all(
     docsDirs.map(async (dir) => {
       return convertMarkdownPages(options.rootPath, dir);
     })
@@ -154,15 +164,17 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
 
   // Merge both sets of KssSection objects into a single array of page parts.
   // Also, remove pages with the same URL (so child design systems can override existing pages)
-  const pageSections = uniquePages(markdownPagesData.concat(kssSections));
+  const pageSections = uniquePages(markdownSections.concat(kssSections));
   // Add react prop and example data to page sections
   await addReactData(pageSections);
-  // Create HTML files for markup examples
-  await generateMarkupPages(pageSections, docsPath, sourceDir, options);
   // Add missing top-level pages and connect the page parts to their parent pages
   const pages = await addTopLevelPages(pageSections).then(nestSections);
-  // Create HTML files from the pages array
-  const generatedPagesCount = await generateDocPages(pages, docsPath, sourceDir, options);
 
-  logTask('📝  ' + generatedPagesCount, `Doc pages added to ${docsDir}`);
+  // Create HTML files for example pages
+  const examplePagesCount = await generateExamplePages(pageSections, docsPath, sourceDir, options);
+  logTask('📝  ' + examplePagesCount, `Example pages added to ${docsDir}`);
+
+  // Create HTML files for doc pages
+  const docPagesCount = await generateDocPages(pages, docsPath, sourceDir, options);
+  logTask('📝  ' + docPagesCount, `Doc pages added to ${docsDir}`);
 };
