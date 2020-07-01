@@ -14,6 +14,7 @@ const nestSections = require('./nestSections');
 const path = require('path');
 const processKssSection = require('./processKssSection');
 const uniquePages = require('./uniquePages');
+const { get } = require('lodash');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
 
@@ -78,12 +79,25 @@ function generatedPagesCount(resultGroups) {
   return count;
 }
 
+// Use `changedPath` to only process pages detected from gulp watch
+function changedFilter(page, changedPath) {
+  if (changedPath) {
+    // Hacky way to associate a change file path with a page object
+    const directMatch = get(page, ['source', 'path']) === changedPath;
+    const reactExampleMatch = get(page, 'reactExampleEntry') === path.resolve(changedPath);
+    const htmlExampleMatch = get(page, 'markupPath') === path.resolve(changedPath);
+
+    return directMatch || reactExampleMatch || htmlExampleMatch;
+  }
+  return true;
+}
+
 /**
  * Loop through the nested array of pages and create an HTML file for each one.
  * These HTML pages are what get published as the public documentation website.
  * @return {Promise<Array>}
  */
-async function generateDocPages(pages, docsPath, sourceDir, options) {
+async function generateDocPages(pages, docsPath, options, changedPath) {
   if (!generateDocPage) {
     // We need to require this module inside of the method because
     // it depends on compiled React files. Those files are compiled
@@ -95,13 +109,16 @@ async function generateDocPages(pages, docsPath, sourceDir, options) {
   const routes = createRoutes(pages);
   const generatedPages = await Promise.all(
     pages.map(async (page) => {
-      const pageResult = await generateDocPage(routes, page, docsPath, options);
+      const pageResult = changedFilter(page, changedPath)
+        ? await generateDocPage(routes, page, docsPath, options)
+        : false;
       const subPageResults = page.sections
         ? await Promise.all(
-            page.sections.map((subpage) => generateDocPage(routes, subpage, docsPath, options))
+            page.sections
+              .filter((subpage) => changedFilter(subpage, changedPath))
+              .map((subpage) => generateDocPage(routes, subpage, docsPath, options))
           )
         : [];
-
       return [pageResult].concat(subPageResults);
     })
   );
@@ -115,15 +132,15 @@ async function generateDocPages(pages, docsPath, sourceDir, options) {
  * @param {Array} pageSection
  * @return {Promise<Array>}
  */
-async function generateExamplePages(pageSection, docsPath, sourceDir, options) {
+async function generateExamplePages(pageSection, docsPath, sourceDir, options, changedPath) {
   const examplePages = pageSection.filter(
     (page) => page.markup.length > 0 || page.reactExampleSource
   );
 
   const generatedPages = await Promise.all(
-    examplePages.map(async (page) => {
-      return generateExamplePage(page, docsPath, sourceDir, options);
-    })
+    examplePages
+      .filter((page) => changedFilter(page, changedPath))
+      .map((page) => generateExamplePage(page, docsPath, sourceDir, options))
   );
 
   return generatedPagesCount(generatedPages);
@@ -134,8 +151,8 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options) {
  * happens within a chain of promises.
  * @return {Promise}
  */
-module.exports = async function generatePages(sourceDir, docsDir, options) {
-  logTask('📝 ', 'Generating documentation pages');
+module.exports = async function generatePages(sourceDir, docsDir, options, changedPath) {
+  logTask('📝 ', 'Generating documentation pages');
 
   const docsPath = getDocsDistPath(docsDir, options.rootPath);
   const docsDirs = await getDocsDirs(docsDir);
@@ -171,10 +188,24 @@ module.exports = async function generatePages(sourceDir, docsDir, options) {
   const pages = await addTopLevelPages(pageSections).then(nestSections);
 
   // Create HTML files for example pages
-  const examplePagesCount = await generateExamplePages(pageSections, docsPath, sourceDir, options);
-  logTask('📝  ' + examplePagesCount, `Example pages added to ${docsDir}`);
+  const examplePagesCount = await generateExamplePages(
+    pageSections,
+    docsPath,
+    sourceDir,
+    options,
+    changedPath
+  );
+  if (changedPath && examplePagesCount > 0) {
+    logTask('📝 ', `Example page updated from ${changedPath}`);
+  } else if (!changedPath) {
+    logTask('📝  ' + examplePagesCount, `Example pages added to ${docsDir}`);
+  }
 
   // Create HTML files for doc pages
-  const docPagesCount = await generateDocPages(pages, docsPath, sourceDir, options);
-  logTask('📝  ' + docPagesCount, `Doc pages added to ${docsDir}`);
+  const docPagesCount = await generateDocPages(pages, docsPath, options, changedPath);
+  if (changedPath && docPagesCount > 0) {
+    logTask('📝 ', `Doc page updated from ${changedPath}`);
+  } else if (!changedPath) {
+    logTask('📝  ' + docPagesCount, `Doc pages added to ${docsDir}`);
+  }
 };
