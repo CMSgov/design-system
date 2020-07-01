@@ -21,6 +21,7 @@ function parseFile(isExample, options) {
 
       const fileName = file.basename;
       const reactData = isExample ? parseExample(file) : parseComponent(file, options);
+      reactData.path = file.path;
 
       // Override logic mirrored from `uniquePages`
       // TODO: process react docs with markdown pages
@@ -64,7 +65,7 @@ function parseExample(file) {
     source = source.substring(source.indexOf(lastImport) + lastImport.length).trim();
   }
 
-  return { source, path: file.path };
+  return { source };
 }
 
 /**
@@ -91,7 +92,6 @@ function parseComponent(file, options) {
 
   // Reduce filesize by removing properties we don't need
   delete reactData.methods;
-  reactData.path = file.path;
 
   // Save relative file path for "View source" link
   const coreFileMatch = file.path.match(
