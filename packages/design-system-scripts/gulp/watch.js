@@ -44,7 +44,7 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
   });
 
   // Docs Sass files
-  gulp.watch(`${src}/**/*.scss`, async () => {
+  gulp.watch([`${src}/**/*.scss`, `!${src}/**/*.docs.scss`], async () => {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
