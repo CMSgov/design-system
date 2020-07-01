@@ -5,44 +5,38 @@ import classNames from 'classnames';
 export const TableHeaderCell = ({
   children,
   className,
+  id,
   scope,
   stackedTitle,
   stackedClassName,
-  type,
   width,
-  ...tableHeaderProps
+  ...others
 }) => {
   const classes = classNames(
     'ds-c-table__header',
     className,
-    type === 'numeric' ? 'ds-c-table__header--numeric' : null,
     width ? 'ds-c-table__header--width-' + width : null
   );
-
-  const renderStackedTitle = () => {
-    const stackedClasses = classNames(
-      'ds-c-table--stacked__col-header',
-      'ds-u-font-weight--bold',
-      stackedClassName
-    );
-    const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
-    return (
-      { isValidStackedTitle } && (
-        <span aria-hidden="true" className={stackedClasses}>
-          {stackedTitle}
-        </span>
-      )
-    );
-  };
+  const stackedClasses = classNames(
+    'ds-c-table--stacked__col-header',
+    'ds-u-font-weight--bold',
+    stackedClassName
+  );
+  const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
 
   return (
     <th
       className={classes}
       role={scope === 'col' ? 'columnheader' : 'rowheader'}
       scope={scope}
-      {...tableHeaderProps}
+      id={id}
+      {...others}
     >
-      {renderStackedTitle()}
+      {isValidStackedTitle && (
+        <span aria-hidden="true" className={stackedClasses}>
+          {stackedTitle}
+        </span>
+      )}
       {children}
     </th>
   );
@@ -50,7 +44,6 @@ export const TableHeaderCell = ({
 
 TableHeaderCell.defaultProps = {
   scope: 'col',
-  type: 'text',
 };
 
 TableHeaderCell.propTypes = {
@@ -63,7 +56,7 @@ TableHeaderCell.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The `id` attribute that is used as a header for other cells.
+   * The `id` attribute is used as a header for other cells to create associations between headers and cells.
    */
   id: PropTypes.string,
   /**
@@ -78,10 +71,6 @@ TableHeaderCell.propTypes = {
    * The stacked row title for responsive table accessiblity.
    */
   stackedTitle: PropTypes.string,
-  /**
-   * Type of the header, can be either text or numeric for left or right alignment respectively.
-   */
-  type: PropTypes.oneOf(['text', 'numeric']),
   /**
    * Sets the width of `TableHeader` to a percentage of the `Table` width.
    */

@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableCaption = ({
-  children,
-  className,
-  _scrollActive,
-  scrollCaption,
-  ...tableCaptionProps
-}) => {
+export const TableCaption = ({ children, className, _scrollActive, scrollCaption, ...others }) => {
   const classes = classNames('ds-c-table__caption', className);
   return (
-    <caption className={classes} {...tableCaptionProps}>
+    <caption className={classes} {...others}>
       {children}
       {_scrollActive && scrollCaption}
     </caption>
@@ -37,12 +31,12 @@ TableCaption.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * @hide-prop This gets passed through from the parent Table - Horizontal scroll is active.
+   * @hide-prop This gets passed through from the parent Table when the horizontal scroll is active.
    */
   _scrollActive: PropTypes.bool,
   /**
    * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
-   * This prop will only be used when the table width is wider than the viewport.
+   * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
    */
   scrollCaption: PropTypes.node,
 };

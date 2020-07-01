@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableRow = ({ children, className, ...tableRowProps }) => {
+export const TableRow = ({ children, className, ...others }) => {
   const classes = classNames('ds-c-table__row', className);
 
   return (
-    <tr className={classes} role="row" {...tableRowProps}>
+    <tr className={classes} role="row" {...others}>
       {children}
     </tr>
   );

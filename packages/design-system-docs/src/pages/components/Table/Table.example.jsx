@@ -12,10 +12,10 @@ import ReactDOM from 'react-dom';
 import uniqueId from 'lodash.uniqueid';
 
 const simpleHeaders = [
-  { title: 'Branch', key: 'branch', width: '10' },
+  { title: 'Branch', key: 'branch' },
   { title: 'Article', key: 'article', width: '20' },
-  { title: 'Responsibility', key: 'responsibility', width: '40' },
-  { title: 'Checks and balances', key: 'checks', width: '30' },
+  { title: 'Responsibility', key: 'responsibility' },
+  { title: 'Checks and balances', key: 'checks' },
 ];
 
 const simpleData = [
@@ -45,25 +45,6 @@ const simpleData = [
   },
 ];
 
-const renderHeader = () => {
-  return (
-    <TableRow>
-      {simpleHeaders.map((header) => {
-        return (
-          <TableHeaderCell
-            key={header.key}
-            width={header.width}
-            scope="col"
-            id={'column' + header.key}
-          >
-            {header.title}
-          </TableHeaderCell>
-        );
-      })}
-    </TableRow>
-  );
-};
-
 const renderRows = () => {
   return simpleData.map((row, rowIndex) => {
     return (
@@ -76,7 +57,6 @@ const renderRows = () => {
                 scope="row"
                 id={'row' + rowIndex}
                 stackedTitle={header.title}
-                stackedClassName="stackerCell"
                 headers={'column' + header.key}
               >
                 {row[header.key]}
@@ -87,7 +67,6 @@ const renderRows = () => {
               <TableDataCell
                 key={header.key}
                 stackedTitle={header.title}
-                stackedClassName="stackerCell"
                 headers={('row' + rowIndex, 'column' + header.key)}
               >
                 {row[header.key]}
@@ -103,7 +82,22 @@ const renderRows = () => {
 ReactDOM.render(
   <Table stackBreakpoint="sm" scrollable striped>
     <TableCaption>System of Government</TableCaption>
-    <TableHead>{renderHeader()}</TableHead>
+    <TableHead>
+      <TableRow>
+        {simpleHeaders.map((header) => {
+          return (
+            <TableHeaderCell
+              key={header.key}
+              width={header.width}
+              scope="col"
+              id={'column' + header.key}
+            >
+              {header.title}
+            </TableHeaderCell>
+          );
+        })}
+      </TableRow>
+    </TableHead>
     <TableBody>{renderRows()}</TableBody>
   </Table>,
   document.getElementById('js-example')

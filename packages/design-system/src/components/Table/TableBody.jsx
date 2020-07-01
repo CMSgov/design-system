@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableBody = ({ children, className, ...attributeOptions }) => {
+export const TableBody = ({ children, className, ...others }) => {
   const classes = classNames('ds-c-table__body', className);
 
   return (
-    <tbody className={classes} {...attributeOptions}>
+    <tbody className={classes} {...others}>
       {children}
     </tbody>
   );

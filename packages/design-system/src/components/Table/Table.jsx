@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import TableCaption from './TableCaption';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 function debounce(fn, ms) {
   let timer;
@@ -14,18 +15,10 @@ function debounce(fn, ms) {
   };
 }
 
-export const Table = ({
-  className,
-  stackBreakpoint,
-  striped,
-  scrollable,
-  children,
-  ...tableProps
-}) => {
+export const Table = ({ className, stackBreakpoint, striped, scrollable, children, ...others }) => {
   const container = useRef(null);
-  // The captionID is calculated and stored as init value of a ref.
-  // This ensures that the ID remains constant for all renders.
-  const captionID = useRef('caption-' + Math.random().toString(36).substr(2, 9));
+  // The captionID is stored as init value of a ref.
+  const captionID = useRef(uniqueId('caption-'));
   const [isTableScrollable, setTableScrollable] = useState(false);
 
   // Listens to the window resize event to dynamically handle horizontal scrollable tables
@@ -92,7 +85,7 @@ export const Table = ({
 
   return (
     <div ref={container} {...attributeScrollable}>
-      <table className={classes} role="table" {...tableProps}>
+      <table className={classes} role="table" {...others}>
         {renderChildren(captionID.current)}
       </table>
     </div>

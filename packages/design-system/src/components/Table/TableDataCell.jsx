@@ -5,43 +5,29 @@ import classNames from 'classnames';
 export const TableDataCell = ({
   children,
   className,
-  stackedTitle,
+  headers,
   stackedClassName,
-  type,
-  ...tableDataProps
+  stackedTitle,
+  ...others
 }) => {
-  const classes = classNames(
-    'ds-c-table__cell',
-    className,
-    type === 'numeric' ? 'ds-c-table__cell--numeric' : null
+  const classes = classNames('ds-c-table__cell', className);
+  const stackedClasses = classNames(
+    'ds-c-table--stacked__col-header',
+    'ds-u-font-weight--bold',
+    stackedClassName
   );
+  const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
 
-  const renderStackedTitle = () => {
-    const stackedClasses = classNames(
-      'ds-c-table--stacked__col-header',
-      'ds-u-font-weight--bold',
-      stackedClassName
-    );
-    const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
-    return (
-      { isValidStackedTitle } && (
+  return (
+    <td className={classes} role="cell" header={headers} {...others}>
+      {isValidStackedTitle && (
         <span aria-hidden="true" className={stackedClasses}>
           {stackedTitle}
         </span>
-      )
-    );
-  };
-
-  return (
-    <td className={classes} role="cell" {...tableDataProps}>
-      {renderStackedTitle()}
+      )}
       {children}
     </td>
   );
-};
-
-TableDataCell.defaultProps = {
-  type: 'text',
 };
 
 TableDataCell.propTypes = {
@@ -65,10 +51,6 @@ TableDataCell.propTypes = {
    * The stacked row title for responsive table accessiblity.
    */
   stackedTitle: PropTypes.string,
-  /**
-   * Type of the data, can be either text or numeric for left or right alignment respectively.
-   */
-  type: PropTypes.oneOf(['text', 'numeric']),
 };
 
 export default TableDataCell;
