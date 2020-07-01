@@ -1,6 +1,17 @@
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('@babel/register')({
   only: [/(@cmsgov\/design-system-docs|design-system\/packages\/([a-z-_]+)\/src|generateDocPage)/],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'entry',
+        corejs: '3.0.0',
+      },
+    ],
+    '@babel/preset-react',
+  ],
+  plugins: ['@babel/plugin-transform-object-assign'],
 });
 
 const addReactData = require('./addReactData');
