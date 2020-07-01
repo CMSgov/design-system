@@ -57,12 +57,10 @@ module.exports = {
     await extractReactData(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
     await compileDocsSass(docsDir, options);
+    await runWebpackStatically(sourceDir, docsDir, options);
     if (process.env.NODE_ENV === 'development' && sync) {
-      // Use a webpack server for development
+      // Use a webpack server for rebuilding files in development
       await runWebpackServer(sourceDir, docsDir, options, sync);
-    } else {
-      // Bundle doc files for production
-      await runWebpackStatically(sourceDir, docsDir, options);
     }
     logTask('✅ ', 'Docs generation succeeded');
     log('');
