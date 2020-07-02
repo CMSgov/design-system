@@ -80,7 +80,7 @@ const renderRows = () => {
 };
 
 ReactDOM.render(
-  <Table stackBreakpoint="sm" scrollable striped>
+  <Table stackBreakpoint="sm" scrollable>
     <TableCaption>System of Government</TableCaption>
     <TableHead>
       <TableRow>

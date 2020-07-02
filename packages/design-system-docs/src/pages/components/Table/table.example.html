@@ -1,70 +1,29 @@
-<div class="example--wrapper">
-  <h6 class="preview__label">Default table</h6>
-  <table class="ds-c-table">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th class="ds-u-text-align--right" scope="col">Rate</th>
-        <th scope="col">Favorite fruit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fred</td>
-        <td class="ds-u-text-align--right">51.25%</td>
-        <td>Apples</td>
-      </tr>
-      <tr>
-        <td>Tamara</td>
-        <td class="ds-u-text-align--right">98.70%</td>
-        <td>Strawberries</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h6 class="preview__label">Borderless table</h6>
-  <table class="ds-c-table ds-c-table--borderless">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th class="ds-u-text-align--right" scope="col">Rate</th>
-        <th scope="col">Favorite fruit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fred</td>
-        <td class="ds-u-text-align--right">51.25%</td>
-        <td>Apples</td>
-      </tr>
-      <tr>
-        <td>Tamara</td>
-        <td class="ds-u-text-align--right">98.70%</td>
-        <td>Strawberries</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h6 class="preview__label">Striped table</h6>
-  <table class="ds-c-table ds-c-table--striped">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th class="ds-u-text-align--right" scope="col">Rate</th>
-        <th scope="col">Favorite fruit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fred</td>
-        <td class="ds-u-text-align--right">51.25%</td>
-        <td>Apples</td>
-      </tr>
-      <tr>
-        <td>Tamara</td>
-        <td class="ds-u-text-align--right">98.70%</td>
-        <td>Strawberries</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!-- prettier-ignore -->
+<% [ 
+  { title: 'Default table', className: 'ds-c-table'}, 
+  { title: 'Borderless table', className: 'ds-c-table--borderless'}, 
+  { title: 'Striped table', className: 'ds-c-table--striped'}, 
+].forEach(table => { -%>
+<h6 class="preview__label"><%= table.title %></h6>
+<table class="ds-c-table <%= table.className %>">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th class="ds-u-text-align--right" scope="col">Rate</th>
+      <th scope="col">Favorite fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fred</td>
+      <td class="ds-u-text-align--right">51.25%</td>
+      <td>Apples</td>
+    </tr>
+    <tr>
+      <td>Tamara</td>
+      <td class="ds-u-text-align--right">98.70%</td>
+      <td>Strawberries</td>
+    </tr>
+  </tbody>
+</table>
+<% }) -%>

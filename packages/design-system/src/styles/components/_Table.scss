@@ -85,6 +85,12 @@
     border: 0;
     display: block;
   }
+
+  &.ds-c-table--striped tbody {
+    tr:nth-child(even) {
+      background-color: $color-white;
+    }
+  }
 }
 
 .ds-c-table--stacked-sm {
