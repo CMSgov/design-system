@@ -90,9 +90,9 @@ async function compileEsmJs(dir) {
       })
       .pipe(
         rename((path) => {
-          if (path.dirname === 'component' && path.basename === 'index') {
+          if (path.dirname === '.' && path.basename === 'index') {
             // Renames `component/index.js` to `esnext/index.esm.js`
-            path.extname = '.esm.js';
+            path.extname = '.mjs';
           }
         })
       )
@@ -109,7 +109,7 @@ async function compileEsmJs(dir) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
-function compileJs(dir) {
+function compileJs(dir, options) {
   const src = path.join(dir, 'src');
   return streamPromise(
     gulp
@@ -130,7 +130,11 @@ function compileJs(dir) {
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist')))
-  );
+  ).then(() => {
+    if (options.core) {
+      return compileEsmJs(dir);
+    }
+  });
 }
 
 module.exports = {
@@ -141,10 +145,7 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
-    await compileJs(sourceDir);
-    if (options.core) {
-      await compileEsmJs(sourceDir);
-    }
+    await compileJs(sourceDir, options);
     await compileSourceSass(sourceDir);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);

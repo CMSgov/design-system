@@ -9,8 +9,7 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/components/index.js",
-  "module": "dist/esnext/index.js",
-  "jsnext:main": "dist/esnext/index.js",
+  "module": "dist/esnext/index.mjs",
   "sideEffects": false,
   "dependencies": {
     "classnames": "^2.2.5",
