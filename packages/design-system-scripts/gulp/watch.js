@@ -7,7 +7,7 @@ const browserSync = require('browser-sync');
 const gulp = require('gulp');
 const path = require('path');
 const { logTask } = require('./common/logUtil');
-const { compileSass, compileDocsSass } = require('./sass');
+const { compileSourceSass, compileDocsSass } = require('./sass');
 const { copyAll, compileJs } = require('./build');
 const { extractReactDocs, generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
 const { runWebpackServer } = require('./docs/webpack');
@@ -22,9 +22,9 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   });
 
   // Source package Sass files
-  gulp.watch([`${src}/**/*.scss`, `!${src}/**/*.docs.scss`], async () => {
+  gulp.watch(`${src}/**/*.scss`, async () => {
     await copyAll(sourceDir);
-    await compileSass(sourceDir);
+    await compileSourceSass(sourceDir);
     await compileDocsSass(docsDir, options, browserSync);
   });
 

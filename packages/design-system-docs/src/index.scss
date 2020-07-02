@@ -1,5 +1,5 @@
 // Libraries
-@import '@cmsgov/design-system/dist/index.scss';
+@import '@cmsgov/design-system/dist/scss/index';
 
 // Sass settings
 @import 'styles/settings/index';
@@ -23,4 +23,4 @@
 @import 'styles/components/ReactPropDocs';
 
 // Utilities
-@import 'styles/utilities/colors';
+@import 'styles/utilities/index';

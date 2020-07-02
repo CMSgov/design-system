@@ -86,12 +86,13 @@
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
-
-    /* stylelint-disable selector-max-specificity */
-    &:focus::after {
-      background-color: $color-base;
+    /* stylelint-disable */
+    @if $ds-include-focus-styles {
+      &:focus::after {
+        background-color: $color-base;
+      }
     }
-    /* stylelint-enable selector-max-specificity */
+    /* stylelint-enable */
   }
 
   &[aria-disabled='true'] {
@@ -112,16 +113,24 @@
   &:hover {
     color: $color-primary;
   }
+  /* stylelint-disable max-nesting-depth */
+  @if $ds-include-focus-styles {
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+      color: $color-base;
 
-  &:focus {
-    border-color: transparent;
-    box-shadow: none;
-    color: $color-base;
-
-    &::after {
-      background-color: $color-base;
-      opacity: 1;
-      transform: scale3d(1, 1, 1);
+      &::after {
+        background-color: $color-base;
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+      }
+    }
+  }
+  /* stylelint-enable max-nesting-depth */
+  @else {
+    &:focus {
+      color: $color-primary;
     }
   }
 

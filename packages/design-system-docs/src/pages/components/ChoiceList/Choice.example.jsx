@@ -16,7 +16,7 @@ const dropdownOptions = [
 const childDropdown = (
   <Dropdown
     options={dropdownOptions}
-    defaultValue={'B'}
+    defaultValue="B"
     label="Dropdown example"
     labelClassName="ds-c-label ds-u-margin-top--0"
     name="dropdown_choices_field"
