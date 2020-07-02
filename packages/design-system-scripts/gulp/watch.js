@@ -16,14 +16,14 @@ const { extractReactProps, extractReactExamples } = require('./docs/extractReact
 function watch(globs, task) {
   const watcher = gulp.watch(globs);
 
-  watcher.on('change', function (path) {
-    task(path);
+  watcher.on('change', function (changedPath) {
+    task(changedPath);
   });
-  watcher.on('add', function (path) {
-    task(path);
+  watcher.on('add', function (changedPath) {
+    task(changedPath);
   });
-  watcher.on('unlink', function (path) {
-    task(path);
+  watcher.on('unlink', function (changedPath) {
+    task(changedPath);
   });
 }
 
@@ -43,11 +43,14 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  watch([`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`], async (path) => {
-    await compileJs(sourceDir);
-    await extractReactProps(sourceDir, options);
-    await generatePages(sourceDir, docsDir, options, path);
-  });
+  watch(
+    [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`],
+    async (changedPath) => {
+      await compileJs(sourceDir);
+      await extractReactProps(sourceDir, options);
+      await generatePages(sourceDir, docsDir, options, changedPath);
+    }
+  );
 }
 
 async function watchDocs(sourceDir, docsDir, options, browserSync) {
@@ -64,14 +67,14 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
   });
 
   // Docs Markdown files, KSS documentation files
-  watch([`${src}/**/*.{md,mdx,docs.scss}`], async (path) => {
-    await generatePages(sourceDir, docsDir, options, path);
+  watch([`${src}/**/*.{md,mdx,docs.scss}`], async (changedPath) => {
+    await generatePages(sourceDir, docsDir, options, changedPath);
   });
 
   // Docs HTML/React examples
-  watch([`${src}/**/*.example.{html,jsx,tsx}`], async (path) => {
+  watch([`${src}/**/*.example.{html,jsx,tsx}`], async (changedPath) => {
     await extractReactExamples(docsDir, options);
-    await generatePages(sourceDir, docsDir, options, path);
+    await generatePages(sourceDir, docsDir, options, changedPath);
   });
 }
 

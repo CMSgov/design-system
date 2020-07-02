@@ -199,24 +199,24 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   const pages = await addTopLevelPages(pageSections).then(nestSections);
 
   // Create HTML files for example pages
-  const examplePagesCount = await generateExamplePages(
+  const examplePages = await generateExamplePages(
     pageSections,
     docsPath,
     sourceDir,
     options,
     changedPath
   );
-  if (changedPath && examplePagesCount > 0) {
+  if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
-    logTask('📝  ' + examplePagesCount, `Example pages added to ${docsDir}`);
+    logTask('📝  ' + examplePages, `Example pages added to ${docsDir}`);
   }
 
   // Create HTML files for doc pages
-  const docPagesCount = await generateDocPages(pages, docsPath, options, changedPath);
-  if (changedPath && docPagesCount > 0) {
+  const docPages = await generateDocPages(pages, docsPath, options, changedPath);
+  if (changedPath && docPages > 0) {
     logTask('📝 ', `Doc page updated from ${changedPath}`);
   } else if (!changedPath) {
-    logTask('📝  ' + docPagesCount, `Doc pages added to ${docsDir}`);
+    logTask('📝  ' + docPages, `Doc pages added to ${docsDir}`);
   }
 };
