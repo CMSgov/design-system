@@ -8,6 +8,7 @@
   z-index: 100;
 
   &:focus {
+    background-color: $color-white;
     left: 0;
     top: 0;
   }
