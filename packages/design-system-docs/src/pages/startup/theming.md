@@ -38,7 +38,29 @@ Sass variables are documented on the relevant documentation pages, and are defin
 - [Colors]({{root}}/styles/color/)
 - [Spacing]({{root}}/styles/spacing/)
 - [Type sizes]({{root}}/styles/typography/)
-- You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
+
+You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
+
+#### Focus style settings
+
+The focus styles are disabled by default. However if you'd ike to use them
+set the `$ds-include-focus-styles` variable to `true`.
+
+**Focus style variables**
+
+- `$focus-color` - Sets background highlight color.
+- `$focus-shadow` - Sets box-shadow on text fields.
+- `$focus-shadow-link` - Sets box-shadow on buttons and links.
+- `$focus-color-inverse`- Sets background highlight color on dark backgrounds.
+- `$focus-shadow-inverse`- Sets box-shadow on text fields on dark backgrounds.
+- `$focus-shadow-link-inverse` - Sets box-shadow on buttons and links on dark backgrounds.
+
+**Mixins**
+
+- `focus-text` - Mixin for links and buttons.
+- `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
+
+See the [v2 migration guide](https://design.cms.gov/startup/migrating-v2/#focus-styles) for more background on our focus styles.
 
 ## CSS declarations
 
