@@ -45,40 +45,6 @@ const simpleData = [
   },
 ];
 
-const renderRows = () => {
-  return simpleData.map((row, rowIndex) => {
-    return (
-      <TableRow key={uniqueId('row_')}>
-        {simpleHeaders.map((header, columnIndex) => {
-          if (columnIndex === 0) {
-            return (
-              <TableHeaderCell
-                key={header.key}
-                scope="row"
-                id={'row' + rowIndex}
-                stackedTitle={header.title}
-                headers={'column' + header.key}
-              >
-                {row[header.key]}
-              </TableHeaderCell>
-            );
-          } else {
-            return (
-              <TableDataCell
-                key={header.key}
-                stackedTitle={header.title}
-                headers={('row' + rowIndex, 'column' + header.key)}
-              >
-                {row[header.key]}
-              </TableDataCell>
-            );
-          }
-        })}
-      </TableRow>
-    );
-  });
-};
-
 ReactDOM.render(
   <Table stackBreakpoint="sm" scrollable>
     <TableCaption>System of Government</TableCaption>
@@ -98,7 +64,39 @@ ReactDOM.render(
         })}
       </TableRow>
     </TableHead>
-    <TableBody>{renderRows()}</TableBody>
+    <TableBody>
+      {simpleData.map((row, rowIndex) => {
+        return (
+          <TableRow key={uniqueId('row_')}>
+            {simpleHeaders.map((header, columnIndex) => {
+              if (columnIndex === 0) {
+                return (
+                  <TableHeaderCell
+                    key={header.key}
+                    scope="row"
+                    id={'row' + rowIndex}
+                    stackedTitle={header.title}
+                    headers={'column' + header.key}
+                  >
+                    {row[header.key]}
+                  </TableHeaderCell>
+                );
+              } else {
+                return (
+                  <TableDataCell
+                    key={header.key}
+                    stackedTitle={header.title}
+                    headers={('row' + rowIndex, 'column' + header.key)}
+                  >
+                    {row[header.key]}
+                  </TableDataCell>
+                );
+              }
+            })}
+          </TableRow>
+        );
+      })}
+    </TableBody>
   </Table>,
   document.getElementById('js-example')
 );
