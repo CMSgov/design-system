@@ -56,14 +56,12 @@ yargs
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
-      const browserSync = require('browser-sync');
 
       process.env.NODE_ENV = 'development';
-      const sync = browserSync.create();
       await logIntroduction(argv.sourceDir);
       await buildSrc(argv.sourceDir, { ...argv });
-      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
-      await watchDocs(argv.sourceDir, argv.docsDir, { ...argv }, sync);
+      await buildDocs(argv.sourceDir, argv.docsDir, { ...argv });
+      await watchDocs(argv.sourceDir, argv.docsDir, { ...argv });
     },
   })
   .command({

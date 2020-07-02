@@ -11,7 +11,7 @@ const { compileDocsSass } = require('../sass');
 const { extractReactData } = require('./extractReactData');
 const { getDocsDirs } = require('../common/getDirsToProcess');
 const { logTask, log } = require('../common/logUtil');
-const { runWebpackStatically, runWebpackServer } = require('./webpack');
+const { runWebpackStatically } = require('./webpack');
 
 /**
  * Copies all the fonts and images from the source package and the core design system package
@@ -44,7 +44,7 @@ module.exports = {
    * Note that the source package must be built before this in order to ensure
    * that the documentation reflects the most recent version of the source.
    */
-  async buildDocs(sourceDir, docsDir, options, sync) {
+  async buildDocs(sourceDir, docsDir, options) {
     let message = 'Starting the documentation site generation task';
     if (options.rootPath !== '') {
       message += ` with a root path of ${options.rootPath}`;
@@ -57,11 +57,7 @@ module.exports = {
     await extractReactData(sourceDir, docsDir, options);
     await generatePages(sourceDir, docsDir, options);
     await runWebpackStatically(sourceDir, docsDir, options);
-    if (process.env.NODE_ENV === 'development' && sync) {
-      // Use a webpack server for rebuilding files in development
-      await runWebpackServer(sourceDir, docsDir, options, sync);
-    }
-    await compileDocsSass(docsDir, options, sync);
+    await compileDocsSass(docsDir, options);
     logTask('✅ ', 'Docs generation succeeded');
     log('');
   },
