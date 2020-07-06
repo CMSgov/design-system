@@ -59,20 +59,17 @@ async function copyAll(dir) {
 /**
  * Similar to compileJS but babel is configured for esmodules, only used in the core DS
  */
-async function compileEsmJs(dir, changedPath) {
+async function compileEsmJs(dir) {
   const src = path.join(dir, 'src', 'components');
-  const srcGlob = changedPath
-    ? [changedPath]
-    : [
+
+  return streamPromise(
+    gulp
+      .src([
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
         `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ];
-
-  return streamPromise(
-    gulp
-      .src(srcGlob)
+      ])
       .pipe(
         babel({
           presets: [
@@ -139,7 +136,7 @@ function compileJs(dir, options, changedPath) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   ).then(() => {
     if (options.core) {
-      return compileEsmJs(dir, changedPath);
+      return compileEsmJs(dir);
     }
   });
 }
