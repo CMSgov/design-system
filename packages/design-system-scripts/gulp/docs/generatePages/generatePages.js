@@ -91,14 +91,29 @@ function generatedPagesCount(resultGroups) {
 }
 
 // Use `changedPath` to only process pages detected from gulp watch
+// Hacky way to associate a change file path with a page object
 function changedFilter(page, changedPath) {
   if (changedPath) {
-    // Hacky way to associate a change file path with a page object
-    const directMatch = get(page, ['source', 'path']) === changedPath;
+    // Example matches (i.e. button.example.jsx, button.example.html)
     const reactExampleMatch = get(page, 'reactExampleEntry') === path.resolve(changedPath);
     const htmlExampleMatch = get(page, 'markupPath') === path.resolve(changedPath);
 
-    return directMatch || reactExampleMatch || htmlExampleMatch;
+    // Doc page match (i.e. Button.docs.scss)
+    const docFileMatch = get(page, ['source', 'path']) === changedPath;
+
+    // Both doc and example page match (i.e. Button.jsx affects react props and react example)
+    const reactPropMatch =
+      page.sections && page.sections.length > 0
+        ? page.sections.map((subpage) => {
+            return get(subpage, 'reactProps')
+              ? changedPath.match(new RegExp(get(page, 'reactProps'), 'gi'))
+              : false;
+          })
+        : get(page, 'reactProps')
+        ? changedPath.match(new RegExp(get(page, 'reactProps'), 'gi'))
+        : false;
+
+    return reactExampleMatch || htmlExampleMatch || docFileMatch || reactPropMatch;
   }
   return true;
 }
@@ -192,20 +207,15 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
 
   // Merge both sets of KssSection objects into a single array of page parts.
   // Also, remove pages with the same URL (so child design systems can override existing pages)
-  const pageSections = uniquePages(markdownSections.concat(kssSections));
+  const pages = uniquePages(markdownSections.concat(kssSections));
   // Add react prop and example data to page sections
-  await addReactData(pageSections);
+  await addReactData(pages);
   // Add missing top-level pages and connect the page parts to their parent pages
-  const pages = await addTopLevelPages(pageSections).then(nestSections);
+  // TODO: remove need to nest pages, or generate from unnested pages
+  const nestedPages = await addTopLevelPages(pages).then(nestSections);
 
   // Create HTML files for example pages
-  const examplePages = await generateExamplePages(
-    pageSections,
-    docsPath,
-    sourceDir,
-    options,
-    changedPath
-  );
+  const examplePages = await generateExamplePages(pages, docsPath, sourceDir, options, changedPath);
   if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
@@ -213,7 +223,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   }
 
   // Create HTML files for doc pages
-  const docPages = await generateDocPages(pages, docsPath, options, changedPath);
+  const docPages = await generateDocPages(nestedPages, docsPath, options, changedPath);
   if (changedPath && docPages > 0) {
     logTask('📝 ', `Doc page updated from ${changedPath}`);
   } else if (!changedPath) {
