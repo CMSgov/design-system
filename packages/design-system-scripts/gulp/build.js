@@ -57,19 +57,22 @@ async function copyAll(dir) {
 }
 
 /**
- * Similar to compileJS but babel is configured for esmodules
+ * Similar to compileJS but babel is configured for esmodules, only used in the core DS
  */
-async function compileEsmJs(dir) {
+async function compileEsmJs(dir, changedPath) {
   const src = path.join(dir, 'src', 'components');
-
-  return streamPromise(
-    gulp
-      .src([
+  const srcGlob = changedPath
+    ? [changedPath]
+    : [
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
         `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ])
+      ];
+
+  return streamPromise(
+    gulp
+      .src(srcGlob)
       .pipe(
         babel({
           presets: [
@@ -109,16 +112,20 @@ async function compileEsmJs(dir) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
-function compileJs(dir, options) {
+function compileJs(dir, options, changedPath) {
   const src = path.join(dir, 'src');
-  return streamPromise(
-    gulp
-      .src([
+  const srcGlob = changedPath
+    ? [changedPath]
+    : [
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
         `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ])
+      ];
+
+  return streamPromise(
+    gulp
+      .src(srcGlob)
       .pipe(babel())
       .on('error', (error) => {
         logError('compileJs', error);
@@ -132,7 +139,7 @@ function compileJs(dir, options) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   ).then(() => {
     if (options.core) {
-      return compileEsmJs(dir);
+      return compileEsmJs(dir, changedPath);
     }
   });
 }

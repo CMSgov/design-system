@@ -48,7 +48,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   watch(
     [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`],
     async (changedPath) => {
-      await compileJs(sourceDir, options);
+      await compileJs(sourceDir, options, changedPath);
       await extractReactProps(sourceDir, options);
       await generatePages(sourceDir, docsDir, options, changedPath);
     }
