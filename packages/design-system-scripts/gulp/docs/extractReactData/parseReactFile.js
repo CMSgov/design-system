@@ -4,6 +4,7 @@ const reactDocgen = require('react-docgen');
 const reactDocgenHandler = require('./reactDocgenHandler');
 const tsDocgen = require('react-docgen-typescript');
 const through = require('through2');
+const { get } = require('lodash');
 const { logTask, logData, logError } = require('../../common/logUtil');
 
 /**
@@ -69,6 +70,37 @@ function parseExample(file) {
 }
 
 /**
+ * For a component file, we parse it's path relative to the root of the repo
+ * to generate the "View source" url.
+ * For child design systems, we rely on the provided `githubUrl` or cwd in order to infer the repo root.
+ * // TODO: Make this logic less fragile
+ */
+function getRelativePath(file, options) {
+  const coreFileMatch = file.path.match(
+    /(packages|@cmsgov)\/((design-system|design-system-docs)\/.*)$/i
+  );
+  if (coreFileMatch && coreFileMatch.length === 4) {
+    // The file is coming from the core CMSDS
+    return coreFileMatch[2];
+  } else {
+    // The file is coming from a child DS
+    const githubRepo = path.basename(options.githubUrl);
+    const githubMatch = file.path.match(new RegExp(`${githubRepo}/(.*)$`, 'i'));
+    const cwdMatch = file.path.match(new RegExp(`${process.cwd()}/(.*)$`, 'i'));
+
+    // Use either the githubUrl or the cwd to find the file path relative to the child DS repo root
+    const relativePath = get(githubMatch, 1) || get(cwdMatch, 1);
+    if (!relativePath) {
+      logError(
+        'getRelativePath',
+        `Unable to generate the "View source" url for ${file.path}. Please ensure the repo folder name matches the provided 'githubURL'`
+      );
+    }
+    return relativePath;
+  }
+}
+
+/**
  * For a component file, we parse it for its PropTypes documentation
  * @param {Object} file
  * @param {String} rootPath
@@ -93,24 +125,8 @@ function parseComponent(file, options) {
   // Reduce filesize by removing properties we don't need
   delete reactData.methods;
 
-  // Save relative file path for "View source" link
-  const coreFileMatch = file.path.match(
-    /(packages|@cmsgov)\/((design-system|design-system-docs)\/.*)$/i
-  );
-  if (coreFileMatch && coreFileMatch.length === 4) {
-    reactData.relativePath = coreFileMatch[2];
-  } else {
-    // Dynamically generate file path relative to repo root for child DS
-    const githubRepo = path.basename(options.githubUrl);
-    /* eslint-disable no-useless-escape */
-    const childFileMatch = file.path.match(new RegExp(`${githubRepo}\/(.*)$`, 'i'));
-    reactData.relativePath =
-      childFileMatch && childFileMatch.length === 2 ? childFileMatch[1] : null;
-  }
-
-  if (!reactData.relativePath) {
-    logError('parseComponent', `Unable to generate react component source for ${file.path}`);
-  }
+  // Get relative path for the "View source" link
+  reactData.relativePath = getRelativePath(file, options);
 
   return reactData;
 }
