@@ -1,4 +1,10 @@
 {
   // `tsconfig.json` is defined so the core CMSDS can generate typescript definition files
   // The build scripts will automatically add `allowJs` and `declaration` options to an existing tsconfig
+
+  // Allows `*.example.tsx` files in `docs` to import directly from `src`
+  "baseUrl": ".",
+  "paths": {
+    "@src/*": ["src/*"]
+  },
 }
