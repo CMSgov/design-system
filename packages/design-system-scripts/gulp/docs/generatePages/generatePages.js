@@ -11,7 +11,6 @@ require('@babel/register')({
     ],
     '@babel/preset-react',
   ],
-  plugins: ['@babel/plugin-transform-object-assign'],
 });
 
 const addReactData = require('./addReactData');
