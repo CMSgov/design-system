@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 /**
@@ -67,7 +66,6 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
         },
       ],
     });
-    config.plugins.push(new ForkTsCheckerWebpackPlugin());
     config.resolve.extensions.push('.ts', '.tsx');
     config.resolve.plugins.push(new TsconfigPathsPlugin());
   }
