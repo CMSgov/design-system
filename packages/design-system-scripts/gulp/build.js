@@ -17,6 +17,16 @@ const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask, logError } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
+const getSrcGlob = (src, changedPath) =>
+  changedPath
+    ? [changedPath]
+    : [
+        `${src}/**/*.{js,jsx,ts,tsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+      ];
+
 /**
  * Copy any JSON files that our components might depend on
  */
@@ -61,15 +71,11 @@ async function copyAll(dir) {
  */
 async function compileEsmJs(dir) {
   const src = path.join(dir, 'src', 'components');
+  const srcGlob = getSrcGlob(src);
 
   return streamPromise(
     gulp
-      .src([
-        `${src}/**/*.{js,jsx,ts,tsx}`,
-        `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ])
+      .src(srcGlob, { base: src })
       .pipe(
         babel({
           presets: [
@@ -111,18 +117,11 @@ async function compileEsmJs(dir) {
  */
 function compileJs(dir, options, changedPath) {
   const src = path.join(dir, 'src');
-  const srcGlob = changedPath
-    ? [changedPath]
-    : [
-        `${src}/**/*.{js,jsx,ts,tsx}`,
-        `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ];
+  const srcGlob = getSrcGlob(src, changedPath);
 
   return streamPromise(
     gulp
-      .src(srcGlob)
+      .src(srcGlob, { base: src })
       .pipe(babel())
       .on('error', (error) => {
         logError('compileJs', error);
@@ -136,7 +135,7 @@ function compileJs(dir, options, changedPath) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   ).then(() => {
     if (options.core) {
-      return compileEsmJs(dir);
+      return compileEsmJs(dir, changedPath);
     }
   });
 }
@@ -149,8 +148,8 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
-    await compileJs(sourceDir, options);
     await compileSourceSass(sourceDir);
+    await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);
     }
