@@ -1,5 +1,5 @@
 const processMarkup = require('./processMarkup');
-const replaceTemplateTags = require('../replaceTemplateTags');
+const replaceTemplateTags = require('../../common/replaceTemplateTags');
 
 /**
  * Format Markdown code syntax

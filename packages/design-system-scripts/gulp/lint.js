@@ -17,21 +17,21 @@ const getSrcGlob = (glob, dir, ignorePatterns) => [
   ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore)),
 ];
 
-async function runPrettier(dir, ignorePatterns) {
+async function runPrettier(dir, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.{js,jsx,ts,tsx,scss,html,md,mdx,json}')];
 
   return streamPromise(
     gulp
       .src(getSrcGlob(src, dir, ignorePatterns))
       .pipe(count(`## Files formatted with Prettier in ${dir}`))
-      .pipe(gulpIf(process.env.NODE_ENV !== 'test', prettier()))
-      .pipe(gulpIf(process.env.NODE_ENV === 'test', prettier.check()))
+      .pipe(gulpIf(!failAfterError, prettier()))
+      .pipe(gulpIf(failAfterError, prettier.check()))
       .pipe(gulp.dest(dir))
   );
 }
 
 // Lint Sass files using stylelint
-async function runStylelint(dir, fix, ignorePatterns) {
+async function runStylelint(dir, fix, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.scss'), path.join(`!${dir}`, '**/*.docs.scss')];
 
   return streamPromise(
@@ -42,7 +42,7 @@ async function runStylelint(dir, fix, ignorePatterns) {
       .pipe(
         stylelint({
           fix,
-          failAfterError: process.env.NODE_ENV === 'test',
+          failAfterError,
           reporters: [{ formatter: 'string', console: true }],
           syntax: 'scss',
         })
@@ -58,7 +58,7 @@ const isFixed = (file) => {
 };
 
 // Lint JS files using eslint
-async function runEslint(dir, fix, ignorePatterns) {
+async function runEslint(dir, fix, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.{js,jsx,ts,tsx}')];
 
   return streamPromise(
@@ -67,13 +67,13 @@ async function runEslint(dir, fix, ignorePatterns) {
       .pipe(count(`## JS files linted in ${dir}`))
       .pipe(eslint({ fix }))
       .pipe(eslint.format())
+      .pipe(gulpIf(failAfterError, eslint.failAfterError()))
       .pipe(gulpIf(isFixed, gulp.dest(dir)))
-      .pipe(gulpIf(process.env.NODE_ENV === 'test', eslint.failAfterError()))
   );
 }
 
 module.exports = {
-  async lintDirectories(directories, fix, ignorePatterns, disable) {
+  async lintDirectories(directories, fix, ignorePatterns, failAfterError, disable) {
     logTask(
       '🔎 ',
       `Linting files in: ${directories.join(', ')} and ignoring paths: ${ignorePatterns.join(', ')}`
@@ -82,13 +82,13 @@ module.exports = {
     await Promise.all(
       directories.map(async (dir) => {
         if (!disable.disablePrettier) {
-          await runPrettier(dir, ignorePatterns);
+          await runPrettier(dir, ignorePatterns, failAfterError);
         }
         if (!disable.disableStylelint) {
-          await runStylelint(dir, fix, ignorePatterns);
+          await runStylelint(dir, fix, ignorePatterns, failAfterError);
         }
         if (!disable.disableEslint) {
-          await runEslint(dir, fix, ignorePatterns);
+          await runEslint(dir, fix, ignorePatterns, failAfterError);
         }
       })
     );

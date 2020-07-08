@@ -17,6 +17,16 @@ const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask, logError } = require('./common/logUtil');
 const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
+const getSrcGlob = (src, changedPath) =>
+  changedPath
+    ? [changedPath]
+    : [
+        `${src}/**/*.{js,jsx,ts,tsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+      ];
+
 /**
  * Copy any JSON files that our components might depend on
  */
@@ -57,19 +67,15 @@ async function copyAll(dir) {
 }
 
 /**
- * Similar to compileJS but babel is configured for esmodules
+ * Similar to compileJS but babel is configured for esmodules, only used in the core DS
  */
 async function compileEsmJs(dir) {
   const src = path.join(dir, 'src', 'components');
+  const srcGlob = getSrcGlob(src);
 
   return streamPromise(
     gulp
-      .src([
-        `${src}/**/*.{js,jsx,ts,tsx}`,
-        `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ])
+      .src(srcGlob, { base: src })
       .pipe(
         babel({
           presets: [
@@ -90,9 +96,9 @@ async function compileEsmJs(dir) {
       })
       .pipe(
         rename((path) => {
-          if (path.dirname === 'component' && path.basename === 'index') {
+          if (path.dirname === '.' && path.basename === 'index') {
             // Renames `component/index.js` to `esnext/index.esm.js`
-            path.extname = '.esm.js';
+            path.extname = '.mjs';
           }
         })
       )
@@ -109,16 +115,13 @@ async function compileEsmJs(dir) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
-function compileJs(dir) {
+function compileJs(dir, options, changedPath) {
   const src = path.join(dir, 'src');
+  const srcGlob = getSrcGlob(src, changedPath);
+
   return streamPromise(
     gulp
-      .src([
-        `${src}/**/*.{js,jsx,ts,tsx}`,
-        `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
-      ])
+      .src(srcGlob, { base: src })
       .pipe(babel())
       .on('error', (error) => {
         logError('compileJs', error);
@@ -130,7 +133,11 @@ function compileJs(dir) {
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist')))
-  );
+  ).then(() => {
+    if (options.core) {
+      return compileEsmJs(dir, changedPath);
+    }
+  });
 }
 
 module.exports = {
@@ -141,11 +148,8 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
-    await compileJs(sourceDir);
-    if (options.core) {
-      await compileEsmJs(sourceDir);
-    }
     await compileSourceSass(sourceDir);
+    await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);
     }

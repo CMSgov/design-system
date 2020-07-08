@@ -1,10 +1,11 @@
 const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
-const reactDocgenHandlers = require('./react-docgen-handlers');
+const reactDocgenHandler = require('./reactDocgenHandler');
 const tsDocgen = require('react-docgen-typescript');
 const through = require('through2');
-const { logTask, logData, logError } = require('../common/logUtil');
+const { get } = require('lodash');
+const { logTask, logData, logError } = require('../../common/logUtil');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -12,7 +13,7 @@ const { logTask, logData, logError } = require('../common/logUtil');
  * for rendering propType documentation and JS markup examples
  * @param {String} rootPath - Root docs site path
  */
-module.exports = function (rootPath, githubUrl) {
+function parseFile(isExample, options) {
   const response = {};
 
   return through.obj((file, encoding, cb) => {
@@ -20,11 +21,8 @@ module.exports = function (rootPath, githubUrl) {
       if (file.isNull()) return cb(null, file);
 
       const fileName = file.basename;
-      const exampleFile = fileName.match(/.example.(jsx|tsx)/);
-
-      const reactData = exampleFile
-        ? parseExample(file)
-        : parseComponent(file, rootPath, githubUrl);
+      const reactData = isExample ? parseExample(file) : parseComponent(file, options);
+      reactData.path = file.path;
 
       // Override logic mirrored from `uniquePages`
       // TODO: process react docs with markdown pages
@@ -33,7 +31,7 @@ module.exports = function (rootPath, githubUrl) {
           // We override react docs that come from `node_modules`
           logTask(
             '🖊️  ',
-            `Overriding ${fileName} ${exampleFile ? 'react example' : 'react props'} with ${
+            `Overriding ${fileName} ${isExample ? 'react example' : 'react props'} with ${
               file.path
             }`
           );
@@ -51,7 +49,7 @@ module.exports = function (rootPath, githubUrl) {
     file.path = replaceExt(file.path, '.json');
     return cb(null, file);
   });
-};
+}
 
 /**
  * For an example file, we only need a reference to its uncompiled source code
@@ -68,7 +66,38 @@ function parseExample(file) {
     source = source.substring(source.indexOf(lastImport) + lastImport.length).trim();
   }
 
-  return { source, path: file.path };
+  return { source };
+}
+
+/**
+ * For a component file, we parse it's path relative to the root of the repo
+ * to generate the "View source" url.
+ * For child design systems, we rely on the provided `githubUrl` or cwd in order to infer the repo root.
+ * // TODO: Make this logic less fragile
+ */
+function getRelativePath(file, options) {
+  const coreFileMatch = file.path.match(
+    /(packages|@cmsgov)\/((design-system|design-system-docs)\/.*)$/i
+  );
+  if (coreFileMatch && coreFileMatch.length === 4) {
+    // The file is coming from the core CMSDS
+    return coreFileMatch[2];
+  } else {
+    // The file is coming from a child DS
+    const githubRepo = path.basename(options.githubUrl);
+    const githubMatch = file.path.match(new RegExp(`${githubRepo}/(.*)$`, 'i'));
+    const cwdMatch = file.path.match(new RegExp(`${process.cwd()}/(.*)$`, 'i'));
+
+    // Use either the githubUrl or the cwd to find the file path relative to the child DS repo root
+    const relativePath = get(githubMatch, 1) || get(cwdMatch, 1);
+    if (!relativePath) {
+      logError(
+        'getRelativePath',
+        `Unable to generate the "View source" url for ${file.path}. Please ensure the repo folder name matches the provided 'githubURL'`
+      );
+    }
+    return relativePath;
+  }
 }
 
 /**
@@ -76,14 +105,14 @@ function parseExample(file) {
  * @param {Object} file
  * @param {String} rootPath
  */
-function parseComponent(file, rootPath, githubUrl) {
+function parseComponent(file, options) {
   const docs =
     file.extname === '.tsx'
       ? tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path)
       : reactDocgen.parse(
           file.contents,
           reactDocgen.resolver.findAllExportedComponentDefinitions,
-          reactDocgenHandlers(rootPath),
+          reactDocgenHandler(options.rootPath),
           { filename: file.basename }
         );
 
@@ -95,26 +124,14 @@ function parseComponent(file, rootPath, githubUrl) {
 
   // Reduce filesize by removing properties we don't need
   delete reactData.methods;
-  reactData.path = file.path;
 
-  // Save relative file path for "View source" link
-  const coreFileMatch = file.path.match(
-    /(packages|@cmsgov)\/((design-system|design-system-docs)\/.*)$/i
-  );
-  if (coreFileMatch && coreFileMatch.length === 4) {
-    reactData.relativePath = coreFileMatch[2];
-  } else {
-    // Dynamically generate file path relative to repo root for child DS
-    const githubRepo = path.basename(githubUrl);
-    /* eslint-disable no-useless-escape */
-    const childFileMatch = file.path.match(new RegExp(`${githubRepo}\/(.*)$`, 'i'));
-    reactData.relativePath =
-      childFileMatch && childFileMatch.length === 2 ? childFileMatch[1] : null;
-  }
-
-  if (!reactData.relativePath) {
-    logError('parseComponent', `Unable to generate react component source for ${file.path}`);
-  }
+  // Get relative path for the "View source" link
+  reactData.relativePath = getRelativePath(file, options);
 
   return reactData;
 }
+
+module.exports = {
+  parseReactExample: (options) => parseFile(true, options),
+  parseReactProps: (options) => parseFile(false, options),
+};
