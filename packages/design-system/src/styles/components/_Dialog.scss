@@ -49,8 +49,13 @@ $dialog-spacer: $spacer-4;
     background-image: url('#{$image-path}/close--primary-darker.svg');
   }
 
-  &:focus {
-    background-image: url('#{$image-path}/close.svg');
+  @if $ds-include-focus-styles {
+    &:focus {
+      background-image: url('#{$image-path}/close.svg');
+    }
+  }
+  @else {
+    background-image: url('#{$image-path}/close--primary-darker.svg');
   }
 }
 

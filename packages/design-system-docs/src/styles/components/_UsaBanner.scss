@@ -45,7 +45,8 @@
   padding: 0;
 
   &::after {
-    background-image: url('../images/arrow-down.svg'), linear-gradient(transparent, transparent);
+    background-image: url('#{$image-path}/arrow-down.svg'),
+      linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 0.5rem;
