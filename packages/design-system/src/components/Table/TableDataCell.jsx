@@ -15,7 +15,7 @@ export const TableDataCell = ({
   if (process.env.NODE_ENV !== 'production') {
     if (tableStackableContext && !headers) {
       console.warn(
-        `Please provide a 'headers' prop for stackable table, it is a required prop for screen readers to create association between the heading id and data cells.`
+        `The headers prop in TableDataCell is required for stackable tables. This prop is needed to associate the headings with data cells in the responsive stacked view.`
       );
     }
   }

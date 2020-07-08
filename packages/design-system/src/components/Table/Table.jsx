@@ -127,8 +127,8 @@ Table.propTypes = {
   className: PropTypes.string,
   /**
    * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
-   * Required props to be used in conjunction with this includes `headers`, `id` and `stackedTitle`
-   * on the sub-components.
+   * When `stackBreakpoint` is set, `id` prop is required in `TableHeaderCell` and
+   * `headers` prop is required in `TableDataCell`.
    */
   stackBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**

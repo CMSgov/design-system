@@ -16,7 +16,7 @@ export const TableHeaderCell = ({
   if (process.env.NODE_ENV !== 'production') {
     if (tableStackableContext && !id) {
       console.warn(
-        `Please provide an 'id' prop for stackable table, it is a required prop for screen readers to create association between the heading id and data cells.`
+        `The id prop in TableHeaderCell is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.`
       );
     }
   }
