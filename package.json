@@ -8,7 +8,7 @@
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
     "start": "yarn cmsds start ./packages/design-system ./packages/design-system-docs --core",
-    "build": "yarn cmsds build-docs ./packages/design-system ./packages/design-system-docs --core",
+    "build": "yarn cmsds build-docs ./packages/design-system ./packages/design-system-docs --core -t",
     "release": "./prepublish.sh && yarn lerna publish from-git",
     "precommit": "lint-staged",
     "test": "yarn test:unit",

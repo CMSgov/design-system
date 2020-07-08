@@ -209,7 +209,7 @@ function describeSourceOptions(yargs) {
     })
     .option('typescript', {
       desc:
-        'Alias: -t. Use this flag enable typescript support. Requires tsconfig.json to be defined.',
+        'Alias: -t. Use this flag enable typescript support and generate typescript definition files. Requires tsconfig.json to be defined.',
       alias: 't',
       type: 'boolean',
       default: false,
