@@ -15,7 +15,7 @@ const GitHubLinks = (props) => {
   return (
     <div className={props.className}>
       <Button
-        href="download.tgz"
+        href="download.zip"
         inversed={props.inversed}
         variation="primary"
         className={downloadBtnClassName}

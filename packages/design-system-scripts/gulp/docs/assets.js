@@ -2,9 +2,8 @@ const copyAssets = require('../common/copyAssets');
 const del = require('del');
 const gulp = require('gulp');
 const path = require('path');
-const rename = require('gulp-rename');
+const zip = require('gulp-zip');
 const streamPromise = require('../common/streamPromise');
-const util = require('util');
 const { getDocsDirs } = require('../common/getDirsToProcess');
 const { logTask } = require('../common/logUtil');
 
@@ -32,27 +31,47 @@ async function copyDocsAssets(docsDir) {
   ]);
 }
 
-async function copyDownloadZip(sourceDir, docsDir) {
-  logTask('📦 ', `Creating download zip for the source package`);
-
-  // Run `npm pack` to create the download zip
-  const exec = util.promisify(require('child_process').exec);
-  await exec(`npm pack ${sourceDir}`);
-
+async function copyCode(sourceDir, docsDir) {
   return streamPromise(
     gulp
-      .src('./*.tgz')
-      .pipe(
-        rename((path) => {
-          // Rename it to `download.tgz`
-          path.basename = 'download';
-        })
+      .src(
+        [
+          path.join(sourceDir, 'dist', '**'),
+          path.join(sourceDir, 'package.json'),
+          path.join(sourceDir, 'README.md'),
+        ],
+        { base: sourceDir }
       )
+      .pipe(gulp.dest(path.join(docsDir, 'dist', 'download', 'design-system')))
+  );
+}
+
+async function copyDesignAssets(sourceDir, docsDir) {
+  return streamPromise(
+    gulp
+      .src('./design-assets/**', { base: './' })
+      .pipe(gulp.dest(path.join(docsDir, 'dist', 'download')))
+  );
+}
+
+async function createZip(docsDir) {
+  return streamPromise(
+    gulp
+      .src(path.join(docsDir, 'dist', 'download', '**'))
+      .pipe(zip('download.zip'))
       .pipe(gulp.dest(path.join(docsDir, 'dist')))
   ).then(() => {
     // Delete the original file
-    del('./*.tgz');
+    del(path.join(docsDir, 'dist', 'download/'));
   });
+}
+
+async function copyDownloadZip(sourceDir, docsDir) {
+  logTask('📦 ', `Creating download zip for the source package`);
+
+  await copyCode(sourceDir, docsDir);
+  await copyDesignAssets(sourceDir, docsDir);
+  await createZip(docsDir);
 }
 
 module.exports = {
