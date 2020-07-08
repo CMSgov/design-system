@@ -124,49 +124,6 @@
 
 .ds-c-table__head {
   display: table-header-group;
-
-  .ds-c-table__header {
-    // header widths
-    &.ds-c-table__header--width-10 {
-      width: 10%;
-    }
-
-    &.ds-c-table__header--width-15 {
-      width: 15%;
-    }
-
-    &.ds-c-table__header--width-20 {
-      width: 20%;
-    }
-
-    &.ds-c-table__header--width-25 {
-      width: 25%;
-    }
-
-    &.ds-c-table__header--width-30 {
-      width: 30%;
-    }
-
-    &.ds-c-table__header--width-33 {
-      width: 33%;
-    }
-
-    &.ds-c-table__header--width-40 {
-      width: 40%;
-    }
-
-    &.ds-c-table__header--width-50 {
-      width: 50%;
-    }
-
-    &.ds-c-table__header--width-75 {
-      width: 75%;
-    }
-
-    &.ds-c-table__header--numeric {
-      text-align: right;
-    }
-  }
 }
 
 .ds-c-table__row {
@@ -190,5 +147,7 @@
 .ds-c-table__caption {
   font-weight: $font-bold;
   margin-bottom: $spacer-1;
+  position: absolute;
   text-align: left;
+  top: 0;
 }

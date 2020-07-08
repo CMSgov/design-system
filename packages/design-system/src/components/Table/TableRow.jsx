@@ -14,7 +14,7 @@ export const TableRow = ({ children, className, ...others }) => {
 
 TableRow.propTypes = {
   /**
-   * The table row contents, usually `TableHeader` and `TableCell`.
+   * The table row contents, usually `TableDataCell` and `TableHeaderCell`.
    */
   children: PropTypes.node.isRequired,
   /**

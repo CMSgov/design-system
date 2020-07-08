@@ -1,5 +1,6 @@
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import TableContext from './TableContext';
 import classNames from 'classnames';
 
 export const TableDataCell = ({
@@ -10,6 +11,14 @@ export const TableDataCell = ({
   stackedTitle,
   ...others
 }) => {
+  const tableStackableContext = useContext(TableContext);
+  if (process.env.NODE_ENV !== 'production') {
+    if (tableStackableContext && !headers) {
+      console.warn(
+        `Please provide a 'headers' prop for stackable table, it is a required prop for screen readers to create association between the heading id and data cells.`
+      );
+    }
+  }
   const classes = classNames('ds-c-table__cell', className);
   const stackedClasses = classNames(
     'ds-c-table--stacked__col-header',
@@ -31,16 +40,16 @@ export const TableDataCell = ({
 };
 
 TableDataCell.propTypes = {
-  /**
-   * The table data cell contents.
-   */
   children: PropTypes.node,
   /**
    * Additional classes to be added to the table cell element.
    */
   className: PropTypes.string,
   /**
-   * The `headers` attribute contains a list of `id` attributes of the associated data. If there is more than one id, they are separated by spaces.
+   * Table Data cells must have a `headers` attribute for stackable table.
+   * The `headers` attribute must link to a Table Header cell’s `id`.
+   * If there is more than one `id`, they are separated by spaces.
+   * For screen readers to create association between the header and data cells.
    */
   headers: PropTypes.string,
   /**
@@ -48,7 +57,7 @@ TableDataCell.propTypes = {
    */
   stackedClassName: PropTypes.string,
   /**
-   * The stacked row title for responsive table accessiblity.
+   * This stacked title is displayed when a responsive table is vertically stacked.
    */
   stackedTitle: PropTypes.string,
 };

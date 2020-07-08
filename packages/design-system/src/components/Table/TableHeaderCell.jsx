@@ -1,5 +1,6 @@
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import TableContext from './TableContext';
 import classNames from 'classnames';
 
 export const TableHeaderCell = ({
@@ -9,14 +10,18 @@ export const TableHeaderCell = ({
   scope,
   stackedTitle,
   stackedClassName,
-  width,
   ...others
 }) => {
-  const classes = classNames(
-    'ds-c-table__header',
-    className,
-    width ? 'ds-c-table__header--width-' + width : null
-  );
+  const tableStackableContext = useContext(TableContext);
+  if (process.env.NODE_ENV !== 'production') {
+    if (tableStackableContext && !id) {
+      console.warn(
+        `Please provide an 'id' prop for stackable table, it is a required prop for screen readers to create association between the heading id and data cells.`
+      );
+    }
+  }
+
+  const classes = classNames('ds-c-table__header', className);
   const stackedClasses = classNames(
     'ds-c-table--stacked__col-header',
     'ds-u-font-weight--bold',
@@ -47,34 +52,33 @@ TableHeaderCell.defaultProps = {
 };
 
 TableHeaderCell.propTypes = {
-  /**
-   * The table header cell contents.
-   */
   children: PropTypes.node,
   /**
    * Additional classes to be added to the row element.
    */
   className: PropTypes.string,
   /**
-   * The `id` attribute is used as a header for other cells to create associations between headers and cells.
+   * Table Data cells that is a header, must have a `headers` attribute for stackable table.
+   * This prop has the same function as the `headers` prop on `TableDataCell` component.
+   */
+  headers: PropTypes.string,
+  /**
+   * Table Header cells must have an`id` attribute for stackable table.
+   * For screen readers to create association between the header and data cells.
    */
   id: PropTypes.string,
   /**
-   * Scope of the header, can be 'row' or 'col'.
+   * Scope of the header, use 'row' or 'col' for simple tables.
    */
-  scope: PropTypes.oneOf(['row', 'col']),
+  scope: PropTypes.oneOf(['row', 'col', 'rowgroup', 'colgroup']),
   /**
    * Additional classes to be added to the stacked Title element.
    */
   stackedClassName: PropTypes.string,
   /**
-   * The stacked row title for responsive table accessiblity.
+   * Table Data cells that is a header, this stacked title is displayed when a responsive table is vertically stacked.
    */
   stackedTitle: PropTypes.string,
-  /**
-   * Sets the width of `TableHeader` to a percentage of the `Table` width.
-   */
-  width: PropTypes.oneOf(['10', '15', '20', '25', '30', '33', '40', '50', '75']),
 };
 
 export default TableHeaderCell;

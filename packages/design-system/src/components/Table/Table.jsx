@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import TableCaption from './TableCaption';
+import TableContext from './TableContext';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -15,7 +17,15 @@ function debounce(fn, ms) {
   };
 }
 
-export const Table = ({ className, stackBreakpoint, striped, scrollable, children, ...others }) => {
+export const Table = ({
+  className,
+  stackBreakpoint,
+  striped,
+  scrollable,
+  scrollableNotice,
+  children,
+  ...others
+}) => {
   const container = useRef(null);
   // The captionID is stored as init value of a ref.
   const captionID = useRef(uniqueId('caption-'));
@@ -54,9 +64,9 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
     className
   );
 
-  // `isTableScrollable` state is needed to make table container focusable and to display scroll caption when table width exceeds viewport.
-  // Set attribute `tabIndex = 0` to make table container focusable to enable keyboard support of using the arrow keys.
-  // Also, provide context for screen reader users as they are able to focus on the region.
+  // Make table container focusable and display scroll notice when table width exceeds viewport.
+  // Set attribute `tabIndex = 0` makes table container focusable enables keyboard support of using the arrow keys.
+  // Also, it provides context for screen reader users as they are able to focus on the region.
   // Do this by using table's <caption> to label the scrollable region using aira-labelleby
   const attributeScrollable = scrollable && {
     className: 'ds-c-table__wrapper',
@@ -75,7 +85,6 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
       if (scrollable && isTableCaptionComponent(child)) {
         return React.cloneElement(child, {
           id: captionId,
-          _scrollActive: isTableScrollable,
         });
       }
 
@@ -83,13 +92,28 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
     });
   };
 
+  const isStackable = !!stackBreakpoint;
+
   return (
-    <div ref={container} {...attributeScrollable}>
-      <table className={classes} role="table" {...others}>
-        {renderChildren(captionID.current)}
-      </table>
-    </div>
+    <>
+      {isTableScrollable && scrollableNotice}
+      <div ref={container} {...attributeScrollable}>
+        <TableContext.Provider value={isStackable}>
+          <table className={classes} role="table" {...others}>
+            {renderChildren(captionID.current)}
+          </table>
+        </TableContext.Provider>
+      </div>
+    </>
   );
+};
+
+Table.defaultProps = {
+  scrollableNotice: (
+    <Alert className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal">
+      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
+    </Alert>
+  ),
 };
 
 Table.propTypes = {
@@ -102,7 +126,9 @@ Table.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Apply vertically stacked row style at different viewpoint sizes.
+   * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
+   * Required props to be used in conjunction with this includes `headers`, `id` and `stackedTitle`
+   * on the sub-components.
    */
   stackBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
@@ -110,9 +136,14 @@ Table.propTypes = {
    */
   striped: PropTypes.bool,
   /**
-   * Apply horizontal scrollbar when the `Table` contents exceed the container width.
+   * Applies a horizontal scrollbar and scrollable notice when the `Table`'s contents exceed the container width.
    */
   scrollable: PropTypes.bool,
+  /**
+   * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
+   * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
+   */
+  scrollableNotice: PropTypes.node,
 };
 
 export default Table;
