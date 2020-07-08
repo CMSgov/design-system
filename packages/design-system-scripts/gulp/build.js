@@ -6,10 +6,11 @@
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
 const copyAssets = require('./common/copyAssets');
-const count = require('gulp-count');
 const gulp = require('gulp');
-const path = require('path');
+const count = require('gulp-count');
 const rename = require('gulp-rename');
+const ts = require('gulp-typescript');
+const path = require('path');
 const streamPromise = require('./common/streamPromise');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
@@ -67,11 +68,34 @@ async function copyAll(dir) {
 }
 
 /**
+ * Because we use babel to compile ts files, we have to compile twice to get definition files.
+ * This is necessary because the core CMSDS uses babel, but also needs definition files.
+ * TODO: Figure out how to use gulp-typescript for ts compilation as well
+ */
+async function generateTypeDefinitions(dir, changedPath) {
+  const src = path.join(dir, 'src', 'components');
+  const srcGlob = getSrcGlob(src, changedPath);
+
+  const tsProject = ts.createProject('tsconfig.json', {
+    declaration: true,
+    allowJs: true,
+  });
+
+  const tsResult = gulp.src(srcGlob, { base: src }).pipe(tsProject());
+
+  return streamPromise(
+    tsResult.dts.pipe(gulp.dest(path.join(dir, 'dist', 'types'))).on('finish', function () {
+      logTask('📜 ', 'Typescript definition files generated');
+    })
+  );
+}
+
+/**
  * Similar to compileJS but babel is configured for esmodules, only used in the core DS
  */
-async function compileEsmJs(dir) {
+async function compileEsmJs(dir, changedPath) {
   const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src);
+  const srcGlob = getSrcGlob(src, changedPath);
 
   return streamPromise(
     gulp
@@ -133,11 +157,17 @@ function compileJs(dir, options, changedPath) {
         })
       )
       .pipe(gulp.dest(path.join(dir, 'dist')))
-  ).then(() => {
-    if (options.core) {
-      return compileEsmJs(dir, changedPath);
-    }
-  });
+  )
+    .then(() => {
+      if (options.core) {
+        return compileEsmJs(dir, changedPath);
+      }
+    })
+    .then(() => {
+      if (options.typescript) {
+        return generateTypeDefinitions(dir, changedPath);
+      }
+    });
 }
 
 module.exports = {
