@@ -40,7 +40,7 @@ async function copyCode(sourceDir, docsDir) {
           path.join(sourceDir, 'package.json'),
           path.join(sourceDir, 'README.md'),
         ],
-        { base: sourceDir }
+        { base: sourceDir, allowEmpty: true }
       )
       .pipe(gulp.dest(path.join(docsDir, 'dist', 'download', 'design-system')))
   );
@@ -49,7 +49,7 @@ async function copyCode(sourceDir, docsDir) {
 async function copyDesignAssets(sourceDir, docsDir) {
   return streamPromise(
     gulp
-      .src('./design-assets/**', { base: './' })
+      .src('./design-assets/**', { base: './', allowEmpty: true })
       .pipe(gulp.dest(path.join(docsDir, 'dist', 'download')))
   );
 }
