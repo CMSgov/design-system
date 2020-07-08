@@ -8,6 +8,10 @@ const savePage = require('./savePage');
  * @return {Promise}
  */
 function generateDocPage(routes, page, docsPath, { rootPath, githubUrl, name }) {
+  if (typeof page.referenceURI !== 'string') {
+    return Promise.resolve(false);
+  }
+
   const componentRenderer = () => {
     if (process.env.NODE_ENV === 'development') {
       // In development mode we let the client handle all of the React rendering,
