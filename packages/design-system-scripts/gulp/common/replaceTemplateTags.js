@@ -1,12 +1,9 @@
 /**
  * Replace template tags with string values
- * @param {String} str - String with template tags to be replaced
- * @param {String} rootPath - Root docs site path
- * @return {String}
  */
-function replaceTemplateTags(str, rootPath) {
-  if (rootPath) {
-    str = str.replace(/{{root}}/g, `/${rootPath}`);
+function replaceTemplateTags(str, options) {
+  if (options.rootPath) {
+    str = str.replace(/{{root}}/g, `/${options.rootPath}`);
   } else {
     str = str.replace(/{{root}}/g, '');
   }
