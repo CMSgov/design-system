@@ -44,9 +44,12 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
+          // Copy over config options
+          core: JSON.stringify(options.core),
           rootPath: JSON.stringify(options.rootPath),
-          githubUrl: JSON.stringify(options.githubUrl),
           name: JSON.stringify(options.name),
+          githubUrl: JSON.stringify(options.githubUrl),
+          npmPackage: JSON.stringify(options.npmPackage),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
       }),
