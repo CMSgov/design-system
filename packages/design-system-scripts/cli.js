@@ -3,7 +3,9 @@ const yargs = require('yargs');
 const { logIntroduction } = require('./gulp/common/logUtil');
 const path = require('path');
 // TODO, clean up script parameters to use the CMSDS config better
-const cmsdsConfig = require(path.resolve(process.cwd(), 'cmsds.config.js'));
+const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
+const configDefaults = require('./configDefaults');
+const config = { ...configDefaults, ...configFile };
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
@@ -31,8 +33,8 @@ yargs
       const { buildSrc } = require('./gulp/build');
 
       process.env.NODE_ENV = 'production';
-      await logIntroduction(cmsdsConfig.sourceDir);
-      await buildSrc(cmsdsConfig.sourceDir, { ...cmsdsConfig, ...argv });
+      await logIntroduction(config.sourceDir);
+      await buildSrc(config.sourceDir, { ...config, ...argv });
     },
   })
   .command({
@@ -51,9 +53,9 @@ yargs
       const { buildDocs } = require('./gulp/docs');
 
       process.env.NODE_ENV = 'production';
-      await logIntroduction(cmsdsConfig.sourceDir);
-      await buildSrc(cmsdsConfig.sourceDir, { ...cmsdsConfig, ...argv });
-      await buildDocs(cmsdsConfig.sourceDir, cmsdsConfig.docsDir, { ...cmsdsConfig, ...argv });
+      await logIntroduction(config.sourceDir);
+      await buildSrc(config.sourceDir, { ...config, ...argv });
+      await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },
   })
   .command({
@@ -74,10 +76,10 @@ yargs
       const { watchDocs } = require('./gulp/watch');
 
       process.env.NODE_ENV = 'development';
-      await logIntroduction(cmsdsConfig.sourceDir);
-      await buildSrc(cmsdsConfig.sourceDir, { ...cmsdsConfig, ...argv });
-      await buildDocs(cmsdsConfig.sourceDir, cmsdsConfig.docsDir, { ...cmsdsConfig, ...argv });
-      await watchDocs(cmsdsConfig.sourceDir, cmsdsConfig.docsDir, { ...cmsdsConfig, ...argv });
+      await logIntroduction(config.sourceDir);
+      await buildSrc(config.sourceDir, { ...config, ...argv });
+      await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
+      await watchDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },
   })
   .command({
@@ -140,7 +142,7 @@ yargs
         .option('buildPath', {
           desc: 'The path to the directory containing documentation site build files.',
           type: 'string',
-          default: path.join(cmsdsConfig.docsDir, 'dist'),
+          default: path.join(config.docsDir, 'dist'),
           demandOption: true,
         });
     },
