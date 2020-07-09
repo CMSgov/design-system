@@ -7,8 +7,8 @@ weight: 1
 
 The easiest way to add the design system's styles to your site is by referencing its minified CSS.
 
-1. Download the zip file from the latest CMS design system release and open that file.
-1. Copy the `packages/design-system/index.css` file into a relevant place in your code base — likely a directory where you keep third-party libraries. In the example below, our directory is `css/vendor`.
+1. Download the zip file from the latest design system release and open that file.
+1. Copy the `dist/css/index.css` file into a relevant place in your code base — likely a directory where you keep third-party libraries. In the example below, our directory is `css/vendor`.
 1. Add a `<link>` to the stylesheet in your site's `<head>`
 
 For example:
@@ -27,7 +27,7 @@ If you're already using Sass to style your site, another way to include the desi
 2. Add the following to your Sass file:
 
 ```css
-@import '@cmsgov/design-system/dist/scss/index';
+@import '{{npm}}/dist/scss/index';
 ```
 
 [Learn how to override and theme Sass variables]({{root}}/startup/theming/).
@@ -53,4 +53,4 @@ Once your page is loading the design system's CSS, you can then begin applying i
 
 <h2 id="need-help" class="ds-h2 ds-u-color--primary-darker">Need help or ran into an issue?</h2>
 
-If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub](https://github.com/CMSgov/design-system/issues).
+If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub]({{github}}/issues).
