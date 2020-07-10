@@ -4,7 +4,8 @@ module.exports = (rootDir, core) => ({
   rootDir,
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  setupFilesAfterEnv: core ? [`<rootDir>/../setupTests.js`] : [`<rootDir>/src/setupTests.js`],
+  // TODO: Find more robust solution for resolving `setupTests.js` considering `rootDir` can change
+  setupFilesAfterEnv: core ? [`<rootDir>/../setupTests.js`] : [`<rootDir>/setupTests.js`],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],

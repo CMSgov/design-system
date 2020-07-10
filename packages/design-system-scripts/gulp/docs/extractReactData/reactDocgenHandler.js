@@ -1,10 +1,8 @@
+const defaultHandlers = require('react-docgen').defaultHandlers;
 const marked = require('marked');
-const replaceTemplateTags = require('../replaceTemplateTags');
+const replaceTemplateTags = require('../../common/replaceTemplateTags');
 
-/**
- * @param {String} rootPath - Root docs site path
- */
-function markdownHandler(rootPath) {
+function markdownHandler(options) {
   /**
    * @param {Documentation} doc - react-docgen Documentation instance
    */
@@ -17,7 +15,7 @@ function markdownHandler(rootPath) {
 
         if (propDescriptor.description !== '') {
           propDescriptor.description = marked(
-            replaceTemplateTags(propDescriptor.description, rootPath)
+            replaceTemplateTags(propDescriptor.description, options)
           );
         }
       });
@@ -25,4 +23,9 @@ function markdownHandler(rootPath) {
   };
 }
 
-module.exports = markdownHandler;
+/**
+ * Add our custom handlers to react-docgen's default list of handlers
+ */
+module.exports = (options) => {
+  return defaultHandlers.concat([markdownHandler(options)]);
+};

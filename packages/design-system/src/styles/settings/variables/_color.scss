@@ -84,6 +84,11 @@ $color-base-inverse: $color-white !default;
 $color-muted-inverse: #bac5cf !default;
 
 // Focus
+// Default focus styles
+$color-focus: #3e94cf !default;
+$color-focus-inverse: #59bcff !default;
+
+// More robust focus styles
 $focus-color: #ffde11 !default;
 $focus-color-inverse: #ffde11 !default;
 $focus-border-inverse: #8f7c00 !default;
