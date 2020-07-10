@@ -185,7 +185,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   // Parse Markdown files, and return the data in the same format as a KssSection
   const markdownSections = await Promise.all(
     docsDirs.map(async (dir) => {
-      return convertMarkdownPages(options.rootPath, dir);
+      return convertMarkdownPages(dir, options);
     })
   ).then((dirPages) => dirPages.flat());
 
@@ -200,7 +200,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   const kssSections = await Promise.all(
     kssStyleGuide.sections().map((kssSection) =>
       // Cleanup and extend the section's properties
-      processKssSection(kssSection, options.rootPath)
+      processKssSection(kssSection, options)
     )
   );
 

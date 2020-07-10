@@ -29,7 +29,7 @@ describe('processMarkup', () => {
   it('processes template tags', () => {
     const page = createPage('{{root}}/bar');
 
-    return processMarkup(page, 'foo').then((data) => {
+    return processMarkup(page, { rootPath: 'foo' }).then((data) => {
       expect(data.markup).toBe('/foo/bar');
     });
   });
@@ -37,7 +37,7 @@ describe('processMarkup', () => {
   it('renders EJS tags', () => {
     const page = createPage('<% var foo="bar" %><%= foo %>');
 
-    return processMarkup(page).then((data) => {
+    return processMarkup(page, {}).then((data) => {
       expect(data.markup).toBe('bar');
     });
   });
@@ -45,7 +45,7 @@ describe('processMarkup', () => {
   it('loads markup from .html file', () => {
     const page = createPage('foo.html');
 
-    return processMarkup(page).then((data) => {
+    return processMarkup(page, {}).then((data) => {
       expect(data.markup).toMatch(/foo\.html contents/);
       expect(fs.readFile.mock.calls.length).toBe(1);
     });

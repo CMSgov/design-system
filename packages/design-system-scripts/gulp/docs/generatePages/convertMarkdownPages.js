@@ -12,18 +12,16 @@ const processMarkdownPage = require('./processMarkdownPage');
 /**
  * Reads a path, and creates a JSON representation of the Markdown file. If
  * the path points to a directory, it creates objects for every child file.
- * @param {String} rootPath - Root docs site path
  * @param {String} dir - Directory path
  * @param {String} filename
+ * @param {String} options
  * @return {Promise<Object[]|Object>} Can resolve with a single page object
  *   or an array of page objects
  */
-function createPageObject(rootPath, dir, filename) {
+function createPageObject(dir, filename, options) {
   const filePath = path.join(dir, filename);
 
-  return fs
-    .readFile(filePath, 'utf8')
-    .then((data) => processMarkdownPage(filePath, data, rootPath));
+  return fs.readFile(filePath, 'utf8').then((data) => processMarkdownPage(filePath, data, options));
 }
 
 /**
@@ -33,13 +31,13 @@ function createPageObject(rootPath, dir, filename) {
  * @param {Array} dir - Directory containing the src directory where we will find markdown files
  * @return {Promise<Object[]>} Resolves with an array of JSON pages
  */
-async function convertMarkdownPages(rootPath, dir) {
+async function convertMarkdownPages(dir, options) {
   const pages = [];
   const filenames = glob.sync('src/**/*.md', { cwd: dir });
 
   await Promise.all(
     filenames.map((filename) =>
-      createPageObject(rootPath, dir, filename).then((data) => {
+      createPageObject(dir, filename, options).then((data) => {
         pages.push(data);
       })
     )
