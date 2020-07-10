@@ -24,8 +24,7 @@
       box-shadow: $focus-shadow;
       outline: 3px solid $focus-color;
       outline-offset: 0;
-    }
-    @else {
+    } @else {
       box-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus;
     }
   }
@@ -56,8 +55,7 @@ Inverse theme
   &:focus {
     @if $ds-include-focus-styles {
       box-shadow: $focus-shadow-inverse;
-    }
-    @else {
+    } @else {
       box-shadow: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse;
     }
   }

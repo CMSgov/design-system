@@ -53,8 +53,7 @@ $dialog-spacer: $spacer-4;
     &:focus {
       background-image: url('#{$image-path}/close.svg');
     }
-  }
-  @else {
+  } @else {
     background-image: url('#{$image-path}/close--primary-darker.svg');
   }
 }

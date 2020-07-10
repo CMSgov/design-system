@@ -113,7 +113,7 @@ yargs
       process.env.NODE_ENV = 'test';
       run([
         '--config',
-        JSON.stringify(unitConfig(argv.directory, argv.core)),
+        JSON.stringify(unitConfig(argv.directory, config.core)),
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
       ]);
