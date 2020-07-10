@@ -2,7 +2,7 @@
 title: Accessibility
 ---
 
-CMS strives to make its Design System work for as many people as possible, including people with disabilities.
+The {{name}} strives to work for as many people as possible, including people with disabilities.
 
 ## What we do to help meet and exceed standards
 
@@ -14,7 +14,7 @@ CMS strives to make its Design System work for as many people as possible, inclu
 
 ## What level we meet currently
 
-The CMS Design System currently meets or exceeds [WCAG 2.0 AA](https://www.w3.org/TR/WCAG20/) and [Section 508](http://www.section508.gov/) standards, which requires information and communications technology developed, procured, maintained, or used by the federal government be accessible to both employees and members of the public with disabilities.
+The {{name}} currently meets or exceeds [WCAG 2.0 AA](https://www.w3.org/TR/WCAG20/) and [Section 508](http://www.section508.gov/) standards, which requires information and communications technology developed, procured, maintained, or used by the federal government be accessible to both employees and members of the public with disabilities.
 
 More information on Section 508 can be found at:
 

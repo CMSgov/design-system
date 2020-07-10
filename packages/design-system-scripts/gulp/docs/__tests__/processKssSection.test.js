@@ -31,7 +31,7 @@ describe('processKssSection', () => {
   let promise;
 
   beforeAll(() => {
-    promise = processKssSection(section('components.button'), 'root');
+    promise = processKssSection(section('components.button'), { rootPath: 'root' });
   });
 
   it('sets and replaces flags', () => {

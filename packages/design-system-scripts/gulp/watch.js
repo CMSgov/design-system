@@ -9,8 +9,25 @@ const path = require('path');
 const { logTask } = require('./common/logUtil');
 const { compileSourceSass, compileDocsSass } = require('./sass');
 const { copyAll, compileJs } = require('./build');
-const { extractReactDocs, generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
+const { generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
+const { extractReactProps, extractReactExamples } = require('./docs/extractReactData');
 const { runWebpackServer } = require('./docs/webpack');
+
+// Use chokidar instance under gulp.watch to expose `path` of changed files
+// https://gulpjs.com/docs/en/api/watch/#chokidar-instance
+function watch(globs, task) {
+  const watcher = gulp.watch(globs);
+
+  watcher.on('change', function (changedPath) {
+    task(changedPath);
+  });
+  watcher.on('add', function (changedPath) {
+    task(changedPath);
+  });
+  watcher.on('unlink', function (changedPath) {
+    task(changedPath);
+  });
+}
 
 async function watchSource(sourceDir, docsDir, options, browserSync) {
   const src = path.join(sourceDir, 'src');
@@ -28,12 +45,14 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  // Source package React components and React props
-  gulp.watch([`${src}/**/*.jsx`, `!${src}/**/*.test.{js,jsx}`], async () => {
-    await compileJs(sourceDir);
-    await extractReactDocs(sourceDir, docsDir, options);
-    await generatePages(sourceDir, docsDir, options);
-  });
+  watch(
+    [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`],
+    async (changedPath) => {
+      await compileJs(sourceDir, options, changedPath);
+      await extractReactProps(sourceDir, options);
+      await generatePages(sourceDir, docsDir, options, changedPath);
+    }
+  );
 }
 
 async function watchDocs(sourceDir, docsDir, options, browserSync) {
@@ -45,14 +64,19 @@ async function watchDocs(sourceDir, docsDir, options, browserSync) {
   });
 
   // Docs Sass files
-  gulp.watch(`${src}/**/*.scss`, async () => {
+  gulp.watch([`${src}/**/*.scss`, `!${src}/**/*.docs.scss`], async () => {
     await compileDocsSass(docsDir, options, browserSync);
   });
 
-  // Docs Markdown files, KSS documentation files and HTML/React examples
-  gulp.watch([`${src}/**/*.{md,mdx,docs.scss,html,jsx}`], async () => {
-    await extractReactDocs(sourceDir, docsDir, options);
-    await generatePages(sourceDir, docsDir, options);
+  // Docs Markdown files, KSS documentation files
+  watch([`${src}/**/*.{md,mdx,docs.scss}`], async (changedPath) => {
+    await generatePages(sourceDir, docsDir, options, changedPath);
+  });
+
+  // Docs HTML/React examples
+  watch([`${src}/**/*.example.{html,jsx,tsx}`], async (changedPath) => {
+    await extractReactExamples(docsDir, options);
+    await generatePages(sourceDir, docsDir, options, changedPath);
   });
 }
 

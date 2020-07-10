@@ -132,7 +132,12 @@ function createSpecificityGraph(stats) {
     .then((body) => body.replace(/{{ROW_DATA}}/, JSON.stringify(chartRows)))
     .then((body) => {
       if (!fs.existsSync(tmpPath)) {
-        fs.mkdir(tmpPath).then(() => body);
+        fs.mkdir(tmpPath)
+          .then(() => body)
+          .catch((error) => {
+            logError('createSpecificityGraph', 'Error reading chart-template.html');
+            console.error(error);
+          });
       }
 
       return body;
@@ -162,7 +167,7 @@ function saveStats(currentStats) {
 async function printStats(sourceDir, options) {
   let message = 'Gathering css & font stats';
   if (!options.skipLatest) {
-    message += 'and comparing against the latest release';
+    message += ' and comparing against the latest release';
   }
   logTask('🔍 ', message);
 
