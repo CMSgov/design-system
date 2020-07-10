@@ -1,14 +1,29 @@
 /**
  * Replace template tags with string values
- * @param {String} str - String with template tags to be replaced
- * @param {String} rootPath - Root docs site path
- * @return {String}
  */
-function replaceTemplateTags(str, rootPath) {
-  if (rootPath) {
-    str = str.replace(/{{root}}/g, `/${rootPath}`);
+function replaceTemplateTags(str, options) {
+  if (options.rootPath) {
+    str = str.replace(/{{root}}/g, `/${options.rootPath}`);
   } else {
     str = str.replace(/{{root}}/g, '');
+  }
+
+  if (options.npmPackage) {
+    str = str.replace(/{{npm}}/g, `${options.npmPackage}`);
+  } else {
+    str = str.replace(/{{npm}}/g, '');
+  }
+
+  if (options.githubUrl) {
+    str = str.replace(/{{github}}/g, `${options.githubUrl}`);
+  } else {
+    str = str.replace(/{{github}}/g, '');
+  }
+
+  if (options.name) {
+    str = str.replace(/{{name}}/g, `${options.name}`);
+  } else {
+    str = str.replace(/{{name}}/g, '');
   }
 
   return str;

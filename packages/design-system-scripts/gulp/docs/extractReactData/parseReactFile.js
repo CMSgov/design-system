@@ -112,7 +112,7 @@ function parseComponent(file, options) {
       : reactDocgen.parse(
           file.contents,
           reactDocgen.resolver.findAllExportedComponentDefinitions,
-          reactDocgenHandler(options.rootPath),
+          reactDocgenHandler(options),
           { filename: file.basename }
         );
 

@@ -8,10 +8,10 @@ const { logData, logError } = require('../../common/logUtil');
  * Take the raw markup value and convert or retrieve the markup to be displayed
  * to the user.
  * @param {Object} page
- * @param {rootPath}
+ * @param {Object}
  * @return {Promise<Object>} page updated `markup` property
  */
-function processMarkup(page, rootPath = '') {
+function processMarkup(page, options) {
   let markup = page.markup;
 
   if (markup && markup !== '') {
@@ -19,11 +19,11 @@ function processMarkup(page, rootPath = '') {
       return loadMarkup(page).then(({ markup, markupPath }) => {
         page.markup = markup;
         page.markupPath = markupPath;
-        return processMarkup(page, rootPath);
+        return processMarkup(page, options);
       });
     }
 
-    markup = replaceTemplateTags(markup, rootPath);
+    markup = replaceTemplateTags(markup, options);
 
     // Render EJS
     try {

@@ -246,6 +246,11 @@ function describeDocsOptions(yargs) {
       desc: 'The base path for your GitHub repository URLs.',
       default: 'https://github.com/CMSgov/design-system',
     })
+    .option('npmPackage', {
+      type: 'string',
+      desc: 'The name of your design system NPM package',
+      default: '@cmsgov/design-system',
+    })
     .option('rootPath', {
       desc:
         'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
