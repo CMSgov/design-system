@@ -3,7 +3,7 @@ title: Examples
 weight: 10
 ---
 
-Additional examples of the design system in use can be viewed on [GitHub](https://github.com/CMSgov/design-system). These projects demonstrate the various ways you can incorporate the design system into your development process and various use cases.
+Additional examples of the CMS Design System (CMSDS) in use can be viewed on the core [CMSDS GitHub](https://github.com/CMSgov/design-system). These projects demonstrate the various ways you can incorporate the design system into your development process and various use cases.
 
 ## HTML/CSS examples
 
@@ -18,4 +18,4 @@ Additional examples of the design system in use can be viewed on [GitHub](https:
 
 ## Need help or ran into an issue?
 
-If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub](https://github.com/CMSgov/design-system/tree/master/examples).
+If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub]({{github}}/tree/master/examples).

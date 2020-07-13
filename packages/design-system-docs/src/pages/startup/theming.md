@@ -27,12 +27,12 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 ```css
 /* main.scss */
 @import 'overrides';
-@import '@cmsgov/design-system/dist/scss/index';
+@import '{{npm}}/dist/scss/index';
 ```
 
 ### Available variables
 
-Sass variables are documented on the relevant documentation pages, and are defined in the `@cmsgov/design-system` package:
+Sass variables are documented on the relevant documentation pages, and are defined in the `{{npm}}` package:
 
 - [Breakpoints]({{root}}/guidelines/responsive/)
 - [Colors]({{root}}/styles/color/)
