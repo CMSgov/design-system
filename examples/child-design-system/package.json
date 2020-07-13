@@ -1,0 +1,30 @@
+{
+  "name": "@cmsgov/ds-child",
+  "version": "0.1.0",
+  "repository": "https://github.com/REPO URL",
+  "scripts": {
+    "build": "yarn cmsds build-docs --skipLatest",
+    "start": "yarn cmsds start --skipLatest", 
+    "test": "yarn cmsds test ./src",
+    "lint": "yarn cmsds lint ./src ./docs"
+  },
+  "main": "dist/components/index.js",
+  "module": "dist/components/index.js",
+  "sideEffects": false,
+  "dependencies": {
+    "@cmsgov/design-system": "2.0.0-beta.4",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
+  "devDependencies": {
+    "@cmsgov/design-system-docs": "2.0.0-beta.4",
+    "@cmsgov/design-system-scripts": "2.0.0-beta.4",
+    "@cmsgov/eslint-config-design-system": "1.3.0",
+    "@cmsgov/stylelint-config-design-system": "1.1.0",
+    "classnames": "^2.2.5"
+  },
+  "browserslist": [
+    "> 2%",
+    "Last 2 versions"
+  ]
+}
