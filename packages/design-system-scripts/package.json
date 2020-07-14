@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.4",
   "publishConfig": {
     "access": "public",
     "tag": "beta"
@@ -52,8 +52,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-stylelint": "^13.0.0",
-    "gulp-zip": "^5.0.2",
     "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-zip": "^5.0.2",
     "jest": "^25.5.2",
     "kss": "^3.0.0-beta.18",
     "marked": "^0.3.17",
