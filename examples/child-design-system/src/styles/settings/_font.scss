@@ -1,0 +1,25 @@
+// Design system fonts
+// Fonts are separated from other settings scss because font-faces are compiled and included css build files
+
+// TODO: Find solution to remove unused @font-faces
+
+@font-face {
+  font-family: Anton;
+  font-style: normal;
+  font-weight: normal;
+  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+}
+
+@font-face {
+  font-family: Anton;
+  font-style: normal;
+  font-weight: 600;
+  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+}
+
+@font-face {
+  font-family: Anton;
+  font-style: normal;
+  font-weight: 700;
+  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+}
