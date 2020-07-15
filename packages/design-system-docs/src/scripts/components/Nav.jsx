@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import path from 'path';
 import { VerticalNav } from '@cmsgov/design-system';
 
 /**
@@ -30,11 +31,29 @@ function isParentOfSelectedChild(items, selectedId) {
   return false;
 }
 
+function updateItemsWithRootPath(items) {
+  if (process.env.rootPath !== '' && items && items.length > 0) {
+    return items.map(item => {
+      if (item && item.url) {
+        item.url = path.join('/', process.env.rootPath, item.url);
+      }
+      if (item && item.items) {
+        const updatedSubItems = updateItemsWithRootPath(item.items);
+        item.items = updatedSubItems;
+      }
+      return item;
+    });
+  }
+  return items;
+}
+
 const Nav = (props) => {
+  const items = updateItemsWithRootPath(props.items)
+
   return (
     <VerticalNav
       className="c-nav__list"
-      items={expandSelectedItems(props.items, props.selectedId)}
+      items={expandSelectedItems(items, props.selectedId)}
       selectedId={props.selectedId ? props.selectedId : undefined}
     />
   );
