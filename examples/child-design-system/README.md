@@ -65,9 +65,14 @@ Design system source like (`tsx` files, tests) and doc site files (example files
 In the `cmsds.config.js` file, which can be found at the root of this folder you will see options for configuring the following.
 This ensures that the content on the doc site matches up with your child design system naming and code repositories.
 
-- `githubUrl` - The URL for your GitHub repository. This replaces the {{github}} template in documentation content.
-- `npmPackage` - The name of your design system NPM package. This replaces the {{npm}} template in documentation content.
-- `name` - Name of the design system. This replaces the {{name}} template in documentation content.
+| Config       | Default                                                                                                                                  | Description                                                                                                                                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `githubUrl`  |                                                                                                                                          | The URL for your GitHub repository. This replaces the {{github}} template in documentation content.                                           |
+| `npmPackage` |                                                                                                                                          | The name of your design system NPM package. This replaces the {{npm}} template in documentation content.                                      |
+| `name`       |                                                                                                                                          | Name of the design system. This replaces the {{name}} template in documentation content.                                                      |
+| `sourceDir`  | `./`                                                                                                                                     | The relative path to the directory containing the design system package `src`. The design system build files will be saved here under "dist". |
+| `docsDir`    | `./docs`                                                                                                                                 | The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under "dist".                   |
+| `typescript` | `` | Sets the domain path for the docs site. I.e. if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/` |
 
 ## Writing documentation
 
