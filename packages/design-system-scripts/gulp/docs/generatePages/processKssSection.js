@@ -40,10 +40,6 @@ function processKssSection(kssSection, options) {
   section.description = replaceTemplateTags(section.description, options);
   section.referenceURI = section.reference.replace(/\./g, '/');
 
-  if (options.rootPath) {
-    section.referenceURI = `${options.rootPath}/${section.referenceURI}`;
-  }
-
   // We only need to support Markdown's code syntax in headers, so we manually
   // parse those rather than running it through the marked library.
   section.header = convertMarkdownCode(section.header);

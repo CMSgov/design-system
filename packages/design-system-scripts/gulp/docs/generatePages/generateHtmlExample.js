@@ -33,8 +33,8 @@ function processMarkup(markup, modifier) {
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateHtmlExample(page, modifier, docsPath, { rootPath }) {
-  if (rootPath) rootPath = `${rootPath}/`;
+function generateHtmlExample(page, modifier, docsPath, options) {
+  const rootPath = (options.rootPath) ? `${options.rootPath}/` : null;
   // ie. components.button
   let id = page.reference;
   // ie. components.button.ds-c-button--primary
@@ -49,7 +49,7 @@ function generateHtmlExample(page, modifier, docsPath, { rootPath }) {
 
   return savePage(
     {
-      uri: `${rootPath || ''}example/${id}`,
+      uri: `example/${id}`,
       head: head,
       body: body,
     },
