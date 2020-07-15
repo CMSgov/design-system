@@ -44,12 +44,6 @@ describe('processKssSection', () => {
     });
   });
 
-  it('prepends rootPath', () => {
-    return promise.then((data) => {
-      expect(data.referenceURI).toBe('root/components/button');
-    });
-  });
-
   it('converts Markdown in header', () => {
     return promise.then((data) => {
       expect(data.header).toBe('Title - <code>&#x3C;Component&#x3E;</code>');
