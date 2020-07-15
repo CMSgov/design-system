@@ -1,6 +1,10 @@
 ## Introduction
 
-This example shows how you can build a child design system.
+There are many independent product teams across different contracts and companies that work under the same CMS sites (i.e. Medicare.gov, Healthcare.gov).
+
+These product teams need a shared resource specific to those sites. It’s not possible or desirable for the CMSDS core to cover those site specific case.
+
+This is the reasoning behind creating the CMS design system family which consists of the CMSDS core and child design systems.
 
 ## Getting started
 
@@ -17,6 +21,8 @@ Design system build files for JS and CSS/SCSS are inside their respective folder
 - JS Build files are transpiled by Babel into ESM in order to support webpack4's [tree shaking optimizations](https://webpack.js.org/guides/tree-shaking/#clarifying-tree-shaking-and-sideeffects)
 
 - Typescript prop docs are automatically generated when the `@react-props` tag is specified.
+
+### Setting up tests
 
 ## Folder structure
 
@@ -85,4 +91,4 @@ If you are writing a content only page then you should be creating a Markdown .M
 
 ### Publishing your child design system doc site
 
-- We suggest using GitHub pages `gh-pages` to publish the doc site build files
+We suggest using GitHub pages `gh-pages` to publish the doc site build files
