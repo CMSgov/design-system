@@ -38,8 +38,7 @@ function updateItemsWithRootPath(items) {
         item.url = path.join('/', process.env.rootPath, item.url);
       }
       if (item && item.items) {
-        const updatedSubItems = updateItemsWithRootPath(item.items);
-        item.items = updatedSubItems;
+        item.items = updateItemsWithRootPath(item.items);
       }
     });
   }
