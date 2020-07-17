@@ -33,7 +33,7 @@ function isParentOfSelectedChild(items, selectedId) {
 
 function updateItemsWithRootPath(items) {
   if (process.env.rootPath !== '' && items && items.length > 0) {
-    return items.map(item => {
+    items.forEach(item => {
       if (item && item.url) {
         item.url = path.join('/', process.env.rootPath, item.url);
       }
@@ -41,7 +41,6 @@ function updateItemsWithRootPath(items) {
         const updatedSubItems = updateItemsWithRootPath(item.items);
         item.items = updatedSubItems;
       }
-      return item;
     });
   }
   return items;
