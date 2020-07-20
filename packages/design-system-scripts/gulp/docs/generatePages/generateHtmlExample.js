@@ -34,7 +34,7 @@ function processMarkup(markup, modifier) {
  * @return {Promise}
  */
 function generateHtmlExample(page, modifier, docsPath, options) {
-  const rootPath = (options.rootPath && options.rootPath !== '') ? `${options.rootPath}/` : '';
+  const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
   // ie. components.button
   let id = page.reference;
   // ie. components.button.ds-c-button--primary
