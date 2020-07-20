@@ -53,6 +53,12 @@ yargs
             'Use this flag to skip rebuilding the design system package before building the doc site. You must have already ran `cmsds build` or `cmsds build-docs` prior to using this option.',
           type: 'boolean',
           default: false,
+        })
+        yargs.option('ignoreRootPath', {
+          desc:
+            'This flag will prevent build files from using `rootPath` while still building for production.',
+          type: 'boolean',
+          default: false,
         });
     },
     handler: async (argv) => {
@@ -60,6 +66,9 @@ yargs
       const { buildDocs } = require('./gulp/docs');
 
       process.env.NODE_ENV = 'production';
+      if (argv.ignoreRootPath) {
+        config.rootPath = "";
+      }
       await logIntroduction(config.sourceDir);
       if (!argv.skipBuild) {
         await buildSrc(config.sourceDir, { ...config, ...argv });
@@ -85,6 +94,8 @@ yargs
       const { watchDocs } = require('./gulp/watch');
 
       process.env.NODE_ENV = 'development';
+      // rootPath is not used in local development
+      config.rootPath = "";
       await logIntroduction(config.sourceDir);
       await buildSrc(config.sourceDir, { ...config, ...argv });
       await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });

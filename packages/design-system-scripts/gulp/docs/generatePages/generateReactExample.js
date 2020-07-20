@@ -44,7 +44,7 @@ function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath 
 
       const output = savePage(
         {
-          uri: `${path.join(rootPath, 'example', page.reference)}`,
+          uri: `example/${page.reference}`,
           head: head,
           body: body,
         },
