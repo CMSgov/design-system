@@ -1,7 +1,6 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const getDocsDistPath = require('./common/getDocsDistPath');
 const changed = require('gulp-changed');
 const count = require('gulp-count');
 const cssnano = require('cssnano');
@@ -79,7 +78,7 @@ async function compileSourceSass(sourceDir, browserSync) {
 
 async function compileDocsSass(docsDir, options, browserSync) {
   const src = path.join(docsDir, 'src');
-  const dest = getDocsDistPath(docsDir, options.rootPath);
+  const dest = path.join(docsDir, 'dist');
   const includePaths = [
     // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
     path.resolve(docsDir, '../../node_modules'),

@@ -33,10 +33,10 @@ Style guide: components.dropdown.react
 
 ### When to consider alternatives
 
-- **Fewer than seven options.** Use [radio buttons or checkboxes](/components/choice) instead.
+- **Fewer than seven options.** Use [radio buttons or checkboxes]({{root}}/components/choice) instead.
 - **More than 15 options.** If the list of options is very long. Let users type the same information into a text input that suggests possible options instead.
-- **Multi-select.** If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use [checkboxes](/components/choice) instead.
-- **Site navigation.** Use the [navigation components](/components/vertical-nav/) instead.
+- **Multi-select.** If you need to allow users to select more than one option at once. Users often don’t understand how to select multiple items from dropdowns. Use [checkboxes]({{root}}/components/choice) instead.
+- **Site navigation.** Use the [navigation components]({{root}}/components/vertical-nav/) instead.
 
 ### Usage
 
@@ -45,7 +45,7 @@ Style guide: components.dropdown.react
 - **Use a good default.** When most users will (or should) pick a particular option, make it the default: ``<option selected="selected">Default</option>``
 - **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
 
-**[View the "Forms" guidelines for additional guidance and best practices.](/guidelines/forms/)**
+**[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
 
 ### Accessibility
 
@@ -55,12 +55,12 @@ Style guide: components.dropdown.react
 
 ### Related patterns
 
-- [Checkbox and Radio](/components/choice)
-- [Text field](/components/text-field)
+- [Checkbox and Radio]({{root}}/components/choice)
+- [Text field]({{root}}/components/text-field)
 
 ### Learn more
 
-- [Form Guidelines](/guidelines/forms/)
+- [Form Guidelines]({{root}}/guidelines/forms/)
 - [Asking for a date of birth](https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/)
 - [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 - [Dropdowns: Design Guidelines](https://www.nngroup.com/articles/drop-down-menus/)
