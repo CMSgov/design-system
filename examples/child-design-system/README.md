@@ -24,6 +24,8 @@ Design system build files for JS and CSS/SCSS are inside their respective folder
 
 ### Setting up tests
 
+...
+
 ## Folder structure
 
 Design system source like (`tsx` files, tests) and doc site files (example files, documentation content) and are separated into `./docs/src` and `./src` folders respectively. The exception to this are typescript docs, which are auto generated from the source files.
@@ -91,4 +93,11 @@ If you are writing a content only page then you should be creating a Markdown .M
 
 ### Publishing your child design system doc site
 
-We suggest using GitHub pages `gh-pages` to publish the doc site build files
+We suggest using GitHub pages `gh-pages` to publish the doc site build files.
+
+### Modifying the design
+
+- (Color variables)[https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/styles/settings/variables/_color.scss]
+- (Type variables)[https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/styles/settings/variables/_type.scss]
+- (Spacing variables)[https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/styles/settings/variables/_layout.scss]
+- (Form variables)[https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/styles/settings/variables/_forms.scss]
