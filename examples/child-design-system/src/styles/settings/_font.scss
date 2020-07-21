@@ -1,25 +1,50 @@
 // Design system fonts
 // Fonts are separated from other settings scss because font-faces are compiled and included css build files
-
-// TODO: Find solution to remove unused @font-faces
-
 @font-face {
-  font-family: Anton;
+  font-family: Oswald;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+  src: url('#{$font-path}/Oswald-Regular.ttf');
 }
 
 @font-face {
-  font-family: Anton;
+  font-family: Oswald;
+  font-style: normal;
+  font-weight: bold;
+  src: url('#{$font-path}/Oswald-Bold.ttf');
+}
+
+@font-face {
+  font-family: Oswald;
+  font-style: italic;
+  font-weight: normal;
+  src: url('#{$font-path}/Oswald-Regular.ttf');
+}
+
+@font-face {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  src: url('#{$font-path}/Raleway-Regular.ttf');
+}
+
+@font-face {
+  font-family: Raleway;
+  font-style: italic;
+  font-weight: normal;
+  src: url('#{$font-path}/Raleway-Italic.ttf');
+}
+
+@font-face {
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+  src: url('#{$font-path}/Raleway-SemiBold.ttf');
 }
 
 @font-face {
-  font-family: Anton;
+  font-family: Raleway;
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/Anton/Anton-Regular.ttf');
+  src: url('#{$font-path}/Raleway-Bold.ttf');
 }
