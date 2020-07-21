@@ -43,7 +43,6 @@ module.exports = {
       browserSync.init({
         port: '3000',
         notify: false,
-        startPath: options.rootPath,
         server: {
           baseDir: path.resolve(docsDir, 'dist'),
           middleware: [

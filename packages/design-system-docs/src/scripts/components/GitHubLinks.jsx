@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import githubUrl from '../helpers/githubUrl';
+import path from 'path';
 
 const GitHubLinks = (props) => {
   const downloadBtnClassName = classNames('ds-u-font-weight--normal', {
@@ -15,7 +16,7 @@ const GitHubLinks = (props) => {
   return (
     <div className={props.className}>
       <Button
-        href="download.zip"
+        href={path.join('/', process.env.rootPath, 'download.zip')}
         inversed={props.inversed}
         variation="primary"
         className={downloadBtnClassName}
