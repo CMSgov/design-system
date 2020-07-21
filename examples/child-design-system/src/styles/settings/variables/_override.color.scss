@@ -1,8 +1,3 @@
-$color-primary: #046791;
-$color-primary-darker: darken($color-primary, 5%);
-$color-primary-darkest: darken($color-primary, 15%);
+$color-primary: #b35600;
 
-$color-primary-alt: #2e8540;
-$color-primary-alt-lightest: #cfeffc;
-
-$color-error-lightest: #000;
+$color-background-inverse: $color-primary-darkest;

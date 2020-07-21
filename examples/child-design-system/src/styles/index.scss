@@ -10,6 +10,9 @@
 // Variables, mixins, and CMSDS overrides
 @import 'settings/index';
 
+// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
+@import 'base/index';
+
 // Core CMSDS styles
 @import '@cmsgov/design-system/dist/scss/index';
 

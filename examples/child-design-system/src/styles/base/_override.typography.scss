@@ -1,0 +1,8 @@
+.ds-title {
+  font-size: $base-font-size;
+  font-weight: $font-normal;
+
+  @media (min-width: $width-md) {
+    font-size: $title-font-size;
+  }
+}

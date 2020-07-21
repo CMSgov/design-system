@@ -1,0 +1,21 @@
+// $multiple: 10px;
+
+// $spacers: (
+//   0,
+//   $multiple,
+//   $multiple * 2,
+//   $multiple * 3,
+//   $multiple * 4,
+//   $multiple * 5,
+//   $multiple * 6,
+//   $multiple * 7
+// );
+
+// $spacer-1: nth($spacers, 2); // 8px
+// $spacer-2: nth($spacers, 3); // 16px
+// $spacer-3: nth($spacers, 4); // 24px
+// $spacer-4: nth($spacers, 5); // 32px
+// $spacer-5: nth($spacers, 6); // 40px
+// $spacer-6: nth($spacers, 7); // 48px
+// $spacer-7: nth($spacers, 8); // 56px
+// $spacer-half: $spacer-1 / 2; // 4px
