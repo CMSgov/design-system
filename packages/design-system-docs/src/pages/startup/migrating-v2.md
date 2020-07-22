@@ -68,7 +68,7 @@ See the [theming page]({{root}}/startup/theming/) for more specific information 
 
 ### Importing Javascript
 
-V2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to point to the new ES module entry point when possible, so for most users this won't require any change. See the documentation on [importing React components]({{root}}/startup/components/#named-imports) for more information on importing Javascript and ES module support.
+V2 adds support for an ES module version of our JS, which can be found in the `dist/esnext` directory. Our `package.json` has been updated to use the `modules` property, which is used by bundlers like Webpack and Rollup to point to the ES module entry point when possible. For most users this won't require any change. See the documentation on [importing React components]({{root}}/startup/components/#named-imports) for more information on importing Javascript and ES module support.
 
 Your project also should not contain any `src` folder imports for React components. While JavaScript files were always available in the `src` directory before, it was never recommended to import the source version directly.
 

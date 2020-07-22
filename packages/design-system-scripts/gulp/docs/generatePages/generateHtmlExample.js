@@ -33,23 +33,23 @@ function processMarkup(markup, modifier) {
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateHtmlExample(page, modifier, docsPath, { rootPath }) {
-  if (rootPath) rootPath = `${rootPath}/`;
+function generateHtmlExample(page, modifier, docsPath, options) {
+  const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
   // ie. components.button
   let id = page.reference;
   // ie. components.button.ds-c-button--primary
   if (modifier) id += `.${modifier.name}`;
 
   const head = `<title>Example: ${page.reference}</title>
-  <link rel="stylesheet" href="/${rootPath || ''}example.css" />
+  <link rel="stylesheet" href="/${rootPath}example.css" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />`;
 
   const body = `${processMarkup(page.markup, modifier)}
-  <script type="text/javascript" src="/${rootPath || ''}example.js"></script>`;
+  <script type="text/javascript" src="/${rootPath}example.js"></script>`;
 
   return savePage(
     {
-      uri: `${rootPath || ''}example/${id}`,
+      uri: `example/${id}`,
       head: head,
       body: body,
     },

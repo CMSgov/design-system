@@ -37,7 +37,7 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     resolve: {
       modules: ['node_modules'],
       alias: {
-        '@src': path.resolve(sourceDir),
+        '@src': path.resolve(sourceDir, 'src'),
       },
       extensions: ['.js', '.jsx'],
       plugins: [],

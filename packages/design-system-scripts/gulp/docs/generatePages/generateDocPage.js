@@ -31,14 +31,12 @@ function generateDocPage(routes, page, docsPath, options) {
     return ReactDOMServer.renderToString(React.createElement(Docs, { page, routes: [] }, null));
   };
 
-  if (options.rootPath) options.rootPath = `${options.rootPath}/`;
+  const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
 
-  const head = `${seo(page, options.rootPath)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${
-    options.rootPath || ''
-  }images/favicon.ico" />
+  const head = `${seo(page, rootPath)}
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="/${options.rootPath || ''}index.css" />
+  <link rel="stylesheet" href="/${rootPath}index.css" />
   ${analytics()}`;
 
   const body = `
@@ -47,8 +45,7 @@ function generateDocPage(routes, page, docsPath, options) {
   window.page = ${JSON.stringify(page)};
   window.routes = ${JSON.stringify(routes)};
 </script>
-<script src="/${options.rootPath || ''}index.js"></script>`;
-
+<script src="/${rootPath}index.js"></script>`;
   return savePage(
     {
       uri: page.referenceURI,
@@ -78,10 +75,10 @@ window.tealiumEnvironment = "${env}";
  * @param {String} rootPath - Root docs site path
  * @return {String}
  */
-function seo(page, rootPath = '') {
+function seo(page) {
   const html = [];
 
-  if (page.referenceURI.replace(rootPath.replace(/\/$/, ''), '') === '') {
+  if (page.referenceURI === '') {
     // Homepage
     html.push(
       '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
