@@ -6,7 +6,7 @@ module.exports = {
   // Flag enabling typescript support. When `true`, .ts/.tsx files will be compilied and typescript definition files will be generated. Requires tsconfig.json to be defined.
   typescript: true,
   // The URL root path for the published docs site. I.e. if your docs site is hosted at www.domain.com/design/ your rootPath would be `design`. `rootPath` is only used when building for production.
-  rootPath: 'design-system',
+  rootPath: '',
   // Flag used by the core CMS design system, should be false for child design systems
   core: true,
 

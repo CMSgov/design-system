@@ -31,12 +31,10 @@ function generateDocPage(routes, page, docsPath, options) {
     return ReactDOMServer.renderToString(React.createElement(Docs, { page, routes: [] }, null));
   };
 
-  const rootPath = (options.rootPath && options.rootPath !== '') ? `${options.rootPath}/` : '';
+  const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
 
   const head = `${seo(page, rootPath)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${
-    rootPath || ''
-  }images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}index.css" />
   ${analytics()}`;

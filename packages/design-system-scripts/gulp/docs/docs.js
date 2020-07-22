@@ -19,7 +19,7 @@ module.exports = {
    * that the documentation reflects the most recent version of the source.
    */
   async buildDocs(sourceDir, docsDir, options) {
-    logTask('🏃 ', 'Starting the documentation site generation task')
+    logTask('🏃 ', 'Starting the documentation site generation task');
     if (options.rootPath !== '') {
       logTask('🏃 ', `Building files with a root path of ${options.rootPath}`);
     }
