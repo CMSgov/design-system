@@ -6,18 +6,18 @@ Documentation for the design system's components are automatically generated fro
   - [The docs folder structure](#the-docs-folder-structure)
   - [The src folder structure](#the-src-folder-structure)
 - [Component documentation page formatting](#component-documentation-page-formatting)
-  - [Heading (required)](#heading--required-)
+  - [Heading (required)](heading-required)
   - [Description](#description)
-  - [@Flags](#-flags)
+  - [@Flags](#flags)
   - [Modifiers](#modifiers)
   - [Markup](#markup)
   - [Style guide](#style-guide)
-  - [Documentation and guidance](#documentation-and-guidance)
+  - [Guidance](#guidance)
 - [Sample component documentation page](#sample-component-documentation-page)
 - [Documenting React components](#documenting-react-components)
   - [Description](#description-1)
   - [PropTypes](#proptypes)
-- [General content pages](#general-content-pages)
+- [General content page](#general-content-page)
   - [Front-matter](#front-matter)
   - [Page content](#page-content)
 
@@ -71,7 +71,7 @@ child design system root
           └── index.scss              The main SCSS file for a child design system
 ```
 
-## Component documentation page formatting
+# Component documentation page formatting
 
 [KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written.
 Please use the following format when writing component documentation.
@@ -138,7 +138,7 @@ The docs site supports a maximum of 2 levels of nesting. Pages nested a 3rd leve
 
 Pages generated from KSS comment blocks are ordered alphabetically, and page sections are displayed in the order in which they are in the SCSS file.
 
-### Documentation and guidance
+### Guidance
 
 To add a guidance section to the page the `style guide:` `[Page section slug]` should be `guidance`.
 For example: `Style guide: components.button.guidance`
@@ -186,7 +186,7 @@ Style guide: components.component-name.guidance
 */
 ```
 
-## Sample component documentation page
+# Sample component documentation page
 
 The example below is a documentation page with a URL path of `/components/buttons`.
 
@@ -237,7 +237,7 @@ Style guide: components.component-name-goes-here.guidance
 
 </details>
 
-## Documenting React components
+# Documenting React components
 
 Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
 
@@ -275,7 +275,7 @@ Button.propTypes = {
 
 For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
 
-## General content pages
+# General content page
 
 There might be cases where you need to create general content pages that do not contain an code examples. In these cases, create a markdown file in the `docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
