@@ -1,11 +1,10 @@
 /* eslint-disable filenames/match-exported */
 const path = require('path');
 const webpack = require('webpack');
-const getDocsDistPath = require('../../common/getDocsDistPath');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 
 module.exports = async function createWebpackConfig(sourceDir, docsDir, options) {
-  const distPath = getDocsDistPath(docsDir, options.rootPath);
+  const distPath = path.resolve(docsDir, 'dist');
   const docs = await getDocsDirs(docsDir);
 
   // Entry and include paths are set to `design-system` and `design-system-docs`
