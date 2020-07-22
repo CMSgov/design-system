@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { VerticalNav } from '@cmsgov/design-system';
+import path from 'path';
 
 /**
  * By default all the menus are collapsed, but we want to expand the menu
@@ -30,11 +31,27 @@ function isParentOfSelectedChild(items, selectedId) {
   return false;
 }
 
+function updateItemsWithRootPath(items) {
+  if (process.env.rootPath !== '' && items && items.length > 0) {
+    items.forEach((item) => {
+      if (item && item.url) {
+        item.url = path.join('/', process.env.rootPath, item.url);
+      }
+      if (item && item.items) {
+        item.items = updateItemsWithRootPath(item.items);
+      }
+    });
+  }
+  return items;
+}
+
 const Nav = (props) => {
+  const items = updateItemsWithRootPath(props.items);
+
   return (
     <VerticalNav
       className="c-nav__list"
-      items={expandSelectedItems(props.items, props.selectedId)}
+      items={expandSelectedItems(items, props.selectedId)}
       selectedId={props.selectedId ? props.selectedId : undefined}
     />
   );

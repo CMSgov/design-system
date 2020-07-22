@@ -58,10 +58,6 @@ function processMarkdownPage(filePath, body, options) {
     }
 
     reference = referenceURI.replace('/', '.');
-
-    if (options.rootPath) {
-      referenceURI = path.join(options.rootPath, referenceURI);
-    }
   }
 
   const header = parts.attributes.title || 'Untitled';

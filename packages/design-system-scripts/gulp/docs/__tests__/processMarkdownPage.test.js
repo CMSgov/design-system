@@ -56,12 +56,6 @@ hide-example: true
       });
     });
 
-    it('prepends rootPath', () => {
-      return processMarkdownPage(filePath, markdown, { rootPath: '1.0' }).then((output) => {
-        expect(output.referenceURI).toBe('1.0/boom-bap');
-      });
-    });
-
     it('sets reference property', () => {
       return processMarkdownPage(filePath, markdown, { rootPath: '1.0' }).then((output) => {
         expect(output.reference).toBe('boom-bap');

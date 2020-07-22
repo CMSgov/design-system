@@ -37,8 +37,12 @@ class Header extends React.PureComponent {
           <div className="ds-c-alert ds-c-alert--warn  ds-c-alert--hide-icon ds-u-border--0 ">
             <div className="ds-c-alert__body">
               <p className="ds-c-alert__text">
-                <strong>CMS Design System v2 has been released!</strong>
-                &nbsp; See our <a href="/startup/migrating-v2/">migration guide</a>.
+                <strong>CMS Design System v2 is in beta!</strong>
+                &nbsp; See our{' '}
+                <a href={path.join('/', process.env.rootPath, 'startup/migrating-v2/')}>
+                  migration guide
+                </a>
+                .
               </p>
             </div>
           </div>
