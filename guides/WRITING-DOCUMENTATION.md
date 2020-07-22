@@ -70,36 +70,25 @@ Style guide: [Reference]
 */
 ```
 
-### Heading (required)
+- Heading (required)
 
-The heading is used for the title of a generated page or the heading if this is a subsection of a page.
+  - The heading is used for the title of a generated page or the heading if this is a subsection of a page. **note:** If you want to create a subsection without a heading, add `---` after the opening `/*`.
 
-**note:** If you want to create a subsection without a heading, add `---` after the opening `/*`.
+- Description
 
-### Description
+  - The description should describe what pattern does or should be used for in plain language.
 
-The description should describe what pattern does or should be used for in plain language.
+- @Flags
+  - To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
-### @Flags
-
-To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
-
-Supported flags:
-
-- **`@hide-markup`** Hides the code snippet.
-- **`@react-props [NAME]`** Displays the React prop documentation for a component.
-
-  - **Example**: `@react-props Button.jsx`
-  - `[NAME]` is the filename of the react component where the `Proptypes` are defined.
-
-- **`@react-example [NAME]`** Displays the example file using this React component.
-
-  - **Example**: `@react-props Mask` displays `Mask.example.jsx`
-  - `[NAME]` is the filename of the react example to be displayed
-
-- **`@responsive`** Renders breakpoint toggles for the markup example.
-- **`@status [NAME]`** Displays a status badge. Supported values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.
-- **`@uswds [URL]`** Marks the component as a US Web Design System component. Enter the URL so the documentation can link to the corresponding USWDS page.
+| flag name                   | example                                                      | flag description                                                                                                                        |
+| --------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **`@hide-markup`**          | `@hide markup`                                               | Hides the code snippet.                                                                                                                 |
+| **`@react-props [NAME]`**   | `@react-props Button.jsx`                                    | Displays the React prop documentation for a component. `[NAME]` is the filename of the react component where the Proptypes are defined. |
+| **`@react-example [NAME]`** | `@react-example Button.example.jsx`                          | Displays the example file using this React component. `[NAME]` is the filename of the react example to be displayed.                    |
+| **`@responsive`**           | `@responsive`                                                | Renders breakpoint toggles for the markup example.                                                                                      |
+| **`@status [NAME]`**        | `@status Draft`                                              | Displays a status badge. `[NAME]` must be one of the following values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.              |
+| **`@uswds [URL]`**          | `@uswds https://designsystem.digital.gov/components/button/` | `[URL]` is the link to the corresponding US Web Design System component.                                                                |
 
 ### Modifiers
 
@@ -107,7 +96,7 @@ If the item you are documenting has multiple states or styles depending on added
 
 ### Markup
 
-Markup examples can be written in plain HTML inline or in a separate `.html` file, relative to the CSS file:
+Markup examples shold be written in plain HTML in a separate `.html` file, relative to the SCSS file:
 
 ```
 Markup: Button.example.html
