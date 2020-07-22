@@ -10,7 +10,6 @@
     "start": "yarn cmsds start",
     "build": "yarn cmsds build-docs",
     "release": "./prepublish.sh && yarn lerna publish from-git",
-    "publish": "gh-pages -d './packages/design-system-docs/dist'",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
     "test:unit": "yarn cmsds test ./packages",
@@ -21,7 +20,6 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "gh-pages": "^3.1.0",
     "husky": "^4.2.3",
     "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
