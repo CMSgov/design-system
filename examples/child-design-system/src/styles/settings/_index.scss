@@ -1,3 +1,15 @@
+/**
+ *  `settings` contains variables, mixins, functions
+ *  and other declarations that don't output CSS (font declarations are an exception)
+ *
+ *  This file is imported by many different SCSS files including
+ *  components/utilities SCSS files and the main SCSS `index.scss` entry point
+ */
+ 
+// Core CMSDS settings
+@import '@cmsgov/design-system/dist/scss/settings/index';
+
+// Overriden settings
 @import 'variables/index';
 
 // Custom font-faces

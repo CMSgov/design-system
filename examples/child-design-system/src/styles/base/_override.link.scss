@@ -1,27 +1,16 @@
+// Custom link styling
 %link {
   color: $color-green;
-  cursor: pointer;
-  text-decoration: underline;
 
   &:visited {
-    color: $color-visited;
+    color: $color-green-darker;
   }
 
   &:hover {
-    color: $color-primary-darker;
-  }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-text;
-    }
-  } @else {
-    color: $color-primary-darker;
+    color: $color-green-dark;
   }
 
   &:active {
-    color: $color-primary-darkest;
-    outline: 0 none;
+    color: $color-green-darkest;
   }
 }

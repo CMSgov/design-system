@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * Wrapper component for adding an additional variation to the core Button
+ */
 export const Button = (props) => {
   if (props.variation === 'custom') {
     props.variation = 'primary';
@@ -12,6 +15,9 @@ export const Button = (props) => {
   return <CoreButton {...props} />;
 };
 
+/**
+ * Button prop documentation with the additional "custom" variation
+ */
 Button.defaultProps = {};
 Button.propTypes = {
   /**

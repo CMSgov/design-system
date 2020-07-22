@@ -3,9 +3,8 @@
  * It should contain all exported JS from the core CMS design system
  * and all additional child design system code.
  *
- * The CMSDS build scripts rely on this entry file's location (`src/components/index.js`) to generate
- * CommonJS (`dist/components/`)  and ES module (`dist/esnext/`) versions of components.
- * ES modules code is necessary for webpack tree shaking bundle optimizations
+ * The CMSDS build scripts rely on this entry file's location (`src/components/index.js`) to transpile JS.
+ * Modify `babel.config.js` to configure the build files.
  */
 
 export * from '@cmsgov/design-system';
@@ -14,4 +13,4 @@ export * from '@cmsgov/design-system';
 export { Button } from './Button/Button';
 
 // New child design system component
-export { NewBadge } from './NewBadge/NewBadge';
+export { Card } from './Card/Card';

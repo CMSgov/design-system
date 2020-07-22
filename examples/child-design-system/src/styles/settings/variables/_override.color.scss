@@ -1,3 +1,15 @@
-$color-primary: #b35600;
+// New color variables
+$black: #5b616b;
 
-$color-background-inverse: $color-primary-darkest;
+$color-custom: $black;
+$color-custom-dark: darken($black, 10%);
+$color-custom-darker: darken($black, 20%);
+$color-custom-darkest: darken($black, 30%);
+$color-custom-light: lighten($black, 10%);
+$color-custom-lighter: lighten($black, 20%);
+$color-custom-lightest: lighten($black, 30%);
+
+// Overridden color variables
+$color-primary: $color-green;
+$color-primary-darker: $color-green-darker;
+$color-primary-darkest: $color-green-darkest;
