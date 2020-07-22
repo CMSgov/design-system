@@ -4,20 +4,23 @@
  * and include all additional styles.
  *
  * The CMSDS build scripts rely on this file's location (`src/styles/index.scss`) to generate
- * a scss (`dist/scss/`) and css (`dist/css/`) dist files.
+ * scss (`dist/scss/`) and css (`dist/css/`) dist files.
  */
 
 // Variables, mixins, and CMSDS overrides
 @import 'settings/index';
 
-// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
-@import 'base/index';
-
 // Core CMSDS styles
 @import '@cmsgov/design-system/dist/scss/index';
 
+// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
+@import 'base/index';
+
 // Additional Child DS component styles
 @import 'components/index';
+
+// Additional Child DS utilities
+@import 'utilities/index';
 
 // Anything else!
 body {

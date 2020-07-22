@@ -1,50 +1,53 @@
-// Design system fonts
-// Fonts are separated from other settings scss because font-faces are compiled and included css build files
+/**
+ *  Design system fonts
+ *
+ *  Fonts are separated from other settings scss because font-faces are compiled and included css build files
+ */
 @font-face {
   font-family: Oswald;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Oswald-Regular.ttf');
+  src: url('#{$font-path}/Oswald/Oswald-Regular.ttf');
 }
 
 @font-face {
   font-family: Oswald;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/Oswald-Bold.ttf');
+  src: url('#{$font-path}/Oswald/Oswald-Bold.ttf');
 }
 
 @font-face {
   font-family: Oswald;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Oswald-Regular.ttf');
+  src: url('#{$font-path}/Oswald/Oswald-Regular.ttf');
 }
 
 @font-face {
   font-family: Raleway;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Raleway-Regular.ttf');
+  src: url('#{$font-path}/Raleway/Raleway-Regular.ttf');
 }
 
 @font-face {
   font-family: Raleway;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Raleway-Italic.ttf');
+  src: url('#{$font-path}/Raleway/Raleway-Italic.ttf');
 }
 
 @font-face {
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/Raleway-SemiBold.ttf');
+  src: url('#{$font-path}/Raleway/Raleway-SemiBold.ttf');
 }
 
 @font-face {
   font-family: Raleway;
   font-style: normal;
   font-weight: 700;
-  src: url('#{$font-path}/Raleway-Bold.ttf');
+  src: url('#{$font-path}/Raleway/Raleway-Bold.ttf');
 }
