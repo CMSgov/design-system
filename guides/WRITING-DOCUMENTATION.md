@@ -11,8 +11,8 @@ For a component named "Foo", you would have the following:
 ```
 └── components
     └── Foo                     A directory holding all relevant code
-        ├── Foo.docs.scss       Component documentation wirtten in KSS
-        └── Foo.example.jsx     React component used to render an example
+        ├── Foo.docs.scss       Component documentation written in KSS
+        ├── Foo.example.jsx     React component used to render an example
         └── Foo.example.html    HTML example
 ```
 
