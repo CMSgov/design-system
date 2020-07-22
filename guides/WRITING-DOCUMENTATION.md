@@ -2,18 +2,50 @@
 
 Documentation for the design system's components are automatically generated from their CSS and JS comments. In order for this to work, you need to follow some conventions set by the tools we use to generate the documentation: [KSS](https://github.com/kss-node/kss-node) and [react-docgen](https://github.com/reactjs/react-docgen).
 
-## File naming
+## directory structure
 
-Name and structure components as follows in order for docs generation to work as expected.
+child design system root
+├── docs The directory path where documentation content and example code are located
+└── src The directory path where component code, stles, fonts, and images are located
+
+### The docs folder structure
+
+The directory path where documentation content and example code are located
+
+**Note:** Name and structure components as follows in order for the documentation site generation to work as expected.
 
 For a component named "Foo", you would have the following:
 
 ```
-└── components
-    └── Foo                     A directory holding all relevant code
-        ├── Foo.docs.scss       Component documentation wirtten in KSS
-        └── Foo.example.jsx     React component used to render an example
-        └── Foo.example.html    HTML example
+child design system root
+  └── docs
+      └── src
+          └── pages
+              └── components
+                  └── Foo                     Directory for component documentation content and code examples
+                      ├── Foo.docs.scss       Component documentation wirtten in KSS
+                      ├── Foo.example.jsx     React component example
+                      └── Foo.example.html    HTML example
+```
+
+### The src folder structure
+
+```
+child design system root
+  └── src
+      ├── components
+      │   └── Foo                     Directory for documentation content and example code
+      │       ├── Foo.jsx             React component
+      │       └── Foo.test.jsx        React component tests
+      ├── fonts                       Directory for custom fonts
+      ├── images                      Directory for custom images
+      └── styles
+          ├── base                    Directory for base styling for HTML elements
+          │  └── _Foo.scss            Component SCSS
+          ├── components              Directory for component styles and overrides
+          ├── settings                Directory for system settings and orverrides
+          ├── utilities               Directory for system utilities and overrides
+          └── index.scss              The main SCSS file for a child design system
 ```
 
 ## CSS components
