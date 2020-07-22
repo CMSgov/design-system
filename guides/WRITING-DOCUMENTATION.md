@@ -150,6 +150,9 @@ For example, `/components/button`
 
 Documentation and guidance should be placed at the end of the SCSS file and conform to the following format and sections:
 
+<details>
+<summary><b>View guidance section example</b></summary>
+
 ```scss
 /*
 ---
@@ -186,12 +189,14 @@ Style guide: components.component-name.guidance
 */
 ```
 
+</details>
+
 # Sample component documentation page
 
 The example below is a documentation page with a URL path of `/components/buttons`.
 
 <details>
-<summary>View sample page</summary>
+<summary><b>View sample page</b></summary>
 
 ```scss
 /*
