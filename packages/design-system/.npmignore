@@ -1,7 +1,0 @@
-**/__tests__/
-**/__snapshots__/
-**/helpers/
-**/*.test.js
-**/*.test.jsx
-yarn.lock
-.stylelintrc.js

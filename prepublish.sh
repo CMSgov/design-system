@@ -20,7 +20,7 @@ yarn test
 yarn test:e2e --skipBuild
 
 echo "${GREEN}Bumping version and creating tagged release commit...${NC}"
-yarn lerna version --no-push --force-publish
+yarn lerna version --no-push --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"
 PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
