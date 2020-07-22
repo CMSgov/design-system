@@ -7,7 +7,7 @@ Use the padding utility to change an element's padding.
 
 **Responsive format**: `.ds-u-[breakpoint]-padding-[x|y|bottom|left|right|top]--[0-7]`
 
-[Read more about how the design system approaches spacing here.](/layout/spacing)
+[Read more about how the design system approaches spacing here.]({{root}}/layout/spacing)
 
 @hide-markup
 
@@ -21,7 +21,7 @@ Responsive padding
 
 @responsive
 
-Use a [breakpoint prefix](/guidelines/responsive) to change the padding at specific breakpoints.
+Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change the padding at specific breakpoints.
 
 Markup: padding-responsive.example.html
 

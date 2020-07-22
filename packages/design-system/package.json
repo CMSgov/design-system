@@ -9,7 +9,7 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "main": "dist/components/index.js",
-  "module": "dist/esnext/index.mjs",
+  "module": "dist/esnext/index.esm.js",
   "sideEffects": false,
   "dependencies": {
     "classnames": "^2.2.5",

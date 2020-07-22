@@ -18,7 +18,6 @@ const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generateExamplePage = require('./generateExamplePage');
 let generateDocPage;
-const getDocsDistPath = require('../../common/getDocsDistPath');
 const kss = require('kss');
 const nestSections = require('./nestSections');
 const path = require('path');
@@ -179,7 +178,7 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
 module.exports = async function generatePages(sourceDir, docsDir, options, changedPath) {
   logTask('📝 ', 'Generating documentation pages');
 
-  const docsPath = getDocsDistPath(docsDir, options.rootPath);
+  const docsPath = path.join(docsDir, 'dist');
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
