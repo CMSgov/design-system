@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
@@ -17,15 +16,7 @@ function debounce(fn, ms) {
   };
 }
 
-export const Table = ({
-  className,
-  stackBreakpoint,
-  striped,
-  scrollable,
-  scrollableNotice,
-  children,
-  ...others
-}) => {
+export const Table = ({ className, stackBreakpoint, striped, scrollable, children, ...others }) => {
   const container = useRef(null);
   // The captionID is stored as init value of a ref.
   const captionID = useRef(uniqueId('caption-'));
@@ -70,8 +61,10 @@ export const Table = ({
   // Do this by using table's <caption> to label the scrollable region using aira-labelleby
   const attributeScrollable = scrollable && {
     className: 'ds-c-table__wrapper',
-    role: 'status',
+    role: 'region',
     'aria-labelledby': captionID.current,
+    'aria-live': 'polite',
+    'aria-relevant': 'additions',
     tabIndex: isTableScrollable ? '0' : null,
   };
 
@@ -84,10 +77,10 @@ export const Table = ({
       // Extend props on TableCaption before rendering.
       if (scrollable && isTableCaptionComponent(child)) {
         return React.cloneElement(child, {
-          id: captionId,
+          _id: captionId,
+          _scrollActive: isTableScrollable,
         });
       }
-
       return child;
     });
   };
@@ -95,25 +88,14 @@ export const Table = ({
   const isStackable = !!stackBreakpoint;
 
   return (
-    <>
-      {isTableScrollable && scrollableNotice}
-      <div ref={container} {...attributeScrollable}>
-        <TableContext.Provider value={isStackable}>
-          <table className={classes} role="table" {...others}>
-            {renderChildren(captionID.current)}
-          </table>
-        </TableContext.Provider>
-      </div>
-    </>
+    <div ref={container} {...attributeScrollable}>
+      <TableContext.Provider value={isStackable}>
+        <table className={classes} role="table" {...others}>
+          {renderChildren(captionID.current)}
+        </table>
+      </TableContext.Provider>
+    </div>
   );
-};
-
-Table.defaultProps = {
-  scrollableNotice: (
-    <Alert className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal">
-      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
-    </Alert>
-  ),
 };
 
 Table.propTypes = {
@@ -128,7 +110,7 @@ Table.propTypes = {
   /**
    * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
    * When `stackBreakpoint` is set, `id` prop is required in `TableHeaderCell` and
-   * `headers` prop is required in `TableDataCell`.
+   * `headers` prop is required in `TableDataCell` or `TableHeaderCell` for rows with a header column.
    */
   stackBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
@@ -136,14 +118,9 @@ Table.propTypes = {
    */
   striped: PropTypes.bool,
   /**
-   * Applies a horizontal scrollbar and scrollable notice when the `Table`'s contents exceed the container width.
+   * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable: PropTypes.bool,
-  /**
-   * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
-   * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
-   */
-  scrollableNotice: PropTypes.node,
 };
 
 export default Table;

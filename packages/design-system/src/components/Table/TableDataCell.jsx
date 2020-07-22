@@ -15,7 +15,7 @@ export const TableDataCell = ({
   if (process.env.NODE_ENV !== 'production') {
     if (tableStackableContext && !headers) {
       console.warn(
-        `The headers prop in TableDataCell is required for stackable tables. This prop is needed to associate the headings with data cells in the responsive stacked view.`
+        'The headers prop in `TableDataCell` is required for stackable tables. This prop is needed to associate the headings with data cells in the responsive stacked view.'
       );
     }
   }
@@ -46,10 +46,10 @@ TableDataCell.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Table Data cells must have a `headers` attribute for stackable table.
-   * The `headers` attribute must link to a Table Header cell’s `id`.
-   * If there is more than one `id`, they are separated by spaces.
-   * For screen readers to create association between the header and data cells.
+   * `TableDataCell` must define a `headers` prop for stackable tables.
+   * The `headers` prop is needed to associate header and data cells for screen readers.
+   * `headers` consist of a list of space-separated ids that each correspond to a TableHeaderCell element.
+   * [Read more on the headers attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#Attributes).
    */
   headers: PropTypes.string,
   /**

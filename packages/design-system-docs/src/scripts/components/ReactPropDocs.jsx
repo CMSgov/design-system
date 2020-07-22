@@ -28,11 +28,8 @@ class ReactPropDocs extends React.PureComponent {
 
   render() {
     return [
-      <h3 key="propDocsHeader">Props</h3>,
       <Table key="propDocsTable" stackBreakpoint="sm" scrollable>
-        <TableCaption className="ds-u-visibility--screen-reader">
-          React Properties Documentation
-        </TableCaption>
+        <TableCaption className="ds-u-padding-y--2 ds-u-font-size--h3">Props</TableCaption>
         <TableHead>
           <TableRow>
             <TableHeaderCell id="columnname" scope="col">
