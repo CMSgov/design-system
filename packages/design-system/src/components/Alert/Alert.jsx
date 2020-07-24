@@ -79,7 +79,7 @@ Alert.propTypes = {
   /**
    * ARIA `role`, defaults to 'region'
    */
-  role: PropTypes.oneOf(['alert', 'alertdialog', 'region']),
+  role: PropTypes.oneOf(['alert', 'alertdialog', 'region', 'status']),
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
