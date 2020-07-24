@@ -22,6 +22,9 @@ ReactDOM.render(
           Description
         </TableHeaderCell>
         <TableHeaderCell id={'column' + 3} scope="col">
+          Links
+        </TableHeaderCell>
+        <TableHeaderCell id={'column' + 4} scope="col">
           Year
         </TableHeaderCell>
       </TableRow>
@@ -35,7 +38,12 @@ ReactDOM.render(
           Statement adopted by the Continental Congress declaring independence from the British
           Empire.
         </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 3}>
+        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
+          <em>
+            <a href="# ">https://www.archives.gov/founding-docs/declaration</a>
+          </em>
+        </TableDataCell>
+        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
           1776
         </TableDataCell>
       </TableRow>
@@ -46,7 +54,12 @@ ReactDOM.render(
         <TableDataCell scope="row" stackedTitle="Description" headers={'column' + 2}>
           The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
         </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 3}>
+        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
+          <em>
+            <a href="# ">https://www.archives.gov/founding-docs/bill-of-rights</a>
+          </em>
+        </TableDataCell>
+        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
           1791
         </TableDataCell>
       </TableRow>

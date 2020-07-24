@@ -19,6 +19,11 @@ export const TableHeaderCell = ({
         'The id prop in `TableHeaderCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
       );
     }
+    if (tableStackableContext && scope === 'row' && !stackedTitle) {
+      console.warn(
+        'The stackedTitle prop in `TableDataCell` is required for stackable tables. This prop is displayed for the data cell in the responsive stacked view.'
+      );
+    }
   }
 
   const classes = classNames('ds-c-table__header', className);

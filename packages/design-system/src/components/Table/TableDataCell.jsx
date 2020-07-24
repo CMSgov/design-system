@@ -18,6 +18,11 @@ export const TableDataCell = ({
         'The headers prop in `TableDataCell` is required for stackable tables. This prop is needed to associate the headings with data cells in the responsive stacked view.'
       );
     }
+    if (tableStackableContext && !stackedTitle) {
+      console.warn(
+        'The stackedTitle prop in `TableDataCell` is required for stackable tables. This prop is displayed for the data cell in the responsive stacked view.'
+      );
+    }
   }
   const classes = classNames('ds-c-table__cell', className);
   const stackedClasses = classNames(

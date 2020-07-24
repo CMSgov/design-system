@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
@@ -16,7 +17,27 @@ function debounce(fn, ms) {
   };
 }
 
-export const Table = ({ className, stackBreakpoint, striped, scrollable, children, ...others }) => {
+export const Table = ({
+  className,
+  stackBreakpoint,
+  striped,
+  scrollable,
+  scrollableNotice,
+  children,
+  ...others
+}) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      scrollable &&
+      Array.isArray(children) &&
+      !children.some((child) => child.type === TableCaption)
+    ) {
+      console.warn(
+        'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
+      );
+    }
+  }
+
   const container = useRef(null);
   // The captionID is stored as init value of a ref.
   const captionID = useRef(uniqueId('caption-'));
@@ -58,7 +79,7 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
   // Make table container focusable and display scroll notice when table width exceeds viewport.
   // Set attribute `tabIndex = 0` makes table container focusable enables keyboard support of using the arrow keys.
   // Also, it provides context for screen reader users as they are able to focus on the region.
-  // Do this by using table's <caption> to label the scrollable region using aira-labelleby
+  // Do this by using table's <caption> to label the scrollable region using aria-labelleby
   const attributeScrollable = scrollable && {
     className: 'ds-c-table__wrapper',
     role: 'region',
@@ -79,6 +100,7 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
         return React.cloneElement(child, {
           _id: captionId,
           _scrollActive: isTableScrollable,
+          _scrollableNotice: scrollableNotice,
         });
       }
       return child;
@@ -96,6 +118,17 @@ export const Table = ({ className, stackBreakpoint, striped, scrollable, childre
       </TableContext.Provider>
     </div>
   );
+};
+
+Table.defaultProps = {
+  scrollableNotice: (
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      role="status"
+    >
+      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
+    </Alert>
+  ),
 };
 
 Table.propTypes = {
@@ -121,6 +154,11 @@ Table.propTypes = {
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable: PropTypes.bool,
+  /**
+   * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
+   * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
+   */
+  scrollableNotice: PropTypes.node,
 };
 
 export default Table;
