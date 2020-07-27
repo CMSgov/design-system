@@ -8,12 +8,6 @@ Documentation for the design system's components are automatically generated fro
 
 # Folder structure
 
-```
-child design system root
-├── `docs`    Folder where documentation and code examples are located
-└── `src`     Folder where component code, styles, fonts, and images are located
-```
-
 ### The docs folder structure
 
 **Note:** Name and structure components as follows in order for the documentation site generation to work as expected.
@@ -21,39 +15,18 @@ child design system root
 For a component named "Foo", you would have the following:
 
 ```
-child design system root
-  └── docs
-      └── src
-          └── pages
-              └── components
-                  └── Foo                     Folder for component documentation content and code examples
-                      ├── Foo.docs.scss       Component documentation wirtten in KSS
-                      ├── Foo.example.jsx     React component example
-                      └── Foo.example.html    HTML example
-```
-
-### The src folder structure
-
-**Note:** Name and structure components as follows in order for the documentation site generation to work as expected.
-
-For a component named "Foo", you would have the following:
-
-```
-child design system root
-  └── src
-      ├── components
-      │   └── Foo                     Folder for documentation content and example code
-      │       ├── Foo.jsx             React component
-      │       └── Foo.test.jsx        React component tests
-      ├── fonts                       Folder for custom fonts
-      ├── images                      Folder for custom images
-      └── styles
-          ├── base                    Folder for base styling for HTML elements
-          ├── components              Folder for component styles and overrides
-          │   └── _Foo.scss           Component SCSS
-          ├── settings                Folder for system settings and orverrides
-          ├── utilities               Folder for system utilities and overrides
-          └── index.scss              The main SCSS file for a child design system
+docs/src
+└── pages
+    ├── components
+    |   └── Foo                     // Folder for component documentation content and code examples
+    |       ├── Foo.docs.scss       // Component documentation wirtten in KSS
+    |       ├── Foo.example.jsx     // React component example
+    |       └── Foo.example.html    // HTML example
+    ├── guidelines      // Folder for documentation guideline pages
+    ├── patterns        // Folder for pattern documentation and example files
+    ├── startup         // Folder for documentation statup pages
+    ├── styles          // Folder for styles for the documentation site
+    └── utilities       // Folder for Utility documentation and example files
 ```
 
 # Writing component documentation
