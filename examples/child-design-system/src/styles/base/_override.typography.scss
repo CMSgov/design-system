@@ -1,3 +1,10 @@
-.ds-title {
-  font-weight: $font-bold;
+.ds-display,
+.ds-title,
+.ds-h1,
+.ds-h2,
+.ds-h3,
+.ds-h4,
+.ds-h5,
+.ds-h6 {
+  font-family: $font-serif;
 }

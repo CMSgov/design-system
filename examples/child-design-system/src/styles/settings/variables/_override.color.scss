@@ -9,6 +9,10 @@ $color-custom-light: lighten($black, 10%);
 $color-custom-lighter: lighten($black, 20%);
 $color-custom-lightest: lighten($black, 30%);
 
+$color-green: #2e8540;
+$color-green-darker: #266e35;
+$color-green-darkest: #174320;
+
 // Overridden color variables
 $color-primary: $color-green;
 $color-primary-darker: $color-green-darker;
