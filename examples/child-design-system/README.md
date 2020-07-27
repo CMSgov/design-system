@@ -35,17 +35,17 @@ Design system source like (`tsx` files, tests) and doc site files (example files
 ```
 └── src
     ├── components/            // Child ds component folders and files
-    │   └── button
-    |   |   └── Button.jsx
+    │   ├── button
+    |   |   ├── Button.jsx
     |   |   └── Button.test.jsx
     │   └── index.js
     ├── fonts/                 // Includes fonts from the core and child ds
     ├── images/                // Includes images from both the core and child ds
     ├── types/                 // Typescript definition files
     └── styles/
-        └── components         // Styles for components
+        ├── components         // Styles for components
         |   └── Button.scss
-        └── settings           // Global styles like color, spacing, or font overrides
+        ├── settings           // Global styles like color, spacing, or font overrides
         └── index.scss
 ```
 
@@ -56,15 +56,15 @@ Design system source like (`tsx` files, tests) and doc site files (example files
 └── src
     ├── fonts/      // Includes fonts from the core and child ds
     ├── images/     // Includes images from both the core and child ds
-    ├── pages/
-        └── components      // Component documentation and example files
-        |   └── Button.docs.scss                // Documentation for the button component
-        |   └── Button.example.html             // HTML example of the button component
+    └── pages/
+        ├── components      // Component documentation and example files
+        |   ├── Button.docs.scss                // Documentation for the button component
+        |   ├── Button.example.html             // HTML example of the button component
         |   └── Button.example.jsx              // React example of the button component
-        └── guidelines      // Documentation guideline pages
-        └── patterns        // Pattern documentation and example files
-        └── startup         // Documentation statup pages
-        └── styles          // Styles for the documentation site
+        ├── guidelines      // Documentation guideline pages
+        ├── patterns        // Pattern documentation and example files
+        ├── startup         // Documentation statup pages
+        ├── styles          // Styles for the documentation site
         └── utilities       // Utility documentation and example files
 ```
 
