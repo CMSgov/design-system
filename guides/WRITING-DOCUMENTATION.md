@@ -2,31 +2,16 @@
 
 Documentation for the design system's components are automatically generated from their CSS and JS comments. In order for this to work, you need to follow some conventions set by the tools we use to generate the documentation: [KSS](https://github.com/kss-node/kss-node) and [react-docgen](https://github.com/reactjs/react-docgen).
 
-- [Directory structure](#directory-structure)
-  - [The docs folder structure](#the-docs-folder-structure)
-  - [The src folder structure](#the-src-folder-structure)
-- [Component documentation page formatting](#component-documentation-page-formatting)
-  - [Heading (required)](heading-required)
-  - [Description](#description)
-  - [@Flags](#flags)
-  - [Modifiers](#modifiers)
-  - [Markup](#markup)
-  - [Style guide](#style-guide)
-  - [Guidance](#guidance)
-- [Sample component documentation page](#sample-component-documentation-page)
-- [Documenting React components](#documenting-react-components)
-  - [Description](#description-1)
-  - [PropTypes](#proptypes)
-- [General content page](#general-content-page)
-  - [Front-matter](#front-matter)
-  - [Page content](#page-content)
+- [Folder structure](#folder-structure)
+- [Writing component documentation](#writing-component-documentation)
+- [Writing general documentaion](#writing-general-documentation)
 
-## Directory structure
+# Folder structure
 
 ```
 child design system root
-├── `docs`    Directory where documentation and code examples are located
-└── `src`     Directory where component code, styles, fonts, and images are located
+├── `docs`    Folder where documentation and code examples are located
+└── `src`     Folder where component code, styles, fonts, and images are located
 ```
 
 ### The docs folder structure
@@ -41,7 +26,7 @@ child design system root
       └── src
           └── pages
               └── components
-                  └── Foo                     Directory for component documentation content and code examples
+                  └── Foo                     Folder for component documentation content and code examples
                       ├── Foo.docs.scss       Component documentation wirtten in KSS
                       ├── Foo.example.jsx     React component example
                       └── Foo.example.html    HTML example
@@ -57,21 +42,21 @@ For a component named "Foo", you would have the following:
 child design system root
   └── src
       ├── components
-      │   └── Foo                     Directory for documentation content and example code
+      │   └── Foo                     Folder for documentation content and example code
       │       ├── Foo.jsx             React component
       │       └── Foo.test.jsx        React component tests
-      ├── fonts                       Directory for custom fonts
-      ├── images                      Directory for custom images
+      ├── fonts                       Folder for custom fonts
+      ├── images                      Folder for custom images
       └── styles
-          ├── base                    Directory for base styling for HTML elements
-          ├── components              Directory for component styles and overrides
+          ├── base                    Folder for base styling for HTML elements
+          ├── components              Folder for component styles and overrides
           │   └── _Foo.scss           Component SCSS
-          ├── settings                Directory for system settings and orverrides
-          ├── utilities               Directory for system utilities and overrides
+          ├── settings                Folder for system settings and orverrides
+          ├── utilities               Folder for system utilities and overrides
           └── index.scss              The main SCSS file for a child design system
 ```
 
-# Component documentation page formatting
+# Writing component documentation
 
 [KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written.
 Please use the following format when writing component documentation.
@@ -93,6 +78,8 @@ Style guide: [Reference]
 [Documentation and guidance content]
 */
 ```
+
+## Page sections
 
 ### Heading (required)
 
@@ -191,7 +178,7 @@ Style guide: components.component-name.guidance
 
 </details>
 
-# Sample component documentation page
+## Example
 
 The example below is a documentation page with a URL path of `/components/buttons`.
 
@@ -242,7 +229,7 @@ Style guide: components.component-name-goes-here.guidance
 
 </details>
 
-# Documenting React components
+## Documenting React components
 
 Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
 
@@ -280,9 +267,9 @@ Button.propTypes = {
 
 For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
 
-# General content page
+# Writing general documentation
 
-There might be cases where you need to create general content pages that do not contain an code examples. In these cases, create a markdown file in the `docs/src/pages` directory. Each file in this directory will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create general content pages that do not contain an code examples. In these cases, create a markdown file in the `docs/src/pages` Folder. Each file in this folder will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 
