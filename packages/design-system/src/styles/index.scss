@@ -4,6 +4,8 @@
 
 // Settings: Globally-available variables, mixins, functions and config (Sass code that doesn't output CSS)
 @import 'settings/index';
+// Fonts are unique from other settings because font-faces are compiled and included css build files
+@import 'font';
 
 // Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
 @import 'base/index';
