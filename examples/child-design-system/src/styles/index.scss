@@ -16,13 +16,8 @@
 // Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
 @import 'base/index';
 
-// Additional Child DS component styles
+// Components: Additional Child DS component styles
 @import 'components/index';
 
-// Additional Child DS utilities
+// Utilities: Additional Child DS utilities
 @import 'utilities/index';
-
-// Anything else!
-body {
-  color: #f00;
-}
