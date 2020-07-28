@@ -29,7 +29,7 @@ New usage:
   }
 ```
 
-### Applications using a child design system
+### Child design system packages (formerly site packages)
 
 The `core`, `support`, `layout` npm packages are no longer needed for applications using a child design system. The only dependency needed is the child design system package in your `package.json`.
 
