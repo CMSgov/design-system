@@ -16,5 +16,8 @@ $title-font-size: 48px;
 $display-font-size: 60px;
 
 // Custom fonts
-$font-sans: 'Raleway', Helvetica, sans-serif;
-$font-serif: 'Oswald', Georgia, serif;
+$font-raleway: 'Raleway', Helvetica, sans-serif;
+$font-lato: 'Lato', Georgia, serif;
+
+$font-sans: $font-lato;
+$font-serif: $font-raleway;

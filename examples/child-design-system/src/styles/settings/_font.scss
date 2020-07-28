@@ -4,24 +4,24 @@
  *  Fonts are separated from other settings scss because font-faces are compiled and included css build files
  */
 @font-face {
-  font-family: Oswald;
+  font-family: Lato;
   font-style: normal;
   font-weight: normal;
-  src: url('#{$font-path}/Oswald/Oswald-Regular.ttf');
+  src: url('#{$font-path}/Lato/Lato-Regular.ttf');
 }
 
 @font-face {
-  font-family: Oswald;
+  font-family: Lato;
   font-style: normal;
   font-weight: bold;
-  src: url('#{$font-path}/Oswald/Oswald-Bold.ttf');
+  src: url('#{$font-path}/Lato/Lato-Bold.ttf');
 }
 
 @font-face {
-  font-family: Oswald;
+  font-family: Lato;
   font-style: italic;
   font-weight: normal;
-  src: url('#{$font-path}/Oswald/Oswald-Regular.ttf');
+  src: url('#{$font-path}/Lato/Lato-Italic.ttf');
 }
 
 @font-face {
