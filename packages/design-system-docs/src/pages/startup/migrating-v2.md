@@ -7,6 +7,8 @@ The CMS Design System v2 release introduces several breaking changes, and this m
 
 ## NPM packages
 
+### Child design systems
+
 The `core`, `support`, `layout` npm packages have been deprecated and replaced with a new consolidated package [`@cmsgov/design-system`](https://www.npmjs.com/package/@cmsgov/design-system). This is now the only dependency you need to use the design system and you can simply replace the old packages with `@cmsgov/design-system` in your `package.json`.
 
 Old usage:
@@ -25,6 +27,34 @@ New usage:
 ```
   "dependencies": {
     "@cmsgov/design-system": "^2.0.0",
+    ...
+  }
+```
+
+### Applications using a child design system
+
+The `core`, `support`, `layout` npm packages are no longer needed for applications using a child design system. The only dependency needed is the child design system package in your `package.json`.
+
+The 2 child design system packages are:
+- @cmsgov/ds-healthcare-gov
+- @cmsgov/medicare-site-package
+
+Old usage:
+
+```
+  "dependencies": {
+    "@cmsgov/design-system-core": "3.4.2",
+    "@cmsgov/design-system-layout": "3.4.2",
+    "@cmsgov/design-system-support": "3.4.2",
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
+  }
+```
+
+New usage:
+
+```
+  "dependencies": {
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
     ...
   }
 ```
