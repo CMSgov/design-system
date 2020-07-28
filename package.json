@@ -33,7 +33,6 @@
     "yarn": ">=1.21.1"
   },
   "resolutions": {
-    "gulp-sass/node-sass": ">=4.7.2",
     "kss/nunjucks": ">=3.2.0"
   },
   "lint-staged": {
