@@ -31,7 +31,7 @@ New usage:
 
 ### Child design system packages (formerly site packages)
 
-The `core`, `support`, `layout` npm packages are no longer needed for applications using a child design system. The only dependency needed is the child design system package in your `package.json`.
+The `core`, `support`, `layout` npm packages are no longer needed for applications using a [child design system]({{root}}/startup/child-design-systems/). The only dependency needed is the child design system package in your `package.json`.
 
 The 2 child design system packages are:
 - @cmsgov/ds-healthcare-gov
