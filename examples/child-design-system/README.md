@@ -75,6 +75,16 @@ The `cmsds.config.js` file contains options for configuring the CMSDS scripts. M
 | `githubUrl` | | The URL for your GitHub repository. This replaces the {{github}} template in documentation content. |
 | `npmPackage` | | The name of your design system NPM package. This replaces the {{npm}} template in documentation content. |
 
+### Configuring JS
+
+CMSDS scripts compiles JSX/TSX React files using Babel, which can be fully customized via the `babel.config.js` file. To customize babel presets and plugins, simply editing the config file, and the updated config will be used for building both the design system package and the documentation site.
+
+#### CommonJS and ES Modules
+
+In addition to CommonJS, CMSDS scripts supports ES modules, which are outputted in the `dist/esnext` directory. Child Design Systems are also configured as dual packages to support webpack4's [tree shaking optimizations](https://webpack.js.org/guides/tree-shaking/#clarifying-tree-shaking-and-sideeffects) while maintaining backwards compatibility. See [React component documentation](https://design.cms.gov/startup/components/#named-imports) for more information.
+
+Because CMSDS scripts will automatically compile React components a second time for ES modules, **`babel.config.js` must be configured to compile CommonJS**. Simply ensure that `modules: false` is not set for the `@babel/preset-env` preset.
+
 ### Configuring tests
 
 CMSDS scripts provide scripts to run unit tests and e2e tests with Jest. If you are interested in setting up e2e tests, see the core [CMS Design System](https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/components/Button/Button.e2e.test.js) for examples on how to implement setup and implement e2e tests.
