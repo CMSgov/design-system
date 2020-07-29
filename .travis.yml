@@ -14,7 +14,7 @@ branches:
 cache: yarn
 language: node_js
 node_js:
-  - '11.15.0'
+  - '13.7.0'
 notifications:
   email: false
 sudo: required
