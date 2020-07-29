@@ -1,0 +1,23 @@
+// Custom base font sizes
+$base-font-size: 16px;
+$small-font-size: 12px;
+$lead-font-size: 20px;
+
+// Custom typescale
+$h1-font-size: 36px;
+$h1-mobile-font-size: 30px;
+$h2-font-size: 24px;
+$h3-font-size: 21px;
+$h4-font-size: 18px;
+$h5-font-size: $base-font-size;
+$h6-font-size: $small-font-size;
+
+$title-font-size: 48px;
+$display-font-size: 60px;
+
+// Custom fonts
+$font-raleway: 'Raleway', Helvetica, sans-serif;
+$font-lato: 'Lato', Georgia, serif;
+
+$font-sans: $font-lato;
+$font-serif: $font-raleway;
