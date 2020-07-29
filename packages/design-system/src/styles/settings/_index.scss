@@ -1,5 +1,3 @@
 // This file is imported by many different scss files across the design system
 @import 'variables/index';
 @import 'mixins/index';
-// Fonts are unique from other settings scss because font-faces are compiled and included css build files
-@import 'font';
