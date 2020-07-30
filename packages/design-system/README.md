@@ -48,17 +48,18 @@ The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/
 ```
 └── @cmsgov/design-system/dist
     ├── components/
-    │   └── index.js        Compiled JS (CommmonJS)
+    │   └── index.js        Compiled JS entry point (CommmonJS)
     ├── css/
-    │   └── index.css       Compiled CSS
+    │   └── index.css       Compiled CSS entry point
     ├── esnext/
-    │   └── index.esm.js    Compiled JS (ES Module)
+    │   └── index.esm.js    Compiled JS entry point (ES Module)
     ├── fonts/
     ├── images/
-    └── scss/
-        ├── base/           Base styles, HTML element selectors
-        ├── components/     Component styles
-        ├── settings/       Global variables, mixins, and functions
-        └── utilities/      Utility classes for individual CSS properties
-        └── index.scss      Uncompiled SCSS
+    ├── scss/
+    │   ├── base/           Base styles, HTML element selectors
+    │   ├── components/     Component styles
+    │   ├── settings/       Variables, mixins, and functions
+    │   ├── utilities/      Utility classes for individual CSS properties
+    │   └── index.scss      Precompiled SCSS entry point
+    └── types/              Typescript definition files
 ```
