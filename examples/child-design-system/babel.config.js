@@ -1,7 +1,6 @@
-module.exports = function (api) {
-  api.cache(true);
-
-  const presets = [
+module.exports = {
+  presets: [
+    '@babel/preset-react',
     [
       '@babel/preset-env',
       {
@@ -11,13 +10,9 @@ module.exports = function (api) {
         // modules: false
       },
     ],
-    '@babel/preset-react',
-  ];
-
-  const plugins = [];
-
-  return {
-    presets,
-    plugins,
-  };
+  ],
+  plugins: [
+    // Install and add any plugins for your project here
+    // i.e. "@babel/plugin-proposal-class-properties",
+  ],
 };

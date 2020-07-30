@@ -1,13 +1,22 @@
 const count = require('gulp-count');
 const changedInPlace = require('gulp-changed-in-place');
-const eslint = require('gulp-eslint');
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const path = require('path');
-const prettier = require('gulp-prettier');
-const stylelint = require('gulp-stylelint');
 const streamPromise = require('./common/streamPromise');
 const { logTask } = require('./common/logUtil');
+
+/**
+ *  The CMSDS lint script is built to allow the user to have full control,
+ *  both the linter versions and config files are to be specified by the user, and any of the 3 linters can be disabled
+ *  The only guidance we provide is the `eslint-config-design-system` and `stylelint-config-design-system` packages
+ *  and the peer dependencies in the CMSDS scripts package.json
+ */
+
+// Depending on if the user disabled any of these linters/formatters, we will dynamically require these dependencies
+let eslint;
+let stylelint;
+let prettier;
 
 // Rather than individually configure eslint, stylelint, and prettier to ignore paths,
 // Dynamically add ignore patterns to the src glob for each linter
@@ -17,6 +26,7 @@ const getSrcGlob = (glob, dir, ignorePatterns) => [
   ...ignorePatterns.map((ignore) => path.join(`!${dir}`, ignore)),
 ];
 
+// Format files using prettier
 async function runPrettier(dir, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.{js,jsx,ts,tsx,scss,html,md,mdx,json}')];
 
@@ -51,15 +61,15 @@ async function runStylelint(dir, fix, ignorePatterns, failAfterError) {
   );
 }
 
-// Taken from gulp-eslint example
-// https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
-const isFixed = (file) => {
-  return file.eslint != null && file.eslint.fixed;
-};
-
 // Lint JS files using eslint
 async function runEslint(dir, fix, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.{js,jsx,ts,tsx}')];
+
+  // Taken from gulp-eslint example
+  // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
+  const isFixed = (file) => {
+    return file.eslint != null && file.eslint.fixed;
+  };
 
   return streamPromise(
     gulp
@@ -82,12 +92,15 @@ module.exports = {
     await Promise.all(
       directories.map(async (dir) => {
         if (!disable.disablePrettier) {
+          prettier = require('gulp-prettier');
           await runPrettier(dir, ignorePatterns, failAfterError);
         }
         if (!disable.disableStylelint) {
+          stylelint = require('gulp-stylelint');
           await runStylelint(dir, fix, ignorePatterns, failAfterError);
         }
         if (!disable.disableEslint) {
+          eslint = require('gulp-eslint');
           await runEslint(dir, fix, ignorePatterns, failAfterError);
         }
       })
