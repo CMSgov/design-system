@@ -9,7 +9,7 @@
     "lint": "yarn cmsds lint ./src ./docs"
   },
   "main": "dist/components/index.js",
-  "module": "dist/components/index.js",
+  "module": "dist/esnext/index.esm.js",
   "sideEffects": false,
   "dependencies": {
     "@cmsgov/design-system": "2.0.0-beta.5",
