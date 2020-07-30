@@ -1,6 +1,6 @@
 // Run babel transforms on src files so we can run JSX scripts in Gulp tasks
 require('@babel/register')({
-  only: [/(@cmsgov\/design-system-docs|design-system\/packages\/([a-z-_]+)\/src|generateDocPage)/],
+  only: [/(design-system-docs)/],
   presets: [
     [
       '@babel/preset-env',
