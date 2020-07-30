@@ -35,5 +35,3 @@ This project uses `yarn` to manage Node packages. If you're already set up', ski
 ### Go forth and edit!
 
 You can add `html` files inside the `pages` directory to build bigger sites, add more CSS or SCSS files, images, fonts, what have you. This is the very basic scaffolding one might need to build bigger. If you get stuck or need help, feel free to file a Github issue: https://github.com/CMSgov/design-system/issues.
-
-_A quick note:_ This demo is having some trouble with loading fonts. If you solve the problem, please let us know!
