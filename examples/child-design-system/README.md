@@ -1,10 +1,8 @@
 ## Introduction
 
-There are many independent product teams across different contracts and companies that work under the same CMS sites (i.e. Medicare.gov, Healthcare.gov).
+This example shows what a typical child design system repository could look like. It contains custom components, overridden styles, and other additional resources to demonstrate how product teams could use a child design system.
 
-These product teams need a shared resource specific to those sites. It’s not possible or desirable for the CMSDS core to cover those site specific case.
-
-This is the reasoning behind creating the CMS design system family which consists of the CMSDS core and child design systems.
+See the [Child Design System documentation page](https://design.cms.gov/startup/child-design-systems/) for more background on what child design systems are, and if you should be using one.
 
 ## Getting started
 
