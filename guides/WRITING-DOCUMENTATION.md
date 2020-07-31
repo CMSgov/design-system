@@ -91,7 +91,7 @@ Markup: Button.example.html
 
 ### Style guide
 
-The `reference` defines the documentation site's structure.
+The `reference` defines the position or URL within the site structure for a section of KSS documentation.
 
 The expected format is: `[Top-level slug].[Subpage slug].[Page section slug]`.
 For example, `Style guide: components.button.disabled`.
