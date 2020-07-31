@@ -11,7 +11,11 @@
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
   "sideEffects": false,
-  "files": ["dist", "src/components/**/*.jsx", "!src/components/**/*.test.jsx"],
+  "files": [
+    "dist",
+    "src/components/**/*.jsx",
+    "!src/components/**/*.test.jsx"
+  ],
   "dependencies": {
     "classnames": "^2.2.5",
     "downshift": "^3.2.10",
