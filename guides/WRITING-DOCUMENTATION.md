@@ -103,12 +103,22 @@ Pages generated from KSS comment blocks are ordered alphabetically, and page sec
 ### Guidance
 
 To add a guidance section to the page the `style guide:` `[Page section slug]` should be `guidance`.
-For example: `Style guide: components.button.guidance`
+
+For example:
+
+```
+Style guide: components.button.guidance
+```
 
 Guidance should be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`.
 
-To link to another documentation page in your guidance content use a relative url and the `{{root}}` template. This template will be replaced with your site's root url.
-For example, `{{root}}/components/button`
+To link to another documentation page in your guidance content use a relative URL and the `{{root}}` template. This template will be replaced with your site's root URL.
+
+For example:
+
+```
+{{root}}/components/button
+```
 
 Documentation and guidance should be placed at the end of the SCSS file and conform to the following format and sections:
 
@@ -193,7 +203,7 @@ For internal/private props that you don't want to be displayed in the documentat
 
 ## Example
 
-Take a look at the [button component documentation (_Button.docs.scss)](https://github.com/CMSgov/design-system/blob/master/packages/design-system-docs/src/pages/components/Button/_Button.docs.scss) for an example.
+Take a look at the [button component documentation (\_Button.docs.scss)](https://github.com/CMSgov/design-system/blob/master/packages/design-system-docs/src/pages/components/Button/_Button.docs.scss) for an example.
 
 # Writing general documentation
 
@@ -226,7 +236,7 @@ usage: |
 | **`weight (optional)`**     | The `weight` property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on. |
 | **`responsive (optional)`** | The `responsive` property shows the markup example in a responsive frame. This can only be set to `true` or `false`.                |
 | **`uswds (optional)`**      | The `uswds` property is used to link to the corresponding US Web Design System component.                                           |
-| **`usage (optional)`**      | The `usage` property is used to generate a page description.                                                                     |
+| **`usage (optional)`**      | The `usage` property is used to generate a page description.                                                                        |
 
 ### Page content
 
