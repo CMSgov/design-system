@@ -7,9 +7,9 @@ Additional examples of the CMS Design System (CMSDS) in use can be viewed on the
 
 ## HTML/CSS examples
 
-- [Basic article page](https://github.com/CMSgov/design-system/tree/master/examples/article)
-- [Simple form with submit button](https://github.com/CMSgov/design-system/tree/master/examples/form)
-- [Using responsive classes](https://github.com/CMSgov/design-system/tree/master/examples/responsive)
+- [Basic article page](https://github.com/CMSgov/design-system/tree/master/examples/html-css/article)
+- [Simple form with submit button](https://github.com/CMSgov/design-system/tree/master/examples/html-css/form)
+- [Using responsive classes](https://github.com/CMSgov/design-system/tree/master/examples/html-css/responsive)
 - [Using webpack](https://github.com/CMSgov/design-system/tree/master/examples/webpack-demo)
 
 ## React application example

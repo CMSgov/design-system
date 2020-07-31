@@ -17,7 +17,7 @@ For example:
 <link rel="stylesheet" src="/css/vendor/design-system/index.css" />
 ```
 
-[View an example](https://github.com/CMSgov/design-system/blob/master/examples/article/index.html)
+[View an example](https://github.com/CMSgov/design-system/blob/master/examples/html-css/article/index.html)
 
 <h4 class="ds-h4 ds-u-font-size--base" id="sass">Sass</h4>
 
