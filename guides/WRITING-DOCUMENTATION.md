@@ -261,7 +261,7 @@ weight: 100
 responsive: true
 uswds: https://designsystem.digital.gov/page-templates/
 usage: |
-  Hellow world this is the description of the page
+  Hello world this is the description of the page
 ---
 ```
 
