@@ -56,7 +56,7 @@ The `dist` folder contains all the necessary files in the design system, your pr
 
 ```
 └── download
-    ├── design-assets/      Design system assets (Sketch files, designer assets)
+    ├── design-assets/      Design system assets (Sketch files, fonts, designer assets)
     └── design-system/      Design system package (code, fonts, images)
         └── dist/
 ```
