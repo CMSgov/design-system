@@ -83,7 +83,7 @@ If the item you are documenting has multiple states or styles depending on added
 
 ### Markup
 
-Markup examples shold be written in a separate plain `.html` file, relative to the SCSS file:
+Markup examples should be written in a separate `example.html` file, which should be located in the same directory as the SCSS docs file:
 
 ```
 Markup: Button.example.html
