@@ -153,6 +153,44 @@ Style guide: components.component-name.guidance
 
 </details>
 
+## Documenting React components
+
+Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
+
+### Description
+
+To document your React component, create a new section in your KSS file
+
+```SCSS
+/*
+`<Button>`
+
+The buttom component descrription
+
+@react-example Button.example.jsx
+
+@react-props Button.jsx
+
+Style guide: components.button.react
+*/
+```
+
+### PropTypes
+
+If a React component expects any `props`, you should document them within the component's [`propTypes` property](https://facebook.github.io/react/docs/typechecking-with-proptypes.html). To include a description for a `prop`, include it as a comment above the key/value like so:
+
+```js
+Button.propTypes = {
+  label: React.PropTypes.node.isRequired,
+  /**
+   * Overwrite the button's `class` attribute by providing your own
+   */
+  className: React.PropTypes.string,
+};
+```
+
+For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
+
 ## Example
 
 The example below is a documentation page with a URL path of `/components/buttons`.
@@ -203,44 +241,6 @@ Style guide: components.component-name-goes-here.guidance
 ```
 
 </details>
-
-## Documenting React components
-
-Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
-
-### Description
-
-To document your React component, create a new section in your KSS file
-
-```SCSS
-/*
-`<Button>`
-
-The buttom component descrription
-
-@react-example Button.example.jsx
-
-@react-props Button.jsx
-
-Style guide: components.button.react
-*/
-```
-
-### PropTypes
-
-If a React component expects any `props`, you should document them within the component's [`propTypes` property](https://facebook.github.io/react/docs/typechecking-with-proptypes.html). To include a description for a `prop`, include it as a comment above the key/value like so:
-
-```js
-Button.propTypes = {
-  label: React.PropTypes.node.isRequired,
-  /**
-   * Overwrite the button's `class` attribute by providing your own
-   */
-  className: React.PropTypes.string,
-};
-```
-
-For internal/private props that you don't want to be displayed in the documentation, include the **`@hide-prop`** flag in the React prop description (ie. `_selectedId` in `<VerticalNav>`).
 
 # Writing general documentation
 
