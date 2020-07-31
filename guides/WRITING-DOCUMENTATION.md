@@ -165,7 +165,7 @@ To document your React component, create a new section in your KSS file
 /*
 `<Button>`
 
-The buttom component descrription
+The button component description
 
 @react-example Button.example.jsx
 
@@ -193,11 +193,11 @@ For internal/private props that you don't want to be displayed in the documentat
 
 ## Example
 
-Tkae a look at the [button component documentation (_Button.docs.scss)](https://github.com/CMSgov/design-system/blob/master/packages/design-system-docs/src/pages/components/Button/_Button.docs.scss) for an example.
+Take a look at the [button component documentation (_Button.docs.scss)](https://github.com/CMSgov/design-system/blob/master/packages/design-system-docs/src/pages/components/Button/_Button.docs.scss) for an example.
 
 # Writing general documentation
 
-There might be cases where you need to create general content pages that do not contain an code examples. In these cases, create a markdown file in the `docs/src/pages` Folder. Each file in this folder will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
+There might be cases where you need to create general content pages that do not contain code examples. In these cases, create a markdown file in the `docs/src/pages` Folder. Each file in this folder will be rendered as an HTML page when the documentation is built. The filename will be used as the slug of the generated page.
 
 The format of these markdown pages follow the same format as Jekyll pages:
 
@@ -226,7 +226,7 @@ usage: |
 | **`weight (optional)`**     | The `weight` property controls the order of the page in the left navigation. `0` would be first followed by `1` then `2` and so on. |
 | **`responsive (optional)`** | The `responsive` property shows the markup example in a responsive frame. This can only be set to `true` or `false`.                |
 | **`uswds (optional)`**      | The `uswds` property is used to link to the corresponding US Web Design System component.                                           |
-| **`usage (optional)`**      | The `usage` property is used to to generate a page description.                                                                     |
+| **`usage (optional)`**      | The `usage` property is used to generate a page description.                                                                     |
 
 ### Page content
 
