@@ -31,7 +31,9 @@ docs/src
 
 # Writing component documentation
 
-[KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written.
+[KSS](https://github.com/kss-node/kss-node) is the primary way documentation is written for pages with code examples, i.e. components, patterns, utilities.
+
+KSS documentation should be written in a SCSS file with the following naming convention: `Foo.docs.scss`, where "Foo" is the name of the component, pattern, or utility that the page is documenting.
 Please use the following format when writing component documentation.
 
 ```scss
