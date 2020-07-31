@@ -193,54 +193,7 @@ For internal/private props that you don't want to be displayed in the documentat
 
 ## Example
 
-The example below is a documentation page with a URL path of `/components/buttons`.
-
-<details>
-<summary><b>View sample page</b></summary>
-
-```scss
-/*
-Button
-
-Button description 
-
-@uswds https://designsystem.digital.gov/components/buttons
-
-Markup: button.example.html
-
-Style guide: components.button
-*/
-
-/*
-`<Button>`
-
-The `Button` component accepts its text as children (AKA inner HTML), which
-means you can also pass in HTML or custom components. This gives you a lot of
-flexibility and supports a variety of advanced use cases. The most common use
-case would be passing in an SVG icon along with the text.
-
-In addition to the supported props listed, you can also pass in additional
-props, which will be passed to the rendered root component. For example,
-you could pass in a `target` prop to pass to the rendered anchor element.
-
-@react-example Button.example.jsx
-
-@react-props Button.jsx
-
-Style guide: components.button.react
-*/
-
-/*
----
-### When to use
-
-content here
-
-Style guide: components.component-name-goes-here.guidance
-*/
-```
-
-</details>
+Tkae a look at the [button component documentation (_Button.docs.scss)](https://github.com/CMSgov/design-system/blob/master/packages/design-system-docs/src/pages/components/Button/_Button.docs.scss) for an example.
 
 # Writing general documentation
 
