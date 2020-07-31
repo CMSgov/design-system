@@ -106,12 +106,9 @@ async function compileEsmJs(dir, changedPath) {
             [
               '@babel/preset-env',
               {
-                useBuiltIns: 'entry',
-                corejs: '3.0.0',
                 modules: false,
               },
             ],
-            '@babel/preset-react',
           ],
         })
       )
@@ -159,9 +156,7 @@ function compileJs(dir, options, changedPath) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   )
     .then(() => {
-      if (options.core) {
-        return compileEsmJs(dir, changedPath);
-      }
+      return compileEsmJs(dir, changedPath);
     })
     .then(() => {
       if (options.typescript) {
