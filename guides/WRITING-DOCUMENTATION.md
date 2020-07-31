@@ -108,7 +108,7 @@ For example: `Style guide: components.button.guidance`
 Guidance should be written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you include `---` right after your opening section comments, `/*`.
 
 To link to another documentation page in your guidance content use a relative url and the `{{root}}` template. This template will replaced with your site's root url.
-For example, `/components/button`
+For example, `{{root}}/components/button`
 
 Documentation and guidance should be placed at the end of the SCSS file and conform to the following format and sections:
 
