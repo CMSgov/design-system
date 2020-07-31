@@ -93,7 +93,7 @@ If you have your own custom Webpack configuration, you need to use [`file-loader
 
 ## Applying styles to your page
 
-Once your page is loading the design system's CSS, you can then begin applying its styling to your pages. Below is an example of a project applying the [base-level of styles]({{root}}/styles/base) and a [utility class]({{root}}/utilities/).
+Once your page is loading the design system's CSS, you can then begin applying its styling to your pages. Below is an example of a project applying the [base-level of styles]({{root}}/styles/base) and a [utility class]({{root}}/utilities/overview).
 
 ```html
 <html>

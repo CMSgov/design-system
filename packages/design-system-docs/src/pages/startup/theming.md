@@ -81,7 +81,7 @@ Oftentimes overriding Sass variables will not be enough to achieve the desired s
 }
 ```
 
-Unlike Sass variable overrides, these styles must be declared _after_ importing the design system. These are often used in conjuntion with Sass variable overrides.
+Unlike Sass variable overrides, these styles must be declared _after_ importing the design system. These are often used in conjunction with Sass variable overrides.
 
 ```css
 /* main.scss */
