@@ -70,7 +70,7 @@ To extend the default functionality of KSS, we've implemented support for custom
 
 | flag name                   | example                                                      | flag description                                                                                                                        |
 | --------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **`@hide-markup`**          | `@hide markup`                                               | Hides the code snippet.                                                                                                                 |
+| **`@hide-markup`**          | `@hide-markup`                                               | Hides the code snippet.                                                                                                                 |
 | **`@react-props [NAME]`**   | `@react-props Button.jsx`                                    | Displays the React prop documentation for a component. `[NAME]` is the filename of the react component where the Proptypes are defined. |
 | **`@react-example [NAME]`** | `@react-example Button.example.jsx`                          | Displays the example file using this React component. `[NAME]` is the filename of the react example to be displayed.                    |
 | **`@responsive`**           | `@responsive`                                                | Renders breakpoint toggles for the markup example.                                                                                      |
