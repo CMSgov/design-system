@@ -29,6 +29,34 @@ New usage:
   }
 ```
 
+### Child design system packages (formerly site packages)
+
+Usage of [child design system]({{root}}/startup/child-design-systems/) NPM packages have also been consolidated and simplified. Applications that use child design system packages only need one design system dependency going forward. The child design system packages will contain core styles, components, and assets in addition to child design system specific customizations.
+
+The 2 child design system packages are:
+- @cmsgov/ds-healthcare-gov
+- @cmsgov/medicare-site-package
+
+Old usage:
+
+```
+  "dependencies": {
+    "@cmsgov/design-system-core": "3.4.2",
+    "@cmsgov/design-system-layout": "3.4.2",
+    "@cmsgov/design-system-support": "3.4.2",
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
+  }
+```
+
+New usage:
+
+```
+  "dependencies": {
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
+    ...
+  }
+```
+
 ## Folder structure
 
 The `dist` folder structure has been updated for the `@cmsgov/design-system` npm package. We recommend only importing files from the `dist` directory moving forward.
