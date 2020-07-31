@@ -77,10 +77,6 @@ To extend the default functionality of KSS, we've implemented support for custom
 | **`@status [NAME]`**        | `@status Draft`                                              | Displays a status badge. `[NAME]` must be one of the following values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.              |
 | **`@uswds [URL]`**          | `@uswds https://designsystem.digital.gov/components/button/` | `[URL]` is the link to the corresponding US Web Design System component.                                                                |
 
-### Modifiers
-
-If the item you are documenting has multiple states or styles depending on added classes or pseudo-classes, you should document them in the modifiers section. [More info on modifiers from the KSS documentation site](https://warpspire.com/kss/syntax/).
-
 ### Markup
 
 Markup examples should be written in a separate `example.html` file, which should be located in the same directory as the SCSS docs file:
@@ -165,10 +161,6 @@ Style guide: components.component-name.guidance
 
 ## Documenting React components
 
-Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
-
-### Description
-
 To document your React component, create a new section in your KSS file
 
 ```SCSS
@@ -186,6 +178,8 @@ Style guide: components.button.react
 ```
 
 ### PropTypes
+
+Using [`react-docgen`](https://github.com/reactjs/react-docgen), we extract a description for each of the component's `propTypes` from comments in React component files.
 
 If a React component expects any `props`, you should document them within the component's [`propTypes` property](https://facebook.github.io/react/docs/typechecking-with-proptypes.html). To include a description for a `prop`, include it as a comment above the key/value like so:
 
