@@ -1,6 +1,6 @@
 ## Example: Pure HTMS/CSS
 
-This shows the usage of CMS design system components with a pure HTML/CSS set up. Simply include the CSS file in the HTML document.
+This shows the usage of CMS design system components on a pure HTML/CSS site. Simply include the CSS file in the HTML document.
 
 ### Usage
 
