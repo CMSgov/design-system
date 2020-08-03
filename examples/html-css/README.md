@@ -10,7 +10,7 @@ This shows the usage of CMS design system components on a pure HTML/CSS site. Si
 
 ## Getting started
 
-Install and build the core design system to ensure html-css examples can reference the minified CSS.
+Install and build the core design system to ensure html-css example can reference the minified CSS.
 
 1. Install packages: `npm install` or `yarn install`
 1. Compile and bundle assets: `npm run build` or `yarn run build`
