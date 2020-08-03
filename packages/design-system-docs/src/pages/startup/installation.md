@@ -73,6 +73,7 @@ Copy the files and folders from `download/design-system/dist` to a relevant plac
     └── index.html
 ```
 
+
 <h2 id="need-help" class="ds-h2 ds-u-color--primary-darker">Need help or ran into an issue?</h2>
 
 If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub]({{githubUrl}}/issues).
