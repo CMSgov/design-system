@@ -2,7 +2,7 @@
 title: Responsive design
 ---
 
-The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile first**.
+The design system's layout, utility, and typography classes are built with responsive web design in mind and is built to be **mobile-first**.
 
 ## Breakpoints
 

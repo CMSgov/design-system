@@ -43,7 +43,7 @@ You can also [browse all Sass variable files on GitHub](https://github.com/CMSgo
 
 #### Focus style settings
 
-The focus styles are disabled by default. However if you'd ike to use them
+The focus styles are disabled by default. However if you'd like to use them
 set the `$ds-include-focus-styles` variable to `true`.
 
 **Focus style variables**

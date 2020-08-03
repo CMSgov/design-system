@@ -276,29 +276,29 @@ $button-color-variants: (
       background-color: nth($color, 2);
     }
 
-    &:focus,
-    &.ds-c-button--focus {
-      @if $ds-include-focus-styles {
-        background-color: nth($color, 4);
-        border-color: transparent;
-        color: $color-base;
-      } @else {
-        background-color: nth($color, 2);
-        border-color: transparent;
-        color: $color-white;
-      }
-    }
-
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
     }
+
     @if $ds-include-focus-styles {
+      &:focus,
+      &.ds-c-button--focus {
+        background-color: nth($color, 4);
+        border-color: transparent;
+        color: $color-base;
+      }
+
       // Make sure active overrides focus styles
       &:active:focus,
       &.ds-c-button--active:focus {
         background-color: nth($color, 3);
         box-shadow: none;
+      }
+    } @else {
+      &:focus,
+      &.ds-c-button--focus {
+        border-color: transparent;
         color: $color-white;
       }
     }
