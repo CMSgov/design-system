@@ -67,7 +67,7 @@ The `cmsds.config.js` file contains options for configuring the CMSDS scripts. M
 | ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sourceDir` | `./` | The relative path to the directory containing the design system package `src`. The design system build files will be saved here under `dist`. |
 | `docsDir` | `./docs` | The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under `dist`. |
-| `typescript` | `false` | Used to enable typescript support. When `true`, `.ts/.tsx` files will be compilied and typescript definition files will be generated. Requires `tsconfig.json` to be defined. |
+| `typescript` | `false` | Used to enable typescript support. When `true`, `.ts/.tsx` files will be compiled and typescript definition files will be generated. Requires `tsconfig.json` to be defined. |
 | `rootUrl` | | Sets the domain path for the docs site. I.e. if your docs site is hosted at "www.domain.com/design/" your rootPath would be `"design"` |
 | `name` | | Name of the design system. This replaces the {{name}} template in documentation content. |
 | `githubUrl` | | The URL for your GitHub repository. This replaces the {{github}} template in documentation content. |
@@ -91,7 +91,7 @@ Unit tests need a `setupTests.js` file to be defined in your design system sourc
 
 ### Configuring linting
 
-CMSDS scripts provide a lint script to enforce linter and formatting rules with `prettier`, `eslint` and `stylelint`. All three are easily configurable via their respective config files. The CMSDS team also provides recommended confg via the [`@cmsgov/eslint-config-design-system`](http://npmjs.com/package/@cmsgov/eslint-config-design-system) and [`@cmsgov/stylelint-config-design-system`](http://npmjs.com/package/@cmsgov/stylelint-config-design-system) packages.
+CMSDS scripts provide a lint script to enforce linter and formatting rules with `prettier`, `eslint` and `stylelint`. All three are easily configurable via their respective config files. The CMSDS team also provides recommended config via the [`@cmsgov/eslint-config-design-system`](http://npmjs.com/package/@cmsgov/eslint-config-design-system) and [`@cmsgov/stylelint-config-design-system`](http://npmjs.com/package/@cmsgov/stylelint-config-design-system) packages.
 
 The CMSDS lint script is also configurable to turn off any of the three linters/formatters. For example, if you aren't interested in using `stylelint`, simply pass the `--disableStylelint` option to the lint script. Run `yarn cmsds lint --help` to see the lint script options for more information.
 
@@ -101,13 +101,13 @@ Unit tests need a `setupTests.js` file to be defined in your design system sourc
 
 ## Writing documentation
 
-By default the pages that exist in the core design system will be a part of the child design system documentation site. However, content can be overriden at the child design system level. For example, to change the "Installation" page of the child design system doc site under "Getting Started", create a markdown page named `installation.md` under `docs/src/pages/startup` containing your custom content for that particular page. You can reference all the core design system doc site pages [here](https://github.com/CMSgov/design-system/tree/master/packages/design-system-docs/src/pages).
+By default the pages that exist in the core design system will be a part of the child design system documentation site. However, content can be overridden at the child design system level. For example, to change the "Installation" page of the child design system doc site under "Getting Started", create a markdown page named `installation.md` under `docs/src/pages/startup` containing your custom content for that particular page. You can reference all the core design system doc site pages [here](https://github.com/CMSgov/design-system/tree/master/packages/design-system-docs/src/pages).
 
 **Note:** The page name must have the same name and same location as the original page for it to be overridden at a child design system level.
 
-If you are writing a content only page then you should be creating a Markdown (`.md`) file. However if you are are writing documentation for a component, pattern or utility you should follow the [KSS format outlined for writing component documentation](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md).
+If you are writing a content only page then you should be creating a Markdown (`.md`) file. However if you are writing documentation for a component, pattern or utility you should follow the [KSS format outlined for writing component documentation](https://github.com/CMSgov/design-system/blob/master/guides/WRITING-DOCUMENTATION.md).
 
-We have also provided example documentation for an overriden `Button` component, a new `Card` component, and a new `border-style` utility for reference.
+We have also provided example documentation for an overridden `Button` component, a new `Card` component, and a new `border-style` utility for reference.
 
 ### Publishing your child design system doc site
 
