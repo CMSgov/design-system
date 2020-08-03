@@ -5,7 +5,7 @@ weight: 3
 
 ## Using React components
 
-**We strongly recommend using the React versions of our components.** React allows for more complex, interactive components like `Tabs` or `VerticalNav`, and many of our React components have built in accessibility optimizations.
+**We strongly recommend using the React versions of our components.** React allows for more complex, interactive components like `Tabs` or `VerticalNav`, and many of our React components have built-in accessibility optimizations.
 
 The examples below assume you've [installed the design system using NPM]({{root}}/startup/installation/) and have already setup your build system for React.
 
