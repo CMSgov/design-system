@@ -2,8 +2,7 @@
   "name": "@cmsgov/design-system-scripts",
   "version": "2.0.0-beta.5",
   "publishConfig": {
-    "access": "public",
-    "tag": "beta"
+    "access": "public"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
   "repository": "CMSgov/design-system",
