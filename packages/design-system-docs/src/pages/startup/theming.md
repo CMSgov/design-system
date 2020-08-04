@@ -13,12 +13,12 @@ All design system styles are available as either Sass or CSS files. [Sass](https
 
 If your site is using Sass, you can override the design system's default Sass variables. Variables exist for every color, type size, and spacing value used in the design system. The biggest benefit of overriding a Sass variable is it only requires one line of code, and any utility class or component that references that variable will automatically be updated to use it, without introducing additional CSS.
 
-### Overriding Sass variables
+### Variable overrides
 
 To override Sass variables, create a new `.sass` or `.scss` file where you will define the new variable value:
 
 ```css
-/* overrides.scss */
+/* _color-overrides.scss */
 $color-primary: #ff0000;
 ```
 
@@ -26,9 +26,11 @@ Then, in your main stylesheet, import your overrides file _before_ you [import t
 
 ```css
 /* main.scss */
-@import 'overrides';
+@import 'color-overrides';
 @import '{{npm}}/dist/scss/index';
 ```
+
+See the [child design system example](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system/src/styles/settings) for a more complex example of Sass variable overrides.
 
 ### Available variables
 
@@ -41,7 +43,7 @@ Sass variables are documented on the relevant documentation pages, and are defin
 
 You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
 
-#### Focus style settings
+#### Focus style variables
 
 The focus styles are disabled by default. However if you'd like to use them
 set the `$ds-include-focus-styles` variable to `true`.
@@ -61,6 +63,40 @@ set the `$ds-include-focus-styles` variable to `true`.
 - `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
 
 See the [v2 migration guide](https://design.cms.gov/startup/migrating-v2/#focus-styles) for more background on our focus styles.
+
+## Overriding component, utility, base styles
+
+Oftentimes overriding Sass variables will not be enough to achieve the desired styles. In these cases, it's possible to override any of the design system's component, utility, or base styles by redefining the classes.
+
+```css
+/* _form-overrides.scss */
+.ds-c-field {
+  &:focus {
+    box-shadow: 0 0 0 3px $focus-text-field-color-highlight, inset 0 0 0 1px $focus-text-field-color;
+    border-color: $focus-text-field-color;
+  }
+  font-size: $h4-font-size;
+  border-radius: 5px;
+  border: 2px solid $custom-color;
+}
+```
+
+Unlike Sass variable overrides, these styles must be declared _after_ importing the design system. These are often used in conjunction with Sass variable overrides.
+
+```css
+/* main.scss */
+
+/* Sass variable overrides */
+@import 'color-overrides';
+
+/* Design system */
+@import '{{npm}}/dist/scss/index';
+
+/* Component overrides */
+@import 'form-overrides';
+```
+
+See the [child design system example](https://github.com/CMSgov/design-system/blob/master/examples/child-design-system/src/styles/index.scss) for a more complex example of Sass component, utility, and base overrides.
 
 ## CSS declarations
 
