@@ -34,5 +34,7 @@ git push origin $TAG_PREFIX$PACKAGE_VERSION
 
 echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
+npm pack ./packages/design-system-docs/
+npm pack ./packages/design-system-scripts/
 
 echo "${GREEN}Prepublish complete, make sure to merge the release branch $TAG_PREFIX$PACKAGE_VERSION into master...${NC}"
