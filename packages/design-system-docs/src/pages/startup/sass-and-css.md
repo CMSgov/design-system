@@ -39,7 +39,8 @@ By default, the design system expects a file structure like this:
 └── Your site's build folder/
     ├── images/
     ├── fonts/
-    └── index.css
+    └── css/
+      └── index.css/
 ```
 
 You can manually copy the image and font directories, or you could integrate this step into your build process.
@@ -59,15 +60,14 @@ For example, if your project build directory file structure looked like this:
 └── Your site's build folder/
     ├── images/
     ├── fonts/
-    └── css/
-      └── index.css/
+    └── index.css
 ```
 
 The asset paths would have to be redefined like so:
 
 ```css
-$font-path: '../fonts';
-$image-path: '../image';
+$font-path: './fonts';
+$image-path: './image';
 ```
 
 Without overriding these variables, it's possible that your fonts and images will not render correctly in your project.
