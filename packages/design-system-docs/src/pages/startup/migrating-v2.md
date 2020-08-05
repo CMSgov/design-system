@@ -29,6 +29,35 @@ New usage:
   }
 ```
 
+### Child design system packages (formerly site packages)
+
+Usage of [child design system]({{root}}/startup/child-design-systems/) NPM packages have also been consolidated and simplified. Applications that use child design system packages only need one design system dependency going forward. The child design system packages will contain core styles, components, and assets in addition to child design system-specific customizations.
+
+The 2 child design system packages are:
+
+- @cmsgov/ds-healthcare-gov
+- @cmsgov/medicare-site-package
+
+Old usage:
+
+```
+  "dependencies": {
+    "@cmsgov/design-system-core": "3.4.2",
+    "@cmsgov/design-system-layout": "3.4.2",
+    "@cmsgov/design-system-support": "3.4.2",
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
+  }
+```
+
+New usage:
+
+```
+  "dependencies": {
+    "@cmsgov/ds-healthcare-gov": "3.0.1",
+    ...
+  }
+```
+
 ## Folder structure
 
 The `dist` folder structure has been updated for the `@cmsgov/design-system` npm package. We recommend only importing files from the `dist` directory moving forward.
@@ -96,7 +125,7 @@ CMSDS focus styles will now be considered a `draft` feature, and will be turned 
 
 ### Why the change?
 
-When we first released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0), our goal was to provide a recommended focus style implementation that would incorporate accessibility and best practices, much of which was informed by [UKgov's research](https://design-system.service.gov.uk/get-started/focus-states/) and [USWDS's focus state implementation](https://designsystem.digital.gov/). While we spent 4 months developing, iterating, and gathering feedback before the release, we made several mistakes in the process. Due to communication and process shortcomings, our team wasn't able to fully consider how our design would impact existing focus styles, or whether or not our design was too specific. Our team assumed that the SCSS variables we provided were sufficient to adapt the focus styles for different use cases and we neglected to add an easy way to opt out of the new feature.
+When we first released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0), our goal was to provide a recommended focus style implementation that would incorporate accessibility and best practices, much of which was informed by [UKgov's research](https://design-system.service.gov.uk/get-started/focus-states/) and [USWDS's focus state implementation](https://designsystem.digital.gov/). While we spent 4 months developing, iterating, and gathering feedback before the release, we made several mistakes in the process. Due to communication and process shortcomings, our team wasn't able to fully consider how our design would impact existing focus styles, or whether or not our design was too specific. Our team assumed that the SCSS variables we provided were sufficient to adapt the focus styles for different use cases and we neglected to add an easy way to opt-out of the new feature.
 
 In this release, we worked to correct these mistakes by putting the new styles under a flag and turning them off by default. In the future, we plan on iterating on our default styles to be more generalized and more in line with existing focus styles on CMS products. We will also be adding additional mixins, variables, and documentation to make it easier for teams to customize focus styles.
 
