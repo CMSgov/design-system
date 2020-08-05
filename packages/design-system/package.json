@@ -1,9 +1,8 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "2.0.0-beta.5",
+  "version": "2.0.0",
   "publishConfig": {
-    "access": "public",
-    "tag": "beta"
+    "access": "public"
   },
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": "CMSgov/design-system",
