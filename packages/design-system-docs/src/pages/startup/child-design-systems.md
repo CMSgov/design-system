@@ -10,6 +10,7 @@ The CMS design system (CMSDS) provides a set of components and styles to meet ma
 Child design systems are for sharing common, site-specific, design and code resources between teams working on the same CMS sites (i.e. Healthcare.gov, Medicare.gov). They contain the core CMS Design System in addition to site-specific customizations (i.e. brand colors, site header, custom icons, etc).
 
 Child design systems include:
+
 - An NPM package containing design system code and assets
 - A documentation site for product teams to reference
 - Shared design assets (i.e. Sketch Library or Sketch file)
