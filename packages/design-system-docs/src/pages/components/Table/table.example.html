@@ -1,4 +1,11 @@
-<table class="ds-c-table {{modifier}}">
+<!-- prettier-ignore -->
+<% [ 
+  { title: 'Default table', className: 'ds-c-table'}, 
+  { title: 'Borderless table', className: 'ds-c-table--borderless'}, 
+  { title: 'Striped table', className: 'ds-c-table--striped'}, 
+].forEach(table => { -%>
+<h6 class="preview__label"><%= table.title %></h6>
+<table class="ds-c-table <%= table.className %>">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -19,3 +26,4 @@
     </tr>
   </tbody>
 </table>
+<% }) -%>
