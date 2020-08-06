@@ -1,4 +1,7 @@
 // Libraries
+$font-path: './fonts';
+$image-path: './images';
+
 @import '@cmsgov/design-system/dist/scss/index';
 
 // Sass settings
@@ -20,7 +23,6 @@
 @import 'styles/components/Frame';
 @import 'styles/components/Header';
 @import 'styles/components/UsaBanner';
-@import 'styles/components/ReactPropDocs';
 
 // Utilities
 @import 'styles/utilities/index';

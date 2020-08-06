@@ -1,6 +1,7 @@
 /**
  * Render a table row for a single property
  */
+import { TableDataCell, TableRow } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -69,39 +70,28 @@ class ReactPropDoc extends React.PureComponent {
   }
 
   render() {
-    // Specify ARIA roles attribute for table to ensure responsive HTML table is accessible to screen readers
+    const nameData = (
+      <>
+        <code className="ds-u-font-weight--bold">{this.props.name}</code>
+        {this.isRequired()}
+      </>
+    );
+
     return (
-      <tr role="row">
-        <td role="cell" headers="columnname">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Name
-            <br />
-          </span>
-          <code className="ds-u-font-weight--bold">{this.props.name}</code>
-          {this.isRequired()}
-        </td>
-        <td role="cell" headers="columntype">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Type
-            <br />
-          </span>
-          <code>{this.type()}</code>
-        </td>
-        <td role="cell" headers="columndefault">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Default
-            <br />
-          </span>
-          {this.defaultValue()}
-        </td>
-        <td role="cell" headers="columndescription">
-          <span className="docs_table__column-header ds-u-font-weight--bold" aria-hidden="true">
-            Description
-            <br />
-          </span>
-          {this.description()}
-        </td>
-      </tr>
+      <TableRow>
+        <TableDataCell headers="columnname" stackedTitle="Name">
+          {nameData}
+        </TableDataCell>
+        <TableDataCell headers="columntype" stackedTitle="Type">
+          {<code>{this.type()}</code>}
+        </TableDataCell>
+        <TableDataCell headers="columndefault" stackedTitle="Default">
+          {<>{this.defaultValue()}</>}
+        </TableDataCell>
+        <TableDataCell headers="columndescription" stackedTitle="Description">
+          {<>{this.description()}</>}
+        </TableDataCell>
+      </TableRow>
     );
   }
 }
