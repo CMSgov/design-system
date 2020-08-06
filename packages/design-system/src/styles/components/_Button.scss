@@ -180,7 +180,7 @@
 /* stylelint-disable */
 %transparent-inverse-button {
   border-color: $color-background-inverse;
-
+  background-color: transparent;
   // Default inverse focus styles are overridden above
   @if $ds-include-focus-styles {
     &:focus,
@@ -202,6 +202,9 @@
 .ds-c-button--inverse.ds-c-button--transparent,
 .ds-c-button--inverse.ds-c-button--transparent:visited {
   @extend %transparent-inverse-button;
+}
+.ds-c-button--inverse.ds-c-button--transparent:disabled {
+  background-color: transparent;
 }
 
 /**
