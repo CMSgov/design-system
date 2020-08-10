@@ -72,26 +72,6 @@ function App() {
             )}
           </div>
         </TabPanel>
-
-        <TabPanel id="va.gov" tab="VA.gov Design System">
-          This site provides design guidelines and code to help you quickly create trustworthy,
-          accessible, and consistent digital services on the VA.gov platform. Its primary audience
-          includes designers, content writers, and front-end developers who work on VA.gov.
-          <p>
-            <a href="https://design.va.gov/">Learn more about VA.gov Design System</a>
-          </p>
-        </TabPanel>
-
-        <TabPanel id="usajobs" tab="USAJOBS Design System">
-          This design system represents the start of the next generation of USAJOBS. A design system
-          describes the base visual language, using UI elements and style guidelines, upon which the
-          site can be built. It will also include examples and usage guidelines of new components.
-          <p>
-            <a href="https://usajobs.github.io/design-system/">
-              Learn more about USAJOBS Design System
-            </a>
-          </p>
-        </TabPanel>
       </Tabs>
     </div>
   );

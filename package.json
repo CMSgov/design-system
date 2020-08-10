@@ -56,8 +56,5 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ],
-  "dependencies": {
-    "node-sass": "^4.14.1"
-  }
+  ]
 }

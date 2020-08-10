@@ -2,7 +2,11 @@
 
 This shows the usage of CMS design system components in a [create-react-app](https://create-react-app.dev/docs/getting-started/) project.
 
-Refer to [install with NPM]({{root}}/startup/installation/) for instruction on installing the design system as a dependency package. This example includes a basic `.env` and `index.scss` to reference the dist folder.
+Refer to [install with NPM](https://design.cms.gov/startup/installation/) for instructions on how to install the design system as a dependency package. The `.env` is for a basic create-react-app confirguration with the design system. The [`/src/styles/index.scss`](https://design.cms.gov/startup//sass-and-css/) includes the design system's styles and paths for the image and font directories.
+
+## Create-react-app
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting started
 
