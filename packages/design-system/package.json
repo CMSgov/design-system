@@ -10,6 +10,7 @@
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
   "sideEffects": false,
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src/components/**/*.jsx",
