@@ -119,6 +119,23 @@ async function generateTypeDefinitions(dir, changedPath) {
   );
 }
 
+async function copyCoreTypeDefinitions(dir) {
+  const srcGlob = [
+    path.resolve(`node_modules/${CORE_SOURCE_PACKAGE}/dist/types/index.d.ts`),
+    path.resolve(dir, 'dist', 'types', 'index.d.ts'),
+  ];
+
+  return streamPromise(
+    gulp
+      .src(srcGlob)
+      .pipe(concat('index.d.ts'))
+      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
+      .on('finish', function () {
+        logTask('📜 ', 'Core typescript definition files included');
+      })
+  );
+}
+
 /**
  * Similar to compileJS but babel is configured for esmodules, only used in the core DS
  */
@@ -185,14 +202,23 @@ function compileJs(dir, options, changedPath) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   )
     .then(() => {
+      // Compile ESM version of code
       return compileEsmJs(dir, changedPath);
     })
     .then(() => {
+      // If design system is using typescript, use tsc to generate definition files
       if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
+      // If core ds, use react2dts to generate definition files from proptypes
       if (options.core) {
         return generateTypeDefinitionsFromPropTypes(dir);
+      }
+    })
+    .then(() => {
+      // If child design system is using typescript, include core definitions as well
+      if (options.typescript && !options.core) {
+        return copyCoreTypeDefinitions(dir);
       }
     });
 }
