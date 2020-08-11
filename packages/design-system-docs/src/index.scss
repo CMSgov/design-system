@@ -1,19 +1,7 @@
-// Libraries
+// Override default assets path
 $font-path: './fonts';
 $image-path: './images';
 
 @import '@cmsgov/design-system/dist/scss/index';
 
-// Sass settings
-@import 'styles/settings/index';
-
-// Base - unclassed HTML element selectors
-@import 'styles/base/index';
-
-// Components - reusable chunks of UI
-@import 'styles/components/BreakpointToggles';
-@import 'styles/components/PageBlock';
-@import 'styles/components/Docs';
-@import 'styles/components/Frame';
-@import 'styles/components/Header';
-@import 'styles/components/UsaBanner';
+@import 'styles/index';
