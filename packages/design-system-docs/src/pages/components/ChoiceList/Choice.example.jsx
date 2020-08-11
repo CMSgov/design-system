@@ -26,7 +26,9 @@ const childDropdown = (
 ReactDOM.render(
   <div>
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Checkboxes</legend>
+      <legend className="ds-c-label">
+        <span>Checkboxes</span>
+      </legend>
       <Choice
         defaultChecked
         hint="Checkbox A hint"
@@ -45,7 +47,9 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Checkboxes with children</legend>
+      <legend className="ds-c-label">
+        <span>Checkboxes with children</span>
+      </legend>
       <Choice hint="Checkbox A hint" name="checkbox_choice_children" type="checkbox" value="a">
         Checkbox A
       </Choice>
@@ -66,7 +70,9 @@ ReactDOM.render(
     <hr className="ds-u-margin-top--2" />
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio buttons</legend>
+      <legend className="ds-c-label">
+        <span>Radio buttons</span>
+      </legend>
       <Choice defaultChecked name="radio_choice" type="radio" value="a">
         Radio A
       </Choice>
@@ -76,7 +82,9 @@ ReactDOM.render(
     </fieldset>
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Radio buttons with children</legend>
+      <legend className="ds-c-label">
+        <span>Radio buttons with children</span>
+      </legend>
       <Choice name="radio_choice_children" type="radio" value="c">
         Radio A
       </Choice>
@@ -94,7 +102,9 @@ ReactDOM.render(
     <hr className="ds-u-margin-top--2" />
 
     <fieldset className="ds-c-fieldset">
-      <legend className="ds-c-label">Small checkboxes with children</legend>
+      <legend className="ds-c-label">
+        <span>Small checkboxes with children</span>
+      </legend>
       <Choice name="checkbox_choice_children_small" size="small" type="checkbox" value="a">
         Checkbox A
       </Choice>
@@ -119,7 +129,9 @@ ReactDOM.render(
 
     <div className="ds-base ds-base--inverse ds-u-padding--2 ds-u-margin-top--2">
       <fieldset className="ds-c-fieldset ds-u-margin-top--0">
-        <legend className="ds-c-label">Inverse radio buttons with children</legend>
+        <legend className="ds-c-label">
+          <span>Inverse radio buttons with children</span>
+        </legend>
         <Choice name="radio_choice_children_inv" type="radio" value="c">
           Radio A
         </Choice>
