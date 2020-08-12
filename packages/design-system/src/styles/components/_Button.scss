@@ -203,9 +203,6 @@
 .ds-c-button--inverse.ds-c-button--transparent:visited {
   @extend %transparent-inverse-button;
 }
-.ds-c-button--inverse.ds-c-button--transparent:disabled {
-  background-color: transparent;
-}
 
 /**
  *  Not recommended usage
