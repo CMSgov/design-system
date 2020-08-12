@@ -1,11 +1,11 @@
 // Settings - SASS variables, mixins, functions
-@import 'styles/settings/index';
+@import 'settings/index';
 
 // Base - HTML element selectors
-@import 'styles/base/index';
+@import 'base/index';
 
 // Components - Reusable chunks of UI
-@import 'styles/components/Example';
+@import 'components/Example';
 
 body {
   margin: 0;
