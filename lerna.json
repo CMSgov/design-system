@@ -5,9 +5,7 @@
     }
   },
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "tagVersionPrefix": "core-",
   "version": "2.0.0",
   "useWorkspaces": true
