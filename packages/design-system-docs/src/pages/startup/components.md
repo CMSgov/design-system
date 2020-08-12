@@ -79,7 +79,7 @@ More HTML/CSS examples and guidance can be found on component documentation page
 Additional examples of the design system in use can be viewed on GitHub. These projects demonstrate the various ways you can incorporate the design system into your development process and various use cases.
 
 - [Webpack example](https://github.com/CMSgov/design-system/blob/master/examples/react-app)
-- [CSS-only example](https://github.com/CMSgov/design-system/blob/master/examples/form)
+- [CSS-only example](https://github.com/CMSgov/design-system/blob/master/examples/html-css)
 
 <a href="https://github.com/CMSgov/design-system/tree/master/examples/" class="ds-c-button">Browse example projects</a>
 
