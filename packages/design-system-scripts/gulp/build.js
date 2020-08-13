@@ -9,7 +9,6 @@ const copyAssets = require('./common/copyAssets');
 const gulp = require('gulp');
 const count = require('gulp-count');
 const rename = require('gulp-rename');
-const concat = require('gulp-concat');
 const ts = require('gulp-typescript');
 const path = require('path');
 const react2dts = require('react-to-typescript-definitions');
@@ -82,8 +81,12 @@ async function generateTypeDefinitionsFromPropTypes(dir) {
       .src(srcGlob, { base: src })
       .pipe(
         through.obj((file, enc, cb) => {
-          const definition = react2dts.generateFromFile(null, file.path);
-          file.contents = Buffer.from(definition);
+          // Replace React component files with definitions, avoid modifying entry point
+          if (file.basename !== 'index.js' || file.dirname.split('/').pop() !== 'components') {
+            const definition = react2dts.generateFromFile(null, file.path);
+            file.contents = Buffer.from(definition);
+          }
+
           file.extname = '.d.ts';
           cb(null, file);
         })
@@ -115,23 +118,6 @@ async function generateTypeDefinitions(dir, changedPath) {
     tsResult.dts.pipe(gulp.dest(path.join(dir, 'dist', 'types'))).on('finish', function () {
       logTask('📜 ', 'Typescript definition files generated');
     })
-  );
-}
-
-async function copyCoreTypeDefinitions(dir) {
-  const srcGlob = [
-    path.resolve(`node_modules/${CORE_SOURCE_PACKAGE}/dist/types/index.d.ts`),
-    path.resolve(dir, 'dist', 'types', 'index.d.ts'),
-  ];
-
-  return streamPromise(
-    gulp
-      .src(srcGlob)
-      .pipe(concat('index.d.ts'))
-      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
-      .on('finish', function () {
-        logTask('📜 ', 'Core typescript definition files included');
-      })
   );
 }
 
@@ -214,12 +200,6 @@ function compileJs(dir, options, changedPath) {
         return generateTypeDefinitionsFromPropTypes(dir);
       }
     })
-    .then(() => {
-      // If child design system is using typescript, include core definitions as well
-      if (options.typescript && !options.core) {
-        return copyCoreTypeDefinitions(dir);
-      }
-    });
 }
 
 module.exports = {

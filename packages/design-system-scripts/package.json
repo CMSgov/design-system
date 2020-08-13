@@ -40,7 +40,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-changed": "^3.1.1",
     "gulp-changed-in-place": "^2.3.0",
-    "gulp-concat": "^2.6.1",
     "gulp-count": "^1.0.0",
     "gulp-eslint": "^6.0.0",
     "gulp-if": "^2.0.2",
