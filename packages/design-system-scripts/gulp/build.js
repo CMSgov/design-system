@@ -75,7 +75,7 @@ async function copyAll(dir) {
  */
 async function generateTypeDefinitionsFromPropTypes(dir) {
   const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src).concat([`!${src}/**/index.js`]);
+  const srcGlob = getSrcGlob(src);
 
   return streamPromise(
     gulp
@@ -88,7 +88,6 @@ async function generateTypeDefinitionsFromPropTypes(dir) {
           cb(null, file);
         })
       )
-      .pipe(concat('index.d.ts'))
       .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
       .on('finish', function () {
         logTask('📜 ', 'Core Typescript definition files generated');
