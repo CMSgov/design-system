@@ -1,6 +1,7 @@
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -28,19 +29,20 @@ export class HelpDrawer extends React.PureComponent {
   render() {
     const {
       ariaLabel,
+      className,
       closeButtonText,
-      title,
       children,
-      onCloseClick,
-      heading,
       footerBody,
       footerTitle,
+      heading,
+      onCloseClick,
+      title,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
-      <div className="ds-c-help-drawer">
+      <div className={classNames(className, "ds-c-help-drawer")}>
         <div className="ds-c-help-drawer__header">
           {/* The nested div below might seem redundant, but we need a
            * separation between our sticky header, and the flex container
@@ -93,6 +95,7 @@ HelpDrawer.propTypes = {
   ariaLabel: PropTypes.string,
   closeButtonText: PropTypes.string,
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
   /**

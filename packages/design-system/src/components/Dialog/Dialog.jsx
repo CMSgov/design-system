@@ -168,6 +168,10 @@ Dialog.propTypes = {
    */
   heading: PropTypes.node,
   /**
+   * @hide-prop
+   */
+  id: PropTypes.string,
+  /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
    * the dialog (if `underlayClickExits=true`).

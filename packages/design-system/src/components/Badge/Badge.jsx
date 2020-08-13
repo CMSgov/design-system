@@ -27,6 +27,10 @@ Badge.propTypes = {
    */
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
+   * @hide-prop
+   */
+  id: PropTypes.string,
+  /**
    * Sets the font size of the Badge
    */
   size: PropTypes.oneOf(['big']),
