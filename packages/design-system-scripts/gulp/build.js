@@ -82,7 +82,7 @@ async function generateTypeDefinitionsFromPropTypes(dir) {
       .src(srcGlob, { base: src })
       .pipe(
         through.obj((file, enc, cb) => {
-          const definition = react2dts.generateFromFile(file.basename, file.path);
+          const definition = react2dts.generateFromFile(null, file.path);
           file.contents = Buffer.from(definition);
           file.extname = '.d.ts';
           cb(null, file);
