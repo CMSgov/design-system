@@ -56,5 +56,8 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ]
+  ],
+  "dependencies": {
+    "backstopjs": "^5.0.4"
+  }
 }
