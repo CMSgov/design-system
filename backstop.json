@@ -104,8 +104,8 @@
     },
     {
       "label": "CMSDS - Guidelines - Browser support",
-      "referenceUrl": "https://design.cms.gov/startup/browser-support/",
-      "url": "http://localhost:3000/startup/browser-support/",
+      "referenceUrl": "https://design.cms.gov/guidelines/browser-support/",
+      "url": "http://localhost:3000/guidelines/browser-support/",
       "removeSelectors": ["#frame"]
     },
     {
@@ -122,7 +122,7 @@
     },
     {
       "label": "CMSDS - Styles - Base - Inverse",
-      "referenceUrl": "https://design.cms.gov/design.base..ds-base--inverse/",
+      "referenceUrl": "https://design.cms.gov/styles.base..ds-base--inverse/",
       "url": "http://localhost:3000/example/styles.base..ds-base--inverse/",
       "removeSelectors": ["#frame"]
     },
@@ -243,8 +243,8 @@
     },
     {
       "label": "CMSDS - Styles - Spacing",
-      "referenceUrl": "https://design.cms.gov/layout/spacing/",
-      "url": "http://localhost:3000/layout/spacing/",
+      "referenceUrl": "https://design.cms.gov/styles/spacing/",
+      "url": "http://localhost:3000/styles/spacing/",
       "removeSelectors": ["#frame"]
     },
     {
