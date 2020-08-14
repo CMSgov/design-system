@@ -26,7 +26,7 @@ export const Dialog = function (props) {
   if (process.env.NODE_ENV !== 'production') {
     if (props.title) {
       console.warn(
-        `[Deprecated]: Please remove the 'title' prop in <Button>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        `[Deprecated]: Please remove the 'title' prop in <Dialog>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
       );
     }
   }
