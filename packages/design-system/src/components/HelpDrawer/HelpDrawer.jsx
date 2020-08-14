@@ -88,12 +88,14 @@ HelpDrawer.defaultProps = {
   closeButtonText: 'Close',
   headingLevel: '3',
 };
+// TODO: closeButtonText should be a string, but it is being used as a node in MCT, 
+// until we provide a better solution for customization, incorrectly type it as a node.
 HelpDrawer.propTypes = {
   /**
    * Helps give more context to screen readers on the button that closes the Help Drawer
    */
   ariaLabel: PropTypes.string,
-  closeButtonText: PropTypes.string,
+  closeButtonText: PropTypes.node,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   footerBody: PropTypes.node,
