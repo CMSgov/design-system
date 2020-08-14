@@ -28,5 +28,9 @@ export { default as TableHeaderCell } from './Table/TableHeaderCell';
 export { default as TableRow } from './Table/TableRow';
 export { default as Tabs } from './Tabs/Tabs';
 export { default as TabPanel } from './Tabs/TabPanel';
-export { default as TextField, unmaskValue } from './TextField/TextField';
+// We use this export method because unmaskValue is not outputted in the typescript definition file
+// Temporary use both default export and *
+// export { default as TextField, unmaskValue } from './TextField/TextField';
+export * from './TextField/TextField';
+export { default as TextField } from './TextField/TextField';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';
