@@ -122,7 +122,7 @@
     },
     {
       "label": "CMSDS - Styles - Base - Inverse",
-      "referenceUrl": "https://design.cms.gov/styles.base..ds-base--inverse/",
+      "referenceUrl": "https://design.cms.gov/example/styles.base..ds-base--inverse/",
       "url": "http://localhost:3000/example/styles.base..ds-base--inverse/",
       "removeSelectors": ["#frame"]
     },
@@ -941,6 +941,10 @@
       "url": "http://localhost:3000/example/components.table.complex/",
       "removeSelectors": ["#frame"]
     },
+    { "label": "CMSDS - Components - Table - React", 
+      "referenceUrl": "https://design.cms.gov/example/components.table.react/",
+      "url": "http://localhost:3000/example/components.table.react/",
+      "removeSelectors": ["#frame"] },
     {
       "label": "CMSDS - Components - Tabs",
       "referenceUrl": "https://design.cms.gov/components/tabs/",
