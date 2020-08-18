@@ -47,10 +47,6 @@ const ignoredComponents = [
   'VerticalNavItemLabel',
 ];
 
-const additionalComponents = [
-  'unmaskValue'
-]
-
 describe('Components index', () => {
   it("exports all components except ones we don't want to expose", () => {
     return fs
@@ -60,7 +56,6 @@ describe('Components index', () => {
       .then(getComponentFilenames)
       .then((names) => {
         names
-          .concat(additionalComponents)
           .filter((name) => !ignoredComponents.includes(name))
           .forEach((name) => {
             expect(componentNames).toEqual(expect.arrayContaining([name]));
