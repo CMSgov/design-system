@@ -83,7 +83,8 @@ export interface ChoiceProps {
     value: ChoiceValue;
 }
 
-export default class Choice extends React.Component<React.HTMLProps<HTMLInputElement> & ChoiceProps, any> {
+// Remove the "size" definition inside React.HTMLProps<HTMLInputElement>, and use ours instead
+export default class Choice extends React.Component<Omit<React.HTMLProps<HTMLInputElement>, "size"> & ChoiceProps, any> {
     render(): JSX.Element;
 
 }

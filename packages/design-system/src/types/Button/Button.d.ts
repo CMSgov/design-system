@@ -63,7 +63,8 @@ export interface ButtonProps {
     variation?: ButtonVariation;
 }
 
-export default class Button extends React.Component<React.HTMLProps<HTMLButtonElement> & ButtonProps, any> {
+// Remove the "size" definition inside React.HTMLProps<HTMLButtonElement>, and use ours instead
+export default class Button extends React.Component<Omit<React.HTMLProps<HTMLButtonElement>, "size"> & ButtonProps, any> {
     render(): JSX.Element;
 
 }
