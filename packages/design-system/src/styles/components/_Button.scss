@@ -127,9 +127,10 @@
 
   &:disabled,
   &.ds-c-button--disabled {
-    background-color: transparent;
+    background-color: $color-gray-lighter;
     border-color: transparent;
-    color: $color-gray-lighter;
+    color: $color-gray-dark;
+    text-decoration: none;
   }
 }
 
@@ -179,8 +180,8 @@
 
 /* stylelint-disable */
 %transparent-inverse-button {
-  border-color: $color-background-inverse;
-
+  border-color: transparent;
+  background-color: transparent;
   // Default inverse focus styles are overridden above
   @if $ds-include-focus-styles {
     &:focus,
@@ -195,13 +196,18 @@
   &.ds-c-button--disabled,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    border-color: $color-background-inverse;
+    border-color: transparent;
   }
 }
 
 .ds-c-button--inverse.ds-c-button--transparent,
 .ds-c-button--inverse.ds-c-button--transparent:visited {
   @extend %transparent-inverse-button;
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+  }
 }
 
 /**
@@ -215,9 +221,9 @@
 }
 
 %disabled-inverse-button {
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
+  background-color: $color-background-inverse;
+  border-color: $color-gray-lighter;
+  color: $color-gray-lighter;
   pointer-events: none;
 }
 
