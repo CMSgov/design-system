@@ -31,7 +31,7 @@ function renderLinks(links) {
   return urls.map(function (url) {
     return (
       <dd key={url} className="ds-u-font-size--small ds-u-margin-left--0">
-        <a href={url} target="_blank">
+        <a href={url} target="_blank" rel="noreferrer">
           {links[url]}
         </a>
       </dd>
@@ -54,6 +54,7 @@ const Footer = () => {
               className="ds-c-button"
               href={githubUrl('issues/new?assignees=&labels=Bug&template=bug_report.md&title=')}
               target="_blank"
+              rel="noreferrer"
             >
               Report a bug
             </a>
@@ -63,6 +64,7 @@ const Footer = () => {
               className="ds-c-button"
               href={githubUrl('issues/new?assignees=&labels=&template=general-issue.md&title=')}
               target="_blank"
+              rel="noreferrer"
             >
               Request a change
             </a>
@@ -74,6 +76,7 @@ const Footer = () => {
                 'issues/new?assignees=&labels=proposal%2Ffeature+request&template=propose-a-new-item-for-the-cms-design-system.md&title='
               )}
               target="_blank"
+              rel="noreferrer"
             >
               Propose something new
             </a>
@@ -103,7 +106,7 @@ const Footer = () => {
               <dd className="ds-u-font-size--small ds-u-margin-left--0">
                 <button
                   type="button"
-                  className="ds-c-button ds-c-button--small ds-c-button--transparent-inverse ds-u-padding--0 titlelink"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-c-button--inverse ds-u-padding--0 titlelink"
                   onClick={() => (window.location.href = '#')}
                   data-privacy-policy="modal-trigger-footer"
                 >
