@@ -52,6 +52,18 @@ function copySass(dir) {
   );
 }
 
+/**
+ * Copy any TS definition files (only used in core)
+ */
+function copyDefinitionFiles(dir) {
+  const src = path.join(dir, 'src');
+  return streamPromise(
+    gulp
+      .src([`${src}/**/*.d.ts`])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
+  );
+}
+
 async function copyAll(dir) {
   const copyTasks = [
     copyJson(dir),
@@ -167,13 +179,14 @@ async function compileEsmJs(dir, changedPath) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
+
 function compileJs(dir, options, changedPath) {
-  const src = path.join(dir, 'src');
+  const src = path.join(dir, 'src', 'components');
   const srcGlob = getSrcGlob(src, changedPath);
 
   return streamPromise(
     gulp
-      .src(srcGlob, { base: src })
+      .src(srcGlob, { base: path.join(dir, 'src') })
       .pipe(babel())
       .on('error', (error) => {
         logError('compileJs', error);
@@ -195,10 +208,6 @@ function compileJs(dir, options, changedPath) {
       if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
-      // If core ds, use react2dts to generate definition files from proptypes
-      if (options.core) {
-        return generateTypeDefinitionsFromPropTypes(dir);
-      }
     })
 }
 
@@ -210,6 +219,10 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
+    // If core ds, copy definition files too
+    if (options.core) {
+      await copyDefinitionFiles(sourceDir);
+    }
     await compileSourceSass(sourceDir);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
