@@ -94,14 +94,14 @@ $focus-color-inverse: #ffde11 !default;
 $focus-border-inverse: #8f7c00 !default;
 $focus-shadow: inset 0 0 0 1px $color-base;
 $focus-shadow-inverse: inset 0 0 0 1px $color-base !default;
-$focus-shadow-link: 0 3px $color-base;
+$focus-shadow-link: 0 3px $color-base !default;
 $focus-shadow-link-inverse: 0 3px $focus-border-inverse !default;
 
 $color-visited: #4c2c92 !default;
 
 // Background
 $color-background: $color-white !default;
-$color-background-inverse: $color-primary-darkest;
+$color-background-inverse: $color-primary-darkest !default;
 $color-background-dialog-mask: rgba($color-black, 0.5) !default;
 $color-background-dialog: $color-white !default;
 

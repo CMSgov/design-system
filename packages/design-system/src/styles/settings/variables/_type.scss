@@ -1,9 +1,5 @@
 // Typography
 
-// Removing the !default from $em-base so we are not inheriting that
-// value from Bourbon.
-$em-base: 10px;
-
 // USWDS uses rem units for their font sizes, however this relies on
 // the root element (typically <html>) to have its font size set to
 // 10px. Since styling a root element goes against the guiding principles
@@ -33,8 +29,8 @@ $lead-line-height: 1.7 !default;
 
 $font-normal: 400 !default;
 $font-bold: 700 !default;
-$font-semibold: 600;
+$font-semibold: 600 !default;
 
-$measure-narrow: 45ex;
-$measure-base: 65ex;
-$measure-wide: 80ex;
+$measure-narrow: 45ex !default;
+$measure-base: 65ex !default;
+$measure-wide: 80ex !default;
