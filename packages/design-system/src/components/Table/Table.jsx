@@ -32,9 +32,8 @@ export class Table extends React.PureComponent {
       tabIndex: null,
     };
     this.captionID = uniqueId('caption-');
-    // this.container = React.createRef();  // React v16.3.0 - createRef API
-    this.container = null;
-    this.handleWindowResize = debounce(this.handleWindowResize.bind(this), 500);
+    this.container = 0;
+    this.debounceHandleResize = debounce(this.handleResize.bind(this), 500);
 
     if (process.env.NODE_ENV !== 'production') {
       if (
@@ -51,17 +50,18 @@ export class Table extends React.PureComponent {
 
   componentDidMount() {
     if (this.props.scrollable) {
-      window.addEventListener('resize', this.handleWindowResize);
+      window.addEventListener('resize', this.debounceHandleResize);
+      this.handleResize();
     }
   }
 
   componentWillUnmount() {
     if (this.props.scrollable) {
-      window.removeEventListener('resize', this.handleWindowResize);
+      window.removeEventListener('resize', this.debounceHandleResize);
     }
   }
 
-  handleWindowResize() {
+  handleResize() {
     const { scrollWidth, clientWidth } = this.container;
     const scrollActive = scrollWidth > clientWidth;
     this.setState({
