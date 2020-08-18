@@ -91,7 +91,7 @@ export interface DropdownProps {
     value?: DropdownValue;
 }
 
-export default class Dropdown extends React.Component<DropdownProps, any> {
+export default class Dropdown extends React.Component<React.HTMLProps<HTMLSelectElement> & DropdownProps, any> {
     render(): JSX.Element;
 
 }

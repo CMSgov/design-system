@@ -30,7 +30,7 @@ export interface BadgeProps {
     variation?: BadgeVariation;
 }
 
-declare const Badge: React.FC<BadgeProps>;
+declare const Badge: React.FC<React.HTMLProps<HTMLSpanElement> & BadgeProps>;
 
 export default Badge;
 

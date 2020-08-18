@@ -108,8 +108,7 @@ export interface TextFieldProps {
     value?: TextFieldValue;
 }
 
-export default class TextField extends React.Component<TextFieldProps, any> {
+export default class TextField extends React.Component<React.HTMLProps<HTMLInputElement> & TextFieldProps, any> {
     render(): JSX.Element;
 
 }
-

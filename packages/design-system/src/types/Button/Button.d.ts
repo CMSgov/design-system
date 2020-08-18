@@ -63,7 +63,7 @@ export interface ButtonProps {
     variation?: ButtonVariation;
 }
 
-export default class Button extends React.Component<ButtonProps, any> {
+export default class Button extends React.Component<React.HTMLProps<HTMLButtonElement> & ButtonProps, any> {
     render(): JSX.Element;
 
 }

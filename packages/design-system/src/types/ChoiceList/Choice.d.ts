@@ -83,7 +83,7 @@ export interface ChoiceProps {
     value: ChoiceValue;
 }
 
-export default class Choice extends React.Component<ChoiceProps, any> {
+export default class Choice extends React.Component<React.HTMLProps<HTMLInputElement> & ChoiceProps, any> {
     render(): JSX.Element;
 
 }
