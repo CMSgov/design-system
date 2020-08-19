@@ -20,7 +20,9 @@
       @include focus-text;
     }
   } @else {
-    color: $color-primary-darker;
+    &:focus {
+      color: $color-primary-darker;
+    }
   }
 
   &:active {
