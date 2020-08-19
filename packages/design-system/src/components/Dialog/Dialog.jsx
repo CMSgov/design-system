@@ -93,6 +93,8 @@ Dialog.defaultProps = {
   underlayClickExits: false,
 };
 
+// TODO: closeButtonText should be a string, but it is being used as a node in MCT, 
+// until we provide a better solution for customization, we type it as a node.
 Dialog.propTypes = {
   /**
    * If `true`, the modal will receive a role of `alertdialog`, instead of its
@@ -146,7 +148,7 @@ Dialog.propTypes = {
    * For internationalization purposes, the text for the "Close" button must be
    * passed in as a prop.
    */
-  closeText: PropTypes.string,
+  closeText: PropTypes.node,
   /**
    * Disable exiting the dialog when a user presses the Escape key.
    */
