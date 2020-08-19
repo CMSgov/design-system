@@ -5,6 +5,10 @@ import TableCaption from './TableCaption';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
+// TODO: Revert out of this 'PR update to use lifecycle methods'
+// (https://github.com/CMSgov/design-system/pull/777)
+// when hc.gov child ds and the product apps are on react v16.8
+
 function debounce(fn, ms) {
   let timer;
   return () => {
@@ -29,7 +33,7 @@ export class Table extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      tabIndex: null,
+      isTableScrollable: false,
     };
     this.captionID = uniqueId('caption-');
     this.container = 0;
@@ -63,9 +67,9 @@ export class Table extends React.PureComponent {
 
   handleResize() {
     const { scrollWidth, clientWidth } = this.container;
-    const scrollActive = scrollWidth > clientWidth;
+    const isScrollActive = scrollWidth > clientWidth;
     this.setState({
-      tabIndex: scrollActive ? '0' : null,
+      isTableScrollable: isScrollActive,
     });
   }
 
@@ -75,7 +79,7 @@ export class Table extends React.PureComponent {
       if (this.props.scrollable && isTableCaption(child)) {
         return React.cloneElement(child, {
           _id: this.captionID,
-          _scrollActive: this.state.tabIndex !== null,
+          _scrollActive: this.state.isTableScrollable,
           _scrollableNotice: this.props.scrollableNotice,
         });
       }
@@ -111,7 +115,7 @@ export class Table extends React.PureComponent {
       'aria-labelledby': this.captionID,
       'aria-live': 'polite',
       'aria-relevant': 'additions',
-      tabIndex: this.state.tabIndex,
+      tabIndex: this.state.isTableScrollable ? '0' : null,
     };
 
     return (
