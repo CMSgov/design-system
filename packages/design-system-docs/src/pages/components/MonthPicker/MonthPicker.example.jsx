@@ -1,8 +1,6 @@
-import { MonthPicker, getMonthNames } from '@cmsgov/design-system';
+import { MonthPicker } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-console.log(getMonthNames('en'));
 
 ReactDOM.render(
   <div>
