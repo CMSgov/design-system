@@ -139,10 +139,6 @@ Button.propTypes = {
    */
   href: PropTypes.string,
   /**
-   * @hide-prop
-   */
-  id: PropTypes.string,
-  /**
    * Access a reference to the `button` or `a` element
    */
   inputRef: PropTypes.func,

@@ -93,7 +93,7 @@ export interface DialogProps {
     underlayClickExits?: boolean;
 }
 
-declare const Dialog: React.FC<DialogProps>;
+declare const Dialog: React.FC<React.HTMLProps<HTMLDivElement> & DialogProps>;
 
 export default Dialog;
 
