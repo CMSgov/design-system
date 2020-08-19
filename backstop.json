@@ -25,7 +25,7 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Getting Started - Install with NPM",
+      "label": "CMSDS - Getting Started - Installation",
       "referenceUrl": "https://design.cms.gov/startup/installation/",
       "url": "http://localhost:3000/startup/installation/",
       "removeSelectors": ["#frame"]
