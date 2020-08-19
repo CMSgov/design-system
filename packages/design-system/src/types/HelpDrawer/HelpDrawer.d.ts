@@ -15,7 +15,7 @@ export interface HelpDrawerProps {
     /**
      * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
      */
-    heading?: string;
+    heading?: React.ReactNode;
     /**
      * Heading type to override default `<h3>`
      */
@@ -24,7 +24,7 @@ export interface HelpDrawerProps {
     /**
      * @hide-prop [Deprecated] This prop has been renamed to `heading`.
      */
-    title?: string;
+    title?: React.ReactNode;
 }
 
 export default class HelpDrawer extends React.Component<HelpDrawerProps, any> {

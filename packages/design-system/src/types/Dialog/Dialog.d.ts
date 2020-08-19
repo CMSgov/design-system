@@ -51,7 +51,7 @@ export interface DialogProps {
      * For internationalization purposes, the text for the "Close" button must be
      * passed in as a prop.
      */
-    closeText?: string;
+    closeText?: React.ReactNode;
     /**
      * Disable exiting the dialog when a user presses the Escape key.
      */
