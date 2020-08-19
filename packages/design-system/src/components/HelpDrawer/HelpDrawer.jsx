@@ -88,7 +88,7 @@ HelpDrawer.defaultProps = {
   closeButtonText: 'Close',
   headingLevel: '3',
 };
-// TODO: closeButtonText should be a string, but it is being used as a node in MCT, 
+// TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT, 
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
   /**
@@ -103,7 +103,7 @@ HelpDrawer.propTypes = {
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
-  heading: PropTypes.string,
+  heading: PropTypes.node,
   /**
    * Heading type to override default `<h3>`
    */
@@ -112,7 +112,7 @@ HelpDrawer.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 export default HelpDrawer;

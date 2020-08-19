@@ -108,8 +108,10 @@ export interface TextFieldProps {
     value?: TextFieldValue;
 }
 
+type OmitProps = "size" | "label"
+
 // Remove the "size" definition inside React.HTMLProps<HTMLInputElement>, and use ours instead
-export default class TextField extends React.Component<Omit<React.HTMLProps<HTMLInputElement>, "size" | "label"> & TextFieldProps, any> {
+export default class TextField extends React.Component<Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & TextFieldProps, any> {
     render(): JSX.Element;
 
 }

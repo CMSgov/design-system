@@ -32,10 +32,6 @@ export interface ButtonProps {
      */
     href?: string;
     /**
-     * @hide-prop
-     */
-    id?: string;
-    /**
      * Access a reference to the `button` or `a` element
      */
     inputRef?: (...args: any[])=>any;
@@ -63,8 +59,10 @@ export interface ButtonProps {
     variation?: ButtonVariation;
 }
 
+type OmitProps = "size";
+
 // Remove the "size" definition inside React.HTMLProps<HTMLButtonElement>, and use ours instead
-export default class Button extends React.Component<Omit<React.HTMLProps<HTMLButtonElement>, "size"> & ButtonProps, any> {
+export default class Button extends React.Component<Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & ButtonProps, any> {
     render(): JSX.Element;
 
 }

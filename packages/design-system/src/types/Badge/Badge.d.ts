@@ -17,10 +17,6 @@ export interface BadgeProps {
      */
     children: BadgeChildren;
     /**
-     * @hide-prop
-     */
-    id?: string;
-    /**
      * Sets the font size of the Badge
      */
     size?: BadgeSize;
