@@ -24,7 +24,9 @@
       text-decoration: none;
     }
   } @else {
-    color: $color-primary-darkest;
+    &:focus {
+      color: $color-primary-darkest;
+    }
   }
 
   @if $ds-include-focus-styles {
