@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
+import React from 'react';
 import TableCaption from './TableCaption';
-import TableContext from './TableContext';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
+
+// TODO: Revert out of this 'PR update to use lifecycle methods'
+// (https://github.com/CMSgov/design-system/pull/777)
+// when hc.gov child ds and the product apps are on react v16.8
 
 function debounce(fn, ms) {
   let timer;
@@ -17,108 +20,118 @@ function debounce(fn, ms) {
   };
 }
 
-export const Table = ({
-  className,
-  stackBreakpoint,
-  striped,
-  scrollable,
-  scrollableNotice,
-  children,
-  ...others
-}) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (
-      scrollable &&
-      Array.isArray(children) &&
-      !children.some((child) => child.type === TableCaption)
-    ) {
-      console.warn(
-        'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
-      );
+/**
+ * Determine if a React component is a TableCaption
+ * @param {React.Node} child - a React component
+ * @return {Boolean} Is this a TableCaption component?
+ */
+function isTableCaption(child) {
+  return child && child.type === TableCaption;
+}
+
+export class Table extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isTableScrollable: false,
+    };
+    this.captionID = uniqueId('caption-');
+    this.container = 0;
+    this.debounceHandleResize = debounce(this.handleResize.bind(this), 500);
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (
+        props.scrollable &&
+        Array.isArray(props.children) &&
+        !props.children.some((child) => child.type === TableCaption)
+      ) {
+        console.warn(
+          'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
+        );
+      }
     }
   }
 
-  const container = useRef(null);
-  // The captionID is stored as init value of a ref.
-  const captionID = useRef(uniqueId('caption-'));
-  const [isTableScrollable, setTableScrollable] = useState(false);
-
-  // Listens to the window resize event to dynamically handle horizontal scrollable tables
-  useEffect(() => {
-    function checkScrollable() {
-      const { scrollWidth, clientWidth } = container.current;
-      const isScrollActive = scrollWidth > clientWidth;
-      setTableScrollable(isScrollActive);
+  componentDidMount() {
+    if (this.props.scrollable) {
+      window.addEventListener('resize', this.debounceHandleResize);
+      this.handleResize();
     }
+  }
 
-    if (scrollable) {
-      checkScrollable();
-
-      // Set isTableScrollable `true` if the table width is wider than the viewport
-      const debouncedHandleResize = debounce(function handleResize() {
-        checkScrollable();
-      }, 500);
-
-      // Create window resize event listener that calls the debouncedHandleResize function
-      window.addEventListener('resize', debouncedHandleResize);
-
-      // Clean up the establishd event listeners
-      return () => {
-        window.removeEventListener('resize', debouncedHandleResize);
-      };
+  componentWillUnmount() {
+    if (this.props.scrollable) {
+      window.removeEventListener('resize', this.debounceHandleResize);
     }
-  }, [scrollable]);
+  }
 
-  const classes = classNames(
-    'ds-c-table',
-    striped ? 'ds-c-table--striped' : null,
-    stackBreakpoint ? `ds-c-table--stacked-${stackBreakpoint}` : null,
-    className
-  );
+  handleResize() {
+    const { scrollWidth, clientWidth } = this.container;
+    const isScrollActive = scrollWidth > clientWidth;
+    this.setState({
+      isTableScrollable: isScrollActive,
+    });
+  }
 
-  // Make table container focusable and display scroll notice when table width exceeds viewport.
-  // Set attribute `tabIndex = 0` makes table container focusable enables keyboard support of using the arrow keys.
-  // Also, it provides context for screen reader users as they are able to focus on the region.
-  // Do this by using table's <caption> to label the scrollable region using aria-labelleby
-  const attributeScrollable = scrollable && {
-    className: 'ds-c-table__wrapper',
-    role: 'region',
-    'aria-labelledby': captionID.current,
-    'aria-live': 'polite',
-    'aria-relevant': 'additions',
-    tabIndex: isTableScrollable ? '0' : null,
-  };
-
-  const isTableCaptionComponent = (child) => {
-    return child && child.type === TableCaption;
-  };
-
-  const renderChildren = (captionId) => {
-    return React.Children.map(children, (child) => {
+  renderChildren() {
+    return React.Children.map(this.props.children, (child) => {
       // Extend props on TableCaption before rendering.
-      if (scrollable && isTableCaptionComponent(child)) {
+      if (this.props.scrollable && isTableCaption(child)) {
         return React.cloneElement(child, {
-          _id: captionId,
-          _scrollActive: isTableScrollable,
-          _scrollableNotice: scrollableNotice,
+          _id: this.captionID,
+          _scrollActive: this.state.isTableScrollable,
+          _scrollableNotice: this.props.scrollableNotice,
         });
       }
       return child;
     });
-  };
+  }
 
-  const isStackable = !!stackBreakpoint;
+  render() {
+    const {
+      className,
+      stackBreakpoint,
+      striped,
+      scrollable,
+      scrollableNotice,
+      children,
+      ...others
+    } = this.props;
 
-  return (
-    <div ref={container} {...attributeScrollable}>
-      <TableContext.Provider value={isStackable}>
+    const classes = classNames(
+      'ds-c-table',
+      striped ? 'ds-c-table--striped' : null,
+      stackBreakpoint ? `ds-c-table--stacked-${stackBreakpoint}` : null,
+      className
+    );
+
+    // Make table container focusable and display scroll notice when table width exceeds viewport.
+    // Set attribute `tabIndex = 0` to make table container focusable and enable keyboard support of using the arrow keys.
+    // Also, it provides context for screen reader users as they are able to focus on the region.
+    // Do this by using table's <caption> to label the scrollable region using aria-labelleby
+    const attributeScrollable = scrollable && {
+      className: 'ds-c-table__wrapper',
+      role: 'region',
+      'aria-labelledby': this.captionID,
+      'aria-live': 'polite',
+      'aria-relevant': 'additions',
+      tabIndex: this.state.isTableScrollable ? '0' : null,
+    };
+
+    return (
+      <div
+        ref={(container) => {
+          this.container = container;
+        }}
+        {...attributeScrollable}
+      >
         <table className={classes} role="table" {...others}>
-          {renderChildren(captionID.current)}
+          {this.renderChildren()}
         </table>
-      </TableContext.Provider>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 Table.defaultProps = {
   scrollableNotice: (
