@@ -4,7 +4,7 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Hide the default browser checkbox/radio button since we'll
 // create our own custom version
-/* stylelint-disable max-nesting-depth */
+
 .ds-c-choice {
   left: -999em;
   opacity: 0;
@@ -27,82 +27,39 @@ $ds-c-inset-border-width: $spacer-half;
       margin-left: $spacer-1;
     }
   }
-  + label {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: $font-normal;
-    margin: $spacer-1 0;
-    max-width: $measure-base;
-    min-height: $choice-size;
-    padding-left: $choice-size + $spacer-1;
-    position: relative;
-    &::before {
-      background-color: $color-background;
-      border: $choice-border-width solid $choice-border-color;
-      box-sizing: border-box;
-      content: '\a0';
-      height: $choice-size;
-      left: 0;
-      line-height: $choice-size;
-      position: absolute;
-      text-indent: 0.15em;
-      top: 0;
-      width: $choice-size;
-    }
-    &::after {
-      background: transparent;
-      border: solid;
-      border-color: $color-white;
-      border-top-color: transparent;
-      border-width: 0 0 4px 4px;
-      content: '';
-      height: 4px;
-      left: 9px;
-      opacity: 0;
-      position: absolute;
-      top: 10px;
-      transform: rotate(-45deg);
-      width: 10px;
-    }
-  }
-  &:disabled {
-    + label {
-      color: $color-muted;
-
-      &::before {
-        background-color: $color-gray-lighter;
-        border: 1px solid $color-gray-light;
-        cursor: not-allowed;
-      }
-    }
-  }
 }
-/* stylelint-enable max-nesting-depth */
 
-.ds-c-choice--inverse {
-  + label {
-    &::before {
-      background-color: $color-background-inverse;
-      border-color: $choice-border-color-inverse;
-    }
-  }
-  &:focus + label::before {
-    @if $ds-include-focus-styles {
-      border-color: $choice-border-color-inverse;
-      box-shadow: 0 0 0 3px $focus-color-inverse;
-    } @else {
-      box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
-    }
-  }
-  &:disabled + label {
-    color: $color-muted-inverse;
-    &::before {
-      background-color: rgba($color-muted-inverse, 0.15);
-      box-shadow: 0 0 0 1px $color-muted-inverse;
-    }
-  }
+.ds-c-choice + label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: $font-normal;
+  margin: $spacer-1 0;
+  max-width: $measure-base;
+  min-height: $choice-size;
+  padding-left: $choice-size + $spacer-1;
+  position: relative;
+}
+
+// Create a custom checkbox/radio button
+.ds-c-choice + label::before {
+  background-color: $color-background;
+  border: $choice-border-width solid $choice-border-color;
+  box-sizing: border-box;
+  content: '\a0';
+  height: $choice-size;
+  left: 0;
+  line-height: $choice-size;
+  position: absolute;
+  text-indent: 0.15em;
+  top: 0;
+  width: $choice-size;
+}
+
+.ds-c-choice--inverse + label::before {
+  background-color: $color-background-inverse;
+  border-color: $choice-border-color-inverse;
 }
 
 // Display an outline
@@ -128,15 +85,46 @@ $ds-c-inset-border-width: $spacer-half;
   }
 }
 
-// Display a checkmark
-// Using CSS to display the checkmark because background images don't how in high contrast mode on windows.
-.ds-c-choice:checked + label {
-  &::after {
-    opacity: 1;
+.ds-c-choice--inverse:focus + label::before {
+  @if $ds-include-focus-styles {
+    border-color: $choice-border-color-inverse;
+    box-shadow: 0 0 0 3px $focus-color-inverse;
+  } @else {
+    box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
   }
-  &::before {
-    background-color: $color-primary;
-    border-color: $color-primary-darker;
+}
+
+// Display a checkmark
+.ds-c-choice:checked + label::before {
+  background-color: $choice-checked-background-color;
+  background-image: url('#{$image-path}/checkmark-white.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: $choice-size - $spacer-1;
+  border-color: $choice-checked-background-color;
+}
+
+// Fade the checkbox and label
+.ds-c-choice:disabled {
+  + label {
+    color: $color-muted;
+
+    &::before {
+      background-color: $color-gray-lighter;
+      border: 1px solid $color-gray-light;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ds-c-choice--inverse:disabled {
+  + label {
+    color: $color-muted-inverse;
+
+    &::before {
+      background-color: rgba($color-muted-inverse, 0.15);
+      box-shadow: 0 0 0 1px $color-muted-inverse;
+    }
   }
 }
 
@@ -173,14 +161,6 @@ Size variants
       height: $choice-size-small;
       top: 2px;
       width: $choice-size-small;
-    }
-
-    &::after {
-      border-width: 0 0 3px 3px;
-      height: 3px;
-      left: 5px;
-      top: 8px;
-      width: 7px;
     }
   }
 
