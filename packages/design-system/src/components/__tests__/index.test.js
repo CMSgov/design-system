@@ -35,7 +35,6 @@ function getDirectories(paths) {
 }
 
 const ignoredComponents = [
-  'TableContext',
   'Mask',
   'ReviewLink',
   'Step',
