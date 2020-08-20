@@ -141,40 +141,51 @@ describe('Mask', function () {
   });
 
   describe('Currency', () => {
-    it('accepts already masked value', () => {
-      const data = render({ mask: 'currency' }, { value: '1,234.50' });
+    const testCurrency = (value, expected) => {
+      const data = render({ mask: 'currency' }, { value });
       const input = data.wrapper.find('input');
+      expect(input.prop('value')).toBe(expected);
+    };
 
-      expect(input.prop('value')).toBe('1,234.50');
+    it('accepts already masked value', () => testCurrency('1,234.50', '1,234.50'));
+
+    it('adds commas', () => {
+      testCurrency('1234', '1,234');
+      testCurrency('12345', '12,345');
+      testCurrency('123456', '123,456');
+      testCurrency('1234567', '1,234,567');
+      testCurrency('12345678', '12,345,678');
+      testCurrency('123456789', '123,456,789');
+      testCurrency('12345678.90', '12,345,678.90');
+      testCurrency('1234.95', '1,234.95');
     });
 
-    it('adds commas to value with decimal ending in 0', () => {
-      const data = render({ mask: 'currency' }, { value: '12345678.90' });
-      const input = data.wrapper.find('input');
+    it('accepts negative values', () => testCurrency('-1234', '-1,234'));
 
-      expect(input.prop('value')).toBe('12,345,678.90');
+    it('removes non-supported characters', () => testCurrency('1!a2@b3#c', '123'));
+
+    it('trims any decimal digits after the hundredths place', () =>
+      testCurrency('123.456789', '123.45'));
+
+    it('appends a zero in the hundredths place if there is a non-zero digit in the tenths place', () =>
+      testCurrency('12.3', '12.30'));
+
+    it('trims leading zeroes unless value is less than 1', () => {
+      testCurrency('000101', '101');
+      testCurrency('0', '0');
+      testCurrency('0000.11', '0.11');
     });
 
-    it('adds commas to value with decimal ending in non-zero number', () => {
-      const data = render({ mask: 'currency' }, { value: '1234.95' });
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('1,234.95');
+    it('removes all decimal points after the first', () => {
+      testCurrency('1..2.3...4..5', '1.23');
+      testCurrency('....67', '0.67');
     });
 
-    it('adds commas to value with no decimal', () => {
-      const data = render({ mask: 'currency' }, { value: '1234' });
-      const input = data.wrapper.find('input');
+    it('removes decimal if value is a whole number', () => testCurrency('123.00', '123'));
 
-      expect(input.prop('value')).toBe('1,234');
-    });
-
-    it('accepts negative values', () => {
-      const data = render({ mask: 'currency' }, { value: '-1,234' });
-      const input = data.wrapper.find('input');
-
-      expect(input.prop('value')).toBe('-1,234');
-    });
+    // Number.MAX_SAFE_INTEGER === 9007199254740991
+    it('supports numbers greater than Number.MAX_SAFE_INTEGER', () =>
+      testCurrency('9999999999999999.99', '9,999,999,999,999,999.99'));
   });
 
   describe('Phone', () => {
