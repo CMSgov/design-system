@@ -1,4 +1,4 @@
-import Mask, { unmaskValue } from './Mask';
+import Mask, { toCurrency, unmaskValue } from './Mask';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
@@ -141,51 +141,61 @@ describe('Mask', function () {
   });
 
   describe('Currency', () => {
-    const testCurrency = (value, expected) => {
+    // testComponent tests the entire <Mask mask="currency"> component
+    // others will simply test the formatting function, toCurrency
+    const testComponent = (value, expected) => {
       const data = render({ mask: 'currency' }, { value });
       const input = data.wrapper.find('input');
       expect(input.prop('value')).toBe(expected);
     };
 
-    it('accepts already masked value', () => testCurrency('1,234.50', '1,234.50'));
+    it('does not mask if value is empty string', () => testComponent('', ''));
+
+    it('does not mask if value does not contain at least one digit', () =>
+      testComponent('abcABC!@#', 'abcABC!@#'));
+
+    it('will mask value as long as there is at least one digit', () => testComponent('a1!', '1'));
+
+    it('accepts already masked value', () => expect(toCurrency('1,234.50')).toBe('1,234.50'));
 
     it('adds commas', () => {
-      testCurrency('1234', '1,234');
-      testCurrency('12345', '12,345');
-      testCurrency('123456', '123,456');
-      testCurrency('1234567', '1,234,567');
-      testCurrency('12345678', '12,345,678');
-      testCurrency('123456789', '123,456,789');
-      testCurrency('12345678.90', '12,345,678.90');
-      testCurrency('1234.95', '1,234.95');
+      expect(toCurrency('1234')).toBe('1,234');
+      expect(toCurrency('12345')).toBe('12,345');
+      expect(toCurrency('123456')).toBe('123,456');
+      expect(toCurrency('1234567')).toBe('1,234,567');
+      expect(toCurrency('12345678')).toBe('12,345,678');
+      expect(toCurrency('123456789')).toBe('123,456,789');
+      expect(toCurrency('12345678.90')).toBe('12,345,678.90');
+      expect(toCurrency('1234.95')).toBe('1,234.95');
     });
 
-    it('accepts negative values', () => testCurrency('-1234', '-1,234'));
+    it('accepts negative values', () => expect(toCurrency('-1234')).toBe('-1,234'));
 
-    it('removes non-supported characters', () => testCurrency('1!a2@b3#c', '123'));
+    it('removes non-supported characters', () => expect(toCurrency('1!a2@b3#c')).toBe('123'));
 
     it('trims any decimal digits after the hundredths place', () =>
-      testCurrency('123.456789', '123.45'));
+      expect(toCurrency('123.456789')).toBe('123.45'));
 
     it('appends a zero in the hundredths place if there is a non-zero digit in the tenths place', () =>
-      testCurrency('12.3', '12.30'));
+      expect(toCurrency('12.3')).toBe('12.30'));
 
     it('trims leading zeroes unless value is less than 1', () => {
-      testCurrency('000101', '101');
-      testCurrency('0', '0');
-      testCurrency('0000.11', '0.11');
+      expect(toCurrency('000101')).toBe('101');
+      expect(toCurrency('0')).toBe('0');
+      expect(toCurrency('0000.11')).toBe('0.11');
     });
 
     it('removes all decimal points after the first', () => {
-      testCurrency('1..2.3...4..5', '1.23');
-      testCurrency('....67', '0.67');
+      expect(toCurrency('1..2.3...4..5')).toBe('1.23');
+      expect(toCurrency('....67')).toBe('0.67');
     });
 
-    it('removes decimal if value is a whole number', () => testCurrency('123.00', '123'));
+    it('removes decimal if value is a whole number', () =>
+      expect(toCurrency('123.00')).toBe('123'));
 
     // Number.MAX_SAFE_INTEGER === 9007199254740991
     it('supports numbers greater than Number.MAX_SAFE_INTEGER', () =>
-      testCurrency('9999999999999999.99', '9,999,999,999,999,999.99'));
+      expect(toCurrency('9999999999999999.99')).toBe('9,999,999,999,999,999.99'));
   });
 
   describe('Phone', () => {

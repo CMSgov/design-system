@@ -48,10 +48,10 @@ function toDigitsAndAsterisks(value) {
 
 /**
  * Performs various transforms to format provided string as currency.
- * @param {String} value
+ * @param {String} value - a string containing at least one digit
  * @returns {String}
  */
-function toCurrency(value) {
+export function toCurrency(value) {
   // Determine if the value is positive or negative.
   const sign = value.startsWith('-') ? '-' : '';
   // Remove all characters except digits and decimal points.
@@ -65,6 +65,10 @@ function toCurrency(value) {
   value = value.replace(/^0+/g, '');
   // Split into whole number and fractional parts based on decimal point.
   let [whole, fractional = ''] = value.split('.');
+  // Add commas for readability (if applicable), or simply return zero.
+  // This "replaces" the zero-length space between groups of 3 digits with a comma.
+  // Demo of this regex: https://regex101.com/r/JPocnt/2
+  whole = whole === '' ? '0' : whole.replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
   if (fractional !== '') {
     if (fractional.length === 1) {
       // Pad with a zero for two decimal places.
@@ -76,8 +80,6 @@ function toCurrency(value) {
     // Clear the fractional if there's no cents. Add the decimal back here.
     fractional = fractional === '00' ? '' : `.${fractional}`;
   }
-  // Add commas for readability or return zero.
-  whole = whole === '' ? '0' : whole.replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
   return `${sign}${whole}${fractional}`;
 }
 
