@@ -16,7 +16,7 @@ export { Dropdown } from './Dropdown/Dropdown';
 export { FormLabel } from './FormLabel/FormLabel';
 export { HelpDrawer } from './HelpDrawer/HelpDrawer';
 export { HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
-export { MonthPicker } from './MonthPicker/MonthPicker';
+export { MonthPicker, getMonthNames } from './MonthPicker/MonthPicker';
 export { Review } from './Review/Review';
 export { SkipNav } from './SkipNav/SkipNav';
 export { Spinner } from './Spinner/Spinner';
