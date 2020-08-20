@@ -73,7 +73,7 @@ $ds-c-inset-border-width: $spacer-half;
 
       &::before {
         background-color: $color-gray-lighter;
-        border: 1px solid $color-gray-light;
+        border: $choice-border-width solid $color-gray-light;
         cursor: not-allowed;
       }
     }
