@@ -1,5 +1,5 @@
 <fieldset class="ds-c-fieldset">
-  <legend class="ds-c-label">
+  <legend class="ds-c-label" id="dob-datefield">
     <span class="ds-u-font-weight--bold">Date of birth</span>
     <span class="ds-c-field__hint">For example: 4 / 28 / 1986</span>
   </legend>
@@ -16,6 +16,7 @@
         id="month"
         name="birthdate[month]"
         autocomplete="bday-month"
+        aria-describedby="dob-datefield"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
@@ -31,6 +32,7 @@
         id="day"
         name="birthdate[day]"
         autocomplete="bday-day"
+        aria-describedby="dob-datefield"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
@@ -46,6 +48,7 @@
         id="year"
         name="birthdate[year]"
         autocomplete="bday-year"
+        aria-describedby="dob-datefield"
       />
     </div>
   </div>
