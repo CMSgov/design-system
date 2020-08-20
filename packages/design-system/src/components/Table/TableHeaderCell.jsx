@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import TableContext from './TableContext';
+import React from 'react';
 import classNames from 'classnames';
 
 export const TableHeaderCell = ({
@@ -12,20 +11,8 @@ export const TableHeaderCell = ({
   stackedClassName,
   ...others
 }) => {
-  const tableStackableContext = useContext(TableContext);
-  if (process.env.NODE_ENV !== 'production') {
-    if (tableStackableContext && !id) {
-      console.warn(
-        'The id prop in `TableHeaderCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
-      );
-    }
-    if (tableStackableContext && scope === 'row' && !stackedTitle) {
-      console.warn(
-        'The stackedTitle prop in `TableDataCell` is required for stackable tables. This prop is displayed for the data cell in the responsive stacked view.'
-      );
-    }
-  }
-
+  // TODO: provide warning message on development for `id` and `stackedTitle` props
+  // for stacktable when child ds have upgraded to react ^16.3 (context api)
   const classes = classNames('ds-c-table__header', className);
   const stackedClasses = classNames(
     'ds-c-table--stacked__col-header',
