@@ -93,7 +93,10 @@ export interface DialogProps {
     underlayClickExits?: boolean;
 }
 
-declare const Dialog: React.FC<React.HTMLProps<HTMLDivElement> & DialogProps>;
+type OmitProps = "size";
+
+// Remove the "size" definition inside React.HTMLProps<HTMLDivElement>, and use ours instead
+declare const Dialog: React.FC<Omit<React.HTMLProps<HTMLDivElement>, OmitProps> & DialogProps>;
 
 export default Dialog;
 
