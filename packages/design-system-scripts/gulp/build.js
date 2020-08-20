@@ -57,11 +57,7 @@ function copySass(dir) {
  */
 function copyDefinitionFiles(dir) {
   const src = path.join(dir, 'src');
-  return streamPromise(
-    gulp
-      .src([`${src}/**/*.d.ts`])
-      .pipe(gulp.dest(path.join(dir, 'dist')))
-  );
+  return streamPromise(gulp.src([`${src}/**/*.d.ts`]).pipe(gulp.dest(path.join(dir, 'dist'))));
 }
 
 async function copyAll(dir) {
@@ -84,6 +80,7 @@ async function copyAll(dir) {
 /**
  * Used to generate typescript definition files for the core
  */
+/* eslint-disable */
 async function generateTypeDefinitionsFromPropTypes(dir) {
   const src = path.join(dir, 'src', 'components');
   const srcGlob = getSrcGlob(src);
@@ -109,6 +106,7 @@ async function generateTypeDefinitionsFromPropTypes(dir) {
       })
   );
 }
+/* eslint-enable */
 
 /**
  * Because we use babel to compile ts files, we have to compile twice to get definition files.
@@ -208,7 +206,7 @@ function compileJs(dir, options, changedPath) {
       if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
-    })
+    });
 }
 
 module.exports = {

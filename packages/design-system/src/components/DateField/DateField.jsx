@@ -87,7 +87,7 @@ export class DateField extends React.PureComponent {
     const labelId = this.labelId();
 
     return (
-      <fieldset className={classNames("ds-c-fieldset", this.props.className)}>
+      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           component="legend"
           errorMessage={this.props.errorMessage}

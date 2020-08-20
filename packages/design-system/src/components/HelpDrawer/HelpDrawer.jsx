@@ -103,7 +103,7 @@ HelpDrawer.propTypes = {
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
-  heading: PropTypes.oneOf(PropTypes.string, PropTypes.node),
+  heading: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
   /**
    * Heading type to override default `<h3>`
    */
@@ -112,7 +112,7 @@ HelpDrawer.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.oneOf(PropTypes.string, PropTypes.node),
+  title: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
 };
 
 export default HelpDrawer;
