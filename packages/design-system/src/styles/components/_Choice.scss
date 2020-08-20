@@ -135,8 +135,8 @@ $ds-c-inset-border-width: $spacer-half;
     opacity: 1;
   }
   &::before {
-    background-color: $color-primary;
-    border-color: $color-primary-darker;
+    background-color: $choice-checked-background-color;
+    border-color: $choice-checked-background-color;
   }
 }
 
