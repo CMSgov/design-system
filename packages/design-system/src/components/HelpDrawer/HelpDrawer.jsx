@@ -42,7 +42,7 @@ export class HelpDrawer extends React.PureComponent {
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
-      <div className={classNames(className, "ds-c-help-drawer")}>
+      <div className={classNames(className, 'ds-c-help-drawer')}>
         <div className="ds-c-help-drawer__header">
           {/* The nested div below might seem redundant, but we need a
            * separation between our sticky header, and the flex container
@@ -88,7 +88,7 @@ HelpDrawer.defaultProps = {
   closeButtonText: 'Close',
   headingLevel: '3',
 };
-// TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT, 
+// TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
   /**
@@ -103,7 +103,7 @@ HelpDrawer.propTypes = {
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
-  heading: PropTypes.node,
+  heading: PropTypes.oneOf(PropTypes.string, PropTypes.node),
   /**
    * Heading type to override default `<h3>`
    */
@@ -112,7 +112,7 @@ HelpDrawer.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.node,
+  title: PropTypes.oneOf(PropTypes.string, PropTypes.node),
 };
 
 export default HelpDrawer;

@@ -93,7 +93,7 @@ Dialog.defaultProps = {
   underlayClickExits: false,
 };
 
-// TODO: closeButtonText should be a string, but it is being used as a node in MCT, 
+// TODO: closeButtonText should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 Dialog.propTypes = {
   /**
@@ -168,11 +168,7 @@ Dialog.propTypes = {
   /**
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
-  heading: PropTypes.node,
-  /**
-   * @hide-prop
-   */
-  id: PropTypes.string,
+  heading: PropTypes.oneOf(PropTypes.string, PropTypes.node),
   /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
@@ -183,7 +179,7 @@ Dialog.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.node,
+  title: PropTypes.oneOf(PropTypes.string, PropTypes.node),
   /**
    * Enable exiting the dialog when a user clicks the underlay.
    */
