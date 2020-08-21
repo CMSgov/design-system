@@ -38,28 +38,6 @@ function deliminateRegexGroups(value, rx) {
 }
 
 /**
- * Format a string using fixed-point notation, similar to Number.prototype.toFixed
- * though a decimal is only fixed if the string included a decimal already
- * @param {String} value - A stringified number (i.e. "1234")
- * @param {Number} digits - The number of digits to appear after the decimal point
- * @returns {String}
- */
-function stringWithFixedDigits(value, digits = 2) {
-  const decimalRegex = /\.[\d]+$/;
-
-  // Check for existing decimal
-  const decimal = value.match(decimalRegex);
-
-  if (decimal) {
-    const fixedDecimal = parseFloat(decimal).toFixed(digits).match(decimalRegex)[0];
-
-    return value.replace(decimal, fixedDecimal);
-  }
-
-  return value;
-}
-
-/**
  * Remove everything that isn't a digit or asterisk
  * @param {String} value
  * @returns {String}
@@ -69,33 +47,40 @@ function toDigitsAndAsterisks(value) {
 }
 
 /**
- * Remove all non-digits
- * @param {String} value
+ * Performs various transforms to format provided string as currency.
+ * @param {String} value - a string containing at least one digit
  * @returns {String}
  */
-function toDigits(value) {
-  return value.replace(/[^\d]/g, '');
-}
-
-/**
- * Convert string into a number (positive or negative float or integer)
- * @param {String} value
- * @returns {Number}
- */
-function toNumber(value) {
-  const sign = value.charAt(0) === '-' ? -1 : 1;
-  const parts = value.split('.');
-  // This assumes if the user adds a "." it should be a float. If we want it to
-  // evaluate as an integer if there are no digits beyond the decimal, then we
-  // can change it.
-  const hasDecimal = parts[1] !== undefined;
-  if (hasDecimal) {
-    const a = toDigits(parts[0]);
-    const b = toDigits(parts[1]);
-    return sign * parseFloat(`${a}.${b}`);
-  } else {
-    return sign * parseInt(toDigits(parts[0]));
+export function toCurrency(value) {
+  // Determine if the value is positive or negative.
+  const sign = value.startsWith('-') ? '-' : '';
+  // Remove all characters except digits and decimal points.
+  value = value.replace(/[^\d.]/g, '');
+  // Remove all but the first decimal point.
+  const firstDecimalPointIndex = value.indexOf('.');
+  value = value.replace(/[.]/g, (match, index) => {
+    return index > firstDecimalPointIndex ? '' : match;
+  });
+  // Remove leading zeroes (we'll add one back later if needed).
+  value = value.replace(/^0+/g, '');
+  // Split into whole number and fractional parts based on decimal point.
+  let [whole, fractional = ''] = value.split('.');
+  // Add commas for readability (if applicable), or simply return zero.
+  // This "replaces" the zero-length space between groups of 3 digits with a comma.
+  // Demo of this regex: https://regex101.com/r/JPocnt/2
+  whole = whole === '' ? '0' : whole.replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+  if (fractional !== '') {
+    if (fractional.length === 1) {
+      // Pad with a zero for two decimal places.
+      fractional = fractional.concat('0');
+    } else if (fractional.length > 2) {
+      // Cut all characters after the second decimal place.
+      fractional = fractional.slice(0, 2);
+    }
+    // Clear the fractional if there's no cents. Add the decimal back here.
+    fractional = fractional === '00' ? '' : `.${fractional}`;
   }
+  return `${sign}${whole}${fractional}`;
 }
 
 /**
@@ -123,19 +108,13 @@ function isValueMaskable(value, mask) {
 export function maskValue(value = '', mask) {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
-      // Format number with commas. If the number includes a decimal,
-      // ensure it includes two decimal points
-      const number = toNumber(value);
-      if (number !== undefined) {
-        value = stringWithFixedDigits(number.toLocaleString('en-US'));
-      }
+      value = toCurrency(value);
     } else if (maskDeliminatedRegex[mask]) {
       // Use deliminator regex to mask value and remove unwanted characters
       // If the regex does not match, return the numeric digits.
       value = deliminateRegexGroups(value, maskDeliminatedRegex[mask]);
     }
   }
-
   return value;
 }
 
