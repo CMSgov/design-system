@@ -168,7 +168,7 @@ Dialog.propTypes = {
   /**
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
-  heading: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
@@ -179,7 +179,7 @@ Dialog.propTypes = {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Enable exiting the dialog when a user clicks the underlay.
    */
