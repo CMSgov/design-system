@@ -67,6 +67,7 @@
     "react-docgen": "4.1.1",
     "react-docgen-typescript": "^1.18.0",
     "react-test-renderer": "16.8.6",
+    "react-to-typescript-definitions": "^2.0.0",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
     "selenium-webdriver": "4.0.0-alpha.7",

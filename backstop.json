@@ -941,10 +941,12 @@
       "url": "http://localhost:3000/example/components.table.complex/",
       "removeSelectors": ["#frame"]
     },
-    { "label": "CMSDS - Components - Table - React", 
+    {
+      "label": "CMSDS - Components - Table - React",
       "referenceUrl": "https://design.cms.gov/example/components.table.react/",
       "url": "http://localhost:3000/example/components.table.react/",
-      "removeSelectors": ["#frame"] },
+      "removeSelectors": ["#frame"]
+    },
     {
       "label": "CMSDS - Components - Tabs",
       "referenceUrl": "https://design.cms.gov/components/tabs/",
