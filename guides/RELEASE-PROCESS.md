@@ -26,7 +26,7 @@
    1. Tag the release with the newly created tag from the previous step (i.e. `core-2.0.0`).
    1. Title the release using the release number (i.e. `2.0.0`)
    1. Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
-   1. Use the template below for the release notes
+   1. Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
 
    ```
    ## 🚨 Breaking/Behavioral changes
