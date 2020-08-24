@@ -1,10 +1,9 @@
 import { Manager, Popper, Reference } from 'react-popper';
-import React, { Fragment } from 'react';
 import Transition, { ENTERED, ENTERING, EXITED, EXITING } from 'react-transition-group/Transition';
 import Button from '../Button/Button';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import TooltipIcon from './TooltipIcon';
 import classNames from 'classnames';
 
@@ -24,7 +23,7 @@ const TOOLTIP_OFFSET = 5;
 export class Tooltip extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showTooltip: true };
+    this.state = { showTooltip: false };
   }
 
   componentDidMount() {
@@ -101,7 +100,6 @@ export class Tooltip extends React.Component {
       tooltipZIndex,
       tooltipBodyClassName,
     } = this.props;
-    const bodyElement = document.querySelector('body');
 
     const interactiveContent = (arrowProps, arrowStyle) => (
       // Child of focus trap must be a single node and valid HTML element, no <Fragment>
@@ -130,7 +128,7 @@ export class Tooltip extends React.Component {
     );
 
     const nonInteractiveContent = (arrowProps, arrowStyle) => (
-      <Fragment>
+      <>
         <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
         <div
@@ -138,10 +136,10 @@ export class Tooltip extends React.Component {
           className="ds-c-tooltip__invisible-button"
           onTouchStart={() => this.hideTooltip()}
         />
-      </Fragment>
+      </>
     );
 
-    return ReactDOM.createPortal(
+    return (
       <Transition in={this.state.showTooltip} unmountOnExit timeout={transitionDuration}>
         {(transitionState) => (
           <Popper
@@ -192,17 +190,15 @@ export class Tooltip extends React.Component {
             }}
           </Popper>
         )}
-      </Transition>,
-      bodyElement
+      </Transition>
     );
   }
 
   render() {
-    const bodyElement = document.querySelector('body');
     return (
       <Manager>
         {this.renderTrigger()}
-        {bodyElement !== null && this.renderContent()}
+        {this.renderContent()}
       </Manager>
     );
   }
