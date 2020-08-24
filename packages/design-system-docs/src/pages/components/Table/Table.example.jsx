@@ -40,7 +40,9 @@ ReactDOM.render(
         </TableDataCell>
         <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
           <em>
-            <a href="# ">https://www.archives.gov/founding-docs/declaration</a>
+            <a href="# ">
+              https://billofrightsinstitute.org/founding-documents/declaration-of-independence/
+            </a>
           </em>
         </TableDataCell>
         <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
@@ -56,7 +58,7 @@ ReactDOM.render(
         </TableDataCell>
         <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
           <em>
-            <a href="# ">https://www.archives.gov/founding-docs/bill-of-rights</a>
+            <a href="# ">https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a>
           </em>
         </TableDataCell>
         <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
