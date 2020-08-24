@@ -60,6 +60,7 @@ Alert.propTypes = {
    * The alert's body content
    */
   children: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Text for the alert heading
    */

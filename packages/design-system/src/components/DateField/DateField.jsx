@@ -87,7 +87,7 @@ export class DateField extends React.PureComponent {
     const labelId = this.labelId();
 
     return (
-      <fieldset className="ds-c-fieldset">
+      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           component="legend"
           errorMessage={this.props.errorMessage}
@@ -173,6 +173,10 @@ DateField.propTypes = {
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
    */
   autoComplete: PropTypes.bool,
+  /**
+   * Additional classes to be added to the root fieldset element
+   */
+  className: PropTypes.string,
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument

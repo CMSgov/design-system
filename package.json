@@ -19,8 +19,9 @@
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
   },
   "devDependencies": {
+    "backstopjs": "^5.0.4",
     "eslint": "^6.8.0",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",

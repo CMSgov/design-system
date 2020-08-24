@@ -1,8 +1,9 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "latest"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
   "repository": "CMSgov/design-system",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.4",
@@ -66,6 +68,7 @@
     "react-docgen": "4.1.1",
     "react-docgen-typescript": "^1.18.0",
     "react-test-renderer": "16.8.6",
+    "react-to-typescript-definitions": "^2.0.0",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
     "selenium-webdriver": "4.0.0-alpha.7",

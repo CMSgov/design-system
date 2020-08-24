@@ -14,7 +14,7 @@ module.exports = function (api) {
     '@babel/preset-react',
   ];
 
-  const plugins = [];
+  const plugins = ['@babel/plugin-transform-object-assign'];
 
   return {
     presets,

@@ -1,8 +1,9 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "latest"
   },
   "description": "CMS Design System Sass/CSS and React assets",
   "repository": "CMSgov/design-system",
@@ -10,6 +11,7 @@
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
   "sideEffects": false,
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src/components/**/*.jsx",

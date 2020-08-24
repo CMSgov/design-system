@@ -1,12 +1,12 @@
 <fieldset class="ds-c-fieldset">
-  <legend class="ds-c-label">
+  <legend class="ds-c-label" id="dob-datefield">
     <span class="ds-u-font-weight--bold">Date of birth</span>
     <span class="ds-c-field__hint">For example: 4 / 28 / 1986</span>
   </legend>
   <div class="ds-l-form-row ds-u-align-items--end">
     <div class="ds-l-col--auto">
       <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="month"
-        >Month</label
+        ><span>Month</span></label
       >
       <input
         class="ds-c-field ds-c-field--month"
@@ -16,11 +16,14 @@
         id="month"
         name="birthdate[month]"
         autocomplete="bday-month"
+        aria-describedby="dob-datefield"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
     <div class="ds-l-col--auto">
-      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="day">Day</label>
+      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="day"
+        ><span>Day</span></label
+      >
       <input
         class="ds-c-field ds-c-field--day"
         type="text"
@@ -29,11 +32,14 @@
         id="day"
         name="birthdate[day]"
         autocomplete="bday-day"
+        aria-describedby="dob-datefield"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
     <div class="ds-l-col--auto">
-      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="year">Year</label>
+      <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="year"
+        ><span>Year</span></label
+      >
       <input
         class="ds-c-field ds-c-field--year"
         type="text"
@@ -42,6 +48,7 @@
         id="year"
         name="birthdate[year]"
         autocomplete="bday-year"
+        aria-describedby="dob-datefield"
       />
     </div>
   </div>
