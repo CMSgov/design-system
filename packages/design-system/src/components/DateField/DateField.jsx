@@ -190,7 +190,7 @@ DateField.propTypes = {
    */
   dateFormatter: PropTypes.func,
   /**
-   * Disables the entire field.
+   * Disables all three input fields.
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
