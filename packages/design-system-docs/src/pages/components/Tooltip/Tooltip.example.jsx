@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { Tooltip } from '@cmsgov/design-system';
+import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
 
 const loremM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 accumsan diam vitae metus lacinia, eget tempor purus placerat.`;
@@ -10,7 +10,9 @@ const TooltipExample = () => {
     <Fragment>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0">Tooltip</p>
-        <Tooltip id="tooltip-1-id" ariaLabel="Label describing the subject of the tooltip">
+        <Tooltip id="tooltip-1-id" ariaLabel="Label describing the subject of the tooltip" 
+          triggerContent={<TooltipIcon/>}
+          triggerActiveClassName={"trigger-focused"}>
           <p>{loremM}</p>
         </Tooltip>
       </div>
@@ -20,6 +22,8 @@ const TooltipExample = () => {
           id="tooltip-2-id"
           ariaLabel="Label describing the subject of the interactive tooltip"
           hasInteractiveContent
+          triggerContent={<TooltipIcon/>}
+          triggerActiveClassName={"trigger-focused"}
         >
           <p>
             <a href="#noop">Link to website</a>
@@ -33,9 +37,10 @@ const TooltipExample = () => {
           id="tooltip-3-id"
           ariaLabel="Label describing the subject of the interactive tooltip"
           triggerContent={
-            <span style={{ color: 'blue', textDecoration: 'underline' }}>Learn more</span>
+            <a className="ds-c-link">Learn more</a>
           }
           triggerClassName="ds-u-font-size--base"
+          triggerActiveClassName={"trigger-focused"}
         >
           <p>{loremM}</p>
         </Tooltip>
@@ -46,6 +51,8 @@ const TooltipExample = () => {
           id="tooltip-3-id"
           ariaLabel="Label describing the subject of the inverse tooltip"
           inverse
+          triggerContent={<TooltipIcon inverse/>}
+          triggerActiveClassName={"trigger-focused"}
         >
           <p>{loremM}</p>
         </Tooltip>

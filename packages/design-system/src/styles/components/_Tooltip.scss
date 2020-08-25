@@ -24,49 +24,6 @@ button.ds-c-tooltip__trigger {
 }
 // stylelint-enable selector-no-qualifying-type
 
-// Icon container is the border that appears on hover or focus
-.ds-c-tooltip__icon-container {
-  background-clip: content-box;
-  border: 4px solid rgba(0, 0, 0, 0);
-  border-radius: $tooltip-plus-border-size;
-  box-sizing: border-box;
-  display: inline-block;
-  height: $tooltip-plus-border-size;
-  position: relative;
-  width: $tooltip-plus-border-size;
-  &.trigger-inverse {
-    .ds-c-tooltip__icon--fill {
-      fill: $color-white;
-    }
-    &.trigger-focused {
-      border: 4px solid $color-gray-lighter;
-    }
-  }
-  &.trigger-focused {
-    border: 4px solid $color-white;
-    box-shadow: 1px 1px $shadow-base-blur-radius $shadow-base-color;
-  }
-}
-
-// SVG icon styles/positioning
-.ds-c-tooltip__icon {
-  display: inline-block;
-  height: $tooltip-icon-size;
-  left: 0;
-  // stylelint-disable declaration-no-important
-  // fixes clipping issue in Firefox, overrides vendor style
-  overflow: visible !important;
-  // stylelint-enable declaration-no-important
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: $tooltip-icon-size;
-
-  .ds-c-tooltip__icon--fill {
-    fill: $color-gray;
-  }
-}
-
 // Tooltip arrow
 .ds-c-tooltip__arrow {
   height: $tooltip-icon-size;
@@ -167,6 +124,7 @@ button.ds-c-tooltip__trigger {
 }
 
 // styles for the dark/inverse version of the tooltip body/content
+// stylelint-disable selector-class-pattern
 .ds-c-tooltip__container.inverse-tooltip-body {
   background: $color-gray;
   border: 1px solid $color-gray-dark;
@@ -181,3 +139,4 @@ button.ds-c-tooltip__trigger {
     color: $color-white;
   }
 }
+// stylelint-enable selector-class-pattern

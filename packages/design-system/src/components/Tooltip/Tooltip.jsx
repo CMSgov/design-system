@@ -1,10 +1,8 @@
 import { Manager, Popper, Reference } from 'react-popper';
 import Transition, { ENTERED, ENTERING, EXITED, EXITING } from 'react-transition-group/Transition';
-import Button from '../Button/Button';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TooltipIcon from './TooltipIcon';
 import classNames from 'classnames';
 
 // Transition component config
@@ -29,7 +27,7 @@ export class Tooltip extends React.Component {
       this.parentElement = element;
     };
 
-    this.state = { showTooltip: false };
+    this.state = { showTooltip: true };
   }
 
   componentDidMount() {
@@ -68,22 +66,33 @@ export class Tooltip extends React.Component {
     }
   }
 
+  triggerComponentType() {
+    let component = this.props.triggerComponent;
+    if (component === 'button' && this.props.triggerHref) {
+      // If `href` is provided and a custom component is not, we render `<a>` instead
+      component = 'a';
+    }
+    return component;
+  }
+
   renderTrigger() {
     const {
       ariaLabel,
-      triggerIconClassName,
       id,
-      inverse,
+      triggerActiveClassName,
       triggerClassName,
       triggerContent,
     } = this.props;
 
+    const TriggerComponent = this.triggerComponentType();
+    const triggerClasses = classNames('ds-c-tooltip__trigger', triggerClassName, { [triggerActiveClassName]: this.state.showTooltip });
+
     return (
       <Reference>
         {({ ref }) => (
-          <button
+          <TriggerComponent
             id={id}
-            type="button"
+            type={TriggerComponent === "button" ? "button" : undefined}
             onTouchStart={() => this.showTooltip()}
             onFocus={() => this.showTooltip()}
             onBlur={() => this.handleTriggerBlur()}
@@ -91,17 +100,11 @@ export class Tooltip extends React.Component {
             onMouseLeave={() => this.hideTooltip()}
             aria-label={`Tooltip: ${ariaLabel || ''}`}
             aria-describedby={`tooltip-${id}`}
-            className={classNames('ds-c-tooltip__trigger', triggerClassName)}
+            className={triggerClasses}
             ref={ref}
           >
-            {triggerContent || (
-              <TooltipIcon
-                triggerIconClassName={triggerIconClassName}
-                inverse={inverse}
-                showTooltip={this.state.showTooltip}
-              />
-            )}
-          </button>
+            {triggerContent}
+          </TriggerComponent>
         )}
       </Reference>
     );
@@ -113,41 +116,13 @@ export class Tooltip extends React.Component {
       id,
       inverse,
       hasInteractiveContent,
-      positionFixed,
       placement,
       tooltipMaxWidth,
       tooltipZIndex,
       tooltipBodyClassName,
     } = this.props;
 
-    const interactiveContent = (arrowProps, arrowStyle) => (
-      // Child of focus trap must be a single node and valid HTML element, no <Fragment>
-      // Set initialFocus to the trigger element to ensure trigger aria-label is read
-      <FocusTrap focusTrapOptions={{ initialFocus: this.props.id }}>
-        <div>
-          <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
-          <div className="ds-c-tooltip__content ds-base">
-            {children}
-            <div className="ds-u-justify-content--end ds-u-display--flex">
-              <Button
-                className="qa-tooltip-close-button"
-                size="small"
-                onClick={() => this.hideTooltip()}
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-          <div
-            style={{ left: arrowProps.style.left }}
-            className="ds-c-tooltip__invisible-button"
-            onTouchStart={() => this.hideTooltip()}
-          />
-        </div>
-      </FocusTrap>
-    );
-
-    const nonInteractiveContent = (arrowProps, arrowStyle) => (
+    const tooltipContent = (arrowProps, arrowStyle) => (
       <>
         <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
@@ -163,7 +138,6 @@ export class Tooltip extends React.Component {
       <Transition in={this.state.showTooltip} unmountOnExit timeout={transitionDuration}>
         {(transitionState) => (
           <Popper
-            positionFixed={positionFixed}
             placement={placement}
             modifiers={{ offset: { offset: TOOLTIP_OFFSET_OPT } }}
           >
@@ -187,6 +161,7 @@ export class Tooltip extends React.Component {
                   zIndex: tooltipZIndex,
                 },
               };
+
               return (
                 <div
                   id={`tooltip-${id}`}
@@ -202,9 +177,15 @@ export class Tooltip extends React.Component {
                   aria-labelledby={id}
                   role={hasInteractiveContent ? 'dialog' : 'tooltip'}
                 >
-                  {hasInteractiveContent
-                    ? interactiveContent(arrowProps, arrowStyle)
-                    : nonInteractiveContent(arrowProps, arrowStyle)}
+                  {hasInteractiveContent ? (
+                    // Child of focus trap must be a single node and valid HTML element, no <Fragment>
+                    // Set initialFocus to the trigger element to ensure trigger aria-label is read
+                    <FocusTrap focusTrapOptions={{ initialFocus: this.props.id }}>
+                      <div>
+                        {tooltipContent(arrowProps, arrowStyle)}
+                      </div>
+                    </FocusTrap>
+                  ) : tooltipContent(arrowProps, arrowStyle)}
                 </div>
               );
             }}
@@ -228,9 +209,9 @@ export class Tooltip extends React.Component {
 
 Tooltip.defaultProps = {
   placement: 'top',
-  positionFixed: false,
   tooltipMaxWidth: '300px',
   tooltipZIndex: '1',
+  triggerComponent: 'button',
 };
 Tooltip.propTypes = {
   /**
@@ -243,11 +224,7 @@ Tooltip.propTypes = {
    */
   hasInteractiveContent: PropTypes.bool,
   /**
-   * Set prop to `true` to use `position: fixed` strategy to place the popper element. By default it is `false`, meaning it will use `position: absolute`
-   */
-  positionFixed: PropTypes.bool,
-  /**
-   * Placement of the tooltip relative to the trigger
+   * Placement of the tooltip relative to the trigger. See the [`react-popper` docs](https://popper.js.org/react-popper/v2/render-props/#placement) for more info.
    */
   placement: PropTypes.oneOf(['top', 'bottom']),
   inverse: PropTypes.bool,
@@ -260,17 +237,25 @@ Tooltip.propTypes = {
    */
   tooltipBodyClassName: PropTypes.string,
   /**
-   * Optional custom trigger node. This replaces the default trigger icon.
+   * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`, or rarely an `input` element.
    */
-  triggerContent: PropTypes.node,
+  triggerComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
+  /**
+   * Trigger element content, typically an icon or text.
+   */
+  triggerContent: PropTypes.node.isRequired,
+  /**
+   * `href` attribute applied to link trigger elements.
+   */
+  triggerHref: PropTypes.string,
   /**
    * Classes applied to the tooltip trigger
    */
   triggerClassName: PropTypes.string,
   /**
-   * Classes applied to the default tooltip trigger icon, can be used to override icon fill color
+   * Classes applied to the tooltip trigger when the tooltip is activated
    */
-  triggerIconClassName: PropTypes.string,
+  triggerActiveClassName: PropTypes.string,
   tooltipMaxWidth: PropTypes.string,
   tooltipZIndex: PropTypes.string,
 };

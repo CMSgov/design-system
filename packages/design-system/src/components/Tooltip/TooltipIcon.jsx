@@ -6,7 +6,6 @@ export const TooltipIcon = (props) => {
   return (
     <span
       className={classNames('ds-c-tooltip__icon-container', {
-        'trigger-focused': props.showTooltip,
         'trigger-inverse': props.inverse,
       })}
     >
@@ -33,7 +32,6 @@ export const TooltipIcon = (props) => {
 };
 
 TooltipIcon.propTypes = {
-  showTooltip: PropTypes.bool.isRequired,
   inverse: PropTypes.bool,
   iconClassName: PropTypes.string,
 };
