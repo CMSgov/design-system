@@ -76,23 +76,13 @@ Style guide: components.table.react-tablerow
 */
 
 /*
-`<TableHeaderCell>`
+`<TableCell>`
 
-`TableHeaderCell` renders a `<th>` element.
+`TableCell` renders a `<th>` element when the parent component is a header or otherwise a `<td>` element.
 
-@react-props TableHeaderCell.jsx
+@react-props TableCell.jsx
 
-Style guide: components.table.react-tableheadercell
-*/
-
-/*
-`<TableDataCell>`
-
-A `TableDataCell` component renders the table data cell element `<td>`.
-
-@react-props TableDataCell.jsx
-
-Style guide: components.table.react-tabledatacell
+Style guide: components.table.react-tablecell
 */
 
 /*

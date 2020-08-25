@@ -1,14 +1,14 @@
 import React from 'react';
 import Table from './Table';
+import TableCell from './TableCell';
 import TableHead from './TableHead';
-import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
 const defaultTableHeadChildren = (
   <TableRow key="1">
-    <TableHeaderCell key="11" title="Column a" />
-    <TableHeaderCell key="12" title="Column b" />
+    <TableCell key="11" title="Column a" />
+    <TableCell key="12" title="Column b" />
   </TableRow>
 );
 const defaultTableHeadProps = {

@@ -2,9 +2,8 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableDataCell,
+  TableCell,
   TableHead,
-  TableHeaderCell,
   TableRow,
 } from '@cmsgov/design-system';
 import React from 'react';
@@ -15,55 +14,47 @@ ReactDOM.render(
     <TableCaption>Responsive Table</TableCaption>
     <TableHead>
       <TableRow>
-        <TableHeaderCell id={'column' + 1} scope="col">
-          Document title
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 2} scope="col">
-          Description
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 3} scope="col">
-          Links
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 4} scope="col">
-          Year
-        </TableHeaderCell>
+        <TableCell id="column_1">Document title</TableCell>
+        <TableCell id="column_2">Description</TableCell>
+        <TableCell id="column_3">Links</TableCell>
+        <TableCell id="column_4">Year</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       <TableRow>
-        <TableDataCell scope="row" stackedTitle="Document title" headers={'column' + 1}>
+        <TableCell stackedTitle="Document title" headers="column_1">
           Declaration of Independence
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Description" headers={'column' + 2}>
+        </TableCell>
+        <TableCell stackedTitle="Description" headers="column_2">
           Statement adopted by the Continental Congress declaring independence from the British
           Empire.
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
+        </TableCell>
+        <TableCell stackedTitle="Links" headers="column_3">
           <em>
             <a href="# ">
               https://billofrightsinstitute.org/founding-documents/declaration-of-independence/
             </a>
           </em>
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
+        </TableCell>
+        <TableCell stackedTitle="Year" headers="column_4">
           1776
-        </TableDataCell>
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableDataCell scope="row" stackedTitle="Document title" headers={'column' + 1}>
+        <TableCell stackedTitle="Document title" headers="column_1">
           Bill of Rights
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Description" headers={'column' + 2}>
+        </TableCell>
+        <TableCell stackedTitle="Description" headers="column_2">
           The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
+        </TableCell>
+        <TableCell stackedTitle="Links" headers="column_3">
           <em>
             <a href="# ">https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a>
           </em>
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
+        </TableCell>
+        <TableCell stackedTitle="Year" headers="column_4">
           1791
-        </TableDataCell>
+        </TableCell>
       </TableRow>
     </TableBody>
   </Table>,

@@ -73,7 +73,7 @@ export class Table extends React.PureComponent {
     });
   }
 
-  renderChildren() {
+  renderChildren(isTableStackable) {
     return React.Children.map(this.props.children, (child) => {
       // Extend props on TableCaption before rendering.
       if (this.props.scrollable && isTableCaption(child)) {
@@ -81,6 +81,12 @@ export class Table extends React.PureComponent {
           _id: this.captionID,
           _scrollActive: this.state.isTableScrollable,
           _scrollableNotice: this.props.scrollableNotice,
+        });
+      }
+      // Extend props before rendering.
+      if (isTableStackable) {
+        return React.cloneElement(child, {
+          _isTableStackable: isTableStackable,
         });
       }
       return child;
@@ -117,6 +123,7 @@ export class Table extends React.PureComponent {
       'aria-relevant': 'additions',
       tabIndex: this.state.isTableScrollable ? '0' : null,
     };
+    const isTableStackable = !!stackBreakpoint;
 
     return (
       <div
@@ -126,7 +133,7 @@ export class Table extends React.PureComponent {
         {...attributeScrollable}
       >
         <table className={classes} role="table" {...others}>
-          {this.renderChildren()}
+          {this.renderChildren(isTableStackable)}
         </table>
       </div>
     );

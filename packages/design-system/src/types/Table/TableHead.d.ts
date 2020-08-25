@@ -9,6 +9,10 @@ export interface TableHeadProps {
    * Additional classes to be added to the table head element.
    */
   className?: string;
+  /**
+   * @hide-prop This gets set from the parent `Table` component
+   */
+  _isTableStackable?: PropTypes.bool;
 }
 
 declare const TableHead: React.FC<TableHeadProps>;

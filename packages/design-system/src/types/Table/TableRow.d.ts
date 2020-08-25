@@ -9,6 +9,14 @@ export interface TableRowProps {
    * Additional classes to be added to the table row element.
    */
   className?: string;
+  /**
+   * @hide-prop This gets set from the parent `TableHead`
+   */
+  _isHeadCell?: PropTypes.bool;
+  /**
+   * @hide-prop This gets set from the parent `Table`
+   */
+  _isTableStackable?: PropTypes.bool;
 }
 
 declare const TableRow: React.FC<TableRowProps>;

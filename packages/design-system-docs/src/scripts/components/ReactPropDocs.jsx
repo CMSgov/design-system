@@ -2,8 +2,8 @@ import {
   Table,
   TableBody,
   TableCaption,
+  TableCell,
   TableHead,
-  TableHeaderCell,
   TableRow,
 } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
@@ -35,18 +35,10 @@ class ReactPropDocs extends React.PureComponent {
         </TableCaption>
         <TableHead>
           <TableRow>
-            <TableHeaderCell id="columnname" scope="col">
-              Name
-            </TableHeaderCell>
-            <TableHeaderCell id="columntype" scope="col">
-              Type
-            </TableHeaderCell>
-            <TableHeaderCell id="columndefault" scope="col">
-              Default
-            </TableHeaderCell>
-            <TableHeaderCell id="columndescription" scope="col">
-              Description
-            </TableHeaderCell>
+            <TableCell id="columnname">Name</TableCell>
+            <TableCell id="columntype">Type</TableCell>
+            <TableCell id="columndefault">Default</TableCell>
+            <TableCell id="columndescription">Description</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{this.rows()}</TableBody>
