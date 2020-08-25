@@ -23,6 +23,12 @@ const TOOLTIP_OFFSET = 5;
 export class Tooltip extends React.Component {
   constructor(props) {
     super(props);
+
+    this.parentElement = null;
+    this.setParentElement = (element) => {
+      this.parentElement = element;
+    };
+
     this.state = { showTooltip: false };
   }
 
@@ -49,16 +55,29 @@ export class Tooltip extends React.Component {
     this.setState({ showTooltip: true });
   }
 
+  handleTriggerBlur() {
+    // Hide tooltips when blurring away from the trigger or interactive content
+    if (this.props.hasInteractiveContent) {
+      setTimeout(() => {
+        if (!this.parentElement.contains(document.activeElement)) {
+          this.hideTooltip();
+        }
+      }, 20);
+    } else {
+      this.hideTooltip();
+    }
+  }
+
   renderTrigger() {
     const {
       ariaLabel,
-      hasInteractiveContent,
       triggerIconClassName,
       id,
       inverse,
       triggerClassName,
       triggerContent,
     } = this.props;
+
     return (
       <Reference>
         {({ ref }) => (
@@ -67,7 +86,7 @@ export class Tooltip extends React.Component {
             type="button"
             onTouchStart={() => this.showTooltip()}
             onFocus={() => this.showTooltip()}
-            onBlur={hasInteractiveContent ? null : () => this.hideTooltip()}
+            onBlur={() => this.handleTriggerBlur()}
             onMouseEnter={() => this.showTooltip()}
             onMouseLeave={() => this.hideTooltip()}
             aria-label={`Tooltip: ${ariaLabel || ''}`}
@@ -103,7 +122,8 @@ export class Tooltip extends React.Component {
 
     const interactiveContent = (arrowProps, arrowStyle) => (
       // Child of focus trap must be a single node and valid HTML element, no <Fragment>
-      <FocusTrap>
+      // Set initialFocus to the trigger element to ensure trigger aria-label is read
+      <FocusTrap focusTrapOptions={{ initialFocus: this.props.id }}>
         <div>
           <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
           <div className="ds-c-tooltip__content ds-base">
@@ -197,8 +217,10 @@ export class Tooltip extends React.Component {
   render() {
     return (
       <Manager>
-        {this.renderTrigger()}
-        {this.renderContent()}
+        <div ref={this.setParentElement}>
+          {this.renderTrigger()}
+          {this.renderContent()}
+        </div>
       </Manager>
     );
   }
