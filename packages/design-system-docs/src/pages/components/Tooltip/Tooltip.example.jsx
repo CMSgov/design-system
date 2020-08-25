@@ -10,7 +10,9 @@ const TooltipExample = () => {
     <Fragment>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0">Tooltip</p>
-        <Tooltip id="tooltip-1-id" ariaLabel="Label describing the subject of the tooltip" 
+        <Tooltip 
+          ariaLabel="Label describing the subject of the tooltip" 
+          triggerId="tooltip-1-id" 
           triggerContent={<TooltipIcon/>}
           triggerActiveClassName={"trigger-focused"}>
           <p>{loremM}</p>
@@ -19,9 +21,9 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0">Tooltip with interactive content</p>
         <Tooltip
-          id="tooltip-2-id"
           ariaLabel="Label describing the subject of the interactive tooltip"
-          hasInteractiveContent
+          interactive
+          triggerId="tooltip-2-id"
           triggerContent={<TooltipIcon/>}
           triggerActiveClassName={"trigger-focused"}
         >
@@ -34,8 +36,8 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0">Tooltip with custom trigger</p>
         <Tooltip
-          id="tooltip-3-id"
           ariaLabel="Label describing the subject of the interactive tooltip"
+          triggerId="tooltip-3-id"
           triggerContent={
             <a className="ds-c-link">Learn more</a>
           }
@@ -48,9 +50,9 @@ const TooltipExample = () => {
       <div className="example--inverse ds-u-display--flex ds-u-align-items--center">
         <p className="ds-u-margin--0">Inverse tooltip</p>
         <Tooltip
-          id="tooltip-3-id"
           ariaLabel="Label describing the subject of the inverse tooltip"
           inverse
+          triggerId="tooltip-3-id"
           triggerContent={<TooltipIcon inverse/>}
           triggerActiveClassName={"trigger-focused"}
         >
