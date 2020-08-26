@@ -50,14 +50,14 @@ export class FormLabel extends React.PureComponent {
   }
 
   render() {
-    const { fieldId, id, children, textClassName, className, inversed, ariaLabel } = this.props;
+    const { fieldId, id, children, textClassName, className, inversed, ...labelProps } = this.props;
     const ComponentType = this.props.component;
     const classes = classNames('ds-c-label', className, {
       'ds-c-label--inverse': inversed,
     });
 
     return (
-      <ComponentType className={classes} htmlFor={fieldId} aria-label={ariaLabel} id={id}>
+      <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
         <span className={classNames(textClassName)}>{children}</span>
         {this.hint()}
         {this.errorMessage()}
@@ -68,10 +68,6 @@ export class FormLabel extends React.PureComponent {
 
 FormLabel.defaultProps = { component: 'label' };
 FormLabel.propTypes = {
-  /**
-   * Adds an `aria-label` to the `<label>` element to provide additional context for assistive devices.
-   */
-  ariaLabel: PropTypes.string,
   /**
    * Label text or HTML.
    */
