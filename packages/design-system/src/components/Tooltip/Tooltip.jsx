@@ -6,17 +6,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Transition component config
-const transitionDuration = 300; // Equivalent to $animation-speed-2
+const transitionDuration = 250; // Equivalent to $animation-speed-1
 const transitionStyles = {
   [ENTERING]: { opacity: 1 },
   [ENTERED]: { opacity: 1 },
   [EXITING]: { opacity: 0 },
   [EXITED]: { opacity: 0 },
 };
-
-// React popper config
-const TOOLTIP_OFFSET_OPT = '5, 5, 5, 5';
-const TOOLTIP_OFFSET = 5;
 
 export class Tooltip extends React.Component {
   constructor(props) {
@@ -116,9 +112,10 @@ export class Tooltip extends React.Component {
       inverse,
       interactive,
       placement,
-      tooltipMaxWidth,
-      tooltipZIndex,
-      tooltipClassName,
+      className,
+      maxWidth,
+      offset,
+      zIndex,
       triggerId,
     } = this.props;
 
@@ -126,11 +123,6 @@ export class Tooltip extends React.Component {
       <>
         <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
-        <div
-          style={{ left: arrowProps.style.left }}
-          className="ds-c-tooltip__invisible-button"
-          onTouchStart={() => this.hideTooltip()}
-        />
       </>
     );
 
@@ -139,41 +131,31 @@ export class Tooltip extends React.Component {
         {(transitionState) => (
           <Popper
             placement={placement}
-            modifiers={{ offset: { offset: TOOLTIP_OFFSET_OPT } }}
+            modifiers={{ offset: { offset: offset } }}
           >
             {({ placement, ref, style, arrowProps }) => {
-              // Need to add back 1/2 width of arrow to the left placement of the
-              // tooltip container so the arrow shows up at exactly 50% as the
-              // arrow container has a width/height we are setting that the
-              // arrowProps positioning here does not account for
-              let leftArrowOffset = 0;
-              if (parseInt(arrowProps.style.left, 10)) {
-                leftArrowOffset = arrowProps.style.left + 8;
-              }
-              const arrowStyle = { left: leftArrowOffset };
-
               // Can't directly modify style, so copy and add styles from props
               const newStyle = {
                 ...style,
                 ...transitionStyles[transitionState],
                 ...{
-                  maxWidth: tooltipMaxWidth,
-                  zIndex: tooltipZIndex,
+                  maxWidth: maxWidth,
+                  zIndex: zIndex,
                 },
               };
+              const arrowStyle = { left: parseInt(arrowProps.style.left, 10) };
 
               return (
                 <div
                   id={`tooltip-${triggerId}`}
                   ref={ref}
-                  className={classNames('ds-c-tooltip__container', tooltipClassName, {
-                    'inverse-tooltip-body': inverse,
+                  className={classNames('ds-c-tooltip__container', className, {
+                    'ds-c-tooltip__container-inverse': inverse,
                   })}
                   style={newStyle}
                   onMouseEnter={() => this.showTooltip()}
                   onMouseLeave={() => this.hideTooltip()}
                   data-placement={placement}
-                  modifiers={{ offset: TOOLTIP_OFFSET }}
                   aria-labelledby={triggerId}
                   role={interactive ? 'dialog' : 'tooltip'}
                 >
@@ -209,8 +191,9 @@ export class Tooltip extends React.Component {
 
 Tooltip.defaultProps = {
   placement: 'bottom',
-  tooltipMaxWidth: '300px',
-  tooltipZIndex: '1',
+  maxWidth: '300px',
+  zIndex: '1',
+  offset: '5, 5, 5, 5',
   triggerComponent: 'button',
 };
 Tooltip.propTypes = {
@@ -223,22 +206,28 @@ Tooltip.propTypes = {
    */
   children: PropTypes.node.isRequired,
   /**
+   * Classes applied to the tooltip body
+   */
+  className: PropTypes.string,
+  /**
    * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips include a focus trap and other accessibility changes.
    */
   interactive: PropTypes.bool,
-  inverse: PropTypes.bool,
+  inverse: PropTypes.bool,  
   /**
-   * Placement of the tooltip relative to the trigger. See the [`react-popper` docs](https://popper.js.org/docs/v1/#popperplacements--codeenumcode) for more info.
+  * Tooltip body offset relative to the trigger. See the [`react-popper` docs](https://popper.js.org/docs/v1/#modifiersoffset) for more info.
+  */
+  offset: PropTypes.string,
+  /**
+   * Placement of the tooltip body relative to the trigger. See the [`react-popper` docs](https://popper.js.org/docs/v1/#popperplacements--codeenumcode) for more info.
    */
   placement: PropTypes.oneOf(['auto', 'bottom', 'top', 'right', 'left']),
   /**
-   * Classes applied to the tooltip body
+   * `maxWidth` styling applied to the tooltip body
    */
-  tooltipClassName: PropTypes.string,
-  tooltipMaxWidth: PropTypes.string,
-  tooltipZIndex: PropTypes.string,
+  maxWidth: PropTypes.string,
   /**
-   * Id applied to the trigger element, used in `aria-labelledby`
+   * `id` applied to the trigger element, used in `aria-labelledby`
    */
   triggerId: PropTypes.string.isRequired,
   /**
@@ -261,6 +250,10 @@ Tooltip.propTypes = {
    * Classes applied to the tooltip trigger when the tooltip is activated
    */
   triggerActiveClassName: PropTypes.string,
+  /**
+   * `zIndex` styling applied to the tooltip body
+   */
+  zIndex: PropTypes.string,
 };
 
 export default Tooltip;

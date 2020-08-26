@@ -29,7 +29,6 @@ button.ds-c-tooltip__trigger {
   height: $tooltip-icon-size;
   overflow: hidden;
   position: absolute;
-  transform: translateX(-50%);
   width: $tooltip-icon-size;
   &::after {
     background: $color-white;
@@ -49,18 +48,9 @@ button.ds-c-tooltip__trigger {
   padding: $spacer-1;
 }
 
-// Invisible button is positioned over the tooltip trigger and in front of the invisible hover area (%ds-c-tooltip__container-hover)
-// It handles the click event for hiding the tooltip
-.ds-c-tooltip__invisible-button {
-  border-radius: $tooltip-icon-size;
-  height: $tooltip-icon-size;
-  position: absolute;
-  width: $tooltip-icon-size;
-}
-
 // Used in ds-c-tooltip__container::before
 // The invisible area on top of the arrow that keeps the tooltip visible on hover
-%ds-c-tooltip__container-hover {
+%ds-c-tooltip__container-before {
   content: '';
   height: 36px;
   left: 0;
@@ -78,14 +68,11 @@ button.ds-c-tooltip__trigger {
   box-shadow: $shadow-base;
   box-sizing: border-box;
   opacity: 0;
-  transition: opacity $animation-speed-2;
+  transition: opacity $animation-speed-1;
   // When the tooltip is positioned on top of the trigger
   &[data-placement*='top'] {
-    .ds-c-tooltip__invisible-button {
-      bottom: -30px;
-    }
     &::before {
-      @extend %ds-c-tooltip__container-hover;
+      @extend %ds-c-tooltip__container-before;
       bottom: -36px;
     }
     // The box shadow of the tooltip arrow
@@ -102,11 +89,8 @@ button.ds-c-tooltip__trigger {
   }
   // When the tooltip is positioned on bottom of the trigger
   &[data-placement*='bottom'] {
-    .ds-c-tooltip__invisible-button {
-      top: -33px;
-    }
     &::before {
-      @extend %ds-c-tooltip__container-hover;
+      @extend %ds-c-tooltip__container-before;
       top: -36px;
     }
     // The box shadow of the tooltip arrow
@@ -125,7 +109,7 @@ button.ds-c-tooltip__trigger {
 
 // styles for the dark/inverse version of the tooltip body/content
 // stylelint-disable selector-class-pattern
-.ds-c-tooltip__container.inverse-tooltip-body {
+.ds-c-tooltip__container--inverse {
   background: $color-gray;
   border: 1px solid $color-gray-dark;
   box-shadow: 1px 1px $shadow-base-blur-radius $shadow-base-color;
