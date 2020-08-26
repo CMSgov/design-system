@@ -50,7 +50,17 @@ export class FormLabel extends React.PureComponent {
   }
 
   render() {
-    const { fieldId, id, children, textClassName, className, inversed, ...labelProps } = this.props;
+    const {
+      fieldId,
+      id,
+      children,
+      textClassName,
+      className,
+      inversed,
+      errorMessage,
+      requirementLabel,
+      ...labelProps
+    } = this.props;
     const ComponentType = this.props.component;
     const classes = classNames('ds-c-label', className, {
       'ds-c-label--inverse': inversed,
