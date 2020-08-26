@@ -45,27 +45,29 @@ function App() {
       </header>
 
       <div className="ds-l-container">
-        <MonthPicker
-          name="month-picker"
-          label="Select your favorite months"
-          selectedMonths={selectedMonths}
-          onChange={handleChange}
-          onSelectAll={handleSelectAll}
-          onClearAll={handleClearAll}
-          locale={LOCALE}
-        />
+        <div className="ds-u-measure--base">
+          <MonthPicker
+            name="month-picker"
+            label="Select your favorite months"
+            selectedMonths={selectedMonths}
+            onChange={handleChange}
+            onSelectAll={handleSelectAll}
+            onClearAll={handleClearAll}
+            locale={LOCALE}
+          />
 
-        {selectedMonths.length > 0 && (
-          <Alert heading="Your favorite months" hideIcon>
-            <ul>
-              {selectedMonths.map(monthNumber => (
-                <li key={monthNumber}>
-                  {monthNames[monthNumber - 1]}
-                </li>
-              ))}
-            </ul>
-          </Alert>
-        )}
+          {selectedMonths.length > 0 && (
+            <Alert heading="Your favorite months" hideIcon>
+              <ul>
+                {selectedMonths.map(monthNumber => (
+                  <li key={monthNumber}>
+                    {monthNames[monthNumber - 1]}
+                  </li>
+                ))}
+              </ul>
+            </Alert>
+          )}
+        </div>
       </div>
     </div>
   );
