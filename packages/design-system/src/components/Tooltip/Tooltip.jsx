@@ -138,8 +138,8 @@ export class Tooltip extends React.Component {
               <div
                 id={`tooltip-${triggerId}`}
                 ref={ref}
-                className={classNames('ds-c-tooltip__container', className, {
-                  'ds-c-tooltip__container-inverse': inverse,
+                className={classNames('ds-c-tooltip', className, {
+                  'ds-c-tooltip-inverse': inverse,
                 })}
                 style={newStyle}
                 onMouseEnter={() => this.showTooltip()}

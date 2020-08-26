@@ -48,9 +48,9 @@ button.ds-c-tooltip__trigger {
   padding: $spacer-1;
 }
 
-// Used in ds-c-tooltip__container::before
+// Used in ds-c-tooltip::before
 // The invisible area on top of the arrow that keeps the tooltip visible on hover
-%ds-c-tooltip__container-before {
+%ds-c-tooltip__before {
   content: '';
   height: 36px;
   left: 0;
@@ -61,7 +61,7 @@ button.ds-c-tooltip__trigger {
 
 // The greater tooltip container which gets added in via state
 // max-width and z-index are set via props to account for different uses
-.ds-c-tooltip__container {
+.ds-c-tooltip {
   background: $color-white;
   border: 1px solid $color-gray-lighter;
   border-radius: 4px;
@@ -70,7 +70,7 @@ button.ds-c-tooltip__trigger {
   // When the tooltip is positioned on top of the trigger
   &[data-placement*='top'] {
     &::before {
-      @extend %ds-c-tooltip__container-before;
+      @extend %ds-c-tooltip__before;
       bottom: -36px;
     }
     // The box shadow of the tooltip arrow
@@ -88,7 +88,7 @@ button.ds-c-tooltip__trigger {
   // When the tooltip is positioned on bottom of the trigger
   &[data-placement*='bottom'] {
     &::before {
-      @extend %ds-c-tooltip__container-before;
+      @extend %ds-c-tooltip__before;
       top: -36px;
     }
     // The box shadow of the tooltip arrow
@@ -105,27 +105,27 @@ button.ds-c-tooltip__trigger {
   }
 }
 
-.ds-c-tooltip--container-enter {
+.ds-c-tooltip-enter {
   opacity: 0;
 }
 
-.ds-c-tooltip--container-enter-active {
+.ds-c-tooltip-enter-active {
   opacity: 1;
   transition: opacity $animation-speed-1;
 }
 
-.ds-c-tooltip--container-exit {
+.ds-c-tooltip-exit {
   opacity: 1;
 }
 
-.ds-c-tooltip--container-exit-active {
+.ds-c-tooltip-exit-active {
   opacity: 0;
   transition: opacity $animation-speed-1;
 }
 
 // styles for the dark/inverse version of the tooltip body/content
 // stylelint-disable selector-class-pattern
-.ds-c-tooltip__container--inverse {
+.ds-c-tooltip--inverse {
   background: $color-gray;
   border: 1px solid $color-gray-dark;
   box-shadow: 1px 1px $shadow-base-blur-radius $shadow-base-color;
