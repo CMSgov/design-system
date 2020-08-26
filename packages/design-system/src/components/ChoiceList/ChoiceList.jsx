@@ -76,11 +76,12 @@ export class ChoiceList extends React.PureComponent {
       <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           className={this.props.labelClassName}
-          component={'legend'}
+          component="legend"
           errorMessage={this.props.errorMessage}
           hint={this.props.hint}
           requirementLabel={this.props.requirementLabel}
           inversed={this.props.inversed}
+          ariaLabel={this.props.ariaLabel}
         >
           {this.props.label}
         </FormLabel>
@@ -91,6 +92,10 @@ export class ChoiceList extends React.PureComponent {
 }
 
 ChoiceList.propTypes = {
+  /**
+   * Adds an `aria-label` to the `<legend>` element to provide additional context for assistive devices.
+   */
+  ariaLabel: PropTypes.string,
   /**
    * The list of choices to be rendered.
    */
