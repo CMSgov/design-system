@@ -42,13 +42,10 @@
 
 // TODO: border-spacing to increase
 // the td/th text - not displaying on newline for <p>
-// <code class="ds-u-font-weight--bold">children</code>
-// <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
+// - <code class="ds-u-font-weight--bold">children</code>
+// - <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
 // td/th text - left padding to match the data title - Document title right side @ end of background-color
 @mixin ds-c-table--stacked {
-  // border-collapse: separate;
-  // border-spacing: 0 25px;
-
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
     // ds-u-visibility--screen-reader
@@ -70,10 +67,6 @@
     display: block;
   }
 
-  td {
-    border-top: 1px solid $color-gray-lighter;
-  }
-
   td,
   th {
     border: 0;
@@ -93,16 +86,17 @@
   }
 
   tr {
+
     background-color: color('white');
+    border: 1px solid $color-gray;
     border: 1px solid;
     display: block;
+    margin: 0 0 0.5rem;
     padding-bottom: 2px;
     position: relative;
 
     &::after {
       background-color: $color-gray-lightest;
-      // @include u-pin("y");
-      // @include u-pin("left");
       bottom: 0;
       content: '';
       display: block;
@@ -113,6 +107,10 @@
       width: 38%;
       z-index: 0;
     }
+  }
+
+  td {
+    border-top: 1px solid $color-gray-lighter;
   }
 
   &.ds-c-table--striped tbody {
