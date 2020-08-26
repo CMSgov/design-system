@@ -39,17 +39,18 @@ export const TableCell = ({
     }
   }
 
-  let role;
   let Component;
   if (component) {
     Component = component;
-    if (_isTableHeadChild) {
-      role = 'columnheader';
-    } else if (component === 'th') {
-      role = 'rowheader';
-    }
   } else {
     Component = _isTableHeadChild ? 'th' : 'td';
+  }
+
+  let role = 'cell';
+  if (_isTableHeadChild) {
+    role = 'columnheader';
+  } else if (component === 'th') {
+    role = 'rowheader';
   }
 
   let defaultScope = scope;
@@ -65,7 +66,7 @@ export const TableCell = ({
     'ds-u-font-weight--bold',
     stackedClassName
   );
-  const isValidStackedTitle = stackedTitle && stackedTitle.length > 0;
+  const isValidStackedTitle = _stackable && stackedTitle && stackedTitle.length > 0;
 
   return (
     <Component
@@ -74,6 +75,7 @@ export const TableCell = ({
       scope={defaultScope}
       headers={headers}
       id={id}
+      data-title={stackedTitle}
       {...others}
     >
       {isValidStackedTitle && (
