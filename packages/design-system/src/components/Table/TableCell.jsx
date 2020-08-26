@@ -6,19 +6,19 @@ export const TableCell = ({
   align,
   children,
   className,
+  component,
   headers,
   id,
   scope,
   stackedTitle,
   stackedClassName,
-  tableTag,
-  _isHeadCell,
-  _isTableStackable,
+  _isTableHeadChild,
+  _stackable,
   ...others
 }) => {
-  if (process.env.NODE_ENV !== 'production' && _isTableStackable) {
+  if (process.env.NODE_ENV !== 'production' && _stackable) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
-    if (_isHeadCell) {
+    if (_isTableHeadChild) {
       if (!id) {
         console.warn(
           'The id prop in `TableCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
@@ -41,20 +41,24 @@ export const TableCell = ({
 
   let role;
   let Component;
-  if (tableTag) {
-    Component = tableTag;
-    role = _isHeadCell ? 'columnheader' : 'cell';
+  if (component) {
+    Component = component;
+    if (_isTableHeadChild) {
+      role = 'columnheader';
+    } else if (component === 'th') {
+      role = 'rowheader';
+    }
   } else {
-    Component = _isHeadCell ? 'th' : 'td';
+    Component = _isTableHeadChild ? 'th' : 'td';
   }
 
   let defaultScope = scope;
-  if (!defaultScope && _isHeadCell) {
+  if (!defaultScope && _isTableHeadChild) {
     defaultScope = 'col';
   }
 
   const alignText = align ? `ds-u-text-align--${align}` : null;
-  const defaultClassName = _isHeadCell ? 'ds-c-table__header' : 'ds-c-table__cell';
+  const defaultClassName = _isTableHeadChild ? 'ds-c-table__header' : 'ds-c-table__cell';
   const classes = classNames(defaultClassName, alignText, className);
   const stackedClasses = classNames(
     'ds-c-table--stacked__col-header',
@@ -84,8 +88,8 @@ export const TableCell = ({
 
 TableCell.defaultProps = {
   scope: 'row',
-  _isHeadCell: false,
-  _isTableStackable: false,
+  _isTableHeadChild: false,
+  _stackable: false,
 };
 
 TableCell.propTypes = {
@@ -104,7 +108,7 @@ TableCell.propTypes = {
   /**
    * `TableCell` must define a `headers` prop for stackable tables with a `<td>` element.
    * The `headers` prop is needed to associate header and data cells for screen readers.
-   * `headers` consist of a list of space-separated ids that each correspond to a TableHeaderCell element.
+   * `headers` consist of a list of space-separated ids that each correspond to a `<td>` element.
    * [Read more on the headers attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#Attributes).
    */
   headers: PropTypes.string,
@@ -124,22 +128,23 @@ TableCell.propTypes = {
    */
   stackedClassName: PropTypes.string,
   /**
-   * Table Data cells that is a header, this stacked title is displayed when a responsive table is vertically stacked.
+   * Table data cell's corresponding header title, this stacked title is displayed when a responsive table
+   * is vertically stacked.
    */
   stackedTitle: PropTypes.string,
   /**
    * If this prop is not defined, the component renders a `<th>` element
    * when the parent component is `TableHead` or otherwise a `<td>` element.
    */
-  tableTag: PropTypes.oneOf(['td', 'th']),
+  component: PropTypes.oneOf(['td', 'th']),
   /**
    * @hide-prop This gets set from the parent `TableHead` component
    */
-  _isHeadCell: PropTypes.bool,
+  _isTableHeadChild: PropTypes.bool,
   /**
    * @hide-prop This gets set from the parent `Table` component
    */
-  _isTableStackable: PropTypes.bool,
+  _stackable: PropTypes.bool,
 };
 
 export default TableCell;

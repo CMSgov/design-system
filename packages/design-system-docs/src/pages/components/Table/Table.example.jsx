@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <Table stackBreakpoint="sm" scrollable>
+  <Table stackable scrollable>
     <TableCaption>Responsive Table</TableCaption>
     <TableHead>
       <TableRow>

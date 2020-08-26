@@ -73,7 +73,7 @@ export class Table extends React.PureComponent {
     });
   }
 
-  renderChildren(isTableStackable) {
+  renderChildren() {
     return React.Children.map(this.props.children, (child) => {
       // Extend props on TableCaption before rendering.
       if (this.props.scrollable && isTableCaption(child)) {
@@ -84,9 +84,9 @@ export class Table extends React.PureComponent {
         });
       }
       // Extend props before rendering.
-      if (isTableStackable) {
+      if (this.props.stackable) {
         return React.cloneElement(child, {
-          _isTableStackable: isTableStackable,
+          _stackable: this.props.stackable,
         });
       }
       return child;
@@ -96,7 +96,8 @@ export class Table extends React.PureComponent {
   render() {
     const {
       className,
-      stackBreakpoint,
+      stackable,
+      stackableBreakpoint,
       striped,
       scrollable,
       scrollableNotice,
@@ -107,7 +108,7 @@ export class Table extends React.PureComponent {
     const classes = classNames(
       'ds-c-table',
       striped ? 'ds-c-table--striped' : null,
-      stackBreakpoint ? `ds-c-table--stacked-${stackBreakpoint}` : null,
+      stackableBreakpoint ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
       className
     );
 
@@ -123,7 +124,6 @@ export class Table extends React.PureComponent {
       'aria-relevant': 'additions',
       tabIndex: this.state.isTableScrollable ? '0' : null,
     };
-    const isTableStackable = !!stackBreakpoint;
 
     return (
       <div
@@ -133,7 +133,7 @@ export class Table extends React.PureComponent {
         {...attributeScrollable}
       >
         <table className={classes} role="table" {...others}>
-          {this.renderChildren(isTableStackable)}
+          {this.renderChildren(stackable)}
         </table>
       </div>
     );
@@ -149,6 +149,8 @@ Table.defaultProps = {
       <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
     </Alert>
   ),
+  stackable: false,
+  stackableBreakpoint: 'sm',
 };
 
 Table.propTypes = {
@@ -161,16 +163,6 @@ Table.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
-   * When `stackBreakpoint` is set, `id` prop is required in `TableHeaderCell` and
-   * `headers` prop is required in `TableDataCell` or `TableHeaderCell` for rows with a header column.
-   */
-  stackBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
-  /**
-   * A striped variation of the table.
-   */
-  striped: PropTypes.bool,
-  /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable: PropTypes.bool,
@@ -179,6 +171,19 @@ Table.propTypes = {
    * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
    */
   scrollableNotice: PropTypes.node,
+  /**
+   * A stackable variation of the table.
+   * When `stackable` is set, `id` or `headers` prop is required in `TableCell`
+   */
+  stackable: PropTypes.bool,
+  /**
+   * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
+   */
+  stackableBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
+  /**
+   * A striped variation of the table.
+   */
+  striped: PropTypes.bool,
 };
 
 export default Table;

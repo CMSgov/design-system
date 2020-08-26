@@ -76,9 +76,9 @@
     display: block;
   }
 
-  // td:first-child {
-  //   background-color: $color-gray-lightest;
-  // }
+  td:first-child {
+    background-color: $color-gray-lightest;
+  }
 
   /* Display individual cell heading reserved for stacked responsive table */
   .ds-c-table--stacked__col-header {

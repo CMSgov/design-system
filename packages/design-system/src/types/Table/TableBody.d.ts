@@ -12,7 +12,7 @@ export interface TableBodyProps {
   /**
    * @hide-prop This gets set from the parent `Table` component
    */
-  _isTableStackable?: PropTypes.bool;
+  _stackable?: boolean;
 }
 
 declare const TableBody: React.FC<TableBodyProps>;

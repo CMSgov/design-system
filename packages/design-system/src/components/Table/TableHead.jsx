@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TableHead = ({ children, className, _isTableStackable, ...others }) => {
+export const TableHead = ({ children, className, _stackable, ...others }) => {
   const classes = classNames('ds-c-table__head', className);
 
   const renderChildren = () => {
@@ -10,8 +10,8 @@ export const TableHead = ({ children, className, _isTableStackable, ...others })
       // Extend props before rendering.
       if (child) {
         return React.cloneElement(child, {
-          _isHeadCell: true,
-          _isTableStackable: _isTableStackable,
+          _isTableHeadChild: true,
+          _stackable: _stackable,
         });
       }
       return child;
@@ -26,7 +26,7 @@ export const TableHead = ({ children, className, _isTableStackable, ...others })
 };
 
 TableHead.defaultProps = {
-  _isTableStackable: null,
+  _stackable: false,
 };
 
 TableHead.propTypes = {
@@ -41,7 +41,7 @@ TableHead.propTypes = {
   /**
    * @hide-prop This gets set from the parent `Table` component
    */
-  _isTableStackable: PropTypes.bool,
+  _stackable: PropTypes.bool,
 };
 
 export default TableHead;
