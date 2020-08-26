@@ -34,7 +34,7 @@ class ControlledDateField extends React.PureComponent {
 }
 
 ReactDOM.render(
-  <div>
+  <>
     <DateField
       label="DateField example with invalid year"
       errorMessage="Please enter a year in the past"
@@ -45,6 +45,6 @@ ReactDOM.render(
     />
 
     <ControlledDateField />
-  </div>,
+  </>,
   document.getElementById('js-example')
 );
