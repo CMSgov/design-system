@@ -40,7 +40,15 @@
   }
 }
 
+// TODO: border-spacing to increase
+// the td/th text - not displaying on newline for <p>
+// <code class="ds-u-font-weight--bold">children</code>
+// <p><span class="ds-c-badge ds-u-bg-gray-dark">Required</span></p>
+// td/th text - left padding to match the data title - Document title right side @ end of background-color
 @mixin ds-c-table--stacked {
+  // border-collapse: separate;
+  // border-spacing: 0 25px;
+
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
     // ds-u-visibility--screen-reader
@@ -55,20 +63,6 @@
     word-wrap: normal;
   }
 
-  th,
-  td {
-    border: 0;
-  }
-
-  tr {
-    border: 1px solid $color-gray;
-    margin: 0 0 0.5rem;
-  }
-
-  td {
-    border-top: 1px solid $color-gray-lighter;
-  }
-
   tr,
   th,
   td,
@@ -76,14 +70,49 @@
     display: block;
   }
 
-  td:first-child {
-    background-color: $color-gray-lightest;
+  td {
+    border-top: 1px solid $color-gray-lighter;
   }
 
-  /* Display individual cell heading reserved for stacked responsive table */
-  .ds-c-table--stacked__col-header {
+  td,
+  th {
     border: 0;
+    display: flex;
+    position: relative;
+    z-index: 100;
+
+    // stylelint-disable selector-no-qualifying-type
+    &[data-title]::before {
+      // stylelint-enable selector-no-qualifying-type
+      content: attr(data-title);
+      flex: none;
+      font-weight: bold;
+      max-width: 40%;
+      width: 40%;
+    }
+  }
+
+  tr {
+    background-color: color('white');
+    border: 1px solid;
     display: block;
+    padding-bottom: 2px;
+    position: relative;
+
+    &::after {
+      background-color: $color-gray-lightest;
+      // @include u-pin("y");
+      // @include u-pin("left");
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      max-width: 38%;
+      position: absolute;
+      top: 0;
+      width: 38%;
+      z-index: 0;
+    }
   }
 
   &.ds-c-table--striped tbody {
