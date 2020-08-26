@@ -6,6 +6,8 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -27,6 +29,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -56,6 +59,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -85,6 +89,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -114,6 +119,8 @@ exports[`DateField has errorMessage 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -142,6 +149,7 @@ exports[`DateField has errorMessage 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -171,6 +179,7 @@ exports[`DateField has errorMessage 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -200,6 +209,7 @@ exports[`DateField has errorMessage 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -229,6 +239,8 @@ exports[`DateField has invalid day 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -250,6 +262,7 @@ exports[`DateField has invalid day 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -279,6 +292,7 @@ exports[`DateField has invalid day 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -308,6 +322,7 @@ exports[`DateField has invalid day 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -337,6 +352,8 @@ exports[`DateField has invalid month 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -358,6 +375,7 @@ exports[`DateField has invalid month 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -387,6 +405,7 @@ exports[`DateField has invalid month 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -416,6 +435,7 @@ exports[`DateField has invalid month 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -445,6 +465,8 @@ exports[`DateField has invalid year 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -466,6 +488,7 @@ exports[`DateField has invalid year 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -495,6 +518,7 @@ exports[`DateField has invalid year 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -524,6 +548,7 @@ exports[`DateField has invalid year 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -553,6 +578,8 @@ exports[`DateField has requirementLabel 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -576,6 +603,7 @@ exports[`DateField has requirementLabel 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -605,6 +633,7 @@ exports[`DateField has requirementLabel 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -634,6 +663,7 @@ exports[`DateField has requirementLabel 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -663,6 +693,8 @@ exports[`DateField is inversed 1`] = `
 >
   <legend
     className="ds-c-label ds-c-label--inverse"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -684,6 +716,7 @@ exports[`DateField is inversed 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -713,6 +746,7 @@ exports[`DateField is inversed 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -742,6 +776,7 @@ exports[`DateField is inversed 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -771,6 +806,8 @@ exports[`DateField renders with all defaultProps 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -792,6 +829,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -821,6 +859,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -850,6 +889,7 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
