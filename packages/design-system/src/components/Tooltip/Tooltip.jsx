@@ -1,18 +1,9 @@
 import { Manager, Popper, Reference } from 'react-popper';
-import Transition, { ENTERED, ENTERING, EXITED, EXITING } from 'react-transition-group/Transition';
+import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-
-// Transition component config
-const transitionDuration = 250; // Equivalent to $animation-speed-1
-const transitionStyles = {
-  [ENTERING]: { opacity: 1 },
-  [ENTERED]: { opacity: 1 },
-  [EXITING]: { opacity: 0 },
-  [EXITED]: { opacity: 0 },
-};
 
 export class Tooltip extends React.Component {
   constructor(props) {
@@ -116,6 +107,7 @@ export class Tooltip extends React.Component {
       maxWidth,
       offset,
       zIndex,
+      transitionDuration,
       triggerId,
     } = this.props;
 
@@ -127,53 +119,49 @@ export class Tooltip extends React.Component {
     );
 
     return (
-      <Transition in={this.state.active} unmountOnExit timeout={transitionDuration}>
-        {(transitionState) => (
-          <Popper
-            placement={placement}
-            modifiers={{ offset: { offset: offset } }}
-          >
-            {({ placement, ref, style, arrowProps }) => {
-              // Can't directly modify style, so copy and add styles from props
-              const newStyle = {
-                ...style,
-                ...transitionStyles[transitionState],
-                ...{
-                  maxWidth: maxWidth,
-                  zIndex: zIndex,
-                },
-              };
-              const arrowStyle = { left: parseInt(arrowProps.style.left, 10) };
-
-              return (
-                <div
-                  id={`tooltip-${triggerId}`}
-                  ref={ref}
-                  className={classNames('ds-c-tooltip__container', className, {
-                    'ds-c-tooltip__container-inverse': inverse,
-                  })}
-                  style={newStyle}
-                  onMouseEnter={() => this.showTooltip()}
-                  onMouseLeave={() => this.hideTooltip()}
-                  data-placement={placement}
-                  aria-labelledby={triggerId}
-                  role={interactive ? 'dialog' : 'tooltip'}
-                >
-                  {interactive ? (
-                    // Child of focus trap must be a single node and valid HTML element, no <Fragment>
-                    // Set initialFocus to the trigger element to ensure trigger aria-label is read
-                    <FocusTrap focusTrapOptions={{ initialFocus: this.props.triggerId }}>
-                      <div>
-                        {tooltipContent(arrowProps, arrowStyle)}
-                      </div>
-                    </FocusTrap>
-                  ) : tooltipContent(arrowProps, arrowStyle)}
-                </div>
-              );
-            }}
-          </Popper>
-        )}
-      </Transition>
+      <CSSTransition in={this.state.active} classNames="ds-c-tooltip" unmountOnExit timeout={transitionDuration}>
+        <Popper
+          placement={placement}
+          modifiers={{ offset: { offset: offset } }}
+        >
+          {({ placement, ref, style, arrowProps }) => {
+            // Can't directly modify style, so copy and add styles from props
+            const newStyle = {
+              ...style,
+              ...{
+                maxWidth: maxWidth,
+                zIndex: zIndex,
+              },
+            };
+            const arrowStyle = { left: parseInt(arrowProps.style.left, 10) };
+            return (
+              <div
+                id={`tooltip-${triggerId}`}
+                ref={ref}
+                className={classNames('ds-c-tooltip__container', className, {
+                  'ds-c-tooltip__container-inverse': inverse,
+                })}
+                style={newStyle}
+                onMouseEnter={() => this.showTooltip()}
+                onMouseLeave={() => this.hideTooltip()}
+                data-placement={placement}
+                aria-labelledby={triggerId}
+                role={interactive ? 'dialog' : 'tooltip'}
+              >
+                {interactive ? (
+                  // Child of focus trap must be a single node and valid HTML element, no <Fragment>
+                  // Set initialFocus to the trigger element to ensure trigger aria-label is read
+                  <FocusTrap focusTrapOptions={{ initialFocus: triggerId }}>
+                    <div>
+                      {tooltipContent(arrowProps, arrowStyle)}
+                    </div>
+                  </FocusTrap>
+                ) : tooltipContent(arrowProps, arrowStyle)}
+              </div>
+            );
+          }}
+        </Popper>
+      </CSSTransition>
     );
   }
 
@@ -195,6 +183,7 @@ Tooltip.defaultProps = {
   zIndex: '1',
   offset: '5, 5, 5, 5',
   triggerComponent: 'button',
+  transitionDuration: 250, // Equivalent to $animation-speed-1
 };
 Tooltip.propTypes = {
   /**
@@ -226,6 +215,10 @@ Tooltip.propTypes = {
    * `maxWidth` styling applied to the tooltip body
    */
   maxWidth: PropTypes.string,
+  /**
+   * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
+   */
+  transitionDuration: PropTypes.number,
   /**
    * `id` applied to the trigger element, used in `aria-labelledby`
    */

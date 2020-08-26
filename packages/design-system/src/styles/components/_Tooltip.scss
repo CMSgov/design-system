@@ -67,8 +67,6 @@ button.ds-c-tooltip__trigger {
   border-radius: 4px;
   box-shadow: $shadow-base;
   box-sizing: border-box;
-  opacity: 0;
-  transition: opacity $animation-speed-1;
   // When the tooltip is positioned on top of the trigger
   &[data-placement*='top'] {
     &::before {
@@ -105,6 +103,24 @@ button.ds-c-tooltip__trigger {
       // stylelint-enable max-nesting-depth
     }
   }
+}
+
+.ds-c-tooltip--container-enter {
+  opacity: 0;
+}
+
+.ds-c-tooltip--container-enter-active {
+  opacity: 1;
+  transition: opacity $animation-speed-1;
+}
+
+.ds-c-tooltip--container-exit {
+  opacity: 1;
+}
+
+.ds-c-tooltip--container-exit-active {
+  opacity: 0;
+  transition: opacity $animation-speed-1;
 }
 
 // styles for the dark/inverse version of the tooltip body/content
