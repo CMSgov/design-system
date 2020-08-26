@@ -11,7 +11,9 @@ const count = require('gulp-count');
 const rename = require('gulp-rename');
 const ts = require('gulp-typescript');
 const path = require('path');
+const react2dts = require('react-to-typescript-definitions');
 const streamPromise = require('./common/streamPromise');
+const through = require('through2');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -50,6 +52,14 @@ function copySass(dir) {
   );
 }
 
+/**
+ * Copy any TS definition files (only used in core)
+ */
+function copyDefinitionFiles(dir) {
+  const src = path.join(dir, 'src');
+  return streamPromise(gulp.src([`${src}/**/*.d.ts`]).pipe(gulp.dest(path.join(dir, 'dist'))));
+}
+
 async function copyAll(dir) {
   const copyTasks = [
     copyJson(dir),
@@ -66,6 +76,37 @@ async function copyAll(dir) {
 
   return Promise.all(copyTasks);
 }
+
+/**
+ * Used to generate typescript definition files for the core
+ */
+/* eslint-disable */
+async function generateTypeDefinitionsFromPropTypes(dir) {
+  const src = path.join(dir, 'src', 'components');
+  const srcGlob = getSrcGlob(src);
+
+  return streamPromise(
+    gulp
+      .src(srcGlob, { base: src })
+      .pipe(
+        through.obj((file, enc, cb) => {
+          // Replace React component files with definitions, avoid modifying entry point
+          if (file.basename !== 'index.js' || file.dirname.split('/').pop() !== 'components') {
+            const definition = react2dts.generateFromFile(null, file.path);
+            file.contents = Buffer.from(definition);
+          }
+
+          file.extname = '.d.ts';
+          cb(null, file);
+        })
+      )
+      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
+      .on('finish', function () {
+        logTask('📜 ', 'Core Typescript definition files generated');
+      })
+  );
+}
+/* eslint-enable */
 
 /**
  * Because we use babel to compile ts files, we have to compile twice to get definition files.
@@ -136,13 +177,14 @@ async function compileEsmJs(dir, changedPath) {
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
  */
+
 function compileJs(dir, options, changedPath) {
-  const src = path.join(dir, 'src');
+  const src = path.join(dir, 'src', 'components');
   const srcGlob = getSrcGlob(src, changedPath);
 
   return streamPromise(
     gulp
-      .src(srcGlob, { base: src })
+      .src(srcGlob, { base: path.join(dir, 'src') })
       .pipe(babel())
       .on('error', (error) => {
         logError('compileJs', error);
@@ -156,9 +198,11 @@ function compileJs(dir, options, changedPath) {
       .pipe(gulp.dest(path.join(dir, 'dist')))
   )
     .then(() => {
+      // Compile ESM version of code
       return compileEsmJs(dir, changedPath);
     })
     .then(() => {
+      // If design system is using typescript, use tsc to generate definition files
       if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
@@ -173,6 +217,10 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
+    // If core ds, copy definition files too
+    if (options.core) {
+      await copyDefinitionFiles(sourceDir);
+    }
     await compileSourceSass(sourceDir);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {

@@ -1,9 +1,10 @@
 ## Example: Pure HTML/CSS
 
 This shows the usage of CMS design system components on a pure HTML/CSS page with examples of:
+
 - basic article
 - simple form with submit button
-- using responsive classes 
+- using responsive classes
 
 Simply include the CSS file in the HTML document.
 

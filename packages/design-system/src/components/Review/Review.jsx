@@ -81,9 +81,6 @@ Review.propTypes = {
    * props.editHref value are passed to this function.
    */
   onEditClick: PropTypes.func,
-  /**
-   * An optional node in place of the edit link. If this defined, no edit link will be shown.
-   */
 };
 
 export default Review;

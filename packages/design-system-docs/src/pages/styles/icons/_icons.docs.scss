@@ -9,7 +9,7 @@ Style guide: styles.icons
 */
 
 /*
-Status icons
+Status Icons
 
 @hide-markup
 
@@ -21,19 +21,7 @@ Style guide: styles.icons.alert
 */
 
 /*
-Checkbox and radio icons
-
-@hide-markup
-
-These checkmark icons are drawn with SCSS/CSS and used for both checkbox and radio buttons. The reasoning behind this is background images are not displayed in high contrast mode on certain systems and browsers so switching to draw the icons with SCSS/CSS ensures that the icons are always visibile and support as many users as possible.
-
-Markup: checkbox-radio-icons.example.html
-
-Style guide: styles.icons.checkbox
-*/
-
-/*
-Interaction icons
+Interaction Icons
 
 @hide-markup
 
@@ -45,7 +33,7 @@ Style guide: styles.icons.interaction
 */
 
 /*
-Supplemental icons
+Supplemental Icons
 
 @hide-markup
 
