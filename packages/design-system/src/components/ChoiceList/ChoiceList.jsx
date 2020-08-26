@@ -81,7 +81,6 @@ export class ChoiceList extends React.PureComponent {
           hint={this.props.hint}
           requirementLabel={this.props.requirementLabel}
           inversed={this.props.inversed}
-          ariaLabel={this.props.ariaLabel}
         >
           {this.props.label}
         </FormLabel>
@@ -92,10 +91,6 @@ export class ChoiceList extends React.PureComponent {
 }
 
 ChoiceList.propTypes = {
-  /**
-   * Adds an `aria-label` to the `<legend>` element to provide additional context for assistive devices.
-   */
-  ariaLabel: PropTypes.string,
   /**
    * The list of choices to be rendered.
    */
