@@ -2,11 +2,10 @@ import { Alert, Badge, MonthPicker, getMonthNames } from '@cmsgov/design-system'
 import React, { SyntheticEvent, useState } from 'react';
 import usflag from '../images/us_flag_small.png';
 
-const LOCALE = "en";
+const LOCALE = 'en';
 const NUM_MONTHS = 12;
 const monthNumbers: number[] = Array.from(new Array(NUM_MONTHS), (_, i) => i + 1);
 const monthNames = getMonthNames(LOCALE);
-console.log(monthNames)
 
 function App() {
   const [selectedMonths, setSelectedMonths] = useState<number[]>([]);
@@ -59,10 +58,8 @@ function App() {
           {selectedMonths.length > 0 && (
             <Alert heading="Your favorite months" hideIcon>
               <ul>
-                {selectedMonths.map(monthNumber => (
-                  <li key={monthNumber}>
-                    {monthNames[monthNumber - 1]}
-                  </li>
+                {selectedMonths.map((monthNumber) => (
+                  <li key={monthNumber}>{monthNames[monthNumber - 1]}</li>
                 ))}
               </ul>
             </Alert>
