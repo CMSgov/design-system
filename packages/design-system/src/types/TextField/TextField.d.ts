@@ -117,3 +117,5 @@ export default class TextField extends React.Component<
 > {
   render(): JSX.Element;
 }
+
+export { unmaskValue } from "./Mask";

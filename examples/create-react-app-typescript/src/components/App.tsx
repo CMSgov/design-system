@@ -1,4 +1,4 @@
-import { Badge, MonthPicker, getMonthNames } from '@cmsgov/design-system';
+import { Badge, MonthPicker, getMonthNames, unmaskValue } from '@cmsgov/design-system';
 import React, { SyntheticEvent, useState } from 'react';
 import usflag from '../images/us_flag_small.png';
 
@@ -6,6 +6,8 @@ const LOCALE = "en";
 const NUM_MONTHS = 12;
 const monthNumbers: number[] = Array.from(new Array(NUM_MONTHS), (_, i) => i + 1);
 const monthNames = getMonthNames(LOCALE);
+
+console.log(unmaskValue("$1,000,000.00", "currency"));
 
 function App() {
   const [selectedMonths, setSelectedMonths] = useState<number[]>([]);
