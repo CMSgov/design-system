@@ -15,7 +15,7 @@ export { default as Dropdown } from './Dropdown/Dropdown';
 export { default as FormLabel } from './FormLabel/FormLabel';
 export { default as HelpDrawer } from './HelpDrawer/HelpDrawer';
 export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
-export { default as MonthPicker } from './MonthPicker/MonthPicker';
+export { default as MonthPicker, getMonthNames } from './MonthPicker/MonthPicker';
 export { default as Review } from './Review/Review';
 export { default as SkipNav } from './SkipNav/SkipNav';
 export { default as Spinner } from './Spinner/Spinner';
