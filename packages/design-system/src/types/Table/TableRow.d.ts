@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface TableRowProps {
   /**
-   * The table row contents, usually `TableDataCell` and `TableHeaderCell`.
+   * The table row contents, usually `TableCell`.
    */
   children: React.ReactNode;
   /**

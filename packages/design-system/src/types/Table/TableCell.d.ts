@@ -59,6 +59,6 @@ export interface TableCellProps {
   _stackable?: boolean;
 }
 
-declare const TableCell: React.FC<TableCellProps>;
-
-export default TableCell;
+export default class TableCell extends React.Component<TableCellProps, any> {
+  render(): JSX.Element;
+}
