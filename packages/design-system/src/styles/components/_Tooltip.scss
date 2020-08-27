@@ -74,6 +74,9 @@ button.ds-c-tooltip__trigger {
   border: $tooltip-border;
   border-radius: $tooltip-border-radius;
   box-sizing: border-box;
+
+  display: none;
+  opacity: 0;
   
   // stylelint-disable max-nesting-depth
   // Tooltip positioning based on placement of trigger
@@ -119,21 +122,35 @@ button.ds-c-tooltip__trigger {
 // Tooltip transition styles
 // http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
+  display: block;
   opacity: 0;
 }
 
 .ds-c-tooltip-enter-active {
-  opacity: 1;
   transition: opacity $animation-speed-1;
+  display: block;
+  opacity: 1;
+}
+
+.ds-c-tooltip-enter-done {
+  display: block;
+  opacity: 1;
 }
 
 .ds-c-tooltip-exit {
+  display: block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit-active {
-  opacity: 0;
   transition: opacity $animation-speed-1;
+  display: block;
+  opacity: 0;
+}
+
+.ds-c-tooltip-exit-done {
+  display: none;
+  opacity: 0;
 }
 
 // Inverse version of the tooltip body/content

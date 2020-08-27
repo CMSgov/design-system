@@ -112,9 +112,9 @@ export class Tooltip extends React.Component {
       triggerId,
     } = this.props;
 
-    const tooltipContent = (arrowProps, arrowStyle) => (
+    const tooltipContent = (arrowProps) => (
       <>
-        <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowStyle} />
+        <div className="ds-c-tooltip__arrow" ref={arrowProps.ref} style={arrowProps.style} />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
       </>
     );
@@ -130,15 +130,12 @@ export class Tooltip extends React.Component {
               ...style,
               ...{ maxWidth, zIndex },
             };
-            const arrowStyle = { 
-              top: parseInt(arrowProps.style.top, 10),
-              left: parseInt(arrowProps.style.left, 10)
-            };
             const interactiveBorderStyle = { 
               left: `-${interactiveBorder}px`,
               top: `-${interactiveBorder}px`,
               border: `${interactiveBorder}px solid transparent`
             }
+
             return (
               <div
                 id={`tooltip-${triggerId}`}
@@ -151,18 +148,19 @@ export class Tooltip extends React.Component {
                 onMouseLeave={() => this.hideTooltip()}
                 data-placement={placement}
                 aria-labelledby={triggerId}
+                aria-hidden={!this.state.active}
                 role={interactive ? 'dialog' : 'tooltip'}
               >
                 {interactive ? (
                   // Child of focus trap must be a single node and valid HTML element, no <Fragment>
                   // Set initialFocus to the trigger element to ensure trigger aria-label is read
-                  <FocusTrap focusTrapOptions={{ initialFocus: triggerId }}>
+                  <FocusTrap focusTrapOptions={{ initialFocus: `#${triggerId}` }}>
                     <div>
                       <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
-                      {tooltipContent(arrowProps, arrowStyle)}
+                      {tooltipContent(arrowProps)}
                     </div>
                   </FocusTrap>
-                ) : tooltipContent(arrowProps, arrowStyle)}
+                ) : tooltipContent(arrowProps)}
               </div>
             );
           }}
@@ -184,7 +182,7 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.defaultProps = {
-  interactiveBorder: '20',
+  interactiveBorder: 20,
   placement: 'top',
   maxWidth: '300px',
   zIndex: '1',
