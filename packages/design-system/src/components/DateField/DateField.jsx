@@ -110,6 +110,7 @@ export class DateField extends React.PureComponent {
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
             }}
             defaultValue={this.props.monthDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.monthLabel}
             name={this.props.monthName}
             value={this.props.monthValue}
@@ -127,6 +128,7 @@ export class DateField extends React.PureComponent {
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
             }}
             defaultValue={this.props.dayDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.dayLabel}
             name={this.props.dayName}
             value={this.props.dayValue}
@@ -144,6 +146,7 @@ export class DateField extends React.PureComponent {
               if (this.props.yearFieldRef) this.props.yearFieldRef(el);
             }}
             defaultValue={this.props.yearDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.yearLabel}
             name={this.props.yearName}
             value={this.props.yearValue}
@@ -186,6 +189,10 @@ DateField.propTypes = {
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter: PropTypes.func,
+  /**
+   * Disables all three input fields.
+   */
+  disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
   /**
    * Additional hint text to display above the individual month/day/year fields

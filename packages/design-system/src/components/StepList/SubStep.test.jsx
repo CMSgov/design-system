@@ -4,6 +4,20 @@ import SubStep from './SubStep';
 import { shallow } from 'enzyme';
 
 describe('SubStep', () => {
+  function testEditLink(step) {
+    const spy = jest.fn();
+    const wrapper = shallow(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
+
+    const editLink = wrapper.find('StepLink');
+    expect(editLink.length).toEqual(1);
+    expect(editLink.props()).toMatchObject({
+      href: defaultStep.href,
+      screenReaderText: defaultStep.heading,
+    });
+    editLink.props().onClick();
+    expect(spy).toHaveBeenCalled();
+  }
+
   it('renders a basic incomplete substep', () => {
     const wrapper = shallow(
       <SubStep step={generateStep()} onStepLinkClick={jest.fn()} editText="Edit" />
@@ -14,23 +28,12 @@ describe('SubStep', () => {
     expect(wrapper.find('StepLink').length).toEqual(0);
   });
 
-  it('renders a basic complete substep', () => {
-    const step = generateStep({ completed: true });
-    const spy = jest.fn();
-    const wrapper = shallow(<SubStep step={step} onStepLinkClick={spy} editText="Edit" />);
+  it('renders edit link when substep is started', () => {
+    testEditLink(generateStep({ started: true }));
+  });
 
-    const title = wrapper.find('.ds-c-substep__heading');
-    expect(title.length).toEqual(1);
-    expect(title.text()).toEqual(defaultStep.heading);
-
-    const editLink = wrapper.find('StepLink');
-    expect(editLink.length).toEqual(1);
-    expect(editLink.props()).toMatchObject({
-      href: defaultStep.href,
-      screenReaderText: defaultStep.heading,
-    });
-    editLink.props().onClick();
-    expect(spy).toHaveBeenCalled();
+  it('renders edit link when substep is completed', () => {
+    testEditLink(generateStep({ completed: true }));
   });
 
   it('calls step.onClick when provided', () => {
