@@ -693,6 +693,8 @@ exports[`DateField is disabled 1`] = `
 >
   <legend
     className="ds-c-label"
+    component="legend"
+    hint="For example: 4 / 28 / 1986"
     id="datefield_label_snapshot"
   >
     <span
@@ -714,6 +716,7 @@ exports[`DateField is disabled 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -744,6 +747,7 @@ exports[`DateField is disabled 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -774,6 +778,7 @@ exports[`DateField is disabled 1`] = `
     >
       <label
         className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        component="label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
