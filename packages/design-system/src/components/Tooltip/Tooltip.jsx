@@ -102,6 +102,7 @@ export class Tooltip extends React.Component {
       children,
       inverse,
       interactive,
+      interactiveBorder,
       placement,
       className,
       maxWidth,
@@ -125,15 +126,19 @@ export class Tooltip extends React.Component {
           modifiers={{ offset: { offset: offset } }}
         >
           {({ placement, ref, style, arrowProps }) => {
-            // Can't directly modify style, so copy and add styles from props
-            const newStyle = {
+            const tooltipStyle = {
               ...style,
-              ...{
-                maxWidth: maxWidth,
-                zIndex: zIndex,
-              },
+              ...{ maxWidth, zIndex },
             };
-            const arrowStyle = { left: parseInt(arrowProps.style.left, 10) };
+            const arrowStyle = { 
+              top: parseInt(arrowProps.style.top, 10),
+              left: parseInt(arrowProps.style.left, 10)
+            };
+            const interactiveBorderStyle = { 
+              left: `-${interactiveBorder}px`,
+              top: `-${interactiveBorder}px`,
+              border: `${interactiveBorder}px solid transparent`
+            }
             return (
               <div
                 id={`tooltip-${triggerId}`}
@@ -141,8 +146,8 @@ export class Tooltip extends React.Component {
                 className={classNames('ds-c-tooltip', className, {
                   'ds-c-tooltip-inverse': inverse,
                 })}
-                style={newStyle}
-                onMouseEnter={() => this.showTooltip()}
+                style={tooltipStyle}
+                onMouseEnter={() => interactive ? this.showTooltip() : null }
                 onMouseLeave={() => this.hideTooltip()}
                 data-placement={placement}
                 aria-labelledby={triggerId}
@@ -153,6 +158,7 @@ export class Tooltip extends React.Component {
                   // Set initialFocus to the trigger element to ensure trigger aria-label is read
                   <FocusTrap focusTrapOptions={{ initialFocus: triggerId }}>
                     <div>
+                      <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
                       {tooltipContent(arrowProps, arrowStyle)}
                     </div>
                   </FocusTrap>
@@ -178,7 +184,8 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.defaultProps = {
-  placement: 'bottom',
+  interactiveBorder: '20',
+  placement: 'top',
   maxWidth: '300px',
   zIndex: '1',
   offset: '5, 5, 5, 5',
@@ -199,9 +206,13 @@ Tooltip.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips include a focus trap and other accessibility changes.
+   * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips trap focus, expands the activation area to include the tooltip itself, and includes other accessibility changes.
    */
   interactive: PropTypes.bool,
+  /**
+   * Sets the size of the invisible border around the tooltip that prevents it from immediately hiding when the cursor leaves the toolip.
+   */
+  interactiveBorder: PropTypes.number,
   inverse: PropTypes.bool,  
   /**
   * Tooltip body offset relative to the trigger. See the [`react-popper` docs](https://popper.js.org/docs/v1/#modifiersoffset) for more info.

@@ -48,15 +48,13 @@ button.ds-c-tooltip__trigger {
   padding: $spacer-1;
 }
 
-// Used in ds-c-tooltip::before
-// The invisible area on top of the arrow that keeps the tooltip visible on hover
-%ds-c-tooltip__before {
+// The invisible area around the tooltip container that keeps the tooltip visible on hover
+.ds-c-tooltip__interactive-border {
   content: '';
-  height: 36px;
-  left: 0;
   opacity: 0;
   position: absolute;
   width: 100%;
+  height: 100%;
 }
 
 // The greater tooltip container which gets added in via state
@@ -67,44 +65,50 @@ button.ds-c-tooltip__trigger {
   border-radius: 4px;
   box-shadow: $shadow-base;
   box-sizing: border-box;
-  // When the tooltip is positioned on top of the trigger
+  
+  // stylelint-disable max-nesting-depth
+  // Tooltip positioning based on placement of trigger
   &[data-placement*='top'] {
-    &::before {
-      @extend %ds-c-tooltip__before;
-      bottom: -36px;
-    }
-    // The box shadow of the tooltip arrow
     .ds-c-tooltip__arrow {
       top: 100%;
-      // stylelint-disable max-nesting-depth
       &::after {
-        box-shadow: $shadow-base;
         top: 0;
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
       }
-      // stylelint-enable max-nesting-depth
     }
   }
-  // When the tooltip is positioned on bottom of the trigger
   &[data-placement*='bottom'] {
-    &::before {
-      @extend %ds-c-tooltip__before;
-      top: -36px;
-    }
-    // The box shadow of the tooltip arrow
     .ds-c-tooltip__arrow {
       top: -$tooltip-arrow-size;
-      // stylelint-disable max-nesting-depth
       &::after {
         bottom: 0;
-        box-shadow: 1px 1px 1px $shadow-base-color;
-        transform: translateX(-50%) translateY(-50%) rotate(-135deg);
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
       }
-      // stylelint-enable max-nesting-depth
     }
   }
+  &[data-placement*='left'] {
+    .ds-c-tooltip__arrow {
+      right: -$tooltip-arrow-size;
+      &::after {
+        left: 0;
+        transform: translateX(50%) translateY(50%) rotate(45deg);
+      }
+    }
+  }
+  &[data-placement*='right'] {
+    .ds-c-tooltip__arrow {
+      left: -$tooltip-arrow-size;
+      &::after {
+        left: 0;
+        transform: translateX(50%) translateY(50%) rotate(45deg);
+      }
+    }
+  }
+  // stylelint-enable max-nesting-depth
 }
 
+// Tooltip transition styles
+// http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
   opacity: 0;
 }
@@ -123,8 +127,7 @@ button.ds-c-tooltip__trigger {
   transition: opacity $animation-speed-1;
 }
 
-// styles for the dark/inverse version of the tooltip body/content
-// stylelint-disable selector-class-pattern
+// Inverse version of the tooltip body/content
 .ds-c-tooltip--inverse {
   background: $color-gray;
   border: 1px solid $color-gray-dark;
@@ -139,4 +142,3 @@ button.ds-c-tooltip__trigger {
     color: $color-white;
   }
 }
-// stylelint-enable selector-class-pattern
