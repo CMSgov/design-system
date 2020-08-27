@@ -54,6 +54,8 @@ export class FormLabel extends React.PureComponent {
       fieldId,
       id,
       children,
+      component,
+      hint,
       textClassName,
       className,
       inversed,
