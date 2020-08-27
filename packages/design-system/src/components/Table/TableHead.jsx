@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 
-export const TableHead = ({ children, className, _stackable, ...others }) => {
-  const classes = classNames('ds-c-table__head', className);
-
+export const TableHead = ({ children, _stackable, ...others }) => {
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
@@ -18,26 +15,18 @@ export const TableHead = ({ children, className, _stackable, ...others }) => {
     });
   };
 
-  return (
-    <thead className={classes} {...others}>
-      {renderChildren()}
-    </thead>
-  );
+  return <thead {...others}>{renderChildren()}</thead>;
 };
 
-TableHead.defaultProps = {
-  _stackable: false,
-};
+// TableHead.defaultProps = {
+//   _stackable: false,
+// };
 
 TableHead.propTypes = {
   /**
    * The table head contents, usually `TableRow`.
    */
   children: PropTypes.node,
-  /**
-   * Additional classes to be added to the table head element.
-   */
-  className: PropTypes.string,
   /**
    * @hide-prop This gets set from the parent `Table` component
    */

@@ -86,7 +86,6 @@
   }
 
   tr {
-
     background-color: color('white');
     border: 1px solid $color-gray;
     border: 1px solid;
@@ -146,24 +145,6 @@
 .ds-c-table--striped tbody {
   tr:nth-child(even) {
     background-color: $color-gray-lightest;
-  }
-}
-
-.ds-c-table__head {
-  display: table-header-group;
-}
-
-.ds-c-table__row {
-  display: table-row;
-}
-
-.ds-c-table__body {
-  display: table-row-group;
-}
-
-.ds-c-table__cell {
-  &.ds-c-table__cell--numeric {
-    text-align: right;
   }
 }
 

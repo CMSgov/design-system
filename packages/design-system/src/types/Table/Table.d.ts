@@ -24,7 +24,7 @@ export interface TableProps {
    * A stackable variation of the table.
    * When `stackable` is set, `id` or `headers` prop is required in `TableCell`
    */
-  stackable?: boolean,  
+  stackable?: boolean;
   /**
    * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
    */

@@ -7,8 +7,8 @@ import { mount } from 'enzyme';
 
 const defaultTableBodyChildren = (
   <TableRow key="2">
-    <TableCell key="21" data="Cell a" />
-    <TableCell key="22" data="Cell b" />
+    <TableCell>Cell a</TableCell>
+    <TableCell>Cell a</TableCell>
   </TableRow>
 );
 const defaultTableBodyProps = {
@@ -33,8 +33,8 @@ describe('Table', function () {
     const data = render(undefined, undefined);
     const wrapper = data.wrapper;
 
-    const table = wrapper.find('tbody');
-    expect(table).toHaveLength(1);
-    expect(table.hasClass('ds-c-table__body')).toBe(true);
+    const tableBody = wrapper.find('tbody');
+    expect(tableBody).toHaveLength(1);
+    expect(tableBody.hasClass('foo-body')).toBe(true);
   });
 });

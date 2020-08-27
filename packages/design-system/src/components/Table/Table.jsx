@@ -133,7 +133,7 @@ export class Table extends React.PureComponent {
         {...attributeScrollable}
       >
         <table className={classes} role="table" {...others}>
-          {this.renderChildren(stackable)}
+          {this.renderChildren()}
         </table>
       </div>
     );

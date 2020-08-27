@@ -6,10 +6,6 @@ export interface TableRowProps {
    */
   children: React.ReactNode;
   /**
-   * Additional classes to be added to the table row element.
-   */
-  className?: string;
-  /**
    * @hide-prop This gets set from the parent `TableHead`
    */
   _isTableHeadChild?: boolean;
