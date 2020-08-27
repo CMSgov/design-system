@@ -54,13 +54,12 @@ export const TableCell = ({
   }
 
   let defaultScope = scope;
-  if (!defaultScope && _isTableHeadChild) {
-    defaultScope = 'col';
+  if (!defaultScope) {
+    defaultScope = _isTableHeadChild ? 'col' : 'row';
   }
 
-  const alignText = align ? `ds-u-text-align--${align}` : null;
-  const defaultClassName = _isTableHeadChild ? 'ds-c-table__header' : 'ds-c-table__cell';
-  const classes = classNames(defaultClassName, alignText, className);
+  const alignClassName = align ? `ds-u-text-align--${align}` : null;
+  const classes = classNames(alignClassName, className);
   const stackedClasses = classNames(
     'ds-c-table--stacked__col-header',
     'ds-u-font-weight--bold',
@@ -89,7 +88,7 @@ export const TableCell = ({
 };
 
 TableCell.defaultProps = {
-  scope: 'row',
+  align: 'left',
   _isTableHeadChild: false,
   _stackable: false,
 };

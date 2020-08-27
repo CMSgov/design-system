@@ -8,8 +8,8 @@ import { mount } from 'enzyme';
 
 const defaultTableHeadChildren = (
   <TableRow key="1">
-    <TableCell key="11" title="Column a" />
-    <TableCell key="12" title="Column b" />
+    <TableCell>Column a</TableCell>
+    <TableCell>Column b</TableCell>
   </TableRow>
 );
 const defaultTableHeadProps = {
@@ -18,15 +18,15 @@ const defaultTableHeadProps = {
 
 const defaultTableBodyChildren = (
   <TableRow key="2">
-    <TableCell key="21" data="Cell a" />
-    <TableCell key="22" data="Cell b" />
+    <TableCell>Cell a</TableCell>
+    <TableCell>Cell a</TableCell>
   </TableRow>
 );
 const defaultTableBodyProps = {
   className: 'foo-body',
 };
 
-function renderHeader(customProps = {}, children) {
+function renderHead(customProps = {}, children) {
   const props = Object.assign({}, customProps);
 
   if (!children) {
@@ -53,21 +53,21 @@ function renderBody(customProps = {}, children) {
 }
 
 describe('Table', function () {
-  it('renders a table header cell', () => {
-    const data = renderHeader(undefined, undefined);
+  it('renders a table <th> tag', () => {
+    const data = renderHead(undefined, undefined);
     const wrapper = data.wrapper;
 
     const table = wrapper.find('th');
     expect(table).toHaveLength(2);
-    expect(table.first().hasClass('ds-c-table__header')).toBe(true);
+    expect(table.first().find({ scope: 'col' })).toHaveLength(1);
   });
 
-  it('renders a table body', () => {
+  it('renders a table <td> tag', () => {
     const data = renderBody(undefined, undefined);
     const wrapper = data.wrapper;
 
     const table = wrapper.find('td');
     expect(table).toHaveLength(2);
-    expect(table.first().hasClass('ds-c-table__cell')).toBe(true);
+    expect(table.first().find({ scope: 'row' })).toHaveLength(1);
   });
 });
