@@ -133,7 +133,8 @@ export class Tooltip extends React.Component {
             const interactiveBorderStyle = { 
               left: `-${interactiveBorder}px`,
               top: `-${interactiveBorder}px`,
-              border: `${interactiveBorder}px solid transparent`
+              border: `${interactiveBorder}px solid transparent`,
+              zIndex: '-999', // ensures interactive border doesnt cover tooltip content
             }
 
             return (
@@ -156,8 +157,8 @@ export class Tooltip extends React.Component {
                   // Set initialFocus to the trigger element to ensure trigger aria-label is read
                   <FocusTrap focusTrapOptions={{ initialFocus: `#${triggerId}` }}>
                     <div>
-                      <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
                       {tooltipContent(arrowProps)}
+                      <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
                     </div>
                   </FocusTrap>
                 ) : tooltipContent(arrowProps)}

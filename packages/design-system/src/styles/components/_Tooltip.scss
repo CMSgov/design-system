@@ -60,7 +60,6 @@ button.ds-c-tooltip__trigger {
 
 // The invisible area around the tooltip container that keeps the tooltip visible on hover
 .ds-c-tooltip__interactive-border {
-  content: '';
   opacity: 0;
   position: absolute;
   width: 100%;
