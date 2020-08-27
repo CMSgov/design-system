@@ -36,5 +36,7 @@ describe('Table', function () {
     const tableRow = wrapper.find('tr');
     expect(tableRow).toHaveLength(1);
     expect(tableRow.hasClass('foo-row')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

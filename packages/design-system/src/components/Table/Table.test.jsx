@@ -28,6 +28,7 @@ describe('Table', function () {
 
     const table = wrapper.find('table');
     expect(table).toHaveLength(1);
+
     expect(table.hasClass('ds-c-table')).toBe(true);
   });
 
@@ -38,6 +39,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
     expect(table.hasClass('ds-c-table')).toBe(true);
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('supports responsive table', () => {
@@ -47,6 +50,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
     expect(table.hasClass('ds-c-table')).toBe(true);
     expect(table.hasClass('ds-c-table--stacked-sm')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('supports scroll table', () => {
@@ -57,5 +62,7 @@ describe('Table', function () {
     const divWrapper = data.wrapper.find('div');
     expect(table.hasClass('ds-c-table')).toBe(true);
     expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

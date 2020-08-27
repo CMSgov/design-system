@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders a table caption 1`] = `
+<Table
+  scrollableNotice={
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      headingLevel="3"
+      role="status"
+    >
+      <p
+        className="ds-c-alert__text"
+      >
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  }
+  stackable={false}
+  stackableBreakpoint="sm"
+>
+  <div>
+    <table
+      className="ds-c-table ds-c-table--stacked-sm"
+      role="table"
+    >
+      <TableCaption
+        className="foo-caption"
+        key=".0"
+      >
+        <caption
+          className="ds-c-table__caption foo-caption"
+        >
+          Foo
+        </caption>
+      </TableCaption>
+    </table>
+  </div>
+</Table>
+`;

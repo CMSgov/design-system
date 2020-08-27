@@ -53,7 +53,7 @@ function renderBody(customProps = {}, children) {
 }
 
 describe('Table', function () {
-  it('renders a table <th> tag', () => {
+  it('renders a table <th> element', () => {
     const data = renderHead(undefined, undefined);
     const wrapper = data.wrapper;
 
@@ -62,12 +62,14 @@ describe('Table', function () {
     expect(table.first().find({ scope: 'col' })).toHaveLength(1);
   });
 
-  it('renders a table <td> tag', () => {
+  it('renders a table <td> element', () => {
     const data = renderBody(undefined, undefined);
     const wrapper = data.wrapper;
 
     const table = wrapper.find('td');
     expect(table).toHaveLength(2);
     expect(table.first().find({ scope: 'row' })).toHaveLength(1);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

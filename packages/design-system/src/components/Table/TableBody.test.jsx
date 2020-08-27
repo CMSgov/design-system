@@ -6,7 +6,7 @@ import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
 const defaultTableBodyChildren = (
-  <TableRow key="2">
+  <TableRow key="1">
     <TableCell>Cell a</TableCell>
     <TableCell>Cell a</TableCell>
   </TableRow>
@@ -36,5 +36,7 @@ describe('Table', function () {
     const tableBody = wrapper.find('tbody');
     expect(tableBody).toHaveLength(1);
     expect(tableBody.hasClass('foo-body')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

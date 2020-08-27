@@ -36,5 +36,7 @@ describe('Table', function () {
     const tableHead = wrapper.find('thead');
     expect(tableHead).toHaveLength(1);
     expect(tableHead.hasClass('foo-head')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });
