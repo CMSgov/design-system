@@ -1,21 +1,19 @@
-import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
-
-const loremM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-accumsan diam vitae metus lacinia, eget tempor purus placerat.`;
+import ReactDOM from 'react-dom';
 
 const TooltipExample = () => {
   return (
-    <Fragment>
+    <>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0">Tooltip</p>
         <Tooltip 
           ariaLabel="Label describing the subject of the tooltip" 
           triggerId="tooltip-1-id" 
           triggerContent={<TooltipIcon/>}
-          triggerActiveClassName={"trigger-focused"}>
-          <p>{loremM}</p>
+          triggerActiveClassName="trigger-focused"
+        >
+          <p className="ds-u-margin--0">Short description</p>
         </Tooltip>
       </div>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
@@ -25,11 +23,10 @@ const TooltipExample = () => {
           interactive
           triggerId="tooltip-2-id"
           triggerContent={<TooltipIcon/>}
-          triggerActiveClassName={"trigger-focused"}
+          triggerActiveClassName="trigger-focused"
         >
-          <p>
-            <a href="#noop">Link to website</a>
-            {' ' + loremM}
+          <p className="ds-u-margin--0">
+            {'Description with interactive '}<a href="#noop">link to website.</a>
           </p>
         </Tooltip>
       </div>
@@ -42,9 +39,9 @@ const TooltipExample = () => {
             <a className="ds-c-link">Learn more</a>
           }
           triggerClassName="ds-u-font-size--base"
-          triggerActiveClassName={"trigger-focused"}
+          triggerActiveClassName="trigger-focused"
         >
-          <p>{loremM}</p>
+          <p className="ds-u-margin--0">Short description</p>
         </Tooltip>
       </div>
       <div className="example--inverse ds-u-display--flex ds-u-align-items--center">
@@ -54,12 +51,12 @@ const TooltipExample = () => {
           inverse
           triggerId="tooltip-3-id"
           triggerContent={<TooltipIcon inverse/>}
-          triggerActiveClassName={"trigger-focused"}
+          triggerActiveClassName="trigger-focused"
         >
-          <p>{loremM}</p>
+          <p className="ds-u-margin--0">Short description</p>
         </Tooltip>
       </div>
-    </Fragment>
+    </>
   );
 };
 

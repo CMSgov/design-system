@@ -143,9 +143,9 @@ export class Tooltip extends React.Component {
               <div
                 id={`tooltip-${triggerId}`}
                 ref={ref}
-                className={classNames('ds-c-tooltip', className, {
-                  'ds-c-tooltip-inverse': inverse,
-                })}
+                className={classNames('ds-c-tooltip', {
+                  'ds-c-tooltip--inverse': inverse,
+                }, className)}
                 style={tooltipStyle}
                 onMouseEnter={() => interactive ? this.showTooltip() : null }
                 onMouseLeave={() => this.hideTooltip()}

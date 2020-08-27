@@ -4,6 +4,15 @@ $tooltip-icon-size: 16px;
 $tooltip-arrow-size: 8px;
 $tooltip-plus-border-size: 24px;
 
+$tooltip-color: $color-base-inverse;
+$tooltip-background-color: $color-background-inverse;
+$tooltip-border: none;
+$tooltip-border-radius: 4px;
+
+$tooltip-color-inverse: $color-base;
+$tooltip-background-color-inverse: $color-background;
+$tooltip-border-inverse: 1px solid $color-gray-dark;
+
 // stylelint-disable selector-no-qualifying-type
 .ds-c-tooltip__trigger,
 button.ds-c-tooltip__trigger {
@@ -30,19 +39,20 @@ button.ds-c-tooltip__trigger {
   overflow: hidden;
   position: absolute;
   width: $tooltip-icon-size;
+
   &::after {
-    background: $color-white;
+    background: $tooltip-background-color;
     content: '';
-    height: $tooltip-arrow-size;
     left: 50%;
     position: absolute;
     width: $tooltip-arrow-size;
+    height: $tooltip-arrow-size;
   }
 }
 
 // Interior content of tooltip
 .ds-c-tooltip__content {
-  color: $color-base;
+  color: $tooltip-color;
   font-size: $small-font-size;
   font-weight: 400;
   padding: $spacer-1;
@@ -60,10 +70,9 @@ button.ds-c-tooltip__trigger {
 // The greater tooltip container which gets added in via state
 // max-width and z-index are set via props to account for different uses
 .ds-c-tooltip {
-  background: $color-white;
-  border: 1px solid $color-gray-lighter;
-  border-radius: 4px;
-  box-shadow: $shadow-base;
+  background: $tooltip-background-color;
+  border: $tooltip-border;
+  border-radius: $tooltip-border-radius;
   box-sizing: border-box;
   
   // stylelint-disable max-nesting-depth
@@ -129,16 +138,14 @@ button.ds-c-tooltip__trigger {
 
 // Inverse version of the tooltip body/content
 .ds-c-tooltip--inverse {
-  background: $color-gray;
-  border: 1px solid $color-gray-dark;
-  box-shadow: 1px 1px $shadow-base-blur-radius $shadow-base-color;
-  box-sizing: border-box;
+  background: $tooltip-background-color-inverse;
+  border: $tooltip-border-inverse;
 
   .ds-c-tooltip__arrow::after {
-    background: $color-gray;
+    background: $tooltip-background-color-inverse;
   }
 
   .ds-c-tooltip__content {
-    color: $color-white;
+    color: $tooltip-color-inverse;
   }
 }
