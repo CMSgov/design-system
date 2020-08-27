@@ -60,12 +60,6 @@ export const TableCell = ({
 
   const alignClassName = align ? `ds-u-text-align--${align}` : null;
   const classes = classNames(alignClassName, className);
-  const stackedClasses = classNames(
-    'ds-c-table--stacked__col-header',
-    'ds-u-font-weight--bold',
-    stackedClassName
-  );
-  const isValidStackedTitle = _stackable && stackedTitle && stackedTitle.length > 0;
 
   return (
     <Component
@@ -77,11 +71,6 @@ export const TableCell = ({
       data-title={stackedTitle}
       {...others}
     >
-      {isValidStackedTitle && (
-        <span aria-hidden="true" className={stackedClasses}>
-          {stackedTitle}
-        </span>
-      )}
       {children}
     </Component>
   );
