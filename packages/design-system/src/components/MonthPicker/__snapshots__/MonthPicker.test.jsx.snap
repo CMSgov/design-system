@@ -9,7 +9,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
   >
     <legend
       className="ds-c-label"
-      component="legend"
     >
       <span
         className=""
@@ -63,7 +62,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_1"
             >
               <span
@@ -94,7 +92,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_2"
             >
               <span
@@ -125,7 +122,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_3"
             >
               <span
@@ -156,7 +152,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_4"
             >
               <span
@@ -187,7 +182,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_5"
             >
               <span
@@ -218,7 +212,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_6"
             >
               <span
@@ -249,7 +242,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_7"
             >
               <span
@@ -280,7 +272,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_8"
             >
               <span
@@ -311,7 +302,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_9"
             >
               <span
@@ -342,7 +332,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_10"
             >
               <span
@@ -373,7 +362,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_11"
             >
               <span
@@ -404,7 +392,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
             />
             <label
               className="ds-c-label"
-              component="label"
               htmlFor="checkbox_months_12"
             >
               <span

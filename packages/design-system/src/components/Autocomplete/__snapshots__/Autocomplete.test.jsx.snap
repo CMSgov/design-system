@@ -14,7 +14,6 @@ exports[`Autocomplete renders a snapshot 1`] = `
   >
     <label
       className="ds-c-label"
-      component="label"
       htmlFor="autocomplete_46"
       id="autocomplete_label_47"
     >

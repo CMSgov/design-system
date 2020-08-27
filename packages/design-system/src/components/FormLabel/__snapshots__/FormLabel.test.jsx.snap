@@ -3,8 +3,6 @@
 exports[`FormLabel adds punctuation to requirementLabel when hint is also present 1`] = `
 <label
   className="ds-c-label"
-  component="label"
-  hint="Hint"
 >
   <span
     className=""
@@ -24,12 +22,6 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 exports[`FormLabel adds punctuation to requirementLabel when hint is also present 2`] = `
 <label
   className="ds-c-label"
-  component="label"
-  hint={
-    <span>
-      Hint
-    </span>
-  }
 >
   <span
     className=""
@@ -53,8 +45,6 @@ exports[`FormLabel adds punctuation to requirementLabel when hint is also presen
 exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 <label
   className="ds-c-label"
-  component="label"
-  hint="Hint"
 >
   <span
     className=""
@@ -74,8 +64,6 @@ exports[`FormLabel avoids duplicate punctuation after requirementLabel 1`] = `
 exports[`FormLabel is inversed 1`] = `
 <label
   className="ds-c-label ds-c-label--inverse"
-  component="label"
-  hint="Foo"
 >
   <span
     className=""
@@ -93,7 +81,6 @@ exports[`FormLabel is inversed 1`] = `
 exports[`FormLabel renders error state 1`] = `
 <label
   className="ds-c-label"
-  component="label"
   htmlFor="name"
 >
   <span
@@ -114,12 +101,6 @@ exports[`FormLabel renders error state 1`] = `
 exports[`FormLabel renders hint node 1`] = `
 <label
   className="ds-c-label"
-  component="label"
-  hint={
-    <strong>
-      President #44
-    </strong>
-  }
 >
   <span
     className=""
@@ -139,8 +120,6 @@ exports[`FormLabel renders hint node 1`] = `
 exports[`FormLabel renders hint string 1`] = `
 <label
   className="ds-c-label"
-  component="label"
-  hint="President #44"
 >
   <span
     className=""
@@ -158,7 +137,6 @@ exports[`FormLabel renders hint string 1`] = `
 exports[`FormLabel renders label text 1`] = `
 <label
   className="ds-c-label"
-  component="label"
   htmlFor="name"
 >
   <span
@@ -172,7 +150,6 @@ exports[`FormLabel renders label text 1`] = `
 exports[`FormLabel renders requirementLabel node 1`] = `
 <label
   className="ds-c-label"
-  component="label"
 >
   <span
     className=""
@@ -192,7 +169,6 @@ exports[`FormLabel renders requirementLabel node 1`] = `
 exports[`FormLabel renders requirementLabel string 1`] = `
 <label
   className="ds-c-label"
-  component="label"
 >
   <span
     className=""
@@ -210,7 +186,6 @@ exports[`FormLabel renders requirementLabel string 1`] = `
 exports[`FormLabel supports additional classNames 1`] = `
 <label
   className="ds-c-label ds-u-foo"
-  component="label"
   labelClassName="ds-u-bar"
 >
   <span
