@@ -4,32 +4,40 @@ $tooltip-icon-size: 16px;
 $tooltip-arrow-size: 8px;
 $tooltip-plus-border-size: 24px;
 
+$tooltip-border-radius: 4px;
 $tooltip-color: $color-base-inverse;
 $tooltip-background-color: $color-background-inverse;
-$tooltip-border: none;
-$tooltip-border-radius: 4px;
-
 $tooltip-color-inverse: $color-base;
 $tooltip-background-color-inverse: $color-background;
-$tooltip-border-inverse: 1px solid $color-gray-dark;
 
-// stylelint-disable selector-no-qualifying-type
-.ds-c-tooltip__trigger,
-button.ds-c-tooltip__trigger {
+%trigger-reset-styles {
   // override user agent button styles
   background: none;
   border: 0;
   display: inline-block;
   margin: 0;
+}
+
+// stylelint-disable selector-no-qualifying-type
+// Tooltip trigger style
+.ds-c-tooltip__trigger {
+  cursor: pointer;
+}
+
+.ds-c-tooltip__trigger-icon {
+  @extend %trigger-reset-styles;
   padding: 4px;
-  text-decoration: none;
-  &:hover {
-    // Turn off cursor style as most of it is covered by the pseudo-after element
-    // that makes it so that hovering in area including tooltip trigger means that
-    // tooltip is still visible
-    cursor: default;
-    text-decoration: none;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ds-c-tooltip__trigger-link {
+  @extend %trigger-reset-styles;
+  padding: 0;
+  color: $color-primary;
+  text-decoration: underline;
+  text-decoration-style: dashed;
 }
 // stylelint-enable selector-no-qualifying-type
 
@@ -68,7 +76,6 @@ button.ds-c-tooltip__trigger {
 // max-width and z-index are set via props to account for different uses
 .ds-c-tooltip {
   background: $tooltip-background-color;
-  border: $tooltip-border;
   border-radius: $tooltip-border-radius;
   box-sizing: border-box;
 
@@ -128,7 +135,7 @@ button.ds-c-tooltip__trigger {
 }
 
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
-  left: -$tooltip-arrow-size;
+  right: -$tooltip-arrow-size;
   &::after {
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
@@ -146,7 +153,6 @@ button.ds-c-tooltip__trigger {
 // Inverse version of the tooltip body/content
 .ds-c-tooltip--inverse {
   background: $tooltip-background-color-inverse;
-  border: $tooltip-border-inverse;
 
   .ds-c-tooltip__arrow::after {
     background: $tooltip-background-color-inverse;

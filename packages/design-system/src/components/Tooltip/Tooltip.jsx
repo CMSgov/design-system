@@ -92,7 +92,7 @@ export class Tooltip extends React.Component {
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
-    const triggerClasses = classNames('ds-c-tooltip__trigger', triggerClassName, { [triggerActiveClassName]: this.state.active });
+    const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, { [triggerActiveClassName]: this.state.active });
 
     return (
       <TriggerComponent
