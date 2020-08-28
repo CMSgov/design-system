@@ -59,6 +59,9 @@ export interface TableCellProps {
   _stackable?: boolean;
 }
 
-export default class TableCell extends React.Component<TableCellProps, any> {
-  render(): JSX.Element;
-}
+type OmitProps = 'align' | 'headers' | 'id' | 'scope';
+
+// Remove the "OmitProps" definition inside React.HTMLProps<HTMLDivElement>, and use ours instead
+declare const TableCell: React.FC<Omit<React.HTMLProps<HTMLDivElement>, OmitProps> & TableCellProps>;
+
+export default TableCell;

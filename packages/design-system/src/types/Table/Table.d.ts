@@ -22,7 +22,7 @@ export interface TableProps {
   scrollableNotice?: React.ReactNode;
   /**
    * A stackable variation of the table.
-   * When `stackable` is set, `id` or `headers` prop is required in `TableCell`
+   * When `stackable` is set, `id` or `headers` prop is required in `Table`
    */
   stackable?: boolean;
   /**
@@ -35,6 +35,6 @@ export interface TableProps {
   striped?: boolean;
 }
 
-declare const Table: React.FC<TableProps>;
-
-export default Table;
+export default class Table extends React.Component<TableProps, any> {
+  render(): JSX.Element;
+}

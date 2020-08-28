@@ -15,6 +15,6 @@ export interface TableRowProps {
   _stackable?: boolean;
 }
 
-declare const TableRow: React.FC<TableRowProps>;
+declare const TableRow: React.FC<React.HTMLProps<HTMLSpanElement> & TableRowProps>;
 
 export default TableRow;
