@@ -35,6 +35,6 @@ export interface TableProps {
   striped?: boolean;
 }
 
-export default class Table extends React.Component<TableProps, any> {
+export default class Table extends React.Component<React.HTMLProps<HTMLButtonElement> & TableProps, any> {
   render(): JSX.Element;
 }

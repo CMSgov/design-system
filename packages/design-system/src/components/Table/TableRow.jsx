@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const TableRow = ({ children, _isTableHeadChild, _stackable, ...others }) => {
+export const TableRow = ({ children, _isTableHeadChild, _stackable, ...tableRowProps }) => {
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
@@ -16,16 +16,11 @@ export const TableRow = ({ children, _isTableHeadChild, _stackable, ...others })
   };
 
   return (
-    <tr role="row" {...others}>
+    <tr role="row" {...tableRowProps}>
       {_isTableHeadChild || _stackable ? renderChildren() : children}
     </tr>
   );
 };
-
-// TableRow.defaultProps = {
-//   _isTableHeadChild: false,
-//   _stackable: false,
-// };
 
 TableRow.propTypes = {
   /**

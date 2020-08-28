@@ -102,7 +102,7 @@ export class Table extends React.PureComponent {
       scrollable,
       scrollableNotice,
       children,
-      ...others
+      ...tableProps
     } = this.props;
 
     const classes = classNames(
@@ -132,7 +132,7 @@ export class Table extends React.PureComponent {
         }}
         {...attributeScrollable}
       >
-        <table className={classes} role="table" {...others}>
+        <table className={classes} role="table" {...tableProps}>
           {this.renderChildren()}
         </table>
       </div>

@@ -14,7 +14,7 @@ export const TableCell = ({
   stackedClassName,
   _isTableHeadChild,
   _stackable,
-  ...others
+  ...tableCellProps
 }) => {
   if (process.env.NODE_ENV !== 'production' && _stackable) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
@@ -69,7 +69,7 @@ export const TableCell = ({
       headers={headers}
       id={id}
       data-title={stackedTitle}
-      {...others}
+      {...tableCellProps}
     >
       {children}
     </Component>
@@ -78,8 +78,6 @@ export const TableCell = ({
 
 TableCell.defaultProps = {
   align: 'left',
-  _isTableHeadChild: false,
-  _stackable: false,
 };
 
 TableCell.propTypes = {

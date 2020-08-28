@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const TableBody = ({ children, _stackable, ...others }) => {
+export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
@@ -14,12 +14,8 @@ export const TableBody = ({ children, _stackable, ...others }) => {
     });
   };
 
-  return <tbody {...others}>{_stackable ? renderChildren() : children}</tbody>;
+  return <tbody {...tableBodyProps}>{_stackable ? renderChildren() : children}</tbody>;
 };
-
-// TableBody.defaultProps = {
-//   _stackable: false,
-// };
 
 TableBody.propTypes = {
   /**
