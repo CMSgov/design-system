@@ -18,6 +18,7 @@
     "!src/components/**/*.test.jsx"
   ],
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "classnames": "^2.2.5",
     "downshift": "^3.2.10",
     "ev-emitter": "^1.1.1",
@@ -25,7 +26,6 @@
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.7.2",
     "react-aria-modal": "^2.11.1",
-    "react-popper": "1.3.7",
     "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {

@@ -36,8 +36,6 @@ button.ds-c-tooltip__trigger {
 // Tooltip arrow
 .ds-c-tooltip__arrow {
   height: $tooltip-icon-size;
-  overflow: hidden;
-  position: absolute;
   width: $tooltip-icon-size;
 
   &::after {
@@ -76,46 +74,6 @@ button.ds-c-tooltip__trigger {
 
   display: none;
   opacity: 0;
-  
-  // stylelint-disable max-nesting-depth
-  // Tooltip positioning based on placement of trigger
-  &[data-placement*='top'] {
-    .ds-c-tooltip__arrow {
-      top: 100%;
-      &::after {
-        top: 0;
-        transform: translateX(-50%) translateY(-50%) rotate(45deg);
-      }
-    }
-  }
-  &[data-placement*='bottom'] {
-    .ds-c-tooltip__arrow {
-      top: -$tooltip-arrow-size;
-      &::after {
-        bottom: 0;
-        transform: translateX(-50%) translateY(-50%) rotate(45deg);
-      }
-    }
-  }
-  &[data-placement*='left'] {
-    .ds-c-tooltip__arrow {
-      right: -$tooltip-arrow-size;
-      &::after {
-        left: 0;
-        transform: translateX(50%) translateY(50%) rotate(45deg);
-      }
-    }
-  }
-  &[data-placement*='right'] {
-    .ds-c-tooltip__arrow {
-      left: -$tooltip-arrow-size;
-      &::after {
-        left: 0;
-        transform: translateX(50%) translateY(50%) rotate(45deg);
-      }
-    }
-  }
-  // stylelint-enable max-nesting-depth
 }
 
 // Tooltip transition styles
@@ -150,6 +108,39 @@ button.ds-c-tooltip__trigger {
 .ds-c-tooltip-exit-done {
   display: none;
   opacity: 0;
+}
+
+// Tooltip arrow positioning based on placement of trigger
+.ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
+  top: 100%;
+  &::after {
+    top: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
+  top: -$tooltip-arrow-size;
+  &::after {
+    bottom: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
+  left: -$tooltip-arrow-size;
+  &::after {
+    left: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
+  left: -$tooltip-arrow-size;
+  &::after {
+    left: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
 }
 
 // Inverse version of the tooltip body/content
