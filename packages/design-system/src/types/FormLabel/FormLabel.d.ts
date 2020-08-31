@@ -52,8 +52,8 @@ export interface FormLabelProps {
 }
 
 export default class FormLabel extends React.Component<
-  FormLabelProps, 
-  any 
+  FormLabelProps & React.HTMLProps<HTMLLabelElement> & React.HTMLProps<HTMLLegendElement>,
+  any
 > {
   render(): JSX.Element;
 }
