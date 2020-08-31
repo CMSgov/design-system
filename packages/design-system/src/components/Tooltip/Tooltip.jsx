@@ -3,7 +3,7 @@ import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { createPopper } from "@popperjs/core";
+import { createPopper } from '@popperjs/core';
 
 export class Tooltip extends React.Component {
   constructor(props) {
@@ -28,17 +28,15 @@ export class Tooltip extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleEscapeKey.bind(this));
-    this.popper = createPopper(
-      this.triggerElement,
-      this.tooltipElement,
-      {
-        placement: this.props.placement,
-        modifiers: [{
+    this.popper = createPopper(this.triggerElement, this.tooltipElement, {
+      placement: this.props.placement,
+      modifiers: [
+        {
           name: 'offset',
           options: { offset: this.props.offset },
-        }],
-      }
-    );
+        },
+      ],
+    });
   }
 
   componentWillUnmount() {
@@ -96,18 +94,22 @@ export class Tooltip extends React.Component {
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
-    const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, { [triggerActiveClassName]: this.state.active });
+    const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, {
+      [triggerActiveClassName]: this.state.active,
+    });
 
     return (
       <TriggerComponent
         id={triggerId}
-        type={TriggerComponent === "button" ? "button" : undefined}
-        onTouchStart={() => disableTouchListener ? null : this.setTooltipActive(!this.state.active)}
-        onFocus={() =>  disableFocusListener ? null : this.setTooltipActive(true)}
-        onBlur={() =>  disableFocusListener ? null : this.handleTriggerBlur()}
-        onMouseEnter={() => disableHoverListener ? null : this.setTooltipActive(true)}
-        onMouseLeave={() => disableHoverListener ? null : this.setTooltipActive(false)}
-        onClick={() => disableClickListener ? null : this.setTooltipActive(!this.state.active)}
+        type={TriggerComponent === 'button' ? 'button' : undefined}
+        onTouchStart={() =>
+          disableTouchListener ? null : this.setTooltipActive(!this.state.active)
+        }
+        onFocus={() => (disableFocusListener ? null : this.setTooltipActive(true))}
+        onBlur={() => (disableFocusListener ? null : this.handleTriggerBlur())}
+        onMouseEnter={() => (disableHoverListener ? null : this.setTooltipActive(true))}
+        onMouseLeave={() => (disableHoverListener ? null : this.setTooltipActive(false))}
+        onClick={() => (disableClickListener ? null : this.setTooltipActive(!this.state.active))}
         aria-label={`Tooltip: ${ariaLabel || ''}`}
         aria-describedby={`tooltip-${triggerId}`}
         className={triggerClasses}
@@ -121,6 +123,8 @@ export class Tooltip extends React.Component {
   renderContent() {
     const {
       children,
+      disableHoverListener,
+      disableFocusListener,
       inverse,
       interactive,
       interactiveBorder,
@@ -133,12 +137,12 @@ export class Tooltip extends React.Component {
     } = this.props;
 
     const tooltipStyle = { maxWidth, zIndex };
-    const interactiveBorderStyle = { 
+    const interactiveBorderStyle = {
       left: `-${interactiveBorder}px`,
       top: `-${interactiveBorder}px`,
       border: `${interactiveBorder}px solid transparent`,
       zIndex: '-999', // ensures interactive border doesnt cover tooltip content
-    }
+    };
 
     const tooltipContent = () => (
       <>
@@ -150,13 +154,18 @@ export class Tooltip extends React.Component {
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         <div
-          id={`tooltip-${triggerId}`}
+          id={`tooltip-${triggerId}`} 
+          tabIndex="-1"
           ref={this.setTooltipElement}
-          className={classNames('ds-c-tooltip', {
-            'ds-c-tooltip--inverse': inverse,
-          }, className)}
+          className={classNames(
+            'ds-c-tooltip',
+            {
+              'ds-c-tooltip--inverse': inverse,
+            },
+            className
+          )}
           style={tooltipStyle}
-          onMouseEnter={() => interactive ? this.setTooltipActive(true) : null }
+          onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
           onMouseLeave={() => this.setTooltipActive(false)}
           data-placement={placement}
           aria-labelledby={triggerId}
@@ -165,14 +174,23 @@ export class Tooltip extends React.Component {
         >
           {interactive ? (
             // Child of focus trap must be a single node and valid HTML element, no <Fragment>
-            // Set initialFocus to the trigger element to ensure trigger aria-label is read
-            <FocusTrap active={this.state.active} focusTrapOptions={{ initialFocus: `#${triggerId}` }}>
+            // For click only tooltips, set initialFocus to the tooltip container element
+            // For non click only tooltips, set initialFocus to the trigger element 
+            // to ensure focus is not automatically set to the tooltip when the trigger is focused
+            <FocusTrap
+              active={this.state.active}
+              focusTrapOptions={{ 
+                initialFocus: (disableHoverListener && disableFocusListener) ? `#tooltip-${triggerId}` : `#${triggerId}`,
+              }}
+            >
               <div>
                 {tooltipContent()}
                 <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
               </div>
             </FocusTrap>
-          ) : tooltipContent()}
+          ) : (
+            tooltipContent()
+          )}
         </div>
       </CSSTransition>
     );
@@ -192,7 +210,7 @@ Tooltip.defaultProps = {
   interactiveBorder: 15,
   placement: 'top',
   maxWidth: '300px',
-  zIndex: '9999',  
+  zIndex: '9999',
   offset: [0, 5],
   triggerComponent: 'button',
   transitionDuration: 250, // Equivalent to $animation-speed-1
@@ -234,10 +252,10 @@ Tooltip.propTypes = {
    * Sets the size of the invisible border around the tooltip that prevents it from immediately hiding when the cursor leaves the toolip.
    */
   interactiveBorder: PropTypes.number,
-  inverse: PropTypes.bool,  
+  inverse: PropTypes.bool,
   /**
-  * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
-  */
+   * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
+   */
   offset: PropTypes.arrayOf(PropTypes.number),
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
