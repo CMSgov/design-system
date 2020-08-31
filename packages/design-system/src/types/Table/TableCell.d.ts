@@ -61,7 +61,10 @@ export interface TableCellProps {
 
 type OmitProps = 'align' | 'headers' | 'id' | 'scope';
 
-// Remove the "OmitProps" definition inside React.HTMLProps<HTMLDivElement>, and use ours instead
-declare const TableCell: React.FC<Omit<React.HTMLProps<HTMLDivElement>, OmitProps> & TableCellProps>;
+declare const TableCell: React.FC<
+  Omit<React.HTMLProps<HTMLTableHeaderCellElement>, OmitProps> &
+    Omit<React.HTMLProps<HTMLTableDataCellElement>, OmitProps> &
+    TableCellProps
+>;
 
 export default TableCell;

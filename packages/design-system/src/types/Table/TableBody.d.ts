@@ -11,6 +11,6 @@ export interface TableBodyProps {
   _stackable?: boolean;
 }
 
-declare const TableBody: React.FC<React.HTMLProps<HTMLSpanElement> & TableBodyProps>;
+declare const TableBody: React.FC<React.HTMLProps<HTMLTableSectionElement> & TableBodyProps>;
 
 export default TableBody;
