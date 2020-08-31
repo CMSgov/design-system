@@ -90,7 +90,8 @@ export class Tooltip extends React.Component {
       triggerActiveClassName,
       triggerClassName,
       triggerContent,
-      triggerId,
+      triggerHref,
+      triggerId
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
@@ -114,6 +115,7 @@ export class Tooltip extends React.Component {
         aria-describedby={`tooltip-${triggerId}`}
         className={triggerClasses}
         ref={this.setTriggerElement}
+        href={triggerHref}
       >
         {triggerContent}
       </TriggerComponent>

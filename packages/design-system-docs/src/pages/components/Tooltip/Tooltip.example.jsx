@@ -1,5 +1,5 @@
-import React from 'react';
 import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const TooltipExample = () => {
@@ -36,6 +36,7 @@ const TooltipExample = () => {
           ariaLabel="Label describing the subject of the interactive tooltip"
           triggerId="tooltip-3-id"
           triggerComponent="a"
+          triggerHref="https://design.cms.gov"
           triggerContent="link"
           triggerClassName="ds-c-tooltip__trigger-link"
         >
