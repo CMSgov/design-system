@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <>
     <Table scrollable>
-      <TableCaption>Horizontal scroll table</TableCaption>
+      <TableCaption>Responsive scrollable table</TableCaption>
       <TableHead>
         <TableRow>
           <TableCell id="column_1">Document title</TableCell>
