@@ -154,7 +154,7 @@ export class Tooltip extends React.Component {
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         <div
-          id={`tooltip-${triggerId}`} 
+          id={`tooltip-${triggerId}`}
           tabIndex="-1"
           ref={this.setTooltipElement}
           className={classNames(
@@ -175,12 +175,15 @@ export class Tooltip extends React.Component {
           {interactive ? (
             // Child of focus trap must be a single node and valid HTML element, no <Fragment>
             // For click only tooltips, set initialFocus to the tooltip container element
-            // For non click only tooltips, set initialFocus to the trigger element 
+            // For non click only tooltips, set initialFocus to the trigger element
             // to ensure focus is not automatically set to the tooltip when the trigger is focused
             <FocusTrap
               active={this.state.active}
-              focusTrapOptions={{ 
-                initialFocus: (disableHoverListener && disableFocusListener) ? `#tooltip-${triggerId}` : `#${triggerId}`,
+              focusTrapOptions={{
+                initialFocus:
+                  disableHoverListener && disableFocusListener
+                    ? `#tooltip-${triggerId}`
+                    : `#${triggerId}`,
               }}
             >
               <div>

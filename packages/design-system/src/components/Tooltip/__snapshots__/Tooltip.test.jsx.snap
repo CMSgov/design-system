@@ -1,59 +1,105 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders default trigger icon 1`] = `
-<Manager>
-  <Reference>
-    <Component />
-  </Reference>
-  <Portal
-    containerInfo={<body />}
+<div>
+  <button
+    aria-describedby="tooltip-undefined"
+    aria-label="Tooltip: label"
+    className="ds-c-tooltip__trigger ds-base"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  />
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
   >
-    <Transition
-      appear={false}
-      enter={true}
-      exit={true}
-      in={true}
-      mountOnEnter={false}
-      onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      timeout={300}
-      unmountOnExit={true}
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip"
+      data-placement="top"
+      id="tooltip-undefined"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex="-1"
     >
-      <Component />
-    </Transition>
-  </Portal>
-</Manager>
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <p>
+          content
+        </p>
+      </div>
+    </div>
+  </CSSTransition>
+</div>
 `;
 
 exports[`Tooltip renders interactive tooltip 1`] = `
-<Manager>
-  <Reference>
-    <Component />
-  </Reference>
-  <Portal
-    containerInfo={<body />}
+<div>
+  <button
+    aria-describedby="tooltip-undefined"
+    aria-label="Tooltip: label"
+    className="ds-c-tooltip__trigger ds-base"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  />
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
   >
-    <Transition
-      appear={false}
-      enter={true}
-      exit={true}
-      in={true}
-      mountOnEnter={false}
-      onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      timeout={300}
-      unmountOnExit={true}
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip"
+      data-placement="top"
+      id="tooltip-undefined"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex="-1"
     >
-      <Component />
-    </Transition>
-  </Portal>
-</Manager>
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <a
+          href="design.cms.gov"
+        >
+          test
+        </a>
+      </div>
+    </div>
+  </CSSTransition>
+</div>
 `;

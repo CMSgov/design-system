@@ -2,10 +2,10 @@
 
 exports[`TooltipIcon renders focused trigger icon  1`] = `
 <span
-  className="ds-c-tooltip__icon-container trigger-focused"
+  className="ds-c-tooltip-icon__container"
 >
   <svg
-    className="ds-c-tooltip__icon"
+    className="ds-c-tooltip-icon"
     height="16px"
     viewBox="0 0 16 16"
     width="16px"
@@ -18,7 +18,7 @@ exports[`TooltipIcon renders focused trigger icon  1`] = `
       strokeWidth="1"
     >
       <g
-        className="ds-c-tooltip__icon--fill"
+        className="ds-c-tooltip-icon--fill"
         fillRule="nonzero"
       >
         <g>
@@ -34,10 +34,10 @@ exports[`TooltipIcon renders focused trigger icon  1`] = `
 
 exports[`TooltipIcon renders inverse trigger icon  1`] = `
 <span
-  className="ds-c-tooltip__icon-container trigger-inverse"
+  className="ds-c-tooltip-icon__container ds-c-tooltip-icon--inverse"
 >
   <svg
-    className="ds-c-tooltip__icon"
+    className="ds-c-tooltip-icon"
     height="16px"
     viewBox="0 0 16 16"
     width="16px"
@@ -50,7 +50,7 @@ exports[`TooltipIcon renders inverse trigger icon  1`] = `
       strokeWidth="1"
     >
       <g
-        className="ds-c-tooltip__icon--fill"
+        className="ds-c-tooltip-icon--fill"
         fillRule="nonzero"
       >
         <g>
@@ -66,10 +66,10 @@ exports[`TooltipIcon renders inverse trigger icon  1`] = `
 
 exports[`TooltipIcon renders normal trigger icon  1`] = `
 <span
-  className="ds-c-tooltip__icon-container"
+  className="ds-c-tooltip-icon__container"
 >
   <svg
-    className="ds-c-tooltip__icon"
+    className="ds-c-tooltip-icon"
     height="16px"
     viewBox="0 0 16 16"
     width="16px"
@@ -82,7 +82,7 @@ exports[`TooltipIcon renders normal trigger icon  1`] = `
       strokeWidth="1"
     >
       <g
-        className="ds-c-tooltip__icon--fill"
+        className="ds-c-tooltip-icon--fill"
         fillRule="nonzero"
       >
         <g>

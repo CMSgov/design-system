@@ -26,16 +26,16 @@ $tooltip-background-color-inverse: $color-background;
 
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
-  padding: 4px;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 4px;
 }
 
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
-  padding: 0;
   color: $color-primary;
+  padding: 0;
   text-decoration: underline;
   text-decoration-style: dashed;
 }
@@ -49,10 +49,10 @@ $tooltip-background-color-inverse: $color-background;
   &::after {
     background: $tooltip-background-color;
     content: '';
+    height: $tooltip-arrow-size;
     left: 50%;
     position: absolute;
     width: $tooltip-arrow-size;
-    height: $tooltip-arrow-size;
   }
 }
 
@@ -66,10 +66,10 @@ $tooltip-background-color-inverse: $color-background;
 
 // The invisible area around the tooltip container that keeps the tooltip visible on hover
 .ds-c-tooltip__interactive-border {
+  height: 100%;
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
 }
 
 // The greater tooltip container which gets added in via state
@@ -91,9 +91,9 @@ $tooltip-background-color-inverse: $color-background;
 }
 
 .ds-c-tooltip-enter-active {
-  transition: opacity $animation-speed-1;
   display: block;
   opacity: 1;
+  transition: opacity $animation-speed-1;
 }
 
 .ds-c-tooltip-enter-done {
@@ -107,9 +107,9 @@ $tooltip-background-color-inverse: $color-background;
 }
 
 .ds-c-tooltip-exit-active {
-  transition: opacity $animation-speed-1;
   display: block;
   opacity: 0;
+  transition: opacity $animation-speed-1;
 }
 
 .ds-c-tooltip-exit-done {
