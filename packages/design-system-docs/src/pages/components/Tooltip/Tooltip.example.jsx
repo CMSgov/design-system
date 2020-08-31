@@ -20,7 +20,6 @@ const TooltipExample = () => {
         <p className="ds-u-margin--0">Tooltip with icon </p>
         <Tooltip 
           ariaLabel="Label describing the subject of the tooltip" 
-          inverse
           triggerId="tooltip-2-id" 
           triggerContent={<TooltipIcon/>}
           triggerClassName="ds-c-tooltip__trigger-icon"
@@ -46,7 +45,9 @@ const TooltipExample = () => {
         <Tooltip
           ariaLabel="Label describing the subject of the interactive tooltip"
           interactive
-          triggerId="tooltip-3-id"
+          disableFocusListener
+          disableHoverListener
+          triggerId="tooltip-4-id"
           triggerContent="interactive content"
           triggerClassName="ds-c-tooltip__trigger-link"
         >
@@ -60,7 +61,7 @@ const TooltipExample = () => {
         <Tooltip
           ariaLabel="Label describing the tooltip"
           placement="right"
-          triggerId="tooltip-3-id"
+          triggerId="tooltip-5-id"
           triggerContent="placement"
           triggerClassName="ds-c-tooltip__trigger-link"
         >
@@ -72,11 +73,24 @@ const TooltipExample = () => {
         <Tooltip
           ariaLabel="Label describing the tooltip"
           offset={[0,20]}
-          triggerId="tooltip-3-id"
+          triggerId="tooltip-6-id"
           triggerContent="offset"
           triggerClassName="ds-c-tooltip__trigger-link"
         >
           <p className="ds-u-margin--0">Tooltip positioned with custom offset</p>
+        </Tooltip>
+      </div>
+      <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
+        <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip activated </p>
+        <Tooltip
+          ariaLabel="Label describing the tooltip"
+          disableFocusListener
+          disableHoverListener
+          triggerId="tooltip-7-id"
+          triggerContent="on click"
+          triggerClassName="ds-c-tooltip__trigger-link"
+        >
+          <p className="ds-u-margin--0">Tooltip disables focus and hover event listeners to only activate on click</p>
         </Tooltip>
       </div>
       <div className="example--inverse ds-u-display--flex ds-u-align-items--center" style={{ maxWidth: "100%" }}>
@@ -85,7 +99,7 @@ const TooltipExample = () => {
           ariaLabel="Label describing the subject of the inverse tooltip"
           inverse
           placement="right"
-          triggerId="tooltip-3-id"
+          triggerId="tooltip-8-id"
           triggerContent={<TooltipIcon inverse/>}
           triggerClassName="ds-c-tooltip__trigger-icon"
           triggerActiveClassName="ds-c-tooltip-icon--active"

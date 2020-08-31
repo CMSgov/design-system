@@ -85,6 +85,10 @@ export class Tooltip extends React.Component {
   renderTrigger() {
     const {
       ariaLabel,
+      disableTouchListener,
+      disableHoverListener,
+      disableFocusListener,
+      disableClickListener,
       triggerActiveClassName,
       triggerClassName,
       triggerContent,
@@ -98,11 +102,12 @@ export class Tooltip extends React.Component {
       <TriggerComponent
         id={triggerId}
         type={TriggerComponent === "button" ? "button" : undefined}
-        onTouchStart={() => this.setTooltipActive(true)}
-        onFocus={() => this.setTooltipActive(true)}
-        onBlur={() => this.handleTriggerBlur()}
-        onMouseEnter={() => this.setTooltipActive(true)}
-        onMouseLeave={() => this.setTooltipActive(false)}
+        onTouchStart={() => disableTouchListener ? null : this.setTooltipActive(!this.state.active)}
+        onFocus={() =>  disableFocusListener ? null : this.setTooltipActive(true)}
+        onBlur={() =>  disableFocusListener ? null : this.handleTriggerBlur()}
+        onMouseEnter={() => disableHoverListener ? null : this.setTooltipActive(true)}
+        onMouseLeave={() => disableHoverListener ? null : this.setTooltipActive(false)}
+        onClick={() => disableClickListener ? null : this.setTooltipActive(!this.state.active)}
         aria-label={`Tooltip: ${ariaLabel || ''}`}
         aria-describedby={`tooltip-${triggerId}`}
         className={triggerClasses}
@@ -184,10 +189,10 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.defaultProps = {
-  interactiveBorder: 20,
+  interactiveBorder: 15,
   placement: 'top',
   maxWidth: '300px',
-  zIndex: '1',  
+  zIndex: '9999',  
   offset: [0, 5],
   triggerComponent: 'button',
   transitionDuration: 250, // Equivalent to $animation-speed-1
@@ -205,6 +210,22 @@ Tooltip.propTypes = {
    * Classes applied to the tooltip body
    */
   className: PropTypes.string,
+  /**
+   * Disables tooltip activation and deactivation on touch events
+   */
+  disableTouchListener: PropTypes.bool,
+  /**
+   * Disables tooltip activation and deactivation on hover events
+   */
+  disableHoverListener: PropTypes.bool,
+  /**
+   * Disables tooltip activation and deactivation on focus and blur events
+   */
+  disableFocusListener: PropTypes.bool,
+  /**
+   * Disables tooltip activation and deactivation on mouse click events
+   */
+  disableClickListener: PropTypes.bool,
   /**
    * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips trap focus, expands the activation area to include the tooltip itself, and includes other accessibility changes.
    */
