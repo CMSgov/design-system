@@ -39,4 +39,13 @@ describe('Table', function () {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('sets role="row"', () => {
+    const data = render(undefined, undefined);
+    const wrapper = data.wrapper;
+
+    const tableRow = wrapper.find('tr');
+    expect(tableRow).toHaveLength(1);
+    expect(tableRow.prop('role')).toBe('row');
+  });
 });

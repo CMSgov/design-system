@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders a table <td> element 1`] = `
+exports[`Table renders a table tbody row element 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -15,12 +15,11 @@ exports[`Table renders a table <td> element 1`] = `
       </p>
     </Alert>
   }
-  stackable={false}
   stackableBreakpoint="sm"
 >
   <div>
     <table
-      className="ds-c-table ds-c-table--stacked-sm"
+      className="ds-c-table"
       role="table"
     >
       <TableBody
@@ -37,21 +36,18 @@ exports[`Table renders a table <td> element 1`] = `
               role="row"
             >
               <TableCell
-                _isTableHeadChild={false}
-                _stackable={false}
                 align="left"
+                component="th"
               >
-                <td
+                <th
                   className="ds-u-text-align--left"
-                  role="cell"
+                  role="rowheader"
                   scope="row"
                 >
                   Cell a
-                </td>
+                </th>
               </TableCell>
               <TableCell
-                _isTableHeadChild={false}
-                _stackable={false}
                 align="left"
               >
                 <td
@@ -59,13 +55,84 @@ exports[`Table renders a table <td> element 1`] = `
                   role="cell"
                   scope="row"
                 >
-                  Cell a
+                  Cell b
                 </td>
               </TableCell>
             </tr>
           </TableRow>
         </tbody>
       </TableBody>
+    </table>
+  </div>
+</Table>
+`;
+
+exports[`Table renders a table thead <th> element 1`] = `
+<Table
+  scrollableNotice={
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      headingLevel="3"
+      role="status"
+    >
+      <p
+        className="ds-c-alert__text"
+      >
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  }
+  stackableBreakpoint="sm"
+>
+  <div>
+    <table
+      className="ds-c-table"
+      role="table"
+    >
+      <TableHead
+        className="foo-head"
+        key=".0"
+      >
+        <thead
+          className="foo-head"
+        >
+          <TableRow
+            _isTableHeadChild={true}
+            key=".$1"
+          >
+            <tr
+              role="row"
+            >
+              <TableCell
+                _isTableHeadChild={true}
+                align="left"
+                key=".0"
+              >
+                <th
+                  className="ds-u-text-align--left"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Column a
+                </th>
+              </TableCell>
+              <TableCell
+                _isTableHeadChild={true}
+                align="left"
+                key=".1"
+              >
+                <th
+                  className="ds-u-text-align--left"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Column b
+                </th>
+              </TableCell>
+            </tr>
+          </TableRow>
+        </thead>
+      </TableHead>
     </table>
   </div>
 </Table>

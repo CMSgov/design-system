@@ -15,12 +15,11 @@ exports[`Table renders a table body 1`] = `
       </p>
     </Alert>
   }
-  stackable={false}
   stackableBreakpoint="sm"
 >
   <div>
     <table
-      className="ds-c-table ds-c-table--stacked-sm"
+      className="ds-c-table"
       role="table"
     >
       <TableBody
@@ -37,8 +36,6 @@ exports[`Table renders a table body 1`] = `
               role="row"
             >
               <TableCell
-                _isTableHeadChild={false}
-                _stackable={false}
                 align="left"
               >
                 <td
@@ -50,8 +47,6 @@ exports[`Table renders a table body 1`] = `
                 </td>
               </TableCell>
               <TableCell
-                _isTableHeadChild={false}
-                _stackable={false}
                 align="left"
               >
                 <td
