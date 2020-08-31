@@ -35,10 +35,7 @@ export interface TableProps {
   striped?: boolean;
 }
 
-type OmitProps = 'ref';
-
-export default class Table extends React.Component<
-  Omit<React.HTMLProps<HTMLTableElement>, OmitProps> & TableProps,
+export default class Table extends React.Component<React.HTMLProps<HTMLTableElement> & TableProps,
   any
 > {
   render(): JSX.Element;

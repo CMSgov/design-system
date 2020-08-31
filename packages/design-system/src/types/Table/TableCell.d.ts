@@ -59,11 +59,8 @@ export interface TableCellProps {
   _stackable?: boolean;
 }
 
-type OmitProps = 'align' | 'headers' | 'id' | 'scope';
-
-declare const TableCell: React.FC<
-  Omit<React.HTMLProps<HTMLTableHeaderCellElement>, OmitProps> &
-    Omit<React.HTMLProps<HTMLTableDataCellElement>, OmitProps> &
+declare const TableCell: React.FC<React.HTMLProps<HTMLTableHeaderCellElement> &
+    React.HTMLProps<HTMLTableDataCellElement> &
     TableCellProps
 >;
 
