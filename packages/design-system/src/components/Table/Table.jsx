@@ -75,16 +75,17 @@ export class Table extends React.PureComponent {
 
   renderChildren() {
     return React.Children.map(this.props.children, (child) => {
-      // Extend props on TableCaption before rendering.
-      if (this.props.scrollable && isTableCaption(child)) {
-        return React.cloneElement(child, {
-          _id: this.captionID,
-          _scrollActive: this.state.isTableScrollable,
-          _scrollableNotice: this.props.scrollableNotice,
-        });
-      }
-      // Extend props before rendering.
-      if (this.props.stackable) {
+      if (isTableCaption(child)) {
+        // Extend props on TableCaption before rendering.
+        if (this.props.scrollable) {
+          return React.cloneElement(child, {
+            _id: this.captionID,
+            _scrollActive: this.state.isTableScrollable,
+            _scrollableNotice: this.props.scrollableNotice,
+          });
+        }
+      } else if (this.props.stackable) {
+        // Extend props for others before rendering.
         return React.cloneElement(child, {
           _stackable: this.props.stackable,
         });
@@ -108,7 +109,7 @@ export class Table extends React.PureComponent {
     const classes = classNames(
       'ds-c-table',
       striped ? 'ds-c-table--striped' : null,
-      stackableBreakpoint ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
+      stackable ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
       className
     );
 
@@ -149,7 +150,6 @@ Table.defaultProps = {
       <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
     </Alert>
   ),
-  stackable: false,
   stackableBreakpoint: 'sm',
 };
 
