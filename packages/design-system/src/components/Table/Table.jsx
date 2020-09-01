@@ -33,7 +33,7 @@ export class Table extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isTableScrollable: false,
+      scrollActive: false,
     };
     this.captionID = uniqueId('caption-');
     this.container = 0;
@@ -69,7 +69,7 @@ export class Table extends React.PureComponent {
     const { scrollWidth, clientWidth } = this.container;
     const isScrollActive = scrollWidth > clientWidth;
     this.setState({
-      isTableScrollable: isScrollActive,
+      scrollActive: isScrollActive,
     });
   }
 
@@ -80,7 +80,7 @@ export class Table extends React.PureComponent {
         if (this.props.scrollable) {
           return React.cloneElement(child, {
             _id: this.captionID,
-            _scrollActive: this.state.isTableScrollable,
+            _scrollActive: this.state.scrollActive,
             _scrollableNotice: this.props.scrollableNotice,
           });
         }
@@ -123,7 +123,7 @@ export class Table extends React.PureComponent {
       'aria-labelledby': this.captionID,
       'aria-live': 'polite',
       'aria-relevant': 'additions',
-      tabIndex: this.state.isTableScrollable ? '0' : null,
+      tabIndex: this.state.scrollActive ? '0' : null,
     };
 
     return (
