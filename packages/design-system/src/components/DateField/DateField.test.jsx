@@ -38,6 +38,10 @@ describe('DateField', () => {
     expect(renderer.create(<DateField yearMax={2000} yearMin="1990" />)).toMatchSnapshot();
   });
 
+  it('is disabled', () => {
+    expect(renderer.create(<DateField disabled />)).toMatchSnapshot();
+  });
+
   it('returns reference to input fields', () => {
     const refs = {};
     const props = {

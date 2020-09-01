@@ -31,7 +31,7 @@ describe('processKssSection', () => {
   let promise;
 
   beforeAll(() => {
-    promise = processKssSection(section('components.button'), 'root');
+    promise = processKssSection(section('components.button'), { rootPath: 'root' });
   });
 
   it('sets and replaces flags', () => {
@@ -41,12 +41,6 @@ describe('processKssSection', () => {
       expect(data.responsive).toBe(true);
       expect(data.status).toBe('prototype');
       expect(data.description).toBe('<p>Hello world</p>');
-    });
-  });
-
-  it('prepends rootPath', () => {
-    return promise.then((data) => {
-      expect(data.referenceURI).toBe('root/components/button');
     });
   });
 

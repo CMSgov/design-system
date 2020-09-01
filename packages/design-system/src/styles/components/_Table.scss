@@ -5,10 +5,6 @@
   border-spacing: 0;
   margin: 0;
 
-  td {
-    background-color: $color-white;
-  }
-
   th,
   thead td {
     background-color: $color-gray-lightest;
@@ -42,6 +38,110 @@
     border-left: 0;
     border-right: 0;
   }
+}
+
+@mixin ds-c-table--stacked {
+  thead tr {
+    /* Hide column headings when responsive table stacked vertically on smaller viewports */
+    // ds-u-visibility--screen-reader
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+    word-wrap: normal;
+  }
+
+  th,
+  td {
+    border: 0;
+  }
+
+  tr {
+    border: 1px solid $color-gray;
+    margin: 0 0 0.5rem;
+  }
+
+  td {
+    border-top: 1px solid $color-gray-lighter;
+  }
+
+  tr,
+  th,
+  td,
+  caption {
+    display: block;
+  }
+
+  td:first-child {
+    background-color: $color-gray-lightest;
+  }
+
+  /* Display individual cell heading reserved for stacked responsive table */
+  .ds-c-table--stacked__col-header {
+    border: 0;
+    display: block;
+  }
+
+  &.ds-c-table--striped tbody {
+    tr:nth-child(even) {
+      background-color: $color-white;
+    }
+  }
+}
+
+.ds-c-table--stacked-sm {
+  @media only screen and (max-width: $width-sm) {
+    @include ds-c-table--stacked;
+  }
+}
+
+.ds-c-table--stacked-md {
+  @media only screen and (max-width: $width-md) {
+    @include ds-c-table--stacked;
+  }
+}
+
+.ds-c-table--stacked-lg {
+  @media only screen and (max-width: $width-lg) {
+    @include ds-c-table--stacked;
+  }
+}
+
+/* Hide individual cell heading reserved for stacked responsive table */
+.ds-c-table--stacked__col-header {
+  display: none;
+}
+
+.ds-c-table--striped tbody {
+  tr:nth-child(even) {
+    background-color: $color-gray-lightest;
+  }
+}
+
+.ds-c-table__head {
+  display: table-header-group;
+}
+
+.ds-c-table__row {
+  display: table-row;
+}
+
+.ds-c-table__body {
+  display: table-row-group;
+}
+
+.ds-c-table__cell {
+  &.ds-c-table__cell--numeric {
+    text-align: right;
+  }
+}
+
+.ds-c-table__wrapper {
+  overflow-x: auto;
 }
 
 .ds-c-table__caption {

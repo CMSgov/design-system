@@ -7,20 +7,21 @@
   "description": "A shared set of design and code elements for creating accessible and consistent websites",
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
-    "start": "NODE_ENV=development yarn cmsds start ./packages/design-system ./packages/design-system-docs",
-    "build": "NODE_ENV=production yarn cmsds build-docs ./packages/design-system ./packages/design-system-docs",
+    "start": "yarn cmsds start",
+    "build": "yarn cmsds build-docs",
     "release": "./prepublish.sh && yarn lerna publish from-git",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
-    "test:unit": "NODE_ENV=test yarn cmsds test ./packages --core",
-    "test:e2e": "NODE_ENV=test yarn cmsds test:e2e ./packages --buildPath ./packages/design-system-docs/dist",
-    "update-snapshots": "NODE_ENV=test yarn cmsds test ./packages --core --updateSnapshot",
+    "test:unit": "yarn cmsds test ./packages",
+    "test:e2e": "yarn cmsds test:e2e ./packages",
+    "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "posttest": "yarn lint",
-    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**'"
+    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'examples/create-react-app-typescript/**'"
   },
   "devDependencies": {
+    "backstopjs": "^5.0.4",
     "eslint": "^6.8.0",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
@@ -29,11 +30,10 @@
     "stylelint": "^13.3.2"
   },
   "engines": {
-    "node": ">=11.0.0 <12.0.0",
+    "node": ">=11.0.0",
     "yarn": ">=1.21.1"
   },
   "resolutions": {
-    "gulp-sass/node-sass": ">=4.7.2",
     "kss/nunjucks": ">=3.2.0"
   },
   "lint-staged": {

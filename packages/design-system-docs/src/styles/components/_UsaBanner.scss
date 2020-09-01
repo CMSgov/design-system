@@ -35,7 +35,9 @@
 }
 
 .c-usa-banner__button {
-  @extend %link-darker;
+  /* stylelint-disable scss/at-extend-no-missing-placeholder */
+  @extend .ds-c-link;
+  /* stylelint-enable scss/at-extend-no-missing-placeholder */
   background-color: transparent;
   border: 0;
   box-shadow: none;

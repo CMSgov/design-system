@@ -1,9 +1,9 @@
 /*
 Flexbox
 
-Use the [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) utility classes to control various flexbox properties. These are especially useful when combined with [flexbox grid](/styles/grid/#styles.grid.alignment) classes.
+Use the [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) utility classes to control various flexbox properties. These are especially useful when combined with [flexbox grid]({{root}}/styles/grid/#styles.grid.alignment) classes.
 
-For these utility classes to work, first create a flex container &mdash; you can use the [`.ds-u-display--flex`](/utilities/display-visibility) utility class &mdash; then apply these  utility classes to the container's direct children elements.
+For these utility classes to work, first create a flex container &mdash; you can use the [`.ds-u-display--flex`]({{root}}/utilities/display-visibility) utility class &mdash; then apply these  utility classes to the container's direct children elements.
 
 Style guide: utilities.flexbox
 */
@@ -77,7 +77,7 @@ Responsive flexbox
 
 @responsive
 
-Use a [breakpoint prefix](/guidelines/responsive) to change the flexbox at specific breakpoints.
+Use a [breakpoint prefix]({{root}}/guidelines/responsive) to change the flexbox at specific breakpoints.
 
 Markup: flexbox-responsive.example.html
 

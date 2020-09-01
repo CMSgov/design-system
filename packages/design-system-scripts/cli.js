@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
-const getPackageJson = require('./gulp/common/getPackageJson');
 const { logIntroduction } = require('./gulp/common/logUtil');
-
-async function updateOptions(options) {
-  if (!options.githubUrl) {
-    const pkg = await getPackageJson(process.cwd());
-    if (pkg && pkg.repository) {
-      // Use package.json `repository` as default `githubUrl`
-      options.githubUrl = pkg.repository;
-    }
-  }
-  return options;
-}
+const path = require('path');
+// TODO, clean up script parameters to use the CMSDS config better
+const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
+const configDefaults = require('./configDefaults');
+const config = { ...configDefaults, ...configFile };
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
@@ -26,62 +19,87 @@ yargs
     },
   })
   .command({
-    command: 'build <sourceDir>',
+    command: 'build',
     desc: 'Builds the design system source and outputs compiled JavaScript and Sass.',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeStatsOptions(yargs);
+      yargs.option('skipLatest', {
+        desc:
+          'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
-      const { printStats } = require('./gulp/stats');
-      const options = await updateOptions(argv);
 
-      await buildSrc(options.sourceDir, { ...options });
-      await printStats(options.sourceDir, { ...options });
+      process.env.NODE_ENV = 'production';
+      await logIntroduction(config.sourceDir);
+      await buildSrc(config.sourceDir, { ...config, ...argv });
     },
   })
   .command({
-    command: 'build-docs <sourceDir> <docsDir>',
+    command: 'build-docs',
     desc: 'Builds the design system source and its corresponding documentation site',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeDocsDir(yargs);
-      describeDocsOptions(yargs);
-      describeStatsOptions(yargs);
+      yargs
+        .option('skipLatest', {
+          desc:
+            'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('skipBuild', {
+          desc:
+            'Use this flag to skip rebuilding the design system package before building the doc site. You must have already ran `cmsds build` or `cmsds build-docs` prior to using this option.',
+          type: 'boolean',
+          default: false,
+        });
+      yargs.option('ignoreRootPath', {
+        desc:
+          'This flag will prevent build files from using `rootPath` while still building for production.',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
-      const { printStats } = require('./gulp/stats');
-      const options = await updateOptions(argv);
 
-      await buildSrc(options.sourceDir, { ...options });
-      await buildDocs(options.sourceDir, options.docsDir, { ...options });
-      await printStats(options.sourceDir, { ...options });
+      process.env.NODE_ENV = 'production';
+      if (argv.ignoreRootPath) {
+        config.rootPath = '';
+      }
+      await logIntroduction(config.sourceDir);
+      if (!argv.skipBuild) {
+        await buildSrc(config.sourceDir, { ...config, ...argv });
+      }
+      await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },
   })
   .command({
-    command: 'start <sourceDir> <docsDir>',
+    command: 'start',
     desc:
       'Builds and hosts the documentation site locally with a webpack dev server. Changes will be automatically rebuilt and reloaded with browsersync when detected in either the source or docs directories',
     builder: (yargs) => {
-      describeSourceDir(yargs);
-      describeDocsDir(yargs);
-      describeDocsOptions(yargs);
+      yargs.option('skipLatest', {
+        desc:
+          'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
+        type: 'boolean',
+        default: false,
+      });
     },
     handler: async (argv) => {
-      await logIntroduction(argv.sourceDir);
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
       const { watchDocs } = require('./gulp/watch');
-      const options = await updateOptions(argv);
 
-      await buildSrc(options.sourceDir, { ...options });
-      await buildDocs(options.sourceDir, options.docsDir, { ...options });
-      await watchDocs(options.sourceDir, options.docsDir, { ...options });
+      process.env.NODE_ENV = 'development';
+      // rootPath is not used in local development
+      config.rootPath = '';
+      await logIntroduction(config.sourceDir);
+      await buildSrc(config.sourceDir, { ...config, ...argv });
+      await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
+      await watchDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
     },
   })
   .command({
@@ -106,21 +124,16 @@ yargs
           alias: 'w',
           type: 'boolean',
           default: false,
-        })
-        .option('core', {
-          desc:
-            'Internal flag used by the core CMSDS to modify the jest config. Unless you are on the core CMSDS team, you can ignore this.',
-          type: 'boolean',
-          default: false,
         });
     },
     handler: async (argv) => {
       const { run } = require('jest');
       const unitConfig = require('./jest/unit.config.js');
 
+      process.env.NODE_ENV = 'test';
       run([
         '--config',
-        JSON.stringify(unitConfig(argv.directory, argv.core)),
+        JSON.stringify(unitConfig(argv.directory, config.core)),
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
       ]);
@@ -136,11 +149,6 @@ yargs
           type: 'string',
           demandOption: true,
         })
-        .option('buildPath', {
-          desc: 'The path to the directory containing documentation site build files.',
-          type: 'string',
-          demandOption: true,
-        })
         .option('skipBuild', {
           desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
           type: 'boolean',
@@ -150,16 +158,22 @@ yargs
           desc: 'Runs e2e tests with headless chrome browser testing.',
           type: 'boolean',
           default: true,
+        })
+        .option('buildPath', {
+          desc: 'The path to the directory containing documentation site build files.',
+          type: 'string',
+          default: path.join(config.docsDir, 'dist'),
+          demandOption: true,
         });
     },
     handler: async (argv) => {
       const { run } = require('jest');
       const e2eConfig = require('./jest/e2e.config.js');
 
+      process.env.NODE_ENV = 'test';
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
-
       run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
     },
   })
@@ -175,7 +189,9 @@ yargs
           demandOption: true,
         })
         .option('fix', {
-          desc: 'Automatically fix, where possible, violations reported by rules.',
+          desc:
+            'Alias: -f. Automatically fix, where possible, violations reported by eslint and stylelint. Prettier autoformats regardless of this flag.',
+          alias: 'f',
           type: 'boolean',
           default: false,
         })
@@ -184,59 +200,35 @@ yargs
             'Glob patterns to be ignored by prettier, eslint, and stylelint. By default "node_modules" and "dist" directories are ignored.',
           type: 'array',
           default: ['**/node_modules/**', '**/dist/**'],
+        })
+        .option('failAfterError', {
+          desc: 'Process will exit with an error code (1) on linter error.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('disableStylelint', {
+          desc: 'Flag to opt out of running stylelint on files.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('disableEslint', {
+          desc: 'Flag to opt out of running eslint on files.',
+          type: 'boolean',
+          default: false,
+        })
+        .option('disablePrettier', {
+          desc: 'Flag to opt out of running prettier on files.',
+          type: 'boolean',
+          default: false,
         });
     },
     handler: async (argv) => {
       const { lintDirectories } = require('./gulp/lint');
+      const { directories, fix, ignorePatterns, failAfterError, ...disable } = argv;
 
-      await lintDirectories(argv.directories, argv.fix, argv.ignorePatterns);
+      process.env.NODE_ENV = 'test';
+      await lintDirectories(directories, fix, ignorePatterns, failAfterError, disable);
     },
   })
   .demandCommand()
   .help().argv;
-
-function describeSourceDir(yargs) {
-  yargs.positional('sourceDir', {
-    desc: 'The relative path to your main design-system package (that contains a src directory)',
-    type: 'string',
-    demandOption: true,
-  });
-}
-
-function describeDocsDir(yargs) {
-  yargs.positional('docsDir', {
-    desc:
-      'The relative paths to your docs-package directory. The built documentation site will be saved to the "dist" directory of this directory.',
-    type: 'string',
-    demandOption: true,
-  });
-}
-
-function describeDocsOptions(yargs) {
-  yargs
-    .option('name', {
-      desc: 'Name of the design system. This is used to render documentation content.',
-      type: 'string',
-      default: 'CMS Design System',
-    })
-    .option('githubUrl', {
-      type: 'string',
-      desc:
-        'The base path for your GitHub repository URLs. This is used to render links to releases, issues, etc. If not specified, this defaults to the "repository" property of the package.json in your current working directory.',
-    })
-    .option('rootPath', {
-      desc:
-        'The path of the docs site relative to the domain root. For example, if your docs site is hosted at www.domain.com/design/ your rootPath would be `design/`',
-      type: 'string',
-      default: '',
-    });
-}
-
-function describeStatsOptions(yargs) {
-  yargs.option('skipLatest', {
-    desc:
-      'This flag will skip comparison to the latest release when collecting stats. Use this option if it is expected that the latest release does not exist in node_modules.',
-    type: 'boolean',
-    default: false,
-  });
-}

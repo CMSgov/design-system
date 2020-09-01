@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import githubUrl from '../helpers/githubUrl';
-import pkg from '../../../package.json';
+import path from 'path';
 
-// TODO: Replace with link to self hosted download
-const zipUrl = githubUrl(
-  `releases/download/${pkg.version}/cmsgov-design-system-${pkg.version}.tgz`
-);
 const GitHubLinks = (props) => {
   const downloadBtnClassName = classNames('ds-u-font-weight--normal', {
     'ds-u-display--block': props.vertical,
@@ -20,7 +16,7 @@ const GitHubLinks = (props) => {
   return (
     <div className={props.className}>
       <Button
-        href={zipUrl}
+        href={path.join('/', process.env.rootPath, 'download.zip')}
         inversed={props.inversed}
         variation="primary"
         className={downloadBtnClassName}

@@ -27,10 +27,9 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "@cmsgov/design-system-core": "^1.28.1",
-    "@cmsgov/design-system-layout": "^1.27.0",
+    "@cmsgov/design-system": "^2.0.0",
     "copy-webpack-plugin": "^4.5.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "url-loader": "^1.1.2"
   }
 }

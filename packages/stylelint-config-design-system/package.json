@@ -1,8 +1,9 @@
 {
   "name": "@cmsgov/stylelint-config-design-system",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "latest"
   },
   "description": "A sharable stylelint config that enforces the design system's CSS and Sass rules",
   "repository": "CMSgov/design-system",

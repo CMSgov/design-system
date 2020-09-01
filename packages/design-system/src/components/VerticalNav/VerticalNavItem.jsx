@@ -190,7 +190,7 @@ VerticalNavItem.propTypes = {
    * An array of nested `VerticalNavItem` data objects to be rendered in a
    * sub-navigation list.
    */
-  items: PropTypes.arrayOf(PropTypes.shape(VerticalNavItem.propTypes)),
+  items: PropTypes.arrayOf(PropTypes.shape),
   /**
    * Text to render for this nav item
    */

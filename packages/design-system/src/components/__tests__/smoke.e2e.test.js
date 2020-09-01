@@ -16,7 +16,7 @@ describe('CMS Design System smoke test', () => {
     el = await getElementById('startup.installation');
 
     const actual = await el.getText();
-    const expected = 'Install with NPM';
+    const expected = 'Installation';
     expect(actual).toEqual(expected);
   });
 });

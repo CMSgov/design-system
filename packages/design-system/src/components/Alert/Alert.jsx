@@ -60,6 +60,7 @@ Alert.propTypes = {
    * The alert's body content
    */
   children: PropTypes.node,
+  className: PropTypes.string,
   /**
    * Text for the alert heading
    */
@@ -79,7 +80,7 @@ Alert.propTypes = {
   /**
    * ARIA `role`, defaults to 'region'
    */
-  role: PropTypes.oneOf(['alert', 'alertdialog', 'region']),
+  role: PropTypes.oneOf(['alert', 'alertdialog', 'region', 'status']),
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */

@@ -25,17 +25,24 @@
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $focus-color;
-    border-color: $color-base;
-    box-shadow: $focus-shadow-link;
-    color: $color-base;
-    outline: 3px solid transparent;
-    outline-offset: 2px;
+    @if $ds-include-focus-styles {
+      background-color: $focus-color;
+      border-color: $color-base;
+      box-shadow: $focus-shadow-link;
+      color: $color-base;
+      outline: 3px solid transparent;
+      outline-offset: 2px;
+    } @else {
+      border-color: $color-primary-darker;
+      color: $color-primary-darker;
+    }
   }
 
-  // Removes inner outline on buttons in Firefox.
-  &::-moz-focus-inner {
-    border: 0;
+  @if $ds-include-focus-styles {
+    // Removes inner outline on buttons in Firefox.
+    &::-moz-focus-inner {
+      border: 0;
+    }
   }
 
   &:active,
@@ -44,11 +51,13 @@
     color: $color-primary-darkest;
   }
 
-  // Make sure active overrides focus styles
-  &:active:focus,
-  &.ds-c-button--active:focus {
-    background-color: $color-white;
-    box-shadow: none;
+  @if $ds-include-focus-styles {
+    // Make sure active overrides focus styles
+    &:active:focus,
+    &.ds-c-button--active:focus {
+      background-color: $color-white;
+      box-shadow: none;
+    }
   }
 
   &:disabled,
@@ -94,7 +103,10 @@
   &:focus,
   &.ds-c-button--focus {
     border-color: transparent;
-    text-decoration: none;
+
+    @if $ds-include-focus-styles {
+      text-decoration: none;
+    }
   }
 
   &:hover,
@@ -104,18 +116,21 @@
     border-color: transparent;
   }
 
-  // Make sure active overrides focus styles
-  &:active:focus,
-  &.ds-c-button--active:focus {
-    color: $color-primary-darkest;
-    text-decoration: underline;
+  @if $ds-include-focus-styles {
+    // Make sure active overrides focus styles
+    &:active:focus,
+    &.ds-c-button--active:focus {
+      color: $color-primary-darkest;
+      text-decoration: underline;
+    }
   }
 
   &:disabled,
   &.ds-c-button--disabled {
-    background-color: transparent;
+    background-color: $color-gray-lighter;
     border-color: transparent;
-    color: $color-gray-lighter;
+    color: $color-gray-dark;
+    text-decoration: none;
   }
 }
 
@@ -129,20 +144,23 @@
   color: $color-base-inverse;
 
   &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
+  &.ds-c-button--hover {
     border-color: rgba($border-color-inverse, 0.8);
     color: rgba($color-base-inverse, 0.8);
   }
 
   &:focus,
   &.ds-c-button--focus {
-    background-color: $focus-color;
-    border-color: transparent;
-    box-shadow: $focus-shadow-link-inverse;
-    color: $color-base;
-    opacity: 1;
+    @if $ds-include-focus-styles {
+      background-color: $focus-color;
+      border-color: transparent;
+      box-shadow: $focus-shadow-link-inverse;
+      color: $color-base;
+      opacity: 1;
+    } @else {
+      border-color: rgba($border-color-inverse, 0.8);
+      color: rgba($color-base-inverse, 0.8);
+    }
   }
 
   &:active,
@@ -150,23 +168,26 @@
     border-color: rgba($border-color-inverse, 0.6);
     color: rgba($color-base-inverse, 0.6);
   }
-
-  // Make sure active overrides focus styles
-  &:active:focus,
-  &.ds-c-button--active:focus {
-    background-color: $color-background-inverse;
-    color: rgba($color-base-inverse, 0.6);
+  @if $ds-include-focus-styles {
+    // Make sure active overrides focus styles
+    &:active:focus,
+    &.ds-c-button--active:focus {
+      background-color: $color-background-inverse;
+      color: rgba($color-base-inverse, 0.6);
+    }
   }
 }
 
 /* stylelint-disable */
 %transparent-inverse-button {
-  border-color: $color-background-inverse;
-
+  border-color: transparent;
+  background-color: transparent;
   // Default inverse focus styles are overridden above
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &.ds-c-button--focus {
+      border-color: transparent;
+    }
   }
 
   &:disabled,
@@ -175,13 +196,18 @@
   &.ds-c-button--disabled,
   &.ds-c-button--hover,
   &.ds-c-button--active {
-    border-color: $color-background-inverse;
+    border-color: transparent;
   }
 }
 
 .ds-c-button--inverse.ds-c-button--transparent,
 .ds-c-button--inverse.ds-c-button--transparent:visited {
   @extend %transparent-inverse-button;
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: transparent;
+    color: $color-gray-dark;
+  }
 }
 
 /**
@@ -195,9 +221,9 @@
 }
 
 %disabled-inverse-button {
-  background-color: darken($color-background-inverse, 10%);
-  border-color: darken($color-background-inverse, 10%);
-  color: $color-muted-inverse;
+  background-color: $color-background-inverse;
+  border-color: $color-gray-lighter;
+  color: $color-gray-lighter;
   pointer-events: none;
 }
 
@@ -256,24 +282,31 @@ $button-color-variants: (
       background-color: nth($color, 2);
     }
 
-    &:focus,
-    &.ds-c-button--focus {
-      background-color: nth($color, 4);
-      border-color: transparent;
-      color: $color-base;
-    }
-
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
     }
 
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: nth($color, 3);
-      box-shadow: none;
-      color: $color-white;
+    @if $ds-include-focus-styles {
+      &:focus,
+      &.ds-c-button--focus {
+        background-color: nth($color, 4);
+        border-color: transparent;
+        color: $color-base;
+      }
+
+      // Make sure active overrides focus styles
+      &:active:focus,
+      &.ds-c-button--active:focus {
+        background-color: nth($color, 3);
+        box-shadow: none;
+      }
+    } @else {
+      &:focus,
+      &.ds-c-button--focus {
+        border-color: transparent;
+        color: $color-white;
+      }
     }
   }
 }

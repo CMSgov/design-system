@@ -1,5 +1,5 @@
 const processMarkup = require('./processMarkup');
-const replaceTemplateTags = require('../replaceTemplateTags');
+const replaceTemplateTags = require('../../common/replaceTemplateTags');
 
 /**
  * Format Markdown code syntax
@@ -23,7 +23,7 @@ function convertMarkdownCode(value) {
  * @param  {KssSection} kssSection
  * @return {Promise<Object>}
  */
-function processKssSection(kssSection, rootPath) {
+function processKssSection(kssSection, options) {
   let section = kssSection.toJSON();
 
   // Remove properties we don't need. This is useful for a couple reasons, like
@@ -37,18 +37,14 @@ function processKssSection(kssSection, rootPath) {
   });
 
   section = processFlags(section);
-  section.description = replaceTemplateTags(section.description, rootPath);
+  section.description = replaceTemplateTags(section.description, options);
   section.referenceURI = section.reference.replace(/\./g, '/');
-
-  if (rootPath) {
-    section.referenceURI = `${rootPath}/${section.referenceURI}`;
-  }
 
   // We only need to support Markdown's code syntax in headers, so we manually
   // parse those rather than running it through the marked library.
   section.header = convertMarkdownCode(section.header);
 
-  const sectionPromise = processMarkup(section, rootPath);
+  const sectionPromise = processMarkup(section, options);
   return sectionPromise;
 }
 

@@ -1,5 +1,45 @@
 @import '../settings/index.scss';
-@import '../base/link.scss';
+
+// Links on darker backgrounds that aren't quite dark as inverse
+%link-darker {
+  color: $color-primary-darker;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:visited {
+    color: $color-visited;
+  }
+
+  &:hover {
+    color: $color-primary-darkest;
+  }
+
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      background-color: $focus-color;
+      box-shadow: $focus-shadow-link;
+      color: $color-base;
+      outline: 3px solid transparent;
+      text-decoration: none;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darkest;
+    }
+  }
+
+  @if $ds-include-focus-styles {
+    &:active {
+      color: $color-primary-darkest;
+      outline: 0 none;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darkest;
+    }
+  }
+}
 
 $alert-padding: $spacer-2;
 $alert-bar-size: $spacer-1;
@@ -22,7 +62,11 @@ $alert-icon-size: $spacer-5;
     background-image: none;
   }
 
-  a,
+  @if $ds-include-base-html-rulesets {
+    a {
+      @extend %link-darker;
+    }
+  }
   .ds-c-link {
     @extend %link-darker;
   }

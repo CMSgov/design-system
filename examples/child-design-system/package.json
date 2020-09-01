@@ -1,0 +1,33 @@
+{
+  "name": "@cmsgov/design-system-example",
+  "version": "0.1.0",
+  "repository": "https://github.com/CMSgov/design-system-example",
+  "scripts": {
+    "build": "yarn cmsds build-docs --skipLatest",
+    "start": "yarn cmsds start --skipLatest",
+    "test": "yarn cmsds test ./src",
+    "lint": "yarn cmsds lint ./src ./docs"
+  },
+  "main": "dist/components/index.js",
+  "module": "dist/esnext/index.esm.js",
+  "sideEffects": false,
+  "dependencies": {
+    "@cmsgov/design-system": "2.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
+  "devDependencies": {
+    "@cmsgov/design-system-docs": "2.0.0",
+    "@cmsgov/design-system-scripts": "2.0.0",
+    "@cmsgov/eslint-config-design-system": "2.0.0",
+    "@cmsgov/stylelint-config-design-system": "2.0.0",
+    "classnames": "^2.2.5",
+    "eslint": "^6.8.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.2"
+  },
+  "browserslist": [
+    "> 2%",
+    "Last 2 versions"
+  ]
+}

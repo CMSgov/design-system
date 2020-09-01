@@ -14,10 +14,9 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateReactExample(page, docsPath, sourceDir, { rootPath }) {
+function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath }) {
   return new Promise((resolve, reject) => {
-    const exampleEntry = path.resolve(page.reactExampleEntry);
-    const config = createReactExampleWebpackConfig(exampleEntry, sourceDir);
+    const config = createReactExampleWebpackConfig(sourceDir, page.reactExampleEntry, typescript);
     const compiler = webpack(config);
 
     // Compile file to memory
@@ -45,7 +44,7 @@ function generateReactExample(page, docsPath, sourceDir, { rootPath }) {
 
       const output = savePage(
         {
-          uri: `${path.join(rootPath, 'example', page.reference)}`,
+          uri: `example/${page.reference}`,
           head: head,
           body: body,
         },

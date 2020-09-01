@@ -4,7 +4,7 @@ const marked = require('marked');
 const path = require('path');
 const processMarkup = require('./processMarkup');
 const renderer = require('./markdownRenderer');
-const replaceTemplateTags = require('../replaceTemplateTags');
+const replaceTemplateTags = require('../../common/replaceTemplateTags');
 
 marked.setOptions({ renderer: renderer });
 
@@ -32,10 +32,10 @@ function setFlags(page, attributes) {
  * that will later get passed into the React app.
  * @param {String} filePath - Absolute path to Markdown file
  * @param {String} body - Markdown file contents
- * @param {String} rootPath - Root docs site path
+ * @param {Object} options
  * @return {Promise<Object>} Resolves with the page object
  */
-function processMarkdownPage(filePath, body, rootPath = '') {
+function processMarkdownPage(filePath, body, options) {
   const parts = fm(body); // parse page properties from top of file
   const description = parts.attributes.usage || parts.body;
 
@@ -58,10 +58,6 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     }
 
     reference = referenceURI.replace('/', '.');
-
-    if (rootPath !== '') {
-      referenceURI = path.join(rootPath, referenceURI);
-    }
   }
 
   const header = parts.attributes.title || 'Untitled';
@@ -69,7 +65,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
     depth: depth,
     label: parts.attributes.label || header,
     header,
-    description: formatText(description, rootPath),
+    description: formatText(description, options),
     markup: parts.attributes.markup || '',
     reference: reference,
     referenceURI: referenceURI,
@@ -88,7 +84,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
       {
         depth: depth + 1,
         header: '---',
-        description: formatText(parts.body, rootPath),
+        description: formatText(parts.body, options),
         reference: `${reference}.guidance`,
         referenceURI: path.join(referenceURI, 'guidance'),
       },
@@ -101,7 +97,7 @@ function processMarkdownPage(filePath, body, rootPath = '') {
   delete parts.attributes.title;
   page = setFlags(page, parts.attributes);
 
-  return processMarkup(page, rootPath);
+  return processMarkup(page, options);
 }
 
 /**
@@ -109,8 +105,8 @@ function processMarkdownPage(filePath, body, rootPath = '') {
  * @param {String} rootPath
  * @return {String}
  */
-function formatText(text, rootPath) {
-  return marked(replaceTemplateTags(text, rootPath));
+function formatText(text, options) {
+  return marked(replaceTemplateTags(text, options));
 }
 
 module.exports = processMarkdownPage;

@@ -1,27 +1,78 @@
 ---
-title: Install with NPM
+title: Installation
 weight: 0
 ---
 
-The design system is available an NPM package or via a <a href="https://github.com/CMSgov/design-system/releases/latest">.zip download</a>.
+How you implement the design system depends on the needs of your project and your workstyle. We highly recommend implementing the design system with `npm`, as it allows you to easily update the design system version, but we also provide a direct download if `npm` will not work for you or your project.
 
-The [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system) package includes:
+- [Install the `{{npm}}` package]({{root}}/startup/installation/#install-using-npm) if your project uses `npm` for package management.
 
-- Base styles
-- Utility classes
-- Sass/CSS and React components
-- Sass mixins and variables
-- Responsive flexbox grid framework
-- Fonts and images
+- [Download the design system]({{root}}/startup/installation/#download-zip) if you are not familiar with `npm` and package management.
+
+## Install using npm
+
+Simply add the `{{npm}}` package to your `package.json` to install it as a dependency.
 
 ```
-npm install --save @cmsgov/design-system
+npm install --save {{npm}}@latest
+
+yarn add {{npm}}@latest
 ```
 
-<h2>Usage</h2>
+The [{{npm}}](https://www.npmjs.com/package/{{npm}}) package includes:
 
-We offer two versions of design system assets: a minified + compiled version (located in a `dist` directory), and an un-minified + non-compiled version (located in a `src` directory). Use the minified version in production environments. Use the un-minified version in a development environment to debug in the browser, or if you'd like to manage the un-compiled files with your own build system.
+- Pre-compiled SCSS files
+- Compiled CSS files
+- Compiled React components (CommonJS and ES modules)
+- Typescript definition files
+- Fonts and image
+
+### Package file structure
+
+The `dist` folder contains all the necessary files in the design system, your project should not be importing anything from `src`.
+
+```
+└── dist
+    ├── components/
+    │   └── index.js        Compiled JS entry point (CommmonJS)
+    ├── css/
+    │   └── index.css       Compiled CSS entry point
+    ├── esnext/
+    │   └── index.esm.js    Compiled JS entry point (ES Module)
+    ├── fonts/
+    ├── images/
+    ├── scss/
+    │   ├── base/           Base styles, HTML element selectors
+    │   ├── components/     Component styles
+    │   ├── settings/       Variables, mixins, and functions
+    │   ├── utilities/      Utility classes for individual CSS properties
+    │   └── index.scss      Precompiled SCSS entry point
+    └── types/              Typescript definition files
+```
+
+## Download zip
+
+<a href="{{root}}/download.zip">Download the zip file</a> from the latest release and extract the zip file to see the following folder structure. Like the `npm` package, the contents of `download/design-system/dist` contain design system code and assets.
+
+```
+└── download
+    ├── design-assets/      Design system assets (Sketch files, fonts, designer assets)
+    └── design-system/      Design system package (code, fonts, images)
+        └── dist/
+```
+
+Copy the files and folders from `download/design-system/dist` to a relevant place in your project’s code base. Here is an example structure for how this might look:
+
+```
+└──example-project/
+    ├── assets/
+    │   ├── ds-2.0.0/       Renamed design system package
+    │   ├── stylesheets/
+    │   ├── images/
+    │   └── javascript/
+    └── index.html
+```
 
 <h2 id="need-help" class="ds-h2 ds-u-color--primary-darker">Need help or ran into an issue?</h2>
 
-If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub](https://github.com/CMSgov/design-system/issues).
+If you're having trouble installing or setting up the design system, or if you think you've found a bug, feel free to [open an issue on GitHub]({{githubUrl}}/issues).

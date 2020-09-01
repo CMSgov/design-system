@@ -14,38 +14,15 @@
     color: $color-primary-darker;
   }
 
-  &:focus,
-  &:focus:visited {
-    @include focus-text;
-  }
-
-  &:active {
-    color: $color-primary-darkest;
-    outline: 0 none;
-  }
-}
-
-// Style for links on darker backgrounds that aren't quite dark as inverse (i.e. Alert)
-%link-darker {
-  color: $color-primary-darker;
-  cursor: pointer;
-  text-decoration: underline;
-
-  &:visited {
-    color: $color-visited;
-  }
-
-  &:hover {
-    color: $color-primary-darkest;
-  }
-
-  &:focus,
-  &:focus:visited {
-    background-color: $focus-color;
-    box-shadow: $focus-shadow-link;
-    color: $color-base;
-    outline: 3px solid transparent;
-    text-decoration: none;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darker;
+    }
   }
 
   &:active {
@@ -60,9 +37,15 @@
   text-decoration: underline;
 
   /* stylelint-disable selector-max-specificity */
-  &:focus,
-  &:focus:visited {
-    @include focus-text-inverse;
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-text-inverse;
+    }
+  } @else {
+    &:focus {
+      color: $color-muted-inverse;
+    }
   }
   /* stylelint-enable selector-max-specificity */
 
@@ -95,7 +78,6 @@
   a {
     @extend %link;
   }
-
   // Change color of links that are descendants of '.ds-base--inverse'
   //
   // Fix TODO: Because this selector's specificity is higher than most components,
