@@ -101,10 +101,11 @@ describe('FormLabel', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('supports additional classNames', () => {
-    const props = { className: 'ds-u-foo', labelClassName: 'ds-u-bar' };
+  it('supports additional attributes', () => {
+    const props = { className: 'ds-u-foo', ariaLabel: 'testing aria' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
+    expect(wrapper.prop('ariaLabel')).toBe('testing aria');
     expect(wrapper).toMatchSnapshot();
   });
 });
