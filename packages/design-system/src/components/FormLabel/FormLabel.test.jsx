@@ -105,6 +105,7 @@ describe('FormLabel', () => {
     const props = { className: 'ds-u-foo', ariaLabel: 'testing aria' };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
+    expect(wrapper.prop('ariaLabel')).toBe('testing aria');
     expect(wrapper).toMatchSnapshot();
   });
 });
