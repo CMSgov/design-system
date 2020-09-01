@@ -1,11 +1,11 @@
 const replaceExt = require('replace-ext');
 const path = require('path');
 const reactDocgen = require('react-docgen');
-const reactDocgenHandler = require('./reactDocgenHandler');
 const tsDocgen = require('react-docgen-typescript');
 const through = require('through2');
 const { get } = require('lodash');
 const { logTask, logData, logError } = require('../../common/logUtil');
+const { reactDocgenHandler, processDocgenTemplates } = require('./reactDocgenHandler');
 
 /**
  * A Gulp plugin that generates JSON objects from a stream of React
@@ -106,15 +106,20 @@ function getRelativePath(file, options) {
  * @param {String} rootPath
  */
 function parseComponent(file, options) {
-  const docs =
-    file.extname === '.tsx'
-      ? tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path)
-      : reactDocgen.parse(
-          file.contents,
-          reactDocgen.resolver.findAllExportedComponentDefinitions,
-          reactDocgenHandler(options),
-          { filename: file.basename }
-        );
+  let docs;
+  if (file.extname === '.tsx') {
+    // Use `react-docgen-typescript` for `tsx` files
+    docs = tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path);
+    processDocgenTemplates(docs[0], options);
+  } else {
+    // Use `react-docgen` for normal `jsx` files
+    docs = reactDocgen.parse(
+      file.contents,
+      reactDocgen.resolver.findAllExportedComponentDefinitions,
+      reactDocgenHandler(options),
+      { filename: file.basename }
+    );
+  }
 
   if (docs.length !== 1) {
     // There should only ever be one component definition
