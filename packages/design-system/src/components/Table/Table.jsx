@@ -172,7 +172,7 @@ Table.propTypes = {
    */
   scrollableNotice: PropTypes.node,
   /**
-   * A stackable variation of the table.
+   * Enables responsive styles to vertically stack rows at the specified `stackableBreakpoint`.
    * When `stackable` is set, `id` or `headers` prop is required in `TableCell`
    */
   stackable: PropTypes.bool,
