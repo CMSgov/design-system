@@ -23,6 +23,6 @@ export interface TableCaptionProps {
   _scrollableNotice?: React.ReactNode;
 }
 
-declare const TableCaption: React.FC<React.HTMLProps<TableCaptionProps>>;
+declare const TableCaption: React.FC<TableCaptionProps>;
 
 export default TableCaption;
