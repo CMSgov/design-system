@@ -42,10 +42,10 @@ export class Choice extends React.PureComponent {
 
   checked() {
     if (this.isControlled) {
-      return this.props.checked;
+      return this.props.checked && !this.props.disabled;
     }
 
-    return this.state.checked;
+    return this.state.checked && !this.props.disabled;
   }
 
   /**
@@ -80,6 +80,7 @@ export class Choice extends React.PureComponent {
       checkedChildren,
       children,
       className,
+      disabled,
       hint,
       inversed,
       inputClassName,
@@ -111,6 +112,7 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
+          disabled={disabled}
           ref={(ref) => {
             this.input = ref;
             if (inputRef) {
@@ -170,6 +172,7 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
   /**
    * Access a reference to the `input` element
    */
