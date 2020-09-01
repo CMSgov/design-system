@@ -26,7 +26,7 @@ export interface TableProps {
    */
   stackable?: boolean;
   /**
-   * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
+   * Applies responsive styles to vertically stacked rows at different viewport sizes.
    */
   stackableBreakpoint?: TableStackableBreakpoint;
   /**
