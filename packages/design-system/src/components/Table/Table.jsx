@@ -181,7 +181,7 @@ Table.propTypes = {
    */
   stackableBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
-   * A striped variation of the table.
+   * Applies the striped variation of the table.
    */
   striped: PropTypes.bool,
 };
