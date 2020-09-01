@@ -177,7 +177,7 @@ Table.propTypes = {
    */
   stackable: PropTypes.bool,
   /**
-   * Applies responsive styles to vertically stacked rows at different viewpoint sizes.
+   * The viewpoint size at which responsive vertically stacked row styles are applied. Only used when the `stackable` prop is set to `true`.
    */
   stackableBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
   /**
