@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <>
-    <Table scrollable striped>
+    <Table scrollable>
       <TableCaption>Responsive scrollable table</TableCaption>
       <TableHead>
         <TableRow>
@@ -48,7 +48,7 @@ ReactDOM.render(
       </TableBody>
     </Table>
 
-    <Table className="ds-u-margin-top--2" stackable stackableBreakpoint="md">
+    <Table className="ds-u-margin-top--2 ds-c-table--borderless" stackable stackableBreakpoint="md">
       <TableCaption>Stackable table</TableCaption>
       <TableHead>
         <TableRow>
