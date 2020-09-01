@@ -3,48 +3,48 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <div>
+  <>
     <ChoiceList
       choices={[
         { label: 'Choice 1', value: 'A' },
         { defaultChecked: true, label: 'Choice 2', value: 'B' },
       ]}
       className="ds-u-margin-top--0"
-      label="Radio example"
+      label="Checkbox example"
       name="choices_field"
-      type="radio"
+      type="checkbox"
     />
-
     <ChoiceList
       choices={[
         { label: 'Choice 1', value: 'A' },
         {
           defaultChecked: true,
           label: 'Choice 2',
-          hint: 'Example hint text',
+          hint: 'Choice hint text',
           value: 'B',
         },
       ]}
       errorMessage="Example error message"
-      label="Checkbox example"
+      hint="Helpful hint text"
+      label="Radio example"
       name="multiple_choices_field"
-      type="checkbox"
+      type="radio"
     />
-
-    <ChoiceList
-      choices={[
-        { label: 'Choice 1', requirementLabel: 'Optional', value: 'A' },
-        {
-          label: 'Choice 2',
-          requirementLabel: 'Optional',
-          value: 'B',
-        },
-      ]}
-      label="Choices with requirementLabel"
-      name="some_optional_choices_field"
-      type="checkbox"
-      requirementLabel="Optional"
-    />
-  </div>,
+    <div className="example--inverse ds-u-margin-top--2">
+      <ChoiceList
+        choices={[
+          { label: 'Choice 1', requirementLabel: 'Choice hint text', value: 'A' },
+          { label: 'Choice 2', value: 'B' },
+        ]}
+        className="ds-u-margin-top--0"
+        label="Inverse ChoiceList"
+        errorMessage="Example error message"
+        hint="Helpful hint text"
+        name="inverse_choices_field"
+        type="radio"
+        inversed
+      />
+    </div>
+  </>,
   document.getElementById('js-example')
 );

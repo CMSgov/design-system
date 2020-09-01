@@ -54,8 +54,15 @@
     </label>
     <input class="ds-c-choice" id="radio-2" type="radio" name="radio-choices" value="radio-2" />
     <label for="radio-2"><span>Radio 2</span></label>
-    <input class="ds-c-choice" id="radio-3" type="radio" name="radio-choices" value="radio-3" />
-    <label for="radio-3"><span>Radio 3</span></label>
+    <input
+      class="ds-c-choice"
+      id="radio-3"
+      type="radio"
+      name="radio-choices"
+      value="radio-3"
+      disabled
+    />
+    <label for="radio-3"><span>Disabled radio 3</span></label>
   </fieldset>
   <fieldset class="ds-c-fieldset">
     <legend class="ds-c-label"><span>Small choice variants</span></legend>
@@ -88,34 +95,35 @@
       <span class="ds-c-field__hint ds-u-color--error-light">Error message example</span>
       <input
         class="ds-c-choice ds-c-choice--inverse"
-        id="inverse =1"
+        id="inverse-1"
         type="checkbox"
-        name="inverse =choices"
-        value="inverse =1"
+        name="inverse-choices"
+        value="inverse-1"
         checked
       />
-      <label for="inverse =1">
+      <label for="inverse-1">
         <span>Checkbox 1</span>
+        <span class="ds-c-field__hint ds-c-field__hint--inverse">Choice hint text</span>
       </label>
       <input
         class="ds-c-choice ds-c-choice--inverse"
-        id="inverse =2"
+        id="inverse-2"
         type="checkbox"
-        name="inverse =choices"
-        value="inverse =2"
+        name="inverse-choices"
+        value="inverse-2"
       />
-      <label for="inverse =2">
+      <label for="inverse-2">
         <span>Checkbox 2</span>
       </label>
       <input
         class="ds-c-choice ds-c-choice--inverse"
-        id="inverse =3"
+        id="inverse-3"
         type="checkbox"
-        name="inverse =choices"
-        value="inverse =3"
+        name="inverse-choices"
+        value="inverse-3"
         disabled
       />
-      <label for="inverse =3">
+      <label for="inverse-3">
         <span>Disabled checkbox 3</span>
       </label>
     </fieldset>

@@ -42,10 +42,10 @@ export class Choice extends React.PureComponent {
 
   checked() {
     if (this.isControlled) {
-      return this.props.checked && !this.props.disabled;
+      return this.props.checked;
     }
 
-    return this.state.checked && !this.props.disabled;
+    return this.state.checked;
   }
 
   /**
@@ -125,6 +125,7 @@ export class Choice extends React.PureComponent {
           className={labelClassName}
           fieldId={this.id}
           hint={hint}
+          inversed={inversed}
           requirementLabel={requirementLabel}
         >
           {children}
