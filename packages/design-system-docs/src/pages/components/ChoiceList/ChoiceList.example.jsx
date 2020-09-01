@@ -3,41 +3,50 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <>
+  <div className="example--wrapper">
     <ChoiceList
       choices={[
-        { label: 'Choice 1', value: 'A' },
-        { defaultChecked: true, label: 'Choice 2', value: 'B' },
+        { label: 'Choice 1', value: 'A', defaultChecked: true },
+        { label: 'Choice 2', value: 'B' },
+        { label: 'Disabled choice 3', value: 'C', disabled: true },
       ]}
       className="ds-u-margin-top--0"
       label="Checkbox example"
-      name="choices_field"
+      hint="Helpful hint text"
+      name="checkbox_choices"
       type="checkbox"
     />
     <ChoiceList
       choices={[
-        { label: 'Choice 1', value: 'A' },
+        { label: 'Choice 1', value: 'A', hint: 'Choice hint text', defaultChecked: true },
         {
-          defaultChecked: true,
           label: 'Choice 2',
-          hint: 'Choice hint text',
           value: 'B',
         },
       ]}
       errorMessage="Example error message"
-      hint="Helpful hint text"
       label="Radio example"
-      name="multiple_choices_field"
+      name="radio_choices"
       type="radio"
     />
-    <div className="example--inverse ds-u-margin-top--2">
+    <ChoiceList
+      choices={[
+        { label: 'Choice 1', value: 'A', defaultChecked: true },
+        { label: 'Choice 2', value: 'B' },
+      ]}
+      label="Small variant example"
+      name="size-variants"
+      type="radio"
+      size="small"
+    />
+    <div className="example--wrapper example--inverse">
       <ChoiceList
         choices={[
           { label: 'Choice 1', requirementLabel: 'Choice hint text', value: 'A' },
           { label: 'Choice 2', value: 'B' },
+          { label: 'Disabled choice 3', value: 'c', disabled: true },
         ]}
-        className="ds-u-margin-top--0"
-        label="Inverse ChoiceList"
+        label="Inverse example"
         errorMessage="Example error message"
         hint="Helpful hint text"
         name="inverse_choices_field"
@@ -45,6 +54,6 @@ ReactDOM.render(
         inversed
       />
     </div>
-  </>,
+  </div>,
   document.getElementById('js-example')
 );
