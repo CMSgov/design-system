@@ -92,7 +92,7 @@
   tr {
     border: 1px solid;
     display: block;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     padding-bottom: 2px;
     position: relative;
 
@@ -124,14 +124,17 @@
 
   &.ds-c-table--borderless {
     tr {
-      border-left: 0;
-      border-right: 0;
-      border-top: 0;
+      border: 0;
 
       &::after {
         background-color: transparent;
         border-right: 0;
       }
+    }
+
+    td:last-child,
+    th:last-child {
+      border-bottom: 2px solid;
     }
   }
 }
