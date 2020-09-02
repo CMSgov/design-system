@@ -49,7 +49,7 @@ ReactDOM.render(
     </Table>
 
     <Table className="ds-u-margin-top--2" stackable stackableBreakpoint="md">
-      <TableCaption>Stackable table</TableCaption>
+      <TableCaption>Responsive stackable table</TableCaption>
       <TableHead>
         <TableRow>
           <TableCell id="column_1">Document title</TableCell>
