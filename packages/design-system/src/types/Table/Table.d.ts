@@ -4,6 +4,10 @@ export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
 
 export interface TableProps {
   /**
+   * Applies the borderless variation of the table.
+   */
+  borderless?: boolean,
+  /**
    * The table contents, usually `TableCaption`, `TableHead` and `TableBody`.
    */
   children: React.ReactNode;

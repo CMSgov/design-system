@@ -96,6 +96,7 @@ export class Table extends React.PureComponent {
 
   render() {
     const {
+      borderless,
       className,
       stackable,
       stackableBreakpoint,
@@ -108,6 +109,7 @@ export class Table extends React.PureComponent {
 
     const classes = classNames(
       'ds-c-table',
+      borderless ? 'ds-c-table--borderless' : null,
       striped ? 'ds-c-table--striped' : null,
       stackable ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
       className
@@ -154,6 +156,10 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
+  /**
+   * Applies the borderless variation of the table.
+   */
+  borderless: PropTypes.bool,
   /**
    * The table contents, usually `TableCaption`, `TableHead` and `TableBody`.
    */
