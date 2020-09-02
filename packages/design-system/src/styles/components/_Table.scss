@@ -139,19 +139,19 @@
   }
 }
 
-.ds-c-table--stacked-sm {
+.ds-c-sm-table--stacked {
   @media only screen and (max-width: $width-sm) {
     @include ds-c-table--stacked;
   }
 }
 
-.ds-c-table--stacked-md {
+.ds-c-md-table--stacked {
   @media only screen and (max-width: $width-md) {
     @include ds-c-table--stacked;
   }
 }
 
-.ds-c-table--stacked-lg {
+.ds-c-lg-table--stacked {
   @media only screen and (max-width: $width-lg) {
     @include ds-c-table--stacked;
   }

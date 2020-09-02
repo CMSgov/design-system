@@ -111,7 +111,7 @@ export class Table extends React.PureComponent {
       'ds-c-table',
       borderless ? 'ds-c-table--borderless' : null,
       striped ? 'ds-c-table--striped' : null,
-      stackable ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
+      stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
       className
     );
 
