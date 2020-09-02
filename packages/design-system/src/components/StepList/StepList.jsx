@@ -14,25 +14,6 @@ export const StepList = ({ steps, ...props }) => (
   </ol>
 );
 
-// Define the shape of a single step so we can recursively define the shape
-// as well as reuse it in multiple components' prop-type definitions. This
-// has to be in this file or else the docs generator will break.
-export const stepShape = {
-  id: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  title: PropTypes.string, // [Deprecated]
-  heading: PropTypes.string.isRequired,
-  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
-  description: PropTypes.string,
-  linkText: PropTypes.string,
-  completed: PropTypes.bool,
-  started: PropTypes.bool,
-  isNextStep: PropTypes.bool,
-  onClick: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-};
-stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
-
 StepList.defaultProps = {
   showSubSubSteps: false,
   completedText: 'Completed',
@@ -46,12 +27,10 @@ StepList.defaultProps = {
 
 StepList.propTypes = {
   /**
-   * An array of step objects that contain information needed to render
-   * them like text, state, and link/button URLs.
-   * See [Start, Resume, and Edit links]({{root}}/patterns/step-list/#patterns.step-list.buttons)
-   * and [Step object]({{root}}/patterns/step-list/#patterns.step-list.step-object)
+   * An array of [step objects]({{root}}/patterns/step-list/#patterns.step-list.step-object) that contain
+   * text, state, [link/button URLs]({{root}}/patterns/step-list/#patterns.step-list.buttons) and other info needed to render steps.
    */
-  steps: PropTypes.arrayOf(PropTypes.shape(stepShape)).isRequired,
+  steps: PropTypes.arrayOf(PropTypes.shape).isRequired,
   /**
    * When provided, this will render the passed in component for all link elements. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
