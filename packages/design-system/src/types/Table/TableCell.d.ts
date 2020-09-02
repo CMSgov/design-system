@@ -59,7 +59,8 @@ export interface TableCellProps {
   _stackable?: boolean;
 }
 
-declare const TableCell: React.FC<React.HTMLProps<HTMLTableHeaderCellElement> &
+declare const TableCell: React.FC<
+  React.HTMLProps<HTMLTableHeaderCellElement> &
     React.HTMLProps<HTMLTableDataCellElement> &
     TableCellProps
 >;

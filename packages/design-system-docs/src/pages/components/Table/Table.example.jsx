@@ -48,7 +48,7 @@ ReactDOM.render(
       </TableBody>
     </Table>
 
-    <Table className="ds-u-margin-top--2 ds-c-table--borderless" stackable stackableBreakpoint="md">
+    <Table className="ds-u-margin-top--2" stackable stackableBreakpoint="md">
       <TableCaption>Stackable table</TableCaption>
       <TableHead>
         <TableRow>
