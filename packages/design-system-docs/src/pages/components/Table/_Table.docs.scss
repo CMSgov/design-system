@@ -28,7 +28,6 @@ as well as `TableRow` and `TableCell` for the table content. These components mo
 responsive features including horizontal scrolling and vertically stacked rows.
 
 @react-example Table.example.jsx
-@responsive
 
 @responsive
 
@@ -50,7 +49,7 @@ Style guide: components.table.react-tablecaption
 /*
 `<TableHead>`
 
-`TableHead` renders the `<thead>` element and contains table rows defining the table columns.
+`TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
 
 @react-props TableHead.jsx
 
@@ -60,7 +59,7 @@ Style guide: components.table.react-tablehead
 /*
 `<TableBody>`
 
-`TableBody` renders the `<tbody>` element and contains table rows defining the table data.
+`TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
 
 @react-props TableBody.jsx
 

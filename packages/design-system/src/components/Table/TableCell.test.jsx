@@ -97,7 +97,7 @@ describe('Table', function () {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('renders a table tbody <th> row header element', () => {
+  it('renders a table tbody <th> row header element which overwrites default header row component to <th>', () => {
     const data = renderBody(undefined, undefined);
     const wrapper = data.wrapper;
 
@@ -105,7 +105,7 @@ describe('Table', function () {
     expect(table).toHaveLength(1);
   });
 
-  it('sets a table tbody <th> role="rowheader"', () => {
+  it('sets a table tbody <th> role="rowheader" which overwrites default role value "cell"', () => {
     const data = renderBody(undefined, undefined);
     const wrapper = data.wrapper;
 

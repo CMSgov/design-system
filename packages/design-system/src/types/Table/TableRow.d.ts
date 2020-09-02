@@ -4,7 +4,7 @@ export interface TableRowProps {
   /**
    * The table row contents, usually `TableCell`.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * @hide-prop This gets set from the parent `TableHead`
    */

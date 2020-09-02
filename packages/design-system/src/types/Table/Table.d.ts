@@ -6,7 +6,7 @@ export interface TableProps {
   /**
    * Applies the borderless variation of the table.
    */
-  borderless?: boolean,
+  borderless?: boolean;
   /**
    * The table contents, usually `TableCaption`, `TableHead` and `TableBody`.
    */

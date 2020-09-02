@@ -59,7 +59,7 @@ describe('Table', function () {
 
     const table = wrapper.find('table');
     expect(table.hasClass('ds-c-table')).toBe(true);
-    expect(table.hasClass('ds-c-table--stacked-lg')).toBe(true);
+    expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });
