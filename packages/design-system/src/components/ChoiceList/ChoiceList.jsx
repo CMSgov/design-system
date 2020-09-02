@@ -42,11 +42,7 @@ export class ChoiceList extends React.PureComponent {
         this.choiceRefs.push(ref);
       };
 
-      return (
-        <Choice key={choiceProps.value} {...choiceProps}>
-          {choiceProps.label}
-        </Choice>
-      );
+      return <Choice key={choiceProps.value} {...choiceProps} />;
     });
   }
 

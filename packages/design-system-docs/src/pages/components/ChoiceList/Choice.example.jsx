@@ -8,59 +8,55 @@ const childField = (
 
 ReactDOM.render(
   <>
-    <Choice name="checkbox_choice" type="checkbox" value="a">
-      Checkbox A
-    </Choice>
+    <Choice name="checkbox_choice" type="checkbox" label="Checkbox A" value="a" />
     <Choice
       defaultChecked
       name="checkbox_choice_checked"
       type="checkbox"
+      label="Checkbox B with checked children"
       value="b"
       checkedChildren={<div className="ds-c-choice__checkedChild">{childField}</div>}
-    >
-      Checkbox B with checked children
-    </Choice>
+    />
     <Choice
       defaultChecked
       name="checkbox_choice_unchecked"
       type="checkbox"
+      label="Checkbox C with unchecked children"
       value="c"
       uncheckedChildren={<div className="ds-c-choice__checkedChild">{childField}</div>}
-    >
-      Checkbox C with unchecked children
-    </Choice>
-    <Choice name="checkbox_choice_disabled" type="checkbox" value="d" disabled>
-      Disabled Checkbox D
-    </Choice>
-    <Choice name="checkbox_choice_small" size="small" type="checkbox" value="e">
-      Small Checkbox E
-    </Choice>
-    <Choice name="radio_choice" type="radio" value="a">
-      Radio A
-    </Choice>
+    />
+    <Choice
+      name="checkbox_choice_disabled"
+      type="checkbox"
+      label="Disabled Checkbox d"
+      value="d"
+      disabled
+    />
+    <Choice
+      name="checkbox_choice_small"
+      size="small"
+      type="checkbox"
+      label="Small Checkbox E"
+      value="e"
+    />
+    <Choice name="radio_choice" type="radio" label="Radio A" value="a" />
     <Choice
       name="radio_choice_checked"
       type="radio"
+      label="Radio B with checked children"
       value="b"
       checkedChildren={<div className="ds-c-choice__checkedChild">{childField}</div>}
-    >
-      Radio B with checked children
-    </Choice>
+    />
     <Choice
       defaultChecked
       name="radio_choice_unchecked"
       type="radio"
+      label="Radio C with unchecked children"
       value="c"
       uncheckedChildren={<div className="ds-c-choice__checkedChild">{childField}</div>}
-    >
-      Radio C with unchecked children
-    </Choice>
-    <Choice name="radio_choice_disabled" type="radio" value="d" disabled>
-      Disabled Radio D
-    </Choice>
-    <Choice name="radio_choice_small" size="small" type="radio" value="e">
-      Small Radio E
-    </Choice>
+    />
+    <Choice name="radio_choice_disabled" type="radio" label="Disabled Radio D" value="d" disabled />
+    <Choice name="radio_choice_small" size="small" type="radio" label="Small Radio E" value="e" />
   </>,
   document.getElementById('js-example')
 );

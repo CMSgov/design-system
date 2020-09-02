@@ -31,6 +31,14 @@ export class Choice extends React.PureComponent {
     } else {
       this.isControlled = true;
     }
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.children) {
+        console.warn(
+          `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -84,6 +92,7 @@ export class Choice extends React.PureComponent {
       hint,
       inversed,
       inputClassName,
+      label,
       labelClassName,
       requirementLabel,
       size,
@@ -128,7 +137,7 @@ export class Choice extends React.PureComponent {
           inversed={inversed}
           requirementLabel={requirementLabel}
         >
-          {children}
+          {label || children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
@@ -138,9 +147,9 @@ export class Choice extends React.PureComponent {
 
 Choice.propTypes = {
   /**
-   * Label text or HTML.
+   * @hide-prop In order to be consistent with form elements, use `label` instead
    */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -164,6 +173,10 @@ Choice.propTypes = {
    * Additional classes to be added to the `input` element.
    */
   inputClassName: PropTypes.string,
+  /**
+   * Label text or HTML.
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Additional classes to be added to the `FormLabel`.
    */
