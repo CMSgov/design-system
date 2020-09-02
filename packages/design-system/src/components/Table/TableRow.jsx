@@ -26,7 +26,7 @@ TableRow.propTypes = {
   /**
    * The table row contents, usually `TableCell`.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * @hide-prop This gets set from the parent `TableHead` component
    */

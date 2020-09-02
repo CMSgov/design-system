@@ -67,10 +67,8 @@ export class Table extends React.PureComponent {
 
   handleResize() {
     const { scrollWidth, clientWidth } = this.container;
-    const isScrollActive = scrollWidth > clientWidth;
-    this.setState({
-      scrollActive: isScrollActive,
-    });
+    const scrollActive = scrollWidth > clientWidth;
+    this.setState({ scrollActive });
   }
 
   renderChildren() {

@@ -24,10 +24,12 @@ Style guide: components.table.complex
 `<Table>`
 
 `Table` is a container component that contains `TableCaption`, `TableHead` and `TableBody` as children,
-as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional 
+as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
 responsive features including horizontal scrolling and vertically stacked rows.
 
 @react-example Table.example.jsx
+
+@responsive
 
 @react-props Table.jsx
 
