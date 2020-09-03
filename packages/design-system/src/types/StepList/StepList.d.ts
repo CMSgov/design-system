@@ -24,10 +24,10 @@ export interface StepListProps {
    * clicked. The step's `href` property will be passed as a parameter.
    */
   onStepLinkClick?: (...args: any[]) => any;
-  completedText: string;
-  editText: string;
-  resumeText: string;
-  startText: string;
+  completedText?: string;
+  editText?: string;
+  resumeText?: string;
+  startText?: string;
   /**
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.

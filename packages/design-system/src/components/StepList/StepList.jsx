@@ -46,10 +46,10 @@ StepList.propTypes = {
    * clicked. The step's `href` property will be passed as a parameter.
    */
   onStepLinkClick: PropTypes.func,
-  completedText: PropTypes.string.isRequired,
-  editText: PropTypes.string.isRequired,
-  resumeText: PropTypes.string.isRequired,
-  startText: PropTypes.string.isRequired,
+  completedText: PropTypes.string,
+  editText: PropTypes.string,
+  resumeText: PropTypes.string,
+  startText: PropTypes.string,
   /**
    * A template string for the aria-label describing a step's actions where
    * the substring `%{step}` is replaced with that step's `heading`.
