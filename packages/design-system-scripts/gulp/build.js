@@ -53,11 +53,21 @@ function copySass(dir) {
 }
 
 /**
- * Copy any TS definition files (only used in core)
+ * Copy any files not processed by the build scripts
  */
-function copyDefinitionFiles(dir) {
+function copyMiscFiles(dir) {
   const src = path.join(dir, 'src');
-  return streamPromise(gulp.src([`${src}/**/*.d.ts`]).pipe(gulp.dest(path.join(dir, 'dist'))));
+  return streamPromise(
+    gulp
+      .src([
+        `${src}/**/*`,
+        `!${src}/components/**/*`,
+        `!${src}/fonts/**/*`,
+        `!${src}/images/**/*`,
+        `!${src}/styles/**/*`,
+      ])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
+  );
 }
 
 async function copyAll(dir) {
@@ -65,6 +75,7 @@ async function copyAll(dir) {
     copyJson(dir),
     copySass(dir),
     copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
+    copyMiscFiles(dir),
   ];
 
   const sources = await getSourceDirs(dir);
@@ -172,7 +183,7 @@ async function compileEsmJs(dir, changedPath) {
 }
 
 /**
- * Transpile design system React components.
+ *  Transpile design system React components.
  *  Note: If you're running a dev server and try to use a newly
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
@@ -217,10 +228,6 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
-    // If core ds, copy definition files too
-    if (options.core) {
-      await copyDefinitionFiles(sourceDir);
-    }
     await compileSourceSass(sourceDir);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
