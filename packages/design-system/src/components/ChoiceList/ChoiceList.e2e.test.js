@@ -4,13 +4,13 @@ import { ROOT_URL } from '../helpers/e2e/constants';
 import assertNoAxeViolations from '../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.choice.react/`;
+const rootURL = `${ROOT_URL}/example/components.choice.choicelist/`;
 
-describe('Choice component', () => {
+describe('ChoiceList component', () => {
   it('Should render', async () => {
     await driver.get(rootURL);
 
-    const el = await getElementByClassName('ds-c-choice');
+    const el = await getElementByClassName('ds-c-fieldset');
     expect(el).toBeTruthy();
   });
 
