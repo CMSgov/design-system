@@ -1,14 +1,14 @@
 import React from 'react';
 import Table from './Table';
 import TableBody from './TableBody';
-import TableDataCell from './TableDataCell';
+import TableCell from './TableCell';
 import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
 const defaultTableBodyChildren = (
-  <TableRow key="2">
-    <TableDataCell key="21" data="Cell a" />
-    <TableDataCell key="22" data="Cell b" />
+  <TableRow key="1">
+    <TableCell>Cell a</TableCell>
+    <TableCell>Cell a</TableCell>
   </TableRow>
 );
 const defaultTableBodyProps = {
@@ -33,8 +33,10 @@ describe('Table', function () {
     const data = render(undefined, undefined);
     const wrapper = data.wrapper;
 
-    const table = wrapper.find('tbody');
-    expect(table).toHaveLength(1);
-    expect(table.hasClass('ds-c-table__body')).toBe(true);
+    const tableBody = wrapper.find('tbody');
+    expect(tableBody).toHaveLength(1);
+    expect(tableBody.hasClass('foo-body')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

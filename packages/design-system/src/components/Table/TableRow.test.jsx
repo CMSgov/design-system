@@ -1,14 +1,14 @@
 import React from 'react';
 import Table from './Table';
+import TableCell from './TableCell';
 import TableHead from './TableHead';
-import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
 const defaultTableHeadChildren = (
-  <TableRow key="1">
-    <TableHeaderCell key="11" title="Column a" />
-    <TableHeaderCell key="12" title="Column b" />
+  <TableRow key="1" className="foo-row">
+    <TableCell>Column a</TableCell>
+    <TableCell>Column b</TableCell>
   </TableRow>
 );
 const defaultTableHeadProps = {
@@ -29,12 +29,23 @@ function render(customProps = {}, children) {
 }
 
 describe('Table', function () {
-  it('renders a table head', () => {
+  it('renders a table row', () => {
     const data = render(undefined, undefined);
     const wrapper = data.wrapper;
 
-    const table = wrapper.find('tr');
-    expect(table).toHaveLength(1);
-    expect(table.hasClass('ds-c-table__row')).toBe(true);
+    const tableRow = wrapper.find('tr');
+    expect(tableRow).toHaveLength(1);
+    expect(tableRow.hasClass('foo-row')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('sets role="row"', () => {
+    const data = render(undefined, undefined);
+    const wrapper = data.wrapper;
+
+    const tableRow = wrapper.find('tr');
+    expect(tableRow).toHaveLength(1);
+    expect(tableRow.prop('role')).toBe('row');
   });
 });
