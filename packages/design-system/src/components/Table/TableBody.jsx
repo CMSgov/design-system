@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 
-export const TableBody = ({ children, className, ...others }) => {
-  const classes = classNames('ds-c-table__body', className);
+export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
+  const renderChildren = () => {
+    return React.Children.map(children, (child) => {
+      // Extend props before rendering.
+      if (child) {
+        return React.cloneElement(child, {
+          _stackable: _stackable,
+        });
+      }
+      return child;
+    });
+  };
 
-  return (
-    <tbody className={classes} {...others}>
-      {children}
-    </tbody>
-  );
+  return <tbody {...tableBodyProps}>{_stackable ? renderChildren() : children}</tbody>;
 };
 
 TableBody.propTypes = {
@@ -18,9 +23,9 @@ TableBody.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Additional classes to be added to the table body element.
+   * @hide-prop This gets set from the parent `Table` component
    */
-  className: PropTypes.string,
+  _stackable: PropTypes.bool,
 };
 
 export default TableBody;

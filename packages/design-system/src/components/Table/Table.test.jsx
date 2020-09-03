@@ -28,7 +28,18 @@ describe('Table', function () {
 
     const table = wrapper.find('table');
     expect(table).toHaveLength(1);
+
     expect(table.hasClass('ds-c-table')).toBe(true);
+  });
+
+  it('sets role="table"', () => {
+    const data = render(undefined, undefined);
+    const wrapper = data.wrapper;
+
+    const table = wrapper.find('table');
+    expect(table).toHaveLength(1);
+
+    expect(table.prop('role')).toBe('table');
   });
 
   it('supports zebra stripe', () => {
@@ -38,15 +49,19 @@ describe('Table', function () {
     const table = wrapper.find('table');
     expect(table.hasClass('ds-c-table')).toBe(true);
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('supports responsive table', () => {
-    const data = render({ stackBreakpoint: 'sm' }, undefined);
+    const data = render({ stackable: true, stackableBreakpoint: 'lg' }, undefined);
     const wrapper = data.wrapper;
 
     const table = wrapper.find('table');
     expect(table.hasClass('ds-c-table')).toBe(true);
-    expect(table.hasClass('ds-c-table--stacked-sm')).toBe(true);
+    expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('supports scroll table', () => {
@@ -57,5 +72,7 @@ describe('Table', function () {
     const divWrapper = data.wrapper.find('div');
     expect(table.hasClass('ds-c-table')).toBe(true);
     expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

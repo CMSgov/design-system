@@ -2,68 +2,87 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableDataCell,
+  TableCell,
   TableHead,
-  TableHeaderCell,
   TableRow,
 } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
-  <Table stackBreakpoint="sm" scrollable>
-    <TableCaption>Responsive Table</TableCaption>
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell id={'column' + 1} scope="col">
-          Document title
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 2} scope="col">
-          Description
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 3} scope="col">
-          Links
-        </TableHeaderCell>
-        <TableHeaderCell id={'column' + 4} scope="col">
-          Year
-        </TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      <TableRow>
-        <TableDataCell scope="row" stackedTitle="Document title" headers={'column' + 1}>
-          Declaration of Independence
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Description" headers={'column' + 2}>
-          Statement adopted by the Continental Congress declaring independence from the British
-          Empire.
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
-          <em>
-            <a href="# ">https://www.archives.gov/founding-docs/declaration</a>
-          </em>
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
-          1776
-        </TableDataCell>
-      </TableRow>
-      <TableRow>
-        <TableDataCell scope="row" stackedTitle="Document title" headers={'column' + 1}>
-          Bill of Rights
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Description" headers={'column' + 2}>
-          The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Links" headers={'column' + 3}>
-          <em>
-            <a href="# ">https://www.archives.gov/founding-docs/bill-of-rights</a>
-          </em>
-        </TableDataCell>
-        <TableDataCell scope="row" stackedTitle="Year" headers={'column' + 4}>
-          1791
-        </TableDataCell>
-      </TableRow>
-    </TableBody>
-  </Table>,
+  <>
+    <Table scrollable>
+      <TableCaption>Responsive scrollable table</TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableCell>Document title</TableCell>
+          <TableCell>Description</TableCell>
+          <TableCell>Links</TableCell>
+          <TableCell>Year</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>Declaration of Independence</TableCell>
+          <TableCell>
+            Statement adopted by the Continental Congress declaring independence from the British
+            Empire.
+          </TableCell>
+          <TableCell>
+            <a href="# ">
+              https://billofrightsinstitute.org/founding-documents/declaration-of-independence/
+            </a>
+          </TableCell>
+          <TableCell>1776</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Bill of Rights</TableCell>
+          <TableCell>
+            The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+          </TableCell>
+          <TableCell>
+            <a href="# ">https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a>
+          </TableCell>
+          <TableCell>1791</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    <Table className="ds-u-margin-top--2" stackable stackableBreakpoint="md">
+      <TableCaption>Responsive stackable table</TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableCell id="column_1">Document title</TableCell>
+          <TableCell id="column_2">Description</TableCell>
+          <TableCell id="column_3">Year</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell stackedTitle="Document title" headers="column_1">
+            Declaration of Sentiments
+          </TableCell>
+          <TableCell stackedTitle="Description" headers="column_2">
+            A document written during the Seneca Falls Convention outlining the rights that American
+            women should be entitled to as citizens.
+          </TableCell>
+          <TableCell stackedTitle="Year" headers="column_3">
+            1848
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell stackedTitle="Document title" headers="column_1">
+            Emancipation Proclamation
+          </TableCell>
+          <TableCell stackedTitle="Description" headers="column_2">
+            An executive order granting freedom to slaves in designated southern states.
+          </TableCell>
+          <TableCell stackedTitle="Year" headers="column_3">
+            1863
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </>,
   document.getElementById('js-example')
 );

@@ -2,15 +2,19 @@ import * as React from 'react';
 
 export interface TableRowProps {
   /**
-   * The table row contents, usually `TableDataCell` and `TableHeaderCell`.
+   * The table row contents, usually `TableCell`.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
-   * Additional classes to be added to the table row element.
+   * @hide-prop This gets set from the parent `TableHead`
    */
-  className?: string;
+  _isTableHeadChild?: boolean;
+  /**
+   * @hide-prop This gets set from the parent `Table`
+   */
+  _stackable?: boolean;
 }
 
-declare const TableRow: React.FC<TableRowProps>;
+declare const TableRow: React.FC<React.HTMLProps<HTMLTableRowElement> & TableRowProps>;
 
 export default TableRow;
