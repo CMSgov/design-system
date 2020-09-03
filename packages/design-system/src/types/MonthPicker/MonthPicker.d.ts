@@ -79,4 +79,4 @@ export default class MonthPicker extends React.Component<MonthPickerProps, any> 
   render(): JSX.Element;
 }
 
-export function getMonthNames(locale: string, short: boolean = true): string[];
+export function getMonthNames(locale: string, short?: boolean): string[];
