@@ -101,9 +101,8 @@ export class MonthPicker extends React.PureComponent {
               name={name}
               type="checkbox"
               value={i + 1}
-            >
-              {month}
-            </Choice>
+              label={month}
+            />
           </li>
         ))}
       </ol>

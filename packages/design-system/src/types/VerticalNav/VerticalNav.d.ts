@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { VerticalNavItemProps } from 'VerticalNavItem.d.ts';
 
 export type VerticalNavComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
@@ -24,9 +25,9 @@ export interface VerticalNavProps {
   selectedId?: string;
   id?: string;
   /**
-   * An array of `VerticalNavItem` data objects
+   * An array of [`VerticalNavItem`]({{root}}/components/vertical-nav/#components.vertical-nav.VerticalNavItem) data objects
    */
-  items: Object[];
+  items: VerticalNavItemProps[];
   /**
    * Indicates this list is nested within another nav item.
    */
