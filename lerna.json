@@ -5,12 +5,14 @@
     }
   },
   "npmClient": "yarn",
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "ignoreChanges": [
     "packages/stylelint-config-design-system/**",
     "packages/eslint-config-design-system/**"
   ],
   "tagVersionPrefix": "core-",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "useWorkspaces": true
 }
