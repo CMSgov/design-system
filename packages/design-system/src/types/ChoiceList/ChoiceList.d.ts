@@ -1,14 +1,5 @@
 import * as React from 'react';
-
-export interface ChoiceListChoices {
-  checked?: any;
-  defaultChecked?: any;
-  disabled?: any;
-  hint?: any;
-  label?: any;
-  requirementLabel?: any;
-  value?: any;
-}
+import { ChoiceProps } from './Choice';
 
 export type ChoiceListSize = 'small';
 
@@ -18,7 +9,7 @@ export interface ChoiceListProps {
   /**
    * The list of choices to be rendered.
    */
-  choices: ChoiceListChoices[];
+  choices: ChoiceProps[];
   /**
    * Additional classes to be added to the root element.
    */

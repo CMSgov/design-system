@@ -1,7 +1,7 @@
 /**
  * Render a table row for a single property
  */
-import { TableDataCell, TableRow } from '@cmsgov/design-system';
+import { TableCell, TableRow } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -81,18 +81,18 @@ class ReactPropDoc extends React.PureComponent {
 
     return (
       <TableRow>
-        <TableDataCell headers="columnname" stackedTitle="Name">
+        <TableCell headers="columnname" stackedTitle="Name">
           {nameData}
-        </TableDataCell>
-        <TableDataCell headers="columntype" stackedTitle="Type">
+        </TableCell>
+        <TableCell headers="columntype" stackedTitle="Type">
           <code>{this.type()}</code>
-        </TableDataCell>
-        <TableDataCell headers="columndefault" stackedTitle="Default">
+        </TableCell>
+        <TableCell headers="columndefault" stackedTitle="Default">
           <>{this.defaultValue()}</>
-        </TableDataCell>
-        <TableDataCell headers="columndescription" stackedTitle="Description">
+        </TableCell>
+        <TableCell headers="columndescription" stackedTitle="Description">
           <>{this.description()}</>
-        </TableDataCell>
+        </TableCell>
       </TableRow>
     );
   }

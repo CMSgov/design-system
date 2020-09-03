@@ -6,11 +6,11 @@ export interface TableBodyProps {
    */
   children?: React.ReactNode;
   /**
-   * Additional classes to be added to the table body element.
+   * @hide-prop This gets set from the parent `Table` component
    */
-  className?: string;
+  _stackable?: boolean;
 }
 
-declare const TableBody: React.FC<TableBodyProps>;
+declare const TableBody: React.FC<React.HTMLProps<HTMLTableSectionElement> & TableBodyProps>;
 
 export default TableBody;

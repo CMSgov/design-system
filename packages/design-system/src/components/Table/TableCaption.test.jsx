@@ -29,5 +29,7 @@ describe('Table', function () {
     const table = wrapper.find('caption');
     expect(table).toHaveLength(1);
     expect(table.hasClass('ds-c-table__caption')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 });

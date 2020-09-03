@@ -8,11 +8,11 @@ export const TableCaption = ({
   _id,
   _scrollActive,
   _scrollableNotice,
-  ...others
+  ...tableCaptionProps
 }) => {
   const classes = classNames('ds-c-table__caption', className);
   return (
-    <caption className={classes} id={_id} {...others}>
+    <caption className={classes} id={_id} {...tableCaptionProps}>
       {children}
       {_scrollActive && _scrollableNotice}
     </caption>
@@ -25,7 +25,7 @@ TableCaption.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Additional classes to be added to the caption element.
+   * @hide-prop Additional classes to be added to the caption element.
    */
   className: PropTypes.string,
   /**

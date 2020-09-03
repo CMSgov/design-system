@@ -42,11 +42,7 @@ export class ChoiceList extends React.PureComponent {
         this.choiceRefs.push(ref);
       };
 
-      return (
-        <Choice key={choiceProps.value} {...choiceProps}>
-          {choiceProps.label}
-        </Choice>
-      );
+      return <Choice key={choiceProps.value} {...choiceProps} />;
     });
   }
 
@@ -92,19 +88,9 @@ export class ChoiceList extends React.PureComponent {
 
 ChoiceList.propTypes = {
   /**
-   * The list of choices to be rendered.
+   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
    */
-  choices: PropTypes.arrayOf(
-    PropTypes.shape({
-      checked: Choice.propTypes.checked,
-      defaultChecked: Choice.propTypes.defaultChecked,
-      disabled: Choice.propTypes.disabled,
-      hint: Choice.propTypes.hint,
-      label: Choice.propTypes.children,
-      requirementLabel: Choice.propTypes.requirementLabel,
-      value: Choice.propTypes.value,
-    })
-  ).isRequired,
+  choices: PropTypes.arrayOf(PropTypes.shape).isRequired,
   /**
    * Additional classes to be added to the root element.
    */

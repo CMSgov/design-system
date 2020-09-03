@@ -9,8 +9,10 @@ export class FormLabel extends React.PureComponent {
         'ds-u-color--error-light': this.props.inversed,
       });
 
+      const id = this.props.fieldId ? `${this.props.fieldId}-message` : undefined;
+
       return (
-        <span className={classes} id={`${this.props.fieldId}-message`} role="alert">
+        <span className={classes} id={id} role="alert">
           {this.props.errorMessage}
         </span>
       );
