@@ -1,6 +1,5 @@
 /**
  * index.d.ts - Typescript definition files entry point
- * Generated with `react2dts`, manually maintained until we can fully adopt Typescript
  */
 
 export { default as Alert } from './Alert/Alert';

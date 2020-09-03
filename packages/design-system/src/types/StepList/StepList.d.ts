@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StepStep } from 'Step.d.ts';
+import { StepStep } from './Step';
 
 export type StepListComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
