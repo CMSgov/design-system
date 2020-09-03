@@ -6,11 +6,11 @@ export interface TableHeadProps {
    */
   children?: React.ReactNode;
   /**
-   * Additional classes to be added to the table head element.
+   * @hide-prop This gets set from the parent `Table` component
    */
-  className?: string;
+  _stackable?: boolean;
 }
 
-declare const TableHead: React.FC<TableHeadProps>;
+declare const TableHead: React.FC<React.HTMLProps<HTMLTableSectionElement> & TableHeadProps>;
 
 export default TableHead;
