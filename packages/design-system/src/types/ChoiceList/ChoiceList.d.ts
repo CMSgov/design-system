@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChoiceProps } from 'Choice.d.ts';
+import { ChoiceProps } from './Choice';
 
 export type ChoiceListSize = 'small';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalNavItemProps } from 'VerticalNavItem.d.ts';
+import { VerticalNavItemProps } from './VerticalNavItem';
 
 export type VerticalNavComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
