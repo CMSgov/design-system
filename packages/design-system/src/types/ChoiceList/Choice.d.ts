@@ -41,7 +41,7 @@ export interface ChoiceProps {
   /**
    * Label text or HTML.
    */
-  label: ChoiceLabel;
+  label?: ChoiceLabel;
   /**
    * Additional classes to be added to the `FormLabel`.
    */
