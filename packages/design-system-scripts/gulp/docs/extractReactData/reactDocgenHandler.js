@@ -5,11 +5,11 @@ const replaceTemplateTags = require('../../common/replaceTemplateTags');
 function processDocgenTemplates(doc, options) {
   if (doc.props) {
     Object.keys(doc.props).forEach((propName) => {
-      const propObject = doc.getPropDescriptor ? doc.getPropDescriptor(propName) : doc.props[propName];
+      const propObject = doc.getPropDescriptor
+        ? doc.getPropDescriptor(propName)
+        : doc.props[propName];
       if (propObject.description !== '') {
-        propObject.description = marked(
-          replaceTemplateTags(propObject.description, options)
-        );
+        propObject.description = marked(replaceTemplateTags(propObject.description, options));
       }
     });
   }
@@ -20,7 +20,7 @@ function markdownHandler(options) {
    */
   return function (doc) {
     const docObject = doc.toObject();
-    processDocgenTemplates(docObject, options)
+    processDocgenTemplates(docObject, options);
   };
 }
 
@@ -29,5 +29,5 @@ function markdownHandler(options) {
  */
 module.exports = {
   reactDocgenHandler: (options) => defaultHandlers.concat([markdownHandler(options)]),
-  processDocgenTemplates
+  processDocgenTemplates,
 };
