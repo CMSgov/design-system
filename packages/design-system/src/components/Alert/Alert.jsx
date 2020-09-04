@@ -7,6 +7,7 @@ export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
 
     if (process.env.NODE_ENV !== 'production') {
@@ -57,6 +58,7 @@ export class Alert extends React.PureComponent {
           }
         }}
         /* eslint-enable no-return-assign */
+        tabIndex={this.props.inputRef || this.props.focusTrigger ? '-1' : null}
         role={this.props.role}
         aria-labelledby={this.props.heading ? this.headingId : undefined}
       >
