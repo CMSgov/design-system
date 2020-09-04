@@ -18,6 +18,12 @@ export class Alert extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    if (this.props.focusTrigger) {
+      this.focusRef && this.focusRef.focus();
+    }
+  }
+
   heading() {
     const Heading = `h${this.props.headingLevel}` || `h3`;
     if (this.props.heading) {
@@ -40,6 +46,17 @@ export class Alert extends React.PureComponent {
     return (
       <div
         className={classes}
+        /* eslint-disable no-return-assign */
+        ref={(ref) => {
+          if (this.props.focusTrigger) {
+            this.focusRef = ref;
+          } else {
+            if (this.props.inputRef) {
+              this.props.inputRef(ref);
+            }
+          }
+        }}
+        /* eslint-enable no-return-assign */
         role={this.props.role}
         aria-labelledby={this.props.heading ? this.headingId : undefined}
       >
@@ -62,6 +79,10 @@ Alert.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   /**
+   * Used to focus on Alert on `componentDidMount()`
+   */
+  focusTrigger: PropTypes.bool,
+  /**
    * Text for the alert heading
    */
   heading: PropTypes.string,
@@ -77,6 +98,10 @@ Alert.propTypes = {
    * Boolean to hide the `Alert` icon
    */
   hideIcon: PropTypes.bool,
+  /**
+   * Access a reference to the `alert` element
+   */
+  inputRef: PropTypes.func,
   /**
    * ARIA `role`, defaults to 'region'
    */
