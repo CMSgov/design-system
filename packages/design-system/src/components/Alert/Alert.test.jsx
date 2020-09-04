@@ -60,12 +60,6 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert--hide-icon')).toBe(true);
   });
 
-  it('renders  prop', () => {
-    const { wrapper } = render({ focusTrigger: true });
-
-    expect(wrapper.prop('tabIndex')).toBe('-1');
-  });
-
   it('sets tabIndex to enable focuses when inputRef or focusTrigger is passed', () => {
     const { wrapper } = render({ focusTrigger: true });
 
