@@ -27,6 +27,7 @@ export class Tooltip extends React.Component {
   }
 
   componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside.bind(this));
     document.addEventListener('keydown', this.handleEscapeKey.bind(this));
     this.popper = createPopper(this.triggerElement, this.tooltipElement, {
       placement: this.props.placement,
@@ -40,14 +41,30 @@ export class Tooltip extends React.Component {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
     document.removeEventListener('keydown', this.handleEscapeKey.bind(this));
     this.popper.destroy();
   }
 
+  handleClickOutside(event) {
+    // Closes click only tooltips when mouse clicks outside of tooltip container element
+    if (this.state.active && this.props.disableFocusListener && this.props.disableHoverListener) {
+      if (this.parentElement && !this.parentElement.contains(event.target)) {
+        this.setTooltipActive(false);
+      }
+    }
+  }
+
   handleEscapeKey(e) {
+    // Closes interactive and click only tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
-    if (this.props.interactive && this.state.active && e.keyCode === ESCAPE_KEY) {
-      this.setTooltipActive(false);
+    if (this.state.active && e.keyCode === ESCAPE_KEY) {
+      if (
+        this.props.interactive ||
+        (this.props.disableFocusListener && this.props.disableHoverListener)
+      ) {
+        this.setTooltipActive(false);
+      }
     }
   }
 
@@ -168,7 +185,9 @@ export class Tooltip extends React.Component {
           )}
           style={tooltipStyle}
           onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
-          onMouseLeave={() => this.setTooltipActive(false)}
+          onMouseLeave={() =>
+            disableHoverListener && disableFocusListener ? null : this.setTooltipActive(false)
+          }
           data-placement={placement}
           aria-labelledby={triggerId}
           aria-hidden={!this.state.active}
@@ -182,6 +201,7 @@ export class Tooltip extends React.Component {
             <FocusTrap
               active={this.state.active}
               focusTrapOptions={{
+                clickOutsideDeactivates: true,
                 initialFocus:
                   disableHoverListener && disableFocusListener
                     ? `#tooltip-${triggerId}`
