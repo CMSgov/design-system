@@ -68,8 +68,17 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
+    const fieldsetClasses = classNames(
+      'ds-c-fieldset',
+      {
+        'ds-c-fieldset--error': this.props.errorMessage,
+      },
+      this.props.className
+    );
+
     return (
-      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
+      // <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
+      <fieldset className={fieldsetClasses}>
         <FormLabel
           className={this.props.labelClassName}
           component="legend"
