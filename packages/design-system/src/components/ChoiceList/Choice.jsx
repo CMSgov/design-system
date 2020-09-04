@@ -33,11 +33,12 @@ export class Choice extends React.PureComponent {
     }
 
     if (process.env.NODE_ENV !== 'production') {
-      if (props.children) {
-        console.warn(
-          `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
-        );
-      }
+      // Temporarily disable deprecation warning
+      // if (props.children) {
+      //  console.warn(
+      //    `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
+      //  );
+      // }
     }
   }
 
