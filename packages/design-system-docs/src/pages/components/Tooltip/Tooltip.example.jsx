@@ -7,12 +7,7 @@ const TooltipExample = () => {
     <>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-        <Tooltip
-          ariaLabel="Label describing the subject of the tooltip"
-          triggerId="tooltip-1-id"
-          triggerContent="button"
-          triggerClassName="ds-c-button"
-        >
+        <Tooltip triggerId="tooltip-1-id" triggerContent="button" triggerClassName="ds-c-button">
           <p className="ds-u-margin--0">{'Tooltip trigger is the default <button> element'}</p>
         </Tooltip>
       </div>
@@ -33,7 +28,6 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
         <Tooltip
-          ariaLabel="Label describing the subject of the interactive tooltip"
           triggerId="tooltip-3-id"
           triggerComponent="a"
           triggerHref="https://design.cms.gov"
@@ -46,7 +40,6 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
         <Tooltip
-          ariaLabel="Label describing the subject of the interactive tooltip"
           interactive
           triggerId="tooltip-sd-id"
           triggerContent="interactive content"
@@ -63,7 +56,6 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with custom</p>
         <Tooltip
-          ariaLabel="Label describing the tooltip"
           placement="right"
           triggerId="tooltip-5-id"
           triggerContent="placement"
@@ -75,7 +67,6 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with custom</p>
         <Tooltip
-          ariaLabel="Label describing the tooltip"
           offset={[0, 20]}
           triggerId="tooltip-6-id"
           triggerContent="offset"
@@ -87,7 +78,6 @@ const TooltipExample = () => {
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip activated </p>
         <Tooltip
-          ariaLabel="Label describing the tooltip"
           interactive
           disableFocusListener
           disableHoverListener

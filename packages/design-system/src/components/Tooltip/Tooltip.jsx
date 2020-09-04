@@ -91,7 +91,7 @@ export class Tooltip extends React.Component {
       triggerClassName,
       triggerContent,
       triggerHref,
-      triggerId
+      triggerId,
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
@@ -111,7 +111,7 @@ export class Tooltip extends React.Component {
         onMouseEnter={() => (disableHoverListener ? null : this.setTooltipActive(true))}
         onMouseLeave={() => (disableHoverListener ? null : this.setTooltipActive(false))}
         onClick={() => (disableClickListener ? null : this.setTooltipActive(!this.state.active))}
-        aria-label={`Tooltip: ${ariaLabel || ''}`}
+        aria-label={ariaLabel || ''}
         aria-describedby={`tooltip-${triggerId}`}
         className={triggerClasses}
         ref={this.setTriggerElement}
@@ -224,7 +224,7 @@ Tooltip.propTypes = {
   /**
    * Helpful description of the tooltip for screenreaders
    */
-  ariaLabel: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string,
   /**
    * Content inside the tooltip body or popover. If this contains interactive elements set the `interactive` prop.
    */
