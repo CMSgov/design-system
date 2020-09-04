@@ -29,6 +29,18 @@ $ds-c-inset-border-width: $spacer-half;
   }
 }
 
+// Style radio and checkboxes when errored
+.ds-c-fieldset--error {
+  .ds-c-choice + label::before,
+  .ds-c-choice:checked + label::before {
+    border-color: $color-error;
+  }
+  .ds-c-choice--inverse + label::before,
+  .ds-c-choice--inverse:checked + label::before {
+    border-color: $color-error-light;
+  }
+}
+
 .ds-c-choice + label {
   align-items: center;
   cursor: pointer;
