@@ -79,8 +79,7 @@ const TooltipExample = () => {
         <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip activated </p>
         <Tooltip
           interactive
-          disableFocusListener
-          disableHoverListener
+          clickOnly
           triggerId="tooltip-7-id"
           triggerContent="on click"
           triggerClassName="ds-c-tooltip__trigger-link"

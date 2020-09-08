@@ -48,7 +48,7 @@ export class Tooltip extends React.Component {
 
   handleClickOutside(event) {
     // Closes click only tooltips when mouse clicks outside of tooltip container element
-    if (this.state.active && this.props.disableFocusListener && this.props.disableHoverListener) {
+    if (this.state.active && this.props.clickOnly) {
       if (this.parentElement && !this.parentElement.contains(event.target)) {
         this.setTooltipActive(false);
       }
@@ -59,10 +59,7 @@ export class Tooltip extends React.Component {
     // Closes interactive and click only tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (this.state.active && e.keyCode === ESCAPE_KEY) {
-      if (
-        this.props.interactive ||
-        (this.props.disableFocusListener && this.props.disableHoverListener)
-      ) {
+      if (this.props.interactive || this.props.clickOnly) {
         this.setTooltipActive(false);
       }
     }
@@ -99,11 +96,8 @@ export class Tooltip extends React.Component {
 
   renderTrigger() {
     const {
+      clickOnly,
       ariaLabel,
-      disableTouchListener,
-      disableHoverListener,
-      disableFocusListener,
-      disableClickListener,
       triggerActiveClassName,
       triggerClassName,
       triggerContent,
@@ -120,14 +114,12 @@ export class Tooltip extends React.Component {
       <TriggerComponent
         id={triggerId}
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        onTouchStart={() =>
-          disableTouchListener ? null : this.setTooltipActive(!this.state.active)
-        }
-        onFocus={() => (disableFocusListener ? null : this.setTooltipActive(true))}
-        onBlur={() => (disableFocusListener ? null : this.handleTriggerBlur())}
-        onMouseEnter={() => (disableHoverListener ? null : this.setTooltipActive(true))}
-        onMouseLeave={() => (disableHoverListener ? null : this.setTooltipActive(false))}
-        onClick={() => (disableClickListener ? null : this.setTooltipActive(!this.state.active))}
+        onTouchStart={() => this.setTooltipActive(!this.state.active)}
+        onFocus={() => (clickOnly ? null : this.setTooltipActive(true))}
+        onBlur={() => (clickOnly ? null : this.handleTriggerBlur())}
+        onMouseEnter={() => (clickOnly ? null : this.setTooltipActive(true))}
+        onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
+        onClick={() => this.setTooltipActive(!this.state.active)}
         aria-label={ariaLabel || ''}
         aria-describedby={`tooltip-${triggerId}`}
         className={triggerClasses}
@@ -141,9 +133,8 @@ export class Tooltip extends React.Component {
 
   renderContent() {
     const {
+      clickOnly,
       children,
-      disableHoverListener,
-      disableFocusListener,
       inverse,
       interactive,
       interactiveBorder,
@@ -185,13 +176,11 @@ export class Tooltip extends React.Component {
           )}
           style={tooltipStyle}
           onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
-          onMouseLeave={() =>
-            disableHoverListener && disableFocusListener ? null : this.setTooltipActive(false)
-          }
+          onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
           data-placement={placement}
           aria-labelledby={triggerId}
           aria-hidden={!this.state.active}
-          role={interactive ? 'dialog' : 'tooltip'}
+          role={clickOnly ? 'dialog' : 'tooltip'}
         >
           {interactive ? (
             // Child of focus trap must be a single node and valid HTML element, no <Fragment>
@@ -202,10 +191,7 @@ export class Tooltip extends React.Component {
               active={this.state.active}
               focusTrapOptions={{
                 clickOutsideDeactivates: true,
-                initialFocus:
-                  disableHoverListener && disableFocusListener
-                    ? `#tooltip-${triggerId}`
-                    : `#${triggerId}`,
+                initialFocus: clickOnly ? `#tooltip-${triggerId}` : `#${triggerId}`,
               }}
             >
               <div>
@@ -254,21 +240,9 @@ Tooltip.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Disables tooltip activation and deactivation on touch events
+   * Disables tooltip activation and deactivation on hover, touch and blur events
    */
-  disableTouchListener: PropTypes.bool,
-  /**
-   * Disables tooltip activation and deactivation on hover events
-   */
-  disableHoverListener: PropTypes.bool,
-  /**
-   * Disables tooltip activation and deactivation on focus and blur events
-   */
-  disableFocusListener: PropTypes.bool,
-  /**
-   * Disables tooltip activation and deactivation on mouse click events
-   */
-  disableClickListener: PropTypes.bool,
+  clickOnly: PropTypes.bool,
   /**
    * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips trap focus, expands the activation area to include the tooltip itself, and includes other accessibility changes.
    */
