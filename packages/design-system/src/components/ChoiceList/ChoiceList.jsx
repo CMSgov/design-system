@@ -77,7 +77,6 @@ export class ChoiceList extends React.PureComponent {
     );
 
     return (
-      // <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
       <fieldset className={fieldsetClasses}>
         <FormLabel
           className={this.props.labelClassName}
