@@ -123,7 +123,7 @@ $ds-c-inset-border-width: $spacer-half;
 
     &::before {
       background-color: $color-gray-lighter;
-      border: 1px solid $color-gray-light;
+      border-color: $color-gray-light;
       cursor: not-allowed;
     }
   }
@@ -135,7 +135,6 @@ $ds-c-inset-border-width: $spacer-half;
 
     &::before {
       background-color: rgba($color-muted-inverse, 0.15);
-      box-shadow: 0 0 0 1px $color-muted-inverse;
     }
   }
 }
@@ -143,20 +142,6 @@ $ds-c-inset-border-width: $spacer-half;
 // Display a circular radio button
 .ds-c-choice[type='radio'] + label::before {
   border-radius: 100%;
-}
-
-/*
-Right-to-Left
-*/
-
-.ds-c-choice--right + label {
-  padding-left: 0;
-  padding-right: $choice-size + $spacer-1;
-
-  &::before {
-    left: auto;
-    right: 0;
-  }
 }
 
 /*
@@ -178,10 +163,5 @@ Size variants
 
   &:checked + label::before {
     background-size: $choice-size-small;
-  }
-
-  &.ds-c-choice--right + label {
-    padding-left: 0;
-    padding-right: $choice-size-small + $spacer-1;
   }
 }
