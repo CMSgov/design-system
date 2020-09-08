@@ -8,6 +8,14 @@ export type AlertVariation = 'error' | 'warn' | 'success';
 
 export interface AlertProps {
   /**
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef?: (...args: any[]) => any;
+  /**
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus?: boolean;
+  /**
    * The alert's body content
    */
   children?: React.ReactNode;
@@ -38,6 +46,9 @@ export interface AlertProps {
   variation?: AlertVariation;
 }
 
-export default class Alert extends React.Component<AlertProps, any> {
+export default class Alert extends React.Component<
+  React.HTMLProps<HTMLDivElement> & AlertProps,
+  any
+> {
   render(): JSX.Element;
 }

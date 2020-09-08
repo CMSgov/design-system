@@ -20,7 +20,7 @@ export class Alert extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.focusTrigger) {
+    if (this.props.autoFocus) {
       this.focusRef && this.focusRef.focus();
     }
   }
@@ -37,11 +37,25 @@ export class Alert extends React.PureComponent {
   }
 
   render() {
+    const {
+      children,
+      className,
+      autoFocus,
+      heading,
+      headingId,
+      headingLevel,
+      hideIcon,
+      alertRef,
+      role,
+      variation,
+      ...alertProps
+    } = this.props;
+
     const classes = classNames(
       'ds-c-alert',
-      this.props.hideIcon && 'ds-c-alert--hide-icon',
-      this.props.variation && `ds-c-alert--${this.props.variation}`,
-      this.props.className
+      hideIcon && 'ds-c-alert--hide-icon',
+      variation && `ds-c-alert--${variation}`,
+      className
     );
 
     return (
@@ -49,22 +63,23 @@ export class Alert extends React.PureComponent {
         className={classes}
         /* eslint-disable no-return-assign */
         ref={(ref) => {
-          if (this.props.focusTrigger) {
+          if (autoFocus) {
             this.focusRef = ref;
           } else {
-            if (this.props.inputRef) {
-              this.props.inputRef(ref);
+            if (alertRef) {
+              alertRef(ref);
             }
           }
         }}
         /* eslint-enable no-return-assign */
-        tabIndex={this.props.inputRef || this.props.focusTrigger ? '-1' : null}
-        role={this.props.role}
-        aria-labelledby={this.props.heading ? this.headingId : undefined}
+        tabIndex={alertRef || autoFocus ? '-1' : null}
+        role={role}
+        aria-labelledby={heading ? this.headingId : undefined}
+        {...alertProps}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
-          {this.props.children}
+          {children}
         </div>
       </div>
     );
@@ -76,14 +91,18 @@ Alert.defaultProps = {
 };
 Alert.propTypes = {
   /**
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef: PropTypes.func,
+  /**
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus: PropTypes.bool,
+  /**
    * The alert's body content
    */
   children: PropTypes.node,
   className: PropTypes.string,
-  /**
-   * Used to focus on Alert on `componentDidMount()`
-   */
-  focusTrigger: PropTypes.bool,
   /**
    * Text for the alert heading
    */
@@ -100,10 +119,6 @@ Alert.propTypes = {
    * Boolean to hide the `Alert` icon
    */
   hideIcon: PropTypes.bool,
-  /**
-   * Access a reference to the `alert` element
-   */
-  inputRef: PropTypes.func,
   /**
    * ARIA `role`, defaults to 'region'
    */
