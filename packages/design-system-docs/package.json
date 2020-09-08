@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-docs",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -9,7 +9,7 @@
   "repository": "CMSgov/design-system",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
-    "@cmsgov/design-system": "^2.0.2",
+    "@cmsgov/design-system": "^2.0.3",
     "classnames": "^2.2.5",
     "lodash": "^4.17.19",
     "prismjs": "^1.11.0",
