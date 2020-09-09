@@ -30,7 +30,7 @@ $ds-c-inset-border-width: $spacer-half;
 }
 
 // Style radio and checkboxes when errored
-.ds-c-fieldset--error {
+.ds-c-choice--error {
   .ds-c-choice + label::before,
   .ds-c-choice:checked + label::before {
     border-color: $color-error;
