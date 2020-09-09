@@ -9,13 +9,9 @@ export class Tooltip extends React.Component {
   constructor(props) {
     super(props);
 
-    this.parentElement = null;
     this.triggerElement = null;
     this.tooltipElement = null;
 
-    this.setParentElement = (element) => {
-      this.parentElement = element;
-    };
     this.setTriggerElement = (element) => {
       this.triggerElement = element;
     };
@@ -49,7 +45,8 @@ export class Tooltip extends React.Component {
   handleClickOutside(event) {
     // Closes click only tooltips when mouse clicks outside of tooltip container element
     if (this.state.active && this.props.clickOnly) {
-      if (this.parentElement && !this.parentElement.contains(event.target)) {
+      const clickedTooltip = this.tooltipElement && this.tooltipElement.contains(event.target);
+      if (!clickedTooltip) {
         this.setTooltipActive(false);
       }
     }
@@ -71,18 +68,17 @@ export class Tooltip extends React.Component {
     });
   }
 
-  handleTriggerBlur() {
-    // Hide tooltips when blurring away from the trigger
-    // Except when blurring from trigger to interactive tooltip
-    if (this.props.interactive) {
-      setTimeout(() => {
-        if (!this.parentElement.contains(document.activeElement)) {
-          this.setTooltipActive(false);
-        }
-      }, 20);
-    } else {
-      this.setTooltipActive(false);
-    }
+  handleBlur() {
+    // Hide tooltips when blurring away from the trigger or tooltip body
+    setTimeout(() => {
+      const focusedInsideTrigger =
+        this.triggerElement && this.triggerElement.contains(document.activeElement);
+      const focusedInsideTooltip =
+        this.tooltipElement && this.tooltipElement.contains(document.activeElement);
+      if (!focusedInsideTrigger && !focusedInsideTooltip) {
+        this.setTooltipActive(false);
+      }
+    }, 10);
   }
 
   triggerComponentType() {
@@ -108,6 +104,7 @@ export class Tooltip extends React.Component {
     const TriggerComponent = this.triggerComponentType();
     const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, {
       [triggerActiveClassName]: this.state.active,
+      'ds-c-tooltip__trigger--click-only-active': this.props.clickOnly && this.state.active,
     });
 
     return (
@@ -116,7 +113,7 @@ export class Tooltip extends React.Component {
         type={TriggerComponent === 'button' ? 'button' : undefined}
         onTouchStart={() => this.setTooltipActive(!this.state.active)}
         onFocus={() => (clickOnly ? null : this.setTooltipActive(true))}
-        onBlur={() => (clickOnly ? null : this.handleTriggerBlur())}
+        onBlur={() => (clickOnly ? null : this.handleBlur())}
         onMouseEnter={() => (clickOnly ? null : this.setTooltipActive(true))}
         onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
         onClick={() => this.setTooltipActive(!this.state.active)}
@@ -155,61 +152,56 @@ export class Tooltip extends React.Component {
     };
 
     const tooltipContent = () => (
-      <>
+      <div
+        id={`tooltip-${triggerId}`}
+        tabIndex="-1"
+        ref={this.setTooltipElement}
+        className={classNames(
+          'ds-c-tooltip',
+          {
+            'ds-c-tooltip--inverse': inverse,
+          },
+          className
+        )}
+        style={tooltipStyle}
+        onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
+        onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
+        onBlur={() => this.handleBlur()}
+        data-placement={placement}
+        aria-labelledby={triggerId}
+        aria-hidden={!this.state.active}
+        role={clickOnly ? 'dialog' : 'tooltip'}
+      >
         <div className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
-      </>
+        {interactive && (
+          <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
+        )}
+      </div>
     );
 
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
-        <div
-          id={`tooltip-${triggerId}`}
-          tabIndex="-1"
-          ref={this.setTooltipElement}
-          className={classNames(
-            'ds-c-tooltip',
-            {
-              'ds-c-tooltip--inverse': inverse,
-            },
-            className
-          )}
-          style={tooltipStyle}
-          onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
-          onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
-          data-placement={placement}
-          aria-labelledby={triggerId}
-          aria-hidden={!this.state.active}
-          role={clickOnly ? 'dialog' : 'tooltip'}
-        >
-          {interactive ? (
-            // Child of focus trap must be a single node and valid HTML element, no <Fragment>
-            // For click only tooltips, set initialFocus to the tooltip container element
-            // For non click only tooltips, set initialFocus to the trigger element
-            // to ensure focus is not automatically set to the tooltip when the trigger is focused
-            <FocusTrap
-              active={this.state.active}
-              focusTrapOptions={{
-                clickOutsideDeactivates: true,
-                initialFocus: clickOnly ? `#tooltip-${triggerId}` : `#${triggerId}`,
-              }}
-            >
-              <div>
-                {tooltipContent()}
-                <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
-              </div>
-            </FocusTrap>
-          ) : (
-            tooltipContent()
-          )}
-        </div>
+        {clickOnly ? (
+          <FocusTrap
+            active={this.state.active}
+            focusTrapOptions={{
+              // Set initialFocus to the tooltip container element in case it contains no focusable elements
+              initialFocus: `#tooltip-${triggerId}`,
+            }}
+          >
+            {tooltipContent()}
+          </FocusTrap>
+        ) : (
+          tooltipContent()
+        )}
       </CSSTransition>
     );
   }
 
   render() {
     return (
-      <div ref={this.setParentElement}>
+      <div>
         {this.renderTrigger()}
         {this.renderContent()}
       </div>
@@ -240,7 +232,7 @@ Tooltip.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Disables tooltip activation and deactivation on hover, touch and blur events
+   * Disables tooltip activation and deactivation on hover, touch and blur events.
    */
   clickOnly: PropTypes.bool,
   /**

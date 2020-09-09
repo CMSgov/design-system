@@ -24,6 +24,11 @@ $tooltip-background-color-inverse: $color-background;
   cursor: pointer;
 }
 
+// Prevent the trigger from reactivating the tooltip when clicking outside of clickOnly tooltips
+.ds-c-tooltip__trigger--click-only-active {
+  pointer-events: none;
+}
+
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
   align-items: center;
@@ -44,6 +49,7 @@ $tooltip-background-color-inverse: $color-background;
 // Tooltip arrow
 .ds-c-tooltip__arrow {
   height: $tooltip-icon-size;
+  pointer-events: none;
   width: $tooltip-icon-size;
 
   &::after {

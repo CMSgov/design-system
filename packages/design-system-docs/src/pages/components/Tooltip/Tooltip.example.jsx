@@ -1,4 +1,4 @@
-import { Tooltip, TooltipIcon } from '@cmsgov/design-system';
+import { Button, Tooltip, TooltipIcon } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -46,10 +46,13 @@ const TooltipExample = () => {
           triggerClassName="ds-c-tooltip__trigger-link"
         >
           <p className="ds-u-margin--0">
-            {'Tooltip with interactive elements like a '}
+            {
+              'Tooltip remains active when the mouse hovers over the tooltip body. Tooltip can contain '
+            }
             <a className="ds-c-link--inverse" href="#noop">
-              link to website.
+              links
             </a>
+            {' and other interactive content'}
           </p>
         </Tooltip>
       </div>
@@ -84,9 +87,16 @@ const TooltipExample = () => {
           triggerContent="on click"
           triggerClassName="ds-c-tooltip__trigger-link"
         >
-          <p className="ds-u-margin--0">
-            Tooltip disables focus and hover event listeners to only activate on click
-          </p>
+          <>
+            <p className="ds-u-margin--0">
+              {
+                'Tooltip only activates on click and includes a focus trap. Intended for tooltips with more complex layout and multiple interactive elements '
+              }
+            </p>
+            <Button size="small" className="ds-u-margin-top--2">
+              Close
+            </Button>
+          </>
         </Tooltip>
       </div>
       <div
