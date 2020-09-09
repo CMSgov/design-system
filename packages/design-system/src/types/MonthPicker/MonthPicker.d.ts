@@ -67,14 +67,16 @@ export interface MonthPickerProps {
    * For internationalization purposes, the text for the "Select all"
    * button must be passed in as a prop.
    */
-  selectAllText: string;
+  selectAllText?: string;
   /**
    * For internationalization purposes, the text for the "Clear all"
    * button must be passed in as a prop.
    */
-  clearAllText: string;
+  clearAllText?: string;
 }
 
 export default class MonthPicker extends React.Component<MonthPickerProps, any> {
   render(): JSX.Element;
 }
+
+export function getMonthNames(locale: string, short?: boolean): string[];

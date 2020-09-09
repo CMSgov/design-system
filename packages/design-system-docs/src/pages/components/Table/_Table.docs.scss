@@ -13,7 +13,7 @@ Style guide: components.table
 */
 
 /*
-Table with two headers and a caption
+Table with multi headers and a caption
 
 Markup: table-complex.example.html
 
@@ -24,11 +24,12 @@ Style guide: components.table.complex
 `<Table>`
 
 `Table` is a container component that contains `TableCaption`, `TableHead` and `TableBody` as children,
-as well as `TableRow`, `TableHeaderCell` and `TableDataCell` for the table content. While the usage of
-these components follows ordinary HTML table semantics, this React implementation includes additional
+as well as `TableRow` and `TableCell` for the table content. These components mostly follow ordinary HTML table semantics, but also include some additional
 responsive features including horizontal scrolling and vertically stacked rows.
 
 @react-example Table.example.jsx
+
+@responsive
 
 @react-props Table.jsx
 
@@ -48,7 +49,7 @@ Style guide: components.table.react-tablecaption
 /*
 `<TableHead>`
 
-`TableHead` renders the `<thead>` element and contains table rows defining the table columns.
+`TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
 
 @react-props TableHead.jsx
 
@@ -58,7 +59,7 @@ Style guide: components.table.react-tablehead
 /*
 `<TableBody>`
 
-`TableBody` renders the `<tbody>` element and contains table rows defining the table data.
+`TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
 
 @react-props TableBody.jsx
 
@@ -76,23 +77,13 @@ Style guide: components.table.react-tablerow
 */
 
 /*
-`<TableHeaderCell>`
+`<TableCell>`
 
-`TableHeaderCell` renders a `<th>` element.
+`TableCell` dynamically renders a `<th>` or `<td>` element based on the parent component or user specified `component` prop. By default `TableCell` will automatically render a `<th>` element if the parent component is `TableHead`, otherwise it will render a `<td>` element.
 
-@react-props TableHeaderCell.jsx
+@react-props TableCell.jsx
 
-Style guide: components.table.react-tableheadercell
-*/
-
-/*
-`<TableDataCell>`
-
-A `TableDataCell` component renders the table data cell element `<td>`.
-
-@react-props TableDataCell.jsx
-
-Style guide: components.table.react-tabledatacell
+Style guide: components.table.react-tablecell
 */
 
 /*

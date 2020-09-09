@@ -40,6 +40,12 @@
   }
 }
 
+.ds-c-table__header--label span {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 @mixin ds-c-table--stacked {
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
@@ -55,88 +61,105 @@
     word-wrap: normal;
   }
 
-  th,
-  td {
-    border: 0;
-  }
-
-  tr {
-    border: 1px solid $color-gray;
-    margin: 0 0 0.5rem;
-  }
-
-  td {
-    border-top: 1px solid $color-gray-lighter;
-  }
-
   tr,
-  th,
-  td,
   caption {
     display: block;
   }
 
-  td:first-child {
-    background-color: $color-gray-lightest;
+  td,
+  th {
+    border: 0;
+    border-top: 1px solid;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    position: relative;
+
+    // stylelint-disable selector-no-qualifying-type
+    &[data-title]::before {
+      content: attr(data-title);
+      // stylelint-enable selector-no-qualifying-type
+      flex: none;
+      font-weight: bold;
+      max-width: 120px;
+      width: 50%;
+    }
+
+    > * {
+      grid-column: 2;
+    }
   }
 
-  /* Display individual cell heading reserved for stacked responsive table */
-  .ds-c-table--stacked__col-header {
-    border: 0;
+  tr {
+    border: 1px solid;
     display: block;
+    margin: 0 0 1rem;
+    padding-bottom: 2px;
+    position: relative;
+
+    &::after {
+      background-color: $color-gray-lightest;
+      border-right: 1px solid;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      max-width: 120px;
+      position: absolute;
+      top: 0;
+      width: 50%;
+      z-index: -9999;
+    }
+  }
+
+  td:first-child,
+  th:first-child {
+    border-top: 0;
   }
 
   &.ds-c-table--striped tbody {
     tr:nth-child(even) {
-      background-color: $color-white;
+      background-color: $color-gray-lightest;
+    }
+  }
+
+  &.ds-c-table--borderless {
+    tr {
+      border: 0;
+
+      &::after {
+        background-color: transparent;
+        border-right: 0;
+      }
+    }
+
+    td:last-child,
+    th:last-child {
+      border-bottom: 2px solid;
     }
   }
 }
 
-.ds-c-table--stacked-sm {
+.ds-c-sm-table--stacked {
   @media only screen and (max-width: $width-sm) {
     @include ds-c-table--stacked;
   }
 }
 
-.ds-c-table--stacked-md {
+.ds-c-md-table--stacked {
   @media only screen and (max-width: $width-md) {
     @include ds-c-table--stacked;
   }
 }
 
-.ds-c-table--stacked-lg {
+.ds-c-lg-table--stacked {
   @media only screen and (max-width: $width-lg) {
     @include ds-c-table--stacked;
   }
 }
 
-/* Hide individual cell heading reserved for stacked responsive table */
-.ds-c-table--stacked__col-header {
-  display: none;
-}
-
 .ds-c-table--striped tbody {
   tr:nth-child(even) {
     background-color: $color-gray-lightest;
-  }
-}
-
-.ds-c-table__head {
-  display: table-header-group;
-}
-
-.ds-c-table__row {
-  display: table-row;
-}
-
-.ds-c-table__body {
-  display: table-row-group;
-}
-
-.ds-c-table__cell {
-  &.ds-c-table__cell--numeric {
-    text-align: right;
   }
 }
 

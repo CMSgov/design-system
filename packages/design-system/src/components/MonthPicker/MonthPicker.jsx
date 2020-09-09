@@ -101,9 +101,8 @@ export class MonthPicker extends React.PureComponent {
               name={name}
               type="checkbox"
               value={i + 1}
-            >
-              {month}
-            </Choice>
+              label={month}
+            />
           </li>
         ))}
       </ol>
@@ -235,15 +234,13 @@ MonthPicker.propTypes = {
   onSelectAll: PropTypes.func,
   onClearAll: PropTypes.func,
   /**
-   * For internationalization purposes, the text for the "Select all"
-   * button must be passed in as a prop.
+   * The text for the "Select all" button for internationalization
    */
-  selectAllText: PropTypes.string.isRequired,
+  selectAllText: PropTypes.string,
   /**
-   * For internationalization purposes, the text for the "Clear all"
-   * button must be passed in as a prop.
+   * The text for the "Clear all" button for internationalization
    */
-  clearAllText: PropTypes.string.isRequired,
+  clearAllText: PropTypes.string,
 };
 
 export default MonthPicker;

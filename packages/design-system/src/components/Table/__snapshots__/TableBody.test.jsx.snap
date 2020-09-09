@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders a table body 1`] = `
+<Table
+  scrollableNotice={
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      headingLevel="3"
+      role="status"
+    >
+      <p
+        className="ds-c-alert__text"
+      >
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  }
+  stackableBreakpoint="sm"
+>
+  <div>
+    <table
+      className="ds-c-table"
+      role="table"
+    >
+      <TableBody
+        className="foo-body"
+        key=".0"
+      >
+        <tbody
+          className="foo-body"
+        >
+          <TableRow
+            key="1"
+          >
+            <tr
+              role="row"
+            >
+              <TableCell
+                align="left"
+              >
+                <td
+                  className="ds-u-text-align--left"
+                  role="cell"
+                  scope="row"
+                >
+                  Cell a
+                </td>
+              </TableCell>
+              <TableCell
+                align="left"
+              >
+                <td
+                  className="ds-u-text-align--left"
+                  role="cell"
+                  scope="row"
+                >
+                  Cell a
+                </td>
+              </TableCell>
+            </tr>
+          </TableRow>
+        </tbody>
+      </TableBody>
+    </table>
+  </div>
+</Table>
+`;

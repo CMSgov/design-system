@@ -7,7 +7,7 @@ const defaultProps = {
   name: 'foo',
   value: 'boo',
   type: 'checkbox',
-  children: 'George Washington',
+  label: 'George Washington',
 };
 
 function render(customProps = {}) {
@@ -21,7 +21,7 @@ function render(customProps = {}) {
 describe('Choice', () => {
   it('accepts a node as innerHTML', () => {
     const { wrapper } = render({
-      children: (
+      label: (
         <p>
           <strong>Hello</strong> World
         </p>
@@ -163,7 +163,7 @@ describe('Choice', () => {
   it('generates a unique id', () => {
     const sharedProps = {
       name: 'presidents',
-      children: defaultProps.children,
+      label: defaultProps.label,
     };
     const wrapper = shallow(
       <div>

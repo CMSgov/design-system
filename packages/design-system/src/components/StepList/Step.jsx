@@ -93,7 +93,7 @@ export const Step = ({ step, ...props }) => {
   );
 };
 
-// Duplication of stepShape in `StepList`, for react2dts
+// Define the shape of a single step so we can recursively define the shape
 export const stepShape = {
   id: PropTypes.string,
   href: PropTypes.string.isRequired,
@@ -108,6 +108,7 @@ export const stepShape = {
   onClick: PropTypes.func,
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
+stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
 
 Step.propTypes = {
   step: PropTypes.shape(stepShape).isRequired,

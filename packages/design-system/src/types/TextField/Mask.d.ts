@@ -13,3 +13,5 @@ export interface MaskProps {
 export default class Mask extends React.Component<MaskProps, any> {
   render(): JSX.Element;
 }
+
+export function unmaskValue(value: string, mask: string): string;

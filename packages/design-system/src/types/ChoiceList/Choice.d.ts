@@ -2,6 +2,8 @@ import * as React from 'react';
 
 export type ChoiceChildren = string | React.ReactNode;
 
+export type ChoiceLabel = string | React.ReactNode;
+
 export type ChoiceSize = 'small';
 
 export type ChoiceType = 'checkbox' | 'radio';
@@ -10,9 +12,9 @@ export type ChoiceValue = number | string;
 
 export interface ChoiceProps {
   /**
-   * Label text or HTML.
+   * @hide-prop In order to be consistent with form elements, use `label` instead
    */
-  children: ChoiceChildren;
+  children?: ChoiceChildren;
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -37,6 +39,10 @@ export interface ChoiceProps {
    */
   inputClassName?: string;
   /**
+   * Label text or HTML.
+   */
+  label?: ChoiceLabel;
+  /**
    * Additional classes to be added to the `FormLabel`.
    */
   labelClassName?: string;
@@ -45,6 +51,7 @@ export interface ChoiceProps {
    * otherwise, use the `checked` property.
    */
   defaultChecked?: boolean;
+  disabled?: boolean;
   /**
    * Access a reference to the `input` element
    */
