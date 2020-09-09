@@ -28,7 +28,7 @@ export class Dropdown extends React.PureComponent {
       }
       if (props.focusTrigger) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'focusTrigger' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'focusTrigger' instead.`
+          `[Deprecated]: Please remove the 'focusTrigger' prop in <Dropdown>, use 'autoFocus' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -135,7 +135,7 @@ Dropdown.propTypes = {
    */
   ariaLabel: PropTypes.string,
   /**
-   * Used to focus `select` on `componentDidMount()`
+   * Focus the control on `select` when it is mounted.
    */
   autoFocus: PropTypes.bool,
   /**

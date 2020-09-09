@@ -45,7 +45,7 @@ export class Autocomplete extends React.PureComponent {
     if (process.env.NODE_ENV !== 'production') {
       if (props.focusTrigger) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'focusTrigger' for the <Autocomplete> component. It is no longer supported and will be removed in a future release, use 'autoFocus' instead.`
+          `[Deprecated]: Please remove the 'focusTrigger' prop in <Autocomplete>, use 'autoFocus' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -224,7 +224,7 @@ Autocomplete.propTypes = {
    */
   autoCompleteLabel: PropTypes.string,
   /**
-   * Used to focus child `TextField` on `componentDidMount()`
+   * Focus the control on child `TextField` when it is mounted.
    */
   autoFocus: PropTypes.bool,
   /**

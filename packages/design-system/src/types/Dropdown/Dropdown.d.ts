@@ -17,7 +17,7 @@ export interface DropdownProps {
    */
   ariaLabel?: string;
   /**
-   * Used to focus `select` on `componentDidMount()`
+   * Focus the control on `select` when it is mounted.
    */
   autoFocus?: boolean;
   /**

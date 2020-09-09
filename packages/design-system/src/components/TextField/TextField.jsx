@@ -21,7 +21,7 @@ export class TextField extends React.PureComponent {
       }
       if (props.focusTrigger) {
         console.warn(
-          `[Deprecated]: Please remove the React property 'focusTrigger' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'autoFocus' instead.`
+          `[Deprecated]: Please remove the 'focusTrigger' prop in <TextField>, use 'autoFocus' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -157,7 +157,7 @@ TextField.propTypes = {
    */
   ariaLabel: PropTypes.string,
   /**
-   * Used to focus `input` on `componentDidMount()`
+   * Focus the control on `input` when it is mounted.
    */
   autoFocus: PropTypes.bool,
   /**

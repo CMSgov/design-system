@@ -11,7 +11,7 @@ export interface AutocompleteProps {
    */
   ariaClearLabel?: string;
   /**
-   * Used to focus child `TextField` on `componentDidMount()`
+   * Focus the control on child `TextField` when it is mounted.
    */
   autoFocus?: boolean;
   /**

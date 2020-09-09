@@ -17,7 +17,7 @@ export interface TextFieldProps {
    */
   ariaLabel?: string;
   /**
-   * Used to focus `input` on `componentDidMount()`
+   * Focus the control on `input` when it is mounted.
    */
   autoFocus?: boolean;
   /**
