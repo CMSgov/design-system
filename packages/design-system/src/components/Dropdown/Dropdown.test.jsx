@@ -127,11 +127,11 @@ describe('Dropdown', () => {
     expect(data.wrapper.find('select').hasClass('ds-c-field--error')).toBe(true);
   });
 
-  it('focuses the select when focusTrigger is passed', () => {
+  it('focuses the select when autoFocus is passed', () => {
     const data = render(
       {
         id: 'focus',
-        focusTrigger: true,
+        autoFocus: true,
       },
       null,
       true

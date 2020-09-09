@@ -26,6 +26,11 @@ export class Dropdown extends React.PureComponent {
           `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
         );
       }
+      if (props.focusTrigger) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'focusTrigger' for the <Dropdown> component. It is no longer supported and will be removed in a future release, use 'focusTrigger' instead.`
+        );
+      }
     }
   }
 
@@ -52,6 +57,7 @@ export class Dropdown extends React.PureComponent {
     /* eslint-disable prefer-const */
     const {
       ariaLabel,
+      autoFocus,
       className,
       children,
       errorMessage,
@@ -90,7 +96,7 @@ export class Dropdown extends React.PureComponent {
       <div className={classes}>
         <FormLabel
           className={labelClassName}
-          component={'label'}
+          component="label"
           errorMessage={errorMessage}
           fieldId={this.id()}
           hint={hint}
@@ -103,6 +109,8 @@ export class Dropdown extends React.PureComponent {
           aria-label={ariaLabel}
           className={fieldClasses}
           id={this.id()}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={autoFocus}
           /* eslint-disable no-return-assign */
           ref={(ref) => {
             if (focusTrigger) {
@@ -127,6 +135,10 @@ Dropdown.propTypes = {
    */
   ariaLabel: PropTypes.string,
   /**
+   * Used to focus `select` on `componentDidMount()`
+   */
+  autoFocus: PropTypes.bool,
+  /**
    * Additional classes to be added to the root element.
    */
   className: PropTypes.string,
@@ -149,7 +161,7 @@ Dropdown.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Used to focus `select` on `componentDidMount()`
+   * (Deprecated) Used to focus `select` on `componentDidMount()`
    */
   focusTrigger: PropTypes.bool,
   /**

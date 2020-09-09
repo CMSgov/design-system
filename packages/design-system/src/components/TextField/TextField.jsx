@@ -19,6 +19,11 @@ export class TextField extends React.PureComponent {
           `Please use the 'numeric' prop instead of 'type="number"' unless your user research suggests otherwise.`
         );
       }
+      if (props.focusTrigger) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'focusTrigger' for the <TextField> component. It is no longer supported and will be removed in a future release, use 'autoFocus' instead.`
+        );
+      }
     }
   }
 
@@ -48,6 +53,7 @@ export class TextField extends React.PureComponent {
   render() {
     const {
       ariaLabel,
+      autoFocus,
       className,
       errorMessage,
       fieldClassName,
@@ -100,6 +106,8 @@ export class TextField extends React.PureComponent {
         aria-label={this.ariaLabel()}
         className={fieldClasses}
         id={this.id}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={autoFocus}
         /* eslint-disable no-return-assign */
         ref={(ref) => {
           if (focusTrigger) {
@@ -149,6 +157,10 @@ TextField.propTypes = {
    */
   ariaLabel: PropTypes.string,
   /**
+   * Used to focus `input` on `componentDidMount()`
+   */
+  autoFocus: PropTypes.bool,
+  /**
    * Additional classes to be added to the root `div` element
    */
   className: PropTypes.string,
@@ -164,7 +176,7 @@ TextField.propTypes = {
    */
   fieldClassName: PropTypes.string,
   /**
-   * Used to focus `input` on `componentDidMount()`
+   * (Deprecated) Used to focus `input` on `componentDidMount()`
    */
   focusTrigger: PropTypes.bool,
   /**

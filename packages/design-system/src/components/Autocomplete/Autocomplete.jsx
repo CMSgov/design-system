@@ -41,6 +41,14 @@ export class Autocomplete extends React.PureComponent {
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
     this.listboxContainerId = uniqueId('autocomplete_owned_container_');
     this.listboxHeadingId = uniqueId('autocomplete_header_');
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.focusTrigger) {
+        console.warn(
+          `[Deprecated]: Please remove the React property 'focusTrigger' for the <Autocomplete> component. It is no longer supported and will be removed in a future release, use 'autoFocus' instead.`
+        );
+      }
+    }
   }
 
   filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex) {
@@ -93,6 +101,7 @@ export class Autocomplete extends React.PureComponent {
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
+          autoFocus: this.props.autoFocus,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           inputRef: this.props.inputRef,
@@ -215,6 +224,10 @@ Autocomplete.propTypes = {
    */
   autoCompleteLabel: PropTypes.string,
   /**
+   * Used to focus child `TextField` on `componentDidMount()`
+   */
+  autoFocus: PropTypes.bool,
+  /**
    * Must contain a `TextField` component
    */
   children: PropTypes.node.isRequired,
@@ -232,7 +245,7 @@ Autocomplete.propTypes = {
    */
   clearSearchButton: PropTypes.bool,
   /**
-   * Used to focus child `TextField` on `componentDidMount()`
+   * (Deprecated) Used to focus child `TextField` on `componentDidMount()`
    */
   focusTrigger: PropTypes.bool,
   /**

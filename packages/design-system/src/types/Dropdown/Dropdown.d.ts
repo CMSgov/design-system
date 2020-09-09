@@ -17,6 +17,10 @@ export interface DropdownProps {
    */
   ariaLabel?: string;
   /**
+   * Used to focus `select` on `componentDidMount()`
+   */
+  autoFocus?: boolean;
+  /**
    * Additional classes to be added to the root element.
    */
   className?: string;
@@ -39,7 +43,7 @@ export interface DropdownProps {
    */
   fieldClassName?: string;
   /**
-   * Used to focus `select` on `componentDidMount()`
+   * (Deprecated) Used to focus `select` on `componentDidMount()`
    */
   focusTrigger?: boolean;
   /**

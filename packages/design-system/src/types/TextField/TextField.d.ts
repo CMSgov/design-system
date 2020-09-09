@@ -17,6 +17,10 @@ export interface TextFieldProps {
    */
   ariaLabel?: string;
   /**
+   * Used to focus `input` on `componentDidMount()`
+   */
+  autoFocus?: boolean;
+  /**
    * Additional classes to be added to the root `div` element
    */
   className?: string;
@@ -32,7 +36,7 @@ export interface TextFieldProps {
    */
   fieldClassName?: string;
   /**
-   * Used to focus `input` on `componentDidMount()`
+   * (Deprecated) Used to focus `input` on `componentDidMount()`
    */
   focusTrigger?: boolean;
   /**

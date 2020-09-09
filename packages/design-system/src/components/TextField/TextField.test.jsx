@@ -197,11 +197,11 @@ describe('TextField', function () {
     expect(ref.value).toBe(data.props.defaultValue);
   });
 
-  it('focuses the input when focusTrigger is passed', () => {
+  it('focuses the input when autoFocus is passed', () => {
     const data = render(
       {
         id: 'focus',
-        focusTrigger: true,
+        autoFocus: true,
       },
       true
     );

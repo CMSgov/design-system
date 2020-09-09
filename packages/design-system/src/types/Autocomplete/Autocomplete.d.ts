@@ -11,6 +11,10 @@ export interface AutocompleteProps {
    */
   ariaClearLabel?: string;
   /**
+   * Used to focus child `TextField` on `componentDidMount()`
+   */
+  autoFocus?: boolean;
+  /**
    * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
    */
   autoCompleteLabel?: string;
@@ -32,7 +36,7 @@ export interface AutocompleteProps {
    */
   clearSearchButton?: boolean;
   /**
-   * Used to focus child `TextField` on `componentDidMount()`
+   * (Deprecated) Used to focus child `TextField` on `componentDidMount()`
    */
   focusTrigger?: boolean;
   /**
