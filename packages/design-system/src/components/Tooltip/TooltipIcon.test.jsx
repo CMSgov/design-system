@@ -3,9 +3,9 @@ import React from 'react';
 import TooltipIcon from './TooltipIcon';
 
 const defaultProps = {
-  showTooltip: false,
-  inverse: false,
+  inversed: false,
 };
+
 function render(customProps = {}, deep = false) {
   const props = { ...defaultProps, ...customProps };
   const component = <TooltipIcon {...props} />;
@@ -16,16 +16,12 @@ function render(customProps = {}, deep = false) {
 }
 
 describe('TooltipIcon', function () {
-  it('renders normal trigger icon ', () => {
+  it('renders normal trigger icon', () => {
     const tooltip = render();
     expect(tooltip.wrapper).toMatchSnapshot();
   });
-  it('renders focused trigger icon ', () => {
-    const tooltip = render({ showTooltip: true });
-    expect(tooltip.wrapper).toMatchSnapshot();
-  });
-  it('renders inverse trigger icon ', () => {
-    const tooltip = render({ inverse: true });
+  it('renders inverse trigger icon', () => {
+    const tooltip = render({ inversed: true });
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 });

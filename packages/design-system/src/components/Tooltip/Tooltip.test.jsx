@@ -1,12 +1,15 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import Tooltip from './Tooltip';
+import TooltipIcon from './TooltipIcon';
 
 const defaultProps = {
-  id: '1',
-  ariaLabel: 'label',
-  children: <p>content</p>,
+  triggerId: '1',
+  triggerContent: <TooltipIcon />,
+  triggerClassName: 'ds-c-tooltip__trigger-icon',
+  children: <p className="ds-u-margin--0">Tooltip body content</p>,
 };
+
 function render(customProps = {}, deep = false) {
   const props = { ...defaultProps, ...customProps };
   const component = <Tooltip {...props} />;
@@ -22,11 +25,29 @@ describe('Tooltip', function () {
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 
+  it('renders inverse tooltip', () => {
+    const tooltip = render({ inversed: true });
+    expect(tooltip.wrapper).toMatchSnapshot();
+  });
+
   it('renders interactive tooltip', () => {
     const tooltip = render({
       children: <a href="design.cms.gov">test</a>,
-      hasInteractiveContent: true,
+      interactive: true,
     });
+    expect(tooltip.wrapper).toMatchSnapshot();
+  });
+
+  it('renders custom trigger component', () => {
+    const tooltip = render({
+      triggerComponent: 'a',
+      triggerHref: 'design.cms.gov',
+    });
+    expect(tooltip.wrapper).toMatchSnapshot();
+  });
+
+  it('renders clickOnly tooltip', () => {
+    const tooltip = render({ clickOnly: true });
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 });

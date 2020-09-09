@@ -132,7 +132,7 @@ export class Tooltip extends React.Component {
     const {
       clickOnly,
       children,
-      inverse,
+      inversed,
       interactive,
       interactiveBorder,
       placement,
@@ -159,7 +159,7 @@ export class Tooltip extends React.Component {
         className={classNames(
           'ds-c-tooltip',
           {
-            'ds-c-tooltip--inverse': inverse,
+            'ds-c-tooltip--inverse': inversed,
           },
           className
         )}
@@ -243,7 +243,7 @@ Tooltip.propTypes = {
    * Sets the size of the invisible border around the tooltip that prevents it from immediately hiding when the cursor leaves the toolip.
    */
   interactiveBorder: PropTypes.number,
-  inverse: PropTypes.bool,
+  inversed: PropTypes.bool,
   /**
    * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
    */

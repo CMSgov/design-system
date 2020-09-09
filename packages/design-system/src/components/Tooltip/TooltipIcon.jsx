@@ -6,7 +6,7 @@ export const TooltipIcon = (props) => {
   return (
     <span
       className={classNames('ds-c-tooltip-icon__container', {
-        'ds-c-tooltip-icon--inverse': props.inverse,
+        'ds-c-tooltip-icon--inverse': props.inversed,
       })}
     >
       <svg
@@ -32,7 +32,7 @@ export const TooltipIcon = (props) => {
 };
 
 TooltipIcon.propTypes = {
-  inverse: PropTypes.bool,
+  inversed: PropTypes.bool,
   iconClassName: PropTypes.string,
 };
 

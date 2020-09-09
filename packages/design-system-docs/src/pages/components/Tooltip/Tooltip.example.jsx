@@ -106,10 +106,10 @@ const TooltipExample = () => {
         <p className="ds-u-margin--0">Inverse tooltip</p>
         <Tooltip
           ariaLabel="Label describing the subject of the inverse tooltip"
-          inverse
+          inversed
           placement="right"
           triggerId="tooltip-8-id"
-          triggerContent={<TooltipIcon inverse />}
+          triggerContent={<TooltipIcon inversed />}
           triggerClassName="ds-c-tooltip__trigger-icon"
           triggerActiveClassName="ds-c-tooltip-icon--active"
         >
