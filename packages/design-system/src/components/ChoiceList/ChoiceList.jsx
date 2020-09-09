@@ -30,6 +30,7 @@ export class ChoiceList extends React.PureComponent {
    * Creates a list of Choice components
    */
   choices() {
+    console.log(this.props.choices);
     return this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
       choiceProps.name = this.props.name;
@@ -37,6 +38,11 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.onChange = this.props.onChange;
       choiceProps.size = this.props.size;
       choiceProps.type = this.props.type;
+      choiceProps.className = choiceProps.className
+        ? choiceProps.className.concat(' ', this.props.errorMessage ? 'ds-c-choice--error' : null)
+        : this.props.errorMessage
+        ? 'ds-c-choice--error'
+        : null;
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
       choiceProps.inputRef = (ref) => {
         this.choiceRefs.push(ref);
@@ -68,16 +74,8 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
-    const fieldsetClasses = classNames(
-      'ds-c-fieldset',
-      {
-        'ds-c-fieldset--error': this.props.errorMessage,
-      },
-      this.props.className
-    );
-
     return (
-      <fieldset className={fieldsetClasses}>
+      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           className={this.props.labelClassName}
           component="legend"
