@@ -31,19 +31,20 @@ class ControlledCurrencyField extends React.PureComponent {
 
   render() {
     return (
-      <fieldset className="ds-u-margin-top--3 ds-u-padding-left--3 ds-u-padding-bottom--3 ds-u-border--2">
-        <legend className="ds-u-font-size--h3">Controlled Example</legend>
+      <>
         <TextField
-          label="This is a controlled component"
+          label="Controlled currency example"
           mask="currency"
           name="controlled_currency_example"
-          className="ds-u-margin-bottom--2"
+          className="ds-u-margin-bottom--1"
           onChange={(evt) => this.setCurrencyValue(unmaskValue(evt.target.value, 'currency'))}
           value={this.state.currencyValue}
         />
-        <Button onClick={() => this.clearCurrencyValue()}>Clear</Button>
+        <Button onClick={() => this.clearCurrencyValue()} className="ds-u-margin-right--1">
+          Clear
+        </Button>
         <Button onClick={() => this.randomizeCurrencyValue()}>Randomize</Button>
-      </fieldset>
+      </>
     );
   }
 }
@@ -61,7 +62,6 @@ const Example = () => {
         onBlur={(evt) => handleBlur(evt, 'currency')}
         defaultValue="2,500"
       />
-
       <TextField
         label="Phone number"
         mask="phone"
@@ -70,7 +70,6 @@ const Example = () => {
         type="tel"
         defaultValue="1234567890"
       />
-
       <TextField
         label="Social security number (SSN)"
         mask="ssn"
@@ -80,7 +79,6 @@ const Example = () => {
         onBlur={(evt) => handleBlur(evt, 'ssn')}
         defaultValue="123456789"
       />
-
       <TextField
         label="Zip code"
         mask="zip"

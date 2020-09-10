@@ -34,7 +34,7 @@
   @extend .ds-base;
   @extend .ds-base--inverse;
   @extend .ds-u-padding--2;
-  max-width: fit-content;
+  @extend .ds-u-margin-top--3;
   > .ds-c-field {
     width: $input-max-width;
   }

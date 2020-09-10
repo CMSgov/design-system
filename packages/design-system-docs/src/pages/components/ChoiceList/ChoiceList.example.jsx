@@ -42,7 +42,12 @@ ReactDOM.render(
     <div className="example--wrapper example--inverse">
       <ChoiceList
         choices={[
-          { label: 'Choice 1', requirementLabel: 'Choice hint text', value: 'A' },
+          {
+            label: 'Choice 1',
+            requirementLabel: 'Choice hint text',
+            value: 'A',
+            defaultChecked: true,
+          },
           { label: 'Choice 2', value: 'B' },
           { label: 'Disabled choice 3', value: 'c', disabled: true },
         ]}
@@ -50,7 +55,7 @@ ReactDOM.render(
         errorMessage="Example error message"
         hint="Helpful hint text"
         name="inverse_choices_field"
-        type="radio"
+        type="checkbox"
         inversed
       />
     </div>

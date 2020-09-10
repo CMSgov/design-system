@@ -2,6 +2,9 @@
   <legend class="ds-c-label" id="dob-datefield">
     <span class="ds-u-font-weight--bold">Date of birth</span>
     <span class="ds-c-field__hint">For example: 4 / 28 / 1986</span>
+    <span class="ds-c-field__hint ds-u-color--error" role="alert">
+      Please enter a year in the past
+    </span>
   </legend>
   <div class="ds-l-form-row ds-u-align-items--end">
     <div class="ds-l-col--auto">
@@ -17,6 +20,7 @@
         name="birthdate[month]"
         autocomplete="bday-month"
         aria-describedby="dob-datefield"
+        value="10"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
@@ -33,6 +37,7 @@
         name="birthdate[day]"
         autocomplete="bday-day"
         aria-describedby="dob-datefield"
+        value="31"
       />
     </div>
     <span class="ds-c-datefield__separator">/</span>
@@ -49,7 +54,71 @@
         name="birthdate[year]"
         autocomplete="bday-year"
         aria-describedby="dob-datefield"
+        value="2050"
       />
     </div>
   </div>
 </fieldset>
+<div class="example--wrapper example--inverse">
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-c-label" id="dob-datefield">
+      <span class="ds-u-font-weight--bold">Inverse example</span>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">For example: 4 / 28 / 1986</span>
+      <span class="ds-c-field__hint ds-u-color--error-light" role="alert">
+        Please enter a year in the past
+      </span>
+    </legend>
+    <div class="ds-l-form-row ds-u-align-items--end">
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="month"
+          ><span>Month</span></label
+        >
+        <input
+          class="ds-c-field ds-c-field--month"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="month"
+          name="birthdate[month]"
+          autocomplete="bday-month"
+          aria-describedby="dob-datefield"
+          value="10"
+        />
+      </div>
+      <span class="ds-c-datefield__separator">/</span>
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="day"
+          ><span>Day</span></label
+        >
+        <input
+          class="ds-c-field ds-c-field--day"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="day"
+          name="birthdate[day]"
+          autocomplete="bday-day"
+          aria-describedby="dob-datefield"
+          value="31"
+        />
+      </div>
+      <span class="ds-c-datefield__separator">/</span>
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1" for="year"
+          ><span>Year</span></label
+        >
+        <input
+          class="ds-c-field ds-c-field--error ds-c-field--year"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="year"
+          name="birthdate[year]"
+          autocomplete="bday-year"
+          aria-describedby="dob-datefield"
+          value="2050"
+        />
+      </div>
+    </div>
+  </fieldset>
+</div>
