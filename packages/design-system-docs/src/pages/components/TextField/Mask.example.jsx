@@ -54,6 +54,7 @@ const Example = () => {
     <div>
       <TextField
         ariaLabel="Enter monthly income amount in dollars."
+        labelClassName="ds-u-margin-top--0"
         label="Currency"
         mask="currency"
         inputMode="numeric"
@@ -88,7 +89,6 @@ const Example = () => {
         onBlur={(evt) => handleBlur(evt, 'zip')}
         defaultValue="123456789"
       />
-
       <ControlledCurrencyField />
     </div>
   );

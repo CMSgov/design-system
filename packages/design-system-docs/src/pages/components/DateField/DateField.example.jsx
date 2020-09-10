@@ -31,7 +31,7 @@ class ControlledDateField extends React.PureComponent {
 }
 
 ReactDOM.render(
-  <>
+  <div className="example--wrapper">
     <DateField
       label="Date of birth"
       errorMessage="Please enter a year in the past"
@@ -52,6 +52,6 @@ ReactDOM.render(
         inversed
       />
     </div>
-  </>,
+  </div>,
   document.getElementById('js-example')
 );

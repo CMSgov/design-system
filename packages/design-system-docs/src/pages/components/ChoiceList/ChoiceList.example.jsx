@@ -34,7 +34,7 @@ ReactDOM.render(
         { label: 'Choice 1', value: 'A', defaultChecked: true },
         { label: 'Choice 2', value: 'B' },
       ]}
-      label="Small variant example"
+      label="Small size example"
       name="size-variants"
       type="radio"
       size="small"
