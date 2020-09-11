@@ -111,7 +111,7 @@ $ds-c-inset-border-width: $spacer-half;
 
     &::before {
       background-color: $color-gray-lighter;
-      border: 1px solid $color-gray-light;
+      border-color: $color-gray-light;
       cursor: not-allowed;
     }
   }
@@ -123,7 +123,6 @@ $ds-c-inset-border-width: $spacer-half;
 
     &::before {
       background-color: rgba($color-muted-inverse, 0.15);
-      box-shadow: 0 0 0 1px $color-muted-inverse;
     }
   }
 }
