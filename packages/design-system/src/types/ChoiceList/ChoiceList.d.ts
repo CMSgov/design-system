@@ -1,9 +1,21 @@
 import * as React from 'react';
-import { ChoiceProps } from './Choice';
+import { ChoiceProps as ChoiceComponentProps } from './Choice';
 
 export type ChoiceListSize = 'small';
 
 export type ChoiceListType = 'checkbox' | 'radio';
+
+// Omit props that we override with values from the ChoiceList
+export type ChoiceProps = Omit<
+  ChoiceComponentProps,
+  'inversed',
+  'name',
+  'onBlur',
+  'onChange',
+  'size',
+  'type',
+  'inputRef'
+>;
 
 export interface ChoiceListProps {
   /**
