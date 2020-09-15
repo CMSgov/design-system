@@ -60,8 +60,20 @@
   }
 }
 
+.c-usa-banner__guidance {
+  width: 50%;
+}
+
 .c-usa-banner__icon {
   width: 2.5rem;
+}
+
+.c-usa-banner__lock-image {
+  height: 1.5ex;
+  width: 1.5 * 52 / 64;
+  path {
+    fill: currentColor;
+  }
 }
 
 .c-usa-banner__media-img {
