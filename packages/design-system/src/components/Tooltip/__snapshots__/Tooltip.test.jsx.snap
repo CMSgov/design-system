@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip renders clickOnly tooltip 1`] = `
+exports[`Tooltip renders dialog tooltip 1`] = `
 <div>
   <button
     aria-describedby="tooltip-1"

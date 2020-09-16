@@ -24,7 +24,7 @@ $tooltip-background-color-inverse: $color-background;
   cursor: pointer;
 }
 
-// Prevent the trigger from reactivating the tooltip when clicking outside of clickOnly tooltips
+// Prevent the trigger from reactivating the tooltip when clicking outside of tooltipDialog tooltips
 .ds-c-tooltip__trigger--click-only-active {
   pointer-events: none;
 }

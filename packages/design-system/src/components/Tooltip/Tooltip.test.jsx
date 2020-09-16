@@ -46,8 +46,8 @@ describe('Tooltip', function () {
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 
-  it('renders clickOnly tooltip', () => {
-    const tooltip = render({ clickOnly: true });
+  it('renders dialog tooltip', () => {
+    const tooltip = render({ dialog: true });
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 });

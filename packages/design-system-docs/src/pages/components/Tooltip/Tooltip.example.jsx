@@ -79,10 +79,10 @@ const TooltipExample = () => {
         </Tooltip>
       </div>
       <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
-        <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip activated </p>
+        <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip dialog activated </p>
         <Tooltip
           interactive
-          clickOnly
+          dialog
           triggerId="tooltip-7-id"
           triggerContent="on click"
           triggerClassName="ds-c-tooltip__trigger-link"
@@ -90,11 +90,15 @@ const TooltipExample = () => {
           <>
             <p className="ds-u-margin--0">
               {
-                'Tooltip only activates on click and includes a focus trap. Intended for tooltips with more complex layout and multiple interactive elements '
+                'Tooltip dialogs only activate on click and include a focus trap. Intended for tooltips with complex layout and multiple interactive elements '
               }
             </p>
-            <Button size="small" className="ds-u-margin-top--2">
-              Close
+            <Button
+              size="small"
+              className="ds-u-margin-top--2"
+              href="https://dequeuniversity.com/library/aria/tooltip-dialog"
+            >
+              More info
             </Button>
           </>
         </Tooltip>

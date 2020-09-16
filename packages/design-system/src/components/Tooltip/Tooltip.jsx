@@ -44,7 +44,7 @@ export class Tooltip extends React.Component {
 
   handleClickOutside(event) {
     // Closes click only tooltips when mouse clicks outside of tooltip container element
-    if (this.state.active && this.props.clickOnly) {
+    if (this.state.active && this.props.dialog) {
       const clickedTooltip = this.tooltipElement && this.tooltipElement.contains(event.target);
       if (!clickedTooltip) {
         this.setTooltipActive(false);
@@ -56,7 +56,7 @@ export class Tooltip extends React.Component {
     // Closes interactive and click only tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (this.state.active && e.keyCode === ESCAPE_KEY) {
-      if (this.props.interactive || this.props.clickOnly) {
+      if (this.props.interactive || this.props.dialog) {
         this.setTooltipActive(false);
       }
     }
@@ -92,7 +92,7 @@ export class Tooltip extends React.Component {
 
   renderTrigger() {
     const {
-      clickOnly,
+      dialog,
       ariaLabel,
       triggerActiveClassName,
       triggerClassName,
@@ -104,7 +104,7 @@ export class Tooltip extends React.Component {
     const TriggerComponent = this.triggerComponentType();
     const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, {
       [triggerActiveClassName]: this.state.active,
-      'ds-c-tooltip__trigger--click-only-active': this.props.clickOnly && this.state.active,
+      'ds-c-tooltip__trigger--click-only-active': this.props.dialog && this.state.active,
     });
 
     return (
@@ -112,10 +112,10 @@ export class Tooltip extends React.Component {
         id={triggerId}
         type={TriggerComponent === 'button' ? 'button' : undefined}
         onTouchStart={() => this.setTooltipActive(!this.state.active)}
-        onFocus={() => (clickOnly ? null : this.setTooltipActive(true))}
-        onBlur={() => (clickOnly ? null : this.handleBlur())}
-        onMouseEnter={() => (clickOnly ? null : this.setTooltipActive(true))}
-        onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
+        onFocus={() => (dialog ? null : this.setTooltipActive(true))}
+        onBlur={() => (dialog ? null : this.handleBlur())}
+        onMouseEnter={() => (dialog ? null : this.setTooltipActive(true))}
+        onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
         onClick={() => this.setTooltipActive(!this.state.active)}
         aria-label={ariaLabel || ''}
         aria-describedby={`tooltip-${triggerId}`}
@@ -130,7 +130,7 @@ export class Tooltip extends React.Component {
 
   renderContent() {
     const {
-      clickOnly,
+      dialog,
       children,
       inversed,
       interactive,
@@ -165,12 +165,12 @@ export class Tooltip extends React.Component {
         )}
         style={tooltipStyle}
         onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
-        onMouseLeave={() => (clickOnly ? null : this.setTooltipActive(false))}
+        onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
         onBlur={() => this.handleBlur()}
         data-placement={placement}
         aria-labelledby={triggerId}
         aria-hidden={!this.state.active}
-        role={clickOnly ? 'dialog' : 'tooltip'}
+        role={dialog ? 'dialog' : 'tooltip'}
       >
         <div className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
@@ -182,7 +182,7 @@ export class Tooltip extends React.Component {
 
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
-        {clickOnly ? (
+        {dialog ? (
           <FocusTrap
             active={this.state.active}
             focusTrapOptions={{
@@ -232,15 +232,15 @@ Tooltip.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Disables tooltip activation and deactivation on hover, touch and blur events.
+   * Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)
    */
-  clickOnly: PropTypes.bool,
+  dialog: PropTypes.bool,
   /**
-   * Should be set to `true` if tooltip content includes tabbable elements like links or buttons. Interactive tooltips trap focus, expands the activation area to include the tooltip itself, and includes other accessibility changes.
+   * Set to `true` if the tooltip content contains tabbable, interactive elements like links or buttons. This prop expands the activation area to include the tooltip itself, allowing the content to interact with mouse events.
    */
   interactive: PropTypes.bool,
   /**
-   * Sets the size of the invisible border around the tooltip that prevents it from immediately hiding when the cursor leaves the toolip.
+   * Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.
    */
   interactiveBorder: PropTypes.number,
   inversed: PropTypes.bool,
