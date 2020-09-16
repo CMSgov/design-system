@@ -17,3 +17,20 @@ Style guide: components.tooltip
 
 Style guide: components.tooltip.tooltip
 */
+/*
+---
+
+### When to use
+- Use for helpful, non-critical information to strengthen an existing message.
+- Use to increase certainty and enhance confidence about an interaction.
+- Use with brief descriptions as tooltips perform best with succinct text.
+- Tooltips are useful as a last resort for space-constrained UI. Explore other options for keeping content visible without a tooltip.
+
+## When to consider alternatives
+- Don’t hide information necessary for completing a task behind a tooltip interaction.
+- Tooltips are microcopy and should be brief. Don't use a tooltip if you need a lot of text.
+- Don’t use a tooltip when its content is repetitive or if usability is obvious.
+- If content can fit outside a tooltip, don't use a tooltip.
+
+Style guide: components.tooltip.guidance
+*/
