@@ -26,14 +26,14 @@ ReactDOM.render(
       options={dropdownOptions}
       defaultValue="1"
       size="small"
-      label="Small size dropdown"
+      label="Small size example"
       name="small_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
       defaultValue="1"
       size="medium"
-      label="Medium size dropdown"
+      label="Medium size example"
       name="medium_dropdown_field"
     />
     <Dropdown
@@ -41,20 +41,20 @@ ReactDOM.render(
       defaultValue="1"
       errorMessage="Example error message"
       hint="Helpful hint text"
-      label="Error dropdown"
+      label="Error example"
       name="error_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
       defaultValue="1"
-      label="Disabled dropdown"
+      label="Disabled example"
       disabled
       name="disabled_dropdown_field"
     />
     <Dropdown
       options={[]}
       defaultValue="1-1"
-      label="Option group dropdown"
+      label="Option group example"
       name="custom_dropdown_field"
     >
       <optgroup label="Option group">
@@ -75,7 +75,7 @@ ReactDOM.render(
         defaultValue="1"
         errorMessage="Example error message"
         hint="Helpful hint text"
-        label="Inverse dropdown"
+        label="Inverse example"
         name="inverse_dropdown_field"
         inversed
       />
