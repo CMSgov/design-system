@@ -61,7 +61,9 @@
 }
 
 .c-usa-banner__guidance {
-  width: 50%;
+  @media (min-width: $width-sm) {
+    width: 50%;
+  }
 }
 
 .c-usa-banner__icon {
