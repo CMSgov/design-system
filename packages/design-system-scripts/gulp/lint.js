@@ -77,23 +77,27 @@ async function runEslint(dir, fix, ignorePatterns, failAfterError) {
 }
 
 module.exports = {
-  async lintDirectory(directory, fix, ignorePatterns, failAfterError, disable) {
+  async lintDirectories(directories, fix, ignorePatterns, failAfterError, disable) {
     logTask(
       '🔎 ',
-      `Linting files in: ${directory} and ignoring paths: ${ignorePatterns.join(', ')}`
+      `Linting files in: ${directories.join(', ')} and ignoring paths: ${ignorePatterns.join(', ')}`
     );
 
-    if (!disable.disablePrettier) {
-      prettier = require('gulp-prettier');
-      await runPrettier(directory, ignorePatterns, failAfterError);
-    }
-    if (!disable.disableStylelint) {
-      stylelint = require('gulp-stylelint');
-      await runStylelint(directory, fix, ignorePatterns, failAfterError);
-    }
-    if (!disable.disableEslint) {
-      eslint = require('gulp-eslint');
-      await runEslint(directory, fix, ignorePatterns, failAfterError);
-    }
+    await Promise.all(
+      directories.map(async (dir) => {
+        if (!disable.disablePrettier) {
+          prettier = require('gulp-prettier');
+          await runPrettier(dir, ignorePatterns, failAfterError);
+        }
+        if (!disable.disableStylelint) {
+          stylelint = require('gulp-stylelint');
+          await runStylelint(dir, fix, ignorePatterns, failAfterError);
+        }
+        if (!disable.disableEslint) {
+          eslint = require('gulp-eslint');
+          await runEslint(dir, fix, ignorePatterns, failAfterError);
+        }
+      })
+    );
   },
 };

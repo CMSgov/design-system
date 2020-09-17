@@ -178,12 +178,12 @@ yargs
     },
   })
   .command({
-    command: 'lint <directory>',
-    desc: 'Runs prettier, stylelint and eslint in a directory',
+    command: 'lint <directories..>',
+    desc: 'Runs prettier, stylelint and eslint on one or more directories.',
     builder: (yargs) => {
       yargs
-        .positional('directory', {
-          desc: 'The relative path to the directory where linters and formatters will be run.',
+        .positional('directories..', {
+          desc: 'The relative path to one or more directories that will be linted.',
           type: 'string',
           demandOption: true,
         })
@@ -222,11 +222,11 @@ yargs
         });
     },
     handler: async (argv) => {
-      const { lintDirectory } = require('./gulp/lint');
-      const { directory, fix, ignorePatterns, failAfterError, ...disable } = argv;
+      const { lintDirectories } = require('./gulp/lint');
+      const { directories, fix, ignorePatterns, failAfterError, ...disable } = argv;
 
       process.env.NODE_ENV = 'test';
-      await lintDirectory(directory, fix, ignorePatterns, failAfterError, disable);
+      await lintDirectories(directories, fix, ignorePatterns, failAfterError, disable);
     },
   })
   .demandCommand()
