@@ -1,7 +1,7 @@
 /* eslint no-alert: 0 */
-import React, { Fragment } from 'react';
 import { Button } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
@@ -15,7 +15,7 @@ const Link = ({ className, ...props }) => (
 Link.propTypes = { children: PropTypes.node };
 
 ReactDOM.render(
-  <Fragment>
+  <>
     <Button className="ds-u-margin-right--1">Button</Button>
     <Button className="ds-u-margin-right--1" variation="primary">
       Button with `variation` prop
@@ -33,6 +33,6 @@ ReactDOM.render(
     <Button className="ds-u-margin-right--1" component={Link} href="/">
       Button with `component` prop
     </Button>
-  </Fragment>,
+  </>,
   document.getElementById('js-example')
 );
