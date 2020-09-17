@@ -66,6 +66,8 @@ function copyMiscFiles(dir) {
         `!${src}/images/**`,
         `!${src}/styles/**`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))
   );
