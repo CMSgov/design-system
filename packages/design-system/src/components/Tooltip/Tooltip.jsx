@@ -154,7 +154,7 @@ export class Tooltip extends React.Component {
     const tooltipContent = () => (
       <div
         id={`tooltip-${triggerId}`}
-        tabIndex="-1"
+        tabIndex={dialog ? '-1' : null}
         ref={this.setTooltipElement}
         className={classNames(
           'ds-c-tooltip',
