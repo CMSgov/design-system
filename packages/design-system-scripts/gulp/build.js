@@ -61,10 +61,11 @@ function copyMiscFiles(dir) {
     gulp
       .src([
         `${src}/**/*`,
-        `!${src}/components/**/*`,
-        `!${src}/fonts/**/*`,
-        `!${src}/images/**/*`,
-        `!${src}/styles/**/*`,
+        `!${src}/components/**`,
+        `!${src}/fonts/**`,
+        `!${src}/images/**`,
+        `!${src}/styles/**`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))
   );
