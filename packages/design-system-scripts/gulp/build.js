@@ -53,7 +53,7 @@ function copySass(dir) {
 }
 
 /**
- * Copy any files not processed by the build scripts
+ * Generically copy any non test files that arent already processed by the build scripts
  */
 function copyMiscFiles(dir) {
   const src = path.join(dir, 'src');
@@ -61,10 +61,13 @@ function copyMiscFiles(dir) {
     gulp
       .src([
         `${src}/**/*`,
-        `!${src}/components/**/*`,
-        `!${src}/fonts/**/*`,
-        `!${src}/images/**/*`,
-        `!${src}/styles/**/*`,
+        `!${src}/components/**`,
+        `!${src}/fonts/**`,
+        `!${src}/images/**`,
+        `!${src}/styles/**`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))
   );
