@@ -1,60 +1,66 @@
 # Release process
 
-1. **Publish to NPM**
+## 1. Publish to NPM
 
-   1. Checkout the latest `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
-   1. Check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
-      ```
-      backstop test
-      ```
-      If there are expected visual changes, run `backstop approve` to save the new reference files. This should ideally be handled before the release process begins.
-   1. Ensure you are logged into NPM. Check your user account with `npm whoami`.
+1.  Checkout the latest `master` branch and ensure that you don't have any local changes. If you do have local changes [stash or discard](https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/#quickly-save-local-changes) them before going to the next step.
+1.  Check for unexpected visual regressions. The app must be running locally in order for the tests to run, so run `yarn start` if the app isn't up already.
+    ```
+    backstop test
+    ```
+    If there are expected visual changes, run `backstop approve` to save the new reference files. This should ideally be handled before the release process begins.
+1.  Ensure you are logged into NPM. Check your user account with `npm whoami`.
 
-      **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
+    **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
-   1. Run the release script to automatically begin the release process and publish to NPM.
-      ```
-      yarn release
-      ```
-      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
-   1. The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
-   1. After the release script is completed, make sure to merge the release branch (i.e. `release-2.0.0`) into master.
+1.  Run the release script to automatically begin the release process and publish to NPM.
+    ```
+    yarn release
+    ```
+    This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
+1.  The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
+1.  After the release script is completed, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
+    - Add a title (use the release branch name) and short description for your changes.
+1.  After the [Update design.cms.gov document web site](##3.-Update-the-design.cms.gov-documentation-website) step is completed, make sure to merge the release PR (i.e. `release-2.0.0`) into master.
 
-1. **Create a release on GitHub**
+## 2. Create a release on GitHub
 
-   1. [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
-   1. Tag the release with the newly created tag from the previous step (i.e. `core-2.0.0`).
-   1. Title the release using the release number (i.e. `2.0.0`)
-   1. Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
-   1. Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
+1.  [Draft a new release on GitHub](https://github.com/CMSgov/design-system/releases/new)
+1.  Tag the release with the newly created tag from the previous step (i.e. `core-2.0.0`).
+1.  Title the release using the release number (i.e. `2.0.0`)
+1.  Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
+1.  Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
 
-   ```
-   ## 🚨 Breaking/Behavioral changes
-   ## 🚀 Added
-   ## 💅 Changed
-   ## 🛠 Fixed
-   ## 📦 Internal
-   ## 🚫 Deprecated
-   ```
+```
+## 🚨 Breaking/Behavioral changes
+## 🚀 Added
+## 💅 Changed
+## 🛠 Fixed
+## 📦 Internal
+## 🚫 Deprecated
+```
 
-   **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+**Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
 
-   1. Review the release notes and publish
+1.  Review the release notes and publish
 
-1. **Update the design.cms.gov documentation website**
+## 3. Update the design.cms.gov documentation website
 
-   1. [Log in to CBJ](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
+1.  Connect to CMS VPN `cloudvpn.cms.gov`.
 
-      **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
+1.  [Log in to CBJ](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
 
-   1. Select the tag created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
+    **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
-   Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
+1.  Select `Build with Parameters` from the side navigation menu.
 
-   - The first child job builds `design-system`, creates a tarball from the resulting artifacts, then uploads the tarball to S3.
-   - The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
+1.  Enter the tag created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
 
-   **Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
+Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
+
+- The first child job builds `design-system`, creates a tarball from the resulting artifacts, then uploads the tarball to S3.
+- The second child job downloads the tarball from S3, expands it onto the node Jenkins is using for the deploy, then copies the files to Netstorage via `scp`.
+
+**Note**: For a manual process: Visit the [Documentation deploy process page](https://confluence.cms.gov/display/HCDSG/Documentation+deploy+proces) in Confluence for these instructions.
 
 # Sketch Library Release Process
 
