@@ -23,7 +23,7 @@
       - visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the folders and files
    1. Next, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
       - Add a title (keep the same name as the release branch, i.e. `Release-2.0.0`) and short description for your changes.
-   1. Make sure to merge the release branch (i.e. `release-2.0.0`) into master after Reviewer approval process.
+   1. Make sure to merge the PR (i.e. `Release-2.0.0`) into master after Reviewer approval process.
 
 1. **Create a release on GitHub**
 
