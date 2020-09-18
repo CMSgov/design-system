@@ -18,7 +18,12 @@
       ```
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
    1. The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
-   1. After the release script is completed, make sure to merge the release branch (i.e. `release-2.0.0`) into master.
+   1.  After the release script is completed, verify the release is updated.
+      - check [NPM](https://www.npmjs.com/package/@cmsgov/design-system) to verify the package is updated 
+      - visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the folders and files
+   1. Next, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
+    - Add a title (keep the same name as the release branch, i.e. `Release-2.0.0`) and short description for your changes.
+   1. Make sure to merge the release branch (i.e. `release-2.0.0`) into master after Reviewer approval process.
 
 1. **Create a release on GitHub**
 
@@ -43,11 +48,15 @@
 
 1. **Update the design.cms.gov documentation website**
 
+   1.  Connect to CMS VPN `cloudvpn.cms.gov`.
+
    1. [Log in to CBJ](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
 
       **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
-   1. Select the tag created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
+   1. Select `Build with Parameters` on the side navigation menu.
+
+   1. Enter the `tag` created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
 
    Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
 
