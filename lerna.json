@@ -13,6 +13,6 @@
     "packages/eslint-config-design-system/**"
   ],
   "tagVersionPrefix": "core-",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "useWorkspaces": true
 }
