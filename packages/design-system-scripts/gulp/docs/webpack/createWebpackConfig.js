@@ -3,6 +3,15 @@ const path = require('path');
 const webpack = require('webpack');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 
+// Polyfills required for IE11 compatibility
+// Features used by this app or its dependencies (i.e. @popperjs/core in Tooltip)
+// Currently we only include in `example` files because Tooltip is the only one that uses the polyfills
+const polyfills = [
+  'core-js/stable/object/assign',
+  'core-js/stable/array/find',
+  'core-js/features/promise',
+];
+
 module.exports = async function createWebpackConfig(sourceDir, docsDir, options) {
   const distPath = path.resolve(docsDir, 'dist');
   const docs = await getDocsDirs(docsDir);
@@ -12,7 +21,7 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
   // This is the first element in the dirs array from `getDirsToProcess`
   const entry = {
     index: [path.resolve(docs[0], 'src/index.jsx')],
-    example: [path.resolve(docs[0], 'src/example.js')],
+    example: [...polyfills, path.resolve(docs[0], 'src/example.js')],
   };
 
   const config = {
