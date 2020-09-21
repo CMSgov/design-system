@@ -6,7 +6,7 @@ export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
 
 // Omit props that we override with values from the ChoiceList
-type OverridenChoiceProp =
+type OmitChoiceProp =
   | 'inversed'
   | 'name'
   | 'onBlur'
@@ -14,7 +14,7 @@ type OverridenChoiceProp =
   | 'size'
   | 'type'
   | 'inputRef';
-export type ChoiceProps = Omit<ChoiceComponentProps, OverridenChoiceProp>;
+export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
   /**

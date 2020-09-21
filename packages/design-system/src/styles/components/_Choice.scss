@@ -58,7 +58,7 @@ $ds-c-inset-border-width: $spacer-half;
 }
 
 .ds-c-choice--inverse + label::before {
-  background-color: $color-background-inverse;
+  background-color: transparent;
   border-color: $choice-border-color-inverse;
 }
 

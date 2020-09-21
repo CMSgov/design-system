@@ -33,11 +33,8 @@
 .example--inverse {
   @extend .ds-base;
   @extend .ds-base--inverse;
-  @extend .ds-u-padding--2;
-  max-width: fit-content;
-  > .ds-c-field {
-    width: $input-max-width;
-  }
+  margin-top: $spacer-3;
+  padding: $spacer-2;
 }
 // stylelint-enable
 
