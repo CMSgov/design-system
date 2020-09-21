@@ -6,7 +6,7 @@ ReactDOM.render(
   <>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-      <Tooltip triggerId="tooltip-1-id" triggerContent="button" triggerClassName="ds-c-button">
+      <Tooltip triggerContent="button" triggerClassName="ds-c-button">
         <p className="ds-u-margin--0">{'Tooltip trigger is the default <button> element'}</p>
       </Tooltip>
     </div>
@@ -14,7 +14,6 @@ ReactDOM.render(
       <p className="ds-u-margin--0">Tooltip with icon </p>
       <Tooltip
         ariaLabel="Label describing the subject of the tooltip"
-        triggerId="tooltip-2-id"
         triggerContent={<TooltipIcon />}
         triggerClassName="ds-c-tooltip__trigger-icon"
         triggerActiveClassName="ds-c-tooltip-icon--active"
@@ -27,7 +26,6 @@ ReactDOM.render(
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
       <Tooltip
-        triggerId="tooltip-3-id"
         triggerComponent="a"
         triggerHref="https://design.cms.gov"
         triggerContent="link"
@@ -40,7 +38,6 @@ ReactDOM.render(
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
       <Tooltip
         interactive
-        triggerId="tooltip-sd-id"
         triggerContent="interactive content"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
@@ -59,7 +56,6 @@ ReactDOM.render(
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with custom</p>
       <Tooltip
         placement="right"
-        triggerId="tooltip-5-id"
         triggerContent="placement"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
@@ -70,7 +66,6 @@ ReactDOM.render(
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with custom</p>
       <Tooltip
         offset={[0, 20]}
-        triggerId="tooltip-6-id"
         triggerContent="offset"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
@@ -82,7 +77,6 @@ ReactDOM.render(
       <Tooltip
         interactive
         dialog
-        triggerId="tooltip-7-id"
         triggerContent="on click"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
@@ -112,7 +106,6 @@ ReactDOM.render(
         inversed
         interactive
         placement="right"
-        triggerId="tooltip-8-id"
         triggerContent={<TooltipIcon inversed />}
         triggerClassName="ds-c-tooltip__trigger-icon"
         triggerActiveClassName="ds-c-tooltip-icon--active"

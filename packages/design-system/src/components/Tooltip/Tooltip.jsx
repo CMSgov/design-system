@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
+import { uniqueId } from 'lodash';
 
 export class Tooltip extends React.Component {
   constructor(props) {
     super(props);
 
+    this.id = this.props.id || uniqueId('trigger_');
     this.triggerElement = null;
     this.tooltipElement = null;
-
-    this.setTriggerElement = (element) => {
-      this.triggerElement = element;
+    this.setTriggerElement = (elem) => {
+      this.triggerElement = elem;
     };
-    this.setTooltipElement = (element) => {
-      this.tooltipElement = element;
+    this.setTooltipElement = (elem) => {
+      this.tooltipElement = elem;
     };
 
     this.state = { active: false };
@@ -98,7 +99,6 @@ export class Tooltip extends React.Component {
       triggerClassName,
       triggerContent,
       triggerHref,
-      triggerId,
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
@@ -109,7 +109,6 @@ export class Tooltip extends React.Component {
 
     return (
       <TriggerComponent
-        id={triggerId}
         type={TriggerComponent === 'button' ? 'button' : undefined}
         onTouchStart={() => this.setTooltipActive(!this.state.active)}
         onFocus={() => (dialog ? null : this.setTooltipActive(true))}
@@ -118,7 +117,7 @@ export class Tooltip extends React.Component {
         onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
         onClick={() => this.setTooltipActive(!this.state.active)}
         aria-label={ariaLabel || ''}
-        aria-describedby={`tooltip-${triggerId}`}
+        aria-describedby={this.id}
         className={triggerClasses}
         ref={this.setTriggerElement}
         href={triggerHref}
@@ -140,7 +139,6 @@ export class Tooltip extends React.Component {
       maxWidth,
       zIndex,
       transitionDuration,
-      triggerId,
     } = this.props;
 
     const tooltipStyle = { maxWidth, zIndex };
@@ -153,7 +151,7 @@ export class Tooltip extends React.Component {
 
     const tooltipContent = () => (
       <div
-        id={`tooltip-${triggerId}`}
+        id={this.id}
         tabIndex={dialog ? '-1' : null}
         ref={this.setTooltipElement}
         className={classNames(
@@ -168,7 +166,6 @@ export class Tooltip extends React.Component {
         onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
         onBlur={() => this.handleBlur()}
         data-placement={placement}
-        aria-labelledby={triggerId}
         aria-hidden={!this.state.active}
         role={dialog ? 'dialog' : 'tooltip'}
       >
@@ -179,7 +176,6 @@ export class Tooltip extends React.Component {
         )}
       </div>
     );
-
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         {dialog ? (
@@ -187,7 +183,7 @@ export class Tooltip extends React.Component {
             active={this.state.active}
             focusTrapOptions={{
               // Set initialFocus to the tooltip container element in case it contains no focusable elements
-              initialFocus: `#tooltip-${triggerId}`,
+              initialFocus: `#${this.id}`,
             }}
           >
             {tooltipContent()}
@@ -236,6 +232,10 @@ Tooltip.propTypes = {
    */
   dialog: PropTypes.bool,
   /**
+   * `id` applied to tooltip body container element. If not provided, a unique id will be automatically generated and used.
+   */
+  id: PropTypes.string,
+  /**
    * Set to `true` if the tooltip content contains tabbable, interactive elements like links or buttons. This prop expands the activation area to include the tooltip itself, allowing the content to interact with mouse events.
    */
   interactive: PropTypes.bool,
@@ -260,10 +260,6 @@ Tooltip.propTypes = {
    * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
    */
   transitionDuration: PropTypes.number,
-  /**
-   * `id` applied to the trigger element, used in `aria-labelledby`
-   */
-  triggerId: PropTypes.string.isRequired,
   /**
    * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`, or rarely an `input` element.
    */
