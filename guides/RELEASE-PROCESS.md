@@ -12,15 +12,20 @@
 
       **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
-   1. Run the release script to automatically begin the release process and publish to NPM.
+   1. Run the prepublish script to automatically prepare the NPM package for publishing.
+
+      ```
+      yarn pre-release
+      ```
+
+      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
+
+   1. After the prepublish script is completed, visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the folders and files
+   1. The next step is to run the lerna publish command to publish to NPM.
       ```
       yarn release
       ```
-      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
-   1. The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
-   1. After the release script is completed, verify the release is updated.
-      - check [NPM](https://www.npmjs.com/package/@cmsgov/design-system) to verify the package is updated 
-      - visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the folders and files
+   1. After the publish process is completed, check [NPM](https://www.npmjs.com/package/@cmsgov/design-system) to verify the package is updated.
    1. Next, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
       - Add a title (keep the same name as the release branch, i.e. `Release-2.0.0`) and short description for your changes.
    1. Make sure to merge the PR (i.e. `Release-2.0.0`) into master after Reviewer approval process.
@@ -48,7 +53,7 @@
 
 1. **Update the design.cms.gov documentation website**
 
-   1.  Connect to CMS VPN `cloudvpn.cms.gov`.
+   1. Connect to CMS VPN `cloudvpn.cms.gov`.
 
    1. [Log in to CBJ](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
 
