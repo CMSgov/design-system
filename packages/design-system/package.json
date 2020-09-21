@@ -23,7 +23,8 @@
     "ev-emitter": "^1.1.1",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.7.2",
-    "react-aria-modal": "^2.11.1"
+    "react-aria-modal": "^2.11.1",
+    "uswds": "^2.8.1"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
