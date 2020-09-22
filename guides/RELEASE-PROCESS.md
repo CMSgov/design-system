@@ -20,14 +20,24 @@
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
 
-   1. After the prepublish script is completed, visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the folders and files
+   1. After the prepublish script is completed, visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the relevant folders and files
+
+      - cmsgov-design-system includes `dist`, `src` folders and `package.json`, `README.md` files
+      - cmsgov-design-system-docs includes `src` folder and `package.json`, `README.md` files
+      - cmsgov-design-system-scrits includes `gulp`, `jest` folders and `cli.js`, `configDefaults.js`, `package.json`, `README.md` files
+
    1. The next step is to run the lerna publish command to publish to NPM.
+
       ```
       yarn release
       ```
+
    1. After the publish process is completed, check [NPM](https://www.npmjs.com/package/@cmsgov/design-system) to verify the package is updated.
+
    1. Next, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
+
       - Add a title (keep the same name as the release branch, i.e. `Release-2.0.0`) and short description for your changes.
+
    1. Make sure to merge the PR (i.e. `Release-2.0.0`) into master after Reviewer approval process.
 
 1. **Create a release on GitHub**
@@ -38,16 +48,16 @@
    1. Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
    1. Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
 
-   ```
-   ## 🚨 Breaking/Behavioral changes
-   ## 🚀 Added
-   ## 💅 Changed
-   ## 🛠 Fixed
-   ## 📦 Internal
-   ## 🚫 Deprecated
-   ```
+      ```
+      ## 🚨 Breaking/Behavioral changes
+      ## 🚀 Added
+      ## 💅 Changed
+      ## 🛠 Fixed
+      ## 📦 Internal
+      ## 🚫 Deprecated
+      ```
 
-   **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+      **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
 
    1. Review the release notes and publish
 
