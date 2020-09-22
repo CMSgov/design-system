@@ -20,7 +20,7 @@
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
 
-   1. After the prepublish script is completed, visually check that release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) contains the relevant folders and files
+   1. After the prepublish script is completed, unpack the release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check all relevant folders and files are present.
 
       - cmsgov-design-system includes `dist`, `src` folders and `package.json`, `README.md` files
       - cmsgov-design-system-docs includes `src` folder and `package.json`, `README.md` files
