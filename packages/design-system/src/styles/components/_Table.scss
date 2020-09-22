@@ -41,12 +41,6 @@
   }
 }
 
-.ds-c-table__header--label span {
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 @mixin ds-c-table--stacked {
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
