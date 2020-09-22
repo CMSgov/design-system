@@ -34,11 +34,7 @@
 
    1. After the publish process is completed, check [NPM](https://www.npmjs.com/package/@cmsgov/design-system) to verify the package is updated.
 
-   1. Next, [create a PR](https://github.com/CMSgov/design-system/blob/master/CONTRIBUTING.md#submitting-a-pull-request) for the release branch (i.e. `release-2.0.0`).
-
-      - Add a title (keep the same name as the release branch, i.e. `Release-2.0.0`) and short description for your changes.
-
-   1. Make sure to merge the PR (i.e. `Release-2.0.0`) into master after Reviewer approval process.
+   1. Create a PR for the release branch titled after the release (i.e. `Release 2.0.0`). Merge the PR into master after the changes are approved.
 
 1. **Create a release on GitHub**
 
