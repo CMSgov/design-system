@@ -36,6 +36,32 @@ $ds-c-inset-border-width: $spacer-half;
     width: $choice-size;
   }
 
+  // Style radio and checkboxes when errored
+  //  &.ds-c-choice--error + label::before {
+  //   border-color: $color-error;
+  // }
+
+  // Fade the checkbox and label
+  &:disabled + label {
+    color: $color-muted;
+
+    &::before {
+      background-color: $color-gray-lighter;
+      border-color: $color-gray-light;
+      cursor: not-allowed;
+    }
+  }
+
+  // Display a checkmark
+  &:checked + label::before {
+    background-color: $choice-checked-background-color;
+    background-image: url('#{$image-path}/checkmark-white.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: $choice-size - $spacer-1;
+    border-color: $choice-checked-background-color;
+  }
+
   // Display an outline
   &:focus + label::before {
     @if $ds-include-focus-styles {
@@ -67,22 +93,39 @@ $ds-c-inset-border-width: $spacer-half;
       margin-left: $spacer-1;
     }
   }
-  // Style radio and checkboxes when errored
-  // &.ds-c-choice--error + label::before {
-  //   border-color: $color-error;
-  // }
 }
 
 .ds-c-choice--inverse {
-  + label::before {
-    background-color: transparent;
-    border-color: $choice-border-color-inverse;
-  }
-
   // Style radio and checkboxes when errored
   // &.ds-c-choice--error + label::before {
   //   border-color: $color-error-light;
   // }
+
+  &:disabled + label {
+    color: $color-muted-inverse;
+
+    &::before {
+      background-color: rgba($color-muted-inverse, 0.15);
+      border-color: $color-gray-light;
+    }
+  }
+
+  + label::before {
+    background-color: transparent;
+    border-color: $choice-border-color-inverse;
+  }
+  &:checked + label::before {
+    border-color: $choice-checked-background-color;
+  }
+
+  &:focus + label::before {
+    @if $ds-include-focus-styles {
+      border-color: $choice-border-color-inverse;
+      box-shadow: 0 0 0 3px $focus-color-inverse;
+    } @else {
+      box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
+    }
+  }
 }
 
 @if $ds-include-focus-styles {
@@ -94,57 +137,12 @@ $ds-c-inset-border-width: $spacer-half;
   }
 }
 
-.ds-c-choice--inverse:focus + label::before {
-  @if $ds-include-focus-styles {
-    border-color: $choice-border-color-inverse;
-    box-shadow: 0 0 0 3px $focus-color-inverse;
-  } @else {
-    box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
-  }
-}
-
-// Display a checkmark
-.ds-c-choice:checked + label::before {
-  background-color: $choice-checked-background-color;
-  background-image: url('#{$image-path}/checkmark-white.svg');
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: $choice-size - $spacer-1;
-  border-color: $choice-checked-background-color;
-}
-
-// Fade the checkbox and label
-.ds-c-choice:disabled {
-  + label {
-    color: $color-muted;
-
-    &::before {
-      background-color: $color-gray-lighter;
-      border-color: $color-gray-light;
-      cursor: not-allowed;
-    }
-  }
-}
-
-.ds-c-choice--inverse:disabled {
-  + label {
-    color: $color-muted-inverse;
-
-    &::before {
-      background-color: rgba($color-muted-inverse, 0.15);
-    }
-  }
-}
-
 // Display a circular radio button
 .ds-c-choice[type='radio'] + label::before {
   border-radius: 100%;
 }
 
-/*
-Size variants
-*/
-
+// Size variants
 .ds-c-choice--small {
   + label {
     min-height: $choice-size-small;
