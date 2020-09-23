@@ -183,8 +183,7 @@ yargs
     builder: (yargs) => {
       yargs
         .positional('directories..', {
-          desc:
-            'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
+          desc: 'The relative path to one or more directories that will be linted.',
           type: 'string',
           demandOption: true,
         })
