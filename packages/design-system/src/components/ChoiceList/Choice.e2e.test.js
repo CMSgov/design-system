@@ -10,7 +10,7 @@ describe('Choice component', () => {
   it('Should render', async () => {
     await driver.get(rootURL);
 
-    const el = await getElementByClassName('ds-c-choice');
+    const el = await getElementByClassName('ds-c-fieldset');
     expect(el).toBeTruthy();
   });
 

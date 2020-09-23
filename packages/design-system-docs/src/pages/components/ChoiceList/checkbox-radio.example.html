@@ -66,8 +66,34 @@
     </div>
   </fieldset>
   <fieldset class="ds-c-fieldset">
-    <legend class="ds-c-label"><span>Small variant example</span></legend>
-    <div>
+    <legend class="ds-c-label"><span>Small size example</span></legend>
+    <input
+      class="ds-c-choice ds-c-choice--small"
+      id="small-1"
+      type="radio"
+      name="size-variants"
+      value="normal"
+      checked
+    />
+    <label for="small-1">
+      <span>Choice 1</span>
+    </label>
+    <input
+      class="ds-c-choice ds-c-choice--small"
+      id="small-2"
+      type="radio"
+      name="size-variants"
+      value="small"
+    />
+    <label for="small-2">
+      <span>Choice 2</span>
+    </label>
+  </fieldset>
+  <div class="example--wrapper example--inverse">
+    <fieldset class="ds-c-fieldset">
+      <legend class="ds-c-label"><span>Inverse example</span></legend>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+      <span class="ds-c-field__hint ds-u-color--error-light">Example error message</span>
       <input
         class="ds-c-choice ds-c-choice--small"
         id="small-1"

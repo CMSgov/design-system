@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -63,7 +63,7 @@
     "node-notifier": "5.4.0",
     "node-sass": "4.14.1",
     "postcss-import": "^11.1.0",
-    "prismjs": "1.16.0",
+    "prismjs": "1.21.0",
     "react-app-polyfill": "^1.0.6",
     "react-docgen": "4.1.1",
     "react-docgen-typescript": "^1.18.0",
