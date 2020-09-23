@@ -37,7 +37,7 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.onChange = this.props.onChange;
       choiceProps.size = this.props.size;
       choiceProps.type = this.props.type;
-      choiceProps.className = classNames(choiceProps.className, {
+      choiceProps.inputClassName = classNames(choiceProps.inputClassName, {
         'ds-c-choice--error': this.props.errorMessage,
       });
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
