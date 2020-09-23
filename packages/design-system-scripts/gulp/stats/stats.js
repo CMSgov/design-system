@@ -6,6 +6,7 @@
  */
 const cssstats = require('cssstats');
 const fs = require('mz/fs');
+const got = require('got');
 const getPackageName = require('../common/getPackageName');
 const logStats = require('./logStats');
 const path = require('path');
@@ -48,16 +49,21 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
   }
 
   if (!skipLatest && packageName) {
-    const latestCSSPath = path.resolve('node_modules', packageName, 'dist', 'css', 'index.css');
-    if (fs.existsSync(latestCSSPath)) {
-      latest = await getCSSStats(latestCSSPath);
-    } else {
-      logError('getStatsObject', `Unable to find latest release css in ${latestCSSPath}`);
-      latest = current;
+    // Download latest release css using unpkg
+    const latestCSSPath = path.resolve(tmpPath, 'latestCSS.css');
+    const latestCSSUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
+
+    try {
+      const response = await got(latestCSSUrl);
+      return fs.writeFile(latestCSSPath, response.body, 'utf8').then(async () => {
+        latest = await getCSSStats(latestCSSPath);
+        return { current, latest };
+      });
+    } catch (error) {
+      logError('getStatsObject', `Unable to download latest css from ${latestCSSUrl}: ${error}`);
+      return { current, latest: current };
     }
   }
-
-  return { current, latest };
 }
 
 /**
