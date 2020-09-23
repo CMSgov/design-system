@@ -41,7 +41,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   // Source package Sass files
   gulp.watch(`${src}/**/*.scss`, async () => {
     await copyAll(sourceDir);
-    await compileSourceSass(sourceDir);
+    await compileSourceSass(sourceDir, options);
     await compileDocsSass(docsDir, options, browserSync);
   });
 

@@ -68,23 +68,37 @@ function compileSass(src, dest, includePaths, browserSync) {
   return streamPromise(stream);
 }
 
-async function compileSourceSass(sourceDir, browserSync) {
+async function compileSourceSass(sourceDir, options, browserSync) {
   // 'styles' folder is renamed to 'css'
   const src = path.join(sourceDir, 'src', 'styles');
   const dest = path.join(sourceDir, 'dist', 'css');
-  const includePaths = [path.resolve(sourceDir, 'node_modules'), src];
+
+  // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
+  // A standard child DS will have `node_modules` at the root of the repo
+  const nodeModuleRelativePath = options.core
+    ? path.resolve(sourceDir, '../../node_modules')
+    : path.resolve(sourceDir, 'node_modules');
+  const includePaths = [
+    src,
+    nodeModuleRelativePath,
+    path.resolve(nodeModuleRelativePath, 'uswds', 'dist', 'scss'),
+  ];
   await compileSass(src, dest, includePaths, browserSync);
 }
 
 async function compileDocsSass(docsDir, options, browserSync) {
   const src = path.join(docsDir, 'src');
   const dest = path.join(docsDir, 'dist');
+
+  // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
+  // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
+  const nodeModuleRelativePath = options.core
+    ? path.resolve(docsDir, '../../node_modules')
+    : path.resolve(docsDir, '../node_modules');
   const includePaths = [
-    // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
-    path.resolve(docsDir, '../../node_modules'),
-    // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
-    path.resolve(docsDir, '../node_modules'),
     src,
+    nodeModuleRelativePath,
+    path.resolve(nodeModuleRelativePath, 'uswds', 'dist', 'scss'),
   ];
   await compileSass(src, dest, includePaths, browserSync);
 }
