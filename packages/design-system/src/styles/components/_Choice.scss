@@ -31,12 +31,10 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Style radio and checkboxes when errored
 .ds-c-choice--error {
-  .ds-c-choice + label::before,
-  .ds-c-choice:checked + label::before {
+  .ds-c-choice + label::before {
     border-color: $color-error;
   }
-  .ds-c-choice--inverse + label::before,
-  .ds-c-choice--inverse:checked + label::before {
+  .ds-c-choice--inverse + label::before {
     border-color: $color-error-light;
   }
 }
