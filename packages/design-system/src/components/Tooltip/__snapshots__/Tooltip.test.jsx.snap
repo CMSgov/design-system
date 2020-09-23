@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders custom trigger component 1`] = `
+<div>
+  <a
+    aria-describedby="trigger_4"
+    aria-label=""
+    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    href="design.cms.gov"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+  >
+    <TooltipIcon />
+  </a>
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
+  >
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip"
+      data-placement="top"
+      id="trigger_4"
+      onBlur={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex={null}
+    >
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <p
+          className="ds-u-margin--0"
+        >
+          Tooltip body content
+        </p>
+      </div>
+    </div>
+  </CSSTransition>
+</div>
+`;
+
+exports[`Tooltip renders default trigger icon 1`] = `
+<div>
+  <button
+    aria-describedby="trigger_1"
+    aria-label=""
+    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  >
+    <TooltipIcon />
+  </button>
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
+  >
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip"
+      data-placement="top"
+      id="trigger_1"
+      onBlur={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex={null}
+    >
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <p
+          className="ds-u-margin--0"
+        >
+          Tooltip body content
+        </p>
+      </div>
+    </div>
+  </CSSTransition>
+</div>
+`;
+
+exports[`Tooltip renders dialog tooltip 1`] = `
+<div>
+  <button
+    aria-describedby="trigger_5"
+    aria-label=""
+    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  >
+    <TooltipIcon />
+  </button>
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
+  >
+    <FocusTrap
+      _createFocusTrap={[Function]}
+      active={false}
+      focusTrapOptions={
+        Object {
+          "initialFocus": "#trigger_5",
+        }
+      }
+      paused={false}
+    >
+      <div
+        aria-hidden={true}
+        className="ds-c-tooltip"
+        data-placement="top"
+        id="trigger_5"
+        onBlur={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "maxWidth": "300px",
+            "zIndex": "9999",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="ds-c-tooltip__arrow"
+          data-popper-arrow={true}
+        />
+        <div
+          className="ds-c-tooltip__content ds-base"
+        >
+          <p
+            className="ds-u-margin--0"
+          >
+            Tooltip body content
+          </p>
+        </div>
+      </div>
+    </FocusTrap>
+  </CSSTransition>
+</div>
+`;
+
+exports[`Tooltip renders interactive tooltip 1`] = `
+<div>
+  <button
+    aria-describedby="trigger_3"
+    aria-label=""
+    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  >
+    <TooltipIcon />
+  </button>
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
+  >
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip"
+      data-placement="top"
+      id="trigger_3"
+      onBlur={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex={null}
+    >
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <a
+          href="design.cms.gov"
+        >
+          test
+        </a>
+      </div>
+      <div
+        className="ds-c-tooltip__interactive-border"
+        style={
+          Object {
+            "border": "15px solid transparent",
+            "left": "-15px",
+            "top": "-15px",
+            "zIndex": "-999",
+          }
+        }
+      />
+    </div>
+  </CSSTransition>
+</div>
+`;
+
+exports[`Tooltip renders inverse tooltip 1`] = `
+<div>
+  <button
+    aria-describedby="trigger_2"
+    aria-label=""
+    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  >
+    <TooltipIcon />
+  </button>
+  <CSSTransition
+    classNames="ds-c-tooltip"
+    in={false}
+    timeout={250}
+  >
+    <div
+      aria-hidden={true}
+      className="ds-c-tooltip ds-c-tooltip--inverse"
+      data-placement="top"
+      id="trigger_2"
+      onBlur={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tooltip"
+      style={
+        Object {
+          "maxWidth": "300px",
+          "zIndex": "9999",
+        }
+      }
+      tabIndex={null}
+    >
+      <div
+        className="ds-c-tooltip__arrow"
+        data-popper-arrow={true}
+      />
+      <div
+        className="ds-c-tooltip__content ds-base"
+      >
+        <p
+          className="ds-u-margin--0"
+        >
+          Tooltip body content
+        </p>
+      </div>
+    </div>
+  </CSSTransition>
+</div>
+`;
