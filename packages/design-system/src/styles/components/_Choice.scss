@@ -1,5 +1,7 @@
 @import '../settings/index.scss';
 
+$ds-c-inset-border-width: $spacer-half;
+
 // Order of the choice styles is important to ensure styles have the correct precedent
 // normal < errored < checked < disabled < focused
 
@@ -152,3 +154,24 @@
     border-color: $color-primary-darker;
   }
 }
+
+// TODO: rename to .ds-c-choice__checked-child
+/* stylelint-disable selector-class-pattern */
+
+// Checked children container
+.ds-c-choice__checkedChild {
+  border-left: $ds-c-inset-border-width solid $color-primary;
+  margin-bottom: $spacer-2;
+  margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
+  padding: $spacer-2;
+
+  &--inverse {
+    border-left-color: $color-white;
+  }
+
+  &--small {
+    margin-left: $spacer-1;
+  }
+}
+
+/* stylelint-enable selector-class-pattern */
