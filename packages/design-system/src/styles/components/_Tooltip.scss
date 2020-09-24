@@ -1,0 +1,170 @@
+@import '../settings/index.scss';
+
+$tooltip-icon-size: 16px;
+$tooltip-arrow-size: 8px;
+$tooltip-plus-border-size: 24px;
+
+$tooltip-border-radius: 4px;
+$tooltip-color: $color-base-inverse;
+$tooltip-background-color: $color-background-inverse;
+$tooltip-color-inverse: $color-base;
+$tooltip-background-color-inverse: $color-background;
+
+%trigger-reset-styles {
+  // override user agent button styles
+  background: none;
+  border: 0;
+  display: inline-block;
+  margin: 0;
+}
+
+// stylelint-disable selector-no-qualifying-type
+// Tooltip trigger style
+.ds-c-tooltip__trigger {
+  cursor: pointer;
+}
+
+// Prevent the trigger from reactivating the tooltip when clicking outside of tooltipDialog tooltips
+.ds-c-tooltip__trigger--click-only-active {
+  pointer-events: none;
+}
+
+.ds-c-tooltip__trigger-icon {
+  @extend %trigger-reset-styles;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}
+
+.ds-c-tooltip__trigger-link {
+  @extend %trigger-reset-styles;
+  color: $color-primary;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+// stylelint-enable selector-no-qualifying-type
+
+// Tooltip arrow
+.ds-c-tooltip__arrow {
+  height: $tooltip-icon-size;
+  pointer-events: none;
+  width: $tooltip-icon-size;
+
+  &::after {
+    background: $tooltip-background-color;
+    content: '';
+    height: $tooltip-arrow-size;
+    left: 50%;
+    position: absolute;
+    width: $tooltip-arrow-size;
+  }
+}
+
+// Interior content of tooltip
+.ds-c-tooltip__content {
+  color: $tooltip-color;
+  font-size: $small-font-size;
+  font-weight: 400;
+  padding: $spacer-1;
+}
+
+// The invisible area around the tooltip container that keeps the tooltip visible on hover
+.ds-c-tooltip__interactive-border {
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+
+// The greater tooltip container which gets added in via state
+// max-width and z-index are set via props to account for different uses
+.ds-c-tooltip {
+  background: $tooltip-background-color;
+  border-radius: $tooltip-border-radius;
+  box-sizing: border-box;
+
+  display: none;
+  opacity: 0;
+}
+
+// Tooltip transition styles
+// http://reactcommunity.org/react-transition-group/css-transition
+.ds-c-tooltip-enter {
+  display: block;
+  opacity: 0;
+}
+
+.ds-c-tooltip-enter-active {
+  display: block;
+  opacity: 1;
+  transition: opacity $animation-speed-1;
+}
+
+.ds-c-tooltip-enter-done {
+  display: block;
+  opacity: 1;
+}
+
+.ds-c-tooltip-exit {
+  display: block;
+  opacity: 1;
+}
+
+.ds-c-tooltip-exit-active {
+  display: block;
+  opacity: 0;
+  transition: opacity $animation-speed-1;
+}
+
+.ds-c-tooltip-exit-done {
+  display: none;
+  opacity: 0;
+}
+
+// Tooltip arrow positioning based on placement of trigger
+.ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
+  top: 100%;
+  &::after {
+    top: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
+  top: -$tooltip-arrow-size;
+  &::after {
+    bottom: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
+  right: -$tooltip-arrow-size;
+  &::after {
+    left: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}
+
+.ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
+  left: -$tooltip-arrow-size;
+  &::after {
+    left: 0;
+    transform: translateX(50%) translateY(50%) rotate(45deg);
+  }
+}
+
+// Inverse version of the tooltip body/content
+.ds-c-tooltip--inverse {
+  background: $tooltip-background-color-inverse;
+
+  .ds-c-tooltip__arrow::after {
+    background: $tooltip-background-color-inverse;
+  }
+
+  .ds-c-tooltip__content {
+    color: $tooltip-color-inverse;
+  }
+}
