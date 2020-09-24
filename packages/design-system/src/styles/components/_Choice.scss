@@ -41,6 +41,22 @@ $ds-c-inset-border-width: $spacer-half;
     width: $choice-size;
   }
 
+  + label::after {
+    background: transparent;
+    border: solid;
+    border-color: $color-white;
+    border-top-color: transparent;
+    border-width: 0 0 4px 4px;
+    content: '';
+    height: 4px;
+    left: 9px;
+    opacity: 0;
+    position: absolute;
+    top: 10px;
+    transform: rotate(-45deg);
+    width: 10px;
+  }
+
   // Errored checkbox/radio button
   // Currently only enabled in HC.gov DS
   // &.ds-c-choice--error + label::before {
@@ -50,11 +66,12 @@ $ds-c-inset-border-width: $spacer-half;
   // Checked checkbox/radio button
   &:checked + label::before {
     background-color: $choice-checked-background-color;
-    background-image: url('#{$image-path}/checkmark-white.svg');
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: $choice-size - $spacer-1;
     border-color: $choice-checked-border-color;
+  }
+
+  // Checked icon
+  &:checked + label::after {
+    opacity: 1;
   }
 
   // Disabled checkbox/radio button and label
@@ -97,6 +114,7 @@ $ds-c-inset-border-width: $spacer-half;
   // }
 
   // Checked checkbox/radio button
+  // Need to repeat this styling to override error border-color when checked
   &:checked + label::before {
     border-color: $choice-checked-background-color;
   }
@@ -139,10 +157,14 @@ $ds-c-inset-border-width: $spacer-half;
       top: 2px;
       width: $choice-size-small;
     }
-  }
 
-  &:checked + label::before {
-    background-size: $choice-size-small;
+    &::after {
+      border-width: 0 0 3px 3px;
+      height: 3px;
+      left: 5px;
+      top: 8px;
+      width: 7px;
+    }
   }
 }
 
