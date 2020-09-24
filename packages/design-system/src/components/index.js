@@ -28,4 +28,6 @@ export { default as TableRow } from './Table/TableRow';
 export { default as Tabs } from './Tabs/Tabs';
 export { default as TabPanel } from './Tabs/TabPanel';
 export { default as TextField, unmaskValue } from './TextField/TextField';
+export { default as Tooltip } from './Tooltip/Tooltip';
+export { default as TooltipIcon } from './Tooltip/TooltipIcon';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';

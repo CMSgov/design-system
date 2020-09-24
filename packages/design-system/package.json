@@ -18,12 +18,15 @@
     "!src/components/**/*.test.jsx"
   ],
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "classnames": "^2.2.5",
     "downshift": "^3.2.10",
     "ev-emitter": "^1.1.1",
+    "focus-trap-react": "^6.0.0",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.7.2",
-    "react-aria-modal": "^2.11.1"
+    "react-aria-modal": "^2.11.1",
+    "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
