@@ -6,7 +6,7 @@ module.exports = function (api) {
       '@babel/preset-env',
       {
         useBuiltIns: 'entry',
-        corejs: '3.0.0',
+        corejs: '3',
         // CMSDS scripts will add this property when compiling for ESM, otherwise will compile in CommonJS
         // modules: false
       },
