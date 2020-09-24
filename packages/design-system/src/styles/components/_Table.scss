@@ -115,7 +115,7 @@
 
   &.ds-c-table--striped tbody {
     tr:nth-child(even) {
-      background-color: $color-gray-lightest;
+      background-color: $color-gray-light;
     }
   }
 
@@ -156,7 +156,7 @@
 
 .ds-c-table--striped tbody {
   tr:nth-child(even) {
-    background-color: $color-gray-lightest;
+    background-color: $color-gray-light;
   }
 }
 
