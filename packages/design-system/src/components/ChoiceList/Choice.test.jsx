@@ -7,7 +7,7 @@ const defaultProps = {
   name: 'foo',
   value: 'boo',
   type: 'checkbox',
-  children: 'George Washington',
+  label: 'George Washington',
 };
 
 function render(customProps = {}) {
@@ -21,7 +21,7 @@ function render(customProps = {}) {
 describe('Choice', () => {
   it('accepts a node as innerHTML', () => {
     const { wrapper } = render({
-      children: (
+      label: (
         <p>
           <strong>Hello</strong> World
         </p>
@@ -113,7 +113,6 @@ describe('Choice', () => {
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--right')).toBe(false);
   });
 
   it('applies small className to input', () => {
@@ -163,7 +162,7 @@ describe('Choice', () => {
   it('generates a unique id', () => {
     const sharedProps = {
       name: 'presidents',
-      children: defaultProps.children,
+      label: defaultProps.label,
     };
     const wrapper = shallow(
       <div>

@@ -1,32 +1,16 @@
 @import '../settings/index.scss';
 
-$ds-c-inset-border-width: $spacer-half;
+// Order of the choice styles is important to ensure styles have the correct precedent
+// normal < errored < checked < disabled < focused
 
-// Hide the default browser checkbox/radio button since we'll
-// create our own custom version
-/* stylelint-disable max-nesting-depth */
 .ds-c-choice {
+  // Hide the default browser checkbox/radio button
+  // We create our own custom version using '+ label::before'
   left: -999em;
   opacity: 0;
   position: absolute;
 
-  // Checked children container
-  &__checkedChild {
-    border-left: $ds-c-inset-border-width solid $color-primary;
-    margin-bottom: $spacer-2;
-    margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
-    padding: $spacer-2;
-
-    // Checked children container on dark background
-    &--inverse {
-      border-left-color: $color-white;
-    }
-
-    // Small input variant
-    &--small {
-      margin-left: $spacer-1;
-    }
-  }
+  // Choice label
   + label {
     align-items: center;
     cursor: pointer;
@@ -38,56 +22,94 @@ $ds-c-inset-border-width: $spacer-half;
     min-height: $choice-size;
     padding-left: $choice-size + $spacer-1;
     position: relative;
+  }
+  
+  // Choice checkbox/radio button
+  + label::before {
+    background-color: $color-background;
+    border: $choice-border-width solid $choice-border-color;
+    box-sizing: border-box;
+    content: '\a0';
+    height: $choice-size;
+    left: 0;
+    line-height: $choice-size;
+    position: absolute;
+    text-indent: 0.15em;
+    top: 0;
+    width: $choice-size;
+  }
+
+  // Errored checkbox/radio button
+  // Currently only enabled in HC.gov DS
+  // &.ds-c-choice--error + label::before {
+  //   border-color: $color-error;
+  // }
+
+  // Checked checkbox/radio button
+  &:checked + label::before {
+    background-color: $choice-checked-background-color;
+    background-image: url('#{$image-path}/checkmark-white.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: $choice-size - $spacer-1;
+    border-color: $choice-checked-background-color;
+  }
+
+  // Disabled checkbox/radio button and label
+  &:disabled + label {
+    color: $color-muted;
+
     &::before {
-      background-color: $color-background;
-      border: $choice-border-width solid $choice-border-color;
-      box-sizing: border-box;
-      content: '\a0';
-      height: $choice-size;
-      left: 0;
-      line-height: $choice-size;
-      position: absolute;
-      text-indent: 0.15em;
-      top: 0;
-      width: $choice-size;
-    }
-    &::after {
-      background: transparent;
-      border: solid;
-      border-color: $color-white;
-      border-top-color: transparent;
-      border-width: 0 0 4px 4px;
-      content: '';
-      height: 4px;
-      left: 9px;
-      opacity: 0;
-      position: absolute;
-      top: 10px;
-      transform: rotate(-45deg);
-      width: 10px;
+      background-color: $color-gray-lighter;
+      border-color: $color-gray-light;
+      cursor: not-allowed;
     }
   }
-  &:disabled {
-    + label {
-      color: $color-muted;
 
-      &::before {
-        background-color: $color-gray-lighter;
-        border: $choice-border-width solid $color-gray-light;
-        cursor: not-allowed;
-      }
+  // Focused checkbox/radio button
+  &:focus + label::before {
+    @if $ds-include-focus-styles {
+      border-color: $color-base;
+      border-width: 3px;
+      box-shadow: 0 0 0 3px $focus-color;
+      // Transparent outline for Windows High Contrast Mode
+      outline: 3px solid transparent;
+      outline-offset: 3px;
+    } @else {
+      box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
     }
   }
 }
-/* stylelint-enable max-nesting-depth */
 
 .ds-c-choice--inverse {
-  + label {
+  // Choice checkbox/radio button
+  + label::before {
+    background-color: transparent;
+    border-color: $choice-border-color-inverse;
+  }
+
+  // Errored checkbox/radio button
+  // Currently only enabled in HC.gov DS
+  // &.ds-c-choice--error + label::before {
+  //   border-color: $color-error-light;
+  // }
+
+  // Checked checkbox/radio button
+  &:checked + label::before {
+    border-color: $choice-checked-background-color;
+  }
+
+  // Disabled checkbox/radio button and label
+  &:disabled + label {
+    color: $color-muted-inverse;
+
     &::before {
-      background-color: $color-background-inverse;
-      border-color: $choice-border-color-inverse;
+      background-color: rgba($color-muted-inverse, 0.15);
+      border-color: $color-gray-light;
     }
   }
+
+  // Focused checkbox/radio button
   &:focus + label::before {
     @if $ds-include-focus-styles {
       border-color: $choice-border-color-inverse;
@@ -96,48 +118,6 @@ $ds-c-inset-border-width: $spacer-half;
       box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
     }
   }
-  &:disabled + label {
-    color: $color-muted-inverse;
-    &::before {
-      background-color: rgba($color-muted-inverse, 0.15);
-      box-shadow: 0 0 0 1px $color-muted-inverse;
-    }
-  }
-}
-
-// Display an outline
-.ds-c-choice:focus + label::before {
-  @if $ds-include-focus-styles {
-    border-color: $color-base;
-    border-width: 3px;
-    box-shadow: 0 0 0 3px $focus-color;
-    // Transparent outline for Windows High Contrast Mode
-    outline: 3px solid transparent;
-    outline-offset: 3px;
-  } @else {
-    box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
-  }
-}
-
-@if $ds-include-focus-styles {
-  .ds-c-choice--small:focus + label::before {
-    border-width: 2px;
-  }
-  .ds-c-choice:checked:focus + label::before {
-    border-color: $color-primary-darker;
-  }
-}
-
-// Display a checkmark
-// Using CSS to display the checkmark because background images don't how in high contrast mode on windows.
-.ds-c-choice:checked + label {
-  &::after {
-    opacity: 1;
-  }
-  &::before {
-    background-color: $choice-checked-background-color;
-    border-color: $choice-checked-background-color;
-  }
 }
 
 // Display a circular radio button
@@ -145,24 +125,7 @@ $ds-c-inset-border-width: $spacer-half;
   border-radius: 100%;
 }
 
-/*
-Right-to-Left
-*/
-
-.ds-c-choice--right + label {
-  padding-left: 0;
-  padding-right: $choice-size + $spacer-1;
-
-  &::before {
-    left: auto;
-    right: 0;
-  }
-}
-
-/*
-Size variants
-*/
-
+// Size variants
 .ds-c-choice--small {
   + label {
     min-height: $choice-size-small;
@@ -174,22 +137,18 @@ Size variants
       top: 2px;
       width: $choice-size-small;
     }
-
-    &::after {
-      border-width: 0 0 3px 3px;
-      height: 3px;
-      left: 5px;
-      top: 8px;
-      width: 7px;
-    }
   }
 
   &:checked + label::before {
     background-size: $choice-size-small;
   }
+}
 
-  &.ds-c-choice--right + label {
-    padding-left: 0;
-    padding-right: $choice-size-small + $spacer-1;
+@if $ds-include-focus-styles {
+  .ds-c-choice--small:focus + label::before {
+    border-width: 2px;
+  }
+  .ds-c-choice:checked:focus + label::before {
+    border-color: $color-primary-darker;
   }
 }

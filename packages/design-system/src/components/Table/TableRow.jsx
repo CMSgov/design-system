@@ -1,26 +1,40 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 
-export const TableRow = ({ children, className, ...others }) => {
-  const classes = classNames('ds-c-table__row', className);
+export const TableRow = ({ children, _isTableHeadChild, _stackable, ...tableRowProps }) => {
+  const renderChildren = () => {
+    return React.Children.map(children, (child) => {
+      // Extend props before rendering.
+      if (child) {
+        return React.cloneElement(child, {
+          _isTableHeadChild: _isTableHeadChild,
+          _stackable: _stackable,
+        });
+      }
+      return child;
+    });
+  };
 
   return (
-    <tr className={classes} role="row" {...others}>
-      {children}
+    <tr role="row" {...tableRowProps}>
+      {_isTableHeadChild || _stackable ? renderChildren() : children}
     </tr>
   );
 };
 
 TableRow.propTypes = {
   /**
-   * The table row contents, usually `TableDataCell` and `TableHeaderCell`.
+   * The table row contents, usually `TableCell`.
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
-   * Additional classes to be added to the table row element.
+   * @hide-prop This gets set from the parent `TableHead` component
    */
-  className: PropTypes.string,
+  _isTableHeadChild: PropTypes.bool,
+  /**
+   * @hide-prop This gets set from the parent `Table` component
+   */
+  _stackable: PropTypes.bool,
 };
 
 export default TableRow;

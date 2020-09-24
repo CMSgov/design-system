@@ -183,8 +183,9 @@ exports[`FormLabel renders requirementLabel string 1`] = `
 </label>
 `;
 
-exports[`FormLabel supports additional classNames 1`] = `
+exports[`FormLabel supports additional attributes 1`] = `
 <label
+  ariaLabel="testing aria"
   className="ds-c-label ds-u-foo"
 >
   <span

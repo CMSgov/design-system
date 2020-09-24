@@ -115,7 +115,7 @@ describe('MonthPicker', () => {
 
     const { wrapper } = renderMonthPicker({ locale: 'en' });
     wrapper.find('Choice').forEach((choice, i) => {
-      expect(choice.props().children).toEqual(shortMonthNames[i]);
+      expect(choice.props().label).toEqual(shortMonthNames[i]);
       expect(choice.props()['aria-label']).toEqual(longMonthNames[i]);
     });
   });

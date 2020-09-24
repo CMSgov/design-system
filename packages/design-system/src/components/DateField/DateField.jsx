@@ -87,7 +87,7 @@ export class DateField extends React.PureComponent {
     const labelId = this.labelId();
 
     return (
-      <fieldset className="ds-c-fieldset">
+      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           component="legend"
           errorMessage={this.props.errorMessage}
@@ -110,6 +110,7 @@ export class DateField extends React.PureComponent {
               if (this.props.monthFieldRef) this.props.monthFieldRef(el);
             }}
             defaultValue={this.props.monthDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.monthLabel}
             name={this.props.monthName}
             value={this.props.monthValue}
@@ -127,6 +128,7 @@ export class DateField extends React.PureComponent {
               if (this.props.dayFieldRef) this.props.dayFieldRef(el);
             }}
             defaultValue={this.props.dayDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.dayLabel}
             name={this.props.dayName}
             value={this.props.dayValue}
@@ -144,6 +146,7 @@ export class DateField extends React.PureComponent {
               if (this.props.yearFieldRef) this.props.yearFieldRef(el);
             }}
             defaultValue={this.props.yearDefaultValue}
+            disabled={this.props.disabled}
             label={this.props.yearLabel}
             name={this.props.yearName}
             value={this.props.yearValue}
@@ -174,6 +177,10 @@ DateField.propTypes = {
    */
   autoComplete: PropTypes.bool,
   /**
+   * Additional classes to be added to the root fieldset element
+   */
+  className: PropTypes.string,
+  /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
    * to the `onBlur` and `onChange` callbacks. This method receives an object as
@@ -182,6 +189,10 @@ DateField.propTypes = {
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter: PropTypes.func,
+  /**
+   * Disables all three input fields.
+   */
+  disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
   /**
    * Additional hint text to display above the individual month/day/year fields

@@ -71,9 +71,9 @@ VerticalNav.propTypes = {
   selectedId: PropTypes.string,
   id: PropTypes.string,
   /**
-   * An array of `VerticalNavItem` data objects
+   * An array of [`VerticalNavItem`]({{root}}/components/vertical-nav/#components.vertical-nav.VerticalNavItem) data objects
    */
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape).isRequired,
   /**
    * Indicates this list is nested within another nav item.
    */

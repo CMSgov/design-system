@@ -42,9 +42,9 @@ const UsaBanner = function (props) {
               alt="Dot gov"
             />
             <p className="c-usa-banner__media-body">
-              <strong>The .gov means it’s official.</strong>
-              <br /> Federal government websites often end in .gov or .mil. Before sharing sensitive
-              information, make sure you’re on a federal government site.
+              <strong>Official websites use .gov</strong>
+              <br />A <strong>.gov</strong> website belongs to an official government organization
+              in the United States.
             </p>
           </div>
           <div className="c-usa-banner__guidance ds-u-padding-top--2 ds-u-sm-padding-top--0">
@@ -54,9 +54,17 @@ const UsaBanner = function (props) {
               alt="Https"
             />
             <p className="c-usa-banner__media-body">
-              <strong>The site is secure.</strong>
-              <br /> The <strong>https://</strong> ensures that you are connecting to the official
-              website and that any information you provide is encrypted and transmitted securely.
+              <strong>Secure .gov websites use HTTPS</strong>
+              <br />A <strong>lock</strong> ({' '}
+              <span>
+                <img
+                  className="c-usa-banner__lock-image"
+                  src={path.join('/', process.env.rootPath, '/images/icon-lock.svg')}
+                  alt="Lock"
+                />
+              </span>{' '}
+              ) or <strong>https://</strong> means you’ve safely connected to the .gov website.
+              Share sensitive information only on official, secure websites.
             </p>
           </div>
         </div>

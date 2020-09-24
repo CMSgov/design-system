@@ -90,7 +90,7 @@ export class Dropdown extends React.PureComponent {
       <div className={classes}>
         <FormLabel
           className={labelClassName}
-          component={'label'}
+          component="label"
           errorMessage={errorMessage}
           fieldId={this.id()}
           hint={hint}

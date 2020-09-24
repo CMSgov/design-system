@@ -37,16 +37,15 @@ export class ChoiceList extends React.PureComponent {
       choiceProps.onChange = this.props.onChange;
       choiceProps.size = this.props.size;
       choiceProps.type = this.props.type;
+      choiceProps.inputClassName = classNames(choiceProps.inputClassName, {
+        'ds-c-choice--error': this.props.errorMessage,
+      });
       choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
       choiceProps.inputRef = (ref) => {
         this.choiceRefs.push(ref);
       };
 
-      return (
-        <Choice key={choiceProps.value} {...choiceProps}>
-          {choiceProps.label}
-        </Choice>
-      );
+      return <Choice key={choiceProps.value} {...choiceProps} />;
     });
   }
 
@@ -76,7 +75,7 @@ export class ChoiceList extends React.PureComponent {
       <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
         <FormLabel
           className={this.props.labelClassName}
-          component={'legend'}
+          component="legend"
           errorMessage={this.props.errorMessage}
           hint={this.props.hint}
           requirementLabel={this.props.requirementLabel}
@@ -92,19 +91,9 @@ export class ChoiceList extends React.PureComponent {
 
 ChoiceList.propTypes = {
   /**
-   * The list of choices to be rendered.
+   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
    */
-  choices: PropTypes.arrayOf(
-    PropTypes.shape({
-      checked: Choice.propTypes.checked,
-      defaultChecked: Choice.propTypes.defaultChecked,
-      disabled: Choice.propTypes.disabled,
-      hint: Choice.propTypes.hint,
-      label: Choice.propTypes.children,
-      requirementLabel: Choice.propTypes.requirementLabel,
-      value: Choice.propTypes.value,
-    })
-  ).isRequired,
+  choices: PropTypes.arrayOf(PropTypes.shape).isRequired,
   /**
    * Additional classes to be added to the root element.
    */

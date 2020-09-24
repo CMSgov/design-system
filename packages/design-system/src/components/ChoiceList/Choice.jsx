@@ -31,6 +31,15 @@ export class Choice extends React.PureComponent {
     } else {
       this.isControlled = true;
     }
+
+    if (process.env.NODE_ENV !== 'production') {
+      // Temporarily disable deprecation warning
+      // if (props.children) {
+      //  console.warn(
+      //    `[Deprecated]: Please remove the 'children' prop in <Choice>, use 'label' instead. This prop has been renamed and will be removed in a future release.`
+      //  );
+      // }
+    }
   }
 
   componentWillUnmount() {
@@ -80,9 +89,11 @@ export class Choice extends React.PureComponent {
       checkedChildren,
       children,
       className,
+      disabled,
       hint,
       inversed,
       inputClassName,
+      label,
       labelClassName,
       requirementLabel,
       size,
@@ -111,6 +122,7 @@ export class Choice extends React.PureComponent {
           className={inputClasses}
           id={this.id}
           onChange={this.handleChange}
+          disabled={disabled}
           ref={(ref) => {
             this.input = ref;
             if (inputRef) {
@@ -123,9 +135,10 @@ export class Choice extends React.PureComponent {
           className={labelClassName}
           fieldId={this.id}
           hint={hint}
+          inversed={inversed}
           requirementLabel={requirementLabel}
         >
-          {children}
+          {label || children}
         </FormLabel>
         {this.checked() ? checkedChildren : uncheckedChildren}
       </div>
@@ -135,9 +148,9 @@ export class Choice extends React.PureComponent {
 
 Choice.propTypes = {
   /**
-   * Label text or HTML.
+   * @hide-prop In order to be consistent with form elements, use `label` instead
    */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -162,6 +175,10 @@ Choice.propTypes = {
    */
   inputClassName: PropTypes.string,
   /**
+   * Label text or HTML.
+   */
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
    * Additional classes to be added to the `FormLabel`.
    */
   labelClassName: PropTypes.string,
@@ -170,6 +187,7 @@ Choice.propTypes = {
    * otherwise, use the `checked` property.
    */
   defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
   /**
    * Access a reference to the `input` element
    */
