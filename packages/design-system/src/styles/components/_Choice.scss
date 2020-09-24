@@ -4,7 +4,6 @@ $ds-c-inset-border-width: $spacer-half;
 
 // Order of the choice styles is important to ensure styles have the correct precedent
 // normal < errored < checked < disabled < focused
-
 .ds-c-choice {
   // Hide the default browser checkbox/radio button
   // We create our own custom version using '+ label::before'
@@ -28,8 +27,9 @@ $ds-c-inset-border-width: $spacer-half;
 
   // Choice checkbox/radio button
   + label::before {
-    background-color: $color-background;
+    background-color: $choice-background-color;
     border: $choice-border-width solid $choice-border-color;
+    border-radius: $choice-border-radius;
     box-sizing: border-box;
     content: '\a0';
     height: $choice-size;
@@ -54,7 +54,7 @@ $ds-c-inset-border-width: $spacer-half;
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: $choice-size - $spacer-1;
-    border-color: $choice-checked-background-color;
+    border-color: $choice-checked-border-color;
   }
 
   // Disabled checkbox/radio button and label
@@ -62,8 +62,8 @@ $ds-c-inset-border-width: $spacer-half;
     color: $color-muted;
 
     &::before {
-      background-color: $color-gray-lighter;
-      border-color: $color-gray-light;
+      background-color: $choice-disabled-background-color;
+      border-color: $choice-disabled-border-color;
       cursor: not-allowed;
     }
   }
@@ -86,7 +86,7 @@ $ds-c-inset-border-width: $spacer-half;
 .ds-c-choice--inverse {
   // Choice checkbox/radio button
   + label::before {
-    background-color: transparent;
+    background-color: $choice-background-color-inverse;
     border-color: $choice-border-color-inverse;
   }
 
@@ -106,8 +106,8 @@ $ds-c-inset-border-width: $spacer-half;
     color: $color-muted-inverse;
 
     &::before {
-      background-color: rgba($color-muted-inverse, 0.15);
-      border-color: $color-gray-light;
+      background-color: $choice-disabled-background-color-inverse;
+      border-color: $choice-disabled-border-color-inverse;
     }
   }
 
