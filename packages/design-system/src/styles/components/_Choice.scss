@@ -41,9 +41,9 @@
 
   // Errored checkbox/radio button
   // Currently only enabled in HC.gov DS
-  &.ds-c-choice--error + label::before {
-    border-color: $color-error;
-  }
+  // &.ds-c-choice--error + label::before {
+  //   border-color: $color-error;
+  // }
 
   // Checked checkbox/radio button
   &:checked + label::before {
@@ -90,9 +90,9 @@
 
   // Errored checkbox/radio button
   // Currently only enabled in HC.gov DS
-  &.ds-c-choice--error + label::before {
-    border-color: $color-error-light;
-  }
+  // &.ds-c-choice--error + label::before {
+  //   border-color: $color-error-light;
+  // }
 
   // Checked checkbox/radio button
   &:checked + label::before {
