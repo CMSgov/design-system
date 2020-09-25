@@ -1,3 +1,4 @@
+// TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
