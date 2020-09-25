@@ -45,7 +45,7 @@ These scripts can all be run from the root level of the repo:
   - Regenerates documentation when files change
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
-- `yarn pre-release`
+- `yarn prerelease`
   - Increments package versions. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 - `yarn release`
   - Publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.

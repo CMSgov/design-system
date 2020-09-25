@@ -15,7 +15,7 @@
    1. Run the prerelease script to automatically prepare the NPM package for publishing.
 
       ```
-      yarn pre-release
+      yarn prerelease
       ```
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
