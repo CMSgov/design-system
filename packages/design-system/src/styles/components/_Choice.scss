@@ -58,10 +58,11 @@ $ds-c-inset-border-width: $spacer-half;
   }
 
   // Errored checkbox/radio button
-  // Currently only enabled in HC.gov DS
-  // &.ds-c-choice--error + label::before {
-  //   border-color: $color-error;
-  // }
+  @if $ds-include-choice-error-highlight {
+    &.ds-c-choice--error + label::before {
+      border-color: $color-error;
+    }
+  }
 
   // Checked checkbox/radio button
   &:checked + label::before {
@@ -108,10 +109,11 @@ $ds-c-inset-border-width: $spacer-half;
   }
 
   // Errored checkbox/radio button
-  // Currently only enabled in HC.gov DS
-  // &.ds-c-choice--error + label::before {
-  //   border-color: $color-error-light;
-  // }
+  @if $ds-include-choice-error-highlight {
+    &.ds-c-choice--error + label::before {
+      border-color: $color-error-light;
+    }
+  }
 
   // Checked checkbox/radio button
   // Need to repeat this styling to override error border-color when checked
