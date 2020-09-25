@@ -20,11 +20,7 @@
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
 
-   1. After the prepublish script is completed, unpack the release zip created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. The packages would typically contain:
-
-      - cmsgov-design-system: `dist`, `src` folders and `package.json`, `README.md` files
-      - cmsgov-design-system-docs: `src` folder and `package.json`, `README.md` files
-      - cmsgov-design-system-scripts: `gulp`, `jest` folders and `cli.js`, `configDefaults.js`, `package.json`, `README.md` files
+   1. After the prepublish script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
 
    1. The next step is to run the lerna publish command for publish to [NPM](https://www.npmjs.com/package/@cmsgov/design-system).
 
