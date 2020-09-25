@@ -42,7 +42,7 @@
 }
 
 @mixin ds-c-table--stacked {
-  $stacked-title-max-width: 120px;
+  $stacked-title-max-width: 220px;
 
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
@@ -79,6 +79,7 @@
       font-weight: bold;
       max-width: $stacked-title-max-width;
       width: 50%;
+      word-wrap: break-word;
     }
 
     > * {
