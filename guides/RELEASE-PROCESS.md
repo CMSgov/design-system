@@ -12,7 +12,7 @@
 
       **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
-   1. Run the prerelease script to automatically prepare the NPM package for publishing.
+   1. Run the prerelease script to prepare the repo for publishing.
 
       ```
       yarn prerelease
