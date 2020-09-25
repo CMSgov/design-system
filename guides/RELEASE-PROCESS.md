@@ -12,7 +12,7 @@
 
       **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
-   1. Run the prepublish script to automatically prepare the NPM package for publishing.
+   1. Run the prerelease script to automatically prepare the NPM package for publishing.
 
       ```
       yarn pre-release
@@ -20,7 +20,7 @@
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
 
-   1. After the prepublish script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
+   1. After the prerelease script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
 
    1. The next step is to run the lerna publish command for publish to [NPM](https://www.npmjs.com/package/@cmsgov/design-system).
 

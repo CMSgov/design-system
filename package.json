@@ -9,7 +9,7 @@
   "scripts": {
     "start": "yarn cmsds start",
     "build": "yarn cmsds build-docs",
-    "pre-release": "./prepublish.sh",
+    "pre-release": "./prerelease.sh",
     "release": "yarn lerna publish from-git",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
