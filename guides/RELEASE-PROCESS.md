@@ -12,13 +12,23 @@
 
       **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
 
-   1. Run the release script to automatically begin the release process and publish to NPM.
+   1. Run the prerelease script to prepare the repo for publishing.
+
+      ```
+      yarn prerelease
+      ```
+
+      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
+
+   1. After the prerelease script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
+
+   1. The next step is to run the lerna publish command for publish to [NPM](https://www.npmjs.com/package/@cmsgov/design-system).
+
       ```
       yarn release
       ```
-      This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
-   1. The last step in the script will prompt you to continue with publishing to NPM. Proceed if everything is ready.
-   1. After the release script is completed, make sure to merge the release branch (i.e. `release-2.0.0`) into master.
+
+   1. Create a PR for the release branch titled after the release (i.e. `Release 2.0.0`). Merge the PR into master after the changes are approved.
 
 1. **Create a release on GitHub**
 
@@ -28,26 +38,30 @@
    1. Attach the release zip created from the previous step (i.e. `cmsgov-design-system-2.0.0.tgz`) to the release as an asset
    1. Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
 
-   ```
-   ## 🚨 Breaking/Behavioral changes
-   ## 🚀 Added
-   ## 💅 Changed
-   ## 🛠 Fixed
-   ## 📦 Internal
-   ## 🚫 Deprecated
-   ```
+      ```
+      ## 🚨 Breaking/Behavioral changes
+      ## 🚀 Added
+      ## 💅 Changed
+      ## 🛠 Fixed
+      ## 📦 Internal
+      ## 🚫 Deprecated
+      ```
 
-   **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
+      **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
 
    1. Review the release notes and publish
 
 1. **Update the design.cms.gov documentation website**
 
+   1. Connect to CMS VPN `cloudvpn.cms.gov`.
+
    1. [Log in to CBJ](https://cloudbeesjenkins.cms.gov/prod-master/job/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
 
       **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
-   1. Select the tag created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
+   1. Select `Build with Parameters` on the side navigation menu.
+
+   1. Enter the `tag` created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
 
    Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
 
