@@ -16,7 +16,7 @@ const { logError, logTask } = require('../common/logUtil');
 const tmpPath = path.resolve('./tmp');
 
 const SKIP_LATEST_MESSAGE =
-  'If it is expected that the latest release does not exist in node_modules, add the `--skipLatest` flag to skip this part.';
+  'If it is expected that the latest release is not in NPM, add the `--skipLatest` flag to skip this part.';
 
 // Gets current CSS stats data from the local CSS entry point file
 async function getCurrentCssStats(dir) {
@@ -36,12 +36,15 @@ async function getCurrentCssStats(dir) {
 
 // Gets CSS stats from the latest release, use unpkg to easily grab the last release in NPM
 async function getLatestCssStats(packageName) {
-  const latestCSSUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
+  const latestCssUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
   try {
-    const response = await got(latestCSSUrl);
+    const response = await got(latestCssUrl);
     return cssstats(response.body);
   } catch (error) {
-    logError('getLatestCssStats', `Unable to download latest css from ${latestCSSUrl}`);
+    logError(
+      'getLatestCssStats',
+      `Unable to download latest css from ${latestCssUrl}. ${SKIP_LATEST_MESSAGE}`
+    );
     console.error(error);
   }
 }
@@ -57,26 +60,30 @@ async function getStatsObject(dir, packageName, skipLatest = false) {
   return { current, latest };
 }
 
-/**
- * @return {Promise} Resolves with the sum of all .woff2 file sizes, assumes valid fontDir
- */
-function getFontsSize(fontDir) {
-  return fs
-    .readdir(fontDir)
-    .then((files) => {
-      return Promise.all(
-        // Array of .woff2 file sizes
-        files
-          .filter((name) => name.match(/\.woff2$/))
-          .map((name) => {
-            return fs.stat(path.resolve(fontDir, name)).then((stats) => stats.size);
-          })
-      );
-    })
-    .then(sum)
-    .catch(() => {
-      logError('getFontSize', 'Error collecting font sizes');
-    });
+// Gets sum of all .woff2 file sizes from the local font directory
+async function getCurrentFontSize(dir) {
+  const currentFontDir = path.resolve(dir, 'dist', 'fonts');
+  if (fs.existsSync(currentFontDir)) {
+    return fs
+      .readdir(currentFontDir)
+      .then((files) => {
+        return Promise.all(
+          // Array of .woff2 file sizes
+          files
+            .filter((name) => name.match(/\.woff2$/))
+            .map((name) => {
+              return fs.stat(path.resolve(currentFontDir, name)).then((stats) => stats.size);
+            })
+        );
+      })
+      .then(sum)
+      .catch(() => {
+        logError('getFontSize', 'Error collecting font sizes');
+      });
+  } else {
+    logError('getFontsStats', `Unable to find current fonts in ${currentFontDir}`);
+    return '0';
+  }
 }
 
 /**
@@ -84,30 +91,14 @@ function getFontsSize(fontDir) {
  * @return {Promise}
  */
 async function getFontsStats(dir, packageName, currentStats, skipLatest = false) {
-  // Get stats from current dist font directory if it exists
-  const currentFontDir = path.resolve(dir, 'dist', 'fonts');
-  if (fs.existsSync(currentFontDir)) {
-    const current = await getFontsSize(currentFontDir);
-    currentStats.current.totalFontFileSize = current;
-  } else {
-    logError('getFontsStats', `Unable to find current fonts in ${currentFontDir}`);
-    currentStats.current.totalFontFileSize = '0';
-  }
+  const currentFontSize = await getCurrentFontSize(dir);
+  // TODO: Find a way to total up font file sizes from latest NPM release
+  // currently latest font size stats is broken
+  const latestFontSize =
+    !skipLatest && packageName ? await getCurrentFontSize(dir) : currentFontSize;
 
-  // Get stats from previous release font directory if it exists and if skipLatest flag is not used
-  if (!skipLatest && packageName) {
-    const previousFontDir = path.resolve('node_modules', packageName, 'dist', 'fonts');
-    if (fs.existsSync(previousFontDir)) {
-      const latest = await getFontsSize(previousFontDir);
-      currentStats.latest.totalFontFileSize = latest;
-    } else {
-      logError(
-        'getFontsStats',
-        `Unable to find latest release fonts in ${previousFontDir}. ${SKIP_LATEST_MESSAGE}`
-      );
-      currentStats.latest.totalFontFileSize = currentStats.current.totalFontFileSize;
-    }
-  }
+  currentStats.current.totalFontFileSize = currentFontSize;
+  currentStats.latest.totalFontFileSize = latestFontSize;
 }
 
 /**
