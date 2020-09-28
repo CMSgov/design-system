@@ -18,15 +18,30 @@ const tmpPath = path.resolve('./tmp');
 const SKIP_LATEST_MESSAGE =
   'If it is expected that the latest release does not exist in node_modules, add the `--skipLatest` flag to skip this part.';
 
-/**
- * @return {Promise} Resolves with a css stats object
- */
-async function getCSSStats(cssPath) {
+// Gets current CSS stats data from the local CSS entry point file
+async function getCurrentCssStats(dir) {
+  const currentCssPath = path.resolve(dir, 'dist', 'css', 'index.css');
+  if (fs.existsSync(currentCssPath)) {
+    try {
+      const css = await fs.readFile(currentCssPath, 'utf8');
+      return cssstats(css);
+    } catch (error) {
+      logError('getCurrentCssStats', 'Error collecting CSS stats');
+      console.error(error);
+    }
+  } else {
+    logError('getCurrentCssStats', `Unable to find current css in ${currentCssPath}`);
+  }
+}
+
+// Gets CSS stats from the latest release, use unpkg to easily grab the last release in NPM
+async function getLatestCssStats(packageName) {
+  const latestCSSUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
   try {
-    const css = await fs.readFile(cssPath, 'utf8');
-    return cssstats(css);
+    const response = await got(latestCSSUrl);
+    return cssstats(response.body);
   } catch (error) {
-    logError('getCSSStats', 'Error collecting CSS stats');
+    logError('getLatestCssStats', `Unable to download latest css from ${latestCSSUrl}`);
     console.error(error);
   }
 }
@@ -37,33 +52,9 @@ async function getCSSStats(cssPath) {
  * @return {Promise<{current, latest}>}
  */
 async function getStatsObject(dir, packageName, skipLatest = false) {
-  let current;
-  let latest;
-
-  const currentCSSPath = path.resolve(dir, 'dist', 'css', 'index.css');
-  if (fs.existsSync(currentCSSPath)) {
-    current = await getCSSStats(currentCSSPath);
-  } else {
-    logError('getStatsObject', `Unable to find current css in ${currentCSSPath}`);
-    return;
-  }
-
-  if (!skipLatest && packageName) {
-    // Download latest release css using unpkg
-    const latestCSSPath = path.resolve(tmpPath, 'latestCSS.css');
-    const latestCSSUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
-
-    try {
-      const response = await got(latestCSSUrl);
-      return fs.writeFile(latestCSSPath, response.body, 'utf8').then(async () => {
-        latest = await getCSSStats(latestCSSPath);
-        return { current, latest };
-      });
-    } catch (error) {
-      logError('getStatsObject', `Unable to download latest css from ${latestCSSUrl}: ${error}`);
-      return { current, latest: current };
-    }
-  }
+  const current = await getCurrentCssStats(dir);
+  const latest = !skipLatest && packageName ? await getLatestCssStats(packageName) : current;
+  return { current, latest };
 }
 
 /**
