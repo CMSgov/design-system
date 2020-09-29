@@ -18,7 +18,7 @@ ReactDOM.render(
     />
     <ChoiceList
       choices={[
-        { label: 'Choice 1', value: 'A', hint: 'Choice hint text', defaultChecked: true },
+        { label: 'Choice 1', value: 'A', hint: 'Choice hint text' },
         {
           label: 'Choice 2',
           value: 'B',
@@ -46,7 +46,6 @@ ReactDOM.render(
             label: 'Choice 1',
             requirementLabel: 'Choice hint text',
             value: 'A',
-            defaultChecked: true,
           },
           { label: 'Choice 2', value: 'B' },
           { label: 'Disabled choice 3', value: 'c', disabled: true },

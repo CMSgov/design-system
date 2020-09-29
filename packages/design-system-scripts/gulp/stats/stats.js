@@ -6,6 +6,7 @@
  */
 const cssstats = require('cssstats');
 const fs = require('mz/fs');
+const got = require('got');
 const getPackageName = require('../common/getPackageName');
 const logStats = require('./logStats');
 const path = require('path');
@@ -15,17 +16,35 @@ const { logError, logTask } = require('../common/logUtil');
 const tmpPath = path.resolve('./tmp');
 
 const SKIP_LATEST_MESSAGE =
-  'If it is expected that the latest release does not exist in node_modules, add the `--skipLatest` flag to skip this part.';
+  'If it is expected that the latest release is not in NPM, add the `--skipLatest` flag to skip this part.';
 
-/**
- * @return {Promise} Resolves with a css stats object
- */
-async function getCSSStats(cssPath) {
+// Gets current CSS stats data from the local CSS entry point file
+async function getCurrentCssStats(dir) {
+  const currentCssPath = path.resolve(dir, 'dist', 'css', 'index.css');
+  if (fs.existsSync(currentCssPath)) {
+    try {
+      const css = await fs.readFile(currentCssPath, 'utf8');
+      return cssstats(css);
+    } catch (error) {
+      logError('getCurrentCssStats', 'Error collecting CSS stats');
+      console.error(error);
+    }
+  } else {
+    logError('getCurrentCssStats', `Unable to find current css in ${currentCssPath}`);
+  }
+}
+
+// Gets CSS stats from the latest release, use unpkg to easily grab the last release in NPM
+async function getLatestCssStats(packageName) {
+  const latestCssUrl = `https://unpkg.com/${packageName}@latest/dist/css/index.css`;
   try {
-    const css = await fs.readFile(cssPath, 'utf8');
-    return cssstats(css);
+    const response = await got(latestCssUrl);
+    return cssstats(response.body);
   } catch (error) {
-    logError('getCSSStats', 'Error collecting CSS stats');
+    logError(
+      'getLatestCssStats',
+      `Unable to download latest css from ${latestCssUrl}. ${SKIP_LATEST_MESSAGE}`
+    );
     console.error(error);
   }
 }
@@ -36,50 +55,35 @@ async function getCSSStats(cssPath) {
  * @return {Promise<{current, latest}>}
  */
 async function getStatsObject(dir, packageName, skipLatest = false) {
-  let current;
-  let latest;
-
-  const currentCSSPath = path.resolve(dir, 'dist', 'css', 'index.css');
-  if (fs.existsSync(currentCSSPath)) {
-    current = await getCSSStats(currentCSSPath);
-  } else {
-    logError('getStatsObject', `Unable to find current css in ${currentCSSPath}`);
-    return;
-  }
-
-  if (!skipLatest && packageName) {
-    const latestCSSPath = path.resolve('node_modules', packageName, 'dist', 'css', 'index.css');
-    if (fs.existsSync(latestCSSPath)) {
-      latest = await getCSSStats(latestCSSPath);
-    } else {
-      logError('getStatsObject', `Unable to find latest release css in ${latestCSSPath}`);
-      latest = current;
-    }
-  }
-
+  const current = await getCurrentCssStats(dir);
+  const latest = !skipLatest && packageName ? await getLatestCssStats(packageName) : current;
   return { current, latest };
 }
 
-/**
- * @return {Promise} Resolves with the sum of all .woff2 file sizes, assumes valid fontDir
- */
-function getFontsSize(fontDir) {
-  return fs
-    .readdir(fontDir)
-    .then((files) => {
-      return Promise.all(
-        // Array of .woff2 file sizes
-        files
-          .filter((name) => name.match(/\.woff2$/))
-          .map((name) => {
-            return fs.stat(path.resolve(fontDir, name)).then((stats) => stats.size);
-          })
-      );
-    })
-    .then(sum)
-    .catch(() => {
-      logError('getFontSize', 'Error collecting font sizes');
-    });
+// Gets sum of all .woff2 file sizes from the local font directory
+async function getCurrentFontSize(dir) {
+  const currentFontDir = path.resolve(dir, 'dist', 'fonts');
+  if (fs.existsSync(currentFontDir)) {
+    return fs
+      .readdir(currentFontDir)
+      .then((files) => {
+        return Promise.all(
+          // Array of .woff2 file sizes
+          files
+            .filter((name) => name.match(/\.woff2$/))
+            .map((name) => {
+              return fs.stat(path.resolve(currentFontDir, name)).then((stats) => stats.size);
+            })
+        );
+      })
+      .then(sum)
+      .catch(() => {
+        logError('getFontSize', 'Error collecting font sizes');
+      });
+  } else {
+    logError('getFontsStats', `Unable to find current fonts in ${currentFontDir}`);
+    return '0';
+  }
 }
 
 /**
@@ -87,30 +91,14 @@ function getFontsSize(fontDir) {
  * @return {Promise}
  */
 async function getFontsStats(dir, packageName, currentStats, skipLatest = false) {
-  // Get stats from current dist font directory if it exists
-  const currentFontDir = path.resolve(dir, 'dist', 'fonts');
-  if (fs.existsSync(currentFontDir)) {
-    const current = await getFontsSize(currentFontDir);
-    currentStats.current.totalFontFileSize = current;
-  } else {
-    logError('getFontsStats', `Unable to find current fonts in ${currentFontDir}`);
-    currentStats.current.totalFontFileSize = '0';
-  }
+  const currentFontSize = await getCurrentFontSize(dir);
+  // TODO: Find a way to total up font file sizes from latest NPM release
+  // currently latest font size stats is broken
+  const latestFontSize =
+    !skipLatest && packageName ? await getCurrentFontSize(dir) : currentFontSize;
 
-  // Get stats from previous release font directory if it exists and if skipLatest flag is not used
-  if (!skipLatest && packageName) {
-    const previousFontDir = path.resolve('node_modules', packageName, 'dist', 'fonts');
-    if (fs.existsSync(previousFontDir)) {
-      const latest = await getFontsSize(previousFontDir);
-      currentStats.latest.totalFontFileSize = latest;
-    } else {
-      logError(
-        'getFontsStats',
-        `Unable to find latest release fonts in ${previousFontDir}. ${SKIP_LATEST_MESSAGE}`
-      );
-      currentStats.latest.totalFontFileSize = currentStats.current.totalFontFileSize;
-    }
-  }
+  currentStats.current.totalFontFileSize = currentFontSize;
+  currentStats.latest.totalFontFileSize = latestFontSize;
 }
 
 /**

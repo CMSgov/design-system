@@ -9,14 +9,15 @@
   "scripts": {
     "start": "yarn cmsds start",
     "build": "yarn cmsds build-docs",
-    "release": "./prepublish.sh && yarn lerna publish from-git",
+    "prerelease": "./prerelease.sh",
+    "release": "yarn lerna publish from-git",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
     "test:unit": "yarn cmsds test ./packages",
     "test:e2e": "yarn cmsds test:e2e ./packages",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "posttest": "yarn lint",
-    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'examples/create-react-app-typescript/**'"
+    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**'"
   },
   "devDependencies": {
     "backstopjs": "^5.0.4",
@@ -31,7 +32,7 @@
   },
   "engines": {
     "node": ">=11.0.0",
-    "yarn": ">=1.21.1"
+    "yarn": ">=1.22.4"
   },
   "resolutions": {
     "kss/nunjucks": ">=3.2.0"

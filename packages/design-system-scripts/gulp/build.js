@@ -231,7 +231,7 @@ module.exports = {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
     await copyAll(sourceDir);
-    await compileSourceSass(sourceDir);
+    await compileSourceSass(sourceDir, options);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);

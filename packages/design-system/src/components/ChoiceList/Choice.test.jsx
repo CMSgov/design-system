@@ -113,7 +113,6 @@ describe('Choice', () => {
     const input = wrapper.find('input');
 
     expect(input.hasClass('ds-c-choice')).toBe(true);
-    expect(input.hasClass('ds-c-choice--right')).toBe(false);
   });
 
   it('applies small className to input', () => {
