@@ -22,35 +22,59 @@ function render(customProps = {}, captionProps = {}, children) {
 describe('TableCaption', function () {
   it('renders a table caption', () => {
     const { wrapper } = render();
-    const table = wrapper.find('caption');
+    const caption = wrapper.find('caption');
 
-    expect(table).toHaveLength(1);
-    expect(table.hasClass('ds-c-table__caption')).toBe(true);
+    expect(caption).toHaveLength(1);
+    expect(caption.hasClass('ds-c-table__caption')).toBe(true);
   });
 
-  it('applies additional classNames', () => {
+  it('applies additional classNames to caption', () => {
     const { wrapper } = render(undefined, { className: 'foo-caption' });
-    const table = wrapper.find('caption');
+    const caption = wrapper.find('caption');
 
-    expect(table.hasClass('foo-caption')).toBe(true);
+    expect(caption.hasClass('foo-caption')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('applies scroll table wrapper and classes', () => {
-    const { wrapper } = render({ scrollable: true });
-    const divWrapper = wrapper.find('div');
-    const table = wrapper.find('table');
+  describe('table caption scrollable true', () => {
+    it('applies scroll table wrapper and classes', () => {
+      const { wrapper } = render({ scrollable: true });
+      const divWrapper = wrapper.find('div');
 
-    expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
-    expect(divWrapper.prop('role')).toBe('region');
-    expect(divWrapper.prop('aria-live')).toBe('polite');
-    expect(divWrapper.prop('aria-relevant')).toBe('additions');
-    expect(divWrapper.prop('tabindex')).toBeUndefined();
+      expect(wrapper.prop('scrollable')).toBe(true);
 
-    expect(table.hasClass('ds-c-table')).toBe(true);
-    expect(table.prop('id')).toBe(divWrapper.prop('aria-labelleby'));
+      expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+      expect(divWrapper.prop('role')).toBe('region');
+      expect(divWrapper.prop('aria-live')).toBe('polite');
+      expect(divWrapper.prop('aria-relevant')).toBe('additions');
+      expect(divWrapper.prop('tabindex')).toBeUndefined();
 
-    expect(wrapper).toMatchSnapshot();
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('scroll table aria-labelledby matches caption id', () => {
+      const { wrapper } = render({ scrollable: true });
+      const divWrapper = wrapper.find('div');
+      const caption = wrapper.find('caption');
+
+      expect(caption.prop('id')).toBe(divWrapper.prop('aria-labelledby'));
+    });
+
+    it('contains scroll table notice ', () => {
+      const { wrapper } = render({ scrollable: true });
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBeDefined();
+    });
+
+    it('applies scrollableNotice', () => {
+      const { wrapper } = render({ scrollable: true, scrollableNotice: 'foo scrollable notice' });
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBe('foo scrollable notice');
+
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

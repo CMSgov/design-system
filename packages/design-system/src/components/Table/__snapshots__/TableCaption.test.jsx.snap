@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableCaption applies additional classNames 1`] = `
+exports[`TableCaption applies additional classNames to caption 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -37,7 +37,7 @@ exports[`TableCaption applies additional classNames 1`] = `
 </Table>
 `;
 
-exports[`TableCaption applies scroll table wrapper and classes 1`] = `
+exports[`TableCaption table caption scrollable true applies scroll table wrapper and classes 1`] = `
 <Table
   scrollable={true}
   scrollableNotice={
@@ -88,6 +88,42 @@ exports[`TableCaption applies scroll table wrapper and classes 1`] = `
         <caption
           className="ds-c-table__caption"
           id="caption-3"
+        >
+          Foo
+        </caption>
+      </TableCaption>
+    </table>
+  </div>
+</Table>
+`;
+
+exports[`TableCaption table caption scrollable true applies scrollableNotice 1`] = `
+<Table
+  scrollable={true}
+  scrollableNotice="foo scrollable notice"
+  stackableBreakpoint="sm"
+>
+  <div
+    aria-labelledby="caption-6"
+    aria-live="polite"
+    aria-relevant="additions"
+    className="ds-c-table__wrapper"
+    role="region"
+    tabIndex={null}
+  >
+    <table
+      className="ds-c-table"
+      role="table"
+    >
+      <TableCaption
+        _id="caption-6"
+        _scrollActive={false}
+        _scrollableNotice="foo scrollable notice"
+        key=".0"
+      >
+        <caption
+          className="ds-c-table__caption"
+          id="caption-6"
         >
           Foo
         </caption>
