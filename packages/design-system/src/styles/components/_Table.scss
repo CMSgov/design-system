@@ -42,7 +42,7 @@
 }
 
 @mixin ds-c-table--stacked {
-  $stacked-title-max-width: 220px;
+  $stacked-title-max-width: 160px;
 
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
@@ -68,7 +68,7 @@
     border: 0;
     border-top: 1px solid;
     display: grid;
-    grid-template-columns: $stacked-title-max-width 1fr;
+    grid-template-columns: minmax(0, $stacked-title-max-width) 1fr;
     position: relative;
 
     // stylelint-disable selector-no-qualifying-type
@@ -78,7 +78,7 @@
       flex: none;
       font-weight: bold;
       max-width: $stacked-title-max-width;
-      width: 50%;
+      width: 80%;
       word-wrap: break-word;
     }
 
@@ -116,7 +116,7 @@
 
   &.ds-c-table--striped tbody {
     tr:nth-child(even) {
-      background-color: $color-gray-light;
+      background-color: $color-gray-lightest;
     }
   }
 
@@ -157,7 +157,7 @@
 
 .ds-c-table--striped tbody {
   tr:nth-child(even) {
-    background-color: $color-gray-light;
+    background-color: $color-gray-lightest;
   }
 }
 

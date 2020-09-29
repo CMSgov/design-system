@@ -74,7 +74,7 @@ ReactDOM.render(
           <TableCell stackedTitle="Document title" headers="column_1">
             Emancipation Proclamation
           </TableCell>
-          <TableCell stackedTitle="Description1234567" headers="column_2">
+          <TableCell stackedTitle="Description" headers="column_2">
             An executive order granting freedom to slaves in designated southern states.
           </TableCell>
           <TableCell stackedTitle="Year" headers="column_3">
