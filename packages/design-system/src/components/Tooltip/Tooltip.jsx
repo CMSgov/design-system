@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash.uniqueid';
 
 export class Tooltip extends React.Component {
   constructor(props) {
