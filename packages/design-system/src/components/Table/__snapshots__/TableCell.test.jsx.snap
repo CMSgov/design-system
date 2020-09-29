@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders a table tbody row element 1`] = `
+exports[`TableCell td default props renders a table tbody row element 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -23,15 +23,10 @@ exports[`Table renders a table tbody row element 1`] = `
       role="table"
     >
       <TableBody
-        className="foo-body"
         key=".0"
       >
-        <tbody
-          className="foo-body"
-        >
-          <TableRow
-            key="2"
-          >
+        <tbody>
+          <TableRow>
             <tr
               role="row"
             >
@@ -67,7 +62,7 @@ exports[`Table renders a table tbody row element 1`] = `
 </Table>
 `;
 
-exports[`Table renders a table thead <th> element 1`] = `
+exports[`TableCell th default props renders a table thead <th> element 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -90,15 +85,12 @@ exports[`Table renders a table thead <th> element 1`] = `
       role="table"
     >
       <TableHead
-        className="foo-head"
         key=".0"
       >
-        <thead
-          className="foo-head"
-        >
+        <thead>
           <TableRow
             _isTableHeadChild={true}
-            key=".$1"
+            key=".0"
           >
             <tr
               role="row"

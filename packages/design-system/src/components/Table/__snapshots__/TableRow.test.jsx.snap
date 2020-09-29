@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders a table row 1`] = `
+exports[`TableRow renders additional attributes 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -23,16 +23,13 @@ exports[`Table renders a table row 1`] = `
       role="table"
     >
       <TableHead
-        className="foo-head"
         key=".0"
       >
-        <thead
-          className="foo-head"
-        >
+        <thead>
           <TableRow
             _isTableHeadChild={true}
             className="foo-row"
-            key=".$1"
+            key=".0"
           >
             <tr
               className="foo-row"

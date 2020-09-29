@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders a table body 1`] = `
+exports[`TableBody renders additional attributes 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -29,9 +29,7 @@ exports[`Table renders a table body 1`] = `
         <tbody
           className="foo-body"
         >
-          <TableRow
-            key="1"
-          >
+          <TableRow>
             <tr
               role="row"
             >

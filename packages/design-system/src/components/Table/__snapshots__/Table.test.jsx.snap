@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table supports responsive table 1`] = `
+exports[`Table applies additional classNames to root table 1`] = `
 <div>
   <table
-    className="ds-c-table ds-c-lg-table--stacked"
+    className="ds-c-table foo-table"
     role="table"
   >
     <TableCaption
-      className="foo-caption"
       key=".0"
     >
       Foo
@@ -16,9 +15,39 @@ exports[`Table supports responsive table 1`] = `
 </div>
 `;
 
-exports[`Table supports scroll table 1`] = `
+exports[`Table applies borderless classes 1`] = `
+<div>
+  <table
+    className="ds-c-table ds-c-table--borderless"
+    role="table"
+  >
+    <TableCaption
+      key=".0"
+    >
+      Foo
+    </TableCaption>
+  </table>
+</div>
+`;
+
+exports[`Table applies responsive table 1`] = `
+<div>
+  <table
+    className="ds-c-table ds-c-lg-table--stacked"
+    role="table"
+  >
+    <TableCaption
+      key=".0"
+    >
+      Foo
+    </TableCaption>
+  </table>
+</div>
+`;
+
+exports[`Table applies scroll table 1`] = `
 <div
-  aria-labelledby="caption-5"
+  aria-labelledby="caption-7"
   aria-live="polite"
   aria-relevant="additions"
   className="ds-c-table__wrapper"
@@ -30,7 +59,7 @@ exports[`Table supports scroll table 1`] = `
     role="table"
   >
     <TableCaption
-      _id="caption-5"
+      _id="caption-7"
       _scrollActive={false}
       _scrollableNotice={
         <Alert
@@ -45,7 +74,6 @@ exports[`Table supports scroll table 1`] = `
           </p>
         </Alert>
       }
-      className="foo-caption"
       key=".0"
     >
       Foo
@@ -54,14 +82,29 @@ exports[`Table supports scroll table 1`] = `
 </div>
 `;
 
-exports[`Table supports zebra stripe 1`] = `
+exports[`Table applies zebra stripe classes 1`] = `
 <div>
   <table
     className="ds-c-table ds-c-table--striped"
     role="table"
   >
     <TableCaption
-      className="foo-caption"
+      key=".0"
+    >
+      Foo
+    </TableCaption>
+  </table>
+</div>
+`;
+
+exports[`Table renders additional attributes 1`] = `
+<div>
+  <table
+    ariaLabel="test additional attribute"
+    className="ds-c-table"
+    role="table"
+  >
+    <TableCaption
       key=".0"
     >
       Foo

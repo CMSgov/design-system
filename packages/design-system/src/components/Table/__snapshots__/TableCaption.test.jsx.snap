@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table renders a table caption 1`] = `
+exports[`TableCaption applies additional classNames 1`] = `
 <Table
   scrollableNotice={
     <Alert
@@ -28,6 +28,66 @@ exports[`Table renders a table caption 1`] = `
       >
         <caption
           className="ds-c-table__caption foo-caption"
+        >
+          Foo
+        </caption>
+      </TableCaption>
+    </table>
+  </div>
+</Table>
+`;
+
+exports[`TableCaption applies scroll table wrapper and classes 1`] = `
+<Table
+  scrollable={true}
+  scrollableNotice={
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      headingLevel="3"
+      role="status"
+    >
+      <p
+        className="ds-c-alert__text"
+      >
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  }
+  stackableBreakpoint="sm"
+>
+  <div
+    aria-labelledby="caption-3"
+    aria-live="polite"
+    aria-relevant="additions"
+    className="ds-c-table__wrapper"
+    role="region"
+    tabIndex={null}
+  >
+    <table
+      className="ds-c-table"
+      role="table"
+    >
+      <TableCaption
+        _id="caption-3"
+        _scrollActive={false}
+        _scrollableNotice={
+          <Alert
+            className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+            headingLevel="3"
+            role="status"
+          >
+            <p
+              className="ds-c-alert__text"
+            >
+              Scroll using arrow keys to see more
+            </p>
+          </Alert>
+        }
+        key=".0"
+      >
+        <caption
+          className="ds-c-table__caption"
+          id="caption-3"
         >
           Foo
         </caption>
