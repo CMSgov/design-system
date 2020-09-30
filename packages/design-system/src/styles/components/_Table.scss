@@ -1,5 +1,10 @@
 @import '../settings/index.scss';
 
+$table-header-background-color: $color-gray-lightest !default;
+$table-stripe-background-color: $color-gray-lightest !default;
+$table-stripe-header-background-color: $color-primary-alt-lightest !default;
+$table-stacked-title-max-width: 160px;
+
 .ds-c-table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -7,7 +12,7 @@
 
   th,
   thead td {
-    background-color: $color-gray-lightest;
+    background-color: $table-header-background-color;
     text-align: left;
   }
 
@@ -41,9 +46,22 @@
   }
 }
 
-@mixin ds-c-table--stacked {
-  $stacked-title-max-width: 160px;
+@mixin ds-c-table--striped-style {
+  thead {
+    th,
+    tr {
+      background-color: $table-stripe-header-background-color;
+    }
+  }
 
+  tbody {
+    tr:nth-child(even) {
+      background-color: $table-stripe-background-color;
+    }
+  }
+}
+
+@mixin ds-c-table--stacked {
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
     // ds-u-visibility--screen-reader
@@ -68,7 +86,7 @@
     border: 0;
     border-top: 1px solid;
     display: grid;
-    grid-template-columns: minmax(0, $stacked-title-max-width) 1fr;
+    grid-template-columns: minmax(0, $table-stacked-title-max-width) 1fr;
     position: relative;
 
     // stylelint-disable selector-no-qualifying-type
@@ -77,7 +95,7 @@
       // stylelint-enable selector-no-qualifying-type
       flex: none;
       font-weight: bold;
-      max-width: $stacked-title-max-width;
+      max-width: $table-stacked-title-max-width;
       width: 80%;
       word-wrap: break-word;
     }
@@ -101,7 +119,7 @@
       content: '';
       display: block;
       left: 0;
-      max-width: $stacked-title-max-width;
+      max-width: $table-stacked-title-max-width;
       position: absolute;
       top: 0;
       width: 50%;
@@ -114,10 +132,8 @@
     border-top: 0;
   }
 
-  &.ds-c-table--striped tbody {
-    tr:nth-child(even) {
-      background-color: $color-gray-lightest;
-    }
+  &.ds-c-table--striped {
+    @include ds-c-table--striped-style;
   }
 
   &.ds-c-table--borderless {
@@ -155,10 +171,8 @@
   }
 }
 
-.ds-c-table--striped tbody {
-  tr:nth-child(even) {
-    background-color: $color-gray-lightest;
-  }
+.ds-c-table--striped {
+  @include ds-c-table--striped-style;
 }
 
 .ds-c-table__wrapper {
