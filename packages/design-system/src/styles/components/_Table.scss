@@ -41,7 +41,8 @@ $table-stacked-header-max-width: 160px;
       flex: none;
       font-weight: bold;
       max-width: $table-stacked-header-max-width;
-      width: 80%;
+      // leave space padding on right side of data-title column
+      width: calc(100% - #{$spacer-2});
       word-wrap: break-word;
     }
 
