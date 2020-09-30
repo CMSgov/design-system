@@ -109,6 +109,15 @@ Style guide: components.table.react-tablecell
 - Complex tables are tables with more than two levels of headers. Each header should be given a unique `id` and each data cell should have a `headers` attribute with each related header cell’s `id` listed.
 - When adding a title to a table, include it in a `<caption>` tag inside of the `<table>` element.
 
+### Customization
+
+The following Sass variables can be overridden to theme table fields:
+
+- `$table-header-background-color`
+- `$table-striped-background-color`
+- `$table-striped-header-background-color`
+- `$table-stacked-header-max-width`
+
 ### Learn more
 
 - [W3C Web Accessibility Tutorial \- Table Concepts](https://www.w3.org/WAI/tutorials/tables/)

@@ -1,9 +1,98 @@
 @import '../settings/index.scss';
 
 $table-header-background-color: $color-gray-lightest !default;
-$table-stripe-background-color: $color-gray-lightest !default;
-$table-stripe-header-background-color: $color-primary-alt-lightest !default;
-$table-stacked-title-max-width: 160px;
+$table-striped-background-color: $color-gray-lightest !default;
+$table-striped-header-background-color: $color-gray-lightest !default;
+// Width of the header column for a stacked table
+$table-stacked-header-max-width: 160px;
+
+@mixin table-stacked {
+  thead tr {
+    /* Hide column headings when responsive table stacked vertically on smaller viewports */
+    // ds-u-visibility--screen-reader
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+    word-wrap: normal;
+  }
+
+  tr,
+  caption {
+    display: block;
+  }
+
+  td,
+  th {
+    border: 0;
+    border-top: 1px solid;
+    display: grid;
+    grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
+    position: relative;
+
+    // stylelint-disable selector-no-qualifying-type
+    &[data-title]::before {
+      content: attr(data-title);
+      // stylelint-enable selector-no-qualifying-type
+      flex: none;
+      font-weight: bold;
+      max-width: $table-stacked-header-max-width;
+      width: 80%;
+      word-wrap: break-word;
+    }
+
+    > * {
+      grid-column: 2;
+    }
+  }
+
+  tr {
+    border: 1px solid;
+    display: block;
+    margin: 0 0 1rem;
+    padding-bottom: 2px;
+    position: relative;
+
+    &::after {
+      background-color: $color-gray-lightest;
+      border-right: 1px solid;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      max-width: $table-stacked-header-max-width;
+      position: absolute;
+      top: 0;
+      width: 50%;
+      z-index: -9999;
+    }
+  }
+
+  td:first-child,
+  th:first-child {
+    border-top: 0;
+  }
+
+  &.ds-c-table--borderless {
+    tr {
+      border: 0;
+
+      &::after {
+        background-color: transparent;
+        border-right: 0;
+      }
+    }
+
+    td:last-child,
+    th:last-child {
+      border-bottom: 2px solid;
+    }
+  }
+}
 
 .ds-c-table {
   border-collapse: collapse;
@@ -46,133 +135,41 @@ $table-stacked-title-max-width: 160px;
   }
 }
 
-@mixin ds-c-table--striped-style {
-  thead {
-    th,
-    tr {
-      background-color: $table-stripe-header-background-color;
-    }
-  }
-
-  tbody {
-    tr:nth-child(even) {
-      background-color: $table-stripe-background-color;
-    }
-  }
-}
-
-@mixin ds-c-table--stacked {
-  thead tr {
-    /* Hide column headings when responsive table stacked vertically on smaller viewports */
-    // ds-u-visibility--screen-reader
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
-    word-wrap: normal;
-  }
-
-  tr,
-  caption {
-    display: block;
-  }
-
-  td,
-  th {
-    border: 0;
-    border-top: 1px solid;
-    display: grid;
-    grid-template-columns: minmax(0, $table-stacked-title-max-width) 1fr;
-    position: relative;
-
-    // stylelint-disable selector-no-qualifying-type
-    &[data-title]::before {
-      content: attr(data-title);
-      // stylelint-enable selector-no-qualifying-type
-      flex: none;
-      font-weight: bold;
-      max-width: $table-stacked-title-max-width;
-      width: 80%;
-      word-wrap: break-word;
-    }
-
-    > * {
-      grid-column: 2;
-    }
-  }
-
-  tr {
-    border: 1px solid;
-    display: block;
-    margin: 0 0 1rem;
-    padding-bottom: 2px;
-    position: relative;
-
-    &::after {
-      background-color: $color-gray-lightest;
-      border-right: 1px solid;
-      bottom: 0;
-      content: '';
-      display: block;
-      left: 0;
-      max-width: $table-stacked-title-max-width;
-      position: absolute;
-      top: 0;
-      width: 50%;
-      z-index: -9999;
-    }
-  }
-
-  td:first-child,
-  th:first-child {
-    border-top: 0;
-  }
-
-  &.ds-c-table--striped {
-    @include ds-c-table--striped-style;
-  }
-
-  &.ds-c-table--borderless {
-    tr {
-      border: 0;
-
-      &::after {
-        background-color: transparent;
-        border-right: 0;
-      }
-    }
-
-    td:last-child,
-    th:last-child {
-      border-bottom: 2px solid;
-    }
-  }
+.ds-c-table--stacked {
+  @include table-stacked;
 }
 
 .ds-c-sm-table--stacked {
   @media only screen and (max-width: $width-sm) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
 .ds-c-md-table--stacked {
   @media only screen and (max-width: $width-md) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
 .ds-c-lg-table--stacked {
   @media only screen and (max-width: $width-lg) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
 .ds-c-table--striped {
-  @include ds-c-table--striped-style;
+  thead {
+    th,
+    tr {
+      background-color: $table-striped-header-background-color;
+    }
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $table-striped-background-color;
+    }
+  }
 }
 
 .ds-c-table__wrapper {
