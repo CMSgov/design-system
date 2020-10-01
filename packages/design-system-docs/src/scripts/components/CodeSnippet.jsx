@@ -3,6 +3,7 @@ import React from 'react';
 
 const CodeSnippet = function (props) {
   return (
+    /* eslint-disable react/no-danger */
     <details open={props.open}>
       <summary className="ds-u-margin-y--1 ds-c-button ds-c-button--small ds-c-button--transparent ds-u-padding--1 ds-u-text-decoration--none">
         Code snippet
@@ -11,6 +12,7 @@ const CodeSnippet = function (props) {
         <code dangerouslySetInnerHTML={{ __html: props.children }} />
       </pre>
     </details>
+    /* eslint-enable react/no-danger */
   );
 };
 
