@@ -3,7 +3,7 @@
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
-// Width of the header column for a stacked table
+// Max-width of the header column for a stacked table
 $table-stacked-header-max-width: 160px;
 
 @mixin table-stacked {
@@ -31,6 +31,8 @@ $table-stacked-header-max-width: 160px;
     border: 0;
     border-top: 1px solid;
     display: grid;
+    // CSS grid doesn't support word-wrap. Use minmax as a workaround
+    // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
     grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     position: relative;
 
@@ -41,7 +43,7 @@ $table-stacked-header-max-width: 160px;
       flex: none;
       font-weight: bold;
       max-width: $table-stacked-header-max-width;
-      // leave space padding on right side of data-title column
+      // allow for spacing on right side of data-title column
       width: calc(100% - #{$spacer-2});
       word-wrap: break-word;
     }
@@ -58,7 +60,7 @@ $table-stacked-header-max-width: 160px;
     padding-bottom: 2px;
     position: relative;
 
-    &::after {
+    &::before {
       background-color: $color-gray-lightest;
       border-right: 1px solid;
       bottom: 0;
@@ -69,7 +71,6 @@ $table-stacked-header-max-width: 160px;
       position: absolute;
       top: 0;
       width: 50%;
-      z-index: -9999;
     }
   }
 
