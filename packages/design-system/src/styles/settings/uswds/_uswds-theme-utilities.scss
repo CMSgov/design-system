@@ -32,23 +32,14 @@ used by utilities or layout grid
 
 $theme-utility-breakpoints: (
   'card': false,
-  // 160px
-    'card-lg': false,
-  // 240px
-    'mobile': false,
-  // 320px
-    'mobile-lg': true,
-  // 480px
-    'tablet': true,
-  // 640px
-    'tablet-lg': false,
-  // 800px
-    'desktop': true,
-  // 1024px
-    'desktop-lg': false,
-  // 1200px
-    'widescreen': false,
-  // 1400px
+  'card-lg': false,
+  'mobile': false,
+  'mobile-lg': true,
+  'tablet': true,
+  'tablet-lg': false,
+  'desktop': true,
+  'desktop-lg': false,
+  'widescreen': false,
 );
 
 /*

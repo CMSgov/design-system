@@ -131,6 +131,7 @@ class Frame extends React.PureComponent {
           className="frame__link"
           href={this.props.src}
           rel="nofollow"
+          // eslint-disable-next-line react/jsx-no-target-blank
           target="_blank"
           title="Open the rendered HTML in a new tab or window"
         >
