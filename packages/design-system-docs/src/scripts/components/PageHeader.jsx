@@ -38,6 +38,7 @@ class PageHeader extends React.PureComponent {
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
         <h1
           className="ds-display"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: this.props.header }}
           id={this.props.reference}
         />

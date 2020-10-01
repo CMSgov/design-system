@@ -37,6 +37,7 @@ class HtmlExample extends React.PureComponent {
         </h4>
         <p
           className="ds-u-margin-bottom--1 ds-u-margin-top--0 ds-u-color--muted"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: description }}
         />
       </div>

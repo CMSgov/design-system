@@ -8,6 +8,7 @@ const CodeSnippet = function (props) {
         Code snippet
       </summary>
       <pre className="ds-u-margin-bottom--4 ds-u-overflow--auto">
+        {/* eslint-disable-next-line react/no-danger */}
         <code dangerouslySetInnerHTML={{ __html: props.children }} />
       </pre>
     </details>
