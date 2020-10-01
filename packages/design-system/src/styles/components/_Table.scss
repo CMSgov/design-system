@@ -4,7 +4,7 @@ $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
 // Max-width of the header column for a stacked table
-$table-stacked-header-max-width: 160px;
+$table-stacked-header-max-width: 160px !default;
 
 @mixin table-stacked {
   thead tr {
