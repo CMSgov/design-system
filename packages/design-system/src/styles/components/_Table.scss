@@ -70,7 +70,7 @@ $table-stacked-header-max-width: 160px !default;
       max-width: $table-stacked-header-max-width;
       position: absolute;
       top: 0;
-      width: 50%;
+      width: 100%;
     }
   }
 
@@ -83,7 +83,7 @@ $table-stacked-header-max-width: 160px !default;
     tr {
       border: 0;
 
-      &::after {
+      &::before {
         background-color: transparent;
         border-right: 0;
       }
@@ -170,6 +170,10 @@ $table-stacked-header-max-width: 160px !default;
   tbody {
     tr:nth-child(even) {
       background-color: $table-striped-background-color;
+    }
+
+    tr:nth-child(odd)::before {
+      background-color: transparent;
     }
   }
 }
