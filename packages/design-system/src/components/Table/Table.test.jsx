@@ -1,17 +1,18 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import Table from './Table';
 import TableCaption from './TableCaption';
-import { shallow } from 'enzyme';
 
 const defaultCaptionChildren = 'Foo';
 const tableCaption = <TableCaption>{defaultCaptionChildren}</TableCaption>;
 
-function render(customProps = {}, children = tableCaption) {
+function render(customProps = {}, children = tableCaption, deep = false) {
   const props = Object.assign({}, customProps);
+  const component = <Table {...props}>{children}</Table>;
 
   return {
     props: props,
-    wrapper: shallow(<Table {...props}>{children}</Table>),
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
@@ -84,5 +85,50 @@ describe('Table', function () {
     expect(table.prop('ariaLabel')).toBe('test additional attribute');
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('table caption scrollable true', () => {
+    it('applies scroll table wrapper and classes', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const divWrapper = wrapper.find('div');
+
+      expect(wrapper.prop('scrollable')).toBe(true);
+
+      expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+      expect(divWrapper.prop('role')).toBe('region');
+      expect(divWrapper.prop('aria-live')).toBe('polite');
+      expect(divWrapper.prop('aria-relevant')).toBe('additions');
+      expect(divWrapper.prop('tabindex')).toBeUndefined();
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('scroll table aria-labelledby matches caption id', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const divWrapper = wrapper.find('div');
+      const caption = wrapper.find('caption');
+
+      expect(caption.prop('id')).toBe(divWrapper.prop('aria-labelledby'));
+    });
+
+    it('contains scroll table notice ', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBeDefined();
+    });
+
+    it('applies scrollableNotice', () => {
+      const { wrapper } = render(
+        { scrollable: true, scrollableNotice: 'foo scrollable notice' },
+        undefined,
+        true
+      );
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBe('foo scrollable notice');
+
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

@@ -1,27 +1,21 @@
 import React from 'react';
-import Table from './Table';
-import TableCell from './TableCell';
-import TableHead from './TableHead';
 import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
-function render(customProps = {}, children) {
+function render(customProps = {}) {
   const props = Object.assign({}, customProps);
-
-  if (!children) {
-    children = (
-      <TableHead>
-        <TableRow {...props}>
-          <TableCell>Column a</TableCell>
-          <TableCell>Column b</TableCell>
-        </TableRow>
-      </TableHead>
-    );
-  }
+  const children = (
+    <tbody>
+      <TableRow {...props}>
+        <td>Column a</td>
+        <td>Column b</td>
+      </TableRow>
+    </tbody>
+  );
 
   return {
     props: props,
-    wrapper: mount(<Table>{children}</Table>),
+    wrapper: mount(<table>{children}</table>),
   };
 }
 

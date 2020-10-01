@@ -1,131 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TableCell td default props renders a table tbody row element 1`] = `
-<Table
-  scrollableNotice={
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-      headingLevel="3"
-      role="status"
-    >
-      <p
-        className="ds-c-alert__text"
-      >
-        Scroll using arrow keys to see more
-      </p>
-    </Alert>
-  }
-  stackableBreakpoint="sm"
->
-  <div>
-    <table
-      className="ds-c-table"
-      role="table"
-    >
-      <TableBody
-        key=".0"
-      >
-        <tbody>
-          <TableRow>
-            <tr
-              role="row"
+exports[`TableCell TableBody wrap: <td> data cell - default props renders TableCell component 1`] = `
+<table>
+  <TableBody>
+    <tbody>
+      <TableRow>
+        <tr
+          role="row"
+        >
+          <TableCell
+            align="left"
+            component="th"
+          >
+            <th
+              className="ds-u-text-align--left"
+              role="rowheader"
+              scope="row"
             >
-              <TableCell
-                align="left"
-                component="th"
-              >
-                <th
-                  className="ds-u-text-align--left"
-                  role="rowheader"
-                  scope="row"
-                >
-                  Cell a
-                </th>
-              </TableCell>
-              <TableCell
-                align="left"
-              >
-                <td
-                  className="ds-u-text-align--left"
-                  role="cell"
-                  scope="row"
-                >
-                  Cell b
-                </td>
-              </TableCell>
-            </tr>
-          </TableRow>
-        </tbody>
-      </TableBody>
-    </table>
-  </div>
-</Table>
+              Cell a
+            </th>
+          </TableCell>
+          <TableCell
+            align="left"
+          >
+            <td
+              className="ds-u-text-align--left"
+              role="cell"
+              scope="row"
+            >
+              Cell b
+            </td>
+          </TableCell>
+        </tr>
+      </TableRow>
+    </tbody>
+  </TableBody>
+</table>
 `;
 
-exports[`TableCell th default props renders a table thead <th> element 1`] = `
-<Table
-  scrollableNotice={
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-      headingLevel="3"
-      role="status"
-    >
-      <p
-        className="ds-c-alert__text"
-      >
-        Scroll using arrow keys to see more
-      </p>
-    </Alert>
-  }
-  stackableBreakpoint="sm"
->
-  <div>
-    <table
-      className="ds-c-table"
-      role="table"
-    >
-      <TableHead
+exports[`TableCell TableHead wrap: <th> header cell - default props renders a table <th> element 1`] = `
+<table>
+  <TableHead>
+    <thead>
+      <TableRow
+        _isTableHeadChild={true}
         key=".0"
       >
-        <thead>
-          <TableRow
+        <tr
+          role="row"
+        >
+          <TableCell
             _isTableHeadChild={true}
+            align="left"
             key=".0"
           >
-            <tr
-              role="row"
+            <th
+              className="ds-u-text-align--left"
+              role="columnheader"
+              scope="col"
             >
-              <TableCell
-                _isTableHeadChild={true}
-                align="left"
-                key=".0"
-              >
-                <th
-                  className="ds-u-text-align--left"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Column a
-                </th>
-              </TableCell>
-              <TableCell
-                _isTableHeadChild={true}
-                align="left"
-                key=".1"
-              >
-                <th
-                  className="ds-u-text-align--left"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Column b
-                </th>
-              </TableCell>
-            </tr>
-          </TableRow>
-        </thead>
-      </TableHead>
-    </table>
-  </div>
-</Table>
+              Column a
+            </th>
+          </TableCell>
+          <TableCell
+            _isTableHeadChild={true}
+            align="left"
+            key=".1"
+          >
+            <th
+              className="ds-u-text-align--left"
+              role="columnheader"
+              scope="col"
+            >
+              Column b
+            </th>
+          </TableCell>
+        </tr>
+      </TableRow>
+    </thead>
+  </TableHead>
+</table>
 `;

@@ -1,71 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableRow renders additional attributes 1`] = `
-<Table
-  scrollableNotice={
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-      headingLevel="3"
-      role="status"
+<table>
+  <tbody>
+    <TableRow
+      className="foo-row"
     >
-      <p
-        className="ds-c-alert__text"
+      <tr
+        className="foo-row"
+        role="row"
       >
-        Scroll using arrow keys to see more
-      </p>
-    </Alert>
-  }
-  stackableBreakpoint="sm"
->
-  <div>
-    <table
-      className="ds-c-table"
-      role="table"
-    >
-      <TableHead
-        key=".0"
-      >
-        <thead>
-          <TableRow
-            _isTableHeadChild={true}
-            className="foo-row"
-            key=".0"
-          >
-            <tr
-              className="foo-row"
-              role="row"
-            >
-              <TableCell
-                _isTableHeadChild={true}
-                align="left"
-                key=".0"
-              >
-                <th
-                  className="ds-u-text-align--left"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Column a
-                </th>
-              </TableCell>
-              <TableCell
-                _isTableHeadChild={true}
-                align="left"
-                key=".1"
-              >
-                <th
-                  className="ds-u-text-align--left"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Column b
-                </th>
-              </TableCell>
-            </tr>
-          </TableRow>
-        </thead>
-      </TableHead>
-    </table>
-  </div>
-</Table>
+        <td>
+          Column a
+        </td>
+        <td>
+          Column b
+        </td>
+      </tr>
+    </TableRow>
+  </tbody>
+</table>
 `;
