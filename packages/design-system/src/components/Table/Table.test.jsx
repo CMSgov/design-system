@@ -1,78 +1,134 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
 import Table from './Table';
 import TableCaption from './TableCaption';
-import { shallow } from 'enzyme';
 
 const defaultCaptionChildren = 'Foo';
-const defaultCaptionProps = {
-  className: 'foo-caption',
-};
+const tableCaption = <TableCaption>{defaultCaptionChildren}</TableCaption>;
 
-function render(customProps = {}, children) {
+function render(customProps = {}, children = tableCaption, deep = false) {
   const props = Object.assign({}, customProps);
-
-  if (!children) {
-    children = <TableCaption {...defaultCaptionProps}>{defaultCaptionChildren}</TableCaption>;
-  }
+  const component = <Table {...props}>{children}</Table>;
 
   return {
     props: props,
-    wrapper: shallow(<Table {...props}>{children}</Table>),
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
 describe('Table', function () {
   it('renders a table', () => {
-    const data = render(undefined, undefined);
-    const wrapper = data.wrapper;
-
+    const { wrapper } = render();
     const table = wrapper.find('table');
+
     expect(table).toHaveLength(1);
 
     expect(table.hasClass('ds-c-table')).toBe(true);
   });
 
   it('sets role="table"', () => {
-    const data = render(undefined, undefined);
-    const wrapper = data.wrapper;
-
+    const { wrapper } = render();
     const table = wrapper.find('table');
-    expect(table).toHaveLength(1);
 
     expect(table.prop('role')).toBe('table');
   });
 
-  it('supports zebra stripe', () => {
-    const data = render({ striped: true }, undefined);
-    const wrapper = data.wrapper;
-
+  it('applies additional classNames to root table', () => {
+    const { wrapper } = render({ className: 'foo-table' });
     const table = wrapper.find('table');
-    expect(table.hasClass('ds-c-table')).toBe(true);
+
+    expect(table.hasClass('foo-table')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('applies borderless classes', () => {
+    const { wrapper } = render({ borderless: true });
+    const table = wrapper.find('table');
+
+    expect(table.hasClass('ds-c-table--borderless')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('applies zebra stripe classes', () => {
+    const { wrapper } = render({ striped: true });
+    const table = wrapper.find('table');
+
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('supports responsive table', () => {
-    const data = render({ stackable: true, stackableBreakpoint: 'lg' }, undefined);
-    const wrapper = data.wrapper;
-
+  it('applies responsive table', () => {
+    const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
     const table = wrapper.find('table');
-    expect(table.hasClass('ds-c-table')).toBe(true);
+
     expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('supports scroll table', () => {
-    const data = render({ scrollable: true }, undefined);
-    const wrapper = data.wrapper;
+  it('applies scroll table', () => {
+    const { wrapper } = render({ scrollable: true });
+    const divWrapper = wrapper.find('div');
 
-    const table = wrapper.find('table');
-    const divWrapper = data.wrapper.find('div');
-    expect(table.hasClass('ds-c-table')).toBe(true);
     expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders additional attributes', () => {
+    const { wrapper } = render({ ariaLabel: 'test additional attribute' });
+    const table = wrapper.find('table');
+
+    expect(table.prop('ariaLabel')).toBe('test additional attribute');
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('table caption scrollable true', () => {
+    it('applies scroll table wrapper and classes', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const divWrapper = wrapper.find('div');
+
+      expect(wrapper.prop('scrollable')).toBe(true);
+
+      expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+      expect(divWrapper.prop('role')).toBe('region');
+      expect(divWrapper.prop('aria-live')).toBe('polite');
+      expect(divWrapper.prop('aria-relevant')).toBe('additions');
+      expect(divWrapper.prop('tabindex')).toBeUndefined();
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('scroll table aria-labelledby matches caption id', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const divWrapper = wrapper.find('div');
+      const caption = wrapper.find('caption');
+
+      expect(caption.prop('id')).toBe(divWrapper.prop('aria-labelledby'));
+    });
+
+    it('contains scroll table notice ', () => {
+      const { wrapper } = render({ scrollable: true }, undefined, true);
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBeDefined();
+    });
+
+    it('applies scrollableNotice', () => {
+      const { wrapper } = render(
+        { scrollable: true, scrollableNotice: 'foo scrollable notice' },
+        undefined,
+        true
+      );
+      const tableCaption = wrapper.find('TableCaption');
+
+      expect(tableCaption.prop('_scrollableNotice')).toBe('foo scrollable notice');
+
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

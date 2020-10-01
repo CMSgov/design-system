@@ -1,52 +1,12 @@
 @import '../settings/index.scss';
 
-.ds-c-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0;
+$table-header-background-color: $color-gray-lightest !default;
+$table-striped-background-color: $color-gray-lightest !default;
+$table-striped-header-background-color: $color-gray-lightest !default;
+// Max-width of the header column for a stacked table
+$table-stacked-header-max-width: 160px !default;
 
-  th,
-  thead td {
-    background-color: $color-gray-lightest;
-    text-align: left;
-  }
-
-  tbody th {
-    font-weight: $font-normal;
-  }
-
-  th,
-  td {
-    border: 1px solid $color-gray;
-    padding: $spacer-2;
-  }
-}
-
-.ds-c-table--borderless {
-  thead {
-    tr {
-      background-color: transparent;
-    }
-
-    th {
-      border-top: 0;
-    }
-  }
-
-  th,
-  td {
-    border-left: 0;
-    border-right: 0;
-  }
-}
-
-.ds-c-table__header--label span {
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-@mixin ds-c-table--stacked {
+@mixin table-stacked {
   thead tr {
     /* Hide column headings when responsive table stacked vertically on smaller viewports */
     // ds-u-visibility--screen-reader
@@ -71,7 +31,9 @@
     border: 0;
     border-top: 1px solid;
     display: grid;
-    grid-template-columns: 120px 1fr;
+    // CSS grid doesn't support word-wrap. Use minmax as a workaround
+    // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
+    grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     position: relative;
 
     // stylelint-disable selector-no-qualifying-type
@@ -80,8 +42,10 @@
       // stylelint-enable selector-no-qualifying-type
       flex: none;
       font-weight: bold;
-      max-width: 120px;
-      width: 50%;
+      max-width: $table-stacked-header-max-width;
+      // allow for spacing on right side of data-title column
+      width: calc(100% - #{$spacer-2});
+      word-wrap: break-word;
     }
 
     > * {
@@ -96,18 +60,17 @@
     padding-bottom: 2px;
     position: relative;
 
-    &::after {
+    &::before {
       background-color: $color-gray-lightest;
       border-right: 1px solid;
       bottom: 0;
       content: '';
       display: block;
       left: 0;
-      max-width: 120px;
+      max-width: $table-stacked-header-max-width;
       position: absolute;
       top: 0;
-      width: 50%;
-      z-index: -9999;
+      width: 100%;
     }
   }
 
@@ -116,17 +79,11 @@
     border-top: 0;
   }
 
-  &.ds-c-table--striped tbody {
-    tr:nth-child(even) {
-      background-color: $color-gray-lightest;
-    }
-  }
-
   &.ds-c-table--borderless {
     tr {
       border: 0;
 
-      &::after {
+      &::before {
         background-color: transparent;
         border-right: 0;
       }
@@ -139,27 +96,85 @@
   }
 }
 
+.ds-c-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+
+  th,
+  thead td {
+    background-color: $table-header-background-color;
+    text-align: left;
+  }
+
+  tbody th {
+    font-weight: $font-normal;
+  }
+
+  th,
+  td {
+    border: 1px solid $color-gray;
+    padding: $spacer-2;
+  }
+}
+
+.ds-c-table--borderless {
+  thead {
+    th,
+    tr {
+      background-color: transparent;
+    }
+
+    th {
+      border-top: 0;
+    }
+  }
+
+  th,
+  td {
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.ds-c-table--stacked {
+  @include table-stacked;
+}
+
 .ds-c-sm-table--stacked {
   @media only screen and (max-width: $width-sm) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
 .ds-c-md-table--stacked {
   @media only screen and (max-width: $width-md) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
 .ds-c-lg-table--stacked {
   @media only screen and (max-width: $width-lg) {
-    @include ds-c-table--stacked;
+    @include table-stacked;
   }
 }
 
-.ds-c-table--striped tbody {
-  tr:nth-child(even) {
-    background-color: $color-gray-lightest;
+.ds-c-table--striped {
+  thead {
+    th,
+    tr {
+      background-color: $table-striped-header-background-color;
+    }
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $table-striped-background-color;
+    }
+
+    tr:nth-child(odd)::before {
+      background-color: transparent;
+    }
   }
 }
 

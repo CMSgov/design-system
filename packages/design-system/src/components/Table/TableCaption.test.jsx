@@ -1,34 +1,34 @@
 import React from 'react';
-import Table from './Table';
 import TableCaption from './TableCaption';
 import { mount } from 'enzyme';
 
 const defaultCaptionChildren = 'Foo';
-const defaultCaptionProps = {
-  className: 'foo-caption',
-};
 
-function render(customProps = {}, children) {
+function render(customProps = {}) {
   const props = Object.assign({}, customProps);
-
-  if (!children) {
-    children = <TableCaption {...defaultCaptionProps}>{defaultCaptionChildren}</TableCaption>;
-  }
+  const children = <TableCaption {...props}>{defaultCaptionChildren}</TableCaption>;
 
   return {
     props: props,
-    wrapper: mount(<Table {...props}>{children}</Table>),
+    wrapper: mount(<table>{children}</table>),
   };
 }
 
-describe('Table', function () {
+describe('TableCaption', function () {
   it('renders a table caption', () => {
-    const data = render(undefined, undefined);
-    const wrapper = data.wrapper;
+    const { wrapper } = render();
+    const caption = wrapper.find('caption');
 
-    const table = wrapper.find('caption');
-    expect(table).toHaveLength(1);
-    expect(table.hasClass('ds-c-table__caption')).toBe(true);
+    expect(caption).toHaveLength(1);
+    expect(caption.hasClass('ds-c-table__caption')).toBe(true);
+    expect(caption.text()).toBe(defaultCaptionChildren);
+  });
+
+  it('applies additional classNames to caption', () => {
+    const { wrapper } = render({ className: 'foo-caption' });
+    const caption = wrapper.find('caption');
+
+    expect(caption.hasClass('foo-caption')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });

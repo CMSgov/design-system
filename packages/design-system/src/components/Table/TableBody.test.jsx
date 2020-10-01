@@ -1,40 +1,37 @@
 import React from 'react';
-import Table from './Table';
+
 import TableBody from './TableBody';
-import TableCell from './TableCell';
-import TableRow from './TableRow';
 import { mount } from 'enzyme';
 
 const defaultTableBodyChildren = (
-  <TableRow key="1">
-    <TableCell>Cell a</TableCell>
-    <TableCell>Cell a</TableCell>
-  </TableRow>
+  <tr>
+    <td>Cell a</td>
+    <td>Cell a</td>
+  </tr>
 );
-const defaultTableBodyProps = {
-  className: 'foo-body',
-};
 
-function render(customProps = {}, children) {
+function render(customProps = {}) {
   const props = Object.assign({}, customProps);
-
-  if (!children) {
-    children = <TableBody {...defaultTableBodyProps}>{defaultTableBodyChildren}</TableBody>;
-  }
+  const children = <TableBody {...props}>{defaultTableBodyChildren}</TableBody>;
 
   return {
     props: props,
-    wrapper: mount(<Table {...props}>{children}</Table>),
+    wrapper: mount(<table>{children}</table>),
   };
 }
 
-describe('Table', function () {
+describe('TableBody', function () {
   it('renders a table body', () => {
-    const data = render(undefined, undefined);
-    const wrapper = data.wrapper;
-
+    const { wrapper } = render();
     const tableBody = wrapper.find('tbody');
+
     expect(tableBody).toHaveLength(1);
+  });
+
+  it('renders additional attributes', () => {
+    const { wrapper } = render({ className: 'foo-body' });
+    const tableBody = wrapper.find('tbody');
+
     expect(tableBody.hasClass('foo-body')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
