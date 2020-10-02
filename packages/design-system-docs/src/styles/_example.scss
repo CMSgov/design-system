@@ -10,7 +10,7 @@
 body {
   margin: 0;
   // Padding added to ensure *:focus outlines are visible when shown in an iframe
-  padding: $spacer-2;
+  padding: units(2);
 }
 
 code {

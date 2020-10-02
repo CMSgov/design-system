@@ -13,7 +13,7 @@
   border-bottom: 1px solid $border-color;
   border-left: 1px solid $border-color;
   border-right: 1px solid $border-color;
-  padding: $spacer-3;
+  padding: units(3);
 
   &[aria-hidden='true'] {
     /* stylelint-disable declaration-no-important */
@@ -39,22 +39,22 @@
   font-weight: $font-bold;
   line-height: $reset-line-height;
   margin-bottom: -1px;
-  padding: $spacer-2 $spacer-1;
+  padding: units(2) units(1);
   position: relative;
   text-decoration: none;
   // Temporarily disable animation
   //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   @media (min-width: $width-sm) {
-    padding-left: $spacer-2;
-    padding-right: $spacer-2;
+    padding-left: units(2);
+    padding-right: units(2);
   }
 
   // Increase size on larger screens
   @media (min-width: $width-md) {
     font-size: $base-font-size;
-    padding-left: $spacer-3;
-    padding-right: $spacer-3;
+    padding-left: units(3);
+    padding-right: units(3);
   }
 
   &:last-child {
@@ -65,7 +65,7 @@
   &::after {
     background-color: $color-primary;
     content: '';
-    height: $spacer-half;
+    height: units(0.5);
     left: -1px;
     opacity: 0;
     position: absolute;

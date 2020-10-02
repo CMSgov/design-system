@@ -44,7 +44,7 @@ $table-stacked-header-max-width: 160px !default;
       font-weight: bold;
       max-width: $table-stacked-header-max-width;
       // allow for spacing on right side of data-title column
-      width: calc(100% - #{$spacer-2});
+      width: calc(100% - #{units(2)});
       word-wrap: break-word;
     }
 
@@ -114,7 +114,7 @@ $table-stacked-header-max-width: 160px !default;
   th,
   td {
     border: 1px solid $color-gray;
-    padding: $spacer-2;
+    padding: units(2);
   }
 }
 
@@ -184,6 +184,6 @@ $table-stacked-header-max-width: 160px !default;
 
 .ds-c-table__caption {
   font-weight: $font-bold;
-  margin-bottom: $spacer-1;
+  margin-bottom: units(1);
   text-align: left;
 }

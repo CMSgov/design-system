@@ -1,6 +1,6 @@
 @import '../settings/index.scss';
 
-$ds-c-inset-border-width: $spacer-half;
+$ds-c-inset-border-width: units(0.5);
 
 // Order of the choice styles is important to ensure styles have the correct precedent
 // normal < errored < checked < disabled < focused
@@ -18,14 +18,14 @@ $ds-c-inset-border-width: $spacer-half;
     display: flex;
     flex-wrap: wrap;
     font-weight: $font-normal;
-    margin: $spacer-1 0;
+    margin: units(1) 0;
     max-width: $measure-base;
     // We set min-height to be the same as `$choice-size` to ensure most of the time
     // the label and icon will be vertically aligned. We cannot simply vertically center the icon
     // because of choice hints and label text wrapping, as we want the icon to be vertically aligned
     // with the first line of text only.
     min-height: $choice-size;
-    padding-left: $choice-size + $spacer-1;
+    padding-left: $choice-size + units(1);
     position: relative;
   }
 
@@ -153,7 +153,7 @@ $ds-c-inset-border-width: $spacer-half;
 .ds-c-choice--small {
   + label {
     min-height: $choice-size-small;
-    padding-left: $choice-size-small + $spacer-1;
+    padding-left: $choice-size-small + units(1);
 
     &::before {
       height: $choice-size-small;
@@ -187,16 +187,16 @@ $ds-c-inset-border-width: $spacer-half;
 // Checked children container
 .ds-c-choice__checkedChild {
   border-left: $ds-c-inset-border-width solid $color-primary;
-  margin-bottom: $spacer-2;
+  margin-bottom: units(2);
   margin-left: ($choice-size / 2) - ($ds-c-inset-border-width / 2);
-  padding: $spacer-2;
+  padding: units(2);
 
   &--inverse {
     border-left-color: $color-white;
   }
 
   &--small {
-    margin-left: $spacer-1;
+    margin-left: units(1);
   }
 }
 

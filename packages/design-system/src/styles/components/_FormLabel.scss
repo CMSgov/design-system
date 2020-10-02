@@ -5,7 +5,7 @@
   font-size: $base-font-size;
   font-weight: $font-bold;
   margin-bottom: 0;
-  margin-top: $spacer-3;
+  margin-top: units(3);
   max-width: $input-max-width;
   // Remove default padding on <legend> elements:
   padding: 0;
@@ -20,7 +20,7 @@
   border: 0;
   // We apply the same margin as a label, since in the context of a fieldset
   // this would be a <legend>. See .ds-c-fieldset > .ds-c-label for more info.
-  margin: $spacer-3 0 0;
+  margin: units(3) 0 0;
   min-width: 0;
   padding: 0;
 }
