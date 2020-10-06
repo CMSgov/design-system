@@ -10,17 +10,17 @@
       If there are expected visual changes, run `backstop approve` to save the new reference files. This should ideally be handled before the release process begins.
    1. Ensure you are logged into NPM. Check your user account with `npm whoami`.
 
-      **Note**: Your NPM account must access to the CMS group and provide a valid access token. To add a token, edit your `~/.npmrc` file so the contents are `//registry.npmjs.org/:_authToken={token}`
+      **Note:** You must be logged in to an NPM account with publishing rights on the `cmsgov` organization. To request access, create a [Jira ticket on the QPP Tools and Access board](https://jira.cms.gov/browse/QTA-847) with your EUA and NPM username. Reach out on the [`#cms-design-system` channel](https://cmsgov.slack.com/archives/CHH0381RD) for any questions on this process.
 
-   1. Run the prerelease script to prepare the repo for publishing.
+   1. Run the pre-release script to prepare the repo for publishing.
 
       ```
-      yarn prerelease
+      yarn pre-release
       ```
 
       This script will install dependencies, build design system assets, and run the linter and tests. If everything passes, `lerna` will prompt you for the new version number, which should follow the [SemVer release format](#versioning). After the versions are updated, the script will create a tagged release commit (prefaced with `core-`), a branch (prefaced with `release-`) containing the release commit, and a zip for the Github release notes.
 
-   1. After the prerelease script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
+   1. After the pre-release script is completed, unpack the release zips created from the release script (i.e. `cmsgov-design-system-2.0.0.tgz`) and check the relevant folders and files are present. Confirm that the cmsgov-design-system release zip contains the `dist` folder.
 
    1. The next step is to run the lerna publish command for publish to [NPM](https://www.npmjs.com/package/@cmsgov/design-system).
 
