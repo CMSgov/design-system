@@ -7,11 +7,7 @@ export class Review extends React.PureComponent {
   heading() {
     const Heading = `h${this.props.headingLevel}` || `h3`;
     if (this.props.heading) {
-      return (
-        <Heading className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block">
-          {this.props.heading}
-        </Heading>
-      );
+      return <Heading className="ds-c-review__heading ds-text">{this.props.heading}</Heading>;
     }
   }
 
@@ -25,10 +21,7 @@ export class Review extends React.PureComponent {
       onEditClick,
       editContent,
     } = this.props;
-    const classes = classNames(
-      'ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex',
-      className && className
-    );
+    const classes = classNames('ds-c-review', className && className);
     return (
       <div className={classes}>
         <div className="ds-u-margin-right--2">
