@@ -36,7 +36,7 @@
   cursor: pointer;
   display: inline-block;
   font-size: $small-font-size;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   line-height: $reset-line-height;
   margin-bottom: -1px;
   padding: units(2) units(1);

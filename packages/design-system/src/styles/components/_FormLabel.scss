@@ -3,7 +3,7 @@
 .ds-c-label {
   display: block;
   font-size: $base-font-size;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   margin-bottom: 0;
   margin-top: units(3);
   max-width: $input-max-width;
@@ -34,7 +34,7 @@
 .ds-c-field__hint {
   color: $color-muted;
   display: block;
-  font-weight: $font-normal;
+  font-weight: font-weight('normal');
 }
 
 .ds-c-field__hint--inverse {

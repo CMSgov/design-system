@@ -91,7 +91,7 @@
 .ds-c-vertical-nav__label--current:visited {
   border-left-color: $color-primary;
   color: $color-primary;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
 }
 
 .ds-c-vertical-nav__subnav {

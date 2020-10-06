@@ -140,7 +140,7 @@ $current-step-color: $color-primary !default;
   }
 
   .ds-c-step--completed & a {
-    font-weight: $font-normal;
+    font-weight: font-weight('normal');
   }
 
   @media (min-width: $step-list-breakpoint) {

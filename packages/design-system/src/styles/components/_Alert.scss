@@ -92,7 +92,7 @@ $alert-icon-size: units(5);
 
 .ds-c-alert__heading {
   font-size: $lead-font-size;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   margin-bottom: units(0.5);
   margin-top: 0;
 }

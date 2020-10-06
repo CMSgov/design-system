@@ -21,7 +21,7 @@ a code {
 
 blockquote code {
   background-color: transparent;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   padding: 0;
 }
 

@@ -64,7 +64,7 @@
   color: $color-muted;
   display: block;
   font-size: $h6-font-size;
-  font-weight: $font-normal;
+  font-weight: font-weight('normal');
   margin-bottom: units(1);
   margin-top: $spacer-2;
 

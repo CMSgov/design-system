@@ -108,7 +108,7 @@ $table-stacked-header-max-width: 160px !default;
   }
 
   tbody th {
-    font-weight: $font-normal;
+    font-weight: font-weight('normal');
   }
 
   th,
@@ -183,7 +183,7 @@ $table-stacked-header-max-width: 160px !default;
 }
 
 .ds-c-table__caption {
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   margin-bottom: units(1);
   text-align: left;
 }

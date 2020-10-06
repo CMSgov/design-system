@@ -17,7 +17,7 @@ $ds-c-inset-border-width: units(0.5);
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
-    font-weight: $font-normal;
+    font-weight: font-weight('normal');
     margin: units(1) 0;
     max-width: $measure-base;
     // We set min-height to be the same as `$choice-size` to ensure most of the time
