@@ -320,10 +320,10 @@ Or use `false` for unneeded weights.
 */
 
 $theme-font-weight-thin: false;
-$theme-font-weight-light: 300;
+$theme-font-weight-light: false;
 $theme-font-weight-normal: 400;
 $theme-font-weight-medium: false;
-$theme-font-weight-semibold: false;
+$theme-font-weight-semibold: 600;
 $theme-font-weight-bold: 700;
 $theme-font-weight-heavy: false;
 
