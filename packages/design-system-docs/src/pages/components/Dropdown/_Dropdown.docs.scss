@@ -42,7 +42,7 @@ Style guide: components.dropdown.react
 
 - **Make sure to test.** Test dropdowns thoroughly with members of your target audience. Several usability experts suggest they should be the “UI of last resort.” Many users find them confusing and difficult to use.
 - **Avoid dependent options.** Avoid making options in one dropdown menu change based on the input to another. Users often don’t understand how selecting an item in one impacts another.
-- **Use a good default.** When most users will (or should) pick a particular option, make it the default: ``<option selected="selected">Default</option>``
+- **Use a good default.** When most users will (or should) pick a particular option, make it the slected default. **If a good default is not an option**, use a descriptive placeholder like `--Please select a state--` as the selcted default.
 - **Avoid auto-submission.** Don’t use JavaScript to automatically submit the form (or do anything else) when an option is selected. Auto-submission disrupts screen readers because they select each option as they read them.
 
 **[View the "Forms" guidelines for additional guidance and best practices.]({{root}}/guidelines/forms/)**
