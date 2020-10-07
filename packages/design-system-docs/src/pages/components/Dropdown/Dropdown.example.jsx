@@ -13,7 +13,7 @@ const dropdownOptions = [
   { label: 'Option 8', value: '8' },
 ];
 const dropdownOptions2 = [
-  { label: '--Please select an option--', value: '' },
+  { label: '- Select an option -', value: '' },
   { label: 'Option 1', value: '1' },
   { label: 'Option 2', value: '2' },
   { label: 'Option 3', value: '3' },
