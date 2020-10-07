@@ -58,6 +58,7 @@ Style guide: components.form-label.react
 #### Validation
 
 - Place inline validation messages within the field's `<label>` element.
+- Apply the `.ds-c-field__error-message` class to error text.
 - Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
 - Either place an icon next to the error, labeling the icon as error with ARIA or off-screen text, or use text in front of the message itself. Like: "Error: The email address is not a valid email address." The use of the icon or text not only clearly labels the following text as an error, but allows users to know that the message is an error without relying on color alone.
 - The form field receives an `aria-describedby` attribute that references the `id` of the error message.
