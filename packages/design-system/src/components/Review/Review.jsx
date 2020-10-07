@@ -21,7 +21,7 @@ export class Review extends React.PureComponent {
       onEditClick,
       editContent,
     } = this.props;
-    const classes = classNames('ds-c-review', className && className);
+    const classes = classNames('ds-c-review', className);
     return (
       <div className={classes}>
         <div className="ds-u-margin-right--2">
