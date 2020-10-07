@@ -5,8 +5,8 @@ import classNames from 'classnames';
 export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
-      const classes = classNames('ds-c-field__error', {
-        'ds-c-field__error--inverse': this.props.inversed,
+      const classes = classNames('ds-c-field__error-message', {
+        'ds-c-field__error-message--inverse': this.props.inversed,
       });
 
       const id = this.props.fieldId ? `${this.props.fieldId}-message` : undefined;

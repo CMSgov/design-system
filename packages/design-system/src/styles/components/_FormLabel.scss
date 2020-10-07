@@ -41,13 +41,13 @@
   color: $color-muted-inverse;
 }
 
-.ds-c-field__error {
+.ds-c-field__error-message {
   color: $color-error;
   display: block;
   font-weight: $font-normal;
 }
 
-.ds-c-field__error--inverse {
+.ds-c-field__error-message--inverse {
   color: $color-error-light;
 }
 
