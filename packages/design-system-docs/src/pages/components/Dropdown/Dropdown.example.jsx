@@ -12,12 +12,23 @@ const dropdownOptions = [
   { label: 'Option 7', value: '7' },
   { label: 'Option 8', value: '8' },
 ];
+const dropdownOptions2 = [
+  { label: '--Please select an option--', value: '' },
+  { label: 'Option 1', value: '1' },
+  { label: 'Option 2', value: '2' },
+  { label: 'Option 3', value: '3' },
+  { label: 'Option 4', value: '4' },
+  { label: 'Option 5', value: '5' },
+  { label: 'Option 6', value: '6' },
+  { label: 'Option 7', value: '7' },
+  { label: 'Option 8', value: '8' },
+];
 
 ReactDOM.render(
   <div className="example--wrapper">
     <Dropdown
-      options={dropdownOptions}
-      defaultValue="1"
+      options={dropdownOptions2}
+      defaultValue=""
       label="Dropdown example"
       labelClassName="ds-u-margin-top--0"
       name="dropdown_field"
