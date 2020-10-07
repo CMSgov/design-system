@@ -89,7 +89,7 @@ exports[`FormLabel renders error state 1`] = `
     Hello world
   </span>
   <span
-    className="ds-c-field__hint ds-u-color--error"
+    className="ds-c-field__error"
     id="name-message"
     role="alert"
   >
