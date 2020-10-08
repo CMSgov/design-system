@@ -1,9 +1,12 @@
 // Typography
 
-// USWDS uses rem units for their font sizes, however this relies on
-// the root element (typically <html>) to have its font size set to
-// 10px. Since styling a root element goes against the guiding principles
-// of this design system, we use px units instead.
+/*
+ *  The following font size variables are maintained for backwards compatibility but not recommended for use.
+ *  Use USWDS font size theme tokens, mixins, and functions instead (i.e. $theme-type-scale-sm, $theme-h1-font-size, size(family, size))
+ *
+ *  https://designsystem.digital.gov/design-tokens/typesetting/font-size/
+ */
+
 $base-font-size: 16px !default;
 $small-font-size: 14px !default;
 $lead-font-size: 18px !default;
