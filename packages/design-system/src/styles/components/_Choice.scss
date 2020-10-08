@@ -80,11 +80,11 @@ $ds-c-inset-border-width: $spacer-half;
   // Disabled checkbox/radio button and label
   &:disabled + label {
     color: $color-muted;
+    cursor: not-allowed;
 
     &::before {
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
-      cursor: not-allowed;
     }
   }
 
