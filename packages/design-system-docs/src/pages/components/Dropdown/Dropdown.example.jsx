@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const dropdownOptions = [
+  { label: '- Select an option -', value: '' },
   { label: 'Option 1', value: '1' },
   { label: 'Option 2', value: '2' },
   { label: 'Option 3', value: '3' },
@@ -17,28 +18,28 @@ ReactDOM.render(
   <div className="example--wrapper">
     <Dropdown
       options={dropdownOptions}
-      defaultValue="1"
+      defaultValue=""
       label="Dropdown example"
       labelClassName="ds-u-margin-top--0"
       name="dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue="1"
+      defaultValue=""
       size="small"
       label="Small size example"
       name="small_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue="1"
+      defaultValue=""
       size="medium"
       label="Medium size example"
       name="medium_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue="1"
+      defaultValue=""
       errorMessage="Example error message"
       hint="Helpful hint text"
       label="Error example"
@@ -46,7 +47,7 @@ ReactDOM.render(
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue="1"
+      defaultValue=""
       label="Disabled example"
       disabled
       name="disabled_dropdown_field"
@@ -72,7 +73,7 @@ ReactDOM.render(
       <Dropdown
         labelClassName="ds-u-margin-top--0"
         options={dropdownOptions}
-        defaultValue="1"
+        defaultValue=""
         errorMessage="Example error message"
         hint="Helpful hint text"
         label="Inverse example"
