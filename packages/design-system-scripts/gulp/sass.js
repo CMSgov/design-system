@@ -78,11 +78,7 @@ async function compileSourceSass(sourceDir, options, browserSync) {
   const nodeModuleRelativePath = options.core
     ? path.resolve(sourceDir, '../../node_modules')
     : path.resolve(sourceDir, 'node_modules');
-  const includePaths = [
-    src,
-    nodeModuleRelativePath,
-    path.resolve(nodeModuleRelativePath, 'uswds', 'dist', 'scss'),
-  ];
+  const includePaths = [src, nodeModuleRelativePath];
   await compileSass(src, dest, includePaths, browserSync);
 }
 
@@ -95,11 +91,7 @@ async function compileDocsSass(docsDir, options, browserSync) {
   const nodeModuleRelativePath = options.core
     ? path.resolve(docsDir, '../../node_modules')
     : path.resolve(docsDir, '../node_modules');
-  const includePaths = [
-    src,
-    nodeModuleRelativePath,
-    path.resolve(nodeModuleRelativePath, 'uswds', 'dist', 'scss'),
-  ];
+  const includePaths = [src, nodeModuleRelativePath];
   await compileSass(src, dest, includePaths, browserSync);
 }
 
