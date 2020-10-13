@@ -15,7 +15,7 @@
   // Increase currency size so it serves more as an icon and
   // better aligns with the input value text
   font-size: $base-font-size + 2;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   // Adjust to better align icon with value's baseline
   padding-top: 1px;
 }

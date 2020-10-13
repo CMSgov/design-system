@@ -21,14 +21,14 @@ a code {
 
 blockquote code {
   background-color: transparent;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   padding: 0;
 }
 
 pre {
   line-height: 1.4;
   margin: 0;
-  padding: $spacer-2;
+  padding: units(2);
 
   code {
     background-color: transparent;

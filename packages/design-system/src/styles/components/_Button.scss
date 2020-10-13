@@ -11,9 +11,9 @@
   display: inline-block;
   font-family: $font-sans;
   font-size: $base-font-size;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
   line-height: $input-line-height;
-  padding: $spacer-1 $spacer-3;
+  padding: units(1) units(3);
   text-align: center;
   text-decoration: none;
 
@@ -79,14 +79,14 @@
 
 .ds-c-button--big {
   font-size: $h3-font-size;
-  padding-bottom: $spacer-2;
-  padding-top: $spacer-2;
+  padding-bottom: units(2);
+  padding-top: units(2);
 }
 
 .ds-c-button--small {
   font-size: $small-font-size;
-  font-weight: $font-normal;
-  padding: $spacer-half $spacer-1;
+  font-weight: font-weight('normal');
+  padding: units(0.5) units(1);
 }
 
 /**

@@ -67,7 +67,7 @@ $tooltip-background-color-inverse: $color-background;
   color: $tooltip-color;
   font-size: $small-font-size;
   font-weight: 400;
-  padding: $spacer-1;
+  padding: units(1);
 }
 
 // The invisible area around the tooltip container that keeps the tooltip visible on hover

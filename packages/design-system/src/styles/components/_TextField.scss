@@ -7,7 +7,7 @@
   box-sizing: border-box; // ensure padding doesn't affect width
   color: $color-base;
   display: block;
-  margin: $spacer-half 0;
+  margin: units(0.5) 0;
   max-width: $input-max-width;
   outline: none;
   padding: $input-padding;
