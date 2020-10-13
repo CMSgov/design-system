@@ -14,14 +14,13 @@ $ds-c-inset-border-width: $spacer-half;
   // Choice label
   + label {
     align-items: flex-start;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     font-weight: $font-normal;
     justify-content: center;
     margin: $spacer-1 0;
-    max-width: fit-content;
+    max-width: $measure-base;
     // We set min-height to be the same as `$choice-size` to ensure most of the time
     // the label and icon will be vertically aligned. We cannot simply vertically center the icon
     // because of choice hints and label text wrapping, as we want the icon to be vertically aligned
@@ -29,6 +28,10 @@ $ds-c-inset-border-width: $spacer-half;
     min-height: $choice-size;
     padding-left: $choice-size + $spacer-1;
     position: relative;
+
+    > span {
+      cursor: pointer;
+    }
   }
 
   // Choice checkbox/radio button
@@ -38,6 +41,7 @@ $ds-c-inset-border-width: $spacer-half;
     border-radius: $choice-border-radius;
     box-sizing: border-box;
     content: '\a0';
+    cursor: pointer;
     height: $choice-size;
     left: 0;
     position: absolute;
@@ -52,6 +56,7 @@ $ds-c-inset-border-width: $spacer-half;
     border-top-color: transparent;
     border-width: 0 0 4px 4px;
     content: '';
+    cursor: pointer;
     height: 4px;
     left: 9px;
     opacity: 0;
@@ -82,11 +87,19 @@ $ds-c-inset-border-width: $spacer-half;
   // Disabled checkbox/radio button and label
   &:disabled + label {
     color: $color-muted;
-    cursor: not-allowed;
+
+    > span {
+      cursor: not-allowed;
+    }
 
     &::before {
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
+      cursor: not-allowed;
+    }
+
+    &::after {
+      cursor: not-allowed;
     }
   }
 
