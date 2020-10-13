@@ -127,7 +127,7 @@ exports[`DateField has errorMessage 1`] = `
       For example: 4 / 28 / 1986
     </span>
     <span
-      className="ds-c-field__hint ds-u-color--error"
+      className="ds-c-field__error-message"
       role="alert"
     >
       This is required.
