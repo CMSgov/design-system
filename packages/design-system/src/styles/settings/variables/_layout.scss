@@ -1,3 +1,10 @@
+/*
+ *  The following spacer variables are maintained for backwards compatibility but not recommended for use.
+ *  Use USWDS spacing tokens, mixins, and functions instead (i.e. units(units))
+ *
+ *  https://designsystem.digital.gov/design-tokens/spacing-units/#using-spacing-unit-tokens
+ */
+
 $multiple: 8px !default;
 
 $spacers: (
@@ -45,7 +52,7 @@ $border-radius-pill: 9999px;
 // Grid
 $grid-columns: 12 !default;
 $grid-gutter-width: $spacer-4 !default;
-$grid-form-gutter-width: $spacer-2 !default;
+$grid-form-gutter-width: units(2) !default;
 
 // Z-index
 $z-dialog: 1000 !default;

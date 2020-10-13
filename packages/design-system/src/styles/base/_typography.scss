@@ -20,7 +20,7 @@
 .ds-h2,
 .ds-h3,
 .ds-h4 {
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
 }
 
 // Headings
@@ -56,7 +56,7 @@
 
 .ds-title {
   font-size: $h1-font-size;
-  font-weight: $font-normal;
+  font-weight: font-weight('normal');
 
   @media (min-width: $width-md) {
     font-size: $title-font-size;
@@ -65,7 +65,7 @@
 
 .ds-h1 {
   font-size: $h1-mobile-font-size;
-  font-weight: $font-normal;
+  font-weight: font-weight('normal');
 
   @media (min-width: $width-md) {
     font-size: $h1-font-size;
@@ -86,13 +86,13 @@
 
 .ds-h5 {
   font-size: $h5-font-size;
-  font-weight: $font-bold;
+  font-weight: font-weight('bold');
 }
 
 .ds-h6 {
   color: $color-muted;
   font-size: $h6-font-size;
-  font-weight: $font-normal;
+  font-weight: font-weight('normal');
 }
 
 .ds-base--inverse .ds-h6 {

@@ -33,5 +33,5 @@
 
 .bp-toggle--active {
   background-color: $color-white;
-  border-bottom: $spacer-half solid $color-primary;
+  border-bottom: units(0.5) solid $color-primary;
 }

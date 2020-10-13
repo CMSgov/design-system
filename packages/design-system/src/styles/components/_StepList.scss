@@ -9,7 +9,7 @@ $step-list-number-margin: 10px !default;
 $step-list-padding-h: 0 !default;
 $step-list-padding-left: $step-list-padding-h + $step-list-number-margin + $step-list-number-size;
 $step-list-breakpoint: $width-md !default;
-$step-margin: $spacer-2 !default;
+$step-margin: units(2) !default;
 $step-border-width: 1px !default;
 $step-button-height: 38px !default;
 $current-step-color: $color-primary !default;
@@ -113,7 +113,7 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step__content {
   @media (min-width: $step-list-breakpoint) {
-    padding-right: $spacer-2;
+    padding-right: units(2);
   }
 }
 
@@ -132,7 +132,7 @@ $current-step-color: $color-primary !default;
   margin-left: auto;
 
   .ds-c-step__content--with-content + & {
-    margin-top: $spacer-2;
+    margin-top: units(2);
 
     @media (min-width: $step-list-breakpoint) {
       margin-top: 0;
@@ -140,7 +140,7 @@ $current-step-color: $color-primary !default;
   }
 
   .ds-c-step--completed & a {
-    font-weight: $font-normal;
+    font-weight: font-weight('normal');
   }
 
   @media (min-width: $step-list-breakpoint) {
@@ -152,7 +152,7 @@ $current-step-color: $color-primary !default;
 .ds-c-step__completed-text {
   display: inline-block;
   line-height: $step-button-height - 12px;
-  margin-right: $spacer-2;
+  margin-right: units(2);
 
   &::before {
     background-image: url('#{$image-path}/checkmark-green.svg');
@@ -161,7 +161,7 @@ $current-step-color: $color-primary !default;
     content: '';
     display: inline-block;
     height: 12px;
-    margin-right: $spacer-1;
+    margin-right: units(1);
     width: 16px;
   }
 
@@ -175,11 +175,11 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step__description {
   font-size: $small-font-size;
-  margin-bottom: $spacer-1;
+  margin-bottom: units(1);
 
   .ds-c-step--current &,
   .ds-c-step--completed & {
-    margin-top: $spacer-1;
+    margin-top: units(1);
   }
 
   @media (min-width: $step-list-breakpoint) {
@@ -190,7 +190,7 @@ $current-step-color: $color-primary !default;
 .ds-c-step__substeps {
   list-style-type: none;
   margin: 0;
-  padding-left: $spacer-5;
+  padding-left: units(5);
 }
 
 .ds-c-substep {
@@ -199,14 +199,14 @@ $current-step-color: $color-primary !default;
 
   &::before {
     content: '\2022';
-    left: -$spacer-3;
+    left: -units(3);
     position: relative;
   }
 }
 
 .ds-c-substep__heading {
   display: inline-block;
-  margin-right: $spacer-1;
+  margin-right: units(1);
 }
 
 .ds-c-substep__edit {
