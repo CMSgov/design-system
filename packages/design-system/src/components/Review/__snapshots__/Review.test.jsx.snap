@@ -8,7 +8,7 @@ exports[`Review renders review 1`] = `
     className="ds-u-margin-right--2"
   >
     <h3
-      className="ds-c-review__heading ds-text"
+      className="ds-c-review__heading"
     >
       review heading
     </h3>

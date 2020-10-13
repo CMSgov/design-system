@@ -7,7 +7,7 @@ export class Review extends React.PureComponent {
   heading() {
     const Heading = `h${this.props.headingLevel}` || `h3`;
     if (this.props.heading) {
-      return <Heading className="ds-c-review__heading ds-text">{this.props.heading}</Heading>;
+      return <Heading className="ds-c-review__heading">{this.props.heading}</Heading>;
     }
   }
 
