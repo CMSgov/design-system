@@ -65,6 +65,11 @@ Inverse theme
 // ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
+
+  &.ds-c-field--inverse {
+    border: 3px solid $color-error-light;
+  }
+
   @if $ds-include-focus-styles {
     &:focus {
       border-color: $color-base;
