@@ -13,13 +13,11 @@ $ds-c-inset-border-width: $spacer-half;
 
   // Choice label
   + label {
-    align-items: flex-start;
+    align-items: center;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     font-weight: $font-normal;
-    justify-content: center;
     margin: $spacer-1 0;
     max-width: $measure-base;
     // We set min-height to be the same as `$choice-size` to ensure most of the time
