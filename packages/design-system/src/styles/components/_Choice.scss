@@ -14,6 +14,7 @@ $ds-c-inset-border-width: $spacer-half;
   // Choice label
   + label {
     align-items: flex-start;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -28,10 +29,7 @@ $ds-c-inset-border-width: $spacer-half;
     min-height: $choice-size;
     padding-left: $choice-size + $spacer-1;
     position: relative;
-
-    > span {
-      cursor: pointer;
-    }
+    width: fit-content;
   }
 
   // Choice checkbox/radio button
@@ -41,7 +39,6 @@ $ds-c-inset-border-width: $spacer-half;
     border-radius: $choice-border-radius;
     box-sizing: border-box;
     content: '\a0';
-    cursor: pointer;
     height: $choice-size;
     left: 0;
     position: absolute;
@@ -56,7 +53,6 @@ $ds-c-inset-border-width: $spacer-half;
     border-top-color: transparent;
     border-width: 0 0 4px 4px;
     content: '';
-    cursor: pointer;
     height: 4px;
     left: 9px;
     opacity: 0;
@@ -87,19 +83,11 @@ $ds-c-inset-border-width: $spacer-half;
   // Disabled checkbox/radio button and label
   &:disabled + label {
     color: $color-muted;
-
-    > span {
-      cursor: not-allowed;
-    }
+    cursor: not-allowed;
 
     &::before {
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
-      cursor: not-allowed;
-    }
-
-    &::after {
-      cursor: not-allowed;
     }
   }
 
