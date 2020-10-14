@@ -26,7 +26,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -55,7 +55,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -84,7 +84,7 @@ exports[`DateField has custom yearMax and yearMin 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -140,7 +140,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -169,7 +169,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -198,7 +198,7 @@ exports[`DateField has errorMessage 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -248,7 +248,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -277,7 +277,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -306,7 +306,7 @@ exports[`DateField has invalid day 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -356,7 +356,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -385,7 +385,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -414,7 +414,7 @@ exports[`DateField has invalid month 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -464,7 +464,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -493,7 +493,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -522,7 +522,7 @@ exports[`DateField has invalid year 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -574,7 +574,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -603,7 +603,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -632,7 +632,7 @@ exports[`DateField has requirementLabel 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -682,7 +682,7 @@ exports[`DateField is disabled 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -712,7 +712,7 @@ exports[`DateField is disabled 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -742,7 +742,7 @@ exports[`DateField is disabled 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -793,7 +793,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -822,7 +822,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -851,7 +851,7 @@ exports[`DateField is inversed 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1 ds-c-label--inverse"
+        className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -901,7 +901,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -930,7 +930,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
@@ -959,7 +959,7 @@ exports[`DateField renders with all defaultProps 1`] = `
       className="ds-u-clearfix ds-l-col--auto"
     >
       <label
-        className="ds-c-label ds-u-font-weight--normal ds-u-margin-top--1"
+        className="ds-c-label ds-c-datefield__label"
         htmlFor="textfield_snapshot"
         id="textfield_label_snapshot"
       >
