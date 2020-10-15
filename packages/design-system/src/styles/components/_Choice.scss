@@ -15,7 +15,8 @@ $ds-c-inset-border-width: $spacer-half;
   + label {
     align-items: center;
     cursor: pointer;
-    display: table;
+    display: flex;
+    flex-wrap: wrap;
     font-weight: $font-normal;
     margin: $spacer-1 0;
     max-width: $measure-base;
@@ -26,6 +27,7 @@ $ds-c-inset-border-width: $spacer-half;
     min-height: $choice-size;
     padding-left: $choice-size + $spacer-1;
     position: relative;
+    width: fit-content;
   }
 
   // Choice checkbox/radio button
