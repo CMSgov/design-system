@@ -27,6 +27,7 @@ $ds-c-inset-border-width: $spacer-half;
     min-height: $choice-size;
     padding-left: $choice-size + $spacer-1;
     position: relative;
+    width: fit-content;
   }
 
   // Choice checkbox/radio button
@@ -80,11 +81,11 @@ $ds-c-inset-border-width: $spacer-half;
   // Disabled checkbox/radio button and label
   &:disabled + label {
     color: $color-muted;
+    cursor: not-allowed;
 
     &::before {
       background-color: $choice-disabled-background-color;
       border-color: $choice-disabled-border-color;
-      cursor: not-allowed;
     }
   }
 
