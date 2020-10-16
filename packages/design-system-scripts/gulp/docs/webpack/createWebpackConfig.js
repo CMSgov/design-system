@@ -9,6 +9,7 @@ const { getDocsDirs } = require('../../common/getDirsToProcess');
 const polyfills = [
   'core-js/stable/object/assign',
   'core-js/stable/array/find',
+  'core-js/features/array/includes',
   'core-js/features/promise',
 ];
 
