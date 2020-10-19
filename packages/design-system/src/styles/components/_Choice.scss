@@ -50,6 +50,7 @@ $ds-c-inset-border-width: $spacer-half;
     border-color: $color-white;
     border-top-color: transparent;
     border-width: 0 0 4px 4px;
+    box-sizing: content-box;
     content: '';
     height: 4px;
     left: 9px;
