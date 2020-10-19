@@ -30,25 +30,31 @@ $table-stacked-header-max-width: 160px !default;
   th {
     border: 0;
     border-top: 1px solid;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -ms-grid;
     display: grid;
     // CSS grid doesn't support word-wrap. Use minmax as a workaround
     // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -ms-grid-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     position: relative;
 
-    // stylelint-disable selector-no-qualifying-type
+    /* stylelint-disable-next-line selector-no-qualifying-type */
     &[data-title]::before {
       content: attr(data-title);
-      // stylelint-enable selector-no-qualifying-type
-      flex: none;
       font-weight: bold;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -ms-grid-column: 1;
+      grid-column: 1;
       max-width: $table-stacked-header-max-width;
-      // allow for spacing on right side of data-title column
       width: calc(100% - #{$spacer-2});
       word-wrap: break-word;
     }
 
-    > * {
+    > span {
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -ms-grid-column: 2;
       grid-column: 2;
     }
   }
