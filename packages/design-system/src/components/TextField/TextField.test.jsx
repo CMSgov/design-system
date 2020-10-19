@@ -154,15 +154,6 @@ describe('TextField', function () {
     expect(field.prop('aria-label')).toBe(data.props.ariaLabel);
   });
 
-  it('adds default aria-label for currency mask', () => {
-    const data = render({
-      mask: 'currency',
-    });
-    const field = data.wrapper.find('.ds-c-field').first();
-
-    expect(field.prop('aria-label')).toBe(`${data.props.label}. Enter amount in dollars.`);
-  });
-
   it('adds overrides default aria-label with defined prop', () => {
     const data = render({
       ariaLabel: 'Foo',
