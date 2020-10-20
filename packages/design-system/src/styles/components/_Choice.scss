@@ -44,6 +44,12 @@ $ds-c-inset-border-width: $spacer-half;
     width: $choice-size;
   }
 
+  // Choice radio button
+  &[type='radio'] + label::before {
+    border-radius: 100%;
+  }
+
+  // Checkmark icon
   + label::after {
     background: transparent;
     border: solid;
@@ -61,25 +67,26 @@ $ds-c-inset-border-width: $spacer-half;
     width: 10px;
   }
 
-  // Errored checkbox/radio button
+  // Errored choice
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error + label::before {
       border-color: $color-error;
     }
   }
 
-  // Checked checkbox/radio button
-  &:checked + label::before {
-    background-color: $choice-checked-background-color;
-    border-color: $choice-checked-border-color;
+  // Checked choice
+  &:checked + label {
+    &::before {
+      background-color: $choice-checked-background-color;
+      border-color: $choice-checked-border-color;
+    }
+
+    &::after {
+      opacity: 1;
+    }
   }
 
-  // Checked icon
-  &:checked + label::after {
-    opacity: 1;
-  }
-
-  // Disabled checkbox/radio button and label
+  // Disabled choice
   &:disabled + label {
     color: $color-muted;
     cursor: not-allowed;
@@ -90,7 +97,7 @@ $ds-c-inset-border-width: $spacer-half;
     }
   }
 
-  // Focused checkbox/radio button
+  // Focused choice
   &:focus + label::before {
     @if $ds-include-focus-styles {
       border-color: $color-base;
@@ -112,20 +119,20 @@ $ds-c-inset-border-width: $spacer-half;
     border-color: $choice-border-color-inverse;
   }
 
-  // Errored checkbox/radio button
+  // Errored inverse choice
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error + label::before {
       border-color: $color-error-light;
     }
   }
 
-  // Checked checkbox/radio button
+  // Checked inverse choice
   // Need to repeat this styling to override error border-color when checked
   &:checked + label::before {
     border-color: $choice-checked-background-color;
   }
 
-  // Disabled checkbox/radio button and label
+  // Disabled inverse choice
   &:disabled + label {
     color: $color-muted-inverse;
 
@@ -135,7 +142,7 @@ $ds-c-inset-border-width: $spacer-half;
     }
   }
 
-  // Focused checkbox/radio button
+  // Focused inverse choice
   &:focus + label::before {
     @if $ds-include-focus-styles {
       border-color: $choice-border-color-inverse;
@@ -144,11 +151,6 @@ $ds-c-inset-border-width: $spacer-half;
       box-shadow: 0 0 0 2px $color-background-inverse, 0 0 2px 4px $color-focus-inverse;
     }
   }
-}
-
-// Display a circular radio button
-.ds-c-choice[type='radio'] + label::before {
-  border-radius: 100%;
 }
 
 // Size variants
