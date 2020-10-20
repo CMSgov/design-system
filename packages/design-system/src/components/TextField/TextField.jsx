@@ -28,14 +28,6 @@ export class TextField extends React.PureComponent {
     }
   }
 
-  ariaLabel() {
-    if (this.props.ariaLabel) {
-      return this.props.ariaLabel;
-    } else if (this.props.mask === 'currency') {
-      return `${this.props.label}. Enter amount in dollars.`;
-    }
-  }
-
   /**
    * @param {React.Component} field
    * @returns {React.Component} The input field, optionally including mask
@@ -97,7 +89,7 @@ export class TextField extends React.PureComponent {
 
     const field = (
       <FieldComponent
-        aria-label={this.ariaLabel()}
+        aria-label={this.props.ariaLabel}
         className={fieldClasses}
         id={this.id}
         /* eslint-disable no-return-assign */
