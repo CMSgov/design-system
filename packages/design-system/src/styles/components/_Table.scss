@@ -45,10 +45,6 @@ $table-stacked-header-max-width: 160px !default;
     &[data-title]::before {
       content: attr(data-title);
       font-weight: bold;
-
-      /* autoprefixer grid: autoplace */
-      grid-column: 1;
-      grid-row: 1;
       max-width: $table-stacked-header-max-width;
       width: calc(100% - #{$spacer-2});
       word-wrap: break-word;
