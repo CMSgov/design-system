@@ -17,15 +17,6 @@ The component provides a variety of props to configure tooltip behavior for thes
 
 This component makes use of [`@popperjs/core`](https://popper.js.org/docs/v2/) for tooltip positioning, [`focus-trap-react`](https://github.com/focus-trap/focus-trap-react#readme) for trapping focus in Tooltip Dialogs, and [`react-transition-group`](http://reactcommunity.org/react-transition-group/css-transition) for animations.
 
-<div class="ds-c-alert ds-c-alert--warn ds-u-margin-bottom--2 ds-u-font-size--small">
-  <div class="ds-c-alert__body">
-    <h3 class="ds-c-alert__heading ds-u-font-size--base">IE11 Support</h3>
-    <p class="ds-c-alert__text">
-      Applications using this component need to use additional polyfills to support IE11. This can be achieved by configuring Webpack or adding an <a href="https://popper.js.org/docs/v2/browser-support/#ie11">additional polyfill script</a>.
-    </p>
-  </div>
-</div>
-
 @react-example Tooltip.example.jsx
 
 @react-props Tooltip.jsx
