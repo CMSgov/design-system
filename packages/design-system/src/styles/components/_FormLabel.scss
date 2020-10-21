@@ -1,6 +1,8 @@
 @import '../settings/index.scss';
 
 .ds-c-label {
+  // Correct color inheritance from `legend` elements in IE
+  color: inherit;
   display: block;
   font-size: $base-font-size;
   font-weight: $font-bold;
