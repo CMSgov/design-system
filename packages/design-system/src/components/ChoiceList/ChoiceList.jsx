@@ -1,3 +1,4 @@
+import 'core-js/stable/array/includes';
 import Choice from './Choice';
 import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
