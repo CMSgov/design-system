@@ -15,8 +15,11 @@ export class HelpDrawerToggle extends React.PureComponent {
 
   render() {
     const { className, children, inline, showDrawer, ...others } = this.props;
-    const inlineClass = `ds-u-display--${inline ? 'inline' : 'block'}`;
-    const classes = classNames('ds-c-help-drawer__toggle', inlineClass, className);
+    const classes = classNames(
+      'ds-c-help-drawer__toggle',
+      inline && 'ds-u-display--inline',
+      className
+    );
 
     return (
       <Button
