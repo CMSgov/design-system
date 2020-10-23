@@ -33,25 +33,29 @@ $table-stacked-header-max-width: 160px !default;
 
     /* Enable autoplacement for ie11 */
 
-    /* autoprefixer grid: autoplace */
+    /* autoprefixer grid: on */
     display: grid;
     // CSS grid doesn't support word-wrap. Use minmax as a workaround
     // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
     grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
-    grid-template-rows: auto;
     position: relative;
 
     /* stylelint-disable-next-line selector-no-qualifying-type */
     &[data-title]::before {
       content: attr(data-title);
+
+      /* autoprefixer grid: on */
+      display: grid;
       font-weight: bold;
+      grid-column: 1;
       max-width: $table-stacked-header-max-width;
       width: calc(100% - #{$spacer-2});
       word-wrap: break-word;
     }
 
     > * {
-      /* autoprefixer grid: autoplace */
+      /* autoprefixer grid: on */
+      display: grid;
       grid-column: 2;
     }
   }
