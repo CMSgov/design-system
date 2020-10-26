@@ -1,3 +1,5 @@
+// Polyfills required for IE11 compatibility
+import 'core-js/stable/array/includes';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import FormLabel from '../FormLabel/FormLabel';
