@@ -2,7 +2,7 @@
 
 exports[`HelpDrawerToggle renders a button 1`] = `
 <Button
-  className="ds-c-help-drawer__toggle ds-u-display--inline"
+  className="ds-c-help-drawer__toggle"
   component="button"
   helpDrawerOpen={false}
   inputRef={[Function]}
