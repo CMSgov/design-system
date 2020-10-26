@@ -71,11 +71,8 @@ export const TableCell = ({
       data-title={stackedTitle}
       {...tableCellProps}
     >
-      <span>
-        {' '}
-        {/* Fix unstyled anonymous element on IE11 Grid https://www.w3.org/TR/css-grid-1/#grid-items */}
-        {children}
-      </span>
+      {/* Fix unstyled anonymous element on IE11 Grid https://www.w3.org/TR/css-grid-1/#grid-items */}
+      <span>{children}</span>
     </Component>
   );
 };
