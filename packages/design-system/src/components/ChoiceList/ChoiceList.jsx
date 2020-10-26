@@ -64,7 +64,7 @@ export class ChoiceList extends React.PureComponent {
     // transition, so in order to check if the newly focused element
     // is one of our choices, we're going to have to wait a bit.
     setTimeout(() => {
-      if (!this.choiceRefs.includes(document.activeElement)) {
+      if (this.choiceRefs.indexOf(document.activeElement) === -1) {
         this.props.onComponentBlur(evt);
       }
     }, 20);
