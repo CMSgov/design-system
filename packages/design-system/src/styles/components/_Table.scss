@@ -8,7 +8,7 @@ $table-stacked-header-max-width: 160px !default;
 
 @mixin table-stacked {
   thead tr {
-    /* Hide column headings when responsive table stacked vertically on smaller viewports */
+    /* Hide column headings when responsive table stacked vertically on narrow viewports */
     // ds-u-visibility--screen-reader
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -21,7 +21,7 @@ $table-stacked-header-max-width: 160px !default;
     word-wrap: normal;
   }
 
-  tr,
+  // Set to display: block for narrow viewports
   caption {
     display: block;
   }
@@ -50,13 +50,13 @@ $table-stacked-header-max-width: 160px !default;
       grid-column: 1;
       max-width: $table-stacked-header-max-width;
       width: calc(100% - #{$spacer-2});
-      word-wrap: break-word;
     }
 
-    > * {
+    > span {
       /* autoprefixer grid: on */
       display: grid;
       grid-column: 2;
+      width: fit-content;
     }
   }
 
