@@ -95,21 +95,26 @@ TableCell.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * When provided, this will render the passed in component as the HTML element.
+   * If this prop is undefined, it renders a `<th>` element if the parent component is `TableHead`,
+   * otherwise, it renders a `<td>` element.
+   */
+  component: PropTypes.oneOf(['td', 'th']),
+  /**
    * `TableCell` must define a `headers` prop for stackable tables with a `<td>` element.
-   * The `headers` prop is needed to associate header and data cells for screen readers.
+   * The `headers` prop associates header and data cells for screen readers.
    * `headers` consist of a list of space-separated ids that each correspond to a `<td>` element.
-   * [Read more on the headers attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#Attributes).
+   * [Read more about the headers attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#Attributes).
    */
   headers: PropTypes.string,
   /**
-   * `TableCell` must define an `id` prop for stackable tables with a `<th>` element .
-   * [Read more on the headers attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#Attributes).
+   * `TableCell` must define an `id` prop for stackable tables with a `<th>` element.
    * The `id` prop associates header and data cells for screen readers.
    */
   id: PropTypes.string,
   /**
-   * If this prop is not defined, the component sets a scope attribute of `col` when the parent
-   * component is `TableHead` or otherwise a scope attribute of `row`.
+   * If this prop is undefined, the component sets a scope attribute of `col` when the parent
+   * component is `TableHead`, otherwise a scope attribute of `row` is set.
    */
   scope: PropTypes.oneOf(['row', 'col', 'rowgroup', 'colgroup']),
   /**
@@ -121,11 +126,6 @@ TableCell.propTypes = {
    * is vertically stacked.
    */
   stackedTitle: PropTypes.string,
-  /**
-   * If this prop is not defined, the component renders a `<th>` element
-   * when the parent component is `TableHead` or otherwise a `<td>` element.
-   */
-  component: PropTypes.oneOf(['td', 'th']),
   /**
    * @hide-prop This gets set from the parent `TableHead` component
    */
