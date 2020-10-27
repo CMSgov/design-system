@@ -21,3 +21,8 @@
   margin: ($input-border-width + $spacer-half) 0;
   padding: $input-padding 0;
 }
+
+.ds-c-datefield__label {
+  font-weight: $font-normal;
+  margin-top: $spacer-1;
+}
