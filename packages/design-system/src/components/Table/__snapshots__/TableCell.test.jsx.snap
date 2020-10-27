@@ -17,7 +17,9 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               role="rowheader"
               scope="row"
             >
-              Cell a
+              <span>
+                Cell a
+              </span>
             </th>
           </TableCell>
           <TableCell
@@ -28,7 +30,9 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               role="cell"
               scope="row"
             >
-              Cell b
+              <span>
+                Cell b
+              </span>
             </td>
           </TableCell>
         </tr>
@@ -59,7 +63,9 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
-              Column a
+              <span>
+                Column a
+              </span>
             </th>
           </TableCell>
           <TableCell
@@ -72,7 +78,9 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
-              Column b
+              <span>
+                Column b
+              </span>
             </th>
           </TableCell>
         </tr>
