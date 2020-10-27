@@ -25,7 +25,9 @@ exports[`TableHead renders additional attributes 1`] = `
               role="columnheader"
               scope="col"
             >
-              Column a
+              <span>
+                Column a
+              </span>
             </th>
           </TableCell>
           <TableCell
@@ -38,7 +40,9 @@ exports[`TableHead renders additional attributes 1`] = `
               role="columnheader"
               scope="col"
             >
-              Column b
+              <span>
+                Column b
+              </span>
             </th>
           </TableCell>
         </tr>
