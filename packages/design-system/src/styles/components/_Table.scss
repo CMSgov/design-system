@@ -8,7 +8,7 @@ $table-stacked-header-max-width: 160px !default;
 
 @mixin table-stacked {
   thead tr {
-    /* Hide column headings when responsive table stacked vertically on narrow viewports */
+    // Hide column headings when responsive table stacked vertically on narrow viewports
     // ds-u-visibility--screen-reader
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -31,8 +31,6 @@ $table-stacked-header-max-width: 160px !default;
     border: 0;
     border-top: 1px solid;
 
-    /* Enable autoplacement for ie11 */
-
     /* autoprefixer grid: on */
     display: grid;
     // CSS grid doesn't support word-wrap. Use minmax as a workaround
@@ -43,18 +41,19 @@ $table-stacked-header-max-width: 160px !default;
     /* stylelint-disable-next-line selector-no-qualifying-type */
     &[data-title]::before {
       content: attr(data-title);
+      font-weight: bold;
 
       /* autoprefixer grid: on */
-      display: grid;
-      font-weight: bold;
       grid-column: 1;
       max-width: $table-stacked-header-max-width;
       width: calc(100% - #{$spacer-2});
     }
 
     > span {
+      // Fixes IE11 display bug https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
+      display: block;
+
       /* autoprefixer grid: on */
-      display: grid;
       grid-column: 2;
       width: fit-content;
     }
