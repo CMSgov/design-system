@@ -53,7 +53,7 @@ function toDigitsAndAsterisks(value) {
  */
 export function toCurrency(value) {
   // Determine if the value is positive or negative.
-  const sign = value.startsWith('-') ? '-' : '';
+  const sign = value.indexOf('-') === 0 ? '-' : '';
   // Remove all characters except digits and decimal points.
   value = value.replace(/[^\d.]/g, '');
   // Remove all but the first decimal point.
