@@ -75,6 +75,7 @@ export class Table extends React.PureComponent {
     return React.Children.map(this.props.children, (child) => {
       if (isTableCaption(child)) {
         // Extend props on TableCaption before rendering.
+        // TODO: Use React Context when all products are on React v16.8 or higher
         if (this.props.scrollable) {
           return React.cloneElement(child, {
             _id: this.captionID,
@@ -113,10 +114,9 @@ export class Table extends React.PureComponent {
       className
     );
 
-    // Make table container focusable and display scroll notice when table width exceeds viewport.
-    // Set attribute `tabIndex = 0` to make table container focusable and enable keyboard support of using the arrow keys.
-    // Also, it provides context for screen reader users as they are able to focus on the region.
-    // Do this by using table's <caption> to label the scrollable region using aria-labelleby
+    // Makes table container focusable and displays the scrollable notice when table width exceeds viewport
+    // by setting `tabIndex = 0` attribute.
+    // This provides context for screen readers to the table's <caption> via aria-labelleby
     const attributeScrollable = scrollable && {
       className: 'ds-c-table__wrapper',
       role: 'region',

@@ -95,13 +95,6 @@ describe('TableCell', function () {
       expect(table.prop('role')).toBe('rowheader');
     });
 
-    it('sets a table <th> scope="row"', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('th');
-
-      expect(table.prop('scope')).toBe('row');
-    });
-
     it('renders a table <td> row data element', () => {
       const { wrapper } = renderBody();
       const table = wrapper.find('td');
@@ -114,13 +107,6 @@ describe('TableCell', function () {
       const table = wrapper.find('td');
 
       expect(table.prop('role')).toBe('cell');
-    });
-
-    it('sets a table <td> scope="row"', () => {
-      const { wrapper } = renderBody();
-      const table = wrapper.find('td');
-
-      expect(table.prop('scope')).toBe('row');
     });
   });
 });
