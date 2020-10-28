@@ -15,7 +15,6 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
             <th
               className="ds-u-text-align--left"
               role="rowheader"
-              scope="row"
             >
               <span>
                 Cell a
@@ -28,7 +27,6 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
             <td
               className="ds-u-text-align--left"
               role="cell"
-              scope="row"
             >
               <span>
                 Cell b
