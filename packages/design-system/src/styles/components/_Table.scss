@@ -38,6 +38,7 @@ $table-stacked-header-max-width: 160px !default;
     grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     position: relative;
 
+    // The psuedo element content is generated to display the row header `data-title` for the Tablecell content
     /* stylelint-disable-next-line selector-no-qualifying-type */
     &[data-title]::before {
       content: attr(data-title);
@@ -49,6 +50,7 @@ $table-stacked-header-max-width: 160px !default;
       width: calc(100% - #{$spacer-2});
     }
 
+    // TableCell content is wrapped in a span for IE11 grid support
     > span {
       // Fixes IE11 display bug https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
       display: block;

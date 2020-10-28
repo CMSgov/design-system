@@ -37,7 +37,7 @@ export interface TableCellProps {
   id?: string;
   /**
    * If this prop is undefined, the component sets a scope attribute of `col` when the parent
-   * component is `TableHead`, otherwise a scope attribute of `row` is set.
+   * component is `TableHead` to identify the header cell is a header for a column.
    */
   scope?: TableCellScope;
   /**
@@ -45,8 +45,8 @@ export interface TableCellProps {
    */
   stackedClassName?: string;
   /**
-   * Table data cell's corresponding header title, this stacked title is displayed when a responsive table
-   * is vertically stacked.
+   * Table data cell's corresponding header title, this stacked title is displayed as the row header
+   * when a responsive table is vertically stacked.
    */
   stackedTitle?: string;
   /**

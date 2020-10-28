@@ -54,13 +54,14 @@ export const TableCell = ({
   }
 
   let defaultScope = scope;
-  if (!defaultScope) {
-    defaultScope = _isTableHeadChild ? 'col' : 'row';
+  if (!defaultScope && _isTableHeadChild) {
+    defaultScope = 'col';
   }
 
   const alignClassName = align ? `ds-u-text-align--${align}` : null;
   const classes = classNames(alignClassName, className);
 
+  // The data attributes `data-title` is access by CSS to generates row header content for stacked table
   return (
     <Component
       className={classes}
@@ -114,7 +115,7 @@ TableCell.propTypes = {
   id: PropTypes.string,
   /**
    * If this prop is undefined, the component sets a scope attribute of `col` when the parent
-   * component is `TableHead`, otherwise a scope attribute of `row` is set.
+   * component is `TableHead` to identify the header cell is a header for a column.
    */
   scope: PropTypes.oneOf(['row', 'col', 'rowgroup', 'colgroup']),
   /**
@@ -122,8 +123,8 @@ TableCell.propTypes = {
    */
   stackedClassName: PropTypes.string,
   /**
-   * Table data cell's corresponding header title, this stacked title is displayed when a responsive table
-   * is vertically stacked.
+   * Table data cell's corresponding header title, this stacked title is displayed as the row header
+   * when a responsive table is vertically stacked.
    */
   stackedTitle: PropTypes.string,
   /**
