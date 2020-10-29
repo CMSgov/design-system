@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HelpDrawerToggle renders a snapshot 1`] = `
-<span
-  className="ds-u-display--inline"
+exports[`HelpDrawerToggle renders a button 1`] = `
+<Button
+  className="ds-c-help-drawer__toggle"
+  component="button"
+  helpDrawerOpen={false}
+  inputRef={[Function]}
+  onClick={[Function]}
+  type="button"
+  variation="transparent"
 >
-  <a
-    href="javascript:void(0);"
-    onClick={[Function]}
-  >
-    <p>
-      link content
-    </p>
-  </a>
-</span>
+  <p>
+    content
+  </p>
+</Button>
 `;
