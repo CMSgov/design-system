@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StepStep } from './Step';
+import { StepProps } from './Step';
 
 export type StepListComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
@@ -8,7 +8,7 @@ export interface StepListProps {
    * An array of [step objects]({{root}}/patterns/step-list/#patterns.step-list.step-object) that contain
    * text, state, [link/button URLs]({{root}}/patterns/step-list/#patterns.step-list.buttons) and other info needed to render steps.
    */
-  steps: StepStep[];
+  steps: StepProps[];
   /**
    * When provided, this will render the passed in component for all link elements. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.

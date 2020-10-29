@@ -23,7 +23,7 @@ interface SubSteps {
 };
 
 export interface StepProps {
-  step: StepObject & SubSteps
+  step: StepObject & SubSteps;
   onStepLinkClick?: (...args: any[]) => any;
   showSubSubSteps?: boolean;
   completedText: string;
