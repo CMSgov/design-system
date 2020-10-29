@@ -20,7 +20,7 @@ export interface StepObject {
 // Substeps can be defined via the `steps` prop
 interface SubSteps {
   steps?: SubStepProps[];
-};
+}
 
 export interface StepProps {
   step: StepObject & SubSteps;
