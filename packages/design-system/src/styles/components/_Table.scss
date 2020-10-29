@@ -8,7 +8,7 @@ $table-stacked-header-max-width: 160px !default;
 
 @mixin table-stacked {
   thead tr {
-    /* Hide column headings when responsive table stacked vertically on smaller viewports */
+    // Hide column headings when responsive table stacked vertically on narrow viewports
     // ds-u-visibility--screen-reader
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -21,7 +21,7 @@ $table-stacked-header-max-width: 160px !default;
     word-wrap: normal;
   }
 
-  tr,
+  // Set to display: block for narrow viewports
   caption {
     display: block;
   }
@@ -30,26 +30,34 @@ $table-stacked-header-max-width: 160px !default;
   th {
     border: 0;
     border-top: 1px solid;
+
+    /* autoprefixer grid: on */
     display: grid;
     // CSS grid doesn't support word-wrap. Use minmax as a workaround
     // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
     grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
     position: relative;
 
-    // stylelint-disable selector-no-qualifying-type
+    // The psuedo element content is generated to display the row header `data-title` for the Tablecell content
+    /* stylelint-disable-next-line selector-no-qualifying-type */
     &[data-title]::before {
       content: attr(data-title);
-      // stylelint-enable selector-no-qualifying-type
-      flex: none;
       font-weight: bold;
+
+      /* autoprefixer grid: on */
+      grid-column: 1;
       max-width: $table-stacked-header-max-width;
-      // allow for spacing on right side of data-title column
       width: calc(100% - #{$spacer-2});
-      word-wrap: break-word;
     }
 
-    > * {
+    // TableCell content is wrapped in a span for IE11 grid support
+    > span {
+      // Fixes IE11 display bug https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
+      display: block;
+
+      /* autoprefixer grid: on */
       grid-column: 2;
+      width: fit-content;
     }
   }
 

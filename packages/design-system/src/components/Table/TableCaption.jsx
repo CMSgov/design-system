@@ -25,7 +25,7 @@ TableCaption.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * @hide-prop Additional classes to be added to the caption element.
+   * Additional classes to be added to the caption element.
    */
   className: PropTypes.string,
   /**
