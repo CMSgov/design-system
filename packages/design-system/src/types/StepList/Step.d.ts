@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { SubStepProps } from './SubStep';
 
-export interface StepStep {
+// Step Object is used in <Step> and <SubStep>
+export interface StepObject {
   id?: string;
   href: string;
   title?: string;
@@ -15,8 +17,13 @@ export interface StepStep {
   component?: React.ReactElement<any> | ((...args: any[]) => any);
 }
 
+// Substeps can be defined via the `steps` prop
+interface SubSteps {
+  steps?: SubStepProps[];
+}
+
 export interface StepProps {
-  step: StepStep;
+  step: StepObject & SubSteps;
   onStepLinkClick?: (...args: any[]) => any;
   showSubSubSteps?: boolean;
   completedText: string;
