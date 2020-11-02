@@ -63,7 +63,7 @@ exports[`Table applies scroll table 1`] = `
       _scrollActive={false}
       _scrollableNotice={
         <Alert
-          className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+          className="ds-u-margin-y--1 ds-u-font-size--normal ds-u-font-weight--normal"
           headingLevel="3"
           role="status"
         >
@@ -118,7 +118,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
   scrollable={true}
   scrollableNotice={
     <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      className="ds-u-margin-y--1 ds-u-font-size--normal ds-u-font-weight--normal"
       headingLevel="3"
       role="status"
     >
@@ -148,7 +148,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
         _scrollActive={false}
         _scrollableNotice={
           <Alert
-            className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+            className="ds-u-margin-y--1 ds-u-font-size--normal ds-u-font-weight--normal"
             headingLevel="3"
             role="status"
           >
