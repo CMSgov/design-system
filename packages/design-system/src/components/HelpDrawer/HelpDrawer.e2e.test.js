@@ -16,7 +16,7 @@ describe('Help Drawer component', () => {
   it('Should open the help drawer on click', async () => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="js-example"]/div/span/a');
+    let el = await getElementByXPath('//*[@id="js-example"]/div/button');
     el.click();
 
     el = await getElementByClassName('ds-c-help-drawer');
@@ -26,7 +26,7 @@ describe('Help Drawer component', () => {
   it('Should have no accessibility violations', async () => {
     await driver.get(rootURL);
 
-    let el = await getElementByXPath('//*[@id="js-example"]/div/span/a');
+    let el = await getElementByXPath('//*[@id="js-example"]/div/button');
     el.click();
 
     el = await getElementByClassName('ds-c-help-drawer');
