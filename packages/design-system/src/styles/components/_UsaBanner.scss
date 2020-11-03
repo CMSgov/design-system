@@ -1,4 +1,4 @@
-.c-usa-banner {
+.ds-c-usa-banner {
   background-color: #f0f0f0;
   color: #1b1b1b;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
@@ -6,7 +6,7 @@
   line-height: 1.52155;
 }
 
-.c-usa-banner__header {
+.ds-c-usa-banner__header {
   font-size: 0.79853rem;
   font-weight: 400;
   line-height: 1.12707;
@@ -16,25 +16,25 @@
   position: relative;
 }
 
-.c-usa-banner__header-flag {
+.ds-c-usa-banner__header-flag {
   margin-right: 0.5rem;
   width: 1rem;
 }
 
-.c-usa-banner__header-text {
+.ds-c-usa-banner__header-text {
   margin: 0;
   span {
     margin-right: 0.5rem;
   }
 }
 
-.c-usa-banner__content {
+.ds-c-usa-banner__content {
   font-size: 0.99816rem;
   overflow: hidden;
   width: 100%;
 }
 
-.c-usa-banner__button {
+.ds-c-usa-banner__button {
   /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .ds-c-link;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
@@ -60,17 +60,17 @@
   }
 }
 
-.c-usa-banner__guidance {
+.ds-c-usa-banner__guidance {
   @media (min-width: $width-sm) {
     width: 50%;
   }
 }
 
-.c-usa-banner__icon {
+.ds-c-usa-banner__icon {
   width: 2.5rem;
 }
 
-.c-usa-banner__lock-image {
+.ds-c-usa-banner__lock-image {
   height: 1.5ex;
   width: 1.5 * 52 / 64;
   path {
@@ -78,19 +78,19 @@
   }
 }
 
-.c-usa-banner__media-img {
+.ds-c-usa-banner__media-img {
   float: left;
   margin-right: 0.5rem;
 }
 
-.c-usa-banner__media-body {
+.ds-c-usa-banner__media-body {
   margin: 0;
   overflow: hidden;
 }
 
 // stylelint-disable no-duplicate-selectors
-.c-usa-banner__header--expanded {
-  .c-usa-banner__button::after {
+.ds-c-usa-banner__header--expanded {
+  .ds-c-usa-banner__button::after {
     transform: rotate(180deg);
   }
 }
