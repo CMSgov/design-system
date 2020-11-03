@@ -6,7 +6,7 @@ $table-striped-header-background-color: $color-gray-lightest !default;
 // Max-width of the header column for a stacked table
 $table-stacked-header-max-width: 160px !default;
 $table-padding-default: $spacer-2 !default;
-$table-padding-dense: $spacer-half !default;
+$table-padding-dense: $spacer-half $spacer-2 !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -52,7 +52,7 @@ $table-padding-dense: $spacer-half !default;
 .ds-c-table--dense {
   th,
   td {
-    padding: $table-padding-dense $spacer-2;
+    padding: $table-padding-dense;
   }
 }
 

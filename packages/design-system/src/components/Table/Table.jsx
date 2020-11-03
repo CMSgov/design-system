@@ -143,10 +143,7 @@ export class Table extends React.PureComponent {
 
 Table.defaultProps = {
   scrollableNotice: (
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--normal ds-u-font-weight--normal"
-      role="status"
-    >
+    <Alert className="ds-u-margin-y--1 ds-u-font-weight--normal" role="status">
       <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
     </Alert>
   ),
