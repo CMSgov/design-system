@@ -10,7 +10,7 @@ describe('Usa banner component', () => {
   it('Usa banner should render', async () => {
     await driver.get(rootURL);
 
-    const el = await getElementByClassName('c-usa-banner');
+    const el = await getElementByClassName('ds-c-usa-banner');
     expect(el).toBeTruthy();
   });
 
