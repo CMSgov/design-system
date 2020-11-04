@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { UsaBanner } from '@cmsgov/design-system';
 
-class Example extends React.PureComponent {
+class UsaBannerExample extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { isBannerOpen: false };
@@ -20,4 +20,4 @@ class Example extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<Example />, document.getElementById('js-example'));
+ReactDOM.render(<UsaBannerExample />, document.getElementById('js-example'));
