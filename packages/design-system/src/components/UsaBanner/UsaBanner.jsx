@@ -8,34 +8,28 @@ const UsaBanner = function (props) {
     : 'c-usa-banner__header';
 
   return (
-    <div className="c-usa-banner ds-u-padding-x--3">
+    <div className="c-usa-banner">
       <header className={bannerHeader}>
-        <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-align-items--start ds-u-sm-align-items--center">
-          <img
-            className="c-usa-banner__header-flag"
-            src={path.join('/', process.env.rootPath, '/images/us_flag_small.png')}
-            alt="U.S. flag"
-          />
-          <p className="c-usa-banner__header-text">
-            <span>An official website of the United States government</span>
-            <button
-              onClick={props.onToggleBanner}
-              className="c-usa-banner__button"
-              aria-expanded={props.isBannerOpen}
-              aria-controls="gov-banner"
-            >
-              Here’s how you know
-            </button>
-          </p>
-        </div>
+        <img
+          className="c-usa-banner__header-flag"
+          src={path.join('/', process.env.rootPath, '/images/us_flag_small.png')}
+          alt="U.S. flag"
+        />
+        <p className="c-usa-banner__header-text">
+          <span>An official website of the United States government</span>
+          <button
+            onClick={props.onToggleBanner}
+            className="c-usa-banner__button"
+            aria-expanded={props.isBannerOpen}
+            aria-controls="gov-banner"
+          >
+            Here’s how you know
+          </button>
+        </p>
       </header>
-      <div
-        className="c-usa-banner__content ds-u-padding-y--3"
-        id="gov-banner"
-        hidden={!props.isBannerOpen}
-      >
+      <div className="c-usa-banner__content" id="gov-banner" hidden={!props.isBannerOpen}>
         <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
-          <div className="c-usa-banner__guidance ds-u-padding-right--0 ds-u-sm-padding-right--2">
+          <div className="c-usa-banner__guidance">
             <img
               className="c-usa-banner__icon c-usa-banner__media-img"
               src={path.join('/', process.env.rootPath, '/images/icon-dot-gov.svg')}
@@ -47,7 +41,7 @@ const UsaBanner = function (props) {
               in the United States.
             </p>
           </div>
-          <div className="c-usa-banner__guidance ds-u-padding-top--2 ds-u-sm-padding-top--0">
+          <div className="c-usa-banner__guidance">
             <img
               className="c-usa-banner__icon c-usa-banner__media-img"
               src={path.join('/', process.env.rootPath, '/images/icon-https.svg')}
