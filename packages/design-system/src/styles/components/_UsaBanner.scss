@@ -36,9 +36,8 @@
 }
 
 .ds-c-usa-banner__content {
-  // overflow: hidden;
-  display: block;
   font-size: 0.99816rem;
+  overflow: hidden;
   padding: $spacer-3 0;
   width: 100%;
 }
@@ -81,6 +80,8 @@
 }
 
 .ds-c-usa-banner__icon {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
   width: 2.5rem;
 }
 
