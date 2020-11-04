@@ -1,25 +1,24 @@
+import DotGovIcon from './DotGovIcon';
+import HttpsIcon from './HttpsIcon';
+import LockIcon from './LockIcon';
 import PropTypes from 'prop-types';
 import React from 'react';
-import path from 'path';
+import UsaFlagIcon from './UsaFlagIcon';
 
 const UsaBanner = function (props) {
   const bannerHeader = props.isBannerOpen
-    ? 'c-usa-banner__header c-usa-banner__header--expanded'
-    : 'c-usa-banner__header';
+    ? 'ds-c-usa-banner__header ds-c-usa-banner__header--expanded'
+    : 'ds-c-usa-banner__header';
 
   return (
-    <div className="c-usa-banner">
+    <div className="ds-c-usa-banner">
       <header className={bannerHeader}>
-        <img
-          className="c-usa-banner__header-flag"
-          src={path.join('/', process.env.rootPath, '/images/us_flag_small.png')}
-          alt="U.S. flag"
-        />
-        <p className="c-usa-banner__header-text">
+        <UsaFlagIcon />
+        <p className="ds-c-usa-banner__header-text">
           <span>An official website of the United States government</span>
           <button
             onClick={props.onToggleBanner}
-            className="c-usa-banner__button"
+            className="ds-c-usa-banner__button"
             aria-expanded={props.isBannerOpen}
             aria-controls="gov-banner"
           >
@@ -27,35 +26,23 @@ const UsaBanner = function (props) {
           </button>
         </p>
       </header>
-      <div className="c-usa-banner__content" id="gov-banner" hidden={!props.isBannerOpen}>
+      <div className="ds-c-usa-banner__content" id="gov-banner" hidden={!props.isBannerOpen}>
         <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
-          <div className="c-usa-banner__guidance">
-            <img
-              className="c-usa-banner__icon c-usa-banner__media-img"
-              src={path.join('/', process.env.rootPath, '/images/icon-dot-gov.svg')}
-              alt="Dot gov"
-            />
-            <p className="c-usa-banner__media-body">
+          <div className="ds-c-usa-banner__guidance">
+            <DotGovIcon />
+            <p className="ds-c-usa-banner__media-body">
               <strong>Official websites use .gov</strong>
               <br />A <strong>.gov</strong> website belongs to an official government organization
               in the United States.
             </p>
           </div>
-          <div className="c-usa-banner__guidance">
-            <img
-              className="c-usa-banner__icon c-usa-banner__media-img"
-              src={path.join('/', process.env.rootPath, '/images/icon-https.svg')}
-              alt="Https"
-            />
-            <p className="c-usa-banner__media-body">
+          <div className="ds-c-usa-banner__guidance">
+            <HttpsIcon />
+            <p className="ds-c-usa-banner__media-body">
               <strong>Secure .gov websites use HTTPS</strong>
               <br />A <strong>lock</strong> ({' '}
               <span>
-                <img
-                  className="c-usa-banner__lock-image"
-                  src={path.join('/', process.env.rootPath, '/images/icon-lock.svg')}
-                  alt="Lock"
-                />
+                <LockIcon />
               </span>{' '}
               ) or <strong>https://</strong> means you’ve safely connected to the .gov website.
               Share sensitive information only on official, secure websites.
