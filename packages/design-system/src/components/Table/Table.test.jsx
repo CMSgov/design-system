@@ -47,6 +47,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-table--borderless')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies dense table classes', () => {
@@ -54,6 +56,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-table--dense')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies zebra stripe classes', () => {
@@ -61,6 +65,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies responsive table', () => {
@@ -68,6 +74,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies scroll table', () => {
@@ -75,6 +83,8 @@ describe('Table', function () {
     const divWrapper = wrapper.find('div');
 
     expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders additional attributes', () => {
@@ -82,6 +92,8 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.prop('ariaLabel')).toBe('test additional attribute');
+
+    expect(wrapper).toMatchSnapshot();
   });
 
   describe('table caption scrollable true', () => {
@@ -96,6 +108,8 @@ describe('Table', function () {
       expect(divWrapper.prop('aria-live')).toBe('polite');
       expect(divWrapper.prop('aria-relevant')).toBe('additions');
       expect(divWrapper.prop('tabindex')).toBeUndefined();
+
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('scroll table aria-labelledby matches caption id', () => {
@@ -122,6 +136,8 @@ describe('Table', function () {
       const tableCaption = wrapper.find('TableCaption');
 
       expect(tableCaption.prop('_scrollableNotice')).toBe('foo scrollable notice');
+
+      expect(wrapper).toMatchSnapshot();
     });
   });
 });
