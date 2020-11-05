@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { DownshiftProps } from 'downshift';
 
 export interface AutocompleteItems {
   id?: string;
   name?: string;
 }
 
-export interface AutocompleteProps {
+export interface AutocompleteProps extends DownshiftProps<any> {
   /**
    * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
