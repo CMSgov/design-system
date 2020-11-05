@@ -1,8 +1,13 @@
 const gulp = require('gulp');
+const svgmin = require('gulp-svgmin');
 const streamPromise = require('./streamPromise');
 
-function copyDir(srcDir, destDir) {
-  return streamPromise(gulp.src(`${srcDir}/**/*`).pipe(gulp.dest(destDir)));
+function copyDir(srcGlob, dest) {
+  return streamPromise(gulp.src(srcGlob).pipe(gulp.dest(dest)));
+}
+
+function minimizeSvg(srcGlob, dest) {
+  return streamPromise(gulp.src(srcGlob).pipe(svgmin()).pipe(gulp.dest(dest)));
 }
 
 /**
@@ -10,7 +15,8 @@ function copyDir(srcDir, destDir) {
  */
 module.exports = async function copyAssets(srcDir, destDir) {
   await Promise.all([
-    copyDir(`${srcDir}/fonts`, `${destDir}/fonts`),
-    copyDir(`${srcDir}/images`, `${destDir}/images`),
+    copyDir(`${srcDir}/fonts/**/*`, `${destDir}/fonts`),
+    copyDir([`${srcDir}/images/**/*`, `!${srcDir}/images/**/*.svg`], `${destDir}/images`),
+    minimizeSvg(`${srcDir}/images/*.svg`, `${destDir}/images`),
   ]);
 };
