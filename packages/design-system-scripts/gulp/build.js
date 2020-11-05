@@ -5,7 +5,7 @@
  */
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
-const copyAssets = require('./common/copyAssets');
+const copyFontsImages = require('./common/copyFontsImages');
 const gulp = require('gulp');
 const count = require('gulp-count');
 const rename = require('gulp-rename');
@@ -18,7 +18,6 @@ const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask, logError } = require('./common/logUtil');
-const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 const getSrcGlob = (src, changedPath) =>
   changedPath
@@ -31,19 +30,7 @@ const getSrcGlob = (src, changedPath) =>
       ];
 
 /**
- * Copy any JSON files that our components might depend on
- */
-function copyJson(dir) {
-  const src = path.join(dir, 'src');
-  return streamPromise(
-    gulp
-      .src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`])
-      .pipe(gulp.dest(path.join(dir, 'dist')))
-  );
-}
-
-/**
- * Copy Sass files from src to dist because we don't distribute the src folder
+ * Copy Sass files from src to dist, rename folder to 'scss'
  */
 function copySass(dir) {
   const src = path.join(dir, 'src', 'styles');
@@ -53,9 +40,23 @@ function copySass(dir) {
 }
 
 /**
+ * Copy and process font and image files from src to dist
+ */
+async function copyAssets(dir) {
+  const sources = await getSourceDirs(dir);
+  const isChildDS = sources.length > 1;
+
+  // If this a child DS we also need to copy assets from the core npm package
+  return [
+    copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist')),
+    isChildDS && copyFontsImages(path.join(sources[0], 'dist'), path.join(dir, 'dist')),
+  ];
+}
+
+/**
  * Generically copy any non test files that arent already processed by the build scripts
  */
-function copyMiscFiles(dir) {
+function copyMisc(dir) {
   const src = path.join(dir, 'src');
   return streamPromise(
     gulp
@@ -74,19 +75,7 @@ function copyMiscFiles(dir) {
 }
 
 async function copyAll(dir) {
-  const copyTasks = [
-    copyJson(dir),
-    copySass(dir),
-    copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
-    copyMiscFiles(dir),
-  ];
-
-  const sources = await getSourceDirs(dir);
-  if (sources.length > 1) {
-    // If this a child DS we also need to copy assets from the core npm package
-    logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(path.join(sources[0], 'dist'), path.join(dir, 'dist')));
-  }
+  const copyTasks = [copySass(dir), copyAssets(dir), copyMisc(dir)];
 
   return Promise.all(copyTasks);
 }
@@ -239,6 +228,7 @@ module.exports = {
     logTask('✅ ', 'Build succeeded');
     log('');
   },
-  copyAll,
+  copyAssets,
+  copySass,
   compileJs,
 };

@@ -13,7 +13,7 @@ function minimizeSvg(srcGlob, dest) {
 /**
  * Copy all fonts and images from one directory to another
  */
-module.exports = async function copyAssets(srcDir, destDir) {
+module.exports = async function copyFontsImages(srcDir, destDir) {
   await Promise.all([
     copyDir(`${srcDir}/fonts/**/*`, `${destDir}/fonts`),
     copyDir([`${srcDir}/images/**/*`, `!${srcDir}/images/**/*.svg`], `${destDir}/images`),
