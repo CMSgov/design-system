@@ -25,7 +25,7 @@ const getSrcGlob = (src, changedPath) =>
     : [
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ];
 
@@ -67,7 +67,7 @@ function copyMisc(dir) {
         `!${src}/images/**`,
         `!${src}/styles/**`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))

@@ -47,7 +47,7 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
 
   // Source package JS files
   watch(
-    [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`],
+    [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`],
     async (changedPath) => {
       await compileJs(sourceDir, options, changedPath);
       await extractReactProps(sourceDir, options);
