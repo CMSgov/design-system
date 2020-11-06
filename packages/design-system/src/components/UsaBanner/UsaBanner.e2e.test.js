@@ -14,7 +14,7 @@ describe('Usa banner component', () => {
     expect(el).toBeTruthy();
   });
 
-  it('Badge should have no accessibility violations', async () => {
+  it('Usa banner should have no accessibility violations', async () => {
     await assertNoAxeViolations(rootURL);
   });
 });

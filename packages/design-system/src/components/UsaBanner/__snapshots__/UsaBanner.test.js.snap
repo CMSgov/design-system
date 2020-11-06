@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="ds-c-usa-banner"
+>
+  <header
+    className="ds-c-usa-banner__header "
+  >
+    <svg
+      className="ds-c-usa-banner__header-flag"
+      height="11"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fillRule="evenodd"
+      >
+        <path
+          d="M0 0h16v11H0z"
+          fill="#FFF"
+        />
+        <path
+          d="M8 0h8v1H8z"
+          fill="#DB3E1F"
+        />
+        <path
+          d="M0 0h8v7H0z"
+          fill="#1E33B1"
+        />
+        <path
+          d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+          fill="#DB3E1F"
+        />
+        <path
+          d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+          fill="#FFF"
+        />
+      </g>
+    </svg>
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <span>
+        An official website of the United States government
+      </span>
+      <button
+        aria-controls="gov-banner"
+        aria-expanded="false"
+        className="ds-c-usa-banner__button"
+        onClick={[Function]}
+      >
+        Here’s how you know
+      </button>
+    </p>
+  </header>
+  <div
+    className="ds-c-usa-banner__content"
+    hidden="false"
+    id="gov-banner"
+  >
+    <div
+      className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+    >
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          className="ds-c-usa-banner__icon"
+          data-name="Layer 1"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            className="cls-1"
+            d="M36.5 20.91v1.36h-1.35a.71.71 0 0 1-.73.68H18.23a.71.71 0 0 1-.73-.68h-1.36v-1.36l10.18-4.07zm0 13.57v1.36H16.14v-1.36a.71.71 0 0 1 .73-.68h18.9a.71.71 0 0 1 .73.68zM21.57 23.62v8.14h1.36v-8.14h2.71v8.14H27v-8.14h2.71v8.14h1.36v-8.14h2.71v8.14h.63a.71.71 0 0 1 .73.68v.68H17.5v-.67a.71.71 0 0 1 .73-.68h.63v-8.15h2.71z"
+            fill="#2378c3"
+          />
+          <circle
+            className="cls-2"
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#005ea2"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Official websites use .gov
+          </strong>
+          <br />
+          A 
+          <strong>
+            .gov
+          </strong>
+           website belongs to an official government organization in the United States.
+        </p>
+      </div>
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          className="ds-c-usa-banner__icon"
+          data-name="Layer 1"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            className="cls-1"
+            d="M34.72 34.84a1.29 1.29 0 0 1-1.29 1.29H20.57a1.29 1.29 0 0 1-1.29-1.29v-7.72a1.29 1.29 0 0 1 1.29-1.29H21v-2.57a6 6 0 0 1 12 0v2.57h.43a1.29 1.29 0 0 1 1.29 1.29v7.72zm-4.29-9v-2.58a3.43 3.43 0 0 0-6.86 0v2.57h6.86z"
+            fill="#719f2a"
+          />
+          <circle
+            className="cls-2"
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#538200"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Secure .gov websites use HTTPS
+          </strong>
+          <br />
+          A 
+          <strong>
+            lock
+          </strong>
+           (
+           
+          <span>
+            <svg
+              className="ds-c-usa-banner__lock-image"
+              viewBox="0 0 52 64"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+                fillRule="evenodd"
+              />
+            </svg>
+          </span>
+           
+          ) or 
+          <strong>
+            https://
+          </strong>
+           means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
