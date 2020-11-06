@@ -1,6 +1,6 @@
 .ds-c-usa-banner {
-  background-color: #f0f0f0;
-  color: #1b1b1b;
+  background-color: $usa-banner-background-color;
+  color: $usa-banner-text-color;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.06471rem;
   line-height: 1.52155;
@@ -64,6 +64,7 @@
     display: inline-block;
     height: 0.5rem;
     margin-left: 2px;
+    padding-right: 2px;
     width: 0.5rem;
   }
 }
