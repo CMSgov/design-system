@@ -1,6 +1,6 @@
 import GitHubLinks from './GitHubLinks';
 import React from 'react';
-import UsaBanner from './UsaBanner';
+import { UsaBanner } from '@cmsgov/design-system';
 import path from 'path';
 
 class Header extends React.PureComponent {
