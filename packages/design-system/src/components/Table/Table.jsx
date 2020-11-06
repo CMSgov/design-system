@@ -97,6 +97,7 @@ export class Table extends React.PureComponent {
     const {
       borderless,
       className,
+      dense,
       stackable,
       stackableBreakpoint,
       striped,
@@ -109,6 +110,7 @@ export class Table extends React.PureComponent {
     const classes = classNames(
       'ds-c-table',
       borderless ? 'ds-c-table--borderless' : null,
+      dense ? 'ds-c-table--dense' : null,
       striped ? 'ds-c-table--striped' : null,
       stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
       className
@@ -143,10 +145,7 @@ export class Table extends React.PureComponent {
 
 Table.defaultProps = {
   scrollableNotice: (
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-      role="status"
-    >
+    <Alert className="ds-u-margin-y--1 ds-u-font-weight--normal" role="status">
       <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
     </Alert>
   ),
@@ -166,6 +165,10 @@ Table.propTypes = {
    * Additional classes to be added to the root table element.
    */
   className: PropTypes.string,
+  /**
+   * Applies the dense variation of the table.
+   */
+  dense: PropTypes.bool,
   /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */

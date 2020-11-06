@@ -38,8 +38,6 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('foo-table')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies borderless classes', () => {
@@ -47,8 +45,13 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-table--borderless')).toBe(true);
+  });
 
-    expect(wrapper).toMatchSnapshot();
+  it('applies dense table classes', () => {
+    const { wrapper } = render({ dense: true });
+    const table = wrapper.find('table');
+
+    expect(table.hasClass('ds-c-table--dense')).toBe(true);
   });
 
   it('applies zebra stripe classes', () => {
@@ -56,8 +59,6 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('applies responsive table', () => {
@@ -74,8 +75,6 @@ describe('Table', function () {
     const divWrapper = wrapper.find('div');
 
     expect(divWrapper.hasClass('ds-c-table__wrapper')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('renders additional attributes', () => {
@@ -83,8 +82,6 @@ describe('Table', function () {
     const table = wrapper.find('table');
 
     expect(table.prop('ariaLabel')).toBe('test additional attribute');
-
-    expect(wrapper).toMatchSnapshot();
   });
 
   describe('table caption scrollable true', () => {
