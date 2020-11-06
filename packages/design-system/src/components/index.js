@@ -31,8 +31,4 @@ export { default as TextField, unmaskValue } from './TextField/TextField';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as TooltipIcon } from './Tooltip/TooltipIcon';
 export { default as UsaBanner } from './UsaBanner/UsaBanner';
-export { default as UsaFlagIcon } from './UsaBanner/UsaFlagIcon';
-export { default as HttpsIcon } from './UsaBanner/HttpsIcon';
-export { default as LockIcon } from './UsaBanner/LockIcon';
-export { default as DotGovIcon } from './UsaBanner/DotGovIcon';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';
