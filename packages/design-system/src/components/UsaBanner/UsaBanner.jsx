@@ -1,9 +1,9 @@
-import DotGovIcon from './DotGovIcon';
-import HttpsIcon from './HttpsIcon';
-import LockIcon from './LockIcon';
+import DotGovIcon from '../../images/usa-banner-dot-gov.svg';
+import HttpsIcon from '../../images/usa-banner-https.svg';
+import LockIcon from '../../images/usa-banner-lock.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
-import UsaFlagIcon from './UsaFlagIcon';
+import UsaFlagIcon from '../../images/usa-banner-flag.svg';
 
 const UsaBanner = function (props) {
   const bannerHeader = props.isBannerOpen
