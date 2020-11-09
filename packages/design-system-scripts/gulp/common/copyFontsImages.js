@@ -7,7 +7,20 @@ function copyDir(srcGlob, dest) {
 }
 
 function minimizeSvg(srcGlob, dest) {
-  return streamPromise(gulp.src(srcGlob).pipe(svgmin()).pipe(gulp.dest(dest)));
+  return streamPromise(
+    gulp
+      .src(srcGlob)
+      .pipe(
+        svgmin({
+          plugins: [
+            {
+              cleanupIDs: false,
+            },
+          ],
+        })
+      )
+      .pipe(gulp.dest(dest))
+  );
 }
 
 /**
