@@ -1,5 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`applies additional class names to expanded banner 1`] = `
+<div
+  className="ds-c-usa-banner"
+>
+  <header
+    className="ds-c-usa-banner__header ds-c-usa-banner__header--expanded"
+  >
+    <UsaFlagIcon
+      className="ds-c-usa-banner__header-flag"
+      height="11"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    />
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <span>
+        An official website of the United States government
+      </span>
+      <button
+        aria-controls="gov-banner"
+        aria-expanded={true}
+        className="ds-c-usa-banner__button"
+        onClick={[Function]}
+      >
+        Here’s how you know
+      </button>
+    </p>
+  </header>
+  <div
+    className="ds-c-usa-banner__content"
+    hidden={false}
+    id="gov-banner"
+  >
+    <div
+      className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+    >
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <DotGovIcon
+          className="ds-c-usa-banner__icon"
+          data-name="Layer 1"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Official websites use .gov
+          </strong>
+          <br />
+          A 
+          <strong>
+            .gov
+          </strong>
+           website belongs to an official government organization in the United States.
+        </p>
+      </div>
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <HttpsIcon
+          className="ds-c-usa-banner__icon"
+          data-name="Layer 1"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Secure .gov websites use HTTPS
+          </strong>
+          <br />
+          A 
+          <strong>
+            lock
+          </strong>
+           (
+           
+          <span>
+            <LockIcon
+              className="ds-c-usa-banner__lock-image"
+              viewBox="0 0 52 64"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </span>
+           
+          ) or 
+          <strong>
+            https://
+          </strong>
+           means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`renders correctly 1`] = `
 <div
   className="ds-c-usa-banner"
@@ -47,7 +149,7 @@ exports[`renders correctly 1`] = `
       </span>
       <button
         aria-controls="gov-banner"
-        aria-expanded="false"
+        aria-expanded={false}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
       >
@@ -57,7 +159,7 @@ exports[`renders correctly 1`] = `
   </header>
   <div
     className="ds-c-usa-banner__content"
-    hidden="false"
+    hidden={true}
     id="gov-banner"
   >
     <div
