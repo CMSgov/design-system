@@ -5,6 +5,85 @@ $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
 // Max-width of the header column for a stacked table
 $table-stacked-header-max-width: 160px !default;
+$table-padding: $spacer-2 !default;
+$table-dense-padding: $spacer-half $spacer-2 !default;
+
+.ds-c-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+
+  th,
+  thead td {
+    background-color: $table-header-background-color;
+    text-align: left;
+  }
+
+  tbody th {
+    font-weight: $font-normal;
+  }
+
+  th,
+  td {
+    border: 1px solid $color-gray;
+    padding: $table-padding;
+  }
+}
+
+.ds-c-table--borderless {
+  thead {
+    th,
+    tr {
+      background-color: transparent;
+    }
+
+    th {
+      border-top: 0;
+    }
+  }
+
+  th,
+  td {
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.ds-c-table--dense {
+  th,
+  td {
+    padding: $table-dense-padding;
+  }
+}
+
+.ds-c-table--striped {
+  thead {
+    th,
+    tr {
+      background-color: $table-striped-header-background-color;
+    }
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $table-striped-background-color;
+    }
+
+    tr:nth-child(odd)::before {
+      background-color: transparent;
+    }
+  }
+}
+
+.ds-c-table__wrapper {
+  overflow-x: auto;
+}
+
+.ds-c-table__caption {
+  font-weight: $font-bold;
+  margin-bottom: $spacer-1;
+  text-align: left;
+}
 
 @mixin table-stacked {
   thead tr {
@@ -104,94 +183,24 @@ $table-stacked-header-max-width: 160px !default;
   }
 }
 
-.ds-c-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0;
-
-  th,
-  thead td {
-    background-color: $table-header-background-color;
-    text-align: left;
-  }
-
-  tbody th {
-    font-weight: $font-normal;
-  }
-
-  th,
-  td {
-    border: 1px solid $color-gray;
-    padding: $spacer-2;
-  }
-}
-
-.ds-c-table--borderless {
-  thead {
-    th,
-    tr {
-      background-color: transparent;
-    }
-
-    th {
-      border-top: 0;
-    }
-  }
-
-  th,
-  td {
-    border-left: 0;
-    border-right: 0;
-  }
-}
-
 .ds-c-table--stacked {
   @include table-stacked;
 }
 
 .ds-c-sm-table--stacked {
-  @media only screen and (max-width: $width-sm) {
+  @media (max-width: $width-sm) {
     @include table-stacked;
   }
 }
 
 .ds-c-md-table--stacked {
-  @media only screen and (max-width: $width-md) {
+  @media (max-width: $width-md) {
     @include table-stacked;
   }
 }
 
 .ds-c-lg-table--stacked {
-  @media only screen and (max-width: $width-lg) {
+  @media (max-width: $width-lg) {
     @include table-stacked;
   }
-}
-
-.ds-c-table--striped {
-  thead {
-    th,
-    tr {
-      background-color: $table-striped-header-background-color;
-    }
-  }
-
-  tbody {
-    tr:nth-child(even) {
-      background-color: $table-striped-background-color;
-    }
-
-    tr:nth-child(odd)::before {
-      background-color: transparent;
-    }
-  }
-}
-
-.ds-c-table__wrapper {
-  overflow-x: auto;
-}
-
-.ds-c-table__caption {
-  font-weight: $font-bold;
-  margin-bottom: $spacer-1;
-  text-align: left;
 }

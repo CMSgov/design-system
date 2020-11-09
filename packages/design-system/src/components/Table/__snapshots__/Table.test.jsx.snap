@@ -1,107 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table applies additional classNames to root table 1`] = `
-<div>
-  <table
-    className="ds-c-table foo-table"
-    role="table"
-  >
-    <TableCaption
-      key=".0"
-    >
-      Foo
-    </TableCaption>
-  </table>
-</div>
-`;
-
-exports[`Table applies borderless classes 1`] = `
-<div>
-  <table
-    className="ds-c-table ds-c-table--borderless"
-    role="table"
-  >
-    <TableCaption
-      key=".0"
-    >
-      Foo
-    </TableCaption>
-  </table>
-</div>
-`;
-
 exports[`Table applies responsive table 1`] = `
 <div>
   <table
     className="ds-c-table ds-c-lg-table--stacked"
-    role="table"
-  >
-    <TableCaption
-      key=".0"
-    >
-      Foo
-    </TableCaption>
-  </table>
-</div>
-`;
-
-exports[`Table applies scroll table 1`] = `
-<div
-  aria-labelledby="caption-7"
-  aria-live="polite"
-  aria-relevant="additions"
-  className="ds-c-table__wrapper"
-  role="region"
-  tabIndex={null}
->
-  <table
-    className="ds-c-table"
-    role="table"
-  >
-    <TableCaption
-      _id="caption-7"
-      _scrollActive={false}
-      _scrollableNotice={
-        <Alert
-          className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-          headingLevel="3"
-          role="status"
-        >
-          <p
-            className="ds-c-alert__text"
-          >
-            Scroll using arrow keys to see more
-          </p>
-        </Alert>
-      }
-      key=".0"
-    >
-      Foo
-    </TableCaption>
-  </table>
-</div>
-`;
-
-exports[`Table applies zebra stripe classes 1`] = `
-<div>
-  <table
-    className="ds-c-table ds-c-table--striped"
-    role="table"
-  >
-    <TableCaption
-      key=".0"
-    >
-      Foo
-    </TableCaption>
-  </table>
-</div>
-`;
-
-exports[`Table renders additional attributes 1`] = `
-<div>
-  <table
-    ariaLabel="test additional attribute"
-    className="ds-c-table"
     role="table"
   >
     <TableCaption
@@ -118,7 +20,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
   scrollable={true}
   scrollableNotice={
     <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+      className="ds-u-margin-y--1 ds-u-font-weight--normal"
       headingLevel="3"
       role="status"
     >
@@ -132,7 +34,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
   stackableBreakpoint="sm"
 >
   <div
-    aria-labelledby="caption-9"
+    aria-labelledby="caption-10"
     aria-live="polite"
     aria-relevant="additions"
     className="ds-c-table__wrapper"
@@ -144,11 +46,11 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
       role="table"
     >
       <TableCaption
-        _id="caption-9"
+        _id="caption-10"
         _scrollActive={false}
         _scrollableNotice={
           <Alert
-            className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
+            className="ds-u-margin-y--1 ds-u-font-weight--normal"
             headingLevel="3"
             role="status"
           >
@@ -163,7 +65,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
       >
         <caption
           className="ds-c-table__caption"
-          id="caption-9"
+          id="caption-10"
         >
           Foo
         </caption>
@@ -180,7 +82,7 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
   stackableBreakpoint="sm"
 >
   <div
-    aria-labelledby="caption-12"
+    aria-labelledby="caption-13"
     aria-live="polite"
     aria-relevant="additions"
     className="ds-c-table__wrapper"
@@ -192,14 +94,14 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
       role="table"
     >
       <TableCaption
-        _id="caption-12"
+        _id="caption-13"
         _scrollActive={false}
         _scrollableNotice="foo scrollable notice"
         key=".0"
       >
         <caption
           className="ds-c-table__caption"
-          id="caption-12"
+          id="caption-13"
         >
           Foo
         </caption>
