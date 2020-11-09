@@ -16,7 +16,7 @@ const UsaBanner = function () {
       <header
         className={`ds-c-usa-banner__header ${isActive ? '' : 'ds-c-usa-banner__header--expanded'}`}
       >
-        <UsaFlagIcon />
+        <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
         <p className="ds-c-usa-banner__header-text">
           <span>An official website of the United States government</span>
           <button
@@ -32,7 +32,7 @@ const UsaBanner = function () {
       <div className="ds-c-usa-banner__content" id="gov-banner" hidden={isActive}>
         <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
           <div className="ds-c-usa-banner__guidance">
-            <DotGovIcon />
+            <DotGovIcon className="ds-c-usa-banner__icon" />
             <p className="ds-c-usa-banner__media-body">
               <strong>Official websites use .gov</strong>
               <br />A <strong>.gov</strong> website belongs to an official government organization
@@ -40,12 +40,12 @@ const UsaBanner = function () {
             </p>
           </div>
           <div className="ds-c-usa-banner__guidance">
-            <HttpsIcon />
+            <HttpsIcon className="ds-c-usa-banner__icon" />
             <p className="ds-c-usa-banner__media-body">
               <strong>Secure .gov websites use HTTPS</strong>
               <br />A <strong>lock</strong> ({' '}
               <span>
-                <LockIcon />
+                <LockIcon className="ds-c-usa-banner__lock-image" />
               </span>{' '}
               ) or <strong>https://</strong> means you’ve safely connected to the .gov website.
               Share sensitive information only on official, secure websites.
