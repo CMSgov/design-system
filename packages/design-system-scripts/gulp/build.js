@@ -55,6 +55,7 @@ async function copyAssets(dir) {
 
 /**
  * Generically copy any non test files that arent already processed by the build scripts
+ * including type definition files located in `src/types`
  */
 function copyMisc(dir) {
   const src = path.join(dir, 'src');
@@ -67,7 +68,7 @@ function copyMisc(dir) {
         `!${src}/images/**`,
         `!${src}/styles/**`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ])
       .pipe(gulp.dest(path.join(dir, 'dist')))
