@@ -4,7 +4,7 @@ import { ROOT_URL } from '../helpers/e2e/constants';
 import assertNoAxeViolations from '../helpers/e2e/assertNoAxeViolations';
 import { getElementByClassName } from '../helpers/e2e';
 
-const rootURL = `${ROOT_URL}/example/components.usabanner/`;
+const rootURL = `${ROOT_URL}/example/components.usa-banner.react/`;
 
 describe('Usa banner component', () => {
   it('Usa banner should render', async () => {
