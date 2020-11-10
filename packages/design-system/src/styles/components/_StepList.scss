@@ -156,6 +156,7 @@ $current-step-color: $color-primary !default;
 
   &::before {
     background-image: url('#{$image-path}/checkmark-green.svg');
+    background-repeat: no-repeat;
     background-size: contain;
     box-sizing: border-box;
     content: '';
