@@ -21,9 +21,6 @@ $usa-banner-text-color: #1b1b1b;
   padding-bottom: 0.25rem;
   padding-top: 0.25rem;
   position: relative;
-  @media only screen and (min-width: $width-sm) {
-    align-items: center;
-  }
 }
 
 .ds-c-usa-banner__header-flag {
@@ -32,6 +29,7 @@ $usa-banner-text-color: #1b1b1b;
 }
 
 .ds-c-usa-banner__header-text {
+  display: table;
   margin: 0;
   span {
     margin-right: 0.5rem;
@@ -85,13 +83,14 @@ $usa-banner-text-color: #1b1b1b;
 
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
+  height: 2.5rem;
   margin-right: 0.5rem;
   width: 2.5rem;
 }
 
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
-  width: 1.5 * 52 / 64;
+  width: 1.5ex * 52 / 64;
   path {
     fill: currentColor;
   }
