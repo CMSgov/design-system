@@ -68,6 +68,7 @@ The `cmsds.config.js` file contains options for configuring the CMSDS scripts. M
 | `sourceDir` | `./` | The relative path to the directory containing the design system package `src`. The design system build files will be saved here under `dist`. |
 | `docsDir` | `./docs` | The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under `dist`. |
 | `typescript` | `false` | Used to enable typescript support. When `true`, `.ts/.tsx` files will be compiled and typescript definition files will be generated. Requires `tsconfig.json` to be defined. |
+| `minifySvg` | `false` | Used to enable minification of SVG files in `src/image/`. When `true`, `.svg` files will be processed using `svgo` |
 | `rootUrl` | | Sets the domain path for the docs site. I.e. if your docs site is hosted at "www.domain.com/design/" your rootPath would be `"design"` |
 | `name` | | Name of the design system. This replaces the {{name}} template in documentation content. |
 | `githubUrl` | | The URL for your GitHub repository. This replaces the {{github}} template in documentation content. |
@@ -95,15 +96,15 @@ CMSDS scripts provide a lint script to enforce linter and formatting rules with 
 
 The CMSDS lint script is also configurable to turn off any of the three linters/formatters. For example, if you aren't interested in using `stylelint`, simply pass the `--disableStylelint` option to the lint script. Run `yarn cmsds lint --help` to see the lint script options for more information.
 
-## Configuring SCSS
+### Configuring SCSS
 
 All design system styles can be located in the `styles` folder, which is modeled after the core CMSDS `styles` folder. Styles are organized into 4 main sections: `settings`, `base`, `component` and `utilites`. A typical child design system setup can be found in `styles/index.scss`, and includes setting variable overrides, a core CMSDS import, and other overrides.
 
 SCSS is processed by CMSDS scripts into `dist/scss` and `dist/css`, where `dist/css` contains the minified, prefixed CSS output. We use `autoprefixer` and `cssnano` to process SCSS.
 
-## Configuring Images and Fonts
+### Configuring Images and Fonts
 
-Contents of `src/images/` and `src/fonts/` will be processed by CMSDS scripts into their corresponding `dist` folders. SVG files located in `src/images/` will additionally be minified using `svgo`.
+Contents of `src/images/` and `src/fonts/` will be processed by CMSDS scripts into their corresponding `dist` folders. CMSDS scripts provide the `minifySvg` option to automatically minify SVG files located in `src/images/` using `svgo`.
 
 ## Writing documentation
 

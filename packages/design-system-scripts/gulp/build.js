@@ -42,13 +42,14 @@ function copySass(dir) {
 /**
  * Copy and process font and image files from src to dist
  */
-async function copyAssets(dir) {
+async function copyAssets(dir, options) {
   const sources = await getSourceDirs(dir);
   const isChildDS = sources.length > 1;
 
-  // If this a child DS we also need to copy assets from the core npm package
   return [
-    copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist')),
+    // Process SVG with `svgo` if the `minifySvg` flag is enabled
+    copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist'), options.minifySvg),
+    // If this a child DS we also need to copy assets from the core npm package
     isChildDS && copyFontsImages(path.join(sources[0], 'dist'), path.join(dir, 'dist')),
   ];
 }
@@ -75,8 +76,8 @@ function copyMisc(dir) {
   );
 }
 
-async function copyAll(dir) {
-  const copyTasks = [copySass(dir), copyAssets(dir), copyMisc(dir)];
+async function copyAll(dir, options) {
+  const copyTasks = [copySass(dir), copyAssets(dir, options), copyMisc(dir)];
 
   return Promise.all(copyTasks);
 }
@@ -220,7 +221,7 @@ module.exports = {
   async buildSrc(sourceDir, options) {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
-    await copyAll(sourceDir);
+    await copyAll(sourceDir, options);
     await compileSourceSass(sourceDir, options);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {

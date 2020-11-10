@@ -5,11 +5,11 @@ module.exports = {
   docsDir: './docs',
   // Flag enabling typescript support. When `true`, `.ts/.tsx` files will be compilied and typescript definition files will be generated. Requires `tsconfig.json` to be defined.
   typescript: false,
+  // Flag enabling minification of SVG files in `src/images/` using svgo.
+  minifySvg: true,
+
   // Sets the domain path for the docs site. I.e. if your docs site is hosted at www.domain.com/design/ your rootPath would be `"design/"`
   rootPath: '',
-  // Flag used by the core CMS design system, should be false for child design systems
-  core: false,
-
   // Name of the design system. This replaces the {{name}} template in documentation content.
   name: 'Child Design System Example',
   // The URL for your GitHub repository. This replaces the {{github}} template in documentation content.

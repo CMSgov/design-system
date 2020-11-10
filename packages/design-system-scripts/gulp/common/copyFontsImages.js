@@ -29,10 +29,14 @@ function minimizeSvg(srcGlob, dest) {
 /**
  * Copy all fonts and images from one directory to another
  */
-module.exports = async function copyFontsImages(srcDir, destDir) {
+module.exports = async function copyFontsImages(srcDir, destDir, minifySvg = false) {
+  const svgTask = minifySvg
+    ? minimizeSvg(`${srcDir}/images/**/*.svg`, `${destDir}/images`)
+    : copyDir([`${srcDir}/images/**/*.svg`], `${destDir}/images`);
+
   await Promise.all([
     copyDir(`${srcDir}/fonts/**/*`, `${destDir}/fonts`),
     copyDir([`${srcDir}/images/**/*`, `!${srcDir}/images/**/*.svg`], `${destDir}/images`),
-    minimizeSvg(`${srcDir}/images/*.svg`, `${destDir}/images`),
+    svgTask,
   ]);
 };
