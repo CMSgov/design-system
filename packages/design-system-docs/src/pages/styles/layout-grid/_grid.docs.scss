@@ -18,7 +18,7 @@ Style guide: styles.grid
 /*
 Default behavior
 
-Columns without a set width will automatically layout with equal widths. For example, below are four instances of `.ds-l-col` which are each automatically 25% wide. The columns will automatically wrap when they don't fit a single row.
+Columns without a set width will automatically layout with equal widths. For example, below are four instances of `.ds-u-col` which are each automatically 25% wide. The columns will automatically wrap when they don't fit a single row.
 
 Column widths are set in percentages, so they’re always responsive and will be sized relative to their parent row.
 
@@ -30,7 +30,7 @@ Style guide: styles.grid.default
 /*
 Specifying number of columns
 
-Specify the number of columns (1-12) to span using `.ds-l-col--*` classes. These classes will span `*` columns. So, if you want two elements that each span half the row, you would use `.ds-l-col--6`
+Specify the number of columns (1-12) to span using `.ds-u-col--*` classes. These classes will span `*` columns. So, if you want two elements that each span half the row, you would use `.ds-u-col--6`
 
 Markup: grid-number-col.example.html
 
@@ -40,7 +40,7 @@ Style guide: styles.grid.columns
 /*
 Natural width columns
 
-Use a `.ds-l-col--auto` class to size a column to the natural width of its content.
+Use a `.ds-u-col--auto` class to size a column to the natural width of its content.
 
 Markup: grid-natural-width.example.html
 
@@ -54,15 +54,15 @@ Mobile, tablet, and desktop grids
 
 Each column class can include a [breakpoint "prefix"]({{root}}/guidelines/responsive) (`sm`, `md`, `lg`, `xl`), allowing you to change the column widths based on the viewport width.
 
-An element with a `.ds-l-{breakpoint}-col--*` class will span `*` columns at viewports matching `breakpoint` and larger.
+An element with a `.ds-u-{breakpoint}-col--*` class will span `*` columns at viewports matching `breakpoint` and larger.
 
 In the example below, the cells span:
 
-- 1/6 of the row on `xl` viewports, using `.ds-l-xl-col--2`
-- 1/4 of the row on `lg` viewports, using `.ds-l-lg-col--3`
-- 1/3 of the row on `md` viewports, using `.ds-l-md-col--4`
-- 1/2 of the row on `sm` viewports, using `.ds-l-sm-col--6`
-- The entire width of the row on viewports smaller than the `sm` breakpoint, using `.ds-l-col--12`
+- 1/6 of the row on `xl` viewports, using `.ds-u-xl-col--2`
+- 1/4 of the row on `lg` viewports, using `.ds-u-lg-col--3`
+- 1/3 of the row on `md` viewports, using `.ds-u-md-col--4`
+- 1/2 of the row on `sm` viewports, using `.ds-u-sm-col--6`
+- The entire width of the row on viewports smaller than the `sm` breakpoint, using `.ds-u-col--12`
 
 Markup: grid-responsive.example.html
 
@@ -100,7 +100,7 @@ Style guide: styles.grid.alignment
 /*
 Forms
 
-Use a `.ds-l-form-row` class to tighten the column spacing when laying out form fields in a grid.
+Use a `.ds-u-form-row` class to tighten the column spacing when laying out form fields in a grid.
 
 Markup: grid-forms.example.html
 

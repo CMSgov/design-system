@@ -18,7 +18,7 @@ Prefixes are added to class names to make it more apparent what job the class is
 
 | Prefix | Description                                                 |
 | ------ | ----------------------------------------------------------- |
-| `l-`   | Indicates layout-related styles. Example: `.ds-l-container` |
+| `l-`   | Indicates layout-related styles. Example: `.ds-u-container` |
 | `c-`   | Indicates a component. Example: `.ds-c-button`              |
 | `u-`   | Indicates a utility. Example: `.ds-u-color--base`           |
 
@@ -32,7 +32,7 @@ Put all together, a CSS class can be broken down to these key parts: `[NAMESPACE
 
 - **Block** is a standalone entity that is meaningful on its own. For example: `.ds-c-card`, `.ds-c-button`
 - **Element** is a part of a block that has no standalone meaning and is semantically tied to its block, such as `.ds-c-card__title`
-- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-l-col--3`
+- **Modifier** is a flag on a block or element and is used to change appearance or behavior. For example: `.ds-c-button--primary`, `.ds-u-color--base`, `.ds-u-col--3`
 
 [BEM’s strict naming rules can be found here](http://getbem.com/naming/).
 

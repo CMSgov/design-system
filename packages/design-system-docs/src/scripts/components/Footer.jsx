@@ -42,14 +42,14 @@ function renderLinks(links) {
 const Footer = () => {
   return (
     <footer className="ds-u-fill--gray-lightest">
-      <section className="ds-u-padding-y--4 ds-l-container">
+      <section className="ds-u-padding-y--4 ds-u-container">
         <h2 className="ds-h4">Help make the CMS Design System better</h2>
         <p className="ds-u-measure--wide">
           We use Github issues to keep track of new component submissions, bugs, design feedback,
           and any other suggestions you may have.
         </p>
-        <div className="ds-l-row">
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
+        <div className="ds-u-row">
+          <div className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
               href={githubUrl('issues/new?assignees=&labels=Bug&template=bug_report.md&title=')}
@@ -59,7 +59,7 @@ const Footer = () => {
               Report a bug
             </a>
           </div>
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
+          <div className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4 ds-u-margin-bottom--2 ds-u-sm-margin-bottom--0">
             <a
               className="ds-c-button"
               href={githubUrl('issues/new?assignees=&labels=&template=general-issue.md&title=')}
@@ -69,7 +69,7 @@ const Footer = () => {
               Request a change
             </a>
           </div>
-          <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4">
+          <div className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4">
             <a
               className="ds-c-button"
               href={githubUrl(
@@ -84,9 +84,9 @@ const Footer = () => {
         </div>
       </section>
       <section className="ds-base--inverse">
-        <div className="ds-l-container ds-u-padding-top--4">
-          <div className="ds-l-row">
-            <div className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
+        <div className="ds-u-container ds-u-padding-top--4">
+          <div className="ds-u-row">
+            <div className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4 ds-u-margin-bottom--4 ds-u-margin-top--2">
               <h6 className="ds-h4">Contact Us</h6>
               <p className="ds-u-font-size--small">
                 Need help with the CMS Design System?
@@ -96,11 +96,11 @@ const Footer = () => {
                 </a>
               </p>
             </div>
-            <dl className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4">
+            <dl className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4 ds-u-margin-bottom--4">
               <dt className="ds-h4">CMS &amp; HHS Websites</dt>
               {renderLinks(cmsLinks)}
             </dl>
-            <dl className="ds-l-col--12 ds-l-sm-col--4 ds-l-lg-col--4 ds-u-margin-bottom--4">
+            <dl className="ds-u-col--12 ds-u-sm-col--4 ds-u-lg-col--4 ds-u-margin-bottom--4">
               <dt className="ds-h4">Additional resources</dt>
               {renderLinks(helpfulLinks)}
               <dd className="ds-u-font-size--small ds-u-margin-left--0">
@@ -118,7 +118,7 @@ const Footer = () => {
         </div>
       </section>
       <section className="ds-base--inverse ds-u-padding-bottom--4">
-        <div className="ds-l-container ds-u-padding-y--2">
+        <div className="ds-u-container ds-u-padding-y--2">
           <p className="ds-text ds-u-font-size--small">
             A federal government website managed by the Centers for Medicare & Medicaid Services
             7500 Security Boulevard, Baltimore, MD 21124

@@ -49,8 +49,8 @@
   }
 }
 
-.preview__grid .ds-l-row > [class*='ds-l-'],
-.preview__grid .ds-l-form-row > [class*='ds-l-'] {
+.preview__grid .ds-u-row > [class*='ds-u-'],
+.preview__grid .ds-u-form-row > [class*='ds-u-'] {
   /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .preview__element;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
