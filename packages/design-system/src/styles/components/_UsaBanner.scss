@@ -1,12 +1,19 @@
-.c-usa-banner {
-  background-color: #f0f0f0;
-  color: #1b1b1b;
+$usa-banner-background-color: #f0f0f0;
+$usa-banner-text-color: #1b1b1b;
+
+.ds-c-usa-banner {
+  background-color: $usa-banner-background-color;
+  color: $usa-banner-text-color;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.06471rem;
   line-height: 1.52155;
+  padding: 0 $spacer-3;
 }
 
-.c-usa-banner__header {
+.ds-c-usa-banner__header {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
   font-size: 0.79853rem;
   font-weight: 400;
   line-height: 1.12707;
@@ -16,25 +23,27 @@
   position: relative;
 }
 
-.c-usa-banner__header-flag {
+.ds-c-usa-banner__header-flag {
   margin-right: 0.5rem;
   width: 1rem;
 }
 
-.c-usa-banner__header-text {
+.ds-c-usa-banner__header-text {
+  display: table;
   margin: 0;
   span {
     margin-right: 0.5rem;
   }
 }
 
-.c-usa-banner__content {
+.ds-c-usa-banner__content {
   font-size: 0.99816rem;
   overflow: hidden;
+  padding: $spacer-3 0;
   width: 100%;
 }
 
-.c-usa-banner__button {
+.ds-c-usa-banner__button {
   /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .ds-c-link;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
@@ -56,41 +65,50 @@
     display: inline-block;
     height: 0.5rem;
     margin-left: 2px;
+    padding-right: 2px;
     width: 0.5rem;
   }
 }
 
-.c-usa-banner__guidance {
+.ds-c-usa-banner__guidance {
+  align-items: flex-start;
+  display: flex;
+  padding-top: $spacer-2;
+
   @media (min-width: $width-sm) {
+    padding: 0 $spacer-1;
     width: 50%;
   }
 }
 
-.c-usa-banner__icon {
+.ds-c-usa-banner__icon {
+  flex-shrink: 0;
+  height: 2.5rem;
+  margin-right: 0.5rem;
   width: 2.5rem;
 }
 
-.c-usa-banner__lock-image {
+.ds-c-usa-banner__lock-image {
   height: 1.5ex;
-  width: 1.5 * 52 / 64;
+  width: 1.5ex * 52 / 64;
   path {
     fill: currentColor;
   }
 }
 
-.c-usa-banner__media-img {
+.ds-c-usa-banner__media-img {
   float: left;
   margin-right: 0.5rem;
 }
 
-.c-usa-banner__media-body {
+.ds-c-usa-banner__media-body {
   margin: 0;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 // stylelint-disable no-duplicate-selectors
-.c-usa-banner__header--expanded {
-  .c-usa-banner__button::after {
+.ds-c-usa-banner__header--expanded {
+  .ds-c-usa-banner__button::after {
     transform: rotate(180deg);
   }
 }
