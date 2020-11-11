@@ -12,7 +12,8 @@ module.exports = {
     ],
   ],
   plugins: [
-    // Install and add any plugins for your project here
-    // i.e. "@babel/plugin-proposal-class-properties",
+    // Install and add any additional plugins for your project here
+    '@babel/plugin-proposal-class-properties',
+    'inline-react-svg', // Used to import SVG files in React
   ],
 };

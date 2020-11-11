@@ -1,4 +1,4 @@
-const copyAssets = require('../common/copyAssets');
+const copyFontsImages = require('../common/copyFontsImages');
 const del = require('del');
 const gulp = require('gulp');
 const path = require('path');
@@ -15,7 +15,7 @@ const { logTask } = require('../common/logUtil');
 function copySourceAssets(sourceDir, docsDir) {
   logTask('🏞  ', `Copying fonts and images from source package into ${path.join(docsDir, 'dist')}`);
   // Handle rootPath when copying
-  return copyAssets(path.join(sourceDir, 'dist'), path.join(docsDir, 'dist'));
+  return copyFontsImages(path.join(sourceDir, 'dist'), path.join(docsDir, 'dist'));
 }
 
 /**
@@ -27,7 +27,7 @@ async function copyDocsAssets(docsDir) {
   // Handle rootPath when copying
   const docs = await getDocsDirs(docsDir);
   return Promise.all([
-    docs.map((doc) => copyAssets(path.join(doc, 'src'), path.join(docsDir, 'dist'))),
+    docs.map((doc) => copyFontsImages(path.join(doc, 'src'), path.join(docsDir, 'dist'))),
   ]);
 }
 
