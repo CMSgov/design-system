@@ -1,0 +1,126 @@
+@import '../settings/index.scss';
+
+/**
+ *  Grid container
+ */
+.ds-u-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $site-max-width;
+  padding-left: $grid-gutter-width / 2;
+  padding-right: $grid-gutter-width / 2;
+
+  @media (min-width: $width-sm) {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+  }
+}
+
+/**
+ *  Grid row
+ */
+.ds-u-row,
+.ds-u-form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ds-u-row {
+  margin-left: ($grid-gutter-width / -2);
+  margin-right: ($grid-gutter-width / -2);
+}
+
+.ds-u-form-row {
+  margin-left: ($grid-form-gutter-width / -2);
+  margin-right: ($grid-form-gutter-width / -2);
+}
+
+/**
+ *  Grid column
+ *  Shout-out Bootstrap Grid
+ */
+
+// Use a placeholder for common properties for all breakpoints. When transpiled
+// all of the declarations extending this will be turned into one declaration
+%grid-column {
+  box-sizing: border-box;
+  min-height: 1px; // Prevent columns from collapsing when empty
+  min-width: 0; // Resize columns as expected (https://css-tricks.com/flexbox-truncated-text/)
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+  width: 100%;
+}
+
+@for $i from 1 through $grid-columns {
+  // Example: ds-u-col--6
+  .ds-u-col--#{$i} {
+    @extend %grid-column;
+  }
+}
+
+.ds-u-col,
+.ds-u-col--auto {
+  @extend %grid-column;
+}
+
+.ds-u-col {
+  @include equal-width-flexbox-col;
+}
+
+.ds-u-col--auto {
+  @include auto-width-flexbox-col;
+}
+
+@for $i from 1 through $grid-columns {
+  // Example: ds-u-col--12
+  .ds-u-col--#{$i} {
+    @include flexbox-col($i);
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  // Allow columns to stretch full width below their breakpoints
+  @for $i from 1 through $grid-columns {
+    // Example: ds-u-lg-col--12
+    .ds-u-#{$breakpoint}-col--#{$i} {
+      @extend %grid-column;
+    }
+  }
+
+  .ds-u-#{$breakpoint}-col--auto {
+    @extend %grid-column;
+  }
+
+  // Example: ds-u-lg-col
+  .ds-u-#{$breakpoint}-col {
+    @extend %grid-column;
+  }
+
+  @media (min-width: $value) {
+    // Provide breakpoint classes for equal-width columns
+    // Example: ds-u-lg-col
+    .ds-u-#{$breakpoint}-col {
+      @include equal-width-flexbox-col;
+    }
+
+    .ds-u-#{$breakpoint}-col--auto {
+      @include auto-width-flexbox-col;
+    }
+
+    @for $i from 1 through $grid-columns {
+      // Example: ds-u-lg-col--12
+      .ds-u-#{$breakpoint}-col--#{$i} {
+        @include flexbox-col($i);
+      }
+    }
+  }
+}
+
+// Overwrite default padding in a form-row so fields are closer
+.ds-u-form-row > .ds-u-col,
+.ds-u-form-row > [class*='-col-'] {
+  padding-left: $grid-form-gutter-width / 2;
+  padding-right: $grid-form-gutter-width / 2;
+}

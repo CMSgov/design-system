@@ -77,7 +77,7 @@ export class DateField extends React.PureComponent {
 
   render() {
     const sharedDateFieldProps = {
-      className: 'ds-l-col--auto',
+      className: 'ds-u-col--auto',
       labelClassName: 'ds-c-datefield__label',
       inversed: this.props.inversed,
       onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
@@ -99,7 +99,7 @@ export class DateField extends React.PureComponent {
           {this.props.label}
         </FormLabel>
 
-        <div className="ds-l-form-row ds-u-align-items--end">
+        <div className="ds-u-form-row ds-u-align-items--end">
           <TextField
             {...sharedDateFieldProps}
             fieldClassName={classNames('ds-c-field--month', {
