@@ -43,7 +43,7 @@ function App() {
         </div>
       </header>
 
-      <div className="ds-l-container">
+      <div className="ds-u-container">
         <div className="ds-u-measure--base">
           <MonthPicker
             name="month-picker"
