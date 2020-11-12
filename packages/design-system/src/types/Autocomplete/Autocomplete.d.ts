@@ -6,7 +6,17 @@ export interface AutocompleteItems {
   name?: string;
 }
 
-export interface AutocompleteProps extends DownshiftProps<any> {
+type PropsNotPassedToDownshift = 
+  | 'ariaClearLabel'
+  | 'clearInputText'
+  | 'items'
+  | 'label'
+  | 'loading'
+  | 'children'
+  | 'className'
+  | 'clearSearchButton';
+
+export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
   /**
    * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
