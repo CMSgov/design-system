@@ -60,6 +60,10 @@ function processFlags(section) {
     section.description = section.description
       .replace(FLAG_REGEX, (_, flag, value) => {
         switch (flag) {
+          case 'hide-section':
+            // Skip rendering KSS block
+            section.hideSection = true;
+            break;
           case 'hide-example':
             // Skip rendering the example and code snippet
             section.hideExample = true;
