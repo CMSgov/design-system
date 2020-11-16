@@ -39,7 +39,6 @@ function processKssSection(kssSection, options) {
   section = processFlags(section);
   section.description = replaceTemplateTags(section.description, options);
   section.referenceURI = section.reference.replace(/\./g, '/');
-  section.weight = updateUtilitiesWeight(section);
 
   // We only need to support Markdown's code syntax in headers, so we manually
   // parse those rather than running it through the marked library.
@@ -89,6 +88,9 @@ function processFlags(section) {
             // KSS converts the URL to an <a> element, so we grab just the URL
             section.uswds = hrefUrl(value);
             break;
+          case 'weight':
+            section.weight = value;
+            break;
           default:
             break;
         }
@@ -97,22 +99,6 @@ function processFlags(section) {
       .trim();
   }
   return section;
-}
-
-/**
- * For sections with parent URI of `utilities`, ensure Layout Grid appears first by
- * increamenting the `weight` of sections which is not a `grid`
- * @param {Object} section
- * @return {Object.property} section.weight
- */
-function updateUtilitiesWeight(section) {
-  if (section.referenceURI.indexOf('utilities/') === 0) {
-    if (section.referenceURI.indexOf('utilities/grid') !== 0) {
-      section.weight++;
-    }
-  }
-
-  return section.weight;
 }
 
 function hrefUrl(str) {
