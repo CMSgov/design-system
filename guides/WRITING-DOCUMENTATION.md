@@ -76,6 +76,7 @@ To extend the default functionality of KSS, we've implemented support for custom
 | **`@responsive`**           | `@responsive`                                                | Renders breakpoint toggles for the markup example.                                                                                      |
 | **`@status [NAME]`**        | `@status Draft`                                              | Displays a status badge. `[NAME]` must be one of the following values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.              |
 | **`@uswds [URL]`**          | `@uswds https://designsystem.digital.gov/components/button/` | `[URL]` is the link to the corresponding US Web Design System component.                                                                |
+| **`@weight [VALUE]`**       | `@weight -1`                                                 | The weight value controls the order of the page in the left navigation from smallest to largest value.                                  |
 
 ### Markup
 
