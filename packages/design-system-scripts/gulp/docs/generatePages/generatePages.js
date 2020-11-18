@@ -157,6 +157,8 @@ async function generateDocPages(pages, docsPath, options, changedPath) {
  * @return {Promise<Array>}
  */
 async function generateExamplePages(pageSection, docsPath, sourceDir, options, changedPath) {
+  // This function accepts the unnested pages, which can contain page sections that have been removed by nestSections
+  // TODO: Avoid generating example pages for removed page sections
   const examplePages = pageSection.filter(
     (page) => page.markup.length > 0 || page.reactExampleSource
   );
