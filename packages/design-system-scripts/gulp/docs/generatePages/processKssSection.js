@@ -92,6 +92,9 @@ function processFlags(section) {
             // KSS converts the URL to an <a> element, so we grab just the URL
             section.uswds = hrefUrl(value);
             break;
+          case 'weight':
+            section.weight = value;
+            break;
           default:
             break;
         }

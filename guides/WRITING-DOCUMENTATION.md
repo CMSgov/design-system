@@ -68,15 +68,16 @@ The description should describe what pattern does or should be used for in plain
 
 To extend the default functionality of KSS, we've implemented support for custom flags. Flags should always come after the description.
 
-| flag name                   | example                                                     | flag description                                                                                                                        |
-| --------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **`@hide-section`**         | `@hide-section`                                             | Hides an entire documentation section. **Note:** If used on a page's top level section, it will hide the entire page                              |
-| **`@hide-markup`**          | `@hide-markup`                                              | Hides the code snippet.                                                                                                                 |
-| **`@react-props [NAME]`**   | `@react-props Button.jsx`                                   | Displays the React prop documentation for a component. `[NAME]` is the filename of the react component where the Proptypes are defined. |
-| **`@react-example [NAME]`** | `@react-example Button.example.jsx`                         | Displays the example file using this React component. `[NAME]` is the filename of the react example to be displayed.                    |
-| **`@responsive`**           | `@responsive`                                               | Renders breakpoint toggles for the markup example.                                                                                      |
-| **`@status [NAME]`**        | `@status Draft`                                             | Displays a status badge. `[NAME]` must be one of the following values: `Draft`, `Ready`, `Deprecated`.                                  |
-| **`@uswds [URL]`**          | `@uswds https://designsystem.digital.gov/components/alerts` | `[URL]` is the link to the corresponding US Web Design System component.                                                                |
+| flag name                   | example                                                      | flag description                                                                                                                                       |
+| --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`@hide-section`**         | `@hide-section`                                              | Hides an entire documentation section. **Note:** If used on a page's top level section, it will hide the entire page                                   |
+| **`@hide-markup`**          | `@hide-markup`                                               | Hides the code snippet.                                                                                                                                |
+| **`@react-props [NAME]`**   | `@react-props Button.jsx`                                    | Displays the React prop documentation for a component. `[NAME]` is the filename of the react component where the Proptypes are defined.                |
+| **`@react-example [NAME]`** | `@react-example Button.example.jsx`                          | Displays the example file using this React component. `[NAME]` is the filename of the react example to be displayed.                                   |
+| **`@responsive`**           | `@responsive`                                                | Renders breakpoint toggles for the markup example.                                                                                                     |
+| **`@status [NAME]`**        | `@status Draft`                                              | Displays a status badge. `[NAME]` must be one of the following values: `Draft`, `Work in progress`, `Ready`, `Deprecated`.                             |
+| **`@uswds [URL]`**          | `@uswds https://designsystem.digital.gov/components/button/` | `[URL]` is the link to the corresponding US Web Design System component.                                                                               |
+| **`@weight [VALUE]`**       | `@weight -1`                                                 | The weight value controls the order of the page in the navigation from smallest to largest value. When not supplied, the item is sorted alphabetically |
 
 ### Markup
 
