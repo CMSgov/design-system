@@ -19,7 +19,7 @@ export class Alert extends React.PureComponent {
   }
 
   heading() {
-    const Heading = `h${this.props.headingLevel}` || `h3`;
+    const Heading = `h${this.props.headingLevel}` || `h2`;
     if (this.props.heading) {
       return (
         <Heading className="ds-c-alert__heading" id={this.headingId}>
@@ -53,7 +53,7 @@ export class Alert extends React.PureComponent {
 }
 Alert.defaultProps = {
   role: 'region',
-  headingLevel: '3',
+  headingLevel: '2',
 };
 Alert.propTypes = {
   /**
