@@ -60,12 +60,10 @@ export class Tooltip extends React.Component {
   }
 
   handleEscapeKey(e) {
-    // Closes interactive and click only tooltips when ESC key is pressed
+    // Closes tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (this.state.active && e.keyCode === ESCAPE_KEY) {
-      if (this.props.interactive || this.props.dialog) {
-        this.setTooltipActive(false);
-      }
+      this.setTooltipActive(false);
     }
   }
 
@@ -108,20 +106,27 @@ export class Tooltip extends React.Component {
     } = this.props;
 
     const TriggerComponent = this.triggerComponentType();
-    const triggerClasses = classNames('ds-c-tooltip__trigger', 'ds-base', triggerClassName, {
+    const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', triggerClassName, {
       [triggerActiveClassName]: this.state.active,
       'ds-c-tooltip__trigger--click-only-active': this.props.dialog && this.state.active,
     });
 
+    const eventHandlers = dialog
+      ? {
+          onClick: () => this.setTooltipActive(!this.state.active),
+        }
+      : {
+          onTouchStart: () => this.setTooltipActive(!this.state.active),
+          onFocus: () => this.setTooltipActive(true),
+          onBlur: () => this.handleBlur(),
+          onMouseEnter: () => this.setTooltipActive(true),
+          onMouseLeave: () => this.setTooltipActive(false),
+        };
+
     return (
       <TriggerComponent
+        {...eventHandlers}
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        onTouchStart={() => this.setTooltipActive(!this.state.active)}
-        onFocus={() => (dialog ? null : this.setTooltipActive(true))}
-        onBlur={() => (dialog ? null : this.handleBlur())}
-        onMouseEnter={() => (dialog ? null : this.setTooltipActive(true))}
-        onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
-        onClick={() => this.setTooltipActive(!this.state.active)}
         aria-label={ariaLabel || ''}
         aria-describedby={this.id}
         className={triggerClasses}
