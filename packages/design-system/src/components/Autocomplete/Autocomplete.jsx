@@ -29,7 +29,8 @@ import uniqueId from 'lodash.uniqueid';
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child) {
-  return child != null && child.type === TextField;
+  // Some application does not support child.type
+  return child != null && (child.type === TextField || child.type.prototype instanceof TextField);
 }
 
 export class Autocomplete extends React.PureComponent {
