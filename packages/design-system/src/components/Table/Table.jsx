@@ -26,7 +26,8 @@ function debounce(fn, ms) {
  * @return {Boolean} Is this a TableCaption component?
  */
 function isTableCaption(child) {
-  return child && child.type === TableCaption;
+  // Some application does not support child.type
+  return child && (child.type === TableCaption || (child.props && child.props._isTableCaption));
 }
 
 export class Table extends React.PureComponent {
@@ -83,7 +84,7 @@ export class Table extends React.PureComponent {
             _scrollableNotice: this.props.scrollableNotice,
           });
         }
-      } else if (this.props.stackable) {
+      } else if (this.props.stackable && child.props) {
         // Extend props for others before rendering.
         return React.cloneElement(child, {
           _stackable: this.props.stackable,
