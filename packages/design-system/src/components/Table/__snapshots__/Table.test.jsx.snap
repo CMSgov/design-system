@@ -7,6 +7,7 @@ exports[`Table applies responsive table 1`] = `
     role="table"
   >
     <TableCaption
+      _isTableCaption={true}
       key=".0"
     >
       Foo
@@ -47,6 +48,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
     >
       <TableCaption
         _id="caption-10"
+        _isTableCaption={true}
         _scrollActive={false}
         _scrollableNotice={
           <Alert
@@ -95,6 +97,7 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
     >
       <TableCaption
         _id="caption-13"
+        _isTableCaption={true}
         _scrollActive={false}
         _scrollableNotice="foo scrollable notice"
         key=".0"
