@@ -6,7 +6,7 @@ export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
       // TODO: Use React Context when all products are on React v16.8 or higher
-      if (child) {
+      if (child && child.props) {
         return React.cloneElement(child, {
           _stackable: _stackable,
         });
