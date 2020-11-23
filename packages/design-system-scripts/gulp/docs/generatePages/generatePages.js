@@ -157,6 +157,8 @@ async function generateDocPages(pages, docsPath, options, changedPath) {
  * @return {Promise<Array>}
  */
 async function generateExamplePages(pageSection, docsPath, sourceDir, options, changedPath) {
+  // This function accepts the unnested pages, which can contain page sections that have been removed by nestSections
+  // TODO: Avoid generating example pages for removed page sections
   const examplePages = pageSection.filter(
     (page) => page.markup.length > 0 || page.reactExampleSource
   );
@@ -204,8 +206,11 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   );
 
   // Merge both sets of KssSection objects into a single array of page parts.
-  // Also, remove pages with the same URL (so child design systems can override existing pages)
-  const pages = uniquePages(markdownSections.concat(kssSections));
+  // Remove pages with the same URL (so child design systems can override existing pages)
+  // Hide sections and pages with the `hide-section` flag
+  const pages = uniquePages(markdownSections.concat(kssSections)).filter(
+    (page) => !page.hideSection
+  );
   // Add react prop and example data to page sections
   await addReactData(pages);
   // Add missing top-level pages and connect the page parts to their parent pages
