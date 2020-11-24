@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
-import TabPanel from './TabPanel';
 import classnames from 'classnames';
 
 /** CONSTANTS
@@ -46,7 +45,7 @@ function panelTabId(panel) {
  */
 function isTabPanel(child) {
   // Preact doesn't support child.type
-  return child && (child.type === TabPanel || (child.props && child.props.tab));
+  return child && child.type && child.type.displayName === 'TabPanel';
 }
 
 export class Tabs extends React.PureComponent {

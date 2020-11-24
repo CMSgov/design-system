@@ -18,7 +18,6 @@ import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
@@ -29,9 +28,9 @@ import uniqueId from 'lodash.uniqueid';
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child) {
-  // Some applications does not support child.type
   return (
-    child && (child.type === TextField || (child.props && child.props.label && child.props.name))
+    // Some application does not support child.type
+    child && child.type && child.type.displayName === 'TextField'
   );
 }
 

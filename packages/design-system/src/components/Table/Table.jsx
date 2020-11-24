@@ -1,7 +1,6 @@
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TableCaption from './TableCaption';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -27,7 +26,7 @@ function debounce(fn, ms) {
  */
 function isTableCaption(child) {
   // Some application does not support child.type
-  return child && (child.type === TableCaption || (child.props && child.props._isTableCaption));
+  return child && child.type && child.type.displayName === 'TableCaption';
 }
 
 export class Table extends React.PureComponent {
@@ -44,7 +43,7 @@ export class Table extends React.PureComponent {
       if (
         props.scrollable &&
         Array.isArray(props.children) &&
-        !props.children.some((child) => child.type === TableCaption)
+        !props.children.some((child) => child.type.displayName === 'TableCaption')
       ) {
         console.warn(
           'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
