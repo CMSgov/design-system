@@ -3,7 +3,6 @@
 exports[`TableCaption applies additional classNames to caption 1`] = `
 <table>
   <TableCaption
-    _isTableCaption={true}
     className="foo-caption"
   >
     <caption
