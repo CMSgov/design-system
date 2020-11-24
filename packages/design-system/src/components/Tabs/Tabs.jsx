@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import classnames from 'classnames';
+import get from 'lodash.get';
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -44,8 +45,10 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  // Preact doesn't support child.type
-  return child && child.type && child.type.displayName === 'TabPanel';
+  // Get type.displayName with get type.name as a fallback
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  return componentName === 'TabPanel';
 }
 
 export class Tabs extends React.PureComponent {

@@ -14,13 +14,13 @@
  * an unacceptable regression of the user experience.
  */
 
+import { get, uniqueId } from 'lodash';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 /**
  * Determine if a React component is a TextField
@@ -28,10 +28,10 @@ import uniqueId from 'lodash.uniqueid';
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child) {
-  return (
-    // Some application does not support child.type
-    child && child.type && child.type.displayName === 'TextField'
-  );
+  // Get type.displayName with get type.name as a fallback
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  return componentName === 'TextField';
 }
 
 export class Autocomplete extends React.PureComponent {

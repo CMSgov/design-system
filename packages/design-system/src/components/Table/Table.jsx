@@ -1,8 +1,8 @@
+import { get, uniqueId } from 'lodash';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 // TODO: Revert out of this 'PR update to use lifecycle methods'
 // (https://github.com/CMSgov/design-system/pull/777)
@@ -25,8 +25,10 @@ function debounce(fn, ms) {
  * @return {Boolean} Is this a TableCaption component?
  */
 function isTableCaption(child) {
-  // Some application does not support child.type
-  return child && child.type && child.type.displayName === 'TableCaption';
+  // Get type.displayName with get type.name as a fallback
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  return componentName === 'TableCaption';
 }
 
 export class Table extends React.PureComponent {
