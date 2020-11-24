@@ -6,7 +6,6 @@ export const TableCaption = ({
   children,
   className,
   _id,
-  _isTableCaption,
   _scrollActive,
   _scrollableNotice,
   ...tableCaptionProps
@@ -18,11 +17,6 @@ export const TableCaption = ({
       {_scrollActive && _scrollableNotice}
     </caption>
   );
-};
-
-TableCaption.defaultProps = {
-  // Default flag to true for parent `Table` component to identify this child component
-  _isTableCaption: true,
 };
 
 TableCaption.propTypes = {
@@ -38,10 +32,6 @@ TableCaption.propTypes = {
    * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */
   _id: PropTypes.string,
-  /**
-   * @hide-prop This identifies component as a `TableCaption`
-   */
-  _isTableCaption: PropTypes.bool,
   /**
    * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */

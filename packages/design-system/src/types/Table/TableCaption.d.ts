@@ -14,10 +14,6 @@ export interface TableCaptionProps {
    */
   _id?: string;
   /**
-   * @hide-prop This identifies component as a `TableCaption`
-   */
-  _isTableCaption?: boolean,
-  /**
    * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */
   _scrollActive?: boolean;
