@@ -14,11 +14,7 @@ module.exports = function (api) {
     '@babel/preset-react',
   ];
 
-  const plugins = [
-    '@babel/plugin-transform-object-assign',
-    'inline-react-svg',
-    'add-react-displayname',
-  ];
+  const plugins = ['@babel/plugin-transform-object-assign', 'inline-react-svg'];
 
   return {
     presets,
