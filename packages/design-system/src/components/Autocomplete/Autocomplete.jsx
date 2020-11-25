@@ -19,6 +19,7 @@ import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
 import React from 'react';
+import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 
@@ -28,10 +29,10 @@ import classNames from 'classnames';
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child) {
-  // Get type.displayName with get type.name as a fallback
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
-  return componentName === 'TextField';
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TextField || componentName === 'TextField');
 }
 
 export class Autocomplete extends React.PureComponent {

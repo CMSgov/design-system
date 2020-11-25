@@ -2,6 +2,7 @@ import { get, uniqueId } from 'lodash';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
+import TableCaption from './TableCaption';
 import classNames from 'classnames';
 
 // TODO: Revert out of this 'PR update to use lifecycle methods'
@@ -25,10 +26,10 @@ function debounce(fn, ms) {
  * @return {Boolean} Is this a TableCaption component?
  */
 function isTableCaption(child) {
-  // Get type.displayName with get type.name as a fallback
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
-  return componentName === 'TableCaption';
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TableCaption || componentName === 'TableCaption');
 }
 
 export class Table extends React.PureComponent {
@@ -45,7 +46,7 @@ export class Table extends React.PureComponent {
       if (
         props.scrollable &&
         Array.isArray(props.children) &&
-        !props.children.some((child) => child.type.displayName === 'TableCaption')
+        !props.children.some((child) => isTableCaption(child))
       ) {
         console.warn(
           'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
