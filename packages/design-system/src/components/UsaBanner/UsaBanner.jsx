@@ -18,53 +18,58 @@ export class UsaBanner extends React.PureComponent {
 
   render() {
     const tld = `.gov`;
-
     const lockImg = (
       <span>
         <LockIcon className="ds-c-usa-banner__lock-image" />
       </span>
     );
 
-    const bannerText = this.props.localeSpanish
-      ? `Un sitio oficial del Gobierno de Estados Unidos`
-      : `An official website of the United States government`;
+    let bannerText = `An official website of the United States government`;
 
-    const bannerActionText = this.props.localeSpanish
-      ? `Así es como usted puede verificarlo`
-      : `Here’s how you know`;
+    let bannerActionText = `Here’s how you know`;
 
-    const domainHeadingText = this.props.localeSpanish
-      ? `Los sitios web oficiales usan ${tld}`
-      : `Official websites use ${tld}`;
+    let domainHeadingText = `Official websites use ${tld}`;
 
-    const domainText = this.props.localeSpanish ? (
-      <span>
-        Un sitio web <strong>{tld}</strong> pertenece a una organización oficial del Gobierno de
-        Estados Unidos.
-      </span>
-    ) : (
+    let domainText = (
       <span>
         A <strong>{tld}</strong> website belongs to an official government organization in the
         United States.
       </span>
     );
 
-    const httpsHeadingText = this.props.localeSpanish
-      ? `Los sitios web seguros ${tld} usan HTTPS`
-      : `Secure ${tld} websites use HTTPS`;
+    let httpsHeadingText = `Secure ${tld} websites use HTTPS`;
 
-    const httpsText = this.props.localeSpanish ? (
-      <span>
-        Un <strong>candado</strong> {lockImg} o <strong>https://</strong> significa que usted se
-        conectó de forma segura a un sitio web {tld}. Comparta información sensible sólo en sitios
-        web oficiales y seguros.
-      </span>
-    ) : (
+    let httpsText = (
       <span>
         A <strong>lock</strong> {lockImg} or <strong>https://</strong> means you’ve safely connected
         to the {tld} website. Share sensitive information only on official, secure websites.
       </span>
     );
+
+    if (this.props.localeSpanish) {
+      bannerText = `Un sitio oficial del Gobierno de Estados Unidos`;
+
+      bannerActionText = `Así es como usted puede verificarlo`;
+
+      domainHeadingText = `Los sitios web oficiales usan ${tld}`;
+
+      domainText = (
+        <span>
+          Un sitio web <strong>{tld}</strong> pertenece a una organización oficial del Gobierno de
+          Estados Unidos.
+        </span>
+      );
+
+      httpsHeadingText = `Los sitios web seguros ${tld} usan HTTPS`;
+
+      httpsText = (
+        <span>
+          Un <strong>candado</strong> {lockImg} o <strong>https://</strong> significa que usted se
+          conectó de forma segura a un sitio web {tld}. Comparta información sensible sólo en sitios
+          web oficiales y seguros.
+        </span>
+      );
+    }
 
     return (
       <div className="ds-c-usa-banner">
