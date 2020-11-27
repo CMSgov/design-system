@@ -10,6 +10,13 @@ function render() {
 }
 it('renders correctly', () => {
   const tree = renderer.create(<UsaBanner />).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it('applies Spanish translation', () => {
+  const tree = renderer.create(<UsaBanner localeSpanish />).toJSON();
+
   expect(tree).toMatchSnapshot();
 });
 
