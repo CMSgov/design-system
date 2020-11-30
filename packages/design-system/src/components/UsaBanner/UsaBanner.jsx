@@ -46,7 +46,7 @@ export class UsaBanner extends React.PureComponent {
       </span>
     );
 
-    if (this.props.localeSpanish) {
+    if (this.props.locale === 'es-US') {
       bannerText = `Un sitio oficial del Gobierno de Estados Unidos`;
 
       bannerActionText = `Así es como usted puede verificarlo`;
@@ -118,9 +118,9 @@ export class UsaBanner extends React.PureComponent {
 
 UsaBanner.propTypes = {
   /**
-   * Render USA Banner in Spanish.
+   * Passing `es-US` as a value will render USA Banner in Spanish.
    */
-  localeSpanish: PropTypes.bool,
+  locale: PropTypes.string,
 };
 
 export default UsaBanner;
