@@ -5,7 +5,7 @@ markup: |
   <div class="ds-u-fill--primary-alt ds-u-padding--3">
     <p class="ds-u-margin--0 ds-u-color--white ds-u-text-align--center">Hello world</p>
   </div>
-weight: -1
+weight: -100
 ---
 
 A utility class modifies a single trait, typically a single CSS property. To apply a trait, or a combination of traits to an element, add the corresponding utility class directly to the HTML element.
