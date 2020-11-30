@@ -81,6 +81,7 @@ export class UsaBanner extends React.PureComponent {
           <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
           <p className="ds-c-usa-banner__header-text">
             <span>{bannerText}</span>
+
             <button
               onClick={this.handleToggleBanner}
               className="ds-c-usa-banner__button"
