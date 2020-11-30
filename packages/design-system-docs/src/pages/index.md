@@ -3,7 +3,7 @@ title: Introduction
 weight: -100
 ---
 
-The design system is a set of open-source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities/overview), and a [grid framework]({{root}}/styles/grid/) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
+The design system is a set of open-source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, [utility classes]({{root}}/utilities/overview), and a [grid framework]({{root}}/utilities/grid/) to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
 It is currently being applied to [HealthCare.gov](https://www.healthcare.gov/). It is open-source and freely available to use by anyone.
 
@@ -26,5 +26,5 @@ In order to meet these goals we are:
 - Using the [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/) components and visual design as a foundation.
 - Reducing the overall footprint of websites by writing [scalable CSS]({{root}}/guidelines/code-conventions).
 - Supporting rapid development with [utility classes]({{root}}/utilities/overview) and easy-to-use components with best practices baked in.
-- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/styles/typography), [layout]({{root}}/styles/grid/), and [color]({{root}}/styles/color).
+- Reducing the number of decisions needed when iterating on UI by providing a solid foundation of [typography]({{root}}/styles/typography), [layout]({{root}}/utilities/grid/), and [color]({{root}}/styles/color).
 - Distributing resources as [NPM packages]({{root}}/startup/installation/) which can be easily installed, updated, and imported.

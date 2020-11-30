@@ -60,6 +60,10 @@ function processFlags(section) {
     section.description = section.description
       .replace(FLAG_REGEX, (_, flag, value) => {
         switch (flag) {
+          case 'hide-section':
+            // Skip rendering KSS block
+            section.hideSection = true;
+            break;
           case 'hide-example':
             // Skip rendering the example and code snippet
             section.hideExample = true;
@@ -87,6 +91,9 @@ function processFlags(section) {
             // US Web Design Standard URL
             // KSS converts the URL to an <a> element, so we grab just the URL
             section.uswds = hrefUrl(value);
+            break;
+          case 'weight':
+            section.weight = value;
             break;
           default:
             break;
