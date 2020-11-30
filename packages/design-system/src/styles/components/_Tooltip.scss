@@ -1,14 +1,14 @@
 @import '../settings/index.scss';
 
-$tooltip-icon-size: 16px;
-$tooltip-arrow-size: 8px;
-$tooltip-plus-border-size: 24px;
+$tooltip-icon-size: 16px !default;
+$tooltip-arrow-size: 8px !default;
+$tooltip-plus-border-size: 24px !default;
 
-$tooltip-border-radius: 4px;
-$tooltip-color: $color-base-inverse;
-$tooltip-background-color: $color-background-inverse;
-$tooltip-color-inverse: $color-base;
-$tooltip-background-color-inverse: $color-background;
+$tooltip-border-radius: 4px !default;
+$tooltip-color: $color-base-inverse !default;
+$tooltip-background-color: $color-background-inverse !default;
+$tooltip-color-inverse: $color-base !default;
+$tooltip-background-color-inverse: $color-background !default;
 
 %trigger-reset-styles {
   // override user agent button styles
