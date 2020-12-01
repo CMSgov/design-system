@@ -8,9 +8,6 @@ import uniqueId from 'lodash.uniqueid';
 export { unmaskValue } from './Mask';
 
 export class TextField extends React.PureComponent {
-  // Set component name to make child.type.displayName available to other components (eg. Autocomplete)
-  static displayName = 'TextField';
-
   constructor(props) {
     super(props);
     this.id = props.id || uniqueId('textfield_');
@@ -132,6 +129,9 @@ export class TextField extends React.PureComponent {
     );
   }
 }
+
+// Set component name to make child.type.displayName available to other components (eg. Autocomplete)
+TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
