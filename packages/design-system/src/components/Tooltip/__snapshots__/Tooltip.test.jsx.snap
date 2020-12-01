@@ -5,10 +5,9 @@ exports[`Tooltip renders custom trigger component 1`] = `
   <a
     aria-describedby="trigger_4"
     aria-label=""
-    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     href="design.cms.gov"
     onBlur={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -61,9 +60,8 @@ exports[`Tooltip renders default trigger icon 1`] = `
   <button
     aria-describedby="trigger_1"
     aria-label=""
-    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -117,13 +115,8 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   <button
     aria-describedby="trigger_5"
     aria-label=""
-    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
-    onBlur={[Function]}
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onClick={[Function]}
-    onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onTouchStart={[Function]}
     type="button"
   >
     <TooltipIcon />
@@ -184,9 +177,8 @@ exports[`Tooltip renders interactive tooltip 1`] = `
   <button
     aria-describedby="trigger_3"
     aria-label=""
-    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
@@ -251,9 +243,8 @@ exports[`Tooltip renders inverse tooltip 1`] = `
   <button
     aria-describedby="trigger_2"
     aria-label=""
-    className="ds-c-tooltip__trigger ds-base ds-c-tooltip__trigger-icon"
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
-    onClick={[Function]}
     onFocus={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
