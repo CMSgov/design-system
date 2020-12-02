@@ -27,7 +27,8 @@ class PageHeader extends React.PureComponent {
     if (this.props.status) {
       const classes = classNames('ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize', {
         'ds-c-badge--success': this.props.status === 'Ready',
-        'ds-c-badge--alert': this.props.status === 'Draft',
+        'ds-c-badge--warn': this.props.status === 'Draft',
+        'ds-c-badge--error': this.props.status === 'Deprecated',
       });
 
       return <span className={classes}>{this.props.status}</span>;
