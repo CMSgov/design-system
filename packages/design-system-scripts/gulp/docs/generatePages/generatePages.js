@@ -207,14 +207,19 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     )
   );
 
-  // addCmsdsLink (markdownSections.concat(kssSections)).then((pages) => uniquePages(pages))...)
+  // 1. Are we only showing CMSDS link for patterns and components?
 
-  // console.log(markdownSections.concat(kssSections))
+  /* 2. If you create a duplicate page like Button at the child design system level and edit the first section of the documentation page. 
+The inheritance of the USWDS and CMSDS link breaks becasuse the child version of the page takes precendence. 
+*/
 
   // Get pages that come from core CMS Design System
   const corePages = markdownSections.concat(kssSections).map((page) => {
-    if (page.source.path.includes('node_modules/')) {
-      page.cmsds = true;
+    if (
+      page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
+      page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+    ) {
+      page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
     }
     return page;
   });
