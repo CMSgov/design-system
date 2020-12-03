@@ -91,7 +91,7 @@ export interface DropdownProps {
   value?: DropdownValue;
 }
 
-type OmitProps = 'size' | 'value';
+type OmitProps = 'size' | 'value' | 'label';
 
 export default class Dropdown extends React.Component<
   Omit<React.HTMLProps<HTMLSelectElement>, OmitProps> & DropdownProps,

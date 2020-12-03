@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-export type SkipNavChildren = string | React.ReactNode;
-
 export interface SkipNavProps {
   /**
    * Skip nav label
    */
-  children: SkipNavChildren;
+  children: React.ReactNode;
   /**
    * The anchor or target for the link (where the link will jump the user to)
    */
