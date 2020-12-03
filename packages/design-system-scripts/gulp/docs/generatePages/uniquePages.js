@@ -11,8 +11,9 @@ function uniquePages(pages) {
   pages.forEach((page) => {
     if (routes[page.reference]) {
       if (routes[page.reference].source.path.match(/node_modules/)) {
-        // We override pages that come from `node_modules`
+        // We override existing pages that come from `node_modules` with pages from child design system
         logTask('🖊  ', `Overriding ${page.reference || 'index'} page with ${page.source.path}`);
+        page.cmsds = routes[page.reference].cmsds;
         routes[page.reference] = page;
       } else {
         logTask(

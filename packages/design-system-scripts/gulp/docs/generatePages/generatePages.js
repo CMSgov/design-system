@@ -13,7 +13,7 @@ require('@babel/register')({
   ],
 });
 
-const addReactData = require('./addReactData');
+// const addReactData = require('./addReactData');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generateExamplePage = require('./generateExamplePage');
@@ -26,6 +26,7 @@ const uniquePages = require('./uniquePages');
 const { get } = require('lodash');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
+// const { elementTextContains } = require('selenium-webdriver/lib/until');
 
 /**
  * Some KssSection's are nested under section's that don't exist, so we need
@@ -181,6 +182,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   logTask('📝 ', 'Generating documentation pages');
 
   const docsPath = path.join(docsDir, 'dist');
+  // This gets doc site direcotires
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
@@ -205,14 +207,23 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     )
   );
 
+  // addCmsdsLink (markdownSections.concat(kssSections)).then((pages) => uniquePages(pages))...)
+
+  // console.log(markdownSections.concat(kssSections))
+
+  // Get pages that come from core CMS Design System
+  const corePages = markdownSections.concat(kssSections).map((page) => {
+    if (page.source.path.includes('node_modules/')) {
+      page.cmsds = true;
+    }
+    return page;
+  });
+
   // Merge both sets of KssSection objects into a single array of page parts.
   // Remove pages with the same URL (so child design systems can override existing pages)
   // Hide sections and pages with the `hide-section` flag
-  const pages = uniquePages(markdownSections.concat(kssSections)).filter(
-    (page) => !page.hideSection
-  );
-  // Add react prop and example data to page sections
-  await addReactData(pages);
+  const pages = uniquePages(corePages).filter((page) => !page.hideSection);
+
   // Add missing top-level pages and connect the page parts to their parent pages
   // TODO: remove need to nest pages, or generate from unnested pages
   const nestedPages = await addTopLevelPages(pages).then(nestSections);
