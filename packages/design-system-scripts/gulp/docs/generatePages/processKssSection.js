@@ -93,7 +93,7 @@ function processFlags(section) {
             section.uswds = hrefUrl(value);
             break;
           case 'cmsds':
-            // US Web Design Standard URL
+            // CMS Design System URL
             // KSS converts the URL to an <a> element, so we grab just the URL
             section.cmsds = hrefUrl(value);
             break;
