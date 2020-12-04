@@ -7,7 +7,8 @@ class PageHeader extends React.PureComponent {
     if (this.props.uswds) {
       return (
         <span>
-          <span> and </span>
+          {' '}
+          <span>View related guidance in the </span>
           <a href={this.props.uswds}>
             <abbr>U.S. Web Design System</abbr>
           </a>
@@ -20,7 +21,7 @@ class PageHeader extends React.PureComponent {
     if (this.props.cmsds) {
       return (
         <span>
-          <span>View related guidance in the </span>
+          <span> and </span>
           <a href={this.props.cmsds}>
             <abbr>CMS Design System</abbr>
           </a>
@@ -65,8 +66,8 @@ class PageHeader extends React.PureComponent {
         </div>
         <div className="ds-u-font-size--small">
           {this.guidanceLink()}
-          {this.cmsdsLink()}
           {this.uswdsLink()}
+          {this.cmsdsLink()}
         </div>
       </header>
     );
