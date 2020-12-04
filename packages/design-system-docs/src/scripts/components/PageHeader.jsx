@@ -6,9 +6,12 @@ class PageHeader extends React.PureComponent {
   uswdsLink() {
     if (this.props.uswds) {
       return (
-        <a href={this.props.uswds}>
-          View related <abbr title="U.S. Web Design System">USWDS</abbr> component
-        </a>
+        <span>
+          <span> and </span>
+          <a href={this.props.uswds}>
+            <abbr>U.S. Web Design System</abbr>
+          </a>
+        </span>
       );
     }
   }
@@ -16,9 +19,12 @@ class PageHeader extends React.PureComponent {
   cmsdsLink() {
     if (this.props.cmsds) {
       return (
-        <a href={this.props.cmsds} className="ds-u-margin-right--2">
-          Inherits from <abbr title="CMS Design System">CMSDS</abbr>
-        </a>
+        <span>
+          <span>Related component in the </span>
+          <a href={this.props.cmsds}>
+            <abbr>CMS Design System</abbr>
+          </a>
+        </span>
       );
     }
   }
