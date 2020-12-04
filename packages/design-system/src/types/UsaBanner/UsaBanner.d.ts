@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface UsaBannerProps {
   /**
-   * Passing `es-US` as a value will render USA Banner in Spanish.
+   * Passing `es` as a value will render USA Banner in Spanish.
    */
   locale?: string,
 }
