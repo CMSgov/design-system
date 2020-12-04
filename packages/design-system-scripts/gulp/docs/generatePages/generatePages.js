@@ -13,7 +13,7 @@ require('@babel/register')({
   ],
 });
 
-// const addReactData = require('./addReactData');
+const addReactData = require('./addReactData');
 const convertMarkdownPages = require('./convertMarkdownPages');
 const createRoutes = require('./createRoutes');
 const generateExamplePage = require('./generateExamplePage');
@@ -207,14 +207,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     )
   );
 
-  // 1. Are we only showing CMSDS link for patterns and components?
-
-  /* 2. If you create a duplicate page like Button at the child design system level and edit the first section of the documentation page. 
-The inheritance of the USWDS and CMSDS link breaks becasuse the child version of the page takes precendence. 
-*/
-
-  // Get pages that come from core CMS Design System
-  const corePages = markdownSections.concat(kssSections).map((page) => {
+  const addCmsdsLink = function (page) {
     if (
       page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
       page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
@@ -222,19 +215,30 @@ The inheritance of the USWDS and CMSDS link breaks becasuse the child version of
       page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
     }
     return page;
-  });
+  };
+  // Get pages that come from core CMS Design System
+  const pageSections = markdownSections.concat(kssSections).map((section) => addCmsdsLink(section));
 
   // Merge both sets of KssSection objects into a single array of page parts.
   // Remove pages with the same URL (so child design systems can override existing pages)
   // Hide sections and pages with the `hide-section` flag
-  const pages = uniquePages(corePages).filter((page) => !page.hideSection);
+  const uniquePageSections = uniquePages(pageSections).filter((page) => !page.hideSection);
+
+  // Add react prop and example data to page sections
+  await addReactData(uniquePageSections);
 
   // Add missing top-level pages and connect the page parts to their parent pages
   // TODO: remove need to nest pages, or generate from unnested pages
-  const nestedPages = await addTopLevelPages(pages).then(nestSections);
+  const nestedPageSections = await addTopLevelPages(uniquePageSections).then(nestSections);
 
   // Create HTML files for example pages
-  const examplePages = await generateExamplePages(pages, docsPath, sourceDir, options, changedPath);
+  const examplePages = await generateExamplePages(
+    uniquePageSections,
+    docsPath,
+    sourceDir,
+    options,
+    changedPath
+  );
   if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
@@ -242,7 +246,7 @@ The inheritance of the USWDS and CMSDS link breaks becasuse the child version of
   }
 
   // Create HTML files for doc pages
-  const docPages = await generateDocPages(nestedPages, docsPath, options, changedPath);
+  const docPages = await generateDocPages(nestedPageSections, docsPath, options, changedPath);
   if (changedPath && docPages > 0) {
     logTask('📝 ', `Doc page updated from ${changedPath}`);
   } else if (!changedPath) {
