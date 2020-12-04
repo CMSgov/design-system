@@ -71,7 +71,7 @@ export interface DialogProps {
   /**
    * The Dialog's heading, to be rendered in the header alongside the close button.
    */
-  heading?: string | React.ReactNode;
+  heading?: React.ReactNode;
   /**
    * @hide-prop
    */
@@ -86,7 +86,7 @@ export interface DialogProps {
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
    */
-  title?: string | React.ReactNode;
+  title?: React.ReactNode;
   /**
    * Enable exiting the dialog when a user clicks the underlay.
    */

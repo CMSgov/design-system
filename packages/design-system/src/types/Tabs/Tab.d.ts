@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-export type TabChildren = string | React.ReactNode;
-
 export interface TabProps {
   /**
    * Tab label text or HTML.
    */
-  children: TabChildren;
+  children: React.ReactNode;
   /**
    * Additional classes to be added to the root tab element.
    */
