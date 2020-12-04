@@ -15,7 +15,7 @@ it('renders correctly', () => {
 });
 
 it('applies Spanish translation', () => {
-  const tree = renderer.create(<UsaBanner locale="es-US" />).toJSON();
+  const tree = renderer.create(<UsaBanner locale="es" />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
