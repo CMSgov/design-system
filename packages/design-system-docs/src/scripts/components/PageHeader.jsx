@@ -20,7 +20,7 @@ class PageHeader extends React.PureComponent {
     if (this.props.cmsds) {
       return (
         <span>
-          <span>Related component in the </span>
+          <span>View related guidance in the </span>
           <a href={this.props.cmsds}>
             <abbr>CMS Design System</abbr>
           </a>
