@@ -27,6 +27,17 @@ class PageHeader extends React.PureComponent {
     }
   }
 
+  uswdsLink() {
+    if (this.props.cmsds == null && this.props.uswds) {
+      return (
+        <span>
+          <span>View related guidance in the </span>
+          <a href={this.props.uswds}>U.S. Web Design System</a>
+        </span>
+      );
+    }
+  }
+
   statusBadge() {
     if (this.props.status) {
       const classes = classNames('ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize', {
@@ -64,6 +75,7 @@ class PageHeader extends React.PureComponent {
         <div className="ds-u-font-size--small">
           {this.guidanceLink()}
           {this.cmsdsLink()}
+          {this.uswdsLink()}
           {this.cmsdsAndUswdsLink()}
         </div>
       </header>
