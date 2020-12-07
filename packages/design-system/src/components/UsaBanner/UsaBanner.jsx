@@ -19,7 +19,8 @@ export class UsaBanner extends React.PureComponent {
   }
 
   render() {
-    const Translation = this.props.locale === 'es' ? SpanishTranslations : EnglishTranslations;
+    const t =
+      this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
 
     return (
       <div className="ds-c-usa-banner">
@@ -30,14 +31,14 @@ export class UsaBanner extends React.PureComponent {
         >
           <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
           <p className="ds-c-usa-banner__header-text">
-            <span>{Translation.usaBanner.bannerText}</span>
+            <span>{t.bannerText}</span>
             <button
               onClick={this.handleToggleBanner}
               className="ds-c-usa-banner__button"
               aria-expanded={this.state.isBannerOpen}
               aria-controls="gov-banner"
             >
-              {Translation.usaBanner.bannerActionText}
+              {t.bannerActionText}
             </button>
           </p>
         </header>
@@ -46,27 +47,26 @@ export class UsaBanner extends React.PureComponent {
             <div className="ds-c-usa-banner__guidance">
               <DotGovIcon className="ds-c-usa-banner__icon" />
               <p className="ds-c-usa-banner__media-body">
-                <strong>{Translation.usaBanner.domainHeaderText}</strong>
+                <strong>{t.domainHeaderText}</strong>
                 <br />
-                {Translation.usaBanner.domainAText}
-                <strong> {Translation.usaBanner.govText} </strong>
-                {Translation.usaBanner.domainText}
+                {t.domainAText}
+                <strong> {t.govText} </strong>
+                {t.domainText}
               </p>
             </div>
             <div className="ds-c-usa-banner__guidance">
               <HttpsIcon className="ds-c-usa-banner__icon" />
               <p className="ds-c-usa-banner__media-body">
-                <strong>{Translation.usaBanner.httpsHeaderText}</strong>
+                <strong>{t.httpsHeaderText}</strong>
                 <br />
-                {Translation.usaBanner.httpsAText}
+                {t.httpsAText}
                 <strong>
                   {' '}
-                  {Translation.usaBanner.httpsLockText}{' '}
-                  <LockIcon className="ds-c-usa-banner__lock-image" />{' '}
+                  {t.httpsLockText} <LockIcon className="ds-c-usa-banner__lock-image" />{' '}
                 </strong>
-                {Translation.usaBanner.httpsOrText}
-                <strong> {Translation.usaBanner.httpsText} </strong>
-                {Translation.usaBanner.httpsDetailText}
+                {t.httpsOrText}
+                <strong> {t.httpsText} </strong>
+                {t.httpsDetailText}
               </p>
             </div>
           </div>
@@ -76,11 +76,15 @@ export class UsaBanner extends React.PureComponent {
   }
 }
 
+UsaBanner.defaultProps = {
+  locale: 'en',
+};
+
 UsaBanner.propTypes = {
   /**
-   * Passing `es` as a value will render USA Banner in Spanish.
+   * The language the USA Banner will render as.
    */
-  locale: PropTypes.string,
+  locale: PropTypes.oneOf(['en', 'es']),
 };
 
 export default UsaBanner;
