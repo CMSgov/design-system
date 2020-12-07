@@ -3,27 +3,25 @@ import React from 'react';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
-  uswdsLink() {
-    if (this.props.uswds) {
+  cmsdsAndUswdsLink() {
+    if (this.props.uswds && this.props.cmsds) {
       return (
         <span>
           <span>View related guidance in the </span>
-          <a href={this.props.uswds}>
-            <abbr>U.S. Web Design System</abbr>
-          </a>
+          <a href={this.props.cmsds}>CMS Design System</a>
+          <span> and </span>
+          <a href={this.props.uswds}>U.S. Web Design System</a>
         </span>
       );
     }
   }
 
   cmsdsLink() {
-    if (this.props.cmsds) {
+    if (this.props.cmsds && this.props.uswds == null) {
       return (
         <span>
-          <span>and</span>
-          <a href={this.props.cmsds}>
-            <abbr>CMS Design System</abbr>
-          </a>
+          <span>View related guidance in the </span>
+          <a href={this.props.cmsds}>CMS Design System</a>
         </span>
       );
     }
@@ -65,8 +63,8 @@ class PageHeader extends React.PureComponent {
         </div>
         <div className="ds-u-font-size--small">
           {this.guidanceLink()}
-          {this.uswdsLink()}
           {this.cmsdsLink()}
+          {this.cmsdsAndUswdsLink()}
         </div>
       </header>
     );
