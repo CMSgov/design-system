@@ -7,7 +7,7 @@ ReactDOM.render(
     <h6 className="preview__label">.gov Domains</h6>
     <UsaBanner />
     <h6 className="preview__label">.gov Domains (Spanish)</h6>
-    <UsaBanner locale="es" />
+    <UsaBanner initialLanguage="es" />
   </div>,
   document.getElementById('js-example')
 );
