@@ -33,19 +33,24 @@ function generateDocPage(routes, page, docsPath, options) {
 
   const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
 
-  const head = `${seo(page, options)}
-  <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="/${rootPath}index.css" />
-  ${analytics()}`;
+  // TODO: Add the ability for child design systems to customize this easier, i.e. use their own tealium utag
+  const head = `
+    ${seo(page, options)}
+    <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="/${rootPath}index.css" />
+    ${options.core ? analytics() : ''}
+  `;
 
   const body = `
-<div id="js-root">${componentRenderer()}</div>
-<script type="text/javascript">
-  window.page = ${JSON.stringify(page)};
-  window.routes = ${JSON.stringify(routes)};
-</script>
-<script src="/${rootPath}index.js"></script>`;
+    <div id="js-root">${componentRenderer()}</div>
+    <script type="text/javascript">
+      window.page = ${JSON.stringify(page)};
+      window.routes = ${JSON.stringify(routes)};
+    </script>
+    <script src="/${rootPath}index.js"></script>
+  `;
+
   return savePage(
     {
       uri: page.referenceURI,
@@ -63,10 +68,12 @@ function generateDocPage(routes, page, docsPath, options) {
  */
 function analytics() {
   const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return `<script>
-window.tealiumEnvironment = "${env}";
-</script>
-<script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>`;
+  return `
+    <script>
+      window.tealiumEnvironment = "${env}";
+    </script>
+    <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
+  `;
 }
 
 /**
