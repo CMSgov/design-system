@@ -26,7 +26,6 @@ const uniquePages = require('./uniquePages');
 const { get } = require('lodash');
 const { getDocsDirs } = require('../../common/getDirsToProcess');
 const { logTask } = require('../../common/logUtil');
-// const { elementTextContains } = require('selenium-webdriver/lib/until');
 
 /**
  * Some KssSection's are nested under section's that don't exist, so we need
@@ -181,10 +180,6 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
 module.exports = async function generatePages(sourceDir, docsDir, options, changedPath) {
   logTask('📝 ', 'Generating documentation pages');
 
-   // Create HTML files for example and doc pages
-  const docsPath = path.join(docsDir, 'dist');
-  
-  // This gets doc site direcotires
   // Location of doc site files, will be array of two directories for child design systems
   const docsDirs = await getDocsDirs(docsDir);
 
@@ -205,21 +200,9 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
       processKssSection(kssSection, options)
     )
   );
-
-
-  const addCmsdsLink = function (page) {
-    if (
-      page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
-      page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
-    ) {
-      page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
-    }
-    return page;
-  };
-  // Get pages that come from core CMS Design System
+  // Get page sections that come from core and child design systems
   const pageSections = markdownSections.concat(kssSections).map((section) => addCmsdsLink(section));
 
-  // Merge both sets of KssSection objects into a single array of page parts.
   // Remove pages with the same URL (so child design systems can override existing pages)
   // Hide sections and pages with the `hide-section` flag
   const uniquePageSections = uniquePages(pageSections).filter((page) => !page.hideSection);
@@ -230,6 +213,8 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   // Add missing top-level pages and connect the page parts to their parent pages
   // TODO: remove need to nest pages, or generate from unnested pages
   const nestedPageSections = await addTopLevelPages(uniquePageSections).then(nestSections);
+
+  const docsPath = path.join(docsDir, 'dist');
 
   // Create HTML files for example pages
   const examplePages = await generateExamplePages(
@@ -254,3 +239,12 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     logTask('📝  ' + docPages, `Doc pages added to ${docsDir}`);
   }
 };
+function addCmsdsLink(page) {
+  if (
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+  ) {
+    page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
+  }
+  return page;
+}
