@@ -181,8 +181,11 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
 module.exports = async function generatePages(sourceDir, docsDir, options, changedPath) {
   logTask('📝 ', 'Generating documentation pages');
 
+   // Create HTML files for example and doc pages
   const docsPath = path.join(docsDir, 'dist');
+  
   // This gets doc site direcotires
+  // Location of doc site files, will be array of two directories for child design systems
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
@@ -192,11 +195,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     })
   ).then((dirPages) => dirPages.flat());
 
-  /**
-   * Parse KSS documentation blocks in CSS files
-   * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
-   * @return {Array} KssSections
-   */
+  // Parse CSS files, use KSS to extract page sections
   const packages = docsDirs.map((pkg) => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
@@ -206,6 +205,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
       processKssSection(kssSection, options)
     )
   );
+
 
   const addCmsdsLink = function (page) {
     if (
@@ -239,6 +239,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     options,
     changedPath
   );
+
   if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
