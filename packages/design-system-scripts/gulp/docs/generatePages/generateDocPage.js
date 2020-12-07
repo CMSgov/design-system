@@ -33,7 +33,7 @@ function generateDocPage(routes, page, docsPath, options) {
 
   const rootPath = options.rootPath && options.rootPath !== '' ? `${options.rootPath}/` : '';
 
-  const head = `${seo(page, rootPath)}
+  const head = `${seo(page, options)}
   <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="/${rootPath}index.css" />
@@ -72,20 +72,19 @@ window.tealiumEnvironment = "${env}";
 /**
  * Output SEO tags for the documentation's permalink page
  * @param {Object} page
- * @param {String} rootPath - Root docs site path
  * @return {String}
  */
-function seo(page) {
+function seo(page, options) {
   const html = [];
 
   if (page.referenceURI === '') {
     // Homepage
     html.push(
-      '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the U.S. Web Design System and extends it to support additional CSS and React components, utility classes, and a grid framework" />'
+      '<meta name="description" content="A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites." />'
     );
-    html.push('<title>CMS Design System | An open source design and front-end toolkit</title>');
+    html.push(`<title>${options.name} | An open source design and front-end toolkit</title>`);
   } else {
-    html.push(`<title>${page.header} - CMS Design System</title>`);
+    html.push(`<title>${page.header} - ${options.name}</title>`);
   }
 
   return html.join('');
