@@ -5,7 +5,7 @@ export const TableRow = ({ children, _isTableHeadChild, _stackable, ...tableRowP
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
-      if (child) {
+      if (child && child.props) {
         return React.cloneElement(child, {
           _isTableHeadChild: _isTableHeadChild,
           _stackable: _stackable,
