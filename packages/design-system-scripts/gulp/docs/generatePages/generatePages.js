@@ -116,6 +116,18 @@ function changedFilter(page, changedPath) {
   return true;
 }
 
+// Add a `cmsds` property to component and pattern page sections originating from the `@cmsgov/design-system-docs` NPM package.
+// This automatically populates a link to the CMSDS for child design system components and patterns.
+function addCmsdsLink(page) {
+  if (
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+  ) {
+    page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
+  }
+  return page;
+}
+
 /**
  * Loop through the nested array of pages and create an HTML file for each one.
  * These HTML pages are what get published as the public documentation website.
@@ -200,7 +212,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
       processKssSection(kssSection, options)
     )
   );
-  // Get page sections that come from core and child design systems
+  // Combine KSS and Markdown page sections and add cmsds links to for child design systems
   const pageSections = markdownSections.concat(kssSections).map((section) => addCmsdsLink(section));
 
   // Remove pages with the same URL (so child design systems can override existing pages)
@@ -239,12 +251,3 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     logTask('📝  ' + docPages, `Doc pages added to ${docsDir}`);
   }
 };
-function addCmsdsLink(page) {
-  if (
-    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
-    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
-  ) {
-    page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
-  }
-  return page;
-}
