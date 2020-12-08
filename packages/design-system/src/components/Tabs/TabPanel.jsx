@@ -19,6 +19,9 @@ export function TabPanel(props) {
   );
 }
 
+// Set component name to make child.type.displayName available to other components (eg. Tab)
+TabPanel.displayName = 'TabPanel';
+
 TabPanel.defaultProps = {
   selected: false,
 };
