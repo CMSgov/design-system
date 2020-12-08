@@ -130,6 +130,9 @@ export class TextField extends React.PureComponent {
   }
 }
 
+// Set component name to make child.type.displayName available to other components (eg. Autocomplete)
+TextField.displayName = 'TextField';
+
 TextField.defaultProps = {
   type: 'text',
 };

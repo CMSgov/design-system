@@ -19,6 +19,9 @@ export const TableCaption = ({
   );
 };
 
+// Set component name to make child.type.displayName available to other components (eg. Table)
+TableCaption.displayName = 'TableCaption';
+
 TableCaption.propTypes = {
   /**
    * The table caption contents.
