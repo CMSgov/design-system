@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-export type BadgeChildren = string | React.ReactNode;
-
 export type BadgeSize = 'big';
 
 export type BadgeVariation = 'info' | 'success' | 'warn' | 'alert';
@@ -15,7 +13,7 @@ export interface BadgeProps {
   /**
    * Label text or HTML.
    */
-  children: BadgeChildren;
+  children: React.ReactNode;
   /**
    * Sets the font size of the Badge
    */

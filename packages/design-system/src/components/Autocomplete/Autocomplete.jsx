@@ -14,6 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
+import { get, uniqueId } from 'lodash';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
@@ -21,7 +22,6 @@ import React from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 /**
  * Determine if a React component is a TextField
@@ -29,7 +29,10 @@ import uniqueId from 'lodash.uniqueid';
  * @return {Boolean} Is this a TextField component?
  */
 function isTextField(child) {
-  return child != null && child.type === TextField;
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TextField || componentName === 'TextField');
 }
 
 export class Autocomplete extends React.PureComponent {

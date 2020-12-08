@@ -5,13 +5,7 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
-      <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-      <Tooltip triggerContent="button" triggerClassName="ds-c-button">
-        <p className="ds-u-margin--0">{'Tooltip trigger is the default <button> element'}</p>
-      </Tooltip>
-    </div>
-    <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
-      <p className="ds-u-margin--0">Tooltip with icon </p>
+      <p className="ds-u-margin--0">Tooltip using an icon trigger</p>
       <Tooltip
         ariaLabel="Label describing the subject of the tooltip"
         triggerContent={<TooltipIcon />}
@@ -24,14 +18,9 @@ ReactDOM.render(
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
-      <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-      <Tooltip
-        triggerComponent="a"
-        triggerHref="https://design.cms.gov"
-        triggerContent="link"
-        triggerClassName="ds-c-tooltip__trigger-link"
-      >
-        <p className="ds-u-margin--0">{'Tooltip trigger is the <a> element'}</p>
+      <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip using a</p>
+      <Tooltip triggerContent="text trigger" triggerClassName="ds-c-tooltip__trigger-link">
+        <p className="ds-u-margin--0">Tooltip trigger is styled with dashed underline</p>
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
