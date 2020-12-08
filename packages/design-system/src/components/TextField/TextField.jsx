@@ -1,17 +1,15 @@
-import FormLabel from '../FormLabel/FormLabel';
-import Mask from './Mask';
+import { FieldContainer, fieldContainerPropList } from '../FieldContainer/FieldContainer';
+import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
+import TextInput from './TextInput';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 export { unmaskValue } from './Mask';
 
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.id = props.id || uniqueId('textfield_');
-    this.labelId = props.labelId || uniqueId('textfield_label_');
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.type === 'number') {
@@ -22,110 +20,33 @@ export class TextField extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    if (this.props.focusTrigger) {
-      this.focusRef && this.focusRef.focus();
-    }
-  }
-
-  /**
-   * @param {React.Component} field
-   * @returns {React.Component} The input field, optionally including mask
-   *  markup if a mask is present
-   */
-  renderFieldAndMask(field) {
-    return this.props.mask ? <Mask mask={this.props.mask}>{field}</Mask> : field;
-  }
-
   render() {
-    const {
-      ariaLabel,
-      className,
-      errorMessage,
-      fieldClassName,
-      focusTrigger,
-      hint,
-      id,
-      inversed,
-      inputRef,
-      label,
-      labelClassName,
-      labelId,
-      mask,
-      multiline,
-      numeric,
-      requirementLabel,
-      rows,
-      size,
-      type,
-      pattern,
-      ...fieldProps
-    } = this.props;
-    const FieldComponent = multiline ? 'textarea' : 'input';
-    const _rows = multiline && rows ? rows : undefined;
+    const containerProps = pick(this.props, fieldContainerPropList);
+    const inputProps = omit(this.props, fieldContainerPropList);
 
-    const classes = classNames(
+    // Reassign `name` to `fieldName` for <FieldContainer>
+    containerProps.fieldName = this.props.name;
+    // Add clearfix class
+    containerProps.className = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-      className
+      this.props.className
     );
 
-    const fieldClasses = classNames(
-      'ds-c-field',
-      mask && `ds-c-field--${mask}`,
+    // Reassign `fieldName` to `name` for <TextInput>
+    delete inputProps.fieldClassName;
+    // Add error and inverse classes
+    inputProps.className = classNames(
       {
-        'ds-c-field--error': typeof errorMessage === 'string',
-        'ds-c-field--inverse': inversed,
+        'ds-c-field--error': typeof this.props.errorMessage === 'string',
+        'ds-c-field--inverse': this.props.inversed,
       },
-      fieldClassName,
-      size && `ds-c-field--${size}`
-    );
-
-    let inputType = type;
-    if (numeric) {
-      inputType = 'text';
-    } else if (multiline) {
-      inputType = undefined;
-    }
-
-    const field = (
-      <FieldComponent
-        aria-label={this.props.ariaLabel}
-        className={fieldClasses}
-        id={this.id}
-        /* eslint-disable no-return-assign */
-        ref={(ref) => {
-          if (focusTrigger) {
-            this.focusRef = ref;
-          } else {
-            if (inputRef) {
-              inputRef(ref);
-            }
-          }
-        }}
-        /* eslint-enable no-return-assign */
-        rows={_rows}
-        inputMode={numeric ? 'numeric' : undefined}
-        pattern={numeric && !pattern ? '[0-9]*' : pattern}
-        type={inputType}
-        {...fieldProps}
-      />
+      this.props.fieldClassName
     );
 
     return (
-      <div className={classes}>
-        <FormLabel
-          className={labelClassName}
-          errorMessage={errorMessage}
-          fieldId={this.id}
-          hint={hint}
-          id={this.labelId}
-          requirementLabel={requirementLabel}
-          inversed={inversed}
-        >
-          {label}
-        </FormLabel>
-        {this.renderFieldAndMask(field, mask)}
-      </div>
+      <FieldContainer {...containerProps} component="div" labelComponent="label">
+        {({ fieldId, setRef }) => <TextInput {...{ ...inputProps, fieldId, setRef }} />}
+      </FieldContainer>
     );
   }
 }
@@ -155,7 +76,7 @@ TextField.propTypes = {
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
   /**
-   * Additional classes to be added to the field element
+   * Additional classes to be added to the input element
    */
   fieldClassName: PropTypes.string,
   /**
