@@ -3,41 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
-  cmsdsAndUswdsLink() {
-    if (this.props.uswds && this.props.cmsds) {
-      return (
-        <span>
-          <span>View related guidance in the </span>
-          <a href={this.props.cmsds}>CMS Design System</a>
-          <span> and </span>
-          <a href={this.props.uswds}>U.S. Web Design System</a>
-        </span>
-      );
-    }
-  }
-
-  cmsdsLink() {
-    if (this.props.cmsds && this.props.uswds == null) {
-      return (
-        <span>
-          <span>View related guidance in the </span>
-          <a href={this.props.cmsds}>CMS Design System</a>
-        </span>
-      );
-    }
-  }
-
-  uswdsLink() {
-    if (this.props.cmsds == null && this.props.uswds) {
-      return (
-        <span>
-          <span>View related guidance in the </span>
-          <a href={this.props.uswds}>U.S. Web Design System</a>
-        </span>
-      );
-    }
-  }
-
   statusBadge() {
     if (this.props.status) {
       const classes = classNames('ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize', {
@@ -60,6 +25,26 @@ class PageHeader extends React.PureComponent {
     }
   }
 
+  designSystemLinks() {
+    const cmsdsLink = this.props.cmsds && <a href={this.props.cmsds}>CMS Design System</a>;
+    const uswdsLink = this.props.uswds && <a href={this.props.uswds}>U.S. Web Design System</a>;
+
+    if (this.props.cmsds && this.props.uswds) {
+      return (
+        <span>
+          {' '}
+          View related guidance in the {cmsdsLink} and {uswdsLink}
+        </span>
+      );
+    } else if (this.props.cmsds) {
+      return <span> View related guidance in the {cmsdsLink}</span>;
+    } else if (this.props.uswds) {
+      return <span> View related guidance in the {uswdsLink}</span>;
+    } else {
+      
+    }
+  }
+
   render() {
     return (
       <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
@@ -74,9 +59,7 @@ class PageHeader extends React.PureComponent {
         </div>
         <div className="ds-u-font-size--small">
           {this.guidanceLink()}
-          {this.cmsdsLink()}
-          {this.uswdsLink()}
-          {this.cmsdsAndUswdsLink()}
+          {this.designSystemLinks()}
         </div>
       </header>
     );
