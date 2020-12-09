@@ -59,12 +59,8 @@ export class UsaBanner extends React.PureComponent {
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.httpsHeaderText}</strong>
                 <br />
-                {t.httpsAText}
-                <strong>
-                  {' '}
-                  {t.httpsLockText} <LockIcon className="ds-c-usa-banner__lock-image" />{' '}
-                </strong>
-                {t.httpsOrText}
+                {t.httpsAText} <strong>{t.httpsLockText}</strong> ({' '}
+                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>

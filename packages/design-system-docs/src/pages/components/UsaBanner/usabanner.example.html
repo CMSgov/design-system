@@ -1,3 +1,34 @@
+<!-- prettier-ignore -->
+<% [ 
+  { title: "English banner", 
+  bannerActionText: "Here’s how you know",
+  bannerText: "An official website of the United States government",
+  domainHeaderText: "Official websites use .gov",
+  domainAText: "A",
+  domainText: "website belongs to an official government organization in the United States.",
+  govText: ".gov",
+  httpsHeaderText: "Secure .gov websites use HTTPS",
+  httpsOrText: "or",
+  httpsText: "https://",
+  httpsAText: "A",
+  httpsLockText: "lock",
+  httpsDetailText: "means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. "}, 
+  { title: "Spanish banner", 
+  bannerText: "Un sitio oficial del Gobierno de Estados Unidos",
+  bannerActionText: "Así es como usted puede verificarlo",
+  domainHeaderText: "Los sitios web oficiales usan .gov",
+  domainAText: "Un sitio web",
+  domainText: "pertenece a una organización oficial del Gobierno de Estados Unidos.",
+  govText: ".gov",
+  httpsHeaderText: "Los sitios web seguros .gov usan HTTPS",
+  httpsOrText: "o",
+  httpsText: "https://",
+  httpsAText: "Un",
+  httpsLockText: "candado",
+  httpsDetailText: "significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros."
+}, 
+].forEach(banner => { -%>
+<h6 class="preview__label"><%= banner.title %></h6>
 <div class="ds-c-usa-banner">
   <header class="ds-c-usa-banner__header">
     <svg
@@ -9,9 +40,9 @@
       <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
     </svg>
     <p class="ds-c-usa-banner__header-text">
-      <span>An official website of the United States government</span
-      ><button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
-        Here’s how you know
+      <span><%= banner.bannerText %></span>
+      <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
+        <%= banner.bannerActionText %>
       </button>
     </p>
   </header>
@@ -24,8 +55,11 @@
           <use href="{{root}}/images/usa-banner-dot-gov.svg#svg"></use>
         </svg>
         <p class="ds-c-usa-banner__media-body">
-          <strong>Official websites use .gov</strong><br />A<strong> .gov </strong>website belongs
-          to an official government organization in the United States.
+          <strong><%= banner.domainHeaderText %></strong>
+          <br />
+          <%= banner.domainAText %>
+          <strong> <%= banner.govText %> </strong>
+          <%= banner.domainText %>
         </p>
       </div>
       <div class="ds-c-usa-banner__guidance">
@@ -33,22 +67,26 @@
           <use href="{{root}}/images/usa-banner-https.svg#svg"></use>
         </svg>
         <p class="ds-c-usa-banner__media-body">
-          <strong>Secure .gov websites use HTTPS</strong><br />A<strong>
-            lock
-            <svg
-              class="ds-c-usa-banner__lock-image"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 52 64"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
-              ></path>
-            </svg> </strong
-          >or<strong> https:// </strong>means you’ve safely connected to the .gov website. Share
-          sensitive information only on official, secure websites.
+          <strong><%= banner.httpsHeaderText %></strong>
+          <br />
+          <%= banner.httpsAText %>
+          <strong>
+            <%= banner.httpsLockText %>
+          </strong>
+          (
+          <svg
+            class="ds-c-usa-banner__lock-image"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 52 64"
+          >
+            <use href="{{root}}/images/usa-banner-lock.svg#svg"></use>
+          </svg>
+          ) <%= banner.httpsOrText %>
+          <strong> <%= banner.httpsText %> </strong>
+          <%= banner.httpsDetailText %>
         </p>
       </div>
     </div>
   </div>
 </div>
+<% }) -%>
