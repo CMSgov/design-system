@@ -1,34 +1,4 @@
-<!-- prettier-ignore -->
-<% [ 
-  { title: "English banner", 
-  bannerActionText: "Here’s how you know",
-  bannerText: "An official website of the United States government",
-  domainHeaderText: "Official websites use .gov",
-  domainAText: "A",
-  domainText: "website belongs to an official government organization in the United States.",
-  govText: ".gov",
-  httpsHeaderText: "Secure .gov websites use HTTPS",
-  httpsOrText: "or",
-  httpsText: "https://",
-  httpsAText: "A",
-  httpsLockText: "lock",
-  httpsDetailText: "means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. "}, 
-  { title: "Spanish banner", 
-  bannerText: "Un sitio oficial del Gobierno de Estados Unidos",
-  bannerActionText: "Así es como usted puede verificarlo",
-  domainHeaderText: "Los sitios web oficiales usan .gov",
-  domainAText: "Un sitio web",
-  domainText: "pertenece a una organización oficial del Gobierno de Estados Unidos.",
-  govText: ".gov",
-  httpsHeaderText: "Los sitios web seguros .gov usan HTTPS",
-  httpsOrText: "o",
-  httpsText: "https://",
-  httpsAText: "Un",
-  httpsLockText: "candado",
-  httpsDetailText: "significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros."
-}, 
-].forEach(banner => { -%>
-<h6 class="preview__label"><%= banner.title %></h6>
+<h6 class="preview__label">English banner</h6>
 <div class="ds-c-usa-banner">
   <header class="ds-c-usa-banner__header">
     <svg
@@ -40,9 +10,9 @@
       <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
     </svg>
     <p class="ds-c-usa-banner__header-text">
-      <span><%= banner.bannerText %></span>
+      <span>An official website of the United States government</span>
       <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
-        <%= banner.bannerActionText %>
+        Here’s how you know
       </button>
     </p>
   </header>
@@ -55,11 +25,11 @@
           <use href="{{root}}/images/usa-banner-dot-gov.svg#svg"></use>
         </svg>
         <p class="ds-c-usa-banner__media-body">
-          <strong><%= banner.domainHeaderText %></strong>
+          <strong>Official websites use .gov</strong>
           <br />
-          <%= banner.domainAText %>
-          <strong> <%= banner.govText %> </strong>
-          <%= banner.domainText %>
+          A
+          <strong> .gov </strong>
+          website belongs to an official government organization in the United States.
         </p>
       </div>
       <div class="ds-c-usa-banner__guidance">
@@ -67,11 +37,11 @@
           <use href="{{root}}/images/usa-banner-https.svg#svg"></use>
         </svg>
         <p class="ds-c-usa-banner__media-body">
-          <strong><%= banner.httpsHeaderText %></strong>
+          <strong>Secure .gov websites use HTTPS</strong>
           <br />
-          <%= banner.httpsAText %>
+          A
           <strong>
-            <%= banner.httpsLockText %>
+            lock
           </strong>
           (
           <svg
@@ -81,12 +51,74 @@
           >
             <use href="{{root}}/images/usa-banner-lock.svg#svg"></use>
           </svg>
-          ) <%= banner.httpsOrText %>
-          <strong> <%= banner.httpsText %> </strong>
-          <%= banner.httpsDetailText %>
+          ) or
+          <strong> https:// </strong>
+          means you’ve safely connected to the .gov website. Share sensitive information only on
+          official, secure websites.
         </p>
       </div>
     </div>
   </div>
 </div>
-<% }) -%>
+<h6 class="preview__label">Spanish banner</h6>
+<div class="ds-c-usa-banner">
+  <header class="ds-c-usa-banner__header">
+    <svg
+      width="16"
+      height="11"
+      class="ds-c-usa-banner__header-flag"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
+    </svg>
+    <p class="ds-c-usa-banner__header-text">
+      <span>Un sitio oficial del Gobierno de Estados Unidos</span>
+      <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
+        Así es como usted puede verificarlo
+      </button>
+    </p>
+  </header>
+  <div class="ds-c-usa-banner__content" id="gov-banner" hidden="">
+    <div
+      class="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+    >
+      <div class="ds-c-usa-banner__guidance">
+        <svg class="ds-c-usa-banner__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54">
+          <use href="{{root}}/images/usa-banner-dot-gov.svg#svg"></use>
+        </svg>
+        <p class="ds-c-usa-banner__media-body">
+          <strong>Los sitios web oficiales usan .gov</strong>
+          <br />
+          Un sitio web
+          <strong> .gov </strong>
+          pertenece a una organización oficial del Gobierno de Estados Unidos.
+        </p>
+      </div>
+      <div class="ds-c-usa-banner__guidance">
+        <svg class="ds-c-usa-banner__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54">
+          <use href="{{root}}/images/usa-banner-https.svg#svg"></use>
+        </svg>
+        <p class="ds-c-usa-banner__media-body">
+          <strong>Los sitios web seguros .gov usan HTTPS</strong>
+          <br />
+          Un
+          <strong>
+            candado
+          </strong>
+          (
+          <svg
+            class="ds-c-usa-banner__lock-image"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 52 64"
+          >
+            <use href="{{root}}/images/usa-banner-lock.svg#svg"></use>
+          </svg>
+          ) or
+          <strong> https:// </strong>
+          significa que usted se conectó de forma segura a un sitio web .gov. Comparta información
+          sensible sólo en sitios web oficiales y seguros.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
