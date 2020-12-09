@@ -1,10 +1,13 @@
 import DotGovIcon from '../../images/usa-banner-dot-gov.svg';
+import EnglishTranslations from '../../locale/en.json';
 import HttpsIcon from '../../images/usa-banner-https.svg';
 import LockIcon from '../../images/usa-banner-lock.svg';
+import PropTypes from 'prop-types';
 import React from 'react';
+import SpanishTranslations from '../../locale/es.json';
 import UsaFlagIcon from '../../images/usa-banner-flag.svg';
 
-class UsaBanner extends React.PureComponent {
+export class UsaBanner extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { isBannerOpen: false };
@@ -16,6 +19,9 @@ class UsaBanner extends React.PureComponent {
   }
 
   render() {
+    const t =
+      this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
+
     return (
       <div className="ds-c-usa-banner">
         <header
@@ -25,14 +31,14 @@ class UsaBanner extends React.PureComponent {
         >
           <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
           <p className="ds-c-usa-banner__header-text">
-            <span>An official website of the United States government</span>
+            <span>{t.bannerText}</span>
             <button
               onClick={this.handleToggleBanner}
               className="ds-c-usa-banner__button"
               aria-expanded={this.state.isBannerOpen}
               aria-controls="gov-banner"
             >
-              Here’s how you know
+              {t.bannerActionText}
             </button>
           </p>
         </header>
@@ -41,21 +47,22 @@ class UsaBanner extends React.PureComponent {
             <div className="ds-c-usa-banner__guidance">
               <DotGovIcon className="ds-c-usa-banner__icon" />
               <p className="ds-c-usa-banner__media-body">
-                <strong>Official websites use .gov</strong>
-                <br />A <strong>.gov</strong> website belongs to an official government organization
-                in the United States.
+                <strong>{t.domainHeaderText}</strong>
+                <br />
+                {t.domainAText}
+                <strong> {t.govText} </strong>
+                {t.domainText}
               </p>
             </div>
             <div className="ds-c-usa-banner__guidance">
               <HttpsIcon className="ds-c-usa-banner__icon" />
               <p className="ds-c-usa-banner__media-body">
-                <strong>Secure .gov websites use HTTPS</strong>
-                <br />A <strong>lock</strong> ({' '}
-                <span>
-                  <LockIcon className="ds-c-usa-banner__lock-image" />
-                </span>{' '}
-                ) or <strong>https://</strong> means you’ve safely connected to the .gov website.
-                Share sensitive information only on official, secure websites.
+                <strong>{t.httpsHeaderText}</strong>
+                <br />
+                {t.httpsAText} <strong>{t.httpsLockText}</strong> ({' '}
+                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
+                <strong> {t.httpsText} </strong>
+                {t.httpsDetailText}
               </p>
             </div>
           </div>
@@ -64,5 +71,16 @@ class UsaBanner extends React.PureComponent {
     );
   }
 }
+
+UsaBanner.defaultProps = {
+  locale: 'en',
+};
+
+UsaBanner.propTypes = {
+  /**
+   * The language the USA Banner will render as.
+   */
+  locale: PropTypes.oneOf(['en', 'es']),
+};
 
 export default UsaBanner;
