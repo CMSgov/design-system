@@ -1,21 +1,29 @@
+import { omit, uniqueId } from 'lodash';
 import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
+// Props that are exclusive used by <FieldContainer> in a form field component
+// These shouldn't be passed to the field input elements, i.e. <Select> or <TextInput>
+// Certain props (`id`, `labelId`, `inputRef`, `focusTrigger) will be transformed/renamed
+// and then forwarded to the field input  elements via `fieldProps`
 export const containerPropList = [
   'className',
   'errorMessage',
-  'fieldName',
+  'fieldClassName',
+  // TODO: rename to `autoFocus`
   'focusTrigger',
   'hint',
+  // TODO: consider renaming this to `fieldRef`
   'id',
+  // TODO: consider rename this to `fieldRef`
   'inputRef',
   'inversed',
   'label',
   'labelClassName',
   'labelId',
+  'name',
   'requirementLabel',
 ];
 
@@ -23,8 +31,8 @@ export class FieldContainer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.id = props.id || uniqueId(`${this.props.fieldName || 'field'}_`);
-    this.labelId = props.labelId || uniqueId(`${this.props.fieldName || 'field'}_label_`);
+    this.id = props.id || uniqueId(`${this.props.name || 'field'}_`);
+    this.labelId = props.labelId || uniqueId(`${this.props.name || 'field'}_label_`);
     this.setFieldRef = this.setFieldRef.bind(this);
   }
 
@@ -45,43 +53,45 @@ export class FieldContainer extends React.PureComponent {
   }
 
   render() {
-    const {
-      className,
-      children,
-      errorMessage,
-      hint,
-      inversed,
-      label,
-      labelClassName,
-      labelComponent,
-      requirementLabel,
-    } = this.props;
+    const containerProps = omit(this.props, containerPropList);
 
     const ComponentType = this.props.component;
     const classes =
-      ComponentType === 'fieldset' ? classNames(className, 'ds-c-fieldset') : className;
-    const fieldProps = {
+      ComponentType === 'fieldset'
+        ? classNames(this.props.className, 'ds-c-fieldset')
+        : this.props.className;
+
+    // Props that have been transformed or renamed by <FieldContainer>
+    const transformedFieldProps = {
+      className: this.props.fieldClassName,
       labelId: this.labelId,
-      // TODO: rename this to id, and rename the FieldContainer prop `id` to `fieldId`
-      fieldId: this.id,
+      id: this.id,
       setRef: this.setFieldRef,
     };
+    // Props shared between the <FieldContainer> and field input
+    const originalFieldProps = {
+      errorMessage: this.props.errorMessage,
+      inversed: this.props.inversed,
+      name: this.props.name,
+    };
+    // Props passed onto the field input element
+    const fieldInputProps = { ...transformedFieldProps, ...originalFieldProps };
 
     return (
-      <ComponentType className={classes}>
+      <ComponentType className={classes} {...containerProps}>
         <FormLabel
-          className={labelClassName}
-          component={labelComponent}
-          errorMessage={errorMessage}
+          className={this.props.labelClassName}
+          component={this.props.labelComponent}
+          errorMessage={this.props.errorMessage}
           fieldId={this.id}
-          hint={hint}
+          hint={this.props.hint}
           id={this.labelId}
-          requirementLabel={requirementLabel}
-          inversed={inversed}
+          requirementLabel={this.props.requirementLabel}
+          inversed={this.props.inversed}
         >
-          {label}
+          {this.props.label}
         </FormLabel>
-        {children(fieldProps)}
+        {this.props.children(fieldInputProps)}
       </ComponentType>
     );
   }
@@ -105,7 +115,11 @@ FieldContainer.propTypes = {
   /**
    * The field input's `name` attribute
    */
-  fieldName: PropTypes.string,
+  name: PropTypes.string,
+  /**
+   * Additional classes to be added to the field input.
+   */
+  fieldClassName: PropTypes.string,
   /**
    * Used to focus the field input on `componentDidMount()`
    */

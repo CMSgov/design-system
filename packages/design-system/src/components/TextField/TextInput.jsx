@@ -8,7 +8,6 @@ export function TextInput(props) {
     ariaLabel,
     className,
     errorMessage,
-    fieldId,
     inversed,
     mask,
     multiline,
@@ -23,6 +22,10 @@ export function TextInput(props) {
 
   const classes = classNames(
     'ds-c-field',
+    {
+      'ds-c-field--error': typeof errorMessage === 'string',
+      'ds-c-field--inverse': inversed,
+    },
     mask && `ds-c-field--${mask}`,
     size && `ds-c-field--${size}`,
     className
@@ -41,7 +44,6 @@ export function TextInput(props) {
     <ComponentType
       aria-label={ariaLabel}
       className={classes}
-      id={fieldId}
       ref={setRef}
       rows={multiline && rows ? rows : undefined}
       inputMode={numeric ? 'numeric' : undefined}
@@ -72,9 +74,9 @@ TextInput.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * A unique ID to be used for the Select field. If one isn't provided, a unique ID will be generated.
+   * A unique ID to be used for the input field.
    */
-  fieldId: PropTypes.string,
+  id: PropTypes.string.isRequired,
   /**
    * Applies the "inverse" UI theme
    */

@@ -24,28 +24,17 @@ export class TextField extends React.PureComponent {
     const containerProps = pick(this.props, containerPropList);
     const inputProps = omit(this.props, containerPropList);
 
-    // Reassign `name` to `fieldName` for <FieldContainer>
-    containerProps.fieldName = this.props.name;
     // Add clearfix class
     containerProps.className = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
       this.props.className
     );
 
-    // Reassign `fieldName` to `name` for <TextInput>
-    delete inputProps.fieldClassName;
-    // Add error and inverse classes
-    inputProps.className = classNames(
-      {
-        'ds-c-field--error': typeof this.props.errorMessage === 'string',
-        'ds-c-field--inverse': this.props.inversed,
-      },
-      this.props.fieldClassName
-    );
-
     return (
       <FieldContainer {...containerProps} component="div" labelComponent="label">
-        {({ fieldId, setRef }) => <TextInput {...{ ...inputProps, fieldId, setRef }} />}
+        {({ className, errorMessage, id, inversed, name, setRef }) => (
+          <TextInput {...{ ...inputProps, className, errorMessage, id, inversed, name, setRef }} />
+        )}
       </FieldContainer>
     );
   }

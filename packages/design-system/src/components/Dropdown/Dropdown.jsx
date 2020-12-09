@@ -3,7 +3,6 @@ import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
-import classNames from 'classnames';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -29,23 +28,11 @@ export class Dropdown extends React.PureComponent {
     const containerProps = pick(this.props, containerPropList);
     const selectProps = omit(this.props, containerPropList);
 
-    // Reassign `name` to `fieldName` for <FieldContainer>
-    containerProps.fieldName = this.props.name;
-
-    // Reassign `fieldName` to `name` for <Select>
-    // Add error and inverse classes
-    delete selectProps.fieldClassName;
-    selectProps.className = classNames(
-      {
-        'ds-c-field--error': typeof this.props.errorMessage === 'string',
-        'ds-c-field--inverse': this.props.inversed,
-      },
-      this.props.fieldClassName
-    );
-
     return (
       <FieldContainer {...containerProps} component="div" labelComponent="label">
-        {({ fieldId, setRef }) => <Select {...{ ...selectProps, fieldId, setRef }} />}
+        {({ className, errorMessage, id, inversed, name, setRef }) => (
+          <Select {...{ ...selectProps, className, errorMessage, id, inversed, name, setRef }} />
+        )}
       </FieldContainer>
     );
   }

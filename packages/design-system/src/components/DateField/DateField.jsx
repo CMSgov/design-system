@@ -20,13 +20,9 @@ export function DateField(props) {
   const containerProps = pick(props, containerPropList);
   const dateInputProps = omit(props, containerPropList);
 
-  // Inverse classes are normally handled here, but because DateInput uses 3 TextFields
-  // We need to pass along the `inversed` prop here
-  dateInputProps.inversed = props.inversed;
-
   return (
     <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
-      {({ labelId }) => <DateInput {...{ ...dateInputProps, labelId }} />}
+      {({ inversed, labelId }) => <DateInput {...{ ...dateInputProps, inversed, labelId }} />}
     </FieldContainer>
   );
 }

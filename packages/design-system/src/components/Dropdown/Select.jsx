@@ -21,14 +21,23 @@ export class Select extends React.PureComponent {
       ariaLabel,
       children,
       className,
-      fieldId,
+      errorMessage,
+      inversed,
       options,
       size,
       setRef,
       ...selectProps
     } = this.props;
 
-    const classes = classNames('ds-c-field', size && `ds-c-field--${size}`, className);
+    const classes = classNames(
+      'ds-c-field',
+      {
+        'ds-c-field--error': typeof errorMessage === 'string',
+        'ds-c-field--inverse': inversed,
+      },
+      size && `ds-c-field--${size}`,
+      className
+    );
 
     const optionElements = options.map((option) => (
       <option key={option.value} value={option.value}>
@@ -37,7 +46,7 @@ export class Select extends React.PureComponent {
     ));
 
     return (
-      <select aria-label={ariaLabel} className={classes} id={fieldId} ref={setRef} {...selectProps}>
+      <select aria-label={ariaLabel} className={classes} ref={setRef} {...selectProps}>
         {/* Render custom options if provided */ children || optionElements}
       </select>
     );
@@ -66,10 +75,15 @@ Select.propTypes = {
    * Disables the entire field.
    */
   disabled: PropTypes.bool,
+  errorMessage: PropTypes.node,
   /**
-   * A unique ID to be used for the Select field. If one isn't provided, a unique ID will be generated.
+   * A unique ID to be used for the Select field.
    */
-  fieldId: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  /**
+   * Applies the "inverse" UI theme
+   */
+  inversed: PropTypes.bool,
   /**
    * The field's `name` attribute
    */
