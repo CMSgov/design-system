@@ -170,22 +170,4 @@ describe('ChoiceList', () => {
       }, 20);
     });
   });
-
-  it('applies additional classNames to FormLabel', () => {
-    const data = shallowRender({ labelClassName: 'ds-u-foo' });
-
-    expect(data.wrapper.find('FormLabel').prop('className')).toBe(data.props.labelClassName);
-  });
-
-  it('passes errorMessage to FormLabel', () => {
-    const data = shallowRender({ errorMessage: 'Nah son' });
-
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
-  });
-
-  it('passes inversed prop to FormLabel', () => {
-    const data = shallowRender({ inversed: true });
-
-    expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(true);
-  });
 });
