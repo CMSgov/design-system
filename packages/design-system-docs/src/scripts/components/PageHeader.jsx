@@ -32,7 +32,6 @@ class PageHeader extends React.PureComponent {
     if (this.props.cmsds && this.props.uswds) {
       return (
         <span>
-          {' '}
           View related guidance in the {cmsdsLink} and {uswdsLink}
         </span>
       );
@@ -41,7 +40,6 @@ class PageHeader extends React.PureComponent {
     } else if (this.props.uswds) {
       return <span> View related guidance in the {uswdsLink}</span>;
     } else {
-      
     }
   }
 
