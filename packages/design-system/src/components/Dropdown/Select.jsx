@@ -85,11 +85,7 @@ Select.propTypes = {
   ).isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel: PropTypes.node,
-  setRef: PropTypes.bool,
+  setRef: PropTypes.function,
   /**
    * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
    */
