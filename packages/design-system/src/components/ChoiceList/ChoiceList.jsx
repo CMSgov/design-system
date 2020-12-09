@@ -1,4 +1,4 @@
-import { FieldContainer, fieldContainerPropList } from '../FieldContainer/FieldContainer';
+import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
 import Choice from './Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -49,7 +49,7 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, fieldContainerPropList);
+    const containerProps = pick(this.props, containerPropList);
 
     const choices = this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;

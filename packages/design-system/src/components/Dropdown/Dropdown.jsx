@@ -1,4 +1,4 @@
-import { FieldContainer, fieldContainerPropList } from '../FieldContainer/FieldContainer';
+import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
 import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -26,8 +26,8 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, fieldContainerPropList);
-    const selectProps = omit(this.props, fieldContainerPropList);
+    const containerProps = pick(this.props, containerPropList);
+    const selectProps = omit(this.props, containerPropList);
 
     // Reassign `name` to `fieldName` for <FieldContainer>
     containerProps.fieldName = this.props.name;

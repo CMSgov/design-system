@@ -1,4 +1,4 @@
-import { FieldContainer, fieldContainerPropList } from '../FieldContainer/FieldContainer';
+import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
 import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
 import PropTypes from 'prop-types';
@@ -17,8 +17,8 @@ export const defaultDateFormatter = (dateObject) => {
 };
 
 export function DateField(props) {
-  const containerProps = pick(props, fieldContainerPropList);
-  const dateInputProps = omit(props, fieldContainerPropList);
+  const containerProps = pick(props, containerPropList);
+  const dateInputProps = omit(props, containerPropList);
 
   // Inverse classes are normally handled here, but because DateInput uses 3 TextFields
   // We need to pass along the `inversed` prop here

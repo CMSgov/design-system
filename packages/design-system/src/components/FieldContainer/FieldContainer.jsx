@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
-export const fieldContainerPropList = [
+export const containerPropList = [
   'className',
   'errorMessage',
   'fieldName',
