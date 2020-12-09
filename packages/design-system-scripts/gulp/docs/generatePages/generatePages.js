@@ -116,6 +116,18 @@ function changedFilter(page, changedPath) {
   return true;
 }
 
+// Add a `cmsds` property to component and pattern page sections originating from the `@cmsgov/design-system-docs` NPM package.
+// This automatically populates a link to the CMSDS for child design system components and patterns.
+function addCmsdsLink(page) {
+  if (
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+  ) {
+    page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
+  }
+  return page;
+}
+
 /**
  * Loop through the nested array of pages and create an HTML file for each one.
  * These HTML pages are what get published as the public documentation website.
@@ -200,29 +212,39 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
       processKssSection(kssSection, options)
     )
   );
+  // Combine KSS and Markdown page sections and add cmsds links to for child design systems
+  const pageSections = markdownSections.concat(kssSections).map((section) => addCmsdsLink(section));
 
-  // Merge both sets of page sections into a single array.
   // Remove pages with the same URL (so child design systems can override existing pages)
   // Hide sections and pages with the `hide-section` flag
-  const pages = uniquePages(markdownSections.concat(kssSections)).filter(
-    (page) => !page.hideSection
-  );
+  const uniquePageSections = uniquePages(pageSections).filter((page) => !page.hideSection);
 
   // Add react prop and example data to page sections
-  await addReactData(pages);
+  await addReactData(uniquePageSections);
 
-  // Add top-level pages and connect the page sections to their parent pages
-  const nestedPages = await addTopLevelPages(pages).then(nestSections);
+  // Add missing top-level pages and connect the page parts to their parent pages
+  // TODO: remove need to nest pages, or generate from unnested pages
+  const nestedPageSections = await addTopLevelPages(uniquePageSections).then(nestSections);
 
-  // Create HTML files for example and doc pages
   const docsPath = path.join(docsDir, 'dist');
-  const examplePages = await generateExamplePages(pages, docsPath, sourceDir, options, changedPath);
+
+  // Create HTML files for example pages
+  const examplePages = await generateExamplePages(
+    uniquePageSections,
+    docsPath,
+    sourceDir,
+    options,
+    changedPath
+  );
+
   if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
     logTask('📝  ' + examplePages, `Example pages added to ${docsDir}`);
   }
-  const docPages = await generateDocPages(nestedPages, docsPath, options, changedPath);
+
+  // Create HTML files for doc pages
+  const docPages = await generateDocPages(nestedPageSections, docsPath, options, changedPath);
   if (changedPath && docPages > 0) {
     logTask('📝 ', `Doc page updated from ${changedPath}`);
   } else if (!changedPath) {
