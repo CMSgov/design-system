@@ -1,0 +1,543 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateInput has custom yearMax and yearMin 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput has invalid day 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day ds-c-field--error"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput has invalid month 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month ds-c-field--error"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput has invalid year 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year ds-c-field--error"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput is disabled 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month"
+      disabled={true}
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day"
+      disabled={true}
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year"
+      disabled={true}
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput is inversed 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--inverse ds-c-field--month"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--inverse ds-c-field--day"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--inverse ds-c-field--year"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`DateInput renders with all defaultProps 1`] = `
+<div
+  className="ds-l-form-row ds-u-align-items--end"
+>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--month"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--day"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+  <span
+    className="ds-c-datefield__separator"
+  >
+    /
+  </span>
+  <div
+    className="ds-u-clearfix ds-l-col--auto"
+  >
+    <label
+      className="ds-c-label ds-c-datefield__label"
+      htmlFor="field_snapshot"
+      id="field_label_snapshot"
+    >
+      <span
+        className=""
+      />
+    </label>
+    <input
+      className="ds-c-field ds-c-field--year"
+      id="field_snapshot"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      type="text"
+    />
+  </div>
+</div>
+`;
