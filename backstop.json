@@ -1,6 +1,6 @@
 {
   "id": "backstop_default",
-  "misMatchThreshold": 0.2
+  "misMatchThreshold": 0.2,
   "viewports": [
     {
       "label": "phone",
