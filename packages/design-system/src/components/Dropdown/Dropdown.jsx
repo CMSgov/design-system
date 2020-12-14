@@ -2,7 +2,7 @@ import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
-import { pick } from 'lodash';
+import { omit } from 'lodash';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -25,18 +25,17 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const selectProps = pick(this.props, Object.keys(Select.propTypes));
+    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     return (
       <FieldContainer {...this.props} component="div" labelComponent="label">
         {({ id, setRef }) => (
           <Select
-            {...selectProps}
+            {...inputOnlyProps}
             {...{ id, setRef }}
             className={this.props.fieldClassName}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
-            name={this.props.name}
           />
         )}
       </FieldContainer>

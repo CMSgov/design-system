@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { pick } from 'lodash';
+import { omit } from 'lodash';
 
 export { unmaskValue } from './Mask';
 
@@ -21,7 +21,7 @@ export class TextField extends React.PureComponent {
   }
 
   render() {
-    const inputProps = pick(this.props, Object.keys(TextInput.propTypes));
+    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     // Add clearfix class
     const containerClassName = classNames(
@@ -38,12 +38,11 @@ export class TextField extends React.PureComponent {
       >
         {({ id, setRef }) => (
           <TextInput
-            {...inputProps}
+            {...inputOnlyProps}
             {...{ id, setRef }}
             className={this.props.fieldClassName}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
-            name={this.props.name}
           />
         )}
       </FieldContainer>

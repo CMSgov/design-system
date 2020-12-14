@@ -8,8 +8,8 @@ export class FieldContainer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.id = props.id || uniqueId(`${this.props.name || 'field'}_`);
-    this.labelId = props.labelId || uniqueId(`${this.props.name || 'field'}_label_`);
+    this.id = props.id || uniqueId('field_');
+    this.labelId = props.labelId || uniqueId('field_label_');
     this.setFieldRef = this.setFieldRef.bind(this);
   }
 
@@ -89,10 +89,6 @@ FieldContainer.propTypes = {
    */
   component: PropTypes.oneOf(['div', 'fieldset']),
   errorMessage: PropTypes.node,
-  /**
-   * The field input's `name` attribute
-   */
-  name: PropTypes.string,
   /**
    * Used to focus the field input on `componentDidMount()`
    */
