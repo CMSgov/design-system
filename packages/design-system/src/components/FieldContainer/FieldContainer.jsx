@@ -1,8 +1,8 @@
-import { omit, uniqueId } from 'lodash';
 import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { uniqueId } from 'lodash';
 
 // Props that are exclusive used by <FieldContainer> in a form field component
 // These shouldn't be passed to the field input elements, i.e. <Select> or <TextInput>
@@ -53,45 +53,56 @@ export class FieldContainer extends React.PureComponent {
   }
 
   render() {
-    const containerProps = omit(this.props, containerPropList);
+    const {
+      children,
+      className,
+      component,
+      errorMessage,
+      fieldClassName,
+      hint,
+      inversed,
+      label,
+      labelClassName,
+      labelComponent,
+      name,
+      requirementLabel,
+    } = this.props;
 
-    const ComponentType = this.props.component;
+    const ComponentType = component;
     const classes =
-      ComponentType === 'fieldset'
-        ? classNames(this.props.className, 'ds-c-fieldset')
-        : this.props.className;
+      ComponentType === 'fieldset' ? classNames(className, 'ds-c-fieldset') : className;
 
     // Props that have been transformed or renamed by <FieldContainer>
     const transformedFieldProps = {
-      className: this.props.fieldClassName,
+      className: fieldClassName,
       labelId: this.labelId,
       id: this.id,
       setRef: this.setFieldRef,
     };
     // Props shared between the <FieldContainer> and field input
     const originalFieldProps = {
-      errorMessage: this.props.errorMessage,
-      inversed: this.props.inversed,
-      name: this.props.name,
+      errorMessage: errorMessage,
+      inversed: inversed,
+      name: name,
     };
     // Props passed onto the field input element
     const fieldInputProps = { ...transformedFieldProps, ...originalFieldProps };
 
     return (
-      <ComponentType className={classes} {...containerProps}>
+      <ComponentType className={classes}>
         <FormLabel
-          className={this.props.labelClassName}
-          component={this.props.labelComponent}
-          errorMessage={this.props.errorMessage}
+          className={labelClassName}
+          component={labelComponent}
+          errorMessage={errorMessage}
           fieldId={this.id}
-          hint={this.props.hint}
+          hint={hint}
           id={this.labelId}
-          requirementLabel={this.props.requirementLabel}
-          inversed={this.props.inversed}
+          requirementLabel={requirementLabel}
+          inversed={inversed}
         >
-          {this.props.label}
+          {label}
         </FormLabel>
-        {this.props.children(fieldInputProps)}
+        {children(fieldInputProps)}
       </ComponentType>
     );
   }
