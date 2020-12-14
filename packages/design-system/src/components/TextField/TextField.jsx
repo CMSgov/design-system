@@ -1,9 +1,9 @@
+import { omit, pick } from 'lodash';
 import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
-import { omit } from 'lodash';
 
 export { unmaskValue } from './Mask';
 
@@ -21,6 +21,7 @@ export class TextField extends React.PureComponent {
   }
 
   render() {
+    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
     const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     // Add clearfix class
@@ -31,7 +32,7 @@ export class TextField extends React.PureComponent {
 
     return (
       <FieldContainer
-        {...this.props}
+        {...containerProps}
         className={containerClassName}
         component="div"
         labelComponent="label"

@@ -1,8 +1,8 @@
+import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
 import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { omit } from 'lodash';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
 const standardLengthFormatter = ({ day, month, year }) => ({
@@ -17,10 +17,11 @@ export const defaultDateFormatter = (dateObject) => {
 };
 
 export function DateField(props) {
+  const containerProps = pick(props, Object.keys(FieldContainer.propTypes));
   const inputOnlyProps = omit(props, Object.keys(FieldContainer.propTypes));
 
   return (
-    <FieldContainer {...props} component="fieldset" labelComponent="legend">
+    <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
       {({ labelId }) => (
         <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
       )}
