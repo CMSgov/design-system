@@ -1,8 +1,8 @@
-import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
-import { omit, pick } from 'lodash';
+import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
+import { pick } from 'lodash';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -25,13 +25,19 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, containerPropList);
-    const selectProps = omit(this.props, containerPropList);
+    const selectProps = pick(this.props, Object.keys(Select.propTypes));
 
     return (
-      <FieldContainer {...containerProps} component="div" labelComponent="label">
-        {({ className, errorMessage, id, inversed, name, setRef }) => (
-          <Select {...{ ...selectProps, className, errorMessage, id, inversed, name, setRef }} />
+      <FieldContainer {...this.props} component="div" labelComponent="label">
+        {({ id, setRef }) => (
+          <Select
+            {...selectProps}
+            {...{ id, setRef }}
+            className={this.props.fieldClassName}
+            errorMessage={this.props.errorMessage}
+            inversed={this.props.inversed}
+            name={this.props.name}
+          />
         )}
       </FieldContainer>
     );

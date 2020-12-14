@@ -107,7 +107,7 @@ TextInput.propTypes = {
    * applicable if this is a multiline field.
    */
   rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  setRef: PropTypes.function,
+  setRef: PropTypes.func,
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */

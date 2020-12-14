@@ -1,9 +1,8 @@
-import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
 import Choice from './Choice';
+import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { pick } from 'lodash';
 
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
@@ -49,8 +48,6 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, containerPropList);
-
     const choices = this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
       choiceProps.name = this.props.name;
@@ -70,7 +67,7 @@ export class ChoiceList extends React.PureComponent {
     });
 
     return (
-      <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
+      <FieldContainer {...this.props} component="fieldset" labelComponent="legend">
         {() => choices}
       </FieldContainer>
     );

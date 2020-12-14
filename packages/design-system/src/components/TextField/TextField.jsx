@@ -1,9 +1,9 @@
-import { FieldContainer, containerPropList } from '../FieldContainer/FieldContainer';
-import { omit, pick } from 'lodash';
+import { FieldContainer } from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
+import { pick } from 'lodash';
 
 export { unmaskValue } from './Mask';
 
@@ -21,19 +21,30 @@ export class TextField extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, containerPropList);
-    const inputProps = omit(this.props, containerPropList);
+    const inputProps = pick(this.props, Object.keys(TextInput.propTypes));
 
     // Add clearfix class
-    containerProps.className = classNames(
+    const containerClassName = classNames(
       'ds-u-clearfix', // fixes issue where the label's margin is collapsed
       this.props.className
     );
 
     return (
-      <FieldContainer {...containerProps} component="div" labelComponent="label">
-        {({ className, errorMessage, id, inversed, name, setRef }) => (
-          <TextInput {...{ ...inputProps, className, errorMessage, id, inversed, name, setRef }} />
+      <FieldContainer
+        {...this.props}
+        className={containerClassName}
+        component="div"
+        labelComponent="label"
+      >
+        {({ id, setRef }) => (
+          <TextInput
+            {...inputProps}
+            {...{ id, setRef }}
+            className={this.props.fieldClassName}
+            errorMessage={this.props.errorMessage}
+            inversed={this.props.inversed}
+            name={this.props.name}
+          />
         )}
       </FieldContainer>
     );

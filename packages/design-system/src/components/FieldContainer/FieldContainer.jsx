@@ -4,29 +4,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
 
-// Props that are exclusive used by <FieldContainer> in a form field component
-// These shouldn't be passed to the field input elements, i.e. <Select> or <TextInput>
-// Certain props (`id`, `labelId`, `inputRef`, `focusTrigger) will be transformed/renamed
-// and then forwarded to the field input  elements via `fieldProps`
-export const containerPropList = [
-  'className',
-  'errorMessage',
-  'fieldClassName',
-  // TODO: rename to `autoFocus`
-  'focusTrigger',
-  'hint',
-  // TODO: consider renaming this to `fieldRef`
-  'id',
-  // TODO: consider rename this to `fieldRef`
-  'inputRef',
-  'inversed',
-  'label',
-  'labelClassName',
-  'labelId',
-  'name',
-  'requirementLabel',
-];
-
 export class FieldContainer extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -58,13 +35,11 @@ export class FieldContainer extends React.PureComponent {
       className,
       component,
       errorMessage,
-      fieldClassName,
       hint,
       inversed,
       label,
       labelClassName,
       labelComponent,
-      name,
       requirementLabel,
     } = this.props;
 
@@ -72,21 +47,12 @@ export class FieldContainer extends React.PureComponent {
     const classes =
       ComponentType === 'fieldset' ? classNames(className, 'ds-c-fieldset') : className;
 
-    // Props that have been transformed or renamed by <FieldContainer>
-    const transformedFieldProps = {
-      className: fieldClassName,
-      labelId: this.labelId,
+    // Field input props handled by <FieldContainer>
+    const fieldInputProps = {
       id: this.id,
+      labelId: this.labelId,
       setRef: this.setFieldRef,
     };
-    // Props shared between the <FieldContainer> and field input
-    const originalFieldProps = {
-      errorMessage: errorMessage,
-      inversed: inversed,
-      name: name,
-    };
-    // Props passed onto the field input element
-    const fieldInputProps = { ...transformedFieldProps, ...originalFieldProps };
 
     return (
       <ComponentType className={classes}>
@@ -115,9 +81,9 @@ FieldContainer.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Field input element
+   * A function that returns a field input element to accept render props
    */
-  children: PropTypes.node,
+  children: PropTypes.func,
   /**
    * The HTML element used to render the container
    */
@@ -127,10 +93,6 @@ FieldContainer.propTypes = {
    * The field input's `name` attribute
    */
   name: PropTypes.string,
-  /**
-   * Additional classes to be added to the field input.
-   */
-  fieldClassName: PropTypes.string,
   /**
    * Used to focus the field input on `componentDidMount()`
    */
