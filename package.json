@@ -4,13 +4,13 @@
   "workspaces": [
     "packages/*"
   ],
-  "description": "A shared set of design and code elements for creating accessible and consistent websites",
+  "description": "A set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.",
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
     "start": "yarn cmsds start",
     "build": "yarn cmsds build-docs",
     "pre-release": "./prerelease.sh",
-    "release": "yarn lerna publish from-git",
+    "release": "yarn lerna publish from-git --npm-tag latest",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
     "test:unit": "yarn cmsds test ./packages",

@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-export type ButtonChildren = string | React.ReactNode;
-
 export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
 
 export type ButtonSize = 'small' | 'big';
@@ -14,7 +12,7 @@ export interface ButtonProps {
   /**
    * Label text or HTML
    */
-  children: ButtonChildren;
+  children: React.ReactNode;
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.
