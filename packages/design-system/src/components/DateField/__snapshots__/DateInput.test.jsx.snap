@@ -4,76 +4,49 @@ exports[`DateInput has custom yearMax and yearMin 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -81,76 +54,49 @@ exports[`DateInput has invalid day 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day ds-c-field--error"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day ds-c-field--error"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -158,76 +104,49 @@ exports[`DateInput has invalid month 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month ds-c-field--error"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month ds-c-field--error"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -235,76 +154,49 @@ exports[`DateInput has invalid year 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year ds-c-field--error"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year ds-c-field--error"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -312,79 +204,52 @@ exports[`DateInput is disabled 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month"
-      disabled={true}
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    disabled={true}
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day"
-      disabled={true}
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    disabled={true}
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year"
-      disabled={true}
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    disabled={true}
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -392,76 +257,52 @@ exports[`DateInput is inversed 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--inverse ds-c-field--month"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    inversed={true}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--inverse ds-c-field--day"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    inversed={true}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label ds-c-label--inverse"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--inverse ds-c-field--year"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    inversed={true}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;
 
@@ -469,75 +310,48 @@ exports[`DateInput renders with all defaultProps 1`] = `
 <div
   className="ds-l-form-row ds-u-align-items--end"
 >
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--month"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--month"
+    inputRef={[Function]}
+    label="Month"
+    labelClassName="ds-c-datefield__label"
+    name="month"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--day"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--day"
+    inputRef={[Function]}
+    label="Day"
+    labelClassName="ds-c-datefield__label"
+    name="day"
+    numeric={true}
+    type="text"
+  />
   <span
     className="ds-c-datefield__separator"
   >
     /
   </span>
-  <div
-    className="ds-u-clearfix ds-l-col--auto"
-  >
-    <label
-      className="ds-c-label ds-c-datefield__label"
-      htmlFor="field_snapshot"
-      id="field_label_snapshot"
-    >
-      <span
-        className=""
-      />
-    </label>
-    <input
-      className="ds-c-field ds-c-field--year"
-      id="field_snapshot"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      type="text"
-    />
-  </div>
+  <TextField
+    aria-describedby="1"
+    className="ds-l-col--auto"
+    fieldClassName="ds-c-field--year"
+    inputRef={[Function]}
+    label="year"
+    labelClassName="ds-c-datefield__label"
+    name="Year"
+    numeric={true}
+    type="text"
+  />
 </div>
 `;

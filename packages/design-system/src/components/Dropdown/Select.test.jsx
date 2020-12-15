@@ -1,33 +1,17 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import Select from './Select';
+import { generateOptions } from './Dropdown.test';
 
-const defaultProps = { name: 'Select', label: 'Select an option' };
+const defaultProps = {
+  name: 'Select',
+  label: 'Select an option',
+  id: '1',
+  setRef: jest.fn(),
+  onBlur: jest.fn(),
+  onChange: jest.fn(),
+};
 
-/**
- * Generate <option> elements
- * @param {number} count
- */
-function generateOptions(count) {
-  const options = [];
-
-  for (let i = 1; i < count + 1; i++) {
-    options.push({
-      value: String(i),
-      label: String(i),
-    });
-  }
-
-  return options;
-}
-
-/**
- * Helper method for shallow rendering the <Select> component. The only props
- * initially defined are the required props.
- * @param {object} customProps - Additional props
- * @param {number} optionsCount - Total number of <option>'s
- * @return {object}
- */
 function render(customProps = {}, optionsCount = 1, deep = false) {
   const props = { ...defaultProps, ...customProps };
   const component = <Select {...props} options={generateOptions(optionsCount)} />;
@@ -95,6 +79,18 @@ describe('Select', () => {
     expect(smallData.wrapper.find('select').hasClass('ds-c-field--small')).toBe(true);
   });
 
+  it('is inversed', () => {
+    const data = render({ inversed: true });
+
+    expect(data.wrapper.find('select').hasClass('ds-c-field--inverse')).toBe(true);
+  });
+
+  it('has error', () => {
+    const data = render({ errorMessage: 'Error' });
+
+    expect(data.wrapper.find('select').hasClass('ds-c-field--error')).toBe(true);
+  });
+
   it('is disabled', () => {
     const data = render({ disabled: true });
 
@@ -108,33 +104,23 @@ describe('Select', () => {
   });
 
   describe('event handlers', () => {
-    let wrapper;
-    let onBlurMock;
-    let onChangeMock;
+    const wrapper = render().wrapper;
 
     beforeEach(() => {
-      onBlurMock = jest.fn();
-      onChangeMock = jest.fn();
-
-      const sharedProps = {
-        ...defaultProps,
-        onBlur: onBlurMock,
-        onChange: onChangeMock,
-      };
-
-      wrapper = shallow(<Select {...sharedProps} options={generateOptions(10)} />);
+      defaultProps.onBlur.mockClear();
+      defaultProps.onChange.mockClear();
     });
 
     it('calls the onChange handler', () => {
       wrapper.find('select').simulate('change');
-      expect(onBlurMock.mock.calls.length).toBe(0);
-      expect(onChangeMock.mock.calls.length).toBe(1);
+      expect(defaultProps.onBlur).not.toHaveBeenCalled();
+      expect(defaultProps.onChange).toHaveBeenCalled();
     });
 
     it('calls the onBlur handler', () => {
       wrapper.find('select').simulate('blur');
-      expect(onBlurMock.mock.calls.length).toBe(1);
-      expect(onChangeMock.mock.calls.length).toBe(0);
+      expect(defaultProps.onBlur).toHaveBeenCalled();
+      expect(defaultProps.onChange).not.toHaveBeenCalled();
     });
   });
 });

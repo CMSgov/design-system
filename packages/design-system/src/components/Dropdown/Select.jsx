@@ -99,7 +99,7 @@ Select.propTypes = {
   ).isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  setRef: PropTypes.function,
+  setRef: PropTypes.func,
   /**
    * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
    */

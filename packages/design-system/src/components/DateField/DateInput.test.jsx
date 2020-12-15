@@ -3,135 +3,158 @@ jest.mock('lodash.uniqueid', () => (str) => `${str}snapshot`);
 import { mount, shallow } from 'enzyme';
 import DateInput from './DateInput';
 import React from 'react';
-import renderer from 'react-test-renderer';
+
+const defaultProps = {
+  labelId: '1',
+  dayName: 'day',
+  dayLabel: 'Day',
+  monthName: 'month',
+  monthLabel: 'Month',
+  yearName: 'Year',
+  yearLabel: 'year',
+};
+
+function render(customProps = {}, deep = false) {
+  const props = { ...defaultProps, ...customProps };
+  const component = <DateInput {...props} />;
+
+  return {
+    props,
+    wrapper: deep ? mount(component) : shallow(component),
+  };
+}
 
 describe('DateInput', () => {
   it('renders with all defaultProps', () => {
-    expect(renderer.create(<DateInput />)).toMatchSnapshot();
+    expect(render().wrapper).toMatchSnapshot();
   });
 
   it('is inversed', () => {
-    expect(renderer.create(<DateInput inversed />)).toMatchSnapshot();
+    expect(render({ inversed: true }).wrapper).toMatchSnapshot();
   });
 
   it('has invalid month', () => {
-    expect(renderer.create(<DateInput monthInvalid />)).toMatchSnapshot();
+    expect(render({ monthInvalid: true }).wrapper).toMatchSnapshot();
   });
 
   it('has invalid day', () => {
-    expect(renderer.create(<DateInput dayInvalid />)).toMatchSnapshot();
+    expect(render({ dayInvalid: true }).wrapper).toMatchSnapshot();
   });
 
   it('has invalid year', () => {
-    expect(renderer.create(<DateInput yearInvalid />)).toMatchSnapshot();
+    expect(render({ yearInvalid: true }).wrapper).toMatchSnapshot();
   });
 
   it('has custom yearMax and yearMin', () => {
-    expect(renderer.create(<DateInput yearMax={2000} yearMin="1990" />)).toMatchSnapshot();
+    expect(render({ yearMax: 2000, yearMin: '1990' }).wrapper).toMatchSnapshot();
   });
 
   it('is disabled', () => {
-    expect(renderer.create(<DateInput disabled />)).toMatchSnapshot();
+    expect(render({ disabled: true }).wrapper).toMatchSnapshot();
   });
 
   it('returns reference to input fields', () => {
     const refs = {};
-    const props = {
-      dayDefaultValue: '1',
-      dayFieldRef: (el) => {
-        refs.day = el;
+    const data = render(
+      {
+        dayDefaultValue: '1',
+        dayFieldRef: (el) => {
+          refs.day = el;
+        },
+        monthDefaultValue: '22',
+        monthFieldRef: (el) => {
+          refs.month = el;
+        },
+        yearDefaultValue: '3333',
+        yearFieldRef: (el) => {
+          refs.year = el;
+        },
       },
-      monthDefaultValue: '22',
-      monthFieldRef: (el) => {
-        refs.month = el;
-      },
-      yearDefaultValue: '3333',
-      yearFieldRef: (el) => {
-        refs.year = el;
-      },
-    };
-    mount(<DateInput {...props} />);
+      true
+    );
 
-    expect(refs.day.value).toBe(props.dayDefaultValue);
-    expect(refs.month.value).toBe(props.monthDefaultValue);
-    expect(refs.year.value).toBe(props.yearDefaultValue);
+    expect(refs.day.value).toBe(data.props.dayDefaultValue);
+    expect(refs.month.value).toBe(data.props.monthDefaultValue);
+    expect(refs.year.value).toBe(data.props.yearDefaultValue);
   });
 
   describe('event handlers', () => {
-    let props;
+    const props = {
+      onBlur: jest.fn(),
+      onChange: jest.fn(),
+      onComponentBlur: jest.fn(),
+    };
 
     beforeEach(() => {
-      props = {
-        onBlur: jest.fn(),
-        onChange: jest.fn(),
-      };
+      props.onBlur.mockClear();
+      props.onChange.mockClear();
+      props.onComponentBlur.mockClear();
     });
 
     it('does not require event handler', () => {
-      const wrapper = shallow(<DateInput />);
+      const data = render();
 
-      // This shouldn't result in an error
-      wrapper.find('TextField').at(0).simulate('blur');
+      data.wrapper.find('TextField').at(0).simulate('blur');
     });
 
     it('calls onBlur when month is blurred', () => {
-      const wrapper = shallow(<DateInput {...props} />);
-
-      wrapper.find('TextField').at(0).simulate('blur');
+      const data = render(props);
+      data.wrapper.find('TextField').at(0).simulate('blur');
 
       expect(props.onBlur).toHaveBeenCalledTimes(1);
-      expect(props.onChange).not.toHaveBeenCalledTimes(1);
+      expect(props.onChange).not.toHaveBeenCalled();
     });
 
     it('calls onChange when day is changed', () => {
-      const wrapper = shallow(<DateInput {...props} />);
+      const data = render(props);
+      data.wrapper.find('TextField').at(1).simulate('change');
 
-      wrapper.find('TextField').at(1).simulate('change');
-
-      expect(props.onBlur).not.toHaveBeenCalledTimes(1);
+      expect(props.onBlur).not.toHaveBeenCalled();
       expect(props.onChange).toHaveBeenCalledTimes(1);
     });
 
     it('calls onComponentBlur when component loses focus', (done) => {
-      const onComponentBlur = jest.fn();
-      const wrapper = shallow(<DateInput onComponentBlur={onComponentBlur} />);
-
-      wrapper.find('TextField').at(2).simulate('blur');
+      const data = render(props);
+      data.wrapper.find('TextField').at(2).simulate('blur');
 
       setTimeout(() => {
-        expect(onComponentBlur).toHaveBeenCalledTimes(1);
+        expect(props.onComponentBlur).toHaveBeenCalledTimes(1);
+        expect(props.onBlur).not.toHaveBeenCalled();
+        expect(props.onChange).not.toHaveBeenCalled();
         done();
       }, 30);
     });
 
     it('does not call onComponentBlur when focus switches to other date component', (done) => {
-      const onComponentBlur = jest.fn();
-      const wrapper = mount(<DateInput onComponentBlur={onComponentBlur} />);
-
-      wrapper.find('TextField').at(0).simulate('blur');
+      const data = render(props);
+      data.wrapper.find('TextField').at(0).simulate('blur');
 
       setTimeout(() => {
-        expect(onComponentBlur).not.toHaveBeenCalledTimes(1);
+        expect(props.onComponentBlur).not.toHaveBeenCalled();
+        expect(props.onBlur).toHaveBeenCalledTimes(1);
+        expect(props.onChange).not.toHaveBeenCalled();
         done();
       }, 30);
     });
 
     it('formats the date as a single string', () => {
-      props = Object.assign(
+      const data = render(
         {
-          dateFormatter: (values) => {
-            return `${values.month} ${values.day} ${values.year}`;
+          ...{
+            dateFormatter: (values) => {
+              return `${values.month} ${values.day} ${values.year}`;
+            },
+            monthValue: '1',
+            dayValue: '22',
+            yearValue: '3333',
           },
-          monthValue: '1',
-          dayValue: '22',
-          yearValue: '3333',
+          ...props,
         },
-        props
+        true
       );
 
-      const wrapper = mount(<DateInput {...props} />);
-      wrapper.find('input').at(1).simulate('change');
-      wrapper.find('input').at(1).simulate('blur');
+      data.wrapper.find('input').at(1).simulate('change');
+      data.wrapper.find('input').at(1).simulate('blur');
 
       expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).toHaveBeenCalledTimes(1);

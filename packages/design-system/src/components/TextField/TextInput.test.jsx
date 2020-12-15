@@ -1,18 +1,20 @@
-import TextInput, { unmaskValue } from './TextInput';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
+import TextInput from './TextInput';
+
+const defaultProps = {
+  name: 'spec-field',
+  setRef: jest.fn(),
+  id: '1',
+  type: 'text',
+};
 
 function render(customProps = {}, deep = false) {
-  const props = Object.assign(
-    {
-      name: 'spec-field',
-    },
-    customProps
-  );
+  const props = { ...defaultProps, ...customProps };
   const component = <TextInput {...props} />;
 
   return {
-    props: props,
+    props,
     wrapper: deep ? mount(component) : shallow(component),
   };
 }
@@ -24,7 +26,6 @@ describe('TextInput', function () {
 
     expect(field.is('input')).toBe(true);
     expect(field.prop('rows')).toBeUndefined();
-    expect(field.prop('type')).toBe('text');
     expect(data.wrapper).toMatchSnapshot();
   });
 
@@ -50,6 +51,20 @@ describe('TextInput', function () {
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.prop('disabled')).toBe(data.props.disabled);
+  });
+
+  it('has error', () => {
+    const data = render({ errorMessage: 'Error' });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.hasClass('ds-c-field--error')).toBe(true);
+  });
+
+  it('has inversed theme', () => {
+    const data = render({ inversed: true });
+    const field = data.wrapper.find('.ds-c-field').first();
+
+    expect(field.hasClass('ds-c-field--inverse')).toBe(true);
   });
 
   it('has a defaultValue', () => {
@@ -149,10 +164,6 @@ describe('TextInput', function () {
   });
 
   describe('masks', () => {
-    it('exports unmaskValue method', () => {
-      expect(typeof unmaskValue).toBe('function');
-    });
-
     it('renders TextInput', () => {
       const data = render();
 

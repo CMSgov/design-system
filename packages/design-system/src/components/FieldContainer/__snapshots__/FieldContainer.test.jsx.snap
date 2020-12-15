@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldContainer renders custom component and labelComponent elements 1`] = `
+<FieldContainer
+  component="fieldset"
+  label="Foo"
+  labelComponent="legend"
+>
+  <fieldset
+    className="ds-c-fieldset"
+  >
+    <FormLabel
+      component="legend"
+      fieldId="field_3"
+      id="field_label_4"
+    >
+      <legend
+        className="ds-c-label"
+        htmlFor="field_3"
+        id="field_label_4"
+      >
+        <span
+          className=""
+        >
+          Foo
+        </span>
+      </legend>
+    </FormLabel>
+    <input
+      aria-describedby="field_label_4"
+      id="field_3"
+    />
+  </fieldset>
+</FieldContainer>
+`;
+
+exports[`FieldContainer renders default component and labelComponent elements 1`] = `
+<FieldContainer
+  component="div"
+  label="Foo"
+  labelComponent="label"
+>
+  <div>
+    <FormLabel
+      component="label"
+      fieldId="field_1"
+      id="field_label_2"
+    >
+      <label
+        className="ds-c-label"
+        htmlFor="field_1"
+        id="field_label_2"
+      >
+        <span
+          className=""
+        >
+          Foo
+        </span>
+      </label>
+    </FormLabel>
+    <input
+      aria-describedby="field_label_2"
+      id="field_1"
+    />
+  </div>
+</FieldContainer>
+`;

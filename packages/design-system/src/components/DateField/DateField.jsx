@@ -11,10 +11,7 @@ const standardLengthFormatter = ({ day, month, year }) => ({
   year: year.length > 4 ? year.substring(0, 4) : year,
 });
 
-export const defaultDateFormatter = (dateObject) => {
-  const standardDate = standardLengthFormatter(dateObject);
-  return standardDate;
-};
+export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
 export function DateField(props) {
   const containerProps = pick(props, Object.keys(FieldContainer.propTypes));

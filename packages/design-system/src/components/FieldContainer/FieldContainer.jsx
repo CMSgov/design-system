@@ -54,6 +54,10 @@ export class FieldContainer extends React.PureComponent {
       setRef: this.setFieldRef,
     };
 
+    // Render children with render props or normally
+    // We allow normal rendering to simplify unit tests in ChoiceField
+    const render = typeof children === 'function' ? children(fieldInputProps) : children;
+
     return (
       <ComponentType className={classes}>
         <FormLabel
@@ -68,13 +72,12 @@ export class FieldContainer extends React.PureComponent {
         >
           {label}
         </FormLabel>
-        {children(fieldInputProps)}
+        {render}
       </ComponentType>
     );
   }
 }
 
-FieldContainer.defaultProps = { component: 'div' };
 FieldContainer.propTypes = {
   /**
    * Additional classes to be added to the field container.
@@ -83,11 +86,11 @@ FieldContainer.propTypes = {
   /**
    * A function that returns a field input element to accept render props
    */
-  children: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
   /**
    * The HTML element used to render the container
    */
-  component: PropTypes.oneOf(['div', 'fieldset']),
+  component: PropTypes.oneOf(['div', 'fieldset']).isRequired,
   errorMessage: PropTypes.node,
   /**
    * Used to focus the field input on `componentDidMount()`
@@ -120,7 +123,7 @@ FieldContainer.propTypes = {
   /**
    * The root HTML element used to render the field label
    */
-  labelComponent: PropTypes.oneOf(['label', 'legend']),
+  labelComponent: PropTypes.oneOf(['label', 'legend']).isRequired,
   /**
    * A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.
    */

@@ -1,240 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateField has errorMessage 1`] = `
+exports[`DateField renders 1`] = `
 <fieldset
   className="ds-c-fieldset"
 >
   <legend
     className="ds-c-label"
-    htmlFor="field_snapshot"
-    id="field_label_snapshot"
-  >
-    <span
-      className=""
-    >
-      Date
-    </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      For example: 4 / 28 / 1986
-    </span>
-    <span
-      className="ds-c-field__error-message"
-      id="field_snapshot-message"
-      role="alert"
-    >
-      This is required.
-    </span>
-  </legend>
-  <div
-    className="ds-l-form-row ds-u-align-items--end"
-  >
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="month_snapshot"
-        id="month_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Month
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--month"
-        id="month_snapshot"
-        inputMode="numeric"
-        name="month"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-    <span
-      className="ds-c-datefield__separator"
-    >
-      /
-    </span>
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="day_snapshot"
-        id="day_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Day
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--day"
-        id="day_snapshot"
-        inputMode="numeric"
-        name="day"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-    <span
-      className="ds-c-datefield__separator"
-    >
-      /
-    </span>
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="year_snapshot"
-        id="year_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Year
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--year"
-        id="year_snapshot"
-        inputMode="numeric"
-        name="year"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-  </div>
-</fieldset>
-`;
-
-exports[`DateField has requirementLabel 1`] = `
-<fieldset
-  className="ds-c-fieldset"
->
-  <legend
-    className="ds-c-label"
-    htmlFor="field_snapshot"
-    id="field_label_snapshot"
-  >
-    <span
-      className=""
-    >
-      Date
-    </span>
-    <span
-      className="ds-c-field__hint"
-    >
-      Optional.
-       
-      For example: 4 / 28 / 1986
-    </span>
-  </legend>
-  <div
-    className="ds-l-form-row ds-u-align-items--end"
-  >
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="month_snapshot"
-        id="month_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Month
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--month"
-        id="month_snapshot"
-        inputMode="numeric"
-        name="month"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-    <span
-      className="ds-c-datefield__separator"
-    >
-      /
-    </span>
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="day_snapshot"
-        id="day_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Day
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--day"
-        id="day_snapshot"
-        inputMode="numeric"
-        name="day"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-    <span
-      className="ds-c-datefield__separator"
-    >
-      /
-    </span>
-    <div
-      className="ds-u-clearfix ds-l-col--auto"
-    >
-      <label
-        className="ds-c-label ds-c-datefield__label"
-        htmlFor="year_snapshot"
-        id="year_label_snapshot"
-      >
-        <span
-          className=""
-        >
-          Year
-        </span>
-      </label>
-      <input
-        aria-describedby="field_label_snapshot"
-        className="ds-c-field ds-c-field--year"
-        id="year_snapshot"
-        inputMode="numeric"
-        name="year"
-        pattern="[0-9]*"
-        type="text"
-      />
-    </div>
-  </div>
-</fieldset>
-`;
-
-exports[`DateField renders with all defaultProps 1`] = `
-<fieldset
-  className="ds-c-fieldset"
->
-  <legend
-    className="ds-c-label"
-    htmlFor="field_snapshot"
-    id="field_label_snapshot"
+    htmlFor="field_1"
+    id="field_label_2"
   >
     <span
       className=""
@@ -255,8 +28,8 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="month_snapshot"
-        id="month_label_snapshot"
+        htmlFor="field_3"
+        id="field_label_4"
       >
         <span
           className=""
@@ -265,9 +38,10 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_snapshot"
+        aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--month"
-        id="month_snapshot"
+        fieldClassName="ds-c-field--month"
+        id="field_3"
         inputMode="numeric"
         name="month"
         pattern="[0-9]*"
@@ -284,8 +58,8 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="day_snapshot"
-        id="day_label_snapshot"
+        htmlFor="field_5"
+        id="field_label_6"
       >
         <span
           className=""
@@ -294,9 +68,10 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_snapshot"
+        aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--day"
-        id="day_snapshot"
+        fieldClassName="ds-c-field--day"
+        id="field_5"
         inputMode="numeric"
         name="day"
         pattern="[0-9]*"
@@ -313,8 +88,8 @@ exports[`DateField renders with all defaultProps 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="year_snapshot"
-        id="year_label_snapshot"
+        htmlFor="field_7"
+        id="field_label_8"
       >
         <span
           className=""
@@ -323,9 +98,10 @@ exports[`DateField renders with all defaultProps 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_snapshot"
+        aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--year"
-        id="year_snapshot"
+        fieldClassName="ds-c-field--year"
+        id="field_7"
         inputMode="numeric"
         name="year"
         pattern="[0-9]*"

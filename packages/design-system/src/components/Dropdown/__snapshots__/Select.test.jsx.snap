@@ -1,11 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Dropdown renders 1`] = `
+<FieldContainer
+  component="div"
+  label=""
+  labelComponent="label"
+>
+  <Component />
+</FieldContainer>
+`;
+
 exports[`Select renders a select menu 1`] = `
 <select
   aria-label="test aria label"
   className="ds-c-field"
+  id="1"
   label=""
   name="Select"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
   value="1"
 >
   <option
@@ -21,8 +34,11 @@ exports[`Select renders options correctly 1`] = `
 <select
   className="ds-c-field"
   defaultValue="1"
+  id="1"
   label="Select an option"
   name="Select"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
 >
   <option
     key="1"

@@ -1,6 +1,6 @@
+import { mount, shallow } from 'enzyme';
 import ChoiceList from './ChoiceList';
 import React from 'react';
-import { shallow } from 'enzyme';
 
 function generateChoices(length) {
   const choices = [];
@@ -15,52 +15,47 @@ function generateChoices(length) {
   return choices;
 }
 
-/**
- * Helper method for shallow rendering the <ChoiceList> component. The only props
- * initially defined are the required props.
- * @param {object} customProps - Additional props
- * @param {number} choicesCount - Total number of choices
- * @return {object}
- */
-function shallowRender(customProps = {}, choicesCount = 2) {
-  const props = Object.assign(
-    {
+function render(customProps = {}, choicesCount = 2, deep = false) {
+  const props = {
+    ...{
       choices: generateChoices(choicesCount),
       label: 'Foo',
       name: 'spec-field',
       type: 'radio',
     },
-    customProps
-  );
+    ...customProps,
+  };
+  const component = <ChoiceList {...props} />;
 
   return {
-    props: props,
-    wrapper: shallow(<ChoiceList {...props} />),
+    props,
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
     it('is a radio button group', () => {
-      const data = shallowRender({ type: 'radio' });
+      const data = render({ type: 'radio' });
 
       expect(data.wrapper.find('Choice').first().prop('type')).toBe('radio');
+      expect(data.wrapper).toMatchSnapshot();
     });
 
     it('is a checkbox group', () => {
-      const data = shallowRender({ type: 'checkbox' });
+      const data = render({ type: 'checkbox' });
 
       expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('is a checkbox', () => {
-      const data = shallowRender({ choices: generateChoices(1), type: 'checkbox' });
+      const data = render({ choices: generateChoices(1), type: 'checkbox' });
 
       expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('renders all choices', () => {
-      const data = shallowRender();
+      const data = render();
       const choice = data.wrapper.find('Choice').first();
 
       expect(data.wrapper.find('Choice').length).toBe(data.props.choices.length);
@@ -69,22 +64,23 @@ describe('ChoiceList', () => {
     });
 
     it('is enclosed by a fieldset', () => {
-      const data = shallowRender();
+      const data = render();
+      const container = data.wrapper.find('FieldContainer');
 
-      expect(data.wrapper.is('fieldset')).toBe(true);
-      expect(data.wrapper.hasClass('ds-c-fieldset')).toBe(true);
+      expect(container.prop('component')).toBe('fieldset');
     });
 
     it('renders the label prop as a legend element', () => {
-      const data = shallowRender();
+      const data = render();
+      const container = data.wrapper.find('FieldContainer');
 
-      expect(data.wrapper.render().find('legend').first().text()).toBe(data.props.label);
+      expect(container.prop('labelComponent')).toBe('legend');
     });
 
     it('passes checked prop', () => {
       const choices = generateChoices(4);
       choices[1].checked = true;
-      const data = shallowRender({ choices });
+      const data = render({ choices });
 
       expect(data.wrapper.find('Choice').get(1).props.checked).toBe(true);
     });
@@ -92,7 +88,7 @@ describe('ChoiceList', () => {
     it('passes defaultChecked prop', () => {
       const choices = generateChoices(4);
       choices[1].defaultChecked = true;
-      const data = shallowRender({ choices });
+      const data = render({ choices });
 
       expect(data.wrapper.find('Choice').get(1).props.defaultChecked).toBe(true);
     });
@@ -100,33 +96,33 @@ describe('ChoiceList', () => {
     it('passes disabled prop', () => {
       const choices = generateChoices(4);
       choices[1].disabled = true;
-      const data = shallowRender({ choices });
+      const data = render({ choices });
 
       expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
     });
 
     it('disables all choices', () => {
-      const data = shallowRender({ disabled: true });
+      const data = render({ disabled: true });
 
       expect(data.wrapper.find('Choice').get(0).props.disabled).toBe(true);
       expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
     });
 
     it("doesn't pass an ID prop", () => {
-      const data = shallowRender();
+      const data = render();
 
       expect(data.wrapper.find('Choice').first().prop('id')).toBeUndefined();
     });
 
     it('is inversed Choice', () => {
-      const data = shallowRender({ inversed: true });
+      const data = render({ inversed: true });
 
       expect(data.wrapper.find('Choice').first().prop('inversed')).toBe(true);
     });
 
     it('calls onChange', () => {
       const onChange = jest.fn();
-      const data = shallowRender({ onChange });
+      const data = render({ onChange });
       data.wrapper.find('Choice').first().simulate('change');
 
       expect(onChange).toHaveBeenCalled();
@@ -135,7 +131,7 @@ describe('ChoiceList', () => {
     it('calls onBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
+      const data = render({ onBlur, onComponentBlur });
       data.wrapper.find('Choice').first().simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();
@@ -148,7 +144,7 @@ describe('ChoiceList', () => {
     it('calls onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
+      const data = render({ onBlur, onComponentBlur });
       data.wrapper.find('Choice').last().simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();
@@ -160,7 +156,7 @@ describe('ChoiceList', () => {
     it('doesnt call onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
+      const data = render({ onBlur, onComponentBlur });
       data.wrapper.find('Choice').first().simulate('blur');
 
       expect(onBlur).toHaveBeenCalled();

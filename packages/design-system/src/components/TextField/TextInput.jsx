@@ -91,7 +91,7 @@ TextInput.propTypes = {
    * Whether or not the text field is a multiline text field
    */
   multiline: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   /**
    * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
@@ -115,7 +115,7 @@ TextInput.propTypes = {
   /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   /**
    * Sets the input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.

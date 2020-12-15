@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown renders 1`] = `
+exports[`TextField renders 1`] = `
 <FieldContainer
+  className="ds-u-clearfix"
   component="div"
-  label=""
+  label="Foo"
   labelComponent="label"
 >
   <Component />
