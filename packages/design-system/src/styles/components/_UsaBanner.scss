@@ -123,6 +123,7 @@ $usa-banner-text-color: #1b1b1b;
     margin: 0;
     margin-left: 0.5rem;
     padding: 0;
+    position: relative;
     right: auto;
     top: auto;
     width: auto;
@@ -143,15 +144,12 @@ $usa-banner-text-color: #1b1b1b;
     }
 
     &[aria-expanded='true']::after {
-      background: 0 0;
-      background-color: #005ea2;
+      background: url('#{$image-path}/close-alt.svg') no-repeat center/1rem 1rem;
       bottom: 0;
       content: '';
       display: inline-block;
       height: 3rem;
       margin-left: 0;
-      // -webkit-mask: url('#{$image-path}/close-alt.svg') no-repeat center/1rem 1rem;
-      mask: url('#{$image-path}/close-alt.svg') no-repeat center/1rem 1rem;
       position: absolute;
       right: 0;
       top: 0;
