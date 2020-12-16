@@ -74,9 +74,15 @@ $usa-banner-text-color: #1b1b1b;
 
 .ds-c-usa-banner__content {
   font-size: 0.99816rem;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
-  padding: $spacer-3 0;
-  width: 100%;
+  padding: 0.25rem 1rem 1rem 0.5rem;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+  }
 }
 
 .ds-c-usa-banner__button {
