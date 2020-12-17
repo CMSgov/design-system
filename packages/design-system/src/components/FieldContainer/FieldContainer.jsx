@@ -45,7 +45,7 @@ export class FieldContainer extends React.PureComponent {
 
     const ComponentType = component;
     const classes =
-      ComponentType === 'fieldset' ? classNames(className, 'ds-c-fieldset') : className;
+      ComponentType === 'fieldset' ? classNames('ds-c-fieldset', className) : className;
 
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {
