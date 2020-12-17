@@ -1,6 +1,6 @@
 import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
-import { FieldContainer } from '../FieldContainer/FieldContainer';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 

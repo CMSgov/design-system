@@ -1,5 +1,5 @@
 import { omit, pick } from 'lodash';
-import { FieldContainer } from '../FieldContainer/FieldContainer';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';

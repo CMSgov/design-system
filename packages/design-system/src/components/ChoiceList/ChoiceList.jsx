@@ -1,5 +1,5 @@
 import Choice from './Choice';
-import { FieldContainer } from '../FieldContainer/FieldContainer';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
