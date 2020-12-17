@@ -129,7 +129,7 @@ $usa-banner-text-color: #1b1b1b;
 
   // Display close icon on smaller viewport
   // stylelint-disable scss/media-feature-value-dollar-variable
-  @media (max-width: #{$width-sm - 1px}) {
+  @media (max-width: $width-sm - 1px) {
     &[aria-expanded='true']::before {
       background-color: #e6e6e6;
       bottom: 0;

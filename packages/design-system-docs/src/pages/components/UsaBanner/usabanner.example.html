@@ -1,20 +1,25 @@
 <h6 class="preview__label">English banner</h6>
-<div class="ds-c-usa-banner">
+<section class="ds-c-usa-banner" aria-label="Official government website">
   <header class="ds-c-usa-banner__header">
-    <svg
-      width="16"
-      height="11"
-      class="ds-c-usa-banner__header-flag"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
-    </svg>
-    <p class="ds-c-usa-banner__header-text">
-      <span>An official website of the United States government</span>
-      <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
-        Here’s how you know
-      </button>
-    </p>
+    <div class="ds-c-usa-banner__inner">
+      <p class="ds-c-usa-banner__header-text">
+        <svg
+          width="16"
+          height="11"
+          class="ds-c-usa-banner__header-flag"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
+        </svg>
+      </p>
+      <p class="ds-c-usa-banner__header-text">
+        <span>An official website of the United States government</span>
+        <span class="ds-c-usa-banner__header-action" aria-hidden="true">Here’s how you know</span>
+        <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
+          <span class="ds-c-usa-banner__button-text">Here’s how you know</span>
+        </button>
+      </p>
+    </div>
   </header>
   <div class="ds-c-usa-banner__content" id="gov-banner" hidden="">
     <div
@@ -59,24 +64,31 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 <h6 class="preview__label">Spanish banner</h6>
-<div class="ds-c-usa-banner">
+<section class="ds-c-usa-banner" aria-label="Official government website">
   <header class="ds-c-usa-banner__header">
-    <svg
-      width="16"
-      height="11"
-      class="ds-c-usa-banner__header-flag"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
-    </svg>
-    <p class="ds-c-usa-banner__header-text">
-      <span>Un sitio oficial del Gobierno de Estados Unidos</span>
-      <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
-        Así es como usted puede verificarlo
-      </button>
-    </p>
+    <div class="ds-c-usa-banner__inner">
+      <p class="ds-c-usa-banner__header-text">
+        <svg
+          width="16"
+          height="11"
+          class="ds-c-usa-banner__header-flag"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use href="{{root}}/images/usa-banner-flag.svg#svg"></use>
+        </svg>
+      </p>
+      <p class="ds-c-usa-banner__header-text">
+        <span>Un sitio oficial del Gobierno de Estados Unidos</span>
+        <span class="ds-c-usa-banner__header-action" aria-hidden="true"
+          >Así es como usted puede verificarlo</span
+        >
+        <button class="ds-c-usa-banner__button" aria-expanded="true" aria-controls="gov-banner">
+          <span class="ds-c-usa-banner__button-text">Así es como usted puede verificarlo</span>
+        </button>
+      </p>
+    </div>
   </header>
   <div class="ds-c-usa-banner__content" id="gov-banner" hidden="">
     <div
@@ -121,4 +133,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
