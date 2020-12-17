@@ -6,8 +6,8 @@ import classNames from 'classnames';
 export function TextInput(props) {
   const {
     ariaLabel,
-    className,
     errorMessage,
+    fieldClassName,
     inversed,
     mask,
     multiline,
@@ -28,7 +28,7 @@ export function TextInput(props) {
     },
     mask && `ds-c-field--${mask}`,
     size && `ds-c-field--${size}`,
-    className
+    fieldClassName
   );
 
   let inputType = type;
@@ -70,9 +70,9 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
   /**
-   * Additional classes to be added to the field element
+   * Additional classes to be added to the input element
    */
-  className: PropTypes.string,
+  fieldClassName: PropTypes.string,
   /**
    * A unique ID to be used for the input field.
    */

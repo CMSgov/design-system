@@ -20,8 +20,8 @@ export class Select extends React.PureComponent {
     const {
       ariaLabel,
       children,
-      className,
       errorMessage,
+      fieldClassName,
       inversed,
       options,
       size,
@@ -36,7 +36,7 @@ export class Select extends React.PureComponent {
         'ds-c-field--inverse': inversed,
       },
       size && `ds-c-field--${size}`,
-      className
+      fieldClassName
     );
 
     const optionElements = options.map((option) => (
@@ -63,10 +63,6 @@ Select.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * Additional classes to be added to the select element
-   */
-  className: PropTypes.string,
-  /**
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
    */
@@ -76,6 +72,10 @@ Select.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Additional classes to be added to the select element
+   */
+  fieldClassName: PropTypes.string,
   /**
    * A unique ID to be used for the Select field.
    */

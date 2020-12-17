@@ -94,7 +94,7 @@ describe('TextInput', function () {
   });
 
   it('adds className to field', () => {
-    const data = render({ className: 'bar' });
+    const data = render({ fieldClassName: 'bar' });
     const field = data.wrapper.find('.ds-c-field').first();
 
     expect(field.hasClass('ds-c-field')).toBe(true);

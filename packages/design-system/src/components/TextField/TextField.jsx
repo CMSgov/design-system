@@ -41,7 +41,6 @@ export class TextField extends React.PureComponent {
           <TextInput
             {...inputOnlyProps}
             {...{ id, setRef }}
-            className={this.props.fieldClassName}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
           />

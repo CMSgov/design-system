@@ -40,7 +40,6 @@ exports[`DateField renders 1`] = `
       <input
         aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--month"
-        fieldClassName="ds-c-field--month"
         id="field_3"
         inputMode="numeric"
         name="month"
@@ -70,7 +69,6 @@ exports[`DateField renders 1`] = `
       <input
         aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--day"
-        fieldClassName="ds-c-field--day"
         id="field_5"
         inputMode="numeric"
         name="day"
@@ -100,7 +98,6 @@ exports[`DateField renders 1`] = `
       <input
         aria-describedby="field_label_2"
         className="ds-c-field ds-c-field--year"
-        fieldClassName="ds-c-field--year"
         id="field_7"
         inputMode="numeric"
         name="year"

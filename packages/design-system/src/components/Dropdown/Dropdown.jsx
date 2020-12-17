@@ -34,7 +34,6 @@ export class Dropdown extends React.PureComponent {
           <Select
             {...inputOnlyProps}
             {...{ id, setRef }}
-            className={this.props.fieldClassName}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
           />

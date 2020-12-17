@@ -64,9 +64,9 @@ describe('Select', () => {
   });
 
   it('applies additional classNames to select element', () => {
-    const data = render({ className: 'foo' });
+    const data = render({ fieldClassName: 'foo' });
 
-    expect(data.wrapper.find('select').hasClass(data.props.className)).toBe(true);
+    expect(data.wrapper.find('select').hasClass(data.props.fieldClassName)).toBe(true);
     // Make sure we're not replacing the other class names
     expect(data.wrapper.find('select').hasClass('ds-c-field')).toBe(true);
   });
