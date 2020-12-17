@@ -30,7 +30,9 @@ export class UsaBanner extends React.PureComponent {
           }`}
         >
           <div className="ds-c-usa-banner__inner">
-            <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
+            <p className="ds-c-usa-banner__header-text">
+              <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
+            </p>
             <p className="ds-c-usa-banner__header-text">
               <span>{t.bannerText}</span>
               <p className="ds-c-usa-banner__header-action" aria-hidden="true">
