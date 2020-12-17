@@ -35,9 +35,9 @@ export class UsaBanner extends React.PureComponent {
             </p>
             <p className="ds-c-usa-banner__header-text">
               <span>{t.bannerText}</span>
-              <p className="ds-c-usa-banner__header-action" aria-hidden="true">
+              <span className="ds-c-usa-banner__header-action" aria-hidden="true">
                 {t.bannerActionText}
-              </p>
+              </span>
               <button
                 onClick={this.handleToggleBanner}
                 className="ds-c-usa-banner__button"

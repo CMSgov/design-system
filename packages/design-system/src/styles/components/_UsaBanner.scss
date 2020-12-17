@@ -44,6 +44,7 @@ $usa-banner-text-color: #1b1b1b;
 
 .ds-c-usa-banner__header-action {
   color: #005ea2;
+  display: block;
   line-height: 1.1;
   margin-bottom: 0;
   margin-top: 2px;
@@ -117,11 +118,8 @@ $usa-banner-text-color: #1b1b1b;
     bottom: auto;
     box-shadow: none;
     display: inline;
-    font-size: inherit;
     left: auto;
-    line-height: inherit;
     margin: 0;
-    margin-left: 0.5rem;
     padding: 0;
     position: relative;
     right: auto;
@@ -130,7 +128,8 @@ $usa-banner-text-color: #1b1b1b;
   }
 
   // Display close icon on smaller viewport
-  @media (max-width: $width-sm) {
+  // stylelint-disable scss/media-feature-value-dollar-variable
+  @media (max-width: #{$width-sm - 1px}) {
     &[aria-expanded='true']::before {
       background-color: #e6e6e6;
       bottom: 0;
@@ -142,6 +141,7 @@ $usa-banner-text-color: #1b1b1b;
       top: 0;
       width: 3rem;
     }
+    // stylelint-enable scss/media-feature-value-dollar-variable
 
     &[aria-expanded='true']::after {
       background: url('#{$image-path}/close-alt.svg') no-repeat center/1rem 1rem;
@@ -223,7 +223,6 @@ $usa-banner-text-color: #1b1b1b;
 
 .ds-c-usa-banner__media-body {
   margin: 0;
-  // overflow: hidden;
 }
 
 // stylelint-disable no-duplicate-selectors
@@ -251,12 +250,9 @@ $usa-banner-text-color: #1b1b1b;
 .ds-c-usa-banner__inner {
   align-items: flex-start;
   display: flex;
-  flex-wrap: wrap;
   line-height: 1;
   margin-left: 0;
   margin-right: auto;
-  max-width: 64rem;
   padding-left: 1rem;
-  padding-right: 0;
   padding-right: 0;
 }
