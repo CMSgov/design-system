@@ -28,6 +28,10 @@ export class Dropdown extends React.PureComponent {
     const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
     const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
+    // `children` is used by both <FieldContainer> and <Select>
+    delete containerProps.children;
+    inputOnlyProps.children = this.props.children;
+
     return (
       <FieldContainer {...containerProps} component="div" labelComponent="label">
         {({ id, setRef }) => (
