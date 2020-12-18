@@ -1,5 +1,7 @@
 $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
+$usa-banner-close-image-background-color: #e6e6e6;
+$usa-banner-header-action-color: #005ea2;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
@@ -43,7 +45,7 @@ $usa-banner-text-color: #1b1b1b;
 }
 
 .ds-c-usa-banner__header-action {
-  color: #005ea2;
+  color: $usa-banner-header-action-color;
   display: block;
   line-height: 1.1;
   margin-bottom: 0;
@@ -92,12 +94,8 @@ $usa-banner-text-color: #1b1b1b;
   border-radius: 0;
   bottom: 0;
   box-shadow: none;
-  color: #005ea2;
   display: block;
   font-size: 0.8rem;
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: subpixel-antialiased;
-  font-weight: 400;
   height: auto;
   left: 0;
   line-height: 1.2;
@@ -113,14 +111,9 @@ $usa-banner-text-color: #1b1b1b;
   @extend .ds-c-link;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
   @media (min-width: $width-sm) {
-    background-color: transparent;
-    border: 0;
     bottom: auto;
-    box-shadow: none;
     display: inline;
     left: auto;
-    margin: 0;
-    padding: 0;
     position: relative;
     right: auto;
     top: auto;
@@ -131,7 +124,7 @@ $usa-banner-text-color: #1b1b1b;
   // stylelint-disable scss/media-feature-value-dollar-variable
   @media (max-width: $width-sm - 1px) {
     &[aria-expanded='true']::before {
-      background-color: #e6e6e6;
+      background-color: $usa-banner-close-image-background-color;
       bottom: 0;
       content: '';
       display: block;
@@ -160,6 +153,7 @@ $usa-banner-text-color: #1b1b1b;
 }
 
 .ds-c-usa-banner__button-text {
+  // Hide the button-text on narrow viewport as header-action will display the action text
   left: -999em;
   position: absolute;
 
@@ -232,9 +226,6 @@ $usa-banner-text-color: #1b1b1b;
   @media (min-width: $width-sm) {
     background-color: transparent;
     display: block;
-    font-size: 0.8rem;
-    font-weight: 400;
-    min-height: 0;
     padding-right: 0;
     .ds-c-usa-banner__button-text::after {
       transform: rotate(180deg);
