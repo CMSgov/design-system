@@ -137,7 +137,10 @@ $usa-banner-header-action-color: #005ea2;
     // stylelint-enable scss/media-feature-value-dollar-variable
 
     &[aria-expanded='true']::after {
-      background: url('#{$image-path}/close-alt.svg') no-repeat center/1rem 1rem;
+      background-image: url('#{$image-path}/close-alt.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem 1rem;
       bottom: 0;
       content: '';
       display: inline-block;
