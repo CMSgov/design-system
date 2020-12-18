@@ -82,13 +82,11 @@ describe('DateInput', () => {
     const props = {
       onBlur: jest.fn(),
       onChange: jest.fn(),
-      onComponentBlur: jest.fn(),
     };
 
     beforeEach(() => {
       props.onBlur.mockClear();
       props.onChange.mockClear();
-      props.onComponentBlur.mockClear();
     });
 
     it('does not require event handler', () => {
@@ -114,27 +112,25 @@ describe('DateInput', () => {
     });
 
     it('calls onComponentBlur when component loses focus', (done) => {
-      const data = render(props);
-      data.wrapper.find('TextField').at(2).simulate('blur');
+      const onComponentBlur = jest.fn();
+      const wrapper = shallow(<DateInput {...defaultProps} onComponentBlur={onComponentBlur} />);
+      wrapper.find('TextField').last().simulate('blur');
 
       setTimeout(() => {
-        expect(props.onComponentBlur).toHaveBeenCalledTimes(1);
-        expect(props.onBlur).not.toHaveBeenCalled();
-        expect(props.onChange).not.toHaveBeenCalled();
+        expect(onComponentBlur).toHaveBeenCalledTimes(1);
         done();
-      }, 30);
+      }, 20);
     });
 
     it('does not call onComponentBlur when focus switches to other date component', (done) => {
-      const data = render(props);
-      data.wrapper.find('TextField').at(0).simulate('blur');
+      const onComponentBlur = jest.fn();
+      const wrapper = mount(<DateInput {...defaultProps} onComponentBlur={onComponentBlur} />);
+      wrapper.find('TextField').first().simulate('blur');
 
       setTimeout(() => {
-        expect(props.onComponentBlur).not.toHaveBeenCalled();
-        expect(props.onBlur).toHaveBeenCalledTimes(1);
-        expect(props.onChange).not.toHaveBeenCalled();
+        expect(onComponentBlur).not.toHaveBeenCalled();
         done();
-      }, 30);
+      }, 20);
     });
 
     it('formats the date as a single string', () => {

@@ -49,31 +49,31 @@ describe('FieldContainer', function () {
   it('passes label to FormLabel', () => {
     const data = render();
 
-    expect(data.wrapper.find('FormLabel').prop.children).toBe(data.props.label);
+    expect(data.wrapper.find('FormLabel').prop('children')).toBe(data.props.label);
   });
 
   it('passes hint to FormLabel', () => {
     const data = render({ hint: '123' });
 
-    expect(data.wrapper.find('FormLabel').prop.hint).toBe(data.props.hint);
+    expect(data.wrapper.find('FormLabel').prop('hint')).toBe(data.props.hint);
   });
 
   it('passes errorMessage to FormLabel', () => {
     const data = render({ errorMessage: 'error' });
 
-    expect(data.wrapper.find('FormLabel').prop.errorMessage).toBe(data.props.errorMessage);
+    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
   });
 
   it('passes error to FormLabel', () => {
     const data = render({ errorMessage: 'Error' });
 
-    expect(data.wrapper.find('FormLabel').prop.errorMessage).toBe(data.props.errorMessage);
+    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
   });
 
   it('passes inversed to FormLabel', () => {
     const data = render({ inversed: true });
 
-    expect(data.wrapper.find('FormLabel').prop.inversed).toBe(data.props.inversed);
+    expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(data.props.inversed);
   });
 
   it('adds className to root element', () => {
