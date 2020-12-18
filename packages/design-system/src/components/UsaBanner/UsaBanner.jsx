@@ -23,24 +23,31 @@ export class UsaBanner extends React.PureComponent {
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
 
     return (
-      <div className="ds-c-usa-banner">
+      <section className="ds-c-usa-banner" aria-label="Official government website">
         <header
           className={`ds-c-usa-banner__header ${
             this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''
           }`}
         >
-          <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
-          <p className="ds-c-usa-banner__header-text">
-            <span>{t.bannerText}</span>
-            <button
-              onClick={this.handleToggleBanner}
-              className="ds-c-usa-banner__button"
-              aria-expanded={this.state.isBannerOpen}
-              aria-controls="gov-banner"
-            >
-              {t.bannerActionText}
-            </button>
-          </p>
+          <div className="ds-c-usa-banner__inner">
+            <p className="ds-c-usa-banner__header-text">
+              <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
+            </p>
+            <p className="ds-c-usa-banner__header-text">
+              <span>{t.bannerText}</span>
+              <span className="ds-c-usa-banner__header-action" aria-hidden="true">
+                {t.bannerActionText}
+              </span>
+              <button
+                onClick={this.handleToggleBanner}
+                className="ds-c-usa-banner__button"
+                aria-expanded={this.state.isBannerOpen}
+                aria-controls="gov-banner"
+              >
+                <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+              </button>
+            </p>
+          </div>
         </header>
         <div className="ds-c-usa-banner__content" id="gov-banner" hidden={!this.state.isBannerOpen}>
           <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
@@ -67,7 +74,7 @@ export class UsaBanner extends React.PureComponent {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }

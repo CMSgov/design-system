@@ -1,59 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`applies Spanish translation 1`] = `
-<div
+<section
+  aria-label="Official government website"
   className="ds-c-usa-banner"
 >
   <header
     className="ds-c-usa-banner__header "
   >
-    <svg
-      className="ds-c-usa-banner__header-flag"
-      height="11"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="ds-c-usa-banner__inner"
     >
-      <g
-        fill="none"
-        fillRule="evenodd"
+      <p
+        className="ds-c-usa-banner__header-text"
       >
-        <path
-          d="M0 0h16v11H0z"
-          fill="#FFF"
-        />
-        <path
-          d="M8 0h8v1H8z"
-          fill="#DB3E1F"
-        />
-        <path
-          d="M0 0h8v7H0z"
-          fill="#1E33B1"
-        />
-        <path
-          d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
-          fill="#DB3E1F"
-        />
-        <path
-          d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
-          fill="#FFF"
-        />
-      </g>
-    </svg>
-    <p
-      className="ds-c-usa-banner__header-text"
-    >
-      <span>
-        Un sitio oficial del Gobierno de Estados Unidos
-      </span>
-      <button
-        aria-controls="gov-banner"
-        aria-expanded={false}
-        className="ds-c-usa-banner__button"
-        onClick={[Function]}
+        <svg
+          className="ds-c-usa-banner__header-flag"
+          height="11"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h16v11H0z"
+              fill="#FFF"
+            />
+            <path
+              d="M8 0h8v1H8z"
+              fill="#DB3E1F"
+            />
+            <path
+              d="M0 0h8v7H0z"
+              fill="#1E33B1"
+            />
+            <path
+              d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+              fill="#DB3E1F"
+            />
+            <path
+              d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+              fill="#FFF"
+            />
+          </g>
+        </svg>
+      </p>
+      <p
+        className="ds-c-usa-banner__header-text"
       >
-        Así es como usted puede verificarlo
-      </button>
-    </p>
+        <span>
+          Un sitio oficial del Gobierno de Estados Unidos
+        </span>
+        <span
+          aria-hidden="true"
+          className="ds-c-usa-banner__header-action"
+        >
+          Así es como usted puede verificarlo
+        </span>
+        <button
+          aria-controls="gov-banner"
+          aria-expanded={false}
+          className="ds-c-usa-banner__button"
+          onClick={[Function]}
+        >
+          <span
+            className="ds-c-usa-banner__button-text"
+          >
+            Así es como usted puede verificarlo
+          </span>
+        </button>
+      </p>
+    </div>
   </header>
   <div
     className="ds-c-usa-banner__content"
@@ -157,37 +176,56 @@ exports[`applies Spanish translation 1`] = `
       </div>
     </div>
   </div>
-</div>
+</section>
 `;
 
 exports[`applies additional class names to expanded banner 1`] = `
-<div
+<section
+  aria-label="Official government website"
   className="ds-c-usa-banner"
 >
   <header
     className="ds-c-usa-banner__header ds-c-usa-banner__header--expanded"
   >
-    <UsaFlagIcon
-      className="ds-c-usa-banner__header-flag"
-      height="11"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
-    />
-    <p
-      className="ds-c-usa-banner__header-text"
+    <div
+      className="ds-c-usa-banner__inner"
     >
-      <span>
-        An official website of the United States government
-      </span>
-      <button
-        aria-controls="gov-banner"
-        aria-expanded={true}
-        className="ds-c-usa-banner__button"
-        onClick={[Function]}
+      <p
+        className="ds-c-usa-banner__header-text"
       >
-        Here’s how you know
-      </button>
-    </p>
+        <UsaFlagIcon
+          className="ds-c-usa-banner__header-flag"
+          height="11"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </p>
+      <p
+        className="ds-c-usa-banner__header-text"
+      >
+        <span>
+          An official website of the United States government
+        </span>
+        <span
+          aria-hidden="true"
+          className="ds-c-usa-banner__header-action"
+        >
+          Here’s how you know
+        </span>
+        <button
+          aria-controls="gov-banner"
+          aria-expanded={true}
+          className="ds-c-usa-banner__button"
+          onClick={[Function]}
+        >
+          <span
+            className="ds-c-usa-banner__button-text"
+          >
+            Here’s how you know
+          </span>
+        </button>
+      </p>
+    </div>
   </header>
   <div
     className="ds-c-usa-banner__content"
@@ -260,63 +298,82 @@ exports[`applies additional class names to expanded banner 1`] = `
       </div>
     </div>
   </div>
-</div>
+</section>
 `;
 
 exports[`renders correctly 1`] = `
-<div
+<section
+  aria-label="Official government website"
   className="ds-c-usa-banner"
 >
   <header
     className="ds-c-usa-banner__header "
   >
-    <svg
-      className="ds-c-usa-banner__header-flag"
-      height="11"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="ds-c-usa-banner__inner"
     >
-      <g
-        fill="none"
-        fillRule="evenodd"
+      <p
+        className="ds-c-usa-banner__header-text"
       >
-        <path
-          d="M0 0h16v11H0z"
-          fill="#FFF"
-        />
-        <path
-          d="M8 0h8v1H8z"
-          fill="#DB3E1F"
-        />
-        <path
-          d="M0 0h8v7H0z"
-          fill="#1E33B1"
-        />
-        <path
-          d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
-          fill="#DB3E1F"
-        />
-        <path
-          d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
-          fill="#FFF"
-        />
-      </g>
-    </svg>
-    <p
-      className="ds-c-usa-banner__header-text"
-    >
-      <span>
-        An official website of the United States government
-      </span>
-      <button
-        aria-controls="gov-banner"
-        aria-expanded={false}
-        className="ds-c-usa-banner__button"
-        onClick={[Function]}
+        <svg
+          className="ds-c-usa-banner__header-flag"
+          height="11"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fillRule="evenodd"
+          >
+            <path
+              d="M0 0h16v11H0z"
+              fill="#FFF"
+            />
+            <path
+              d="M8 0h8v1H8z"
+              fill="#DB3E1F"
+            />
+            <path
+              d="M0 0h8v7H0z"
+              fill="#1E33B1"
+            />
+            <path
+              d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+              fill="#DB3E1F"
+            />
+            <path
+              d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+              fill="#FFF"
+            />
+          </g>
+        </svg>
+      </p>
+      <p
+        className="ds-c-usa-banner__header-text"
       >
-        Here’s how you know
-      </button>
-    </p>
+        <span>
+          An official website of the United States government
+        </span>
+        <span
+          aria-hidden="true"
+          className="ds-c-usa-banner__header-action"
+        >
+          Here’s how you know
+        </span>
+        <button
+          aria-controls="gov-banner"
+          aria-expanded={false}
+          className="ds-c-usa-banner__button"
+          onClick={[Function]}
+        >
+          <span
+            className="ds-c-usa-banner__button-text"
+          >
+            Here’s how you know
+          </span>
+        </button>
+      </p>
+    </div>
   </header>
   <div
     className="ds-c-usa-banner__content"
@@ -420,5 +477,5 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
   </div>
-</div>
+</section>
 `;

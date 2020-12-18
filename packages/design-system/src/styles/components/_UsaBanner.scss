@@ -1,5 +1,7 @@
 $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
+$usa-banner-close-image-background-color: #e6e6e6;
+$usa-banner-header-action-color: #005ea2;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
@@ -7,7 +9,7 @@ $usa-banner-text-color: #1b1b1b;
   font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 1.06471rem;
   line-height: 1.52155;
-  padding: 0 $spacer-3;
+  padding: 0;
 }
 
 .ds-c-usa-banner__header {
@@ -17,10 +19,16 @@ $usa-banner-text-color: #1b1b1b;
   font-size: 0.79853rem;
   font-weight: 400;
   line-height: 1.12707;
-  min-height: 0;
-  padding-bottom: 0.25rem;
-  padding-top: 0.25rem;
+  min-height: 2rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   position: relative;
+
+  @media (min-width: $width-sm) {
+    min-height: 0;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+  }
 }
 
 .ds-c-usa-banner__header-flag {
@@ -36,24 +44,13 @@ $usa-banner-text-color: #1b1b1b;
   }
 }
 
-.ds-c-usa-banner__content {
-  font-size: 0.99816rem;
-  overflow: hidden;
-  padding: $spacer-3 0;
-  width: 100%;
-}
-
-.ds-c-usa-banner__button {
-  /* stylelint-disable scss/at-extend-no-missing-placeholder */
-  @extend .ds-c-link;
-  /* stylelint-enable scss/at-extend-no-missing-placeholder */
-  background-color: transparent;
-  border: 0;
-  box-shadow: none;
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
+.ds-c-usa-banner__header-action {
+  color: $usa-banner-header-action-color;
+  display: block;
+  line-height: 1.1;
+  margin-bottom: 0;
+  margin-top: 2px;
+  text-decoration: underline;
 
   &::after {
     background-image: url('#{$image-path}/arrow-down.svg'),
@@ -68,11 +65,131 @@ $usa-banner-text-color: #1b1b1b;
     padding-right: 2px;
     width: 0.5rem;
   }
+
+  // Hide header-action text for large viewport and when expanded
+  @media (min-width: $width-sm) {
+    display: none;
+  }
+  .ds-c-usa-banner__header--expanded & {
+    display: none;
+  }
+}
+
+.ds-c-usa-banner__content {
+  font-size: 0.99816rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 0.25rem 1rem 1rem 0.5rem;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+.ds-c-usa-banner__button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  bottom: 0;
+  box-shadow: none;
+  display: block;
+  font-size: 0.8rem;
+  height: auto;
+  left: 0;
+  line-height: 1.2;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  width: 100%;
+
+  /* stylelint-disable scss/at-extend-no-missing-placeholder */
+  @extend .ds-c-link;
+  /* stylelint-enable scss/at-extend-no-missing-placeholder */
+  @media (min-width: $width-sm) {
+    bottom: auto;
+    display: inline;
+    left: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+  }
+
+  // Display close icon on smaller viewport
+  // stylelint-disable scss/media-feature-value-dollar-variable
+  @media (max-width: $width-sm - 1px) {
+    &[aria-expanded='true']::before {
+      background-color: $usa-banner-close-image-background-color;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 3rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 3rem;
+    }
+    // stylelint-enable scss/media-feature-value-dollar-variable
+
+    &[aria-expanded='true']::after {
+      background-image: url('#{$image-path}/close-alt.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1rem 1rem;
+      bottom: 0;
+      content: '';
+      display: inline-block;
+      height: 3rem;
+      margin-left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      vertical-align: middle;
+      width: 3rem;
+    }
+  }
+}
+
+.ds-c-usa-banner__button-text {
+  // Hide the button-text on narrow viewport as header-action will display the action text
+  left: -999em;
+  position: absolute;
+
+  &::after {
+    display: none;
+  }
+
+  @media (min-width: $width-sm) {
+    display: inline;
+    position: static;
+
+    &::after {
+      background-image: url('#{$image-path}/arrow-down.svg'),
+        linear-gradient(transparent, transparent);
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: 0.5rem;
+      content: '';
+      display: inline-block;
+      height: 0.5rem;
+      margin-left: 2px;
+      padding-right: 2px;
+      width: 0.5rem;
+    }
+  }
 }
 
 .ds-c-usa-banner__guidance {
   align-items: flex-start;
   display: flex;
+  max-width: 64ex;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: $spacer-2;
 
   @media (min-width: $width-sm) {
@@ -103,13 +220,33 @@ $usa-banner-text-color: #1b1b1b;
 
 .ds-c-usa-banner__media-body {
   margin: 0;
-  // overflow: hidden;
 }
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  .ds-c-usa-banner__button::after {
-    transform: rotate(180deg);
+  padding-right: 3.5rem;
+
+  @media (min-width: $width-sm) {
+    background-color: transparent;
+    display: block;
+    padding-right: 0;
+    .ds-c-usa-banner__button-text::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ds-c-usa-banner__header-action {
+    display: none;
   }
 }
 // stylelint-enable no-duplicate-selectors
+
+.ds-c-usa-banner__inner {
+  align-items: flex-start;
+  display: flex;
+  line-height: 1;
+  margin-left: 0;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 0;
+}
