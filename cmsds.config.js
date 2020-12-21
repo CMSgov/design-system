@@ -6,7 +6,7 @@ module.exports = {
   // The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under "dist".
   docsDir: './packages/design-system-docs',
   // Flag enabling typescript support. When `true`, .ts/.tsx files will be compilied and typescript definition files will be generated. Requires tsconfig.json to be defined.
-  typescript: false,
+  typescript: true,
   // Flag enabling minification of SVG files in `src/images/` using svgo.
   minifySvg: true,
 
