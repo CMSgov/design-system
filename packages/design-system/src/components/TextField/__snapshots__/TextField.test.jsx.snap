@@ -6,7 +6,6 @@ exports[`TextField renders 1`] = `
   component="div"
   label="Foo"
   labelComponent="label"
->
-  <Component />
-</FieldContainer>
+  render={[Function]}
+/>
 `;

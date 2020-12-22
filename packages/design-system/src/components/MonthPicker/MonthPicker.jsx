@@ -143,8 +143,7 @@ export class MonthPicker extends React.PureComponent {
         className={containerClassName}
         component="fieldset"
         labelComponent="legend"
-      >
-        {() => (
+        render={() => (
           <>
             <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
               {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
@@ -153,7 +152,7 @@ export class MonthPicker extends React.PureComponent {
             <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
           </>
         )}
-      </FieldContainer>
+      />
     );
   }
 }

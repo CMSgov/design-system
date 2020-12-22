@@ -70,9 +70,12 @@ export class ChoiceList extends React.PureComponent {
     });
 
     return (
-      <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
-        {() => choices}
-      </FieldContainer>
+      <FieldContainer
+        {...containerProps}
+        component="fieldset"
+        labelComponent="legend"
+        render={() => choices}
+      />
     );
   }
 }

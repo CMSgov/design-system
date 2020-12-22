@@ -5,7 +5,6 @@ exports[`Dropdown renders 1`] = `
   component="div"
   label=""
   labelComponent="label"
->
-  <Component />
-</FieldContainer>
+  render={[Function]}
+/>
 `;

@@ -36,8 +36,7 @@ export class TextField extends React.PureComponent {
         className={containerClassName}
         component="div"
         labelComponent="label"
-      >
-        {({ id, setRef }) => (
+        render={({ id, setRef }) => (
           <TextInput
             {...inputOnlyProps}
             {...{ id, setRef }}
@@ -45,7 +44,7 @@ export class TextField extends React.PureComponent {
             inversed={this.props.inversed}
           />
         )}
-      </FieldContainer>
+      />
     );
   }
 }

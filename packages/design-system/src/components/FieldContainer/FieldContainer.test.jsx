@@ -7,7 +7,7 @@ const defaultProps = {
   component: 'div',
   labelComponent: 'label',
   /* eslint-disable */
-  children: ({ id, labelId, setRef }) => {
+  render: ({ id, labelId, setRef }) => {
     return <input id={id} aria-describedby={labelId} ref={setRef} />;
   },
   /* eslint-enable */

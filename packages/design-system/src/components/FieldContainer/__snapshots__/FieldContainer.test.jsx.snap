@@ -5,6 +5,7 @@ exports[`FieldContainer renders custom component and labelComponent elements 1`]
   component="fieldset"
   label="Foo"
   labelComponent="legend"
+  render={[Function]}
 >
   <fieldset
     className="ds-c-fieldset"
@@ -39,6 +40,7 @@ exports[`FieldContainer renders default component and labelComponent elements 1`
   component="div"
   label="Foo"
   labelComponent="label"
+  render={[Function]}
 >
   <div>
     <FormLabel

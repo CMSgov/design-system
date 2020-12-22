@@ -40,6 +40,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
     component="fieldset"
     label="Foo"
     labelComponent="legend"
+    render={[Function]}
   >
     <fieldset
       className="ds-c-fieldset"

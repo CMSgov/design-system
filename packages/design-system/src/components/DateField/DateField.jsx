@@ -18,11 +18,14 @@ export function DateField(props) {
   const inputOnlyProps = omit(props, Object.keys(FieldContainer.propTypes));
 
   return (
-    <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
-      {({ labelId }) => (
+    <FieldContainer
+      {...containerProps}
+      component="fieldset"
+      labelComponent="legend"
+      render={({ labelId }) => (
         <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
       )}
-    </FieldContainer>
+    />
   );
 }
 

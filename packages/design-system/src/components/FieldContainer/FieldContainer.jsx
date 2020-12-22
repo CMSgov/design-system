@@ -31,7 +31,6 @@ export class FieldContainer extends React.PureComponent {
 
   render() {
     const {
-      children,
       className,
       component,
       errorMessage,
@@ -41,6 +40,7 @@ export class FieldContainer extends React.PureComponent {
       labelClassName,
       labelComponent,
       requirementLabel,
+      render,
     } = this.props;
 
     const ComponentType = component;
@@ -68,7 +68,7 @@ export class FieldContainer extends React.PureComponent {
         >
           {label}
         </FormLabel>
-        {children(fieldInputProps)}
+        {render(fieldInputProps)}
       </ComponentType>
     );
   }
@@ -79,10 +79,6 @@ FieldContainer.propTypes = {
    * Additional classes to be added to the field container.
    */
   className: PropTypes.string,
-  /**
-   * A function that returns a field input element to accept render props
-   */
-  children: PropTypes.func.isRequired,
   /**
    * The HTML element used to render the container
    */
@@ -128,6 +124,10 @@ FieldContainer.propTypes = {
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
   requirementLabel: PropTypes.node,
+  /**
+   * A function that returns a field input element to accept render props
+   */
+  render: PropTypes.func.isRequired,
 };
 
 export default FieldContainer;
