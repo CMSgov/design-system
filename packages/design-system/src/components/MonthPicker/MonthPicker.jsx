@@ -144,11 +144,15 @@ export class MonthPicker extends React.PureComponent {
         component="fieldset"
         labelComponent="legend"
       >
-        <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
-          {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
-          {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
-        </div>
-        <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+        {() => (
+          <>
+            <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
+              {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
+              {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
+            </div>
+            <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+          </>
+        )}
       </FieldContainer>
     );
   }

@@ -71,7 +71,7 @@ export class ChoiceList extends React.PureComponent {
 
     return (
       <FieldContainer {...containerProps} component="fieldset" labelComponent="legend">
-        {choices}
+        {() => choices}
       </FieldContainer>
     );
   }

@@ -15,7 +15,8 @@ function generateChoices(length) {
   return choices;
 }
 
-function render(customProps = {}, choicesCount = 2, deep = false) {
+// Mounts the component by default because the choices are passed into FieldContainer as a function
+function render(customProps = {}, choicesCount = 2, deep = true) {
   const props = {
     ...{
       choices: generateChoices(choicesCount),
@@ -36,119 +37,118 @@ function render(customProps = {}, choicesCount = 2, deep = false) {
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
     it('is a radio button group', () => {
-      const data = render({ type: 'radio' });
+      const { wrapper } = render({ type: 'radio' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('radio');
-      expect(data.wrapper).toMatchSnapshot();
+      expect(wrapper.find('Choice').first().prop('type')).toBe('radio');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('is a checkbox group', () => {
-      const data = render({ type: 'checkbox' });
+      const { wrapper } = render({ type: 'checkbox' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('is a checkbox', () => {
-      const data = render({ choices: generateChoices(1), type: 'checkbox' });
+      const { wrapper } = render({ choices: generateChoices(1), type: 'checkbox' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('renders all choices', () => {
-      const data = render();
-      const choice = data.wrapper.find('Choice').first();
+      const { props, wrapper } = render();
+      const choice = wrapper.find('Choice').first();
 
-      expect(data.wrapper.find('Choice').length).toBe(data.props.choices.length);
-      expect(choice.prop('name')).toBe(data.props.name);
-      expect(choice.prop('value')).toBe(data.props.choices[0].value);
+      expect(wrapper.find('Choice').length).toBe(props.choices.length);
+      expect(choice.prop('name')).toBe(props.name);
+      expect(choice.prop('value')).toBe(props.choices[0].value);
     });
 
     it('is enclosed by a fieldset', () => {
-      const data = render();
-      const container = data.wrapper.find('FieldContainer');
+      const { wrapper } = render();
+      const container = wrapper.find('FieldContainer');
 
       expect(container.prop('component')).toBe('fieldset');
     });
 
     it('renders the label prop as a legend element', () => {
-      const data = render();
-      const container = data.wrapper.find('FieldContainer');
+      const { wrapper } = render();
+      const container = wrapper.find('FieldContainer');
 
       expect(container.prop('labelComponent')).toBe('legend');
     });
 
     it('passes checked prop', () => {
       const choices = generateChoices(4);
-      choices[1].checked = true;
-      const data = render({ choices });
+      choices[0].checked = true;
+      const { wrapper } = render({ choices, onChange: jest.fn() });
 
-      expect(data.wrapper.find('Choice').get(1).props.checked).toBe(true);
+      expect(wrapper.find('Choice').first().prop('checked')).toBe(true);
     });
 
     it('passes defaultChecked prop', () => {
       const choices = generateChoices(4);
-      choices[1].defaultChecked = true;
-      const data = render({ choices });
+      choices[0].defaultChecked = true;
+      const { wrapper } = render({ choices });
 
-      expect(data.wrapper.find('Choice').get(1).props.defaultChecked).toBe(true);
+      expect(wrapper.find('Choice').first().prop('defaultChecked')).toBe(true);
     });
 
     it('passes disabled prop', () => {
       const choices = generateChoices(4);
-      choices[1].disabled = true;
-      const data = render({ choices });
+      choices[0].disabled = true;
+      const { wrapper } = render({ choices });
 
-      expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
+      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
     });
 
     it('disables all choices', () => {
-      const data = render({ disabled: true });
+      const { wrapper } = render({ disabled: true });
 
-      expect(data.wrapper.find('Choice').get(0).props.disabled).toBe(true);
-      expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
+      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
+      expect(wrapper.find('Choice').last().prop('disabled')).toBe(true);
     });
 
     it("doesn't pass an ID prop", () => {
-      const data = render();
+      const { wrapper } = render();
 
-      expect(data.wrapper.find('Choice').first().prop('id')).toBeUndefined();
+      expect(wrapper.find('Choice').first().prop('id')).toBeUndefined();
     });
 
     it('is inversed Choice', () => {
-      const data = render({ inversed: true });
+      const { wrapper } = render({ inversed: true });
 
-      expect(data.wrapper.find('Choice').first().prop('inversed')).toBe(true);
+      expect(wrapper.find('Choice').first().prop('inversed')).toBe(true);
     });
 
     it('calls onChange', () => {
       const onChange = jest.fn();
-      const data = render({ onChange });
-      data.wrapper.find('Choice').first().simulate('change');
+      const { wrapper } = render({ onChange });
+      wrapper.find('Choice').first().simulate('change');
 
-      expect(onChange).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(onChange).toHaveBeenCalled();
+      }, 20);
     });
 
     it('calls onBlur', () => {
       const onBlur = jest.fn();
-      const onComponentBlur = jest.fn();
-      const data = render({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').first().simulate('blur');
+      const { wrapper } = render({ onBlur });
+      wrapper.find('Choice').first().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
-      // Enzyme simulated `blur` event will automatically focus on the next choice element
       setTimeout(() => {
-        expect(onComponentBlur).not.toHaveBeenCalled();
+        expect(onBlur).toHaveBeenCalled();
       }, 20);
     });
 
     it('calls onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = render({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').last().simulate('blur');
+      const { wrapper } = render({ onBlur, onComponentBlur });
+      wrapper.find('Choice').last().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
       setTimeout(() => {
+        expect(onBlur).toHaveBeenCalled();
         expect(onComponentBlur).toHaveBeenCalled();
       }, 20);
     });
@@ -156,10 +156,9 @@ describe('ChoiceList', () => {
     it('doesnt call onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = render({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').first().simulate('blur');
+      const { wrapper } = render({ onBlur, onComponentBlur });
+      wrapper.find('Choice').first().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
       setTimeout(() => {
         expect(onBlur).toHaveBeenCalled();
         expect(onComponentBlur).not.toHaveBeenCalled();

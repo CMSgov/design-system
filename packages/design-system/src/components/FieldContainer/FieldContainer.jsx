@@ -54,10 +54,6 @@ export class FieldContainer extends React.PureComponent {
       setRef: this.setFieldRef,
     };
 
-    // Render children with render props or normally
-    // We allow normal rendering to simplify unit tests in ChoiceField
-    const render = typeof children === 'function' ? children(fieldInputProps) : children;
-
     return (
       <ComponentType className={classes}>
         <FormLabel
@@ -72,7 +68,7 @@ export class FieldContainer extends React.PureComponent {
         >
           {label}
         </FormLabel>
-        {render}
+        {children(fieldInputProps)}
       </ComponentType>
     );
   }
@@ -86,7 +82,7 @@ FieldContainer.propTypes = {
   /**
    * A function that returns a field input element to accept render props
    */
-  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]).isRequired,
+  children: PropTypes.func.isRequired,
   /**
    * The HTML element used to render the container
    */
