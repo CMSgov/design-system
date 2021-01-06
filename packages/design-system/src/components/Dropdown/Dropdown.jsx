@@ -7,6 +7,7 @@ import Select from './Select';
 export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.renderFieldInput = this.renderFieldInput.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       // 'ariaLabel' is provided with a `label` prop that is not an empty string
@@ -24,23 +25,29 @@ export class Dropdown extends React.PureComponent {
     }
   }
 
+  // Define render prop as instance method to avoid negating performance benefits of FieldContainer's PureComponent
+  // https://reactjs.org/docs/render-props.html#caveats
+  renderFieldInput({ id, setRef }) {
+    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
+    return (
+      <Select
+        {...inputOnlyProps}
+        {...{ id, setRef }}
+        errorMessage={this.props.errorMessage}
+        inversed={this.props.inversed}
+      />
+    );
+  }
+
   render() {
     const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
-    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     return (
       <FieldContainer
         {...containerProps}
         component="div"
         labelComponent="label"
-        render={({ id, setRef }) => (
-          <Select
-            {...inputOnlyProps}
-            {...{ id, setRef }}
-            errorMessage={this.props.errorMessage}
-            inversed={this.props.inversed}
-          />
-        )}
+        render={this.renderFieldInput}
       />
     );
   }
