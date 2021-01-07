@@ -60,12 +60,21 @@ yargs
         type: 'boolean',
         default: false,
       });
+      yargs.option('rootPath', {
+        desc: 'The URL root path for the published docs site.',
+        type: 'string',
+        default: '',
+      });
     },
     handler: async (argv) => {
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
 
       process.env.NODE_ENV = 'production';
+      if (argv.rootPath !== '') {
+        config.rootPath = argv.rootPath;
+      }
+
       if (argv.ignoreRootPath) {
         config.rootPath = '';
       }
