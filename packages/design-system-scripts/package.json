@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -64,7 +64,7 @@
     "memory-fs": "^0.4.1",
     "mkdir-recursive": "^0.4.0",
     "mz": "^2.7.0",
-    "node-notifier": "5.4.0",
+    "node-notifier": "8.0.1",
     "node-sass": "4.14.1",
     "postcss-import": "^11.1.0",
     "prismjs": "1.21.0",

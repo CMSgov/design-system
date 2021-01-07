@@ -10,7 +10,7 @@
     "start": "yarn cmsds start",
     "build": "yarn cmsds build-docs",
     "pre-release": "./prerelease.sh",
-    "release": "yarn lerna publish from-git",
+    "release": "yarn lerna publish from-git --npm-tag latest",
     "precommit": "lint-staged",
     "test": "yarn test:unit",
     "test:unit": "yarn cmsds test ./packages",
