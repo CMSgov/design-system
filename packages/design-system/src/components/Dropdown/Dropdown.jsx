@@ -1,5 +1,5 @@
+import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
 import { omit, pick } from 'lodash';
-import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
@@ -25,8 +25,8 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
-    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
+    const containerProps = pick(this.props, FieldContainerPropKeys);
+    const inputOnlyProps = omit(this.props, FieldContainerPropKeys);
 
     return (
       <FieldContainer

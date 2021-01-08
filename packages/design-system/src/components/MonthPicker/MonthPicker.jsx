@@ -1,8 +1,8 @@
 // Polyfills required for IE11 compatibility
 import 'core-js/stable/array/includes';
+import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -134,7 +134,7 @@ export class MonthPicker extends React.PureComponent {
     const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
     const clearAllPressed = selectedMonths.length === 0;
 
-    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
+    const containerProps = pick(this.props, FieldContainerPropKeys);
     const containerClassName = classNames('ds-c-month-picker', this.props.className);
 
     return (
