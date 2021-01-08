@@ -1,9 +1,8 @@
-import FormLabel from '../FormLabel/FormLabel';
+import { omit, pick } from 'lodash';
+import DateInput from './DateInput';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from '../TextField/TextField';
-import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
 const standardLengthFormatter = ({ day, month, year }) => ({
@@ -12,151 +11,22 @@ const standardLengthFormatter = ({ day, month, year }) => ({
   year: year.length > 4 ? year.substring(0, 4) : year,
 });
 
-export const defaultDateFormatter = (dateObject) => {
-  const standardDate = standardLengthFormatter(dateObject);
-  return standardDate;
-};
+export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
-export class DateField extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+export function DateField(props) {
+  const containerProps = pick(props, Object.keys(FieldContainer.propTypes));
+  const inputOnlyProps = omit(props, Object.keys(FieldContainer.propTypes));
 
-  labelId() {
-    if (!this._labelId) {
-      // Cache the ID so we're not regenerating it on each method call
-      this._labelId = uniqueId('datefield_label_');
-    }
-
-    return this._labelId;
-  }
-
-  formatDate() {
-    if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
-      const values = {
-        month: this.monthInput.value,
-        day: this.dayInput.value,
-        year: this.yearInput.value,
-      };
-
-      return this.props.dateFormatter(values);
-    }
-  }
-
-  handleBlur(evt) {
-    if (this.props.onBlur) {
-      this.props.onBlur(evt, this.formatDate());
-    }
-
-    if (this.props.onComponentBlur) {
-      this.handleComponentBlur(evt);
-    }
-  }
-
-  handleChange(evt) {
-    this.props.onChange(evt, this.formatDate());
-  }
-
-  handleComponentBlur(evt) {
-    // The active element is always the document body during a focus
-    // transition, so in order to check if the newly focused element
-    // is one of our other date inputs, we're going to have to wait
-    // a bit.
-    setTimeout(() => {
-      if (
-        document.activeElement !== this.dayInput &&
-        document.activeElement !== this.monthInput &&
-        document.activeElement !== this.yearInput
-      ) {
-        this.props.onComponentBlur(evt, this.formatDate());
-      }
-    }, 20);
-  }
-
-  render() {
-    const sharedDateFieldProps = {
-      className: 'ds-l-col--auto',
-      labelClassName: 'ds-c-datefield__label',
-      inversed: this.props.inversed,
-      onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
-      onChange: this.props.onChange && this.handleChange,
-      numeric: true,
-    };
-    const labelId = this.labelId();
-
-    return (
-      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
-        <FormLabel
-          component="legend"
-          errorMessage={this.props.errorMessage}
-          hint={this.props.hint}
-          inversed={this.props.inversed}
-          requirementLabel={this.props.requirementLabel}
-          id={labelId}
-        >
-          {this.props.label}
-        </FormLabel>
-
-        <div className="ds-l-form-row ds-u-align-items--end">
-          <TextField
-            {...sharedDateFieldProps}
-            fieldClassName={classNames('ds-c-field--month', {
-              'ds-c-field--error': this.props.monthInvalid,
-            })}
-            inputRef={(el) => {
-              this.monthInput = el;
-              if (this.props.monthFieldRef) this.props.monthFieldRef(el);
-            }}
-            defaultValue={this.props.monthDefaultValue}
-            disabled={this.props.disabled}
-            label={this.props.monthLabel}
-            name={this.props.monthName}
-            value={this.props.monthValue}
-            aria-describedby={labelId}
-            autoComplete={this.props.autoComplete && 'bday-month'}
-          />
-          <span className="ds-c-datefield__separator">/</span>
-          <TextField
-            {...sharedDateFieldProps}
-            fieldClassName={classNames('ds-c-field--day', {
-              'ds-c-field--error': this.props.dayInvalid,
-            })}
-            inputRef={(el) => {
-              this.dayInput = el;
-              if (this.props.dayFieldRef) this.props.dayFieldRef(el);
-            }}
-            defaultValue={this.props.dayDefaultValue}
-            disabled={this.props.disabled}
-            label={this.props.dayLabel}
-            name={this.props.dayName}
-            value={this.props.dayValue}
-            aria-describedby={labelId}
-            autoComplete={this.props.autoComplete && 'bday-day'}
-          />
-          <span className="ds-c-datefield__separator">/</span>
-          <TextField
-            {...sharedDateFieldProps}
-            fieldClassName={classNames('ds-c-field--year', {
-              'ds-c-field--error': this.props.yearInvalid,
-            })}
-            inputRef={(el) => {
-              this.yearInput = el;
-              if (this.props.yearFieldRef) this.props.yearFieldRef(el);
-            }}
-            defaultValue={this.props.yearDefaultValue}
-            disabled={this.props.disabled}
-            label={this.props.yearLabel}
-            name={this.props.yearName}
-            value={this.props.yearValue}
-            aria-describedby={labelId}
-            autoComplete={this.props.autoComplete && 'bday-year'}
-          />
-        </div>
-      </fieldset>
-    );
-  }
+  return (
+    <FieldContainer
+      {...containerProps}
+      component="fieldset"
+      labelComponent="legend"
+      render={({ labelId }) => (
+        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
+      )}
+    />
+  );
 }
 
 DateField.defaultProps = {
@@ -206,6 +76,10 @@ DateField.propTypes = {
    * The primary label, rendered above the individual month/day/year fields
    */
   label: PropTypes.node,
+  /**
+   * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
+   */
+  labelId: PropTypes.string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */

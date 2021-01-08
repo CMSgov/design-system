@@ -2,10 +2,11 @@
 import 'core-js/stable/array/includes';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import FormLabel from '../FormLabel/FormLabel';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { pick } from 'lodash';
 
 const NUM_MONTHS = 12;
 const monthNumbers = (() => {
@@ -126,43 +127,32 @@ export class MonthPicker extends React.PureComponent {
     );
   }
 
-  renderLabel() {
-    return (
-      <FormLabel
-        component="legend"
-        errorMessage={this.props.errorMessage}
-        requirementLabel={this.props.requirementLabel}
-        hint={this.props.hint}
-        inversed={this.props.inversed}
-      >
-        {this.props.label}
-      </FormLabel>
-    );
-  }
-
   render() {
     const { selectAllText, clearAllText } = this.props;
     const selectedMonths = this.selectedMonths();
     const disabledMonths = this.disabledMonths();
     const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
     const clearAllPressed = selectedMonths.length === 0;
-    const classes = classNames(
-      'ds-c-month-picker',
-      'ds-c-fieldset',
-      'ds-u-margin-y--3',
-      this.props.className
-    );
+
+    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
+    const containerClassName = classNames('ds-c-month-picker', this.props.className);
+
     return (
-      <div className={classes}>
-        <fieldset className="ds-c-fieldset">
-          {this.renderLabel()}
-          <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
-            {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
-            {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
-          </div>
-          <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
-        </fieldset>
-      </div>
+      <FieldContainer
+        {...containerProps}
+        className={containerClassName}
+        component="fieldset"
+        labelComponent="legend"
+        render={() => (
+          <>
+            <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
+              {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
+              {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
+            </div>
+            <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+          </>
+        )}
+      />
     );
   }
 }

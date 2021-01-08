@@ -1,19 +1,14 @@
-import FormLabel from '../FormLabel/FormLabel';
+import { omit, pick } from 'lodash';
+import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import Select from './Select';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (props.children && props.options.length > 0) {
-        console.warn(
-          `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
-        );
-      }
       // 'ariaLabel' is provided with a `label` prop that is not an empty string
       if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
         console.warn(
@@ -29,94 +24,24 @@ export class Dropdown extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    if (this.props.focusTrigger) {
-      this.focusRef && this.focusRef.focus();
-    }
-  }
-
-  id() {
-    // Use provided custom id
-    if (this.props.id) {
-      return this.props.id;
-    }
-    // Use generated id
-    if (!this._id) {
-      // Cache the ID so we're not regenerating it on each method call
-      this._id = uniqueId(`select_${this.props.name}_`);
-    }
-    return this._id;
-  }
-
   render() {
-    /* eslint-disable prefer-const */
-    const {
-      ariaLabel,
-      className,
-      children,
-      errorMessage,
-      fieldClassName,
-      focusTrigger,
-      hint,
-      inputRef,
-      inversed,
-      label,
-      labelClassName,
-      options,
-      requirementLabel,
-      size,
-      ...selectProps
-    } = this.props;
-    /* eslint-enable prefer-const */
-
-    const classes = classNames(className);
-    const fieldClasses = classNames(
-      'ds-c-field',
-      {
-        'ds-c-field--error': errorMessage,
-        'ds-c-field--inverse': inversed,
-      },
-      size && `ds-c-field--${size}`,
-      fieldClassName
-    );
-
-    const optionElements = options.map((option) => (
-      <option key={option.value} value={option.value}>
-        {option.label}
-      </option>
-    ));
+    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
+    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     return (
-      <div className={classes}>
-        <FormLabel
-          className={labelClassName}
-          component="label"
-          errorMessage={errorMessage}
-          fieldId={this.id()}
-          hint={hint}
-          requirementLabel={requirementLabel}
-          inversed={inversed}
-        >
-          {label}
-        </FormLabel>
-        <select
-          aria-label={ariaLabel}
-          className={fieldClasses}
-          id={this.id()}
-          /* eslint-disable no-return-assign */
-          ref={(ref) => {
-            if (focusTrigger) {
-              this.focusRef = ref;
-            } else if (inputRef) {
-              inputRef(ref);
-            }
-          }}
-          /* eslint-enable no-return-assign */
-          {...selectProps}
-        >
-          {/* Render custom options if provided */ children || optionElements}
-        </select>
-      </div>
+      <FieldContainer
+        {...containerProps}
+        component="div"
+        labelComponent="label"
+        render={({ id, setRef }) => (
+          <Select
+            {...inputOnlyProps}
+            {...{ id, setRef }}
+            errorMessage={this.props.errorMessage}
+            inversed={this.props.inversed}
+          />
+        )}
+      />
     );
   }
 }

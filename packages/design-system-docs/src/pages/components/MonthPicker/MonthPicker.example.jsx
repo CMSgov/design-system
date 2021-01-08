@@ -19,6 +19,7 @@ ReactDOM.render(
       }
       selectAllText="Select all"
       clearAllText="Clear all"
+      className="ds-u-margin-y--0"
     />
     <div className="example--wrapper example--inverse">
       <MonthPicker

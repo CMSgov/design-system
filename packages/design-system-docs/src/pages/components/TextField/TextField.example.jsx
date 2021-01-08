@@ -15,7 +15,7 @@ ReactDOM.render(
       label="Password field"
       name="password_example"
       type="password"
-      value="Example value"
+      defaultValue="Example value"
     />
     <TextField label="Small size field" name="small_example" size="small" />
     <TextField label="Medium size field" name="medium_example" size="medium" />
