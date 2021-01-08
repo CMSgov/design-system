@@ -13,31 +13,20 @@ const standardLengthFormatter = ({ day, month, year }) => ({
 
 export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
-export class DateField extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.renderFieldInput = this.renderFieldInput.bind(this);
-  }
+export function DateField(props) {
+  const containerProps = pick(props, Object.keys(FieldContainer.propTypes));
+  const inputOnlyProps = omit(props, Object.keys(FieldContainer.propTypes));
 
-  // Define render prop as instance method to avoid negating performance benefits of FieldContainer's PureComponent
-  // https://reactjs.org/docs/render-props.html#caveats
-  renderFieldInput({ labelId }) {
-    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
-    return <DateInput {...inputOnlyProps} {...{ labelId }} inversed={this.props.inversed} />;
-  }
-
-  render() {
-    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
-
-    return (
-      <FieldContainer
-        {...containerProps}
-        component="fieldset"
-        labelComponent="legend"
-        render={this.renderFieldInput}
-      />
-    );
-  }
+  return (
+    <FieldContainer
+      {...containerProps}
+      component="fieldset"
+      labelComponent="legend"
+      render={({ labelId }) => (
+        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
+      )}
+    />
+  );
 }
 
 DateField.defaultProps = {

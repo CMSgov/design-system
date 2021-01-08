@@ -10,7 +10,6 @@ export { unmaskValue } from './Mask';
 export class TextField extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.renderFieldInput = this.renderFieldInput.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.type === 'number') {
@@ -21,22 +20,9 @@ export class TextField extends React.PureComponent {
     }
   }
 
-  // Define render prop as instance method to avoid negating performance benefits of FieldContainer's PureComponent
-  // https://reactjs.org/docs/render-props.html#caveats
-  renderFieldInput({ id, setRef }) {
-    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
-    return (
-      <TextInput
-        {...inputOnlyProps}
-        {...{ id, setRef }}
-        errorMessage={this.props.errorMessage}
-        inversed={this.props.inversed}
-      />
-    );
-  }
-
   render() {
     const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
+    const inputOnlyProps = omit(this.props, Object.keys(FieldContainer.propTypes));
 
     // Add clearfix class
     const containerClassName = classNames(
@@ -50,7 +36,14 @@ export class TextField extends React.PureComponent {
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={this.renderFieldInput}
+        render={({ id, setRef }) => (
+          <TextInput
+            {...inputOnlyProps}
+            {...{ id, setRef }}
+            errorMessage={this.props.errorMessage}
+            inversed={this.props.inversed}
+          />
+        )}
       />
     );
   }

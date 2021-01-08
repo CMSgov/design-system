@@ -8,7 +8,6 @@ import { pick } from 'lodash';
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.renderFieldInput = this.renderFieldInput.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.multiple) {
@@ -49,10 +48,10 @@ export class ChoiceList extends React.PureComponent {
     }, 20);
   }
 
-  // Define render prop as instance method to avoid negating performance benefits of FieldContainer's PureComponent
-  // https://reactjs.org/docs/render-props.html#caveats
-  renderFieldInput() {
-    return this.props.choices.map((choiceProps) => {
+  render() {
+    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
+
+    const choices = this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
       choiceProps.name = this.props.name;
       choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
@@ -69,17 +68,13 @@ export class ChoiceList extends React.PureComponent {
 
       return <Choice key={choiceProps.value} {...choiceProps} />;
     });
-  }
-
-  render() {
-    const containerProps = pick(this.props, Object.keys(FieldContainer.propTypes));
 
     return (
       <FieldContainer
         {...containerProps}
         component="fieldset"
         labelComponent="legend"
-        render={this.renderFieldInput}
+        render={() => choices}
       />
     );
   }
