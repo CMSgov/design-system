@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
 
-export class FieldContainer extends React.PureComponent {
+export class FieldContainer extends React.Component {
   constructor(props) {
     super(props);
 
