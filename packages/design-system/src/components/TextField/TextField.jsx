@@ -36,10 +36,10 @@ export class TextField extends React.PureComponent {
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={({ id, setRef }) => (
+        render={({ labelId, ...fieldProps }) => (
           <TextInput
             {...inputOnlyProps}
-            {...{ id, setRef }}
+            {...fieldProps}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
           />

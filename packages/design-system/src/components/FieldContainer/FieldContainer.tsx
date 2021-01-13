@@ -15,6 +15,10 @@ interface FieldContainerProps {
   component: 'div' | 'fieldset';
   errorMessage?: React.ReactNode;
   /**
+   * A unique ID to be used for the error message. If one isn't provided, a unique ID will be generated.
+   */
+  errorId?: string,
+  /**
    * Location of the error message relative to the field input
    */
   errorPlacement: 'top' | 'bottom';
@@ -73,12 +77,14 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     super(props);
 
     this.id = props.id || uniqueId('field_');
-    this.labelId = props.labelId || uniqueId('field_label_');
+    this.labelId = props.labelId || `${this.id}-label`;
+    this.errorId = props.errorId || `${this.id}-error`;
     this.setFieldRef = this.setFieldRef.bind(this);
   }
 
   id: string;
   labelId: string;
+  errorId: string;
   focusRef?: HTMLDivElement;
 
   setFieldRef(elem: HTMLDivElement): void {
@@ -91,7 +97,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       component,
@@ -110,16 +116,18 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     const classes =
       ComponentType === 'fieldset' ? classNames('ds-c-fieldset', className) : className;
 
+    const bottomError = errorPlacement === 'bottom' && errorMessage;
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {
       id: this.id,
       labelId: this.labelId,
+      'aria-describedby': bottomError ? this.errorId : null,
       setRef: this.setFieldRef,
     };
 
     const renderBottomError = () => {
-      return (errorPlacement === 'bottom') ? (
-        <InlineError fieldId={this.id} inversed={inversed}>
+      return (bottomError) ? (
+        <InlineError id={this.errorId} inversed={inversed}>
           {errorMessage}
         </InlineError>
       ) : null;
@@ -131,6 +139,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           className={labelClassName}
           component={labelComponent}
           errorMessage={errorPlacement === 'top' ? errorMessage : null}
+          errorId={this.errorId}
           fieldId={this.id}
           hint={hint}
           id={this.labelId}

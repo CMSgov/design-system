@@ -33,10 +33,10 @@ export class Dropdown extends React.PureComponent {
         {...containerProps}
         component="div"
         labelComponent="label"
-        render={({ id, setRef }) => (
+        render={({ labelId, ...fieldProps }) => (
           <Select
             {...inputOnlyProps}
-            {...{ id, setRef }}
+            {...fieldProps}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
           />

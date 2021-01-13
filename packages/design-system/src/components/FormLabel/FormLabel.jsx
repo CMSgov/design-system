@@ -36,6 +36,18 @@ export class FormLabel extends React.PureComponent {
     );
   }
 
+  errorMessage() {
+    if (this.props.errorMessage) {
+      // Include fallback for errorId for usage outside of FieldContainer
+      const errorId = this.props.errorId || `${this.props.fieldId}-error`;
+      return (
+        <InlineError id={errorId} inversed={this.props.inversed}>
+          {this.props.errorMessage}
+        </InlineError>
+      );
+    }
+  }
+
   render() {
     const {
       fieldId,
@@ -47,6 +59,7 @@ export class FormLabel extends React.PureComponent {
       className,
       inversed,
       errorMessage,
+      errorId,
       requirementLabel,
       ...labelProps
     } = this.props;
@@ -59,7 +72,7 @@ export class FormLabel extends React.PureComponent {
       <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
         <span className={classNames(textClassName)}>{children}</span>
         {this.hint()}
-        <InlineError {...{ fieldId, inversed }}>{errorMessage}</InlineError>
+        {this.errorMessage()}
       </ComponentType>
     );
   }
@@ -79,6 +92,10 @@ FormLabel.propTypes = {
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
   errorMessage: PropTypes.node,
+  /**
+   * The ID of the error message applied to this field.
+   */
+  errorId: PropTypes.string,
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
