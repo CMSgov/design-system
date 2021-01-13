@@ -13,11 +13,11 @@ interface FieldContainerProps {
    * The HTML element used to render the container
    */
   component: 'div' | 'fieldset';
-  errorMessage?: React.ReactNode;
   /**
    * A unique ID to be used for the error message. If one isn't provided, a unique ID will be generated.
    */
   errorId?: string,
+  errorMessage?: React.ReactNode;
   /**
    * Location of the error message relative to the field input
    */
@@ -159,6 +159,7 @@ export const FieldContainerPropKeys = [
   'className',
   'component',
   'errorMessage',
+  'errorPlacement',
   'focusTrigger',
   'hint',
   'id',
