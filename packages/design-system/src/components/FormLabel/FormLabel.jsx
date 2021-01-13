@@ -1,24 +1,9 @@
+import InlineError from '../FieldContainer/InlineError';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
 export class FormLabel extends React.PureComponent {
-  errorMessage() {
-    if (this.props.errorMessage) {
-      const classes = classNames('ds-c-field__error-message', {
-        'ds-c-field__error-message--inverse': this.props.inversed,
-      });
-
-      const id = this.props.fieldId ? `${this.props.fieldId}-message` : undefined;
-
-      return (
-        <span className={classes} id={id} role="alert">
-          {this.props.errorMessage}
-        </span>
-      );
-    }
-  }
-
   hint() {
     const { hint } = this.props;
     let { requirementLabel } = this.props;
@@ -74,7 +59,7 @@ export class FormLabel extends React.PureComponent {
       <ComponentType className={classes} htmlFor={fieldId} id={id} {...labelProps}>
         <span className={classNames(textClassName)}>{children}</span>
         {this.hint()}
-        {this.errorMessage()}
+        <InlineError {...{ fieldId, inversed }}>{errorMessage}</InlineError>
       </ComponentType>
     );
   }

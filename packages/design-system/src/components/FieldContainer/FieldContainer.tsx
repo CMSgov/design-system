@@ -1,4 +1,5 @@
 import FormLabel from '../FormLabel/FormLabel';
+import InlineError from './InlineError';
 import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
@@ -13,6 +14,10 @@ interface FieldContainerProps {
    */
   component: 'div' | 'fieldset';
   errorMessage?: React.ReactNode;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: 'top' | 'bottom';
   /**
    * Used to focus the field input on `componentDidMount()`
    */
@@ -60,6 +65,10 @@ interface FieldContainerProps {
 }
 
 export class FieldContainer extends React.Component<FieldContainerProps> {
+  static defaultProps = {
+    errorPlacement: 'top'
+  }
+  
   constructor(props: FieldContainerProps) {
     super(props);
 
@@ -87,6 +96,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       className,
       component,
       errorMessage,
+      errorPlacement,
       hint,
       inversed,
       label,
@@ -107,12 +117,20 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       setRef: this.setFieldRef,
     };
 
+    const renderBottomError = () => {
+      return (errorPlacement === 'bottom') ? (
+        <InlineError fieldId={this.id} inversed={inversed}>
+          {errorMessage}
+        </InlineError>
+      ) : null;
+    }
+
     return (
       <ComponentType className={classes}>
         <FormLabel
           className={labelClassName}
           component={labelComponent}
-          errorMessage={errorMessage}
+          errorMessage={errorPlacement === 'top' ? errorMessage : null}
           fieldId={this.id}
           hint={hint}
           id={this.labelId}
@@ -122,6 +140,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           {label}
         </FormLabel>
         {render(fieldInputProps)}
+        {renderBottomError()}
       </ComponentType>
     );
   }
