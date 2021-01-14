@@ -115,13 +115,13 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     const ComponentType = component;
     const classes =
       ComponentType === 'fieldset' ? classNames('ds-c-fieldset', className) : className;
-
     const bottomError = errorPlacement === 'bottom' && errorMessage;
+
     // Field input props handled by <FieldContainer>
-    const fieldInputProps = {
+    const fieldInputProps = { 
       id: this.id,
       labelId: this.labelId,
-      'aria-describedby': bottomError ? this.errorId : null,
+      errorId: this.errorId,
       setRef: this.setFieldRef,
     };
 
@@ -134,7 +134,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     }
 
     return (
-      <ComponentType className={classes}>
+      <ComponentType className={classes} >
         <FormLabel
           className={labelClassName}
           component={labelComponent}

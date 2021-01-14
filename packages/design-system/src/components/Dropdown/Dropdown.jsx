@@ -33,18 +33,27 @@ export class Dropdown extends React.PureComponent {
         {...containerProps}
         component="div"
         labelComponent="label"
-        render={({ labelId, ...fieldProps }) => (
+        render={({ id, errorId, setRef }) => (
           <Select
-            {...inputOnlyProps}
-            {...fieldProps}
+            // Link input to bottom placed error message
+            aria-describedBy={
+              this.props.errorPlacement === 'bottom' && this.props.errorMessage ? errorId : null
+            }
+            id={id}
+            setRef={setRef}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
+            {...inputOnlyProps}
           />
         )}
       />
     );
   }
 }
+
+Dropdown.defaultValue = {
+  errorPlacement: 'top',
+};
 
 Dropdown.propTypes = {
   /**
@@ -69,6 +78,10 @@ Dropdown.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
   /**
    * Additional classes to be added to the select element
    */
