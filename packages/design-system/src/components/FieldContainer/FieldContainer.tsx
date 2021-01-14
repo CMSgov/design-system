@@ -113,8 +113,10 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     } = this.props;
 
     const ComponentType = component;
-    const classes =
-      ComponentType === 'fieldset' ? classNames('ds-c-fieldset', className) : className;
+    const isFieldset = ComponentType === 'fieldset'
+    const classes = classNames({
+      'ds-c-fieldset': isFieldset
+    }, className);
     const bottomError = errorPlacement === 'bottom' && errorMessage;
 
     // Field input props handled by <FieldContainer>
@@ -140,7 +142,9 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           component={labelComponent}
           errorMessage={errorPlacement === 'top' ? errorMessage : null}
           errorId={this.errorId}
-          fieldId={this.id}
+          // Avoid using `for` attribute for components with multiple inputs 
+          // i.e. ChoiceList, DateField, and other components that use `fieldset`
+          fieldId={isFieldset ? this.id : null}
           hint={hint}
           id={this.labelId}
           requirementLabel={requirementLabel}

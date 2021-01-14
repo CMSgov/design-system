@@ -51,71 +51,51 @@ export class DateInput extends React.PureComponent {
     }, 20);
   }
 
-  render() {
+  renderField(type) {
     const sharedTextFieldProps = {
       className: 'ds-l-col--auto',
       labelClassName: 'ds-c-datefield__label',
+      disabled: this.props.disabled,
       inversed: this.props.inversed,
       onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
       onChange: this.props.onChange && this.handleChange,
       numeric: true,
     };
 
+    // Add additional id to `aria-describedBy` with bottom placed errors
+    // to ensure error message is linked to invalid fields
+    const describedBy = classNames(this.props.labelId, {
+      [this.props.errorId]: this.props.errorPlacement === 'bottom' && this.props[`${type}Invalid`],
+    });
+
+    return (
+      <TextField
+        {...sharedTextFieldProps}
+        fieldClassName={classNames(`ds-c-field--${type}`, {
+          'ds-c-field--error': this.props[`${type}Invalid`],
+        })}
+        inputRef={(el) => {
+          this[`${type}Input`] = el;
+          if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);
+        }}
+        defaultValue={this.props[`${type}DefaultValue`]}
+        label={this.props[`${type}Label`]}
+        name={this.props[`${type}Name`]}
+        value={this.props[`${type}Value`]}
+        autoComplete={this.props.autoComplete && `bday-${type}`}
+        aria-describedby={describedBy}
+      />
+    );
+  }
+
+  render() {
     return (
       <div className="ds-l-form-row ds-u-align-items--end">
-        <TextField
-          {...sharedTextFieldProps}
-          fieldClassName={classNames('ds-c-field--month', {
-            'ds-c-field--error': this.props.monthInvalid,
-          })}
-          inputRef={(el) => {
-            this.monthInput = el;
-            if (this.props.monthFieldRef) this.props.monthFieldRef(el);
-          }}
-          defaultValue={this.props.monthDefaultValue}
-          disabled={this.props.disabled}
-          label={this.props.monthLabel}
-          name={this.props.monthName}
-          value={this.props.monthValue}
-          aria-describedby={this.props.labelId}
-          autoComplete={this.props.autoComplete && 'bday-month'}
-        />
+        {this.renderField('month')}
         <span className="ds-c-datefield__separator">/</span>
-        <TextField
-          {...sharedTextFieldProps}
-          fieldClassName={classNames('ds-c-field--day', {
-            'ds-c-field--error': this.props.dayInvalid,
-          })}
-          inputRef={(el) => {
-            this.dayInput = el;
-            if (this.props.dayFieldRef) this.props.dayFieldRef(el);
-          }}
-          defaultValue={this.props.dayDefaultValue}
-          disabled={this.props.disabled}
-          label={this.props.dayLabel}
-          name={this.props.dayName}
-          value={this.props.dayValue}
-          aria-describedby={this.props.labelId}
-          autoComplete={this.props.autoComplete && 'bday-day'}
-        />
+        {this.renderField('day')}
         <span className="ds-c-datefield__separator">/</span>
-        <TextField
-          {...sharedTextFieldProps}
-          fieldClassName={classNames('ds-c-field--year', {
-            'ds-c-field--error': this.props.yearInvalid,
-          })}
-          inputRef={(el) => {
-            this.yearInput = el;
-            if (this.props.yearFieldRef) this.props.yearFieldRef(el);
-          }}
-          defaultValue={this.props.yearDefaultValue}
-          disabled={this.props.disabled}
-          label={this.props.yearLabel}
-          name={this.props.yearName}
-          value={this.props.yearValue}
-          aria-describedby={this.props.labelId}
-          autoComplete={this.props.autoComplete && 'bday-year'}
-        />
+        {this.renderField('year')}
       </div>
     );
   }
@@ -143,6 +123,14 @@ DateInput.propTypes = {
    * Disables all three input fields.
    */
   disabled: PropTypes.bool,
+  /**
+   * The ID of the error message applied to this field.
+   */
+  errorId: PropTypes.string,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
   /**
    * Applies the "inverse" UI theme
    */

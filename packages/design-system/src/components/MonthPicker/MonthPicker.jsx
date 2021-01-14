@@ -160,6 +160,7 @@ export class MonthPicker extends React.PureComponent {
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
+  errorPlacement: 'top',
 };
 
 MonthPicker.propTypes = {
@@ -190,6 +191,10 @@ MonthPicker.propTypes = {
    */
   label: PropTypes.node.isRequired,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
   /**
    * Additional hint text to display
    */

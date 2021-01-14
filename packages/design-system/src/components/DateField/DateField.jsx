@@ -22,8 +22,12 @@ export function DateField(props) {
       {...containerProps}
       component="fieldset"
       labelComponent="legend"
-      render={({ labelId }) => (
-        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
+      render={({ labelId, errorId }) => (
+        <DateInput
+          {...inputOnlyProps}
+          {...{ labelId, errorId, errorPlacement: props.errorPlacement }}
+          inversed={props.inversed}
+        />
       )}
     />
   );
@@ -32,6 +36,7 @@ export function DateField(props) {
 DateField.defaultProps = {
   label: 'Date',
   hint: 'For example: 4 / 28 / 1986',
+  errorPlacement: 'top',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
@@ -64,6 +69,10 @@ DateField.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
   /**
    * Additional hint text to display above the individual month/day/year fields
    */
