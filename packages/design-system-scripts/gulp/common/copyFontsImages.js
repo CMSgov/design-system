@@ -13,12 +13,10 @@ function minimizeSvg(srcGlob, dest) {
       .pipe(
         svgmin({
           plugins: [
-            {
-              cleanupIDs: false,
-              removeTitle: false,
-              removeDesc: false,
-              removeHiddenElems: false,
-            },
+            { cleanupIDs: false },
+            { removeTitle: false },
+            { removeDesc: false },
+            { removeHiddenElems: false },
           ],
         })
       )
