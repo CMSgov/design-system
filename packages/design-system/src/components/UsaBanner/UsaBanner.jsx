@@ -29,25 +29,23 @@ export class UsaBanner extends React.PureComponent {
             this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''
           }`}
         >
-          <div className="ds-c-usa-banner__inner">
-            <p className="ds-c-usa-banner__header-text">
-              <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
-            </p>
-            <p className="ds-c-usa-banner__header-text">
-              <span>{t.bannerText}</span>
-              <span className="ds-c-usa-banner__header-action" aria-hidden="true">
-                {t.bannerActionText}
-              </span>
-              <button
-                onClick={this.handleToggleBanner}
-                className="ds-c-usa-banner__button"
-                aria-expanded={this.state.isBannerOpen}
-                aria-controls="gov-banner"
-              >
-                <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
-              </button>
-            </p>
-          </div>
+          <p className="ds-c-usa-banner__header-text">
+            <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
+          </p>
+          <p className="ds-c-usa-banner__header-text">
+            <span>{t.bannerText}</span>
+            <span className="ds-c-usa-banner__header-action" aria-hidden="true">
+              {t.bannerActionText}
+            </span>
+            <button
+              onClick={this.handleToggleBanner}
+              className="ds-c-usa-banner__button"
+              aria-expanded={this.state.isBannerOpen}
+              aria-controls="gov-banner"
+            >
+              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+            </button>
+          </p>
         </header>
         <div className="ds-c-usa-banner__content" id="gov-banner" hidden={!this.state.isBannerOpen}>
           <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
@@ -66,8 +64,9 @@ export class UsaBanner extends React.PureComponent {
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.httpsHeaderText}</strong>
                 <br />
-                {t.httpsAText} <strong>{t.httpsLockText}</strong> ({' '}
-                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
+                {t.httpsAText}
+                <strong> {t.httpsLockText} </strong>
+                ( <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>

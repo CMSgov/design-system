@@ -2,13 +2,14 @@ $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
 $usa-banner-close-image-background-color: #e6e6e6;
 $usa-banner-header-action-color: #005ea2;
+$usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial,
+  sans-serif;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
   color: $usa-banner-text-color;
-  font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-  font-size: 1.06471rem;
-  line-height: 1.52155;
+  font-family: $usa-banner-font-family;
+  font-size: 1rem;
   padding: 0;
 }
 
@@ -16,11 +17,13 @@ $usa-banner-header-action-color: #005ea2;
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  font-size: 0.79853rem;
+  font-size: 0.8rem;
   font-weight: 400;
-  line-height: 1.12707;
+  line-height: inherit;
   min-height: 2rem;
   padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 0;
   padding-top: 0.5rem;
   position: relative;
 
@@ -58,6 +61,7 @@ $usa-banner-header-action-color: #005ea2;
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 0.5rem;
+    color: $usa-banner-header-action-color;
     content: '';
     display: inline-block;
     height: 0.5rem;
@@ -75,30 +79,15 @@ $usa-banner-header-action-color: #005ea2;
   }
 }
 
-.ds-c-usa-banner__content {
-  font-size: 0.99816rem;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  padding: 0.25rem 1rem 1rem 0.5rem;
-
-  @media (min-width: $width-sm) {
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
-  }
-}
-
 .ds-c-usa-banner__button {
   background-color: transparent;
   border: 0;
-  border-radius: 0;
   bottom: 0;
   box-shadow: none;
   display: block;
-  font-size: 0.8rem;
-  height: auto;
+  font-size: inherit;
   left: 0;
-  line-height: 1.2;
+  line-height: inherit;
   margin: 0;
   overflow: visible;
   padding: 0;
@@ -110,6 +99,7 @@ $usa-banner-header-action-color: #005ea2;
   /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .ds-c-link;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
+
   @media (min-width: $width-sm) {
     bottom: auto;
     display: inline;
@@ -184,10 +174,22 @@ $usa-banner-header-action-color: #005ea2;
   }
 }
 
+.ds-c-usa-banner__content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 64rem;
+  overflow: hidden;
+  padding: 0.25rem 1rem 1rem 0.5rem;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
 .ds-c-usa-banner__guidance {
   align-items: flex-start;
   display: flex;
-  max-width: 64ex;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: $spacer-2;
@@ -228,7 +230,6 @@ $usa-banner-header-action-color: #005ea2;
 
   @media (min-width: $width-sm) {
     background-color: transparent;
-    display: block;
     padding-right: 0;
     .ds-c-usa-banner__button-text::after {
       transform: rotate(180deg);
@@ -240,13 +241,3 @@ $usa-banner-header-action-color: #005ea2;
   }
 }
 // stylelint-enable no-duplicate-selectors
-
-.ds-c-usa-banner__inner {
-  align-items: flex-start;
-  display: flex;
-  line-height: 1;
-  margin-left: 0;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 0;
-}
