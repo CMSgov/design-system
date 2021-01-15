@@ -4,6 +4,10 @@ export type LocaleLanguage = 'en' | 'es';
 
 export interface UsaBannerProps {
   /**
+   * A unique `id` to be used on the usa banner.
+   */
+  id?: string;
+  /**
    * The language the USA Banner will render as.
    */
   locale?: LocaleLanguage,

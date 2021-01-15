@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
 import UsaFlagIcon from '../../images/usa-banner-flag.svg';
+import uniqueId from 'lodash.uniqueid';
 
 export class UsaBanner extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.id = props.id || uniqueId('gov-banner_');
     this.state = { isBannerOpen: false };
     this.handleToggleBanner = this.handleToggleBanner.bind(this);
   }
@@ -41,13 +43,13 @@ export class UsaBanner extends React.PureComponent {
               onClick={this.handleToggleBanner}
               className="ds-c-usa-banner__button"
               aria-expanded={this.state.isBannerOpen}
-              aria-controls="gov-banner"
+              aria-controls={this.id}
             >
               <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
             </button>
           </p>
         </header>
-        <div className="ds-c-usa-banner__content" id="gov-banner" hidden={!this.state.isBannerOpen}>
+        <div className="ds-c-usa-banner__content" id={this.id} hidden={!this.state.isBannerOpen}>
           <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
             <div className="ds-c-usa-banner__guidance">
               <DotGovIcon className="ds-c-usa-banner__icon" />
@@ -84,6 +86,11 @@ UsaBanner.defaultProps = {
 
 UsaBanner.propTypes = {
   /**
+   * A unique `id` to be used on the usa banner.
+   */
+  id: PropTypes.string,
+  /**
+   *
    * The language the USA Banner will render as.
    */
   locale: PropTypes.oneOf(['en', 'es']),
