@@ -63,7 +63,7 @@ exports[`applies Spanish translation 1`] = `
         Así es como usted puede verificarlo
       </span>
       <button
-        aria-controls="gov-banner"
+        aria-controls="gov-banner_2"
         aria-expanded={false}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -79,7 +79,7 @@ exports[`applies Spanish translation 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={true}
-    id="gov-banner"
+    id="gov-banner_2"
   >
     <div
       className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
@@ -218,7 +218,7 @@ exports[`applies additional class names to expanded banner 1`] = `
         Here’s how you know
       </span>
       <button
-        aria-controls="gov-banner"
+        aria-controls="gov-banner_3"
         aria-expanded={true}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -234,7 +234,7 @@ exports[`applies additional class names to expanded banner 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={false}
-    id="gov-banner"
+    id="gov-banner_3"
   >
     <div
       className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
@@ -368,7 +368,7 @@ exports[`renders correctly 1`] = `
         Here’s how you know
       </span>
       <button
-        aria-controls="gov-banner"
+        aria-controls="gov-banner_1"
         aria-expanded={false}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -384,7 +384,7 @@ exports[`renders correctly 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={true}
-    id="gov-banner"
+    id="gov-banner_1"
   >
     <div
       className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"

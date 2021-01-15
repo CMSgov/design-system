@@ -2,14 +2,13 @@ $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
 $usa-banner-close-image-background-color: #e6e6e6;
 $usa-banner-header-action-color: #005ea2;
-$usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial,
-  sans-serif;
+$usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
   color: $usa-banner-text-color;
   font-family: $usa-banner-font-family;
-  font-size: 1rem;
+  font-size: $base-font-size;
   padding: 0;
 }
 
@@ -17,33 +16,33 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-size: $small-font-size;
+  font-weight: $font-normal;
   line-height: inherit;
-  min-height: 2rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
+  min-height: $spacer-5;
+  padding-bottom: $spacer-2;
+  padding-left: $spacer-3;
   padding-right: 0;
-  padding-top: 0.5rem;
+  padding-top: $spacer-2;
   position: relative;
 
   @media (min-width: $width-sm) {
     min-height: 0;
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
+    padding-bottom: 4px;
+    padding-top: 4px;
   }
 }
 
 .ds-c-usa-banner__header-flag {
-  margin-right: 0.5rem;
-  width: 1rem;
+  margin-right: $spacer-2;
+  width: $spacer-3;
 }
 
 .ds-c-usa-banner__header-text {
   display: table;
   margin: 0;
   span {
-    margin-right: 0.5rem;
+    margin-right: $spacer-2;
   }
 }
 
@@ -60,14 +59,14 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
       linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
-    background-size: 0.5rem;
+    background-size: $spacer-2;
     color: $usa-banner-header-action-color;
     content: '';
     display: inline-block;
-    height: 0.5rem;
+    height: $spacer-2;
     margin-left: 2px;
     padding-right: 2px;
-    width: 0.5rem;
+    width: $spacer-2;
   }
 
   // Hide header-action text for large viewport and when expanded
@@ -118,11 +117,11 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
       bottom: 0;
       content: '';
       display: block;
-      height: 3rem;
+      height: $spacer-7;
       position: absolute;
       right: 0;
       top: 0;
-      width: 3rem;
+      width: $spacer-7;
     }
     // stylelint-enable scss/media-feature-value-dollar-variable
 
@@ -130,17 +129,17 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
       background-image: url('#{$image-path}/close-alt.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 1rem 1rem;
+      background-size: $spacer-3 $spacer-3;
       bottom: 0;
       content: '';
       display: inline-block;
-      height: 3rem;
+      height: $spacer-7;
       margin-left: 0;
       position: absolute;
       right: 0;
       top: 0;
       vertical-align: middle;
-      width: 3rem;
+      width: $spacer-7;
     }
   }
 }
@@ -163,13 +162,13 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
         linear-gradient(transparent, transparent);
       background-position: 50%;
       background-repeat: no-repeat;
-      background-size: 0.5rem;
+      background-size: $spacer-2;
       content: '';
       display: inline-block;
-      height: 0.5rem;
+      height: $spacer-2;
       margin-left: 2px;
       padding-right: 2px;
-      width: 0.5rem;
+      width: $spacer-2;
     }
   }
 }
@@ -177,21 +176,21 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
 .ds-c-usa-banner__content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 64rem;
+  max-width: $width-lg;
   overflow: hidden;
-  padding: 0.25rem 1rem 1rem 0.5rem;
+  padding: 4px $spacer-3 $spacer-3 $spacer-2;
 
   @media (min-width: $width-sm) {
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
+    padding-bottom: $spacer-4;
+    padding-top: $spacer-4;
   }
 }
 
 .ds-c-usa-banner__guidance {
   align-items: flex-start;
   display: flex;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 12px;
+  padding-right: 12px;
   padding-top: $spacer-2;
 
   @media (min-width: $width-sm) {
@@ -202,9 +201,9 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
 
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
-  height: 2.5rem;
-  margin-right: 0.5rem;
-  width: 2.5rem;
+  height: $spacer-6;
+  margin-right: $spacer-2;
+  width: $spacer-6;
 }
 
 .ds-c-usa-banner__lock-image {
@@ -217,7 +216,7 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
 
 .ds-c-usa-banner__media-img {
   float: left;
-  margin-right: 0.5rem;
+  margin-right: $spacer-2;
 }
 
 .ds-c-usa-banner__media-body {
@@ -226,7 +225,7 @@ $usa-banner-font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Rob
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  padding-right: 3.5rem;
+  padding-right: $spacer-8;
 
   @media (min-width: $width-sm) {
     background-color: transparent;
