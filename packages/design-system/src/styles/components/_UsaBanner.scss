@@ -19,11 +19,11 @@ $usa-banner-font-family: $font-sans;
   font-size: $small-font-size;
   font-weight: $font-normal;
   line-height: inherit;
-  min-height: $spacer-5;
-  padding-bottom: $spacer-2;
-  padding-left: $spacer-3;
+  min-height: $spacer-4;
+  padding-bottom: $spacer-1;
+  padding-left: $spacer-2;
   padding-right: 0;
-  padding-top: $spacer-2;
+  padding-top: $spacer-1;
   position: relative;
 
   @media (min-width: $width-sm) {
@@ -34,15 +34,15 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__header-flag {
-  margin-right: $spacer-2;
-  width: $spacer-3;
+  margin-right: $spacer-1;
+  width: $spacer-2;
 }
 
 .ds-c-usa-banner__header-text {
   display: table;
   margin: 0;
   span {
-    margin-right: $spacer-2;
+    margin-right: $spacer-1;
   }
 }
 
@@ -59,14 +59,14 @@ $usa-banner-font-family: $font-sans;
       linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
-    background-size: $spacer-2;
+    background-size: $spacer-1;
     color: $usa-banner-header-action-color;
     content: '';
     display: inline-block;
-    height: $spacer-2;
+    height: $spacer-1;
     margin-left: 2px;
     padding-right: 2px;
-    width: $spacer-2;
+    width: $spacer-1;
   }
 
   // Hide header-action text for large viewport and when expanded
@@ -117,11 +117,11 @@ $usa-banner-font-family: $font-sans;
       bottom: 0;
       content: '';
       display: block;
-      height: $spacer-7;
+      height: $spacer-6;
       position: absolute;
       right: 0;
       top: 0;
-      width: $spacer-7;
+      width: $spacer-6;
     }
     // stylelint-enable scss/media-feature-value-dollar-variable
 
@@ -129,17 +129,17 @@ $usa-banner-font-family: $font-sans;
       background-image: url('#{$image-path}/close-alt.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: $spacer-3 $spacer-3;
+      background-size: $spacer-2 $spacer-2;
       bottom: 0;
       content: '';
       display: inline-block;
-      height: $spacer-7;
+      height: $spacer-6;
       margin-left: 0;
       position: absolute;
       right: 0;
       top: 0;
       vertical-align: middle;
-      width: $spacer-7;
+      width: $spacer-6;
     }
   }
 }
@@ -162,13 +162,13 @@ $usa-banner-font-family: $font-sans;
         linear-gradient(transparent, transparent);
       background-position: 50%;
       background-repeat: no-repeat;
-      background-size: $spacer-2;
+      background-size: $spacer-1;
       content: '';
       display: inline-block;
-      height: $spacer-2;
+      height: $spacer-1;
       margin-left: 2px;
       padding-right: 2px;
-      width: $spacer-2;
+      width: $spacer-1;
     }
   }
 }
@@ -178,11 +178,11 @@ $usa-banner-font-family: $font-sans;
   margin-right: auto;
   max-width: $width-lg;
   overflow: hidden;
-  padding: 4px $spacer-3 $spacer-3 $spacer-2;
+  padding: 4px $spacer-2 $spacer-2 $spacer-1;
 
   @media (min-width: $width-sm) {
-    padding-bottom: $spacer-4;
-    padding-top: $spacer-4;
+    padding-bottom: $spacer-3;
+    padding-top: $spacer-3;
   }
 }
 
@@ -201,9 +201,9 @@ $usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
-  height: $spacer-6;
-  margin-right: $spacer-2;
-  width: $spacer-6;
+  height: $spacer-5;
+  margin-right: $spacer-1;
+  width: $spacer-5;
 }
 
 .ds-c-usa-banner__lock-image {
@@ -216,7 +216,7 @@ $usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner__media-img {
   float: left;
-  margin-right: $spacer-2;
+  margin-right: $spacer-1;
 }
 
 .ds-c-usa-banner__media-body {
@@ -225,7 +225,7 @@ $usa-banner-font-family: $font-sans;
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  padding-right: $spacer-8;
+  padding-right: $spacer-7;
 
   @media (min-width: $width-sm) {
     background-color: transparent;
