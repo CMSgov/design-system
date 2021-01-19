@@ -16,9 +16,8 @@ $usa-banner-font-family: $font-sans;
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  font-size: $small-font-size;
+  font-size: 12px;
   font-weight: $font-normal;
-  line-height: inherit;
   min-height: $spacer-4;
   padding-bottom: $spacer-1;
   padding-left: $spacer-2;
@@ -176,7 +175,6 @@ $usa-banner-font-family: $font-sans;
 .ds-c-usa-banner__content {
   margin-left: auto;
   margin-right: auto;
-  max-width: $width-lg;
   overflow: hidden;
   padding: 4px $spacer-2 $spacer-2 $spacer-1;
 
@@ -189,6 +187,7 @@ $usa-banner-font-family: $font-sans;
 .ds-c-usa-banner__guidance {
   align-items: flex-start;
   display: flex;
+  max-width: 64ex;
   padding-left: 12px;
   padding-right: 12px;
   padding-top: $spacer-2;
