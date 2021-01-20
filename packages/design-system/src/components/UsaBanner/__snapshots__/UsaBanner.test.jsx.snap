@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`applies Spanish translation 1`] = `
+exports[`UsaBanner applies Spanish translation 1`] = `
 <section
   aria-label="Official government website"
   className="ds-c-usa-banner"
@@ -159,7 +159,8 @@ exports[`applies Spanish translation 1`] = `
             candado
              
           </strong>
-          ( 
+           (
+           
           <svg
             className="ds-c-usa-banner__lock-image"
             focusable="false"
@@ -178,7 +179,8 @@ exports[`applies Spanish translation 1`] = `
               fillRule="evenodd"
             />
           </svg>
-           ) 
+           )
+           
           o
           <strong>
              
@@ -193,7 +195,7 @@ exports[`applies Spanish translation 1`] = `
 </section>
 `;
 
-exports[`applies additional class names to expanded banner 1`] = `
+exports[`UsaBanner applies additional class names to expanded banner 1`] = `
 <section
   aria-label="Official government website"
   className="ds-c-usa-banner"
@@ -204,7 +206,14 @@ exports[`applies additional class names to expanded banner 1`] = `
     <p
       className="ds-c-usa-banner__header-text"
     >
-      <IconUsaFlag />
+      <IconFlag
+        className="ds-c-usa-banner__header-flag"
+        focusable="false"
+        height="11"
+        role="img"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      />
     </p>
     <p
       className="ds-c-usa-banner__header-text"
@@ -287,9 +296,17 @@ exports[`applies additional class names to expanded banner 1`] = `
             lock
              
           </strong>
-          ( 
-          <IconPadLock />
-           ) 
+           (
+           
+          <IconLock
+            className="ds-c-usa-banner__lock-image"
+            focusable="false"
+            role="img"
+            viewBox="0 0 52 64"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+           )
+           
           or
           <strong>
              
@@ -304,7 +321,7 @@ exports[`applies additional class names to expanded banner 1`] = `
 </section>
 `;
 
-exports[`renders correctly 1`] = `
+exports[`UsaBanner renders correctly 1`] = `
 <section
   aria-label="Official government website"
   className="ds-c-usa-banner"
@@ -463,7 +480,8 @@ exports[`renders correctly 1`] = `
             lock
              
           </strong>
-          ( 
+           (
+           
           <svg
             className="ds-c-usa-banner__lock-image"
             focusable="false"
@@ -482,7 +500,8 @@ exports[`renders correctly 1`] = `
               fillRule="evenodd"
             />
           </svg>
-           ) 
+           )
+           
           or
           <strong>
              
