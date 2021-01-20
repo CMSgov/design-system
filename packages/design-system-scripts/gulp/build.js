@@ -11,9 +11,7 @@ const count = require('gulp-count');
 const rename = require('gulp-rename');
 const ts = require('gulp-typescript');
 const path = require('path');
-const react2dts = require('react-to-typescript-definitions');
 const streamPromise = require('./common/streamPromise');
-const through = require('through2');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
@@ -81,37 +79,6 @@ async function copyAll(dir, options) {
 
   return Promise.all(copyTasks);
 }
-
-/**
- * Used to generate typescript definition files for the core
- */
-/* eslint-disable */
-async function generateTypeDefinitionsFromPropTypes(dir) {
-  const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src);
-
-  return streamPromise(
-    gulp
-      .src(srcGlob, { base: src })
-      .pipe(
-        through.obj((file, enc, cb) => {
-          // Replace React component files with definitions, avoid modifying entry point
-          if (file.basename !== 'index.js' || file.dirname.split('/').pop() !== 'components') {
-            const definition = react2dts.generateFromFile(null, file.path);
-            file.contents = Buffer.from(definition);
-          }
-
-          file.extname = '.d.ts';
-          cb(null, file);
-        })
-      )
-      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
-      .on('finish', function () {
-        logTask('📜 ', 'Core Typescript definition files generated');
-      })
-  );
-}
-/* eslint-enable */
 
 /**
  * Because we use babel to compile ts files, we have to compile twice to get definition files.

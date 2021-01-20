@@ -1,6 +1,6 @@
+import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
 import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
-import FieldContainer from '../FieldContainer/FieldContainer';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -14,8 +14,8 @@ const standardLengthFormatter = ({ day, month, year }) => ({
 export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
 export function DateField(props) {
-  const containerProps = pick(props, Object.keys(FieldContainer.propTypes));
-  const inputOnlyProps = omit(props, Object.keys(FieldContainer.propTypes));
+  const containerProps = pick(props, FieldContainerPropKeys);
+  const inputOnlyProps = omit(props, FieldContainerPropKeys);
 
   return (
     <FieldContainer
