@@ -6,6 +6,7 @@ import IconLock from '../../images/usa-banner-lock.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
+import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 export class UsaBanner extends React.PureComponent {
@@ -24,23 +25,17 @@ export class UsaBanner extends React.PureComponent {
     const t =
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
 
-    const IconUsaFlag = () => (
-      <IconFlag role="img" className="ds-c-usa-banner__header-flag" focusable="false" />
-    );
-
-    const IconPadLock = () => (
-      <IconLock role="img" className="ds-c-usa-banner__lock-image" focusable="false" />
-    );
+    const classes = classNames('ds-c-usa-banner', this.props.className);
 
     return (
-      <section className="ds-c-usa-banner" aria-label="Official government website">
+      <section className={classes} aria-label="Official government website">
         <header
           className={`ds-c-usa-banner__header ${
             this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''
           }`}
         >
           <p className="ds-c-usa-banner__header-text">
-            <IconUsaFlag />
+            <IconFlag role="img" className="ds-c-usa-banner__header-flag" focusable="false" />
           </p>
           <p className="ds-c-usa-banner__header-text">
             <span>{t.bannerText}</span>
@@ -75,8 +70,9 @@ export class UsaBanner extends React.PureComponent {
                 <strong>{t.httpsHeaderText}</strong>
                 <br />
                 {t.httpsAText}
-                <strong> {t.httpsLockText} </strong>
-                ( <IconPadLock /> ) {t.httpsOrText}
+                <strong> {t.httpsLockText} </strong> ({' '}
+                <IconLock role="img" className="ds-c-usa-banner__lock-image" focusable="false" /> ){' '}
+                {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>
@@ -94,7 +90,11 @@ UsaBanner.defaultProps = {
 
 UsaBanner.propTypes = {
   /**
-   * A unique `id` to be used on the usa banner.
+   * Additional classes to be added to the root `section` element
+   */
+  className: PropTypes.string,
+  /**
+   * A unique ID to be applied to the banner content. A unique ID will be generated if one isn't provided.
    */
   id: PropTypes.string,
   /**

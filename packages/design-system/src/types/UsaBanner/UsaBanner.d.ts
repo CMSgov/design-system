@@ -4,7 +4,11 @@ export type LocaleLanguage = 'en' | 'es';
 
 export interface UsaBannerProps {
   /**
-   * A unique `id` to be used on the usa banner.
+   * Additional classes to be added to the root `section` element
+   */
+  className?: string;
+  /**
+   * A unique ID to be applied to the banner content. A unique ID will be generated if one isn't provided.
    */
   id?: string;
   /**

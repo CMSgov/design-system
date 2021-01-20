@@ -19,10 +19,7 @@ $usa-banner-font-family: $font-sans;
   font-size: 12px;
   font-weight: $font-normal;
   min-height: $spacer-4;
-  padding-bottom: $spacer-1;
-  padding-left: $spacer-2;
-  padding-right: 0;
-  padding-top: $spacer-1;
+  padding: $spacer-1 0 $spacer-1 $spacer-2;
   position: relative;
 
   @media (min-width: $width-sm) {
@@ -188,9 +185,7 @@ $usa-banner-font-family: $font-sans;
   align-items: flex-start;
   display: flex;
   max-width: 64ex;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: $spacer-2;
+  padding: $spacer-2 12px 0 12px;
 
   @media (min-width: $width-sm) {
     padding: 0 $spacer-1;
