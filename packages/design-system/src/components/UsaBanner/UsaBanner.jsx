@@ -1,15 +1,18 @@
-import DotGovIcon from '../../images/usa-banner-dot-gov.svg';
 import EnglishTranslations from '../../locale/en.json';
-import HttpsIcon from '../../images/usa-banner-https.svg';
-import LockIcon from '../../images/usa-banner-lock.svg';
+import IconDotGov from '../../images/usa-banner-dot-gov.svg';
+import IconFlag from '../../images/usa-banner-flag.svg';
+import IconHttps from '../../images/usa-banner-https.svg';
+import IconLock from '../../images/usa-banner-lock.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
-import UsaFlagIcon from '../../images/usa-banner-flag.svg';
+import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 export class UsaBanner extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.id = props.id || uniqueId('gov-banner_');
     this.state = { isBannerOpen: false };
     this.handleToggleBanner = this.handleToggleBanner.bind(this);
   }
@@ -22,37 +25,37 @@ export class UsaBanner extends React.PureComponent {
     const t =
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
 
+    const classes = classNames('ds-c-usa-banner', this.props.className);
+
     return (
-      <section className="ds-c-usa-banner" aria-label="Official government website">
+      <section className={classes} aria-label="Official government website">
         <header
           className={`ds-c-usa-banner__header ${
             this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''
           }`}
         >
-          <div className="ds-c-usa-banner__inner">
-            <p className="ds-c-usa-banner__header-text">
-              <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
-            </p>
-            <p className="ds-c-usa-banner__header-text">
-              <span>{t.bannerText}</span>
-              <span className="ds-c-usa-banner__header-action" aria-hidden="true">
-                {t.bannerActionText}
-              </span>
-              <button
-                onClick={this.handleToggleBanner}
-                className="ds-c-usa-banner__button"
-                aria-expanded={this.state.isBannerOpen}
-                aria-controls="gov-banner"
-              >
-                <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
-              </button>
-            </p>
-          </div>
+          <p className="ds-c-usa-banner__header-text">
+            <IconFlag role="img" className="ds-c-usa-banner__header-flag" focusable="false" />
+          </p>
+          <p className="ds-c-usa-banner__header-text">
+            <span>{t.bannerText}</span>
+            <span className="ds-c-usa-banner__header-action" aria-hidden="true">
+              {t.bannerActionText}
+            </span>
+            <button
+              onClick={this.handleToggleBanner}
+              className="ds-c-usa-banner__button"
+              aria-expanded={this.state.isBannerOpen}
+              aria-controls={this.id}
+            >
+              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+            </button>
+          </p>
         </header>
-        <div className="ds-c-usa-banner__content" id="gov-banner" hidden={!this.state.isBannerOpen}>
+        <div className="ds-c-usa-banner__content" id={this.id} hidden={!this.state.isBannerOpen}>
           <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
             <div className="ds-c-usa-banner__guidance">
-              <DotGovIcon className="ds-c-usa-banner__icon" />
+              <IconDotGov className="ds-c-usa-banner__icon" aria-hidden="true" />
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.domainHeaderText}</strong>
                 <br />
@@ -62,12 +65,14 @@ export class UsaBanner extends React.PureComponent {
               </p>
             </div>
             <div className="ds-c-usa-banner__guidance">
-              <HttpsIcon className="ds-c-usa-banner__icon" />
+              <IconHttps className="ds-c-usa-banner__icon" aria-hidden="true" />
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.httpsHeaderText}</strong>
                 <br />
-                {t.httpsAText} <strong>{t.httpsLockText}</strong> ({' '}
-                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
+                {t.httpsAText}
+                <strong> {t.httpsLockText} </strong> ({' '}
+                <IconLock role="img" className="ds-c-usa-banner__lock-image" focusable="false" /> ){' '}
+                {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>
@@ -85,6 +90,15 @@ UsaBanner.defaultProps = {
 
 UsaBanner.propTypes = {
   /**
+   * Additional classes to be added to the root `section` element
+   */
+  className: PropTypes.string,
+  /**
+   * A unique ID to be applied to the banner content. A unique ID will be generated if one isn't provided.
+   */
+  id: PropTypes.string,
+  /**
+   *
    * The language the USA Banner will render as.
    */
   locale: PropTypes.oneOf(['en', 'es']),

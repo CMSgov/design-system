@@ -2,13 +2,13 @@ $usa-banner-background-color: #f0f0f0;
 $usa-banner-text-color: #1b1b1b;
 $usa-banner-close-image-background-color: #e6e6e6;
 $usa-banner-header-action-color: #005ea2;
+$usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
   color: $usa-banner-text-color;
-  font-family: 'Source Sans Pro Web', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-  font-size: 1.06471rem;
-  line-height: 1.52155;
+  font-family: $usa-banner-font-family;
+  font-size: $base-font-size;
   padding: 0;
 }
 
@@ -16,31 +16,29 @@ $usa-banner-header-action-color: #005ea2;
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  font-size: 0.79853rem;
-  font-weight: 400;
-  line-height: 1.12707;
-  min-height: 2rem;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
+  font-size: 12px;
+  font-weight: $font-normal;
+  min-height: $spacer-4;
+  padding: $spacer-1 0 $spacer-1 $spacer-2;
   position: relative;
 
   @media (min-width: $width-sm) {
     min-height: 0;
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
+    padding-bottom: 4px;
+    padding-top: 4px;
   }
 }
 
 .ds-c-usa-banner__header-flag {
-  margin-right: 0.5rem;
-  width: 1rem;
+  margin-right: $spacer-1;
+  width: $spacer-2;
 }
 
 .ds-c-usa-banner__header-text {
   display: table;
   margin: 0;
   span {
-    margin-right: 0.5rem;
+    margin-right: $spacer-1;
   }
 }
 
@@ -57,13 +55,14 @@ $usa-banner-header-action-color: #005ea2;
       linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
-    background-size: 0.5rem;
+    background-size: $spacer-1;
+    color: $usa-banner-header-action-color;
     content: '';
     display: inline-block;
-    height: 0.5rem;
+    height: $spacer-1;
     margin-left: 2px;
     padding-right: 2px;
-    width: 0.5rem;
+    width: $spacer-1;
   }
 
   // Hide header-action text for large viewport and when expanded
@@ -75,30 +74,15 @@ $usa-banner-header-action-color: #005ea2;
   }
 }
 
-.ds-c-usa-banner__content {
-  font-size: 0.99816rem;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  padding: 0.25rem 1rem 1rem 0.5rem;
-
-  @media (min-width: $width-sm) {
-    padding-bottom: 1.5rem;
-    padding-top: 1.5rem;
-  }
-}
-
 .ds-c-usa-banner__button {
   background-color: transparent;
   border: 0;
-  border-radius: 0;
   bottom: 0;
   box-shadow: none;
   display: block;
-  font-size: 0.8rem;
-  height: auto;
+  font-size: inherit;
   left: 0;
-  line-height: 1.2;
+  line-height: inherit;
   margin: 0;
   overflow: visible;
   padding: 0;
@@ -110,6 +94,7 @@ $usa-banner-header-action-color: #005ea2;
   /* stylelint-disable scss/at-extend-no-missing-placeholder */
   @extend .ds-c-link;
   /* stylelint-enable scss/at-extend-no-missing-placeholder */
+
   @media (min-width: $width-sm) {
     bottom: auto;
     display: inline;
@@ -128,11 +113,11 @@ $usa-banner-header-action-color: #005ea2;
       bottom: 0;
       content: '';
       display: block;
-      height: 3rem;
+      height: $spacer-6;
       position: absolute;
       right: 0;
       top: 0;
-      width: 3rem;
+      width: $spacer-6;
     }
     // stylelint-enable scss/media-feature-value-dollar-variable
 
@@ -140,17 +125,17 @@ $usa-banner-header-action-color: #005ea2;
       background-image: url('#{$image-path}/close-alt.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 1rem 1rem;
+      background-size: $spacer-2 $spacer-2;
       bottom: 0;
       content: '';
       display: inline-block;
-      height: 3rem;
+      height: $spacer-6;
       margin-left: 0;
       position: absolute;
       right: 0;
       top: 0;
       vertical-align: middle;
-      width: 3rem;
+      width: $spacer-6;
     }
   }
 }
@@ -173,14 +158,26 @@ $usa-banner-header-action-color: #005ea2;
         linear-gradient(transparent, transparent);
       background-position: 50%;
       background-repeat: no-repeat;
-      background-size: 0.5rem;
+      background-size: $spacer-1;
       content: '';
       display: inline-block;
-      height: 0.5rem;
+      height: $spacer-1;
       margin-left: 2px;
       padding-right: 2px;
-      width: 0.5rem;
+      width: $spacer-1;
     }
+  }
+}
+
+.ds-c-usa-banner__content {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 4px $spacer-2 $spacer-2 $spacer-1;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: $spacer-3;
+    padding-top: $spacer-3;
   }
 }
 
@@ -188,9 +185,7 @@ $usa-banner-header-action-color: #005ea2;
   align-items: flex-start;
   display: flex;
   max-width: 64ex;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: $spacer-2;
+  padding: $spacer-2 12px 0 12px;
 
   @media (min-width: $width-sm) {
     padding: 0 $spacer-1;
@@ -200,9 +195,9 @@ $usa-banner-header-action-color: #005ea2;
 
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
-  height: 2.5rem;
-  margin-right: 0.5rem;
-  width: 2.5rem;
+  height: $spacer-5;
+  margin-right: $spacer-1;
+  width: $spacer-5;
 }
 
 .ds-c-usa-banner__lock-image {
@@ -215,7 +210,7 @@ $usa-banner-header-action-color: #005ea2;
 
 .ds-c-usa-banner__media-img {
   float: left;
-  margin-right: 0.5rem;
+  margin-right: $spacer-1;
 }
 
 .ds-c-usa-banner__media-body {
@@ -224,11 +219,10 @@ $usa-banner-header-action-color: #005ea2;
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  padding-right: 3.5rem;
+  padding-right: $spacer-7;
 
   @media (min-width: $width-sm) {
     background-color: transparent;
-    display: block;
     padding-right: 0;
     .ds-c-usa-banner__button-text::after {
       transform: rotate(180deg);
@@ -240,13 +234,3 @@ $usa-banner-header-action-color: #005ea2;
   }
 }
 // stylelint-enable no-duplicate-selectors
-
-.ds-c-usa-banner__inner {
-  align-items: flex-start;
-  display: flex;
-  line-height: 1;
-  margin-left: 0;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 0;
-}

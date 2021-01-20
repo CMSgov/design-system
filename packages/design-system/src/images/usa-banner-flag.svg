@@ -1,4 +1,6 @@
-<svg width="16" height="11" xmlns="http://www.w3.org/2000/svg">
+<svg role="img" width="16" height="11" xmlns="http://www.w3.org/2000/svg" aria-labelledby="banner-flag-title banner-flag-description" focusable="false">
+    <title id="banner-flag-title">U.S. flag</title>
+    <desc id="banner-flag-description">U.S. flag</desc>
     <g id="svg" fill="none" fill-rule="evenodd">
         <path fill="#FFF" d="M0 0h16v11H0z"/>
         <path fill="#DB3E1F" d="M8 0h8v1H8z"/>
