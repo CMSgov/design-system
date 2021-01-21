@@ -25,10 +25,12 @@ export class UsaBanner extends React.PureComponent {
     const t =
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
 
+    const langProp = this.props.locale === 'es' ? 'es' : null;
+
     const classes = classNames('ds-c-usa-banner', this.props.className);
 
     return (
-      <section className={classes} aria-label="Official government website">
+      <section className={classes} aria-label={t.bannerLabel} lang={langProp}>
         <header
           className={`ds-c-usa-banner__header ${
             this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''

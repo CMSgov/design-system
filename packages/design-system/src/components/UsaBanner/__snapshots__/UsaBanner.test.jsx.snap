@@ -2,8 +2,9 @@
 
 exports[`UsaBanner applies Spanish translation 1`] = `
 <section
-  aria-label="Official government website"
+  aria-label="Sitio web oficial del gobierno"
   className="ds-c-usa-banner"
+  lang="es"
 >
   <header
     className="ds-c-usa-banner__header "
@@ -199,6 +200,7 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
 <section
   aria-label="Official government website"
   className="ds-c-usa-banner"
+  lang={null}
 >
   <header
     className="ds-c-usa-banner__header ds-c-usa-banner__header--expanded"
@@ -325,6 +327,7 @@ exports[`UsaBanner renders correctly 1`] = `
 <section
   aria-label="Official government website"
   className="ds-c-usa-banner"
+  lang={null}
 >
   <header
     className="ds-c-usa-banner__header "
