@@ -1,8 +1,10 @@
 import EnglishTranslations from '../../locale/en.json';
 import IconDotGov from '../../images/usa-banner-dot-gov.svg';
 import IconFlag from '../../images/usa-banner-flag.svg';
+import IconFlagSpanish from '../../images/usa-banner-flag-es.svg';
 import IconHttps from '../../images/usa-banner-https.svg';
 import IconLock from '../../images/usa-banner-lock.svg';
+import IconLockSpanish from '../../images/usa-banner-lock-es.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
@@ -24,9 +26,9 @@ export class UsaBanner extends React.PureComponent {
   render() {
     const t =
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
-
     const langProp = this.props.locale === 'es' ? 'es' : null;
-
+    const IconFlagComponent = this.props.locale === 'es' ? IconFlagSpanish : IconFlag;
+    const IconLockComponent = this.props.locale === 'es' ? IconLockSpanish : IconLock;
     const classes = classNames('ds-c-usa-banner', this.props.className);
 
     return (
@@ -37,7 +39,11 @@ export class UsaBanner extends React.PureComponent {
           }`}
         >
           <p className="ds-c-usa-banner__header-text">
-            <IconFlag role="img" className="ds-c-usa-banner__header-flag" focusable="false" />
+            <IconFlagComponent
+              role="img"
+              className="ds-c-usa-banner__header-flag"
+              focusable="false"
+            />
           </p>
           <p className="ds-c-usa-banner__header-text">
             <span>{t.bannerText}</span>
@@ -73,8 +79,12 @@ export class UsaBanner extends React.PureComponent {
                 <br />
                 {t.httpsAText}
                 <strong> {t.httpsLockText} </strong> ({' '}
-                <IconLock role="img" className="ds-c-usa-banner__lock-image" focusable="false" /> ){' '}
-                {t.httpsOrText}
+                <IconLockComponent
+                  role="img"
+                  className="ds-c-usa-banner__lock-image"
+                  focusable="false"
+                />{' '}
+                ) {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>
