@@ -25,7 +25,8 @@ export function DateField(props) {
       render={({ labelId, errorId }) => (
         <DateInput
           {...inputOnlyProps}
-          {...{ labelId, errorId, errorPlacement: props.errorPlacement }}
+          {...{ labelId, errorId }}
+          errorPlacement={props.errorPlacement}
           inversed={props.inversed}
         />
       )}

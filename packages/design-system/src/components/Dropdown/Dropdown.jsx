@@ -35,15 +35,14 @@ export class Dropdown extends React.PureComponent {
         labelComponent="label"
         render={({ id, errorId, setRef }) => (
           <Select
+            {...inputOnlyProps}
+            {...{ id, setRef }}
             // Link input to bottom placed error message
             aria-describedBy={
               this.props.errorPlacement === 'bottom' && this.props.errorMessage ? errorId : null
             }
-            id={id}
-            setRef={setRef}
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
-            {...inputOnlyProps}
           />
         )}
       />
