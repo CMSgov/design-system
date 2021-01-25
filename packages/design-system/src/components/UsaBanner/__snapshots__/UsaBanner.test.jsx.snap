@@ -180,8 +180,8 @@ exports[`UsaBanner applies Spanish translation 1`] = `
               fillRule="evenodd"
             />
           </svg>
-           )
            
+          ) 
           o
           <strong>
              
@@ -307,8 +307,8 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
             viewBox="0 0 52 64"
             xmlns="http://www.w3.org/2000/svg"
           />
-           )
            
+          ) 
           or
           <strong>
              
@@ -503,8 +503,8 @@ exports[`UsaBanner renders correctly 1`] = `
               fillRule="evenodd"
             />
           </svg>
-           )
            
+          ) 
           or
           <strong>
              
