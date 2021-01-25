@@ -80,7 +80,7 @@ TextField.propTypes = {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional classes to be added to the input element
    */
