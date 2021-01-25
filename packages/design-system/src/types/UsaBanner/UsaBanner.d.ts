@@ -12,7 +12,7 @@ export interface UsaBannerProps {
    */
   id?: string;
   /**
-   * The language the USA Banner will render as.
+   * The language the USA Banner will be presented in.
    */
   locale?: LocaleLanguage,
 }
