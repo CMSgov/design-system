@@ -130,7 +130,7 @@ DateInput.propTypes = {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement: PropTypes.oneOf(['top' | 'bottom']),
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Applies the "inverse" UI theme
    */
