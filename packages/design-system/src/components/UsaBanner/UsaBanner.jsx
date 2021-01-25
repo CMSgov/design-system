@@ -111,7 +111,7 @@ UsaBanner.propTypes = {
   id: PropTypes.string,
   /**
    *
-   * The language the USA Banner will render as.
+   * The language the USA Banner will be presented in.
    */
   locale: PropTypes.oneOf(['en', 'es']),
 };
