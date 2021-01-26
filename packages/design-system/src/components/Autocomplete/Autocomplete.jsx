@@ -14,7 +14,6 @@
  * an unacceptable regression of the user experience.
  */
 
-import { get, uniqueId } from 'lodash';
 import Button from '../Button/Button';
 import Downshift from 'downshift';
 import PropTypes from 'prop-types';
@@ -22,6 +21,8 @@ import React from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
+import get from 'lodash/get';
+import uniqueId from 'lodash.uniqueid';
 
 /**
  * Determine if a React component is a TextField

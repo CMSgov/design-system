@@ -1,9 +1,10 @@
-import { get, uniqueId } from 'lodash';
 import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableCaption from './TableCaption';
 import classNames from 'classnames';
+import get from 'lodash/get';
+import uniqueId from 'lodash.uniqueid';
 
 // TODO: Revert out of this 'PR update to use lifecycle methods'
 // (https://github.com/CMSgov/design-system/pull/777)
