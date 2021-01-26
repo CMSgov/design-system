@@ -127,13 +127,11 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       setRef: this.setFieldRef,
     };
 
-    const renderBottomError = () => {
-      return (bottomError) ? (
-        <InlineError id={this.errorId} inversed={inversed}>
-          {errorMessage}
-        </InlineError>
-      ) : null;
-    }
+    const renderBottomError = (bottomError) ? (
+      <InlineError id={this.errorId} inversed={inversed}>
+        {errorMessage}
+      </InlineError>
+    ) : null;
 
     return (
       <ComponentType className={classes} >
@@ -153,7 +151,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           {label}
         </FormLabel>
         {render(fieldInputProps)}
-        {renderBottomError()}
+        {renderBottomError}
       </ComponentType>
     );
   }
@@ -162,6 +160,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
 export const FieldContainerPropKeys = [
   'className',
   'component',
+  'errorId',
   'errorMessage',
   'errorPlacement',
   'focusTrigger',

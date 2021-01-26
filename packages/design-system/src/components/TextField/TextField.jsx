@@ -39,9 +39,9 @@ export class TextField extends React.PureComponent {
         render={({ id, errorId, setRef }) => (
           <TextInput
             {...inputOnlyProps}
-            {...{id, setRef}}
+            {...{ id, setRef }}
             // Link input to bottom placed error message
-            aria-describedBy={
+            aria-describedby={
               this.props.errorPlacement === 'bottom' && this.props.errorMessage ? errorId : null
             }
             errorMessage={this.props.errorMessage}

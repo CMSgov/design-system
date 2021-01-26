@@ -62,7 +62,7 @@ export class DateInput extends React.PureComponent {
       numeric: true,
     };
 
-    // Add additional id to `aria-describedBy` with bottom placed errors
+    // Add additional id to `aria-describedby` with bottom placed errors
     // to ensure error message is linked to invalid fields
     const describedBy = classNames(this.props.labelId, {
       [this.props.errorId]: this.props.errorPlacement === 'bottom' && this.props[`${type}Invalid`],

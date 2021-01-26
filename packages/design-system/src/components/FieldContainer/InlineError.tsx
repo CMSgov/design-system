@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 interface InlineErrorProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   id: string;
   inversed?: boolean;
 }
