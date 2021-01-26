@@ -160,6 +160,7 @@ export class MonthPicker extends React.PureComponent {
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
+  errorPlacement: 'top',
 };
 
 MonthPicker.propTypes = {

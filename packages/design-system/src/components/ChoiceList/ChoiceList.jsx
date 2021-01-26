@@ -80,6 +80,10 @@ export class ChoiceList extends React.PureComponent {
   }
 }
 
+ChoiceList.defaultProps = {
+  errorPlacement: 'top',
+};
+
 ChoiceList.propTypes = {
   /**
    * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.

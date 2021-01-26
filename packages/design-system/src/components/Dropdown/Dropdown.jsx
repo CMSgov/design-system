@@ -50,6 +50,10 @@ export class Dropdown extends React.PureComponent {
   }
 }
 
+Dropdown.defaultValue = {
+  errorPlacement: 'top',
+};
+
 Dropdown.propTypes = {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
