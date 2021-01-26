@@ -69,10 +69,6 @@ interface FieldContainerProps {
 }
 
 export class FieldContainer extends React.Component<FieldContainerProps> {
-  static defaultProps = {
-    errorPlacement: 'bottom'
-  }
-  
   constructor(props: FieldContainerProps) {
     super(props);
 

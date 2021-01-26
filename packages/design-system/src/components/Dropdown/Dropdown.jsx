@@ -38,7 +38,7 @@ export class Dropdown extends React.PureComponent {
             {...inputOnlyProps}
             {...{ id, setRef }}
             // Link input to bottom placed error message
-            aria-describedBy={
+            aria-describedby={
               this.props.errorPlacement === 'bottom' && this.props.errorMessage ? errorId : null
             }
             errorMessage={this.props.errorMessage}
@@ -51,7 +51,7 @@ export class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultValue = {
-  errorPlacement: 'top',
+  errorPlacement: 'bottom',
 };
 
 Dropdown.propTypes = {

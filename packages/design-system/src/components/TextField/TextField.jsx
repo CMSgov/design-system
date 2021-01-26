@@ -58,7 +58,7 @@ TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
-  errorPlacement: 'top',
+  errorPlacement: 'bottom',
 };
 
 TextField.propTypes = {
