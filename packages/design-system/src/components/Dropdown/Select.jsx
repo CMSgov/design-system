@@ -32,7 +32,7 @@ export class Select extends React.PureComponent {
     const classes = classNames(
       'ds-c-field',
       {
-        'ds-c-field--error': typeof errorMessage === 'string',
+        'ds-c-field--error': errorMessage,
         'ds-c-field--inverse': inversed,
       },
       size && `ds-c-field--${size}`,
