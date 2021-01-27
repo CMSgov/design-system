@@ -1,6 +1,6 @@
 @import '../settings/index.scss';
 
-$table-border-color: $color-gray !default;
+$table-border-color: $color-black !default;
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
@@ -84,7 +84,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   text-align: left;
 }
 
-@mixin table-stacked {
+@mixin table-stacked-styles {
   thead tr {
     // Hide column headings when responsive table stacked vertically on narrow viewports
     // ds-u-visibility--screen-reader
@@ -117,7 +117,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   tr {
     border-bottom-color: $table-border-color;
     border-bottom-style: solid;
-    border-bottom-width: 4px;
+    border-bottom-width: $spacer-half;
 
     border-top-width: 0;
     display: block;
@@ -139,7 +139,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
       td:first-child {
         border-top-color: $table-border-color;
         border-top-style: solid;
-        border-top-width: 4px;
+        border-top-width: $spacer-half;
       }
     }
   }
@@ -153,13 +153,12 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      margin: -8px -16px 0;
-      padding: 12px 16px 4px;
+      padding-bottom: $spacer-half;
     }
   }
   // stylelint-enable selector-no-qualifying-type
 
-  // Clears striped styling for stacked table
+  // Remove striped styling on stacked table
   &.ds-c-table--striped tbody {
     tr:nth-child(even) {
       background-color: $color-white;
@@ -167,23 +166,44 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   }
 }
 
+@mixin table-stacked-header-styles {
+  tr {
+    td:first-child,
+    th:first-child {
+      background-color: $table-header-background-color;
+      font-weight: bold;
+      padding: 12px $spacer-2;
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin table-stacked {
+  @include table-stacked-styles;
+  &.ds-c-table--stacked-header-styles {
+    @include table-stacked-header-styles;
+  }
+}
+
 .ds-c-table--stacked {
   @include table-stacked;
 }
 
-.ds-c-sm-table--stacked {
+.ds-c-table--stacked-sm {
   @media (max-width: $width-sm) {
     @include table-stacked;
   }
 }
 
-.ds-c-md-table--stacked {
+.ds-c-table--stacked-md {
   @media (max-width: $width-md) {
     @include table-stacked;
   }
 }
 
-.ds-c-lg-table--stacked {
+.ds-c-table--stacked-lg {
   @media (max-width: $width-lg) {
     @include table-stacked;
   }

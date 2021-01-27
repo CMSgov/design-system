@@ -103,6 +103,7 @@ export class Table extends React.PureComponent {
       dense,
       stackable,
       stackableBreakpoint,
+      stackableStyles,
       striped,
       scrollable,
       scrollableNotice,
@@ -115,7 +116,8 @@ export class Table extends React.PureComponent {
       borderless ? 'ds-c-table--borderless' : null,
       dense ? 'ds-c-table--dense' : null,
       striped ? 'ds-c-table--striped' : null,
-      stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
+      stackable ? `ds-c-table--stacked-${stackableBreakpoint}` : null,
+      stackable && stackableStyles ? `ds-c-table--stacked-${stackableStyles}-styles` : null,
       className
     );
 
@@ -190,6 +192,10 @@ Table.propTypes = {
    * The viewport size at which responsive vertically stacked row styles are applied. Only used when the `stackable` prop is set to `true`. [Read more on breakpoints](/guidelines/responsive/)
    */
   stackableBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg']),
+  /**
+   * Stacks the table cells on narrow screens and visually promotes the first cell of every row into a “header” for that group.
+   */
+  stackableStyles: PropTypes.oneOf(['header']),
   /**
    * Applies the striped variation of the table.
    */

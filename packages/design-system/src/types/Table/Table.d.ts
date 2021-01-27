@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
+export type TableStackableStyles = 'header';
 
 export interface TableProps {
   /**
@@ -37,6 +38,10 @@ export interface TableProps {
    * Applies responsive styles to vertically stacked rows at different viewport sizes.
    */
   stackableBreakpoint?: TableStackableBreakpoint;
+  /**
+   * Stacks the table cells on narrow screens and visually promotes the first cell of every row into a “header” for that group.
+   */
+  stackableStyles: TableStackableStyles,
   /**
    * A striped variation of the table.
    */

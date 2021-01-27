@@ -61,11 +61,20 @@ describe('Table', function () {
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
   });
 
-  it('applies responsive table', () => {
+  it('applies responsive stacked table', () => {
     const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
     const table = wrapper.find('table');
 
-    expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
+    expect(table.hasClass('ds-c-table--stacked-lg')).toBe(true);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('applies responsive stacked table with header styles', () => {
+    const { wrapper } = render({ stackable: true, stackableStyles: 'header' });
+    const table = wrapper.find('table');
+
+    expect(table.hasClass('ds-c-table--stacked-header-styles')).toBe(true);
 
     expect(wrapper).toMatchSnapshot();
   });
