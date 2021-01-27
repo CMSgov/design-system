@@ -40,6 +40,7 @@ export class TextField extends React.PureComponent {
           <TextInput
             {...inputOnlyProps}
             {...{ id, setRef }}
+            aria-invalid={!!this.props.errorMessage}
             aria-describedby={
               // Link input to bottom placed error message
               // eslint-disable-next-line

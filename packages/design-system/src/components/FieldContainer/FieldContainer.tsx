@@ -118,6 +118,10 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     );
     const bottomError = errorPlacement === 'bottom' && errorMessage;
 
+    // Use `aria-invalid` attribute on errored fieldsets
+    // Errored form components without fieldsets must handle `aria-invalid` in their own component
+    const ariaInvalid = isFieldset && errorMessage ? true : undefined;
+
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {
       id: this.id,
@@ -141,7 +145,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     ) : null;
 
     return (
-      <ComponentType className={classes}>
+      <ComponentType className={classes} aria-invalid={ariaInvalid}>
         <FormLabel
           className={labelClassName}
           component={labelComponent}
