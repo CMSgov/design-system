@@ -39,16 +39,9 @@ export class TextField extends React.PureComponent {
         render={({ id, errorId, setRef }) => (
           <TextInput
             {...inputOnlyProps}
-            {...{ id, setRef }}
-            aria-invalid={!!this.props.errorMessage}
-            aria-describedby={
-              // Link input to bottom placed error message
-              // eslint-disable-next-line
-              classNames(this.props['aria-describedby'], {
-                [errorId]: this.props.errorPlacement === 'bottom' && this.props.errorMessage,
-              })
-            }
+            {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
+            errorPlacement={this.props.errorPlacement}
             inversed={this.props.inversed}
           />
         )}
