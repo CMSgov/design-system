@@ -134,7 +134,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
         <FormLabel
           className={labelClassName}
           component={labelComponent}
-          errorMessage={errorPlacement === 'top' ? errorMessage : null}
+          errorMessage={errorPlacement !== 'bottom' ? errorMessage : null}
           errorId={this.errorId}
           // Avoid using `for` attribute for components with multiple inputs 
           // i.e. ChoiceList, DateField, and other components that use `fieldset`
