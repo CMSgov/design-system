@@ -23,12 +23,7 @@ export function DateField(props) {
       component="fieldset"
       labelComponent="legend"
       render={({ labelId, errorId }) => (
-        <DateInput
-          {...inputOnlyProps}
-          {...{ labelId, errorId }}
-          errorPlacement={props.errorPlacement}
-          inversed={props.inversed}
-        />
+        <DateInput {...inputOnlyProps} {...{ labelId, errorId }} inversed={props.inversed} />
       )}
     />
   );

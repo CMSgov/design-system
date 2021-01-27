@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
-import classNames from 'classnames';
 
 export class DateInput extends React.PureComponent {
   constructor(props) {
@@ -62,28 +61,21 @@ export class DateInput extends React.PureComponent {
       numeric: true,
     };
 
-    // Add additional id to `aria-describedby` with bottom placed errors
-    // to ensure error message is linked to invalid fields
-    const describedBy = classNames(this.props.labelId, {
-      [this.props.errorId]: this.props.errorPlacement === 'bottom' && this.props[`${type}Invalid`],
-    });
-
     return (
       <TextField
         {...sharedTextFieldProps}
-        fieldClassName={classNames(`ds-c-field--${type}`, {
-          'ds-c-field--error': this.props[`${type}Invalid`],
-        })}
+        defaultValue={this.props[`${type}DefaultValue`]}
+        value={this.props[`${type}Value`]}
+        label={this.props[`${type}Label`]}
+        errorMessage={this.props[`${type}`]}
+        name={this.props[`${type}Name`]}
+        fieldClassName={`ds-c-field--${type}`}
         inputRef={(el) => {
           this[`${type}Input`] = el;
           if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);
         }}
-        defaultValue={this.props[`${type}DefaultValue`]}
-        label={this.props[`${type}Label`]}
-        name={this.props[`${type}Name`]}
-        value={this.props[`${type}Value`]}
         autoComplete={this.props.autoComplete && `bday-${type}`}
-        aria-describedby={describedBy}
+        aria-describedby={this.props.labelId}
       />
     );
   }
@@ -127,10 +119,6 @@ DateInput.propTypes = {
    * The ID of the error message applied to this field.
    */
   errorId: PropTypes.string,
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement: PropTypes.oneOf(['top', 'bottom']).isRequired,
   /**
    * Applies the "inverse" UI theme
    */
