@@ -16,7 +16,7 @@ interface FieldContainerProps {
   /**
    * A unique ID to be used for the error message. If one isn't provided, a unique ID will be generated.
    */
-  errorId?: string,
+  errorId?: string;
   errorMessage?: React.ReactNode;
   /**
    * Location of the error message relative to the field input
@@ -109,36 +109,39 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     } = this.props;
 
     const ComponentType = component;
-    const isFieldset = ComponentType === 'fieldset'
-    const classes = classNames({
-      'ds-c-fieldset': isFieldset
-    }, className);
+    const isFieldset = ComponentType === 'fieldset';
+    const classes = classNames(
+      {
+        'ds-c-fieldset': isFieldset,
+      },
+      className
+    );
     const bottomError = errorPlacement === 'bottom' && errorMessage;
 
     // Field input props handled by <FieldContainer>
-    const fieldInputProps = { 
+    const fieldInputProps = {
       id: this.id,
       labelId: this.labelId,
       errorId: this.errorId,
       setRef: this.setFieldRef,
     };
 
-    const renderBottomError = (bottomError) ? (
+    const renderBottomError = bottomError ? (
       <InlineError id={this.errorId} inversed={inversed}>
         {errorMessage}
       </InlineError>
     ) : null;
 
     return (
-      <ComponentType className={classes} >
+      <ComponentType className={classes}>
         <FormLabel
           className={labelClassName}
           component={labelComponent}
-          errorMessage={errorPlacement !== 'bottom' ? errorMessage : null}
+          errorMessage={errorPlacement !== 'bottom' ? errorMessage : undefined}
           errorId={this.errorId}
-          // Avoid using `for` attribute for components with multiple inputs 
+          // Avoid using `for` attribute for components with multiple inputs
           // i.e. ChoiceList, DateField, and other components that use `fieldset`
-          fieldId={isFieldset ? this.id : null}
+          fieldId={isFieldset ? this.id : undefined}
           hint={hint}
           id={this.labelId}
           requirementLabel={requirementLabel}

@@ -7,7 +7,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
   <legend
     className="ds-c-label"
     htmlFor="field_1"
-    id="field_label_2"
+    id="field_1-label"
   >
     <span
       className=""

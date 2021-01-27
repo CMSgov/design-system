@@ -4,6 +4,7 @@ exports[`TextField renders 1`] = `
 <FieldContainer
   className="ds-u-clearfix"
   component="div"
+  errorPlacement="bottom"
   label="Foo"
   labelComponent="label"
   render={[Function]}

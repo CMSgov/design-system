@@ -7,7 +7,7 @@ exports[`DateField renders 1`] = `
   <legend
     className="ds-c-label"
     htmlFor="field_1"
-    id="field_label_2"
+    id="field_1-label"
   >
     <span
       className=""
@@ -28,8 +28,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_3"
-        id="field_label_4"
+        id="field_2-label"
       >
         <span
           className=""
@@ -38,9 +37,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_2"
+        aria-describedby="field_1-label"
         className="ds-c-field ds-c-field--month"
-        id="field_3"
+        id="field_2"
         inputMode="numeric"
         name="month"
         pattern="[0-9]*"
@@ -57,8 +56,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_5"
-        id="field_label_6"
+        id="field_3-label"
       >
         <span
           className=""
@@ -67,9 +65,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_2"
+        aria-describedby="field_1-label"
         className="ds-c-field ds-c-field--day"
-        id="field_5"
+        id="field_3"
         inputMode="numeric"
         name="day"
         pattern="[0-9]*"
@@ -86,8 +84,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_7"
-        id="field_label_8"
+        id="field_4-label"
       >
         <span
           className=""
@@ -96,9 +93,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_label_2"
+        aria-describedby="field_1-label"
         className="ds-c-field ds-c-field--year"
-        id="field_7"
+        id="field_4"
         inputMode="numeric"
         name="year"
         pattern="[0-9]*"

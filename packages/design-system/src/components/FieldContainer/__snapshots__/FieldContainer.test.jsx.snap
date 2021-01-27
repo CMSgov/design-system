@@ -12,13 +12,14 @@ exports[`FieldContainer renders custom component and labelComponent elements 1`]
   >
     <FormLabel
       component="legend"
-      fieldId="field_3"
-      id="field_label_4"
+      errorId="field_2-error"
+      fieldId="field_2"
+      id="field_2-label"
     >
       <legend
         className="ds-c-label"
-        htmlFor="field_3"
-        id="field_label_4"
+        htmlFor="field_2"
+        id="field_2-label"
       >
         <span
           className=""
@@ -28,8 +29,8 @@ exports[`FieldContainer renders custom component and labelComponent elements 1`]
       </legend>
     </FormLabel>
     <input
-      aria-describedby="field_label_4"
-      id="field_3"
+      aria-describedby="field_2-label"
+      id="field_2"
     />
   </fieldset>
 </FieldContainer>
@@ -42,16 +43,17 @@ exports[`FieldContainer renders default component and labelComponent elements 1`
   labelComponent="label"
   render={[Function]}
 >
-  <div>
+  <div
+    className=""
+  >
     <FormLabel
       component="label"
-      fieldId="field_1"
-      id="field_label_2"
+      errorId="field_1-error"
+      id="field_1-label"
     >
       <label
         className="ds-c-label"
-        htmlFor="field_1"
-        id="field_label_2"
+        id="field_1-label"
       >
         <span
           className=""
@@ -61,7 +63,7 @@ exports[`FieldContainer renders default component and labelComponent elements 1`
       </label>
     </FormLabel>
     <input
-      aria-describedby="field_label_2"
+      aria-describedby="field_1-label"
       id="field_1"
     />
   </div>

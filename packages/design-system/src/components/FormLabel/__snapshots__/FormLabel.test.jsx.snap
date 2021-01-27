@@ -88,13 +88,11 @@ exports[`FormLabel renders error state 1`] = `
   >
     Hello world
   </span>
-  <span
-    className="ds-c-field__error-message"
-    id="name-message"
-    role="alert"
+  <InlineError
+    id="name-error"
   >
     Nah, try again.
-  </span>
+  </InlineError>
 </label>
 `;
 
