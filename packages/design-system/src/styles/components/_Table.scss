@@ -1,10 +1,9 @@
 @import '../settings/index.scss';
 
+$table-border-color: $color-gray !default;
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
-// Max-width of the header column for a stacked table
-$table-stacked-header-max-width: 160px !default;
 $table-padding: $spacer-2 !default;
 $table-dense-padding: $spacer-half $spacer-2 !default;
 
@@ -25,7 +24,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
 
   th,
   td {
-    border: 1px solid $color-gray;
+    border: 1px solid $table-border-color;
     padding: $table-padding;
   }
 }
@@ -105,80 +104,65 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     display: block;
   }
 
-  td,
-  th {
-    border: 0;
-    border-top: 1px solid;
+  thead {
+    display: none;
+  }
 
-    /* autoprefixer grid: on */
-    display: grid;
-    // CSS grid doesn't support word-wrap. Use minmax as a workaround
-    // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
-    grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
-    position: relative;
-
-    // The psuedo element content is generated to display the row header `data-title` for the Tablecell content
-    /* stylelint-disable-next-line selector-no-qualifying-type */
-    &[data-title]::before {
-      content: attr(data-title);
-      font-weight: bold;
-
-      /* autoprefixer grid: on */
-      grid-column: 1;
-      max-width: $table-stacked-header-max-width;
-      width: calc(100% - #{$spacer-2});
-    }
-
-    // TableCell content is wrapped in a span for IE11 grid support
-    > span {
-      // Fixes IE11 display bug https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
-      display: block;
-
-      /* autoprefixer grid: on */
-      grid-column: 2;
-      width: fit-content;
-    }
+  th,
+  td {
+    border-bottom-width: 0;
+    display: block;
   }
 
   tr {
-    border: 1px solid;
+    border-bottom-color: $table-border-color;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+
+    border-top-width: 0;
     display: block;
-    margin: 0 0 1rem;
-    padding-bottom: 2px;
-    position: relative;
 
-    &::before {
-      background-color: $color-gray-lightest;
-      border-right: 1px solid;
-      bottom: 0;
-      content: '';
-      display: block;
-      left: 0;
-      max-width: $table-stacked-header-max-width;
-      position: absolute;
-      top: 0;
-      width: 100%;
+    th:first-child,
+    td:first-child {
+      border-top-width: 0;
     }
-  }
 
-  td:first-child,
-  th:first-child {
-    border-top: 0;
-  }
-
-  &.ds-c-table--borderless {
-    tr {
-      border: 0;
-
-      &::before {
-        background-color: transparent;
-        border-right: 0;
+    &:nth-child(odd) {
+      td,
+      th {
+        background-color: inherit;
       }
     }
 
-    td:last-child,
-    th:last-child {
-      border-bottom: 2px solid;
+    &:first-child {
+      th:first-child,
+      td:first-child {
+        border-top-color: $table-border-color;
+        border-top-style: solid;
+        border-top-width: 4px;
+      }
+    }
+  }
+
+  // stylelint-disable selector-no-qualifying-type
+  th[data-title],
+  td[data-title] {
+    padding-bottom: 12px;
+
+    &::before {
+      content: attr(data-title);
+      display: block;
+      font-weight: bold;
+      margin: -8px -16px 0;
+      padding: 12px 16px 4px;
+    }
+  }
+  // stylelint-enable selector-no-qualifying-type
+
+  // Clears striped styling for stacked table
+  &.ds-c-table--striped tbody {
+    tr:nth-child(even) {
+      background-color: $color-white;
     }
   }
 }
