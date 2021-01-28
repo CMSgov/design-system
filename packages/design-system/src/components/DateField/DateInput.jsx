@@ -78,6 +78,7 @@ export class DateInput extends React.PureComponent {
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
         aria-describedby={this.props.labelId}
+        aria-invalid={this.props[`${type}Invalid`]}
       />
     );
   }

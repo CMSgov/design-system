@@ -50,7 +50,10 @@ export class Select extends React.PureComponent {
     return (
       <select
         aria-label={ariaLabel}
-        aria-invalid={!!errorMessage}
+        aria-invalid={
+          // eslint-disable-next-line
+          this.props['aria-invalid'] ? this.props['aria-invalid'] : !!errorMessage
+        }
         aria-describedby={
           // Link input to bottom placed error message
           // eslint-disable-next-line
