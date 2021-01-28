@@ -116,19 +116,12 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       },
       className
     );
+
     const bottomError = errorPlacement === 'bottom' && errorMessage;
 
     // Use `aria-invalid` attribute on errored fieldsets
     // Errored form components without fieldsets must handle `aria-invalid` in their own component
     const ariaInvalid = isFieldset && errorMessage ? true : undefined;
-
-    // Field input props handled by <FieldContainer>
-    const fieldInputProps = {
-      id: this.id,
-      labelId: this.labelId,
-      errorId: this.errorId,
-      setRef: this.setFieldRef,
-    };
 
     // Bottom placed errors are handled in FieldContainer instead of FormLabel
     const renderBottomError = bottomError ? (
@@ -138,11 +131,19 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     ) : null;
     
     // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
-    const hiddenError = isFieldset && bottomError ? (
+    const renderHiddenError = isFieldset && bottomError ? (
       <div className="ds-u-visibility--screen-reader">
         {errorMessage}
       </div>
     ) : null;
+
+    // Field input props handled by <FieldContainer>
+    const fieldInputProps = {
+      id: this.id,
+      labelId: this.labelId,
+      errorId: this.errorId,
+      setRef: this.setFieldRef,
+    };
 
     return (
       <ComponentType className={classes} aria-invalid={ariaInvalid}>
@@ -160,7 +161,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           inversed={inversed}
         >
           {label}
-          {hiddenError}
+          {renderHiddenError}
         </FormLabel>
         {render(fieldInputProps)}
         {renderBottomError}

@@ -6,6 +6,7 @@ const defaultProps = {
   label: 'Foo',
   component: 'div',
   labelComponent: 'label',
+  errorPlacement: 'top',
   /* eslint-disable */
   render: ({ id, labelId, setRef }) => {
     return <input id={id} aria-describedby={labelId} ref={setRef} />;
@@ -25,24 +26,21 @@ function render(customProps = {}, deep = false) {
 
 describe('FieldContainer', function () {
   it('renders default component and labelComponent elements', () => {
-    const data = render({}, true);
+    const data = render({});
 
     expect(data.wrapper.find('div').length).toBe(1);
-    expect(data.wrapper.find('label').length).toBe(1);
+    expect(data.wrapper.find('FormLabel').length).toBe(1);
     expect(data.wrapper).toMatchSnapshot();
   });
 
   it('renders custom component and labelComponent elements', () => {
-    const data = render(
-      {
-        component: 'fieldset',
-        labelComponent: 'legend',
-      },
-      true
-    );
+    const data = render({
+      component: 'fieldset',
+      labelComponent: 'legend',
+    });
 
-    expect(data.wrapper.find(data.props.component).length).toBe(1);
-    expect(data.wrapper.find(data.props.labelComponent).length).toBe(1);
+    expect(data.wrapper.find('fieldset').length).toBe(1);
+    expect(data.wrapper.find('FormLabel').prop('component')).toEqual('legend');
     expect(data.wrapper).toMatchSnapshot();
   });
 
@@ -70,6 +68,21 @@ describe('FieldContainer', function () {
     expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
   });
 
+  it('renders bottom placed errors ', () => {
+    const data = render({ errorMessage: 'Error', errorPlacement: 'bottom' });
+
+    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBeUndefined();
+    expect(data.wrapper.find('InlineError').prop('children')).toEqual('Error');
+    expect(data.wrapper).toMatchSnapshot();
+  });
+
+  it('uses aria-invalid for fieldsets with errorMessage', () => {
+    const data = render({ errorMessage: 'Error', component: 'fieldset' });
+
+    expect(data.wrapper.find('fieldset').prop('aria-invalid')).toBe(true);
+    expect(data.wrapper).toMatchSnapshot();
+  });
+
   it('passes inversed to FormLabel', () => {
     const data = render({ inversed: true });
 
@@ -95,13 +108,13 @@ describe('FieldContainer', function () {
   });
 
   it('generates a unique field input id when id is not defined', () => {
-    const data = render({}, true);
+    const data = render({});
 
     expect(data.wrapper.find('input').prop('id')).toBeDefined();
   });
 
   it('passes id to the field input', () => {
-    const data = render({ id: '1' }, true);
+    const data = render({ id: '1' });
 
     expect(data.wrapper.find('input').prop('id')).toBe(data.props.id);
   });
