@@ -141,7 +141,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           errorId={this.errorId}
           // Avoid using `for` attribute for components with multiple inputs
           // i.e. ChoiceList, DateField, and other components that use `fieldset`
-          fieldId={isFieldset ? this.id : undefined}
+          fieldId={isFieldset ? undefined : this.id}
           hint={hint}
           id={this.labelId}
           requirementLabel={requirementLabel}
