@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 interface InlineErrorProps {
   children?: React.ReactNode;
-  id: string;
+  id?: string;
   inversed?: boolean;
 }
 

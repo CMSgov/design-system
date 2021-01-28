@@ -39,7 +39,13 @@ export class FormLabel extends React.PureComponent {
   errorMessage() {
     if (this.props.errorMessage) {
       // Include fallback for errorId for usage outside of FieldContainer
-      const errorId = this.props.errorId || `${this.props.fieldId}-error`;
+      let errorId = null;
+      if (this.props.errorId) {
+        errorId = this.props.errorId;
+      } else if (this.props.fieldId) {
+        errorId = `${this.props.fieldId}-error`;
+      }
+
       return (
         <InlineError id={errorId} inversed={this.props.inversed}>
           {this.props.errorMessage}
