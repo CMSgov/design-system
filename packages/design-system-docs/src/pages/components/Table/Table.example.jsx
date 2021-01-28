@@ -83,6 +83,48 @@ ReactDOM.render(
         </TableRow>
       </TableBody>
     </Table>
+
+    <Table
+      className="ds-u-margin-top--2"
+      stackable
+      stackableBreakpoint="md"
+      stackableStyles="header"
+      borderless
+    >
+      <TableCaption>Responsive stackable borderless table with headers</TableCaption>
+      <TableHead>
+        <TableRow>
+          <TableCell id="col_1">Document title</TableCell>
+          <TableCell id="col_2">Description</TableCell>
+          <TableCell id="col_3">Year</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell stackedTitle="Document title" headers="col_1">
+            Declaration of Sentiments
+          </TableCell>
+          <TableCell stackedTitle="Description" headers="col_2">
+            A document written during the Seneca Falls Convention outlining the rights that American
+            women should be entitled to as citizens.
+          </TableCell>
+          <TableCell stackedTitle="Year" headers="col_3">
+            1848
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell stackedTitle="Document title" headers="col_1">
+            Emancipation Proclamation
+          </TableCell>
+          <TableCell stackedTitle="Description" headers="col_2">
+            An executive order granting freedom to slaves in designated southern states.
+          </TableCell>
+          <TableCell stackedTitle="Year" headers="col_3">
+            1863
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   </>,
   document.getElementById('js-example')
 );
