@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
+import classNames from 'classnames';
 
 export class DateInput extends React.PureComponent {
   constructor(props) {
@@ -67,9 +68,10 @@ export class DateInput extends React.PureComponent {
         defaultValue={this.props[`${type}DefaultValue`]}
         value={this.props[`${type}Value`]}
         label={this.props[`${type}Label`]}
-        errorMessage={this.props[`${type}`]}
         name={this.props[`${type}Name`]}
-        fieldClassName={`ds-c-field--${type}`}
+        fieldClassName={classNames(`ds-c-field--${type}`, {
+          'ds-c-field--error': this.props[`${type}Invalid`],
+        })}
         inputRef={(el) => {
           this[`${type}Input`] = el;
           if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);

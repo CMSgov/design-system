@@ -126,10 +126,18 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       setRef: this.setFieldRef,
     };
 
+    // Bottom placed errors are handled in FieldContainer instead of FormLabel
     const renderBottomError = bottomError ? (
       <InlineError id={this.errorId} inversed={inversed}>
         {errorMessage}
       </InlineError>
+    ) : null;
+    
+    // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
+    const hiddenError = isFieldset && bottomError ? (
+      <div className="ds-u-visibility--screen-reader">
+        {errorMessage}
+      </div>
     ) : null;
 
     return (
@@ -137,7 +145,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
         <FormLabel
           className={labelClassName}
           component={labelComponent}
-          errorMessage={errorPlacement !== 'bottom' ? errorMessage : undefined}
+          errorMessage={bottomError ? undefined : errorMessage}
           errorId={this.errorId}
           // Avoid using `for` attribute for components with multiple inputs
           // i.e. ChoiceList, DateField, and other components that use `fieldset`
@@ -148,6 +156,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           inversed={inversed}
         >
           {label}
+          {hiddenError}
         </FormLabel>
         {render(fieldInputProps)}
         {renderBottomError}
