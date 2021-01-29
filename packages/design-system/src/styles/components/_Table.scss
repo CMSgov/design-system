@@ -84,7 +84,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   text-align: left;
 }
 
-@mixin table-stacked-styles {
+@mixin stacked-table-styles {
   thead tr {
     // Hide column headings when responsive table stacked vertically on narrow viewports
     // ds-u-visibility--screen-reader
@@ -167,23 +167,23 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
 }
 
 .ds-c-table--stacked {
-  @include table-stacked-styles;
+  @include stacked-table-styles;
 }
 
 .ds-c-sm-table--stacked {
   @media (max-width: $width-sm) {
-    @include table-stacked-styles;
+    @include stacked-table-styles;
   }
 }
 
 .ds-c-md-table--stacked {
   @media (max-width: $width-md) {
-    @include table-stacked-styles;
+    @include stacked-table-styles;
   }
 }
 
 .ds-c-lg-table--stacked {
   @media (max-width: $width-lg) {
-    @include table-stacked-styles;
+    @include stacked-table-styles;
   }
 }
