@@ -54,7 +54,7 @@ export class Dropdown extends React.PureComponent {
   }
 }
 
-Dropdown.defaultValue = {
+Dropdown.defaultProps = {
   errorPlacement: 'bottom',
 };
 
