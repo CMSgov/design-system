@@ -70,15 +70,6 @@ describe('Table', function () {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('applies responsive stacked table with header styles', () => {
-    const { wrapper } = render({ stackable: true, stackableStyles: 'header' });
-    const table = wrapper.find('table');
-
-    expect(table.hasClass('ds-c-table--stacked-header-styles')).toBe(true);
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('applies scroll table', () => {
     const { wrapper } = render({ scrollable: true });
     const divWrapper = wrapper.find('div');

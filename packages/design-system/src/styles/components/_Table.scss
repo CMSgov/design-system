@@ -166,45 +166,24 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   }
 }
 
-@mixin table-stacked-header-styles {
-  tr {
-    td:first-child,
-    th:first-child {
-      background-color: $table-header-background-color;
-      font-weight: bold;
-      padding: 12px $spacer-2;
-      &::before {
-        display: none;
-      }
-    }
-  }
-}
-
-@mixin table-stacked {
-  @include table-stacked-styles;
-  &.ds-c-table--stacked-header-styles {
-    @include table-stacked-header-styles;
-  }
-}
-
 .ds-c-table--stacked {
-  @include table-stacked;
+  @include table-stacked-styles;
 }
 
 .ds-c-table--stacked-sm {
   @media (max-width: $width-sm) {
-    @include table-stacked;
+    @include table-stacked-styles;
   }
 }
 
 .ds-c-table--stacked-md {
   @media (max-width: $width-md) {
-    @include table-stacked;
+    @include table-stacked-styles;
   }
 }
 
 .ds-c-table--stacked-lg {
   @media (max-width: $width-lg) {
-    @include table-stacked;
+    @include table-stacked-styles;
   }
 }

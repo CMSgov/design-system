@@ -39,10 +39,6 @@ export interface TableProps {
    */
   stackableBreakpoint?: TableStackableBreakpoint;
   /**
-   * Stacks the table cells on narrow screens and visually promotes the first cell of every row into a “header” for that group.
-   */
-  stackableStyles: TableStackableStyles,
-  /**
    * A striped variation of the table.
    */
   striped?: boolean;
