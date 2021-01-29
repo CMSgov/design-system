@@ -170,19 +170,19 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   @include table-stacked-styles;
 }
 
-.ds-c-table--stacked-sm {
+.ds-c-sm-table--stacked {
   @media (max-width: $width-sm) {
     @include table-stacked-styles;
   }
 }
 
-.ds-c-table--stacked-md {
+.ds-c-md-table--stacked {
   @media (max-width: $width-md) {
     @include table-stacked-styles;
   }
 }
 
-.ds-c-table--stacked-lg {
+.ds-c-lg-table--stacked {
   @media (max-width: $width-lg) {
     @include table-stacked-styles;
   }
