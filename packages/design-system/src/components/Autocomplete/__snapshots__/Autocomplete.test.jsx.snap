@@ -14,7 +14,6 @@ exports[`Autocomplete renders a snapshot 1`] = `
   >
     <label
       className="ds-c-label"
-      htmlFor="autocomplete_46"
       id="autocomplete_label_47"
     >
       <span
@@ -27,6 +26,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
       aria-activedescendant={null}
       aria-autocomplete="list"
       aria-controls={null}
+      aria-describedby=""
       aria-expanded={false}
       aria-labelledby={null}
       aria-owns={null}

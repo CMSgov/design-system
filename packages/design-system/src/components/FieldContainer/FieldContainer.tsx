@@ -1,4 +1,5 @@
 import FormLabel from '../FormLabel/FormLabel';
+import InlineError from './InlineError';
 import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
@@ -12,7 +13,15 @@ interface FieldContainerProps {
    * The HTML element used to render the container
    */
   component: 'div' | 'fieldset';
+  /**
+   * A unique ID to be used for the error message. If one isn't provided, a unique ID will be generated.
+   */
+  errorId?: string;
   errorMessage?: React.ReactNode;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: 'top' | 'bottom';
   /**
    * Used to focus the field input on `componentDidMount()`
    */
@@ -64,12 +73,14 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     super(props);
 
     this.id = props.id || uniqueId('field_');
-    this.labelId = props.labelId || uniqueId('field_label_');
+    this.labelId = props.labelId || `${this.id}-label`;
+    this.errorId = props.errorId || `${this.id}-error`;
     this.setFieldRef = this.setFieldRef.bind(this);
   }
 
   id: string;
   labelId: string;
+  errorId: string;
   focusRef?: HTMLDivElement;
 
   setFieldRef(elem: HTMLDivElement): void {
@@ -82,11 +93,12 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       className,
       component,
       errorMessage,
+      errorPlacement,
       hint,
       inversed,
       label,
@@ -97,31 +109,57 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     } = this.props;
 
     const ComponentType = component;
-    const classes =
-      ComponentType === 'fieldset' ? classNames('ds-c-fieldset', className) : className;
+    const isFieldset = ComponentType === 'fieldset';
+    const classes = classNames(
+      {
+        'ds-c-fieldset': isFieldset,
+      },
+      className
+    );
+    const bottomError = errorPlacement === 'bottom' && errorMessage;
 
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {
       id: this.id,
       labelId: this.labelId,
+      errorId: this.errorId,
       setRef: this.setFieldRef,
     };
+
+    // Bottom placed errors are handled in FieldContainer instead of FormLabel
+    const renderBottomError = bottomError ? (
+      <InlineError id={this.errorId} inversed={inversed}>
+        {errorMessage}
+      </InlineError>
+    ) : null;
+    
+    // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
+    const hiddenError = isFieldset && bottomError ? (
+      <div className="ds-u-visibility--screen-reader">
+        {errorMessage}
+      </div>
+    ) : null;
 
     return (
       <ComponentType className={classes}>
         <FormLabel
           className={labelClassName}
           component={labelComponent}
-          errorMessage={errorMessage}
-          fieldId={this.id}
+          errorMessage={bottomError ? undefined : errorMessage}
+          errorId={this.errorId}
+          // Avoid using `for` attribute for components with multiple inputs
+          // i.e. ChoiceList, DateField, and other components that use `fieldset`
+          fieldId={isFieldset ? undefined : this.id}
           hint={hint}
           id={this.labelId}
           requirementLabel={requirementLabel}
           inversed={inversed}
         >
           {label}
+          {hiddenError}
         </FormLabel>
         {render(fieldInputProps)}
+        {renderBottomError}
       </ComponentType>
     );
   }
@@ -130,7 +168,9 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
 export const FieldContainerPropKeys = [
   'className',
   'component',
+  'errorId',
   'errorMessage',
+  'errorPlacement',
   'focusTrigger',
   'hint',
   'id',

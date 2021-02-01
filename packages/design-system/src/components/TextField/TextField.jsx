@@ -36,10 +36,17 @@ export class TextField extends React.PureComponent {
         className={containerClassName}
         component="div"
         labelComponent="label"
-        render={({ id, setRef }) => (
+        render={({ id, errorId, setRef }) => (
           <TextInput
             {...inputOnlyProps}
             {...{ id, setRef }}
+            aria-describedby={
+              // Link input to bottom placed error message
+              // eslint-disable-next-line
+              classNames(this.props['aria-describedby'], {
+                [errorId]: this.props.errorPlacement === 'bottom' && this.props.errorMessage,
+              })
+            }
             errorMessage={this.props.errorMessage}
             inversed={this.props.inversed}
           />
@@ -54,6 +61,7 @@ TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
+  errorPlacement: 'bottom',
 };
 
 TextField.propTypes = {
@@ -73,6 +81,10 @@ TextField.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional classes to be added to the input element
    */

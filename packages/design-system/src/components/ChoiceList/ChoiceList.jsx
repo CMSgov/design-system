@@ -80,6 +80,10 @@ export class ChoiceList extends React.PureComponent {
   }
 }
 
+ChoiceList.defaultProps = {
+  errorPlacement: 'bottom',
+};
+
 ChoiceList.propTypes = {
   /**
    * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
@@ -94,6 +98,10 @@ ChoiceList.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional hint text to display
    */

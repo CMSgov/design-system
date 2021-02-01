@@ -23,7 +23,7 @@ export function TextInput(props) {
   const classes = classNames(
     'ds-c-field',
     {
-      'ds-c-field--error': typeof errorMessage === 'string',
+      'ds-c-field--error': errorMessage,
       'ds-c-field--inverse': inversed,
     },
     mask && `ds-c-field--${mask}`,
