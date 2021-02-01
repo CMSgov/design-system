@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
-export type TableStackableStyles = 'header';
 
 export interface TableProps {
   /**

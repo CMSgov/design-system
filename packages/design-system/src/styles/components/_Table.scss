@@ -112,7 +112,6 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
 
   // Style dividers between different table rows
   tr {
-
     // Every row has a bottom border
     border-bottom: $spacer-half solid $table-border-color;
     border-top: 0;
@@ -126,7 +125,8 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
       }
     }
 
-    &:nth-child(odd) {
+    // Apply striped styling on stacked table
+    &:nth-child(even) {
       td,
       th {
         background-color: inherit;
@@ -146,13 +146,6 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     }
   }
   // stylelint-enable selector-no-qualifying-type
-
-  // Remove striped styling on stacked table
-  &.ds-c-table--striped tbody {
-    tr:nth-child(even) {
-      background-color: $color-white;
-    }
-  }
 }
 
 .ds-c-table--stacked {
