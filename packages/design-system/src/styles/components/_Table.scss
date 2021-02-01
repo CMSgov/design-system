@@ -87,7 +87,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
 @mixin stacked-table-styles {
   thead tr {
     // Hide column headings when responsive table stacked vertically on narrow viewports
-    // ds-u-visibility--screen-reader
+    // .ds-u-visibility--screen-reader
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -104,27 +104,26 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     display: block;
   }
 
-  thead {
-    display: none;
-  }
-
   th,
   td {
     border-bottom-width: 0;
     display: block;
   }
 
+  // Style dividers between different table rows
   tr {
-    border-bottom-color: $table-border-color;
-    border-bottom-style: solid;
-    border-bottom-width: $spacer-half;
 
-    border-top-width: 0;
+    // Every row has a bottom border
+    border-bottom: $spacer-half solid $table-border-color;
+    border-top: 0;
     display: block;
 
-    th:first-child,
-    td:first-child {
-      border-top-width: 0;
+    // The first row has a top border
+    &:first-child {
+      th:first-child,
+      td:first-child {
+        border-top: $spacer-half solid $table-border-color;
+      }
     }
 
     &:nth-child(odd) {
@@ -133,22 +132,12 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
         background-color: inherit;
       }
     }
-
-    &:first-child {
-      th:first-child,
-      td:first-child {
-        border-top-color: $table-border-color;
-        border-top-style: solid;
-        border-top-width: $spacer-half;
-      }
-    }
   }
 
   // stylelint-disable selector-no-qualifying-type
   th[data-title],
   td[data-title] {
-    padding-bottom: 12px;
-
+    // Add column heading via psuedo element
     &::before {
       content: attr(data-title);
       display: block;
