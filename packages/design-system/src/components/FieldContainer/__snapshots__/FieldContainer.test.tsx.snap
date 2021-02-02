@@ -7,6 +7,7 @@ exports[`FieldContainer renders bottom placed errors  1`] = `
   <FormLabel
     component="label"
     errorId="field_7-error"
+    fieldId="field_7"
     id="field_7-label"
   >
     Foo
@@ -30,7 +31,6 @@ exports[`FieldContainer renders custom component and labelComponent elements 1`]
   <FormLabel
     component="legend"
     errorId="field_2-error"
-    fieldId="field_2"
     id="field_2-label"
   >
     Foo
@@ -49,6 +49,7 @@ exports[`FieldContainer renders default component and labelComponent elements 1`
   <FormLabel
     component="label"
     errorId="field_1-error"
+    fieldId="field_1"
     id="field_1-label"
   >
     Foo
@@ -69,7 +70,6 @@ exports[`FieldContainer uses aria-invalid for fieldsets with errorMessage 1`] = 
     component="label"
     errorId="field_8-error"
     errorMessage="Error"
-    fieldId="field_8"
     id="field_8-label"
   >
     Foo

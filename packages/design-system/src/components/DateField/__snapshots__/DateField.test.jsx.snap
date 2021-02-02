@@ -6,7 +6,6 @@ exports[`DateField renders 1`] = `
 >
   <legend
     className="ds-c-label"
-    htmlFor="field_1"
     id="field_1-label"
   >
     <span
@@ -28,6 +27,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
+        htmlFor="field_2"
         id="field_2-label"
       >
         <span
@@ -38,7 +38,6 @@ exports[`DateField renders 1`] = `
       </label>
       <input
         aria-describedby="field_1-label"
-        aria-invalid={false}
         className="ds-c-field ds-c-field--month"
         id="field_2"
         inputMode="numeric"
@@ -57,6 +56,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
+        htmlFor="field_3"
         id="field_3-label"
       >
         <span
@@ -67,7 +67,6 @@ exports[`DateField renders 1`] = `
       </label>
       <input
         aria-describedby="field_1-label"
-        aria-invalid={false}
         className="ds-c-field ds-c-field--day"
         id="field_3"
         inputMode="numeric"
@@ -86,6 +85,7 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
+        htmlFor="field_4"
         id="field_4-label"
       >
         <span
@@ -96,7 +96,6 @@ exports[`DateField renders 1`] = `
       </label>
       <input
         aria-describedby="field_1-label"
-        aria-invalid={false}
         className="ds-c-field ds-c-field--year"
         id="field_4"
         inputMode="numeric"

@@ -50,12 +50,10 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       <FormLabel
         component="legend"
         errorId="field_1-error"
-        fieldId="field_1"
         id="field_1-label"
       >
         <legend
           className="ds-c-label"
-          htmlFor="field_1"
           id="field_1-label"
         >
           <span
