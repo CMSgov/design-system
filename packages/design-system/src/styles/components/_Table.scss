@@ -117,19 +117,17 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     border-top: 0;
     display: block;
 
+    // Remove the initial th/td border-top to fix the thicker top border on <tr> 2 and more
+    th:first-child,
+    td:first-child {
+      border-top: 0;
+    }
+
     // The first row has a top border
     &:first-child {
       th:first-child,
       td:first-child {
         border-top: $spacer-half solid $table-border-color;
-      }
-    }
-
-    // Apply striped styling on stacked table
-    &:nth-child(even) {
-      td,
-      th {
-        background-color: inherit;
       }
     }
   }
@@ -146,6 +144,13 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     }
   }
   // stylelint-enable selector-no-qualifying-type
+
+  // Remove striped styling on stacked table
+  &.ds-c-table--striped tbody {
+    tr:nth-child(even) {
+      background-color: transparent;
+    }
+  }
 }
 
 .ds-c-table--stacked {
