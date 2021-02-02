@@ -129,12 +129,10 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
         {errorMessage}
       </InlineError>
     ) : null;
-    
+
     // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
     const renderHiddenError = isFieldset && bottomError ? (
-      <div className="ds-u-visibility--screen-reader">
-        {errorMessage}
-      </div>
+      <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
     ) : null;
 
     // Field input props handled by <FieldContainer>

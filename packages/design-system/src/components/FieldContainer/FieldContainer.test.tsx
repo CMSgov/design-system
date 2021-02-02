@@ -47,7 +47,7 @@ describe('FieldContainer', function () {
   it('passes label to FormLabel', () => {
     const data = render();
 
-    expect(data.wrapper.find('FormLabel').prop('children')).toBe(data.props.label);
+    expect(data.wrapper.find('FormLabel').prop('children')).toContain(data.props.label);
   });
 
   it('passes hint to FormLabel', () => {
