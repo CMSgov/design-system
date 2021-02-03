@@ -10,7 +10,12 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       parser: '@typescript-eslint/parser',
       extends: ['plugin:@typescript-eslint/recommended'],
-      rules: {},
+      rules: {
+        // Disabling based off official documentation on
+        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+      },
     },
   ],
 };
