@@ -1,7 +1,7 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# This workflow will do a clean install of node dependencies, build the source code and run tests and linters
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: run-tests
+name: design-system-tests
 
 on:
   push:
@@ -27,7 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: yarn
-    - run: yarn test:unit
-    - run: chromedriver -version
-    - run: google-chrome-stable --version
-    - run: yarn test:e2e
+    - name: Run unit tests
+      run: yarn test:unit
+    - name: Run e2e tests
+      run: yarn test:e2e
+    - name: Run linters
+      run: yarn lint
