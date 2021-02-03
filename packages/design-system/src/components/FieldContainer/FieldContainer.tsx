@@ -4,6 +4,13 @@ import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
 
+interface FieldContainerRenderProps {
+  id: string;
+  labelId: string;
+  errorId: string;
+  setRef: (elem: HTMLDivElement) => void;
+}
+
 interface FieldContainerProps {
   /**
    * Additional classes to be added to the field container.
@@ -37,7 +44,7 @@ interface FieldContainerProps {
   /**
    * Access a reference to the field input
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: (elem: HTMLDivElement) => void;
   /**
    * Applies the "inverse" UI theme
    */
@@ -65,7 +72,7 @@ interface FieldContainerProps {
   /**
    * A function that returns a field input element to accept render props
    */
-  render: (...args: any[]) => any;
+  render: (renderProps: FieldContainerRenderProps) => React.ReactNode;
 }
 
 export class FieldContainer extends React.Component<FieldContainerProps> {
@@ -131,9 +138,10 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     ) : null;
 
     // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
-    const renderHiddenError = isFieldset && bottomError ? (
-      <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
-    ) : null;
+    const renderHiddenError =
+      isFieldset && bottomError ? (
+        <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
+      ) : null;
 
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {

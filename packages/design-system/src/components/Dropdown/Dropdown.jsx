@@ -3,7 +3,6 @@ import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
-import classNames from 'classnames';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
