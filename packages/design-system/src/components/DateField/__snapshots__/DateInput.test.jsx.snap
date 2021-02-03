@@ -76,6 +76,7 @@ exports[`DateInput has invalid day 1`] = `
   </span>
   <TextField
     aria-describedby="1"
+    aria-invalid={true}
     className="ds-l-col--auto"
     errorPlacement="bottom"
     fieldClassName="ds-c-field--day ds-c-field--error"
@@ -112,6 +113,7 @@ exports[`DateInput has invalid month 1`] = `
 >
   <TextField
     aria-describedby="1"
+    aria-invalid={true}
     className="ds-l-col--auto"
     errorPlacement="bottom"
     fieldClassName="ds-c-field--month ds-c-field--error"
@@ -199,6 +201,7 @@ exports[`DateInput has invalid year 1`] = `
   </span>
   <TextField
     aria-describedby="1"
+    aria-invalid={true}
     className="ds-l-col--auto"
     errorPlacement="bottom"
     fieldClassName="ds-c-field--year ds-c-field--error"

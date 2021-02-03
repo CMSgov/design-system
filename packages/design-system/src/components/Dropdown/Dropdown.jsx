@@ -3,7 +3,6 @@ import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
-import classNames from 'classnames';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -37,15 +36,9 @@ export class Dropdown extends React.PureComponent {
         render={({ id, errorId, setRef }) => (
           <Select
             {...inputOnlyProps}
-            {...{ id, setRef }}
-            aria-describedby={
-              // Link input to bottom placed error message
-              // eslint-disable-next-line
-              classNames(this.props['aria-describedby'], {
-                [errorId]: this.props.errorPlacement === 'bottom' && this.props.errorMessage,
-              })
-            }
+            {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
+            errorPlacement={this.props.errorPlacement}
             inversed={this.props.inversed}
           />
         )}

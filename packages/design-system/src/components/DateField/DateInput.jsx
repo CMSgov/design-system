@@ -78,6 +78,7 @@ export class DateInput extends React.PureComponent {
         }}
         autoComplete={this.props.autoComplete && `bday-${type}`}
         aria-describedby={this.props.labelId}
+        aria-invalid={this.props[`${type}Invalid`]}
       />
     );
   }
@@ -117,10 +118,6 @@ DateInput.propTypes = {
    * Disables all three input fields.
    */
   disabled: PropTypes.bool,
-  /**
-   * The ID of the error message applied to this field.
-   */
-  errorId: PropTypes.string,
   /**
    * Applies the "inverse" UI theme
    */

@@ -4,6 +4,13 @@ import React from 'react';
 import classNames from 'classnames';
 import { uniqueId } from 'lodash';
 
+interface FieldContainerRenderProps {
+  id: string;
+  labelId: string;
+  errorId: string;
+  setRef: (elem: HTMLDivElement) => void;
+}
+
 interface FieldContainerProps {
   /**
    * Additional classes to be added to the field container.
@@ -37,7 +44,7 @@ interface FieldContainerProps {
   /**
    * Access a reference to the field input
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: (elem: HTMLDivElement) => void;
   /**
    * Applies the "inverse" UI theme
    */
@@ -65,7 +72,7 @@ interface FieldContainerProps {
   /**
    * A function that returns a field input element to accept render props
    */
-  render: (...args: any[]) => any;
+  render: (renderProps: FieldContainerRenderProps) => React.ReactNode;
 }
 
 export class FieldContainer extends React.Component<FieldContainerProps> {
@@ -116,7 +123,25 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       },
       className
     );
+
     const bottomError = errorPlacement === 'bottom' && errorMessage;
+
+    // Use `aria-invalid` attribute on errored fieldsets
+    // Errored form components without fieldsets must handle `aria-invalid` in their own component
+    const ariaInvalid = isFieldset && errorMessage ? true : undefined;
+
+    // Bottom placed errors are handled in FieldContainer instead of FormLabel
+    const renderBottomError = bottomError ? (
+      <InlineError id={this.errorId} inversed={inversed}>
+        {errorMessage}
+      </InlineError>
+    ) : null;
+
+    // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
+    const renderHiddenError =
+      isFieldset && bottomError ? (
+        <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
+      ) : null;
 
     // Field input props handled by <FieldContainer>
     const fieldInputProps = {
@@ -126,22 +151,8 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       setRef: this.setFieldRef,
     };
 
-    // Bottom placed errors are handled in FieldContainer instead of FormLabel
-    const renderBottomError = bottomError ? (
-      <InlineError id={this.errorId} inversed={inversed}>
-        {errorMessage}
-      </InlineError>
-    ) : null;
-    
-    // Bottom placed errors cannot be linked to Choices in ChoiceList, so we add a hidden error message to the label
-    const hiddenError = isFieldset && bottomError ? (
-      <div className="ds-u-visibility--screen-reader">
-        {errorMessage}
-      </div>
-    ) : null;
-
     return (
-      <ComponentType className={classes}>
+      <ComponentType className={classes} aria-invalid={ariaInvalid}>
         <FormLabel
           className={labelClassName}
           component={labelComponent}
@@ -156,7 +167,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           inversed={inversed}
         >
           {label}
-          {hiddenError}
+          {renderHiddenError}
         </FormLabel>
         {render(fieldInputProps)}
         {renderBottomError}

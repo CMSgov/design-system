@@ -20,7 +20,9 @@ export class Select extends React.PureComponent {
     const {
       ariaLabel,
       children,
+      errorId,
       errorMessage,
+      errorPlacement,
       fieldClassName,
       inversed,
       options,
@@ -46,7 +48,23 @@ export class Select extends React.PureComponent {
     ));
 
     return (
-      <select aria-label={ariaLabel} className={classes} ref={setRef} {...selectProps}>
+      <select
+        aria-label={ariaLabel}
+        aria-invalid={
+          // eslint-disable-next-line
+          this.props['aria-invalid'] ? this.props['aria-invalid'] : !!errorMessage
+        }
+        aria-describedby={
+          // Link input to bottom placed error message
+          // eslint-disable-next-line
+          classNames(this.props['aria-describedby'], {
+            [errorId]: errorPlacement === 'bottom' && errorMessage,
+          })
+        }
+        className={classes}
+        ref={setRef}
+        {...selectProps}
+      >
         {/* Render custom options if provided */ children || optionElements}
       </select>
     );
@@ -71,7 +89,15 @@ Select.propTypes = {
    * Disables the entire field.
    */
   disabled: PropTypes.bool,
+  /**
+   * The ID of the error message applied to the Select field.
+   */
+  errorId: PropTypes.string,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']).isRequired,
   /**
    * Additional classes to be added to the select element
    */

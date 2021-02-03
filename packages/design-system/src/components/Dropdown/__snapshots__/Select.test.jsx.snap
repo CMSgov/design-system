@@ -10,8 +10,30 @@ exports[`Dropdown renders 1`] = `
 />
 `;
 
+exports[`Select handles bottom placed error 1`] = `
+<select
+  aria-describedby="1_error"
+  aria-invalid={true}
+  className="ds-c-field ds-c-field--error"
+  id="1"
+  label="Select an option"
+  name="Select"
+  onBlur={[MockFunction]}
+  onChange={[MockFunction]}
+>
+  <option
+    key="1"
+    value="1"
+  >
+    1
+  </option>
+</select>
+`;
+
 exports[`Select renders a select menu 1`] = `
 <select
+  aria-describedby=""
+  aria-invalid={false}
   aria-label="test aria label"
   className="ds-c-field"
   id="1"
@@ -32,6 +54,8 @@ exports[`Select renders a select menu 1`] = `
 
 exports[`Select renders options correctly 1`] = `
 <select
+  aria-describedby=""
+  aria-invalid={false}
   className="ds-c-field"
   defaultValue="1"
   id="1"

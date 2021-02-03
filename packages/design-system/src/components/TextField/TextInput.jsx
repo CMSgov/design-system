@@ -6,7 +6,9 @@ import classNames from 'classnames';
 export function TextInput(props) {
   const {
     ariaLabel,
+    errorId,
     errorMessage,
+    errorPlacement,
     fieldClassName,
     inversed,
     mask,
@@ -43,6 +45,17 @@ export function TextInput(props) {
   const field = (
     <ComponentType
       aria-label={ariaLabel}
+      aria-invalid={
+        // eslint-disable-next-line
+        props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage
+      }
+      aria-describedby={
+        // Link input to bottom placed error message
+        // eslint-disable-next-line
+        classNames(props['aria-describedby'], {
+          [errorId]: errorPlacement === 'bottom' && errorMessage,
+        })
+      }
       className={classes}
       ref={setRef}
       rows={multiline && rows ? rows : undefined}
@@ -68,7 +81,15 @@ TextInput.propTypes = {
    */
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
+  /**
+   * The ID of the error message applied to the Select field.
+   */
+  errorId: PropTypes.string,
   errorMessage: PropTypes.node,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']).isRequired,
   /**
    * Additional classes to be added to the input element
    */
