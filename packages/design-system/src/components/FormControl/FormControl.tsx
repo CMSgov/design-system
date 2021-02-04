@@ -158,6 +158,9 @@ export class FormControl extends React.Component<FormControlProps> {
       ) : null;
 
     // Field input props handled by <FormControl>
+    // TODO: Move `setRef` logic into <TextField> and <Select>
+    // TODO: Simplify `id` props by using a singular `fieldId` prop, and a consistent id naming convention
+    // TODO: Use React Context to provide shared form props like `errorPlacement`, `inversed`, `fieldId`
     const fieldInputProps = {
       id: this.id,
       labelId: this.labelId,
