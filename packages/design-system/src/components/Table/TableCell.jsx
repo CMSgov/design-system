@@ -72,9 +72,11 @@ export const TableCell = ({
       {...tableCellProps}
     >
       {/* Add column heading for stacked table */}
-      <span aria-hidden="true" className="ds-c-table--stacked__col-header">
-        {stackedTitle}
-      </span>
+      {_stackable && (
+        <span aria-hidden="true" className="ds-c-table--stacked__col-header">
+          {stackedTitle}
+        </span>
+      )}
       {children}
     </Component>
   );
