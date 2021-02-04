@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 
 export { unmaskValue } from './Mask';
 
@@ -55,7 +56,7 @@ TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
-  errorPlacement: 'top',
+  errorPlacement: errorPlacementDefault(),
 };
 
 TextField.propTypes = {

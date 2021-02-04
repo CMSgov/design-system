@@ -3,6 +3,7 @@ import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
+import { errorPlacementDefault } from '../flags';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
@@ -48,7 +49,7 @@ export class Dropdown extends React.PureComponent {
 }
 
 Dropdown.defaultProps = {
-  errorPlacement: 'top',
+  errorPlacement: errorPlacementDefault(),
 };
 
 Dropdown.propTypes = {

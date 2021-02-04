@@ -32,3 +32,4 @@ export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as TooltipIcon } from './Tooltip/TooltipIcon';
 export { default as UsaBanner } from './UsaBanner/UsaBanner';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';
+export * from './flags';

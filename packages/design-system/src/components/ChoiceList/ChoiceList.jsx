@@ -3,6 +3,7 @@ import Choice from './Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import { pick } from 'lodash';
 
 export class ChoiceList extends React.PureComponent {
@@ -81,7 +82,7 @@ export class ChoiceList extends React.PureComponent {
 }
 
 ChoiceList.defaultProps = {
-  errorPlacement: 'top',
+  errorPlacement: errorPlacementDefault(),
 };
 
 ChoiceList.propTypes = {
