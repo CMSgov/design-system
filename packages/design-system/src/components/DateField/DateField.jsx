@@ -66,6 +66,10 @@ DateField.propTypes = {
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
   /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
+  /**
    * Location of the error message relative to the field input
    */
   errorPlacement: PropTypes.oneOf(['top', 'bottom']),
