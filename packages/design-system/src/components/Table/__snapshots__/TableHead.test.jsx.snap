@@ -25,10 +25,6 @@ exports[`TableHead renders additional attributes 1`] = `
               role="columnheader"
               scope="col"
             >
-              <span
-                aria-hidden="true"
-                className="ds-c-table--stacked__col-header"
-              />
               Column a
             </th>
           </TableCell>
@@ -42,10 +38,6 @@ exports[`TableHead renders additional attributes 1`] = `
               role="columnheader"
               scope="col"
             >
-              <span
-                aria-hidden="true"
-                className="ds-c-table--stacked__col-header"
-              />
               Column b
             </th>
           </TableCell>
