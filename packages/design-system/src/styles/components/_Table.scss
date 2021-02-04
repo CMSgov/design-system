@@ -5,7 +5,7 @@ $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
 $table-padding: $spacer-2 !default;
-$table-dense-padding: $spacer-half $spacer-2 !default;
+$table-compact-padding: $spacer-half $spacer-2 !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -48,10 +48,10 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   }
 }
 
-.ds-c-table--dense {
+.ds-c-table--compact {
   th,
   td {
-    padding: $table-dense-padding;
+    padding: $table-compact-padding;
   }
 }
 

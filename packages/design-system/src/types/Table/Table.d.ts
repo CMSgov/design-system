@@ -16,9 +16,9 @@ export interface TableProps {
    */
   className?: string;
   /**
-   * Applies the dense variation of the table.
+   * Applies the compact variation of the table.
    */
-  dense?: boolean,
+  compact?: boolean,
   /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
