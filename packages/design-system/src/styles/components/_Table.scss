@@ -48,7 +48,8 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
   }
 }
 
-.ds-c-table--compact {
+.ds-c-table--compact,
+.ds-c-table--dense {
   th,
   td {
     padding: $table-compact-padding;
@@ -84,11 +85,6 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
   text-align: left;
 }
 
-// Hide column heading reserved for stacked table
-.ds-c-table--stacked__col-header {
-  display: none;
-}
-
 @mixin stacked-table-styles {
   thead tr {
     // Hide column headings when responsive table stacked vertically on narrow viewports
@@ -120,7 +116,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     // Every row has a bottom border
     border-bottom: $spacer-half solid $table-border-color;
     border-top: 0;
-    display: block;
+    display: table-row;
 
     // Remove the initial th/td border-top to fix the thicker top border on <tr> 2 and more
     th:first-child,
@@ -137,12 +133,18 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     }
   }
 
-  // Add column heading for stacked table
-  .ds-c-table--stacked__col-header {
-    display: block;
-    font-weight: bold;
-    padding-bottom: $spacer-half;
+  // stylelint-disable selector-no-qualifying-type
+  th[data-title],
+  td[data-title] {
+    // Add column heading via psuedo element
+    &::before {
+      content: attr(data-title);
+      display: block;
+      font-weight: bold;
+      padding-bottom: $spacer-half;
+    }
   }
+  // stylelint-enable selector-no-qualifying-type
 
   // Remove striped styling on stacked table
   &.ds-c-table--striped tbody {
