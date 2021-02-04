@@ -16,6 +16,10 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               className="ds-u-text-align--left"
               role="rowheader"
             >
+              <span
+                aria-hidden="true"
+                className="ds-c-table--stacked__col-header"
+              />
               Cell a
             </th>
           </TableCell>
@@ -26,6 +30,10 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               className="ds-u-text-align--left"
               role="cell"
             >
+              <span
+                aria-hidden="true"
+                className="ds-c-table--stacked__col-header"
+              />
               Cell b
             </td>
           </TableCell>
@@ -57,6 +65,10 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
+              <span
+                aria-hidden="true"
+                className="ds-c-table--stacked__col-header"
+              />
               Column a
             </th>
           </TableCell>
@@ -70,6 +82,10 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
+              <span
+                aria-hidden="true"
+                className="ds-c-table--stacked__col-header"
+              />
               Column b
             </th>
           </TableCell>
