@@ -47,7 +47,11 @@ export class FormLabel extends React.PureComponent {
       }
 
       return (
-        <InlineError id={errorId} inversed={this.props.inversed}>
+        <InlineError
+          id={errorId}
+          inversed={this.props.inversed}
+          className={this.props.errorMessageClassName}
+        >
           {this.props.errorMessage}
         </InlineError>
       );
@@ -65,6 +69,7 @@ export class FormLabel extends React.PureComponent {
       className,
       inversed,
       errorMessage,
+      errorMessageClassName,
       errorId,
       requirementLabel,
       ...labelProps
@@ -98,6 +103,10 @@ FormLabel.propTypes = {
   component: PropTypes.oneOf(['label', 'legend']),
   /** Enable the error state by providing an error message. */
   errorMessage: PropTypes.node,
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
   /**
    * The ID of the error message applied to this field.
    */
