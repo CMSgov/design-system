@@ -20,6 +20,10 @@ export interface TableProps {
    */
   compact?: boolean,
   /**
+   * @hide-prop [Deprecated] Use compact instead.
+   */
+  dense?: boolean,
+  /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */
   scrollable?: boolean;
