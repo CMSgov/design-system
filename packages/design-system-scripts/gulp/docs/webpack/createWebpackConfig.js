@@ -7,11 +7,10 @@ module.exports = async function createWebpackConfig(sourceDir, docsDir, options)
   const distPath = path.resolve(docsDir, 'dist');
   const docs = await getDocsDirs(docsDir);
 
-  // Entry and include paths are set to `design-system` and `design-system-docs`
-  // packages in `node_modules` for child design systems
-  // This is the first element in the dirs array from `getDirsToProcess`
   const entry = {
+    // Default doc site JS located in @cmsgov/design-system-docs/src/index.jsx
     index: [path.resolve(docs[0], 'src/index.jsx')],
+    // Doc site example page JS located in @cmsgov/design-system-docs/src/example.js
     example: [path.resolve(docs[0], 'src/example.js')],
   };
 

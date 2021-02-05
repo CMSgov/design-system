@@ -107,10 +107,16 @@ function getRelativePath(file, options) {
  */
 function parseComponent(file, options) {
   let docs;
+
   if (file.extname === '.tsx') {
-    // Use `react-docgen-typescript` for `tsx` files
-    docs = tsDocgen.withCustomConfig('./tsconfig.json').parse(file.path);
-    processDocgenTemplates(docs[0], options);
+    // Avoid processing .tsx files unless typescript config is enabled
+    if (!options.typescript) {
+      docs = [{}];
+    } else {
+      // Use `react-docgen-typescript` for `tsx` files
+      docs = tsDocgen.withCustomConfig(path.resolve('tsconfig.json')).parse(file.path);
+      processDocgenTemplates(docs[0], options);
+    }
   } else {
     // Use `react-docgen` for normal `jsx` files
     docs = reactDocgen.parse(
