@@ -2,6 +2,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InlineError from './InlineError';
 import React from 'react';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import { uniqueId } from 'lodash';
 
 interface FieldContainerRenderProps {
@@ -118,7 +119,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       component,
       errorMessage,
       errorMessageClassName,
-      errorPlacement,
+      errorPlacement = errorPlacementDefault(),
       hint,
       inversed,
       label,

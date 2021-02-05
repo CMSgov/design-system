@@ -29,6 +29,10 @@ export class Dropdown extends React.PureComponent {
     const containerProps = pick(this.props, FieldContainerPropKeys);
     const inputOnlyProps = omit(this.props, FieldContainerPropKeys);
 
+    // Use errorPlacement feature flag for <Select>
+    // Duplicate of errorPlacement defaulting that occurs inside <FieldContainer>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
+
     return (
       <FieldContainer
         {...containerProps}
@@ -39,7 +43,7 @@ export class Dropdown extends React.PureComponent {
             {...inputOnlyProps}
             {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
-            errorPlacement={this.props.errorPlacement}
+            errorPlacement={errorPlacement}
             inversed={this.props.inversed}
           />
         )}
@@ -47,10 +51,6 @@ export class Dropdown extends React.PureComponent {
     );
   }
 }
-
-Dropdown.defaultProps = {
-  errorPlacement: errorPlacementDefault(),
-};
 
 Dropdown.propTypes = {
   /**

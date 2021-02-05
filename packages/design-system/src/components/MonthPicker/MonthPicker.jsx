@@ -6,7 +6,6 @@ import Choice from '../ChoiceList/Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { errorPlacementDefault } from '../flags';
 import { pick } from 'lodash';
 
 const NUM_MONTHS = 12;
@@ -161,7 +160,6 @@ export class MonthPicker extends React.PureComponent {
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  errorPlacement: errorPlacementDefault(),
 };
 
 MonthPicker.propTypes = {

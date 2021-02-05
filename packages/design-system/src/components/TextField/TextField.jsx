@@ -31,6 +31,10 @@ export class TextField extends React.PureComponent {
       this.props.className
     );
 
+    // Use errorPlacement feature flag for <TextInput>
+    // Duplicate of errorPlacement defaulting that occurs inside <FieldContainer>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
+
     return (
       <FieldContainer
         {...containerProps}
@@ -42,7 +46,7 @@ export class TextField extends React.PureComponent {
             {...inputOnlyProps}
             {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
-            errorPlacement={this.props.errorPlacement}
+            errorPlacement={errorPlacement}
             inversed={this.props.inversed}
           />
         )}
@@ -56,7 +60,6 @@ TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
-  errorPlacement: errorPlacementDefault(),
 };
 
 TextField.propTypes = {

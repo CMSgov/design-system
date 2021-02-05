@@ -3,7 +3,6 @@ import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { errorPlacementDefault } from '../flags';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
 const standardLengthFormatter = ({ day, month, year }) => ({
@@ -33,7 +32,6 @@ export function DateField(props) {
 DateField.defaultProps = {
   label: 'Date',
   hint: 'For example: 4 / 28 / 1986',
-  errorPlacement: errorPlacementDefault(),
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
