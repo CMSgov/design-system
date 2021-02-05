@@ -116,7 +116,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     // Every row has a bottom border
     border-bottom: $spacer-half solid $table-border-color;
     border-top: 0;
-    display: table-row;
+    display: block;
 
     // Remove the initial th/td border-top to fix the thicker top border on <tr> 2 and more
     th:first-child,
