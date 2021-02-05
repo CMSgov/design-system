@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table applies responsive table 1`] = `
+exports[`Table applies responsive stacked table 1`] = `
 <div>
   <table
     className="ds-c-table ds-c-lg-table--stacked"

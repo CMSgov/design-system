@@ -15,9 +15,20 @@ function minimizeSvg(srcGlob, dest) {
           plugins: [
             {
               cleanupIDs: false,
+            },
+            {
               removeTitle: false,
+            },
+            {
               removeDesc: false,
+            },
+            {
               removeHiddenElems: false,
+            },
+            {
+              removeUnknownsAndDefaults: {
+                keepRoleAttr: true,
+              },
             },
           ],
         })
