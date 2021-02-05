@@ -90,11 +90,6 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     display: none;
   }
 
-  // Set to display: block for narrow viewports
-  caption {
-    display: block;
-  }
-
   th,
   td {
     border-bottom-width: 0;
