@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+export type MonthPickerErrorPlacement = 'top' | 'bottom';
+
 export interface MonthPickerProps {
   /**
    * The `input` field's `name` attribute
@@ -28,6 +30,14 @@ export interface MonthPickerProps {
    */
   label: React.ReactNode;
   errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement?: MonthPickerErrorPlacement;
   /**
    * Additional hint text to display
    */
