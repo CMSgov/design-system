@@ -29,3 +29,8 @@
   color: $color-muted;
   padding: $spacer-1;
 }
+
+.ds-c-autocomplete__error-message {
+  position: absolute;
+  width: calc(100% - 100px);
+}
