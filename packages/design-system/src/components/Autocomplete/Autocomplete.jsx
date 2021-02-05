@@ -96,6 +96,8 @@ export class Autocomplete extends React.PureComponent {
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
+          errorMessageClassName:
+            child.props.errorPlacement === 'bottom' ? 'ds-c-autocomplete__error-message' : null,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           inputRef: this.props.inputRef,
