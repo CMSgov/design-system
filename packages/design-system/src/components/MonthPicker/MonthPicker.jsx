@@ -192,6 +192,10 @@ MonthPicker.propTypes = {
   label: PropTypes.node.isRequired,
   errorMessage: PropTypes.node,
   /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
+  /**
    * Location of the error message relative to the field input
    */
   errorPlacement: PropTypes.oneOf(['top', 'bottom']),

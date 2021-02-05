@@ -26,6 +26,10 @@ interface FieldContainerProps {
   errorId?: string;
   errorMessage?: React.ReactNode;
   /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
    * Location of the error message relative to the field input
    */
   errorPlacement: 'top' | 'bottom';
@@ -105,6 +109,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       className,
       component,
       errorMessage,
+      errorMessageClassName,
       errorPlacement,
       hint,
       inversed,
@@ -132,7 +137,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
 
     // Bottom placed errors are handled in FieldContainer instead of FormLabel
     const renderBottomError = bottomError ? (
-      <InlineError id={this.errorId} inversed={inversed}>
+      <InlineError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
         {errorMessage}
       </InlineError>
     ) : null;
@@ -157,6 +162,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
           className={labelClassName}
           component={labelComponent}
           errorMessage={bottomError ? undefined : errorMessage}
+          errorMessageClassName={bottomError ? undefined : errorMessageClassName}
           errorId={this.errorId}
           // Avoid using `for` attribute for components with multiple inputs
           // i.e. ChoiceList, DateField, and other components that use `fieldset`
@@ -181,6 +187,7 @@ export const FieldContainerPropKeys = [
   'component',
   'errorId',
   'errorMessage',
+  'errorMessageClassName',
   'errorPlacement',
   'focusTrigger',
   'hint',

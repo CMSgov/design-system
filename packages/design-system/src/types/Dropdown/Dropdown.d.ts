@@ -11,6 +11,8 @@ export type DropdownSize = 'small' | 'medium';
 
 export type DropdownValue = number | string;
 
+export type DropdownErrorPlacement = 'top' | 'bottom';
+
 export interface DropdownProps {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
@@ -34,6 +36,14 @@ export interface DropdownProps {
    */
   disabled?: boolean;
   errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement?: DropdownErrorPlacement;
   /**
    * Additional classes to be added to the select element
    */
