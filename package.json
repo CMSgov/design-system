@@ -12,7 +12,7 @@
     "pre-release": "./prerelease.sh",
     "release": "yarn lerna publish from-git --npm-tag latest",
     "precommit": "lint-staged",
-    "test": "yarn test:unit",
+    "test": "yarn test:unit && yarn test:e2e",
     "test:unit": "yarn cmsds test ./packages",
     "test:e2e": "yarn cmsds test:e2e ./packages",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",

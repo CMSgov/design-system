@@ -1,0 +1,17 @@
+{
+  "usaBanner": {
+    "bannerLabel": "Official government website",
+    "bannerText": "An official website of the United States government",
+    "bannerActionText": "Here’s how you know",
+    "domainHeaderText": "Official websites use .gov",
+    "domainAText": "A",
+    "domainText": "website belongs to an official government organization in the United States.",
+    "govText": ".gov",
+    "httpsHeaderText": "Secure .gov websites use HTTPS",
+    "httpsOrText": "or",
+    "httpsText": "https://",
+    "httpsAText": "A",
+    "httpsLockText": "lock",
+    "httpsDetailText": "means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. "
+  }
+}
