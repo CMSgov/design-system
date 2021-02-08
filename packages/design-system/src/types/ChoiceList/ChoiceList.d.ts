@@ -9,8 +9,6 @@ export type ChoiceListType = 'checkbox' | 'radio';
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
-export type ChoiceListErrorPlacement = 'top' | 'bottom';
-
 export interface ChoiceListProps {
   /**
    * The list of choices to be rendered.
@@ -25,14 +23,6 @@ export interface ChoiceListProps {
    */
   disabled?: boolean;
   errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: ChoiceListErrorPlacement;
   /**
    * Additional hint text to display
    */

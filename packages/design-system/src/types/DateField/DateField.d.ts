@@ -12,8 +12,6 @@ export type DateFieldYearDefaultValue = string | number;
 
 export type DateFieldYearValue = string | number;
 
-export type DateFieldErrorPlacement = 'top' | 'bottom';
-
 export interface DateFieldProps {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
@@ -32,14 +30,6 @@ export interface DateFieldProps {
    */
   dateFormatter?: (...args: any[]) => any;
   errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: DateFieldErrorPlacement;
   /**
    * Additional hint text to display above the individual month/day/year fields
    */

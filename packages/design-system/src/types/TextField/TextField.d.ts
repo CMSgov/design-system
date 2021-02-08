@@ -10,8 +10,6 @@ export type TextFieldSize = 'small' | 'medium';
 
 export type TextFieldValue = string | number;
 
-export type TextFieldErrorPlacement = 'top' | 'bottom';
-
 export interface TextFieldProps {
   /**
    * Apply an `aria-label` to the text field to provide additional
@@ -29,14 +27,6 @@ export interface TextFieldProps {
   defaultValue?: TextFieldDefaultValue;
   disabled?: boolean;
   errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement?: TextFieldErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
