@@ -42,12 +42,9 @@
   padding: $spacer-1;
 }
 
-// Work-around for bottom placed errors that breaks the Autocomplete's design
-// Keep in mind: absolutely positioned error message wont take up space and may
-// conflict with designs further down the screen
+// Need a custom class so the error message does not conflict with the clear search button
 .ds-c-autocomplete__error-message {
-  // position: absolute;
   float: left;
-  // '- 100px' make provision for the "Clear search button"
+  // '- 100px' make space for the clear search button
   width: calc(100% - 100px);
 }
