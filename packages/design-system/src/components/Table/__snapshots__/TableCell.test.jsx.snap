@@ -16,7 +16,9 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               className="ds-u-text-align--left"
               role="rowheader"
             >
-              Cell a
+              <span>
+                Cell a
+              </span>
             </th>
           </TableCell>
           <TableCell
@@ -26,7 +28,9 @@ exports[`TableCell TableBody wrap: <td> data cell - default props renders TableC
               className="ds-u-text-align--left"
               role="cell"
             >
-              Cell b
+              <span>
+                Cell b
+              </span>
             </td>
           </TableCell>
         </tr>
@@ -57,7 +61,9 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
-              Column a
+              <span>
+                Column a
+              </span>
             </th>
           </TableCell>
           <TableCell
@@ -70,7 +76,9 @@ exports[`TableCell TableHead wrap: <th> header cell - default props renders a ta
               role="columnheader"
               scope="col"
             >
-              Column b
+              <span>
+                Column b
+              </span>
             </th>
           </TableCell>
         </tr>

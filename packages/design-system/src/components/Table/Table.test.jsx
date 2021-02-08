@@ -61,7 +61,7 @@ describe('Table', function () {
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
   });
 
-  it('applies responsive stacked table', () => {
+  it('applies responsive table', () => {
     const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
     const table = wrapper.find('table');
 

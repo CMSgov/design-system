@@ -1,9 +1,10 @@
 @import '../settings/index.scss';
 
-$table-border-color: $color-black !default;
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
+// Max-width of the header column for a stacked table
+$table-stacked-header-max-width: 160px !default;
 $table-padding: $spacer-2 !default;
 $table-dense-padding: $spacer-half $spacer-2 !default;
 
@@ -24,7 +25,7 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
 
   th,
   td {
-    border: 1px solid $table-border-color;
+    border: 1px solid $color-gray;
     padding: $table-padding;
   }
 }
@@ -84,10 +85,10 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   text-align: left;
 }
 
-@mixin stacked-table-styles {
+@mixin table-stacked {
   thead tr {
     // Hide column headings when responsive table stacked vertically on narrow viewports
-    // .ds-u-visibility--screen-reader
+    // ds-u-visibility--screen-reader
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -104,73 +105,102 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     display: block;
   }
 
-  th,
-  td {
-    border-bottom-width: 0;
-    display: block;
-  }
+  td,
+  th {
+    border: 0;
+    border-top: 1px solid;
 
-  // Style dividers between different table rows
-  tr {
-    // Every row has a bottom border
-    border-bottom: $spacer-half solid $table-border-color;
-    border-top: 0;
-    display: block;
+    /* autoprefixer grid: on */
+    display: grid;
+    // CSS grid doesn't support word-wrap. Use minmax as a workaround
+    // https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/#fit-content-is-not-ie-friendly-but
+    grid-template-columns: minmax(0, $table-stacked-header-max-width) 1fr;
+    position: relative;
 
-    // Remove the initial th/td border-top to fix the thicker top border on <tr> 2 and more
-    th:first-child,
-    td:first-child {
-      border-top: 0;
+    // The psuedo element content is generated to display the row header `data-title` for the Tablecell content
+    /* stylelint-disable-next-line selector-no-qualifying-type */
+    &[data-title]::before {
+      content: attr(data-title);
+      font-weight: bold;
+
+      /* autoprefixer grid: on */
+      grid-column: 1;
+      max-width: $table-stacked-header-max-width;
+      width: calc(100% - #{$spacer-2});
     }
 
-    // The first row has a top border
-    &:first-child {
-      th:first-child,
-      td:first-child {
-        border-top: $spacer-half solid $table-border-color;
+    // TableCell content is wrapped in a span for IE11 grid support
+    > span {
+      // Fixes IE11 display bug https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
+      display: block;
+
+      /* autoprefixer grid: on */
+      grid-column: 2;
+      width: fit-content;
+    }
+  }
+
+  tr {
+    border: 1px solid;
+    display: block;
+    margin: 0 0 1rem;
+    padding-bottom: 2px;
+    position: relative;
+
+    &::before {
+      background-color: $color-gray-lightest;
+      border-right: 1px solid;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      max-width: $table-stacked-header-max-width;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  td:first-child,
+  th:first-child {
+    border-top: 0;
+  }
+
+  &.ds-c-table--borderless {
+    tr {
+      border: 0;
+
+      &::before {
+        background-color: transparent;
+        border-right: 0;
       }
     }
-  }
 
-  // stylelint-disable selector-no-qualifying-type
-  th[data-title],
-  td[data-title] {
-    // Add column heading via psuedo element
-    &::before {
-      content: attr(data-title);
-      display: block;
-      font-weight: bold;
-      padding-bottom: $spacer-half;
-    }
-  }
-  // stylelint-enable selector-no-qualifying-type
-
-  // Remove striped styling on stacked table
-  &.ds-c-table--striped tbody {
-    tr:nth-child(even) {
-      background-color: transparent;
+    td:last-child,
+    th:last-child {
+      border-bottom: 2px solid;
     }
   }
 }
 
 .ds-c-table--stacked {
-  @include stacked-table-styles;
+  @include table-stacked;
 }
 
 .ds-c-sm-table--stacked {
   @media (max-width: $width-sm) {
-    @include stacked-table-styles;
+    @include table-stacked;
   }
 }
 
 .ds-c-md-table--stacked {
   @media (max-width: $width-md) {
-    @include stacked-table-styles;
+    @include table-stacked;
   }
 }
 
 .ds-c-lg-table--stacked {
   @media (max-width: $width-lg) {
-    @include stacked-table-styles;
+    @include table-stacked;
   }
 }
