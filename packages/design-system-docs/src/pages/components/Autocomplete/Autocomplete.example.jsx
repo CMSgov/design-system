@@ -47,6 +47,8 @@ ReactDOM.render(
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Labeled list"
         name="Downshift_autocomplete"
+        errorMessage="This field is incorrect This field is incorrect This field is incorrect This field is incorrect This field is incorrect"
+        errorPlacement="bottom"
       />
     </Autocomplete>
 
