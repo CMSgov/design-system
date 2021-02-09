@@ -190,7 +190,7 @@ export class Autocomplete extends React.PureComponent {
                 </ul>
               </div>
             ) : null}
-            <div className="ds-c-autocomplete__error-message">
+            <div className="ds-c-autocomplete__bottom-container">
               {this.textFieldProps && (
                 // Bottom placed errorMessages are visually hidden by TextField.
                 // A custom display of bottom placed error messages after the `clear search` button is handled here.

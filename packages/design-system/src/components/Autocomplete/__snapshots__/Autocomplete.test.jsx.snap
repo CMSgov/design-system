@@ -45,7 +45,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
     />
   </div>
   <div
-    className="ds-c-autocomplete__error-message"
+    className="ds-c-autocomplete__bottom-container"
   >
     <button
       aria-label="Clear search to try again"
