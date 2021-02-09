@@ -191,17 +191,6 @@ export class Autocomplete extends React.PureComponent {
               </div>
             ) : null}
             <div className="ds-c-autocomplete__error-message">
-              {clearSearchButton && (
-                <Button
-                  aria-label={ariaClearLabel}
-                  className="ds-u-float--right ds-u-margin-right--0"
-                  onClick={clearSelection}
-                  size="small"
-                  variation="transparent"
-                >
-                  {clearInputText}
-                </Button>
-              )}
               {this.textFieldProps && (
                 // Bottom placed errorMessages are visually hidden by TextField.
                 // A custom display of bottom placed error messages after the `clear search` button is handled here.
@@ -215,6 +204,17 @@ export class Autocomplete extends React.PureComponent {
                 >
                   {this.textFieldProps.errorMessage}
                 </span>
+              )}
+              {clearSearchButton && (
+                <Button
+                  aria-label={ariaClearLabel}
+                  className="ds-u-float--right ds-u-margin-right--0"
+                  onClick={clearSelection}
+                  size="small"
+                  variation="transparent"
+                >
+                  {clearInputText}
+                </Button>
               )}
             </div>
           </WrapperDiv>

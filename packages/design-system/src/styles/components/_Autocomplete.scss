@@ -42,7 +42,18 @@
   padding: $spacer-1;
 }
 
-// Work-around for bottom placed errors that breaks the Autocomplete's design.
-.ds-c-autocomplete__error-message {
-  float: left;
+// Container for the bottom error message and clear search button
+// Using display flex to account for variations in error and clear button text length
+.ds-c-autocomplete__bottom-container {
+  display: flex;
+  justify-content: flex-end;
+  // Error class used to style the bottom error message for autocomplete
+  .ds-c-field__error-message {
+    flex-grow: 1;
+  }
+  // Button class used to style the clear search button
+  .ds-c-button {
+    display: inherit;
+    min-width: 100px;
+  }
 }
