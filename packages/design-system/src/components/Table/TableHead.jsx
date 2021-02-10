@@ -16,7 +16,12 @@ export const TableHead = ({ children, _stackable, ...tableHeadProps }) => {
     });
   };
 
-  return <thead {...tableHeadProps}>{renderChildren()}</thead>;
+  /* eslint-disable jsx-a11y/no-redundant-roles */
+  return (
+    <thead role="rowgroup" {...tableHeadProps}>
+      {renderChildren()}
+    </thead>
+  );
 };
 
 TableHead.propTypes = {
