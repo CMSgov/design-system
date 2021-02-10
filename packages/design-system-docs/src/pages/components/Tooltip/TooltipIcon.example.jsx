@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TooltipIcon } from '@cmsgov/design-system';
+import { TooltipIcon } from '@design-system';
 
 ReactDOM.render(
   <>
