@@ -1,4 +1,4 @@
-import { Choice, TextField } from '@cmsgov/design-system';
+import { Choice, TextField } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

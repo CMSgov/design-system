@@ -1,4 +1,4 @@
-import { DateField } from '@cmsgov/design-system';
+import { DateField } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

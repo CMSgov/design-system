@@ -1,11 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@cmsgov/design-system';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableRow } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
