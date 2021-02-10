@@ -47,8 +47,6 @@ ReactDOM.render(
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Labeled list"
         name="Downshift_autocomplete"
-        errorMessage="Example error message Bottom placement with extra long message message message message message"
-        errorPlacement="bottom"
       />
     </Autocomplete>
 
@@ -74,7 +72,7 @@ ReactDOM.render(
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Simple list"
         name="Downshift_autocomplete"
-        errorMessage="Example error message Default placement"
+        errorMessage="Example error message"
       />
     </Autocomplete>
 
@@ -83,8 +81,6 @@ ReactDOM.render(
         hint="List should return string Loading to simulate async data call."
         label="Loading message"
         name="Downshift_autocomplete"
-        errorMessage="Example error message Top placement"
-        errorPlacement="top"
       />
     </Autocomplete>
 

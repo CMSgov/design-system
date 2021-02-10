@@ -57,3 +57,13 @@
     min-width: 100px;
   }
 }
+
+// Need a custom class so the bottom error message does not conflict with the clear search button
+.ds-c-autocomplete__error-message {
+  float: left;
+}
+
+// Need a custom class for bottom error message to make space for the clear search button
+.ds-c-autocomplete__error-message-with-clear-search {
+  width: calc(100% - 100px);
+}

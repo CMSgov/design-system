@@ -44,17 +44,13 @@ exports[`Autocomplete renders a snapshot 1`] = `
       value=""
     />
   </div>
-  <div
-    className="ds-c-autocomplete__bottom-container"
+  <button
+    aria-label="Clear search to try again"
+    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-float--right ds-u-margin-right--0"
+    onClick={[Function]}
+    type="button"
   >
-    <button
-      aria-label="Clear search to try again"
-      className="ds-c-button ds-c-button--transparent ds-c-button--small ds-u-margin-right--0"
-      onClick={[Function]}
-      type="button"
-    >
-      Clear search
-    </button>
-  </div>
+    Clear search
+  </button>
 </div>
 `;

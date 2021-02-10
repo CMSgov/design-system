@@ -45,7 +45,6 @@ export class Autocomplete extends React.PureComponent {
     this.listboxId = uniqueId('autocomplete_owned_listbox_');
     this.listboxContainerId = uniqueId('autocomplete_owned_container_');
     this.listboxHeadingId = uniqueId('autocomplete_header_');
-    this.textFieldProps = null;
   }
 
   filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex) {
@@ -92,11 +91,16 @@ export class Autocomplete extends React.PureComponent {
     return React.Children.map(this.props.children, (child) => {
       if (isTextField(child)) {
         // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
-        // This fix will add a class to visually hide the bottom placed errors and allow screen readers access only.
-        // A custom bottom placed errors display is handled further down this component.
+        // Add errorMessageClassName to fix the styles for bottom placed errors
         const bottomError = child.props.errorPlacement === 'bottom' && child.props.errorMessage;
         const errorMessageClassName = bottomError
-          ? classNames('ds-u-visibility--screen-reader', child.props.errorMessageClassName)
+          ? classNames(
+              'ds-c-autocomplete__error-message',
+              {
+                'ds-c-autocomplete__error-message-with-clear-search': this.props.clearSearchButton,
+              },
+              child.props.errorMessageClassName
+            )
           : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
@@ -115,8 +119,7 @@ export class Autocomplete extends React.PureComponent {
           onKeyDown: child.props.onKeyDown,
           role: 'combobox',
         };
-        // Save TextFieldProps for custom bottom placed errors handling
-        this.textFieldProps = bottomError ? child.props : null;
+
         return React.cloneElement(child, getInputProps(propOverrides));
       }
 
@@ -190,33 +193,18 @@ export class Autocomplete extends React.PureComponent {
                 </ul>
               </div>
             ) : null}
-            <div className="ds-c-autocomplete__bottom-container">
-              {this.textFieldProps && (
-                // Bottom placed errorMessages are visually hidden by TextField.
-                // A custom display of bottom placed error messages after the `clear search` button is handled here.
-                <span
-                  aria-hidden="true"
-                  className={classNames(
-                    'ds-c-field__error-message',
-                    { 'ds-c-field__error-message--inverse': this.textFieldProps.inversed },
-                    this.textFieldProps.errorMessageClassName
-                  )}
-                >
-                  {this.textFieldProps.errorMessage}
-                </span>
-              )}
-              {clearSearchButton && (
-                <Button
-                  aria-label={ariaClearLabel}
-                  className="ds-u-margin-right--0"
-                  onClick={clearSelection}
-                  size="small"
-                  variation="transparent"
-                >
-                  {clearInputText}
-                </Button>
-              )}
-            </div>
+
+            {clearSearchButton && (
+              <Button
+                aria-label={ariaClearLabel}
+                className="ds-u-float--right ds-u-margin-right--0"
+                onClick={clearSelection}
+                size="small"
+                variation="transparent"
+              >
+                {clearInputText}
+              </Button>
+            )}
           </WrapperDiv>
         )}
       </Downshift>
