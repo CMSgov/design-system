@@ -1,4 +1,4 @@
-import { Dropdown } from '@design-system';
+import { Dropdown } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

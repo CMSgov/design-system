@@ -1,4 +1,4 @@
-import { Button, Spinner } from '@design-system';
+import { Button, Spinner } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

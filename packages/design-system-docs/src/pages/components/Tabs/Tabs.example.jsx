@@ -1,4 +1,4 @@
-import { TabPanel, Tabs } from '@design-system';
+import { TabPanel, Tabs } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

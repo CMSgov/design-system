@@ -1,4 +1,4 @@
-import { MonthPicker } from '@design-system';
+import { MonthPicker } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

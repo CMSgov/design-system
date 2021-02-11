@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TextField } from '@design-system';
+import { TextField } from '@cmsgov/design-system';
 
 ReactDOM.render(
   <div>

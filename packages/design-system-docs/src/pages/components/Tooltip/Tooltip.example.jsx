@@ -1,4 +1,4 @@
-import { Button, Tooltip, TooltipIcon } from '@design-system';
+import { Button, Tooltip, TooltipIcon } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
