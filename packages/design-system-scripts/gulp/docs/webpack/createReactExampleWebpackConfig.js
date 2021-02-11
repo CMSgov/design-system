@@ -33,14 +33,15 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
         },
       ],
     },
-    plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
+    plugins: [
+      new webpack.EnvironmentPlugin(['NODE_ENV'])
+    ],
     resolve: {
       modules: ['node_modules'],
       alias: {
         '@src': path.resolve(sourceDir, 'src'),
-        '@design-system': path.resolve(sourceDir),
       },
-      extensions: ['.js', '.jsx', '.tsx'],
+      extensions: ['.js', '.jsx'],
       plugins: [],
     },
     performance: {

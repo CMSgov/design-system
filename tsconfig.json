@@ -8,7 +8,6 @@
     // Allows `*.example.tsx` files in `docs` to import directly from `src`
     "baseUrl": ".",
     "paths": {
-      "@design-system/*": ["*"],
       "@src/*": ["src/*"]
     }
   }
