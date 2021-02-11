@@ -90,6 +90,18 @@ export class Autocomplete extends React.PureComponent {
     // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, (child) => {
       if (isTextField(child)) {
+        // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+        // Add errorMessageClassName to fix the styles for bottom placed errors
+        const bottomError = child.props.errorPlacement === 'bottom' && child.props.errorMessage;
+        const errorMessageClassName = bottomError
+          ? classNames(
+              'ds-c-autocomplete__error-message',
+              {
+                'ds-c-autocomplete__error-message--clear-btn': this.props.clearSearchButton,
+              },
+              child.props.errorMessageClassName
+            )
+          : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
@@ -97,6 +109,7 @@ export class Autocomplete extends React.PureComponent {
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
+          errorMessageClassName: errorMessageClassName,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           inputRef: this.props.inputRef,
