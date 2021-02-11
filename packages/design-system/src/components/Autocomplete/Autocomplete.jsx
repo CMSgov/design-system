@@ -97,7 +97,7 @@ export class Autocomplete extends React.PureComponent {
           ? classNames(
               'ds-c-autocomplete__error-message',
               {
-                'ds-c-autocomplete__error-message-with-clear-search': this.props.clearSearchButton,
+                'ds-c-autocomplete__error-message--clear-btn': this.props.clearSearchButton,
               },
               child.props.errorMessageClassName
             )
