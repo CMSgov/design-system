@@ -32,14 +32,12 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       },
     ]
   }
-  errorPlacement="top"
   label="Foo"
   name="spec-field"
   type="radio"
 >
   <FieldContainer
     component="fieldset"
-    errorPlacement="top"
     label="Foo"
     labelComponent="legend"
     render={[Function]}
