@@ -5,7 +5,7 @@ $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
 $table-padding: $spacer-2 !default;
-$table-dense-padding: $spacer-half $spacer-2 !default;
+$table-compact-padding: $spacer-half $spacer-2 !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -48,10 +48,11 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
   }
 }
 
+.ds-c-table--compact,
 .ds-c-table--dense {
   th,
   td {
-    padding: $table-dense-padding;
+    padding: $table-compact-padding;
   }
 }
 
@@ -97,11 +98,6 @@ $table-dense-padding: $spacer-half $spacer-2 !default;
     width: 1px;
     // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
     word-wrap: normal;
-  }
-
-  // Set to display: block for narrow viewports
-  caption {
-    display: block;
   }
 
   th,
