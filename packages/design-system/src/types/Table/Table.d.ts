@@ -16,7 +16,11 @@ export interface TableProps {
    */
   className?: string;
   /**
-   * Applies the dense variation of the table.
+   * Applies the compact variation of the table.
+   */
+  compact?: boolean,
+  /**
+   * @hide-prop [Deprecated] Use compact instead.
    */
   dense?: boolean,
   /**
