@@ -81,7 +81,7 @@ export class ChoiceList extends React.PureComponent {
 }
 
 ChoiceList.defaultProps = {
-  errorPlacement: 'bottom',
+  errorPlacement: 'top',
 };
 
 ChoiceList.propTypes = {

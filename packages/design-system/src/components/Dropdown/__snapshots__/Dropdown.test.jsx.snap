@@ -3,7 +3,7 @@
 exports[`Dropdown renders 1`] = `
 <FieldContainer
   component="div"
-  errorPlacement="bottom"
+  errorPlacement="top"
   label=""
   labelComponent="label"
   render={[Function]}
