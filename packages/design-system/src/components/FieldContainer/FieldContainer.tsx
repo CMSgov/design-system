@@ -86,18 +86,26 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     this.id = props.id || uniqueId('field_');
     this.labelId = props.labelId || `${this.id}-label`;
     this.errorId = props.errorId || `${this.id}-error`;
-    this.setFieldRef = this.setFieldRef.bind(this);
+    this.setRef = this.setRef.bind(this);
+  }
+
+  componentDidMount(): void {	
+    // Automatically set focus on field input element when `focusTrigger` prop is used
+    if (this.props.focusTrigger && this.inputRef) {	
+      console.log(this.inputRef)
+      this.inputRef.focus();	
+    }	
   }
 
   id: string;
   labelId: string;
   errorId: string;
-  focusRef?: HTMLDivElement;
+  inputRef?: HTMLDivElement;
 
-  setFieldRef(elem: HTMLDivElement): void {
+  setRef(elem: HTMLDivElement): void {
     // Use React.forwardRef when upgraded to React 16.3
     if (this.props.focusTrigger) {
-      this.focusRef = elem;
+      this.inputRef = elem;
     }
     if (this.props.inputRef) {
       this.props.inputRef(elem);
@@ -153,7 +161,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       id: this.id,
       labelId: this.labelId,
       errorId: this.errorId,
-      setRef: this.setFieldRef,
+      setRef: this.setRef,
     };
 
     return (
