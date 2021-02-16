@@ -63,7 +63,7 @@ yargs
       yargs.option('rootPath', {
         desc: 'The URL root path for the published docs site.',
         type: 'string',
-        default: '',
+        default: config.rootPath,
       });
     },
     handler: async (argv) => {
@@ -71,10 +71,9 @@ yargs
       const { buildDocs } = require('./gulp/docs');
 
       process.env.NODE_ENV = 'production';
-      if (argv.rootPath !== '') {
-        config.rootPath = argv.rootPath;
-      }
 
+      // Allow cli args to override or ignore default rootPath defined in cmsds.config.js
+      config.rootPath = argv.rootPath;
       if (argv.ignoreRootPath) {
         config.rootPath = '';
       }
