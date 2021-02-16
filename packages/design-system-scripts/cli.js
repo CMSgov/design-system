@@ -72,9 +72,8 @@ yargs
 
       process.env.NODE_ENV = 'production';
 
-      if (argv.rootPath) {
-        config.rootPath = argv.rootPath;
-      }
+      // Allow cli args to override or ignore default rootPath defined in cmsds.config.js
+      config.rootPath = argv.rootPath;
       if (argv.ignoreRootPath) {
         config.rootPath = '';
       }
