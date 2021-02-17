@@ -92,7 +92,6 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
   componentDidMount(): void {	
     // Automatically set focus on field input element when `focusTrigger` prop is used
     if (this.props.focusTrigger && this.inputRef) {	
-      console.log(this.inputRef)
       this.inputRef.focus();	
     }	
   }
