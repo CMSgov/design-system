@@ -32,7 +32,6 @@ export function DateField(props) {
 DateField.defaultProps = {
   label: 'Date',
   hint: 'For example: 4 / 28 / 1986',
-  errorPlacement: 'top',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
