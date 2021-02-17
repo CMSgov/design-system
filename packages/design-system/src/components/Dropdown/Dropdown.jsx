@@ -1,4 +1,4 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -26,15 +26,15 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, FieldContainerPropKeys);
-    const inputOnlyProps = omit(this.props, FieldContainerPropKeys);
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps = omit(this.props, FormControlPropKeys);
 
     // Use errorPlacement feature flag for <Select>
-    // Duplicate of errorPlacement defaulting that occurs inside <FieldContainer>
+    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
     const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
 
     return (
-      <FieldContainer
+      <FormControl
         {...containerProps}
         component="div"
         labelComponent="label"

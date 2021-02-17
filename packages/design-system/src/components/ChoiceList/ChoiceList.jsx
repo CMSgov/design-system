@@ -1,4 +1,4 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import Choice from './Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -49,7 +49,7 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, FieldContainerPropKeys);
+    const containerProps = pick(this.props, FormControlPropKeys);
 
     const choices = this.props.choices.map((choiceProps) => {
       choiceProps.inversed = this.props.inversed;
@@ -70,7 +70,7 @@ export class ChoiceList extends React.PureComponent {
     });
 
     return (
-      <FieldContainer
+      <FormControl
         {...containerProps}
         component="fieldset"
         labelComponent="legend"

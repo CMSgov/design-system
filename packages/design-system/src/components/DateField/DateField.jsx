@@ -1,4 +1,4 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
 import PropTypes from 'prop-types';
@@ -14,11 +14,11 @@ const standardLengthFormatter = ({ day, month, year }) => ({
 export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
 export function DateField(props) {
-  const containerProps = pick(props, FieldContainerPropKeys);
-  const inputOnlyProps = omit(props, FieldContainerPropKeys);
+  const containerProps = pick(props, FormControlPropKeys);
+  const inputOnlyProps = omit(props, FormControlPropKeys);
 
   return (
-    <FieldContainer
+    <FormControl
       {...containerProps}
       component="fieldset"
       labelComponent="legend"

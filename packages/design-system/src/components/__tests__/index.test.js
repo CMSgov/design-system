@@ -36,7 +36,7 @@ function getDirectories(paths) {
 
 const ignoredComponents = [
   'DateInput',
-  'FieldContainer',
+  'FormControl',
   'Mask',
   'ReviewLink',
   'Select',

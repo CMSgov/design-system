@@ -36,7 +36,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
   name="spec-field"
   type="radio"
 >
-  <FieldContainer
+  <FormControl
     component="fieldset"
     label="Foo"
     labelComponent="legend"
@@ -138,6 +138,6 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         </div>
       </Choice>
     </fieldset>
-  </FieldContainer>
+  </FormControl>
 </ChoiceList>
 `;

@@ -1,5 +1,5 @@
 import { mount, shallow } from 'enzyme';
-import FieldContainer from './FieldContainer';
+import FormControl from './FormControl';
 import React from 'react';
 
 const defaultProps = {
@@ -16,7 +16,7 @@ const defaultProps = {
 
 function render(customProps = {}, deep = false) {
   const props = { ...defaultProps, ...customProps };
-  const component = <FieldContainer {...props} />;
+  const component = <FormControl {...props} />;
 
   return {
     props,
@@ -24,7 +24,7 @@ function render(customProps = {}, deep = false) {
   };
 }
 
-describe('FieldContainer', function () {
+describe('FormControl', function () {
   it('renders default component and labelComponent elements', () => {
     const data = render({});
 
