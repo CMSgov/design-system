@@ -1,4 +1,4 @@
-import InlineError from '../FormControl/InlineError';
+import InlineError from '../InlineError/InlineError';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';

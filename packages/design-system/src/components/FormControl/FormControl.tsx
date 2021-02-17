@@ -1,5 +1,5 @@
 import FormLabel from '../FormLabel/FormLabel';
-import InlineError from './InlineError';
+import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
@@ -93,7 +93,6 @@ export class FormControl extends React.Component<FormControlProps> {
   componentDidMount(): void {	
     // Automatically set focus on field input element when `focusTrigger` prop is used
     if (this.props.focusTrigger && this.inputRef) {	
-      console.log(this.inputRef)
       this.inputRef.focus();	
     }	
   }
