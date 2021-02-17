@@ -55,13 +55,13 @@
 
    1. Connect to CMS VPN `cloudvpn.cms.gov`.
 
-   1. [Log in to CBJ](https://ci.backends.cms.gov/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
+   1. [Log in to CB Core](https://ci.backends.cms.gov/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
 
-      **Note**: Your CBJ user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
+      **Note**: Your CB Core user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
    1. Select `Build with Parameters` on the side navigation menu.
 
-   1. Enter the `tag` created in the first step (i.e. `core-2.0.0`) as the branch to deploy.
+   1. Enter the `branch` created in the first step (i.e. `release-2.0.0`) as the branch to deploy.
 
    Deploying the documentation website is a multi-stage pipeline that executes the deploy in two stages:
 
