@@ -72,6 +72,7 @@ ReactDOM.render(
         hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
         label="Simple list"
         name="Downshift_autocomplete"
+        errorMessage="Example error message"
       />
     </Autocomplete>
 

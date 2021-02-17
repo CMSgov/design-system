@@ -1,6 +1,6 @@
+import { mount, shallow } from 'enzyme';
 import ChoiceList from './ChoiceList';
 import React from 'react';
-import { shallow } from 'enzyme';
 
 function generateChoices(length) {
   const choices = [];
@@ -15,144 +15,140 @@ function generateChoices(length) {
   return choices;
 }
 
-/**
- * Helper method for shallow rendering the <ChoiceList> component. The only props
- * initially defined are the required props.
- * @param {object} customProps - Additional props
- * @param {number} choicesCount - Total number of choices
- * @return {object}
- */
-function shallowRender(customProps = {}, choicesCount = 2) {
-  const props = Object.assign(
-    {
+// Mounts the component by default because the choices are passed into FieldContainer as a function
+function render(customProps = {}, choicesCount = 2, deep = true) {
+  const props = {
+    ...{
       choices: generateChoices(choicesCount),
       label: 'Foo',
       name: 'spec-field',
       type: 'radio',
     },
-    customProps
-  );
+    ...customProps,
+  };
+  const component = <ChoiceList {...props} />;
 
   return {
-    props: props,
-    wrapper: shallow(<ChoiceList {...props} />),
+    props,
+    wrapper: deep ? mount(component) : shallow(component),
   };
 }
 
 describe('ChoiceList', () => {
   describe('Radio buttons and Checkboxes', () => {
     it('is a radio button group', () => {
-      const data = shallowRender({ type: 'radio' });
+      const { wrapper } = render({ type: 'radio' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('radio');
+      expect(wrapper.find('Choice').first().prop('type')).toBe('radio');
+      expect(wrapper).toMatchSnapshot();
     });
 
     it('is a checkbox group', () => {
-      const data = shallowRender({ type: 'checkbox' });
+      const { wrapper } = render({ type: 'checkbox' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('is a checkbox', () => {
-      const data = shallowRender({ choices: generateChoices(1), type: 'checkbox' });
+      const { wrapper } = render({ choices: generateChoices(1), type: 'checkbox' });
 
-      expect(data.wrapper.find('Choice').first().prop('type')).toBe('checkbox');
+      expect(wrapper.find('Choice').first().prop('type')).toBe('checkbox');
     });
 
     it('renders all choices', () => {
-      const data = shallowRender();
-      const choice = data.wrapper.find('Choice').first();
+      const { props, wrapper } = render();
+      const choice = wrapper.find('Choice').first();
 
-      expect(data.wrapper.find('Choice').length).toBe(data.props.choices.length);
-      expect(choice.prop('name')).toBe(data.props.name);
-      expect(choice.prop('value')).toBe(data.props.choices[0].value);
+      expect(wrapper.find('Choice').length).toBe(props.choices.length);
+      expect(choice.prop('name')).toBe(props.name);
+      expect(choice.prop('value')).toBe(props.choices[0].value);
     });
 
     it('is enclosed by a fieldset', () => {
-      const data = shallowRender();
+      const { wrapper } = render();
+      const container = wrapper.find('FieldContainer');
 
-      expect(data.wrapper.is('fieldset')).toBe(true);
-      expect(data.wrapper.hasClass('ds-c-fieldset')).toBe(true);
+      expect(container.prop('component')).toBe('fieldset');
     });
 
     it('renders the label prop as a legend element', () => {
-      const data = shallowRender();
+      const { wrapper } = render();
+      const container = wrapper.find('FieldContainer');
 
-      expect(data.wrapper.render().find('legend').first().text()).toBe(data.props.label);
+      expect(container.prop('labelComponent')).toBe('legend');
     });
 
     it('passes checked prop', () => {
       const choices = generateChoices(4);
-      choices[1].checked = true;
-      const data = shallowRender({ choices });
+      choices[0].checked = true;
+      const { wrapper } = render({ choices, onChange: jest.fn() });
 
-      expect(data.wrapper.find('Choice').get(1).props.checked).toBe(true);
+      expect(wrapper.find('Choice').first().prop('checked')).toBe(true);
     });
 
     it('passes defaultChecked prop', () => {
       const choices = generateChoices(4);
-      choices[1].defaultChecked = true;
-      const data = shallowRender({ choices });
+      choices[0].defaultChecked = true;
+      const { wrapper } = render({ choices });
 
-      expect(data.wrapper.find('Choice').get(1).props.defaultChecked).toBe(true);
+      expect(wrapper.find('Choice').first().prop('defaultChecked')).toBe(true);
     });
 
     it('passes disabled prop', () => {
       const choices = generateChoices(4);
-      choices[1].disabled = true;
-      const data = shallowRender({ choices });
+      choices[0].disabled = true;
+      const { wrapper } = render({ choices });
 
-      expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
+      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
     });
 
     it('disables all choices', () => {
-      const data = shallowRender({ disabled: true });
+      const { wrapper } = render({ disabled: true });
 
-      expect(data.wrapper.find('Choice').get(0).props.disabled).toBe(true);
-      expect(data.wrapper.find('Choice').get(1).props.disabled).toBe(true);
+      expect(wrapper.find('Choice').first().prop('disabled')).toBe(true);
+      expect(wrapper.find('Choice').last().prop('disabled')).toBe(true);
     });
 
     it("doesn't pass an ID prop", () => {
-      const data = shallowRender();
+      const { wrapper } = render();
 
-      expect(data.wrapper.find('Choice').first().prop('id')).toBeUndefined();
+      expect(wrapper.find('Choice').first().prop('id')).toBeUndefined();
     });
 
     it('is inversed Choice', () => {
-      const data = shallowRender({ inversed: true });
+      const { wrapper } = render({ inversed: true });
 
-      expect(data.wrapper.find('Choice').first().prop('inversed')).toBe(true);
+      expect(wrapper.find('Choice').first().prop('inversed')).toBe(true);
     });
 
     it('calls onChange', () => {
       const onChange = jest.fn();
-      const data = shallowRender({ onChange });
-      data.wrapper.find('Choice').first().simulate('change');
+      const { wrapper } = render({ onChange });
+      wrapper.find('Choice').first().simulate('change');
 
-      expect(onChange).toHaveBeenCalled();
+      setTimeout(() => {
+        expect(onChange).toHaveBeenCalled();
+      }, 20);
     });
 
     it('calls onBlur', () => {
       const onBlur = jest.fn();
-      const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').first().simulate('blur');
+      const { wrapper } = render({ onBlur });
+      wrapper.find('Choice').first().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
-      // Enzyme simulated `blur` event will automatically focus on the next choice element
       setTimeout(() => {
-        expect(onComponentBlur).not.toHaveBeenCalled();
+        expect(onBlur).toHaveBeenCalled();
       }, 20);
     });
 
     it('calls onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').last().simulate('blur');
+      const { wrapper } = render({ onBlur, onComponentBlur });
+      wrapper.find('Choice').last().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
       setTimeout(() => {
+        expect(onBlur).toHaveBeenCalled();
         expect(onComponentBlur).toHaveBeenCalled();
       }, 20);
     });
@@ -160,32 +156,13 @@ describe('ChoiceList', () => {
     it('doesnt call onComponentBlur', () => {
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      const data = shallowRender({ onBlur, onComponentBlur });
-      data.wrapper.find('Choice').first().simulate('blur');
+      const { wrapper } = render({ onBlur, onComponentBlur });
+      wrapper.find('Choice').first().simulate('blur');
 
-      expect(onBlur).toHaveBeenCalled();
       setTimeout(() => {
         expect(onBlur).toHaveBeenCalled();
         expect(onComponentBlur).not.toHaveBeenCalled();
       }, 20);
     });
-  });
-
-  it('applies additional classNames to FormLabel', () => {
-    const data = shallowRender({ labelClassName: 'ds-u-foo' });
-
-    expect(data.wrapper.find('FormLabel').prop('className')).toBe(data.props.labelClassName);
-  });
-
-  it('passes errorMessage to FormLabel', () => {
-    const data = shallowRender({ errorMessage: 'Nah son' });
-
-    expect(data.wrapper.find('FormLabel').prop('errorMessage')).toBe(data.props.errorMessage);
-  });
-
-  it('passes inversed prop to FormLabel', () => {
-    const data = shallowRender({ inversed: true });
-
-    expect(data.wrapper.find('FormLabel').prop('inversed')).toBe(true);
   });
 });

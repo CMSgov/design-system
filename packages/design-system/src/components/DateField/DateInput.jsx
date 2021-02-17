@@ -1,50 +1,104 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
-import { omit, pick } from 'lodash';
-import DateInput from './DateInput';
 import PropTypes from 'prop-types';
 import React from 'react';
+import TextField from '../TextField/TextField';
+import classNames from 'classnames';
 
-// Prevents day/month greater than 2 digits and year greater than 4 digits
-const standardLengthFormatter = ({ day, month, year }) => ({
-  day: day.length > 2 ? day.substring(0, 2) : day,
-  month: month.length > 2 ? month.substring(0, 2) : month,
-  year: year.length > 4 ? year.substring(0, 4) : year,
-});
+export class DateInput extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
+  formatDate() {
+    if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
+      const values = {
+        month: this.monthInput.value,
+        day: this.dayInput.value,
+        year: this.yearInput.value,
+      };
+      return this.props.dateFormatter(values);
+    }
+  }
 
-export function DateField(props) {
-  const containerProps = pick(props, FieldContainerPropKeys);
-  const inputOnlyProps = omit(props, FieldContainerPropKeys);
+  handleBlur(evt) {
+    if (this.props.onBlur) {
+      this.props.onBlur(evt, this.formatDate());
+    }
 
-  return (
-    <FieldContainer
-      {...containerProps}
-      component="fieldset"
-      labelComponent="legend"
-      render={({ labelId }) => (
-        <DateInput {...inputOnlyProps} {...{ labelId }} inversed={props.inversed} />
-      )}
-    />
-  );
+    if (this.props.onComponentBlur) {
+      this.handleComponentBlur(evt);
+    }
+  }
+
+  handleChange(evt) {
+    this.props.onChange(evt, this.formatDate());
+  }
+
+  handleComponentBlur(evt) {
+    // The active element is always the document body during a focus
+    // transition, so in order to check if the newly focused element
+    // is one of our other date inputs, we're going to have to wait
+    // a bit.
+    setTimeout(() => {
+      if (
+        document.activeElement !== this.dayInput &&
+        document.activeElement !== this.monthInput &&
+        document.activeElement !== this.yearInput
+      ) {
+        this.props.onComponentBlur(evt, this.formatDate());
+      }
+    }, 20);
+  }
+
+  renderField(type) {
+    const sharedTextFieldProps = {
+      className: 'ds-l-col--auto',
+      labelClassName: 'ds-c-datefield__label',
+      disabled: this.props.disabled,
+      inversed: this.props.inversed,
+      onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
+      onChange: this.props.onChange && this.handleChange,
+      numeric: true,
+    };
+
+    return (
+      <TextField
+        {...sharedTextFieldProps}
+        defaultValue={this.props[`${type}DefaultValue`]}
+        value={this.props[`${type}Value`]}
+        label={this.props[`${type}Label`]}
+        name={this.props[`${type}Name`]}
+        fieldClassName={classNames(`ds-c-field--${type}`, {
+          'ds-c-field--error': this.props[`${type}Invalid`],
+        })}
+        inputRef={(el) => {
+          this[`${type}Input`] = el;
+          if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);
+        }}
+        autoComplete={this.props.autoComplete && `bday-${type}`}
+        aria-describedby={this.props.labelId}
+        aria-invalid={this.props[`${type}Invalid`]}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <div className="ds-l-form-row ds-u-align-items--end">
+        {this.renderField('month')}
+        <span className="ds-c-datefield__separator">/</span>
+        {this.renderField('day')}
+        <span className="ds-c-datefield__separator">/</span>
+        {this.renderField('year')}
+      </div>
+    );
+  }
 }
 
-DateField.defaultProps = {
-  label: 'Date',
-  hint: 'For example: 4 / 28 / 1986',
-  errorPlacement: 'top',
-  dayLabel: 'Day',
-  dayName: 'day',
-  monthLabel: 'Month',
-  monthName: 'month',
-  yearLabel: 'Year',
-  yearName: 'year',
-  dateFormatter: defaultDateFormatter,
-};
-
-DateField.propTypes = {
+DateInput.propTypes = {
   /**
-   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateField>` inputs
+   * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateInput>` inputs
    */
   autoComplete: PropTypes.bool,
   /**
@@ -64,35 +118,14 @@ DateField.propTypes = {
    * Disables all three input fields.
    */
   disabled: PropTypes.bool,
-  errorMessage: PropTypes.node,
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName: PropTypes.string,
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
-  /**
-   * Additional hint text to display above the individual month/day/year fields
-   */
-  hint: PropTypes.node,
   /**
    * Applies the "inverse" UI theme
    */
   inversed: PropTypes.bool,
   /**
-   * The primary label, rendered above the individual month/day/year fields
+   * A unique ID applied to the DateField label.
    */
-  label: PropTypes.node,
-  /**
-   * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
-   */
-  labelId: PropTypes.string,
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel: PropTypes.node,
+  labelId: PropTypes.string.isRequired,
   /**
    * Called anytime any date input is blurred
    */
@@ -110,11 +143,11 @@ DateField.propTypes = {
   /**
    * Label for the day field
    */
-  dayLabel: PropTypes.node,
+  dayLabel: PropTypes.node.isRequired,
   /**
    * `name` for the day `input` field
    */
-  dayName: PropTypes.string,
+  dayName: PropTypes.string.isRequired,
   /**
    * Initial value for the day `input` field. Use this for an uncontrolled
    * component; otherwise, use the `dayValue` property.
@@ -136,11 +169,11 @@ DateField.propTypes = {
   /**
    * Label for the month field
    */
-  monthLabel: PropTypes.node,
+  monthLabel: PropTypes.node.isRequired,
   /**
    * `name` for the month `input` field
    */
-  monthName: PropTypes.string,
+  monthName: PropTypes.string.isRequired,
   /**
    * Initial value for the month `input` field. Use this for an uncontrolled
    * component; otherwise, use the `monthValue` property.
@@ -175,11 +208,11 @@ DateField.propTypes = {
   /**
    * Label for the year `input` field
    */
-  yearLabel: PropTypes.node,
+  yearLabel: PropTypes.node.isRequired,
   /**
    * `name` for the year field
    */
-  yearName: PropTypes.string,
+  yearName: PropTypes.string.isRequired,
   /**
    * Sets the year input's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `yearDefaultValue`.
@@ -187,4 +220,4 @@ DateField.propTypes = {
   yearValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-export default DateField;
+export default DateInput;
