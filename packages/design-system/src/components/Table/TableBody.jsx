@@ -21,6 +21,7 @@ export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
       {_stackable ? renderChildren() : children}
     </tbody>
   );
+  /* eslint-enable jsx-a11y/no-redundant-roles */
 };
 
 TableBody.propTypes = {
