@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FieldContainer renders bottom placed errors  1`] = `
+exports[`FormControl renders bottom placed errors  1`] = `
 <div
   className=""
 >
@@ -24,7 +24,7 @@ exports[`FieldContainer renders bottom placed errors  1`] = `
 </div>
 `;
 
-exports[`FieldContainer renders custom component and labelComponent elements 1`] = `
+exports[`FormControl renders custom component and labelComponent elements 1`] = `
 <fieldset
   className="ds-c-fieldset"
 >
@@ -42,7 +42,7 @@ exports[`FieldContainer renders custom component and labelComponent elements 1`]
 </fieldset>
 `;
 
-exports[`FieldContainer renders default component and labelComponent elements 1`] = `
+exports[`FormControl renders default component and labelComponent elements 1`] = `
 <div
   className=""
 >
@@ -61,7 +61,7 @@ exports[`FieldContainer renders default component and labelComponent elements 1`
 </div>
 `;
 
-exports[`FieldContainer uses aria-invalid for fieldsets with errorMessage 1`] = `
+exports[`FormControl uses aria-invalid for fieldsets with errorMessage 1`] = `
 <fieldset
   aria-invalid={true}
   className="ds-c-fieldset"

@@ -1,4 +1,4 @@
-import InlineError from '../FieldContainer/InlineError';
+import InlineError from '../FormControl/InlineError';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -38,7 +38,7 @@ export class FormLabel extends React.PureComponent {
 
   errorMessage() {
     if (this.props.errorMessage) {
-      // Include fallback for errorId for usage outside of FieldContainer
+      // Include fallback for errorId for usage outside of FormControl
       let errorId = null;
       if (this.props.errorId) {
         errorId = this.props.errorId;
