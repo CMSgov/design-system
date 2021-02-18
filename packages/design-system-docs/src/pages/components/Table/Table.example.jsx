@@ -47,8 +47,9 @@ ReactDOM.render(
         </TableRow>
       </TableBody>
     </Table>
-    {/* Firefox and NVDA seem to be buggy with how it currently handles responsive stacked tables, at least compared to other browser/screen reader combos. 
-    Even though Table navigation is wonky, you can still move through the content with the arrow keys normally.
+    {/* Firefox and NVDA seem to be buggy with how it currently handles responsive stacked tables, 
+    at least compared to other browser/screen reader combos. Even though Table navigation is wonky, 
+    you can still move through the content with the arrow keys normally.
     Refer to this link for more context: https://github.com/CMSgov/design-system/pull/935#issuecomment-778341817
     */}
     <Table className="ds-u-margin-top--2" stackable stackableBreakpoint="md">
