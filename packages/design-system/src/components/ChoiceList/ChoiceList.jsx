@@ -3,7 +3,7 @@ import Choice from './Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 
 export class ChoiceList extends React.PureComponent {
   constructor(props) {

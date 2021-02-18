@@ -2,7 +2,7 @@ import FormLabel from '../FormLabel/FormLabel';
 import InlineError from './InlineError';
 import React from 'react';
 import classNames from 'classnames';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash.uniqueid';
 
 interface FieldContainerRenderProps {
   id: string;

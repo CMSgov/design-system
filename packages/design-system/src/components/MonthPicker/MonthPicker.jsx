@@ -6,7 +6,7 @@ import Choice from '../ChoiceList/Choice';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 
 const NUM_MONTHS = 12;
 const monthNumbers = (() => {
