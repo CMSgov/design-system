@@ -1,9 +1,10 @@
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
 import { errorPlacementDefault } from '../flags';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {

@@ -77,18 +77,18 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         >
           <input
             className="ds-c-choice"
-            id="radio_spec-field_1"
+            id="radio_spec-field_2"
             name="spec-field"
             type="radio"
             value="1"
           />
           <FormLabel
             component="label"
-            fieldId="radio_spec-field_1"
+            fieldId="radio_spec-field_2"
           >
             <label
               className="ds-c-label"
-              htmlFor="radio_spec-field_1"
+              htmlFor="radio_spec-field_2"
             >
               <span
                 className=""
@@ -115,18 +115,18 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         >
           <input
             className="ds-c-choice"
-            id="radio_spec-field_2"
+            id="radio_spec-field_3"
             name="spec-field"
             type="radio"
             value="2"
           />
           <FormLabel
             component="label"
-            fieldId="radio_spec-field_2"
+            fieldId="radio_spec-field_3"
           >
             <label
               className="ds-c-label"
-              htmlFor="radio_spec-field_2"
+              htmlFor="radio_spec-field_3"
             >
               <span
                 className=""

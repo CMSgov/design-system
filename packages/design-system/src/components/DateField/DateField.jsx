@@ -1,8 +1,9 @@
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import { omit, pick } from 'lodash';
 import DateInput from './DateInput';
 import PropTypes from 'prop-types';
 import React from 'react';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 // Prevents day/month greater than 2 digits and year greater than 4 digits
 const standardLengthFormatter = ({ day, month, year }) => ({

@@ -2,8 +2,8 @@ import FormLabel from '../FormLabel/FormLabel';
 import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 import { errorPlacementDefault } from '../flags';
-import { uniqueId } from 'lodash';
 
 interface FormControlRenderProps {
   id: string;
@@ -90,11 +90,11 @@ export class FormControl extends React.Component<FormControlProps> {
     this.setRef = this.setRef.bind(this);
   }
 
-  componentDidMount(): void {	
+  componentDidMount(): void {
     // Automatically set focus on field input element when `focusTrigger` prop is used
-    if (this.props.focusTrigger && this.inputRef) {	
-      this.inputRef.focus();	
-    }	
+    if (this.props.focusTrigger && this.inputRef) {
+      this.inputRef.focus();
+    }
   }
 
   id: string;
