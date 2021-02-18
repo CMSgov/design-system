@@ -6,7 +6,7 @@ exports[`DateField renders 1`] = `
 >
   <legend
     className="ds-c-label"
-    id="field_1-label"
+    id="field_snapshot-label"
   >
     <span
       className=""
@@ -27,8 +27,8 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_2"
-        id="field_2-label"
+        htmlFor="field_snapshot"
+        id="field_snapshot-label"
       >
         <span
           className=""
@@ -37,9 +37,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_1-label"
+        aria-describedby="field_snapshot-label"
         className="ds-c-field ds-c-field--month"
-        id="field_2"
+        id="field_snapshot"
         inputMode="numeric"
         name="month"
         pattern="[0-9]*"
@@ -56,8 +56,8 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_3"
-        id="field_3-label"
+        htmlFor="field_snapshot"
+        id="field_snapshot-label"
       >
         <span
           className=""
@@ -66,9 +66,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_1-label"
+        aria-describedby="field_snapshot-label"
         className="ds-c-field ds-c-field--day"
-        id="field_3"
+        id="field_snapshot"
         inputMode="numeric"
         name="day"
         pattern="[0-9]*"
@@ -85,8 +85,8 @@ exports[`DateField renders 1`] = `
     >
       <label
         className="ds-c-label ds-c-datefield__label"
-        htmlFor="field_4"
-        id="field_4-label"
+        htmlFor="field_snapshot"
+        id="field_snapshot-label"
       >
         <span
           className=""
@@ -95,9 +95,9 @@ exports[`DateField renders 1`] = `
         </span>
       </label>
       <input
-        aria-describedby="field_1-label"
+        aria-describedby="field_snapshot-label"
         className="ds-c-field ds-c-field--year"
-        id="field_4"
+        id="field_snapshot"
         inputMode="numeric"
         name="year"
         pattern="[0-9]*"
