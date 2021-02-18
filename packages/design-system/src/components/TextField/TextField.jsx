@@ -1,9 +1,10 @@
 import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
-import { omit, pick } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export { unmaskValue } from './Mask';
 
