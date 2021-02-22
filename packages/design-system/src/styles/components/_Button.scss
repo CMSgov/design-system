@@ -29,7 +29,9 @@
       background-color: $focus-color;
       border-color: $color-primary-darker;
       box-shadow: $focus-shadow-link;
-      color: $color-primary-darker;
+      color: $color-base;
+      outline: 3px solid transparent;
+      outline-offset: 2px;
     } @else {
       border-color: $color-primary-darker;
       color: $color-primary-darker;
