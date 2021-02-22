@@ -120,6 +120,7 @@
     // Make sure active overrides focus styles
     &:active:focus,
     &.ds-c-button--active:focus {
+      color: $color-primary-darkest;
       text-decoration: underline;
     }
   }
