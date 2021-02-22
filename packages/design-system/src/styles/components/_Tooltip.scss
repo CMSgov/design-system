@@ -34,8 +34,6 @@ $tooltip-background-color-inverse: $color-background !default;
 
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
-  align-items: center;
-  justify-content: center;
   padding: 4px;
 }
 
