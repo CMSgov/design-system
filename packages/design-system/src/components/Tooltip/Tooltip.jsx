@@ -143,7 +143,6 @@ export class Tooltip extends React.Component {
       dialog,
       children,
       inversed,
-      interactive,
       interactiveBorder,
       placement,
       className,
@@ -173,7 +172,7 @@ export class Tooltip extends React.Component {
           className
         )}
         style={tooltipStyle}
-        onMouseEnter={() => (interactive ? this.setTooltipActive(true) : null)}
+        onMouseEnter={() => this.setTooltipActive(true)}
         onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
         onBlur={() => this.handleBlur()}
         data-placement={placement}
@@ -182,9 +181,7 @@ export class Tooltip extends React.Component {
       >
         <div className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
-        {interactive && (
-          <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
-        )}
+        <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
       </div>
     );
     return (
@@ -246,10 +243,6 @@ Tooltip.propTypes = {
    * `id` applied to tooltip body container element. If not provided, a unique id will be automatically generated and used.
    */
   id: PropTypes.string,
-  /**
-   * Set to `true` if the tooltip content contains tabbable, interactive elements like links or buttons. This prop expands the activation area to include the tooltip itself, allowing the content to interact with mouse events.
-   */
-  interactive: PropTypes.bool,
   /**
    * Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.
    */

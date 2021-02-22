@@ -25,11 +25,7 @@ ReactDOM.render(
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-      <Tooltip
-        interactive
-        triggerContent="interactive content"
-        triggerClassName="ds-c-tooltip__trigger-link"
-      >
+      <Tooltip triggerContent="interactive content" triggerClassName="ds-c-tooltip__trigger-link">
         <p className="ds-u-margin--0">
           {
             'Tooltip remains active when the mouse hovers over the tooltip body. Tooltip can contain '
@@ -63,12 +59,7 @@ ReactDOM.render(
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip dialog activated </p>
-      <Tooltip
-        interactive
-        dialog
-        triggerContent="on click"
-        triggerClassName="ds-c-tooltip__trigger-link"
-      >
+      <Tooltip dialog triggerContent="on click" triggerClassName="ds-c-tooltip__trigger-link">
         <>
           <p className="ds-u-margin--0">
             {
@@ -93,7 +84,6 @@ ReactDOM.render(
       <Tooltip
         ariaLabel="Label describing the subject of the inverse tooltip"
         inversed
-        interactive
         placement="right"
         triggerContent={<TooltipIcon inversed />}
         triggerClassName="ds-c-tooltip__trigger-icon"
