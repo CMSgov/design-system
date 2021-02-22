@@ -27,11 +27,9 @@
   &.ds-c-button--focus {
     @if $ds-include-focus-styles {
       background-color: $focus-color;
-      border-color: $color-base;
+      border-color: $color-primary-darker;
       box-shadow: $focus-shadow-link;
-      color: $color-base;
-      outline: 3px solid transparent;
-      outline-offset: 2px;
+      color: $color-primary-darker;
     } @else {
       border-color: $color-primary-darker;
       color: $color-primary-darker;
@@ -120,7 +118,7 @@
     // Make sure active overrides focus styles
     &:active:focus,
     &.ds-c-button--active:focus {
-      color: $color-primary-darkest;
+      // color: $color-primary-darker;
       text-decoration: underline;
     }
   }
@@ -304,6 +302,7 @@ $button-color-variants: (
     } @else {
       &:focus,
       &.ds-c-button--focus {
+        background-color: nth($color, 2);
         border-color: transparent;
         color: $color-white;
       }
