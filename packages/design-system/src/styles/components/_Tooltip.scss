@@ -22,6 +22,9 @@ $tooltip-background-color-inverse: $color-background !default;
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
   cursor: pointer;
+  display: inline;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 // Prevent the trigger from reactivating the tooltip when clicking outside of tooltipDialog tooltips
@@ -32,7 +35,6 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
   align-items: center;
-  display: flex;
   justify-content: center;
   padding: 4px;
 }
