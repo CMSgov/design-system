@@ -1,16 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders custom trigger component 1`] = `
-<div>
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
   <a
     aria-describedby="trigger_4"
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     href="design.cms.gov"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     onTouchStart={[Function]}
   >
     <TooltipIcon />
@@ -26,8 +28,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
       data-placement="top"
       id="trigger_4"
       onBlur={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="tooltip"
       style={
         Object {
@@ -50,21 +50,34 @@ exports[`Tooltip renders custom trigger component 1`] = `
           Tooltip body content
         </p>
       </div>
+      <div
+        className="ds-c-tooltip__interactive-border"
+        style={
+          Object {
+            "border": "15px solid transparent",
+            "left": "-15px",
+            "top": "-15px",
+            "zIndex": "-999",
+          }
+        }
+      />
     </div>
   </CSSTransition>
 </div>
 `;
 
 exports[`Tooltip renders default trigger icon 1`] = `
-<div>
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
   <button
     aria-describedby="trigger_1"
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     onTouchStart={[Function]}
     type="button"
   >
@@ -81,8 +94,6 @@ exports[`Tooltip renders default trigger icon 1`] = `
       data-placement="top"
       id="trigger_1"
       onBlur={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="tooltip"
       style={
         Object {
@@ -105,6 +116,17 @@ exports[`Tooltip renders default trigger icon 1`] = `
           Tooltip body content
         </p>
       </div>
+      <div
+        className="ds-c-tooltip__interactive-border"
+        style={
+          Object {
+            "border": "15px solid transparent",
+            "left": "-15px",
+            "top": "-15px",
+            "zIndex": "-999",
+          }
+        }
+      />
     </div>
   </CSSTransition>
 </div>
@@ -117,6 +139,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onClick={[Function]}
+    onTouchStart={[Function]}
     type="button"
   >
     <TooltipIcon />
@@ -131,6 +154,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
       active={false}
       focusTrapOptions={
         Object {
+          "clickOutsideDeactivates": true,
           "initialFocus": "#trigger_5",
         }
       }
@@ -141,9 +165,6 @@ exports[`Tooltip renders dialog tooltip 1`] = `
         className="ds-c-tooltip"
         data-placement="top"
         id="trigger_5"
-        onBlur={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         role="dialog"
         style={
           Object {
@@ -173,15 +194,17 @@ exports[`Tooltip renders dialog tooltip 1`] = `
 `;
 
 exports[`Tooltip renders interactive tooltip 1`] = `
-<div>
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
   <button
     aria-describedby="trigger_3"
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     onTouchStart={[Function]}
     type="button"
   >
@@ -198,8 +221,6 @@ exports[`Tooltip renders interactive tooltip 1`] = `
       data-placement="top"
       id="trigger_3"
       onBlur={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="tooltip"
       style={
         Object {
@@ -239,15 +260,17 @@ exports[`Tooltip renders interactive tooltip 1`] = `
 `;
 
 exports[`Tooltip renders inverse tooltip 1`] = `
-<div>
+<div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
   <button
     aria-describedby="trigger_2"
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
+    onClick={[Function]}
     onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
     onTouchStart={[Function]}
     type="button"
   >
@@ -264,8 +287,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       data-placement="top"
       id="trigger_2"
       onBlur={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       role="tooltip"
       style={
         Object {
@@ -288,6 +309,17 @@ exports[`Tooltip renders inverse tooltip 1`] = `
           Tooltip body content
         </p>
       </div>
+      <div
+        className="ds-c-tooltip__interactive-border"
+        style={
+          Object {
+            "border": "15px solid transparent",
+            "left": "-15px",
+            "top": "-15px",
+            "zIndex": "-999",
+          }
+        }
+      />
     </div>
   </CSSTransition>
 </div>
