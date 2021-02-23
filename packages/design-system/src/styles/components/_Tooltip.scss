@@ -27,11 +27,6 @@ $tooltip-background-color-inverse: $color-background !default;
   font-weight: inherit;
 }
 
-// Prevent the trigger from reactivating the tooltip when clicking outside of tooltipDialog tooltips
-.ds-c-tooltip__trigger--click-only-active {
-  pointer-events: none;
-}
-
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
   padding: 4px;

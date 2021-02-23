@@ -54,10 +54,11 @@ export class Tooltip extends React.Component {
   }
 
   handleClickOutside(event) {
-    // Closes click only tooltips when mouse clicks outside of tooltip container element
-    if (this.state.active && this.props.dialog) {
+    // Closes dialog and mobile tooltips when mouse clicks outside of tooltip element
+    if (this.state.active && (this.props.dialog || this.state.isMobile)) {
+      const clickedTrigger = this.triggerElement && this.triggerElement.contains(event.target);
       const clickedTooltip = this.tooltipElement && this.tooltipElement.contains(event.target);
-      if (!clickedTooltip) {
+      if (!clickedTooltip && !clickedTrigger) {
         this.setTooltipActive(false);
       }
     }
@@ -99,12 +100,11 @@ export class Tooltip extends React.Component {
   }
 
   handleTouch() {
-    // On mobile, touch -> mouseenter -> click events are all fired.
-    // `isMobile` flag is used to prevent click and mouseenter events from from firing, so touch can be used in isolation
+    // On mobile, touch -> mouseenter -> click events can all be fired simultaneously
+    // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
     // https://stackoverflow.com/a/65055198
-    this.setState({ isMobile: true }, () => {
-      this.setTooltipActive(!this.state.active);
-    });
+    this.setState({ isMobile: true });
+    this.setTooltipActive(!this.state.active);
   }
 
   triggerComponentType() {
@@ -129,7 +129,6 @@ export class Tooltip extends React.Component {
     const TriggerComponent = this.triggerComponentType();
     const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', triggerClassName, {
       [triggerActiveClassName]: this.state.active,
-      'ds-c-tooltip__trigger--click-only-active': this.props.dialog && this.state.active,
     });
 
     const eventHandlers = dialog
@@ -154,13 +153,13 @@ export class Tooltip extends React.Component {
 
     return (
       <TriggerComponent
-        {...eventHandlers}
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || ''}
         aria-describedby={this.id}
         className={triggerClasses}
         ref={this.setTriggerElement}
         href={triggerHref}
+        {...eventHandlers}
       >
         {triggerContent}
       </TriggerComponent>
@@ -214,7 +213,9 @@ export class Tooltip extends React.Component {
       >
         <div className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
-        <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
+        {!dialog && (
+          <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
+        )}
       </div>
     );
     return (
@@ -225,6 +226,7 @@ export class Tooltip extends React.Component {
             focusTrapOptions={{
               // Set initialFocus to the tooltip container element in case it contains no focusable elements
               initialFocus: `#${this.id}`,
+              clickOutsideDeactivates: true,
             }}
           >
             {tooltipContent()}
@@ -241,14 +243,14 @@ export class Tooltip extends React.Component {
       ? {}
       : {
           onMouseEnter: () => {
-            this.setState({ isHover: true });
             if (!this.state.isMobile) {
+              this.setState({ isHover: true });
               this.setTooltipActive(true);
             }
           },
           onMouseLeave: () => {
-            this.setState({ isHover: false });
             if (!this.state.isMobile) {
+              this.setState({ isHover: false });
               this.setTooltipActive(false);
             }
           },
