@@ -26,7 +26,11 @@ export class Tooltip extends React.Component {
       this.tooltipElement = elem;
     };
 
-    this.state = { active: false };
+    this.state = {
+      active: false,
+      isHover: false,
+      isMobile: false,
+    };
   }
 
   componentDidMount() {
@@ -68,22 +72,39 @@ export class Tooltip extends React.Component {
   }
 
   setTooltipActive(active) {
-    this.setState({ active }, () => {
-      this.popper.forceUpdate();
-    });
+    if (active !== this.state.active) {
+      this.setState({ active }, () => {
+        this.popper.forceUpdate();
+        if (active) {
+          this.props.onOpen && this.props.onOpen();
+        } else {
+          this.props.onClose && this.props.onClose();
+        }
+      });
+    }
   }
 
   handleBlur() {
     // Hide tooltips when blurring away from the trigger or tooltip body
+    // and when the mouse is not hovering over the tooltip
     setTimeout(() => {
       const focusedInsideTrigger =
         this.triggerElement && this.triggerElement.contains(document.activeElement);
       const focusedInsideTooltip =
         this.tooltipElement && this.tooltipElement.contains(document.activeElement);
-      if (!focusedInsideTrigger && !focusedInsideTooltip) {
+      if (!focusedInsideTrigger && !focusedInsideTooltip && !this.state.isHover) {
         this.setTooltipActive(false);
       }
     }, 10);
+  }
+
+  handleTouch() {
+    // On mobile, touch -> mouseenter -> click events are all fired.
+    // `isMobile` flag is used to prevent click and mouseenter events from from firing, so touch can be used in isolation
+    // https://stackoverflow.com/a/65055198
+    this.setState({ isMobile: true }, () => {
+      this.setTooltipActive(!this.state.active);
+    });
   }
 
   triggerComponentType() {
@@ -97,8 +118,8 @@ export class Tooltip extends React.Component {
 
   renderTrigger() {
     const {
-      dialog,
       ariaLabel,
+      dialog,
       triggerActiveClassName,
       triggerClassName,
       triggerContent,
@@ -113,14 +134,22 @@ export class Tooltip extends React.Component {
 
     const eventHandlers = dialog
       ? {
-          onClick: () => this.setTooltipActive(!this.state.active),
+          onTouchStart: () => this.handleTouch(),
+          onClick: () => {
+            if (!this.state.isMobile) {
+              this.setTooltipActive(!this.state.active);
+            }
+          },
         }
       : {
-          onTouchStart: () => this.setTooltipActive(!this.state.active),
+          onTouchStart: () => this.handleTouch(),
+          onClick: () => {
+            if (!this.state.isMobile) {
+              this.setTooltipActive(!this.state.active);
+            }
+          },
           onFocus: () => this.setTooltipActive(true),
           onBlur: () => this.handleBlur(),
-          onMouseEnter: () => this.setTooltipActive(true),
-          onMouseLeave: () => this.setTooltipActive(false),
         };
 
     return (
@@ -159,6 +188,12 @@ export class Tooltip extends React.Component {
       zIndex: '-999', // ensures interactive border doesnt cover tooltip content
     };
 
+    const eventHandlers = dialog
+      ? {}
+      : {
+          onBlur: () => this.handleBlur(),
+        };
+
     const tooltipContent = () => (
       <div
         id={this.id}
@@ -172,12 +207,10 @@ export class Tooltip extends React.Component {
           className
         )}
         style={tooltipStyle}
-        onMouseEnter={() => this.setTooltipActive(true)}
-        onMouseLeave={() => (dialog ? null : this.setTooltipActive(false))}
-        onBlur={() => this.handleBlur()}
         data-placement={placement}
         aria-hidden={!this.state.active}
         role={dialog ? 'dialog' : 'tooltip'}
+        {...eventHandlers}
       >
         <div className="ds-c-tooltip__arrow" data-popper-arrow />
         <div className="ds-c-tooltip__content ds-base">{children}</div>
@@ -204,8 +237,25 @@ export class Tooltip extends React.Component {
   }
 
   render() {
+    const eventHandlers = this.props.dialog
+      ? {}
+      : {
+          onMouseEnter: () => {
+            this.setState({ isHover: true });
+            if (!this.state.isMobile) {
+              this.setTooltipActive(true);
+            }
+          },
+          onMouseLeave: () => {
+            this.setState({ isHover: false });
+            if (!this.state.isMobile) {
+              this.setTooltipActive(false);
+            }
+          },
+        };
+
     return (
-      <div>
+      <div {...eventHandlers}>
         {this.renderTrigger()}
         {this.renderContent()}
       </div>
@@ -252,6 +302,14 @@ Tooltip.propTypes = {
    * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
    */
   offset: PropTypes.arrayOf(PropTypes.number),
+  /**
+   * Called when the tooltip is hidden
+   */
+  onClose: PropTypes.func,
+  /**
+   * Called when the tooltip is shown
+   */
+  onOpen: PropTypes.func,
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
    */
