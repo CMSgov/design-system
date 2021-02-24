@@ -202,6 +202,7 @@
       color: $color-base;
     }
   }
+
   &:active,
   &.ds-c-button--active {
     color: rgba($color-base-inverse, 0.6);
@@ -277,17 +278,11 @@ $button-color-variants: (
     border-color: transparent;
     color: $color-white;
 
-    &:disabled,
-    &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
-      pointer-events: none;
-    }
-
     &:hover,
+    &:focus,
     &:active,
     &.ds-c-button--hover,
+    &.ds-c-button--focus,
     &.ds-c-button--active {
       border-color: transparent;
       color: $color-white;
@@ -298,11 +293,6 @@ $button-color-variants: (
       background-color: nth($color, 2);
     }
 
-    &:active,
-    &.ds-c-button--active {
-      background-color: nth($color, 3);
-    }
-
     @if $ds-include-focus-styles {
       &:focus,
       &.ds-c-button--focus {
@@ -310,7 +300,18 @@ $button-color-variants: (
         border-color: transparent;
         color: $color-base;
       }
+    } @else {
+      &:focus,
+      &.ds-c-button--focus {
+        background-color: nth($color, 2);
+      }
+    }
 
+    &:active,
+    &.ds-c-button--active {
+      background-color: nth($color, 3);
+    }
+    @if $ds-include-focus-styles {
       // Make sure active overrides focus styles
       &:active:focus,
       &.ds-c-button--active:focus {
@@ -318,13 +319,14 @@ $button-color-variants: (
         box-shadow: none;
         color: $color-white;
       }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 2);
-        border-color: transparent;
-        color: $color-white;
-      }
+    }
+
+    &:disabled,
+    &.ds-c-button--disabled {
+      background-color: $color-gray-lighter;
+      border-color: transparent;
+      color: $color-gray-dark;
+      pointer-events: none;
     }
   }
 }
