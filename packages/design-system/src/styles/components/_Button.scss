@@ -183,16 +183,6 @@
   border-color: transparent;
   background-color: transparent;
 
-  &:disabled,
-  &.ds-c-button--disabled {
-    border-color: transparent;
-    background-color: transparent;
-  }
-  &:hover,
-  &.ds-c-button--hover {
-    color: rgba($color-base-inverse, 0.8);
-  }
-
   // Default inverse focus styles are overridden above
   @if $ds-include-focus-styles {
     &:focus,
@@ -203,18 +193,14 @@
     }
   }
 
-  &:active,
-  &.ds-c-button--active {
-    color: rgba($color-base-inverse, 0.6);
-  }
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-background-inverse;
-      color: rgba($color-base-inverse, 0.6);
-    }
-  }
+  // @if $ds-include-focus-styles {
+  //   // Make sure active overrides focus styles
+  //   &:active:focus,
+  //   &.ds-c-button--active:focus {
+  //     background-color: $color-background-inverse;
+  //     color: rgba($color-base-inverse, 0.6);
+  //   }
+  // }
 }
 
 .ds-c-button--inverse.ds-c-button--transparent,
