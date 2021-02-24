@@ -1,13 +1,15 @@
+import { EVENT_ACTION, EVENT_CATEGORY, sendTealiumEvent } from '../Utilities/Analytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import merge from 'lodash/merge';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
-
+    this.handleClick = this.handleClick.bind(this);
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -24,6 +26,38 @@ export class HelpDrawer extends React.PureComponent {
 
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
+
+    sendTealiumEvent(this.getPayload());
+  }
+
+  getPayload() {
+    const overrideAnalytics = this.props.analytics;
+    const defaultAnalytics = this.getDefault();
+
+    return merge(defaultAnalytics, overrideAnalytics);
+  }
+
+  getDefault() {
+    return {
+      onClose: {
+        category: EVENT_CATEGORY.contentTools,
+        action: EVENT_ACTION.helpDrawerClose,
+        label: 'heading',
+        value: `${this.props.title || this.props.heading}`,
+      },
+      onComponentDidMount: {
+        category: EVENT_CATEGORY.contentTools,
+        action: EVENT_ACTION.helpDrawerOpen,
+        label: 'heading',
+        value: `${this.props.title || this.props.heading}`,
+      },
+    };
+  }
+
+  handleClick(e) {
+    this.props.onCloseClick(e);
+
+    sendTealiumEvent(this.getPayload());
   }
 
   render() {
@@ -35,7 +69,6 @@ export class HelpDrawer extends React.PureComponent {
       footerBody,
       footerTitle,
       heading,
-      onCloseClick,
       title,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
@@ -63,7 +96,7 @@ export class HelpDrawer extends React.PureComponent {
               aria-label={ariaLabel}
               className="ds-u-margin-left--auto ds-c-help-drawer__close-button"
               size="small"
-              onClick={onCloseClick}
+              onClick={this.handleClick}
             >
               {closeButtonText}
             </Button>
@@ -88,9 +121,21 @@ HelpDrawer.defaultProps = {
   closeButtonText: 'Close',
   headingLevel: '3',
 };
+
+const AnalyticsEventShape = PropTypes.shape({
+  category: PropTypes.string,
+  action: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string,
+});
+
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
+  analytics: PropTypes.shape({
+    onClose: AnalyticsEventShape,
+    onComponentDidMount: AnalyticsEventShape,
+  }),
   /**
    * Helps give more context to screen readers on the button that closes the Help Drawer
    */
