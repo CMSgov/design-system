@@ -1,1 +1,2 @@
-export { default as MonthPicker, getMonthNames } from './MonthPicker';
+export { default as MonthPicker } from './MonthPicker';
+export { getMonthNames } from './getMonthNames';
