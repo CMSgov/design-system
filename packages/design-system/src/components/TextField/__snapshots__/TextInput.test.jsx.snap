@@ -13,7 +13,6 @@ exports[`TextInput handles bottom placed error 1`] = `
 
 exports[`TextInput is a textarea 1`] = `
 <textarea
-  aria-describedby=""
   aria-invalid={false}
   className="ds-c-field"
   id="1"
@@ -23,7 +22,6 @@ exports[`TextInput is a textarea 1`] = `
 
 exports[`TextInput is an input field 1`] = `
 <input
-  aria-describedby=""
   aria-invalid={false}
   className="ds-c-field"
   id="1"
@@ -34,7 +32,6 @@ exports[`TextInput is an input field 1`] = `
 
 exports[`TextInput masks renders TextInput 1`] = `
 <input
-  aria-describedby=""
   aria-invalid={false}
   className="ds-c-field"
   id="1"
@@ -48,7 +45,6 @@ exports[`TextInput masks renders currency mask 1`] = `
   mask="currency"
 >
   <input
-    aria-describedby=""
     aria-invalid={false}
     className="ds-c-field ds-c-field--currency"
     id="1"

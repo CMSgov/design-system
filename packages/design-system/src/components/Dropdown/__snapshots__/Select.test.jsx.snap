@@ -31,7 +31,6 @@ exports[`Select handles bottom placed error 1`] = `
 
 exports[`Select renders a select menu 1`] = `
 <select
-  aria-describedby=""
   aria-invalid={false}
   aria-label="test aria label"
   className="ds-c-field"
@@ -53,7 +52,6 @@ exports[`Select renders a select menu 1`] = `
 
 exports[`Select renders options correctly 1`] = `
 <select
-  aria-describedby=""
   aria-invalid={false}
   className="ds-c-field"
   defaultValue="1"
