@@ -5,11 +5,10 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // Allows `*.example.tsx` files in `docs` to import directly from `src`
     "baseUrl": ".",
+    // Allows `*.example.tsx` files in `docs` to import directly from the design system source root
     "paths": {
       "@design-system/*": ["*"],
-      "@src/*": ["src/*"]
     }
   }
 }
