@@ -1,2 +1,2 @@
 export { default as TextField } from './TextField';
-export { unmaskValue } from './maskHelpers';
+export { maskValue, unmaskValue } from './maskHelpers';
