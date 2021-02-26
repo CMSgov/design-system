@@ -55,14 +55,12 @@ export class HelpDrawer extends React.PureComponent {
       onComponentDidMount: {
         ga_eventCategory: EVENT_CATEGORY.contentTools,
         ga_eventAction: EVENT_ACTION.helpDrawerOpen,
-        ga_eventLabel: 'heading',
-        ga_eventValue: `${this.props.title || this.props.heading}`,
+        ga_eventLabel: `${this.props.title || this.props.heading}`,
       },
       onComponentWillUnmount: {
         ga_eventCategory: EVENT_CATEGORY.contentTools,
         ga_eventAction: EVENT_ACTION.helpDrawerClose,
-        ga_eventLabel: 'heading',
-        ga_eventValue: `${this.props.title || this.props.heading}`,
+        ga_eventLabel: `${this.props.title || this.props.heading}`,
       },
     };
 
@@ -132,6 +130,9 @@ HelpDrawer.defaultProps = {
   headingLevel: '3',
 };
 
+/**
+ * Defines the shape of an analytics event for tracking that is an object with key-value pairs
+ */
 const AnalyticsEventShape = PropTypes.shape({
   ga_eventCategory: PropTypes.string,
   ga_eventAction: PropTypes.string,
@@ -142,6 +143,13 @@ const AnalyticsEventShape = PropTypes.shape({
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
+  /**
+   * Analytics events tracking is enable by default.
+   * `analytics` prop can be a boolean to disable tracking when set to false, or an object of events
+   * with key-value pairs. When an event is triggered, the object value is populated and sent to google
+   * analytics if `window.utag` is loaded.
+   * Disble an event tracking by setting the object to false.
+   */
   analytics: PropTypes.shape({
     onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
     onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
