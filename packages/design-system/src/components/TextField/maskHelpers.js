@@ -33,11 +33,28 @@ function toDigitsAndAsterisks(value) {
 }
 
 /**
+ * Determines if a value is a valid string with numeric digits
+ * @param {String} value
+ * @param {String} mask
+ * @returns {Boolean}
+ */
+function isValueMaskable(value, mask) {
+  if (value && typeof value === 'string') {
+    const hasDigits = value.match(/\d/);
+    const hasDigitsAsterisks = value.match(/[\d*]/g);
+    if (hasDigits || (hasDigitsAsterisks && mask === 'ssn')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
  * Performs various transforms to format provided string as currency.
  * @param {String} value - a string containing at least one digit
  * @returns {String}
  */
-function toCurrency(value) {
+export function toCurrency(value) {
   // Determine if the value is positive or negative.
   const sign = value.indexOf('-') === 0 ? '-' : '';
   // Remove all characters except digits and decimal points.
@@ -67,23 +84,6 @@ function toCurrency(value) {
     fractional = fractional === '00' ? '' : `.${fractional}`;
   }
   return `${sign}${whole}${fractional}`;
-}
-
-/**
- * Determines if a value is a valid string with numeric digits
- * @param {String} value
- * @param {String} mask
- * @returns {Boolean}
- */
-function isValueMaskable(value, mask) {
-  if (value && typeof value === 'string') {
-    const hasDigits = value.match(/\d/);
-    const hasDigitsAsterisks = value.match(/[\d*]/g);
-    if (hasDigits || (hasDigitsAsterisks && mask === 'ssn')) {
-      return true;
-    }
-  }
-  return false;
 }
 
 /**
