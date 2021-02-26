@@ -14,7 +14,7 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath }) {
+function generateReactExample(page, docsPath, sourceDir, { core, typescript, rootPath }) {
   return new Promise((resolve, reject) => {
     const config = createReactExampleWebpackConfig(sourceDir, page.reactExampleEntry, typescript);
     const compiler = webpack(config);
@@ -35,6 +35,7 @@ function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath 
       const head = `
         <title>Example: ${page.reference}</title>
         <link rel="stylesheet" href="/${path.join(rootPath, 'example.css')}" />
+        ${core ? analytics() : ''}
       `;
       const body = `
         <div id="js-example"></div>
@@ -53,6 +54,21 @@ function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath 
       resolve(output);
     });
   });
+}
+
+/**
+ * Blast Analytics code to be included in the <head>.
+ * This loads additional tracking scripts, like Google Analytics.
+ * @return {String}
+ */
+function analytics() {
+  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+  return `
+    <script>
+      window.tealiumEnvironment = "${env}";
+    </script>
+    <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
+  `;
 }
 
 module.exports = generateReactExample;
