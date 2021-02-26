@@ -15,6 +15,9 @@ declare global {
   }
 }
 
+const MAX_RETRIES = 3;
+const TIMEOUT = 300;
+
 /* eslint-disable camelcase */
 export interface AnalyticsPayload {
   ga_eventType: 'cmsds';
@@ -42,7 +45,30 @@ interface AnalyticsEventProps {
   additional_props?: Record<string, unknown>;
 }
 
-export async function sendTealiumEvent(props: AnalyticsEventProps): Promise<string> {
+function sendEvent(props: AnalyticsPayload, retry = 0): void {
+  if (window.utag && window.utag.link) {
+    try {
+      window.utag.link(props);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('Error sending event to Tealium', e);
+    }
+  } else {
+    if (++retry <= MAX_RETRIES) {
+      setTimeout(() => sendEvent(props, retry), retry * TIMEOUT);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log('Tealium event max retries reached');
+    }
+  }
+}
+
+export function sendTealiumEvent(props: AnalyticsEventProps): void {
+  /**
+   * If utag is not loaded on the page we don't want to track event
+   */
+  if (!window.utag) return;
+
   const {
     ga_eventCategory,
     ga_eventAction,
@@ -50,12 +76,6 @@ export async function sendTealiumEvent(props: AnalyticsEventProps): Promise<stri
     ga_eventValue = '',
     ...other_props
   } = props;
-
-  console.log('event->', props);
-  /**
-   * If utag is not loaded on the page we don't want to track event
-   */
-  if (!window.utag) return '';
 
   const payload: AnalyticsPayload = {
     ga_eventType: 'cmsds',
@@ -66,12 +86,6 @@ export async function sendTealiumEvent(props: AnalyticsEventProps): Promise<stri
     ...other_props,
   };
 
-  console.log('send link->', payload);
-  /**
-   * Track links and events with the utag.link() function
-   */
-  window.utag.link(payload);
-
-  return `Tealium event sent: ${ga_eventCategory} - ${ga_eventAction} - ${ga_eventLabel}`;
+  sendEvent(payload);
 }
 /* eslint-enable camelcase */
