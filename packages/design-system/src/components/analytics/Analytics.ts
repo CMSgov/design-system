@@ -6,7 +6,7 @@
  * - coverage-tools-frontend/src/helpers/objectUtilities.ts
  */
 
- /* Extend the global Window interface to fix ts error TS2339 */
+/* Extend the global Window interface to fix ts error TS2339 */
 declare global {
   interface Window {
     utag?: {
@@ -65,7 +65,7 @@ export async function sendTealiumEvent(props: AnalyticsEventProps): Promise<stri
     ga_eventValue,
     ...other_props,
   };
-  
+
   console.log('send link->', payload);
   /**
    * Track links and events with the utag.link() function

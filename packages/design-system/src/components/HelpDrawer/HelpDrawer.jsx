@@ -1,8 +1,9 @@
-import { EVENT_ACTION, EVENT_CATEGORY, sendTealiumEvent } from '../utilities/Analytics';
+import { EVENT_ACTION, EVENT_CATEGORY, sendTealiumEvent } from '../analytics/Analytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import get from 'lodash/get';
 import merge from 'lodash/merge';
 
 export class HelpDrawer extends React.PureComponent {
@@ -40,19 +41,13 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   sendAnalyticsEvent(eventAction) {
-    const eventProps = this.props.analytics && this.props.analytics[eventAction];
-    const sendAnalytics =
-      typeof eventProps !== 'boolean' || (typeof eventProps === 'boolean' && eventProps !== false);
+    const analyticsOverrides = get(this.props.analytics, eventAction);
+    const analyticsDisabled = analyticsOverrides === false;
 
-    if (window.utag && sendAnalytics) {
-      sendTealiumEvent(this.getAnalyticsPayload(eventAction));
+    if (window.utag && !analyticsDisabled) {
+      const payload = merge(this.getDefaultAnalytics(eventAction), analyticsOverrides);
+      sendTealiumEvent(payload);
     }
-  }
-
-  getAnalyticsPayload(eventAction) {
-    const overrideAnalytics = this.props.analytics && this.props.analytics[eventAction];
-    const defaultAnalytics = this.getDefaultAnalytics(eventAction);
-    return merge(defaultAnalytics, overrideAnalytics);
   }
 
   getDefaultAnalytics(eventAction) {
@@ -151,8 +146,6 @@ HelpDrawer.propTypes = {
     onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
     onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
   }),
-
-  // - anlalytics onClose: false (boolean or object)  - turn off/on
   /**
    * Helps give more context to screen readers on the button that closes the Help Drawer
    */
