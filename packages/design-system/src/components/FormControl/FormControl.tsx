@@ -2,8 +2,8 @@ import FormLabel from '../FormLabel/FormLabel';
 import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
 import { errorPlacementDefault } from '../flags';
+import uniqueId from 'lodash.uniqueid';
 
 interface FormControlRenderProps {
   id: string;
