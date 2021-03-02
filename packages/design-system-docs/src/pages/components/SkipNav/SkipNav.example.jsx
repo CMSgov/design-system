@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { SkipNav } from '@cmsgov/design-system';
+import { SkipNav } from '@design-system';
 
 ReactDOM.render(
   <div>

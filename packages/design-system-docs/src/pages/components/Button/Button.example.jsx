@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { Button } from '@cmsgov/design-system';
+import { Button } from '@design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
