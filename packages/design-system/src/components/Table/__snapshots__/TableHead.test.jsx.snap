@@ -7,6 +7,7 @@ exports[`TableHead renders additional attributes 1`] = `
   >
     <thead
       className="foo-head"
+      role="rowgroup"
     >
       <TableRow
         _isTableHeadChild={true}
