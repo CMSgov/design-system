@@ -7,7 +7,8 @@ import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
-export { unmaskValue } from './Mask';
+// TODO: Remove this export, apps shouldnt be importing `unmaskValue` from `TextField`
+export { unmaskValue } from './maskHelpers';
 
 export class TextField extends React.PureComponent {
   constructor(props) {

@@ -1,6 +1,7 @@
 // Polyfills required for IE11 compatibility
 import 'core-js/stable/array/includes';
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import PropTypes from 'prop-types';
@@ -8,7 +9,6 @@ import React from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
 
-const NUM_MONTHS = 12;
 const monthNumbers = (() => {
   const months = [];
   for (let m = 1; m <= NUM_MONTHS; m++) {
@@ -244,21 +244,3 @@ MonthPicker.propTypes = {
 };
 
 export default MonthPicker;
-
-/**
- * Generates an array of month names according to the given or default locale
- *
- * @param  {string} [locale] locale for generating month names
- * @param  {boolean} [short] whether to return short month names
- * @return {string[]}        array of month names
- */
-export function getMonthNames(locale, short = true) {
-  const options = { month: short ? 'short' : 'long' };
-  const months = [];
-  for (let i = 0; i < NUM_MONTHS; i++) {
-    const date = new Date();
-    date.setMonth(i, 1);
-    months.push(date.toLocaleString(locale, options));
-  }
-  return months;
-}
