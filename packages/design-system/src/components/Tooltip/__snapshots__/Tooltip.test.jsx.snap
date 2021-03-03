@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders custom trigger component 1`] = `
-<div
+<span
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -63,11 +63,11 @@ exports[`Tooltip renders custom trigger component 1`] = `
       />
     </div>
   </CSSTransition>
-</div>
+</span>
 `;
 
 exports[`Tooltip renders default trigger icon 1`] = `
-<div
+<span
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -129,11 +129,11 @@ exports[`Tooltip renders default trigger icon 1`] = `
       />
     </div>
   </CSSTransition>
-</div>
+</span>
 `;
 
 exports[`Tooltip renders dialog tooltip 1`] = `
-<div>
+<span>
   <button
     aria-describedby="trigger_5"
     aria-label=""
@@ -190,11 +190,11 @@ exports[`Tooltip renders dialog tooltip 1`] = `
       </div>
     </FocusTrap>
   </CSSTransition>
-</div>
+</span>
 `;
 
 exports[`Tooltip renders interactive tooltip 1`] = `
-<div
+<span
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -256,11 +256,11 @@ exports[`Tooltip renders interactive tooltip 1`] = `
       />
     </div>
   </CSSTransition>
-</div>
+</span>
 `;
 
 exports[`Tooltip renders inverse tooltip 1`] = `
-<div
+<span
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -322,5 +322,5 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       />
     </div>
   </CSSTransition>
-</div>
+</span>
 `;
