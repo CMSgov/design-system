@@ -1,4 +1,4 @@
-import { Badge } from '@cmsgov/design-system';
+import { Badge } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

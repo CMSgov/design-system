@@ -1,4 +1,4 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import DateInput from './DateInput';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,11 +15,11 @@ const standardLengthFormatter = ({ day, month, year }) => ({
 export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
 export function DateField(props) {
-  const containerProps = pick(props, FieldContainerPropKeys);
-  const inputOnlyProps = omit(props, FieldContainerPropKeys);
+  const containerProps = pick(props, FormControlPropKeys);
+  const inputOnlyProps = omit(props, FormControlPropKeys);
 
   return (
-    <FieldContainer
+    <FormControl
       {...containerProps}
       component="fieldset"
       labelComponent="legend"
@@ -33,7 +33,6 @@ export function DateField(props) {
 DateField.defaultProps = {
   label: 'Date',
   hint: 'For example: 4 / 28 / 1986',
-  errorPlacement: 'top',
   dayLabel: 'Day',
   dayName: 'day',
   monthLabel: 'Month',
