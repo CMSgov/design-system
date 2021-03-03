@@ -1,4 +1,4 @@
-import { Button, Dialog } from '@cmsgov/design-system';
+import { Button, Dialog } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

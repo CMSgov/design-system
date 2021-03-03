@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { StepList } from '@cmsgov/design-system';
+import { StepList } from '@design-system';
 import classNames from 'classnames';
 
 // Mock react-router example

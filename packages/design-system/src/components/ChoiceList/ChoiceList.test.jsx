@@ -15,7 +15,7 @@ function generateChoices(length) {
   return choices;
 }
 
-// Mounts the component by default because the choices are passed into FieldContainer as a function
+// Mounts the component by default because the choices are passed into FormControl as a function
 function render(customProps = {}, choicesCount = 2, deep = true) {
   const props = {
     ...{
@@ -66,14 +66,14 @@ describe('ChoiceList', () => {
 
     it('is enclosed by a fieldset', () => {
       const { wrapper } = render();
-      const container = wrapper.find('FieldContainer');
+      const container = wrapper.find('FormControl');
 
       expect(container.prop('component')).toBe('fieldset');
     });
 
     it('renders the label prop as a legend element', () => {
       const { wrapper } = render();
-      const container = wrapper.find('FieldContainer');
+      const container = wrapper.find('FormControl');
 
       expect(container.prop('labelComponent')).toBe('legend');
     });

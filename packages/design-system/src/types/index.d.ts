@@ -27,6 +27,7 @@ export { default as TableHead } from './Table/TableHead';
 export { default as TableRow } from './Table/TableRow';
 export { default as Tabs } from './Tabs/Tabs';
 export { default as TabPanel } from './Tabs/TabPanel';
-export { default as TextField, unmaskValue } from './TextField/TextField';
+export { default as TextField } from './TextField/TextField';
+export { maskValue, unmaskValue } from './TextField/Mask';
 export { default as UsaBanner } from './UsaBanner/UsaBanner';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';
