@@ -27,7 +27,6 @@ exports[`Autocomplete renders a snapshot 1`] = `
       aria-activedescendant={null}
       aria-autocomplete="list"
       aria-controls={null}
-      aria-describedby=""
       aria-expanded={false}
       aria-invalid={false}
       aria-labelledby={null}

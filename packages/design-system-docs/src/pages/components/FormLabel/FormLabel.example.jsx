@@ -1,4 +1,4 @@
-import { FormLabel } from '@cmsgov/design-system';
+import { FormLabel } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

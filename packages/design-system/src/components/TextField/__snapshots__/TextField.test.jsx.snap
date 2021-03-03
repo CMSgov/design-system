@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField renders 1`] = `
-<FieldContainer
+<FormControl
   className="ds-u-clearfix"
   component="div"
-  errorPlacement="top"
   label="Foo"
   labelComponent="label"
   render={[Function]}

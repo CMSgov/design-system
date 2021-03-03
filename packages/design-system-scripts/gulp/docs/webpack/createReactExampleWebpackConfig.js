@@ -37,9 +37,9 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     resolve: {
       modules: ['node_modules'],
       alias: {
-        '@src': path.resolve(sourceDir, 'src'),
+        '@design-system': path.resolve(sourceDir),
       },
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.tsx'],
       plugins: [],
     },
     performance: {

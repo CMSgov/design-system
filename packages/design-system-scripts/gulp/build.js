@@ -175,7 +175,8 @@ function compileJs(dir, options, changedPath) {
     })
     .then(() => {
       // If design system is using typescript, use tsc to generate definition files
-      if (options.typescript) {
+      // Core DS manually updates definition files
+      if (options.typescript && !options.core) {
         return generateTypeDefinitions(dir, changedPath);
       }
     });

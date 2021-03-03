@@ -21,6 +21,7 @@ import React from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
@@ -92,7 +93,9 @@ export class Autocomplete extends React.PureComponent {
       if (isTextField(child)) {
         // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
         // Add errorMessageClassName to fix the styles for bottom placed errors
-        const bottomError = child.props.errorPlacement === 'bottom' && child.props.errorMessage;
+        const bottomError =
+          (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+          child.props.errorMessage;
         const errorMessageClassName = bottomError
           ? classNames(
               'ds-c-autocomplete__error-message',

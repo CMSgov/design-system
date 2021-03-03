@@ -2,8 +2,8 @@ import Button from './Button.jsx';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-/* eslint-disable react/prop-types */
 const Link = (props) => {
+  /* eslint-disable-next-line react/prop-types */
   return <div {...props}>{props.children}</div>;
 };
 

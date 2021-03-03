@@ -1,6 +1,7 @@
 // Polyfills required for IE11 compatibility
 import 'core-js/stable/array/includes';
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
 import PropTypes from 'prop-types';
@@ -8,7 +9,6 @@ import React from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
 
-const NUM_MONTHS = 12;
 const monthNumbers = (() => {
   const months = [];
   for (let m = 1; m <= NUM_MONTHS; m++) {
@@ -134,11 +134,11 @@ export class MonthPicker extends React.PureComponent {
     const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
     const clearAllPressed = selectedMonths.length === 0;
 
-    const containerProps = pick(this.props, FieldContainerPropKeys);
+    const containerProps = pick(this.props, FormControlPropKeys);
     const containerClassName = classNames('ds-c-month-picker', this.props.className);
 
     return (
-      <FieldContainer
+      <FormControl
         {...containerProps}
         className={containerClassName}
         component="fieldset"
@@ -160,7 +160,6 @@ export class MonthPicker extends React.PureComponent {
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  errorPlacement: 'top',
 };
 
 MonthPicker.propTypes = {
@@ -245,21 +244,3 @@ MonthPicker.propTypes = {
 };
 
 export default MonthPicker;
-
-/**
- * Generates an array of month names according to the given or default locale
- *
- * @param  {string} [locale] locale for generating month names
- * @param  {boolean} [short] whether to return short month names
- * @return {string[]}        array of month names
- */
-export function getMonthNames(locale, short = true) {
-  const options = { month: short ? 'short' : 'long' };
-  const months = [];
-  for (let i = 0; i < NUM_MONTHS; i++) {
-    const date = new Date();
-    date.setMonth(i, 1);
-    months.push(date.toLocaleString(locale, options));
-  }
-  return months;
-}
