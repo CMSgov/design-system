@@ -145,10 +145,11 @@ const AnalyticsEventShape = PropTypes.shape({
 HelpDrawer.propTypes = {
   /**
    * Analytics events tracking is enable by default.
-   * `analytics` prop can be a boolean to disable tracking when set to false, or an object of events
-   * with key-value pairs. When an event is triggered, the object value is populated and sent to google
-   * analytics if `window.utag` is loaded.
-   * Disble an event tracking by setting the object to false.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
    */
   analytics: PropTypes.shape({
     onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
