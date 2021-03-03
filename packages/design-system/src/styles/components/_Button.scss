@@ -192,15 +192,6 @@
       color: $color-base;
     }
   }
-
-  // @if $ds-include-focus-styles {
-  //   // Make sure active overrides focus styles
-  //   &:active:focus,
-  //   &.ds-c-button--active:focus {
-  //     background-color: $color-background-inverse;
-  //     color: rgba($color-base-inverse, 0.6);
-  //   }
-  // }
 }
 
 .ds-c-button--inverse.ds-c-button--transparent,
