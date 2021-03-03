@@ -6,6 +6,7 @@
   display: inline-block;
   height: $tooltip-plus-border-size;
   position: relative;
+  vertical-align: middle;
   width: $tooltip-plus-border-size;
 
   &:hover {
