@@ -257,10 +257,10 @@ export class Tooltip extends React.Component {
         };
 
     return (
-      <div {...eventHandlers}>
+      <span {...eventHandlers}>
         {this.renderTrigger()}
         {this.renderContent()}
-      </div>
+      </span>
     );
   }
 }
