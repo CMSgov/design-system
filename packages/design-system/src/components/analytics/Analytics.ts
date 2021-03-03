@@ -48,8 +48,6 @@ interface AnalyticsEventProps {
 function sendEvent(props: AnalyticsPayload, retry = 0): void {
   if (window.utag && window.utag.link) {
     try {
-      // TODO: For testing purpose only. Remove before merging
-      console.log('sendEvent:', props);
       window.utag.link(props);
     } catch (e) {
       // eslint-disable-next-line no-console
