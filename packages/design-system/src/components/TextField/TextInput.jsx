@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
+ * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
+ */
 export function TextInput(props) {
   const {
     ariaLabel,
