@@ -5,6 +5,13 @@ import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import uniqueId from 'lodash.uniqueid';
 
+/**
+ * <FormControl> is an internal component used form components (i.e <TextField>, <Dropdown>, <DateField>, <MonthPicker>)
+ * It contains logic shared across form components, handling form labels, errors, id generation, and other shared props
+ * <FormControl> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using <FormControl> outside of those special cases
+ */
+
 interface FormControlRenderProps {
   id: string;
   labelId: string;
