@@ -10,7 +10,7 @@ const defaultProps = {
   label: 'Select months',
 };
 
-// Mounts the component by default because the choices are passed into FieldContainer as a function
+// Mounts the component by default because the choices are passed into FormControl as a function
 function render(customProps = {}, deep = true) {
   const props = { ...defaultProps, ...customProps };
   const component = <MonthPicker {...props} />;

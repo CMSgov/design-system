@@ -1,7 +1,8 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Select from './Select';
+import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
@@ -26,11 +27,15 @@ export class Dropdown extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, FieldContainerPropKeys);
-    const inputOnlyProps = omit(this.props, FieldContainerPropKeys);
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps = omit(this.props, FormControlPropKeys);
+
+    // Use errorPlacement feature flag for <Select>
+    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
 
     return (
-      <FieldContainer
+      <FormControl
         {...containerProps}
         component="div"
         labelComponent="label"
@@ -39,7 +44,7 @@ export class Dropdown extends React.PureComponent {
             {...inputOnlyProps}
             {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
-            errorPlacement={this.props.errorPlacement}
+            errorPlacement={errorPlacement}
             inversed={this.props.inversed}
           />
         )}
@@ -47,10 +52,6 @@ export class Dropdown extends React.PureComponent {
     );
   }
 }
-
-Dropdown.defaultProps = {
-  errorPlacement: 'top',
-};
 
 Dropdown.propTypes = {
   /**

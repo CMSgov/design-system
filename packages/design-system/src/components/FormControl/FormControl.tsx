@@ -1,17 +1,25 @@
 import FormLabel from '../FormLabel/FormLabel';
-import InlineError from './InlineError';
+import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import uniqueId from 'lodash.uniqueid';
 
-interface FieldContainerRenderProps {
+/**
+ * <FormControl> is an internal component used form components (i.e <TextField>, <Dropdown>, <DateField>, <MonthPicker>)
+ * It contains logic shared across form components, handling form labels, errors, id generation, and other shared props
+ * <FormControl> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using <FormControl> outside of those special cases
+ */
+
+interface FormControlRenderProps {
   id: string;
   labelId: string;
   errorId: string;
   setRef: (elem: HTMLDivElement) => void;
 }
 
-interface FieldContainerProps {
+interface FormControlProps {
   /**
    * Additional classes to be added to the field container.
    */
@@ -76,11 +84,11 @@ interface FieldContainerProps {
   /**
    * A function that returns a field input element to accept render props
    */
-  render: (renderProps: FieldContainerRenderProps) => React.ReactNode;
+  render: (renderProps: FormControlRenderProps) => React.ReactNode;
 }
 
-export class FieldContainer extends React.Component<FieldContainerProps> {
-  constructor(props: FieldContainerProps) {
+export class FormControl extends React.Component<FormControlProps> {
+  constructor(props: FormControlProps) {
     super(props);
 
     this.id = props.id || uniqueId('field_');
@@ -117,7 +125,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
       component,
       errorMessage,
       errorMessageClassName,
-      errorPlacement,
+      errorPlacement = errorPlacementDefault(),
       hint,
       inversed,
       label,
@@ -142,7 +150,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
     // Errored form components without fieldsets must handle `aria-invalid` in their own component
     const ariaInvalid = isFieldset && errorMessage ? true : undefined;
 
-    // Bottom placed errors are handled in FieldContainer instead of FormLabel
+    // Bottom placed errors are handled in FormControl instead of FormLabel
     const renderBottomError = bottomError ? (
       <InlineError id={this.errorId} inversed={inversed} className={errorMessageClassName}>
         {errorMessage}
@@ -155,7 +163,10 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
         <div className="ds-u-visibility--screen-reader">{errorMessage}</div>
       ) : null;
 
-    // Field input props handled by <FieldContainer>
+    // Field input props handled by <FormControl>
+    // TODO: Move `setRef` logic into <TextField> and <Select>
+    // TODO: Simplify `id` props by using a singular `fieldId` prop, and a consistent id naming convention
+    // TODO: Use React Context to provide shared form props like `errorPlacement`, `inversed`, `fieldId`
     const fieldInputProps = {
       id: this.id,
       labelId: this.labelId,
@@ -189,7 +200,7 @@ export class FieldContainer extends React.Component<FieldContainerProps> {
   }
 }
 
-export const FieldContainerPropKeys = [
+export const FormControlPropKeys = [
   'className',
   'component',
   'errorId',
@@ -209,4 +220,4 @@ export const FieldContainerPropKeys = [
   'render',
 ];
 
-export default FieldContainer;
+export default FormControl;

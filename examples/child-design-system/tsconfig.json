@@ -6,7 +6,7 @@
     // Equivalent to `alias` in webpack's resolve config. https://webpack.js.org/configuration/resolve/#resolvealias
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"]
+      "@design-system/*": ["*"],
     }
   }
 }

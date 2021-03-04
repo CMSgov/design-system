@@ -1,4 +1,4 @@
-import { Button, Tooltip, TooltipIcon } from '@cmsgov/design-system';
+import { Button, Tooltip, TooltipIcon } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,25 +12,19 @@ ReactDOM.render(
         triggerClassName="ds-c-tooltip__trigger-icon"
         triggerActiveClassName="ds-c-tooltip-icon--active"
       >
-        <p className="ds-u-margin--0">
-          {'Tooltip trigger uses <TooltipIcon> for the trigger content'}
-        </p>
+        {'Tooltip trigger uses <TooltipIcon> for the trigger content'}
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip using a</p>
       <Tooltip triggerContent="text trigger" triggerClassName="ds-c-tooltip__trigger-link">
-        <p className="ds-u-margin--0">Tooltip trigger is styled with dashed underline</p>
+        Tooltip trigger is styled with dashed underline
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip with </p>
-      <Tooltip
-        interactive
-        triggerContent="interactive content"
-        triggerClassName="ds-c-tooltip__trigger-link"
-      >
-        <p className="ds-u-margin--0">
+      <Tooltip triggerContent="interactive content" triggerClassName="ds-c-tooltip__trigger-link">
+        <>
           {
             'Tooltip remains active when the mouse hovers over the tooltip body. Tooltip can contain '
           }
@@ -38,7 +32,7 @@ ReactDOM.render(
             links
           </a>
           {' and other interactive content'}
-        </p>
+        </>
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
@@ -48,7 +42,7 @@ ReactDOM.render(
         triggerContent="placement"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
-        <p className="ds-u-margin--0">Tooltip positioned on the right</p>
+        Tooltip positioned on the right
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
@@ -58,17 +52,12 @@ ReactDOM.render(
         triggerContent="offset"
         triggerClassName="ds-c-tooltip__trigger-link"
       >
-        <p className="ds-u-margin--0">Tooltip positioned with custom offset</p>
+        Tooltip positioned with custom offset
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <p className="ds-u-margin--0 ds-u-margin-right--1">Tooltip dialog activated </p>
-      <Tooltip
-        interactive
-        dialog
-        triggerContent="on click"
-        triggerClassName="ds-c-tooltip__trigger-link"
-      >
+      <Tooltip dialog triggerContent="on click" triggerClassName="ds-c-tooltip__trigger-link">
         <>
           <p className="ds-u-margin--0">
             {
@@ -93,13 +82,12 @@ ReactDOM.render(
       <Tooltip
         ariaLabel="Label describing the subject of the inverse tooltip"
         inversed
-        interactive
         placement="right"
         triggerContent={<TooltipIcon inversed />}
         triggerClassName="ds-c-tooltip__trigger-icon"
         triggerActiveClassName="ds-c-tooltip-icon--active"
       >
-        <p className="ds-u-margin--0">Inverse tooltip styles applied</p>
+        Inverse tooltip styles applied
       </Tooltip>
     </div>
   </>,

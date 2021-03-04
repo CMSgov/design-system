@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
+ * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
+ */
 export function TextInput(props) {
   const {
     ariaLabel,
@@ -42,20 +47,22 @@ export function TextInput(props) {
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
+  /* eslint-disable react/prop-types */
+  const ariaAttributes = {
+    'aria-label': ariaLabel,
+    // Use set `aria-invalid` based off errorMessage unless manually specified
+    'aria-invalid': props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage,
+    // Link input to bottom placed error message
+    'aria-describedby':
+      errorPlacement === 'bottom' && errorMessage
+        ? classNames(props['aria-describedby'], errorId)
+        : undefined,
+  };
+  /* eslint-enable react/prop-types */
+
   const field = (
     <ComponentType
-      aria-label={ariaLabel}
-      aria-invalid={
-        // eslint-disable-next-line
-        props['aria-invalid'] ? props['aria-invalid'] : !!errorMessage
-      }
-      aria-describedby={
-        // Link input to bottom placed error message
-        // eslint-disable-next-line
-        classNames(props['aria-describedby'], {
-          [errorId]: errorPlacement === 'bottom' && errorMessage,
-        })
-      }
+      {...ariaAttributes}
       className={classes}
       ref={setRef}
       rows={multiline && rows ? rows : undefined}

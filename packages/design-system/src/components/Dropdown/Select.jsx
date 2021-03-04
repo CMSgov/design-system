@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * <Select> is an internal component used by <Dropdown>, which wraps it and handles common form controls like labels, error messages, etc
+ * <Select> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ * As an internal component, it's subject to more breaking changes. Exercise caution using <Select> outside of those special cases
+ */
 export class Select extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -47,24 +52,21 @@ export class Select extends React.PureComponent {
       </option>
     ));
 
+    /* eslint-disable react/prop-types */
+    const ariaAttributes = {
+      'aria-label': ariaLabel,
+      // Use set `aria-invalid` based off errorMessage unless manually specified
+      'aria-invalid': this.props['aria-invalid'] ? this.props['aria-invalid'] : !!errorMessage,
+      // Link input to bottom placed error message
+      'aria-describedby':
+        errorPlacement === 'bottom' && errorMessage
+          ? classNames(this.props['aria-describedby'], errorId)
+          : undefined,
+    };
+    /* eslint-enable react/prop-types */
+
     return (
-      <select
-        aria-label={ariaLabel}
-        aria-invalid={
-          // eslint-disable-next-line
-          this.props['aria-invalid'] ? this.props['aria-invalid'] : !!errorMessage
-        }
-        aria-describedby={
-          // Link input to bottom placed error message
-          // eslint-disable-next-line
-          classNames(this.props['aria-describedby'], {
-            [errorId]: errorPlacement === 'bottom' && errorMessage,
-          })
-        }
-        className={classes}
-        ref={setRef}
-        {...selectProps}
-      >
+      <select {...ariaAttributes} className={classes} ref={setRef} {...selectProps}>
         {/* Render custom options if provided */ children || optionElements}
       </select>
     );

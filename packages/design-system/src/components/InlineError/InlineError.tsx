@@ -1,6 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * <InlineError> is an internal component used by <FormLabel> and <FormControl>
+ * <InlineError> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
+ */
+
 interface InlineErrorProps {
   children?: React.ReactNode;
   className?: string;

@@ -1,12 +1,14 @@
-import { FieldContainer, FieldContainerPropKeys } from '../FieldContainer/FieldContainer';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextInput from './TextInput';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
-export { unmaskValue } from './Mask';
+// TODO: Remove this export, apps shouldnt be importing `unmaskValue` from `TextField`
+export { unmaskValue } from './maskHelpers';
 
 export class TextField extends React.PureComponent {
   constructor(props) {
@@ -22,8 +24,8 @@ export class TextField extends React.PureComponent {
   }
 
   render() {
-    const containerProps = pick(this.props, FieldContainerPropKeys);
-    const inputOnlyProps = omit(this.props, FieldContainerPropKeys);
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps = omit(this.props, FormControlPropKeys);
 
     // Add clearfix class
     const containerClassName = classNames(
@@ -31,8 +33,12 @@ export class TextField extends React.PureComponent {
       this.props.className
     );
 
+    // Use errorPlacement feature flag for <TextInput>
+    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
+
     return (
-      <FieldContainer
+      <FormControl
         {...containerProps}
         className={containerClassName}
         component="div"
@@ -42,7 +48,7 @@ export class TextField extends React.PureComponent {
             {...inputOnlyProps}
             {...{ id, setRef, errorId }}
             errorMessage={this.props.errorMessage}
-            errorPlacement={this.props.errorPlacement}
+            errorPlacement={errorPlacement}
             inversed={this.props.inversed}
           />
         )}
@@ -56,7 +62,6 @@ TextField.displayName = 'TextField';
 
 TextField.defaultProps = {
   type: 'text',
-  errorPlacement: 'top',
 };
 
 TextField.propTypes = {
