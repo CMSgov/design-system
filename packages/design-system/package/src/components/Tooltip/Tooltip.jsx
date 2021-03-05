@@ -107,36 +107,30 @@ export class Tooltip extends React.Component {
     this.setTooltipActive(!this.state.active);
   }
 
+  triggerComponentType() {
+    let component = this.props.triggerComponent;
+    if (component === 'button' && this.props.triggerHref) {
+      // If `href` is provided and a custom component is not, we render `<a>` instead
+      component = 'a';
+    }
+    return component;
+  }
+
   renderTrigger() {
     const {
-      activeClassName,
       ariaLabel,
-      children,
-      className,
-      component,
       dialog,
-      offset,
-      id,
-      onClose,
-      onOpen,
-      inversed,
-      interactiveBorder,
-      placement,
-      maxWidth,
-      title,
-      transitionDuration,
-      zIndex,
-      ...others
+      triggerActiveClassName,
+      triggerClassName,
+      triggerContent,
+      triggerHref,
     } = this.props;
 
-    const TriggerComponent = component;
-    const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
-      [activeClassName]: this.state.active,
+    const TriggerComponent = this.triggerComponentType();
+    const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', triggerClassName, {
+      [triggerActiveClassName]: this.state.active,
     });
-    const linkTriggerOverrides = {
-      role: TriggerComponent === 'a' ? 'button' : undefined,
-      tabIndex: TriggerComponent === 'a' ? 0 : undefined,
-    };
+
     const eventHandlers = dialog
       ? {
           onTouchStart: () => this.handleTouch(),
@@ -164,11 +158,10 @@ export class Tooltip extends React.Component {
         aria-describedby={this.id}
         className={triggerClasses}
         ref={this.setTriggerElement}
-        {...others}
-        {...linkTriggerOverrides}
+        href={triggerHref}
         {...eventHandlers}
       >
-        {children}
+        {triggerContent}
       </TriggerComponent>
     );
   }
@@ -176,13 +169,14 @@ export class Tooltip extends React.Component {
   renderContent() {
     const {
       dialog,
+      children,
       inversed,
       interactiveBorder,
       placement,
+      className,
       maxWidth,
-      title,
-      transitionDuration,
       zIndex,
+      transitionDuration,
     } = this.props;
 
     const tooltipStyle = { maxWidth, zIndex };
@@ -200,25 +194,29 @@ export class Tooltip extends React.Component {
         };
 
     const tooltipContent = () => (
-      <span
+      <div
         id={this.id}
         tabIndex={dialog ? '-1' : null}
         ref={this.setTooltipElement}
-        className={classNames('ds-c-tooltip', {
-          'ds-c-tooltip--inverse': inversed,
-        })}
+        className={classNames(
+          'ds-c-tooltip',
+          {
+            'ds-c-tooltip--inverse': inversed,
+          },
+          className
+        )}
         style={tooltipStyle}
         data-placement={placement}
         aria-hidden={!this.state.active}
         role={dialog ? 'dialog' : 'tooltip'}
         {...eventHandlers}
       >
-        <span className="ds-c-tooltip__arrow" data-popper-arrow />
-        <span className="ds-c-tooltip__content ds-base">{title}</span>
+        <div className="ds-c-tooltip__arrow" data-popper-arrow />
+        <div className="ds-c-tooltip__content ds-base">{children}</div>
         {!dialog && (
-          <span className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
+          <div className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
         )}
-      </span>
+      </div>
     );
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
@@ -268,34 +266,25 @@ export class Tooltip extends React.Component {
 }
 
 Tooltip.defaultProps = {
-  component: 'button',
   interactiveBorder: 15,
-  maxWidth: '300px',
-  offset: [0, 5],
   placement: 'top',
-  transitionDuration: 250, // Equivalent to $animation-speed-1
+  maxWidth: '300px',
   zIndex: '9999',
+  offset: [0, 5],
+  triggerComponent: 'button',
+  transitionDuration: 250, // Equivalent to $animation-speed-1
 };
 Tooltip.propTypes = {
-  /**
-   * Classes applied to the tooltip trigger when the tooltip is active
-   */
-  activeClassName: PropTypes.string,
   /**
    * Helpful description of the tooltip for screenreaders
    */
   ariaLabel: PropTypes.string,
   /**
-   * Tooltip trigger content
+   * Content inside the tooltip body or popover. If this contains interactive elements set the `interactive` prop.
    */
   children: PropTypes.node.isRequired,
   /**
-   * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`,
- or rarely an `input` element.
-   */
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
-  /**
-   * Classes applied to the tooltip trigger
+   * Classes applied to the tooltip body
    */
   className: PropTypes.string,
   /**
@@ -332,13 +321,29 @@ Tooltip.propTypes = {
    */
   maxWidth: PropTypes.string,
   /**
-   * Content inside the tooltip body or popover. If this contains interactive elements use the `dialog` prop.
-   */
-  title: PropTypes.node.isRequired,
-  /**
    * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
    */
   transitionDuration: PropTypes.number,
+  /**
+   * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`, or rarely an `input` element.
+   */
+  triggerComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType, PropTypes.func]),
+  /**
+   * Trigger element content, typically an icon or text.
+   */
+  triggerContent: PropTypes.node.isRequired,
+  /**
+   * `href` attribute applied to link trigger elements.
+   */
+  triggerHref: PropTypes.string,
+  /**
+   * Classes applied to the tooltip trigger
+   */
+  triggerClassName: PropTypes.string,
+  /**
+   * Classes applied to the tooltip trigger when the tooltip is activated
+   */
+  triggerActiveClassName: PropTypes.string,
   /**
    * `zIndex` styling applied to the tooltip body
    */
