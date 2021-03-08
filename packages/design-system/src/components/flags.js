@@ -1,4 +1,4 @@
-// featureFlags.js
+// flags.js
 
 export function errorPlacementDefault() {
   const flags = JSON.parse(process.env.CMSDS_FLAGS);
