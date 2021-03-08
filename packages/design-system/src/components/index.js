@@ -1,7 +1,6 @@
 /**
  * index.js - JS entry point
  */
-
 export * from './Alert';
 export * from './Autocomplete';
 export * from './Badge';
@@ -25,5 +24,3 @@ export * from './TextField';
 export * from './Tooltip';
 export * from './UsaBanner';
 export * from './VerticalNav';
-
-export * from './flags';

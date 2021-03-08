@@ -19,6 +19,12 @@ module.exports = function (api) {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-object-assign',
     'inline-react-svg',
+    [
+      'transform-inline-environment-variables',
+      {
+        include: ['CMSDS_FLAGS'],
+      },
+    ],
   ];
 
   return {

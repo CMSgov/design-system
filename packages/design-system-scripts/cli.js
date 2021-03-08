@@ -7,6 +7,9 @@ const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
 const configDefaults = require('./configDefaults');
 const config = { ...configDefaults, ...configFile };
 
+// Set flag variable inside process.env
+process.env.CMSDS_FLAGS = JSON.stringify(config.flags);
+
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
 // eslint-disable-next-line no-unused-expressions
