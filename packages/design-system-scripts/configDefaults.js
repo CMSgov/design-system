@@ -9,4 +9,7 @@ module.exports = {
   name: 'CMS Design System',
   githubUrl: 'https://github.com/CMSgov/design-system',
   npmPackage: '@cmsgov/design-system',
+  flags: {
+    ERROR_PLACEMENT_DEFAULT: 'top',
+  },
 };

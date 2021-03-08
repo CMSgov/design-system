@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 const yargs = require('yargs');
+const { merge } = require('lodash');
 const { logIntroduction } = require('./gulp/common/logUtil');
 const path = require('path');
 // TODO, clean up script parameters to use the CMSDS config better
 const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
 const configDefaults = require('./configDefaults');
-const config = { ...configDefaults, ...configFile };
 
-// Set flag variable inside process.env
+// Override default config with cmsds.config.js
+const config = merge(configDefaults, configFile);
+// Set flag variables inside process.env
 process.env.CMSDS_FLAGS = JSON.stringify(config.flags);
 
 // The yargs library actually made it so you have to access `.argv` at the end

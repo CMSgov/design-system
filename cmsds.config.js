@@ -18,8 +18,9 @@ module.exports = {
   githubUrl: 'https://github.com/CMSgov/design-system',
   // The name of your design system NPM package. This replaces the {{npm}} template in documentation content.'
   npmPackage: '@cmsgov/design-system',
+
   // React feature flag variables
   flags: {
-    ERROR_PLACEMENT_DEFAULT: 'bottom',
+    ERROR_PLACEMENT_DEFAULT: 'top',
   },
 };
