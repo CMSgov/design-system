@@ -44,7 +44,6 @@ Style guide: components.autocomplete.react
 - The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
 - `<Autocomplete>` allows developers to add hint text in the `<label>` element. This hint `<span>` is added to the markup by passing a  `String` into the `hint` prop.
 - `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
-- To customize the ARIA statuses when a prop is changed, access Downshift's [getA11yStatusMessage](https://github.com/downshift-js/downshift#geta11ystatusmessage) method and override the default message. This is made possible by the `<Autocomplete>` component which allows developers to pass extra props to access the underlying Downshift's component.
 
 ### Focus Management
 
