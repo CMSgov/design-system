@@ -2,6 +2,7 @@ import { sendTealiumEvent } from './Analytics';
 
 describe('sendTealiumEvent', () => {
   const gaEventProps = {
+    ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',
     ga_eventAction: 'test action',
     ga_eventLabel: 'test label',
@@ -28,29 +29,13 @@ describe('sendTealiumEvent', () => {
       jest.resetAllMocks();
     });
 
-    const expectedEventProps = {
-      ga_eventType: 'cmsds',
-      ga_eventCategory: 'test category',
-      ga_eventAction: 'test action',
-      ga_eventLabel: 'test label',
-      ga_eventValue: 'test value',
-    };
-
     it('calls window.utag.link with default props', () => {
       sendTealiumEvent(gaEventProps);
-      expect(window.utag?.link).toHaveBeenCalledWith(expectedEventProps);
+      expect(window.utag?.link).toHaveBeenCalledWith(gaEventProps);
     });
 
     it('calls window.utag.link with extra props', () => {
       const gaEventExtraProps = {
-        ga_eventCategory: 'test category',
-        ga_eventAction: 'test action',
-        ga_eventLabel: 'test label',
-        ga_eventValue: 'test value',
-        ga_extraProps1: 'test extra props 1',
-        ga_extraProps2: 'test extra props 2',
-      };
-      const expectedEventExtraProps = {
         ga_eventType: 'cmsds',
         ga_eventCategory: 'test category',
         ga_eventAction: 'test action',
@@ -60,7 +45,7 @@ describe('sendTealiumEvent', () => {
         ga_extraProps2: 'test extra props 2',
       };
       sendTealiumEvent(gaEventExtraProps);
-      expect(window.utag?.link).toHaveBeenCalledWith(expectedEventExtraProps);
+      expect(window.utag?.link).toHaveBeenCalledWith(gaEventExtraProps);
     });
   });
 
