@@ -1,5 +1,9 @@
 @import '../settings/index.scss';
 
+$accordion-header-bg-color: $color-gray-lightest;
+$accordion-header-bg-hover-color: $color-gray-lighter;
+$accordion-border-color: $color-gray-lightest;
+
 .ds-c-accordion {
   color: $color-base;
   font-size: $base-font-size;
@@ -20,7 +24,7 @@
 }
 
 .ds-c-accordion__button {
-  background-color: $color-gray-lightest;
+  background-color: $accordion-header-bg-color;
   background-position: right 1.25rem center;
   background-repeat: no-repeat;
   background-size: 1.5rem;
@@ -44,7 +48,7 @@
   text-decoration: none;
   width: 100%;
   &:hover {
-    background-color: $color-gray-lighter;
+    background-color: $accordion-header-bg-hover-color;
   }
 }
 
@@ -69,7 +73,7 @@
 
 .ds-c-accordion--bordered {
   .ds-c-accordion__content {
-    border: 4px solid $color-gray-lightest;
+    border: 4px solid $accordion-border-color;
     border-top: 0;
     padding: $spacer-2 $spacer-2;
   }
