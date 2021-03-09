@@ -14,9 +14,15 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-function generateReactExample(page, docsPath, sourceDir, { typescript, rootPath }) {
+async function generateReactExample(page, docsPath, sourceDir, docsDir, { typescript, rootPath }) {
+  const config = await createReactExampleWebpackConfig(
+    sourceDir,
+    docsDir,
+    page.reactExampleEntry,
+    typescript
+  );
+
   return new Promise((resolve, reject) => {
-    const config = createReactExampleWebpackConfig(sourceDir, page.reactExampleEntry, typescript);
     const compiler = webpack(config);
 
     // Compile file to memory
