@@ -32,6 +32,8 @@ function isParentOfSelectedChild(items, selectedId) {
 }
 
 function updateItemsWithRootPath(items) {
+  console.log('==>nav:', items);
+
   if (process.env.rootPath !== '' && items && items.length > 0) {
     items.forEach((item) => {
       if (item && item.url) {
@@ -43,7 +45,6 @@ function updateItemsWithRootPath(items) {
     });
     console.log('==>nav-rootPath:', process.env.rootPath, items);
   }
-  console.log('==>nav:', items);
   return items;
 }
 
