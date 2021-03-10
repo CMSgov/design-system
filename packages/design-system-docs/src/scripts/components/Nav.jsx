@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { VerticalNav } from '@cmsgov/design-system';
+import cloneDeep from 'lodash/cloneDeep';
 import path from 'path';
 
 /**
@@ -32,8 +33,12 @@ function isParentOfSelectedChild(items, selectedId) {
 }
 
 function updateItemsWithRootPath(propItems) {
-  const items = [].concat(propItems); // Don't mutate items
-  console.log('==>nav:', items);
+  console.log('==>nav 1:', propItems);
+
+  // const items = [...propItems]; // Don't mutate items
+  // const items = [].concat(propItems); // Don't mutate items
+  const items = cloneDeep(propItems);
+  console.log('==>nav 2:', items);
 
   if (process.env.rootPath !== '' && items && items.length > 0) {
     items.forEach((item) => {
