@@ -33,6 +33,7 @@ function isParentOfSelectedChild(items, selectedId) {
 
 function updateItemsWithRootPath(items) {
   console.log('==>nav:', items);
+  items = [].concat(items); // Don't mutate items
 
   if (process.env.rootPath !== '' && items && items.length > 0) {
     items.forEach((item) => {
