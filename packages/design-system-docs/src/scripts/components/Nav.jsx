@@ -31,9 +31,9 @@ function isParentOfSelectedChild(items, selectedId) {
   return false;
 }
 
-function updateItemsWithRootPath(items) {
+function updateItemsWithRootPath(propItems) {
+  const items = [].concat(propItems); // Don't mutate items
   console.log('==>nav:', items);
-  items = [].concat(items); // Don't mutate items
 
   if (process.env.rootPath !== '' && items && items.length > 0) {
     items.forEach((item) => {
