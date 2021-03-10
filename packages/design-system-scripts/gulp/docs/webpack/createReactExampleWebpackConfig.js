@@ -22,8 +22,6 @@ module.exports = async function createReactExampleWebpackConfig(
 
   const entry = [...(additionalEntry ? [exampleEntryFile] : []), path.resolve(reactExampleEntry)];
 
-  console.log(entry);
-
   const config = {
     mode: process.env.NODE_ENV,
     entry,
