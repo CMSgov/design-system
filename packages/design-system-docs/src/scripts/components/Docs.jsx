@@ -34,6 +34,8 @@ class Docs extends React.PureComponent {
   render() {
     const { routes, page } = this.props;
     const { menuOpen } = this.state;
+    console.log('-->routes:', routes);
+    console.log('-->page:', page);
     return (
       <div
         className={classNames('docs', {

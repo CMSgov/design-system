@@ -41,7 +41,9 @@ function updateItemsWithRootPath(items) {
         item.items = updateItemsWithRootPath(item.items);
       }
     });
+    console.log('==>nav-rootPath:', process.env.rootPath, items);
   }
+  console.log('==>nav:', items);
   return items;
 }
 
