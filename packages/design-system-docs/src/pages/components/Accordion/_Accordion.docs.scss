@@ -43,23 +43,26 @@ Style guide: components.accordion.react-accordionitem
 
 ### When to use
 
-Content
+- Use an accordion to see an overview of multiple, related sections of content
+- Use an accordion to show and hide sections as needed
 
 ## When to consider alternatives
 
-Content
+Accordions hide content from users and not everyone will notice them or understand how they work.
+Accordions increase cognitive load and interaction cost, as users have to make decisions about what headers to click on.
+
+- Don't use an accordion if users need to see most or all of the information on a page.
+- Don't use an accordion if there is not enough content to warrant condensing.
 
 ### Usage
 
-Content
+- Make the entire header selectable. Allow users to click anywhere in the header area to expand or collapse the content; a larger target is easier to manipulate.
+- Give interactive elements enough space. Make sure interactive elements within the collapsible region are far enough from the headers that users don’t accidentally trigger a collapse.
 
 ### Accessibility
 
-Content
-
 ### Learn more
 
-Content
 
 Style guide: components.accordion.guidance
 */
