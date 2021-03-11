@@ -168,7 +168,14 @@ async function generateDocPages(pages, docsPath, options, changedPath) {
  * @param {Array} pageSection
  * @return {Promise<Array>}
  */
-async function generateExamplePages(pageSection, docsPath, sourceDir, options, changedPath) {
+async function generateExamplePages(
+  pageSection,
+  docsPath,
+  sourceDir,
+  docsDir,
+  options,
+  changedPath
+) {
   // This function accepts the unnested pages, which can contain page sections that have been removed by nestSections
   // TODO: Avoid generating example pages for removed page sections
   const examplePages = pageSection.filter(
@@ -178,7 +185,7 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
   const generatedPages = await Promise.all(
     examplePages
       .filter((page) => changedFilter(page, changedPath))
-      .map((page) => generateExamplePage(page, docsPath, sourceDir, options))
+      .map((page) => generateExamplePage(page, docsPath, sourceDir, docsDir, options))
   );
 
   return generatedPagesCount(generatedPages);
@@ -233,6 +240,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     uniquePageSections,
     docsPath,
     sourceDir,
+    docsDir,
     options,
     changedPath
   );
