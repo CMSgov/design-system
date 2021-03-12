@@ -87,7 +87,15 @@ async function copyAll(dir, options) {
  */
 async function generateTypeDefinitions(dir, changedPath) {
   const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src, changedPath);
+  const srcGlob = changedPath
+    ? [changedPath`!${src}/**/*.{js,jsx}`]
+    : [
+        `${src}/**/*.{ts,tsx}`,
+        `!${src}/**/*.{js,jsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+      ];
 
   const tsProject = ts.createProject('tsconfig.json', {
     declaration: true,
@@ -174,9 +182,8 @@ function compileJs(dir, options, changedPath) {
       return compileEsmJs(dir, changedPath);
     })
     .then(() => {
-      // If design system is using typescript, use tsc to generate definition files
-      // Core DS manually updates definition files
-      if (options.typescript && !options.core) {
+      // If design system is using typescript, use tsc to generate definition files for tsx files
+      if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
     });
