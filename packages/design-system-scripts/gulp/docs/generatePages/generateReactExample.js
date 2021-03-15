@@ -14,7 +14,13 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-async function generateReactExample(page, docsPath, sourceDir, docsDir, { typescript, rootPath }) {
+async function generateReactExample(
+  page,
+  docsPath,
+  sourceDir,
+  docsDir,
+  { core, typescript, rootPath }
+) {
   const config = await createReactExampleWebpackConfig(
     sourceDir,
     docsDir,
