@@ -33,8 +33,8 @@ const AccordionItem: FunctionComponent< AccordionItemProps> = ({
   const onClick = () => {
     setOpen(!open);
   };
-  const contentClasses = classNames('ds-c-accordion__content', contentClassName, open);
-  const headingClasses = classNames('ds-c-accordion__heading', headingClassName, open);
+  const contentClasses = classNames('ds-c-accordion__content', contentClassName);
+  const headingClasses = classNames('ds-c-accordion__heading', headingClassName);
   const contentId = id || uniqueId('accordionItem_');
   const buttonId = `${contentId}-button`;
 
