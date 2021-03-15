@@ -3,6 +3,7 @@
 $accordion-header-bg-color: $color-gray-lightest;
 $accordion-header-bg-hover-color: $color-gray-lighter;
 $accordion-border-color: $color-gray-lightest;
+$accordion-font-family: $font-sans;
 
 .ds-c-accordion {
   color: $color-base;
@@ -25,31 +26,33 @@ $accordion-border-color: $color-gray-lightest;
 
 .ds-c-accordion__button {
   background-color: $accordion-header-bg-color;
+  background-image: url('#{$image-path}/remove.svg'), linear-gradient(transparent, transparent);
   background-position: right 1.25rem center;
   background-repeat: no-repeat;
   background-size: 1.5rem;
   border: 0;
-  border: 0;
   border-radius: 0;
-  border-radius: 0;
-  box-shadow: 0;
   box-shadow: none;
   color: $color-base;
   cursor: pointer;
   display: inline-block;
-  font-family: $font-sans;
+  font-family: $accordion-font-family;
   font-size: $base-font-size;
   font-weight: $font-bold;
   //   line-height: 0.9;
   margin: 0;
   padding: $spacer-2 $spacer-6 $spacer-2 $spacer-3;
   text-align: left;
-  text-align: left;
   text-decoration: none;
   width: 100%;
   &:hover {
     background-color: $accordion-header-bg-hover-color;
   }
+}
+
+.ds-c-accordion__button[aria-expanded='false'] {
+  background-image: url('#{$image-path}/add.svg'), linear-gradient(transparent, transparent);
+  background-repeat: no-repeat;
 }
 
 .ds-c-accordion__content {
