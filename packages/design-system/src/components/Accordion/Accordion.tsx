@@ -1,23 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
-import AccordionItem from './AccordionItem';
 
 interface AccordionProps {
-  /*
-   ** Class to be applied to the outer `<Div>` that contains all accordion items.
-   */
-  className: string;
-  /*
+  /**
    ** Applies a border to the accordion content.
    */
-  bordered: boolean;
-  children: typeof AccordionItem;
+  bordered?: boolean;
+  children?: React.ReactNode;
+  /**
+   ** Class to be applied to the outer `<div>` that contains all accordion items.
+   */
+  className?: string;
 }
 
 const Accordion: FunctionComponent<AccordionProps> = ({
-  className = '',
-  bordered = false,
+  bordered,
   children,
+  className,
 }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
 

@@ -1,38 +1,64 @@
 import React, { FunctionComponent, useState } from 'react';
+import classNames from 'classnames';
+import uniqueId from 'lodash.uniqueid';
 
 interface AccordionItemProps {
-  heading: string;
+  children?: React.ReactNode;
+  /**
+   ** Class to be applied to the heading `<h2>` tag of an accordion item.
+   */
+  contentClassName?: string;
+  /**
+   ** Class to be applied to the content `<div>` tag of an accordion item.
+   */
+  headingClassName?: string;
   expanded?: boolean;
-  id: string;
+  heading: React.ReactNode | string;
+  /**
+   * Content id
+   */
+  id?: string;
 }
 
-const AccordionItem: FunctionComponent<{
-  heading;
-  expanded;
-  onHeadingClick;
-  children;
-}> = ({ children, heading, expanded, onHeadingClick }) => {
+const AccordionItem: FunctionComponent< AccordionItemProps> = ({
+  children,
+  contentClassName,
+  headingClassName,
+  expanded,
+  heading,
+  id,
+}) => {
   // Set the state for opening and closing an accordion item
   const [open, setOpen] = useState(!!expanded);
   const onClick = () => {
     setOpen(!open);
-    if (onHeadingClick) {
-      onHeadingClick(!open);
-    }
   };
+  const contentClasses = classNames('ds-c-accordion__content', contentClassName, open);
+  const headingClasses = classNames('ds-c-accordion__heading', headingClassName, open);
+  const contentId = id || uniqueId('accordionItem_');
+  const buttonId = `${contentId}-button`;
 
   return (
     <>
-      <h2 className="ds-c-accordion__heading">
+      <h2 className={headingClasses}>
         <button
           className="ds-c-accordion__button"
+          aria-expanded={open}
+          aria-controls={contentId}
+          id={buttonId}
           onClick={onClick}
-          style={{ backgroundImage: `url(${open ? '/images/remove.svg' : '/images/add.svg'})` }}
         >
           {heading}
         </button>
       </h2>
-      {open && <div className="ds-c-accordion__content">{children}</div>}
+      <div 
+        className={contentClasses}
+        aria-labelledby={buttonId}
+        id={contentId}
+        hidden={!open}
+      >
+        {children}
+      </div>
     </>
   );
 };
