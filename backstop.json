@@ -639,12 +639,30 @@
       "removeSelectors": ["#frame"]
     },
     {
+      "label": "CMSDS - Components - Accordion",
+      "referenceUrl": "https://design.cms.gov/components/accordion/",
+      "url": "http://localhost:3000/components/accordion/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Accordion - Default",
+      "referenceUrl": "https://design.cms.gov/example/components.accordion/",
+      "url": "http://localhost:3000/example/components.accordion/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Accordion - React",
+      "referenceUrl": "https://design.cms.gov/example/components.accordion.react/",
+      "url": "http://localhost:3000/example/components.accordion.react/",
+      "removeSelectors": ["#frame"]
+    },
+    {
       "label": "CMSDS - Components - Alert",
       "referenceUrl": "https://design.cms.gov/components/alert/",
       "url": "http://localhost:3000/components/alert/",
       "removeSelectors": ["#frame"]
     },
-    {
+     {
       "label": "CMSDS - Components - Alert - Default",
       "referenceUrl": "https://design.cms.gov/example/components.alert/",
       "url": "http://localhost:3000/example/components.alert/",
@@ -657,7 +675,7 @@
       "removeSelectors": ["#frame"]
     },
     {
-      "label": "CMSDS - Components - React",
+      "label": "CMSDS - Components - Alert - React",
       "referenceUrl": "https://design.cms.gov/example/components.alert.react",
       "url": "http://localhost:3000/example/components.alert.react",
       "removeSelectors": ["#frame"]
