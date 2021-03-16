@@ -13,13 +13,15 @@ function render(customProps = {}) {
 describe('Accordion', function () {
   it('renders accordion', () => {
     const { wrapper } = render();
-    wrapper.render().find('.ds-c-accordion');
+
+    expect(wrapper.hasClass('ds-c-accordion')).toBe(true);
   });
 
   it('renders additional className', () => {
     const { wrapper } = render({
       className: 'ds-u-test',
     });
+
     expect(wrapper.hasClass('ds-u-test')).toBe(true);
   });
 
@@ -27,6 +29,7 @@ describe('Accordion', function () {
     const { wrapper } = render({
       bordered: true,
     });
+
     expect(wrapper.hasClass('ds-c-accordion--bordered')).toBe(true);
   });
 });
