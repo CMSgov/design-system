@@ -28,18 +28,17 @@ Style guide: components.accordion.react
 @react-props AccordionItem.tsx
 
 Style guide: components.accordion.react-accordionitem
-/*
+*/
 
 /*
 ---
 
-### Customization
+### Style customization
 
-| Variable      | Description |
-| ----------- | ----------- |
-| $accordion-border-color      | Border color of the accordion       |
-| $accordion-header-bg-color   | Background color of the accordion header        |
-| $accordion-header-bg-hover-color | Background color of the accordion header when hovered |
+- **$accordion-border-color** -  Border color of the accordion
+- **$accordion-header-bg-color** - Background color of the accordion header
+- **$accordion-header-bg-hover-color** - Background color of the accordion header when hovered
+
 
 ### When to use
 
