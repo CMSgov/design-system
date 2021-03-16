@@ -263,6 +263,10 @@ Autocomplete.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+   */
+  getA11yStatusMessage: PropTypes.func,
+  /**
    * Access a reference to the child `TextField`'s `input` element
    */
   inputRef: PropTypes.func,
