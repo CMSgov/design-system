@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <div className="example--wrapper">
     <Accordion bordered>
-      <AccordionItem heading="Control and supplemental guidance">
+      <AccordionItem heading="First amendment">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
@@ -14,7 +14,7 @@ ReactDOM.render(
           establish this Constitution for the United States of America.
         </p>
       </AccordionItem>
-      <AccordionItem heading="Assessment guidance">
+      <AccordionItem heading="Second amendment">
         <p>Hello world!</p>
       </AccordionItem>
     </Accordion>
