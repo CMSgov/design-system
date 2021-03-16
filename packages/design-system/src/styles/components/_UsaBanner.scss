@@ -18,8 +18,9 @@ $usa-banner-font-family: $font-sans;
   flex-direction: row;
   font-size: 12px;
   font-weight: $font-normal;
+  line-height: 1.2;
   min-height: $spacer-4;
-  padding: $spacer-1 0 $spacer-1 $spacer-2;
+  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
   position: relative;
 
   @media (min-width: $width-sm) {
@@ -45,7 +46,6 @@ $usa-banner-font-family: $font-sans;
 .ds-c-usa-banner__header-action {
   color: $usa-banner-header-action-color;
   display: block;
-  line-height: 1.1;
   margin-bottom: 0;
   margin-top: 2px;
   text-decoration: underline;
