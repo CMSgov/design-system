@@ -5,22 +5,28 @@ import uniqueId from 'lodash.uniqueid';
 interface AccordionItemProps {
   children?: React.ReactNode;
   /**
-   ** Class to be applied to the heading `<h2>` tag of an accordion item.
+   * Class to be applied to the heading `<h2>` tag of an accordion item.
    */
   contentClassName?: string;
   /**
-   ** Class to be applied to the content `<div>` tag of an accordion item.
+   * Class to be applied to the content `<div>` tag of an accordion item.
    */
   headingClassName?: string;
+  /**
+   * Boolean to expand the accordion.
+   */
   expanded?: boolean;
+  /**
+   * Text for the accordion item heading.
+   */
   heading: React.ReactNode | string;
   /**
-   * Content id
+   *  If not provided, a unique id will be automatically generated and used.
    */
   id?: string;
 }
 
-const AccordionItem: FunctionComponent< AccordionItemProps> = ({
+const AccordionItem: FunctionComponent<AccordionItemProps> = ({
   children,
   contentClassName,
   headingClassName,
@@ -51,12 +57,7 @@ const AccordionItem: FunctionComponent< AccordionItemProps> = ({
           {heading}
         </button>
       </h2>
-      <div 
-        className={contentClasses}
-        aria-labelledby={buttonId}
-        id={contentId}
-        hidden={!open}
-      >
+      <div className={contentClasses} aria-labelledby={buttonId} id={contentId} hidden={!open}>
         {children}
       </div>
     </>
