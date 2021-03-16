@@ -5,8 +5,8 @@ import { mount } from 'enzyme';
 
 const defaultChildren = '<p>Content for accordion item</p>';
 const defaultProps = {
-  heading: "Heading for accordion item",
-}
+  heading: 'Heading for accordion item',
+};
 
 function render(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
@@ -43,9 +43,8 @@ describe('AccordionItem', function () {
     const { wrapper } = render({
       headingClassName: 'ds-u-test',
     });
-    wrapper.render().find('.ds-c-accordion__content');
-    wrapper.render().find('.ds-c-accordion__header');
-    expect(wrapper.hasClass('ds-u-test')).toBe(true);
+    const header_class = wrapper.render().find('div.ds-c-accordion__header');
+    expect(header_class.hasClass('ds-c-accordion__header ds-u-test')).toBe(true);
   });
 
   it('renders additional className for content', () => {
@@ -54,7 +53,7 @@ describe('AccordionItem', function () {
     });
 
     const content_class = wrapper.render().find('div.ds-c-accordion__content');
-    expect(content_class.hasClass('.ds-c-accordion__header')).toBe(true);
+    expect(content_class.hasClass('ds-c-accordion__content ds-u-test')).toBe(true);
   });
 
   it('renders header text', () => {
