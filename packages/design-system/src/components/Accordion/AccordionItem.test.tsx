@@ -47,9 +47,9 @@ describe('AccordionItem', function () {
     const { wrapper } = render({
       headingClassName: 'ds-u-test',
     });
+    const headerWrapper = wrapper.find('h2');
 
-    const header_class = wrapper.render().find('h2.ds-c-accordion__header');
-    expect(header_class.hasClass('ds-u-test')).toBe(true);
+    expect(headerWrapper.hasClass('ds-u-test')).toBe(true);
   });
 
   it('renders additional className for content', () => {
