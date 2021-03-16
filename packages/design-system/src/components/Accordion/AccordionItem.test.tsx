@@ -24,7 +24,9 @@ describe('AccordionItem', function () {
     const accordionItem = wrapper.find('AccordionItem');
 
     expect(accordionItem).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
   });
+
   it('renders an accordion heading', () => {
     const { wrapper } = render();
     const headerWrapper = wrapper.find('h2');
@@ -35,39 +37,75 @@ describe('AccordionItem', function () {
 
   it('renders an accordion content', () => {
     const { wrapper } = render();
-    const contentWrapper = wrapper.find('div');
+    const contentWrapper = wrapper.find('div').at(1);
+
     expect(contentWrapper.hasClass('ds-c-accordion__content')).toBe(true);
+    expect(contentWrapper.text()).toBe(defaultChildren);
   });
 
   it('renders additional className for header', () => {
     const { wrapper } = render({
       headingClassName: 'ds-u-test',
     });
-    wrapper.render().find('.ds-c-accordion__content');
-    wrapper.render().find('.ds-c-accordion__header');
-    expect(wrapper.hasClass('ds-u-test')).toBe(true);
+    const headerWrapper = wrapper.find('h2');
+
+    expect(headerWrapper.hasClass('ds-u-test')).toBe(true);
   });
 
   it('renders additional className for content', () => {
     const { wrapper } = render({
       contentClassName: 'ds-u-test',
     });
+    const contentWrapper = wrapper.find('div').at(1);
 
-    const content_class = wrapper.render().find('div.ds-c-accordion__content');
-    expect(content_class.hasClass('.ds-c-accordion__header')).toBe(true);
+    expect(contentWrapper.hasClass('ds-u-test')).toBe(true);
   });
 
   it('renders header text', () => {
-    const { props, wrapper } = render({ heading: 'Foo' });
-    const heading_text = wrapper.render().find('.ds-c-accordion__button');
+    const { wrapper } = render({ heading: 'Foo' });
+    const accordionButton = wrapper.find('button');
 
-    expect(heading_text.text()).toBe('Foo');
+    expect(accordionButton.text()).toBe('Foo');
   });
 
-  it('renders a user set id ', () => {});
-  it('renders an id automatically', () => {});
-  it('renders an expanded or open accordion item', () => {});
-  it('renders an collapsed or closed accordion item', () => {});
+  it('renders an id automatically', () => {
+    const { wrapper } = render();
+    const accordionButton = wrapper.find('button');
+    const contentWrapper = wrapper.find('div').at(1);
+
+    expect(accordionButton.props()).toHaveProperty('aria-controls');
+    expect(accordionButton.props()).toHaveProperty('id');
+    expect(contentWrapper.props()).toHaveProperty('aria-labelledby');
+    expect(contentWrapper.props()).toHaveProperty('id');
+  });
+  
+  it('renders a user set id ', () => {
+    const { wrapper } = render({
+      id: 'test-id',
+    });
+    const accordionButton = wrapper.find('button');
+    const contentWrapper = wrapper.find('div').at(1);
+
+    expect(accordionButton.props()).toHaveProperty('aria-controls', 'test-id');
+    expect(accordionButton.props()).toHaveProperty('id', 'test-id-button');
+
+    expect(contentWrapper.props()).toHaveProperty('id', 'test-id');
+    expect(contentWrapper.props()).toHaveProperty('aria-labelledby', 'test-id-button');
+  });
+
+  it('renders an expanded or open accordion item', () => {
+    const { wrapper } = render({ expanded: true });
+    const accordionButton = wrapper.find('button');
+
+    expect(accordionButton.props()).toHaveProperty('aria-expanded', true);
+  });
+
+  it('renders an collapsed or closed accordion item', () => {
+    const { wrapper } = render({ expanded: false });
+    const accordionButton = wrapper.find('button');
+
+    expect(accordionButton.props()).toHaveProperty('aria-expanded', false);
+  });
 
   it('renders HTML in the content', () => {});
 });
