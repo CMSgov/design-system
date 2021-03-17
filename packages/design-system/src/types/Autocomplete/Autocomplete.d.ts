@@ -54,13 +54,17 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    */
   id?: string;
   /**
+   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+  */
+  getA11yStatusMessage?: DownshiftProps<any>["getA11yStatusMessage"];
+  /**
    * Access a reference to the child `TextField`'s `input` element
    */
   inputRef?: (...args: any[]) => any;
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
    */
-  itemToString?: (...args: any[]) => any;
+  itemToString?: DownshiftProps<any>["itemToString"];
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
@@ -88,11 +92,11 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
    */
-  onChange?: (...args: any[]) => any;
+   onChange?: (...args: any[]) => any;
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
    */
-  onInputValueChange?: (...args: any[]) => any;
+  onInputValueChange?: DownshiftProps<any>["onInputValueChange"];
 }
 
 export default class Autocomplete extends React.Component<AutocompleteProps, any> {
