@@ -14,8 +14,9 @@
   "types": "dist/types/index.d.ts",
   "files": [
     "dist",
-    "src/components/**/*.jsx",
-    "!src/components/**/*.test.jsx"
+    "src/components/**/*.?sx",
+    "src/components/**/*.tsx",
+    "!src/components/**/*.test.?sx"
   ],
   "dependencies": {
     "@popperjs/core": "^2.4.4",
