@@ -19,4 +19,6 @@ const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, clas
   return <div className={classes}>{children}</div>;
 };
 
+export const AccordionPropKeys = ['bordered', 'children', 'className'];
+
 export default Accordion;

@@ -93,7 +93,7 @@ describe('AccordionItem', function () {
   });
 
   it('renders an expanded or open accordion item', () => {
-    const { wrapper } = render({ expanded: true });
+    const { wrapper } = render({ defaultOpen: true });
     const accordionButton = wrapper.find('button');
 
     expect(accordionButton.props()).toHaveProperty('aria-expanded', true);
