@@ -39,7 +39,7 @@ const AccordionItem: FunctionComponent<AccordionItemProps> = ({
   contentClassName,
   defaultOpen,
   heading,
-  headingLevel,
+  headingLevel = '2',
   id,
 }) => {
   // Set the state for opening and closing an accordion item
@@ -51,7 +51,7 @@ const AccordionItem: FunctionComponent<AccordionItemProps> = ({
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
   const contentId = id || uniqueId('accordionItem_');
   const buttonId = `${contentId}-button`;
-  const HeadingTag = `h${headingLevel}` || 'h2';
+  const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   console.log(HeadingTag);
   if (heading) {
     return (
