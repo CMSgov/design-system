@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
-interface AccordionProps {
+export interface AccordionProps {
   /**
    * Applies a border to the accordion content.
    */
@@ -18,7 +18,5 @@ const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, clas
 
   return <div className={classes}>{children}</div>;
 };
-
-export const AccordionPropKeys = ['bordered', 'children', 'className'];
 
 export default Accordion;

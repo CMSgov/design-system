@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
-import { AccordionPropKeys } from './Accordion';
 
-interface AccordionItemProps {
+export interface AccordionItemProps {
   /**
    * Class to be applied to the header `<button>` of an accordion item.
    */
@@ -74,15 +73,5 @@ const AccordionItem: FunctionComponent<AccordionItemProps> = ({
     );
   }
 };
-
-export const AccordionItemPropKeys = [
-  'children',
-  'contentClassName',
-  'buttonClassName',
-  'expanded',
-  'heading',
-  'headingLevel',
-  'id',
-];
 
 export default AccordionItem;
