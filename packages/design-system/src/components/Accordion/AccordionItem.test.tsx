@@ -43,11 +43,11 @@ describe('AccordionItem', function () {
     expect(contentWrapper.text()).toBe(defaultChildren);
   });
 
-  it('renders additional className for header', () => {
+  it('renders additional className for header button', () => {
     const { wrapper } = render({
-      headingClassName: 'ds-u-test',
+      buttonClassName: 'ds-u-test',
     });
-    const headerWrapper = wrapper.find('h2');
+    const headerWrapper = wrapper.find('button');
 
     expect(headerWrapper.hasClass('ds-u-test')).toBe(true);
   });
