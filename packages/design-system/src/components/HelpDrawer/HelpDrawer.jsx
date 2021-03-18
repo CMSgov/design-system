@@ -144,7 +144,7 @@ const AnalyticsEventShape = PropTypes.shape({
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
   /**
-   * Analytics events tracking is enable by default.
+   * Analytics events tracking is enabled by default.
    * The `analytics` prop is an object of events that is either a nested `objects` with key-value
    * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
    * event object value to `false`.
