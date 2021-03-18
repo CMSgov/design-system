@@ -1,6 +1,7 @@
 const Docs = require('@cmsgov/design-system-docs/src/scripts/components/Docs').default;
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const createAnalyticsTag = require('./createAnalyticsTag');
 const savePage = require('./savePage');
 
 /**
@@ -39,7 +40,7 @@ function generateDocPage(routes, page, docsPath, options) {
     <link rel="shortcut icon" type="image/x-icon" href="/${rootPath || ''}images/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
     <link rel="stylesheet" href="/${rootPath}index.css" />
-    ${options.core ? analytics() : ''}
+    ${options.core ? createAnalyticsTag() : ''}
   `;
 
   const body = `
@@ -59,21 +60,6 @@ function generateDocPage(routes, page, docsPath, options) {
     },
     docsPath
   );
-}
-
-/**
- * Blast Analytics code to be included in the <head>.
- * This loads additional tracking scripts, like Google Analytics.
- * @return {String}
- */
-function analytics() {
-  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return `
-    <script>
-      window.tealiumEnvironment = "${env}";
-    </script>
-    <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
-  `;
 }
 
 /**

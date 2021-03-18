@@ -1,4 +1,5 @@
 const savePage = require('./savePage');
+const createAnalyticsTag = require('./createAnalyticsTag');
 
 /**
  * Process template tags in KSS markup
@@ -43,7 +44,7 @@ function generateHtmlExample(page, modifier, docsPath, options) {
   const head = `<title>Example: ${page.reference}</title>
     <link rel="stylesheet" href="/${rootPath}example.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-    ${options.core ? analytics() : ''}
+    ${options.core ? createAnalyticsTag() : ''}
   `;
 
   const body = `${processMarkup(page.markup, modifier)}
@@ -57,21 +58,6 @@ function generateHtmlExample(page, modifier, docsPath, options) {
     },
     docsPath
   );
-}
-
-/**
- * Blast Analytics code to be included in the <head>.
- * This loads additional tracking scripts, like Google Analytics.
- * @return {String}
- */
-function analytics() {
-  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return `
-    <script>
-      window.tealiumEnvironment = "${env}";
-    </script>
-    <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
-  `;
 }
 
 module.exports = generateHtmlExample;

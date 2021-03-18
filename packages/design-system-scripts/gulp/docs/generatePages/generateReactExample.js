@@ -3,6 +3,7 @@ const MemoryFS = require('memory-fs');
 const path = require('path');
 const savePage = require('./savePage');
 const webpack = require('webpack');
+const createAnalyticsTag = require('./createAnalyticsTag');
 const { log } = require('../../common/logUtil');
 
 /**
@@ -47,7 +48,7 @@ async function generateReactExample(
       const head = `
         <title>Example: ${page.reference}</title>
         <link rel="stylesheet" href="/${path.join(rootPath, 'example.css')}" />
-        ${core ? analytics() : ''}
+        ${core ? createAnalyticsTag() : ''}
       `;
       const body = `
         <div id="js-example"></div>
@@ -66,21 +67,6 @@ async function generateReactExample(
       resolve(output);
     });
   });
-}
-
-/**
- * Blast Analytics code to be included in the <head>.
- * This loads additional tracking scripts, like Google Analytics.
- * @return {String}
- */
-function analytics() {
-  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return `
-    <script>
-      window.tealiumEnvironment = "${env}";
-    </script>
-    <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
-  `;
 }
 
 module.exports = generateReactExample;
