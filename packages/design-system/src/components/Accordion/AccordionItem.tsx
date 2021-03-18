@@ -31,46 +31,63 @@ export interface AccordionItemProps {
    */
   id?: string;
 }
+export interface AccordionItemState {
+  isOpen: boolean;
+}
+export class AccordionItem extends React.Component<
+  AccordionItemProps, 
+  AccordionItemState
+> {
+  contentId: string;
+  buttonId: string;
 
-const AccordionItem: FunctionComponent<AccordionItemProps> = ({
-  buttonClassName,
-  children,
-  contentClassName,
-  defaultOpen,
-  heading,
-  headingLevel = '2',
-  id,
-}) => {
+  constructor(props: AccordionItemProps) {
+    super(props);
+
+    this.state = { isOpen: !!props.defaultOpen };
+    this.onClick = this.onClick.bind(this);
+    this.contentId = props.id || uniqueId('accordionItem_');
+    this.buttonId = `${this.contentId}-button`;
+  }
   // Set the state for opening and closing an accordion item
-  const [open, setOpen] = useState(!!defaultOpen);
-  const onClick = () => {
-    setOpen(!open);
-  };
-  const contentClasses = classNames('ds-c-accordion__content', contentClassName);
-  const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
-  const contentId = id || uniqueId('accordionItem_');
-  const buttonId = `${contentId}-button`;
-  const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  console.log(HeadingTag);
-  if (heading) {
-    return (
-      <>
-        <HeadingTag className="ds-c-accordion__heading">
-          <button
-            className={buttonClasses}
-            aria-expanded={open}
-            aria-controls={contentId}
-            id={buttonId}
-            onClick={onClick}
-          >
-            {heading}
-          </button>
-        </HeadingTag>
-        <div className={contentClasses} aria-labelledby={buttonId} id={contentId} hidden={!open}>
-          {children}
-        </div>
-      </>
-    );
+  onClick(): void {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  render(): React.ReactNode {
+    const {
+      buttonClassName,
+      children,
+      contentClassName,
+      heading,
+      headingLevel = '2',
+      id,
+    } = this.props;
+
+    const contentClasses = classNames('ds-c-accordion__content', contentClassName);
+    const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
+    const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+    if (heading) {
+      return (
+        <>
+          <HeadingTag className="ds-c-accordion__heading">
+            <button
+              className={buttonClasses}
+              aria-expanded={this.state.isOpen}
+              aria-controls={this.contentId}
+              id={this.buttonId}
+              onClick={this.onClick}
+            >
+              {heading}
+            </button>
+          </HeadingTag>
+          <div className={contentClasses} aria-labelledby={this.buttonId} id={this.contentId} hidden={!this.state.isOpen}>
+            {children}
+          </div>
+        </>
+      );
+    }
   }
 };
 
