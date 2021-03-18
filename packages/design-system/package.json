@@ -15,8 +15,7 @@
   "files": [
     "dist",
     "src/components/**/*.{jsx,tsx}",
-    "!src/**/*{.test,.spec,.d}.{jsx,tsx}",
-    "!src/**/{__mocks__,__tests__,helpers}/**/*"
+    "!src/**/*{.test,.spec,.d}.{jsx,tsx}"
   ],
   "dependencies": {
     "@popperjs/core": "^2.4.4",
