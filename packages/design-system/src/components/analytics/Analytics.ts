@@ -15,6 +15,8 @@ declare global {
   }
 }
 
+import merge from 'lodash/merge';
+
 type EventType = 'link';
 const MAX_RETRIES = 3;
 const TIMEOUT = 300;
@@ -43,52 +45,53 @@ interface AnalyticsEventProps {
   ga_eventCategory: string;
   ga_eventAction: string;
   ga_eventLabel: string;
-  ga_eventValue: string;
+  ga_eventValue?: string;
   additional_props?: Record<string, unknown>;
 }
 
-function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0): void {
+export function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0): string {
   if (window.utag && window.utag[event]) {
     try {
       window.utag[event](props);
+      return `Tealium event sent: ${props.ga_eventCategory} - ${props.ga_eventAction} - ${props.ga_eventLabel}`;
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log('Error sending event to Tealium', e);
+      return `Error sending event to Tealium ${e}`;
     }
   } else {
     if (++retry <= MAX_RETRIES) {
       setTimeout(() => sendEvent(event, props, retry), retry * TIMEOUT);
     } else {
-      // eslint-disable-next-line no-console
-      console.log('Tealium event max retries reached');
+      return `Tealium event max retries reached`;
     }
   }
 }
 
-export function sendTealiumEvent(props: AnalyticsEventProps): void {
-  /**
-   * If utag is not loaded on the page we don't want to track event
-   */
-  if (!window.utag) return;
 
-  const {
-    ga_eventType = 'cmsds',
-    ga_eventCategory,
-    ga_eventAction,
-    ga_eventLabel,
-    ga_eventValue = '',
-    ...other_props
-  } = props;
-
-  const payload: AnalyticsPayload = {
-    ga_eventType,
-    ga_eventCategory,
-    ga_eventAction,
-    ga_eventLabel,
-    ga_eventValue,
-    ...other_props,
+export function sendAnalyticsEvent(overrides: boolean | AnalyticsEventProps, defaultPayload: AnalyticsEventProps): string {
+  const analyticsDisabled = overrides === false;
+  
+  if (window.utag && !analyticsDisabled) {
+    const mergedPayload = merge(defaultPayload, overrides);
+    const {
+      ga_eventType = 'cmsds', // default value
+      ga_eventCategory,
+      ga_eventAction,
+      ga_eventLabel,
+      ga_eventValue = '', // default value
+      ...other_props
+    } = mergedPayload;
+    const payload: AnalyticsPayload = {
+      ga_eventType,
+      ga_eventCategory,
+      ga_eventAction,
+      ga_eventLabel,
+      ga_eventValue,
+      ...other_props,
+    };
+  
+    return sendEvent('link', payload);
+  } else {
+    return "";
   };
-
-  sendEvent('link', payload);
 }
 /* eslint-enable camelcase */

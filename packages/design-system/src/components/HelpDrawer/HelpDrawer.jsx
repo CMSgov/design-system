@@ -1,10 +1,23 @@
-import { EVENT_ACTION, EVENT_CATEGORY, sendTealiumEvent } from '../analytics/Analytics';
+import { EVENT_ACTION, EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import get from 'lodash/get';
-import merge from 'lodash/merge';
+
+// Default analytics object
+const defaultAnalytics = (heading) => ({
+  onComponentDidMount: {
+    ga_eventCategory: EVENT_CATEGORY.contentTools,
+    ga_eventAction: EVENT_ACTION.helpDrawerOpen,
+    ga_eventLabel: heading,
+  },
+  onComponentWillUnmount: {
+    ga_eventCategory: EVENT_CATEGORY.contentTools,
+    ga_eventAction: EVENT_ACTION.helpDrawerClose,
+    ga_eventLabel: heading,
+  },
+});
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -30,41 +43,20 @@ export class HelpDrawer extends React.PureComponent {
     const eventAction = 'onComponentDidMount';
 
     /* Send analytics event for helpdrawer open */
-    this.sendAnalyticsEvent(eventAction);
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+    );
   }
 
   componentWillUnmount() {
     const eventAction = 'onComponentWillUnmount';
 
     /* Send analytics event for helpdrawer close */
-    this.sendAnalyticsEvent(eventAction);
-  }
-
-  sendAnalyticsEvent(eventAction) {
-    const analyticsOverrides = get(this.props.analytics, eventAction);
-    const analyticsDisabled = analyticsOverrides === false;
-
-    if (window.utag && !analyticsDisabled) {
-      const payload = merge(this.getDefaultAnalytics(eventAction), analyticsOverrides);
-      sendTealiumEvent(payload);
-    }
-  }
-
-  getDefaultAnalytics(eventAction) {
-    const events = {
-      onComponentDidMount: {
-        ga_eventCategory: EVENT_CATEGORY.contentTools,
-        ga_eventAction: EVENT_ACTION.helpDrawerOpen,
-        ga_eventLabel: `${this.props.title || this.props.heading}`,
-      },
-      onComponentWillUnmount: {
-        ga_eventCategory: EVENT_CATEGORY.contentTools,
-        ga_eventAction: EVENT_ACTION.helpDrawerClose,
-        ga_eventLabel: `${this.props.title || this.props.heading}`,
-      },
-    };
-
-    return events[eventAction];
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+    );
   }
 
   render() {
