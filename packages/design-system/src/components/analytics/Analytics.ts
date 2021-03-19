@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 /**
  * Functions for sending events to Tealium/Google Analytics
  * Based on HRA Tool & SEP screener & Coverage Tools analytics service:
@@ -14,8 +15,6 @@ declare global {
     };
   }
 }
-
-import merge from 'lodash/merge';
 
 type EventType = 'link';
 const MAX_RETRIES = 3;
@@ -66,10 +65,12 @@ export function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0):
   }
 }
 
-
-export function sendAnalyticsEvent(overrides: boolean | AnalyticsEventProps, defaultPayload: AnalyticsEventProps): string {
+export function sendAnalyticsEvent(
+  overrides: boolean | Record<string, unknown>,
+  defaultPayload: AnalyticsEventProps
+): string {
   const analyticsDisabled = overrides === false;
-  
+
   if (window.utag && !analyticsDisabled) {
     const mergedPayload = merge(defaultPayload, overrides);
     const {
@@ -88,10 +89,12 @@ export function sendAnalyticsEvent(overrides: boolean | AnalyticsEventProps, def
       ga_eventValue,
       ...other_props,
     };
-  
+
     return sendEvent('link', payload);
   } else {
-    return "";
-  };
+    return '';
+  }
 }
 /* eslint-enable camelcase */
+
+export default sendEvent;
