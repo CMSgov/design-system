@@ -1,6 +1,6 @@
-import { sendTealiumEvent } from './Analytics';
+import { sendAnalyticsEvent } from './Analytics';
 
-describe('sendTealiumEvent', () => {
+describe('sendAnalyticsEvent', () => {
   const gaEventProps = {
     ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',
@@ -13,7 +13,7 @@ describe('sendTealiumEvent', () => {
     it('does nothing if window.utag does not exist', () => {
       const mock = jest.fn();
       window.utag = undefined;
-      sendTealiumEvent(gaEventProps);
+      sendAnalyticsEvent({}, gaEventProps);
       expect(mock).not.toHaveBeenCalled();
     });
   });
@@ -30,7 +30,7 @@ describe('sendTealiumEvent', () => {
     });
 
     it('calls window.utag.link with default props', () => {
-      sendTealiumEvent(gaEventProps);
+      sendAnalyticsEvent({}, gaEventProps);
       expect(window.utag?.link).toHaveBeenCalledWith(gaEventProps);
     });
 
@@ -44,7 +44,7 @@ describe('sendTealiumEvent', () => {
         ga_extraProps1: 'test extra props 1',
         ga_extraProps2: 'test extra props 2',
       };
-      sendTealiumEvent(gaEventExtraProps);
+      sendAnalyticsEvent(gaEventExtraProps, gaEventProps);
       expect(window.utag?.link).toHaveBeenCalledWith(gaEventExtraProps);
     });
   });
@@ -60,10 +60,9 @@ describe('sendTealiumEvent', () => {
           throw 'test event';
         }),
       };
-      window.console.log = jest.fn();
-      sendTealiumEvent(gaEventProps);
-      // eslint-disable-next-line no-console
-      expect(console.log).toHaveBeenCalledWith('Error sending event to Tealium', 'test event');
+      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(
+        'Error sending event to Tealium test event'
+      );
     });
 
     it('retries on missing utag.link', () => {
@@ -71,7 +70,7 @@ describe('sendTealiumEvent', () => {
       jest.useFakeTimers();
 
       window.utag = { link: undefined };
-      sendTealiumEvent(gaEventProps);
+      sendAnalyticsEvent({}, gaEventProps);
       expect(mock).not.toHaveBeenCalled();
 
       window.utag = { link: mock };
@@ -81,10 +80,9 @@ describe('sendTealiumEvent', () => {
 
     it('stops retry eventually', () => {
       jest.useFakeTimers();
-      window.console.log = jest.fn();
 
       window.utag = { link: undefined };
-      sendTealiumEvent(gaEventProps);
+      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(undefined);
 
       jest.runAllTimers();
       jest.runAllTimers();
@@ -93,11 +91,6 @@ describe('sendTealiumEvent', () => {
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 900);
-
-      // eslint-disable-next-line no-console
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining('Tealium event max retries reached')
-      );
     });
   });
 });
