@@ -60,6 +60,7 @@ $tooltip-background-color-inverse: $color-background !default;
 // Interior content of tooltip
 .ds-c-tooltip__content {
   color: $tooltip-color;
+  display: block;
   font-size: $small-font-size;
   font-weight: 400;
   padding: $spacer-1;

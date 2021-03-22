@@ -16,7 +16,7 @@ interface FormControlRenderProps {
   id: string;
   labelId: string;
   errorId: string;
-  setRef: (elem: HTMLDivElement) => void;
+  setRef: (elem: HTMLElement) => void;
 }
 
 interface FormControlProps {
@@ -56,7 +56,7 @@ interface FormControlProps {
   /**
    * Access a reference to the field input
    */
-  inputRef?: (elem: HTMLDivElement) => void;
+  inputRef?: (elem: HTMLElement) => void;
   /**
    * Applies the "inverse" UI theme
    */
@@ -107,9 +107,9 @@ export class FormControl extends React.Component<FormControlProps> {
   id: string;
   labelId: string;
   errorId: string;
-  inputRef?: HTMLDivElement;
+  inputRef?: HTMLElement;
 
-  setRef(elem: HTMLDivElement): void {
+  setRef(elem: HTMLElement): void {
     // Use React.forwardRef when upgraded to React 16.3
     if (this.props.focusTrigger) {
       this.inputRef = elem;
