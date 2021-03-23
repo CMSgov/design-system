@@ -18,6 +18,7 @@ module.exports = function (api) {
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-object-assign',
+    ['babel-plugin-typescript-to-proptypes', { comments: true }],
     'inline-react-svg',
   ];
 

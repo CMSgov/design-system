@@ -15,6 +15,8 @@ async function extractReactProps(sourceDir, options) {
   const sources = await getSourceDirs(sourceDir);
   const sourcesGlob = getSourcePattern(sources, 'src');
 
+  // TODO: Look into grabbing react prop docs from compiled files in dist
+  // so we can avoid publishing src files
   return streamPromise(
     gulp
       .src([
