@@ -40,7 +40,7 @@ interface FormControlProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement: 'top' | 'bottom';
+  errorPlacement?: 'top' | 'bottom';
   /**
    * Used to focus the field input on `componentDidMount()`
    */
