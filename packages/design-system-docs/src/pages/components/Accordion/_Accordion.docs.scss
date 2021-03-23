@@ -41,6 +41,10 @@ Style guide: components.accordion.react-accordionitem
 - **$accordion-header-bg-color** - Background color of the accordion header
 - **$accordion-header-bg-hover-color** - Background color of the accordion header when hovered
 
+### Keyboard support
+- **header** - *Enter or Spacebar* - Changes the collapsed/expanded state of the associated accordion panel
+- **header** - *Arrow Down* - Moves focus to the next accordion header
+- **header** - *Arrow Up* - Moves focus to the previous accordion header
 
 ### When to use
 
