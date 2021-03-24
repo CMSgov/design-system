@@ -16,24 +16,25 @@ export interface AccordionProps {
 
 const handleKeyDown = (e) => {
   const target = e.target;
-  // To Do - Figure out different way to get triggers
-  var triggers = Array.prototype.slice.call(document.querySelectorAll('.ds-c-accordion__button'));
-  console.log(triggers);
+  const accordionElement = e.currentTarget;
+
   if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-    const direction = e.key == 'ArrowDown' ? 1 : -1;
-    var index = triggers.indexOf(target);
-    var length = triggers.length;
-    var newIndex = (index + length + direction) % length;
+    const triggers = Array.prototype.slice.call(
+      accordionElement.querySelectorAll('.ds-c-accordion__button')
+    );
+    const direction = e.key === 'ArrowDown' ? 1 : -1;
+    const index = triggers.indexOf(target);
+    const length = triggers.length;
+    const newIndex = (index + length + direction) % length;
 
     triggers[newIndex].focus();
-
     e.preventDefault();
   }
 };
 
 const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
-
+  
   return (
     <div onKeyDown={handleKeyDown} className={classes}>
       {children}
