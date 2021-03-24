@@ -18,6 +18,12 @@ $tooltip-background-color-inverse: $color-background !default;
   margin: 0;
 }
 
+%trigger-underline-styles {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
 // stylelint-disable selector-no-qualifying-type
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
@@ -34,11 +40,17 @@ $tooltip-background-color-inverse: $color-background !default;
 
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
+  @extend %trigger-underline-styles;
   color: $color-primary;
   padding: 0;
-  text-decoration: underline;
-  text-decoration-style: dashed;
 }
+
+// stylelint-disable-next-line selector-class-pattern
+.ds-base--inverse .ds-c-tooltip__trigger-link {
+  @extend %link-inverse;
+  @extend %trigger-underline-styles;
+}
+
 // stylelint-enable selector-no-qualifying-type
 
 // Tooltip arrow

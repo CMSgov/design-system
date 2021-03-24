@@ -85,7 +85,7 @@
   //
   // Specifically exclude '.ds-c-button' because this is most likely case where
   // a inverse link element will have other styles applied
-  .ds-base--inverse a:not(.ds-c-button) {
+  .ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
     @extend %link-inverse;
   }
 }
