@@ -186,6 +186,11 @@ Dialog.propTypes = {
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
+   * Set focus to a specific element that should receive initial focus (if `focusDialog={false}`).
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#initialfocus)
+   */
+  initialFocus: PropTypes.string,
+  /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
    * the dialog (if `underlayClickExits=true`).
