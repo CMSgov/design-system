@@ -1,13 +1,22 @@
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 const defaultAccordionItemChildren = 'Foo';
 const defaultAccordionItemProps = {
   id: 'accordionitem-1',
   heading: 'Accordion item header',
 };
+
+const children = [
+  <AccordionItem heading="First amendment" id="1">
+    <p>Hello world!</p>
+  </AccordionItem>,
+  <AccordionItem heading="Second amendment" id="2">
+    <p>Hello world!</p>
+  </AccordionItem>,
+];
 
 function render(customProps = {}, children) {
   const props = { ...customProps };
@@ -26,14 +35,12 @@ function render(customProps = {}, children) {
 
 describe('Accordion', function () {
   it('renders accordion', () => {
-    const children = [];
     const { wrapper } = render(undefined, children);
 
     expect(wrapper.hasClass('ds-c-accordion')).toBe(true);
   });
 
   it('renders additional className', () => {
-    const children = [];
     const { wrapper } = render(
       {
         className: 'ds-u-test',
@@ -45,7 +52,6 @@ describe('Accordion', function () {
   });
 
   it('renders ds-c-accordion--bordered class when a bordered prop is set', () => {
-    const children = [];
     const { wrapper } = render(
       {
         bordered: true,
@@ -57,18 +63,38 @@ describe('Accordion', function () {
   });
 
   it('selects the second accordion item on down arrow keyDown', () => {
-    const children = [
-      <AccordionItem heading="First amendment" id="1">
-        <p>Hello world!</p>
-      </AccordionItem>,
-      <AccordionItem heading="Second amendment" id="2">
-        <p>Hello world!</p>
-      </AccordionItem>,
-    ];
-    const data = render({}, children);
-    const accordionitem = data.wrapper.find('AccordionItem');
-    accordionitem.first().simulate('keyDown', { key: 'ArrowDown' });
+    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
+    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
+    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
 
-    expect(accordionitem.at(1).find(':focus')).toBe(true);
+    accordionitemButton0.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
+
+    const focusedElement = document.activeElement;
+
+    expect(focusedElement.id).toEqual(accordionitemButton1.props().id);
+  });
+
+  it('cycles back to the first accordion item on down arrow keyDown when you are on the last accordion item', () => {
+    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
+    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
+    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
+
+    accordionitemButton1.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
+
+    const focusedElement = document.activeElement;
+
+    expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
+  });
+
+  it('selects the first accordion item on up arrow keyDown', () => {
+    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
+    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
+    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
+
+    accordionitemButton1.simulate('focus').simulate('keyUp', { key: 'ArrowUp' });
+
+    const focusedElement = document.activeElement;
+
+    expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
   });
 });
