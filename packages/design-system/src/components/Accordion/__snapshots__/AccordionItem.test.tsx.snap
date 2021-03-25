@@ -4,6 +4,7 @@ exports[`AccordionItem renders an accordion item 1`] = `
 <Accordion>
   <div
     className="ds-c-accordion"
+    onKeyDown={[Function]}
   >
     <AccordionItem
       heading="Heading for accordion item"
