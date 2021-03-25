@@ -67,8 +67,8 @@ describe('Accordion', function () {
     ];
     const data = render({}, children);
     const accordionitem = data.wrapper.find('AccordionItem');
-    accordionitem.at(1).simulate('keyDown', { key: 'ArrowDown' });
+    accordionitem.first().simulate('keyDown', { key: 'ArrowDown' });
 
-    expect(accordionitem.at(1).focus()).toBe(true);
+    expect(accordionitem.at(1).find(':focus')).toBe(true);
   });
 });
