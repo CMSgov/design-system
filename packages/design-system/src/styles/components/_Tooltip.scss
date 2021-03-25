@@ -1,4 +1,5 @@
 @import '../settings/index.scss';
+@import '../base/link.scss';
 
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
@@ -21,8 +22,16 @@ $tooltip-background-color-inverse: $color-background !default;
 %trigger-underline-styles {
   text-decoration: underline;
   text-decoration-style: dotted;
-  text-underline-offset: 2px;
+  text-underline-position: under;
 }
+/* stylelint-disable media-feature-value-dollar-variable */
+// Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  %trigger-underline-styles {
+    text-underline-offset: 2px;
+  }
+}
+/* stylelint-enable media-feature-value-dollar-variable */
 
 // stylelint-disable selector-no-qualifying-type
 // Tooltip trigger style
