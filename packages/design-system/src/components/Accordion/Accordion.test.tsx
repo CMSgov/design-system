@@ -61,40 +61,28 @@ describe('Accordion', function () {
 
     expect(wrapper.hasClass('ds-c-accordion--bordered')).toBe(true);
   });
+});
+
+describe('Accordion focus', function () {
+  const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
+  const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
+  const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
 
   it('selects the second accordion item on down arrow keyDown', () => {
-    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
-    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
-    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
-
     accordionitemButton0.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
-
     const focusedElement = document.activeElement;
-
     expect(focusedElement.id).toEqual(accordionitemButton1.props().id);
   });
 
   it('cycles back to the first accordion item on down arrow keyDown when you are on the last accordion item', () => {
-    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
-    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
-    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
-
     accordionitemButton1.simulate('focus').simulate('keyDown', { key: 'ArrowDown' });
-
     const focusedElement = document.activeElement;
-
     expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
   });
 
   it('selects the first accordion item on up arrow keyDown', () => {
-    const wrapper = mount(<Accordion>{children}</Accordion>, { attachTo: document.body });
-    const accordionitemButton0 = wrapper.find('button.ds-c-accordion__button').at(0);
-    const accordionitemButton1 = wrapper.find('button.ds-c-accordion__button').at(1);
-
     accordionitemButton1.simulate('focus').simulate('keyUp', { key: 'ArrowUp' });
-
     const focusedElement = document.activeElement;
-
     expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
   });
 });
