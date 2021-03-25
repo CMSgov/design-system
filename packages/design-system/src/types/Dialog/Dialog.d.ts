@@ -98,6 +98,10 @@ export interface DialogProps {
    * Enable exiting the dialog when a user clicks the underlay.
    */
   underlayClickExits?: boolean;
+  /**
+   * Allow additional AriaModal props to be passed to Dialog
+   */
+  additional_props?: Record<string, unknown>;
 }
 
 type OmitProps = 'size' | 'title';
