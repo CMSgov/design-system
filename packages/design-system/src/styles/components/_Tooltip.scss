@@ -28,7 +28,7 @@ $tooltip-background-color-inverse: $color-background !default;
 // Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
-    text-underline-offset: 2px;
+    text-underline-offset: 4px;
   }
 }
 /* stylelint-enable  */
