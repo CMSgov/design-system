@@ -8,6 +8,10 @@
   padding-top: 16px;
 }
 
+.ds-c-review:last-of-type {
+  border-bottom: 0;
+}
+
 .ds-c-review__heading {
   display: inline-block;
   font-size: $base-font-size;
