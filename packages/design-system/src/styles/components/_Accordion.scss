@@ -3,7 +3,7 @@
 $accordion-header-bg-color: $color-gray-lightest;
 $accordion-header-bg-hover-color: $color-gray-lighter;
 $accordion-border-color: $color-gray-lightest;
-$accordion-font-family: $font-sans;
+$accordion-header-font-family: $font-sans;
 
 .ds-c-accordion {
   color: $color-base;
@@ -36,7 +36,7 @@ $accordion-font-family: $font-sans;
   color: $color-base;
   cursor: pointer;
   display: inline-block;
-  font-family: $accordion-font-family;
+  font-family: $accordion-header-font-family;
   font-size: $base-font-size;
   font-weight: $font-bold;
   //   line-height: 0.9;

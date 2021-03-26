@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 ReactDOM.render(
   <div className="example--wrapper">
     <Accordion bordered>
-      <AccordionItem heading="First amendment">
+      <AccordionItem heading="First amendment" contentClassName="jimmy" defaultOpen>
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
