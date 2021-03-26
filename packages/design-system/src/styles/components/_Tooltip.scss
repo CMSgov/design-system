@@ -3,12 +3,12 @@
 
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
-$tooltip-plus-border-size: 24px !default;
+$tooltip-icon-container-size: 24px !default;
 
 $tooltip-border-radius: 4px !default;
-$tooltip-color: $color-base-inverse !default;
+$tooltip-text-color: $color-base-inverse !default;
 $tooltip-background-color: $color-background-inverse !default;
-$tooltip-color-inverse: $color-base !default;
+$tooltip-text-color-inverse: $color-base !default;
 $tooltip-background-color-inverse: $color-background !default;
 
 %trigger-reset-styles {
@@ -80,7 +80,7 @@ $tooltip-background-color-inverse: $color-background !default;
 
 // Interior content of tooltip
 .ds-c-tooltip__content {
-  color: $tooltip-color;
+  color: $tooltip-text-color;
   display: block;
   font-size: $small-font-size;
   font-weight: 400;
@@ -190,6 +190,6 @@ $tooltip-background-color-inverse: $color-background !default;
   }
 
   .ds-c-tooltip__content {
-    color: $tooltip-color-inverse;
+    color: $tooltip-text-color-inverse;
   }
 }
