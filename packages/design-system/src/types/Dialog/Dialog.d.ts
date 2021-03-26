@@ -101,7 +101,7 @@ export interface DialogProps {
   /**
    * Allow additional AriaModal props to be passed to Dialog
    */
-  additional_props?: Record<string, unknown>;
+  [additional_props: string]: unknown;
 }
 
 type OmitProps = 'size' | 'title';
