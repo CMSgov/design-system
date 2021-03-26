@@ -31,14 +31,16 @@ function setModalExamples() {
   const dialogHeading = document.getElementById('dialog-heading');
   const dialogWrap = document.getElementById('dialog-wrap');
 
-  document.querySelectorAll('.dialog-open-btn').forEach((btn) => {
+  // Convert NodeList into an array with the slice.call() method because
+  // querySelectorAll() returns a NodeList and on IE 11, foreach() only works on Array objects
+  Array.prototype.slice.call(document.querySelectorAll('.dialog-open-btn')).forEach((btn) => {
     btn.addEventListener('click', () => {
       dialog.classList.add(btn.dataset.type);
       dialogHeading.textContent = btn.dataset.heading;
       dialogWrap.classList.remove('ds-u-display--none');
     });
   });
-  document.querySelectorAll('.dialog-close-btn').forEach((btn) => {
+  Array.prototype.slice.call(document.querySelectorAll('.dialog-close-btn')).forEach((btn) => {
     btn.addEventListener('click', () => {
       dialog.className = 'ds-c-dialog';
       dialogWrap.classList.add('ds-u-display--none');
