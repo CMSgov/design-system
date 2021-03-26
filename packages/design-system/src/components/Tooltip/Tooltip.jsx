@@ -8,7 +8,6 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
 import uniqueId from 'lodash.uniqueid';
@@ -199,7 +198,6 @@ export class Tooltip extends React.Component {
       : {
           onBlur: () => this.handleBlur(),
         };
-    const bodyElement = document.querySelector('body');
 
     const tooltipContent = () => (
       <div
@@ -222,7 +220,7 @@ export class Tooltip extends React.Component {
         )}
       </div>
     );
-    return ReactDOM.createPortal(
+    return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         {dialog ? (
           <FocusTrap
@@ -238,8 +236,7 @@ export class Tooltip extends React.Component {
         ) : (
           tooltipContent()
         )}
-      </CSSTransition>,
-      bodyElement
+      </CSSTransition>
     );
   }
 
@@ -262,10 +259,10 @@ export class Tooltip extends React.Component {
         };
 
     return (
-      <span {...eventHandlers}>
+      <div className="ds-c-tooltip__container" {...eventHandlers}>
         {this.renderTrigger()}
         {this.renderContent()}
-      </span>
+      </div>
     );
   }
 }

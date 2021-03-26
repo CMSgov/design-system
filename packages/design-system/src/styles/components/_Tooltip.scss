@@ -18,6 +18,10 @@ $tooltip-background-color-inverse: $color-background !default;
   margin: 0;
 }
 
+.ds-c-tooltip__container {
+  display: inline-block;
+}
+
 // stylelint-disable selector-no-qualifying-type
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
