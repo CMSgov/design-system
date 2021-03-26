@@ -10,7 +10,7 @@ export interface AccordionItemProps {
 
   children?: React.ReactNode;
   /**
-   * Class to be applied to the heading `<h2>` tag of an accordion item.
+   * Class to be applied to the content `<div>` tag of an accordion item.
    */
   contentClassName?: string;
 
@@ -34,10 +34,7 @@ export interface AccordionItemProps {
 export interface AccordionItemState {
   isOpen: boolean;
 }
-export class AccordionItem extends React.Component<
-  AccordionItemProps, 
-  AccordionItemState
-> {
+export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
   contentId: string;
   buttonId: string;
 
@@ -55,13 +52,7 @@ export class AccordionItem extends React.Component<
   }
 
   render(): React.ReactNode {
-    const {
-      buttonClassName,
-      children,
-      contentClassName,
-      heading,
-      headingLevel = '2',
-    } = this.props;
+    const { buttonClassName, children, contentClassName, heading, headingLevel = '2' } = this.props;
 
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
@@ -81,13 +72,18 @@ export class AccordionItem extends React.Component<
               {heading}
             </button>
           </HeadingTag>
-          <div className={contentClasses} aria-labelledby={this.buttonId} id={this.contentId} hidden={!this.state.isOpen}>
+          <div
+            className={contentClasses}
+            aria-labelledby={this.buttonId}
+            id={this.contentId}
+            hidden={!this.state.isOpen}
+          >
             {children}
           </div>
         </>
       );
     }
   }
-};
+}
 
 export default AccordionItem;
