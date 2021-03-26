@@ -22,7 +22,20 @@ describe('FormLabel', () => {
     };
     const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
+    expect(wrapper.find('InlineError').length).toBe(1);
+    expect(wrapper.find('InlineError').prop('id')).toEqual('name-error');
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('uses provided errorId', () => {
+    const props = {
+      errorMessage: 'Nah, try again.',
+      errorId: 'error',
+    };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
+
+    expect(wrapper.find('InlineError').length).toBe(1);
+    expect(wrapper.find('InlineError').prop('id')).toEqual('error');
   });
 
   it('renders hint string', () => {

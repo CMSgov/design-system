@@ -20,6 +20,10 @@ export interface FormLabelProps {
    */
   errorMessage?: React.ReactNode;
   /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
    */

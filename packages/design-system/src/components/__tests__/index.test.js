@@ -15,6 +15,7 @@ function getComponentFilenames(directoryPaths) {
         // We only want the component file though.
         files
           .filter((name) => name.match(/^([a-z]+)\.jsx?$/i))
+          .filter((name) => !name.match(/^index\.jsx?$/i))
           .map((name) => name.replace(/\.jsx?/, ''))
       )
     )
@@ -35,6 +36,7 @@ function getDirectories(paths) {
 }
 
 const ignoredComponents = [
+  'DateInput',
   'Mask',
   'ReviewLink',
   'Step',
@@ -44,9 +46,10 @@ const ignoredComponents = [
   'WrapperDiv',
   'VerticalNavItem',
   'VerticalNavItemLabel',
+  'maskHelpers',
 ];
 
-const additionalModules = ['unmaskValue', 'getMonthNames'];
+const additionalModules = ['maskValue', 'unmaskValue'];
 
 describe('Components index', () => {
   it("exports all components except ones we don't want to expose", () => {

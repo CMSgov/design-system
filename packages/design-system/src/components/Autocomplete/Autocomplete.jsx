@@ -21,6 +21,7 @@ import React from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
+import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
@@ -90,6 +91,20 @@ export class Autocomplete extends React.PureComponent {
     // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, (child) => {
       if (isTextField(child)) {
+        // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+        // Add errorMessageClassName to fix the styles for bottom placed errors
+        const bottomError =
+          (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
+          child.props.errorMessage;
+        const errorMessageClassName = bottomError
+          ? classNames(
+              'ds-c-autocomplete__error-message',
+              {
+                'ds-c-autocomplete__error-message--clear-btn': this.props.clearSearchButton,
+              },
+              child.props.errorMessageClassName
+            )
+          : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
           'aria-controls': isOpen ? this.listboxId : null,
@@ -97,6 +112,7 @@ export class Autocomplete extends React.PureComponent {
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
           autoComplete: this.props.autoCompleteLabel,
+          errorMessageClassName: errorMessageClassName,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
           inputRef: this.props.inputRef,
@@ -246,6 +262,10 @@ Autocomplete.propTypes = {
    * attribute on a label and the id of an input.
    */
   id: PropTypes.string,
+  /**
+   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+   */
+  getA11yStatusMessage: PropTypes.func,
   /**
    * Access a reference to the child `TextField`'s `input` element
    */

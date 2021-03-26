@@ -1,8 +1,9 @@
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import Choice from './Choice';
-import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import pick from 'lodash/pick';
 
 export class ChoiceList extends React.PureComponent {
   constructor(props) {
@@ -24,29 +25,6 @@ export class ChoiceList extends React.PureComponent {
 
     this.handleBlur = this.handleBlur.bind(this);
     this.choiceRefs = [];
-  }
-
-  /**
-   * Creates a list of Choice components
-   */
-  choices() {
-    return this.props.choices.map((choiceProps) => {
-      choiceProps.inversed = this.props.inversed;
-      choiceProps.name = this.props.name;
-      choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
-      choiceProps.onChange = this.props.onChange;
-      choiceProps.size = this.props.size;
-      choiceProps.type = this.props.type;
-      choiceProps.inputClassName = classNames(choiceProps.inputClassName, {
-        'ds-c-choice--error': this.props.errorMessage,
-      });
-      choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
-      choiceProps.inputRef = (ref) => {
-        this.choiceRefs.push(ref);
-      };
-
-      return <Choice key={choiceProps.value} {...choiceProps} />;
-    });
   }
 
   handleBlur(evt) {
@@ -71,20 +49,33 @@ export class ChoiceList extends React.PureComponent {
   }
 
   render() {
+    const containerProps = pick(this.props, FormControlPropKeys);
+
+    const choices = this.props.choices.map((choiceProps) => {
+      choiceProps.inversed = this.props.inversed;
+      choiceProps.name = this.props.name;
+      choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
+      choiceProps.onChange = this.props.onChange;
+      choiceProps.size = this.props.size;
+      choiceProps.type = this.props.type;
+      choiceProps.inputClassName = classNames(choiceProps.inputClassName, {
+        'ds-c-choice--error': this.props.errorMessage,
+      });
+      choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
+      choiceProps.inputRef = (ref) => {
+        this.choiceRefs.push(ref);
+      };
+
+      return <Choice key={choiceProps.value} {...choiceProps} />;
+    });
+
     return (
-      <fieldset className={classNames('ds-c-fieldset', this.props.className)}>
-        <FormLabel
-          className={this.props.labelClassName}
-          component="legend"
-          errorMessage={this.props.errorMessage}
-          hint={this.props.hint}
-          requirementLabel={this.props.requirementLabel}
-          inversed={this.props.inversed}
-        >
-          {this.props.label}
-        </FormLabel>
-        {this.choices()}
-      </fieldset>
+      <FormControl
+        {...containerProps}
+        component="fieldset"
+        labelComponent="legend"
+        render={() => choices}
+      />
     );
   }
 }
@@ -103,6 +94,14 @@ ChoiceList.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional hint text to display
    */

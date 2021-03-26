@@ -47,11 +47,11 @@ describe('Table', function () {
     expect(table.hasClass('ds-c-table--borderless')).toBe(true);
   });
 
-  it('applies dense table classes', () => {
-    const { wrapper } = render({ dense: true });
+  it('applies compact table classes', () => {
+    const { wrapper } = render({ compact: true });
     const table = wrapper.find('table');
 
-    expect(table.hasClass('ds-c-table--dense')).toBe(true);
+    expect(table.hasClass('ds-c-table--compact')).toBe(true);
   });
 
   it('applies zebra stripe classes', () => {
@@ -61,7 +61,7 @@ describe('Table', function () {
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
   });
 
-  it('applies responsive table', () => {
+  it('applies responsive stacked table', () => {
     const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
     const table = wrapper.find('table');
 

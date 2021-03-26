@@ -1,4 +1,4 @@
-import { MonthPicker } from '@cmsgov/design-system';
+import { MonthPicker } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -19,6 +19,7 @@ ReactDOM.render(
       }
       selectAllText="Select all"
       clearAllText="Clear all"
+      className="ds-u-margin-y--0"
     />
     <div className="example--wrapper example--inverse">
       <MonthPicker

@@ -1,19 +1,16 @@
-import FormLabel from '../FormLabel/FormLabel';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import Select from './Select';
+import { errorPlacementDefault } from '../flags';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
-      if (props.children && props.options.length > 0) {
-        console.warn(
-          `Cannot use 'options' and 'children' React properties at the same time in the <Dropdown> component. Please use 'children' for custom options and 'options' for general cases`
-        );
-      }
       // 'ariaLabel' is provided with a `label` prop that is not an empty string
       if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
         console.warn(
@@ -29,94 +26,29 @@ export class Dropdown extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    if (this.props.focusTrigger) {
-      this.focusRef && this.focusRef.focus();
-    }
-  }
-
-  id() {
-    // Use provided custom id
-    if (this.props.id) {
-      return this.props.id;
-    }
-    // Use generated id
-    if (!this._id) {
-      // Cache the ID so we're not regenerating it on each method call
-      this._id = uniqueId(`select_${this.props.name}_`);
-    }
-    return this._id;
-  }
-
   render() {
-    /* eslint-disable prefer-const */
-    const {
-      ariaLabel,
-      className,
-      children,
-      errorMessage,
-      fieldClassName,
-      focusTrigger,
-      hint,
-      inputRef,
-      inversed,
-      label,
-      labelClassName,
-      options,
-      requirementLabel,
-      size,
-      ...selectProps
-    } = this.props;
-    /* eslint-enable prefer-const */
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps = omit(this.props, FormControlPropKeys);
 
-    const classes = classNames(className);
-    const fieldClasses = classNames(
-      'ds-c-field',
-      {
-        'ds-c-field--error': errorMessage,
-        'ds-c-field--inverse': inversed,
-      },
-      size && `ds-c-field--${size}`,
-      fieldClassName
-    );
-
-    const optionElements = options.map((option) => (
-      <option key={option.value} value={option.value}>
-        {option.label}
-      </option>
-    ));
+    // Use errorPlacement feature flag for <Select>
+    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
 
     return (
-      <div className={classes}>
-        <FormLabel
-          className={labelClassName}
-          component="label"
-          errorMessage={errorMessage}
-          fieldId={this.id()}
-          hint={hint}
-          requirementLabel={requirementLabel}
-          inversed={inversed}
-        >
-          {label}
-        </FormLabel>
-        <select
-          aria-label={ariaLabel}
-          className={fieldClasses}
-          id={this.id()}
-          /* eslint-disable no-return-assign */
-          ref={(ref) => {
-            if (focusTrigger) {
-              this.focusRef = ref;
-            } else if (inputRef) {
-              inputRef(ref);
-            }
-          }}
-          /* eslint-enable no-return-assign */
-          {...selectProps}
-        >
-          {/* Render custom options if provided */ children || optionElements}
-        </select>
-      </div>
+      <FormControl
+        {...containerProps}
+        component="div"
+        labelComponent="label"
+        render={({ id, errorId, setRef }) => (
+          <Select
+            {...inputOnlyProps}
+            {...{ id, setRef, errorId }}
+            errorMessage={this.props.errorMessage}
+            errorPlacement={errorPlacement}
+            inversed={this.props.inversed}
+          />
+        )}
+      />
     );
   }
 }
@@ -144,6 +76,14 @@ Dropdown.propTypes = {
    */
   disabled: PropTypes.bool,
   errorMessage: PropTypes.node,
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional classes to be added to the select element
    */
