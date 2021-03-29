@@ -53,7 +53,7 @@ Style guide: components.dialog.react
     - `Tab` to move the focus sequentially through the list of focusable items
     - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
 
-### Focus Management
+#### Focus Management
 - When the modal is opened, the entire modal is the default focus state. Most screen readers will announce the entire dialog content.
 - Focus is trapped within the modal and users can then navigate through the dialog actions with the keyboard.
 - Escape will close the modal. To disable exiting when users press the Escape key, set the `escapeExits` prop to `false`
