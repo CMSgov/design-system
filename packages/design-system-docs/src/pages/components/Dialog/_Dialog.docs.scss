@@ -38,7 +38,7 @@ Style guide: components.dialog.react
 - Use when you require an immediate response from the user.  
 - Use to request information that is preventing the system from continuing a user-initiated process.
 - Use to notify the user of urgent information concerning their current work. Modal dialogs are commonly used to report system errors or convey a consequence of a user’s action.
-- Confirm a user decision. Use a modal dialog to confirm user decisions. Clearly describe the action being confirmed and explain any potential consequences that it may cause. Both the title and the button should reflect the action that will occur. If the action is destructive or irreversible then use a transactional danger modal.
+- Use to confirm a user decision. Clearly describe the action being confirmed and explain any potential consequences that it may cause. Both the title and the button should reflect the action that will occur. If the action is destructive or irreversible then use a transactional danger modal.
 
 ### When to consider alternatives
 - Every time! Before using a modal, consider whether there’s another component that might be less disruptive for the user. Modals should be a last resort.
