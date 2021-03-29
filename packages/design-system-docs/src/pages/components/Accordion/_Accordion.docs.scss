@@ -43,11 +43,6 @@ Style guide: components.accordion.react-accordionitem
 - **$accordion-header-font-family** - Font used for the accordion header
 
 
-### Keyboard support
-- **header** - *Enter or Spacebar* - Changes the collapsed/expanded state of the associated accordion panel
-- **header** - *Arrow Down* - Moves focus to the next accordion header
-- **header** - *Arrow Up* - Moves focus to the previous accordion header
-
 ### When to use
 
 - Use an accordion to see an overview of multiple, related sections of content
@@ -67,6 +62,10 @@ Accordions increase cognitive load and interaction cost, as users have to make d
 - Give interactive elements enough space. Make sure interactive elements within the collapsible region are far enough from the headers that users don’t accidentally trigger a collapse.
 
 ### Accessibility
+#### Keyboard support
+- **header** - `Ente` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
+- **header** - `Arrow Down` - Moves focus to the next accordion header
+- **header** - `Arrow Up` - Moves focus to the previous accordion header
 
 ### Learn more
 
