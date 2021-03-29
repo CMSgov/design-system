@@ -44,10 +44,15 @@ export interface DialogProps {
    */
   closeButtonSize?: DialogCloseButtonSize;
   /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeButtonText?: React.ReactNode;
+  /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation?: string;
-  /**
+    /**
    * For internationalization purposes, the text for the "Close" button must be
    * passed in as a prop.
    */
@@ -58,9 +63,9 @@ export interface DialogProps {
    */
   escapeExits?: boolean;
   /**
-    * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
-    * @hide-prop Disable exiting the dialog when a user presses the Escape key.
-    */
+   * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
+   * @hide-prop Disable exiting the dialog when a user presses the Escape key.
+   */
   escapeExitDisabled?: boolean;
   /**
    * Same as `applicationNode`, but a function that returns the node instead of
