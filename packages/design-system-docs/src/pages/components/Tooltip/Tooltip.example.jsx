@@ -21,7 +21,7 @@ ReactDOM.render(
         <Tooltip
           className="ds-c-tooltip__trigger-link"
           component="a"
-          title="Tooltip trigger uses <a> for the trigger, styled with dashed underline"
+          title="Tooltip trigger uses <a> for the trigger, styled with dotted underline"
         >
           inline trigger
         </Tooltip>
@@ -90,7 +90,7 @@ ReactDOM.render(
             className="ds-c-tooltip__trigger-link"
             component="a"
             inversed
-            title="Tooltip trigger uses <a> for the trigger, styled with dashed underline"
+            title="Tooltip trigger uses <a> for the trigger, styled with dotted underline"
           >
             inline trigger
           </Tooltip>
