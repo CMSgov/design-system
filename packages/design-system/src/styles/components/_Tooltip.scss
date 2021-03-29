@@ -19,9 +19,8 @@ $tooltip-background-color-inverse: $color-background !default;
   margin: 0;
 }
 
-
 .ds-c-tooltip__container {
-  display: inline-block;
+  display: inline;
 }
 
 %trigger-underline-styles {
