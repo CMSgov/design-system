@@ -33,7 +33,7 @@ export const Dialog = function (props) {
     }
     if (props.escapeExitDisabled) {
       console.warn(
-        `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use AriaModal props 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
+        `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
       );
     }
     if (props.closeText) {

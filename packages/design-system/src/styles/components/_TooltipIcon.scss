@@ -4,10 +4,10 @@
   border-radius: 100%;
   box-sizing: border-box;
   display: inline-block;
-  height: $tooltip-plus-border-size;
+  height: $tooltip-icon-container-size;
   position: relative;
   vertical-align: middle;
-  width: $tooltip-plus-border-size;
+  width: $tooltip-icon-container-size;
 
   &:hover {
     border-color: $color-gray-lighter;
