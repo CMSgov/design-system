@@ -200,7 +200,7 @@ export class Tooltip extends React.Component {
         };
 
     const tooltipContent = () => (
-      <span
+      <div
         id={this.id}
         tabIndex={dialog ? '-1' : null}
         ref={this.setTooltipElement}
@@ -214,11 +214,11 @@ export class Tooltip extends React.Component {
         {...eventHandlers}
       >
         <span className="ds-c-tooltip__arrow" data-popper-arrow />
-        <span className="ds-c-tooltip__content ds-base">{title}</span>
+        <div className="ds-c-tooltip__content ds-base">{title}</div>
         {!dialog && (
           <span className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
         )}
-      </span>
+      </div>
     );
     return (
       <CSSTransition in={this.state.active} classNames="ds-c-tooltip" timeout={transitionDuration}>
@@ -259,10 +259,10 @@ export class Tooltip extends React.Component {
         };
 
     return (
-      <span {...eventHandlers}>
+      <div className="ds-c-tooltip__container" {...eventHandlers}>
         {this.renderTrigger()}
         {this.renderContent()}
-      </span>
+      </div>
     );
   }
 }
