@@ -53,7 +53,7 @@ export interface DialogProps {
    */
   closeButtonVariation?: string;
   /**
-   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`.
+   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`
    * @hide-prop The text for the "Close" button
    */
   closeText?: React.ReactNode;
