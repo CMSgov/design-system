@@ -49,9 +49,9 @@ Style guide: components.dialog.react
 
 ### Accessibility
 #### Keyboard support
-    - `Enter` and `Space` to select the highlighted item.
-    - `Tab` to move the focus sequentially through the list of focusable items
-    - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
+- `Enter` or `Space` to select the highlighted item.
+- `Tab` to move the focus sequentially through the list of focusable items.
+- `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order.
 
 #### Focus Management
 - When the modal is opened, the entire modal is the default focus state. Most screen readers will announce the entire dialog content.
