@@ -9,6 +9,7 @@ export { default as Button } from './Button/Button';
 export { default as Choice } from './ChoiceList/Choice';
 export { default as ChoiceList } from './ChoiceList/ChoiceList';
 export { default as DateField } from './DateField/DateField';
+export { default as DateInput } from './DateField/DateInput';
 export { default as Dialog } from './Dialog/Dialog';
 export { default as Dropdown } from './Dropdown/Dropdown';
 export { default as Select } from './Dropdown/Select';
