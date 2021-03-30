@@ -84,7 +84,7 @@ interface FormControlProps {
   /**
    * A function that returns a field input element to accept render props
    */
-  render: (renderProps: FormControlRenderProps) => React.ReactNode | any;
+  render: (renderProps: FormControlRenderProps) => React.ReactNode;
 }
 
 export class FormControl extends React.Component<FormControlProps> {
