@@ -38,6 +38,10 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
   contentId: string;
   buttonId: string;
 
+  static defaultProps = {
+    headingLevel: '2',
+  };
+
   constructor(props: AccordionItemProps) {
     super(props);
 
