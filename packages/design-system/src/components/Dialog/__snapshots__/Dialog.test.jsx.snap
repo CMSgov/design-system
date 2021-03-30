@@ -54,6 +54,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
   closeButtonVariation="transparent"
   closeText="Close"
   escapeExitDisabled={false}
+  escapeExits={true}
   getApplicationNode={
     [MockFunction] {
       "calls": Array [
