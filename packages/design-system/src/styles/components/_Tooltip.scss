@@ -20,6 +20,10 @@ $tooltip-background-color: $color-background !default;
   margin: 0;
 }
 
+.ds-c-tooltip__container {
+  display: inline;
+}
+
 %trigger-underline-styles {
   text-decoration: underline;
   text-decoration-style: dotted;
