@@ -85,7 +85,7 @@ export const Dialog = function (props) {
             variation={closeButtonVariation}
           >
             {
-              // TODO: make heading required after removing title
+              // TODO: remove closeText support once fully deprecated
               closeText || closeButtonText
             }
           </Button>
@@ -170,6 +170,7 @@ Dialog.propTypes = {
   closeButtonVariation: PropTypes.string,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`.
+   * @hide-prop The text for the "Close" button
    */
   closeText: PropTypes.node,
   /**
