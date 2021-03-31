@@ -75,6 +75,8 @@ interface TooltipState {
 }
 
 export default class Tooltip extends React.Component<
-  React.HTMLProps<HTMLButtonElement> & TooltipProps, TooltipState> {
+  Omit<React.HTMLProps<HTMLButtonElement>, 'title'> & TooltipProps,
+  TooltipState
+> {
   render(): JSX.Element;
 }
