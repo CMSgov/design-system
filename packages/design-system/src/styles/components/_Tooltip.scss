@@ -1,13 +1,14 @@
 @import '../settings/index.scss';
+@import '../base/link.scss';
 
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
-$tooltip-plus-border-size: 24px !default;
+$tooltip-icon-container-size: 24px !default;
 
 $tooltip-border-radius: 4px !default;
-$tooltip-color: $color-base-inverse !default;
+$tooltip-text-color: $color-base-inverse !default;
 $tooltip-background-color: $color-background-inverse !default;
-$tooltip-color-inverse: $color-base !default;
+$tooltip-text-color-inverse: $color-base !default;
 $tooltip-background-color-inverse: $color-background !default;
 
 %trigger-reset-styles {
@@ -17,6 +18,24 @@ $tooltip-background-color-inverse: $color-background !default;
   display: inline-block;
   margin: 0;
 }
+
+.ds-c-tooltip__container {
+  display: inline;
+}
+
+%trigger-underline-styles {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-position: under;
+}
+/* stylelint-disable  */
+// Chrome needs this offset becasue it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  %trigger-underline-styles {
+    text-underline-offset: 4px;
+  }
+}
+/* stylelint-enable  */
 
 // stylelint-disable selector-no-qualifying-type
 // Tooltip trigger style
@@ -34,11 +53,17 @@ $tooltip-background-color-inverse: $color-background !default;
 
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
+  @extend %trigger-underline-styles;
   color: $color-primary;
   padding: 0;
-  text-decoration: underline;
-  text-decoration-style: dashed;
 }
+
+// stylelint-disable-next-line selector-class-pattern
+.ds-base--inverse .ds-c-tooltip__trigger-link {
+  @extend %link-inverse;
+  @extend %trigger-underline-styles;
+}
+
 // stylelint-enable selector-no-qualifying-type
 
 // Tooltip arrow
@@ -59,7 +84,8 @@ $tooltip-background-color-inverse: $color-background !default;
 
 // Interior content of tooltip
 .ds-c-tooltip__content {
-  color: $tooltip-color;
+  color: $tooltip-text-color;
+  display: block;
   font-size: $small-font-size;
   font-weight: 400;
   padding: $spacer-1;
@@ -168,6 +194,6 @@ $tooltip-background-color-inverse: $color-background !default;
   }
 
   .ds-c-tooltip__content {
-    color: $tooltip-color-inverse;
+    color: $tooltip-text-color-inverse;
   }
 }

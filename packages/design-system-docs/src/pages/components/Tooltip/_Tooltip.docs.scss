@@ -53,14 +53,14 @@ Style guide: components.tooltip.tooltip-icon
 
 The following Sass variables can be overridden to theme choice fields:
 
-- `$tooltip-icon-size`
-- `$tooltip-arrow-size`
-- `$tooltip-plus-border-size`
-- `$tooltip-border-radius`
-- `$tooltip-color`
-- `$tooltip-background-color`
-- `$tooltip-color-inverse`
-- `$tooltip-background-color-inverse`
+- `$tooltip-icon-size` - Width/height of the icon used to trigger the tooltip
+- `$tooltip-arrow-size` - Width/height of the arrow on the tooltip
+- `$tooltip-icon-container-size` - Width/height of the containing element of the tooltip icon
+- `$tooltip-border-radius` - Border radius for the tooltip dialog
+- `$tooltip-text-color` - Text color for the tooltip content
+- `$tooltip-background-color` - Background color for the tooltip dialog
+- `$tooltip-text-color-inverse` - Text color for inverse tooltip content
+- `$tooltip-background-color-inverse` - Background color for the inverse tooltip dialog
 
 Style guide: components.tooltip.guidance
 */

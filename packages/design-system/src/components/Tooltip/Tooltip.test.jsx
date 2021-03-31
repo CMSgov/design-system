@@ -4,10 +4,9 @@ import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 
 const defaultProps = {
-  triggerId: '1',
-  triggerContent: <TooltipIcon />,
-  triggerClassName: 'ds-c-tooltip__trigger-icon',
-  children: <p className="ds-u-margin--0">Tooltip body content</p>,
+  children: <TooltipIcon />,
+  className: 'ds-c-tooltip__trigger-icon',
+  title: 'Tooltip body content',
 };
 
 function render(customProps = {}, deep = false) {
@@ -30,18 +29,9 @@ describe('Tooltip', function () {
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 
-  it('renders interactive tooltip', () => {
-    const tooltip = render({
-      children: <a href="design.cms.gov">test</a>,
-      interactive: true,
-    });
-    expect(tooltip.wrapper).toMatchSnapshot();
-  });
-
   it('renders custom trigger component', () => {
     const tooltip = render({
-      triggerComponent: 'a',
-      triggerHref: 'design.cms.gov',
+      component: 'a',
     });
     expect(tooltip.wrapper).toMatchSnapshot();
   });

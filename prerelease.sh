@@ -16,7 +16,7 @@ yarn install
 
 echo "${GREEN}Building files and running tests...${NC}"
 yarn build
-yarn test
+yarn test:unit
 yarn test:e2e --skipBuild
 
 echo "${GREEN}Bumping version and creating tagged release commit...${NC}"
