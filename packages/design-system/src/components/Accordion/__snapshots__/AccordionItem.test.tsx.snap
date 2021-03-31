@@ -8,6 +8,7 @@ exports[`AccordionItem renders an accordion item 1`] = `
   >
     <AccordionItem
       heading="Heading for accordion item"
+      headingLevel="2"
     >
       <h2
         className="ds-c-accordion__heading"
