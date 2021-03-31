@@ -50,7 +50,7 @@ describe('Dialog', function () {
     expect(
       render({
         closeButtonVariation: 'danger',
-        closeText: "No thank you. I don't like saving money",
+        closeButtonText: "No thank you. I don't like saving money",
       })
     ).toMatchSnapshot();
   });
