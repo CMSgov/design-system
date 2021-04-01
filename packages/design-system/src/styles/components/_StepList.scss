@@ -118,12 +118,12 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step__heading {
-  font-size: $h5-font-size;
+  font-size: $font-size-sm;
   line-height: $step-button-height;
   margin: 0;
 
   @media (min-width: $step-list-breakpoint) {
-    font-size: $h3-font-size;
+    font-size: $font-size-lg;
   }
 }
 

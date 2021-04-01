@@ -74,18 +74,21 @@ Customization
 
 The following Sass variables can be overridden to change the type sizes:
 
-- `$font-size-xs`
-- `$base-font-size`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
 - `$font-size-md`
-- `$h6-font-size`
-- `$h5-font-size`
-- `$h4-font-size`
-- `$h3-font-size`
-- `$h2-font-size`
-- `$h1-font-size`
+- `$font-size-xs`
+- `$font-size-sm`, `$base-font-size`
+
+
+
+
 - `$h1-mobile-font-size`
-- `$title-font-size`
-- `$display-font-size`
+
+
 
 Style guide: styles.typography.variables
 */

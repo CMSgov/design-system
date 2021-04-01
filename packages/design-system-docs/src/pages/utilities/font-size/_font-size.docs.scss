@@ -31,15 +31,15 @@ Style guide: utilities.font-size.responsive
 
 The following Sass variables can be overridden to theme the font size utility:
 
-- `$display-font-size`
-- `$title-font-size`
-- `$h1-font-size`
-- `$h2-font-size`
-- `$h3-font-size`
-- `$h4-font-size`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
 - `$font-size-md`
-- `$base-font-size`
+- `$font-size-sm`, `$base-font-size`
 - `$font-size-xs`
+
 
 Style guide: utilities.font-size.guidance
 */

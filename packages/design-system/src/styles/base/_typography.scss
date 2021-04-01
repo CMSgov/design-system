@@ -43,23 +43,23 @@
 }
 
 .ds-display {
-  font-size: $h1-font-size;
+  font-size: $font-size-2xl;
 
   @media (min-width: $width-sm) {
-    font-size: $title-font-size;
+    font-size: $font-size-3xl;
   }
 
   @media (min-width: $width-md) {
-    font-size: $display-font-size;
+    font-size: $font-size-4xl;
   }
 }
 
 .ds-title {
-  font-size: $h1-font-size;
+  font-size: $font-size-2xl;
   font-weight: $font-normal;
 
   @media (min-width: $width-md) {
-    font-size: $title-font-size;
+    font-size: $font-size-3xl;
   }
 }
 
@@ -68,30 +68,30 @@
   font-weight: $font-normal;
 
   @media (min-width: $width-md) {
-    font-size: $h1-font-size;
+    font-size: $font-size-2xl;
   }
 }
 
 .ds-h2 {
-  font-size: $h2-font-size;
+  font-size: $font-size-xl;
 }
 
 .ds-h3 {
-  font-size: $h3-font-size;
+  font-size: $font-size-lg;
 }
 
 .ds-h4 {
-  font-size: $h4-font-size;
+  font-size: $font-size-md;
 }
 
 .ds-h5 {
-  font-size: $h5-font-size;
+  font-size: $font-size-sm;
   font-weight: $font-bold;
 }
 
 .ds-h6 {
   color: $color-muted;
-  font-size: $h6-font-size;
+  font-size: $font-size-xs;
   font-weight: $font-normal;
 }
 

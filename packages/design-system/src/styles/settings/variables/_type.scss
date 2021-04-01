@@ -20,14 +20,14 @@ $h4-font-size: 18px !default;
 $h5-font-size: $base-font-size !default;
 $h6-font-size: $small-font-size !default;
 
-$font-size-xs: $small-font-size !default;
-$font-size-sm: $base-font-size !default;
-$font-size-md: $lead-font-size !default;
-$font-size-lg: $h3-font-size !default;
-$font-size-xl: $h2-font-size !default;
-$font-size-2xl: $h1-font-size !default;
-$font-size-3xl: $title-font-size !default;
-$font-size-4xl: $display-font-size !default;
+$font-size-4xl: $display-font-size !default; //60px
+$font-size-3xl: $title-font-size !default; // 48px
+$font-size-2xl: $h1-font-size !default; // 36px
+$font-size-xl: $h2-font-size !default; // 24px
+$font-size-lg: $h3-font-size !default; // 21px
+$font-size-md: $lead-font-size !default; // 18px
+$font-size-sm: $base-font-size !default; // 16px
+$font-size-xs: $small-font-size !default; // 14px
 
 $font-sans: 'Open Sans', Helvetica, sans-serif !default;
 $font-serif: Bitter, Georgia, serif !default;

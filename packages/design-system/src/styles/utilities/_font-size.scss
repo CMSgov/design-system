@@ -14,27 +14,27 @@
 }
 
 .ds-u-font-size--display {
-  font-size: $display-font-size !important;
+  font-size: $font-size-4xl !important;
 }
 
 .ds-u-font-size--title {
-  font-size: $title-font-size !important;
+  font-size: $font-size-3xl !important;
 }
 
 .ds-u-font-size--h1 {
-  font-size: $h1-font-size !important;
+  font-size: $font-size-2xl !important;
 }
 
 .ds-u-font-size--h2 {
-  font-size: $h2-font-size !important;
+  font-size: $font-size-xl !important;
 }
 
 .ds-u-font-size--h3 {
-  font-size: $h3-font-size !important;
+  font-size: $font-size-lg !important;
 }
 
 .ds-u-font-size--h4 {
-  font-size: $h4-font-size !important;
+  font-size: $font-size-md !important;
 }
 
 @each $breakpoint in map-keys($breakpoints) {
@@ -54,27 +54,27 @@
     }
 
     .ds-u-#{$breakpoint}-font-size--display {
-      font-size: $display-font-size !important;
+      font-size: $font-size-4xl !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--title {
-      font-size: $title-font-size !important;
+      font-size: $font-size-3xl !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--h1 {
-      font-size: $h1-font-size !important;
+      font-size: $font-size-2xl !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--h2 {
-      font-size: $h2-font-size !important;
+      font-size: $font-size-xl !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--h3 {
-      font-size: $h3-font-size !important;
+      font-size: $font-size-lg !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--h4 {
-      font-size: $h4-font-size !important;
+      font-size: $font-size-md !important;
     }
   }
 }
