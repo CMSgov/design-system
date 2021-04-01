@@ -5,10 +5,10 @@
 // 10px. Since styling a root element goes against the guiding principles
 // of this design system, we use px units instead.
 
-$small-font-size: 14px !default;
-$base-font-size: 16px !default;
-$lead-font-size: 18px !default;
+// To Do: Remove this block of variables after deprecating
 
+$small-font-size: 14px !default;
+$lead-font-size: 18px !default;
 $title-font-size: 48px !default;
 $display-font-size: 60px !default;
 
@@ -20,14 +20,18 @@ $h4-font-size: 18px !default;
 $h5-font-size: $base-font-size !default;
 $h6-font-size: $small-font-size !default;
 
-$font-size-4xl: $display-font-size !default; //60px
-$font-size-3xl: $title-font-size !default; // 48px
-$font-size-2xl: $h1-font-size !default; // 36px
-$font-size-xl: $h2-font-size !default; // 24px
-$font-size-lg: $h3-font-size !default; // 21px
-$font-size-md: $lead-font-size !default; // 18px
-$font-size-sm: $base-font-size !default; // 16px
-$font-size-xs: $small-font-size !default; // 14px
+// END to do
+
+$base-font-size: 16px !default;
+
+$font-size-5xl: $display-font-size !default; //60px
+$font-size-4xl: $title-font-size !default; // 48px
+$font-size-3xl: $h1-font-size !default; // 36px - h1
+$font-size-2xl: $h2-font-size !default; // 24px - h2
+$font-size-xl: $h3-font-size !default; // 21px - h3
+$font-size-lg: $lead-font-size !default; // 18px - h4 - lead - body large
+$font-size-md: $base-font-size !default; // 16px - h5 - base - body medium
+$font-size-sm: $small-font-size !default; // 14px - h6 - body small
 
 $font-sans: 'Open Sans', Helvetica, sans-serif !default;
 $font-serif: Bitter, Georgia, serif !default;
