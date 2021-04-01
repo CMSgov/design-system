@@ -12,6 +12,7 @@ export const Dialog = function (props) {
     children,
     className,
     closeButtonSize,
+    closeButtonText,
     closeButtonVariation,
     closeText,
     escapeExits,
@@ -33,6 +34,11 @@ export const Dialog = function (props) {
     if (props.escapeExitDisabled) {
       console.warn(
         `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+    if (props.closeText) {
+      console.warn(
+        `[Deprecated]: Please remove the 'closeText' prop in <Dialog>, use 'closeButtonText' instead. This prop has been renamed and will be removed in a future release.`
       );
     }
   }
@@ -78,7 +84,10 @@ export const Dialog = function (props) {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            {closeText}
+            {
+              // TODO: remove closeText support once fully deprecated
+              closeText || closeButtonText
+            }
           </Button>
         </header>
         <main role="main">
@@ -96,8 +105,8 @@ export const Dialog = function (props) {
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
+  closeButtonText: 'Close',
   closeButtonVariation: 'transparent',
-  closeText: 'Close',
   escapeExits: true,
   escapeExitDisabled: false,
   underlayClickExits: false,
@@ -151,12 +160,17 @@ Dialog.propTypes = {
    */
   closeButtonSize: PropTypes.oneOf(['small', 'big']),
   /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeButtonText: PropTypes.node,
+  /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation: PropTypes.string,
   /**
-   * For internationalization purposes, the text for the "Close" button must be
-   * passed in as a prop.
+   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`.
+   * @hide-prop The text for the "Close" button
    */
   closeText: PropTypes.node,
   /**
