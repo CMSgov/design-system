@@ -76,7 +76,6 @@ ReactDOM.render(
           activeClassName="ds-c-tooltip-icon--active"
           ariaLabel="Label describing the subject of the inverse tooltip"
           className="ds-c-tooltip__trigger-icon"
-          inversed
           placement="right"
           title="Inverse tooltip styles applied"
         >
@@ -89,7 +88,6 @@ ReactDOM.render(
           <Tooltip
             className="ds-c-tooltip__trigger-link"
             component="a"
-            inversed
             title="Tooltip trigger uses <a> for the trigger, styled with dotted underline"
           >
             inline trigger
