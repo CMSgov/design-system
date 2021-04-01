@@ -78,13 +78,13 @@
  */
 
 .ds-c-button--big {
-  font-size: $font-size-lg;
+  font-size: $font-size-xl;
   padding-bottom: $spacer-2;
   padding-top: $spacer-2;
 }
 
 .ds-c-button--small {
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
   font-weight: $font-normal;
   padding: $spacer-half $spacer-1;
 }

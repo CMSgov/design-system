@@ -3,7 +3,7 @@
 $step-list-number-size: 32px !default;
 $step-list-number-size-mobile: 24px !default;
 $step-list-number-font-size: 20px !default;
-$step-list-number-font-size-mobile: $font-size-xs !default;
+$step-list-number-font-size-mobile: $font-size-sm !default;
 $step-list-number-border-size: 2px !default;
 $step-list-number-margin: 10px !default;
 $step-list-padding-h: 0 !default;
@@ -118,17 +118,17 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step__heading {
-  font-size: $font-size-sm;
+  font-size: $font-size-md;
   line-height: $step-button-height;
   margin: 0;
 
   @media (min-width: $step-list-breakpoint) {
-    font-size: $font-size-lg;
+    font-size: $font-size-xl;
   }
 }
 
 .ds-c-step__actions {
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
   margin-left: auto;
 
   .ds-c-step__content--with-content + & {
@@ -175,7 +175,7 @@ $current-step-color: $color-primary !default;
 }
 
 .ds-c-step__description {
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
   margin-bottom: $spacer-1;
 
   .ds-c-step--current &,
@@ -196,7 +196,7 @@ $current-step-color: $color-primary !default;
 
 .ds-c-substep {
   display: block;
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
 
   &::before {
     content: '\2022';
