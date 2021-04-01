@@ -2,7 +2,7 @@
 @import '../settings/index.scss';
 
 .ds-u-font-size--small {
-  font-size: $small-font-size !important;
+  font-size: $font-size-xs !important;
 }
 
 .ds-u-font-size--base {
@@ -10,7 +10,7 @@
 }
 
 .ds-u-font-size--lead {
-  font-size: $lead-font-size !important;
+  font-size: $font-size-md !important;
 }
 
 .ds-u-font-size--display {
@@ -42,7 +42,7 @@
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-font-size--small {
-      font-size: $small-font-size !important;
+      font-size: $font-size-xs !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--base {
@@ -50,7 +50,7 @@
     }
 
     .ds-u-#{$breakpoint}-font-size--lead {
-      font-size: $lead-font-size !important;
+      font-size: $font-size-md !important;
     }
 
     .ds-u-#{$breakpoint}-font-size--display {
