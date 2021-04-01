@@ -1,16 +1,20 @@
 /*
 Typography
 
+## Headers
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) in order to avoid conflicting with any existing site styles. You should instead use one of the base typography classes below to apply styling:
 
-- `.ds-display`
-- `.ds-title`
-- `.ds-h{level}` where `level` is a number between `1` and `6`
-- `.ds-text` and `.ds-text--lead`
-
-Markup: typography.example.html
+Markup: typography-headers.example.html
 
 Style guide: styles.typography
+*/
+
+/*
+Body
+
+Markup: typography-body.example.html
+
+Style guide: styles.typography.body
 */
 
 /*
@@ -59,7 +63,7 @@ Responsive typography
 
 @responsive
 
-The `.ds-display`, `.ds-title`, and `.ds-h1` classes are responsive by default.
+The `.ds-type-heading-3xl`, `ds-type-heading-2xl`, and `ds-type-heading-xl` classes are responsive by default.
 To apply responsive typography elsewhere, use the [font size utility class]({{root}}/utilities/font-size/#utilities.font-size.responsive).
 Since the base typography margins and line height is measured in `em` units,
 they'll automatically adjust as you change the font size.
@@ -74,19 +78,14 @@ Customization
 
 The following Sass variables can be overridden to change the type sizes:
 
+- `$font-size-5xl`
 - `$font-size-4xl`
 - `$font-size-3xl`
 - `$font-size-2xl`
 - `$font-size-xl`
 - `$font-size-lg`
-- `$font-size-md`
-- `$font-size-xs`
-- `$font-size-sm`, `$base-font-size`
-
-
-
-
-- `$h1-mobile-font-size`
+- `$font-size-md`, uses `$base-font-size`
+- `$font-size-sm`
 
 
 
