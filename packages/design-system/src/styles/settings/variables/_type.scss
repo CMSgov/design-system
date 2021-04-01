@@ -5,6 +5,8 @@
 // 10px. Since styling a root element goes against the guiding principles
 // of this design system, we use px units instead.
 
+$base-font-size: 16px !default;
+
 // To Do: Remove this block of variables after deprecating
 
 $small-font-size: 14px !default;
@@ -21,8 +23,6 @@ $h5-font-size: $base-font-size !default;
 $h6-font-size: $small-font-size !default;
 
 // END to do
-
-$base-font-size: 16px !default;
 
 $font-size-5xl: $display-font-size !default; //60px
 $font-size-4xl: $title-font-size !default; // 48px
