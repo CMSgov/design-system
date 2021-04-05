@@ -44,12 +44,17 @@ export interface DialogProps {
    */
   closeButtonSize?: DialogCloseButtonSize;
   /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeButtonText?: React.ReactNode;
+  /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation?: string;
   /**
-   * For internationalization purposes, the text for the "Close" button must be
-   * passed in as a prop.
+   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`
+   * @hide-prop The text for the "Close" button
    */
   closeText?: React.ReactNode;
   /**
