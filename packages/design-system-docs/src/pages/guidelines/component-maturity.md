@@ -13,9 +13,9 @@ Each component in the design system is tested and validated before deciding on t
 
 ## <span class="ds-u-fill--gold">&nbsp;&nbsp;</span> Draft
 
-- **Do not implement**
-- Documentation and guidance is incomplete
-- Testing and validation is incomplete
+- **Implement with caution**
+- Documentation and guidance is subject to change
+- Testing and validation is in progress
 - Could be buggy or have accessibility issues
 
 ## <span class="ds-u-fill--error">&nbsp;&nbsp;</span> Deprecated
