@@ -8,8 +8,6 @@ interface Imports {
   importLine: string;
 }
 
-// getPRs fetches open pull requests from a repo in the CMS-WDS org,
-// filtering out tags that aren't meant for review like WIP.
 async function searchRepos(searchString: string): Promise<{ value: Imports[]; error: Error }> {
   // connect to github
   const requestWithAuth = request.defaults({
@@ -21,13 +19,22 @@ async function searchRepos(searchString: string): Promise<{ value: Imports[]; er
   });
 
   try {
+    // First, request to Github search API with searchString 
     const resp = await requestWithAuth('GET /search/code', {
       q: searchString + ' language:JSON',
     });
     const imports: Imports[] = [];
     for (const item of resp.data.items) {
+
+      // Get the fragment of code that matches the searchString
+      // NOTE, one frustrating thing is that the matching search term is sometimes at the very end of the fragment
+      // which means we won't be able to pull the version number, as it is cut off. That is why we have the
+      // 'unable to pull version number automatically' section
       const fragment = item.text_matches[0].fragment;
+
+      // Find where in fragment the search term begins
       const importLineBegin = fragment.search(searchString + '":');
+      // Read until the next comma to include the version number
       const importLineEnd = fragment.indexOf(',', importLineBegin);
       const importLine =
         importLineBegin === -1 || importLineEnd === -1
