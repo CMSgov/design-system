@@ -132,7 +132,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   className="ds-c-tooltip__container"
 >
   <button
-    aria-describedby="trigger_4"
+    aria-describedby={null}
     aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onClick={[Function]}

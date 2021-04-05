@@ -161,7 +161,7 @@ export class Tooltip extends React.Component {
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || ''}
-        aria-describedby={dialog ? null : this.id}
+        aria-describedby={dialog ? '' : this.id}
         className={triggerClasses}
         ref={this.setTriggerElement}
         {...others}
