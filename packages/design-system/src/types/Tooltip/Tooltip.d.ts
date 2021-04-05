@@ -57,7 +57,7 @@ interface TooltipProps {
   /**
    * Content inside the tooltip body or popover. If this contains interactive elements use the `dialog` prop.
    */
-  title: React.ReactNode | any;
+  title: React.ReactNode;
   /**
    * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
    */
@@ -74,8 +74,10 @@ interface TooltipState {
   isMobile: boolean,
 }
 
+type OmitProps = 'title';
+
 export default class Tooltip extends React.Component<
-  Omit<React.HTMLProps<HTMLButtonElement>, 'title'> & TooltipProps,
+  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & TooltipProps,
   TooltipState
 > {
   render(): JSX.Element;
