@@ -1,4 +1,4 @@
-import ClearIcon from '../ClearIcon';
+import { ClearIcon } from '../ClearIcon';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
