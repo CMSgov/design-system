@@ -1,4 +1,4 @@
-import ClearIcon from './ClearIcon';
+import ClearIcon from '../ClearIcon';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -13,10 +13,12 @@ export class Badge extends React.PureComponent {
   }
 
   handleClick(evt) {
+    // Call on onClick passed in as a prop to component
     if (this.props.onClick) {
       this.props.onClick(evt);
     }
 
+    // Set badge as dismissed so it won't display
     if (this.props.dismissible) {
       this.setState({ badgeDismissed: true });
     }
