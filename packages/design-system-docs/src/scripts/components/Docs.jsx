@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SkipNav } from '@cmsgov/design-system';
 import classNames from 'classnames';
+import queryString from 'query-string';
 
 class Docs extends React.PureComponent {
   constructor(props) {
@@ -34,7 +35,17 @@ class Docs extends React.PureComponent {
   render() {
     const { routes, page } = this.props;
     const { menuOpen } = this.state;
-    return (
+    const view = typeof window !== 'undefined' && queryString.parse(window.location.search).view;
+    /**
+     * Hide site header, site footer, side nav when URL parameters query string 'view' contains
+     * 'basic', 'guidance' or 'page' (ie. design-system.cms.gov/components/button/?view=basic)
+     */
+    const hideHeaders = view === 'basic' || view === 'guidance' || view === 'page';
+    return hideHeaders ? (
+      <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
+        <Page {...page} view={view} />
+      </main>
+    ) : (
       <div
         className={classNames('docs', {
           'docs--menu-open': menuOpen,
