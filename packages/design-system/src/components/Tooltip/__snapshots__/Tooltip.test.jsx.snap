@@ -8,7 +8,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
 >
   <a
     aria-describedby="trigger_3"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -72,7 +71,6 @@ exports[`Tooltip renders default trigger icon 1`] = `
 >
   <button
     aria-describedby="trigger_1"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -132,8 +130,6 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   className="ds-c-tooltip__container"
 >
   <button
-    aria-describedby="trigger_4"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onClick={[Function]}
     onTouchStart={[Function]}
@@ -194,7 +190,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
 >
   <button
     aria-describedby="trigger_2"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
