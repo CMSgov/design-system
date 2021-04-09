@@ -123,6 +123,7 @@ Page.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes)),
   /**
    * URL parameters query string 'view':
+  All views exclude the  left nav, site header, site footer and page title
    * - basic: Page code examples only
    * - guidance: Guidance section only
    * - page: Page content with Guidance section
