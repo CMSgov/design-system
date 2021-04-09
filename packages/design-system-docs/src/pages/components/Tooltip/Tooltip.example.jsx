@@ -35,7 +35,6 @@ ReactDOM.render(
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <Tooltip
         className="ds-c-button"
-        placement="right"
         offset={[0, 25]}
         title="Tooltip positioned with custom offset"
       >
@@ -73,8 +72,8 @@ ReactDOM.render(
           activeClassName="ds-c-tooltip-icon--active"
           ariaLabel="Label describing the subject of the inverse tooltip"
           className="ds-c-tooltip__trigger-icon"
-          placement="right"
           title="Inverse tooltip styles applied"
+          inversed
         >
           <TooltipIcon inversed />
         </Tooltip>
@@ -86,6 +85,7 @@ ReactDOM.render(
             className="ds-c-tooltip__trigger-link"
             component="a"
             title="Tooltip trigger uses <a> for the trigger, styled with dotted underline"
+            inversed
           >
             inline trigger
           </Tooltip>
