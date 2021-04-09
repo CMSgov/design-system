@@ -61,7 +61,7 @@ ReactDOM.render(
           </>
         }
       >
-        Tooltip dialog for interactive content
+        Tooltip with interactive content
       </Tooltip>
     </div>
     <div className="example--inverse example--wrapper">
