@@ -125,7 +125,7 @@ Page.propTypes = {
    * URL parameters query string 'view':
    * - basic: Page content minus Guidance section (excludes nav, header, footer, title)
    * - guidance: Guidance section only
-   * - page: Page content with Guidance section (excludes nav, header, footer, title)
+   * - page: Page content with Guidance section
    */
   view: PropTypes.oneOf(['basic', 'guidance', 'page']),
 };
