@@ -4,7 +4,8 @@
 // To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
 
 .ds-u-font-size--h5,
-.ds-u-font-size--sm {
+.ds-u-font-size--sm,
+.ds-u-font-size--small {
   font-size: $font-size-sm !important;
 }
 
@@ -15,7 +16,8 @@
 }
 
 .ds-u-font-size--h4,
-.ds-u-font-size--lg {
+.ds-u-font-size--lg,
+.ds-u-font-size--lead {
   font-size: $font-size-lg !important;
 }
 
