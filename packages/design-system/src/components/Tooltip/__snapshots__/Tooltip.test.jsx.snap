@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders custom trigger component 1`] = `
-<span
+<div
+  className="ds-c-tooltip__container"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <a
     aria-describedby="trigger_3"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -23,7 +23,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
     in={false}
     timeout={250}
   >
-    <span
+    <div
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
@@ -42,11 +42,11 @@ exports[`Tooltip renders custom trigger component 1`] = `
         className="ds-c-tooltip__arrow"
         data-popper-arrow={true}
       />
-      <span
+      <div
         className="ds-c-tooltip__content ds-base"
       >
         Tooltip body content
-      </span>
+      </div>
       <span
         className="ds-c-tooltip__interactive-border"
         style={
@@ -58,19 +58,19 @@ exports[`Tooltip renders custom trigger component 1`] = `
           }
         }
       />
-    </span>
+    </div>
   </CSSTransition>
-</span>
+</div>
 `;
 
 exports[`Tooltip renders default trigger icon 1`] = `
-<span
+<div
+  className="ds-c-tooltip__container"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <button
     aria-describedby="trigger_1"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -85,7 +85,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
     in={false}
     timeout={250}
   >
-    <span
+    <div
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
@@ -104,11 +104,11 @@ exports[`Tooltip renders default trigger icon 1`] = `
         className="ds-c-tooltip__arrow"
         data-popper-arrow={true}
       />
-      <span
+      <div
         className="ds-c-tooltip__content ds-base"
       >
         Tooltip body content
-      </span>
+      </div>
       <span
         className="ds-c-tooltip__interactive-border"
         style={
@@ -120,16 +120,16 @@ exports[`Tooltip renders default trigger icon 1`] = `
           }
         }
       />
-    </span>
+    </div>
   </CSSTransition>
-</span>
+</div>
 `;
 
 exports[`Tooltip renders dialog tooltip 1`] = `
-<span>
+<div
+  className="ds-c-tooltip__container"
+>
   <button
-    aria-describedby="trigger_4"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onClick={[Function]}
     onTouchStart={[Function]}
@@ -153,7 +153,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
       }
       paused={false}
     >
-      <span
+      <div
         aria-hidden={true}
         className="ds-c-tooltip"
         data-placement="top"
@@ -171,25 +171,25 @@ exports[`Tooltip renders dialog tooltip 1`] = `
           className="ds-c-tooltip__arrow"
           data-popper-arrow={true}
         />
-        <span
+        <div
           className="ds-c-tooltip__content ds-base"
         >
           Tooltip body content
-        </span>
-      </span>
+        </div>
+      </div>
     </FocusTrap>
   </CSSTransition>
-</span>
+</div>
 `;
 
 exports[`Tooltip renders inverse tooltip 1`] = `
-<span
+<div
+  className="ds-c-tooltip__container"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <button
     aria-describedby="trigger_2"
-    aria-label=""
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -204,7 +204,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     in={false}
     timeout={250}
   >
-    <span
+    <div
       aria-hidden={true}
       className="ds-c-tooltip ds-c-tooltip--inverse"
       data-placement="top"
@@ -223,11 +223,11 @@ exports[`Tooltip renders inverse tooltip 1`] = `
         className="ds-c-tooltip__arrow"
         data-popper-arrow={true}
       />
-      <span
+      <div
         className="ds-c-tooltip__content ds-base"
       >
         Tooltip body content
-      </span>
+      </div>
       <span
         className="ds-c-tooltip__interactive-border"
         style={
@@ -239,7 +239,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
           }
         }
       />
-    </span>
+    </div>
   </CSSTransition>
-</span>
+</div>
 `;

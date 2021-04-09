@@ -12,8 +12,10 @@ export const Dialog = function (props) {
     children,
     className,
     closeButtonSize,
+    closeButtonText,
     closeButtonVariation,
     closeText,
+    escapeExits,
     escapeExitDisabled,
     headerClassName,
     heading,
@@ -29,6 +31,16 @@ export const Dialog = function (props) {
         `[Deprecated]: Please remove the 'title' prop in <Dialog>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
       );
     }
+    if (props.escapeExitDisabled) {
+      console.warn(
+        `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
+    if (props.closeText) {
+      console.warn(
+        `[Deprecated]: Please remove the 'closeText' prop in <Dialog>, use 'closeButtonText' instead. This prop has been renamed and will be removed in a future release.`
+      );
+    }
   }
 
   const dialogClassNames = classNames(
@@ -39,13 +51,16 @@ export const Dialog = function (props) {
   );
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
+  // TODO: remove after deprecating 'escapeExitDiabled' prop
+  const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
 
   /* eslint-disable jsx-a11y/no-redundant-roles */
   return (
     <AriaModal
       dialogClass={dialogClassNames}
+      // TODO: remove 'escapeExits' after deprecating 'escapeExitDiabled' prop so that 'escapeExits' will pass via the 'modalProps' spread operator
+      escapeExits={escapeExitsProp}
       focusDialog
-      escapeExits={!escapeExitDisabled}
       includeDefaultStyles={false}
       onExit={onExit}
       titleId="dialog-title dialog-content"
@@ -69,7 +84,10 @@ export const Dialog = function (props) {
             size={closeButtonSize}
             variation={closeButtonVariation}
           >
-            {closeText}
+            {
+              // TODO: remove closeText support once fully deprecated
+              closeText || closeButtonText
+            }
           </Button>
         </header>
         <main role="main">
@@ -87,8 +105,9 @@ export const Dialog = function (props) {
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
+  closeButtonText: 'Close',
   closeButtonVariation: 'transparent',
-  closeText: 'Close',
+  escapeExits: true,
   escapeExitDisabled: false,
   underlayClickExits: false,
 };
@@ -141,16 +160,27 @@ Dialog.propTypes = {
    */
   closeButtonSize: PropTypes.oneOf(['small', 'big']),
   /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeButtonText: PropTypes.node,
+  /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation: PropTypes.string,
   /**
-   * For internationalization purposes, the text for the "Close" button must be
-   * passed in as a prop.
+   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`.
+   * @hide-prop The text for the "Close" button
    */
   closeText: PropTypes.node,
   /**
-   * Disable exiting the dialog when a user presses the Escape key.
+   * Enable exiting the dialog when a user presses the Escape key.
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#escapeexits)
+   */
+  escapeExits: PropTypes.bool,
+  /**
+   * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
+   * @hide-prop Disable exiting the dialog when a user presses the Escape key.
    */
   escapeExitDisabled: PropTypes.bool,
   /**
@@ -170,6 +200,11 @@ Dialog.propTypes = {
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
+   * Set focus to a specific element that should receive initial focus (if `focusDialog={false}`).
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#initialfocus)
+   */
+  initialFocus: PropTypes.string,
+  /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
    * the dialog (if `underlayClickExits=true`).
@@ -182,6 +217,7 @@ Dialog.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Enable exiting the dialog when a user clicks the underlay.
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#underlayclickexits)
    */
   underlayClickExits: PropTypes.bool,
 };
