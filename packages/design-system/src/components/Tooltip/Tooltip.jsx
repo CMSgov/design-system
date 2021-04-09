@@ -132,7 +132,7 @@ export class Tooltip extends React.Component {
     const TriggerComponent = component;
     const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
       [activeClassName]: this.state.active,
-      'ds-c-tooltip--inverse': inversed,
+      'ds-c-tooltip__trigger--inverse': inversed,
     });
     const linkTriggerOverrides = {
       role: TriggerComponent === 'a' ? 'button' : undefined,

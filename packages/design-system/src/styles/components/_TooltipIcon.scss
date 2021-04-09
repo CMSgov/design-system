@@ -8,24 +8,12 @@
   position: relative;
   vertical-align: middle;
   width: $tooltip-icon-container-size;
-
-  // &:hover {
-  //   border-color: $color-gray-lighter;
-  // }
-}
-
-// Add border style when tooltip is activated in addition to on hover
-.ds-c-tooltip-icon--active {
-  .ds-c-tooltip-icon__container {
-    border-color: $color-primary-darker;
-    border-color: rgba($color-primary-darker, 0.25);
-  }
 }
 
 // SVG icon styles/positioning
 .ds-c-tooltip-icon {
   display: inline-block;
-  fill: $color-primary;
+  fill: $tooltip-icon-color;
   height: $tooltip-icon-size;
   left: 0;
   // stylelint-disable declaration-no-important
@@ -38,15 +26,23 @@
   width: $tooltip-icon-size;
 }
 
-.ds-c-tooltip-icon--inverse {
-  fill: $color-white;
+// Add border style when tooltip is activated in addition to on hover
+.ds-c-tooltip-icon--active {
+  .ds-c-tooltip-icon__container {
+    border-color: $tooltip-icon-color;
+    border-color: rgba($tooltip-icon-color, 0.25);
+  }
 }
 
-.ds-c-tooltip--inverse {
+.ds-c-tooltip-icon--inverse {
+  fill: $tooltip-icon-color-inverse;
+}
+
+.ds-c-tooltip__trigger--inverse {
   &.ds-c-tooltip-icon--active {
     .ds-c-tooltip-icon__container {
-      border-color: $color-white;
-      border-color: rgba($color-white, 0.25);
+      border-color: $tooltip-icon-color-inverse;
+      border-color: rgba($tooltip-icon-color-inverse, 0.25);
     }
   }
 }
