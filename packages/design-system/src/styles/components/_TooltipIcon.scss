@@ -9,22 +9,23 @@
   vertical-align: middle;
   width: $tooltip-icon-container-size;
 
-  &:hover {
-    border-color: $color-gray-lighter;
-  }
+  // &:hover {
+  //   border-color: $color-gray-lighter;
+  // }
 }
 
 // Add border style when tooltip is activated in addition to on hover
 .ds-c-tooltip-icon--active {
   .ds-c-tooltip-icon__container {
-    border-color: $color-gray-lighter;
+    border-color: $color-primary-darker;
+    border-color: rgba($color-primary-darker, 0.25);
   }
 }
 
 // SVG icon styles/positioning
 .ds-c-tooltip-icon {
   display: inline-block;
-  fill: $color-gray;
+  fill: $color-primary;
   height: $tooltip-icon-size;
   left: 0;
   // stylelint-disable declaration-no-important
@@ -39,4 +40,13 @@
 
 .ds-c-tooltip-icon--inverse {
   fill: $color-white;
+}
+
+.ds-c-tooltip--inverse {
+  &.ds-c-tooltip-icon--active {
+    .ds-c-tooltip-icon__container {
+      border-color: $color-white;
+      border-color: rgba($color-white, 0.25);
+    }
+  }
 }
