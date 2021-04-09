@@ -44,17 +44,28 @@ export interface DialogProps {
    */
   closeButtonSize?: DialogCloseButtonSize;
   /**
+   * For internationalization purposes, the text for the "Close" button must be
+   * passed in as a prop.
+   */
+  closeButtonText?: React.ReactNode;
+  /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation?: string;
   /**
-   * For internationalization purposes, the text for the "Close" button must be
-   * passed in as a prop.
+   * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`
+   * @hide-prop The text for the "Close" button
    */
   closeText?: React.ReactNode;
   /**
-   * Disable exiting the dialog when a user presses the Escape key.
+   * Enable exiting the dialog when a user presses the Escape key.
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#escapeexits)
    */
+  escapeExits?: boolean;
+  /**
+    * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
+    * @hide-prop Disable exiting the dialog when a user presses the Escape key.
+    */
   escapeExitDisabled?: boolean;
   /**
    * Same as `applicationNode`, but a function that returns the node instead of
@@ -73,9 +84,10 @@ export interface DialogProps {
    */
   heading?: React.ReactNode;
   /**
-   * @hide-prop
+   * Set focus to a specific element that should receive initial focus (if `focusDialog={false}`).
+   * [Read more on react-aria-modal docs.](https://github.com/davidtheclark/react-aria-modal#initialfocus)
    */
-  id?: string;
+  initialFocus?: string;
   /**
    * A method to handle the state change of exiting (or deactivating)
    * the modal. It will be invoked when the user presses Escape, or clicks outside
@@ -91,6 +103,10 @@ export interface DialogProps {
    * Enable exiting the dialog when a user clicks the underlay.
    */
   underlayClickExits?: boolean;
+  /**
+   * Allow additional AriaModal props to be passed to Dialog
+   */
+  [additional_props: string]: unknown;
 }
 
 type OmitProps = 'size' | 'title';
