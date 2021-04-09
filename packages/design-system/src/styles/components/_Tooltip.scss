@@ -4,6 +4,8 @@
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
 $tooltip-icon-container-size: 24px !default;
+$tooltip-icon-color: $color-primary !default;
+$tooltip-icon-color-inverse: $color-white !default;
 
 $tooltip-border-color: $color-gray-dark !default;
 $tooltip-border-width: 1px !default;
@@ -84,6 +86,7 @@ $tooltip-background-color: $color-background !default;
 }
 
 // Interior content of tooltip
+// Font style gets inherited from ds-base
 .ds-c-tooltip__content {
   border-radius: $tooltip-border-radius;
   box-shadow: 0 0 17px $color-gray-light;
