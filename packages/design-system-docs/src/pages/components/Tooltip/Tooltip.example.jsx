@@ -51,10 +51,7 @@ ReactDOM.render(
             <p className="ds-u-margin--0">
               Tooltip dialogs only activate on click and include a focus trap. Intended for tooltips
               with complex layout and
-              <a className="ds-c-link--inverse" href="/#">
-                {' '}
-                interactive elements
-              </a>
+              <a href="/#"> interactive elements</a>
             </p>
             <Button
               size="small"
