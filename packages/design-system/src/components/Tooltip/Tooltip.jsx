@@ -119,6 +119,7 @@ export class Tooltip extends React.Component {
       id,
       onClose,
       onOpen,
+      inversed,
       interactiveBorder,
       placement,
       maxWidth,
@@ -175,6 +176,7 @@ export class Tooltip extends React.Component {
   renderContent() {
     const {
       dialog,
+      inversed,
       interactiveBorder,
       placement,
       maxWidth,
@@ -202,7 +204,9 @@ export class Tooltip extends React.Component {
         id={this.id}
         tabIndex={dialog ? '-1' : null}
         ref={this.setTooltipElement}
-        className={classNames('ds-c-tooltip')}
+        className={classNames('ds-c-tooltip', {
+          'ds-c-tooltip--inverse': inversed,
+        })}
         style={tooltipStyle}
         data-placement={placement}
         aria-hidden={!this.state.active}
@@ -306,6 +310,7 @@ Tooltip.propTypes = {
    * Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.
    */
   interactiveBorder: PropTypes.number,
+  inversed: PropTypes.bool,
   /**
    * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
    */
