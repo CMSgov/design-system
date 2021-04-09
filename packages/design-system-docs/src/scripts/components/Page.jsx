@@ -123,7 +123,7 @@ Page.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes)),
   /**
    * URL parameters query string 'view':
-   * - basic: Page content minus Guidance section (excludes nav, header, footer, title)
+   * - basic: Page code examples only
    * - guidance: Guidance section only
    * - page: Page content with Guidance section
    */
