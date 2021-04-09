@@ -75,7 +75,7 @@ class Page extends React.PureComponent {
           </div>
         );
       }
-      if (this.props.view === 'basic') {
+      if (this.props.view === 'code') {
         return (
           <div className="ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0">
             {this.renderBody()}
@@ -123,12 +123,12 @@ Page.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes)),
   /**
    * URL parameters query string 'view':
-  All views exclude the  left nav, site header, site footer and page title
-   * - basic: Page code examples only
+   * All views exclude the left nav, site header, site footer and page title
+   * - code: Page code examples only
    * - guidance: Guidance section only
    * - page: Page content with Guidance section
    */
-  view: PropTypes.oneOf(['basic', 'guidance', 'page']),
+  view: PropTypes.oneOf(['code', 'guidance', 'page']),
 };
 
 export default Page;

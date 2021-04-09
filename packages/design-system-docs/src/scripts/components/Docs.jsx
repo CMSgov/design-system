@@ -38,10 +38,10 @@ class Docs extends React.PureComponent {
     const view = typeof window !== 'undefined' && queryString.parse(window.location.search).view;
     /**
      * Hide site header, site footer, side nav when URL parameters query string 'view' contains
-     * 'basic', 'guidance' or 'page' (ie. design-system.cms.gov/components/button/?view=basic)
+     * 'code', 'guidance' or 'page' (ie. design-system.cms.gov/components/button/?view=code)
      */
-    const hideHeaders = view === 'basic' || view === 'guidance' || view === 'page';
-    return hideHeaders ? (
+    const showOnlyMainContent = view === 'code' || view === 'guidance' || view === 'page';
+    return showOnlyMainContent ? (
       <main id="main" className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4">
         <Page {...page} view={view} />
       </main>
