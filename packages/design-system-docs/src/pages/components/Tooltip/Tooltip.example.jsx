@@ -16,7 +16,7 @@ ReactDOM.render(
       </Tooltip>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
-      <p className="ds-u-margin--0">
+      <div className="ds-u-margin--0">
         {'Tooltip with '}
         <Tooltip
           className="ds-c-tooltip__trigger-link"
@@ -25,7 +25,7 @@ ReactDOM.render(
         >
           inline trigger
         </Tooltip>
-      </p>
+      </div>
     </div>
     <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2">
       <Tooltip placement="right" className="ds-c-button" title="Tooltip positioned on the right">
@@ -80,7 +80,7 @@ ReactDOM.render(
         </Tooltip>
       </div>
       <div className="">
-        <p className="ds-u-margin--0">
+        <div className="ds-u-margin--0">
           {'Inverse tooltip with '}
           <Tooltip
             className="ds-c-tooltip__trigger-link"
@@ -89,7 +89,7 @@ ReactDOM.render(
           >
             inline trigger
           </Tooltip>
-        </p>
+        </div>
       </div>
     </div>
   </>,
