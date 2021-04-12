@@ -24,6 +24,11 @@ describe('Tooltip', function () {
     expect(tooltip.wrapper).toMatchSnapshot();
   });
 
+  it('renders inverse tooltip', () => {
+    const tooltip = render({ inversed: true });
+    expect(tooltip.wrapper).toMatchSnapshot();
+  });
+
   it('renders custom trigger component', () => {
     const tooltip = render({
       component: 'a',
