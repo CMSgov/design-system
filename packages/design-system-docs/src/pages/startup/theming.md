@@ -154,3 +154,16 @@ To update:
 - `.ds-u-font-size--lead` update to `.ds-u-font-size--md`
 - `.ds-u-font-size--base` update to `.ds-u-font-size--base`
 - `.ds-u-font-size--small` update to `.ds-u-font-size--sm`
+
+### font size variable updates
+
+We've added new variables to be used to customize the global sizing values.
+
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`
+- `\$font-size-sm
