@@ -10,6 +10,7 @@ export * from './ChoiceList';
 export * from './DateField';
 export * from './Dialog';
 export * from './Dropdown';
+export * from './FilterTag';
 export * from './FormControl';
 export * from './FormLabel';
 export * from './HelpDrawer';

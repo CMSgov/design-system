@@ -1,8 +1,5 @@
 @import '../settings/index.scss';
 
-$badge-icon-container-size: 16px !default;
-$badge-icon-size: 10px !default;
-
 .ds-c-badge {
   background-color: $color-gray;
   border-radius: $border-radius-pill;
@@ -18,33 +15,6 @@ $badge-icon-size: 10px !default;
   }
 }
 
-.ds-c-badge-icon__container {
-  display: inline-block;
-  height: $badge-icon-container-size;
-  margin-left: $spacer-1;
-  padding: 0;
-  vertical-align: middle;
-  width: $badge-icon-container-size;
-
-  .ds-c-clear-icon {
-    display: block;
-    height: $badge-icon-size;
-    left: ($badge-icon-container-size - 2 - $badge-icon-size) / 2;
-    position: relative;
-    top: ($badge-icon-container-size - 2 - $badge-icon-size) / 2;
-    width: $badge-icon-size;
-  }
-
-  .ds-c-clear-icon__x {
-    fill: $color-white;
-  }
-}
-
-.ds-c-badge--dismissible {
-  border: 0;
-  cursor: pointer;
-}
-
 .ds-c-badge--info {
   background-color: $color-primary;
 }
@@ -56,14 +26,6 @@ $badge-icon-size: 10px !default;
 .ds-c-badge--warn {
   background-color: $color-warn;
   color: $color-base;
-
-  .ds-c-badge-icon__container {
-    border-color: $color-base;
-
-    .ds-c-clear-icon__x {
-      fill: $color-base;
-    }
-  }
 }
 
 .ds-c-badge--alert {

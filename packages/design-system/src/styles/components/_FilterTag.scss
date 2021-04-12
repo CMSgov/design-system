@@ -1,0 +1,69 @@
+$filter-tag-button-size: 14px;
+
+.ds-c-filter-tag {
+  display: inline-block;
+  margin-right: $spacer-1;
+  margin-top: $spacer-1;
+}
+
+.ds-c-filter-tag__button {
+  background-color: $color-white;
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: $small-font-size;
+  font-weight: $font-normal;
+  padding: $spacer-half $spacer-1;
+  padding-right: ($spacer-1 + $spacer-1 + $filter-tag-button-size);
+  position: relative;
+  text-align: left;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $color-background-inverse;
+    color: $color-white;
+  }
+}
+
+.ds-c-filter-tag__clear-icon {
+  $x-size: 6px;
+  border: 1px solid $color-primary;
+
+  border-radius: 50%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  height: $filter-tag-button-size;
+  margin-left: $spacer-1;
+  padding: 0;
+  position: absolute;
+  right: $spacer-1;
+  top: ($spacer-half + 3px);
+  vertical-align: middle;
+  width: $filter-tag-button-size;
+
+  .ds-c-clear-icon {
+    display: block;
+    height: $x-size;
+    left: ($filter-tag-button-size - 2 - $x-size) / 2;
+    position: relative;
+    top: ($filter-tag-button-size - 2 - $x-size) / 2;
+    width: $x-size;
+  }
+
+  .ds-c-clear-icon__x {
+    fill: $color-primary;
+  }
+
+  .ds-c-filter-tag__button:active &,
+  .ds-c-filter-tag__button:focus &,
+  .ds-c-filter-tag__button:hover & {
+    border-color: $color-white;
+
+    .ds-c-clear-icon__x {
+      fill: $color-white;
+    }
+  }
+}
