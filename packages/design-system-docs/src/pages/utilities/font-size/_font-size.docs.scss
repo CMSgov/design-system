@@ -1,6 +1,15 @@
 /*
 Font size
 
+<div class="ds-c-alert">
+    <div class="ds-c-alert__body">
+      <h3 class="ds-c-alert__heading">Typography sizing updates!</h3>
+      <p class="ds-c-alert__text">
+        We've updated typography sizing variables and class names to make them more agnostic. Read about <a href="/startup/theming/#updating-font-sizing">how you can update</a>.
+      </p>
+    </div>
+  </div>
+
 Use the font size utility to make the text larger or smaller.
 
 **Format**: `.ds-u-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`

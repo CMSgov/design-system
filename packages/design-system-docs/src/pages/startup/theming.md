@@ -105,3 +105,52 @@ If you're not using Sass, another way to customize the design system is by overr
 ## Learn more
 
 - [View an example project with a Sass build process](https://github.com/CMSgov/design-system/tree/master/examples/react-app)
+
+## Updating font sizing
+
+We've updated the utility font size and typography classes to make them more flexible by removing the heading references (h1, h2, etc...) from within the class names and are now using a basic sizing scale (xl, lg, etc...).
+
+### Design system font sizing
+
+Before:
+
+- `.ds-h{level}` where level is a number between `1` and `6`
+
+After:
+
+- `.ds-text-heading--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+To update:
+
+- `.ds-display` update to `.ds-text-heading--5xl`
+- `.ds-title` update to `.ds-text-heading--4xl`
+- `.ds-h1` update to `.ds-text-heading--3xl`
+- `.ds-h2` update to `.ds-text-heading--2xl`
+- `.ds-h3` update to `.ds-text-heading--xl`
+- `.ds-h4` update to `.ds-text-heading--lg`
+- `.ds-h5` update to `.ds-text-heading--md`
+- `.ds-h6` update to `ds-text-heading--sm`
+- `.ds-text--lead` update to `.ds-text-body--lg`
+- `.ds-text` update to `ds-text-body--md`
+
+### font size utilities
+
+Before:
+
+- `.ds-u-font-size--display|title|h1|h2|h3|h4|lead|base|small]`
+
+After:
+
+- `.ds-u-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
+
+To update:
+
+- `.ds-u-font-size--display` update to `.ds-u-font-size--5xl`
+- `.ds-u-font-size--title` update to `.ds-u-font-size--4xl`
+- `.ds-u-font-size--h1` update to `.ds-u-font-size--3xl`
+- `.ds-u-font-size--h2` update to `.ds-u-font-size--2xl`
+- `.ds-u-font-size--h3` update to `.ds-u-font-size--xl`
+- `.ds-u-font-size--h4` update to `.ds-u-font-size--lg`
+- `.ds-u-font-size--lead` update to `.ds-u-font-size--md`
+- `.ds-u-font-size--base` update to `.ds-u-font-size--base`
+- `.ds-u-font-size--small` update to `.ds-u-font-size--sm`
