@@ -1,4 +1,8 @@
 $filter-tag-button-size: 14px;
+$filter-tag-text-color: $color-base !default;
+$filter-tag-background-color: $color-gray-lighter !default;
+$filter-tag-text-color-inverse: $color-white !default;
+$filter-tag-background-color-inverse: $color-primary !default;
 
 .ds-c-filter-tag {
   display: inline-block;
@@ -7,9 +11,10 @@ $filter-tag-button-size: 14px;
 }
 
 .ds-c-filter-tag__button {
-  background-color: $color-white;
-  border: 1px solid $color-primary;
-  color: $color-primary;
+  background-color: $filter-tag-background-color;
+  border: 0;
+  border-radius: $border-radius-pill;
+  color: $filter-tag-text-color;
   cursor: pointer;
   font-family: $font-sans;
   font-size: $small-font-size;
@@ -22,14 +27,14 @@ $filter-tag-button-size: 14px;
   &:active,
   &:focus,
   &:hover {
-    background-color: $color-background-inverse;
-    color: $color-white;
+    background-color: $filter-tag-background-color-inverse;
+    color: $filter-tag-text-color-inverse;
   }
 }
 
 .ds-c-filter-tag__clear-icon {
   $x-size: 6px;
-  border: 1px solid $color-primary;
+  border: 1px solid $filter-tag-text-color;
 
   border-radius: 50%;
   box-sizing: border-box;
@@ -54,16 +59,16 @@ $filter-tag-button-size: 14px;
   }
 
   .ds-c-clear-icon__x {
-    fill: $color-primary;
+    fill: $filter-tag-text-color;
   }
 
   .ds-c-filter-tag__button:active &,
   .ds-c-filter-tag__button:focus &,
   .ds-c-filter-tag__button:hover & {
-    border-color: $color-white;
+    border-color: $filter-tag-text-color-inverse;
 
     .ds-c-clear-icon__x {
-      fill: $color-white;
+      fill: $filter-tag-text-color-inverse;
     }
   }
 }
