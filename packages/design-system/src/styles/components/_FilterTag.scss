@@ -1,8 +1,10 @@
 $filter-tag-button-size: 14px;
 $filter-tag-text-color: $color-base !default;
-$filter-tag-background-color: $color-gray-lighter !default;
+$filter-tag-background-color: $color-primary-alt-lightest !default;
+$filter-tag-border-color: $color-primary !default;
 $filter-tag-text-color-inverse: $color-white !default;
 $filter-tag-background-color-inverse: $color-primary !default;
+$filter-tag-border-color-inverse: $color-primary !default;
 
 .ds-c-filter-tag {
   display: inline-block;
@@ -12,7 +14,7 @@ $filter-tag-background-color-inverse: $color-primary !default;
 
 .ds-c-filter-tag__button {
   background-color: $filter-tag-background-color;
-  border: 0;
+  border: 1px solid $filter-tag-border-color;
   border-radius: $border-radius-pill;
   color: $filter-tag-text-color;
   cursor: pointer;
@@ -28,6 +30,7 @@ $filter-tag-background-color-inverse: $color-primary !default;
   &:focus,
   &:hover {
     background-color: $filter-tag-background-color-inverse;
+    border: 1px solid $filter-tag-border-color-inverse;
     color: $filter-tag-text-color-inverse;
   }
 }
