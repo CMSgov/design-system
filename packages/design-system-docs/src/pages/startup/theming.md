@@ -166,4 +166,4 @@ We've added new variables to be used to customize the global sizing values.
 - `$font-size-xl`
 - `$font-size-lg`
 - `$font-size-md`
-- `\$font-size-sm
+- `$font-size-sm`
