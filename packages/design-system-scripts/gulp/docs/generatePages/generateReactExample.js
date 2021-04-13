@@ -3,6 +3,7 @@ const MemoryFS = require('memory-fs');
 const path = require('path');
 const savePage = require('./savePage');
 const webpack = require('webpack');
+const createAnalyticsTag = require('./createAnalyticsTag');
 const { log } = require('../../common/logUtil');
 
 /**
@@ -14,7 +15,13 @@ const { log } = require('../../common/logUtil');
  * @param {String} rootPath - Root docs site path
  * @return {Promise}
  */
-async function generateReactExample(page, docsPath, sourceDir, docsDir, { typescript, rootPath }) {
+async function generateReactExample(
+  page,
+  docsPath,
+  sourceDir,
+  docsDir,
+  { core, typescript, rootPath }
+) {
   const config = await createReactExampleWebpackConfig(
     sourceDir,
     docsDir,
@@ -41,6 +48,7 @@ async function generateReactExample(page, docsPath, sourceDir, docsDir, { typesc
       const head = `
         <title>Example: ${page.reference}</title>
         <link rel="stylesheet" href="/${path.join(rootPath, 'example.css')}" />
+        ${core ? createAnalyticsTag() : ''}
       `;
       const body = `
         <div id="js-example"></div>

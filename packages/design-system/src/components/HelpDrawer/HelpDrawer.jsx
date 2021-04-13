@@ -1,13 +1,28 @@
+import { EVENT_ACTION, EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import get from 'lodash/get';
+
+// Default analytics object
+const defaultAnalytics = (heading) => ({
+  onComponentDidMount: {
+    ga_eventCategory: EVENT_CATEGORY.contentTools,
+    ga_eventAction: EVENT_ACTION.helpDrawerOpen,
+    ga_eventLabel: heading,
+  },
+  onComponentWillUnmount: {
+    ga_eventCategory: EVENT_CATEGORY.contentTools,
+    ga_eventAction: EVENT_ACTION.helpDrawerClose,
+    ga_eventLabel: heading,
+  },
+});
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
-
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -24,6 +39,24 @@ export class HelpDrawer extends React.PureComponent {
 
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
+
+    const eventAction = 'onComponentDidMount';
+
+    /* Send analytics event for helpdrawer open */
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+    );
+  }
+
+  componentWillUnmount() {
+    const eventAction = 'onComponentWillUnmount';
+
+    /* Send analytics event for helpdrawer close */
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+    );
   }
 
   render() {
@@ -88,9 +121,32 @@ HelpDrawer.defaultProps = {
   closeButtonText: 'Close',
   headingLevel: '3',
 };
+
+/**
+ * Defines the shape of an analytics event for tracking that is an object with key-value pairs
+ */
+const AnalyticsEventShape = PropTypes.shape({
+  ga_eventCategory: PropTypes.string,
+  ga_eventAction: PropTypes.string,
+  ga_eventLabel: PropTypes.string,
+  ga_eventValue: PropTypes.string,
+});
+
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
+  /**
+   * Analytics events tracking is enabled by default.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
+   */
+  analytics: PropTypes.shape({
+    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
+    onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
+  }),
   /**
    * Helps give more context to screen readers on the button that closes the Help Drawer
    */
