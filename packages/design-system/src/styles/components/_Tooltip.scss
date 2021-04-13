@@ -86,7 +86,7 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip__content {
   color: $tooltip-text-color;
   display: block;
-  font-size: $small-font-size;
+  font-size: $font-size-sm;
   font-weight: 400;
   padding: $spacer-1;
 

@@ -1,11 +1,20 @@
 /*
 Font size
 
+<div class="ds-c-alert">
+    <div class="ds-c-alert__body">
+      <h3 class="ds-c-alert__heading">Typography sizing updates!</h3>
+      <p class="ds-c-alert__text">
+        We've updated typography sizing variables and class names to make them more agnostic. Read about <a href="/startup/theming/#updating-font-sizing">how you can update</a>.
+      </p>
+    </div>
+  </div>
+
 Use the font size utility to make the text larger or smaller.
 
-**Format**: `.ds-u-font-size--[display|title|h1|h2|h3|h4|lead|base|small]`
+**Format**: `.ds-u-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
 
-**Responsive format**: `.ds-u-[breakpoint]-font-size--[display|title|h1|h2|h3|h4|lead|base|small]`
+**Responsive format**: `.ds-u-[breakpoint]-font-size--[5xl|4xl|3xl|2xl|xl|lg|md|base|sm]`
 
 Markup: font-size.example.html
 
@@ -31,15 +40,15 @@ Style guide: utilities.font-size.responsive
 
 The following Sass variables can be overridden to theme the font size utility:
 
-- `$display-font-size`
-- `$title-font-size`
-- `$h1-font-size`
-- `$h2-font-size`
-- `$h3-font-size`
-- `$h4-font-size`
-- `$lead-font-size`
-- `$base-font-size`
-- `$small-font-size`
+- `$font-size-5xl`
+- `$font-size-4xl`
+- `$font-size-3xl`
+- `$font-size-2xl`
+- `$font-size-xl`
+- `$font-size-lg`
+- `$font-size-md`, uses `$base-font-size`
+- `$font-size-sm`
+
 
 Style guide: utilities.font-size.guidance
 */
