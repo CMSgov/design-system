@@ -1,4 +1,4 @@
-$filter-tag-button-size: 14px;
+$filter-tag-icon-size: 14px;
 $filter-tag-text-color: $color-base !default;
 $filter-tag-background-color: $color-primary-alt-lightest !default;
 $filter-tag-border-color: $color-primary !default;
@@ -22,7 +22,7 @@ $filter-tag-border-color-hover: $color-primary !default;
   font-size: $small-font-size;
   font-weight: $font-normal;
   padding: $spacer-half $spacer-1;
-  padding-right: ($spacer-1 + $spacer-1 + $filter-tag-button-size);
+  padding-right: ($spacer-1 + $spacer-1 + $filter-tag-icon-size);
   position: relative;
   text-align: left;
 
@@ -43,21 +43,21 @@ $filter-tag-border-color-hover: $color-primary !default;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  height: $filter-tag-button-size;
+  height: $filter-tag-icon-size;
   margin-left: $spacer-1;
   padding: 0;
   position: absolute;
   right: $spacer-1;
   top: ($spacer-half + 3px);
   vertical-align: middle;
-  width: $filter-tag-button-size;
+  width: $filter-tag-icon-size;
 
   .ds-c-clear-icon {
     display: block;
     height: $x-size;
-    left: ($filter-tag-button-size - 2 - $x-size) / 2;
+    left: ($filter-tag-icon-size - 2 - $x-size) / 2;
     position: relative;
-    top: ($filter-tag-button-size - 2 - $x-size) / 2;
+    top: ($filter-tag-icon-size - 2 - $x-size) / 2;
     width: $x-size;
   }
 
