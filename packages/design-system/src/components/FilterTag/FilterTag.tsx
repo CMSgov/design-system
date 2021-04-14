@@ -6,12 +6,34 @@ const actionableKeys = ['Enter', 'Backspace', 'Delete'];
 const idFromValue = (value: string) => `${value}-tag`;
 
 export interface FilterTagProps {
+  /**
+   * Id for filter tag button. If not provided, a unique id will be automatically generated and used.
+   */
   id?: string;
+  /**
+   * Class to be applied to the outer `<div>` that contains filter tag button.
+   */
   className?: string;
+  /**
+   * Text for the filter tag
+   */
   label: string;
+  /**  
+   *
+   Value for filter tag 
+   */
   value: string;
+  /**
+   *  For screenreaders, text to read for removal
+   */
   removeText: string;
+  /**
+   * When false, filter tag is not removable
+   */
   readOnly?: boolean;
+  /**
+   * Function to call when filter tag is dismissed, will return value
+   */
   onClear?: (value: string) => void;
 }
 
