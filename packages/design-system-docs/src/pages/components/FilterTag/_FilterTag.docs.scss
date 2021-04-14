@@ -41,7 +41,16 @@ Style guide: components.filtertag.react
 
 ### Future research
 
--
+### Customization
+The following Sass variables can be overridden to theme alerts:
+
+- `$filter-tag-icon-size` - Height / Width for the close icon in the filter tag
+- `$filter-tag-text-color` - Text color for the filter tag
+- `$filter-tag-background-color` - Background color for the filter tag
+- `$filter-tag-border-color` - Border color for the filter tag
+- `$filter-tag-text-color-hover` - Text color for the filter tag on hover
+- `$filter-tag-background-color-hover` -  Background color for the filter tag on hover
+- `$filter-tag-border-color-hover` -  Border color for the filter tag on hover
 
 Style guide: components.filtertag.guidance
 */
