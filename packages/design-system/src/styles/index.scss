@@ -34,8 +34,8 @@ $focus-color: orange;
   input:focus,
   button:focus,
   a:focus {
-    outline: $focus-color solid 4px;
-    outline-offset: 4px;
+    outline: $focus-color solid 3px;
+    outline-offset: 3px;
     box-shadow: none;
   }
 }
@@ -44,7 +44,7 @@ $focus-color: orange;
 
 .focus-2 {
   input:focus {
-    box-shadow: 0px 0px 0px 4px $focus-color;
+    box-shadow: 0px 0px 0px 3px $focus-color;
   }
   button:focus,
   a:focus {
@@ -58,12 +58,12 @@ $focus-color: orange;
 
 .focus-3 {
   input:focus {
-    box-shadow: 0px 0px 0px 4px $focus-color, inset 0 0 0 2px $color-base;
+    box-shadow: 0px 0px 0px 3px $focus-color, inset 0 0 0 3px $color-base;
   }
   button:focus,
   a:focus {
     background-color: $focus-color;
-    box-shadow: 0 4px $color-base;
+    box-shadow: 0 3px $color-base;
     outline: 0;
     color: $color-base !important;
   }
@@ -72,8 +72,8 @@ $focus-color: orange;
 // Background color + outline
 .focus-4 {
   input:focus {
-    outline: $focus-color dashed 2px;
-    outline-offset: 4px;
+    outline: $focus-color dashed 3px;
+    outline-offset: 3px;
     box-shadow: none;
   }
   button:focus,
@@ -82,8 +82,8 @@ $focus-color: orange;
     box-shadow: none;
     outline: 0;
     color: $color-base !important;
-    outline: $focus-color dashed 2px;
-    outline-offset: 4px;
+    outline: $focus-color dashed 3px;
+    outline-offset: 3px;
   }
 }
 
@@ -93,9 +93,20 @@ $focus-color: orange;
   input:focus,
   button:focus,
   a:focus {
-    outline: $focus-color dashed 2px;
-    outline-offset: 4px;
+    outline: $focus-color dashed 3px;
+    outline-offset: 3px;
     box-shadow: none;
+  }
+}
+// Outline - double outline
+.focus-6 {
+  input:focus,
+  button:focus,
+  a:focus {
+    // outline: 3px solid $focus-color;
+    // outline-offset: 3px;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color;
+    text-decoration: none;
   }
 }
 
