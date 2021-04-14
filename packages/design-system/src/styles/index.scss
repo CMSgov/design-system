@@ -28,7 +28,7 @@ $focus-color: orange;
   }
 }
 
-// Outline
+// Outline - solid
 
 .focus-1 {
   input:focus,
@@ -86,4 +86,17 @@ $focus-color: orange;
     outline-offset: 4px;
   }
 }
+
+// Outline - dashed
+
+.focus-5 {
+  input:focus,
+  button:focus,
+  a:focus {
+    outline: $focus-color dashed 2px;
+    outline-offset: 4px;
+    box-shadow: none;
+  }
+}
+
 /* stylelint-enable  */
