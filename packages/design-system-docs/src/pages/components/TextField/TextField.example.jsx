@@ -1,42 +1,156 @@
+import { Button, TextField } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { TextField } from '@design-system';
 
 ReactDOM.render(
-  <div>
-    <TextField
-      defaultValue="Example value"
-      label="Single line field"
-      labelClassName="ds-u-margin-top--0"
-      name="single_example"
-    />
-    <TextField defaultValue="123" label="Number field" name="number_example" numeric />
-    <TextField
-      label="Password field"
-      name="password_example"
-      type="password"
-      defaultValue="Example value"
-    />
-    <TextField label="Small size field" name="small_example" size="small" />
-    <TextField label="Medium size field" name="medium_example" size="medium" />
-    <TextField label="Multiline field" multiline name="multiline_example" />
-    <TextField
-      errorMessage="Example error message"
-      hint="Helpful hint text"
-      label="Error field"
-      name="error_example"
-    />
-    <TextField label="Success field" fieldClassName="ds-c-field--success" name="success_example" />
-    <TextField label="Disabled field" disabled name="disabled_example" />
-    <div className="example--wrapper example--inverse">
-      <TextField
-        labelClassName="ds-u-margin-top--0"
-        errorMessage="Example error message"
-        hint="Helpful hint text"
-        label="Inverse example"
-        name="inverse_example"
-        inversed
-      />
+  <div className="ds-l-container focus-styles">
+    <h1>Outline solid</h1>
+    <div className="focus-1 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+    </div>
+
+    <h1>Background color</h1>
+    <div className="focus-2 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+    </div>
+
+    <h1>Background color + border</h1>
+    <div className="focus-3 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+    </div>
+
+    <h1>Background color + outline</h1>
+    <div className="focus-4 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
     </div>
   </div>,
   document.getElementById('js-example')

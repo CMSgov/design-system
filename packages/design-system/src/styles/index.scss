@@ -15,3 +15,75 @@
 
 // Utilities: Overrides, helpers
 @import 'utilities/index';
+/* stylelint-disable  */
+
+$focus-color: orange;
+
+.focus-styles {
+  .ds-l-col--6 {
+    border: 1px solid $color-background-inverse;
+  }
+  .example--inverse {
+    margin-top: initial;
+  }
+}
+
+// Outline
+
+.focus-1 {
+  input:focus,
+  button:focus,
+  a:focus {
+    outline: $focus-color solid 4px;
+    outline-offset: 4px;
+    box-shadow: none;
+  }
+}
+
+// Background color
+
+.focus-2 {
+  input:focus {
+    box-shadow: 0px 0px 0px 4px $focus-color;
+  }
+  button:focus,
+  a:focus {
+    background-color: $focus-color;
+    box-shadow: none;
+    outline: 0;
+    color: $color-base !important;
+  }
+}
+// Background color + border
+
+.focus-3 {
+  input:focus {
+    box-shadow: 0px 0px 0px 4px $focus-color, inset 0 0 0 2px $color-base;
+  }
+  button:focus,
+  a:focus {
+    background-color: $focus-color;
+    box-shadow: 0 4px $color-base;
+    outline: 0;
+    color: $color-base !important;
+  }
+}
+
+// Background color + outline
+.focus-4 {
+  input:focus {
+    outline: $focus-color dashed 2px;
+    outline-offset: 4px;
+    box-shadow: none;
+  }
+  button:focus,
+  a:focus {
+    background-color: $focus-color;
+    box-shadow: none;
+    outline: 0;
+    color: $color-base !important;
+    outline: $focus-color dashed 2px;
+    outline-offset: 4px;
+  }
+}
+/* stylelint-enable  */
