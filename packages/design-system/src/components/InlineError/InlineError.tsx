@@ -13,7 +13,12 @@ interface InlineErrorProps {
   inversed?: boolean;
 }
 
-export function InlineError({ children, className, id, inversed }: InlineErrorProps): React.ReactElement {
+export function InlineError({
+  children,
+  className,
+  id,
+  inversed,
+}: InlineErrorProps): React.ReactElement {
   const classes = classNames(
     'ds-c-field__error-message',
     { 'ds-c-field__error-message--inverse': inversed },
