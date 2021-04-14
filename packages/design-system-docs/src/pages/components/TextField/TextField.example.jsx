@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <div className="ds-l-container focus-styles">
-    <h1>Outline solid</h1>
+    <h1>Outline - solid</h1>
     <div className="focus-1 ds-l-row">
       <div className="ds-l-col--6">
         <p>
@@ -41,7 +41,7 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Outline dashed</h1>
+    <h1>Outline - dashed</h1>
     <div className="focus-5 ds-l-row">
       <div className="ds-l-col--6">
         <p>
@@ -78,7 +78,7 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Double outline</h1>
+    <h1>Outline - Double solid</h1>
     <div className="focus-6 ds-l-row">
       <div className="ds-l-col--6">
         <p>
@@ -190,7 +190,7 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Background color + outline</h1>
+    <h1>Background color + dashed outline</h1>
     <div className="focus-4 ds-l-row">
       <div className="ds-l-col--6">
         <p>
