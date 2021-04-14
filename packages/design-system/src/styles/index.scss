@@ -58,7 +58,7 @@ $focus-color: orange;
 
 .focus-3 {
   input:focus {
-    box-shadow: 0px 0px 0px 3px $focus-color, inset 0 0 0 3px $color-base;
+    box-shadow: 0px 0px 0px 4px $focus-color, inset 0 0 0 2px $color-base;
   }
   button:focus,
   a:focus {
