@@ -190,7 +190,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
 >
   <button
     aria-describedby="trigger_2"
-    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+    className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}

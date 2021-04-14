@@ -4,12 +4,15 @@
 $tooltip-icon-size: 16px !default;
 $tooltip-arrow-size: 8px !default;
 $tooltip-icon-container-size: 24px !default;
+$tooltip-icon-color: $color-primary !default;
+$tooltip-icon-color-inverse: $color-white !default;
 
-$tooltip-border-radius: 4px !default;
-$tooltip-text-color: $color-base-inverse !default;
-$tooltip-background-color: $color-background-inverse !default;
-$tooltip-text-color-inverse: $color-base !default;
-$tooltip-background-color-inverse: $color-background !default;
+$tooltip-border-color: $color-gray-dark !default;
+$tooltip-border-width: 1px !default;
+$tooltip-border-radius: 8px !default;
+$tooltip-text-color: $color-base !default;
+$tooltip-font-size: $base-font-size !default;
+$tooltip-background-color: $color-background !default;
 
 %trigger-reset-styles {
   // override user agent button styles
@@ -83,12 +86,15 @@ $tooltip-background-color-inverse: $color-background !default;
 }
 
 // Interior content of tooltip
+// Font style gets inherited from ds-base
 .ds-c-tooltip__content {
+  border-radius: $tooltip-border-radius;
+  box-shadow: 0 0 17px $color-gray-light;
   color: $tooltip-text-color;
   display: block;
-  font-size: $small-font-size;
+  font-size: $tooltip-font-size;
   font-weight: 400;
-  padding: $spacer-1;
+  padding: $spacer-2;
 
   // Remove tooltip content padding by default
   &:first-child {
@@ -111,9 +117,11 @@ $tooltip-background-color-inverse: $color-background !default;
 // max-width and z-index are set via props to account for different uses
 .ds-c-tooltip {
   background: $tooltip-background-color;
+  border-color: $tooltip-border-color;
   border-radius: $tooltip-border-radius;
+  border-style: solid;
+  border-width: $tooltip-border-width;
   box-sizing: border-box;
-
   display: none;
   opacity: 0;
 }
@@ -156,7 +164,9 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
   &::after {
-    top: 0;
+    border-bottom: $tooltip-border-width solid $tooltip-border-color;
+    border-right: $tooltip-border-width solid $tooltip-border-color;
+    top: 1px;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
 }
@@ -164,6 +174,8 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -$tooltip-arrow-size;
   &::after {
+    border-left: $tooltip-border-width solid $tooltip-border-color;
+    border-top: $tooltip-border-width solid $tooltip-border-color;
     bottom: 0;
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
   }
@@ -172,6 +184,8 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -$tooltip-arrow-size;
   &::after {
+    border-right: $tooltip-border-width solid $tooltip-border-color;
+    border-top: $tooltip-border-width solid $tooltip-border-color;
     left: 0;
     transform: translateX(50%) translateY(50%) rotate(45deg);
   }
@@ -180,20 +194,9 @@ $tooltip-background-color-inverse: $color-background !default;
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -$tooltip-arrow-size;
   &::after {
-    left: 0;
+    border-bottom: $tooltip-border-width solid $tooltip-border-color;
+    border-left: $tooltip-border-width solid $tooltip-border-color;
+    left: -2px;
     transform: translateX(50%) translateY(50%) rotate(45deg);
-  }
-}
-
-// Inverse version of the tooltip body/content
-.ds-c-tooltip--inverse {
-  background: $tooltip-background-color-inverse;
-
-  .ds-c-tooltip__arrow::after {
-    background: $tooltip-background-color-inverse;
-  }
-
-  .ds-c-tooltip__content {
-    color: $tooltip-text-color-inverse;
   }
 }
