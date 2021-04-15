@@ -86,10 +86,12 @@ export class FilterTag extends React.Component<FilterTagProps, FilterTagState> {
               onClick={this.handleClick}
               onKeyDown={this.handleKeyDown}
             >
-              {!readOnly && <span className="ds-u-visibility--screen-reader">{removeText} </span>}
               <span className="ds-c-filter-tag__label">{label}</span>
               {!readOnly && (
-                <span className="ds-c-filter-tag__clear-icon">
+                <span
+                  className="ds-c-filter-tag__clear-icon"
+                  aria-label={removeText}
+                >
                   <ClearIcon />
                 </span>
               )}
