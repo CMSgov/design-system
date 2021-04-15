@@ -74,13 +74,14 @@ export class FilterTag extends React.Component<FilterTagProps, FilterTagState> {
   render(): React.ReactNode {
     const { id, label, removeText, readOnly, className } = this.props;
     const rootClassNames = classNames('ds-c-filter-tag', className);
-
+    const readOnlyTag = readOnly ? 'ds-c-filter-tag__button--read-only' : '';
+    const buttonClassNames = classNames('ds-c-filter-tag__button', readOnlyTag);
     return (
       <>
         {!this.state.tagDismissed && (
           <div className={rootClassNames}>
             <button
-              className="ds-c-filter-tag__button"
+              className={buttonClassNames}
               id={id || idFromValue(label)}
               onClick={this.handleClick}
               onKeyDown={this.handleKeyDown}

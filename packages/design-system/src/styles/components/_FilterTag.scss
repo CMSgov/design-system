@@ -35,6 +35,19 @@ $filter-tag-border-color-hover: $color-primary !default;
   }
 }
 
+.ds-c-filter-tag__button--read-only {
+  cursor: default;
+  padding-right: $spacer-1;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $filter-tag-background-color;
+    border: 1px solid $filter-tag-border-color;
+    color: $filter-tag-text-color;
+  }
+}
+
 .ds-c-filter-tag__clear-icon {
   $x-size: 6px;
   border: 1px solid $filter-tag-text-color;

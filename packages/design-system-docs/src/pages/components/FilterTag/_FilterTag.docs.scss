@@ -25,7 +25,7 @@ Style guide: components.filtertag.react
 
 ### When to use
 
-- To filter results with one or more tags.
+- To display filter results with one or more tags.
 
 ### When to consider alternatives
 
@@ -33,11 +33,14 @@ Style guide: components.filtertag.react
 
 ### Usage
 
--
+- Do not mix badges and filter tags as it can be confusing to the user
+- Do not use filter tags when a badge is sufficient, ie when none of the tags are removable
+- Filter tags ideally should be short and not wrap to the second line
 
 ### Accessibility
 
--
+- Use `removeText` prop so that screenreaders can accurately read out the close icon action
+- `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
 
 ### Future research
 
