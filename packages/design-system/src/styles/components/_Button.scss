@@ -307,3 +307,148 @@ $button-color-variants: (
     }
   }
 }
+/* stylelint-disable */
+$mgovbutton-color-variants: (
+  // background, hover, active, focus, border, text color
+    primary: #146a5d #0f4b42 #409e90 $focus-color transparent $color-white,
+  secondary: #1e3c70 #12284d #4f6b9b $focus-color transparent $color-white,
+  tertiary: #fff #fff #fff $focus-color #12284d #12284d
+);
+
+@each $colors in map-keys($mgovbutton-color-variants) {
+  $color: map-get($mgovbutton-color-variants, $colors);
+  .buttons-mgov {
+    .ds-c-button--#{$colors},
+    .ds-c-button--#{$colors}:visited {
+      background-color: nth($color, 1);
+      border-color: nth($color, 5);
+      color: nth($color, 6);
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.ds-c-button--hover,
+      &.ds-c-button--focus,
+      &.ds-c-button--active {
+        border-color: nth($color, 5);
+        color: nth($color, 6);
+      }
+
+      &:hover,
+      &.ds-c-button--hover {
+        background-color: nth($color, 2);
+      }
+
+      @if $ds-include-focus-styles {
+        &:focus,
+        &.ds-c-button--focus {
+          background-color: nth($color, 4);
+          border-color: transparent;
+          color: $color-base;
+        }
+      } @else {
+        &:focus,
+        &.ds-c-button--focus {
+          background-color: nth($color, 2);
+        }
+      }
+
+      &:active,
+      &.ds-c-button--active {
+        background-color: nth($color, 3);
+      }
+      @if $ds-include-focus-styles {
+        // Make sure active overrides focus styles
+        &:active:focus,
+        &.ds-c-button--active:focus {
+          background-color: nth($color, 3);
+          box-shadow: none;
+          color: $color-white;
+        }
+      }
+
+      &:disabled,
+      &.ds-c-button--disabled {
+        background-color: $color-gray-lighter;
+        border-color: transparent;
+        color: $color-gray-dark;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+$hcgovbutton-color-variants: (
+  // background, hover, active, focus, border, text color
+    primary: #12890e #107b0d #0e6d0b $focus-color transparent $color-white,
+  secondary: #fff #fff #fff $focus-color #046791 #046791,
+  tertiary: #fff #fff #fff $focus-color transparent #046791
+);
+
+@each $colors in map-keys($hcgovbutton-color-variants) {
+  $color: map-get($hcgovbutton-color-variants, $colors);
+  .buttons-hcgov {
+    .ds-c-button--#{$colors},
+    .ds-c-button--#{$colors}:visited {
+      background-color: nth($color, 1);
+      border-color: nth($color, 5);
+      color: nth($color, 6);
+      border-width: 2px;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.ds-c-button--hover,
+      &.ds-c-button--focus,
+      &.ds-c-button--active {
+        border-color: nth($color, 5);
+        color: nth($color, 6);
+      }
+
+      &:hover,
+      &.ds-c-button--hover {
+        background-color: nth($color, 2);
+      }
+
+      @if $ds-include-focus-styles {
+        &:focus,
+        &.ds-c-button--focus {
+          background-color: nth($color, 4);
+          border-color: transparent;
+          color: $color-base;
+        }
+      } @else {
+        &:focus,
+        &.ds-c-button--focus {
+          background-color: nth($color, 2);
+        }
+      }
+
+      &:active,
+      &.ds-c-button--active {
+        background-color: nth($color, 3);
+      }
+      @if $ds-include-focus-styles {
+        // Make sure active overrides focus styles
+        &:active:focus,
+        &.ds-c-button--active:focus {
+          background-color: nth($color, 3);
+          box-shadow: none;
+          color: $color-white;
+        }
+      }
+
+      &:disabled,
+      &.ds-c-button--disabled {
+        background-color: $color-gray-lighter;
+        border-color: transparent;
+        color: $color-gray-dark;
+        pointer-events: none;
+      }
+    }
+    .ds-c-button--tertiary {
+      text-decoration: underline;
+    }
+  }
+}
+/* stylelint-enable */
