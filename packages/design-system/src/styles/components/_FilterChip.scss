@@ -1,4 +1,5 @@
-$filter-chip-icon-size: 14px;
+$filter-chip-icon-container-size: 18px;
+$filter-chip-icon-size: 10px;
 $filter-chip-text-color: $color-base !default;
 $filter-chip-background-color: $color-primary-alt-lightest !default;
 $filter-chip-border-color: $color-primary !default;
@@ -21,8 +22,9 @@ $filter-chip-border-color-hover: $color-primary !default;
   font-family: $font-sans;
   font-size: $small-font-size;
   font-weight: $font-normal;
+  min-height: 44px;
   padding: $spacer-half $spacer-1;
-  padding-right: ($spacer-1 + $spacer-1 + $filter-chip-icon-size);
+  padding-right: ($spacer-1 + $spacer-1 + $filter-chip-icon-container-size);
   position: relative;
   text-align: left;
 
@@ -36,29 +38,27 @@ $filter-chip-border-color-hover: $color-primary !default;
 }
 
 .ds-c-filter-chip__clear-icon {
-  $x-size: 6px;
   border: 1px solid $filter-chip-text-color;
-
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  height: $filter-chip-icon-size;
+  height: $filter-chip-icon-container-size;
   margin-left: $spacer-1;
   padding: 0;
   position: absolute;
   right: $spacer-1;
-  top: ($spacer-half + 3px);
+  top: ($spacer-1 + 4px);
   vertical-align: middle;
-  width: $filter-chip-icon-size;
+  width: $filter-chip-icon-container-size;
 
   .ds-c-clear-icon {
     display: block;
-    height: $x-size;
-    left: ($filter-chip-icon-size - 2 - $x-size) / 2;
+    height: $filter-chip-icon-size;
+    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
     position: relative;
-    top: ($filter-chip-icon-size - 2 - $x-size) / 2;
-    width: $x-size;
+    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    width: $filter-chip-icon-size;
   }
 
   .ds-c-clear-icon__x {

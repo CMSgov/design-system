@@ -4,14 +4,11 @@ export function ClearIcon(): React.ReactElement {
   return (
     <svg
       className="ds-c-clear-icon"
-      width="15px"
-      height="15px"
-      viewBox="0 0 15 15"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      focusable="false"
-      role="presentation"
-      pointerEvents="none"
+      viewBox="0 0 15 15"
+      width="15"
+      height="15"
     >
       <path
         className="ds-c-clear-icon__x"
