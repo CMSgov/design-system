@@ -41,6 +41,7 @@ Style guide: components.filterchip.react
 
 - Use `removeText` prop so that screenreaders can accurately read out the close icon action
 - `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
+- Allow adequate spacing between each filter chip, as much as the design will allow. This helps people with low vision and motor disabilities be able to perceive and interact with the chips.
 
 ### Future research
 
