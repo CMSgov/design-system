@@ -45,6 +45,8 @@ async function generateReactExample(
 
       const exampleScripts = stats.compilation.assets['bundle.js'].source();
 
+      // TODO: Remove line `${core ? createAnalyticsTag() : ''}` before merging to master
+      // Purpose if for localhost testing of Tealium event tracking
       const head = `
         <title>Example: ${page.reference}</title>
         <link rel="stylesheet" href="/${path.join(rootPath, 'example.css')}" />

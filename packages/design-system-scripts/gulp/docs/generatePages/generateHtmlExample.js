@@ -1,5 +1,4 @@
 const savePage = require('./savePage');
-const createAnalyticsTag = require('./createAnalyticsTag');
 
 /**
  * Process template tags in KSS markup
@@ -42,10 +41,8 @@ function generateHtmlExample(page, modifier, docsPath, options) {
   if (modifier) id += `.${modifier.name}`;
 
   const head = `<title>Example: ${page.reference}</title>
-    <link rel="stylesheet" href="/${rootPath}example.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
-    ${options.core ? createAnalyticsTag() : ''}
-  `;
+  <link rel="stylesheet" href="/${rootPath}example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />`;
 
   const body = `${processMarkup(page.markup, modifier)}
   <script type="text/javascript" src="/${rootPath}example.js"></script>`;
