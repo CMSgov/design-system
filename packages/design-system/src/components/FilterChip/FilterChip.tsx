@@ -18,19 +18,14 @@ export interface FilterChipProps {
    * Text for the filter chip
    */
   label: string;
-  /**  
-   *
-   Value for filter chip 
-   */
-  value: string;
   /**
    *  For screenreaders, text to read for removal
    */
   removeText: string;
   /**
-   * Function to call when filter chip is dismissed, will return value.
+   * Function to call when filter chip is dismissed
    */
-  onDelete: (value: string) => void;
+  onDelete: () => void;
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
@@ -41,9 +36,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   handleClick(): void {
-    const { onDelete, value } = this.props;
-    // Call on onDelete passed in as a prop to component
-    onDelete(value);
+    this.props.onDelete();
   }
 
   handleKeyDown(evt: React.KeyboardEvent): void {
@@ -62,7 +55,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
         <div className={rootClassNames}>
           <button
             className="ds-c-filter-chip__button"
-            id={id || uniqueId(`filter_${this.props.value}`)}
+            id={id || uniqueId(`filter_`)}
             onClick={this.handleClick}
             onKeyDown={this.handleKeyDown}
           >
