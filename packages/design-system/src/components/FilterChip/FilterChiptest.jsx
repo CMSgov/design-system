@@ -1,14 +1,14 @@
-import FilterTag from './FilterTag';
+import FilterChip from './FilterChip';
 import React from 'react';
 import { shallow } from 'enzyme';
 
-describe('FilterTag', () => {
+describe('FilterChip', () => {
   it('should include children as label', () => {
-    expect(shallow(<FilterTag label="Foo" />).text()).toEqual(' Foo<ClearIcon />');
+    expect(shallow(<FilterChip label="Foo" />).text()).toEqual(' Foo<ClearIcon />');
   });
 
   it('renders button and should disappear when clicked', () => {
-    const wrapper = shallow(<FilterTag label="Foo" />);
+    const wrapper = shallow(<FilterChip label="Foo" />);
     expect(wrapper.text()).toEqual(' Foo<ClearIcon />');
 
     const button = wrapper.find('button');
