@@ -22,28 +22,24 @@ const TIMEOUT = 300;
 
 /* eslint-disable camelcase */
 export interface AnalyticsPayload {
-  ga_eventType: string;
-  ga_eventCategory: string;
   ga_eventAction: string;
+  ga_eventCategory: string;
   ga_eventLabel: string;
+  ga_eventType: string;
   ga_eventValue: string;
   additional_props?: Record<string, unknown>;
 }
 
 export const EVENT_CATEGORY = {
   contentTools: 'content tools',
-};
-
-export const EVENT_ACTION = {
-  helpDrawerOpen: 'opened help drawer',
-  helpDrawerClose: 'closed help drawer',
+  uiComponents: 'ui components',
 };
 
 interface AnalyticsEventProps {
-  ga_eventType: string;
-  ga_eventCategory: string;
   ga_eventAction: string;
+  ga_eventCategory: string;
   ga_eventLabel: string;
+  ga_eventType: string;
   ga_eventValue?: string;
   additional_props?: Record<string, unknown>;
 }
@@ -74,18 +70,18 @@ export function sendAnalyticsEvent(
   if (window.utag && !analyticsDisabled) {
     const mergedPayload = merge(defaultPayload, overrides);
     const {
-      ga_eventType = 'cmsds', // default value
-      ga_eventCategory,
       ga_eventAction,
+      ga_eventCategory,
       ga_eventLabel,
-      ga_eventValue = '', // default value
+      ga_eventType = 'cmsds', // default value
+      ga_eventValue = '',     // default value
       ...other_props
     } = mergedPayload;
     const payload: AnalyticsPayload = {
-      ga_eventType,
-      ga_eventCategory,
       ga_eventAction,
+      ga_eventCategory,
       ga_eventLabel,
+      ga_eventType,
       ga_eventValue,
       ...other_props,
     };

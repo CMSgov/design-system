@@ -1,4 +1,4 @@
-import { EVENT_ACTION, EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -8,14 +8,20 @@ import get from 'lodash/get';
 // Default analytics object
 const defaultAnalytics = (heading) => ({
   onComponentDidMount: {
-    ga_eventCategory: EVENT_CATEGORY.contentTools,
-    ga_eventAction: EVENT_ACTION.helpDrawerOpen,
+    event_name: 'help_drawer_opened',
+    event_type: 'ui interaction',
+    ga_eventAction: 'opened help drawer',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
+    heading: heading,
   },
   onComponentWillUnmount: {
-    ga_eventCategory: EVENT_CATEGORY.contentTools,
-    ga_eventAction: EVENT_ACTION.helpDrawerClose,
+    event_name: 'help_drawer_closed',
+    event_type: 'ui interaction',
+    ga_eventAction: 'closed help drawer',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
+    heading: heading,
   },
 });
 
