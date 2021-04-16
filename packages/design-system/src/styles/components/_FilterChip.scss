@@ -23,8 +23,8 @@ $filter-chip-border-color-hover: $color-primary !default;
   font-size: $small-font-size;
   font-weight: $font-normal;
   min-height: 44px;
-  padding: $spacer-half $spacer-1;
-  padding-right: ($spacer-1 + $spacer-1 + $filter-chip-icon-container-size);
+  padding: $spacer-1 $spacer-2;
+  padding-right: ($spacer-1 + $filter-chip-icon-container-size);
   position: relative;
   text-align: left;
 
@@ -48,7 +48,8 @@ $filter-chip-border-color-hover: $color-primary !default;
   padding: 0;
   position: absolute;
   right: $spacer-1;
-  top: ($spacer-1 + 4px);
+  top: 50%;
+  transform: translateY(-50%);
   vertical-align: middle;
   width: $filter-chip-icon-container-size;
 
