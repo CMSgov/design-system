@@ -30,6 +30,10 @@ export interface AccordionItemProps {
    *  If not provided, a unique id will be automatically generated and used.
    */
   id?: string;
+
+  open?: boolean;
+
+  onClick: any;
 }
 export interface AccordionItemState {
   isOpen: boolean;
@@ -50,6 +54,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     this.contentId = props.id || uniqueId('accordionItem_');
     this.buttonId = `${this.contentId}-button`;
   }
+
   // Set the state for opening and closing an accordion item
   onClick(): void {
     this.setState({ isOpen: !this.state.isOpen });

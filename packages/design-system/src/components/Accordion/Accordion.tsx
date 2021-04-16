@@ -12,6 +12,8 @@ export interface AccordionProps {
    * Class to be applied to the outer `<div>` that contains all accordion items.
    */
   className?: string;
+
+  variation?: 'single select - this is the default' | 'uncontrolled';
 }
 
 const handleKeyDown = (e) => {
@@ -34,7 +36,6 @@ const handleKeyDown = (e) => {
 
 const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
-  
   return (
     <div onKeyDown={handleKeyDown} className={classes}>
       {children}
