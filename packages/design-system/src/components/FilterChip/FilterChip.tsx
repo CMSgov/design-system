@@ -29,9 +29,8 @@ export interface FilterChipProps {
   removeText: string;
   /**
    * Function to call when filter chip is dismissed, will return value.
-   * If no onDelete function is included, no clear icon will be shown
    */
-  onDelete?: (value: string) => void;
+  onDelete: (value: string) => void;
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
@@ -43,14 +42,12 @@ export class FilterChip extends React.Component<FilterChipProps> {
 
   handleClick(): void {
     const { onDelete, value } = this.props;
-    if (onDelete) {
-      // Call on onDelete passed in as a prop to component
-      onDelete(value);
-    }
+    // Call on onDelete passed in as a prop to component
+    onDelete(value);
   }
 
   handleKeyDown(evt: React.KeyboardEvent): void {
-    if (this.props.onDelete && actionableKeys.includes(evt.key)) {
+    if (actionableKeys.includes(evt.key)) {
       this.handleClick();
       evt.preventDefault();
     }
@@ -59,18 +56,15 @@ export class FilterChip extends React.Component<FilterChipProps> {
   render(): React.ReactNode {
     const { id, label, onDelete, removeText, className } = this.props;
     const rootClassNames = classNames('ds-c-filter-chip', className);
-    const readOnlyTag = onDelete ? '' : 'ds-c-filter-chip__button--read-only';
-    const buttonClassNames = classNames('ds-c-filter-chip__button', readOnlyTag);
 
     return (
       <>
         <div className={rootClassNames}>
           <button
-            className={buttonClassNames}
+            className="ds-c-filter-chip__button"
             id={id || uniqueId(`filter_${this.props.value}`)}
             onClick={this.handleClick}
             onKeyDown={this.handleKeyDown}
-            disabled={!onDelete}
           >
             <span className="ds-c-filter-chip__label">{label}</span>
             {onDelete && (

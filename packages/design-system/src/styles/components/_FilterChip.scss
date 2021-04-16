@@ -35,19 +35,6 @@ $filter-chip-border-color-hover: $color-primary !default;
   }
 }
 
-.ds-c-filter-chip__button--read-only {
-  cursor: default;
-  padding-right: $spacer-1;
-
-  &:active,
-  &:focus,
-  &:hover {
-    background-color: $filter-chip-background-color;
-    border: 1px solid $filter-chip-border-color;
-    color: $filter-chip-text-color;
-  }
-}
-
 .ds-c-filter-chip__clear-icon {
   $x-size: 6px;
   border: 1px solid $filter-chip-text-color;
