@@ -47,7 +47,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   render(): React.ReactNode {
-    const { id, label, onDelete, removeText, className } = this.props;
+    const { id, label, removeText, className } = this.props;
     const rootClassNames = classNames('ds-c-filter-chip', className);
 
     return (
@@ -60,11 +60,9 @@ export class FilterChip extends React.Component<FilterChipProps> {
             onKeyDown={this.handleKeyDown}
           >
             <span className="ds-c-filter-chip__label">{label}</span>
-            {onDelete && (
-              <span className="ds-c-filter-chip__clear-icon" aria-label={removeText}>
-                <ClearIcon />
-              </span>
-            )}
+            <span className="ds-c-filter-chip__clear-icon" aria-label={removeText}>
+              <ClearIcon />
+            </span>
           </button>
         </div>
       </>
