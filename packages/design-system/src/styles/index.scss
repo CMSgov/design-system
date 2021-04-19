@@ -17,7 +17,7 @@
 @import 'utilities/index';
 /* stylelint-disable  */
 
-$focus-color: orange;
+$focus-color: #25a18e;
 
 .focus-styles {
   .ds-l-col--6 {
@@ -106,6 +106,19 @@ $focus-color: orange;
     // outline: 3px solid $focus-color;
     // outline-offset: 3px;
     box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color;
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+// Outline - double outline
+.focus-7 {
+  input:focus,
+  button:focus,
+  a:focus {
+    // outline: 3px solid $focus-color;
+    // outline-offset: 3px;
+    box-shadow: 0 0 0 3px #fff, 0 0 4px 6px $focus-color;
     text-decoration: none;
     outline: 0;
   }

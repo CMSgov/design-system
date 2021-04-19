@@ -41,8 +41,8 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Outline - dashed</h1>
-    <div className="focus-5 ds-l-row">
+    <h1>Outline - Double solid</h1>
+    <div className="focus-6 ds-l-row">
       <div className="ds-l-col--6">
         <p>
           <TextField
@@ -78,8 +78,47 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Outline - Double solid</h1>
-    <div className="focus-6 ds-l-row">
+    <h1>Outline - Double box shadow</h1>
+    <div className="focus-7 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+        </p>
+      </div>
+    </div>
+
+    <div className="ds-u-fill--gray-light ds-u-padding--2 ds-u-margin-y--6" />
+
+    <h1>Outline - dashed</h1>
+    <div className="focus-5 ds-l-row">
       <div className="ds-l-col--6">
         <p>
           <TextField
