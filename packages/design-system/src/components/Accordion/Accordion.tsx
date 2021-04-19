@@ -13,8 +13,12 @@ export interface AccordionProps {
    */
   className?: string;
 
-  variation?: 'single select - this is the default' | 'uncontrolled';
+  variation?: 'single select' | 'controlled';
 }
+
+const defaultProps: AccordionProps = {
+  variation: 'single select',
+};
 
 const handleKeyDown = (e) => {
   const target = e.target;
@@ -34,11 +38,18 @@ const handleKeyDown = (e) => {
   }
 };
 
-const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
+const AccordionContext = React.createContext('');
+
+const Accordion: FunctionComponent<AccordionProps> = ({
+  bordered,
+  children,
+  className,
+  variation,
+}) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return (
     <div onKeyDown={handleKeyDown} className={classes}>
-      {children}
+      <AccordionContext.Provider value={variation}>{children}</AccordionContext.Provider>
     </div>
   );
 };

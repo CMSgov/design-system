@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import AccordionContext from './Accordion';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -31,9 +32,9 @@ export interface AccordionItemProps {
    */
   id?: string;
 
-  open?: boolean;
+  onClick: (id: string, index: number) => void;
 
-  onClick: any;
+  index?: number;
 }
 export interface AccordionItemState {
   isOpen: boolean;
@@ -50,19 +51,23 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     super(props);
 
     this.state = { isOpen: !!props.defaultOpen };
-    this.onClick = this.onClick.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.contentId = props.id || uniqueId('accordionItem_');
     this.buttonId = `${this.contentId}-button`;
   }
 
   // Set the state for opening and closing an accordion item
-  onClick(): void {
-    this.setState({ isOpen: !this.state.isOpen });
+  handleOnClick(variation: string, id: string, index: number): void {
+    if ((variation = 'controlled')) {
+      this.props.onClick(id, index);
+    } else {
+      this.setState({ isOpen: !this.state.isOpen });
+    }
   }
 
   render(): React.ReactNode {
+    let variation = this.context;
     const { buttonClassName, children, contentClassName, heading, headingLevel = '2' } = this.props;
-
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
     const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -76,7 +81,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               aria-expanded={this.state.isOpen}
               aria-controls={this.contentId}
               id={this.buttonId}
-              onClick={this.onClick}
+              onClick={this.handleOnClick(variation)}
             >
               {heading}
             </button>
