@@ -1,6 +1,6 @@
 type errorPlacementValue = 'top' | 'bottom';
 interface flagsType {
-  ERROR_PLACEMENT_DEFAULT: errorPlacementValue
+  ERROR_PLACEMENT_DEFAULT: errorPlacementValue;
 }
 
 // featureFlags.js
