@@ -45,7 +45,7 @@ interface AnalyticsEventProps {
   [additional_props: string]: unknown;
 }
 
-export function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0): string {
+export function sendAnalytics(event: EventType, props: AnalyticsPayload, retry = 0): string {
   if (window.utag && window.utag[event]) {
     try {
       window.utag[event](props);
@@ -55,7 +55,7 @@ export function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0):
     }
   } else {
     if (++retry <= MAX_RETRIES) {
-      setTimeout(() => sendEvent(event, props, retry), retry * TIMEOUT);
+      setTimeout(() => sendAnalytics(event, props, retry), retry * TIMEOUT);
     } else {
       return `Tealium event max retries reached`;
     }
@@ -85,11 +85,11 @@ export function sendAnalyticsEvent(
       ga_eventValue,
       ...other_props,
     };
-    return sendEvent('link', payload);
+    return sendAnalytics('link', payload);
   } else {
     return '';
   }
 }
 /* eslint-enable camelcase */
 
-export default sendEvent;
+export default sendAnalytics;

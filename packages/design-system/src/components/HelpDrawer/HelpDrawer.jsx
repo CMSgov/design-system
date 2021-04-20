@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
