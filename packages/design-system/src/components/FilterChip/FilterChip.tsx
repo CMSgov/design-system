@@ -48,23 +48,21 @@ export class FilterChip extends React.Component<FilterChipProps> {
 
   render(): React.ReactNode {
     const { id, label, ariaClearLabel, className } = this.props;
-    const rootClassNames = classNames('ds-c-filter-chip', className);
+    const buttonClassNames = classNames('ds-c-filter-chip__button', className);
 
     return (
       <>
-        <div className={rootClassNames}>
-          <button
-            className="ds-c-filter-chip__button"
-            id={id || uniqueId(`filter_`)}
-            onClick={this.handleClick}
-            onKeyDown={this.handleKeyDown}
-          >
-            <span className="ds-c-filter-chip__label">{label}</span>
-            <span className="ds-c-filter-chip__clear-icon" aria-label={ariaClearLabel}>
-              <ClearIcon />
-            </span>
-          </button>
-        </div>
+        <button
+          className={buttonClassNames}
+          id={id || uniqueId(`filter_`)}
+          onClick={this.handleClick}
+          onKeyDown={this.handleKeyDown}
+        >
+          <span className="ds-c-filter-chip__label">{label}</span>
+          <span className="ds-c-filter-chip__clear-icon" aria-label={ariaClearLabel}>
+            <ClearIcon />
+          </span>
+        </button>
       </>
     );
   }

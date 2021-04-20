@@ -32,7 +32,8 @@ ControlledFilterChip.propTypes = {
 
 ReactDOM.render(
   <>
-    <ControlledFilterChip label="Example filter chip" ariaClearLabel="Remove" />
+    <ControlledFilterChip label="Example Filter Chip" ariaClearLabel="Remove" />
+    <ControlledFilterChip label="Example 2" ariaClearLabel="Remove" />
     <ControlledFilterChip
       label="Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap"
       ariaClearLabel="Remove"
