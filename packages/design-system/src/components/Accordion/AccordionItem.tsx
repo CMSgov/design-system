@@ -32,9 +32,9 @@ export interface AccordionItemProps {
    */
   id?: string;
 
-  onClick: (id: string, index: number) => void;
-
   index?: number;
+
+  onClick?: (arg0: string, arg1: number) => void;
 }
 export interface AccordionItemState {
   isOpen: boolean;
@@ -51,23 +51,32 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     super(props);
 
     this.state = { isOpen: !!props.defaultOpen };
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.contentId = props.id || uniqueId('accordionItem_');
     this.buttonId = `${this.contentId}-button`;
+    // this.context.value = React.useContext(AccordionContext);
   }
 
   // Set the state for opening and closing an accordion item
-  handleOnClick(variation: string, id: string, index: number): void {
-    if ((variation = 'controlled')) {
-      this.props.onClick(id, index);
+  handleClick(): void {
+    if ((this.context = 'controlled')) {
+      console.log('in handle click', this.props);
+      this.props.onClick(this.buttonId, this.props.index);
     } else {
       this.setState({ isOpen: !this.state.isOpen });
     }
   }
 
   render(): React.ReactNode {
-    let variation = this.context;
-    const { buttonClassName, children, contentClassName, heading, headingLevel = '2' } = this.props;
+    const {
+      buttonClassName,
+      children,
+      contentClassName,
+      heading,
+      headingLevel = '2',
+      index,
+      id,
+    } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
     const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -81,7 +90,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               aria-expanded={this.state.isOpen}
               aria-controls={this.contentId}
               id={this.buttonId}
-              onClick={this.handleOnClick(variation)}
+              onClick={this.handleClick}
             >
               {heading}
             </button>
