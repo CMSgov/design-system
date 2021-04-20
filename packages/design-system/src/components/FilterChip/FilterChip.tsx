@@ -21,7 +21,7 @@ export interface FilterChipProps {
   /**
    *  For screenreaders, text to read for removal
    */
-  removeText: string;
+  ariaClearLabel: string;
   /**
    * Function to call when filter chip is dismissed
    */
@@ -47,7 +47,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   render(): React.ReactNode {
-    const { id, label, removeText, className } = this.props;
+    const { id, label, ariaClearLabel, className } = this.props;
     const rootClassNames = classNames('ds-c-filter-chip', className);
 
     return (
@@ -60,7 +60,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
             onKeyDown={this.handleKeyDown}
           >
             <span className="ds-c-filter-chip__label">{label}</span>
-            <span className="ds-c-filter-chip__clear-icon" aria-label={removeText}>
+            <span className="ds-c-filter-chip__clear-icon" aria-label={ariaClearLabel}>
               <ClearIcon />
             </span>
           </button>

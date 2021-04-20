@@ -10,13 +10,13 @@ class ControlledFilterChip extends React.PureComponent {
   }
 
   render() {
-    const { label, removeText } = this.props;
+    const { label, ariaClearLabel } = this.props;
     return (
       <>
         {!this.state.tagDismissed && (
           <FilterChip
             label={label}
-            removeText={removeText}
+            ariaClearLabel={ariaClearLabel}
             onDelete={() => this.setState({ tagDismissed: true })}
           />
         )}
@@ -27,15 +27,15 @@ class ControlledFilterChip extends React.PureComponent {
 
 ControlledFilterChip.propTypes = {
   label: PropTypes.string,
-  removeText: PropTypes.string,
+  ariaClearLabel: PropTypes.string,
 };
 
 ReactDOM.render(
   <>
-    <ControlledFilterChip label="Example filter chip" removeText="Remove" />
+    <ControlledFilterChip label="Example filter chip" ariaClearLabel="Remove" />
     <ControlledFilterChip
       label="Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap"
-      removeText="Remove"
+      ariaClearLabel="Remove"
     />
   </>,
   document.getElementById('js-example')
