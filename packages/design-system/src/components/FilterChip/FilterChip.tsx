@@ -59,7 +59,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
           onKeyDown={this.handleKeyDown}
         >
           <span className="ds-c-filter-chip__label">{label}</span>
-          <span className="ds-c-filter-chip__clear-icon" aria-label={ariaClearLabel}>
+          <span className="ds-c-filter-chip__clear-icon-container" aria-label={ariaClearLabel}>
             <ClearIcon />
           </span>
         </button>
