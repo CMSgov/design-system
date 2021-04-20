@@ -47,6 +47,14 @@ describe('HelpDrawer', () => {
 
   describe('Analytics event tracking', () => {
     let tealiumMock;
+    const defaultEvent = {
+      event_name: 'help_drawer_opened',
+      event_type: 'ui interaction',
+      ga_eventCategory: 'ui components',
+      ga_eventAction: 'opened help drawer',
+      ga_eventLabel: defaultProps.heading,
+      heading: defaultProps.heading,
+    };
 
     beforeEach(() => {
       tealiumMock = jest.fn();
@@ -62,15 +70,13 @@ describe('HelpDrawer', () => {
     it('sends analytics event tracking on open help drawer', () => {
       renderHelpDrawer({ tealiumMock });
       expect(tealiumMock).toBeCalledWith({
-        ga_eventCategory: 'content tools',
-        ga_eventAction: 'opened help drawer',
-        ga_eventLabel: defaultProps.heading,
         ga_eventType: 'cmsds',
         ga_eventValue: '',
+        ...defaultEvent,
       });
     });
 
-    it('disables analytics event tracking', () => {
+    it('disables analytics event tracking on open', () => {
       const analyticsProps = {
         analytics: {
           // disables on open help drawer
@@ -89,30 +95,28 @@ describe('HelpDrawer', () => {
         return { props, wrapper };
       }
       renderDrawer({ tealiumMock });
-      expect(tealiumMock).not.toBeCalledWith({
-        ga_eventCategory: 'content tools',
-        ga_eventAction: 'opened help drawer',
-        ga_eventLabel: analyticsProps.heading,
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-      });
+      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
     });
 
-    it('overrides analytics event tracking', () => {
+    it('overrides analytics event tracking on open', () => {
       const analyticsProps = {
         analytics: {
           // override default analytics on open help drawer
           onComponentDidMount: {
+            event_name: 'event name',
+            event_type: 'event type',
             ga_eventCategory: 'event category',
             ga_eventAction: 'event action',
             ga_eventLabel: 'event label',
             ga_eventValue: 'event value',
             ga_other: 'other one',
             ga_other2: 'other two',
+            ga_eventType: 'other type',
+            heading: 'other heading',
           },
         },
         onCloseClick: () => {},
-        heading: 'HelpDrawer yy',
+        heading: 'HelpDrawer title',
       };
       function renderDrawer(props) {
         props = Object.assign({}, analyticsProps, props);
@@ -124,16 +128,7 @@ describe('HelpDrawer', () => {
         return { props, wrapper };
       }
       renderDrawer({ tealiumMock });
-
-      expect(tealiumMock).toBeCalledWith({
-        ga_eventCategory: 'event category',
-        ga_eventAction: 'event action',
-        ga_eventLabel: 'event label',
-        ga_eventValue: 'event value',
-        ga_other: 'other one',
-        ga_other2: 'other two',
-        ga_eventType: 'cmsds',
-      });
+      expect(tealiumMock).toBeCalledWith(analyticsProps.analytics.onComponentDidMount);
     });
   });
 });
