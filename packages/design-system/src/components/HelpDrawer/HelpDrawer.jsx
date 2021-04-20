@@ -9,7 +9,7 @@ import get from 'lodash/get';
 const defaultAnalytics = (heading) => ({
   onComponentDidMount: {
     event_name: 'help_drawer_opened',
-    event_type: 'ui interaction',
+    event_type: EVENT_CATEGORY.uiInteraction,
     ga_eventAction: 'opened help drawer',
     ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
@@ -17,7 +17,7 @@ const defaultAnalytics = (heading) => ({
   },
   onComponentWillUnmount: {
     event_name: 'help_drawer_closed',
-    event_type: 'ui interaction',
+    event_type: EVENT_CATEGORY.uiInteraction,
     ga_eventAction: 'closed help drawer',
     ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
@@ -132,10 +132,14 @@ HelpDrawer.defaultProps = {
  * Defines the shape of an analytics event for tracking that is an object with key-value pairs
  */
 const AnalyticsEventShape = PropTypes.shape({
-  ga_eventCategory: PropTypes.string,
+  event_name: PropTypes.string,
+  event_type: PropTypes.string,
   ga_eventAction: PropTypes.string,
+  ga_eventCategory: PropTypes.string,
   ga_eventLabel: PropTypes.string,
+  ga_eventType: PropTypes.string,
   ga_eventValue: PropTypes.string,
+  heading: PropTypes.string,
 });
 
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,

@@ -27,21 +27,22 @@ export interface AnalyticsPayload {
   ga_eventLabel: string;
   ga_eventType: string;
   ga_eventValue: string;
-  additional_props?: Record<string, unknown>;
+  [additional_props: string]: unknown;
 }
 
 export const EVENT_CATEGORY = {
   contentTools: 'content tools',
   uiComponents: 'ui components',
+  uiInteraction: 'ui interaction',
 };
 
 interface AnalyticsEventProps {
   ga_eventAction: string;
   ga_eventCategory: string;
   ga_eventLabel: string;
-  ga_eventType: string;
+  ga_eventType?: string;
   ga_eventValue?: string;
-  additional_props?: Record<string, unknown>;
+  [additional_props: string]: unknown;
 }
 
 export function sendEvent(event: EventType, props: AnalyticsPayload, retry = 0): string {
@@ -66,7 +67,6 @@ export function sendAnalyticsEvent(
   defaultPayload: AnalyticsEventProps
 ): string {
   const analyticsDisabled = overrides === false;
-
   if (window.utag && !analyticsDisabled) {
     const mergedPayload = merge(defaultPayload, overrides);
     const {
@@ -74,7 +74,7 @@ export function sendAnalyticsEvent(
       ga_eventCategory,
       ga_eventLabel,
       ga_eventType = 'cmsds', // default value
-      ga_eventValue = '',     // default value
+      ga_eventValue = '', // default value
       ...other_props
     } = mergedPayload;
     const payload: AnalyticsPayload = {
@@ -85,7 +85,6 @@ export function sendAnalyticsEvent(
       ga_eventValue,
       ...other_props,
     };
-
     return sendEvent('link', payload);
   } else {
     return '';
