@@ -41,7 +41,7 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Outline - Double solid</h1>
+    <h1>Box-Shadow - Double</h1>
     <div className="focus-6 ds-l-row">
       <div className="ds-l-col--6">
         <p>
@@ -78,7 +78,7 @@ ReactDOM.render(
       </div>
     </div>
 
-    <h1>Outline - Double box shadow</h1>
+    <h1>Box-Shadow - Double (soft)</h1>
     <div className="focus-7 ds-l-row">
       <div className="ds-l-col--6">
         <p>
