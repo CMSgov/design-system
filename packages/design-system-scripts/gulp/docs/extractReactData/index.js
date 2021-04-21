@@ -15,11 +15,13 @@ async function extractReactProps(sourceDir, options) {
   const sources = await getSourceDirs(sourceDir);
   const sourcesGlob = getSourcePattern(sources, 'src');
 
+  // TODO: Look into grabbing react prop docs from compiled files in dist
+  // so we can avoid publishing src files
   return streamPromise(
     gulp
       .src([
         `${sourcesGlob}/**/*.{jsx,tsx}`, // React props
-        `!${sourcesGlob}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${sourcesGlob}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
       ])
       .pipe(parseReactProps(options))
       .pipe(merge({ fileName: REACT_PROP_DATA_FILENAME }))

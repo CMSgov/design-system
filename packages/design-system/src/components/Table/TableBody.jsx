@@ -5,7 +5,8 @@ export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
-      if (child) {
+      // TODO: Use React Context when all products are on React v16.8 or higher
+      if (child && child.props) {
         return React.cloneElement(child, {
           _stackable: _stackable,
         });
@@ -14,7 +15,13 @@ export const TableBody = ({ children, _stackable, ...tableBodyProps }) => {
     });
   };
 
-  return <tbody {...tableBodyProps}>{_stackable ? renderChildren() : children}</tbody>;
+  /* eslint-disable jsx-a11y/no-redundant-roles */
+  return (
+    <tbody role="rowgroup" {...tableBodyProps}>
+      {_stackable ? renderChildren() : children}
+    </tbody>
+  );
+  /* eslint-enable jsx-a11y/no-redundant-roles */
 };
 
 TableBody.propTypes = {

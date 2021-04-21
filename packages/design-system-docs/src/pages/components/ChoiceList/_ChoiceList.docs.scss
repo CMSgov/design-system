@@ -93,10 +93,14 @@ Style guide: components.choice.react
 
 The following Sass variables can be overridden to theme choice fields:
 
+- `$choice-size`
 - `$choice-border-width`
+- `$choice-border-radius`
+- `$choice-background-color`
 - `$choice-border-color`
-- `$choice-border-color-inverse`
 - `$choice-checked-background-color`
+- `$choice-checked-border-color`
+- See [form variables](https://github.com/CMSgov/design-system/blob/master/packages/design-system/src/styles/settings/variables/_forms.scss) for the full list of choice variables.
 
 ### Related patterns
 

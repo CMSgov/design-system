@@ -1,36 +1,40 @@
+import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 /**
  * A link that triggers the visibility of a help drawer
  */
 export class HelpDrawerToggle extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    if (!this.props.helpDrawerOpen && prevProps.helpDrawerOpen) {
+    if (!this.props.helpDrawerOpen && prevProps.helpDrawerOpen && this.buttonRef) {
       this.buttonRef.focus();
     }
   }
 
   render() {
-    const inlineClass = `ds-u-display--${this.props.inline ? 'inline' : 'block'}`;
-    /* eslint-disable jsx-a11y/anchor-is-valid */
+    const { className, children, inline, showDrawer, helpDrawerOpen, ...others } = this.props;
+    const classes = classNames(
+      'ds-c-help-drawer__toggle',
+      inline && 'ds-u-display--inline',
+      className
+    );
+
     return (
-      // Use a <span> since a <div> may be invalid depending where this link is nested
-      <span className={inlineClass}>
-        <a
-          href="javascript:void(0);"
-          className={this.props.className}
-          ref={(el) => (this.buttonRef = el)}
-          onClick={() => this.props.showDrawer()}
-        >
-          {this.props.children}
-        </a>
-      </span>
+      <Button
+        className={classes}
+        inputRef={(el) => (this.buttonRef = el)}
+        onClick={() => showDrawer()}
+        variation="transparent"
+        {...others}
+      >
+        {children}
+      </Button>
     );
   }
 }
 
-/* eslint-disable react/no-unused-prop-types */
 HelpDrawerToggle.propTypes = {
   /**
    * Whether or not the Help Drawer controlled by this toggle is open or closed.

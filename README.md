@@ -1,4 +1,4 @@
-# CMS Design System [![Build Status](https://travis-ci.org/CMSgov/design-system.svg?branch=master)](https://travis-ci.org/CMSgov/design-system)
+# CMS Design System [![Build Status](https://github.com/CMSgov/design-system/workflows/build/badge.svg?event=push)](https://github.com/CMSgov/design-system/actions?query=workflow%3Abuild+branch%3Amaster+)
 
 > The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the [U.S. Web Design System](https://designsystem.digital.gov/) and extends it to support additional CSS and React components, utility classes, and a grid framework to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
@@ -45,8 +45,10 @@ These scripts can all be run from the root level of the repo:
   - Regenerates documentation when files change
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
+- `yarn pre-release`
+  - Increments package versions. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 - `yarn release`
-  - Increments package versions and publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
+  - Publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 - `yarn test`
   - Runs JS unit tests
   - Runs Prettier for formatting

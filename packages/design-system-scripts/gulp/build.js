@@ -5,20 +5,17 @@
  */
 const babel = require('gulp-babel');
 const cleanDist = require('./common/cleanDist');
-const copyAssets = require('./common/copyAssets');
+const copyFontsImages = require('./common/copyFontsImages');
 const gulp = require('gulp');
 const count = require('gulp-count');
 const rename = require('gulp-rename');
 const ts = require('gulp-typescript');
 const path = require('path');
-const react2dts = require('react-to-typescript-definitions');
 const streamPromise = require('./common/streamPromise');
-const through = require('through2');
 const { compileSourceSass } = require('./sass');
 const { printStats } = require('./stats');
 const { getSourceDirs } = require('./common/getDirsToProcess');
 const { log, logTask, logError } = require('./common/logUtil');
-const { CORE_SOURCE_PACKAGE } = require('./common/constants');
 
 const getSrcGlob = (src, changedPath) =>
   changedPath
@@ -26,24 +23,12 @@ const getSrcGlob = (src, changedPath) =>
     : [
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
-        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
         `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
       ];
 
 /**
- * Copy any JSON files that our components might depend on
- */
-function copyJson(dir) {
-  const src = path.join(dir, 'src');
-  return streamPromise(
-    gulp
-      .src([`${src}/**/*.json`, `!${src}/**/{__mocks__,__tests__}/*.json`])
-      .pipe(gulp.dest(path.join(dir, 'dist')))
-  );
-}
-
-/**
- * Copy Sass files from src to dist because we don't distribute the src folder
+ * Copy Sass files from src to dist, rename folder to 'scss'
  */
 function copySass(dir) {
   const src = path.join(dir, 'src', 'styles');
@@ -53,60 +38,47 @@ function copySass(dir) {
 }
 
 /**
- * Copy any TS definition files (only used in core)
+ * Copy and process font and image files from src to dist
  */
-function copyDefinitionFiles(dir) {
-  const src = path.join(dir, 'src');
-  return streamPromise(gulp.src([`${src}/**/*.d.ts`]).pipe(gulp.dest(path.join(dir, 'dist'))));
-}
-
-async function copyAll(dir) {
-  const copyTasks = [
-    copyJson(dir),
-    copySass(dir),
-    copyAssets(path.join(dir, 'src'), path.join(dir, 'dist')),
-  ];
-
+async function copyAssets(dir, options) {
   const sources = await getSourceDirs(dir);
-  if (sources.length > 1) {
-    // If this a child DS we also need to copy assets from the core npm package
-    logTask('🖼  ', `Copying fonts and images from ${CORE_SOURCE_PACKAGE} to ${dir}`);
-    copyTasks.push(copyAssets(path.join(sources[0], 'dist'), path.join(dir, 'dist')));
-  }
+  const isChildDS = sources.length > 1;
 
-  return Promise.all(copyTasks);
+  return [
+    // Process SVG with `svgo` if the `minifySvg` flag is enabled
+    copyFontsImages(path.join(dir, 'src'), path.join(dir, 'dist'), options.minifySvg),
+    // If this a child DS we also need to copy assets from the core npm package
+    isChildDS && copyFontsImages(path.join(sources[0], 'dist'), path.join(dir, 'dist')),
+  ];
 }
 
 /**
- * Used to generate typescript definition files for the core
+ * Generically copy any non test files that arent already processed by the build scripts
+ * including type definition files located in `src/types`
  */
-/* eslint-disable */
-async function generateTypeDefinitionsFromPropTypes(dir) {
-  const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src);
-
+function copyMisc(dir) {
+  const src = path.join(dir, 'src');
   return streamPromise(
     gulp
-      .src(srcGlob, { base: src })
-      .pipe(
-        through.obj((file, enc, cb) => {
-          // Replace React component files with definitions, avoid modifying entry point
-          if (file.basename !== 'index.js' || file.dirname.split('/').pop() !== 'components') {
-            const definition = react2dts.generateFromFile(null, file.path);
-            file.contents = Buffer.from(definition);
-          }
-
-          file.extname = '.d.ts';
-          cb(null, file);
-        })
-      )
-      .pipe(gulp.dest(path.join(dir, 'dist', 'types')))
-      .on('finish', function () {
-        logTask('📜 ', 'Core Typescript definition files generated');
-      })
+      .src([
+        `${src}/**/*`,
+        `!${src}/components/**`,
+        `!${src}/fonts/**`,
+        `!${src}/images/**`,
+        `!${src}/styles/**`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+      ])
+      .pipe(gulp.dest(path.join(dir, 'dist')))
   );
 }
-/* eslint-enable */
+
+async function copyAll(dir, options) {
+  const copyTasks = [copySass(dir), copyAssets(dir, options), copyMisc(dir)];
+
+  return Promise.all(copyTasks);
+}
 
 /**
  * Because we use babel to compile ts files, we have to compile twice to get definition files.
@@ -115,7 +87,15 @@ async function generateTypeDefinitionsFromPropTypes(dir) {
  */
 async function generateTypeDefinitions(dir, changedPath) {
   const src = path.join(dir, 'src', 'components');
-  const srcGlob = getSrcGlob(src, changedPath);
+  const srcGlob = changedPath
+    ? [changedPath`!${src}/**/*.{js,jsx}`]
+    : [
+        `${src}/**/*.{ts,tsx}`,
+        `!${src}/**/*.{js,jsx}`,
+        `!${src}/setupTests.{js,jsx,ts,tsx}`,
+        `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
+        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+      ];
 
   const tsProject = ts.createProject('tsconfig.json', {
     declaration: true,
@@ -172,7 +152,7 @@ async function compileEsmJs(dir, changedPath) {
 }
 
 /**
- * Transpile design system React components.
+ *  Transpile design system React components.
  *  Note: If you're running a dev server and try to use a newly
  *  babelfied React component in the docs site, you need to run
  *  this task first, otherwise the component won't be found.
@@ -202,7 +182,7 @@ function compileJs(dir, options, changedPath) {
       return compileEsmJs(dir, changedPath);
     })
     .then(() => {
-      // If design system is using typescript, use tsc to generate definition files
+      // If design system is using typescript, use tsc to generate definition files for tsx files
       if (options.typescript) {
         return generateTypeDefinitions(dir, changedPath);
       }
@@ -216,12 +196,8 @@ module.exports = {
   async buildSrc(sourceDir, options) {
     logTask('🏃 ', 'Starting design system build task');
     await cleanDist(sourceDir);
-    await copyAll(sourceDir);
-    // If core ds, copy definition files too
-    if (options.core) {
-      await copyDefinitionFiles(sourceDir);
-    }
-    await compileSourceSass(sourceDir);
+    await copyAll(sourceDir, options);
+    await compileSourceSass(sourceDir, options);
     await compileJs(sourceDir, options);
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);
@@ -229,6 +205,7 @@ module.exports = {
     logTask('✅ ', 'Build succeeded');
     log('');
   },
-  copyAll,
+  copyAssets,
+  copySass,
   compileJs,
 };

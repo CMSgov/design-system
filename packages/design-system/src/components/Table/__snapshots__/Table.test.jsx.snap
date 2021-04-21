@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table supports responsive table 1`] = `
+exports[`Table applies responsive stacked table 1`] = `
 <div>
   <table
     className="ds-c-table ds-c-lg-table--stacked"
     role="table"
   >
     <TableCaption
-      className="foo-caption"
       key=".0"
     >
       Foo
@@ -16,56 +15,98 @@ exports[`Table supports responsive table 1`] = `
 </div>
 `;
 
-exports[`Table supports scroll table 1`] = `
-<div
-  aria-labelledby="caption-5"
-  aria-live="polite"
-  aria-relevant="additions"
-  className="ds-c-table__wrapper"
-  role="region"
-  tabIndex={null}
+exports[`Table table caption scrollable true applies scroll table wrapper and classes 1`] = `
+<Table
+  scrollable={true}
+  scrollableNotice={
+    <Alert
+      className="ds-u-margin-y--1 ds-u-font-weight--normal"
+      headingLevel="3"
+      role="status"
+    >
+      <p
+        className="ds-c-alert__text"
+      >
+        Scroll using arrow keys to see more
+      </p>
+    </Alert>
+  }
+  stackableBreakpoint="sm"
 >
-  <table
-    className="ds-c-table"
-    role="table"
+  <div
+    aria-labelledby="caption-10"
+    aria-live="polite"
+    aria-relevant="additions"
+    className="ds-c-table__wrapper"
+    role="region"
+    tabIndex={null}
   >
-    <TableCaption
-      _id="caption-5"
-      _scrollActive={false}
-      _scrollableNotice={
-        <Alert
-          className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-          headingLevel="3"
-          role="status"
-        >
-          <p
-            className="ds-c-alert__text"
-          >
-            Scroll using arrow keys to see more
-          </p>
-        </Alert>
-      }
-      className="foo-caption"
-      key=".0"
+    <table
+      className="ds-c-table"
+      role="table"
     >
-      Foo
-    </TableCaption>
-  </table>
-</div>
+      <TableCaption
+        _id="caption-10"
+        _scrollActive={false}
+        _scrollableNotice={
+          <Alert
+            className="ds-u-margin-y--1 ds-u-font-weight--normal"
+            headingLevel="3"
+            role="status"
+          >
+            <p
+              className="ds-c-alert__text"
+            >
+              Scroll using arrow keys to see more
+            </p>
+          </Alert>
+        }
+        key=".0"
+      >
+        <caption
+          className="ds-c-table__caption"
+          id="caption-10"
+        >
+          Foo
+        </caption>
+      </TableCaption>
+    </table>
+  </div>
+</Table>
 `;
 
-exports[`Table supports zebra stripe 1`] = `
-<div>
-  <table
-    className="ds-c-table ds-c-table--striped"
-    role="table"
+exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
+<Table
+  scrollable={true}
+  scrollableNotice="foo scrollable notice"
+  stackableBreakpoint="sm"
+>
+  <div
+    aria-labelledby="caption-13"
+    aria-live="polite"
+    aria-relevant="additions"
+    className="ds-c-table__wrapper"
+    role="region"
+    tabIndex={null}
   >
-    <TableCaption
-      className="foo-caption"
-      key=".0"
+    <table
+      className="ds-c-table"
+      role="table"
     >
-      Foo
-    </TableCaption>
-  </table>
-</div>
+      <TableCaption
+        _id="caption-13"
+        _scrollActive={false}
+        _scrollableNotice="foo scrollable notice"
+        key=".0"
+      >
+        <caption
+          className="ds-c-table__caption"
+          id="caption-13"
+        >
+          Foo
+        </caption>
+      </TableCaption>
+    </table>
+  </div>
+</Table>
 `;

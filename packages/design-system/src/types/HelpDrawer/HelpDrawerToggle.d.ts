@@ -25,6 +25,9 @@ export interface HelpDrawerToggleProps {
   showDrawer: (...args: any[]) => any;
 }
 
-export default class HelpDrawerToggle extends React.Component<HelpDrawerToggleProps, any> {
+export default class HelpDrawerToggle extends React.Component<
+React.HTMLProps<HTMLButtonElement> & HelpDrawerToggleProps,
+  any
+> {
   render(): JSX.Element;
 }

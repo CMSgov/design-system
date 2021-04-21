@@ -3,6 +3,7 @@ import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
+import get from 'lodash/get';
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -45,8 +46,10 @@ function panelTabId(panel) {
  * @return {Boolean} Is this a TabPanel component?
  */
 function isTabPanel(child) {
-  // Preact doesn't support child.type
-  return child && (child.type === TabPanel || (child.props && child.props.tab));
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TabPanel || componentName === 'TabPanel');
 }
 
 export class Tabs extends React.PureComponent {

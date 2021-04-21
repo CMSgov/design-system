@@ -1,0 +1,236 @@
+$usa-banner-background-color: #f0f0f0;
+$usa-banner-text-color: #1b1b1b;
+$usa-banner-close-image-background-color: #e6e6e6;
+$usa-banner-header-action-color: #005ea2;
+$usa-banner-font-family: $font-sans;
+
+.ds-c-usa-banner {
+  background-color: $usa-banner-background-color;
+  color: $usa-banner-text-color;
+  font-family: $usa-banner-font-family;
+  font-size: $base-font-size;
+  padding: 0;
+}
+
+.ds-c-usa-banner__header {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  font-weight: $font-normal;
+  line-height: 1.2;
+  min-height: $spacer-4;
+  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+  position: relative;
+
+  @media (min-width: $width-sm) {
+    min-height: 0;
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+}
+
+.ds-c-usa-banner__header-flag {
+  margin-right: $spacer-1;
+  width: $spacer-2;
+}
+
+.ds-c-usa-banner__header-text {
+  display: table;
+  margin: 0;
+  span {
+    margin-right: $spacer-1;
+  }
+}
+
+.ds-c-usa-banner__header-action {
+  color: $usa-banner-header-action-color;
+  display: block;
+  margin-bottom: 0;
+  margin-top: 2px;
+  text-decoration: underline;
+
+  &::after {
+    background-image: url('#{$image-path}/arrow-down.svg'),
+      linear-gradient(transparent, transparent);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: $spacer-1;
+    color: $usa-banner-header-action-color;
+    content: '';
+    display: inline-block;
+    height: $spacer-1;
+    margin-left: 2px;
+    padding-right: 2px;
+    width: $spacer-1;
+  }
+
+  // Hide header-action text for large viewport and when expanded
+  @media (min-width: $width-sm) {
+    display: none;
+  }
+  .ds-c-usa-banner__header--expanded & {
+    display: none;
+  }
+}
+
+.ds-c-usa-banner__button {
+  background-color: transparent;
+  border: 0;
+  bottom: 0;
+  box-shadow: none;
+  display: block;
+  font-size: inherit;
+  left: 0;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  width: 100%;
+
+  /* stylelint-disable scss/at-extend-no-missing-placeholder */
+  @extend .ds-c-link;
+  /* stylelint-enable scss/at-extend-no-missing-placeholder */
+
+  @media (min-width: $width-sm) {
+    bottom: auto;
+    display: inline;
+    left: auto;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: auto;
+  }
+
+  // Display close icon on smaller viewport
+  // stylelint-disable scss/media-feature-value-dollar-variable
+  @media (max-width: $width-sm - 1px) {
+    &[aria-expanded='true']::before {
+      background-color: $usa-banner-close-image-background-color;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: $spacer-6;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $spacer-6;
+    }
+    // stylelint-enable scss/media-feature-value-dollar-variable
+
+    &[aria-expanded='true']::after {
+      background-image: url('#{$image-path}/close-alt.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: $spacer-2 $spacer-2;
+      bottom: 0;
+      content: '';
+      display: inline-block;
+      height: $spacer-6;
+      margin-left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      vertical-align: middle;
+      width: $spacer-6;
+    }
+  }
+}
+
+.ds-c-usa-banner__button-text {
+  // Hide the button-text on narrow viewport as header-action will display the action text
+  left: -999em;
+  position: absolute;
+
+  &::after {
+    display: none;
+  }
+
+  @media (min-width: $width-sm) {
+    display: inline;
+    position: static;
+
+    &::after {
+      background-image: url('#{$image-path}/arrow-down.svg'),
+        linear-gradient(transparent, transparent);
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: $spacer-1;
+      content: '';
+      display: inline-block;
+      height: $spacer-1;
+      margin-left: 2px;
+      padding-right: 2px;
+      width: $spacer-1;
+    }
+  }
+}
+
+.ds-c-usa-banner__content {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: 4px $spacer-2 $spacer-2 $spacer-1;
+
+  @media (min-width: $width-sm) {
+    padding-bottom: $spacer-3;
+    padding-top: $spacer-3;
+  }
+}
+
+.ds-c-usa-banner__guidance {
+  align-items: flex-start;
+  display: flex;
+  max-width: 64ex;
+  padding: $spacer-2 12px 0 12px;
+
+  @media (min-width: $width-sm) {
+    padding: 0 $spacer-1;
+    width: 50%;
+  }
+}
+
+.ds-c-usa-banner__icon {
+  flex-shrink: 0;
+  height: $spacer-5;
+  margin-right: $spacer-1;
+  width: $spacer-5;
+}
+
+.ds-c-usa-banner__lock-image {
+  height: 1.5ex;
+  width: 1.5ex * 52 / 64;
+  path {
+    fill: currentColor;
+  }
+}
+
+.ds-c-usa-banner__media-img {
+  float: left;
+  margin-right: $spacer-1;
+}
+
+.ds-c-usa-banner__media-body {
+  margin: 0;
+}
+
+// stylelint-disable no-duplicate-selectors
+.ds-c-usa-banner__header--expanded {
+  padding-right: $spacer-7;
+
+  @media (min-width: $width-sm) {
+    background-color: transparent;
+    padding-right: 0;
+    .ds-c-usa-banner__button-text::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ds-c-usa-banner__header-action {
+    display: none;
+  }
+}
+// stylelint-enable no-duplicate-selectors

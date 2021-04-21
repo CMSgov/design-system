@@ -4,8 +4,8 @@ exports[`Dialog close button text and variation can be changed 1`] = `
 Object {
   "props": Object {
     "children": "Foo",
+    "closeButtonText": "No thank you. I don't like saving money",
     "closeButtonVariation": "danger",
-    "closeText": "No thank you. I don't like saving money",
   },
   "wrapper": <Displaced
     dialogClass="ds-c-dialog ds-base"
@@ -51,9 +51,10 @@ Object {
 exports[`Dialog renders react-aria-modal 1`] = `
 <Dialog
   ariaCloseLabel="Close modal dialog"
+  closeButtonText="Close"
   closeButtonVariation="transparent"
-  closeText="Close"
   escapeExitDisabled={false}
+  escapeExits={true}
   getApplicationNode={
     [MockFunction] {
       "calls": Array [

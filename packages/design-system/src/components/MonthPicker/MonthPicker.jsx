@@ -1,11 +1,14 @@
+// Polyfills required for IE11 compatibility
+import 'core-js/stable/array/includes';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import { NUM_MONTHS, getMonthNames } from './getMonthNames';
 import Button from '../Button/Button';
 import Choice from '../ChoiceList/Choice';
-import FormLabel from '../FormLabel/FormLabel';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import pick from 'lodash/pick';
 
-const NUM_MONTHS = 12;
 const monthNumbers = (() => {
   const months = [];
   for (let m = 1; m <= NUM_MONTHS; m++) {
@@ -124,43 +127,32 @@ export class MonthPicker extends React.PureComponent {
     );
   }
 
-  renderLabel() {
-    return (
-      <FormLabel
-        component="legend"
-        errorMessage={this.props.errorMessage}
-        requirementLabel={this.props.requirementLabel}
-        hint={this.props.hint}
-        inversed={this.props.inversed}
-      >
-        {this.props.label}
-      </FormLabel>
-    );
-  }
-
   render() {
     const { selectAllText, clearAllText } = this.props;
     const selectedMonths = this.selectedMonths();
     const disabledMonths = this.disabledMonths();
     const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
     const clearAllPressed = selectedMonths.length === 0;
-    const classes = classNames(
-      'ds-c-month-picker',
-      'ds-c-fieldset',
-      'ds-u-margin-y--3',
-      this.props.className
-    );
+
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const containerClassName = classNames('ds-c-month-picker', this.props.className);
+
     return (
-      <div className={classes}>
-        <fieldset className="ds-c-fieldset">
-          {this.renderLabel()}
-          <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
-            {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
-            {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
-          </div>
-          <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
-        </fieldset>
-      </div>
+      <FormControl
+        {...containerProps}
+        className={containerClassName}
+        component="fieldset"
+        labelComponent="legend"
+        render={() => (
+          <>
+            <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
+              {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
+              {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
+            </div>
+            <div className="ds-c-month-picker__months">{this.renderMonths()}</div>
+          </>
+        )}
+      />
     );
   }
 }
@@ -198,6 +190,14 @@ MonthPicker.propTypes = {
    */
   label: PropTypes.node.isRequired,
   errorMessage: PropTypes.node,
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName: PropTypes.string,
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
   /**
    * Additional hint text to display
    */
@@ -244,21 +244,3 @@ MonthPicker.propTypes = {
 };
 
 export default MonthPicker;
-
-/**
- * Generates an array of month names according to the given or default locale
- *
- * @param  {string} [locale] locale for generating month names
- * @param  {boolean} [short] whether to return short month names
- * @return {string[]}        array of month names
- */
-export function getMonthNames(locale, short = true) {
-  const options = { month: short ? 'short' : 'long' };
-  const months = [];
-  for (let i = 0; i < NUM_MONTHS; i++) {
-    const date = new Date();
-    date.setMonth(i, 1);
-    months.push(date.toLocaleString(locale, options));
-  }
-  return months;
-}

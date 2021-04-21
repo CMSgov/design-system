@@ -1,0 +1,21 @@
+@import '../settings/index.scss';
+
+.ds-c-review {
+  border-bottom: 2px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.ds-c-review:last-of-type {
+  border-bottom: 0;
+}
+
+.ds-c-review__heading {
+  display: inline-block;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  margin-bottom: 0;
+  margin-top: 0;
+}

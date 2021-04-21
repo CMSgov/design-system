@@ -60,20 +60,29 @@ yargs
         type: 'boolean',
         default: false,
       });
+      yargs.option('rootPath', {
+        desc: 'The URL root path for the published docs site.',
+        type: 'string',
+        default: config.rootPath,
+      });
     },
     handler: async (argv) => {
       const { buildSrc } = require('./gulp/build');
       const { buildDocs } = require('./gulp/docs');
 
       process.env.NODE_ENV = 'production';
+
+      // Allow cli args to override or ignore default rootPath defined in cmsds.config.js
+      const options = { ...config, ...argv };
       if (argv.ignoreRootPath) {
-        config.rootPath = '';
+        options.rootPath = '';
       }
+
       await logIntroduction(config.sourceDir);
       if (!argv.skipBuild) {
-        await buildSrc(config.sourceDir, { ...config, ...argv });
+        await buildSrc(config.sourceDir, options);
       }
-      await buildDocs(config.sourceDir, config.docsDir, { ...config, ...argv });
+      await buildDocs(config.sourceDir, config.docsDir, options);
     },
   })
   .command({
@@ -183,8 +192,7 @@ yargs
     builder: (yargs) => {
       yargs
         .positional('directories..', {
-          desc:
-            'The relative paths to one or more directories. Linting will be run on the "src" folder inside the provided directories.',
+          desc: 'The relative path to one or more directories that will be linted.',
           type: 'string',
           demandOption: true,
         })

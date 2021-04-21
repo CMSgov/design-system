@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-export type FormLabelChildren = string | React.ReactNode;
-
 export type FormLabelComponent = 'label' | 'legend';
 
 export interface FormLabelProps {
   /**
    * Label text or HTML.
    */
-  children: FormLabelChildren;
+  children: React.ReactNode;
   /**
    * Additional classes to be added to the root element.
    */
@@ -21,6 +19,10 @@ export interface FormLabelProps {
    * Enable the error state by providing an error message.
    */
   errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.

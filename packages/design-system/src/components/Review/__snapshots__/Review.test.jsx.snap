@@ -2,13 +2,13 @@
 
 exports[`Review renders review 1`] = `
 <div
-  className="ds-c-review ds-u-border-bottom--2 ds-u-padding-y--2 ds-u-justify-content--between ds-u-display--flex"
+  className="ds-c-review"
 >
   <div
     className="ds-u-margin-right--2"
   >
     <h3
-      className="ds-c-review__heading ds-text ds-u-margin-bottom--0 ds-u-font-weight--bold ds-u-display--inline-block"
+      className="ds-c-review__heading"
     >
       review heading
     </h3>

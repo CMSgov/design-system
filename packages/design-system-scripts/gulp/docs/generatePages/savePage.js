@@ -19,7 +19,9 @@ function savePage(page, docsPath) {
       return saveToFile(html, pathObj);
     }
 
+    /* eslint-disable promise/no-return-wrap */
     return Promise.resolve(false);
+    /* eslint-enable promise/no-return-wrap */
   });
 }
 
@@ -84,7 +86,11 @@ function saveToFile(html, pathObj, retry = true) {
         return saveToFile(html, pathObj, false).then(resolve);
       }
 
-      fs.writeFile(pathObj.path, html).then(() => resolve(true));
+      fs.writeFile(pathObj.path, html)
+        .then(() => resolve(true))
+        .catch((error) => {
+          console.error(error.message);
+        });
     });
   });
 }

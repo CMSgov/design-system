@@ -33,7 +33,7 @@ async function runPrettier(dir, ignorePatterns, failAfterError) {
   return streamPromise(
     gulp
       .src(getSrcGlob(src, dir, ignorePatterns))
-      .pipe(count(`## Files formatted with Prettier in ${dir}`))
+      .pipe(count(`## Files formatted with Prettier`))
       .pipe(gulpIf(!failAfterError, prettier()))
       .pipe(gulpIf(failAfterError, prettier.check()))
       .pipe(gulp.dest(dir))
@@ -48,7 +48,7 @@ async function runStylelint(dir, fix, ignorePatterns, failAfterError) {
     gulp
       .src(getSrcGlob(src, dir, ignorePatterns))
       .pipe(changedInPlace({ firstPass: true }))
-      .pipe(count(`## Sass files linted in ${dir}`))
+      .pipe(count(`## Sass files linted`))
       .pipe(
         stylelint({
           fix,
@@ -65,20 +65,14 @@ async function runStylelint(dir, fix, ignorePatterns, failAfterError) {
 async function runEslint(dir, fix, ignorePatterns, failAfterError) {
   const src = [path.join(dir, '**/*.{js,jsx,ts,tsx}')];
 
-  // Taken from gulp-eslint example
-  // https://github.com/adametry/gulp-eslint/blob/master/example/fix.js
-  const isFixed = (file) => {
-    return file.eslint != null && file.eslint.fixed;
-  };
-
   return streamPromise(
     gulp
       .src(getSrcGlob(src, dir, ignorePatterns))
-      .pipe(count(`## JS files linted in ${dir}`))
+      .pipe(count(`## JS files linted`))
       .pipe(eslint({ fix }))
       .pipe(eslint.format())
       .pipe(gulpIf(failAfterError, eslint.failAfterError()))
-      .pipe(gulpIf(isFixed, gulp.dest(dir)))
+      .pipe(gulp.dest(dir))
   );
 }
 

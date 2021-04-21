@@ -3,6 +3,18 @@
 .ds-c-autocomplete {
   max-width: $input-max-width;
   position: relative;
+  // Undoing the clearfix class on the div containing the label element
+  .ds-u-clearfix {
+    &::before {
+      content: none;
+      display: block;
+    }
+    &::after {
+      clear: none;
+      content: none;
+      display: block;
+    }
+  }
 }
 
 .ds-c-autocomplete__list {
@@ -28,4 +40,14 @@
 .ds-c-autocomplete__list-item--message {
   color: $color-muted;
   padding: $spacer-1;
+}
+
+// Need a custom class so the bottom error message does not conflict with the clear search button
+.ds-c-autocomplete__error-message {
+  float: left;
+}
+
+// Need a custom class for bottom error message to make space for the clear search button
+.ds-c-autocomplete__error-message--clear-btn {
+  width: calc(100% - 110px);
 }

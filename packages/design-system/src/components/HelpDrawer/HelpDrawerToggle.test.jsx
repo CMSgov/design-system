@@ -1,12 +1,11 @@
 import HelpDrawerToggle from './HelpDrawerToggle.jsx';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
   helpDrawerOpen: false,
-  inline: true,
-  showDrawer: () => {},
+  inline: false,
+  showDrawer: jest.fn(),
 };
 
 function renderHelpDrawerToggle(props) {
@@ -20,23 +19,32 @@ function renderHelpDrawerToggle(props) {
 }
 
 describe('HelpDrawerToggle', () => {
-  it('calls props.showDrawer on link click', () => {
-    const showDrawer = jest.fn();
-    const { wrapper } = renderHelpDrawerToggle({ showDrawer });
-    const link = wrapper.find('a');
-    link.simulate('click');
-    expect(showDrawer).toHaveBeenCalled();
+  beforeEach(() => {
+    defaultProps.showDrawer.mockClear();
   });
 
-  it('renders a snapshot', () => {
-    const tree = renderer
-      .create(
-        <HelpDrawerToggle {...defaultProps}>
-          <p>link content</p>
-        </HelpDrawerToggle>
-      )
-      .toJSON();
+  it('renders a button', () => {
+    const { wrapper } = renderHelpDrawerToggle();
+    expect(wrapper).toMatchSnapshot();
+  });
 
-    expect(tree).toMatchSnapshot();
+  it('calls props.showDrawer on toggle click', () => {
+    const { wrapper } = renderHelpDrawerToggle();
+    const toggle = wrapper.find('Button');
+    toggle.simulate('click');
+    expect(defaultProps.showDrawer).toHaveBeenCalled();
+  });
+
+  it('applies display utility through inline props', () => {
+    const { wrapper } = renderHelpDrawerToggle({ inline: true });
+    const toggle = wrapper.find('Button');
+    expect(toggle.hasClass('ds-u-display--inline')).toBe(true);
+  });
+
+  it('passes through extra props', () => {
+    const ariaLabel = 'test';
+    const { wrapper } = renderHelpDrawerToggle({ ariaLabel });
+    const toggle = wrapper.find('Button');
+    expect(toggle.props().ariaLabel).toBe(ariaLabel);
   });
 });

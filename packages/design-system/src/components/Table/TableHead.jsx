@@ -5,7 +5,8 @@ export const TableHead = ({ children, _stackable, ...tableHeadProps }) => {
   const renderChildren = () => {
     return React.Children.map(children, (child) => {
       // Extend props before rendering.
-      if (child) {
+      // TODO: Use React Context when all products are on React v16.8 or higher
+      if (child && child.props) {
         return React.cloneElement(child, {
           _isTableHeadChild: true,
           _stackable: _stackable,
@@ -15,7 +16,13 @@ export const TableHead = ({ children, _stackable, ...tableHeadProps }) => {
     });
   };
 
-  return <thead {...tableHeadProps}>{renderChildren()}</thead>;
+  /* eslint-disable jsx-a11y/no-redundant-roles */
+  return (
+    <thead role="rowgroup" {...tableHeadProps}>
+      {renderChildren()}
+    </thead>
+  );
+  /* eslint-enable jsx-a11y/no-redundant-roles */
 };
 
 TableHead.propTypes = {

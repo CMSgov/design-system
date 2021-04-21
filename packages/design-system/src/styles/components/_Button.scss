@@ -78,13 +78,13 @@
  */
 
 .ds-c-button--big {
-  font-size: $h3-font-size;
+  font-size: $font-size-xl;
   padding-bottom: $spacer-2;
   padding-top: $spacer-2;
 }
 
 .ds-c-button--small {
-  font-size: $small-font-size;
+  font-size: $font-size-sm;
   font-weight: $font-normal;
   padding: $spacer-half $spacer-1;
 }
@@ -182,21 +182,15 @@
 %transparent-inverse-button {
   border-color: transparent;
   background-color: transparent;
+
   // Default inverse focus styles are overridden above
   @if $ds-include-focus-styles {
     &:focus,
     &.ds-c-button--focus {
       border-color: transparent;
+      background-color: $focus-color;
+      color: $color-base;
     }
-  }
-
-  &:disabled,
-  &:hover,
-  &:active,
-  &.ds-c-button--disabled,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
   }
 }
 
@@ -261,17 +255,11 @@ $button-color-variants: (
     border-color: transparent;
     color: $color-white;
 
-    &:disabled,
-    &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
-      pointer-events: none;
-    }
-
     &:hover,
+    &:focus,
     &:active,
     &.ds-c-button--hover,
+    &.ds-c-button--focus,
     &.ds-c-button--active {
       border-color: transparent;
       color: $color-white;
@@ -282,11 +270,6 @@ $button-color-variants: (
       background-color: nth($color, 2);
     }
 
-    &:active,
-    &.ds-c-button--active {
-      background-color: nth($color, 3);
-    }
-
     @if $ds-include-focus-styles {
       &:focus,
       &.ds-c-button--focus {
@@ -294,19 +277,33 @@ $button-color-variants: (
         border-color: transparent;
         color: $color-base;
       }
+    } @else {
+      &:focus,
+      &.ds-c-button--focus {
+        background-color: nth($color, 2);
+      }
+    }
 
+    &:active,
+    &.ds-c-button--active {
+      background-color: nth($color, 3);
+    }
+    @if $ds-include-focus-styles {
       // Make sure active overrides focus styles
       &:active:focus,
       &.ds-c-button--active:focus {
         background-color: nth($color, 3);
         box-shadow: none;
-      }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        border-color: transparent;
         color: $color-white;
       }
+    }
+
+    &:disabled,
+    &.ds-c-button--disabled {
+      background-color: $color-gray-lighter;
+      border-color: transparent;
+      color: $color-gray-dark;
+      pointer-events: none;
     }
   }
 }

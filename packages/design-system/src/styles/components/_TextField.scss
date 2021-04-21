@@ -13,6 +13,12 @@
   padding: $input-padding;
   width: 100%;
 
+  // To stay consistent across browsers of not applying a style for :invalid pseudo-class,
+  // disable the red "glow" of [Gecko default](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid#gecko_defaults)
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+
   &:disabled {
     background-color: $color-gray-lighter;
     border-color: $color-gray-light;
@@ -65,6 +71,11 @@ Inverse theme
 // ==============================
 .ds-c-field--error {
   border: 3px solid $color-error;
+
+  &.ds-c-field--inverse {
+    border: 3px solid $color-error-light;
+  }
+
   @if $ds-include-focus-styles {
     &:focus {
       border-color: $color-base;

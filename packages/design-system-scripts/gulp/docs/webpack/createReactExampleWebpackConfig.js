@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('mz/fs');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { getDocsDirs } = require('../../common/getDirsToProcess');
 
 /**
  * Create an instance of the Webpack compiler to be used for
@@ -8,10 +10,21 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
  * @param {String} entry - Path to entry file
  * @return {*} Webpack compiler instance
  */
-module.exports = (sourceDir, reactExampleEntry, typescript) => {
+module.exports = async function createReactExampleWebpackConfig(
+  sourceDir,
+  docsDir,
+  reactExampleEntry,
+  typescript
+) {
+  const docs = await getDocsDirs(docsDir);
+  const exampleEntryFile = path.resolve(docsDir, 'src', 'example.js');
+  const additionalEntry = docs.length > 1 && fs.existsSync(exampleEntryFile);
+
+  const entry = [...(additionalEntry ? [exampleEntryFile] : []), path.resolve(reactExampleEntry)];
+
   const config = {
     mode: process.env.NODE_ENV,
-    entry: path.resolve(reactExampleEntry),
+    entry,
     output: { filename: 'bundle.js', path: '/build' },
     externals: {
       react: 'React',
@@ -37,9 +50,9 @@ module.exports = (sourceDir, reactExampleEntry, typescript) => {
     resolve: {
       modules: ['node_modules'],
       alias: {
-        '@src': path.resolve(sourceDir, 'src'),
+        '@design-system': path.resolve(sourceDir),
       },
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.tsx'],
       plugins: [],
     },
     performance: {

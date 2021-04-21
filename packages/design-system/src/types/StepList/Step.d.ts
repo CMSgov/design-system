@@ -1,22 +1,8 @@
 import * as React from 'react';
-
-export interface StepStep {
-  id?: string;
-  href: string;
-  title?: string;
-  heading: string;
-  headingLevel?: '1' | '2' | '3' | '4' | '5';
-  description?: string;
-  linkText?: string;
-  completed?: boolean;
-  started?: boolean;
-  isNextStep?: boolean;
-  onClick?: (...args: any[]) => any;
-  component?: React.ReactElement<any> | ((...args: any[]) => any);
-}
+import { StepObjectWithSubStep } from './StepList';
 
 export interface StepProps {
-  step: StepStep;
+  step: StepObjectWithSubStep;
   onStepLinkClick?: (...args: any[]) => any;
   showSubSubSteps?: boolean;
   completedText: string;

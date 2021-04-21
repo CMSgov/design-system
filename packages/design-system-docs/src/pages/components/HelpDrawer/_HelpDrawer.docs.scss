@@ -33,3 +33,43 @@ Style guide: components.help-drawer.react-help-drawer
 
 Style guide: components.help-drawer.react-help-drawer-toggle
 */
+
+/*
+---
+
+### When to use
+
+- When users need help content to remain viewable while also allowing the user to views/interacts with the main page.
+- When the help content is longer than 2 sentences.
+- When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
+- When the content just needs to be available at the user's discretion, to provide additional details or context.
+- When users may need additional information to complete the task than can be supplied on the main page without overwhelming the primary content.
+
+### When to consider alternatives
+
+- When the content is timely/urgent, or critical to the action being taken.
+- When the content is intended to clarify or call attention to other content on the page.
+- When the content must be displayed without being initiated by a user action.
+- When additional information is necessary to the primary information the user is interacting with.
+
+### Usage
+
+- Link text used to trigger the help drawer should be specific and descriptive.
+  - Avoid using only "Learn more" to link to help drawer content
+  - Limit the amount of link text
+- Help drawer content area should include a close button clearly at the top.
+
+### Accessibility
+
+- Focus should move to the content in the help drawer after the user has opened it.
+- Help Drawer should support keyboard navigation.
+    - `Enter` and `Space` to select the highlighted item.
+    - `Tab` to move the focus sequentially through the list of focusable items
+    - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
+
+### Future Work
+
+Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
+
+Style guide: components.help-drawer.guidance
+*/

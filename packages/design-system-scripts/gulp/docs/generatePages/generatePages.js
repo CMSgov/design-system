@@ -116,6 +116,18 @@ function changedFilter(page, changedPath) {
   return true;
 }
 
+// Add a `cmsds` property to component and pattern page sections originating from the `@cmsgov/design-system-docs` NPM package.
+// This automatically populates a link to the CMSDS for child design system components and patterns.
+function addCmsdsLink(page) {
+  if (
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+  ) {
+    page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
+  }
+  return page;
+}
+
 /**
  * Loop through the nested array of pages and create an HTML file for each one.
  * These HTML pages are what get published as the public documentation website.
@@ -156,7 +168,16 @@ async function generateDocPages(pages, docsPath, options, changedPath) {
  * @param {Array} pageSection
  * @return {Promise<Array>}
  */
-async function generateExamplePages(pageSection, docsPath, sourceDir, options, changedPath) {
+async function generateExamplePages(
+  pageSection,
+  docsPath,
+  sourceDir,
+  docsDir,
+  options,
+  changedPath
+) {
+  // This function accepts the unnested pages, which can contain page sections that have been removed by nestSections
+  // TODO: Avoid generating example pages for removed page sections
   const examplePages = pageSection.filter(
     (page) => page.markup.length > 0 || page.reactExampleSource
   );
@@ -164,7 +185,7 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
   const generatedPages = await Promise.all(
     examplePages
       .filter((page) => changedFilter(page, changedPath))
-      .map((page) => generateExamplePage(page, docsPath, sourceDir, options))
+      .map((page) => generateExamplePage(page, docsPath, sourceDir, docsDir, options))
   );
 
   return generatedPagesCount(generatedPages);
@@ -178,7 +199,7 @@ async function generateExamplePages(pageSection, docsPath, sourceDir, options, c
 module.exports = async function generatePages(sourceDir, docsDir, options, changedPath) {
   logTask('📝 ', 'Generating documentation pages');
 
-  const docsPath = path.join(docsDir, 'dist');
+  // Location of doc site files, will be array of two directories for child design systems
   const docsDirs = await getDocsDirs(docsDir);
 
   // Parse Markdown files, and return the data in the same format as a KssSection
@@ -188,11 +209,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
     })
   ).then((dirPages) => dirPages.flat());
 
-  /**
-   * Parse KSS documentation blocks in CSS files
-   * kss-node.github.io/kss-node/api/master/module-kss.KssSection.html
-   * @return {Array} KssSections
-   */
+  // Parse CSS files, use KSS to extract page sections
   const packages = docsDirs.map((pkg) => path.join(pkg, 'src'));
   const mask = /^(?!.*\.(example|test)).*\.docs\.scss$/; // Parses KSS in .docs.scss files and not in .example.* or .test.* files
   const kssStyleGuide = await kss.traverse(packages, { mask });
@@ -202,18 +219,32 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
       processKssSection(kssSection, options)
     )
   );
+  // Combine KSS and Markdown page sections and add cmsds links to for child design systems
+  const pageSections = markdownSections.concat(kssSections).map((section) => addCmsdsLink(section));
 
-  // Merge both sets of KssSection objects into a single array of page parts.
-  // Also, remove pages with the same URL (so child design systems can override existing pages)
-  const pages = uniquePages(markdownSections.concat(kssSections));
+  // Remove pages with the same URL (so child design systems can override existing pages)
+  // Hide sections and pages with the `hide-section` flag
+  const uniquePageSections = uniquePages(pageSections).filter((page) => !page.hideSection);
+
   // Add react prop and example data to page sections
-  await addReactData(pages);
+  await addReactData(uniquePageSections);
+
   // Add missing top-level pages and connect the page parts to their parent pages
   // TODO: remove need to nest pages, or generate from unnested pages
-  const nestedPages = await addTopLevelPages(pages).then(nestSections);
+  const nestedPageSections = await addTopLevelPages(uniquePageSections).then(nestSections);
+
+  const docsPath = path.join(docsDir, 'dist');
 
   // Create HTML files for example pages
-  const examplePages = await generateExamplePages(pages, docsPath, sourceDir, options, changedPath);
+  const examplePages = await generateExamplePages(
+    uniquePageSections,
+    docsPath,
+    sourceDir,
+    docsDir,
+    options,
+    changedPath
+  );
+
   if (changedPath && examplePages > 0) {
     logTask('📝 ', `Example page updated from ${changedPath}`);
   } else if (!changedPath) {
@@ -221,7 +252,7 @@ module.exports = async function generatePages(sourceDir, docsDir, options, chang
   }
 
   // Create HTML files for doc pages
-  const docPages = await generateDocPages(nestedPages, docsPath, options, changedPath);
+  const docPages = await generateDocPages(nestedPageSections, docsPath, options, changedPath);
   if (changedPath && docPages > 0) {
     logTask('📝 ', `Doc page updated from ${changedPath}`);
   } else if (!changedPath) {

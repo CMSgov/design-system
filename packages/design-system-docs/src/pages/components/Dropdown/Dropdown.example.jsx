@@ -1,8 +1,9 @@
-import { Dropdown } from '@cmsgov/design-system';
+import { Dropdown } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 const dropdownOptions = [
+  { label: '- Select an option -', value: '' },
   { label: 'Option 1', value: '1' },
   { label: 'Option 2', value: '2' },
   { label: 'Option 3', value: '3' },
@@ -14,46 +15,47 @@ const dropdownOptions = [
 ];
 
 ReactDOM.render(
-  <div>
+  <div className="example--wrapper">
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'1'}
-      hint="Example hint text"
+      defaultValue=""
       label="Dropdown example"
+      labelClassName="ds-u-margin-top--0"
       name="dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'1'}
+      defaultValue=""
       size="small"
-      label="Small dropdown example"
+      label="Small size example"
       name="small_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'1'}
+      defaultValue=""
       size="medium"
-      label="Medium dropdown example"
+      label="Medium size example"
       name="medium_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'1'}
-      errorMessage="Error message example"
-      label="Error dropdown example "
-      name="dropdown_field"
+      defaultValue=""
+      errorMessage="Example error message"
+      hint="Helpful hint text"
+      label="Error example"
+      name="error_dropdown_field"
     />
     <Dropdown
       options={dropdownOptions}
-      defaultValue={'1'}
-      label="Disabled dropdown example"
+      defaultValue=""
+      label="Disabled example"
       disabled
       name="disabled_dropdown_field"
     />
     <Dropdown
       options={[]}
-      defaultValue={'1-1'}
-      label="Option group dropdown example"
+      defaultValue="1-1"
+      label="Option group example"
       name="custom_dropdown_field"
     >
       <optgroup label="Option group">
@@ -67,6 +69,18 @@ ReactDOM.render(
         <option value="2-3">Option 6</option>
       </optgroup>
     </Dropdown>
+    <div className="example--wrapper example--inverse">
+      <Dropdown
+        labelClassName="ds-u-margin-top--0"
+        options={dropdownOptions}
+        defaultValue=""
+        errorMessage="Example error message"
+        hint="Helpful hint text"
+        label="Inverse example"
+        name="inverse_dropdown_field"
+        inversed
+      />
+    </div>
   </div>,
   document.getElementById('js-example')
 );

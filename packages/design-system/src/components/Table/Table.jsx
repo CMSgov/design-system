@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TableCaption from './TableCaption';
 import classNames from 'classnames';
+import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
 // TODO: Revert out of this 'PR update to use lifecycle methods'
@@ -26,7 +27,10 @@ function debounce(fn, ms) {
  * @return {Boolean} Is this a TableCaption component?
  */
 function isTableCaption(child) {
-  return child && child.type === TableCaption;
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TableCaption || componentName === 'TableCaption');
 }
 
 export class Table extends React.PureComponent {
@@ -43,10 +47,15 @@ export class Table extends React.PureComponent {
       if (
         props.scrollable &&
         Array.isArray(props.children) &&
-        !props.children.some((child) => child.type === TableCaption)
+        !props.children.some((child) => isTableCaption(child))
       ) {
         console.warn(
           'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
+        );
+      }
+      if (props.dense) {
+        console.warn(
+          `[Deprecated]: Please remove the 'dense' prop in <Table>, use 'compact' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
     }
@@ -75,6 +84,7 @@ export class Table extends React.PureComponent {
     return React.Children.map(this.props.children, (child) => {
       if (isTableCaption(child)) {
         // Extend props on TableCaption before rendering.
+        // TODO: Use React Context when all products are on React v16.8 or higher
         if (this.props.scrollable) {
           return React.cloneElement(child, {
             _id: this.captionID,
@@ -82,7 +92,7 @@ export class Table extends React.PureComponent {
             _scrollableNotice: this.props.scrollableNotice,
           });
         }
-      } else if (this.props.stackable) {
+      } else if (this.props.stackable && child.props) {
         // Extend props for others before rendering.
         return React.cloneElement(child, {
           _stackable: this.props.stackable,
@@ -96,6 +106,8 @@ export class Table extends React.PureComponent {
     const {
       borderless,
       className,
+      compact,
+      dense,
       stackable,
       stackableBreakpoint,
       striped,
@@ -108,15 +120,15 @@ export class Table extends React.PureComponent {
     const classes = classNames(
       'ds-c-table',
       borderless ? 'ds-c-table--borderless' : null,
+      compact || dense ? 'ds-c-table--compact' : null,
       striped ? 'ds-c-table--striped' : null,
       stackable ? `ds-c-${stackableBreakpoint}-table--stacked` : null,
       className
     );
 
-    // Make table container focusable and display scroll notice when table width exceeds viewport.
-    // Set attribute `tabIndex = 0` to make table container focusable and enable keyboard support of using the arrow keys.
-    // Also, it provides context for screen reader users as they are able to focus on the region.
-    // Do this by using table's <caption> to label the scrollable region using aria-labelleby
+    // Makes table container focusable and displays the scrollable notice when table width exceeds viewport
+    // by setting `tabIndex = 0` attribute.
+    // This provides context for screen readers to the table's <caption> via aria-labelleby
     const attributeScrollable = scrollable && {
       className: 'ds-c-table__wrapper',
       role: 'region',
@@ -143,10 +155,7 @@ export class Table extends React.PureComponent {
 
 Table.defaultProps = {
   scrollableNotice: (
-    <Alert
-      className="ds-u-margin-y--1 ds-u-font-size--small ds-u-font-weight--normal"
-      role="status"
-    >
+    <Alert className="ds-u-margin-y--1 ds-u-font-weight--normal" role="status">
       <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
     </Alert>
   ),
@@ -166,6 +175,14 @@ Table.propTypes = {
    * Additional classes to be added to the root table element.
    */
   className: PropTypes.string,
+  /**
+   * Applies the compact variation of the table.
+   */
+  compact: PropTypes.bool,
+  /**
+   * @hide-prop [Deprecated] Use compact instead.
+   */
+  dense: PropTypes.bool,
   /**
    * Applies a horizontal scrollbar and scrollable notice on `TableCaption` when the `Table`'s contents exceed the container width.
    */

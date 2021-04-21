@@ -1,4 +1,4 @@
-import { MonthPicker } from '@cmsgov/design-system';
+import { MonthPicker } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -19,12 +19,13 @@ ReactDOM.render(
       }
       selectAllText="Select all"
       clearAllText="Clear all"
+      className="ds-u-margin-y--0"
     />
-    <div className="example--inverse">
+    <div className="example--wrapper example--inverse">
       <MonthPicker
         name="cryosleep-months"
         errorMessage="Select at least one month"
-        label="Select the months you were in cryosleep during 2046"
+        label="Inverse example"
         disabledMonths={[7, 8, 9, 10, 11, 12]}
         inversed
       />

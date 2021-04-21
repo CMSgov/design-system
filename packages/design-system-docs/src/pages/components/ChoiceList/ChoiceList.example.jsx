@@ -1,4 +1,4 @@
-import { ChoiceList } from '@cmsgov/design-system';
+import { ChoiceList } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -18,7 +18,7 @@ ReactDOM.render(
     />
     <ChoiceList
       choices={[
-        { label: 'Choice 1', value: 'A', hint: 'Choice hint text', defaultChecked: true },
+        { label: 'Choice 1', value: 'A', hint: 'Choice hint text' },
         {
           label: 'Choice 2',
           value: 'B',
@@ -34,7 +34,7 @@ ReactDOM.render(
         { label: 'Choice 1', value: 'A', defaultChecked: true },
         { label: 'Choice 2', value: 'B' },
       ]}
-      label="Small variant example"
+      label="Small size example"
       name="size-variants"
       type="radio"
       size="small"
@@ -42,7 +42,11 @@ ReactDOM.render(
     <div className="example--wrapper example--inverse">
       <ChoiceList
         choices={[
-          { label: 'Choice 1', requirementLabel: 'Choice hint text', value: 'A' },
+          {
+            label: 'Choice 1',
+            requirementLabel: 'Choice hint text',
+            value: 'A',
+          },
           { label: 'Choice 2', value: 'B' },
           { label: 'Disabled choice 3', value: 'c', disabled: true },
         ]}
@@ -50,7 +54,7 @@ ReactDOM.render(
         errorMessage="Example error message"
         hint="Helpful hint text"
         name="inverse_choices_field"
-        type="radio"
+        type="checkbox"
         inversed
       />
     </div>

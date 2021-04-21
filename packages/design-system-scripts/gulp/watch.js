@@ -8,7 +8,7 @@ const gulp = require('gulp');
 const path = require('path');
 const { logTask } = require('./common/logUtil');
 const { compileSourceSass, compileDocsSass } = require('./sass');
-const { copyAll, compileJs } = require('./build');
+const { copyAssets, copySass, compileJs } = require('./build');
 const { generatePages, copySourceAssets, copyDocsAssets } = require('./docs');
 const { extractReactProps, extractReactExamples } = require('./docs/extractReactData');
 const { runWebpackServer } = require('./docs/webpack');
@@ -33,18 +33,19 @@ async function watchSource(sourceDir, docsDir, options, browserSync) {
   const src = path.join(sourceDir, 'src');
 
   // Source package assets
-  gulp.watch([`${src}/{images,fonts}/*`, `${src}/**/*.json`], async () => {
-    await copyAll(sourceDir);
+  gulp.watch([`${src}/{images,fonts}/**/*`], async () => {
+    await copyAssets(sourceDir);
     await copySourceAssets(sourceDir, docsDir);
   });
 
   // Source package Sass files
   gulp.watch(`${src}/**/*.scss`, async () => {
-    await copyAll(sourceDir);
-    await compileSourceSass(sourceDir);
+    await copySass(sourceDir);
+    await compileSourceSass(sourceDir, options);
     await compileDocsSass(docsDir, options, browserSync);
   });
 
+  // Source package JS files
   watch(
     [`${src}/**/*.{jsx,tsx}`, `!${src}/**/*{.test,.spec}.{js,jsx,ts,tsx}`],
     async (changedPath) => {

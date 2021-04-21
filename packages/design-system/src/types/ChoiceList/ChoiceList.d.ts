@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { ChoiceProps } from './Choice';
+import { ChoiceProps as ChoiceComponentProps } from './Choice';
 
 export type ChoiceListSize = 'small';
 
 export type ChoiceListType = 'checkbox' | 'radio';
+
+// Omit props that we override with values from the ChoiceList
+type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
+export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
+
+export type ChoiceListErrorPlacement = 'top' | 'bottom';
 
 export interface ChoiceListProps {
   /**
@@ -19,6 +25,14 @@ export interface ChoiceListProps {
    */
   disabled?: boolean;
   errorMessage?: React.ReactNode;
+  /**
+   * Additional classes to be added to the error message
+   */
+  errorMessageClassName?: string;
+  /**
+   * Location of the error message relative to the field input
+   */
+  errorPlacement?: ChoiceListErrorPlacement;
   /**
    * Additional hint text to display
    */

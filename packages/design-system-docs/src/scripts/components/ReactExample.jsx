@@ -25,7 +25,7 @@ class ReactExample extends React.PureComponent {
           onLoad={this.handleFrameLoad}
           responsive={this.props.responsive}
           src={iframeURL}
-          title={`React example`}
+          title="React example"
         />
 
         <CodeSnippet>{this.highlightedMarkup()}</CodeSnippet>
