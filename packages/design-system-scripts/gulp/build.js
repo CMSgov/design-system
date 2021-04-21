@@ -161,7 +161,6 @@ async function compileEsmJs(dir, changedPath) {
 function compileJs(dir, options, changedPath) {
   const src = path.join(dir, 'src', 'components');
   const srcGlob = getSrcGlob(src, changedPath);
-  console.log('changedPath', changedPath);
   return streamPromise(
     gulp
       .src(srcGlob, { base: path.join(dir, 'src') })
