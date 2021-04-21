@@ -132,6 +132,7 @@ export class Tooltip extends React.Component {
     const TriggerComponent = component;
     const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
       [activeClassName]: this.state.active,
+      'ds-c-tooltip__trigger--inverse': inversed,
     });
     const linkTriggerOverrides = {
       role: TriggerComponent === 'a' ? 'button' : undefined,
@@ -160,8 +161,8 @@ export class Tooltip extends React.Component {
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        aria-label={ariaLabel || ''}
-        aria-describedby={this.id}
+        aria-label={ariaLabel || undefined}
+        aria-describedby={dialog ? undefined : this.id}
         className={triggerClasses}
         ref={this.setTriggerElement}
         {...others}
