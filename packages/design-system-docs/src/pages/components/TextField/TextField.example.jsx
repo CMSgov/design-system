@@ -13,13 +13,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -30,13 +31,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -50,13 +52,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -67,13 +70,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -87,13 +91,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -104,13 +109,53 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+    </div>
+
+    <h1>Box-Shadow - Double border bottom</h1>
+    <div className="focus-8 ds-l-row">
+      <div className="ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            size="medium"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+      <div className="example--wrapper example--inverse ds-l-col--6">
+        <p>
+          <TextField
+            defaultValue="Example value"
+            label="Single line field"
+            labelClassName="ds-u-margin-top--0"
+            name="single_example"
+            inversed
+            size="medium"
+          />
+        </p>
+        <p>
+          <Button variation="primary">Button</Button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -126,13 +171,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -143,13 +189,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -163,13 +210,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -180,13 +228,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -200,13 +249,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
 
@@ -218,13 +268,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
@@ -238,13 +289,14 @@ ReactDOM.render(
             label="Single line field"
             labelClassName="ds-u-margin-top--0"
             name="single_example"
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
       <div className="example--wrapper example--inverse ds-l-col--6">
@@ -255,13 +307,14 @@ ReactDOM.render(
             labelClassName="ds-u-margin-top--0"
             name="single_example"
             inversed
+            size="medium"
           />
         </p>
         <p>
           <Button variation="primary">Button</Button>
         </p>
         <p>
-          <a href="https://design.cms.gov">This is a text link</a> on a light background.
+          <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
     </div>
