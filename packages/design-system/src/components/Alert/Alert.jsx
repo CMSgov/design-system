@@ -10,7 +10,7 @@ const defaultAnalytics = (heading = '', variation = 'information') => ({
   onComponentDidMount: {
     event_name: 'alert_impression',
     event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'alert',
+    ga_eventAction: 'alert impression',
     ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
     heading: heading,
