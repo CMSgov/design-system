@@ -1,4 +1,3 @@
-// import AccordionItem from '@cmsgov/design-system/src/components/Accordion/AccordionItem';
 import { Accordion, AccordionItem } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -6,11 +5,10 @@ import ReactDOM from 'react-dom';
 class ControlledAccordion extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { openItems: [0, 1] };
+    this.state = { openItems: [0] };
   }
 
-  handleChange(index, id) {
-    console.log('-handleChange:', index, id, this.state.openItems);
+  handleChange(index) {
     if (this.state.openItems.includes(index)) {
       this.setState((prevState) => ({
         openItems: prevState.openItems.filter((item) => item !== index),
@@ -33,7 +31,8 @@ class ControlledAccordion extends React.PureComponent {
           <AccordionItem
             heading="Controlled accordion"
             index={0}
-            defaultOpen={this.state.openItems.indexOf(0) !== -1}
+            defaultOpen
+            isControlledOpen={this.state.openItems.includes(0)}
           >
             <p>
               We the People of the United States, in Order to form a more perfect Union, establish
@@ -45,7 +44,8 @@ class ControlledAccordion extends React.PureComponent {
           <AccordionItem
             heading="Controlled accordion second header"
             index={1}
-            defaultOpen={this.state.openItems.indexOf(1) !== -1}
+            defaultOpen={false}
+            isControlledOpen={this.state.openItems.includes(1)}
           >
             <p>Hello world!</p>
           </AccordionItem>

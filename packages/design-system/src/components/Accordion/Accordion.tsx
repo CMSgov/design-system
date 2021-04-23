@@ -11,14 +11,14 @@ export interface AccordionProps {
    * Class to be applied to the outer `<div>` that contains all accordion items.
    */
   className?: string;
-  onChange?: ( index: number, id: string) => void;
+  onChange?: ( index: number) => void;
   variation?: 'single' | 'controlled';
 }
 const defaultProps: AccordionProps = {
   variation: 'single',
 }
 type AccordionContextType = {
-  onChange: ( index: number, id: string) => void;
+  onChange: ( index: number) => void;
   variation: string;
 };
 export const AccordionContext = createContext<AccordionContextType | undefined>(undefined);

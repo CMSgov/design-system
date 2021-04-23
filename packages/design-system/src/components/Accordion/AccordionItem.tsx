@@ -31,15 +31,15 @@ export interface AccordionItemProps {
    */
   id?: string;
   index?: number;
-  // onChange?: ( index: number, id: string) => void;
+  isControlledOpen?: boolean;
 }
 export interface AccordionItemState {
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
   contentId: string;
   buttonId: string;
-  onChange: ( index: number, id: string) => void;
+  onChange: ( index: number) => void;
   variation: string;
   isControlled: boolean;
 
@@ -52,8 +52,8 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
   constructor(props: AccordionItemProps, context:React.ContextType<typeof AccordionContext>) {
     super(props);
 
-    this.state = { isOpen: !!props.defaultOpen };
     this.isControlled = (context.variation === 'controlled');
+    this.state = this.isControlled ? {} : { isOpen: !!props.defaultOpen };
     this.onChange = context.onChange;
     this.handleClick = this.handleClick.bind(this);
     this.contentId = props.id || uniqueId('accordionItem_');
@@ -63,8 +63,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
   // Set the state for opening and closing an accordion item
   handleClick(): void {
     if (this.isControlled) {
-      this.onChange(this.props.index, this.buttonId);
-      this.setState({ isOpen: !!this.props.defaultOpen});
+      this.onChange(this.props.index);
     } else {
       this.setState({ isOpen: !this.state.isOpen });
     }
@@ -77,18 +76,21 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
       contentClassName,
       heading,
       headingLevel = '2',
+      isControlledOpen
     } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
     const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
     if (heading) {
+      console.log('-accordionitem:', this.isControlled, isControlledOpen)
       return (
         <>
           <HeadingTag className="ds-c-accordion__heading">
             <button
               className={buttonClasses}
-              aria-expanded={this.state.isOpen}
+              // aria-expanded={this.state.isOpen}
+              aria-expanded={this.isControlled ? isControlledOpen : this.state.isOpen}
               aria-controls={this.contentId}
               id={this.buttonId}
               onClick={this.handleClick}
@@ -100,7 +102,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
             className={contentClasses}
             aria-labelledby={this.buttonId}
             id={this.contentId}
-            hidden={!this.state.isOpen}
+            hidden={this.isControlled ? !isControlledOpen : !this.state.isOpen}
           >
             {children}
           </div>
