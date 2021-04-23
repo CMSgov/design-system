@@ -60,6 +60,8 @@ function processMarkdownPage(filePath, body, options) {
     reference = referenceURI.replace('/', '.');
   }
 
+  referenceURI = referenceURI.replace('index', '');
+
   const header = parts.attributes.title || 'Untitled';
   let page = {
     depth: depth,
