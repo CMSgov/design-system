@@ -64,6 +64,13 @@ Style guide: components.alert.react
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
+### Customization
+The following Sass variables can be overridden to theme alerts:
+
+- `$alert-padding` - Used to provide padding for the alert element
+- `$alert-bar-size` - Used to control the width of the left bar on the alert
+- `$alert-icon-size` - Used to control the size of the alert icon
+
 ### Learn more
 
 - [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)

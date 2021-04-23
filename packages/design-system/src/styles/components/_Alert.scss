@@ -1,5 +1,9 @@
 @import '../settings/index.scss';
 
+$alert-padding: $spacer-2;
+$alert-bar-size: $spacer-1;
+$alert-icon-size: $spacer-5;
+
 // Links on darker backgrounds that aren't quite dark as inverse
 %link-darker {
   color: $color-primary-darker;
@@ -40,10 +44,6 @@
     }
   }
 }
-
-$alert-padding: $spacer-2;
-$alert-bar-size: $spacer-1;
-$alert-icon-size: $spacer-5;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
@@ -91,7 +91,7 @@ $alert-icon-size: $spacer-5;
 }
 
 .ds-c-alert__heading {
-  font-size: $lead-font-size;
+  font-size: $font-size-lg;
   font-weight: $font-bold;
   margin-bottom: $spacer-half;
   margin-top: 0;
@@ -116,6 +116,6 @@ $alert-icon-size: $spacer-5;
 
 .ds-c-alert--success {
   background-color: $color-success-lightest;
-  background-image: url('#{$image-path}/success.svg');
+  background-image: url('#{$image-path}/success-fill.svg');
   border-color: $color-success;
 }

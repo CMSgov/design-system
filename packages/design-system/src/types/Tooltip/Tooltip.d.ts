@@ -14,10 +14,9 @@ interface TooltipProps {
    */
   children: React.ReactNode;
   /**
-   * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`,
- or rarely an `input` element.
+   * When provided, this will render the passed in component for the tooltip trigger. Typically this will be a `button`, `a`, or rarely an `input` element.
    */
-  component: React.ReactElement<any> | any | ((...args: any[]) => any);
+  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
    * Classes applied to the tooltip trigger
    */
@@ -42,15 +41,15 @@ interface TooltipProps {
   /**
    * Called when the tooltip is hidden
    */
-  onClose: () => void;
+  onClose?: () => void;
   /**
    * Called when the tooltip is shown
    */
-  onOpen: () => void;
+  onOpen?: () => void;
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
    */
-  placement: 'auto' | 'bottom' | 'top' | 'right' | 'left';
+  placement?: 'auto' | 'bottom' | 'top' | 'right' | 'left';
   /**
    * `maxWidth` styling applied to the tooltip body
    */
@@ -67,7 +66,7 @@ interface TooltipProps {
    * `zIndex` styling applied to the tooltip body
    */
   zIndex?: number;
-};
+}
   
 interface TooltipState {
   active: boolean,
@@ -75,8 +74,11 @@ interface TooltipState {
   isMobile: boolean,
 }
 
+type OmitProps = 'title';
+
 export default class Tooltip extends React.Component<
-  React.HTMLProps<HTMLButtonElement> & TooltipProps,
-, TooltipState> {
+  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & TooltipProps,
+  TooltipState
+> {
   render(): JSX.Element;
 }
