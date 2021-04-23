@@ -108,3 +108,17 @@ describe('AccordionItem', function () {
 
   it('renders HTML in the content', () => {});
 });
+
+describe('Controlled accordion item', function () {
+  it('renders button and should call onClick function when clicked', () => {
+    const onClick = jest.fn();
+
+    const { wrapper } = render({ heading: 'Foo', onChange: onClick });
+
+    const button = wrapper.find('button');
+    expect(button.length).toEqual(1);
+
+    button.simulate('click');
+    wrapper.update();
+    expect(onClick).toHaveBeenCalled();
+  })});

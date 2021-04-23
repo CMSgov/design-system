@@ -23,16 +23,12 @@ class ControlledAccordion extends React.PureComponent {
   render() {
     return (
       <>
-        <Accordion
-          bordered
-          variation="controlled"
-          onChange={(index, id) => this.handleChange(index, id)}
-        >
+        <Accordion bordered>
           <AccordionItem
             heading="Controlled accordion"
-            index={0}
             defaultOpen
             isControlledOpen={this.state.openItems.includes(0)}
+            onChange={() => this.handleChange(0)}
           >
             <p>
               We the People of the United States, in Order to form a more perfect Union, establish
@@ -46,6 +42,7 @@ class ControlledAccordion extends React.PureComponent {
             index={1}
             defaultOpen={false}
             isControlledOpen={this.state.openItems.includes(1)}
+            onChange={() => this.handleChange(1)}
           >
             <p>Hello world!</p>
           </AccordionItem>

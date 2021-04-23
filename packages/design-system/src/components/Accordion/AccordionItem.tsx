@@ -1,5 +1,4 @@
 import React from 'react';
-import { AccordionContext } from './Accordion';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -30,8 +29,8 @@ export interface AccordionItemProps {
    *  If not provided, a unique id will be automatically generated and used.
    */
   id?: string;
-  index?: number;
   isControlledOpen?: boolean;
+  onChange?: () => void;
 }
 export interface AccordionItemState {
   isOpen?: boolean;
@@ -39,22 +38,17 @@ export interface AccordionItemState {
 export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
   contentId: string;
   buttonId: string;
-  onChange: ( index: number) => void;
-  variation: string;
   isControlled: boolean;
 
   static defaultProps = {
     headingLevel: '2',
   };
   
-  static contextType = AccordionContext;
-
-  constructor(props: AccordionItemProps, context:React.ContextType<typeof AccordionContext>) {
+  constructor(props: AccordionItemProps) {
     super(props);
 
-    this.isControlled = (context.variation === 'controlled');
+    this.isControlled = !!props.onChange;
     this.state = this.isControlled ? {} : { isOpen: !!props.defaultOpen };
-    this.onChange = context.onChange;
     this.handleClick = this.handleClick.bind(this);
     this.contentId = props.id || uniqueId('accordionItem_');
     this.buttonId = `${this.contentId}-button`;
@@ -63,7 +57,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
   // Set the state for opening and closing an accordion item
   handleClick(): void {
     if (this.isControlled) {
-      this.onChange(this.props.index);
+      this.props.onChange();
     } else {
       this.setState({ isOpen: !this.state.isOpen });
     }
@@ -83,13 +77,11 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
     if (heading) {
-      console.log('-accordionitem:', this.isControlled, isControlledOpen)
       return (
         <>
           <HeadingTag className="ds-c-accordion__heading">
             <button
               className={buttonClasses}
-              // aria-expanded={this.state.isOpen}
               aria-expanded={this.isControlled ? isControlledOpen : this.state.isOpen}
               aria-controls={this.contentId}
               id={this.buttonId}
