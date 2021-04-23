@@ -1,5 +1,4 @@
 <!-- prettier-ignore -->
-
 <div class="focus-styles">
 
   <% [ { title: 'Outline - Solid' , focus: 'focus-outline-solid' }, { title: 'Outline - Dashed' ,
@@ -18,14 +17,40 @@
     <h1>
       <%= section.title %>
     </h1>
-    <div class="<%= section.focus %> ds-l-row ds-u-margin-bottom--7">
-      <div class="ds-l-col--6 example--wrapper ds-u-padding--2">
-
+    <div class="<%= section.focus %> focus-styles-bw ds-l-row ds-u-margin-bottom--7">
+      <div class="ds-l-col--3 example--wrapper ds-u-padding--2">
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="checkbox-1" type="checkbox" name="checkbox-choices" value="checkbox-1"
+            checked="">
+          <label for="checkbox-1">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="checkbox-2" type="checkbox" name="checkbox-choices" value="checkbox-2">
+          <label for="checkbox-2">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="checkbox-3" type="checkbox" name="checkbox-choices" value="checkbox-3"
+            disabled="">
+          <label for="checkbox-3">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="radio-1" type="radio" name="radio-choices" value="radio-1">
+          <label for="radio-1">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="radio-2" type="radio" name="radio-choices" value="radio-2">
+          <label for="radio-2"><span>Choice 2</span></label>
+        </fieldset>
         <div>
           <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="input-singleline" name="singleline" type="text" />
+          <input class="ds-c-field ds-c-field--medium" id="input-singleline" name="singleline" type="text" />
         </div>
 
         <p>
@@ -37,13 +62,39 @@
           <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
-      <div class="ds-l-col--6 example--wrapper ds-u-padding--2 ds-u-fill--gray-lightest">
-
+      <div class="example--wrapper example--inverse ds-u-fill--gray-dark ds-l-col--3">
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="checkbox-1" type="checkbox" name="checkbox-choices" value="checkbox-1"
+            checked="">
+          <label for="checkbox-1">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="checkbox-2" type="checkbox" name="checkbox-choices" value="checkbox-2">
+          <label for="checkbox-2">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="checkbox-3" type="checkbox" name="checkbox-choices" value="checkbox-3"
+            disabled="">
+          <label for="checkbox-3">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="radio-1" type="radio" name="radio-choices" value="radio-1">
+          <label for="radio-1">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="radio-2" type="radio" name="radio-choices" value="radio-2">
+          <label for="radio-2"><span>Choice 2</span></label>
+        </fieldset>
         <div>
           <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="input-singleline" name="singleline" value="Example text" type="text" />
+          <input class="ds-c-field ds-c-field--medium" id="input-singleline" name="singleline" type="text" />
         </div>
 
         <p>
@@ -55,43 +106,7 @@
           <a href="https://design.cms.gov">This is a text link</a>
         </p>
       </div>
-      <div class="example--wrapper example--inverse ds-l-col--6">
 
-        <div>
-          <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
-            <span>Single line field</span>
-          </label>
-          <input class="ds-c-field" id="input-singleline" name="singleline" value="Example text" type="text" />
-        </div>
-
-        <p>
-          <button type="button" class="ds-c-button ds-c-button--primary">
-            Default
-          </button>
-        </p>
-        <p>
-          <a href="https://design.cms.gov">This is a text link</a>
-        </p>
-      </div>
-      <div class="mgov-dark-bg example--inverse ds-l-col--6">
-
-        <div>
-          <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
-            <span>Single line field</span>
-          </label>
-          <input class="ds-c-field" id="input-singleline" name="singleline" value="Example text" type="text" />
-        </div>
-
-        <p>
-          <button type="button" class="ds-c-button ds-c-button--primary">
-            Default
-          </button>
-        </p>
-        <p>
-          <a href="https://design.cms.gov">This is a text link</a>
-        </p>
-      </div>
     </div>
-
     <% }) -%>
 </div>
