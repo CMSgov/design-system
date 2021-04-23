@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
-import AccordionContext from './Accordion';
+import React from 'react';
+import { AccordionContext } from './Accordion';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
@@ -14,7 +14,6 @@ export interface AccordionItemProps {
    * Class to be applied to the content `<div>` tag of an accordion item.
    */
   contentClassName?: string;
-
   /**
    * Boolean to expand the accordion.
    */
@@ -31,10 +30,8 @@ export interface AccordionItemProps {
    *  If not provided, a unique id will be automatically generated and used.
    */
   id?: string;
-
   index?: number;
-
-  onClick?: (arg0: string, arg1: number) => void;
+  // onChange?: ( index: number, id: string) => void;
 }
 export interface AccordionItemState {
   isOpen: boolean;
@@ -42,26 +39,32 @@ export interface AccordionItemState {
 export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
   contentId: string;
   buttonId: string;
+  onChange: ( index: number, id: string) => void;
+  variation: string;
+  isControlled: boolean;
 
   static defaultProps = {
     headingLevel: '2',
   };
+  
+  static contextType = AccordionContext;
 
-  constructor(props: AccordionItemProps) {
+  constructor(props: AccordionItemProps, context:React.ContextType<typeof AccordionContext>) {
     super(props);
 
     this.state = { isOpen: !!props.defaultOpen };
+    this.isControlled = (context.variation === 'controlled');
+    this.onChange = context.onChange;
     this.handleClick = this.handleClick.bind(this);
     this.contentId = props.id || uniqueId('accordionItem_');
     this.buttonId = `${this.contentId}-button`;
-    // this.context.value = React.useContext(AccordionContext);
   }
 
   // Set the state for opening and closing an accordion item
   handleClick(): void {
-    if ((this.context = 'controlled')) {
-      console.log('in handle click', this.props);
-      this.props.onClick(this.buttonId, this.props.index);
+    if (this.isControlled) {
+      this.onChange(this.props.index, this.buttonId);
+      this.setState({ isOpen: !!this.props.defaultOpen});
     } else {
       this.setState({ isOpen: !this.state.isOpen });
     }
@@ -74,8 +77,6 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
       contentClassName,
       heading,
       headingLevel = '2',
-      index,
-      id,
     } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);

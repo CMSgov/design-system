@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, createContext } from 'react';
 import classNames from 'classnames';
-import AccordionItem from './AccordionItem';
 
 export interface AccordionProps {
   /**
@@ -12,13 +11,17 @@ export interface AccordionProps {
    * Class to be applied to the outer `<div>` that contains all accordion items.
    */
   className?: string;
-
-  variation?: 'single select' | 'controlled';
+  onChange?: ( index: number, id: string) => void;
+  variation?: 'single' | 'controlled';
 }
-
 const defaultProps: AccordionProps = {
-  variation: 'single select',
+  variation: 'single',
+}
+type AccordionContextType = {
+  onChange: ( index: number, id: string) => void;
+  variation: string;
 };
+export const AccordionContext = createContext<AccordionContextType | undefined>(undefined);
 
 const handleKeyDown = (e) => {
   const target = e.target;
@@ -36,22 +39,22 @@ const handleKeyDown = (e) => {
     triggers[newIndex].focus();
     e.preventDefault();
   }
-};
-
-const AccordionContext = React.createContext('');
+}
 
 const Accordion: FunctionComponent<AccordionProps> = ({
   bordered,
   children,
   className,
+  onChange,
   variation,
 }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return (
     <div onKeyDown={handleKeyDown} className={classes}>
-      <AccordionContext.Provider value={variation}>{children}</AccordionContext.Provider>
+      <AccordionContext.Provider value={{onChange, variation}}>{children}</AccordionContext.Provider>
     </div>
   );
 };
+Accordion.defaultProps = defaultProps;
 
 export default Accordion;
