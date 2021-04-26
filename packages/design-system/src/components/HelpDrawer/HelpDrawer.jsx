@@ -2,8 +2,10 @@ import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
+import { htmlToText } from 'html-to-text';
 
 // Default analytics object
 const defaultAnalytics = (heading) => ({
@@ -29,6 +31,11 @@ export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
+    this.eventHeading = props.title || props.heading;
+    this.eventHeadingText =
+      typeof this.eventHeading === 'string'
+        ? this.eventHeading
+        : htmlToText(ReactDOMServer.renderToString(this.eventHeading));
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -45,23 +52,20 @@ export class HelpDrawer extends React.PureComponent {
 
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
-
     const eventAction = 'onComponentDidMount';
-
     /* Send analytics event for helpdrawer open */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
     );
   }
 
   componentWillUnmount() {
     const eventAction = 'onComponentWillUnmount';
-
     /* Send analytics event for helpdrawer close */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
     );
   }
 
