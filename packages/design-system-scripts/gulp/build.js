@@ -88,7 +88,7 @@ async function copyAll(dir, options) {
 async function generateTypeDefinitions(dir, changedPath) {
   const src = path.join(dir, 'src', 'components');
   const srcGlob = changedPath
-    ? [changedPath`!${src}/**/*.{js,jsx}`]
+    ? [changedPath]
     : [
         `${src}/**/*.{ts,tsx}`,
         `!${src}/**/*.{js,jsx}`,
@@ -161,7 +161,6 @@ async function compileEsmJs(dir, changedPath) {
 function compileJs(dir, options, changedPath) {
   const src = path.join(dir, 'src', 'components');
   const srcGlob = getSrcGlob(src, changedPath);
-
   return streamPromise(
     gulp
       .src(srcGlob, { base: path.join(dir, 'src') })
@@ -183,7 +182,8 @@ function compileJs(dir, options, changedPath) {
     })
     .then(() => {
       // If design system is using typescript, use tsc to generate definition files for tsx files
-      if (options.typescript) {
+      const unknownOrTypescriptPath = !changedPath || changedPath.match(/\.(ts|tsx)$/);
+      if (options.typescript && unknownOrTypescriptPath) {
         return generateTypeDefinitions(dir, changedPath);
       }
     });

@@ -68,6 +68,21 @@ class Page extends React.PureComponent {
 
   renderContent() {
     if (this.hasTabs) {
+      if (this.props.view === 'guidance') {
+        return (
+          <div className="ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0">
+            {this.renderGuidanceSection()}
+          </div>
+        );
+      }
+      if (this.props.view === 'code') {
+        return (
+          <div className="ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0">
+            {this.renderBody()}
+            {this.renderChildPageBlocks(this.usageSections())}
+          </div>
+        );
+      }
       return (
         <div className="ds-u-border--0 ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-padding-y--0">
           {this.renderBody()}
@@ -89,10 +104,9 @@ class Page extends React.PureComponent {
 
   render() {
     const sections = this.guidanceSections();
-
     return (
       <div>
-        <PageHeader {...this.props} showGuidanceLink={sections.length > 0} />
+        {!this.props.view && <PageHeader {...this.props} showGuidanceLink={sections.length > 0} />}
         {this.renderContent()}
       </div>
     );
@@ -107,6 +121,14 @@ Page.defaultProps = {
 Page.propTypes = {
   depth: PropTypes.number,
   sections: PropTypes.arrayOf(PropTypes.shape(PageBlock.propTypes)),
+  /**
+   * URL parameters query string 'view':
+   * All views exclude the left nav, site header, site footer and page title
+   * - code: Page code examples only
+   * - guidance: Guidance section only
+   * - page: Page content with Guidance section
+   */
+  view: PropTypes.oneOf(['code', 'guidance', 'page']),
 };
 
 export default Page;
