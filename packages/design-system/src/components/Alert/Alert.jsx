@@ -72,7 +72,7 @@ Alert.propTypes = {
   /**
    * Heading type to override default `<h3>`.
    */
-  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
+  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5', '6']),
   /**
    * Boolean to hide the `Alert` icon
    */
