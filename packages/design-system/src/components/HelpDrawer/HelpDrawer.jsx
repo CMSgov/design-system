@@ -8,7 +8,7 @@ import get from 'lodash/get';
 import { htmlToText } from 'html-to-text';
 
 // Default analytics object
-const defaultAnalytics = (heading) => ({
+const defaultAnalytics = (heading = '') => ({
   onComponentDidMount: {
     event_name: 'help_drawer_opened',
     event_type: EVENT_CATEGORY.uiInteraction,
