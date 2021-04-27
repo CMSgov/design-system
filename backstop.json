@@ -662,7 +662,7 @@
       "url": "http://localhost:3000/components/alert/",
       "removeSelectors": ["#frame"]
     },
-     {
+    {
       "label": "CMSDS - Components - Alert - Default",
       "referenceUrl": "https://design.cms.gov/example/components.alert/",
       "url": "http://localhost:3000/example/components.alert/",
