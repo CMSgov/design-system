@@ -22,7 +22,6 @@ export interface AnalyticsEventShape {
 
 export interface AnalyticsObjectShape {
   onComponentDidMount?: boolean | AnalyticsEventShape;
-  onComponentWillUnmount?: boolean | AnalyticsEventShape;
 }
 
 export interface AlertProps {
