@@ -78,7 +78,7 @@ Analytics events
     <tr>
       <td><code class="ds-u-font-weight--bold">event_name</code></td>
       <td><code>string</code></td>
-      <td><code>'help_drawer_opened'</code></td>
+      <td>onComponentDidMount: <code>'help_drawer_opened'</code>, or onComponentWillUnmount: <code>'help_drawer_closed'</code></td>
       <td>
         <p>When provided, override text to display as the event name</p>
       </td>
@@ -110,9 +110,7 @@ Analytics events
     <tr>
       <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
       <td><code>string</code></td>
-      <td>
-        HelpDrawer prop: <code>heading or title</code>
-      </td>
+      <td>HelpDrawer prop: <code>heading or title</code></td>
       <td>
         <p>When provided, override text to display as the event label</p>
       </td>
@@ -140,9 +138,7 @@ Analytics events
     <tr>
       <td><code class="ds-u-font-weight--bold">heading</code></td>
       <td><code>string</code></td>
-      <td>
-        HelpDrawer prop: <code>heading or title</code>
-      </td>
+      <td>HelpDrawer prop: <code>heading or title</code></td>
       <td>
         <p>When provided, override text to display as the heading</p>
       </td>
