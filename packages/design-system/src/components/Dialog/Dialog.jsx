@@ -9,7 +9,7 @@ import get from 'lodash/get';
 import { htmlToText } from 'html-to-text';
 
 // Default analytics object
-const defaultAnalytics = (heading) => ({
+const defaultAnalytics = (heading = '') => ({
   onComponentDidMount: {
     event_name: 'modal_impression',
     event_type: EVENT_CATEGORY.uiInteraction,
