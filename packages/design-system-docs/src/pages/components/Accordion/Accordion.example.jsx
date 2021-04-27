@@ -56,7 +56,7 @@ ReactDOM.render(
   <div className="example--wrapper">
     <ControlledAccordion />
 
-    <Accordion bordered variation="single">
+    <Accordion bordered>
       <AccordionItem heading="First amendment" contentClassName="jimmy">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
