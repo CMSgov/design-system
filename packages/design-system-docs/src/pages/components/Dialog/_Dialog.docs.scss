@@ -32,6 +32,121 @@ Style guide: components.dialog.react
 */
 
 /*
+Analytics events
+
+<table class="ds-c-table ds-c-table--compact">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">onComponentDidMount</code></td>
+      <td><code>bool, or object</code></td>
+      <td>
+        <p>Track modal dialog opened event</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">onComponentWillUnmount</code></td>
+      <td><code>bool, or object</code></td>
+      <td>
+        <p>Track modal dialog closed event</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Analytics event object</h4>
+
+<table class="ds-c-table ds-c-table--compact">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">event_name</code></td>
+      <td><code>string</code></td>
+      <td>onComponentDidMount: <code>'modal_impression'</code>, or onComponentWillUnmount: <code>'modal_closed'</code></td>
+      <td>
+        <p>When provided, override text to display as the event name</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">event_type</code></td>
+      <td><code>string</code></td>
+      <td><code>'ui interaction'</code></td>
+      <td>
+        <p>When provided, override text to display as the event type</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventAction</code></td>
+      <td><code>string</code></td>
+      <td>onComponentDidMount: <code>'modal impression'</code>, or onComponentWillUnmount: <code>'closed modal'</code></td>
+      <td>
+        <p>When provided, override text to display as the event action</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventCategory</code></td>
+      <td><code>string</code></td>
+      <td><code>'ui components'</code></td>
+      <td>
+        <p>When provided, override text to display as the event category</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
+      <td><code>string</code></td>
+      <td>Dialog prop: <code>heading or title</code></td>
+      <td>
+        <p>When provided, override text to display as the event label</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">ga_eventType</code>
+      </td>
+      <td><code>string</code></td>
+      <td>cmsds</td>
+      <td>
+        <p>When provided, override text to display as the event type</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">ga_eventValue</code>
+      </td>
+      <td><code>string</code></td>
+      <td></td>
+      <td>
+        <p>When provided, override text to display as the event value</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">heading</code></td>
+      <td><code>string</code></td>
+      <td>Dialog prop: <code>heading or title</code></td>
+      <td>
+        <p>When provided, override text to display as the heading</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Style guide: components.dialog.analytics-object
+*/
+
+/*
 ---
 
 ### Related patterns
