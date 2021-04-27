@@ -105,8 +105,6 @@ describe('AccordionItem', function () {
 
     expect(accordionButton.props()).toHaveProperty('aria-expanded', false);
   });
-
-  it('renders HTML in the content', () => {});
 });
 
 describe('Controlled accordion item', function () {
@@ -121,4 +119,5 @@ describe('Controlled accordion item', function () {
     button.simulate('click');
     wrapper.update();
     expect(onClick).toHaveBeenCalled();
-  })});
+  });
+});

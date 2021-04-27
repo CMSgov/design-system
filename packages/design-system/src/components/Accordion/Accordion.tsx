@@ -28,15 +28,13 @@ const handleKeyDown = (e) => {
     triggers[newIndex].focus();
     e.preventDefault();
   }
-}
+};
 
-const Accordion: FunctionComponent<AccordionProps> = ({
-  bordered,
-  children,
-  className,
-}) => {
+// eslint-disable-next-line react/prop-types
+const Accordion: FunctionComponent<AccordionProps> = ({ bordered, children, className }) => {
   const classes = classNames('ds-c-accordion', bordered && 'ds-c-accordion--bordered', className);
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={handleKeyDown} className={classes}>
       {children}
     </div>

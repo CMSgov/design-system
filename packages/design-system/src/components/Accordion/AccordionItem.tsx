@@ -36,14 +36,16 @@ export interface AccordionItemState {
   isOpen?: boolean;
 }
 export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
-  contentId: string;
-  buttonId: string;
-  isControlled: boolean;
-
   static defaultProps = {
     headingLevel: '2',
   };
-  
+
+  /* eslint-disable react/sort-comp */
+  buttonId: string;
+  contentId: string;
+  isControlled: boolean;
+  /* eslint-enable react/sort-comp */
+
   constructor(props: AccordionItemProps) {
     super(props);
 
@@ -70,7 +72,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
       contentClassName,
       heading,
       headingLevel = '2',
-      isControlledOpen
+      isControlledOpen,
     } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);

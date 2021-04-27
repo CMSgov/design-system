@@ -1,7 +1,7 @@
+import { mount, shallow } from 'enzyme';
 import Accordion from './Accordion';
 import AccordionItem from './AccordionItem';
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 
 const defaultAccordionItemChildren = 'Foo';
 const defaultAccordionItemProps = {
@@ -10,10 +10,10 @@ const defaultAccordionItemProps = {
 };
 
 const children = [
-  <AccordionItem heading="First amendment" id="1">
+  <AccordionItem key="1" heading="First amendment" id="1">
     <p>Hello world!</p>
   </AccordionItem>,
-  <AccordionItem heading="Second amendment" id="2">
+  <AccordionItem key="2" heading="Second amendment" id="2">
     <p>Hello world!</p>
   </AccordionItem>,
 ];
