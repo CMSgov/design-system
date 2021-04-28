@@ -35,14 +35,6 @@ Style guide: components.accordion.react-accordionitem
 /*
 ---
 
-### Style customization
-
-- **$accordion-border-color** -  Border color of the accordion
-- **$accordion-header-bg-color** - Background color of the accordion header
-- **$accordion-header-bg-hover-color** - Background color of the accordion header when hovered
-- **$accordion-header-font-family** - Font used for the accordion header
-
-
 ### When to use
 
 - Use an accordion to see an overview of multiple, related sections of content
@@ -61,14 +53,19 @@ Accordions increase cognitive load and interaction cost, as users have to make d
 - Make the entire header selectable. Allow users to click anywhere in the header area to expand or collapse the content; a larger target is easier to manipulate.
 - Give interactive elements enough space. Make sure interactive elements within the collapsible region are far enough from the headers that users don’t accidentally trigger a collapse.
 
+### Style customization
+
+- `$accordion-border-color` -  Border color of the accordion
+- `$accordion-header-bg-color` - Background color of the accordion header
+- `$accordion-header-bg-hover-color` - Background color of the accordion header when hovered
+- `$accordion-header-font-family` - Font used for the accordion header
+
 ### Accessibility
 #### Keyboard support
-- **header** - `Ente` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
-- **header** - `Arrow Down` - Moves focus to the next accordion header
-- **header** - `Arrow Up` - Moves focus to the previous accordion header
-
-### Learn more
-
+#### header
+- `Enter` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
+- `Arrow Down` - Moves focus to the next accordion header
+- `Arrow Up` - Moves focus to the previous accordion header
 
 Style guide: components.accordion.guidance
 */
