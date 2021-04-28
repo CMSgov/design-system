@@ -1,4 +1,4 @@
-import { sendAnalyticsEvent } from './Analytics';
+import { sendAnalyticsEvent } from './SendAnalytics';
 
 describe('sendAnalyticsEvent', () => {
   const gaEventProps = {

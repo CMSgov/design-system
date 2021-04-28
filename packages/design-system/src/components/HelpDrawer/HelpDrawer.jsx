@@ -1,21 +1,29 @@
-import { EVENT_ACTION, EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/Analytics';
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
+import { htmlToText } from 'html-to-text';
 
 // Default analytics object
-const defaultAnalytics = (heading) => ({
+const defaultAnalytics = (heading = '') => ({
   onComponentDidMount: {
-    ga_eventCategory: EVENT_CATEGORY.contentTools,
-    ga_eventAction: EVENT_ACTION.helpDrawerOpen,
+    event_name: 'help_drawer_opened',
+    event_type: EVENT_CATEGORY.uiInteraction,
+    ga_eventAction: 'opened help drawer',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
+    heading: heading,
   },
   onComponentWillUnmount: {
-    ga_eventCategory: EVENT_CATEGORY.contentTools,
-    ga_eventAction: EVENT_ACTION.helpDrawerClose,
+    event_name: 'help_drawer_closed',
+    event_type: EVENT_CATEGORY.uiInteraction,
+    ga_eventAction: 'closed help drawer',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
     ga_eventLabel: heading,
+    heading: heading,
   },
 });
 
@@ -23,6 +31,11 @@ export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
+    this.eventHeading = props.title || props.heading;
+    this.eventHeadingText =
+      typeof this.eventHeading === 'string'
+        ? this.eventHeading
+        : htmlToText(ReactDOMServer.renderToString(this.eventHeading));
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -39,23 +52,20 @@ export class HelpDrawer extends React.PureComponent {
 
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
-
     const eventAction = 'onComponentDidMount';
-
     /* Send analytics event for helpdrawer open */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
     );
   }
 
   componentWillUnmount() {
     const eventAction = 'onComponentWillUnmount';
-
     /* Send analytics event for helpdrawer close */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.props.title || this.props.heading), eventAction)
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
     );
   }
 
@@ -126,10 +136,14 @@ HelpDrawer.defaultProps = {
  * Defines the shape of an analytics event for tracking that is an object with key-value pairs
  */
 const AnalyticsEventShape = PropTypes.shape({
-  ga_eventCategory: PropTypes.string,
+  event_name: PropTypes.string,
+  event_type: PropTypes.string,
   ga_eventAction: PropTypes.string,
+  ga_eventCategory: PropTypes.string,
   ga_eventLabel: PropTypes.string,
+  ga_eventType: PropTypes.string,
   ga_eventValue: PropTypes.string,
+  heading: PropTypes.string,
 });
 
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,

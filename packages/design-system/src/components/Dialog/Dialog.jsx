@@ -1,107 +1,159 @@
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import AriaModal from 'react-aria-modal';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
+import get from 'lodash/get';
+import { htmlToText } from 'html-to-text';
 
-export const Dialog = function (props) {
-  const {
-    actions,
-    actionsClassName,
-    ariaCloseLabel,
-    children,
-    className,
-    closeButtonSize,
-    closeButtonText,
-    closeButtonVariation,
-    closeText,
-    escapeExits,
-    escapeExitDisabled,
-    headerClassName,
-    heading,
-    onExit,
-    size,
-    title,
-    ...modalProps
-  } = props;
+// Default analytics object
+const defaultAnalytics = (heading = '') => ({
+  onComponentDidMount: {
+    event_name: 'modal_impression',
+    event_type: EVENT_CATEGORY.uiInteraction,
+    ga_eventAction: 'modal impression',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
+    ga_eventLabel: heading,
+    heading: heading,
+  },
+  onComponentWillUnmount: {
+    event_name: 'modal_closed',
+    event_type: EVENT_CATEGORY.uiInteraction,
+    ga_eventAction: 'closed modal',
+    ga_eventCategory: EVENT_CATEGORY.uiComponents,
+    ga_eventLabel: heading,
+    heading: heading,
+  },
+});
 
-  if (process.env.NODE_ENV !== 'production') {
-    if (props.title) {
-      console.warn(
-        `[Deprecated]: Please remove the 'title' prop in <Dialog>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (props.escapeExitDisabled) {
-      console.warn(
-        `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
-      );
-    }
-    if (props.closeText) {
-      console.warn(
-        `[Deprecated]: Please remove the 'closeText' prop in <Dialog>, use 'closeButtonText' instead. This prop has been renamed and will be removed in a future release.`
-      );
+export class Dialog extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.eventHeading = props.title || props.heading;
+    this.eventHeadingText =
+      typeof this.eventHeading === 'string'
+        ? this.eventHeading
+        : htmlToText(ReactDOMServer.renderToString(this.eventHeading));
+    if (process.env.NODE_ENV !== 'production') {
+      if (props.title) {
+        console.warn(
+          `[Deprecated]: Please remove the 'title' prop in <Dialog>, use 'heading' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
+      if (props.escapeExitDisabled) {
+        console.warn(
+          `[Deprecated]: Please remove the 'escapeExitDisabled' prop in <Dialog>, use 'escapeExits' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
+      if (props.closeText) {
+        console.warn(
+          `[Deprecated]: Please remove the 'closeText' prop in <Dialog>, use 'closeButtonText' instead. This prop has been renamed and will be removed in a future release.`
+        );
+      }
     }
   }
 
-  const dialogClassNames = classNames(
-    'ds-c-dialog',
-    'ds-base',
-    className,
-    size && `ds-c-dialog--${size}`
-  );
-  const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
-  const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
-  // TODO: remove after deprecating 'escapeExitDiabled' prop
-  const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
+  componentDidMount() {
+    const eventAction = 'onComponentDidMount';
+    /* Send analytics event for dialog open */
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
+    );
+  }
 
-  /* eslint-disable jsx-a11y/no-redundant-roles */
-  return (
-    <AriaModal
-      dialogClass={dialogClassNames}
-      // TODO: remove 'escapeExits' after deprecating 'escapeExitDiabled' prop so that 'escapeExits' will pass via the 'modalProps' spread operator
-      escapeExits={escapeExitsProp}
-      focusDialog
-      includeDefaultStyles={false}
-      onExit={onExit}
-      titleId="dialog-title dialog-content"
-      underlayClass="ds-c-dialog-wrap"
-      {...modalProps}
-    >
-      <div role="document">
-        <header className={headerClassNames} role="banner">
-          {
-            // TODO: make heading required after removing title
-            (title || heading) && (
-              <h1 className="ds-h2" id="dialog-title">
-                {heading}
-              </h1>
-            )
-          }
-          <Button
-            aria-label={ariaCloseLabel}
-            className="ds-c-dialog__close"
-            onClick={onExit}
-            size={closeButtonSize}
-            variation={closeButtonVariation}
-          >
+  componentWillUnmount() {
+    const eventAction = 'onComponentWillUnmount';
+    /* Send analytics event for dialog close */
+    sendAnalyticsEvent(
+      get(this.props.analytics, eventAction),
+      get(defaultAnalytics(this.eventHeadingText), eventAction)
+    );
+  }
+
+  render() {
+    const {
+      actions,
+      actionsClassName,
+      ariaCloseLabel,
+      children,
+      className,
+      closeButtonSize,
+      closeButtonText,
+      closeButtonVariation,
+      closeText,
+      escapeExits,
+      escapeExitDisabled,
+      headerClassName,
+      heading,
+      onExit,
+      size,
+      title,
+      ...modalProps
+    } = this.props;
+
+    const dialogClassNames = classNames(
+      'ds-c-dialog',
+      'ds-base',
+      className,
+      size && `ds-c-dialog--${size}`
+    );
+    const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
+    const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
+    // TODO: remove after deprecating 'escapeExitDiabled' prop
+    const escapeExitsProp = escapeExitDisabled ? !escapeExitDisabled : escapeExits;
+
+    /* eslint-disable jsx-a11y/no-redundant-roles */
+    return (
+      <AriaModal
+        dialogClass={dialogClassNames}
+        // TODO: remove 'escapeExits' after deprecating 'escapeExitDiabled' prop so that 'escapeExits' will pass via the 'modalProps' spread operator
+        escapeExits={escapeExitsProp}
+        focusDialog
+        includeDefaultStyles={false}
+        onExit={onExit}
+        titleId="dialog-title dialog-content"
+        underlayClass="ds-c-dialog-wrap"
+        {...modalProps}
+      >
+        <div role="document">
+          <header className={headerClassNames} role="banner">
             {
-              // TODO: remove closeText support once fully deprecated
-              closeText || closeButtonText
+              // TODO: make heading required after removing title
+              (title || heading) && (
+                <h1 className="ds-h2" id="dialog-title">
+                  {heading}
+                </h1>
+              )
             }
-          </Button>
-        </header>
-        <main role="main">
-          <div id="dialog-content">{children}</div>
-        </main>
-        {actions && (
-          <aside className={actionsClassNames} role="complementary">
-            {actions}
-          </aside>
-        )}
-      </div>
-    </AriaModal>
-  );
-};
+            <Button
+              aria-label={ariaCloseLabel}
+              className="ds-c-dialog__close"
+              onClick={onExit}
+              size={closeButtonSize}
+              variation={closeButtonVariation}
+            >
+              {
+                // TODO: remove closeText support once fully deprecated
+                closeText || closeButtonText
+              }
+            </Button>
+          </header>
+          <main role="main">
+            <div id="dialog-content">{children}</div>
+          </main>
+          {actions && (
+            <aside className={actionsClassNames} role="complementary">
+              {actions}
+            </aside>
+          )}
+        </div>
+      </AriaModal>
+    );
+  }
+}
 
 Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
@@ -112,6 +164,20 @@ Dialog.defaultProps = {
   underlayClickExits: false,
 };
 
+/**
+ * Defines the shape of an analytics event for tracking that is an object with key-value pairs
+ */
+const AnalyticsEventShape = PropTypes.shape({
+  event_name: PropTypes.string,
+  event_type: PropTypes.string,
+  ga_eventAction: PropTypes.string,
+  ga_eventCategory: PropTypes.string,
+  ga_eventLabel: PropTypes.string,
+  ga_eventType: PropTypes.string,
+  ga_eventValue: PropTypes.string,
+  heading: PropTypes.string,
+});
+
 // TODO: closeButtonText should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 Dialog.propTypes = {
@@ -121,6 +187,18 @@ Dialog.propTypes = {
    * alert, error, or warning occurs.
    */
   alert: PropTypes.bool,
+  /**
+   * Analytics events tracking is enabled by default.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
+   */
+  analytics: PropTypes.shape({
+    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
+    onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
+  }),
   /**
    * Provide a **DOM node** which contains your page's content (which the modal should render
    * outside of). When the modal is open this node will receive `aria-hidden="true"`.
