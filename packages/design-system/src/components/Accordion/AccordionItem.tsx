@@ -31,11 +31,11 @@ export interface AccordionItemProps {
   id?: string;
   /**
    * Sets the accordion panel's open state. Use this in combination with `onChange`
-   * for a controlled component; otherwise, set `defaultOpen`.
+   * for a controlled accordion; otherwise, set `defaultOpen`.
    */
   isControlledOpen?: boolean;
   /**
-   * A callback function that's invoked when an accordion panel is selected or deselected.
+   * A callback function that's invoked when a controlled accordion panel is selected or deselected.
    */
   onChange?: () => void;
 }
