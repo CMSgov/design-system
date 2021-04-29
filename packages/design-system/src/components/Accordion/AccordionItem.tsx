@@ -29,7 +29,14 @@ export interface AccordionItemProps {
    *  If not provided, a unique id will be automatically generated and used.
    */
   id?: string;
+  /**
+   * Sets the accordion panel's open state. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultOpen`.
+   */
   isControlledOpen?: boolean;
+  /**
+   * A callback function that's invoked when an accordion panel is selected or deselected.
+   */
   onChange?: () => void;
 }
 export interface AccordionItemState {
