@@ -65,10 +65,8 @@ export class Alert extends React.PureComponent {
         ref={(ref) => {
           if (autoFocus) {
             this.focusRef = ref;
-          } else {
-            if (alertRef) {
-              alertRef(ref);
-            }
+          } else if (alertRef) {
+            alertRef(ref);
           }
         }}
         /* eslint-enable no-return-assign */
