@@ -31,15 +31,14 @@ class ControlledAccordion extends React.PureComponent {
             onChange={() => this.handleChange(0)}
           >
             <p>
-              We the People of the United States, in Order to form a more perfect Union, establish
-              Justice, insure domestic Tranquility, provide for the common defence, promote the
-              general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity,
-              do ordain and establish this Constitution for the United States of America.
+              In a controlled accordion, the accordion panel&apos;s open state is controlled by the
+              application, by passing <code>isControlledOpen</code> and <code>onChange</code>
+              props. The <code>isControlledOpen</code> boolean flag sets the panel to an open or
+              close state.
             </p>
           </AccordionItem>
           <AccordionItem
             heading="Controlled accordion second header"
-            index={1}
             defaultOpen={false}
             isControlledOpen={this.state.openItems.includes(1)}
             onChange={() => this.handleChange(1)}
