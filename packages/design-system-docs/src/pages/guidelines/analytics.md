@@ -2,7 +2,7 @@
 title: Analytics
 ---
 
-The design system's React components have build-in analytics tracking patterns. Default analytics events at the component level are tracked and applications have the option to override the data value or disable the tracking.
+The design system analytics is available at the React component level. React component with build-in <span class="ds-c-badge ds-c-badge--info ds-u-color--white">Analytics</span> will have event tracking enabled by default and applications may override the data value or disable the tracking via the analytics property.
 
 For example, to disable Alert analytics event tracking:
 
