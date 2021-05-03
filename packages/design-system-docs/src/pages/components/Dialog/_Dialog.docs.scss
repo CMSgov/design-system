@@ -1,6 +1,8 @@
 /*
 Modal dialog
 
+@analytics
+
 The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
 
 Markup: dialog.example.html
@@ -32,7 +34,7 @@ Style guide: components.dialog.react
 */
 
 /*
-Analytics events
+Analytics props
 
 <table class="ds-c-table ds-c-table--compact">
   <thead>
@@ -143,7 +145,7 @@ Analytics events
   </tbody>
 </table>
 
-Style guide: components.dialog.analytics-object
+Style guide: components.dialog.analytics
 */
 
 /*

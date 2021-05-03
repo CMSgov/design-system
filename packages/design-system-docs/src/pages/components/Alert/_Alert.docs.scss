@@ -1,6 +1,8 @@
 /*
 Alert
 
+@analytics
+
 @uswds https://designsystem.digital.gov/components/alerts
 
 Alerts keep users informed of important and sometimes time-sensitive changes.
@@ -31,7 +33,7 @@ Style guide: components.alert.react
 */
 
 /*
-Analytics events
+Analytics props
 
 <table class="ds-c-table ds-c-table--compact">
   <thead>
@@ -135,7 +137,7 @@ Analytics events
   </tbody>
 </table>
 
-Style guide: components.alert.analytics-object
+Style guide: components.alert.analytics
 */
 
 /*
