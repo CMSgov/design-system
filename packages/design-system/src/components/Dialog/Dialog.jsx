@@ -36,6 +36,7 @@ export class Dialog extends React.PureComponent {
       typeof this.eventHeading === 'string'
         ? this.eventHeading
         : htmlToText(ReactDOMServer.renderToString(this.eventHeading));
+
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -152,6 +153,7 @@ export class Dialog extends React.PureComponent {
         </div>
       </AriaModal>
     );
+    /* eslint-enable jsx-a11y/no-redundant-roles */
   }
 }
 
