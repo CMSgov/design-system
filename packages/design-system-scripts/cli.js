@@ -121,6 +121,11 @@ yargs
           type: 'string',
           demandOption: true,
         })
+        .option('filePath', {
+          desc: 'The relative path to a single test file or directory to run',
+          type: 'string',
+          demandOption: false,
+        })
         .option('updateSnapshot', {
           desc:
             'Alias: -u. Use this flag to re-record every snapshot that fails during this test run',
@@ -145,6 +150,7 @@ yargs
         JSON.stringify(unitConfig(argv.directory, config.core)),
         ...(argv.updateSnapshot ? ['--updateSnapshot'] : []),
         ...(argv.watch ? ['--watch'] : []),
+        ...(argv.filePath ? [argv.filePath] : []),
       ]);
     },
   })
