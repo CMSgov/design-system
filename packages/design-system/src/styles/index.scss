@@ -262,5 +262,22 @@ $focus-color-black: #000;
       box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color-black;
     }
   }
+  .focus-box-bg-shadow-combo {
+    input:focus,
+    button:focus,
+    a:focus,
+    .ds-c-choice:focus + label::before {
+      background-color: $focus-color;
+      box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px $focus-color;
+      color: $color-white !important;
+      outline: 0;
+    }
+    &.focus-styles-bw * :focus,
+    &.focus-styles-bw .ds-c-choice:focus + label::before {
+      background-color: $focus-color-black;
+      box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px $focus-color-black;
+      color: $color-white !important;
+    }
+  }
 }
 /* stylelint-enable  */
