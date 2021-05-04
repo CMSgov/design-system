@@ -279,5 +279,19 @@ $focus-color-black: #000;
       color: $color-white !important;
     }
   }
+  .focus-box-m-colors-outline {
+    input:focus,
+    button:focus,
+    a:focus,
+    .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #e5ada9, 0 0 0 6px #cd635b;
+      text-decoration: none;
+      outline: 0;
+    }
+    &.focus-styles-bw * :focus,
+    &.focus-styles-bw .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #919191, 0 0 0 6px $focus-color-black;
+    }
+  }
 }
 /* stylelint-enable  */
