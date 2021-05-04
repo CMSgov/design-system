@@ -50,6 +50,10 @@ $filter-chip-border-radius: $border-radius-pill !default;
   vertical-align: middle;
   width: $filter-chip-icon-container-size;
 
+  &.ds-c-filter-chip__clear-icon-alternate-container {
+    border: 0;
+  }
+
   .ds-c-clear-icon {
     display: block;
     fill: $filter-chip-text-color;
@@ -59,10 +63,6 @@ $filter-chip-border-radius: $border-radius-pill !default;
     top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
     width: $filter-chip-icon-size;
   }
-
-  // .ds-c-clear-icon__x {
-  //
-  // }
 
   .ds-c-filter-chip__button:active &,
   .ds-c-filter-chip__button:focus &,

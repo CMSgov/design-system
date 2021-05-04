@@ -1,4 +1,5 @@
 import { ClearIcon } from '../ClearIcon';
+import { ClearIconAlternate } from './ClearIconAlternate';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
@@ -26,6 +27,10 @@ export interface FilterChipProps {
    * Function to call when filter chip is dismissed
    */
   onDelete: () => void;
+  /**
+   *  Use alternate thinner close icon in place of standard
+   */
+  useAlternateIcon?: boolean;
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
@@ -47,9 +52,9 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   render(): React.ReactNode {
-    const { id, label, ariaClearLabel, className } = this.props;
+    const { id, label, ariaClearLabel, className, useAlternateIcon } = this.props;
     const buttonClassNames = classNames('ds-c-filter-chip__button', className);
-
+    const iconContainerClassNames = classNames('ds-c-filter-chip__clear-icon-container', useAlternateIcon ? 'ds-c-filter-chip__clear-icon-alternate-container' : '')
     return (
       <>
         <button
@@ -59,8 +64,8 @@ export class FilterChip extends React.Component<FilterChipProps> {
           onKeyDown={this.handleKeyDown}
         >
           <span className="ds-c-filter-chip__label">{label}</span>
-          <span className="ds-c-filter-chip__clear-icon-container" aria-label={ariaClearLabel}>
-            <ClearIcon />
+          <span className={iconContainerClassNames} aria-label={ariaClearLabel}>
+            {useAlternateIcon ? (<ClearIconAlternate />) : (<ClearIcon />)}
           </span>
         </button>
       </>
