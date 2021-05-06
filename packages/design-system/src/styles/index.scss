@@ -293,5 +293,19 @@ $focus-color-black: #000;
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #919191, 0 0 0 6px $focus-color-black;
     }
   }
+  .focus-box-drop-shadow {
+    input:focus,
+    button:focus,
+    a:focus,
+    .ds-c-choice:focus + label::before {
+      box-shadow: 4px 8px $focus-color;
+      text-decoration: none;
+      outline: 0;
+    }
+    &.focus-styles-bw * :focus,
+    &.focus-styles-bw .ds-c-choice:focus + label::before {
+      box-shadow: 4px 8px $focus-color-black;
+    }
+  }
 }
 /* stylelint-enable  */
