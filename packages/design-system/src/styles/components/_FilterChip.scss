@@ -25,6 +25,12 @@ $filter-chip-border-radius: $border-radius-pill !default;
   position: relative;
   text-align: left;
 
+  &--small {
+    min-height: 0;
+    padding: $spacer-half $spacer-1;
+    padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+  }
+
   &:active,
   &:focus,
   &:hover {
