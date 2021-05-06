@@ -21,36 +21,36 @@
       <div class="ds-l-col--3 example--wrapper ds-u-padding--2">
         <fieldset class="ds-c-fieldset">
           <legend class="ds-c-label"><span>Checkbox example</span></legend>
-          <input class="ds-c-choice" id="checkbox-1" type="checkbox" name="checkbox-choices" value="checkbox-1"
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-1" type="checkbox" name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-1"
             checked="">
-          <label for="checkbox-1">
+          <label for="<%= section.focus %>-checkbox-1">
             <span>Choice 1</span>
           </label>
-          <input class="ds-c-choice" id="checkbox-2" type="checkbox" name="checkbox-choices" value="checkbox-2">
-          <label for="checkbox-2">
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-2" type="checkbox" name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-2">
+          <label for="<%= section.focus %>-checkbox-2">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="checkbox-3" type="checkbox" name="checkbox-choices" value="checkbox-3"
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-3" type="checkbox" name="checkbox-choices" value="<%= section.focus %>-checkbox-3"
             disabled="">
-          <label for="checkbox-3">
+          <label for="<%= section.focus %>-checkbox-3">
             <span>Disabled choice 3</span>
           </label>
         </fieldset>
         <fieldset class="ds-c-fieldset">
           <legend class="ds-c-label"><span>Radio example</span></legend>
-          <input class="ds-c-choice ds-c-choice--error" id="radio-1" type="radio" name="radio-choices" value="radio-1">
-          <label for="radio-1">
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-1" type="radio" name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-1">
+          <label for="<%= section.focus %>-radio-1">
             <span>Choice 1</span>
             <span class="ds-c-field__hint">Choice hint text</span>
           </label>
-          <input class="ds-c-choice ds-c-choice--error" id="radio-2" type="radio" name="radio-choices" value="radio-2">
-          <label for="radio-2"><span>Choice 2</span></label>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-2" type="radio" name="radio-choices" value="<%= section.focus %>-radio-2">
+          <label for="<%= section.focus %>-radio-2"><span>Choice 2</span></label>
         </fieldset>
         <div>
-          <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
+          <label class="ds-c-label ds-u-margin-top--0" for="<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field ds-c-field--medium" id="input-singleline" name="singleline" type="text" />
+          <input class="ds-c-field ds-c-field--medium" id="<%= section.focus %>-input-singleline" name="<%= section.focus %>-singleline" type="text" />
         </div>
 
         <p>
@@ -65,36 +65,36 @@
       <div class="example--wrapper example--inverse ds-u-fill--gray-dark ds-l-col--3">
         <fieldset class="ds-c-fieldset">
           <legend class="ds-c-label"><span>Checkbox example</span></legend>
-          <input class="ds-c-choice" id="checkbox-1" type="checkbox" name="checkbox-choices" value="checkbox-1"
+          <input class="ds-c-choice" id="i-<%= section.focus %>-checkbox-1" type="checkbox" name="i-<%= section.focus %>-checkbox-choices" value="i-<%= section.focus %>-checkbox-1"
             checked="">
-          <label for="checkbox-1">
+          <label for="i-<%= section.focus %>-checkbox-1">
             <span>Choice 1</span>
           </label>
-          <input class="ds-c-choice" id="checkbox-2" type="checkbox" name="checkbox-choices" value="checkbox-2">
-          <label for="checkbox-2">
+          <input class="ds-c-choice" id="i-<%= section.focus %>-checkbox-2" type="checkbox" name="i-<%= section.focus %>-checkbox-choices" value="i-<%= section.focus %>-checkbox-2">
+          <label for="i-<%= section.focus %>-checkbox-2">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="checkbox-3" type="checkbox" name="checkbox-choices" value="checkbox-3"
+          <input class="ds-c-choice" id="i-<%= section.focus %>-checkbox-3" type="checkbox" name="i-<%= section.focus %>-checkbox-choices" value="i-<%= section.focus %>-checkbox-3"
             disabled="">
-          <label for="checkbox-3">
+          <label for="i-<%= section.focus %>-checkbox-3">
             <span>Disabled choice 3</span>
           </label>
         </fieldset>
         <fieldset class="ds-c-fieldset">
           <legend class="ds-c-label"><span>Radio example</span></legend>
-          <input class="ds-c-choice ds-c-choice--error" id="radio-1" type="radio" name="radio-choices" value="radio-1">
-          <label for="radio-1">
+          <input class="ds-c-choice ds-c-choice--error" id="i-<%= section.focus %>-radio-1" type="radio" name="i-<%= section.focus %>-radio-choices" value="i-<%= section.focus %>-radio-1">
+          <label for="i-<%= section.focus %>-radio-1">
             <span>Choice 1</span>
             <span class="ds-c-field__hint">Choice hint text</span>
           </label>
-          <input class="ds-c-choice ds-c-choice--error" id="radio-2" type="radio" name="radio-choices" value="radio-2">
-          <label for="radio-2"><span>Choice 2</span></label>
+          <input class="ds-c-choice ds-c-choice--error" id="i-<%= section.focus %>-radio-2" type="radio" name="i-<%= section.focus %>-radio-choices" value="i-<%= section.focus %>-radio-2">
+          <label for="i-<%= section.focus %>-radio-2"><span>Choice 2</span></label>
         </fieldset>
         <div>
-          <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
+          <label class="ds-c-label ds-u-margin-top--0" for="i-<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field ds-c-field--medium" id="input-singleline" name="singleline" type="text" />
+          <input class="ds-c-field ds-c-field--medium" id="i-<%= section.focus %>-input-singleline" name="i-<%= section.focus %>-singleline" type="text" />
         </div>
 
         <p>
