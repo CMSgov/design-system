@@ -13,7 +13,10 @@
     focus: 'focus-back-color-box-shadow-bottom-border' } , { title: 'Background color - Dashed outline' ,
     focus: 'focus-back-color-dashed-outline' } , { title: 'Text decoration - Underline' , focus: 'focus-text-dec' } , {
     title: 'Border - Thick border' , focus: 'focus-thick-border' } , { title: 'Border - Bottom' ,
-    focus: 'focus-border-bottom' }, { title: 'Box-Shadow - Double outline (combo)' , focus: 'focus-box-double-outline-combo' }, { title: 'Background color - Box shadow (combo)' , focus: 'focus-box-bg-shadow-combo' }, { title: 'Multiple outline colors - Box shadow' , focus: 'focus-box-m-colors-outline' }, { title: 'Drop shadow' , focus: 'focus-box-drop-shadow' } ].forEach(section=>
+    focus: 'focus-border-bottom' }, { title: 'Box-Shadow - Double outline (combo)' ,
+    focus: 'focus-box-double-outline-combo' }, { title: 'Background color - Box shadow (combo)' ,
+    focus: 'focus-box-bg-shadow-combo' }, { title: 'Multiple outline colors - Box shadow' ,
+    focus: 'focus-box-m-colors-outline' }, { title: 'Drop shadow' , focus: 'focus-box-drop-shadow' } ].forEach(section=>
     { -%>
     <h1>
       <%= section.title %>
@@ -25,7 +28,8 @@
           <label class="ds-c-label ds-u-margin-top--0" for="<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="<%= section.focus %>-input-singleline" name="<%= section.focus %>-singleline" type="text" />
+          <input class="ds-c-field" id="<%= section.focus %>-input-singleline" name="<%= section.focus %>-singleline"
+            type="text" />
         </div>
 
         <p>
@@ -43,7 +47,8 @@
           <label class="ds-c-label ds-u-margin-top--0" for="g-<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="g-<%= section.focus %>-input-singleline" name="g-<%= section.focus %>-singleline" value="Example text" type="text" />
+          <input class="ds-c-field" id="g-<%= section.focus %>-input-singleline"
+            name="g-<%= section.focus %>-singleline" value="Example text" type="text" />
         </div>
 
         <p>
@@ -61,7 +66,8 @@
           <label class="ds-c-label ds-u-margin-top--0" for="i-<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="i-<%= section.focus %>-input-singleline" name="i-<%= section.focus %>-singleline" value="Example text" type="text" />
+          <input class="ds-c-field" id="i-<%= section.focus %>-input-singleline"
+            name="i-<%= section.focus %>-singleline" value="Example text" type="text" />
         </div>
 
         <p>
@@ -79,7 +85,8 @@
           <label class="ds-c-label ds-u-margin-top--0" for="ii-<%= section.focus %>-input-singleline">
             <span>Single line field</span>
           </label>
-          <input class="ds-c-field" id="ii-<%= section.focus %>-input-singleline" name="ii-<%= section.focus %>-singleline" value="Example text" type="text" />
+          <input class="ds-c-field" id="ii-<%= section.focus %>-input-singleline"
+            name="ii-<%= section.focus %>-singleline" value="Example text" type="text" />
         </div>
 
         <p>
