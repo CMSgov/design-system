@@ -10,7 +10,7 @@ class ControlledFilterChip extends React.PureComponent {
   }
 
   render() {
-    const { label, ariaClearLabel, useAlternateIcon, small } = this.props;
+    const { label, ariaClearLabel, useAlternateIcon, size } = this.props;
     return (
       <>
         {!this.state.tagDismissed && (
@@ -19,7 +19,7 @@ class ControlledFilterChip extends React.PureComponent {
             ariaClearLabel={ariaClearLabel}
             onDelete={() => this.setState({ tagDismissed: true })}
             useAlternateIcon={!!useAlternateIcon}
-            small={!!small}
+            size={size}
           />
         )}
       </>
@@ -31,7 +31,7 @@ ControlledFilterChip.propTypes = {
   label: PropTypes.string,
   ariaClearLabel: PropTypes.string,
   useAlternateIcon: PropTypes.bool,
-  small: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 ReactDOM.render(
@@ -46,12 +46,16 @@ ReactDOM.render(
       label="Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap"
       ariaClearLabel="Remove Long"
     />
-    <ControlledFilterChip label="Example small filter chip" ariaClearLabel="Remove Small" small />
     <ControlledFilterChip
-      label="Example small with alternate icon"
+      label="Example big filter chip"
+      ariaClearLabel="Remove Small"
+      size="big"
+    />
+    <ControlledFilterChip
+      label="Example big with alternate icon"
       useAlternateIcon
-      small
-      ariaClearLabel="Remove Small Alternate"
+      size="big"
+      ariaClearLabel="Remove Big Alternate"
     />
   </>,
   document.getElementById('js-example')

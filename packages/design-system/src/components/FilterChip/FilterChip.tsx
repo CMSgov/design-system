@@ -32,9 +32,9 @@ export interface FilterChipProps {
    */
   useAlternateIcon?: boolean;
   /**
-   *  Removes accessibilty compliant min-height from chip
+   * Sets the size of the chip to larger version
    */
-  small?: boolean;
+  size?: 'big',
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
@@ -56,10 +56,10 @@ export class FilterChip extends React.Component<FilterChipProps> {
   }
 
   render(): React.ReactNode {
-    const { id, label, ariaClearLabel, className, useAlternateIcon, small } = this.props;
+    const { id, label, ariaClearLabel, className, useAlternateIcon, size } = this.props;
     const buttonClassNames = classNames(
       'ds-c-filter-chip__button',
-      small ? 'ds-c-filter-chip__button--small' : '',
+      size && size === 'big' ? 'ds-c-filter-chip__button--big' : '',
       className
     );
     const iconContainerClassNames = classNames(

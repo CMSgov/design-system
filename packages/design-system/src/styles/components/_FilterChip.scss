@@ -19,15 +19,15 @@ $filter-chip-border-radius: $border-radius-pill !default;
   font-weight: $font-normal;
   margin-right: $spacer-1;
   margin-top: $spacer-1;
-  min-height: 44px;
-  padding: $spacer-1 $spacer-2;
+  min-height: 0;
+  padding: $spacer-half $spacer-1;
   padding-right: ($spacer-2 + $filter-chip-icon-container-size);
   position: relative;
   text-align: left;
 
-  &--small {
-    min-height: 0;
-    padding: $spacer-half $spacer-1;
+  &--big {
+    min-height: 44px;
+    padding: $spacer-1 $spacer-2;
     padding-right: ($spacer-2 + $filter-chip-icon-container-size);
   }
 
