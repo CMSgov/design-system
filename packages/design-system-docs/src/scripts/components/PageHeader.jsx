@@ -3,21 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
-  analyticsBadge() {
-    const analyticsLink = this.props.analytics && `#${this.props.reference}.analytics`;
-
-    if (this.props.analytics) {
-      return (
-        <a
-          className="ds-c-badge ds-u-margin-left--1 ds-c-badge--info ds-u-color--white"
-          href={analyticsLink}
-        >
-          Analytics
-        </a>
-      );
-    }
-  }
-
   statusBadge() {
     if (this.props.status) {
       const classes = classNames('ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize', {
@@ -69,7 +54,6 @@ class PageHeader extends React.PureComponent {
             id={this.props.reference}
           />
           {this.statusBadge()}
-          {this.analyticsBadge()}
         </div>
         <div className="ds-u-font-size--small">
           {this.guidanceLink()}
@@ -81,7 +65,6 @@ class PageHeader extends React.PureComponent {
 }
 
 PageHeader.propTypes = {
-  analytics: PropTypes.bool,
   cmsds: PropTypes.string,
   header: PropTypes.string.isRequired,
   reference: PropTypes.string,
