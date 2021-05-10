@@ -174,19 +174,6 @@ Style guide: components.alert.analytics
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
 
-### Google Analytics
-
-On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-- To disable the automatic event tracking, pass this prop to the component
-```
-analytics={
-  {
-    onComponentDidMount: {false}
-  }
-}
-```
-- To override the event tracking, pass changes via the analytics prop
-
 ### Customization
 The following Sass variables can be overridden to theme alerts:
 
@@ -199,4 +186,21 @@ The following Sass variables can be overridden to theme alerts:
 - [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
 
 Style guide: components.alert.guidance
+*/
+
+/*
+Google Analytics
+
+On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+- To disable the automatic event tracking, pass this prop to the component
+```
+analytics={
+  {
+    onComponentDidMount: {false}
+  }
+}
+```
+- To override the event tracking, pass changes via the analytics prop
+
+Style guide: components.alert.guidance-analytics
 */

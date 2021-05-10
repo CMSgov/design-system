@@ -46,3 +46,21 @@ Use this pattern when the user is in the middle of a task or application to let 
 
 Style guide: patterns.external-link.guidance
 */
+
+/*
+Google Analytics
+
+On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+- To disable the automatic event tracking, pass this prop to the component
+```
+analytics={
+  {
+    onComponentDidMount: {false},
+    onComponentWillUnmount: {false}
+  }
+}
+```
+- To override the event tracking, pass changes via the analytics prop
+
+Style guide: patterns.external-link.guidance-analytics
+*/

@@ -3,21 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 class PageHeader extends React.PureComponent {
-  analyticsAlert() {
-    if (this.props.analytics) {
-      return (
-        <div className="ds-c-alert ds-c-alert--hide-icon ds-u-border--0">
-          <div className="ds-c-alert__body">
-            <p className="ds-c-alert__text">
-              This component supports google analytics event tracking. See{' '}
-              <a href="#guidance">guidance</a> for more information
-            </p>
-          </div>
-        </div>
-      );
-    }
-  }
-
   statusBadge() {
     if (this.props.status) {
       const classes = classNames('ds-c-badge ds-u-margin-left--1 ds-u-text-transform--capitalize', {
@@ -27,6 +12,18 @@ class PageHeader extends React.PureComponent {
       });
 
       return <span className={classes}>{this.props.status}</span>;
+    }
+  }
+
+  analyticsAlert() {
+    if (this.props.analytics) {
+      const analyticsLink = this.props.analytics && `#${this.props.reference}.guidance-analytics`;
+      return (
+        <p className="ds-u-margin-left--2 ds-u-font-size--small">
+          <b>NEW!</b> This component supports{' '}
+          <a href={analyticsLink}>google analytics event tracking.</a>
+        </p>
+      );
     }
   }
 
@@ -60,24 +57,22 @@ class PageHeader extends React.PureComponent {
 
   render() {
     return (
-      <>
-        {this.analyticsAlert()}
-        <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
-          <div className="ds-u-display--flex ds-u-align-items--center">
-            <h1
-              className="ds-display ds-u-display--inline-block"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: this.props.header }}
-              id={this.props.reference}
-            />
-            {this.statusBadge()}
-          </div>
-          <div className="ds-u-font-size--small">
-            {this.guidanceLink()}
-            {this.designSystemLinks()}
-          </div>
-        </header>
-      </>
+      <header className="ds-u-padding--3 ds-u-sm-padding--6 ds-u-display--block ds-u-fill--gray-lightest">
+        <div className="ds-u-display--flex ds-u-align-items--center">
+          <h1
+            className="ds-display ds-u-display--inline-block"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: this.props.header }}
+            id={this.props.reference}
+          />
+          {this.statusBadge()}
+          {this.analyticsAlert()}
+        </div>
+        <div className="ds-u-font-size--small">
+          {this.guidanceLink()}
+          {this.designSystemLinks()}
+        </div>
+      </header>
     );
   }
 }

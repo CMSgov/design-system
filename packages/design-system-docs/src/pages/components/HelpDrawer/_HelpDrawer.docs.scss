@@ -184,7 +184,15 @@ Style guide: components.help-drawer.analytics
     - `Tab` to move the focus sequentially through the list of focusable items
     - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
 
-### Google Analytics
+### Future Work
+
+Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
+
+Style guide: components.help-drawer.guidance
+*/
+
+/*
+Google Analytics
 
 On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
 - To disable the automatic event tracking, pass this prop to the component
@@ -198,9 +206,5 @@ analytics={
 ```
 - To override the event tracking, pass changes via the analytics prop
 
-### Future Work
-
-Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
-
-Style guide: components.help-drawer.guidance
+Style guide: components.help-drawer.guidance-analytics
 */
