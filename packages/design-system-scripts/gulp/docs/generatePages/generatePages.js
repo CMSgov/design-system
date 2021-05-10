@@ -67,10 +67,16 @@ function addTopLevelPages(kssSections) {
         weight: 30,
       },
       {
+        header: 'Component Utils',
+        reference: 'component-utils',
+        sections: [],
+        weight: 40,
+      },
+      {
         header: 'Patterns',
         reference: 'patterns',
         sections: [],
-        weight: 40,
+        weight: 50,
       },
     ].concat(kssSections)
   );
@@ -121,7 +127,8 @@ function changedFilter(page, changedPath) {
 function addCmsdsLink(page) {
   if (
     page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/components') ||
-    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns')
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/patterns') ||
+    page.source.path.includes('node_modules/@cmsgov/design-system-docs/src/pages/component-utils')
   ) {
     page.cmsds = `https://design.cms.gov/${page.referenceURI}`;
   }
