@@ -1,6 +1,8 @@
 /*
 Modal dialog
 
+@analytics
+
 The dialog component can be used to focus a user's attention on a single piece of content, without taking them to a new screen. Please use with caution; view our guidance for more details.
 
 Markup: dialog.example.html
@@ -32,7 +34,7 @@ Style guide: components.dialog.react
 */
 
 /*
-Analytics events
+Analytics props
 
 <table class="ds-c-table ds-c-table--compact">
   <thead>
@@ -143,7 +145,7 @@ Analytics events
   </tbody>
 </table>
 
-Style guide: components.dialog.analytics-object
+Style guide: components.dialog.analytics
 */
 
 /*
@@ -172,6 +174,20 @@ Style guide: components.dialog.analytics-object
 - Escape will close the modal. To disable exiting when users press the Escape key, set the `escapeExits` prop to `false`
 - When the modal closes, focus returns to the element that was focused just before the modal is activated
 - To place the focus inside of the dialog on activating the modal, set the dialog focus using the `initialFocus` prop with boolean prop `focusDialog` set to `false`
+
+### Google Analytics
+
+On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+- To disable the automatic event tracking, pass this prop to the component
+```
+analytics={
+  {
+    onComponentDidMount: {false},
+    onComponentWillUnmount: {false}
+  }
+}
+```
+- To override the event tracking, pass changes via the analytics prop
 
 ### Learn more
 
