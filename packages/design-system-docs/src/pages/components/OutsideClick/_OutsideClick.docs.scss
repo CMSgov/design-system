@@ -1,0 +1,31 @@
+/*
+OutsideClick
+
+@status Draft
+
+A React utility component for handling outside clicks
+
+Style guide: component-utils.outside-click-handler
+*/
+
+/*
+`<OutsideClick>`
+
+A `OutsideClick` component accepts callback function and children and it detects if a click event happened outside of the children element.
+
+@react-example OutsideClick.example.jsx
+
+@react-props OutsideClick.jsx
+
+Style guide: component-utils.outside-click-handler.OutsideClick
+*/
+
+/*
+---
+
+### When to use
+
+- When you want to detect a click outside of component you developed so that it an be closed
+
+Style guide: component-utils.outside-click-handler.guidance
+*/
