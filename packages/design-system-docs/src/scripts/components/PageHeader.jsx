@@ -19,9 +19,11 @@ class PageHeader extends React.PureComponent {
     if (this.props.analytics) {
       const analyticsLink = this.props.analytics && `#${this.props.reference}.guidance-analytics`;
       return (
-        <p className="ds-u-margin-left--2 ds-u-font-size--small">
-          <b>NEW!</b> This component supports{' '}
-          <a href={analyticsLink}>google analytics event tracking.</a>
+        <p>
+          <span className="ds-c-badge ds-c-badge--success ds-u-color--white">
+            <b>NEW!</b>
+          </span>{' '}
+          This component supports <a href={analyticsLink}>google analytics event tracking.</a>
         </p>
       );
     }
@@ -66,9 +68,9 @@ class PageHeader extends React.PureComponent {
             id={this.props.reference}
           />
           {this.statusBadge()}
-          {this.analyticsAlert()}
         </div>
         <div className="ds-u-font-size--small">
+          {this.analyticsAlert()}
           {this.guidanceLink()}
           {this.designSystemLinks()}
         </div>
