@@ -8,7 +8,7 @@ import { htmlToText } from 'html-to-text';
 import uniqueId from 'lodash.uniqueid';
 
 // Default analytics object
-const defaultAnalytics = (heading = '', variation = 'information') => ({
+const defaultAnalytics = (heading = '', variation = '') => ({
   onComponentDidMount: {
     event_name: 'alert_impression',
     event_type: EVENT_CATEGORY.uiInteraction,
@@ -40,11 +40,12 @@ export class Alert extends React.PureComponent {
 
   componentDidMount() {
     const eventAction = 'onComponentDidMount';
-    /* Send analytics event for alert */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-    );
+    /* Send analytics event for `error`, `warn`, `success` alert variations */
+    this.props.variation &&
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
+      );
   }
 
   heading() {

@@ -69,7 +69,7 @@ describe('Alert', function () {
       ga_eventAction: 'alert impression',
       ga_eventLabel: text,
       heading: text,
-      type: 'information',
+      type: 'warn',
     };
 
     beforeEach(() => {
@@ -84,7 +84,7 @@ describe('Alert', function () {
     });
 
     it('sends analytics event tracking', () => {
-      render({ tealiumMock });
+      render({ tealiumMock, variation: 'warn' });
       expect(tealiumMock).toBeCalledWith({
         ga_eventType: 'cmsds',
         ga_eventValue: '',
@@ -98,7 +98,7 @@ describe('Alert', function () {
           onComponentDidMount: false,
         },
       };
-      render({ tealiumMock, heading: 'dialog heading', ...analyticsProps });
+      render({ tealiumMock, heading: 'dialog heading', variation: 'error', ...analyticsProps });
       expect(tealiumMock).not.toBeCalledWith(defaultEvent);
     });
 
@@ -120,7 +120,7 @@ describe('Alert', function () {
           },
         },
       };
-      render({ tealiumMock, ...analyticsProps });
+      render({ tealiumMock, variation: 'success', ...analyticsProps });
       expect(tealiumMock).toBeCalledWith(analyticsProps.analytics.onComponentDidMount);
     });
   });
