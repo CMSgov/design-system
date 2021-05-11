@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionItem renders an accordion item 1`] = `
+<Accordion>
+  <div
+    className="ds-c-accordion"
+    onKeyDown={[Function]}
+  >
+    <AccordionItem
+      heading="Heading for accordion item"
+      headingLevel="2"
+    >
+      <h2
+        className="ds-c-accordion__heading"
+      >
+        <button
+          aria-controls="accordionItem_1"
+          aria-expanded={false}
+          className="ds-c-accordion__button"
+          id="accordionItem_1-button"
+          onClick={[Function]}
+        >
+          Heading for accordion item
+        </button>
+      </h2>
+      <div
+        aria-labelledby="accordionItem_1-button"
+        className="ds-c-accordion__content"
+        hidden={true}
+        id="accordionItem_1"
+      >
+        &lt;p&gt;Content for accordion item&lt;/p&gt;
+      </div>
+    </AccordionItem>
+  </div>
+</Accordion>
+`;
