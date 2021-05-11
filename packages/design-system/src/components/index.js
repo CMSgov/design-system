@@ -2,6 +2,7 @@
  * index.js - JS entry point
  */
 
+export * from './Accordion';
 export * from './Alert';
 export * from './Autocomplete';
 export * from './Badge';

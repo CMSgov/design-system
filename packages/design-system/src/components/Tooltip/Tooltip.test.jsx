@@ -3,6 +3,8 @@ import React from 'react';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 
+jest.mock('@popperjs/core');
+
 const defaultProps = {
   children: <TooltipIcon />,
   className: 'ds-c-tooltip__trigger-icon',
