@@ -20,7 +20,7 @@ class PageHeader extends React.PureComponent {
       const analyticsLink = this.props.analytics && `#${this.props.reference}.guidance-analytics`;
       return (
         <p>
-          <span className="ds-c-badge ds-c-badge--success ds-u-color--white">
+          <span className="ds-c-badge ds-c-badge--success">
             <b>NEW!</b>
           </span>{' '}
           This component supports <a href={analyticsLink}>google analytics event tracking.</a>
