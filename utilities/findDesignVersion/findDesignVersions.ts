@@ -19,13 +19,12 @@ async function searchRepos(searchString: string): Promise<{ value: Imports[]; er
   });
 
   try {
-    // First, request to Github search API with searchString 
+    // First, request to Github search API with searchString
     const resp = await requestWithAuth('GET /search/code', {
       q: searchString + ' language:JSON',
     });
     const imports: Imports[] = [];
     for (const item of resp.data.items) {
-
       // Get the fragment of code that matches the searchString
       // NOTE, one frustrating thing is that the matching search term is sometimes at the very end of the fragment
       // which means we won't be able to pull the version number, as it is cut off. That is why we have the
