@@ -16,7 +16,7 @@ describe('Modal Dialog component', () => {
   it('Should open the modal dialog on click', async () => {
     await driver.get(rootURL);
 
-    let el = await getElementByClassName('ds-c-button--success');
+    let el = await getElementByClassName('ds-c-button--primary');
     el.click();
 
     el = await getElementByClassName('ds-c-dialog');
@@ -26,7 +26,7 @@ describe('Modal Dialog component', () => {
   it('Should have no accessibility violations', async () => {
     await driver.get(rootURL);
 
-    let el = await getElementByClassName('ds-c-button--success');
+    let el = await getElementByClassName('ds-c-button--primary');
     el.click();
 
     el = await getElementByClassName('ds-c-dialog');
