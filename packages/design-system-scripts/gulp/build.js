@@ -24,7 +24,7 @@ const getSrcGlob = (src, changedPath) =>
         `${src}/**/*.{js,jsx,ts,tsx}`,
         `!${src}/setupTests.{js,jsx,ts,tsx}`,
         `!${src}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
-        `!${src}/**/{__mocks__,__tests__,helpers}/**/*`,
+        `!${src}/**/{__mocks__,__tests__}/**/*`,
       ];
 
 /**
