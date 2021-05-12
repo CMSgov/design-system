@@ -71,11 +71,11 @@ describe('Button', () => {
   });
 
   it('applies variation classes', () => {
-    const props = { variation: 'danger' };
+    const props = { variation: 'primary' };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.hasClass('ds-c-button--danger')).toBe(true);
+    expect(wrapper.hasClass('ds-c-button--primary')).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
 
