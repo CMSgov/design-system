@@ -4,7 +4,6 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
-import { htmlToText } from 'html-to-text';
 import uniqueId from 'lodash.uniqueid';
 
 // Default analytics object
@@ -28,7 +27,7 @@ export class Alert extends React.PureComponent {
     this.eventHeadingText =
       typeof this.eventHeading === 'string'
         ? this.eventHeading
-        : htmlToText(ReactDOMServer.renderToString(this.eventHeading));
+        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
