@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+require('regenerator-runtime/runtime');
 const StaticServer = require('static-server');
 const chalk = require('chalk');
 const childProcess = require('child_process');

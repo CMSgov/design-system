@@ -1,7 +1,7 @@
 /* global driver, axeBuilder */
-import { RULESET_ALL } from './constants';
+const { RULESET_ALL } = require('./constants');
 
-export default async function assertNoAxeViolations(url, disabledRules = []) {
+module.exports = async function assertNoAxeViolations(url, disabledRules = []) {
   if (url) {
     await driver.get(url);
   }
@@ -19,4 +19,4 @@ export default async function assertNoAxeViolations(url, disabledRules = []) {
       }
       expect(results.violations.length).toBe(0);
     });
-}
+};
