@@ -12,6 +12,11 @@ export class Button extends React.PureComponent {
           `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.variation === 'danger') {
+        console.warn(
+          `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
+        );
+      }
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -159,7 +164,7 @@ Button.propTypes = {
   /**
    * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
+  variation: PropTypes.oneOf(['primary', 'success', 'transparent']),
 };
 
 export default Button;
