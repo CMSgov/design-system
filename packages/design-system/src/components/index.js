@@ -11,6 +11,7 @@ export * from './ChoiceList';
 export * from './DateField';
 export * from './Dialog';
 export * from './Dropdown';
+export * from './FilterChip';
 export * from './FormControl';
 export * from './FormLabel';
 export * from './HelpDrawer';

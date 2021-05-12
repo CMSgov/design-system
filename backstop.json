@@ -801,6 +801,24 @@
       "removeSelectors": ["#frame"]
     },
     {
+      "label": "CMSDS - Components - Filter Chip",
+      "referenceUrl": "https://design.cms.gov/components/filterchip/",
+      "url": "http://localhost:3000/components/filterchip/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Filter Chip - Default",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip/",
+      "url": "http://localhost:3000/example/components.filterchip/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Filter Chip - React",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip.react/",
+      "url": "http://localhost:3000/example/components.filterchip.react/",
+      "removeSelectors": ["#frame"]
+    },
+    {
       "label": "CMSDS - Components - Form label & legend",
       "referenceUrl": "https://design.cms.gov/components/form-label",
       "url": "http://localhost:3000/components/form-label",
