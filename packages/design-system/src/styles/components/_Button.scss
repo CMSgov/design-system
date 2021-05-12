@@ -1,5 +1,10 @@
 @import '../settings/index.scss';
 
+// Danger button is marked for deprecation //
+.ds-c-button--danger {
+  --deprecated: 'WARNING: Use .ds-c-button or .ds-c-button--primary instead';
+}
+
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
