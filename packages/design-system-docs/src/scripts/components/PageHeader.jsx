@@ -15,6 +15,20 @@ class PageHeader extends React.PureComponent {
     }
   }
 
+  analyticsAlert() {
+    if (this.props.analytics) {
+      const analyticsLink = this.props.analytics && `#${this.props.reference}.guidance-analytics`;
+      return (
+        <p>
+          <span className="ds-c-badge ds-c-badge--success">
+            <b>NEW!</b>
+          </span>{' '}
+          This component supports <a href={analyticsLink}>google analytics event tracking.</a>
+        </p>
+      );
+    }
+  }
+
   guidanceLink() {
     if (this.props.showGuidanceLink) {
       return (
@@ -56,6 +70,7 @@ class PageHeader extends React.PureComponent {
           {this.statusBadge()}
         </div>
         <div className="ds-u-font-size--small">
+          {this.analyticsAlert()}
           {this.guidanceLink()}
           {this.designSystemLinks()}
         </div>
@@ -65,6 +80,7 @@ class PageHeader extends React.PureComponent {
 }
 
 PageHeader.propTypes = {
+  analytics: PropTypes.bool,
   cmsds: PropTypes.string,
   header: PropTypes.string.isRequired,
   reference: PropTypes.string,
