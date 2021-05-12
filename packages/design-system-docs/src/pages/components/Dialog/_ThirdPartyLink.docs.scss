@@ -1,6 +1,8 @@
 /*
 Third party external link
 
+@analytics
+
 The Third party external link pattern is used to notify a user that the action they are taking will take them to a new external website.
 
 Style guide: patterns.external-link
@@ -17,6 +19,14 @@ Style guide: patterns.external-link.react
 */
 
 /*
+Analytics props
+
+- Refer to [Modal dialog]({{root}}/components/dialog) for details of the Analytics props
+
+Style guide: patterns.external-link.analytics
+*/
+
+/*
 ---
 
 Use this pattern when the user is in the middle of a task or application to let them know that the action they are taking will move them away from the current site and or process. This serves as a warning where the user can then decide to remain where they are in the application or process.
@@ -25,4 +35,32 @@ Use this pattern when the user is in the middle of a task or application to let 
 
 - [CMS policy on external links](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites.html)
 - [CMS external link disclaimer](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/External-Link-Disclaimer.html)
+*/
+
+/*
+---
+
+### Related patterns
+
+- [Modal dialog]({{root}}/components/dialog)
+
+Style guide: patterns.external-link.guidance
+*/
+
+/*
+Google Analytics
+
+On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+- To disable the automatic event tracking, pass this prop to the component
+```
+analytics={
+  {
+    onComponentDidMount: {false},
+    onComponentWillUnmount: {false}
+  }
+}
+```
+- To override the event tracking, pass changes via the analytics prop
+
+Style guide: patterns.external-link.guidance-analytics
 */
