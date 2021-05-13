@@ -55,7 +55,7 @@ export class HelpDrawer extends React.PureComponent {
       this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
     } else {
       this.eventHeadingText =
-        this.headingRef && this.headingRef && this.headingRef.textContent
+        this.headingRef && this.headingRef.textContent
           ? this.headingRef.textContent.substring(0, MAX_LENGTH)
           : '';
     }

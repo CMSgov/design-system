@@ -58,10 +58,9 @@ export class Dialog extends React.PureComponent {
     if (typeof eventHeading === 'string') {
       this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
     } else {
-      const eventHeadingTextElement = this.headingRef;
       this.eventHeadingText =
-        eventHeadingTextElement && eventHeadingTextElement.textContent
-          ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+        this.headingRef && this.headingRef.textContent
+          ? this.headingRef.textContent.substring(0, MAX_LENGTH)
           : '';
     }
 
