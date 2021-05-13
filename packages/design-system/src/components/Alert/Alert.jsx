@@ -37,24 +37,25 @@ export class Alert extends React.PureComponent {
     const eventAction = 'onComponentDidMount';
     const eventHeading = this.props.heading || this.props.children;
 
-    if (typeof eventHeading === 'string') {
-      this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
-    } else {
-      const eventHeadingTextElement =
-        (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-        (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__body')[0]);
-      this.eventHeadingText =
-        eventHeadingTextElement && eventHeadingTextElement.textContent
-          ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
-          : '';
-    }
-
     /* Send analytics event for `error`, `warn`, `success` alert variations */
-    this.props.variation &&
+    if (this.props.variation) {
+      if (typeof eventHeading === 'string') {
+        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      } else {
+        const eventHeadingTextElement =
+          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__body')[0]);
+        this.eventHeadingText =
+          eventHeadingTextElement && eventHeadingTextElement.textContent
+            ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+            : '';
+      }
+
       sendAnalyticsEvent(
         get(this.props.analytics, eventAction),
         get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
       );
+    }
   }
 
   heading() {
