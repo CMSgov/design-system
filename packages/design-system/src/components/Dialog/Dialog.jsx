@@ -1,9 +1,8 @@
-import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import AriaModal from 'react-aria-modal';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
 
@@ -30,11 +29,8 @@ const defaultAnalytics = (heading = '') => ({
 export class Dialog extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.eventHeading = props.title || props.heading;
-    this.eventHeadingText =
-      typeof this.eventHeading === 'string'
-        ? this.eventHeading
-        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
+    this.headingRef = null;
+    this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -57,6 +53,18 @@ export class Dialog extends React.PureComponent {
 
   componentDidMount() {
     const eventAction = 'onComponentDidMount';
+    const eventHeading = this.props.title || this.props.heading;
+
+    if (typeof eventHeading === 'string') {
+      this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+    } else {
+      const eventHeadingTextElement = this.headingRef;
+      this.eventHeadingText =
+        eventHeadingTextElement && eventHeadingTextElement.textContent
+          ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+          : '';
+    }
+
     /* Send analytics event for dialog open */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
@@ -119,7 +127,7 @@ export class Dialog extends React.PureComponent {
         {...modalProps}
       >
         <div role="document">
-          <header className={headerClassNames} role="banner">
+          <header ref={(ref) => (this.headingRef = ref)} className={headerClassNames} role="banner">
             {
               // TODO: make heading required after removing title
               (title || heading) && (

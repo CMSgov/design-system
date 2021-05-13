@@ -1,8 +1,7 @@
-import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
 
@@ -30,11 +29,8 @@ export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
-    this.eventHeading = props.title || props.heading;
-    this.eventHeadingText =
-      typeof this.eventHeading === 'string'
-        ? this.eventHeading
-        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
+    this.eventHeadingText = '';
+
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
         console.warn(
@@ -51,7 +47,19 @@ export class HelpDrawer extends React.PureComponent {
 
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
+
     const eventAction = 'onComponentDidMount';
+    const eventHeading = this.props.title || this.props.heading;
+
+    if (typeof eventHeading === 'string') {
+      this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+    } else {
+      this.eventHeadingText =
+        this.headingRef && this.headingRef && this.headingRef.textContent
+          ? this.headingRef.textContent.substring(0, MAX_LENGTH)
+          : '';
+    }
+
     /* Send analytics event for helpdrawer open */
     sendAnalyticsEvent(
       get(this.props.analytics, eventAction),
