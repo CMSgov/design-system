@@ -11,6 +11,7 @@ export * from './ChoiceList';
 export * from './DateField';
 export * from './Dialog';
 export * from './Dropdown';
+export * from './FilterChip';
 export * from './FormControl';
 export * from './FormLabel';
 export * from './HelpDrawer';
@@ -26,5 +27,6 @@ export * from './TextField';
 export * from './Tooltip';
 export * from './UsaBanner';
 export * from './VerticalNav';
+export * from './analytics';
 
 export * from './flags';

@@ -22,7 +22,7 @@ class Example extends React.PureComponent {
   render() {
     return (
       <div id="App" style={{ minHeight: 300 }}>
-        <Button onClick={() => this.showModal()} size="big" variation="success">
+        <Button onClick={() => this.showModal()} size="big" variation="primary">
           Click to show modal
         </Button>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import StepList from './StepList';
-import { generateStep } from '../helpers/StepList';
+import { generateStep } from './__mocks__/generateStep';
 import { shallow } from 'enzyme';
 
 const defaultStepProps = {

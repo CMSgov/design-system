@@ -1,4 +1,4 @@
-import { defaultStep, generateStep } from '../helpers/StepList';
+import { defaultStep, generateStep } from './__mocks__/generateStep';
 import React from 'react';
 import SubStep from './SubStep';
 import { shallow } from 'enzyme';
