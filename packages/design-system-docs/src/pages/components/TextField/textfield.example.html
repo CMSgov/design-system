@@ -18,7 +18,7 @@
     focus: 'focus-border-bottom' }, { title: 'Background color - Box shadow (combo)',
     focus: 'focus-box-bg-shadow-combo' }, { title: 'Drop shadow' , focus: 'focus-box-drop-shadow' } ].forEach(section=>
     { -%>
-    <h1>
+    <h1 id="<%= section.focus %>">
       <%= section.title %>
     </h1>
     <div class="<%= section.focus %> ds-l-row ds-u-margin-bottom--7">
