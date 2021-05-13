@@ -21,6 +21,9 @@ $focus-color: #bd13b8;
 $mgov-dark-bg: #146a5d;
 $focus-color-black: #000;
 
+$focus-coral: #cd635b;
+$focus-eggplant: #bd13b8;
+
 .mgov-dark-bg {
   background-color: $mgov-dark-bg;
 }
@@ -127,6 +130,14 @@ $focus-color-black: #000;
     &.focus-styles-bw .ds-c-choice:focus + label::before {
       box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color-black;
     }
+    &.focus-styles-coral * :focus,
+    &.focus-styles-coral .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-coral;
+    }
+    &.focus-styles-eggplant * :focus,
+    &.focus-styles-eggplant .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-eggplant;
+    }
   }
   .focus-box-double-outline-soft {
     input:focus,
@@ -140,6 +151,14 @@ $focus-color-black: #000;
     &.focus-styles-bw * :focus,
     &.focus-styles-bw .ds-c-choice:focus + label::before {
       box-shadow: 0 0 0 3px #fff, 0 0 4px 6px $focus-color-black;
+    }
+    &.focus-styles-coral * :focus,
+    &.focus-styles-coral .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 4px 6px $focus-coral;
+    }
+    &.focus-styles-eggplant * :focus,
+    &.focus-styles-eggplant .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 4px 6px $focus-eggplant;
     }
   }
   .focus-box-single-outline-bottom-border {
@@ -253,6 +272,16 @@ $focus-color-black: #000;
     &.focus-styles-bw a:focus {
       box-shadow: 0 3px 0 0px #fff, 0px 6px 0px 0px $focus-color-black;
     }
+    &.focus-styles-coral input:focus,
+    &.focus-styles-coral button:focus,
+    &.focus-styles-coral a:focus {
+      box-shadow: 0 3px 0 0px #fff, 0px 6px 0px 0px $focus-coral;
+    }
+    &.focus-styles-eggplant input:focus,
+    &.focus-styles-eggplant button:focus,
+    &.focus-styles-eggplant a:focus {
+      box-shadow: 0 3px 0 0px #fff, 0px 6px 0px 0px $focus-eggplant;
+    }
     .ds-c-choice:focus + label::before {
       box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color;
       text-decoration: none;
@@ -260,6 +289,12 @@ $focus-color-black: #000;
     }
     &.focus-styles-bw .ds-c-choice:focus + label::before {
       box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-color-black;
+    }
+    &.focus-styles-coral .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-coral;
+    }
+    &.focus-styles-eggplant .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px $focus-eggplant;
     }
   }
   .focus-box-bg-shadow-combo {
@@ -291,6 +326,10 @@ $focus-color-black: #000;
     &.focus-styles-bw * :focus,
     &.focus-styles-bw .ds-c-choice:focus + label::before {
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #919191, 0 0 0 6px $focus-color-black;
+    }
+    &.focus-styles-eggplant * :focus,
+    &.focus-styles-eggplant .ds-c-choice:focus + label::before {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #c096bf, 0 0 0 6px $focus-eggplant;
     }
   }
   .focus-box-drop-shadow {

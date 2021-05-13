@@ -1,0 +1,217 @@
+<!-- prettier-ignore -->
+
+<div class="focus-styles">
+
+  <% [ { title: 'Box-Shadow - Double outline' , focus: 'focus-box-double-outline' }, {
+    title: 'Box-Shadow - Double outline (soft)' , focus: 'focus-box-double-outline-soft' }, {
+    title: 'Box-Shadow - Double outline (combo)' , focus: 'focus-box-double-outline-combo' }, {
+    title: 'Multiple outline colors - Box shadow' , focus: 'focus-box-m-colors-outline' } ].forEach(section=>
+    { -%>
+    <h1 id="<%= section.focus %>">
+      <%= section.title %>
+    </h1>
+    <div class="<%= section.focus %> focus-styles-coral ds-l-row ds-u-margin-bottom--7">
+      <div class="ds-l-col--6 example--wrapper ds-u-padding--2">
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-1" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-1" checked="">
+          <label for="<%= section.focus %>-checkbox-1">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-2" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-2">
+          <label for="<%= section.focus %>-checkbox-2">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-3" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-3" disabled="">
+          <label for="<%= section.focus %>-checkbox-3">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-1" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-1">
+          <label for="<%= section.focus %>-radio-1">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-2" type="radio"
+            name="radio-choices" value="<%= section.focus %>-radio-2">
+          <label for="<%= section.focus %>-radio-2"><span>Choice 2</span></label>
+        </fieldset>
+
+        <div>
+          <label class="ds-c-label ds-u-margin-top--0" for="<%= section.focus %>-input-singleline">
+            <span>Single line field</span>
+          </label>
+          <input class="ds-c-field" id="<%= section.focus %>-input-singleline" name="<%= section.focus %>-singleline"
+            type="text" />
+        </div>
+
+        <p>
+          <button type="button" class="ds-c-button ds-c-button--primary">
+            Default
+          </button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+      <div class="ds-l-col--6 example--wrapper ds-u-padding--2 ds-u-fill--gray-lightest">
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-4" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-4" checked="">
+          <label for="<%= section.focus %>-checkbox-4">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-5" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-5">
+          <label for="<%= section.focus %>-checkbox-5">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-6" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-6" disabled="">
+          <label for="<%= section.focus %>-checkbox-6">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-3" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-3">
+          <label for="<%= section.focus %>-radio-3">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-4" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-4">
+          <label for="<%= section.focus %>-radio-4"><span>Choice 2</span></label>
+        </fieldset>
+
+        <div>
+          <label class="ds-c-label ds-u-margin-top--0" for="g-<%= section.focus %>-input-singleline">
+            <span>Single line field</span>
+          </label>
+          <input class="ds-c-field" id="g-<%= section.focus %>-input-singleline"
+            name="g-<%= section.focus %>-singleline" value="Example text" type="text" />
+        </div>
+
+        <p>
+          <button type="button" class="ds-c-button ds-c-button--primary">
+            Default
+          </button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+      <div class="example--wrapper example--inverse ds-l-col--6">
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-7" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-7" checked="">
+          <label for="<%= section.focus %>-checkbox-7">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-8" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-8">
+          <label for="<%= section.focus %>-checkbox-8">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-9" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-3" disabled="">
+          <label for="<%= section.focus %>-checkbox-9">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-5" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-5">
+          <label for="<%= section.focus %>-radio-5">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-6" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-6">
+          <label for="<%= section.focus %>-radio-6"><span>Choice 2</span></label>
+        </fieldset>
+
+        <div>
+          <label class="ds-c-label ds-u-margin-top--0" for="i-<%= section.focus %>-input-singleline">
+            <span>Single line field</span>
+          </label>
+          <input class="ds-c-field" id="i-<%= section.focus %>-input-singleline"
+            name="i-<%= section.focus %>-singleline" value="Example text" type="text" />
+        </div>
+
+        <p>
+          <button type="button" class="ds-c-button ds-c-button--primary">
+            Default
+          </button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+      <div class="mgov-dark-bg example--inverse ds-l-col--6">
+
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Checkbox example</span></legend>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-10" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-10" checked="">
+          <label for="<%= section.focus %>-checkbox-10">
+            <span>Choice 1</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-11" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-11">
+          <label for="<%= section.focus %>-checkbox-11">
+            <span>Choice 2</span>
+          </label>
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-12" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-12" disabled="">
+          <label for="<%= section.focus %>-checkbox-12">
+            <span>Disabled choice 3</span>
+          </label>
+        </fieldset>
+        <fieldset class="ds-c-fieldset">
+          <legend class="ds-c-label"><span>Radio example</span></legend>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-7" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-7">
+          <label for="<%= section.focus %>-radio-7">
+            <span>Choice 1</span>
+            <span class="ds-c-field__hint">Choice hint text</span>
+          </label>
+          <input class="ds-c-choice ds-c-choice--error" id="<%= section.focus %>-radio-8" type="radio"
+            name="<%= section.focus %>-radio-choices" value="<%= section.focus %>-radio-8">
+          <label for="<%= section.focus %>-radio-8"><span>Choice 2</span></label>
+        </fieldset>
+
+        <div>
+          <label class="ds-c-label ds-u-margin-top--0" for="ii-<%= section.focus %>-input-singleline">
+            <span>Single line field</span>
+          </label>
+          <input class="ds-c-field" id="ii-<%= section.focus %>-input-singleline"
+            name="ii-<%= section.focus %>-singleline" value="Example text" type="text" />
+        </div>
+
+        <p>
+          <button type="button" class="ds-c-button ds-c-button--primary">
+            Default
+          </button>
+        </p>
+        <p>
+          <a href="https://design.cms.gov">This is a text link</a>
+        </p>
+      </div>
+    </div>
+
+    <% }) -%>
+</div>
