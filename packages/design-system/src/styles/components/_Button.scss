@@ -321,6 +321,7 @@ $button-color-variants: (
       &:focus,
       &.ds-c-button--focus {
         background-color: nth($color, 2);
+        color: nth($color, 9);
       }
     }
 
