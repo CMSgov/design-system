@@ -159,7 +159,14 @@ Button.propTypes = {
   /**
    * A string corresponding to the button-component variation classes
    */
-  variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
+  variation: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'danger',
+    'success',
+    'transparent',
+  ]),
 };
 
 export default Button;

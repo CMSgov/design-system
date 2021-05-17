@@ -6,7 +6,7 @@ export type ButtonSize = 'small' | 'big';
 
 export type ButtonType = 'button' | 'submit';
 
-export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
+export type ButtonVariation = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success' | 'transparent';
 
 export interface ButtonProps {
   /**
