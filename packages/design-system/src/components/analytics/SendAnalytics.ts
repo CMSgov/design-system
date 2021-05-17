@@ -36,6 +36,8 @@ export const EVENT_CATEGORY = {
   uiInteraction: 'ui interaction',
 };
 
+export const MAX_LENGTH = 100;
+
 interface AnalyticsEventProps {
   ga_eventAction: string;
   ga_eventCategory: string;
