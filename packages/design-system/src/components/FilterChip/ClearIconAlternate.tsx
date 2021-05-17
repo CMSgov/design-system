@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * <ClearIconAlternate> is an internal component used by <FilterChip>
+ */
+
+
 export function ClearIconAlternate(): React.ReactElement {
   return (
     <svg
