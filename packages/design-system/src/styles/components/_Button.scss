@@ -235,25 +235,63 @@
   @extend .ds-c-button--inverse;
   @extend %disabled-inverse-button;
 }
-/* stylelint-enable */
 
 /**
  *  Status variants
+
+Default
+1. button bg
+2. button bg-hover
+3. button bg-active
+4. focus color
+5. button text color
+6. button border color
+7. button border color-hover
+8. button border color-active
+9. button text color-hover
+10. button text color-active
+11. button bg-disabled
+12. buton text color-disabled
+13. button border color-disabled
+14. button text decoration
+
  */
 $button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color,
-  success: $color-success $color-success-dark $color-success-darker $focus-color,
-  danger: $color-error $color-error-dark $color-error-darkest $focus-color,
+  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color
+    $button-primary-text-color $button-primary-border-color $button-primary-border-color--hover
+    $button-primary-border-color--active $button-primary-text-color--hover
+    $button-primary-text-color--active $button-primary-bg--disabled
+    $button-primary-text-color--disabled $button-primary-border-color--disabled
+    $button-text-decoration-none,
+  secondary: $button-secondary-bg $button-secondary-bg--hover $button-secondary-bg--active
+    $focus-color $button-secondary-text-color $button-secondary-border-color
+    $button-secondary-border-color--hover $button-secondary-border-color--active
+    $button-secondary-text-color--hover $button-secondary-text-color--active
+    $button-secondary-bg--disabled $button-secondary-text-color--disabled
+    $button-secondary-border-color--disabled $button-text-decoration-none,
+  tertiary: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active $focus-color
+    $button-tertiary-text-color $button-tertiary-border-color $button-tertiary-border-color--hover
+    $button-tertiary-border-color--active $button-tertiary-text-color--hover
+    $button-tertiary-text-color--active $button-tertiary-bg--disabled
+    $button-tertiary-text-color--disabled $button-tertiary-border-color--disabled
+    $button-text-decoration-underline,
+  success: $color-success $color-success-dark $color-success-darker $focus-color $color-white
+    $color-transparent $color-transparent $color-transparent $color-white $color-white
+    $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
+  danger: $color-error $color-error-dark $color-error-darkest $focus-color $color-white
+    $color-transparent $color-transparent $color-transparent $color-white $color-white
+    $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
 );
-
+/* stylelint-enable */
 @each $colors in map-keys($button-color-variants) {
   $color: map-get($button-color-variants, $colors);
 
   .ds-c-button--#{$colors},
   .ds-c-button--#{$colors}:visited {
     background-color: nth($color, 1);
-    border-color: transparent;
-    color: $color-white;
+    border-color: nth($color, 6);
+    color: nth($color, 5);
+    text-decoration: nth($color, 14);
 
     &:hover,
     &:focus,
@@ -261,20 +299,22 @@ $button-color-variants: (
     &.ds-c-button--hover,
     &.ds-c-button--focus,
     &.ds-c-button--active {
-      border-color: transparent;
-      color: $color-white;
+      border-color: nth($color, 6);
+      color: nth($color, 5);
     }
 
     &:hover,
     &.ds-c-button--hover {
       background-color: nth($color, 2);
+      border-color: nth($color, 7);
+      color: nth($color, 9);
     }
 
     @if $ds-include-focus-styles {
       &:focus,
       &.ds-c-button--focus {
         background-color: nth($color, 4);
-        border-color: transparent;
+        border-color: nth($color, 6);
         color: $color-base;
       }
     } @else {
@@ -287,6 +327,8 @@ $button-color-variants: (
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
+      border-color: nth($color, 8);
+      color: nth($color, 10);
     }
     @if $ds-include-focus-styles {
       // Make sure active overrides focus styles
@@ -294,15 +336,15 @@ $button-color-variants: (
       &.ds-c-button--active:focus {
         background-color: nth($color, 3);
         box-shadow: none;
-        color: $color-white;
+        color: nth($color, 5);
       }
     }
 
     &:disabled,
     &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
+      background-color: nth($color, 11);
+      border-color: nth($color, 13);
+      color: nth($color, 12);
       pointer-events: none;
     }
   }
