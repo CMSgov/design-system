@@ -1,5 +1,8 @@
 @mixin focus-styles {
   box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
   outline: 0;
+}
+@mixin focus-styles-position {
+  position: relative;
   z-index: 100;
 }
