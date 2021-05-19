@@ -262,15 +262,11 @@
   background-color: transparent !important;
 }
 
-// // Focus colors
-// .ds-u-fill--focus-color {
-//   background-color: $focus-color !important;
-// }
+// Focus colors
+.ds-u-fill--focus-color-light {
+  background-color: $color-focus-light !important;
+}
 
-// .ds-u-fill--focus-color-inverse {
-//   background-color: $focus-color-inverse !important;
-// }
-
-// .ds-u-fill--focus-border-inverse {
-//   background-color: $focus-border-inverse !important;
-// }
+.ds-u-fill--focus-color-dark {
+  background-color: $color-focus-dark !important;
+}
