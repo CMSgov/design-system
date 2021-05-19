@@ -45,24 +45,13 @@ You can also [browse all Sass variable files on GitHub](https://github.com/CMSgo
 
 #### Focus style variables
 
-The focus styles are disabled by default. However if you'd like to use them
+The focus styles are disabled by default. However, if you'd like to use them
 set the `$ds-include-focus-styles` variable to `true`.
 
 **Focus style variables**
 
-- `$focus-color` - Sets background highlight color.
-- `$focus-shadow` - Sets box-shadow on text fields.
-- `$focus-shadow-link` - Sets box-shadow on buttons and links.
-- `$focus-color-inverse`- Sets background highlight color on dark backgrounds.
-- `$focus-shadow-inverse`- Sets box-shadow on text fields on dark backgrounds.
-- `$focus-shadow-link-inverse` - Sets box-shadow on buttons and links on dark backgrounds.
-
-**Mixins**
-
-- `focus-text` - Mixin for links and buttons.
-- `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
-
-See the [v2 migration guide](https://design.cms.gov/startup/migrating-v2/#focus-styles) for more background on our focus styles.
+- `$color-focus-light` - Sets the inner halo for the focus styles (default is white `#FFFFFF`)
+- `$color-focus-dark` - Sets the outer halo for the focus styles (this color should pass 3.1 contrast ratio on white or light backgrounds)
 
 ## Overriding component, utility, base styles
 
