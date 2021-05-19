@@ -26,12 +26,7 @@
 
   &:focus {
     @if $ds-include-focus-styles {
-      border-radius: 0;
-      box-shadow: $focus-shadow;
-      outline: 3px solid $focus-color;
-      outline-offset: 0;
-    } @else {
-      box-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus;
+      @include focus-styles;
     }
   }
 }
@@ -57,14 +52,6 @@ Inverse theme
 
 .ds-c-field--inverse {
   border-color: $input-border-color-inverse;
-
-  &:focus {
-    @if $ds-include-focus-styles {
-      box-shadow: $focus-shadow-inverse;
-    } @else {
-      box-shadow: 0 0 3px $color-focus-inverse, 0 0 7px $color-focus-inverse;
-    }
-  }
 }
 
 // State modifiers and message
@@ -75,21 +62,8 @@ Inverse theme
   &.ds-c-field--inverse {
     border: 3px solid $color-error-light;
   }
-
-  @if $ds-include-focus-styles {
-    &:focus {
-      border-color: $color-base;
-      box-shadow: none;
-    }
-  }
 }
 
 .ds-c-field--success {
   border: 3px solid $color-success-light;
-  @if $ds-include-focus-styles {
-    &:focus {
-      border-color: $color-base;
-      box-shadow: none;
-    }
-  }
 }
