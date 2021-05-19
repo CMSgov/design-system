@@ -102,6 +102,8 @@ $ds-c-inset-border-width: $spacer-half;
   &:focus + label::before {
     @if $ds-include-focus-styles {
       @include focus-styles;
+    } @else {
+      box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
     }
   }
 }
