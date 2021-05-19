@@ -117,6 +117,7 @@
   @if $ds-include-focus-styles {
     &:focus {
       @include focus-styles;
+      @include focus-styles-position;
     }
   }
   /* stylelint-enable max-nesting-depth */
