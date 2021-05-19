@@ -86,13 +86,6 @@
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
-    // /* stylelint-disable */
-    // @if $ds-include-focus-styles {
-    //   &:focus::after {
-    //     @include focus-styles;
-    //   }
-    // }
-    // /* stylelint-enable */
   }
 
   &[aria-disabled='true'] {
