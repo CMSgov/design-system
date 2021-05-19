@@ -1,5 +1,6 @@
 @mixin focus-styles {
   box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
-  outline: 0;
+  outline: 3px solid transparent;
+  outline-offset: 3px;
   z-index: 100;
 }
