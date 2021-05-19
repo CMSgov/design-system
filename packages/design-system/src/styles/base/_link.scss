@@ -41,7 +41,6 @@
     &:focus,
     &:focus:visited {
       @include focus-styles;
-      position: relative;
     }
   } @else {
     &:focus {
