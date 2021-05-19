@@ -17,7 +17,6 @@
   @if $ds-include-focus-styles {
     &:focus,
     &:focus:visited {
-      @include focus-styles-position;
       @include focus-styles;
     }
   } @else {
@@ -41,7 +40,6 @@
   @if $ds-include-focus-styles {
     &:focus,
     &:focus:visited {
-      @include focus-styles-position;
       @include focus-styles;
     }
   } @else {

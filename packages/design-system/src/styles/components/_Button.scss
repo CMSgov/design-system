@@ -27,7 +27,6 @@
   &.ds-c-button--focus {
     @if $ds-include-focus-styles {
       @include focus-styles;
-      position: relative;
     } @else {
       border-color: $color-primary-darker;
       color: $color-primary-darker;
@@ -144,7 +143,6 @@
   &.ds-c-button--focus {
     @if $ds-include-focus-styles {
       @include focus-styles;
-      position: relative;
     } @else {
       border-color: rgba($border-color-inverse, 0.8);
       color: rgba($color-base-inverse, 0.8);
@@ -176,7 +174,6 @@
     &:focus,
     &.ds-c-button--focus {
       @include focus-styles;
-      position: relative;
     }
   }
 }
@@ -261,7 +258,6 @@ $button-color-variants: (
       &:focus,
       &.ds-c-button--focus {
         @include focus-styles;
-        position: relative;
       }
     } @else {
       &:focus,
