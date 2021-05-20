@@ -8,6 +8,7 @@
 @if $ds-include-focus-styles {
   %nav-item-focus {
     @include focus-styles;
+    @include focus-styles-position;
   }
 }
 
