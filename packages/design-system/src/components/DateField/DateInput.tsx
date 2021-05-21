@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
@@ -133,6 +132,10 @@ export interface DateInputProps {
 }
 
 export class DateInput extends React.PureComponent<DateInputProps> {
+  monthInput: any;
+  dayInput: any;
+  yearInput: any;
+
   constructor(props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);

@@ -1,13 +1,8 @@
 import EvEmitter from 'ev-emitter';
 import FormLabel from '../FormLabel/FormLabel';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
-
-export type ChoiceSize = 'small';
-export type ChoiceType = 'checkbox' | 'radio';
-export type ChoiceValue = number | string;
 
 export interface ChoiceProps {
   /**
@@ -72,7 +67,7 @@ export interface ChoiceProps {
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
-  size?: ChoiceSize;
+  size?: 'small';
   /**
    * The `input` field's `name` attribute
    */
@@ -82,14 +77,14 @@ export interface ChoiceProps {
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: ChoiceType;
+  type: 'checkbox' | 'radio';
   /**
    * The `input` `value` attribute
    */
-  value: ChoiceValue;
+  value: number | string;
 }
 
-type OmitProps = 'size' | 'type' | 'value' | 'label';
+type OmitProps = 'size' | 'type' | 'value' | 'label' | 'checked' | 'defaultChecked' | 'onBlur' | 'onChange' | 'name' | 'id';
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
@@ -98,6 +93,12 @@ export class Choice extends React.PureComponent<
   Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & ChoiceProps,
   any
 >  {
+
+  input: any;
+  id: string;
+  isControlled: boolean;
+  uncheckEventName: string;
+
   constructor(props) {
     super(props);
     this.input = null;

@@ -1,29 +1,20 @@
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
 import Choice from './Choice';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
 
-export type ChoiceSize = 'small';
-export type ChoiceType = 'checkbox' | 'radio';
-export type ChoiceValue = number | string;
-
 import { ChoiceProps as ChoiceComponentProps } from './Choice';
-
-export type ChoiceListSize = 'small';
-export type ChoiceListType = 'checkbox' | 'radio';
 
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
-export type ChoiceListErrorPlacement = 'top' | 'bottom';
 
 export interface ChoiceListProps {
   /**
-   * The list of choices to be rendered.
+   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
    */
-  choices: ChoiceProps[];
+  choices: ChoiceComponentProps[];
   /**
    * Additional classes to be added to the root element.
    */
@@ -40,7 +31,7 @@ export interface ChoiceListProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: ChoiceListErrorPlacement;
+  errorPlacement?: 'top' | 'bottom';
   /**
    * Additional hint text to display
    */
@@ -83,14 +74,16 @@ export interface ChoiceListProps {
   /**
    * Sets the size of the checkbox or radio button
    */
-  size?: ChoiceListSize;
+  size?: 'small';
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: ChoiceListType;
+  type: 'checkbox' | 'radio';
 }
 
 export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
+  choiceRefs: [any?];
+
   constructor(props) {
     super(props);
 
@@ -103,7 +96,7 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
 
       if (props.type !== 'checkbox' && props.choices.length === 1) {
         console.warn(
-          `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
+          `[Warning]: Use type="checkbox" for components with only one choice. A singl e radio button is disallowed because it prevents users from deselecting the field.`
         );
       }
     }

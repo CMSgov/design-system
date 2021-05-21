@@ -113,8 +113,16 @@ function parseComponent(file, options) {
     if (!options.typescript) {
       docs = [{}];
     } else {
+      // Filter so that when Components extend standard HTML, those props do not also get printed in the docs page
+      const tsOptions = {
+        propFilter: (props) =>
+          !props.parent ||
+          !props.parent.fileName.includes('node_modules') ||
+          props.parent.fileName.includes('@cmsgov'),
+      };
+
       // Use `react-docgen-typescript` for `tsx` files
-      docs = tsDocgen.withCustomConfig(path.resolve('tsconfig.json')).parse(file.path);
+      docs = tsDocgen.withCustomConfig(path.resolve('tsconfig.json'), tsOptions).parse(file.path);
       processDocgenTemplates(docs[0], options);
     }
   } else {

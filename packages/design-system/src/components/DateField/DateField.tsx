@@ -1,4 +1,5 @@
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import defaultDateFormatter from './defaultDateFormatter';
 import DateInput from './DateInput';
 import React from 'react';
 import omit from 'lodash/omit';
@@ -11,7 +12,6 @@ export type DateFieldMonthDefaultValue = string | number;
 export type DateFieldMonthValue = string | number;
 export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
-export type DateFieldErrorPlacement = 'top' | 'bottom';
 
 export interface DateFieldProps {
   /**
@@ -22,14 +22,16 @@ export interface DateFieldProps {
    * Additional classes to be added to the root fieldset element
    */
   className?: string;
+  disabled?: boolean;
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
    * to the `onBlur` and `onChange` callbacks. This method receives an object as
    * its only argument, in the shape of: `{ day, month, year }`
+   * 
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
-  dateFormatter?: (...args: any[]) => any;
+  dateFormatter?: typeof defaultDateFormatter;
   errorMessage?: React.ReactNode;
   /**
    * Additional classes to be added to the error message
@@ -38,7 +40,7 @@ export interface DateFieldProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: DateFieldErrorPlacement;
+  errorPlacement?: 'top' | 'bottom';
   /**
    * Additional hint text to display above the individual month/day/year fields
    */
@@ -149,15 +151,6 @@ export interface DateFieldProps {
   yearValue?: DateFieldYearValue;
 }
 
-
-// Prevents day/month greater than 2 digits and year greater than 4 digits
-const standardLengthFormatter = ({ day, month, year }) => ({
-  day: day.length > 2 ? day.substring(0, 2) : day,
-  month: month.length > 2 ? month.substring(0, 2) : month,
-  year: year.length > 4 ? year.substring(0, 4) : year,
-});
-
-export const defaultDateFormatter = (dateObject) => standardLengthFormatter(dateObject);
 
 export function DateField(props: DateFieldProps) {
   const containerProps = pick(props, FormControlPropKeys);
