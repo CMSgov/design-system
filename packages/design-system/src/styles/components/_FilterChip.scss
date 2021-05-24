@@ -1,5 +1,5 @@
-$filter-chip-icon-container-size: 18px;
-$filter-chip-icon-size: 10px;
+$filter-chip-icon-container-size: units(2.5); // originally 18px, but no corresponding spacing token
+$filter-chip-icon-size: units(1.5); // originally 10px, but no corresponding spacing token
 $filter-chip-text-color: $color-base !default;
 $filter-chip-background-color: $color-primary-alt-lightest !default;
 $filter-chip-border-color: $color-primary !default;
@@ -21,14 +21,14 @@ $filter-chip-border-radius: $border-radius-pill !default;
   margin-top: units(1);
   min-height: 0;
   padding: units('05') units(1);
-  padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+  padding-right: (units(2) + $filter-chip-icon-container-size);
   position: relative;
   text-align: left;
 
   &--big {
     min-height: 44px;
     padding: units(1) units(2);
-    padding-right: ($spacer-2 + $filter-chip-icon-container-size);
+    padding-right: (units(2) + $filter-chip-icon-container-size);
   }
 
   &:active,
