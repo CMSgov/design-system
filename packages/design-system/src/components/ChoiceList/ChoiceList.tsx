@@ -14,7 +14,7 @@ export interface ChoiceListProps {
   /**
    * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
    */
-  choices: ChoiceComponentProps[];
+  choices: ChoiceProps[];
   /**
    * Additional classes to be added to the root element.
    */
@@ -130,21 +130,26 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     const containerProps = pick(this.props, FormControlPropKeys);
 
     const choices = this.props.choices.map((choiceProps) => {
-      choiceProps.inversed = this.props.inversed;
-      choiceProps.name = this.props.name;
-      choiceProps.onBlur = (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur;
-      choiceProps.onChange = this.props.onChange;
-      choiceProps.size = this.props.size;
-      choiceProps.type = this.props.type;
-      choiceProps.inputClassName = classNames(choiceProps.inputClassName, {
-        'ds-c-choice--error': this.props.errorMessage,
-      });
-      choiceProps.disabled = choiceProps.disabled || this.props.disabled; // Individual choices can be disabled as well as the entire field
-      choiceProps.inputRef = (ref) => {
-        this.choiceRefs.push(ref);
-      };
+      const completeChoiceProps: ChoiceComponentProps =
+      {
+        ...choiceProps,
+        inversed: this.props.inversed,
+        name: this.props.name,
+        onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
+        onChange: this.props.onChange,
+        size: this.props.size,
+        type: this.props.type,
+        inputClassName: classNames(choiceProps.inputClassName, {
+          'ds-c-choice--error': this.props.errorMessage,
+        }),
+        disabled: choiceProps.disabled || this.props.disabled, // Individual choices can be disabled as well as the entire field
+        inputRef: (ref) => {
+          this.choiceRefs.push(ref);
+        },
+      }
 
-      return <Choice key={choiceProps.value} {...choiceProps} />;
+
+      return <Choice key={choiceProps.value} {...completeChoiceProps} />;
     });
 
     return (
