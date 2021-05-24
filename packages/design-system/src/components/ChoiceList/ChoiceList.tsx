@@ -8,7 +8,7 @@ import { ChoiceProps as ChoiceComponentProps } from './Choice';
 
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
-export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
+export interface ChoiceProps extends Omit<ChoiceComponentProps, OmitChoiceProp> { }
 
 export interface ChoiceListProps {
   /**
