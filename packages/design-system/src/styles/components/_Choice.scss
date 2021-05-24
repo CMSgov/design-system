@@ -157,7 +157,7 @@ $ds-c-inset-border-width: units('05');
 .ds-c-choice--small {
   + label {
     min-height: $choice-size-small;
-    padding-left: $choice-size-small + $spacer-1;
+    padding-left: $choice-size-small + units(1);
 
     &::before {
       height: $choice-size-small;
