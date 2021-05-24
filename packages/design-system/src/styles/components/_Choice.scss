@@ -1,6 +1,6 @@
 @import '../settings/index.scss';
 
-$ds-c-inset-border-width: units('05');
+$ds-c-inset-border-width: units(0.5);
 
 // Order of the choice styles is important to ensure styles have the correct precedent
 // normal < errored < checked < disabled < focused

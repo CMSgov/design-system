@@ -7,8 +7,8 @@
   display: inline-block;
   font-size: $font-size-sm;
   line-height: $heading-line-height;
-  margin-right: units('05');
-  padding: units('05') units(1);
+  margin-right: units(0.5);
+  padding: units(0.5) units(1);
 
   &:only-of-type {
     margin-right: 0;

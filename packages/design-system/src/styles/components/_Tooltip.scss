@@ -51,7 +51,7 @@ $tooltip-background-color: $color-background !default;
 
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
-  padding: units('05');
+  padding: units(0.5);
 }
 
 .ds-c-tooltip__trigger-link {

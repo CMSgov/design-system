@@ -5,7 +5,7 @@ $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
 $table-padding: units(2) !default;
-$table-compact-padding: units('05') units(2) !default;
+$table-compact-padding: units(0.5) units(2) !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -99,7 +99,7 @@ $table-compact-padding: units('05') units(2) !default;
   // Style dividers between different table rows
   tr {
     // Every row has a bottom border
-    border-bottom: units('05') solid $table-border-color;
+    border-bottom: units(0.5) solid $table-border-color;
     border-top: 0;
     display: block;
 
@@ -113,7 +113,7 @@ $table-compact-padding: units('05') units(2) !default;
     &:first-child {
       th:first-child,
       td:first-child {
-        border-top: units('05') solid $table-border-color;
+        border-top: units(0.5) solid $table-border-color;
       }
     }
   }
@@ -126,7 +126,7 @@ $table-compact-padding: units('05') units(2) !default;
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      padding-bottom: units('05');
+      padding-bottom: units(0.5);
     }
   }
   // stylelint-enable selector-no-qualifying-type
