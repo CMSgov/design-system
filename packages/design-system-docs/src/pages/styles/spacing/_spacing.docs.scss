@@ -5,14 +5,14 @@ Spacing
     <div class="ds-c-alert__body">
       <h3 class="ds-c-alert__heading">Spacing tokens updates!</h3>
       <p class="ds-c-alert__text">
-        We've updated padding and margin to use USWDS spacing tokens.</a>.
+        Introducing USWDS spacing tokens for margin and padding in the design system.
       </p>
     </div>
 </div>
 
 The design system uses USWDS spacing tokens, mixins, and functions. USWDS spacing tokens are documented in px, but they output values in rem.
 
-The spacing unit tokens are based on multiples of `8px` for all spacing values: dimensions, padding, and margins. The goal behind this is to achieve a consistent vertical rhythm and to reduce the cognitive load of fiddling with different spacing options.
+The CMSDS spacing unit tokens are based on multiples of `8px` for all spacing values: dimensions, padding, and margins. The goal behind this is to achieve a consistent vertical rhythm and to reduce the cognitive load of fiddling with different spacing options.
 
 ## Usage
 
