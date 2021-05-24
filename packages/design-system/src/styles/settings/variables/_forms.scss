@@ -4,7 +4,7 @@ $input-border-width: 2px !default;
 $input-small-width: 6em !default;
 $input-medium-width: 12em !default;
 $input-max-width: 460px !default;
-$input-padding: $spacer-1 !default;
+$input-padding: units(1) !default;
 $input-border-radius: $border-radius !default;
 $input-border-color: $color-base !default;
 $input-border-color-inverse: $color-black !default;
@@ -22,7 +22,7 @@ $choice-disabled-background-color-inverse: rgba($color-muted-inverse, 0.15) !def
 $choice-disabled-border-color-inverse: $color-gray-light !default;
 $choice-border-width: 2px !default;
 $choice-border-radius: 0 !default;
-$choice-size: $spacer-4 !default;
+$choice-size: units(4) !default;
 $choice-size-small: 20px !default;
 
 $button-border-width: 1px !default;

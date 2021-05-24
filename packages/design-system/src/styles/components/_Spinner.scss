@@ -16,7 +16,7 @@
 }
 
 .ds-c-spinner {
-  @include spinner-size($spacer-4, $spacer-4);
+  @include spinner-size(units(4), units(4));
   box-sizing: border-box;
   display: inline-block;
   position: relative;
@@ -54,27 +54,27 @@
 }
 
 .ds-c-spinner--filled {
-  @include spinner-size($spacer-4, $spacer-6);
+  @include spinner-size(units(4), units(6));
   background-color: $color-background;
   border-radius: 50%;
   color: $color-base;
-  height: $spacer-6;
-  width: $spacer-6;
+  height: units(6);
+  width: units(6);
 }
 
 .ds-c-spinner--small {
-  @include spinner-size($spacer-2, $spacer-2);
+  @include spinner-size(units(2), units(2));
 
   &.ds-c-spinner--filled {
-    @include spinner-size($spacer-2, $spacer-3);
+    @include spinner-size(units(2), units(3));
   }
 }
 
 .ds-c-spinner--big {
-  @include spinner-size($spacer-5, $spacer-5);
+  @include spinner-size(units(5), units(5));
 
   &.ds-c-spinner--filled {
-    @include spinner-size($spacer-5, $spacer-7);
+    @include spinner-size(units(5), units(7));
   }
 }
 

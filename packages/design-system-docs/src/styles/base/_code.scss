@@ -11,8 +11,8 @@ code {
   font-family: $font-monospace;
   font-size: 0.9em;
   // add spacing for when two code blocks are next to each other
-  margin: 1px;
-  padding: 2px;
+  margin: units(1px);
+  padding: units(2px);
 }
 
 a code {
@@ -28,7 +28,7 @@ blockquote code {
 pre {
   line-height: 1.4;
   margin: 0;
-  padding: $spacer-2;
+  padding: units(2);
 
   code {
     background-color: transparent;

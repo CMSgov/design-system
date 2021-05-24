@@ -4,8 +4,8 @@ $table-border-color: $color-black !default;
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
-$table-padding: $spacer-2 !default;
-$table-compact-padding: $spacer-half $spacer-2 !default;
+$table-padding: units(2) !default;
+$table-compact-padding: units('05') units(2) !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -81,7 +81,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 
 .ds-c-table__caption {
   font-weight: $font-bold;
-  margin-bottom: $spacer-1;
+  margin-bottom: units(1);
   text-align: left;
 }
 
@@ -99,7 +99,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
   // Style dividers between different table rows
   tr {
     // Every row has a bottom border
-    border-bottom: $spacer-half solid $table-border-color;
+    border-bottom: units('05') solid $table-border-color;
     border-top: 0;
     display: block;
 
@@ -113,7 +113,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
     &:first-child {
       th:first-child,
       td:first-child {
-        border-top: $spacer-half solid $table-border-color;
+        border-top: units('05') solid $table-border-color;
       }
     }
   }
@@ -126,7 +126,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      padding-bottom: $spacer-half;
+      padding-bottom: units('05');
     }
   }
   // stylelint-enable selector-no-qualifying-type

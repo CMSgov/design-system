@@ -4,8 +4,8 @@
   border-bottom: 2px solid $border-color;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 16px;
-  padding-top: 16px;
+  padding-bottom: units(2);
+  padding-top: units(2);
 }
 
 .ds-c-review:last-of-type {

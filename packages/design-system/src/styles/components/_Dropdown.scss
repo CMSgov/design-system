@@ -6,7 +6,7 @@ select.ds-c-field {
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-both.svg');
-  background-position: right $spacer-1 center;
+  background-position: right units(1) center;
   background-repeat: no-repeat;
   background-size: $select-icon-size;
   padding-right: ($select-icon-size * 2) + $spacer-1;

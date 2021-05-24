@@ -17,17 +17,17 @@ $filter-chip-border-radius: $border-radius-pill !default;
   font-family: $font-sans;
   font-size: $small-font-size;
   font-weight: $font-normal;
-  margin-right: $spacer-1;
-  margin-top: $spacer-1;
+  margin-right: units(1);
+  margin-top: units(1);
   min-height: 0;
-  padding: $spacer-half $spacer-1;
+  padding: units('05') units(1);
   padding-right: ($spacer-2 + $filter-chip-icon-container-size);
   position: relative;
   text-align: left;
 
   &--big {
     min-height: 44px;
-    padding: $spacer-1 $spacer-2;
+    padding: units(1) units(2);
     padding-right: ($spacer-2 + $filter-chip-icon-container-size);
   }
 
@@ -47,10 +47,10 @@ $filter-chip-border-radius: $border-radius-pill !default;
   cursor: pointer;
   display: inline-block;
   height: $filter-chip-icon-container-size;
-  margin-left: $spacer-1;
+  margin-left: units(1);
   padding: 0;
   position: absolute;
-  right: $spacer-1;
+  right: units(1);
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
