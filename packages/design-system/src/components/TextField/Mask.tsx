@@ -1,5 +1,4 @@
 import { maskValue, unmaskValue } from './maskHelpers';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 const maskPattern = {
@@ -13,7 +12,28 @@ const maskOverlayContent = {
   currency: '$',
 };
 
-export class Mask extends React.PureComponent {
+export type MaskMask = 'currency' | 'phone' | 'ssn' | 'zip';
+
+export interface MaskProps {
+  /**
+   * Must contain a `TextField` component
+   */
+  children: React.ReactNode;
+  mask?: MaskMask;
+}
+
+export class Mask extends React.PureComponent<MaskProps, any> {
+  debouncedOnBlurEvent: any;
+
+  /**
+ * Get the child text field. Called as a method so that
+ * updates to the field cause the mask to re-render
+ * @returns {React.ReactElement} Child TextField
+ */
+  field(): React.ReactElement {
+    return React.Children.only(this.props.children as React.ReactElement);
+  }
+
   constructor(props) {
     super(props);
 
@@ -48,15 +68,6 @@ export class Mask extends React.PureComponent {
         this.setState({ value }); // eslint-disable-line react/no-did-update-set-state
       }
     }
-  }
-
-  /**
-   * Get the child text field. Called as a method so that
-   * updates to the field cause the mask to re-render
-   * @returns {React.ReactElement} Child TextField
-   */
-  field() {
-    return React.Children.only(this.props.children);
   }
 
   /**
@@ -135,13 +146,5 @@ export class Mask extends React.PureComponent {
     );
   }
 }
-
-Mask.propTypes = {
-  /**
-   * Must contain a `TextField` component
-   */
-  children: PropTypes.node.isRequired,
-  mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
-};
 
 export default Mask;
