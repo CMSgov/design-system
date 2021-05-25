@@ -188,8 +188,13 @@ Style guide: components.dialog.guidance
 /*
 Google Analytics
 
-On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-- To disable the automatic event tracking, pass this prop to the component
+Analytics event tracking is disabled by default. To enable this feature, import and set the feature flag in your application's entry file:
+```
+import { setDialogSendsAnalytics } from "@cmsgov/<design-system-package>";
+setDialogSendsAnalytics(true);
+```
+On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+- To disable the automatic event tracking on certain cases, pass this prop to the component
 ```
 analytics={
   {
