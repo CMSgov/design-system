@@ -18,6 +18,6 @@ Each component in the design system is tested and validated before deciding on t
 - Testing and validation is in progress
 - Could be buggy or have accessibility issues
 
-## <span class="ds-u-fill--error">&nbsp;&nbsp;</span> Deprecated
+## <span class="ds-u-fill--error">&nbsp;&nbsp;</span> Do not use
 
 - **Do not use**
