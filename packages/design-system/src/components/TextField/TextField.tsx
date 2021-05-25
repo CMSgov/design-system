@@ -130,7 +130,7 @@ export interface TextFieldProps {
 type OmitProps = 'size' | 'label';
 
 export class TextField extends React.PureComponent<
-  Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & TextFieldProps,
+  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & TextFieldProps,
   any
 >  {
   constructor(props) {

@@ -39,7 +39,6 @@ exports[`Autocomplete renders a snapshot 1`] = `
       onChange={[Function]}
       onKeyDown={[Function]}
       role="combobox"
-      type="text"
       value=""
     />
   </div>

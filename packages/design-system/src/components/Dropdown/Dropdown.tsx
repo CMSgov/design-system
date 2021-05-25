@@ -1,4 +1,9 @@
-import * as React from 'react';
+import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
+import React from 'react';
+import Select from './Select';
+import { errorPlacementDefault } from '../flags';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export type DropdownDefaultValue = number | string;
 
@@ -103,9 +108,54 @@ export interface DropdownProps {
 
 type OmitProps = 'size' | 'value' | 'label';
 
-export default class Dropdown extends React.Component<
-  Omit<React.HTMLProps<HTMLSelectElement>, OmitProps> & DropdownProps,
+export class Dropdown extends React.PureComponent<
+  Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & DropdownProps,
   any
 > {
-  render(): JSX.Element;
+  constructor(props) {
+    super(props);
+
+    if (process.env.NODE_ENV !== 'production') {
+      // 'ariaLabel' is provided with a `label` prop that is not an empty string
+      if (props.ariaLabel && (typeof props.label !== 'string' || props.label.length > 0)) {
+        console.warn(
+          `Cannot use 'ariaLabel' and 'label' React properties together in the <Dropdown> component. If the 'label' prop is used, it should be written for all users so that an 'ariaLabel' is not needed. The 'ariaLabel' prop is intended to be used only when the input is missing an input label (i.e when an empty string is provided for the 'label' prop)`
+        );
+      }
+      // An empty string `label` is provided without a corresponding `ariaLabel` prop
+      if (!props.ariaLabel && typeof props.label === 'string' && props.label.length === 0) {
+        console.warn(
+          `Please provide an 'ariaLabel' when using the <Dropdown> component without a 'label' prop.`
+        );
+      }
+    }
+  }
+
+  render() {
+    const containerProps = pick(this.props, FormControlPropKeys);
+    const inputOnlyProps = omit(this.props, FormControlPropKeys);
+
+    // Use errorPlacement feature flag for <Select>
+    // Duplicate of errorPlacement defaulting that occurs inside <FormControl>
+    const errorPlacement = this.props.errorPlacement || errorPlacementDefault();
+
+    return (
+      <FormControl
+        {...containerProps}
+        component="div"
+        labelComponent="label"
+        render={({ id, errorId, setRef }) => (
+          <Select
+            {...inputOnlyProps}
+            {...{ id, setRef, errorId }}
+            errorMessage={this.props.errorMessage}
+            errorPlacement={errorPlacement}
+            inversed={this.props.inversed}
+          />
+        )}
+      />
+    );
+  }
 }
+
+export default Dropdown;
