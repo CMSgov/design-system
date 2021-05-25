@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { dialogSendsAnalytics } from '../flags';
 import get from 'lodash/get';
 
 // Default analytics object
@@ -52,32 +53,36 @@ export class Dialog extends React.PureComponent {
   }
 
   componentDidMount() {
-    const eventAction = 'onComponentDidMount';
-    const eventHeading = this.props.title || this.props.heading;
+    if (dialogSendsAnalytics()) {
+      const eventAction = 'onComponentDidMount';
+      const eventHeading = this.props.title || this.props.heading;
 
-    if (typeof eventHeading === 'string') {
-      this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
-    } else {
-      this.eventHeadingText =
-        this.headingRef && this.headingRef.textContent
-          ? this.headingRef.textContent.substring(0, MAX_LENGTH)
-          : '';
+      if (typeof eventHeading === 'string') {
+        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      } else {
+        this.eventHeadingText =
+          this.headingRef && this.headingRef.textContent
+            ? this.headingRef.textContent.substring(0, MAX_LENGTH)
+            : '';
+      }
+
+      /* Send analytics event for dialog open */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
     }
-
-    /* Send analytics event for dialog open */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
   }
 
   componentWillUnmount() {
-    const eventAction = 'onComponentWillUnmount';
-    /* Send analytics event for dialog close */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
+    if (dialogSendsAnalytics()) {
+      const eventAction = 'onComponentWillUnmount';
+      /* Send analytics event for dialog close */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
+    }
   }
 
   render() {
