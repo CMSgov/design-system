@@ -12,7 +12,7 @@ const flags: flagsType = {
   ERROR_PLACEMENT_DEFAULT: 'top',
   ALERT_SENDS_ANALYTICS: false,
   DIALOG_SENDS_ANALYTICS: false,
-  HELP_DRAWER_SENDS_ANALYTICS: true,
+  HELP_DRAWER_SENDS_ANALYTICS: false,
 };
 
 export function errorPlacementDefault(): errorPlacementValue {
