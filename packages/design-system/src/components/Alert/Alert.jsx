@@ -1,6 +1,7 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
@@ -21,9 +22,12 @@ const defaultAnalytics = (heading = '', variation = '') => ({
 export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.alertRef = null;
     this.headingId = props.headingId || uniqueId('alert_');
-    this.eventHeadingText = '';
+    this.eventHeading = props.heading || props.children;
+    this.eventHeadingText =
+      typeof this.eventHeading === 'string'
+        ? this.eventHeading
+        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
@@ -35,27 +39,12 @@ export class Alert extends React.PureComponent {
 
   componentDidMount() {
     const eventAction = 'onComponentDidMount';
-    const eventHeading = this.props.heading || this.props.children;
-
     /* Send analytics event for `error`, `warn`, `success` alert variations */
-    if (this.props.variation) {
-      if (typeof eventHeading === 'string') {
-        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
-      } else {
-        const eventHeadingTextElement =
-          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__body')[0]);
-        this.eventHeadingText =
-          eventHeadingTextElement && eventHeadingTextElement.textContent
-            ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
-            : '';
-      }
-
+    this.props.variation &&
       sendAnalyticsEvent(
         get(this.props.analytics, eventAction),
         get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
       );
-    }
   }
 
   heading() {
@@ -82,7 +71,6 @@ export class Alert extends React.PureComponent {
         className={classes}
         role={this.props.role}
         aria-labelledby={this.props.heading ? this.headingId : undefined}
-        ref={(ref) => (this.alertRef = ref)}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
