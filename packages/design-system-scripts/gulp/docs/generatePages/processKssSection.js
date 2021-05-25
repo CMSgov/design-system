@@ -60,10 +60,6 @@ function processFlags(section) {
     section.description = section.description
       .replace(FLAG_REGEX, (_, flag, value) => {
         switch (flag) {
-          case 'analytics':
-            // Analytics alert
-            section.analytics = true;
-            break;
           case 'hide-section':
             // Skip rendering KSS block
             section.hideSection = true;

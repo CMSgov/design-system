@@ -1,33 +1,14 @@
-import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import classNames from 'classnames';
-import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
-
-// Default analytics object
-const defaultAnalytics = (heading = '', variation = '') => ({
-  onComponentDidMount: {
-    event_name: 'alert_impression',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'alert impression',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-    type: variation,
-  },
-});
 
 export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.headingId = props.headingId || uniqueId('alert_');
-    this.eventHeading = props.heading || props.children;
-    this.eventHeadingText =
-      typeof this.eventHeading === 'string'
-        ? this.eventHeading
-        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
+
+    this.headingId = this.props.headingId || uniqueId('alert_');
+
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
@@ -35,16 +16,6 @@ export class Alert extends React.PureComponent {
         );
       }
     }
-  }
-
-  componentDidMount() {
-    const eventAction = 'onComponentDidMount';
-    /* Send analytics event for `error`, `warn`, `success` alert variations */
-    this.props.variation &&
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-      );
   }
 
   heading() {
@@ -80,39 +51,11 @@ export class Alert extends React.PureComponent {
     );
   }
 }
-
 Alert.defaultProps = {
   role: 'region',
   headingLevel: '2',
 };
-
-/**
- * Defines the shape of an analytics event for tracking that is an object with key-value pairs
- */
-const AnalyticsEventShape = PropTypes.shape({
-  event_name: PropTypes.string,
-  event_type: PropTypes.string,
-  ga_eventAction: PropTypes.string,
-  ga_eventCategory: PropTypes.string,
-  ga_eventLabel: PropTypes.string,
-  ga_eventType: PropTypes.string,
-  ga_eventValue: PropTypes.string,
-  heading: PropTypes.string,
-  type: PropTypes.string,
-});
-
 Alert.propTypes = {
-  /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
-   */
-  analytics: PropTypes.shape({
-    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-  }),
   /**
    * The alert's body content
    */

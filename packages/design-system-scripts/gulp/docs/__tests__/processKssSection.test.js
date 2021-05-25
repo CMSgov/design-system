@@ -7,7 +7,7 @@ describe('processKssSection', () => {
       toJSON: () => ({
         // These paragraphs need to be separated by a newline in order for
         // the flag processing to work properly.
-        description: `<p>Hello world</p>\n<p>@react-props Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@analytics</p>\n<p>@status prototype</p>`,
+        description: `<p>Hello world</p>\n<p>@react-props Component</p>\n<p>@hide-markup</p>\n<p>@responsive</p>\n<p>@status prototype</p>`,
         deprecated: false,
         experimental: false,
         header: 'Title - `<Component>`',
@@ -39,7 +39,6 @@ describe('processKssSection', () => {
       expect(data.reactProps).toBe('Component');
       expect(data.hideMarkup).toBe(true);
       expect(data.responsive).toBe(true);
-      expect(data.analytics).toBe(true);
       expect(data.status).toBe('prototype');
       expect(data.description).toBe('<p>Hello world</p>');
     });

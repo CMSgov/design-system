@@ -70,7 +70,6 @@ To extend the default functionality of KSS, we've implemented support for custom
 
 | flag name                   | example                                                      | flag description                                                                                                                                       |
 | --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`@analytics`**            | `@analytics`                                                 | Displays the analytics message for a component with hyperlink to guidance section `#components.[NAME].guidance-analytics`                              |
 | **`@hide-section`**         | `@hide-section`                                              | Hides an entire documentation section. **Note:** If used on a page's top level section, it will hide the entire page                                   |
 | **`@hide-markup`**          | `@hide-markup`                                               | Hides the code snippet.                                                                                                                                |
 | **`@react-props [NAME]`**   | `@react-props Button.jsx`                                    | Displays the React prop documentation for a component. `[NAME]` is the filename of the react component where the Proptypes are defined.                |
@@ -157,14 +156,6 @@ List any related components or utility classes that connect with the component, 
 List any links that served as inspiration, references, or research related to this component.
 
 Style guide: components.component-name.guidance
-*/
-
-/*
-Google Analytics
-
-List typical google analytics guidelines for this component.
-
-Style guide: components.component-name.guidance-analytics
 */
 ```
 

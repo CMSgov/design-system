@@ -1,8 +1,6 @@
 /*
 Help Drawer
 
-@analytics
-
 A help drawer provides a space for medium to long-form help
 content — content that's too long or not common enough to warrant
 being on the page by default.
@@ -34,121 +32,6 @@ Style guide: components.help-drawer.react-help-drawer
 @react-props HelpDrawerToggle.jsx
 
 Style guide: components.help-drawer.react-help-drawer-toggle
-*/
-
-/*
-Analytics props
-
-<table class="ds-c-table ds-c-table--compact">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentDidMount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track help drawers opened event</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentWillUnmount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track help drawers closed event</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>Analytics event object</h4>
-
-<table class="ds-c-table ds-c-table--compact">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">event_name</code></td>
-      <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'help_drawer_opened'</code>, or onComponentWillUnmount: <code>'help_drawer_closed'</code></td>
-      <td>
-        <p>When provided, override text to display as the event name</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">event_type</code></td>
-      <td><code>string</code></td>
-      <td><code>'ui interaction'</code></td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventAction</code></td>
-      <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'opened help drawer'</code>, or onComponentWillUnmount: <code>'closed help drawer'</code></td>
-      <td>
-        <p>When provided, override text to display as the event action</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventCategory</code></td>
-      <td><code>string</code></td>
-      <td><code>'ui components'</code></td>
-      <td>
-        <p>When provided, override text to display as the event category</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
-      <td><code>string</code></td>
-      <td>HelpDrawer prop: <code>heading or title</code></td>
-      <td>
-        <p>When provided, override text to display as the event label</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code class="ds-u-font-weight--bold">ga_eventType</code>
-      </td>
-      <td><code>string</code></td>
-      <td>cmsds</td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <code class="ds-u-font-weight--bold">ga_eventValue</code>
-      </td>
-      <td><code>string</code></td>
-      <td></td>
-      <td>
-        <p>When provided, override text to display as the event value</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">heading</code></td>
-      <td><code>string</code></td>
-      <td>HelpDrawer prop: <code>heading or title</code></td>
-      <td>
-        <p>When provided, override text to display as the heading</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-Style guide: components.help-drawer.analytics
 */
 
 /*
@@ -189,22 +72,4 @@ Style guide: components.help-drawer.analytics
 Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
 
 Style guide: components.help-drawer.guidance
-*/
-
-/*
-Google Analytics
-
-On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-- To disable the automatic event tracking, pass this prop to the component
-```
-analytics={
-  {
-    onComponentDidMount: {false},
-    onComponentWillUnmount: {false}
-  }
-}
-```
-- To override the event tracking, pass changes via the analytics prop
-
-Style guide: components.help-drawer.guidance-analytics
 */
