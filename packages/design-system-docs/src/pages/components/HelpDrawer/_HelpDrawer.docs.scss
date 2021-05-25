@@ -200,7 +200,7 @@ Google Analytics
 
 - Import and set the `setHelpDrawerSendsAnalytics` feature flag to `true` in your application's entry file:
 
-```
+```JSX
 import { setHelpDrawerSendsAnalytics } from "@cmsgov/<design-system-package>";
 setHelpDrawerSendsAnalytics(true);
 ```
@@ -211,7 +211,7 @@ On application where the page has `utag` loaded, the data goes to Tealium which 
 - Pass the `onComponentDidMount` prop set to `false` to the component:
 - Pass the `onComponentWillUnmount` prop set to `false` to the component:
 
-```
+```JSX
 analytics={
   {
     onComponentDidMount: {false},

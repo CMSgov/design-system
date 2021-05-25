@@ -55,7 +55,8 @@ Google Analytics
 ### Enable event tracking
 
 - Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
-```
+
+```JSX
 import { setDialogSendsAnalytics } from "@cmsgov/<design-system-package>";
 setDialogSendsAnalytics(true);
 ```
@@ -66,7 +67,7 @@ On applications where the page has `utag` loaded, the data goes to Tealium which
 - Pass the `onComponentDidMount` prop set to `false` to the component:
 - Pass the `onComponentWillUnmount` prop set to `false` to the component:
 
-```
+```JSX
 analytics={
   {
     onComponentDidMount: {false},

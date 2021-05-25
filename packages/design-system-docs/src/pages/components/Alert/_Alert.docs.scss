@@ -196,7 +196,8 @@ Google Analytics
 ### Enable event tracking
 
 - Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
-```
+
+```JSX
 import { setAlertSendsAnalytics } from "@cmsgov/<design-system-package>";
 setAlertSendsAnalytics(true);
 ```
@@ -205,7 +206,8 @@ On applications where the page has `utag` loaded, the data goes to Tealium which
 ### Disable event tracking
 
 - Pass the `onComponentDidMount` prop set to `false` to the component:
-```
+
+```JSX
 analytics={
   {
     onComponentDidMount: {false}
