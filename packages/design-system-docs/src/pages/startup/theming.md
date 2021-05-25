@@ -50,8 +50,8 @@ set the `$ds-include-focus-styles` variable to `false` in your `_override.build.
 
 ##### Focus style variables
 
-- `$color-focus-light` - Sets the inner halo for the focus styles.
-- `$color-focus-dark` - Sets the outer halo for the focus styles. This color should pass 3.1 contrast ratio on white or light backgrounds.
+- `$color-focus-inner` - Sets the inner halo for the focus styles.
+- `$color-focus-outer` - Sets the outer halo for the focus styles. This color should pass 3.1 contrast ratio on white or light backgrounds.
 
 ##### Adding focus styles to additional element
 
@@ -68,7 +68,7 @@ Use the following mixin `@include focus-styles;`
 The focus-styles mixin will apply the following styles:
 
 ```CSS
-box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+box-shadow: 0 0 0 3px $color-focus-inner, 0 0 4px 6px $color-focus-outer;
 // Add support for Windows High Contrast Mode (WHCM)
 // The transparent color only shows when WHCM is triggered
 outline: 3px solid transparent;

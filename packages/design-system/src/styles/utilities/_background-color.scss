@@ -264,9 +264,9 @@
 
 // Focus colors
 .ds-u-fill--focus-color-light {
-  background-color: $color-focus-light !important;
+  background-color: $color-focus-inner !important;
 }
 
 .ds-u-fill--focus-color-dark {
-  background-color: $color-focus-dark !important;
+  background-color: $color-focus-outer !important;
 }
