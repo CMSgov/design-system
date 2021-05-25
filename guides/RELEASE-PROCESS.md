@@ -41,10 +41,10 @@
       ```
       # What's new in CMS Design System X.X.X
       ## Design System
-      ### What's new 
+      ### What's new
       ### Changes and fixes
       ### Deprecated
-      ## Shared scripts 
+      ## Shared scripts
       ### What's new
       ### Deprecated
       ### Changes and fixes
@@ -52,7 +52,7 @@
       ### What's new
       ### Deprecated
       ### Changes and fixes
-      
+
       ```
 
       **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``
