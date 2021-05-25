@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { dialogSendsAnalytics } from '../flags';
 import get from 'lodash/get';
 
 // Default analytics object
@@ -64,20 +65,24 @@ export class Dialog extends React.PureComponent {
           : '';
     }
 
-    /* Send analytics event for dialog open */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
+    if (dialogSendsAnalytics()) {
+      /* Send analytics event for dialog open */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
+    }
   }
 
   componentWillUnmount() {
-    const eventAction = 'onComponentWillUnmount';
-    /* Send analytics event for dialog close */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
+    if (dialogSendsAnalytics()) {
+      const eventAction = 'onComponentWillUnmount';
+      /* Send analytics event for dialog close */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
+    }
   }
 
   render() {

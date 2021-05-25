@@ -1,6 +1,7 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
@@ -51,10 +52,12 @@ export class Alert extends React.PureComponent {
             : '';
       }
 
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-      );
+      if (alertSendsAnalytics()) {
+        sendAnalyticsEvent(
+          get(this.props.analytics, eventAction),
+          get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
+        );
+      }
     }
   }
 
