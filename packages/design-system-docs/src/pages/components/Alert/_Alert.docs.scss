@@ -191,13 +191,20 @@ Style guide: components.alert.guidance
 /*
 Google Analytics
 
-Analytics event tracking is disabled by default. To enable this feature, import and set the feature flag in your application's entry file:
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+- Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
 ```
 import { setAlertSendsAnalytics } from "@cmsgov/<design-system-package>";
 setAlertSendsAnalytics(true);
 ```
-On application where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-- To disable the automatic event tracking on certain cases, pass this prop to the component
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Disable event tracking
+
+- Pass the `onComponentDidMount` prop set to `false` to the component:
 ```
 analytics={
   {
@@ -205,7 +212,9 @@ analytics={
   }
 }
 ```
-- To override the event tracking, pass changes via the analytics prop
+### Override  event tracking
+
+- Pass changes via any of the [available analytics props](#components.alert.analytics).
 
 Style guide: components.alert.guidance-analytics
 */
