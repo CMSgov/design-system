@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import get from 'lodash/get';
+import { helpDrawerSendsAnalytics } from '../flags';
 
 // Default analytics object
 const defaultAnalytics = (heading = '') => ({
@@ -48,32 +49,36 @@ export class HelpDrawer extends React.PureComponent {
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
 
-    const eventAction = 'onComponentDidMount';
-    const eventHeading = this.props.title || this.props.heading;
+    if (helpDrawerSendsAnalytics()) {
+      const eventAction = 'onComponentDidMount';
+      const eventHeading = this.props.title || this.props.heading;
 
-    if (typeof eventHeading === 'string') {
-      this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
-    } else {
-      this.eventHeadingText =
-        this.headingRef && this.headingRef.textContent
-          ? this.headingRef.textContent.substring(0, MAX_LENGTH)
-          : '';
+      if (typeof eventHeading === 'string') {
+        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      } else {
+        this.eventHeadingText =
+          this.headingRef && this.headingRef.textContent
+            ? this.headingRef.textContent.substring(0, MAX_LENGTH)
+            : '';
+      }
+
+      /* Send analytics event for helpdrawer open */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
     }
-
-    /* Send analytics event for helpdrawer open */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
   }
 
   componentWillUnmount() {
-    const eventAction = 'onComponentWillUnmount';
-    /* Send analytics event for helpdrawer close */
-    sendAnalyticsEvent(
-      get(this.props.analytics, eventAction),
-      get(defaultAnalytics(this.eventHeadingText), eventAction)
-    );
+    if (helpDrawerSendsAnalytics()) {
+      const eventAction = 'onComponentWillUnmount';
+      /* Send analytics event for helpdrawer close */
+      sendAnalyticsEvent(
+        get(this.props.analytics, eventAction),
+        get(defaultAnalytics(this.eventHeadingText), eventAction)
+      );
+    }
   }
 
   render() {

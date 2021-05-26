@@ -11,6 +11,6 @@ export interface TableHeadProps {
   _stackable?: boolean;
 }
 
-declare const TableHead: React.FC<React.HTMLProps<HTMLTableSectionElement> & TableHeadProps>;
+declare const TableHead: React.FC<React.ComponentPropsWithRef<'tbody'> & TableHeadProps>;
 
 export default TableHead;

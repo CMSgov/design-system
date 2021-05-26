@@ -60,9 +60,9 @@ export interface TableCellProps {
 }
 
 declare const TableCell: React.FC<
-  React.HTMLProps<HTMLTableHeaderCellElement> &
-    React.HTMLProps<HTMLTableDataCellElement> &
-    TableCellProps
+  React.ComponentPropsWithRef<'th'> &
+  React.ComponentPropsWithRef<'td'> &
+  TableCellProps
 >;
 
 export default TableCell;
