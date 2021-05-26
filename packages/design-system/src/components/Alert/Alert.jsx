@@ -1,6 +1,7 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
@@ -34,27 +35,29 @@ export class Alert extends React.PureComponent {
   }
 
   componentDidMount() {
-    const eventAction = 'onComponentDidMount';
-    const eventHeading = this.props.heading || this.props.children;
+    if (alertSendsAnalytics()) {
+      const eventAction = 'onComponentDidMount';
+      const eventHeading = this.props.heading || this.props.children;
 
-    /* Send analytics event for `error`, `warn`, `success` alert variations */
-    if (this.props.variation) {
-      if (typeof eventHeading === 'string') {
-        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
-      } else {
-        const eventHeadingTextElement =
-          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
-          (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__body')[0]);
-        this.eventHeadingText =
-          eventHeadingTextElement && eventHeadingTextElement.textContent
-            ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
-            : '';
+      /* Send analytics event for `error`, `warn`, `success` alert variations */
+      if (this.props.variation) {
+        if (typeof eventHeading === 'string') {
+          this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+        } else {
+          const eventHeadingTextElement =
+            (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (this.alertRef && this.alertRef.getElementsByClassName('ds-c-alert__body')[0]);
+          this.eventHeadingText =
+            eventHeadingTextElement && eventHeadingTextElement.textContent
+              ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+              : '';
+        }
+
+        sendAnalyticsEvent(
+          get(this.props.analytics, eventAction),
+          get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
+        );
       }
-
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-      );
     }
   }
 
