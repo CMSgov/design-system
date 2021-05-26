@@ -64,9 +64,9 @@ $filter-chip-border-radius: $border-radius-pill !default;
     display: block;
     fill: $filter-chip-text-color;
     height: $filter-chip-icon-size;
-    left: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    left: ($filter-chip-icon-container-size - $filter-chip-icon-size) / 3;
     position: relative;
-    top: ($filter-chip-icon-container-size - 2 - $filter-chip-icon-size) / 2;
+    top: ($filter-chip-icon-container-size - $filter-chip-icon-size) / 3;
     width: $filter-chip-icon-size;
   }
 
