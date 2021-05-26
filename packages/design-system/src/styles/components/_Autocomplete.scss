@@ -15,8 +15,10 @@
       display: block;
     }
   }
-  input:focus {
-    @include focus-styles-position;
+  @if $ds-include-focus-styles {
+    input:focus {
+      @include focus-styles-position;
+    }
   }
 }
 
