@@ -5,8 +5,11 @@ export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) 
 export type ButtonSize = 'small' | 'big';
 
 export type ButtonType = 'button' | 'submit';
-
-export type ButtonVariation = 'primary' | 'success' | 'transparent';
+/**
+ * A string corresponding to the button-component variation classes.
+ * The danger variation is deprecated and will be removed in a future release.
+ */
+export type ButtonVariation = 'primary' | ' danger' | 'success' | 'transparent';
 
 export interface ButtonProps {
   /**
