@@ -55,7 +55,7 @@ Style guide: [Reference]
 ```
 
 ## Page views 
-You can render a simplified version of the page byt applying one of the following to the end of your URL.
+You can render a simplified version of the page by applying one of the following to the end of your URL.
 
 - `?view=code` for the Live demos & code examples i.e. https://design.cms.gov/components/button/?view=code
 - `?view=guidance` for guidance i.e. https://design.cms.gov/components/button/?view=guidance
