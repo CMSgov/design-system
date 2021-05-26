@@ -6,7 +6,7 @@ import pick from 'lodash/pick';
 
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
-export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
+type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
   /**
