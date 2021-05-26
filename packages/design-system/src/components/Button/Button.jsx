@@ -163,7 +163,7 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']),
   /**
    * A string corresponding to the button-component variation classes.
-   * The danger variation is deprecated and will be removed in a future release.
+   * The `'danger'` variation is deprecated and will be removed in a future release.
    */
   variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
 };
