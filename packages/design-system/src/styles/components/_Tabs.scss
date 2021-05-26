@@ -38,7 +38,7 @@
   font-size: $font-size-sm;
   font-weight: $font-bold;
   line-height: $reset-line-height;
-  margin-bottom: -1px;
+  margin-bottom: units(-1px);
   padding: units(2) units(1);
   position: relative;
   text-decoration: none;

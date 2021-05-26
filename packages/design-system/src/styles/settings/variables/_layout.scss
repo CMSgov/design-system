@@ -31,10 +31,18 @@ $spacer-half: $spacer-1 / 2; // 4px
 // INTERNAL: If these values change, the values used for the responsive previews
 // in the documentation should also change.
 $width-xs: 0 !default;
-$width-sm: units('mobile-lg') !default; // originally 544px, but no corresponding spacing token
-$width-md: units('tablet') !default; // originally 768px, but no corresponding spacing token
-$width-lg: units('desktop') !default; // originally 1024px, but no corresponding spacing token
-$width-xl: units('desktop-lg') !default; // originally 1280px, but no corresponding spacing token
+$width-sm: units(
+  'mobile-lg'
+) !default; // originally 544px, but no corresponding spacing token ('mobile-lg' is 480px)
+$width-md: units(
+  'tablet'
+) !default; // originally 768px, but no corresponding spacing token ('tablet' is 640px)
+$width-lg: units(
+  'desktop'
+) !default; // originally 1024px, but no corresponding spacing token ('desktop' is 1024px)
+$width-xl: units(
+  'desktop-lg'
+) !default; // originally 1280px, but no corresponding spacing token ('desktop-lg' is 1200px)
 
 // Breakpoints
 $breakpoints: (
@@ -59,14 +67,18 @@ $z-dialog: 1000 !default;
 
 // Site variables
 $site-margins: 3rem !default;
-$site-margins-mobile: 1.5rem !default;
-$site-max-width: units('desktop') !default; // originally 1040px, but no corresponding spacing token
+$site-margins-mobile: units(3) !default;
+$site-max-width: units(
+  'desktop'
+) !default; // originally 1040px, but no corresponding spacing token ('desktop' is 1024px)
 $text-max-width: 53rem !default;
 $lead-max-width: 77rem !default;
 $article-max-width: units(
   'tablet'
-) !default; // originally 600px, but no corresponding spacing token
-$nav-width: units('desktop') !default; // originally 951px, but no corresponding spacing token
+) !default; // originally 600px, but no corresponding spacing token ('tablet' is 640px)
+$nav-width: units(
+  'desktop'
+) !default; // originally 951px, but no corresponding spacing token ('desktop' is 1024px)
 
 // 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
 $hit-area: 4.4rem !default;

@@ -86,7 +86,7 @@
 .ds-c-button--small {
   font-size: $font-size-sm;
   font-weight: $font-normal;
-  padding: units units(1);
+  padding: units(0.5) units(1);
 }
 
 /**
