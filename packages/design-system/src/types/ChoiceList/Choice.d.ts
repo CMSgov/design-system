@@ -88,9 +88,8 @@ export interface ChoiceProps {
 
 type OmitProps = 'size' | 'type' | 'value' | 'label';
 
-// Remove the "size" definition inside React.HTMLProps<HTMLInputElement>, and use ours instead
-export default class Choice extends React.Component<
-  Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & ChoiceProps,
+// Remove the "size" definition inside React.ComponentPropsWithRef, and use ours instead
+export default class Choice extends React.Component<Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
   any
 > {
   render(): JSX.Element;
