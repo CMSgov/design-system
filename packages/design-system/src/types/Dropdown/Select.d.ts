@@ -78,7 +78,7 @@ export interface SelectProps {
 type OmitProps = 'size' | 'value';
 
 export default class Select extends React.Component<
-  Omit<React.HTMLProps<HTMLSelectElement>, OmitProps> & SelectProps,
+  Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & SelectProps,
   any
 > {
   render(): JSX.Element;

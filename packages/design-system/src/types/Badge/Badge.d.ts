@@ -24,8 +24,6 @@ export interface BadgeProps {
   variation?: BadgeVariation;
 }
 
-type OmitProps = 'size' | 'label';
-
-declare const Badge: React.FC<Omit<React.HTMLProps<HTMLSpanElement>, OmitProps> & BadgeProps>;
+declare const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps>;
 
 export default Badge;

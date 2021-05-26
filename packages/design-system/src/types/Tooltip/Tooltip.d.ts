@@ -67,7 +67,7 @@ interface TooltipProps {
    */
   zIndex?: number;
 }
-  
+
 interface TooltipState {
   active: boolean,
   isHover: boolean,
@@ -77,7 +77,7 @@ interface TooltipState {
 type OmitProps = 'title';
 
 export default class Tooltip extends React.Component<
-  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & TooltipProps,
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & TooltipProps,
   TooltipState
 > {
   render(): JSX.Element;
