@@ -84,7 +84,17 @@ export interface ChoiceProps {
   value: number | string;
 }
 
-type OmitProps = 'size' | 'type' | 'value' | 'label' | 'checked' | 'defaultChecked' | 'onBlur' | 'onChange' | 'name' | 'id';
+type OmitProps =
+  | 'size'
+  | 'type'
+  | 'value'
+  | 'label'
+  | 'checked'
+  | 'defaultChecked'
+  | 'onBlur'
+  | 'onChange'
+  | 'name'
+  | 'id';
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
@@ -92,14 +102,8 @@ const dsChoiceEmitter = new EvEmitter();
 export class Choice extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
   any
->  {
-
-  input: any;
-  id: string;
-  isControlled: boolean;
-  uncheckEventName: string;
-
-  constructor(props) {
+> {
+  constructor(props: ChoiceProps) {
     super(props);
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
@@ -132,14 +136,19 @@ export class Choice extends React.PureComponent<
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     // Unbind event emitters are only relevant for uncontrolled radio buttons
     if (!this.isControlled && this.props.type === 'radio') {
       dsChoiceEmitter.off(this.uncheckEventName, this.handleUncheck);
     }
   }
 
-  checked() {
+  input: any;
+  id: string;
+  isControlled: boolean;
+  uncheckEventName: string;
+
+  checked(): boolean {
     if (this.isControlled) {
       return this.props.checked;
     }
@@ -153,13 +162,13 @@ export class Choice extends React.PureComponent<
    * allows us to check each radio options' checked state.
    * @param {String} checkedId - ID of the checked radio option
    */
-  handleUncheck(checkedId) {
+  handleUncheck(checkedId: string): void {
     if (checkedId !== this.id && this.input.checked !== this.state.checked) {
       this.setState({ checked: this.input.checked });
     }
   }
 
-  handleChange(evt) {
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
     if (this.props.onChange) {
       this.props.onChange(evt);
     }
@@ -174,7 +183,7 @@ export class Choice extends React.PureComponent<
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       checkedChildren,
       children,

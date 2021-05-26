@@ -1,3 +1,4 @@
+import { DateObject } from './defaultDateFormatter';
 import React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
@@ -36,7 +37,7 @@ export interface DateInputProps {
   /**
    * A unique ID applied to the DateField label.
    */
-  labelId: string,
+  labelId: string;
   /**
    * Called anytime any date input is blurred
    */
@@ -132,18 +133,18 @@ export interface DateInputProps {
 }
 
 export class DateInput extends React.PureComponent<DateInputProps> {
-  monthInput: any;
-  dayInput: any;
-  yearInput: any;
-
-  constructor(props) {
+  constructor(props: DateInputProps) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  formatDate() {
-    console.log(this.monthInput, this.dayInput, this.yearInput)
+  monthInput: any;
+  dayInput: any;
+  yearInput: any;
+
+  formatDate(): DateObject {
+    console.log(this.monthInput, this.dayInput, this.yearInput);
     if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
       const values = {
         month: this.monthInput.value,
@@ -154,7 +155,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     }
   }
 
-  handleBlur(evt) {
+  handleBlur(evt: React.FocusEvent<HTMLInputElement>): void {
     if (this.props.onBlur) {
       this.props.onBlur(evt, this.formatDate());
     }
@@ -164,11 +165,11 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     }
   }
 
-  handleChange(evt) {
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
     this.props.onChange(evt, this.formatDate());
   }
 
-  handleComponentBlur(evt) {
+  handleComponentBlur(evt: React.FocusEvent<HTMLInputElement>): void {
     // The active element is always the document body during a focus
     // transition, so in order to check if the newly focused element
     // is one of our other date inputs, we're going to have to wait
@@ -184,7 +185,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     }, 20);
   }
 
-  renderField(type) {
+  renderField(type: 'day' | 'month' | 'year'): React.ReactNode {
     const sharedTextFieldProps = {
       className: 'ds-l-col--auto',
       labelClassName: 'ds-c-datefield__label',
@@ -216,7 +217,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     );
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <div className="ds-l-form-row ds-u-align-items--end">
         {this.renderField('month')}

@@ -1,10 +1,9 @@
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import defaultDateFormatter from './defaultDateFormatter';
 import DateInput from './DateInput';
 import React from 'react';
+import defaultDateFormatter from './defaultDateFormatter';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
-
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -28,7 +27,7 @@ export interface DateFieldProps {
    * method is provided, the returned value will be passed as a second argument
    * to the `onBlur` and `onChange` callbacks. This method receives an object as
    * its only argument, in the shape of: `{ day, month, year }`
-   * 
+   *
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter?: typeof defaultDateFormatter;
@@ -151,8 +150,7 @@ export interface DateFieldProps {
   yearValue?: DateFieldYearValue;
 }
 
-
-export function DateField(props: DateFieldProps) {
+export function DateField(props: DateFieldProps): React.ReactNode {
   const containerProps = pick(props, FormControlPropKeys);
   const inputOnlyProps = omit(props, FormControlPropKeys);
 

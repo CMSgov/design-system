@@ -1,14 +1,12 @@
+import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { FormControl, FormControlPropKeys } from '../FormControl/FormControl';
-import Choice from './Choice';
 import React from 'react';
 import classNames from 'classnames';
 import pick from 'lodash/pick';
 
-import { ChoiceProps as ChoiceComponentProps } from './Choice';
-
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
-export interface ChoiceProps extends Omit<ChoiceComponentProps, OmitChoiceProp> { }
+export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
   /**
@@ -82,9 +80,7 @@ export interface ChoiceListProps {
 }
 
 export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
-  choiceRefs: [any?];
-
-  constructor(props) {
+  constructor(props: ChoiceListProps) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -105,7 +101,9 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     this.choiceRefs = [];
   }
 
-  handleBlur(evt) {
+  choiceRefs: [any?];
+
+  handleBlur(evt: React.FocusEvent<HTMLInputElement>): void {
     if (this.props.onBlur) {
       this.props.onBlur(evt);
     }
@@ -115,7 +113,7 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     }
   }
 
-  handleComponentBlur(evt) {
+  handleComponentBlur(evt: React.FocusEvent<HTMLInputElement>): void {
     // The active element is always the document body during a focus
     // transition, so in order to check if the newly focused element
     // is one of our choices, we're going to have to wait a bit.
@@ -126,12 +124,11 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     }, 20);
   }
 
-  render() {
+  render(): React.ReactNode {
     const containerProps = pick(this.props, FormControlPropKeys);
 
     const choices = this.props.choices.map((choiceProps) => {
-      const completeChoiceProps: ChoiceComponentProps =
-      {
+      const completeChoiceProps: ChoiceComponentProps = {
         ...choiceProps,
         inversed: this.props.inversed,
         name: this.props.name,
@@ -146,8 +143,7 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
         inputRef: (ref) => {
           this.choiceRefs.push(ref);
         },
-      }
-
+      };
 
       return <Choice key={choiceProps.value} {...completeChoiceProps} />;
     });
@@ -162,6 +158,5 @@ export class ChoiceList extends React.PureComponent<ChoiceListProps, any> {
     );
   }
 }
-
 
 export default ChoiceList;
