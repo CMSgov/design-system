@@ -1,6 +1,6 @@
+import Select, { SelectProps } from './Select';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import Select, { SelectProps, OmitProps } from './Select';
 import { generateOptions } from './Dropdown.test';
 
 const defaultProps: SelectProps = {

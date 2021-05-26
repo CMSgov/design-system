@@ -23,18 +23,7 @@ export interface MaskProps {
 }
 
 export class Mask extends React.PureComponent<MaskProps, any> {
-  debouncedOnBlurEvent: any;
-
-  /**
- * Get the child text field. Called as a method so that
- * updates to the field cause the mask to re-render
- * @returns {React.ReactElement} Child TextField
- */
-  field(): React.ReactElement {
-    return React.Children.only(this.props.children as React.ReactElement);
-  }
-
-  constructor(props) {
+  constructor(props: MaskProps) {
     super(props);
 
     const field = this.field();
@@ -45,7 +34,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: MaskProps): void {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
@@ -70,6 +59,17 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
   }
 
+  debouncedOnBlurEvent: any;
+
+  /**
+   * Get the child text field. Called as a method so that
+   * updates to the field cause the mask to re-render
+   * @returns {React.ReactElement} Child TextField
+   */
+  field(): React.ReactElement {
+    return React.Children.only(this.props.children as React.ReactElement);
+  }
+
   /**
    * To avoid a jarring experience for screen readers, we only
    * add/remove characters after the field has been blurred,
@@ -77,7 +77,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleBlur(evt, field) {
+  handleBlur(evt: React.FocusEvent, field: React.ReactElement): void {
     const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
@@ -109,7 +109,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleChange(evt, field) {
+  handleChange(evt: React.ChangeEvent, field: React.ReactElement): void {
     this.setState({ value: evt.target.value });
 
     if (typeof field.props.onChange === 'function') {
@@ -117,7 +117,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { mask } = this.props;
     const field = this.field();
 

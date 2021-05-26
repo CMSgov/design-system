@@ -4,7 +4,7 @@ import React from 'react';
 
 const defaultProps = { name: 'dropdown', label: 'Select an option' };
 
-export function generateOptions(count) {
+export function generateOptions(count: number): { value: string; label: string }[] {
   const options = [];
 
   for (let i = 1; i < count + 1; i++) {

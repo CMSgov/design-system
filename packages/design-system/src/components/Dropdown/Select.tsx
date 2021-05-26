@@ -35,7 +35,7 @@ export interface SelectProps {
   /**
    * The ID of the error message applied to the Select field.
    */
-  errorId?: string,
+  errorId?: string;
   errorMessage?: React.ReactNode;
   /**
    * Location of the error message relative to the field input
@@ -44,11 +44,11 @@ export interface SelectProps {
   /**
    * Additional classes to be added to the select element
    */
-  fieldClassName?: string,
+  fieldClassName?: string;
   /**
    * A unique ID to be used for the Select field.
    */
-  id: string,
+  id: string;
   /**
    * Applies the "inverse" UI theme
    */
@@ -56,7 +56,7 @@ export interface SelectProps {
   /**
    * The field's `name` attribute
    */
-  name: string,
+  name: string;
   /**
    * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
    */
@@ -77,7 +77,6 @@ export interface SelectProps {
 
 export type OmitProps = 'size' | 'value';
 
-
 /**
  * <Select> is an internal component used by <Dropdown>, which wraps it and handles common form controls like labels, error messages, etc
  * <Select> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
@@ -86,8 +85,8 @@ export type OmitProps = 'size' | 'value';
 export class Select extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & SelectProps,
   any
->  {
-  constructor(props) {
+> {
+  constructor(props: SelectProps) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -99,7 +98,7 @@ export class Select extends React.PureComponent<
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     // Select specific props
     const {
       ariaLabel,

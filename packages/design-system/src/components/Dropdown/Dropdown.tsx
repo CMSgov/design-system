@@ -112,7 +112,7 @@ export class Dropdown extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & DropdownProps,
   any
 > {
-  constructor(props) {
+  constructor(props: DropdownProps) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -131,7 +131,7 @@ export class Dropdown extends React.PureComponent<
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const containerProps = pick(this.props, FormControlPropKeys);
     const inputOnlyProps = omit(this.props, FormControlPropKeys);
 

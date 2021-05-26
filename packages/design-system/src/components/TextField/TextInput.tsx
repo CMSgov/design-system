@@ -1,5 +1,5 @@
-import Mask from './Mask';
 import React, { FunctionComponent } from 'react';
+import Mask from './Mask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
@@ -20,7 +20,7 @@ export interface TextInputProps {
   /**
    * The ID of the error message applied to the Select field.
    */
-  errorId?: string,
+  errorId?: string;
   errorMessage?: React.ReactNode;
   /**
    * Location of the error message relative to the field input
@@ -87,7 +87,11 @@ export type OmitProps = 'size' | 'ref';
  * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
  */
-const TextInput: FunctionComponent<Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> & Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & TextInputProps> = (props) => {
+const TextInput: FunctionComponent<
+  Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
+    Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
+    TextInputProps
+> = (props: TextInputProp) => {
   const {
     ariaLabel,
     errorId,
@@ -152,6 +156,6 @@ const TextInput: FunctionComponent<Omit<React.ComponentPropsWithRef<'textarea'>,
   );
 
   return mask ? <Mask mask={mask}>{field}</Mask> : field;
-}
+};
 
 export default TextInput;

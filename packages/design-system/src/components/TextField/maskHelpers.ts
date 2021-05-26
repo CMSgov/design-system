@@ -6,12 +6,21 @@ const maskDeliminatedRegex = {
 };
 
 /**
+ * Remove everything that isn't a digit or asterisk
+ * @param {String} value
+ * @returns {String}
+ */
+function toDigitsAndAsterisks(value: string): string {
+  return value.replace(/[^\d*]/g, '');
+}
+
+/**
  * Split value into groups and insert a hyphen deliminator between each
  * @param {String} value
  * @param {RegExp} rx - Regular expression with capturing groups
  * @returns {String}
  */
-function deliminateRegexGroups(value, rx) {
+function deliminateRegexGroups(value: string, rx: RegExp): string {
   const matches = toDigitsAndAsterisks(value).match(rx);
   if (matches && matches.length > 1) {
     value = matches
@@ -24,21 +33,12 @@ function deliminateRegexGroups(value, rx) {
 }
 
 /**
- * Remove everything that isn't a digit or asterisk
- * @param {String} value
- * @returns {String}
- */
-function toDigitsAndAsterisks(value) {
-  return value.replace(/[^\d*]/g, '');
-}
-
-/**
  * Determines if a value is a valid string with numeric digits
  * @param {String} value
  * @param {String} mask
  * @returns {Boolean}
  */
-function isValueMaskable(value, mask) {
+function isValueMaskable(value: string, mask: string): boolean {
   if (value && typeof value === 'string') {
     const hasDigits = value.match(/\d/);
     const hasDigitsAsterisks = value.match(/[\d*]/g);
@@ -54,7 +54,7 @@ function isValueMaskable(value, mask) {
  * @param {String} value - a string containing at least one digit
  * @returns {String}
  */
-export function toCurrency(value) {
+export function toCurrency(value: string): string {
   // Determine if the value is positive or negative.
   const sign = value.indexOf('-') === 0 ? '-' : '';
   // Remove all characters except digits and decimal points.
@@ -91,7 +91,7 @@ export function toCurrency(value) {
  * @param {String} value
  * @returns {String}
  */
-export function maskValue(value = '', mask) {
+export function maskValue(value = '', mask: string): string {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       value = toCurrency(value);
@@ -110,7 +110,7 @@ export function maskValue(value = '', mask) {
  * @param {String} mask
  * @returns {String}
  */
-export function unmaskValue(value, mask) {
+export function unmaskValue(value: string, mask: string): string {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Preserve only digits, decimal point, or negative symbol

@@ -132,8 +132,8 @@ type OmitProps = 'size' | 'label';
 export class TextField extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & TextFieldProps,
   any
->  {
-  constructor(props) {
+> {
+  constructor(props: TextFieldProps) {
     super(props);
 
     if (process.env.NODE_ENV !== 'production') {
@@ -145,7 +145,7 @@ export class TextField extends React.PureComponent<
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const containerProps = pick(this.props, FormControlPropKeys);
     const inputOnlyProps = omit(this.props, FormControlPropKeys);
 
