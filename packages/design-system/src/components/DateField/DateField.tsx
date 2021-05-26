@@ -21,7 +21,6 @@ export interface DateFieldProps {
    * Additional classes to be added to the root fieldset element
    */
   className?: string;
-  disabled?: boolean;
   /**
    * Optional method to format the `input` field values. If this
    * method is provided, the returned value will be passed as a second argument
@@ -31,6 +30,7 @@ export interface DateFieldProps {
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
   dateFormatter?: typeof defaultDateFormatter;
+  disabled?: boolean;
   errorMessage?: React.ReactNode;
   /**
    * Additional classes to be added to the error message
@@ -52,6 +52,10 @@ export interface DateFieldProps {
    * The primary label, rendered above the individual month/day/year fields
    */
   label?: React.ReactNode;
+  /**
+ * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
+ */
+  labelId?: string,
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
