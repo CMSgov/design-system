@@ -90,7 +90,7 @@ type OmitProps = 'size' | 'type' | 'value' | 'label' | 'checked' | 'defaultCheck
 const dsChoiceEmitter = new EvEmitter();
 
 export class Choice extends React.PureComponent<
-  Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & ChoiceProps,
+  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
   any
 >  {
 
