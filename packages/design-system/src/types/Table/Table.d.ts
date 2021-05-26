@@ -48,7 +48,7 @@ export interface TableProps {
 }
 
 export default class Table extends React.Component<
-  React.HTMLProps<HTMLTableElement> & TableProps,
+  React.ComponentPropsWithRef<'table'> & TableProps,
   any
 > {
   render(): JSX.Element;

@@ -62,9 +62,9 @@ export interface ButtonProps {
 
 type OmitProps = 'size';
 
-// Remove the "size" definition inside React.HTMLProps<HTMLButtonElement>, and use ours instead
+// Remove the "size" definition inside React.ComponentPropsWithRef+, and use ours instead
 export default class Button extends React.Component<
-  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & ButtonProps,
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps,
   any
 > {
   render(): JSX.Element;
