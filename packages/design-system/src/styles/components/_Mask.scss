@@ -17,10 +17,10 @@
   font-size: $base-font-size + 2;
   font-weight: $font-bold;
   // Adjust to better align icon with value's baseline
-  padding-top: 1px;
+  padding-top: units(1px);
 }
 
 .ds-c-field--currency {
   // Normal padding + space for the icon + normal padding
-  padding-left: $input-padding + 4px + $input-padding;
+  padding-left: $input-padding + units(0.5) + $input-padding;
 }

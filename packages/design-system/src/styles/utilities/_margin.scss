@@ -1,9 +1,9 @@
 /* stylelint-disable declaration-no-important */
 @import '../settings/index.scss';
 
-@for $i from 1 through length($spacers) {
-  $size: #{nth($spacers, $i)};
-  $scale: #{$i - 1};
+@for $i from 0 through length($spacers) {
+  $size: units($i);
+  $scale: #{$i};
 
   // Example: ds-u-margin--0
   .ds-u-margin--#{$scale} {
@@ -72,9 +72,9 @@
   $value: map-get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
-    @for $i from 1 through length($spacers) {
-      $size: #{nth($spacers, $i)};
-      $scale: #{$i - 1};
+    @for $i from 0 through length($spacers) {
+      $size: units($i);
+      $scale: #{$i};
 
       // Example: ds-u-sm-margin--0
       .ds-u-#{$breakpoint}-margin--#{$scale} {

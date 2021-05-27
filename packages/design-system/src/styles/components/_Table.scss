@@ -4,8 +4,8 @@ $table-border-color: $color-black !default;
 $table-header-background-color: $color-gray-lightest !default;
 $table-striped-background-color: $color-gray-lightest !default;
 $table-striped-header-background-color: $color-gray-lightest !default;
-$table-padding: $spacer-2 !default;
-$table-compact-padding: $spacer-half $spacer-2 !default;
+$table-padding: units(2) !default;
+$table-compact-padding: units(0.5) units(2) !default;
 
 .ds-c-table {
   border-collapse: collapse;
@@ -81,7 +81,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 
 .ds-c-table__caption {
   font-weight: $font-bold;
-  margin-bottom: $spacer-1;
+  margin-bottom: units(1);
   text-align: left;
 }
 
@@ -126,7 +126,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
       content: attr(data-title);
       display: block;
       font-weight: bold;
-      padding-bottom: $spacer-half;
+      padding-bottom: units(0.5);
     }
   }
   // stylelint-enable selector-no-qualifying-type

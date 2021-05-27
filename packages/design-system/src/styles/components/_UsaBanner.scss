@@ -19,27 +19,27 @@ $usa-banner-font-family: $font-sans;
   font-size: 12px;
   font-weight: $font-normal;
   line-height: 1.2;
-  min-height: $spacer-4;
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+  min-height: units(4);
+  padding: units(1) units(2) units(1) units(2);
   position: relative;
 
   @media (min-width: $width-sm) {
     min-height: 0;
-    padding-bottom: 4px;
-    padding-top: 4px;
+    padding-bottom: units(0.5);
+    padding-top: units(0.5);
   }
 }
 
 .ds-c-usa-banner__header-flag {
-  margin-right: $spacer-1;
-  width: $spacer-2;
+  margin-right: units(1);
+  width: units(2);
 }
 
 .ds-c-usa-banner__header-text {
   display: table;
   margin: 0;
   span {
-    margin-right: $spacer-1;
+    margin-right: units(1);
   }
 }
 
@@ -55,14 +55,14 @@ $usa-banner-font-family: $font-sans;
       linear-gradient(transparent, transparent);
     background-position: 50%;
     background-repeat: no-repeat;
-    background-size: $spacer-1;
+    background-size: units(1);
     color: $usa-banner-header-action-color;
     content: '';
     display: inline-block;
-    height: $spacer-1;
-    margin-left: 2px;
-    padding-right: 2px;
-    width: $spacer-1;
+    height: units(1);
+    margin-left: units(2px);
+    padding-right: units(2px);
+    width: units(1);
   }
 
   // Hide header-action text for large viewport and when expanded
@@ -107,17 +107,17 @@ $usa-banner-font-family: $font-sans;
 
   // Display close icon on smaller viewport
   // stylelint-disable scss/media-feature-value-dollar-variable
-  @media (max-width: $width-sm - 1px) {
+  @media (max-width: $width-sm - 1) {
     &[aria-expanded='true']::before {
       background-color: $usa-banner-close-image-background-color;
       bottom: 0;
       content: '';
       display: block;
-      height: $spacer-6;
+      height: units(6);
       position: absolute;
       right: 0;
       top: 0;
-      width: $spacer-6;
+      width: units(6);
     }
     // stylelint-enable scss/media-feature-value-dollar-variable
 
@@ -125,17 +125,17 @@ $usa-banner-font-family: $font-sans;
       background-image: url('#{$image-path}/close-alt.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: $spacer-2 $spacer-2;
+      background-size: units(2) units(2);
       bottom: 0;
       content: '';
       display: inline-block;
-      height: $spacer-6;
+      height: units(6);
       margin-left: 0;
       position: absolute;
       right: 0;
       top: 0;
       vertical-align: middle;
-      width: $spacer-6;
+      width: units(6);
     }
   }
 }
@@ -158,13 +158,13 @@ $usa-banner-font-family: $font-sans;
         linear-gradient(transparent, transparent);
       background-position: 50%;
       background-repeat: no-repeat;
-      background-size: $spacer-1;
+      background-size: units(1);
       content: '';
       display: inline-block;
-      height: $spacer-1;
-      margin-left: 2px;
-      padding-right: 2px;
-      width: $spacer-1;
+      height: units(1);
+      margin-left: units(2px);
+      padding-right: units(2px);
+      width: units(1);
     }
   }
 }
@@ -173,11 +173,11 @@ $usa-banner-font-family: $font-sans;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  padding: 4px $spacer-2 $spacer-2 $spacer-1;
+  padding: units(0.5) units(2) units(2) units(1);
 
   @media (min-width: $width-sm) {
-    padding-bottom: $spacer-3;
-    padding-top: $spacer-3;
+    padding-bottom: units(3);
+    padding-top: units(3);
   }
 }
 
@@ -185,19 +185,19 @@ $usa-banner-font-family: $font-sans;
   align-items: flex-start;
   display: flex;
   max-width: 64ex;
-  padding: $spacer-2 12px 0 12px;
+  padding: units(2) units(1.5) 0 units(1.5);
 
   @media (min-width: $width-sm) {
-    padding: 0 $spacer-1;
+    padding: 0 units(1);
     width: 50%;
   }
 }
 
 .ds-c-usa-banner__icon {
   flex-shrink: 0;
-  height: $spacer-5;
-  margin-right: $spacer-1;
-  width: $spacer-5;
+  height: units(5);
+  margin-right: units(1);
+  width: units(5);
 }
 
 .ds-c-usa-banner__lock-image {
@@ -210,7 +210,7 @@ $usa-banner-font-family: $font-sans;
 
 .ds-c-usa-banner__media-img {
   float: left;
-  margin-right: $spacer-1;
+  margin-right: units(1);
 }
 
 .ds-c-usa-banner__media-body {
@@ -219,7 +219,7 @@ $usa-banner-font-family: $font-sans;
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  padding-right: $spacer-7;
+  padding-right: units(7);
 
   @media (min-width: $width-sm) {
     background-color: transparent;

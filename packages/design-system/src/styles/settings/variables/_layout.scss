@@ -1,3 +1,10 @@
+/*
+ *  The following spacer variables are maintained for backwards compatibility but not recommended for use.
+ *  Use USWDS spacing tokens, mixins, and functions instead (i.e. units(units))
+ *
+ *  https://designsystem.digital.gov/design-tokens/spacing-units/#using-spacing-unit-tokens
+ */
+
 $multiple: 8px !default;
 
 $spacers: (
@@ -24,10 +31,10 @@ $spacer-half: $spacer-1 / 2; // 4px
 // INTERNAL: If these values change, the values used for the responsive previews
 // in the documentation should also change.
 $width-xs: 0 !default;
-$width-sm: 544px !default;
-$width-md: 768px !default;
-$width-lg: 1024px !default;
-$width-xl: 1280px !default;
+$width-sm: 544px !default; // originally 544px, but no corresponding spacing token ('mobile-lg' is 480px)
+$width-md: 768px !default; // originally 768px, but no corresponding spacing token ('tablet' is 640px)
+$width-lg: 1024px !default; // originally 1024px, but no corresponding spacing token ('desktop' is 1024px)
+$width-xl: 1280px !default; // originally 1280px, but no corresponding spacing token ('desktop-lg' is 1200px)
 
 // Breakpoints
 $breakpoints: (
@@ -51,8 +58,8 @@ $grid-form-gutter-width: $spacer-2 !default;
 $z-dialog: 1000 !default;
 
 // Site variables
-$site-margins: 3rem !default;
-$site-margins-mobile: 1.5rem !default;
+$site-margins: units(6) !default;
+$site-margins-mobile: units(3) !default;
 $site-max-width: 1040px !default;
 $text-max-width: 53rem !default;
 $lead-max-width: 77rem !default;

@@ -1,8 +1,8 @@
 @import '../settings/index.scss';
 
-$alert-padding: $spacer-2;
-$alert-bar-size: $spacer-1;
-$alert-icon-size: $spacer-5;
+$alert-padding: units(2);
+$alert-bar-size: units(1);
+$alert-icon-size: units(5);
 
 // Links on darker backgrounds that aren't quite dark as inverse
 %link-darker {
@@ -54,7 +54,7 @@ $alert-icon-size: $spacer-5;
   border-left: $alert-bar-size solid $color-primary-alt;
   box-sizing: border-box;
   color: $color-base;
-  min-height: $alert-icon-size + $spacer-2;
+  min-height: $alert-icon-size + units(2);
   padding: $alert-padding;
   position: relative;
 
@@ -93,7 +93,7 @@ $alert-icon-size: $spacer-5;
 .ds-c-alert__heading {
   font-size: $font-size-lg;
   font-weight: $font-bold;
-  margin-bottom: $spacer-half;
+  margin-bottom: units(0.5);
   margin-top: 0;
 }
 
