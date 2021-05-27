@@ -39,7 +39,9 @@ $dialog-spacer: $spacer-4;
 }
 
 .ds-c-dialog__close {
-  background: url('#{$image-path}/close--primary.svg') center left no-repeat;
+  background-image: url('#{$image-path}/close--primary.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
   background-size: 12px 12px;
   margin-left: auto;
   padding: 0 0 0 (12px + $spacer-1);

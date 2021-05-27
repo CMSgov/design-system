@@ -86,13 +86,6 @@
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
-    /* stylelint-disable */
-    @if $ds-include-focus-styles {
-      &:focus::after {
-        background-color: $color-base;
-      }
-    }
-    /* stylelint-enable */
   }
 
   &[aria-disabled='true'] {
@@ -116,15 +109,8 @@
   /* stylelint-disable max-nesting-depth */
   @if $ds-include-focus-styles {
     &:focus {
-      border-color: transparent;
-      box-shadow: none;
-      color: $color-base;
-
-      &::after {
-        background-color: $color-base;
-        opacity: 1;
-        transform: scale3d(1, 1, 1);
-      }
+      @include focus-styles;
+      @include focus-styles-position;
     }
   }
   /* stylelint-enable max-nesting-depth */
