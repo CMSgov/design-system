@@ -31,18 +31,10 @@ $spacer-half: $spacer-1 / 2; // 4px
 // INTERNAL: If these values change, the values used for the responsive previews
 // in the documentation should also change.
 $width-xs: 0 !default;
-$width-sm: units(
-  'mobile-lg'
-) !default; // originally 544px, but no corresponding spacing token ('mobile-lg' is 480px)
-$width-md: units(
-  'tablet'
-) !default; // originally 768px, but no corresponding spacing token ('tablet' is 640px)
-$width-lg: units(
-  'desktop'
-) !default; // originally 1024px, but no corresponding spacing token ('desktop' is 1024px)
-$width-xl: units(
-  'desktop-lg'
-) !default; // originally 1280px, but no corresponding spacing token ('desktop-lg' is 1200px)
+$width-sm: 544px !default; // originally 544px, but no corresponding spacing token ('mobile-lg' is 480px)
+$width-md: 768px !default; // originally 768px, but no corresponding spacing token ('tablet' is 640px)
+$width-lg: 1024px !default; // originally 1024px, but no corresponding spacing token ('desktop' is 1024px)
+$width-xl: 1280px !default; // originally 1280px, but no corresponding spacing token ('desktop-lg' is 1200px)
 
 // Breakpoints
 $breakpoints: (
@@ -59,8 +51,8 @@ $border-radius-pill: 9999px;
 
 // Grid
 $grid-columns: 12 !default;
-$grid-gutter-width: units(4) !default;
-$grid-form-gutter-width: units(2) !default;
+$grid-gutter-width: $spacer-4 !default;
+$grid-form-gutter-width: $spacer-2 !default;
 
 // Z-index
 $z-dialog: 1000 !default;
@@ -68,17 +60,11 @@ $z-dialog: 1000 !default;
 // Site variables
 $site-margins: units(6) !default;
 $site-margins-mobile: units(3) !default;
-$site-max-width: units(
-  'desktop'
-) !default; // originally 1040px, but no corresponding spacing token ('desktop' is 1024px)
+$site-max-width: 1040px !default;
 $text-max-width: 53rem !default;
 $lead-max-width: 77rem !default;
-$article-max-width: units(
-  'tablet'
-) !default; // originally 600px, but no corresponding spacing token ('tablet' is 640px)
-$nav-width: units(
-  'desktop'
-) !default; // originally 951px, but no corresponding spacing token ('desktop' is 1024px)
+$article-max-width: 600px !default;
+$nav-width: 951px !default;
 
 // 44 x 44 pixels hit target following Apple iOS Human Interface Guidelines
 $hit-area: 4.4rem !default;
