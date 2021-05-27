@@ -10,7 +10,7 @@
   cursor: pointer;
   font-size: $base-font-size;
   font-weight: normal;
-  padding: $spacer-2;
+  padding: units(2);
   position: relative;
 
   &:last-of-type {

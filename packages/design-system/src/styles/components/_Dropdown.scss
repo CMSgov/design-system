@@ -2,14 +2,14 @@
 
 // stylelint-disable selector-no-qualifying-type
 select.ds-c-field {
-  $select-icon-size: 10px;
+  $select-icon-size: units(1.5); // originally 10px, but no corresponding spacing token
   appearance: none;
   background-color: $color-white;
   background-image: url('#{$image-path}/arrow-both.svg');
-  background-position: right $spacer-1 center;
+  background-position: right units(1) center;
   background-repeat: no-repeat;
   background-size: $select-icon-size;
-  padding-right: ($select-icon-size * 2) + $spacer-1;
+  padding-right: ($select-icon-size * 2) + units(1);
 
   &[multiple] {
     background-image: none;

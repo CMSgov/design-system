@@ -17,7 +17,7 @@ $_link-spacer: $spacer-1;
 }
 
 .frame--responsive .frame__parent {
-  margin: $spacer-2;
+  margin: units(2);
 }
 
 .frame__preview {

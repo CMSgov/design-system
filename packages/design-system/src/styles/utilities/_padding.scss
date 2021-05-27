@@ -1,9 +1,9 @@
 /* stylelint-disable declaration-no-important */
 @import '../settings/index.scss';
 
-@for $i from 1 through length($spacers) {
-  $size: #{nth($spacers, $i)};
-  $scale: #{$i - 1};
+@for $i from 0 through length($spacers) {
+  $size: units($i);
+  $scale: #{$i};
 
   // Example: ds-u-padding--0
   .ds-u-padding--#{$scale} {
@@ -42,9 +42,9 @@
   $value: map-get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
-    @for $i from 1 through length($spacers) {
-      $size: #{nth($spacers, $i)};
-      $scale: #{$i - 1};
+    @for $i from 0 through length($spacers) {
+      $size: units($i);
+      $scale: #{$i};
 
       // Example: ds-u-sm-padding--0
       .ds-u-#{$breakpoint}-padding--#{$scale} {
