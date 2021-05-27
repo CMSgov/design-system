@@ -66,7 +66,7 @@ $grid-form-gutter-width: units(2) !default;
 $z-dialog: 1000 !default;
 
 // Site variables
-$site-margins: 3rem !default;
+$site-margins: units(6) !default;
 $site-margins-mobile: units(3) !default;
 $site-max-width: units(
   'desktop'
