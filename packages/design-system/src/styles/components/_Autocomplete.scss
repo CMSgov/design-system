@@ -15,6 +15,11 @@
       display: block;
     }
   }
+  @if $ds-include-focus-styles {
+    input:focus {
+      @include focus-styles-position;
+    }
+  }
 }
 
 .ds-c-autocomplete__list {
