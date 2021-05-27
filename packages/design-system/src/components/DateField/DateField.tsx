@@ -53,9 +53,9 @@ export interface DateFieldProps {
    */
   label?: React.ReactNode;
   /**
- * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
- */
-  labelId?: string,
+   * A unique ID to be used for the DateField label. If one isn't provided, a unique ID will be generated.
+   */
+  labelId?: string;
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
    */
