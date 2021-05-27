@@ -94,7 +94,9 @@ type OmitProps =
   | 'onBlur'
   | 'onChange'
   | 'name'
-  | 'id';
+  | 'id'
+  | 'className'
+  | 'disabled';
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
