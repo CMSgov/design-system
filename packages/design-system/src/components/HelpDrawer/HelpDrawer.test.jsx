@@ -1,6 +1,7 @@
 import HelpDrawer from './HelpDrawer.jsx';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { setHelpDrawerSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
@@ -57,6 +58,7 @@ describe('HelpDrawer', () => {
     };
 
     beforeEach(() => {
+      setHelpDrawerSendsAnalytics(true);
       tealiumMock = jest.fn();
       window.utag = {
         link: tealiumMock,
@@ -64,6 +66,7 @@ describe('HelpDrawer', () => {
     });
 
     afterEach(() => {
+      setHelpDrawerSendsAnalytics(false);
       jest.resetAllMocks();
     });
 

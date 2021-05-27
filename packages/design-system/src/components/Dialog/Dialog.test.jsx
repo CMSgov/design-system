@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import Dialog from './Dialog';
 import React from 'react';
+import { setDialogSendsAnalytics } from '../flags';
 
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
@@ -76,6 +77,7 @@ describe('Dialog', function () {
     };
 
     beforeEach(() => {
+      setDialogSendsAnalytics(true);
       tealiumMock = jest.fn();
       window.utag = {
         link: tealiumMock,
@@ -83,6 +85,7 @@ describe('Dialog', function () {
     });
 
     afterEach(() => {
+      setDialogSendsAnalytics(false);
       jest.resetAllMocks();
     });
 

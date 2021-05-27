@@ -1,5 +1,6 @@
 import Alert from './Alert';
 import React from 'react';
+import { setAlertSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
 const text = 'Ruhroh';
@@ -73,6 +74,7 @@ describe('Alert', function () {
     };
 
     beforeEach(() => {
+      setAlertSendsAnalytics(true);
       tealiumMock = jest.fn();
       window.utag = {
         link: tealiumMock,
@@ -80,6 +82,7 @@ describe('Alert', function () {
     });
 
     afterEach(() => {
+      setAlertSendsAnalytics(false);
       jest.resetAllMocks();
     });
 

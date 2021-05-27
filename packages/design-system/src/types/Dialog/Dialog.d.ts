@@ -138,7 +138,7 @@ export interface DialogProps {
 
 type OmitProps = 'size' | 'title';
 
-// Remove the "size" definition inside React.HTMLProps<HTMLDivElement>, and use ours instead
-declare const Dialog: React.FC<Omit<React.HTMLProps<HTMLDivElement>, OmitProps> & DialogProps>;
+// Remove the "size" definition inside React.ComponentsWithRef, and use ours instead
+declare const Dialog: React.FC<Omit<React.ComponentPropsWithRef<'div'>, OmitProps> & DialogProps>;
 
 export default Dialog;
