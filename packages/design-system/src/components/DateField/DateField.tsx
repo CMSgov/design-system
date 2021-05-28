@@ -154,7 +154,7 @@ export interface DateFieldProps {
   yearValue?: DateFieldYearValue;
 }
 
-export function DateField(props: DateFieldProps): React.ReactNode {
+export function DateField(props: DateFieldProps): React.ReactElement {
   const containerProps = pick(props, FormControlPropKeys);
   const inputOnlyProps = omit(props, FormControlPropKeys);
 
