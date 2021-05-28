@@ -26,12 +26,7 @@
   &:focus,
   &.ds-c-button--focus {
     @if $ds-include-focus-styles {
-      background-color: $focus-color;
-      border-color: $color-base;
-      box-shadow: $focus-shadow-link;
-      color: $color-base;
-      outline: 3px solid transparent;
-      outline-offset: 2px;
+      @include focus-styles;
     } @else {
       border-color: $color-primary-darker;
       color: $color-primary-darker;
@@ -96,17 +91,12 @@
 .ds-c-button--transparent:visited,
 .ds-c-button--transparent-inverse,
 .ds-c-button--transparent-inverse:visited {
-  background-color: transparent;
   border-color: transparent;
   text-decoration: underline;
 
   &:focus,
   &.ds-c-button--focus {
     border-color: transparent;
-
-    @if $ds-include-focus-styles {
-      text-decoration: none;
-    }
   }
 
   &:hover,
@@ -152,11 +142,7 @@
   &:focus,
   &.ds-c-button--focus {
     @if $ds-include-focus-styles {
-      background-color: $focus-color;
-      border-color: transparent;
-      box-shadow: $focus-shadow-link-inverse;
-      color: $color-base;
-      opacity: 1;
+      @include focus-styles;
     } @else {
       border-color: rgba($border-color-inverse, 0.8);
       color: rgba($color-base-inverse, 0.8);
@@ -187,9 +173,7 @@
   @if $ds-include-focus-styles {
     &:focus,
     &.ds-c-button--focus {
-      border-color: transparent;
-      background-color: $focus-color;
-      color: $color-base;
+      @include focus-styles;
     }
   }
 }
@@ -241,9 +225,9 @@
  *  Status variants
  */
 $button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color,
-  success: $color-success $color-success-dark $color-success-darker $focus-color,
-  danger: $color-error $color-error-dark $color-error-darkest $focus-color,
+  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active,
+  success: $color-success $color-success-dark $color-success-darker,
+  danger: $color-error $color-error-dark $color-error-darkest,
 );
 
 @each $colors in map-keys($button-color-variants) {
@@ -273,9 +257,7 @@ $button-color-variants: (
     @if $ds-include-focus-styles {
       &:focus,
       &.ds-c-button--focus {
-        background-color: nth($color, 4);
-        border-color: transparent;
-        color: $color-base;
+        @include focus-styles;
       }
     } @else {
       &:focus,

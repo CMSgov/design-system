@@ -7,11 +7,8 @@
 }
 @if $ds-include-focus-styles {
   %nav-item-focus {
-    background-color: $focus-color;
-    border-color: $color-base;
-    box-shadow: none;
-    color: $color-base;
-    outline: 0 none;
+    @include focus-styles;
+    @include focus-styles-position;
   }
 }
 
