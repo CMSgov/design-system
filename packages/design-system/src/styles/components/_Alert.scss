@@ -21,11 +21,7 @@ $alert-icon-size: $spacer-5;
   @if $ds-include-focus-styles {
     &:focus,
     &:focus:visited {
-      background-color: $focus-color;
-      box-shadow: $focus-shadow-link;
-      color: $color-base;
-      outline: 3px solid transparent;
-      text-decoration: none;
+      @include focus-styles;
     }
   } @else {
     &:focus {
