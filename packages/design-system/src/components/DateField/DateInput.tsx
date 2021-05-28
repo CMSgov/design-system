@@ -144,7 +144,6 @@ export class DateInput extends React.PureComponent<DateInputProps> {
   yearInput: any;
 
   formatDate(): DateObject {
-    console.log(this.monthInput, this.dayInput, this.yearInput);
     if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
       const values = {
         month: this.monthInput.value,
