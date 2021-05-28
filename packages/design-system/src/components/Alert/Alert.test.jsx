@@ -1,5 +1,6 @@
 import Alert from './Alert';
 import React from 'react';
+import { setAlertSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
 const text = 'Ruhroh';
@@ -78,5 +79,72 @@ describe('Alert', function () {
     });
 
     expect(wrapper.prop('ariaLabel')).toBe(props.ariaLabel);
+  });
+
+  describe('Analytics event tracking', () => {
+    let tealiumMock;
+    const defaultEvent = {
+      event_name: 'alert_impression',
+      event_type: 'ui interaction',
+      ga_eventCategory: 'ui components',
+      ga_eventAction: 'alert impression',
+      ga_eventLabel: text,
+      heading: text,
+      type: 'warn',
+    };
+
+    beforeEach(() => {
+      setAlertSendsAnalytics(true);
+      tealiumMock = jest.fn();
+      window.utag = {
+        link: tealiumMock,
+      };
+    });
+
+    afterEach(() => {
+      setAlertSendsAnalytics(false);
+      jest.resetAllMocks();
+    });
+
+    it('sends analytics event tracking', () => {
+      render({ tealiumMock, variation: 'warn' });
+      expect(tealiumMock).toBeCalledWith({
+        ga_eventType: 'cmsds',
+        ga_eventValue: '',
+        ...defaultEvent,
+      });
+    });
+
+    it('disables analytics event tracking', () => {
+      const analyticsProps = {
+        analytics: {
+          onComponentDidMount: false,
+        },
+      };
+      render({ tealiumMock, heading: 'dialog heading', variation: 'error', ...analyticsProps });
+      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
+    });
+
+    it('overrides analytics event tracking', () => {
+      const analyticsProps = {
+        analytics: {
+          onComponentDidMount: {
+            event_name: 'event name',
+            event_type: 'event type',
+            ga_eventCategory: 'event category',
+            ga_eventAction: 'event action',
+            ga_eventLabel: 'event label',
+            ga_eventValue: 'event value',
+            ga_other: 'other one',
+            ga_other2: 'other two',
+            ga_eventType: 'other type',
+            heading: 'other heading',
+            type: 'other type',
+          },
+        },
+      };
+      render({ tealiumMock, variation: 'success', ...analyticsProps });
+      expect(tealiumMock).toBeCalledWith(analyticsProps.analytics.onComponentDidMount);
+    });
   });
 });

@@ -22,7 +22,7 @@ class Example extends React.PureComponent {
   render() {
     return (
       <div id="App" style={{ minHeight: 300 }}>
-        <Button onClick={() => this.showModal()} size="big" variation="success">
+        <Button onClick={() => this.showModal()} size="big" variation="primary">
           Click to show modal
         </Button>
 
@@ -32,7 +32,10 @@ class Example extends React.PureComponent {
             getApplicationNode={() => document.getElementById('App')}
             heading="Dialog heading"
             actions={[
-              <button className="ds-c-button ds-c-button--primary" key="primary">
+              <button
+                className="ds-c-button ds-c-button--primary ds-u-margin-right--1"
+                key="primary"
+              >
                 Dialog action
               </button>,
               <button

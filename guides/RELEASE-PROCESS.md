@@ -39,12 +39,20 @@
    1. Create sections for [@cmsgov/design-system](https://www.npmjs.com/package/@cmsgov/design-system), [@cmsgov/design-system-scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts) and [@cmsgov/design-system-docs](https://www.npmjs.com/package/@cmsgov/design-system-docs) using the subsections below.
 
       ```
-      ## 🚨 Breaking/Behavioral changes
-      ## 🚀 Added
-      ## 💅 Changed
-      ## 🛠 Fixed
-      ## 📦 Internal
-      ## 🚫 Deprecated
+      # What's new in CMS Design System X.X.X
+      ## Design System
+      ### What's new 
+      ### Changes and fixes
+      ### Deprecated
+      ## Shared scripts 
+      ### What's new
+      ### Deprecated
+      ### Changes and fixes
+      ## Documentation site
+      ### What's new
+      ### Deprecated
+      ### Changes and fixes
+      
       ```
 
       **Note**: View commits since the last release by going to the [releases page](https://github.com/CMSgov/design-system/releases) or by running: `` git log `git describe --tags --abbrev=0`..HEAD --oneline ``

@@ -1,6 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import Dialog from './Dialog';
 import React from 'react';
+import { setDialogSendsAnalytics } from '../flags';
 
 function render(customProps = {}, deep = false) {
   const props = Object.assign(
@@ -62,5 +63,70 @@ describe('Dialog', function () {
     close.simulate('click');
 
     expect(props.onExit.mock.calls.length).toBe(1);
+  });
+
+  describe('Analytics event tracking', () => {
+    let tealiumMock;
+    const defaultEvent = {
+      event_name: 'modal_impression',
+      event_type: 'ui interaction',
+      ga_eventCategory: 'ui components',
+      ga_eventAction: 'modal impression',
+      ga_eventLabel: 'dialog heading',
+      heading: 'dialog heading',
+    };
+
+    beforeEach(() => {
+      setDialogSendsAnalytics(true);
+      tealiumMock = jest.fn();
+      window.utag = {
+        link: tealiumMock,
+      };
+    });
+
+    afterEach(() => {
+      setDialogSendsAnalytics(false);
+      jest.resetAllMocks();
+    });
+
+    it('sends analytics event tracking on open dialog', () => {
+      render({ tealiumMock, heading: 'dialog heading' });
+      expect(tealiumMock).toBeCalledWith({
+        ga_eventType: 'cmsds',
+        ga_eventValue: '',
+        ...defaultEvent,
+      });
+    });
+
+    it('disables analytics event tracking on open', () => {
+      const analyticsProps = {
+        analytics: {
+          onComponentDidMount: false,
+        },
+      };
+      render({ tealiumMock, heading: 'dialog heading', ...analyticsProps });
+      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
+    });
+
+    it('overrides analytics event tracking on open', () => {
+      const analyticsProps = {
+        analytics: {
+          onComponentDidMount: {
+            event_name: 'event name',
+            event_type: 'event type',
+            ga_eventCategory: 'event category',
+            ga_eventAction: 'event action',
+            ga_eventLabel: 'event label',
+            ga_eventValue: 'event value',
+            ga_other: 'other one',
+            ga_other2: 'other two',
+            ga_eventType: 'other type',
+            heading: 'other heading',
+          },
+        },
+      };
+      render({ tealiumMock, ...analyticsProps });
+      expect(tealiumMock).toBeCalledWith(analyticsProps.analytics.onComponentDidMount);
+    });
   });
 });

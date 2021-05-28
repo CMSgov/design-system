@@ -1,16 +1,43 @@
 import * as React from 'react';
 
-export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5';
+export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
 
 export type AlertVariation = 'error' | 'warn' | 'success';
+
+export interface AnalyticsEventShape {
+  event_name: string;
+  event_type: string;
+  ga_eventAction: string;
+  ga_eventCategory: string;
+  ga_eventLabel: string;
+  ga_eventType?: string;
+  ga_eventValue?: string;
+  heading: string;
+  type: string;
+  [additional_props: string]: unknown;
+}
+// additional_props?: Record<string, unknown>;
+
+export interface AnalyticsObjectShape {
+  onComponentDidMount?: boolean | AnalyticsEventShape;
+}
 
 export interface AlertProps {
   /**
    * Access a reference to the `alert` `div` element
    */
   alertRef?: (...args: any[]) => any;
+  /**
+   * Analytics events tracking is enabled by default.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
+   */
+  analytics?: AnalyticsObjectShape;
   /**
    * Sets the focus on Alert during the first mount
    */

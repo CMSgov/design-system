@@ -1,6 +1,8 @@
 /*
 Third party external link
 
+@analytics
+
 The Third party external link pattern is used to notify a user that the action they are taking will take them to a new external website.
 
 Style guide: patterns.external-link
@@ -17,6 +19,14 @@ Style guide: patterns.external-link.react
 */
 
 /*
+Analytics props
+
+- Refer to [Modal dialog]({{root}}/components/dialog) for details of the Analytics props
+
+Style guide: patterns.external-link.analytics
+*/
+
+/*
 ---
 
 Use this pattern when the user is in the middle of a task or application to let them know that the action they are taking will move them away from the current site and or process. This serves as a warning where the user can then decide to remain where they are in the application or process.
@@ -25,4 +35,49 @@ Use this pattern when the user is in the middle of a task or application to let 
 
 - [CMS policy on external links](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites.html)
 - [CMS external link disclaimer](https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/External-Link-Disclaimer.html)
+*/
+
+/*
+---
+
+### Related patterns
+
+- [Modal dialog]({{root}}/components/dialog)
+
+Style guide: patterns.external-link.guidance
+*/
+
+/*
+Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+- Import and set the `setDialogSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```JSX
+import { setDialogSendsAnalytics } from "@cmsgov/<design-system-package>";
+setDialogSendsAnalytics(true);
+```
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Disable event tracking
+
+- Pass the `onComponentDidMount` prop set to `false` to the component:
+- Pass the `onComponentWillUnmount` prop set to `false` to the component:
+
+```JSX
+analytics={
+  {
+    onComponentDidMount: {false},
+    onComponentWillUnmount: {false}
+  }
+}
+```
+### Override  event tracking
+
+- Pass changes via any of the [available analytics props](#components.alert.analytics).
+
+Style guide: patterns.external-link.guidance-analytics
 */

@@ -13,7 +13,7 @@
     "release": "yarn lerna publish from-git --dist-tag latest",
     "precommit": "lint-staged",
     "test": "yarn test:unit && yarn test:e2e",
-    "test:unit": "yarn cmsds test ./packages",
+    "test:unit": "yarn cmsds test ./packages --filePath",
     "test:e2e": "yarn cmsds test:e2e ./packages",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "posttest": "yarn lint",

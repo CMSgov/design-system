@@ -89,9 +89,9 @@ export interface TextInputProps {
 
 type OmitProps = 'size';
 
-// Remove the "size" definition inside React.HTMLProps<HTMLInputElement>, and use ours instead
+// Remove the "size" definition inside React.ComponentPropsWithRef<'input'>, and use ours instead
 export default class TextInput extends React.Component<
-  Omit<React.HTMLProps<HTMLInputElement>, OmitProps> & TextInputProps,
+Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & TextInputProps,
   any
 > {
   render(): JSX.Element;
