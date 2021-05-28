@@ -26,6 +26,10 @@ export interface AnalyticsObjectShape {
 
 export interface AlertProps {
   /**
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef?: (...args: any[]) => any;
+  /**
    * Analytics events tracking is enabled by default.
    * The `analytics` prop is an object of events that is either a nested `objects` with key-value
    * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
@@ -34,6 +38,10 @@ export interface AlertProps {
    * if `window.utag` instance is loaded.
    */
   analytics?: AnalyticsObjectShape;
+  /**
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus?: boolean;
   /**
    * The alert's body content
    */
@@ -65,6 +73,9 @@ export interface AlertProps {
   variation?: AlertVariation;
 }
 
-export default class Alert extends React.Component<AlertProps, any> {
+export default class Alert extends React.Component<
+  React.HTMLProps<HTMLDivElement> & AlertProps,
+  any
+> {
   render(): JSX.Element;
 }
