@@ -91,7 +91,7 @@ const TextInput: FunctionComponent<
   Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
     Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
     TextInputProps
-> = (props: TextInputProp) => {
+> = (props: TextInputProps) => {
   const {
     ariaLabel,
     errorId,
@@ -141,13 +141,15 @@ const TextInput: FunctionComponent<
         ? classNames(props['aria-describedby'], errorId)
         : undefined,
   };
+
+  const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
   /* eslint-enable react/prop-types */
   const field = (
     <ComponentType
       {...ariaAttributes}
       className={classes}
       ref={setRef}
-      rows={multiline && rows ? rows : undefined}
+      rows={multiline && numberRows ? numberRows : undefined}
       inputMode={numeric ? 'numeric' : undefined}
       pattern={numeric && !pattern ? '[0-9]*' : pattern}
       type={inputType}

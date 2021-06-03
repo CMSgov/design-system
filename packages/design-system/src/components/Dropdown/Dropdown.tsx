@@ -5,19 +5,6 @@ import { errorPlacementDefault } from '../flags';
 import omit from 'lodash/omit';
 import pick from 'lodash/pick';
 
-export type DropdownDefaultValue = number | string;
-
-export interface DropdownOptions {
-  label: React.ReactNode;
-  value: number | string;
-}
-
-export type DropdownSize = 'small' | 'medium';
-
-export type DropdownValue = number | string;
-
-export type DropdownErrorPlacement = 'top' | 'bottom';
-
 export interface DropdownProps {
   /**
    * Adds `aria-label` attribute. When using `aria-label`, `label` should be empty string.
@@ -35,7 +22,7 @@ export interface DropdownProps {
    * Sets the initial selected state. Use this for an uncontrolled component;
    * otherwise, use the `value` property.
    */
-  defaultValue?: DropdownDefaultValue;
+  defaultValue?: number | string;
   /**
    * Disables the entire field.
    */
@@ -48,7 +35,7 @@ export interface DropdownProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: DropdownErrorPlacement;
+  errorPlacement?: 'top' | 'bottom';
   /**
    * Additional classes to be added to the select element
    */
@@ -88,7 +75,10 @@ export interface DropdownProps {
   /**
    * The list of options to be rendered. Provide an empty list if using custom options via the `children` prop.
    */
-  options: DropdownOptions[];
+  options: {
+    label: React.ReactNode;
+    value: number | string;
+  }[];
   onBlur?: (...args: any[]) => any;
   onChange?: (...args: any[]) => any;
   /**
@@ -98,15 +88,15 @@ export interface DropdownProps {
   /**
    * If the component renders a select, set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size?: DropdownSize;
+  size?: 'small' | 'medium';
   /**
    * Sets the field's `value`. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultValue`.
    */
-  value?: DropdownValue;
+  value?: number | string;
 }
 
-type OmitProps = 'size' | 'value' | 'label';
+type OmitProps = 'size' | 'value' | 'label' | 'className' | 'children' | 'defaultValue' | 'disabled' | 'id' | 'name' | 'onBlur' | 'onChange';
 
 export class Dropdown extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & DropdownProps,

@@ -41,7 +41,8 @@ export class Mask extends React.PureComponent<MaskProps, any> {
     }
 
     const fieldProps = this.field().props;
-    const prevFieldProps = React.Children.only(prevProps.children).props;
+    const prevField = React.Children.only(prevProps.children);
+    const prevFieldProps = React.isValidElement(prevField) ? prevField.props : {};
     const isControlled = fieldProps.value !== undefined;
     if (isControlled && prevFieldProps.value !== fieldProps.value) {
       const { mask } = this.props;
@@ -77,7 +78,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleBlur(evt: React.FocusEvent, field: React.ReactElement): void {
+  handleBlur(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
     const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
@@ -109,7 +110,7 @@ export class Mask extends React.PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleChange(evt: React.ChangeEvent, field: React.ReactElement): void {
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
     this.setState({ value: evt.target.value });
 
     if (typeof field.props.onChange === 'function') {

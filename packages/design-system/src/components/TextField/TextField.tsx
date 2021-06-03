@@ -11,15 +11,9 @@ export { unmaskValue } from './maskHelpers';
 
 export type TextFieldDefaultValue = string | number;
 
-export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
-
 export type TextFieldRows = number | string;
 
-export type TextFieldSize = 'small' | 'medium';
-
 export type TextFieldValue = string | number;
-
-export type TextFieldErrorPlacement = 'top' | 'bottom';
 
 export interface TextFieldProps {
   /**
@@ -45,7 +39,7 @@ export interface TextFieldProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: TextFieldErrorPlacement;
+  errorPlacement?: 'top' | 'bottom';
   /**
    * Additional classes to be added to the field element
    */
@@ -91,7 +85,7 @@ export interface TextFieldProps {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask?: TextFieldMask;
+  mask?: 'currency' | 'phone' | 'ssn' | 'zip';
   /**
    * Whether or not the text field is a multiline text field
    */
@@ -115,7 +109,7 @@ export interface TextFieldProps {
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size?: TextFieldSize;
+  size?: 'small' | 'medium';
   /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
@@ -127,12 +121,15 @@ export interface TextFieldProps {
   value?: TextFieldValue;
 }
 
-type OmitProps = 'size' | 'label';
+type OmitProps = 'size' | 'label' | 'className' | 'defaultValue' | 'disabled' | 'id' | 'onBlur' | 'onChange' | 'type' | 'value' | 'name';
 
 export class TextField extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & TextFieldProps,
   any
 > {
+  static defaultProps = {
+    type: 'text',
+  };
   constructor(props: TextFieldProps) {
     super(props);
 
