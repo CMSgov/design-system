@@ -88,9 +88,9 @@ export type OmitProps = 'size' | 'ref';
  * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
  */
 const TextInput: FunctionComponent<
-  Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
-    Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
-    TextInputProps
+  Omit<React.ComponentPropsWithoutRef<'textarea'>, OmitProps> &
+  Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> &
+  TextInputProps
 > = (props: TextInputProps) => {
   const {
     ariaLabel,

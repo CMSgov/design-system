@@ -83,7 +83,7 @@ export type OmitProps = 'size' | 'value';
  * As an internal component, it's subject to more breaking changes. Exercise caution using <Select> outside of those special cases
  */
 export class Select extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'select'>, OmitProps> & SelectProps,
+  Omit<React.ComponentPropsWithoutRef<'select'>, OmitProps> & SelectProps,
   any
 > {
   constructor(props: SelectProps) {
