@@ -13,6 +13,7 @@ exports[`DateInput has custom yearMax and yearMin 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -28,6 +29,7 @@ exports[`DateInput has custom yearMax and yearMin 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -43,6 +45,7 @@ exports[`DateInput has custom yearMax and yearMin 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -60,6 +63,7 @@ exports[`DateInput has invalid day 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -76,6 +80,7 @@ exports[`DateInput has invalid day 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -91,6 +96,7 @@ exports[`DateInput has invalid day 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -109,6 +115,7 @@ exports[`DateInput has invalid month 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -124,6 +131,7 @@ exports[`DateInput has invalid month 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -139,6 +147,7 @@ exports[`DateInput has invalid month 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -156,6 +165,7 @@ exports[`DateInput has invalid year 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -171,6 +181,7 @@ exports[`DateInput has invalid year 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -187,6 +198,7 @@ exports[`DateInput has invalid year 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -205,6 +217,7 @@ exports[`DateInput is disabled 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -221,6 +234,7 @@ exports[`DateInput is disabled 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -237,6 +251,7 @@ exports[`DateInput is disabled 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -255,6 +270,7 @@ exports[`DateInput is inversed 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -271,6 +287,7 @@ exports[`DateInput is inversed 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -287,6 +304,7 @@ exports[`DateInput is inversed 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
@@ -304,6 +322,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
     labelClassName="ds-c-datefield__label"
     name="month"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -319,6 +338,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
     labelClassName="ds-c-datefield__label"
     name="day"
     numeric={true}
+    type="text"
   />
   <span
     className="ds-c-datefield__separator"
@@ -334,6 +354,7 @@ exports[`DateInput renders with all defaultProps 1`] = `
     labelClassName="ds-c-datefield__label"
     name="Year"
     numeric={true}
+    type="text"
   />
 </div>
 `;
