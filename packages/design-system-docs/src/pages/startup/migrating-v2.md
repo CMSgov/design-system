@@ -119,16 +119,6 @@ $font-path: "~@cmsgov/design-system/dist/fonts";
 $image-path: "~@cmsgov/design-system/dist/images";
 ```
 
-## Focus styles
-
-CMSDS focus styles will now be considered a `draft` feature, and will be turned off by default. Focus styles can be reenabled by setting the `$ds-include-focus-styles` build variable to true, but these styles will likely change in the future as we iterate on our design. See the [theming page](https://design.cms.gov/startup/theming/#focus-settings) for more information on how to customize or enable focus styles.
-
-### Why the change?
-
-When we first released focus styles in [version 3.6.0](https://github.com/CMSgov/design-system/releases/tag/3.6.0), our goal was to provide a recommended focus style implementation that would incorporate accessibility and best practices, much of which was informed by [UKgov's research](https://design-system.service.gov.uk/get-started/focus-states/) and [USWDS's focus state implementation](https://designsystem.digital.gov/). While we spent 4 months developing, iterating, and gathering feedback before the release, we made several mistakes in the process. Due to communication and process shortcomings, our team wasn't able to fully consider how our design would impact existing focus styles, or whether or not our design was too specific. Our team assumed that the SCSS variables we provided were sufficient to adapt the focus styles for different use cases and we neglected to add an easy way to opt-out of the new feature.
-
-In this release, we worked to correct these mistakes by putting the new styles under a flag and turning them off by default. In the future, we plan on iterating on our default styles to be more generalized and more in line with existing focus styles on CMS products. We will also be adding additional mixins, variables, and documentation to make it easier for teams to customize focus styles.
-
 ## A note on versioning
 
 When we decided to publish our new NPM packages for this release, we chose to start at `v2.0.0` even though our old NPM packages were at `v3.7.0`. The main reason for this is that our past v2 and v3 major releases didn't introduce breaking changes to our design system according to our [SemVer guidelines](https://github.com/CMSgov/design-system/blob/master/guides/RELEASE-PROCESS.md#versioning). These releases were also not aligned with our product communication and marketing, and were limited to developer usage.
