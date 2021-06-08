@@ -9,7 +9,7 @@ export type ButtonType = 'button' | 'submit';
  * A string corresponding to the button-component variation classes.
  * The danger variation is deprecated and will be removed in a future release.
  */
-export type ButtonVariation = 'primary' | ' danger' | 'success' | 'transparent';
+export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
 export interface ButtonProps {
   /**
