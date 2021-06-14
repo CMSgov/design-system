@@ -246,28 +246,28 @@ Default
 
  */
 $button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $focus-color
+  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active $color-focus
     $button-primary-text-color $button-primary-border-color $button-primary-border-color--hover
     $button-primary-border-color--active $button-primary-text-color--hover
     $button-primary-text-color--active $button-primary-bg--disabled
     $button-primary-text-color--disabled $button-primary-border-color--disabled
     $button-text-decoration-none,
   secondary: $button-secondary-bg $button-secondary-bg--hover $button-secondary-bg--active
-    $focus-color $button-secondary-text-color $button-secondary-border-color
+    $color-focus $button-secondary-text-color $button-secondary-border-color
     $button-secondary-border-color--hover $button-secondary-border-color--active
     $button-secondary-text-color--hover $button-secondary-text-color--active
     $button-secondary-bg--disabled $button-secondary-text-color--disabled
     $button-secondary-border-color--disabled $button-text-decoration-none,
-  tertiary: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active $focus-color
+  tertiary: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active $color-focus
     $button-tertiary-text-color $button-tertiary-border-color $button-tertiary-border-color--hover
     $button-tertiary-border-color--active $button-tertiary-text-color--hover
     $button-tertiary-text-color--active $button-tertiary-bg--disabled
     $button-tertiary-text-color--disabled $button-tertiary-border-color--disabled
     $button-text-decoration-underline,
-  success: $color-success $color-success-dark $color-success-darker $focus-color $color-white
+  success: $color-success $color-success-dark $color-success-darker $color-focus $color-white
     $color-transparent $color-transparent $color-transparent $color-white $color-white
     $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
-  danger: $color-error $color-error-dark $color-error-darkest $focus-color $color-white
+  danger: $color-error $color-error-dark $color-error-darkest $color-focus $color-white
     $color-transparent $color-transparent $color-transparent $color-white $color-white
     $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
 );
@@ -299,19 +299,10 @@ $button-color-variants: (
       color: nth($color, 9);
     }
 
-    @if $ds-include-focus-styles {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 4);
-        border-color: nth($color, 6);
-        color: $color-base;
-      }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 2);
-        color: nth($color, 9);
-      }
+    &:focus,
+    &.ds-c-button--focus {
+      background-color: nth($color, 2);
+      color: nth($color, 9);
     }
 
     &:active,
