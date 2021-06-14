@@ -299,12 +299,18 @@ $button-color-variants: (
       color: nth($color, 9);
     }
 
-    &:focus,
-    &.ds-c-button--focus {
-      background-color: nth($color, 2);
-      color: nth($color, 9);
+    @if $ds-include-focus-styles {
+      &:focus,
+      &.ds-c-button--focus {
+        @include focus-styles;
+        background-color: nth($color, 2);
+      }
+    } @else {
+      &:focus,
+      &.ds-c-button--focus {
+        background-color: nth($color, 2);
+      }
     }
-
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
