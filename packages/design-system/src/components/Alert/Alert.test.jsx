@@ -1,5 +1,6 @@
 import Alert from './Alert';
 import React from 'react';
+import { setAlertSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
 const text = 'Ruhroh';
@@ -60,6 +61,26 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert--hide-icon')).toBe(true);
   });
 
+  it('sets tabIndex when autoFocus is passed', () => {
+    const { wrapper } = render({ autoFocus: true });
+
+    expect(wrapper.prop('tabIndex')).toBe('-1');
+  });
+
+  it('sets tabIndex when alertRef is passed', () => {
+    const { wrapper } = render({ alertRef: (elem) => console.log('ALERT', elem) });
+
+    expect(wrapper.prop('tabIndex')).toBe('-1');
+  });
+
+  it('renders additional attributes', () => {
+    const { props, wrapper } = render({
+      ariaLabel: 'additional aria alert',
+    });
+
+    expect(wrapper.prop('ariaLabel')).toBe(props.ariaLabel);
+  });
+
   describe('Analytics event tracking', () => {
     let tealiumMock;
     const defaultEvent = {
@@ -73,6 +94,7 @@ describe('Alert', function () {
     };
 
     beforeEach(() => {
+      setAlertSendsAnalytics(true);
       tealiumMock = jest.fn();
       window.utag = {
         link: tealiumMock,
@@ -80,6 +102,7 @@ describe('Alert', function () {
     });
 
     afterEach(() => {
+      setAlertSendsAnalytics(false);
       jest.resetAllMocks();
     });
 

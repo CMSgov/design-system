@@ -12,6 +12,11 @@ export class Button extends React.PureComponent {
           `[Deprecated]: Please remove the 'inverse' prop in <Button>, use 'inversed' instead. This prop has been renamed and will be removed in a future release.`
         );
       }
+      if (props.variation === 'danger') {
+        console.warn(
+          `[Deprecated]: Please remove the 'danger' variation prop in <Button>. This prop has will be removed in a future release.`
+        );
+      }
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -157,7 +162,8 @@ Button.propTypes = {
    */
   type: PropTypes.oneOf(['button', 'submit']),
   /**
-   * A string corresponding to the button-component variation classes
+   * A string corresponding to the button-component variation classes.
+   * The `'danger'` variation is deprecated and will be removed in a future release.
    */
   variation: PropTypes.oneOf(['primary', 'danger', 'success', 'transparent']),
 };

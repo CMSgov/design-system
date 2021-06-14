@@ -5,7 +5,10 @@ export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) 
 export type ButtonSize = 'small' | 'big';
 
 export type ButtonType = 'button' | 'submit';
-
+/**
+ * A string corresponding to the button-component variation classes.
+ * The danger variation is deprecated and will be removed in a future release.
+ */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
 export interface ButtonProps {
@@ -59,9 +62,9 @@ export interface ButtonProps {
 
 type OmitProps = 'size';
 
-// Remove the "size" definition inside React.HTMLProps<HTMLButtonElement>, and use ours instead
+// Remove the "size" definition inside React.ComponentPropsWithRef+, and use ours instead
 export default class Button extends React.Component<
-  Omit<React.HTMLProps<HTMLButtonElement>, OmitProps> & ButtonProps,
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps,
   any
 > {
   render(): JSX.Element;

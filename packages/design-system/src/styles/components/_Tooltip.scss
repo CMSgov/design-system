@@ -52,6 +52,11 @@ $tooltip-background-color: $color-background !default;
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
   padding: 4px;
+  &:focus {
+    @if $ds-include-focus-styles {
+      @include focus-styles;
+    }
+  }
 }
 
 .ds-c-tooltip__trigger-link {

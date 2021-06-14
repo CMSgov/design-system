@@ -43,26 +43,37 @@ Sass variables are documented on the relevant documentation pages, and are defin
 
 You can also [browse all Sass variable files on GitHub](https://github.com/CMSgov/design-system/tree/master/packages/design-system/src/styles/settings/variables).
 
-#### Focus style variables
+#### Focus styles
 
-The focus styles are disabled by default. However if you'd like to use them
-set the `$ds-include-focus-styles` variable to `true`.
+The focus styles are enabled by default. However, if you'd like to disable them,
+set the `$ds-include-focus-styles` variable to `false` in your `_override.build.scss` file.
 
-**Focus style variables**
+##### Focus style variables
 
-- `$focus-color` - Sets background highlight color.
-- `$focus-shadow` - Sets box-shadow on text fields.
-- `$focus-shadow-link` - Sets box-shadow on buttons and links.
-- `$focus-color-inverse`- Sets background highlight color on dark backgrounds.
-- `$focus-shadow-inverse`- Sets box-shadow on text fields on dark backgrounds.
-- `$focus-shadow-link-inverse` - Sets box-shadow on buttons and links on dark backgrounds.
+- `$color-focus-light` - Sets the inner halo for the focus styles.
+- `$color-focus-dark` - Sets the outer halo for the focus styles. This color should pass 3.1 contrast ratio on white or light backgrounds.
 
-**Mixins**
+##### Adding focus styles to additional element
 
-- `focus-text` - Mixin for links and buttons.
-- `focus-text-inverse` - Mixin for links and buttons on dark backgrounds.
+We have a mixin to use for adding focus styles to custom components that need a focus state.
 
-See the [v2 migration guide](https://design.cms.gov/startup/migrating-v2/#focus-styles) for more background on our focus styles.
+Use the following mixin `@include focus-styles;`
+
+```CSS
+.customButton:focus {
+ @include focus-styles;
+}
+```
+
+The focus-styles mixin will apply the following styles:
+
+```CSS
+box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+// Add support for Windows High Contrast Mode (WHCM)
+// The transparent color only shows when WHCM is triggered
+outline: 3px solid transparent;
+outline-offset: 3px;
+```
 
 ## Overriding component, utility, base styles
 

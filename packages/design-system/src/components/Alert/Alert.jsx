@@ -1,7 +1,7 @@
-import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
@@ -22,12 +22,11 @@ const defaultAnalytics = (heading = '', variation = '') => ({
 export class Alert extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.headingId = props.headingId || uniqueId('alert_');
-    this.eventHeading = props.heading || props.children;
-    this.eventHeadingText =
-      typeof this.eventHeading === 'string'
-        ? this.eventHeading
-        : ReactDOMServer.renderToStaticMarkup(this.eventHeading);
+    this.alertTextRef = null;
+    this.focusRef = null;
+    this.headingId = this.props.headingId || uniqueId('alert_');
+    this.eventHeadingText = '';
+    
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
@@ -38,13 +37,35 @@ export class Alert extends React.PureComponent {
   }
 
   componentDidMount() {
-    const eventAction = 'onComponentDidMount';
-    /* Send analytics event for `error`, `warn`, `success` alert variations */
-    this.props.variation &&
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-      );
+    // Automatically set focus on alert element when `autoFocus` prop is used
+    if (this.props.autoFocus && this.focusRef) {
+      this.focusRef.focus();
+    }
+    
+    if (alertSendsAnalytics()) {
+      const eventAction = 'onComponentDidMount';
+      const eventHeading = this.props.heading || this.props.children;
+
+      /* Send analytics event for `error`, `warn`, `success` alert variations */
+      if (this.props.variation) {
+        if (typeof eventHeading === 'string') {
+          this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+        } else {
+          const eventHeadingTextElement =
+            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
+          this.eventHeadingText =
+            eventHeadingTextElement && eventHeadingTextElement.textContent
+              ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
+              : '';
+        }
+
+        sendAnalyticsEvent(
+          get(this.props.analytics, eventAction),
+          get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
+        );
+      }
+    }
   }
 
   heading() {
@@ -59,22 +80,48 @@ export class Alert extends React.PureComponent {
   }
 
   render() {
+    const {
+      children,
+      className,
+      autoFocus,
+      heading,
+      headingId,
+      headingLevel,
+      hideIcon,
+      alertRef,
+      role,
+      variation,
+      ...alertProps
+    } = this.props;
+
     const classes = classNames(
       'ds-c-alert',
-      this.props.hideIcon && 'ds-c-alert--hide-icon',
-      this.props.variation && `ds-c-alert--${this.props.variation}`,
-      this.props.className
+      hideIcon && 'ds-c-alert--hide-icon',
+      variation && `ds-c-alert--${variation}`,
+      className
     );
 
     return (
       <div
         className={classes}
-        role={this.props.role}
-        aria-labelledby={this.props.heading ? this.headingId : undefined}
+        /* eslint-disable no-return-assign */
+        ref={(ref) => {
+          this.alertTextRef = ref
+          if (autoFocus) {
+            this.focusRef = ref;
+          } else if (alertRef) {
+            alertRef(ref);
+          }
+        }}
+        /* eslint-enable no-return-assign */
+        tabIndex={alertRef || autoFocus ? '-1' : null}
+        role={role}
+        aria-labelledby={heading ? this.headingId : undefined}
+        {...alertProps}
       >
         <div className="ds-c-alert__body">
           {this.heading()}
-          {this.props.children}
+          {children}
         </div>
       </div>
     );
@@ -103,6 +150,10 @@ const AnalyticsEventShape = PropTypes.shape({
 
 Alert.propTypes = {
   /**
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef: PropTypes.func,
+  /**
    * Analytics events tracking is enabled by default.
    * The `analytics` prop is an object of events that is either a nested `objects` with key-value
    * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
@@ -113,6 +164,10 @@ Alert.propTypes = {
   analytics: PropTypes.shape({
     onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
   }),
+  /**
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus: PropTypes.bool,
   /**
    * The alert's body content
    */

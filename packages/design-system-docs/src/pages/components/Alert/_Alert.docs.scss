@@ -170,6 +170,7 @@ Style guide: components.alert.analytics
 
 - Use the ARIA `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead.
 - Consider putting the alert inside a div with `aria-live="polite"` and `aria-relevant="additions removals"`. These <abbr title="Accessible rich internet applications">ARIA</abbr> attributes ensure screen readers will announce alerts that have been added or updated dynamically.
+- If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`,  and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
 - Alerts should give users adequate time to review and comprehend the provided information. Avoid hiding alerts using a timer.
 - Include a mechanism like a button to dismiss alerts where appropriate.
@@ -191,16 +192,32 @@ Style guide: components.alert.guidance
 /*
 Google Analytics
 
-On application where the page has `utag` loaded, analytics event tracking is enabled by default. The data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
-- To disable the automatic event tracking, pass this prop to the component
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+- Import and set the `setAlertSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```JSX
+import { setAlertSendsAnalytics } from "@cmsgov/<design-system-package>";
+setAlertSendsAnalytics(true);
 ```
+On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Disable event tracking
+
+- Pass the `onComponentDidMount` prop set to `false` to the component:
+
+```JSX
 analytics={
   {
     onComponentDidMount: {false}
   }
 }
 ```
-- To override the event tracking, pass changes via the analytics prop
+### Override  event tracking
+
+- Pass changes via any of the [available analytics props](#components.alert.analytics).
 
 Style guide: components.alert.guidance-analytics
 */
