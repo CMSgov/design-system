@@ -1,0 +1,11 @@
+@mixin focus-styles {
+  box-shadow: 0 0 0 3px $color-focus-light, 0 0 4px 6px $color-focus-dark;
+  // Add support for Windows High Contrast Mode (WHCM)
+  // The transparent color only shows when WHCM is triggered
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+}
+@mixin focus-styles-position {
+  position: relative;
+  z-index: 100;
+}

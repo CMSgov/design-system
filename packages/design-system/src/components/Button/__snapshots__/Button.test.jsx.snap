@@ -50,7 +50,7 @@ exports[`Button applies size classes 1`] = `
 
 exports[`Button applies variation classes 1`] = `
 <button
-  className="ds-c-button ds-c-button--danger"
+  className="ds-c-button ds-c-button--primary"
   type="button"
 >
   Foo
