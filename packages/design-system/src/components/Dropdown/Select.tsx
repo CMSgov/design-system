@@ -75,7 +75,7 @@ export interface SelectProps {
   value?: SelectValue;
 }
 
-export type OmitProps = 'size' | 'value';
+type OmitProps = 'size' | 'value';
 
 /**
  * <Select> is an internal component used by <Dropdown>, which wraps it and handles common form controls like labels, error messages, etc
