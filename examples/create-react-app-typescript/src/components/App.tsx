@@ -32,10 +32,12 @@ function App() {
         <h1 className="ds-u-margin--0 ds-u-color--white ds-u-font-size--display ds-u-text-align--center">
           Hello, world!
         </h1>
-        <Badge variation="info" size="big">
-          <img className="c-usa-banner__header-flag" src={usflag} alt="U.S. flag" />
-          &nbsp;CMS Design system
-        </Badge>
+        <div className="ds-u-text-align--center">
+          <Badge variation="info" size="big">
+            <img className="c-usa-banner__header-flag" src={usflag} alt="U.S. flag" />
+            &nbsp;CMS Design system
+          </Badge>
+        </div>
       </header>
 
       <Tabs>

@@ -57,7 +57,6 @@ function TabsExample(): React.ReactElement {
           You should not see this.
         </TabPanel>
       </Tabs>
-      ,
     </div>
   );
 }
