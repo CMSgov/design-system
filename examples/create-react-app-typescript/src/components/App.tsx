@@ -34,8 +34,8 @@ function App() {
         </h1>
         <Badge variation="info" size="big">
           <img className="c-usa-banner__header-flag" src={usflag} alt="U.S. flag" />
-            &nbsp;CMS Design system
-          </Badge>
+          &nbsp;CMS Design system
+        </Badge>
       </header>
 
       <Tabs>
@@ -118,7 +118,7 @@ function App() {
           </div>
         </TabPanel>
       </Tabs>
-    </div >
+    </div>
   );
 }
 
