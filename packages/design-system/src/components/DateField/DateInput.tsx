@@ -1,17 +1,14 @@
-import * as React from 'react';
+import { DateObject } from './defaultDateFormatter';
+import React from 'react';
+import TextField from '../TextField/TextField';
+import classNames from 'classnames';
 
 export type DateInputDayDefaultValue = string | number;
-
 export type DateInputDayValue = string | number;
-
 export type DateInputMonthDefaultValue = string | number;
-
 export type DateInputMonthValue = string | number;
-
 export type DateInputYearDefaultValue = string | number;
-
 export type DateInputYearValue = string | number;
-
 export interface DateInputProps {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<DateInput>` inputs
@@ -40,7 +37,7 @@ export interface DateInputProps {
   /**
    * A unique ID applied to the DateField label.
    */
-  labelId: string,
+  labelId: string;
   /**
    * Called anytime any date input is blurred
    */
@@ -135,6 +132,101 @@ export interface DateInputProps {
   yearValue?: DateInputYearValue;
 }
 
-export default class DateInput extends React.Component<DateInputProps, any> {
-  render(): JSX.Element;
+export class DateInput extends React.PureComponent<DateInputProps> {
+  constructor(props: DateInputProps) {
+    super(props);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  monthInput: any;
+  dayInput: any;
+  yearInput: any;
+
+  formatDate(): DateObject {
+    if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
+      const values = {
+        month: this.monthInput.value,
+        day: this.dayInput.value,
+        year: this.yearInput.value,
+      };
+      return this.props.dateFormatter(values);
+    }
+  }
+
+  handleBlur(evt: React.FocusEvent<HTMLInputElement>): void {
+    if (this.props.onBlur) {
+      this.props.onBlur(evt, this.formatDate());
+    }
+
+    if (this.props.onComponentBlur) {
+      this.handleComponentBlur(evt);
+    }
+  }
+
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
+    this.props.onChange(evt, this.formatDate());
+  }
+
+  handleComponentBlur(evt: React.FocusEvent<HTMLInputElement>): void {
+    // The active element is always the document body during a focus
+    // transition, so in order to check if the newly focused element
+    // is one of our other date inputs, we're going to have to wait
+    // a bit.
+    setTimeout(() => {
+      if (
+        document.activeElement !== this.dayInput &&
+        document.activeElement !== this.monthInput &&
+        document.activeElement !== this.yearInput
+      ) {
+        this.props.onComponentBlur(evt, this.formatDate());
+      }
+    }, 20);
+  }
+
+  renderField(type: 'day' | 'month' | 'year'): React.ReactNode {
+    const sharedTextFieldProps = {
+      className: 'ds-l-col--auto',
+      labelClassName: 'ds-c-datefield__label',
+      disabled: this.props.disabled,
+      inversed: this.props.inversed,
+      onBlur: (this.props.onBlur || this.props.onComponentBlur) && this.handleBlur,
+      onChange: this.props.onChange && this.handleChange,
+      numeric: true,
+    };
+
+    return (
+      <TextField
+        {...sharedTextFieldProps}
+        defaultValue={this.props[`${type}DefaultValue`]}
+        value={this.props[`${type}Value`]}
+        label={this.props[`${type}Label`]}
+        name={this.props[`${type}Name`]}
+        fieldClassName={classNames(`ds-c-field--${type}`, {
+          'ds-c-field--error': this.props[`${type}Invalid`],
+        })}
+        inputRef={(el) => {
+          this[`${type}Input`] = el;
+          if (this.props[`${type}FieldRef`]) this.props[`${type}FieldRef`](el);
+        }}
+        autoComplete={this.props.autoComplete && `bday-${type}`}
+        aria-describedby={this.props.labelId}
+        aria-invalid={this.props[`${type}Invalid`]}
+      />
+    );
+  }
+
+  render(): React.ReactNode {
+    return (
+      <div className="ds-l-form-row ds-u-align-items--end">
+        {this.renderField('month')}
+        <span className="ds-c-datefield__separator">/</span>
+        {this.renderField('day')}
+        <span className="ds-c-datefield__separator">/</span>
+        {this.renderField('year')}
+      </div>
+    );
+  }
 }
+
+export default DateInput;

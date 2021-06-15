@@ -5,29 +5,11 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
   choices={
     Array [
       Object {
-        "disabled": undefined,
-        "inputClassName": "",
-        "inputRef": [Function],
-        "inversed": undefined,
         "label": "Choice 1",
-        "name": "spec-field",
-        "onBlur": undefined,
-        "onChange": undefined,
-        "size": undefined,
-        "type": "radio",
         "value": "1",
       },
       Object {
-        "disabled": undefined,
-        "inputClassName": "",
-        "inputRef": [Function],
-        "inversed": undefined,
         "label": "Choice 2",
-        "name": "spec-field",
-        "onBlur": undefined,
-        "onChange": undefined,
-        "size": undefined,
-        "type": "radio",
         "value": "2",
       },
     ]
