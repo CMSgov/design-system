@@ -1,15 +1,111 @@
 import EvEmitter from 'ev-emitter';
 import FormLabel from '../FormLabel/FormLabel';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
+export interface ChoiceProps {
+  /**
+   * @hide-prop In order to be consistent with form elements, use `label` instead
+   */
+  children?: React.ReactNode;
+  /**
+   * Sets the input's `checked` state. Use this in combination with `onChange`
+   * for a controlled component; otherwise, set `defaultChecked`.
+   */
+  checked?: boolean;
+  /**
+   * Content to be shown when the choice is checked. See
+   * **Checked children and the expose within pattern** on
+   * the Guidance tab for detailed instructions.
+   */
+  checkedChildren?: React.ReactNode;
+  /**
+   * Content to be shown when the choice is not checked
+   */
+  uncheckedChildren?: React.ReactNode;
+  /**
+   * Additional classes to be added to the root `div` element.
+   */
+  className?: string;
+  /**
+   * Additional classes to be added to the `input` element.
+   */
+  inputClassName?: string;
+  /**
+   * Label text or HTML.
+   */
+  label?: React.ReactNode;
+  /**
+   * Additional classes to be added to the `FormLabel`.
+   */
+  labelClassName?: string;
+  /**
+   * Sets the initial `checked` state. Use this for an uncontrolled component;
+   * otherwise, use the `checked` property.
+   */
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  /**
+   * Access a reference to the `input` element
+   */
+  inputRef?: (...args: any[]) => any;
+  /**
+   * Additional hint text to display below the choice's label
+   */
+  hint?: React.ReactNode;
+  /**
+   * A unique ID to be used for the input field, as well as the label's
+   * `for` attribute. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
+  /**
+   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+   */
+  requirementLabel?: React.ReactNode;
+  /**
+   * Applies the "inverse" UI theme
+   */
+  inversed?: boolean;
+  size?: 'small';
+  /**
+   * The `input` field's `name` attribute
+   */
+  name: string;
+  onBlur?: (...args: any[]) => any;
+  onChange?: (...args: any[]) => any;
+  /**
+   * Sets the type to render `checkbox` fields or `radio` buttons
+   */
+  type: 'checkbox' | 'radio';
+  /**
+   * The `input` `value` attribute
+   */
+  value: number | string;
+}
+
+type OmitProps =
+  | 'size'
+  | 'type'
+  | 'value'
+  | 'label'
+  | 'checked'
+  | 'defaultChecked'
+  | 'onBlur'
+  | 'onChange'
+  | 'name'
+  | 'id'
+  | 'className'
+  | 'disabled';
+
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
 
-export class Choice extends React.PureComponent {
-  constructor(props) {
+export class Choice extends React.PureComponent<
+  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
+  any
+> {
+  constructor(props: ChoiceProps) {
     super(props);
     this.input = null;
     this.handleChange = this.handleChange.bind(this);
@@ -42,14 +138,19 @@ export class Choice extends React.PureComponent {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     // Unbind event emitters are only relevant for uncontrolled radio buttons
     if (!this.isControlled && this.props.type === 'radio') {
       dsChoiceEmitter.off(this.uncheckEventName, this.handleUncheck);
     }
   }
 
-  checked() {
+  input: any;
+  id: string;
+  isControlled: boolean;
+  uncheckEventName: string;
+
+  checked(): boolean {
     if (this.isControlled) {
       return this.props.checked;
     }
@@ -63,13 +164,13 @@ export class Choice extends React.PureComponent {
    * allows us to check each radio options' checked state.
    * @param {String} checkedId - ID of the checked radio option
    */
-  handleUncheck(checkedId) {
+  handleUncheck(checkedId: string): void {
     if (checkedId !== this.id && this.input.checked !== this.state.checked) {
       this.setState({ checked: this.input.checked });
     }
   }
 
-  handleChange(evt) {
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
     if (this.props.onChange) {
       this.props.onChange(evt);
     }
@@ -84,7 +185,7 @@ export class Choice extends React.PureComponent {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       checkedChildren,
       children,
@@ -145,85 +246,5 @@ export class Choice extends React.PureComponent {
     );
   }
 }
-
-Choice.propTypes = {
-  /**
-   * @hide-prop In order to be consistent with form elements, use `label` instead
-   */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  /**
-   * Sets the input's `checked` state. Use this in combination with `onChange`
-   * for a controlled component; otherwise, set `defaultChecked`.
-   */
-  checked: PropTypes.bool,
-  /**
-   * Content to be shown when the choice is checked. See
-   * **Checked children and the expose within pattern** on
-   * the Guidance tab for detailed instructions.
-   */
-  checkedChildren: PropTypes.node,
-  /**
-   * Content to be shown when the choice is not checked
-   */
-  uncheckedChildren: PropTypes.node,
-  /**
-   * Additional classes to be added to the root `div` element.
-   */
-  className: PropTypes.string,
-  /**
-   * Additional classes to be added to the `input` element.
-   */
-  inputClassName: PropTypes.string,
-  /**
-   * Label text or HTML.
-   */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName: PropTypes.string,
-  /**
-   * Sets the initial `checked` state. Use this for an uncontrolled component;
-   * otherwise, use the `checked` property.
-   */
-  defaultChecked: PropTypes.bool,
-  disabled: PropTypes.bool,
-  /**
-   * Access a reference to the `input` element
-   */
-  inputRef: PropTypes.func,
-  /**
-   * Additional hint text to display below the choice's label
-   */
-  hint: PropTypes.node,
-  /**
-   * A unique ID to be used for the input field, as well as the label's
-   * `for` attribute. A unique ID will be generated if one isn't provided.
-   */
-  id: PropTypes.string,
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel: PropTypes.node,
-  /**
-   * Applies the "inverse" UI theme
-   */
-  inversed: PropTypes.bool,
-  size: PropTypes.oneOf(['small']),
-  /**
-   * The `input` field's `name` attribute
-   */
-  name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  /**
-   * Sets the type to render `checkbox` fields or `radio` buttons
-   */
-  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
-  /**
-   * The `input` `value` attribute
-   */
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-};
 
 export default Choice;
