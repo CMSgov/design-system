@@ -114,3 +114,20 @@ $button-inverse-border-color: $color-white !default;
 $button-inverse-border-color--hover: $color-gray-lightest !default;
 $button-inverse-border-color--active: $color-gray-lighter !default;
 $button-inverse-border-color--disabled: $color-gray-lighter !default;
+
+// Transparent button
+// text color
+$button-transparent-text-color: $color-primary !default;
+$button-transparent-text-color--hover: $color-primary-darker !default;
+$button-transparent-text-color--active: $color-primary-darkest !default;
+$button-transparent-text-color--disabled: $color-gray-lighter !default;
+// background color
+$button-transparent-bg: $color-white !default;
+$button-transparent-bg--hover: $color-white !default;
+$button-transparent-bg--active: $color-white !default;
+$button-transparent-bg--disabled: $color-white !default;
+// border color
+$button-transparent-border-color: transparent !default;
+$button-transparent-border-color--hover: transparent !default;
+$button-transparent-border-color--active: transparent !default;
+$button-transparent-border-color--disabled: transparent !default;

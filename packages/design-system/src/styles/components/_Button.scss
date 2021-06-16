@@ -137,12 +137,12 @@ $button-color-variants: (
   button--danger: $color-error $color-error-dark $color-error-darkest $color-white
   $color-transparent $color-transparent $color-transparent $color-white $color-white
   $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
-  button--transparent: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active
-  $button-tertiary-text-color $button-tertiary-border-color $button-tertiary-border-color--hover
-  $button-tertiary-border-color--active $button-tertiary-text-color--hover
-  $button-tertiary-text-color--active $button-tertiary-bg--disabled
-  $button-tertiary-text-color--disabled $button-tertiary-border-color--disabled
-  $button-text-decoration-underline,
+  button--transparent: $button-transparent-bg $button-transparent-bg--hover
+  $button-transparent-bg--active $button-transparent-text-color $button-transparent-border-color
+  $button-transparent-border-color--hover $button-transparent-border-color--active
+  $button-transparent-text-color--hover $button-transparent-text-color--active
+  $button-transparent-bg--disabled $button-transparent-text-color--disabled
+  $button-transparent-border-color--disabled $button-text-decoration-underline,
   button--inverse: $button-inverse-bg $button-inverse-bg--hover $button-inverse-bg--active
   $button-inverse-text-color $button-inverse-border-color $button-inverse-border-color--hover
   $button-inverse-border-color--active $button-inverse-text-color--hover
