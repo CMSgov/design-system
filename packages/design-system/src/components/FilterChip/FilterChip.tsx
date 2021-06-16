@@ -34,7 +34,7 @@ export interface FilterChipProps {
   /**
    * Sets the size of the chip to larger version
    */
-  size?: 'big',
+  size?: 'big';
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
