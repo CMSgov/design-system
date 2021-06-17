@@ -7,68 +7,68 @@ import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
 export interface AnalyticsEventShape {
-  'event_name': string,
-  'event_type': string,
-  'ga_eventAction': string,
-  'ga_eventCategory': string,
-  'ga_eventLabel': string,
-  'ga_eventType': string,
-  'ga_eventValue': string,
-  heading: string,
-  type: string,
+  'event_name': string;
+  'event_type': string;
+  'ga_eventAction': string;
+  'ga_eventCategory': string;
+  'ga_eventLabel': string;
+  'ga_eventType': string;
+  'ga_eventValue': string;
+  heading: string;
+  type: string;
 }
 
 interface AnalyticsObjectShape {
-  onComponentDidMount?: boolean | AnalyticsEventShape
+  onComponentDidMount?: boolean | AnalyticsEventShape;
 }
 
 export interface AlertProps {
   /**
-     * Access a reference to the `alert` `div` element
-     */
-  alertRef?: (...args: any[]) => any,
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef?: (...args: any[]) => any;
   /**
-    * Analytics events tracking is enabled by default.
-    * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-    * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-    * event object value to `false`.
-    * When an event is triggered, the object value is populated and sent to google analytics
-    * if `window.utag` instance is loaded.
-    */
-  analytics?: AnalyticsObjectShape,
+   * Analytics events tracking is enabled by default.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
+   */
+  analytics?: AnalyticsObjectShape;
   /**
-    * Sets the focus on Alert during the first mount
-    */
-  autoFocus?: boolean,
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus?: boolean;
   /**
-    * The alert's body content
-    */
-  children?: React.ReactNode,
-  className?: string,
+   * The alert's body content
+   */
+  children?: React.ReactNode;
+  className?: string;
   /**
-    * Text for the alert heading
-    */
-  heading?: string,
+   * Text for the alert heading
+   */
+  heading?: string;
   /**
-    * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
-    */
-  headingId?: string,
+   * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
+   */
+  headingId?: string;
   /**
-    * Heading type to override default `<h2>`.
-    */
-  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6',
+   * Heading type to override default `<h2>`.
+   */
+  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
   /**
-    * Boolean to hide the `Alert` icon
-    */
-  hideIcon?: boolean,
+   * Boolean to hide the `Alert` icon
+   */
+  hideIcon?: boolean;
   /**
-    * ARIA `role`, defaults to 'region'
-    */
-  role?: 'alert' | 'alertdialog' | 'region' | 'status',
+   * ARIA `role`, defaults to 'region'
+   */
+  role?: 'alert' | 'alertdialog' | 'region' | 'status';
   /**
-    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
-    */
-  variation?: 'error' | 'warn' | 'success',
+   * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
+   */
+  variation?: 'error' | 'warn' | 'success';
 
   [key: string]: any;
 }
@@ -86,14 +86,14 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.PureComponent<AlertProps, any>{
+export class Alert extends React.PureComponent<AlertProps, any> {
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
     this.eventHeadingText = '';
-    
+
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
@@ -108,7 +108,7 @@ export class Alert extends React.PureComponent<AlertProps, any>{
     if (this.props.autoFocus && this.focusRef) {
       this.focusRef.focus();
     }
-    
+
     if (alertSendsAnalytics()) {
       const eventAction = 'onComponentDidMount';
       const eventHeading = this.props.heading || this.props.children;
@@ -119,7 +119,8 @@ export class Alert extends React.PureComponent<AlertProps, any>{
           this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
-            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (this.alertTextRef &&
+              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
             (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
           this.eventHeadingText =
             eventHeadingTextElement && eventHeadingTextElement.textContent
@@ -142,22 +143,14 @@ export class Alert extends React.PureComponent<AlertProps, any>{
   eventHeadingText: string;
 
   heading(): React.ReactElement | void {
-    const { 
-      headingLevel = '2',
-      heading
-    } = this.props
+    const { headingLevel = '2', heading } = this.props;
     const Heading = `h${headingLevel}`;
     if (heading) {
-
       const headingProps = {
-        className: "ds-c-alert__heading",
-        id: this.headingId
-      }
-      return React.createElement(
-        Heading,
-        headingProps,
-        heading
-      );
+        className: 'ds-c-alert__heading',
+        id: this.headingId,
+      };
+      return React.createElement(Heading, headingProps, heading);
     }
   }
 
@@ -186,7 +179,7 @@ export class Alert extends React.PureComponent<AlertProps, any>{
         className={classes}
         /* eslint-disable no-return-assign */
         ref={(ref) => {
-          this.alertTextRef = ref
+          this.alertTextRef = ref;
           if (autoFocus) {
             this.focusRef = ref;
           } else if (alertRef) {
@@ -207,6 +200,5 @@ export class Alert extends React.PureComponent<AlertProps, any>{
     );
   }
 }
-
 
 export default Alert;
