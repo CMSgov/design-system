@@ -6,16 +6,18 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
+/* eslint-disable camelcase */
+// disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
-  'event_name': string;
-  'event_type': string;
-  'ga_eventAction': string;
-  'ga_eventCategory': string;
-  'ga_eventLabel': string;
-  'ga_eventType': string;
-  'ga_eventValue': string;
-  heading: string;
-  type: string;
+  'event_name'?: string;
+  'event_type'?: string;
+  'ga_eventAction'?: string;
+  'ga_eventCategory'?: string;
+  'ga_eventLabel'?: string;
+  'ga_eventType'?: string;
+  'ga_eventValue'?: string;
+  heading?: string;
+  type?: string;
 }
 
 interface AnalyticsObjectShape {
@@ -160,10 +162,13 @@ export class Alert extends React.PureComponent<AlertProps, any> {
       className,
       autoFocus,
       heading,
+      headingId,
+      headingLevel,
       hideIcon,
       alertRef,
       role = 'region',
       variation,
+      analytics,
       ...alertProps
     } = this.props;
 
