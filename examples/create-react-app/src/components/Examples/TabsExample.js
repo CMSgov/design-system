@@ -57,7 +57,6 @@ function TabsExample() {
           You should not see this.
         </TabPanel>
       </Tabs>
-      ,
     </div>
   );
 }
