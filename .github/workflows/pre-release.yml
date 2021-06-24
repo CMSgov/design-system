@@ -1,0 +1,72 @@
+name: Pre-release
+
+# Manually triggered in the 'actions' tab
+# will prompt for the new version number
+on:
+  workflow_dispatch:
+    inputs:
+      versionNum:
+        description: 'New Version Number'
+        required: true
+
+jobs:
+  # Builds the project
+  build:
+    name: Building project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 13.7.0
+      - name: Install dependencies
+        run: yarn install
+      - name: Build project
+        run: yarn build
+  # Runs tests on project if build passes
+  test:
+    name: Running tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 13.7.0
+      - name: Run unit tests
+        run: yarn test:unit
+      - name: Run e2e tests
+        run: yarn test:e2e
+  # if build and tests pass, it begins pre-release steps
+  pre-release:
+    name: Pre-release steps
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bumping version with lerna
+        run: yarn lerna version ${{ github.event.inputs.versionNum }} --no-push --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
+
+      - name: Create release branch
+        run: git checkout -b release-${{ github.event.inputs.versionNum }}
+      - name: Push release branch
+        run: git push --set-upstream origin release-${{ github.event.inputs.versionNum }}
+      - name: Create release tag variable
+        # creates a variable called TAG_PREFIX and makes it an environment variable so it can be referenced later
+        run: |
+          echo "TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")" >> $GITHUB_ENV
+      - name: Push release tag
+        run: git push origin ${{ env.TAG_PREFIX }}${{ github.event.inputs.versionNum }}
+
+      - name: Creating release zips
+        run: |
+          npm pack ./packages/design-system/
+          npm pack ./packages/design-system-docs/
+          npm pack ./packages/design-system-scripts/
+
+        # This saves .tgz files and artifacts in 'actions' tab
+      - name: Archive zips
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-artifacts
+          path: ./*.tgz
