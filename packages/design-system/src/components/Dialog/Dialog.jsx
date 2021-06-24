@@ -89,6 +89,7 @@ export class Dialog extends React.PureComponent {
     const {
       actions,
       actionsClassName,
+      analytics,
       ariaCloseLabel,
       children,
       className,
