@@ -1,10 +1,79 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
+
+/* eslint-disable camelcase */
+// disable linting since prop names must be in snake case for integration with Blast
+export interface AnalyticsEventShape {
+  'event_name'?: string;
+  'event_type'?: string;
+  'ga_eventAction'?: string;
+  'ga_eventCategory'?: string;
+  'ga_eventLabel'?: string;
+  'ga_eventType'?: string;
+  'ga_eventValue'?: string;
+  heading?: string;
+  type?: string;
+}
+
+interface AnalyticsObjectShape {
+  onComponentDidMount?: boolean | AnalyticsEventShape;
+}
+
+export interface AlertProps {
+  /**
+   * Access a reference to the `alert` `div` element
+   */
+  alertRef?: (...args: any[]) => any;
+  /**
+   * Analytics events tracking is enabled by default.
+   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
+   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
+   * event object value to `false`.
+   * When an event is triggered, the object value is populated and sent to google analytics
+   * if `window.utag` instance is loaded.
+   */
+  analytics?: AnalyticsObjectShape;
+  /**
+   * Sets the focus on Alert during the first mount
+   */
+  autoFocus?: boolean;
+  /**
+   * The alert's body content
+   */
+  children?: React.ReactNode;
+  className?: string;
+  /**
+   * Text for the alert heading
+   */
+  heading?: string;
+  /**
+   * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
+   */
+  headingId?: string;
+  /**
+   * Heading type to override default `<h2>`.
+   */
+  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
+  /**
+   * Boolean to hide the `Alert` icon
+   */
+  hideIcon?: boolean;
+  /**
+   * ARIA `role`, defaults to 'region'
+   */
+  role?: 'alert' | 'alertdialog' | 'region' | 'status';
+  /**
+   * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
+   */
+  variation?: 'error' | 'warn' | 'success';
+
+  [key: string]: any;
+}
 
 // Default analytics object
 const defaultAnalytics = (heading = '', variation = '') => ({
@@ -19,14 +88,14 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.PureComponent {
-  constructor(props) {
+export class Alert extends React.PureComponent<AlertProps, any> {
+  constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
     this.eventHeadingText = '';
-    
+
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
         console.warn(
@@ -36,12 +105,12 @@ export class Alert extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     // Automatically set focus on alert element when `autoFocus` prop is used
     if (this.props.autoFocus && this.focusRef) {
       this.focusRef.focus();
     }
-    
+
     if (alertSendsAnalytics()) {
       const eventAction = 'onComponentDidMount';
       const eventHeading = this.props.heading || this.props.children;
@@ -52,7 +121,8 @@ export class Alert extends React.PureComponent {
           this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
-            (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
+            (this.alertTextRef &&
+              this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
             (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
           this.eventHeadingText =
             eventHeadingTextElement && eventHeadingTextElement.textContent
@@ -68,18 +138,25 @@ export class Alert extends React.PureComponent {
     }
   }
 
-  heading() {
-    const Heading = `h${this.props.headingLevel}` || `h2`;
-    if (this.props.heading) {
-      return (
-        <Heading className="ds-c-alert__heading" id={this.headingId}>
-          {this.props.heading}
-        </Heading>
-      );
+  // Alert class properties
+  alertTextRef: any;
+  focusRef: any;
+  headingId: string;
+  eventHeadingText: string;
+
+  heading(): React.ReactElement | void {
+    const { headingLevel = '2', heading } = this.props;
+    const Heading = `h${headingLevel}`;
+    if (heading) {
+      const headingProps = {
+        className: 'ds-c-alert__heading',
+        id: this.headingId,
+      };
+      return React.createElement(Heading, headingProps, heading);
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const {
       children,
       className,
@@ -89,8 +166,9 @@ export class Alert extends React.PureComponent {
       headingLevel,
       hideIcon,
       alertRef,
-      role,
+      role = 'region',
       variation,
+      analytics,
       ...alertProps
     } = this.props;
 
@@ -106,7 +184,7 @@ export class Alert extends React.PureComponent {
         className={classes}
         /* eslint-disable no-return-assign */
         ref={(ref) => {
-          this.alertTextRef = ref
+          this.alertTextRef = ref;
           if (autoFocus) {
             this.focusRef = ref;
           } else if (alertRef) {
@@ -114,7 +192,7 @@ export class Alert extends React.PureComponent {
           }
         }}
         /* eslint-enable no-return-assign */
-        tabIndex={alertRef || autoFocus ? '-1' : null}
+        tabIndex={alertRef || autoFocus ? -1 : null}
         role={role}
         aria-labelledby={heading ? this.headingId : undefined}
         {...alertProps}
@@ -127,76 +205,5 @@ export class Alert extends React.PureComponent {
     );
   }
 }
-
-Alert.defaultProps = {
-  role: 'region',
-  headingLevel: '2',
-};
-
-/**
- * Defines the shape of an analytics event for tracking that is an object with key-value pairs
- */
-const AnalyticsEventShape = PropTypes.shape({
-  event_name: PropTypes.string,
-  event_type: PropTypes.string,
-  ga_eventAction: PropTypes.string,
-  ga_eventCategory: PropTypes.string,
-  ga_eventLabel: PropTypes.string,
-  ga_eventType: PropTypes.string,
-  ga_eventValue: PropTypes.string,
-  heading: PropTypes.string,
-  type: PropTypes.string,
-});
-
-Alert.propTypes = {
-  /**
-   * Access a reference to the `alert` `div` element
-   */
-  alertRef: PropTypes.func,
-  /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
-   */
-  analytics: PropTypes.shape({
-    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-  }),
-  /**
-   * Sets the focus on Alert during the first mount
-   */
-  autoFocus: PropTypes.bool,
-  /**
-   * The alert's body content
-   */
-  children: PropTypes.node,
-  className: PropTypes.string,
-  /**
-   * Text for the alert heading
-   */
-  heading: PropTypes.string,
-  /**
-   * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
-   */
-  headingId: PropTypes.string,
-  /**
-   * Heading type to override default `<h3>`.
-   */
-  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5', '6']),
-  /**
-   * Boolean to hide the `Alert` icon
-   */
-  hideIcon: PropTypes.bool,
-  /**
-   * ARIA `role`, defaults to 'region'
-   */
-  role: PropTypes.oneOf(['alert', 'alertdialog', 'region', 'status']),
-  /**
-   * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
-   */
-  variation: PropTypes.oneOf(['error', 'warn', 'success']),
-};
 
 export default Alert;
