@@ -1,27 +1,16 @@
 <!-- prettier-ignore -->
 
-<div class="focus-styles">
+<div class="focus-styles ">
 
-  <% [ {
-    title: 'Box-Shadow - Double outline' , focus: 'focus-box-double-outline' }, {
-    title: 'Box-Shadow - Double outline (soft)', focus: 'focus-box-double-outline-soft' }, { title: 'Box-Shadow - Double outline (combo)',
-    focus: 'focus-box-double-outline-combo' }, { title: 'Multiple outline colors - Box shadow',
-    focus: 'focus-box-m-colors-outline' }, { title: 'Outline - Solid', focus: 'focus-outline-solid' }, { title: 'Outline - Dashed',
-    focus: 'focus-outline-dashed' }, { title: 'Box-Shadow - Single outline', focus: 'focus-box-single-outline' },
-    { title: 'Box-Shadow - Single bottom border', focus: 'focus-box-single-bottom-border' }, {
-    title: 'Box-Shadow - Double bottom border', focus: 'focus-box-double-bottom-border' }, {
-    title: 'Box-Shadow - Single outline with bottom border', focus: 'focus-box-single-outline-bottom-border' }, {
-    title: 'Background color', focus: 'focus-back-color' }, { title: 'Background color - Box shadow bottom border',
-    focus: 'focus-back-color-box-shadow-bottom-border' }, { title: 'Background color - Dashed outline',
-    focus: 'focus-back-color-dashed-outline' }, { title: 'Text decoration - Underline' , focus: 'focus-text-dec' }, {
-    title: 'Border - Thick border' , focus: 'focus-thick-border' }, { title: 'Border - Bottom',
-    focus: 'focus-border-bottom' }, { title: 'Background color - Box shadow (combo)',
-    focus: 'focus-box-bg-shadow-combo' }, { title: 'Drop shadow' , focus: 'focus-box-drop-shadow' } ].forEach(section=>
+  <% [ { title: 'Box-Shadow - Double outline' , focus: 'focus-box-double-outline' }, {
+    title: 'Box-Shadow - Double outline (soft)' , focus: 'focus-box-double-outline-soft' }, {
+    title: 'Box-Shadow - Double outline (combo)' , focus: 'focus-box-double-outline-combo' }, {
+    title: 'Multiple outline colors - Box shadow' , focus: 'focus-box-m-colors-outline' } ].forEach(section=>
     { -%>
     <h1 id="<%= section.focus %>">
       <%= section.title %>
     </h1>
-    <div class="<%= section.focus %> ds-l-row ds-u-margin-bottom--7">
+    <div class="<%= section.focus %> focus-styles-eggplant ds-l-row ds-u-margin-bottom--7">
       <div class="ds-l-col--6 example--wrapper ds-u-padding--2">
 
         <fieldset class="ds-c-fieldset">
@@ -36,8 +25,8 @@
           <label for="<%= section.focus %>-checkbox-2">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-3" type="checkbox" name="<%= section.focus %>-checkbox-choices"
-            value="<%= section.focus %>-checkbox-3" disabled="">
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-3" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-3" disabled="">
           <label for="<%= section.focus %>-checkbox-3">
             <span>Disabled choice 3</span>
           </label>
@@ -86,8 +75,8 @@
           <label for="<%= section.focus %>-checkbox-5">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-6" type="checkbox" name="<%= section.focus %>-checkbox-choices"
-            value="<%= section.focus %>-checkbox-6" disabled="">
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-6" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-6" disabled="">
           <label for="<%= section.focus %>-checkbox-6">
             <span>Disabled choice 3</span>
           </label>
@@ -136,8 +125,8 @@
           <label for="<%= section.focus %>-checkbox-8">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-9" type="checkbox" name="<%= section.focus %>-checkbox-choices"
-            value="<%= section.focus %>-checkbox-3" disabled="">
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-9" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-3" disabled="">
           <label for="<%= section.focus %>-checkbox-9">
             <span>Disabled choice 3</span>
           </label>
@@ -186,8 +175,8 @@
           <label for="<%= section.focus %>-checkbox-11">
             <span>Choice 2</span>
           </label>
-          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-12" type="checkbox" name="<%= section.focus %>-checkbox-choices"
-            value="<%= section.focus %>-checkbox-12" disabled="">
+          <input class="ds-c-choice" id="<%= section.focus %>-checkbox-12" type="checkbox"
+            name="<%= section.focus %>-checkbox-choices" value="<%= section.focus %>-checkbox-12" disabled="">
           <label for="<%= section.focus %>-checkbox-12">
             <span>Disabled choice 3</span>
           </label>

@@ -1,23 +1,33 @@
 /*
-Text field
+Examples
 
-@uswds https://designsystem.digital.gov/components/form-controls/#text-input
-
-Text fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text fields can span single or multiple lines.
-
-Markup: textfield.example.html
+Markup: textfield.example-bw.html
 
 Style guide: components.text-field
+
 */
 
 /*
-`<TextField>`
+Coral
 
-A `TextField` component renders an input field as well as supporting UI elements like a label, error message, and hint text.
+Markup: textfield.example.coral.html
 
-@react-example TextField.example.jsx
+Style guide: components.text-field.coral
 
-@react-props TextField.jsx
+*/
+
+/*
+Eggplant
+
+Markup: textfield.example.eggplant.html
+
+Style guide: components.text-field.eggplant
+
+*/
+
+/*
+
+Markup: textfield.example.html
 
 Style guide: components.text-field.react
 */
