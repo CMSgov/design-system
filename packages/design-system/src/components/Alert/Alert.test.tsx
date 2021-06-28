@@ -1,11 +1,11 @@
-import Alert from './Alert';
+import Alert, { AlertProps } from './Alert';
 import React from 'react';
 import { setAlertSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
 const text = 'Ruhroh';
 
-function render(props = {}, children = text) {
+function render(props: AlertProps = {}, children: string | React.ReactElement = text) {
   return {
     props: props,
     wrapper: shallow(<Alert {...props}>{children}</Alert>),
@@ -64,13 +64,13 @@ describe('Alert', function () {
   it('sets tabIndex when autoFocus is passed', () => {
     const { wrapper } = render({ autoFocus: true });
 
-    expect(wrapper.prop('tabIndex')).toBe('-1');
+    expect(wrapper.prop('tabIndex')).toBe(-1);
   });
 
   it('sets tabIndex when alertRef is passed', () => {
     const { wrapper } = render({ alertRef: (elem) => console.log('ALERT', elem) });
 
-    expect(wrapper.prop('tabIndex')).toBe('-1');
+    expect(wrapper.prop('tabIndex')).toBe(-1);
   });
 
   it('renders additional attributes', () => {
