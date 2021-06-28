@@ -89,8 +89,8 @@ export type OmitProps = 'size' | 'ref';
  */
 const TextInput: FunctionComponent<
   Omit<React.ComponentPropsWithoutRef<'textarea'>, OmitProps> &
-  Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> &
-  TextInputProps
+    Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> &
+    TextInputProps
 > = (props: TextInputProps) => {
   const {
     ariaLabel,

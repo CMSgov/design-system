@@ -96,7 +96,18 @@ export interface DropdownProps {
   value?: number | string;
 }
 
-type OmitProps = 'size' | 'value' | 'label' | 'className' | 'children' | 'defaultValue' | 'disabled' | 'id' | 'name' | 'onBlur' | 'onChange';
+type OmitProps =
+  | 'size'
+  | 'value'
+  | 'label'
+  | 'className'
+  | 'children'
+  | 'defaultValue'
+  | 'disabled'
+  | 'id'
+  | 'name'
+  | 'onBlur'
+  | 'onChange';
 
 export class Dropdown extends React.PureComponent<
   Omit<React.ComponentPropsWithoutRef<'select'>, OmitProps> & DropdownProps,
