@@ -1,8 +1,10 @@
+import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import TextInput from './TextInput';
 
-const defaultProps = {
+const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
+  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
+  TextInputProps = {
   name: 'spec-field',
   setRef: jest.fn(),
   id: '1',

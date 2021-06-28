@@ -1,5 +1,4 @@
 import { maskValue, unmaskValue } from './maskHelpers';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 const maskPattern = {
@@ -13,8 +12,18 @@ const maskOverlayContent = {
   currency: '$',
 };
 
-export class Mask extends React.PureComponent {
-  constructor(props) {
+export type MaskMask = 'currency' | 'phone' | 'ssn' | 'zip';
+
+export interface MaskProps {
+  /**
+   * Must contain a `TextField` component
+   */
+  children: React.ReactNode;
+  mask?: MaskMask;
+}
+
+export class Mask extends React.PureComponent<MaskProps, any> {
+  constructor(props: MaskProps) {
     super(props);
 
     const field = this.field();
@@ -25,14 +34,15 @@ export class Mask extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: MaskProps): void {
     if (this.debouncedOnBlurEvent) {
       this.field().props.onBlur(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
     }
 
     const fieldProps = this.field().props;
-    const prevFieldProps = React.Children.only(prevProps.children).props;
+    const prevField = React.Children.only(prevProps.children);
+    const prevFieldProps = React.isValidElement(prevField) ? prevField.props : {};
     const isControlled = fieldProps.value !== undefined;
     if (isControlled && prevFieldProps.value !== fieldProps.value) {
       const { mask } = this.props;
@@ -50,13 +60,15 @@ export class Mask extends React.PureComponent {
     }
   }
 
+  debouncedOnBlurEvent: any;
+
   /**
    * Get the child text field. Called as a method so that
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
-  field() {
-    return React.Children.only(this.props.children);
+  field(): React.ReactElement {
+    return React.Children.only(this.props.children as React.ReactElement);
   }
 
   /**
@@ -66,7 +78,7 @@ export class Mask extends React.PureComponent {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleBlur(evt, field) {
+  handleBlur(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
     const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
@@ -98,7 +110,7 @@ export class Mask extends React.PureComponent {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleChange(evt, field) {
+  handleChange(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
     this.setState({ value: evt.target.value });
 
     if (typeof field.props.onChange === 'function') {
@@ -106,7 +118,7 @@ export class Mask extends React.PureComponent {
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     const { mask } = this.props;
     const field = this.field();
 
@@ -135,13 +147,5 @@ export class Mask extends React.PureComponent {
     );
   }
 }
-
-Mask.propTypes = {
-  /**
-   * Must contain a `TextField` component
-   */
-  children: PropTypes.node.isRequired,
-  mask: PropTypes.oneOf(['currency', 'phone', 'ssn', 'zip']),
-};
 
 export default Mask;

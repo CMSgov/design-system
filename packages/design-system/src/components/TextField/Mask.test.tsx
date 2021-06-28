@@ -106,7 +106,7 @@ describe('Mask', function () {
       const onChange = (event) => {
         // Simulate the change bubbling up to the controlling component and the
         // controlling component then updating the value prop.
-        wrapper.setProps({
+        this.setProps({
           children: (
             <input name="foo" type="text" value={unmaskValue(event.target.value, 'currency')} />
           ),

@@ -120,9 +120,13 @@ function parseComponent(file, options) {
           !props.parent.fileName.includes('node_modules') ||
           props.parent.fileName.includes('@cmsgov'),
       };
-
       // Use `react-docgen-typescript` for `tsx` files
       docs = tsDocgen.withCustomConfig(path.resolve('tsconfig.json'), tsOptions).parse(file.path);
+
+      // Do this to get rid of extraneous exports that also end up getting processed with typescript
+      if (docs.length > 1) {
+        docs = docs.filter((doc) => !!doc.props && Object.keys(doc.props).length);
+      }
       processDocgenTemplates(docs[0], options);
     }
   } else {

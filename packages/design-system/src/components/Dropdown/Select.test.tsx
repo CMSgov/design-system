@@ -1,16 +1,16 @@
+import Select, { SelectProps } from './Select';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import Select from './Select';
 import { generateOptions } from './Dropdown.test';
 
-const defaultProps = {
+const defaultProps: SelectProps = {
   name: 'Select',
-  label: 'Select an option',
   errorPlacement: 'top',
   id: '1',
   setRef: jest.fn(),
   onBlur: jest.fn(),
   onChange: jest.fn(),
+  options: [],
 };
 
 function render(customProps = {}, optionsCount = 1, deep = false) {
@@ -114,8 +114,7 @@ describe('Select', () => {
     const wrapper = render().wrapper;
 
     beforeEach(() => {
-      defaultProps.onBlur.mockClear();
-      defaultProps.onChange.mockClear();
+      jest.clearAllMocks();
     });
 
     it('calls the onChange handler', () => {
