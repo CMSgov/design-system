@@ -121,7 +121,18 @@ export interface TextFieldProps {
   value?: TextFieldValue;
 }
 
-type OmitProps = 'size' | 'label' | 'className' | 'defaultValue' | 'disabled' | 'id' | 'onBlur' | 'onChange' | 'type' | 'value' | 'name';
+type OmitProps =
+  | 'size'
+  | 'label'
+  | 'className'
+  | 'defaultValue'
+  | 'disabled'
+  | 'id'
+  | 'onBlur'
+  | 'onChange'
+  | 'type'
+  | 'value'
+  | 'name';
 
 export class TextField extends React.PureComponent<
   Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> & TextFieldProps,
@@ -130,6 +141,7 @@ export class TextField extends React.PureComponent<
   static defaultProps = {
     type: 'text',
   };
+
   constructor(props: TextFieldProps) {
     super(props);
 
