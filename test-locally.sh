@@ -1,12 +1,23 @@
 # This script is meant to help the local development of the core design system by building child & applications to test local changes
 
 # PRE-REQUISTES
-# 1. Set two path variables on your machine and ensure they are exported. You'll need:
-#   a. export DS_APP_PATH="absolute path to the application you want to test"
-#   b. export CHILD_DS_PATH="absolute path to child design system you want to test"
+# 1. This script assumes that this project, both child systems, and any application project all share a parent directory on your machine.
+#    For example, your directory structure should be similar to
+#       projects/
+#           design-system/
+#           mgov-design-system/
+#           hcgov-design-system/
+#           application-to-test/
 
-# 2. Ensure that your local child DS project & application project are looking for the local depency of their design systems. 
-# This can be accomplished by updating the package.json to use "file:[relative path to dependency]"
+# 2. Ensure that child design system projects are looking at local version of the core DS by updating the package.json so that the following dependencies look like this:
+#   "@cmsgov/design-system": "file:../design-system/packages/design-system",
+#   "@cmsgov/design-system-docs": "file:../design-system/packages/design-system-docs",
+#   "@cmsgov/design-system-scripts": "file:../design-system/packages/design-system-scripts",
+
+# 3. Ensure that application project is pointing at local version of child design system by modifying the package.json so that the following dependencies look like this:
+#   "@cmsgov/ds-healthcare-gov": "file:../hcgov-design-system",
+#       or
+#   "@cmsgov/ds-medicare-gov": "file:../mgov-design-system",
 
 # USING THIS SCRIPT
 # In the root directory of the design-system project, run `./test-locally.sh`
@@ -14,43 +25,41 @@
 #   Then, it will navigate to the child DS project. It will remove node_modules, install dependencies & build child system.
 #   Then, it will navigate to an application project. It will remove node_modules, install dependencies & build the application.
 
-# This script will try to use the DS_APP_PATH & CHILD_DS_PATH variables in your system's path, but you can override these for alternative testing.
-# For example, if you want to test the hcgov child system, but your CHILD_DS_PATH variable is for the mgov child system, you can:
-#   1. Update the CHILD_DS_PATH path variable (either globally or in your current session)
-#   2. Run `./test-locally.sh -c [absolute path to hcgov project on your machine]
+# This script will try to use the default variables defined in this file, but you can override these for additional testing.
+# For example, if you want to test the hcgov child system, when the default CHILD_DS_NAME variable is mgov child system, you can:
+#   1. Update the CHILD_DS_NAME variable in this file
+#   2. Run `./test-locally.sh -c hcgov-design-system
 
 # Similarly, if you want to change the application path your are testing with, you can:
-#   1. Update the DS_APP_PATH path variable (either globally or in your current session)
-#   2. Run `./test-locally.sh -a [absolute path to application project on your machine]
+#   1. Update the APP_NAME path variable in this file
+#   2. Run `./test-locally.sh -a [directory name of application]
 #     a. If you only want to test in child systems and not in an application, you can run `./test-locally.sh -a ""`
-
 
 #!/bin/sh
 
 set -e
+source $NVM_DIR/nvm.sh;
 
 RED="\033[0;31m"
 GREEN='\033[0;32m'
 NC='\033[0m' # No color
 
-CHILD_SYSTEM_PATH="$CHILD_DS_PATH"
-APP_PATH="$DS_APP_PATH"
+# either 'mgov-design-system' or 'hcgov-design-system'
+CHILD_DS_NAME="mgov-design-system"
+APP_NAME="coverage-tools-frontend"
 
 while getopts ":c:a:" options; do
     case "${options}" in
         c)
-            CHILD_SYSTEM_PATH=${OPTARG}
+            CHILD_DS_NAME=${OPTARG}
             ;;
         a)
-            APP_PATH=${OPTARG}
+            APP_NAME=${OPTARG}
             ;;
   esac
 done
 
-echo $CHILD_SYSTEM_PATH
-echo $APP_PATH
-
-if [ "$CHILD_SYSTEM_PATH" = "" ]; then
+if [ "$CHILD_DS_NAME" = "" ]; then
       echo "${RED}Error: no path set for child system.
 Make sure you have the CHILD_DS_PATH environment variable set or
 that you have passed a path with the -c option.
@@ -62,15 +71,16 @@ echo "${GREEN}Building core design system...${NC}"
 yarn install
 yarn build
 
-echo "${GREEN}Building child design system with local dependencies at path $CHILD_SYSTEM_PATH...${NC}"
-cd $CHILD_SYSTEM_PATH
+echo "${GREEN}Building child design system with local dependencies at path $CHILD_DS_NAME...${NC}"
+cd ../$CHILD_DS_NAME
 rm -rf node_modules
 yarn install
-yarn build
+# yarn build
 
-if [ "$APP_PATH" != "" ]; then
-    echo "${GREEN}Building application with local dependencies at path $APP_PATH...${NC}"
-    cd $APP_PATH
+if [ "$APP_NAME" != "" ]; then
+    echo "${GREEN}Building application with local dependencies at path $APP_NAME...${NC}"
+    cd ../$APP_NAME
+    nvm use
     rm -rf node_modules
     yarn install
     # This next line may need to be updated depending on the application project's local build command
