@@ -99,6 +99,11 @@ if [ "$APP_NAME" != "" ]; then
     
     rm -rf node_modules
     yarn install
+
+    if [ "$APP_NAME" = "coverage-tools-frontend" ]; then
+        rm -rf node_modules/@cmsgov/ds-medicare-gov/node_modules
+    fi
+
     # This next line may need to be updated depending on the application project's local build command
     yarn start
 else 
