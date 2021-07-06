@@ -19,6 +19,8 @@
 #       or
 #   "@cmsgov/ds-medicare-gov": "file:../mgov-design-system",
 
+## 4. Note, this script assumes you use nvm to manage node versions
+
 # USING THIS SCRIPT
 # In the root directory of the design-system project, run `./test-locally.sh`
 #   This will install dependencies and run the core DS.
@@ -28,16 +30,15 @@
 # This script will try to use the default variables defined in this file, but you can override these for additional testing.
 # For example, if you want to test the hcgov child system, when the default CHILD_DS_NAME variable is mgov child system, you can:
 #   1. Update the CHILD_DS_NAME variable in this file
-#   2. Run `./test-locally.sh -c hcgov-design-system
+#   2. Run `./test-locally.sh -c hcgov-design-system`
 
 # Similarly, if you want to change the application path your are testing with, you can:
 #   1. Update the APP_NAME path variable in this file
-#   2. Run `./test-locally.sh -a [directory name of application]
+#   2. Run `./test-locally.sh -a [directory name of application]`
 #     a. If you only want to test in child systems and not in an application, you can run `./test-locally.sh -a ""`
 
 #!/bin/sh
 
-set -e
 source $NVM_DIR/nvm.sh;
 
 RED="\033[0;31m"
@@ -61,7 +62,7 @@ done
 
 if [ "$CHILD_DS_NAME" = "" ]; then
       echo "${RED}Error: no path set for child system.
-Make sure you have the CHILD_DS_PATH environment variable set or
+Make sure you have the CHILD_DS_NAME variable set in this script or
 that you have passed a path with the -c option.
 "  
 exit
@@ -75,12 +76,27 @@ echo "${GREEN}Building child design system with local dependencies at path $CHIL
 cd ../$CHILD_DS_NAME
 rm -rf node_modules
 yarn install
-# yarn build
 
 if [ "$APP_NAME" != "" ]; then
     echo "${GREEN}Building application with local dependencies at path $APP_NAME...${NC}"
     cd ../$APP_NAME
-    nvm use
+
+    # check if application has nvmrc
+    # if none exists, prompt user to enter node version to use
+    FILE=.nvmrc
+    if [ -f "$FILE" ]; then
+        nvm use
+        # if you don't have necessary versin of node installed, don't continue script
+        if [ $? -eq 3 ]
+            then
+                exit
+        fi
+    else 
+        echo "${NC}No .nvmrc file found. Please enter node version you want to use for application build:"
+        read node_version
+        nvm use $node_version
+    fi
+    
     rm -rf node_modules
     yarn install
     # This next line may need to be updated depending on the application project's local build command
