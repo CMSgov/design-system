@@ -16,15 +16,22 @@ export const TableCell = ({
   _stackable,
   ...tableCellProps
 }) => {
+  let Component;
+  if (component) {
+    Component = component;
+  } else {
+    Component = _isTableHeadChild ? 'th' : 'td';
+  }
+
   if (process.env.NODE_ENV !== 'production' && _stackable) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
     if (_isTableHeadChild) {
-      if (!id) {
+      if (!id && children) {
         console.warn(
           'The id prop in `TableCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
         );
       }
-    } else {
+    } else if (Component === 'td') {
       // Provide warning message for stacktable `headers` and `stackedTitle` props
       if (!headers) {
         console.warn(
@@ -37,13 +44,6 @@ export const TableCell = ({
         );
       }
     }
-  }
-
-  let Component;
-  if (component) {
-    Component = component;
-  } else {
-    Component = _isTableHeadChild ? 'th' : 'td';
   }
 
   let role = 'cell';
