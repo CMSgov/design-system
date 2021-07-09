@@ -1,5 +1,6 @@
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import TableContext from './TableContext';
 import classNames from 'classnames';
 
 export const TableCell = ({
@@ -13,17 +14,17 @@ export const TableCell = ({
   stackedTitle,
   stackedClassName,
   _isTableHeadChild,
-  _stackable,
   ...tableCellProps
 }) => {
+  const stackableTable = useContext(TableContext);
+
   let Component;
   if (component) {
     Component = component;
   } else {
     Component = _isTableHeadChild ? 'th' : 'td';
   }
-
-  if (process.env.NODE_ENV !== 'production' && _stackable) {
+  if (process.env.NODE_ENV !== 'production' && stackableTable) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
     if (_isTableHeadChild) {
       if (!id && children) {
@@ -130,10 +131,6 @@ TableCell.propTypes = {
    * @hide-prop This gets set from the parent `TableHead` component
    */
   _isTableHeadChild: PropTypes.bool,
-  /**
-   * @hide-prop This gets set from the parent `Table` component
-   */
-  _stackable: PropTypes.bool,
 };
 
 export default TableCell;

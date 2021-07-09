@@ -2,16 +2,20 @@
 
 exports[`Table applies responsive stacked table 1`] = `
 <div>
-  <table
-    className="ds-c-table ds-c-lg-table--stacked"
-    role="table"
+  <ContextProvider
+    value={true}
   >
-    <TableCaption
-      key=".0"
+    <table
+      className="ds-c-table ds-c-lg-table--stacked"
+      role="table"
     >
-      Foo
-    </TableCaption>
-  </table>
+      <TableCaption
+        key=".0"
+      >
+        Foo
+      </TableCaption>
+    </table>
+  </ContextProvider>
 </div>
 `;
 
