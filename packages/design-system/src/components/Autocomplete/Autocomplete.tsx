@@ -282,7 +282,9 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
             aria-labelledby={null}
             aria-owns={null}
             className={rootClassName}
-            role='combobox'
+            // role has to be null to overwrite Downshift
+            // eslint-disable-next-line jsx-a11y/aria-role
+            role={null}
           >
             {this.renderChildren(getInputProps, isOpen)}
 
