@@ -14,9 +14,8 @@
  * an unacceptable regression of the user experience.
  */
 
+import Downshift, {DownshiftProps} from 'downshift';
 import Button from '../Button/Button';
-import Downshift from 'downshift';
-import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
 import WrapperDiv from './WrapperDiv';
@@ -25,20 +24,118 @@ import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
+export interface AutocompleteItem {
+  id?: string;
+  name?: string;
+}
+
+type PropsNotPassedToDownshift = 
+  | 'ariaClearLabel'
+  | 'clearInputText'
+  | 'items'
+  | 'label'
+  | 'loading'
+  | 'children'
+  | 'className'
+  | 'clearSearchButton';
+
+export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift>{
+  /**
+   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
+   */
+  ariaClearLabel?: string;
+  /**
+   * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
+   */
+  autoCompleteLabel?: string;
+  /**
+   * Must contain a `TextField` component
+   */
+  children: React.ReactNode;
+  /**
+   * Additional classes to be added to the root element.
+   * Useful for adding utility classes.
+   */
+  className?: string;
+  /**
+   * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
+   */
+  clearInputText?: React.ReactNode;
+  /**
+   * Removes the Clear search button when set to `false`
+   */
+  clearSearchButton?: boolean;
+  /**
+   * Used to focus child `TextField` on `componentDidMount()`
+   */
+  focusTrigger?: boolean;
+  /**
+   * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
+   * the `Autocomplete` component will auto-generate one. This prop was provided in cases
+   * where an id might need to be passed to multiple components, such as the `htmlFor`
+   * attribute on a label and the id of an input.
+   */
+  id?: string;
+  /**
+   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
+   */
+  getA11yStatusMessage?: DownshiftProps<any>["getA11yStatusMessage"];
+  /**
+   * Access a reference to the child `TextField`'s `input` element
+   */
+  inputRef?: (...args: any[]) => any;
+  /**
+   * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
+   */
+  itemToString?: DownshiftProps<any>["itemToString"];
+  /**
+   * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
+   */
+  items?: AutocompleteItem[];
+  /**
+   * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
+   */
+  label?: React.ReactNode;
+  /**
+   * A unique `id` to be used on the child `TextField` label tag
+   */
+  labelId?: string;
+  /**
+   * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
+   */
+  loading?: boolean;
+  /**
+   * Message users will see when the `loading` prop is passed to `Autocomplete`.
+   */
+  loadingMessage?: React.ReactNode;
+  /**
+   * Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.
+   */
+  noResultsMessage?: React.ReactNode;
+  /**
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
+   */
+  onChange?: (...args: any[]) => any;
+  /**
+   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
+   */
+  onInputValueChange?: DownshiftProps<any>["onInputValueChange"];
+}
+
 /**
  * Determine if a React component is a TextField
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TextField component?
  */
-function isTextField(child) {
+function isTextField(child : React.ReactElement) : boolean {
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
   return child && (child.type === TextField || componentName === 'TextField');
 }
 
-export class Autocomplete extends React.PureComponent {
-  constructor(props) {
+export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
+  constructor(props : AutocompleteProps) {
     super(props);
 
     this.id = this.props.id || uniqueId('autocomplete_');
@@ -48,9 +145,25 @@ export class Autocomplete extends React.PureComponent {
     this.listboxHeadingId = uniqueId('autocomplete_header_');
   }
 
-  filterItems(items, inputValue, getInputProps, getItemProps, highlightedIndex) {
+  // Autocomplete class properties
+  id: string;
+  labelId: string;
+  listboxId: string;
+  listboxContainerId: string;
+  listboxHeadingId: string;
+
+  filterItems(
+    items : AutocompleteItem[],
+    inputValue : string,
+    getInputProps :  (...args: any[]) => unknown,
+    getItemProps :  (...args: any[]) => unknown,
+    highlightedIndex : number
+  ) : React.ReactNode {
     // If we have results, create a mapped list
     if (items.length) {
+      const defaultItemToString = (item) => (item ? item.name : '');
+      const itemToString = this.props.itemToString || defaultItemToString;
+  
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
@@ -63,7 +176,7 @@ export class Autocomplete extends React.PureComponent {
           role="option"
           {...getItemProps({ item })}
         >
-          {this.props.itemToString(item)}
+          {itemToString(item)}
         </li>
       ));
     }
@@ -72,7 +185,7 @@ export class Autocomplete extends React.PureComponent {
     if (this.props.loading) {
       return (
         <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {this.props.loadingMessage}
+          {this.props.loadingMessage || 'Locating...'}
         </li>
       );
     }
@@ -80,16 +193,20 @@ export class Autocomplete extends React.PureComponent {
     // If we have no results, show the non-selected message
     return (
       <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-        {this.props.noResultsMessage}
+        {this.props.noResultsMessage || 'No results'}
       </li>
     );
   }
 
-  renderChildren(getInputProps, listboxOpen) {
+  renderChildren(
+    getInputProps : (...args: any[]) => any,
+    listboxOpen : boolean
+  ) : React.ReactNode[] {
     const isOpen = listboxOpen;
+    const { clearSearchButton = true} = this.props;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
-    return React.Children.map(this.props.children, (child) => {
+    return React.Children.map(this.props.children, (child : React.ReactElement) => {
       if (isTextField(child)) {
         // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
         // Add errorMessageClassName to fix the styles for bottom placed errors
@@ -100,7 +217,7 @@ export class Autocomplete extends React.PureComponent {
           ? classNames(
               'ds-c-autocomplete__error-message',
               {
-                'ds-c-autocomplete__error-message--clear-btn': this.props.clearSearchButton,
+                'ds-c-autocomplete__error-message--clear-btn': clearSearchButton,
               },
               child.props.errorMessageClassName
             )
@@ -111,7 +228,7 @@ export class Autocomplete extends React.PureComponent {
           'aria-expanded': isOpen,
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
-          autoComplete: this.props.autoCompleteLabel,
+          autoComplete: this.props.autoCompleteLabel || 'off',
           errorMessageClassName: errorMessageClassName,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
@@ -130,18 +247,18 @@ export class Autocomplete extends React.PureComponent {
     });
   }
 
-  render() {
+  render() : React.ReactNode{
     const {
-      ariaClearLabel,
-      clearInputText,
+      ariaClearLabel = 'Clear search to try again',
+      clearInputText = 'Clear search',
       items,
       label,
       loading,
       children,
       className,
-      clearSearchButton,
+      clearSearchButton = true,
       ...autocompleteProps
-    } = this.props;
+    } : AutocompleteProps = this.props;
 
     const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
 
@@ -158,14 +275,14 @@ export class Autocomplete extends React.PureComponent {
         }) => (
           <WrapperDiv
             {...getRootProps({
-              'aria-expanded': null,
-              'aria-haspopup': null,
-              'aria-labelledby': null,
-              'aria-owns': null,
-              className: rootClassName,
               refKey: 'innerRef',
-              role: null,
             })}
+            aria-expanded={null}
+            aria-haspopup={null}
+            aria-labelledby={null}
+            aria-owns={null}
+            className={rootClassName}
+            role='combobox'
           >
             {this.renderChildren(getInputProps, isOpen)}
 
@@ -214,103 +331,5 @@ export class Autocomplete extends React.PureComponent {
     );
   }
 }
-
-Autocomplete.defaultProps = {
-  ariaClearLabel: 'Clear search to try again',
-  autoCompleteLabel: 'off',
-  clearInputText: 'Clear search',
-  clearSearchButton: true,
-  itemToString: (item) => (item ? item.name : ''),
-  loadingMessage: 'Loading...',
-  noResultsMessage: 'No results',
-};
-
-Autocomplete.propTypes = {
-  /**
-   * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
-   */
-  ariaClearLabel: PropTypes.string,
-  /**
-   * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
-   */
-  autoCompleteLabel: PropTypes.string,
-  /**
-   * Must contain a `TextField` component
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Additional classes to be added to the root element.
-   * Useful for adding utility classes.
-   */
-  className: PropTypes.string,
-  /**
-   * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
-   */
-  clearInputText: PropTypes.node,
-  /**
-   * Removes the Clear search button when set to `false`
-   */
-  clearSearchButton: PropTypes.bool,
-  /**
-   * Used to focus child `TextField` on `componentDidMount()`
-   */
-  focusTrigger: PropTypes.bool,
-  /**
-   * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
-   * the `Autocomplete` component will auto-generate one. This prop was provided in cases
-   * where an id might need to be passed to multiple components, such as the `htmlFor`
-   * attribute on a label and the id of an input.
-   */
-  id: PropTypes.string,
-  /**
-   * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
-   */
-  getA11yStatusMessage: PropTypes.func,
-  /**
-   * Access a reference to the child `TextField`'s `input` element
-   */
-  inputRef: PropTypes.func,
-  /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
-   */
-  itemToString: PropTypes.func,
-  /**
-   * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
-   */
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-    })
-  ),
-  /**
-   * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
-   */
-  label: PropTypes.node,
-  /**
-   * A unique `id` to be used on the child `TextField` label tag
-   */
-  labelId: PropTypes.string,
-  /**
-   * Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.
-   */
-  loading: PropTypes.bool,
-  /**
-   * Message users will see when the `loading` prop is passed to `Autocomplete`.
-   */
-  loadingMessage: PropTypes.node,
-  /**
-   * Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.
-   */
-  noResultsMessage: PropTypes.node,
-  /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
-   */
-  onChange: PropTypes.func,
-  /**
-   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
-   */
-  onInputValueChange: PropTypes.func,
-};
 
 export default Autocomplete;

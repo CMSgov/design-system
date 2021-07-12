@@ -116,7 +116,7 @@ describe('Autocomplete', () => {
   it('renders a snapshot', () => {
     const tree = renderer
       .create(
-        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput>
+        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearSearchButton>
           <TextField label="autocomplete" name="autocomplete_field" />
         </Autocomplete>
       )
