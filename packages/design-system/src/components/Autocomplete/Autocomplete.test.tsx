@@ -113,23 +113,23 @@ describe('Autocomplete', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  describe ('default props', () => {
-    it ('defaults ariaClearLabel', () => {
+  describe('default props', () => {
+    it('defaults ariaClearLabel', () => {
       const data = render({}, true);
       const wrapper = data.wrapper;
       const downshift = wrapper.find('Downshift');
-  
+
       const buttonEl = downshift.find('button');
       expect(buttonEl.exists()).toBe(true);
 
       expect(buttonEl.prop('aria-label')).toBe('Clear search to try again');
     });
 
-    it ('defaults clearInputText', () => {
+    it('defaults clearInputText', () => {
       const data = render({}, true);
       const wrapper = data.wrapper;
       const downshift = wrapper.find('Downshift');
-  
+
       const buttonEl = downshift.find('button');
       expect(buttonEl.exists()).toBe(true);
 

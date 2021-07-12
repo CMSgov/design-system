@@ -14,7 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, {DownshiftProps} from 'downshift';
+import Downshift, { DownshiftProps } from 'downshift';
 import Button from '../Button/Button';
 import React from 'react';
 import TextField from '../TextField/TextField';
@@ -29,7 +29,7 @@ export interface AutocompleteItem {
   name?: string;
 }
 
-type PropsNotPassedToDownshift = 
+type PropsNotPassedToDownshift =
   | 'ariaClearLabel'
   | 'clearInputText'
   | 'items'
@@ -39,7 +39,7 @@ type PropsNotPassedToDownshift =
   | 'className'
   | 'clearSearchButton';
 
-export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift>{
+export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
   /**
    * Screenreader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
@@ -79,7 +79,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
    */
-  getA11yStatusMessage?: DownshiftProps<any>["getA11yStatusMessage"];
+  getA11yStatusMessage?: DownshiftProps<any>['getA11yStatusMessage'];
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
@@ -87,7 +87,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
    */
-  itemToString?: DownshiftProps<any>["itemToString"];
+  itemToString?: DownshiftProps<any>['itemToString'];
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
@@ -119,7 +119,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/paypal/downshift#oninputvaluechange)
    */
-  onInputValueChange?: DownshiftProps<any>["onInputValueChange"];
+  onInputValueChange?: DownshiftProps<any>['onInputValueChange'];
 }
 
 /**
@@ -127,7 +127,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TextField component?
  */
-function isTextField(child : React.ReactElement) : boolean {
+function isTextField(child: React.ReactElement): boolean {
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
@@ -135,7 +135,7 @@ function isTextField(child : React.ReactElement) : boolean {
 }
 
 export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
-  constructor(props : AutocompleteProps) {
+  constructor(props: AutocompleteProps) {
     super(props);
 
     this.id = this.props.id || uniqueId('autocomplete_');
@@ -153,17 +153,17 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
   listboxHeadingId: string;
 
   filterItems(
-    items : AutocompleteItem[],
-    inputValue : string,
-    getInputProps :  (...args: any[]) => unknown,
-    getItemProps :  (...args: any[]) => unknown,
-    highlightedIndex : number
-  ) : React.ReactNode {
+    items: AutocompleteItem[],
+    inputValue: string,
+    getInputProps: (...args: any[]) => unknown,
+    getItemProps: (...args: any[]) => unknown,
+    highlightedIndex: number
+  ): React.ReactNode {
     // If we have results, create a mapped list
     if (items.length) {
       const defaultItemToString = (item) => (item ? item.name : '');
       const itemToString = this.props.itemToString || defaultItemToString;
-  
+
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
@@ -198,15 +198,12 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
     );
   }
 
-  renderChildren(
-    getInputProps : (...args: any[]) => any,
-    listboxOpen : boolean
-  ) : React.ReactNode[] {
+  renderChildren(getInputProps: (...args: any[]) => any, listboxOpen: boolean): React.ReactNode[] {
     const isOpen = listboxOpen;
-    const { clearSearchButton = true} = this.props;
+    const { clearSearchButton = true } = this.props;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
-    return React.Children.map(this.props.children, (child : React.ReactElement) => {
+    return React.Children.map(this.props.children, (child: React.ReactElement) => {
       if (isTextField(child)) {
         // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
         // Add errorMessageClassName to fix the styles for bottom placed errors
@@ -247,7 +244,7 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
     });
   }
 
-  render() : React.ReactNode{
+  render(): React.ReactNode {
     const {
       ariaClearLabel = 'Clear search to try again',
       clearInputText = 'Clear search',
@@ -258,7 +255,7 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
       className,
       clearSearchButton = true,
       ...autocompleteProps
-    } : AutocompleteProps = this.props;
+    }: AutocompleteProps = this.props;
 
     const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
 
