@@ -134,7 +134,17 @@ function isTextField(child: React.ReactElement): boolean {
   return child && (child.type === TextField || componentName === 'TextField');
 }
 
-export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
+export class Autocomplete extends React.Component<AutocompleteProps, any> {
+  static defaultProps = {
+    ariaClearLabel: 'Clear search to try again',
+    autoCompleteLabel: 'off',
+    clearInputText: 'Clear search',
+    clearSearchButton: true,
+    itemToString: (item) : string => (item ? item.name : ''),
+    loadingMessage: 'Loading...',
+    noResultsMessage: 'No results',
+  };
+
   constructor(props: AutocompleteProps) {
     super(props);
 
@@ -161,8 +171,7 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
   ): React.ReactNode {
     // If we have results, create a mapped list
     if (items.length) {
-      const defaultItemToString = (item) => (item ? item.name : '');
-      const itemToString = this.props.itemToString || defaultItemToString;
+      const {itemToString} = this.props;
 
       return items.map((item, index) => (
         <li
@@ -185,7 +194,7 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
     if (this.props.loading) {
       return (
         <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {this.props.loadingMessage || 'Locating...'}
+          {this.props.loadingMessage}
         </li>
       );
     }
@@ -193,14 +202,14 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
     // If we have no results, show the non-selected message
     return (
       <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-        {this.props.noResultsMessage || 'No results'}
+        {this.props.noResultsMessage}
       </li>
     );
   }
 
   renderChildren(getInputProps: (...args: any[]) => any, listboxOpen: boolean): React.ReactNode[] {
     const isOpen = listboxOpen;
-    const { clearSearchButton = true } = this.props;
+    const { clearSearchButton } = this.props;
     // Extend props on the TextField, by passing them
     // through Downshift's `getInputProps` method
     return React.Children.map(this.props.children, (child: React.ReactElement) => {
@@ -246,14 +255,14 @@ export class Autocomplete extends React.PureComponent<AutocompleteProps, any> {
 
   render(): React.ReactNode {
     const {
-      ariaClearLabel = 'Clear search to try again',
-      clearInputText = 'Clear search',
+      ariaClearLabel,
+      clearInputText,
       items,
       label,
       loading,
       children,
       className,
-      clearSearchButton = true,
+      clearSearchButton,
       ...autocompleteProps
     }: AutocompleteProps = this.props;
 
