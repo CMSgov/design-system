@@ -10,16 +10,16 @@ export interface SpinnerProps {
    */
   className?: string;
   /** Applies the inverse theme styling */
-  inversed?: Boolean;
+  inversed?: boolean;
   /** Adds a background behind the spinner for extra contrast */
-  filled?: Boolean;
+  filled?: boolean;
   /** Landmark role so the spinner can receive keyboard focus */
   role?: string;
   /** Smaller or larger variant */
   size?: 'small' | 'big';
 }
 
-export const Spinner: React.FunctionComponent<SpinnerProps> = (props:SpinnerProps) => {
+export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerProps) => {
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
