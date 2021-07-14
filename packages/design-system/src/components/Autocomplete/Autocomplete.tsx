@@ -234,7 +234,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           'aria-expanded': isOpen,
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
-          autoComplete: this.props.autoCompleteLabel || 'off',
+          autoComplete: this.props.autoCompleteLabel,
           errorMessageClassName: errorMessageClassName,
           focusTrigger: this.props.focusTrigger,
           id: this.id,
