@@ -8,15 +8,15 @@ import uniqueId from 'lodash.uniqueid';
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
-  event_name?: string;
-  event_type?: string;
-  ga_eventAction?: string;
-  ga_eventCategory?: string;
-  ga_eventLabel?: string;
+  event_name: string;
+  event_type: string;
+  ga_eventAction: string;
+  ga_eventCategory: string;
+  ga_eventLabel: string;
   ga_eventType?: string;
   ga_eventValue?: string;
-  heading?: string;
-  type?: string;
+  heading: string;
+  type: string;
 }
 /* eslint-enable camelcase */
 
@@ -88,7 +88,12 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.PureComponent<AlertProps, any> {
+export class Alert extends React.Component<React.HTMLProps<HTMLDivElement> & AlertProps, any> {
+  static defaultProps = {
+    role: 'region',
+    headingLevel: '2',
+  };
+
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
@@ -145,7 +150,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
   eventHeadingText: string;
 
   heading(): React.ReactElement | void {
-    const { headingLevel = '2', heading } = this.props;
+    const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
     if (heading) {
       const headingProps = {
@@ -156,7 +161,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
     }
   }
 
-  render(): React.ReactNode {
+  render(): JSX.Element {
     const {
       children,
       className,
@@ -166,7 +171,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
       headingLevel,
       hideIcon,
       alertRef,
-      role = 'region',
+      role,
       variation,
       analytics,
       ...alertProps
