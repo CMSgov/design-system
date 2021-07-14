@@ -8,20 +8,20 @@
   'warn' , 'warn-dark' , 'warn-darker' , 'warn-darkest' , 'warn-light' , 'warn-lighter' ,
   'warn-lightest' , 'error' , 'error-dark' , 'error-darker' , 'error-darkest' , 'error-light' ,
   'error-lighter' ,'error-lightest'], 'Focus colors' : ['focus-color-light' , 'focus-color-dark' ],
-  'Additional colors' : ['muted-inverse', 'transparent' ], 'Focus colors - Deprecated' : ['focus-color', 'focus-color-inverse', 'focus-border-inverse'], }; -%> <%
+  'Additional colors' : ['muted-inverse', 'transparent' ], 'Focus colors - Deprecated' :
+  ['focus-color', 'focus-color-inverse', 'focus-border-inverse'], }; -%> <%
   Object.keys(groups).forEach(function(fill){ -%>
   <section>
     <h1 class="preview__label">
       <%= fill%>
     </h1>
     <% if (fill === 'Focus colors - Deprecated') { %>
-      <div class="ds-c-alert ds-c-alert--error ds-u-margin-bottom--2" role="region">
-        <div class="ds-c-alert__body">
-          <p class="ds-c-alert__text"><strong>Deprecated</strong> - Do not use.</p>
-        </div>
+    <div class="ds-c-alert ds-c-alert--error ds-u-margin-bottom--2" role="region">
+      <div class="ds-c-alert__body">
+        <p class="ds-c-alert__text"><strong>Deprecated</strong> - Do not use.</p>
       </div>
-    <% } %>
-    <% groups[fill].forEach(function(color){ -%>
+    </div>
+    <% } %> <% groups[fill].forEach(function(color){ -%>
     <article class="ds-u-margin-bottom--1">
       <div
         class="c-swatch__preview c-swatch__preview--condensed ds-u-radius--circle ds-u-fill--<%= color %>"
