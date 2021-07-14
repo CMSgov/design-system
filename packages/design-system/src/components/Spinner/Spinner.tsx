@@ -2,20 +2,30 @@ import React from 'react';
 import classNames from 'classnames';
 
 export interface SpinnerProps {
-  /** The text announced to screen readers */
+  /** 
+   * The text announced to screen readers 
+   */
   'aria-valuetext'?: string;
   /**
    * Additional classes to be added to the spinner element.
    * Useful for adding utility classes.
    */
   className?: string;
-  /** Applies the inverse theme styling */
+  /**
+   * Applies the inverse theme styling 
+   */
   inversed?: boolean;
-  /** Adds a background behind the spinner for extra contrast */
+  /** 
+   * Adds a background behind the spinner for extra contrast 
+   */
   filled?: boolean;
-  /** Landmark role so the spinner can receive keyboard focus */
+  /** 
+   * Landmark role so the spinner can receive keyboard focus 
+   */
   role?: string;
-  /** Smaller or larger variant */
+  /** 
+   * Smaller or larger variant 
+   */
   size?: 'small' | 'big';
 }
 
