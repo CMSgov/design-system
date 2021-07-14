@@ -21,7 +21,9 @@ export interface BadgeProps {
   variation?: 'info' | 'success' | 'warn' | 'alert';
 }
 
-export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> = (props: BadgeProps) => {
+export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> = (
+  props: BadgeProps
+) => {
   const { className = '', children, size, variation, ...others } = props;
   const sizeClasses = { big: 'ds-u-font-size--base' };
 
