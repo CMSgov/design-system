@@ -53,10 +53,6 @@ export interface TableCellProps {
    * @hide-prop This gets set from the parent `TableHead` component
    */
   _isTableHeadChild?: boolean;
-  /**
-   * @hide-prop This gets set from the parent `Table` component
-   */
-  _stackable?: boolean;
 }
 
 declare const TableCell: React.FC<
