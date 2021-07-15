@@ -45,18 +45,6 @@ describe('Autocomplete', () => {
     expect(wrapper.find('ul').exists()).toBe(false);
   });
 
-  it('returns correct default props', () => {
-    const data = render({}, true);
-    const wrapper = data.wrapper;
-
-    expect(wrapper.prop('ariaClearLabel')).toBe('Clear search to try again');
-    expect(wrapper.prop('clearInputText')).toBe('Clear search');
-    expect(wrapper.prop('label')).toBe(undefined);
-    expect(wrapper.prop('loading')).toBe(undefined);
-    expect(wrapper.prop('onChange')).toBe(undefined);
-    expect(wrapper.prop('onInputValueChange')).toBe(undefined);
-  });
-
   it('only renders expected elements', () => {
     const data = render({}, true);
     const wrapper = data.wrapper;
@@ -116,12 +104,36 @@ describe('Autocomplete', () => {
   it('renders a snapshot', () => {
     const tree = renderer
       .create(
-        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearInput>
+        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearSearchButton>
           <TextField label="autocomplete" name="autocomplete_field" />
         </Autocomplete>
       )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
+  });
+
+  describe('default props', () => {
+    it('defaults ariaClearLabel', () => {
+      const data = render({}, true);
+      const wrapper = data.wrapper;
+      const downshift = wrapper.find('Downshift');
+
+      const buttonEl = downshift.find('button');
+      expect(buttonEl.exists()).toBe(true);
+
+      expect(buttonEl.prop('aria-label')).toBe('Clear search to try again');
+    });
+
+    it('defaults clearInputText', () => {
+      const data = render({}, true);
+      const wrapper = data.wrapper;
+      const downshift = wrapper.find('Downshift');
+
+      const buttonEl = downshift.find('button');
+      expect(buttonEl.exists()).toBe(true);
+
+      expect(buttonEl.text()).toBe('Clear search');
+    });
   });
 });
