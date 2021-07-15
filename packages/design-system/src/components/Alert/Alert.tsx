@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
+// Omit props that we override with values from the ChoiceList
+type OmitAlertProps = 'role';
+
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
@@ -88,7 +91,10 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.Component<React.HTMLProps<HTMLDivElement> & AlertProps, any> {
+export class Alert extends React.Component<
+  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
+  any
+> {
   static defaultProps = {
     role: 'region',
     headingLevel: '2',
@@ -118,7 +124,7 @@ export class Alert extends React.Component<React.HTMLProps<HTMLDivElement> & Ale
 
     if (alertSendsAnalytics()) {
       const eventAction = 'onComponentDidMount';
-      const eventHeading = this.props.heading || this.props.children;
+      const eventHeading: string | React.ReactNode = this.props.heading || this.props.children;
 
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (this.props.variation) {
