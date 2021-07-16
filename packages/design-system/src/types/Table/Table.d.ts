@@ -45,6 +45,11 @@ export interface TableProps {
    * A striped variation of the table.
    */
   striped?: boolean;
+  /**
+   * Disables the warning message on development console when a responsive stackable table cell does not contain an `id` or `headers`.
+   * It's recommended that accessibility with screen readers is tested to ensure the stacked table meets the requirement.
+   */
+  warningDisabled?: boolean,
 }
 
 export default class Table extends React.Component<
