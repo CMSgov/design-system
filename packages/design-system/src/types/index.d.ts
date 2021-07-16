@@ -9,7 +9,6 @@ export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
 export { default as MonthPicker, getMonthNames } from './MonthPicker/MonthPicker';
 export { default as Review } from './Review/Review';
 export { default as SkipNav } from './SkipNav/SkipNav';
-export { default as Spinner } from './Spinner/Spinner';
 export { default as StepList } from './StepList/StepList';
 export { default as Table } from './Table/Table';
 export { default as TableBody } from './Table/TableBody';
@@ -35,6 +34,7 @@ export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormControl';
 export * from './InlineError';
+export * from './Spinner';
 export * from './TextField';
 export * from './Tooltip';
 

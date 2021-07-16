@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from './Spinner.jsx';
+import Spinner from './Spinner';
 import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
