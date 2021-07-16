@@ -104,6 +104,7 @@ export class Table extends React.PureComponent {
       striped,
       scrollable,
       scrollableNotice,
+      warningDisabled,
       children,
       ...tableProps
     } = this.props;
@@ -129,6 +130,8 @@ export class Table extends React.PureComponent {
       tabIndex: this.state.scrollActive ? '0' : null,
     };
 
+    const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
+
     return (
       <div
         ref={(container) => {
@@ -136,7 +139,7 @@ export class Table extends React.PureComponent {
         }}
         {...attributeScrollable}
       >
-        <TableContext.Provider value={stackable}>
+        <TableContext.Provider value={contextValue}>
           <table className={classes} role="table" {...tableProps}>
             {this.renderChildren()}
           </table>
@@ -198,6 +201,11 @@ Table.propTypes = {
    * Applies the striped variation of the table.
    */
   striped: PropTypes.bool,
+  /**
+   * Disables the warning message on development console when a responsive stackable table cell does not contain an `id` or `headers`.
+   * It's recommended that accessibility with screen readers is tested to ensure the stacked table meets the requirement.
+   */
+  warningDisabled: PropTypes.bool,
 };
 
 export default Table;

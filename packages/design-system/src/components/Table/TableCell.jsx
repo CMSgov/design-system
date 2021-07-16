@@ -16,7 +16,7 @@ export const TableCell = ({
   _isTableHeadChild,
   ...tableCellProps
 }) => {
-  const stackableTable = useContext(TableContext);
+  const { stackable, warningDisabled } = useContext(TableContext);
 
   let Component;
   if (component) {
@@ -24,7 +24,7 @@ export const TableCell = ({
   } else {
     Component = _isTableHeadChild ? 'th' : 'td';
   }
-  if (process.env.NODE_ENV !== 'production' && stackableTable) {
+  if (process.env.NODE_ENV !== 'production' && stackable && !warningDisabled) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
     if (_isTableHeadChild) {
       if (!id && children) {
