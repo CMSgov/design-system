@@ -1,19 +1,35 @@
+$pagination-nav-link-color: $color-primary;
+$pagination-nav-link-color-hover: $color-primary-darker;
+$pagination-nav-link-color-active: $color-primary-darkest;
+$pagination-nav-link-color-focus: $color-primary-darker;
+
+$pagination-current-page-color: $color-base;
+$pagination-current-page-color-bg: $color-gray-lightest;
+$pagination-overflow: $color-gray;
+$pagination-page-count: $color-gray;
+
 .ds-c-pagination {
   a:focus {
     @include focus-styles-position;
+    color: $pagination-nav-link-color-focus;
   }
   .ds-c-button {
+    color: $pagination-nav-link-color;
     font-weight: normal;
     min-width: 44px;
     padding: 8px 0;
     text-decoration: none;
   }
-  .ds-c-button:hover {
+  a:hover {
+    color: $pagination-nav-link-color-hover;
     text-decoration: underline;
   }
+  a:active {
+    color: $pagination-nav-link-color-active;
+  }
   .ds-c-pagination__current-page {
-    background-color: $color-gray-lightest;
-    color: $color-base;
+    background-color: $pagination-current-page-color-bg;
+    color: $pagination-current-page-color;
     font-weight: bold;
     text-decoration: none;
     &:hover {
@@ -23,47 +39,28 @@
   }
   .ds-c-pagination__overflow {
     border: 2px solid transparent;
-    color: $color-gray;
+    color: $pagination-overflow;
     display: inline-block;
     padding: 8px;
   }
-  .ds-c-pagination__navigation--next-img-container {
+  .ds-c-pagination__page-count {
+    border: 2px solid transparent;
+    color: $pagination-page-count;
+    display: inline-block;
+    padding: 8px;
+  }
+  .ds-c-pagination__nav--next-img-container {
     display: inline-block;
     margin-left: 4px;
     vertical-align: middle;
   }
-  .ds-c-pagination__navigation--previous-img-container {
+  .ds-c-pagination__nav--previous-img-container {
     display: inline-block;
     margin-right: 4px;
     vertical-align: middle;
   }
-  .ds-c-pagination__navigation--next-image {
+  .ds-c-pagination__nav--image {
     height: 20px;
     width: 20px;
   }
-
-  //   .ds-c-pagination__navigation--next-img-container {
-  //     position: absolute;
-  //     left: 0;
-  //   }
-  //   .ds-c-pagination__navigation--next-image {
-  //     transform: rotate(-90deg);
-  //     width: 20px;
-  //     height: 20px;
-  //     overflow: visible;
-  //     object-fit: fill;
-  //     margin-top: 4px;
-  //   }
-  //   .ds-c-pagination__navigation--previous-img-container {
-  //     position: absolute;
-  //     right: 0;
-  //   }
-  //   .ds-c-pagination__navigation--previous-image {
-  //     transform: rotate(-90deg);
-  //     width: 20px;
-  //     height: 20px;
-  //     overflow: visible;
-  //     object-fit: fill;
-  //     margin-top: 4px;
-  //   }
 }
