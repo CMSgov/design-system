@@ -6,6 +6,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
   scrollableNotice={
     <Alert
       className="ds-u-margin-y--1 ds-u-font-weight--normal"
+      headingLevel="2"
       role="status"
     >
       <p
@@ -35,6 +36,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
         _scrollableNotice={
           <Alert
             className="ds-u-margin-y--1 ds-u-font-weight--normal"
+            headingLevel="2"
             role="status"
           >
             <p
