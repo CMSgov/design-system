@@ -185,9 +185,11 @@ export class Table extends React.Component<
       className
     );
 
-    // Makes table container focusable and displays the scrollable notice when table width exceeds viewport
-    // by setting `tabIndex = 0` attribute.
-    // This provides context for screen readers to the table's <caption> via aria-labelleby
+    /**
+     * Makes table container focusable and displays the scrollable notice when table width exceeds viewport
+     * by setting `tabIndex = 0` attribute.
+     * This provides context for screen readers to the table's <caption> via aria-labelleby
+     */
     const attributeScrollable = scrollable && {
       className: 'ds-c-table__wrapper',
       role: 'region',
