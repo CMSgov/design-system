@@ -9,16 +9,16 @@ $pagination-overflow: $color-gray;
 $pagination-page-count: $color-gray;
 
 .ds-c-pagination {
-  a:focus {
-    @include focus-styles-position;
-    color: $pagination-nav-link-color-focus;
-  }
   .ds-c-button {
     color: $pagination-nav-link-color;
     font-weight: normal;
     min-width: 44px;
     padding: 8px 0;
     text-decoration: none;
+  }
+  a:focus {
+    @include focus-styles-position;
+    color: $pagination-nav-link-color-focus;
   }
   a:hover {
     color: $pagination-nav-link-color-hover;
