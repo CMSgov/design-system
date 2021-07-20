@@ -1,5 +1,5 @@
 <h6 class="preview__label">Default pagination</h6>
-<nav class="ds-c-pagination">
+<nav class="ds-c-pagination" role="navigation" aria-label="Pagination Navigation">
   <a class="ds-c-button ds-c-button--transparent nav" href="#">
     <span class="ds-c-pagination__nav--previous-img-container"
       ><svg
@@ -18,13 +18,18 @@
         ></path></svg></span
     >Previous</a
   >
-  <a class="ds-c-button ds-c-button--transparent" href="#">1</a>
+  <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 1">1</a>
   <span class="ds-c-pagination__overflow" href="#">...</span>
-  <a class="ds-c-button ds-c-button--transparent" href="#">7</a>
-  <span class="ds-c-button ds-c-button--transparent ds-c-pagination__current-page">8</span>
-  <a class="ds-c-button ds-c-button--transparent" href="#">9</a>
+  <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 7">7</a>
+  <span
+    class="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
+    aria-label="Current Page, Page 8"
+    aria-current="true"
+    >8</span
+  >
+  <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 9">9</a>
   <span class="ds-c-pagination__overflow">...</span>
-  <a class="ds-c-button ds-c-button--transparent" href="#">25</a>
+  <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 25">25</a>
   <a class="ds-c-button ds-c-button--transparent" href="#"
     >Next<span class="ds-c-pagination__nav--next-img-container"
       ><svg
@@ -46,7 +51,7 @@
 </nav>
 
 <h6 class="preview__label">Compact pagination</h6>
-<nav class="ds-c-pagination">
+<nav class="ds-c-pagination" role="navigation" aria-label="Pagination Navigation">
   <a class="ds-c-button ds-c-button--transparent nav" href="#">
     <span class="ds-c-pagination__nav--previous-img-container"
       ><svg
