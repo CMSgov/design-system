@@ -49,7 +49,9 @@ export interface ButtonProps {
   variation?: 'primary' | 'danger' | 'success' | 'transparent',
 }
 
-export default class Button extends React.PureComponent<ButtonProps> {
+type OmitProps = 'size';
+
+export default class Button extends React.PureComponent<Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps> {
   static defaultProps = {
     type: 'button',
     component: 'button',
