@@ -1,10 +1,14 @@
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
 export class Button extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.elementRef = null;
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.inverse) {
@@ -21,6 +25,20 @@ export class Button extends React.PureComponent {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.sendButtonAnalytics = this.sendButtonAnalytics.bind(this);
+  }
+
+  getInputRef() {
+    const { inputRef } = this.props;
+
+    if (inputRef) {
+      return inputRef;
+    } else if (this.props.component === 'button') {
+      return element => {
+        this.elementRef = element;
+      };
+    }
+    return null;
   }
 
   // Get an object of props to pass to the rendered <Button> component
@@ -41,6 +59,7 @@ export class Button extends React.PureComponent {
       onClick,
       size,
       variation,
+      analytics,
       ...props
     } = this.props;
 
@@ -49,7 +68,7 @@ export class Button extends React.PureComponent {
       ...props,
     };
 
-    if (this.props.onClick) {
+    if (this.props.onClick || buttonSendsAnalytics()) {
       attrs.onClick = this.handleClick;
     }
 
@@ -96,9 +115,47 @@ export class Button extends React.PureComponent {
     }
   }
 
+  getTextFromNode() {
+    const ref = this.props.inputRef || this.elementRef;
+
+    if (ref) {
+      return ref.textContent;
+    }
+    return '';
+  }
+
+  sendButtonAnalytics() {
+    const {analytics, children, href, id, type, variation} = this.props;
+    const buttonStyle = variation || 'default';
+    const text = typeof children === 'string' ? children : this.getTextFromNode();
+
+    console.log(text);
+
+    const defaultAnalyticsData = {
+      event_name: 'button_engagement',
+      text,
+      button_style: buttonStyle,
+      button_type: href ? 'link' : type,
+      link_url: href || null,
+      html_id: id || null,
+      ga_eventCategory: EVENT_CATEGORY,
+      ga_eventAction: `engaged ${buttonStyle} button`,
+      ga_eventLabel: `button text: ${text}`
+    }
+
+    sendAnalyticsEvent(analytics, defaultAnalyticsData);
+
+  }
+
   handleClick(e) {
-    if (!this.props.disabled && this.props.onClick) {
-      this.props.onClick(e);
+    if (!this.props.disabled) {
+      if (buttonSendsAnalytics()) {
+        this.sendButtonAnalytics();
+      }
+
+      if (this.props.onClick) {
+        this.props.onClick(e);
+      }
     }
   }
 
@@ -108,7 +165,7 @@ export class Button extends React.PureComponent {
 
     return (
       <ComponentType
-        ref={this.props.inputRef}
+        ref={this.getInputRef()}
         onKeyPress={this.componentType() === 'a' ? this.handleKeyPress : undefined}
         {...attrs}
       >
@@ -121,8 +178,11 @@ export class Button extends React.PureComponent {
 Button.defaultProps = {
   type: 'button',
   component: 'button',
+  analytics: {}
 };
 Button.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  analytics: PropTypes.object,
   /**
    * Label text or HTML
    */
@@ -143,6 +203,7 @@ Button.propTypes = {
    * rather than `button`.
    */
   href: PropTypes.string,
+  id: PropTypes.string,
   /**
    * Access a reference to the `button` or `a` element
    */

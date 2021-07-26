@@ -5,6 +5,7 @@ interface flagsType {
   ALERT_SENDS_ANALYTICS: boolean;
   DIALOG_SENDS_ANALYTICS: boolean;
   HELP_DRAWER_SENDS_ANALYTICS: boolean;
+  BUTTON_SEND_ANALYTICS: boolean;
 }
 
 // featureFlags.js
@@ -12,7 +13,8 @@ const flags: flagsType = {
   ERROR_PLACEMENT_DEFAULT: 'top',
   ALERT_SENDS_ANALYTICS: false,
   DIALOG_SENDS_ANALYTICS: false,
-  HELP_DRAWER_SENDS_ANALYTICS: false,
+  HELP_DRAWER_SENDS_ANALYTICS: true,
+  BUTTON_SEND_ANALYTICS: true
 };
 
 export function errorPlacementDefault(): errorPlacementValue {
@@ -45,4 +47,12 @@ export function helpDrawerSendsAnalytics(): boolean {
 
 export function setHelpDrawerSendsAnalytics(value: boolean): void {
   flags.HELP_DRAWER_SENDS_ANALYTICS = value;
+}
+
+export function buttonSendsAnalytics(): boolean {
+  return flags.BUTTON_SEND_ANALYTICS;
+}
+
+export function setButtonSendsAnalytics(value: boolean): void {
+  flags.BUTTON_SEND_ANALYTICS = value;
 }

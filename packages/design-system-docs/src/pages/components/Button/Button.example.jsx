@@ -33,6 +33,9 @@ ReactDOM.render(
     <Button className="ds-u-margin-right--1" component={Link} href="/">
       Button with `component` prop
     </Button>
+    <Button className="ds-u-margin-right--1">
+      <sup>Button with node child</sup>
+    </Button>
   </>,
   document.getElementById('js-example')
 );
