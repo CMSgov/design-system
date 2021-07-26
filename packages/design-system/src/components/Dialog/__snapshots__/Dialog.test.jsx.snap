@@ -25,6 +25,7 @@ Object {
         role="banner"
       >
         <Button
+          analytics={Object {}}
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
           component="button"
@@ -216,6 +217,7 @@ exports[`Dialog renders react-aria-modal 1`] = `
                       Foo
                     </h1>
                     <Button
+                      analytics={Object {}}
                       aria-label="Close modal dialog"
                       className="ds-c-dialog__close"
                       component="button"
@@ -283,6 +285,7 @@ Object {
         role="banner"
       >
         <Button
+          analytics={Object {}}
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
           component="button"

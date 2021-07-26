@@ -1,6 +1,12 @@
+import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { mount, shallow } from 'enzyme';
 import Button from './Button.jsx';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { setButtonSendsAnalytics } from '../flags';
+
+jest.mock('../analytics/SendAnalytics');
+
+const mockSendAnalyticsEvent = sendAnalyticsEvent as jest.Mock;
 
 const Link = (props) => {
   /* eslint-disable-next-line react/prop-types */
@@ -127,4 +133,118 @@ describe('Button', () => {
     expect(wrapper.hasClass('ds-c-button--transparent')).toBe(true);
     expect(wrapper).toMatchSnapshot();
   });
+
+  describe('analytics', () =>  {
+    const defaultAnalyticsValue = {
+      event_name: 'button_engagement',
+      text: buttonText,
+      button_style: 'default',
+      button_type: 'button',
+      link_url: null,
+      html_id: null,
+      ga_eventCategory: EVENT_CATEGORY,
+      ga_eventAction: `engaged default button`,
+      ga_eventLabel: `button text: ${buttonText}`
+    };
+
+    beforeEach(() => {
+      setButtonSendsAnalytics(true);
+    });
+
+    afterEach(() => {
+      setButtonSendsAnalytics(false);
+      jest.resetAllMocks();
+    });
+
+    it('does not send analytics event if flag not set', () => {
+      setButtonSendsAnalytics(false);
+      const wrapper = shallow(<Button>{buttonText}</Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).not.toBeCalled();
+    });
+
+    it('sends analytics on click', () => {
+      const wrapper = shallow(<Button>{buttonText}</Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalled();
+    });
+
+    it('sends default values', () => {
+      const wrapper = shallow(<Button>{buttonText}</Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalledWith({}, defaultAnalyticsValue);
+    });
+
+    it('gets text if `children` is string', () => {
+      const text = 'I am a test button';
+      const expectedAnalyticsValue = {
+        ...defaultAnalyticsValue,
+        text,
+        ga_eventLabel: `button text: ${text}`
+      }
+      const wrapper = shallow(<Button>{text}</Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalledWith({}, expectedAnalyticsValue);
+    });
+
+    it('gets text if `children` is ReactNode', () => {
+      const text = 'I am a test button';
+      const expectedAnalyticsValue = {
+        ...defaultAnalyticsValue,
+        text,
+        ga_eventLabel: `button text: ${text}`
+      }
+      const wrapper = mount(<Button><sup>{text}</sup></Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalledWith({}, expectedAnalyticsValue);
+    });
+
+    it('gets text if `children` is a functional component', () => {
+      const text = 'I am a test button';
+      const props = {
+        component: Link
+      };
+      const expectedAnalyticsValue = {
+        ...defaultAnalyticsValue,
+        text,
+        ga_eventLabel: `button text: ${text}`
+      }
+      const wrapper = shallow(<Button {...props}>{text}</Button>);
+
+      wrapper.find('.ds-c-button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalledWith({}, expectedAnalyticsValue);
+    })
+
+    it('sends proper values if button is link', () => {
+      const expectedAnalyticsValue = {
+        ...defaultAnalyticsValue,
+        button_type: 'link',
+        link_url: 'google.com'
+      }
+      const wrapper = shallow(<Button href="google.com">{buttonText}</Button>);
+
+      wrapper.find('a').simulate('click');
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalledWith({}, expectedAnalyticsValue);
+    });
+
+    it('sends analytics on `sapcebar` press when link', () => {
+      const wrapper = shallow(<Button href="google.com">{buttonText}</Button>);
+
+      wrapper.find('a').simulate('keypress', {key: ' '});
+
+      expect(mockSendAnalyticsEvent).toHaveBeenCalled();
+    });
+  })
 });

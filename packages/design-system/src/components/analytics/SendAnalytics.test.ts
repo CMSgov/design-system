@@ -47,6 +47,18 @@ describe('sendAnalyticsEvent', () => {
       sendAnalyticsEvent(gaEventExtraProps, gaEventProps);
       expect(window.utag?.link).toHaveBeenCalledWith(gaEventExtraProps);
     });
+
+    it('calls window.utag.link with merged props', () => {
+      const overrideProps = {
+        ga_eventType: 'override',
+        ga_extraProps1: 'extra prop',
+        ga_eventAction: 'override action'
+      };
+      const expectedReturn = {...gaEventProps, ...overrideProps};
+
+      sendAnalyticsEvent(overrideProps, gaEventProps);
+      expect(window.utag?.link).toHaveBeenCalledWith(expectedReturn);
+    })
   });
 
   describe('with Utag instance - errors', () => {
