@@ -5,57 +5,59 @@ export interface ButtonProps {
   /**
    * Label text or HTML
    */
-  children: React.ReactNode,
+  children: React.ReactNode;
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.
    */
-  className?: string,
+  className?: string;
   /**
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: React.ReactElement<any> | any | ((...args: any[]) => any),
-  disabled?: boolean,
+  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
+  disabled?: boolean;
   /**
    * When provided the root component will render as an `<a>` element
    * rather than `button`.
    */
-  href?: string,
+  href?: string;
   /**
    * Access a reference to the `button` or `a` element
    */
-  inputRef?: (...args: any[]) => any,
-  /** 
-   * @hide-prop [Deprecated] Use inversed instead 
+  inputRef?: (...args: any[]) => any;
+  /**
+   * @hide-prop [Deprecated] Use inversed instead
    */
-  inverse?: boolean,
+  inverse?: boolean;
   /** Applies the inverse theme styling */
-  inversed?: boolean,
+  inversed?: boolean;
   /**
    * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
    * Not called when the button is disabled.
    */
-  onClick?: (...args: any[]) => any,
-  size?: 'small' | 'big',
+  onClick?: (...args: any[]) => any;
+  size?: 'small' | 'big';
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type?: 'button' | 'submit',
+  type?: 'button' | 'submit';
   /**
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
-  variation?: 'primary' | 'danger' | 'success' | 'transparent',
+  variation?: 'primary' | 'danger' | 'success' | 'transparent';
 }
 
 type OmitProps = 'size';
 
-export default class Button extends React.PureComponent<Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps> {
+export default class Button extends React.PureComponent<
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps
+> {
   static defaultProps = {
     type: 'button',
     component: 'button',
-  }
+  };
 
   constructor(props: ButtonProps) {
     super(props);
@@ -102,18 +104,18 @@ export default class Button extends React.PureComponent<Omit<React.ComponentProp
       className: this.classNames(),
       ...props,
     };
-  
+
     if (this.props.onClick) {
       attrs.onClick = this.handleClick;
     }
-  
+
     if (component !== 'button' || this.props.href) {
       // Assume `component` is not a <button> and remove <button> specific attributes
       attrs.role = 'button';
       delete attrs.disabled;
       delete attrs.type;
     }
-  
+
     return attrs;
   }
 
@@ -147,14 +149,14 @@ export default class Button extends React.PureComponent<Omit<React.ComponentProp
     );
   }
 
-  handleKeyPress(e: React.KeyboardEvent): void {
+  handleKeyPress(e): any {
     // Trigger onClick on space key event for `<a>` elements
     if (e.key === ' ') {
       this.handleClick(e);
     }
   }
 
-  handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
+  handleClick(e): any {
     if (!this.props.disabled && this.props.onClick) {
       this.props.onClick(e);
     }
