@@ -140,7 +140,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     autoCompleteLabel: 'off',
     clearInputText: 'Clear search',
     clearSearchButton: true,
-    itemToString: (item) : string => (item ? item.name : ''),
+    itemToString: (item): string => (item ? item.name : ''),
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
   };
@@ -171,7 +171,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
   ): React.ReactNode {
     // If we have results, create a mapped list
     if (items.length) {
-      const {itemToString} = this.props;
+      const { itemToString } = this.props;
 
       return items.map((item, index) => (
         <li
