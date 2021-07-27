@@ -5,7 +5,7 @@ export interface ButtonProps {
   /**
    * Label text or HTML
    */
-  children: React.ReactNode;
+  children: string | React.ReactNode;
   /**
    * Additional classes to be added to the root button element.
    * Useful for adding utility classes.
@@ -49,11 +49,12 @@ export interface ButtonProps {
   variation?: 'primary' | 'danger' | 'success' | 'transparent';
 }
 
-type OmitProps = 'size' | 'onClick';
+type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type';
+
+// ReactHTML > DetailedHTMLFactory > DOMFactory > DOMAttributes = children?: ReactNode | undefined;
 
 export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps,
-  any
+  Omit<React.ComponentPropsWithRef<'button' | 'a'>, OmitProps> & ButtonProps
 > {
   static defaultProps = {
     type: 'button',
@@ -130,7 +131,7 @@ export default class Button extends React.PureComponent<
     return component;
   }
 
-  classNames(): any {
+  classNames(): string {
     const variationClass = this.props.variation && `ds-c-button--${this.props.variation}`;
 
     const disabledClass =
