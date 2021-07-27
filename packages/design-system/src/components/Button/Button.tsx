@@ -49,10 +49,11 @@ export interface ButtonProps {
   variation?: 'primary' | 'danger' | 'success' | 'transparent';
 }
 
-type OmitProps = 'size';
+type OmitProps = 'size' | 'onClick';
 
 export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & ButtonProps,
+  any
 > {
   static defaultProps = {
     type: 'button',
@@ -149,14 +150,14 @@ export default class Button extends React.PureComponent<
     );
   }
 
-  handleKeyPress(e): any {
+  handleKeyPress(e: React.KeyboardEvent): void {
     // Trigger onClick on space key event for `<a>` elements
     if (e.key === ' ') {
       this.handleClick(e);
     }
   }
 
-  handleClick(e): any {
+  handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
     if (!this.props.disabled && this.props.onClick) {
       this.props.onClick(e);
     }
