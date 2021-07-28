@@ -51,8 +51,6 @@ export interface ButtonProps {
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type';
 
-// ReactHTML > DetailedHTMLFactory > DOMFactory > DOMAttributes = children?: ReactNode | undefined;
-
 export default class Button extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'button' | 'a'>, OmitProps> & ButtonProps
 > {
