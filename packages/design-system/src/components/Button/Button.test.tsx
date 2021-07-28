@@ -1,6 +1,6 @@
+import Button, {ButtonProps} from './Button';
 import { EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
 import { mount, shallow } from 'enzyme';
-import Button from './Button.jsx';
 import React from 'react';
 import { setButtonSendsAnalytics } from '../flags';
 
@@ -24,20 +24,14 @@ describe('Button', () => {
   });
 
   it('renders as submit button', () => {
-    const props = { type: 'submit' };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    const wrapper = shallow(<Button type='submit'>{buttonText}</Button>);
     expect(wrapper.is('button')).toBe(true);
     expect(wrapper.prop('type')).toBe('submit');
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders as an anchor with custom prop', () => {
-    const props = {
-      href: '/example',
-      target: '_blank',
-      type: 'submit',
-    };
-    const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
+    const wrapper = shallow(<Button href="/example" target='_blank' type='submit'>{buttonText}</Button>);
     expect(wrapper.is('a')).toBe(true);
     expect(wrapper.prop('href')).toBe('/example');
     expect(wrapper.prop('target')).toBe('_blank');
@@ -46,7 +40,8 @@ describe('Button', () => {
   });
 
   it('renders as a Link', () => {
-    const props = {
+    const props : ButtonProps = {
+      children: buttonText,
       component: Link,
       type: 'submit',
     };
@@ -77,7 +72,7 @@ describe('Button', () => {
   });
 
   it('applies variation classes', () => {
-    const props = { variation: 'primary' };
+    const props : ButtonProps = { variation: 'primary' , children: buttonText};
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
@@ -86,7 +81,7 @@ describe('Button', () => {
   });
 
   it('applies size classes', () => {
-    const props = { size: 'small' };
+    const props : ButtonProps = { size: 'small', children: buttonText };
     const wrapper = shallow(<Button {...props}>{buttonText}</Button>);
 
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
@@ -108,7 +103,8 @@ describe('Button', () => {
   });
 
   it('applies disabled, inverse, and variation classes together', () => {
-    const props = {
+    const props: ButtonProps = {
+      children: buttonText,
       disabled: true,
       inversed: true,
       variation: 'transparent',
@@ -123,7 +119,8 @@ describe('Button', () => {
   });
 
   it('applies inversed to default/transparent variations', () => {
-    const props = {
+    const props : ButtonProps = {
+      children: buttonText,
       inversed: true,
       variation: 'transparent',
     };
@@ -142,7 +139,7 @@ describe('Button', () => {
       button_type: 'button',
       link_url: null,
       html_id: null,
-      ga_eventCategory: EVENT_CATEGORY,
+      ga_eventCategory: EVENT_CATEGORY.uiComponents,
       ga_eventAction: `engaged default button`,
       ga_eventLabel: `button text: ${buttonText}`
     };
