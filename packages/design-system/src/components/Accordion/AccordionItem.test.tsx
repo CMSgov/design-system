@@ -100,10 +100,21 @@ describe('AccordionItem', function () {
   });
 
   it('renders an collapsed or closed accordion item', () => {
-    const { wrapper } = render({ expanded: false });
+    const { wrapper } = render({ defaultOpen: false });
     const accordionButton = wrapper.find('button');
 
     expect(accordionButton.props()).toHaveProperty('aria-expanded', false);
+  });
+
+  it('sets state on click when uncontrolled', () => {
+    const { wrapper } = render({ defaultOpen: false });
+    const accordionButton = wrapper.find('button');
+
+    accordionButton.simulate('click');
+    const accordionItem = wrapper.find('AccordionItem');
+
+    expect(accordionItem.state('isOpen')).toBe(true);
+
   });
 });
 
@@ -111,7 +122,7 @@ describe('Controlled accordion item', function () {
   it('renders button and should call onClick function when clicked', () => {
     const onClick = jest.fn();
 
-    const { wrapper } = render({ heading: 'Foo', onChange: onClick });
+    const { wrapper } = render({ heading: 'Foo', onChange: onClick, isControlled: true });
 
     const button = wrapper.find('button');
     expect(button.length).toEqual(1);

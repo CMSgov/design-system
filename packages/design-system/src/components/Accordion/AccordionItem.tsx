@@ -78,7 +78,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
       children,
       contentClassName,
       heading,
-      headingLevel = '2',
+      headingLevel,
       isControlledOpen,
     } = this.props;
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);

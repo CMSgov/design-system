@@ -81,8 +81,14 @@ describe('Accordion focus', function () {
   });
 
   it('selects the first accordion item on up arrow keyDown', () => {
-    accordionitemButton1.simulate('focus').simulate('keyUp', { key: 'ArrowUp' });
+    accordionitemButton1.simulate('focus').simulate('keyDown', { key: 'ArrowUp' });
     const focusedElement = document.activeElement;
     expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
   });
+
+  it('keeps focus is keypress was not a supported key', () => {
+    accordionitemButton0.simulate('focus').simulate('keyDown', { key: 'a' });
+    const focusedElement = document.activeElement;
+    expect(focusedElement.id).toEqual(accordionitemButton0.props().id);
+  })
 });
