@@ -26,9 +26,6 @@ export interface AnalyticsObjectShape {
   onComponentDidMount?: boolean | AnalyticsEventShape;
 }
 
-// Omit props that we override with values from the Alert
-type OmitAlertProps = 'role';
-
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -97,6 +94,9 @@ const defaultAnalytics = (heading = '', variation = '') => ({
     type: variation,
   },
 });
+
+// Omit props that we override with values from the Alert
+type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
 export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
