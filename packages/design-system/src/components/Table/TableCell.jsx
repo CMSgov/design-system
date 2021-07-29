@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import TableContext from './TableContext';
+import React from 'react';
 import classNames from 'classnames';
 
 export const TableCell = ({
@@ -14,25 +13,18 @@ export const TableCell = ({
   stackedTitle,
   stackedClassName,
   _isTableHeadChild,
+  _stackable,
   ...tableCellProps
 }) => {
-  const { stackable, warningDisabled } = useContext(TableContext);
-
-  let Component;
-  if (component) {
-    Component = component;
-  } else {
-    Component = _isTableHeadChild ? 'th' : 'td';
-  }
-  if (process.env.NODE_ENV !== 'production' && stackable && !warningDisabled) {
+  if (process.env.NODE_ENV !== 'production' && _stackable) {
     // Provide warning message for `id` prop for cells with parent component of `TableHead`
     if (_isTableHeadChild) {
-      if (!id && children) {
+      if (!id) {
         console.warn(
           'The id prop in `TableCell` is required for stackable tables. This prop is needed to assign an id to a heading in the responsive stacked view.'
         );
       }
-    } else if (Component === 'td') {
+    } else {
       // Provide warning message for stacktable `headers` and `stackedTitle` props
       if (!headers) {
         console.warn(
@@ -45,6 +37,13 @@ export const TableCell = ({
         );
       }
     }
+  }
+
+  let Component;
+  if (component) {
+    Component = component;
+  } else {
+    Component = _isTableHeadChild ? 'th' : 'td';
   }
 
   let role = 'cell';
@@ -131,6 +130,10 @@ TableCell.propTypes = {
    * @hide-prop This gets set from the parent `TableHead` component
    */
   _isTableHeadChild: PropTypes.bool,
+  /**
+   * @hide-prop This gets set from the parent `Table` component
+   */
+  _stackable: PropTypes.bool,
 };
 
 export default TableCell;

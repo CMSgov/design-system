@@ -73,11 +73,7 @@ describe('FormLabel', () => {
   });
 
   it('adds punctuation to requirementLabel when hint is also present', () => {
-    interface PropDef {
-      hint: React.ReactNode;
-      requirementLabel: React.ReactNode;
-    }
-    let props: PropDef = { hint: 'Hint', requirementLabel: 'Optional' };
+    let props = { hint: 'Hint', requirementLabel: 'Optional' };
     let wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper).toMatchSnapshot();
@@ -99,7 +95,8 @@ describe('FormLabel', () => {
   });
 
   it('renders as a legend element', () => {
-    const wrapper = shallow(<FormLabel component="legend">{labelText}</FormLabel>);
+    const props = { component: 'legend' };
+    const wrapper = shallow(<FormLabel {...props}>{labelText}</FormLabel>);
 
     expect(wrapper.is('legend')).toBe(true);
   });

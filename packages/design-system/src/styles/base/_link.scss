@@ -1,41 +1,17 @@
 /* stylelint-disable selector-class-pattern */
 @import '../settings/index.scss';
 
-// Links
-// Default link
-$link-color: $color-primary !default;
-$link-visited-color: $color-visited !default;
-$link-hover-color: $color-primary-darker !default;
-$link-active-color: $color-primary-darkest !default;
-
-// Inverse link
-$link-inverse-color: $color-base-inverse !default;
-$link-inverse-visited-color: $color-muted-inverse !default;
-$link-inverse-hover-color: $color-muted-inverse !default;
-$link-inverse-active-color: $color-muted-inverse !default;
-
-// Link underline
-$link-underline-height: 1px !default;
-$link-underline-height-hover: 1px !default;
-$link-underline-offset: 0 !default;
-
 %link {
-  color: $link-color;
+  color: $color-primary;
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link-color;
-  text-decoration-thickness: $link-underline-height;
-  text-underline-offset: $link-underline-offset;
 
   &:visited {
-    color: $link-visited-color;
-    text-decoration-color: $link-visited-color;
+    color: $color-visited;
   }
 
   &:hover {
-    color: $link-hover-color;
-    text-decoration-color: $link-hover-color;
-    text-decoration-thickness: $link-underline-height-hover;
+    color: $color-primary-darker;
   }
 
   @if $ds-include-focus-styles {
@@ -45,36 +21,20 @@ $link-underline-offset: 0 !default;
     }
   } @else {
     &:focus {
-      color: $link-hover-color;
-      text-decoration-color: $link-hover-color;
+      color: $color-primary-darker;
     }
   }
 
   &:active {
-    color: $link-active-color;
+    color: $color-primary-darkest;
     outline: 0 none;
-    text-decoration-color: $link-active-color;
   }
 }
 
 %link-inverse {
-  color: $link-inverse-color;
+  color: $color-base-inverse;
   cursor: pointer;
   text-decoration: underline;
-  text-decoration-color: $link-inverse-color;
-  text-decoration-thickness: $link-underline-height;
-  text-underline-offset: $link-underline-offset;
-
-  &:visited {
-    color: $link-inverse-visited-color;
-    text-decoration-color: $link-inverse-visited-color;
-  }
-
-  &:hover {
-    color: $link-inverse-hover-color;
-    text-decoration-color: $link-inverse-hover-color;
-    text-decoration-thickness: $link-underline-height-hover;
-  }
 
   /* stylelint-disable selector-max-specificity */
   @if $ds-include-focus-styles {
@@ -84,15 +44,18 @@ $link-underline-offset: 0 !default;
     }
   } @else {
     &:focus {
-      color: $link-inverse-hover-color;
-      text-decoration-color: $link-inverse-hover-color;
+      color: $color-muted-inverse;
     }
   }
   /* stylelint-enable selector-max-specificity */
 
+  &:visited,
+  &:hover,
   &:active {
-    color: $link-inverse-active-color;
-    outline: 0 none;
+    // :visited links can only style color, not opacity. This color styling is equivalent to:
+    // color: $color-base-inverse;
+    // opacity: 0.8;
+    color: $color-muted-inverse;
   }
 }
 

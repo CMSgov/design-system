@@ -44,7 +44,6 @@ const ignoredComponents = [
   'SubStep',
   'StepLink',
   'Tab',
-  'TableContext',
   'WrapperDiv',
   'VerticalNavItem',
   'VerticalNavItemLabel',

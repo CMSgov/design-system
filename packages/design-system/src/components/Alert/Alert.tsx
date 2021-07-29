@@ -1,25 +1,23 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+// import PropTypes from 'prop-types';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
-// Omit props that we override with values from the ChoiceList
-type OmitAlertProps = 'role';
-
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
-  event_name: string;
-  event_type: string;
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
+  event_name?: string;
+  event_type?: string;
+  ga_eventAction?: string;
+  ga_eventCategory?: string;
+  ga_eventLabel?: string;
   ga_eventType?: string;
   ga_eventValue?: string;
-  heading: string;
-  type: string;
+  heading?: string;
+  type?: string;
 }
 /* eslint-enable camelcase */
 
@@ -91,15 +89,7 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.Component<
-  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
-  any
-> {
-  static defaultProps = {
-    role: 'region',
-    headingLevel: '2',
-  };
-
+export class Alert extends React.PureComponent<AlertProps, any> {
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
@@ -124,7 +114,7 @@ export class Alert extends React.Component<
 
     if (alertSendsAnalytics()) {
       const eventAction = 'onComponentDidMount';
-      const eventHeading: string | React.ReactNode = this.props.heading || this.props.children;
+      const eventHeading = this.props.heading || this.props.children;
 
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (this.props.variation) {
@@ -156,7 +146,7 @@ export class Alert extends React.Component<
   eventHeadingText: string;
 
   heading(): React.ReactElement | void {
-    const { headingLevel, heading } = this.props;
+    const { headingLevel = '2', heading } = this.props;
     const Heading = `h${headingLevel}`;
     if (heading) {
       const headingProps = {
@@ -167,7 +157,7 @@ export class Alert extends React.Component<
     }
   }
 
-  render(): JSX.Element {
+  render(): React.ReactNode {
     const {
       children,
       className,
@@ -177,7 +167,7 @@ export class Alert extends React.Component<
       headingLevel,
       hideIcon,
       alertRef,
-      role,
+      role = 'region',
       variation,
       analytics,
       ...alertProps
