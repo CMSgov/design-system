@@ -52,13 +52,13 @@ describe('sendAnalyticsEvent', () => {
       const overrideProps = {
         ga_eventType: 'override',
         ga_extraProps1: 'extra prop',
-        ga_eventAction: 'override action'
+        ga_eventAction: 'override action',
       };
-      const expectedReturn = {...gaEventProps, ...overrideProps};
+      const expectedReturn = { ...gaEventProps, ...overrideProps };
 
       sendAnalyticsEvent(overrideProps, gaEventProps);
       expect(window.utag?.link).toHaveBeenCalledWith(expectedReturn);
-    })
+    });
   });
 
   describe('with Utag instance - errors', () => {

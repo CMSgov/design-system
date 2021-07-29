@@ -1,7 +1,20 @@
-import { AnalyticsEventProps, EVENT_CATEGORY, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import {
+  AnalyticsEventProps,
+  EVENT_CATEGORY,
+  sendAnalyticsEvent,
+} from '../analytics/SendAnalytics';
 import React from 'react';
 import { buttonSendsAnalytics } from '../flags';
 import classNames from 'classnames';
+
+export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
+export type ButtonSize = 'small' | 'big';
+export type ButtonType = 'button' | 'submit';
+/**
+ * A string corresponding to the button-component variation classes.
+ * The danger variation is deprecated and will be removed in a future release.
+ */
+export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
 /* eslint-disable camelcase */
 export interface ButtonAnalyticsShape {
@@ -24,7 +37,7 @@ export interface ButtonProps {
    * When the button is clicked, an event is triggered, the object value is populated and sent to google analytics
    * if `window.utag` instance is loaded.
    */
-  analytics?: ButtonAnalyticsShape,
+  analytics?: ButtonAnalyticsShape;
   /**
    * Label text or HTML
    */
@@ -38,7 +51,7 @@ export interface ButtonProps {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
+  component?: ButtonComponent;
   disabled?: boolean;
   /**
    * When provided the root component will render as an `<a>` element
@@ -48,7 +61,7 @@ export interface ButtonProps {
   /**
    * html id for element
    */
-  id?: string,
+  id?: string;
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -64,29 +77,29 @@ export interface ButtonProps {
    * Not called when the button is disabled.
    */
   onClick?: (...args: any[]) => any;
-  size?: 'small' | 'big';
+  size?: ButtonSize;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type?: 'button' | 'submit';
+  type?: ButtonType;
   /**
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
-  variation?: 'primary' | 'danger' | 'success' | 'transparent';
+  variation?: ButtonVariation;
 }
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'id';
 
 export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & 
-  Omit<React.ComponentPropsWithRef<'a'>, OmitProps> & 
-  ButtonProps
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> &
+    Omit<React.ComponentPropsWithRef<'a'>, OmitProps> &
+    ButtonProps
 > {
   static defaultProps = {
     type: 'button',
     component: 'button',
-    analytics: {}
+    analytics: {},
   };
 
   constructor(props: ButtonProps) {
@@ -115,13 +128,13 @@ export default class Button extends React.PureComponent<
   // Alert class properties
   elementRef: React.RefObject<HTMLElement>;
 
-  getInputRef() : (...args: any[]) => React.RefObject<HTMLElement> {
+  getInputRef(): (...args: any[]) => React.RefObject<HTMLElement> {
     const { inputRef } = this.props;
 
     if (inputRef) {
       return inputRef;
     } else if (this.props.component === 'button') {
-      return element => {
+      return (element) => {
         this.elementRef = element;
         return this.elementRef;
       };
@@ -209,8 +222,8 @@ export default class Button extends React.PureComponent<
     }
   }
 
-  getTextFromNode() : string {
-    const stringChildren = React.Children.map(this.props.children, (child : React.ReactElement) => {
+  getTextFromNode(): string {
+    const stringChildren = React.Children.map(this.props.children, (child: React.ReactElement) => {
       if (typeof child === 'string') {
         return child;
       } else if (child.props) {
@@ -224,12 +237,12 @@ export default class Button extends React.PureComponent<
     return stringChildren.join(' ');
   }
 
-  sendButtonAnalytics() : void {
-    const {analytics, children, href, id, type, variation} = this.props;
+  sendButtonAnalytics(): void {
+    const { analytics, children, href, id, type, variation } = this.props;
     const buttonStyle = variation || 'default';
     const text = typeof children === 'string' ? children : this.getTextFromNode();
 
-    const defaultAnalyticsData : ButtonAnalyticsShape = {
+    const defaultAnalyticsData: ButtonAnalyticsShape = {
       event_name: 'button_engagement',
       text,
       button_style: buttonStyle,
@@ -238,11 +251,13 @@ export default class Button extends React.PureComponent<
       html_id: id || null,
       ga_eventCategory: EVENT_CATEGORY.uiComponents,
       ga_eventAction: `engaged ${buttonStyle} button`,
-      ga_eventLabel: `button text: ${text}`
-    }
+      ga_eventLabel: `button text: ${text}`,
+    };
 
-    sendAnalyticsEvent(analytics as Record<string, unknown>, defaultAnalyticsData as AnalyticsEventProps);
-
+    sendAnalyticsEvent(
+      analytics as Record<string, unknown>,
+      defaultAnalyticsData as AnalyticsEventProps
+    );
   }
 
   handleClick(e: React.MouseEvent | React.KeyboardEvent): void {

@@ -36,6 +36,9 @@ ReactDOM.render(
     <Button className="ds-u-margin-right--1">
       <sup>Button with node child</sup>
     </Button>
+    <Button className="ds-u-margin-right--1">
+      <sup>Button with node child</sup> and regular child
+    </Button>
   </>,
   document.getElementById('js-example')
 );

@@ -14,7 +14,7 @@ const flags: flagsType = {
   ALERT_SENDS_ANALYTICS: false,
   DIALOG_SENDS_ANALYTICS: false,
   HELP_DRAWER_SENDS_ANALYTICS: true,
-  BUTTON_SEND_ANALYTICS: true
+  BUTTON_SEND_ANALYTICS: false,
 };
 
 export function errorPlacementDefault(): errorPlacementValue {

@@ -38,7 +38,7 @@ export const EVENT_CATEGORY = {
 
 export const MAX_LENGTH = 100;
 
-interface AnalyticsEventProps {
+export interface AnalyticsEventProps {
   ga_eventAction: string;
   ga_eventCategory: string;
   ga_eventLabel: string;

@@ -1,6 +1,8 @@
 /*
 Button
 
+@analytics
+
 @uswds https://designsystem.digital.gov/components/buttons
 
 Use buttons to signal actions.
@@ -50,6 +52,100 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 Style guide: components.button.react
 */
 
+/*
+Analytics Event Object
+
+<table class="ds-c-table ds-c-table--compact">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">event_name</code></td>
+      <td><code>string</code></td>
+      <td><code>'button_engagement'</code></td>
+      <td>
+        <p>The event_name becomes how the event is found in the analytics GUI.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">text</code></td>
+      <td><code>string</code></td>
+      <td>[children prop that are text]</td>
+      <td>
+        <p>The text found inside the button. Please ensure this does not include PII. If it does, use `analytics` prop to override.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventAction</code></td>
+      <td><code>string</code></td>
+      <td><code>'engaged [variation] button'</code></td>
+      <td>
+        <p>Since this is net-new tracking, this will support Universal Analytics measurement. This would capture the button_style within standardized parameters. </p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventCategory</code></td>
+      <td><code>string</code></td>
+      <td><code>'ui components'</code></td>
+      <td>
+        <p>Since this is net-new tracking, this will support Universal Analytics measurement.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
+      <td><code>string</code></td>
+      <td><code>'button text: [text]'</code></td>
+      <td>
+        <p>This value would be leveraged for Universal Analytics</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">button_style</code>
+      </td>
+      <td><code>string</code></td>
+      <td><code>[variation prop]</code></td>
+      <td>
+        <p>This will capture the style of the button that was presented to the user.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code class="ds-u-font-weight--bold">button_type</code>
+      </td>
+      <td><code>string</code></td>
+      <td></td>
+      <td>
+        <p>This would explain what the button's purpose was. If Button is a link, it will display 'link' otherwise it will use the `type` prop</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">link_url</code></td>
+      <td><code>string</code></td>
+      <td><code>[href prop]</code> (if button is a link) otherwise <code>null</code></td>
+      <td>
+        <p>The URL the link directs to</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">html_id</code></td>
+      <td><code>string</code></td>
+      <td><code>[id prop]</code> (if provided) otherwise <code>null</code></td>
+      <td>
+        <p>New ID that is optional for teams to add if necessary to differentiate if multiple buttons exist</p>
+      </td>
+    </tr>
+    </tbody>
+</table>
+
+Style guide: components.button.analytics
+*/
 /*
 ---
 
@@ -110,4 +206,39 @@ Style guide: components.button.react
 - [Building Accessible Buttons with ARIA](https://www.deque.com/blog/accessible-aria-buttons)
 
 Style guide: components.button.guidance
+*/
+
+/*
+Google Analytics
+
+**Analytics event tracking is disabled by default.**
+
+### Enable event tracking
+
+- Import and set the `setButtonSendsAnalytics` feature flag to `true` in your application's entry file:
+
+```JSX
+import { setButtonSendsAnalytics } from "@cmsgov/<design-system-package>";
+setButtonSendsAnalytics(true);
+```
+- Please check your application to ensure that no PII is included as part of the text of the button.
+- On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
+
+### Override  event tracking
+
+- Pass changes via any of the [available analytics props](#components.button.analytics).
+The `analytics` prop for the button component can be used to override any information sent to google analytics.
+For example, if you wanted to send alternate text for a button (in the case it used PII or you needed to be more specific), you can do something like:
+```
+<Button
+    analytics={{
+        text: '[redacted], go to the next page'
+    }}
+>
+    Jane, go to the next page
+</Button>
+```
+Any prop you do not pass will be defaulted by the button component.
+
+Style guide: components.button.guidance-analytics
 */
