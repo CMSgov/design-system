@@ -11,6 +11,7 @@ export type DateFieldMonthDefaultValue = string | number;
 export type DateFieldMonthValue = string | number;
 export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
+export type DateFieldErrorPlacement = 'top' | 'bottom';
 
 export interface DateFieldProps {
   /**
@@ -39,7 +40,7 @@ export interface DateFieldProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: 'top' | 'bottom';
+  errorPlacement?: DateFieldErrorPlacement;
   /**
    * Additional hint text to display above the individual month/day/year fields
    */
