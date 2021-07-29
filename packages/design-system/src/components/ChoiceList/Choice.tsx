@@ -4,6 +4,9 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
+export type ChoiceSize = 'small';
+export type ChoiceType = 'checkbox' | 'radio';
+export type ChoiceValue = number | string;
 export interface ChoiceProps {
   /**
    * @hide-prop In order to be consistent with form elements, use `label` instead
@@ -67,7 +70,7 @@ export interface ChoiceProps {
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
-  size?: 'small';
+  size?: ChoiceSize;
   /**
    * The `input` field's `name` attribute
    */
@@ -77,11 +80,11 @@ export interface ChoiceProps {
   /**
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
-  type: 'checkbox' | 'radio';
+  type: ChoiceType;
   /**
    * The `input` `value` attribute
    */
-  value: number | string;
+  value: ChoiceValue;
 }
 
 type OmitProps =
