@@ -8,13 +8,7 @@ import React from 'react';
 class ReactPropDoc extends React.PureComponent {
   defaultValue() {
     if (this.props.defaultValue) {
-      return (
-        <code>
-          {typeof this.props.defaultValue.value !== 'string'
-            ? String(this.props.defaultValue.value)
-            : this.props.defaultValue.value}
-        </code>
-      );
+      return <code>{this.props.defaultValue.value}</code>;
     }
   }
 
@@ -106,7 +100,7 @@ class ReactPropDoc extends React.PureComponent {
 
 ReactPropDoc.propTypes = {
   defaultValue: PropTypes.shape({
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    value: PropTypes.string,
   }),
   description: PropTypes.string,
   name: PropTypes.string,

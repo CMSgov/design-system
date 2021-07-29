@@ -1,12 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Table applies responsive stacked table 1`] = `
+<div>
+  <table
+    className="ds-c-table ds-c-lg-table--stacked"
+    role="table"
+  >
+    <TableCaption
+      key=".0"
+    >
+      Foo
+    </TableCaption>
+  </table>
+</div>
+`;
+
 exports[`Table table caption scrollable true applies scroll table wrapper and classes 1`] = `
 <Table
   scrollable={true}
   scrollableNotice={
     <Alert
       className="ds-u-margin-y--1 ds-u-font-weight--normal"
-      headingLevel="2"
       role="status"
     >
       <p
@@ -19,7 +33,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
   stackableBreakpoint="sm"
 >
   <div
-    aria-labelledby="caption-12"
+    aria-labelledby="caption-10"
     aria-live="polite"
     aria-relevant="additions"
     className="ds-c-table__wrapper"
@@ -31,12 +45,11 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
       role="table"
     >
       <TableCaption
-        _id="caption-12"
+        _id="caption-10"
         _scrollActive={false}
         _scrollableNotice={
           <Alert
             className="ds-u-margin-y--1 ds-u-font-weight--normal"
-            headingLevel="2"
             role="status"
           >
             <p
@@ -50,7 +63,7 @@ exports[`Table table caption scrollable true applies scroll table wrapper and cl
       >
         <caption
           className="ds-c-table__caption"
-          id="caption-12"
+          id="caption-10"
         >
           Foo
         </caption>
@@ -67,7 +80,7 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
   stackableBreakpoint="sm"
 >
   <div
-    aria-labelledby="caption-15"
+    aria-labelledby="caption-13"
     aria-live="polite"
     aria-relevant="additions"
     className="ds-c-table__wrapper"
@@ -79,14 +92,14 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
       role="table"
     >
       <TableCaption
-        _id="caption-15"
+        _id="caption-13"
         _scrollActive={false}
         _scrollableNotice="foo scrollable notice"
         key=".0"
       >
         <caption
           className="ds-c-table__caption"
-          id="caption-15"
+          id="caption-13"
         >
           Foo
         </caption>
@@ -94,52 +107,4 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
     </table>
   </div>
 </Table>
-`;
-
-exports[`Table table responsive stacked table true applies responsive stacked table 1`] = `
-<div>
-  <ContextProvider
-    value={
-      Object {
-        "stackable": true,
-        "warningDisabled": false,
-      }
-    }
-  >
-    <table
-      className="ds-c-table ds-c-lg-table--stacked"
-      role="table"
-    >
-      <TableCaption
-        key=".0"
-      >
-        Foo
-      </TableCaption>
-    </table>
-  </ContextProvider>
-</div>
-`;
-
-exports[`Table table responsive stacked table true applies responsive stacked table ContextProvider 1`] = `
-<div>
-  <ContextProvider
-    value={
-      Object {
-        "stackable": true,
-        "warningDisabled": true,
-      }
-    }
-  >
-    <table
-      className="ds-c-table ds-c-sm-table--stacked"
-      role="table"
-    >
-      <TableCaption
-        key=".0"
-      >
-        Foo
-      </TableCaption>
-    </table>
-  </ContextProvider>
-</div>
 `;
