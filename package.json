@@ -16,6 +16,7 @@
     "test:unit": "yarn cmsds test ./packages --filePath",
     "test:e2e": "yarn cmsds test:e2e ./packages",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
+    "test-coverage": "yarn cmsds test ./packages --collectCoverage",
     "posttest": "yarn lint",
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'"
   },
