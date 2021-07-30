@@ -105,7 +105,7 @@ export default class Button extends React.PureComponent<
   constructor(props: ButtonProps) {
     super(props);
 
-    this.elementRef = null;
+    this.elementTextRef = null;
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.inverse) {
@@ -121,26 +121,13 @@ export default class Button extends React.PureComponent<
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleRef = this.handleRef.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.sendButtonAnalytics = this.sendButtonAnalytics.bind(this);
   }
 
   // Alert class properties
-  elementRef: React.RefObject<HTMLElement>;
-
-  getInputRef(): (...args: any[]) => React.RefObject<HTMLElement> {
-    const { inputRef } = this.props;
-
-    if (inputRef) {
-      return inputRef;
-    } else if (this.props.component === 'button') {
-      return (element) => {
-        this.elementRef = element;
-        return this.elementRef;
-      };
-    }
-    return null;
-  }
+  elementTextRef: HTMLElement;
 
   // Get an object of props to pass to the rendered <Button> component
   attrs(): any {
@@ -223,18 +210,12 @@ export default class Button extends React.PureComponent<
   }
 
   getTextFromNode(): string {
-    const stringChildren = React.Children.map(this.props.children, (child: React.ReactElement) => {
-      if (typeof child === 'string') {
-        return child;
-      } else if (child.props) {
-        const childNode = child.props.children;
-        if (childNode && typeof childNode === 'string') {
-          return childNode;
-        }
-      }
-    });
+    // Buutton might have nested elements as children, so use ref to get full text
+    if (this.elementTextRef) {
+      return this.elementTextRef.textContent;
+    }
 
-    return stringChildren.join(' ');
+    return '';
   }
 
   sendButtonAnalytics(): void {
@@ -272,13 +253,28 @@ export default class Button extends React.PureComponent<
     }
   }
 
+  handleRef(ref: any): void {
+    const { inputRef } = this.props;
+    this.elementTextRef = ref;
+
+    if (inputRef) {
+      inputRef(ref);
+    }
+  }
+
+  isFunctionalComponent(): boolean {
+    // Can't pass refs to functional components without forwardRef
+    const { component } = this.props;
+    return component && typeof component === 'function';
+  }
+
   public render(): React.ReactNode {
     const attrs = this.attrs();
     const ComponentType = this.componentType();
 
     return (
       <ComponentType
-        ref={this.props.inputRef}
+        ref={this.isFunctionalComponent() ? null : this.handleRef}
         onKeyPress={this.componentType() === 'a' ? this.handleKeyPress : undefined}
         {...attrs}
       >
