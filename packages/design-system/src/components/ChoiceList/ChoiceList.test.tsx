@@ -1,5 +1,5 @@
+import ChoiceList, { ChoiceListType } from './ChoiceList';
 import { mount, shallow } from 'enzyme';
-import ChoiceList from './ChoiceList';
 import React from 'react';
 
 function generateChoices(length) {
@@ -22,7 +22,7 @@ function render(customProps = {}, choicesCount = 2, deep = true) {
       choices: generateChoices(choicesCount),
       label: 'Foo',
       name: 'spec-field',
-      type: 'radio',
+      type: 'radio' as ChoiceListType,
     },
     ...customProps,
   };

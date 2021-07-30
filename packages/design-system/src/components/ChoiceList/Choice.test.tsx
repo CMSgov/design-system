@@ -1,4 +1,4 @@
-import Choice from './Choice';
+import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import { shallow } from 'enzyme';
@@ -6,12 +6,12 @@ import { shallow } from 'enzyme';
 const defaultProps = {
   name: 'foo',
   value: 'boo',
-  type: 'checkbox',
+  type: 'checkbox' as ChoiceType,
   label: 'George Washington',
 };
 
 function render(customProps = {}) {
-  const props = { ...defaultProps, ...customProps };
+  const props: ChoiceProps = { ...defaultProps, ...customProps };
   return {
     props,
     wrapper: shallow(<Choice {...props} />),
@@ -222,8 +222,8 @@ describe('Choice', () => {
           target: { checked: true },
         });
 
-        expect(data.props.onBlur.mock.calls.length).toBe(0);
-        expect(data.props.onChange.mock.calls.length).toBe(1);
+        expect(data.props.onBlur).toHaveBeenCalledTimes(0);
+        expect(data.props.onChange).toHaveBeenCalledTimes(1);
       });
 
       it('updates state when uncontrolled component', () => {
@@ -257,8 +257,8 @@ describe('Choice', () => {
 
       input.simulate('blur');
 
-      expect(data.props.onBlur.mock.calls.length).toBe(1);
-      expect(data.props.onChange.mock.calls.length).toBe(0);
+      expect(data.props.onBlur).toHaveBeenCalledTimes(1);
+      expect(data.props.onChange).toHaveBeenCalledTimes(0);
     });
 
     describe('uncheck event emitter', () => {
