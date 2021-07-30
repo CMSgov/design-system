@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export type SpinnerSize = 'small' | 'big';
+
 export interface SpinnerProps {
   /**
    * The text announced to screen readers
@@ -26,7 +28,7 @@ export interface SpinnerProps {
   /**
    * Smaller or larger variant
    */
-  size?: 'small' | 'big';
+  size?: SpinnerSize;
 }
 
 export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerProps) => {
