@@ -10,7 +10,7 @@ export type ChoiceListErrorPlacement = 'top' | 'bottom';
 
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type' | 'inputRef';
-type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
+export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
 export interface ChoiceListProps {
   /**
