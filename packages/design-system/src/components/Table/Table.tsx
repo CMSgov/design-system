@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
+export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
+
 export interface TableProps {
   /**
    * Applies the borderless variation of the table.
@@ -44,7 +46,7 @@ export interface TableProps {
   /**
    * Applies responsive styles to vertically stacked rows at different viewport sizes.
    */
-  stackableBreakpoint?: 'sm' | 'md' | 'lg';
+  stackableBreakpoint?: TableStackableBreakpoint;
   /**
    * A striped variation of the table.
    */

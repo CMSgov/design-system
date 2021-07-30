@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import TableContext from './TableContext';
 import classNames from 'classnames';
 
+export type TableCellScope = 'row' | 'col' | 'rowgroup' | 'colgroup';
+export type TableCellAlign = 'center' | 'left' | 'right';
+export type TableCellComponent = 'td' | 'th';
+
 export interface TableCellProps {
   /**
    * Set the text-align on the table cell content.
    */
-  align?: 'center' | 'left' | 'right';
+  align?: TableCellAlign;
   /**
    * The table cell contents.
    */
@@ -16,7 +20,7 @@ export interface TableCellProps {
    * If this prop is undefined, it renders a `<th>` element if the parent component is `TableHead`,
    * otherwise, it renders a `<td>` element.
    */
-  component?: 'td' | 'th';
+  component?: TableCellComponent;
   /**
    * Additional classes to be added to the row element.
    */
@@ -37,7 +41,7 @@ export interface TableCellProps {
    * If this prop is undefined, the component sets a scope attribute of `col` when the parent
    * component is `TableHead` to identify the header cell is a header for a column.
    */
-  scope?: 'row' | 'col' | 'rowgroup' | 'colgroup';
+  scope?: TableCellScope;
   /**
    * Additional classes to be added to the stacked Title element.
    */
