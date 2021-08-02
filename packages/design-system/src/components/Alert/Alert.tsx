@@ -1,5 +1,4 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
-// import PropTypes from 'prop-types';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -9,22 +8,28 @@ import uniqueId from 'lodash.uniqueid';
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
-  event_name?: string;
-  event_type?: string;
-  ga_eventAction?: string;
-  ga_eventCategory?: string;
-  ga_eventLabel?: string;
+  event_name: string;
+  event_type: string;
+  ga_eventAction: string;
+  ga_eventCategory: string;
+  ga_eventLabel: string;
   ga_eventType?: string;
   ga_eventValue?: string;
-  heading?: string;
-  type?: string;
+  heading: string;
+  type: string;
+  [additional_props: string]: unknown;
 }
 /* eslint-enable camelcase */
 
-interface AnalyticsObjectShape {
+export interface AnalyticsObjectShape {
   onComponentDidMount?: boolean | AnalyticsEventShape;
 }
 
+export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
+
+export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
+
+export type AlertVariation = 'error' | 'warn' | 'success';
 export interface AlertProps {
   /**
    * Access a reference to the `alert` `div` element
@@ -59,7 +64,7 @@ export interface AlertProps {
   /**
    * Heading type to override default `<h2>`.
    */
-  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
+  headingLevel?: AlertHeadingLevel;
   /**
    * Boolean to hide the `Alert` icon
    */
@@ -67,11 +72,11 @@ export interface AlertProps {
   /**
    * ARIA `role`, defaults to 'region'
    */
-  role?: 'alert' | 'alertdialog' | 'region' | 'status';
+  role?: AlertRole;
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation?: 'error' | 'warn' | 'success';
+  variation?: AlertVariation;
 
   [key: string]: any;
 }
@@ -89,7 +94,18 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.PureComponent<AlertProps, any> {
+// Omit props that we override with values from the Alert
+type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
+
+export class Alert extends React.PureComponent<
+  Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
+  any
+> {
+  static defaultProps = {
+    role: 'region',
+    headingLevel: '2',
+  };
+
   constructor(props: AlertProps) {
     super(props);
     this.alertTextRef = null;
@@ -114,7 +130,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
 
     if (alertSendsAnalytics()) {
       const eventAction = 'onComponentDidMount';
-      const eventHeading = this.props.heading || this.props.children;
+      const eventHeading: string | React.ReactNode = this.props.heading || this.props.children;
 
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (this.props.variation) {
@@ -146,7 +162,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
   eventHeadingText: string;
 
   heading(): React.ReactElement | void {
-    const { headingLevel = '2', heading } = this.props;
+    const { headingLevel, heading } = this.props;
     const Heading = `h${headingLevel}`;
     if (heading) {
       const headingProps = {
@@ -167,7 +183,7 @@ export class Alert extends React.PureComponent<AlertProps, any> {
       headingLevel,
       hideIcon,
       alertRef,
-      role = 'region',
+      role,
       variation,
       analytics,
       ...alertProps
