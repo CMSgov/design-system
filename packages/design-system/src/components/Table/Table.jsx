@@ -2,13 +2,10 @@ import Alert from '../Alert/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableCaption from './TableCaption';
+import TableContext from './TableContext';
 import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
-
-// TODO: Revert out of this 'PR update to use lifecycle methods'
-// (https://github.com/CMSgov/design-system/pull/777)
-// when hc.gov child ds and the product apps are on react v16.8
 
 function debounce(fn, ms) {
   let timer;
@@ -84,7 +81,6 @@ export class Table extends React.PureComponent {
     return React.Children.map(this.props.children, (child) => {
       if (isTableCaption(child)) {
         // Extend props on TableCaption before rendering.
-        // TODO: Use React Context when all products are on React v16.8 or higher
         if (this.props.scrollable) {
           return React.cloneElement(child, {
             _id: this.captionID,
@@ -92,11 +88,6 @@ export class Table extends React.PureComponent {
             _scrollableNotice: this.props.scrollableNotice,
           });
         }
-      } else if (this.props.stackable && child.props) {
-        // Extend props for others before rendering.
-        return React.cloneElement(child, {
-          _stackable: this.props.stackable,
-        });
       }
       return child;
     });
@@ -113,6 +104,7 @@ export class Table extends React.PureComponent {
       striped,
       scrollable,
       scrollableNotice,
+      warningDisabled,
       children,
       ...tableProps
     } = this.props;
@@ -138,6 +130,8 @@ export class Table extends React.PureComponent {
       tabIndex: this.state.scrollActive ? '0' : null,
     };
 
+    const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
+
     return (
       <div
         ref={(container) => {
@@ -145,9 +139,11 @@ export class Table extends React.PureComponent {
         }}
         {...attributeScrollable}
       >
-        <table className={classes} role="table" {...tableProps}>
-          {this.renderChildren()}
-        </table>
+        <TableContext.Provider value={contextValue}>
+          <table className={classes} role="table" {...tableProps}>
+            {this.renderChildren()}
+          </table>
+        </TableContext.Provider>
       </div>
     );
   }
@@ -205,6 +201,11 @@ Table.propTypes = {
    * Applies the striped variation of the table.
    */
   striped: PropTypes.bool,
+  /**
+   * Disables the warning message on development console when a responsive stackable table cell does not contain an `id` or `headers`.
+   * It's recommended that accessibility with screen readers is tested to ensure the stacked table meets the requirement.
+   */
+  warningDisabled: PropTypes.bool,
 };
 
 export default Table;
