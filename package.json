@@ -42,7 +42,7 @@
     "kss/nunjucks": ">=3.2.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint --fix"
     ],
