@@ -97,49 +97,45 @@ exports[`Table table caption scrollable true applies scrollableNotice 1`] = `
 `;
 
 exports[`Table table responsive stacked table true applies responsive stacked table 1`] = `
-<div>
-  <ContextProvider
-    value={
-      Object {
-        "stackable": true,
-        "warningDisabled": false,
-      }
+<ContextProvider
+  value={
+    Object {
+      "stackable": true,
+      "warningDisabled": false,
     }
+  }
+>
+  <table
+    className="ds-c-table ds-c-lg-table--stacked"
+    role="table"
   >
-    <table
-      className="ds-c-table ds-c-lg-table--stacked"
-      role="table"
+    <TableCaption
+      key=".0"
     >
-      <TableCaption
-        key=".0"
-      >
-        Foo
-      </TableCaption>
-    </table>
-  </ContextProvider>
-</div>
+      Foo
+    </TableCaption>
+  </table>
+</ContextProvider>
 `;
 
 exports[`Table table responsive stacked table true applies responsive stacked table ContextProvider 1`] = `
-<div>
-  <ContextProvider
-    value={
-      Object {
-        "stackable": true,
-        "warningDisabled": true,
-      }
+<ContextProvider
+  value={
+    Object {
+      "stackable": true,
+      "warningDisabled": true,
     }
+  }
+>
+  <table
+    className="ds-c-table ds-c-sm-table--stacked"
+    role="table"
   >
-    <table
-      className="ds-c-table ds-c-sm-table--stacked"
-      role="table"
+    <TableCaption
+      key=".0"
     >
-      <TableCaption
-        key=".0"
-      >
-        Foo
-      </TableCaption>
-    </table>
-  </ContextProvider>
-</div>
+      Foo
+    </TableCaption>
+  </table>
+</ContextProvider>
 `;
