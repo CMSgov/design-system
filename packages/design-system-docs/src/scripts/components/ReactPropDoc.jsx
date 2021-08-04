@@ -64,9 +64,7 @@ class ReactPropDoc extends React.PureComponent {
     } else if (propType === 'enum') {
       const { raw } = this.props.type;
       // if its ReactText (meaning it accepts multiple types), display the types that are acceptable
-      return raw === 'ReactText' ?
-        validValues :
-        raw;
+      return raw === 'ReactText' ? validValues : raw;
     } else if (validValues) {
       return validValues;
     }
@@ -132,7 +130,7 @@ ReactPropDoc.propTypes = {
       ),
       PropTypes.object, // shape
     ]),
-    raw: PropTypes.string
+    raw: PropTypes.string,
   }),
 };
 

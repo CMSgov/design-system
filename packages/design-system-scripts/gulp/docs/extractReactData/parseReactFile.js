@@ -119,7 +119,7 @@ function parseComponent(file, options) {
           !props.parent ||
           !props.parent.fileName.includes('node_modules') ||
           props.parent.fileName.includes('@cmsgov'),
-        shouldExtractValuesFromUnion: true
+        shouldExtractValuesFromUnion: true,
       };
       // Use `react-docgen-typescript` for `tsx` files
       docs = tsDocgen.withCustomConfig(path.resolve('tsconfig.json'), tsOptions).parse(file.path);
