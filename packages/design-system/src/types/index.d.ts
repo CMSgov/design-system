@@ -10,12 +10,6 @@ export { default as MonthPicker, getMonthNames } from './MonthPicker/MonthPicker
 export { default as Review } from './Review/Review';
 export { default as SkipNav } from './SkipNav/SkipNav';
 export { default as StepList } from './StepList/StepList';
-export { default as Table } from './Table/Table';
-export { default as TableBody } from './Table/TableBody';
-export { default as TableCaption } from './Table/TableCaption';
-export { default as TableCell } from './Table/TableCell';
-export { default as TableHead } from './Table/TableHead';
-export { default as TableRow } from './Table/TableRow';
 export { default as Tabs } from './Tabs/Tabs';
 export { default as TabPanel } from './Tabs/TabPanel';
 export { default as Tooltip } from './Tooltip/Tooltip';
@@ -35,6 +29,7 @@ export * from './FilterChip';
 export * from './FormControl';
 export * from './InlineError';
 export * from './Spinner';
+export * from './Table';
 export * from './TextField';
 export * from './Tooltip';
 
