@@ -1,9 +1,19 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
-export const TableHead = ({ children, ...tableHeadProps }) => {
+export interface TableHeadProps {
+  /**
+   * The table head contents, usually `TableRow`.
+   */
+  children?: React.ReactNode;
+}
+
+type OmitProps = 'children';
+
+export const TableHead: React.FC<
+  Omit<React.ComponentPropsWithoutRef<'thead'>, OmitProps> & TableHeadProps
+> = ({ children, ...tableHeadProps }: TableHeadProps) => {
   const renderChildren = () => {
-    return React.Children.map(children, (child) => {
+    return React.Children.map(children, (child: React.ReactElement) => {
       // Extend props before rendering.
       if (child && child.props) {
         return React.cloneElement(child, {
@@ -21,13 +31,6 @@ export const TableHead = ({ children, ...tableHeadProps }) => {
     </thead>
   );
   /* eslint-enable jsx-a11y/no-redundant-roles */
-};
-
-TableHead.propTypes = {
-  /**
-   * The table head contents, usually `TableRow`.
-   */
-  children: PropTypes.node,
 };
 
 export default TableHead;

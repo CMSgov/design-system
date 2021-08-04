@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import classNames from 'classnames';
 
 export interface TableCaptionProps {
   /**
@@ -23,6 +24,24 @@ export interface TableCaptionProps {
   _scrollableNotice?: React.ReactNode;
 }
 
-declare const TableCaption: React.FC<TableCaptionProps>;
+export const TableCaption: React.FC<TableCaptionProps> = ({
+  children,
+  className,
+  _id,
+  _scrollActive,
+  _scrollableNotice,
+  ...tableCaptionProps
+}: TableCaptionProps) => {
+  const classes = classNames('ds-c-table__caption', className);
+  return (
+    <caption className={classes} id={_id} {...tableCaptionProps}>
+      {children}
+      {_scrollActive && _scrollableNotice}
+    </caption>
+  );
+};
+
+// Set component name to make child.type.displayName available to other components (eg. Table)
+TableCaption.displayName = 'TableCaption';
 
 export default TableCaption;
