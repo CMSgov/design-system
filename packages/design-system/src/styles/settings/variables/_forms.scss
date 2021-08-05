@@ -1,15 +1,19 @@
-// These variables apply to form fields (input, select, textarea, button)
+// Textbox, dropdown, textarea)
+// line height
 $input-line-height: 1.3 !default;
-$input-border-width: 2px !default;
+// width
 $input-small-width: 6em !default;
 $input-medium-width: 12em !default;
 $input-max-width: 460px !default;
+// padding
 $input-padding: $spacer-1 !default;
+// border
+$input-border-width: 2px !default;
 $input-border-radius: $border-radius !default;
 $input-border-color: $color-base !default;
 $input-border-color-inverse: $color-black !default;
 
-// Choice theme variables
+// Choice (Radio buttons and checkboxes)
 $choice-background-color: $color-background !default;
 $choice-border-color: $color-base !default;
 $choice-checked-background-color: $color-primary !default;
@@ -26,6 +30,7 @@ $choice-size: $spacer-4 !default;
 $choice-size-small: 20px !default;
 
 // Buttons
+$button-line-height: 1.3 !default;
 $button-border-width: 1px !default;
 $button-text-decoration-underline: underline !default;
 $button-text-decoration-none: none !default;
