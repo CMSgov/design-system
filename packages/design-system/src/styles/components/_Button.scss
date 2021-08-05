@@ -8,10 +8,8 @@
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
-  background-color: $color-white;
   border: $button-border-width solid $color-primary;
   border-radius: $border-radius;
-  color: $color-primary;
   cursor: pointer;
   display: inline-block;
   font-family: $font-sans;
@@ -90,159 +88,78 @@
 }
 
 /**
- *  Transparent variant (button styled like a link)
- */
-.ds-c-button--transparent,
-.ds-c-button--transparent:visited,
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  border-color: transparent;
-  text-decoration: underline;
-
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
-  }
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-  }
-
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      color: $color-primary-darkest;
-      text-decoration: underline;
-    }
-  }
-
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-    text-decoration: none;
-  }
-}
-
-/**
- *  Inverse buttons (mainly affects default and transparent buttons)
- */
-.ds-c-button--inverse,
-.ds-c-button--inverse:visited {
-  background-color: $color-background-inverse;
-  border-color: $border-color-inverse;
-  color: $color-base-inverse;
-
-  &:hover,
-  &.ds-c-button--hover {
-    border-color: rgba($border-color-inverse, 0.8);
-    color: rgba($color-base-inverse, 0.8);
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: rgba($border-color-inverse, 0.8);
-      color: rgba($color-base-inverse, 0.8);
-    }
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    border-color: rgba($border-color-inverse, 0.6);
-    color: rgba($color-base-inverse, 0.6);
-  }
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-background-inverse;
-      color: rgba($color-base-inverse, 0.6);
-    }
-  }
-}
-
-/* stylelint-disable scss/at-extend-no-missing-placeholder */
-%transparent-inverse-button {
-  background-color: transparent;
-  border-color: transparent;
-
-  // Default inverse focus styles are overridden above
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-button--focus {
-      @include focus-styles;
-    }
-  }
-}
-
-.ds-c-button--inverse.ds-c-button--transparent,
-.ds-c-button--inverse.ds-c-button--transparent:visited {
-  @extend %transparent-inverse-button;
-  &:disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-  }
-}
-
-/**
- *  Not recommended usage
- *  Equivalent to ".ds-c-button--inverse.ds-c-button--transparent"
- */
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  @extend .ds-c-button--inverse;
-  @extend %transparent-inverse-button;
-}
-
-%disabled-inverse-button {
-  background-color: $color-background-inverse;
-  border-color: $color-gray-lighter;
-  color: $color-gray-lighter;
-  pointer-events: none;
-}
-
-.ds-c-button--inverse:disabled,
-.ds-c-button--inverse.ds-c-button--disabled {
-  @extend %disabled-inverse-button;
-}
-
-/**
- *  Not recommended usage
- *  Equivalent to ".ds-c-button--inverse.ds-c-button--disabled"
- */
-.ds-c-button--disabled-inverse,
-.ds-c-button--disabled-inverse:visited {
-  @extend .ds-c-button--inverse;
-  @extend %disabled-inverse-button;
-}
-/* stylelint-enable scss/at-extend-no-missing-placeholder */
-
-/**
  *  Status variants
- */
+
+Default
+1. button bg
+2. button bg-hover
+3. button bg-active
+4. button text color
+5. button border color
+6. button border color-hover
+7. button border color-active
+8. button text color-hover
+9. button text color-active
+10. button bg-disabled
+11. buton text color-disabled
+12. button border color-disabled
+13. button text decoration
+*/
+
 $button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active,
-  success: $color-success $color-success-dark $color-success-darker,
-  danger: $color-error $color-error-dark $color-error-darkest,
+  button: $button-default-bg $button-default-bg--hover $button-default-bg--active
+  $button-default-text-color $button-default-border-color $button-default-border-color--hover
+  $button-default-border-color--active $button-default-text-color--hover
+  $button-default-text-color--active $button-default-bg--disabled
+  $button-default-text-color--disabled $button-default-border-color--disabled
+  $button-text-decoration-none,
+  button--primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active
+  $button-primary-text-color $button-primary-border-color $button-primary-border-color--hover
+  $button-primary-border-color--active $button-primary-text-color--hover
+  $button-primary-text-color--active $button-primary-bg--disabled
+  $button-primary-text-color--disabled $button-primary-border-color--disabled
+  $button-text-decoration-none,
+  button--secondary: $button-secondary-bg $button-secondary-bg--hover $button-secondary-bg--active
+  $button-secondary-text-color $button-secondary-border-color
+  $button-secondary-border-color--hover $button-secondary-border-color--active
+  $button-secondary-text-color--hover $button-secondary-text-color--active
+  $button-secondary-bg--disabled $button-secondary-text-color--disabled
+  $button-secondary-border-color--disabled $button-text-decoration-none,
+  button--tertiary: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active
+  $button-tertiary-text-color $button-tertiary-border-color $button-tertiary-border-color--hover
+  $button-tertiary-border-color--active $button-tertiary-text-color--hover
+  $button-tertiary-text-color--active $button-tertiary-bg--disabled
+  $button-tertiary-text-color--disabled $button-tertiary-border-color--disabled
+  $button-text-decoration-underline,
+  button--success: $color-success $color-success-dark $color-success-darker $color-white
+  $color-transparent $color-transparent $color-transparent $color-white $color-white
+  $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
+  button--danger: $color-error $color-error-dark $color-error-darkest $color-white
+  $color-transparent $color-transparent $color-transparent $color-white $color-white
+  $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
+  button--transparent: $button-transparent-bg $button-transparent-bg--hover
+  $button-transparent-bg--active $button-transparent-text-color $button-transparent-border-color
+  $button-transparent-border-color--hover $button-transparent-border-color--active
+  $button-transparent-text-color--hover $button-transparent-text-color--active
+  $button-transparent-bg--disabled $button-transparent-text-color--disabled
+  $button-transparent-border-color--disabled $button-text-decoration-underline,
+  button--inverse: $button-inverse-bg $button-inverse-bg--hover $button-inverse-bg--active
+  $button-inverse-text-color $button-inverse-border-color $button-inverse-border-color--hover
+  $button-inverse-border-color--active $button-inverse-text-color--hover
+  $button-inverse-text-color--active $button-inverse-bg--disabled
+  $button-inverse-text-color--disabled $button-inverse-border-color--disabled
+  $button-text-decoration-none,
 );
 
 @each $colors in map-keys($button-color-variants) {
   $color: map-get($button-color-variants, $colors);
 
-  .ds-c-button--#{$colors},
-  .ds-c-button--#{$colors}:visited {
+  .ds-c-#{$colors},
+  .ds-c-#{$colors}:visited {
     background-color: nth($color, 1);
-    border-color: transparent;
-    color: $color-white;
+    border-color: nth($color, 5);
+    color: nth($color, 4);
+    text-decoration: nth($color, 13);
 
     &:hover,
     &:focus,
@@ -250,19 +167,22 @@ $button-color-variants: (
     &.ds-c-button--hover,
     &.ds-c-button--focus,
     &.ds-c-button--active {
-      border-color: transparent;
-      color: $color-white;
+      border-color: nth($color, 5);
+      color: nth($color, 4);
     }
 
     &:hover,
     &.ds-c-button--hover {
       background-color: nth($color, 2);
+      border-color: nth($color, 6);
+      color: nth($color, 8);
     }
 
     @if $ds-include-focus-styles {
       &:focus,
       &.ds-c-button--focus {
         @include focus-styles;
+        background-color: nth($color, 2);
       }
     } @else {
       &:focus,
@@ -270,10 +190,11 @@ $button-color-variants: (
         background-color: nth($color, 2);
       }
     }
-
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
+      border-color: nth($color, 7);
+      color: nth($color, 9);
     }
     @if $ds-include-focus-styles {
       // Make sure active overrides focus styles
@@ -281,16 +202,23 @@ $button-color-variants: (
       &.ds-c-button--active:focus {
         background-color: nth($color, 3);
         box-shadow: none;
-        color: $color-white;
+        color: nth($color, 4);
       }
     }
 
     &:disabled,
     &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
+      background-color: nth($color, 10);
+      border-color: nth($color, 12);
+      color: nth($color, 11);
       pointer-events: none;
     }
+  }
+}
+
+.ds-c-button--inverse {
+  &.ds-c-button--transparent {
+    border: transparent;
+    text-decoration: $button-text-decoration-underline;
   }
 }
