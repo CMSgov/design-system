@@ -31,7 +31,7 @@ responsive features including horizontal scrolling and vertically stacked rows.
 
 @responsive
 
-@react-props Table.jsx
+@react-props Table.tsx
 
 Style guide: components.table.react
 */
@@ -41,7 +41,7 @@ Style guide: components.table.react
 
 `TableCaption` renders the `<caption>` element.
 
-@react-props TableCaption.jsx
+@react-props TableCaption.tsx
 
 Style guide: components.table.react-tablecaption
 */
@@ -51,7 +51,7 @@ Style guide: components.table.react-tablecaption
 
 `TableHead` renders the `<thead>` element and will typically contain `TableRow` elements to define table columns.
 
-@react-props TableHead.jsx
+@react-props TableHead.tsx
 
 Style guide: components.table.react-tablehead
 */
@@ -61,7 +61,7 @@ Style guide: components.table.react-tablehead
 
 `TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
 
-@react-props TableBody.jsx
+@react-props TableBody.tsx
 
 Style guide: components.table.react-tablebody
 */
@@ -71,7 +71,7 @@ Style guide: components.table.react-tablebody
 
 `TableRow` renders a `<tr>` element.
 
-@react-props TableRow.jsx
+@react-props TableRow.tsx
 
 Style guide: components.table.react-tablerow
 */
@@ -81,7 +81,7 @@ Style guide: components.table.react-tablerow
 
 `TableCell` dynamically renders a `<th>` or `<td>` element based on the parent component or user specified `component` prop. By default `TableCell` will automatically render a `<th>` element if the parent component is `TableHead`, otherwise it will render a `<td>` element.
 
-@react-props TableCell.jsx
+@react-props TableCell.tsx
 
 Style guide: components.table.react-tablecell
 */
