@@ -93,6 +93,7 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
+// Omit props that we override with values from the Alert
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
 export class Alert extends React.PureComponent<
