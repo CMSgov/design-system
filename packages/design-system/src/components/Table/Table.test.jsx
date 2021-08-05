@@ -61,13 +61,31 @@ describe('Table', function () {
     expect(table.hasClass('ds-c-table--striped')).toBe(true);
   });
 
-  it('applies responsive stacked table', () => {
-    const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
-    const table = wrapper.find('table');
+  it('applies default ContextProvider', () => {
+    const { wrapper } = render();
+    const context = wrapper.find('ContextProvider');
 
-    expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
+    expect(context.prop('value')).toMatchObject({ stackable: false, warningDisabled: false });
+  });
 
-    expect(wrapper).toMatchSnapshot();
+  describe('table responsive stacked table true', () => {
+    it('applies responsive stacked table', () => {
+      const { wrapper } = render({ stackable: true, stackableBreakpoint: 'lg' });
+      const table = wrapper.find('table');
+
+      expect(table.hasClass('ds-c-lg-table--stacked')).toBe(true);
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('applies responsive stacked table ContextProvider', () => {
+      const { wrapper } = render({ stackable: true, warningDisabled: true });
+      const context = wrapper.find('ContextProvider');
+
+      expect(context.prop('value')).toMatchObject({ stackable: true, warningDisabled: true });
+
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 
   it('applies scroll table', () => {
