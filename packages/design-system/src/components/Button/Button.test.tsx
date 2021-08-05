@@ -1,4 +1,4 @@
-import Button from './Button.jsx';
+import Button from './Button';
 import React from 'react';
 import { shallow } from 'enzyme';
 
