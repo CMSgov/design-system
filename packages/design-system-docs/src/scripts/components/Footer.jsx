@@ -41,7 +41,7 @@ function renderLinks(links) {
 
 const Footer = () => {
   return (
-    <footer className="ds-u-fill--gray-lightest">
+    <footer className="ds-u-fill--gray-lightest c-footer">
       <section className="ds-u-padding-y--4 ds-l-container">
         <h2 className="ds-h4">Help make the CMS Design System better</h2>
         <p className="ds-u-measure--wide">
