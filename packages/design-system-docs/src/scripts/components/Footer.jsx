@@ -41,7 +41,7 @@ function renderLinks(links) {
 
 const Footer = () => {
   return (
-    <footer className="ds-u-fill--gray-lightest c-footer">
+    <footer className="ds-u-fill--gray-lightest">
       <section className="ds-u-padding-y--4 ds-l-container">
         <h2 className="ds-h4">Help make the CMS Design System better</h2>
         <p className="ds-u-measure--wide">
@@ -106,7 +106,7 @@ const Footer = () => {
               <dd className="ds-u-font-size--small ds-u-margin-left--0">
                 <button
                   type="button"
-                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-c-button--inverse ds-u-padding--0 titlelink"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-c-button--inverse ds-u-padding--0 titlelink ds-u-border--0"
                   onClick={() => (window.location.href = '#')}
                   data-privacy-policy="modal-trigger-footer"
                 >
