@@ -28,19 +28,12 @@
 
   &:focus,
   &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: $color-primary-darker;
-      color: $color-primary-darker;
-    }
+    @include focus-styles;
   }
 
-  @if $ds-include-focus-styles {
-    // Removes inner outline on buttons in Firefox.
-    &::-moz-focus-inner {
-      border: 0;
-    }
+  // Removes inner outline on buttons in Firefox.
+  &::-moz-focus-inner {
+    border: 0;
   }
 
   &:active,
@@ -49,13 +42,11 @@
     color: $color-primary-darkest;
   }
 
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-white;
-      box-shadow: none;
-    }
+  // Make sure active overrides focus styles
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-white;
+    box-shadow: none;
   }
 
   &:disabled,
@@ -178,28 +169,27 @@ $button-color-variants: (
       color: nth($color, 8);
     }
 
-    @if $ds-include-focus-styles {
-      &:focus,
-      &.ds-c-button--focus {
-        @include focus-styles;
-        background-color: nth($color, 2);
-      }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 2);
-      }
-    }
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
       border-color: nth($color, 7);
       color: nth($color, 9);
     }
-    @if $ds-include-focus-styles {
+
+    &:focus,
+    &.ds-c-button--focus {
+      @include focus-styles;
+      background-color: nth($color, 1);
+      color: nth($color, 4);
+      &:hover,
+      &.ds-c-button--hover {
+        background-color: nth($color, 2);
+        border-color: nth($color, 6);
+        color: nth($color, 8);
+      }
       // Make sure active overrides focus styles
-      &:active:focus,
-      &.ds-c-button--active:focus {
+      &:active,
+      &.ds-c-button--active {
         background-color: nth($color, 3);
         box-shadow: none;
         color: nth($color, 4);
