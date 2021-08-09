@@ -146,6 +146,7 @@ Analytics Event Object
 
 Style guide: components.button.analytics
 */
+
 /*
 ---
 
@@ -224,14 +225,14 @@ setButtonSendsAnalytics(true);
 - Please check your application to ensure that no PII is included as part of the text of the button.
 - On applications where the page has `utag` loaded, the data goes to Tealium which allows it to route to Google Analytics or the currently approved data analytics tools.
 
-### Override  event tracking
+### Override event tracking
 
 - Pass changes via any of the [available analytics props](#components.button.analytics).
-The `analytics` prop for the button component can be used to override any information sent to google analytics.
+The `analyticsOnClick` prop for the button component can be used to override any information sent to google analytics.
 For example, if you wanted to send alternate text for a button (in the case it used PII or you needed to be more specific), you can do something like:
 ```
 <Button
-    analytics={{
+    analyticsOnClick={{
         text: '[redacted], go to the next page'
     }}
 >
@@ -239,6 +240,10 @@ For example, if you wanted to send alternate text for a button (in the case it u
 </Button>
 ```
 Any prop you do not pass will be defaulted by the button component.
+
+### Disable event tracking for Button instance
+There may be a time where button analytics are enabled for your entire project, but maybe a specific button should have analytics disabled.
+In this scenario, use the `disableAnalyticsOnClick` prop for the Button instance. This will disable analytics for only this Button instance.
 
 Style guide: components.button.guidance-analytics
 */

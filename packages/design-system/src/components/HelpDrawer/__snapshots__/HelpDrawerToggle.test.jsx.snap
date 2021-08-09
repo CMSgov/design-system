@@ -2,9 +2,10 @@
 
 exports[`HelpDrawerToggle renders a button 1`] = `
 <Button
-  analytics={Object {}}
+  analyticsOnClick={Object {}}
   className="ds-c-help-drawer__toggle"
   component="button"
+  disableAnalyticsOnClick={false}
   inputRef={[Function]}
   onClick={[Function]}
   type="button"

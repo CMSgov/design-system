@@ -135,7 +135,7 @@ describe('Button', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  describe('analytics', () => {
+  describe('analyticsOnClick', () => {
     const defaultAnalyticsValue = {
       event_name: 'button_engagement',
       text: buttonText,
@@ -250,6 +250,14 @@ describe('Button', () => {
       wrapper.find('a').simulate('keypress', { key: ' ' });
 
       expect(mockSendAnalyticsEvent).toHaveBeenCalled();
+    });
+
+    it('does not send analytics if `disableAnalyticsOnClick` is true', () => {
+      const wrapper = shallow(<Button disableAnalyticsOnClick>{buttonText}</Button>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(mockSendAnalyticsEvent).not.toBeCalled();
     });
   });
 });

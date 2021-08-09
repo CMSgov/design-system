@@ -31,13 +31,13 @@ export interface ButtonAnalyticsShape {
 
 export interface ButtonProps {
   /**
-   * Analytics events tracking is disabled by default.
-   * Use this prop to pass custom analytics data to google analytics. You may override some or all values.
+   * Analytics events tracking is disabled by default via feature flag.
+   * Use this prop to pass custom analytics data to google analytics for an onClick event. You may override some or all values.
    * If you choose not to use this prop, or for any value you do not explicitly pass in, defaults will be provided automatically.
    * When the button is clicked, an event is triggered, the object value is populated and sent to google analytics
    * if `window.utag` instance is loaded.
    */
-  analytics?: ButtonAnalyticsShape;
+  analyticsOnClick?: ButtonAnalyticsShape;
   /**
    * Label text or HTML
    */
@@ -53,6 +53,12 @@ export interface ButtonProps {
    */
   component?: ButtonComponent;
   disabled?: boolean;
+  /**
+   * Use this prop to disable sending analytics data for click action.
+   * This differs from the feature flag in that it can disable analytics for a specific instance of the Button component.
+   * Note: analytics is turned off by default via feature flag. Use this prop only if feature flag is on and you want to disable analytics for a singular instance of Button.
+   */
+  disableAnalyticsOnClick?: boolean;
   /**
    * When provided the root component will render as an `<a>` element
    * rather than `button`.
@@ -99,7 +105,8 @@ export default class Button extends React.PureComponent<
   static defaultProps = {
     type: 'button',
     component: 'button',
-    analytics: {},
+    analyticsOnClick: {},
+    disableAnalyticsOnClick: false,
   };
 
   constructor(props: ButtonProps) {
@@ -148,7 +155,8 @@ export default class Button extends React.PureComponent<
       onClick,
       size,
       variation,
-      analytics,
+      analyticsOnClick,
+      disableAnalyticsOnClick,
       ...props
     } = this.props;
     /* eslint-enable @typescript-eslint/no-unused-vars */
@@ -219,7 +227,7 @@ export default class Button extends React.PureComponent<
   }
 
   sendButtonAnalytics(): void {
-    const { analytics, children, href, id, type, variation } = this.props;
+    const { analyticsOnClick, children, href, id, type, variation } = this.props;
     const buttonStyle = variation || 'default';
     const text = typeof children === 'string' ? children : this.getTextFromNode();
 
@@ -236,19 +244,20 @@ export default class Button extends React.PureComponent<
     };
 
     sendAnalyticsEvent(
-      analytics as Record<string, unknown>,
+      analyticsOnClick as Record<string, unknown>,
       defaultAnalyticsData as AnalyticsEventProps
     );
   }
 
   handleClick(e: React.MouseEvent | React.KeyboardEvent): void {
-    if (!this.props.disabled) {
-      if (buttonSendsAnalytics()) {
+    const { disabled, disableAnalyticsOnClick, onClick } = this.props;
+    if (!disabled) {
+      if (buttonSendsAnalytics() && !disableAnalyticsOnClick) {
         this.sendButtonAnalytics();
       }
 
-      if (this.props.onClick) {
-        this.props.onClick(e);
+      if (onClick) {
+        onClick(e);
       }
     }
   }

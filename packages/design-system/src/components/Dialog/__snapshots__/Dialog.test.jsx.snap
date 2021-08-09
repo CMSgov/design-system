@@ -25,10 +25,11 @@ Object {
         role="banner"
       >
         <Button
-          analytics={Object {}}
+          analyticsOnClick={Object {}}
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
           component="button"
+          disableAnalyticsOnClick={false}
           type="button"
           variation="danger"
         >
@@ -217,10 +218,11 @@ exports[`Dialog renders react-aria-modal 1`] = `
                       Foo
                     </h1>
                     <Button
-                      analytics={Object {}}
+                      analyticsOnClick={Object {}}
                       aria-label="Close modal dialog"
                       className="ds-c-dialog__close"
                       component="button"
+                      disableAnalyticsOnClick={false}
                       onClick={[MockFunction]}
                       type="button"
                       variation="transparent"
@@ -285,10 +287,11 @@ Object {
         role="banner"
       >
         <Button
-          analytics={Object {}}
+          analyticsOnClick={Object {}}
           aria-label="Close modal dialog"
           className="ds-c-dialog__close"
           component="button"
+          disableAnalyticsOnClick={false}
           type="button"
           variation="transparent"
         >
