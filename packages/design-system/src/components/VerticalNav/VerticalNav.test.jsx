@@ -19,39 +19,67 @@ describe('VerticalNav', () => {
   it('renders list', () => {
     const data = render();
     const wrapper = data.wrapper;
+    const listEl = wrapper.find('ul');
 
-    expect(wrapper.is('ul')).toBe(true);
-    expect(wrapper.hasClass('ds-c-vertical-nav')).toBe(true);
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
-    expect(data.wrapper.hasClass('ds-u-display--none')).toBe(false);
+    expect(listEl.is('ul')).toBe(true);
+    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(true);
+    expect(listEl.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
+    expect(listEl.hasClass('ds-u-display--none')).toBe(false);
     expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
     expect(wrapper.find('VerticalNavItem').first().prop('onClick')).toBeUndefined();
   });
 
   it('adds additional class names', () => {
     const data = render({ className: 'foo' });
+    const listEl = data.wrapper.find('ul');
 
-    expect(data.wrapper.hasClass('ds-c-vertical-nav')).toBe(true);
-    expect(data.wrapper.hasClass('foo')).toBe(true);
+    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(true);
+    expect(listEl.hasClass('foo')).toBe(true);
+  });
+
+  describe('aria-label', () => {
+    it('has aria-label attribute if passed prop', () => {
+      const data = render({ ariaNavLabel: 'side menu' });
+      const wrapper = data.wrapper;
+
+      const navEl = wrapper.find('nav');
+      const ariaLabelAttr = navEl.prop('aria-label');
+
+      expect(ariaLabelAttr).toBeTruthy();
+      expect(ariaLabelAttr).toEqual('side menu');
+    });
+
+    it('does not have aria-label by default', () => {
+      const data = render();
+      const wrapper = data.wrapper;
+
+      const navEl = wrapper.find('nav');
+      const ariaLabelAttr = navEl.prop('aria-label');
+
+      expect(ariaLabelAttr).toBeFalsy();
+    });
   });
 
   it('has an id attribute', () => {
     const data = render({ id: 'foo' });
+    const listEl = data.wrapper.find('ul');
 
-    expect(data.wrapper.prop('id')).toBe(data.props.id);
+    expect(listEl.prop('id')).toBe(data.props.id);
   });
 
   it('is a subnav list', () => {
     const data = render({ nested: true });
+    const listEl = data.wrapper.find('ul');
 
-    expect(data.wrapper.hasClass('ds-c-vertical-nav')).toBe(false);
-    expect(data.wrapper.hasClass('ds-c-vertical-nav__subnav')).toBe(true);
+    expect(listEl.hasClass('ds-c-vertical-nav')).toBe(false);
+    expect(listEl.hasClass('ds-c-vertical-nav__subnav')).toBe(true);
   });
 
   it('is collapsed', () => {
     const data = render({ collapsed: true });
+    const listEl = data.wrapper.find('ul');
 
-    expect(data.wrapper.hasClass('ds-u-display--none')).toBe(true);
+    expect(listEl.hasClass('ds-u-display--none')).toBe(true);
   });
 
   it('passes onLinkClick to items', () => {
