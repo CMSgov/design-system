@@ -170,7 +170,7 @@ $buttons-map: (
     border-color-disabled: $color-gray-lighter,
   ),
   button--transparent: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-text-decoration-underline,
     bg-color: $button-transparent-bg,
     text-color: $button-transparent-text-color,
     border-color: $button-transparent-border-color,
@@ -259,6 +259,7 @@ $buttons-map: (
       border-color: map-get($map, border-color-disabled);
       color: map-get($map, text-color-disabled);
       pointer-events: none;
+      text-decoration: none;
     }
   }
 }
