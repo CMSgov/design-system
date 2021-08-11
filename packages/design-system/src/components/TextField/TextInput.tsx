@@ -3,7 +3,11 @@ import Mask from './Mask';
 import classNames from 'classnames';
 
 export type TextInputDefaultValue = string | number;
+export type TextInputMask = 'currency' | 'phone' | 'ssn' | 'zip';
+export type TextInputRows = number | string;
+export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
+export type TextInputErrorPlacement = 'top' | 'bottom';
 
 export interface TextInputProps {
   /**
@@ -25,7 +29,7 @@ export interface TextInputProps {
   /**
    * Location of the error message relative to the field input
    */
-  errorPlacement?: 'top' | 'bottom';
+  errorPlacement?: TextInputErrorPlacement;
   /**
    * Additional classes to be added to the field element
    */
@@ -43,7 +47,7 @@ export interface TextInputProps {
    * you expect to be entered. Depending on the mask, the
    * field's appearance and functionality may be affected.
    */
-  mask?: 'currency' | 'phone' | 'ssn' | 'zip';
+  mask?: TextInputMask;
   /**
    * Whether or not the text field is a multiline text field
    */
@@ -63,12 +67,12 @@ export interface TextInputProps {
    * Optionally specify the number of visible text lines for the field. Only
    * applicable if this is a multiline field.
    */
-  rows?: number | string;
+  rows?: TextInputRows;
   setRef?: (...args: any[]) => any;
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
-  size?: 'small' | 'medium';
+  size?: TextInputSize;
   /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    */
@@ -80,7 +84,7 @@ export interface TextInputProps {
   value?: TextInputValue;
 }
 
-export type OmitProps = 'size' | 'ref';
+type OmitProps = 'size' | 'ref';
 
 /**
  * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
