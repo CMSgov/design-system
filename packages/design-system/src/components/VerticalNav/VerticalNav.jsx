@@ -54,8 +54,8 @@ VerticalNav.defaultProps = {
 
 VerticalNav.propTypes = {
   /**
-   * An optional arial label for the nav element in this component.
-   * This prop is necessary is there is more than one nav element on a page.
+   * An optional arial label for the `<nav>` element in this component.
+   * This prop is necessary when there is more than one nav element on a page.
    */
   ariaNavLabel: PropTypes.string,
   /**

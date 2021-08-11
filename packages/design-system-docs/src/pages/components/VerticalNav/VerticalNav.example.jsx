@@ -16,7 +16,7 @@ Link.propTypes = { children: PropTypes.node };
 ReactDOM.render(
   <VerticalNav
     selectedId="team"
-    ariaNavLabel="menu"
+    ariaNavLabel="Primary"
     items={[
       {
         label: 'Parent link',
