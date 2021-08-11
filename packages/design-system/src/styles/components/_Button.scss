@@ -78,79 +78,136 @@
   padding: $spacer-half $spacer-1;
 }
 
-/**
- *  Status variants
-
-Default
-1. button bg
-2. button bg-hover
-3. button bg-active
-4. button text color
-5. button border color
-6. button border color-hover
-7. button border color-active
-8. button text color-hover
-9. button text color-active
-10. button bg-disabled
-11. buton text color-disabled
-12. button border color-disabled
-13. button text decoration
-*/
-
-$button-color-variants: (
-  button: $button-default-bg $button-default-bg--hover $button-default-bg--active
-  $button-default-text-color $button-default-border-color $button-default-border-color--hover
-  $button-default-border-color--active $button-default-text-color--hover
-  $button-default-text-color--active $button-default-bg--disabled
-  $button-default-text-color--disabled $button-default-border-color--disabled
-  $button-text-decoration-none,
-  button--primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active
-  $button-primary-text-color $button-primary-border-color $button-primary-border-color--hover
-  $button-primary-border-color--active $button-primary-text-color--hover
-  $button-primary-text-color--active $button-primary-bg--disabled
-  $button-primary-text-color--disabled $button-primary-border-color--disabled
-  $button-text-decoration-none,
-  button--secondary: $button-secondary-bg $button-secondary-bg--hover $button-secondary-bg--active
-  $button-secondary-text-color $button-secondary-border-color
-  $button-secondary-border-color--hover $button-secondary-border-color--active
-  $button-secondary-text-color--hover $button-secondary-text-color--active
-  $button-secondary-bg--disabled $button-secondary-text-color--disabled
-  $button-secondary-border-color--disabled $button-text-decoration-none,
-  button--tertiary: $button-tertiary-bg $button-tertiary-bg--hover $button-tertiary-bg--active
-  $button-tertiary-text-color $button-tertiary-border-color $button-tertiary-border-color--hover
-  $button-tertiary-border-color--active $button-tertiary-text-color--hover
-  $button-tertiary-text-color--active $button-tertiary-bg--disabled
-  $button-tertiary-text-color--disabled $button-tertiary-border-color--disabled
-  $button-text-decoration-underline,
-  button--success: $color-success $color-success-dark $color-success-darker $color-white
-  $color-transparent $color-transparent $color-transparent $color-white $color-white
-  $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
-  button--danger: $color-error $color-error-dark $color-error-darkest $color-white
-  $color-transparent $color-transparent $color-transparent $color-white $color-white
-  $color-gray-lighter $color-gray-dark $color-gray-lighter $button-text-decoration-none,
-  button--transparent: $button-transparent-bg $button-transparent-bg--hover
-  $button-transparent-bg--active $button-transparent-text-color $button-transparent-border-color
-  $button-transparent-border-color--hover $button-transparent-border-color--active
-  $button-transparent-text-color--hover $button-transparent-text-color--active
-  $button-transparent-bg--disabled $button-transparent-text-color--disabled
-  $button-transparent-border-color--disabled $button-text-decoration-underline,
-  button--inverse: $button-inverse-bg $button-inverse-bg--hover $button-inverse-bg--active
-  $button-inverse-text-color $button-inverse-border-color $button-inverse-border-color--hover
-  $button-inverse-border-color--active $button-inverse-text-color--hover
-  $button-inverse-text-color--active $button-inverse-bg--disabled
-  $button-inverse-text-color--disabled $button-inverse-border-color--disabled
-  $button-text-decoration-none,
+$buttons-map: (
+  button: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-default-bg,
+    text-color: $button-default-text-color,
+    border-color: $button-default-border-color,
+    bg-color-hover: $button-default-bg--hover,
+    text-color-hover: $button-default-text-color--hover,
+    border-color-hover: $button-default-border-color--hover,
+    bg-color-active: $button-default-bg--active,
+    text-color-active: $button-default-text-color--active,
+    border-color-active: $button-default-border-color--active,
+    bg-color-disabled: $button-default-bg--disabled,
+    text-color-disabled: $button-default-text-color--disabled,
+    border-color-disabled: $button-default-border-color--disabled,
+  ),
+  button--primary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-primary-bg,
+    text-color: $button-primary-text-color,
+    border-color: $button-primary-border-color,
+    bg-color-hover: $button-primary-bg--hover,
+    text-color-hover: $button-primary-text-color--hover,
+    border-color-hover: $button-primary-border-color--hover,
+    bg-color-active: $button-primary-bg--active,
+    text-color-active: $button-primary-text-color--active,
+    border-color-active: $button-primary-border-color--active,
+    bg-color-disabled: $button-primary-bg--disabled,
+    text-color-disabled: $button-primary-text-color--disabled,
+    border-color-disabled: $button-primary-border-color--disabled,
+  ),
+  button--secondary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-secondary-bg,
+    text-color: $button-secondary-text-color,
+    border-color: $button-secondary-border-color,
+    bg-color-hover: $button-secondary-bg--hover,
+    text-color-hover: $button-secondary-text-color--hover,
+    border-color-hover: $button-secondary-border-color--hover,
+    bg-color-active: $button-secondary-bg--active,
+    text-color-active: $button-secondary-text-color--active,
+    border-color-active: $button-secondary-border-color--active,
+    bg-color-disabled: $button-secondary-bg--disabled,
+    text-color-disabled: $button-secondary-text-color--disabled,
+    border-color-disabled: $button-secondary-border-color--disabled,
+  ),
+  button--tertiary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-tertiary-bg,
+    text-color: $button-tertiary-text-color,
+    border-color: $button-tertiary-border-color,
+    bg-color-hover: $button-tertiary-bg--hover,
+    text-color-hover: $button-tertiary-text-color--hover,
+    border-color-hover: $button-tertiary-border-color--hover,
+    bg-color-active: $button-tertiary-bg--active,
+    text-color-active: $button-tertiary-text-color--active,
+    border-color-active: $button-tertiary-border-color--active,
+    bg-color-disabled: $button-tertiary-bg--disabled,
+    text-color-disabled: $button-tertiary-text-color--disabled,
+    border-color-disabled: $button-tertiary-border-color--disabled,
+  ),
+  button--success: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $color-success,
+    text-color: $color-white,
+    border-color: $color-transparent,
+    bg-color-hover: $color-success-dark,
+    text-color-hover: $color-white,
+    border-color-hover: $color-transparent,
+    bg-color-active: $color-success-darker,
+    text-color-active: $color-white,
+    border-color-active: $color-transparent,
+    bg-color-disabled: $color-gray-lighter,
+    text-color-disabled: $color-gray-dark,
+    border-color-disabled: $color-gray-lighter,
+  ),
+  button--danger: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $color-error,
+    text-color: $color-white,
+    border-color: $color-transparent,
+    bg-color-hover: $color-error-dark,
+    text-color-hover: $color-white,
+    border-color-hover: $color-transparent,
+    bg-color-active: $color-error-darker,
+    text-color-active: $color-white,
+    border-color-active: $color-transparent,
+    bg-color-disabled: $color-gray-lighter,
+    text-color-disabled: $color-gray-dark,
+    border-color-disabled: $color-gray-lighter,
+  ),
+  button--transparent: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-transparent-bg,
+    text-color: $button-transparent-text-color,
+    border-color: $button-transparent-border-color,
+    bg-color-hover: $button-transparent-bg--hover,
+    text-color-hover: $button-transparent-text-color--hover,
+    border-color-hover: $button-transparent-border-color--hover,
+    bg-color-active: $button-transparent-bg--active,
+    text-color-active: $button-transparent-text-color--active,
+    border-color-active: $button-transparent-border-color--active,
+    bg-color-disabled: $button-transparent-bg--disabled,
+    text-color-disabled: $button-transparent-text-color--disabled,
+    border-color-disabled: $button-transparent-border-color--disabled,
+  ),
+  button--inverse: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-inverse-bg,
+    text-color: $button-inverse-text-color,
+    border-color: $button-inverse-border-color,
+    bg-color-hover: $button-inverse-bg--hover,
+    text-color-hover: $button-inverse-text-color--hover,
+    border-color-hover: $button-inverse-border-color--hover,
+    bg-color-active: $button-inverse-bg--active,
+    text-color-active: $button-inverse-text-color--active,
+    border-color-active: $button-inverse-border-color--active,
+    bg-color-disabled: $button-inverse-bg--disabled,
+    text-color-disabled: $button-inverse-text-color--disabled,
+    border-color-disabled: $button-inverse-border-color--disabled,
+  ),
 );
 
-@each $colors in map-keys($button-color-variants) {
-  $color: map-get($button-color-variants, $colors);
-
-  .ds-c-#{$colors},
-  .ds-c-#{$colors}:visited {
-    background-color: nth($color, 1);
-    border-color: nth($color, 5);
-    color: nth($color, 4);
-    text-decoration: nth($color, 13);
+@each $label, $map in $buttons-map {
+  .ds-c-#{$label},
+  .ds-c-#{$label}:visited {
+    background-color: map-get($map, bg-color);
+    border-color: map-get($map, border-color);
+    color: map-get($map, text-color);
+    text-decoration: map-get($map, text-decoration);
 
     &:hover,
     &:focus,
@@ -158,49 +215,49 @@ $button-color-variants: (
     &.ds-c-button--hover,
     &.ds-c-button--focus,
     &.ds-c-button--active {
-      border-color: nth($color, 5);
-      color: nth($color, 4);
+      border-color: map-get($map, border-color);
+      color: map-get($map, text-color);
     }
 
     &:hover,
     &.ds-c-button--hover {
-      background-color: nth($color, 2);
-      border-color: nth($color, 6);
-      color: nth($color, 8);
+      background-color: map-get($map, bg-color-hover);
+      border-color: map-get($map, border-color-hover);
+      color: map-get($map, text-color-hover);
     }
 
     &:active,
     &.ds-c-button--active {
-      background-color: nth($color, 3);
-      border-color: nth($color, 7);
-      color: nth($color, 9);
+      background-color: map-get($map, bg-color-active);
+      border-color: map-get($map, border-color-active);
+      color: map-get($map, text-color-active);
     }
 
     &:focus,
     &.ds-c-button--focus {
       @include focus-styles;
-      background-color: nth($color, 1);
-      color: nth($color, 4);
+      background-color: map-get($map, bg-color);
+      color: map-get($map, text-color);
       &:hover,
       &.ds-c-button--hover {
-        background-color: nth($color, 2);
-        border-color: nth($color, 6);
-        color: nth($color, 8);
+        background-color: map-get($map, bg-color-hover);
+        border-color: map-get($map, border-color-hover);
+        color: map-get($map, text-color-hover);
       }
       // Make sure active overrides focus styles
       &:active,
       &.ds-c-button--active {
-        background-color: nth($color, 3);
+        background-color: map-get($map, bg-color-active);
         box-shadow: none;
-        color: nth($color, 4);
+        color: map-get($map, text-color-active);
       }
     }
 
     &:disabled,
     &.ds-c-button--disabled {
-      background-color: nth($color, 10);
-      border-color: nth($color, 12);
-      color: nth($color, 11);
+      background-color: map-get($map, bg-color-disabled);
+      border-color: map-get($map, border-color-disabled);
+      color: map-get($map, text-color-disabled);
       pointer-events: none;
     }
   }
