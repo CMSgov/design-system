@@ -118,34 +118,34 @@ $button-tertiary-border-color--disabled: transparent !default;
 
 // Inverse button
 $button-inverse-text-color: $color-white !default;
-$button-inverse-bg: $color-primary-darkest !default;
+$button-inverse-bg: transparent !default;
 $button-inverse-border-color: $color-white !default;
 // hover
 $button-inverse-text-color--hover: $color-gray-lightest !default;
-$button-inverse-bg--hover: $color-primary-darkest !default;
+$button-inverse-bg--hover: transparent !default;
 $button-inverse-border-color--hover: $color-gray-lightest !default;
 // active
 $button-inverse-text-color--active: $color-gray-lighter !default;
-$button-inverse-bg--active: $color-primary-darkest !default;
+$button-inverse-bg--active: transparent !default;
 $button-inverse-border-color--active: $color-gray-lighter !default;
 // disabled
 $button-inverse-text-color--disabled: $color-gray-lighter !default;
-$button-inverse-bg--disabled: $color-primary-darkest !default;
+$button-inverse-bg--disabled: transparent !default;
 $button-inverse-border-color--disabled: $color-gray-lighter !default;
 
 // Transparent button
 $button-transparent-text-color: $color-primary !default;
-$button-transparent-bg: $color-white !default;
+$button-transparent-bg: transparent !default;
 $button-transparent-border-color: transparent !default;
 // hover
 $button-transparent-text-color--hover: $color-primary-darker !default;
-$button-transparent-bg--hover: $color-white !default;
+$button-transparent-bg--hover: transparent !default;
 $button-transparent-border-color--hover: transparent !default;
 // active
 $button-transparent-text-color--active: $color-primary-darkest !default;
-$button-transparent-bg--active: $color-white !default;
+$button-transparent-bg--active: transparent !default;
 $button-transparent-border-color--active: transparent !default;
 // disabled
 $button-transparent-text-color--disabled: $color-gray-lighter !default;
-$button-transparent-bg--disabled: $color-white !default;
+$button-transparent-bg--disabled: transparent !default;
 $button-transparent-border-color--disabled: transparent !default;
