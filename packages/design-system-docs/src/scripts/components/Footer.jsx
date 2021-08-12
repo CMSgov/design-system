@@ -106,7 +106,7 @@ const Footer = () => {
               <dd className="ds-u-font-size--small ds-u-margin-left--0">
                 <button
                   type="button"
-                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-c-button--inverse ds-u-padding--0 titlelink"
+                  className="ds-c-button ds-c-button--small ds-c-button--transparent ds-c-button--inverse ds-u-padding--0 titlelink ds-u-border--0"
                   onClick={() => (window.location.href = '#')}
                   data-privacy-policy="modal-trigger-footer"
                 >

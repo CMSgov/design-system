@@ -26,7 +26,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"
-      aria-controls={null}
+      aria-controls="autocomplete_owned_listbox_43"
       aria-expanded={false}
       aria-invalid={false}
       aria-labelledby={null}
