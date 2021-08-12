@@ -149,3 +149,20 @@ $button-transparent-border-color--active: transparent !default;
 $button-transparent-text-color--disabled: $color-gray-lighter !default;
 $button-transparent-bg--disabled: transparent !default;
 $button-transparent-border-color--disabled: transparent !default;
+
+// Inverse Primary button
+$button-primary-inverse-text-color: $color-white !default;
+$button-primary-inverse-bg: $color-primary !default;
+$button-primary-inverse-border-color: transparent !default;
+// hover
+$button-primary-inverse-text-color--hover: $color-white !default;
+$button-primary-inverse-bg--hover: $color-primary-darker !default;
+$button-primary-inverse-border-color--hover: transparent !default;
+// active
+$button-primary-inverse-text-color--active: $color-white !default;
+$button-primary-inverse-bg--active: $color-primary-darkest !default;
+$button-primary-inverse-border-color--active: transparent !default;
+// disabled
+$button-primary-inverse-text-color--disabled: $color-gray-dark !default;
+$button-primary-inverse-bg--disabled: $color-gray-lighter !default;
+$button-primary-inverse-border-color--disabled: $color-gray-lighter !default;

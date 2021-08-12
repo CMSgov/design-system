@@ -199,6 +199,21 @@ $buttons-map: (
     text-color-disabled: $button-inverse-text-color--disabled,
     border-color-disabled: $button-inverse-border-color--disabled,
   ),
+  'button--primary.ds-c-button--inverse': (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-primary-inverse-bg,
+    text-color: $button-primary-inverse-text-color,
+    border-color: $button-primary-inverse-border-color,
+    bg-color-hover: $button-primary-inverse-bg--hover,
+    text-color-hover: $button-primary-inverse-text-color--hover,
+    border-color-hover: $button-primary-inverse-border-color--hover,
+    bg-color-active: $button-primary-inverse-bg--active,
+    text-color-active: $button-primary-inverse-text-color--active,
+    border-color-active: $button-primary-inverse-border-color--active,
+    bg-color-disabled: $button-primary-inverse-bg--disabled,
+    text-color-disabled: $button-primary-inverse-text-color--disabled,
+    border-color-disabled: $button-primary-inverse-border-color--disabled,
+  ),
 );
 
 @each $label, $map in $buttons-map {
@@ -208,16 +223,6 @@ $buttons-map: (
     border-color: map-get($map, border-color);
     color: map-get($map, text-color);
     text-decoration: map-get($map, text-decoration);
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.ds-c-button--hover,
-    &.ds-c-button--focus,
-    &.ds-c-button--active {
-      border-color: map-get($map, border-color);
-      color: map-get($map, text-color);
-    }
 
     &:hover,
     &.ds-c-button--hover {
