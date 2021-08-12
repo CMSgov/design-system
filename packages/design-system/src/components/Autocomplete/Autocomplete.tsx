@@ -230,7 +230,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
-          'aria-controls': isOpen ? this.listboxId : null,
+          'aria-controls': this.listboxId,
           'aria-expanded': isOpen,
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
