@@ -10,12 +10,13 @@ $pagination-page-count: $color-gray;
 
 .ds-c-pagination {
   ol {
+    display: inline;
     margin: 0;
     padding: 0;
   }
   li {
-    list-style: none;
     display: inline-block;
+    list-style: none;
   }
   .ds-c-button {
     color: $pagination-nav-link-color;
