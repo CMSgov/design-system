@@ -8,16 +8,14 @@
 .ds-c-button,
 .ds-c-button:visited {
   appearance: none;
-  background-color: $color-white;
   border: $button-border-width solid $color-primary;
   border-radius: $border-radius;
-  color: $color-primary;
   cursor: pointer;
   display: inline-block;
   font-family: $font-sans;
   font-size: $base-font-size;
-  font-weight: $font-bold;
-  line-height: $input-line-height;
+  font-weight: $button-font-weight;
+  line-height: $button-line-height;
   padding: $spacer-1 $spacer-3;
   text-align: center;
   text-decoration: none;
@@ -30,19 +28,12 @@
 
   &:focus,
   &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: $color-primary-darker;
-      color: $color-primary-darker;
-    }
+    @include focus-styles;
   }
 
-  @if $ds-include-focus-styles {
-    // Removes inner outline on buttons in Firefox.
-    &::-moz-focus-inner {
-      border: 0;
-    }
+  // Removes inner outline on buttons in Firefox.
+  &::-moz-focus-inner {
+    border: 0;
   }
 
   &:active,
@@ -51,13 +42,11 @@
     color: $color-primary-darkest;
   }
 
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-white;
-      box-shadow: none;
-    }
+  // Make sure active overrides focus styles
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-white;
+    box-shadow: none;
   }
 
   &:disabled,
@@ -89,209 +78,200 @@
   padding: $spacer-half $spacer-1;
 }
 
-/**
- *  Transparent variant (button styled like a link)
- */
-.ds-c-button--transparent,
-.ds-c-button--transparent:visited,
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  background-color: transparent;
-  border-color: transparent;
-  text-decoration: underline;
-
-  &:focus,
-  &.ds-c-button--focus {
-    border-color: transparent;
-  }
-
-  &:hover,
-  &:active,
-  &.ds-c-button--hover,
-  &.ds-c-button--active {
-    border-color: transparent;
-  }
-
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      color: $color-primary-darkest;
-      text-decoration: underline;
-    }
-  }
-
-  &:disabled,
-  &.ds-c-button--disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-    text-decoration: none;
-  }
-}
-
-/**
- *  Inverse buttons (mainly affects default and transparent buttons)
- */
-.ds-c-button--inverse,
-.ds-c-button--inverse:visited {
-  background-color: $color-background-inverse;
-  border-color: $border-color-inverse;
-  color: $color-base-inverse;
-
-  &:hover,
-  &.ds-c-button--hover {
-    border-color: rgba($border-color-inverse, 0.8);
-    color: rgba($color-base-inverse, 0.8);
-  }
-
-  &:focus,
-  &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: rgba($border-color-inverse, 0.8);
-      color: rgba($color-base-inverse, 0.8);
-    }
-  }
-
-  &:active,
-  &.ds-c-button--active {
-    border-color: rgba($border-color-inverse, 0.6);
-    color: rgba($color-base-inverse, 0.6);
-  }
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-background-inverse;
-      color: rgba($color-base-inverse, 0.6);
-    }
-  }
-}
-
-/* stylelint-disable scss/at-extend-no-missing-placeholder */
-%transparent-inverse-button {
-  background-color: transparent;
-  border-color: transparent;
-
-  // Default inverse focus styles are overridden above
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-button--focus {
-      @include focus-styles;
-    }
-  }
-}
-
-.ds-c-button--inverse.ds-c-button--transparent,
-.ds-c-button--inverse.ds-c-button--transparent:visited {
-  @extend %transparent-inverse-button;
-  &:disabled {
-    background-color: $color-gray-lighter;
-    border-color: transparent;
-    color: $color-gray-dark;
-  }
-}
-
-/**
- *  Not recommended usage
- *  Equivalent to ".ds-c-button--inverse.ds-c-button--transparent"
- */
-.ds-c-button--transparent-inverse,
-.ds-c-button--transparent-inverse:visited {
-  @extend .ds-c-button--inverse;
-  @extend %transparent-inverse-button;
-}
-
-%disabled-inverse-button {
-  background-color: $color-background-inverse;
-  border-color: $color-gray-lighter;
-  color: $color-gray-lighter;
-  pointer-events: none;
-}
-
-.ds-c-button--inverse:disabled,
-.ds-c-button--inverse.ds-c-button--disabled {
-  @extend %disabled-inverse-button;
-}
-
-/**
- *  Not recommended usage
- *  Equivalent to ".ds-c-button--inverse.ds-c-button--disabled"
- */
-.ds-c-button--disabled-inverse,
-.ds-c-button--disabled-inverse:visited {
-  @extend .ds-c-button--inverse;
-  @extend %disabled-inverse-button;
-}
-/* stylelint-enable scss/at-extend-no-missing-placeholder */
-
-/**
- *  Status variants
- */
-$button-color-variants: (
-  primary: $button-primary-bg $button-primary-bg--hover $button-primary-bg--active,
-  success: $color-success $color-success-dark $color-success-darker,
-  danger: $color-error $color-error-dark $color-error-darkest,
+$buttons-map: (
+  button: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-default-bg,
+    text-color: $button-default-text-color,
+    border-color: $button-default-border-color,
+    bg-color-hover: $button-default-bg--hover,
+    text-color-hover: $button-default-text-color--hover,
+    border-color-hover: $button-default-border-color--hover,
+    bg-color-active: $button-default-bg--active,
+    text-color-active: $button-default-text-color--active,
+    border-color-active: $button-default-border-color--active,
+    bg-color-disabled: $button-default-bg--disabled,
+    text-color-disabled: $button-default-text-color--disabled,
+    border-color-disabled: $button-default-border-color--disabled,
+  ),
+  button--primary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-primary-bg,
+    text-color: $button-primary-text-color,
+    border-color: $button-primary-border-color,
+    bg-color-hover: $button-primary-bg--hover,
+    text-color-hover: $button-primary-text-color--hover,
+    border-color-hover: $button-primary-border-color--hover,
+    bg-color-active: $button-primary-bg--active,
+    text-color-active: $button-primary-text-color--active,
+    border-color-active: $button-primary-border-color--active,
+    bg-color-disabled: $button-primary-bg--disabled,
+    text-color-disabled: $button-primary-text-color--disabled,
+    border-color-disabled: $button-primary-border-color--disabled,
+  ),
+  button--secondary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-secondary-bg,
+    text-color: $button-secondary-text-color,
+    border-color: $button-secondary-border-color,
+    bg-color-hover: $button-secondary-bg--hover,
+    text-color-hover: $button-secondary-text-color--hover,
+    border-color-hover: $button-secondary-border-color--hover,
+    bg-color-active: $button-secondary-bg--active,
+    text-color-active: $button-secondary-text-color--active,
+    border-color-active: $button-secondary-border-color--active,
+    bg-color-disabled: $button-secondary-bg--disabled,
+    text-color-disabled: $button-secondary-text-color--disabled,
+    border-color-disabled: $button-secondary-border-color--disabled,
+  ),
+  button--tertiary: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-tertiary-bg,
+    text-color: $button-tertiary-text-color,
+    border-color: $button-tertiary-border-color,
+    bg-color-hover: $button-tertiary-bg--hover,
+    text-color-hover: $button-tertiary-text-color--hover,
+    border-color-hover: $button-tertiary-border-color--hover,
+    bg-color-active: $button-tertiary-bg--active,
+    text-color-active: $button-tertiary-text-color--active,
+    border-color-active: $button-tertiary-border-color--active,
+    bg-color-disabled: $button-tertiary-bg--disabled,
+    text-color-disabled: $button-tertiary-text-color--disabled,
+    border-color-disabled: $button-tertiary-border-color--disabled,
+  ),
+  button--success: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $color-success,
+    text-color: $color-white,
+    border-color: $color-transparent,
+    bg-color-hover: $color-success-dark,
+    text-color-hover: $color-white,
+    border-color-hover: $color-transparent,
+    bg-color-active: $color-success-darker,
+    text-color-active: $color-white,
+    border-color-active: $color-transparent,
+    bg-color-disabled: $color-gray-lighter,
+    text-color-disabled: $color-gray-dark,
+    border-color-disabled: $color-gray-lighter,
+  ),
+  button--danger: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $color-error,
+    text-color: $color-white,
+    border-color: $color-transparent,
+    bg-color-hover: $color-error-dark,
+    text-color-hover: $color-white,
+    border-color-hover: $color-transparent,
+    bg-color-active: $color-error-darker,
+    text-color-active: $color-white,
+    border-color-active: $color-transparent,
+    bg-color-disabled: $color-gray-lighter,
+    text-color-disabled: $color-gray-dark,
+    border-color-disabled: $color-gray-lighter,
+  ),
+  button--transparent: (
+    text-decoration: $button-text-decoration-underline,
+    bg-color: $button-transparent-bg,
+    text-color: $button-transparent-text-color,
+    border-color: $button-transparent-border-color,
+    bg-color-hover: $button-transparent-bg--hover,
+    text-color-hover: $button-transparent-text-color--hover,
+    border-color-hover: $button-transparent-border-color--hover,
+    bg-color-active: $button-transparent-bg--active,
+    text-color-active: $button-transparent-text-color--active,
+    border-color-active: $button-transparent-border-color--active,
+    bg-color-disabled: $button-transparent-bg--disabled,
+    text-color-disabled: $button-transparent-text-color--disabled,
+    border-color-disabled: $button-transparent-border-color--disabled,
+  ),
+  button--inverse: (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-inverse-bg,
+    text-color: $button-inverse-text-color,
+    border-color: $button-inverse-border-color,
+    bg-color-hover: $button-inverse-bg--hover,
+    text-color-hover: $button-inverse-text-color--hover,
+    border-color-hover: $button-inverse-border-color--hover,
+    bg-color-active: $button-inverse-bg--active,
+    text-color-active: $button-inverse-text-color--active,
+    border-color-active: $button-inverse-border-color--active,
+    bg-color-disabled: $button-inverse-bg--disabled,
+    text-color-disabled: $button-inverse-text-color--disabled,
+    border-color-disabled: $button-inverse-border-color--disabled,
+  ),
+  'button--primary.ds-c-button--inverse': (
+    text-decoration: $button-text-decoration-none,
+    bg-color: $button-primary-inverse-bg,
+    text-color: $button-primary-inverse-text-color,
+    border-color: $button-primary-inverse-border-color,
+    bg-color-hover: $button-primary-inverse-bg--hover,
+    text-color-hover: $button-primary-inverse-text-color--hover,
+    border-color-hover: $button-primary-inverse-border-color--hover,
+    bg-color-active: $button-primary-inverse-bg--active,
+    text-color-active: $button-primary-inverse-text-color--active,
+    border-color-active: $button-primary-inverse-border-color--active,
+    bg-color-disabled: $button-primary-inverse-bg--disabled,
+    text-color-disabled: $button-primary-inverse-text-color--disabled,
+    border-color-disabled: $button-primary-inverse-border-color--disabled,
+  ),
 );
 
-@each $colors in map-keys($button-color-variants) {
-  $color: map-get($button-color-variants, $colors);
-
-  .ds-c-button--#{$colors},
-  .ds-c-button--#{$colors}:visited {
-    background-color: nth($color, 1);
-    border-color: transparent;
-    color: $color-white;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.ds-c-button--hover,
-    &.ds-c-button--focus,
-    &.ds-c-button--active {
-      border-color: transparent;
-      color: $color-white;
-    }
+@each $label, $map in $buttons-map {
+  .ds-c-#{$label},
+  .ds-c-#{$label}:visited {
+    background-color: map-get($map, bg-color);
+    border-color: map-get($map, border-color);
+    color: map-get($map, text-color);
+    text-decoration: map-get($map, text-decoration);
 
     &:hover,
     &.ds-c-button--hover {
-      background-color: nth($color, 2);
-    }
-
-    @if $ds-include-focus-styles {
-      &:focus,
-      &.ds-c-button--focus {
-        @include focus-styles;
-      }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 2);
-      }
+      background-color: map-get($map, bg-color-hover);
+      border-color: map-get($map, border-color-hover);
+      color: map-get($map, text-color-hover);
     }
 
     &:active,
     &.ds-c-button--active {
-      background-color: nth($color, 3);
+      background-color: map-get($map, bg-color-active);
+      border-color: map-get($map, border-color-active);
+      color: map-get($map, text-color-active);
     }
-    @if $ds-include-focus-styles {
+
+    &:focus,
+    &.ds-c-button--focus {
+      @include focus-styles;
+      background-color: map-get($map, bg-color);
+      color: map-get($map, text-color);
+      &:hover,
+      &.ds-c-button--hover {
+        background-color: map-get($map, bg-color-hover);
+        border-color: map-get($map, border-color-hover);
+        color: map-get($map, text-color-hover);
+      }
       // Make sure active overrides focus styles
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        background-color: nth($color, 3);
+      &:active,
+      &.ds-c-button--active {
+        background-color: map-get($map, bg-color-active);
         box-shadow: none;
-        color: $color-white;
+        color: map-get($map, text-color-active);
       }
     }
 
     &:disabled,
     &.ds-c-button--disabled {
-      background-color: $color-gray-lighter;
-      border-color: transparent;
-      color: $color-gray-dark;
+      background-color: map-get($map, bg-color-disabled);
+      border-color: map-get($map, border-color-disabled);
+      color: map-get($map, text-color-disabled);
       pointer-events: none;
+      text-decoration: none;
     }
+  }
+}
+
+.ds-c-button--inverse {
+  &.ds-c-button--transparent {
+    border: transparent;
+    text-decoration: $button-text-decoration-underline;
   }
 }
