@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <div className="example--wrapper">
-    <Pagination currentPage={1} totalPages={3} />
+    <Pagination currentPage={1} totalPages={3} customUrl="http://www.example.com" />
     <Pagination currentPage={2} totalPages={5} />
     <Pagination currentPage={3} totalPages={5} />
     <Pagination currentPage={4} totalPages={5} />

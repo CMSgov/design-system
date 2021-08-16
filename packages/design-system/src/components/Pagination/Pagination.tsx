@@ -40,7 +40,7 @@ function paginationBuilder(currentPage, totalPages) {
   return range;
 }
 
-export default function Pagination({compact, url = 'www.example.com', currentPage, totalPages}): React.ReactNode {
+export default function Pagination({compact, customUrl, currentPage, totalPages}): React.ReactNode {
   const overflow = 1;
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
@@ -52,6 +52,7 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
      */
     pages.push(
       <Page
+        customUrl={customUrl}
         key="page-1"
         index={1}
         currentPage={currentPage}
@@ -73,6 +74,7 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
   pageRange.map(page => {
     pages.push(
       <Page
+        customUrl={customUrl}
         key={`page-${page}`}
         index={page}
         currentPage={currentPage}
@@ -92,6 +94,7 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
 
     pages.push(
       <Page
+        customUrl={customUrl}
         key={`page-${totalPages}`}
         index={totalPages}
         currentPage={currentPage}
@@ -99,7 +102,6 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
     )
   }
 
-  // TODO: Add href logic
   // TODO: Add onClick logic
   // TODO: Test a11y
 
@@ -111,7 +113,7 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
     >
       <a 
         className="ds-c-button ds-c-button--transparent nav" 
-        href={url} 
+        href={customUrl} 
         aria-label="Previous page"
       >
         <span className="ds-c-pagination__nav--previous-img-container">
@@ -145,7 +147,7 @@ export default function Pagination({compact, url = 'www.example.com', currentPag
       }
       <a 
         className="ds-c-button ds-c-button--transparent" 
-        href={url} 
+        href="test" 
         aria-label="Next page"
       >
         Next
