@@ -46,7 +46,7 @@ export interface ButtonProps {
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
-  variation?: 'primary' | 'danger' | 'success' | 'transparent';
+  variation?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success' | 'transparent';
 }
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type';
