@@ -1,6 +1,20 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export type ButtonComponent = React.ReactElement<any> | any | ((...args: any[]) => any);
+export type ButtonSize = 'small' | 'big';
+export type ButtonType = 'button' | 'submit';
+/**
+ * A string corresponding to the button-component variation classes.
+ * The danger variation is deprecated and will be removed in a future release.
+ */
+export type ButtonVariation =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'danger'
+  | 'success'
+  | 'transparent';
 export interface ButtonProps {
   /**
    * Label text or HTML
@@ -15,7 +29,7 @@ export interface ButtonProps {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
+  component?: ButtonComponent;
   disabled?: boolean;
   /**
    * When provided the root component will render as an `<a>` element
@@ -37,22 +51,24 @@ export interface ButtonProps {
    * Not called when the button is disabled.
    */
   onClick?: (...args: any[]) => any;
-  size?: 'small' | 'big';
+  size?: ButtonSize;
   /**
    * Button [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) attribute
    */
-  type?: 'button' | 'submit';
+  type?: ButtonType;
   /**
    * A string corresponding to the button-component variation classes.
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
-  variation?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success' | 'transparent';
+  variation?: ButtonVariation;
 }
 
-type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type';
+type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 
 export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button' | 'a'>, OmitProps> & ButtonProps
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> &
+    Omit<React.ComponentPropsWithRef<'a'>, OmitProps> &
+    ButtonProps
 > {
   static defaultProps = {
     type: 'button',
