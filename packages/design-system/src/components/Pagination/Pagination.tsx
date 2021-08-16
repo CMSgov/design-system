@@ -9,19 +9,24 @@ function paginationBuilder(currentPage, totalPages) {
   let start = currentPage - overflow;
   let end = currentPage + overflow;
 
+  /**
+   * If `currentPage` = 1, only add first three pages to `range[]`
+   */
   if (start < 1) {
     start = 1;
-    end = start + overflow * 2;
+    end = start + overflow * 2; // 3
   }
 
+  /**
+   * If `end` > `totalPages`, only add last three pages to `range[]`
+   */
   if (end > totalPages) {
-    start = totalPages - overflow * 2;
+    start = totalPages - overflow * 2; 
     end = totalPages;
   }
 
   /**
-   * Design dictates if 5 or fewer pages rendered,
-   * all pages should be visible.
+   * If `totalPages` is 5 or fewer, all pages added to `range[]`
    */
   if (totalPages <= 5) {
     start = 1;
@@ -35,16 +40,16 @@ function paginationBuilder(currentPage, totalPages) {
   return range;
 }
 
-export default function Pagination({url = 'www.example.com', currentPage, totalPages}): React.ReactNode {
+export default function Pagination({compact, url = 'www.example.com', currentPage, totalPages}): React.ReactNode {
   const overflow = 1;
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
 
-  /**
-   * Defines if/when the Ellipses component appears
-   * at the beginning of the Pagination component.
-   */
   if (pageRange[0] >= 2) {
+    /**
+     * If `pageRange` begins with a page of 2 or greater,
+     * begin Pagination with Page 1 
+     */
     pages.push(
       <Page
         key="page-1"
@@ -53,12 +58,18 @@ export default function Pagination({url = 'www.example.com', currentPage, totalP
       />
     )
 
+    /**
+     * If `pageRange` doesn't equal 2, second Pagination element is Ellipses,
+     * otherwise page count continues.
+     */
     if (pageRange[0] !== 2) {
       pages.push(<Ellipses key="ellipses-1" />)
     }
   }
 
-  // Renders all Page components to Pagination component.
+  /**
+   * Renders all Page components in range (3 pages) to Pagination component.
+   */ 
   pageRange.map(page => {
     pages.push(
       <Page
@@ -87,6 +98,10 @@ export default function Pagination({url = 'www.example.com', currentPage, totalP
       />
     )
   }
+
+  // TODO: Add href logic
+  // TODO: Add onClick logic
+  // TODO: Test a11y
 
   return (
     <nav 
@@ -118,9 +133,16 @@ export default function Pagination({url = 'www.example.com', currentPage, totalP
         </span>
         Previous
       </a>
-      <ol>
-        {pages}
-      </ol>
+      { compact ? (
+        <span className="ds-c-pagination__page-count">
+          Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
+        </span>
+      ) : (
+        <ol>
+          {pages}
+        </ol>
+      )
+      }
       <a 
         className="ds-c-button ds-c-button--transparent" 
         href={url} 
