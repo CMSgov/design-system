@@ -16,7 +16,6 @@ export default function Page({index, currentPage, customUrl}) {
           className="ds-c-button ds-c-button--transparent" 
           href={ customUrl ? `${customUrl}/${index}` : `#${index}` } 
           aria-label={`page ${index}`}
-          onClick={(e) => console.log(e)}
         >
           {index}
         </a>

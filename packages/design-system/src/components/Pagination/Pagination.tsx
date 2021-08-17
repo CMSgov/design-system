@@ -2,9 +2,11 @@ import Ellipses from './Ellipses'
 import Page from './Page'
 import React from 'react'
 
+const overflow = 1;
+const maxVisiblePages = 7;
+
 function paginationBuilder(currentPage, totalPages) {
   const range = [];
-  const overflow = 1;
 
   let start = currentPage - overflow;
   let end = currentPage + overflow;
@@ -28,7 +30,7 @@ function paginationBuilder(currentPage, totalPages) {
   /**
    * If `totalPages` is 5 or fewer, all pages added to `range[]`
    */
-  if (totalPages <= 5) {
+  if (totalPages <= maxVisiblePages) {
     start = 1;
     end = totalPages;
   }
@@ -40,8 +42,7 @@ function paginationBuilder(currentPage, totalPages) {
   return range;
 }
 
-export default function Pagination({compact, customUrl, currentPage, totalPages}): React.ReactNode {
-  const overflow = 1;
+export default function Pagination({compact, customUrl, currentPage, totalPages}) {
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
 
@@ -71,12 +72,12 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
   /**
    * Renders all Page components in range (3 pages) to Pagination component.
    */ 
-  pageRange.map(page => {
+  pageRange.map(p => {
     pages.push(
       <Page
         customUrl={customUrl}
-        key={`page-${page}`}
-        index={page}
+        key={`page-${p}`}
+        index={p}
         currentPage={currentPage}
       />
     )
@@ -85,9 +86,9 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
   /**
    * Defines if/when the Ellipses component appears
    * at the end of the Pagination component - 
-   * as long as there are fewer than 5 pages.
+   * as long as there are fewer than 7 pages.
    */
-  if (currentPage <= totalPages - overflow - 1 && totalPages > 5) {
+  if (currentPage <= totalPages - overflow - 1 && totalPages > maxVisiblePages) {
     if (currentPage < totalPages - overflow - 1) {
       pages.push(<Ellipses key="ellipses-2" />)
     }
@@ -102,9 +103,6 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
     )
   }
 
-  // TODO: Add onClick logic
-  // TODO: Test a11y
-
   return (
     <nav 
       className="ds-c-pagination" 
@@ -113,7 +111,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
     >
       <a 
         className="ds-c-button ds-c-button--transparent nav" 
-        href={customUrl} 
+        href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`} 
         aria-label="Previous page"
       >
         <span className="ds-c-pagination__nav--previous-img-container">
@@ -147,7 +145,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
       }
       <a 
         className="ds-c-button ds-c-button--transparent" 
-        href="test" 
+        href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
         aria-label="Next page"
       >
         Next
