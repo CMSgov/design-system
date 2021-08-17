@@ -1,6 +1,6 @@
 import Ellipses from './Ellipses'
 import Page from './Page'
-import React from 'react'
+import React, {useState} from 'react'
 
 const overflow = 1;
 const maxVisiblePages = 7;
@@ -42,7 +42,8 @@ function paginationBuilder(currentPage, totalPages) {
   return range;
 }
 
-export default function Pagination({compact, customUrl, currentPage, totalPages}) {
+export default function Pagination({compact, customUrl, page, totalPages}) {
+  const [currentPage, setCurrentPage] = useState(page)
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
 
@@ -57,6 +58,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
         key="page-1"
         index={1}
         currentPage={currentPage}
+        onPageChange={() => setCurrentPage(1)}
       />
     )
 
@@ -79,6 +81,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
         key={`page-${p}`}
         index={p}
         currentPage={currentPage}
+        onPageChange={() => setCurrentPage(p)}
       />
     )
   });
@@ -99,6 +102,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
         key={`page-${totalPages}`}
         index={totalPages}
         currentPage={currentPage}
+        onPageChange={() => setCurrentPage(totalPages)}
       />
     )
   }
@@ -112,6 +116,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
       <a 
         className="ds-c-button ds-c-button--transparent nav" 
         href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`} 
+        onClick={() => setCurrentPage(currentPage - 1)}
         aria-label="Previous page"
       >
         <span className="ds-c-pagination__nav--previous-img-container">
@@ -146,6 +151,7 @@ export default function Pagination({compact, customUrl, currentPage, totalPages}
       <a 
         className="ds-c-button ds-c-button--transparent" 
         href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
+        onClick={() => setCurrentPage(currentPage + 1)}
         aria-label="Next page"
       >
         Next

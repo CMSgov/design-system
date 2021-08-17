@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Page({index, currentPage, customUrl}) {
+export default function Page({index, currentPage, customUrl, onPageChange}) {
   return (
     <li>
       { index === currentPage ? (
@@ -16,6 +16,7 @@ export default function Page({index, currentPage, customUrl}) {
           className="ds-c-button ds-c-button--transparent" 
           href={ customUrl ? `${customUrl}/${index}` : `#${index}` } 
           aria-label={`page ${index}`}
+          onClick={onPageChange}
         >
           {index}
         </a>
