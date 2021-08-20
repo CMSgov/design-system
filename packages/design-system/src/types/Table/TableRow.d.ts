@@ -9,10 +9,6 @@ export interface TableRowProps {
    * @hide-prop This gets set from the parent `TableHead`
    */
   _isTableHeadChild?: boolean;
-  /**
-   * @hide-prop This gets set from the parent `Table`
-   */
-  _stackable?: boolean;
 }
 
 declare const TableRow: React.FC<React.ComponentPropsWithRef<'tr'> & TableRowProps>;
