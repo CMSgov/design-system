@@ -42,7 +42,7 @@ function paginationBuilder(currentPage, totalPages) {
   return range;
 }
 
-export default function Pagination({compact, customUrl, page, totalPages}) {
+export default function Pagination({compact = false, customUrl, page = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next'}) {
   const [currentPage, setCurrentPage] = useState(page)
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
@@ -118,7 +118,7 @@ export default function Pagination({compact, customUrl, page, totalPages}) {
           className="ds-c-button ds-c-button--transparent nav" 
           href={customUrl ? `${customUrl}/${currentPage}` : `#${currentPage}`} 
           onClick={() => setCurrentPage(currentPage - 1)}
-          aria-label="Previous page"
+          aria-label={`${leftLabel} page`}
         >
           <span className="ds-c-pagination__nav--previous-img-container">
             <svg
@@ -137,7 +137,7 @@ export default function Pagination({compact, customUrl, page, totalPages}) {
               />
             </svg>
           </span>
-          Previous
+          {leftLabel}
         </a>
       )
       }
@@ -145,6 +145,7 @@ export default function Pagination({compact, customUrl, page, totalPages}) {
       { compact ? (
         <span className="ds-c-pagination__page-count">
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
+          <span className="sr-only" aria-live="assertive" aria-label={`on page ${currentPage} of ${totalPages}`} />
         </span>
       ) : (
         <ol>
@@ -159,9 +160,9 @@ export default function Pagination({compact, customUrl, page, totalPages}) {
           className="ds-c-button ds-c-button--transparent" 
           href={customUrl ? `${customUrl}/${currentPage}` : `#${currentPage}`} 
           onClick={() => setCurrentPage(currentPage + 1)}
-          aria-label="Next page"
+          aria-label={`${rightLabel} page`}
         >
-          Next
+          {rightLabel}
           <span className="ds-c-pagination__nav--next-img-container">
             <svg
               aria-hidden="true"
