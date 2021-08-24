@@ -34,6 +34,7 @@ export * from './FilterChip';
 export * from './FormControl';
 export * from './FormLabel';
 export * from './InlineError';
+export * from './Pagination';
 export * from './Spinner';
 export * from './TextField';
 export * from './Tooltip';
