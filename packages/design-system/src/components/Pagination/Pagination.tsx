@@ -1,11 +1,44 @@
+import React, {useState, useEffect} from 'react'
 import Ellipses from './Ellipses'
 import Page from './Page'
-import React, {useState} from 'react'
 
+export interface PaginationProps {
+  /**
+   * Class(es) to be added to the root Pagination element. Optional.
+   */
+  className?: string,
+  /**
+   * Renders compact layout of Pagination element. Optional.
+   */
+  compact?: boolean,
+  /**
+   * Sets a custom URL for all `href` attributes within the Pagination element. Optional.
+   */
+  customUrl?: string,
+  /**
+   * Sets the initial active page of the Pagination element. Required.
+   */
+  page?: number,
+  /**
+   * Sets the total number of pages of the Pagination element. Required.
+   */
+  totalPages: number,
+  /**
+   * Sets custom 'Previous' navigation label. Optional.
+   */
+  leftLabel?: string,
+  /**
+   * Sets custom 'Next' navigation label. Optional.
+   */
+  rightLabel?: string
+}
+
+// Determines number of pages visible to either side of active page.
 const overflow = 1;
+// Determines number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(currentPage, totalPages) {
+function paginationBuilder(currentPage: number, totalPages: number) {
   const range = [];
 
   let start = currentPage - overflow;
@@ -107,6 +140,14 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
     )
   }
 
+  // let prevPage = currentPage - 1;
+  // let nextPage = currentPage + 1;
+  
+  // useEffect(() => {
+  //   prevPage = currentPage - 1;
+  //   nextPage = currentPage + 1;
+  // }, [currentPage])
+
   return (
     <nav 
       className="ds-c-pagination" 
@@ -116,7 +157,7 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
       { currentPage !== 1 && (
         <a 
           className="ds-c-button ds-c-button--transparent nav" 
-          href={customUrl ? `${customUrl}/${currentPage}` : `#${currentPage}`} 
+          href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`} 
           onClick={() => setCurrentPage(currentPage - 1)}
           aria-label={`${leftLabel} page`}
         >
@@ -158,7 +199,7 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         currentPage !== totalPages && (
         <a 
           className="ds-c-button ds-c-button--transparent" 
-          href={customUrl ? `${customUrl}/${currentPage}` : `#${currentPage}`} 
+          href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
           onClick={() => setCurrentPage(currentPage + 1)}
           aria-label={`${rightLabel} page`}
         >
