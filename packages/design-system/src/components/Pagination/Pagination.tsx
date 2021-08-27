@@ -1,51 +1,31 @@
-import React, {useState, useEffect} from 'react'
 import Ellipses from './Ellipses'
 import Page from './Page'
+import React from 'react'
 
 export interface PaginationProps {
-  /**
-   * Class(es) to be added to the root Pagination element. Optional.
-   */
   className?: string,
-  /**
-   * Renders compact layout of Pagination element. Optional.
-   */
   compact?: boolean,
-  /**
-   * Sets a custom URL for all `href` attributes within the Pagination element. Optional.
-   */
   customUrl?: string,
-  /**
-   * Sets the initial active page of the Pagination element. Required.
-   */
-  page?: number,
-  /**
-   * Sets the total number of pages of the Pagination element. Required.
-   */
+  currentPage?: number,
   totalPages: number,
-  /**
-   * Sets custom 'Previous' navigation label. Optional.
-   */
   leftLabel?: string,
-  /**
-   * Sets custom 'Next' navigation label. Optional.
-   */
   rightLabel?: string
 }
 
 // Determines number of pages visible to either side of active page.
 const overflow = 1;
-// Determines number of visible pages without Ellipses.
+
+// Determines total number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(currentPage: number, totalPages: number) {
-  const range = [];
+function paginationBuilder(page: number, pages: number) {
+  const paginationRange = [];
 
-  let start = currentPage - overflow;
-  let end = currentPage + overflow;
+  let start = page - overflow;
+  let end = page + overflow;
 
   /**
-   * If `currentPage` = 1, only add first three pages to `range[]`
+   * If `page` = 1, only add first three pages to `paginationRange[]`
    */
   if (start < 1) {
     start = 1;
@@ -53,30 +33,31 @@ function paginationBuilder(currentPage: number, totalPages: number) {
   }
 
   /**
-   * If `end` > `totalPages`, only add last three pages to `range[]`
+   * If `end` > `pages`, only add last three pages to `paginationRange[]`
    */
-  if (end > totalPages) {
-    start = totalPages - overflow * 2; 
-    end = totalPages;
+  if (end > pages) {
+    start = pages - overflow * 2; 
+    end = pages;
   }
 
   /**
-   * If `totalPages` is 5 or fewer, all pages added to `range[]`
+   * If `pages` is 5 or fewer, all pages added to `paginationRange[]`
    */
-  if (totalPages <= maxVisiblePages) {
+  if (pages <= maxVisiblePages) {
     start = 1;
-    end = totalPages;
+    end = pages;
   }
 
   for (let i = start; i <= end; i++) {
-    range.push(i);
+    paginationRange.push(i);
   }
   
-  return range;
+  return paginationRange;
 }
 
-export default function Pagination({compact = false, customUrl, page = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next'}) {
-  const [currentPage, setCurrentPage] = useState(page)
+export default function Pagination({compact = false, customUrl, currentPage = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next', onPageChange}) {
+  const pageChange = React.useCallback(n => (e: React.MouseEvent) => onPageChange(e, n), [onPageChange])
+  
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
 
@@ -90,8 +71,8 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         customUrl={customUrl}
         key="page-1"
         index={1}
-        currentPage={currentPage}
-        onPageChange={() => setCurrentPage(1)}
+        isActive={1 === currentPage}
+        onPageChange={pageChange(1)}
       />
     )
 
@@ -113,8 +94,8 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         customUrl={customUrl}
         key={`page-${p}`}
         index={p}
-        currentPage={currentPage}
-        onPageChange={() => setCurrentPage(p)}
+        isActive={p === currentPage}
+        onPageChange={pageChange(p)}
       />
     )
   });
@@ -134,19 +115,12 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         customUrl={customUrl}
         key={`page-${totalPages}`}
         index={totalPages}
-        currentPage={currentPage}
-        onPageChange={() => setCurrentPage(totalPages)}
+        isActive={totalPages === currentPage}
+        onPageChange={pageChange(totalPages)}
       />
     )
   }
 
-  // let prevPage = currentPage - 1;
-  // let nextPage = currentPage + 1;
-  
-  // useEffect(() => {
-  //   prevPage = currentPage - 1;
-  //   nextPage = currentPage + 1;
-  // }, [currentPage])
 
   return (
     <nav 
@@ -158,7 +132,7 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         <a 
           className="ds-c-button ds-c-button--transparent nav" 
           href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`} 
-          onClick={() => setCurrentPage(currentPage - 1)}
+          onClick={pageChange(currentPage - 1)}
           aria-label={`${leftLabel} page`}
         >
           <span className="ds-c-pagination__nav--previous-img-container">
@@ -200,7 +174,7 @@ export default function Pagination({compact = false, customUrl, page = 1, totalP
         <a 
           className="ds-c-button ds-c-button--transparent" 
           href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
-          onClick={() => setCurrentPage(currentPage + 1)}
+          onClick={onPageChange}
           aria-label={`${rightLabel} page`}
         >
           {rightLabel}

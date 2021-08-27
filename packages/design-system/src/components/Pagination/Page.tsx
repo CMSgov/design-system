@@ -1,9 +1,16 @@
 import React from 'react'
 
-export default function Page({index, currentPage, customUrl, onPageChange}) {
+export interface PageProps {
+  isActive: boolean,
+  index: number,
+  onPageChange: () => void,
+  customUrl?: string,
+}
+
+export default function Page({ index, isActive, customUrl, onPageChange }) {
   return (
     <li>
-      { index === currentPage ? (
+      { isActive ? (
         <span
           className="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
           aria-label={`current page, page ${index}`}
