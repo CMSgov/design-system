@@ -63,6 +63,7 @@ function paginationBuilder(page: number, pages: number):number[] {
      */
     if (page === pages - 2) {
       start -= 1;
+      end += 1;
     }
   
     /**
@@ -96,12 +97,7 @@ function paginationBuilder(page: number, pages: number):number[] {
 }
 
 function Pagination({className, compact, currentPage, customUrl, onPageChange, leftLabel, rightLabel, totalPages}: PaginationProps): React.ReactElement {
-  const handlePageChange = page => (evt:React.MouseEvent) => {
-    if (onPageChange) {
-      onPageChange(evt, page);
-    }
-  }
-  const pageChange = React.useCallback(handlePageChange, [onPageChange])
+  const pageChange = React.useCallback(page => (evt: React.MouseEvent) => onPageChange(evt, page), [onPageChange])
   
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];

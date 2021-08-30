@@ -5,12 +5,13 @@ import State from '../State/State'
 
 ReactDOM.render(
   <div className="example--wrapper">
-    <Pagination page={1} totalPages={3} customUrl="http://www.example.com" />
+    <Pagination currentPage={1} totalPages={3} customUrl="http://www.example.com" />
     
     <State default={5}>
       {([page, setPage]) => {
         const totalPages = 10
         const onPageChange = (evt, page) => {
+          console.log(evt, page);
           evt.preventDefault()
           setPage(page)
         }
@@ -22,13 +23,39 @@ ReactDOM.render(
         )
       }}
     </State>
-    <Pagination page={5} totalPages={7} />
-    <Pagination page={6} totalPages={7} />
-    <Pagination page={7} totalPages={7} compact />
-    <Pagination page={1} totalPages={8} />
-    <Pagination page={8} totalPages={8} />
-    <Pagination page={49} totalPages={50} />
-    <Pagination page={2} totalPages={50} />
+
+    <Pagination currentPage={1} totalPages={5} />
+    <Pagination currentPage={2} totalPages={5} />
+    <Pagination currentPage={3} totalPages={5} />
+    <Pagination currentPage={4} totalPages={5} />
+    <Pagination currentPage={5} totalPages={5} />
+
+    <Pagination currentPage={1} totalPages={7} />
+    <Pagination currentPage={2} totalPages={7} />
+    <Pagination currentPage={3} totalPages={7} />
+    <Pagination currentPage={4} totalPages={7} />
+    <Pagination currentPage={5} totalPages={7} />
+    <Pagination currentPage={6} totalPages={7} />
+    <Pagination currentPage={7} totalPages={7} />
+
+    <Pagination currentPage={7} totalPages={7} compact />
+
+    <Pagination currentPage={1} totalPages={8} />
+    <Pagination currentPage={2} totalPages={8} />
+    <Pagination currentPage={3} totalPages={8} />
+    <Pagination currentPage={4} totalPages={8} />
+    <Pagination currentPage={5} totalPages={8} />
+    <Pagination currentPage={6} totalPages={8} />
+    <Pagination currentPage={7} totalPages={8} />
+    <Pagination currentPage={8} totalPages={8} />
+
+    <Pagination currentPage={3} totalPages={50} />
+    <Pagination currentPage={4} totalPages={50} />
+    <Pagination currentPage={5} totalPages={50} />
+    <Pagination currentPage={47} totalPages={50} />
+    <Pagination currentPage={48} totalPages={50} />
+    <Pagination currentPage={49} totalPages={50} />
+    <Pagination currentPage={50} totalPages={50} />
   </div>,
   document.getElementById('js-example')
 );

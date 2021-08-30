@@ -92,6 +92,7 @@ exports[`Pagination should render component 1`] = `
     aria-label="Next page"
     className="ds-c-button ds-c-button--transparent"
     href="#3"
+    onClick={[Function]}
   >
     Next
     <span
