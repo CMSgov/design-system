@@ -10,8 +10,8 @@ ReactDOM.render(
     <State default={5}>
       {([page, setPage]) => {
         const totalPages = 10
-        const onPageChange = (e, page) => {
-          e.preventDefault()
+        const onPageChange = (evt, page) => {
+          evt.preventDefault()
           setPage(page)
         }
         return (

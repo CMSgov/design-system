@@ -4,14 +4,38 @@ import React from 'react'
 import classNames from 'classnames';
 
 export interface PaginationProps {
+  /**
+   * Class to be applied to parent `<nav>` element of Pagination component. Optional.
+   */
   className?: string,
+  /**
+   * Renders compact layout. Optional.
+   */
   compact?: boolean,
-  customUrl?: string,
+  /**
+   * Defines initial active page in Pagination. Optional. 
+   */
   currentPage?: number,
-  totalPages: number,
+  /**
+   * Sets a custom url for Pagination links. Optional.
+   */
+  customUrl?: string,
+  /**
+   * A callback function used to handle state changes.
+   */
+  onPageChange: (evt: React.MouseEvent, page: number) => void,
+  /**
+   * Sets custom label on left navigation. Optional.
+   */
   leftLabel?: string,
+  /**
+   * Sets custom label on right navigation. Optional.
+   */
   rightLabel?: string,
-  onPageChange: (e: React.MouseEvent, n: number) => void,
+  /**
+   * Sets total number of pages in Pagination component.
+   */
+  totalPages: number,
 }
 
 // Determines number of pages visible to either side of active page.
@@ -58,7 +82,7 @@ function paginationBuilder(page: number, pages: number):number[] {
 }
 
 function Pagination({className, compact, currentPage, customUrl, onPageChange, leftLabel, rightLabel, totalPages}: PaginationProps): React.ReactElement {
-  const pageChange = React.useCallback(n => (e: React.MouseEvent) => onPageChange(e, n), [onPageChange])
+  const pageChange = React.useCallback(page => (evt: React.MouseEvent) => onPageChange(evt, page), [onPageChange])
   
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];

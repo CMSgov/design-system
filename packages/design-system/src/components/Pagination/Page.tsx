@@ -1,10 +1,22 @@
 import React from 'react'
 
 export interface PageProps {
-  isActive: boolean,
-  index: number,
-  onPageChange?: (e: React.MouseEvent) => void,
+  /** 
+   * Sets a custom url for links. Optional. 
+   */
   customUrl?: string,
+  /**
+   * Defines the page number.
+   */
+  index: number,
+  /**
+   * Renders current page if true, other links if false.
+   */
+  isActive: boolean,
+  /** 
+   * A callback function used to handle state changes.
+   */
+  onPageChange?: (evt: React.MouseEvent) => void,
 }
 
 export default function Page({ customUrl, index, isActive, onPageChange }: PageProps): React.ReactElement {
