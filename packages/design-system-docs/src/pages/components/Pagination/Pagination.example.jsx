@@ -1,18 +1,17 @@
-import { Pagination, PaginationWrapper } from '@design-system';
+import { Pagination } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import State from '../State/State'
 
 ReactDOM.render(
   <div className="example--wrapper">
     <Pagination page={1} totalPages={3} customUrl="http://www.example.com" />
     
-    <PaginationWrapper page={5}>
+    <State default={5}>
       {([page, setPage]) => {
         const totalPages = 10
-        console.table('first', page)
         const onPageChange = (e, page) => {
           e.preventDefault()
-          console.table('second', page)
           setPage(page)
         }
         return (
@@ -22,7 +21,7 @@ ReactDOM.render(
           </>
         )
       }}
-    </PaginationWrapper>
+    </State>
     <Pagination page={5} totalPages={7} />
     <Pagination page={6} totalPages={7} />
     <Pagination page={7} totalPages={7} compact />

@@ -1,6 +1,7 @@
 import Ellipses from './Ellipses'
 import Page from './Page'
 import React from 'react'
+import classNames from 'classnames';
 
 export interface PaginationProps {
   className?: string,
@@ -55,7 +56,7 @@ function paginationBuilder(page: number, pages: number) {
   return paginationRange;
 }
 
-export default function Pagination({compact = false, customUrl, currentPage = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next', onPageChange}) {
+export default function Pagination({className, compact = false, customUrl, currentPage = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next', onPageChange}) {
   const pageChange = React.useCallback(n => (e: React.MouseEvent) => onPageChange(e, n), [onPageChange])
   
   const pageRange = paginationBuilder(currentPage, totalPages)
@@ -121,10 +122,11 @@ export default function Pagination({compact = false, customUrl, currentPage = 1,
     )
   }
 
+  const classes = classNames('ds-c-pagination', className);
 
   return (
     <nav 
-      className="ds-c-pagination" 
+      className={classes} 
       role="navigation" 
       aria-label="Pagination Navigation"
     >
@@ -174,7 +176,7 @@ export default function Pagination({compact = false, customUrl, currentPage = 1,
         <a 
           className="ds-c-button ds-c-button--transparent" 
           href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
-          onClick={onPageChange}
+          onClick={pageChange(currentPage + 1)}
           aria-label={`${rightLabel} page`}
         >
           {rightLabel}
