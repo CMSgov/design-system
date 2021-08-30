@@ -1,16 +1,41 @@
 import Ellipses from './Ellipses'
 import Page from './Page'
 import React from 'react'
+import classNames from 'classnames';
 
 export interface PaginationProps {
+  /**
+   * Class to be applied to parent `<nav>` element of Pagination component. Optional.
+   */
   className?: string,
+  /**
+   * Renders compact layout. Optional.
+   */
   compact?: boolean,
-  customUrl?: string,
+  /**
+   * Defines initial active page in Pagination. Optional. 
+   */
   currentPage?: number,
-  totalPages: number,
+  /**
+   * Sets a custom url for Pagination links. Optional.
+   */
+  customUrl?: string,
+  /**
+   * A callback function used to handle state changes.
+   */
+  onPageChange: (evt: React.MouseEvent, page: number) => void,
+  /**
+   * Sets custom label on left navigation. Optional.
+   */
   leftLabel?: string,
-  rightLabel?: string
-  onPageChange?: (...args: any[]) => any
+  /**
+   * Sets custom label on right navigation. Optional.
+   */
+  rightLabel?: string,
+  /**
+   * Sets total number of pages in Pagination component.
+   */
+  totalPages: number,
 }
 
 // Determines number of pages visible to either side of active page.
@@ -19,7 +44,7 @@ const overflow = 1;
 // Determines total number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(page: number, pages: number) {
+function paginationBuilder(page: number, pages: number):number[] {
   const paginationRange = [];
 
   let start = page - overflow;
@@ -70,18 +95,10 @@ function paginationBuilder(page: number, pages: number) {
   return paginationRange;
 }
 
-export default function Pagination({
-  compact = false, 
-  customUrl, 
-  currentPage = 1, 
-  totalPages, 
-  leftLabel = 'Previous', 
-  rightLabel = 'Next', 
-  onPageChange
-} : PaginationProps) : React.ReactElement {
-  const handlePageChange = (n : number) => (e: React.MouseEvent) => {
+function Pagination({className, compact, currentPage, customUrl, onPageChange, leftLabel, rightLabel, totalPages}: PaginationProps): React.ReactElement {
+  const handlePageChange = page => (evt:React.MouseEvent) => {
     if (onPageChange) {
-      onPageChange(e, n);
+      onPageChange(evt, page);
     }
   }
   const pageChange = React.useCallback(handlePageChange, [onPageChange])
@@ -116,14 +133,14 @@ export default function Pagination({
   /**
    * Renders all Page components in range (3 pages) to Pagination component.
    */ 
-  pageRange.map(p => {
+  pageRange.map(page => {
     pages.push(
       <Page
         customUrl={customUrl}
-        key={`page-${p}`}
-        index={p}
-        isActive={p === currentPage}
-        onPageChange={pageChange(p)}
+        key={`page-${page}`}
+        index={page}
+        isActive={currentPage === page}
+        onPageChange={pageChange(page)}
       />
     )
   });
@@ -143,16 +160,17 @@ export default function Pagination({
         customUrl={customUrl}
         key={`page-${totalPages}`}
         index={totalPages}
-        isActive={totalPages === currentPage}
+        isActive={currentPage === totalPages}
         onPageChange={pageChange(totalPages)}
       />
     )
   }
 
+  const classes = classNames('ds-c-pagination', className);
 
   return (
     <nav 
-      className="ds-c-pagination" 
+      className={classes} 
       role="navigation" 
       aria-label="Pagination Navigation"
     >
@@ -202,7 +220,7 @@ export default function Pagination({
         <a 
           className="ds-c-button ds-c-button--transparent" 
           href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
-          onClick={onPageChange}
+          onClick={pageChange(currentPage + 1)}
           aria-label={`${rightLabel} page`}
         >
           {rightLabel}
@@ -229,3 +247,12 @@ export default function Pagination({
     </nav>
   )
 }
+
+Pagination.defaultProps = {
+  compact: false,
+  currentPage: 1,
+  leftLabel: 'Previous', 
+  rightLabel: 'Next'
+}
+
+export default Pagination
