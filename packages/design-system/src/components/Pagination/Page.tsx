@@ -3,11 +3,11 @@ import React from 'react'
 export interface PageProps {
   isActive: boolean,
   index: number,
-  onPageChange: () => void,
+  onPageChange: (e : React.MouseEvent) => void,
   customUrl?: string,
 }
 
-export default function Page({ index, isActive, customUrl, onPageChange }) {
+export default function Page({ index, isActive, customUrl, onPageChange } : PageProps) : React.ReactElement {
   return (
     <li>
       { isActive ? (

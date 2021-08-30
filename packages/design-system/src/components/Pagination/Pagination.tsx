@@ -10,6 +10,7 @@ export interface PaginationProps {
   totalPages: number,
   leftLabel?: string,
   rightLabel?: string
+  onPageChange?: (...args: any[]) => any
 }
 
 // Determines number of pages visible to either side of active page.
@@ -23,30 +24,44 @@ function paginationBuilder(page: number, pages: number) {
 
   let start = page - overflow;
   let end = page + overflow;
-
+  const availableSlots = maxVisiblePages - 2;
   /**
-   * If `page` = 1, only add first three pages to `paginationRange[]`
-   */
-  if (start < 1) {
-    start = 1;
-    end = start + overflow * 2; // 3
-  }
-
-  /**
-   * If `end` > `pages`, only add last three pages to `paginationRange[]`
-   */
-  if (end > pages) {
-    start = pages - overflow * 2; 
-    end = pages;
-  }
-
-  /**
-   * If `pages` is 5 or fewer, all pages added to `paginationRange[]`
-   */
-  if (pages <= maxVisiblePages) {
-    start = 1;
-    end = pages;
-  }
+     * if the current page is < 5, add 1 - 5 pages
+     */
+    if (page < availableSlots) {
+      start = 1;
+      end = availableSlots;
+    }
+  
+    /**
+     * if current page is total pages - 1, make sure start begins one earlier
+     */
+    if (page === pages - 2) {
+      start -= 1;
+    }
+  
+    /**
+     * if end page is two from the end, make sure the last page shows instead of ellipsis
+     */
+    if (end === pages - 2) {
+      end += 1;
+    }
+  
+    /**
+     * If `end` > `totalPages`, add last pages to `range[]`
+     */
+    if (end >= pages) {
+      start = pages - (availableSlots - 1); 
+      end = pages;
+    }
+  
+    /**
+     * If `totalPages` is 5 or fewer, all pages added to `range[]`
+     */
+    if (pages <= maxVisiblePages) {
+      start = 1;
+      end = pages;
+    }
 
   for (let i = start; i <= end; i++) {
     paginationRange.push(i);
@@ -55,8 +70,21 @@ function paginationBuilder(page: number, pages: number) {
   return paginationRange;
 }
 
-export default function Pagination({compact = false, customUrl, currentPage = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next', onPageChange}) {
-  const pageChange = React.useCallback(n => (e: React.MouseEvent) => onPageChange(e, n), [onPageChange])
+export default function Pagination({
+  compact = false, 
+  customUrl, 
+  currentPage = 1, 
+  totalPages, 
+  leftLabel = 'Previous', 
+  rightLabel = 'Next', 
+  onPageChange
+} : PaginationProps) : React.ReactElement {
+  const handlePageChange = (n : number) => (e: React.MouseEvent) => {
+    if (onPageChange) {
+      onPageChange(e, n);
+    }
+  }
+  const pageChange = React.useCallback(handlePageChange, [onPageChange])
   
   const pageRange = paginationBuilder(currentPage, totalPages)
   const pages = [];
@@ -71,7 +99,7 @@ export default function Pagination({compact = false, customUrl, currentPage = 1,
         customUrl={customUrl}
         key="page-1"
         index={1}
-        isActive={1 === currentPage}
+        isActive={currentPage === 1}
         onPageChange={pageChange(1)}
       />
     )
@@ -105,8 +133,8 @@ export default function Pagination({compact = false, customUrl, currentPage = 1,
    * at the end of the Pagination component - 
    * as long as there are fewer than 7 pages.
    */
-  if (currentPage <= totalPages - overflow - 1 && totalPages > maxVisiblePages) {
-    if (currentPage < totalPages - overflow - 1) {
+  if (currentPage <= totalPages - 3 && totalPages > maxVisiblePages) {
+    if (currentPage < totalPages - 3) {
       pages.push(<Ellipses key="ellipses-2" />)
     }
 
