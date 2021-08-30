@@ -10,7 +10,8 @@ export interface PaginationProps {
   currentPage?: number,
   totalPages: number,
   leftLabel?: string,
-  rightLabel?: string
+  rightLabel?: string,
+  onPageChange: (e: React.MouseEvent, n: number) => void,
 }
 
 // Determines number of pages visible to either side of active page.
@@ -19,7 +20,7 @@ const overflow = 1;
 // Determines total number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(page: number, pages: number) {
+function paginationBuilder(page: number, pages: number):number[] {
   const paginationRange = [];
 
   let start = page - overflow;
@@ -56,7 +57,7 @@ function paginationBuilder(page: number, pages: number) {
   return paginationRange;
 }
 
-export default function Pagination({className, compact = false, customUrl, currentPage = 1, totalPages, leftLabel = 'Previous', rightLabel = 'Next', onPageChange}) {
+function Pagination({className, compact, currentPage, customUrl, onPageChange, leftLabel, rightLabel, totalPages}: PaginationProps): React.ReactElement {
   const pageChange = React.useCallback(n => (e: React.MouseEvent) => onPageChange(e, n), [onPageChange])
   
   const pageRange = paginationBuilder(currentPage, totalPages)
@@ -72,7 +73,7 @@ export default function Pagination({className, compact = false, customUrl, curre
         customUrl={customUrl}
         key="page-1"
         index={1}
-        isActive={1 === currentPage}
+        isActive={currentPage === 1}
         onPageChange={pageChange(1)}
       />
     )
@@ -89,14 +90,14 @@ export default function Pagination({className, compact = false, customUrl, curre
   /**
    * Renders all Page components in range (3 pages) to Pagination component.
    */ 
-  pageRange.map(p => {
+  pageRange.map(page => {
     pages.push(
       <Page
         customUrl={customUrl}
-        key={`page-${p}`}
-        index={p}
-        isActive={p === currentPage}
-        onPageChange={pageChange(p)}
+        key={`page-${page}`}
+        index={page}
+        isActive={currentPage === page}
+        onPageChange={pageChange(page)}
       />
     )
   });
@@ -116,7 +117,7 @@ export default function Pagination({className, compact = false, customUrl, curre
         customUrl={customUrl}
         key={`page-${totalPages}`}
         index={totalPages}
-        isActive={totalPages === currentPage}
+        isActive={currentPage === totalPages}
         onPageChange={pageChange(totalPages)}
       />
     )
@@ -203,3 +204,12 @@ export default function Pagination({className, compact = false, customUrl, curre
     </nav>
   )
 }
+
+Pagination.defaultProps = {
+  compact: false,
+  currentPage: 1,
+  leftLabel: 'Previous', 
+  rightLabel: 'Next'
+}
+
+export default Pagination
