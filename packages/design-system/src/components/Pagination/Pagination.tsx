@@ -44,23 +44,18 @@ const overflow = 1;
 // Determines total number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(activePage: number, totalPages: number):number[] {
+function paginationBuilder(page: number, pages: number):number[] {
   const paginationRange = [];
-  
-  /**
-   * The number of slots needing to be calculated - so `pages` - 2 
-   * since we know the first page will always be 1 
-   * and the last will always be total number of pages.
-   */
-  const availableSlots = maxVisiblePages - 2; // 5
-  
-  let start = activePage - overflow;
-  let end = activePage + overflow;
 
+  let start = page - overflow;
+  let end = page + overflow;
+  
+  const availableSlots = maxVisiblePages - 2;
+  
   /**
    * if the current page is < 5, add 1 - 5 pages
    */
-  if (activePage < availableSlots) {
+  if (page < availableSlots) {
     start = 1;
     end = availableSlots;
   }
@@ -68,39 +63,32 @@ function paginationBuilder(activePage: number, totalPages: number):number[] {
   /**
    * if current page is total pages - 1, make sure start begins one earlier
    */
-  if (activePage === totalPages - 2) {
+  if (page === pages - 2) {
     start -= 1;
+    end += 1;
   }
 
   /**
    * if end page is two from the end, make sure the last page shows instead of ellipsis
    */
-  if (end === totalPages - 2) {
+  if (end === pages - 2) {
     end += 1;
   }
 
   /**
-   * If `page` = 1, only add first three pages to `paginationRange[]`
+   * If `end` > `totalPages`, add last pages to `range[]`
    */
-  // if (start < 1) {
-  //   start = 1;
-  //   end = start + overflow * 2; // 3
-  // }
-
-  /**
-   * If `end` > `pages`, only add last pages to `paginationRange[]`
-   */
-  if (end > totalPages) {
-    start = totalPages - overflow * 2; 
-    end = totalPages;
+  if (end >= pages) {
+    start = pages - (availableSlots - 1); 
+    end = pages;
   }
 
   /**
-   * If `pages` is 5 or fewer, all pages added to `paginationRange[]`
+   * If `totalPages` is 5 or fewer, all pages added to `range[]`
    */
-  if (totalPages <= maxVisiblePages) {
+  if (pages <= maxVisiblePages) {
     start = 1;
-    end = totalPages;
+    end = pages;
   }
 
   for (let i = start; i <= end; i++) {
@@ -160,8 +148,8 @@ function Pagination({className, compact, currentPage, customUrl, onPageChange, l
    * at the end of the Pagination component - 
    * as long as there are fewer than 7 pages.
    */
-  if (currentPage <= totalPages - overflow - 1 && totalPages > maxVisiblePages) {
-    if (currentPage < totalPages - overflow - 1) {
+  if (currentPage <= totalPages - 3 && totalPages > maxVisiblePages) {
+    if (currentPage < totalPages - 3) {
       pages.push(<Ellipses key="ellipses-2" />)
     }
 

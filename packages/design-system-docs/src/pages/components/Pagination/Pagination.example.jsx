@@ -27,6 +27,8 @@ ReactDOM.render(
     <Pagination currentPage={7} totalPages={7} compact />
     <Pagination currentPage={1} totalPages={8} />
     <Pagination currentPage={8} totalPages={8} />
+    <Pagination currentPage={48} totalPages={50} />
+    <Pagination currentPage={47} totalPages={50} />
     <Pagination currentPage={49} totalPages={50} />
     <Pagination currentPage={2} totalPages={50} />
   </div>,
