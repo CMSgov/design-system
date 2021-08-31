@@ -24,7 +24,7 @@ import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
-export interface AutocompleteItem {
+export interface AutocompleteItems {
   id?: string;
   name?: string;
 }
@@ -91,7 +91,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
    */
-  items?: AutocompleteItem[];
+  items?: AutocompleteItems[];
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
@@ -163,7 +163,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
   listboxHeadingId: string;
 
   filterItems(
-    items: AutocompleteItem[],
+    items: AutocompleteItems[],
     inputValue: string,
     getInputProps: (...args: any[]) => unknown,
     getItemProps: (...args: any[]) => unknown,
@@ -230,7 +230,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
-          'aria-controls': isOpen ? this.listboxId : null,
+          'aria-controls': this.listboxId,
           'aria-expanded': isOpen,
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,

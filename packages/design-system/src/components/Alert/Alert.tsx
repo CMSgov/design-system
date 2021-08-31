@@ -5,9 +5,6 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
-// Omit props that we override with values from the ChoiceList
-type OmitAlertProps = 'role';
-
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
@@ -23,10 +20,15 @@ export interface AnalyticsEventShape {
 }
 /* eslint-enable camelcase */
 
-interface AnalyticsObjectShape {
+export interface AnalyticsObjectShape {
   onComponentDidMount?: boolean | AnalyticsEventShape;
 }
 
+export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
+
+export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
+
+export type AlertVariation = 'error' | 'warn' | 'success';
 export interface AlertProps {
   /**
    * Access a reference to the `alert` `div` element
@@ -61,7 +63,7 @@ export interface AlertProps {
   /**
    * Heading type to override default `<h2>`.
    */
-  headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
+  headingLevel?: AlertHeadingLevel;
   /**
    * Boolean to hide the `Alert` icon
    */
@@ -69,11 +71,11 @@ export interface AlertProps {
   /**
    * ARIA `role`, defaults to 'region'
    */
-  role?: 'alert' | 'alertdialog' | 'region' | 'status';
+  role?: AlertRole;
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation?: 'error' | 'warn' | 'success';
+  variation?: AlertVariation;
 
   [key: string]: any;
 }
@@ -91,7 +93,10 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.Component<
+// Omit props that we override with values from the Alert
+type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
+
+export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
   any
 > {
