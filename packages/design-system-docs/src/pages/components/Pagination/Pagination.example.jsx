@@ -5,32 +5,27 @@ import State from '../State/State'
 
 ReactDOM.render(
   <div className="example--wrapper">
-    <Pagination currentPage={1} totalPages={3} customUrl="http://www.example.com" />
+    <Pagination currentPage={2} totalPages={15} onPageChange={(evt) => {evt.preventDefault()}} />
     
-    <State default={5}>
+    <State default={1}>
       {([page, setPage]) => {
-        const totalPages = 10
+        const totalPages = 15
         const onPageChange = (evt, page) => {
           evt.preventDefault()
           setPage(page)
         }
         return (
           <>
-          <span>Current page: {page} / {totalPages}</span>
-          <Pagination currentPage={page} totalPages={totalPages} onPageChange={onPageChange} />
+            <span>Current page: {page} / {totalPages}</span>
+            <Pagination currentPage={page} totalPages={totalPages} onPageChange={onPageChange} />
           </>
         )
       }}
     </State>
-    <Pagination currentPage={5} totalPages={7} />
-    <Pagination currentPage={6} totalPages={7} />
-    <Pagination currentPage={7} totalPages={7} compact />
-    <Pagination currentPage={1} totalPages={8} />
-    <Pagination currentPage={8} totalPages={8} />
-    <Pagination currentPage={48} totalPages={50} />
-    <Pagination currentPage={47} totalPages={50} />
-    <Pagination currentPage={49} totalPages={50} />
-    <Pagination currentPage={2} totalPages={50} />
+
+    <Pagination currentPage={2} totalPages={15} onPageChange={(evt) => {evt.preventDefault()}} customUrl="www.example.com" />
+    
+    <Pagination currentPage={2} totalPages={15} onPageChange={(evt) => {evt.preventDefault()}} compact />
   </div>,
   document.getElementById('js-example')
 );

@@ -15,7 +15,7 @@ export interface PaginationProps {
   /**
    * Defines active page in Pagination. Optional. 
    */
-  currentPage?: number,
+  currentPage: number,
   /**
    * Sets a custom url for Pagination links. Optional.
    */
@@ -53,7 +53,8 @@ function paginationBuilder(page: number, pages: number):number[] {
   const availableSlots = maxVisiblePages - 2;
   
   /**
-   * if the current page is < 5, add 1 - 5 pages
+   * If the current page is < `maxVisiblePages`, 
+   * add 1 - 5 pages.
    */
   if (page < availableSlots) {
     start = 1;
@@ -61,7 +62,8 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * if current page is total pages - 1, make sure start begins one earlier
+   * If the current page equals `pages` - 1, 
+   * make sure `start` begins one page earlier.
    */
   if (page === pages - 2) {
     start -= 1;
@@ -69,14 +71,16 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * if end page is two from the end, make sure the last page shows instead of ellipsis
+   * If `end` page is two from the end, 
+   * make sure the last page shows instead of ellipsis.
    */
   if (end === pages - 2) {
     end += 1;
   }
 
   /**
-   * If `end` > `totalPages`, add last pages to `range[]`
+   * If `end` > `pages`, 
+   * add last pages to `paginationRange[]`.
    */
   if (end >= pages) {
     start = pages - (availableSlots - 1); 
@@ -84,7 +88,8 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * If `totalPages` is 5 or fewer, all pages added to `range[]`
+   * If `pages` is 5 or fewer, 
+   * all pages added to `paginationRange[]`
    */
   if (pages <= maxVisiblePages) {
     start = 1;
@@ -166,6 +171,25 @@ function Pagination({className, compact, currentPage, customUrl, onPageChange, l
 
   const classes = classNames('ds-c-pagination', className);
 
+  /**
+   * `useState` and `useEffect` determine if 
+   * mobile layout of component is rendered.
+   */ 
+  const [mobile, setMobile] = React.useState(false);
+  React.useEffect(() => {
+    // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
+    const media = window.matchMedia('(max-width: 543px)')
+    if (media.matches !== mobile) {
+      setMobile(media.matches)
+    }
+    const listener = () => {
+      setMobile(media.matches)
+    }
+    
+    media.addEventListener('change', listener)
+    return () => media.removeEventListener('change', listener)
+  }, [mobile])
+  
   return (
     <nav 
       className={classes} 
@@ -201,7 +225,7 @@ function Pagination({className, compact, currentPage, customUrl, onPageChange, l
       )
       }
 
-      { compact ? (
+      { mobile || compact ? (
         <span className="ds-c-pagination__page-count">
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
           <span className="sr-only" aria-live="assertive" aria-label={`on page ${currentPage} of ${totalPages}`} />
