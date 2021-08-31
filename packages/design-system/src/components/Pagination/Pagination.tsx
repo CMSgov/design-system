@@ -13,7 +13,7 @@ export interface PaginationProps {
    */
   compact?: boolean,
   /**
-   * Defines initial active page in Pagination. Optional. 
+   * Defines active page in Pagination. Optional. 
    */
   currentPage?: number,
   /**
@@ -49,45 +49,47 @@ function paginationBuilder(page: number, pages: number):number[] {
 
   let start = page - overflow;
   let end = page + overflow;
+  
   const availableSlots = maxVisiblePages - 2;
+  
   /**
-     * if the current page is < 5, add 1 - 5 pages
-     */
-    if (page < availableSlots) {
-      start = 1;
-      end = availableSlots;
-    }
-  
-    /**
-     * if current page is total pages - 1, make sure start begins one earlier
-     */
-    if (page === pages - 2) {
-      start -= 1;
-      end += 1;
-    }
-  
-    /**
-     * if end page is two from the end, make sure the last page shows instead of ellipsis
-     */
-    if (end === pages - 2) {
-      end += 1;
-    }
-  
-    /**
-     * If `end` > `totalPages`, add last pages to `range[]`
-     */
-    if (end >= pages) {
-      start = pages - (availableSlots - 1); 
-      end = pages;
-    }
-  
-    /**
-     * If `totalPages` is 5 or fewer, all pages added to `range[]`
-     */
-    if (pages <= maxVisiblePages) {
-      start = 1;
-      end = pages;
-    }
+   * if the current page is < 5, add 1 - 5 pages
+   */
+  if (page < availableSlots) {
+    start = 1;
+    end = availableSlots;
+  }
+
+  /**
+   * if current page is total pages - 1, make sure start begins one earlier
+   */
+  if (page === pages - 2) {
+    start -= 1;
+    end += 1;
+  }
+
+  /**
+   * if end page is two from the end, make sure the last page shows instead of ellipsis
+   */
+  if (end === pages - 2) {
+    end += 1;
+  }
+
+  /**
+   * If `end` > `totalPages`, add last pages to `range[]`
+   */
+  if (end >= pages) {
+    start = pages - (availableSlots - 1); 
+    end = pages;
+  }
+
+  /**
+   * If `totalPages` is 5 or fewer, all pages added to `range[]`
+   */
+  if (pages <= maxVisiblePages) {
+    start = 1;
+    end = pages;
+  }
 
   for (let i = start; i <= end; i++) {
     paginationRange.push(i);
