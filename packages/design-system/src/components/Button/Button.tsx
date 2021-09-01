@@ -67,8 +67,8 @@ type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' 
 
 export default class Button extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'button'>, OmitProps> &
-  Omit<React.ComponentPropsWithRef<'a'>, OmitProps> &
-  ButtonProps
+    Omit<React.ComponentPropsWithRef<'a'>, OmitProps> &
+    ButtonProps
 > {
   static defaultProps = {
     type: 'button',
