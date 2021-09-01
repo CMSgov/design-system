@@ -2,6 +2,7 @@ import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
 
+export type FormLabelComponent = 'label' | 'legend';
 export interface FormLabelProps {
   /**
    * Label text or HTML.
@@ -12,7 +13,7 @@ export interface FormLabelProps {
    */
   className?: string;
   /** The root HTML element used to render the label */
-  component?: 'label' | 'legend';
+  component?: FormLabelComponent;
   /** Enable the error state by providing an error message. */
   errorMessage?: React.ReactNode;
   /**
