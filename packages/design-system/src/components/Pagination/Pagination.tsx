@@ -1,41 +1,42 @@
-import Ellipses from './Ellipses'
-import Page from './Page'
-import React from 'react'
+import Button from '../Button/Button';
+import Ellipses from './Ellipses';
+import Page from './Page';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface PaginationProps {
   /**
    * Class to be applied to parent `<nav>` element of Pagination component. Optional.
    */
-  className?: string,
+  className?: string;
   /**
    * Renders compact layout. Optional.
    */
-  compact?: boolean,
+  compact?: boolean;
   /**
-   * Defines active page in Pagination. Optional. 
+   * Defines active page in Pagination. Optional.
    */
-  currentPage: number,
+  currentPage: number;
   /**
    * Sets a custom url for Pagination links. Optional.
    */
-  customUrl?: string,
+  customUrl?: string;
   /**
    * A callback function used to handle state changes.
    */
-  onPageChange: (evt: React.MouseEvent, page: number) => void,
+  onPageChange: (evt: React.MouseEvent, page: number) => void;
   /**
    * Sets custom label on left navigation. Optional.
    */
-  leftLabel?: string,
+  leftLabel?: string;
   /**
    * Sets custom label on right navigation. Optional.
    */
-  rightLabel?: string,
+  rightLabel?: string;
   /**
    * Sets total number of pages in Pagination component.
    */
-  totalPages: number,
+  totalPages: number;
 }
 
 // Determines number of pages visible to either side of active page.
@@ -44,16 +45,16 @@ const overflow = 1;
 // Determines total number of visible pages without Ellipses.
 const maxVisiblePages = 7;
 
-function paginationBuilder(page: number, pages: number):number[] {
+function paginationBuilder(page: number, pages: number): number[] {
   const paginationRange = [];
 
   let start = page - overflow;
   let end = page + overflow;
-  
+
   const availableSlots = maxVisiblePages - 2;
-  
+
   /**
-   * If the current page is < `maxVisiblePages`, 
+   * If the current page is < `maxVisiblePages`,
    * add 1 - 5 pages.
    */
   if (page < availableSlots) {
@@ -62,7 +63,7 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * If the current page equals `pages` - 1, 
+   * If the current page equals `pages` - 1,
    * make sure `start` begins one page earlier.
    */
   if (page === pages - 2) {
@@ -71,7 +72,7 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * If `end` page is two from the end, 
+   * If `end` page is two from the end,
    * make sure the last page shows instead of ellipsis.
    */
   if (end === pages - 2) {
@@ -79,16 +80,16 @@ function paginationBuilder(page: number, pages: number):number[] {
   }
 
   /**
-   * If `end` > `pages`, 
+   * If `end` > `pages`,
    * add last pages to `paginationRange[]`.
    */
   if (end >= pages) {
-    start = pages - (availableSlots - 1); 
+    start = pages - (availableSlots - 1);
     end = pages;
   }
 
   /**
-   * If `pages` is 5 or fewer, 
+   * If `pages` is 5 or fewer,
    * all pages added to `paginationRange[]`
    */
   if (pages <= maxVisiblePages) {
@@ -99,109 +100,125 @@ function paginationBuilder(page: number, pages: number):number[] {
   for (let i = start; i <= end; i++) {
     paginationRange.push(i);
   }
-  
+
   return paginationRange;
 }
 
-function Pagination({className, compact, currentPage, customUrl, onPageChange, leftLabel, rightLabel, totalPages}: PaginationProps): React.ReactElement {
-  const pageChange = React.useCallback(page => (evt: React.MouseEvent) => onPageChange(evt, page), [onPageChange])
-  
-  const pageRange = paginationBuilder(currentPage, totalPages)
-  const pages = [];
-
-  if (pageRange[0] >= 2) {
-    /**
-     * If `pageRange` begins with a page of 2 or greater,
-     * begin Pagination with Page 1 
-     */
-    pages.push(
-      <Page
-        customUrl={customUrl}
-        key="page-1"
-        index={1}
-        isActive={currentPage === 1}
-        onPageChange={pageChange(1)}
-      />
-    )
-
-    /**
-     * If `pageRange` doesn't equal 2, second Pagination element is Ellipses,
-     * otherwise page count continues.
-     */
-    if (pageRange[0] !== 2) {
-      pages.push(<Ellipses key="ellipses-1" />)
-    }
-  }
-
-  /**
-   * Renders all Page components in range (3 pages) to Pagination component.
-   */ 
-  pageRange.map(page => {
-    pages.push(
-      <Page
-        customUrl={customUrl}
-        key={`page-${page}`}
-        index={page}
-        isActive={currentPage === page}
-        onPageChange={pageChange(page)}
-      />
-    )
-  });
-
-  /**
-   * Defines if/when the Ellipses component appears
-   * at the end of the Pagination component - 
-   * as long as there are fewer than 7 pages.
-   */
-  if (currentPage <= totalPages - 3 && totalPages > maxVisiblePages) {
-    if (currentPage < totalPages - 3) {
-      pages.push(<Ellipses key="ellipses-2" />)
-    }
-
-    pages.push(
-      <Page
-        customUrl={customUrl}
-        key={`page-${totalPages}`}
-        index={totalPages}
-        isActive={currentPage === totalPages}
-        onPageChange={pageChange(totalPages)}
-      />
-    )
-  }
-
+function Pagination({
+  className,
+  compact,
+  currentPage,
+  customUrl,
+  onPageChange,
+  leftLabel,
+  rightLabel,
+  totalPages,
+}: PaginationProps): React.ReactElement {
   const classes = classNames('ds-c-pagination', className);
 
   /**
-   * `useState` and `useEffect` determine if 
+   * `useState` and `useEffect` determine if
    * mobile layout of component is rendered.
-   */ 
-  const [mobile, setMobile] = React.useState(false);
+   */
+
+  const [isMobile, setIsMobile] = React.useState(false);
   React.useEffect(() => {
     // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
-    const media = window.matchMedia('(max-width: 543px)')
-    if (media.matches !== mobile) {
-      setMobile(media.matches)
+    const media = window.matchMedia('(max-width: 543px)');
+    if (media.matches !== isMobile) {
+      setIsMobile(media.matches);
     }
     const listener = () => {
-      setMobile(media.matches)
+      setIsMobile(media.matches);
+    };
+
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [isMobile]);
+
+  const pageChange = React.useCallback(
+    (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
+    [onPageChange]
+  );
+
+  const pages = [];
+
+  /**
+   * If `compact` or `isMobile` is true,
+   * don't run code to populate `pages[]`.
+   */
+  if (!compact || !isMobile) {
+    const pageRange = paginationBuilder(currentPage, totalPages);
+
+    if (pageRange[0] >= 2) {
+      /**
+       * If `pageRange` begins with a page of 2 or greater,
+       * begin Pagination with Page 1
+       */
+      pages.push(
+        <Page
+          customUrl={customUrl}
+          key="page-1"
+          index={1}
+          isActive={currentPage === 1}
+          onPageChange={pageChange(1)}
+        />
+      );
+
+      /**
+       * If `pageRange` doesn't equal 2, second Pagination element is Ellipses,
+       * otherwise page count continues.
+       */
+      if (pageRange[0] !== 2) {
+        pages.push(<Ellipses key="ellipses-1" />);
+      }
     }
-    
-    media.addEventListener('change', listener)
-    return () => media.removeEventListener('change', listener)
-  }, [mobile])
-  
+
+    /**
+     * Renders all Page components in range (3 pages) to Pagination component.
+     */
+
+    pageRange.map((page) => {
+      pages.push(
+        <Page
+          customUrl={customUrl}
+          key={`page-${page}`}
+          index={page}
+          isActive={currentPage === page}
+          onPageChange={pageChange(page)}
+        />
+      );
+    });
+
+    /**
+     * Defines if/when the Ellipses component appears
+     * at the end of the Pagination component -
+     * as long as there are fewer than 7 pages.
+     */
+    if (currentPage <= totalPages - 3 && totalPages > maxVisiblePages) {
+      if (currentPage < totalPages - 3) {
+        pages.push(<Ellipses key="ellipses-2" />);
+      }
+
+      pages.push(
+        <Page
+          customUrl={customUrl}
+          key={`page-${totalPages}`}
+          index={totalPages}
+          isActive={currentPage === totalPages}
+          onPageChange={pageChange(totalPages)}
+        />
+      );
+    }
+  }
+
   return (
-    <nav 
-      className={classes} 
-      role="navigation" 
-      aria-label="Pagination Navigation"
-    >
-      { currentPage !== 1 && (
-        <a 
-          className="ds-c-button ds-c-button--transparent nav" 
-          href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`} 
+    <nav className={classes} role="navigation" aria-label="Pagination Navigation">
+      {currentPage !== 1 && (
+        <Button
+          variation="tertiary"
+          href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`}
           onClick={pageChange(currentPage - 1)}
-          aria-label={`${leftLabel} page`}
         >
           <span className="ds-c-pagination__nav--previous-img-container">
             <svg
@@ -221,29 +238,27 @@ function Pagination({className, compact, currentPage, customUrl, onPageChange, l
             </svg>
           </span>
           {leftLabel}
-        </a>
-      )
-      }
+        </Button>
+      )}
 
-      { mobile || compact ? (
+      {isMobile || compact ? (
         <span className="ds-c-pagination__page-count">
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
-          <span className="sr-only" aria-live="assertive" aria-label={`on page ${currentPage} of ${totalPages}`} />
+          <span
+            className="sr-only"
+            aria-live="assertive"
+            aria-label={`on page ${currentPage} of ${totalPages}`}
+          />
         </span>
       ) : (
-        <ol>
-          {pages}
-        </ol>
-      )
-      }
+        <ol>{pages}</ol>
+      )}
 
-      {
-        currentPage !== totalPages && (
-        <a 
-          className="ds-c-button ds-c-button--transparent" 
-          href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`} 
+      {currentPage !== totalPages && (
+        <Button
+          variation="tertiary"
+          href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`}
           onClick={pageChange(currentPage + 1)}
-          aria-label={`${rightLabel} page`}
         >
           {rightLabel}
           <span className="ds-c-pagination__nav--next-img-container">
@@ -263,18 +278,17 @@ function Pagination({className, compact, currentPage, customUrl, onPageChange, l
               />
             </svg>
           </span>
-        </a>
-      )
-      }
+        </Button>
+      )}
     </nav>
-  )
+  );
 }
 
 Pagination.defaultProps = {
   compact: false,
   currentPage: 1,
-  leftLabel: 'Previous', 
-  rightLabel: 'Next'
-}
+  leftLabel: 'Previous',
+  rightLabel: 'Next',
+};
 
-export default Pagination
+export default Pagination;
