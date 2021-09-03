@@ -34,7 +34,7 @@ export const TableCaption: React.FC<TableCaptionProps> = ({
 }: TableCaptionProps) => {
   const classes = classNames('ds-c-table__caption', className);
   return (
-    <caption className={classes} id={_id} {...tableCaptionProps}>
+    <caption className={classes} id={_id} role="caption" {...tableCaptionProps}>
       {children}
       {_scrollActive && _scrollableNotice}
     </caption>
