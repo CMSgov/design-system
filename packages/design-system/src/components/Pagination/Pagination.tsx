@@ -16,7 +16,7 @@ export interface PaginationProps {
   /**
    * Defines active page in Pagination. Optional.
    */
-  currentPage: number;
+  currentPage?: number;
   /**
    * Sets a custom url for Pagination links. Optional.
    */
