@@ -1,5 +1,4 @@
 /* global driver, AxeBuilder */
-// const AxeBuilder = require('@axe-core/webdriverjs');
 const { RULESET_ALL } = require('./constants');
 const chalk = require('chalk');
 
