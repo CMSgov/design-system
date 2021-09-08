@@ -27,6 +27,7 @@ import uniqueId from 'lodash.uniqueid';
 export interface AutocompleteItems {
   id?: string;
   name?: string;
+  children?: React.ReactNode;
 }
 
 type PropsNotPassedToDownshift =
@@ -185,7 +186,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           role="option"
           {...getItemProps({ item })}
         >
-          {itemToString(item)}
+          {item.children ?? itemToString(item)}
         </li>
       ));
     }

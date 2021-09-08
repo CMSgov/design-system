@@ -40,6 +40,55 @@ describe('Autocomplete', () => {
     expect(items.text()).toEqual('Cook County, IL');
   });
 
+  it('renders items with children property', () => {
+    const items = [
+      {
+        id: '1',
+        name: 'Carrots (1)',
+        children: (
+          <>
+            Carrots <strong>(1)</strong>
+          </>
+        ),
+      },
+      {
+        id: '2',
+        name: 'Cookies (3)',
+        children: (
+          <>
+            Cookies <strong>(3)</strong>
+          </>
+        ),
+      },
+      {
+        id: '3',
+        name: 'Crackers (2)',
+        children: (
+          <>
+            Crackers <strong>(2)</strong>
+          </>
+        ),
+      },
+      {
+        id: '4',
+        children: <a href="https://duckduckgo.com/?q=snacks">Search all snacks</a>,
+      },
+    ];
+
+    const tree = renderer
+      .create(
+        <Autocomplete items={items} isOpen>
+          <TextField label="autocomplete" name="autocomplete_field" />
+        </Autocomplete>
+      )
+      .toJSON();
+
+    // TODO: Clean this up by using another rendering library or figure out how to use this one to
+    // render only a portion of the tree but using their built-in functions like "findByType"
+    const ul = tree.children[1].children[0];
+    expect(ul).toMatchSnapshot();
+  });
+
   it('renders Autocomplete component without items', () => {
     const { wrapper } = render({ items: undefined, isOpen: true }, true);
     expect(wrapper.find('ul').exists()).toBe(false);

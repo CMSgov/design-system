@@ -76,6 +76,51 @@ ReactDOM.render(
       />
     </Autocomplete>
 
+    <Autocomplete
+      items={[
+        {
+          id: '1',
+          name: 'Carrots (1)',
+          children: (
+            <>
+              Carrots <strong>(1)</strong>
+            </>
+          ),
+        },
+        {
+          id: '2',
+          name: 'Cookies (3)',
+          children: (
+            <>
+              Cookies <strong>(3)</strong>
+            </>
+          ),
+        },
+        {
+          id: '3',
+          name: 'Crackers (2)',
+          children: (
+            <>
+              Crackers <strong>(2)</strong>
+            </>
+          ),
+        },
+        {
+          id: '4',
+          children: <a href="https://duckduckgo.com/?q=snacks">Search all snacks</a>,
+        },
+      ]}
+      itemToString={(item) => (item && item.name) || ''}
+      onChange={(selectedItem) => console.log(selectedItem)}
+      onInputValueChange={(inputVal) => console.log('[Autocomplete]: ' + inputVal)}
+    >
+      <TextField
+        hint="Clicking the last item should not change the input value to 'Search all snacks'"
+        label="List with custom item markup"
+        name="Downshift_autocomplete"
+      />
+    </Autocomplete>
+
     <Autocomplete items={[]} loading clearSearchButton={false}>
       <TextField
         hint="List should return string Loading to simulate async data call."
