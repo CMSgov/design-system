@@ -5,8 +5,8 @@ $pagination-nav-link-color-focus: $color-primary-darker;
 
 $pagination-current-page-color: $color-base;
 $pagination-current-page-color-bg: $color-gray-lightest;
-$pagination-overflow: $color-gray;
-$pagination-page-count: $color-gray;
+$pagination-overflow-color: $color-gray;
+$pagination-page-count-color: $color-gray;
 
 .ds-c-pagination {
   ol {
@@ -48,13 +48,13 @@ $pagination-page-count: $color-gray;
   }
   .ds-c-pagination__overflow {
     border: 2px solid transparent;
-    color: $pagination-overflow;
+    color: $pagination-overflow-color;
     display: inline-block;
     padding: 8px;
   }
   .ds-c-pagination__page-count {
     border: 2px solid transparent;
-    color: $pagination-page-count;
+    color: $pagination-page-count-color;
     display: inline-block;
     padding: 8px;
   }
