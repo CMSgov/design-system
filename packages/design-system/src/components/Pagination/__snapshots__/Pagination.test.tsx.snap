@@ -37,11 +37,11 @@ exports[`Pagination pagination slot behavior less than 7 pages should show all p
 
 exports[`Pagination should render component 1`] = `
 <nav
-  aria-label="Pagination Navigation"
+  aria-label="Pagination"
   className="ds-c-pagination"
-  role="navigation"
 >
   <Button
+    aria-label="Previous Page"
     component="button"
     href="#1"
     onClick={[Function]}
@@ -90,6 +90,7 @@ exports[`Pagination should render component 1`] = `
     />
   </ol>
   <Button
+    aria-label="Next Page"
     component="button"
     href="#3"
     onClick={[Function]}
@@ -122,11 +123,11 @@ exports[`Pagination should render component 1`] = `
 
 exports[`Pagination with compact prop enabled should render compact variant 1`] = `
 <nav
-  aria-label="Pagination Navigation"
+  aria-label="Pagination"
   className="ds-c-pagination"
-  role="navigation"
 >
   <Button
+    aria-label="Previous Page"
     component="button"
     href="#1"
     onClick={[Function]}
@@ -155,6 +156,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     Previous
   </Button>
   <span
+    aria-label="on page 2 of 3"
     className="ds-c-pagination__page-count"
   >
     Page 
@@ -165,13 +167,9 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     <strong>
       3
     </strong>
-    <span
-      aria-label="on page 2 of 3"
-      aria-live="assertive"
-      className="sr-only"
-    />
   </span>
   <Button
+    aria-label="Next Page"
     component="button"
     href="#3"
     onClick={[Function]}

@@ -168,7 +168,6 @@ describe('Pagination', () => {
       const currentPageEl = wrapper.find('ol').childAt(2).dive().find(pageButtonSelector);
 
       expect(currentPageEl.type()).toEqual('span');
-      expect(currentPageEl.prop('aria-label')).toEqual('current page, page 3');
       expect(currentPageEl.prop('aria-current')).toEqual('true');
       expect(currentPageEl.hasClass('ds-c-pagination__current-page')).toBeTruthy();
     });

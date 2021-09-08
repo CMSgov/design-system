@@ -17,7 +17,6 @@ exports[`Page should render static el if not current 1`] = `
 <li>
   <span
     aria-current="true"
-    aria-label="current page, page 1"
     className="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
   >
     1
