@@ -1,19 +1,20 @@
+import './matchMedia.mock';
+import { mount, shallow } from 'enzyme';
 import Pagination from './Pagination';
 import React from 'react';
-import { shallow } from 'enzyme';
 
 describe('Pagination', () => {
   const pageButtonSelector = '.ds-c-button';
   const onPageChange = jest.fn();
 
-  const render = (overrideProps = {}) => {
+  const render = (overrideProps = {}, shouldDeepRender = false) => {
     const props = {
       totalPages: 3,
       onPageChange: onPageChange,
       ...overrideProps,
     };
 
-    return shallow(<Pagination {...props} />);
+    return shouldDeepRender ? mount(<Pagination {...props} />) : shallow(<Pagination {...props} />);
   };
 
   it('should render component', () => {
@@ -62,8 +63,8 @@ describe('Pagination', () => {
       });
 
       it('should call onPageChange when a page is pressed', () => {
-        const wrapper = render({ currentPage: 2 });
-        wrapper.find('ol').childAt(0).dive().find(pageButtonSelector).simulate('click', {});
+        const wrapper = render({ currentPage: 2 }, true);
+        wrapper.find('ol').childAt(0).find(pageButtonSelector).simulate('click', {});
 
         expect(onPageChange).toHaveBeenCalledTimes(1);
         expect(onPageChange).toHaveBeenCalledWith(expect.anything(), 1);
@@ -86,8 +87,8 @@ describe('Pagination', () => {
       });
 
       it('should have appropriate href for page', () => {
-        const wrapper = render({ currentPage: 2, totalPages: 5 });
-        const pageEl = wrapper.find('ol').childAt(3).dive().find(pageButtonSelector);
+        const wrapper = render({ currentPage: 2, totalPages: 5 }, true);
+        const pageEl = wrapper.find('ol').childAt(3).find(pageButtonSelector);
 
         expect(pageEl.prop('href')).toBe('#4');
       });
@@ -110,8 +111,8 @@ describe('Pagination', () => {
       });
 
       it('should have appropriate href for page', () => {
-        const wrapper = render({ currentPage: 2, totalPages: 5, customUrl: customUrl });
-        const pageEl = wrapper.find('ol').childAt(3).dive().find(pageButtonSelector);
+        const wrapper = render({ currentPage: 2, totalPages: 5, customUrl: customUrl }, true);
+        const pageEl = wrapper.find('ol').childAt(3).find(pageButtonSelector);
 
         expect(pageEl.prop('href')).toBe(`${customUrl}/4`);
       });
@@ -128,7 +129,8 @@ describe('Pagination', () => {
 
     it('should hide "previous" navigation slot if current page is first page of set', () => {
       const wrapper = render({ currentPage: 1 });
-      expect(wrapper.childAt(0).type()).toEqual('ol');
+      const prevButton = wrapper.childAt(0);
+      expect(prevButton.prop('style')).toHaveProperty('visibility', 'hidden');
     });
 
     it('should show "next" navigation slot if current page is not last page of set', () => {
@@ -141,7 +143,7 @@ describe('Pagination', () => {
     it('should hide "next" navigation slot if current page is last page of set', () => {
       const wrapper = render({ currentPage: 3 });
       const lastChild = wrapper.children().last();
-      expect(lastChild.type()).toEqual('ol');
+      expect(lastChild.prop('style')).toHaveProperty('visibility', 'hidden');
     });
   });
 
@@ -156,8 +158,8 @@ describe('Pagination', () => {
 
     it('should end page count with page total', () => {
       const lastPageNum = 3;
-      const wrapper = render({ currentPage: 1, totalPages: lastPageNum });
-      const lastPage = wrapper.find('ol').childAt(2).dive().find(pageButtonSelector);
+      const wrapper = render({ currentPage: 1, totalPages: lastPageNum }, true);
+      const lastPage = wrapper.find('ol').childAt(2).find(pageButtonSelector);
 
       expect(lastPage).toBeDefined();
       expect(lastPage.text()).toBe(`${lastPageNum}`);
@@ -192,54 +194,54 @@ describe('Pagination', () => {
 
     describe('more than 7 pages', () => {
       it('should not show beginning ellipses for pages 1 - 3', () => {
-        const wrapper1 = render({ currentPage: 1, totalPages: 35 });
-        const wrapper2 = render({ currentPage: 2, totalPages: 35 });
-        const wrapper3 = render({ currentPage: 3, totalPages: 35 });
+        const wrapper1 = render({ currentPage: 1, totalPages: 35 }, true);
+        const wrapper2 = render({ currentPage: 2, totalPages: 35 }, true);
+        const wrapper3 = render({ currentPage: 3, totalPages: 35 }, true);
 
         expect(wrapper1.find('Ellipses').length).toBe(1);
         let listEl = wrapper1.find('ol');
-        let secondSlot = listEl.childAt(1).dive().find(pageButtonSelector);
+        let secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
         expect(secondSlot.text()).toBe('2');
 
         expect(wrapper2.find('Ellipses').length).toBe(1);
         listEl = wrapper2.find('ol');
-        secondSlot = listEl.childAt(1).dive().find(pageButtonSelector);
+        secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
         expect(secondSlot.text()).toBe('2');
 
         expect(wrapper3.find('Ellipses').length).toBe(1);
         listEl = wrapper3.find('ol');
-        secondSlot = listEl.childAt(1).dive().find(pageButtonSelector);
+        secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
         expect(secondSlot.text()).toBe('2');
       });
 
       it('should not show end ellipses for last 3 pages', () => {
-        const wrapperLast = render({ currentPage: 35, totalPages: 35 });
-        const wrapperSecondLast = render({ currentPage: 34, totalPages: 35 });
-        const wrapperThirdLast = render({ currentPage: 33, totalPages: 35 });
+        const wrapperLast = render({ currentPage: 35, totalPages: 35 }, true);
+        const wrapperSecondLast = render({ currentPage: 34, totalPages: 35 }, true);
+        const wrapperThirdLast = render({ currentPage: 33, totalPages: 35 }, true);
 
         expect(wrapperLast.find('Ellipses').length).toBe(1);
         let listEl = wrapperLast.find('ol');
-        let secondLastSlot = listEl.childAt(5).dive().find(pageButtonSelector);
+        let secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
         expect(secondLastSlot.text()).toBe('34');
 
         expect(wrapperSecondLast.find('Ellipses').length).toBe(1);
         listEl = wrapperSecondLast.find('ol');
-        secondLastSlot = listEl.childAt(5).dive().find(pageButtonSelector);
+        secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
         expect(secondLastSlot.text()).toBe('34');
 
         expect(wrapperThirdLast.find('Ellipses').length).toBe(1);
         listEl = wrapperThirdLast.find('ol');
-        secondLastSlot = listEl.childAt(5).dive().find(pageButtonSelector);
+        secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
         expect(secondLastSlot.text()).toBe('34');
