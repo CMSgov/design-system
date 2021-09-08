@@ -22,6 +22,7 @@ import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
+import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
 import uniqueId from 'lodash.uniqueid';
 
 export interface AutocompleteItems {
@@ -37,6 +38,7 @@ type PropsNotPassedToDownshift =
   | 'loading'
   | 'children'
   | 'className'
+  | 'clearInputOnBlur'
   | 'clearSearchButton';
 
 export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
@@ -57,6 +59,10 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    * Useful for adding utility classes.
    */
   className?: string;
+  /**
+   * When set to `false`, do not clear the input when the input element loses focus.
+   */
+  clearInputOnBlur?: boolean;
   /**
    * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
@@ -140,6 +146,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     autoCompleteLabel: 'off',
     clearInputText: 'Clear search',
     clearSearchButton: true,
+    clearInputOnBlur: true,
     itemToString: (item): string => (item ? item.name : ''),
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
@@ -262,11 +269,16 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
       loading,
       children,
       className,
+      clearInputOnBlur,
       clearSearchButton,
       ...autocompleteProps
     }: AutocompleteProps = this.props;
 
     const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
+
+    if (clearInputOnBlur === false) {
+      autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
+    }
 
     return (
       <Downshift {...autocompleteProps}>
