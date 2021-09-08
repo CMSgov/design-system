@@ -139,17 +139,23 @@ function Pagination({
 
   const [isMobile, setIsMobile] = React.useState(false);
   React.useEffect(() => {
-    // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
-    const media = window.matchMedia('(max-width: 543px)');
-    if (media.matches !== isMobile) {
-      setIsMobile(media.matches);
-    }
-    const listener = () => {
-      setIsMobile(media.matches);
-    };
+    if (window) {
+      // Mobile media query derived from: https://design.cms.gov/guidelines/responsive/
+      const media = window.matchMedia('(max-width: 543px)');
 
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
+      if (media.matches !== isMobile) {
+        setIsMobile(media.matches);
+      }
+
+      const listener = () => {
+        setIsMobile(media.matches);
+      };
+
+      media.addEventListener('change', listener);
+      return () => media.removeEventListener('change', listener);
+    } else {
+      setIsMobile(true);
+    }
   }, [isMobile]);
 
   const pageChange = React.useCallback(
