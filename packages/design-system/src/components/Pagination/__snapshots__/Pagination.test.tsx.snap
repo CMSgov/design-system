@@ -41,12 +41,18 @@ exports[`Pagination should render component 1`] = `
   className="ds-c-pagination"
 >
   <Button
+    aria-hidden={false}
     aria-label="Previous Page"
     component="button"
     href="#1"
     onClick={[Function]}
+    style={
+      Object {
+        "visibility": "visible",
+      }
+    }
     type="button"
-    variation="tertiary"
+    variation="transparent"
   >
     <span
       className="ds-c-pagination__nav--previous-img-container"
@@ -90,12 +96,18 @@ exports[`Pagination should render component 1`] = `
     />
   </ol>
   <Button
+    aria-hidden={false}
     aria-label="Next Page"
     component="button"
     href="#3"
     onClick={[Function]}
+    style={
+      Object {
+        "visibility": "visible",
+      }
+    }
     type="button"
-    variation="tertiary"
+    variation="transparent"
   >
     Next
     <span
@@ -127,12 +139,18 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   className="ds-c-pagination"
 >
   <Button
+    aria-hidden={false}
     aria-label="Previous Page"
     component="button"
     href="#1"
     onClick={[Function]}
+    style={
+      Object {
+        "visibility": "visible",
+      }
+    }
     type="button"
-    variation="tertiary"
+    variation="transparent"
   >
     <span
       className="ds-c-pagination__nav--previous-img-container"
@@ -169,12 +187,18 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     </strong>
   </span>
   <Button
+    aria-hidden={false}
     aria-label="Next Page"
     component="button"
     href="#3"
     onClick={[Function]}
+    style={
+      Object {
+        "visibility": "visible",
+      }
+    }
     type="button"
-    variation="tertiary"
+    variation="transparent"
   >
     Next
     <span

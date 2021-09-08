@@ -1,5 +1,6 @@
 <h6 class="preview__label">Default pagination</h6>
-<nav class="ds-c-pagination" role="navigation" aria-label="Pagination Navigation">
+
+<nav class="ds-c-pagination" aria-label="Pagination">
   <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Previous page">
     <span class="ds-c-pagination__nav--previous-img-container">
       <svg
@@ -20,23 +21,52 @@
     </span>
     Previous
   </a>
+
   <ol>
-    <li><a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 1">1</a></li>
-    <li><span class="ds-c-pagination__overflow" href="#">&#8230;</span></li>
-    <li><a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 7">7</a></li>
+    <li>
+      <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 1">
+        1
+      </a>
+    </li>
+
+    <li>
+      <span class="ds-c-pagination__overflow">
+        &hellip;
+      </span>
+    </li>
+
+    <li>
+      <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 7">
+        7
+      </a>
+    </li>
+
     <li>
       <span
         class="ds-c-button ds-c-button--transparent ds-c-pagination__current-page"
-        aria-label="Current Page, Page 8"
         aria-current="true"
       >
         8
       </span>
     </li>
-    <li><a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 9">9</a></li>
-    <li><span class="ds-c-pagination__overflow">&#8230;</span></li>
-    <li><a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 25">25</a></li>
+
+    <li>
+      <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 9">
+        9
+      </a>
+    </li>
+
+    <li>
+      <span class="ds-c-pagination__overflow">&hellip;</span>
+    </li>
+
+    <li>
+      <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Page 25">
+        25
+      </a>
+    </li>
   </ol>
+
   <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Next page">
     Next
     <span class="ds-c-pagination__nav--next-img-container">
@@ -60,7 +90,8 @@
 </nav>
 
 <h6 class="preview__label">Compact pagination</h6>
-<nav class="ds-c-pagination" role="navigation" aria-label="Pagination Navigation">
+
+<nav class="ds-c-pagination" aria-label="Pagination">
   <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Previous page">
     <span class="ds-c-pagination__nav--previous-img-container">
       <svg
@@ -81,9 +112,11 @@
     </span>
     Previous
   </a>
-  <span class="ds-c-pagination__page-count" href="#"
-    >Page <strong>9</strong> of <strong>25</strong></span
-  >
+
+  <span class="ds-c-pagination__page-count" aria-label="on page 9 of 25">
+    Page <strong>9</strong> of <strong>25</strong>
+  </span>
+
   <a class="ds-c-button ds-c-button--transparent" href="#" aria-label="Next page">
     Next
     <span class="ds-c-pagination__nav--next-img-container">

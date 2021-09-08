@@ -237,7 +237,7 @@ function Pagination({
   return (
     <nav className={classes} aria-label={ariaLabel} {...rest}>
       <Button
-        variation="tertiary"
+        variation="transparent"
         href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`}
         onClick={pageChange(currentPage - 1)}
         aria-label={startAriaLabel}
@@ -276,7 +276,7 @@ function Pagination({
       )}
 
       <Button
-        variation="tertiary"
+        variation="transparent"
         href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`}
         onClick={pageChange(currentPage + 1)}
         aria-label={endAriaLabel}

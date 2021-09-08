@@ -1,3 +1,4 @@
+import Button from '../Button/Button';
 import React from 'react';
 
 export interface PageProps {
@@ -35,14 +36,14 @@ export default function Page({
           {index}
         </span>
       ) : (
-        <a
-          className="ds-c-button ds-c-button--transparent"
+        <Button
+          variation="transparent"
           href={customUrl ? `${customUrl}/${index}` : `#${index}`}
-          aria-label={`page ${index}`}
           onClick={onPageChange}
+          aria-label={`page ${index}`}
         >
           {index}
-        </a>
+        </Button>
       )}
     </li>
   );

@@ -2,14 +2,16 @@
 
 exports[`Page should render interactive el if not current 1`] = `
 <li>
-  <a
+  <Button
     aria-label="page 1"
-    className="ds-c-button ds-c-button--transparent"
+    component="button"
     href="#1"
     onClick={[MockFunction]}
+    type="button"
+    variation="transparent"
   >
     1
-  </a>
+  </Button>
 </li>
 `;
 
