@@ -1,15 +1,27 @@
-// These variables apply to form fields (input, select, textarea, button)
+/*
+----------------------------------------
+Textbox, dropdown, textarea
+----------------------------------------
+*/
+// line height
 $input-line-height: 1.3 !default;
-$input-border-width: 2px !default;
+// width
 $input-small-width: 6em !default;
 $input-medium-width: 12em !default;
 $input-max-width: 460px !default;
+// padding
 $input-padding: $spacer-1 !default;
+// border
+$input-border-width: 2px !default;
 $input-border-radius: $border-radius !default;
 $input-border-color: $color-base !default;
 $input-border-color-inverse: $color-black !default;
 
-// Choice theme variables
+/*
+----------------------------------------
+Choice (Radio buttons and checkboxes)
+----------------------------------------
+*/
 $choice-background-color: $color-background !default;
 $choice-border-color: $color-base !default;
 $choice-checked-background-color: $color-primary !default;
@@ -25,7 +37,146 @@ $choice-border-radius: 0 !default;
 $choice-size: $spacer-4 !default;
 $choice-size-small: 20px !default;
 
+/*
+----------------------------------------
+Buttons
+----------------------------------------
+*/
+$button-line-height: 1.3 !default;
 $button-border-width: 1px !default;
+$button-font-weight: $font-bold !default;
+$button-text-decoration-underline: underline !default;
+$button-text-decoration-none: none !default;
+
+// Default button
+$button-default-text-decoration: none !default;
+
+$button-default-text-color: $color-primary !default;
+$button-default-bg: $color-white !default;
+$button-default-border-color: $color-primary !default;
+// hover
+$button-default-text-color--hover: $color-primary-darker !default;
+$button-default-bg--hover: $color-white !default;
+$button-default-border-color--hover: $color-primary !default;
+// active
+$button-default-text-color--active: $color-primary-darkest !default;
+$button-default-bg--active: $color-white !default;
+$button-default-border-color--active: $color-primary-darker !default;
+// disabled
+$button-default-text-color--disabled: $color-gray-lighter !default;
+$button-default-bg--disabled: $color-white !default;
+$button-default-border-color--disabled: $color-gray-lighter !default;
+
+// Primary button
+$button-primary-text-decoration: none !default;
+
+$button-primary-text-color: $color-white !default;
 $button-primary-bg: $color-primary !default;
+$button-primary-border-color: transparent !default;
+// hover
+$button-primary-text-color--hover: $color-white !default;
 $button-primary-bg--hover: $color-primary-darker !default;
+$button-primary-border-color--hover: transparent !default;
+// active
+$button-primary-text-color--active: $color-white !default;
 $button-primary-bg--active: $color-primary-darkest !default;
+$button-primary-border-color--active: transparent !default;
+// disabled
+$button-primary-text-color--disabled: $color-gray-dark !default;
+$button-primary-bg--disabled: $color-gray-lighter !default;
+$button-primary-border-color--disabled: $color-gray-lighter !default;
+
+// Secondary button
+$button-secondary-text-decoration: none !default;
+
+$button-secondary-text-color: $color-primary !default;
+$button-secondary-bg: $color-white !default;
+$button-secondary-border-color: $color-primary !default;
+// hover
+$button-secondary-text-color--hover: $color-primary-darker !default;
+$button-secondary-bg--hover: $color-gray-lightest !default;
+$button-secondary-border-color--hover: $color-primary !default;
+// active
+$button-secondary-text-color--active: $color-primary-darkest !default;
+$button-secondary-bg--active: $color-gray-lighter !default;
+$button-secondary-border-color--active: $color-primary-darker !default;
+// disabled
+$button-secondary-text-color--disabled: $color-gray-lighter !default;
+$button-secondary-bg--disabled: $color-white !default;
+$button-secondary-border-color--disabled: $color-gray-lighter !default;
+
+// Tertiary button
+$button-tertiary-text-decoration: none !default;
+
+$button-tertiary-text-color: $color-primary !default;
+$button-tertiary-bg: $color-white !default;
+$button-tertiary-border-color: transparent !default;
+// hover
+$button-tertiary-text-color--hover: $color-primary-darker !default;
+$button-tertiary-bg--hover: $color-white !default;
+$button-tertiary-border-color--hover: transparent !default;
+// active
+$button-tertiary-text-color--active: $color-primary-darkest !default;
+$button-tertiary-bg--active: $color-white !default;
+$button-tertiary-border-color--active: transparent !default;
+// disabled
+$button-tertiary-text-color--disabled: $color-gray-lighter !default;
+$button-tertiary-bg--disabled: $color-white !default;
+$button-tertiary-border-color--disabled: transparent !default;
+
+// Inverse button
+$button-inverse-text-decoration: none !default;
+
+$button-inverse-text-color: $color-white !default;
+$button-inverse-bg: transparent !default;
+$button-inverse-border-color: $color-white !default;
+// hover
+$button-inverse-text-color--hover: $color-gray-lightest !default;
+$button-inverse-bg--hover: transparent !default;
+$button-inverse-border-color--hover: $color-gray-lightest !default;
+// active
+$button-inverse-text-color--active: $color-gray-lighter !default;
+$button-inverse-bg--active: transparent !default;
+$button-inverse-border-color--active: $color-gray-lighter !default;
+// disabled
+$button-inverse-text-color--disabled: $color-gray-lighter !default;
+$button-inverse-bg--disabled: transparent !default;
+$button-inverse-border-color--disabled: $color-gray-lighter !default;
+
+// Transparent button
+$button-transparent-text-decoration: underline !default;
+
+$button-transparent-text-color: $color-primary !default;
+$button-transparent-bg: transparent !default;
+$button-transparent-border-color: transparent !default;
+// hover
+$button-transparent-text-color--hover: $color-primary-darker !default;
+$button-transparent-bg--hover: transparent !default;
+$button-transparent-border-color--hover: transparent !default;
+// active
+$button-transparent-text-color--active: $color-primary-darkest !default;
+$button-transparent-bg--active: transparent !default;
+$button-transparent-border-color--active: transparent !default;
+// disabled
+$button-transparent-text-color--disabled: $color-gray-lighter !default;
+$button-transparent-bg--disabled: transparent !default;
+$button-transparent-border-color--disabled: transparent !default;
+
+// Inverse Primary button
+$button-primary-inverse-text-decoration: none !default;
+
+$button-primary-inverse-text-color: $color-white !default;
+$button-primary-inverse-bg: $color-primary !default;
+$button-primary-inverse-border-color: transparent !default;
+// hover
+$button-primary-inverse-text-color--hover: $color-white !default;
+$button-primary-inverse-bg--hover: $color-primary-darker !default;
+$button-primary-inverse-border-color--hover: transparent !default;
+// active
+$button-primary-inverse-text-color--active: $color-white !default;
+$button-primary-inverse-bg--active: $color-primary-darkest !default;
+$button-primary-inverse-border-color--active: transparent !default;
+// disabled
+$button-primary-inverse-text-color--disabled: $color-gray-dark !default;
+$button-primary-inverse-bg--disabled: $color-gray-lighter !default;
+$button-primary-inverse-border-color--disabled: $color-gray-lighter !default;

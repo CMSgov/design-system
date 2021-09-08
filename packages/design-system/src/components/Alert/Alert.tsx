@@ -5,9 +5,6 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
-// Omit props that we override with values from the ChoiceList
-type OmitAlertProps = 'role';
-
 /* eslint-disable camelcase */
 // disable linting since prop names must be in snake case for integration with Blast
 export interface AnalyticsEventShape {
@@ -96,7 +93,10 @@ const defaultAnalytics = (heading = '', variation = '') => ({
   },
 });
 
-export class Alert extends React.Component<
+// Omit props that we override with values from the Alert
+type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
+
+export class Alert extends React.PureComponent<
   Omit<React.ComponentPropsWithRef<'div'>, OmitAlertProps> & AlertProps,
   any
 > {

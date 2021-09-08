@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 export type SpinnerSize = 'small' | 'big';
+ 
 export interface SpinnerProps {
   /**
    * The text announced to screen readers
