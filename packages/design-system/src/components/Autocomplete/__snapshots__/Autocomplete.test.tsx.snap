@@ -14,8 +14,8 @@ exports[`Autocomplete renders a snapshot 1`] = `
   >
     <label
       className="ds-c-label"
-      htmlFor="autocomplete_46"
-      id="autocomplete_label_47"
+      htmlFor="autocomplete_51"
+      id="autocomplete_label_52"
     >
       <span
         className=""
@@ -26,14 +26,14 @@ exports[`Autocomplete renders a snapshot 1`] = `
     <input
       aria-activedescendant={null}
       aria-autocomplete="list"
-      aria-controls="autocomplete_owned_listbox_48"
+      aria-controls="autocomplete_owned_listbox_53"
       aria-expanded={false}
       aria-invalid={false}
       aria-labelledby={null}
       aria-owns={null}
       autoComplete="off"
       className="ds-c-field"
-      id="autocomplete_46"
+      id="autocomplete_51"
       name="autocomplete_field"
       onBlur={[Function]}
       onChange={[Function]}
@@ -53,6 +53,10 @@ exports[`Autocomplete renders a snapshot 1`] = `
   </button>
 </div>
 `;
+
+exports[`Autocomplete renders item with custom className 1`] = `"ds-c-autocomplete__list-item"`;
+
+exports[`Autocomplete renders item with custom className 2`] = `"custom-class ds-c-autocomplete__list-item"`;
 
 exports[`Autocomplete renders items with children property 1`] = `
 <ul

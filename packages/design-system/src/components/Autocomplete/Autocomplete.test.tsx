@@ -89,6 +89,21 @@ describe('Autocomplete', () => {
     expect(ul).toMatchSnapshot();
   });
 
+  it('renders item with custom className', () => {
+    const items = [
+      { id: '1a', name: 'Normal item' },
+      { id: '5b', name: 'Special item', className: 'custom-class' },
+    ];
+    const { wrapper } = render({ isOpen: true, items }, true);
+
+    const list = wrapper.find('ul');
+    expect(list.exists()).toBe(true);
+
+    const listItems = list.find('li');
+    expect(listItems.at(0).prop('className')).toMatchSnapshot();
+    expect(listItems.at(1).prop('className')).toMatchSnapshot();
+  });
+
   it('renders Autocomplete component without items', () => {
     const { wrapper } = render({ items: undefined, isOpen: true }, true);
     expect(wrapper.find('ul').exists()).toBe(false);
