@@ -18,7 +18,12 @@ ReactDOM.render(
             <span>
               Current page: {page} / {totalPages}
             </span>
-            <Pagination currentPage={page} totalPages={totalPages} onPageChange={onPageChange} />
+            <Pagination
+              id="test-default"
+              currentPage={page}
+              totalPages={totalPages}
+              onPageChange={onPageChange}
+            />
           </>
         );
       }}
@@ -38,6 +43,7 @@ ReactDOM.render(
               Current page: {page} / {totalPages}
             </span>
             <Pagination
+              id="test-compact"
               currentPage={page}
               totalPages={totalPages}
               onPageChange={onPageChange}

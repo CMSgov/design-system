@@ -113,6 +113,7 @@ function Pagination({
   leftLabel,
   rightLabel,
   totalPages,
+  ...rest
 }: PaginationProps): React.ReactElement {
   const classes = classNames('ds-c-pagination', className);
 
