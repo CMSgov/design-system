@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-@import '../settings/index.scss';
+@import '../settings/index.scss'; 
 
 // Links
 // Default link
@@ -17,7 +17,7 @@ $link-inverse-active-color: $color-muted-inverse !default;
 // Link underline
 $link-underline-height: 1px !default;
 $link-underline-height-hover: 1px !default;
-$link-underline-offset: 0 !default;
+$link-underline-offset: auto !default;
 
 %link {
   color: $link-color;
