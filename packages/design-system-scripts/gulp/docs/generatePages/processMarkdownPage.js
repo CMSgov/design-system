@@ -52,7 +52,7 @@ function processMarkdownPage(filePath, body, options) {
     // Temporarily keep filepath based legacy logic
     // Both forward and back slashes are required for this to build on windows
     // eslint-disable-next-line no-useless-escape
-    referenceURI = filePath.match(/src[\\\/]pages[\\\/]([a-z0-9-/]+)/i)[1];
+    referenceURI = filePath.match(/src[\\\/]pages[\\\/]([a-z0-9-/\\]+)/i)[1];
     depth = referenceURI.split('/').length;
 
     if (referenceURI === 'index') {
