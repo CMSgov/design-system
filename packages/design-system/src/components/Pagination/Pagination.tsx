@@ -6,6 +6,10 @@ import classNames from 'classnames';
 
 export interface PaginationProps {
   /**
+   * Defines `aria-label` on wrapping Pagination element. Since this exists on a `<nav>` element, the word "navigation" should be omitted from this label. Optional.
+   */
+  ariaLabel?: string;
+  /**
    * Class to be applied to parent `<nav>` element of Pagination component. Optional.
    */
   className?: string;
@@ -26,13 +30,21 @@ export interface PaginationProps {
    */
   onPageChange: (evt: React.MouseEvent, page: number) => void;
   /**
-   * Sets custom label on left navigation. Optional.
+   * Sets custom label on start navigation. Added for language support. Optional.
    */
-  leftLabel?: string;
+  startLabelText?: string;
   /**
-   * Sets custom label on right navigation. Optional.
+   * Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.
    */
-  rightLabel?: string;
+  startAriaLabel?: string;
+  /**
+   * Sets custom label on end navigation. Added for language support. Optional.
+   */
+  endLabelText?: string;
+  /**
+   * Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.
+   */
+  endAriaLabel?: string;
   /**
    * Sets total number of pages in Pagination component.
    */
@@ -105,13 +117,16 @@ function paginationBuilder(page: number, pages: number): number[] {
 }
 
 function Pagination({
+  ariaLabel,
   className,
   compact,
   currentPage,
   customUrl,
   onPageChange,
-  leftLabel,
-  rightLabel,
+  startLabelText,
+  startAriaLabel,
+  endLabelText,
+  endAriaLabel,
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement {
@@ -214,12 +229,13 @@ function Pagination({
   }
 
   return (
-    <nav className={classes} role="navigation" aria-label="Pagination Navigation">
+    <nav className={classes} aria-label={ariaLabel} {...rest}>
       {currentPage !== 1 && (
         <Button
           variation="tertiary"
           href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`}
           onClick={pageChange(currentPage - 1)}
+          aria-label={startAriaLabel}
         >
           <span className="ds-c-pagination__nav--previous-img-container">
             <svg
@@ -238,18 +254,16 @@ function Pagination({
               />
             </svg>
           </span>
-          {leftLabel}
+          {startLabelText}
         </Button>
       )}
 
       {isMobile || compact ? (
-        <span className="ds-c-pagination__page-count">
+        <span
+          className="ds-c-pagination__page-count"
+          aria-label={`on page ${currentPage} of ${totalPages}`}
+        >
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
-          <span
-            className="sr-only"
-            aria-live="assertive"
-            aria-label={`on page ${currentPage} of ${totalPages}`}
-          />
         </span>
       ) : (
         <ol>{pages}</ol>
@@ -260,8 +274,9 @@ function Pagination({
           variation="tertiary"
           href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`}
           onClick={pageChange(currentPage + 1)}
+          aria-label={endAriaLabel}
         >
-          {rightLabel}
+          {endLabelText}
           <span className="ds-c-pagination__nav--next-img-container">
             <svg
               aria-hidden="true"
@@ -286,10 +301,13 @@ function Pagination({
 }
 
 Pagination.defaultProps = {
+  ariaLabel: 'Pagination',
   compact: false,
   currentPage: 1,
-  leftLabel: 'Previous',
-  rightLabel: 'Next',
+  startLabelText: 'Previous',
+  startAriaLabel: 'Previous Page',
+  endLabelText: 'Next',
+  endAriaLabel: 'Next Page',
 };
 
 export default Pagination;

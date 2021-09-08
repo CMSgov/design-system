@@ -23,13 +23,13 @@ describe('Pagination', () => {
   });
 
   describe('accessibility attributes', () => {
-    it('should have correct role', () => {
-      const wrapper = render({ totalPages: 8 });
-      expect(wrapper.prop('role')).toEqual('navigation');
-    });
     it('should have navigation label', () => {
       const wrapper = render({ totalPages: 8 });
-      expect(wrapper.prop('aria-label')).toEqual('Pagination Navigation');
+      expect(wrapper.prop('aria-label')).toEqual('Pagination');
+    });
+    it('should set a custom navigation label', () => {
+      const wrapper = render({ totalPages: 8, ariaLabel: 'Pagey page page' });
+      expect(wrapper.prop('aria-label')).toEqual('Pagey page page');
     });
   });
 
