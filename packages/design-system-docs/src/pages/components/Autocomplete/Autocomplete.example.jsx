@@ -2,19 +2,8 @@ import { Autocomplete, TextField } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// Right now the documentation files don't actually get parsed for styles, so
-// this is a hack to add custom CSS classes for this example.
-const styleElement = document.createElement('style');
-styleElement.innerText = `
-  .ds-c-autocomplete__search-all.ds-c-autocomplete__list-item--active a {
-    color: #fff;
-    text-decoration-color: #fff;
-  }
-`;
-document.querySelector('head').appendChild(styleElement);
-
 ReactDOM.render(
-  <div>
+  <div className="example--autocomplete">
     <Autocomplete
       items={[
         {
