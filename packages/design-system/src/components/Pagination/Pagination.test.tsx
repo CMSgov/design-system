@@ -64,7 +64,7 @@ describe('Pagination', () => {
 
       it('should call onPageChange when a page is pressed', () => {
         const wrapper = render({ currentPage: 2 }, true);
-        wrapper.find('ol').childAt(0).find(pageButtonSelector).simulate('click', {});
+        wrapper.find('ul').childAt(0).find(pageButtonSelector).simulate('click', {});
 
         expect(onPageChange).toHaveBeenCalledTimes(1);
         expect(onPageChange).toHaveBeenCalledWith(expect.anything(), 1);
@@ -88,7 +88,7 @@ describe('Pagination', () => {
 
       it('should have appropriate href for page', () => {
         const wrapper = render({ currentPage: 2, totalPages: 5 }, true);
-        const pageEl = wrapper.find('ol').childAt(3).find(pageButtonSelector);
+        const pageEl = wrapper.find('ul').childAt(3).find(pageButtonSelector);
 
         expect(pageEl.prop('href')).toBe('#4');
       });
@@ -112,7 +112,7 @@ describe('Pagination', () => {
 
       it('should have appropriate href for page', () => {
         const wrapper = render({ currentPage: 2, totalPages: 5, customUrl: customUrl }, true);
-        const pageEl = wrapper.find('ol').childAt(3).find(pageButtonSelector);
+        const pageEl = wrapper.find('ul').childAt(3).find(pageButtonSelector);
 
         expect(pageEl.prop('href')).toBe(`${customUrl}/4`);
       });
@@ -150,7 +150,7 @@ describe('Pagination', () => {
   describe('pagination slot behavior', () => {
     it('should begin page count with 1', () => {
       const wrapper = render({ currentPage: 1 });
-      const firstPage = wrapper.find('ol').childAt(0).dive().find(pageButtonSelector);
+      const firstPage = wrapper.find('ul').childAt(0).dive().find(pageButtonSelector);
 
       expect(firstPage).toBeDefined();
       expect(firstPage.text()).toBe('1');
@@ -159,7 +159,7 @@ describe('Pagination', () => {
     it('should end page count with page total', () => {
       const lastPageNum = 3;
       const wrapper = render({ currentPage: 1, totalPages: lastPageNum }, true);
-      const lastPage = wrapper.find('ol').childAt(2).find(pageButtonSelector);
+      const lastPage = wrapper.find('ul').childAt(2).find(pageButtonSelector);
 
       expect(lastPage).toBeDefined();
       expect(lastPage.text()).toBe(`${lastPageNum}`);
@@ -167,7 +167,7 @@ describe('Pagination', () => {
 
     it('should highlight current page with correct styles', () => {
       const wrapper = render({ currentPage: 3, totalPages: 5 });
-      const currentPageEl = wrapper.find('ol').childAt(2).dive().find(pageButtonSelector);
+      const currentPageEl = wrapper.find('ul').childAt(2).dive().find(pageButtonSelector);
 
       expect(currentPageEl.type()).toEqual('span');
       expect(currentPageEl.prop('aria-current')).toEqual('true');
@@ -178,7 +178,7 @@ describe('Pagination', () => {
       it('should show all pages', () => {
         const totalPageNum = 5;
         const wrapper = render({ currentPage: 1, totalPages: totalPageNum });
-        const listEl = wrapper.find('ol');
+        const listEl = wrapper.find('ul');
         const pageItems = listEl.children();
 
         expect(pageItems.length).toEqual(totalPageNum);
@@ -199,21 +199,21 @@ describe('Pagination', () => {
         const wrapper3 = render({ currentPage: 3, totalPages: 35 }, true);
 
         expect(wrapper1.find('Ellipses').length).toBe(1);
-        let listEl = wrapper1.find('ol');
+        let listEl = wrapper1.find('ul');
         let secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
         expect(secondSlot.text()).toBe('2');
 
         expect(wrapper2.find('Ellipses').length).toBe(1);
-        listEl = wrapper2.find('ol');
+        listEl = wrapper2.find('ul');
         secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
         expect(secondSlot.text()).toBe('2');
 
         expect(wrapper3.find('Ellipses').length).toBe(1);
-        listEl = wrapper3.find('ol');
+        listEl = wrapper3.find('ul');
         secondSlot = listEl.childAt(1).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondSlot).toBeDefined();
@@ -226,21 +226,21 @@ describe('Pagination', () => {
         const wrapperThirdLast = render({ currentPage: 33, totalPages: 35 }, true);
 
         expect(wrapperLast.find('Ellipses').length).toBe(1);
-        let listEl = wrapperLast.find('ol');
+        let listEl = wrapperLast.find('ul');
         let secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
         expect(secondLastSlot.text()).toBe('34');
 
         expect(wrapperSecondLast.find('Ellipses').length).toBe(1);
-        listEl = wrapperSecondLast.find('ol');
+        listEl = wrapperSecondLast.find('ul');
         secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
         expect(secondLastSlot.text()).toBe('34');
 
         expect(wrapperThirdLast.find('Ellipses').length).toBe(1);
-        listEl = wrapperThirdLast.find('ol');
+        listEl = wrapperThirdLast.find('ul');
         secondLastSlot = listEl.childAt(5).find(pageButtonSelector);
         expect(listEl.children().length).toBe(7);
         expect(secondLastSlot).toBeDefined();
@@ -251,11 +251,11 @@ describe('Pagination', () => {
         const wrapperEndMiddle = render({ currentPage: 10, totalPages: 35 });
         const wrapperBeginningMiddle = render({ currentPage: 30, totalPages: 35 });
 
-        let listEl = wrapperEndMiddle.find('ol');
+        let listEl = wrapperEndMiddle.find('ul');
         expect(listEl.children().length).toBe(7);
         expect(wrapperEndMiddle.find('Ellipses').length).toBe(2);
 
-        listEl = wrapperBeginningMiddle.find('ol');
+        listEl = wrapperBeginningMiddle.find('ul');
         expect(wrapperBeginningMiddle.find('Ellipses').length).toBe(2);
         expect(listEl.children().length).toBe(7);
       });
@@ -268,7 +268,7 @@ describe('Pagination', () => {
       const compactClassName = 'ds-c-pagination__page-count';
 
       expect(wrapper.find(compactClassName)).toBeTruthy();
-      expect(wrapper.contains('ol')).toBe(false);
+      expect(wrapper.contains('ul')).toBe(false);
       expect(wrapper).toMatchSnapshot();
     });
 

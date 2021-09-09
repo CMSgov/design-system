@@ -75,7 +75,7 @@ exports[`Pagination should render component 1`] = `
     </span>
     Previous
   </Button>
-  <ol>
+  <ul>
     <Page
       index={1}
       isActive={false}
@@ -94,7 +94,7 @@ exports[`Pagination should render component 1`] = `
       key="page-3"
       onPageChange={[Function]}
     />
-  </ol>
+  </ul>
   <Button
     aria-hidden={false}
     aria-label="Next Page"
