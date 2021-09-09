@@ -39,10 +39,9 @@
 
 .example--autocomplete {
   .ds-c-autocomplete__search-all.ds-c-autocomplete__list-item--active {
-    background-color: $color-white;
-
     a {
-      @include focus-styles;
+      color: $color-white;
+      text-decoration-color: $color-white;
     }
   }
 }
