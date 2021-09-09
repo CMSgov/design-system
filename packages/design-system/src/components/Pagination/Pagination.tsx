@@ -272,7 +272,7 @@ function Pagination({
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
         </span>
       ) : (
-        <ol>{pages}</ol>
+        <ul>{pages}</ul>
       )}
 
       <Button
