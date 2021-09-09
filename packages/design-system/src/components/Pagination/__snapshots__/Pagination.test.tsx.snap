@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination pagination slot behavior less than 7 pages should show all pages 1`] = `
-<ol>
+<ul>
   <Page
     index={1}
     isActive={true}
@@ -32,7 +32,7 @@ exports[`Pagination pagination slot behavior less than 7 pages should show all p
     key="page-5"
     onPageChange={[Function]}
   />
-</ol>
+</ul>
 `;
 
 exports[`Pagination should render component 1`] = `
