@@ -106,13 +106,13 @@ ReactDOM.render(
           ),
         },
         {
-          id: '4',
           children: (
             <a href="#snacks" onClick={() => console.log('Searching for all the snacks!')}>
               Search all snacks
             </a>
           ),
           className: 'ds-c-autocomplete__search-all',
+          isResult: false,
         },
       ]}
       itemToString={(item) => (item && item.name) || ''}

@@ -14,7 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, { DownshiftProps } from 'downshift';
+import Downshift, { A11yStatusMessageOptions, DownshiftProps } from 'downshift';
 import Button from '../Button/Button';
 import React from 'react';
 import TextField from '../TextField/TextField';
@@ -29,6 +29,7 @@ export interface AutocompleteItems {
   name?: string;
   children?: React.ReactNode;
   className?: string;
+  isResult?: boolean;
 }
 
 type PropsNotPassedToDownshift =
@@ -81,7 +82,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
    */
-  getA11yStatusMessage?: DownshiftProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: (options: A11yStatusMessageOptions<AutocompleteItems>) => string;
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
@@ -267,6 +268,24 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     }: AutocompleteProps = this.props;
 
     const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
+
+    if (items) {
+      // We allow items that aren't technically results to be rendered as items in the list, such as
+      // a button for viewing all results, but these non-result items should not be counted in the
+      // accessibility messages as results. It is not enough to set downshift's `itemCount` property
+      // because it will actually make any remaining items past the `itemCount` unselectable with
+      // the keyboard.
+      const resultCount = items.filter((item) => item.isResult !== false).length;
+      if (items.length !== resultCount) {
+        const getA11yStatusMessage =
+          autocompleteProps.getA11yStatusMessage ?? Downshift.defaultProps.getA11yStatusMessage;
+        autocompleteProps.getA11yStatusMessage = (
+          args: A11yStatusMessageOptions<AutocompleteItems>
+        ) => {
+          return getA11yStatusMessage({ ...args, resultCount });
+        };
+      }
+    }
 
     return (
       <Downshift {...autocompleteProps}>
