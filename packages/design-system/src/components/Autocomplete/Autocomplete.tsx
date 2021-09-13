@@ -282,7 +282,14 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
         autocompleteProps.getA11yStatusMessage = (
           args: A11yStatusMessageOptions<AutocompleteItems>
         ) => {
-          return getA11yStatusMessage({ ...args, resultCount });
+          const newArgs = { ...args, resultCount };
+          if (args.previousResultCount === args.resultCount) {
+            // Since we are modifying the resultCount, we want to avoid a case where the resultCount
+            // doesn't match the previousResultCount when it naturally would, because that would
+            // result in an unnecessary announcement of the result count again.
+            newArgs.previousResultCount = newArgs.resultCount;
+          }
+          return getA11yStatusMessage(newArgs);
         };
       }
     }
