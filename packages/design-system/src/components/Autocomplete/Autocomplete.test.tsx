@@ -75,17 +75,8 @@ describe('Autocomplete', () => {
       },
     ];
 
-    const tree = renderer
-      .create(
-        <Autocomplete items={items} isOpen>
-          <TextField label="autocomplete" name="autocomplete_field" />
-        </Autocomplete>
-      )
-      .toJSON();
-
-    // TODO: Clean this up by using another rendering library or figure out how to use this one to
-    // render only a portion of the tree but using their built-in functions like "findByType"
-    const ul = tree.children[1].children[0];
+    const { wrapper } = render({ items, isOpen: true }, true);
+    const ul = wrapper.find('ul');
     expect(ul).toMatchSnapshot();
   });
 
