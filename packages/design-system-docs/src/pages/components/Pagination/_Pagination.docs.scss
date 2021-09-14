@@ -71,13 +71,14 @@ The following Sass variables can be overridden to theme alerts:
 ### Accessibility
 
 - Use a wrapping `<nav>` element to identify Pagination as a navigation section.
-- Pagination **must** have an ARIA label attribute defined on the `<nav>` element that describes its purpose.
+- If more than one `<nav>` element is present on a page, Pagination **must** have an ARIA label attribute defined on the `<nav>` element that describes its purpose.
 - Use an unordered list for the navigation items as this allows screen readers to voice the number of elements in the Pagination component.
 - Use `aria-current="page"` on the current page's element to properly voice the current page for screen readers.
 - Voice the word "page" before the page numbers.
 - If *Previous* navigation link has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the first pagination page link.
 - If pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the next pagination page link.
 - If last pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the *Next* pagination navigation link.
+- Once a pagination page has been clicked, focus should shift to the top-level piece of content on that page, usually an `<h1>`.
 
 Style guide: components.pagination.guidance
 */
