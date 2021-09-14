@@ -25,10 +25,27 @@ import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
 export interface AutocompleteItems {
+  /**
+   * Unique identifier for this item
+   */
   id?: string;
+  /**
+   * Displayed value of the item. May alternatively provide a `children` value
+   */
   name?: string;
+  /**
+   * Custom React node as an alternative to a string-only `name`
+   */
   children?: React.ReactNode;
+  /**
+   * Additional classes to be added to the root element.
+   * Useful for adding utility classes.
+   */
   className?: string;
+  /**
+   * Whether this item should be counted as one of the results for the purpose of announcing the
+   * result count to screen readers
+   */
   isResult?: boolean;
 }
 

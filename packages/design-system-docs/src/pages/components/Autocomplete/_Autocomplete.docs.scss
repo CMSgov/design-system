@@ -19,6 +19,52 @@ Style guide: components.autocomplete.react
 */
 
 /*
+<h4>Autocomplete item object</h4>
+
+<table class="ds-c-table ds-c-table--compact">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">id</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Unique identifier for this item</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">name</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Displayed value of the item. May alternatively provide a <code>children</code> value</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">children</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Additional classes to be added to the root element. Useful for adding utility classes.</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">isResult</code></td>
+      <td><code>string</code></td>
+      <td>
+        <p>Whether this item should be counted as one of the results for the purpose of announcing the result count to screen readers</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Style guide: components.autocomplete.items-object
+*/
+
+/*
 ---
 
 ### When to use
