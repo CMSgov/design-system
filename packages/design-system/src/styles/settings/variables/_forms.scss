@@ -49,8 +49,6 @@ $button-text-decoration-underline: underline !default;
 $button-text-decoration-none: none !default;
 
 // Default button
-$button-default-text-decoration: none !default;
-
 $button-default-text-color: $color-primary !default;
 $button-default-bg: $color-white !default;
 $button-default-border-color: $color-primary !default;
@@ -68,8 +66,6 @@ $button-default-bg--disabled: $color-white !default;
 $button-default-border-color--disabled: $color-gray-lighter !default;
 
 // Primary button
-$button-primary-text-decoration: none !default;
-
 $button-primary-text-color: $color-white !default;
 $button-primary-bg: $color-primary !default;
 $button-primary-border-color: transparent !default;
@@ -87,8 +83,6 @@ $button-primary-bg--disabled: $color-gray-lighter !default;
 $button-primary-border-color--disabled: $color-gray-lighter !default;
 
 // Secondary button
-$button-secondary-text-decoration: none !default;
-
 $button-secondary-text-color: $color-primary !default;
 $button-secondary-bg: $color-white !default;
 $button-secondary-border-color: $color-primary !default;
@@ -106,8 +100,6 @@ $button-secondary-bg--disabled: $color-white !default;
 $button-secondary-border-color--disabled: $color-gray-lighter !default;
 
 // Tertiary button
-$button-tertiary-text-decoration: none !default;
-
 $button-tertiary-text-color: $color-primary !default;
 $button-tertiary-bg: $color-white !default;
 $button-tertiary-border-color: transparent !default;
@@ -125,8 +117,6 @@ $button-tertiary-bg--disabled: $color-white !default;
 $button-tertiary-border-color--disabled: transparent !default;
 
 // Inverse button
-$button-inverse-text-decoration: none !default;
-
 $button-inverse-text-color: $color-white !default;
 $button-inverse-bg: transparent !default;
 $button-inverse-border-color: $color-white !default;
@@ -144,8 +134,6 @@ $button-inverse-bg--disabled: transparent !default;
 $button-inverse-border-color--disabled: $color-gray-lighter !default;
 
 // Transparent button
-$button-transparent-text-decoration: underline !default;
-
 $button-transparent-text-color: $color-primary !default;
 $button-transparent-bg: transparent !default;
 $button-transparent-border-color: transparent !default;
@@ -163,8 +151,6 @@ $button-transparent-bg--disabled: transparent !default;
 $button-transparent-border-color--disabled: transparent !default;
 
 // Inverse Primary button
-$button-primary-inverse-text-decoration: none !default;
-
 $button-primary-inverse-text-color: $color-white !default;
 $button-primary-inverse-bg: $color-primary !default;
 $button-primary-inverse-border-color: transparent !default;
