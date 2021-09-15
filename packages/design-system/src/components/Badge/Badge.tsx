@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 export type BadgeSize = 'big';
 export type BadgeVariation = 'info' | 'success' | 'warn' | 'alert';
- 
+
 export interface BadgeProps {
   /**
    * Additional classes to be added to the root badge element.
