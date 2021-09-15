@@ -99,7 +99,7 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
   /**
    * Customize the default status messages announced to screenreader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/paypal/downshift#geta11ystatusmessage)
    */
-  getA11yStatusMessage?: (options: A11yStatusMessageOptions<AutocompleteItems>) => string;
+  getA11yStatusMessage?: DownshiftProps<any>['getA11yStatusMessage'];
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
