@@ -48,6 +48,13 @@ Style guide: components.autocomplete.react
       <td><code class="ds-u-font-weight--bold">children</code></td>
       <td><code>React.ReactNode</code></td>
       <td>
+        <p>Custom React node as an alternative to a string-only `name`</p>
+      </td>
+    </tr>
+    <tr>
+      <td><code class="ds-u-font-weight--bold">className</code></td>
+      <td><code>string</code></td>
+      <td>
         <p>Additional classes to be added to the root element. Useful for adding utility classes.</p>
       </td>
     </tr>
