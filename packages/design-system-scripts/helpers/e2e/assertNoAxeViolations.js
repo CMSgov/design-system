@@ -1,4 +1,4 @@
-/* global driver, axeBuilder */
+/* global driver, AxeBuilder */
 const { RULESET_ALL } = require('./constants');
 const chalk = require('chalk');
 
@@ -41,23 +41,25 @@ function printViolations(violations) {
   violations.forEach(printViolation);
 }
 
-module.exports = async function assertNoAxeViolations(url, disabledRules = []) {
+module.exports = function assertNoAxeViolations(url, disabledRules = []) {
   if (url) {
-    await driver.get(url);
+    return driver.get(url)
+    .then(() => {
+      const defaultDisabledRules = ['bypass'];
+      return new AxeBuilder(driver)
+        .withTags(RULESET_ALL)
+        .disableRules(defaultDisabledRules.concat(disabledRules))
+        .analyze((err, results) => {
+          if (results && results.violations.length >= 1) {
+            printViolations(results.violations);
+          }
+          if (err) {
+            // ESLint wants us to handle the error directly, but that's what
+            // our assertion does below.
+          }
+          expect(results.violations.length).toBe(0);
+        });
+    })
+    .catch((err) => { console.log(err)});
   }
-  const defaultDisabledRules = ['bypass'];
-
-  await axeBuilder(driver)
-    .withTags(RULESET_ALL)
-    .disableRules(defaultDisabledRules.concat(disabledRules))
-    .analyze((err, results) => {
-      if (results.violations.length >= 1) {
-        printViolations(results.violations);
-      }
-      if (err) {
-        // ESLint wants us to handle the error directly, but that's what
-        // our assertion does below.
-      }
-      expect(results.violations.length).toBe(0);
-    });
 };

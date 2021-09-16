@@ -1,31 +1,10 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import AriaModal from 'react-aria-modal';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
-import get from 'lodash/get';
-
-// Default analytics object
-const defaultAnalytics = (heading = '') => ({
-  onComponentDidMount: {
-    event_name: 'modal_impression',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'modal impression',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-  },
-  onComponentWillUnmount: {
-    event_name: 'modal_closed',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'closed modal',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-  },
-});
 
 export class Dialog extends React.PureComponent {
   constructor(props) {
@@ -53,12 +32,13 @@ export class Dialog extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (dialogSendsAnalytics()) {
-      const eventAction = 'onComponentDidMount';
-      const eventHeading = this.props.title || this.props.heading;
+    if (dialogSendsAnalytics() && this.props.analytics !== false) {
+      const heading = this.props.title || this.props.heading;
 
-      if (typeof eventHeading === 'string') {
-        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      if (this.props.analyticsLabelOverride) {
+        this.eventHeadingText = this.props.analyticsLabelOverride;
+      } else if (typeof heading === 'string') {
+        this.eventHeadingText = heading.substring(0, MAX_LENGTH);
       } else {
         this.eventHeadingText =
           this.headingRef && this.headingRef.textContent
@@ -67,21 +47,28 @@ export class Dialog extends React.PureComponent {
       }
 
       /* Send analytics event for dialog open */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        event_name: 'modal_impression',
+        event_type: EVENT_CATEGORY.uiInteraction,
+        ga_eventAction: 'modal impression',
+        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventLabel: this.eventHeadingText,
+        heading: this.eventHeadingText,
+      });
     }
   }
 
   componentWillUnmount() {
-    if (dialogSendsAnalytics()) {
-      const eventAction = 'onComponentWillUnmount';
+    if (dialogSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for dialog close */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        event_name: 'modal_closed',
+        event_type: EVENT_CATEGORY.uiInteraction,
+        ga_eventAction: 'closed modal',
+        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventLabel: this.eventHeadingText,
+        heading: this.eventHeadingText,
+      });
     }
   }
 
@@ -178,20 +165,6 @@ Dialog.defaultProps = {
   underlayClickExits: false,
 };
 
-/**
- * Defines the shape of an analytics event for tracking that is an object with key-value pairs
- */
-const AnalyticsEventShape = PropTypes.shape({
-  event_name: PropTypes.string,
-  event_type: PropTypes.string,
-  ga_eventAction: PropTypes.string,
-  ga_eventCategory: PropTypes.string,
-  ga_eventLabel: PropTypes.string,
-  ga_eventType: PropTypes.string,
-  ga_eventValue: PropTypes.string,
-  heading: PropTypes.string,
-});
-
 // TODO: closeButtonText should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 Dialog.propTypes = {
@@ -202,17 +175,13 @@ Dialog.propTypes = {
    */
   alert: PropTypes.bool,
   /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
+   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
-  analytics: PropTypes.shape({
-    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-    onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-  }),
+  analytics: PropTypes.bool,
+  /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   */
+  analyticsLabelOverride: PropTypes.string,
   /**
    * Provide a **DOM node** which contains your page's content (which the modal should render
    * outside of). When the modal is open this node will receive `aria-hidden="true"`.
