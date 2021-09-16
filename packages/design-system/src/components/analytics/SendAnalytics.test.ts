@@ -1,6 +1,6 @@
-import { sendAnalyticsEvent } from './SendAnalytics';
+import { sendLinkEvent } from './sendAnalytics';
 
-describe('sendAnalyticsEvent', () => {
+describe('sendLinkEvent', () => {
   const gaEventProps = {
     ga_eventType: 'cmsds',
     ga_eventCategory: 'test category',
@@ -13,7 +13,7 @@ describe('sendAnalyticsEvent', () => {
     it('does nothing if window.utag does not exist', () => {
       const mock = jest.fn();
       window.utag = undefined;
-      sendAnalyticsEvent({}, gaEventProps);
+      sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
     });
   });
@@ -29,23 +29,9 @@ describe('sendAnalyticsEvent', () => {
       jest.resetAllMocks();
     });
 
-    it('calls window.utag.link with default props', () => {
-      sendAnalyticsEvent({}, gaEventProps);
+    it('calls window.utag.link with event', () => {
+      sendLinkEvent(gaEventProps);
       expect(window.utag?.link).toHaveBeenCalledWith(gaEventProps);
-    });
-
-    it('calls window.utag.link with extra props', () => {
-      const gaEventExtraProps = {
-        ga_eventType: 'cmsds',
-        ga_eventCategory: 'test category',
-        ga_eventAction: 'test action',
-        ga_eventLabel: 'test label',
-        ga_eventValue: 'test value',
-        ga_extraProps1: 'test extra props 1',
-        ga_extraProps2: 'test extra props 2',
-      };
-      sendAnalyticsEvent(gaEventExtraProps, gaEventProps);
-      expect(window.utag?.link).toHaveBeenCalledWith(gaEventExtraProps);
     });
   });
 
@@ -60,9 +46,7 @@ describe('sendAnalyticsEvent', () => {
           throw 'test event';
         }),
       };
-      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(
-        'Error sending event to Tealium test event'
-      );
+      expect(sendLinkEvent(gaEventProps)).toBe('Error sending event to Tealium test event');
     });
 
     it('retries on missing utag.link', () => {
@@ -70,7 +54,7 @@ describe('sendAnalyticsEvent', () => {
       jest.useFakeTimers();
 
       window.utag = { link: undefined };
-      sendAnalyticsEvent({}, gaEventProps);
+      sendLinkEvent(gaEventProps);
       expect(mock).not.toHaveBeenCalled();
 
       window.utag = { link: mock };
@@ -82,7 +66,7 @@ describe('sendAnalyticsEvent', () => {
       jest.useFakeTimers();
 
       window.utag = { link: undefined };
-      expect(sendAnalyticsEvent({}, gaEventProps)).toBe(undefined);
+      expect(sendLinkEvent(gaEventProps)).toBe(undefined);
 
       jest.runAllTimers();
       jest.runAllTimers();

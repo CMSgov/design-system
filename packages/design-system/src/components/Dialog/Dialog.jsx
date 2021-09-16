@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import AriaModal from 'react-aria-modal';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
@@ -67,10 +67,10 @@ export class Dialog extends React.PureComponent {
       }
 
       /* Send analytics event for dialog open */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        ...get(defaultAnalytics(this.eventHeadingText), eventAction),
+        ...get(this.props.analytics, eventAction),
+      });
     }
   }
 
@@ -78,10 +78,10 @@ export class Dialog extends React.PureComponent {
     if (dialogSendsAnalytics()) {
       const eventAction = 'onComponentWillUnmount';
       /* Send analytics event for dialog close */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        ...get(defaultAnalytics(this.eventHeadingText), eventAction),
+        ...get(this.props.analytics, eventAction),
+      });
     }
   }
 

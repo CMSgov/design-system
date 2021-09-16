@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../Analytics/SendAnalytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
@@ -127,12 +127,14 @@ export class Alert extends React.PureComponent<
       this.focusRef.focus();
     }
 
-    if (alertSendsAnalytics()) {
-      const eventAction = 'onComponentDidMount';
-      const eventHeading: string | React.ReactNode = this.props.heading || this.props.children;
+    const { analytics, variation } = this.props;
 
+    if (alertSendsAnalytics() && analytics !== false) {
       /* Send analytics event for `error`, `warn`, `success` alert variations */
-      if (this.props.variation) {
+      if (variation) {
+        const eventAction = 'onComponentDidMount';
+        const eventHeading = this.props.heading || this.props.children;
+
         if (typeof eventHeading === 'string') {
           this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
         } else {
@@ -146,10 +148,10 @@ export class Alert extends React.PureComponent<
               : '';
         }
 
-        sendAnalyticsEvent(
-          get(this.props.analytics, eventAction),
-          get(defaultAnalytics(this.eventHeadingText, this.props.variation), eventAction)
-        );
+        sendLinkEvent({
+          ...get(defaultAnalytics(this.eventHeadingText, variation), eventAction),
+          ...(analytics ? get(analytics, eventAction) : {}),
+        });
       }
     }
   }

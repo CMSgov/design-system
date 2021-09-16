@@ -1,4 +1,4 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -63,10 +63,10 @@ export class HelpDrawer extends React.PureComponent {
       }
 
       /* Send analytics event for helpdrawer open */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        ...get(defaultAnalytics(this.eventHeadingText), eventAction),
+        ...get(this.props.analytics, eventAction),
+      });
     }
   }
 
@@ -74,10 +74,10 @@ export class HelpDrawer extends React.PureComponent {
     if (helpDrawerSendsAnalytics()) {
       const eventAction = 'onComponentWillUnmount';
       /* Send analytics event for helpdrawer close */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        ...get(defaultAnalytics(this.eventHeadingText), eventAction),
+        ...get(this.props.analytics, eventAction),
+      });
     }
   }
 
