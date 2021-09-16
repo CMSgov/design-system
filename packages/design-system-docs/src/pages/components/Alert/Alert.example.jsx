@@ -1,8 +1,6 @@
-import { Alert, setAlertSendsAnalytics } from '@design-system';
+import { Alert } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-setAlertSendsAnalytics(true);
 
 ReactDOM.render(
   <div className="example--wrapper">
@@ -13,7 +11,6 @@ ReactDOM.render(
     <Alert>
       <p className="ds-c-alert__text">This is a React Alert component without a heading.</p>
     </Alert>
-    <Alert variation="error">Hey</Alert>
   </div>,
   document.getElementById('js-example')
 );
