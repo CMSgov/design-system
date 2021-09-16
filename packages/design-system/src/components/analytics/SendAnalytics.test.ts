@@ -1,4 +1,4 @@
-import { sendLinkEvent } from './sendAnalytics';
+import { sendLinkEvent } from './SendAnalytics';
 
 describe('sendLinkEvent', () => {
   const gaEventProps = {
