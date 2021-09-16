@@ -38,8 +38,6 @@ export interface AnalyticsEvent {
 const MAX_RETRIES = 3;
 const TIMEOUT = 300;
 
-window.utag = { link: console.log };
-
 export function sendAnalytics(
   eventType: EventType,
   event: Required<AnalyticsEvent>,
