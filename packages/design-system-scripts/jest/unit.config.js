@@ -9,7 +9,6 @@ module.exports = (rootDir, core) => ({
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['dist/', 'node_modules/', '.+\\.e2e\\.test\\.js$'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
-  testTimeout: 30000,
   // Add moduleNameMapper for core CMSDS to resolve imports from @cmsgov/design-system to packages/design-system
   moduleNameMapper: core
     ? {
