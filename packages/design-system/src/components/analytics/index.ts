@@ -1,1 +1,1 @@
-export { default as sendAnalytics } from './SendAnalytics';
+export { default as sendAnalytics, sendLinkEvent } from './SendAnalytics';
