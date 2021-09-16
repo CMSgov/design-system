@@ -5,10 +5,9 @@ import classNames from 'classnames';
 import uniqueId from 'lodash.uniqueid';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
-
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
-
 export type AlertVariation = 'error' | 'warn' | 'success';
+
 export interface AlertProps {
   /**
    * Access a reference to the `alert` `div` element
