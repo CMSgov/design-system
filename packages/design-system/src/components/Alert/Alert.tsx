@@ -1,8 +1,7 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../Analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
-import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
