@@ -1,1 +1,1 @@
-export { default as sendAnalytics } from './sendAnalytics';
+export { default as sendAnalytics } from './SendAnalytics';
