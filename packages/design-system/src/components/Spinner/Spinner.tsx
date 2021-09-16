@@ -40,12 +40,16 @@ export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerPro
     props.className
   );
 
-  return <span className={className} aria-valuetext={props['aria-valuetext']} role={props.role} />;
+  return (
+    <span className={className} role={props.role}>
+      <span className="ds-u-visibility--screen-reader">{props['aria-valuetext']}</span>
+    </span>
+  );
 };
 
 Spinner.defaultProps = {
   'aria-valuetext': 'Loading',
-  role: 'progressbar',
+  role: 'status',
 };
 
 export default Spinner;
