@@ -107,7 +107,7 @@ describe('Alert', function () {
     });
 
     it('sends analytics event tracking', () => {
-      render({ tealiumMock, variation: 'warn' });
+      render({ variation: 'warn' });
       expect(tealiumMock).toBeCalledWith({
         ga_eventType: 'cmsds',
         ga_eventValue: '',
@@ -116,12 +116,12 @@ describe('Alert', function () {
     });
 
     it('disables analytics event tracking', () => {
-      render({ tealiumMock, heading: 'dialog heading', variation: 'error', analytics: false });
-      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
+      render({ heading: 'dialog heading', variation: 'error', analytics: false });
+      expect(tealiumMock).not.toBeCalled();
     });
 
     it('overrides analytics event tracking', () => {
-      render({ tealiumMock, variation: 'success', analyticsLabelOverride: 'other heading' });
+      render({ variation: 'success', analyticsLabelOverride: 'other heading' });
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
           ga_eventLabel: 'other heading',

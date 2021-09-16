@@ -18,6 +18,9 @@ export interface AlertProps {
    * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
   analytics?: boolean;
+  /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   */
   analyticsLabelOverride?: string;
   /**
    * Sets the focus on Alert during the first mount
@@ -94,13 +97,13 @@ export class Alert extends React.PureComponent<
     if (alertSendsAnalytics() && analytics !== false) {
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (variation) {
-        const eventHeading = this.props.heading || this.props.children;
+        const heading = this.props.heading || this.props.children;
         let eventHeadingText;
 
         if (analyticsLabelOverride) {
           eventHeadingText = analyticsLabelOverride;
-        } else if (typeof eventHeading === 'string') {
-          eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+        } else if (typeof heading === 'string') {
+          eventHeadingText = heading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
             (this.alertTextRef &&
