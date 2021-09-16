@@ -40,6 +40,61 @@ describe('Autocomplete', () => {
     expect(items.text()).toEqual('Cook County, IL');
   });
 
+  it('renders items with children property', () => {
+    const items = [
+      {
+        id: '1',
+        name: 'Carrots (1)',
+        children: (
+          <>
+            Carrots <strong>(1)</strong>
+          </>
+        ),
+      },
+      {
+        id: '2',
+        name: 'Cookies (3)',
+        children: (
+          <>
+            Cookies <strong>(3)</strong>
+          </>
+        ),
+      },
+      {
+        id: '3',
+        name: 'Crackers (2)',
+        children: (
+          <>
+            Crackers <strong>(2)</strong>
+          </>
+        ),
+      },
+      {
+        id: '4',
+        children: <a href="https://duckduckgo.com/?q=snacks">Search all snacks</a>,
+      },
+    ];
+
+    const { wrapper } = render({ items, isOpen: true }, true);
+    const ul = wrapper.find('ul');
+    expect(ul).toMatchSnapshot();
+  });
+
+  it('renders item with custom className', () => {
+    const items = [
+      { id: '1a', name: 'Normal item' },
+      { id: '5b', name: 'Special item', className: 'custom-class' },
+    ];
+    const { wrapper } = render({ isOpen: true, items }, true);
+
+    const list = wrapper.find('ul');
+    expect(list.exists()).toBe(true);
+
+    const listItems = list.find('li');
+    expect(listItems.at(0).prop('className')).toMatchSnapshot();
+    expect(listItems.at(1).prop('className')).toMatchSnapshot();
+  });
+
   it('renders Autocomplete component without items', () => {
     const { wrapper } = render({ items: undefined, isOpen: true }, true);
     expect(wrapper.find('ul').exists()).toBe(false);

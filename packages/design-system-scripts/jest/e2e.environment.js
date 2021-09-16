@@ -1,5 +1,5 @@
 /* eslint-disable  filenames/match-exported */
-const AxeBuilder = require('axe-webdriverjs');
+const AxeBuilder = require('@axe-core/webdriverjs');
 const NodeEnvironment = require('jest-environment-node');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
@@ -33,7 +33,7 @@ class WebDriverEnvironment extends NodeEnvironment {
     this.global.element.all = (locator) => this.driver.findElements(locator);
     this.global.key = Key;
     this.global.until = until;
-    this.global.axeBuilder = AxeBuilder;
+    this.global.AxeBuilder = AxeBuilder;
   }
 
   async teardown() {
