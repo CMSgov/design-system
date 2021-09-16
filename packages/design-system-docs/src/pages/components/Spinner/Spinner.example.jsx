@@ -18,7 +18,7 @@ ReactDOM.render(
         Cancel
       </Button>
       <Button variation="primary" disabled>
-        <Spinner className="ds-u-margin-right--1" />
+        <Spinner className="ds-u-margin-right--1" aria-valuetext="" />
         Saving
       </Button>
     </div>
