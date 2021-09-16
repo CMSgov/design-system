@@ -5,25 +5,6 @@ import classNames from 'classnames';
 import get from 'lodash/get';
 import uniqueId from 'lodash.uniqueid';
 
-/* eslint-disable camelcase */
-// disable linting since prop names must be in snake case for integration with Blast
-export interface AnalyticsEventShape {
-  event_name: string;
-  event_type: string;
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType?: string;
-  ga_eventValue?: string;
-  heading: string;
-  type: string;
-}
-/* eslint-enable camelcase */
-
-export interface AnalyticsObjectShape {
-  onComponentDidMount?: boolean | AnalyticsEventShape;
-}
-
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -35,14 +16,10 @@ export interface AlertProps {
    */
   alertRef?: (...args: any[]) => any;
   /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
+   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
-  analytics?: AnalyticsObjectShape;
+  analytics?: boolean;
+  analyticsLabelOverride?: string;
   /**
    * Sets the focus on Alert during the first mount
    */
@@ -80,19 +57,6 @@ export interface AlertProps {
   [key: string]: any;
 }
 
-// Default analytics object
-const defaultAnalytics = (heading = '', variation = '') => ({
-  onComponentDidMount: {
-    event_name: 'alert_impression',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'alert impression',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-    type: variation,
-  },
-});
-
 // Omit props that we override with values from the Alert
 type OmitAlertProps = 'role' | 'children' | 'className' | 'ref';
 
@@ -110,7 +74,6 @@ export class Alert extends React.PureComponent<
     this.alertTextRef = null;
     this.focusRef = null;
     this.headingId = this.props.headingId || uniqueId('alert_');
-    this.eventHeadingText = '';
 
     if (process.env.NODE_ENV !== 'production') {
       if (!props.heading && !props.children) {
@@ -127,30 +90,37 @@ export class Alert extends React.PureComponent<
       this.focusRef.focus();
     }
 
-    const { analytics, variation } = this.props;
+    const { analytics, analyticsLabelOverride, variation } = this.props;
 
     if (alertSendsAnalytics() && analytics !== false) {
       /* Send analytics event for `error`, `warn`, `success` alert variations */
       if (variation) {
-        const eventAction = 'onComponentDidMount';
         const eventHeading = this.props.heading || this.props.children;
+        let eventHeadingText;
 
-        if (typeof eventHeading === 'string') {
-          this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+        if (analyticsLabelOverride) {
+          eventHeadingText = analyticsLabelOverride;
+        } else if (typeof eventHeading === 'string') {
+          eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
         } else {
           const eventHeadingTextElement =
             (this.alertTextRef &&
               this.alertTextRef.getElementsByClassName('ds-c-alert__heading')[0]) ||
             (this.alertTextRef && this.alertTextRef.getElementsByClassName('ds-c-alert__body')[0]);
-          this.eventHeadingText =
+          eventHeadingText =
             eventHeadingTextElement && eventHeadingTextElement.textContent
               ? eventHeadingTextElement.textContent.substring(0, MAX_LENGTH)
               : '';
         }
 
         sendLinkEvent({
-          ...get(defaultAnalytics(this.eventHeadingText, variation), eventAction),
-          ...(analytics ? get(analytics, eventAction) : {}),
+          event_name: 'alert_impression',
+          event_type: EVENT_CATEGORY.uiInteraction,
+          ga_eventAction: 'alert impression',
+          ga_eventCategory: EVENT_CATEGORY.uiComponents,
+          ga_eventLabel: eventHeadingText,
+          heading: eventHeadingText,
+          type: variation,
         });
       }
     }
