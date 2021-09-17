@@ -33,4 +33,5 @@ export * from './Table';
 export * from './TextField';
 export * from './Tooltip';
 
+export * from './analytics';
 export * from './flags';
