@@ -15,7 +15,7 @@ exports[`Page should render interactive el if not current 1`] = `
 </li>
 `;
 
-exports[`Page should render static el if not current 1`] = `
+exports[`Page should render static el if current 1`] = `
 <li>
   <span
     aria-current="true"
