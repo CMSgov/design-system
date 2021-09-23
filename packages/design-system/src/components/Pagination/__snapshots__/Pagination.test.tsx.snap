@@ -176,10 +176,6 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   <span
     className="ds-c-pagination__page-count"
   >
-    <span
-      aria-label="on page 2 of 3"
-      className="ds-u-visibility--screen-reader"
-    />
     Page 
     <strong>
       2

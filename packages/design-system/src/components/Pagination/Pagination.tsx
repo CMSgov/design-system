@@ -266,10 +266,6 @@ function Pagination({
 
       {isMobile || compact ? (
         <span className="ds-c-pagination__page-count">
-          <span
-            className="ds-u-visibility--screen-reader"
-            aria-label={`on page ${currentPage} of ${totalPages}`}
-          />
           Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
         </span>
       ) : (
