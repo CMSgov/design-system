@@ -30,5 +30,5 @@ git tag -a $TAG -m "Release $TAG" -s
 git push origin $TAG
 
 green "Release $PACKAGE_VERSION has been tagged and pushed."
-green "Please create a pull request for mergin `$BRANCH` into `master` to save the version bump!"
-green "Next step is to publish this release to npm via `yarn release $PACKAGE_VERSION`"
+green "Please create a pull request for mergin $BRANCH into master to save the version bump!"
+green "Next step is to publish this release to npm via yarn release $PACKAGE_VERSION"
