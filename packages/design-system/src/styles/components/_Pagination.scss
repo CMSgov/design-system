@@ -9,6 +9,9 @@ $pagination-overflow-color: $color-gray;
 $pagination-page-count-color: $color-gray;
 
 .ds-c-pagination {
+  display: flex;
+  justify-content: space-between;
+
   ul {
     display: inline;
     margin: 0;
