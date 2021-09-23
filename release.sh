@@ -8,9 +8,9 @@ green() {
 }
 
 green "Bumping version..."
-yarn lerna version /
-  --no-push /
-  --no-git-tag-version /
+yarn lerna version \
+  --no-push \
+  --no-git-tag-version \
   --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
 
 green "Pushing tag and release commit to Github..."

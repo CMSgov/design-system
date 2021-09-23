@@ -1,9 +1,4 @@
 {
-  "command": {
-    "version": {
-      "allowBranch": "master"
-    }
-  },
   "npmClient": "yarn",
   "packages": ["packages/*"],
   "ignoreChanges": [
