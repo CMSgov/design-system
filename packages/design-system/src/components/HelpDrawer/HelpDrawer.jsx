@@ -1,30 +1,9 @@
-import { EVENT_CATEGORY, MAX_LENGTH, sendAnalyticsEvent } from '../analytics/SendAnalytics';
+import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import get from 'lodash/get';
 import { helpDrawerSendsAnalytics } from '../flags';
-
-// Default analytics object
-const defaultAnalytics = (heading = '') => ({
-  onComponentDidMount: {
-    event_name: 'help_drawer_opened',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'opened help drawer',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-  },
-  onComponentWillUnmount: {
-    event_name: 'help_drawer_closed',
-    event_type: EVENT_CATEGORY.uiInteraction,
-    ga_eventAction: 'closed help drawer',
-    ga_eventCategory: EVENT_CATEGORY.uiComponents,
-    ga_eventLabel: heading,
-    heading: heading,
-  },
-});
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -49,12 +28,13 @@ export class HelpDrawer extends React.PureComponent {
   componentDidMount() {
     if (this.headingRef) this.headingRef.focus();
 
-    if (helpDrawerSendsAnalytics()) {
-      const eventAction = 'onComponentDidMount';
-      const eventHeading = this.props.title || this.props.heading;
+    if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
+      const heading = this.props.title || this.props.heading;
 
-      if (typeof eventHeading === 'string') {
-        this.eventHeadingText = eventHeading.substring(0, MAX_LENGTH);
+      if (this.props.analyticsLabelOverride) {
+        this.eventHeadingText = this.props.analyticsLabelOverride;
+      } else if (typeof heading === 'string') {
+        this.eventHeadingText = heading.substring(0, MAX_LENGTH);
       } else {
         this.eventHeadingText =
           this.headingRef && this.headingRef.textContent
@@ -63,21 +43,28 @@ export class HelpDrawer extends React.PureComponent {
       }
 
       /* Send analytics event for helpdrawer open */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        event_name: 'help_drawer_opened',
+        event_type: EVENT_CATEGORY.uiInteraction,
+        ga_eventAction: 'opened help drawer',
+        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventLabel: this.eventHeadingText,
+        heading: this.eventHeadingText,
+      });
     }
   }
 
   componentWillUnmount() {
-    if (helpDrawerSendsAnalytics()) {
-      const eventAction = 'onComponentWillUnmount';
+    if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
-      sendAnalyticsEvent(
-        get(this.props.analytics, eventAction),
-        get(defaultAnalytics(this.eventHeadingText), eventAction)
-      );
+      sendLinkEvent({
+        event_name: 'help_drawer_closed',
+        event_type: EVENT_CATEGORY.uiInteraction,
+        ga_eventAction: 'closed help drawer',
+        ga_eventCategory: EVENT_CATEGORY.uiComponents,
+        ga_eventLabel: this.eventHeadingText,
+        heading: this.eventHeadingText,
+      });
     }
   }
 
@@ -144,35 +131,17 @@ HelpDrawer.defaultProps = {
   headingLevel: '3',
 };
 
-/**
- * Defines the shape of an analytics event for tracking that is an object with key-value pairs
- */
-const AnalyticsEventShape = PropTypes.shape({
-  event_name: PropTypes.string,
-  event_type: PropTypes.string,
-  ga_eventAction: PropTypes.string,
-  ga_eventCategory: PropTypes.string,
-  ga_eventLabel: PropTypes.string,
-  ga_eventType: PropTypes.string,
-  ga_eventValue: PropTypes.string,
-  heading: PropTypes.string,
-});
-
 // TODO: closeButtonText, title/heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
 HelpDrawer.propTypes = {
   /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
+   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
-  analytics: PropTypes.shape({
-    onComponentDidMount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-    onComponentWillUnmount: PropTypes.oneOfType([PropTypes.bool, AnalyticsEventShape]),
-  }),
+  analytics: PropTypes.bool,
+  /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   */
+  analyticsLabelOverride: PropTypes.string,
   /**
    * Helps give more context to screen readers on the button that closes the Help Drawer
    */

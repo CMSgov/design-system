@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system-scripts",
-  "version": "2.7.2",
+  "version": "2.7.4",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -12,6 +12,7 @@
     "cmsds": "./cli.js"
   },
   "dependencies": {
+    "@axe-core/webdriverjs": "^4.2.2",
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
@@ -22,7 +23,6 @@
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
     "autoprefixer": "9.6.0",
-    "axe-webdriverjs": "^2.3.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-inline-react-svg": "^1.1.2",
     "browser-sync": "2.26.7",
