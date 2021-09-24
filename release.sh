@@ -2,18 +2,17 @@
 
 set -e
 
-green() {
-  # Print in green
-  printf "\033[0;32m${1}\033[0m"
-}
+GREEN='\033[0;32m'
+CYAN="\033[0;36m"
+NC='\033[0m' # No color
 
-green "Bumping version..."
+echo "${GREEN}Bumping version...${NC}"
 yarn lerna version \
   --no-push \
   --no-git-tag-version \
   --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
 
-green "Pushing tag and release commit to Github..."
+echo "${GREEN}Pushing tag and release commit to Github...${NC}"
 PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
 TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
 TAG="$TAG_PREFIX$PACKAGE_VERSION"
@@ -29,6 +28,6 @@ git push --set-upstream origin $BRANCH
 git tag -a $TAG -m "Release $TAG" -s
 git push origin $TAG
 
-green "Release $PACKAGE_VERSION has been tagged and pushed."
-green "Please create a pull request for mergin $BRANCH into master to save the version bump!"
-green "Next step is to publish this release to npm via yarn release $PACKAGE_VERSION"
+echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed.${NC}"
+echo "${GREEN}Please create a pull request for mergin ${CYAN}$BRANCH${GREEN} into master to save the version bump!${NC}"
+echo "${GREEN}Next step is to publish this release to npm via yarn release ${CYAN}$PACKAGE_VERSION${GREEN}${NC}"
