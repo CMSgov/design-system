@@ -23,6 +23,7 @@ ReactDOM.render(
               currentPage={page}
               totalPages={totalPages}
               onPageChange={onPageChange}
+              renderHref={(page) => `#/results/${page}`}
             />
           </>
         );
@@ -47,6 +48,7 @@ ReactDOM.render(
               currentPage={page}
               totalPages={totalPages}
               onPageChange={onPageChange}
+              renderHref={(page) => `#/results?page=${page}`}
               compact
             />
           </>

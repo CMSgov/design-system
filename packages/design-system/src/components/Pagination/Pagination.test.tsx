@@ -11,6 +11,7 @@ describe('Pagination', () => {
     const props = {
       totalPages: 3,
       onPageChange: onPageChange,
+      renderHref: () => '/test',
       ...overrideProps,
     };
 
@@ -73,48 +74,17 @@ describe('Pagination', () => {
 
     describe('href', () => {
       it('should have appropriate href for "previous"', () => {
-        const wrapper = render({ currentPage: 2 });
+        const wrapper = render({ currentPage: 2, renderHref: (currentPage) => `#${currentPage}` });
         const prevEl = wrapper.childAt(0);
 
         expect(prevEl.prop('href')).toBe('#1');
       });
 
       it('should have appropriate href for "next"', () => {
-        const wrapper = render({ currentPage: 2 });
+        const wrapper = render({ currentPage: 2, renderHref: (currentPage) => `#${currentPage}` });
         const nextEl = wrapper.childAt(2);
 
         expect(nextEl.prop('href')).toBe('#3');
-      });
-
-      it('should have appropriate href for page', () => {
-        const wrapper = render({ currentPage: 2, totalPages: 5 }, true);
-        const pageEl = wrapper.find('ul').childAt(3).find(pageButtonSelector);
-
-        expect(pageEl.prop('href')).toBe('#4');
-      });
-    });
-    describe('custom URL', () => {
-      const customUrl = 'test.com';
-
-      it('should have appropriate href for "previous"', () => {
-        const wrapper = render({ currentPage: 2, customUrl: customUrl });
-        const prevEl = wrapper.childAt(0);
-
-        expect(prevEl.prop('href')).toBe(`${customUrl}/1`);
-      });
-
-      it('should have appropriate href for "next"', () => {
-        const wrapper = render({ currentPage: 2, customUrl: customUrl });
-        const nextEl = wrapper.childAt(2);
-
-        expect(nextEl.prop('href')).toBe(`${customUrl}/3`);
-      });
-
-      it('should have appropriate href for page', () => {
-        const wrapper = render({ currentPage: 2, totalPages: 5, customUrl: customUrl }, true);
-        const pageEl = wrapper.find('ul').childAt(3).find(pageButtonSelector);
-
-        expect(pageEl.prop('href')).toBe(`${customUrl}/4`);
       });
     });
   });

@@ -6,12 +6,16 @@ describe('Page', () => {
   const onPageChange = jest.fn();
 
   it('should render interactive el if not current', () => {
-    const wrapper = shallow(<Page index={1} isActive={false} onPageChange={onPageChange} />);
+    const wrapper = shallow(
+      <Page index={1} isActive={false} onPageChange={onPageChange} renderPageHref="/#1" />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render static el if current', () => {
-    const wrapper = shallow(<Page index={1} isActive onPageChange={onPageChange} />);
+    const wrapper = shallow(
+      <Page index={1} isActive onPageChange={onPageChange} renderPageHref="/#1" />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

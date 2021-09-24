@@ -7,30 +7,35 @@ exports[`Pagination pagination slot behavior less than 7 pages should show all p
     isActive={true}
     key="page-1"
     onPageChange={[Function]}
+    renderPageHref="/test"
   />
   <Page
     index={2}
     isActive={false}
     key="page-2"
     onPageChange={[Function]}
+    renderPageHref="/test"
   />
   <Page
     index={3}
     isActive={false}
     key="page-3"
     onPageChange={[Function]}
+    renderPageHref="/test"
   />
   <Page
     index={4}
     isActive={false}
     key="page-4"
     onPageChange={[Function]}
+    renderPageHref="/test"
   />
   <Page
     index={5}
     isActive={false}
     key="page-5"
     onPageChange={[Function]}
+    renderPageHref="/test"
   />
 </ul>
 `;
@@ -45,7 +50,7 @@ exports[`Pagination should render component 1`] = `
     aria-label="Previous Page"
     className="ds-c-pagination__nav"
     component="button"
-    href="#1"
+    href="/test"
     onClick={[Function]}
     style={
       Object {
@@ -82,18 +87,21 @@ exports[`Pagination should render component 1`] = `
       isActive={false}
       key="page-1"
       onPageChange={[Function]}
+      renderPageHref="/test"
     />
     <Page
       index={2}
       isActive={true}
       key="page-2"
       onPageChange={[Function]}
+      renderPageHref="/test"
     />
     <Page
       index={3}
       isActive={false}
       key="page-3"
       onPageChange={[Function]}
+      renderPageHref="/test"
     />
   </ul>
   <Button
@@ -101,7 +109,7 @@ exports[`Pagination should render component 1`] = `
     aria-label="Next Page"
     className="ds-c-pagination__nav"
     component="button"
-    href="#3"
+    href="/test"
     onClick={[Function]}
     style={
       Object {
@@ -145,7 +153,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     aria-label="Previous Page"
     className="ds-c-pagination__nav"
     component="button"
-    href="#1"
+    href="/test"
     onClick={[Function]}
     style={
       Object {
@@ -193,7 +201,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     aria-label="Next Page"
     className="ds-c-pagination__nav"
     component="button"
-    href="#3"
+    href="/test"
     onClick={[Function]}
     style={
       Object {

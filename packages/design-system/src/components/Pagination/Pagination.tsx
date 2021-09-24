@@ -22,13 +22,13 @@ export interface PaginationProps {
    */
   currentPage?: number;
   /**
-   * Sets a custom url for Pagination links. Optional.
-   */
-  customUrl?: string;
-  /**
    * A callback function used to handle state changes.
    */
   onPageChange: (evt: React.MouseEvent, page: number) => void;
+  /**
+   * Defines application-specific routing in url for links.
+   */
+  renderHref: (page: number) => string;
   /**
    * Sets custom label on start navigation. Added for language support. Optional.
    */
@@ -121,7 +121,7 @@ function Pagination({
   className,
   compact,
   currentPage,
-  customUrl,
+  renderHref,
   onPageChange,
   startLabelText,
   startAriaLabel,
@@ -179,7 +179,7 @@ function Pagination({
        */
       pages.push(
         <Page
-          customUrl={customUrl}
+          renderPageHref={renderHref(1)}
           key="page-1"
           index={1}
           isActive={currentPage === 1}
@@ -203,7 +203,7 @@ function Pagination({
     pageRange.map((page) => {
       pages.push(
         <Page
-          customUrl={customUrl}
+          renderPageHref={renderHref(page)}
           key={`page-${page}`}
           index={page}
           isActive={currentPage === page}
@@ -224,7 +224,7 @@ function Pagination({
 
       pages.push(
         <Page
-          customUrl={customUrl}
+          renderPageHref={renderHref(totalPages)}
           key={`page-${totalPages}`}
           index={totalPages}
           isActive={currentPage === totalPages}
@@ -238,7 +238,7 @@ function Pagination({
     <nav className={classes} aria-label={ariaLabel} {...rest}>
       <Button
         variation="transparent"
-        href={customUrl ? `${customUrl}/${currentPage - 1}` : `#${currentPage - 1}`}
+        href={renderHref(currentPage - 1)}
         onClick={pageChange(currentPage - 1)}
         aria-label={startAriaLabel}
         style={{ visibility: currentPage === 1 ? 'hidden' : 'visible' }}
@@ -275,7 +275,7 @@ function Pagination({
 
       <Button
         variation="transparent"
-        href={customUrl ? `${customUrl}/${currentPage + 1}` : `#${currentPage + 1}`}
+        href={renderHref(currentPage + 1)}
         onClick={pageChange(currentPage + 1)}
         aria-label={endAriaLabel}
         style={{ visibility: currentPage === totalPages ? 'hidden' : 'visible' }}

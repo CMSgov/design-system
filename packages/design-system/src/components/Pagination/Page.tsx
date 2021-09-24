@@ -3,10 +3,6 @@ import React from 'react';
 
 export interface PageProps {
   /**
-   * Sets a custom url for links. Optional.
-   */
-  customUrl?: string;
-  /**
    * Defines the page number.
    */
   index: number;
@@ -18,10 +14,14 @@ export interface PageProps {
    * A callback function used to handle state changes.
    */
   onPageChange?: (evt: React.MouseEvent) => void;
+  /**
+   * Defines application-specific routing in url for links.
+   */
+  renderPageHref: string;
 }
 
 export default function Page({
-  customUrl,
+  renderPageHref,
   index,
   isActive,
   onPageChange,
@@ -38,7 +38,7 @@ export default function Page({
       ) : (
         <Button
           variation="transparent"
-          href={customUrl ? `${customUrl}/${index}` : `#${index}`}
+          href={renderPageHref}
           onClick={onPageChange}
           aria-label={`page ${index}`}
         >
