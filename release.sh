@@ -14,7 +14,7 @@ yarn lerna version \
   --no-git-tag-version \
   --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
 
-if ! git diff-index --quiet HEAD --; then
+if git diff-index --quiet HEAD --; then
   echo "${RED}No local changes detected, therefore version bump did not occur. Exiting...${NC}"
   exit 1
 fi
