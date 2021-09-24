@@ -3,7 +3,8 @@
 set -e
 
 GREEN='\033[0;32m'
-CYAN="\033[0;36m"
+YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 echo "${GREEN}Bumping version...${NC}"
@@ -28,6 +29,16 @@ git push --set-upstream origin $BRANCH
 git tag -a $TAG -m "Release $TAG" -s
 git push origin $TAG
 
-echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed.${NC}"
-echo "${GREEN}Please create a pull request for mergin ${CYAN}$BRANCH${GREEN} into master to save the version bump!${NC}"
-echo "${GREEN}Next step is to publish this release to npm via yarn release ${CYAN}$PACKAGE_VERSION${GREEN}${NC}"
+echo ""
+echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed to origin.${NC}"
+echo ""
+echo "${YELLOW}-------${NC}"
+echo ""
+echo "${YELLOW}NEXT STEPS:${NC}"
+echo ""
+echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+echo ""
+echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
+echo ""
+echo "     ${CYAN}\$${NC} yarn release $PACKAGE_VERSION"
+echo ""
