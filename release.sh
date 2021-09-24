@@ -29,11 +29,11 @@ BRANCH="release-$PACKAGE_VERSION"
 git checkout -b $BRANCH
 git add --all
 git commit -m "Bump package version to $PACKAGE_VERSION"
-git push --set-upstream origin $BRANCH
+# git push --set-upstream origin $BRANCH
 
 # Create and push tag
 git tag $TAG
-git push origin $TAG
+# git push origin $TAG
 
 echo ""
 echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed to origin.${NC}"
