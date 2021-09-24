@@ -4,7 +4,6 @@ $pagination-nav-link-color-active: $color-primary-darkest;
 $pagination-nav-link-color-focus: $color-primary-darker;
 
 $pagination-current-page-color: $color-base;
-$pagination-current-page-color-bg: $color-gray-lightest;
 $pagination-overflow-color: $color-gray;
 $pagination-page-count-color: $color-gray;
 
@@ -26,10 +25,8 @@ $pagination-page-count-color: $color-gray;
     font-weight: normal;
     min-width: 44px;
     padding: 8px 0;
-    text-decoration: none;
   }
   a:focus {
-    @include focus-styles-position;
     color: $pagination-nav-link-color-focus;
   }
   a:hover {
@@ -40,8 +37,8 @@ $pagination-page-count-color: $color-gray;
     color: $pagination-nav-link-color-active;
   }
   .ds-c-pagination__current-page {
-    background-color: $pagination-current-page-color-bg;
     color: $pagination-current-page-color;
+    font-size: $font-size-xl;
     font-weight: bold;
     text-decoration: none;
     &:hover {
@@ -60,6 +57,13 @@ $pagination-page-count-color: $color-gray;
     color: $pagination-page-count-color;
     display: inline-block;
     padding: 8px;
+  }
+  .ds-c-pagination__nav {
+    text-decoration: none;
+    &:hover {
+      text-decoration-thickness: 3px;
+      text-underline-offset: 5px;
+    }
   }
   .ds-c-pagination__nav--next-img-container {
     display: inline-block;
