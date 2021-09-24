@@ -40,5 +40,5 @@ echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\
 echo ""
 echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
 echo ""
-echo "     ${CYAN}\$${NC} yarn release $PACKAGE_VERSION"
+echo "     ${CYAN}\$${NC} yarn publish-release $PACKAGE_VERSION"
 echo ""
