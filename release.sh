@@ -26,7 +26,7 @@ git commit -m "Bump package version to $PACKAGE_VERSION"
 git push --set-upstream origin $BRANCH
 
 # Create and push tag
-git tag -a $TAG -m "Release $TAG" -s
+git tag $TAG
 git push origin $TAG
 
 echo ""
