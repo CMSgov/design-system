@@ -17,7 +17,7 @@ yarn install
 yarn build
 
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
-# yarn lerna publish from-git
+yarn lerna publish from-git
 
 echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
