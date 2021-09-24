@@ -243,6 +243,7 @@ function Pagination({
         aria-label={startAriaLabel}
         style={{ visibility: currentPage === 1 ? 'hidden' : 'visible' }}
         aria-hidden={currentPage === 1}
+        className="ds-c-pagination__nav"
       >
         <span className="ds-c-pagination__nav--previous-img-container">
           <svg
@@ -279,6 +280,7 @@ function Pagination({
         aria-label={endAriaLabel}
         style={{ visibility: currentPage === totalPages ? 'hidden' : 'visible' }}
         aria-hidden={currentPage === totalPages}
+        className="ds-c-pagination__nav"
       >
         {endLabelText}
         <span className="ds-c-pagination__nav--next-img-container">
