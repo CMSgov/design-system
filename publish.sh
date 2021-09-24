@@ -2,26 +2,25 @@
 
 set -e
 
-green() {
-  # Print in green
-  printf "\033[0;32m${1}\033[0m"
-}
+GREEN='\033[0;32m'
+CYAN="\033[0;36m"
+NC='\033[0m' # No color
 
-green "Checking out release $1..."
+echo "${GREEN}Checking out release $1...${NC}"
 TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
 git fetch --tags
 git checkout tags/$TAG_PREFIX$1
 
-green "Building packages..."
+echo "${GREEN}Building packages...${NC}"
 yarn install
 yarn build
 
-green "Publishing $1 to npm..."
+echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
 yarn lerna publish from-git
 
-green "Creating release zip..."
+echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
 npm pack ./packages/design-system-docs/
 npm pack ./packages/design-system-scripts/
 
-green "Done. Please upload the generated zips to the GitHub Release!"
+echo "${GREEN}Done. Please upload the generated zips to the GitHub Release!${NC}"
