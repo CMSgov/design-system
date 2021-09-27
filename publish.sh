@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# This script checks out a specified release tag, builds it, and publishes
+# it to npm.
+#
+# Usage:
+# $ yarn publish-release <version number>
+
 set -e
 
 GREEN='\033[0;32m'
@@ -17,7 +23,12 @@ yarn install
 yarn build
 
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
-yarn lerna publish from-git
+if [[ $1 == *"beta"* ]]; then
+  NPM_TAG="--dist-tag beta"
+elif
+  NPM_TAG=""
+fi
+yarn lerna publish from-git $NPM_TAG
 
 echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
@@ -31,4 +42,6 @@ echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
 echo "${YELLOW}  1. Please upload the generated zips to the GitHub release and publish it.${NC}"
+echo ""
+echo "${YELLOW}  1. Update the documentation site.${NC}"
 echo ""
