@@ -90,7 +90,7 @@ describe('Dialog', function () {
     });
 
     it('sends analytics event tracking on open dialog', () => {
-      render({ tealiumMock, heading: 'dialog heading' });
+      render({ heading: 'dialog heading' });
       expect(tealiumMock).toBeCalledWith({
         ga_eventType: 'cmsds',
         ga_eventValue: '',
@@ -99,34 +99,18 @@ describe('Dialog', function () {
     });
 
     it('disables analytics event tracking on open', () => {
-      const analyticsProps = {
-        analytics: {
-          onComponentDidMount: false,
-        },
-      };
-      render({ tealiumMock, heading: 'dialog heading', ...analyticsProps });
-      expect(tealiumMock).not.toBeCalledWith(defaultEvent);
+      render({ heading: 'dialog heading', analytics: false });
+      expect(tealiumMock).not.toBeCalled();
     });
 
     it('overrides analytics event tracking on open', () => {
-      const analyticsProps = {
-        analytics: {
-          onComponentDidMount: {
-            event_name: 'event name',
-            event_type: 'event type',
-            ga_eventCategory: 'event category',
-            ga_eventAction: 'event action',
-            ga_eventLabel: 'event label',
-            ga_eventValue: 'event value',
-            ga_other: 'other one',
-            ga_other2: 'other two',
-            ga_eventType: 'other type',
-            heading: 'other heading',
-          },
-        },
-      };
-      render({ tealiumMock, ...analyticsProps });
-      expect(tealiumMock).toBeCalledWith(analyticsProps.analytics.onComponentDidMount);
+      render({ analyticsLabelOverride: 'other heading' });
+      expect(tealiumMock).toBeCalledWith(
+        expect.objectContaining({
+          ga_eventLabel: 'other heading',
+          heading: 'other heading',
+        })
+      );
     });
   });
 });

@@ -30,7 +30,7 @@ export interface DateFieldProps {
    *
    * By default `dateFormatter` will be set to the `defaultDateFormatter` function, which prevents days/months more than 2 digits & years more than 4 digits.
    */
-  dateFormatter?: typeof defaultDateFormatter;
+  dateFormatter?: (...args: any[]) => any;
   disabled?: boolean;
   errorMessage?: React.ReactNode;
   /**

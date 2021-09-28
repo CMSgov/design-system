@@ -14,7 +14,7 @@
  * an unacceptable regression of the user experience.
  */
 
-import Downshift, { DownshiftProps } from 'downshift';
+import Downshift, { A11yStatusMessageOptions, DownshiftProps } from 'downshift';
 import Button from '../Button/Button';
 import React from 'react';
 import TextField from '../TextField/TextField';
@@ -22,11 +22,32 @@ import WrapperDiv from './WrapperDiv';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
+import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
 import uniqueId from 'lodash.uniqueid';
 
 export interface AutocompleteItems {
+  /**
+   * Unique identifier for this item
+   */
   id?: string;
+  /**
+   * Displayed value of the item. May alternatively provide a `children` value
+   */
   name?: string;
+  /**
+   * Custom React node as an alternative to a string-only `name`
+   */
+  children?: React.ReactNode;
+  /**
+   * Additional classes to be added to the root element.
+   * Useful for adding utility classes.
+   */
+  className?: string;
+  /**
+   * Whether this item should be counted as one of the results for the purpose of announcing the
+   * result count to screen readers
+   */
+  isResult?: boolean;
 }
 
 type PropsNotPassedToDownshift =
@@ -37,6 +58,7 @@ type PropsNotPassedToDownshift =
   | 'loading'
   | 'children'
   | 'className'
+  | 'clearInputOnBlur'
   | 'clearSearchButton';
 
 export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPassedToDownshift> {
@@ -57,6 +79,10 @@ export interface AutocompleteProps extends Omit<DownshiftProps<any>, PropsNotPas
    * Useful for adding utility classes.
    */
   className?: string;
+  /**
+   * When set to `false`, do not clear the input when the input element loses focus.
+   */
+  clearInputOnBlur?: boolean;
   /**
    * Text rendered on the page if `clearInput` prop is passed. Default is "Clear search".
    */
@@ -140,6 +166,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
     autoCompleteLabel: 'off',
     clearInputText: 'Clear search',
     clearSearchButton: true,
+    clearInputOnBlur: true,
     itemToString: (item): string => (item ? item.name : ''),
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
@@ -176,16 +203,14 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
       return items.map((item, index) => (
         <li
           aria-selected={highlightedIndex === index}
-          className={
-            highlightedIndex === index
-              ? 'ds-c-autocomplete__list-item ds-c-autocomplete__list-item--active'
-              : 'ds-c-autocomplete__list-item'
-          }
+          className={classNames(item.className, 'ds-c-autocomplete__list-item', {
+            'ds-c-autocomplete__list-item--active': highlightedIndex === index,
+          })}
           key={item.id}
           role="option"
           {...getItemProps({ item })}
         >
-          {itemToString(item)}
+          {item.children ?? itemToString(item)}
         </li>
       ));
     }
@@ -230,7 +255,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
           : child.props.errorMessageClassName;
         const propOverrides = {
           'aria-autocomplete': 'list',
-          'aria-controls': isOpen ? this.listboxId : null,
+          'aria-controls': this.listboxId,
           'aria-expanded': isOpen,
           'aria-labelledby': null,
           'aria-owns': isOpen ? this.listboxId : null,
@@ -262,11 +287,42 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
       loading,
       children,
       className,
+      clearInputOnBlur,
       clearSearchButton,
       ...autocompleteProps
     }: AutocompleteProps = this.props;
 
     const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
+
+    if (clearInputOnBlur === false) {
+      autocompleteProps.stateReducer = keepInputDownshiftStateReducer;
+    }
+
+    if (items) {
+      // We allow items that aren't technically results to be rendered as items in the list, such as
+      // a button for viewing all results, but these non-result items should not be counted in the
+      // accessibility messages as results. It is not enough to set downshift's `itemCount` property
+      // because it will actually make any remaining items past the `itemCount` unselectable with
+      // the keyboard.
+      const resultCount = items.filter((item) => item.isResult !== false).length;
+      if (items.length !== resultCount) {
+        const getA11yStatusMessage =
+          autocompleteProps.getA11yStatusMessage ?? Downshift.defaultProps.getA11yStatusMessage;
+        autocompleteProps.getA11yStatusMessage = (
+          args: A11yStatusMessageOptions<AutocompleteItems>
+        ) => {
+          const newArgs = { ...args, resultCount };
+          if (args.previousResultCount === args.resultCount) {
+            // Since we are modifying the resultCount, we want to avoid a case where the resultCount
+            // doesn't match the previousResultCount when it naturally would. If there's an artificial
+            // mismatch between these two values, the result count will be announced each time the
+            // currently focused list item changes.
+            newArgs.previousResultCount = newArgs.resultCount;
+          }
+          return getA11yStatusMessage(newArgs);
+        };
+      }
+    }
 
     return (
       <Downshift {...autocompleteProps}>

@@ -63,7 +63,7 @@
 
    1. Connect to CMS VPN `cloudvpn.cms.gov`.
 
-   1. [Log in to CB Core](https://ci.backends.cms.gov/wds/job/Design%20System/job/Deploy%20design-system/) to Deploy the CMS Design System documentation website.
+   1. [Log in to CB Core](https://ci.backends.cms.gov/wds/job/design-system/job/deploy-design-system/) to Deploy the CMS Design System documentation website.
 
       **Note**: Your CB Core user will need to be a member of the `wd-user` group or you will be unable to see the linked job above.
 
