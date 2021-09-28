@@ -202,7 +202,7 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       await printStats(sourceDir, options);
     }
-    logTask('✅ ', 'Build succeeded');
+    logTask('✅ ', 'Build succeeded', true);
     log('');
   },
   copyAssets,
