@@ -36,11 +36,14 @@ export class VerticalNav extends React.PureComponent {
       },
       this.props.className
     );
+    const navProps = this.props.ariaNavLabel ? { 'aria-label': this.props.ariaNavLabel } : {};
 
     return (
-      <ul className={classes} id={this.props.id}>
-        {this.renderItems()}
-      </ul>
+      <nav {...navProps}>
+        <ul className={classes} id={this.props.id}>
+          {this.renderItems()}
+        </ul>
+      </nav>
     );
   }
 }
@@ -50,6 +53,11 @@ VerticalNav.defaultProps = {
 };
 
 VerticalNav.propTypes = {
+  /**
+   * An optional arial label for the `<nav>` element in this component.
+   * This prop is necessary when there is more than one nav element on a page.
+   */
+  ariaNavLabel: PropTypes.string,
   /**
    * Additional classes to be added to the root element
    */
