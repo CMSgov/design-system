@@ -77,8 +77,10 @@ module.exports = {
     notify(name, message, true);
   },
 
-  logTask: function (name, message) {
+  logTask: function (name, message, showNotification = false) {
     log(chalk.magenta(name), chalk.green(message));
-    notify(name, message, false);
+    if (showNotification) {
+      notify(name, message, false);
+    }
   },
 };
