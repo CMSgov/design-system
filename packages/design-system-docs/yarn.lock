@@ -16,10 +16,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@cmsgov/design-system@^2.7.1":
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-2.7.2.tgz#9aa9a4bad05b50721fc4472bae88a99326dfea87"
-  integrity sha512-Xy1ADo4eR+OnZq1heftcevy7z8zLWL8oE8+00XMVmDu6/R8chb8nJSXjkesCYoRcBZttN3nvNionQGkgGLaYyg==
+"@cmsgov/design-system@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-2.8.0.tgz#a80649aa2adf18afeb4c3c05158984a73533a738"
+  integrity sha512-VbICJr9vG/0E29dGw4R+9XyQqDS4+t/8IF3VRZUdtAZ3LCGh3qlvLzYXRxUGuBt4kgon1MfN551gnYo4UJP6Gg==
   dependencies:
     "@popperjs/core" "^2.4.4"
     classnames "^2.2.5"
@@ -168,9 +168,9 @@ object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
 prismjs@^1.11.0:
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.24.0.tgz#0409c30068a6c52c89ef7f1089b3ca4de56be2ac"
-  integrity sha512-SqV5GRsNqnzCL8k5dfAjCNhUrF3pR0A9lTDSCUZeh/LIshheXJEaP0hwLz2t4XHivd2J/v2HR+gRnigzeKe3cQ==
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.25.0.tgz#6f822df1bdad965734b310b315a23315cf999756"
+  integrity sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==
 
 process@^0.11.10:
   version "0.11.10"
