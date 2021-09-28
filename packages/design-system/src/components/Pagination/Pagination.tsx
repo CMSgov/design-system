@@ -285,8 +285,6 @@ function Pagination({
           href={renderHref(currentPage - 1)}
           onClick={pageChange(currentPage - 1)}
           aria-label={startAriaLabel}
-          style={{ visibility: currentPage === 1 ? 'hidden' : 'visible' }}
-          aria-hidden={currentPage === 1}
           className="ds-c-pagination__nav"
         >
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
@@ -317,8 +315,6 @@ function Pagination({
           href={renderHref(currentPage + 1)}
           onClick={pageChange(currentPage + 1)}
           aria-label={endAriaLabel}
-          style={{ visibility: currentPage === totalPages ? 'hidden' : 'visible' }}
-          aria-hidden={currentPage === totalPages}
           className="ds-c-pagination__nav"
         >
           {endLabelText}
