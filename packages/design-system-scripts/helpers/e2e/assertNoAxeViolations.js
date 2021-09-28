@@ -43,23 +43,26 @@ function printViolations(violations) {
 
 module.exports = function assertNoAxeViolations(url, disabledRules = []) {
   if (url) {
-    return driver.get(url)
-    .then(() => {
-      const defaultDisabledRules = ['bypass'];
-      return new AxeBuilder(driver)
-        .withTags(RULESET_ALL)
-        .disableRules(defaultDisabledRules.concat(disabledRules))
-        .analyze((err, results) => {
-          if (results && results.violations.length >= 1) {
-            printViolations(results.violations);
-          }
-          if (err) {
-            // ESLint wants us to handle the error directly, but that's what
-            // our assertion does below.
-          }
-          expect(results.violations.length).toBe(0);
-        });
-    })
-    .catch((err) => { console.log(err)});
+    return driver
+      .get(url)
+      .then(() => {
+        const defaultDisabledRules = ['bypass'];
+        return new AxeBuilder(driver)
+          .withTags(RULESET_ALL)
+          .disableRules(defaultDisabledRules.concat(disabledRules))
+          .analyze((err, results) => {
+            if (results && results.violations.length >= 1) {
+              printViolations(results.violations);
+            }
+            if (err) {
+              // ESLint wants us to handle the error directly, but that's what
+              // our assertion does below.
+            }
+            expect(results.violations.length).toBe(0);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
