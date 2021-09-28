@@ -20,6 +20,7 @@ describe('Pagination component', () => {
     expect(el).toBeTruthy();
   });
   it('should have no accessibility violations', async () => {
-    await assertNoAxeViolations(rootURL);
+    await driver.get(rootURL);
+    await assertNoAxeViolations(null, 'color-contrast');
   });
 });

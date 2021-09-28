@@ -100,7 +100,7 @@ describe('Pagination', () => {
     it('should hide "previous" navigation slot if current page is first page of set', () => {
       const wrapper = render({ currentPage: 1 });
       const prevButton = wrapper.childAt(0);
-      expect(prevButton.prop('style')).toHaveProperty('visibility', 'hidden');
+      expect(prevButton.type()).toEqual('span');
     });
 
     it('should show "next" navigation slot if current page is not last page of set', () => {
@@ -113,7 +113,7 @@ describe('Pagination', () => {
     it('should hide "next" navigation slot if current page is last page of set', () => {
       const wrapper = render({ currentPage: 3 });
       const lastChild = wrapper.children().last();
-      expect(lastChild.prop('style')).toHaveProperty('visibility', 'hidden');
+      expect(lastChild.type()).toEqual('span');
     });
   });
 

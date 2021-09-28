@@ -61,7 +61,7 @@ exports[`Pagination should render component 1`] = `
     variation="transparent"
   >
     <span
-      className="ds-c-pagination__nav--previous-img-container"
+      className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
     >
       <svg
         aria-hidden="true"
@@ -121,7 +121,7 @@ exports[`Pagination should render component 1`] = `
   >
     Next
     <span
-      className="ds-c-pagination__nav--next-img-container"
+      className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next"
     >
       <svg
         aria-hidden="true"
@@ -164,7 +164,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
     variation="transparent"
   >
     <span
-      className="ds-c-pagination__nav--previous-img-container"
+      className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous"
     >
       <svg
         aria-hidden="true"
@@ -213,7 +213,7 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
   >
     Next
     <span
-      className="ds-c-pagination__nav--next-img-container"
+      className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next"
     >
       <svg
         aria-hidden="true"

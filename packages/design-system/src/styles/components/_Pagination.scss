@@ -2,15 +2,16 @@ $pagination-nav-link-color: $color-primary;
 $pagination-nav-link-color-hover: $color-primary-darker;
 $pagination-nav-link-color-active: $color-primary-darkest;
 $pagination-nav-link-color-focus: $color-primary-darker;
+$pagination-nav-disabled-color: $color-gray-lighter;
 
 $pagination-current-page-color: $color-base;
 $pagination-overflow-color: $color-gray;
 $pagination-page-count-color: $color-gray;
 
 .ds-c-pagination {
+  align-items: end;
   display: flex;
   justify-content: space-between;
-
   ul {
     display: inline;
     margin: 0;
@@ -59,20 +60,22 @@ $pagination-page-count-color: $color-gray;
     padding: 8px;
   }
   .ds-c-pagination__nav {
+    flex: 0 0 auto;
     text-decoration: none;
     &:hover {
       text-decoration-thickness: 3px;
       text-underline-offset: 5px;
     }
   }
-  .ds-c-pagination__nav--next-img-container {
-    display: inline-block;
-    margin-left: 4px;
-    vertical-align: middle;
+  .ds-c-pagination__nav--disabled {
+    border: 1px solid transparent;
+    color: $pagination-nav-disabled-color;
+    padding: 8px 0;
   }
-  .ds-c-pagination__nav--previous-img-container {
+  .ds-c-pagination__nav--img-container {
     display: inline-block;
-    margin-right: 4px;
+    height: 24px;
+    margin-left: 4px;
     vertical-align: middle;
   }
   .ds-c-pagination__nav--image {
