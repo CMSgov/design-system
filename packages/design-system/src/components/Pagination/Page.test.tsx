@@ -7,15 +7,13 @@ describe('Page', () => {
 
   it('should render interactive el if not current', () => {
     const wrapper = shallow(
-      <Page index={1} isActive={false} onPageChange={onPageChange} renderPageHref="/#1" />
+      <Page index={1} isActive={false} onPageChange={onPageChange} href="/#1" />
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render static el if current', () => {
-    const wrapper = shallow(
-      <Page index={1} isActive onPageChange={onPageChange} renderPageHref="/#1" />
-    );
+    const wrapper = shallow(<Page index={1} isActive onPageChange={onPageChange} href="/#1" />);
     expect(wrapper).toMatchSnapshot();
   });
 });

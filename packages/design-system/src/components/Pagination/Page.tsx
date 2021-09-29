@@ -17,11 +17,11 @@ export interface PageProps {
   /**
    * Defines application-specific routing in url for links.
    */
-  renderPageHref: string;
+  href: string;
 }
 
 export default function Page({
-  renderPageHref,
+  href,
   index,
   isActive,
   onPageChange,
@@ -38,7 +38,7 @@ export default function Page({
       ) : (
         <Button
           variation="transparent"
-          href={renderPageHref}
+          href={href}
           onClick={onPageChange}
           aria-label={`page ${index}`}
         >

@@ -179,7 +179,7 @@ function Pagination({
        */
       pages.push(
         <Page
-          renderPageHref={renderHref(1)}
+          href={renderHref(1)}
           key="page-1"
           index={1}
           isActive={currentPage === 1}
@@ -203,7 +203,7 @@ function Pagination({
     pageRange.map((page) => {
       pages.push(
         <Page
-          renderPageHref={renderHref(page)}
+          href={renderHref(page)}
           key={`page-${page}`}
           index={page}
           isActive={currentPage === page}
@@ -224,7 +224,7 @@ function Pagination({
 
       pages.push(
         <Page
-          renderPageHref={renderHref(totalPages)}
+          href={renderHref(totalPages)}
           key={`page-${totalPages}`}
           index={totalPages}
           isActive={currentPage === totalPages}
