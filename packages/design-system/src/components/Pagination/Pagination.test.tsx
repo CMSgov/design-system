@@ -80,6 +80,17 @@ describe('Pagination', () => {
         expect(prevEl.prop('href')).toBe('#1');
       });
 
+      it('should have appropriate href for next page in the page set', () => {
+        const wrapper = render({
+          currentPage: 4,
+          totalPages: 8,
+          renderHref: (currentPage) => `#${currentPage}`,
+        });
+        const prevEl = wrapper.childAt(2);
+
+        expect(prevEl.prop('href')).toBe('#5');
+      });
+
       it('should have appropriate href for "next"', () => {
         const wrapper = render({ currentPage: 2, renderHref: (currentPage) => `#${currentPage}` });
         const nextEl = wrapper.childAt(2);
