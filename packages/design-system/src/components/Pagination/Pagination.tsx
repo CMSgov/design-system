@@ -22,6 +22,10 @@ export interface PaginationProps {
    */
   currentPage?: number;
   /**
+   * Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.
+   */
+  isNavigationHidden?: boolean;
+  /**
    * A callback function used to handle state changes.
    */
   onPageChange: (evt: React.MouseEvent, page: number) => void;
@@ -123,6 +127,7 @@ function Pagination({
   currentPage,
   renderHref,
   onPageChange,
+  isNavigationHidden,
   startLabelText,
   startAriaLabel,
   endLabelText,
@@ -273,7 +278,11 @@ function Pagination({
   return (
     <nav className={classes} aria-label={ariaLabel} {...rest}>
       {currentPage === 1 ? (
-        <span className="ds-c-pagination__nav ds-c-pagination__nav--disabled">
+        <span
+          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
+          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
+          aria-hidden={isNavigationHidden}
+        >
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-previous">
             {startIcon}
           </span>
@@ -303,7 +312,11 @@ function Pagination({
       )}
 
       {currentPage === totalPages ? (
-        <span className="ds-c-pagination__nav ds-c-pagination__nav--disabled">
+        <span
+          className="ds-c-pagination__nav ds-c-pagination__nav--disabled"
+          style={{ visibility: isNavigationHidden ? 'hidden' : 'visible' }}
+          aria-hidden={isNavigationHidden}
+        >
           {endLabelText}
           <span className="ds-c-pagination__nav--img-container ds-c-pagination__nav--img-container-next">
             {endIcon}
@@ -331,6 +344,7 @@ Pagination.defaultProps = {
   ariaLabel: 'Pagination',
   compact: false,
   currentPage: 1,
+  isNavigationHidden: false,
   startLabelText: 'Previous',
   startAriaLabel: 'Previous Page',
   endLabelText: 'Next',
