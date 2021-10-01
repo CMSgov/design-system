@@ -11,7 +11,7 @@ RFCs are useful when team feedback is required before making architecture or des
 - Fill out the template accordingly
 - Submit the PR with the `[RFC]` PR title prefix and tag
 - Commence discussion, adjusting the RFC based on feedback
-- Once all questions defined in the RFC are satisfied, and PR is accepted, merge it
+- Once all questions defined in the RFC are satisfied, and PR is accepted, merge it. Note: the goal is to have the RFC reviewed by multiple people and perspectives. The RFC PR should not be merged at first approval in order to give others time to provide feedback.
 
 ### RFC Status Options
 
