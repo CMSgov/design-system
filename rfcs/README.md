@@ -7,7 +7,7 @@ RFCs are useful when team feedback is required before making architecture or des
 ## Creating a new RFC
 
 - Create a new branch for your RFC PR
-- Copy the `_template.md` file to a new file that is appropriately titled
+- Copy the `_template.md` file to a new file that is prefixed with YYYY-MM & appropriately titled
 - Fill out the template accordingly
 - Submit the PR with the `[RFC]` PR title prefix and tag
 - Commence discussion, adjusting the RFC based on feedback
