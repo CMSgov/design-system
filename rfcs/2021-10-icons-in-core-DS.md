@@ -22,9 +22,9 @@ The .svg files in the `images/` directory are referenced in the code in two main
 
 ## Proposal
 
-Icons in the core DS should be moved to a centralized location and each icon should be standardized in size, accessibilty feature, and exported individually as a React component. This will provide more flexibility to consuming applications by allowing them to import individual SVG icons, adjust the styling on them with more ease, and create icon consistency among products.
+Icons in the core DS should be moved to a centralized location. Each icon should be exported individually as a React component and updated with a standard size and consistent accessibilty features. This will provide more flexibility to consuming applications by allowing them to import individual SVG icons, adjust the styling on them with more ease, and create icon consistency among products.
 
-This ideal state sill be achieved in a few small phases:
+This ideal state can be achieved in a few phases:
 
 1. [Create icon components](#phase-1-create-icon-components)
 2. [Clean & improve markup](#phase-2-clean-and-improve-svg-markup)
@@ -73,7 +73,7 @@ In this phase:
 
 - Update any current DS component that is referencing an SVG in its CSS to use inlined icon components
   - This includes, but is not limited to: `Accordion`, `Alert`, `Dialog`, `Dropdown`, `StepList`, `UsaBanner`, `VerticalNav`
-- Create documentation for consuming applications. This should explain change and instruct on how application styles may be affected
+- Create documentation for consuming applications. This should explain any changes and instruct on how application styles may be affected
 
 _**Note:** This phase will rely deeply on visual regression testing to ensure component styles translate correctly_
 
