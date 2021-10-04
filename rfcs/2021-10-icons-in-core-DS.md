@@ -39,7 +39,7 @@ In this phase:
 - Make `Icons` directory in the design-system component folder
 - Create a component for each icon in the `images` directory
 - Move the `ClearIcon` and `ClearIconAlternate` components into new directory
-- Move inlined SVG markup for `<` & `>` from Pagination to new directory
+- Move inlined SVG markup for `<` & `>` from Pagination to new directory. Consider consolidating to one Icon with variations.
 - Ensure all icons are exported
 - Create base icon component styles to be re-used in each component
 - Update doc site with component details
@@ -58,7 +58,7 @@ In this phase:
   - See [Smashing Magazine](https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/) or [Deque](https://www.deque.com/blog/creating-accessible-svgs/) for guidance
 - Standardize sizing of SVGs either using viewbox or CSS
 - Remove any inline `fill` properties from SVG and move to CSS for easier overriding
-- Ensure SVG markup is optmizine - run through optimizer
+- Ensure SVG markup is optimized - run through optimizer
 
 ### Phase 3: Update Component Icon References
 
