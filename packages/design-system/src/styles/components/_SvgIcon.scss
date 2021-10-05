@@ -1,0 +1,17 @@
+.ds-c-icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.ds-c-icon--primary {
+  fill: $color-primary;
+}
+
+.ds-c-icon--inverse {
+  fill: $color-white;
+}
