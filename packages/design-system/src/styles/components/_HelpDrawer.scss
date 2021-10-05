@@ -50,6 +50,7 @@ $help-drawer-padding: $spacer-2;
 
 .ds-c-help-drawer__close-button {
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .ds-c-help-drawer__header {
@@ -73,10 +74,6 @@ $help-drawer-padding: $spacer-2;
   margin: 0 $help-drawer-padding 0 0;
 }
 
-.ds-c-help-drawer__header-button {
-  margin-left: auto;
-}
-
 .ds-c-help-drawer__body {
   display: flex;
   flex-direction: column;
@@ -94,18 +91,21 @@ $help-drawer-padding: $spacer-2;
     // Prevent too much space at the top of the body area
     margin-top: 0;
   }
+
+  @media (min-width: $width-md) {
+    font-size: $small-font-size;
+  }
+
+  @media (min-width: $width-lg) {
+    font-size: $base-font-size;
+  }
 }
 
 .ds-c-help-drawer__footer {
   background-color: $help-drawer-footer-fill;
   flex-shrink: 0;
-  font-size: $small-font-size;
   line-height: 1.5;
   padding: $help-drawer-padding;
-
-  @media (min-width: $width-lg) {
-    font-size: $base-font-size;
-  }
 }
 
 .ds-c-help-drawer__footer-title {
