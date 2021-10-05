@@ -25,7 +25,7 @@ yarn build
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
 if [[ $1 == *"beta"* ]]; then
   NPM_TAG="--dist-tag beta"
-elif
+else
   NPM_TAG=""
 fi
 yarn lerna publish from-git $NPM_TAG
