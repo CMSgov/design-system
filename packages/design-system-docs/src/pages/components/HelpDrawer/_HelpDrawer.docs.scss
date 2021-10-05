@@ -37,35 +37,9 @@ Style guide: components.help-drawer.react-help-drawer-toggle
 */
 
 /*
-Analytics props
+Analytics Event Object
 
-<table class="ds-c-table ds-c-table--compact">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentDidMount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track help drawers opened event</p>
-      </td>
-    </tr>
-    <tr>
-      <td><code class="ds-u-font-weight--bold">onComponentWillUnmount</code></td>
-      <td><code>bool, or object</code></td>
-      <td>
-        <p>Track help drawers closed event</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>Analytics event object</h4>
+Note: the only value that can be overwritten is the `ga_eventLabel` / `heading` value via the `analyticsLabelOverride` prop
 
 <table class="ds-c-table ds-c-table--compact">
   <thead>
@@ -80,41 +54,37 @@ Analytics props
     <tr>
       <td><code class="ds-u-font-weight--bold">event_name</code></td>
       <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'help_drawer_opened'</code>, or onComponentWillUnmount: <code>'help_drawer_closed'</code></td>
+      <td><code>'help_drawer_opened'</code> or <code>'help_drawer_closed'</code></td>
       <td>
-        <p>When provided, override text to display as the event name</p>
+        <p>When drawer mounts on page, value will be <code>'help_drawer_opened'</code>. When drawer unmounts from page, value will be <code>'help_drawer_closed'</code></p>
       </td>
     </tr>
     <tr>
       <td><code class="ds-u-font-weight--bold">event_type</code></td>
       <td><code>string</code></td>
       <td><code>'ui interaction'</code></td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
+      <td></td>
     </tr>
     <tr>
       <td><code class="ds-u-font-weight--bold">ga_eventAction</code></td>
       <td><code>string</code></td>
-      <td>onComponentDidMount: <code>'opened help drawer'</code>, or onComponentWillUnmount: <code>'closed help drawer'</code></td>
+      <td><code>'opened help drawer'</code> or <code>'closed help drawer'</code></td>
       <td>
-        <p>When provided, override text to display as the event action</p>
+        <p>When drawer mounts on page, value will be <code>'opened help drawer'</code>. When drawer unmounts from page, value will be <code>'closed help drawer'</code></p>
       </td>
     </tr>
     <tr>
       <td><code class="ds-u-font-weight--bold">ga_eventCategory</code></td>
       <td><code>string</code></td>
       <td><code>'ui components'</code></td>
-      <td>
-        <p>When provided, override text to display as the event category</p>
-      </td>
+      <td></td>
     </tr>
     <tr>
       <td><code class="ds-u-font-weight--bold">ga_eventLabel</code></td>
       <td><code>string</code></td>
-      <td>HelpDrawer prop: <code>heading or title</code></td>
+      <td>HelpDrawer prop: <code>analyticsLabelOverride</code> or <code>heading</code> or <code>title</code></td>
       <td>
-        <p>When provided, override text to display as the event label</p>
+        <p>This value will be defaulted to value of prop <code>heading</code> (if it is a string) or <code>title</code>. You may overwrite this by passing a value to the <code>analyticsLabelOverride</code> prop.</p>
       </td>
     </tr>
     <tr>
@@ -122,10 +92,8 @@ Analytics props
         <code class="ds-u-font-weight--bold">ga_eventType</code>
       </td>
       <td><code>string</code></td>
-      <td>cmsds</td>
-      <td>
-        <p>When provided, override text to display as the event type</p>
-      </td>
+      <td><code>'cmsds'</code></td>
+      <td></td>
     </tr>
     <tr>
       <td>
@@ -133,16 +101,14 @@ Analytics props
       </td>
       <td><code>string</code></td>
       <td></td>
-      <td>
-        <p>When provided, override text to display as the event value</p>
-      </td>
+      <td></td>
     </tr>
     <tr>
       <td><code class="ds-u-font-weight--bold">heading</code></td>
       <td><code>string</code></td>
-      <td>HelpDrawer prop: <code>heading or title</code></td>
+      <td>HelpDrawer prop: <code>analyticsLabelOverride</code> or <code>heading</code> or <code>title</code></td>
       <td>
-        <p>When provided, override text to display as the heading</p>
+        <p>This value will be defaulted to value of prop <code>heading</code> (if it is a string) or <code>title</code>. You may overwrite this by passing a value to the <code>analyticsLabelOverride</code> prop. Same as <code>ga_eventLabel</code></p>
       </td>
     </tr>
   </tbody>
@@ -208,21 +174,14 @@ On application where the page has `utag` loaded, the data goes to Tealium which 
 
 ### Disable event tracking
 
-- Pass the `onComponentDidMount` prop set to `false` to the component:
-- Pass the `onComponentWillUnmount` prop set to `false` to the component:
+- For the `analytics` prop, pass the value `false` to the component to disable analytics tracking for a singular component instance
 
 ```JSX
-analytics={
-  {
-    onComponentDidMount: {false},
-    onComponentWillUnmount: {false}
-  }
+analytics={false}
 }
 ```
 
 ### Override  event tracking
 
-- Pass changes via any of the [available analytics props](#components.alert.analytics).
-
-Style guide: components.help-drawer.guidance-analytics
+- A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`
 */
