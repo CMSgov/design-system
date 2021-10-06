@@ -59,6 +59,9 @@ In this phase:
 - Standardize sizing of SVGs either using viewbox or CSS
 - Remove any inline `fill` properties from SVG and move to CSS for easier overriding
 - Ensure SVG markup is optimized - run through optimizer
+- Ensure icons in code are represented in UI Kit (sketch files) [will need Design help]
+
+_Note: an initial release of icons could be done at this point so that teams may start using the icons. This release would include additions of the icon components and should not break existing usage_
 
 ### Phase 3: Update Component Icon References
 
