@@ -1,0 +1,42 @@
+import React from 'react';
+import SvgIcon, { SvgIconProps } from './SvgIcon';
+import classNames from 'classnames';
+
+export interface StarIconProps extends SvgIconProps {
+  isFilled?: boolean;
+}
+
+function StarIcon(props: StarIconProps): React.ReactElement {
+  const iconCssClasses = classNames(
+    'ds-c-icon--star',
+    { 'ds-c-icon--star-filled': props.isFilled },
+    props.className
+  );
+
+  const title = props.isFilled ? 'Star filled' : 'Star';
+
+  return (
+    <SvgIcon title={title} {...props} className={iconCssClasses}>
+      {props.isFilled ? (
+        <path
+          d="M8.533 13.063l-5.274 2.69 1.008-5.699L0 6.017l5.896-.831L8.533 0l2.637 5.186 5.897.831-4.267 4.037 1.007 5.7z"
+          fillRule="nonzero"
+        />
+      ) : (
+        <path
+          className="ds-c-icon--star__outline"
+          d="M13.14 14.852l-.88-4.976 3.709-3.508-5.126-.723-2.31-4.542-2.309 4.542-5.126.723 3.708 3.508-.88 4.976 4.607-2.35 4.607 2.35z"
+          fillRule="nonzero"
+          fill="none"
+        />
+      )}
+    </SvgIcon>
+  );
+}
+
+StarIcon.defaultProps = {
+  className: '',
+  isFilled: false,
+};
+
+export default StarIcon;
