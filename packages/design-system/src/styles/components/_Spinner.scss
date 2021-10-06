@@ -1,5 +1,8 @@
 @import '../settings/index.scss';
 
+$spinner-background-color-inverse: $color-background-inverse;
+$spinner-color-inverse: $color-white;
+
 @mixin spinner-size($inner-size, $outer-size) {
   height: $outer-size;
   width: $outer-size;
@@ -60,6 +63,13 @@
   color: $color-base;
   height: $spacer-6;
   width: $spacer-6;
+
+  &.ds-c-spinner--inverse {
+    background-color: $spinner-background-color-inverse;
+    &:not(:focus) {
+      color: $spinner-color-inverse;
+    }
+  }
 }
 
 .ds-c-spinner--small {

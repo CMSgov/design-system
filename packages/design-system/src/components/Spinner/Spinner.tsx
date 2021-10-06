@@ -35,7 +35,7 @@ export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerPro
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
-    props.inversed && 'ds-u-fill--background-inverse ds-u-color--base-inverse',
+    props.inversed && 'ds-c-spinner--inverse',
     props.filled && 'ds-c-spinner--filled',
     props.className
   );
