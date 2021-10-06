@@ -1,7 +1,7 @@
 @import '../settings/index.scss';
 
-$help-drawer-header-fill: $color-gray-lightest;
-$help-drawer-footer-fill: $color-primary-alt-lightest;
+$help-drawer-header-background-color: $color-gray-lightest;
+$help-drawer-footer-background-color: $color-primary-alt-lightest;
 $help-drawer-padding: $spacer-2;
 
 @keyframes slideInHelpDrawer {
@@ -65,7 +65,7 @@ $help-drawer-padding: $spacer-2;
 
 .ds-c-help-drawer__header-container {
   align-items: flex-start;
-  background-color: $help-drawer-header-fill;
+  background-color: $help-drawer-header-background-color;
   display: flex;
   padding: $help-drawer-padding;
 }
@@ -102,7 +102,7 @@ $help-drawer-padding: $spacer-2;
 }
 
 .ds-c-help-drawer__footer {
-  background-color: $help-drawer-footer-fill;
+  background-color: $help-drawer-footer-background-color;
   flex-shrink: 0;
   line-height: 1.5;
   padding: $help-drawer-padding;
