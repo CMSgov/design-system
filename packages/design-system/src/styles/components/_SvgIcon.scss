@@ -8,6 +8,7 @@
   width: 24px;
 }
 
+// Icon color variations
 .ds-c-icon--primary {
   fill: $color-primary;
 }
@@ -16,6 +17,7 @@
   fill: $color-white;
 }
 
+// Specific icon variations
 .ds-c-icon--arrow {
   width: 26px;
 }
@@ -30,4 +32,23 @@
 
 .ds-c-icon--arrow-right {
   transform: rotate(-90deg);
+}
+
+.ds-c-icon--star__outline {
+  fill: none;
+  stroke: $color-black;
+  stroke-width: 1px;
+}
+
+.ds-c-icon--pdf__text {
+  fill: $color-white;
+}
+
+.ds-c-icon--building-circle__building {
+  fill: #2378c3;
+}
+
+.ds-c-icon--building-circle__circle {
+  stroke: #005ea2;
+  stroke-width: 2px;
 }
