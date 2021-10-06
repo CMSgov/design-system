@@ -137,7 +137,9 @@ HelpDrawer.propTypes = {
    */
   analytics: PropTypes.bool,
   /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride: PropTypes.string,
   /**
