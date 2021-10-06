@@ -1,4 +1,4 @@
-import { AddIcon, ArrowsStacked } from '@design-system';
+import { AddIcon, ArrowsStacked, ArrowIcon } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -6,6 +6,10 @@ ReactDOM.render(
   <>
     <AddIcon />
     <ArrowsStacked />
+    <ArrowIcon />
+    <ArrowIcon direction="down" />
+    <ArrowIcon direction="left" />
+    <ArrowIcon direction="right" />
   </>,
   document.getElementById('js-example')
 );
