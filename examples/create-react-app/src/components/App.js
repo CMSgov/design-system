@@ -14,6 +14,7 @@ import HelpDrawerExample from './Examples/HelpDrawerExample';
 import MaskedFieldExample from './Examples/MaskedFieldExample';
 import ModalDialogExample from './Examples/ModalDialogExample';
 import MonthPickerExample from './Examples/MonthPickerExample';
+import PaginationExample from './Examples/PaginationExample';
 import SpinnerExample from './Examples/SpinnerExample';
 import TableExample from './Examples/TableExample';
 import TabsExample from './Examples/TabsExample';
@@ -110,6 +111,7 @@ function App() {
             <MaskedFieldExample />
             <ModalDialogExample />
             <MonthPickerExample />
+            <PaginationExample />
             <SpinnerExample />
             <TextFieldExample />
             <TableExample />

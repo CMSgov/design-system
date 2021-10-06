@@ -38,7 +38,6 @@ module.exports = {
     ],
     'no-unused-vars': ['error', { ignoreRestSiblings: true }],
     'jsx-quotes': 'off',
-    'sort-imports': 'error',
     'react/forbid-prop-types': 'error',
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-first-prop-new-line': ['error', 'multiline'],

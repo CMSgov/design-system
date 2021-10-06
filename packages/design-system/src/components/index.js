@@ -17,6 +17,7 @@ export * from './FormLabel';
 export * from './HelpDrawer';
 export * from './InlineError';
 export * from './MonthPicker';
+export * from './Pagination';
 export * from './Review';
 export * from './SkipNav';
 export * from './Spinner';
