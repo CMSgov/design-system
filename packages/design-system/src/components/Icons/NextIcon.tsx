@@ -17,6 +17,7 @@ function NextIcon(props: SvgIconProps): React.ReactElement {
 NextIcon.defaultProps = {
   className: '',
   title: 'Next',
+  viewBox: '0 0 16 13',
 };
 
 export default NextIcon;

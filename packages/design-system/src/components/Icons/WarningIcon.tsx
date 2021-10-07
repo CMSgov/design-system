@@ -14,6 +14,7 @@ function WarningIcon(props: SvgIconProps): React.ReactElement {
 WarningIcon.defaultProps = {
   className: '',
   title: 'Warning',
+  viewBox: '27 0 160 135',
 };
 
 export default WarningIcon;

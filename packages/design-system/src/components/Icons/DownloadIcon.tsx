@@ -17,6 +17,7 @@ function DownloadIcon(props: SvgIconProps): React.ReactElement {
 DownloadIcon.defaultProps = {
   className: '',
   title: 'Download',
+  viewBox: '0 0 15 19',
 };
 
 export default DownloadIcon;

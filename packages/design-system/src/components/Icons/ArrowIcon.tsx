@@ -26,6 +26,7 @@ function ArrowIcon(props: ArrowIconProps): React.ReactElement {
 ArrowIcon.defaultProps = {
   className: '',
   direction: 'up',
+  viewBox: '0 0 26 26',
 };
 
 export default ArrowIcon;

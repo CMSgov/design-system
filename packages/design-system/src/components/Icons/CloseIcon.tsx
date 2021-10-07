@@ -17,6 +17,7 @@ function CloseIcon(props: SvgIconProps): React.ReactElement {
 CloseIcon.defaultProps = {
   className: '',
   title: 'Close',
+  viewBox: '0 0 16 16',
 };
 
 export default CloseIcon;

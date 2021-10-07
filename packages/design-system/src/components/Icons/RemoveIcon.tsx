@@ -14,6 +14,7 @@ function RemoveIcon(props: SvgIconProps): React.ReactElement {
 RemoveIcon.defaultProps = {
   className: '',
   title: 'Remove',
+  viewBox: '0 0 24 24',
 };
 
 export default RemoveIcon;

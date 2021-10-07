@@ -17,6 +17,7 @@ function ArrowsStacked(props: SvgIconProps): React.ReactElement {
 ArrowsStacked.defaultProps = {
   className: '',
   title: 'Sort',
+  viewBox: '0 0 10 14',
 };
 
 export default ArrowsStacked;
