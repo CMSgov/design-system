@@ -87,7 +87,8 @@ The _Invision DSM_ officially supports Storybook as their recommended tool for s
 All the tasks outlined in the above sections would benefit us in the following ways:
 
 1. Improve developer experience and development efficiency
-1. Reduce maintenance burden for custom tooling
+1. Better align our tooling with modern industry standards
+1. Reduce maintenance burden for custom tooling, which does not scale well
 1. Improve accessibility feedback during development and testing
 1. Reduce amount of unit testing code to be maintained
 1. Replace existing unreliable visual regression testing with CI-compatible solution
