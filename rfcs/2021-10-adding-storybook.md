@@ -12,6 +12,8 @@ Our team currently uses our documentation site generator for developing design s
 
 Decoupling the development process from the docs-site generator tool would increase development speed and efficiency.
 
+Beyond problems with the docs-site generator, there are several other unrelated problems that our proposed solution can fix. They are described in their corresponding sections of the proposal.
+
 ## Proposal
 
 This problem has already been solved in the industry by [_Storybook_](https://storybook.js.org/), a well maintained and popular open-source tool for developing libraries of components. Storybook is used at Airbnb, GitHub, IBM, Lyft, and the list goes on.
@@ -62,7 +64,7 @@ To create unit tests, one must write code to set up testing scenarios for a comp
 
 ### 6. Set up automated visual regression testing
 
-Right now our visual regression tests (VRTs) are only executed before deploys on an engineer's machine before a release is made. This is inconsistent, unreliable, and happens at a point in the process when it is no longer helpful. The time to check for visual regressions is during the code review process, when we're trying to approve and merge a change. That's when the feedback is useful and fixes can easily be made. A solution for VRTs that works in our CI (Continuous Integration) pipeline would be ideal, but unfortunately to get consistent results, we'd have to do significant work to have our VRTs execute in a virtual machine to bring the number of false negatives down to an acceptible level when executing across different environments. Having them run in a CI pipeline also guarantees that we're comparing new changes against the current master branch so we never find ourselves in a situation where we're comparing apples to oranges (or to an apple that has been sitting on the ground for three months). In short, our current solution is inadequate, and we want a low-effort way to make it robust and useful.
+Right now our visual regression tests (VRTs) are only executed before deploys on an engineer's machine before a release is made. The results are inconsistent, and it happens at a point in the process when it is no longer helpful. The time to check for visual regressions is during the code review process, when we're trying to approve and merge a change. That's when the feedback is useful and fixes can easily be made. A solution for VRTs that works in our CI (Continuous Integration) pipeline would be ideal, but unfortunately to get consistent results, we'd have to do significant work to have our VRTs execute in a virtual machine to bring the number of false negatives down to an acceptible level when executing across different environments. Having them run in a CI pipeline also guarantees that we're comparing new changes against the current master branch so we never find ourselves in a situation where we're comparing apples to oranges (or to an apple that has been sitting on the ground for three months). In short, our current solution is inadequate, and we want a low-effort way to make it robust and useful.
 
 Storybook has an add-on called [`loki`](https://storybook.js.org/addons/loki), which adds low-configuration visual regression testing that would be compatible with our current CI-testing pipeline. It would take advantage of existing stories and require very little maintenance compared to our current visual regression testing suite. This would still require use of virtual machines/containerization in our CI environment, but it may be lower effort than doing the same thing for our current VRT suite.
 
