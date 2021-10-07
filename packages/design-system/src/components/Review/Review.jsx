@@ -24,7 +24,7 @@ export class Review extends React.PureComponent {
     const classes = classNames('ds-c-review', className);
     return (
       <div className={classes}>
-        <div className="ds-u-margin-right--2">
+        <div className="ds-c-review__content">
           {this.heading()}
           <div className="ds-c-review__body">{children}</div>
         </div>
