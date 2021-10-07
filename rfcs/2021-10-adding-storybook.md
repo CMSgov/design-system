@@ -89,6 +89,7 @@ All the tasks outlined in the above sections would benefit us in the following w
 1. Improve accessibility feedback during development and testing
 1. Reduce amount of unit testing code to be maintained
 1. Replace existing unreliable visual regression testing with CI-compatible solution
+1. Eliminate issue of HTML examples becoming out of sync with React source of truth
 1. Integrate code examples more smoothly into the DSM
 
 ### Risks
