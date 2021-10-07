@@ -25,9 +25,9 @@ Introducing Storybook into our project and workflow can happen incrementally and
 1. Set up Storybook for development use
 2. Add Storybook _stories_ for existing components
 3. Automatically build Storybook previews for pull requests
-4. Use Storybook _stories_ in unit tests
-5. Set up accessibility testing using add-on
-6. Set up automated visual regression testing using add-on
+4. Install accessibility auditing add-on
+5. Use Storybook _stories_ in unit tests
+6. Set up automated visual regression testing
 7. Automatically generate HTML examples from React-based _stories_
 8. Replace current documentation-site examples with Storybook _stories_
 
@@ -49,11 +49,21 @@ Once we have basic support for Storybook from the previous step, we can incremen
 
 Currently we have [a Cloudbees Jenkins job that automatically builds our documentation site](https://ci.backends.cms.gov/wds/job/design-system/job/build%20demo/) for each branch that has a pull request. This documentation-site preview can be used as part of the review process, especially by non-engineer teammates and stakeholders who want to review the work without having to set up a local development environment. In the same manner, we can add a job that will build a Storybook preview for pull requests. The Storybook preview will be far more useful for reviewing and manually testing components because they are not limited to the scenarios defined in the documentation-site examples. The component props can even be changed live in the browser to capture all testing scenarios.
 
-### 4. Use Storybook _stories_ in unit tests
+### 4. Install accessibility auditing add-on
+
+This task is as simple as adding one dependency to our package file and one line to our Storybook config. It introduces an "Accessibility" tab through [this accessibility add-on](https://storybook.js.org/addons/@storybook/addon-a11y/), which runs automated [Axe](https://www.deque.com/axe/) reports on every story. This feedback can be used during development and review to improve component accessibility.
+
+We currently include Axe accessibility audits in our e2e-testing suite, which is discussed [in this RFC about testing](https://github.com/CMSgov/design-system/blob/master/rfcs/2021-10-e2e-tests.md). This could potentially be a replacement for those tests, especially if CI integration is added to the accessibility add-on in the future. (CI integration is on their development roadmap.)
+
+### 5. Use Storybook _stories_ in unit tests
 
 To create unit tests, one must write code to set up testing scenarios for a component. Storybook _stories_ require the same kind of setup. There is [an add-on that allows _stories_ to be imported into unit tests](https://storybook.js.org/addons/@storybook/testing-react/), which could reduce the amount of boilerplate code in unit tests and make them more concise. Further analysis should be made as to whether this would truly provide a long-term benefit, but it should be noted here as an option for future exploration.
 
-### 5. Set up accessibility testing using add-on
+### 6. Set up automated visual regression testing
+
+Storybook has an add-on called [`loki`](https://storybook.js.org/addons/loki), which adds low-configuration visual regression testing that would be compatible with our current CI-testing pipeline. It would take advantage of existing stories and require very little maintenance compared to our current visual regression testing suite. Our current visual regression tests are not part of our CI-tests and have very limited usefulness to us. This add-on would be a significant improvement.
+
+Another option to explore in the future is visual-regression-testing through a service called [Chromatic](https://www.chromatic.com/features/test). Chromatic is the company that maintains Storybook, and they have a free tier for their service which we could use to try it out.
 
 ### 7. Automatically generate HTML examples from React-based _stories_ using add-on
 
