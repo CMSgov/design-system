@@ -1,7 +1,7 @@
 # RFC: Standardizing Icons in the Core DS
 
 **Date**: October 01, 2021
-**Status**: `Review`
+**Status**: `Approved`
 
 ## Problem
 
