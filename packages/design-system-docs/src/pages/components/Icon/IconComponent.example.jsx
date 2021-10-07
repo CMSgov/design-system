@@ -12,6 +12,7 @@ import {
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
+  LockCircleIcon,
   LockIcon,
   NextIcon,
   PdfIcon,
@@ -41,6 +42,7 @@ ReactDOM.render(
     <ImageIcon />
     <InfoCircleIcon />
     <InfoCircleIconThin />
+    <LockCircleIcon />
     <LockIcon />
     <NextIcon />
     <PdfIcon />

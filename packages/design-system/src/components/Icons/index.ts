@@ -12,6 +12,7 @@ export { default as DownloadIcon } from './DownloadIcon';
 export { default as ImageIcon } from './ImageIcon';
 export { default as InfoCircleIcon } from './InfoCircleIcon';
 export { default as InfoCircleIconThin } from './InfoCircleIconThin';
+export { default as LockCircleIcon } from './LockCircleIcon';
 export { default as LockIcon } from './LockIcon';
 export { default as NextIcon } from './NextIcon';
 export { default as PdfIcon } from './PdfIcon';
