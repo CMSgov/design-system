@@ -22,15 +22,15 @@ We would primarily use it as an internal tool at first, but in the future we cou
 
 Introducing Storybook into our project and workflow can happen incrementally and in a piecemeal fashion. With the exception of the first, the following tasks can happen in any order and may be undertaken in parallel:
 
-1. [Set up Storybook for development use](#set-up-storybook-for-development-use)
-2. [Add Storybook _stories_ for existing components](#add-storybook-stories-for-existing-components)
-3. [Automatically build Storybook previews for pull requests](#automatically-build-storybook-previews-for-pull-requests)
-4. [Install accessibility auditing add-on](#install-accessibility-auditing-add-on)
-5. [Use Storybook _stories_ in unit tests](#use-storybook-stories-in-unit-tests)
-6. [Set up automated visual regression testing](#set-up-automated-visual-regression-testing)
-7. [Automatically generate HTML examples from React-based _stories_](#automatically-generate-html-examples-from-react-based-stories)
-8. [Replace current documentation-site examples with Storybook _stories_](#replace-current-documentation-site-examples-with-storybook-stories)
-9. [Use Storybook _stories_ in Invision DSM](#use-storybook-stories-in-invision-dsm)
+1. [Set up Storybook for development use](#1-set-up-storybook-for-development-use)
+2. [Add Storybook _stories_ for existing components](#2-add-storybook-stories-for-existing-components)
+3. [Automatically build Storybook previews for pull requests](#3-automatically-build-storybook-previews-for-pull-requests)
+4. [Install accessibility-auditing add-on](#4-install-accessibility-auditing-add-on)
+5. [Use Storybook _stories_ in unit tests](#5-use-storybook-stories-in-unit-tests)
+6. [Set up automated visual regression testing](#6-set-up-automated-visual-regression-testing)
+7. [Automatically generate HTML examples from React-based _stories_](#7-automatically-generate-html-examples-from-react-based-stories)
+8. [Replace current documentation-site examples with Storybook _stories_](#8-replace-current-documentation-site-examples-with-storybook-stories)
+9. [Use Storybook _stories_ in Invision DSM](#9-use-storybook-stories-in-invision-dsm)
 
 ### What are Storybook "stories"?
 
@@ -50,7 +50,7 @@ Once we have basic support for Storybook from the previous step, we can incremen
 
 Currently we have [a Cloudbees Jenkins job that automatically builds our documentation site](https://ci.backends.cms.gov/wds/job/design-system/job/build%20demo/) for each branch that has a pull request. This documentation-site preview can be used as part of the review process, especially by non-engineer teammates and stakeholders who want to review the work without having to set up a local development environment. In the same manner, we can add a job that will build a Storybook preview for pull requests. The Storybook preview will be far more useful for reviewing and manually testing components because they are not limited to the scenarios defined in the documentation-site examples. The component props can even be changed live in the browser to capture all testing scenarios.
 
-### 4. Install accessibility auditing add-on
+### 4. Install accessibility-auditing add-on
 
 This task is as simple as adding one dependency to our package file and one line to our Storybook config. It introduces an "Accessibility" tab through [this accessibility add-on](https://storybook.js.org/addons/@storybook/addon-a11y/), which runs automated [Axe](https://www.deque.com/axe/) reports on every story. This feedback can be used during development and review to improve component accessibility.
 
