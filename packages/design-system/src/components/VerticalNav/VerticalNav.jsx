@@ -32,7 +32,7 @@ export class VerticalNav extends React.PureComponent {
       {
         'ds-c-vertical-nav': !this.props.nested,
         'ds-c-vertical-nav__subnav': this.props.nested,
-        'ds-u-display--none': this.props.collapsed,
+        'ds-c-vertical-nav--collapsed': this.props.collapsed,
       },
       this.props.className
     );
