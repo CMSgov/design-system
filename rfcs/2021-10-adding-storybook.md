@@ -62,6 +62,8 @@ To create unit tests, one must write code to set up testing scenarios for a comp
 
 ### 6. Set up automated visual regression testing
 
+Right now our visual regression tests (VRTs) are only executed before deploys on an engineer's machine before a release is made. This is inconsistent, unreliable, and happens at a point in the process when it is no longer helpful. The time to check for visual regressions is during the code review process, when we're trying to approve and merge a change. That's when the feedback is useful and fixes can easily be made. A solution for VRTs that works in our CI (Continuous Integration) pipeline would be ideal, but unfortunately to get consistent results, we'd have to do significant work to have our VRTs execute in a virtual machine to bring the number of false negatives down to an acceptible level when executing across different environments. Having them run in a CI pipeline also guarantees that we're comparing new changes against the current master branch so we never find ourselves in a situation where we're comparing apples to oranges (or to an apple that has been sitting on the ground for three months). In short, our current solution is inadequate, and we want a low-effort way to make it robust and useful.
+
 Storybook has an add-on called [`loki`](https://storybook.js.org/addons/loki), which adds low-configuration visual regression testing that would be compatible with our current CI-testing pipeline. It would take advantage of existing stories and require very little maintenance compared to our current visual regression testing suite. Our current visual regression tests are not part of our CI-tests and have very limited usefulness to us. This add-on would be a significant improvement.
 
 Another option to explore in the future is visual-regression-testing through a service called [Chromatic](https://www.chromatic.com/features/test). Chromatic is the company that maintains Storybook, and they have a free tier for their service which we could use to try it out.
@@ -72,10 +74,35 @@ Currently our documentation site includes plain HTML examples that we have to ma
 
 ### 8. Replace current documentation-site examples with Storybook _stories_
 
+Right now our custom docs-site generator builds and embeds live component examples that we created. We can retool our docs-site generator to pull those examples from Storybook _stories_ rather than our own custom example files. This is exactly what the [VA.gov Design System](https://design.va.gov/components/) does. The examples they show for components are embedded from Storybook. Doing this would allow us to remove a significant amount of code that we currently have to maintain.
+
 ### 9. Use Storybook _stories_ in Invision DSM
+
+The _Invision DSM_ officially supports Storybook as their recommended tool for showing [_Live Components_](https://support.invisionapp.com/hc/en-us/articles/360028214732), and they have even built tools and a hosting service to support it. See Invision's learning course on [creating live components](https://learn.invisionapp.com/learn/course/live-components-with-dsm/) for more information about the integration. In order to show live component examples in our DSM pages, we have to embed them from our custom generated documentation site. The live components have to be hosted somewhere. By embedding Storybook _stories_ instead, we gain all the features of Storybook and features of the DSM integration.
 
 ### Benefits
 
+All the tasks outlined in the above sections would benefit us in the following ways:
+
+1. Improve developer experience and development efficiency
+1. Reduce maintenance burden for custom tooling
+1. Improve accessibility feedback during development and testing
+1. Reduce amount of unit testing code to be maintained
+1. Replace existing unreliable visual regression testing with CI-compatible solution
+1. Integrate code examples more smoothly into the DSM
+
 ### Risks
 
+1. Adopting any new technology comes with the implicit risk that we'll have to change technologies in the future and refactor code.
+
+- The alternative is continuing to use our custom tooling. In this case the cost of maintaining our custom tooling and using it our daily work is higher than needing to refactor some code two years from now as the technology evolves.
+
+2. Work spent on a given task outlined above doesn't result in the predicted benefit.
+
+- There are enough anticipated benefits overall of moving to Storybook that the success of any one feature.
+- The [VA.gov Design System](https://design.va.gov/components/)'s use of Storybook was very successful
+
 ## Questions and Requested Feedback
+
+1. What are other risks or benefits I didn't identify?
+1. Are there any opportunities to leverage Storybook that I didn't identify?
