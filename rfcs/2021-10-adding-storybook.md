@@ -98,12 +98,11 @@ All the tasks outlined in the above sections would benefit us in the following w
 
 1. Adopting any new technology comes with the implicit risk that we'll have to change technologies in the future and refactor code.
 
-- The alternative is continuing to use our custom tooling. In this case the cost of maintaining our custom tooling and using it our daily work is higher than needing to refactor some code two years from now as the technology evolves.
+   - The alternative is continuing to use our custom tooling. In this case the cost of maintaining our custom tooling and using it our daily work is higher than needing to refactor some code two years from now as the technology evolves.
 
 2. Work spent on a given task outlined above doesn't result in the predicted benefit.
-
-- There are enough anticipated benefits overall of moving to Storybook that the success of any one feature.
-- The [VA.gov Design System](https://design.va.gov/components/)'s use of Storybook was very successful
+   - There are enough anticipated benefits overall of moving to Storybook that the success of any one feature.
+   - The [VA.gov Design System](https://design.va.gov/components/)'s use of Storybook was very successful
 
 ## Questions and Requested Feedback
 
