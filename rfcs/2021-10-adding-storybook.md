@@ -32,11 +32,11 @@ Introducing Storybook into our project and workflow can happen incrementally and
 8. [Replace current documentation-site examples with Storybook _stories_](#replace-current-documentation-site-examples-with-storybook-stories)
 9. [Use Storybook _stories_ in Invision DSM](#use-storybook-stories-in-invision-dsm)
 
-> **What are Storybook "stories"?**
->
+### What are Storybook "stories"?
+
 > "A story captures the rendered state of a UI component. Developers write multiple stories per component that describe all the “interesting” states a component can support." - [storybook.js.org](https://storybook.js.org/docs/react/get-started/whats-a-story)
->
-> The following sections reference using _stories_ in various ways. The nice thing about creating _stories_ for our components is that they become nice little units that feed into other tools and processes. For instance, we can use a _story_ in a unit test or a visual regression test. Classically we would have to set up initialization code for a component in many separate tools, but the _story_ is consummable by many tools in the Storybook ecosystem.
+
+The following sections reference using _stories_ in various ways. The nice thing about creating _stories_ for our components is that they become nice little units that feed into other tools and processes. For instance, we can use a _story_ in a unit test or a visual regression test. Classically we would have to set up initialization code for a component in many separate tools, but the _story_ is consummable by many tools in the Storybook ecosystem.
 
 ### 1. Set up Storybook for development use
 
