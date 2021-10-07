@@ -22,14 +22,15 @@ We would primarily use it as an internal tool at first, but in the future we cou
 
 Introducing Storybook into our project and workflow can happen incrementally and in a piecemeal fashion. With the exception of the first, the following tasks can happen in any order and may be undertaken in parallel:
 
-1. Set up Storybook for development use
-2. Add Storybook _stories_ for existing components
-3. Automatically build Storybook previews for pull requests
-4. Install accessibility auditing add-on
-5. Use Storybook _stories_ in unit tests
-6. Set up automated visual regression testing
-7. Automatically generate HTML examples from React-based _stories_
-8. Replace current documentation-site examples with Storybook _stories_
+1. [Set up Storybook for development use](#set-up-storybook-for-development-use)
+2. [Add Storybook _stories_ for existing components](#add-storybook-stories-for-existing-components)
+3. [Automatically build Storybook previews for pull requests](#automatically-build-storybook-previews-for-pull-requests)
+4. [Install accessibility auditing add-on](#install-accessibility-auditing-add-on)
+5. [Use Storybook _stories_ in unit tests](#use-storybook-stories-in-unit-tests)
+6. [Set up automated visual regression testing](#set-up-automated-visual-regression-testing)
+7. [Automatically generate HTML examples from React-based _stories_](#automatically-generate-html-examples-from-react-based-stories)
+8. [Replace current documentation-site examples with Storybook _stories_](#replace-current-documentation-site-examples-with-storybook-stories)
+9. [Use Storybook _stories_ in Invision DSM](#use-storybook-stories-in-invision-dsm)
 
 > **What are Storybook "stories"?**
 >
@@ -43,7 +44,7 @@ This first task is to set up Storybook for local development. We would add it to
 
 ### 2. Add Storybook _stories_ for existing components
 
-Once we have basic support for Storybook from the previous step, we can incrementally add stories for all our components. This can be an organic process as changes are made to components or be done as a series of tickets to add stories. For the purpose of using _stories_ in other ways outlined in this RFC, we should make an effort to add at least one basic story for each component.
+Once we have basic support for Storybook from the previous step, we can incrementally add stories for all our components. This can be done as a series of tickets to add stories in batches. For the purpose of using _stories_ in other ways outlined in this RFC, we should make an effort to add at least one basic story for each component.
 
 ### 3. Automatically build Storybook previews for pull requests
 
@@ -68,6 +69,10 @@ Another option to explore in the future is visual-regression-testing through a s
 ### 7. Automatically generate HTML examples from React-based _stories_ using add-on
 
 Currently our documentation site includes plain HTML examples that we have to maintain separately from the React components. Oftentimes the HTML examples will become out of sync with the React components as changes are made over time. Using the [Storybook HTML Addon](https://storybook.js.org/addons/@whitespace/storybook-addon-html), we can automatically generate those HTML examples from our React-based _stories_ and allow the React components to be the true source of truth.
+
+### 8. Replace current documentation-site examples with Storybook _stories_
+
+### 9. Use Storybook _stories_ in Invision DSM
 
 ### Benefits
 
