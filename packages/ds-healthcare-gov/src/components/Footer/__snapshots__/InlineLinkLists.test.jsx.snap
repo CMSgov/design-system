@@ -1,0 +1,609 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineLinkLists renders lists of links 1`] = `
+<div
+  className="ds-l-container"
+>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-margin-bottom--1"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.allTopics"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/topics"
+      >
+        footer.allTopics
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.glossary"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/glossary"
+      >
+        footer.glossary
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.contactUs"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/contact-us"
+      >
+        footer.contactUs
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.archive"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/archive"
+      >
+        footer.archive
+      </a>
+    </li>
+  </ul>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.nondiscriminationAndA11y"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
+      >
+        footer.nondiscriminationAndA11y
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.privacyPolicy"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/privacy"
+      >
+        footer.privacyPolicy
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.privacySettings"
+    >
+      <Component />
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.linkingPolicy"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/privacy/#links"
+      >
+        footer.linkingPolicy
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.usingThisSite"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/using-this-site"
+      >
+        footer.usingThisSite
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.plainWriting"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="http://www.hhs.gov/open/plain-writing/index.html"
+      >
+        footer.plainWriting
+      </a>
+    </li>
+  </ul>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="zh"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#chinese"
+        lang="zh"
+      >
+        中文
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ht"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#creole"
+        lang="ht"
+      >
+        Kreyòl
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="fr"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#french"
+        lang="fr"
+      >
+        Français
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="de"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#german"
+        lang="de"
+      >
+        Deutsch
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="gu"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#gujarati"
+        lang="gu"
+      >
+        ગુજરાતી
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="hi"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#hindi"
+        lang="hi"
+      >
+        हिंदी
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="it"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#italian"
+        lang="it"
+      >
+        Italiano
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ja"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#japanese"
+        lang="ja"
+      >
+        日本語
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ko"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#korean"
+        lang="ko"
+      >
+        한국어
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="pl"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#polish"
+        lang="pl"
+      >
+        Polski
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="pt"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#portuguese"
+        lang="pt"
+      >
+        Português
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ru"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#russian"
+        lang="ru"
+      >
+        Русский
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="es"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#spanish"
+        lang="es"
+      >
+        Español
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="tl"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#tagalog"
+        lang="tl"
+      >
+        Tagalog
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="vi"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="/language-resource/#vietnamese"
+        lang="vi"
+      >
+        tiếng việt
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
+<div
+  className="ds-l-container"
+>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-margin-bottom--1"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.allTopics"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/topics"
+      >
+        footer.allTopics
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.glossary"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/glossary"
+      >
+        footer.glossary
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.contactUs"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/contact-us"
+      >
+        footer.contactUs
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.archive"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/archive"
+      >
+        footer.archive
+      </a>
+    </li>
+  </ul>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small ds-u-border-bottom--1 ds-u-margin-bottom--2 ds-u-padding-bottom--2"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.nondiscriminationAndA11y"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
+      >
+        footer.nondiscriminationAndA11y
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.privacyPolicy"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/privacy"
+      >
+        footer.privacyPolicy
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.privacySettings"
+    >
+      <Component />
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.linkingPolicy"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/privacy/#links"
+      >
+        footer.linkingPolicy
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.usingThisSite"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/using-this-site"
+      >
+        footer.usingThisSite
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="footer.plainWriting"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="http://www.hhs.gov/open/plain-writing/index.html"
+      >
+        footer.plainWriting
+      </a>
+    </li>
+  </ul>
+  <ul
+    className="ds-c-list ds-c-list--bare ds-u-font-size--small"
+  >
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="zh"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#chinese"
+        lang="zh"
+      >
+        中文
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ht"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#creole"
+        lang="ht"
+      >
+        Kreyòl
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="fr"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#french"
+        lang="fr"
+      >
+        Français
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="de"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#german"
+        lang="de"
+      >
+        Deutsch
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="gu"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#gujarati"
+        lang="gu"
+      >
+        ગુજરાતી
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="hi"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#hindi"
+        lang="hi"
+      >
+        हिंदी
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="it"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#italian"
+        lang="it"
+      >
+        Italiano
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ja"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#japanese"
+        lang="ja"
+      >
+        日本語
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ko"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#korean"
+        lang="ko"
+      >
+        한국어
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="pl"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#polish"
+        lang="pl"
+      >
+        Polski
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="pt"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#portuguese"
+        lang="pt"
+      >
+        Português
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="ru"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#russian"
+        lang="ru"
+      >
+        Русский
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="es"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#spanish"
+        lang="es"
+      >
+        Español
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="tl"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#tagalog"
+        lang="tl"
+      >
+        Tagalog
+      </a>
+    </li>
+    <li
+      className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
+      key="vi"
+    >
+      <a
+        className="ds-u-display--inline-block"
+        href="https://www.healthcare.gov/language-resource/#vietnamese"
+        lang="vi"
+      >
+        tiếng việt
+      </a>
+    </li>
+  </ul>
+</div>
+`;

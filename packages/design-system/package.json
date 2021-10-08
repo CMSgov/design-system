@@ -19,6 +19,8 @@
   ],
   "dependencies": {
     "@popperjs/core": "^2.4.4",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
     "downshift": "^3.2.10",

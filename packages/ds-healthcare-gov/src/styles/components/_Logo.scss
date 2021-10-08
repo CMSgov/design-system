@@ -1,0 +1,25 @@
+.hc-c-footer__logo {
+  max-width: 100%;
+
+  svg {
+    fill: $color-muted;
+    width: 100%;
+  }
+}
+
+.hc-c-logo {
+  display: inline-block;
+  line-height: 1;
+}
+
+.hc-c-logo__care {
+  fill: $color-primary;
+}
+
+.hc-c-logo__gov {
+  fill: $color-gray;
+}
+
+.registered-symbol {
+  font-size: 0.6rem;
+}

@@ -1,0 +1,17 @@
+// @cmsgov/design-system-scripts uses babel.config.js to compile .ts files, and doesn't use tsconfig.json
+// However, tsconfig.json is used to generate definition files, used bywebpack during doc site generation,
+// and should be used by eslint for type checking (@cmsgov/design-system-scripts build scripts do not provide typechecking)
+{
+    "compilerOptions": {
+      "target": "es2015",
+      "jsx": "react",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      // Allows `*.example.tsx` files in `docs` to import directly from `src`
+      "baseUrl": ".",
+      "paths": {
+        "@design-system/*": ["*"]
+      },
+    },
+  }
