@@ -1,5 +1,7 @@
 @import '../settings/index.scss';
 
+$badge-font-size-big: $base-font-size;
+
 .ds-c-badge {
   background-color: $color-gray;
   border-radius: $border-radius-pill;
@@ -13,6 +15,10 @@
   &:only-of-type {
     margin-right: 0;
   }
+}
+
+.ds-c-badge--big {
+  font-size: $badge-font-size-big;
 }
 
 .ds-c-badge--info {
