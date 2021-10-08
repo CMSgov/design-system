@@ -85,7 +85,7 @@ exports[`UsaBanner applies Spanish translation 1`] = `
     id="gov-banner_2"
   >
     <div
-      className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+      className="ds-c-usa-banner__guidance-container"
     >
       <div
         className="ds-c-usa-banner__guidance"
@@ -249,7 +249,7 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
     id="gov-banner_3"
   >
     <div
-      className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+      className="ds-c-usa-banner__guidance-container"
     >
       <div
         className="ds-c-usa-banner__guidance"
@@ -408,7 +408,7 @@ exports[`UsaBanner renders correctly 1`] = `
     id="gov-banner_1"
   >
     <div
-      className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap"
+      className="ds-c-usa-banner__guidance-container"
     >
       <div
         className="ds-c-usa-banner__guidance"
