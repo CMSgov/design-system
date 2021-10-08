@@ -28,7 +28,7 @@ export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> =
   props: BadgeProps
 ) => {
   const { className = '', children, size, variation, ...others } = props;
-  const sizeClasses = { big: 'ds-u-font-size--base' };
+  const sizeClasses = { big: 'ds-c-badge--big' };
 
   const variationClass = variation && `ds-c-badge--${variation}`;
   const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);

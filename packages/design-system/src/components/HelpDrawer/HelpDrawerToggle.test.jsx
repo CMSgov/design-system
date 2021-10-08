@@ -38,7 +38,7 @@ describe('HelpDrawerToggle', () => {
   it('applies display utility through inline props', () => {
     const { wrapper } = renderHelpDrawerToggle({ inline: true });
     const toggle = wrapper.find('Button');
-    expect(toggle.hasClass('ds-u-display--inline')).toBe(true);
+    expect(toggle.hasClass('ds-c-help-drawer__toggle--inline')).toBe(true);
   });
 
   it('passes through extra props', () => {
