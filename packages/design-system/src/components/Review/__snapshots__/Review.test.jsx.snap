@@ -5,7 +5,7 @@ exports[`Review renders review 1`] = `
   className="ds-c-review"
 >
   <div
-    className="ds-u-margin-right--2"
+    className="ds-c-review__content"
   >
     <h3
       className="ds-c-review__heading"
