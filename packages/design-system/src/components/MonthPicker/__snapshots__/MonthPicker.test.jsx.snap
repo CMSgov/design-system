@@ -15,11 +15,11 @@ exports[`MonthPicker renders a snapshot 1`] = `
     </span>
   </legend>
   <div
-    className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix"
+    className="ds-c-month-picker__buttons ds-u-clearfix"
   >
     <button
       aria-pressed={false}
-      className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
+      className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
       type="button"
     >
@@ -27,7 +27,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
     </button>
     <button
       aria-pressed={true}
-      className="ds-c-button ds-c-button--small ds-u-margin-right--1 ds-u-float--left"
+      className="ds-c-button ds-c-button--small ds-c-month-picker__button"
       onClick={[Function]}
       type="button"
     >
@@ -38,7 +38,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
     className="ds-c-month-picker__months"
   >
     <ol
-      className="ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap"
+      className="ds-c-list--bare ds-c-month-picker__months-list"
     >
       <li>
         <div
