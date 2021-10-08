@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import uniqueid from 'lodash/uniqueid';

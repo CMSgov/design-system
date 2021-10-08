@@ -8,7 +8,6 @@ export interface ArrowIconProps extends SvgIconProps {
   direction?: ArrowIconDirectionType;
 }
 
-// TODO: standardize size with other icons
 function ArrowIcon(props: ArrowIconProps): React.ReactElement {
   const iconCssClasses = classNames(
     'ds-c-icon--arrow',
