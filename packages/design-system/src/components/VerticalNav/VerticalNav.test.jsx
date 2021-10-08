@@ -24,7 +24,7 @@ describe('VerticalNav', () => {
     expect(listEl.is('ul')).toBe(true);
     expect(listEl.hasClass('ds-c-vertical-nav')).toBe(true);
     expect(listEl.hasClass('ds-c-vertical-nav__subnav')).toBe(false);
-    expect(listEl.hasClass('ds-u-display--none')).toBe(false);
+    expect(listEl.hasClass('ds-c-vertical-nav--collapsed')).toBe(false);
     expect(wrapper.find('VerticalNavItem').length).toBe(data.props.items.length);
     expect(wrapper.find('VerticalNavItem').first().prop('onClick')).toBeUndefined();
   });
@@ -79,7 +79,7 @@ describe('VerticalNav', () => {
     const data = render({ collapsed: true });
     const listEl = data.wrapper.find('ul');
 
-    expect(listEl.hasClass('ds-u-display--none')).toBe(true);
+    expect(listEl.hasClass('ds-c-vertical-nav--collapsed')).toBe(true);
   });
 
   it('passes onLinkClick to items', () => {
