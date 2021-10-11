@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import uniqueid from 'lodash/uniqueid';
+import uniqueid from 'lodash.uniqueid';
 
 export interface SvgIconProps {
   /**
