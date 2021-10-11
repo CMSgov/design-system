@@ -39,11 +39,7 @@ function SvgIcon({
   title,
   viewBox,
 }: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
-  const svgClasses = classNames(
-    'ds-c-icon',
-
-    className
-  );
+  const svgClasses = classNames('ds-c-icon', className);
 
   return (
     <svg
