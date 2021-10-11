@@ -125,7 +125,7 @@ $buttons-map: (
     border-color-disabled: $button-secondary-border-color--disabled,
   ),
   button--tertiary: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-text-decoration-underline,
     bg-color: $button-tertiary-bg,
     text-color: $button-tertiary-text-color,
     border-color: $button-tertiary-border-color,
