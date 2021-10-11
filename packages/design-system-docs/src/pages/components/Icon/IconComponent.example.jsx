@@ -1,4 +1,4 @@
-/* eslint-disable react/self-closing-comp */
+/* eslint-disable react/no-danger */
 import {
   AddIcon,
   AlertCircleIcon,
@@ -25,6 +25,129 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+const iconData = [
+  {
+    defaultTitle: 'Add',
+    component: <AddIcon />,
+    name: 'AddIcon',
+  },
+  {
+    defaultTitle: 'Alert',
+    component: <AlertCircleIcon />,
+    name: 'AlertCircleIcon',
+  },
+  {
+    defaultTitle: 'Sort',
+    component: <ArrowsStackedIcon />,
+    name: 'ArrowsStackedIcon',
+  },
+  {
+    defaultTitle: '[direction of arrow]',
+    component: (
+      <>
+        <ArrowIcon />
+        <ArrowIcon direction="down" />
+        <ArrowIcon direction="left" />
+        <ArrowIcon direction="right" />
+      </>
+    ),
+    name: 'ArrowIcon',
+    notes:
+      'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
+  },
+  {
+    defaultTitle: 'Building in circle',
+    component: <BuildingCircleIcon />,
+    name: 'BuildingCircleIcon',
+  },
+  {
+    defaultTitle: 'Check mark in circle',
+    component: <CheckCircleIcon />,
+    name: 'CheckCircleIcon',
+  },
+  {
+    defaultTitle: 'Check mark',
+    component: <CheckIcon />,
+    name: 'CheckIcon',
+  },
+  {
+    defaultTitle: 'Close',
+    component: <CloseIcon />,
+    name: 'CloseIcon',
+  },
+  {
+    defaultTitle: 'Close',
+    component: <CloseIconThin />,
+    name: 'CloseIconThin',
+  },
+  {
+    defaultTitle: 'Download',
+    component: <DownloadIcon />,
+    name: 'DownloadIcon',
+  },
+  {
+    defaultTitle: 'Image',
+    component: <ImageIcon />,
+    name: 'ImageIcon',
+  },
+  {
+    defaultTitle: 'Information',
+    component: <InfoCircleIcon />,
+    name: 'InfoCircleIcon',
+  },
+  {
+    defaultTitle: 'Information',
+    component: <InfoCircleIconThin />,
+    name: 'InfoCircleIconThin',
+  },
+  {
+    defaultTitle: 'Lock in circle',
+    component: <LockCircleIcon />,
+    name: 'LockCircleIcon',
+  },
+  {
+    defaultTitle: 'Lock',
+    component: <LockIcon />,
+    name: 'LockIcon',
+  },
+  {
+    defaultTitle: 'Next',
+    component: <NextIcon />,
+    name: 'NextIcon',
+  },
+  {
+    defaultTitle: 'Pdf',
+    component: <PdfIcon />,
+    name: 'PdfIcon',
+  },
+  {
+    defaultTitle: 'Remove',
+    component: <RemoveIcon />,
+    name: 'RemoveIcon',
+  },
+  {
+    defaultTitle: 'Star / Star Filled',
+    component: (
+      <>
+        <StarIcon />
+        <StarIcon isFilled />
+      </>
+    ),
+    name: 'StarIcon',
+    notes: 'Component takes <code>isFilled</code> prop to determine star is filled or an outline.',
+  },
+  {
+    defaultTitle: 'U.S. flag',
+    component: <UsaFlagIcon />,
+    name: 'UsaFlagIcon',
+  },
+  {
+    defaultTitle: 'Warning',
+    component: <WarningIcon />,
+    name: 'WarningIcon',
+  },
+];
+
 ReactDOM.render(
   <>
     <table className="ds-c-table">
@@ -39,225 +162,16 @@ ReactDOM.render(
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <code>AddIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <AddIcon />
-          </td>
-          <td>Add</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>AlertCircleIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <AlertCircleIcon />
-          </td>
-          <td>Alert</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>ArrowsStackedIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <ArrowsStackedIcon />
-          </td>
-          <td>Sort</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>ArrowIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <ArrowIcon />
-            <ArrowIcon direction="down" />
-            <ArrowIcon direction="left" />
-            <ArrowIcon direction="right" />
-          </td>
-          <td>[direction of arrow]</td>
-          <td>
-            Component takes <code>direction</code> prop to determine if it is up, down, left or
-            right.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>BuildingCircleIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <BuildingCircleIcon />
-          </td>
-          <td>Building in circle</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>CheckCircleIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <CheckCircleIcon />
-          </td>
-          <td>Checkmark in circle</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>CheckIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <CheckIcon />
-          </td>
-          <td>Checkmark</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>CloseIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <CloseIcon />
-          </td>
-          <td>Close</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>CloseIconThin</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <CloseIconThin />
-          </td>
-          <td>Close</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>DownloadIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <DownloadIcon />
-          </td>
-          <td>Download</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>ImageIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <ImageIcon />
-          </td>
-          <td>Image</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>InfoCircleIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <InfoCircleIcon />
-          </td>
-          <td>Information</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>InfoCircleIconThin</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <InfoCircleIconThin />
-          </td>
-          <td>Information</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>LockCircleIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <LockCircleIcon />
-          </td>
-          <td>Lock in circle</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>LockIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <LockIcon />
-          </td>
-          <td>Lock</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>NextIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <NextIcon />
-          </td>
-          <td>Next</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>PdfIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <PdfIcon />
-          </td>
-          <td>Pdf</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>RemoveIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <RemoveIcon />
-          </td>
-          <td>Remove</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>StarIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <StarIcon />
-            <StarIcon isFilled />
-          </td>
-          <td>Star / Star Filled</td>
-          <td>
-            Component takes <code>isFilled</code> prop to determine star is filled or an outline.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>UsaFlagIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <UsaFlagIcon />
-          </td>
-          <td>U.S. flag</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>
-            <code>WarningIcon</code>
-          </td>
-          <td className="ds-u-text-align--center">
-            <WarningIcon />
-          </td>
-          <td>Warning</td>
-          <td></td>
-        </tr>
+        {iconData.map(({ defaultTitle, component, name, notes }) => (
+          <tr key={name}>
+            <td>
+              <code>{name}</code>
+            </td>
+            <td className="ds-u-text-align--center">{component}</td>
+            <td>{defaultTitle}</td>
+            <td dangerouslySetInnerHTML={{ __html: notes }} />
+          </tr>
+        ))}
       </tbody>
     </table>
   </>,
