@@ -20,7 +20,7 @@ exports[`DateField renders 1`] = `
     </span>
   </legend>
   <div
-    className="ds-l-form-row ds-u-align-items--end"
+    className="ds-c-datefield__container ds-l-form-row"
   >
     <div
       className="ds-u-clearfix ds-l-col--auto"
