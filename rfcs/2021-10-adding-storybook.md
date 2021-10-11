@@ -1,7 +1,7 @@
 # RFC: Adding Storybook to improve development experience and to integrate with DSM
 
 **Date**: October 5, 2021
-**Status**: `Review`
+**Status**: `Approved`
 
 ## Problem
 
