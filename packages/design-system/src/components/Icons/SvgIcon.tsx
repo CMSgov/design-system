@@ -33,7 +33,10 @@ export interface SvgIconProps {
    */
   title: string;
   /**
-   * A string describing the viewbox of the SVG
+   * A string describing the viewbox of the SVG.
+   *
+   * It is recommended that the icon is centered and fill up the default viewport size.
+   * See [this blog post](https://webdesign.tutsplus.com/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844) for further explanation on viewBox and how to use it.
    */
   viewBox?: string;
 }
