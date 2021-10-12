@@ -80,7 +80,7 @@
 
 $buttons-map: (
   button: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-default-text-decoration,
     bg-color: $button-default-bg,
     text-color: $button-default-text-color,
     border-color: $button-default-border-color,
@@ -95,7 +95,7 @@ $buttons-map: (
     border-color-disabled: $button-default-border-color--disabled,
   ),
   button--primary: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-primary-text-decoration,
     bg-color: $button-primary-bg,
     text-color: $button-primary-text-color,
     border-color: $button-primary-border-color,
@@ -110,7 +110,7 @@ $buttons-map: (
     border-color-disabled: $button-primary-border-color--disabled,
   ),
   button--secondary: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-secondary-text-decoration,
     bg-color: $button-secondary-bg,
     text-color: $button-secondary-text-color,
     border-color: $button-secondary-border-color,
@@ -125,7 +125,7 @@ $buttons-map: (
     border-color-disabled: $button-secondary-border-color--disabled,
   ),
   button--tertiary: (
-    text-decoration: $button-text-decoration-underline,
+    text-decoration: $button-tertiary-text-decoration,
     bg-color: $button-tertiary-bg,
     text-color: $button-tertiary-text-color,
     border-color: $button-tertiary-border-color,
@@ -140,7 +140,7 @@ $buttons-map: (
     border-color-disabled: $button-tertiary-border-color--disabled,
   ),
   button--success: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: none,
     bg-color: $color-success,
     text-color: $color-white,
     border-color: $color-transparent,
@@ -155,7 +155,7 @@ $buttons-map: (
     border-color-disabled: $color-gray-lighter,
   ),
   button--danger: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: none,
     bg-color: $color-error,
     text-color: $color-white,
     border-color: $color-transparent,
@@ -170,7 +170,7 @@ $buttons-map: (
     border-color-disabled: $color-gray-lighter,
   ),
   button--transparent: (
-    text-decoration: $button-text-decoration-underline,
+    text-decoration: $button-transparent-text-decoration,
     bg-color: $button-transparent-bg,
     text-color: $button-transparent-text-color,
     border-color: $button-transparent-border-color,
@@ -185,7 +185,7 @@ $buttons-map: (
     border-color-disabled: $button-transparent-border-color--disabled,
   ),
   button--inverse: (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-inverse-text-decoration,
     bg-color: $button-inverse-bg,
     text-color: $button-inverse-text-color,
     border-color: $button-inverse-border-color,
@@ -200,7 +200,7 @@ $buttons-map: (
     border-color-disabled: $button-inverse-border-color--disabled,
   ),
   'button--primary.ds-c-button--inverse': (
-    text-decoration: $button-text-decoration-none,
+    text-decoration: $button-primary-inverse-text-decoration,
     bg-color: $button-primary-inverse-bg,
     text-color: $button-primary-inverse-text-color,
     border-color: $button-primary-inverse-border-color,
@@ -213,6 +213,9 @@ $buttons-map: (
     bg-color-disabled: $button-primary-inverse-bg--disabled,
     text-color-disabled: $button-primary-inverse-text-color--disabled,
     border-color-disabled: $button-primary-inverse-border-color--disabled,
+  ),
+  '.ds-c-button--inverse.ds-c-button--transparent': (
+    text-decoration: underline,
   ),
 );
 
@@ -267,11 +270,10 @@ $buttons-map: (
       text-decoration: none;
     }
   }
-}
-
-.ds-c-button--inverse {
-  &.ds-c-button--transparent {
-    border: transparent;
-    text-decoration: $button-text-decoration-underline;
+  .ds-c-button--inverse {
+    &.ds-c-button--transparent {
+      border: transparent;
+      text-decoration: map-get($map, text-decoration);
+    }
   }
 }
