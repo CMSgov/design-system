@@ -16,7 +16,7 @@ $current-step-color: $color-primary !default;
 
 .ds-c-step-list {
   list-style-type: none;
-  margin: 0;
+  margin: $spacer-4 0 0;
   padding: 0 $step-list-padding-h;
   padding-left: $step-list-padding-left;
 }
