@@ -11,6 +11,16 @@ Style guide: components.button
 */
 
 /*
+Button Sizes
+
+Button sizing classes can be applied to any button to increase or decrease the size.
+
+Markup: button-sizes.example.html
+
+Style guide: components.button.sizes
+*/
+
+/*
 Button icons
 
 - Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
