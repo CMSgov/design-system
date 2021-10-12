@@ -1,3 +1,5 @@
+// disabling lint rules until component files are converted to TS
+/* eslint-disable react/prefer-stateless-function */
 /* eslint-disable filenames/match-exported */
 import * as React from 'react';
 
@@ -38,6 +40,6 @@ export interface HelpDrawerProps {
   title?: React.ReactNode;
 }
 
-declare const HelpDrawer: React.FC<HelpDrawerProps>;
-
-export default HelpDrawer;
+export default class HelpDrawer extends React.Component<HelpDrawerProps, any> {
+  render(): JSX.Element;
+}
