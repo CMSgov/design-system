@@ -1,9 +1,9 @@
 /*
 Svg Icon
 
-For improved usability and consistency in consuming applications, the design system now exports a utility icon called `<SvgIcon>`.
+Icons help communicate meaning, actions, status, or feedback.
 
-See additional guidance on the [Styles >> Icon page](https://design.cms.gov/styles/icons/).
+See additional guidance on the [Icon page](https://design.cms.gov/styles/icons/).
 
 Style guide: components.icon
 */
@@ -11,7 +11,7 @@ Style guide: components.icon
 /*
 `<SvgIcon>`
 
-The `<SvgIcon>` component is a re-usable component that wraps its children in an `<svg>` element. It is an attempt to standardize props and SVG attributes.
+The `<SvgIcon>` component is a re-usable component that wraps its children in an `<svg>` element.
 This component is used by each individual icon component listed below.
 
 @react-example IconComponent.example.jsx
@@ -23,7 +23,7 @@ Style guide: components.icon.react
 */
 
 /*
-Changing icon color
+Icon color
 
 Icon components support a few built-in color options that can be applied by using one of the following utility classes.
 
@@ -35,7 +35,7 @@ Style guide: components.icon.colors
 */
 
 /*
-Changing icon size
+Icon size
 
 Icon components use `ems` for their height and width and can thereby be sized by changing the font-size of the SVG element.
 
@@ -47,7 +47,7 @@ Style guide: components.icon.size
 */
 
 /*
-Using `<SvgIcon>` for a Custom Icon
+Custom Icons
 
 The `<SvgIcon>` component can be used for other custom icons. It allows you to pass in the SVG child elements. This component is recommended if you want built-in accessibility features and standard icon styles.
 

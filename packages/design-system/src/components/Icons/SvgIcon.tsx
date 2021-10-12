@@ -29,7 +29,7 @@ export interface SvgIconProps {
    */
   inversed?: boolean;
   /**
-   * The descriptive nave for the SVG icon
+   * The descriptive name for the SVG icon
    */
   title: string;
   /**
