@@ -5,24 +5,24 @@ import ReactDOM from 'react-dom';
 const colorData = [
   {
     color: 'Primary',
-    cssClass: 'ds-c-icon--primary',
+    cssClass: 'ds-c-icon-color--primary',
   },
   {
     color: 'Inverse',
-    cssClass: 'ds-c-icon--inverse',
+    cssClass: 'ds-c-icon-color--inverse',
     isInverse: true,
   },
   {
     color: 'Error',
-    cssClass: 'ds-c-icon--error',
+    cssClass: 'ds-c-icon-color--error',
   },
   {
     color: 'Warn',
-    cssClass: 'ds-c-icon--warn',
+    cssClass: 'ds-c-icon-color--warn',
   },
   {
     color: 'Success',
-    cssClass: 'ds-c-icon--success',
+    cssClass: 'ds-c-icon-color--success',
   },
 ];
 
