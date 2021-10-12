@@ -1,26 +1,9 @@
+/* eslint-disable filenames/match-exported */
 import * as React from 'react';
 
 export type DialogCloseButtonSize = 'small' | 'big';
 
 export type DialogSize = 'narrow' | 'wide' | 'full';
-
-export interface AnalyticsEventShape {
-  event_name: string;
-  event_type: string;
-  ga_eventAction: string;
-  ga_eventCategory: string;
-  ga_eventLabel: string;
-  ga_eventType?: string;
-  ga_eventValue?: string;
-  heading: string;
-  [additional_props: string]: unknown;
-}
-// additional_props?: Record<string, unknown>;
-
-export interface AnalyticsObjectShape {
-  onComponentDidMount?: boolean | AnalyticsEventShape;
-  onComponentWillUnmount?: boolean | AnalyticsEventShape;
-}
 
 export interface DialogProps {
   /**
@@ -30,14 +13,15 @@ export interface DialogProps {
    */
   alert?: boolean;
   /**
-   * Analytics events tracking is enabled by default.
-   * The `analytics` prop is an object of events that is either a nested `objects` with key-value
-   * pairs, or `boolean` for disabling the event tracking. To disable an event tracking, set the
-   * event object value to `false`.
-   * When an event is triggered, the object value is populated and sent to google analytics
-   * if `window.utag` instance is loaded.
+   * Analytics events tracking is enabled by default. Set this value to `false` to disable tracking for this component instance.
    */
-  analytics?: AnalyticsObjectShape;
+  analytics?: boolean;
+  /**
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
+   */
+  analyticsLabelOverride?: string;
   /**
    * Provide a **DOM node** which contains your page's content (which the modal should render
    * outside of). When the modal is open this node will receive `aria-hidden="true"`.
@@ -90,9 +74,9 @@ export interface DialogProps {
    */
   escapeExits?: boolean;
   /**
-    * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
-    * @hide-prop Disable exiting the dialog when a user presses the Escape key.
-    */
+   * @hide-prop [Deprecated] This prop has been renamed to `escapeExits`.
+   * @hide-prop Disable exiting the dialog when a user presses the Escape key.
+   */
   escapeExitDisabled?: boolean;
   /**
    * Same as `applicationNode`, but a function that returns the node instead of
@@ -133,6 +117,7 @@ export interface DialogProps {
   /**
    * Allow additional AriaModal props to be passed to Dialog
    */
+  // eslint-disable-next-line camelcase
   [additional_props: string]: unknown;
 }
 
