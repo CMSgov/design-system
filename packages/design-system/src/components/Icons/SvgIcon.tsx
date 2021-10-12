@@ -53,7 +53,7 @@ function SvgIcon({
   inversed,
   title,
   viewBox,
-}: Omit<React.SVGProps<SVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
+}: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
   const svgClasses = classNames('ds-c-icon', { 'ds-c-icon--inverse': inversed }, className);
 
   const [iconId] = useState(id || uniqueid('icon-'));
