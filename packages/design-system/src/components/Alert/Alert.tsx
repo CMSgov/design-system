@@ -2,7 +2,7 @@ import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnal
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueid';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';

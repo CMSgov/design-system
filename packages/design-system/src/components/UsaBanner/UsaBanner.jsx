@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueid';
 
 export class UsaBanner extends React.PureComponent {
   constructor(props) {

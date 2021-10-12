@@ -4,7 +4,7 @@ import TableCaption from './TableCaption';
 import TableContext from './TableContext';
 import classNames from 'classnames';
 import get from 'lodash/get';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueid';
 
 export type TableStackableBreakpoint = 'sm' | 'md' | 'lg';
 

@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueid';
 
 export interface AutocompleteItems {
   /**

@@ -2,7 +2,7 @@ import EvEmitter from 'ev-emitter';
 import FormLabel from '../FormLabel/FormLabel';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueid';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
