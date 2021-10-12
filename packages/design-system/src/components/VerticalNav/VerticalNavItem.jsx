@@ -3,7 +3,7 @@ import React from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 export class VerticalNavItem extends React.PureComponent {
   constructor(props) {

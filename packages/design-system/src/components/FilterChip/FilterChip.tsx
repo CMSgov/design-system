@@ -2,7 +2,7 @@ import { ClearIcon } from '../ClearIcon';
 import { ClearIconAlternate } from './ClearIconAlternate';
 import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 const actionableKeys = ['Enter', 'Backspace', 'Delete'];
 

@@ -3,7 +3,7 @@ import InlineError from '../InlineError/InlineError';
 import React from 'react';
 import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
-import uniqueId from 'lodash/uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 /**
  * <FormControl> is an internal component used form components (i.e <TextField>, <Dropdown>, <DateField>, <MonthPicker>)
