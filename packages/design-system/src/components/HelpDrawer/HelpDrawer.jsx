@@ -90,11 +90,11 @@ export class HelpDrawer extends React.PureComponent {
            * separation between our sticky header, and the flex container
            * so things display as expected when the body content overflows
            */}
-          <div className="ds-u-fill--gray-lightest ds-u-padding--2 ds-u-display--flex ds-u-align-items--start">
+          <div className="ds-c-help-drawer__header-container">
             <Heading
               ref={(el) => (this.headingRef = el)}
               tabIndex="0"
-              className="ds-u-text--lead ds-u-margin-y--0 ds-u-margin-right--2"
+              className="ds-c-help-drawer__header-heading"
             >
               {
                 // TODO: make heading required after removing title
@@ -103,7 +103,7 @@ export class HelpDrawer extends React.PureComponent {
             </Heading>
             <Button
               aria-label={ariaLabel}
-              className="ds-u-margin-left--auto ds-c-help-drawer__close-button"
+              className="ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
               size="small"
               onClick={onCloseClick}
             >
@@ -112,12 +112,10 @@ export class HelpDrawer extends React.PureComponent {
           </div>
         </div>
         <div className="ds-c-help-drawer__body">
-          <div className="ds-c-help-drawer__content ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
-            {children}
-          </div>
-          <div className="ds-c-help-drawer__footer ds-u-fill--primary-alt-lightest ds-u-md-font-size--small ds-u-lg-font-size--base ds-u-padding--2">
-            <h4 className="ds-text ds-u-margin--0">{footerTitle}</h4>
-            <div className="ds-text ds-u-margin--0">{footerBody}</div>
+          <div className="ds-c-help-drawer__content">{children}</div>
+          <div className="ds-c-help-drawer__footer">
+            <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
+            <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
           </div>
         </div>
       </div>
@@ -139,7 +137,9 @@ HelpDrawer.propTypes = {
    */
   analytics: PropTypes.bool,
   /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride: PropTypes.string,
   /**

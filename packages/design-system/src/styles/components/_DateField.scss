@@ -15,6 +15,10 @@
   width: 6ch; // provide additional spacing for browser UI
 }
 
+.ds-c-datefield__container {
+  align-items: flex-end;
+}
+
 .ds-c-datefield__separator {
   font-size: $font-size-2xl;
   line-height: $input-line-height * $base-font-size; // vertical dimensions should match adjacent inputs

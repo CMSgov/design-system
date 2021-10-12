@@ -32,8 +32,7 @@ describe('Spinner', () => {
     const wrapper = data.wrapper;
 
     expect(wrapper.hasClass('ds-c-spinner')).toBe(true);
-    expect(wrapper.hasClass('ds-u-fill--background-inverse')).toBe(false);
-    expect(wrapper.hasClass('ds-u-color--base-inverse')).toBe(false);
+    expect(wrapper.hasClass('ds-c-spinner--inverse')).toBe(false);
     expect(wrapper.hasClass('ds-c-spinner--filled')).toBe(false);
   });
 
@@ -45,8 +44,7 @@ describe('Spinner', () => {
     });
     const wrapper = data.wrapper;
 
-    expect(wrapper.hasClass('ds-u-fill--background-inverse')).toBe(true);
-    expect(wrapper.hasClass('ds-u-color--base-inverse')).toBe(true);
+    expect(wrapper.hasClass('ds-c-spinner--inverse')).toBe(true);
     expect(wrapper.hasClass('ds-c-spinner--filled')).toBe(true);
     expect(wrapper.hasClass('ds-c-spinner--small')).toBe(true);
   });
