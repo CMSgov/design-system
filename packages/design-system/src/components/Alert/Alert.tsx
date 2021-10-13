@@ -168,7 +168,30 @@ export class Alert extends React.PureComponent<
       className
     );
 
-    return <div>Boom!</div>;
+    return (
+      <div
+        className={classes}
+        /* eslint-disable no-return-assign */
+        ref={(ref) => {
+          this.alertTextRef = ref;
+          if (autoFocus) {
+            this.focusRef = ref;
+          } else if (alertRef) {
+            alertRef(ref);
+          }
+        }}
+        /* eslint-enable no-return-assign */
+        tabIndex={alertRef || autoFocus ? -1 : null}
+        role={role}
+        aria-labelledby={heading ? this.headingId : undefined}
+        {...alertProps}
+      >
+        <div className="ds-c-alert__body">
+          {this.heading()}
+          {children}
+        </div>
+      </div>
+    );
   }
 }
 
