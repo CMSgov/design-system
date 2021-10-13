@@ -89,7 +89,7 @@ export class Table extends React.Component<
 > {
   static defaultProps = {
     scrollableNotice: (
-      <Alert className="ds-u-margin-y--1 ds-u-font-weight--normal" role="status">
+      <Alert className="ds-c-table__scroll-alert" role="status">
         <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
       </Alert>
     ),
