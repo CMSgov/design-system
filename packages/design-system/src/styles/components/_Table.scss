@@ -80,7 +80,7 @@ $table-compact-padding: $spacer-half $spacer-2 !default;
 }
 
 .ds-c-table__scroll-alert {
-  font-weight: 400;
+  font-weight: $font-normal;
   margin: $spacer-1 0;
 }
 
