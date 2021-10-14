@@ -1,4 +1,4 @@
-jest.mock('lodash.uniqueid', () => (str) => `${str}snapshot`);
+jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
 /* eslint-disable import/first */
 import { mount, shallow } from 'enzyme';
 import DateInput from './DateInput';
