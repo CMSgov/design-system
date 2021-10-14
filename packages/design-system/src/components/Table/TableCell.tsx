@@ -8,7 +8,7 @@ export type TableCellComponent = 'td' | 'th';
 
 export interface TableCellProps {
   /**
-   * Set the text-align on the table cell content.
+   * Set the text-align on the table cell content. Options: left, center, right.
    */
   align?: TableCellAlign;
   /**
@@ -119,7 +119,7 @@ export const TableCell: React.FC<
     defaultScope = 'col';
   }
 
-  const alignClassName = align ? `ds-u-text-align--${align}` : null;
+  const alignClassName = align ? `ds-c-table__cell--align-${align}` : null;
   const classes = classNames(alignClassName, className);
 
   // The data attributes `data-title` is access by CSS to generates row header content for stacked table
