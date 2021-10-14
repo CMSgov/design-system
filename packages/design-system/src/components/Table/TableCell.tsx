@@ -8,7 +8,7 @@ export type TableCellComponent = 'td' | 'th';
 
 export interface TableCellProps {
   /**
-   * Set the text-align on the table cell content.
+   * Set the text-align on the table cell content. Options: left, center, right.
    */
   align?: TableCellAlign;
   /**
