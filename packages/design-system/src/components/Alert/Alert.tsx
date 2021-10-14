@@ -2,7 +2,7 @@ import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnal
 import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -18,7 +18,9 @@ export interface AlertProps {
    */
   analytics?: boolean;
   /**
-   * An override for the dynamic content sent to analytics services. By default this content comes from the heading
+   * An override for the dynamic content sent to analytics services. By default this content comes from the heading.
+   *
+   * In cases where this component’s heading may contain **sensitive information**, use this prop to override what is sent to analytics.
    */
   analyticsLabelOverride?: string;
   /**

@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import { errorPlacementDefault } from '../flags';
 import get from 'lodash/get';
 import keepInputDownshiftStateReducer from './keepInputDownshiftStateReducer';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 export interface AutocompleteItems {
   /**
@@ -351,12 +351,9 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
             {this.renderChildren(getInputProps, isOpen)}
 
             {isOpen && (loading || items) ? (
-              <div
-                className="ds-u-border--1 ds-u-padding--1 ds-c-autocomplete__list"
-                id={this.listboxContainerId}
-              >
+              <div className="ds-c-autocomplete__list" id={this.listboxContainerId}>
                 {label && !loading && (
-                  <h5 className="ds-u-margin--0 ds-u-padding--1" id={this.listboxHeadingId}>
+                  <h5 className="ds-c-autocomplete__label" id={this.listboxHeadingId}>
                     {label}
                   </h5>
                 )}
@@ -381,7 +378,7 @@ export class Autocomplete extends React.Component<AutocompleteProps, any> {
             {clearSearchButton && (
               <Button
                 aria-label={ariaClearLabel}
-                className="ds-u-float--right ds-u-margin-right--0"
+                className="ds-c-autocomplete__clear-btn"
                 onClick={clearSelection}
                 size="small"
                 variation="transparent"

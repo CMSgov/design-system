@@ -91,7 +91,7 @@ export class MonthPicker extends React.PureComponent {
     const disabledMonths = this.disabledMonths();
     const { name, inversed } = this.props;
     return (
-      <ol className="ds-c-list--bare ds-u-display--flex ds-u-justify-content--between ds-u-flex-wrap--wrap">
+      <ol className="ds-c-list--bare ds-c-month-picker__months-list">
         {this.months.map((month, i) => (
           <li key={month}>
             <Choice
@@ -117,7 +117,7 @@ export class MonthPicker extends React.PureComponent {
       <Button
         aria-pressed={pressed}
         size="small"
-        className="ds-u-margin-right--1 ds-u-float--left"
+        className="ds-c-month-picker__button"
         onClick={onClick}
         inversed={this.props.inversed}
         variation={this.props.buttonVariation}
@@ -145,7 +145,7 @@ export class MonthPicker extends React.PureComponent {
         labelComponent="legend"
         render={() => (
           <>
-            <div className="ds-c-month-picker__buttons ds-u-margin-top--2 ds-u-margin-bottom--1 ds-u-clearfix">
+            <div className="ds-c-month-picker__buttons ds-u-clearfix">
               {this.renderButton(selectAllText, selectAllPressed, () => this.handleSelectAll())}
               {this.renderButton(clearAllText, clearAllPressed, () => this.handleClearAll())}
             </div>

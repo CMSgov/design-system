@@ -3,7 +3,7 @@ import React from 'react';
 import Step from './Step';
 
 export const StepList = ({ steps, ...props }) => (
-  <ol className="ds-c-step-list ds-u-margin-top--4">
+  <ol className="ds-c-step-list">
     {steps.map((step, i) => (
       <Step
         step={{ ...step, ...{ component: props.component || step.component } }}

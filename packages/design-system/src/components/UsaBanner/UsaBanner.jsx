@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
 import classNames from 'classnames';
-import uniqueId from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 export class UsaBanner extends React.PureComponent {
   constructor(props) {
@@ -61,7 +61,7 @@ export class UsaBanner extends React.PureComponent {
           </p>
         </header>
         <div className="ds-c-usa-banner__content" id={this.id} hidden={!this.state.isBannerOpen}>
-          <div className="ds-u-display--flex ds-u-flex-direction--column ds-u-sm-flex-direction--row ds-u-flex-wrap--nowrap">
+          <div className="ds-c-usa-banner__guidance-container">
             <div className="ds-c-usa-banner__guidance">
               <IconDotGov className="ds-c-usa-banner__icon" aria-hidden="true" />
               <p className="ds-c-usa-banner__media-body">
