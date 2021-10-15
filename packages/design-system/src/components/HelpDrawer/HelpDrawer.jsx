@@ -77,6 +77,8 @@ export class HelpDrawer extends React.PureComponent {
       footerBody,
       footerTitle,
       heading,
+      isHeaderSticky,
+      isFooterSticky,
       onCloseClick,
       title,
     } = this.props;
@@ -84,36 +86,40 @@ export class HelpDrawer extends React.PureComponent {
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
-      <div className={classNames(className, 'ds-c-help-drawer')}>
-        <div className="ds-c-help-drawer__header">
-          {/* The nested div below might seem redundant, but we need a
-           * separation between our sticky header, and the flex container
-           * so things display as expected when the body content overflows
-           */}
-          <div className="ds-c-help-drawer__header-container">
+      <div
+        aria-labelledby="panel-heading"
+        className={classNames(className, 'ds-c-help-drawer')}
+        role="dialog"
+      >
+        <div className="ds-c-help-drawer__window">
+          <div
+            className={classNames('ds-c-help-drawer__header', {
+              'ds-c-help-drawer__header--is-sticky': isHeaderSticky,
+            })}
+          >
             <Heading
-              ref={(el) => (this.headingRef = el)}
               tabIndex="0"
+              id="panel-heading"
               className="ds-c-help-drawer__header-heading"
+              ref={(el) => (this.headingRef = el)}
             >
-              {
-                // TODO: make heading required after removing title
-                title || heading
-              }
+              {title || heading}
             </Heading>
             <Button
               aria-label={ariaLabel}
-              className="ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
+              className="ds-c-help-drawer__close-button"
               size="small"
               onClick={onCloseClick}
             >
               {closeButtonText}
             </Button>
           </div>
-        </div>
-        <div className="ds-c-help-drawer__body">
-          <div className="ds-c-help-drawer__content">{children}</div>
-          <div className="ds-c-help-drawer__footer">
+          <div className="ds-c-help-drawer__body">{children}</div>
+          <div
+            className={classNames('ds-c-help-drawer__footer', {
+              'ds-c-help-drawer__footer--is-sticky': isFooterSticky,
+            })}
+          >
             <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
             <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
           </div>
@@ -159,6 +165,8 @@ HelpDrawer.propTypes = {
    * Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
+  isHeaderSticky: PropTypes.bool,
+  isFooterSticky: PropTypes.bool,
   onCloseClick: PropTypes.func.isRequired,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
