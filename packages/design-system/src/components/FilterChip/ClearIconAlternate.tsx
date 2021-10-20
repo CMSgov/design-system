@@ -2,6 +2,7 @@ import React from 'react';
 
 /**
  * <ClearIconAlternate> is an internal component used by <FilterChip>
+ * TODO: deprecate and remove in favor or <CloseIconThin>
  */
 
 export function ClearIconAlternate(): React.ReactElement {
