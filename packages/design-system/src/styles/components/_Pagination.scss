@@ -75,11 +75,14 @@ $pagination-page-count-color: $color-gray;
   .ds-c-pagination__nav--img-container {
     display: inline-block;
     height: 24px;
-    margin-left: 4px;
-    vertical-align: middle;
+  }
+  .ds-c-pagination__nav--img-container-previous {
+    margin-right: 8px;
+  }
+  .ds-c-pagination__nav--img-container-next {
+    margin-left: 8px;
   }
   .ds-c-pagination__nav--image {
-    height: 20px;
-    width: 20px;
+    font-size: 12px;
   }
 }

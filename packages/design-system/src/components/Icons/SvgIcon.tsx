@@ -15,7 +15,7 @@ export interface SvgIconProps {
   /**
    * The elements that make up the SVG
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Long-text description of any SVG. Use for complex icons, otherwise `title` prop will suffice.
    */
@@ -31,7 +31,7 @@ export interface SvgIconProps {
   /**
    * The descriptive name for the SVG icon
    */
-  title: string;
+  title?: string;
   /**
    * A string describing the viewbox of the SVG.
    *
