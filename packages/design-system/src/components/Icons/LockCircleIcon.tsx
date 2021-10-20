@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon, { SvgIconProps } from './SvgIcon';
 
 function LockCircleIcon(props: SvgIconProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--alert-circle ${props.className}`;
+  const iconCssClasses = `ds-c-icon--lock-circle ${props.className}`;
 
   return (
     <SvgIcon {...props} className={iconCssClasses}>

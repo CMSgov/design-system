@@ -1,10 +1,5 @@
 import EnglishTranslations from '../../locale/en.json';
-import IconDotGov from '../../images/usa-banner-dot-gov.svg';
-import IconFlag from '../../images/usa-banner-flag.svg';
-import IconFlagSpanish from '../../images/usa-banner-flag-es.svg';
-import IconHttps from '../../images/usa-banner-https.svg';
-import IconLock from '../../images/usa-banner-lock.svg';
-import IconLockSpanish from '../../images/usa-banner-lock-es.svg';
+import { LockCircleIcon, LockIcon, UsaFlagIcon, BuildingCircleIcon } from '../Icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
@@ -27,8 +22,6 @@ export class UsaBanner extends React.PureComponent {
     const t =
       this.props.locale === 'es' ? SpanishTranslations.usaBanner : EnglishTranslations.usaBanner;
     const langProp = this.props.locale === 'es' ? 'es' : null;
-    const IconFlagComponent = this.props.locale === 'es' ? IconFlagSpanish : IconFlag;
-    const IconLockComponent = this.props.locale === 'es' ? IconLockSpanish : IconLock;
     const classes = classNames('ds-c-usa-banner', this.props.className);
 
     return (
@@ -39,15 +32,11 @@ export class UsaBanner extends React.PureComponent {
           }`}
         >
           <p className="ds-c-usa-banner__header-text">
-            <IconFlagComponent
-              role="img"
-              className="ds-c-usa-banner__header-flag"
-              focusable="false"
-            />
+            <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
           </p>
           <p className="ds-c-usa-banner__header-text">
             <span>{t.bannerText}</span>
-            <span className="ds-c-usa-banner__header-action" aria-hidden="true">
+            <span className="ds-c-usa-banner__header-action" aria-hidden>
               {t.bannerActionText}
             </span>
             <button
@@ -63,7 +52,10 @@ export class UsaBanner extends React.PureComponent {
         <div className="ds-c-usa-banner__content" id={this.id} hidden={!this.state.isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-container">
             <div className="ds-c-usa-banner__guidance">
-              <IconDotGov className="ds-c-usa-banner__icon" aria-hidden="true" />
+              <BuildingCircleIcon
+                className="ds-c-usa-banner__icon ds-c-icon-color--primary"
+                ariaHidden
+              />
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.domainHeaderText}</strong>
                 <br />
@@ -73,18 +65,13 @@ export class UsaBanner extends React.PureComponent {
               </p>
             </div>
             <div className="ds-c-usa-banner__guidance">
-              <IconHttps className="ds-c-usa-banner__icon" aria-hidden="true" />
+              <LockCircleIcon className="ds-c-usa-banner__icon" ariaHidden />
               <p className="ds-c-usa-banner__media-body">
                 <strong>{t.httpsHeaderText}</strong>
                 <br />
                 {t.httpsAText}
                 <strong> {t.httpsLockText} </strong> ({' '}
-                <IconLockComponent
-                  role="img"
-                  className="ds-c-usa-banner__lock-image"
-                  focusable="false"
-                />{' '}
-                ) {t.httpsOrText}
+                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>

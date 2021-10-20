@@ -11,23 +11,23 @@
 
 // Icon color variations
 .ds-c-icon-color--primary {
-  fill: $color-primary;
+  color: $color-primary;
 }
 
 .ds-c-icon-color--inverse {
-  fill: $color-white;
+  color: $color-white;
 }
 
 .ds-c-icon-color--error {
-  fill: $color-error;
+  color: $color-error;
 }
 
 .ds-c-icon-color--warn {
-  fill: $color-warn;
+  color: $color-warn;
 }
 
 .ds-c-icon-color--success {
-  fill: $color-success;
+  color: $color-success;
 }
 
 // Specific icon variations
