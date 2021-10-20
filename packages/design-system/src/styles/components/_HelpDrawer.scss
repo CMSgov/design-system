@@ -109,6 +109,7 @@ $help-drawer-toggle-space: 0;
 .ds-c-help-drawer__body {
   flex: 1 1 auto;
   font-size: $help-drawer-font-size-mobile;
+  overflow: auto;
   padding: $help-drawer-space;
 
   @media (min-width: $width-md) {
@@ -136,3 +137,8 @@ $help-drawer-toggle-space: 0;
 .ds-c-help-drawer__footer-title {
   margin: 0;
 }
+
+// 1. FF doesn't respect sticky position + flex (body overflows under footer)
+// 2. IE11 flex col breaks out of layout in body area
+// Solution: No flex layout, no sticky header/footer
+// Alt solution: overflow: auto on body
