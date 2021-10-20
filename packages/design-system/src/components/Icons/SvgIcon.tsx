@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import uniqueid from 'lodash.uniqueid';
+import uniqueId from 'lodash/uniqueId';
 
 export interface SvgIconProps {
   /**
@@ -56,7 +56,7 @@ function SvgIcon({
 }: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
   const svgClasses = classNames('ds-c-icon', { 'ds-c-icon--inverse': inversed }, className);
 
-  const [iconId] = useState(id || uniqueid('icon-'));
+  const [iconId] = useState(id || uniqueId('icon-'));
   const titleId = `${iconId}__title`;
   const descriptionId = `${iconId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
