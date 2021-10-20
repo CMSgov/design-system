@@ -6,7 +6,7 @@ function UsaFlagIcon(props: SvgIconProps): React.ReactElement {
 
   return (
     <SvgIcon {...props} className={iconCssClasses}>
-      <g id="svg" fill="none" fillRule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path fill="#FFF" d="M0 0h16v11H0z" />
         <path fill="#DB3E1F" d="M8 0h8v1H8z" />
         <path fill="#1E33B1" d="M0 0h8v7H0z" />
