@@ -181,6 +181,15 @@ $usa-banner-font-family: $font-sans;
   }
 }
 
+.ds-c-usa-banner__guidance-container {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $width-sm) {
+    flex-flow: row nowrap;
+  }
+}
+
 .ds-c-usa-banner__guidance {
   align-items: flex-start;
   display: flex;

@@ -101,7 +101,7 @@ Style guide: components.table.react-tablecell
 
 ### Usage
 
-- Right-align numerical data in tables. You can use a [text alignment utility class]({{root}}/utilities/text-align) for this. This makes it easier to scan and compare values.
+- Right-align numerical data in tables. You can use the `align` prop on the TableCell to accomplish this. Right alignment makes it easier to scan and compare numerical values.
 
 ### Accessibility
 

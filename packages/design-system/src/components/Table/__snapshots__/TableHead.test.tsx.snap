@@ -22,7 +22,7 @@ exports[`TableHead renders additional attributes 1`] = `
             key=".0"
           >
             <th
-              className="ds-u-text-align--left"
+              className="ds-c-table__cell--align-left"
               role="columnheader"
               scope="col"
             >
@@ -35,7 +35,7 @@ exports[`TableHead renders additional attributes 1`] = `
             key=".1"
           >
             <th
-              className="ds-u-text-align--left"
+              className="ds-c-table__cell--align-left"
               role="columnheader"
               scope="col"
             >
