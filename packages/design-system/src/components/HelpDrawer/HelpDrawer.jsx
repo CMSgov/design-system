@@ -165,7 +165,13 @@ HelpDrawer.propTypes = {
    * Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
+  /**
+   * Enables "sticky" position of HelpDrawer header element.
+   */
   isHeaderSticky: PropTypes.bool,
+  /**
+   * Enables "sticky" position of HelpDrawer footer element.
+   */
   isFooterSticky: PropTypes.bool,
   onCloseClick: PropTypes.func.isRequired,
   /**

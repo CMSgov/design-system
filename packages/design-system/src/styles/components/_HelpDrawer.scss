@@ -109,7 +109,7 @@ $help-drawer-toggle-space: 0;
 .ds-c-help-drawer__body {
   flex: 1 1 auto;
   font-size: $help-drawer-font-size-mobile;
-  overflow: auto;
+  // overflow: auto;
   padding: $help-drawer-space;
 
   @media (min-width: $width-md) {
