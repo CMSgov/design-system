@@ -14,7 +14,7 @@ function CheckCircleIcon(props: SvgIconProps): React.ReactElement {
 CheckCircleIcon.defaultProps = {
   className: '',
   title: 'Checkmark in circle',
-  viewBox: '0 0 216 216',
+  viewBox: '38 7 135 135',
 };
 
 export default CheckCircleIcon;

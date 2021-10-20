@@ -8,11 +8,10 @@ function CloseIconThin(props: SvgIconProps): React.ReactElement {
     <SvgIcon {...props} className={iconCssClasses}>
       <path
         fill="none"
-        stroke="#000"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeWidth="2"
         d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
-        transform="translate(1 1)"
       />
     </SvgIcon>
   );
@@ -21,6 +20,7 @@ function CloseIconThin(props: SvgIconProps): React.ReactElement {
 CloseIconThin.defaultProps = {
   className: '',
   title: 'Close',
+  viewBox: '-2 -2 18 18',
 };
 
 export default CloseIconThin;

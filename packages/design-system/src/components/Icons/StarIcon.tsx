@@ -28,6 +28,8 @@ function StarIcon(props: StarIconProps): React.ReactElement {
           d="M13.14 14.852l-.88-4.976 3.709-3.508-5.126-.723-2.31-4.542-2.309 4.542-5.126.723 3.708 3.508-.88 4.976 4.607-2.35 4.607 2.35z"
           fillRule="nonzero"
           fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
         />
       )}
     </SvgIcon>
@@ -37,6 +39,7 @@ function StarIcon(props: StarIconProps): React.ReactElement {
 StarIcon.defaultProps = {
   className: '',
   isFilled: false,
+  viewBox: '0 0 18 16',
 };
 
 export default StarIcon;

@@ -14,7 +14,7 @@ function AddIcon(props: SvgIconProps): React.ReactElement {
 AddIcon.defaultProps = {
   className: '',
   title: 'Add',
-  viewBox: '0 0 24 24',
+  viewBox: '3 3 18 18',
 };
 
 export default AddIcon;

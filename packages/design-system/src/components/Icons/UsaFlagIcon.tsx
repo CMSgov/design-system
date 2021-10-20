@@ -23,6 +23,7 @@ function UsaFlagIcon(props: SvgIconProps): React.ReactElement {
 UsaFlagIcon.defaultProps = {
   className: '',
   title: 'U.S. flag',
+  viewBox: '0 0 16 11',
 };
 
 export default UsaFlagIcon;

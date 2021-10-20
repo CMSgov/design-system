@@ -16,7 +16,8 @@ function ImageIcon(props: SvgIconProps): React.ReactElement {
 
 ImageIcon.defaultProps = {
   className: '',
-  title: 'image',
+  title: 'Image',
+  viewBox: '0 0 16 12',
 };
 
 export default ImageIcon;

@@ -20,6 +20,7 @@ function PdfIcon(props: SvgIconProps): React.ReactElement {
 PdfIcon.defaultProps = {
   className: '',
   title: 'Pdf',
+  viewBox: '0 0 17 22',
 };
 
 export default PdfIcon;

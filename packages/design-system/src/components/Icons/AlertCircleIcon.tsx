@@ -14,7 +14,7 @@ function AlertCircleIcon(props: SvgIconProps): React.ReactElement {
 AlertCircleIcon.defaultProps = {
   className: '',
   title: 'Alert',
-  viewBox: '0 0 215 146',
+  viewBox: '37 2 135 135',
 };
 
 export default AlertCircleIcon;

@@ -14,7 +14,7 @@ function InfoCircleIcon(props: SvgIconProps): React.ReactElement {
 InfoCircleIcon.defaultProps = {
   className: '',
   title: 'Information',
-  viewBox: '0 0 215 146',
+  viewBox: '37 2 135 135',
 };
 
 export default InfoCircleIcon;

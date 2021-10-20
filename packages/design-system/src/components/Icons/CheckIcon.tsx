@@ -14,6 +14,7 @@ function CheckIcon(props: SvgIconProps): React.ReactElement {
 CheckIcon.defaultProps = {
   className: '',
   title: 'Checkmark',
+  viewBox: '0 0 16 12',
 };
 
 export default CheckIcon;

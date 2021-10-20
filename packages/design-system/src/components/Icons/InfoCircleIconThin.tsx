@@ -17,6 +17,7 @@ function InfoCircleIconThin(props: SvgIconProps): React.ReactElement {
 InfoCircleIconThin.defaultProps = {
   className: '',
   title: 'Information',
+  viewBox: '0 0 16 16',
 };
 
 export default InfoCircleIconThin;
