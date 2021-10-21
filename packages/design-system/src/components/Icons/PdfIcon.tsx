@@ -1,11 +1,17 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from './SvgIcon';
+import SvgIcon, { IconCommonProps } from './SvgIcon';
 
-function PdfIcon(props: SvgIconProps): React.ReactElement {
+const defaultProps = {
+  className: '',
+  title: 'Pdf',
+  viewBox: '0 0 17 22',
+};
+
+function PdfIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--pdf ${props.className}`;
 
   return (
-    <SvgIcon {...props} className={iconCssClasses}>
+    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
       <g>
         <path d="M11.07 6.875h6.07v14.094c0 .571-.478 1.031-1.072 1.031H1.071C.478 22 0 21.54 0 20.969V1.03C0 .46.478 0 1.071 0h8.927v5.844c0 .567.482 1.031 1.071 1.031zm5.757-2.363L12.453.3C12.253.107 11.98 0 11.694 0h-.268v5.5h5.714v-.262c0-.27-.112-.533-.313-.726z" />
         <path
@@ -16,11 +22,5 @@ function PdfIcon(props: SvgIconProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-PdfIcon.defaultProps = {
-  className: '',
-  title: 'Pdf',
-  viewBox: '0 0 17 22',
-};
 
 export default PdfIcon;
