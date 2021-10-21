@@ -66,26 +66,32 @@ $help-drawer-toggle-space: 0;
 }
 
 .ds-c-help-drawer__window {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
+
+  @supports (display: flex) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Help drawer header */
 .ds-c-help-drawer__header {
-  align-items: center;
   background-color: $help-drawer-header-background-color;
-  display: flex;
-  flex: 0 0 auto;
-  gap: $help-drawer-space;
-  justify-content: space-between;
   padding: $help-drawer-space;
 
-  &.ds-c-help-drawer__header--is-sticky {
-    position: sticky;
-    top: 0;
+  @supports (display: flex) {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: $help-drawer-space;
+    justify-content: space-between;
+
+    &.ds-c-help-drawer__header--is-sticky {
+      position: sticky;
+      top: 0;
+    }
   }
 }
 
@@ -93,9 +99,11 @@ $help-drawer-toggle-space: 0;
   margin: 0;
 }
 
-.ds-c-help-drawer__close-button {
-  align-self: flex-start;
-  flex: 0 0 auto;
+@supports (display: flex) {
+  .ds-c-help-drawer__close-button {
+    align-self: flex-start;
+    flex: 0 0 auto;
+  }
 }
 
 @if $ds-include-focus-styles {
@@ -107,9 +115,7 @@ $help-drawer-toggle-space: 0;
 
 /* Help drawer body content */
 .ds-c-help-drawer__body {
-  flex: 1 1 auto;
   font-size: $help-drawer-font-size-mobile;
-  // overflow: auto;
   padding: $help-drawer-space;
 
   @media (min-width: $width-md) {
@@ -119,26 +125,28 @@ $help-drawer-toggle-space: 0;
   @media (min-width: $width-lg) {
     font-size: $help-drawer-font-size-desktop;
   }
+
+  @supports (display: flex) {
+    flex: 1 1 auto;
+  }
 }
 
 /* Help drawer footer */
 .ds-c-help-drawer__footer {
   background-color: $help-drawer-footer-background-color;
-  flex: 0 0 auto;
   line-height: $help-drawer-footer-line-height;
   padding: $help-drawer-space;
 
-  &.ds-c-help-drawer__footer--is-sticky {
-    bottom: 0;
-    position: sticky;
+  @supports (display: flex) {
+    flex: 0 0 auto;
+
+    &.ds-c-help-drawer__footer--is-sticky {
+      bottom: 0;
+      position: sticky;
+    }
   }
 }
 
 .ds-c-help-drawer__footer-title {
   margin: 0;
 }
-
-// 1. FF doesn't respect sticky position + flex (body overflows under footer)
-// 2. IE11 flex col breaks out of layout in body area
-// Solution: No flex layout, no sticky header/footer
-// Alt solution: overflow: auto on body
