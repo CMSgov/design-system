@@ -19,7 +19,7 @@ function BuildingCircleIcon(props: SvgIconProps): React.ReactElement {
           cy="50%"
           r="47%"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1"
         />
       </g>
     </SvgIcon>

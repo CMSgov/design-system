@@ -34,7 +34,7 @@ export class UsaBanner extends React.PureComponent {
           <p className="ds-c-usa-banner__header-text">
             <UsaFlagIcon
               className="ds-c-usa-banner__header-flag"
-              title={this.props.locale === 'es' ? 'Bandera' : 'U.S. Flag'}
+              title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
             />
           </p>
           <p className="ds-c-usa-banner__header-text">
