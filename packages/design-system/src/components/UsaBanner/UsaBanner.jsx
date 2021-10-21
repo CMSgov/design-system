@@ -32,7 +32,10 @@ export class UsaBanner extends React.PureComponent {
           }`}
         >
           <p className="ds-c-usa-banner__header-text">
-            <UsaFlagIcon className="ds-c-usa-banner__header-flag" />
+            <UsaFlagIcon
+              className="ds-c-usa-banner__header-flag"
+              title={this.props.locale === 'es' ? 'Bandera' : 'U.S. Flag'}
+            />
           </p>
           <p className="ds-c-usa-banner__header-text">
             <span>{t.bannerText}</span>
@@ -71,7 +74,11 @@ export class UsaBanner extends React.PureComponent {
                 <br />
                 {t.httpsAText}
                 <strong> {t.httpsLockText} </strong> ({' '}
-                <LockIcon className="ds-c-usa-banner__lock-image" /> ) {t.httpsOrText}
+                <LockIcon
+                  className="ds-c-usa-banner__lock-image"
+                  title={this.props.locale === 'es' ? 'candado' : 'lock'}
+                />{' '}
+                ) {t.httpsOrText}
                 <strong> {t.httpsText} </strong>
                 {t.httpsDetailText}
               </p>

@@ -65,8 +65,7 @@ $filter-chip-border-radius: $border-radius-pill !default;
     border: 0;
   }
 
-  .ds-c-icon--close,
-  .ds-c-clear-icon {
+  .ds-c-icon--close {
     display: block;
     fill: $filter-chip-text-color;
     height: $filter-chip-icon-size;
@@ -86,8 +85,7 @@ $filter-chip-border-radius: $border-radius-pill !default;
   .ds-c-filter-chip__button:hover & {
     border-color: $filter-chip-text-color-hover;
 
-    .ds-c-icon--close,
-    .ds-c-clear-icon {
+    .ds-c-icon--close {
       fill: $filter-chip-text-color-hover;
     }
   }
