@@ -92,11 +92,7 @@ export class HelpDrawer extends React.PureComponent {
         role="dialog"
       >
         <div className="ds-c-help-drawer__window">
-          <div
-            className={classNames('ds-c-help-drawer__header', {
-              'ds-c-help-drawer__header--is-sticky': isHeaderSticky,
-            })}
-          >
+          <div className="ds-c-help-drawer__header">
             <Heading
               tabIndex="0"
               id="panel-heading"
@@ -114,12 +110,14 @@ export class HelpDrawer extends React.PureComponent {
               {closeButtonText}
             </Button>
           </div>
-          <div className="ds-c-help-drawer__body">{children}</div>
           <div
-            className={classNames('ds-c-help-drawer__footer', {
-              'ds-c-help-drawer__footer--is-sticky': isFooterSticky,
+            className={classNames('ds-c-help-drawer__body', {
+              'ds-c-help-drawer--is-sticky': isHeaderSticky || isFooterSticky,
             })}
           >
+            {children}
+          </div>
+          <div className="ds-c-help-drawer__footer">
             <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
             <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
           </div>
