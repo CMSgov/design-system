@@ -15,7 +15,6 @@ describe('Pagination component', () => {
   });
 
   it('should have no accessibility violations', async () => {
-    await driver.get(rootURL);
-    await assertNoAxeViolations(null, 'color-contrast');
+    await assertNoAxeViolations(rootURL, 'color-contrast');
   });
 });
