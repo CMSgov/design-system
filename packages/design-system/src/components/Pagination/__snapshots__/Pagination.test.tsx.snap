@@ -60,7 +60,6 @@ exports[`Pagination should render component 1`] = `
       <ArrowIcon
         className="ds-c-pagination__nav--image"
         direction="left"
-        viewBox="0 0 26 26"
       />
     </span>
     Previous
@@ -104,7 +103,6 @@ exports[`Pagination should render component 1`] = `
       <ArrowIcon
         className="ds-c-pagination__nav--image"
         direction="right"
-        viewBox="0 0 26 26"
       />
     </span>
   </Button>
@@ -131,7 +129,6 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
       <ArrowIcon
         className="ds-c-pagination__nav--image"
         direction="left"
-        viewBox="0 0 26 26"
       />
     </span>
     Previous
@@ -164,7 +161,6 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
       <ArrowIcon
         className="ds-c-pagination__nav--image"
         direction="right"
-        viewBox="0 0 26 26"
       />
     </span>
   </Button>

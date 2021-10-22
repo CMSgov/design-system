@@ -6,8 +6,6 @@ exports[`TooltipIcon renders inverse trigger icon 1`] = `
 >
   <InfoCircleIconThin
     className="ds-c-tooltip-icon ds-c-tooltip-icon--inverse"
-    title="Information"
-    viewBox="0 0 16 16"
   />
 </span>
 `;
@@ -18,8 +16,6 @@ exports[`TooltipIcon renders normal trigger icon 1`] = `
 >
   <InfoCircleIconThin
     className="ds-c-tooltip-icon"
-    title="Information"
-    viewBox="0 0 16 16"
   />
 </span>
 `;
