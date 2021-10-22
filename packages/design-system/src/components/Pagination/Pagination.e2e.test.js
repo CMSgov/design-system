@@ -13,18 +13,7 @@ describe('Pagination component', () => {
     const el = await getElementById('test-default');
     expect(el).toBeTruthy();
   });
-  it('should render pagination with hidden navigation', async () => {
-    await driver.get(rootURL);
 
-    const el = await getElementById('test-hidden-nav');
-    expect(el).toBeTruthy();
-  });
-  it('should render compact component', async () => {
-    await driver.get(rootURL);
-
-    const el = await getElementById('test-compact');
-    expect(el).toBeTruthy();
-  });
   it('should have no accessibility violations', async () => {
     await driver.get(rootURL);
     await assertNoAxeViolations(null, 'color-contrast');
