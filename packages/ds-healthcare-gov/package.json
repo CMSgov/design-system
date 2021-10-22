@@ -29,8 +29,8 @@
   ],
   "dependencies": {
     "@cmsgov/design-system": "^2.9.0-beta.1",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
+    "@types/react": "^17.0.10",
+    "@types/react-dom": "^17.0.10",
     "classnames": "^2.0.0",
     "i18next": "^14.0.1",
     "js-cookie": "^2.2.0",
@@ -52,8 +52,6 @@
     "gh-pages": "^3.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.2.0",
     "stylelint": "^13.3.2",
     "url-parse": "^1.2.0",
     "version-bump-prompt": "^6.1.0"
