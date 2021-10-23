@@ -2,16 +2,28 @@
 const yargs = require('yargs');
 const { logIntroduction } = require('./gulp/common/logUtil');
 const path = require('path');
-// TODO, clean up script parameters to use the CMSDS config better
-const configFile = require(path.resolve(process.cwd(), 'cmsds.config.js'));
-const configDefaults = require('./configDefaults');
-const config = { ...configDefaults, ...configFile };
+
+const defaultConfigPath = 'cmsds.config.js';
+
+function getConfig() {
+  // TODO, clean up script parameters to use the CMSDS config better
+  const configFile = require(path.resolve(process.cwd(), yargs.argv.config || defaultConfigPath));
+  const configDefaults = require('./configDefaults');
+  const config = { ...configDefaults, ...configFile };
+  return config;
+}
+const config = getConfig();
 
 // The yargs library actually made it so you have to access `.argv` at the end
 // or else it won't do anything. Not sure what the reasoning there was.
 // eslint-disable-next-line no-unused-expressions
 yargs
   .usage('Usage: $0 <command> [options]')
+  .option('config', {
+    desc: 'The relative path to the CMSDS config file',
+    type: 'boolean',
+    default: defaultConfigPath,
+  })
   .command({
     command: '*',
     handler: () => {

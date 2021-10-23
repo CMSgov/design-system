@@ -8,6 +8,7 @@
   "repository": "https://github.com/CMSgov/design-system",
   "scripts": {
     "start": "yarn cmsds start",
+    "start:healthcare": "yarn cmsds start --config cmsds.healthcare.config.js",
     "build": "yarn cmsds build-docs",
     "release": "./release.sh",
     "publish-release": "./publish.sh",
