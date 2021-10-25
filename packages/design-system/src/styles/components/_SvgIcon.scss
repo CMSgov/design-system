@@ -33,15 +33,15 @@
 // Specific icon variations
 
 .ds-c-icon--arrow-up {
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
 }
 
 .ds-c-icon--arrow-left {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
-.ds-c-icon--arrow-right {
-  transform: rotate(-90deg);
+.ds-c-icon--arrow-down {
+  transform: rotate(90deg);
 }
 
 .ds-c-icon--pdf__text {
