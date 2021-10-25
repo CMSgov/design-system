@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function UsaFlagIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--usa-flag ${props.className}`;
+  const iconCssClasses = `ds-c-icon--usa-flag ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

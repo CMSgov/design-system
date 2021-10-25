@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function AddIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--add ${props.className}`;
+  const iconCssClasses = `ds-c-icon--add ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

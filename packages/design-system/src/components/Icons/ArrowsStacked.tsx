@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function ArrowsStacked(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--arrows-stacked ${props.className}`;
+  const iconCssClasses = `ds-c-icon--arrows-stacked ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

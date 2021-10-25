@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function DownloadIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--download ${props.className}`;
+  const iconCssClasses = `ds-c-icon--download ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

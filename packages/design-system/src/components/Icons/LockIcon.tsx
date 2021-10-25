@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function LockIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--lock ${props.className}`;
+  const iconCssClasses = `ds-c-icon--lock ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

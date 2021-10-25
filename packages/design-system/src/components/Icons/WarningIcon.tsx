@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function WarningIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--warning ${props.className}`;
+  const iconCssClasses = `ds-c-icon--warning ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function CloseIconThin(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className}`;
+  const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function RemoveIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--remove ${props.className}`;
+  const iconCssClasses = `ds-c-icon--remove ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

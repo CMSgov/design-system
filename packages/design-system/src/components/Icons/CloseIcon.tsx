@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function CloseIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--close ${props.className}`;
+  const iconCssClasses = `ds-c-icon--close ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

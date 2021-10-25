@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function PdfIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--pdf ${props.className}`;
+  const iconCssClasses = `ds-c-icon--pdf ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

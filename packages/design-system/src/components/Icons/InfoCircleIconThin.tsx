@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function InfoCircleIconThin(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--info-circle-thin ${props.className}`;
+  const iconCssClasses = `ds-c-icon--info-circle-thin ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function CheckIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--check ${props.className}`;
+  const iconCssClasses = `ds-c-icon--check ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>

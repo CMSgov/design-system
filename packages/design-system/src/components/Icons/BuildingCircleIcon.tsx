@@ -8,7 +8,7 @@ const defaultProps = {
 };
 
 function BuildingCircleIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--building-circle ${props.className}`;
+  const iconCssClasses = `ds-c-icon--building-circle ${props.className || ''}`;
 
   return (
     <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
