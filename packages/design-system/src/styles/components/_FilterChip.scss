@@ -65,7 +65,7 @@ $filter-chip-border-radius: $border-radius-pill !default;
     border: 0;
   }
 
-  .ds-c-clear-icon {
+  .ds-c-icon--close {
     display: block;
     fill: $filter-chip-text-color;
     height: $filter-chip-icon-size;
@@ -75,12 +75,17 @@ $filter-chip-border-radius: $border-radius-pill !default;
     width: $filter-chip-icon-size;
   }
 
+  .ds-c-icon--close-thin {
+    height: $filter-chip-icon-size + 2;
+    width: $filter-chip-icon-size + 2;
+  }
+
   .ds-c-filter-chip__button:active &,
   .ds-c-filter-chip__button:focus &,
   .ds-c-filter-chip__button:hover & {
     border-color: $filter-chip-text-color-hover;
 
-    .ds-c-clear-icon {
+    .ds-c-icon--close {
       fill: $filter-chip-text-color-hover;
     }
   }

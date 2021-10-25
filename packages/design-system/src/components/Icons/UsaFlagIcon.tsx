@@ -1,12 +1,18 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from './SvgIcon';
+import SvgIcon, { IconCommonProps } from './SvgIcon';
 
-function UsaFlagIcon(props: SvgIconProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--usa-flag ${props.className}`;
+const defaultProps = {
+  className: '',
+  title: 'U.S. flag',
+  viewBox: '0 0 16 11',
+};
+
+function UsaFlagIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--usa-flag ${props.className || ''}`;
 
   return (
-    <SvgIcon {...props} className={iconCssClasses}>
-      <g id="svg" fill="none" fillRule="evenodd">
+    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+      <g fill="none" fillRule="evenodd">
         <path fill="#FFF" d="M0 0h16v11H0z" />
         <path fill="#DB3E1F" d="M8 0h8v1H8z" />
         <path fill="#1E33B1" d="M0 0h8v7H0z" />
@@ -19,11 +25,5 @@ function UsaFlagIcon(props: SvgIconProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-UsaFlagIcon.defaultProps = {
-  className: '',
-  title: 'U.S. flag',
-  viewBox: '0 0 16 11',
-};
 
 export default UsaFlagIcon;

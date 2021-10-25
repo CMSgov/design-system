@@ -1,11 +1,17 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from './SvgIcon';
+import SvgIcon, { IconCommonProps } from './SvgIcon';
 
-function CloseIconThin(props: SvgIconProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className}`;
+const defaultProps = {
+  className: '',
+  title: 'Close',
+  viewBox: '-2 -2 18 18',
+};
+
+function CloseIconThin(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className || ''}`;
 
   return (
-    <SvgIcon {...props} className={iconCssClasses}>
+    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
       <path
         fill="none"
         stroke="currentColor"
@@ -16,11 +22,5 @@ function CloseIconThin(props: SvgIconProps): React.ReactElement {
     </SvgIcon>
   );
 }
-
-CloseIconThin.defaultProps = {
-  className: '',
-  title: 'Close',
-  viewBox: '-2 -2 18 18',
-};
 
 export default CloseIconThin;

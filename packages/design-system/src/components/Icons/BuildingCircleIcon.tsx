@@ -1,11 +1,17 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from './SvgIcon';
+import SvgIcon, { IconCommonProps } from './SvgIcon';
 
-function BuildingCircleIcon(props: SvgIconProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--building-circle ${props.className}`;
+const defaultProps = {
+  className: '',
+  title: 'Building in circle',
+  viewBox: '0 0 54 54',
+};
+
+function BuildingCircleIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--building-circle ${props.className || ''}`;
 
   return (
-    <SvgIcon {...props} className={iconCssClasses}>
+    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
       <g>
         <path
           className="ds-c-icon--building-circle__building"
@@ -19,17 +25,11 @@ function BuildingCircleIcon(props: SvgIconProps): React.ReactElement {
           cy="50%"
           r="47%"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1"
         />
       </g>
     </SvgIcon>
   );
 }
-
-BuildingCircleIcon.defaultProps = {
-  className: '',
-  title: 'Building in circle',
-  viewBox: '0 0 54 54',
-};
 
 export default BuildingCircleIcon;

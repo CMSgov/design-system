@@ -1,31 +1,35 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from './SvgIcon';
+import SvgIcon, { IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
 
 export type ArrowIconDirectionType = 'up' | 'down' | 'left' | 'right';
 
-export interface ArrowIconProps extends SvgIconProps {
+export interface ArrowIconProps extends IconCommonProps {
   direction?: ArrowIconDirectionType;
 }
 
+const defaultProps = {
+  className: '',
+  direction: 'right',
+  viewBox: '0 0 320 512',
+};
+
 function ArrowIcon(props: ArrowIconProps): React.ReactElement {
+  const direction = props.direction || defaultProps.direction;
   const iconCssClasses = classNames(
     'ds-c-icon--arrow',
-    `ds-c-icon--arrow-${props.direction}`,
+    `ds-c-icon--arrow-${direction}`,
     props.className
   );
 
   return (
-    <SvgIcon title={`${props.direction} arrow`} {...props} className={iconCssClasses}>
-      <path d="M14.502 20.77L25.37 9.894c.42-.404.631-.9.631-1.503a1.99 1.99 0 00-.631-1.502L24.118 5.62c-.41-.41-.912-.62-1.502-.62-.58 0-1.088.205-1.52.62L13 13.727 4.893 5.62C4.483 5.21 3.98 5 3.39 5c-.578 0-1.087.205-1.52.62L.62 6.888C.21 7.298 0 7.8 0 8.39s.205 1.093.62 1.503L11.48 20.77c.433.409.941.62 1.52.62.59 0 1.093-.205 1.502-.62z" />
+    <SvgIcon title={`${direction} arrow`} {...defaultProps} {...props} className={iconCssClasses}>
+      <path
+        fill="currentColor"
+        d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+      />
     </SvgIcon>
   );
 }
-
-ArrowIcon.defaultProps = {
-  className: '',
-  direction: 'up',
-  viewBox: '0 0 26 26',
-};
 
 export default ArrowIcon;
