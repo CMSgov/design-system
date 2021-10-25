@@ -10,6 +10,7 @@
     "start": "yarn cmsds start",
     "start:healthcare": "yarn cmsds start --config cmsds.healthcare.config.js",
     "build": "yarn cmsds build-docs",
+    "build:healthcare": "yarn cmsds build-docs --config cmsds.healthcare.config.js",
     "release": "./release.sh",
     "publish-release": "./publish.sh",
     "precommit": "lint-staged",
