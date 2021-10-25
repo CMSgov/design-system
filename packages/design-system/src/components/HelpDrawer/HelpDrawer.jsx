@@ -1,4 +1,5 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import FocusTrap from 'focus-trap-react';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -76,6 +77,7 @@ export class HelpDrawer extends React.PureComponent {
       children,
       footerBody,
       footerTitle,
+      hasFocusTrap,
       heading,
       onCloseClick,
       title,
@@ -83,7 +85,7 @@ export class HelpDrawer extends React.PureComponent {
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    return (
+    const helpDrawerMarkup = () => (
       <div className={classNames(className, 'ds-c-help-drawer')}>
         <div className="ds-c-help-drawer__header">
           {/* The nested div below might seem redundant, but we need a
@@ -120,6 +122,8 @@ export class HelpDrawer extends React.PureComponent {
         </div>
       </div>
     );
+
+    return <>{hasFocusTrap ? <FocusTrap>{helpDrawerMarkup()}</FocusTrap> : helpDrawerMarkup()}</>;
   }
 }
 
@@ -151,6 +155,10 @@ HelpDrawer.propTypes = {
   className: PropTypes.string,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
+  /**
+   * Enables focus trap functionality within HelpDrawer.
+   */
+  hasFocusTrap: PropTypes.bool,
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
