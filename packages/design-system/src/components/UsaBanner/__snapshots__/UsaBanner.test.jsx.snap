@@ -13,7 +13,7 @@ exports[`UsaBanner applies Spanish translation 1`] = `
       className="ds-c-usa-banner__header-text"
     >
       <svg
-        aria-hidden={false}
+        aria-hidden={true}
         aria-labelledby="icon-7__title"
         className="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
         focusable={false}
@@ -186,7 +186,7 @@ exports[`UsaBanner applies Spanish translation 1`] = `
            (
            
           <svg
-            aria-hidden={false}
+            aria-hidden={true}
             aria-labelledby="icon-10__title"
             className="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
             focusable={false}
@@ -350,7 +350,7 @@ exports[`UsaBanner renders correctly 1`] = `
       className="ds-c-usa-banner__header-text"
     >
       <svg
-        aria-hidden={false}
+        aria-hidden={true}
         aria-labelledby="icon-2__title"
         className="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
         focusable={false}
@@ -523,7 +523,7 @@ exports[`UsaBanner renders correctly 1`] = `
            (
            
           <svg
-            aria-hidden={false}
+            aria-hidden={true}
             aria-labelledby="icon-5__title"
             className="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
             focusable={false}

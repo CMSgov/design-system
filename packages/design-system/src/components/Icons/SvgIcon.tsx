@@ -4,8 +4,8 @@ import uniqueId from 'lodash/uniqueId';
 
 export interface SvgIconProps {
   /**
-   * Describes the value of the `aria-hidden` attribute on the SVG. Use if the icon content is described elsewhere.
-   * For example, if the icon is used in a button or link along with text, the text may describe the icon content more specifically.
+   * Describes the value of the `aria-hidden` attribute on the SVG. Defaulted to true with the assumption that most icons are decorative.
+   * If the icon does not have any associated label text, set this to `false` and ensure a `title` is provided for improved accessibility.
    */
   ariaHidden?: boolean;
   /**
@@ -83,7 +83,7 @@ function SvgIcon({
 }
 
 SvgIcon.defaultProps = {
-  ariaHidden: false,
+  ariaHidden: true,
   inversed: false,
 };
 
