@@ -2,8 +2,7 @@ import { mount, shallow } from 'enzyme';
 import Autocomplete from './Autocomplete';
 import React from 'react';
 import TextField from '../TextField/TextField';
-import renderer from 'react-test-renderer';
-import { render as TLrender, fireEvent } from '@testing-library/react';
+import { render as TLrender } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 function render(customProps = {}, deep = false) {
@@ -159,15 +158,12 @@ describe('Autocomplete', () => {
   });
 
   it('renders a snapshot', () => {
-    const tree = renderer
-      .create(
-        <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearSearchButton>
-          <TextField label="autocomplete" name="autocomplete_field" />
-        </Autocomplete>
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
+    const { container } = TLrender(
+      <Autocomplete items={[{ id: 'kRf6c2fY', name: 'Cook County, IL' }]} clearSearchButton>
+        <TextField label="autocomplete" name="autocomplete_field" />
+      </Autocomplete>
+    );
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   describe('default props', () => {
@@ -203,10 +199,8 @@ describe('Autocomplete', () => {
     it('Should expand the listbox when keys are pressed', () => {
       const { getByLabelText, getByRole } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete');
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
 
       expect(getByRole('listbox')).toBeTruthy();
     });
@@ -214,13 +208,11 @@ describe('Autocomplete', () => {
     it('Should set the input value correctly when a listbox selection is clicked', () => {
       const { getByLabelText, getByRole } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
 
       const listboxItem = getByRole('option');
-      fireEvent.click(listboxItem);
+      userEvent.click(listboxItem);
 
       expect(autocompleteField.value).toBe('Cook County, IL');
     });
@@ -228,16 +220,14 @@ describe('Autocomplete', () => {
     it('Should set the input value to empty when Clear search is clicked', () => {
       const { getByLabelText, getByRole, getByText } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
 
       const listboxItem = getByRole('option');
-      fireEvent.click(listboxItem);
+      userEvent.click(listboxItem);
 
       const clearButton = getByText('Clear search');
-      fireEvent.click(clearButton);
+      userEvent.click(clearButton);
 
       expect(autocompleteField.value).toBe('');
     });
@@ -245,20 +235,10 @@ describe('Autocomplete', () => {
     it('Should select list items by keyboard', () => {
       const { getByLabelText } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
-      fireEvent.keyDown(autocompleteField, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-        charCode: 40,
-      });
-      fireEvent.keyDown(autocompleteField, {
-        key: 'Enter',
-        code: 'Enter',
-        charCode: 13,
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
+      userEvent.type(autocompleteField, '{arrowdown}');
+      userEvent.type(autocompleteField, '{enter}');
 
       expect(autocompleteField.value).toBe('Cook County, IL');
     });
@@ -267,27 +247,17 @@ describe('Autocomplete', () => {
       const { getByLabelText, getByText } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
       autocompleteField.focus();
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
-      fireEvent.keyDown(autocompleteField, {
-        key: 'ArrowDown',
-        code: 'ArrowDown',
-        charCode: 40,
-      });
-      fireEvent.keyDown(autocompleteField, {
-        key: 'Enter',
-        code: 'Enter',
-        charCode: 13,
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
+      userEvent.type(autocompleteField, '{arrowdown}');
+      userEvent.type(autocompleteField, '{enter}');
 
       expect(autocompleteField.value).toBe('Cook County, IL');
 
       userEvent.tab();
 
       const clearButton = getByText('Clear search');
-      clearButton.click();
+      userEvent.click(clearButton);
 
       expect(autocompleteField.value).toBe('');
     });
@@ -295,21 +265,15 @@ describe('Autocomplete', () => {
     it('Closes the listbox when ESC is pressed', () => {
       const { getByLabelText, queryByRole } = TLrender(<Autocomplete {...props} />);
       const autocompleteField = getByLabelText('autocomplete') as HTMLInputElement;
-      fireEvent.click(autocompleteField);
-      fireEvent.input(autocompleteField, {
-        target: { value: 'c' },
-      });
+      userEvent.click(autocompleteField);
+      userEvent.type(autocompleteField, 'c');
 
       let listboxEl = queryByRole('listbox');
       expect(listboxEl).toBeTruthy();
 
       expect(autocompleteField.value).toEqual('c');
 
-      fireEvent.keyDown(autocompleteField, {
-        key: 'Escape',
-        code: 'Escape',
-        charCode: 27,
-      });
+      userEvent.type(autocompleteField, '{esc}');
 
       listboxEl = queryByRole('listbox');
       expect(listboxEl).toBeNull();
