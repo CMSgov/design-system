@@ -31,6 +31,7 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__header-flag {
+  height: 11px;
   margin-right: $spacer-1;
   width: $spacer-2;
 }
@@ -207,10 +208,15 @@ $usa-banner-font-family: $font-sans;
   height: $spacer-5;
   margin-right: $spacer-1;
   width: $spacer-5;
+
+  &.ds-c-icon--lock-circle {
+    color: #719f2a;
+  }
 }
 
 .ds-c-usa-banner__lock-image {
   height: 1.5ex;
+  vertical-align: inherit;
   width: 1.5ex * 52 / 64;
   path {
     fill: currentColor;
