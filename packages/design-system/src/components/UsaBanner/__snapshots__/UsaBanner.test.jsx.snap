@@ -13,19 +13,20 @@ exports[`UsaBanner applies Spanish translation 1`] = `
       className="ds-c-usa-banner__header-text"
     >
       <svg
-        className="ds-c-usa-banner__header-flag"
-        focusable="false"
-        height="11"
+        aria-hidden={true}
+        aria-labelledby="icon-7__title"
+        className="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
+        focusable={false}
+        id="icon-7"
         role="img"
-        width="16"
+        viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title>
+        <title
+          id="icon-7__title"
+        >
           U.S. Bandera
         </title>
-        <desc>
-          U.S. Bandera
-        </desc>
         <g
           fill="none"
           fillRule="evenodd"
@@ -43,11 +44,11 @@ exports[`UsaBanner applies Spanish translation 1`] = `
             fill="#1E33B1"
           />
           <path
-            d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+            d="M8 2h8v1H8zM8 4h8v1H8zM8 6h8v1H8zM0 8h16v1H0zM0 10h16v1H0z"
             fill="#DB3E1F"
           />
           <path
-            d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+            d="M1 1h1v1H1zM2 3h1v1H2zM1 5h1v1H1zM3 1h1v1H3zM4 3h1v1H4zM3 5h1v1H3zM5 1h1v1H5zM6 3h1v1H6zM5 5h1v1H5z"
             fill="#FFF"
           />
         </g>
@@ -60,13 +61,13 @@ exports[`UsaBanner applies Spanish translation 1`] = `
         Un sitio oficial del Gobierno de Estados Unidos
       </span>
       <span
-        aria-hidden="true"
+        aria-hidden={true}
         className="ds-c-usa-banner__header-action"
       >
         Así es como usted puede verificarlo
       </span>
       <button
-        aria-controls="gov-banner_2"
+        aria-controls="gov-banner_6"
         aria-expanded={false}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -82,7 +83,7 @@ exports[`UsaBanner applies Spanish translation 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={true}
-    id="gov-banner_2"
+    id="gov-banner_6"
   >
     <div
       className="ds-c-usa-banner__guidance-container"
@@ -91,23 +92,36 @@ exports[`UsaBanner applies Spanish translation 1`] = `
         className="ds-c-usa-banner__guidance"
       >
         <svg
-          aria-hidden="true"
-          className="ds-c-usa-banner__icon"
+          aria-hidden={true}
+          aria-labelledby="icon-8__title"
+          className="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__icon ds-c-icon-color--primary"
+          focusable={false}
+          id="icon-8"
+          role="img"
           viewBox="0 0 54 54"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M36.5 20.91v1.36h-1.35a.71.71 0 0 1-.73.68H18.23a.71.71 0 0 1-.73-.68h-1.36v-1.36l10.18-4.07zm0 13.57v1.36H16.14v-1.36a.71.71 0 0 1 .73-.68h18.9a.71.71 0 0 1 .73.68zM21.57 23.62v8.14h1.36v-8.14h2.71v8.14H27v-8.14h2.71v8.14h1.36v-8.14h2.71v8.14h.63a.71.71 0 0 1 .73.68v.68H17.5v-.67a.71.71 0 0 1 .73-.68h.63v-8.15h2.71z"
-            fill="#2378c3"
-          />
-          <circle
-            cx="27"
-            cy="27.12"
-            fill="none"
-            r="26"
-            stroke="#005ea2"
-            strokeMiterlimit="10"
-          />
+          <title
+            id="icon-8__title"
+          >
+            Building in circle
+          </title>
+          <g>
+            <path
+              className="ds-c-icon--building-circle__building"
+              d="M36.5,20.91v1.36H35.15a0.71,0.71,0,0,1-.73.68H18.23a0.71,0.71,0,0,1-.73-0.68H16.14V20.91l10.18-4.07Zm0,13.57v1.36H16.14V34.48a0.71,0.71,0,0,1,.73-0.68h18.9A0.71,0.71,0,0,1,36.5,34.48ZM21.57,23.62v8.14h1.36V23.62h2.71v8.14H27V23.62h2.71v8.14h1.36V23.62h2.71v8.14h0.63a0.71,0.71,0,0,1,.73.68v0.68H17.5V32.45a0.71,0.71,0,0,1,.73-0.68h0.63V23.62h2.71Z"
+              fill="currentColor"
+            />
+            <circle
+              className="ds-c-icon--building-circle__circle"
+              cx="50%"
+              cy="50%"
+              fill="none"
+              r="47%"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+          </g>
         </svg>
         <p
           className="ds-c-usa-banner__media-body"
@@ -129,22 +143,31 @@ exports[`UsaBanner applies Spanish translation 1`] = `
         className="ds-c-usa-banner__guidance"
       >
         <svg
-          aria-hidden="true"
-          className="ds-c-usa-banner__icon"
+          aria-hidden={true}
+          aria-labelledby="icon-9__title"
+          className="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__icon"
+          focusable={false}
+          id="icon-9"
+          role="img"
           viewBox="0 0 54 54"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title
+            id="icon-9__title"
+          >
+            Lock in circle
+          </title>
           <path
-            d="M34.72 34.84a1.29 1.29 0 0 1-1.29 1.29H20.57a1.29 1.29 0 0 1-1.29-1.29v-7.72a1.29 1.29 0 0 1 1.29-1.29H21v-2.57a6 6 0 0 1 12 0v2.57h.43a1.29 1.29 0 0 1 1.29 1.29v7.72zm-4.29-9v-2.58a3.43 3.43 0 0 0-6.86 0v2.57h6.86z"
-            fill="#719f2a"
+            d="M34.72,34.84a1.29,1.29,0,0,1-1.29,1.29H20.57a1.29,1.29,0,0,1-1.29-1.29V27.12a1.29,1.29,0,0,1,1.29-1.29H21V23.26a6,6,0,0,1,12,0v2.57h0.43a1.29,1.29,0,0,1,1.29,1.29v7.72Zm-4.29-9V23.26a3.43,3.43,0,0,0-6.86,0v2.57h6.86Z"
+            fill="currentColor"
           />
           <circle
-            cx="27"
-            cy="27.12"
+            cx="50%"
+            cy="50%"
             fill="none"
-            r="26"
-            stroke="#538200"
-            strokeMiterlimit="10"
+            r="47%"
+            stroke="currentColor"
+            strokeWidth="1"
           />
         </svg>
         <p
@@ -163,18 +186,20 @@ exports[`UsaBanner applies Spanish translation 1`] = `
            (
            
           <svg
-            className="ds-c-usa-banner__lock-image"
-            focusable="false"
+            aria-hidden={true}
+            aria-labelledby="icon-10__title"
+            className="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
+            focusable={false}
+            id="icon-10"
             role="img"
             viewBox="0 0 52 64"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>
-              Candado
+            <title
+              id="icon-10__title"
+            >
+              candado
             </title>
-            <desc>
-              Un candado cerrado
-            </desc>
             <path
               d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
               fillRule="evenodd"
@@ -208,13 +233,9 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
     <p
       className="ds-c-usa-banner__header-text"
     >
-      <IconFlag
+      <UsaFlagIcon
         className="ds-c-usa-banner__header-flag"
-        focusable="false"
-        height="11"
-        role="img"
-        width="16"
-        xmlns="http://www.w3.org/2000/svg"
+        title="U.S. Flag"
       />
     </p>
     <p
@@ -224,13 +245,13 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
         An official website of the United States government
       </span>
       <span
-        aria-hidden="true"
+        aria-hidden={true}
         className="ds-c-usa-banner__header-action"
       >
         Here’s how you know
       </span>
       <button
-        aria-controls="gov-banner_3"
+        aria-controls="gov-banner_11"
         aria-expanded={true}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -246,7 +267,7 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={false}
-    id="gov-banner_3"
+    id="gov-banner_11"
   >
     <div
       className="ds-c-usa-banner__guidance-container"
@@ -254,11 +275,9 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
       <div
         className="ds-c-usa-banner__guidance"
       >
-        <IconDotGov
-          aria-hidden="true"
-          className="ds-c-usa-banner__icon"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
+        <BuildingCircleIcon
+          ariaHidden={true}
+          className="ds-c-usa-banner__icon ds-c-icon-color--primary"
         />
         <p
           className="ds-c-usa-banner__media-body"
@@ -279,11 +298,9 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
       <div
         className="ds-c-usa-banner__guidance"
       >
-        <IconHttps
-          aria-hidden="true"
+        <LockCircleIcon
+          ariaHidden={true}
           className="ds-c-usa-banner__icon"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
         />
         <p
           className="ds-c-usa-banner__media-body"
@@ -300,12 +317,9 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
           </strong>
            (
            
-          <IconLock
+          <LockIcon
             className="ds-c-usa-banner__lock-image"
-            focusable="false"
-            role="img"
-            viewBox="0 0 52 64"
-            xmlns="http://www.w3.org/2000/svg"
+            title="lock"
           />
            
           ) 
@@ -336,19 +350,20 @@ exports[`UsaBanner renders correctly 1`] = `
       className="ds-c-usa-banner__header-text"
     >
       <svg
-        className="ds-c-usa-banner__header-flag"
-        focusable="false"
-        height="11"
+        aria-hidden={true}
+        aria-labelledby="icon-2__title"
+        className="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-flag"
+        focusable={false}
+        id="icon-2"
         role="img"
-        width="16"
+        viewBox="0 0 16 11"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title>
-          U.S. flag
+        <title
+          id="icon-2__title"
+        >
+          U.S. Flag
         </title>
-        <desc>
-          U.S. flag
-        </desc>
         <g
           fill="none"
           fillRule="evenodd"
@@ -366,11 +381,11 @@ exports[`UsaBanner renders correctly 1`] = `
             fill="#1E33B1"
           />
           <path
-            d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+            d="M8 2h8v1H8zM8 4h8v1H8zM8 6h8v1H8zM0 8h16v1H0zM0 10h16v1H0z"
             fill="#DB3E1F"
           />
           <path
-            d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+            d="M1 1h1v1H1zM2 3h1v1H2zM1 5h1v1H1zM3 1h1v1H3zM4 3h1v1H4zM3 5h1v1H3zM5 1h1v1H5zM6 3h1v1H6zM5 5h1v1H5z"
             fill="#FFF"
           />
         </g>
@@ -383,7 +398,7 @@ exports[`UsaBanner renders correctly 1`] = `
         An official website of the United States government
       </span>
       <span
-        aria-hidden="true"
+        aria-hidden={true}
         className="ds-c-usa-banner__header-action"
       >
         Here’s how you know
@@ -414,23 +429,36 @@ exports[`UsaBanner renders correctly 1`] = `
         className="ds-c-usa-banner__guidance"
       >
         <svg
-          aria-hidden="true"
-          className="ds-c-usa-banner__icon"
+          aria-hidden={true}
+          aria-labelledby="icon-3__title"
+          className="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__icon ds-c-icon-color--primary"
+          focusable={false}
+          id="icon-3"
+          role="img"
           viewBox="0 0 54 54"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M36.5 20.91v1.36h-1.35a.71.71 0 0 1-.73.68H18.23a.71.71 0 0 1-.73-.68h-1.36v-1.36l10.18-4.07zm0 13.57v1.36H16.14v-1.36a.71.71 0 0 1 .73-.68h18.9a.71.71 0 0 1 .73.68zM21.57 23.62v8.14h1.36v-8.14h2.71v8.14H27v-8.14h2.71v8.14h1.36v-8.14h2.71v8.14h.63a.71.71 0 0 1 .73.68v.68H17.5v-.67a.71.71 0 0 1 .73-.68h.63v-8.15h2.71z"
-            fill="#2378c3"
-          />
-          <circle
-            cx="27"
-            cy="27.12"
-            fill="none"
-            r="26"
-            stroke="#005ea2"
-            strokeMiterlimit="10"
-          />
+          <title
+            id="icon-3__title"
+          >
+            Building in circle
+          </title>
+          <g>
+            <path
+              className="ds-c-icon--building-circle__building"
+              d="M36.5,20.91v1.36H35.15a0.71,0.71,0,0,1-.73.68H18.23a0.71,0.71,0,0,1-.73-0.68H16.14V20.91l10.18-4.07Zm0,13.57v1.36H16.14V34.48a0.71,0.71,0,0,1,.73-0.68h18.9A0.71,0.71,0,0,1,36.5,34.48ZM21.57,23.62v8.14h1.36V23.62h2.71v8.14H27V23.62h2.71v8.14h1.36V23.62h2.71v8.14h0.63a0.71,0.71,0,0,1,.73.68v0.68H17.5V32.45a0.71,0.71,0,0,1,.73-0.68h0.63V23.62h2.71Z"
+              fill="currentColor"
+            />
+            <circle
+              className="ds-c-icon--building-circle__circle"
+              cx="50%"
+              cy="50%"
+              fill="none"
+              r="47%"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+          </g>
         </svg>
         <p
           className="ds-c-usa-banner__media-body"
@@ -452,22 +480,31 @@ exports[`UsaBanner renders correctly 1`] = `
         className="ds-c-usa-banner__guidance"
       >
         <svg
-          aria-hidden="true"
-          className="ds-c-usa-banner__icon"
+          aria-hidden={true}
+          aria-labelledby="icon-4__title"
+          className="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__icon"
+          focusable={false}
+          id="icon-4"
+          role="img"
           viewBox="0 0 54 54"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title
+            id="icon-4__title"
+          >
+            Lock in circle
+          </title>
           <path
-            d="M34.72 34.84a1.29 1.29 0 0 1-1.29 1.29H20.57a1.29 1.29 0 0 1-1.29-1.29v-7.72a1.29 1.29 0 0 1 1.29-1.29H21v-2.57a6 6 0 0 1 12 0v2.57h.43a1.29 1.29 0 0 1 1.29 1.29v7.72zm-4.29-9v-2.58a3.43 3.43 0 0 0-6.86 0v2.57h6.86z"
-            fill="#719f2a"
+            d="M34.72,34.84a1.29,1.29,0,0,1-1.29,1.29H20.57a1.29,1.29,0,0,1-1.29-1.29V27.12a1.29,1.29,0,0,1,1.29-1.29H21V23.26a6,6,0,0,1,12,0v2.57h0.43a1.29,1.29,0,0,1,1.29,1.29v7.72Zm-4.29-9V23.26a3.43,3.43,0,0,0-6.86,0v2.57h6.86Z"
+            fill="currentColor"
           />
           <circle
-            cx="27"
-            cy="27.12"
+            cx="50%"
+            cy="50%"
             fill="none"
-            r="26"
-            stroke="#538200"
-            strokeMiterlimit="10"
+            r="47%"
+            stroke="currentColor"
+            strokeWidth="1"
           />
         </svg>
         <p
@@ -486,18 +523,20 @@ exports[`UsaBanner renders correctly 1`] = `
            (
            
           <svg
-            className="ds-c-usa-banner__lock-image"
-            focusable="false"
+            aria-hidden={true}
+            aria-labelledby="icon-5__title"
+            className="ds-c-icon ds-c-icon--lock ds-c-usa-banner__lock-image"
+            focusable={false}
+            id="icon-5"
             role="img"
             viewBox="0 0 52 64"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>
-              Lock
+            <title
+              id="icon-5__title"
+            >
+              lock
             </title>
-            <desc>
-              A locked padlock
-            </desc>
             <path
               d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
               fillRule="evenodd"
