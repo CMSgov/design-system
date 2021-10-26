@@ -11,6 +11,7 @@ export class HelpDrawer extends React.PureComponent {
     super(props);
     this.headingRef = null;
     this.eventHeadingText = '';
+    this.handleCloseButton = this.handleCloseButton.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -27,6 +28,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
+    document.addEventListener('keydown', this.handleEscapeKey.bind(this));
+
     if (this.headingRef) this.headingRef.focus();
 
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
@@ -56,6 +59,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEscapeKey.bind(this));
+
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
       sendLinkEvent({
@@ -69,6 +74,20 @@ export class HelpDrawer extends React.PureComponent {
     }
   }
 
+  handleEscapeKey(evt) {
+    if (evt.code === 'Escape') {
+      return this.props.onCloseClick();
+    }
+  }
+
+  handleCloseButton(e) {
+    this.props.onCloseClick();
+
+    if (this.props.hasFocusTrap) {
+      this.handleEscapeKey(e);
+    }
+  }
+
   render() {
     const {
       ariaLabel,
@@ -79,7 +98,6 @@ export class HelpDrawer extends React.PureComponent {
       footerTitle,
       hasFocusTrap,
       heading,
-      onCloseClick,
       title,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
@@ -107,7 +125,7 @@ export class HelpDrawer extends React.PureComponent {
               aria-label={ariaLabel}
               className="ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
               size="small"
-              onClick={onCloseClick}
+              onClick={this.handleCloseButton}
             >
               {closeButtonText}
             </Button>

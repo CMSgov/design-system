@@ -69,6 +69,18 @@ Style guide: components.help-drawer.react-help-drawer-toggle
     - `Tab` to move the focus sequentially through the list of focusable items
     - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
 
+#### Focus Management
+
+The property `hasFocusTrap` is an available option that will prevent keyboard focus from leaving the confines of the HelpDrawer when enabled.
+
+When the property `hasFocusTrap` is enabled...
+- Keyboard focus is trapped within the HelpDrawer component.
+- Pressing the escape key will close the HelpDrawer.
+
+A focus trap should *not* be used when it's anticipated that the user will rely on the HelpDrawer as a reference resource for doing something outside of the HelpDrawer. For instance, if the user is completing a form, HelpDrawer may contain a reference guide defining specific requirements.
+
+However, there are times when it makes sense to trap focus within the HelpDrawer. One occassion where it can benefit the user is when the HelpDrawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
+
 ### Future Work
 
 Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
