@@ -45,7 +45,7 @@ const iconData = [
     defaultTitle: '[direction of arrow]',
     component: (
       <>
-        <ArrowIcon />
+        <ArrowIcon direction="up" />
         <ArrowIcon direction="down" />
         <ArrowIcon direction="left" />
         <ArrowIcon direction="right" />
