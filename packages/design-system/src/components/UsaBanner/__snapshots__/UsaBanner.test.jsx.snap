@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsaBanner applies Spanish translation 1`] = `
+<section
+  aria-label="Sitio web oficial del gobierno"
+  className="ds-c-usa-banner"
+  lang="es"
+>
+  <header
+    className="ds-c-usa-banner__header "
+  >
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <svg
+        className="ds-c-usa-banner__header-flag"
+        focusable="false"
+        height="11"
+        role="img"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          U.S. Bandera
+        </title>
+        <desc>
+          U.S. Bandera
+        </desc>
+        <g
+          fill="none"
+          fillRule="evenodd"
+        >
+          <path
+            d="M0 0h16v11H0z"
+            fill="#FFF"
+          />
+          <path
+            d="M8 0h8v1H8z"
+            fill="#DB3E1F"
+          />
+          <path
+            d="M0 0h8v7H0z"
+            fill="#1E33B1"
+          />
+          <path
+            d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+            fill="#DB3E1F"
+          />
+          <path
+            d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+            fill="#FFF"
+          />
+        </g>
+      </svg>
+    </p>
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <span>
+        Un sitio oficial del Gobierno de Estados Unidos
+      </span>
+      <span
+        aria-hidden="true"
+        className="ds-c-usa-banner__header-action"
+      >
+        Así es como usted puede verificarlo
+      </span>
+      <button
+        aria-controls="gov-banner_2"
+        aria-expanded={false}
+        className="ds-c-usa-banner__button"
+        onClick={[Function]}
+      >
+        <span
+          className="ds-c-usa-banner__button-text"
+        >
+          Así es como usted puede verificarlo
+        </span>
+      </button>
+    </p>
+  </header>
+  <div
+    className="ds-c-usa-banner__content"
+    hidden={true}
+    id="gov-banner_2"
+  >
+    <div
+      className="ds-c-usa-banner__guidance-container"
+    >
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M36.5 20.91v1.36h-1.35a.71.71 0 0 1-.73.68H18.23a.71.71 0 0 1-.73-.68h-1.36v-1.36l10.18-4.07zm0 13.57v1.36H16.14v-1.36a.71.71 0 0 1 .73-.68h18.9a.71.71 0 0 1 .73.68zM21.57 23.62v8.14h1.36v-8.14h2.71v8.14H27v-8.14h2.71v8.14h1.36v-8.14h2.71v8.14h.63a.71.71 0 0 1 .73.68v.68H17.5v-.67a.71.71 0 0 1 .73-.68h.63v-8.15h2.71z"
+            fill="#2378c3"
+          />
+          <circle
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#005ea2"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Los sitios web oficiales usan .gov
+          </strong>
+          <br />
+          Un sitio web
+          <strong>
+             
+            .gov
+             
+          </strong>
+          pertenece a una organización oficial del Gobierno de Estados Unidos.
+        </p>
+      </div>
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M34.72 34.84a1.29 1.29 0 0 1-1.29 1.29H20.57a1.29 1.29 0 0 1-1.29-1.29v-7.72a1.29 1.29 0 0 1 1.29-1.29H21v-2.57a6 6 0 0 1 12 0v2.57h.43a1.29 1.29 0 0 1 1.29 1.29v7.72zm-4.29-9v-2.58a3.43 3.43 0 0 0-6.86 0v2.57h6.86z"
+            fill="#719f2a"
+          />
+          <circle
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#538200"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Los sitios web seguros .gov usan HTTPS
+          </strong>
+          <br />
+          Un
+          <strong>
+             
+            candado
+             
+          </strong>
+           (
+           
+          <svg
+            className="ds-c-usa-banner__lock-image"
+            focusable="false"
+            role="img"
+            viewBox="0 0 52 64"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>
+              Candado
+            </title>
+            <desc>
+              Un candado cerrado
+            </desc>
+            <path
+              d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+              fillRule="evenodd"
+            />
+          </svg>
+           
+          ) 
+          o
+          <strong>
+             
+            https://
+             
+          </strong>
+          significa que usted se conectó de forma segura a un sitio web .gov. Comparta información sensible sólo en sitios web oficiales y seguros.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`UsaBanner applies additional class names to expanded banner 1`] = `
+<section
+  aria-label="Official government website"
+  className="ds-c-usa-banner"
+  lang={null}
+>
+  <header
+    className="ds-c-usa-banner__header ds-c-usa-banner__header--expanded"
+  >
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <IconFlag
+        className="ds-c-usa-banner__header-flag"
+        focusable="false"
+        height="11"
+        role="img"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </p>
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <span>
+        An official website of the United States government
+      </span>
+      <span
+        aria-hidden="true"
+        className="ds-c-usa-banner__header-action"
+      >
+        Here’s how you know
+      </span>
+      <button
+        aria-controls="gov-banner_3"
+        aria-expanded={true}
+        className="ds-c-usa-banner__button"
+        onClick={[Function]}
+      >
+        <span
+          className="ds-c-usa-banner__button-text"
+        >
+          Here’s how you know
+        </span>
+      </button>
+    </p>
+  </header>
+  <div
+    className="ds-c-usa-banner__content"
+    hidden={false}
+    id="gov-banner_3"
+  >
+    <div
+      className="ds-c-usa-banner__guidance-container"
+    >
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <IconDotGov
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Official websites use .gov
+          </strong>
+          <br />
+          A
+          <strong>
+             
+            .gov
+             
+          </strong>
+          website belongs to an official government organization in the United States.
+        </p>
+      </div>
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <IconHttps
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Secure .gov websites use HTTPS
+          </strong>
+          <br />
+          A
+          <strong>
+             
+            lock
+             
+          </strong>
+           (
+           
+          <IconLock
+            className="ds-c-usa-banner__lock-image"
+            focusable="false"
+            role="img"
+            viewBox="0 0 52 64"
+            xmlns="http://www.w3.org/2000/svg"
+          />
+           
+          ) 
+          or
+          <strong>
+             
+            https://
+             
+          </strong>
+          means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. 
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`UsaBanner renders correctly 1`] = `
+<section
+  aria-label="Official government website"
+  className="ds-c-usa-banner"
+  lang={null}
+>
+  <header
+    className="ds-c-usa-banner__header "
+  >
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <svg
+        className="ds-c-usa-banner__header-flag"
+        focusable="false"
+        height="11"
+        role="img"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          U.S. flag
+        </title>
+        <desc>
+          U.S. flag
+        </desc>
+        <g
+          fill="none"
+          fillRule="evenodd"
+        >
+          <path
+            d="M0 0h16v11H0z"
+            fill="#FFF"
+          />
+          <path
+            d="M8 0h8v1H8z"
+            fill="#DB3E1F"
+          />
+          <path
+            d="M0 0h8v7H0z"
+            fill="#1E33B1"
+          />
+          <path
+            d="M8 2h8v1H8zm0 2h8v1H8zm0 2h8v1H8zM0 8h16v1H0zm0 2h16v1H0z"
+            fill="#DB3E1F"
+          />
+          <path
+            d="M1 1h1v1H1zm1 2h1v1H2zM1 5h1v1H1zm2-4h1v1H3zm1 2h1v1H4zM3 5h1v1H3zm2-4h1v1H5zm1 2h1v1H6zM5 5h1v1H5z"
+            fill="#FFF"
+          />
+        </g>
+      </svg>
+    </p>
+    <p
+      className="ds-c-usa-banner__header-text"
+    >
+      <span>
+        An official website of the United States government
+      </span>
+      <span
+        aria-hidden="true"
+        className="ds-c-usa-banner__header-action"
+      >
+        Here’s how you know
+      </span>
+      <button
+        aria-controls="gov-banner_1"
+        aria-expanded={false}
+        className="ds-c-usa-banner__button"
+        onClick={[Function]}
+      >
+        <span
+          className="ds-c-usa-banner__button-text"
+        >
+          Here’s how you know
+        </span>
+      </button>
+    </p>
+  </header>
+  <div
+    className="ds-c-usa-banner__content"
+    hidden={true}
+    id="gov-banner_1"
+  >
+    <div
+      className="ds-c-usa-banner__guidance-container"
+    >
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M36.5 20.91v1.36h-1.35a.71.71 0 0 1-.73.68H18.23a.71.71 0 0 1-.73-.68h-1.36v-1.36l10.18-4.07zm0 13.57v1.36H16.14v-1.36a.71.71 0 0 1 .73-.68h18.9a.71.71 0 0 1 .73.68zM21.57 23.62v8.14h1.36v-8.14h2.71v8.14H27v-8.14h2.71v8.14h1.36v-8.14h2.71v8.14h.63a.71.71 0 0 1 .73.68v.68H17.5v-.67a.71.71 0 0 1 .73-.68h.63v-8.15h2.71z"
+            fill="#2378c3"
+          />
+          <circle
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#005ea2"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Official websites use .gov
+          </strong>
+          <br />
+          A
+          <strong>
+             
+            .gov
+             
+          </strong>
+          website belongs to an official government organization in the United States.
+        </p>
+      </div>
+      <div
+        className="ds-c-usa-banner__guidance"
+      >
+        <svg
+          aria-hidden="true"
+          className="ds-c-usa-banner__icon"
+          viewBox="0 0 54 54"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M34.72 34.84a1.29 1.29 0 0 1-1.29 1.29H20.57a1.29 1.29 0 0 1-1.29-1.29v-7.72a1.29 1.29 0 0 1 1.29-1.29H21v-2.57a6 6 0 0 1 12 0v2.57h.43a1.29 1.29 0 0 1 1.29 1.29v7.72zm-4.29-9v-2.58a3.43 3.43 0 0 0-6.86 0v2.57h6.86z"
+            fill="#719f2a"
+          />
+          <circle
+            cx="27"
+            cy="27.12"
+            fill="none"
+            r="26"
+            stroke="#538200"
+            strokeMiterlimit="10"
+          />
+        </svg>
+        <p
+          className="ds-c-usa-banner__media-body"
+        >
+          <strong>
+            Secure .gov websites use HTTPS
+          </strong>
+          <br />
+          A
+          <strong>
+             
+            lock
+             
+          </strong>
+           (
+           
+          <svg
+            className="ds-c-usa-banner__lock-image"
+            focusable="false"
+            role="img"
+            viewBox="0 0 52 64"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>
+              Lock
+            </title>
+            <desc>
+              A locked padlock
+            </desc>
+            <path
+              d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+              fillRule="evenodd"
+            />
+          </svg>
+           
+          ) 
+          or
+          <strong>
+             
+            https://
+             
+          </strong>
+          means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites. 
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+`;

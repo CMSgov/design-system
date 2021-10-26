@@ -1,0 +1,78 @@
+@import '../settings/index.scss';
+
+$autocomplete-space: $spacer-1;
+
+$autocomplete-list-border-width: 1px;
+$autocomplete-list-border-style: solid;
+$autocomplete-list-border-color: $color-gray-lighter;
+$autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-border-style
+  $autocomplete-list-border-color;
+
+.ds-c-autocomplete {
+  max-width: $input-max-width;
+  position: relative;
+  // Undoing the clearfix class on the div containing the label element
+  .ds-u-clearfix {
+    &::before {
+      content: none;
+      display: block;
+    }
+    &::after {
+      clear: none;
+      content: none;
+      display: block;
+    }
+  }
+  @if $ds-include-focus-styles {
+    input:focus {
+      @include focus-styles-position;
+    }
+  }
+}
+
+.ds-c-autocomplete__label {
+  margin: 0;
+  padding: $autocomplete-space;
+}
+
+.ds-c-autocomplete__list {
+  background-color: $color-white;
+  border: $autocomplete-list-border;
+  box-sizing: border-box;
+  max-height: ($base-font-size + $spacer-2) * 10;
+  overflow-y: auto;
+  padding: $autocomplete-space;
+  position: absolute;
+  width: 100%;
+  z-index: $z-dialog;
+}
+
+.ds-c-autocomplete__list-item {
+  color: $color-primary;
+  padding: $spacer-1;
+}
+
+.ds-c-autocomplete__list-item--active {
+  background-color: $color-primary-alt-darkest;
+  color: $color-white;
+}
+
+.ds-c-autocomplete__list-item--message {
+  color: $color-muted;
+  padding: $spacer-1;
+}
+
+// Need a custom class so the bottom error message does not conflict with the clear search button
+.ds-c-autocomplete__error-message {
+  float: left;
+}
+
+// Need a custom class for bottom error message to make space for the clear search button
+.ds-c-autocomplete__error-message--clear-btn {
+  width: calc(100% - 110px);
+}
+
+.ds-c-autocomplete__clear-btn {
+  float: right;
+  margin-right: 0;
+}

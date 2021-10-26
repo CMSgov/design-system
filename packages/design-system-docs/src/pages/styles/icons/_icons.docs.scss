@@ -1,0 +1,57 @@
+/*
+Icons
+
+Iconography should be used sparingly and only with support of labels. We use a subset of FontAwesome icons, with one or two bespoke icons.
+
+Please refer to [USWDS' documentation](https://designsystem.digital.gov/components/icons/) for more detail.
+
+Style guide: styles.icons
+*/
+
+/*
+Status icons
+
+@hide-markup
+
+These icons are used primarily as part of the Alert Box component, though the Checkmark can sometimes be found in other places, without the background.
+
+Markup: status-icons.example.html
+
+Style guide: styles.icons.alert
+*/
+
+/*
+Checkbox and radio icons
+
+@hide-markup
+
+These checkmark icons are drawn with SCSS/CSS and used for both checkbox and radio buttons. The reasoning behind this is background images are not displayed in high contrast mode on certain systems and browsers so switching to draw the icons with SCSS/CSS ensures that the icons are always visibile and support as many users as possible.
+
+Markup: checkbox-radio-icons.example.html
+
+Style guide: styles.icons.checkbox
+*/
+
+/*
+Interaction icons
+
+@hide-markup
+
+These icons are used primarily for interaction with the user interface.
+
+Markup: interaction-icons.example.html
+
+Style guide: styles.icons.interaction
+*/
+
+/*
+Supplemental icons
+
+@hide-markup
+
+These icons are used to convey more information about a given block of text or interaction. They should be used sparingly.
+
+Markup: supplemental-icons.example.html
+
+Style guide: styles.icons.supplemental
+*/

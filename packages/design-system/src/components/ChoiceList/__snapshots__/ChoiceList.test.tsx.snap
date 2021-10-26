@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
+<ChoiceList
+  choices={
+    Array [
+      Object {
+        "label": "Choice 1",
+        "value": "1",
+      },
+      Object {
+        "label": "Choice 2",
+        "value": "2",
+      },
+    ]
+  }
+  label="Foo"
+  name="spec-field"
+  type="radio"
+>
+  <FormControl
+    component="fieldset"
+    label="Foo"
+    labelComponent="legend"
+    render={[Function]}
+  >
+    <fieldset
+      className="ds-c-fieldset"
+    >
+      <FormLabel
+        component="legend"
+        errorId="field_1-error"
+        id="field_1-label"
+      >
+        <legend
+          className="ds-c-label"
+          id="field_1-label"
+        >
+          <span
+            className=""
+          >
+            Foo
+          </span>
+        </legend>
+      </FormLabel>
+      <Choice
+        inputClassName=""
+        inputRef={[Function]}
+        key="1"
+        label="Choice 1"
+        name="spec-field"
+        type="radio"
+        value="1"
+      >
+        <div
+          aria-atomic={null}
+          aria-live={null}
+          aria-relevant={null}
+        >
+          <input
+            className="ds-c-choice"
+            id="radio_spec-field_2"
+            name="spec-field"
+            type="radio"
+            value="1"
+          />
+          <FormLabel
+            component="label"
+            fieldId="radio_spec-field_2"
+          >
+            <label
+              className="ds-c-label"
+              htmlFor="radio_spec-field_2"
+            >
+              <span
+                className=""
+              >
+                Choice 1
+              </span>
+            </label>
+          </FormLabel>
+        </div>
+      </Choice>
+      <Choice
+        inputClassName=""
+        inputRef={[Function]}
+        key="2"
+        label="Choice 2"
+        name="spec-field"
+        type="radio"
+        value="2"
+      >
+        <div
+          aria-atomic={null}
+          aria-live={null}
+          aria-relevant={null}
+        >
+          <input
+            className="ds-c-choice"
+            id="radio_spec-field_3"
+            name="spec-field"
+            type="radio"
+            value="2"
+          />
+          <FormLabel
+            component="label"
+            fieldId="radio_spec-field_3"
+          >
+            <label
+              className="ds-c-label"
+              htmlFor="radio_spec-field_3"
+            >
+              <span
+                className=""
+              >
+                Choice 2
+              </span>
+            </label>
+          </FormLabel>
+        </div>
+      </Choice>
+    </fieldset>
+  </FormControl>
+</ChoiceList>
+`;

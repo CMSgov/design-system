@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+        <title>Example: components.badge.react</title>
+        <link rel="stylesheet" href="/healthcare/example.css" />
+        
+      
+</head>
+<body class="ds-base">
+  
+        <div id="js-example"></div>
+        <script type="text/javascript" src="/healthcare/example.js"></script>
+        <script type="text/javascript">!function(e){var t={};function r(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));return n},r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,"a",t),t},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},r.p="",r(r.s=5)}([function(e,t){e.exports=React},function(e,t,r){e.exports=r(6)()},function(e,t){e.exports=ReactDOM},function(e,t,r){var n;
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/!function(){"use strict";var r={}.hasOwnProperty;function o(){for(var e=[],t=0;t<arguments.length;t++){var n=arguments[t];if(n){var a=typeof n;if("string"===a||"number"===a)e.push(n);else if(Array.isArray(n)&&n.length){var i=o.apply(null,n);i&&e.push(i)}else if("object"===a)for(var c in n)r.call(n,c)&&n[c]&&e.push(c)}}return e.join(" ")}e.exports?(o.default=o,e.exports=o):void 0===(n=function(){return o}.apply(t,[]))||(e.exports=n)}()},,function(e,t,r){r(8),e.exports=r(9)},function(e,t,r){"use strict";var n=r(7);function o(){}function a(){}a.resetWarningCache=o,e.exports=function(){function e(e,t,r,o,a,i){if(i!==n){var c=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw c.name="Invariant Violation",c}}function t(){return e}e.isRequired=e;var r={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:a,resetWarningCache:o};return r.PropTypes=r,r}},function(e,t,r){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,r){"use strict";r.r(t);var n,o={ERROR_PLACEMENT_DEFAULT:"top",ALERT_SENDS_ANALYTICS:!1,DIALOG_SENDS_ANALYTICS:!1,HELP_DRAWER_SENDS_ANALYTICS:!1};n="bottom",o.ERROR_PLACEMENT_DEFAULT=n},function(e,t,r){"use strict";r.r(t);var n=r(1),o=r.n(n),a=r(0),i=r.n(a),c=r(3),u=r.n(c);function s(){return(s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e}).apply(this,arguments)}function l(e,t){if(null==e)return{};var r,n,o=function(e,t){if(null==e)return{};var r,n,o={},a=Object.keys(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||(o[r]=e[r]);return o}(e,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);for(n=0;n<a.length;n++)r=a[n],t.indexOf(r)>=0||Object.prototype.propertyIsEnumerable.call(e,r)&&(o[r]=e[r])}return o}var p=function(e){var t=e.className,r=void 0===t?"":t,n=e.children,o=e.size,a=e.variation,c=l(e,["className","children","size","variation"]),p=a&&"ds-c-badge--".concat(a),f=u()("ds-c-badge",p,{big:"ds-c-badge--big"}[o],r);return i.a.createElement("span",s({className:f},c),n)};p.propTypes={className:o.a.string,children:o.a.oneOfType([o.a.string,o.a.node]).isRequired,size:o.a.oneOf(["big"]),variation:o.a.oneOf(["info","success","warn","alert"])};var f=p,y=r(2);r.n(y).a.render(i.a.createElement(i.a.Fragment,null,i.a.createElement(f,null,"Default badge"),i.a.createElement(f,{variation:"info"},"Badge with `variation` prop"),i.a.createElement(f,{size:"big"},"Badge with `size` prop")),document.getElementById("js-example"))}]);</script>
+      
+</body>
+</html>

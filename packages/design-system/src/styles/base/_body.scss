@@ -1,0 +1,20 @@
+/* stylelint-disable selector-class-pattern */
+@import '../settings/index.scss';
+
+%ds-base {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+.ds-base {
+  @extend %ds-base;
+  color: $color-base;
+}
+
+.ds-base--inverse {
+  @extend %ds-base;
+  background-color: $color-background-inverse;
+  color: $color-base-inverse;
+}
+/* stylelint-enable */

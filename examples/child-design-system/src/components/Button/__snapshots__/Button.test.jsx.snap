@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders as core button with new variation class 1`] = `
+<Button
+  component="button"
+  type="button"
+>
+  Foo
+</Button>
+`;

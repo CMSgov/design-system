@@ -1,0 +1,23 @@
+/**
+ * This is the main entry file for a child design system's SCSS.
+ * It should define overridden Sass variables (see theming), import core CMS design system styles,
+ * and include all additional styles.
+ *
+ * The CMSDS build scripts rely on this file's location (`src/styles/index.scss`) to generate
+ * scss (`dist/scss/`) and css (`dist/css/`) dist files.
+ */
+
+// Variables, mixins, and CMSDS overrides
+@import 'settings/index';
+
+// Core CMSDS styles
+@import '@cmsgov/design-system/dist/scss/index';
+
+// Base: Namespaced selectors for HTML elements (i.e. ds-base, ds-h1, ds-text)
+@import 'base/index';
+
+// Components: Additional Child DS component styles
+@import 'components/index';
+
+// Utilities: Additional Child DS utilities
+@import 'utilities/index';

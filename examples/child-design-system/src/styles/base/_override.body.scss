@@ -1,0 +1,13 @@
+%ds-base {
+  font-family: $font-lato;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+.ds-base {
+  @extend %ds-base;
+}
+
+.ds-base--inverse {
+  @extend %ds-base;
+}

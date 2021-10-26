@@ -1,0 +1,10 @@
+@mixin inline-icon {
+  fill: currentColor;
+  height: 1em;
+  margin-bottom: -0.1em; // apply negative margin so icon doesn't affect height
+  margin-top: -0.1em;
+  position: relative;
+  top: -0.1em;
+  vertical-align: middle;
+  width: 1em;
+}

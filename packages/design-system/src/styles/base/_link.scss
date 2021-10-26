@@ -1,0 +1,130 @@
+/* stylelint-disable selector-class-pattern */
+@import '../settings/index.scss'; 
+
+// Links
+// Default link
+$link-color: $color-primary !default;
+$link-visited-color: $color-visited !default;
+$link-hover-color: $color-primary-darker !default;
+$link-active-color: $color-primary-darkest !default;
+
+// Inverse link
+$link-inverse-color: $color-base-inverse !default;
+$link-inverse-visited-color: $color-muted-inverse !default;
+$link-inverse-hover-color: $color-muted-inverse !default;
+$link-inverse-active-color: $color-muted-inverse !default;
+
+// Link underline
+$link-underline-height: 1px !default;
+$link-underline-height-hover: 1px !default;
+$link-underline-offset: auto !default;
+
+%link {
+  color: $link-color;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $link-color;
+  text-decoration-thickness: $link-underline-height;
+  text-underline-offset: $link-underline-offset;
+
+  &:visited {
+    color: $link-visited-color;
+    text-decoration-color: $link-visited-color;
+  }
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration-color: $link-hover-color;
+    text-decoration-thickness: $link-underline-height-hover;
+  }
+
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-styles;
+    }
+  } @else {
+    &:focus {
+      color: $link-hover-color;
+      text-decoration-color: $link-hover-color;
+    }
+  }
+
+  &:active {
+    color: $link-active-color;
+    outline: 0 none;
+    text-decoration-color: $link-active-color;
+  }
+}
+
+%link-inverse {
+  color: $link-inverse-color;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $link-inverse-color;
+  text-decoration-thickness: $link-underline-height;
+  text-underline-offset: $link-underline-offset;
+
+  &:visited {
+    color: $link-inverse-visited-color;
+    text-decoration-color: $link-inverse-visited-color;
+  }
+
+  &:hover {
+    color: $link-inverse-hover-color;
+    text-decoration-color: $link-inverse-hover-color;
+    text-decoration-thickness: $link-underline-height-hover;
+  }
+
+  /* stylelint-disable selector-max-specificity */
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-styles;
+    }
+  } @else {
+    &:focus {
+      color: $link-inverse-hover-color;
+      text-decoration-color: $link-inverse-hover-color;
+    }
+  }
+  /* stylelint-enable selector-max-specificity */
+
+  &:active {
+    color: $link-inverse-active-color;
+    outline: 0 none;
+  }
+}
+
+// Rename to ds-link
+.ds-c-link {
+  @extend %link;
+}
+
+.ds-c-link--inverse {
+  @extend %link-inverse;
+}
+
+@if $ds-include-base-html-rulesets {
+  // <a> is the only base HTML element in the design system that
+  // has a style declaration. In all other cases, styles are applied using a
+  // namespaced class name. This selector isn't scoped under .ds-base, since that
+  // would cause the selector's specificity to be higher than most other component
+  // selectors (i.e. ds-c-button), necessitating overly specific selectors anytime
+  // a developer wanted to change an anchor's color property.
+  a {
+    @extend %link;
+  }
+  // Change color of links that are descendants of '.ds-base--inverse'
+  //
+  // Fix TODO: Because this selector's specificity is higher than most components,
+  // changing inverse links will require unusually specific selectors
+  //
+  // Specifically exclude '.ds-c-button' because this is most likely case where
+  // a inverse link element will have other styles applied
+  // Also exclude '.ds-c-tooltip__trigger-link' as we need to set
+  // text decoration styles for the tooltip trigger links
+  .ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
+    @extend %link-inverse;
+  }
+}

@@ -1,0 +1,88 @@
+@import '../settings/index.scss';
+
+$accordion-header-bg-color: $color-gray-lightest;
+$accordion-header-bg-hover-color: $color-gray-lighter;
+$accordion-border-color: $color-gray-lightest;
+$accordion-header-font-family: $font-sans;
+
+.ds-c-accordion {
+  color: $color-base;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.ds-c-accordion__heading {
+  font-size: $base-font-size;
+  //   line-height: 0.9;
+  margin: 0;
+}
+
+.ds-c-accordion__heading:not(:first-child) {
+  margin-top: $spacer-1;
+}
+
+.ds-c-accordion__button {
+  background-color: $accordion-header-bg-color;
+  background-image: url('#{$image-path}/remove.svg'), linear-gradient(transparent, transparent);
+  background-position: right 1.25rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: $color-base;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $accordion-header-font-family;
+  font-size: $base-font-size;
+  font-weight: $font-bold;
+  //   line-height: 0.9;
+  margin: 0;
+  padding: $spacer-2 $spacer-6 $spacer-2 $spacer-3;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+  &:hover {
+    background-color: $accordion-header-bg-hover-color;
+  }
+  @if $ds-include-focus-styles {
+    &:focus {
+      @include focus-styles;
+    }
+  }
+}
+
+.ds-c-accordion__button[aria-expanded='false'] {
+  background-image: url('#{$image-path}/add.svg'), linear-gradient(transparent, transparent);
+  background-repeat: no-repeat;
+}
+
+.ds-c-accordion__content {
+  background-color: $color-white;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  margin-top: 0;
+  max-height: 16rem;
+  overflow: auto;
+  overflow-y: auto;
+  padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
+
+  // Not sure why this first-child last-child is not working
+  :first-child {
+    margin-top: 0;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ds-c-accordion--bordered {
+  .ds-c-accordion__content {
+    border: 4px solid $accordion-border-color;
+    border-top: 0;
+    padding: $spacer-2 $spacer-2;
+  }
+}

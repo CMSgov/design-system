@@ -1,0 +1,71 @@
+@import '../settings/index.scss';
+
+.ds-c-field {
+  appearance: none;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  box-sizing: border-box; // ensure padding doesn't affect width
+  color: $color-base;
+  display: block;
+  margin: $spacer-half 0;
+  max-width: $input-max-width;
+  outline: none;
+  padding: $input-padding;
+  width: 100%;
+
+  // To stay consistent across browsers of not applying a style for :invalid pseudo-class,
+  // disable the red "glow" of [Gecko default](https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid#gecko_defaults)
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: $color-gray-lighter;
+    border-color: $color-gray-light;
+  }
+
+  &:focus {
+    @if $ds-include-focus-styles {
+      @include focus-styles;
+    } @else {
+      box-shadow: 0 0 3px $color-focus, 0 0 7px $color-focus;
+    }
+  }
+}
+
+.ds-c-field--small {
+  max-width: $input-small-width;
+}
+
+.ds-c-field--medium {
+  max-width: $input-medium-width;
+}
+
+.ds-c-field,
+.ds-c-field-mask {
+  font-family: $font-sans;
+  font-size: $base-font-size;
+  line-height: $input-line-height;
+}
+
+/*
+Inverse theme
+*/
+
+.ds-c-field--inverse {
+  border-color: $input-border-color-inverse;
+}
+
+// State modifiers and message
+// ==============================
+.ds-c-field--error {
+  border: 3px solid $color-error;
+
+  &.ds-c-field--inverse {
+    border: 3px solid $color-error-light;
+  }
+}
+
+.ds-c-field--success {
+  border: 3px solid $color-success-light;
+}

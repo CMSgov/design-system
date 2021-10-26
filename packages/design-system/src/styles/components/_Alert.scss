@@ -1,0 +1,117 @@
+@import '../settings/index.scss';
+
+$alert-padding: $spacer-2;
+$alert-bar-size: $spacer-1;
+$alert-icon-size: $spacer-5;
+
+// Links on darker backgrounds that aren't quite dark as inverse
+%link-darker {
+  color: $color-primary-darker;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:visited {
+    color: $color-visited;
+  }
+
+  &:hover {
+    color: $color-primary-darkest;
+  }
+
+  @if $ds-include-focus-styles {
+    &:focus,
+    &:focus:visited {
+      @include focus-styles;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darkest;
+    }
+  }
+
+  @if $ds-include-focus-styles {
+    &:active {
+      color: $color-primary-darkest;
+      outline: 0 none;
+    }
+  } @else {
+    &:focus {
+      color: $color-primary-darkest;
+    }
+  }
+}
+
+.ds-c-alert {
+  background-color: $color-primary-alt-lightest;
+  background-image: url('#{$image-path}/information.svg');
+  background-position: $alert-padding $alert-padding;
+  background-repeat: no-repeat;
+  background-size: $alert-icon-size;
+  border-left: $alert-bar-size solid $color-primary-alt;
+  box-sizing: border-box;
+  color: $color-base;
+  min-height: $alert-icon-size + $spacer-2;
+  padding: $alert-padding;
+  position: relative;
+
+  &.ds-c-alert--hide-icon {
+    background-image: none;
+  }
+
+  @if $ds-include-base-html-rulesets {
+    a {
+      @extend %link-darker;
+    }
+  }
+  .ds-c-link {
+    @extend %link-darker;
+  }
+
+  ul {
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.ds-c-alert__body {
+  padding-left: $alert-icon-size + $alert-bar-size;
+}
+
+.ds-c-alert--hide-icon .ds-c-alert__body {
+  padding-left: 0;
+}
+
+.ds-c-alert__heading {
+  font-size: $font-size-lg;
+  font-weight: $font-bold;
+  margin-bottom: $spacer-half;
+  margin-top: 0;
+}
+
+.ds-c-alert__text {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.ds-c-alert--error {
+  background-color: $color-error-lightest;
+  background-image: url('#{$image-path}/error.svg');
+  border-color: $color-error;
+}
+
+.ds-c-alert--warn {
+  background-color: $color-warn-lightest;
+  background-image: url('#{$image-path}/warning.svg');
+  border-color: $color-warn;
+}
+
+.ds-c-alert--success {
+  background-color: $color-success-lightest;
+  background-image: url('#{$image-path}/success-fill.svg');
+  border-color: $color-success;
+}

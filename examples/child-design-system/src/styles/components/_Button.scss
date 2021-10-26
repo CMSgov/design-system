@@ -1,0 +1,42 @@
+@import '../settings/index';
+
+// Custom button variation
+.ds-c-button--custom,
+.ds-c-button--custom:visited {
+  background-color: $color-custom;
+  border-color: transparent;
+  color: $color-white;
+
+  &:disabled,
+  &.ds-c-button--disabled {
+    background-color: $color-custom-lighter;
+    border-color: transparent;
+    color: $color-custom-dark;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:active,
+  &.ds-c-button--hover,
+  &.ds-c-button--active {
+    border-color: transparent;
+    color: $color-white;
+  }
+
+  &:hover,
+  &.ds-c-button--hover {
+    background-color: $color-custom-dark;
+  }
+
+  &:focus,
+  &.ds-c-button--focus {
+    background-color: $color-custom;
+    border-color: transparent;
+    color: $color-white;
+  }
+
+  &:active,
+  &.ds-c-button--active {
+    background-color: $color-custom-darker;
+  }
+}

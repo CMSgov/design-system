@@ -1,0 +1,16 @@
+// Custom link styling
+%link {
+  color: $color-green;
+
+  &:visited {
+    color: $color-green-darker;
+  }
+
+  &:hover {
+    color: $color-green-dark;
+  }
+
+  &:active {
+    color: $color-green-darkest;
+  }
+}

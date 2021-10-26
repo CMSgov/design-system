@@ -1,0 +1,97 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+// To Do: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
+
+.ds-u-font-size--h5,
+.ds-u-font-size--sm,
+.ds-u-font-size--small {
+  font-size: $font-size-sm !important;
+}
+
+.ds-u-font-size--h5,
+.ds-u-font-size--base,
+.ds-u-font-size--md {
+  font-size: $base-font-size !important;
+}
+
+.ds-u-font-size--h4,
+.ds-u-font-size--lg,
+.ds-u-font-size--lead {
+  font-size: $font-size-lg !important;
+}
+
+.ds-u-font-size--h3,
+.ds-u-font-size--xl {
+  font-size: $font-size-xl !important;
+}
+
+.ds-u-font-size--h2,
+.ds-u-font-size--2xl {
+  font-size: $font-size-2xl !important;
+}
+
+.ds-u-font-size--h1,
+.ds-u-font-size--3xl {
+  font-size: $font-size-3xl !important;
+}
+
+.ds-u-font-size--title,
+.ds-u-font-size--4xl {
+  font-size: $font-size-4xl !important;
+}
+
+.ds-u-font-size--display,
+.ds-u-font-size--5xl {
+  font-size: $font-size-5xl !important;
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-font-size--small,
+    .ds-u-#{$breakpoint}-font-size--sm {
+      font-size: $font-size-sm !important;
+    }
+    .ds-u-#{$breakpoint}-font-size--md,
+    .ds-u-#{$breakpoint}-font-size--base {
+      font-size: $base-font-size !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--lg,
+    .ds-u-#{$breakpoint}-font-size--lead {
+      font-size: $font-size-lg !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--display,
+    .ds-u-#{$breakpoint}-font-size--5xl {
+      font-size: $font-size-5xl !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--title,
+    .ds-u-#{$breakpoint}-font-size--4xl {
+      font-size: $font-size-4xl !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h1,
+    .ds-u-#{$breakpoint}-font-size--3xl {
+      font-size: $font-size-3xl !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h2,
+    .ds-u-#{$breakpoint}-font-size--2xl {
+      font-size: $font-size-2xl !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h3,
+    .ds-u-#{$breakpoint}-font-size--xl {
+      font-size: $font-size-xl !important;
+    }
+
+    .ds-u-#{$breakpoint}-font-size--h4,
+    .ds-u-#{$breakpoint}-font-size--lg {
+      font-size: $font-size-lg !important;
+    }
+  }
+}

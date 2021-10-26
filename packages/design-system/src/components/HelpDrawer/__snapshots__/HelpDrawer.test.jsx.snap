@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpDrawer renders a snapshot 1`] = `
+<div
+  className="ds-c-help-drawer"
+>
+  <div
+    className="ds-c-help-drawer__header"
+  >
+    <div
+      className="ds-c-help-drawer__header-container"
+    >
+      <h3
+        className="ds-c-help-drawer__header-heading"
+        tabIndex="0"
+      >
+        HelpDrawer title
+      </h3>
+      <button
+        aria-label="Close help drawer"
+        className="ds-c-button ds-c-button--small ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+  <div
+    className="ds-c-help-drawer__body"
+  >
+    <div
+      className="ds-c-help-drawer__content"
+    >
+      <p>
+        content
+      </p>
+    </div>
+    <div
+      className="ds-c-help-drawer__footer"
+    >
+      <h4
+        className="ds-c-help-drawer__footer-title"
+      >
+        Footer title
+      </h4>
+      <div
+        className="ds-c-help-drawer__footer-body"
+      >
+        <div>
+          <p>
+            Some footer content
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

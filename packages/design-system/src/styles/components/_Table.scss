@@ -1,0 +1,179 @@
+@import '../settings/index.scss';
+
+$table-border-color: $color-black !default;
+$table-header-background-color: $color-gray-lightest !default;
+$table-striped-background-color: $color-gray-lightest !default;
+$table-striped-header-background-color: $color-gray-lightest !default;
+$table-padding: $spacer-2 !default;
+$table-compact-padding: $spacer-half $spacer-2 !default;
+
+.ds-c-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  text-align: left;
+
+  th,
+  thead td {
+    background-color: $table-header-background-color;
+  }
+
+  tbody th {
+    font-weight: $font-normal;
+  }
+
+  th,
+  td {
+    border: 1px solid $table-border-color;
+    padding: $table-padding;
+  }
+}
+
+.ds-c-table--borderless {
+  thead {
+    th,
+    tr {
+      background-color: transparent;
+    }
+
+    th {
+      border-top: 0;
+    }
+  }
+
+  th,
+  td {
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.ds-c-table--compact,
+.ds-c-table--dense {
+  th,
+  td {
+    padding: $table-compact-padding;
+  }
+}
+
+.ds-c-table--striped {
+  thead {
+    th,
+    tr {
+      background-color: $table-striped-header-background-color;
+    }
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $table-striped-background-color;
+    }
+
+    tr:nth-child(odd)::before {
+      background-color: transparent;
+    }
+  }
+}
+
+.ds-c-table__wrapper {
+  overflow-x: auto;
+}
+
+.ds-c-table__scroll-alert {
+  font-weight: $font-normal;
+  margin: $spacer-1 0;
+}
+
+.ds-c-table__caption {
+  font-weight: $font-bold;
+  margin-bottom: $spacer-1;
+  text-align: left;
+}
+
+.ds-c-table__cell--align-center {
+  text-align: center;
+}
+
+.ds-c-table__cell--align-right {
+  text-align: right;
+}
+
+.ds-c-table__cell--align-left {
+  text-align: left;
+}
+
+@mixin stacked-table-styles {
+  thead {
+    display: none;
+  }
+
+  th,
+  td {
+    border-bottom-width: 0;
+    display: block;
+  }
+
+  // Style dividers between different table rows
+  tr {
+    // Every row has a bottom border
+    border-bottom: $spacer-half solid $table-border-color;
+    border-top: 0;
+    display: block;
+
+    // Remove the initial th/td border-top to fix the thicker top border on <tr> 2 and more
+    th:first-child,
+    td:first-child {
+      border-top: 0;
+    }
+
+    // The first row has a top border
+    &:first-child {
+      th:first-child,
+      td:first-child {
+        border-top: $spacer-half solid $table-border-color;
+      }
+    }
+  }
+
+  // stylelint-disable selector-no-qualifying-type
+  th[data-title],
+  td[data-title] {
+    // Add column heading via psuedo element
+    &::before {
+      content: attr(data-title);
+      display: block;
+      font-weight: bold;
+      padding-bottom: $spacer-half;
+    }
+  }
+  // stylelint-enable selector-no-qualifying-type
+
+  // Remove striped styling on stacked table
+  &.ds-c-table--striped tbody {
+    tr:nth-child(even) {
+      background-color: transparent;
+    }
+  }
+}
+
+.ds-c-table--stacked {
+  @include stacked-table-styles;
+}
+
+.ds-c-sm-table--stacked {
+  @media (max-width: $width-sm) {
+    @include stacked-table-styles;
+  }
+}
+
+.ds-c-md-table--stacked {
+  @media (max-width: $width-md) {
+    @include stacked-table-styles;
+  }
+}
+
+.ds-c-lg-table--stacked {
+  @media (max-width: $width-lg) {
+    @include stacked-table-styles;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "react-app-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@cmsgov/design-system": "^2.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^3.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "NODE_ENV=production webpack -p --progress --display-used-exports && gulp"
+  }
+}

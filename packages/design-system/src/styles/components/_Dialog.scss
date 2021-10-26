@@ -1,0 +1,77 @@
+@import '../settings/index.scss';
+
+$dialog-spacer: $spacer-4;
+
+.ds-c-dialog {
+  background-color: $color-background-dialog;
+  box-shadow: $shadow-base;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: $base-font-size;
+  max-width: $measure-base;
+  padding: $dialog-spacer;
+  text-align: left;
+  vertical-align: middle;
+  width: 95%; // provide space for the background layer to peek through
+}
+
+.ds-c-dialog--narrow {
+  max-width: $measure-narrow;
+}
+
+.ds-c-dialog--wide {
+  max-width: $measure-wide;
+}
+
+.ds-c-dialog--full {
+  max-width: $site-max-width;
+}
+
+.ds-c-dialog__header {
+  align-items: flex-start;
+  display: flex;
+  // Provide some spacing when the header only includes the close button
+  padding-bottom: $spacer-1;
+}
+
+.ds-c-dialog__actions {
+  margin-top: $spacer-3;
+}
+
+.ds-c-dialog__close {
+  background-image: url('#{$image-path}/close--primary.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  margin-left: auto;
+  padding: 0 0 0 (12px + $spacer-1);
+
+  &:active,
+  &:hover {
+    background-image: url('#{$image-path}/close--primary-darker.svg');
+  }
+
+  @if $ds-include-focus-styles {
+    &:focus {
+      background-image: url('#{$image-path}/close.svg');
+    }
+  } @else {
+    &:focus {
+      background-image: url('#{$image-path}/close--primary-darker.svg');
+    }
+  }
+}
+
+.ds-c-dialog-wrap {
+  background-color: $color-background-dialog-mask;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: $spacer-6 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: $z-dialog;
+}

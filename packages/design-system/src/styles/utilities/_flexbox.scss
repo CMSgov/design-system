@@ -1,0 +1,127 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+$_flex-direction-values: (
+  row: row,
+  column: column,
+  row-reverse: row-reverse,
+  column-reverse: column-reverse,
+);
+
+@each $name in map-keys($_flex-direction-values) {
+  $value: map-get($_flex-direction-values, $name);
+  // Example: .ds-u-flex-direction--column
+  .ds-u-flex-direction--#{$name} {
+    // Example: flex-direction: column
+    flex-direction: $value !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_flex-direction-values) {
+      $value: map-get($_flex-direction-values, $name);
+      // Example: .ds-u-lg-flex-direction--column
+      .ds-u-#{$breakpoint}-flex-direction--#{$name} {
+        // Example: flex-direction: column
+        flex-direction: $value !important;
+      }
+    }
+  }
+}
+
+$_justify-content-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+
+@each $name in map-keys($_justify-content-values) {
+  $value: map-get($_justify-content-values, $name);
+  // Example: .ds-u-justify-content--start
+  .ds-u-justify-content--#{$name} {
+    // Example: justify-content: flex-start
+    justify-content: $value !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_justify-content-values) {
+      $value: map-get($_justify-content-values, $name);
+      // Example: .ds-u-lg-justify-content--start
+      .ds-u-#{$breakpoint}-justify-content--#{$name} {
+        // Example: justify-content: flex-start
+        justify-content: $value !important;
+      }
+    }
+  }
+}
+
+$_align-items-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+);
+
+@each $name in map-keys($_align-items-values) {
+  $value: map-get($_align-items-values, $name);
+  // Example: .ds-u-align-items--start
+  .ds-u-align-items--#{$name} {
+    // Example: align-items: flex-start
+    align-items: $value !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_align-items-values) {
+      $value: map-get($_align-items-values, $name);
+      // Example: .ds-u-lg-align-items--start
+      .ds-u-#{$breakpoint}-align-items--#{$name} {
+        // Example: align-items: flex-start
+        align-items: $value !important;
+      }
+    }
+  }
+}
+
+$_flex-wrap-values: (
+  nowrap: nowrap,
+  wrap: wrap,
+  reverse: wrap-reverse,
+);
+
+@each $name in map-keys($_flex-wrap-values) {
+  $value: map-get($_flex-wrap-values, $name);
+  // Example: .ds-u-flex-wrap--start
+  .ds-u-flex-wrap--#{$name} {
+    // Example: flex-wrap: flex-start
+    flex-wrap: $value !important;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  $viewport: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $viewport) {
+    @each $name in map-keys($_flex-wrap-values) {
+      $value: map-get($_flex-wrap-values, $name);
+      // Example: .ds-u-lg-flex-wrap--start
+      .ds-u-#{$breakpoint}-flex-wrap--#{$name} {
+        // Example: flex-wrap: flex-start
+        flex-wrap: $value !important;
+      }
+    }
+  }
+}

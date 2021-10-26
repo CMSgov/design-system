@@ -1,0 +1,14 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+.ds-u-text-decoration--underline {
+  text-decoration: underline !important;
+}
+
+.ds-u-text-decoration--line-through {
+  text-decoration: line-through !important;
+}
+
+.ds-u-text-decoration--none {
+  text-decoration: none !important;
+}

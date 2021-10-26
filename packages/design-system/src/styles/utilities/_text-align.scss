@@ -1,0 +1,69 @@
+/* stylelint-disable declaration-no-important */
+@import '../settings/index.scss';
+
+/*
+Text alignment
+
+Align text using the `text-align` utility.
+
+**Format**: `ds-u-text-align--[VALUE]`
+
+Markup:
+<div class="ds-u-text-align--center">
+  <code class="preview__label">ds-u-text-align--center</code>
+  Center
+</div>
+<div class="ds-u-text-align--left">
+  <code class="preview__label">ds-u-text-align--left</code>
+  Left
+</div>
+<div class="ds-u-text-align--right">
+  <code class="preview__label">ds-u-text-align--right</code>
+  Right
+</div>
+
+Style guide: utilities.text-align
+*/
+.ds-u-text-align--center {
+  text-align: center !important;
+}
+
+.ds-u-text-align--left {
+  text-align: left !important;
+}
+
+.ds-u-text-align--right {
+  text-align: right !important;
+}
+
+/*
+Responsive text alignment
+
+@responsive
+
+Use a [breakpoint prefix](/guidelines/responsive) to change the text alignment at specific breakpoints.
+
+Markup:
+<div class="ds-u-sm-text-align--center ds-u-md-text-align--left ds-u-lg-text-align--right">
+  {{lorem-s}}
+</div>
+
+Style guide: utilities.text-align.responsive
+*/
+@each $breakpoint in map-keys($breakpoints) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    .ds-u-#{$breakpoint}-text-align--center {
+      text-align: center !important;
+    }
+
+    .ds-u-#{$breakpoint}-text-align--left {
+      text-align: left !important;
+    }
+
+    .ds-u-#{$breakpoint}-text-align--right {
+      text-align: right !important;
+    }
+  }
+}
