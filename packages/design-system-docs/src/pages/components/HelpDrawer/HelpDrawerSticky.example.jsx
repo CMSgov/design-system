@@ -2,17 +2,17 @@ import { HelpDrawer, HelpDrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class HelpDrawerExample extends React.PureComponent {
+class HelpDrawerStickyExample extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      showHelp: false,
+      showStickyHelp: false,
     };
   }
 
-  toggleDrawer() {
-    this.setState({ showHelp: !this.state.showHelp });
+  toggleStickyDrawer() {
+    this.setState({ showStickyHelp: !this.state.showStickyHelp });
   }
 
   render() {
@@ -28,19 +28,21 @@ class HelpDrawerExample extends React.PureComponent {
         </p>
         <HelpDrawerToggle
           helpDrawerOpen={this.state.showHelp}
-          showDrawer={() => this.toggleDrawer()}
+          showDrawer={() => this.toggleStickyDrawer()}
         >
-          Toggle a help drawer.
+          Toggle a help drawer with sticky header and footer.
         </HelpDrawerToggle>
 
-        {this.state.showHelp && (
+        {this.state.showStickyHelp && (
           <HelpDrawer
+            isHeaderSticky
+            isFooterSticky
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
             heading="Help Drawer Heading"
-            onCloseClick={() => this.toggleDrawer()}
+            onCloseClick={() => this.toggleStickyDrawer()}
           >
-            <strong>An Explanation</strong>
+            <strong>A Sticky Explanation</strong>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -96,4 +98,4 @@ class HelpDrawerExample extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<HelpDrawerExample />, document.getElementById('js-example'));
+ReactDOM.render(<HelpDrawerStickyExample />, document.getElementById('js-example'));

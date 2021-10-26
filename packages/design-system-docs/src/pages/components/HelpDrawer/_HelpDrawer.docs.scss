@@ -29,6 +29,18 @@ Style guide: components.help-drawer.react-help-drawer
 */
 
 /*
+HelpDrawer layout alternatives
+
+A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
+- `isHeaderSticky`
+- `isFooterSticky`
+
+@react-example HelpDrawerSticky.example.jsx
+
+Style guide: components.help-drawer.react-help-drawer-sticky
+*/
+
+/*
 `<HelpDrawerToggle>`
 
 @react-props HelpDrawerToggle.jsx
