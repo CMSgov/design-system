@@ -33,6 +33,6 @@ describe('Modal Dialog component', () => {
 
     // TODO: implement `inert` to prevent main application node from containing focusable elements
     // Remove this temporarily disabled rule
-    await assertNoAxeViolations(null, 'aria-hidden-focus');
+    await assertNoAxeViolations(rootURL, 'aria-hidden-focus');
   });
 });

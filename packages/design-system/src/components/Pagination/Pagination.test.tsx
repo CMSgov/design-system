@@ -261,4 +261,20 @@ describe('Pagination', () => {
       expect(pages.contains('a')).toBe(false);
     });
   });
+
+  describe('isNavigationHidden', () => {
+    it('should hide previous when on first page', () => {
+      const wrapper = render({ currentPage: 1, isNavigationHidden: true }, true);
+      const firstChild = wrapper.find('.ds-c-pagination__nav').first();
+      expect(firstChild.type()).toEqual('span');
+      expect(firstChild.props().style).toHaveProperty('visibility', 'hidden');
+    });
+
+    it('should hide next when on last page', () => {
+      const wrapper = render({ currentPage: 3, isNavigationHidden: true }, true);
+      const lastChild = wrapper.find('.ds-c-pagination__nav').last();
+      expect(lastChild.type()).toEqual('span');
+      expect(lastChild.props().style).toHaveProperty('visibility', 'hidden');
+    });
+  });
 });
