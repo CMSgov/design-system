@@ -1,5 +1,4 @@
-import { ClearIcon } from '../ClearIcon';
-import { ClearIconAlternate } from './ClearIconAlternate';
+import { CloseIcon, CloseIconThin } from '../Icons';
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -76,7 +75,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
         >
           <span className="ds-c-filter-chip__label">{label}</span>
           <span className={iconContainerClassNames} aria-label={ariaClearLabel}>
-            {useAlternateIcon ? <ClearIconAlternate /> : <ClearIcon />}
+            {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
           </span>
         </button>
       </>
