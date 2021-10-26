@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { helpDrawerSendsAnalytics } from '../flags';
+import uniqueId from 'lodash/uniqueId';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
     this.eventHeadingText = '';
+    this.id = this.props.headingId || uniqueId('helpDrawer_');
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -87,7 +89,7 @@ export class HelpDrawer extends React.PureComponent {
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
       <div
-        aria-labelledby="panel-heading"
+        aria-labelledby={this.id}
         className={classNames(className, 'ds-c-help-drawer')}
         role="dialog"
       >
@@ -95,7 +97,7 @@ export class HelpDrawer extends React.PureComponent {
           <div className="ds-c-help-drawer__header">
             <Heading
               tabIndex="0"
-              id="panel-heading"
+              id={this.id}
               className="ds-c-help-drawer__header-heading"
               ref={(el) => (this.headingRef = el)}
             >
@@ -159,6 +161,10 @@ HelpDrawer.propTypes = {
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
+   * A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
+   */
+  headingId: PropTypes.string,
   /**
    * Heading type to override default `<h3>`
    */
