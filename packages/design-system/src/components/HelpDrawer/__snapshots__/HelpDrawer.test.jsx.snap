@@ -2,35 +2,34 @@
 
 exports[`HelpDrawer renders a snapshot 1`] = `
 <div
+  aria-labelledby="helpDrawer_2"
   className="ds-c-help-drawer"
+  role="dialog"
 >
   <div
-    className="ds-c-help-drawer__header"
+    className="ds-c-help-drawer__window"
   >
     <div
-      className="ds-c-help-drawer__header-container"
+      className="ds-c-help-drawer__header"
     >
       <h3
         className="ds-c-help-drawer__header-heading"
+        id="helpDrawer_2"
         tabIndex="0"
       >
         HelpDrawer title
       </h3>
       <button
         aria-label="Close help drawer"
-        className="ds-c-button ds-c-button--small ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
+        className="ds-c-button ds-c-button--small ds-c-help-drawer__close-button"
         onClick={[Function]}
         type="button"
       >
         Close
       </button>
     </div>
-  </div>
-  <div
-    className="ds-c-help-drawer__body"
-  >
     <div
-      className="ds-c-help-drawer__content"
+      className="ds-c-help-drawer__body"
     >
       <p>
         content
