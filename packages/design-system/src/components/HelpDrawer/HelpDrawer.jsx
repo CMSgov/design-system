@@ -13,7 +13,7 @@ export class HelpDrawer extends React.PureComponent {
     this.headingRef = null;
     this.eventHeadingText = '';
     this.id = this.props.headingId || uniqueId('helpDrawer_');
-    this.handleCloseButton = this.handleCloseButton.bind(this);
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -30,7 +30,7 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleEscapeKey.bind(this));
+    if (this.props.hasFocusTrap) document.addEventListener('keydown', this.handleEscapeKey);
 
     if (this.headingRef) this.headingRef.focus();
 
@@ -61,7 +61,7 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEscapeKey.bind(this));
+    document.removeEventListener('keydown', this.handleEscapeKey);
 
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
@@ -77,16 +77,12 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   handleEscapeKey(evt) {
-    if (evt.code === 'Escape') {
-      return this.props.onCloseClick();
-    }
-  }
-
-  handleCloseButton(e) {
-    this.props.onCloseClick();
-
-    if (this.props.hasFocusTrap) {
-      this.handleEscapeKey(e);
+    switch (evt.code) {
+      case 'Escape':
+        this.props.onCloseClick();
+        break;
+      default:
+        break;
     }
   }
 
@@ -102,6 +98,7 @@ export class HelpDrawer extends React.PureComponent {
       heading,
       isHeaderSticky,
       isFooterSticky,
+      onCloseClick,
       title,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
@@ -127,7 +124,7 @@ export class HelpDrawer extends React.PureComponent {
               aria-label={ariaLabel}
               className="ds-c-help-drawer__close-button"
               size="small"
-              onClick={this.handleCloseButton}
+              onClick={onCloseClick}
             >
               {closeButtonText}
             </Button>
@@ -147,7 +144,17 @@ export class HelpDrawer extends React.PureComponent {
       </div>
     );
 
-    return <>{hasFocusTrap ? <FocusTrap>{helpDrawerMarkup()}</FocusTrap> : helpDrawerMarkup()}</>;
+    return (
+      <>
+        {hasFocusTrap ? (
+          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+            {helpDrawerMarkup()}
+          </FocusTrap>
+        ) : (
+          helpDrawerMarkup()
+        )}
+      </>
+    );
   }
 }
 
