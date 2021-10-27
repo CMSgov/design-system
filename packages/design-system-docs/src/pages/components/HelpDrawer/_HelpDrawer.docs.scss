@@ -10,7 +10,7 @@ being on the page by default.
 On large screens it's fixed to the side of the screen, and on
 smaller screens it overlays the entire screen.
 
-Render the drawer below the toggle bottom that triggers it.
+Render the drawer below the toggle button that triggers it.
 This way the markup remains semantically sound and screen reader friendly.
 
 Markup: help-drawer.example.html
@@ -26,6 +26,18 @@ Style guide: components.help-drawer
 @react-props HelpDrawer.jsx
 
 Style guide: components.help-drawer.react-help-drawer
+*/
+
+/*
+HelpDrawer layout alternatives
+
+A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
+- `isHeaderSticky`
+- `isFooterSticky`
+
+@react-example HelpDrawerSticky.example.jsx
+
+Style guide: components.help-drawer.react-help-drawer-sticky
 */
 
 /*
