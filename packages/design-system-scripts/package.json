@@ -6,7 +6,11 @@
     "tag": "latest"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
-  "repository": "CMSgov/design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/design-system-scripts"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "bin": {
     "cmsds": "./cli.js"
