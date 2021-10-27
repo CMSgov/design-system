@@ -1,3 +1,4 @@
+/* eslint no-alert: 0 */
 import { HelpDrawer, HelpDrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -35,6 +36,7 @@ class HelpDrawerExample extends React.PureComponent {
 
         {this.state.showHelp && (
           <HelpDrawer
+            hasFocusTrap={false}
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
             heading="Help Drawer Heading"

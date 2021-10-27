@@ -1,4 +1,5 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import FocusTrap from 'focus-trap-react';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -12,6 +13,7 @@ export class HelpDrawer extends React.PureComponent {
     this.headingRef = null;
     this.eventHeadingText = '';
     this.id = this.props.headingId || uniqueId('helpDrawer_');
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -28,6 +30,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (this.props.hasFocusTrap) document.addEventListener('keydown', this.handleEscapeKey);
+
     if (this.headingRef) this.headingRef.focus();
 
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
@@ -57,6 +61,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEscapeKey);
+
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
       sendLinkEvent({
@@ -70,6 +76,16 @@ export class HelpDrawer extends React.PureComponent {
     }
   }
 
+  handleEscapeKey(evt) {
+    switch (evt.code) {
+      case 'Escape':
+        this.props.onCloseClick();
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     const {
       ariaLabel,
@@ -78,6 +94,7 @@ export class HelpDrawer extends React.PureComponent {
       children,
       footerBody,
       footerTitle,
+      hasFocusTrap,
       heading,
       isHeaderSticky,
       isFooterSticky,
@@ -87,7 +104,7 @@ export class HelpDrawer extends React.PureComponent {
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    return (
+    const helpDrawerMarkup = () => (
       <div
         aria-labelledby={this.id}
         className={classNames(className, 'ds-c-help-drawer')}
@@ -126,6 +143,18 @@ export class HelpDrawer extends React.PureComponent {
         </div>
       </div>
     );
+
+    return (
+      <>
+        {hasFocusTrap ? (
+          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+            {helpDrawerMarkup()}
+          </FocusTrap>
+        ) : (
+          helpDrawerMarkup()
+        )}
+      </>
+    );
   }
 }
 
@@ -157,6 +186,10 @@ HelpDrawer.propTypes = {
   className: PropTypes.string,
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
+  /**
+   * Enables focus trap functionality within HelpDrawer.
+   */
+  hasFocusTrap: PropTypes.bool,
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
