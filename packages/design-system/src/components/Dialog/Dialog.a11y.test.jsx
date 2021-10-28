@@ -6,23 +6,6 @@ import { getElementByClassName } from '@cmsgov/design-system-scripts/helpers/e2e
 const rootURL = `${ROOT_URL}/example/components.dialog.react/`;
 
 describe('Modal Dialog component', () => {
-  it('Should render', async () => {
-    await driver.get(rootURL);
-
-    const el = await getElementByClassName('ds-c-button');
-    expect(el).toBeTruthy();
-  });
-
-  it('Should open the modal dialog on click', async () => {
-    await driver.get(rootURL);
-
-    let el = await getElementByClassName('ds-c-button--primary');
-    el.click();
-
-    el = await getElementByClassName('ds-c-dialog');
-    expect(el).toBeTruthy();
-  });
-
   it('Should have no accessibility violations', async () => {
     await driver.get(rootURL);
 
