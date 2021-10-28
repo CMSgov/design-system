@@ -155,8 +155,8 @@ yargs
     },
   })
   .command({
-    command: 'test:e2e <directory>',
-    desc: 'Runs e2e tests in a directory.',
+    command: 'test:a11y <directory>',
+    desc: 'Runs a11y tests in a directory.',
     builder: (yargs) => {
       yargs
         .positional('directory', {
@@ -165,12 +165,13 @@ yargs
           demandOption: true,
         })
         .option('skipBuild', {
-          desc: 'Use this flag to skip rebuilding the documentation site before running e2e tests.',
+          desc:
+            'Use this flag to skip rebuilding the documentation site before running a11y tests.',
           type: 'boolean',
           default: false,
         })
         .option('headless', {
-          desc: 'Runs e2e tests with headless chrome browser testing.',
+          desc: 'Runs a11y tests with headless chrome browser testing.',
           type: 'boolean',
           default: true,
         })
@@ -183,13 +184,13 @@ yargs
     },
     handler: async (argv) => {
       const { run } = require('jest');
-      const e2eConfig = require('./jest/e2e.config.js');
+      const a11yConfig = require('./jest/a11y.config.js');
 
       process.env.NODE_ENV = 'test';
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
-      run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
+      run(['--config', JSON.stringify(a11yConfig(argv.directory))]);
     },
   })
   .command({
