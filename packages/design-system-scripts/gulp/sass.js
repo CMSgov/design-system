@@ -75,9 +75,10 @@ async function compileSourceSass(sourceDir, options, browserSync) {
 
   // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
   // A standard child DS will have `node_modules` at the root of the repo
-  const nodeModuleRelativePath = options.core
-    ? path.resolve(sourceDir, '../../node_modules')
-    : path.resolve(sourceDir, 'node_modules');
+  const nodeModuleRelativePath =
+    options.core || options.monorepo
+      ? path.resolve(sourceDir, '../../node_modules')
+      : path.resolve(sourceDir, 'node_modules');
   const includePaths = [src, nodeModuleRelativePath];
   await compileSass(src, dest, includePaths, browserSync);
 }
@@ -88,9 +89,14 @@ async function compileDocsSass(docsDir, options, browserSync) {
 
   // The core CMSDS repo hoists deps using yarn workspaces, deps in the root `node_module`
   // A standard child DS will not have `node_modules` in the docs dir, only at the root of the repo
-  const nodeModuleRelativePath = options.core
-    ? path.resolve(docsDir, '../../node_modules')
-    : path.resolve(docsDir, '../node_modules');
+  let nodeModuleRelativePath;
+  if (options.core) {
+    nodeModuleRelativePath = path.resolve(docsDir, '../../node_modules');
+  } else if (options.monorepo) {
+    nodeModuleRelativePath = path.resolve(docsDir, '../../../node_modules');
+  } else {
+    nodeModuleRelativePath = path.resolve(docsDir, '../node_modules');
+  }
   const includePaths = [src, nodeModuleRelativePath];
   await compileSass(src, dest, includePaths, browserSync);
 }

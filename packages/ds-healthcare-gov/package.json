@@ -6,7 +6,11 @@
     "access": "public"
   },
   "description": "A design system for HealthCare.gov products",
-  "repository": "https://github.com/CMSgov/hcgov-design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/ds-healthcare-gov"
+  },
   "scripts": {
     "build": "yarn cmsds build-docs --skipLatest",
     "start": "yarn cmsds start --skipLatest",
@@ -28,9 +32,9 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "^2.9.0-beta.1",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.5",
+    "@cmsgov/design-system": "^2.9.0",
+    "@types/react": "^17.0.10",
+    "@types/react-dom": "^17.0.10",
     "classnames": "^2.0.0",
     "i18next": "^14.0.1",
     "js-cookie": "^2.2.0",
@@ -41,8 +45,8 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
-    "@cmsgov/design-system-docs": "^2.9.0-beta.1",
-    "@cmsgov/design-system-scripts": "^2.9.0-beta.1",
+    "@cmsgov/design-system-docs": "^2.9.0",
+    "@cmsgov/design-system-scripts": "^2.9.0",
     "@cmsgov/eslint-config-design-system": "2.0.0",
     "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
@@ -52,8 +56,6 @@
     "gh-pages": "^3.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.2.0",
     "stylelint": "^13.3.2",
     "url-parse": "^1.2.0",
     "version-bump-prompt": "^6.1.0"
