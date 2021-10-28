@@ -26,13 +26,29 @@ export interface HelpDrawerProps {
   footerBody?: React.ReactNode;
   footerTitle?: string;
   /**
+   * Enables focus trap functionality within HelpDrawer.
+   */
+  hasFocusTrap: boolean;
+  /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
   heading?: React.ReactNode;
   /**
+   * A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
+   */
+  headingId: string;
+  /**
    * Heading type to override default `<h3>`
    */
   headingLevel?: HelpDrawerHeadingLevel;
+  /**
+   * Enables "sticky" position of HelpDrawer header element.
+   */
+  isHeaderSticky: boolean;
+  /**
+   * Enables "sticky" position of HelpDrawer footer element.
+   */
+  isFooterSticky: boolean;
   onCloseClick: (...args: any[]) => any;
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.

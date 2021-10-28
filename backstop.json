@@ -676,6 +676,24 @@
       "referenceUrl": "https://design.cms.gov/example/patterns.external-link.react/",
       "url": "http://localhost:3000/example/patterns.external-link.react/",
       "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - FilterChip - React",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip.react/",
+      "url": "http://localhost:3000/example/components.filterchip.react/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - FilterChip - Default",
+      "referenceUrl": "https://design.cms.gov/example/components.filterchip/",
+      "url": "http://localhost:3000/example/components.filterchip/",
+      "removeSelectors": ["#frame"]
+    },
+    {
+      "label": "CMSDS - Components - Tooltip - React",
+      "referenceUrl": "https://design.cms.gov/example/components.tooltip.tooltip/",
+      "url": "http://localhost:3000/example/components.tooltip.tooltip/",
+      "removeSelectors": ["#frame"]
     }
   ],
   "paths": {

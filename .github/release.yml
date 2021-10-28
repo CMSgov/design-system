@@ -1,0 +1,17 @@
+changelog:
+  categories:
+    - title: 🚨 Breaking changes
+      labels:
+        - "Release: Major"
+    - title: 🚀 Added and changed
+      labels:
+        - "Release: Minor"
+    - title: 🛠 Fixed
+      labels:
+        - "Release: Patch"
+    - title: 📦 Internal
+      labels:
+        - "Release: Internal"
+    - title: 🤖 Updated dependencies
+      labels:
+        - dependencies

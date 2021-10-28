@@ -1,15 +1,19 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
+import FocusTrap from 'focus-trap-react';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { helpDrawerSendsAnalytics } from '../flags';
+import uniqueId from 'lodash/uniqueId';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
     this.eventHeadingText = '';
+    this.id = this.props.headingId || uniqueId('helpDrawer_');
+    this.handleEscapeKey = this.handleEscapeKey.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -26,6 +30,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
+    if (this.props.hasFocusTrap) document.addEventListener('keydown', this.handleEscapeKey);
+
     if (this.headingRef) this.headingRef.focus();
 
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
@@ -55,6 +61,8 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEscapeKey);
+
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
       sendLinkEvent({
@@ -68,6 +76,16 @@ export class HelpDrawer extends React.PureComponent {
     }
   }
 
+  handleEscapeKey(evt) {
+    switch (evt.code) {
+      case 'Escape':
+        this.props.onCloseClick();
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
     const {
       ariaLabel,
@@ -76,49 +94,66 @@ export class HelpDrawer extends React.PureComponent {
       children,
       footerBody,
       footerTitle,
+      hasFocusTrap,
       heading,
+      isHeaderSticky,
+      isFooterSticky,
       onCloseClick,
       title,
     } = this.props;
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    return (
-      <div className={classNames(className, 'ds-c-help-drawer')}>
-        <div className="ds-c-help-drawer__header">
-          {/* The nested div below might seem redundant, but we need a
-           * separation between our sticky header, and the flex container
-           * so things display as expected when the body content overflows
-           */}
-          <div className="ds-c-help-drawer__header-container">
+    const helpDrawerMarkup = () => (
+      <div
+        aria-labelledby={this.id}
+        className={classNames(className, 'ds-c-help-drawer')}
+        role="dialog"
+      >
+        <div className="ds-c-help-drawer__window">
+          <div className="ds-c-help-drawer__header">
             <Heading
-              ref={(el) => (this.headingRef = el)}
               tabIndex="0"
+              id={this.id}
               className="ds-c-help-drawer__header-heading"
+              ref={(el) => (this.headingRef = el)}
             >
-              {
-                // TODO: make heading required after removing title
-                title || heading
-              }
+              {title || heading}
             </Heading>
             <Button
               aria-label={ariaLabel}
-              className="ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
+              className="ds-c-help-drawer__close-button"
               size="small"
               onClick={onCloseClick}
             >
               {closeButtonText}
             </Button>
           </div>
-        </div>
-        <div className="ds-c-help-drawer__body">
-          <div className="ds-c-help-drawer__content">{children}</div>
+          <div
+            className={classNames('ds-c-help-drawer__body', {
+              'ds-c-help-drawer--is-sticky': isHeaderSticky || isFooterSticky,
+            })}
+          >
+            {children}
+          </div>
           <div className="ds-c-help-drawer__footer">
             <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
             <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
           </div>
         </div>
       </div>
+    );
+
+    return (
+      <>
+        {hasFocusTrap ? (
+          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+            {helpDrawerMarkup()}
+          </FocusTrap>
+        ) : (
+          helpDrawerMarkup()
+        )}
+      </>
     );
   }
 }
@@ -152,13 +187,29 @@ HelpDrawer.propTypes = {
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
   /**
+   * Enables focus trap functionality within HelpDrawer.
+   */
+  hasFocusTrap: PropTypes.bool,
+  /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
+   * A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
+   */
+  headingId: PropTypes.string,
+  /**
    * Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
+  /**
+   * Enables "sticky" position of HelpDrawer header element.
+   */
+  isHeaderSticky: PropTypes.bool,
+  /**
+   * Enables "sticky" position of HelpDrawer footer element.
+   */
+  isFooterSticky: PropTypes.bool,
   onCloseClick: PropTypes.func.isRequired,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.

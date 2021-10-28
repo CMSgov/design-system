@@ -105,7 +105,7 @@ describe('Pagination', () => {
       const wrapper = render({ currentPage: 2 });
       const firstChild = wrapper.childAt(0);
       expect(firstChild.dive().type()).toEqual('a');
-      expect(firstChild.dive().text()).toEqual('Previous');
+      expect(firstChild.dive().text()).toEqual('<ArrowIcon />Previous');
     });
 
     it('should hide "previous" navigation slot if current page is first page of set', () => {
@@ -118,7 +118,7 @@ describe('Pagination', () => {
       const wrapper = render({ currentPage: 2 });
       const lastChild = wrapper.children().last();
       expect(lastChild.dive().type()).toEqual('a');
-      expect(lastChild.dive().text()).toEqual('Next');
+      expect(lastChild.dive().text()).toEqual('Next<ArrowIcon />');
     });
 
     it('should hide "next" navigation slot if current page is last page of set', () => {
@@ -259,6 +259,22 @@ describe('Pagination', () => {
 
       expect(pages.type()).toEqual('span');
       expect(pages.contains('a')).toBe(false);
+    });
+  });
+
+  describe('isNavigationHidden', () => {
+    it('should hide previous when on first page', () => {
+      const wrapper = render({ currentPage: 1, isNavigationHidden: true }, true);
+      const firstChild = wrapper.find('.ds-c-pagination__nav').first();
+      expect(firstChild.type()).toEqual('span');
+      expect(firstChild.props().style).toHaveProperty('visibility', 'hidden');
+    });
+
+    it('should hide next when on last page', () => {
+      const wrapper = render({ currentPage: 3, isNavigationHidden: true }, true);
+      const lastChild = wrapper.find('.ds-c-pagination__nav').last();
+      expect(lastChild.type()).toEqual('span');
+      expect(lastChild.props().style).toHaveProperty('visibility', 'hidden');
     });
   });
 });
