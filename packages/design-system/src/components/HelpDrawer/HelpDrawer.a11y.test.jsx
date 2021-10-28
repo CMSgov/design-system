@@ -2,9 +2,9 @@
 import {
   getElementByClassName,
   getElementByXPath,
-} from '@cmsgov/design-system-scripts/helpers/e2e';
-import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/e2e/constants';
-import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/e2e/assertNoAxeViolations';
+} from '@cmsgov/design-system-scripts/helpers/a11y';
+import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/a11y/constants';
+import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/a11y/assertNoAxeViolations';
 
 const rootURL = `${ROOT_URL}/example/components.help-drawer.react-help-drawer/`;
 

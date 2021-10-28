@@ -1,7 +1,7 @@
 /* global */
-import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/e2e/constants';
+import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/a11y/constants';
 
-import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/e2e/assertNoAxeViolations';
+import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/a11y/assertNoAxeViolations';
 
 const rootURL = `${ROOT_URL}/example/components.month-picker.react/`;
 

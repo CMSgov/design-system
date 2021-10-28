@@ -1,7 +1,7 @@
 /* global driver */
-import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/e2e/constants';
-import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/e2e/assertNoAxeViolations';
-import { getElementByClassName } from '@cmsgov/design-system-scripts/helpers/e2e';
+import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/a11y/constants';
+import assertNoAxeViolations from '@cmsgov/design-system-scripts/helpers/a11y/assertNoAxeViolations';
+import { getElementByClassName } from '@cmsgov/design-system-scripts/helpers/a11y';
 
 const rootURL = `${ROOT_URL}/example/components.dialog.react/`;
 

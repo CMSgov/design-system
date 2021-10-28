@@ -1,6 +1,6 @@
 /* global driver */
-import { getElementById, getElementByXPath } from '@cmsgov/design-system-scripts/helpers/e2e';
-import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/e2e/constants';
+import { getElementById, getElementByXPath } from '@cmsgov/design-system-scripts/helpers/a11y';
+import { ROOT_URL } from '@cmsgov/design-system-scripts/helpers/a11y/constants';
 
 describe('CMS Design System smoke test', () => {
   it('Sets window size and scroll position', async () => {
