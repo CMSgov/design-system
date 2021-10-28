@@ -1,6 +1,5 @@
 /* eslint-disable react/no-multi-comp, jsx-a11y/no-redundant-roles */
-import { Button } from '@cmsgov/design-system';
-import ClearIcon from '@cmsgov/design-system/dist/components/FilterChip/ClearIconAlternate';
+import { Button, CloseIconThin } from '@cmsgov/design-system';
 import MenuIcon from './MenuIcon';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -87,7 +86,7 @@ function MenuButton({ t, open, ...props }) {
       onClick={onClick}
       size="small"
     >
-      {open ? <ClearIcon /> : <MenuIcon className="ds-u-margin-right--1" />}
+      {open ? <CloseIconThin /> : <MenuIcon className="ds-u-margin-right--1" />}
       {t('header.menu')}
     </Button>
   );
