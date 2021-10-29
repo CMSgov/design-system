@@ -57,10 +57,9 @@ describe('setPrivacySettings', function () {
       c4: '1',
     });
     const Cookies = require('js-cookie');
-    expect(Cookies.set).toHaveBeenCalledWith(
-      COOKIE_KEY,
-      '0:0|c3:0|c2:0|c1:0|c4:1',
-      { expires: COOKIE_EXPIRES, domain: COOKIE_DOMAIN }
-    );
+    expect(Cookies.set).toHaveBeenCalledWith(COOKIE_KEY, '0:0|c3:0|c2:0|c1:0|c4:1', {
+      expires: COOKIE_EXPIRES,
+      domain: COOKIE_DOMAIN,
+    });
   });
 });

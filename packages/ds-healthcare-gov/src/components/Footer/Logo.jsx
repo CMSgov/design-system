@@ -31,10 +31,7 @@ function Logo(props) {
 
   return (
     <a
-      className={classnames(
-        'hc-c-footer__logo ds-u-display--inline-block',
-        props.className
-      )}
+      className={classnames('hc-c-footer__logo ds-u-display--inline-block', props.className)}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html: props.children,

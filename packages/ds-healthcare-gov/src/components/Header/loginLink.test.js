@@ -11,8 +11,6 @@ describe('loginLink', () => {
   });
 
   it('returns link with absolute URL', () => {
-    expect(
-      loginLink(translate, false, 'https://www.healthcare.gov')
-    ).toMatchSnapshot();
+    expect(loginLink(translate, false, 'https://www.healthcare.gov')).toMatchSnapshot();
   });
 });

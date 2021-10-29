@@ -57,6 +57,7 @@ These scripts can all be run from the root level of the repo:
 As a child design system, the Healthcare.gov Design System shares the same tooling and organization as the CMSDS. For more information on how to extend and customize SASS, JS, and documentation, check out the [child design system example and its documentation](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system).
 
 ## Who’s using the Healthcare.gov design system
+
 The design system is currently being applied to some pages on HealthCare.gov and project teams are actively working to apply the design system consistently across all of HealthCare.gov.
 
 - [Find Local Help](https://localhelp.healthcare.gov/#/)

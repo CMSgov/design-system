@@ -21,9 +21,7 @@ describe('InlineLinkLists', function () {
 
   it('renders lists of links with absolute URLs', () => {
     expect(
-      shallow(
-        <InlineLinkLists t={t} primaryDomain="https://www.healthcare.gov" />
-      )
+      shallow(<InlineLinkLists t={t} primaryDomain="https://www.healthcare.gov" />)
     ).toMatchSnapshot();
   });
 });

@@ -17,9 +17,7 @@ export class PrivacySettingsTable extends React.PureComponent {
         checked: value === '1',
       },
     ];
-    const label = (
-      <span className="ds-u-visibility--screen-reader">{category}</span>
-    );
+    const label = <span className="ds-u-visibility--screen-reader">{category}</span>;
     return (
       <ChoiceList
         type="checkbox"
@@ -61,9 +59,7 @@ export class PrivacySettingsTable extends React.PureComponent {
             <th scope="col">{t('privacy.status')}</th>
           </tr>
         </thead>
-        <tbody>
-          {privacySettings.map((setting) => this.renderRow(setting))}
-        </tbody>
+        <tbody>{privacySettings.map((setting) => this.renderRow(setting))}</tbody>
       </table>
     );
   }

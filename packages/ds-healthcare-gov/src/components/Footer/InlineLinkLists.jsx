@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import languages from './languages';
 
-const inlineLiClasses =
-  'hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block';
+const inlineLiClasses = 'hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block';
 
 /**
  * Create <li> nodes and inline links

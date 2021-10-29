@@ -8,8 +8,6 @@
 export default function (t, deConsumer, primaryDomain = '') {
   return {
     label: t('header.login'),
-    href: deConsumer
-      ? `${primaryDomain}/login?check_de=1`
-      : `${primaryDomain}/login`,
+    href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
   };
 }
