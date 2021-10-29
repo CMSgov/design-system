@@ -217,19 +217,39 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
                 onClick={[Function]}
                 type="button"
               >
-                <ClearIconAlternate>
-                  <svg
-                    className="ds-c-clear-icon"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    width="14"
-                    xmlns="http://www.w3.org/2000/svg"
+                <CloseIconThin>
+                  <SvgIcon
+                    ariaHidden={true}
+                    className="ds-c-icon--close ds-c-icon--close-thin "
+                    inversed={false}
+                    title="Close"
+                    viewBox="-2 -2 18 18"
                   >
-                    <path
-                      d="m8.6002309 7 5.2573243-5.25732429c.1899264-.1899264.1899264-.49704142 0-.68696782l-.9132631-.91326309c-.1899264-.1899264-.4970414-.1899264-.6869678 0l-5.2573243 5.2573243-5.25732429-5.2573243c-.1899264-.1899264-.49704142-.1899264-.68696782 0l-.91326309.91326309c-.1899264.1899264-.1899264.49704142 0 .68696782l5.2573243 5.25732429-5.2573243 5.2573243c-.1899264.1899264-.1899264.4970414 0 .6869678l.91326309.9132631c.1899264.1899264.49704142.1899264.68696782 0l5.25732429-5.2573243 5.2573243 5.2573243c.1899264.1899264.4970414.1899264.6869678 0l.9132631-.9132631c.1899264-.1899264.1899264-.4970414 0-.6869678z"
-                    />
-                  </svg>
-                </ClearIconAlternate>
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby="icon-1__title"
+                      className="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+                      focusable={false}
+                      id="icon-1"
+                      role="img"
+                      viewBox="-2 -2 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="icon-1__title"
+                      >
+                        Close
+                      </title>
+                      <path
+                        d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </SvgIcon>
+                </CloseIconThin>
                 header.menu
               </button>
             </Button>
