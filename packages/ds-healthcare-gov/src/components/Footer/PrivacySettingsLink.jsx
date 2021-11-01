@@ -19,12 +19,8 @@ class _PrivacySettingsLink extends React.PureComponent {
   render() {
     return (
       <>
-        <button onClick={this.openDialog}>
-          {this.props.t('footer.privacySettings')}
-        </button>
-        {this.state.showDialog && (
-          <PrivacySettingsDialog onExit={this.closeDialog} />
-        )}
+        <button onClick={this.openDialog}>{this.props.t('footer.privacySettings')}</button>
+        {this.state.showDialog && <PrivacySettingsDialog onExit={this.closeDialog} />}
       </>
     );
   }

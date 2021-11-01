@@ -15,8 +15,7 @@ const DeConsumerMessage = function (props) {
     <div className="ds-u-fill--primary-darker ds-base--inverse ds-u-padding-y--2">
       <div className="ds-l-container">
         {props.t('header.deConsumerMessage', {
-          brokerName:
-            props.deBrokerName || props.t('header.deBrokerNameFallback'),
+          brokerName: props.deBrokerName || props.t('header.deBrokerNameFallback'),
         })}
       </div>
     </div>

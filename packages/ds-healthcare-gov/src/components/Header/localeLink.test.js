@@ -20,12 +20,7 @@ describe('localeLink', () => {
 
   it('returns Spanish link with custom switch link', () => {
     expect(
-      localeLink(
-        translate,
-        'en',
-        undefined,
-        'https://ayudalocal.cuidadodesalud.gov/es'
-      )
+      localeLink(translate, 'en', undefined, 'https://ayudalocal.cuidadodesalud.gov/es')
     ).toMatchSnapshot();
   });
 

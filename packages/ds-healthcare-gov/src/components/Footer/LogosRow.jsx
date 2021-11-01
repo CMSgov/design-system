@@ -25,11 +25,7 @@ const LogosRow = function (props) {
           />
         </div>
         <div className="ds-l-col ds-l-col--12 ds-l-lg-col--auto ds-u-lg-margin-top--0 ds-u-margin-top--2 ds-u-margin-left--auto">
-          <Logo
-            className="ds-u-margin-right--2"
-            href="http://www.whitehouse.gov/"
-            width="76px"
-          >
+          <Logo className="ds-u-margin-right--2" href="http://www.whitehouse.gov/" width="76px">
             {whiteHouseLogo}
           </Logo>
           <Logo href="http://www.usa.gov/" width="162px">
