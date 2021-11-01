@@ -201,6 +201,15 @@ yargs
       process.env.BUILD_PATH = argv.buildPath;
       process.env.SKIP_BUILD = argv.skipBuild;
       process.env.HEADLESS = argv.headless;
+
+      if (config.monorepo && !config.core) {
+        // TODO: This is really ugly, but soon we'll decouple browser tests from the
+        // docs site entirely, and a lot of this code can be deleted.
+        const command =
+          config.rootPath === 'design-system/healthcare' ? 'build:healthcare' : 'build:medicare';
+        process.env.BUILD_COMMAND = `yarn ${command} --skipLatest --ignoreRootPath`;
+      }
+
       run(['--config', JSON.stringify(e2eConfig(argv.directory))]);
     },
   })

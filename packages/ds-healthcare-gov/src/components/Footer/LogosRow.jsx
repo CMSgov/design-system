@@ -20,6 +20,7 @@ const LogosRow = function (props) {
         <div className="ds-l-col ds-l-col--9 ds-l-sm-col--10 ds-l-md-col--auto">
           <p
             className="ds-u-font-size--small ds-u-color--muted ds-u-measure--base ds-u-margin--0"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: props.t('footer.address') }}
           />
         </div>

@@ -3894,12 +3894,12 @@ axios@0.19.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
-axios@^0.21.1:
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
-  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+axios@^0.21.2:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
-    follow-redirects "^1.10.0"
+    follow-redirects "^1.14.0"
 
 axobject-query@^2.0.2:
   version "2.1.2"
@@ -4798,13 +4798,13 @@ chrome-trace-event@^1.0.2:
   dependencies:
     tslib "^1.9.0"
 
-chromedriver@93.0.0:
-  version "93.0.0"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-93.0.0.tgz#6c136a074248b88efe5851bca7e41110aff5aeb9"
-  integrity sha512-WHntgiZf13rds6SjeFRgH02prad8k+wWrQSaj5QPi0kaNJUukdJNDJG7pn8OshWTKTJZ6oqgvMQ1mvnIIBY5GQ==
+chromedriver@95.0.0:
+  version "95.0.0"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-95.0.0.tgz#ecf854cac6df5137a651dcc132edf55612d3db7f"
+  integrity sha512-HwSg7S0ZZYsHTjULwxFHrrUqEpz1+ljDudJM3eOquvqD5QKnR5pSe/GlBTY9UU2tVFRYz8bEHYC4Y8qxciQiLQ==
   dependencies:
     "@testim/chrome-version" "^1.0.7"
-    axios "^0.21.1"
+    axios "^0.21.2"
     del "^6.0.0"
     extract-zip "^2.0.1"
     https-proxy-agent "^5.0.0"
@@ -7587,10 +7587,10 @@ follow-redirects@1.5.10:
   dependencies:
     debug "=3.1.0"
 
-follow-redirects@^1.10.0:
-  version "1.13.3"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
-  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
+follow-redirects@^1.14.0:
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.4.tgz#838fdf48a8bbdd79e52ee51fb1c94e3ed98b9379"
+  integrity sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==
 
 for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
@@ -10338,7 +10338,7 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
-jszip@^3.2.2:
+jszip@^3.6.0:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.7.1.tgz#bd63401221c15625a1228c556ca8a68da6fda3d9"
   integrity sha512-ghL0tz1XG9ZEmRMcEN2vt7xabrDdqHHeykgARpmZ0BiIctWxM47Vt63ZO2dnp4QYt/xJVLLy5Zv1l/xRdh2byg==
@@ -12299,7 +12299,7 @@ os-name@^3.1.0:
     macos-release "^2.2.0"
     windows-release "^3.1.0"
 
-os-tmpdir@^1.0.0, os-tmpdir@~1.0.1, os-tmpdir@~1.0.2:
+os-tmpdir@^1.0.0, os-tmpdir@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
@@ -14408,7 +14408,7 @@ rgba-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/rgba-regex/-/rgba-regex-1.0.0.tgz#43374e2e2ca0968b0ef1523460b7d730ff22eeb3"
   integrity sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2, rimraf@^2.6.3, rimraf@^2.7.1:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2, rimraf@^2.6.3:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
@@ -14593,14 +14593,15 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-selenium-webdriver@4.0.0-alpha.7:
-  version "4.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.0.0-alpha.7.tgz#e3879d8457fd7ad8e4424094b7dc0540d99e6797"
-  integrity sha512-D4qnTsyTr91jT8f7MfN+OwY0IlU5+5FmlO5xlgRUV6hDEV8JyYx2NerdTEqDDkNq7RZDYc4VoPALk8l578RBHw==
+selenium-webdriver@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.0.0.tgz#7dc8969facee3be634459e173f557b7e34308e73"
+  integrity sha512-tOlu6FnTjPq2FKpd153pl8o2cB7H40Rvl/ogiD2sapMv4IDjQqpIxbd+swDJe9UDLdszeh5CDis6lgy4e9UG1w==
   dependencies:
-    jszip "^3.2.2"
-    rimraf "^2.7.1"
-    tmp "0.0.30"
+    jszip "^3.6.0"
+    rimraf "^3.0.2"
+    tmp "^0.2.1"
+    ws ">=7.4.6"
 
 semver-compare@^1.0.0:
   version "1.0.0"
@@ -15955,19 +15956,19 @@ tinycolor2@^1.1.2:
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
   integrity sha1-9PrTM0R7wLB9TcjpIJ2POaisd+g=
 
-tmp@0.0.30:
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.30.tgz#72419d4a8be7d6ce75148fd8b324e593a711c2ed"
-  integrity sha1-ckGdSovn1s51FI/YsyTlk6cRwu0=
-  dependencies:
-    os-tmpdir "~1.0.1"
-
 tmp@^0.0.33:
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
   integrity sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==
   dependencies:
     os-tmpdir "~1.0.2"
+
+tmp@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.2.1.tgz#8457fc3037dcf4719c251367a1af6500ee1ccf14"
+  integrity sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==
+  dependencies:
+    rimraf "^3.0.0"
 
 tmpl@1.0.x:
   version "1.0.5"
@@ -17096,6 +17097,11 @@ write@1.0.3:
   integrity sha512-/lg70HAjtkUgWPVZhZcm+T4hkL8Zbtp1nFNOn3lRrxnlv50SRBv7cR7RqR+GMsd3hUXy9hWBo4CHTbFTcOYwig==
   dependencies:
     mkdirp "^0.5.1"
+
+ws@>=7.4.6:
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.3.tgz#63a56456db1b04367d0b721a0b80cae6d8becbba"
+  integrity sha512-wBuoj1BDpC6ZQ1B7DWQBYVLphPWkm8i9Y0/3YdHjHKHiohOJ1ws+3OccDWtH+PoC9DZD5WOTrJvNbWvjS6JWaA==
 
 ws@^6.1.0:
   version "6.2.1"
