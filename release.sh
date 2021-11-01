@@ -9,10 +9,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 echo "${GREEN}Bumping version...${NC}"
-yarn lerna version \
-  --no-push \
-  --no-git-tag-version \
-  --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
+yarn lerna version --no-push
 
 if git diff-index --quiet HEAD --; then
   echo "${RED}No local changes detected, therefore version bump did not occur. Exiting...${NC}"
@@ -20,31 +17,31 @@ if git diff-index --quiet HEAD --; then
 fi
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"
-PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
-TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
-TAG="$TAG_PREFIX$PACKAGE_VERSION"
-BRANCH="release-$PACKAGE_VERSION"
+# PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
+# TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
+# TAG="$TAG_PREFIX$PACKAGE_VERSION"
+# BRANCH="release-$PACKAGE_VERSION"
 
 # Create and push release branch containing the updated package versions
-git checkout -b $BRANCH
-git add --all
-git commit -m "Bump package version to $PACKAGE_VERSION"
-git push --set-upstream origin $BRANCH
+# git checkout -b $BRANCH
+# git add --all
+# git commit -m "Bump package version to $PACKAGE_VERSION"
+# git push --set-upstream origin $BRANCH
 
 # Create and push tag
-git tag $TAG
-git push origin $TAG
+# git tag $TAG
+# git push origin $TAG
 
-echo ""
-echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed to origin.${NC}"
-echo ""
-echo "${YELLOW}-------${NC}"
-echo ""
-echo "${YELLOW}NEXT STEPS:${NC}"
-echo ""
-echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
-echo ""
-echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
-echo ""
-echo "     ${CYAN}\$${NC} yarn publish-release $PACKAGE_VERSION"
-echo ""
+# echo ""
+# echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed to origin.${NC}"
+# echo ""
+# echo "${YELLOW}-------${NC}"
+# echo ""
+# echo "${YELLOW}NEXT STEPS:${NC}"
+# echo ""
+# echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+# echo ""
+# echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
+# echo ""
+# echo "     ${CYAN}\$${NC} yarn publish-release $PACKAGE_VERSION"
+# echo ""
