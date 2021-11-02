@@ -14,10 +14,12 @@ BRANCH="release-${DATE}"
 git checkout -b $BRANCH
 
 echo "${GREEN}Bumping version...${NC}"
+PRE_VERSION_HASH=$(git rev-parse HEAD)
 yarn lerna version --no-push
+POST_VERSION_HASH=$(git rev-parse HEAD)
 
-if git diff-index --quiet HEAD --; then
-  echo "${RED}No local changes detected, therefore version bump did not occur. Removing release branch and exiting...${NC}"
+if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
+  echo "${RED}No bump commit detected. Removing release branch and exiting...${NC}"
   git checkout -
   git branch -d $BRANCH
   exit 1
