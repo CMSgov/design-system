@@ -21,7 +21,7 @@ POST_VERSION_HASH=$(git rev-parse HEAD)
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
   echo "${RED}No bump commit detected. Removing release branch and exiting...${NC}"
   git checkout -
-  git branch -d $BRANCH
+  git branch -D $BRANCH
   exit 1
 fi
 
