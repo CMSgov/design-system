@@ -20,6 +20,7 @@ export * from './MonthPicker';
 export * from './Pagination';
 export * from './Review';
 export * from './SkipNav';
+export * from './SlidingPanel';
 export * from './Spinner';
 export * from './StepList';
 export * from './Table';

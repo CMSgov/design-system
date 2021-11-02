@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SlidingPanelToggle renders a button 1`] = `
+<Button
+  className="ds-c-help-drawer__toggle"
+  component="button"
+  inputRef={[Function]}
+  onClick={[Function]}
+  type="button"
+  variation="transparent"
+>
+  <p>
+    content
+  </p>
+</Button>
+`;
