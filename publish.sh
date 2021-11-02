@@ -20,6 +20,7 @@ git checkout tags/$1
 echo "${GREEN}Building packages...${NC}"
 yarn install
 yarn build
+yarn build:healthcare
 
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
 if [[ $1 == *"beta"* ]]; then
