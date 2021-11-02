@@ -14,9 +14,8 @@ CYAN="\033[0;36m"
 NC='\033[0m' # No color
 
 echo "${GREEN}Checking out release $1...${NC}"
-TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
 git fetch --tags
-git checkout tags/$TAG_PREFIX$1
+git checkout tags/$1
 
 echo "${GREEN}Building packages...${NC}"
 yarn install
