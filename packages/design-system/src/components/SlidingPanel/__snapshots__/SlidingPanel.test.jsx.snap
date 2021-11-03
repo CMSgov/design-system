@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HelpDrawer renders a snapshot 1`] = `
+exports[`SlidingPanel renders a snapshot 1`] = `
 <div
-  aria-labelledby="slidingPanel_4"
+  aria-labelledby="slidingPanel_2"
   className="ds-c-help-drawer"
   role="dialog"
 >
@@ -14,10 +14,10 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     >
       <h3
         className="ds-c-help-drawer__header-heading"
-        id="slidingPanel_4"
+        id="slidingPanel_2"
         tabIndex="0"
       >
-        HelpDrawer title
+        Sliding panel title
       </h3>
       <button
         aria-label="Close help drawer"

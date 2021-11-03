@@ -1,19 +1,14 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
-import FocusTrap from 'focus-trap-react';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
+import SlidingPanel from '../SlidingPanel/SlidingPanel';
 import { helpDrawerSendsAnalytics } from '../flags';
-import uniqueId from 'lodash/uniqueId';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
     this.eventHeadingText = '';
-    this.id = this.props.headingId || uniqueId('helpDrawer_');
-    this.handleEscapeKey = this.handleEscapeKey.bind(this);
 
     if (process.env.NODE_ENV !== 'production') {
       if (props.title) {
@@ -30,10 +25,6 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.hasFocusTrap) document.addEventListener('keydown', this.handleEscapeKey);
-
-    if (this.headingRef) this.headingRef.focus();
-
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       const heading = this.props.title || this.props.heading;
 
@@ -61,8 +52,6 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEscapeKey);
-
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       /* Send analytics event for helpdrawer close */
       sendLinkEvent({
@@ -76,85 +65,10 @@ export class HelpDrawer extends React.PureComponent {
     }
   }
 
-  handleEscapeKey(evt) {
-    switch (evt.code) {
-      case 'Escape':
-        this.props.onCloseClick();
-        break;
-      default:
-        break;
-    }
-  }
-
   render() {
-    const {
-      ariaLabel,
-      className,
-      closeButtonText,
-      children,
-      footerBody,
-      footerTitle,
-      hasFocusTrap,
-      heading,
-      isHeaderSticky,
-      isFooterSticky,
-      onCloseClick,
-      title,
-    } = this.props;
-    const Heading = `h${this.props.headingLevel}` || `h3`;
+    const { children, title, ...others } = this.props;
 
-    /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    const helpDrawerMarkup = () => (
-      <div
-        aria-labelledby={this.id}
-        className={classNames(className, 'ds-c-help-drawer')}
-        role="dialog"
-      >
-        <div className="ds-c-help-drawer__window">
-          <div className="ds-c-help-drawer__header">
-            <Heading
-              tabIndex="0"
-              id={this.id}
-              className="ds-c-help-drawer__header-heading"
-              ref={(el) => (this.headingRef = el)}
-            >
-              {title || heading}
-            </Heading>
-            <Button
-              aria-label={ariaLabel}
-              className="ds-c-help-drawer__close-button"
-              size="small"
-              onClick={onCloseClick}
-            >
-              {closeButtonText}
-            </Button>
-          </div>
-          <div
-            className={classNames('ds-c-help-drawer__body', {
-              'ds-c-help-drawer--is-sticky': isHeaderSticky || isFooterSticky,
-            })}
-          >
-            {children}
-          </div>
-          <div className="ds-c-help-drawer__footer">
-            <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
-            <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
-          </div>
-        </div>
-      </div>
-    );
-
-    return (
-      <>
-        {hasFocusTrap ? (
-          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
-            {helpDrawerMarkup()}
-          </FocusTrap>
-        ) : (
-          helpDrawerMarkup()
-        )}
-      </>
-    );
+    return <SlidingPanel {...others}>{children}</SlidingPanel>;
   }
 }
 
