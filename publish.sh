@@ -34,6 +34,7 @@ echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
 npm pack ./packages/design-system-docs/
 npm pack ./packages/design-system-scripts/
+npm pack ./packages/ds-healthcare-gov/
 
 echo "${GREEN}Done.${NC}"
 echo ""
