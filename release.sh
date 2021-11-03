@@ -26,8 +26,8 @@ if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
 fi
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"
-git push --set-upstream origin $BRANCH
-git push origin --tags
+# git push --set-upstream origin $BRANCH
+# git push origin --tags
 
 # Grep the last commit message for package versions
 PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")

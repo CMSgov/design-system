@@ -28,7 +28,7 @@ if [[ $1 == *"beta"* ]]; then
 else
   NPM_TAG=""
 fi
-yarn lerna publish from-git $NPM_TAG
+# yarn lerna publish from-git $NPM_TAG
 
 echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
