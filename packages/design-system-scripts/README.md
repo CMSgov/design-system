@@ -2,7 +2,7 @@ This package contains shared scripts and tooling for CMS design systems. It incl
 
 - Compiling & minifying design system files
 - Building & watching documentation site files
-- Running unit & e2e tests
+- Running unit & a11y tests
 - Running eslint and stylelint
 
 ## Installation
@@ -36,7 +36,7 @@ Available commands:
 - `yarn cmsds build-docs` - Builds your main design system package and its corresponding documentation site.
 - `yarn cmsds start` - Builds and hosts the documentation site, automatically rebuilds and refreshes when changes are detected
 - `yarn cmsds test` - Runs unit tests
-- `yarn cmsds test:e2e` - Runs end to end tests
+- `yarn cmsds test:a11y` - Runs end to end tests
 - `yarn cmsds lint` - Runs prettier, stylelint and eslint
 
 See the npm scripts in our [package.json](https://github.com/CMSgov/design-system/blob/master/package.json) for an example of how these scripts are used in the core CMS Design System.
