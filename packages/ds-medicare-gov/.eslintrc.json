@@ -1,0 +1,56 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:compat/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "react-hooks",
+    "jsx-a11y"
+  ],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "jest": true,
+    "es6": true
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [1, { "argsIgnorePattern": "^_" }],
+    "react-hooks/exhaustive-deps": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "@typescript-eslint/camelcase": 0,
+    "react/prop-types": 0,
+    // we should remove the following ones when we have time to address them
+    "@typescript-eslint/explicit-function-return-type": 1,
+    "@typescript-eslint/no-use-before-define": 1,
+    "no-useless-escape": 1
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "polyfills": [
+      "IntersectionObserver",
+      "Promise",
+      "Set",
+      "Array.from",
+      "Object.values",
+      "Object.entries",
+      "Object.assign",
+      "fetch",
+      "Number.isNaN",
+      "Proxy",
+      "Reflect",
+      "Number.parseInt",
+      "Headers"
+    ]
+  },
+  "parser": "@typescript-eslint/parser"
+}

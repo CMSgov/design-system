@@ -1,0 +1,126 @@
+/* stylelint-disable */
+.m-c-footer {
+  background-color: $color-gray-lightest;
+  @extend .ds-u-padding--3;
+  @extend .ds-u-lg-padding-x--7;
+  @extend .ds-u-padding-y--4;
+
+  @media screen and (max-width: $width-md) {
+    padding: 32px 24px;
+  }
+
+  .SimpleFooter__linkButton,
+  a {
+    @extend .mct-p3;
+    @extend .ds-u-padding-y--0;
+    @extend .ds-u-padding-x--2;
+    @extend .ds-u-text-decoration--none;
+    color: $color-base !important;
+    border-right: 1px solid $color-base;
+
+    &:hover {
+      @extend .ds-u-text-decoration--underline;
+    }
+  }
+
+  .SimpleFooter__linkButton {
+    color: $color-base !important;
+    border-radius: 0 !important;
+    border-right: 1px solid $color-base !important;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      @extend .ds-u-text-decoration--underline;
+    }
+  }
+
+  a {
+    &:first-child {
+      @extend .ds-u-padding-left--0;
+    }
+
+    &:last-child {
+      @extend .ds-u-padding-right--0;
+      border-right: 0;
+    }
+  }
+}
+
+.m-c-footer__row {
+  @extend .ds-u-padding-top--3;
+  @extend .ds-u-padding-bottom--1;
+  @extend .ds-u-margin-bottom--1;
+
+  @extend .ds-u-display--flex;
+  @extend .ds-u-lg-justify-content--between;
+  @extend .ds-u-flex-direction--column;
+  @extend .ds-u-sm-flex-direction--row;
+
+  &--reverse {
+    @extend .ds-u-flex-direction--column-reverse;
+    @extend .ds-u-sm-flex-direction--row;
+  }
+}
+
+.m-c-footer__linkRow {
+  @extend .m-c-footer__row;
+  @extend .ds-u-sm-flex-direction--column;
+  @extend .ds-u-xl-flex-direction--row;
+  @extend .ds-u-padding-bottom--3;
+  margin-bottom: 0 !important;
+  border-color: $color-gray-lighter;
+
+  border-style: solid;
+  border-width: 1px 0;
+}
+
+.m-c-footer__links {
+  @extend .ds-u-margin-bottom--3;
+  @extend .ds-u-xl-margin-bottom--0;
+}
+
+.m-c-footer__identityRow {
+  @extend .m-c-footer__row;
+  @extend .ds-u-justify-content--center;
+  @extend .ds-u-sm-justify-content--between;
+  @extend .ds-u-md-align-items--center;
+  @extend .ds-u-flex-direction--column-reverse;
+  @extend .ds-u-sm-flex-direction--row;
+  padding-bottom: 0px !important;
+
+  @media screen and (max-width: $width-sm) {
+    height: auto;
+  }
+
+  & > * {
+    @extend .ds-u-display--flex;
+    @extend .ds-u-justify-content--center;
+    @extend .ds-u-md-align-items--center;
+  }
+
+  svg {
+    .MgovLogoMedicare {
+      fill: $color-base !important;
+    }
+  }
+}
+
+.m-c-footer__identityContent {
+  @extend .ds-u-display--flex;
+  @extend .ds-u-sm-justify-content--between;
+  @extend .ds-u-align-items--center;
+  @extend .ds-u-margin-bottom--2;
+  @extend .ds-u-sm-margin-bottom--0;
+  @extend .ds-u-flex-direction--column;
+  @extend .ds-u-sm-flex-direction--row;
+}
+
+.m-c-footer__contactAddress {
+  @extend .mct-p3;
+  @extend .ds-u-md-margin-left--3;
+  @extend .ds-u-margin-top--2;
+  @extend .ds-u-sm-margin-top--0;
+  max-width: 411px;
+}
+/* stylelint-enable */
