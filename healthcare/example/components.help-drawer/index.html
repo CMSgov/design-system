@@ -23,22 +23,23 @@
   <button class="ds-c-button ds-c-button--transparent ds-c-help-drawer__toggle" type="button">
     Toggle the help drawer.
   </button>
-  <div class="ds-c-help-drawer">
-    <div class="ds-c-help-drawer__header">
-      <div class="ds-c-help-drawer__header-container">
-        <h3 tabindex="0" class="ds-c-help-drawer__header-heading">
+
+  <div aria-labelledby="panel-heading" aria-modal="false" class="ds-c-help-drawer" role="dialog">
+    <div class="ds-c-help-drawer__window">
+      <div class="ds-c-help-drawer__header">
+        <h3 tabindex="0" id="panel-heading" class="ds-c-help-drawer__header-heading">
           Help Drawer Heading
         </h3>
         <button
-          class="ds-c-button ds-c-button--secondary ds-c-button--small ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
+          aria-label="Close panel"
+          class="ds-c-button ds-c-button--secondary ds-c-button--small ds-c-help-drawer__close-button"
           type="button"
         >
           Close
         </button>
       </div>
-    </div>
-    <div class="ds-c-help-drawer__body">
-      <div class="ds-c-help-drawer__content">
+
+      <div class="ds-c-help-drawer__body">
         <strong>An Explanation</strong>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -51,10 +52,11 @@
       </div>
       <div class="ds-c-help-drawer__footer">
         <h4 class="ds-text ds-c-help-drawer__footer-title">Footer title</h4>
-        <p class="ds-text ds-c-help-drawer__footer-body">Footer content</p>
+        <div class="ds-text ds-c-help-drawer__footer-body">Footer content</div>
       </div>
     </div>
   </div>
+
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
