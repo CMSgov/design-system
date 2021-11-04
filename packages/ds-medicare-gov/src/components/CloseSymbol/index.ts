@@ -1,1 +1,1 @@
-export { default } from "./CloseSymbol";
+export { default } from './CloseSymbol';

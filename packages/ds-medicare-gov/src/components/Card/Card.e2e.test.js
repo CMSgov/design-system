@@ -12,7 +12,7 @@ describe('Card component', () => {
     const el = await getElementByClassName('m-c-card');
     expect(el).toBeTruthy();
   });
-  
+
   it('Should have no accessibility violations', async () => {
     await assertNoAxeViolations(rootURL);
   });

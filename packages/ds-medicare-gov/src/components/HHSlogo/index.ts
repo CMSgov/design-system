@@ -1,1 +1,1 @@
-export { default } from "./HHSlogo";
+export { default } from './HHSlogo';

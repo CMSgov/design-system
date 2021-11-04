@@ -1,5 +1,4 @@
-.m-c-navigationMenu__container--alwaysShowMenuButton
-  .m-c-navigationMenu__toggleContainer {
+.m-c-navigationMenu__container--alwaysShowMenuButton .m-c-navigationMenu__toggleContainer {
   @extend .ds-u-sm-padding--0;
   position: relative;
   top: 0;
@@ -24,8 +23,7 @@
     }
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @media screen and (min-width: $width-sm) {
       display: none;
     }
@@ -38,8 +36,7 @@
   @extend .ds-u-padding-x--0;
   position: relative;
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @media screen and (min-width: $width-md) {
       flex: 1 0 auto;
       text-align: right;
@@ -60,8 +57,7 @@
     width: 100%;
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @extend .ds-l-sm-col--auto;
     @extend .ds-u-sm-margin-left--auto;
     @extend .ds-u-sm-padding-x--0;
@@ -112,8 +108,7 @@
     max-height: 900px;
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @media screen and (min-width: $width-sm) {
       background-color: transparent !important;
       width: auto;
@@ -133,8 +128,7 @@
     @extend .ds-u-sm-margin-left--1;
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @extend .ds-u-sm-margin-top--0;
     @extend .ds-u-sm-padding-left--0;
     @extend .ds-u-align-items--center;
@@ -154,8 +148,7 @@
     border-right: 0 !important;
   }
 
-  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-    & {
+  .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
     @media screen and (min-width: $width-sm) {
       border-right: 2px solid $color-white;
 
@@ -169,8 +162,7 @@
     @extend .ds-u-text-decoration--none;
     @extend .ds-u-color--primary;
 
-    .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton)
-      & {
+    .m-c-navigationMenu__container:not(.m-c-navigationMenu__container--alwaysShowMenuButton) & {
       @media screen and (min-width: $width-sm) {
         color: $color-white !important;
 

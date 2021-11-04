@@ -151,7 +151,7 @@
         height: 1px;
         width: calc(100% + 48px);
         background-color: $black-100;
-        content: "";
+        content: '';
       }
     }
 
@@ -170,8 +170,7 @@
       &:hover {
         background-color: $color-white !important;
         color: $black-500 !important;
-        box-shadow: 0 0 0 4px $focus-choice-color-highlight,
-          0 0 0 2px $focus-choice-color;
+        box-shadow: 0 0 0 4px $focus-choice-color-highlight, 0 0 0 2px $focus-choice-color;
         border-color: $focus-choice-color;
 
         .caret-arrow {
@@ -225,7 +224,7 @@
       height: 1px;
       width: calc(100% + 48px);
       background-color: $black-100;
-      content: "";
+      content: '';
     }
   }
 
@@ -288,8 +287,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 4px $focus-choice-color-highlight,
-          0 0 0 2px $focus-choice-color;
+        box-shadow: 0 0 0 4px $focus-choice-color-highlight, 0 0 0 2px $focus-choice-color;
         border-color: $focus-choice-color;
       }
 

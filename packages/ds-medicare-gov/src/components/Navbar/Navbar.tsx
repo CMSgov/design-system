@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 
 /*
  * The Navbar component serves as a container element for the navbar's content
@@ -9,11 +9,7 @@ const Navbar: FunctionComponent<{
   inverse?: boolean;
 }> = ({ children, className, inverse = false }) => {
   return (
-    <div
-      className={`m-c-navbar ${className} ${
-        inverse ? "m-c-navbar--inverse" : ""
-      }`}
-    >
+    <div className={`m-c-navbar ${className} ${inverse ? 'm-c-navbar--inverse' : ''}`}>
       {children}
     </div>
   );

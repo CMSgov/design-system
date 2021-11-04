@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Navbar, MedicaregovLogo } from "@design-system";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Navbar, MedicaregovLogo } from '@design-system';
 
 ReactDOM.render(
   <Navbar inverse>
@@ -11,5 +11,5 @@ ReactDOM.render(
       <div className="m-c-navbar__productName">Medicare Coverage Tools</div>
     </div>
   </Navbar>,
-  document.getElementById("js-example")
+  document.getElementById('js-example')
 );

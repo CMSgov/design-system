@@ -12,6 +12,6 @@
     "baseUrl": ".",
     "paths": {
       "@design-system/*": ["*"]
-    },
-  },
+    }
+  }
 }

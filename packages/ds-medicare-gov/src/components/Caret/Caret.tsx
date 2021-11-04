@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 
 interface CaretProps {
   className?: string;
@@ -14,13 +14,13 @@ const Caret: FunctionComponent<CaretProps> = ({
   left,
   right,
 }) => {
-  let transform = "translate(-2.000000, -5.000000)";
+  let transform = 'translate(-2.000000, -5.000000)';
   if (up) {
-    transform = "scale(1, -1) translate(-2.000000, -14.000000)";
+    transform = 'scale(1, -1) translate(-2.000000, -14.000000)';
   } else if (left) {
-    transform = "rotate(90) translate(-5.000000, -20.000000)";
+    transform = 'rotate(90) translate(-5.000000, -20.000000)';
   } else if (right) {
-    transform = "rotate(-90) translate(-14.000000, -5.000000)";
+    transform = 'rotate(-90) translate(-14.000000, -5.000000)';
   }
 
   return (

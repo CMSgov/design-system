@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 import uniqueId from 'lodash/uniqueId';
 
 interface MedicaregovLogoProps {
@@ -9,11 +9,11 @@ interface MedicaregovLogoProps {
 }
 
 const MedicaregovLogo: FunctionComponent<MedicaregovLogoProps> = ({
-  width = "273",
-  height = "39",
-  className = "",
+  width = '273',
+  height = '39',
+  className = '',
 }) => {
-  const titleId = uniqueId("medicare-gov-");
+  const titleId = uniqueId('medicare-gov-');
 
   return (
     <svg

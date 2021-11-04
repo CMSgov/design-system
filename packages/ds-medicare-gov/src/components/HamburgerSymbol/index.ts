@@ -1,1 +1,1 @@
-export { default } from "./HamburgerSymbol";
+export { default } from './HamburgerSymbol';

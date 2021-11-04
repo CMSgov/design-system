@@ -12,7 +12,7 @@ describe('Checkmark component', () => {
     const el = await getElementById('js-example');
     expect(el).toBeTruthy();
   });
-  
+
   it('Should have no accessibility violations', async () => {
     await assertNoAxeViolations(rootURL);
   });

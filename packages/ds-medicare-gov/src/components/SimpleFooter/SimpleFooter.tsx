@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
-import { Button } from "@cmsgov/design-system";
-import HHSLogo from "../HHSlogo/HHSlogo";
-import MedicaregovLogo from "../MedicaregovLogo/MedicaregovLogo";
+import React, { FunctionComponent, useEffect, useRef } from 'react';
+import { Button } from '@cmsgov/design-system';
+import HHSLogo from '../HHSlogo/HHSlogo';
+import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';
 
 interface SimpleFooterProps {
   aboutMedicareLabel?: string;
@@ -19,23 +19,23 @@ interface SimpleFooterProps {
 }
 
 const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
-  aboutMedicareLabel = "About Medicare",
-  medicareGlossaryLabel = "Medicare Glossary",
-  nondiscriminationLabel = "Nondiscrimination/Accessibility",
-  privacyPolicyLabel = "Privacy Policy",
-  privacySettingLabel = "Privacy Setting",
-  linkingPolicyLabel = "Linking Policy",
-  usingThisSiteLabel = "Using this site",
-  plainWritingLabel = "Plain Writing",
-  language = "en",
-  websiteInfo = "A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.",
+  aboutMedicareLabel = 'About Medicare',
+  medicareGlossaryLabel = 'Medicare Glossary',
+  nondiscriminationLabel = 'Nondiscrimination/Accessibility',
+  privacyPolicyLabel = 'Privacy Policy',
+  privacySettingLabel = 'Privacy Setting',
+  linkingPolicyLabel = 'Linking Policy',
+  usingThisSiteLabel = 'Using this site',
+  plainWritingLabel = 'Plain Writing',
+  language = 'en',
+  websiteInfo = 'A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.',
   onClickLinkAnalytics,
 }) => {
   const footerRef = useRef<HTMLElement>();
 
   useEffect(() => {
     if (onClickLinkAnalytics) {
-      footerRef.current?.querySelectorAll("a").forEach(anchor => {
+      footerRef.current?.querySelectorAll('a').forEach((anchor) => {
         anchor.onclick = () => onClickLinkAnalytics(anchor.href);
       });
     }
@@ -46,17 +46,13 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
       <div className="m-c-footer__linkRow">
         <div className="m-c-footer__links">
           <a href="https://www.medicare.gov/about-us">{aboutMedicareLabel}</a>
-          <a href="https://www.medicare.gov/glossary/a">
-            {medicareGlossaryLabel}
-          </a>
+          <a href="https://www.medicare.gov/glossary/a">{medicareGlossaryLabel}</a>
         </div>
         <div>
           <a href="https://www.medicare.gov/about-us/accessibility-nondiscrimination-notice">
             {nondiscriminationLabel}
           </a>
-          <a href="https://www.medicare.gov/privacy-policy">
-            {privacyPolicyLabel}
-          </a>
+          <a href="https://www.medicare.gov/privacy-policy">{privacyPolicyLabel}</a>
 
           <Button
             className="SimpleFooter__linkButton"
@@ -69,8 +65,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
                 utag.gdpr &&
                 utag.gdpr.showConsentPreferences(language) &&
                 // eslint-disable-next-line
-                typeof (window as any).utag.gdpr.showConsentPreferences ===
-                  "function"
+                typeof (window as any).utag.gdpr.showConsentPreferences === 'function'
               ) {
                 utag.gdpr.showConsentPreferences();
               }
@@ -89,9 +84,7 @@ const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           <a href="https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/Help.html">
             {usingThisSiteLabel}
           </a>
-          <a href="https://www.medicare.gov/about-us/plain-writing">
-            {plainWritingLabel}
-          </a>
+          <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
         </div>
       </div>
       <div className="m-c-footer__identityRow">

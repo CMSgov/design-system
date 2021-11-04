@@ -1,1 +1,1 @@
-export { default } from "./Caret";
+export { default } from './Caret';

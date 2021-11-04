@@ -12,7 +12,7 @@ describe('SimpleFooter component', () => {
     const el = await getElementByClassName('m-c-footer');
     expect(el).toBeTruthy();
   });
-  
+
   it('Should have no accessibility violations', async () => {
     await assertNoAxeViolations(rootURL);
   });

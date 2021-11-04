@@ -1,10 +1,10 @@
-import React from "react";
-import { render, cleanup } from "@testing-library/react";
-import Navbar from "./Navbar";
+import React from 'react';
+import { render, cleanup } from '@testing-library/react';
+import Navbar from './Navbar';
 
 afterEach(cleanup);
 
-it("renders without crashing", () => {
+it('renders without crashing', () => {
   const { container } = render(<Navbar />);
   expect(container).toBeInTheDocument();
 });

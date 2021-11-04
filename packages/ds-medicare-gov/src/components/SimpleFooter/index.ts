@@ -1,1 +1,1 @@
-export { default } from "./SimpleFooter";
+export { default } from './SimpleFooter';

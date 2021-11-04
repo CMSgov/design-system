@@ -17,15 +17,15 @@ For full documentation on installation and usage in your Medicare.gov product, p
 This site-wide design system has a much smaller group of users than the core CMS Design System. It's up to us to make it useful for our apps. It is a place to share code and collaborate across teams. It is our collective source of truth for design. If you want to contribute but need help getting started, shout in the [`#mgov-design-system` Slack channel](https://cmsgov.slack.com/archives/C010T7LE5RC) on the CMS Slack or open up an issue on this repo.
 
 ## Running locally
-  * Install the latest stable version of [Node.js](https://nodejs.org/)
-  * Install Node.js via Node Version Manager [nvm](https://github.com/creationix/nvm) (recommended but not required). Run `nvm use` to easily use the correct node version for this repository. 
-  * Install [Yarn](https://yarnpkg.com/docs/install) for package management. Yarn helps to ensure everyone is using the same package versions.
+
+- Install the latest stable version of [Node.js](https://nodejs.org/)
+- Install Node.js via Node Version Manager [nvm](https://github.com/creationix/nvm) (recommended but not required). Run `nvm use` to easily use the correct node version for this repository.
+- Install [Yarn](https://yarnpkg.com/docs/install) for package management. Yarn helps to ensure everyone is using the same package versions.
 
 ### Getting started
 
 1. `yarn install`
 1. `yarn start` - Will run the site locally at http://localhost:3000/
-
 
 ### Scripts
 
@@ -52,18 +52,18 @@ These scripts can all be run from the root level of the repo:
 
 ## Building on top of the CMS Design System
 
-
 As a child design system, the Medicare.gov Design System shares the same tooling and organization as the CMSDS. For more information on how to extend and customize SASS, JS, and documentation, check out the [child design system example and its documentation](https://github.com/CMSgov/design-system/tree/master/examples/child-design-system).
 
 ### Updating the CMS Design System in the Medicare Design System
 
 The Medicare Design System depends on updates from the CMSDS. It is good practice to update the MDS when there are new releases to the CMSDS. Monitor the [CMSDS repository](https://github.com/CMSgov/design-system/releases) for the latest release. Follow these steps to update the CMSDS version in the Medicare Design System:
+
 - Update the following packages in the package.json file to the latest CMSDS version number.
- - devDependencies
-  - `@cmsgov/design-system-docs`
-  - `@cmsgov/design-system-scripts`
- - dependencies
-  - `@cmsgov/design-system`
+- devDependencies
+- `@cmsgov/design-system-docs`
+- `@cmsgov/design-system-scripts`
+- dependencies
+- `@cmsgov/design-system`
 - Run `Yarn install`
 - Make sure your yarn.lock file is updated.
 - Run `yarn start` to verify there are no breaking changes.
@@ -72,9 +72,10 @@ The Medicare Design System depends on updates from the CMSDS. It is good practic
 
 You can find the Medicare design system Sketch file and related fonts in the [design-assets folder](https://github.com/CMSgov/mgov-design-system/tree/master/design-assets).
 
-You can also view the [Medicare InVision Design System Manager design assets](https://cms.invisionapp.com/dsm/cms/medicare?mode=edit). 
+You can also view the [Medicare InVision Design System Manager design assets](https://cms.invisionapp.com/dsm/cms/medicare?mode=edit).
 
 ---
+
 ### Additional links
 
 - For more information on the original Design System, check out [its GitHub page](https://github.com/cmsgov/design-system).
@@ -83,4 +84,4 @@ You can also view the [Medicare InVision Design System Manager design assets](ht
 
 The design system is currently being applied to some pages on Medicare.gov and project teams are actively working to apply the design system consistently across additional Medicare products.
 
-* [Medicare Plan Compare](https://www.medicare.gov/plan-compare/).
+- [Medicare Plan Compare](https://www.medicare.gov/plan-compare/).

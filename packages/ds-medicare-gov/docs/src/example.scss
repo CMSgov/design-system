@@ -2,6 +2,6 @@ $font-path: './fonts';
 $image-path: './images';
 
 // Use overriden css from child DS src
-@import "../../src/styles/index";
+@import '../../src/styles/index';
 
 @import '@cmsgov/design-system-docs/src/styles/example';

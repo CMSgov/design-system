@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Stars } from "@design-system";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Stars } from '@design-system';
 
 ReactDOM.render(
   <div>
@@ -14,5 +14,5 @@ ReactDOM.render(
     <Stars number={4.5} />
     <Stars number={5} />
   </div>,
-  document.getElementById("js-example")
+  document.getElementById('js-example')
 );

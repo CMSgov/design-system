@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent } from 'react';
 import uniqueId from 'lodash/uniqueId';
 
 const EmptyStar: FunctionComponent = () => {
-  const clipPath1 = uniqueId("empty_clip_path_");
-  const clipPath2 = uniqueId("empty_clip_path_");
-  const clipPath3 = uniqueId("empty_clip_path_");
+  const clipPath1 = uniqueId('empty_clip_path_');
+  const clipPath2 = uniqueId('empty_clip_path_');
+  const clipPath3 = uniqueId('empty_clip_path_');
 
   return (
     <svg
@@ -45,11 +45,11 @@ const EmptyStar: FunctionComponent = () => {
 };
 
 const HalfStar: FunctionComponent = () => {
-  const clipPath1 = uniqueId("clip_path_");
-  const clipPath2 = uniqueId("clip_path_");
-  const clipPath3 = uniqueId("clip_path_");
-  const filterId = uniqueId("star_filter_");
-  const maskId = uniqueId("star_mask_");
+  const clipPath1 = uniqueId('clip_path_');
+  const clipPath2 = uniqueId('clip_path_');
+  const clipPath3 = uniqueId('clip_path_');
+  const filterId = uniqueId('star_filter_');
+  const maskId = uniqueId('star_mask_');
 
   return (
     <svg
@@ -88,27 +88,10 @@ const HalfStar: FunctionComponent = () => {
             </g>
           </g>
         </g>
-        <filter
-          id={filterId}
-          filterUnits="userSpaceOnUse"
-          x="3"
-          y="3"
-          width="19"
-          height="18"
-        >
-          <feColorMatrix
-            type="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
-          />
+        <filter id={filterId} filterUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" />
         </filter>
-        <mask
-          maskUnits="userSpaceOnUse"
-          x="3"
-          y="3"
-          width="19"
-          height="18"
-          id={maskId}
-        >
+        <mask maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18" id={maskId}>
           <g filter={`url(#${filterId})`}>
             <rect
               x="2"
@@ -174,11 +157,7 @@ interface StarsProps {
   ariaHidden?: boolean;
 }
 
-const Stars: FunctionComponent<StarsProps> = ({
-  number,
-  total,
-  ariaHidden = false,
-}) => {
+const Stars: FunctionComponent<StarsProps> = ({ number, total, ariaHidden = false }) => {
   const totalStars = total && number < 11 ? Math.ceil(total) : 5;
   const completeStars = Math.floor(number); // 3.5 -> 3
   const halfStar = number - completeStars !== 0; // 3.5 - 3 = 0.5, so half star exists
@@ -202,10 +181,7 @@ const Stars: FunctionComponent<StarsProps> = ({
   }
 
   return (
-    <span
-      aria-hidden={ariaHidden}
-      className="ds-u-display--flex ds-u-flex-wrap--nowrap"
-    >
+    <span aria-hidden={ariaHidden} className="ds-u-display--flex ds-u-flex-wrap--nowrap">
       {starIcons}
     </span>
   );

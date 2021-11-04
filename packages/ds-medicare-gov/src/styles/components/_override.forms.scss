@@ -8,8 +8,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px $focus-text-field-color-highlight,
-      inset 0 0 0 1px $focus-text-field-color;
+    box-shadow: 0 0 0 3px $focus-text-field-color-highlight, inset 0 0 0 1px $focus-text-field-color;
     border-color: $focus-text-field-color;
   }
 
@@ -49,15 +48,15 @@ select.ds-c-field {
 // All form labels inside `ds-c-fieldset` will be lowercase, except the <DateField> main form label
 // The <ChoiceList> form label and the day/month/year labels in <DateField> will be lowercase
 .ds-c-fieldset {
-  & > .ds-c-label:not([id^="datefield"]) {
+  & > .ds-c-label:not([id^='datefield']) {
     span:first-child {
       text-transform: none;
     }
   }
 }
 
-input[type="radio"] + .ds-c-label,
-input[type="checkbox"] + .ds-c-label {
+input[type='radio'] + .ds-c-label,
+input[type='checkbox'] + .ds-c-label {
   span:first-child {
     font-weight: $font-normal;
     text-transform: none;
@@ -67,7 +66,7 @@ input[type="checkbox"] + .ds-c-label {
   }
 }
 
-legend[id^="datefield_label"] {
+legend[id^='datefield_label'] {
   + div {
     span:first-child {
       text-transform: none;
@@ -117,8 +116,7 @@ legend[id^="datefield_label"] {
 }
 
 .ds-c-choice:focus + label::before {
-  box-shadow: 0 0 0 3px $focus-choice-color,
-    0 0 0 5px $focus-choice-color-highlight;
+  box-shadow: 0 0 0 3px $focus-choice-color, 0 0 0 5px $focus-choice-color-highlight;
 }
 
 // Size variants

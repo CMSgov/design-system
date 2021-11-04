@@ -1,9 +1,9 @@
-import React, { PureComponent, RefObject, createRef } from "react";
-import MedicaregovLogo from "./../MedicaregovLogo/MedicaregovLogo";
-import { Button } from "@cmsgov/design-system";
-import Caret from "./../Caret/Caret";
-import Hamburger from "../HamburgerSymbol";
-import Close from "../CloseSymbol";
+import React, { PureComponent, RefObject, createRef } from 'react';
+import MedicaregovLogo from './../MedicaregovLogo/MedicaregovLogo';
+import { Button } from '@cmsgov/design-system';
+import Caret from './../Caret/Caret';
+import Hamburger from '../HamburgerSymbol';
+import Close from '../CloseSymbol';
 
 interface GlobalHeaderProps {
   menuButtonAriaLabel?: string;
@@ -40,10 +40,7 @@ interface GlobalHeaderMenuState {
   open: boolean;
 }
 
-class GlobalHeaderMenu extends PureComponent<
-  GlobalHeaderMenuProps,
-  GlobalHeaderMenuState
-> {
+class GlobalHeaderMenu extends PureComponent<GlobalHeaderMenuProps, GlobalHeaderMenuState> {
   private menuRef: RefObject<HTMLDivElement>;
 
   constructor(props: GlobalHeaderMenuProps) {
@@ -60,7 +57,7 @@ class GlobalHeaderMenu extends PureComponent<
       <div className="m-c-globalHeader__dropdownContainer">
         <Button
           className={`m-c-globalHeader__dropdownButton ${
-            this.state.open ? "m-c-globalHeader__dropdownButton--opened" : ""
+            this.state.open ? 'm-c-globalHeader__dropdownButton--opened' : ''
           }`}
           onClick={
             onClick ||
@@ -72,9 +69,7 @@ class GlobalHeaderMenu extends PureComponent<
                 },
                 () => {
                   if (!mobile && this.menuRef.current) {
-                    const {
-                      x: menuX,
-                    } = this.menuRef.current.getBoundingClientRect();
+                    const { x: menuX } = this.menuRef.current.getBoundingClientRect();
 
                     const { clientWidth: menuWidth } = this.menuRef.current;
 
@@ -97,17 +92,12 @@ class GlobalHeaderMenu extends PureComponent<
             <Caret right={true} />
           ) : (
             <>
-              <Caret up={this.state.open} />{" "}
-              {srOnly && <span className="sr-only">{srOnly}</span>}
+              <Caret up={this.state.open} /> {srOnly && <span className="sr-only">{srOnly}</span>}
             </>
           )}
         </Button>
         {this.state.open && !mobile && (
-          <div
-            className="m-c-globalHeader__dropdownMenu"
-            tabIndex={0}
-            ref={this.menuRef}
-          >
+          <div className="m-c-globalHeader__dropdownMenu" tabIndex={0} ref={this.menuRef}>
             {this.props.panel}
           </div>
         )}
@@ -116,10 +106,7 @@ class GlobalHeaderMenu extends PureComponent<
   }
 }
 
-export default class GlobalHeader extends PureComponent<
-  GlobalHeaderProps,
-  GlobalHeaderState
-> {
+export default class GlobalHeader extends PureComponent<GlobalHeaderProps, GlobalHeaderState> {
   constructor(props: GlobalHeaderProps) {
     super(props);
     this.state = { menuOpen: false, currentPanel: null };
@@ -140,9 +127,9 @@ export default class GlobalHeader extends PureComponent<
 
     return (
       <header
-        className={`m-c-globalHeader ${
-          variation ? `m-c-globalHeader--${variation}` : ""
-        } ${noBorder ? `m-c-globalHeader--no-border` : ""}`}
+        className={`m-c-globalHeader ${variation ? `m-c-globalHeader--${variation}` : ''} ${
+          noBorder ? `m-c-globalHeader--no-border` : ''
+        }`}
       >
         <div className="m-c-globalHeader__top">
           <div className="m-c-globalHeader__logo">
@@ -152,16 +139,11 @@ export default class GlobalHeader extends PureComponent<
             {productName && (
               <div className="m-c-globalHeader__productNameDesktop">
                 {productLink ? (
-                  <a
-                    className="m-c-globalHeader__productName"
-                    href={productLink}
-                  >
+                  <a className="m-c-globalHeader__productName" href={productLink}>
                     {productName}
                   </a>
                 ) : (
-                  <h4 className="m-c-globalHeader__productName">
-                    {productName}
-                  </h4>
+                  <h4 className="m-c-globalHeader__productName">{productName}</h4>
                 )}
               </div>
             )}
@@ -174,11 +156,7 @@ export default class GlobalHeader extends PureComponent<
 
                   if (action.menuPanel) {
                     el = (
-                      <GlobalHeaderMenu
-                        key={index}
-                        text={action.text}
-                        panel={action.menuPanel}
-                      />
+                      <GlobalHeaderMenu key={index} text={action.text} panel={action.menuPanel} />
                     );
                   } else {
                     el = (
@@ -197,7 +175,7 @@ export default class GlobalHeader extends PureComponent<
               </ul>
             </nav>
             <Button
-              aria-label={menuButtonAriaLabel || "Navigation Menu"}
+              aria-label={menuButtonAriaLabel || 'Navigation Menu'}
               aria-expanded={menuOpen}
               className="m-c-globalHeader__openMenu"
               variation="transparent"
@@ -213,16 +191,11 @@ export default class GlobalHeader extends PureComponent<
             {productName && (
               <>
                 {productLink ? (
-                  <a
-                    className="m-c-globalHeader__productName"
-                    href={productLink}
-                  >
+                  <a className="m-c-globalHeader__productName" href={productLink}>
                     {productName}
                   </a>
                 ) : (
-                  <h4 className="m-c-globalHeader__productName">
-                    {productName}
-                  </h4>
+                  <h4 className="m-c-globalHeader__productName">{productName}</h4>
                 )}
               </>
             )}
@@ -230,9 +203,7 @@ export default class GlobalHeader extends PureComponent<
               <div className="m-c-globalHeader__mobilePanel">
                 <Button
                   className="m-c-globalHeader__mobilePanelBackButton"
-                  onClick={() =>
-                    this.setState({ ...this.state, currentPanel: null })
-                  }
+                  onClick={() => this.setState({ ...this.state, currentPanel: null })}
                 >
                   <Caret left={true} /> Back
                 </Button>

@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Card } from "@design-system";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Card } from '@design-system';
 
-ReactDOM.render(<Card />, document.getElementById("js-example"));
+ReactDOM.render(<Card />, document.getElementById('js-example'));
