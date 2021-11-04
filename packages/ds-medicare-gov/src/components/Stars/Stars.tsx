@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import uniqueId from "lodash.uniqueid";
+import uniqueId from 'lodash/uniqueId';
 
 const EmptyStar: FunctionComponent = () => {
   const clipPath1 = uniqueId("empty_clip_path_");

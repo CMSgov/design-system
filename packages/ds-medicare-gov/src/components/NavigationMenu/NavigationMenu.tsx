@@ -2,7 +2,7 @@ import { Button } from "@cmsgov/design-system";
 import Close from "../CloseSymbol";
 import Hamburger from "../HamburgerSymbol";
 import React from "react";
-import uniqueId from "lodash.uniqueid";
+import uniqueId from 'lodash/uniqueId';
 
 export interface NavigationMenuProps {
   alwaysShowMenuButton?: boolean;
