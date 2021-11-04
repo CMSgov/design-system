@@ -1,0 +1,4 @@
+.ds-c-dialog__close:not(.ds-c-button--transparent) {
+  background-image: none;
+  padding: ($multiple / 2) $multiple;
+}

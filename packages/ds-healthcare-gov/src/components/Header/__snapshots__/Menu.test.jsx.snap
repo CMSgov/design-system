@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu removes hidden state 1`] = `
+<nav
+  className="hc-c-menu hc-c-menu--open"
+  id="hc-c-menu"
+  role="navigation"
+>
+  <div
+    className="ds-l-container"
+  >
+    <div
+      className="ds-l-row"
+    >
+      <div
+        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
+      >
+        <div
+          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
+        >
+          <MenuLinks
+            links={
+              Array [
+                Object {
+                  "href": "#foo",
+                  "label": "Foo",
+                },
+                Object {
+                  "href": "#bar",
+                  "label": "Bar",
+                },
+              ]
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`Menu renders MenuList 1`] = `
+<nav
+  className="hc-c-menu"
+  id="hc-c-menu"
+  role="navigation"
+>
+  <div
+    className="ds-l-container"
+  >
+    <div
+      className="ds-l-row"
+    >
+      <div
+        className="hc-c-menu__content ds-u-padding--1 ds-u-font-weight--bold"
+      >
+        <div
+          className="ds-l-col ds-l-col--auto ds-u-padding-x--0"
+        >
+          <MenuLinks
+            links={
+              Array [
+                Object {
+                  "href": "#foo",
+                  "label": "Foo",
+                },
+                Object {
+                  "href": "#bar",
+                  "label": "Bar",
+                },
+              ]
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+`;

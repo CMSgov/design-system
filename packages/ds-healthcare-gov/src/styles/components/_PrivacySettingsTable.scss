@@ -1,0 +1,52 @@
+.hc-c-privacy-settings-table {
+  $breakpoint-large-min: $width-md;
+  $breakpoint-small-max: $breakpoint-large-min - 1;
+
+  @media screen and (max-width: $breakpoint-small-max) {
+    &,
+    tbody {
+      display: block;
+      width: 100%;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tr,
+    td {
+      display: block;
+      padding: $spacer-1 0;
+      text-align: left;
+      white-space: normal;
+    }
+
+    td {
+      border-width: 0;
+    }
+
+    [data-title]::before {
+      content: attr(data-title) ':\00A0';
+      font-weight: $font-bold;
+    }
+
+    td:nth-child(1) {
+      font-weight: $font-bold;
+    }
+
+    tr {
+      border-bottom: 2px solid $border-color;
+      margin-top: $spacer-1;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-large-min) {
+    th:nth-child(1) {
+      min-width: 110px;
+    }
+
+    th:nth-child(3) {
+      min-width: 130px;
+    }
+  }
+}
