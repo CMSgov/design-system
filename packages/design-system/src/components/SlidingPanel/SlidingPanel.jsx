@@ -52,22 +52,22 @@ export class SlidingPanel extends React.PureComponent {
     const slidingPanelMarkup = () => (
       <div
         aria-labelledby={this.id}
-        className={classNames(className, 'ds-c-help-drawer')}
+        className={classNames(className, 'ds-c-sliding-panel')}
         role="dialog"
       >
-        <div className="ds-c-help-drawer__window">
-          <div className="ds-c-help-drawer__header">
+        <div className="ds-c-sliding-panel__window">
+          <div className="ds-c-sliding-panel__header">
             <Heading
               tabIndex="0"
               id={this.id}
-              className="ds-c-help-drawer__header-heading"
+              className="ds-c-sliding-panel__header-heading"
               ref={(el) => (this.headingRef = el)}
             >
               {heading}
             </Heading>
             <Button
               aria-label={ariaLabel}
-              className="ds-c-help-drawer__close-button"
+              className="ds-c-sliding-panel__close-button"
               size="small"
               onClick={onCloseClick}
             >
@@ -75,15 +75,15 @@ export class SlidingPanel extends React.PureComponent {
             </Button>
           </div>
           <div
-            className={classNames('ds-c-help-drawer__body', {
-              'ds-c-help-drawer--is-sticky': isHeaderSticky || isFooterSticky,
+            className={classNames('ds-c-sliding-panel__body', {
+              'ds-c-sliding-panel--is-sticky': isHeaderSticky || isFooterSticky,
             })}
           >
             {children}
           </div>
-          <div className="ds-c-help-drawer__footer">
-            <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
-            <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
+          <div className="ds-c-sliding-panel__footer">
+            <h4 className="ds-c-sliding-panel__footer-title">{footerTitle}</h4>
+            <div className="ds-c-sliding-panel__footer-body">{footerBody}</div>
           </div>
         </div>
       </div>

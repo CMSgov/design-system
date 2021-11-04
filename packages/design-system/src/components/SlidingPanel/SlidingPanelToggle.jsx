@@ -16,8 +16,8 @@ export class SlidingPanelToggle extends React.PureComponent {
   render() {
     const { className, children, inline, showPanel, panelOpen, ...others } = this.props;
     const classes = classNames(
-      'ds-c-help-drawer__toggle',
-      inline && 'ds-c-help-drawer__toggle--inline',
+      'ds-c-sliding-panel__toggle',
+      inline && 'ds-c-sliding-panel__toggle--inline',
       className
     );
 

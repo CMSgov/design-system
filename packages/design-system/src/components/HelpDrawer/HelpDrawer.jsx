@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SlidingPanel from '../SlidingPanel/SlidingPanel';
 import { helpDrawerSendsAnalytics } from '../flags';
+import classNames from 'classnames';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -66,9 +67,13 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   render() {
-    const { children, title, ...others } = this.props;
+    const { children, className, title, ...others } = this.props;
 
-    return <SlidingPanel {...others}>{children}</SlidingPanel>;
+    return (
+      <SlidingPanel className={classNames(className, 'ds-c-help-drawer')} {...others}>
+        {children}
+      </SlidingPanel>
+    );
   }
 }
 

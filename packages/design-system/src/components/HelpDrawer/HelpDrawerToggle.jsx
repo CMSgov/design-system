@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import SlidingPanelToggle from '../SlidingPanel/SlidingPanelToggle';
+import classNames from 'classnames';
 
 /**
  * A link that triggers the visibility of a help drawer
  */
 
 export const HelpDrawerToggle = function (props) {
-  const { children, showDrawer, helpDrawerOpen, ...others } = props;
+  const { children, className, showDrawer, helpDrawerOpen, ...others } = props;
 
   return (
-    <SlidingPanelToggle panelOpen={helpDrawerOpen} showPanel={() => showDrawer()} {...others}>
+    <SlidingPanelToggle
+      className={classNames(className, 'ds-c-help-drawer__toggle')}
+      panelOpen={helpDrawerOpen}
+      showPanel={() => showDrawer()}
+      {...others}
+    >
       {children}
     </SlidingPanelToggle>
   );
