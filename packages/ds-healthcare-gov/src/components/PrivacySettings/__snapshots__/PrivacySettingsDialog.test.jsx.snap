@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PrivacySettingsDialog /> renders the privacy settings dialog 1`] = `
+<Dialog
+  actions={
+    <Button
+      component="button"
+      onClick={[Function]}
+      type="button"
+      variation="primary"
+    >
+      privacy.save
+    </Button>
+  }
+  actionsClassName="ds-u-text-align--right"
+  ariaCloseLabel="Close modal dialog"
+  closeButtonSize="small"
+  closeButtonText="Close"
+  closeButtonVariation="secondary"
+  escapeExitDisabled={false}
+  escapeExits={true}
+  onExit={[Function]}
+  size="full"
+  title="privacy.dialogTitle"
+  underlayClickExits={false}
+>
+  <p
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "privacy.introText",
+      }
+    }
+  />
+  <PrivacySettingsTable
+    privacySettings={
+      Array [
+        Object {
+          "settingsKey": "c3",
+          "translationKey": "advertising",
+          "value": "0",
+        },
+        Object {
+          "settingsKey": "c4",
+          "translationKey": "socialMedia",
+          "value": "1",
+        },
+        Object {
+          "settingsKey": "c2",
+          "translationKey": "webAnalytics",
+          "value": "0",
+        },
+      ]
+    }
+    setPrivacySetting={[Function]}
+    t={[Function]}
+  />
+</Dialog>
+`;

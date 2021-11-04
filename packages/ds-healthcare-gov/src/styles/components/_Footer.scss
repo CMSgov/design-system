@@ -1,0 +1,60 @@
+@import './Logo';
+
+.hc-c-footer {
+  a {
+    color: $color-muted;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $color-primary-darker;
+    }
+  }
+}
+
+.hc-c-footer__inline-item {
+  color: $color-muted;
+  // We use a right margin and padding to avoid a weird
+  // left indent when an item wraps to the next line
+  margin-right: $spacer-half;
+
+  a {
+    padding-right: $spacer-half;
+  }
+
+  // "Privacy Settings" link is a button
+  button {
+    background-color: inherit;
+    border: 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    padding-right: $spacer-half;
+    text-decoration: none;
+
+    &:focus {
+      @include focus-styles;
+    }
+  }
+
+  &:not(:last-child)::after {
+    $hc-c-footer-list-marker-size: 2px;
+
+    background-color: currentColor;
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: $hc-c-footer-list-marker-size;
+    vertical-align: middle;
+    width: $hc-c-footer-list-marker-size;
+  }
+
+  &:first-child a {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

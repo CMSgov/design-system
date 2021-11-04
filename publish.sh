@@ -14,13 +14,13 @@ CYAN="\033[0;36m"
 NC='\033[0m' # No color
 
 echo "${GREEN}Checking out release $1...${NC}"
-TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
 git fetch --tags
-git checkout tags/$TAG_PREFIX$1
+git checkout tags/$1
 
 echo "${GREEN}Building packages...${NC}"
 yarn install
 yarn build
+yarn build:healthcare
 
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
 if [[ $1 == *"beta"* ]]; then
@@ -34,6 +34,7 @@ echo "${GREEN}Creating release zip...${NC}"
 npm pack ./packages/design-system/
 npm pack ./packages/design-system-docs/
 npm pack ./packages/design-system-scripts/
+npm pack ./packages/ds-healthcare-gov/
 
 echo "${GREEN}Done.${NC}"
 echo ""

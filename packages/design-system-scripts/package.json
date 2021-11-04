@@ -6,7 +6,11 @@
     "tag": "latest"
   },
   "description": "Scripts for developing and distributing the CMS Design System and child design systems",
-  "repository": "CMSgov/design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/design-system-scripts"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "bin": {
     "cmsds": "./cli.js"
@@ -70,13 +74,15 @@
     "node-sass": "4.14.1",
     "postcss-import": "^11.1.0",
     "prismjs": "1.25.0",
+    "react": "16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-docgen": "4.1.1",
     "react-docgen-typescript": "^1.18.0",
-    "react-test-renderer": "16.8.6",
+    "react-dom": "16.14.0",
+    "react-test-renderer": "16.14.0",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
-    "selenium-webdriver": "4.0.0-alpha.7",
+    "selenium-webdriver": "4.0.0",
     "static-server": "^2.2.1",
     "through2": "^2.0.3",
     "ts-loader": "^6.2.1",

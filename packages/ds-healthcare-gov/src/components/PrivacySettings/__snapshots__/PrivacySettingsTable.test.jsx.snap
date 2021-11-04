@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PrivacySettingsTable /> renders the privacy settings table 1`] = `
+<table
+  className="ds-c-table ds-c-table--borderless hc-c-privacy-settings-table"
+>
+  <thead>
+    <tr>
+      <th
+        scope="col"
+      >
+        privacy.category
+      </th>
+      <th
+        scope="col"
+      >
+        privacy.description
+      </th>
+      <th
+        scope="col"
+      >
+        privacy.status
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="key1"
+    >
+      <td
+        data-title="privacy.category"
+      >
+        privacy.setting1.category
+      </td>
+      <td
+        data-title="privacy.description"
+      >
+        privacy.setting1.description
+      </td>
+      <td
+        data-title="privacy.status"
+      >
+        <ChoiceList
+          aria-label="privacy.setting1.description"
+          choices={
+            Array [
+              Object {
+                "checked": true,
+                "label": "privacy.allow",
+                "value": "0",
+              },
+              Object {
+                "checked": false,
+                "label": "privacy.dontAllow",
+                "value": "1",
+              },
+            ]
+          }
+          className="ds-u-margin-top--0"
+          label={
+            <span
+              className="ds-u-visibility--screen-reader"
+            >
+              privacy.setting1.category
+            </span>
+          }
+          name="cookie-key1"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </td>
+    </tr>
+    <tr
+      key="key2"
+    >
+      <td
+        data-title="privacy.category"
+      >
+        privacy.setting2.category
+      </td>
+      <td
+        data-title="privacy.description"
+      >
+        privacy.setting2.description
+      </td>
+      <td
+        data-title="privacy.status"
+      >
+        <ChoiceList
+          aria-label="privacy.setting2.description"
+          choices={
+            Array [
+              Object {
+                "checked": false,
+                "label": "privacy.allow",
+                "value": "0",
+              },
+              Object {
+                "checked": true,
+                "label": "privacy.dontAllow",
+                "value": "1",
+              },
+            ]
+          }
+          className="ds-u-margin-top--0"
+          label={
+            <span
+              className="ds-u-visibility--screen-reader"
+            >
+              privacy.setting2.category
+            </span>
+          }
+          name="cookie-key2"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </td>
+    </tr>
+    <tr
+      key="key3"
+    >
+      <td
+        data-title="privacy.category"
+      >
+        privacy.setting3.category
+      </td>
+      <td
+        data-title="privacy.description"
+      >
+        privacy.setting3.description
+      </td>
+      <td
+        data-title="privacy.status"
+      >
+        <ChoiceList
+          aria-label="privacy.setting3.description"
+          choices={
+            Array [
+              Object {
+                "checked": true,
+                "label": "privacy.allow",
+                "value": "0",
+              },
+              Object {
+                "checked": false,
+                "label": "privacy.dontAllow",
+                "value": "1",
+              },
+            ]
+          }
+          className="ds-u-margin-top--0"
+          label={
+            <span
+              className="ds-u-visibility--screen-reader"
+            >
+              privacy.setting3.category
+            </span>
+          }
+          name="cookie-key3"
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

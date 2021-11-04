@@ -1,6 +1,8 @@
 module.exports = {
   // Flag used by the core CMS design system, should be false for child design systems
   core: true,
+  // Flag for whether this package exists in our monorepo
+  monorepo: true,
   // The relative path to the directory containing the design system package `src`. The design system build files will be saved here under "dist".
   sourceDir: './packages/design-system',
   // The relative path to the directory containing the doc site `src`. The doc site build files will be saved here under "dist".
