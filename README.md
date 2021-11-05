@@ -23,6 +23,8 @@ You're currently at the root of a monorepo containing multiple NPM packages loca
 | [CMS Design System](packages/design-system)                | The core CSS, JS, and React components for the design system. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system)](https://www.npmjs.com/package/@cmsgov/design-system)                                                                                                                                                                                                                     |
 | [Design System Documentation](packages/design-system-docs) | Markdown files containing documentation for the core design system site. These files are used by `@cmsgov/design-system-scripts` to generate our documentation site. <br> [![@cmsgov/design-system](https://img.shields.io/npm/v/@cmsgov/design-system.svg?label=@cmsgov%2Fdesign-system-docs)](https://www.npmjs.com/package/@cmsgov/design-system-docs)                                                                                                    |
 | [Design System Scripts](packages/design-system-docs)       | Scripts for compiling, testing, and linting design system assets. Also contains scripts for building and serving the documentation site. This is used internally by the core CMS design system team, but is made public for child design systems. <br> [![@cmsgov/design-system-scripts](https://img.shields.io/npm/v/@cmsgov/design-system-scripts.svg?label=@cmsgov%2Fdesign-system-scripts)](https://www.npmjs.com/package/@cmsgov/design-system-scripts) |
+| [Healthcare.gov Design System](packages/ds-healthcare-gov) | Design system used by application teams at healthcare.gov <br> [![npm](https://img.shields.io/npm/v/@cmsgov/ds-healthcare-gov.svg?label=@cmsgov%2Fds-healthcare-gov)](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov)                                                                                                                                                                                                                               |
+| [Medicare.gov Design System](packages/ds-medicare-gov)     | Design system used by application teams at medicare.gov <br> [![npm](https://img.shields.io/npm/v/@cmsgov/ds-medicare-gov.svg?label=@cmsgov%2Fds-medicare-gov)](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov)                                                                                                                                                                                                                                       |
 
 ## Running locally
 
@@ -43,23 +45,31 @@ These scripts can all be run from the root level of the repo:
 - `yarn start`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
+  - `yarn start:healthcare` to start the Healthcare.gov Design System's documentation site
+  - `yarn start:medicare` to start the Medicare.gov Design System's documentation site
 - `yarn build`
   - Compile/transpile/uglify everything and makes things release-ready.
-- `yarn pre-release`
-  - Increments package versions. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
-- `yarn release`
-  - Publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
+  - `yarn build:healthcare` to build the Healthcare.gov Design System
+  - `yarn build:medicare` to build the Medicare.gov Design System
 - `yarn test`
   - Runs JS unit tests
   - Runs Prettier for formatting
   - Lints JS using ESLint
   - Lints Sass using stylelint
+- `yarn test:unit`
+  - Runs only the JS unit tests
 - `yarn test:a11y`
-  - Runs end to end tests
+  - Runs acessibility tests
+  - `yarn test:a11y:healthcare` to run the Healthcare.gov Design System's accessibility tests
+  - `yarn test:a11y:medicare` to run the Medicare.gov Design System's accessibility tests
 - `yarn update-snapshots`
   - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
 - `yarn lint`
   - Runs just the linting portion of the tests
+- `yarn release`
+  - Bumps package versions and tags a release commit. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
+- `yarn publish-release`
+  - Publishes npm packages. Read our [Release Process guide](/guides/RELEASE-PROCESS.md) for more info.
 
 ### Visual regression testing
 
