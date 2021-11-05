@@ -54,7 +54,7 @@ These scripts can all be run from the root level of the repo:
   - Runs Prettier for formatting
   - Lints JS using ESLint
   - Lints Sass using stylelint
-- `yarn test:e2e`
+- `yarn test:a11y`
   - Runs end to end tests
 - `yarn update-snapshots`
   - Updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
@@ -63,7 +63,7 @@ These scripts can all be run from the root level of the repo:
 
 ### Visual regression testing
 
-In addition to unit and e2e tests, we're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
+In addition to unit and a11y tests, we're using [backstopJS](https://github.com/garris/BackstopJS) for visual regression testing. Here's how to run the tests.
 
 - Install backstopJS `yarn install`
 - Run the site locally `yarn start`

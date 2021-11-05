@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders basic footer 1`] = `
+<footer
+  className="hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5"
+  role="contentinfo"
+>
+  <InlineLinkLists
+    primaryDomain=""
+    t={[Function]}
+  />
+  <LogosRow
+    t={[Function]}
+  />
+</footer>
+`;
+
+exports[`Footer renders basic footer with props 1`] = `
+<footer
+  className="hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5 ds-t-test-class"
+  role="contentinfo"
+>
+  <InlineLinkLists
+    primaryDomain="https://www.healthcare.gov"
+    t={[Function]}
+  />
+  <LogosRow
+    t={[Function]}
+  />
+</footer>
+`;

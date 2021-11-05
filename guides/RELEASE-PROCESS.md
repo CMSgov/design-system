@@ -49,7 +49,7 @@ Run
 yarn release
 ```
 
-and go through the interactive prompt to choose the release version. See notes on [SemVer release format](#versioning). It will automatically apply the version bumps, commit it to a branch, and tag it as a release.
+and go through the interactive prompt to choose the release version. See notes on [SemVer release format](#versioning). **For beta releases,** you must select the "custom version" option and manually enter your version. It will automatically apply the version bumps, commit it to a branch, and tag it as a release.
 
 ## 2. Publish to npm
 
@@ -162,3 +162,7 @@ Example changes:
 
 - Renamed or removed classes, mixins, functions, placeholders, or global variables.
 - Major visual changes to existing components
+
+### Beta release
+
+Beta releases will follow all the semantic versioning guidelines above but also append `.beta-[number]`, e.g. `2.0.0-beta.1`. Beta versions start at 1 and are incremented each time we need to release an updated beta for this release.

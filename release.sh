@@ -8,35 +8,36 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
-echo "${GREEN}Bumping version...${NC}"
-yarn lerna version \
-  --no-push \
-  --no-git-tag-version \
-  --force-publish=@cmsgov/design-system,@cmsgov/design-system-docs,@cmsgov/design-system-scripts
+echo "${GREEN}Creating release branch...${NC}"
+DATE=$(date "+%Y-%m-%d")
+BRANCH="release-${DATE}"
+git checkout -b $BRANCH
 
-if git diff-index --quiet HEAD --; then
-  echo "${RED}No local changes detected, therefore version bump did not occur. Exiting...${NC}"
+echo "${GREEN}Bumping version...${NC}"
+PRE_VERSION_HASH=$(git rev-parse HEAD)
+yarn lerna version --no-push
+POST_VERSION_HASH=$(git rev-parse HEAD)
+
+if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
+  echo "${RED}No bump commit detected. Removing release branch and exiting...${NC}"
+  git checkout -
+  git branch -D $BRANCH
   exit 1
 fi
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"
-PACKAGE_VERSION=$(node -pe "require('./lerna.json').version")
-TAG_PREFIX=$(node -pe "require('./lerna.json').tagVersionPrefix")
-TAG="$TAG_PREFIX$PACKAGE_VERSION"
-BRANCH="release-$PACKAGE_VERSION"
-
-# Create and push release branch containing the updated package versions
-git checkout -b $BRANCH
-git add --all
-git commit -m "Bump package version to $PACKAGE_VERSION"
 git push --set-upstream origin $BRANCH
+git push origin --tags
 
-# Create and push tag
-git tag $TAG
-git push origin $TAG
+# Grep the last commit message for package versions
+PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")
+# Take the first one we find to use in example command
+PACKAGE_VERSION=$(echo "$PACKAGE_VERSIONS" | head -1)
 
 echo ""
-echo "${GREEN}Release ${CYAN}$PACKAGE_VERSION${GREEN} has been tagged and pushed to origin.${NC}"
+echo "${GREEN}Release has been tagged and pushed to origin.${NC}"
+echo ""
+echo "${PACKAGE_VERSIONS}"
 echo ""
 echo "${YELLOW}-------${NC}"
 echo ""

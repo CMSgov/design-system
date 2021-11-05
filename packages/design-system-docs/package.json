@@ -6,7 +6,11 @@
     "tag": "latest"
   },
   "description": "Design system's documentation website",
-  "repository": "CMSgov/design-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CMSgov/design-system",
+    "directory": "packages/design-system-docs"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "@cmsgov/design-system": "^2.10.0-beta.1",
