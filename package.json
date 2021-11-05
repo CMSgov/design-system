@@ -22,18 +22,35 @@
     "posttest": "yarn lint",
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'",
     "prepare": "husky install",
-    "gh-pages": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'"
+    "gh-pages": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-object-assign": "^7.16.0",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.3.12",
+    "@storybook/theming": "^6.3.12",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-typescript-to-proptypes": "^2.0.0",
     "backstopjs": "^5.0.4",
+    "css-loader": "5",
     "eslint": "^6.8.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.0",
     "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
+    "sass": "^1.43.4",
+    "sass-loader": "10",
+    "style-loader": "2",
     "stylelint": "^13.3.2"
   },
   "engines": {
@@ -64,5 +81,6 @@
   "browserslist": [
     "> 2%",
     "Last 2 versions"
-  ]
+  ],
+  "dependencies": {}
 }
