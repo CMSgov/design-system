@@ -38,7 +38,7 @@ describe('SlidingPanelToggle', () => {
   it('applies inline display style via inline prop', () => {
     const { wrapper } = renderSlidingPanelToggle({ inline: true });
     const toggle = wrapper.find('Button');
-    expect(toggle.hasClass('ds-c-help-drawer__toggle--inline')).toBe(true);
+    expect(toggle.hasClass('ds-c-sliding-panel__toggle--inline')).toBe(true);
   });
 
   it('applies custom class via className prop', () => {
