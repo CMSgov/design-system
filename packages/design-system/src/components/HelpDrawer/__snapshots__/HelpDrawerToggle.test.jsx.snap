@@ -2,6 +2,7 @@
 
 exports[`HelpDrawerToggle renders a button 1`] = `
 <SlidingPanelToggle
+  className="ds-c-help-drawer__toggle"
   inline={false}
   panelOpen={false}
   showPanel={[Function]}

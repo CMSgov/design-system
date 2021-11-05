@@ -2,7 +2,7 @@
 
 exports[`SlidingPanelToggle renders a button 1`] = `
 <Button
-  className="ds-c-help-drawer__toggle"
+  className="ds-c-sliding-panel__toggle"
   component="button"
   inputRef={[Function]}
   onClick={[Function]}
