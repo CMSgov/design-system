@@ -97,38 +97,56 @@ HelpDrawer.propTypes = {
    */
   analyticsLabelOverride: PropTypes.string,
   /**
-   * Helps give more context to screen readers on the button that closes the Help Drawer
+   * @hide-prop Helps give more context to screen readers on the button that closes the Help Drawer
    */
   ariaLabel: PropTypes.string,
+  /**
+   * @hide-prop
+   */
   closeButtonText: PropTypes.node,
+  /**
+   * @hide-prop
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * @hide-prop
+   */
   className: PropTypes.string,
+  /**
+   * @hide-prop
+   */
   footerBody: PropTypes.node,
+  /**
+   * @hide-prop
+   */
   footerTitle: PropTypes.string,
   /**
-   * Enables focus trap functionality within HelpDrawer.
+   * @hide-prop Enables focus trap functionality within HelpDrawer.
    */
   hasFocusTrap: PropTypes.bool,
   /**
-   * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
+   * @hide-prop Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
-   * A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
+   * @hide-prop A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
    */
   headingId: PropTypes.string,
   /**
-   * Heading type to override default `<h3>`
+   * @hide-prop Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   /**
-   * Enables "sticky" position of HelpDrawer header element.
+   * @hide-prop Enables "sticky" position of HelpDrawer header element.
    */
   isHeaderSticky: PropTypes.bool,
   /**
-   * Enables "sticky" position of HelpDrawer footer element.
+   * @hide-prop Enables "sticky" position of HelpDrawer footer element.
    */
   isFooterSticky: PropTypes.bool,
+  /**
+   * @hide-prop
+   */
   onCloseClick: PropTypes.func.isRequired,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
