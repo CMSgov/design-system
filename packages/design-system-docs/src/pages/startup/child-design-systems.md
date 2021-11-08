@@ -33,6 +33,5 @@ See the [child design system example](https://github.com/CMSgov/design-system/tr
 
 ## Child design system guidelines
 
-- A child design system should be actively maintained by product teams using the child design system. The core CMSDS team is not responsible for updating child design systems, however we are responsible for guidelines and assisting with training and adoption.
-- Users of child design systems should contribute back to the larger CMS design system community by filing issues/bugs in Github or Jira, giving feedback, and general maintenance. Collaboration and participation are essential to the success of the CMS design system family.
-- A child design system should defer to the core CMS design system for best practices or accessibility guidelines.
+- The healthcare.gov and medicare.gov child design systems are actively maintained by the core CMSDS team. Please reach out if you have questions about adoption, use, contribution, or anything else related to these design systems.
+- Users of child design systems are encouraged to contribute back to the larger CMS design system community by filing issues/bugs in Github or Jira, giving feedback, and general maintenance. Collaboration and participation are important to the success of the CMS design system family.
