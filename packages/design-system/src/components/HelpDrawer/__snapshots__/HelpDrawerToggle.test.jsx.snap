@@ -5,7 +5,7 @@ exports[`HelpDrawerToggle renders a button 1`] = `
   className="ds-c-help-drawer__toggle"
   inline={false}
   panelOpen={false}
-  showPanel={[Function]}
+  showPanel={[MockFunction]}
 >
   <p>
     content

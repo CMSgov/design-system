@@ -5,7 +5,7 @@ exports[`SlidingPanelToggle renders a button 1`] = `
   className="ds-c-sliding-panel__toggle"
   component="button"
   inputRef={[Function]}
-  onClick={[Function]}
+  onClick={[MockFunction]}
   type="button"
   variation="transparent"
 >
