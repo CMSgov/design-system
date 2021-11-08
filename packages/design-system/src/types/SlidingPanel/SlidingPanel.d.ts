@@ -18,7 +18,7 @@ export interface SlidingPanelProps {
   /**
    * Enables focus trap functionality within SlidingPanel.
    */
-  hasFocusTrap: boolean;
+  hasFocusTrap?: boolean;
   /**
    * Text for the SlidingPanel heading. Required because the `heading` will be focused on mount.
    */
@@ -26,7 +26,7 @@ export interface SlidingPanelProps {
   /**
    * A unique `id` to be used on heading element to label multiple instances of SlidingPanel.
    */
-  headingId: string;
+  headingId?: string;
   /**
    * Heading type to override default `<h3>`
    */
@@ -34,11 +34,11 @@ export interface SlidingPanelProps {
   /**
    * Enables "sticky" position of SlidingPanel header element.
    */
-  isHeaderSticky: boolean;
+  isHeaderSticky?: boolean;
   /**
    * Enables "sticky" position of SlidingPanel footer element.
    */
-  isFooterSticky: boolean;
+  isFooterSticky?: boolean;
   onCloseClick: (...args: any[]) => any;
 }
 

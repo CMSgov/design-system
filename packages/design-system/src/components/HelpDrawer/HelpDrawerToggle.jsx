@@ -7,14 +7,14 @@ import classNames from 'classnames';
  * A link that triggers the visibility of a help drawer
  */
 
-export const HelpDrawerToggle = function (props) {
+const HelpDrawerToggle = function (props) {
   const { children, className, showDrawer, helpDrawerOpen, ...others } = props;
 
   return (
     <SlidingPanelToggle
       className={classNames(className, 'ds-c-help-drawer__toggle')}
       panelOpen={helpDrawerOpen}
-      showPanel={() => showDrawer()}
+      showPanel={showDrawer}
       {...others}
     >
       {children}

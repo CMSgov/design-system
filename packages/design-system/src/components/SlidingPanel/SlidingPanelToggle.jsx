@@ -6,7 +6,7 @@ import classNames from 'classnames';
 /**
  * A link that triggers the visibility of a sliding panel
  */
-export class SlidingPanelToggle extends React.PureComponent {
+class SlidingPanelToggle extends React.PureComponent {
   componentDidUpdate(prevProps) {
     if (!this.props.panelOpen && prevProps.panelOpen && this.buttonRef) {
       this.buttonRef.focus();
@@ -25,7 +25,7 @@ export class SlidingPanelToggle extends React.PureComponent {
       <Button
         className={classes}
         inputRef={(el) => (this.buttonRef = el)}
-        onClick={() => showPanel()}
+        onClick={showPanel}
         variation="transparent"
         {...others}
       >
