@@ -1,51 +1,67 @@
 /*
-Help Drawer
+Sliding Panel & Help Drawer
 
-@analytics
+A sliding panel provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
 
-A help drawer provides a space for medium to long-form help
-content — content that's too long or not common enough to warrant
-being on the page by default.
+On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
 
-On large screens it's fixed to the side of the screen, and on
-smaller screens it overlays the entire screen.
+Render the drawer below the toggle button that triggers it. This way the markup remains semantically sound and screen reader friendly.
 
-Render the drawer below the toggle button that triggers it.
-This way the markup remains semantically sound and screen reader friendly.
+Markup: sliding-panel.example.html
 
-Markup: help-drawer.example.html
-
-Style guide: components.help-drawer
+Style guide: components.sliding-panel
 */
 
 /*
-`<HelpDrawer>`
+`<SlidingPanel>`
 
-@react-example HelpDrawer.example.jsx
+@react-example SlidingPanelDefault.example.jsx
 
-@react-props HelpDrawer.jsx
+@react-props SlidingPanel.jsx
 
-Style guide: components.help-drawer.react-help-drawer
+Style guide: components.sliding-panel.react-sliding-panel
 */
 
 /*
-HelpDrawer layout alternatives
+`<SlidingPanel>` layout alternatives
 
 A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
 - `isHeaderSticky`
 - `isFooterSticky`
 
-@react-example HelpDrawerSticky.example.jsx
+@react-example SlidingPanelLayoutOptions.example.jsx
 
-Style guide: components.help-drawer.react-help-drawer-sticky
+Style guide: components.sliding-panel.react-sliding-panel-layout-options
 */
 
 /*
-`<HelpDrawerToggle>`
+`<SlidingPanel>` focus trap
 
-@react-props HelpDrawerToggle.jsx
+A focus trap can be set on a sliding panel if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
 
-Style guide: components.help-drawer.react-help-drawer-toggle
+@react-example SlidingPanelFocusTrap.example.jsx
+
+Style guide: components.sliding-panel.react-sliding-panel-focus-trap
+*/
+
+/*
+`<SlidingPanelToggle>`
+
+@react-props SlidingPanelToggle.jsx
+
+Style guide: components.sliding-panel.react-sliding-panel-toggle
+*/
+
+/*
+`<HelpDrawer>`
+
+This component is an enhanced `<SlidingPanel>` component, providing the same properties as `<SlidingPanel>` in addition to Google Analytics properties.
+
+@react-example HelpDrawer.example.jsx
+
+@react-props HelpDrawer.jsx
+
+Style guide: components.sliding-panel.react-help-drawer
 */
 
 /*
@@ -53,8 +69,8 @@ Style guide: components.help-drawer.react-help-drawer-toggle
 
 ### When to use
 
-- When users need help content to remain viewable while also allowing the user to views/interacts with the main page.
-- When the help content is longer than 2 sentences.
+- When users need content to remain viewable while also allowing the user to views/interacts with the main page.
+- When the content is longer than 2 sentences.
 - When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
 - When the content just needs to be available at the user's discretion, to provide additional details or context.
 - When users may need additional information to complete the task than can be supplied on the main page without overwhelming the primary content.
@@ -71,12 +87,12 @@ Style guide: components.help-drawer.react-help-drawer-toggle
 - Link text used to trigger the help drawer should be specific and descriptive.
   - Avoid using only "Learn more" to link to help drawer content
   - Limit the amount of link text
-- Help drawer content area should include a close button clearly at the top.
+- Sliding panel content area should include a close button clearly at the top.
 
 ### Accessibility
 
 - Focus should move to the content in the help drawer after the user has opened it.
-- Help Drawer should support keyboard navigation.
+- Sliding Panel should support keyboard navigation.
     - `Enter` and `Space` to select the highlighted item.
     - `Tab` to move the focus sequentially through the list of focusable items
     - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
@@ -87,21 +103,23 @@ The property `hasFocusTrap` is an available option that will prevent keyboard fo
 
 When the property `hasFocusTrap` is enabled...
 - Keyboard focus is trapped within the HelpDrawer component.
-- Pressing the escape key will close the HelpDrawer.
+- Pressing the escape key will close the SlidingPanel.
 
-A focus trap should *not* be used when it's anticipated that the user will rely on the HelpDrawer as a reference resource for doing something outside of the HelpDrawer. For instance, if the user is completing a form, HelpDrawer may contain a reference guide defining specific requirements.
+A focus trap should *not* be used when it's anticipated that the user will rely on the SlidingPanel as a reference resource for doing something outside of the SlidingPanel. For instance, if the user is completing a form, SlidingPanel may contain a reference guide defining specific requirements.
 
-However, there are times when it makes sense to trap focus within the HelpDrawer. One occassion where it can benefit the user is when the HelpDrawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
+However, there are times when it makes sense to trap focus within the SlidingPanel. One occassion where it can benefit the user is when the SlidingPanel is anticipated to fill the viewport of a screen, i.e., mobile layout.
 
 ### Future Work
 
 Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
 
-Style guide: components.help-drawer.guidance
+Style guide: components.sliding-panel.guidance
 */
 
 /*
 Google Analytics
+
+Google analytics are available via the `<HelpDrawer>` component.
 
 **Analytics event tracking is disabled by default.**
 
@@ -127,5 +145,5 @@ analytics={false}
 
 A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
-Style guide: components.help-drawer.guidance-analytics
+Style guide: components.sliding-panel.guidance-analytics
 */
