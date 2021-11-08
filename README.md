@@ -57,7 +57,7 @@ These scripts can all be run from the root level of the repo:
   - Lints JS using ESLint
   - Lints Sass using stylelint
 - `yarn test:unit`
-  - Runs only the JS unit tests
+  - Runs JS unit tests for all packages
 - `yarn test:a11y`
   - Runs acessibility tests
   - `yarn test:a11y:healthcare` to run the Healthcare.gov Design System's accessibility tests
