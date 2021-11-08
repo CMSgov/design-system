@@ -3,6 +3,7 @@ $header-background-color: $color-background;
 .hc-c-header {
   background-color: $header-background-color;
   box-shadow: 0 0 10px 0 $color-gray-light;
+  isolation: isolate;
 }
 
 // Add `ds-l-col.ds-l-col--auto` to give a higher specificity. This fixes the
