@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+        <title>Example: components.skip-nav.react</title>
+        <link rel="stylesheet" href="/design-system/medicare/example.css" />
+        
+      
+</head>
+<body class="ds-base">
+  
+        <div id="js-example"></div>
+        <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+        <script type="text/javascript">!function(e){var n={};function t(r){if(n[r])return n[r].exports;var a=n[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,t),a.l=!0,a.exports}t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:r})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(t.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var a in e)t.d(r,a,function(n){return e[n]}.bind(null,a));return r},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="",t(t.s=3)}([function(e,n){e.exports=React},function(e,n,t){e.exports=t(4)()},function(e,n){e.exports=ReactDOM},function(e,n,t){e.exports=t(6)},function(e,n,t){"use strict";var r=t(5);function a(){}function i(){}i.resetWarningCache=a,e.exports=function(){function e(e,n,t,a,i,o){if(o!==r){var c=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw c.name="Invariant Violation",c}}function n(){return e}e.isRequired=e;var t={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:n,element:e,elementType:e,instanceOf:n,node:e,objectOf:n,oneOf:n,oneOfType:n,shape:n,exact:n,checkPropTypes:i,resetWarningCache:a};return t.PropTypes=t,t}},function(e,n,t){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,n,t){"use strict";t.r(n);var r=t(0),a=t.n(r),i=t(2),o=t.n(i),c=t(1),l=t.n(c);function s(e){var n=e.children,t=e.href,r=e.onClick;return a.a.createElement("a",{className:"ds-c-skip-nav",href:t,onClick:r},n)}s.defaultProps={children:"Skip to main content"},s.propTypes={children:l.a.oneOfType([l.a.string,l.a.node]).isRequired,href:l.a.string.isRequired,onClick:l.a.func};var u=s;o.a.render(a.a.createElement("div",null,a.a.createElement(u,{href:"#main"}),a.a.createElement("nav",{className:"ds-u-padding--3"},a.a.createElement("h1",{className:"ds-u-margin--0"},"Navigation"),a.a.createElement("p",{className:"ds-u-margin--0"},"Clicking on the Skip Nav will skip over this section."),a.a.createElement("ul",null,a.a.createElement("li",null,a.a.createElement("a",{href:"javascript:void(0);"},"Navigation link 1")),a.a.createElement("li",null,a.a.createElement("a",{href:"javascript:void(0);"},"Navigation link 2")))),a.a.createElement("main",{id:"main",className:"ds-u-padding--3 ds-u-fill--gray-lightest",tabIndex:"-1"},a.a.createElement("h1",{className:"ds-u-margin--0"},"Main content"),a.a.createElement("p",{className:"ds-u-margin--0"},"Clicking on the Skip Nav will focus this element."))),document.getElementById("js-example"))}]);</script>
+      
+</body>
+</html>

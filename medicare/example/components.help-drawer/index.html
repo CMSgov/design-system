@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: components.help-drawer</title>
+  <link rel="stylesheet" href="/design-system/medicare/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+</head>
+<body class="ds-base">
+  <div>
+  <p>
+    <strong>
+      Note: This is just an example of the HTML markup. See the React example for a functioning
+      example.
+    </strong>
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat.
+  </p>
+  <button class="ds-c-button ds-c-button--transparent ds-c-help-drawer__toggle" type="button">
+    Toggle the help drawer.
+  </button>
+
+  <div aria-labelledby="panel-heading" aria-modal="false" class="ds-c-help-drawer" role="dialog">
+    <div class="ds-c-help-drawer__window">
+      <div class="ds-c-help-drawer__header">
+        <h3 tabindex="0" id="panel-heading" class="ds-c-help-drawer__header-heading">
+          Help Drawer Heading
+        </h3>
+        <button
+          aria-label="Close panel"
+          class="ds-c-button ds-c-button--secondary ds-c-button--small ds-c-help-drawer__close-button"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+
+      <div class="ds-c-help-drawer__body">
+        <strong>An Explanation</strong>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </p>
+      </div>
+      <div class="ds-c-help-drawer__footer">
+        <h4 class="ds-text ds-c-help-drawer__footer-title">Footer title</h4>
+        <div class="ds-text ds-c-help-drawer__footer-body">Footer content</div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
+
+  <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+</body>
+</html>

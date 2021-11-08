@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: components.dropdown</title>
+  <link rel="stylesheet" href="/design-system/medicare/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+</head>
+<body class="ds-base">
+  <div>
+  <label class="ds-c-label ds-u-margin-top--0" for="options"><span>Dropdown example</span></label>
+  <select class="ds-c-field" name="options" id="options">
+    <option value="">- Select an option -</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+    <option value="7">Option 7</option>
+  </select>
+</div>
+<div class="example--wrapper example--inverse">
+  <div>
+    <label class="ds-c-label ds-u-margin-top--0" for="options-inverse">
+      <span>Inverse example</span>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">
+        Helpful hint text
+      </span>
+      <span class="ds-c-field__error-message ds-c-field__error-message--inverse" role="alert">
+        Example error message
+      </span>
+    </label>
+    <select
+      class="ds-c-field ds-c-field--error ds-c-field--inverse"
+      name="options-inverse"
+      id="options-inverse"
+    >
+      <option value="">- Select an option -</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+      <option value="6">Option 6</option>
+      <option value="7">Option 7</option>
+    </select>
+  </div>
+</div>
+
+  <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+</body>
+</html>

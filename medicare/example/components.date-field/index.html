@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: components.date-field</title>
+  <link rel="stylesheet" href="/design-system/medicare/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+</head>
+<body class="ds-base">
+  <div class="example--wrapper">
+  <fieldset class="ds-c-fieldset">
+    <legend class="ds-c-label" id="datefield_label_1">
+      <span>Date of birth</span>
+      <span class="ds-c-field__hint">For example: 4 / 28 / 1986</span>
+      <span class="ds-c-field__error-message" role="alert">
+        Please enter a year in the past
+      </span>
+    </legend>
+    <div class="ds-c-datefield__container ds-l-form-row">
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-c-datefield__label" for="month"><span>Month</span></label>
+        <input
+          class="ds-c-field ds-c-field--month"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="month-1"
+          name="birthdate[month]"
+          autocomplete="bday-month"
+          aria-describedby="datefield_label_1"
+          value="10"
+        />
+      </div>
+      <span class="ds-c-datefield__separator">/</span>
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-c-datefield__label" for="day"><span>Day</span></label>
+        <input
+          class="ds-c-field ds-c-field--day"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="day-1"
+          name="birthdate[day]"
+          autocomplete="bday-day"
+          aria-describedby="datefield_label_1"
+          value="31"
+        />
+      </div>
+      <span class="ds-c-datefield__separator">/</span>
+      <div class="ds-l-col--auto">
+        <label class="ds-c-label ds-c-datefield__label" for="year"><span>Year</span></label>
+        <input
+          class="ds-c-field ds-c-field--error ds-c-field--year"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          id="year-1"
+          name="birthdate[year]"
+          autocomplete="bday-year"
+          aria-describedby="datefield_label_1"
+          value="2050"
+        />
+      </div>
+    </div>
+  </fieldset>
+  <div class="example--wrapper example--inverse">
+    <fieldset class="ds-c-fieldset">
+      <legend class="ds-c-label" id="datefield_label_2">
+        <span>Inverse example</span>
+        <span class="ds-c-field__hint ds-c-field__hint--inverse">For example: 4 / 28 / 1986</span>
+        <span class="ds-c-field__error-message ds-c-field__error-message--inverse" role="alert">
+          Please enter a year in the past
+        </span>
+      </legend>
+      <div class="ds-c-datefield__container ds-l-form-row">
+        <div class="ds-l-col--auto">
+          <label class="ds-c-label ds-c-datefield__label" for="month"><span>Month</span></label>
+          <input
+            class="ds-c-field ds-c-field--month"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            id="month-2"
+            name="birthdate[month]"
+            autocomplete="bday-month"
+            aria-describedby="datefield_label_2"
+            value="10"
+          />
+        </div>
+        <span class="ds-c-datefield__separator">/</span>
+        <div class="ds-l-col--auto">
+          <label class="ds-c-label ds-c-datefield__label" for="day"><span>Day</span></label>
+          <input
+            class="ds-c-field ds-c-field--day"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            id="day-2"
+            name="birthdate[day]"
+            autocomplete="bday-day"
+            aria-describedby="datefield_label_2"
+            value="31"
+          />
+        </div>
+        <span class="ds-c-datefield__separator">/</span>
+        <div class="ds-l-col--auto">
+          <label class="ds-c-label ds-c-datefield__label" for="year"><span>Year</span></label>
+          <input
+            class="ds-c-field ds-c-field--error ds-c-field--inverse ds-c-field--year"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            id="year-2"
+            name="birthdate[year]"
+            autocomplete="bday-year"
+            aria-describedby="datefield_label_2"
+            value="2050"
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+  <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+</body>
+</html>

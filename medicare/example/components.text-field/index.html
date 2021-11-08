@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: components.text-field</title>
+  <link rel="stylesheet" href="/design-system/medicare/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+</head>
+<body class="ds-base">
+  <div>
+  <label class="ds-c-label ds-u-margin-top--0" for="input-singleline">
+    <span>Single line field</span>
+  </label>
+  <input
+    class="ds-c-field"
+    id="input-singleline"
+    name="singleline"
+    value="Example text"
+    type="text"
+  />
+</div>
+<div>
+  <label class="ds-c-label" for="input-number">
+    <span> Number field</span>
+  </label>
+  <input
+    class="ds-c-field"
+    id="input-number"
+    name="number"
+    value="123"
+    type="text"
+    inputmode="numeric"
+    pattern="[0-9]*"
+  />
+</div>
+<div>
+  <label class="ds-c-label" for="input-password">
+    <span>Password field</span>
+  </label>
+  <input
+    class="ds-c-field ds-c-field--inverse"
+    id="input-password"
+    name="password"
+    type="password"
+    value="Example text"
+  />
+</div>
+<div>
+  <label class="ds-c-label" for="input-small"><span>Small size field</span></label>
+  <input class="ds-c-field ds-c-field--small" id="input-small" name="tinysize" type="text" />
+</div>
+<div>
+  <label class="ds-c-label" for="input-medium"><span>Medium size field</span></label>
+  <input class="ds-c-field ds-c-field--medium" id="input-medium" name="mediumsize" type="text" />
+</div>
+<div>
+  <label class="ds-c-label" for="input-multiline">
+    <span>Multiline field</span>
+  </label>
+  <textarea class="ds-c-field" id="input-multiline" name="multiline" rows="4"></textarea>
+</div>
+<div>
+  <label class="ds-c-label" for="input-error">
+    <span>Error field</span>
+    <span class="ds-c-field__hint">Helpful hint text</span>
+    <span class="ds-c-field__error-message" role="alert">
+      Example error message
+    </span>
+  </label>
+  <input class="ds-c-field ds-c-field--error" id="input-error" name="error" type="text" />
+</div>
+<div>
+  <label class="ds-c-label" for="input-success"><span>Success field</span></label>
+  <input class="ds-c-field ds-c-field--success" id="input-success" name="success" type="text" />
+</div>
+<div>
+  <label class="ds-c-label" for="input-disabled">
+    <span>Disabled field</span>
+  </label>
+  <input
+    class="ds-c-field ds-c-field--inverse"
+    id="input-disabled"
+    name="disabled"
+    type="text"
+    disabled
+  />
+</div>
+<div class="example--wrapper example--inverse">
+  <div>
+    <label class="ds-c-label ds-u-margin-top--0" for="input-inverse">
+      <span>Inverse field</span>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">Helpful hint text</span>
+      <span class="ds-c-field__error-message ds-c-field__error-message--inverse"
+        >Example error message</span
+      >
+    </label>
+    <input
+      class="ds-c-field ds-c-field--inverse ds-c-field--error"
+      id="input-inverse"
+      name="inverse"
+      type="text"
+    />
+  </div>
+</div>
+
+  <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+</body>
+</html>

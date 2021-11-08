@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example: components.form-label</title>
+  <link rel="stylesheet" href="/design-system/medicare/example.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" rel="stylesheet" />
+</head>
+<body class="ds-base">
+  <div class="example--wrapper">
+  <label class="ds-c-label" for="number-field-id">
+    <span>Phone number</span>
+    <span class="ds-c-field__hint">
+      Optional. We'll use this number as a backup if we need to contact you about your application.
+    </span>
+    <span class="ds-c-field__error-message" role="alert">
+      Please enter a valid phone number.
+    </span>
+  </label>
+  <div class="example--wrapper example--inverse">
+    <label class="ds-c-label" for="inverse-field-id">
+      <span>Inverse example</span>
+      <span class="ds-c-field__hint ds-c-field__hint--inverse">
+        Helpful hint text
+      </span>
+      <span class="ds-c-field__error-message ds-c-field__error-message--inverse" role="alert">
+        Example error message
+      </span>
+    </label>
+  </div>
+</div>
+
+  <script type="text/javascript" src="/design-system/medicare/example.js"></script>
+</body>
+</html>
