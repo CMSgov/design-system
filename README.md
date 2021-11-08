@@ -59,7 +59,7 @@ These scripts can all be run from the root level of the repo:
 - `yarn test:unit`
   - Runs JS unit tests for all packages
 - `yarn test:a11y`
-  - Runs acessibility tests
+  - Runs accessibility tests for design-system package only
   - `yarn test:a11y:healthcare` to run the Healthcare.gov Design System's accessibility tests
   - `yarn test:a11y:medicare` to run the Medicare.gov Design System's accessibility tests
 - `yarn update-snapshots`
