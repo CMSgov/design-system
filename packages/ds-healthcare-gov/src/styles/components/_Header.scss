@@ -1,4 +1,7 @@
+$header-background-color: $color-background;
+
 .hc-c-header {
+  background-color: $header-background-color;
   box-shadow: 0 0 10px 0 $color-gray-light;
 }
 
