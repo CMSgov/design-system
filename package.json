@@ -37,6 +37,7 @@
     "@storybook/theming": "^6.3.12",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
+    "@whitespace/storybook-addon-html": "^5.0.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-typescript-to-proptypes": "^2.0.0",

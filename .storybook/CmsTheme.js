@@ -35,5 +35,4 @@ export default create({
 
   brandTitle: 'CMS Gov Design System',
   brandUrl: 'https://design.cms.gov/',
-  brandImage: 'https://place-hold.it/350x150',
 });
