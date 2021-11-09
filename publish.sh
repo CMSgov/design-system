@@ -21,6 +21,7 @@ echo "${GREEN}Building packages...${NC}"
 yarn install
 yarn build
 yarn build:healthcare
+yarn build:medicare
 
 echo "${GREEN}Publishing ${CYAN}$1${GREEN} to npm...${NC}"
 if [[ $1 == *"beta"* ]]; then
@@ -35,6 +36,7 @@ npm pack ./packages/design-system/
 npm pack ./packages/design-system-docs/
 npm pack ./packages/design-system-scripts/
 npm pack ./packages/ds-healthcare-gov/
+npm pack ./packages/ds-medicare-gov/
 
 echo "${GREEN}Done.${NC}"
 echo ""
