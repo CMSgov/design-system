@@ -23,7 +23,7 @@
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'",
     "prepare": "husky install",
     "gh-pages": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./packages/design-system/src",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
@@ -47,11 +47,12 @@
     "husky": "^7.0.0",
     "lerna": "^3.20.0",
     "lint-staged": "^10.0.8",
+    "mini-css-extract-plugin": "1",
     "prettier": "^2.0.5",
     "sass": "^1.43.4",
     "sass-loader": "10",
-    "style-loader": "2",
-    "stylelint": "^13.3.2"
+    "stylelint": "^13.3.2",
+    "url-loader": "^4.1.1"
   },
   "engines": {
     "node": ">=11.0.0",
