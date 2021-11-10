@@ -1,0 +1,19 @@
+svg {
+  &.ds-u-color--success {
+    .apply-fill {
+      fill: $color-success;
+    }
+  }
+
+  &.ds-u-color--error {
+    .apply-fill {
+      fill: $color-error;
+    }
+  }
+
+  &.ds-u-color--white {
+    .apply-fill {
+      fill: #fff;
+    }
+  }
+}

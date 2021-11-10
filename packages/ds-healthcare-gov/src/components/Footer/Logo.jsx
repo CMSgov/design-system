@@ -32,19 +32,17 @@ function Logo(props) {
   return (
     <a
       className={classnames('hc-c-footer__logo ds-u-display--inline-block', props.className)}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: props.children,
-      }}
       href={props.href}
       style={style}
-    />
+    >
+      {props.children}
+    </a>
   );
 }
 
 Logo.propTypes = {
   /** The SVG content as a string */
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   href: PropTypes.string.isRequired,
   width: PropTypes.string,

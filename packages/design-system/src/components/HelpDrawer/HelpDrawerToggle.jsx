@@ -1,39 +1,26 @@
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
+import SlidingPanelToggle from '../SlidingPanel/SlidingPanelToggle';
 import classNames from 'classnames';
 
 /**
  * A link that triggers the visibility of a help drawer
  */
-export class HelpDrawerToggle extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    if (!this.props.helpDrawerOpen && prevProps.helpDrawerOpen && this.buttonRef) {
-      this.buttonRef.focus();
-    }
-  }
 
-  render() {
-    const { className, children, inline, showDrawer, helpDrawerOpen, ...others } = this.props;
-    const classes = classNames(
-      'ds-c-help-drawer__toggle',
-      inline && 'ds-c-help-drawer__toggle--inline',
-      className
-    );
+const HelpDrawerToggle = function (props) {
+  const { children, className, showDrawer, helpDrawerOpen, ...others } = props;
 
-    return (
-      <Button
-        className={classes}
-        inputRef={(el) => (this.buttonRef = el)}
-        onClick={() => showDrawer()}
-        variation="transparent"
-        {...others}
-      >
-        {children}
-      </Button>
-    );
-  }
-}
+  return (
+    <SlidingPanelToggle
+      className={classNames(className, 'ds-c-help-drawer__toggle')}
+      panelOpen={helpDrawerOpen}
+      showPanel={showDrawer}
+      {...others}
+    >
+      {children}
+    </SlidingPanelToggle>
+  );
+};
 
 HelpDrawerToggle.propTypes = {
   /**
