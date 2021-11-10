@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HelpDrawer renders a snapshot 1`] = `
+exports[`Drawer renders a snapshot 1`] = `
 <div
   aria-labelledby="drawer_2"
-  className="ds-c-help-drawer ds-c-drawer"
+  className="ds-c-drawer"
   role="dialog"
 >
   <div
@@ -17,7 +17,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
         id="drawer_2"
         tabIndex="0"
       >
-        HelpDrawer title
+        Drawer title
       </h3>
       <button
         aria-label="Close help drawer"

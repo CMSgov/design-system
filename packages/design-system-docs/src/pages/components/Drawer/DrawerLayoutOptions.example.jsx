@@ -1,26 +1,26 @@
 /* eslint no-alert: 0 */
-import { SlidingPanel, SlidingPanelToggle } from '@design-system';
+import { Drawer, DrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class SlidingPanelLayoutOptionsExample extends React.PureComponent {
+class DrawerLayoutOptionsExample extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      showPanel: false,
+      showDrawer: false,
     };
   }
 
-  togglePanel() {
-    this.setState({ showPanel: !this.state.showPanel });
+  toggleDrawer() {
+    this.setState({ showDrawer: !this.state.showDrawer });
   }
 
   render() {
     return (
       <div>
         <p>
-          <strong>Click the link below to open Sliding Panel with sticky header and footer.</strong>
+          <strong>Click the link below to open Drawer with sticky header and footer.</strong>
         </p>
 
         <p>
@@ -29,24 +29,24 @@ class SlidingPanelLayoutOptionsExample extends React.PureComponent {
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
 
-        <SlidingPanelToggle panelOpen={this.state.showPanel} showPanel={() => this.togglePanel()}>
-          Toggle a sliding panel with sticky elements.
-        </SlidingPanelToggle>
+        <DrawerToggle drawerOpen={this.state.showDrawer} showDrawer={() => this.toggleDrawer()}>
+          Toggle a drawer with sticky elements.
+        </DrawerToggle>
 
-        {this.state.showPanel && (
-          <SlidingPanel
+        {this.state.showDrawer && (
+          <Drawer
             isHeaderSticky
             isFooterSticky
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Panel Drawer Heading"
-            onCloseClick={() => this.togglePanel()}
+            heading="Drawer Heading"
+            onCloseClick={() => this.toggleDrawer()}
           >
-            <strong>This is a Sliding Panel component with sticky elements.</strong>
+            <strong>This is a Drawer component with sticky elements.</strong>
 
             <p>
-              Both or either of a Sliding Panel&apos;s header and footer can receive a{' '}
-              <em>sticky</em> positioning by setting each element&apos;s respective properties.
+              Both or either of a Drawer&apos;s header and footer can receive a <em>sticky</em>{' '}
+              positioning by setting each element&apos;s respective properties.
             </p>
 
             <p>
@@ -75,7 +75,7 @@ class SlidingPanelLayoutOptionsExample extends React.PureComponent {
               exercitationem quisquam sit atque distinctio velit reprehenderit fuga veniam quaerat,
               deserunt assumenda suscipit quidem consequuntur excepturi eum ipsa soluta.
             </p>
-          </SlidingPanel>
+          </Drawer>
         )}
 
         <p>
@@ -103,4 +103,4 @@ class SlidingPanelLayoutOptionsExample extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<SlidingPanelLayoutOptionsExample />, document.getElementById('js-example'));
+ReactDOM.render(<DrawerLayoutOptionsExample />, document.getElementById('js-example'));

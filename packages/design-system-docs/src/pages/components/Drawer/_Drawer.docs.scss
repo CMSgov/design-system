@@ -1,67 +1,67 @@
 /*
-Sliding Panel & Help Drawer
+Drawer & Help Drawer
 
-A sliding panel provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
+A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
 
 On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
 
 Render the drawer below the toggle button that triggers it. This way the markup remains semantically sound and screen reader friendly.
 
-Markup: sliding-panel.example.html
+Markup: drawer.example.html
 
-Style guide: components.sliding-panel
+Style guide: components.drawer
 */
 
 /*
-`<SlidingPanel>`
+`<Drawer>`
 
-@react-example SlidingPanelDefault.example.jsx
+@react-example DrawerDefault.example.jsx
 
-@react-props SlidingPanel.jsx
+@react-props Drawer.jsx
 
-Style guide: components.sliding-panel.react-sliding-panel
+Style guide: components.drawer.react-drawer
 */
 
 /*
-`<SlidingPanel>` layout alternatives
+`<Drawer>` layout alternatives
 
 A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
 - `isHeaderSticky`
 - `isFooterSticky`
 
-@react-example SlidingPanelLayoutOptions.example.jsx
+@react-example DrawerLayoutOptions.example.jsx
 
-Style guide: components.sliding-panel.react-sliding-panel-layout-options
+Style guide: components.drawer.react-drawer-layout-options
 */
 
 /*
-`<SlidingPanel>` focus trap
+`<Drawer>` focus trap
 
-A focus trap can be set on a sliding panel if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
+A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
 
-@react-example SlidingPanelFocusTrap.example.jsx
+@react-example DrawerFocusTrap.example.jsx
 
-Style guide: components.sliding-panel.react-sliding-panel-focus-trap
+Style guide: components.drawer.react-drawer-focus-trap
 */
 
 /*
-`<SlidingPanelToggle>`
+`<DrawerToggle>`
 
-@react-props SlidingPanelToggle.jsx
+@react-props DrawerToggle.jsx
 
-Style guide: components.sliding-panel.react-sliding-panel-toggle
+Style guide: components.drawer.react-drawer-toggle
 */
 
 /*
 `<HelpDrawer>`
 
-This component is an enhanced `<SlidingPanel>` component, providing the same properties as `<SlidingPanel>` in addition to Google Analytics properties.
+This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
 
 @react-example HelpDrawer.example.jsx
 
 @react-props HelpDrawer.jsx
 
-Style guide: components.sliding-panel.react-help-drawer
+Style guide: components.drawer.react-help-drawer
 */
 
 /*
@@ -87,12 +87,12 @@ Style guide: components.sliding-panel.react-help-drawer
 - Link text used to trigger the help drawer should be specific and descriptive.
   - Avoid using only "Learn more" to link to help drawer content
   - Limit the amount of link text
-- Sliding panel content area should include a close button clearly at the top.
+- Drawer content area should include a close button clearly at the top.
 
 ### Accessibility
 
 - Focus should move to the content in the help drawer after the user has opened it.
-- Sliding Panel should support keyboard navigation.
+- Drawer should support keyboard navigation.
     - `Enter` and `Space` to select the highlighted item.
     - `Tab` to move the focus sequentially through the list of focusable items
     - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
@@ -103,17 +103,17 @@ The property `hasFocusTrap` is an available option that will prevent keyboard fo
 
 When the property `hasFocusTrap` is enabled...
 - Keyboard focus is trapped within the HelpDrawer component.
-- Pressing the escape key will close the SlidingPanel.
+- Pressing the escape key will close the Drawer.
 
-A focus trap should *not* be used when it's anticipated that the user will rely on the SlidingPanel as a reference resource for doing something outside of the SlidingPanel. For instance, if the user is completing a form, SlidingPanel may contain a reference guide defining specific requirements.
+A focus trap should *not* be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements.
 
-However, there are times when it makes sense to trap focus within the SlidingPanel. One occassion where it can benefit the user is when the SlidingPanel is anticipated to fill the viewport of a screen, i.e., mobile layout.
+However, there are times when it makes sense to trap focus within the Drawer. One occassion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
 
 ### Future Work
 
 Future design iterations and possible user research to ensure the enhanced help drawer link design isn't confused or mistaken for transitional hyperlinks, glossary terms, or tooltips.
 
-Style guide: components.sliding-panel.guidance
+Style guide: components.drawer.guidance
 */
 
 /*
@@ -145,5 +145,5 @@ analytics={false}
 
 A custom heading value can be sent for an analytics event by using the prop `analyticsLabelOverride`. It is recommended that this value be used to prevent sensitive personal information from being passed to analytics trackers.
 
-Style guide: components.sliding-panel.guidance-analytics
+Style guide: components.drawer.guidance-analytics
 */

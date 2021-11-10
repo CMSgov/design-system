@@ -5,11 +5,11 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 
-export class SlidingPanel extends React.PureComponent {
+export class Drawer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.headingRef = null;
-    this.id = this.props.headingId || uniqueId('slidingPanel_');
+    this.id = this.props.headingId || uniqueId('drawer_');
     this.handleEscapeKey = this.handleEscapeKey.bind(this);
   }
 
@@ -49,25 +49,21 @@ export class SlidingPanel extends React.PureComponent {
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    const slidingPanelMarkup = () => (
-      <div
-        aria-labelledby={this.id}
-        className={classNames(className, 'ds-c-sliding-panel')}
-        role="dialog"
-      >
-        <div className="ds-c-sliding-panel__window">
-          <div className="ds-c-sliding-panel__header">
+    const drawerMarkup = () => (
+      <div aria-labelledby={this.id} className={classNames(className, 'ds-c-drawer')} role="dialog">
+        <div className="ds-c-drawer__window">
+          <div className="ds-c-drawer__header">
             <Heading
               tabIndex="0"
               id={this.id}
-              className="ds-c-sliding-panel__header-heading"
+              className="ds-c-drawer__header-heading"
               ref={(el) => (this.headingRef = el)}
             >
               {heading}
             </Heading>
             <Button
               aria-label={ariaLabel}
-              className="ds-c-sliding-panel__close-button"
+              className="ds-c-drawer__close-button"
               size="small"
               onClick={onCloseClick}
             >
@@ -75,15 +71,15 @@ export class SlidingPanel extends React.PureComponent {
             </Button>
           </div>
           <div
-            className={classNames('ds-c-sliding-panel__body', {
-              'ds-c-sliding-panel--is-sticky': isHeaderSticky || isFooterSticky,
+            className={classNames('ds-c-drawer__body', {
+              'ds-c-drawer--is-sticky': isHeaderSticky || isFooterSticky,
             })}
           >
             {children}
           </div>
-          <div className="ds-c-sliding-panel__footer">
-            <h4 className="ds-c-sliding-panel__footer-title">{footerTitle}</h4>
-            <div className="ds-c-sliding-panel__footer-body">{footerBody}</div>
+          <div className="ds-c-drawer__footer">
+            <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>
+            <div className="ds-c-drawer__footer-body">{footerBody}</div>
           </div>
         </div>
       </div>
@@ -93,17 +89,17 @@ export class SlidingPanel extends React.PureComponent {
       <>
         {hasFocusTrap ? (
           <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
-            {slidingPanelMarkup()}
+            {drawerMarkup()}
           </FocusTrap>
         ) : (
-          slidingPanelMarkup()
+          drawerMarkup()
         )}
       </>
     );
   }
 }
 
-SlidingPanel.defaultProps = {
+Drawer.defaultProps = {
   ariaLabel: 'Close help drawer',
   closeButtonText: 'Close',
   headingLevel: '3',
@@ -111,9 +107,9 @@ SlidingPanel.defaultProps = {
 
 // TODO: closeButtonText, heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
-SlidingPanel.propTypes = {
+Drawer.propTypes = {
   /**
-   * Gives more context to screen readers on the SlidingPanel close button.
+   * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel: PropTypes.string,
   closeButtonText: PropTypes.node,
@@ -122,15 +118,15 @@ SlidingPanel.propTypes = {
   footerBody: PropTypes.node,
   footerTitle: PropTypes.string,
   /**
-   * Enables focus trap functionality within SlidingPanel.
+   * Enables focus trap functionality within Drawer.
    */
   hasFocusTrap: PropTypes.bool,
   /**
-   * Text for the SlidingPanel heading. Required because the `heading` will be focused on mount.
+   * Text for the Drawer heading. Required because the `heading` will be focused on mount.
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   /**
-   * A unique `id` to be used on heading element to label multiple instances of SlidingPanel.
+   * A unique `id` to be used on heading element to label multiple instances of Drawer.
    */
   headingId: PropTypes.string,
   /**
@@ -138,14 +134,14 @@ SlidingPanel.propTypes = {
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
   /**
-   * Enables "sticky" position of SlidingPanel header element.
+   * Enables "sticky" position of Drawer header element.
    */
   isHeaderSticky: PropTypes.bool,
   /**
-   * Enables "sticky" position of SlidingPanel footer element.
+   * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky: PropTypes.bool,
   onCloseClick: PropTypes.func.isRequired,
 };
 
-export default SlidingPanel;
+export default Drawer;

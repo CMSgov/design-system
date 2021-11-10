@@ -3,11 +3,11 @@
 /* eslint-disable filenames/match-exported */
 import * as React from 'react';
 
-export type SlidingPanelHeadingLevel = '1' | '2' | '3' | '4' | '5';
+export type DrawerHeadingLevel = '1' | '2' | '3' | '4' | '5';
 
-export interface SlidingPanelProps {
+export interface DrawerProps {
   /**
-   * Gives more context to screen readers on the SlidingPanel close button.
+   * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel?: string;
   closeButtonText?: React.ReactNode;
@@ -16,32 +16,32 @@ export interface SlidingPanelProps {
   footerBody?: React.ReactNode;
   footerTitle?: string;
   /**
-   * Enables focus trap functionality within SlidingPanel.
+   * Enables focus trap functionality within Drawer.
    */
   hasFocusTrap?: boolean;
   /**
-   * Text for the SlidingPanel heading. Required because the `heading` will be focused on mount.
+   * Text for the Drawer heading. Required because the `heading` will be focused on mount.
    */
   heading?: React.ReactNode;
   /**
-   * A unique `id` to be used on heading element to label multiple instances of SlidingPanel.
+   * A unique `id` to be used on heading element to label multiple instances of Drawer.
    */
   headingId?: string;
   /**
    * Heading type to override default `<h3>`
    */
-  headingLevel?: SlidingPanelHeadingLevel;
+  headingLevel?: DrawerHeadingLevel;
   /**
-   * Enables "sticky" position of SlidingPanel header element.
+   * Enables "sticky" position of Drawer header element.
    */
   isHeaderSticky?: boolean;
   /**
-   * Enables "sticky" position of SlidingPanel footer element.
+   * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
   onCloseClick: (...args: any[]) => any;
 }
 
-export default class SlidingPanel extends React.Component<SlidingPanelProps, any> {
+export default class Drawer extends React.Component<DrawerProps, any> {
   render(): JSX.Element;
 }

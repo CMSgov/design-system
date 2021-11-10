@@ -1,56 +1,56 @@
-import SlidingPanelToggle from './SlidingPanelToggle.jsx';
+import DrawerToggle from './DrawerToggle.jsx';
 import React from 'react';
 import { shallow } from 'enzyme';
 
 const defaultProps = {
-  panelOpen: false,
+  drawerOpen: false,
   inline: false,
-  showPanel: jest.fn(),
+  showDrawer: jest.fn(),
 };
 
-function renderSlidingPanelToggle(props) {
+function renderDrawerToggle(props) {
   props = Object.assign({}, defaultProps, props);
   const wrapper = shallow(
-    <SlidingPanelToggle {...props}>
+    <DrawerToggle {...props}>
       <p>content</p>
-    </SlidingPanelToggle>
+    </DrawerToggle>
   );
   return { props, wrapper };
 }
 
-describe('SlidingPanelToggle', () => {
+describe('DrawerToggle', () => {
   beforeEach(() => {
-    defaultProps.showPanel.mockClear();
+    defaultProps.showDrawer.mockClear();
   });
 
   it('renders a button', () => {
-    const { wrapper } = renderSlidingPanelToggle();
+    const { wrapper } = renderDrawerToggle();
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('calls showPanel() on toggle click', () => {
-    const { wrapper } = renderSlidingPanelToggle();
+  it('calls showDrawer() on toggle click', () => {
+    const { wrapper } = renderDrawerToggle();
     const toggle = wrapper.find('Button');
     toggle.simulate('click');
-    expect(defaultProps.showPanel).toHaveBeenCalled();
+    expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
   it('applies inline display style via inline prop', () => {
-    const { wrapper } = renderSlidingPanelToggle({ inline: true });
+    const { wrapper } = renderDrawerToggle({ inline: true });
     const toggle = wrapper.find('Button');
-    expect(toggle.hasClass('ds-c-sliding-panel__toggle--inline')).toBe(true);
+    expect(toggle.hasClass('ds-c-drawer__toggle--inline')).toBe(true);
   });
 
   it('applies custom class via className prop', () => {
     const className = 'test-class';
-    const { wrapper } = renderSlidingPanelToggle({ className });
+    const { wrapper } = renderDrawerToggle({ className });
     const toggle = wrapper.find('Button');
     expect(toggle.props().className).toContain(className);
   });
 
   it('passes through extra props', () => {
     const ariaLabel = 'test';
-    const { wrapper } = renderSlidingPanelToggle({ ariaLabel });
+    const { wrapper } = renderDrawerToggle({ ariaLabel });
     const toggle = wrapper.find('Button');
     expect(toggle.props().ariaLabel).toBe(ariaLabel);
   });

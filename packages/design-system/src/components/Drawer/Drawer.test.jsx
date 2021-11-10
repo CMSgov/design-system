@@ -1,4 +1,4 @@
-import SlidingPanel from './SlidingPanel.jsx';
+import Drawer from './Drawer.jsx';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
@@ -11,23 +11,23 @@ const defaultProps = {
   ),
   footerTitle: 'Footer title',
   onCloseClick: () => {},
-  heading: 'Sliding panel title',
+  heading: 'Drawer title',
 };
 
-function renderSlidingPanel(props) {
+function renderDrawer(props) {
   props = Object.assign({}, defaultProps, props);
   const wrapper = shallow(
-    <SlidingPanel {...props}>
+    <Drawer {...props}>
       <p>content</p>
-    </SlidingPanel>
+    </Drawer>
   );
   return { props, wrapper };
 }
 
-describe('SlidingPanel', () => {
+describe('Drawer', () => {
   it('calls props.onCloseClick on close button click', () => {
     const onCloseClick = jest.fn();
-    const { wrapper } = renderSlidingPanel({ onCloseClick });
+    const { wrapper } = renderDrawer({ onCloseClick });
     const closeBtn = wrapper.find('Button');
     closeBtn.simulate('click');
     expect(onCloseClick).toHaveBeenCalled();
@@ -36,9 +36,9 @@ describe('SlidingPanel', () => {
   it('renders a snapshot', () => {
     const tree = renderer
       .create(
-        <SlidingPanel {...defaultProps}>
+        <Drawer {...defaultProps}>
           <p>content</p>
-        </SlidingPanel>
+        </Drawer>
       )
       .toJSON();
 

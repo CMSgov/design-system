@@ -1,26 +1,26 @@
 /* eslint no-alert: 0 */
-import { SlidingPanel, SlidingPanelToggle } from '@design-system';
+import { Drawer, DrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class SlidingPanelDefaultExample extends React.PureComponent {
+class DrawerDefaultExample extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      showPanel: false,
+      showDrawer: false,
     };
   }
 
-  togglePanel() {
-    this.setState({ showPanel: !this.state.showPanel });
+  toggleDrawer() {
+    this.setState({ showDrawer: !this.state.showDrawer });
   }
 
   render() {
     return (
       <div>
         <p>
-          <strong>Click the link below to open the default Sliding Panel.</strong>
+          <strong>Click the link below to open the default Drawer.</strong>
         </p>
 
         <p>
@@ -29,18 +29,18 @@ class SlidingPanelDefaultExample extends React.PureComponent {
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
 
-        <SlidingPanelToggle panelOpen={this.state.showPanel} showPanel={() => this.togglePanel()}>
-          Toggle a default help drawer.
-        </SlidingPanelToggle>
+        <DrawerToggle drawerOpen={this.state.showDrawer} showDrawer={() => this.toggleDrawer()}>
+          Toggle a default drawer.
+        </DrawerToggle>
 
-        {this.state.showPanel && (
-          <SlidingPanel
+        {this.state.showDrawer && (
+          <Drawer
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Sliding Panel Heading"
-            onCloseClick={() => this.togglePanel()}
+            heading="Drawer Heading"
+            onCloseClick={() => this.toggleDrawer()}
           >
-            <strong>This is a default Sliding Panel component</strong>
+            <strong>This is a default Drawer component</strong>
 
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -50,7 +50,7 @@ class SlidingPanelDefaultExample extends React.PureComponent {
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
               mollit anim id est laborum.
             </p>
-          </SlidingPanel>
+          </Drawer>
         )}
 
         <p>
@@ -66,4 +66,4 @@ class SlidingPanelDefaultExample extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<SlidingPanelDefaultExample />, document.getElementById('js-example'));
+ReactDOM.render(<DrawerDefaultExample />, document.getElementById('js-example'));
