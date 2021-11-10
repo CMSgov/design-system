@@ -1,4 +1,4 @@
-import DrawerToggle from './DrawerToggle.jsx';
+import DrawerToggle from './DrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
 

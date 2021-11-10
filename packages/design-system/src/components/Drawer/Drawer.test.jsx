@@ -1,4 +1,4 @@
-import Drawer from './Drawer.jsx';
+import Drawer from './Drawer';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';

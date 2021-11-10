@@ -1,4 +1,4 @@
-import HelpDrawerToggle from './HelpDrawerToggle.jsx';
+import HelpDrawerToggle from './HelpDrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
 
