@@ -1,0 +1,14 @@
+// Button-specific color overrides
+$button-primary-bg: $color-primary;
+$button-primary-bg--hover: $color-primary-dark;
+$button-primary-bg--focus: $color-primary;
+$button-primary-bg--active: $color-primary-light;
+
+$choice-border-color: $black-300;
+$choice-checked-background-color: $color-primary-alt;
+$choice-checked-border-color: $color-primary-alt;
+$choice-border-radius: 3px;
+// Some reason on chrome the border width is increasing correctly
+// Setting it to 2.3 seems to make it work
+$choice-border-width: 2.3px;
+$choice-size: 24px;

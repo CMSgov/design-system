@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-healthcare-gov",
-  "version": "6.0.0",
+  "version": "6.2.0-beta.1",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -11,18 +11,6 @@
     "url": "https://github.com/CMSgov/design-system",
     "directory": "packages/ds-healthcare-gov"
   },
-  "scripts": {
-    "build": "yarn cmsds build-docs --skipLatest",
-    "start": "yarn cmsds start --skipLatest",
-    "test": "yarn test:unit && yarn test:e2e",
-    "test:unit": "yarn cmsds test ./src",
-    "test:e2e": "yarn cmsds test:e2e ./src",
-    "updateSnapshot": "yarn cmsds test ./src --updateSnapshot",
-    "lint": "yarn cmsds lint ./src ./docs",
-    "gh-pages": "yarn build && gh-pages -d './docs/dist'",
-    "release": "./release.sh",
-    "publish-release": "./publish-release.sh"
-  },
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
   "types": "dist/types/index.d.ts",
@@ -32,7 +20,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "^2.9.0",
+    "@cmsgov/design-system": "^2.10.0-beta.1",
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.0.0",
@@ -45,23 +33,17 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
-    "@cmsgov/design-system-docs": "^2.9.0",
-    "@cmsgov/design-system-scripts": "^2.9.0",
+    "@cmsgov/design-system-docs": "^2.10.0-beta.1",
+    "@cmsgov/design-system-scripts": "^2.10.0-beta.1",
     "@cmsgov/eslint-config-design-system": "2.0.0",
     "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-typescript-to-proptypes": "^1.4.2",
     "eslint": "^6.8.0",
-    "gh-pages": "^3.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
     "stylelint": "^13.3.2",
-    "url-parse": "^1.2.0",
-    "version-bump-prompt": "^6.1.0"
-  },
-  "browserslist": [
-    "> 2%",
-    "Last 2 versions"
-  ]
+    "url-parse": "^1.2.0"
+  }
 }

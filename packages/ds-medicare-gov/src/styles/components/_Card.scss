@@ -1,0 +1,6 @@
+.m-c-card {
+  border-radius: $card-border-radius;
+  @extend .ds-u-fill--white;
+  box-shadow: $card-box-shadow;
+  border: 1px solid $color-gray-lighter;
+}

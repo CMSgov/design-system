@@ -1,0 +1,50 @@
+/* stylelint-disable */
+.mct-c-help-drawer {
+  .ds-c-help-drawer {
+    &__header > div {
+      @extend .ds-u-fill--white;
+
+      h3 {
+        @extend .ds-u-font-weight--bold;
+        @extend .ds-u-text-align--left;
+        font-size: 30px;
+        font-family: $montserrat-font;
+      }
+
+      button {
+        @extend .ds-u-border--0;
+        @extend .ds-u-color--black;
+
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+    &__footer {
+      @extend .ds-u-display--none;
+    }
+  }
+}
+/* stylelint-enable */
+
+// Help drawer button with icon
+.ds-c-help-drawer__toggle {
+  background: url('#{$image-path}/InfoOutline.svg') center right no-repeat;
+  padding-right: $spacer-3;
+  &:hover {
+    background: url('#{$image-path}/InfoFilled.svg') center right no-repeat;
+    text-decoration-thickness: $link-underline-height-hover;
+  }
+}
+
+.ds-c-button--inverse {
+  &.ds-c-help-drawer__toggle {
+    background: url('#{$image-path}/InfoOutline_white.svg') center right no-repeat;
+    padding-right: $spacer-3;
+    &:hover {
+      background: url('#{$image-path}/InfoFilled_grey.svg') center right no-repeat;
+      text-decoration-thickness: $link-underline-height-hover;
+    }
+  }
+}

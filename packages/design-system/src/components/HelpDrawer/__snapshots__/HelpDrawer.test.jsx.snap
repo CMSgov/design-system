@@ -2,26 +2,26 @@
 
 exports[`HelpDrawer renders a snapshot 1`] = `
 <div
-  aria-labelledby="helpDrawer_2"
-  className="ds-c-help-drawer"
+  aria-labelledby="slidingPanel_2"
+  className="ds-c-help-drawer ds-c-sliding-panel"
   role="dialog"
 >
   <div
-    className="ds-c-help-drawer__window"
+    className="ds-c-sliding-panel__window"
   >
     <div
-      className="ds-c-help-drawer__header"
+      className="ds-c-sliding-panel__header"
     >
       <h3
-        className="ds-c-help-drawer__header-heading"
-        id="helpDrawer_2"
+        className="ds-c-sliding-panel__header-heading"
+        id="slidingPanel_2"
         tabIndex="0"
       >
         HelpDrawer title
       </h3>
       <button
         aria-label="Close help drawer"
-        className="ds-c-button ds-c-button--small ds-c-help-drawer__close-button"
+        className="ds-c-button ds-c-button--small ds-c-sliding-panel__close-button"
         onClick={[Function]}
         type="button"
       >
@@ -29,22 +29,22 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       </button>
     </div>
     <div
-      className="ds-c-help-drawer__body"
+      className="ds-c-sliding-panel__body"
     >
       <p>
         content
       </p>
     </div>
     <div
-      className="ds-c-help-drawer__footer"
+      className="ds-c-sliding-panel__footer"
     >
       <h4
-        className="ds-c-help-drawer__footer-title"
+        className="ds-c-sliding-panel__footer-title"
       >
         Footer title
       </h4>
       <div
-        className="ds-c-help-drawer__footer-body"
+        className="ds-c-sliding-panel__footer-body"
       >
         <div>
           <p>

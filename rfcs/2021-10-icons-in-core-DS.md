@@ -82,6 +82,14 @@ _**Note:** This phase will rely deeply on visual regression testing to ensure co
 
 This phase will include a breaking change to consuming applications' styles and potentially build systems. Will need to coordinate timing and communication.
 
+#### Considerations for Child Systems
+
+The Medicare.gov child design system currently overwrites some of the background image icons in its SCSS files (specifically in its `Dialog` & `Help Drawer` overrides). As part of this work, the Dialog and Help Drawer components should be updated to take a `closeIconProp`. This prop would be of type Element and in the core DS, would be defaulted to the current close icon. In the mgov DS, a wrapper component for these components would need to be created with the same name that defaults the `closeIconProp` to the mgov-specific icon.
+
+This path allows for flexibility but with the least disruption for teams consuming the mgov system.
+
+_**Note:** As mentioned in the [Beyond](#beyond) section, this kind of icon flexibility could be added to other components. Dialog & Help Drawer would be prioritized because of their current usage in mgov DS_
+
 ### Beyond
 
 Future icon work that needs consideration:

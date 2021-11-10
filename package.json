@@ -9,8 +9,10 @@
   "scripts": {
     "start": "yarn cmsds start",
     "start:healthcare": "yarn cmsds start --config cmsds.healthcare.config.js",
+    "start:medicare": "yarn cmsds start --config cmsds.medicare.config.js",
     "build": "yarn cmsds build-docs",
     "build:healthcare": "yarn cmsds build-docs --config cmsds.healthcare.config.js",
+    "build:medicare": "yarn cmsds build-docs --config cmsds.medicare.config.js",
     "release": "./release.sh",
     "publish-release": "./publish.sh",
     "precommit": "lint-staged",
@@ -18,13 +20,16 @@
     "test:unit": "yarn cmsds test ./packages --filePath",
     "test:a11y": "yarn cmsds test:a11y ./packages/design-system",
     "test:a11y:healthcare": "yarn cmsds test:a11y ./packages/ds-healthcare-gov --config cmsds.healthcare.config.js",
+    "test:a11y:medicare": "yarn cmsds test:a11y ./packages/ds-medicare-gov --config cmsds.medicare.config.js",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "posttest": "yarn lint",
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'",
     "prepare": "husky install",
-    "gh-pages": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
     "storybook": "start-storybook -p 6006 -s ./packages/design-system/src",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "gh-pages": "yarn gh-pages:healthcare && yarn gh-pages:medicare",
+    "gh-pages:healthcare": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
+    "gh-pages:medicare": "yarn build:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
