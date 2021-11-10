@@ -1,28 +1,29 @@
 /* stylelint-disable */
 .mct-c-help-drawer {
   .ds-c-help-drawer {
-    &__header > div {
-      @extend .ds-u-fill--white;
+    .ds-c-help-drawer__header {
+      background-color: #fff;
+    }
 
-      h3 {
-        @extend .ds-u-font-weight--bold;
-        @extend .ds-u-text-align--left;
-        font-size: 30px;
-        font-family: $montserrat-font;
-      }
+    .ds-c-help-drawer__header-heading {
+      font-weight: 700;
+      text-align: left;
+      font-size: 30px;
+      font-family: $montserrat-font;
+    }
 
-      button {
-        @extend .ds-u-border--0;
-        @extend .ds-u-color--black;
+    .ds-c-help-drawer__close-button {
+      border: 0;
+      color: #000;
 
-        svg {
-          width: 26px;
-          height: 26px;
-        }
+      svg {
+        width: 26px;
+        height: 26px;
       }
     }
-    &__footer {
-      @extend .ds-u-display--none;
+
+    .ds-c-help-drawer__footer {
+      display: none;
     }
   }
 }
