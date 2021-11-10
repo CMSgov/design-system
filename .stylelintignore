@@ -1,3 +1,0 @@
-# Ignore lint errors for ds-medicare-gov until we have a chance to address
-# them separately. The linter has never been run on these files.
-packages/ds-medicare-gov/src/styles/**/*.scss
