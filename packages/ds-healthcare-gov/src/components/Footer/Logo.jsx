@@ -42,7 +42,7 @@ function Logo(props) {
 
 Logo.propTypes = {
   /** The SVG content as a string */
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   href: PropTypes.string.isRequired,
   width: PropTypes.string,
