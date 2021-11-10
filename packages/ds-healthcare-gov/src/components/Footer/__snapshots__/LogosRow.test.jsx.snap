@@ -14,7 +14,10 @@ exports[`LogosRow renders logos and address 1`] = `
         href="http://www.hhs.gov/"
         width="67px"
       >
-        <Component />
+        <HhsLogo
+          viewBox="0 0 252 252"
+          xmlns="http://www.w3.org/2000/svg"
+        />
       </Logo>
     </div>
     <div
@@ -37,13 +40,19 @@ exports[`LogosRow renders logos and address 1`] = `
         href="http://www.whitehouse.gov/"
         width="76px"
       >
-        <Component />
+        <WhiteHouseLogo
+          viewBox="0 0 670 450"
+          xmlns="http://www.w3.org/2000/svg"
+        />
       </Logo>
       <Logo
         href="http://www.usa.gov/"
         width="162px"
       >
-        <Component />
+        <UsaLogo
+          viewBox="0 0 291 89"
+          xmlns="http://www.w3.org/2000/svg"
+        />
       </Logo>
     </div>
   </div>
