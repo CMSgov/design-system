@@ -1,4 +1,4 @@
-import HelpDrawerToggle from './HelpDrawerToggle.jsx';
+import HelpDrawerToggle from './HelpDrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -38,7 +38,7 @@ describe('HelpDrawerToggle', () => {
   it('applies display utility through inline props', () => {
     const { wrapper } = renderHelpDrawerToggle({ inline: true });
     const toggle = wrapper.dive().find('Button');
-    expect(toggle.hasClass('ds-c-sliding-panel__toggle--inline')).toBe(true);
+    expect(toggle.hasClass('ds-c-drawer__toggle--inline')).toBe(true);
   });
 
   it('passes through extra props', () => {
