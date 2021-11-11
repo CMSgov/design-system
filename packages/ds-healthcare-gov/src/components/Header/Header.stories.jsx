@@ -10,13 +10,15 @@ export default {
   argTypes: {
     className: {
       control: { type: 'text' },
-      defaultValue: '',
       type: { name: 'string', required: false },
     },
     firstName: {
       control: { type: 'text' },
-      defaultValue: 'Margaret FirstName',
     },
+  },
+  args: {
+    className: '',
+    firstName: 'Margaret FirstName',
   },
 };
 

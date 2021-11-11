@@ -10,7 +10,6 @@ export default {
     // children can be text or a ReactNode. For storybook controls, just allowing strings
     children: {
       control: { type: 'text' },
-      defaultValue: 'Your button text here',
       type: { name: 'string', required: true },
     },
     component: {
@@ -30,6 +29,9 @@ export default {
       options: ['primary', 'success', 'transparent'],
     },
   },
+  args: {
+    children: 'You button text here',
+  },
   parameters: {
     backgrounds: {
       default: 'light',
@@ -39,8 +41,12 @@ export default {
           value: '#fff',
         },
         {
-          name: 'dark',
+          name: 'Hcgov dark',
           value: '#112e51',
+        },
+        {
+          name: 'Mgov dark',
+          value: '#146a5d',
         },
       ],
     },
@@ -55,7 +61,7 @@ InverseButton.args = {
   inversed: true,
 };
 InverseButton.parameters = {
-  backgrounds: { default: 'dark' },
+  backgrounds: { default: process.env.STORYBOOK_DS === 'mgov' ? 'Mgov dark' : 'Hcgov dark' },
 };
 
 export const IconButton = Template.bind({});

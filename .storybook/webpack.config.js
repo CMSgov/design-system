@@ -64,5 +64,12 @@ module.exports = async (webpackConfig) => {
     }
   );
 
+  config.resolve.alias = {
+    '@cmsgov/design-system/dist/scss': path.resolve(
+      __dirname,
+      '../packages/design-system/src/styles/'
+    ),
+  };
+
   return config;
 };
