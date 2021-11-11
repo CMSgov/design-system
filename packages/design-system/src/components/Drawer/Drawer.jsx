@@ -49,7 +49,7 @@ export class Drawer extends React.PureComponent {
     const Heading = `h${this.props.headingLevel}` || `h3`;
 
     /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
-    const drawerMarkup = () => (
+    const drawerMarkup = (
       <div aria-labelledby={this.id} className={classNames(className, 'ds-c-drawer')} role="dialog">
         <div className="ds-c-drawer__window">
           <div className="ds-c-drawer__header">
@@ -88,11 +88,9 @@ export class Drawer extends React.PureComponent {
     return (
       <>
         {hasFocusTrap ? (
-          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
-            {drawerMarkup()}
-          </FocusTrap>
+          <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>{drawerMarkup}</FocusTrap>
         ) : (
-          drawerMarkup()
+          drawerMarkup
         )}
       </>
     );
