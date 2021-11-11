@@ -37,6 +37,12 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert--error')).toBe(true);
   });
 
+  it('appears as an lightweight alert', () => {
+    const { wrapper } = render({ weight: 'lightweight' });
+
+    expect(wrapper.hasClass('ds-c-alert--lightweight')).toBe(true);
+  });
+
   it('renders additional className and role prop', () => {
     const { props, wrapper } = render({
       className: 'ds-u-test',
