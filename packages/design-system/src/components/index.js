@@ -10,6 +10,7 @@ export * from './Button';
 export * from './ChoiceList';
 export * from './DateField';
 export * from './Dialog';
+export * from './Drawer';
 export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormControl';
@@ -29,5 +30,6 @@ export * from './Tooltip';
 export * from './UsaBanner';
 export * from './VerticalNav';
 export * from './analytics';
+export * from './Icons';
 
 export * from './flags';

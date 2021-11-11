@@ -6,10 +6,10 @@
 @import 'Button.scss';
 @import 'Choice.scss'; // This should eventually be renamed to `ChoiceList`
 @import 'Dialog.scss';
+@import 'Drawer.scss';
 @import 'Dropdown.scss';
 @import 'FilterChip.scss';
 @import 'FormLabel.scss';
-@import 'HelpDrawer.scss';
 @import 'List.scss';
 @import 'MonthPicker.scss';
 @import 'Pagination.scss';
@@ -17,6 +17,7 @@
 @import 'SkipNav.scss';
 @import 'Spinner.scss';
 @import 'StepList.scss';
+@import 'SvgIcon.scss';
 @import 'Table.scss';
 @import 'Tabs.scss';
 // Mask and Date field styles need imported

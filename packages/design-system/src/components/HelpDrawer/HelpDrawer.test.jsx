@@ -1,4 +1,4 @@
-import HelpDrawer from './HelpDrawer.jsx';
+import HelpDrawer from './HelpDrawer';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { setHelpDrawerSendsAnalytics } from '../flags';
@@ -29,7 +29,7 @@ describe('HelpDrawer', () => {
   it('calls props.onCloseClick on close button click', () => {
     const onCloseClick = jest.fn();
     const { wrapper } = renderHelpDrawer({ onCloseClick });
-    const closeBtn = wrapper.find('Button');
+    const closeBtn = wrapper.dive().find('Button');
     closeBtn.simulate('click');
     expect(onCloseClick).toHaveBeenCalled();
   });

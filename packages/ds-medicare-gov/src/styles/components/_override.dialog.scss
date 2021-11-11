@@ -1,0 +1,13 @@
+.ds-c-dialog {
+  outline: 0;
+
+  // Replaces CMS icon with M.gov icon
+  .ds-c-dialog__close {
+    background: url('#{$image-path}/CloseSymbol.svg') center center no-repeat !important;
+    background-size: 16px 16px !important;
+    padding: 5px !important;
+    min-width: 20px;
+    min-height: 20px;
+    color: transparent !important;
+  }
+}

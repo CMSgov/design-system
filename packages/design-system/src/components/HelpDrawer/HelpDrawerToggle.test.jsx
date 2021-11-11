@@ -1,4 +1,4 @@
-import HelpDrawerToggle from './HelpDrawerToggle.jsx';
+import HelpDrawerToggle from './HelpDrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -30,21 +30,21 @@ describe('HelpDrawerToggle', () => {
 
   it('calls props.showDrawer on toggle click', () => {
     const { wrapper } = renderHelpDrawerToggle();
-    const toggle = wrapper.find('Button');
+    const toggle = wrapper.dive().find('Button');
     toggle.simulate('click');
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
   it('applies display utility through inline props', () => {
     const { wrapper } = renderHelpDrawerToggle({ inline: true });
-    const toggle = wrapper.find('Button');
-    expect(toggle.hasClass('ds-c-help-drawer__toggle--inline')).toBe(true);
+    const toggle = wrapper.dive().find('Button');
+    expect(toggle.hasClass('ds-c-drawer__toggle--inline')).toBe(true);
   });
 
   it('passes through extra props', () => {
     const ariaLabel = 'test';
     const { wrapper } = renderHelpDrawerToggle({ ariaLabel });
-    const toggle = wrapper.find('Button');
+    const toggle = wrapper.dive().find('Button');
     expect(toggle.props().ariaLabel).toBe(ariaLabel);
   });
 });

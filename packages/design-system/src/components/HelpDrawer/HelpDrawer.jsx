@@ -1,9 +1,9 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
+import Drawer from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
+import classNames from 'classnames';
 
 export class HelpDrawer extends React.PureComponent {
   constructor(props) {
@@ -26,8 +26,6 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (this.headingRef) this.headingRef.focus();
-
     if (helpDrawerSendsAnalytics() && this.props.analytics !== false) {
       const heading = this.props.title || this.props.heading;
 
@@ -69,56 +67,12 @@ export class HelpDrawer extends React.PureComponent {
   }
 
   render() {
-    const {
-      ariaLabel,
-      className,
-      closeButtonText,
-      children,
-      footerBody,
-      footerTitle,
-      heading,
-      onCloseClick,
-      title,
-    } = this.props;
-    const Heading = `h${this.props.headingLevel}` || `h3`;
+    const { children, className, title, ...others } = this.props;
 
-    /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
     return (
-      <div className={classNames(className, 'ds-c-help-drawer')}>
-        <div className="ds-c-help-drawer__header">
-          {/* The nested div below might seem redundant, but we need a
-           * separation between our sticky header, and the flex container
-           * so things display as expected when the body content overflows
-           */}
-          <div className="ds-c-help-drawer__header-container">
-            <Heading
-              ref={(el) => (this.headingRef = el)}
-              tabIndex="0"
-              className="ds-c-help-drawer__header-heading"
-            >
-              {
-                // TODO: make heading required after removing title
-                title || heading
-              }
-            </Heading>
-            <Button
-              aria-label={ariaLabel}
-              className="ds-c-help-drawer__header-button ds-c-help-drawer__close-button"
-              size="small"
-              onClick={onCloseClick}
-            >
-              {closeButtonText}
-            </Button>
-          </div>
-        </div>
-        <div className="ds-c-help-drawer__body">
-          <div className="ds-c-help-drawer__content">{children}</div>
-          <div className="ds-c-help-drawer__footer">
-            <h4 className="ds-c-help-drawer__footer-title">{footerTitle}</h4>
-            <div className="ds-c-help-drawer__footer-body">{footerBody}</div>
-          </div>
-        </div>
-      </div>
+      <Drawer className={classNames(className, 'ds-c-help-drawer')} {...others}>
+        {children}
+      </Drawer>
     );
   }
 }
@@ -143,22 +97,56 @@ HelpDrawer.propTypes = {
    */
   analyticsLabelOverride: PropTypes.string,
   /**
-   * Helps give more context to screen readers on the button that closes the Help Drawer
+   * @hide-prop Helps give more context to screen readers on the button that closes the Help Drawer
    */
   ariaLabel: PropTypes.string,
+  /**
+   * @hide-prop
+   */
   closeButtonText: PropTypes.node,
+  /**
+   * @hide-prop
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * @hide-prop
+   */
   className: PropTypes.string,
+  /**
+   * @hide-prop
+   */
   footerBody: PropTypes.node,
+  /**
+   * @hide-prop
+   */
   footerTitle: PropTypes.string,
   /**
-   * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
+   * @hide-prop Enables focus trap functionality within HelpDrawer.
+   */
+  hasFocusTrap: PropTypes.bool,
+  /**
+   * @hide-prop Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
-   * Heading type to override default `<h3>`
+   * @hide-prop A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
+   */
+  headingId: PropTypes.string,
+  /**
+   * @hide-prop Heading type to override default `<h3>`
    */
   headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
+  /**
+   * @hide-prop Enables "sticky" position of HelpDrawer header element.
+   */
+  isHeaderSticky: PropTypes.bool,
+  /**
+   * @hide-prop Enables "sticky" position of HelpDrawer footer element.
+   */
+  isFooterSticky: PropTypes.bool,
+  /**
+   * @hide-prop
+   */
   onCloseClick: PropTypes.func.isRequired,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.

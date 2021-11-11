@@ -2,42 +2,31 @@
 
 exports[`Autocomplete renders a snapshot 1`] = `
 <div
-  aria-expanded={null}
-  aria-haspopup={null}
-  aria-labelledby={null}
-  aria-owns={null}
-  className="ds-u-clearfix ds-c-autocomplete"
-  role={null}
+  class="ds-u-clearfix ds-c-autocomplete"
 >
   <div
-    className="ds-u-clearfix"
+    class="ds-u-clearfix"
   >
     <label
-      className="ds-c-label"
-      htmlFor="autocomplete_51"
+      class="ds-c-label"
+      for="autocomplete_51"
       id="autocomplete_label_52"
     >
       <span
-        className=""
+        class=""
       >
         autocomplete
       </span>
     </label>
     <input
-      aria-activedescendant={null}
       aria-autocomplete="list"
       aria-controls="autocomplete_owned_listbox_53"
-      aria-expanded={false}
-      aria-invalid={false}
-      aria-labelledby={null}
-      aria-owns={null}
-      autoComplete="off"
-      className="ds-c-field"
+      aria-expanded="false"
+      aria-invalid="false"
+      autocomplete="off"
+      class="ds-c-field"
       id="autocomplete_51"
       name="autocomplete_field"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onKeyDown={[Function]}
       role="combobox"
       type="text"
       value=""
@@ -45,8 +34,7 @@ exports[`Autocomplete renders a snapshot 1`] = `
   </div>
   <button
     aria-label="Clear search to try again"
-    className="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-autocomplete__clear-btn"
-    onClick={[Function]}
+    class="ds-c-button ds-c-button--transparent ds-c-button--small ds-c-autocomplete__clear-btn"
     type="button"
   >
     Clear search

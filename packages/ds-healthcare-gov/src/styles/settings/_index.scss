@@ -1,0 +1,11 @@
+/**
+ *  `settings` contains variables, mixins, functions
+ *  and other declarations that don't output CSS (font declarations are an exception)
+ *
+ *  These declarations need to be in place *before* loading the core design system settings
+ */
+
+// Overriden settings
+@import 'override.build';
+@import 'override.color';
+@import 'override.forms';
