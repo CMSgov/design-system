@@ -1,7 +1,7 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import PropTypes from 'prop-types';
 import React from 'react';
-import SlidingPanel from '../SlidingPanel/SlidingPanel';
+import Drawer from '../Drawer/Drawer';
 import { helpDrawerSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 
@@ -70,9 +70,9 @@ export class HelpDrawer extends React.PureComponent {
     const { children, className, title, ...others } = this.props;
 
     return (
-      <SlidingPanel className={classNames(className, 'ds-c-help-drawer')} {...others}>
+      <Drawer className={classNames(className, 'ds-c-help-drawer')} {...others}>
         {children}
-      </SlidingPanel>
+      </Drawer>
     );
   }
 }

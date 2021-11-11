@@ -1,4 +1,4 @@
-import HelpDrawer from './HelpDrawer.jsx';
+import HelpDrawer from './HelpDrawer';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { setHelpDrawerSendsAnalytics } from '../flags';

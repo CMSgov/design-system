@@ -1,26 +1,26 @@
 /* eslint no-alert: 0 */
-import { Button, SlidingPanel, SlidingPanelToggle } from '@design-system';
+import { Button, Drawer, DrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class SlidingPanelDefaultExample extends React.PureComponent {
+class DrawerFocusTrapExample extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      showPanel: false,
+      showDrawer: false,
     };
   }
 
-  togglePanel() {
-    this.setState({ showPanel: !this.state.showPanel });
+  toggleDrawer() {
+    this.setState({ showDrawer: !this.state.showDrawer });
   }
 
   render() {
     return (
       <div>
         <p>
-          <strong>Click the link below to open a Sliding Panel with focus trap enabled.</strong>
+          <strong>Click the link below to open a Drawer with focus trap enabled.</strong>
         </p>
 
         <p>
@@ -29,25 +29,24 @@ class SlidingPanelDefaultExample extends React.PureComponent {
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
 
-        <SlidingPanelToggle panelOpen={this.state.showPanel} showPanel={() => this.togglePanel()}>
-          Toggle a sliding panel with focus trap.
-        </SlidingPanelToggle>
+        <DrawerToggle drawerOpen={this.state.showDrawer} showDrawer={() => this.toggleDrawer()}>
+          Toggle a drawer with focus trap.
+        </DrawerToggle>
 
-        {this.state.showPanel && (
-          <SlidingPanel
+        {this.state.showDrawer && (
+          <Drawer
             hasFocusTrap
             footerTitle="Footer Title"
             footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Sliding Panel Heading"
-            onCloseClick={() => this.togglePanel()}
+            heading="Drawer Heading"
+            onCloseClick={() => this.toggleDrawer()}
           >
-            <strong>This is a Sliding Panel component with focus trap enabled.</strong>
+            <strong>This is a Drawer component with focus trap enabled.</strong>
 
             <p>
-              To see focus trap in action, use the <kbd>TAB</kbd> key to navigate within the Sliding
-              Panel. If the property <code>hasFocusTrap</code> is <code>true</code>, focus will not
-              leave the Sliding Panel; if the property is set to <code>false</code>, focus will
-              leave the Sliding Panel.
+              To see focus trap in action, use the <kbd>TAB</kbd> key to navigate within the Drawer.
+              If the property <code>hasFocusTrap</code> is <code>true</code>, focus will not leave
+              the Drawer; if the property is set to <code>false</code>, focus will leave the Drawer.
             </p>
 
             <p>
@@ -60,7 +59,7 @@ class SlidingPanelDefaultExample extends React.PureComponent {
             </p>
 
             <Button>Inside Button (Does Nothing)</Button>
-          </SlidingPanel>
+          </Drawer>
         )}
 
         <Button className="ds-u-margin-top--2">Outside Button (Does Nothing)</Button>
@@ -78,4 +77,4 @@ class SlidingPanelDefaultExample extends React.PureComponent {
   }
 }
 
-ReactDOM.render(<SlidingPanelDefaultExample />, document.getElementById('js-example'));
+ReactDOM.render(<DrawerFocusTrapExample />, document.getElementById('js-example'));
