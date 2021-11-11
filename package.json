@@ -25,6 +25,7 @@
     "posttest": "yarn lint",
     "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'",
     "prepare": "husky install",
+    "storybook": "STORYBOOK_DS=core start-storybook -p 6006 -s ./packages/design-system/src",
     "storybook:healthcare": "STORYBOOK_DS=hcgov start-storybook -p 6006 -s ./packages/design-system/src",
     "storybook:medicare": "STORYBOOK_DS=mgov start-storybook -p 6006 -s ./packages/design-system/src,./packages/ds-medicare-gov/src",
     "build-storybook": "build-storybook",

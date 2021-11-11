@@ -3,17 +3,17 @@ const getPathForStories = () => {
   let projectDirectory;
   switch (process.env.STORYBOOK_DS) {
     case 'mgov':
-      projectDirectory = '(ds-medicare-gov|design-system)';
+      projectDirectory = '@(ds-medicare-gov|design-system)';
       break;
     case 'hcgov':
-      projectDirectory = '(ds-healthcare-gov|design-system)';
+      projectDirectory = '@(ds-healthcare-gov|design-system)';
       break;
     default:
       projectDirectory = 'design-system';
   }
   return [
-    `../packages/@${projectDirectory}/**/*.stories.mdx`,
-    `../packages/@${projectDirectory}/**/*.stories.@(js|jsx|ts|tsx)`,
+    `../packages/${projectDirectory}/**/*.stories.mdx`,
+    `../packages/${projectDirectory}/**/*.stories.@(js|jsx|ts|tsx)`,
   ];
 };
 
