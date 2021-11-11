@@ -1,14 +1,14 @@
 /*
 Button
 
-@uswds https://designsystem.digital.gov/components/buttons 
+@uswds https://designsystem.digital.gov/components/buttons
 
 <p class="ds-text--lead">Action buttons allow people to take actions from a current state to a future state. They are promises to the user; they must deliver the promise they offer by doing what the button says it would do.</p>
 
 - PRIMARY CTA is TEAL - Use for the priority action that we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll).
 - SECONDARY CTA is NAVY - Use for actions available but not the primary action we want users to take (example: Plan Details). There doesn't have to be a primary button on the page to use the secondary button.
 - TERTIARY CTA is OUTLINE BUTTON with the color that matches the other CTA on the page - Use for actions available but do not take priority over a primary or secondary CTAs (example: Cancel). For example: If primary button is teal, tertiary button has teal outline.
-- Outline CTAs are not used alone - They must be paired with either a primary or secondary CTA.  
+- Outline CTAs are not used alone - They must be paired with either a primary or secondary CTA.
 - Exception: CTA over background hero image on landing pages.
 - Lower priority actions are links - Refer to link styling guidelines under Typography.
 - Landing Page Button - This larger button is ONLY used in the hero image of landing pages.
@@ -40,7 +40,7 @@ you could pass in a `target` prop to pass to the rendered anchor element.
 
 @react-example Button.example.tsx
 
-@react-props Button.jsx
+@react-props Button.tsx
 
 Style guide: components.button.react
 */

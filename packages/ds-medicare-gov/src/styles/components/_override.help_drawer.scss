@@ -1,30 +1,28 @@
 /* stylelint-disable */
 .mct-c-help-drawer {
-  .ds-c-help-drawer {
-    .ds-c-help-drawer__header {
-      background-color: #fff;
-    }
+  .ds-c-drawer__header {
+    background-color: #fff;
+  }
 
-    .ds-c-help-drawer__header-heading {
-      font-weight: 700;
-      text-align: left;
-      font-size: 30px;
-      font-family: $montserrat-font;
-    }
+  .ds-c-drawer__header-heading {
+    font-weight: 700;
+    text-align: left;
+    font-size: 30px;
+    font-family: $montserrat-font;
+  }
 
-    .ds-c-help-drawer__close-button {
-      border: 0;
-      color: #000;
+  .ds-c-drawer__close-button {
+    border: 0;
+    color: #000;
 
-      svg {
-        width: 26px;
-        height: 26px;
-      }
+    svg {
+      width: 26px;
+      height: 26px;
     }
+  }
 
-    .ds-c-help-drawer__footer {
-      display: none;
-    }
+  .ds-c-drawer__footer {
+    display: none;
   }
 }
 /* stylelint-enable */
