@@ -7,6 +7,7 @@ import uniqueId from 'lodash/uniqueId';
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
 export type AlertVariation = 'error' | 'warn' | 'success';
+export type AlertWeight = 'lightweight';
 
 export interface AlertProps {
   /**
@@ -52,6 +53,10 @@ export interface AlertProps {
    * ARIA `role`, defaults to 'region'
    */
   role?: AlertRole;
+  /**
+   * A string corresponding to the `Alert` weight classes (`lightweight`)
+   */
+  weight?: AlertWeight;
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
@@ -159,6 +164,7 @@ export class Alert extends React.PureComponent<
       alertRef,
       role,
       variation,
+      weight,
       analytics,
       ...alertProps
     } = this.props;
@@ -167,6 +173,7 @@ export class Alert extends React.PureComponent<
       'ds-c-alert',
       hideIcon && 'ds-c-alert--hide-icon',
       variation && `ds-c-alert--${variation}`,
+      weight && `ds-c-alert--${weight}`,
       className
     );
 
