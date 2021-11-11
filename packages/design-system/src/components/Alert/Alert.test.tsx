@@ -37,7 +37,7 @@ describe('Alert', function () {
     expect(wrapper.hasClass('ds-c-alert--error')).toBe(true);
   });
 
-  it('appears as an lightweight alert', () => {
+  it('appears as a lightweight alert', () => {
     const { wrapper } = render({ weight: 'lightweight' });
 
     expect(wrapper.hasClass('ds-c-alert--lightweight')).toBe(true);
