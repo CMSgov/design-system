@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import SlidingPanelToggle from '../SlidingPanel/SlidingPanelToggle';
+import DrawerToggle from '../Drawer/DrawerToggle';
 import classNames from 'classnames';
 
 /**
@@ -11,14 +11,14 @@ const HelpDrawerToggle = function (props) {
   const { children, className, showDrawer, helpDrawerOpen, ...others } = props;
 
   return (
-    <SlidingPanelToggle
+    <DrawerToggle
       className={classNames(className, 'ds-c-help-drawer__toggle')}
-      panelOpen={helpDrawerOpen}
-      showPanel={showDrawer}
+      drawerOpen={helpDrawerOpen}
+      showDrawer={showDrawer}
       {...others}
     >
       {children}
-    </SlidingPanelToggle>
+    </DrawerToggle>
   );
 };
 

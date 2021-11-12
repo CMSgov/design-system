@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SlidingPanelToggle renders a button 1`] = `
+exports[`DrawerToggle renders a button 1`] = `
 <Button
-  className="ds-c-sliding-panel__toggle"
+  className="ds-c-drawer__toggle"
   component="button"
   inputRef={[Function]}
   onClick={[MockFunction]}

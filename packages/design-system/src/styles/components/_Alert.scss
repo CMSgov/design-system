@@ -76,6 +76,10 @@ $alert-icon-size: $spacer-5;
       margin-top: 0;
     }
   }
+
+  &.ds-c-alert--lightweight {
+    background-color: $color-white;
+  }
 }
 
 .ds-c-alert__body {

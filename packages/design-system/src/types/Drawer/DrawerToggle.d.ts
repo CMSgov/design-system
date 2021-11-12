@@ -3,14 +3,14 @@
 /* eslint-disable filenames/match-exported */
 import * as React from 'react';
 
-export interface SlidingPanelToggleProps {
+export interface DrawerToggleProps {
   /**
-   * Determines if SlidingPanel is open or closed.
+   * Determines if Drawer is open or closed.
    * This value is used to re-focus the toggle that opened the panel when the panel closes.
    */
-  panelOpen: boolean;
+  drawerOpen: boolean;
   /**
-   * SlidingPanelToggle content.
+   * DrawerToggle content.
    */
   children: React.ReactNode;
   /**
@@ -18,18 +18,18 @@ export interface SlidingPanelToggleProps {
    */
   className?: string;
   /**
-   * Adds `display: inline` to the SlidingPanelToggle.
+   * Adds `display: inline` to the DrawerToggle.
    */
   inline?: boolean;
   /**
    * This function is called with an id that the toggle generates.
-   * It can be used in implementing the SlidingPanel for keeping track of which panel the toggle controls.
+   * It can be used in implementing the Drawer for keeping track of which panel the toggle controls.
    */
   showPanel: (...args: any[]) => any;
 }
 
-export default class SlidingPanelToggle extends React.Component<
-  React.ComponentPropsWithRef<'button'> & SlidingPanelToggleProps,
+export default class DrawerToggle extends React.Component<
+  React.ComponentPropsWithRef<'button'> & DrawerToggleProps,
   any
 > {
   render(): JSX.Element;
