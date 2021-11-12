@@ -10,9 +10,12 @@
     "start": "yarn cmsds start",
     "start:healthcare": "yarn cmsds start --config cmsds.healthcare.config.js",
     "start:medicare": "yarn cmsds start --config cmsds.medicare.config.js",
-    "build": "yarn cmsds build-docs",
-    "build:healthcare": "yarn cmsds build-docs --config cmsds.healthcare.config.js",
-    "build:medicare": "yarn cmsds build-docs --config cmsds.medicare.config.js",
+    "build": "yarn cmsds build",
+    "build:healthcare": "yarn cmsds build --config cmsds.healthcare.config.js",
+    "build:medicare": "yarn cmsds build --config cmsds.medicare.config.js",
+    "build-docs": "yarn cmsds build-docs",
+    "build-docs:healthcare": "yarn cmsds build-docs --config cmsds.healthcare.config.js",
+    "build-docs:medicare": "yarn cmsds build-docs --config cmsds.medicare.config.js",
     "release": "./release.sh",
     "publish-release": "./publish.sh",
     "precommit": "lint-staged",
@@ -30,8 +33,8 @@
     "storybook:medicare": "STORYBOOK_DS=mgov start-storybook -p 6006 -s ./packages/design-system/src,./packages/ds-medicare-gov/src",
     "build-storybook": "build-storybook",
     "gh-pages": "yarn gh-pages:healthcare && yarn gh-pages:medicare",
-    "gh-pages:healthcare": "yarn build:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
-    "gh-pages:medicare": "yarn build:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'"
+    "gh-pages:healthcare": "yarn build-docs:healthcare && gh-pages -d './packages/ds-healthcare-gov/docs/dist' --dest 'healthcare'",
+    "gh-pages:medicare": "yarn build-docs:medicare && gh-pages -d './packages/ds-medicare-gov/docs/dist' --dest 'medicare'"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
