@@ -1,6 +1,18 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// import statements in JS & SCSS files cannot be in a conditional
+// this is a workaround to load the appropriate SCSS entry in storybook based on environment variable
+const getStylesPath = () => {
+  if (process.env.STORYBOOK_DS == 'mgov') {
+    return '../packages/ds-medicare-gov/src/styles/index.scss';
+  } else if (process.env.STORYBOOK_DS == 'hcgov') {
+    return '../packages/ds-healthcare-gov/src/styles/index.scss';
+  } else {
+    return '../packages/design-system/src/styles/index.scss';
+  }
+};
+
 module.exports = async (webpackConfig) => {
   const { config } = webpackConfig;
 
@@ -38,10 +50,26 @@ module.exports = async (webpackConfig) => {
     },
     {
       test: /\.scss$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader?url=false', 'sass-loader'],
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader?url=false',
+        {
+          loader: 'sass-loader',
+          options: {
+            additionalData: `@import '${getStylesPath()}';`,
+          },
+        },
+      ],
       include: path.resolve(__dirname, '../'),
     }
   );
+
+  config.resolve.alias = {
+    '@cmsgov/design-system/dist/scss': path.resolve(
+      __dirname,
+      '../packages/design-system/src/styles/'
+    ),
+  };
 
   return config;
 };

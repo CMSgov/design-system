@@ -1,2 +1,1 @@
-// Importing the index.scss into preview.js doesn't work for some reason, so here's a workaround
-@import '../packages/design-system/src/styles/index.scss';
+// the webpack.config.js file adds the @import path for the appropriate scss entry
