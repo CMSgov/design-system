@@ -3,7 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 
-const actionableKeys = ['Enter', 'Backspace', 'Delete'];
+const actionableKeys = ['Enter', 'Space', 'Backspace', 'Delete'];
 
 export interface FilterChipProps {
   /**
