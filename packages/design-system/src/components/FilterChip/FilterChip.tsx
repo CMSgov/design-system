@@ -15,28 +15,32 @@ export interface FilterChipProps {
    */
   className?: string;
   /**
-   * Text for the filter chip
+   * Text for the filter chip.
    */
   label: string;
   /**
-   *  For screenreaders, text to read for removal
+   *  Labels filter action, i.e., "remove filter." For screenreader support.
    */
-  ariaClearLabel: string;
+  ariaClearLabel?: string;
   /**
-   * Function to call when filter chip is dismissed
+   * Function to call when filter chip is dismissed.
    */
   onDelete: () => void;
   /**
-   *  Use alternate thinner close icon in place of standard
+   *  Use alternate thinner close icon in place of standard.
    */
   useAlternateIcon?: boolean;
   /**
-   * Sets the size of the chip to larger version
+   * Sets the size of the chip to larger version.
    */
   size?: 'big';
 }
 
 export class FilterChip extends React.Component<FilterChipProps> {
+  static defaultProps = {
+    ariaClearLabel: 'remove filter',
+  };
+
   constructor(props: FilterChipProps) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -56,15 +60,18 @@ export class FilterChip extends React.Component<FilterChipProps> {
 
   render(): React.ReactNode {
     const { id, label, ariaClearLabel, className, useAlternateIcon, size } = this.props;
+
     const buttonClassNames = classNames(
       'ds-c-filter-chip__button',
       size && size === 'big' ? 'ds-c-filter-chip__button--big' : '',
       className
     );
+
     const iconContainerClassNames = classNames(
       'ds-c-filter-chip__clear-icon-container',
       useAlternateIcon ? 'ds-c-filter-chip__clear-icon-alternate-container' : ''
     );
+
     return (
       <>
         <button
@@ -72,9 +79,10 @@ export class FilterChip extends React.Component<FilterChipProps> {
           id={id || uniqueId(`filter_`)}
           onClick={this.handleClick}
           onKeyDown={this.handleKeyDown}
+          aria-label={`. ${ariaClearLabel} ${label}`}
         >
           <span className="ds-c-filter-chip__label">{label}</span>
-          <span className={iconContainerClassNames} aria-label={ariaClearLabel}>
+          <span className={iconContainerClassNames}>
             {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
           </span>
         </button>
