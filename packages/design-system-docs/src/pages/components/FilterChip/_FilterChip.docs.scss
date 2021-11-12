@@ -35,15 +35,15 @@ Style guide: components.filterchip.react
 ### Usage
 
 - Do not mix badges and filter chip as it can be confusing to the user
-- Do not use filter chip when a badge is sufficient, ie when none of the tags are removable
-- Filter chips ideally should be short and not wrap to the second line
+- Do not use filter chip when a badge is sufficient, i.e., when none of the tags are removable
+- Filter chips should be short and not wrap to the second line
 - Allow adequate spacing (at least 8px) between each filter chip, as much as the design will allow.
 - The colors of the Filter Chip can be overriden using the Sass variables listed below, but should not be overriden with colors outside of the color palette.
 
 ### Accessibility
 
-- Use `ariaClearLabel` prop so that screenreaders can accurately read out the close icon action
 - `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
+- Use the attributes [`aria-live="polite"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and [`aria-relevant="removals"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-relevant_attribute) on `<FilterChip />`'s parent container to alert users when an element has been removed.
 
 ### Future research
 
