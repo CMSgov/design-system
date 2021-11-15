@@ -14,3 +14,9 @@ $error-message-icon-size: 28px;
 .ds-c-field__error-message--inverse::before {
   background-image: url('#{$image-path}/error-light-red.svg');
 }
+
+// overwrites the background image rendering when the InlineError
+// component is used in place of the error-message class above
+.ds-c-inline-error::before {
+  display: none;
+}
