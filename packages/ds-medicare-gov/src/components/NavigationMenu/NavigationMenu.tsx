@@ -1,5 +1,5 @@
 import { Button } from '@cmsgov/design-system';
-import Close from '../CloseSymbol';
+import { Close } from '../Icons';
 import Hamburger from '../HamburgerSymbol';
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
