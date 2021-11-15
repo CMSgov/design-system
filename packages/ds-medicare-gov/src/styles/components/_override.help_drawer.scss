@@ -1,29 +1,35 @@
 /* stylelint-disable */
 .mct-c-help-drawer {
-  .ds-c-help-drawer {
-    &__header > div {
-      @extend .ds-u-fill--white;
+  $mct-drawer-header-background-color: $color-white;
+  $mct-drawer-heading-font-family: $montserrat-font;
+  $mct-drawer-heading-font-size: $h1-mobile-font-size;
+  $mct-drawer-heading-font-weight: $font-bold;
+  $mct-drawer-close-button-color: $color-black;
+  $mct-drawer-close-button-size: 26px;
 
-      h3 {
-        @extend .ds-u-font-weight--bold;
-        @extend .ds-u-text-align--left;
-        font-size: 30px;
-        font-family: $montserrat-font;
-      }
+  .ds-c-drawer__header {
+    background-color: $mct-drawer-header-background-color;
+  }
 
-      button {
-        @extend .ds-u-border--0;
-        @extend .ds-u-color--black;
+  .ds-c-drawer__header-heading {
+    font-weight: $mct-drawer-heading-font-weight;
+    text-align: left;
+    font-size: $mct-drawer-heading-font-size;
+    font-family: $mct-drawer-heading-font-family;
+  }
 
-        svg {
-          width: 26px;
-          height: 26px;
-        }
-      }
+  .ds-c-drawer__close-button {
+    border: 0;
+    color: $mct-drawer-close-button-color;
+
+    svg {
+      width: $mct-drawer-close-button-size;
+      height: $mct-drawer-close-button-size;
     }
-    &__footer {
-      @extend .ds-u-display--none;
-    }
+  }
+
+  .ds-c-drawer__footer {
+    display: none;
   }
 }
 /* stylelint-enable */
