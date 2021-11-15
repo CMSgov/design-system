@@ -1,25 +1,30 @@
 /* stylelint-disable */
 .mct-c-help-drawer {
-  .ds-c-help-drawer {
-    .ds-c-help-drawer__header {
-      background-color: #fff;
-    }
+  $mct-drawer-header-background-color: $color-white;
+  $mct-drawer-heading-font-family: $montserrat-font;
+  $mct-drawer-heading-font-size: $h1-mobile-font-size;
+  $mct-drawer-heading-font-weight: $font-bold;
+  $mct-drawer-close-button-color: $color-black;
+  $mct-drawer-close-button-size: 26px;
 
-    .ds-c-help-drawer__header-heading {
-      font-weight: 700;
-      text-align: left;
-      font-size: 30px;
-      font-family: $montserrat-font;
-    }
+  .ds-c-drawer__header {
+    background-color: $mct-drawer-header-background-color;
+  }
 
-    .ds-c-help-drawer__close-button {
-      border: 0;
-      color: #000;
+  .ds-c-drawer__header-heading {
+    font-weight: $mct-drawer-heading-font-weight;
+    text-align: left;
+    font-size: $mct-drawer-heading-font-size;
+    font-family: $mct-drawer-heading-font-family;
+  }
 
-      svg {
-        width: 26px;
-        height: 26px;
-      }
+  .ds-c-drawer__close-button {
+    border: 0;
+    color: $mct-drawer-close-button-color;
+
+    svg {
+      width: $mct-drawer-close-button-size;
+      height: $mct-drawer-close-button-size;
     }
 
     .ds-c-help-drawer__footer {
