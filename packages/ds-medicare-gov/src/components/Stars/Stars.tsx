@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import uniqueId from 'lodash/uniqueId';
+import { StarIcon } from '@cmsgov/design-system';
 
 const EmptyStar: FunctionComponent = () => {
   const clipPath1 = uniqueId('empty_clip_path_');
@@ -166,17 +167,17 @@ const Stars: FunctionComponent<StarsProps> = ({ number, total, ariaHidden = fals
   const starIcons = [];
   let starIndex = 0;
   for (let i = 0; i < completeStars; i++) {
-    starIcons.push(<FilledStar key={starIndex} />);
+    starIcons.push(<StarIcon variation="filled" key={starIndex} />);
     starIndex++;
   }
 
   if (halfStar) {
-    starIcons.push(<HalfStar key={starIndex} />);
+    starIcons.push(<StarIcon variation="half" key={starIndex} />);
     starIndex++;
   }
 
   for (let i = 0; i < emptyStars; i++) {
-    starIcons.push(<EmptyStar key={starIndex} />);
+    starIcons.push(<StarIcon key={starIndex} />);
     starIndex++;
   }
 

@@ -1,9 +1,8 @@
 import React, { PureComponent, RefObject, createRef } from 'react';
 import MedicaregovLogo from './../MedicaregovLogo/MedicaregovLogo';
 import { Button } from '@cmsgov/design-system';
-import Caret from './../Caret/Caret';
+import { Caret, Close } from './../Icons';
 import Hamburger from '../HamburgerSymbol';
-import Close from '../CloseSymbol';
 
 interface GlobalHeaderProps {
   menuButtonAriaLabel?: string;
