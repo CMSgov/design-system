@@ -11,7 +11,7 @@
 
 import './Button';
 
-import { setErrorPlacementDefault } from '@design-system';
+import { setErrorPlacementDefault } from '@cmsgov/design-system';
 
 export * from '@cmsgov/design-system';
 export * from './Footer';
