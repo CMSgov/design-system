@@ -18,5 +18,11 @@ module.exports = {
         '@typescript-eslint/no-use-before-define': ['error'],
       },
     },
+    {
+      files: ['*.stories.jsx'],
+      rules: {
+        'react/prop-types': 'off',
+      },
+    },
   ],
 };
