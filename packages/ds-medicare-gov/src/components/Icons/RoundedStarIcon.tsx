@@ -13,11 +13,11 @@ export interface RoundedStarProps extends IconCommonProps {
 
 const RoundedStar = (props: RoundedStarProps) => {
   if (props.variation === 'filled') {
-    return <FilledStar className={props.className} {...props} />;
+    return <FilledStar {...props} />;
   } else if (props.variation === 'half') {
-    return <HalfStar className={props.className} {...props} />;
+    return <HalfStar {...props} />;
   } else {
-    return <EmptyStar className={props.className} {...props} />;
+    return <EmptyStar {...props} />;
   }
 };
 

@@ -3,6 +3,11 @@ import classNames from 'classnames';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system/dist/components/Icons/SvgIcon';
 
+const defaultProps = {
+  className: '',
+  title: 'Filled Star',
+};
+
 const RoundedStarHalfIcon = (props: IconCommonProps) => {
   const iconCssClasses = classNames(
     'ds-c-icon--rounded-star',
@@ -11,7 +16,7 @@ const RoundedStarHalfIcon = (props: IconCommonProps) => {
   );
 
   return (
-    <SvgIcon title="Filled Star" className={iconCssClasses}>
+    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
       <g>
         <polygon
           fillRule="evenodd"
