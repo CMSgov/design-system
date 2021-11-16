@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { Drawer, DrawerToggle } from '@design-system';
+import { Drawer, DrawerToggle } from '@cmsgov/design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
