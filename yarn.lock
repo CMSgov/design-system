@@ -2520,22 +2520,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cmsgov/design-system@2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-2.7.1.tgz#3808b5be99733c857fcb0fabc6e160d76f969530"
-  integrity sha512-cQ6E/IDg14uz5QSiAB/kOzHrDRW8rVK+G10M37zBN4EA20TOO4VosTb7J4pW+5R+9PlCKKow7l2zntmbFWM2wQ==
-  dependencies:
-    "@popperjs/core" "^2.4.4"
-    classnames "^2.2.5"
-    core-js "^3.6.5"
-    downshift "^3.2.10"
-    ev-emitter "^1.1.1"
-    focus-trap-react "^6.0.0"
-    lodash.uniqueid "^4.0.1"
-    prop-types "^15.7.2"
-    react-aria-modal "^2.11.1"
-    react-transition-group "^2.9.0"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -14877,11 +14861,6 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
-
-lodash.uniqueid@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/lodash.uniqueid/-/lodash.uniqueid-4.0.1.tgz#3268f26a7c88e4f4b1758d679271814e31fa5b26"
-  integrity sha1-MmjyanyI5PSxdY1nknGBTjH6WyY=
 
 lodash.upperfirst@4.3.1:
   version "4.3.1"
