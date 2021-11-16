@@ -131,19 +131,34 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
                 <MenuIcon
                   className="ds-u-margin-right--1"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="svg-inline--fa fa-bars fa-w-14 ds-u-margin-right--1"
-                    data-icon="bars"
-                    data-prefix="fas"
+                  <SvgIcon
+                    ariaHidden={true}
+                    className="ds-c-icon--menu ds-u-margin-right--1"
+                    inversed={false}
+                    title="Menu Icon"
                     viewBox="0 0 448 512"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby="icon-1__title"
+                      className="ds-c-icon ds-c-icon--menu ds-u-margin-right--1"
+                      focusable={false}
+                      id="icon-1"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="icon-1__title"
+                      >
+                        Menu Icon
+                      </title>
+                      <path
+                        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </SvgIcon>
                 </MenuIcon>
                 header.menu
               </button>
@@ -227,16 +242,16 @@ exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
                   >
                     <svg
                       aria-hidden={true}
-                      aria-labelledby="icon-1__title"
+                      aria-labelledby="icon-2__title"
                       className="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
                       focusable={false}
-                      id="icon-1"
+                      id="icon-2"
                       role="img"
                       viewBox="-2 -2 18 18"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <title
-                        id="icon-1__title"
+                        id="icon-2__title"
                       >
                         Close
                       </title>
@@ -361,19 +376,34 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
                 <MenuIcon
                   className="ds-u-margin-right--1"
                 >
-                  <svg
-                    aria-hidden="true"
-                    className="svg-inline--fa fa-bars fa-w-14 ds-u-margin-right--1"
-                    data-icon="bars"
-                    data-prefix="fas"
+                  <SvgIcon
+                    ariaHidden={true}
+                    className="ds-c-icon--menu ds-u-margin-right--1"
+                    inversed={false}
+                    title="Menu Icon"
                     viewBox="0 0 448 512"
-                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                    <svg
+                      aria-hidden={true}
+                      aria-labelledby="icon-4__title"
+                      className="ds-c-icon ds-c-icon--menu ds-u-margin-right--1"
+                      focusable={false}
+                      id="icon-4"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="icon-4__title"
+                      >
+                        Menu Icon
+                      </title>
+                      <path
+                        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </SvgIcon>
                 </MenuIcon>
                 header.menu
               </button>
