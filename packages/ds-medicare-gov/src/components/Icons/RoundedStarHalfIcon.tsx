@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { SvgIcon } from '@cmsgov/design-system';
-import { SvgIconProps } from '@cmsgov/design-system/dist/components/Icons/SvgIcon';
+import { IconCommonProps } from '@cmsgov/design-system/dist/components/Icons/SvgIcon';
 
-const RoundedStarHalfIcon = (props: SvgIconProps) => {
+const RoundedStarHalfIcon = (props: IconCommonProps) => {
   const clipPath1 = uniqueId('clip_path_');
   const clipPath2 = uniqueId('clip_path_');
   const clipPath3 = uniqueId('clip_path_');
