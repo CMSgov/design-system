@@ -1,7 +1,7 @@
 import Logo from './Logo';
 import PropTypes from 'prop-types';
 import React from 'react';
-import HhsLogo from '../../images/logo-hhs.svg';
+import { HHSLogo } from '@cmsgov/design-system';
 import UsaLogo from '../../images/logo-usa.svg';
 import WhiteHouseLogo from '../../images/logo-white-house.svg';
 
@@ -14,7 +14,7 @@ const LogosRow = function (props) {
       <div className="ds-l-form-row">
         <div className="ds-l-col ds-l-col--3 ds-l-sm-col--2 ds-l-md-col--auto">
           <Logo href="http://www.hhs.gov/" width="67px">
-            <HhsLogo />
+            <HHSLogo className="hc-c-logo--hhs-logo" />
           </Logo>
         </div>
         <div className="ds-l-col ds-l-col--9 ds-l-sm-col--10 ds-l-md-col--auto">

@@ -15,9 +15,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="67px"
       >
         <HhsLogo
-          aria-labelledby="hhs-title"
-          viewBox="0 0 252 252"
-          xmlns="http://www.w3.org/2000/svg"
+          className="hc-c-logo--hhs-logo"
         />
       </Logo>
     </div>

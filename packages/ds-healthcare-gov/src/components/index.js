@@ -13,8 +13,7 @@
  */
 
 import './Button';
-import { setInlineErrorIconDisplay , setErrorPlacementDefault } from '@cmsgov/design-system';
-
+import { setInlineErrorIconDisplay, setErrorPlacementDefault } from '@cmsgov/design-system';
 
 export * from '@cmsgov/design-system';
 export * from './Footer';
