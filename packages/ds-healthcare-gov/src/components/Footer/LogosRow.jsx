@@ -1,8 +1,7 @@
 import Logo from './Logo';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { HHSLogo } from '@cmsgov/design-system';
-import UsaLogo from '../../images/logo-usa.svg';
+import { HHSLogo, UsaLogo } from '@cmsgov/design-system';
 import WhiteHouseLogo from '../../images/logo-white-house.svg';
 
 /**
@@ -29,7 +28,7 @@ const LogosRow = function (props) {
             <WhiteHouseLogo />
           </Logo>
           <Logo href="http://www.usa.gov/" width="162px">
-            <UsaLogo />
+            <UsaLogo className="hc-c-logo--usa-logo" />
           </Logo>
         </div>
       </div>

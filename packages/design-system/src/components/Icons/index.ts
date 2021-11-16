@@ -20,4 +20,5 @@ export { default as PdfIcon } from './PdfIcon';
 export { default as RemoveIcon } from './RemoveIcon';
 export { default as StarIcon } from './StarIcon';
 export { default as UsaFlagIcon } from './UsaFlagIcon';
+export { default as UsaLogo } from './UsaLogo';
 export { default as WarningIcon } from './WarningIcon';
