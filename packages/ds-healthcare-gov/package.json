@@ -14,7 +14,7 @@
   "main": "dist/components/index.js",
   "module": "dist/esnext/index.esm.js",
   "types": "dist/types/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": true,
   "files": [
     "dist",
     "src"
