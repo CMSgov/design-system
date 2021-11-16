@@ -22,3 +22,4 @@ export { default as StarIcon } from './StarIcon';
 export { default as UsaFlagIcon } from './UsaFlagIcon';
 export { default as UsaLogo } from './UsaLogo';
 export { default as WarningIcon } from './WarningIcon';
+export { default as WhiteHouseLogo } from './WhiteHouseLogo';

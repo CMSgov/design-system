@@ -40,9 +40,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="76px"
       >
         <WhiteHouseLogo
-          aria-labelledby="wh-title"
-          viewBox="0 0 670 450"
-          xmlns="http://www.w3.org/2000/svg"
+          className="hc-c-logo--wh-logo"
         />
       </Logo>
       <Logo
