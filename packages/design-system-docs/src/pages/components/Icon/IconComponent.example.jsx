@@ -10,6 +10,7 @@ import {
   CloseIcon,
   CloseIconThin,
   DownloadIcon,
+  HamburgerIcon,
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
@@ -84,6 +85,11 @@ const iconData = [
     defaultTitle: 'Download',
     component: <DownloadIcon />,
     name: 'DownloadIcon',
+  },
+  {
+    defaultTitle: 'Menu',
+    component: <HamburgerIcon />,
+    name: 'HamburgerIcon',
   },
   {
     defaultTitle: 'Image',

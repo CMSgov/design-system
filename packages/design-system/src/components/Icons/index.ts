@@ -9,6 +9,7 @@ export { default as CheckIcon } from './CheckIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as CloseIconThin } from './CloseIconThin';
 export { default as DownloadIcon } from './DownloadIcon';
+export { default as HamburgerIcon } from './HamburgerIcon';
 export { default as ImageIcon } from './ImageIcon';
 export { default as InfoCircleIcon } from './InfoCircleIcon';
 export { default as InfoCircleIconThin } from './InfoCircleIconThin';
