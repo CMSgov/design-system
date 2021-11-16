@@ -1,5 +1,5 @@
 /* eslint no-alert: 0 */
-import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
+import { HelpDrawer, HelpDrawerToggle } from '@design-system';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
