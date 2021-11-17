@@ -133,7 +133,7 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
                 >
                   <SvgIcon
                     ariaHidden={true}
-                    className="ds-c-icon--menu ds-u-margin-right--1"
+                    className="ds-u-margin-right--1 ds-c-icon--menu"
                     inversed={false}
                     title="Menu Icon"
                     viewBox="0 0 448 512"
@@ -141,7 +141,7 @@ exports[`ActionMenu logged-in version renders logged-in version 1`] = `
                     <svg
                       aria-hidden={true}
                       aria-labelledby="icon-1__title"
-                      className="ds-c-icon ds-c-icon--menu ds-u-margin-right--1"
+                      className="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
                       focusable={false}
                       id="icon-1"
                       role="img"
@@ -378,7 +378,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
                 >
                   <SvgIcon
                     ariaHidden={true}
-                    className="ds-c-icon--menu ds-u-margin-right--1"
+                    className="ds-u-margin-right--1 ds-c-icon--menu"
                     inversed={false}
                     title="Menu Icon"
                     viewBox="0 0 448 512"
@@ -386,7 +386,7 @@ exports[`ActionMenu logged-out version renders logged-out version 1`] = `
                     <svg
                       aria-hidden={true}
                       aria-labelledby="icon-4__title"
-                      className="ds-c-icon ds-c-icon--menu ds-u-margin-right--1"
+                      className="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
                       focusable={false}
                       id="icon-4"
                       role="img"

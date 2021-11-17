@@ -23,7 +23,7 @@ export function InlineError({
   id,
   inversed,
 }: InlineErrorProps): React.ReactElement {
-  getInlineErrorIconDisplay() ? (displayErrorIcon = true) : (displayErrorIcon = false);
+  const displayIcon = displayErrorIcon || getInlineErrorIconDisplay();
 
   const classes = classNames(
     'ds-c-inline-error',
@@ -31,11 +31,11 @@ export function InlineError({
     { 'ds-c-field__error-message--inverse': inversed },
     className
   );
-  const viewbox = '36 -6 186 186';
+  const viewbox = '36 -12 186 186';
 
   return (
     <span className={classes} id={id} role="alert">
-      {displayErrorIcon && <AlertCircleIcon viewBox={viewbox} />}
+      {displayIcon && <AlertCircleIcon viewBox={viewbox} />}
       {children}
     </span>
   );
