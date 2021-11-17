@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react';
-import { Button } from '@cmsgov/design-system';
-import HHSLogo from '../HHSlogo/HHSlogo';
+import { HHSLogo, Button } from '@cmsgov/design-system';
 import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';
 
 interface SimpleFooterProps {
