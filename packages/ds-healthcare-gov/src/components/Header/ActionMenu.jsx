@@ -1,6 +1,5 @@
 /* eslint-disable react/no-multi-comp, jsx-a11y/no-redundant-roles */
-import { Button, CloseIconThin } from '@cmsgov/design-system';
-import MenuIcon from './MenuIcon';
+import { Button, CloseIconThin, MenuIcon } from '@cmsgov/design-system';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
