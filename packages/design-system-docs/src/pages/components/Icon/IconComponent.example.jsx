@@ -128,11 +128,6 @@ const iconData = [
     name: 'NextIcon',
   },
   {
-    defaultTitle: 'Menu Icon',
-    component: <MenuIcon />,
-    name: 'MenuIcon',
-  },
-  {
     defaultTitle: 'Pdf',
     component: <PdfIcon />,
     name: 'PdfIcon',
