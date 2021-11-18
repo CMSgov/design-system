@@ -15,6 +15,7 @@ import {
   InfoCircleIconThin,
   LockCircleIcon,
   LockIcon,
+  MenuIcon,
   NextIcon,
   PdfIcon,
   RemoveIcon,
@@ -114,6 +115,11 @@ const iconData = [
     defaultTitle: 'Next',
     component: <NextIcon />,
     name: 'NextIcon',
+  },
+  {
+    defaultTitle: 'Menu Icon',
+    component: <MenuIcon />,
+    name: 'MenuIcon',
   },
   {
     defaultTitle: 'Pdf',
