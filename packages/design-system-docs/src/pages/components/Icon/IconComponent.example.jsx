@@ -10,13 +10,13 @@ import {
   CloseIcon,
   CloseIconThin,
   DownloadIcon,
-  HamburgerIcon,
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
   LockCircleIcon,
   LockIcon,
   MenuIcon,
+  MenuIconThin,
   NextIcon,
   PdfIcon,
   RemoveIcon,
@@ -88,11 +88,6 @@ const iconData = [
     name: 'DownloadIcon',
   },
   {
-    defaultTitle: 'Menu',
-    component: <HamburgerIcon />,
-    name: 'HamburgerIcon',
-  },
-  {
     defaultTitle: 'Image',
     component: <ImageIcon />,
     name: 'ImageIcon',
@@ -118,14 +113,19 @@ const iconData = [
     name: 'LockIcon',
   },
   {
-    defaultTitle: 'Next',
-    component: <NextIcon />,
-    name: 'NextIcon',
-  },
-  {
     defaultTitle: 'Menu Icon',
     component: <MenuIcon />,
     name: 'MenuIcon',
+  },
+  {
+    defaultTitle: 'Menu',
+    component: <MenuIconThin />,
+    name: 'MenuIconThin',
+  },
+  {
+    defaultTitle: 'Next',
+    component: <NextIcon />,
+    name: 'NextIcon',
   },
   {
     defaultTitle: 'Pdf',
