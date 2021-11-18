@@ -11,7 +11,6 @@ import './Dialog';
 
 export * from '@cmsgov/design-system';
 
-export { default as HHSLogo } from './HHSlogo';
 export { default as MedicaregovLogo } from './MedicaregovLogo';
 export { default as Navbar } from './Navbar';
 export { default as NavigationMenu } from './NavigationMenu';
