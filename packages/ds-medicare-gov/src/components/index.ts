@@ -7,6 +7,7 @@
  * CommonJS (`dist/components/`)  and ES module (`dist/esnext/`) versions of components.
  * ES modules code is necessary for webpack tree shaking bundle optimizations
  */
+import './Dialog';
 
 export * from '@cmsgov/design-system';
 
