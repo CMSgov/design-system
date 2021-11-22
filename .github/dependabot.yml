@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/packages/design-system'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+      directory: '/packages/design-system-docs'
+      schedule:
+        interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/packages/design-system-scripts'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/packages/ds-healthcare-gov'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/packages/ds-medicare-gov'
+    schedule:
+      interval: 'daily'
