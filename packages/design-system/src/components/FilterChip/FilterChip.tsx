@@ -19,7 +19,7 @@ export interface FilterChipProps {
    */
   label: string;
   /**
-   *  Labels filter action, i.e., "remove filter." For screenreader support.
+   *  Labels filter action, i.e., "Remove." For screenreader support.
    */
   ariaClearLabel?: string;
   /**
@@ -38,7 +38,7 @@ export interface FilterChipProps {
 
 export class FilterChip extends React.Component<FilterChipProps> {
   static defaultProps = {
-    ariaClearLabel: 'remove filter',
+    ariaClearLabel: 'Remove',
   };
 
   constructor(props: FilterChipProps) {
@@ -73,20 +73,18 @@ export class FilterChip extends React.Component<FilterChipProps> {
     );
 
     return (
-      <>
-        <button
-          className={buttonClassNames}
-          id={id || uniqueId(`filter_`)}
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-          aria-label={`. ${ariaClearLabel} ${label}`}
-        >
-          <span className="ds-c-filter-chip__label">{label}</span>
-          <span className={iconContainerClassNames}>
-            {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
-          </span>
-        </button>
-      </>
+      <button
+        className={buttonClassNames}
+        id={id || uniqueId(`filter_`)}
+        onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
+        aria-label={`${ariaClearLabel} ${label}`}
+      >
+        <span className="ds-c-filter-chip__label">{label}</span>
+        <span className={iconContainerClassNames}>
+          {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
+        </span>
+      </button>
     );
   }
 }

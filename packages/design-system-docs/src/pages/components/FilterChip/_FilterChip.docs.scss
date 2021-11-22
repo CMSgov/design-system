@@ -43,7 +43,6 @@ Style guide: components.filterchip.react
 ### Accessibility
 
 - `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
-- Use the attributes [`aria-live="polite"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) and [`aria-relevant="removals"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-relevant_attribute) on `<FilterChip />`'s parent container to alert users when an element has been removed.
 
 ### Future research
 
