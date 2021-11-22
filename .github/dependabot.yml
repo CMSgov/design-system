@@ -9,9 +9,9 @@ updates:
     schedule:
       interval: 'daily'
   - package-ecosystem: 'npm'
-      directory: '/packages/design-system-docs'
-      schedule:
-        interval: 'daily'
+    directory: '/packages/design-system-docs'
+    schedule:
+      interval: 'daily'
   - package-ecosystem: 'npm'
     directory: '/packages/design-system-scripts'
     schedule:
