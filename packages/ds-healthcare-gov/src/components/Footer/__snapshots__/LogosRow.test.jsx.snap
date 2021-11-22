@@ -15,8 +15,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="67px"
       >
         <HhsLogo
-          viewBox="0 0 252 252"
-          xmlns="http://www.w3.org/2000/svg"
+          className="hc-c-logo--hhs-logo"
         />
       </Logo>
     </div>
@@ -41,8 +40,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="76px"
       >
         <WhiteHouseLogo
-          viewBox="0 0 670 450"
-          xmlns="http://www.w3.org/2000/svg"
+          className="hc-c-logo--wh-logo"
         />
       </Logo>
       <Logo
@@ -50,8 +48,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="162px"
       >
         <UsaLogo
-          viewBox="0 0 291 89"
-          xmlns="http://www.w3.org/2000/svg"
+          className="hc-c-logo--usa-logo"
         />
       </Logo>
     </div>

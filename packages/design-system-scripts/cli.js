@@ -207,7 +207,9 @@ yargs
         // TODO: This is really ugly, but soon we'll decouple browser tests from the
         // docs site entirely, and a lot of this code can be deleted.
         const command =
-          config.rootPath === 'design-system/healthcare' ? 'build:healthcare' : 'build:medicare';
+          config.rootPath === 'design-system/healthcare'
+            ? 'build-docs:healthcare'
+            : 'build-docs:medicare';
         process.env.BUILD_COMMAND = `yarn ${command} --skipLatest --ignoreRootPath`;
       }
 
