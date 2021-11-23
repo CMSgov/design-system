@@ -45,11 +45,26 @@ class FooterExample extends React.PureComponent {
   }
 
   render() {
-    return (
-      <div>
-        <Footer initialLanguage={this.locale} />
-        {this.renderFooterToggles()}
+    const wrapperClassNames = 'ds-u-padding--1';
+    const footerTopExample = (
+      <div className="ds-l-container ds-u-padding-bottom--2">
+        <div className="ds-u-text-align--right ds-u-border-bottom--1 ds-u-padding-bottom--2 ds-u-padding-right--2">
+          <span className="ds-u-font-size--xl ds-u-sans ds-u-font-weight--bold ds-u-color--gray-dark">
+            58 DAYS
+          </span>
+        </div>
       </div>
+    );
+    return (
+      <>
+        <div className="ds-u-margin-top--4">
+          <h6 className="preview__label">Minimal</h6>
+          <Footer initialLanguage={this.locale} />
+          <h6 className="preview__label">Footer - Top Section</h6>
+          <Footer initialLanguage={this.locale} footerTop={footerTopExample} />
+          <div className={wrapperClassNames}>{this.renderFooterToggles()}</div>
+        </div>
+      </>
     );
   }
 }
