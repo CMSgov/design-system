@@ -16,6 +16,7 @@ export { default as InfoCircleIconThin } from './InfoCircleIconThin';
 export { default as LockCircleIcon } from './LockCircleIcon';
 export { default as LockIcon } from './LockIcon';
 export { default as MenuIcon } from './MenuIcon';
+export { default as MenuIconThin } from './MenuIconThin';
 export { default as NextIcon } from './NextIcon';
 export { default as PdfIcon } from './PdfIcon';
 export { default as RemoveIcon } from './RemoveIcon';
