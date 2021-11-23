@@ -99,7 +99,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
 
 ### Other Notes
 
-- There are several ways to transform values from one format to another. If we agree on standard units (px, rem, rgb) for each token type, we can utilize mixins to transform these values to other types dynamically. [A codepen example](https://codepen.io/jakob-e/pen/AHunv).
+- There are several ways to transform values from one format to another. If we agree on standard units (`px`, `rem`, `rgb`) for each token type, we can utilize Sass Mixins to transform these values to other types dynamically. [A CodePen example](https://codepen.io/jakob-e/pen/AHunv).
 - There are many tickets currently in the backlog that would be resolved with this work automatically.
 
 ### Questions and Requested Feedback
