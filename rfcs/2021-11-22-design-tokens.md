@@ -75,7 +75,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    2. In the case of Sketch and the DSM, the tool chosen/created would be extended to output libraries for the DSM (if needed). Sketch and these libraries would also be versioned and live in the token package. These would be made available as release download libraries with which to work from. The [Sketch file format](https://developer.sketch.com/file-format/) is very easy to work with, as it is already made up of JSON files.
 
 4. A Jenkins task for creating these releases would need to be created and tested for CI of changes to the tokens package.
-5. Future work to structure similarities between component level variables in sketch and the codebase would be ongoing from this point. These variables could be added and utilized on a component by component basis, and would make use of the highest level tokens for spacing, color, etc.. i.e.
+5. Future work to structure similarities between component level variables in Sketch and the codebase would be ongoing from this point. These variables could be added and utilized on a component-by-component basis, and would make use of the highest level tokens for spacing, color, etc.. i.e.
 
    ```
    button-small-active-highlight-inverse-color (sketch)
