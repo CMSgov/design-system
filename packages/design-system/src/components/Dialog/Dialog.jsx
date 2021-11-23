@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
+import { CloseIcon } from '../Icons';
 
 export class Dialog extends React.PureComponent {
   constructor(props) {
@@ -83,6 +84,7 @@ export class Dialog extends React.PureComponent {
       closeButtonSize,
       closeButtonText,
       closeButtonVariation,
+      closeIcon,
       closeText,
       escapeExits,
       escapeExitDisabled,
@@ -135,6 +137,7 @@ export class Dialog extends React.PureComponent {
               size={closeButtonSize}
               variation={closeButtonVariation}
             >
+              {closeIcon}
               {
                 // TODO: remove closeText support once fully deprecated
                 closeText || closeButtonText
@@ -160,6 +163,7 @@ Dialog.defaultProps = {
   ariaCloseLabel: 'Close modal dialog',
   closeButtonText: 'Close',
   closeButtonVariation: 'transparent',
+  closeIcon: <CloseIcon />,
   escapeExits: true,
   escapeExitDisabled: false,
   underlayClickExits: false,
@@ -231,6 +235,10 @@ Dialog.propTypes = {
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
   closeButtonVariation: PropTypes.string,
+  /**
+   * The icon to display as part of the close button
+   */
+  closeIcon: PropTypes.node,
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`.
    * @hide-prop The text for the "Close" button

@@ -64,6 +64,10 @@ export interface DialogProps {
    */
   closeButtonVariation?: string;
   /**
+   * The icon to display as part of the close button
+   */
+  closeIcon: React.ReactNode;
+  /**
    * @hide-prop [Deprecated] This prop has been renamed to `closeButtonText`
    * @hide-prop The text for the "Close" button
    */
