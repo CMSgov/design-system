@@ -72,10 +72,10 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    I believe the best option would be to write our own [Webpack Loader](https://webpack.js.org/contribute/writing-a-loader/) to convert these tokens to top level SASS files.
 
    1. In the case of the DS-Core, we would convert these tokens into variables which would be utilized by files in our /src/styles/settings/variables scss files and font.scss file initially. Since we would not be changing these files aside from referencing the token variable names in the tokens NPM package instead of providing hard coded values, the compiled output of these files should be compared to detect any breaking changes. Token variables would reside in scss files, checked into the token package. One advantage to using a custom webpack loader in our case is that we could do things like generate the list of @font-face includes based on what tokens are available, slimming overall DS package size.
-   2. In the case of Sketch and the DSM, the tool chosen/created would be extended to output libraries for the DSM (if needed) and Sketch and these libraries would also be versioned and live in the token package. These would be made available as release download libraries with which to work from. The [Sketch file format](https://developer.sketch.com/file-format/) is very easy to work with as it is already made up of JSON files.
+   2. In the case of Sketch and the DSM, the tool chosen/created would be extended to output libraries for the DSM (if needed). Sketch and these libraries would also be versioned and live in the token package. These would be made available as release download libraries with which to work from. The [Sketch file format](https://developer.sketch.com/file-format/) is very easy to work with, as it is already made up of JSON files.
 
 4. A Jenkins task for creating these releases would need to be created and tested for CI of changes to the tokens package.
-5. Future work to structure similarities between component level variables in sketch and the codebase would be ongoing from this point. These variables could be added and utilized on a component by component basis, and would make use of the highest level tokens for spacing, color, etc.. i.e.
+5. Future work to structure similarities between component level variables in Sketch and the codebase would be ongoing from this point. These variables could be added and utilized on a component-by-component basis, and would make use of the highest level tokens for spacing, color, etc.. i.e.
 
    ```
    button-small-active-highlight-inverse-color (sketch)
@@ -95,11 +95,11 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    }
    ```
 
-6. Documentation would need to be generated from the token build task which could be another option in our existing site docs filed under "Design Tokens." Component level variables could be included on the doc pages for each component.
+6. Documentation would need to be generated from the token build task. This could be another option in our existing site docs, filed under "Design Tokens." Component level variables could be included on the doc pages for each component.
 
 ### Other Notes
 
-- There are several ways to transform values from one format to another. If we agree on standard units (px, rem, rgb) for each token type, we can utilize mixins to transform these values to other types dynamically. [A codepen example](https://codepen.io/jakob-e/pen/AHunv).
+- There are several ways to transform values from one format to another. If we agree on standard units (`px`, `rem`, `rgb`) for each token type, we can utilize Sass Mixins to transform these values to other types dynamically. [A CodePen example](https://codepen.io/jakob-e/pen/AHunv).
 - There are many tickets currently in the backlog that would be resolved with this work automatically.
 
 ### Questions and Requested Feedback
