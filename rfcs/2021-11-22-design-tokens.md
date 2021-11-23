@@ -95,7 +95,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    }
    ```
 
-6. Documentation would need to be generated from the token build task which could be another option in our existing site docs filed under "Design Tokens." Component level variables could be included on the doc pages for each component.
+6. Documentation would need to be generated from the token build task. This could be another option in our existing site docs, filed under "Design Tokens." Component level variables could be included on the doc pages for each component.
 
 ### Other Notes
 
