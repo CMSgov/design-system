@@ -47,11 +47,9 @@ class FooterExample extends React.PureComponent {
   render() {
     const wrapperClassNames = 'ds-u-padding--1';
     const footerTopExample = (
-      <div className="ds-l-container ds-u-padding-bottom--2">
-        <div className="ds-u-text-align--right ds-u-border-bottom--1 ds-u-padding-bottom--2 ds-u-padding-right--2">
-          <span className="ds-u-font-size--xl ds-u-sans ds-u-font-weight--bold ds-u-color--gray-dark">
-            58 DAYS
-          </span>
+      <div className="ds-l-container ds-u-text-align--right ds-u-padding-right--2 ds-u-padding-bottom--2">
+        <div className="ds-u-font-size--xl ds-u-sans ds-u-font-weight--bold ds-u-color--gray-dark ds-u-border-bottom--1 ds-u-padding-bottom--2">
+          58 DAYS
         </div>
       </div>
     );
