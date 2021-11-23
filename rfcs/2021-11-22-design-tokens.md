@@ -36,8 +36,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
 
 ## Risks
 
-1. There is a small risk that implementing tokens could break many things at once, as many design rules would be referencing these across an application. With tools like storybook, visual regression and QA this would be a part of every applications standard testing procedure and should be easy to resolve.
-2. There can be a reductive quality to design tokens in that there might be a more limited set of colors/spacing options/etc.. to work with for the consuming applications. Someone might have to sell consuming systems on the advantages to brand consistency, which they hopefully already understand.
+1. There can be a reductive quality to design tokens in that there might be a more limited set of colors/spacing options/etc.. to work with for the consuming applications. Someone might have to sell consuming systems on the advantages to brand consistency, which they hopefully already understand.
 
 ## Scope/Outline
 
