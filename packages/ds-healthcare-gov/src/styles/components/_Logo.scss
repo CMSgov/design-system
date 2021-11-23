@@ -1,5 +1,6 @@
 .hc-c-footer__logo {
   max-width: 100%;
+  vertical-align: top;
 
   svg {
     fill: $color-muted;
@@ -10,6 +11,18 @@
 .hc-c-logo {
   display: inline-block;
   line-height: 1;
+}
+
+.hc-c-logo--hhs-logo {
+  min-height: 68px;
+}
+
+.hc-c-logo--usa-logo {
+  min-height: 50px;
+}
+
+.hc-c-logo--wh-logo {
+  min-height: 51px;
 }
 
 .hc-c-logo__care {

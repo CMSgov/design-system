@@ -2,7 +2,7 @@
 
 exports[`InlineError renders inline error 1`] = `
 <span
-  className="ds-c-field__error-message"
+  className="ds-c-inline-error ds-c-field__error-message"
   id="error1"
   role="alert"
 >
@@ -12,7 +12,7 @@ exports[`InlineError renders inline error 1`] = `
 
 exports[`InlineError renders inverse error 1`] = `
 <span
-  className="ds-c-field__error-message ds-c-field__error-message--inverse"
+  className="ds-c-inline-error ds-c-field__error-message ds-c-field__error-message--inverse"
   id="error1"
   role="alert"
 >
