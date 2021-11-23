@@ -28,7 +28,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
 
 1. **Consistency** - Between design and code, utilizing a single set of variables everywhere allows a design proof to accurately describe the visual representation of a component as a set of variables. This provides better parity between what's designed and what is seen in the rendered usage on all platforms.
 
-   Looking at the [CSSStats for healthcare.gov](https://cssstats.com/stats?url=healthcare.gov), there are currently 70 color variations, many of which are nearly identical. Utilizing design tokens could bring this number down considerably and provide better brand consistency.
+   Looking at the [CSSStats for healthcare.gov/see-plans](https://cssstats.com/stats?url=healthcare.gov/see-plans), there are currently 29 color variations, many of which are nearly identical. Utilizing design tokens could bring this number down considerably and provide better brand consistency.
 
 2. **Organization** - By starting from the atomic level, we can use naming conventions for our tokens that are simple and specific to the variable they represent. By keeping these tokens separate from the systems they are utilized in, they can be managed as a discrete unit. Agreement on naming conventions of variables could eventually create parity between Sketch libraries and DS SASS variables.
 3. **Interoperability** - Design tokens allow a huge amount of flexibility for moving a design system to a new platform. Should an iOS/Android app ever be built, a new web application created, etc.. That system would have a framework ready to utilize for its theming which would be consistent with the other brand applications.
