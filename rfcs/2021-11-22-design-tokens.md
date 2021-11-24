@@ -13,7 +13,7 @@ Presently, the inconsistency of design rules between the DSM, Designers making a
 
 > Design tokens are all the values needed to construct and maintain a design system — spacing, color, typography, object styles, animation, etc. — represented as data. These can represent anything defined by design: a color as a RGB value, an opacity as a number, an animation ease as Bezier coordinates. They’re used in place of hard-coded values in order to ensure flexibility and unity across all product experiences. - [Adobe Spectrum](https://spectrum.adobe.com/page/design-tokens/)
 
-Design tokens can be packaged from the atomic level to the application level by utilizing them in a dependency tree where one value inherits a value from the trunk above it.
+Design tokens can be packaged from the atomic level (single key:pair values) to the application level (hierarchies and groups of key:pair values) by utilizing them in a dependency tree where one value inherits a value from the trunk above it.
 
 A design token solution is needed in which:
 
@@ -31,7 +31,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    Looking at the [CSSStats for healthcare.gov/see-plans](https://cssstats.com/stats?url=healthcare.gov/see-plans), there are currently 29 color variations, many of which are nearly identical. Utilizing design tokens could bring this number down considerably and provide better brand consistency.
 
 2. **Organization** - By starting from the atomic level, we can use naming conventions for our tokens that are simple and specific to the variable they represent. By keeping these tokens separate from the systems they are utilized in, they can be managed as a discrete unit. Agreement on naming conventions of variables could eventually create parity between Sketch libraries, DS Sass variables, and future design and development tooling.
-3. **Interoperability** - Design tokens allow a huge amount of flexibility for both moving a design system to a new platform, or creating a new design system. Should an iOS/Android app ever be built, a new web application created, etc. That system would have a framework ready to utilize for its theming which would be consistent with the other brand applications.
+3. **Interoperability** - Design tokens allow a huge amount of flexibility for both moving a design system to a new platform, or creating a new design system. Should an iOS/Android app ever be built, a new web application created, etc. that system would have a framework ready to utilize for its theming which would be consistent with the other brand applications.
 4. **Opportunity for theming** - Decoupling design rules from the codebase allowing the transposition-ing of these static design decisions in various ways, i.e. theming/high contrast. By replacing all tokens in a system with new tokens you can essentially theme swap, assuming the consuming system is utilizing tokens at all levels appropriately.
 
 ## Risks
@@ -45,7 +45,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
 1. The SSOT should be decided on, at the moment I see two options:
 
    1. **The DSM becomes the source of truth**. Designers and developers work together to consolidate the current set of design rules residing in the codebase/Sketch and place them into the DSM. In this case, with that work done, an application can be written in the design system to utilize the [DSM Token API](https://support.invisionapp.com/hc/en-us/articles/360049950931) to periodically update it's set of Sass variables with data from these design tokens and store them in a new NPM package.
-   2. **Tokens are modified directly as sets of JSON files**. Designers and developers work together to consolidate tokens in a hierarchy which makes the most sense for all platforms. These tokens could be stored in a new NPM package. Changes to tokens would require a pull request and have a release cadence.
+   2. **Tokens are modified directly as sets of platform agnostic format files**. Designers and developers work together to consolidate tokens in a hierarchy which makes the most sense for all platforms. These tokens could be stored in a new NPM package. Changes to tokens would require a pull request and have a release cadence.
 
 2. Once the SSOT is determined, tokens should be created in the appropriate format. At minimum, tokens should also be populated to form a set required to serve the current consuming applications. Ongoing work could then be ticketed to fill out the entire token library. These first tokens would represent the most basic items such as spacing, color, type attributes, breakpoints, animation easing values, border thickness, etc.. An example of a color token setup might resemble:
 
@@ -64,7 +64,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    }
    ```
 
-   > The aliases design tokens are mapped to in the various consuming systems need not match up directly one another initially. The token is a standard atomic unit which can be referenced in many systems using many aliases but should be applied as high up in the dependency tree as possible.
+   _The aliases design tokens are mapped to in the various consuming systems need not match up directly one another initially. The token is a standard atomic unit which can be referenced in many systems using many aliases but should be applied as high up in the dependency tree as possible._
 
 3. When the first dataset is completed and ready for use, a tool stored in the NPM package would need to be created to convert these tokens into new formats, initially Sass. There are several existing tools which can do this such as [Style Dictionary](https://github.com/amzn/style-dictionary) (format is [easily utilized by the DSM](https://support.invisionapp.com/hc/en-us/articles/360049483032)), [Theo](https://github.com/salesforce-ux/theo), [JSON -> CSS](https://github.com/rlapoele/json-to-scss) and others.
 
