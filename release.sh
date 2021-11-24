@@ -8,14 +8,40 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
+# Parse options
+while [[ $# -gt 1 ]]
+do
+    key="$1"
+
+    case $key in
+        --retag)
+            RETAG="$2"
+            shift # past argument
+            shift # past value
+            ;;
+        *)
+            # unknown option
+            ;;
+    esac
+done
+
 echo "${GREEN}Creating release branch...${NC}"
 DATE=$(date "+%Y-%m-%d")
 BRANCH="release-${DATE}"
 git checkout -b $BRANCH
 
+# TODO: Implement a retag option that looks at the bump commit message at a given tag,
+# reads the packages that were released, and compiles a force-publish argument for
+# lerna version like `--force-publish=@cmsgov/design-system-docs,@cmsgov/design-system`
+if [ -n "$RETAG" ]; then
+  git fetch --tags
+  FORCE_PUBLISH_PACKAGES=$(git log --pretty=%B -n 1 tags/$RETAG | grep -o '@[^@]*' | paste -sd "," -)
+  LERNA_VERSION_ARGS="--force-publish=$FORCE_PUBLISH_PACKAGES"
+fi
+
 echo "${GREEN}Bumping version...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
-yarn lerna version --no-push
+yarn lerna version --no-push $LERNA_VERSION_ARGS
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
