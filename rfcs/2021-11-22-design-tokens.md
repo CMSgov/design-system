@@ -64,7 +64,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
    }
    ```
 
-   _The aliases design tokens are mapped to in the various consuming systems need not match up directly one another initially. The token is a standard atomic unit which can be referenced in many systems using many aliases but should be applied as high up in the dependency tree as possible._
+   _The aliases design tokens are mapped to in the various consuming systems need not match up directly to one another initially. The token is a standard atomic unit which can be referenced in many systems using many aliases but should be applied as high up in the dependency tree as possible._
 
 3. When the first dataset is completed and ready for use, a tool stored in the NPM package would need to be created to convert these tokens into new formats, initially Sass. There are several existing tools which can do this such as [Style Dictionary](https://github.com/amzn/style-dictionary) (format is [easily utilized by the DSM](https://support.invisionapp.com/hc/en-us/articles/360049483032)), [Theo](https://github.com/salesforce-ux/theo), [JSON -> CSS](https://github.com/rlapoele/json-to-scss) and others.
 
