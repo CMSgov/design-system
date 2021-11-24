@@ -78,7 +78,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
         id={id || uniqueId(`filter_`)}
         onClick={this.handleClick}
         onKeyDown={this.handleKeyDown}
-        aria-label={`${ariaClearLabel} ${label}`}
+        aria-label={`${label} . ${ariaClearLabel} ${label} filter`}
       >
         <span className="ds-c-filter-chip__label">{label}</span>
         <span className={iconContainerClassNames}>
