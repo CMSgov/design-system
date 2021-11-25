@@ -83,7 +83,7 @@
     "react-test-renderer": "16.14.0",
     "regenerator-runtime": "^0.13.5",
     "replace-ext": "^1.0.0",
-    "selenium-webdriver": "4.0.0",
+    "selenium-webdriver": "4.1.0",
     "static-server": "^2.2.1",
     "through2": "^2.0.3",
     "ts-loader": "^6.2.1",

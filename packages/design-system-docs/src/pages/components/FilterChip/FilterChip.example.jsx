@@ -37,26 +37,9 @@ ControlledFilterChip.propTypes = {
 ReactDOM.render(
   <>
     <ControlledFilterChip label="Example Filter Chip" ariaClearLabel="Remove Filter Chip" />
-    <ControlledFilterChip
-      label="Example with alternate icon"
-      useAlternateIcon
-      ariaClearLabel="Remove Alternate"
-    />
-    <ControlledFilterChip
-      label="Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap Example filter chip with long text that will wrap"
-      ariaClearLabel="Remove Long"
-    />
-    <ControlledFilterChip
-      label="Example big filter chip"
-      ariaClearLabel="Remove Small"
-      size="big"
-    />
-    <ControlledFilterChip
-      label="Example big with alternate icon"
-      useAlternateIcon
-      size="big"
-      ariaClearLabel="Remove Big Alternate"
-    />
+    <ControlledFilterChip label="Example with alternate icon" useAlternateIcon />
+    <ControlledFilterChip label="Example big filter chip" size="big" />
+    <ControlledFilterChip label="Example big with alternate icon" useAlternateIcon size="big" />
   </>,
   document.getElementById('js-example')
 );
