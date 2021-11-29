@@ -27,7 +27,7 @@
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.2.5",
     "core-js": "^3.6.5",
-    "downshift": "^3.2.10",
+    "downshift": "^6.1.7",
     "ev-emitter": "^1.1.1",
     "focus-trap-react": "^6.0.0",
     "lodash": "^4.17.21",
