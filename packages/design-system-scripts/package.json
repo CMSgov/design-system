@@ -77,7 +77,7 @@
     "prismjs": "1.25.0",
     "react": "16.14.0",
     "react-app-polyfill": "^1.0.6",
-    "react-docgen": "4.1.1",
+    "react-docgen": "5.4.0",
     "react-docgen-typescript": "^1.18.0",
     "react-dom": "16.14.0",
     "react-test-renderer": "16.14.0",
