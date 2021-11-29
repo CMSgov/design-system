@@ -7,7 +7,7 @@ import Tab from './Tab';
 export default {
   title: 'Components/Tabs',
   component: TabsComponent,
-  argTypes: { children: { control: false } },
+  argTypes: { children: { control: { disabled: true } } },
   subcomponents: { TabPanel, Tab },
 };
 
