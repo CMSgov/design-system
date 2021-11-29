@@ -17,6 +17,7 @@ exports[`<PrivacySettingsDialog /> renders the privacy settings dialog 1`] = `
   closeButtonSize="small"
   closeButtonText="Close"
   closeButtonVariation="secondary"
+  closeIcon={<CloseIcon />}
   escapeExitDisabled={false}
   escapeExits={true}
   onExit={[Function]}

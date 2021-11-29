@@ -39,26 +39,12 @@ $dialog-spacer: $spacer-4;
 }
 
 .ds-c-dialog__close {
-  background-image: url('#{$image-path}/close--primary.svg');
-  background-position: center left;
-  background-repeat: no-repeat;
-  background-size: 12px 12px;
   margin-left: auto;
   padding: 0 0 0 (12px + $spacer-1);
 
-  &:active,
-  &:hover {
-    background-image: url('#{$image-path}/close--primary-darker.svg');
-  }
-
-  @if $ds-include-focus-styles {
-    &:focus {
-      background-image: url('#{$image-path}/close.svg');
-    }
-  } @else {
-    &:focus {
-      background-image: url('#{$image-path}/close--primary-darker.svg');
-    }
+  .ds-c-icon {
+    font-size: 13px;
+    margin-right: 4px;
   }
 }
 
