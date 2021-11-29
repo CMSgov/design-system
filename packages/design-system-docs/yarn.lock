@@ -16,10 +16,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@cmsgov/design-system@^2.11.0-beta.1":
-  version "2.11.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-2.11.0-beta.1.tgz#65268f7332f57d80819414e7ec8f175b191aacfa"
-  integrity sha512-6Mcw9tP6xZlQQgouya0tPTGgfhevVK9UySWF/Cpec4+LDQ+PbkYy2ycO49RVz/88e/IyZ9DaItpLOwaWZZaHMw==
+"@cmsgov/design-system@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-2.11.0.tgz#db09cbdc3a01eab73bf4d91c7e47f7b1f050d30f"
+  integrity sha512-KzQaaEuWASKSHiPF2J+lKyRj32gbn1csKerD8iWGpiAS5umXBY1Z6CugRmYmws+PFR1nP6r3PVClQFI4iEPDuw==
   dependencies:
     "@popperjs/core" "^2.4.4"
     "@types/react" "^17.0.10"
