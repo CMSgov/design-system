@@ -43,6 +43,10 @@ $filter-chip-border-radius: $border-radius-pill !default;
       @include focus-styles;
     }
   }
+
+  > * {
+    pointer-events: none;
+  }
 }
 
 .ds-c-filter-chip__clear-icon-container {
