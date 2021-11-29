@@ -91,7 +91,10 @@ const Template = (args) => (
       {tableTemplateData.data.map((dataItem, index) => (
         <TableRow key={index}>
           {tableTemplateData.headings.map((heading) => (
-            <TableCell key={`${heading.displayName}-${dataItem[heading.propName]}`}>
+            <TableCell
+              key={`${heading.displayName}-${dataItem[heading.propName]}`}
+              stackedTitle={heading.displayName}
+            >
               {dataItem[heading.propName]}
             </TableCell>
           ))}
