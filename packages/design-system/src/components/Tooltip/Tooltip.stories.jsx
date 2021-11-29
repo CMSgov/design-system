@@ -13,7 +13,6 @@ export default {
     placement: {
       options: ['auto', 'left', 'right', 'top', 'bottom'],
       control: { type: 'select' },
-      table: { defaultValue: { summary: 'top' } },
     },
   },
 };
