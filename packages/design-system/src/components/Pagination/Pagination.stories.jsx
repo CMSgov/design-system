@@ -13,7 +13,7 @@ export default {
 };
 
 const Template = ({ ...args }) => {
-  const [{ currentPage }, updateArgs] = useArgs();
+  const [{ currentPage }, updateArgs] = useArgs({ currentPage: 1 });
   const handleSetPage = (evt, page) => {
     evt.preventDefault();
     updateArgs({ currentPage: page });
