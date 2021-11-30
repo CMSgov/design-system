@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/no-multi-comp */
-import React, { useState } from 'react';
+import React from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { useArgs } from '@storybook/client-api';
 
 import Drawer from './Drawer';
 import DrawerToggle from './DrawerToggle';
@@ -72,31 +73,27 @@ DrawerWithStickyPositioning.args = {
   isHeaderSticky: true,
 };
 
-function WithState({ children }) {
-  const [state, setState] = useState({});
-  return <div>{children(state, setState)}</div>;
-}
-export const DrawerToggleWithDrawer = () => (
-  <WithState>
-    {(state, setState) => (
-      <>
-        {state.isDrawerVisible && (
-          <Drawer
-            onCloseClick={() => setState({ isDrawerVisible: false })}
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-            heading="Drawer Heading"
-          >
-            {drawerContent}
-          </Drawer>
-        )}
-        <DrawerToggle
-          showDrawer={() => setState({ isDrawerVisible: true })}
-          drawerOpen={state.isDrawerVisible || false}
+export const DrawerToggleWithDrawer = () => {
+  const [{ isDrawerVisible }, setIsDrawerVisible] = useArgs();
+
+  return (
+    <>
+      {isDrawerVisible && (
+        <Drawer
+          onCloseClick={() => setIsDrawerVisible({ isDrawerVisible: false })}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          heading="Drawer Heading"
         >
-          Drawer Toggle
-        </DrawerToggle>
-      </>
-    )}
-  </WithState>
-);
+          {drawerContent}
+        </Drawer>
+      )}
+      <DrawerToggle
+        showDrawer={() => setIsDrawerVisible({ isDrawerVisible: true })}
+        drawerOpen={isDrawerVisible || false}
+      >
+        Drawer Toggle
+      </DrawerToggle>
+    </>
+  );
+};
