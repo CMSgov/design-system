@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/no-multi-comp */
-import React from 'react';
+import React, { useState } from 'react';
 import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 
 import Drawer from './Drawer';
@@ -35,8 +35,8 @@ export default {
   },
 };
 
-const Template = ({ data, ...args }) => (
-  <Drawer {...args}>
+const drawerContent = (
+  <>
     <strong>An Explanation</strong>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -60,8 +60,10 @@ const Template = ({ data, ...args }) => (
       fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
       officia deserunt mollit anim id est laborum.
     </p>
-  </Drawer>
+  </>
 );
+
+const Template = ({ data, ...args }) => <Drawer {...args}>{drawerContent}</Drawer>;
 
 export const DrawerDefault = Template.bind({});
 export const DrawerWithStickyPositioning = Template.bind({});
@@ -69,8 +71,32 @@ DrawerWithStickyPositioning.args = {
   isFooterSticky: true,
   isHeaderSticky: true,
 };
-export const DrawerToggleDefault = () => (
-  <DrawerToggle drawerOpen={false} showDrawer={() => {}}>
-    Drawer Toggle{' '}
-  </DrawerToggle>
+
+function WithState({ children }) {
+  const [state, setState] = useState({});
+  return <div>{children(state, setState)}</div>;
+}
+export const DrawerToggleWithDrawer = () => (
+  <WithState>
+    {(state, setState) => (
+      <>
+        {state.isDrawerVisible && (
+          <Drawer
+            onCloseClick={() => setState({ isDrawerVisible: false })}
+            footerTitle="Footer Title"
+            footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+            heading="Drawer Heading"
+          >
+            {drawerContent}
+          </Drawer>
+        )}
+        <DrawerToggle
+          showDrawer={() => setState({ isDrawerVisible: true })}
+          drawerOpen={state.isDrawerVisible || false}
+        >
+          Drawer Toggle
+        </DrawerToggle>
+      </>
+    )}
+  </WithState>
 );
