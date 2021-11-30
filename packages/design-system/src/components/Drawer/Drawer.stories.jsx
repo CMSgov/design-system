@@ -1,5 +1,7 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/no-multi-comp */
 import React from 'react';
+import { Title, Subtitle, Description, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
 
 import Drawer from './Drawer';
 import DrawerToggle from './DrawerToggle';
@@ -16,6 +18,20 @@ export default {
     footerTitle: 'Footer Title',
     footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
+  },
+  subcomponents: { DrawerToggle },
+  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <ArgsTable story={PRIMARY_STORY} />
+        </>
+      ),
+    },
   },
 };
 
