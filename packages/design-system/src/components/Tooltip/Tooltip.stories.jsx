@@ -18,7 +18,7 @@ export default {
 };
 
 const Template = ({ data, ...args }) => (
-  <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin-x--4 ds-u-margin-y--3">
+  <div className="ds-u-display--flex ds-u-align-items--center ds-u-margin--7 ds-u-padding--7">
     {data}
     <Tooltip {...args} />
   </div>
