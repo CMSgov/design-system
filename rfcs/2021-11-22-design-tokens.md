@@ -7,6 +7,10 @@
 
 Presently, the inconsistency of design rules between the DSM, Designers making and consuming changes, and the design system codebase lead to **confusion**, **duplicated work**, **inconsistency** and **disorganization** within all three systems.
 
+- **Designers** should have an organized set of elements which standardize their process and add consistency to their production.
+- **Stakeholders and Project Managers** could be better served when discussing visual changes if there were a library of standards for them to choose from when making decisions.
+- **Developers** could eliminate confusion and the hacking together of solutions when presented with a visual change by utilizing the same set of elements as everyone else.
+
 ## Proposal
 
 [Design tokens](https://www.invisionapp.com/inside-design/design-tokens/) can help us solve this problem.
@@ -26,7 +30,7 @@ By deciding on a [Single Source Of Truth](https://en.wikipedia.org/wiki/Single_s
 
 ## Benefits
 
-1. **Consistency** - Between design and code, utilizing a single set of variables everywhere allows a design proof to accurately describe the visual representation of a component as a set of variables. This provides better parity between what's designed and what is seen in the rendered usage on all platforms.
+1. **Consistency** - Between design and code, utilizing a single set of variables everywhere allows a design proof to accurately describe the visual representation of a component as a set of variables. This provides better parity between what's designed and what is seen in the rendered usage on all platforms (Web, Mobile).
 
    Looking at the [CSSStats for healthcare.gov/see-plans](https://cssstats.com/stats?url=healthcare.gov/see-plans), there are currently 29 color variations, many of which are nearly identical. Utilizing design tokens could bring this number down considerably and provide better brand consistency.
 
