@@ -1,7 +1,6 @@
 import React from 'react';
 import SvgIcon, { IconCommonProps } from './SvgIcon';
 import classNames from 'classnames';
-
 export interface StarIconProps extends IconCommonProps {
   isFilled?: boolean;
 }
@@ -15,7 +14,9 @@ const defaultProps = {
 function StarIcon(props: StarIconProps): React.ReactElement {
   const iconCssClasses = classNames(
     'ds-c-icon--star',
-    { 'ds-c-icon--star-filled': props.isFilled },
+    {
+      'ds-c-icon--star-filled': props.isFilled,
+    },
     props.className
   );
 
