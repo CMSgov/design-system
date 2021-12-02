@@ -18,7 +18,6 @@ export default {
 };
 
 const Link = ({ className, ...props }) => (
-  // <Link to={props.href} {...props}>{props.children}</Link>
   <a className={classNames(className, 'special-link')} {...props}>
     {props.children}
   </a>
