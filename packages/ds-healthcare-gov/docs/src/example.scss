@@ -1,8 +1,0 @@
-// Styles included in HTML and React example pages
-$font-path: './fonts';
-$image-path: './images';
-
-// Use overriden css from child DS src
-@import '../../src/styles/index';
-
-@import '@cmsgov/design-system-docs/src/styles/example';
