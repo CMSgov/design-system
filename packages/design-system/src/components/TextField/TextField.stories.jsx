@@ -66,6 +66,7 @@ MaskedField.args = {
 export const ErrorField = Template.bind({});
 ErrorField.args = {
   errorMessage: 'Example error message',
+  hint: 'Helpful hint text',
 };
 export const SuccessField = Template.bind({});
 SuccessField.args = {
