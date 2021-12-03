@@ -13,12 +13,11 @@ The Medicare.gov Design System is built on the CMS Design System and extends it 
 
 Developers and engineers are encouraged to use React which allows for more complex, interactive components, and many of our React components have built-in accessibility optimizations.
 
-- **Recommended option:** Install the `@cmsgov/ds-medicare-gov` Node package manager (npm) package if your project uses npm for package management.
+- **Recommended option:** [Install the NPM package]({{root}}/startup/installation/#install-using-npm) `@cmsgov/ds-medicare-gov` if your project uses npm for package management.
 
-  <a href="{{root}}/startup/installation/" class="ds-c-button">Install with npm</a>
-
-* If you're unfamiliar with npm and package management, [download the code as a zip file]({{github}}).
+- If you're unfamiliar with npm and package management, [download the code as a zip file]({{root}}/startup/installation/#download-zip).
 
 ### Designers
 
-Reach out to the team for access to the [M.gov InVision](https://cms.invisionapp.com/dsm/cms/medicare) or [download the Sketch UI kit]({{github}}/raw/master/design-assets/).
+- **Recomended opion:** [Install the Sketch Library](https://www.sketch.com/s/c242aee5-25e9-4684-ac7d-0f084ffeb782)
+- [Download the Sketch UI kit](https://www.sketch.com/s/c242aee5-25e9-4684-ac7d-0f084ffeb782).
