@@ -164,19 +164,6 @@
       width: 100%;
       @extend .ds-u-align-items--center;
       font-family: $montserrat-font !important;
-
-      &:focus,
-      &--opened,
-      &:hover {
-        background-color: $color-white !important;
-        color: $black-500 !important;
-        box-shadow: 0 0 0 4px $focus-choice-color-highlight, 0 0 0 2px $focus-choice-color;
-        border-color: $focus-choice-color;
-
-        .caret-arrow {
-          fill: $teal-500 !important;
-        }
-      }
     }
   }
 
@@ -284,11 +271,6 @@
 
       .caret-arrow {
         fill: $color-white !important;
-      }
-
-      &:focus {
-        box-shadow: 0 0 0 4px $focus-choice-color-highlight, 0 0 0 2px $focus-choice-color;
-        border-color: $focus-choice-color;
       }
 
       &:focus,
