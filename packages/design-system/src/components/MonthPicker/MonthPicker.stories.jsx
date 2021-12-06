@@ -21,12 +21,14 @@ export default {
       options: [true, false],
       defaultValue: false,
     },
+    errorPlacement: {
+      defaultValue: 'top',
+    },
   },
   args: {
     hint:
       "Month Picker can receive optional help text, giving the user additional information of what's required.",
     errorMessage: 'Please meet form requirements.',
-    errorPlacement: 'top',
   },
   parameters: {
     backgrounds: {
