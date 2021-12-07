@@ -4,9 +4,9 @@ import React from 'react';
 export default {
   title: 'Typography/List',
   parameters: {
-    previewTabs: {
-      'storybook/docs/panel': {
-        hidden: true,
+    docs: {
+      source: {
+        type: 'dynamic',
       },
     },
   },
@@ -34,18 +34,7 @@ const listMarkup = (type) => {
   );
 };
 
-// export const unorderedList = () => listMarkup('unordered');
-export const unorderedList = () => (
-  <>
-    <h2 className="ds-h6" id="unordered-list-id">
-      Unordered list title
-    </h2>
-    <ul className="ds-c-list" aria-labelledby="unordered-list-id">
-      <li>List item 1</li>
-      <li>List item 2</li>
-    </ul>
-  </>
-);
+export const unorderedList = () => listMarkup('unordered');
 
 export const orderedList = () => listMarkup('ordered');
 
