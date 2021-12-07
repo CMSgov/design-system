@@ -1,7 +1,15 @@
+/* eslint-disable react/no-multi-comp */
 import React from 'react';
 
 export default {
-  title: 'Components/List',
+  title: 'Typography/List',
+  parameters: {
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  },
 };
 
 const listMarkup = (type) => {
@@ -26,7 +34,18 @@ const listMarkup = (type) => {
   );
 };
 
-export const unorderedList = () => listMarkup('unordered');
+// export const unorderedList = () => listMarkup('unordered');
+export const unorderedList = () => (
+  <>
+    <h2 className="ds-h6" id="unordered-list-id">
+      Unordered list title
+    </h2>
+    <ul className="ds-c-list" aria-labelledby="unordered-list-id">
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ul>
+  </>
+);
 
 export const orderedList = () => listMarkup('ordered');
 
