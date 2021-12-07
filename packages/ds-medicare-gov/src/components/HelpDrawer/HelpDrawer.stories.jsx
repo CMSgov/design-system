@@ -5,7 +5,6 @@ import { useArgs } from '@storybook/client-api';
 
 import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
 import InfoCircleOutlineIcon from '../Icons/InfoCircleOutlineIcon';
-// import HelpDrawerToggle from './index';
 
 export default {
   title: 'Components/Help Drawer',

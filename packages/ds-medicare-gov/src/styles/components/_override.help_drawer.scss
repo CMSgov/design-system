@@ -48,15 +48,16 @@
   &:hover {
     .icon-wrapper {
       &:before {
+        background-color: $color-primary-alt;
+        border-radius: 50%;
+        clip-path: circle(8px);
         content: '';
         height: 18px;
-        width: 18px;
+        left: 0;
         position: absolute;
         top: 2px;
-        left: 0;
+        width: 18px;
         z-index: -1;
-        border-radius: 50%;
-        background-color: $color-primary-alt;
       }
     }
     .ds-c-icon--info-circle-outline {
@@ -70,11 +71,11 @@
     &:hover {
       .icon-wrapper {
         &:before {
-          background-color: rgba(255, 255, 255, 0.8);
+          background-color: rgba($color-white, 0.8);
         }
       }
       .ds-c-icon--info-circle-outline {
-        color: $color-primary-alt;
+        color: $color-gray-darker;
       }
     }
   }
