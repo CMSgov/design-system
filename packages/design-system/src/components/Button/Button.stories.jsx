@@ -30,7 +30,7 @@ export default {
     },
   },
   args: {
-    children: 'You button text here',
+    children: 'Your button text here',
   },
   parameters: {
     backgrounds: {
