@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import React from 'react';
 
 import SkipNav from './SkipNav';
@@ -7,6 +6,9 @@ import SkipNav from './SkipNav';
 export default {
   title: 'Components/Skip Nav',
   component: SkipNav,
+  args: {
+    href: '#main',
+  },
 };
 
 const Template = ({ data, ...args }) => <SkipNav {...args} />;
@@ -23,10 +25,10 @@ SkipNavExample.decorators = [
         <p className="ds-u-margin--0">Clicking on the Skip Nav will skip over this section.</p>
         <ul>
           <li>
-            <a href="javascript:void(0);">Navigation link 1</a>
+            <a href="#">Navigation link 1</a>
           </li>
           <li>
-            <a href="javascript:void(0);">Navigation link 2</a>
+            <a href="#">Navigation link 2</a>
           </li>
         </ul>
       </nav>

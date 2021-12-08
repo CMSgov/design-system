@@ -11,8 +11,8 @@ export default {
       control: {
         type: 'select',
       },
-      options: [1, 2, 3, 4, 5, 6],
-      defaultValue: 3,
+      options: ['1', '2', '3', '4', '5', '6'],
+      defaultValue: '3',
     },
   },
 };
@@ -28,14 +28,14 @@ export const SingleReview = Template.bind({});
 SingleReview.args = {
   heading: 'A single Review component',
   children: 'This is an example of a single Review component.',
-  editHref: 'javascript:void(0)',
+  editHref: '#',
 };
 
 export const MultipleReviews = Template.bind({});
 MultipleReviews.args = {
   heading: 'Multiple Review components',
   children: 'Multiple Review components can be combined together one after another.',
-  editHref: 'javascript:void(0)',
+  editHref: '#',
 };
 MultipleReviews.decorators = [
   (Story) => (
@@ -52,9 +52,9 @@ CustomActions.args = {
   children: 'You can add custom action links as needed.',
   editContent: (
     <div>
-      <a href="javascript:void(0)">Edit</a>
+      <a href="#">Edit</a>
       <span>|</span>
-      <a href="javascript:void(0)">Remove</a>
+      <a href="#">Remove</a>
     </div>
   ),
 };
