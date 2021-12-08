@@ -35,22 +35,48 @@
 /* stylelint-enable */
 
 // Help drawer button with icon
+// TODO: clean up this code if a different, more flexible SVG can be used instead
 .ds-c-help-drawer__toggle {
-  background: url('#{$image-path}/InfoOutline.svg') center right no-repeat;
-  padding-right: $spacer-3;
+  .icon-wrapper {
+    position: relative;
+  }
+
+  .ds-c-icon--info-circle-outline {
+    width: 18px;
+    height: 18px;
+  }
   &:hover {
-    background: url('#{$image-path}/InfoFilled.svg') center right no-repeat;
-    text-decoration-thickness: $link-underline-height-hover;
+    .icon-wrapper {
+      &:before {
+        background-color: $color-primary-alt;
+        border-radius: 50%;
+        clip-path: circle(8px);
+        content: '';
+        height: 18px;
+        left: 0;
+        position: absolute;
+        top: 2px;
+        width: 18px;
+        z-index: -1;
+      }
+    }
+    .ds-c-icon--info-circle-outline {
+      color: $color-white;
+    }
   }
 }
 
 .ds-c-button--inverse {
   &.ds-c-help-drawer__toggle {
-    background: url('#{$image-path}/InfoOutline_white.svg') center right no-repeat;
-    padding-right: $spacer-3;
     &:hover {
-      background: url('#{$image-path}/InfoFilled_grey.svg') center right no-repeat;
-      text-decoration-thickness: $link-underline-height-hover;
+      .icon-wrapper {
+        &:before {
+          background-color: rgba($color-white, 0.8);
+        }
+      }
+      .ds-c-icon--info-circle-outline {
+        color: $color-gray-darker;
+      }
     }
   }
 }
