@@ -8,7 +8,7 @@ import classNames from 'classnames';
  */
 
 const HelpDrawerToggle = function (props) {
-  const { children, className, showDrawer, helpDrawerOpen, ...others } = props;
+  const { children, className, showDrawer, helpDrawerOpen, icon, ...others } = props;
 
   return (
     <DrawerToggle
@@ -17,7 +17,7 @@ const HelpDrawerToggle = function (props) {
       showDrawer={showDrawer}
       {...others}
     >
-      {children}
+      {children} {icon}
     </DrawerToggle>
   );
 };
@@ -36,6 +36,10 @@ HelpDrawerToggle.propTypes = {
    * Additional classes for the toggle button anchor element.
    */
   className: PropTypes.string,
+  /**
+   * icon to be included at the end of the toggle's text
+   */
+  icon: PropTypes.node,
   /**
    * Adds `display: inline` to the HelpDrawerToggle.
    */
