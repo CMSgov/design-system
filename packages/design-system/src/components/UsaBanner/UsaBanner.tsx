@@ -6,9 +6,9 @@ import { LockCircleIcon, LockIcon, UsaFlagIcon, BuildingCircleIcon } from '../Ic
 import EnglishTranslations from '../../locale/en.json';
 import SpanishTranslations from '../../locale/es.json';
 
-type LocaleLanguage = 'en' | 'es';
+export type LocaleLanguage = 'en' | 'es';
 
-interface UsaBannerProps {
+export interface UsaBannerProps {
   /**
    * Additional classes to be added to the root `section` element
    */
