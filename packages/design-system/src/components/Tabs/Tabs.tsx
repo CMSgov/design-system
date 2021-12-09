@@ -122,7 +122,7 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
           const prevTab = tabs[tabs.length - 1] as React.ReactElement;
           target = prevTab.props.id;
         } else {
-          const prevTab = tabs[tabs.length - 1] as React.ReactElement;
+          const prevTab = tabs[tabIndex - 1] as React.ReactElement;
           target = prevTab.props.id;
         }
         this.setState({ selectedId: target });

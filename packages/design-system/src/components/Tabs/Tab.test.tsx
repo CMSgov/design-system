@@ -27,7 +27,7 @@ describe('Tab', function () {
     // ARIA
     expect(data.wrapper.prop('aria-controls')).toBe(data.props.panelId);
     expect(data.wrapper.prop('role')).toBe('tab');
-    expect(data.wrapper.prop('aria-selected')).toBe('false');
+    expect(data.wrapper.prop('aria-selected')).toBe(false);
   });
 
   it('calls onClick', () => {
@@ -54,7 +54,7 @@ describe('Tab', function () {
 
   it('is selected', () => {
     const wrapper = shallowRender({ selected: true }).wrapper;
-    expect(wrapper.prop('aria-selected')).toBe('true');
+    expect(wrapper.prop('aria-selected')).toBe(true);
   });
 
   it('has custom href attribute', () => {
