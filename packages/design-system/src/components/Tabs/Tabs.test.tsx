@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TabPanel from './TabPanel';
-import Tabs from './Tabs';
+import Tabs, { TabsProps } from './Tabs';
 
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
@@ -9,7 +9,7 @@ const defaultPanelProps = {
   tab: 'Tab label',
 };
 
-function render(customProps = {}, children, deep) {
+function render(customProps = {}, children?: React.ReactNode, deep?: boolean) {
   const props = Object.assign({}, customProps);
 
   if (!children) {

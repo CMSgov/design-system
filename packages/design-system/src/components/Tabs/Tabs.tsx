@@ -1,9 +1,29 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
 import get from 'lodash/get';
+
+export interface TabsProps {
+  /**
+   * Must only contain `TabPanel` components
+   */
+  children: React.ReactNode;
+  /**
+   * Sets the initial selected `TabPanel` state. If this isn't set, the first
+   * `TabPanel` will be selected.
+   */
+  defaultSelectedId?: string;
+  /**
+   * A callback function that's invoked when the selected tab is changed.
+   * `(selectedId, prevSelectedId) => void`
+   */
+  onChange?: (selectedId: string, prevSelectedId: string) => void;
+  /**
+   * Additional classes to be added to the component wrapping the tabs
+   */
+  tablistClassName?: string;
+}
 
 /** CONSTANTS
  * Adding in the constant values for keycodes
@@ -13,11 +33,23 @@ const LEFT_ARROW = 'ArrowLeft';
 const RIGHT_ARROW = 'ArrowRight';
 
 /**
+ * Determine if a React component is a TabPanel
+ * @param {React.Node} child - a React component
+ * @return {Boolean} Is this a TabPanel component?
+ */
+function isTabPanel(child): boolean {
+  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
+
+  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
+  return child && (child.type === TabPanel || componentName === 'TabPanel');
+}
+
+/**
  * Get the id of the first TabPanel child
  * @param {Object} props
  * @return {String} The id
  */
-function getDefaultSelectedId(props) {
+function getDefaultSelectedId(props): string {
   let selectedId;
 
   // TODO: Use the panelChildren method to pass in an array
@@ -36,24 +68,16 @@ function getDefaultSelectedId(props) {
  * @param {Object} TabPanel component
  * @return {String} Tab ID
  */
-function panelTabId(panel) {
+function panelTabId(panel): string {
   return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
 }
 
-/**
- * Determine if a React component is a TabPanel
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TabPanel component?
- */
-function isTabPanel(child) {
-  const componentName = get(child, 'type.displayName') || get(child, 'type.name');
-
-  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TabPanel || componentName === 'TabPanel');
+interface TabsState {
+  selectedId: string;
 }
 
-export class Tabs extends React.PureComponent {
-  constructor(props) {
+export class Tabs extends React.PureComponent<TabsProps, any> {
+  constructor(props: TabsProps) {
     super(props);
     let selectedId;
 
@@ -68,7 +92,7 @@ export class Tabs extends React.PureComponent {
     this.state = { selectedId };
   }
 
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate(_: TabsProps, prevState: TabsState): void {
     if (this.state.selectedId !== prevState.selectedId) {
       if (typeof this.props.onChange === 'function') {
         this.props.onChange(this.state.selectedId, prevState.selectedId);
@@ -78,32 +102,39 @@ export class Tabs extends React.PureComponent {
     }
   }
 
-  handleTabClick(evt, panelId) {
+  // Tabs class properties
+  tabs = [];
+
+  handleTabClick(evt: React.MouseEvent, panelId: string): void {
     evt.preventDefault();
     this.setState({ selectedId: panelId });
   }
 
-  handleTabKeyDown(evt, panelId) {
+  handleTabKeyDown(evt: React.KeyboardEvent, panelId: string): void {
     const tabs = this.panelChildren();
-    const tabIndex = tabs.findIndex((elem) => elem.props.id === panelId);
+    const tabIndex = tabs.findIndex((elem: React.ReactElement) => elem.props.id === panelId);
     let target;
 
     switch (evt.key) {
       case LEFT_ARROW:
         evt.preventDefault();
         if (tabIndex === 0) {
-          target = tabs[tabs.length - 1].props.id;
+          const prevTab = tabs[tabs.length - 1] as React.ReactElement;
+          target = prevTab.props.id;
         } else {
-          target = tabs[tabIndex - 1].props.id;
+          const prevTab = tabs[tabs.length - 1] as React.ReactElement;
+          target = prevTab.props.id;
         }
         this.setState({ selectedId: target });
         break;
       case RIGHT_ARROW:
         evt.preventDefault();
         if (tabIndex === tabs.length - 1) {
-          target = tabs[0].props.id;
+          const currentTab = tabs[0] as React.ReactElement;
+          target = currentTab.props.id;
         } else {
-          target = tabs[tabIndex + 1].props.id;
+          const nextTab = tabs[tabIndex + 1] as React.ReactElement;
+          target = nextTab.props.id;
         }
         this.setState({ selectedId: target });
         break;
@@ -115,13 +146,13 @@ export class Tabs extends React.PureComponent {
   /**
    * Filter children and return only TabPanel components
    */
-  panelChildren() {
+  panelChildren(): React.ReactNode[] {
     return React.Children.toArray(this.props.children).filter(isTabPanel);
   }
 
-  renderChildren() {
+  renderChildren(): React.ReactNode {
     return React.Children.map(this.props.children, (child) => {
-      if (isTabPanel(child)) {
+      if (isTabPanel(child) && React.isValidElement(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
@@ -137,11 +168,9 @@ export class Tabs extends React.PureComponent {
     });
   }
 
-  renderTabs() {
-    const panels = this.panelChildren();
+  renderTabs(): React.ReactNode {
+    const panels = this.panelChildren() as React.ReactElement[];
     const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
-
-    this.tabs = {};
 
     const tabs = panels.map((panel) => {
       return (
@@ -175,13 +204,13 @@ export class Tabs extends React.PureComponent {
    * Update the URL in the browser without adding a new entry to the history.
    * @param {String} url - Absolute or relative URL
    */
-  replaceState(url) {
+  replaceState(url: string): void {
     if (window.history) {
       window.history.replaceState({}, document.title, url);
     }
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         {this.renderTabs()}
@@ -190,26 +219,5 @@ export class Tabs extends React.PureComponent {
     );
   }
 }
-
-Tabs.propTypes = {
-  /**
-   * Must only contain `TabPanel` components
-   */
-  children: PropTypes.node.isRequired,
-  /**
-   * Sets the initial selected `TabPanel` state. If this isn't set, the first
-   * `TabPanel` will be selected.
-   */
-  defaultSelectedId: PropTypes.string,
-  /**
-   * A callback function that's invoked when the selected tab is changed.
-   * `(selectedId, prevSelectedId) => void`
-   */
-  onChange: PropTypes.func,
-  /**
-   * Additional classes to be added to the component wrapping the tabs
-   */
-  tablistClassName: PropTypes.string,
-};
 
 export default Tabs;
