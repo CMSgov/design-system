@@ -69,8 +69,9 @@ exports[`UsaBanner applies Spanish translation 1`] = `
       <button
         aria-controls="gov-banner_6"
         aria-expanded={false}
-        className="ds-c-usa-banner__button"
+        className="ds-c-button ds-c-usa-banner__button"
         onClick={[Function]}
+        type="button"
       >
         <span
           className="ds-c-usa-banner__button-text"
@@ -250,24 +251,26 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
       >
         Here’s how you know
       </span>
-      <button
-        aria-controls="gov-banner_11"
+      <Button
+        aria-controls="gov-banner_12"
         aria-expanded={true}
         className="ds-c-usa-banner__button"
+        component="button"
         onClick={[Function]}
+        type="button"
       >
         <span
           className="ds-c-usa-banner__button-text"
         >
           Here’s how you know
         </span>
-      </button>
+      </Button>
     </p>
   </header>
   <div
     className="ds-c-usa-banner__content"
     hidden={false}
-    id="gov-banner_11"
+    id="gov-banner_12"
   >
     <div
       className="ds-c-usa-banner__guidance-container"
@@ -406,8 +409,9 @@ exports[`UsaBanner renders correctly 1`] = `
       <button
         aria-controls="gov-banner_1"
         aria-expanded={false}
-        className="ds-c-usa-banner__button"
+        className="ds-c-button ds-c-usa-banner__button"
         onClick={[Function]}
+        type="button"
       >
         <span
           className="ds-c-usa-banner__button-text"
