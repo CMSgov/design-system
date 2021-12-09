@@ -59,7 +59,7 @@ describe('Tab', function () {
 
   it('has custom href attribute', () => {
     const data = shallowRender({ href: '/example' });
-    expect(data.wrapper.prop('href')).toBe(data.props.href);
+    expect(data.wrapper.prop('href')).toBe('/example');
   });
 
   it('adds additional class names', () => {
