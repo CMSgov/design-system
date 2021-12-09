@@ -33,6 +33,7 @@ export * from './Table';
 export * from './TextField';
 export * from './Tooltip';
 export * from './Icons';
+export * from './UsaBanner';
 
 export * from './analytics';
 export * from './flags';
