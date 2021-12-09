@@ -42,6 +42,10 @@ export interface HelpDrawerProps {
    */
   headingLevel?: HelpDrawerHeadingLevel;
   /**
+   * icon to be included at the end of the toggle's text
+   */
+  icon?: React.ReactNode;
+  /**
    * Enables "sticky" position of HelpDrawer header element.
    */
   isHeaderSticky: boolean;
