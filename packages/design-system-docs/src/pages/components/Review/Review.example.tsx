@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Review } from '@design-system';
+import { Review } from '@design-system/packages/design-system';
 
-const editButtonHref = 'javascript:void(0);';
+const editButtonHref = '#!';
 ReactDOM.render(
   <div>
     <div>
