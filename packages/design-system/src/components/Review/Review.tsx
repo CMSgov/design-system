@@ -36,7 +36,7 @@ export interface ReviewProps {
   onEditClick?: (...args: any[]) => any;
 }
 
-export const Review: React.FunctionComponent<ReviewProps> = (props: ReviewProps) => {
+export const Review = (props: ReviewProps) => {
   const getHeading = (): React.ReactElement => {
     const Heading = (`h${props.headingLevel}` || `h3`) as keyof JSX.IntrinsicElements;
     if (props.heading) {

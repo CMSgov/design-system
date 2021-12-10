@@ -12,7 +12,7 @@ export interface ReviewLinkProps {
   onClick?: (...args: any[]) => any;
 }
 
-export const ReviewLink: React.FunctionComponent<ReviewLinkProps> = (props: ReviewLinkProps) => {
+export const ReviewLink = (props: ReviewLinkProps) => {
   const handleClick = useCallback(
     (event) => {
       if (props.onClick) {
