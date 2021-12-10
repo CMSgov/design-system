@@ -36,19 +36,20 @@ export interface ReviewProps {
   onEditClick?: (...args: any[]) => any;
 }
 
+const getHeading = (heading, headingLevel) => {
+  const Heading = (`h${headingLevel}` || `h3`) as keyof JSX.IntrinsicElements;
+  if (heading) {
+    return <Heading className="ds-c-review__heading">{heading}</Heading>;
+  }
+};
+
 export const Review = (props: ReviewProps) => {
-  const getHeading = () => {
-    const Heading = (`h${props.headingLevel}` || `h3`) as keyof JSX.IntrinsicElements;
-    if (props.heading) {
-      return <Heading className="ds-c-review__heading">{props.heading}</Heading>;
-    }
-  };
   const classes = classNames('ds-c-review', props.className);
 
   return (
     <div className={classes}>
       <div className="ds-c-review__content">
-        {getHeading()}
+        {getHeading(props.heading, props.headingLevel)}
         <div className="ds-c-review__body">{props.children}</div>
       </div>
       {props.editContent}

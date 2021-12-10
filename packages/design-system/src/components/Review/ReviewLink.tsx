@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 export interface ReviewLinkProps {
   /**
@@ -13,14 +13,11 @@ export interface ReviewLinkProps {
 }
 
 export const ReviewLink = (props: ReviewLinkProps) => {
-  const handleClick = useCallback(
-    (event) => {
-      if (props.onClick) {
-        props.onClick(event, props.href);
-      }
-    },
-    [props.onClick, props.href]
-  );
+  const handleClick = (event) => {
+    if (props.onClick) {
+      props.onClick(event, props.href);
+    }
+  };
 
   return (
     <div>

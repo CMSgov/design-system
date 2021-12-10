@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Review } from '@design-system/packages/design-system';
+import { Review } from '@cmsgov/design-system';
 
 const editButtonHref = '#!';
 ReactDOM.render(
