@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react/no-multi-comp */
+import React, { useState, useRef } from 'react';
 import Tab from './Tab';
 import TabPanel from './TabPanel';
 import classnames from 'classnames';
@@ -72,46 +73,44 @@ function panelTabId(panel): string {
   return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
 }
 
-interface TabsState {
-  selectedId: string;
-}
+export const Tabs = (props: TabsProps): JSX.Element => {
+  const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
+  const [selectedId, setSelectedId] = useState(initialSelectedId);
+  // using useRef hook to keep track of elements to focus
+  const tabsRef = useRef({});
 
-export class Tabs extends React.PureComponent<TabsProps, any> {
-  constructor(props: TabsProps) {
-    super(props);
-    let selectedId;
+  /**
+   * Update the URL in the browser without adding a new entry to the history.
+   * @param {String} url - Absolute or relative URL
+   */
+  const replaceState = (url: string): void => {
+    if (window.history) {
+      window.history.replaceState({}, document.title, url);
+    }
+  };
 
-    if ('defaultSelectedId' in props) {
-      selectedId = props.defaultSelectedId;
-    } else {
-      selectedId = getDefaultSelectedId(props);
+  const panelChildren = (): React.ReactNode[] => {
+    return React.Children.toArray(props.children).filter(isTabPanel);
+  };
+
+  const handleSelectedTabChange = (newSelectedId: string): void => {
+    const { onChange } = props;
+    if (onChange) {
+      onChange(newSelectedId, selectedId);
     }
 
-    this.handleTabClick = this.handleTabClick.bind(this);
-    this.handleTabKeyDown = this.handleTabKeyDown.bind(this);
-    this.state = { selectedId };
-  }
+    tabsRef.current[newSelectedId].focus();
+    replaceState(tabsRef.current[newSelectedId].href);
+    setSelectedId(newSelectedId);
+  };
 
-  componentDidUpdate(_: TabsProps, prevState: TabsState): void {
-    if (this.state.selectedId !== prevState.selectedId) {
-      if (typeof this.props.onChange === 'function') {
-        this.props.onChange(this.state.selectedId, prevState.selectedId);
-      }
-      this.tabs[this.state.selectedId].focus();
-      this.replaceState(this.tabs[this.state.selectedId].href);
-    }
-  }
-
-  // Tabs class properties
-  tabs = [];
-
-  handleTabClick(evt: React.MouseEvent, panelId: string): void {
+  const handleTabClick = (evt: React.MouseEvent, panelId: string): void => {
     evt.preventDefault();
-    this.setState({ selectedId: panelId });
-  }
+    handleSelectedTabChange(panelId);
+  };
 
-  handleTabKeyDown(evt: React.KeyboardEvent, panelId: string): void {
-    const tabs = this.panelChildren();
+  const handleTabKeyDown = (evt: React.KeyboardEvent, panelId: string): void => {
+    const tabs = panelChildren();
     const tabIndex = tabs.findIndex((elem: React.ReactElement) => elem.props.id === panelId);
     let target;
 
@@ -125,7 +124,7 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
           const prevTab = tabs[tabIndex - 1] as React.ReactElement;
           target = prevTab.props.id;
         }
-        this.setState({ selectedId: target });
+        handleSelectedTabChange(target);
         break;
       case RIGHT_ARROW:
         evt.preventDefault();
@@ -136,28 +135,21 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
           const nextTab = tabs[tabIndex + 1] as React.ReactElement;
           target = nextTab.props.id;
         }
-        this.setState({ selectedId: target });
+        handleSelectedTabChange(target);
         break;
       default:
         break;
     }
-  }
+  };
 
-  /**
-   * Filter children and return only TabPanel components
-   */
-  panelChildren(): React.ReactNode[] {
-    return React.Children.toArray(this.props.children).filter(isTabPanel);
-  }
-
-  renderChildren(): React.ReactNode {
-    return React.Children.map(this.props.children, (child) => {
+  const renderChildren = (): React.ReactNode => {
+    return React.Children.map(props.children, (child) => {
       if (isTabPanel(child) && React.isValidElement(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
         return React.cloneElement(child, {
-          selected: this.state.selectedId === child.props.id,
+          selected: selectedId === child.props.id,
           tab: undefined,
           tabHref: undefined,
           tabId: panelTabId(child),
@@ -166,11 +158,12 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
 
       return child;
     });
-  }
+  };
 
-  renderTabs(): React.ReactNode {
-    const panels = this.panelChildren() as React.ReactElement[];
-    const listClasses = classnames('ds-c-tabs', this.props.tablistClassName);
+  const renderTabs = (): React.ReactNode => {
+    const panels = panelChildren() as React.ReactElement[];
+    // eslint-disable-next-line react/prop-types
+    const listClasses = classnames('ds-c-tabs', props.tablistClassName);
 
     const tabs = panels.map((panel) => {
       return (
@@ -180,13 +173,13 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
           disabled={panel.props.disabled}
           id={panelTabId(panel)}
           key={panel.key}
-          onClick={this.handleTabClick}
-          onKeyDown={this.handleTabKeyDown}
+          onClick={handleTabClick}
+          onKeyDown={handleTabKeyDown}
           panelId={panel.props.id}
           ref={(tab) => {
-            this.tabs[panel.props.id] = tab;
+            tabsRef.current[panel.props.id] = tab;
           }}
-          selected={this.state.selectedId === panel.props.id}
+          selected={selectedId === panel.props.id}
         >
           {panel.props.tab}
         </Tab>
@@ -198,26 +191,14 @@ export class Tabs extends React.PureComponent<TabsProps, any> {
         {tabs}
       </div>
     );
-  }
+  };
 
-  /**
-   * Update the URL in the browser without adding a new entry to the history.
-   * @param {String} url - Absolute or relative URL
-   */
-  replaceState(url: string): void {
-    if (window.history) {
-      window.history.replaceState({}, document.title, url);
-    }
-  }
-
-  render(): JSX.Element {
-    return (
-      <div>
-        {this.renderTabs()}
-        {this.renderChildren()}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {renderTabs()}
+      {renderChildren()}
+    </div>
+  );
+};
 
 export default Tabs;

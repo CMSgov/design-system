@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import classnames from 'classnames';
 
 export interface TabProps {
@@ -36,77 +36,67 @@ export interface TabProps {
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
   panelId: string;
+  // ref?: (...args: any[]) => any;
   selected?: boolean;
   disabled?: boolean;
 }
 
-export class Tab extends React.PureComponent<TabProps> {
-  static defaultProps = {
-    selected: false,
-  };
-
-  constructor(props: TabProps) {
-    super(props);
-    this.focus = this.focus.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.href = this.props.href || `#${this.props.panelId}`;
-  }
-
-  // Tab class variables
-  href: string;
-  tab: HTMLAnchorElement;
-
-  handleClick(evt: React.MouseEvent): void {
-    if (this.props.onClick) {
-      this.props.onClick(evt, this.props.panelId, this.props.id, this.href);
-    }
-  }
-
-  handleKeyDown(evt: React.KeyboardEvent): void {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(evt, this.props.panelId, this.props.id, this.href);
-    }
-  }
-
-  focus(): void {
-    this.tab.focus();
-  }
-
-  render(): JSX.Element {
-    const classes = classnames('ds-c-tabs__item', this.props.className);
+export const Tab = React.forwardRef(
+  (props: TabProps, ref: any): JSX.Element => {
+    const defaultProps = {
+      selected: false,
+    };
+    const href: string = props.href || `#${props.panelId}`;
+    // let tab : HTMLAnchorElement | HTMLSpanElement;
+    const classes = classnames('ds-c-tabs__item', props.className);
     const sharedTabProps = {
       role: 'tab',
       className: classes,
-      id: this.props.id,
-      ref: (tab) => {
-        this.tab = tab;
-        console.log();
-      },
+      id: props.id,
+      // ref: (tabRef) => {
+      //   tab = tabRef;
+      // },
+      ref: ref,
     };
 
-    if (!this.props.disabled) {
-      return (
-        // eslint-disable-next-line jsx-a11y/role-supports-aria-props
-        <a
-          aria-selected={this.props.selected}
-          aria-controls={this.props.panelId}
-          href={this.href}
-          onClick={this.handleClick}
-          onKeyDown={this.handleKeyDown}
-          {...sharedTabProps}
-        >
-          {this.props.children}
-        </a>
-      );
-    } else {
-      return (
-        <span aria-disabled="true" {...sharedTabProps}>
-          {this.props.children}
-        </span>
-      );
-    }
+    const handleClick = (evt: React.MouseEvent): void => {
+      const { onClick, panelId, id } = props;
+      if (onClick) {
+        onClick(evt, panelId, id, href);
+      }
+    };
+
+    const handleKeyDown = (evt: React.KeyboardEvent): void => {
+      const { onKeyDown, panelId, id } = props;
+      if (onKeyDown) {
+        onKeyDown(evt, panelId, id, href);
+      }
+    };
+
+    // const focus = (): void => {
+    //   tab.focus();
+    // }
+
+    return !props.disabled ? (
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+      <a
+        aria-selected={props.selected || defaultProps.selected}
+        aria-controls={props.panelId}
+        href={href}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        {...sharedTabProps}
+      >
+        {props.children}
+      </a>
+    ) : (
+      <span aria-disabled="true" {...sharedTabProps}>
+        {props.children}
+      </span>
+    );
   }
-}
+);
+
+Tab.displayName = 'Tab';
 
 export default Tab;
