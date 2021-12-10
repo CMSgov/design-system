@@ -36,7 +36,6 @@ export interface TabProps {
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
   panelId: string;
-  // ref?: (...args: any[]) => any;
   selected?: boolean;
   disabled?: boolean;
 }
@@ -53,9 +52,6 @@ export const Tab = React.forwardRef(
       role: 'tab',
       className: classes,
       id: props.id,
-      // ref: (tabRef) => {
-      //   tab = tabRef;
-      // },
       ref: ref,
     };
 
@@ -72,10 +68,6 @@ export const Tab = React.forwardRef(
         onKeyDown(evt, panelId, id, href);
       }
     };
-
-    // const focus = (): void => {
-    //   tab.focus();
-    // }
 
     return !props.disabled ? (
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
