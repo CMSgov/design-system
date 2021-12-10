@@ -17,7 +17,97 @@ const monthNumbers = (() => {
   return months;
 })();
 
-export class MonthPicker extends React.PureComponent {
+export type MonthPickerErrorPlacement = 'top' | 'bottom';
+
+interface MonthPickerProps {
+  /**
+   * The `input` field's `name` attribute
+   */
+  name: string;
+  /**
+  * A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)
+  * for month name localization. For example: Passing `es-US` as a value
+  * will render month names in Spanish.
+  */
+  locale?: string;
+  /**
+  * Additional classes to be added to the root element.
+  */
+  className?: string;
+  /**
+  * Applies the "inverse" UI theme
+  */
+  inversed?: boolean;
+  /**
+  * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
+  */
+  buttonVariation?: string;
+  /**
+  * Label for the field
+  */
+  label: React.ReactNode;
+  /**
+  * Enable the error state by providing an error message.
+  */
+  errorMessage?: React.ReactNode;
+  /**
+  * Additional classes to be added to the error message
+  */
+  errorMessageClassName?: string;
+  /**
+  * Location of the error message relative to the field input
+  */
+  errorPlacement?: MonthPickerErrorPlacement;
+  /**
+  * Additional hint text to display
+  */
+  hint?: React.ReactNode;
+  /**
+  * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
+  */
+  requirementLabel?: React.ReactNode;
+  /**
+  * Array of month numbers, where `1` is January, and any month included
+  * is disabled for selection.
+  */
+  disabledMonths?: number[];
+  /**
+  * Array of month numbers, where `1` is January, and any month included
+  * is selected. This will render a read-only field. If the field should
+  * be mutable, use `defaultSelectedMonths`.
+  */
+  selectedMonths?: number[];
+  /**
+  * Array of month numbers, where `1` is January, and any month included
+  * is selected by default. Sets the initial checked state for the 12 month
+  * checkboxes. Use this for an uncontrolled component; otherwise, use the
+  * `selectedMonths` property.
+  */
+  defaultSelectedMonths?: number[];
+  /**
+  * A callback function that's invoked when a month's checked state is changed.
+  * Note: This callback is not called when a month is selected or deselected
+  * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
+  * `onClearAll` event handlers for those instances.
+  */
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
+  onSelectAll: () => any;
+  onClearAll: () => any;
+  /**
+  * The text for the "Select all" button for internationalization
+  */
+  selectAllText?: string;
+  /**
+  * The text for the "Clear all" button for internationalization
+  */
+  clearAllText?: string;
+}
+
+export const MonthPicker = (props: MonthPickerProps) => {
+
+}
+
+export class MonthPickerOld extends React.PureComponent {
   constructor(props) {
     super(props);
     this.months = getMonthNames(props.locale);
@@ -160,87 +250,6 @@ export class MonthPicker extends React.PureComponent {
 MonthPicker.defaultProps = {
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-};
-
-MonthPicker.propTypes = {
-  /**
-   * The `input` field's `name` attribute
-   */
-  name: PropTypes.string.isRequired,
-  /**
-   * A [BCP 47 language tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)
-   * for month name localization. For example: Passing `es-US` as a value
-   * will render month names in Spanish.
-   */
-  locale: PropTypes.string,
-  /**
-   * Additional classes to be added to the root element.
-   */
-  className: PropTypes.string,
-  /**
-   * Applies the "inverse" UI theme
-   */
-  inversed: PropTypes.bool,
-  /**
-   * Variation string to be applied to buttons. See [Button component]({{root}}/components/button/#components.button.react)
-   */
-  buttonVariation: PropTypes.string,
-  /**
-   * Label for the field
-   */
-  label: PropTypes.node.isRequired,
-  errorMessage: PropTypes.node,
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName: PropTypes.string,
-  /**
-   * Location of the error message relative to the field input
-   */
-  errorPlacement: PropTypes.oneOf(['top', 'bottom']),
-  /**
-   * Additional hint text to display
-   */
-  hint: PropTypes.node,
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel: PropTypes.node,
-  /**
-   * Array of month numbers, where `1` is January, and any month included
-   * is disabled for selection.
-   */
-  disabledMonths: PropTypes.arrayOf(PropTypes.number),
-  /**
-   * Array of month numbers, where `1` is January, and any month included
-   * is selected. This will render a read-only field. If the field should
-   * be mutable, use `defaultSelectedMonths`.
-   */
-  selectedMonths: PropTypes.arrayOf(PropTypes.number),
-  /**
-   * Array of month numbers, where `1` is January, and any month included
-   * is selected by default. Sets the initial checked state for the 12 month
-   * checkboxes. Use this for an uncontrolled component; otherwise, use the
-   * `selectedMonths` property.
-   */
-  defaultSelectedMonths: PropTypes.arrayOf(PropTypes.number),
-  /**
-   * A callback function that's invoked when a month's checked state is changed.
-   * Note: This callback is not called when a month is selected or deselected
-   * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
-   * `onClearAll` event handlers for those instances.
-   */
-  onChange: PropTypes.func,
-  onSelectAll: PropTypes.func,
-  onClearAll: PropTypes.func,
-  /**
-   * The text for the "Select all" button for internationalization
-   */
-  selectAllText: PropTypes.string,
-  /**
-   * The text for the "Clear all" button for internationalization
-   */
-  clearAllText: PropTypes.string,
 };
 
 export default MonthPicker;
