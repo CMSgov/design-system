@@ -22,6 +22,7 @@ module.exports = {
       files: ['*.stories.jsx'],
       rules: {
         'react/prop-types': 'off',
+        'react/no-multi-comp': 'off',
       },
     },
   ],
