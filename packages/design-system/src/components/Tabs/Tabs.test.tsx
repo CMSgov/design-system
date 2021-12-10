@@ -1,7 +1,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import TabPanel from './TabPanel';
-import Tabs, { TabsProps } from './Tabs';
+import Tabs from './Tabs';
 
 const defaultPanelChildren = 'Foo';
 const defaultPanelProps = {
@@ -108,7 +108,8 @@ describe('Tabs', function () {
         true
       );
 
-      data.wrapper.setState({ selectedId: 'panel-2' });
+      const tabs = data.wrapper.find('Tab');
+      tabs.at(1).simulate('click');
 
       expect(onChangeMock.mock.calls.length).toBe(1);
     });
