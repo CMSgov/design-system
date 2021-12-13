@@ -1,5 +1,5 @@
 import { mount, shallow } from 'enzyme';
-import MonthPicker from './MonthPicker.jsx';
+import MonthPicker from './MonthPicker';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
