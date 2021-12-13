@@ -24,14 +24,14 @@ export interface TabProps {
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `panelId`, `id`, `href`
    */
-  onClick?: (evt: React.MouseEvent, panelId: string, id: string, href: string) => void;
+  onClick?: (evt: React.MouseEvent, panelId: string, id: string, href: string) => any;
   /**
    * Called when the tab is selected and a keydown event is triggered.
    * Called with the following arguments:
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `panelId`, `id`, `href`
    */
-  onKeyDown?: (evt: React.KeyboardEvent, panelId: string, id: string, href: string) => void;
+  onKeyDown?: (evt: React.KeyboardEvent, panelId: string, id: string, href: string) => any;
   /**
    * The `id` of the associated `TabPanel`. Used for the `aria-controls` attribute.
    */
