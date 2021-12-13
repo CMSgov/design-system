@@ -59,7 +59,7 @@ describe('VerticalNavItemLabel', () => {
       const wrapper = data.wrapper;
 
       expect(wrapper.is('a')).toBe(true);
-      expect(wrapper.prop('href')).toBe(data.props.url);
+      expect(wrapper.prop('href')).toBe('/bar');
     });
 
     it('ignores ARIA subnav attributes', () => {

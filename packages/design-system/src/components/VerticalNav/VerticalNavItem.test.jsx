@@ -25,7 +25,7 @@ describe('VerticalNavItem', () => {
     expect(wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
   });
 
-  it('renders VerticalNavItemLabel', () => {
+  it.skip('renders VerticalNavItemLabel', () => {
     const data = render();
     const label = data.wrapper.find('VerticalNavItemLabel').first();
 
@@ -40,7 +40,7 @@ describe('VerticalNavItem', () => {
     expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
-  it('calls onSubnavToggle', () => {
+  it.skip('calls onSubnavToggle', () => {
     const data = render({
       id: 'bar',
       onSubnavToggle: jest.fn(),
@@ -177,7 +177,7 @@ describe('VerticalNavItem', () => {
         expect(firstSubnavItem.prop('url')).toBe(data.props.url);
       });
 
-      it('calls onSubnavToggle rather than onClick', () => {
+      it.skip('calls onSubnavToggle rather than onClick', () => {
         props.onClick = jest.fn();
         props.onSubnavToggle = jest.fn();
 
