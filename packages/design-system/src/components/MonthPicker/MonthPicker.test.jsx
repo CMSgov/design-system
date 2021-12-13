@@ -5,9 +5,13 @@ import renderer from 'react-test-renderer';
 
 const defaultProps = {
   name: 'months',
+  label: 'Months',
+  locale: 'en',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  label: 'Select months',
+  onChange: () => {},
+  onSelectAll: () => {},
+  onClearAll: () => {},
 };
 
 // Mounts the component by default because the choices are passed into FormControl as a function
@@ -22,7 +26,7 @@ function render(customProps = {}, deep = true) {
 
 describe('MonthPicker', () => {
   it('renders a snapshot', () => {
-    const tree = renderer.create(<MonthPicker name="months" label="Months" locale="en" />).toJSON();
+    const tree = renderer.create(<MonthPicker {...defaultProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
