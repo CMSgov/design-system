@@ -37,7 +37,7 @@ export interface TabPanelProps {
   tabId?: string;
 }
 
-export function TabPanel(props: TabPanelProps): JSX.Element {
+export const TabPanel = (props: TabPanelProps) => {
   const classes = classnames('ds-c-tabs__panel', props.className);
 
   return (
@@ -52,7 +52,7 @@ export function TabPanel(props: TabPanelProps): JSX.Element {
       {props.children}
     </div>
   );
-}
+};
 
 // Set component name to make child.type.displayName available to other components (eg. Tab)
 TabPanel.displayName = 'TabPanel';

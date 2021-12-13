@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 export interface TabProps {
@@ -40,54 +40,51 @@ export interface TabProps {
   disabled?: boolean;
 }
 
-export const Tab = React.forwardRef(
-  (props: TabProps, ref: any): JSX.Element => {
-    const defaultProps = {
-      selected: false,
-    };
-    const href: string = props.href || `#${props.panelId}`;
-    // let tab : HTMLAnchorElement | HTMLSpanElement;
-    const classes = classnames('ds-c-tabs__item', props.className);
-    const sharedTabProps = {
-      role: 'tab',
-      className: classes,
-      id: props.id,
-      ref: ref,
-    };
+export const Tab = React.forwardRef((props: TabProps, ref: any) => {
+  const defaultProps = {
+    selected: false,
+  };
+  const href: string = props.href || `#${props.panelId}`;
+  const classes = classnames('ds-c-tabs__item', props.className);
+  const sharedTabProps = {
+    role: 'tab',
+    className: classes,
+    id: props.id,
+    ref: ref,
+  };
 
-    const handleClick = (evt: React.MouseEvent): void => {
-      const { onClick, panelId, id } = props;
-      if (onClick) {
-        onClick(evt, panelId, id, href);
-      }
-    };
+  const handleClick = (evt: React.MouseEvent): void => {
+    const { onClick, panelId, id } = props;
+    if (onClick) {
+      onClick(evt, panelId, id, href);
+    }
+  };
 
-    const handleKeyDown = (evt: React.KeyboardEvent): void => {
-      const { onKeyDown, panelId, id } = props;
-      if (onKeyDown) {
-        onKeyDown(evt, panelId, id, href);
-      }
-    };
+  const handleKeyDown = (evt: React.KeyboardEvent): void => {
+    const { onKeyDown, panelId, id } = props;
+    if (onKeyDown) {
+      onKeyDown(evt, panelId, id, href);
+    }
+  };
 
-    return !props.disabled ? (
-      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
-      <a
-        aria-selected={props.selected || defaultProps.selected}
-        aria-controls={props.panelId}
-        href={href}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        {...sharedTabProps}
-      >
-        {props.children}
-      </a>
-    ) : (
-      <span aria-disabled="true" {...sharedTabProps}>
-        {props.children}
-      </span>
-    );
-  }
-);
+  return !props.disabled ? (
+    // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+    <a
+      aria-selected={props.selected || defaultProps.selected}
+      aria-controls={props.panelId}
+      href={href}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      {...sharedTabProps}
+    >
+      {props.children}
+    </a>
+  ) : (
+    <span aria-disabled="true" {...sharedTabProps}>
+      {props.children}
+    </span>
+  );
+});
 
 Tab.displayName = 'Tab';
 

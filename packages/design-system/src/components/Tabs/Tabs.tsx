@@ -38,19 +38,19 @@ const RIGHT_ARROW = 'ArrowRight';
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TabPanel component?
  */
-function isTabPanel(child): boolean {
+const isTabPanel = (child): boolean => {
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
   return child && (child.type === TabPanel || componentName === 'TabPanel');
-}
+};
 
 /**
  * Get the id of the first TabPanel child
  * @param {Object} props
  * @return {String} The id
  */
-function getDefaultSelectedId(props): string {
+const getDefaultSelectedId = (props): string => {
   let selectedId;
 
   // TODO: Use the panelChildren method to pass in an array
@@ -62,20 +62,21 @@ function getDefaultSelectedId(props): string {
   });
 
   return selectedId;
-}
+};
 
 /**
  * Generate an id for a panel's associated tab if one doesn't yet exist
  * @param {Object} TabPanel component
  * @return {String} Tab ID
  */
-function panelTabId(panel): string {
+const panelTabId = (panel): string => {
   return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
-}
+};
 
-export const Tabs = (props: TabsProps): JSX.Element => {
+export const Tabs = (props: TabsProps) => {
   const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
   const [selectedId, setSelectedId] = useState(initialSelectedId);
+  const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
   const tabsRef = useRef({});
 
@@ -162,8 +163,6 @@ export const Tabs = (props: TabsProps): JSX.Element => {
 
   const renderTabs = (): React.ReactNode => {
     const panels = panelChildren() as React.ReactElement[];
-    // eslint-disable-next-line react/prop-types
-    const listClasses = classnames('ds-c-tabs', props.tablistClassName);
 
     const tabs = panels.map((panel) => {
       return (
@@ -186,16 +185,14 @@ export const Tabs = (props: TabsProps): JSX.Element => {
       );
     });
 
-    return (
-      <div className={listClasses} role="tablist">
-        {tabs}
-      </div>
-    );
+    return tabs;
   };
 
   return (
     <div>
-      {renderTabs()}
+      <div className={listClasses} role="tablist">
+        {renderTabs()}
+      </div>
       {renderChildren()}
     </div>
   );
