@@ -25,11 +25,11 @@ describe('VerticalNavItem', () => {
     expect(wrapper.hasClass('ds-c-vertical-nav__item')).toBe(true);
   });
 
-  it.skip('renders VerticalNavItemLabel', () => {
+  it('renders VerticalNavItemLabel', () => {
     const data = render();
     const label = data.wrapper.find('VerticalNavItemLabel').first();
 
-    expect(label.prop('collapsed')).toBe(data.wrapper.state('collapsed'));
+    expect(label.prop('collapsed')).toBe(false);
     expect(label.prop('label')).toBe(data.props.label);
   });
 
@@ -40,18 +40,23 @@ describe('VerticalNavItem', () => {
     expect(data.wrapper.hasClass('bar')).toBe(true);
   });
 
-  it.skip('calls onSubnavToggle', () => {
-    const data = render({
-      id: 'bar',
-      onSubnavToggle: jest.fn(),
-    });
+  it('calls onSubnavToggle', () => {
+    const onSubnavToggleMock = jest.fn();
+    const data = render(
+      {
+        id: 'bar',
+        onSubnavToggle: onSubnavToggleMock,
+        defaultCollapsed: true,
+      },
+      true
+    );
 
-    // Collapsed state changes, triggering the event!
-    data.wrapper.setState({ collapsed: true });
+    const el = data.wrapper.find('VerticalNavItemLabel');
+    el.simulate('click');
 
     expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
     expect(data.props.onSubnavToggle.mock.calls[0][0]).toBe(data.props.id);
-    expect(data.props.onSubnavToggle.mock.calls[0][1]).toBe(true); // collapsed
+    expect(data.props.onSubnavToggle.mock.calls[0][1]).toBe(true);
   });
 
   describe('without subnav', () => {
@@ -166,7 +171,6 @@ describe('VerticalNavItem', () => {
       });
 
       it('adds top-level link to top of subnav', () => {
-        props.id = 'foo';
         const data = render(props);
         const subnav = data.wrapper.find('VerticalNav').first().shallow();
         const firstSubnavItem = subnav.find('VerticalNavItem').first();
@@ -177,14 +181,16 @@ describe('VerticalNavItem', () => {
         expect(firstSubnavItem.prop('url')).toBe(data.props.url);
       });
 
-      it.skip('calls onSubnavToggle rather than onClick', () => {
-        props.onClick = jest.fn();
-        props.onSubnavToggle = jest.fn();
+      it('calls onSubnavToggle rather than onClick', () => {
+        const data = render(
+          {
+            onSubnavToggle: jest.fn(),
+            onClick: jest.fn(),
+          },
+          true
+        );
 
-        const data = render(props, true);
-        const label = data.wrapper.find('VerticalNavItemLabel').first();
-
-        label.simulate('click');
+        data.wrapper.first().simulate('click');
 
         expect(data.props.onClick.mock.calls.length).toBe(0);
         expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
