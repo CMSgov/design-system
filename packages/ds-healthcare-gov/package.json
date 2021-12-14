@@ -24,9 +24,9 @@
     "@types/react": "^17.0.10",
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.0.0",
-    "i18next": "^14.0.1",
+    "i18next": "^21.5.5",
     "js-cookie": "^2.2.0",
-    "react-i18next": "^9.0.10"
+    "react-i18next": "^11.14.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -39,7 +39,7 @@
     "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-inline-import": "^3.0.0",
-    "babel-plugin-typescript-to-proptypes": "^1.4.2",
+    "babel-plugin-typescript-to-proptypes": "^2.0.0",
     "eslint": "^6.8.0",
     "lint-staged": "^10.0.8",
     "prettier": "^2.0.5",
