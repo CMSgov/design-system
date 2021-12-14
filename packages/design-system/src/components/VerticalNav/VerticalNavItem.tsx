@@ -74,7 +74,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
   const [collapsed, setCollapsed] = useState(props.defaultCollapsed);
 
-  // Refactor from `componentDidUpdate` to `isEffect` using this example:
+  // Refactor from `componentDidUpdate` to `useEffect` using this example:
   // https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
   React.useEffect(() => {
     if (props.onSubnavToggle) {
@@ -155,20 +155,20 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
     return props.items;
   };
 
-  const renderSubnav = (): React.ReactElement => {
-    if (hasSubnav()) {
-      return (
-        <VerticalNav
-          selectedId={props._selectedId}
-          collapsed={collapsed}
-          id={subnavId}
-          items={subnavItems()}
-          component={props.component}
-          nested
-        />
-      );
-    }
-  };
+  // const renderSubnav = (): React.ReactElement => {
+  //   if (hasSubnav()) {
+  //     return (
+  //       <VerticalNav
+  //         selectedId={props._selectedId}
+  //         collapsed={collapsed}
+  //         id={subnavId}
+  //         items={subnavItems()}
+  //         component={props.component}
+  //         nested
+  //       />
+  //     );
+  //   }
+  // };
 
   const classes = classNames('ds-c-vertical-nav__item', props.className);
 
@@ -186,7 +186,16 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
         subnavId={subnavId}
         url={props.url}
       />
-      {renderSubnav()}
+      {hasSubnav() && (
+        <VerticalNav
+          selectedId={props._selectedId}
+          collapsed={collapsed}
+          id={subnavId}
+          items={subnavItems()}
+          component={props.component}
+          nested
+        />
+      )}
     </li>
   );
 };
