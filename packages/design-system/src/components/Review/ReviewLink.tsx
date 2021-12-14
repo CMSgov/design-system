@@ -13,7 +13,7 @@ export interface ReviewLinkProps {
 }
 
 export const ReviewLink = (props: ReviewLinkProps) => {
-  const handleClick = (event) => {
+  const handleClick = (event): void => {
     if (props.onClick) {
       props.onClick(event, props.href);
     }
