@@ -9,9 +9,6 @@ const defaultProps = {
   locale: 'en',
   selectAllText: 'Select all',
   clearAllText: 'Clear all',
-  onChange: () => {},
-  onSelectAll: () => {},
-  onClearAll: () => {},
 };
 
 // Mounts the component by default because the choices are passed into FormControl as a function

@@ -89,9 +89,9 @@ interface MonthPickerProps {
    * via the "Select all" or "Clear all" buttons – use the `onSelectAll` and
    * `onClearAll` event handlers for those instances.
    */
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
-  onSelectAll: () => any;
-  onClearAll: () => any;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => any;
+  onSelectAll?: () => any;
+  onClearAll?: () => any;
   /**
    * The text for the "Select all" button for internationalization
    */
