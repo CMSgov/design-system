@@ -8,8 +8,6 @@ export { default as MonthPicker, getMonthNames } from './MonthPicker/MonthPicker
 export { default as Review } from './Review/Review';
 export { default as SkipNav } from './SkipNav/SkipNav';
 export { default as StepList } from './StepList/StepList';
-export { default as Tabs } from './Tabs/Tabs';
-export { default as TabPanel } from './Tabs/TabPanel';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as TooltipIcon } from './Tooltip/TooltipIcon';
 export { default as VerticalNav } from './VerticalNav/VerticalNav';
@@ -30,6 +28,7 @@ export * from './InlineError';
 export * from './Pagination';
 export * from './Spinner';
 export * from './Table';
+export * from './Tabs';
 export * from './TextField';
 export * from './Tooltip';
 export * from './Icons';

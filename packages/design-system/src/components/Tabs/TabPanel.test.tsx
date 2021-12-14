@@ -22,7 +22,7 @@ function shallowRender(customProps = {}) {
 describe('TabPanel', function () {
   it('is selected', () => {
     const wrapper = shallowRender({ selected: true }).wrapper;
-    expect(wrapper.prop('aria-hidden')).toBe('false');
+    expect(wrapper.prop('aria-hidden')).toBe(false);
   });
 
   it('sets ARIA attributes', () => {
@@ -31,7 +31,7 @@ describe('TabPanel', function () {
 
     expect(panel.prop('role')).toBe('tabpanel');
     expect(panel.prop('aria-labelledby')).toBe(data.props.tabId);
-    expect(panel.prop('aria-hidden')).toBe('false');
+    expect(panel.prop('aria-hidden')).toBe(false);
   });
 
   it('adds additional class names', () => {

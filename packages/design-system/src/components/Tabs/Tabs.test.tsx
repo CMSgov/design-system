@@ -9,7 +9,7 @@ const defaultPanelProps = {
   tab: 'Tab label',
 };
 
-function render(customProps = {}, children, deep) {
+function render(customProps = {}, children?: React.ReactNode, deep?: boolean) {
   const props = Object.assign({}, customProps);
 
   if (!children) {
@@ -108,7 +108,8 @@ describe('Tabs', function () {
         true
       );
 
-      data.wrapper.setState({ selectedId: 'panel-2' });
+      const tabs = data.wrapper.find('Tab');
+      tabs.at(1).simulate('click');
 
       expect(onChangeMock.mock.calls.length).toBe(1);
     });
