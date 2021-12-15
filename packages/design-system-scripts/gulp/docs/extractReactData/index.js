@@ -21,7 +21,7 @@ async function extractReactProps(sourceDir, options) {
     gulp
       .src([
         `${sourcesGlob}/**/*.{jsx,tsx}`, // React props
-        `!${sourcesGlob}/**/*{.test,.spec,.d}.{js,jsx,ts,tsx}`,
+        `!${sourcesGlob}/**/*{.stories,.test,.spec,.d}.{js,jsx,ts,tsx}`,
       ])
       .pipe(parseReactProps(options))
       .pipe(merge({ fileName: REACT_PROP_DATA_FILENAME }))
