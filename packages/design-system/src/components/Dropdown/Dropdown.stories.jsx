@@ -94,8 +94,8 @@ OptionGroup.args = {
   children: optGroupData,
 };
 
-export const Inversed = Template.bind({});
-Inversed.args = {
+export const InverseOption = Template.bind({});
+InverseOption.args = {
   options: dropdownOptions,
   errorMessage: 'Example error message',
   hint: 'Helpful hint text',
@@ -103,6 +103,6 @@ Inversed.args = {
   name: 'inverse_dropdown_field',
   inversed: true,
 };
-Inversed.parameters = {
+InverseOption.parameters = {
   backgrounds: { default: process.env.STORYBOOK_DS === 'mgov' ? 'Mgov dark' : 'Hcgov dark' },
 };
