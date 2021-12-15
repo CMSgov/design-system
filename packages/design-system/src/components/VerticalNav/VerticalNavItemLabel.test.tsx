@@ -3,7 +3,7 @@ import VerticalNavItemLabel from './VerticalNavItemLabel';
 import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign(
+  const props: any = Object.assign(
     {
       label: 'Foo',
       subnavId: 'foo-subnav',

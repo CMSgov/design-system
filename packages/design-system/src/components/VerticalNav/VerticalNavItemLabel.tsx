@@ -13,7 +13,7 @@ export interface VerticalNavItemLabelProps {
   component?: VerticalNavItemLabelComponent;
   hasSubnav?: boolean;
   label: React.ReactNode;
-  onClick?: (...args: any[]) => any;
+  onClick?: (evt: React.MouseEvent | React.KeyboardEvent) => any;
   selected?: boolean;
   subnavId: string;
   url?: string;

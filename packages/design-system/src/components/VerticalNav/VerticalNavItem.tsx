@@ -38,12 +38,12 @@ export interface VerticalNavItemProps {
    * `id`, `url`.
    * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */
-  onClick?: (...args: any[]) => any;
+  onClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
   /**
    * Called when this item's subnav is collapsed or expanded, with the
    * following arguments: `id`, `collapsed`
    */
-  onSubnavToggle?: (...args: any[]) => any;
+  onSubnavToggle?: (id: string, collapsed: boolean) => any;
   /**
    * Optional identifier. This can be handy if you're passing in an
    * `onClick` handler. A unique ID will be generated if one isn't provided.
@@ -74,14 +74,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
   const [collapsed, setCollapsed] = useState(props.defaultCollapsed);
 
-  // Refactor from `componentDidUpdate` to `useEffect` using this example:
-  // https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects
-  React.useEffect(() => {
-    if (props.onSubnavToggle) {
-      props.onSubnavToggle(props.id, collapsed);
-    }
-  }, [collapsed]);
-
   /**
    * Note: This event handler will only get called when the VerticalNavItemLabel
    * is a link or plain text
@@ -94,6 +86,10 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
   const handleToggleClick = (): void => {
     setCollapsed(!collapsed);
+
+    if (props.onSubnavToggle) {
+      props.onSubnavToggle(props.id, collapsed);
+    }
   };
 
   const hasSubnav = (): boolean => Boolean(props.items && props.items.length > 0);
@@ -154,21 +150,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
     return props.items;
   };
-
-  // const renderSubnav = (): React.ReactElement => {
-  //   if (hasSubnav()) {
-  //     return (
-  //       <VerticalNav
-  //         selectedId={props._selectedId}
-  //         collapsed={collapsed}
-  //         id={subnavId}
-  //         items={subnavItems()}
-  //         component={props.component}
-  //         nested
-  //       />
-  //     );
-  //   }
-  // };
 
   const classes = classNames('ds-c-vertical-nav__item', props.className);
 

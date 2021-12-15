@@ -2,8 +2,8 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import VerticalNavItem from './VerticalNavItem';
 
-function render(customProps = {}, deep) {
-  const props = {
+function render(customProps = {}, deep?: boolean) {
+  const props: any = {
     ...{ label: 'Foo' },
     ...customProps,
   };
@@ -11,7 +11,7 @@ function render(customProps = {}, deep) {
   const component = <VerticalNavItem {...props} />;
 
   return {
-    props: props,
+    props: { ...props },
     wrapper: deep ? mount(component) : shallow(component),
   };
 }
@@ -44,19 +44,25 @@ describe('VerticalNavItem', () => {
     const onSubnavToggleMock = jest.fn();
     const data = render(
       {
-        id: 'bar',
         onSubnavToggle: onSubnavToggleMock,
         defaultCollapsed: true,
+        items: [
+          { label: 'Child 1' },
+          { label: 'Child 2' },
+          {
+            label: 'Child 3 with items',
+            items: [{ label: 'Grandchild' }],
+          },
+        ],
       },
       true
     );
 
-    const el = data.wrapper.find('VerticalNavItemLabel');
-    el.simulate('click');
+    data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
-    expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
-    expect(data.props.onSubnavToggle.mock.calls[0][0]).toBe(data.props.id);
-    expect(data.props.onSubnavToggle.mock.calls[0][1]).toBe(true);
+    expect(onSubnavToggleMock.mock.calls.length).toBe(1);
+    expect(onSubnavToggleMock.mock.calls[0][0]).toBe(data.props.id);
+    expect(onSubnavToggleMock.mock.calls[0][1]).toBe(true);
   });
 
   describe('without subnav', () => {
@@ -81,11 +87,14 @@ describe('VerticalNavItem', () => {
     });
 
     it('calls onClick', () => {
-      const data = render({
-        id: 'bar',
-        onClick: jest.fn(),
-        url: '/bar',
-      });
+      const data = render(
+        {
+          id: 'bar',
+          onClick: jest.fn(),
+          url: '/bar',
+        },
+        false
+      );
 
       data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
@@ -186,11 +195,19 @@ describe('VerticalNavItem', () => {
           {
             onSubnavToggle: jest.fn(),
             onClick: jest.fn(),
+            items: [
+              { label: 'Child 1' },
+              { label: 'Child 2' },
+              {
+                label: 'Child 3 with items',
+                items: [{ label: 'Grandchild' }],
+              },
+            ],
           },
           true
         );
 
-        data.wrapper.first().simulate('click');
+        data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
         expect(data.props.onClick.mock.calls.length).toBe(0);
         expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
