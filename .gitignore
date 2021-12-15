@@ -39,3 +39,5 @@ node_modules
 # .DS_Store Mac
 .DS_Store
 /.vscode
+
+storybook-static/
