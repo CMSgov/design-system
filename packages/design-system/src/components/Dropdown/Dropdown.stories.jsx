@@ -64,7 +64,7 @@ const Template = (args) => <Dropdown {...args} />;
 export const DefaultDropdown = Template.bind({});
 DefaultDropdown.args = {
   options: dropdownOptions,
-  label: 'Dropdown Example',
+  label: 'Dropdown example',
   name: 'dropdown_field',
 };
 
@@ -80,7 +80,7 @@ WithError.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   options: dropdownOptions,
-  label: 'Disabled Example',
+  label: 'Disabled example',
   disabled: true,
   name: 'disabled_dropdown_field',
 };
