@@ -99,7 +99,7 @@ InverseOption.args = {
   options: dropdownOptions,
   errorMessage: 'Example error message',
   hint: 'Helpful hint text',
-  label: 'Inverse Example',
+  label: 'Inverse example',
   name: 'inverse_dropdown_field',
   inversed: true,
 };
