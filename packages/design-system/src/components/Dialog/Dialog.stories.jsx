@@ -41,7 +41,7 @@ export const ModalDialog = ({ ...args }) => {
       {shown && (
         <DialogComponent
           {...args}
-          getApplicationNode={() => document.getElementById('root')}
+          getApplicationNode={() => document.getElementById('storybook-preview-wrapper')}
           actions={[
             <button className="ds-c-button ds-c-button--primary ds-u-margin-right--1" key="primary">
               Dialog action
