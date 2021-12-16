@@ -2,8 +2,8 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import VerticalNavItem from './VerticalNavItem';
 
-function render(customProps = {}, deep) {
-  const props = {
+function render(customProps = {}, deep?: boolean) {
+  const props: any = {
     ...{ label: 'Foo' },
     ...customProps,
   };
@@ -11,7 +11,7 @@ function render(customProps = {}, deep) {
   const component = <VerticalNavItem {...props} />;
 
   return {
-    props: props,
+    props: { ...props },
     wrapper: deep ? mount(component) : shallow(component),
   };
 }
@@ -29,7 +29,7 @@ describe('VerticalNavItem', () => {
     const data = render();
     const label = data.wrapper.find('VerticalNavItemLabel').first();
 
-    expect(label.prop('collapsed')).toBe(data.wrapper.state('collapsed'));
+    expect(label.prop('collapsed')).toBe(false);
     expect(label.prop('label')).toBe(data.props.label);
   });
 
@@ -41,17 +41,28 @@ describe('VerticalNavItem', () => {
   });
 
   it('calls onSubnavToggle', () => {
-    const data = render({
-      id: 'bar',
-      onSubnavToggle: jest.fn(),
-    });
+    const onSubnavToggleMock = jest.fn();
+    const data = render(
+      {
+        onSubnavToggle: onSubnavToggleMock,
+        defaultCollapsed: true,
+        items: [
+          { label: 'Child 1' },
+          { label: 'Child 2' },
+          {
+            label: 'Child 3 with items',
+            items: [{ label: 'Grandchild' }],
+          },
+        ],
+      },
+      true
+    );
 
-    // Collapsed state changes, triggering the event!
-    data.wrapper.setState({ collapsed: true });
+    data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
-    expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);
-    expect(data.props.onSubnavToggle.mock.calls[0][0]).toBe(data.props.id);
-    expect(data.props.onSubnavToggle.mock.calls[0][1]).toBe(true); // collapsed
+    expect(onSubnavToggleMock.mock.calls.length).toBe(1);
+    expect(onSubnavToggleMock.mock.calls[0][0]).toBe(data.props.id);
+    expect(onSubnavToggleMock.mock.calls[0][1]).toBe(true);
   });
 
   describe('without subnav', () => {
@@ -76,11 +87,14 @@ describe('VerticalNavItem', () => {
     });
 
     it('calls onClick', () => {
-      const data = render({
-        id: 'bar',
-        onClick: jest.fn(),
-        url: '/bar',
-      });
+      const data = render(
+        {
+          id: 'bar',
+          onClick: jest.fn(),
+          url: '/bar',
+        },
+        false
+      );
 
       data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
@@ -166,7 +180,6 @@ describe('VerticalNavItem', () => {
       });
 
       it('adds top-level link to top of subnav', () => {
-        props.id = 'foo';
         const data = render(props);
         const subnav = data.wrapper.find('VerticalNav').first().shallow();
         const firstSubnavItem = subnav.find('VerticalNavItem').first();
@@ -178,13 +191,23 @@ describe('VerticalNavItem', () => {
       });
 
       it('calls onSubnavToggle rather than onClick', () => {
-        props.onClick = jest.fn();
-        props.onSubnavToggle = jest.fn();
+        const data = render(
+          {
+            onSubnavToggle: jest.fn(),
+            onClick: jest.fn(),
+            items: [
+              { label: 'Child 1' },
+              { label: 'Child 2' },
+              {
+                label: 'Child 3 with items',
+                items: [{ label: 'Grandchild' }],
+              },
+            ],
+          },
+          true
+        );
 
-        const data = render(props, true);
-        const label = data.wrapper.find('VerticalNavItemLabel').first();
-
-        label.simulate('click');
+        data.wrapper.find('VerticalNavItemLabel').first().simulate('click');
 
         expect(data.props.onClick.mock.calls.length).toBe(0);
         expect(data.props.onSubnavToggle.mock.calls.length).toBe(1);

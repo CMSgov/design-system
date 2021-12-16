@@ -3,7 +3,7 @@ import VerticalNavItemLabel from './VerticalNavItemLabel';
 import { shallow } from 'enzyme';
 
 function shallowRender(customProps = {}) {
-  const props = Object.assign(
+  const props: any = Object.assign(
     {
       label: 'Foo',
       subnavId: 'foo-subnav',
@@ -59,7 +59,7 @@ describe('VerticalNavItemLabel', () => {
       const wrapper = data.wrapper;
 
       expect(wrapper.is('a')).toBe(true);
-      expect(wrapper.prop('href')).toBe(data.props.url);
+      expect(wrapper.prop('href')).toBe('/bar');
     });
 
     it('ignores ARIA subnav attributes', () => {
