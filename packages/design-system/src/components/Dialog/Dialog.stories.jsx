@@ -1,5 +1,4 @@
-import React from 'react';
-import { useArgs } from '@storybook/client-api';
+import React, { useState } from 'react';
 import { Dialog as DialogComponent } from './Dialog';
 import Button from '../Button/Button';
 
@@ -8,21 +7,13 @@ export default {
   component: DialogComponent,
   argTypes: {
     children: { control: false },
+    actions: { control: false },
   },
   args: {
-    actions: [
-      // adding onClick params here causes unexpected consequences, don't do it
-      <button className="ds-c-button ds-c-button--primary ds-u-margin-right--1" key="primary">
-        Dialog action
-      </button>,
-      <button className="ds-c-button ds-c-button--transparent" key="cancel">
-        Cancel
-      </button>,
-    ],
     alert: false,
     analytics: false,
     escapeExits: true,
-    underlayClickExits: false,
+    underlayClickExits: true,
     children: (
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
@@ -31,14 +22,19 @@ export default {
     ),
     heading: 'Dialog Heading',
   },
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
 };
 
-export const ModalDialog = ({ ...args }) => {
-  const [{ shown }, setShown] = useArgs();
-  const showModal = () => setShown({ shown: true });
-  const hideModal = () => setShown({ shown: false });
-
-  console.log(args.page);
+export const Dialog = ({ ...args }) => {
+  const [shown, setShown] = useState();
+  const showModal = () => setShown(true);
+  const hideModal = () => setShown(false);
 
   return (
     <>
@@ -49,8 +45,25 @@ export const ModalDialog = ({ ...args }) => {
       {shown && (
         <DialogComponent
           {...args}
-          getApplicationNode={() => document.getElementById('Wr')}
+          getApplicationNode={() => document.getElementById('storybook-preview-iframe')}
           onExit={hideModal}
+          actions={
+            <>
+              <button
+                className="ds-c-button ds-c-button--primary ds-u-margin-right--1"
+                key="primary"
+              >
+                Dialog action
+              </button>
+              <button
+                className="ds-c-button ds-c-button--transparent"
+                key="cancel"
+                onClick={hideModal}
+              >
+                Cancel
+              </button>
+            </>
+          }
         />
       )}
     </>
