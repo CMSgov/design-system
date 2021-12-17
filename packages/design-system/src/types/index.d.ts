@@ -4,8 +4,6 @@
 export { default as Dialog } from './Dialog/Dialog';
 export { default as HelpDrawer } from './HelpDrawer/HelpDrawer';
 export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
-export { default as MonthPicker, getMonthNames } from './MonthPicker/MonthPicker';
-export { default as Review } from './Review/Review';
 export { default as SkipNav } from './SkipNav/SkipNav';
 export { default as StepList } from './StepList/StepList';
 export { default as Tooltip } from './Tooltip/Tooltip';
