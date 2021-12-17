@@ -3,7 +3,7 @@ import React from 'react';
 import VerticalNav from './VerticalNav';
 
 function render(customProps = {}) {
-  const props = {
+  const props: any = {
     ...{
       items: [{ label: 'Foo' }, { label: 'Bar' }],
     },
