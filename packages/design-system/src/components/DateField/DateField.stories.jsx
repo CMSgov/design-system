@@ -1,11 +1,10 @@
 import React from 'react';
-
 import DateField from './DateField';
 
 export default {
   title: 'Components/DateField',
   component: DateField,
-  argTypes: {},
+  args: {},
   parameters: {
     backgrounds: {
       default: 'light',
@@ -27,15 +26,6 @@ export default {
   },
 };
 
-const Template = ({ data, ...args }) => <DateField {...args} />;
+const Template = ({ ...args }) => <DateField {...args} />;
 
 export const DateFieldDefault = Template.bind({});
-DateFieldDefault.args = {};
-
-export const InverseDateField = Template({});
-InverseDateField.args = {
-  inversed: true,
-};
-InverseDateField.parameters = {
-  backgrounds: { default: process.env.STORYBOOK_DS === 'mgov' ? 'Mgov dark' : 'Hcgov dark' },
-};
