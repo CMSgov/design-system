@@ -31,7 +31,7 @@ export default {
   },
 };
 
-export const ModalDialog = ({ ...args }) => {
+export const Dialog = ({ ...args }) => {
   const [shown, setShown] = useState();
   const showModal = () => setShown(true);
   const hideModal = () => setShown(false);
