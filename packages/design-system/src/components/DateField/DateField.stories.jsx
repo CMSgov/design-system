@@ -7,6 +7,10 @@ export default {
   component: DateField,
   argTypes: {
     label: { control: false },
+    errorMessage: {
+      control: { type: 'text' },
+      type: { name: 'string', required: true },
+    },
   },
   parameters: {
     backgrounds: {

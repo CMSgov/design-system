@@ -6,8 +6,17 @@ export default {
   title: 'Components/Dialog',
   component: DialogComponent,
   argTypes: {
+    analytics: { control: false },
     children: { control: false },
     actions: { control: false },
+    heading: {
+      control: { type: 'text' },
+      type: { name: 'string', required: true },
+    },
+    title: {
+      control: { type: 'text' },
+      type: { name: 'string', required: true },
+    },
   },
   args: {
     alert: false,
