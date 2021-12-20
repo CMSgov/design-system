@@ -1,3 +1,6 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable filenames/match-exported */
+
 import React from 'react';
 import { Language } from '../index';
 
@@ -25,6 +28,7 @@ export interface HeaderProps {
   links?: Link[];
   submenuTop?: React.ReactNode;
   submenuBottom?: React.ReactNode;
+  headerBottom?: React.ReactNode;
 }
 
 export class Header extends React.Component<HeaderProps, any> {
