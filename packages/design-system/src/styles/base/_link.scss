@@ -72,7 +72,7 @@ $link-underline-offset: auto !default;
   &:focus,
   &:focus:visited {
     @include focus-styles-link;
-    color: $color-base;
+    color: $link-color;
   }
   /* stylelint-enable selector-max-specificity */
 
