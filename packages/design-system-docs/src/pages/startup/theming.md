@@ -45,9 +45,6 @@ You can also [browse all Sass variable files on GitHub](https://github.com/CMSgo
 
 #### Focus styles
 
-The focus styles are enabled by default. However, if you'd like to disable them,
-set the `$ds-include-focus-styles` variable to `false` in your `_override.build.scss` file.
-
 ##### Focus style variables
 
 - `$color-focus-light` - Sets the inner halo for the focus styles.
