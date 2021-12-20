@@ -3,7 +3,7 @@ import { Dialog as DialogComponent } from './Dialog';
 import Button from '../Button/Button';
 
 export default {
-  title: 'Components/Modal Dialog',
+  title: 'Components/Dialog',
   component: DialogComponent,
   argTypes: {
     children: { control: false },

@@ -5,8 +5,8 @@ import DateInput from './DateInput';
 export default {
   title: 'Components/DateField',
   component: DateField,
-  args: {
-    errorMessaage: 'Please enter a year in the past',
+  argTypes: {
+    label: { control: false },
   },
   parameters: {
     backgrounds: {
