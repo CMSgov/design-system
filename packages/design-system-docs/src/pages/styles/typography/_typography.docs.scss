@@ -31,7 +31,7 @@ Link
 
 Links connect users to a different page or further information.
 
-The only base HTML element the design system applies styling to is the `<a>` element. To prevent this, you can override the `$ds-include-base-html-rulesets` Sass variable and set it to `false`. You can also use `.ds-c-link` and `.ds-c-link--inverse` for styling links.
+The only base HTML element the design system applies styling to is the `<a>` element. You can also use `.ds-c-link` and `.ds-c-link--inverse` for styling links.
 
 Markup: link.example.html
 
