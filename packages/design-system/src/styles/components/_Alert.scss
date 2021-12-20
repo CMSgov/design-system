@@ -17,27 +17,13 @@ $alert-icon-size: $spacer-5;
   &:hover {
     color: $color-primary-darkest;
   }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-darkest;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
   }
-
-  @if $ds-include-focus-styles {
-    &:active {
-      color: $color-primary-darkest;
-      outline: 0 none;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-darkest;
-    }
+  &:active {
+    color: $color-primary-darkest;
+    outline: 0 none;
   }
 }
 

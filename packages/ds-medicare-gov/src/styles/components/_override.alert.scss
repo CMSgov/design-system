@@ -12,26 +12,12 @@
     color: $color-primary-alt-dark;
     text-decoration-thickness: 2px;
   }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-alt-darkest;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles;
   }
-
-  @if $ds-include-focus-styles {
-    &:active {
-      color: $color-primary-alt-darkest;
-      outline: 0 none;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-alt-darkest;
-    }
+  &:active {
+    color: $color-primary-alt-darkest;
+    outline: 0 none;
   }
 }

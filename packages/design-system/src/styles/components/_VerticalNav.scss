@@ -5,11 +5,9 @@
   color: $color-primary;
   text-decoration: none;
 }
-@if $ds-include-focus-styles {
-  %nav-item-focus {
-    @include focus-styles;
-    @include focus-styles-position;
-  }
+%nav-item-focus {
+  @include focus-styles;
+  @include focus-styles-position;
 }
 
 .ds-c-vertical-nav {
@@ -48,11 +46,9 @@
   &:hover {
     @extend %nav-item-hover;
   }
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-vertical-nav__label--current:focus {
-      @extend %nav-item-focus;
-    }
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
   }
 }
 
@@ -76,15 +72,14 @@
   &[aria-expanded='true'] {
     background-image: url('#{$image-path}/arrow-up.svg');
   }
-  @if $ds-include-focus-styles {
-    &:hover {
-      @extend %nav-item-hover;
-    }
 
-    &:focus,
-    &.ds-c-vertical-nav__label--current:focus {
-      @extend %nav-item-focus;
-    }
+  &:hover {
+    @extend %nav-item-hover;
+  }
+
+  &:focus,
+  &.ds-c-vertical-nav__label--current:focus {
+    @extend %nav-item-focus;
   }
 }
 

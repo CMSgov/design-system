@@ -37,17 +37,9 @@ $link-underline-offset: auto !default;
     text-decoration-color: $link-hover-color;
     text-decoration-thickness: $link-underline-height-hover;
   }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $link-hover-color;
-      text-decoration-color: $link-hover-color;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
   }
 
   &:active {
@@ -77,16 +69,10 @@ $link-underline-offset: auto !default;
   }
 
   /* stylelint-disable selector-max-specificity */
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $link-inverse-hover-color;
-      text-decoration-color: $link-inverse-hover-color;
-    }
+  &:focus,
+  &:focus:visited {
+    @include focus-styles-link;
+    color: $color-base;
   }
   /* stylelint-enable selector-max-specificity */
 
