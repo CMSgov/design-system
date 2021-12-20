@@ -21,7 +21,9 @@
   padding: $spacer-1 $spacer-3;
   text-align: center;
   text-decoration: none;
+
   /* stylelint-disable selector-max-specificity */
+
   &:hover,
   &.ds-c-button--hover,
   &:hover &:focus,
