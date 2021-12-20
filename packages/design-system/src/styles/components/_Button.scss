@@ -36,7 +36,6 @@
   &:focus,
   &.ds-c-button--focus {
     @include focus-styles;
-    background-color: $color-white;
     text-decoration: none;
   }
   // Removes inner outline on buttons in Firefox.
