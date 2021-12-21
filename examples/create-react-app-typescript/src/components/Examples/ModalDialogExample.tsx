@@ -1,18 +1,5 @@
-import { Button, Dialog , setDialogSendsAnalytics } from '@cmsgov/design-system';
+import { Button, Dialog } from '@cmsgov/design-system';
 import React, { useState } from 'react';
-
-
-setDialogSendsAnalytics(true);
-
-declare global {
-  interface Window {
-    utag: any;
-  }
-}
-
-window.utag = {
-  link: console.log,
-};
 
 function ModalDialogExample(): React.ReactElement {
   const [showExampleModal, setShowExampleModal] = useState(false);
