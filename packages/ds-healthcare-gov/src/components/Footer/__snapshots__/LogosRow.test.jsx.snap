@@ -15,6 +15,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="67px"
       >
         <HhsLogo
+          ariaHidden={false}
           className="hc-c-logo--hhs-logo"
         />
       </Logo>
@@ -40,6 +41,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="76px"
       >
         <WhiteHouseLogo
+          ariaHidden={false}
           className="hc-c-logo--wh-logo"
         />
       </Logo>
@@ -48,6 +50,7 @@ exports[`LogosRow renders logos and address 1`] = `
         width="162px"
       >
         <UsaLogo
+          ariaHidden={false}
           className="hc-c-logo--usa-logo"
         />
       </Logo>
