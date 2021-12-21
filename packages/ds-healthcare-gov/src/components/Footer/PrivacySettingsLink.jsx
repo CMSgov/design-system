@@ -1,6 +1,6 @@
 import PrivacySettingsDialog from '../PrivacySettings/PrivacySettingsDialog';
 import React from 'react';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class _PrivacySettingsLink extends React.PureComponent {
   constructor(props) {
@@ -26,5 +26,5 @@ class _PrivacySettingsLink extends React.PureComponent {
   }
 }
 
-export const PrivacySettingsLink = translate()(_PrivacySettingsLink);
+export const PrivacySettingsLink = withTranslation()(_PrivacySettingsLink);
 export default PrivacySettingsLink;
