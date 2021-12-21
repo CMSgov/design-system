@@ -10,5 +10,6 @@ exports[`HelpDrawerToggle renders a button 1`] = `
   <p>
     content
   </p>
+   
 </DrawerToggle>
 `;

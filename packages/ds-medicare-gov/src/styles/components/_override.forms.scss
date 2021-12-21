@@ -7,11 +7,6 @@
     color: $black-200;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 3px $focus-text-field-color-highlight, inset 0 0 0 1px $focus-text-field-color;
-    border-color: $focus-text-field-color;
-  }
-
   color: $black-500;
   font-family: $rubik-font;
   font-size: $font-size-md;
@@ -113,10 +108,6 @@ legend[id^='datefield_label'] {
   &::before {
     border-color: $choice-checked-background-color;
   }
-}
-
-.ds-c-choice:focus + label::before {
-  box-shadow: 0 0 0 3px $focus-choice-color, 0 0 0 5px $focus-choice-color-highlight;
 }
 
 // Size variants

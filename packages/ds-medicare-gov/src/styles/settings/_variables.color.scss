@@ -14,10 +14,9 @@ $color-primary-light: $teal-300;
 $color-primary-lightest: $teal-100;
 
 // Focus
-$focus-choice-color: #f1ad15;
-$focus-choice-color-highlight: rgba(241, 173, 21, 0.4);
-$focus-text-field-color: $color-primary;
-$focus-text-field-color-highlight: rgba(64, 158, 144, 0.4);
+// Being inherited from core
+// $color-focus-light: #fff;
+// $color-focus-dark: #bd13b8;
 
 // Blue/Primary Alt
 $blue-700: #12284d;
@@ -96,7 +95,6 @@ $color-error-lightest: $red-100;
 $color-visited: #701e3c;
 
 $color-base: $color-gray-dark;
-// Due to missing !default in core, this wont work until core fixes it
 $color-background-inverse: $color-primary;
 
 $card-box-shadow: 0 2px 3px 0 rgba(50, 50, 50, 0.23);
