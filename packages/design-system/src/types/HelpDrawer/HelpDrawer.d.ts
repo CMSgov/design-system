@@ -28,7 +28,7 @@ export interface HelpDrawerProps {
   /**
    * Enables focus trap functionality within HelpDrawer.
    */
-  hasFocusTrap: boolean;
+  hasFocusTrap?: boolean;
   /**
    * Text for the HelpDrawer title. Required because the `heading` will be focused on mount.
    */
@@ -36,7 +36,7 @@ export interface HelpDrawerProps {
   /**
    * A unique `id` to be used on heading element to label multiple instances of HelpDrawer.
    */
-  headingId: string;
+  headingId?: string;
   /**
    * Heading type to override default `<h3>`
    */
@@ -48,11 +48,11 @@ export interface HelpDrawerProps {
   /**
    * Enables "sticky" position of HelpDrawer header element.
    */
-  isHeaderSticky: boolean;
+  isHeaderSticky?: boolean;
   /**
    * Enables "sticky" position of HelpDrawer footer element.
    */
-  isFooterSticky: boolean;
+  isFooterSticky?: boolean;
   onCloseClick: (...args: any[]) => any;
   /**
    * @hide-prop [Deprecated] This prop has been renamed to `heading`.
