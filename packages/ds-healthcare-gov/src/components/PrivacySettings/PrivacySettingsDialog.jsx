@@ -3,7 +3,7 @@ import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },
@@ -63,5 +63,5 @@ _PrivacySettingsDialog.propTypes = {
   onExit: PropTypes.func.isRequired,
 };
 
-export const PrivacySettingsDialog = translate()(_PrivacySettingsDialog);
+export const PrivacySettingsDialog = withTranslation()(_PrivacySettingsDialog);
 export default PrivacySettingsDialog;
