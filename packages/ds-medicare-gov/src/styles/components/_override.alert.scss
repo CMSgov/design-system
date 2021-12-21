@@ -1,37 +1,5 @@
-// Links on darker backgrounds that aren't quite dark as inverse
-%link-darker {
-  color: $color-primary-alt;
-  cursor: pointer;
-  text-decoration: underline;
-
-  &:visited {
-    color: $color-visited;
-  }
-
-  &:hover {
-    color: $color-primary-alt-dark;
-    text-decoration-thickness: 2px;
-  }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-alt-darkest;
-    }
-  }
-
-  @if $ds-include-focus-styles {
-    &:active {
-      color: $color-primary-alt-darkest;
-      outline: 0 none;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-alt-darkest;
-    }
-  }
-}
+// Using darker primary color for link
+$alert-link-color: $color-primary-alt;
+$alert-link-color-hover: $color-primary-alt-dark;
+$alert-link-color-active: $color-primary-alt-darkest;
+$alert-link-color-focus: $color-primary-alt-darkest;

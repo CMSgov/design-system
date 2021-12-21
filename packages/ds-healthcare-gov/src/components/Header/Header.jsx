@@ -128,6 +128,7 @@ export class _Header extends React.Component {
         />
 
         {this.props.deConsumer && <DeConsumerMessage deBrokerName={this.props.deBrokerName} />}
+        {this.props.headerBottom}
       </header>
     );
   }
@@ -247,6 +248,10 @@ _Header.propTypes = {
    * the `defaultMenuLinks` method or the links provided by the `links` prop.
    */
   submenuBottom: PropTypes.node,
+  /**
+   * Element added to display content on Header bottom section
+   */
+  headerBottom: PropTypes.node,
 };
 
 export const Header = withTranslation()(_Header);
