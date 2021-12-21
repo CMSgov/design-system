@@ -7,7 +7,7 @@ import React from 'react';
 import { SkipNav } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { withTranslation } from 'react-i18next';
+import { translate } from 'react-i18next';
 
 export const VARIATION_NAMES = {
   LOGGED_IN: 'logged-in',
@@ -249,5 +249,5 @@ _Header.propTypes = {
   submenuBottom: PropTypes.node,
 };
 
-export const Header = withTranslation()(_Header);
+export const Header = translate()(_Header);
 export default Header;

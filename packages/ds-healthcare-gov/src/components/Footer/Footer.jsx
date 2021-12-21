@@ -3,7 +3,7 @@ import LogosRow from './LogosRow';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { withTranslation } from 'react-i18next';
+import { translate } from 'react-i18next';
 
 const _Footer = function (props) {
   const classes = classnames(
@@ -51,5 +51,5 @@ _Footer.propTypes = {
   primaryDomain: PropTypes.string,
 };
 
-export const Footer = withTranslation()(_Footer);
+export const Footer = translate()(_Footer);
 export default Footer;
