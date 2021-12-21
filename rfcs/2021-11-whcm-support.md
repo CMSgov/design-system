@@ -5,7 +5,7 @@
 
 ## Background
 
-Windows High Contrast Mode (WHCM) is a unique accessibility feature originally designed for Windows users with contrast sensitivity issues. Other reasons a user might enable WHCM include:
+Windows High Contrast Mode (WHCM) is a unique accessibility feature originally designed for Windows users with contrast sensitivity and low vision issues. Other reasons a user might enable WHCM include:
 
 - Reducing visual noise to improve focus
 - Easing eye strain, migraines, or light sensitivity
