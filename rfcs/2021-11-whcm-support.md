@@ -12,7 +12,7 @@ Windows High Contrast Mode (WHCM) is a unique accessibility feature originally d
 - Easing eye strain, migraines, or light sensitivity
 - Preferring a specific color scheme
 
-With WHCM, users can select a theme of colors for a scoped number of semantic elements. This theme is then applied to user interfaces and applications.
+With WHCM, users can select a theme of colors for a scoped number of semantic elements. These colors are mapped to a subset of [CSS2 System Color keywords](https://www.w3.org/TR/css-color-3/#css2-system), which is then applied to user interfaces and applications.
 
 Windows provides a handful of preexisting themes, which can be customized to the user's preference. The WHCM color palette consists of the following colors:
 
