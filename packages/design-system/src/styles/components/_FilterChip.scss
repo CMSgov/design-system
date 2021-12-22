@@ -38,10 +38,8 @@ $filter-chip-border-radius: $border-radius-pill !default;
     border: 1px solid $filter-chip-border-color-hover;
     color: $filter-chip-text-color-hover;
   }
-  @if $ds-include-focus-styles {
-    &:focus {
-      @include focus-styles;
-    }
+  &:focus {
+    @include focus-styles;
   }
 
   > * {

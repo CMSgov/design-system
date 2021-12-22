@@ -48,10 +48,8 @@ $accordion-header-font-family: $font-sans;
   &:hover {
     background-color: $accordion-header-bg-hover-color;
   }
-  @if $ds-include-focus-styles {
-    &:focus {
-      @include focus-styles;
-    }
+  &:focus {
+    @include focus-styles;
   }
 }
 

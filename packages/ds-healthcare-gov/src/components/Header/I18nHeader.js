@@ -8,7 +8,7 @@ import i18n from '../i18n';
 /**
  * A container component responsible for passing an instance
  * of i18next to all child components using react-i18next's
- * `translate` HOC. Note that we use I18nextProvider in order
+ * `withTranslation` HOC. Note that we use I18nextProvider in order
  * to avoid conflicts with other apps using react-i18next.
  * See https://github.com/i18next/react-i18next/issues/382 for
  * more context on why we need to do it this way.

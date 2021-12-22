@@ -97,11 +97,9 @@ $drawer-toggle-space: 0;
   align-self: flex-start;
 }
 
-@if $ds-include-focus-styles {
-  // This element is focusable via a tabindex attribute.
-  .ds-c-drawer__header-heading:focus {
-    @include focus-styles;
-  }
+// This element is focusable via a tabindex attribute.
+.ds-c-drawer__header-heading:focus {
+  @include focus-styles;
 }
 
 // Using `overflow: auto` instead of `position: sticky` on sticky els
