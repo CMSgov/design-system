@@ -3,6 +3,8 @@ $usa-banner-text-color: #1b1b1b;
 $usa-banner-close-image-background-color: #e6e6e6;
 $usa-banner-header-action-color: #005ea2;
 $usa-banner-font-family: $font-sans;
+$usa-banner-mobile-close-size: 48px;
+$usa-caret-icon-size: 10px;
 
 .ds-c-usa-banner {
   background-color: $usa-banner-background-color;
@@ -30,6 +32,44 @@ $usa-banner-font-family: $font-sans;
   }
 }
 
+.ds-c-usa-banner__header--mobile {
+  padding: 0;
+
+  .ds-c-usa-banner__button {
+    display: flex;
+    font-family: $usa-banner-font-family;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+  }
+
+  &.ds-c-usa-banner__header--expanded {
+    .ds-c-usa-banner__button {
+      display: flex;
+      padding-right: $usa-banner-mobile-close-size + $spacer-1;
+    }
+  }
+}
+
+.ds-c-usa-banner__cta-wrapper {
+  display: inline;
+}
+
+.ds-c-usa-banner__collapse-banner-container {
+  align-items: center;
+  background-color: $usa-banner-close-image-background-color;
+  display: flex;
+  height: $usa-banner-mobile-close-size;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $usa-banner-mobile-close-size;
+
+  .ds-c-icon {
+    height: $font-size-lg;
+    width: $font-size-lg;
+  }
+}
+
 .ds-c-usa-banner__header-flag {
   height: 11px;
   margin-right: $spacer-1;
@@ -37,7 +77,7 @@ $usa-banner-font-family: $font-sans;
 }
 
 .ds-c-usa-banner__header-text {
-  display: table;
+  display: inline;
   margin: 0;
   span {
     margin-right: $spacer-1;
@@ -50,29 +90,6 @@ $usa-banner-font-family: $font-sans;
   margin-bottom: 0;
   margin-top: 2px;
   text-decoration: underline;
-
-  &::after {
-    background-image: url('#{$image-path}/arrow-down.svg'),
-      linear-gradient(transparent, transparent);
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: $spacer-1;
-    color: $usa-banner-header-action-color;
-    content: '';
-    display: inline-block;
-    height: $spacer-1;
-    margin-left: 2px;
-    padding-right: 2px;
-    width: $spacer-1;
-  }
-
-  // Hide header-action text for large viewport and when expanded
-  @media (min-width: $width-sm) {
-    display: none;
-  }
-  .ds-c-usa-banner__header--expanded & {
-    display: none;
-  }
 }
 
 .ds-c-usa-banner__button {
@@ -80,94 +97,21 @@ $usa-banner-font-family: $font-sans;
   border: 0;
   bottom: 0;
   box-shadow: none;
-  display: block;
   font-size: inherit;
-  left: 0;
   line-height: inherit;
   margin: 0;
-  overflow: visible;
   padding: 0;
-  position: absolute;
   text-align: left;
-  top: 0;
-  width: 100%;
 
-  /* stylelint-disable scss/at-extend-no-missing-placeholder */
-  @extend .ds-c-link;
-  /* stylelint-enable scss/at-extend-no-missing-placeholder */
-
-  @media (min-width: $width-sm) {
-    bottom: auto;
-    display: inline;
-    left: auto;
-    position: relative;
-    right: auto;
-    top: auto;
-    width: auto;
-  }
-
-  // Display close icon on smaller viewport
-  // stylelint-disable scss/media-feature-value-dollar-variable
-  @media (max-width: $width-sm - 1px) {
-    &[aria-expanded='true']::before {
-      background-color: $usa-banner-close-image-background-color;
-      bottom: 0;
-      content: '';
-      display: block;
-      height: $spacer-6;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: $spacer-6;
-    }
-    // stylelint-enable scss/media-feature-value-dollar-variable
-
-    &[aria-expanded='true']::after {
-      background-image: url('#{$image-path}/close-alt.svg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: $spacer-2 $spacer-2;
-      bottom: 0;
-      content: '';
-      display: inline-block;
-      height: $spacer-6;
-      margin-left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      vertical-align: middle;
-      width: $spacer-6;
-    }
+  &:focus {
+    @include focus-styles;
   }
 }
 
 .ds-c-usa-banner__button-text {
-  // Hide the button-text on narrow viewport as header-action will display the action text
-  left: -999em;
-  position: absolute;
-
-  &::after {
-    display: none;
-  }
-
-  @media (min-width: $width-sm) {
-    display: inline;
-    position: static;
-
-    &::after {
-      background-image: url('#{$image-path}/arrow-down.svg'),
-        linear-gradient(transparent, transparent);
-      background-position: 50%;
-      background-repeat: no-repeat;
-      background-size: $spacer-1;
-      content: '';
-      display: inline-block;
-      height: $spacer-1;
-      margin-left: 2px;
-      padding-right: 2px;
-      width: $spacer-1;
-    }
-  }
+  /* stylelint-disable scss/at-extend-no-missing-placeholder */
+  @extend .ds-c-link;
+  /* stylelint-enable scss/at-extend-no-missing-placeholder */
 }
 
 .ds-c-usa-banner__content {
@@ -234,8 +178,6 @@ $usa-banner-font-family: $font-sans;
 
 // stylelint-disable no-duplicate-selectors
 .ds-c-usa-banner__header--expanded {
-  padding-right: $spacer-7;
-
   @media (min-width: $width-sm) {
     background-color: transparent;
     padding-right: 0;
@@ -249,3 +191,9 @@ $usa-banner-font-family: $font-sans;
   }
 }
 // stylelint-enable no-duplicate-selectors
+
+.ds-c-usa-banner__action-icon {
+  color: $usa-banner-text-color;
+  height: $usa-caret-icon-size;
+  width: $usa-caret-icon-size;
+}
