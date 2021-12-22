@@ -47,6 +47,10 @@ export class Tooltip extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    this.popper.setOptions(this.props);
+  }
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside.bind(this));
     document.removeEventListener('keydown', this.handleEscapeKey.bind(this));

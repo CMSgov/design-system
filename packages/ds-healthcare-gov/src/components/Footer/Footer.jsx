@@ -3,7 +3,7 @@ import LogosRow from './LogosRow';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 const _Footer = function (props) {
   const classes = classnames(
@@ -13,6 +13,7 @@ const _Footer = function (props) {
 
   return (
     <footer className={classes} role="contentinfo">
+      {props.footerTop}
       <InlineLinkLists t={props.t} primaryDomain={props.primaryDomain} />
       <LogosRow t={props.t} />
     </footer>
@@ -49,7 +50,11 @@ _Footer.propTypes = {
    * `https://healthcare.gov/topics`.
    */
   primaryDomain: PropTypes.string,
+  /**
+   * Element to be added to display content for top footer section changes
+   */
+  footerTop: PropTypes.node,
 };
 
-export const Footer = translate()(_Footer);
+export const Footer = withTranslation()(_Footer);
 export default Footer;

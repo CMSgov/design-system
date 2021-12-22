@@ -3,43 +3,11 @@
 $alert-padding: $spacer-2;
 $alert-bar-size: $spacer-1;
 $alert-icon-size: $spacer-5;
-
-// Links on darker backgrounds that aren't quite dark as inverse
-%link-darker {
-  color: $color-primary-darker;
-  cursor: pointer;
-  text-decoration: underline;
-
-  &:visited {
-    color: $color-visited;
-  }
-
-  &:hover {
-    color: $color-primary-darkest;
-  }
-
-  @if $ds-include-focus-styles {
-    &:focus,
-    &:focus:visited {
-      @include focus-styles;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-darkest;
-    }
-  }
-
-  @if $ds-include-focus-styles {
-    &:active {
-      color: $color-primary-darkest;
-      outline: 0 none;
-    }
-  } @else {
-    &:focus {
-      color: $color-primary-darkest;
-    }
-  }
-}
+// Using darker primary color for alert links to pass contrast on error color
+$alert-link-color: $color-primary-darker;
+$alert-link-color-hover: $color-primary-darkest;
+$alert-link-color-active: $color-primary-darkest;
+$alert-link-color-focus: $color-primary-darkest;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
@@ -58,13 +26,21 @@ $alert-icon-size: $spacer-5;
     background-image: none;
   }
 
-  @if $ds-include-base-html-rulesets {
-    a {
-      @extend %link-darker;
-    }
-  }
+  a,
   .ds-c-link {
-    @extend %link-darker;
+    color: $alert-link-color;
+
+    &:hover {
+      color: $alert-link-color-hover;
+    }
+
+    &:focus {
+      color: $alert-link-color-focus;
+    }
+
+    &:active {
+      color: $alert-link-color-active;
+    }
   }
 
   ul {
