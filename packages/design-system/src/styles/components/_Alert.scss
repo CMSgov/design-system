@@ -11,20 +11,13 @@ $alert-link-color-focus: $color-primary-darkest;
 
 .ds-c-alert {
   background-color: $color-primary-alt-lightest;
-  background-image: url('#{$image-path}/information.svg');
-  background-position: $alert-padding $alert-padding;
-  background-repeat: no-repeat;
-  background-size: $alert-icon-size;
   border-left: $alert-bar-size solid $color-primary-alt;
   box-sizing: border-box;
   color: $color-base;
+  display: flex;
   min-height: $alert-icon-size + $spacer-2;
   padding: $alert-padding;
   position: relative;
-
-  &.ds-c-alert--hide-icon {
-    background-image: none;
-  }
 
   a,
   .ds-c-link {
@@ -58,8 +51,13 @@ $alert-link-color-focus: $color-primary-darkest;
   }
 }
 
+.ds-c-alert__icon {
+  font-size: $font-size-lg;
+  margin-left: $spacer-1;
+}
+
 .ds-c-alert__body {
-  padding-left: $alert-icon-size + $alert-bar-size;
+  padding-left: $spacer-2;
 }
 
 .ds-c-alert--hide-icon .ds-c-alert__body {
@@ -80,18 +78,15 @@ $alert-link-color-focus: $color-primary-darkest;
 
 .ds-c-alert--error {
   background-color: $color-error-lightest;
-  background-image: url('#{$image-path}/error.svg');
   border-color: $color-error;
 }
 
 .ds-c-alert--warn {
   background-color: $color-warn-lightest;
-  background-image: url('#{$image-path}/warning.svg');
   border-color: $color-warn;
 }
 
 .ds-c-alert--success {
   background-color: $color-success-lightest;
-  background-image: url('#{$image-path}/success-fill.svg');
   border-color: $color-success;
 }

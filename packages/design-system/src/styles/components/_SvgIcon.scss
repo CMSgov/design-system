@@ -1,6 +1,7 @@
 .ds-c-icon {
   display: inline-block;
   fill: currentColor;
+  flex-shrink: 0;
   font-size: $base-font-size;
   height: 1.5em;
   stroke: currentColor;
