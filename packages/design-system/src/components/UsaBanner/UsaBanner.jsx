@@ -1,11 +1,17 @@
 import EnglishTranslations from '../../locale/en.json';
-import { LockCircleIcon, LockIcon, UsaFlagIcon, BuildingCircleIcon , ArrowIcon, CloseIconThin } from '../Icons';
+import {
+  LockCircleIcon,
+  LockIcon,
+  UsaFlagIcon,
+  BuildingCircleIcon,
+  ArrowIcon,
+  CloseIconThin,
+} from '../Icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
-
 
 export class UsaBanner extends React.PureComponent {
   constructor(props) {
@@ -48,10 +54,10 @@ export class UsaBanner extends React.PureComponent {
         <p className="ds-c-usa-banner__header-text">
           <span>{t.bannerText}</span>
           {!this.state.isBannerOpen && (
-            <div className="ds-c-usa-banner__cta-wrapper">
+            <span className="ds-c-usa-banner__cta-wrapper">
               <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
               <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
-            </div>
+            </span>
           )}
         </p>
         {this.state.isBannerOpen && (

@@ -39,18 +39,18 @@ $usa-caret-icon-size: 10px;
     display: flex;
     font-family: $usa-banner-font-family;
     padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+    width: 100%;
   }
 
   &.ds-c-usa-banner__header--expanded {
     .ds-c-usa-banner__button {
-      display: flex;
-      padding-right: $usa-banner-mobile-close-size + $spacer-1;
+      padding-bottom: 0;
     }
   }
-}
 
-.ds-c-usa-banner__cta-wrapper {
-  display: inline;
+  .ds-c-usa-banner__cta-wrapper {
+    display: block;
+  }
 }
 
 .ds-c-usa-banner__collapse-banner-container {
@@ -59,9 +59,9 @@ $usa-caret-icon-size: 10px;
   display: flex;
   height: $usa-banner-mobile-close-size;
   justify-content: center;
-  position: absolute;
-  right: 0;
-  top: 0;
+  margin-left: auto;
+  margin-right: -$spacer-2;
+  margin-top: -$spacer-1;
   width: $usa-banner-mobile-close-size;
 
   .ds-c-icon {
