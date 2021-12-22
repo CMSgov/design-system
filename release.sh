@@ -9,7 +9,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
 # Parse options
-while [[ $# -gt 1 ]]
+while [[ $# -gt 0 ]]
 do
     key="$1"
 
@@ -21,6 +21,7 @@ do
             ;;
         *)
             # unknown option
+            shift # past argument
             ;;
     esac
 done
