@@ -64,7 +64,7 @@ describe('AccordionItem', function () {
     const { wrapper } = render({ heading: 'Foo' });
     const accordionButton = wrapper.find('button');
 
-    expect(accordionButton.text()).toBe('Foo');
+    expect(accordionButton.text()).toBe('FooAdd');
   });
 
   it('renders an id automatically', () => {
