@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 const menuId = 'hc-c-menu';
 
@@ -141,4 +141,4 @@ MenuButton.propTypes = {
   className: PropTypes.string,
 };
 
-export default translate()(ActionMenu);
+export default withTranslation()(ActionMenu);

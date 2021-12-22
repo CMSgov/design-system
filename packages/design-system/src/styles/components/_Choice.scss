@@ -99,11 +99,7 @@ $ds-c-inset-border-width: $spacer-half;
 
   // Focused choice
   &:focus + label::before {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      box-shadow: 0 0 0 2px $color-background, 0 0 2px 4px $color-focus;
-    }
+    @include focus-styles;
   }
 }
 
@@ -139,9 +135,7 @@ $ds-c-inset-border-width: $spacer-half;
 
   // Focused inverse choice
   &:focus + label::before {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    }
+    @include focus-styles;
   }
 }
 
@@ -168,13 +162,12 @@ $ds-c-inset-border-width: $spacer-half;
   }
 }
 
-@if $ds-include-focus-styles {
-  .ds-c-choice--small:focus + label::before {
-    border-width: 2px;
-  }
-  .ds-c-choice:checked:focus + label::before {
-    border-color: $color-primary-darker;
-  }
+.ds-c-choice--small:focus + label::before {
+  border-width: 2px;
+}
+
+.ds-c-choice:checked:focus + label::before {
+  border-color: $color-primary-darker;
 }
 
 // TODO: rename to .ds-c-choice__checked-child
