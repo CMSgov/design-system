@@ -33,29 +33,30 @@ Our [Design System](https://design.cms.gov/) was built primarily by developers u
 
 [This initial full audit captures how these components appear/behave in WHCM](https://docs.google.com/document/d/1uzApahaUse04UITNFNa-uFY4IQ3Z9mAuzx5xNmniUJ0/edit?usp=sharing).
 
-Outages can be categorized as follows:
+The bulk of the outages can be categorized as follows (number doesn't denote priority):
 
-- Inconsistent disabled states
-  - Should use the mapped WHCM "disabled text color"
-  - Needs `not-allowed` cursor for additional context
-- Form fields lack usable success, error, and hint text/states
-  - Due to the limited color palette...
-    - Field error and success states look indistinguishable from default field state
-    - Hint and error text look identical to each other
-    - It's not entirely obvious an error has happened in a form field without reading the text
-  - Avoid relying on color alone when conveying different messages/states. Error states should have an error icon prepending the error message
-  - Seen in all form fields, but mostly inherited from the `FormLabel` component
-- Icons vary in visibility
-  - Some icons don't render
-  - Icons that do render don't reflect WHCM color palette and are difficult to see
-  - Reliance on icons only to convey meaning is lost, especially for Alerts, Buttons with icons, and displaying active states in navigation
-  - Icons should inherit the appropriate text color as mapped to the WHCM theme
-- Border issues
-  - Thin/no borders make it hard to see Badge, FilterChip, HelpDrawerToggle, Tooltip, and the Modal close button
-  - Content in Accordion and Tabs aren't visually grouped together as they are in non-WHCM
-- Buttons
-  - Use of "ghost style" buttons results in weird padding/margins and/or broken borders
-  - Should buttons and links styled as buttons look the same?
+1. Inconsistent disabled states across the system.
+   1. All disable states should be mapped to WHCM's "disabled text color," which is `GrayText`.
+   2. For additional context, the `not-allowed` cursor should be implemented on disabled states.
+2. Form fields should have consistent and usable states and hint text.
+   1. Default form fields look indistinguishable from success and error states (i.e., when red/green borders on inputs denote error/success).
+      1. It may be worth exploring different border treatments to show that a field has a non-default state.
+   2. Hint text looks identical to error text.
+      1. Error text should be prepended with an error icon.
+   3. Most issues appear to be inherited from the `<FormLabel />` component.
+3. Components that rely on color alone to denote meaning need to be reconsidered.
+   1. `<Alert />`, form fields, `<Badge />`, and `<Button />` to some extent rely only on color, which can make it difficult to know the difference between a "success" and default variety component.
+4. Borders are either non-existant or are too thin in a high contrast setting.
+   1. `<Badge />`, `<FilterChip />`, `<HelpDrawerToggle />`, `<Tooltip />`, and the `<Modal />` close button are the biggest offenders when it comes to border issues.
+   2. Consider making borders thicker, maybe 2-3px?
+   3. Content within `<Accordion />` and `<Tabs />` aren't visually grouped together and borders are missing.
+5. SVGs vary in visibility.
+   1. SVGs include icons and logos.
+   2. SVGs that don't use system colors can be difficult to see.
+   3. Consider using `currentColor` for SVG `fill` to ensure they receive some kind of contrast with the background.
+6. Buttons.
+   1. When ghost style buttons are used within components (i.e., `<Pagination />`), there's an issue with padding/margin, or the button's borders are broken.
+   2. Links styled as buttons look visually different from buttons - is this OK?
 
 ## Proposal
 
@@ -131,15 +132,15 @@ To preserve the original appearance of an element in WHCM, you could write the f
 
 ### Recommendation
 
-**WHCM updates should support IE in addition to modern browsers.**
+#### 1. WHCM updates should support IE in addition to modern browsers.
 
 While our design system no longer technically supports IE ([as it falls below our 2% support threshold](https://analytics.usa.gov/health-human-services/)), a good percentage of those who rely on WHCM continue to use it. And because the effort to support IE is low, I agree with Microsoft's recommendation - just be certain your system color keywords work across both queries and the cascade doesn't impact how those styles render (meaning, **test the changes**). If more targeted styles are needed between IE and Edge, the Frankenquery may need to be split.
 
-**New and refactored components should be checked in WHCM as part of our "definition of done".**
+#### 2. New and refactored components should be checked in WHCM as part of our "definition of done".
 
 We have access to a SauceLabs account and they have [good documentation for how to do local testing](https://docs.saucelabs.com/secure-connections/sauce-connect/quickstart/), so we should use it.
 
-**Collaboration between developer and designer may be needed for some issues, but probably not all.**
+#### 3. Collaboration between developer and designer may be needed for some issues, but probably not all.
 
 There are some issues in WHCM that I would consider low severity and I'd think design could trust development to implement a good solution. I'm thinking border-widths, margin/padding on our buttons, and ensuring System Colors are being implemented correctly (like in the disabled state mentioned above). For these kinds of issues, I can envision a developer making an adequate fix and maybe sharing a screenshot with design if needed.
 
@@ -153,7 +154,7 @@ Depending on the issue, this collaboration might be able to happen asynchronousl
 
 > 🗣 I believe most of our WHCM issues fall under low or moderate severity, with the bulk being how our SVGs (icons and logos) should look on their own and within certain contexts.
 
-**And to note, before any work begins:**
+**Before any work begins:**
 
 It's not the intention of this work to create a separate design for WHCM users. If semantic HTML is used correctly, there should be very little need to overwrite styles. The overall recommendation is to use a light touch when applying fixes. As [Adrian Roselli writes](https://adrianroselli.com/2021/02/whcm-and-system-colors.html#FQs):
 
@@ -175,7 +176,6 @@ I believe the outages identified (with maybe the exception of Buttons) fall into
 
 - Overrides between the media queries outlined may not be a perfect 1:1 match - visual testing will be required
 - Support for `forced-colors` exists in all modern browsers, but the spec is still in draft mode so the spec may change
-- Does our team have the bandwidth to tackle these issues?
 - There isn't a way to automate testing, so visual regressions within WHCM could potentially exist for awhile without detection
 
 ## Questions and Requested Feedback
