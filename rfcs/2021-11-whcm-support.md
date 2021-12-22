@@ -1,6 +1,7 @@
 # RFC: Windows High Contrast Mode (WHCM) Support
 
 **Date**: November 29, 2021
+
 **Status**: `WIP`
 
 ## Background
@@ -60,9 +61,9 @@ Outages can be categorized as follows:
 
 CSS media queries exist to detect if WHCM is enabled and can help developers modify how styles are applied to specific elements. These queries provide both guidance for the browser on how a web element should appear when WHCM is enabled **and** contain any necessary style overrides so they're applied only when WHCM is enabled (meaning high contrast styles won't bleed out into non-high contrast scenarios).
 
-`[-ms-high-contrast](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-ms-high-contrast)` is a Microsoft extension that targets WHCM for IE and older versions of Edge. It supports `none`, `active`, `black-on-white`, and `white-on-black` as values, but it's recommended at this point to only use the `active` value.
+[`-ms-high-contrast`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-ms-high-contrast) is a Microsoft extension that targets WHCM for IE and older versions of Edge. It supports `none`, `active`, `black-on-white`, and `white-on-black` as values, but it's recommended at this point to only use the `active` value.
 
-`[forced-colors](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors)` is a new media query supported by Chrome, Edge, and Firefox and is considered the standard for browsers moving forward. It supports `none` and `active` as values.
+[`forced-colors`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors) is a new media query supported by Chrome, Edge, and Firefox and is considered the standard for browsers moving forward. It supports `none` and `active` as values.
 
 [Windows recommends using both media queries](https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/) (aka ["The Frankenquery"](https://adrianroselli.com/2021/02/whcm-and-system-colors.html#Frankenquery)) to guarantee adequate support for those using WHCM. This would look something like:
 
@@ -105,7 +106,7 @@ For example, because we've implemented custom checkbox and radio buttons, these 
 ```css
 @media (-ms-high-contrast: active), (forced-colors: active) {
   .ds-c-choice:disabled + label {
-    color: GrayText; // This is the CSS System Colors name for disabled text
+    color: GrayText; /* `GrayText` is the CSS System Colors name for disabled text */
   }
   .ds-c-choice:disabled + label:before {
     border-color: GrayText;
@@ -115,15 +116,15 @@ For example, because we've implemented custom checkbox and radio buttons, these 
 
 #### Ex. 3: Making sure an element's style persists, regardless of contrast mode
 
-There are some scenarios where you may want to force an element to appear the same in WHCM as you would in any non-WHCM environment. For our purposes, we may want to use this approach for sections of our documentation site, like [color swatches](https://design.cms.gov/styles/color/), which have meaning but don't appear in WHCM at all.
+There are some scenarios where you may want to force an element to appear the same in WHCM as you would in any non-WHCM environment. For our purposes, we may want to use this approach for sections of our documentation site, like our [color swatches](https://design.cms.gov/styles/color/), which have visual meaning but don't appear in WHCM due to the limited WHCM color palette.
 
 To preserve the original appearance of an element in WHCM, you could write the following:
 
 ```css
 @media (-ms-high-contrast: active), (forced-colors: active) {
   .c-swatch__preview {
-    -ms-high-contrast-adjust: none; // For IE
-    forced-color-adjust: none; // For everything else
+    -ms-high-contrast-adjust: none; /* For IE */
+    forced-color-adjust: none; /* For everything else * /
   }
 }
 ```
@@ -132,9 +133,9 @@ To preserve the original appearance of an element in WHCM, you could write the f
 
 **WHCM updates should support IE in addition to modern browsers.**
 
-While our design system no longer technically supports IE (as [it falls below our 2% support threshold](https://analytics.usa.gov/health-human-services/)), a good percentage of those who rely on WHCM continue to use it. And because the effort to support IE is low, I agree with Microsoft's recommendation - just be certain your system color keywords work across both queries and the cascade doesn't impact how those styles render (meaning, test the changes). If more targeted styles are needed between IE and Edge, this query may need to be split.
+While our design system no longer technically supports IE ([as it falls below our 2% support threshold](https://analytics.usa.gov/health-human-services/)), a good percentage of those who rely on WHCM continue to use it. And because the effort to support IE is low, I agree with Microsoft's recommendation - just be certain your system color keywords work across both queries and the cascade doesn't impact how those styles render (meaning, **test the changes**). If more targeted styles are needed between IE and Edge, the Frankenquery may need to be split.
 
-**New and refactored components should be checked in WHCM as part of our "definition of done"**
+**New and refactored components should be checked in WHCM as part of our "definition of done".**
 
 We have access to a SauceLabs account and they have [good documentation for how to do local testing](https://docs.saucelabs.com/secure-connections/sauce-connect/quickstart/), so we should use it.
 
@@ -144,13 +145,13 @@ There are some issues in WHCM that I would consider low severity and I'd think d
 
 Designer/developer collaboration is probably needed for moderate-to-severe issues.
 
-A moderate concern might be how our error states look on form fields, or how SVGs should look in certain context (to `currentColor` or not to `currentColor`).
+A moderate concern might be how our error states look on form fields, or how SVGs should look in certain context (to `currentColor` or not to `currentColor`?).
 
-A severe concern would be when a component doesn't work correctly or fails to convey its messaging. Think `<Alert />` (they all look the same, without indication of severity) or `<Tabs />`/`<VerticalNav />` (where the active state is difficult to see or not apparent).
+A severe concern is when a component doesn't work correctly or fails to convey its messaging. Think `<Alert />` (they all look the same, without indication of severity) or `<Tabs />`/`<VerticalNav />` (where the active state is difficult to see or not apparent).
 
 Depending on the issue, this collaboration might be able to happen asynchronously or require a meeting. Asynchronous communication could be as simple as sharing screenshots, or even sharing Storybook links so each party can test the component in WHCM themselves.
 
-> 🗣 I believe most of our WHCM issues fall under low or moderate severity, with the bulk being how our SVGs (icons and logos) should look on their own and within certain components.
+> 🗣 I believe most of our WHCM issues fall under low or moderate severity, with the bulk being how our SVGs (icons and logos) should look on their own and within certain contexts.
 
 **And to note, before any work begins:**
 
@@ -162,7 +163,7 @@ And as [MSN says](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced
 
 > [...] its intended usage is to make small tweaks to improve usability or legibility when the default application of forced colors does not work well for a given portion of a page.
 
-I believe the outages identified above (with maybe the exception of Buttons) fall into this definition.
+I believe the outages identified (with maybe the exception of Buttons) fall into this definition.
 
 ### Benefits
 
@@ -173,7 +174,7 @@ I believe the outages identified above (with maybe the exception of Buttons) fal
 ### Risks
 
 - Overrides between the media queries outlined may not be a perfect 1:1 match - visual testing will be required
-- Support for `forced-colors` exists in all modern browsers, but the spec is still in draft mode so there's a risk the spec will change
+- Support for `forced-colors` exists in all modern browsers, but the spec is still in draft mode so the spec may change
 - Does our team have the bandwidth to tackle these issues?
 - There isn't a way to automate testing, so visual regressions within WHCM could potentially exist for awhile without detection
 
