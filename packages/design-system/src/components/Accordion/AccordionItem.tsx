@@ -101,9 +101,9 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
               {heading}
 
               {isItemOpen ? (
-                <RemoveIcon className="ds-c-accordion__button-icon" />
+                <RemoveIcon className="ds-c-accordion__button-icon" title="Close" />
               ) : (
-                <AddIcon className="ds-c-accordion__button-icon" />
+                <AddIcon className="ds-c-accordion__button-icon" title="Open" />
               )}
             </button>
           </HeadingTag>
