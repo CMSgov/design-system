@@ -14,8 +14,8 @@ do
     key="$1"
 
     case $key in
-        --retag)
-            RETAG="$2"
+        --force-publish)
+            FORCE_PUBLISH_PACKAGES="$2"
             shift # past argument
             shift # past value
             ;;
@@ -30,12 +30,8 @@ DATE=$(date "+%Y-%m-%d")
 BRANCH="release-${DATE}"
 git checkout -b $BRANCH
 
-# TODO: Implement a retag option that looks at the bump commit message at a given tag,
-# reads the packages that were released, and compiles a force-publish argument for
-# lerna version like `--force-publish=@cmsgov/design-system-docs,@cmsgov/design-system`
-if [ -n "$RETAG" ]; then
+if [ -n "$FORCE_PUBLISH_PACKAGES" ]; then
   git fetch --tags
-  FORCE_PUBLISH_PACKAGES=$(git log --pretty=%B -n 1 tags/$RETAG | grep -o '@[^@]*' | paste -sd "," -)
   LERNA_VERSION_ARGS="--force-publish=$FORCE_PUBLISH_PACKAGES"
 fi
 
@@ -70,6 +66,10 @@ echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
 echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+echo ""
+echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
+echo ""
+echo "     ${CYAN}\$${NC} yarn publish-release $PACKAGE_VERSION"
 echo ""
 echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
 echo ""
