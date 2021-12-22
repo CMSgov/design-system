@@ -154,15 +154,10 @@ $current-step-color: $color-primary !default;
   line-height: $step-button-height - 12px;
   margin-right: $spacer-2;
 
-  &::before {
-    background-image: url('#{$image-path}/checkmark-green.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    box-sizing: border-box;
-    content: '';
-    display: inline-block;
-    height: 12px;
+  .ds-c-icon {
+    height: 16px;
     margin-right: $spacer-1;
+    vertical-align: inherit;
     width: 16px;
   }
 
