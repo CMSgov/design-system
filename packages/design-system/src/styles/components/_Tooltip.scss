@@ -53,9 +53,7 @@ $tooltip-background-color: $color-background !default;
   @extend %trigger-reset-styles;
   padding: 4px;
   &:focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    }
+    @include focus-styles;
   }
 }
 

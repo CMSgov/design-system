@@ -3,7 +3,7 @@
 $alert-padding: $spacer-2;
 $alert-bar-size: $spacer-1;
 $alert-icon-size: $spacer-5;
-// Using darker primary color for link
+// Using darker primary color for alert links to pass contrast on error color
 $alert-link-color: $color-primary-darker;
 $alert-link-color-hover: $color-primary-darkest;
 $alert-link-color-active: $color-primary-darkest;

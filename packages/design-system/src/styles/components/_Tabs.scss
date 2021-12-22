@@ -107,18 +107,11 @@
     color: $color-primary;
   }
   /* stylelint-disable max-nesting-depth */
-  @if $ds-include-focus-styles {
-    &:focus {
-      @include focus-styles;
-      @include focus-styles-position;
-    }
+  &:focus {
+    @include focus-styles;
+    @include focus-styles-position;
   }
   /* stylelint-enable max-nesting-depth */
-  @else {
-    &:focus {
-      color: $color-primary;
-    }
-  }
 
   &:active {
     color: $color-primary-darker;
