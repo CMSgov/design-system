@@ -53,15 +53,9 @@ and go through the interactive prompt to choose the release version. See notes o
 
 ## 2. Publish to npm
 
-Find out your tag name from the previous step and run
+There is a Jenkins job called `design-system/publish-packages` that will publish the release to NPM. To use this job, you will need the tag name to be published.
 
-```
-yarn publish-release <tag name>
-```
-
-After successfully publishing, there will be three zip files for uploading to the GitHub release in the next step.
-
-**Note:** You must be logged in to an NPM account with publishing rights on the `cmsgov` organization. To request access, create a [Jira ticket on the QPP Tools and Access board](https://jira.cms.gov/browse/QTA-847) with your EUA and NPM username. Reach out on the [`#cms-design-system` channel](https://cmsgov.slack.com/archives/CHH0381RD) for any questions on this process.
+The benefit of using this job is that you have the option to kick off integration tests for some applications that use the design system.
 
 ## 3. Create a release on GitHub
 
@@ -75,6 +69,8 @@ After successfully publishing, there will be three zip files for uploading to th
    # [Design System](https://www.npmjs.com/package/@cmsgov/design-system)
    # [Shared Scripts](https://www.npmjs.com/package/@cmsgov/design-system-scripts)
    # [Documentation site](https://www.npmjs.com/package/@cmsgov/design-system-docs)
+   # [Healthcare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-healthcare-gov)
+   # [Medicare.gov Design System](https://www.npmjs.com/package/@cmsgov/ds-medicare-gov)
    # 🤖 Updated dependencies
    ```
 
