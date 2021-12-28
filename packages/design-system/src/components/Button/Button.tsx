@@ -10,7 +10,7 @@ export type ButtonType = 'button' | 'submit';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-interface CommonButtonProps {
+type CommonButtonProps<T> = {
   /**
    * Label text or HTML
    */
@@ -24,7 +24,7 @@ interface CommonButtonProps {
    * When provided, this will render the passed in component. This is useful when
    * integrating with React Router's `<Link>` or using your own custom component.
    */
-  component?: ButtonComponent;
+  component?: T;
   disabled?: boolean;
   /**
    * Access a reference to the `button` or `a` element
@@ -51,26 +51,23 @@ interface CommonButtonProps {
    * The `'danger'` variation is deprecated and will be removed in a future release.
    */
   variation?: ButtonVariation;
-}
+};
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 
-type LinkButtonProps = CommonButtonProps &
+type LinkButtonProps = CommonButtonProps<'a'> &
   Omit<React.ComponentPropsWithRef<'a'>, OmitProps> & {
     /**
      * When provided the root component will render as an `<a>` element
      * rather than `button`.
      */
     href?: string; // Still optional because it's optional on the anchor tag
-    component?: 'a';
   };
 
-type ButtonButtonProps = CommonButtonProps &
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & {
-    component?: 'button';
-  };
+type ButtonButtonProps = CommonButtonProps<'button'> &
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps>;
 
-export type ButtonProps = CommonButtonProps | LinkButtonProps | ButtonButtonProps;
+export type ButtonProps = CommonButtonProps<ButtonComponent> | LinkButtonProps | ButtonButtonProps;
 
 export default class Button extends React.PureComponent<ButtonProps> {
   static defaultProps = {
