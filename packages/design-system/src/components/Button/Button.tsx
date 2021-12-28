@@ -10,7 +10,7 @@ export type ButtonType = 'button' | 'submit';
  */
 export type ButtonVariation = 'primary' | 'danger' | 'success' | 'transparent';
 
-export interface ButtonProps {
+interface CommonButtonProps {
   /**
    * Label text or HTML
    */
@@ -26,11 +26,6 @@ export interface ButtonProps {
    */
   component?: ButtonComponent;
   disabled?: boolean;
-  /**
-   * When provided the root component will render as an `<a>` element
-   * rather than `button`.
-   */
-  href?: string;
   /**
    * Access a reference to the `button` or `a` element
    */
@@ -60,11 +55,24 @@ export interface ButtonProps {
 
 type OmitProps = 'children' | 'className' | 'onClick' | 'ref' | 'size' | 'type' | 'href';
 
-export default class Button extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> &
-    Omit<React.ComponentPropsWithRef<'a'>, OmitProps> &
-    ButtonProps
-> {
+type LinkButtonProps = CommonButtonProps &
+  Omit<React.ComponentPropsWithRef<'a'>, OmitProps> & {
+    /**
+     * When provided the root component will render as an `<a>` element
+     * rather than `button`.
+     */
+    href?: string; // Still optional because it's optional on the anchor tag
+    component?: 'a';
+  };
+
+type ButtonButtonProps = CommonButtonProps &
+  Omit<React.ComponentPropsWithRef<'button'>, OmitProps> & {
+    component?: 'button';
+  };
+
+export type ButtonProps = CommonButtonProps | LinkButtonProps | ButtonButtonProps;
+
+export default class Button extends React.PureComponent<ButtonProps> {
   static defaultProps = {
     type: 'button',
     component: 'button',
@@ -120,7 +128,7 @@ export default class Button extends React.PureComponent<
       attrs.onClick = this.handleClick;
     }
 
-    if (component !== 'button' || this.props.href) {
+    if (component !== 'button' || (this.props as LinkButtonProps).href) {
       // Assume `component` is not a <button> and remove <button> specific attributes
       attrs.role = 'button';
       delete attrs.disabled;
@@ -133,7 +141,7 @@ export default class Button extends React.PureComponent<
   componentType(): string {
     let component = this.props.component;
 
-    if (component === 'button' && this.props.href) {
+    if (component === 'button' && (this.props as LinkButtonProps).href) {
       // If `href` is provided and a custom component is not, we render `<a>` instead
       component = 'a';
     }
