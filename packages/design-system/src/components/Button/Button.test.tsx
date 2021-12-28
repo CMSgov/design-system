@@ -16,8 +16,6 @@ function renderButton(props: Partial<ButtonProps> = {}) {
 }
 
 describe('Button', () => {
-  const buttonText = 'Foo';
-
   it('renders as button', () => {
     const wrapper = renderButton();
     expect(wrapper.is('button')).toBe(true);
@@ -52,7 +50,7 @@ describe('Button', () => {
     });
     expect(wrapper.is('Link')).toBe(true);
     expect(wrapper.hasClass('ds-c-button')).toBe(true);
-    expect(wrapper.render().text()).toBe(buttonText);
+    expect(wrapper.render().text()).toBe(defaultProps.children);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -60,6 +58,7 @@ describe('Button', () => {
     const wrapper = renderButton({
       href: 'javascript:void(0)',
       disabled: true,
+      children: 'Link button',
     });
     expect(wrapper.prop('disabled')).not.toBe(true);
     expect(wrapper.hasClass('ds-c-button--disabled')).toBe(true);
