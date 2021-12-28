@@ -9,7 +9,14 @@
     "baseUrl": ".",
     // Allows `*.example.tsx` files in `docs` to import directly from the design system source root
     "paths": {
-      "@design-system/*": ["*"]
+      "@design-system": ["packages/design-system/src/components", "packages/ds-medicare-gov/src/components", "packages/ds-healthcare-gov/src/components"]
     }
-  }
+  },
+  "include": [
+    "packages/**/src/**/*",
+  ],
+  // TODO: Remove this once all our TypeScript definitions are generated from source
+  "exclude": [
+    "packages/**/src/types/**/*",
+  ]
 }
