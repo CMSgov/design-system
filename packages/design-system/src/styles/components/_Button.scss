@@ -22,27 +22,25 @@
   text-align: center;
   text-decoration: none;
 
+  /* stylelint-disable selector-max-specificity */
+
   &:hover,
-  &.ds-c-button--hover {
+  &.ds-c-button--hover,
+  &:hover &:focus,
+  &.ds-c-button--hover &.ds-c-button--focus {
     border-color: $color-primary-darker;
     color: $color-primary-darker;
   }
+  /* stylelint-enable selector-max-specificity */
 
   &:focus,
   &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: $color-primary-darker;
-      color: $color-primary-darker;
-    }
+    @include focus-styles;
+    text-decoration: none;
   }
-
-  @if $ds-include-focus-styles {
-    // Removes inner outline on buttons in Firefox.
-    &::-moz-focus-inner {
-      border: 0;
-    }
+  // Removes inner outline on buttons in Firefox.
+  &::-moz-focus-inner {
+    border: 0;
   }
 
   &:active,
@@ -51,13 +49,11 @@
     color: $color-primary-darkest;
   }
 
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-white;
-      box-shadow: none;
-    }
+  // Make sure active overrides focus styles
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-white;
+    box-shadow: none;
   }
 
   &:disabled,
@@ -103,6 +99,7 @@
   &:focus,
   &.ds-c-button--focus {
     border-color: transparent;
+    text-decoration: underline;
   }
 
   &:hover,
@@ -112,13 +109,11 @@
     border-color: transparent;
   }
 
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      color: $color-primary-darkest;
-      text-decoration: underline;
-    }
+  // Make sure active overrides focus styles
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    color: $color-primary-darkest;
+    text-decoration: underline;
   }
 
   &:disabled,
@@ -147,12 +142,8 @@
 
   &:focus,
   &.ds-c-button--focus {
-    @if $ds-include-focus-styles {
-      @include focus-styles;
-    } @else {
-      border-color: rgba($border-color-inverse, 0.8);
-      color: rgba($color-base-inverse, 0.8);
-    }
+    @include focus-styles;
+    background-color: $color-background-inverse;
   }
 
   &:active,
@@ -160,13 +151,11 @@
     border-color: rgba($border-color-inverse, 0.6);
     color: rgba($color-base-inverse, 0.6);
   }
-  @if $ds-include-focus-styles {
-    // Make sure active overrides focus styles
-    &:active:focus,
-    &.ds-c-button--active:focus {
-      background-color: $color-background-inverse;
-      color: rgba($color-base-inverse, 0.6);
-    }
+  // Make sure active overrides focus styles
+  &:active:focus,
+  &.ds-c-button--active:focus {
+    background-color: $color-background-inverse;
+    color: rgba($color-base-inverse, 0.6);
   }
 }
 
@@ -176,11 +165,9 @@
   border-color: transparent;
 
   // Default inverse focus styles are overridden above
-  @if $ds-include-focus-styles {
-    &:focus,
-    &.ds-c-button--focus {
-      @include focus-styles;
-    }
+  &:focus,
+  &.ds-c-button--focus {
+    @include focus-styles;
   }
 }
 
@@ -259,31 +246,22 @@ $button-color-variants: (
     &.ds-c-button--hover {
       background-color: nth($color, 2);
     }
-
-    @if $ds-include-focus-styles {
-      &:focus,
-      &.ds-c-button--focus {
-        @include focus-styles;
-      }
-    } @else {
-      &:focus,
-      &.ds-c-button--focus {
-        background-color: nth($color, 2);
-      }
+    &:focus,
+    &.ds-c-button--focus {
+      @include focus-styles;
+      background-color: nth($color, 1);
     }
 
     &:active,
     &.ds-c-button--active {
       background-color: nth($color, 3);
     }
-    @if $ds-include-focus-styles {
-      // Make sure active overrides focus styles
-      &:active:focus,
-      &.ds-c-button--active:focus {
-        background-color: nth($color, 3);
-        box-shadow: none;
-        color: $color-white;
-      }
+    // Make sure active overrides focus styles
+    &:active:focus,
+    &.ds-c-button--active:focus {
+      background-color: nth($color, 3);
+      box-shadow: none;
+      color: $color-white;
     }
 
     &:disabled,

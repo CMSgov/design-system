@@ -23,10 +23,8 @@ $autocomplete-list-border: $autocomplete-list-border-width $autocomplete-list-bo
       display: block;
     }
   }
-  @if $ds-include-focus-styles {
-    input:focus {
-      @include focus-styles-position;
-    }
+  input:focus {
+    @include focus-styles-position;
   }
 }
 
