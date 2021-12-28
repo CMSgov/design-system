@@ -9,7 +9,12 @@ export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
 export type TextInputErrorPlacement = 'top' | 'bottom';
 
-export interface CommonTextInputProps {
+export type OmitProps = 'size' | 'ref';
+
+export type CommonTextInputProps<MultilineValue extends boolean | undefined> = Omit<
+  React.ComponentPropsWithoutRef<MultilineValue extends true ? 'textarea' : 'input'>,
+  OmitProps
+> & {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
@@ -51,14 +56,18 @@ export interface CommonTextInputProps {
   /**
    * Whether or not the text field is a multiline text field
    */
-  multiline?: boolean;
+  multiline?: MultilineValue;
   name?: string;
   /**
    * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
-  onBlur?: (...args: any[]) => any;
-  onChange?: (...args: any[]) => any;
+  onBlur?: (
+    e: React.FocusEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
+  ) => any;
+  onChange?: (
+    event: React.ChangeEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
+  ) => any;
   /**
    * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
    */
@@ -82,19 +91,12 @@ export interface CommonTextInputProps {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: TextInputValue;
-}
+};
 
-export type OmitProps = 'size' | 'ref' | 'onCopy';
+export type MultilineTextInputProps = CommonTextInputProps<true>;
+export type SingleLineTextInputProps = CommonTextInputProps<false | undefined>;
 
-export type MultilineTextInputProps = CommonTextInputProps & Omit<React.ComponentPropsWithoutRef<'textarea'>, OmitProps> & {
-  multiline: true;
-}
-
-export type SingleLineTextInputProps = CommonTextInputProps & Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> & {
-  multiline?: false;
-}
-
-export type TextInputProps = MultilineTextInputProps | SingleLineTextInputProps
+export type TextInputProps = MultilineTextInputProps | SingleLineTextInputProps;
 
 /**
  * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
