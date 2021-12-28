@@ -2,7 +2,9 @@ import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-const defaultProps: TextInputProps<undefined> = {
+const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
+  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
+  TextInputProps = {
   name: 'spec-field',
   setRef: jest.fn(),
   id: '1',
@@ -10,7 +12,7 @@ const defaultProps: TextInputProps<undefined> = {
   errorPlacement: 'top',
 };
 
-function render<T extends boolean | undefined>(customProps: Partial<TextInputProps<T>> = {}, deep = false) {
+function render(customProps = {}, deep = false) {
   const props = { ...defaultProps, ...customProps };
   const component = <TextInput {...props} />;
 
@@ -117,7 +119,7 @@ describe('TextInput', function () {
   });
 
   it('adds min/max input attributes', () => {
-    const data = render<false>({
+    const data = render({
       max: 10,
       min: 1,
     });
@@ -136,7 +138,6 @@ describe('TextInput', function () {
 
   it('adds undocumented prop to input field', () => {
     const data = render({
-      // @ts-ignore: Undocumented prop
       'data-foo': 'bar',
     });
 
