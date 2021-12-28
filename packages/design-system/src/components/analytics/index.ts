@@ -1,1 +1,6 @@
-export { default as sendAnalytics, sendLinkEvent } from './SendAnalytics';
+export {
+  default as sendAnalytics,
+  sendLinkEvent,
+  UtagContainer,
+  UtagObject,
+} from './SendAnalytics';
