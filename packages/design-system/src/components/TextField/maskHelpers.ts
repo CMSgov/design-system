@@ -38,7 +38,7 @@ function deliminateRegexGroups(value: string, rx: RegExp): string {
  * @param {String} mask
  * @returns {Boolean}
  */
-function isValueMaskable(value: string, mask: string): boolean {
+function isValueMaskable(value: string, mask?: string): boolean {
   if (value && typeof value === 'string') {
     const hasDigits = value.match(/\d/);
     const hasDigitsAsterisks = value.match(/[\d*]/g);
@@ -91,7 +91,7 @@ export function toCurrency(value: string): string {
  * @param {String} value
  * @returns {String}
  */
-export function maskValue(value = '', mask: string): string {
+export function maskValue(value = '', mask?: string): string {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       value = toCurrency(value);
@@ -110,7 +110,7 @@ export function maskValue(value = '', mask: string): string {
  * @param {String} mask
  * @returns {String}
  */
-export function unmaskValue(value: string, mask: string): string {
+export function unmaskValue(value?: string, mask?: string): string {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Preserve only digits, decimal point, or negative symbol
