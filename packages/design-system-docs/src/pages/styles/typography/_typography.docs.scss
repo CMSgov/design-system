@@ -48,6 +48,7 @@ Markup: list.example.html
 - Use punctuation appropriate to the text. Do not leave sentences without periods.
 
 ### Accessibility
+
 - When a list has a heading, consider adding an `id` attribute to the heading element, and an `aria-labelledby` attribute to the list element. Screen readers will then announce the heading text when users navigate to the list.
 
 ### Learn more
