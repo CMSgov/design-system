@@ -9,7 +9,9 @@ export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
 export type TextInputErrorPlacement = 'top' | 'bottom';
 
-export interface CommonTextInputProps {
+export type OmitProps = 'size' | 'ref';
+
+export type TextInputProps<MultilineValue extends boolean | undefined> = Omit<React.ComponentPropsWithoutRef<MultilineValue extends true ? 'textarea' : 'input'>, OmitProps> & {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
@@ -51,14 +53,14 @@ export interface CommonTextInputProps {
   /**
    * Whether or not the text field is a multiline text field
    */
-  multiline?: boolean;
+  multiline?: MultilineValue;
   name?: string;
   /**
    * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
-  onBlur?: (...args: any[]) => any;
-  onChange?: (...args: any[]) => any;
+  onBlur?: (e: React.FocusEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>) => any;
+  onChange?: (event: React.ChangeEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>) => any;
   /**
    * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
    */
@@ -84,24 +86,12 @@ export interface CommonTextInputProps {
   value?: TextInputValue;
 }
 
-export type OmitProps = 'size' | 'ref' | 'onCopy';
-
-export type MultilineTextInputProps = CommonTextInputProps & Omit<React.ComponentPropsWithoutRef<'textarea'>, OmitProps> & {
-  multiline: true;
-}
-
-export type SingleLineTextInputProps = CommonTextInputProps & Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> & {
-  multiline?: false;
-}
-
-export type TextInputProps = MultilineTextInputProps | SingleLineTextInputProps
-
 /**
  * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
  * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
  */
-const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
+const TextInput = <MultilineValue extends boolean | undefined>(props: TextInputProps<MultilineValue>) => {
   const {
     ariaLabel,
     errorId,
@@ -117,7 +107,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     setRef,
     type,
     pattern,
-    onCopyCapture,
     ...inputProps
   } = props;
 
@@ -139,7 +128,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
     inputType = undefined;
   }
 
-  const ComponentType = multiline ? 'textarea' : 'input';
+  const ComponentType: MultilineValue extends true ? 'textarea' : 'input' = (multiline ? 'textarea' : 'input') as any;
 
   /* eslint-disable react/prop-types */
   const ariaAttributes = {
@@ -164,9 +153,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => 
       inputMode={numeric ? 'numeric' : undefined}
       pattern={numeric && !pattern ? '[0-9]*' : pattern}
       type={inputType}
-      // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
-      // is failing to infer which one is being used here based on ComponentType.
-      onCopyCapture={onCopyCapture}
       {...inputProps}
     />
   );
