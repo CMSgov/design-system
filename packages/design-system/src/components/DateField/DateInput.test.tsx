@@ -1,10 +1,10 @@
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
 /* eslint-disable import/first */
 import { mount, shallow } from 'enzyme';
-import DateInput from './DateInput';
+import DateInput, { DateInputProps } from './DateInput';
 import React from 'react';
 
-const defaultProps = {
+const defaultProps: DateInputProps = {
   labelId: '1',
   dayName: 'day',
   dayLabel: 'Day',
@@ -14,7 +14,7 @@ const defaultProps = {
   yearLabel: 'year',
 };
 
-function render(customProps = {}, deep = false) {
+function render(customProps: Partial<DateInputProps> = {}, deep = false) {
   const props = { ...defaultProps, ...customProps };
   const component = <DateInput {...props} />;
 
@@ -45,37 +45,36 @@ describe('DateInput', () => {
     expect(render({ yearInvalid: true }).wrapper).toMatchSnapshot();
   });
 
-  it('has custom yearMax and yearMin', () => {
-    expect(render({ yearMax: 2000, yearMin: '1990' }).wrapper).toMatchSnapshot();
-  });
-
   it('is disabled', () => {
     expect(render({ disabled: true }).wrapper).toMatchSnapshot();
   });
 
   it('returns reference to input fields', () => {
-    const refs = {};
+    let dayRef;
+    let monthRef;
+    let yearRef;
+
     const data = render(
       {
         dayDefaultValue: '1',
         dayFieldRef: (el) => {
-          refs.day = el;
+          dayRef = el;
         },
         monthDefaultValue: '22',
         monthFieldRef: (el) => {
-          refs.month = el;
+          monthRef = el;
         },
         yearDefaultValue: '3333',
         yearFieldRef: (el) => {
-          refs.year = el;
+          yearRef = el;
         },
       },
       true
     );
 
-    expect(refs.day.value).toBe(data.props.dayDefaultValue);
-    expect(refs.month.value).toBe(data.props.monthDefaultValue);
-    expect(refs.year.value).toBe(data.props.yearDefaultValue);
+    expect(dayRef.value).toBe(data.props.dayDefaultValue);
+    expect(monthRef.value).toBe(data.props.monthDefaultValue);
+    expect(yearRef.value).toBe(data.props.yearDefaultValue);
   });
 
   describe('event handlers', () => {
