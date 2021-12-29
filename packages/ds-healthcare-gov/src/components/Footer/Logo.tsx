@@ -1,6 +1,12 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
+
+interface LogoProps {
+  children: React.ReactNode;
+  className?: string;
+  href: string;
+  width?: string;
+}
 
 /**
  * We use a Babel loader to turn SVG imports into strings.
@@ -22,8 +28,9 @@ import classnames from 'classnames';
  * 4. <title id="TITLE_ID"> Description of the image link here </title>
  *
  */
-function Logo(props) {
-  const style = {};
+
+function Logo(props: LogoProps) {
+  const style: any = {};
 
   if (props.width) {
     style.width = props.width;
@@ -39,12 +46,5 @@ function Logo(props) {
     </a>
   );
 }
-
-Logo.propTypes = {
-  children: PropTypes.element.isRequired,
-  className: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  width: PropTypes.string,
-};
 
 export default Logo;
