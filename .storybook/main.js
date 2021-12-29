@@ -1,38 +1,27 @@
-// change which directories are used for stories based on environment variable
-const getPathForStories = () => {
-  let projectDirectory;
+/**
+ * Gets the directories used for this project based on STORYBOOK_DS environment variable
+ */
+const getSrcDirectories = () => {
+  let projectDirs;
   switch (process.env.STORYBOOK_DS) {
     case 'mgov':
-      projectDirectory = '@(ds-medicare-gov|design-system)';
+      projectDirs = ['../packages/design-system/src', '../packages/ds-medicare-gov/src'];
       break;
     case 'hcgov':
-      projectDirectory = '@(ds-healthcare-gov|design-system)';
+      projectDirs = ['../packages/design-system/src', '../packages/ds-healthcare-gov/src'];
       break;
     default:
-      projectDirectory = 'design-system';
+      projectDirs = ['../packages/design-system/src'];
   }
-  return [
-    `../packages/${projectDirectory}/**/*.stories.mdx`,
-    `../packages/${projectDirectory}/**/*.stories.@(js|jsx|ts|tsx)`,
-  ];
+  return projectDirs;
 };
 
-const getStaticDirs = () => {
-  const staticDirs = ['../packages/design-system/src'];
-  switch (process.env.STORYBOOK_DS) {
-    case 'mgov':
-      staticDirs.push('../packages/ds-medicare-gov/src');
-      break;
-    case 'hcgov':
-      staticDirs.push('../packages/ds-healthcare-gov/src');
-      break;
-  }
-  return staticDirs;
-};
+const getPathsForStories = () =>
+  getSrcDirectories().map((dir) => `${dir}/**/*.stories.@(js|jsx|ts|tsx|mdx)`);
 
 module.exports = {
-  stories: getPathForStories(),
-  staticDirs: getStaticDirs(),
+  stories: getPathsForStories(),
+  staticDirs: getSrcDirectories(),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
