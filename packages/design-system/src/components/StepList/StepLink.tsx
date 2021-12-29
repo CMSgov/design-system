@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface StepLinkProps {
+export interface StepLinkProps {
   /**
    * Label text or HTML.
    */
