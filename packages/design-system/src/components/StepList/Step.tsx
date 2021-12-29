@@ -17,14 +17,14 @@ export interface StepObject {
   completed?: boolean;
   started?: boolean;
   isNextStep?: boolean;
-  onClick: StepLinkProps["onClick"];
+  onClick: StepLinkProps['onClick'];
   component?: React.ComponentType | keyof JSX.IntrinsicElements;
   steps: StepObject[];
 }
 
 export interface StepProps {
   step: StepObject;
-  onStepLinkClick: StepLinkProps["onClick"];
+  onStepLinkClick: StepLinkProps['onClick'];
   showSubSubSteps?: boolean;
   completedText: string;
   editText: string;
@@ -54,7 +54,7 @@ export const Step = ({ step, ...props }: StepProps) => {
     const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
     return { 'aria-label': label };
   };
-  const Heading: `h${HeadingLevel}` = `h${step.headingLevel || '2'}` as const;
+  const Heading = `h${step.headingLevel || '2'}` as const;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
