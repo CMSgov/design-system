@@ -30,25 +30,6 @@ export default {
       "Month Picker can receive optional help text, giving the user additional information of what's required.",
     errorMessage: 'Please meet form requirements.',
   },
-  parameters: {
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#fff',
-        },
-        {
-          name: 'Hcgov dark',
-          value: '#112e51',
-        },
-        {
-          name: 'Mgov dark',
-          value: '#146a5d',
-        },
-      ],
-    },
-  },
 };
 
 const Template = ({ data, ...args }) => <MonthPicker {...args} />;
