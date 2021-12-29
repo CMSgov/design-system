@@ -81,17 +81,16 @@ export interface TooltipProps {
   zIndex?: number;
 }
 
-export type OmitProps = 'title';
-
 export const Tooltip = (props: TooltipProps): React.ReactNode => {
+  let popper;
   let triggerElement = null;
   let tooltipElement = null;
 
   const id = props.id || uniqueId('trigger_');
-  const setTriggerElement = (elem: React.ReactNode) => {
+  const setTriggerElement = (elem) => {
     triggerElement = elem;
   };
-  const setTooltipElement = (elem: React.ReactNode) => {
+  const setTooltipElement = (elem) => {
     tooltipElement = elem;
   };
 
@@ -99,34 +98,11 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const popper = createPopper(triggerElement, tooltipElement, {
-    placement: props.placement,
-    modifiers: [
-      {
-        name: 'offset',
-        options: { offset: props.offset },
-      },
-    ],
-  });
-
-  const setTooltipActive = (act: boolean): void => {
-    if (act !== active) {
-      useEffect(() => {
-        popper.forceUpdate();
-        if (active) {
-          props.onOpen && props.onOpen();
-        } else {
-          props.onClose && props.onClose();
-        }
-      }, [active]);
-    }
-  };
-
   const handleEscapeKey = (event: KeyboardEvent): void => {
     // Closes tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (active && event.keyCode === ESCAPE_KEY) {
-      setTooltipActive(false);
+      setActive(false);
     }
   };
 
@@ -136,28 +112,10 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       const clickedTrigger = triggerElement && triggerElement.contains(event.target);
       const clickedTooltip = tooltipElement && tooltipElement.contains(event.target);
       if (!clickedTooltip && !clickedTrigger) {
-        setTooltipActive(false);
+        setActive(false);
       }
     }
   };
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside, false);
-    document.addEventListener('keydown', handleEscapeKey, false);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-      popper.destroy();
-    };
-  }, []);
-
-  useEffect(() => {
-    popper.setOptions((options) => ({
-      ...options,
-      placement: props.placement,
-      modifiers: [{ name: 'offset', options: { offset: props.offset } }],
-    }));
-  });
 
   const handleBlur = (): void => {
     // Hide tooltips when blurring away from the trigger or tooltip body
@@ -168,7 +126,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       const focusedInsideTooltip =
         tooltipElement && tooltipElement.contains(document.activeElement);
       if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
-        setTooltipActive(false);
+        setActive(false);
       }
     }, 10);
   };
@@ -178,8 +136,42 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
     // https://stackoverflow.com/a/65055198
     setIsMobile(true);
-    setTooltipActive(!active);
+    setActive(!active);
   };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside, false);
+    document.addEventListener('keydown', handleEscapeKey, false);
+
+    popper = createPopper(triggerElement, tooltipElement, {
+      placement: props.placement,
+      modifiers: [
+        {
+          name: 'offset',
+          options: { offset: props.offset },
+        },
+      ],
+    });
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+      popper.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (active) {
+      props.onOpen && props.onOpen();
+    } else {
+      props.onClose && props.onClose();
+    }
+  }, [active]);
+
+  useEffect(() => {
+    popper.setOptions(props);
+    popper.forceUpdate();
+  }, [popper]);
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
@@ -217,7 +209,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
           onTouchStart: () => handleTouch(),
           onClick: () => {
             if (!isMobile) {
-              setTooltipActive(!active);
+              setActive(!active);
             }
           },
         }
@@ -225,10 +217,10 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
           onTouchStart: () => handleTouch(),
           onClick: () => {
             if (!isMobile) {
-              setTooltipActive(!active);
+              setActive(!active);
             }
           },
-          onFocus: () => setTooltipActive(true),
+          onFocus: () => setActive(true),
           onBlur: () => handleBlur(),
         };
 
@@ -268,11 +260,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       zIndex: -999, // ensures interactive border doesnt cover tooltip content
     };
 
-    const eventHandlers = dialog
-      ? {}
-      : {
-          onBlur: () => handleBlur(),
-        };
+    const eventHandlers = dialog ? {} : { onBlur: () => handleBlur() };
 
     const tooltipContent = () => (
       <div
@@ -295,6 +283,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
         )}
       </div>
     );
+
     return (
       <CSSTransition in={active} classNames="ds-c-tooltip" timeout={transitionDuration}>
         {dialog ? (
@@ -320,22 +309,22 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     : {
         onMouseEnter: () => {
           if (!isMobile) {
-            setIsMobile(true);
-            setTooltipActive(true);
+            setIsHover(true);
+            setActive(true);
           }
         },
         onMouseLeave: () => {
           if (!isMobile) {
-            setIsMobile(false);
-            setTooltipActive(false);
+            setIsHover(false);
+            setActive(false);
           }
         },
       };
 
   return (
     <div className="ds-c-tooltip__container" {...eventHandlers}>
-      {renderTrigger}
-      {renderContent}
+      {renderTrigger(props)}
+      {renderContent(props)}
     </div>
   );
 };
@@ -347,7 +336,7 @@ Tooltip.defaultProps = {
   offset: [0, 5],
   placement: 'top',
   transitionDuration: 250, // Equivalent to $animation-speed-1
-  zIndex: '9999',
+  zIndex: 9999,
 };
 
 export default Tooltip;
