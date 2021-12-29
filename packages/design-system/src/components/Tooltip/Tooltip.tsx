@@ -1,0 +1,353 @@
+/* eslint-disable react/no-multi-comp */
+
+// Polyfills required for IE11 compatibility
+// Features used by app or its dependencies (i.e. @popperjs/core in Tooltip)
+import 'core-js/stable/object/assign';
+import 'core-js/stable/array/find';
+import 'core-js/features/promise';
+// TODO: Update react-transition-group once we update react peer dep
+import CSSTransition from 'react-transition-group/CSSTransition';
+import FocusTrap from 'focus-trap-react';
+import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
+import { createPopper } from '@popperjs/core';
+import uniqueId from 'lodash/uniqueId';
+
+export interface TooltipProps {
+  /**
+   * Classes applied to the tooltip trigger when the tooltip is active
+   */
+  activeClassName?: string;
+  /**
+   * Helpful description of the tooltip for screenreaders
+   */
+  ariaLabel?: string;
+  /**
+   * Tooltip trigger content
+   */
+  children: React.ReactNode;
+  /**
+   * When provided, will render the passed in component for the tooltip trigger. Typically will be a `button`, `a`, or rarely an `input` element.
+   */
+  component?: React.ReactElement<any> | any | ((...args: any[]) => any);
+  /**
+   * Classes applied to the tooltip trigger
+   */
+  className?: string;
+  /**
+   * Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)
+   */
+  dialog?: boolean;
+  /**
+   * `id` applied to tooltip body container element. If not provided, a unique id will be automatically generated and used.
+   */
+  id?: string;
+  /**
+   * Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.
+   */
+  interactiveBorder?: number;
+  inversed?: boolean;
+  /**
+   * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
+   */
+  offset?: [number, number];
+  /**
+   * Called when the tooltip is hidden
+   */
+  onClose?: () => void;
+  /**
+   * Called when the tooltip is shown
+   */
+  onOpen?: () => void;
+  /**
+   * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
+   */
+  placement?: 'auto' | 'bottom' | 'top' | 'right' | 'left';
+  /**
+   * `maxWidth` styling applied to the tooltip body
+   */
+  maxWidth?: string;
+  /**
+   * Content inside the tooltip body or popover. If contains interactive elements use the `dialog` prop.
+   */
+  title: React.ReactNode;
+  /**
+   * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
+   */
+  transitionDuration?: number;
+  /**
+   * `zIndex` styling applied to the tooltip body
+   */
+  zIndex?: number;
+}
+
+export type OmitProps = 'title';
+
+export const Tooltip = (props: TooltipProps): React.ReactNode => {
+  let triggerElement = null;
+  let tooltipElement = null;
+
+  const id = props.id || uniqueId('trigger_');
+  const setTriggerElement = (elem: React.ReactNode) => {
+    triggerElement = elem;
+  };
+  const setTooltipElement = (elem: React.ReactNode) => {
+    tooltipElement = elem;
+  };
+
+  const [active, setActive] = useState<boolean>(false);
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const popper = createPopper(triggerElement, tooltipElement, {
+    placement: props.placement,
+    modifiers: [
+      {
+        name: 'offset',
+        options: { offset: props.offset },
+      },
+    ],
+  });
+
+  const setTooltipActive = (act: boolean): void => {
+    if (act !== active) {
+      useEffect(() => {
+        popper.forceUpdate();
+        if (active) {
+          props.onOpen && props.onOpen();
+        } else {
+          props.onClose && props.onClose();
+        }
+      }, [active]);
+    }
+  };
+
+  const handleEscapeKey = (event: KeyboardEvent): void => {
+    // Closes tooltips when ESC key is pressed
+    const ESCAPE_KEY = 27;
+    if (active && event.keyCode === ESCAPE_KEY) {
+      setTooltipActive(false);
+    }
+  };
+
+  const handleClickOutside = (event: MouseEvent): void => {
+    // Closes dialog and mobile tooltips when mouse clicks outside of tooltip element
+    if (active && (props.dialog || isMobile)) {
+      const clickedTrigger = triggerElement && triggerElement.contains(event.target);
+      const clickedTooltip = tooltipElement && tooltipElement.contains(event.target);
+      if (!clickedTooltip && !clickedTrigger) {
+        setTooltipActive(false);
+      }
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside, false);
+    document.addEventListener('keydown', handleEscapeKey, false);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+      popper.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    popper.setOptions((options) => ({
+      ...options,
+      placement: props.placement,
+      modifiers: [{ name: 'offset', options: { offset: props.offset } }],
+    }));
+  });
+
+  const handleBlur = (): void => {
+    // Hide tooltips when blurring away from the trigger or tooltip body
+    // and when the mouse is not hovering over the tooltip
+    setTimeout(() => {
+      const focusedInsideTrigger =
+        triggerElement && triggerElement.contains(document.activeElement);
+      const focusedInsideTooltip =
+        tooltipElement && tooltipElement.contains(document.activeElement);
+      if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
+        setTooltipActive(false);
+      }
+    }, 10);
+  };
+
+  const handleTouch = (): void => {
+    // On mobile, touch -> mouseenter -> click events can all be fired simultaneously
+    // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
+    // https://stackoverflow.com/a/65055198
+    setIsMobile(true);
+    setTooltipActive(!active);
+  };
+
+  const renderTrigger = (props: TooltipProps): React.ReactElement => {
+    const {
+      activeClassName,
+      ariaLabel,
+      children,
+      className,
+      component,
+      dialog,
+      offset,
+      id,
+      onClose,
+      onOpen,
+      inversed,
+      interactiveBorder,
+      placement,
+      maxWidth,
+      title,
+      transitionDuration,
+      zIndex,
+      ...others
+    } = props;
+
+    const TriggerComponent = component;
+    const triggerClasses = classNames('ds-base', 'ds-c-tooltip__trigger', className, {
+      [activeClassName]: active,
+      'ds-c-tooltip__trigger--inverse': inversed,
+    });
+    const linkTriggerOverrides = {
+      role: TriggerComponent === 'a' ? 'button' : undefined,
+      tabIndex: TriggerComponent === 'a' ? 0 : undefined,
+    };
+    const eventHandlers = dialog
+      ? {
+          onTouchStart: () => handleTouch(),
+          onClick: () => {
+            if (!isMobile) {
+              setTooltipActive(!active);
+            }
+          },
+        }
+      : {
+          onTouchStart: () => handleTouch(),
+          onClick: () => {
+            if (!isMobile) {
+              setTooltipActive(!active);
+            }
+          },
+          onFocus: () => setTooltipActive(true),
+          onBlur: () => handleBlur(),
+        };
+
+    return (
+      <TriggerComponent
+        type={TriggerComponent === 'button' ? 'button' : undefined}
+        aria-label={ariaLabel || undefined}
+        aria-describedby={dialog ? undefined : id}
+        className={triggerClasses}
+        ref={setTriggerElement}
+        {...others}
+        {...linkTriggerOverrides}
+        {...eventHandlers}
+      >
+        {children}
+      </TriggerComponent>
+    );
+  };
+
+  const renderContent = (props: TooltipProps): React.ReactElement => {
+    const {
+      dialog,
+      inversed,
+      interactiveBorder,
+      placement,
+      maxWidth,
+      title,
+      transitionDuration,
+      zIndex,
+    } = props;
+
+    const tooltipStyle = { maxWidth, zIndex };
+    const interactiveBorderStyle: React.CSSProperties = {
+      left: `-${interactiveBorder}px`,
+      top: `-${interactiveBorder}px`,
+      border: `${interactiveBorder}px solid transparent`,
+      zIndex: -999, // ensures interactive border doesnt cover tooltip content
+    };
+
+    const eventHandlers = dialog
+      ? {}
+      : {
+          onBlur: () => handleBlur(),
+        };
+
+    const tooltipContent = () => (
+      <div
+        id={id}
+        tabIndex={dialog ? -1 : null}
+        ref={setTooltipElement}
+        className={classNames('ds-c-tooltip', {
+          'ds-c-tooltip--inverse': inversed,
+        })}
+        style={tooltipStyle}
+        data-placement={placement}
+        aria-hidden={!active}
+        role={dialog ? 'dialog' : 'tooltip'}
+        {...eventHandlers}
+      >
+        <span className="ds-c-tooltip__arrow" data-popper-arrow />
+        <div className="ds-c-tooltip__content ds-base">{title}</div>
+        {!dialog && (
+          <span className="ds-c-tooltip__interactive-border" style={interactiveBorderStyle} />
+        )}
+      </div>
+    );
+    return (
+      <CSSTransition in={active} classNames="ds-c-tooltip" timeout={transitionDuration}>
+        {dialog ? (
+          <FocusTrap
+            active={active}
+            focusTrapOptions={{
+              // Set initialFocus to the tooltip container element in case it contains no focusable elements
+              initialFocus: `#${id}`,
+              clickOutsideDeactivates: true,
+            }}
+          >
+            {tooltipContent()}
+          </FocusTrap>
+        ) : (
+          tooltipContent()
+        )}
+      </CSSTransition>
+    );
+  };
+
+  const eventHandlers = props.dialog
+    ? {}
+    : {
+        onMouseEnter: () => {
+          if (!isMobile) {
+            setIsMobile(true);
+            setTooltipActive(true);
+          }
+        },
+        onMouseLeave: () => {
+          if (!isMobile) {
+            setIsMobile(false);
+            setTooltipActive(false);
+          }
+        },
+      };
+
+  return (
+    <div className="ds-c-tooltip__container" {...eventHandlers}>
+      {renderTrigger}
+      {renderContent}
+    </div>
+  );
+};
+
+Tooltip.defaultProps = {
+  component: 'button',
+  interactiveBorder: 15,
+  maxWidth: '300px',
+  offset: [0, 5],
+  placement: 'top',
+  transitionDuration: 250, // Equivalent to $animation-speed-1
+  zIndex: '9999',
+};
+
+export default Tooltip;
