@@ -17,8 +17,22 @@ const getPathForStories = () => {
   ];
 };
 
+const getStaticDirs = () => {
+  const staticDirs = ['../packages/design-system/src'];
+  switch (process.env.STORYBOOK_DS) {
+    case 'mgov':
+      staticDirs.push('../packages/ds-medicare-gov/src');
+      break;
+    case 'hcgov':
+      staticDirs.push('../packages/ds-healthcare-gov/src');
+      break;
+  }
+  return staticDirs;
+};
+
 module.exports = {
   stories: getPathForStories(),
+  staticDirs: getStaticDirs(),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
