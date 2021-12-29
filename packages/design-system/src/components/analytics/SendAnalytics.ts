@@ -6,8 +6,12 @@
  * - coverage-tools-frontend/src/helpers/objectUtilities.ts
  */
 
-interface UtagObject {
+export interface UtagObject {
   link: (params: AnalyticsEvent) => void;
+}
+
+export interface UtagContainer {
+  utag?: UtagObject;
 }
 
 export type EventType = 'link';
@@ -44,7 +48,7 @@ export function sendAnalytics(
   // feature of TypeScript is well intentioned (because if you're using globals, you want to make sure every
   // module agrees on what they are), but in reality this type definition could vary in trivial ways but
   // break a build.
-  const utag: UtagObject | undefined = (window as any).utag;
+  const utag = ((window as any) as UtagContainer).utag;
 
   if (utag && utag[eventType]) {
     try {

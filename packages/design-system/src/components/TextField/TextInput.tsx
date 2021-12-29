@@ -9,7 +9,12 @@ export type TextInputSize = 'small' | 'medium';
 export type TextInputValue = string | number;
 export type TextInputErrorPlacement = 'top' | 'bottom';
 
-export interface TextInputProps {
+export type OmitProps = 'size' | 'ref';
+
+export type CommonTextInputProps<MultilineValue extends boolean | undefined> = Omit<
+  React.ComponentPropsWithoutRef<MultilineValue extends true ? 'textarea' : 'input'>,
+  OmitProps
+> & {
   /**
    * Apply an `aria-label` to the text field to provide additional
    * context to assistive devices.
@@ -51,14 +56,18 @@ export interface TextInputProps {
   /**
    * Whether or not the text field is a multiline text field
    */
-  multiline?: boolean;
+  multiline?: MultilineValue;
   name?: string;
   /**
    * Sets `inputMode`, `type`, and `pattern` to improve accessiblity and consistency for number fields. Use this prop instead of `type="number"`, see [here](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/) for more information.
    */
   numeric?: boolean;
-  onBlur?: (...args: any[]) => any;
-  onChange?: (...args: any[]) => any;
+  onBlur?: (
+    e: React.FocusEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
+  ) => any;
+  onChange?: (
+    event: React.ChangeEvent<MultilineValue extends true ? HTMLTextAreaElement : HTMLInputElement>
+  ) => any;
   /**
    * @hide-prop HTML `input` [pattern](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefpattern).
    */
@@ -82,20 +91,19 @@ export interface TextInputProps {
    * for a controlled component; otherwise, set `defaultValue`.
    */
   value?: TextInputValue;
-}
+};
 
-type OmitProps = 'size' | 'ref';
+export type MultilineTextInputProps = CommonTextInputProps<true>;
+export type SingleLineTextInputProps = CommonTextInputProps<false | undefined>;
+
+export type TextInputProps = MultilineTextInputProps | SingleLineTextInputProps;
 
 /**
  * <TextInput> is an internal component used by <TextField>, which wraps it and handles shared form UI like labels, error messages, etc
  * <TextInput> is also exported for advanced design system use cases, where the internal component can be leveraged to build custom form components
  * As an internal component, it's subject to more breaking changes. Exercise caution using <TextInput> outside of those special cases
  */
-const TextInput: FunctionComponent<
-  Omit<React.ComponentPropsWithoutRef<'textarea'>, OmitProps> &
-    Omit<React.ComponentPropsWithoutRef<'input'>, OmitProps> &
-    TextInputProps
-> = (props: TextInputProps) => {
+const TextInput: FunctionComponent<TextInputProps> = (props: TextInputProps) => {
   const {
     ariaLabel,
     errorId,
@@ -111,6 +119,7 @@ const TextInput: FunctionComponent<
     setRef,
     type,
     pattern,
+    onCopyCapture,
     ...inputProps
   } = props;
 
@@ -157,6 +166,9 @@ const TextInput: FunctionComponent<
       inputMode={numeric ? 'numeric' : undefined}
       pattern={numeric && !pattern ? '[0-9]*' : pattern}
       type={inputType}
+      // @ts-ignore: The ClipboardEventHandler for textareas and inputs are incompatible, and TS
+      // is failing to infer which one is being used here based on ComponentType.
+      onCopyCapture={onCopyCapture}
       {...inputProps}
     />
   );

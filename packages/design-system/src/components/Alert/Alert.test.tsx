@@ -1,5 +1,6 @@
 import Alert, { AlertProps } from './Alert';
 import React from 'react';
+import { UtagContainer } from '../analytics';
 import { setAlertSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
@@ -102,7 +103,7 @@ describe('Alert', function () {
     beforeEach(() => {
       setAlertSendsAnalytics(true);
       tealiumMock = jest.fn();
-      window.utag = {
+      ((window as any) as UtagContainer).utag = {
         link: tealiumMock,
       };
     });
