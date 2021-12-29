@@ -4,7 +4,7 @@ import { StepObject } from './Step';
 
 interface SubStepProps {
   step: StepObject;
-  onStepLinkClick?: StepLinkProps["onClick"],
+  onStepLinkClick?: StepLinkProps['onClick'];
   showSubSubSteps?: boolean;
   editText: string;
 }
