@@ -82,8 +82,8 @@ export interface TooltipProps {
 }
 
 export const Tooltip = (props: TooltipProps): React.ReactNode => {
-  const popper = useRef();
-  const id = useRef();
+  const popper = useRef(null);
+  const id = useRef(null);
   let triggerElement = null;
   let tooltipElement = null;
 
@@ -99,32 +99,36 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const handleEscapeKey = (event: KeyboardEvent): void => {
+    console.log('kb: ' + event.keyCode + ' active:' + active);
     // Closes tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (active && event.keyCode === ESCAPE_KEY) {
+      console.log('pressed escape');
       setActive(false);
     }
   };
 
   const handleClickOutside = (event: MouseEvent): void => {
     // Closes dialog and mobile tooltips when mouse clicks outside of tooltip element
+    console.log('handlesclickoutside active:' + active + ' ' + props.dialog + ' ' + isMobile);
+    console.log(event);
     if (active && (props.dialog || isMobile)) {
       const clickedTrigger = triggerElement && triggerElement.contains(event.target);
       const clickedTooltip = tooltipElement && tooltipElement.contains(event.target);
       if (!clickedTooltip && !clickedTrigger) {
+        console.log('clicked outside');
         setActive(false);
       }
     }
   };
 
-  const handleBlur = (): void => {
+  const handleBlur = (event: MouseEvent): void => {
+    console.log('blurred, active: ' + active);
     // Hide tooltips when blurring away from the trigger or tooltip body
     // and when the mouse is not hovering over the tooltip
     setTimeout(() => {
-      const focusedInsideTrigger =
-        triggerElement && triggerElement.contains(document.activeElement);
-      const focusedInsideTooltip =
-        tooltipElement && tooltipElement.contains(document.activeElement);
+      const focusedInsideTrigger = triggerElement && triggerElement.contains(event.target as Node);
+      const focusedInsideTooltip = tooltipElement && tooltipElement.contains(event.target as Node);
       if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
         setActive(false);
       }
@@ -140,13 +144,10 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside, false);
-    document.addEventListener('keydown', handleEscapeKey, false);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
 
-    if (popper.current) {
-      popper.current.destroy();
-      popper.current = null;
-    }
+    id.current = props.id || uniqueId('trigger_');
 
     if (!triggerElement || !tooltipElement) return;
 
@@ -155,19 +156,15 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       modifiers: [{ name: 'offset', options: { offset: props.offset } }],
     });
 
-    id.current = props.id || uniqueId('trigger_');
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);
-      popper.current.destroy();
+      if (popper.current) popper.current.destroy();
     };
   }, []);
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   popper.forceUpdate();
-    // }, 1000);
+    console.log('active ' + active);
     if (active) {
       props.onOpen && props.onOpen();
     } else {
@@ -191,7 +188,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       component,
       dialog,
       offset,
-      id,
       onClose,
       onOpen,
       inversed,
@@ -230,14 +226,14 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
             }
           },
           onFocus: () => setActive(true),
-          onBlur: () => handleBlur(),
+          onBlur: (event) => handleBlur(event),
         };
 
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
         aria-label={ariaLabel || undefined}
-        aria-describedby={dialog ? undefined : id}
+        aria-describedby={dialog ? undefined : id.current}
         className={triggerClasses}
         ref={setTriggerElement}
         {...others}
@@ -269,7 +265,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       zIndex: -999, // ensures interactive border doesnt cover tooltip content
     };
 
-    const eventHandlers = dialog ? {} : { onBlur: () => handleBlur() };
+    const eventHandlers = dialog ? {} : { onBlur: (event) => handleBlur(event) };
 
     const tooltipContent = () => (
       <div
@@ -300,7 +296,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
             active={active}
             focusTrapOptions={{
               // Set initialFocus to the tooltip container element in case it contains no focusable elements
-              initialFocus: '#' + id.current,
+              initialFocus: () => document.getElementById(`${id.current}`),
               clickOutsideDeactivates: true,
             }}
           >
@@ -313,7 +309,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     );
   };
 
-  const eventHandlers = props.dialog
+  const mainEventHandlers = props.dialog
     ? {}
     : {
         onMouseEnter: () => {
@@ -331,7 +327,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       };
 
   return (
-    <div className="ds-c-tooltip__container" {...eventHandlers}>
+    <div className="ds-c-tooltip__container" {...mainEventHandlers}>
       {renderTrigger(props)}
       {renderContent(props)}
     </div>
