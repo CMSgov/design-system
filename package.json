@@ -26,7 +26,7 @@
     "test:a11y:medicare": "yarn cmsds test:a11y ./packages/ds-medicare-gov --config cmsds.medicare.config.js",
     "update-snapshots": "yarn cmsds test ./packages --updateSnapshot",
     "posttest": "yarn lint",
-    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**'",
+    "lint": "yarn cmsds lint ./ --ignorePatterns '**/node_modules/**' '**/dist/**' '**/helpers/**' '**/__tests__/**' 'tmp/**' '**/types/**' 'examples/create-react-app-typescript/**' 'examples/create-react-app/**' 'storybook-static/**'",
     "type-check": "yarn tsc --noEmit",
     "prepare": "husky install",
     "storybook": "STORYBOOK_DS=core start-storybook -p 6006",
