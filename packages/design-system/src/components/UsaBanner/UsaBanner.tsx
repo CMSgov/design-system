@@ -3,8 +3,8 @@ import { Button } from '../Button';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import { LockCircleIcon, LockIcon, UsaFlagIcon, BuildingCircleIcon } from '../Icons';
-import EnglishTranslations from '../../locale/en.json';
-import SpanishTranslations from '../../locale/es.json';
+import EnglishTranslations from '../locale/en.json';
+import SpanishTranslations from '../locale/es.json';
 
 export type LocaleLanguage = 'en' | 'es';
 
