@@ -117,8 +117,8 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
 
   const handleBlur = (event: MouseEvent) => {
     setTimeout(() => {
-      const focusedInsideTrigger = triggerElement.current?.contains(event.target as Node);
-      const focusedInsideTooltip = tooltipElement.current?.contains(event.target as Node);
+      const focusedInsideTrigger = triggerElement.current?.contains(event.target);
+      const focusedInsideTooltip = tooltipElement.current?.contains(event.target);
       if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
         setActive(false);
       }
