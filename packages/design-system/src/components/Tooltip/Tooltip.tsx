@@ -8,7 +8,7 @@ import 'core-js/features/promise';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
@@ -82,7 +82,8 @@ export interface TooltipProps {
 }
 
 export const Tooltip = (props: TooltipProps): React.ReactNode => {
-  let popper, id;
+  const popper = useRef();
+  const id = useRef();
   let triggerElement = null;
   let tooltipElement = null;
 
@@ -142,23 +143,31 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     document.addEventListener('mousedown', handleClickOutside, false);
     document.addEventListener('keydown', handleEscapeKey, false);
 
-    popper = createPopper(triggerElement, tooltipElement, {
+    if (popper.current) {
+      popper.current.destroy();
+      popper.current = null;
+    }
+
+    if (!triggerElement || !tooltipElement) return;
+
+    popper.current = createPopper(triggerElement, tooltipElement, {
       placement: props.placement,
       modifiers: [{ name: 'offset', options: { offset: props.offset } }],
     });
-    id = props.id || uniqueId('trigger_');
+
+    id.current = props.id || uniqueId('trigger_');
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);
-      popper.destroy();
+      popper.current.destroy();
     };
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      popper.forceUpdate();
-    }, 1000);
+    // setTimeout(() => {
+    //   popper.forceUpdate();
+    // }, 1000);
     if (active) {
       props.onOpen && props.onOpen();
     } else {
@@ -166,8 +175,11 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     }
   }, [active]);
 
-  useEffect(() => {
-    // setTimeout(() => {popper.setOptions(props);}, 1500);
+  useLayoutEffect(() => {
+    if (popper.current) {
+      popper.current.setOptions(props);
+      popper.current.forceUpdate();
+    }
   });
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
@@ -261,7 +273,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
 
     const tooltipContent = () => (
       <div
-        id={id}
+        id={id.current}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
         className={classNames('ds-c-tooltip', {
@@ -288,7 +300,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
             active={active}
             focusTrapOptions={{
               // Set initialFocus to the tooltip container element in case it contains no focusable elements
-              initialFocus: `#${id}`,
+              initialFocus: '#' + id.current,
               clickOutsideDeactivates: true,
             }}
           >
