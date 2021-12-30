@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Step, { StepObject } from './Step';
 import { StepLinkProps } from './StepLink';
