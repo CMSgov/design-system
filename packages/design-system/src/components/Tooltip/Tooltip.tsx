@@ -144,9 +144,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscapeKey);
-
     id.current = props.id || uniqueId('trigger_');
 
     if (!triggerElement || !tooltipElement) return;
@@ -157,11 +154,18 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     });
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
       if (popper.current) popper.current.destroy();
     };
   }, []);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [handleClickOutside, handleEscapeKey]);
 
   useEffect(() => {
     console.log('active ' + active);
