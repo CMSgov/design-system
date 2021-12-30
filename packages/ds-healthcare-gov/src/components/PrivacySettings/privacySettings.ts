@@ -3,17 +3,8 @@ import Cookies from 'js-cookie';
 const domains = ['healthcare', 'cuidadodesalud'];
 const cookies = Cookies.withConverter({
   read: (value) => decodeURI(value),
-  write: (value) => encodeURI(value),
+  write: (value) => encodeURI(value as string),
 });
-
-export const COOKIE_KEY = 'OPTOUTMULTI';
-export const COOKIE_EXPIRES = 365 * 3; // 3 years
-export const COOKIE_DOMAIN = getCookieDomain();
-
-// Set a default if we're not on a healthcare.gov/cuidadodesalud.gov environment
-if (!COOKIE_DOMAIN && !cookies.get(COOKIE_KEY)) {
-  setPrivacySettings({ 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' });
-}
 
 /**
  * Returns ".healthcare.gov" or ".cuidadodesalud.gov" if we're under one of
@@ -29,6 +20,10 @@ export function getCookieDomain() {
     return `.${parts[1]}.${parts[2]}`;
   }
 }
+
+export const COOKIE_KEY = 'OPTOUTMULTI';
+export const COOKIE_EXPIRES = 365 * 3; // 3 years
+export const COOKIE_DOMAIN = getCookieDomain();
 
 export function getPrivacySettings() {
   const cookieString = cookies.get(COOKIE_KEY);
@@ -55,4 +50,9 @@ export function setPrivacySettings(settings) {
     expires: COOKIE_EXPIRES,
     domain: COOKIE_DOMAIN,
   });
+}
+
+// Set a default if we're not on a healthcare.gov/cuidadodesalud.gov environment
+if (!COOKIE_DOMAIN && !cookies.get(COOKIE_KEY)) {
+  setPrivacySettings({ 0: '0', c3: '0', c2: '0', c1: '0', c4: '0' });
 }
