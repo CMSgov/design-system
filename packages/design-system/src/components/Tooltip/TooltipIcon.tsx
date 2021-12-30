@@ -3,6 +3,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 export interface ITooltipIcon {
+  /*
+   * Renders inversed version of icon
+   */
   inversed?: boolean;
 }
 
