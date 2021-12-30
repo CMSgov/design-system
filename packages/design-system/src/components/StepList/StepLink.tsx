@@ -9,7 +9,7 @@ export interface StepLinkProps {
   stepId?: string;
   screenReaderText?: string;
   className?: string;
-  onClick: (href?: string, stepId?: string) => any;
+  onClick?: (href?: string, stepId?: string) => any;
   component?: React.ComponentType | keyof JSX.IntrinsicElements;
 }
 

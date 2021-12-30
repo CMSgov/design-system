@@ -16,7 +16,7 @@ export interface StepObject {
   completed?: boolean;
   started?: boolean;
   isNextStep?: boolean;
-  onClick: StepLinkProps['onClick'];
+  onClick?: StepLinkProps['onClick'];
   component?: React.ComponentType | keyof JSX.IntrinsicElements;
   steps: StepObject[];
 }

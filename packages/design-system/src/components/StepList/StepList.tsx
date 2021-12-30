@@ -22,7 +22,7 @@ export interface StepListProps {
    * Function called when a step's Edit, Start, or Resume button/link is
    * clicked. The step's `href` property will be passed as a parameter.
    */
-  onStepLinkClick: StepLinkProps['onClick'];
+  onStepLinkClick?: StepLinkProps['onClick'];
   completedText: string;
   editText: string;
   resumeText: string;
