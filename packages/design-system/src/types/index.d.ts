@@ -28,7 +28,6 @@ export * from './Table';
 export * from './Tabs';
 export * from './TextField';
 export * from './Tooltip';
-export * from './TooltipIcon';
 export * from './Icons';
 export * from './UsaBanner';
 export * from './VerticalNav';
