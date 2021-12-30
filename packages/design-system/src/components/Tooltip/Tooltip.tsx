@@ -82,11 +82,10 @@ export interface TooltipProps {
 }
 
 export const Tooltip = (props: TooltipProps): React.ReactNode => {
-  let popper;
+  let popper, id;
   let triggerElement = null;
   let tooltipElement = null;
 
-  const id = props.id || uniqueId('trigger_');
   const setTriggerElement = (elem) => {
     triggerElement = elem;
   };
@@ -145,13 +144,9 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
 
     popper = createPopper(triggerElement, tooltipElement, {
       placement: props.placement,
-      modifiers: [
-        {
-          name: 'offset',
-          options: { offset: props.offset },
-        },
-      ],
+      modifiers: [{ name: 'offset', options: { offset: props.offset } }],
     });
+    id = props.id || uniqueId('trigger_');
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -161,6 +156,9 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   }, []);
 
   useEffect(() => {
+    setTimeout(() => {
+      popper.forceUpdate();
+    }, 1000);
     if (active) {
       props.onOpen && props.onOpen();
     } else {
@@ -169,9 +167,8 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   }, [active]);
 
   useEffect(() => {
-    popper.setOptions(props);
-    popper.forceUpdate();
-  }, [popper]);
+    // setTimeout(() => {popper.setOptions(props);}, 1500);
+  });
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
