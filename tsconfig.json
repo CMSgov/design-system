@@ -19,5 +19,8 @@
   // TODO: Remove this once all our TypeScript definitions are generated from source
   "exclude": [
     "packages/**/src/types/**/*",
+    "packages/design-system-docs/src/**/*",
+    "packages/ds-healthcare-gov/docs/src/**/*",
+    "packages/ds-medicare-gov/docs/src/**/*",
   ]
 }
