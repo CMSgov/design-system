@@ -13,7 +13,7 @@ import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
 
-export interface ITooltipProps {
+export interface TooltipProps {
   /**
    * Classes applied to the tooltip trigger when the tooltip is active
    */
@@ -54,11 +54,11 @@ export interface ITooltipProps {
   /**
    * Called when the tooltip is hidden
    */
-  onClose?: () => void;
+  onClose?: () => any;
   /**
    * Called when the tooltip is shown
    */
-  onOpen?: () => void;
+  onOpen?: () => any;
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
    */
@@ -81,52 +81,51 @@ export interface ITooltipProps {
   zIndex?: number;
 }
 
-export const Tooltip = (props: ITooltipProps): React.ReactNode => {
+export const Tooltip = (props: TooltipProps): React.ReactNode => {
   const popper = useRef(null);
   const id = useRef(null);
-
-  let triggerElement = null;
-  let tooltipElement = null;
+  const triggerElement = useRef(null);
+  const tooltipElement = useRef(null);
 
   const setTriggerElement = (elem) => {
-    triggerElement = elem;
+    triggerElement.current = elem;
   };
   const setTooltipElement = (elem) => {
-    tooltipElement = elem;
+    tooltipElement.current = elem;
   };
 
   const [active, setActive] = useState<boolean>(false);
   const [isHover, setIsHover] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const handleEscapeKey = (event: KeyboardEvent): void => {
+  const handleEscapeKey = (event: KeyboardEvent) => {
     const ESCAPE_KEY = 27;
     if (active && event.keyCode === ESCAPE_KEY) {
       setActive(false);
     }
   };
 
-  const handleClickOutside = (event: MouseEvent): void => {
+  const handleClickOutside = (event: MouseEvent) => {
     if (active && (props.dialog || isMobile)) {
-      const clickedTrigger = triggerElement && triggerElement.contains(event.target);
-      const clickedTooltip = tooltipElement && tooltipElement.contains(event.target);
+      const clickedTrigger = triggerElement.current?.contains(event.target);
+      const clickedTooltip = tooltipElement.current?.contains(event.target);
       if (!clickedTooltip && !clickedTrigger) {
         setActive(false);
       }
     }
   };
 
-  const handleBlur = (event: MouseEvent): void => {
+  const handleBlur = (event: MouseEvent) => {
     setTimeout(() => {
-      const focusedInsideTrigger = triggerElement && triggerElement.contains(event.target as Node);
-      const focusedInsideTooltip = tooltipElement && tooltipElement.contains(event.target as Node);
+      const focusedInsideTrigger = triggerElement.current?.contains(event.target as Node);
+      const focusedInsideTooltip = tooltipElement.current?.contains(event.target as Node);
       if (!focusedInsideTrigger && !focusedInsideTooltip && !isHover) {
         setActive(false);
       }
     }, 10);
   };
 
-  const handleTouch = (): void => {
+  const handleTouch = () => {
     // On mobile, touch -> mouseenter -> click events can all be fired simultaneously
     // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
     // https://stackoverflow.com/a/65055198
@@ -137,9 +136,9 @@ export const Tooltip = (props: ITooltipProps): React.ReactNode => {
   useEffect(() => {
     id.current = props.id || uniqueId('trigger_');
 
-    if (!triggerElement || !tooltipElement) return;
+    if (!triggerElement.current || !tooltipElement.current) return;
 
-    popper.current = createPopper(triggerElement, tooltipElement, {
+    popper.current = createPopper(triggerElement.current, tooltipElement.current, {
       placement: props.placement,
       modifiers: [{ name: 'offset', options: { offset: props.offset } }],
     });
@@ -173,7 +172,7 @@ export const Tooltip = (props: ITooltipProps): React.ReactNode => {
     }
   });
 
-  const renderTrigger = (props: ITooltipProps): React.ReactElement => {
+  const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
       activeClassName,
       ariaLabel,
@@ -239,7 +238,7 @@ export const Tooltip = (props: ITooltipProps): React.ReactNode => {
     );
   };
 
-  const renderContent = (props: ITooltipProps): React.ReactElement => {
+  const renderContent = (props: TooltipProps): React.ReactElement => {
     const {
       dialog,
       inversed,
@@ -260,7 +259,7 @@ export const Tooltip = (props: ITooltipProps): React.ReactNode => {
     };
     const eventHandlers = dialog ? {} : { onBlur: (event) => handleBlur(event) };
 
-    const tooltipContent = () => (
+    const tooltipContent = (
       <div
         id={id.current}
         tabIndex={dialog ? -1 : null}
@@ -290,10 +289,10 @@ export const Tooltip = (props: ITooltipProps): React.ReactNode => {
               clickOutsideDeactivates: true,
             }}
           >
-            {tooltipContent()}
+            {tooltipContent}
           </FocusTrap>
         ) : (
-          tooltipContent()
+          tooltipContent
         )}
       </CSSTransition>
     );
