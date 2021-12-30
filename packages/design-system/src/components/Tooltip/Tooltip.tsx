@@ -13,7 +13,7 @@ import classNames from 'classnames';
 import { createPopper } from '@popperjs/core';
 import uniqueId from 'lodash/uniqueId';
 
-export interface TooltipProps {
+export interface ITooltipProps {
   /**
    * Classes applied to the tooltip trigger when the tooltip is active
    */
@@ -81,9 +81,10 @@ export interface TooltipProps {
   zIndex?: number;
 }
 
-export const Tooltip = (props: TooltipProps): React.ReactNode => {
+export const Tooltip = (props: ITooltipProps): React.ReactNode => {
   const popper = useRef(null);
   const id = useRef(null);
+
   let triggerElement = null;
   let tooltipElement = null;
 
@@ -99,33 +100,23 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const handleEscapeKey = (event: KeyboardEvent): void => {
-    console.log('kb: ' + event.keyCode + ' active:' + active);
-    // Closes tooltips when ESC key is pressed
     const ESCAPE_KEY = 27;
     if (active && event.keyCode === ESCAPE_KEY) {
-      console.log('pressed escape');
       setActive(false);
     }
   };
 
   const handleClickOutside = (event: MouseEvent): void => {
-    // Closes dialog and mobile tooltips when mouse clicks outside of tooltip element
-    console.log('handlesclickoutside active:' + active + ' ' + props.dialog + ' ' + isMobile);
-    console.log(event);
     if (active && (props.dialog || isMobile)) {
       const clickedTrigger = triggerElement && triggerElement.contains(event.target);
       const clickedTooltip = tooltipElement && tooltipElement.contains(event.target);
       if (!clickedTooltip && !clickedTrigger) {
-        console.log('clicked outside');
         setActive(false);
       }
     }
   };
 
   const handleBlur = (event: MouseEvent): void => {
-    console.log('blurred, active: ' + active);
-    // Hide tooltips when blurring away from the trigger or tooltip body
-    // and when the mouse is not hovering over the tooltip
     setTimeout(() => {
       const focusedInsideTrigger = triggerElement && triggerElement.contains(event.target as Node);
       const focusedInsideTooltip = tooltipElement && tooltipElement.contains(event.target as Node);
@@ -168,7 +159,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   }, [handleClickOutside, handleEscapeKey]);
 
   useEffect(() => {
-    console.log('active ' + active);
     if (active) {
       props.onOpen && props.onOpen();
     } else {
@@ -183,7 +173,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     }
   });
 
-  const renderTrigger = (props: TooltipProps): React.ReactElement => {
+  const renderTrigger = (props: ITooltipProps): React.ReactElement => {
     const {
       activeClassName,
       ariaLabel,
@@ -249,7 +239,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
     );
   };
 
-  const renderContent = (props: TooltipProps): React.ReactElement => {
+  const renderContent = (props: ITooltipProps): React.ReactElement => {
     const {
       dialog,
       inversed,
@@ -268,7 +258,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
       border: `${interactiveBorder}px solid transparent`,
       zIndex: -999, // ensures interactive border doesnt cover tooltip content
     };
-
     const eventHandlers = dialog ? {} : { onBlur: (event) => handleBlur(event) };
 
     const tooltipContent = () => (
@@ -276,9 +265,7 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
         id={id.current}
         tabIndex={dialog ? -1 : null}
         ref={setTooltipElement}
-        className={classNames('ds-c-tooltip', {
-          'ds-c-tooltip--inverse': inversed,
-        })}
+        className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
         style={tooltipStyle}
         data-placement={placement}
         aria-hidden={!active}
@@ -299,7 +286,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
           <FocusTrap
             active={active}
             focusTrapOptions={{
-              // Set initialFocus to the tooltip container element in case it contains no focusable elements
               initialFocus: () => document.getElementById(`${id.current}`),
               clickOutsideDeactivates: true,
             }}

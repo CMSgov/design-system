@@ -7,7 +7,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
   onMouseLeave={[Function]}
 >
   <a
-    aria-describedby="trigger_3"
+    aria-describedby={null}
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -27,13 +27,13 @@ exports[`Tooltip renders custom trigger component 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
-      id="trigger_3"
+      id={null}
       onBlur={[Function]}
       role="tooltip"
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -54,7 +54,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
@@ -70,7 +70,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
   onMouseLeave={[Function]}
 >
   <button
-    aria-describedby="trigger_1"
+    aria-describedby={null}
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -89,13 +89,13 @@ exports[`Tooltip renders default trigger icon 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
-      id="trigger_1"
+      id={null}
       onBlur={[Function]}
       role="tooltip"
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -116,7 +116,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
@@ -148,7 +148,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
       focusTrapOptions={
         Object {
           "clickOutsideDeactivates": true,
-          "initialFocus": "#trigger_4",
+          "initialFocus": [Function],
         }
       }
       paused={false}
@@ -157,15 +157,15 @@ exports[`Tooltip renders dialog tooltip 1`] = `
         aria-hidden={true}
         className="ds-c-tooltip"
         data-placement="top"
-        id="trigger_4"
+        id={null}
         role="dialog"
         style={
           Object {
             "maxWidth": "300px",
-            "zIndex": "9999",
+            "zIndex": 9999,
           }
         }
-        tabIndex="-1"
+        tabIndex={-1}
       >
         <span
           className="ds-c-tooltip__arrow"
@@ -189,7 +189,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
   onMouseLeave={[Function]}
 >
   <button
-    aria-describedby="trigger_2"
+    aria-describedby={null}
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
     onBlur={[Function]}
     onClick={[Function]}
@@ -208,13 +208,13 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip ds-c-tooltip--inverse"
       data-placement="top"
-      id="trigger_2"
+      id={null}
       onBlur={[Function]}
       role="tooltip"
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -235,7 +235,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
