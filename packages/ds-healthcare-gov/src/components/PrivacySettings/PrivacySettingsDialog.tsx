@@ -2,7 +2,7 @@ import { Button, Dialog } from '@cmsgov/design-system';
 import { getPrivacySettings, setPrivacySettings } from './privacySettings';
 import PrivacySettingsTable from './PrivacySettingsTable';
 import React, { useState } from 'react';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 const privacySettingConfigs = [
   { settingsKey: 'c3', translationKey: 'advertising' },
@@ -55,8 +55,5 @@ const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
   );
 };
 
-// TODO: Won't need to do this funny Type assertion stuff when we start using react-i18next hooks
-export const PrivacySettingsDialog: (
-  props: Omit<PrivacySettingsDialogProps, 't'>
-) => JSX.Element = translate()(_PrivacySettingsDialog as any) as any;
+export const PrivacySettingsDialog = withTranslation()(_PrivacySettingsDialog);
 export default PrivacySettingsDialog;
