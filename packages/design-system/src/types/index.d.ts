@@ -5,7 +5,6 @@ export { default as Dialog } from './Dialog/Dialog';
 export { default as HelpDrawer } from './HelpDrawer/HelpDrawer';
 export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
 export { default as SkipNav } from './SkipNav/SkipNav';
-export { default as StepList } from './StepList/StepList';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as TooltipIcon } from './Tooltip/TooltipIcon';
 
@@ -26,6 +25,7 @@ export * from './MonthPicker';
 export * from './Pagination';
 export * from './Review';
 export * from './Spinner';
+export * from './StepList';
 export * from './Table';
 export * from './Tabs';
 export * from './TextField';
