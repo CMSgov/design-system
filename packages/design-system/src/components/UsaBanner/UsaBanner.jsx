@@ -28,6 +28,10 @@ export class UsaBanner extends React.PureComponent {
     this.media.addEventListener('change', this.onMediaChange);
   }
 
+  componentWillUnmount() {
+    this.media.removeEventListener('change', this.onMediaChange);
+  }
+
   onMediaChange(evt) {
     this.setState({ shouldRenderMobileView: evt.matches });
   }
@@ -45,12 +49,10 @@ export class UsaBanner extends React.PureComponent {
         aria-expanded={this.state.isBannerOpen}
         aria-controls={this.id}
       >
-        <p className="ds-c-usa-banner__header-text">
-          <UsaFlagIcon
-            className="ds-c-usa-banner__header-flag"
-            title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-          />
-        </p>
+        <UsaFlagIcon
+          className="ds-c-usa-banner__header-flag"
+          title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
+        />
         <p className="ds-c-usa-banner__header-text">
           <span>{t.bannerText}</span>
           {!this.state.isBannerOpen && (
@@ -73,12 +75,10 @@ export class UsaBanner extends React.PureComponent {
   renderHeaderContent(t) {
     return (
       <>
-        <p className="ds-c-usa-banner__header-text">
-          <UsaFlagIcon
-            className="ds-c-usa-banner__header-flag"
-            title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-          />
-        </p>
+        <UsaFlagIcon
+          className="ds-c-usa-banner__header-flag"
+          title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
+        />
         <p className="ds-c-usa-banner__header-text">
           <span>{t.bannerText}</span>
 
