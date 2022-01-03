@@ -32,7 +32,7 @@ export interface DialogProps {
    * This can help screen readers understand what's going on.
    * Also see `getApplicationNode`.
    */
-  applicationNode?: any;
+  applicationNode?: HTMLElement;
   /**
    * Buttons or other HTML to be rendered in the "actions" bar
    * at the bottom of the dialog.
@@ -128,8 +128,6 @@ export interface DialogProps {
   // eslint-disable-next-line camelcase
   [additional_props: string]: unknown;
 }
-
-type OmitProps = 'size' | 'title';
 
 export const Dialog = (props:DialogProps) :React.ReactNode => {
   
