@@ -1,9 +1,15 @@
 import { InfoCircleIconThin } from '../Icons';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-export const TooltipIcon = (props) => {
+export interface TooltipIconProps {
+  /*
+   * Renders inversed version of icon
+   */
+  inversed?: boolean;
+}
+
+export const TooltipIcon = (props: TooltipIconProps): React.ReactElement => {
   return (
     <span className="ds-c-tooltip-icon__container">
       <InfoCircleIconThin
@@ -13,10 +19,6 @@ export const TooltipIcon = (props) => {
       />
     </span>
   );
-};
-
-TooltipIcon.propTypes = {
-  inversed: PropTypes.bool,
 };
 
 export default TooltipIcon;

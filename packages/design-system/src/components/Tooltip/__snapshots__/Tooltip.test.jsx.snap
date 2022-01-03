@@ -33,7 +33,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -54,7 +54,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
@@ -95,7 +95,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -116,7 +116,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
@@ -148,7 +148,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
       focusTrapOptions={
         Object {
           "clickOutsideDeactivates": true,
-          "initialFocus": "#trigger_4",
+          "initialFocus": [Function],
         }
       }
       paused={false}
@@ -162,10 +162,10 @@ exports[`Tooltip renders dialog tooltip 1`] = `
         style={
           Object {
             "maxWidth": "300px",
-            "zIndex": "9999",
+            "zIndex": 9999,
           }
         }
-        tabIndex="-1"
+        tabIndex={-1}
       >
         <span
           className="ds-c-tooltip__arrow"
@@ -214,7 +214,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       style={
         Object {
           "maxWidth": "300px",
-          "zIndex": "9999",
+          "zIndex": 9999,
         }
       }
       tabIndex={null}
@@ -235,7 +235,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
             "border": "15px solid transparent",
             "left": "-15px",
             "top": "-15px",
-            "zIndex": "-999",
+            "zIndex": -999,
           }
         }
       />
