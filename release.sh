@@ -8,14 +8,37 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No color
 
+# Parse options
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+
+    case $key in
+        --force-publish)
+            FORCE_PUBLISH_PACKAGES="$2"
+            shift # past argument
+            shift # past value
+            ;;
+        *)
+            # unknown option
+            shift # past argument
+            ;;
+    esac
+done
+
 echo "${GREEN}Creating release branch...${NC}"
 DATE=$(date "+%Y-%m-%d")
 BRANCH="release-${DATE}"
 git checkout -b $BRANCH
 
+if [ -n "$FORCE_PUBLISH_PACKAGES" ]; then
+  git fetch --tags
+  LERNA_VERSION_ARGS="--force-publish=$FORCE_PUBLISH_PACKAGES"
+fi
+
 echo "${GREEN}Bumping version...${NC}"
 PRE_VERSION_HASH=$(git rev-parse HEAD)
-yarn lerna version --no-push
+yarn lerna version --no-push $LERNA_VERSION_ARGS
 POST_VERSION_HASH=$(git rev-parse HEAD)
 
 if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
@@ -26,13 +49,15 @@ if [ "$PRE_VERSION_HASH" = "$POST_VERSION_HASH" ]; then
 fi
 
 echo "${GREEN}Pushing tag and release commit to Github...${NC}"
-git push --set-upstream origin $BRANCH
-git push origin --tags
-
 # Grep the last commit message for package versions
 PACKAGE_VERSIONS=$(git log -1 --pretty=%B | grep -o "@.*$")
 # Take the first one we find to use in example command
 PACKAGE_VERSION=$(echo "$PACKAGE_VERSIONS" | head -1)
+# Get it all on one line so we can push these tags at once
+TAGS=$(echo "$PACKAGE_VERSIONS" | tr '\n' ' ')
+
+git push --set-upstream origin $BRANCH
+git push origin $TAGS
 
 echo ""
 echo "${GREEN}Release has been tagged and pushed to origin.${NC}"
@@ -44,6 +69,10 @@ echo ""
 echo "${YELLOW}NEXT STEPS:${NC}"
 echo ""
 echo "${YELLOW}  1. Create a pull request for merging \`${CYAN}$BRANCH${YELLOW}\` into master to save the version bump${NC}"
+echo ""
+echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
+echo ""
+echo "     ${CYAN}\$${NC} yarn publish-release $PACKAGE_VERSION"
 echo ""
 echo "${YELLOW}  2. Publish this release to npm by running:${NC}"
 echo ""
