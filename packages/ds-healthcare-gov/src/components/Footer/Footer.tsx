@@ -2,7 +2,7 @@ import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import React from 'react';
 import classnames from 'classnames';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 
 export type Language = 'en' | 'es';
 
@@ -14,7 +14,7 @@ export interface FooterProps {
   /**
    * The language the footer will render as.
    */
-  initialLanguage?: Language;
+  initialLanguage: Language;
   /**
    * The primary, or root domain where the majority of footer links should be
    * hosted.  By default, links render with relative paths, but providing this
@@ -35,9 +35,13 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
+  /**
+   * @hide-prop
+   */
+  t: TFunction;
 }
 
-const _Footer = function (props: FooterProps) {
+const _Footer = (props: FooterProps) => {
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
@@ -54,7 +58,7 @@ const _Footer = function (props: FooterProps) {
 
 _Footer.defaultProps = {
   initialLanguage: 'en',
-};
+} as FooterProps;
 
 export const Footer = withTranslation()(_Footer);
 export default Footer;

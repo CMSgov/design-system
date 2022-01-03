@@ -1,8 +1,13 @@
 import PrivacySettingsDialog from '../PrivacySettings/PrivacySettingsDialog';
 import React, { useState } from 'react';
 import { withTranslation } from 'react-i18next';
+import { TFunction } from 'i18next';
 
-const _PrivacySettingsLink = () => {
+interface PrivacySettingsLinkProps {
+  t: TFunction;
+}
+
+const _PrivacySettingsLink = (props: PrivacySettingsLinkProps) => {
   const [showDialog, setShowDialog] = useState(false);
 
   const openDialog = () => setShowDialog(true);

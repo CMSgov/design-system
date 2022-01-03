@@ -1,5 +1,4 @@
 import PrivacySettingsLink from './PrivacySettingsLink';
-import PropTypes from 'prop-types';
 import React from 'react';
 import languages from './languages';
 

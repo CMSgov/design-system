@@ -29,7 +29,7 @@ interface LogoProps {
  *
  */
 
-function Logo(props: LogoProps) {
+const Logo = (props: LogoProps) => {
   const style: any = {};
 
   if (props.width) {
@@ -45,6 +45,6 @@ function Logo(props: LogoProps) {
       {props.children}
     </a>
   );
-}
+};
 
 export default Logo;
