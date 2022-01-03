@@ -1,5 +1,1 @@
-// Overrides and variable re-declarations that need to be in place *before* loading the core design system
-@import 'variables.color';
-@import 'variables.forms';
-@import 'variables.layout';
-@import 'variables.type';
+@import 'variables/index';
