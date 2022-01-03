@@ -3,8 +3,8 @@
  * @file Initializes and exports a single i18next instance,
  *  responsible for rendering internationalized strings.
  */
-import en from '../locale/en.json';
-import es from '../locale/es.json';
+import en from './locale/en.json';
+import es from './locale/es.json';
 import i18n from 'i18next';
 
 let i18nInstance;
