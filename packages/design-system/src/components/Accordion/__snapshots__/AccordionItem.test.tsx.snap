@@ -23,12 +23,13 @@ exports[`AccordionItem renders an accordion item 1`] = `
           Heading for accordion item
           <AddIcon
             className="ds-c-accordion__button-icon"
+            title="Open"
           >
             <SvgIcon
               ariaHidden={true}
               className="ds-c-icon--add ds-c-accordion__button-icon"
               inversed={false}
-              title="Add"
+              title="Open"
               viewBox="3 3 18 18"
             >
               <svg
@@ -44,7 +45,7 @@ exports[`AccordionItem renders an accordion item 1`] = `
                 <title
                   id="icon-2__title"
                 >
-                  Add
+                  Open
                 </title>
                 <path
                   d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
