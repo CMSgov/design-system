@@ -1,7 +1,6 @@
 import { EVENT_CATEGORY, MAX_LENGTH, sendLinkEvent } from '../analytics/SendAnalytics';
 import AriaModal from 'react-aria-modal';
-import Button from '../Button/Button';
-import PropTypes from 'prop-types';
+import Button, { ButtonVariation } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { dialogSendsAnalytics } from '../flags';
@@ -67,7 +66,7 @@ export interface DialogProps {
   /**
    * Variation string to be applied to close button component. See [Button component]({{root}}/components/button/#components.button.react)
    */
-  closeButtonVariation?: string;
+  closeButtonVariation?: ButtonVariation;
   /**
    * The icon to display as part of the close button
    */
@@ -166,7 +165,7 @@ export const Dialog = (props:DialogProps) :React.ReactNode => {
         eventHeadingText = heading.substring(0, MAX_LENGTH);
       } else {
         eventHeadingText =
-          headingRef && headingRef.current.textContent
+          headingRef.current?.textContent
             ? headingRef.current.textContent.substring(0, MAX_LENGTH)
             : '';
       }
@@ -245,7 +244,7 @@ export const Dialog = (props:DialogProps) :React.ReactNode => {
         {...modalProps}
       >
         <div role="document">
-          <header ref={(ref) => (headingRef = ref)} className={headerClassNames} role="banner">
+          <header ref={(ref) => (headingRef.current = ref)} className={headerClassNames} role="banner">
             {
               // TODO: make heading required after removing title
               (title || heading) && (
