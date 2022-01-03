@@ -16,17 +16,24 @@ interface PrivacySettingsDialogProps {
 }
 
 const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
-  const [privacySettings, setPrivacySettings] = useState(getPrivacySettings());
+  const [localPrivacySettings, setLocalPrivacySettings] = useState(getPrivacySettings());
+
+  function setPrivacySetting(settingsKey: string, value: string) {
+    setLocalPrivacySettings({
+      ...localPrivacySettings,
+      [settingsKey]: value,
+    });
+  }
 
   function savePrivacySettings() {
-    setPrivacySettings(privacySettings);
+    setPrivacySettings(localPrivacySettings);
     props.onExit();
   }
 
   const { t, ...dialogProps } = props;
   const privacySettingsProperties = privacySettingConfigs.map((config) => ({
     ...config,
-    value: privacySettings[config.settingsKey],
+    value: localPrivacySettings[config.settingsKey],
   }));
 
   return (
@@ -49,7 +56,7 @@ const _PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       <PrivacySettingsTable
         t={t}
         privacySettings={privacySettingsProperties}
-        setPrivacySetting={setPrivacySettings}
+        setPrivacySetting={setPrivacySetting}
       />
     </Dialog>
   );
