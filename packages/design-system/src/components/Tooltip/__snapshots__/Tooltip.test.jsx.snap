@@ -7,7 +7,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
   onMouseLeave={[Function]}
 >
   <a
-    aria-describedby={null}
+    aria-describedby="trigger_3"
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -27,7 +27,7 @@ exports[`Tooltip renders custom trigger component 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
-      id={null}
+      id="trigger_3"
       onBlur={[Function]}
       role="tooltip"
       style={
@@ -70,7 +70,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
   onMouseLeave={[Function]}
 >
   <button
-    aria-describedby={null}
+    aria-describedby="trigger_1"
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
     onBlur={[Function]}
     onClick={[Function]}
@@ -89,7 +89,7 @@ exports[`Tooltip renders default trigger icon 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip"
       data-placement="top"
-      id={null}
+      id="trigger_1"
       onBlur={[Function]}
       role="tooltip"
       style={
@@ -157,7 +157,7 @@ exports[`Tooltip renders dialog tooltip 1`] = `
         aria-hidden={true}
         className="ds-c-tooltip"
         data-placement="top"
-        id={null}
+        id="trigger_4"
         role="dialog"
         style={
           Object {
@@ -189,7 +189,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
   onMouseLeave={[Function]}
 >
   <button
-    aria-describedby={null}
+    aria-describedby="trigger_2"
     className="ds-base ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
     onBlur={[Function]}
     onClick={[Function]}
@@ -208,7 +208,7 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       aria-hidden={true}
       className="ds-c-tooltip ds-c-tooltip--inverse"
       data-placement="top"
-      id={null}
+      id="trigger_2"
       onBlur={[Function]}
       role="tooltip"
       style={

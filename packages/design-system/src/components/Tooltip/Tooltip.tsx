@@ -83,7 +83,7 @@ export interface TooltipProps {
 
 export const Tooltip = (props: TooltipProps): React.ReactNode => {
   const popper = useRef(null);
-  const id = useRef(null);
+  const id = useRef(props.id ?? uniqueId('trigger_'));
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
 
@@ -134,8 +134,6 @@ export const Tooltip = (props: TooltipProps): React.ReactNode => {
   };
 
   useEffect(() => {
-    id.current = props.id || uniqueId('trigger_');
-
     if (!triggerElement.current || !tooltipElement.current) return;
 
     popper.current = createPopper(triggerElement.current, tooltipElement.current, {
