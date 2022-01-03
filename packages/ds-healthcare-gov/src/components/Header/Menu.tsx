@@ -1,10 +1,29 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import MenuLinks from './MenuLinks';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
-const Menu = function (props) {
+interface MenuProps {
+  links: {
+    identifier?: string;
+    href: string;
+    label: React.ReactNode;
+    onClick?: (...args: any[]) => any;
+  }[];
+  submenuTop: React.ReactNode;
+  submenuBottom: React.ReactNode;
+  /**
+   * Nodes to be rendered before the links column
+   */
+  beforeLinks: React.ReactNode;
+  /**
+   * When the menu is collapsed, passing in "open" will
+   * expand it and make it visible.
+   */
+  open: boolean
+}
+
+const Menu = (props: MenuProps) => {
   const classes = classnames('hc-c-menu', {
     'hc-c-menu--open': props.open,
   });
@@ -27,28 +46,6 @@ const Menu = function (props) {
       </div>
     </nav>
   );
-};
-
-Menu.propTypes = {
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      identifier: PropTypes.string,
-      href: PropTypes.string.isRequired,
-      label: PropTypes.node.isRequired,
-      onClick: PropTypes.func,
-    })
-  ),
-  submenuTop: PropTypes.node,
-  submenuBottom: PropTypes.node,
-  /**
-   * Nodes to be rendered before the links column
-   */
-  beforeLinks: PropTypes.node,
-  /**
-   * When the menu is collapsed, passing in "open" will
-   * expand it and make it visible.
-   */
-  open: PropTypes.bool,
 };
 
 export default Menu;

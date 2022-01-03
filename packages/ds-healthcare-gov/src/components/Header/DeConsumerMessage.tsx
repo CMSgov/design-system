@@ -1,7 +1,13 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import { TFunction, withTranslation } from 'react-i18next';
 
+interface DeConsumerMessageProps {
+  deBrokerName: string;
+  /** 
+   * @hide-props
+   */
+  t: TFunction;
+}
 /**
  * Instead of coming to the Marketplace and seeing all plans that
  * an applicant is eligible for, a direct enrollment consumer is
@@ -10,7 +16,7 @@ import { withTranslation } from 'react-i18next';
  * This message is displayed to those consumers to provide guidance
  * on how to complete their application.
  */
-const DeConsumerMessage = function (props) {
+const DeConsumerMessage = (props: DeConsumerMessageProps) => {
   return (
     <div className="ds-u-fill--primary-darker ds-base--inverse ds-u-padding-y--2">
       <div className="ds-l-container">
@@ -20,10 +26,6 @@ const DeConsumerMessage = function (props) {
       </div>
     </div>
   );
-};
-
-DeConsumerMessage.propTypes = {
-  deBrokerName: PropTypes.string,
 };
 
 export default withTranslation()(DeConsumerMessage);

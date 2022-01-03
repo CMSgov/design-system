@@ -1,9 +1,14 @@
 /* eslint-disable filenames/match-exported */
 import Header from './Header';
-import { I18nextProvider } from 'react-i18next';
-import PropTypes from 'prop-types';
+import { I18nextProvider, I18nextProviderProps } from 'react-i18next';
 import React from 'react';
 import i18n from '../i18n';
+
+export type Language = 'en' | 'es';
+
+interface I18nHeaderProps {
+  initialLanguage: Language;
+}
 
 /**
  * A container component responsible for passing an instance
@@ -13,20 +18,14 @@ import i18n from '../i18n';
  * See https://github.com/i18next/react-i18next/issues/382 for
  * more context on why we need to do it this way.
  */
-const I18nHeader = function (props) {
-  return (
-    <I18nextProvider i18n={i18n} initialLanguage={props.initialLanguage}>
-      <Header {...props} />
-    </I18nextProvider>
-  );
-};
+const I18nHeader = (props: I18nHeaderProps) => (
+  <I18nextProvider i18n={i18n} initialLanguage={props.initialLanguage}>
+    <Header {...props} />
+  </I18nextProvider>
+);
 
 I18nHeader.defaultProps = {
   initialLanguage: 'en',
-};
-
-I18nHeader.propTypes = {
-  initialLanguage: PropTypes.oneOf(['en', 'es']),
 };
 
 export default I18nHeader;
