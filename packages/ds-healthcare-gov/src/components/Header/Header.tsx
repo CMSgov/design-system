@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { SkipNav } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
-import { TFunction, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export type Language = 'en' | 'es';
 
@@ -122,10 +122,6 @@ export interface HeaderProps {
    * Element added to display content on Header bottom section
    */
   headerBottom?: React.ReactNode;
-  /**
-   * @hide-prop
-   */
-  t: TFunction;
 }
 
 export const VARIATION_NAMES = {
@@ -138,8 +134,9 @@ export const VARIATION_NAMES = {
  * header's state (like whether the mobile menu is expanded) and
  * determining which variation of the header to display
  */
-const _Header = (props: HeaderProps) => {
-  const [openMenu, setOpenMenu] = useState(false)
+const Header = (props: HeaderProps) => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const { t } = useTranslation(props.initialLanguage);
 
   function isLoggedIn() {
     return this.variation() === VARIATION_NAMES.LOGGED_IN;
@@ -207,7 +204,7 @@ const _Header = (props: HeaderProps) => {
   return (
     <header className={classes} role="banner">
       <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
-        {props.t('header.skipNav')}
+        {t('header.skipNav')}
       </SkipNav>
 
       <div className="ds-l-container">
@@ -220,6 +217,7 @@ const _Header = (props: HeaderProps) => {
           </a>
 
           <ActionMenu
+            t={t}
             firstName={props.firstName}
             onMenuToggleClick={handleMenuToggleClick}
             locale={props.initialLanguage}
@@ -239,16 +237,15 @@ const _Header = (props: HeaderProps) => {
         submenuBottom={props.submenuBottom}
       />
 
-      {props.deConsumer && <DeConsumerMessage deBrokerName={this.props.deBrokerName} />}
+      {props.deConsumer && <DeConsumerMessage deBrokerName={props.deBrokerName} />}
       {props.headerBottom}
     </header>
   );
 }
 
-_Header.defaultProps = {
+Header.defaultProps = {
   initialLanguage: 'en',
   skipNavHref: '#main',
 };
 
-export const Header = withTranslation()(_Header);
 export default Header;
