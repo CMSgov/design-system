@@ -4,23 +4,23 @@ import React from 'react';
 import classnames from 'classnames';
 
 interface MenuProps {
-  links: {
+  links?: {
     identifier?: string;
     href: string;
     label: React.ReactNode;
     onClick?: (...args: any[]) => any;
   }[];
-  submenuTop: React.ReactNode;
-  submenuBottom: React.ReactNode;
+  submenuTop?: React.ReactNode;
+  submenuBottom?: React.ReactNode;
   /**
    * Nodes to be rendered before the links column
    */
-  beforeLinks: React.ReactNode;
+  beforeLinks?: React.ReactNode;
   /**
    * When the menu is collapsed, passing in "open" will
    * expand it and make it visible.
    */
-  open: boolean
+  open?: boolean;
 }
 
 const Menu = (props: MenuProps) => {

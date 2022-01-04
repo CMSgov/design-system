@@ -138,8 +138,23 @@ const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
   const { t } = useTranslation(props.initialLanguage);
 
+  /**
+   * Determines which variation of the header should be displayed,
+   * based on the props being passed into the component.
+   * @returns {String} Variation name
+   */
+  function variation() {
+    if (props.loggedIn) {
+      // Logged-in state, with minimal navigation
+      return VARIATION_NAMES.LOGGED_IN;
+    } else {
+      // Logged-out state, either Learn or Product
+      return VARIATION_NAMES.LOGGED_OUT;
+    }
+  }
+
   function isLoggedIn() {
-    return this.variation() === VARIATION_NAMES.LOGGED_IN;
+    return variation() === VARIATION_NAMES.LOGGED_IN;
   }
 
   /**
@@ -162,21 +177,6 @@ const Header = (props: HeaderProps) => {
    */
   function handleMenuToggleClick() {
     setOpenMenu(!openMenu);
-  }
-
-  /**
-   * Determines which variation of the header should be displayed,
-   * based on the props being passed into the component.
-   * @returns {String} Variation name
-   */
-  function variation() {
-    if (props.loggedIn) {
-      // Logged-in state, with minimal navigation
-      return VARIATION_NAMES.LOGGED_IN;
-    } else {
-      // Logged-out state, either Learn or Product
-      return VARIATION_NAMES.LOGGED_OUT;
-    }
   }
 
   const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
