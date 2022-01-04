@@ -17,19 +17,29 @@ export class UsaBanner extends React.PureComponent {
   constructor(props) {
     super(props);
     this.id = props.id || uniqueId('gov-banner_');
-    this.media = window.matchMedia('(max-width: 543px)');
+
     this.state = {
       isBannerOpen: false,
-      shouldRenderMobileView: this.media.matches,
+      shouldRenderMobileView: false,
     };
     this.handleToggleBanner = this.handleToggleBanner.bind(this);
-    this.onMediaChange = this.onMediaChange.bind(this);
+  }
 
-    this.media.addEventListener('change', this.onMediaChange);
+  componentDidMount() {
+    if (window) {
+      this.media = window.matchMedia('(max-width: 543px)');
+      this.onMediaChange = this.onMediaChange.bind(this);
+
+      this.media.addEventListener('change', this.onMediaChange);
+
+      this.setState({ shouldRenderMobileView: this.media.matches });
+    }
   }
 
   componentWillUnmount() {
-    this.media.removeEventListener('change', this.onMediaChange);
+    if (window) {
+      this.media.removeEventListener('change', this.onMediaChange);
+    }
   }
 
   onMediaChange(evt) {
