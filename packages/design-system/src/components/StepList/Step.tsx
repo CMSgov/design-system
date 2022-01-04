@@ -1,10 +1,40 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import StepLink from './StepLink';
+import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
 
-export const Step = ({ step, ...props }) => {
+type HeadingLevel = '1' | '2' | '3' | '4' | '5';
+
+export interface StepObject {
+  id?: string;
+  href: string;
+  title?: string; // [Deprecated]
+  heading: string;
+  headingLevel?: HeadingLevel;
+  description?: string;
+  linkText?: string;
+  completed?: boolean;
+  started?: boolean;
+  isNextStep?: boolean;
+  onClick?: StepLinkProps['onClick'];
+  component?: React.ComponentType | keyof JSX.IntrinsicElements;
+  steps?: StepObject[];
+}
+
+export interface StepProps {
+  step: StepObject;
+  onStepLinkClick?: StepLinkProps['onClick'];
+  showSubSubSteps?: boolean;
+  completedText: string;
+  editText: string;
+  resumeText: string;
+  startText: string;
+  actionsLabelText?: string;
+  descriptionLabelText?: string;
+  substepsLabelText?: string;
+}
+
+export const Step = ({ step, ...props }: StepProps) => {
   if (process.env.NODE_ENV !== 'production') {
     if (step.title) {
       console.warn(
@@ -23,7 +53,7 @@ export const Step = ({ step, ...props }) => {
     const label = isValidTemplate ? text.replace('%{step}', step.heading || step.title) : undefined;
     return { 'aria-label': label };
   };
-  const Heading = `h${step.headingLevel || '2'}`;
+  const Heading = `h${step.headingLevel || '2'}` as const;
   const start = step.isNextStep;
   const resume = step.started && !step.completed;
   const className = classNames('ds-c-step', {
@@ -91,36 +121,6 @@ export const Step = ({ step, ...props }) => {
       </div>
     </li>
   );
-};
-
-// Define the shape of a single step so we can recursively define the shape
-export const stepShape = {
-  id: PropTypes.string,
-  href: PropTypes.string.isRequired,
-  title: PropTypes.string, // [Deprecated]
-  heading: PropTypes.string.isRequired,
-  headingLevel: PropTypes.oneOf(['1', '2', '3', '4', '5']),
-  description: PropTypes.string,
-  linkText: PropTypes.string,
-  completed: PropTypes.bool,
-  started: PropTypes.bool,
-  isNextStep: PropTypes.bool,
-  onClick: PropTypes.func,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-};
-stepShape.steps = PropTypes.arrayOf(PropTypes.shape(stepShape));
-
-Step.propTypes = {
-  step: PropTypes.shape(stepShape).isRequired,
-  onStepLinkClick: PropTypes.func,
-  showSubSubSteps: PropTypes.bool,
-  completedText: PropTypes.string.isRequired,
-  editText: PropTypes.string.isRequired,
-  resumeText: PropTypes.string.isRequired,
-  startText: PropTypes.string.isRequired,
-  actionsLabelText: PropTypes.string,
-  descriptionLabelText: PropTypes.string,
-  substepsLabelText: PropTypes.string,
 };
 
 export default Step;
