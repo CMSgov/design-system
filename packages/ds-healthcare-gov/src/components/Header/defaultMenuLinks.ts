@@ -1,7 +1,7 @@
 import { VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
-import { translate } from '../i18n';
+import { TFunction } from 'i18next';
 
 export const LINK_IDENTIFIERS = {
   LOGIN: 'login',
@@ -14,6 +14,7 @@ export const LINK_IDENTIFIERS = {
  * extend the existing default list of menu links.
  */
 export function defaultMenuLinks(
+  t: TFunction,
   locale = 'en',
   deConsumer?: boolean,
   subpath?: string,
@@ -26,11 +27,6 @@ export function defaultMenuLinks(
 ) {
   const isSpanish = locale === 'es';
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
-  // We import and set i18n options within this method, for
-  // scenarios where an app needs to import this method and
-  // extend the existing list of default links
-  const t = translate;
-  const i18nOptions = { lng: locale };
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
   const loggedOut = [];
@@ -41,11 +37,11 @@ export function defaultMenuLinks(
   // of links is passed in.
   if (!customLinksPassedIn) {
     loggedIn.push({
-      label: t('header.myApplicationsAndCoverage', i18nOptions),
+      label: t('header.myApplicationsAndCoverage'),
       href: `${primaryDomain}/marketplace/auth/global/${ffmLocalePath}/myProfile#landingPage`,
     });
     loggedIn.push({
-      label: t('header.myProfile', i18nOptions),
+      label: t('header.myProfile'),
       href: `${primaryDomain}/marketplace/auth/global/${ffmLocalePath}/myProfile#settings`,
     });
   }
@@ -64,7 +60,7 @@ export function defaultMenuLinks(
   if (!hideLogoutLink) {
     loggedIn.push({
       identifier: LINK_IDENTIFIERS.LOGOUT,
-      label: t('header.logout', i18nOptions),
+      label: t('header.logout'),
       href: `${primaryDomain || ''}/logout`,
     });
   }
