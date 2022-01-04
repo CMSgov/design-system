@@ -3,31 +3,26 @@ import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { translate } from '../i18n';
 
+export const LINK_IDENTIFIERS = {
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+};
+
 /**
  * Default menu links for each header variation.
  * Apps can import this method into their app if they need to
  * extend the existing default list of menu links.
- * @param {Function} translate - i18n translator
- * @param {String} locale
- * @param {Boolean} deConsumer
- * @param {String} subpath
- * @param {String} primaryDomain
- * @param {String} switchLocaleLink
- * @param {boolean} hideLoginLink
- * @param {boolean} hideLanguageSwitch
- * @param {boolean} customLinksPassedIn
- * @returns {Object}
  */
 export function defaultMenuLinks(
   locale = 'en',
-  deConsumer,
-  subpath,
+  deConsumer?: boolean,
+  subpath?: string,
   primaryDomain = '',
-  switchLocaleLink,
-  hideLoginLink,
-  hideLogoutLink,
-  hideLanguageSwitch,
-  customLinksPassedIn
+  switchLocaleLink?: string,
+  hideLoginLink?: boolean,
+  hideLogoutLink?: boolean,
+  hideLanguageSwitch?: boolean,
+  customLinksPassedIn?: boolean
 ) {
   const isSpanish = locale === 'es';
   const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
@@ -80,10 +75,5 @@ export function defaultMenuLinks(
 
   return links;
 }
-
-export const LINK_IDENTIFIERS = {
-  LOGIN: 'login',
-  LOGOUT: 'logout',
-};
 
 export default defaultMenuLinks;

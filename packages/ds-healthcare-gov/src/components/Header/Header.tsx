@@ -179,10 +179,7 @@ const Header = (props: HeaderProps) => {
     }
   }
 
-  const classes = classnames(
-    `hc-c-header hc-c-header--${variation()}`,
-    props.className
-  );
+  const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks(
@@ -232,7 +229,6 @@ const Header = (props: HeaderProps) => {
         beforeLinks={beforeMenuLinks()}
         links={links}
         open={openMenu}
-        primaryDomain={props.primaryDomain}
         submenuTop={props.submenuTop}
         submenuBottom={props.submenuBottom}
       />
@@ -241,7 +237,7 @@ const Header = (props: HeaderProps) => {
       {props.headerBottom}
     </header>
   );
-}
+};
 
 Header.defaultProps = {
   initialLanguage: 'en',
