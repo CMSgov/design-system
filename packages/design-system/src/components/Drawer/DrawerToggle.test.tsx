@@ -8,7 +8,7 @@ const defaultProps = {
   showDrawer: jest.fn(),
 };
 
-function renderDrawerToggle(props) {
+function renderDrawerToggle(props?: any) {
   props = Object.assign({}, defaultProps, props);
   const wrapper = shallow(
     <DrawerToggle {...props}>

@@ -15,6 +15,7 @@ export * from './Badge';
 export * from './Button';
 export * from './ChoiceList';
 export * from './DateField';
+export * from './Drawer';
 export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormControl';
