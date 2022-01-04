@@ -2,7 +2,7 @@ import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import React from 'react';
 import classnames from 'classnames';
-import { TFunction, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 export type Language = 'en' | 'es';
 
@@ -35,13 +35,10 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
-  /**
-   * @hide-prop
-   */
-  t: TFunction;
 }
 
-const _Footer = (props: FooterProps) => {
+export const Footer = (props: FooterProps) => {
+  const { t } = useTranslation(props.initialLanguage);
   const classes = classnames(
     'hc-c-footer ds-u-fill--gray-lightest ds-u-padding-y--5',
     props.className
@@ -50,15 +47,14 @@ const _Footer = (props: FooterProps) => {
   return (
     <footer className={classes} role="contentinfo">
       {props.footerTop}
-      <InlineLinkLists t={props.t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={props.t} />
+      <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
+      <LogosRow t={t} />
     </footer>
   );
 };
 
-_Footer.defaultProps = {
+Footer.defaultProps = {
   initialLanguage: 'en',
 } as FooterProps;
 
-export const Footer = withTranslation()(_Footer);
 export default Footer;
