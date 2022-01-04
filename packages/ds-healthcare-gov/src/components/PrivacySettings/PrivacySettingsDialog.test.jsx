@@ -1,8 +1,7 @@
-import { Dialog } from '@cmsgov/design-system';
+import '@testing-library/jest-dom';
 import PrivacySettingsDialog from './PrivacySettingsDialog';
-import PrivacySettingsTable from './PrivacySettingsTable';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 jest.mock('./privacySettings', () => ({
   getPrivacySettings: jest.fn(() => ({
@@ -17,54 +16,49 @@ const defaultProps = {
   onExit: () => {},
 };
 
-function render(props) {
+function renderComponent(props) {
   props = Object.assign({}, defaultProps, props);
-  const wrapper = shallow(<PrivacySettingsDialog {...props} />).dive();
-  return { wrapper, props };
+  return render(<PrivacySettingsDialog {...props} />);
 }
 
 describe('<PrivacySettingsDialog />', function () {
-  it('renders the privacy settings dialog', () => {
-    expect(render().wrapper).toMatchSnapshot();
-  });
-
-  it('passes the onExit prop to the Dialog component', () => {
-    const { wrapper, props } = render();
-    expect(wrapper.find(Dialog).props().onExit).toEqual(props.onExit);
-  });
-
-  it('calls setPrivacySettings and closes dialog on save', () => {
+  it('clicking close button calls onExit and does not save settings', () => {
     const { setPrivacySettings } = require('./privacySettings');
-    const { wrapper, props } = render({ onExit: jest.fn() });
+    const onExit = jest.fn();
+    renderComponent({ onExit });
+    fireEvent.click(screen.getByRole('button', { name: 'Close modal dialog' }));
+    expect(onExit).toHaveBeenCalled();
+    expect(setPrivacySettings).not.toHaveBeenCalled();
+  });
 
-    expect(wrapper.state()).toEqual({
-      c2: '0',
-      c3: '0',
-      c4: '1',
-    });
+  it('sets settings and closes dialog on save', () => {
+    const { setPrivacySettings } = require('./privacySettings');
+    const onExit = jest.fn();
+    renderComponent({ onExit });
+    const checkboxes = screen.getAllByRole('checkbox');
 
-    wrapper.setState({ c3: '1' });
-    const dialog = wrapper.find(Dialog);
-    const saveButton = dialog.props().actions;
-    saveButton.props.onClick();
+    function getSettingCheckboxes(name) {
+      return checkboxes.filter((checkbox) => checkbox.name === `cookie-${name}`);
+    }
 
-    expect(props.onExit).toHaveBeenCalled();
+    function getSettingValue(name) {
+      const checkbox = getSettingCheckboxes(name).find((checkbox) => checkbox.checked);
+      return checkbox.value;
+    }
+
+    expect(getSettingValue('c2')).toEqual('0');
+    expect(getSettingValue('c3')).toEqual('0');
+    expect(getSettingValue('c4')).toEqual('1');
+
+    const allow = getSettingCheckboxes('c3').find((checkbox) => checkbox.value === '1');
+    fireEvent.click(allow);
+    fireEvent.click(screen.getByRole('button', { name: 'privacy.save' }));
+
+    expect(onExit).toHaveBeenCalled();
     expect(setPrivacySettings).toHaveBeenCalledWith({
       c2: '0',
       c3: '1',
       c4: '1',
     });
-  });
-
-  it('passes appropriate props to PrivacySettingsTable', () => {
-    const { wrapper } = render();
-    const settingsTable = wrapper.find(PrivacySettingsTable);
-    expect(settingsTable.props().privacySettings).toEqual([
-      { settingsKey: 'c3', translationKey: 'advertising', value: '0' },
-      { settingsKey: 'c4', translationKey: 'socialMedia', value: '1' },
-      { settingsKey: 'c2', translationKey: 'webAnalytics', value: '0' },
-    ]);
-    settingsTable.props().setPrivacySetting('c2', '1');
-    expect(wrapper.state('c2')).toEqual('1');
   });
 });
