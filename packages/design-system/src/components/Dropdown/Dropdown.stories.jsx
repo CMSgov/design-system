@@ -10,25 +10,6 @@ export default {
     children: { control: false },
     options: { control: false },
   },
-  parameters: {
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#fff',
-        },
-        {
-          name: 'Hcgov dark',
-          value: '#112e51',
-        },
-        {
-          name: 'Mgov dark',
-          value: '#146a5d',
-        },
-      ],
-    },
-  },
   subcomponents: { Select },
 };
 

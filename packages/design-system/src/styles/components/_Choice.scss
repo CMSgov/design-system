@@ -44,11 +44,6 @@ $ds-c-inset-border-width: $spacer-half;
     width: $choice-size;
   }
 
-  // Choice radio button
-  &[type='radio'] + label::before {
-    border-radius: 100%;
-  }
-
   // Checkmark icon
   + label::after {
     background: transparent;
@@ -67,6 +62,23 @@ $ds-c-inset-border-width: $spacer-half;
     width: 10px;
   }
 
+  // Choice radio button
+  &[type='radio'] + label::before {
+    border-radius: 100%;
+  }
+  &[type='radio'] + label::after {
+    background-color: $choice-checked-border-color;
+    border: 0;
+    border-radius: 100%;
+    height: $choice-radio-button-size;
+    left: 5px;
+    top: 5px;
+    transform: none;
+    width: $choice-radio-button-size;
+  }
+  &:checked[type='radio'] + label::before {
+    background-color: $color-white;
+  }
   // Errored choice
   @if $ds-include-choice-error-highlight {
     &.ds-c-choice--error + label::before {
@@ -159,6 +171,12 @@ $ds-c-inset-border-width: $spacer-half;
       top: 8px;
       width: 7px;
     }
+  }
+  &[type='radio'] + label::after {
+    height: $choice-radio-button-size-small;
+    left: 4px;
+    top: 6px;
+    width: $choice-radio-button-size-small;
   }
 }
 
