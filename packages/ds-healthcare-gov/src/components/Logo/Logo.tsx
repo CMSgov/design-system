@@ -5,7 +5,7 @@ import React from 'react';
 type Language = 'en' | 'es';
 
 export interface LogoProps {
-  locale: Language;
+  locale?: Language;
 }
 
 export function Logo(props: LogoProps) {
