@@ -3,6 +3,7 @@ import React from 'react';
 import StepLink from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
+import { CheckIcon } from '../Icons';
 
 export const Step = ({ step, ...props }) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -75,7 +76,12 @@ export const Step = ({ step, ...props }) => {
         )}
       </div>
       <div className="ds-c-step__actions" {...actionsLabel}>
-        {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
+        {step.completed && (
+          <div className="ds-c-step__completed-text">
+            <CheckIcon className="ds-c-icon-color--success" />
+            {props.completedText}
+          </div>
+        )}
         {linkLabel && (
           <StepLink
             component={step.component}

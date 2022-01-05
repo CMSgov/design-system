@@ -1,5 +1,12 @@
 import EnglishTranslations from '../../locale/en.json';
-import { LockCircleIcon, LockIcon, UsaFlagIcon, BuildingCircleIcon } from '../Icons';
+import {
+  LockCircleIcon,
+  LockIcon,
+  UsaFlagIcon,
+  BuildingCircleIcon,
+  ArrowIcon,
+  CloseIconThin,
+} from '../Icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpanishTranslations from '../../locale/es.json';
@@ -10,12 +17,97 @@ export class UsaBanner extends React.PureComponent {
   constructor(props) {
     super(props);
     this.id = props.id || uniqueId('gov-banner_');
-    this.state = { isBannerOpen: false };
+
+    this.state = {
+      isBannerOpen: false,
+      shouldRenderMobileView: false,
+    };
     this.handleToggleBanner = this.handleToggleBanner.bind(this);
+  }
+
+  componentDidMount() {
+    if (window) {
+      this.media = window.matchMedia('(max-width: 543px)');
+      this.onMediaChange = this.onMediaChange.bind(this);
+
+      this.media.addEventListener('change', this.onMediaChange);
+
+      this.setState({ shouldRenderMobileView: this.media.matches });
+    }
+  }
+
+  componentWillUnmount() {
+    if (window) {
+      this.media.removeEventListener('change', this.onMediaChange);
+    }
+  }
+
+  onMediaChange(evt) {
+    this.setState({ shouldRenderMobileView: evt.matches });
   }
 
   handleToggleBanner() {
     this.setState({ isBannerOpen: !this.state.isBannerOpen });
+  }
+
+  // on mobile, the entire header needs to be a clickable element
+  renderMobileHeaderContent(t) {
+    return (
+      <button
+        onClick={this.handleToggleBanner}
+        className="ds-c-usa-banner__button"
+        aria-expanded={this.state.isBannerOpen}
+        aria-controls={this.id}
+      >
+        <UsaFlagIcon
+          className="ds-c-usa-banner__header-flag"
+          title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
+        />
+        <p className="ds-c-usa-banner__header-text">
+          <span>{t.bannerText}</span>
+          {!this.state.isBannerOpen && (
+            <span className="ds-c-usa-banner__cta-wrapper">
+              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+              <ArrowIcon direction="down" className="ds-c-usa-banner__action-icon" />
+            </span>
+          )}
+        </p>
+        {this.state.isBannerOpen && (
+          <div className="ds-c-usa-banner__collapse-banner-container">
+            <CloseIconThin />
+          </div>
+        )}
+      </button>
+    );
+  }
+
+  // on larger screens, only cta needs to be clickable
+  renderHeaderContent(t) {
+    return (
+      <>
+        <UsaFlagIcon
+          className="ds-c-usa-banner__header-flag"
+          title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
+        />
+        <p className="ds-c-usa-banner__header-text">
+          <span>{t.bannerText}</span>
+
+          <button
+            onClick={this.handleToggleBanner}
+            className="ds-c-usa-banner__button"
+            aria-expanded={this.state.isBannerOpen}
+            aria-controls={this.id}
+          >
+            <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
+
+            <ArrowIcon
+              direction={this.state.isBannerOpen ? 'up' : 'down'}
+              className="ds-c-usa-banner__action-icon"
+            />
+          </button>
+        </p>
+      </>
+    );
   }
 
   render() {
@@ -27,30 +119,14 @@ export class UsaBanner extends React.PureComponent {
     return (
       <section className={classes} aria-label={t.bannerLabel} lang={langProp}>
         <header
-          className={`ds-c-usa-banner__header ${
-            this.state.isBannerOpen ? 'ds-c-usa-banner__header--expanded' : ''
-          }`}
+          className={classNames('ds-c-usa-banner__header', {
+            'ds-c-usa-banner__header--expanded': this.state.isBannerOpen,
+            'ds-c-usa-banner__header--mobile': this.state.shouldRenderMobileView,
+          })}
         >
-          <p className="ds-c-usa-banner__header-text">
-            <UsaFlagIcon
-              className="ds-c-usa-banner__header-flag"
-              title={this.props.locale === 'es' ? 'U.S. Bandera' : 'U.S. Flag'}
-            />
-          </p>
-          <p className="ds-c-usa-banner__header-text">
-            <span>{t.bannerText}</span>
-            <span className="ds-c-usa-banner__header-action" aria-hidden>
-              {t.bannerActionText}
-            </span>
-            <button
-              onClick={this.handleToggleBanner}
-              className="ds-c-usa-banner__button"
-              aria-expanded={this.state.isBannerOpen}
-              aria-controls={this.id}
-            >
-              <span className="ds-c-usa-banner__button-text">{t.bannerActionText}</span>
-            </button>
-          </p>
+          {this.state.shouldRenderMobileView
+            ? this.renderMobileHeaderContent(t)
+            : this.renderHeaderContent(t)}
         </header>
         <div className="ds-c-usa-banner__content" id={this.id} hidden={!this.state.isBannerOpen}>
           <div className="ds-c-usa-banner__guidance-container">
