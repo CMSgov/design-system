@@ -38,21 +38,23 @@ export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBan
   const langProp = props.locale === 'es' ? 'es' : null;
   const classes = classNames('ds-c-usa-banner', props.className);
   const id = props.id || uniqueId('gov-banner_');
-  let media;
-
-  const onMediaChange = (evt) => {
-    setShouldRenderMobileView(evt.matches);
-  };
 
   useEffect(() => {
+    let media;
+    const onMediaChange = (evt) => {
+      setShouldRenderMobileView(evt.matches);
+    };
+
     if (window) {
-      const media = window.matchMedia('(max-width: 543px)');
+      media = window.matchMedia('(max-width: 543px)');
       media.addEventListener('change', onMediaChange);
 
       setShouldRenderMobileView(media.matches);
     }
     return () => {
-      media.removeEventListener('change', onMediaChange);
+      if (window) {
+        media.removeEventListener('change', onMediaChange);
+      }
     };
   }, []);
 
