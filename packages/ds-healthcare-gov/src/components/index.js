@@ -1,5 +1,8 @@
 'use strict';
 
+// Unfortunately we can't convert this module to TypeScript until we deprecate
+// the `secondary` button variation and get rid of its TS definition file.
+
 /**
  * This is the main entry file for a child design system's React components.
  * It should contain all exported JS from the core CMS design system
