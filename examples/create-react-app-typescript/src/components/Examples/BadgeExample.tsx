@@ -1,4 +1,4 @@
-import { Badge } from '@cmsgov/ds-healthcare-gov';
+import { Badge } from '@cmsgov/design-system';
 import React from 'react';
 import usflag from '../../images/us_flag_small.png';
 

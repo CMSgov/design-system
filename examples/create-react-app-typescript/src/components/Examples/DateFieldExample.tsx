@@ -1,4 +1,4 @@
-import { DateField } from '@cmsgov/ds-healthcare-gov';
+import { DateField } from '@cmsgov/design-system';
 import React from 'react';
 
 function DateFieldExample(): React.ReactElement {

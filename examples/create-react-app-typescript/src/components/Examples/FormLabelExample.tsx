@@ -1,4 +1,4 @@
-import { FormLabel } from '@cmsgov/ds-healthcare-gov';
+import { FormLabel } from '@cmsgov/design-system';
 import React from 'react';
 
 function FormLabelExample(): React.ReactElement {
