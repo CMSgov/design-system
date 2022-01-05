@@ -10,3 +10,5 @@ import { configure } from 'enzyme';
 
 import '@testing-library/jest-dom/extend-expect';
 configure({ adapter: new Adapter() });
+
+window.scroll = () => {};

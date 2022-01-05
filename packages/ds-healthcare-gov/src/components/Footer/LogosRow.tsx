@@ -1,12 +1,15 @@
 import Logo from './Logo';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { HHSLogo, UsaLogo, WhiteHouseLogo } from '@cmsgov/design-system';
+
+interface LogosRowProps {
+  t: (string) => string;
+}
 
 /**
  * The logos row includes agency/branch logos and address info
  */
-const LogosRow = function (props) {
+const LogosRow = function (props: LogosRowProps) {
   return (
     <div className="ds-l-container ds-u-margin-top--4">
       <div className="ds-l-form-row">
@@ -33,10 +36,6 @@ const LogosRow = function (props) {
       </div>
     </div>
   );
-};
-
-LogosRow.propTypes = {
-  t: PropTypes.func.isRequired,
 };
 
 export default LogosRow;

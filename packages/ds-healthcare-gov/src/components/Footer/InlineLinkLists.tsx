@@ -1,7 +1,12 @@
 import PrivacySettingsLink from './PrivacySettingsLink';
-import PropTypes from 'prop-types';
 import React from 'react';
 import languages from './languages';
+
+interface InlineLinkListsProps {
+  /** i18next translate method */
+  t: (string) => string;
+  primaryDomain: string;
+}
 
 const inlineLiClasses = 'hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block';
 
@@ -35,7 +40,7 @@ const renderBasicList = function (t, links) {
  * links, like the Privacy Policy, and other helpful things like
  * links to a variety of different languages.
  */
-const InlineLinkLists = function (props) {
+const InlineLinkLists = function (props: InlineLinkListsProps) {
   const { primaryDomain } = props;
 
   const inlineLinksTop = {
@@ -49,7 +54,7 @@ const InlineLinkLists = function (props) {
     'footer.nondiscriminationAndA11y':
       'http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html',
     'footer.privacyPolicy': `${primaryDomain}/privacy`,
-    'footer.privacySettings': <PrivacySettingsLink />,
+    'footer.privacySettings': <PrivacySettingsLink t={props.t} />,
     'footer.linkingPolicy': `${primaryDomain}/privacy/#links`,
     'footer.usingThisSite': `${primaryDomain}/using-this-site`,
     'footer.plainWriting': 'http://www.hhs.gov/open/plain-writing/index.html',
@@ -86,12 +91,6 @@ const InlineLinkLists = function (props) {
 
 InlineLinkLists.defaultProps = {
   primaryDomain: '',
-};
-
-InlineLinkLists.propTypes = {
-  /** i18next translate method */
-  t: PropTypes.func.isRequired,
-  primaryDomain: PropTypes.string.isRequired,
 };
 
 export default InlineLinkLists;

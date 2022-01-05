@@ -81,7 +81,9 @@ exports[`InlineLinkLists renders lists of links 1`] = `
       className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
       key="footer.privacySettings"
     >
-      <Component />
+      <PrivacySettingsLink
+        t={[Function]}
+      />
     </li>
     <li
       className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
@@ -385,7 +387,9 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
       className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
       key="footer.privacySettings"
     >
-      <Component />
+      <PrivacySettingsLink
+        t={[Function]}
+      />
     </li>
     <li
       className="hc-c-footer__inline-item ds-u-margin-y--0 ds-u-display--inline-block"
