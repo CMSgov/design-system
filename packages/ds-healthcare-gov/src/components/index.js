@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * This is the main entry file for a child design system's React components.
  * It should contain all exported JS from the core CMS design system
@@ -16,10 +18,8 @@ export * from '@cmsgov/design-system';
 export * from './Footer';
 export * from './Header';
 export * from './Logo';
-export { Button } from './Button';
 
 export * from './flags';
-export { Language } from './i18n';
 
 /**
  * Healthcare.gov Flags
