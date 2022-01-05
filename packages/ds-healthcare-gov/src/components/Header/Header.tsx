@@ -53,7 +53,7 @@ export interface HeaderProps {
   /**
    * For logged-in users, pass in their first name to display in the header
    */
-  firstName?: React.ReactNode;
+  firstName?: string;
   /**
    * For applications hosted at paths other than the root `healthcare.gov`/
    * `cuidadodesalud.gov`. This string will be appended to the end of the
@@ -218,7 +218,6 @@ const Header = (props: HeaderProps) => {
             t={t}
             firstName={props.firstName}
             onMenuToggleClick={handleMenuToggleClick}
-            locale={props.initialLanguage}
             loggedIn={props.loggedIn}
             open={openMenu}
             links={links}

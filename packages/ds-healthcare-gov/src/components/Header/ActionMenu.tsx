@@ -1,6 +1,5 @@
 /* eslint-disable react/no-multi-comp, jsx-a11y/no-redundant-roles */
 import { Button, CloseIconThin, MenuIcon } from '@cmsgov/design-system';
-import PropTypes from 'prop-types';
 import React, { SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
@@ -14,7 +13,7 @@ export interface LinkProps {
   onClick?: (event: SyntheticEvent) => any;
 }
 
-export interface ActionMenu {
+export interface ActionMenuProps {
   t: TFunction;
   /** Applies the inverse theme styling */
   firstName?: string;
@@ -41,7 +40,7 @@ export interface ActionMenu {
  * name. The logged-in variation always displays a "Menu" toggle
  * button, and the logged-out variation only displays it on mobile.
  */
-const ActionMenu = function (props) {
+const ActionMenu = function (props: ActionMenuProps) {
   function onClick(event) {
     sendHeaderEvent(props.open ? 'menu closed' : 'menu opened');
     props.onMenuToggleClick(event);
@@ -52,11 +51,9 @@ const ActionMenu = function (props) {
       aria-controls={menuId}
       aria-expanded={!!props.open}
       aria-label={props.open ? props.t('header.closeMenu') : props.t('header.openMenu')}
-      className={classnames(
-        'hc-c-action-menu-button',
-        'ds-u-sm-margin-left--2',
-        { "ds-u-display--inline-block ds-u-sm-display--none": !props.loggedIn }
-      )}
+      className={classnames('hc-c-action-menu-button', 'ds-u-sm-margin-left--2', {
+        'ds-u-display--inline-block ds-u-sm-display--none': !props.loggedIn,
+      })}
       onClick={onClick}
       size="small"
     >
@@ -86,7 +83,12 @@ const ActionMenu = function (props) {
               <li key={link.href} className="hc-c-logged-out-links__li">
                 <a
                   href={link.href}
-                  onClick={() => sendHeaderEvent(link.label, link.href)}
+                  // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
+                  // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
+                  // can't actually be coerced into a string. We've had to do a lot of extra work in
+                  // other cases to find the text content of a ReactNode after rendering, like in
+                  // packages/design-system/src/components/Alert/Alert.tsx#L114
+                  onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
                   className="hc-c-logged-out-links__link"
                 >
                   {link.label}
