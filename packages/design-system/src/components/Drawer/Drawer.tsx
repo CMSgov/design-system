@@ -45,7 +45,7 @@ export interface DrawerProps {
 
 const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
-  const id: string = props.headingId || uniqueId('drawer_');
+  const id = useRef(props.headingId || uniqueId('drawer_'));
 
   function handleEscapeKey(evt) {
     switch (evt.code) {
@@ -64,16 +64,20 @@ const Drawer = (props: DrawerProps) => {
     return () => document.removeEventListener('keydown', (evt) => handleEscapeKey(evt));
   }, []);
 
-  const Heading = `h${props.headingLevel}` as React.ElementType;
+  const Heading = `h${props.headingLevel}` as const;
 
   /* eslint-disable jsx-a11y/no-noninteractive-tabindex, react/no-danger */
   const drawerMarkup = (
-    <div aria-labelledby={id} className={classNames(props.className, 'ds-c-drawer')} role="dialog">
+    <div
+      aria-labelledby={id.current}
+      className={classNames(props.className, 'ds-c-drawer')}
+      role="dialog"
+    >
       <div className="ds-c-drawer__window">
         <div className="ds-c-drawer__header">
           <Heading
-            tabIndex="0"
-            id={id}
+            tabIndex={0}
+            id={id.current}
             className="ds-c-drawer__header-heading"
             ref={(el) => (headingRef.current = el)}
           >

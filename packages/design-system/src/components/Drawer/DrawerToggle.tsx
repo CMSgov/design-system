@@ -37,11 +37,11 @@ const DrawerToggle = ({
   showDrawer,
   drawerOpen,
   ...others
-}: DrawerToggleProps) => {
+}: DrawerToggleProps): React.ReactElement => {
   const buttonRef = useRef(null);
 
   useEffect(() => {
-    if (!drawerOpen && buttonRef) {
+    if (!drawerOpen && buttonRef.current) {
       buttonRef.current.focus();
     }
   }, [drawerOpen]);
