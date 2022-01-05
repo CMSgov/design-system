@@ -1,4 +1,4 @@
-import { Link, VARIATION_NAMES } from './Header';
+import { Language, Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { TFunction } from 'i18next';
@@ -19,7 +19,7 @@ export interface DefaultLink extends Link {
  */
 export function defaultMenuLinks(
   t: TFunction,
-  locale = 'en',
+  locale: Language = 'en',
   deConsumer?: boolean,
   subpath?: string,
   primaryDomain = '',

@@ -1,3 +1,6 @@
+import { TFunction } from 'i18next';
+import { Language } from './Header';
+
 /**
  * Returns a link pointing to the login page
  * @param {Function} translate - i18n translator
@@ -5,7 +8,7 @@
  * @param {String} primaryDomain
  * @returns {Object}
  */
-export default function (t, deConsumer, primaryDomain = '') {
+export default function loginLink(t: TFunction, deConsumer?: boolean, primaryDomain = '') {
   return {
     label: t('header.login'),
     href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
