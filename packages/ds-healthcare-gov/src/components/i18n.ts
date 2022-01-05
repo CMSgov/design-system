@@ -7,6 +7,8 @@ import en from './locale/en.json';
 import es from './locale/es.json';
 import i18n from 'i18next';
 
+export type Language = 'en' | 'es';
+
 const resources = {
   // TODO: This is all wrong, but this is a band-aid until we can release a breaking change.
   // The keys of this resources object are supposed to be the languages, but we're using
