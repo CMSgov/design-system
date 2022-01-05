@@ -14,8 +14,8 @@ export interface DrawerProps {
   closeButtonText?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
-  footerBody: React.ReactNode;
-  footerTitle: string;
+  footerBody?: React.ReactNode;
+  footerTitle?: string;
   /**
    * Enables focus trap functionality within Drawer.
    */
@@ -31,7 +31,7 @@ export interface DrawerProps {
   /**
    * Heading type to override default `<h3>`
    */
-  headingLevel: '1' | '2' | '3' | '4' | '5';
+  headingLevel?: '1' | '2' | '3' | '4' | '5';
   /**
    * Enables "sticky" position of Drawer header element.
    */
@@ -58,11 +58,11 @@ const Drawer = (props: DrawerProps) => {
   }
 
   useEffect(() => {
-    document.removeEventListener('keydown', (evt) => handleEscapeKey(evt));
-
     if (props.hasFocusTrap) document.addEventListener('keydown', (evt) => handleEscapeKey(evt));
     if (headingRef) headingRef.current.focus();
-  });
+
+    return () => document.removeEventListener('keydown', (evt) => handleEscapeKey(evt));
+  }, []);
 
   const Heading = `h${props.headingLevel}` as React.ElementType;
 

@@ -2,8 +2,6 @@
  * index.d.ts - Typescript definition files entry point
  */
 export { default as Dialog } from './Dialog/Dialog';
-export { default as HelpDrawer } from './HelpDrawer/HelpDrawer';
-export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
 export { default as SkipNav } from './SkipNav/SkipNav';
 export { default as StepList } from './StepList/StepList';
 
@@ -20,6 +18,7 @@ export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormControl';
 export * from './FormLabel';
+export * from './HelpDrawer';
 export * from './InlineError';
 export * from './MonthPicker';
 export * from './Pagination';
