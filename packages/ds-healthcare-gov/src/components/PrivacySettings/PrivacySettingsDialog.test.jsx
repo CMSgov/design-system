@@ -13,6 +13,7 @@ jest.mock('./privacySettings', () => ({
 }));
 
 const defaultProps = {
+  t: (key) => key,
   onExit: () => {},
 };
 

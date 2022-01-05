@@ -1,7 +1,6 @@
 /**
  * index.d.ts - Typescript definition files entry point
  */
-export { default as Dialog } from './Dialog/Dialog';
 export { default as HelpDrawer } from './HelpDrawer/HelpDrawer';
 export { default as HelpDrawerToggle } from './HelpDrawer/HelpDrawerToggle';
 
@@ -13,6 +12,7 @@ export * from './Badge';
 export * from './Button';
 export * from './ChoiceList';
 export * from './DateField';
+export * from './Dialog';
 export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormControl';

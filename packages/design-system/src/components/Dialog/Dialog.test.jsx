@@ -91,11 +91,13 @@ describe('Dialog', function () {
 
     it('sends analytics event tracking on open dialog', () => {
       render({ heading: 'dialog heading' });
-      expect(tealiumMock).toBeCalledWith({
-        ga_eventType: 'cmsds',
-        ga_eventValue: '',
-        ...defaultEvent,
-      });
+      setTimeout(() => {
+        expect(tealiumMock).toBeCalledWith({
+          ga_eventType: 'cmsds',
+          ga_eventValue: '',
+          ...defaultEvent,
+        });
+      }, 0);
     });
 
     it('disables analytics event tracking on open', () => {
@@ -105,12 +107,14 @@ describe('Dialog', function () {
 
     it('overrides analytics event tracking on open', () => {
       render({ analyticsLabelOverride: 'other heading' });
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          ga_eventLabel: 'other heading',
-          heading: 'other heading',
-        })
-      );
+      setTimeout(() => {
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            ga_eventLabel: 'other heading',
+            heading: 'other heading',
+          })
+        );
+      }, 0);
     });
   });
 });
