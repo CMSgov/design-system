@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 export interface SkipNavProps {
   /**
@@ -17,6 +17,16 @@ export interface SkipNavProps {
   onClick?: (...args: any[]) => any;
 }
 
-declare const SkipNav: React.FC<SkipNavProps>;
+export const SkipNav = ({ children, href, onClick }: SkipNavProps) => {
+  return (
+    <a className="ds-c-skip-nav" href={href} onClick={onClick}>
+      {children}
+    </a>
+  );
+};
+
+SkipNav.defaultProps = {
+  children: 'Skip to main content',
+};
 
 export default SkipNav;
