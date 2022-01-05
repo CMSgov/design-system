@@ -19,7 +19,7 @@ export * from './Header';
 export * from './Logo';
 
 export * from './flags';
-export type { Language } from './i18n';
+export { Language } from './i18n';
 
 /**
  * Healthcare.gov Flags
