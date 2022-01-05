@@ -1,4 +1,4 @@
-import { MonthPicker } from '@cmsgov/design-system';
+import { MonthPicker } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function MonthPickerExample(): React.ReactElement {

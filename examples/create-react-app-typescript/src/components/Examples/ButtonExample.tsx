@@ -1,4 +1,4 @@
-import { Button } from '@cmsgov/design-system';
+import { Button } from '@cmsgov/ds-healthcare-gov';
 import React from 'react';
 
 function ButtonExample(): React.ReactElement {
@@ -7,7 +7,7 @@ function ButtonExample(): React.ReactElement {
       <h2>Button Example</h2>
       <Button
         className="ds-c-button ds-c-button--primary"
-        key="primary"
+        variation="secondary"
         href="https://designsystem.digital.gov/"
       >
         OK
