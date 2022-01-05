@@ -1,14 +1,10 @@
-import { LINK_IDENTIFIERS } from './defaultMenuLinks';
+import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
+import { Link } from './Header';
 import React from 'react';
 import { sendHeaderEvent } from './analytics';
 
 interface MenuLinksProps {
-  links: {
-    identifier?: string;
-    href: string;
-    label: React.ReactNode;
-    onClick?: (...args: any[]) => any;
-  }[];
+  links: Array<Link | DefaultLink>;
 }
 
 /**
@@ -21,8 +17,8 @@ const MenuLinks = (props: MenuLinksProps) => (
   <ul className="hc-c-menu__links ds-c-list ds-c-list--bare">
     {props.links.map(function (link) {
       const isLoginLogoutLink =
-        link.identifier &&
-        (link.identifier === LINK_IDENTIFIERS.LOGIN || link.identifier === LINK_IDENTIFIERS.LOGOUT);
+        (link as DefaultLink).identifier === LinkIdentifier.LOGIN ||
+        (link as DefaultLink).identifier === LinkIdentifier.LOGOUT;
       function onClick(event) {
         // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
         // potential bug here where we allow link.label to be a ReactNode, but a ReactNode

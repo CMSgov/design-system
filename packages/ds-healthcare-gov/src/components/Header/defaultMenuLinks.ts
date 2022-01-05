@@ -1,12 +1,16 @@
-import { VARIATION_NAMES } from './Header';
+import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { TFunction } from 'i18next';
 
-export const LINK_IDENTIFIERS = {
-  LOGIN: 'login',
-  LOGOUT: 'logout',
-};
+export enum LinkIdentifier {
+  LOGIN = 'login',
+  LOGOUT = 'logout',
+}
+
+export interface DefaultLink extends Link {
+  identifier?: LinkIdentifier;
+}
 
 /**
  * Default menu links for each header variation.
@@ -54,12 +58,12 @@ export function defaultMenuLinks(
 
   if (!hideLoginLink) {
     const logLink = loginLink(t, deConsumer, primaryDomain);
-    loggedOut.push(Object.assign({ identifier: LINK_IDENTIFIERS.LOGIN }, logLink));
+    loggedOut.push(Object.assign({ identifier: LinkIdentifier.LOGIN }, logLink));
   }
 
   if (!hideLogoutLink) {
     loggedIn.push({
-      identifier: LINK_IDENTIFIERS.LOGOUT,
+      identifier: LinkIdentifier.LOGOUT,
       label: t('header.logout'),
       href: `${primaryDomain || ''}/logout`,
     });

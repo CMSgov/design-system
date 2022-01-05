@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 export type Language = 'en' | 'es';
 
-interface Link {
+export interface Link {
   href: string;
   label: React.ReactNode;
   onClick?: (...args: any[]) => any;

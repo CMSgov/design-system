@@ -2,14 +2,11 @@
 import MenuLinks from './MenuLinks';
 import React from 'react';
 import classnames from 'classnames';
+import { DefaultLink } from './defaultMenuLinks';
+import { Link } from './Header';
 
 interface MenuProps {
-  links?: {
-    identifier?: string;
-    href: string;
-    label: React.ReactNode;
-    onClick?: (...args: any[]) => any;
-  }[];
+  links?: Array<Link | DefaultLink>;
   submenuTop?: React.ReactNode;
   submenuBottom?: React.ReactNode;
   /**
