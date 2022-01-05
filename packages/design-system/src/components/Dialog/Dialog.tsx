@@ -273,7 +273,7 @@ export interface DialogProps extends AriaModalProps {
   additional_props?: AriaModalProps;
 }
 
-export const Dialog = (props: DialogProps): React.ReactNode => {
+export const Dialog = (props: DialogProps) => {
   const headingRef = useRef(null);
   let eventHeadingText = '';
 
