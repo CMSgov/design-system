@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { ArrowIcon } from '../Icons';
 
 const DEFAULT_COMPONENT_TYPE = 'div';
 
@@ -64,7 +65,12 @@ export class VerticalNavItemLabel extends React.PureComponent {
       props = Object.assign(props, this.anchorProps());
     }
 
-    return <this.LabelComponent {...props}>{this.props.label}</this.LabelComponent>;
+    return (
+      <this.LabelComponent {...props}>
+        {this.props.label}
+        {this.props.hasSubnav && <ArrowIcon direction={this.props.collapsed ? 'down' : 'up'} />}
+      </this.LabelComponent>
+    );
   }
 }
 

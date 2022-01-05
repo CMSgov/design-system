@@ -3,6 +3,7 @@ import React from 'react';
 import { alertSendsAnalytics } from '../flags';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -152,6 +153,26 @@ export class Alert extends React.PureComponent<
     }
   }
 
+  // getting proper icon for alert variation
+  getIcon(): React.ReactElement | null {
+    const iconClass = 'ds-c-alert__icon';
+    const { hideIcon, variation } = this.props;
+    if (hideIcon) {
+      return null;
+    }
+
+    switch (variation) {
+      case 'error':
+        return <AlertCircleIcon className={iconClass} />;
+      case 'success':
+        return <CheckCircleIcon className={iconClass} />;
+      case 'warn':
+        return <WarningIcon className={iconClass} />;
+      default:
+        return <InfoCircleIcon className={iconClass} />;
+    }
+  }
+
   render(): JSX.Element {
     const {
       children,
@@ -195,6 +216,7 @@ export class Alert extends React.PureComponent<
         aria-labelledby={heading ? this.headingId : undefined}
         {...alertProps}
       >
+        {this.getIcon()}
         <div className="ds-c-alert__body">
           {this.heading()}
           {children}
