@@ -162,7 +162,7 @@ export class Table extends React.Component<
     });
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       borderless,
       className,

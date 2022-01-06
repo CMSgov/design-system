@@ -178,7 +178,7 @@ export class Button extends React.PureComponent<ButtonProps> {
     }
   }
 
-  public render(): React.ReactNode {
+  public render() {
     const attrs = this.attrs();
     const ComponentType = this.componentType();
 

@@ -216,7 +216,7 @@ export class DateInput extends React.PureComponent<DateInputProps> {
     );
   }
 
-  render(): React.ReactNode {
+  render() {
     return (
       <div className="ds-c-datefield__container ds-l-form-row">
         {this.renderField('month')}
