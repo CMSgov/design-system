@@ -2,7 +2,7 @@ import React from 'react';
 import DrawerToggle, { DrawerToggleProps } from '../Drawer/DrawerToggle';
 import classNames from 'classnames';
 
-export type HelpDrawerToggleProps = DrawerToggleProps & {
+export type HelpDrawerToggleProps = Omit<DrawerToggleProps, 'drawerOpen'> & {
   /**
    * Whether or not the Help Drawer controlled by this toggle is open or closed.
    * This value is used to re-focus the toggle that opened the drawer when the drawer closes.
