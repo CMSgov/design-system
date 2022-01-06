@@ -81,7 +81,7 @@ export interface TooltipProps {
   zIndex?: number;
 }
 
-export const Tooltip = (props: TooltipProps): React.ReactNode => {
+export const Tooltip = (props: TooltipProps) => {
   const popper = useRef(null);
   const id = useRef(props.id ?? uniqueId('trigger_'));
   const triggerElement = useRef(null);
