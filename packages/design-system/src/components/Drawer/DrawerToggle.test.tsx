@@ -1,4 +1,4 @@
-import DrawerToggle from './DrawerToggle';
+import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -8,14 +8,13 @@ const defaultProps = {
   showDrawer: jest.fn(),
 };
 
-function renderDrawerToggle(props) {
-  props = Object.assign({}, defaultProps, props);
+function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
   const wrapper = shallow(
-    <DrawerToggle {...props}>
+    <DrawerToggle {...defaultProps} {...props}>
       <p>content</p>
     </DrawerToggle>
   );
-  return { props, wrapper };
+  return { wrapper };
 }
 
 describe('DrawerToggle', () => {
@@ -50,8 +49,8 @@ describe('DrawerToggle', () => {
 
   it('passes through extra props', () => {
     const ariaLabel = 'test';
-    const { wrapper } = renderDrawerToggle({ ariaLabel });
+    const { wrapper } = renderDrawerToggle({ 'aria-label': ariaLabel });
     const toggle = wrapper.find('Button');
-    expect(toggle.props().ariaLabel).toBe(ariaLabel);
+    expect(toggle.props()['aria-label']).toBe(ariaLabel);
   });
 });

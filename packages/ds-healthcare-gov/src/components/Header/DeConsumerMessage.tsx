@@ -3,7 +3,7 @@ import { TFunction, withTranslation } from 'react-i18next';
 
 interface DeConsumerMessageProps {
   deBrokerName: string;
-  /** 
+  /**
    * @hide-props
    */
   t: TFunction;

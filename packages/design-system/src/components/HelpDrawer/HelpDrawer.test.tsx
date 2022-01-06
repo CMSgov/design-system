@@ -1,6 +1,8 @@
-import HelpDrawer from './HelpDrawer';
+/* eslint-disable @typescript-eslint/no-empty-function */
+import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { UtagContainer } from '../analytics';
 import { setHelpDrawerSendsAnalytics } from '../flags';
 import { shallow } from 'enzyme';
 
@@ -15,14 +17,13 @@ const defaultProps = {
   heading: 'HelpDrawer title',
 };
 
-function renderHelpDrawer(props) {
-  props = Object.assign({}, defaultProps, props);
+function renderHelpDrawer(props: Partial<HelpDrawerProps> = {}) {
   const wrapper = shallow(
-    <HelpDrawer {...props}>
+    <HelpDrawer {...defaultProps} {...props}>
       <p>content</p>
     </HelpDrawer>
   );
-  return { props, wrapper };
+  return { wrapper };
 }
 
 describe('HelpDrawer', () => {
@@ -60,7 +61,7 @@ describe('HelpDrawer', () => {
     beforeEach(() => {
       setHelpDrawerSendsAnalytics(true);
       tealiumMock = jest.fn();
-      window.utag = {
+      ((window as any) as UtagContainer).utag = {
         link: tealiumMock,
       };
     });

@@ -15,7 +15,7 @@ exports[`Drawer renders a snapshot 1`] = `
       <h3
         className="ds-c-drawer__header-heading"
         id="drawer_2"
-        tabIndex="0"
+        tabIndex={0}
       >
         Drawer title
       </h3>
