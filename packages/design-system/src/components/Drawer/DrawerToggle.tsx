@@ -1,8 +1,8 @@
-import Button from '../Button/Button';
+import Button, { ButtonProps } from '../Button/Button';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-export interface DrawerToggleProps {
+export type DrawerToggleProps = ButtonProps & {
   /**
    * Determines if Drawer is open or closed.
    * This value is used to re-focus the toggle that opened the drawer when the drawer closes.
@@ -25,7 +25,7 @@ export interface DrawerToggleProps {
    * It can be used in implementing the Drawer for keeping track of which drawer the toggle controls.
    */
   showDrawer: (string) => any;
-}
+};
 
 /**
  * A link that triggers the visibility of a drawer
