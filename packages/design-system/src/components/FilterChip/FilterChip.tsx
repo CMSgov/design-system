@@ -58,7 +58,7 @@ export class FilterChip extends React.Component<FilterChipProps> {
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const { id, label, ariaClearLabel, className, useAlternateIcon, size } = this.props;
 
     const buttonClassNames = classNames(

@@ -188,7 +188,7 @@ export class Choice extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       checkedChildren,
       children,
