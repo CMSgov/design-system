@@ -18,7 +18,7 @@ export type HelpDrawerToggleProps = DrawerToggleProps & {
  * A link that triggers the visibility of a help drawer
  */
 
-const HelpDrawerToggle = ({
+export const HelpDrawerToggle = ({
   children,
   className,
   showDrawer,

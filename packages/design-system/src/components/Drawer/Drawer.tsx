@@ -43,7 +43,7 @@ export interface DrawerProps {
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
-const Drawer = (props: DrawerProps) => {
+export const Drawer = (props: DrawerProps) => {
   const headingRef = useRef(null);
   const id = useRef(props.headingId || uniqueId('drawer_'));
 

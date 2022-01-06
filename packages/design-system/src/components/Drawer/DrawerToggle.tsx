@@ -30,7 +30,7 @@ export type DrawerToggleProps = ButtonProps & {
 /**
  * A link that triggers the visibility of a drawer
  */
-const DrawerToggle = ({
+export const DrawerToggle = ({
   className,
   children,
   inline,
