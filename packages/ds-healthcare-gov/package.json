@@ -34,7 +34,7 @@
     "@babel/plugin-transform-object-assign": "^7.10.4",
     "@babel/preset-typescript": "^7.15.0",
     "@cmsgov/design-system-docs": "^2.13.0",
-    "@cmsgov/design-system-scripts": "^2.13.0-beta.1",
+    "@cmsgov/design-system-scripts": "^2.13.0",
     "@cmsgov/eslint-config-design-system": "2.0.0",
     "@cmsgov/stylelint-config-design-system": "2.0.0",
     "babel-eslint": "^10.1.0",
