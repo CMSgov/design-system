@@ -69,7 +69,7 @@ type ButtonButtonProps = CommonButtonProps<'button'> &
 
 export type ButtonProps = CommonButtonProps<ButtonComponent> | LinkButtonProps | ButtonButtonProps;
 
-export default class Button extends React.PureComponent<ButtonProps> {
+export class Button extends React.PureComponent<ButtonProps> {
   static defaultProps = {
     type: 'button',
     component: 'button',
@@ -193,3 +193,5 @@ export default class Button extends React.PureComponent<ButtonProps> {
     );
   }
 }
+
+export default Button;

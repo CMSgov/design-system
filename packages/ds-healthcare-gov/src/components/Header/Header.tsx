@@ -3,12 +3,11 @@ import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
 import React, { useState } from 'react';
+import { Language } from '../i18n';
 import { SkipNav } from '@cmsgov/design-system';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
 import { useTranslation } from 'react-i18next';
-
-export type Language = 'en' | 'es';
 
 export interface Link {
   href: string;

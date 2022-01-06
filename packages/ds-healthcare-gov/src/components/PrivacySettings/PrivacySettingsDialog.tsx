@@ -42,6 +42,7 @@ export const PrivacySettingsDialog = (props: PrivacySettingsDialogProps) => {
       title={t('privacy.dialogTitle')}
       size="full"
       closeButtonSize="small"
+      // @ts-ignore: TODO: We probably shouldn't be using secondary here, as it's supposed to be deprecated
       closeButtonVariation="secondary"
       actionsClassName="ds-u-text-align--right"
       actions={

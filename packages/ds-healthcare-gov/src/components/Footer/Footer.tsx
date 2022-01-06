@@ -2,9 +2,8 @@ import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import React from 'react';
 import classnames from 'classnames';
+import { Language } from '../i18n';
 import { useTranslation } from 'react-i18next';
-
-export type Language = 'en' | 'es';
 
 export interface FooterProps {
   /**

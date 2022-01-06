@@ -1,7 +1,8 @@
-import { Language, Link, VARIATION_NAMES } from './Header';
+import { Link, VARIATION_NAMES } from './Header';
 import localeLink from './localeLink';
 import loginLink from './loginLink';
 import { TFunction } from 'i18next';
+import { Language } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',

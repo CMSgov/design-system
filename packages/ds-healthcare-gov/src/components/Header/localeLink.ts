@@ -1,5 +1,5 @@
 import { TFunction } from 'i18next';
-import { Language } from './Header';
+import { Language } from '../i18n';
 
 /**
  * Returns a link pointing to the opposite locale

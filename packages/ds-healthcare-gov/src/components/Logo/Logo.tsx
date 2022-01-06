@@ -1,8 +1,7 @@
 import LogoEnSvg from './LogoEnSvg';
 import LogoEsSvg from './LogoEsSvg';
 import React from 'react';
-
-type Language = 'en' | 'es';
+import { Language } from '../i18n';
 
 export interface LogoProps {
   locale?: Language;
