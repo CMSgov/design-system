@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { ArrowIcon } from '../Icons';
 
 export type VerticalNavItemLabelComponent =
   | React.ReactElement<any>
@@ -74,7 +75,12 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
     otherProps = Object.assign(otherProps, anchorProps());
   }
 
-  return <LabelComponent {...otherProps}>{props.label}</LabelComponent>;
+  return (
+    <LabelComponent {...otherProps}>
+      {props.label}
+      {props.hasSubnav && <ArrowIcon direction={props.collapsed ? 'down' : 'up'} />}
+    </LabelComponent>
+  );
 };
 
 VerticalNavItemLabel.defaultProps = {

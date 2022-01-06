@@ -2,6 +2,7 @@ import React from 'react';
 import StepLink, { StepLinkProps } from './StepLink';
 import SubStep from './SubStep';
 import classNames from 'classnames';
+import { CheckIcon } from '../Icons';
 
 type HeadingLevel = '1' | '2' | '3' | '4' | '5';
 
@@ -105,7 +106,12 @@ export const Step = ({ step, ...props }: StepProps) => {
         )}
       </div>
       <div className="ds-c-step__actions" {...actionsLabel}>
-        {step.completed && <div className="ds-c-step__completed-text">{props.completedText}</div>}
+        {step.completed && (
+          <div className="ds-c-step__completed-text">
+            <CheckIcon className="ds-c-icon-color--success" />
+            {props.completedText}
+          </div>
+        )}
         {linkLabel && (
           <StepLink
             component={step.component}
