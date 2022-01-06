@@ -114,7 +114,7 @@ export class FormLabel extends React.PureComponent<
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       fieldId,
       id,

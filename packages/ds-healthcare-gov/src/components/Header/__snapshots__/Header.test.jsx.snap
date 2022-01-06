@@ -24,7 +24,7 @@ exports[`Header renders Direct Enrollment banner 1`] = `
           locale="en"
         />
       </a>
-      <Component
+      <ActionMenu
         links={
           Array [
             Object {
@@ -38,9 +38,9 @@ exports[`Header renders Direct Enrollment banner 1`] = `
             },
           ]
         }
-        locale="en"
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>
@@ -90,7 +90,7 @@ exports[`Header renders Spanish header 1`] = `
           locale="es"
         />
       </a>
-      <Component
+      <ActionMenu
         links={
           Array [
             Object {
@@ -104,9 +104,9 @@ exports[`Header renders Spanish header 1`] = `
             },
           ]
         }
-        locale="es"
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>
@@ -153,7 +153,7 @@ exports[`Header renders full/homepage header 1`] = `
           locale="en"
         />
       </a>
-      <Component
+      <ActionMenu
         links={
           Array [
             Object {
@@ -167,9 +167,9 @@ exports[`Header renders full/homepage header 1`] = `
             },
           ]
         }
-        locale="en"
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>
@@ -216,7 +216,7 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
           locale="en"
         />
       </a>
-      <Component
+      <ActionMenu
         links={
           Array [
             Object {
@@ -230,9 +230,9 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
             },
           ]
         }
-        locale="en"
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>
@@ -251,7 +251,6 @@ exports[`Header renders links with absolute URLs if provided a primaryDomain pro
       ]
     }
     open={false}
-    primaryDomain="https://www.healthcare.gov"
   />
 </header>
 `;
@@ -280,7 +279,7 @@ exports[`Header renders logged-in header with firstName 1`] = `
           locale="en"
         />
       </a>
-      <Component
+      <ActionMenu
         firstName="John"
         links={
           Array [
@@ -303,10 +302,10 @@ exports[`Header renders logged-in header with firstName 1`] = `
             },
           ]
         }
-        locale="en"
         loggedIn={true}
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>
@@ -368,7 +367,7 @@ exports[`Header renders logged-in header without firstName 1`] = `
           locale="en"
         />
       </a>
-      <Component
+      <ActionMenu
         links={
           Array [
             Object {
@@ -390,10 +389,10 @@ exports[`Header renders logged-in header without firstName 1`] = `
             },
           ]
         }
-        locale="en"
         loggedIn={true}
         onMenuToggleClick={[Function]}
         open={false}
+        t={[Function]}
       />
     </div>
   </div>

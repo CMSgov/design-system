@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import uniqueId from 'lodash/uniqueId';
+import { AddIcon, RemoveIcon } from '../Icons';
 
 export interface AccordionItemProps {
   /**
@@ -72,7 +73,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       buttonClassName,
       children,
@@ -84,6 +85,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     const contentClasses = classNames('ds-c-accordion__content', contentClassName);
     const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
     const HeadingTag = `h${headingLevel}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    const isItemOpen = this.isControlled ? isControlledOpen : this.state.isOpen;
 
     if (heading) {
       return (
@@ -91,12 +93,18 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
           <HeadingTag className="ds-c-accordion__heading">
             <button
               className={buttonClasses}
-              aria-expanded={this.isControlled ? isControlledOpen : this.state.isOpen}
+              aria-expanded={isItemOpen}
               aria-controls={this.contentId}
               id={this.buttonId}
               onClick={this.handleClick}
             >
               {heading}
+
+              {isItemOpen ? (
+                <RemoveIcon className="ds-c-accordion__button-icon" title="Close" />
+              ) : (
+                <AddIcon className="ds-c-accordion__button-icon" title="Open" />
+              )}
             </button>
           </HeadingTag>
           <div

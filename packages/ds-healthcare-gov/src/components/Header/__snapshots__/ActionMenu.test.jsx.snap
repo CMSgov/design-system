@@ -72,346 +72,154 @@ Object {
 `;
 
 exports[`ActionMenu logged-in version renders logged-in version 1`] = `
-<Component
-  firstName="John"
-  links={Array []}
-  loggedIn={true}
-  onMenuToggleClick={[MockFunction]}
->
-  <ActionMenu
-    firstName="John"
-    links={Array []}
-    loggedIn={true}
-    onMenuToggleClick={[MockFunction]}
-    t={[Function]}
+<DocumentFragment>
+  <nav
+    class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+    id="hc-c-header__actions"
+    role="navigation"
   >
-    <nav
-      className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-      id="hc-c-header__actions"
-      role="navigation"
-    >
-      <LoggedInActionMenu
-        firstName="John"
-        links={Array []}
-        loggedIn={true}
-        onMenuToggleClick={[MockFunction]}
-        t={[Function]}
+    <div>
+      <span
+        class="ds-u-display--none ds-u-sm-display--inline-block"
       >
-        <div>
-          <span
-            className="ds-u-display--none ds-u-sm-display--inline-block"
+        John
+      </span>
+      <button
+        aria-controls="hc-c-menu"
+        aria-expanded="false"
+        aria-label="header.openMenu"
+        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-1__title"
+          class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
+          focusable="false"
+          id="icon-1"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-1__title"
           >
-            John
-          </span>
-          <MenuButton
-            firstName="John"
-            links={Array []}
-            loggedIn={true}
-            onMenuToggleClick={[MockFunction]}
-            t={[Function]}
-          >
-            <Button
-              aria-controls="hc-c-menu"
-              aria-expanded={false}
-              aria-label="header.openMenu"
-              className="hc-c-action-menu-button ds-u-sm-margin-left--2"
-              component="button"
-              onClick={[Function]}
-              size="small"
-              type="button"
-            >
-              <button
-                aria-controls="hc-c-menu"
-                aria-expanded={false}
-                aria-label="header.openMenu"
-                className="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
-                onClick={[Function]}
-                type="button"
-              >
-                <MenuIcon
-                  className="ds-u-margin-right--1"
-                >
-                  <SvgIcon
-                    ariaHidden={true}
-                    className="ds-u-margin-right--1 ds-c-icon--menu"
-                    inversed={false}
-                    title="Menu Icon"
-                    viewBox="0 0 448 512"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      aria-labelledby="icon-1__title"
-                      className="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-                      focusable={false}
-                      id="icon-1"
-                      role="img"
-                      viewBox="0 0 448 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <title
-                        id="icon-1__title"
-                      >
-                        Menu Icon
-                      </title>
-                      <path
-                        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </SvgIcon>
-                </MenuIcon>
-                header.menu
-              </button>
-            </Button>
-          </MenuButton>
-        </div>
-      </LoggedInActionMenu>
-    </nav>
-  </ActionMenu>
-</Component>
+            Menu Icon
+          </title>
+          <path
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            fill="currentColor"
+          />
+        </svg>
+        header.menu
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
 `;
 
 exports[`ActionMenu logged-in version set aria-expanded to true 1`] = `
-<Component
-  firstName="John"
-  links={Array []}
-  loggedIn={true}
-  onMenuToggleClick={[MockFunction]}
-  open={true}
->
-  <ActionMenu
-    firstName="John"
-    links={Array []}
-    loggedIn={true}
-    onMenuToggleClick={[MockFunction]}
-    open={true}
-    t={[Function]}
+<DocumentFragment>
+  <nav
+    class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+    id="hc-c-header__actions"
+    role="navigation"
   >
-    <nav
-      className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-      id="hc-c-header__actions"
-      role="navigation"
-    >
-      <LoggedInActionMenu
-        firstName="John"
-        links={Array []}
-        loggedIn={true}
-        onMenuToggleClick={[MockFunction]}
-        open={true}
-        t={[Function]}
+    <div>
+      <span
+        class="ds-u-display--none ds-u-sm-display--inline-block"
       >
-        <div>
-          <span
-            className="ds-u-display--none ds-u-sm-display--inline-block"
+        John
+      </span>
+      <button
+        aria-controls="hc-c-menu"
+        aria-expanded="true"
+        aria-label="header.closeMenu"
+        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-2__title"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          focusable="false"
+          id="icon-2"
+          role="img"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-2__title"
           >
-            John
-          </span>
-          <MenuButton
-            firstName="John"
-            links={Array []}
-            loggedIn={true}
-            onMenuToggleClick={[MockFunction]}
-            open={true}
-            t={[Function]}
-          >
-            <Button
-              aria-controls="hc-c-menu"
-              aria-expanded={true}
-              aria-label="header.closeMenu"
-              className="hc-c-action-menu-button ds-u-sm-margin-left--2"
-              component="button"
-              onClick={[Function]}
-              size="small"
-              type="button"
-            >
-              <button
-                aria-controls="hc-c-menu"
-                aria-expanded={true}
-                aria-label="header.closeMenu"
-                className="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2"
-                onClick={[Function]}
-                type="button"
-              >
-                <CloseIconThin>
-                  <SvgIcon
-                    ariaHidden={true}
-                    className="ds-c-icon--close ds-c-icon--close-thin "
-                    inversed={false}
-                    title="Close"
-                    viewBox="-2 -2 18 18"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      aria-labelledby="icon-2__title"
-                      className="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-                      focusable={false}
-                      id="icon-2"
-                      role="img"
-                      viewBox="-2 -2 18 18"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <title
-                        id="icon-2__title"
-                      >
-                        Close
-                      </title>
-                      <path
-                        d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeWidth="2"
-                      />
-                    </svg>
-                  </SvgIcon>
-                </CloseIconThin>
-                header.menu
-              </button>
-            </Button>
-          </MenuButton>
-        </div>
-      </LoggedInActionMenu>
-    </nav>
-  </ActionMenu>
-</Component>
+            Close
+          </title>
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+        header.menu
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
 `;
 
 exports[`ActionMenu logged-out version renders logged-out version 1`] = `
-<Component
-  links={
-    Array [
-      Object {
-        "href": "href",
-        "label": "label",
-      },
-    ]
-  }
-  locale="en"
-  loggedIn={false}
-  onMenuToggleClick={[MockFunction]}
->
-  <ActionMenu
-    links={
-      Array [
-        Object {
-          "href": "href",
-          "label": "label",
-        },
-      ]
-    }
-    locale="en"
-    loggedIn={false}
-    onMenuToggleClick={[MockFunction]}
-    t={[Function]}
+<DocumentFragment>
+  <nav
+    class="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+    id="hc-c-header__actions"
+    role="navigation"
   >
-    <nav
-      className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-      id="hc-c-header__actions"
-      role="navigation"
-    >
-      <LoggedOutActionMenu
-        links={
-          Array [
-            Object {
-              "href": "href",
-              "label": "label",
-            },
-          ]
-        }
-        locale="en"
-        loggedIn={false}
-        onMenuToggleClick={[MockFunction]}
-        t={[Function]}
+    <div>
+      <ul
+        class="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--inline-block"
       >
-        <div>
-          <ul
-            className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--inline-block"
+        <li
+          class="hc-c-logged-out-links__li"
+        >
+          <a
+            class="hc-c-logged-out-links__link"
+            href="href"
           >
-            <li
-              className="hc-c-logged-out-links__li"
-              key="href"
-            >
-              <a
-                className="hc-c-logged-out-links__link"
-                href="href"
-                onClick={[Function]}
-              >
-                label
-              </a>
-            </li>
-          </ul>
-          <MenuButton
-            className="ds-u-display--inline-block ds-u-sm-display--none"
-            links={
-              Array [
-                Object {
-                  "href": "href",
-                  "label": "label",
-                },
-              ]
-            }
-            locale="en"
-            loggedIn={false}
-            onMenuToggleClick={[MockFunction]}
-            t={[Function]}
+            label
+          </a>
+        </li>
+      </ul>
+      <button
+        aria-controls="hc-c-menu"
+        aria-expanded="false"
+        aria-label="header.openMenu"
+        class="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          aria-labelledby="icon-4__title"
+          class="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
+          focusable="false"
+          id="icon-4"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="icon-4__title"
           >
-            <Button
-              aria-controls="hc-c-menu"
-              aria-expanded={false}
-              aria-label="header.openMenu"
-              className="hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
-              component="button"
-              onClick={[Function]}
-              size="small"
-              type="button"
-            >
-              <button
-                aria-controls="hc-c-menu"
-                aria-expanded={false}
-                aria-label="header.openMenu"
-                className="ds-c-button ds-c-button--small hc-c-action-menu-button ds-u-sm-margin-left--2 ds-u-display--inline-block ds-u-sm-display--none"
-                onClick={[Function]}
-                type="button"
-              >
-                <MenuIcon
-                  className="ds-u-margin-right--1"
-                >
-                  <SvgIcon
-                    ariaHidden={true}
-                    className="ds-u-margin-right--1 ds-c-icon--menu"
-                    inversed={false}
-                    title="Menu Icon"
-                    viewBox="0 0 448 512"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      aria-labelledby="icon-4__title"
-                      className="ds-c-icon ds-u-margin-right--1 ds-c-icon--menu"
-                      focusable={false}
-                      id="icon-4"
-                      role="img"
-                      viewBox="0 0 448 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <title
-                        id="icon-4__title"
-                      >
-                        Menu Icon
-                      </title>
-                      <path
-                        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </SvgIcon>
-                </MenuIcon>
-                header.menu
-              </button>
-            </Button>
-          </MenuButton>
-        </div>
-      </LoggedOutActionMenu>
-    </nav>
-  </ActionMenu>
-</Component>
+            Menu Icon
+          </title>
+          <path
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            fill="currentColor"
+          />
+        </svg>
+        header.menu
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
 `;

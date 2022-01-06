@@ -8,6 +8,7 @@ function t(key, params) {
 }
 
 i18next.withTranslation = () => (Component) => (props) => <Component t={t} {...props} />;
+i18next.useTranslation = () => ({ t });
 
 i18next.use = () => ({
   init: jest.fn(),

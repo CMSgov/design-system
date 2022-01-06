@@ -8,7 +8,7 @@ import StepLink from './StepLink';
 import SubStep from './SubStep';
 
 export default {
-  title: 'Components/Step List',
+  title: 'Patterns/Step List',
   component: StepListComponent,
   argTypes: {
     steps: { control: false },
