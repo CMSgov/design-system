@@ -119,7 +119,7 @@ export class FormControl extends React.Component<FormControlProps> {
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       className,
       component,

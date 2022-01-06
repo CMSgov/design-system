@@ -1,11 +1,7 @@
-import { _Header as Header } from './Header';
+import Header from './Header';
 import React from 'react';
 import { SkipNav } from '@cmsgov/design-system';
 import { shallow } from 'enzyme';
-
-jest.mock('../i18n', () => ({
-  translate: (text) => text,
-}));
 
 function render(props) {
   props = Object.assign(
@@ -46,12 +42,10 @@ describe('Header', function () {
 
   it('toggles openMenu state when handleMenuToggleClick is called', () => {
     const wrapper = render();
-
-    expect(wrapper.state().openMenu).toBe(false);
-
-    wrapper.instance().handleMenuToggleClick();
-
-    expect(wrapper.state().openMenu).toBe(true);
+    const actionMenuProps = () => wrapper.find('ActionMenu').props();
+    expect(actionMenuProps().open).toBe(false);
+    actionMenuProps().onMenuToggleClick();
+    expect(actionMenuProps().open).toBe(true);
   });
 
   it('passes correct props to SkipNav', () => {

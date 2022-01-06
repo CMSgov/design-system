@@ -251,7 +251,7 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
         An official website of the United States government
       </span>
       <button
-        aria-controls="gov-banner_13"
+        aria-controls="gov-banner_14"
         aria-expanded={true}
         className="ds-c-usa-banner__button"
         onClick={[Function]}
@@ -271,7 +271,7 @@ exports[`UsaBanner applies additional class names to expanded banner 1`] = `
   <div
     className="ds-c-usa-banner__content"
     hidden={false}
-    id="gov-banner_13"
+    id="gov-banner_14"
   >
     <div
       className="ds-c-usa-banner__guidance-container"

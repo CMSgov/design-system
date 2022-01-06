@@ -74,8 +74,23 @@ function copyMisc(dir) {
   );
 }
 
+function copyComponentJson(dir) {
+  const src = path.join(dir, 'src');
+  return streamPromise(
+    gulp
+      .src([`${src}/components/**/*.json`])
+      .pipe(gulp.dest(path.join(dir, 'dist', 'components')))
+      .pipe(gulp.dest(path.join(dir, 'dist', 'esnext')))
+  );
+}
+
 async function copyAll(dir, options) {
-  const copyTasks = [copySass(dir), copyAssets(dir, options), copyMisc(dir)];
+  const copyTasks = [
+    copySass(dir),
+    copyAssets(dir, options),
+    copyMisc(dir),
+    copyComponentJson(dir),
+  ];
 
   return Promise.all(copyTasks);
 }

@@ -73,7 +73,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     }
   }
 
-  render(): React.ReactNode {
+  render() {
     const {
       buttonClassName,
       children,
