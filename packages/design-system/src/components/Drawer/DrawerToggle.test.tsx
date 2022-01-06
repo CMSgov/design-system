@@ -51,6 +51,6 @@ describe('DrawerToggle', () => {
     const ariaLabel = 'test';
     const { wrapper } = renderDrawerToggle({ 'aria-label': ariaLabel });
     const toggle = wrapper.find('Button');
-    expect(toggle.props().ariaLabel).toBe(ariaLabel);
+    expect(toggle.props()['aria-label']).toBe(ariaLabel);
   });
 });
